@@ -83,6 +83,7 @@ access(0)
 
 #ifdef YUR_BOH
 	boh = false;
+	hasteEnchant = false;
 #endif //YUR_BOH
 
 #ifdef YUR_RINGS_AMULETS

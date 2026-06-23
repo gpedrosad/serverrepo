@@ -707,6 +707,11 @@ std::string Item::getDescription(bool fullDescription) const
 	else
 		s<<"an item of type " << id <<".";
 
+#ifdef YUR_BOH
+	if(fullDescription && actionId == ITEM_HASTE_ENCHANT_AID)
+		s << std::endl << "It has +20 haste.";
+#endif //YUR_BOH
+
 	str = s.str();
 	return str;
 }

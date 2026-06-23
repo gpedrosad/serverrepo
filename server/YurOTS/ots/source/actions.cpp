@@ -707,6 +707,11 @@ int ActionScript::registerFunctions()
 	lua_register(luaState, "getItemName", ActionScript::luaActionGetItemName);
 #endif //YUR_ACT_EXT
 
+#ifdef YUR_BOH
+	lua_register(luaState, "getPlayerSlotItem", ActionScript::luaActionGetPlayerSlotItem);
+	lua_register(luaState, "doPlayerCheckFeetSpeed", ActionScript::luaActionDoPlayerCheckFeetSpeed);
+#endif //YUR_BOH
+
 	return true;
 }
 
@@ -1795,3 +1800,48 @@ int ActionScript::luaActionGetItemName(lua_State *L)
 	return 1;
 }
 #endif //YUR_ACT_EXT
+
+#ifdef YUR_BOH
+int ActionScript::luaActionGetPlayerSlotItem(lua_State *L)
+{
+	int slot = (int)internalGetNumber(L);
+	unsigned int cid = (unsigned int)internalGetNumber(L);
+
+	ActionScript *action = getActionScript(L);
+	const KnownThing* tmp = action->GetPlayerByUID(cid);
+	if(!tmp || slot < SLOT_HEAD || slot > SLOT_AMMO){
+		internalAddThing(L, NULL, 0);
+		return 1;
+	}
+
+	Player *player = (Player*)(tmp->thing);
+	Item* item = player->items[slot];
+	if(!item){
+		internalAddThing(L, NULL, 0);
+		return 1;
+	}
+
+	PositionEx pos;
+	pos.x = 0xFFFF;
+	pos.y = slot;
+	pos.z = 0;
+	pos.stackpos = 0;
+	unsigned int uid = action->AddThingToMap(item, pos);
+	internalAddThing(L, item, uid);
+	return 1;
+}
+
+int ActionScript::luaActionDoPlayerCheckFeetSpeed(lua_State *L)
+{
+	unsigned int cid = (unsigned int)internalGetNumber(L);
+
+	ActionScript *action = getActionScript(L);
+	const KnownThing* tmp = action->GetPlayerByUID(cid);
+	if(tmp){
+		Player *player = (Player*)(tmp->thing);
+		player->checkBoh();
+	}
+
+	return 0;
+}
+#endif //YUR_BOH

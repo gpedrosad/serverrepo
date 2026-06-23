@@ -23,6 +23,7 @@
 
 #include <string>
 #include <sstream>
+#include <fstream>
 
 #include <map>
 //#include <algorithm>
@@ -5384,6 +5385,48 @@ bool Game::loadNpcs()
 #endif //WOLV_LOAD_NPC
 
 
+static std::string xmlAttrEscape(const std::string& value)
+{
+	std::string out;
+	out.reserve(value.size());
+	for (size_t i = 0; i < value.size(); ++i) {
+		const char c = value[i];
+		switch (c) {
+			case '&': out += "&amp;"; break;
+			case '"': out += "&quot;"; break;
+			case '<': out += "&lt;"; break;
+			case '>': out += "&gt;"; break;
+			default: out += c; break;
+		}
+	}
+	return out;
+}
+
+void Game::writeOnlineList()
+{
+	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::writeOnlineList()");
+
+	const std::string file = g_config.DATA_DIR + "online.xml";
+	std::ofstream out(file.c_str());
+	if (!out)
+		return;
+
+	out << "<?xml version=\"1.0\"?>\n<online>\n";
+	for (AutoList<Player>::listiterator it = Player::listPlayer.list.begin(); it != Player::listPlayer.list.end(); ++it)
+	{
+		Player* player = it->second;
+		if (!player || player->access > 0)
+			continue;
+
+		out << "<player name=\"" << xmlAttrEscape(player->getName())
+		    << "\" level=\"" << player->getLevel()
+		    << "\" voc=\"" << (int)player->getVocation()
+		    << "\" exp=\"" << player->getExperience()
+		    << "\"/>\n";
+	}
+	out << "</online>\n";
+}
+
 #ifdef TLM_SERVER_SAVE
 void Game::serverSave()
 {
@@ -5401,6 +5444,7 @@ void Game::serverSave()
 	Guilds::Save();
 	Houses::Save(this);
 	loginQueue.save();
+	writeOnlineList();
 	std::cout << "ok (" << timer() << "s)" << std::endl;
 }
 

@@ -53,6 +53,7 @@ public:
 	//	virtual void onCreatureChangeOutfit(const Creature* creature);
 	static Npc* getNpc(lua_State *L);
 	static int luaActionSay(lua_State *L);
+	static int luaDoPlayerSendTextMessage(lua_State *L);
 	static int luaActionMove(lua_State *L);
 	static int luaActionMoveTo(lua_State *L);
 	static int luaCreatureGetName(lua_State *L);
@@ -64,6 +65,7 @@ public:
 #ifdef TLM_BUY_SELL
 	static int luaBuyItem(lua_State *L);
 	static int luaSellItem(lua_State *L);
+	static int luaSellBundle(lua_State *L);
 	static int luaPayMoney(lua_State *L);
 #endif
 
@@ -72,6 +74,7 @@ public:
 	static int luaSetPlayerStorageValue(lua_State *L);
 	static int luaPlayerRemoveItem(lua_State *L);
 	static int luaGetPlayerLevel(lua_State *L);
+	static int luaGetPlayerItemCount(lua_State *L);
 	static int luaSetPlayerMasterPos(lua_State* L);
 #endif //YUR_NPC_EXT
 

@@ -143,10 +143,10 @@ rodmana = {"2", "3", "5", "8", "13"}
 wandmana = {"2", "3", "5", "8", "13"}
 
 -- shooting range of {snakebite, moonlight, volcanic, quagmire, tempest} rod
-rodrange = {"4", "3", "2", "1", "3"}
+rodrange = {"5", "5", "5", "5", "5"}
 
 -- shooting range of  wand of {vortex, dragonbreath, plague, cosmic energy, inferno}
-wandrange = {"4", "3", "2", "1", "3"}
+wandrange = {"5", "5", "5", "5", "5"}
 
 -- damage of burst arrows blast
 -- default is from (1*lvl+5*mlvl)*0.24 to (1*lvl+5*mlvl)*0.55

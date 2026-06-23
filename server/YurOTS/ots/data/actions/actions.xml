@@ -505,4 +505,5 @@
 
 
 <!-- <action itemid="2112" script="invasion.lua" /> -->
+<action itemid="2154" script="yellow_gem_boots.lua" />
 </actions>

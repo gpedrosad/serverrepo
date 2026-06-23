@@ -2561,10 +2561,12 @@ void Player::receiveHouseWindow(std::string membersAfter)
 void Player::checkBoh()
 {
 	bool bohNow = (items[SLOT_FEET] && items[SLOT_FEET]->getID() == ITEM_BOH);
+	bool hasteEnchantNow = (items[SLOT_FEET] && items[SLOT_FEET]->getActionId() == ITEM_HASTE_ENCHANT_AID);
 
-	if (boh != bohNow)
+	if (boh != bohNow || hasteEnchant != hasteEnchantNow)
 	{
 		boh = bohNow;
+		hasteEnchant = hasteEnchantNow;
 		setNormalSpeed();
 		hasteTicks = 0;
 		sendChangeSpeed(this);

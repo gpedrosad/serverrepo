@@ -212,6 +212,7 @@ enum item_t {
 	ITEM_ICE_RAPIER		= 2396,
 	ITEM_AOL			= 2173,
 	ITEM_BOH			= 2195,
+	ITEM_HASTE_ENCHANT_AID = 9020,
 	ITEM_SPLASH			= 2019,
 	ITEM_POOL			= 2025,
 	ITEM_BOW			= 2456,
@@ -293,5 +294,7 @@ enum bloodsplash_t //for splashes (count)
 	SPLASH_NONE = 0,
 }; 
 #endif //TJ_MONSTER_BLOOD
+
+#define HASTE_ENCHANT_SPEED 20
 
 #endif

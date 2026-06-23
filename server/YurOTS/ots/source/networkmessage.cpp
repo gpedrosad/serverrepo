@@ -290,7 +290,7 @@ void NetworkMessage::AddItem(unsigned short id, unsigned char count)
 
 	AddU16(it.clientId);
 
-	if(it.stackable || it.isSplash() || it.isFluidContainer())
+	if(it.stackable || it.isSplash() || it.isFluidContainer() || it.runeMagLevel != -1)
 		AddByte(count);
 }
 
@@ -300,7 +300,7 @@ void NetworkMessage::AddItem(const Item *item)
 
 	AddU16(it.clientId);
 
-	if(it.stackable || it.isSplash() || it.isFluidContainer())
+	if(it.stackable || it.isSplash() || it.isFluidContainer() || it.runeMagLevel != -1)
     AddByte((unsigned char)item->getItemCountOrSubtype());
 }
 

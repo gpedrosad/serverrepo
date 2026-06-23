@@ -240,12 +240,16 @@ public:
 		if(access >= g_config.ACCESS_PROTECT){
 			return 1000;
 		}
+		int s;
 #ifdef YUR_BOH
 	#ifdef YUR_RINGS_AMULETS
-		return std::min(900, 220 + (2* (level + 30*boh + 30*timeRing - 1)));
+		s = std::min(900, 220 + (2* (level + 30*boh + 30*timeRing - 1)));
 	#else //YUR_RINGS_AMULETS
-		return std::min(900, 220 + (2* (level + 30*boh - 1)));
+		s = std::min(900, 220 + (2* (level + 30*boh - 1)));
 	#endif //YUR_RINGS_AMULETS
+		if(hasteEnchant)
+			s = std::min(900, s + HASTE_ENCHANT_SPEED);
+		return s;
 #else //YUR_BOH
 	#ifdef YUR_RINGS_AMULETS
 		return std::min(900, 220 + (2* (level + 30*timeRing - 1)));
@@ -292,6 +296,7 @@ protected:
 
 #ifdef YUR_BOH
 	bool boh;
+	bool hasteEnchant;
 #endif //YUR_BOH
 #ifdef YUR_RINGS_AMULETS
 	bool timeRing;

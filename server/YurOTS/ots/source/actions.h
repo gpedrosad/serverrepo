@@ -207,6 +207,10 @@ public:
 #ifdef YUR_ACT_EXT
 	static int luaActionGetItemName(lua_State *L);
 #endif //YUR_ACT_EXT
+#ifdef YUR_BOH
+	static int luaActionGetPlayerSlotItem(lua_State *L);
+	static int luaActionDoPlayerCheckFeetSpeed(lua_State *L);
+#endif //YUR_BOH
 
 protected:
 

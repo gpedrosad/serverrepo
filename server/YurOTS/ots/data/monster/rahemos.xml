@@ -28,6 +28,15 @@
 </voices>
 
 <loot>
+	<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
+	<item id="2151" countmax="8" chance1="10000" chancemax="0"/>
+
+	<item id="1987" chance="100000">
+	<inside>
+	<item id="2148" countmax="70" chance1="100000" chancemax="0"/>
+	<item id="2151" countmax="5" chance1="8000" chancemax="0"/>
+	</inside>
+	</item>
 </loot>
 
 <summons maxSummons="2">

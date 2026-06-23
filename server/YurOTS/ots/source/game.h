@@ -316,6 +316,7 @@ public:
 	void serverSave();
 	void autoServerSave();
 #endif //TLM_SERVER_SAVE
+	void writeOnlineList();
 
 #ifdef ELEM_VIP_LIST
 	void vipLogin(Player* player);

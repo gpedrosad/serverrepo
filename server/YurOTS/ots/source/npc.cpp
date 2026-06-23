@@ -26,6 +26,7 @@
 #include <string>
 #include <sstream>
 #include <fstream>
+#include <vector>
 
 #include <libxml/xmlmemory.h>
 #include <libxml/parser.h>
@@ -43,7 +44,10 @@ struct PendingTransaction {
 	int count;
 	int cost;
 	bool isSell;
-	PendingTransaction() : cid(0), itemid(0), count(0), cost(0), isSell(false) {}
+	bool isBulkSell;
+	std::vector<std::pair<int,int> > bulkItems;
+	std::string bulkLabel;
+	PendingTransaction() : cid(0), itemid(0), count(0), cost(0), isSell(false), isBulkSell(false) {}
 };
 
 static std::map<unsigned long, PendingTransaction> pendingTrades;
@@ -301,7 +305,21 @@ void Npc::onCreatureSay(const Creature *creature, SpeakClasses type, const std::
 			if(player){
 				PendingTransaction& pt = it->second;
 				if(pt.isSell){
-					if(player->getItem(pt.itemid, pt.count)){
+					if(pt.isBulkSell){
+						bool hasAll = true;
+						for(size_t i = 0; i < pt.bulkItems.size(); i++){
+							if(!player->getItem(pt.bulkItems[i].first, pt.bulkItems[i].second))
+								hasAll = false;
+						}
+						if(hasAll){
+							for(size_t i = 0; i < pt.bulkItems.size(); i++){
+								player->removeItem(pt.bulkItems[i].first, pt.bulkItems[i].second);
+							}
+							player->payBack(pt.cost);
+							doSay("Thanks for your gems!");
+						}else
+							doSay("Sorry, you do not have those items.");
+					}else if(player->getItem(pt.itemid, pt.count)){
 						if(player->removeItem(pt.itemid, pt.count)){
 							player->payBack(pt.cost);
 							doSay("Thanks for this item!");
@@ -492,6 +510,7 @@ void NpcScript::onCreatureSay(int cid, SpeakClasses type, const std::string &tex
 int NpcScript::registerFunctions()
 {
 	lua_register(luaState, "selfSay", NpcScript::luaActionSay);
+	lua_register(luaState, "doPlayerSendTextMessage", NpcScript::luaDoPlayerSendTextMessage);
 	lua_register(luaState, "selfMove", NpcScript::luaActionMove);
 	lua_register(luaState, "selfMoveTo", NpcScript::luaActionMoveTo);
 	lua_register(luaState, "selfGetPosition", NpcScript::luaSelfGetPos);
@@ -504,6 +523,7 @@ int NpcScript::registerFunctions()
 #ifdef TLM_BUY_SELL
 	lua_register(luaState, "buy", NpcScript::luaBuyItem);
 	lua_register(luaState, "sell", NpcScript::luaSellItem);
+	lua_register(luaState, "sellBundle", NpcScript::luaSellBundle);
 	lua_register(luaState, "pay", NpcScript::luaPayMoney);
 #endif
 
@@ -512,6 +532,7 @@ int NpcScript::registerFunctions()
 	lua_register(luaState, "setPlayerStorageValue", NpcScript::luaSetPlayerStorageValue);
 	lua_register(luaState, "doPlayerRemoveItem", NpcScript::luaPlayerRemoveItem);
 	lua_register(luaState, "getPlayerLevel", NpcScript::luaGetPlayerLevel);
+	lua_register(luaState, "getPlayerItemCount", NpcScript::luaGetPlayerItemCount);
 	lua_register(luaState, "getPlayerVocation", NpcScript::luaGetPlayerVocation);
 	lua_register(luaState, "setPlayerMasterPos", NpcScript::luaSetPlayerMasterPos);
 #endif //YUR_NPC_EXT
@@ -619,6 +640,25 @@ int NpcScript::luaActionSay(lua_State* L){
 	return 0;
 }
 
+int NpcScript::luaDoPlayerSendTextMessage(lua_State* L)
+{
+	const char* text = lua_tostring(L, -1);
+	int messageClass = (int)lua_tonumber(L, -2);
+	int cid = (int)lua_tonumber(L, -3);
+	lua_pop(L, 3);
+
+	Npc* mynpc = getNpc(L);
+	if(!mynpc)
+		return 0;
+
+	Creature* creature = mynpc->game->getCreatureByID(cid);
+	Player* player = creature ? dynamic_cast<Player*>(creature) : NULL;
+	if(player)
+		player->sendTextMessage((MessageClasses)messageClass, text);
+
+	return 0;
+}
+
 int NpcScript::luaActionMove(lua_State* L){
 	int dir=(int)lua_tonumber(L, -1);
 	lua_pop(L,1);
@@ -711,6 +751,54 @@ int NpcScript::luaSellItem(lua_State *L)
 
 		std::stringstream ss;
 		ss << "Do you want to sell " << count << "x " << Item::items[itemid].name << " for " << cost << " gold? (yes/no)";
+		mynpc->doSay(ss.str());
+	}
+
+	return 0;
+}
+
+int NpcScript::luaSellBundle(lua_State *L)
+{
+	if(!lua_istable(L, -1))
+		return 0;
+
+	const char* label = lua_tostring(L, -2);
+	int cost = (int)lua_tonumber(L, -3);
+	int cid = (int)lua_tonumber(L, -4);
+
+	Npc* mynpc = getNpc(L);
+	Creature* creature = mynpc->game->getCreatureByID(cid);
+	Player* player = creature? dynamic_cast<Player*>(creature) : NULL;
+
+	if(player)
+	{
+		PendingTransaction& pt = pendingTrades[mynpc->getID()];
+		pt.cid = cid;
+		pt.itemid = 0;
+		pt.count = 0;
+		pt.cost = cost;
+		pt.isSell = true;
+		pt.isBulkSell = true;
+		pt.bulkItems.clear();
+		pt.bulkLabel = label? label : "";
+
+		lua_pushnil(L);
+		while(lua_next(L, 4) != 0){
+			if(lua_istable(L, -1)){
+				lua_rawgeti(L, -1, 1);
+				int itemid = (int)lua_tonumber(L, -1);
+				lua_pop(L, 1);
+				lua_rawgeti(L, -1, 2);
+				int count = (int)lua_tonumber(L, -1);
+				lua_pop(L, 1);
+				if(itemid > 0 && count > 0)
+					pt.bulkItems.push_back(std::make_pair(itemid, count));
+			}
+			lua_pop(L, 1);
+		}
+
+		std::stringstream ss;
+		ss << "Do you want to sell " << pt.bulkLabel << " for " << cost << " gold? (yes/no)";
 		mynpc->doSay(ss.str());
 	}
 
@@ -815,6 +903,24 @@ int NpcScript::luaGetPlayerLevel(lua_State* L)
 		lua_pushnumber(L, player->getLevel());
 	else
 		lua_pushnumber(L, -1);
+
+	return 1;
+}
+
+int NpcScript::luaGetPlayerItemCount(lua_State* L)
+{
+	int itemid = (int)lua_tonumber(L, -1);
+	int cid = (int)lua_tonumber(L, -2);
+	lua_pop(L, 2);
+
+	Npc* mynpc = getNpc(L);
+	Creature* creature = mynpc->game->getCreatureByID(cid);
+	Player* player = creature? dynamic_cast<Player*>(creature) : NULL;
+
+	if(player)
+		lua_pushnumber(L, player->getItemCount(itemid));
+	else
+		lua_pushnumber(L, 0);
 
 	return 1;
 }

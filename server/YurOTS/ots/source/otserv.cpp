@@ -374,6 +374,7 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 						else{
 							Status* stat = Status::instance();
 							stat->addPlayer();
+							g_game.writeOnlineList();
 							player->lastlogin = std::time(NULL);
 							player->lastip = player->getIP();
 							s = 0;            // protocol/player will close socket
@@ -383,6 +384,7 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 
 							protocol->ReceiveLoop();
 							stat->removePlayer();
+							g_game.writeOnlineList();
 						}
 
 						if(player){
