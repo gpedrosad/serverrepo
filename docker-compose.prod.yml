@@ -18,19 +18,15 @@ services:
     volumes:
       - .:/app:ro
       - ./web/state:/app/web/state
-      - ./server/YurOTS/ots/data/accounts:/app/server/YurOTS/ots/data/accounts
       - ./server/YurOTS/ots/data/players:/app/server/YurOTS/ots/data/players
     ports:
-      - "${WEB_PUBLISH:-8080:8080}"
+      - "8080:8080"
     environment:
       PLAYERS_DIR: /app/server/YurOTS/ots/data/players
-      ACCOUNTS_DIR: /app/server/YurOTS/ots/data/accounts
       GUILDS_FILE: /app/server/YurOTS/ots/data/guilds.xml
       OTINFO_FILE: /app/OTINFO
       ONLINE_FILE: /app/server/YurOTS/ots/data/online.xml
       STATE_FILE: /app/web/state/daily.json
-      REGISTER_STATE: /app/web/state/register.json
-      CONFIG_FILE: /app/server/YurOTS/ots/config.lua
       OT_HOST: yurots
       OT_PORT: "7171"
       SERVER_IP: "159.223.110.159"
