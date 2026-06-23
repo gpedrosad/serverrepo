@@ -24,4 +24,15 @@ else
   git clone "$URL" "$REPO"
 fi
 
+if [[ -f "$REPO/deploy/yurots-deploy.pub" ]]; then
+  mkdir -p "$HOME/.ssh"
+  chmod 700 "$HOME/.ssh"
+  touch "$HOME/.ssh/authorized_keys"
+  chmod 600 "$HOME/.ssh/authorized_keys"
+  if ! grep -qF "yurots-deploy" "$HOME/.ssh/authorized_keys" 2>/dev/null; then
+    cat "$REPO/deploy/yurots-deploy.pub" >> "$HOME/.ssh/authorized_keys"
+    echo "Clave deploy añadida para acceso SSH."
+  fi
+fi
+
 exec "$REPO/scripts/vps-fix-502.sh"
