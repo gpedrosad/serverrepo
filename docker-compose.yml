@@ -1,0 +1,13 @@
+services:
+  yurots:
+    build: .
+    container_name: yurots
+    working_dir: /app/YurOTS/ots
+    volumes:
+      - ./server/YurOTS:/app/YurOTS
+    ports:
+      - "7171:7171"
+      - "7172:7172"
+    stdin_open: true
+    tty: true
+    command: bash
