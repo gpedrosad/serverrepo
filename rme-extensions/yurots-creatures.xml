@@ -1,0 +1,22 @@
+<materialsextension
+	name="YurOTS Custom Creatures"
+	author="YurOTS"
+	description="Trainer Monk, Elite Trainer Monk y otros monstruos custom del servidor."
+	client="7.6">
+
+	<tileset name="YurOTS Training">
+		<creatures>
+			<creature name="Trainer Monk"/>
+			<creature name="Elite Trainer Monk"/>
+		</creatures>
+	</tileset>
+
+	<tileset name="YurOTS Custom">
+		<creatures>
+			<creature name="Bone Beast"/>
+			<creature name="Murius"/>
+			<creature name="Old Widow"/>
+		</creatures>
+	</tileset>
+
+</materialsextension>

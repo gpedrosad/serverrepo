@@ -497,6 +497,10 @@
 		<monster name="elf" x="0" y="5" z="7" spawntime="60" />
 		<monster name="elf" x="5" y="5" z="7" spawntime="60" />
 	</spawn>
+	<spawn centerx="177" centery="63" centerz="7" radius="5">
+		<monster name="Elite Trainer Monk" x="0" y="0" z="7" spawntime="60" />
+		<monster name="Elite Trainer Monk" x="-1" y="1" z="7" spawntime="60" />
+	</spawn>
 	<spawn centerx="64" centery="68" centerz="7" radius="12">
 		<monster name="demon skeleton" x="-3" y="-9" z="7" spawntime="60" direction="2" />
 		<monster name="demon skeleton" x="8" y="-8" z="7" spawntime="60" direction="2" />

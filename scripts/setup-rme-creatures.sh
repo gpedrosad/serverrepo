@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Genera creatures.xml de RME con NPCs y monstruos de YurOTS (evita "Missing creatures").
+# Genera creatures.xml de RME con monstruos/NPCs custom de YurOTS (no duplica los de Tibia 7.6).
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -9,15 +9,17 @@ PROJECT_ROOT="$(resolve_project_root)"
 
 NPC_DIR="$PROJECT_ROOT/server/YurOTS/ots/data/npc"
 MONSTER_DIR="$PROJECT_ROOT/server/YurOTS/ots/data/monster"
-RME_BUILD="${RME_BUILD:-$HOME/dev/rme/build}"
+RME_ROOT="${RME_ROOT:-$HOME/dev/rme}"
+RME_BUILD="${RME_BUILD:-$RME_ROOT/build}"
+RME_DEFAULT_CREATURES="$RME_ROOT/data/760/creatures.xml"
 TMP="$(mktemp /tmp/rme-creatures.XXXXXX.xml)"
 
-python3 - "$NPC_DIR" "$MONSTER_DIR" "$TMP" <<'PY'
+python3 - "$NPC_DIR" "$MONSTER_DIR" "$RME_DEFAULT_CREATURES" "$TMP" <<'PY'
 import os
 import sys
 import xml.etree.ElementTree as ET
 
-npc_dir, monster_dir, out_path = sys.argv[1:4]
+npc_dir, monster_dir, rme_default_path, out_path = sys.argv[1:5]
 
 def look_attrs(elem):
     if elem is None:
@@ -41,6 +43,17 @@ def look_attrs(elem):
             attrs[dst] = val
     return attrs
 
+default_names = set()
+if os.path.isfile(rme_default_path):
+    try:
+        for node in ET.parse(rme_default_path).getroot():
+            if node.tag == "creature":
+                name = node.get("name")
+                if name:
+                    default_names.add(name.lower())
+    except ET.ParseError:
+        pass
+
 entries = {}
 
 if os.path.isdir(npc_dir):
@@ -58,7 +71,10 @@ if os.path.isdir(npc_dir):
         attrs = look_attrs(root.find("look"))
         if "looktype" not in attrs:
             attrs["looktype"] = "128"
-        entries[name.lower()] = ("npc", name, attrs)
+        key = name.lower()
+        if key in default_names:
+            continue
+        entries[key] = ("npc", name, attrs)
 
 if os.path.isdir(monster_dir):
     for fname in sorted(os.listdir(monster_dir)):
@@ -72,12 +88,13 @@ if os.path.isdir(monster_dir):
         if root.tag != "monster":
             continue
         name = root.get("name") or os.path.splitext(fname)[0]
+        key = name.lower()
+        if key in default_names:
+            continue
         attrs = look_attrs(root.find("look"))
         if "looktype" not in attrs:
             continue
-        key = name.lower()
-        if key not in entries:
-            entries[key] = ("monster", name, attrs)
+        entries[key] = ("monster", name, attrs)
 
 lines = ['<?xml version="1.0" encoding="UTF-8"?>', "<creatures>"]
 for ctype, name, attrs in sorted(entries.values(), key=lambda x: x[1].lower()):
@@ -94,7 +111,7 @@ with open(out_path, "w", encoding="utf-8") as fh:
 print(len(entries))
 PY
 
-count="$(grep -c '<creature' "$TMP")"
+count="$(grep -c '<creature' "$TMP" || true)"
 
 DEST_PATHS=(
   "$RME_BUILD/data/user/data/760/creatures.xml"
@@ -108,4 +125,4 @@ for dest in "${DEST_PATHS[@]}"; do
 done
 
 rm -f "$TMP"
-echo "Criaturas/NPCs exportados: $count"
+echo "Criaturas custom exportadas: $count"

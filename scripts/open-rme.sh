@@ -23,9 +23,11 @@ if [[ ! -f "$CLIENT_DIR/Tibia.dat" || ! -f "$RME_BUILD/Tibia.dat" ]]; then
   "$SCRIPT_DIR/setup-rme-client.sh"
   "$SCRIPT_DIR/setup-rme-config.sh"
   "$SCRIPT_DIR/setup-rme-creatures.sh"
+  "$SCRIPT_DIR/setup-rme-extensions.sh"
 else
   "$SCRIPT_DIR/setup-rme-config.sh"
   "$SCRIPT_DIR/setup-rme-creatures.sh"
+  "$SCRIPT_DIR/setup-rme-extensions.sh"
 fi
 
 if [[ ! -x "$RME_BIN" ]]; then

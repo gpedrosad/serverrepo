@@ -117,7 +117,30 @@ ls -la ~/Desktop/yurots-principal/rme-client-760/
 
 Reiniciá RME después de cambiar la config.
 
-## 7. Notas
+## 7. Monstruos custom (Trainer Monk, etc.)
+
+Los monstruos propios de YurOTS **no están en la lista estándar de Tibia 7.6**. RME los carga de dos formas:
+
+1. **`setup-rme-creatures.sh`** — escribe definiciones en `creatures.xml` (user data).
+2. **`rme-extensions/yurots-creatures.xml`** — extensión con tilesets visibles en la paleta.
+
+Al abrir RME con `open-rme.sh`, ambos se instalan solos. **Reiniciá RME** si ya lo tenías abierto.
+
+### Dónde encontrarlos en RME
+
+Paleta **Creatures** → desplegable de categorías:
+
+| Categoría | Monstruos |
+|-----------|-----------|
+| **YurOTS Training** | Trainer Monk, Elite Trainer Monk |
+| **YurOTS Custom** | Bone Beast, Murius, Old Widow |
+| **Others** | Cualquier otro importado manualmente |
+
+Alternativa manual: **File → Import → Import Monsters/NPCs** y elegir el `.xml` del monstruo (aparece en **Others**).
+
+Referencia: [OTLand — custom monsters in RME](https://otland.net/threads/put-custom-monsters-in-rme-map-editor.142548/).
+
+## 8. Notas
 
 - Los assets vienen de `data/things/760/` del OTClient V8; compatibles con RME 7.60.
 - `rme-client-760/` está incluido en el repo principal (`Tibia.dat` + `Tibia.spr`).
