@@ -30,8 +30,10 @@ services:
       ONLINE_FILE: /app/server/YurOTS/ots/data/online.xml
       STATE_FILE: /app/web/state/daily.json
       REGISTER_STATE: /app/web/state/register.json
+      CONFIG_FILE: /app/server/YurOTS/ots/config.lua
       OT_HOST: yurots
       OT_PORT: "7171"
+      SERVER_IP: "159.223.110.159"
     command: ["python3", "web/server.py"]
     depends_on:
       - yurots

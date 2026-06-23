@@ -9,13 +9,73 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { background: #0a0a0a; }
-    .panel { display: none; }
-    .panel.active { display: block; }
+    .panel { display: none; opacity: 0; }
+    .panel.active {
+      display: block;
+      animation: panel-in 0.24s ease-out forwards;
+    }
     .tbl th, .tbl td { padding: 0.4rem 0.6rem; }
     .tbl tr + tr { border-top: 1px solid rgba(255,255,255,.05); }
-    .chip { font-size: 11px; padding: 0.2rem 0.55rem; border-radius: 999px; border: 1px solid rgba(255,255,255,.08); }
-    .nav-btn.active { color: #fafafa; border-color: rgba(255,255,255,.18); background: rgba(255,255,255,.06); }
-    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+    .tbl tbody tr {
+      transition: background 0.18s ease;
+    }
+    .tbl tbody tr:hover {
+      background: rgba(255,255,255,.035);
+    }
+    .chip {
+      font-size: 11px;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.08);
+      transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease, transform 0.12s ease;
+    }
+    .chip:active { transform: scale(0.97); }
+    .nav-btn.active {
+      color: #fafafa;
+      border-color: rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+    }
+    .anim-in {
+      animation: fade-up 0.38s ease-out both;
+      animation-delay: var(--d, 0ms);
+    }
+    .load-bar {
+      transform-origin: left;
+      animation: bar-grow 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation-delay: var(--d, 0ms);
+    }
+    .dot-live { animation: pulse-dot 2.4s ease-in-out infinite; }
+    #meta-line.tick { animation: meta-tick 0.45s ease; }
+    #account-result:not(.hidden) { animation: fade-up 0.28s ease-out; }
+    #online-list .online-row .live-dot { animation: pulse-dot 2.4s ease-in-out infinite; }
+    @keyframes panel-in {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bar-grow {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.35); }
+      50% { opacity: 0.75; box-shadow: 0 0 0 3px rgba(16, 185, 129, 0); }
+    }
+    @keyframes meta-tick {
+      0% { color: #71717a; }
+      40% { color: #e4e4e7; }
+      100% { color: #71717a; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+      .panel { opacity: 1; }
+    }
   </style>
 </head>
 <body class="min-h-full text-zinc-300 antialiased text-xs pb-16">
@@ -41,6 +101,9 @@
   <!-- LIVE -->
   <section id="panel-live" class="panel active space-y-4">
     <div id="stats" class="grid grid-cols-4 gap-2"></div>
+    <div id="load-wrap" class="hidden h-1 overflow-hidden rounded-full bg-white/[0.06]">
+      <div id="load-bar" class="load-bar h-full rounded-full bg-emerald-500/70"></div>
+    </div>
     <div id="snapshots" class="grid grid-cols-2 gap-2 sm:grid-cols-4"></div>
     <div>
       <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">Online</p>
@@ -112,7 +175,7 @@
   <!-- ACCOUNT -->
   <section id="panel-account" class="panel">
     <form id="account-form" class="space-y-2.5 rounded-lg border border-white/[0.06] bg-white/[0.02] p-3">
-      <p class="text-[10px] uppercase tracking-widest text-zinc-600">Registro · cliente 7171</p>
+      <p id="connect-line" class="text-[10px] uppercase tracking-widest text-zinc-600">Registro · —</p>
       <input type="text" name="company" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
       <input type="hidden" name="form_ts" id="form-ts">
       <input type="hidden" name="challenge_id" id="challenge-id">
@@ -166,7 +229,7 @@ const RANK_META = {
 const COL_LABEL = { level:'Lvl', exp_fmt:'Exp', maglevel:'ML', guild:'Guild', lastlogin_rel:'Login', vocation_short:'Voc', sword:'Swd', distance:'Dist', frags:'Frg' };
 
 function esc(s) { const d = document.createElement('div'); d.textContent = s ?? ''; return d.innerHTML; }
-function chip(active) { return `chip cursor-pointer transition-colors ${active ? 'nav-btn active text-zinc-100' : 'text-zinc-500 hover:text-zinc-300'}`; }
+function chip(active) { return `chip cursor-pointer ${active ? 'nav-btn active text-zinc-100' : 'text-zinc-500 hover:text-zinc-300'}`; }
 function empty(msg) { return `<p class="px-3 py-6 text-center text-zinc-600">${msg}</p>`; }
 
 function renderNav() {
@@ -177,8 +240,14 @@ function renderNav() {
 
 function showPanel(name) {
   state.panel = name;
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.getElementById('panel-' + name).classList.add('active');
+  document.querySelectorAll('.panel').forEach(p => {
+    p.classList.remove('active');
+    p.style.animation = 'none';
+  });
+  const panel = document.getElementById('panel-' + name);
+  panel.offsetHeight;
+  panel.style.animation = '';
+  panel.classList.add('active');
   renderNav();
   if (name === 'account') loadRegisterChallenge();
 }
@@ -204,10 +273,18 @@ function renderStats(srv) {
     { k: 'Peak', v: srv.players_peak },
     { k: 'Uptime', v: srv.uptime_fmt || '—' },
     { k: 'Load', v: `${occ}%` },
-  ].map(c => `<div class="rounded-md border border-white/[0.06] bg-white/[0.02] px-2 py-1.5">
+  ].map((c, i) => `<div class="anim-in rounded-md border border-white/[0.06] bg-white/[0.02] px-2 py-1.5" style="--d:${i * 45}ms">
     <p class="text-[10px] text-zinc-600">${c.k}</p>
     <p class="mt-0.5 tabular-nums text-zinc-200">${esc(String(c.v))}</p>
   </div>`).join('');
+  const wrap = document.getElementById('load-wrap');
+  const bar = document.getElementById('load-bar');
+  wrap.classList.remove('hidden');
+  bar.style.width = `${Math.max(occ, 2)}%`;
+  bar.style.setProperty('--d', '180ms');
+  bar.classList.remove('load-bar');
+  bar.offsetWidth;
+  bar.classList.add('load-bar');
 }
 
 function renderSnapshots(data) {
@@ -221,8 +298,8 @@ function renderSnapshots(data) {
     { k: 'Muerte', v: death ? death.victim : '—', s: death ? death.killer : '' },
     { k: 'Guild', v: guild ? guild.name : '—', s: guild ? `${guild.count} m.` : '' },
   ];
-  document.getElementById('snapshots').innerHTML = items.map(i =>
-    `<div class="rounded-md border border-white/[0.06] px-2 py-1.5 min-w-0">
+  document.getElementById('snapshots').innerHTML = items.map((i, idx) =>
+    `<div class="anim-in rounded-md border border-white/[0.06] px-2 py-1.5 min-w-0" style="--d:${120 + idx * 40}ms">
       <p class="text-[10px] text-zinc-600">${i.k}</p>
       <p class="mt-0.5 truncate text-zinc-200">${esc(i.v)}</p>
       ${i.s ? `<p class="truncate text-[10px] text-zinc-600">${esc(i.s)}</p>` : ''}
@@ -233,10 +310,10 @@ function renderSnapshots(data) {
 function renderOnline(list) {
   const el = document.getElementById('online-list');
   if (!list.length) { el.innerHTML = empty('Nadie online'); return; }
-  el.innerHTML = list.map(p =>
-    `<div class="flex items-center justify-between gap-2 px-3 py-2">
+  el.innerHTML = list.map((p, i) =>
+    `<div class="online-row anim-in flex items-center justify-between gap-2 px-3 py-2" style="--d:${i * 35}ms">
       <div class="min-w-0 flex items-center gap-2">
-        <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500/80"></span>
+        <span class="live-dot h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500/80"></span>
         <span class="truncate text-zinc-200">${esc(p.name)}</span>
         <span class="text-[10px] text-zinc-600">${esc(p.vocation_short || p.vocation)}</span>
       </div>
@@ -253,7 +330,7 @@ function renderPower(list) {
   const b = document.getElementById('power-body');
   if (!list.length) { b.innerHTML = `<tr><td colspan="5">${empty('Sin exp hoy')}</td></tr>`; return; }
   b.innerHTML = list.map((p, i) =>
-    `<tr><td class="text-zinc-600">${i+1}</td><td class="text-zinc-200">${esc(p.name)}</td>${row([esc(p.gain_fmt), p.level, `<span class="hidden sm:inline">${esc(p.vocation_short)}</span>`], 0)}</tr>`
+    `<tr class="anim-in" style="--d:${i * 30}ms"><td class="text-zinc-600">${i+1}</td><td class="text-zinc-200">${esc(p.name)}</td>${row([esc(p.gain_fmt), p.level, `<span class="hidden sm:inline">${esc(p.vocation_short)}</span>`], 0)}</tr>`
   ).join('');
 }
 
@@ -261,7 +338,7 @@ function renderFrags(all, today) {
   const b = document.getElementById('frags-body');
   if (!all.length) b.innerHTML = `<tr><td colspan="5">${empty('—')}</td></tr>`;
   else b.innerHTML = all.map((p, i) =>
-    `<tr><td class="text-zinc-600">${i+1}</td><td class="text-zinc-200">${esc(p.name)}</td>${row([p.frags, p.level, `<span class="hidden sm:inline">${esc(p.vocation_short)}</span>`], 0)}</tr>`
+    `<tr class="anim-in" style="--d:${i * 30}ms"><td class="text-zinc-600">${i+1}</td><td class="text-zinc-200">${esc(p.name)}</td>${row([p.frags, p.level, `<span class="hidden sm:inline">${esc(p.vocation_short)}</span>`], 0)}</tr>`
   ).join('');
   const sec = document.getElementById('frags-today-section');
   if (!today.length) { sec.classList.add('hidden'); return; }
@@ -303,23 +380,23 @@ function renderRankings() {
       const cls = c === hl ? 'text-amber-200/90 tabular-nums' : 'text-zinc-400';
       return `<td class="${cls}${hide}">${esc(String(p[c] ?? '—'))}</td>`;
     }).join('');
-    return `<tr><td class="text-zinc-600">${i+1}</td><td class="text-zinc-200">${esc(p.name)}</td>${cells}</tr>`;
+    return `<tr class="anim-in" style="--d:${Math.min(i, 12) * 25}ms"><td class="text-zinc-600">${i+1}</td><td class="text-zinc-200">${esc(p.name)}</td>${cells}</tr>`;
   }).join('');
 }
 
 function renderDeaths(deaths) {
   const b = document.getElementById('deaths-body');
   if (!deaths.length) { b.innerHTML = `<tr><td colspan="5">${empty('—')}</td></tr>`; return; }
-  b.innerHTML = deaths.map(d =>
-    `<tr><td class="text-zinc-600">${d.rank}</td><td class="text-zinc-200">${esc(d.victim)}</td><td class="text-rose-300/80">${esc(d.killer)}</td><td class="text-zinc-400">${d.level}</td><td class="text-zinc-600">${esc(d.time_rel)}</td></tr>`
+  b.innerHTML = deaths.map((d, i) =>
+    `<tr class="anim-in" style="--d:${i * 25}ms"><td class="text-zinc-600">${d.rank}</td><td class="text-zinc-200">${esc(d.victim)}</td><td class="text-rose-300/80">${esc(d.killer)}</td><td class="text-zinc-400">${d.level}</td><td class="text-zinc-600">${esc(d.time_rel)}</td></tr>`
   ).join('');
 }
 
 function renderGuilds(guilds) {
   const el = document.getElementById('guilds-list');
   if (!guilds.length) { el.innerHTML = empty('Sin guilds'); return; }
-  el.innerHTML = guilds.map(g =>
-    `<div class="rounded-md border border-white/[0.06] px-3 py-2">
+  el.innerHTML = guilds.map((g, i) =>
+    `<div class="anim-in rounded-md border border-white/[0.06] px-3 py-2" style="--d:${i * 40}ms">
       <div class="flex items-center justify-between gap-2">
         <span class="text-zinc-200">${esc(g.name)}</span>
         <span class="text-[10px] tabular-nums text-zinc-600">${g.count}</span>
@@ -343,10 +420,19 @@ function renderInfo(sections) {
 function renderAll() {
   if (!state.data) return;
   const srv = state.data.server;
-  document.getElementById('meta-line').textContent = `7.6 · ${state.data.updated} · refresh 60s`;
+  const conn = state.data.connect || {};
+  const addr = conn.host && conn.port ? `${conn.host}:${conn.port}` : '—';
+  const meta = document.getElementById('meta-line');
+  meta.textContent = `7.6 · ${addr} · ${state.data.updated} · refresh 60s`;
+  const connectLine = document.getElementById('connect-line');
+  if (connectLine) connectLine.textContent = `Registro · cliente ${addr}`;
+  meta.classList.remove('tick');
+  meta.offsetWidth;
+  meta.classList.add('tick');
   document.getElementById('presence').textContent = `${srv.players_online}/${srv.players_max} online`;
   document.getElementById('server-label').textContent = srv.online ? 'online' : 'offline';
-  document.getElementById('dot').className = `h-1.5 w-1.5 rounded-full ${srv.online ? 'bg-emerald-500' : 'bg-red-500/80'}`;
+  const dot = document.getElementById('dot');
+  dot.className = `h-1.5 w-1.5 rounded-full ${srv.online ? 'bg-emerald-500 dot-live' : 'bg-red-500/80'}`;
   renderStats(srv);
   renderSnapshots(state.data);
   renderOnline(state.data.online || []);

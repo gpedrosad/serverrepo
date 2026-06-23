@@ -26,6 +26,16 @@ SKILL_NAMES = {
 }
 
 
+def read_server_ip(config_path: Path) -> str:
+    if not config_path.is_file():
+        return "127.0.0.1"
+    for line in config_path.read_text(encoding="utf-8", errors="ignore").splitlines():
+        m = re.match(r'^\s*ip\s*=\s*"([^"]+)"', line)
+        if m and m.group(1) != "auto":
+            return m.group(1)
+    return "127.0.0.1"
+
+
 def fmt_num(n: int) -> str:
     return f"{n:,}".replace(",", ".")
 
@@ -390,6 +400,7 @@ def build_payload(
     state_file: Path,
     ot_host: str,
     ot_port: int,
+    server_ip: str = "127.0.0.1",
 ) -> dict:
     players: list[dict] = []
     all_deaths: list[dict] = []
@@ -427,6 +438,7 @@ def build_payload(
 
     return {
         "updated": datetime.now(timezone.utc).strftime("%H:%M:%S UTC"),
+        "connect": {"host": server_ip, "port": ot_port},
         "server": status,
         "online": online,
         "powergamers": powergamers[:15],

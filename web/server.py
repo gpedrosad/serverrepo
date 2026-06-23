@@ -7,7 +7,7 @@ import os
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
-from data import build_payload, create_account
+from data import build_payload, create_account, read_server_ip
 from register_guard import RegisterGuard
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -18,8 +18,10 @@ OTINFO_FILE = Path(os.environ.get("OTINFO_FILE", ROOT / "OTINFO"))
 ONLINE_FILE = Path(os.environ.get("ONLINE_FILE", ROOT / "server/YurOTS/ots/data/online.xml"))
 STATE_FILE = Path(os.environ.get("STATE_FILE", ROOT / "web/state/daily.json"))
 REGISTER_STATE = Path(os.environ.get("REGISTER_STATE", ROOT / "web/state/register.json"))
+CONFIG_FILE = Path(os.environ.get("CONFIG_FILE", ROOT / "server/YurOTS/ots/config.lua"))
 OT_HOST = os.environ.get("OT_HOST", "127.0.0.1")
 OT_PORT = int(os.environ.get("OT_PORT", "7171"))
+SERVER_IP = os.environ.get("SERVER_IP") or read_server_ip(CONFIG_FILE)
 PORT = int(os.environ.get("PORT", "8080"))
 INDEX = Path(__file__).resolve().parent / "index.html"
 
@@ -28,7 +30,14 @@ guard = RegisterGuard(REGISTER_STATE)
 
 def get_payload() -> dict:
     return build_payload(
-        PLAYERS_DIR, GUILDS_FILE, OTINFO_FILE, ONLINE_FILE, STATE_FILE, OT_HOST, OT_PORT
+        PLAYERS_DIR,
+        GUILDS_FILE,
+        OTINFO_FILE,
+        ONLINE_FILE,
+        STATE_FILE,
+        OT_HOST,
+        OT_PORT,
+        SERVER_IP,
     )
 
 
