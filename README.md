@@ -29,6 +29,14 @@ Puertos: **7171** (login/game), **7172** (expuesto por compatibilidad).
 
 Abre **http://localhost:8080/** — Python directo, sin Docker ni VPS.
 
+Para que **otros la vean** (link público temporal):
+
+```bash
+./scripts/web-public.sh
+```
+
+Te da una URL `https://….trycloudflare.com` para compartir. Requiere `cloudflared` (`brew install cloudflared`).
+
 ## Mapa y mundo
 
 | Archivo | Descripción |
