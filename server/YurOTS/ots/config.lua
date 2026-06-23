@@ -157,6 +157,9 @@ burstarrowdmg = {"1.0", "5.0", "0.24", "0.55"}
 -- experience multiplier (how much faster you got exp from monsters)
 expmul = 3
 
+-- loot multiplier (drop chance from monsters, 1 = rl tibia)
+lootmul = 3
+
 -- experience multiplier for pvp-enforced (how much faster you got exp from players)
 expmulpvp = 2
 

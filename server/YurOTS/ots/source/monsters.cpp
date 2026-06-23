@@ -23,6 +23,7 @@
 #include "luascript.h"
 
 extern Spells spells;
+extern LuaScript g_config;
 
 #include <libxml/xmlmemory.h>
 #include <libxml/parser.h>
@@ -114,10 +115,19 @@ void MonsterType::createLoot(Container* corpse)
 Item* MonsterType::createLootItem(const LootBlock& lootBlock)
 {
 	Item* tmpItem = NULL;
+#ifdef YUR_MULTIPLIERS
+	unsigned long chance = lootBlock.chance1;
+	if(g_config.LOOT_MUL > 1){
+		unsigned long scaled = chance * (unsigned long)g_config.LOOT_MUL;
+		chance = scaled > CHANCE_MAX ? CHANCE_MAX : scaled;
+	}
+#else
+	unsigned long chance = lootBlock.chance1;
+#endif //YUR_MULTIPLIERS
 	if(Item::items[lootBlock.id].stackable == true){
 		unsigned long randvalue = Monster::getRandom();
 		unsigned long n = 1;
-		if(randvalue < lootBlock.chance1){
+		if(randvalue < chance){
 			if(randvalue < lootBlock.chancemax){
 				n = lootBlock.countmax;
 			}
@@ -129,7 +139,7 @@ Item* MonsterType::createLootItem(const LootBlock& lootBlock)
 		}
 	}
 	else{
-		if(Monster::getRandom() < lootBlock.chance1){
+		if(Monster::getRandom() < chance){
 			tmpItem = Item::CreateItem(lootBlock.id);
 		}
 	}

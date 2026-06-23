@@ -49,6 +49,7 @@ int LuaScript::OpenFile(const char *filename)
 #ifdef YUR_MULTIPLIERS
 	EXP_MUL = getGlobalNumber("expmul",1);
 	EXP_MUL_PVP = getGlobalNumber("expmulpvp",1);
+	LOOT_MUL = getGlobalNumber("lootmul",1);
 	HEALTH_TICK_MUL = getGlobalNumber("healthtickmul",1);
 	MANA_TICK_MUL = getGlobalNumber("manatickmul",1);
 
