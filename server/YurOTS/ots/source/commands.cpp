@@ -75,6 +75,7 @@ s_defcommands Commands::defined_commands[] = {
 	{"!report",&Commands::report},
 	{"!online",&Commands::whoIsOnline},
 	{"!uptime",&Commands::showUptime},
+	{"!pz",&Commands::showPz},
 #endif //YUR_CMD_EXT
 #ifdef TLM_HOUSE_SYSTEM
 	{"/owner",&Commands::setHouseOwner},
@@ -896,6 +897,32 @@ bool Commands::showUptime(Creature* c, const std::string &cmd, const std::string
 
 		player->sendTextMessage(MSG_BLUE_TEXT, msg.str().c_str());
 	}
+	return true;
+}
+
+bool Commands::showPz(Creature* c, const std::string &cmd, const std::string &param)
+{
+	Player* player = dynamic_cast<Player*>(c);
+
+	if (player)
+	{
+		std::ostringstream info;
+		if (player->inFightTicks < 1000 && !player->pzLocked)
+			info << "No tienes PZ lock." << std::ends;
+		else
+		{
+			long ms = player->inFightTicks >= 1000 ? player->inFightTicks : 0;
+			if (ms >= 60000)
+				info << "La PZ se quita en " << tickstr(ms) << "." << std::ends;
+			else
+			{
+				int sec = (int)((ms + 999) / 1000);
+				info << "La PZ se quita en " << sec << (sec == 1 ? " segundo." : " segundos.") << std::ends;
+			}
+		}
+		player->sendTextMessage(MSG_BLUE_TEXT, info.str().c_str());
+	}
+
 	return true;
 }
 

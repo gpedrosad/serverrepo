@@ -113,6 +113,7 @@ public:
 #endif //YUR_CLEAN_MAP
 
 	virtual std::string getDescription(bool fullDescription) const;
+	static std::string getFluidTypeName(unsigned char fluidType);
 	std::string getName() const ;
 	void setSpecialDescription(std::string desc);
 	std::string getSpecialDescription();

@@ -42,6 +42,7 @@
 <command cmd="!online"		access="0" />
 <command cmd="!house"		access="0" />
 <command cmd="!frags"		access="0" />
+<command cmd="!pz"			access="0" />
 <command cmd="!uptime"		access="0" />
 <command cmd="!premmy"		access="0" />
 </commands>

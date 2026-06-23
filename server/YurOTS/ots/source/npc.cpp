@@ -677,7 +677,11 @@ int NpcScript::luaBuyItem(lua_State *L)
 		pt.isSell = false;
 
 		std::stringstream ss;
-		ss << "Do you want to buy " << count << "x " << Item::items[itemid].name << " for " << cost << " gold? (yes/no)";
+		if(Item::items[itemid].isFluidContainer() && count != 0) {
+			ss << "Do you want to buy 1 " << Item::getFluidTypeName(count) << " for " << cost << " gold? (yes/no)";
+		} else {
+			ss << "Do you want to buy " << count << "x " << Item::items[itemid].name << " for " << cost << " gold? (yes/no)";
+		}
 		mynpc->doSay(ss.str());
 	}
 

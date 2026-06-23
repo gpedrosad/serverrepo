@@ -83,6 +83,7 @@ protected:
 	bool teleportPlayerTo(Creature* c, const std::string &cmd, const std::string &param);
 	bool showPos(Creature* c, const std::string &cmd, const std::string &param);
 	bool showUptime(Creature* c, const std::string &cmd, const std::string &param);
+	bool showPz(Creature* c, const std::string &cmd, const std::string &param);
 	bool setMaxPlayers(Creature* c, const std::string &cmd, const std::string &param);
 #endif //YUR_CMD_EXT
 

@@ -559,6 +559,30 @@ double Item::getWeight() const {
 	return items[id].weight;
 }
 
+std::string Item::getFluidTypeName(unsigned char fluidType)
+{
+	switch(fluidType) {
+		case FLUID_WATER: return "water";
+		case FLUID_BLOOD: return "blood";
+		case FLUID_BEER: return "beer";
+		case FLUID_SLIME: return "slime";
+		case FLUID_LEMONADE: return "lemonade";
+		case FLUID_MILK: return "milk";
+		case FLUID_MANAFLUID: return "manafluid";
+		case FLUID_LIFEFLUID: return "lifefluid";
+		case FLUID_OIL: return "oil";
+		case FLUID_WINE: return "wine";
+		case FLUID_STRONG_MANA: return "strong mana potion";
+		default:
+		{
+			const std::string& name = items[fluidType].name;
+			if(name.length())
+				return name;
+			return "unknown liquid";
+		}
+	}
+}
+
 std::string Item::getDescription(bool fullDescription) const
 {
 	std::stringstream s;
@@ -608,16 +632,19 @@ std::string Item::getDescription(bool fullDescription) const
 					s << ". It is empty";
 				}
 				else{
-					s << " of " << items[fluid].name;
+					s << " of " << getFluidTypeName(fluid);
+				}
+				if(fullDescription && fluid == FLUID_STRONG_MANA) {
+					s << std::endl << "It restores 150 mana. Sorcerers and druids level 50+ only.";
 				}
 			}
 			else if(isSplash()){
 				s << article(it.name) << " of ";
 				if(fluid == 0){
-					s << items[1].name;
+					s << getFluidTypeName(FLUID_WATER);
 				}
 				else{
-					s << items[fluid].name;
+					s << getFluidTypeName(fluid);
 				}
 			}
 			else if(it.isKey()){

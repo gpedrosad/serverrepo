@@ -39,9 +39,11 @@ Puertos: **7171** (login/game), **7172** (expuesto por compatibilidad).
 
 Ver [docs/RME_SETUP.md](docs/RME_SETUP.md).
 
-## Documentación
+## Info del servidor
 
-- [docs/OTINFO.md](docs/OTINFO.md) — Rates, PvP, frags, runas, NPCs y contenido custom
+Ver [OTINFO](OTINFO) — rates, PvP, frags y reglas.
+
+## Documentación técnica
 - [docs/SETUP.md](docs/SETUP.md) — Docker, compilación i386, errores resueltos
 - [docs/RME_SETUP.md](docs/RME_SETUP.md) — Remere's Map Editor 7.6
 - [docs/SPELL_EXORI_GRAN.md](docs/SPELL_EXORI_GRAN.md) — Spells custom Knight

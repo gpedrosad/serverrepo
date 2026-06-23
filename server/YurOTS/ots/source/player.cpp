@@ -1321,42 +1321,40 @@ fight_t Player::getFightType()
 void Player::removeDistItem(){
 	Item *DistItem = GetDistWeapon();
 	unsigned char sl_id;
-	if(DistItem){
-		if(DistItem->isStackable() == false)
-			return;
+	if(!DistItem)
+		return;
 
-		if(DistItem == getTradeItem())
-			g_game.playerCloseTrade(this);
+	// Only ammo (arrows, bolts, etc.) is consumed. Spears and stones are reusable.
+	if(DistItem->getWeaponType() != AMO)
+		return;
 
-		//remove one dist item
-		unsigned char n = (unsigned char)DistItem->getItemCountOrSubtype();
-		if(DistItem == items[SLOT_RIGHT]){
-			sl_id = SLOT_RIGHT;
-		}
-		else if(DistItem == items[SLOT_LEFT]){
-			sl_id = SLOT_LEFT;
-		}
-		else if(DistItem == items[SLOT_AMMO]){
-			sl_id = SLOT_AMMO;
-		}
+	if(DistItem == getTradeItem())
+		g_game.playerCloseTrade(this);
 
-		if(n > 1){
-			DistItem->setItemCountOrSubtype(n-1);
-		}
-		else{
-			//remove the item
-			items[sl_id] = NULL;
-			DistItem->releaseThing();
-			//delete DistItem;
-		}
-
-		updateInventoryWeigth();
-		client->sendStats();
-
-		//update inventory
-		client->sendInventory(sl_id);
+	if(DistItem == items[SLOT_RIGHT]){
+		sl_id = SLOT_RIGHT;
 	}
-	return;
+	else if(DistItem == items[SLOT_LEFT]){
+		sl_id = SLOT_LEFT;
+	}
+	else if(DistItem == items[SLOT_AMMO]){
+		sl_id = SLOT_AMMO;
+	}
+	else
+		return;
+
+	unsigned char n = (unsigned char)DistItem->getItemCountOrSubtype();
+	if(DistItem->isStackable() && n > 1){
+		DistItem->setItemCountOrSubtype(n-1);
+	}
+	else{
+		items[sl_id] = NULL;
+		DistItem->releaseThing();
+	}
+
+	updateInventoryWeigth();
+	client->sendStats();
+	client->sendInventory(sl_id);
 }
 
 subfight_t Player::getSubFightType()

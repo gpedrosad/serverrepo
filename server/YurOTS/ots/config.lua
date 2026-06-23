@@ -122,7 +122,7 @@ maxsummons = 2
 summonsallvoc = "no"
 
 -- chance of losing a spear when shot (0 - none lost, 100000 - all lost)
-spearlosechance = 50
+spearlosechance = 100000
 
 -- anti-afk - maximum idle time to kick player (1 = 1min)
 kicktime = 15

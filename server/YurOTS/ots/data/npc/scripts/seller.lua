@@ -60,7 +60,8 @@ function onCreatureSay(cid, type, msg)
 		elseif msgcontains(msg, 'fishing rod') then
 			buy(cid,2580,1,100)
 		elseif msgcontains(msg, 'torch') then
-			buy(cid,2050,1,2)		elseif msgcontains(msg, 'vial') or msgcontains(msg, 'flask') then
+			buy(cid,2050,1,2)
+		elseif msgcontains(msg, 'vial') or msgcontains(msg, 'flask') then
 			sell(cid,2006,1,10)
 
 		elseif msgcontains(msg, 'bye') and getDistanceToCreature(cid) < 4 then

@@ -9,6 +9,16 @@ if frompos.x == 65535 then
    			doPlayerSendCancel(cid,"It is empty.")
    		else
    			if item2.uid == cid then
+   				if item.type == 14 then
+   					if getPlayerLevel(cid) < 50 then
+   						doPlayerSendCancel(cid,"You need level 50 to use strong mana potions.")
+   						return 1
+   					end
+   					if getPlayerVocation(cid) ~= 1 and getPlayerVocation(cid) ~= 2 then
+   						doPlayerSendCancel(cid,"Only sorcerers and druids can use strong mana potions.")
+   						return 1
+   					end
+   				end
    				doChangeTypeItem(item.uid,0)
    				if item.type == 2 then
    					doPlayerSay(cid,"it was blood....",16)
@@ -33,6 +43,10 @@ if frompos.x == 65535 then
    				elseif item.type == 7 then
    					doPlayerAddMana(cid,100)
                                            doSendMagicEffect(topos,12)
+   					doPlayerSay(cid,"Aaaaah...",1)
+   				elseif item.type == 14 then
+   					doPlayerAddMana(cid,150)
+   					doSendMagicEffect(topos,23)
    					doPlayerSay(cid,"Aaaaah...",1)
    				elseif item.type == 19 then
    					doPlayerSay(cid,"Arrgh its mud!",16)
@@ -101,4 +115,4 @@ return 1
 end
 
    	return 1
-end
+end

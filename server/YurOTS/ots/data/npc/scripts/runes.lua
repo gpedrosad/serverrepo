@@ -37,7 +37,7 @@ function onCreatureSay(cid, type, msg)
   	msg = string.lower(msg)
 
   	if (msgcontains(msg, 'hi') and (focus == 0)) and getDistanceToCreature(cid) < 4 then
-  		selfSay('Hello ' .. creatureGetName(cid) .. '! I sell runes, wands and rods.')
+  		selfSay('Hello ' .. creatureGetName(cid) .. '! I sell runes, strong mana potions, wands and rods.')
   		focus = cid
   		talk_start = os.clock()
 
@@ -48,7 +48,9 @@ function onCreatureSay(cid, type, msg)
 		talk_start = os.clock()
 
 		if msgcontains(msg, 'runes') then
-			selfSay('I sell hmms (40gps), uhs (40gps), gfbs (60gps), explosions (60gps), sds (90gps) and blank runes (5gps). To buy more runes say "10 uh" or "100 sd".')
+			selfSay('I sell hmms (40gps), uhs (40gps), gfbs (60gps), explosions (60gps), sds (90gps) and blank runes (5gps). Strong mana potions (250gps, say smp). To buy more runes say "10 uh" or "100 sd".')
+		elseif msgcontains(msg, 'potions') or msgcontains(msg, 'potion') then
+			selfSay('I sell strong mana potions for 250gps. Say smp or strong mana potion.')
 		elseif msgcontains(msg, 'wands') then
 			selfSay('I sell wand of inferno (15k), plague (5k), cosmic energy (10k), vortex (500gp) and dragonbreath (1k).')
 		elseif msgcontains(msg, 'rods') then
@@ -113,6 +115,9 @@ function onCreatureSay(cid, type, msg)
 
 		elseif msgcontains(msg, 'blank') then
 			buy(cid,2260,1,5)
+
+		elseif msgcontains(msg, 'strong mana potion') or msgcontains(msg, 'smp') or msgcontains(msg, 'strong mana') then
+			buy(cid,2006,14,250)
 
 		elseif string.find(msg, '(%a*)bye(%a*)') and getDistanceToCreature(cid) < 4 then
 			selfSay('Good bye, ' .. creatureGetName(cid) .. '!')
