@@ -32,7 +32,11 @@
     centerpos = {x=creaturePos.x, y=creaturePos.y, z=creaturePos.z}
     GreatEnergyBeamObject.minDmg = (level * 1 + maglv *1) * 0.8
     GreatEnergyBeamObject.maxDmg = (level * 1 + maglv *1)
- 
-    return doAreaMagic(cid, centerpos, needDirection, areaEffect, area, GreatEnergyBeamObject:ordered())
+
+    local success = doAreaMagic(cid, centerpos, needDirection, areaEffect, area, GreatEnergyBeamObject:ordered())
+    if success then
+        reduceExhaustion(cid)
+    end
+    return success
     end
  

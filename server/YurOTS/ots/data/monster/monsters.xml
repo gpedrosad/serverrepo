@@ -2,6 +2,7 @@
 <monsters>
 
 <monster name="Amazon" file="amazon.xml" />
+<monster name="Angry Troll" file="angry troll.xml" />
 <monster name="Ancient Scarab" file="ancient scarab.xml" />
 <monster name="Assassin" file="assassin.xml" />
 <monster name="Badger" file="badger.xml" />

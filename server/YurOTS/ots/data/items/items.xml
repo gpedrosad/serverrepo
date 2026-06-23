@@ -1,5 +1,34 @@
 <?xml version="1.0"?>
 <items>
+<!-- rune weight = oz per charge -->
+<item id="2260" weight="1.0"/>		-- blank rune
+<item id="2265" weight="1.5"/>		-- intense healing (light)
+<item id="2266" weight="1.5"/>		-- antidote
+<item id="2268" weight="6.0"/>		-- sudden death
+<item id="2273" weight="10.0"/>		-- ultimate healing (heavy)
+<item id="2277" weight="3.0"/>		-- energy field
+<item id="2278" weight="8.0"/>		-- paralyze
+<item id="2279" weight="5.0"/>		-- energy wall
+<item id="2285" weight="2.5"/>		-- poison field
+<item id="2286" weight="4.0"/>		-- poison bomb
+<item id="2287" weight="2.0"/>		-- light magic missile
+<item id="2289" weight="4.0"/>		-- poison wall
+<item id="2290" weight="5.0"/>		-- convince creature
+<item id="2291" weight="3.0"/>		-- chameleon
+<item id="2292" weight="3.5"/>		-- envenom
+<item id="2293" weight="6.0"/>		-- magic wall
+<item id="2301" weight="2.5"/>		-- fire field
+<item id="2302" weight="3.5"/>		-- fireball
+<item id="2303" weight="5.0"/>		-- fire wall
+<item id="2304" weight="4.5"/>		-- great fireball
+<item id="2305" weight="4.5"/>		-- fire bomb
+<item id="2308" weight="5.5"/>		-- soulfire
+<item id="2310" weight="3.5"/>		-- desintegrate
+<item id="2311" weight="3.0"/>		-- heavy magic missile
+<item id="2313" weight="5.0"/>		-- explosion
+<item id="2316" weight="4.0"/>		-- animate dead
+<item id="2262" weight="5.5"/>		-- energy bomb
+<item id="2547" weight="0.8"/>		-- power bolt
 <item id="2132" charges="200"/>		-- silver amulet
 <item id="2126" charges="200"/>		-- bronze amulet
 <item id="2161" charges="200"/>		-- strange talisman

@@ -1,15 +1,27 @@
 <?xml version="1.0"?>
-<monster name="Elite Trainer Monk" level="1" maglevel="0" experience="0" skillmul="2" pushable="0" armor="50" defense="50" canpushitems="0" staticattack="100" changetarget="0" speed="200">
+<monster name="Elite Trainer Monk" level="1" maglevel="0" experience="0" skillmul="2" trainer="1" pushable="0" armor="50" defense="50" canpushitems="0" staticattack="6" changetarget="0" speed="240">
 	<health now="9999" max="9999"/>
 	<look type="57" head="94" body="94" legs="94" feet="94" corpse="3128"/>
 	<combat targetdistance="1" runonhealth="0"/>
+
+<attacks>
+	<attack type="instant" name="exura vita" exhaustion="700" cycleticks="3500" probability="60"/>
+	<attack type="instant" name="exura gran" exhaustion="800" cycleticks="5500" probability="40"/>
+	<attack type="instant" name="dm_haste" exhaustion="300" cycleticks="10000" probability="30"/>
+</attacks>
 
 <defenses>
 	<defense immunity="invisible"/>
 </defenses>
 
 <voices>
-	<voice sentence="Double the effort, double the gain."/>
-	<voice sentence="Strike with purpose!"/>
+	<voice sentence="Aca el esfuerzo rinde distinto." cycleticks="28000" probability="28"/>
+	<voice sentence="Cada pegada pesa el doble en esta sala." cycleticks="30000" probability="26"/>
+	<voice sentence="No es magia... bueno, un poco si." cycleticks="32000" probability="24"/>
+	<voice sentence="Two for one, pero sin promo de supermercado." cycleticks="30000" probability="25"/>
+	<voice sentence="Elite es pa los que quieren subir al doble de ritmo." cycleticks="35000" probability="22"/>
+	<voice sentence="Bacan el combo, sigue no mas." cycleticks="28000" probability="26"/>
+	<voice sentence="Same strike, double progress. Capisce?" cycleticks="32000" probability="23"/>
+	<voice sentence="Si te cansai, descansa... despues vuelves al doble." cycleticks="35000" probability="22"/>
 </voices>
 </monster>

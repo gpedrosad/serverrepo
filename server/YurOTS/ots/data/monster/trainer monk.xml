@@ -1,15 +1,26 @@
 <?xml version="1.0"?>
-<monster name="Trainer Monk" level="1" maglevel="0" experience="0" skillmul="1" pushable="0" armor="50" defense="50" canpushitems="0" staticattack="100" changetarget="0" speed="200">
+<monster name="Trainer Monk" level="1" maglevel="0" experience="0" skillmul="1" trainer="1" pushable="0" armor="50" defense="50" canpushitems="0" staticattack="8" changetarget="0" speed="220">
 	<health now="9999" max="9999"/>
 	<look type="57" head="20" body="30" legs="40" feet="50" corpse="3128"/>
 	<combat targetdistance="1" runonhealth="0"/>
+
+<attacks>
+	<attack type="instant" name="exura vita" exhaustion="800" cycleticks="4500" probability="55"/>
+	<attack type="instant" name="exura" exhaustion="600" cycleticks="6000" probability="35"/>
+	<attack type="instant" name="dm_haste" exhaustion="400" cycleticks="12000" probability="25"/>
+</attacks>
 
 <defenses>
 	<defense immunity="invisible"/>
 </defenses>
 
 <voices>
-	<voice sentence="Train hard, young knight."/>
-	<voice sentence="Focus on your strikes."/>
+	<voice sentence="Piola... sigue, no mas." cycleticks="28000" probability="28"/>
+	<voice sentence="Esa si conto, crack." cycleticks="30000" probability="26"/>
+	<voice sentence="Respira, no te apures." cycleticks="32000" probability="25"/>
+	<voice sentence="Keep going, estas en buen ritmo." cycleticks="30000" probability="26"/>
+	<voice sentence="Exura... ya, de nuevo." cycleticks="28000" probability="24"/>
+	<voice sentence="El que persiste, aprende." cycleticks="35000" probability="22"/>
+	<voice sentence="Mas firme, caleta menos." cycleticks="32000" probability="24"/>
 </voices>
 </monster>

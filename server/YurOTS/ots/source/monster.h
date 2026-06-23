@@ -150,6 +150,11 @@ protected:
 
 	std::string getDescription(bool self) const;
 
+	void tryTrainerSelfCare();
+	void tryTrainerWander();
+	bool tileHasMagicField(const Position& p) const;
+	bool hasNearbyMagicField() const;
+
 protected:
 	virtual void onThingAppear(const Thing* thing);
 };

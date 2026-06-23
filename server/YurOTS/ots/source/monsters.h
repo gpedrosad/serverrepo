@@ -155,6 +155,7 @@ public:
 	int level;
 	int maglevel;
 	int skillmul;
+	bool trainer;
 	int health;
 	int health_max;
 	int lookhead, lookbody, looklegs, lookfeet, looktype, lookcorpse, lookmaster;

@@ -95,7 +95,7 @@ autosave = 10
 accmaker = "main"
 
 -- do you want to enable cap system? (yes/no)
-capsystem = "no"
+capsystem = "yes"
 
 -- do you want players to learn spells before they can use them? (yes/no)
 learnspells = "no"
@@ -108,6 +108,12 @@ queuepremmy = "yes"
 
 -- how much % of {exp, mana, skill, eq, bp} do you lose when dying
 diepercent = {"7", "7", "7", "7", "100"}
+
+-- exp reward when killing a higher level player (pvp / pvp-enforced)
+-- killer receives this % of the victim's lost exp, scaled by damage dealt
+pvpunderdogexp = "yes"
+pvpunderdogexp_percent = 50
+pvpunderdogexp_mindiff = 1
 
 -- how many summons player can have
 maxsummons = 2
@@ -149,16 +155,16 @@ burstarrowdmg = {"1.0", "5.0", "0.24", "0.55"}
 --------------------------- Multipliers and gains ------------------------------
 
 -- experience multiplier (how much faster you got exp from monsters)
-expmul = 10
+expmul = 3
 
 -- experience multiplier for pvp-enforced (how much faster you got exp from players)
 expmulpvp = 2
 
--- skill multipliers: 1 - rl tibia, 10 - ten times faster etc. {no-voc, sorcerer, druid, paladin, knight}
-weaponmul = {"1", "1", "1", "1", "40"}
-distmul = {"1", "1", "1", "40", "1"}
-shieldmul = {"1", "1", "1", "20", "20"}
-manamul = {"1", "3", "3", "2", "2"}
+-- skill multipliers: 1 - rl tibia, 5 - five times faster etc. {no-voc, sorcerer, druid, paladin, knight}
+weaponmul = {"5", "5", "5", "5", "5"}
+distmul = {"5", "5", "5", "5", "5"}
+shieldmul = {"5", "5", "5", "5", "5"}
+manamul = {"5", "5", "5", "5", "5"}
 
 -- how much points of life,mana,cap do you get when advancing {no-voc, sorcerer, druid, paladin, knight}
 capgain = {"10", "10", "10", "20", "25"}
@@ -187,7 +193,7 @@ whitetime = 15
 redtime = 6*60
 
 -- how long do you have to wait to lose 1 unjustified kill (1 = 1min)
-fragtime = 12*60
+fragtime = 5*60
 
 ------------------------------ GM access rights --------------------------------
 

@@ -13,6 +13,7 @@
 
 	<tileset name="YurOTS Custom">
 		<creatures>
+			<creature name="Angry Troll"/>
 			<creature name="Bone Beast"/>
 			<creature name="Murius"/>
 			<creature name="Old Widow"/>

@@ -240,6 +240,8 @@ public:
 	void creatureMonsterYell(Monster* monster, const std::string& text);
 	void creatureChangeOutfit(Creature *creature);
 
+	bool trySpawnAngryTroll(const Position& deathPos);
+
 	bool creatureThrowRune(Creature *creature, const Position& centerpos, const MagicEffectClass& me);
 	bool creatureCastSpell(Creature *creature, const Position& centerpos, const MagicEffectClass& me);
 	bool creatureSaySpell(Creature *creature, const std::string &text);

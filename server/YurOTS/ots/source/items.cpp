@@ -779,6 +779,13 @@ bool Items::loadXMLInfos(std::string file)
 					xmlFreeOTSERV(tmp);
 				}
 #endif //YUR_RINGS_AMULETS
+
+				tmp = (char*)xmlGetProp(itemNode, (xmlChar*)"weight");
+				if (tmp)
+				{
+					itemtype->weight = atof(tmp);
+					xmlFreeOTSERV(tmp);
+				}
 			}
 			else
 				std::cout << "invalid item " << id << std::endl;

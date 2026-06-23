@@ -34,6 +34,8 @@
 
 #include "spells.h"
 
+extern LuaScript g_config;
+
 Spells::Spells(Game* igame): game(igame){
 
                    }
@@ -292,6 +294,8 @@ int SpellScript::registerFunctions(){
 	lua_register(luaState, "makeRune", SpellScript::luaActionMakeRune);
 	lua_register(luaState, "makeArrows", SpellScript::luaActionMakeArrows);
 	lua_register(luaState, "makeFood", SpellScript::luaActionMakeFood);
+	lua_register(luaState, "reduceExhaustion", SpellScript::luaActionReduceExhaustion);
+	lua_register(luaState, "reduceExhaustionByPercent", SpellScript::luaActionReduceExhaustionByPercent);
 
 #ifdef BDB_UTEVO_LUX
 	lua_register(luaState, "setPlayerLightLevel", SpellScript::luaSetPlayerLightLevel);
@@ -1119,3 +1123,37 @@ int SpellScript::luaActionInvisible(lua_State *L)
 	return 0;
 }
 #endif //YUR_INVISIBLE
+
+int SpellScript::luaActionReduceExhaustion(lua_State *L)
+{
+	Spell* spell = getSpell(L);
+	Creature* creature = spell->game->getCreatureByID((unsigned long)lua_tonumber(L, -1));
+	lua_pop(L,1);
+
+	Player* player = creature ? dynamic_cast<Player*>(creature) : NULL;
+	if(player && player->access < g_config.ACCESS_PROTECT){
+		if(player->exhaustedTicks >= g_config.EXHAUSTED / 2){
+			player->exhaustedTicks = g_config.EXHAUSTED / 2;
+		}
+	}
+	return 0;
+}
+
+int SpellScript::luaActionReduceExhaustionByPercent(lua_State *L)
+{
+	int percent = (int)lua_tonumber(L, -1);
+	lua_pop(L,1);
+
+	Spell* spell = getSpell(L);
+	Creature* creature = spell->game->getCreatureByID((unsigned long)lua_tonumber(L, -1));
+	lua_pop(L,1);
+
+	Player* player = creature ? dynamic_cast<Player*>(creature) : NULL;
+	if(player && player->access < g_config.ACCESS_PROTECT){
+		long newExhaust = (long)(g_config.EXHAUSTED * percent / 100.0);
+		if(player->exhaustedTicks >= newExhaust){
+			player->exhaustedTicks = newExhaust;
+		}
+	}
+	return 0;
+}

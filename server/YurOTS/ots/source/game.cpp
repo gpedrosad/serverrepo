@@ -583,6 +583,11 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 		}
 		game->startDecay(corpseitem);
 
+		Monster* slainMonster = dynamic_cast<Monster*>(attackedCreature);
+		if(slainMonster && slainMonster->getName() == "Troll") {
+			game->trySpawnAngryTroll(CreaturePos);
+		}
+
 		//Get all creatures that will gain xp from this kill..
 		CreatureState* attackedCreatureState = NULL;
 		std::vector<long> creaturelist;
@@ -627,6 +632,39 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 				}
 			}
 		}
+
+#ifdef YUR_CVS_MODS
+		if(attackedplayer && g_config.PVP_UNDERDOG_EXP && game->getWorldType() != WORLD_TYPE_NO_PVP
+			&& game->getWorldType() != WORLD_TYPE_PVP_ENFORCED) {
+			Player* killerPlayer = dynamic_cast<Player*>(attacker);
+#ifdef TR_SUMMONS
+			if(!killerPlayer && attackerMaster)
+				killerPlayer = dynamic_cast<Player*>(attackerMaster);
+#endif //TR_SUMMONS
+			if(killerPlayer && killerPlayer != attackedplayer && killerPlayer->access < g_config.ACCESS_PROTECT) {
+				int levelDiff = attackedplayer->level - killerPlayer->level;
+				if(levelDiff >= g_config.PVP_UNDERDOG_EXP_MIN_DIFF) {
+					exp_t lostExp = attackedplayer->getLostExperience();
+					int totalDamage = attackedCreature->getTotalInflictedDamage();
+					int killerDamage = attackedCreature->getInflicatedDamage(killerPlayer);
+					exp_t gainExp = 0;
+
+					if(totalDamage > 0 && killerDamage > 0)
+						gainExp = (exp_t)killerDamage * lostExp * g_config.PVP_UNDERDOG_EXP_PERCENT / (100 * totalDamage);
+					else if(attacker)
+						gainExp = lostExp * g_config.PVP_UNDERDOG_EXP_PERCENT / 100;
+
+					if(gainExp > 0) {
+						killerPlayer->addExp(gainExp);
+						killerPlayer->sendStats();
+						std::stringstream msg;
+						msg << "You gained " << gainExp << " experience for defeating a higher level opponent.";
+						killerPlayer->sendTextMessage(MSG_ADVANCE, msg.str().c_str());
+					}
+				}
+			}
+		}
+#endif //YUR_CVS_MODS
 
 		Player *player = dynamic_cast<Player*>(attacker);
 		if(player){
@@ -4048,7 +4086,7 @@ void Game::checkCreatureAttacking(unsigned long id)
 						}
 					}
 
-					creature->eventCheckAttacking = addEvent(makeTask(2000, std::bind2nd(std::mem_fun(&Game::checkCreatureAttacking), id)));
+					creature->eventCheckAttacking = addEvent(makeTask(1000, std::bind2nd(std::mem_fun(&Game::checkCreatureAttacking), id)));
 				}
 			}
 		}
@@ -4761,7 +4799,7 @@ void Game::playerSetAttackedCreature(Player* player, unsigned long creatureid)
 	else if(attackedCreature) {
 		player->setAttackedCreature(attackedCreature);
 		stopEvent(player->eventCheckAttacking);
-		player->eventCheckAttacking = addEvent(makeTask(2000, std::bind2nd(std::mem_fun(&Game::checkCreatureAttacking), player->getID())));
+		player->eventCheckAttacking = addEvent(makeTask(1000, std::bind2nd(std::mem_fun(&Game::checkCreatureAttacking), player->getID())));
 	}
 
 }
@@ -5877,6 +5915,53 @@ bool Game::placeSummon(Player* p, const std::string& name)
 	}
 }
 #endif //TR_SUMMONS
+
+
+bool Game::trySpawnAngryTroll(const Position& deathPos)
+{
+	// TODO: mover a config.lua cuando definamos el rate final.
+	static const int ANGRY_TROLL_SPAWN_CHANCE = 100;
+
+	if(random_range(1, 100) > ANGRY_TROLL_SPAWN_CHANCE) {
+		return false;
+	}
+
+	Monster* monster = Monster::createMonster("Angry Troll", this);
+	if(!monster) {
+		return false;
+	}
+
+	Position spawnPos = deathPos;
+	Tile* tile = getTile(spawnPos);
+#ifdef YUR_PVP_ARENA
+	if(!tile || tile->isPz() || tile->isPvpArena()) {
+#else
+	if(!tile || tile->isPz()) {
+#endif //YUR_PVP_ARENA
+		delete monster;
+		return false;
+	}
+
+	SpectatorVec spectators;
+	getSpectators(Range(spawnPos), spectators);
+	for(SpectatorVec::iterator it = spectators.begin(); it != spectators.end(); ++it) {
+		Player* spectator = dynamic_cast<Player*>(*it);
+		if(!spectator) {
+			continue;
+		}
+		spectator->sendMagicEffect(spawnPos, NM_ME_MORT_AREA);
+		spectator->sendMagicEffect(spawnPos, NM_ME_SOUND_RED);
+		spectator->sendMagicEffect(spawnPos, NM_ME_HIT_AREA);
+	}
+
+	if(!placeCreature(spawnPos, monster)) {
+		delete monster;
+		return false;
+	}
+
+	creatureMonsterYell(monster, "GRAAAH! ME VOLVI... Y ESTOY ENOJADO!");
+	return true;
+}
 
 
 #ifdef TRS_GM_INVISIBLE

@@ -155,6 +155,8 @@ public:
   static int luaActionMakeRune(lua_State *L);
   static int luaActionMakeArrows(lua_State *L);
   static int luaActionMakeFood(lua_State *L);
+  static int luaActionReduceExhaustion(lua_State *L);
+  static int luaActionReduceExhaustionByPercent(lua_State *L);
 
 #ifdef BDB_UTEVO_LUX
 	static int luaSetPlayerLightLevel(lua_State *L);

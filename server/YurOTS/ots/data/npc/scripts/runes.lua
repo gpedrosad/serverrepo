@@ -48,7 +48,8 @@ function onCreatureSay(cid, type, msg)
 		talk_start = os.clock()
 
 		if msgcontains(msg, 'runes') then
-			selfSay('I sell hmms (40gps), uhs (40gps), gfbs (60gps), explosions (60gps), sds (90gps) and blank runes (5gps). To buy more runes say "10 uh" or "100 sd".')		elseif msgcontains(msg, 'wands') then
+			selfSay('I sell hmms (40gps), uhs (40gps), gfbs (60gps), explosions (60gps), sds (90gps) and blank runes (5gps). To buy more runes say "10 uh" or "100 sd".')
+		elseif msgcontains(msg, 'wands') then
 			selfSay('I sell wand of inferno (15k), plague (5k), cosmic energy (10k), vortex (500gp) and dragonbreath (1k).')
 		elseif msgcontains(msg, 'rods') then
 			selfSay('I sell quagmire (10k), snakebite (500gp), tempest (15k), volcanic (5k) and moonlight rod (1k).')
@@ -81,24 +82,31 @@ function onCreatureSay(cid, type, msg)
 			buy(cid,2311,10,80)
 		elseif msgcontains(msg, 'hmm') then
 			buy(cid,2311,5,40)
-		elseif msgcontains(msg, '100 uh') then
-			buy(cid,2273,100,4000)		elseif msgcontains(msg, '10 uh') then
+
+		elseif msgcontains(msg, '100 uh') then
+			buy(cid,2273,100,4000)
+		elseif msgcontains(msg, '10 uh') then
 			buy(cid,2273,10,400)
 		elseif msgcontains(msg, 'uh') then
 			buy(cid,2273,1,40)
 
 		elseif msgcontains(msg, '100 gfb') then
-			buy(cid,2304,100,2000)		elseif msgcontains(msg, '10 gfb') then
+			buy(cid,2304,100,2000)
+		elseif msgcontains(msg, '10 gfb') then
 			buy(cid,2304,10,200)
 		elseif msgcontains(msg, 'gfb') then
 			buy(cid,2304,3,60)
-		elseif msgcontains(msg, '100 explosion') then
-			buy(cid,2313,100,2000)		elseif msgcontains(msg, '10 explosion') then
+
+		elseif msgcontains(msg, '100 explosion') then
+			buy(cid,2313,100,2000)
+		elseif msgcontains(msg, '10 explosion') then
 			buy(cid,2313,10,200)
 		elseif msgcontains(msg, 'explosion') then
 			buy(cid,2313,3,60)
-		elseif msgcontains(msg, '100 sd') then
-			buy(cid,2268,100,9000)		elseif msgcontains(msg, '10 sd') then
+
+		elseif msgcontains(msg, '100 sd') then
+			buy(cid,2268,100,9000)
+		elseif msgcontains(msg, '10 sd') then
 			buy(cid,2268,10,900)
 		elseif msgcontains(msg, 'sd') then
 			buy(cid,2268,1,90)

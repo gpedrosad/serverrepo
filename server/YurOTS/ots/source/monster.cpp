@@ -115,6 +115,83 @@ const std::string& Monster::getName() const
 	return mType->name;
 }
 
+bool Monster::tileHasMagicField(const Position& p) const
+{
+	Tile* tile = game->map->getTile(p);
+	return tile && tile->getFieldItem() != NULL;
+}
+
+bool Monster::hasNearbyMagicField() const
+{
+	for(int dy = -1; dy <= 1; ++dy) {
+		for(int dx = -1; dx <= 1; ++dx) {
+			Position checkPos = pos;
+			checkPos.x += dx;
+			checkPos.y += dy;
+			if(tileHasMagicField(checkPos)) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+void Monster::tryTrainerSelfCare()
+{
+	if(health >= healthmax || exhaustedTicks > 0) {
+		return;
+	}
+
+	// Evita spam de curaciones cuando el dano es leve.
+	if(healthmax > 0 && (health * 100 / healthmax) > 80) {
+		return;
+	}
+
+	for(InstantAttackSpells::iterator iaIt = mType->instantSpells.begin(); iaIt != mType->instantSpells.end(); ++iaIt) {
+		for(TimeProbabilityClassVec::iterator asIt = iaIt->second.begin(); asIt != iaIt->second.end(); ++asIt) {
+			TimeProbabilityClass& timeprobsystem = *asIt;
+			if(!timeprobsystem.onTick(2000)) {
+				continue;
+			}
+
+			std::map<std::string, Spell*>::iterator rit = spells.getAllSpells()->find(iaIt->first);
+			if(rit != spells.getAllSpells()->end()) {
+				if(rit->second->getSpellScript()->castSpell(this, this->pos, "")) {
+					exhaustedTicks = timeprobsystem.getExhaustion();
+					return;
+				}
+			}
+		}
+	}
+}
+
+void Monster::tryTrainerWander()
+{
+	if(rand() % 3 != 0) {
+		return;
+	}
+
+	std::vector<Position> candidates;
+	Position step;
+	const int offsets[4][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
+	for(int i = 0; i < 4; ++i) {
+		step.x = pos.x + offsets[i][0];
+		step.y = pos.y + offsets[i][1];
+		step.z = pos.z;
+		if(canMoveTo(step.x, step.y, step.z) && !tileHasMagicField(step)) {
+			candidates.push_back(step);
+		}
+	}
+
+	if(candidates.empty()) {
+		return;
+	}
+
+	Position dest = candidates[random_range(0, (int)candidates.size() - 1)];
+	doMoveTo(dest.x - pos.x, dest.y - pos.y);
+}
+
 bool Monster::isCreatureAttackable(const Creature* creature)
 {
 	if(!creature || creature->access >= g_config.ACCESS_PROTECT)
@@ -283,10 +360,12 @@ int Monster::onThink(int& newThinkTicks)
 		if(state == STATE_TARGETNOTREACHABLE) {
 			Position newMovePos;
 			if(getRandomPosition(targetPos, newMovePos)) {
-				int dx = newMovePos.x - this->pos.x;
-				int dy = newMovePos.y - this->pos.y;
+				if(!mType->trainer || !tileHasMagicField(newMovePos)) {
+					int dx = newMovePos.x - this->pos.x;
+					int dy = newMovePos.y - this->pos.y;
 
-				doMoveTo(dx, dy);
+					doMoveTo(dx, dy);
+				}
 			}
 			else {
 				updateLookDirection();
@@ -306,6 +385,17 @@ int Monster::onThink(int& newThinkTicks)
 		}
 
 		newThinkTicks = getStepDuration();
+		int ret = oldThinkTicks;
+		oldThinkTicks = newThinkTicks;
+		return ret;
+	}
+
+	if(mType->trainer && state == STATE_IDLE) {
+		tryTrainerSelfCare();
+		if(!hasNearbyMagicField()) {
+			tryTrainerWander();
+		}
+		newThinkTicks = std::max(1500, getStepDuration());
 		int ret = oldThinkTicks;
 		oldThinkTicks = newThinkTicks;
 		return ret;
@@ -689,6 +779,8 @@ void Monster::onCreatureAppear(const Creature* creature)
 void Monster::onCreatureDisappear(const Creature* creature, unsigned char stackPos, bool tele)
 {
 	if(creature == this) {
+		game->stopEvent(eventCheck);
+		eventCheck = 0;
 		stopThink();
 		return;
 	}
@@ -992,10 +1084,12 @@ void Monster::reThink(bool updateOnlyState /* = true*/)
 
 			//static walking
 			if(getTargetDistance() <= 1 && getCurrentDistanceToTarget(targetPos) == 1) {
-				if(rand() % mType->staticAttack == 0) {
-					Position newMovePos;
-					if(getRandomPosition(targetPos, newMovePos)) {
-						moveToPos = newMovePos;
+				if(!mType->trainer || !hasNearbyMagicField()) {
+					if(mType->staticAttack > 0 && rand() % mType->staticAttack == 0) {
+						Position newMovePos;
+						if(getRandomPosition(targetPos, newMovePos) && !tileHasMagicField(newMovePos)) {
+							moveToPos = newMovePos;
+						}
 					}
 				}
 			}
@@ -1060,7 +1154,7 @@ void Monster::stopThink()
 	targetPos.y = 0;
 	targetPos.z = 0;
 
-	if(state == STATE_IDLE) {
+	if(state == STATE_IDLE && !mType->trainer) {
 		game->stopEvent(eventCheck);
 		eventCheck = 0;
 	}

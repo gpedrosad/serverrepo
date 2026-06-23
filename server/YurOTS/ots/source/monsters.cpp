@@ -50,6 +50,7 @@ void MonsterType::reset()
 	level = 1;
 	maglevel = 1;
 	skillmul = 1;
+	trainer = false;
 	
 	health = 100;
 	health_max = 100;
@@ -298,6 +299,12 @@ MonsterType* Monsters::loadMonster(const std::string& file,const std::string& mo
 			mType->skillmul = atoi(nodeValue);
 			if(mType->skillmul < 1)
 				mType->skillmul = 1;
+			xmlFreeOTSERV(nodeValue);
+		}
+
+		nodeValue = (char*)xmlGetProp(root, (const xmlChar *)"trainer");
+		if(nodeValue){
+			mType->trainer = atoi(nodeValue) != 0;
 			xmlFreeOTSERV(nodeValue);
 		}
 

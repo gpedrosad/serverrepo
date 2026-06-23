@@ -159,6 +159,10 @@ int LuaScript::OpenFile(const char *filename)
 	DIE_PERCENT_EQ = atoi(getGlobalStringField("diepercent",4,"7").c_str());
 	DIE_PERCENT_BP = atoi(getGlobalStringField("diepercent",5,"100").c_str());
 
+	PVP_UNDERDOG_EXP = getGlobalString("pvpunderdogexp", "yes") == "yes";
+	PVP_UNDERDOG_EXP_PERCENT = getGlobalNumber("pvpunderdogexp_percent", 50);
+	PVP_UNDERDOG_EXP_MIN_DIFF = getGlobalNumber("pvpunderdogexp_mindiff", 1);
+
 	ACCESS_PROTECT = getGlobalNumber("accessprotect",3);
 	ACCESS_REMOTE = getGlobalNumber("accessremote",3);
 	ACCESS_TALK = getGlobalNumber("accesstalk",3);

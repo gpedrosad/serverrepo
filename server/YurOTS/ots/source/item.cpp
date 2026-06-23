@@ -551,6 +551,11 @@ double Item::getWeight() const {
 		return items[id].weight * std::max(1, (int)count);
 	}
 
+	if(items[id].runeMagLevel != -1) {
+		unsigned char charges = getItemCharge();
+		return items[id].weight * std::max(1, (int)(charges > 0 ? charges : 1));
+	}
+
 	return items[id].weight;
 }
 

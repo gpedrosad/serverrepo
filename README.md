@@ -41,6 +41,7 @@ Ver [docs/RME_SETUP.md](docs/RME_SETUP.md).
 
 ## Documentación
 
+- [docs/OTINFO.md](docs/OTINFO.md) — Rates, PvP, frags, runas, NPCs y contenido custom
 - [docs/SETUP.md](docs/SETUP.md) — Docker, compilación i386, errores resueltos
 - [docs/RME_SETUP.md](docs/RME_SETUP.md) — Remere's Map Editor 7.6
 - [docs/SPELL_EXORI_GRAN.md](docs/SPELL_EXORI_GRAN.md) — Spells custom Knight

@@ -29,7 +29,11 @@ area = {
  centerpos = {x=creaturePos.x, y=creaturePos.y, z=creaturePos.z}
  EnergyWaveObject.minDmg = (level * 2 + maglv * 3) * 1.3
  EnergyWaveObject.maxDmg = (level * 2 + maglv * 3) * 1.7
- 
- return doAreaMagic(cid, centerpos, needDirection, areaEffect, area, EnergyWaveObject:ordered())
+
+ local success = doAreaMagic(cid, centerpos, needDirection, areaEffect, area, EnergyWaveObject:ordered())
+ if success then
+     reduceExhaustionByPercent(cid, 75)
+ end
+ return success
  end  
  
