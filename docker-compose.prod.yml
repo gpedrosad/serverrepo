@@ -21,7 +21,7 @@ services:
       - ./server/YurOTS/ots/data/accounts:/app/server/YurOTS/ots/data/accounts
       - ./server/YurOTS/ots/data/players:/app/server/YurOTS/ots/data/players
     ports:
-      - "8080:8080"
+      - "${WEB_PUBLISH:-8080:8080}"
     environment:
       PLAYERS_DIR: /app/server/YurOTS/ots/data/players
       ACCOUNTS_DIR: /app/server/YurOTS/ots/data/accounts
