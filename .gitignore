@@ -5,3 +5,4 @@ server/YurOTS/ots/server.log
 server/YurOTS/ots/source/*.o
 server/YurOTS/ots/source/*.bak
 server/YurOTS/ots/source/*.patch
+client-760/

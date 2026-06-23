@@ -9,9 +9,14 @@ import time
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from pathlib import Path
+from xml.sax.saxutils import escape
 
 VOCATIONS = ["Rook", "Sorcerer", "Druid", "Paladin", "Knight"]
 VOC_SHORT = ["—", "S", "D", "P", "K"]
+ACCOUNT_MIN = 100_000
+ACCOUNT_MAX = 999_999
+FEMALE_LOOK = {1: "136", 2: "137", 3: "139", 4: "133"}
+MALE_LOOK = {1: "130", 2: "130", 3: "131", 4: "131"}
 SKILL_NAMES = {
     0: "Fist",
     2: "Sword",
@@ -50,49 +55,76 @@ def fmt_uptime(seconds: int) -> str:
     return f"{m}m {s}s"
 
 
-def create_account(host: str, port: int, name: str, password: str, sex: int, voc: int, timeout: float = 5.0) -> dict:
+def _validate_registration(acc: int, name: str, password: str, sex: int, voc: int) -> str | None:
+    if acc < ACCOUNT_MIN or acc > ACCOUNT_MAX:
+        return f"Cuenta inválida (usa {ACCOUNT_MIN}-{ACCOUNT_MAX})"
     name = name.strip()
     if not re.fullmatch(r"[a-zA-Z ]{3,20}", name):
-        return {"ok": False, "message": "Nombre inválido (3-20 letras y espacios)"}
+        return "Nombre inválido (3-20 letras y espacios)"
     if name.lower().startswith("gm"):
-        return {"ok": False, "message": "El nombre no puede empezar por GM"}
+        return "El nombre no puede empezar por GM"
     if not re.fullmatch(r"[a-zA-Z0-9]{3,20}", password):
-        return {"ok": False, "message": "Contraseña inválida (3-20 caracteres alfanuméricos)"}
+        return "Password inválido (3-20 alfanuméricos)"
     if sex not in (0, 1):
-        return {"ok": False, "message": "Sexo inválido"}
+        return "Sexo inválido"
     if voc not in (1, 2, 3, 4):
-        return {"ok": False, "message": "Vocación inválida"}
+        return "Vocación inválida"
+    return None
 
-    request = f"{name},{password},{sex},{voc}"
-    payload = struct.pack("<H", 0xFFAC) + request.encode("ascii")
-    packet = struct.pack("<H", len(payload)) + payload
+
+def create_account(
+    accounts_dir: Path,
+    players_dir: Path,
+    acc: int,
+    name: str,
+    password: str,
+    sex: int,
+    voc: int,
+) -> dict:
+    err = _validate_registration(acc, name, password, sex, voc)
+    if err:
+        return {"ok": False, "message": err}
+
+    name = name.strip()
+    acc_path = accounts_dir / f"{acc}.xml"
+    player_path = players_dir / f"{name}.xml"
+    template_path = players_dir / f"{voc}.xml"
+
+    if acc_path.exists():
+        return {"ok": False, "message": "Ese número de cuenta ya existe"}
+    if player_path.exists():
+        return {"ok": False, "message": "Ese nombre ya está en uso"}
+    if not template_path.is_file():
+        return {"ok": False, "message": "Vocación no disponible"}
+
     try:
-        with socket.create_connection((host, port), timeout) as sock:
-            sock.sendall(packet)
-            hdr = sock.recv(2)
-            if len(hdr) < 2:
-                return {"ok": False, "message": "Sin respuesta del servidor"}
-            size = hdr[0] | (hdr[1] << 8)
-            data = b""
-            while len(data) < size:
-                chunk = sock.recv(size - len(data))
-                if not chunk:
-                    break
-                data += chunk
-        if len(data) < 2:
-            return {"ok": False, "message": "Respuesta incompleta del servidor"}
-        slen = data[0] | (data[1] << 8)
-        message = data[2 : 2 + slen].decode("utf-8", errors="replace")
-    except OSError:
-        return {"ok": False, "message": "No se pudo conectar con el servidor de juego"}
+        account_xml = (
+            '<?xml version="1.0"?>\n'
+            f'<account pass="{escape(password)}" type="0" premDays="0">\n'
+            f'\t<characters>\n\t\t<character name="{escape(name)}" />\n'
+            f"\t</characters>\n</account>\n"
+        )
+        tree = ET.parse(template_path)
+        root = tree.getroot()
+        root.set("name", name)
+        root.set("account", str(acc))
+        root.set("sex", str(sex))
+        look = root.find("look")
+        if look is not None:
+            look.set("type", MALE_LOOK[voc] if sex == 1 else FEMALE_LOOK[voc])
 
-    ok = message.startswith("Your account number is ")
-    if ok:
-        acc = message.rsplit(" ", 1)[-1]
-        message = f"Cuenta creada. Número de cuenta: {acc}"
-    elif message.startswith("Sorry, "):
-        message = message[7:]
-    return {"ok": ok, "message": message}
+        accounts_dir.mkdir(parents=True, exist_ok=True)
+        players_dir.mkdir(parents=True, exist_ok=True)
+        acc_path.write_text(account_xml, encoding="utf-8")
+        tree.write(player_path, encoding="utf-8", xml_declaration=True)
+    except OSError:
+        return {"ok": False, "message": "No se pudo guardar la cuenta en el servidor"}
+
+    return {
+        "ok": True,
+        "account": acc,
+        "message": f"Cuenta {acc} creada. Entrá con ese número y tu password en el cliente.",
+    }
 
 
 def fetch_server_status(host: str, port: int, timeout: float = 2.0) -> dict:

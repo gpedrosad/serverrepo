@@ -3,1103 +3,436 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#08101d">
-  <meta name="description" content="Portal live de YurOTS con status, highscores, muertes, guilds y creación de cuenta.">
-  <title>YurOTS | Portal 7.6</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="description" content="YurOTS — status, rankings, muertes y registro.">
+  <title>YurOTS</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-            display: ['"Space Grotesk"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-          },
-        },
-      },
-    };
-  </script>
   <style>
-    :root {
-      color-scheme: dark;
-    }
-
-    body {
-      min-height: 100%;
-      background:
-        radial-gradient(circle at 12% 18%, rgba(56, 189, 248, 0.16), transparent 24%),
-        radial-gradient(circle at 82% 10%, rgba(251, 191, 36, 0.16), transparent 28%),
-        linear-gradient(180deg, #08101d 0%, #060b14 48%, #04070d 100%);
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.38;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
-      background-size: 72px 72px;
-      mask-image: radial-gradient(circle at center, black, transparent 80%);
-    }
-
-    .glass-card {
-      background: linear-gradient(180deg, rgba(15, 23, 38, 0.92), rgba(7, 12, 21, 0.9));
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow:
-        0 24px 70px rgba(0, 0, 0, 0.32),
-        inset 0 1px 0 rgba(255, 255, 255, 0.04);
-      backdrop-filter: blur(18px);
-    }
-
-    .surface-card {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
-    }
-
-    .hero-grid {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-grid::after {
-      content: "";
-      position: absolute;
-      inset: auto -12% -26% 42%;
-      height: 280px;
-      border-radius: 9999px;
-      background: radial-gradient(circle, rgba(251, 191, 36, 0.2), transparent 68%);
-      filter: blur(12px);
-      pointer-events: none;
-    }
-
-    .metric-card {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .metric-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.8;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.065), transparent 44%);
-    }
-
-    .status-track {
-      height: 10px;
-      border-radius: 9999px;
-      background: rgba(255, 255, 255, 0.06);
-      overflow: hidden;
-    }
-
-    .status-fill {
-      display: block;
-      height: 100%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, rgba(56, 189, 248, 0.95), rgba(251, 191, 36, 0.95));
-      box-shadow: 0 0 24px rgba(125, 211, 252, 0.28);
-    }
-
-    .table-wrap table {
-      border-collapse: separate;
-      border-spacing: 0;
-    }
-
-    .table-wrap thead tr {
-      background: rgba(255, 255, 255, 0.03);
-    }
-
-    .table-wrap tbody tr:first-child td {
-      border-top: none;
-    }
-
-    .scrollbar-none::-webkit-scrollbar {
-      display: none;
-    }
-
-    .scrollbar-none {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-
-    :root {
-      --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
-      --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
-      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .fade-rise {
-      animation: fadeRise 0.65s var(--ease-out-quart) both;
-    }
-
-    .fade-delay-1 { animation-delay: 0.06s; }
-    .fade-delay-2 { animation-delay: 0.12s; }
-    .fade-delay-3 { animation-delay: 0.18s; }
-
-    @keyframes fadeRise {
-      from { opacity: 0; transform: translateY(18px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .stagger-item {
-      animation: fadeRise 0.55s var(--ease-out-quart) both;
-      animation-delay: calc(var(--i, 0) * 50ms);
-    }
-
-    .view {
-      transition: opacity 0.2s var(--ease-out-quart);
-    }
-
-    .status-fill {
-      transition: width 0.9s var(--ease-out-expo);
-    }
-
-    .glass-card,
-    .surface-card {
-      transition: transform 0.2s var(--ease-out-quart), box-shadow 0.2s var(--ease-out-quart), border-color 0.2s var(--ease-out-quart);
-    }
-
-    .glass-card:hover,
-    .surface-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-      border-color: rgba(255, 255, 255, 0.14);
-    }
-
-    .pulse-live {
-      animation: pulseLive 2.2s var(--ease-out-quart) infinite;
-    }
-
-    @keyframes pulseLive {
-      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.35); }
-      50% { opacity: 0.85; box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
-    }
-
-    .skeleton {
-      background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 75%);
-      background-size: 200% 100%;
-      animation: skeletonShimmer 1.4s var(--ease-out-quart) infinite;
-      border-radius: 12px;
-    }
-
-    @keyframes skeletonShimmer {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-
-    .btn-press {
-      transition: transform 0.1s var(--ease-out-quart), background-color 0.2s var(--ease-out-quart);
-    }
-
-    .btn-press:active {
-      transform: scale(0.97);
-    }
-
-    input, select {
-      transition: border-color 0.2s var(--ease-out-quart), background-color 0.2s var(--ease-out-quart), box-shadow 0.2s var(--ease-out-quart);
-    }
-
-    input:focus, select:focus {
-      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
-    }
-
-    .table-wrap tbody tr {
-      transition: background-color 0.15s var(--ease-out-quart);
-    }
-
-    .metric-value {
-      animation: countUp 0.5s var(--ease-out-quart) both;
-    }
-
-    @keyframes countUp {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-
-    @media (max-width: 1023px) {
-      body::before {
-        background-size: 54px 54px;
-        opacity: 0.24;
-      }
-    }
+    body { background: #0a0a0a; }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    .tbl th, .tbl td { padding: 0.4rem 0.6rem; }
+    .tbl tr + tr { border-top: 1px solid rgba(255,255,255,.05); }
+    .chip { font-size: 11px; padding: 0.2rem 0.55rem; border-radius: 999px; border: 1px solid rgba(255,255,255,.08); }
+    .nav-btn.active { color: #fafafa; border-color: rgba(255,255,255,.18); background: rgba(255,255,255,.06); }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
   </style>
 </head>
-<body class="min-h-full bg-slate-950/20 pb-8 text-slate-100 antialiased">
+<body class="min-h-full text-zinc-300 antialiased text-xs pb-16">
 
-  <div class="pointer-events-none fixed inset-0 overflow-hidden">
-    <div class="absolute left-[-9rem] top-[-7rem] h-80 w-80 rounded-full bg-sky-400/10 blur-3xl"></div>
-    <div class="absolute right-[-7rem] top-[8rem] h-[26rem] w-[26rem] rounded-full bg-amber-300/10 blur-3xl"></div>
-    <div class="absolute bottom-[-10rem] left-1/2 h-[22rem] w-[22rem] -translate-x-1/2 rounded-full bg-cyan-300/10 blur-3xl"></div>
-  </div>
+<div class="mx-auto max-w-2xl px-3 pt-3 sm:px-4">
 
-  <div class="relative mx-auto max-w-7xl px-4 pb-10 pt-4 sm:px-6 lg:px-8 lg:pt-6">
-    <div class="sticky top-3 z-30">
-      <div class="glass-card rounded-[28px] px-4 py-3 sm:px-5">
-        <div class="flex items-center justify-between gap-3">
-          <button type="button" data-view="live" class="flex items-center gap-3 text-left">
-            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-sky-300/20 bg-sky-300/10 font-display text-sm text-sky-100">Y</span>
-            <span class="min-w-0">
-              <span class="block font-display text-xl leading-none text-white">YurOTS</span>
-            </span>
-          </button>
+  <header class="mb-4 flex items-end justify-between gap-3 border-b border-white/[0.06] pb-3">
+    <div>
+      <h1 class="text-sm font-medium tracking-tight text-zinc-100">YurOTS</h1>
+      <p id="meta-line" class="mt-0.5 text-[11px] text-zinc-500">—</p>
+    </div>
+    <div class="text-right">
+      <p id="presence" class="text-[11px] tabular-nums text-zinc-400">—</p>
+      <p id="server-dot" class="mt-0.5 inline-flex items-center gap-1.5 text-[11px] text-zinc-500">
+        <span id="dot" class="h-1.5 w-1.5 rounded-full bg-zinc-600"></span>
+        <span id="server-label">—</span>
+      </p>
+    </div>
+  </header>
 
-          <div id="top-nav" class="flex items-center gap-1 flex-wrap"></div>
+  <nav id="nav" class="mb-4 flex gap-1 overflow-x-auto pb-0.5"></nav>
 
-          <div class="flex items-center gap-2">
-            <span id="header-presence" class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400 whitespace-nowrap">—</span>
-          </div>
-        </div>
+  <!-- LIVE -->
+  <section id="panel-live" class="panel active space-y-4">
+    <div id="stats" class="grid grid-cols-4 gap-2"></div>
+    <div id="snapshots" class="grid grid-cols-2 gap-2 sm:grid-cols-4"></div>
+    <div>
+      <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">Online</p>
+      <div id="online-list" class="divide-y divide-white/[0.05] rounded-lg border border-white/[0.06] bg-white/[0.02]"></div>
+    </div>
+  </section>
+
+  <!-- RANK -->
+  <section id="panel-rank" class="panel space-y-3">
+    <div class="flex flex-wrap gap-1" id="rank-tabs"></div>
+    <div class="flex flex-wrap gap-1" id="voc-filters"></div>
+    <div class="overflow-x-auto rounded-lg border border-white/[0.06]">
+      <table class="tbl w-full min-w-[320px] text-left"><thead id="rank-head" class="text-[10px] uppercase tracking-wide text-zinc-600"></thead><tbody id="rank-body"></tbody></table>
+    </div>
+  </section>
+
+  <!-- POWER -->
+  <section id="panel-power" class="panel">
+    <div class="overflow-x-auto rounded-lg border border-white/[0.06]">
+      <table class="tbl w-full min-w-[280px] text-left">
+        <thead class="text-[10px] uppercase tracking-wide text-zinc-600">
+          <tr><th>#</th><th>Nombre</th><th>Exp hoy</th><th>Lvl</th><th class="hidden sm:table-cell">Voc</th></tr>
+        </thead>
+        <tbody id="power-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FRAGS -->
+  <section id="panel-frags" class="panel space-y-4">
+    <div class="overflow-x-auto rounded-lg border border-white/[0.06]">
+      <table class="tbl w-full min-w-[280px] text-left">
+        <thead class="text-[10px] uppercase tracking-wide text-zinc-600">
+          <tr><th>#</th><th>Nombre</th><th>Frags</th><th>Lvl</th><th class="hidden sm:table-cell">Voc</th></tr>
+        </thead>
+        <tbody id="frags-body"></tbody>
+      </table>
+    </div>
+    <div id="frags-today-section" class="hidden">
+      <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">Hoy</p>
+      <div class="overflow-x-auto rounded-lg border border-white/[0.06]">
+        <table class="tbl w-full min-w-[240px] text-left">
+          <thead class="text-[10px] uppercase tracking-wide text-zinc-600">
+            <tr><th>#</th><th>Nombre</th><th>Frags</th><th>Lvl</th></tr>
+          </thead>
+          <tbody id="frags-today-body"></tbody>
+        </table>
       </div>
     </div>
+  </section>
 
-    <div id="view-live" class="view mt-5 space-y-5">
-      <header class="hero-grid glass-card rounded-[32px] p-6 sm:p-8 lg:p-10">
-        <div class="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] xl:items-center">
-          <div class="relative z-10">
-            <div class="flex flex-wrap items-center gap-3">
-              <span class="inline-flex items-center rounded-full border border-sky-300/20 bg-sky-300/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.24em] text-sky-100">YurOTS 7.6</span>
-              <span id="updated-badge" class="inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-300">Sincronizando datos</span>
-            </div>
-            <h1 class="mt-6 max-w-3xl font-display text-4xl leading-none text-white sm:text-5xl xl:text-6xl">
-              Todo lo importante del server en una sola pantalla.
-            </h1>
-            <p class="mt-4 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
-              Mirá quién está online, seguí los rankings, revisá muertes recientes y creá tu cuenta sin perderte entre secciones confusas.
-            </p>
-          </div>
-          <div id="hero-server" class="relative z-10 stagger-item" style="--i:0"></div>
-        </div>
-      </header>
-
-      <section id="status" class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4"></section>
-      <section id="highlights" class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4"></section>
-
-      <div class="glass-card rounded-[28px] p-5 sm:p-6">
-        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <h3 class="font-display text-xl text-white">Who is online</h3>
-            <p class="mt-2 text-sm leading-6 text-slate-400">Feed en vivo de jugadores conectados, pensado para escanear nombres, nivel y vocación en segundos.</p>
-          </div>
-          <span class="inline-flex items-center rounded-full border border-emerald-300/20 bg-emerald-300/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-100 pulse-live">Live feed</span>
-        </div>
-        <div id="online-list" class="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-3"></div>
-      </div>
+  <!-- DEATHS -->
+  <section id="panel-deaths" class="panel">
+    <div class="overflow-x-auto rounded-lg border border-white/[0.06]">
+      <table class="tbl w-full min-w-[320px] text-left">
+        <thead class="text-[10px] uppercase tracking-wide text-zinc-600">
+          <tr><th>#</th><th>Victima</th><th>Killer</th><th>Lvl</th><th>Cuando</th></tr>
+        </thead>
+        <tbody id="deaths-body"></tbody>
+      </table>
     </div>
+  </section>
 
-    <div id="view-rank" class="view hidden mt-5">
-      <div class="glass-card rounded-[28px] p-5 sm:p-6">
-        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <h3 class="font-display text-xl text-white">Top players</h3>
-            <p class="mt-2 text-sm leading-6 text-slate-400">Cambia entre level, magic level, sword, distance y frags con filtros rápidos por vocación.</p>
-          </div>
-          <span class="inline-flex items-center rounded-full border border-amber-300/20 bg-amber-300/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-amber-100">Highscores</span>
-        </div>
-        <div class="mt-5 space-y-4">
-          <div>
-            <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">Ranking</p>
-            <div id="rank-tabs" class="mt-2 flex flex-wrap gap-2"></div>
-          </div>
-          <div>
-            <p class="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-500">Filtro de vocaci&oacute;n</p>
-            <div id="voc-filters" class="mt-2 flex flex-wrap gap-2"></div>
-          </div>
-        </div>
-        <div class="table-wrap mt-5 overflow-hidden rounded-[24px] border border-white/10 bg-slate-950/35">
-          <div class="overflow-x-auto">
-            <table class="w-full min-w-[620px] text-sm">
-              <thead id="rank-head"></thead>
-              <tbody id="rank-body"></tbody>
-            </table>
-          </div>
-        </div>
+  <!-- GUILDS -->
+  <section id="panel-guilds" class="panel">
+    <div id="guilds-list" class="space-y-2"></div>
+  </section>
+
+  <!-- ACCOUNT -->
+  <section id="panel-account" class="panel">
+    <form id="account-form" class="space-y-2.5 rounded-lg border border-white/[0.06] bg-white/[0.02] p-3">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-600">Registro · cliente 7171</p>
+      <input type="text" name="company" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
+      <input type="hidden" name="form_ts" id="form-ts">
+      <input type="hidden" name="challenge_id" id="challenge-id">
+      <input type="number" name="account" required min="100000" max="999999" inputmode="numeric" placeholder="Cuenta (6 dígitos)"
+        class="w-full rounded-md border border-white/[0.08] bg-black/40 px-2.5 py-2 text-xs text-zinc-100 outline-none focus:border-white/20">
+      <div class="grid grid-cols-2 gap-2">
+        <input type="password" name="password" required minlength="3" maxlength="20" pattern="[a-zA-Z0-9]{3,20}" autocomplete="new-password" placeholder="Password"
+          class="rounded-md border border-white/[0.08] bg-black/40 px-2.5 py-2 text-xs text-zinc-100 outline-none focus:border-white/20">
+        <input type="password" name="password2" required minlength="3" maxlength="20" autocomplete="new-password" placeholder="Repetir"
+          class="rounded-md border border-white/[0.08] bg-black/40 px-2.5 py-2 text-xs text-zinc-100 outline-none focus:border-white/20">
       </div>
-    </div>
-
-    <div id="view-power" class="view hidden mt-5">
-      <div class="glass-card rounded-[28px] p-5 sm:p-6">
-        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <h3 class="font-display text-xl text-white">Powergamers del d&iacute;a</h3>
-            <p class="mt-2 text-sm leading-6 text-slate-400">Seguimiento diario de experiencia ganada para detectar qui&eacute;n est&aacute; acelerando la progresi&oacute;n.</p>
-          </div>
-          <span class="inline-flex items-center rounded-full border border-sky-300/20 bg-sky-300/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-100">Hoy</span>
-        </div>
-        <div class="table-wrap mt-5 overflow-hidden rounded-[24px] border border-white/10 bg-slate-950/35">
-          <div class="overflow-x-auto">
-            <table class="w-full min-w-[520px] text-sm">
-              <thead>
-                <tr class="text-[10px] uppercase tracking-[0.22em] text-slate-500">
-                  <th class="w-12 px-4 py-3 text-left">#</th>
-                  <th class="px-4 py-3 text-left">Nombre</th>
-                  <th class="px-4 py-3 text-left">Exp hoy</th>
-                  <th class="px-4 py-3 text-left">Lvl</th>
-                  <th class="hidden px-4 py-3 text-left sm:table-cell">Voc</th>
-                </tr>
-              </thead>
-              <tbody id="power-body"></tbody>
-            </table>
-          </div>
-        </div>
+      <input type="text" name="name" required minlength="3" maxlength="20" pattern="[a-zA-Z ]{3,20}" autocomplete="username" placeholder="Nombre del personaje"
+        class="w-full rounded-md border border-white/[0.08] bg-black/40 px-2.5 py-2 text-xs text-zinc-100 outline-none focus:border-white/20">
+      <div class="grid grid-cols-2 gap-2">
+        <select name="sex" class="rounded-md border border-white/[0.08] bg-black/40 px-2.5 py-2 text-xs text-zinc-100 outline-none focus:border-white/20">
+          <option value="1">M</option><option value="0">F</option>
+        </select>
+        <select name="voc" class="rounded-md border border-white/[0.08] bg-black/40 px-2.5 py-2 text-xs text-zinc-100 outline-none focus:border-white/20">
+          <option value="1">Sorcerer</option><option value="2">Druid</option><option value="3">Paladin</option><option value="4">Knight</option>
+        </select>
       </div>
-    </div>
+      <label class="block">
+        <span class="mb-1 block text-[10px] text-zinc-600">Verificación: <span id="captcha-q">…</span></span>
+        <input type="number" name="captcha" required inputmode="numeric" placeholder="Resultado"
+          class="w-full rounded-md border border-white/[0.08] bg-black/40 px-2.5 py-2 text-xs text-zinc-100 outline-none focus:border-white/20">
+      </label>
+      <button type="submit" id="account-submit" class="w-full rounded-md border border-white/10 py-2 text-xs text-zinc-200 hover:bg-white/[0.04] disabled:opacity-40">Crear cuenta</button>
+    </form>
+    <p id="account-result" class="mt-2 hidden rounded-md px-2.5 py-2 text-xs"></p>
+  </section>
 
-    <div id="view-frags" class="view hidden mt-5 space-y-5">
-      <div class="glass-card rounded-[28px] p-5 sm:p-6">
-        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <h3 class="font-display text-xl text-white">Top fraggers</h3>
-            <p class="mt-2 text-sm leading-6 text-slate-400">Vista dedicada para PvP: ranking total y, cuando haya actividad, el resumen de frags del d&iacute;a.</p>
-          </div>
-          <span class="inline-flex items-center rounded-full border border-rose-300/20 bg-rose-300/10 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-rose-100">PvP</span>
-        </div>
-        <div class="table-wrap mt-5 overflow-hidden rounded-[24px] border border-white/10 bg-slate-950/35">
-          <div class="overflow-x-auto">
-            <table class="w-full min-w-[520px] text-sm">
-              <thead>
-                <tr class="text-[10px] uppercase tracking-[0.22em] text-slate-500">
-                  <th class="w-12 px-4 py-3 text-left">#</th>
-                  <th class="px-4 py-3 text-left">Nombre</th>
-                  <th class="px-4 py-3 text-left">Frags</th>
-                  <th class="px-4 py-3 text-left">Lvl</th>
-                  <th class="hidden px-4 py-3 text-left sm:table-cell">Voc</th>
-                </tr>
-              </thead>
-              <tbody id="frags-body"></tbody>
-            </table>
-          </div>
-        </div>
+  <!-- INFO -->
+  <section id="panel-info" class="panel">
+    <div id="info-list" class="space-y-2"></div>
+  </section>
+</div>
+
+<script>
+const state = { panel: 'live', rank: 'level', voc: 'all', data: null };
+const NAV = [
+  ['live', 'Live'], ['rank', 'Top'], ['power', 'Power'], ['frags', 'Frags'],
+  ['deaths', 'Muertes'], ['guilds', 'Guilds'], ['account', 'Cuenta'], ['info', 'Info'],
+];
+const RANK_META = {
+  level: { label: 'Lvl', cols: ['level','exp_fmt','maglevel','guild','lastlogin_rel'] },
+  ml: { label: 'ML', cols: ['maglevel','level','vocation_short','lastlogin_rel'] },
+  sword: { label: 'Swd', cols: ['sword','level','vocation_short','lastlogin_rel'] },
+  distance: { label: 'Dist', cols: ['distance','level','vocation_short','lastlogin_rel'] },
+  frags: { label: 'Frg', cols: ['frags','level','vocation_short','lastlogin_rel'] },
+};
+const COL_LABEL = { level:'Lvl', exp_fmt:'Exp', maglevel:'ML', guild:'Guild', lastlogin_rel:'Login', vocation_short:'Voc', sword:'Swd', distance:'Dist', frags:'Frg' };
+
+function esc(s) { const d = document.createElement('div'); d.textContent = s ?? ''; return d.innerHTML; }
+function chip(active) { return `chip cursor-pointer transition-colors ${active ? 'nav-btn active text-zinc-100' : 'text-zinc-500 hover:text-zinc-300'}`; }
+function empty(msg) { return `<p class="px-3 py-6 text-center text-zinc-600">${msg}</p>`; }
+
+function renderNav() {
+  document.getElementById('nav').innerHTML = NAV.map(([k, l]) =>
+    `<button type="button" data-panel="${k}" class="${chip(state.panel === k)}">${l}</button>`
+  ).join('');
+}
+
+function showPanel(name) {
+  state.panel = name;
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  renderNav();
+  if (name === 'account') loadRegisterChallenge();
+}
+
+async function loadRegisterChallenge() {
+  const form = document.getElementById('account-form');
+  document.getElementById('form-ts').value = String(Date.now() / 1000);
+  try {
+    const r = await fetch('/api/register-challenge', { cache: 'no-store' });
+    const d = await r.json();
+    document.getElementById('challenge-id').value = d.id || '';
+    document.getElementById('captcha-q').textContent = d.question || '—';
+    form.captcha.value = '';
+  } catch {
+    document.getElementById('captcha-q').textContent = 'recargá la página';
+  }
+}
+
+function renderStats(srv) {
+  const occ = srv.players_max ? Math.round((srv.players_online / srv.players_max) * 100) : 0;
+  document.getElementById('stats').innerHTML = [
+    { k: 'Online', v: `${srv.players_online}/${srv.players_max}` },
+    { k: 'Peak', v: srv.players_peak },
+    { k: 'Uptime', v: srv.uptime_fmt || '—' },
+    { k: 'Load', v: `${occ}%` },
+  ].map(c => `<div class="rounded-md border border-white/[0.06] bg-white/[0.02] px-2 py-1.5">
+    <p class="text-[10px] text-zinc-600">${c.k}</p>
+    <p class="mt-0.5 tabular-nums text-zinc-200">${esc(String(c.v))}</p>
+  </div>`).join('');
+}
+
+function renderSnapshots(data) {
+  const top = data.rankings.level[0];
+  const ml = data.rankings.ml[0];
+  const death = data.deaths[0];
+  const guild = data.guilds[0];
+  const items = [
+    { k: 'Top lvl', v: top ? top.name : '—', s: top ? `L${top.level}` : '' },
+    { k: 'Top ML', v: ml ? ml.name : '—', s: ml ? `ML ${ml.maglevel}` : '' },
+    { k: 'Muerte', v: death ? death.victim : '—', s: death ? death.killer : '' },
+    { k: 'Guild', v: guild ? guild.name : '—', s: guild ? `${guild.count} m.` : '' },
+  ];
+  document.getElementById('snapshots').innerHTML = items.map(i =>
+    `<div class="rounded-md border border-white/[0.06] px-2 py-1.5 min-w-0">
+      <p class="text-[10px] text-zinc-600">${i.k}</p>
+      <p class="mt-0.5 truncate text-zinc-200">${esc(i.v)}</p>
+      ${i.s ? `<p class="truncate text-[10px] text-zinc-600">${esc(i.s)}</p>` : ''}
+    </div>`
+  ).join('');
+}
+
+function renderOnline(list) {
+  const el = document.getElementById('online-list');
+  if (!list.length) { el.innerHTML = empty('Nadie online'); return; }
+  el.innerHTML = list.map(p =>
+    `<div class="flex items-center justify-between gap-2 px-3 py-2">
+      <div class="min-w-0 flex items-center gap-2">
+        <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500/80"></span>
+        <span class="truncate text-zinc-200">${esc(p.name)}</span>
+        <span class="text-[10px] text-zinc-600">${esc(p.vocation_short || p.vocation)}</span>
       </div>
+      <span class="tabular-nums text-zinc-400">${p.level}</span>
+    </div>`
+  ).join('');
+}
 
-      <div id="frags-today-section" class="hidden">
-        <div class="glass-card rounded-[28px] p-5 sm:p-6">
-          <div class="flex items-end justify-between gap-3">
-            <div>
-              <h3 class="font-display text-xl text-white">Frags de hoy</h3>
-              <p class="mt-2 text-sm leading-6 text-slate-400">Actividad diaria reciente para seguir el pulso del PvP actual.</p>
-            </div>
-            <span class="inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-300">Snapshot</span>
-          </div>
-          <div class="table-wrap mt-5 overflow-hidden rounded-[24px] border border-white/10 bg-slate-950/35">
-            <div class="overflow-x-auto">
-              <table class="w-full min-w-[440px] text-sm">
-                <thead>
-                  <tr class="text-[10px] uppercase tracking-[0.22em] text-slate-500">
-                    <th class="w-12 px-4 py-3 text-left">#</th>
-                    <th class="px-4 py-3 text-left">Nombre</th>
-                    <th class="px-4 py-3 text-left">Frags</th>
-                    <th class="px-4 py-3 text-left">Lvl</th>
-                  </tr>
-                </thead>
-                <tbody id="frags-today-body"></tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+function row(cells, hlIdx) {
+  return cells.map((c, i) => `<td class="${i === hlIdx ? 'text-amber-200/90 tabular-nums' : 'text-zinc-400'}">${c}</td>`).join('');
+}
+
+function renderPower(list) {
+  const b = document.getElementById('power-body');
+  if (!list.length) { b.innerHTML = `<tr><td colspan="5">${empty('Sin exp hoy')}</td></tr>`; return; }
+  b.innerHTML = list.map((p, i) =>
+    `<tr><td class="text-zinc-600">${i+1}</td><td class="text-zinc-200">${esc(p.name)}</td>${row([esc(p.gain_fmt), p.level, `<span class="hidden sm:inline">${esc(p.vocation_short)}</span>`], 0)}</tr>`
+  ).join('');
+}
+
+function renderFrags(all, today) {
+  const b = document.getElementById('frags-body');
+  if (!all.length) b.innerHTML = `<tr><td colspan="5">${empty('—')}</td></tr>`;
+  else b.innerHTML = all.map((p, i) =>
+    `<tr><td class="text-zinc-600">${i+1}</td><td class="text-zinc-200">${esc(p.name)}</td>${row([p.frags, p.level, `<span class="hidden sm:inline">${esc(p.vocation_short)}</span>`], 0)}</tr>`
+  ).join('');
+  const sec = document.getElementById('frags-today-section');
+  if (!today.length) { sec.classList.add('hidden'); return; }
+  sec.classList.remove('hidden');
+  document.getElementById('frags-today-body').innerHTML = today.map((p, i) =>
+    `<tr><td class="text-zinc-600">${i+1}</td><td class="text-zinc-200">${esc(p.name)}</td>${row([p.frags, p.level], 0)}</tr>`
+  ).join('');
+}
+
+function renderRankTabs() {
+  document.getElementById('rank-tabs').innerHTML = Object.entries(RANK_META).map(([k, v]) =>
+    `<button type="button" data-rank="${k}" class="${chip(state.rank === k)}">${v.label}</button>`
+  ).join('');
+}
+
+function renderVocFilters(vocs) {
+  let h = `<button type="button" data-voc="all" class="${chip(state.voc === 'all')}">All</button>`;
+  vocs.forEach(v => { h += `<button type="button" data-voc="${esc(v)}" class="${chip(state.voc === v)}">${esc(v.slice(0, 4))}</button>`; });
+  document.getElementById('voc-filters').innerHTML = h;
+}
+
+function filtered(list) { return state.voc === 'all' ? list : list.filter(p => p.vocation === state.voc); }
+
+function renderRankings() {
+  if (!state.data) return;
+  const meta = RANK_META[state.rank];
+  const list = filtered(state.data.rankings[state.rank] || []);
+  const cols = ['#', 'Nombre', ...meta.cols.map(c => COL_LABEL[c] || c)];
+  document.getElementById('rank-head').innerHTML = '<tr>' + cols.map((c, i) => {
+    const hide = (c === 'Guild' || c === 'Login') ? ' hidden sm:table-cell' : '';
+    return `<th class="${hide}${i === 0 ? ' w-6' : ''}">${c}</th>`;
+  }).join('') + '</tr>';
+  const body = document.getElementById('rank-body');
+  if (!list.length) { body.innerHTML = `<tr><td colspan="99">${empty('—')}</td></tr>`; return; }
+  const hl = meta.cols[0];
+  body.innerHTML = list.map((p, i) => {
+    const cells = meta.cols.map(c => {
+      const hide = (c === 'guild' || c === 'lastlogin_rel') ? ' hidden sm:table-cell' : '';
+      const cls = c === hl ? 'text-amber-200/90 tabular-nums' : 'text-zinc-400';
+      return `<td class="${cls}${hide}">${esc(String(p[c] ?? '—'))}</td>`;
+    }).join('');
+    return `<tr><td class="text-zinc-600">${i+1}</td><td class="text-zinc-200">${esc(p.name)}</td>${cells}</tr>`;
+  }).join('');
+}
+
+function renderDeaths(deaths) {
+  const b = document.getElementById('deaths-body');
+  if (!deaths.length) { b.innerHTML = `<tr><td colspan="5">${empty('—')}</td></tr>`; return; }
+  b.innerHTML = deaths.map(d =>
+    `<tr><td class="text-zinc-600">${d.rank}</td><td class="text-zinc-200">${esc(d.victim)}</td><td class="text-rose-300/80">${esc(d.killer)}</td><td class="text-zinc-400">${d.level}</td><td class="text-zinc-600">${esc(d.time_rel)}</td></tr>`
+  ).join('');
+}
+
+function renderGuilds(guilds) {
+  const el = document.getElementById('guilds-list');
+  if (!guilds.length) { el.innerHTML = empty('Sin guilds'); return; }
+  el.innerHTML = guilds.map(g =>
+    `<div class="rounded-md border border-white/[0.06] px-3 py-2">
+      <div class="flex items-center justify-between gap-2">
+        <span class="text-zinc-200">${esc(g.name)}</span>
+        <span class="text-[10px] tabular-nums text-zinc-600">${g.count}</span>
       </div>
-    </div>
+      ${g.members.length ? `<p class="mt-1 text-[10px] leading-relaxed text-zinc-600">${esc(g.members.slice(0, 10).join(', '))}${g.members.length > 10 ? '…' : ''}</p>` : ''}
+    </div>`
+  ).join('');
+}
 
-    <div id="view-deaths" class="view hidden mt-5">
-      <div class="glass-card rounded-[28px] p-5 sm:p-6">
-        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <h3 class="font-display text-xl text-white">Muertes recientes</h3>
-            <p class="mt-2 text-sm leading-6 text-slate-400">Timeline corto y legible para entender qui&eacute;n cay&oacute;, contra qui&eacute;n y hace cu&aacute;nto.</p>
-          </div>
-          <span class="inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-300">&Uacute;ltimos eventos</span>
-        </div>
-        <div class="table-wrap mt-5 overflow-hidden rounded-[24px] border border-white/10 bg-slate-950/35">
-          <div class="overflow-x-auto">
-            <table class="w-full min-w-[620px] text-sm">
-              <thead>
-                <tr class="text-[10px] uppercase tracking-[0.22em] text-slate-500">
-                  <th class="w-12 px-4 py-3 text-left">#</th>
-                  <th class="px-4 py-3 text-left">V&iacute;ctima</th>
-                  <th class="px-4 py-3 text-left">Killer</th>
-                  <th class="px-4 py-3 text-left">Lvl</th>
-                  <th class="px-4 py-3 text-left">Cu&aacute;ndo</th>
-                </tr>
-              </thead>
-              <tbody id="deaths-body"></tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
+function renderInfo(sections) {
+  const el = document.getElementById('info-list');
+  if (!sections.length) { el.innerHTML = empty('—'); return; }
+  el.innerHTML = sections.map(s =>
+    `<div class="rounded-md border border-white/[0.06] px-3 py-2">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-600">${esc(s.title)}</p>
+      <ul class="mt-1.5 space-y-0.5 text-[11px] leading-relaxed text-zinc-500">${s.lines.map(l => `<li>${esc(l)}</li>`).join('')}</ul>
+    </div>`
+  ).join('');
+}
 
-    <div id="view-guilds" class="view hidden mt-5">
-      <div class="glass-card rounded-[28px] p-5 sm:p-6">
-        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <h3 class="font-display text-xl text-white">Guilds</h3>
-            <p class="mt-2 text-sm leading-6 text-slate-400">Roster resumido con foco en tama&ntilde;o, identidad y nombres visibles de cada guild.</p>
-          </div>
-          <span class="inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-300">Comunidad</span>
-        </div>
-        <div id="guilds-list" class="mt-5 grid gap-4 xl:grid-cols-2"></div>
-      </div>
-    </div>
+function renderAll() {
+  if (!state.data) return;
+  const srv = state.data.server;
+  document.getElementById('meta-line').textContent = `7.6 · ${state.data.updated} · refresh 60s`;
+  document.getElementById('presence').textContent = `${srv.players_online}/${srv.players_max} online`;
+  document.getElementById('server-label').textContent = srv.online ? 'online' : 'offline';
+  document.getElementById('dot').className = `h-1.5 w-1.5 rounded-full ${srv.online ? 'bg-emerald-500' : 'bg-red-500/80'}`;
+  renderStats(srv);
+  renderSnapshots(state.data);
+  renderOnline(state.data.online || []);
+  renderPower(state.data.powergamers || []);
+  renderFrags(state.data.top_fraggers || [], state.data.frags_today || []);
+  renderRankTabs();
+  renderVocFilters(state.data.vocations || []);
+  renderRankings();
+  renderDeaths(state.data.deaths || []);
+  renderGuilds(state.data.guilds || []);
+  renderInfo(state.data.otinfo || []);
+}
 
-    <div id="view-account" class="view hidden mt-5">
-      <div class="grid gap-4 xl:grid-cols-[minmax(0,1fr)_300px]">
-        <div class="glass-card rounded-[28px] p-5 sm:p-6">
-          <h3 class="font-display text-2xl text-white">Crear cuenta</h3>
-          <p class="mt-2 text-sm leading-6 text-slate-400">Registro directo contra el servidor. Eleg&iacute;s personaje, contrase&ntilde;a, sexo y vocaci&oacute;n desde esta misma vista.</p>
-          <form id="account-form" class="mt-6 space-y-4">
-            <label class="block">
-              <span class="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Nombre del personaje</span>
-              <input type="text" name="name" required minlength="3" maxlength="20" pattern="[a-zA-Z ]{3,20}" autocomplete="username" placeholder="Ej: Knight Hero" class="w-full rounded-[18px] border border-white/10 bg-slate-950/55 px-4 py-3 text-sm text-white outline-none transition focus:border-sky-300/35 focus:bg-slate-950/70">
-            </label>
-            <div class="grid gap-4 sm:grid-cols-2">
-              <label class="block">
-                <span class="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Contrase&ntilde;a</span>
-                <input type="password" name="password" required minlength="3" maxlength="20" pattern="[a-zA-Z0-9]{3,20}" autocomplete="new-password" placeholder="3-20 caracteres alfanum&eacute;ricos" class="w-full rounded-[18px] border border-white/10 bg-slate-950/55 px-4 py-3 text-sm text-white outline-none transition focus:border-sky-300/35 focus:bg-slate-950/70">
-              </label>
-              <label class="block">
-                <span class="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Repetir contrase&ntilde;a</span>
-                <input type="password" name="password2" required minlength="3" maxlength="20" autocomplete="new-password" class="w-full rounded-[18px] border border-white/10 bg-slate-950/55 px-4 py-3 text-sm text-white outline-none transition focus:border-sky-300/35 focus:bg-slate-950/70">
-              </label>
-            </div>
-            <div class="grid gap-4 sm:grid-cols-2">
-              <label class="block">
-                <span class="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Sexo</span>
-                <select name="sex" class="w-full rounded-[18px] border border-white/10 bg-slate-950/55 px-4 py-3 text-sm text-white outline-none transition focus:border-sky-300/35 focus:bg-slate-950/70">
-                  <option value="1">Masculino</option>
-                  <option value="0">Femenino</option>
-                </select>
-              </label>
-              <label class="block">
-                <span class="mb-2 block text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Vocaci&oacute;n</span>
-                <select name="voc" class="w-full rounded-[18px] border border-white/10 bg-slate-950/55 px-4 py-3 text-sm text-white outline-none transition focus:border-sky-300/35 focus:bg-slate-950/70">
-                  <option value="1">Sorcerer</option>
-                  <option value="2">Druid</option>
-                  <option value="3">Paladin</option>
-                  <option value="4">Knight</option>
-                </select>
-              </label>
-            </div>
-            <button type="submit" id="account-submit" class="btn-press inline-flex w-full items-center justify-center rounded-[18px] border border-emerald-300/25 bg-emerald-300/12 px-5 py-3 text-sm font-semibold text-emerald-100 transition hover:bg-emerald-300/18 disabled:cursor-not-allowed disabled:opacity-60">Crear cuenta</button>
-          </form>
-          <p id="account-result" class="mt-4 hidden rounded-[18px] px-4 py-3 text-sm"></p>
-        </div>
-        <div class="space-y-4">
-          <div class="glass-card rounded-[28px] p-5">
-            <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-400">Checklist</p>
-            <ul class="mt-4 space-y-3 text-sm leading-6 text-slate-300">
-              <li>Nombre de 3 a 20 letras y espacios.</li>
-              <li>Contrase&ntilde;a alfanum&eacute;rica de 3 a 20 caracteres.</li>
-              <li>Vocaci&oacute;n inicial lista para entrar al mundo.</li>
-            </ul>
-          </div>
-          <div class="glass-card rounded-[28px] p-5">
-            <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-400">Conexi&oacute;n</p>
-            <p class="mt-4 text-sm leading-6 text-slate-300">Cliente 7.6, puerto 7171. La cuenta se crea directo en el servidor de juego.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+async function refresh() {
+  try {
+    const r = await fetch('/api/data', { cache: 'no-store' });
+    if (!r.ok) throw new Error('bad');
+    state.data = await r.json();
+    renderAll();
+  } catch {
+    document.getElementById('meta-line').textContent = 'sin conexión';
+    document.getElementById('presence').textContent = '—';
+  }
+}
 
-    <div id="view-info" class="view hidden mt-5">
-      <div class="glass-card rounded-[28px] p-5 sm:p-6">
-        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <h3 class="font-display text-xl text-white">Info del servidor</h3>
-            <p class="mt-2 text-sm leading-6 text-slate-400">R&aacute;pido de leer en cards separadas: rates, PvP, custom, muerte, combate y reglas importantes.</p>
-          </div>
-          <span class="inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-300">OTINFO</span>
-        </div>
-        <div id="info-list" class="mt-5 grid gap-4 xl:grid-cols-2"></div>
-      </div>
-    </div>
-  </div>
+document.getElementById('nav').addEventListener('click', e => {
+  const b = e.target.closest('[data-panel]');
+  if (b) showPanel(b.dataset.panel);
+});
 
-  <script>
-    const state = { view: 'live', rank: 'level', voc: 'all', data: null };
-      live: {
-        nav: 'En vivo',
-        short: 'Live',
-        hint: 'Conectados y actividad instantánea.',
-        kicker: 'Live Radar',
-        title: 'Actividad en tiempo real',
-        desc: 'Quién está dentro del mundo ahora mismo, con lectura rápida por nivel y vocación.',
-      },
-      rank: {
-        nav: 'Rankings',
-        short: 'Top',
-        hint: 'Highscores por level, skills y PvP.',
-        kicker: 'Highscores',
-        title: 'Rankings claros y filtrables',
-        desc: 'Explorá el top del servidor por categoría y quedate solo con la vocación que te interese.',
-      },
-      power: {
-        nav: 'Power hoy',
-        short: 'Power',
-        hint: 'Progreso diario y powergaming.',
-        kicker: 'Daily Grind',
-        title: 'Quién está subiendo más hoy',
-        desc: 'Seguimiento de experiencia diaria para detectar sesiones activas y carreras de progreso.',
-      },
-      frags: {
-        nav: 'Frags',
-        short: 'Frags',
-        hint: 'PvP total y actividad del día.',
-        kicker: 'PvP Feed',
-        title: 'Frags y presión del PvP',
-        desc: 'Revisá el ranking acumulado y, cuando exista, el movimiento PvP del día en un vistazo.',
-      },
-      deaths: {
-        nav: 'Muertes',
-        short: 'Muertes',
-        hint: 'Timeline reciente de caídas.',
-        kicker: 'Death Log',
-        title: 'Muertes recientes sin ruido',
-        desc: 'Un log más legible para entender rápidamente víctimas, killers, nivel y recencia.',
-      },
-      guilds: {
-        nav: 'Guilds',
-        short: 'Guilds',
-        hint: 'Comunidad, tamaño y roster visible.',
-        kicker: 'Community',
-        title: 'Guilds presentadas con más jerarquía',
-        desc: 'Cada guild aparece como una pieza clara de comunidad, con tamaño y miembros visibles.',
-      },
-      account: {
-        nav: 'Cuenta',
-        short: 'Cuenta',
-        hint: 'Registro directo desde la web.',
-        kicker: 'Onboarding',
-        title: 'Alta de cuenta más pulida',
-        desc: 'Formulario más limpio, menos fricción visual y mejor lectura en pantalla chica.',
-      },
-      info: {
-        nav: 'Info',
-        short: 'Info',
-        hint: 'Rates, reglas y custom content.',
-        kicker: 'Server Intel',
-        title: 'Toda la info del servidor en cards',
-        desc: 'OTINFO convertido en bloques más claros para escanear rates, combate, PvP y features custom.',
-      },
-    };
+document.getElementById('panel-rank').addEventListener('click', e => {
+  const r = e.target.closest('[data-rank]');
+  if (r) { state.rank = r.dataset.rank; renderRankTabs(); renderRankings(); return; }
+  const v = e.target.closest('[data-voc]');
+  if (v) { state.voc = v.dataset.voc; renderVocFilters(state.data?.vocations || []); renderRankings(); }
+});
 
-    const RANK_META = {
-      level: { label: 'Level', cols: ['level', 'exp_fmt', 'maglevel', 'guild', 'lastlogin_rel'] },
-      ml: { label: 'ML', cols: ['maglevel', 'level', 'vocation_short', 'lastlogin_rel'] },
-      sword: { label: 'Sword', cols: ['sword', 'level', 'vocation_short', 'lastlogin_rel'] },
-      distance: { label: 'Dist', cols: ['distance', 'level', 'vocation_short', 'lastlogin_rel'] },
-      frags: { label: 'Frags', cols: ['frags', 'level', 'vocation_short', 'lastlogin_rel'] },
-    };
-
-    const COL_LABEL = {
-      level: 'Lvl',
-      exp_fmt: 'Exp',
-      maglevel: 'ML',
-      guild: 'Guild',
-      lastlogin_rel: 'Login',
-      vocation_short: 'Voc',
-      sword: 'Sword',
-      distance: 'Dist',
-      frags: 'Frags',
-    };
-
-    const TOP_NAV_BASE = 'inline-flex items-center whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-semibold transition duration-200';
-    const TOP_NAV_OFF = `${TOP_NAV_BASE} border-white/8 bg-white/[0.02] text-slate-300 hover:border-white/14 hover:bg-white/[0.05] hover:text-white`;
-    const TOP_NAV_ON = `${TOP_NAV_BASE} border-sky-300/20 bg-sky-300/10 text-sky-100 shadow-[0_10px_30px_rgba(56,189,248,0.12)]`;
-    const FILTER_BASE = 'inline-flex items-center rounded-full border px-4 py-2 text-sm font-semibold transition duration-200';
-    const FILTER_OFF = `${FILTER_BASE} border-white/10 bg-white/[0.03] text-slate-300 hover:border-white/15 hover:bg-white/[0.06] hover:text-white`;
-    const FILTER_ON = `${FILTER_BASE} border-amber-300/25 bg-amber-300/10 text-amber-100 shadow-[0_10px_30px_rgba(251,191,36,0.12)]`;
-    const TR = 'border-t border-white/6 text-slate-200 transition duration-150 hover:bg-white/[0.03]';
-    const TD = 'px-4 py-3 whitespace-nowrap';
-    const TD_MUTED = `${TD} w-12 text-slate-500`;
-    const TD_NAME = `${TD} max-w-[220px] truncate font-semibold text-white`;
-    const TD_GOLD = `${TD} font-semibold text-amber-100`;
-    const EMPTY = 'px-4 py-10 text-center text-sm text-slate-400';
-
-    function esc(s) {
-      const d = document.createElement('div');
-      d.textContent = s ?? '';
-      return d.innerHTML;
-    }
-
-    function pill(active) {
-      return active ? FILTER_ON : FILTER_OFF;
-    }
-
-    function emptyState(title, detail) {
-      return `
-        <div class="col-span-full rounded-[24px] border border-dashed border-white/10 bg-white/[0.02] px-5 py-8 text-center">
-          <p class="font-display text-xl text-white">${esc(title)}</p>
-          <p class="mt-2 text-sm leading-6 text-slate-400">${esc(detail)}</p>
-        </div>
-      `;
-    }
-
-    function renderNav() {
-      const views = ['live', 'rank', 'power', 'frags', 'deaths', 'guilds', 'account', 'info'];
-      document.getElementById('top-nav').innerHTML = views.map(key => {
-        const active = state.view === key;
-        return `<button type="button" data-view="${key}" class="${active ? TOP_NAV_ON : TOP_NAV_OFF} btn-press">${key.charAt(0).toUpperCase() + key.slice(1)}</button>`;
-      }).join('');
-    }
-
-    function showView(name) {
-      state.view = name;
-      document.querySelectorAll('.view').forEach(v => v.classList.add('hidden'));
-      document.getElementById('view-' + name).classList.remove('hidden');
-      renderNav();
-    }
-
-    function renderHeroServer(srv, data) {
-      const top = data.rankings.level[0];
-      const latest = data.deaths[0];
-      const openSlots = Math.max(0, (srv.players_max || 0) - (srv.players_online || 0));
-      const occupancy = srv.players_max ? Math.round((srv.players_online / srv.players_max) * 100) : 0;
-      const fill = occupancy ? Math.max(occupancy, 8) : 0;
-
-      document.getElementById('hero-server').innerHTML = `
-        <div class="glass-card rounded-[30px] p-6">
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-sky-100/70">Resumen del mundo</p>
-              <h2 class="mt-3 font-display text-3xl text-white">${esc(srv.servername || 'YurOTS')}</h2>
-              <p class="mt-2 text-sm leading-6 text-slate-300">
-                ${esc(srv.version || 'Classic 7.6')} · puerto 7171 · actualización cada 60s
-              </p>
-            </div>
-            <span class="inline-flex items-center rounded-full border px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] ${srv.online ? 'border-emerald-300/25 bg-emerald-300/10 text-emerald-100' : 'border-rose-300/25 bg-rose-300/10 text-rose-100'}">
-              ${srv.online ? 'Online' : 'Offline'}
-            </span>
-          </div>
-
-          <div class="mt-6 grid gap-3 sm:grid-cols-2">
-            <div class="surface-card rounded-[22px] p-4">
-              <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">Jugadores</p>
-              <p class="mt-3 font-display text-3xl text-white">${srv.players_online}<span class="text-lg text-slate-500">/${srv.players_max}</span></p>
-            </div>
-            <div class="surface-card rounded-[22px] p-4">
-              <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">Uptime</p>
-              <p class="mt-3 font-display text-3xl text-white">${esc(srv.uptime_fmt || '—')}</p>
-            </div>
-            <div class="surface-card rounded-[22px] p-4">
-              <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">Peak</p>
-              <p class="mt-3 font-display text-3xl text-white">${srv.players_peak}</p>
-            </div>
-            <div class="surface-card rounded-[22px] p-4">
-              <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">Slots libres</p>
-              <p class="mt-3 font-display text-3xl text-white">${openSlots}</p>
-            </div>
-          </div>
-
-          <div class="mt-6 rounded-[24px] border border-white/10 bg-slate-950/45 p-4">
-            <div class="flex items-center justify-between gap-4">
-              <span class="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-400">Ocupación</span>
-              <span class="text-sm font-semibold text-white">${occupancy}%</span>
-            </div>
-            <div class="status-track mt-3">
-              <span class="status-fill" style="width:${fill}%"></span>
-            </div>
-            <div class="mt-4 space-y-2 text-sm leading-6 text-slate-300">
-              <p>${top ? `Top actual: <span class="font-semibold text-white">${esc(top.name)}</span> · L${top.level} ${esc(top.vocation_short)}` : 'El ranking principal se mostrará apenas haya datos.'}</p>
-              <p>${latest ? `Última muerte: <span class="font-semibold text-white">${esc(latest.victim)}</span> por ${esc(latest.killer)} · ${esc(latest.time_rel)}` : 'Sin muertes recientes registradas en el feed.'}</p>
-            </div>
-          </div>
-        </div>
-      `;
-    }
-
-    function renderStatus(srv) {
-      const occupancy = srv.players_max ? Math.round((srv.players_online / srv.players_max) * 100) : 0;
-      document.getElementById('status').innerHTML = `
-        <div class="glass-card metric-card fade-rise fade-delay-1 rounded-[24px] p-5">
-          <span class="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-400">Servidor</span>
-          <div class="mt-4 flex items-end justify-between gap-4">
-            <strong class="font-display text-3xl ${srv.online ? 'text-emerald-200' : 'text-rose-200'}">${srv.online ? 'Online' : 'Offline'}</strong>
-            <span class="text-xs uppercase tracking-[0.18em] text-slate-500">${esc(srv.version || 'classic')}</span>
-          </div>
-        </div>
-        <div class="glass-card metric-card fade-rise fade-delay-1 rounded-[24px] p-5">
-          <span class="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-400">Ocupación</span>
-          <div class="mt-4 flex items-end justify-between gap-4">
-            <strong class="font-display text-3xl text-white">${srv.players_online}/${srv.players_max}</strong>
-            <span class="text-xs uppercase tracking-[0.18em] text-slate-500">${occupancy}%</span>
-          </div>
-        </div>
-        <div class="glass-card metric-card fade-rise fade-delay-2 rounded-[24px] p-5">
-          <span class="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-400">Peak</span>
-          <div class="mt-4 flex items-end justify-between gap-4">
-            <strong class="font-display text-3xl text-white">${srv.players_peak}</strong>
-            <span class="text-xs uppercase tracking-[0.18em] text-slate-500">máximo</span>
-          </div>
-        </div>
-        <div class="glass-card metric-card fade-rise fade-delay-2 rounded-[24px] p-5">
-          <span class="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-400">Uptime</span>
-          <div class="mt-4 flex items-end justify-between gap-4">
-            <strong class="font-display text-3xl text-white">${esc(srv.uptime_fmt || '—')}</strong>
-            <span class="text-xs uppercase tracking-[0.18em] text-slate-500">estable</span>
-          </div>
-        </div>
-      `;
-    }
-
-    function renderHighlights(data) {
-      const topLevel = data.rankings.level[0];
-      const topMl = data.rankings.ml[0];
-      const latest = data.deaths[0];
-      const biggestGuild = data.guilds[0];
-      const openSlots = Math.max(0, (data.server.players_max || 0) - (data.server.players_online || 0));
-      const cards = [
-        {
-          label: 'Top nivel',
-          value: topLevel ? topLevel.name : 'Sin ranking',
-          meta: topLevel ? `Level ${topLevel.level} · ${topLevel.vocation}` : 'Todavía no hay jugadores rankeados.',
-          tone: 'amber',
-        },
-        {
-          label: 'Top magic level',
-          value: topMl ? topMl.name : 'Sin datos',
-          meta: topMl ? `ML ${topMl.maglevel} · L${topMl.level}` : 'Esperando datos de magic level.',
-          tone: 'sky',
-        },
-        {
-          label: 'Última caída',
-          value: latest ? latest.victim : 'Sin muertes',
-          meta: latest ? `por ${latest.killer} · ${latest.time_rel}` : 'No hay muertes recientes registradas.',
-          tone: 'rose',
-        },
-        {
-          label: biggestGuild ? 'Guild mayor' : 'Huecos libres',
-          value: biggestGuild ? biggestGuild.name : String(openSlots),
-          meta: biggestGuild ? `${biggestGuild.count} miembros visibles` : `${data.server.players_online}/${data.server.players_max} ocupados`,
-          tone: 'emerald',
-        },
-      ];
-
-      const toneMap = {
-        amber: 'border-amber-300/12 bg-amber-300/6 text-amber-100',
-        sky: 'border-sky-300/12 bg-sky-300/6 text-sky-100',
-        rose: 'border-rose-300/12 bg-rose-300/6 text-rose-100',
-        emerald: 'border-emerald-300/12 bg-emerald-300/6 text-emerald-100',
-      };
-
-      document.getElementById('highlights').innerHTML = cards.map((card, idx) => `
-        <article class="glass-card stagger-item rounded-[24px] p-5" style="--i:${idx}">
-          <span class="inline-flex items-center rounded-full border px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] ${toneMap[card.tone]}">${esc(card.label)}</span>
-          <h3 class="mt-4 font-display text-2xl leading-tight text-white">${esc(card.value)}</h3>
-          <p class="mt-3 text-sm leading-6 text-slate-400">${esc(card.meta)}</p>
-        </article>
-      `).join('');
-    }
-
-    function renderRankTabs() {
-      document.getElementById('rank-tabs').innerHTML = Object.entries(RANK_META).map(([k, v]) =>
-        `<button type="button" class="${pill(state.rank === k)} btn-press" data-rank="${k}">${v.label}</button>`
-      ).join('');
-    }
-
-    function renderVocFilters(vocs) {
-      let html = `<button type="button" class="${pill(state.voc === 'all')} btn-press" data-voc="all">Todos</button>`;
-      vocs.forEach(v => {
-        html += `<button type="button" class="${pill(state.voc === v)} btn-press" data-voc="${esc(v)}">${esc(v)}</button>`;
-      });
-      document.getElementById('voc-filters').innerHTML = html;
-    }
-
-    function filtered(list) {
-      return state.voc === 'all' ? list : list.filter(p => p.vocation === state.voc);
-    }
-
-    function renderOnline(list) {
-      const el = document.getElementById('online-list');
-      if (!list.length) {
-        const detail = state.data?.server?.players_online
-          ? 'El servidor reporta jugadores, pero el detalle del feed online todavía no llegó.'
-          : 'Todavía no hay nadie conectado.';
-        el.innerHTML = emptyState('Sin actividad visible', detail);
-        return;
-      }
-
-      el.innerHTML = list.map((p, idx) => `
-        <article class="surface-card stagger-item rounded-[22px] p-4" style="--i:${idx}">
-          <div class="flex items-start justify-between gap-3">
-            <div class="min-w-0">
-              <div class="flex items-start gap-3">
-                <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-sky-300/12 text-sm font-display text-sky-100">${esc((p.name || '?').charAt(0).toUpperCase())}</span>
-                <div class="min-w-0">
-                  <h3 class="truncate text-sm font-semibold text-white">${esc(p.name)}</h3>
-                  <p class="mt-1 text-xs leading-5 text-slate-400">${esc(p.vocation)} · ${esc(p.exp_fmt)} exp</p>
-                </div>
-              </div>
-            </div>
-            <span class="inline-flex items-center rounded-full border border-emerald-300/18 bg-emerald-300/10 px-3 py-1 text-xs font-semibold text-emerald-100">L${p.level}</span>
-          </div>
-        </article>
-      `).join('');
-    }
-
-    function renderPower(list) {
-      const body = document.getElementById('power-body');
-      if (!list.length) {
-        body.innerHTML = `<tr><td colspan="5" class="${EMPTY}">Sin experiencia ganada hoy todavía</td></tr>`;
-        return;
-      }
-      body.innerHTML = list.map((p, i) => `<tr class="${TR}">
-        <td class="${TD_MUTED}">${i + 1}</td>
-        <td class="${TD_NAME}">${esc(p.name)}</td>
-        <td class="${TD_GOLD}">${esc(p.gain_fmt)}</td>
-        <td class="${TD}">${p.level}</td>
-        <td class="${TD} hidden sm:table-cell">${esc(p.vocation_short)}</td>
-      </tr>`).join('');
-    }
-
-    function renderFrags(allTime, today) {
-      const body = document.getElementById('frags-body');
-      if (!allTime.length) {
-        body.innerHTML = `<tr><td colspan="5" class="${EMPTY}">Sin frags acumulados</td></tr>`;
-      } else {
-        body.innerHTML = allTime.map((p, i) => `<tr class="${TR}">
-          <td class="${TD_MUTED}">${i + 1}</td>
-          <td class="${TD_NAME}">${esc(p.name)}</td>
-          <td class="${TD_GOLD}">${p.frags}</td>
-          <td class="${TD}">${p.level}</td>
-          <td class="${TD} hidden sm:table-cell">${esc(p.vocation_short)}</td>
-        </tr>`).join('');
-      }
-
-      const sec = document.getElementById('frags-today-section');
-      const tb = document.getElementById('frags-today-body');
-      if (!today.length) {
-        sec.classList.add('hidden');
-        return;
-      }
-
-      sec.classList.remove('hidden');
-      tb.innerHTML = today.map((p, i) => `<tr class="${TR}">
-        <td class="${TD_MUTED}">${i + 1}</td>
-        <td class="${TD_NAME}">${esc(p.name)}</td>
-        <td class="${TD_GOLD}">${p.frags}</td>
-        <td class="${TD}">${p.level}</td>
-      </tr>`).join('');
-    }
-
-    function renderRankings() {
-      if (!state.data) return;
-      const meta = RANK_META[state.rank];
-      const list = filtered(state.data.rankings[state.rank] || []);
-      const head = document.getElementById('rank-head');
-      const cols = ['#', 'Nombre', ...meta.cols.map(c => COL_LABEL[c] || c)];
-      head.innerHTML = '<tr class="text-[10px] uppercase tracking-[0.22em] text-slate-500">' +
-        cols.map((c, i) => {
-          const hide = (c === 'Guild' || c === 'Login') ? ' hidden sm:table-cell' : '';
-          const w = i === 0 ? ' w-12' : '';
-          return `<th class="px-4 py-3 text-left${w}${hide}">${c}</th>`;
-        }).join('') + '</tr>';
-
-      const body = document.getElementById('rank-body');
-      if (!list.length) {
-        body.innerHTML = `<tr><td colspan="99" class="${EMPTY}">Sin resultados para ese filtro</td></tr>`;
-        return;
-      }
-
-      const hl = meta.cols[0];
-      body.innerHTML = list.map((p, i) => {
-        const cells = meta.cols.map(c => {
-          const hide = (c === 'guild' || c === 'lastlogin_rel') ? ' hidden sm:table-cell' : '';
-          const cls = c === hl ? TD_GOLD : TD;
-          return `<td class="${cls}${hide}">${esc(String(p[c] ?? '—'))}</td>`;
-        }).join('');
-        return `<tr class="${TR}">
-          <td class="${TD_MUTED}">${i + 1}</td>
-          <td class="${TD_NAME}">${esc(p.name)}</td>${cells}
-        </tr>`;
-      }).join('');
-    }
-
-    function renderDeaths(deaths) {
-      const body = document.getElementById('deaths-body');
-      if (!deaths.length) {
-        body.innerHTML = `<tr><td colspan="5" class="${EMPTY}">Sin muertes registradas</td></tr>`;
-        return;
-      }
-
-      body.innerHTML = deaths.map(d => `<tr class="${TR}">
-        <td class="${TD_MUTED}">${d.rank}</td>
-        <td class="${TD_NAME}">${esc(d.victim)}</td>
-        <td class="${TD} text-rose-200">${esc(d.killer)}</td>
-        <td class="${TD}">${d.level}</td>
-        <td class="${TD} text-slate-400">${esc(d.time_rel)}</td>
-      </tr>`).join('');
-    }
-
-    function renderGuilds(guilds) {
-      const el = document.getElementById('guilds-list');
-      if (!guilds.length) {
-        el.innerHTML = emptyState('No hay guilds todavía', 'Cuando aparezcan guilds, acá vas a ver tamaño, identidad y miembros visibles.');
-        return;
-      }
-
-      el.innerHTML = guilds.map((g, idx) => `
-        <article class="surface-card stagger-item rounded-[24px] p-5" style="--i:${idx}">
-          <div class="flex items-start justify-between gap-3">
-            <div class="min-w-0">
-              <h3 class="truncate font-display text-2xl text-white">${esc(g.name)}</h3>
-              <p class="mt-2 text-sm leading-6 text-slate-400">${g.count} miembro${g.count === 1 ? '' : 's'} visibles en la guild.</p>
-            </div>
-            <span class="inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-semibold text-slate-200">${g.count}</span>
-          </div>
-          <div class="mt-4 flex flex-wrap gap-2">
-            ${g.members.slice(0, 10).map(m => `<span class="rounded-full border border-white/10 bg-slate-950/55 px-3 py-1.5 text-xs text-slate-300">${esc(m)}</span>`).join('')}
-            ${g.members.length > 10 ? `<span class="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs text-slate-400">+${g.members.length - 10}</span>` : ''}
-          </div>
-        </article>
-      `).join('');
-    }
-
-    function renderInfo(sections) {
-      const el = document.getElementById('info-list');
-      if (!sections.length) {
-        el.innerHTML = emptyState('Sin información cargada', 'No se encontró contenido en OTINFO para mostrar en esta sección.');
-        return;
-      }
-
-      el.innerHTML = sections.map((s, idx) => `
-        <article class="surface-card stagger-item rounded-[24px] p-5" style="--i:${idx}">
-          <p class="text-[11px] font-semibold uppercase tracking-[0.24em] text-amber-100">${esc(s.title)}</p>
-          <ul class="mt-4 space-y-2 text-sm leading-6 text-slate-300">
-            ${s.lines.map(l => `<li>${esc(l)}</li>`).join('')}
-          </ul>
-        </article>
-      `).join('');
-    }
-
-    }
-
-    function renderAll() {
-      if (!state.data) return;
-
-      const syncLabel = `Actualizado ${state.data.updated}`;
-      document.getElementById('updated-badge').textContent = syncLabel;
-      document.getElementById('sync-note').textContent = `${syncLabel} · auto-refresh 60s · cliente 7.6`;
-      document.getElementById('header-sync').textContent = `${syncLabel} · ${state.data.server.online ? 'servidor online' : 'servidor offline'}`;
-      document.getElementById('header-presence').textContent = `${state.data.server.players_online}/${state.data.server.players_max} online`;
-
-      renderHeroServer(state.data.server, state.data);
-      renderStatus(state.data.server);
-      renderHighlights(state.data);
-      renderOnline(state.data.online || []);
-      renderPower(state.data.powergamers || []);
-      renderFrags(state.data.top_fraggers || [], state.data.frags_today || []);
-      renderRankTabs();
-      renderVocFilters(state.data.vocations || []);
-      renderRankings();
-      renderDeaths(state.data.deaths || []);
-      renderGuilds(state.data.guilds || []);
-      renderInfo(state.data.otinfo || []);
-      showView(state.view);
-    }
-
-    async function refresh() {
-      try {
-        const r = await fetch('/api/data', { cache: 'no-store' });
-        if (!r.ok) throw new Error('bad status');
-        state.data = await r.json();
-        renderAll();
-      } catch (e) {
-        document.getElementById('updated-badge').textContent = 'Sin conexión con la web';
-        document.getElementById('sync-note').textContent = 'No se pudo actualizar el portal';
-        document.getElementById('header-sync').textContent = 'No se pudo actualizar el portal';
-        document.getElementById('header-presence').textContent = 'Sin datos';
-      }
-    }
-
-    document.addEventListener('click', e => {
-      const viewBtn = e.target.closest('[data-view]');
-      if (viewBtn) {
-        showView(viewBtn.dataset.view);
-        return;
-      }
+document.getElementById('account-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = e.target, btn = document.getElementById('account-submit'), res = document.getElementById('account-result');
+  res.classList.add('hidden');
+  if (f.password.value !== f.password2.value) {
+    res.textContent = 'Los passwords no coinciden';
+    res.className = 'mt-2 rounded-md px-2.5 py-2 text-xs bg-red-500/10 text-red-300/90';
+    res.classList.remove('hidden');
+    return;
+  }
+  btn.disabled = true;
+  try {
+    const r = await fetch('/api/create-account', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        account: parseInt(f.account.value, 10),
+        name: f.name.value.trim(),
+        password: f.password.value,
+        sex: parseInt(f.sex.value, 10),
+        voc: parseInt(f.voc.value, 10),
+        captcha: f.captcha.value,
+        challenge_id: f.challenge_id.value,
+        company: f.company.value,
+        form_ts: parseFloat(f.form_ts.value),
+      }),
     });
+    const d = await r.json();
+    res.textContent = d.message || 'Error';
+    res.className = 'mt-2 rounded-md px-2.5 py-2 text-xs ' + (d.ok ? 'bg-emerald-500/10 text-emerald-300/90' : 'bg-red-500/10 text-red-300/90');
+    res.classList.remove('hidden');
+    if (d.ok) {
+      f.reset();
+      loadRegisterChallenge();
+    } else {
+      loadRegisterChallenge();
+    }
+  } catch {
+    res.textContent = 'Error de conexión';
+    res.className = 'mt-2 rounded-md px-2.5 py-2 text-xs bg-red-500/10 text-red-300/90';
+    res.classList.remove('hidden');
+  } finally {
+    btn.disabled = false;
+  }
+});
 
-    document.getElementById('view-rank').addEventListener('click', e => {
-      const rankBtn = e.target.closest('[data-rank]');
-      if (rankBtn) {
-        state.rank = rankBtn.dataset.rank;
-        renderRankTabs();
-        renderRankings();
-        return;
-      }
-      const vocBtn = e.target.closest('[data-voc]');
-      if (vocBtn) {
-        state.voc = vocBtn.dataset.voc;
-        renderVocFilters(state.data?.vocations || []);
-        renderRankings();
-      }
-    });
-
-    document.getElementById('account-form').addEventListener('submit', async e => {
-      e.preventDefault();
-      const form = e.target;
-      const btn = document.getElementById('account-submit');
-      const result = document.getElementById('account-result');
-      const name = form.name.value.trim();
-      const password = form.password.value;
-      const password2 = form.password2.value;
-      result.classList.add('hidden');
-
-      if (password !== password2) {
-        result.textContent = 'Las contraseñas no coinciden';
-        result.className = 'mt-4 rounded-[18px] px-4 py-3 text-sm bg-rose-300/10 text-rose-100 border border-rose-300/20';
-        result.classList.remove('hidden');
-        return;
-      }
-
-      btn.disabled = true;
-      btn.textContent = 'Creando...';
-      try {
-        const r = await fetch('/api/create-account', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name,
-            password,
-            sex: parseInt(form.sex.value, 10),
-            voc: parseInt(form.voc.value, 10),
-          }),
-        });
-        const data = await r.json();
-        result.textContent = data.message || 'Error desconocido';
-        result.className = data.ok
-          ? 'mt-4 rounded-[18px] px-4 py-3 text-sm bg-emerald-300/10 text-emerald-100 border border-emerald-300/20'
-          : 'mt-4 rounded-[18px] px-4 py-3 text-sm bg-rose-300/10 text-rose-100 border border-rose-300/20';
-        result.classList.remove('hidden');
-        if (data.ok) form.reset();
-      } catch (err) {
-        result.textContent = 'Error de conexión con la web';
-        result.className = 'mt-4 rounded-[18px] px-4 py-3 text-sm bg-rose-300/10 text-rose-100 border border-rose-300/20';
-        result.classList.remove('hidden');
-      } finally {
-        btn.disabled = false;
-        btn.textContent = 'Crear cuenta';
-      }
-    });
-
-    showView(state.view);
-    refresh();
-    setInterval(refresh, 60000);
-  </script>
+renderNav();
+refresh();
+setInterval(refresh, 60000);
+</script>
 </body>
 </html>

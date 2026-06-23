@@ -8,17 +8,22 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 from data import build_payload, create_account
+from register_guard import RegisterGuard
 
 ROOT = Path(__file__).resolve().parents[1]
 PLAYERS_DIR = Path(os.environ.get("PLAYERS_DIR", ROOT / "server/YurOTS/ots/data/players"))
+ACCOUNTS_DIR = Path(os.environ.get("ACCOUNTS_DIR", ROOT / "server/YurOTS/ots/data/accounts"))
 GUILDS_FILE = Path(os.environ.get("GUILDS_FILE", ROOT / "server/YurOTS/ots/data/guilds.xml"))
 OTINFO_FILE = Path(os.environ.get("OTINFO_FILE", ROOT / "OTINFO"))
 ONLINE_FILE = Path(os.environ.get("ONLINE_FILE", ROOT / "server/YurOTS/ots/data/online.xml"))
 STATE_FILE = Path(os.environ.get("STATE_FILE", ROOT / "web/state/daily.json"))
+REGISTER_STATE = Path(os.environ.get("REGISTER_STATE", ROOT / "web/state/register.json"))
 OT_HOST = os.environ.get("OT_HOST", "127.0.0.1")
 OT_PORT = int(os.environ.get("OT_PORT", "7171"))
 PORT = int(os.environ.get("PORT", "8080"))
 INDEX = Path(__file__).resolve().parent / "index.html"
+
+guard = RegisterGuard(REGISTER_STATE)
 
 
 def get_payload() -> dict:
@@ -27,47 +32,69 @@ def get_payload() -> dict:
     )
 
 
+def client_ip(handler: BaseHTTPRequestHandler) -> str:
+    fwd = handler.headers.get("X-Forwarded-For", "")
+    if fwd:
+        return fwd.split(",")[0].strip()
+    return handler.client_address[0]
+
+
 class Handler(BaseHTTPRequestHandler):
-    def do_POST(self) -> None:
-        path = self.path.split("?", 1)[0]
-        if path == "/api/create-account":
-            length = int(self.headers.get("Content-Length", "0"))
-            try:
-                body = json.loads(self.rfile.read(length).decode("utf-8"))
-                result = create_account(
-                    OT_HOST,
-                    OT_PORT,
-                    str(body.get("name", "")),
-                    str(body.get("password", "")),
-                    int(body.get("sex", -1)),
-                    int(body.get("voc", 0)),
-                )
-            except (json.JSONDecodeError, TypeError, ValueError):
-                result = {"ok": False, "message": "Petición inválida"}
-            data = json.dumps(result, ensure_ascii=False).encode("utf-8")
-            self.send_response(200)
-            self.send_header("Content-Type", "application/json; charset=utf-8")
-            self.send_header("Cache-Control", "no-store")
-            self.send_header("Content-Length", str(len(data)))
-            self.end_headers()
-            self.wfile.write(data)
-        else:
-            self.send_error(404)
+    def _json(self, code: int, payload: dict) -> None:
+        data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+        self.send_response(code)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("Content-Length", str(len(data)))
+        self.end_headers()
+        self.wfile.write(data)
 
     def do_GET(self) -> None:
         path = self.path.split("?", 1)[0]
         if path in ("/", "/index.html"):
             self._file(INDEX, "text/html; charset=utf-8")
         elif path == "/api/data":
-            data = json.dumps(get_payload(), ensure_ascii=False).encode("utf-8")
-            self.send_response(200)
-            self.send_header("Content-Type", "application/json; charset=utf-8")
-            self.send_header("Cache-Control", "no-store")
-            self.send_header("Content-Length", str(len(data)))
-            self.end_headers()
-            self.wfile.write(data)
+            self._json(200, get_payload())
+        elif path == "/api/register-challenge":
+            self._json(200, guard.new_challenge())
         else:
             self.send_error(404)
+
+    def do_POST(self) -> None:
+        path = self.path.split("?", 1)[0]
+        if path != "/api/create-account":
+            self.send_error(404)
+            return
+
+        length = int(self.headers.get("Content-Length", "0"))
+        ip = client_ip(self)
+        try:
+            body = json.loads(self.rfile.read(length).decode("utf-8"))
+            err = guard.verify(
+                ip,
+                str(body.get("challenge_id", "")),
+                str(body.get("captcha", "")),
+                str(body.get("company", "")),
+                float(body.get("form_ts", 0)),
+            )
+            if err:
+                result = {"ok": False, "message": err}
+            else:
+                result = create_account(
+                    ACCOUNTS_DIR,
+                    PLAYERS_DIR,
+                    int(body.get("account", 0)),
+                    str(body.get("name", "")),
+                    str(body.get("password", "")),
+                    int(body.get("sex", -1)),
+                    int(body.get("voc", 0)),
+                )
+                if result.get("ok"):
+                    guard.record_attempt(ip)
+        except (json.JSONDecodeError, TypeError, ValueError):
+            result = {"ok": False, "message": "Datos inválidos"}
+
+        self._json(200, result)
 
     def _file(self, path: Path, ctype: str) -> None:
         if not path.is_file():
