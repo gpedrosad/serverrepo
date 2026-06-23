@@ -1,0 +1,6 @@
+# VPS: nginx escucha :8080 y hace proxy a la web en localhost:8081.
+# Uso: docker compose -f docker-compose.prod.yml -f docker-compose.vps.yml up -d web
+services:
+  web:
+    ports:
+      - "127.0.0.1:8081:8080"
