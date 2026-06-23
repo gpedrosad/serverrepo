@@ -21,6 +21,14 @@ docker compose -f docker-compose.prod.yml up -d --build
 
 Puertos: **7171** (login/game), **7172** (expuesto por compatibilidad).
 
+## Web (rankings, status)
+
+```bash
+./scripts/web.sh
+```
+
+Abre **http://localhost:8080/** — Python directo, sin Docker ni VPS.
+
 ## Mapa y mundo
 
 | Archivo | Descripción |
