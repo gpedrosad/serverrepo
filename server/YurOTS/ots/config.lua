@@ -34,7 +34,7 @@ url = ""
 location = "Poland"
 
 -- the ip the server should redirect too (auto - set as first local ip)
-ip = "159.223.110.159"
+ip = "127.0.0.1"
 
 -- The messagebox you sometimes get before you choose characters
 motd = "Welcome to YurOTS"

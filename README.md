@@ -17,9 +17,25 @@ Symlink de compatibilidad: `~/tibia-yurots-docker` → este directorio.
 ```bash
 cd ~/Desktop/yurots-principal
 docker compose -f docker-compose.prod.yml up -d --build
+./scripts/share-ot.sh local   # default del repo: 127.0.0.1
 ```
 
 Puertos: **7171** (login/game), **7172** (expuesto por compatibilidad).
+
+Cliente Tibia 7.6 → **127.0.0.1:7171** (o `./scripts/play-yurots-client.sh`).
+
+### Jugar con otros (misma red WiFi)
+
+```bash
+./scripts/share-ot.sh lan
+```
+
+Usa la IP de tu Mac/PC en `config.lua` y reinicia Docker. Tus amigos conectan a `TU_IP:7171`
+(pueden parchear el cliente con `python3 scripts/patch-tibia760-client.py --ip TU_IP`).
+
+Volver a solo local: `./scripts/share-ot.sh local`
+
+`config.lua` trae **`ip = "127.0.0.1"`** por defecto (Docker local para todos; sin VPS).
 
 ## Web (rankings, status)
 
