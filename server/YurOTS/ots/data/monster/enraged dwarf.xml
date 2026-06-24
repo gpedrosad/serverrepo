@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Enraged Dwarf" level="32" maglevel="42" experience="126" pushable="0" armor="13" defense="17" canpushitems="1" staticattack="50" changetarget="200" speed="192">
+	<health now="198" max="198" />
+	<look type="69" head="20" body="30" legs="40" feet="50" corpse="2960" />
+	<combat targetdistance="1" runonhealth="0" />
+	<attacks>
+		<attack type="melee" maxdamage="57" probability="100" />
+	</attacks>
+	<defenses>
+		<defense immunity="poison" />
+		<defense immunity="drunk" />
+	</defenses>
+	<voices>
+		<voice sentence="SKREEEAAAH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="15" chance1="100000" chancemax="0" />
+		<item id="2388" chance="6666" />
+		<item id="2386" chance="5000" />
+		<item id="2484" chance="10000" />
+		<item id="2530" chance="6666" />
+		<item id="2649" chance="10000" />
+		<item id="1987" chance="100000">
+			<inside>
+				<item id="2787" countmax="3" chance1="20000" chancemax="0" />
+				<item id="2553" chance="3333" />
+				<item id="2554" chance="3333" />
+				<item id="2597" chance="3333" />
+				<item id="2213" chance="1818" />
+			</inside>
+		</item>
+		<item id="2150" countmax="2" chance1="12000" chancemax="0" />
+		<item id="2149" countmax="1" chance1="8000" chancemax="0" />
+		<item id="2147" countmax="1" chance1="5000" chancemax="0" />
+		<item id="2146" countmax="1" chance1="2500" chancemax="0" />
+	</loot>
+</monster>

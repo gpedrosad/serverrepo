@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Enraged Necromancer" level="79" maglevel="54" experience="1972" pushable="0" armor="37" defense="39" canpushitems="1" staticattack="50" changetarget="200" speed="214">
+	<health now="1479" max="1479" />
+	<look type="9" head="20" body="30" legs="40" feet="50" corpse="3128" />
+	<combat targetdistance="5" runonhealth="0" />
+	<attacks>
+		<attack type="melee" maxdamage="115" />
+		<attack type="instant" name="exura" exhaustion="500" cycleticks="2000" probability="70" />
+		<attack type="rune" name="necro missile" cycleticks="2500" probability="60" />
+		<attack type="instant" name="necro_lifedrain" exhaustion="1000" cycleticks="3500" probability="60" />
+	</attacks>
+	<defenses>
+		<defense immunity="poison" />
+		<defense immunity="invisible" />
+	</defenses>
+	<voices>
+		<voice sentence="Taste the sweetness of death!" />
+		<voice sentence="Your corpse will be mine!" />
+		<voice sentence="SKREEEAAAH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="40" chance1="100000" chancemax="0" />
+		<item id="2032" chance="10000" />
+		<item id="2804" countmax="2" chance1="20000" chancemax="0" />
+		<item id="1987" chance="100000">
+			<inside>
+				<item id="2412" chance="10000" />
+				<item id="2229" countmax="3" chance1="20000" chancemax="0" />
+				<item id="2747" chance="20000" />
+				<item id="2436" chance="1000" />
+				<item id="2663" chance="909" />
+				<item id="2195" chance="666" />
+				<item id="2423" chance="5000" />
+			</inside>
+		</item>
+		<item id="2150" countmax="3" chance1="26000" chancemax="0" />
+		<item id="2149" countmax="3" chance1="21000" chancemax="0" />
+		<item id="2147" countmax="2" chance1="16000" chancemax="0" />
+		<item id="2146" countmax="2" chance1="11000" chancemax="0" />
+		<item id="2145" countmax="1" chance1="6000" chancemax="0" />
+	</loot>
+	<summons maxSummons="5">
+		<summon name="Skeleton" chance="2000" />
+		<summon name="Ghoul" chance="1818" />
+		<summon name="Mummy" chance="1428" />
+	</summons>
+</monster>

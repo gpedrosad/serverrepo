@@ -1,5 +1,19 @@
 # Cliente Tibia 7.6 para YurOTS
 
+## Recomendado en Mac: OTClientV8
+
+Usá **otclientv8-master** (sin Wine, sin IP changer manual):
+
+```bash
+./scripts/play-yurots-client.sh
+```
+
+Lee la IP de `config.lua` y conecta a `YurOTS` en el login. Por defecto busca el cliente en `~/Downloads/otclientv8-master` (variable `OTCLIENT_DIR` para otra ruta).
+
+En el login elegí **YurOTS**, cuenta numérica + contraseña.
+
+## Cliente oficial parcheado (Windows / Wine)
+
 Cliente **oficial 7.6** parcheado como `YurOTS.exe` (sin IP changer).
 
 ## Generar para compartir (Desktop + ZIP)

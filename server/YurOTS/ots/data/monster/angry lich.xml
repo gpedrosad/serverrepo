@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Angry Lich" level="29" maglevel="19" experience="2070" pushable="0" armor="40" defense="45" canpushitems="1" staticattack="50" changetarget="200" speed="286">
+	<health now="1628" max="1628" />
+	<look type="99" head="95" body="116" legs="119" feet="115" corpse="3025" />
+	<combat targetdistance="1" runonhealth="0" />
+	<attacks>
+		<attack type="melee" exhaustion="400" mindamage="16" maxdamage="144" cycleticks="2000" probability="65" />
+		<attack type="rune" name="Sudden Death" mindamage="128" maxdamage="304" exhaustion="600" cycleticks="1700" probability="45" />
+		<attack type="rune" name="Heavy Magic Missile" mindamage="64" maxdamage="112" cycleticks="2000" probability="65" />
+		<attack type="instant" name="exura" mindamage="0" maxdamage="128" cycleticks="2000" probability="40" />
+	</attacks>
+	<defenses>
+		<defense immunity="fire" />
+		<defense immunity="poison" />
+		<defense immunity="paralyze" />
+	</defenses>
+	<voices>
+		<voice sentence="Oh... A little intruder..." />
+		<voice sentence="GRAAAH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="100" chance1="100000" chancemax="0" />
+		<item id="2401" chance="10000" />
+		<item id="1987" chance="100000">
+			<inside>
+				<item id="2237" chance="10000" />
+				<item id="2148" countmax="12" chance1="80000" chancemax="0" />
+				<item id="2175" chance="10000" />
+				<item id="2179" chance="1000" />
+			</inside>
+		</item>
+		<item id="2150" countmax="3" chance1="18000" chancemax="0" />
+		<item id="2149" countmax="3" chance1="14000" chancemax="0" />
+		<item id="2147" countmax="2" chance1="10000" chancemax="0" />
+		<item id="2146" countmax="2" chance1="7500" chancemax="0" />
+		<item id="2145" countmax="1" chance1="4500" chancemax="0" />
+	</loot>
+</monster>

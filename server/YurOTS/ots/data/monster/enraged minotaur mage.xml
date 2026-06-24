@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Enraged Minotaur Mage" level="44" maglevel="79" experience="510" pushable="0" armor="11" defense="15" canpushitems="1" staticattack="50" changetarget="200" speed="196">
+	<health now="395" max="395" />
+	<look type="23" head="20" body="30" legs="40" feet="50" corpse="2866" />
+	<combat targetdistance="5" runonhealth="0" />
+	<attacks>
+		<attack type="melee" maxdamage="46" />
+		<attack type="rune" name="mm explosion" exhaustion="500" cycleticks="1500" probability="40" />
+		<attack type="rune" name="mm explosion" exhaustion="500" cycleticks="2500" probability="85" />
+		<attack type="rune" name="soul fire" exhaustion="500" cycleticks="5000" probability="75" />
+	</attacks>
+	<defenses>
+		<defense immunity="energy" />
+		<defense immunity="invisible" />
+	</defenses>
+	<voices>
+		<voice sentence="'Learrn tha secrret uf deathhh!" />
+		<voice sentence="SKREEEAAAH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="20" chance1="100000" chancemax="0" />
+		<item id="2050" chance="10000" />
+		<item id="2461" chance="8000" />
+		<item id="2649" chance="8000" />
+		<item id="1987" chance="100000">
+			<inside>
+				<item id="2404" chance="10000" />
+				<item id="2362" countmax="5" chance1="20000" chancemax="0" />
+				<item id="2817" chance="10000" />
+				<item id="2311" chance="2857" />
+				<item id="2465" chance="4000" />
+				<item id="2648" chance="4000" />
+			</inside>
+		</item>
+		<item id="2150" countmax="3" chance1="26000" chancemax="0" />
+		<item id="2149" countmax="3" chance1="21000" chancemax="0" />
+		<item id="2147" countmax="2" chance1="16000" chancemax="0" />
+		<item id="2146" countmax="2" chance1="11000" chancemax="0" />
+		<item id="2145" countmax="1" chance1="6000" chancemax="0" />
+	</loot>
+	<summons maxSummons="5">
+		<summon name="Snake" chance="2157" />
+	</summons>
+</monster>

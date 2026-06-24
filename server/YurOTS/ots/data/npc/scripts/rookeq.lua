@@ -4,6 +4,8 @@ target = 0
 following = false
 attacking = false
 
+ROOKEQ_HELP = 'Starter gear: katana/mace/hatchet 20gp, studded armor 30gp, chain armor 90gp, brass armor 300gp, brass helmet 20gp, leather helmet 5gp, brass shield 15gp, copper shield 50gp, leather legs 8gp, studded legs 20gp, leather boots 5gp, torch 2gp.'
+
 function onThingMove(creature, thing, oldpos, oldstackpos)
 end
 
@@ -23,13 +25,15 @@ function onCreatureSay(cid, type, msg)
 	local state = npcHandleMessage(
 		cid,
 		msg,
-		'Hello, ' .. creatureGetName(cid) .. '! I sell Katana(20gp), Mace(20gp), Hatchet(20gp), Studded Armor(30gp), Chain Armor(90gp), Brass Armor(300gp), Brass Helmet(20gp), Leather Helmet(5gp), Brass Shield(15gp), Copper Shield(50gp),Leather Legs(8gp), Studded Legs(20gp), Leather Boots(5gp), Torch(2gp).'
+		'Hi ' .. creatureGetName(cid) .. '! I sell starter weapons and armor for new adventurers. Say "help" for the full list.'
 	)
 	if state ~= 'focused' then
 		return
 	end
 
-	if msgcontains(msg, 'hatchet') then
+	if npcIsHelp(msg) then
+		selfSay(ROOKEQ_HELP)
+	elseif msgcontains(msg, 'hatchet') then
 		buy(cid, 2388, 1, 20)
 	elseif msgcontains(msg, 'katana') then
 		buy(cid, 2412, 1, 20)

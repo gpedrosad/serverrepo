@@ -76,6 +76,24 @@
       }
       .panel { opacity: 1; }
     }
+    .gem-card {
+      border: 1px solid rgba(255,255,255,.06);
+      background: linear-gradient(165deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+    }
+    .gem-sprite {
+      image-rendering: pixelated;
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+    }
+    .gem-sprite.lg { width: 40px; height: 40px; }
+    .flow-arrow {
+      color: rgba(251, 191, 36, .55);
+      font-size: 14px;
+      line-height: 1;
+      padding: 0 2px;
+    }
+    .imbue-row:hover { background: rgba(255,255,255,.025); }
   </style>
 </head>
 <body class="min-h-full text-zinc-300 antialiased text-xs pb-16">
@@ -211,13 +229,46 @@
   <section id="panel-info" class="panel">
     <div id="info-list" class="space-y-2"></div>
   </section>
+
+  <!-- GEMS -->
+  <section id="panel-gems" class="panel space-y-4">
+    <div class="anim-in rounded-lg border border-amber-500/15 bg-amber-500/[0.04] px-3 py-2.5">
+      <p class="text-[11px] leading-relaxed text-zinc-300">
+        Las <span class="text-amber-200/90">gemas</span> dropean de monstruos fuertes. Las juntás, las cambiás por gemas grandes y las imbuis en tu equipo para bonus permanentes.
+      </p>
+    </div>
+
+    <div>
+      <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">1 · Loot</p>
+      <p class="mb-2 text-[11px] text-zinc-500">Gemas chicas que caen del loot (rates x3):</p>
+      <div id="gems-small" class="grid grid-cols-5 gap-1.5 sm:gap-2"></div>
+    </div>
+
+    <div>
+      <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">2 · Cambiar con Tonka</p>
+      <p class="mb-2 text-[11px] text-zinc-500">Temple <span class="text-zinc-400">132, 29</span> · piso 6 · di <span class="chip inline-block text-zinc-400">hi</span> y <span class="chip inline-block text-zinc-400">exchange ruby</span> (también <span class="text-zinc-400">si</span> para confirmar)</p>
+      <div id="gems-exchange" class="space-y-2"></div>
+    </div>
+
+    <div>
+      <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">3 · Imbuir</p>
+      <p class="mb-2 text-[11px] text-zinc-500">Usá la gema grande con el item <span class="text-zinc-400">equipado</span>. El bonus queda en el item aunque lo pierdas.</p>
+      <div id="gems-imbue" class="overflow-hidden rounded-lg border border-white/[0.06] divide-y divide-white/[0.05]"></div>
+    </div>
+
+    <div>
+      <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">4 · Vender a Parived</p>
+      <p class="mb-2 text-[11px] text-zinc-500">Mismo temple, piso 7 · <span class="chip inline-block text-zinc-400">sell ruby</span> o <span class="chip inline-block text-zinc-400">sell all</span></p>
+      <div id="gems-sell" class="rounded-lg border border-white/[0.06] px-3 py-2 text-[11px] text-zinc-500"></div>
+    </div>
+  </section>
 </div>
 
 <script>
 const state = { panel: 'live', rank: 'level', voc: 'all', data: null };
 const NAV = [
   ['live', 'Live'], ['rank', 'Top'], ['power', 'Power'], ['frags', 'Frags'],
-  ['deaths', 'Muertes'], ['guilds', 'Guilds'], ['account', 'Cuenta'], ['info', 'Info'],
+  ['deaths', 'Muertes'], ['guilds', 'Guilds'], ['gems', 'Gemas'], ['account', 'Cuenta'], ['info', 'Info'],
 ];
 const RANK_META = {
   level: { label: 'Lvl', cols: ['level','exp_fmt','maglevel','guild','lastlogin_rel'] },
@@ -227,6 +278,47 @@ const RANK_META = {
   frags: { label: 'Frg', cols: ['frags','level','vocation_short','lastlogin_rel'] },
 };
 const COL_LABEL = { level:'Lvl', exp_fmt:'Exp', maglevel:'ML', guild:'Guild', lastlogin_rel:'Login', vocation_short:'Voc', sword:'Swd', distance:'Dist', frags:'Frg' };
+
+const GEM_COLORS = {
+  2145: '#b8e4ff', 2146: '#f0c84a', 2147: '#e8384f', 2149: '#3ecf6e', 2150: '#b06cff',
+  2153: '#9b4dff', 2154: '#ffd84a', 2155: '#2ecc71', 2156: '#ff3d57', 2158: '#4aa3ff',
+};
+
+function gemSvg(id, large) {
+  const c = GEM_COLORS[id] || '#a1a1aa';
+  const s = large ? 40 : 32;
+  const cls = large ? 'gem-sprite lg shrink-0' : 'gem-sprite shrink-0';
+  return `<svg class="${cls}" width="${s}" height="${s}" viewBox="0 0 32 32" aria-hidden="true"><polygon points="16,2 28,12 22,30 10,30 4,12" fill="${c}" stroke="rgba(255,255,255,.35)" stroke-width="1"/><polygon points="16,6 24,13 20,26 12,26 8,13" fill="rgba(255,255,255,.2)"/></svg>`;
+}
+
+const GEMS_SMALL = [
+  { id: 2150, name: 'Amethyst', color: 'violeta' },
+  { id: 2149, name: 'Emerald', color: 'verde' },
+  { id: 2147, name: 'Ruby', color: 'rojo' },
+  { id: 2146, name: 'Sapphire', color: 'amarillo' },
+  { id: 2145, name: 'Diamond', color: 'azul' },
+];
+
+const GEMS_EXCHANGE = [
+  { small: 2147, big: 2156, smallName: 'Ruby', bigName: 'Big Ruby', bonus: '+15% atk speed en arma' },
+  { small: 2149, big: 2155, smallName: 'Emerald', bigName: 'Big Emerald', bonus: '+3 skills en armadura' },
+  { small: 2150, big: 2153, smallName: 'Amethyst', bigName: 'Violet Gem', bonus: '+1 ML en wand (max 4)' },
+  { small: 2146, big: 2154, smallName: 'Sapphire', bigName: 'Yellow Gem', bonus: '+20 haste en botas (max 3)' },
+  { small: 2145, big: 2158, smallName: 'Diamond', bigName: 'Blue Gem', bonus: 'rara · vendé a Parived' },
+];
+
+const GEMS_IMBUE = [
+  { id: 2154, name: 'Yellow Gem', item: 'Botas', effect: '+20 haste por stack', max: '3/3' },
+  { id: 2153, name: 'Violet Gem', item: 'Wand / Rod', effect: '+1 ML por stack', max: '4/4' },
+  { id: 2156, name: 'Big Ruby', item: 'Arma', effect: '+15% velocidad de ataque', max: '1x' },
+  { id: 2155, name: 'Big Emerald', item: 'Armadura', effect: '+3 sword/club/axe/dist', max: '1x' },
+];
+
+const GEMS_SELL_LINES = [
+  'Pequeñas: amethyst 200gp · emerald/ruby/sapphire 250gp · diamond 300gp',
+  'Grandes: yellow 1k · blue 5k · violet/big ruby/big emerald 10k',
+  'Extras: talon 320gp · scarab coin 100gp · gold nugget 10k',
+];
 
 function esc(s) { const d = document.createElement('div'); d.textContent = s ?? ''; return d.innerHTML; }
 function chip(active) { return `chip cursor-pointer ${active ? 'nav-btn active text-zinc-100' : 'text-zinc-500 hover:text-zinc-300'}`; }
@@ -417,6 +509,45 @@ function renderInfo(sections) {
   ).join('');
 }
 
+function renderGems() {
+  document.getElementById('gems-small').innerHTML = GEMS_SMALL.map((g, i) =>
+    `<div class="gem-card anim-in flex flex-col items-center rounded-md px-1 py-2 text-center" style="--d:${i * 35}ms">
+      ${gemSvg(g.id, false)}
+      <p class="mt-1 text-[9px] leading-tight text-zinc-400">${esc(g.name)}</p>
+    </div>`
+  ).join('');
+
+  document.getElementById('gems-exchange').innerHTML = GEMS_EXCHANGE.map((x, i) =>
+    `<div class="gem-card anim-in flex items-center gap-2 rounded-lg px-2.5 py-2" style="--d:${80 + i * 40}ms">
+      <div class="flex shrink-0 items-center gap-1">
+        <span class="text-[10px] tabular-nums text-zinc-500">20×</span>
+        ${gemSvg(x.small, false)}
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flex shrink-0 items-center gap-1">
+        ${gemSvg(x.big, true)}
+        <span class="hidden text-[10px] text-zinc-500 sm:inline">1×</span>
+      </div>
+      <div class="min-w-0 flex-1">
+        <p class="truncate text-[11px] text-zinc-300">${esc(x.smallName)} → ${esc(x.bigName)}</p>
+        <p class="truncate text-[10px] text-zinc-600">${esc(x.bonus)}</p>
+      </div>
+    </div>`
+  ).join('');
+
+  document.getElementById('gems-imbue').innerHTML = GEMS_IMBUE.map((g, i) =>
+    `<div class="imbue-row anim-in flex items-center gap-2.5 px-3 py-2 transition-colors" style="--d:${120 + i * 35}ms">
+      ${gemSvg(g.id, true)}
+      <div class="min-w-0 flex-1">
+        <p class="text-[11px] text-zinc-300">${esc(g.name)} <span class="text-zinc-600">→</span> ${esc(g.item)}</p>
+        <p class="text-[10px] text-zinc-600">${esc(g.effect)} · ${esc(g.max)}</p>
+      </div>
+    </div>`
+  ).join('');
+
+  document.getElementById('gems-sell').innerHTML = GEMS_SELL_LINES.map(l => `<p>${esc(l)}</p>`).join('');
+}
+
 function renderAll() {
   if (!state.data) return;
   const srv = state.data.server;
@@ -444,6 +575,7 @@ function renderAll() {
   renderDeaths(state.data.deaths || []);
   renderGuilds(state.data.guilds || []);
   renderInfo(state.data.otinfo || []);
+  renderGems();
 }
 
 async function refresh() {
@@ -517,6 +649,7 @@ document.getElementById('account-form').addEventListener('submit', async e => {
 });
 
 renderNav();
+renderGems();
 refresh();
 setInterval(refresh, 60000);
 </script>

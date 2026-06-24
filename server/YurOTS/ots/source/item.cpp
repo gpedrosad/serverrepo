@@ -583,6 +583,51 @@ std::string Item::getFluidTypeName(unsigned char fluidType)
 	}
 }
 
+#ifdef YUR_BOH
+static void appendGemUseDescription(std::stringstream& s, unsigned short itemId)
+{
+	switch(itemId){
+	case ITEM_YELLOW_GEM:
+		s << std::endl << "Imbue: use on equipped boots (+20 haste/stack, max 3). Stacks with BOH.";
+		break;
+	case ITEM_VIOLET_GEM:
+		s << std::endl << "Imbue: use on equipped wand or rod (+1 ML/stack, max 4).";
+		break;
+	case ITEM_BIG_RUBY:
+		s << std::endl << "Imbue: use on equipped weapon (+15% attack speed, not wands).";
+		break;
+	case ITEM_BIG_EMERALD:
+		s << std::endl << "Imbue: use on equipped armor (+3 sword/club/axe/dist, Paladin/Knight).";
+		break;
+	case ITEM_SMALL_AMETHYST:
+		s << std::endl << "Tonka: trade 20 for a violet gem (imbue wand/rod).";
+		break;
+	case ITEM_SMALL_SAPPHIRE:
+		s << std::endl << "Tonka: trade 20 for a yellow gem (imbue boots).";
+		break;
+	case ITEM_SMALL_RUBY:
+		s << std::endl << "Tonka: trade 20 for a big ruby (imbue weapon).";
+		break;
+	case ITEM_SMALL_EMERALD:
+		s << std::endl << "Tonka: trade 20 for a big emerald (imbue armor).";
+		break;
+	case ITEM_SMALL_DIAMOND:
+		s << std::endl << "Tonka: trade 20 for a blue gem.";
+		break;
+	case ITEM_BLUE_GEM:
+		s << std::endl << "Rare gem. Sell to Parived (say gems).";
+		break;
+	case ITEM_TALON:
+	case ITEM_GOLD_NUGGET:
+	case ITEM_SCARAB_COIN:
+		s << std::endl << "Sell to Parived (say gems).";
+		break;
+	default:
+		break;
+	}
+}
+#endif //YUR_BOH
+
 std::string Item::getDescription(bool fullDescription) const
 {
 	std::stringstream s;
@@ -709,6 +754,7 @@ std::string Item::getDescription(bool fullDescription) const
 
 #ifdef YUR_BOH
 	if(fullDescription){
+		appendGemUseDescription(s, id);
 		if(actionId >= ITEM_HASTE_ENCHANT_AID && actionId <= ITEM_HASTE_ENCHANT_AID_MAX)
 			s << std::endl << "Imbued: +" << (HASTE_ENCHANT_SPEED * (actionId - ITEM_HASTE_ENCHANT_AID + 1)) << " haste (" << (actionId - ITEM_HASTE_ENCHANT_AID + 1) << "/3).";
 		else if(actionId >= ITEM_VIOLET_ML_AID && actionId <= ITEM_VIOLET_ML_AID_MAX)

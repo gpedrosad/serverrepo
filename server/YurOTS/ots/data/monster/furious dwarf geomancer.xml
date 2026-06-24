@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Furious Dwarf Geomancer" level="53" maglevel="93" experience="662" pushable="0" armor="21" defense="25" canpushitems="1" staticattack="50" changetarget="200" speed="220">
+	<health now="798" max="798" />
+	<look type="66" head="20" body="30" legs="40" feet="50" corpse="2987" />
+	<combat targetdistance="4" runonhealth="0" />
+	<attacks>
+		<attack type="melee" mindamage="51" maxdamage="103" />
+		<attack type="distance" name="largerock" mindamage="78" maxdamage="228" cycleticks="3000" probability="50" />
+		<attack type="instant" name="exura" exhaustion="500" cycleticks="2000" probability="60" />
+		<attack type="rune" name="dwarfgeo_manadrain" exhaustion="100" cycleticks="4000" probability="30" />
+	</attacks>
+	<defenses>
+		<defense immunity="fire" />
+		<defense immunity="poison" />
+		<defense immunity="invisible" />
+	</defenses>
+	<voices>
+		<voice sentence="RAAAARGH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="20" chance1="100000" chancemax="0" />
+		<item id="2673" countmax="3" chance1="6666" chancemax="0" />
+		<item id="2260" chance="4000" />
+		<item id="2649" chance="10000" />
+		<item id="2643" chance="20000" />
+		<item id="1987" chance="100000">
+			<inside>
+				<item id="2162" chance="2500" />
+				<item id="2787" countmax="3" chance1="20000" chancemax="0" />
+			</inside>
+		</item>
+		<item id="2150" countmax="2" chance1="19000" chancemax="0" />
+		<item id="2149" countmax="2" chance1="15000" chancemax="0" />
+		<item id="2147" countmax="2" chance1="11000" chancemax="0" />
+		<item id="2146" countmax="1" chance1="7500" chancemax="0" />
+		<item id="2145" countmax="1" chance1="4000" chancemax="0" />
+	</loot>
+</monster>

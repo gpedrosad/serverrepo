@@ -3,13 +3,15 @@ talk_start = 0
 target = 0
 following = false
 attacking = false
+talk_state = 0
+pending_exchange = nil
 
 EXCHANGES = {
-	{keys = {'ruby', 'small ruby'}, small = 2147, big = 2156, smallName = 'small ruby', bigName = 'big ruby'},
-	{keys = {'emerald', 'small emerald'}, small = 2149, big = 2155, smallName = 'small emerald', bigName = 'big emerald'},
-	{keys = {'amethyst', 'small amethyst'}, small = 2150, big = 2153, smallName = 'small amethyst', bigName = 'violet gem'},
-	{keys = {'sapphire', 'small sapphire'}, small = 2146, big = 2154, smallName = 'small sapphire', bigName = 'yellow gem'},
-	{keys = {'diamond', 'small diamond'}, small = 2145, big = 2158, smallName = 'small diamond', bigName = 'blue gem'}
+	{keys = {'ruby', 'small ruby'}, small = 2147, big = 2156, smallName = 'small rubies', bigName = 'big ruby'},
+	{keys = {'emerald', 'small emerald'}, small = 2149, big = 2155, smallName = 'small emeralds', bigName = 'big emerald'},
+	{keys = {'amethyst', 'small amethyst'}, small = 2150, big = 2153, smallName = 'small amethysts', bigName = 'violet gem'},
+	{keys = {'sapphire', 'small sapphire'}, small = 2146, big = 2154, smallName = 'small sapphires', bigName = 'yellow gem'},
+	{keys = {'diamond', 'small diamond'}, small = 2145, big = 2158, smallName = 'small diamonds', bigName = 'blue gem'}
 }
 
 NEED = 20
@@ -28,8 +30,8 @@ function onCreatureTurn(creature)
 end
 
 function showExchangeList()
-	selfSay('I fuse gems: 20 small for 1 big. Same color family.')
-	selfSay('Ruby, emerald, amethyst, sapphire or diamond. Say exchange ruby, etc.')
+	selfSay('I upgrade gems: trade 20 small gems for 1 big gem of the same color.')
+	selfSay('Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".')
 end
 
 function matchExchange(msg)
@@ -45,6 +47,10 @@ function matchExchange(msg)
 end
 
 function doExchange(cid, ex)
+	if not ex then
+		return
+	end
+
 	local have = getPlayerItemCount(cid, ex.small)
 	if have < NEED then
 		selfSay('You need ' .. NEED .. ' ' .. ex.smallName .. '. You have ' .. have .. '.')
@@ -52,17 +58,29 @@ function doExchange(cid, ex)
 	end
 
 	if doPlayerRemoveItem(cid, ex.small, NEED) == -1 then
-		selfSay('Something went wrong. Try again.')
+		selfSay('Something went wrong. Please try again.')
 		return
 	end
 
 	if doPlayerAddItem(cid, ex.big, 1) == -1 then
 		doPlayerAddItem(cid, ex.small, NEED)
-		selfSay('You have no room. Free some space first.')
+		selfSay('You need more free space in your backpack.')
 		return
 	end
 
 	selfSay('Done! Here is your ' .. ex.bigName .. '.')
+end
+
+function offerExchange(cid, ex)
+	local have = getPlayerItemCount(cid, ex.small)
+	if have < NEED then
+		selfSay('You need ' .. NEED .. ' ' .. ex.smallName .. '. You have ' .. have .. '.')
+		return
+	end
+
+	pending_exchange = ex
+	talk_state = 1
+	selfSay('Trade ' .. NEED .. ' ' .. ex.smallName .. ' for 1 ' .. ex.bigName .. '? (yes or si)')
 end
 
 function onCreatureSay(cid, type, msg)
@@ -71,27 +89,34 @@ function onCreatureSay(cid, type, msg)
 	local state = npcHandleMessage(
 		cid,
 		msg,
-		'Hello ' .. creatureGetName(cid) .. '! I upgrade small gems into big ones. Say exchange for details.',
-		'One moment, ' .. creatureGetName(cid) .. '.'
+		'Hi ' .. creatureGetName(cid) .. '! I turn small gems into big ones. Say "exchange" to see options.',
+		'One moment, ' .. creatureGetName(cid) .. '!'
 	)
 	if state ~= 'focused' then
 		return
 	end
 
-	if msgcontains(msg, 'exchange') or msgcontains(msg, 'trade') or msgcontains(msg, 'help')
-		or msgcontains(msg, 'offer') or msgcontains(msg, 'list') then
-		showExchangeList()
-	elseif msgcontains(msg, 'change') or msgcontains(msg, 'fuse') or msgcontains(msg, 'upgrade') then
+	if talk_state == 1 then
+		if npcHandlePendingYesNo(cid, msg, function()
+			doExchange(cid, pending_exchange)
+		end) then
+			talk_state = 0
+			pending_exchange = nil
+		end
+		return
+	end
+
+	if msgcontains(msg, 'exchange') or msgcontains(msg, 'cambiar') or msgcontains(msg, 'trade') or npcIsHelp(msg) then
 		local ex = matchExchange(msg)
 		if ex then
-			doExchange(cid, ex)
+			offerExchange(cid, ex)
 		else
 			showExchangeList()
 		end
 	else
 		local ex = matchExchange(msg)
 		if ex then
-			doExchange(cid, ex)
+			offerExchange(cid, ex)
 		end
 	end
 end

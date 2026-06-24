@@ -37,8 +37,9 @@ end
 
 function onCreatureTurn(creature)
 
-end
-function msgcontains(txt, str)
+end
+
+function msgcontains(txt, str)
   	return (string.find(txt, str) and not string.find(txt, '(%w+)' .. str) and not string.find(txt, str .. '(%w+)'))
 end
 
@@ -47,18 +48,20 @@ function onCreatureSay(cid, type, msg)
 	cname = creatureGetName(cid)
 	msg = string.lower(msg)
 
-	if (msgcontains(msg, 'hi') and (focus == 0)) and getDistanceToCreature(cid) < 4 then
-  		selfSay('Hello ' .. cname .. '! How can I help you?')
-  		talk_state = 0
-  		focus = cid
-  		talk_start = os.clock()	elseif msgcontains(msg, 'hi') and (focus ~= cid) and getDistanceToCreature(cid) < 4 then
-  		selfSay('Sorry, ' .. cname .. '! I talk to you in a minute.')
+	local state = npcHandleMessage(
+		cid,
+		msg,
+		'Hi ' .. cname .. '! I handle guild business. Say "help" to see what you can do.',
+		'One moment, ' .. cname .. '!'
+	)
+	if state ~= 'focused' then
+		return
+	end
 
-	elseif msgcontains(msg, 'bye') and (focus == cid) and getDistanceToCreature(cid) < 4 then
-			npcEndConversation(cid, 'Good bye, ' .. cname .. '!')
-  	elseif focus == cid then
-  		if talk_state == 0 then
-  			msg = string.lower(msg)			if msgcontains(msg, 'found') then	-- found a new guild
+	if talk_state == 0 then
+		if npcIsHelp(msg) then
+			selfSay('Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.')
+		elseif msgcontains(msg, 'found') then	-- found a new guild
   				level = getPlayerLevel(cname)
 
   				if level >= leaderlevel then
@@ -85,7 +88,7 @@ function onCreatureSay(cid, type, msg)
   					talk_state = 0
   				elseif gstat == INVITED then
   					gname = getPlayerGuildName(cname)
-  					selfSay('Do you want to join ' .. gname .. '?')
+					selfSay('Do you want to join ' .. gname .. '? (yes or si)')
   					talk_state = 3
   				elseif gstat == MEMBER or gstat == VICE or gstat == LEADER then
   					selfSay('Sorry, you are a member of a guild.')
@@ -128,10 +131,10 @@ function onCreatureSay(cid, type, msg)
   					talk_state = 0
   				elseif gstat == MEMBER or gstat == VICE then
   					gname = getPlayerGuildName(cname)
-  					selfSay('Do you want to leave ' .. gname .. '?')
+					selfSay('Do you want to leave ' .. gname .. '? (yes or si)')
   					talk_state = 7
   				elseif gstat == LEADER then
-  					selfSay('You are a leader of a guild. If you leave, no one can invite new players. Are you sure?')
+					selfSay('You are the guild leader. If you leave, no one can invite new players. Are you sure? (yes or si)')
   					talk_state = 7
   				end
 
@@ -147,7 +150,10 @@ function onCreatureSay(cid, type, msg)
   				end
 
   			elseif msgcontains(msg, 'vice') then		-- set vice leader
-  				gstat = getPlayerGuildStatus(cname)				if gstat == LEADER then					selfSay('Which member do you want to promote to vice-leader?')
+  				gstat = getPlayerGuildStatus(cname)
+
+				if gstat == LEADER then
+					selfSay('Which member do you want to promote to vice-leader?')
   					talk_state = 9
   				else
   					selfSay('Sorry, only leader can promote member to vice-leader.')
@@ -177,7 +183,7 @@ function onCreatureSay(cid, type, msg)
   				end
   			end
 
-  		else	-- talk_state != 0
+	else	-- talk_state != 0
   			talk_start = os.clock()
 
   			if talk_state == 1 then		-- get name of new guild
@@ -185,7 +191,8 @@ function onCreatureSay(cid, type, msg)
 
   				if string.len(gname) <= maxnamelen then
  					if string.find(gname, allow_pattern) then
- 						if foundNewGuild(gname) == 0 then							selfSay('Sorry, there is already a guild with that name.')
+ 						if foundNewGuild(gname) == 0 then
+							selfSay('Sorry, there is already a guild with that name.')
  							talk_state = 0
  						else
  							selfSay('And what rank do you wish to have?')
@@ -208,7 +215,8 @@ function onCreatureSay(cid, type, msg)
  						setPlayerGuild(cname,LEADER,grank,gname)
  						selfSay('You are now leader of your new guild.')
  						talk_state = 0
- 					else						selfSay('Sorry, rank name contains illegal characters.')
+ 					else
+						selfSay('Sorry, rank name contains illegal characters.')
  						talk_state = 0
  					end
   				else
@@ -217,12 +225,12 @@ function onCreatureSay(cid, type, msg)
   				end
 
   			elseif talk_state == 3 then		-- join a guild
-  				if msg == 'yes' then
+  				if npcIsYes(msg) then
   					setPlayerGuildStatus(cname, MEMBER)
-  					selfSay('You are now member of a guild.')
+  					selfSay('Welcome! You are now a guild member.')
   					talk_state = 0
-  				else
-  					selfSay('What else can I do for you?')
+  				elseif npcIsNo(msg) then
+  					selfSay('No problem! What else can I do for you?')
   					talk_state = 0
   				end
 
@@ -275,16 +283,18 @@ function onCreatureSay(cid, type, msg)
  						selfSay('Sorry, rank name contains illegal characters.')
  						talk_state = 0
  					end
-  				else					selfSay('Sorry, rank name cannot be longer than ' .. maxranklen .. ' characters.')
+  				else
+					selfSay('Sorry, rank name cannot be longer than ' .. maxranklen .. ' characters.')
   					talk_state = 0
   				end
 
   			elseif talk_state == 7 then		-- leave a guild
-  				if msg == 'yes' then
+  				if npcIsYes(msg) then
   					clearPlayerGuild(cname)
-  					selfSay('You have left your guild.')
+  					selfSay('You have left your guild. Take care!')
   					talk_state = 0
-  				else					selfSay('What else can I do for you?')
+  				elseif npcIsNo(msg) then
+  					selfSay('Glad you stayed! What else can I do for you?')
   					talk_state = 0
   				end
 
@@ -322,12 +332,16 @@ function onCreatureSay(cid, type, msg)
   				elseif gname == gname2 then
   					gstat = getPlayerGuildStatus(pname)
 
-  					if gstat == INVITED then						selfSay('Sorry, ' .. pname .. ' hasn\'t joined your guild yet.');						talk_state = 0
+  					if gstat == INVITED then
+						selfSay('Sorry, ' .. pname .. ' hasn\'t joined your guild yet.');
+						talk_state = 0
   					elseif gstat == VICE then
-  						selfSay(pname .. ' is already a vice-leader.')						talk_state = 0
+  						selfSay(pname .. ' is already a vice-leader.')
+						talk_state = 0
   					elseif gstat == MEMBER then
   						setPlayerGuildStatus(pname, VICE)
-  						selfSay(pname .. ' is now a vice-leader of your guild.')						talk_state = 0
+  						selfSay(pname .. ' is now a vice-leader of your guild.')
+						talk_state = 0
   					end
   				else
   					selfSay('Sorry, ' .. pname .. ' is not in your guild.')
@@ -362,7 +376,8 @@ function onCreatureSay(cid, type, msg)
   				end
 
   			elseif talk_state == 11 then	-- get name of player to change nick
-  				pname = msg				gname = getPlayerGuildName(cname)
+  				pname = msg
+				gname = getPlayerGuildName(cname)
   				gname2 = getPlayerGuildName(pname)
 
   				if gname == gname2 then
@@ -384,7 +399,8 @@ function onCreatureSay(cid, type, msg)
  							setPlayerGuildNick(pname, msg)
  							selfSay('You have changed ' .. pname .. '\'s nick.')
  							talk_state = 0
- 						else							selfSay('Sorry, nick contains illegal characters.')
+ 						else
+							selfSay('Sorry, nick contains illegal characters.')
  							talk_state = 0
  						end
   					else
@@ -393,8 +409,7 @@ function onCreatureSay(cid, type, msg)
   					end
   				end
   			end
-  		end
-  	end
+	end
 end
 
 

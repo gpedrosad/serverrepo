@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Angry Minotaur Guard" level="27" maglevel="37" experience="336" pushable="0" armor="19" defense="26" canpushitems="1" staticattack="50" changetarget="200" speed="204">
+	<health now="314" max="314" />
+	<look type="29" head="20" body="30" legs="40" feet="50" corpse="2876" />
+	<combat targetdistance="1" runonhealth="0" />
+	<attacks>
+		<attack type="melee" mindamage="60" maxdamage="150" probability="100" />
+	</attacks>
+	<defenses>
+
+</defenses>
+	<voices>
+		<voice sentence="GRAAAH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="20" chance1="100000" chancemax="0" />
+		<item id="2666" countmax="3" chance1="70000" chancemax="0" />
+		<item id="2387" chance="5000" />
+		<item id="2649" chance="10000" />
+		<item id="1987" chance="100000">
+			<inside>
+				<item id="2386" chance="6666" />
+				<item id="0000" countmax="2" chance1="20000" chancemax="0" />
+				<item id="2580" chance="5000" />
+				<item id="2648" chance="5000" />
+				<item id="2458" chance="10000" />
+				<item id="2465" chance="2500" />
+				<item id="2513" chance="10000" />
+			</inside>
+		</item>
+		<item id="2150" countmax="2" chance1="12000" chancemax="0" />
+		<item id="2149" countmax="2" chance1="9000" chancemax="0" />
+		<item id="2147" countmax="1" chance1="6000" chancemax="0" />
+		<item id="2146" countmax="1" chance1="4000" chancemax="0" />
+		<item id="2145" countmax="1" chance1="2000" chancemax="0" />
+	</loot>
+</monster>

@@ -4,6 +4,8 @@ target = 0
 following = false
 attacking = false
 
+FOOD_HELP = 'Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Just say what you want!'
+
 function onThingMove(creature, thing, oldpos, oldstackpos)
 end
 
@@ -23,13 +25,15 @@ function onCreatureSay(cid, type, msg)
 	local state = npcHandleMessage(
 		cid,
 		msg,
-		'Hello ' .. creatureGetName(cid) .. '! I sell ham, meat, carrots, apples, brown breads, brown mushrooms and eggs (everything for 9gps).'
+		'Hi ' .. creatureGetName(cid) .. '! ' .. FOOD_HELP
 	)
 	if state ~= 'focused' then
 		return
 	end
 
-	if msgcontains(msg, 'brown bread') then
+	if npcIsHelp(msg) then
+		selfSay(FOOD_HELP)
+	elseif msgcontains(msg, 'brown bread') or msgcontains(msg, 'bread') then
 		buy(cid, 2691, 1, 8)
 	elseif msgcontains(msg, 'ham') then
 		buy(cid, 2671, 1, 8)
@@ -39,7 +43,7 @@ function onCreatureSay(cid, type, msg)
 		buy(cid, 2666, 1, 8)
 	elseif msgcontains(msg, 'apple') then
 		buy(cid, 2674, 1, 8)
-	elseif msgcontains(msg, 'brown mushroom') then
+	elseif msgcontains(msg, 'brown mushroom') or msgcontains(msg, 'mushroom') then
 		buy(cid, 2789, 1, 8)
 	elseif msgcontains(msg, 'egg') then
 		buy(cid, 2695, 1, 8)

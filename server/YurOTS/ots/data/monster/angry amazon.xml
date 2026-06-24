@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Angry Amazon" level="6" maglevel="35" experience="114" pushable="0" armor="12" defense="16" canpushitems="1" staticattack="50" changetarget="200" speed="184">
+	<health now="170" max="170" />
+	<look type="137" head="113" body="120" legs="114" feet="132" corpse="3065" />
+	<combat targetdistance="3" runonhealth="0" />
+	<attacks>
+		<attack type="distance" name="throwingknife" mindamage="24" maxdamage="62" cycleticks="2000" probability="60" />
+	</attacks>
+	<defenses>
+
+</defenses>
+	<voices>
+		<voice sentence="Your head shall be mine!" />
+		<voice sentence="Yeeee ha!" />
+		<voice sentence="GRAAAH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="21" chance1="100000" chancemax="0" />
+		<item id="2467" chance="5000" />
+		<item id="2385" chance="20000" />
+		<item id="2229" countmax="3" chance1="10000" chancemax="0" />
+		<item id="1987" chance="100000">
+			<inside>
+				<item id="2385" chance="5000" />
+				<item id="2050" chance="5000" />
+				<item id="2125" chance="3333" />
+				<item id="2690" countmax="2" chance1="20000" chancemax="0" />
+				<item id="2147" countmax="2" chance1="3333" chancemax="0" />
+				<item id="2050" chance="20000" />
+			</inside>
+		</item>
+		<item id="2150" countmax="1" chance1="8000" chancemax="0" />
+		<item id="2149" countmax="1" chance1="5500" chancemax="0" />
+		<item id="2147" countmax="1" chance1="3000" chancemax="0" />
+		<item id="2146" countmax="1" chance1="1500" chancemax="0" />
+	</loot>
+</monster>

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Enraged Crypt Shambler" level="39" maglevel="49" experience="663" pushable="0" armor="33" defense="34" canpushitems="1" staticattack="50" changetarget="200" speed="176">
+	<health now="841" max="841" />
+	<look type="100" head="20" body="30" legs="40" feet="50" corpse="3028" />
+	<combat targetdistance="1" runonhealth="0" />
+	<blood color="86" effect="9" splash="255" />
+	<attacks>
+		<attack type="melee" mindamage="94" maxdamage="299" probability="100" />
+	</attacks>
+	<defenses>
+		<defense immunity="poison" />
+		<defense immunity="paralyze" />
+	</defenses>
+	<voices>
+		<voice sentence="Chhhhhhh!" />
+		<voice sentence="Hooooohhh!" />
+		<voice sentence="Aaaaaahhh!" />
+		<voice sentence="SKREEEAAAH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="15" chance1="100000" chancemax="0" />
+		<item id="2671" countmax="2" chance1="33333" chancemax="0" />
+		<item id="1987" chance="100000">
+			<inside>
+				<item id="2377" chance="2857" />
+				<item id="2399" countmax="2" chance1="33333" chancemax="0" />
+				<item id="2450" chance="5000" />
+				<item id="2482" chance="20000" />
+				<item id="2541" chance="2000" />
+			</inside>
+		</item>
+		<item id="2150" countmax="3" chance1="26000" chancemax="0" />
+		<item id="2149" countmax="3" chance1="21000" chancemax="0" />
+		<item id="2147" countmax="2" chance1="16000" chancemax="0" />
+		<item id="2146" countmax="2" chance1="11000" chancemax="0" />
+		<item id="2145" countmax="1" chance1="6000" chancemax="0" />
+	</loot>
+</monster>

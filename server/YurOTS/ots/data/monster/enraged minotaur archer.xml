@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Enraged Minotaur Archer" level="35" maglevel="45" experience="198" pushable="0" armor="11" defense="15" canpushitems="1" staticattack="50" changetarget="200" speed="194">
+	<health now="235" max="235" />
+	<look type="24" head="20" body="30" legs="40" feet="50" corpse="2871" />
+	<combat targetdistance="5" runonhealth="0" />
+	<attacks>
+		<attack type="melee" maxdamage="10" />
+		<attack type="distance" name="bolt" cycleticks="1500" probability="45" mindamage="84" maxdamage="210" />
+		<attack type="distance" name="bolt" cycleticks="4000" probability="95" mindamage="84" maxdamage="210" />
+	</attacks>
+	<defenses>
+
+</defenses>
+	<voices>
+		<voice sentence="SKREEEAAAH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="28" chance1="100000" chancemax="0" />
+		<item id="2543" countmax="18" chance1="70000" chancemax="0" />
+		<item id="2666" countmax="3" chance1="50000" chancemax="0" />
+		<item id="2483" chance="10000" />
+		<item id="2481" chance="6666" />
+		<item id="1987" chance="100000">
+			<inside>
+				<item id="2455" chance="6666" />
+				<item id="0000" countmax="2" chance1="20000" chancemax="0" />
+				<item id="2465" chance="5000" />
+				<item id="2464" chance="10000" />
+				<item id="2648" chance="4000" />
+				<item id="2458" chance="10000" />
+			</inside>
+		</item>
+		<item id="2150" countmax="2" chance1="18000" chancemax="0" />
+		<item id="2149" countmax="2" chance1="13000" chancemax="0" />
+		<item id="2147" countmax="2" chance1="9000" chancemax="0" />
+		<item id="2146" countmax="1" chance1="6000" chancemax="0" />
+		<item id="2145" countmax="1" chance1="2500" chancemax="0" />
+	</loot>
+</monster>

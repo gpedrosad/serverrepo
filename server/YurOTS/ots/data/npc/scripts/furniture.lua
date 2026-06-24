@@ -97,9 +97,14 @@ function onCreatureSay(cid, type, msg)
 	local state = npcHandleMessage(
 		cid,
 		msg,
-		'Hello ' .. creatureGetName(cid) .. '! I sell chairs, tables, plants, containers, pillows, tapestries and more. Everything for 500gp.'
+		'Hi ' .. creatureGetName(cid) .. '! I sell furniture for your house — everything is 500gp. Say "chairs", "tables", "pillows" or an item name.'
 	)
 	if state ~= 'focused' then
+		return
+	end
+
+	if npcIsHelp(msg) then
+		selfSay('Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!')
 		return
 	end
 

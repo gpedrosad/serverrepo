@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Furious Orc Shaman" level="40" maglevel="40" experience="264" pushable="0" armor="12" defense="14" canpushitems="1" staticattack="50" changetarget="200" speed="158">
+	<health now="224" max="224" />
+	<look type="6" corpse="2860" />
+	<combat targetdistance="5" runonhealth="0" />
+	<attacks>
+		<attack type="melee" maxdamage="26" probability="100" />
+		<attack type="rune" name="Soul fire" exhaustion="500" cycleticks="550" probability="20" />
+		<attack type="rune" name="shaman missile" exhaustion="500" cycleticks="3000" probability="60" />
+		<attack type="instant" name="exura" exhaustion="500" cycleticks="2750" probability="70" />
+	</attacks>
+	<defenses>
+		<defense immunity="energy" />
+		<defense immunity="poison" />
+		<defense immunity="invisible" />
+	</defenses>
+	<voices>
+		<voice sentence="Grak brrretz gulu." />
+		<voice sentence="Huumans stinkk!" />
+		<voice sentence="RAAAARGH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="20" chance1="100000" chancemax="0" />
+		<item id="2401" chance="2222" />
+		<item id="2458" chance="2222" />
+		<item id="1987" chance="100000">
+			<inside>
+				<item id="2817" chance="5000" />
+				<item id="2389" countmax="1" chance1="4000" chancemax="0" />
+				<item id="2369" chance="3333" />
+				<item id="2190" chance="1538" />
+			</inside>
+		</item>
+		<item id="2150" countmax="2" chance1="13000" chancemax="0" />
+		<item id="2149" countmax="2" chance1="9000" chancemax="0" />
+		<item id="2147" countmax="1" chance1="6000" chancemax="0" />
+		<item id="2146" countmax="1" chance1="3500" chancemax="0" />
+	</loot>
+	<summons maxSummons="5">
+		<summon name="Snake" chance="2857" />
+	</summons>
+</monster>

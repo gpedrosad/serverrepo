@@ -34,13 +34,13 @@ function onCreatureTurn(creature)
 end
 
 function showTradeList()
-	selfSay('Small: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.')
-	selfSay('Rare: yellow gem 1k, blue gem 5k, violet gem 10k, big emerald 10k, big ruby 10k, gold nugget 10k, scarab coin 100gp.')
-	selfSay('Say sell 3 amethyst, sell all, or the gem name.')
+	selfSay('Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.')
+	selfSay('Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.')
+	selfSay('Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.')
 end
 
 function parseSellCount(msg)
-	local n = string.match(msg, 'sell%s+(%d+)')
+	local n = string.match(msg, 'sell%s+(%d+)') or string.match(msg, 'vender%s+(%d+)')
 	if n then
 		return tonumber(n)
 	end
@@ -53,6 +53,7 @@ end
 
 function normalizeSellMsg(msg)
 	msg = string.gsub(msg, '^sell%s+', '')
+	msg = string.gsub(msg, '^vender%s+', '')
 	msg = string.gsub(msg, '^(%d+)%s+', '')
 	return msg
 end
@@ -121,17 +122,23 @@ function onCreatureSay(cid, type, msg)
 	local state = npcHandleMessage(
 		cid,
 		msg,
-		'Hello ' .. creatureGetName(cid) .. '! I buy gems and diamonds. Say gems for prices.'
+		'Hi ' .. creatureGetName(cid) .. '! I buy gems and diamonds. Say "list" for prices.'
 	)
 	if state ~= 'focused' then
 		return
 	end
 
-	if msgcontains(msg, 'trade') or msgcontains(msg, 'offer') or msgcontains(msg, 'list')
-		or msgcontains(msg, 'help') or msgcontains(msg, 'gems') or msgcontains(msg, 'prices') then
+	if npcIsHelp(msg) or msgcontains(msg, 'gems') then
 		showTradeList()
-	elseif msgcontains(msg, 'sell all') or msgcontains(msg, 'all gems') or msgcontains(msg, 'sell everything') then
+	elseif msgcontains(msg, 'sell all') or msgcontains(msg, 'vender todo') or msgcontains(msg, 'all gems') then
 		sellAllGems(cid)
+	elseif msgcontains(msg, 'sell') or msgcontains(msg, 'vender') then
+		local gem = matchGem(msg)
+		if gem then
+			offerSell(cid, gem, msg)
+		else
+			showTradeList()
+		end
 	else
 		local gem = matchGem(msg)
 		if gem then

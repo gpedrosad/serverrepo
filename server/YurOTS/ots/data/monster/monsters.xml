@@ -2,6 +2,9 @@
 <monsters>
 
 <monster name="Amazon" file="amazon.xml" />
+<monster name="Angry Amazon" file="angry amazon.xml" />
+<monster name="Furious Amazon" file="furious amazon.xml" />
+<monster name="Enraged Amazon" file="enraged amazon.xml" />
 <monster name="Angry Troll" file="angry troll.xml" />
 <monster name="Furious Troll" file="furious troll.xml" />
 <monster name="Enraged Troll" file="enraged troll.xml" />
@@ -21,6 +24,9 @@
 <monster name="Enraged Behemoth" file="enraged behemoth.xml" />
 <monster name="Beholder" file="beholder.xml" />
 <monster name="Black Knight" file="black knight.xml" />
+<monster name="Angry Black Knight" file="angry black knight.xml" />
+<monster name="Furious Black Knight" file="furious black knight.xml" />
+<monster name="Enraged Black Knight" file="enraged black knight.xml" />
 <monster name="Black Sheep" file="black sheep.xml" />
 <monster name="Blue Djinn" file="blue djinn.xml" />
 <monster name="Bone Beast" file="bone beast.xml" />
@@ -34,11 +40,17 @@
 <monster name="Crab" file="crab.xml" />
 <monster name="Crocodile" file="crocodile.xml" />
 <monster name="Crypt Shambler" file="crypt shambler.xml" />
+<monster name="Angry Crypt Shambler" file="angry crypt shambler.xml" />
+<monster name="Furious Crypt Shambler" file="furious crypt shambler.xml" />
+<monster name="Enraged Crypt Shambler" file="enraged crypt shambler.xml" />
 <monster name="Cyclops" file="cyclops.xml" />
 <monster name="Angry Cyclops" file="angry cyclops.xml" />
 <monster name="Furious Cyclops" file="furious cyclops.xml" />
 <monster name="Enraged Cyclops" file="enraged cyclops.xml" />
 <monster name="Dark Monk" file="dark monk.xml" />
+<monster name="Angry Dark Monk" file="angry dark monk.xml" />
+<monster name="Furious Dark Monk" file="furious dark monk.xml" />
+<monster name="Enraged Dark Monk" file="enraged dark monk.xml" />
 <monster name="Deathslicer" file="deathslicer.xml" />
 <monster name="Deer" file="deer.xml" />
 <monster name="Demon" file="demon.xml" />
@@ -56,12 +68,21 @@
 <monster name="Furious Dragon Lord" file="furious dragon lord.xml" />
 <monster name="Enraged Dragon Lord" file="enraged dragon lord.xml" />
 <monster name="Dwarf" file="dwarf.xml" />
+<monster name="Angry Dwarf" file="angry dwarf.xml" />
+<monster name="Furious Dwarf" file="furious dwarf.xml" />
+<monster name="Enraged Dwarf" file="enraged dwarf.xml" />
 <monster name="Dwarf Geomancer" file="dwarf geomancer.xml" />
+<monster name="Angry Dwarf Geomancer" file="angry dwarf geomancer.xml" />
+<monster name="Furious Dwarf Geomancer" file="furious dwarf geomancer.xml" />
+<monster name="Enraged Dwarf Geomancer" file="enraged dwarf geomancer.xml" />
 <monster name="Dwarf Guard" file="dwarf guard.xml" />
 <monster name="Angry Dwarf Guard" file="angry dwarf guard.xml" />
 <monster name="Furious Dwarf Guard" file="furious dwarf guard.xml" />
 <monster name="Enraged Dwarf Guard" file="enraged dwarf guard.xml" />
 <monster name="Dwarf Soldier" file="dwarf soldier.xml" />
+<monster name="Angry Dwarf Soldier" file="angry dwarf soldier.xml" />
+<monster name="Furious Dwarf Soldier" file="furious dwarf soldier.xml" />
+<monster name="Enraged Dwarf Soldier" file="enraged dwarf soldier.xml" />
 <monster name="Dworc Fleshhunter" file="dworc fleshhunter.xml" />
 <monster name="Dworc Venomsniper" file="dworc venomsniper.xml" />
 <monster name="Dworf Voodoomaster" file="dworc voodoomaster.xml" />
@@ -76,9 +97,15 @@
 <monster name="Flamingo" file="flamingo.xml" />
 <monster name="Frost Troll" file="frost troll.xml" />
 <monster name="Gargoyle" file="gargoyle.xml" />
+<monster name="Angry Gargoyle" file="angry gargoyle.xml" />
+<monster name="Furious Gargoyle" file="furious gargoyle.xml" />
+<monster name="Enraged Gargoyle" file="enraged gargoyle.xml" />
 <monster name="Gazer" file="gazer.xml" />
 <monster name="Ghost" file="ghost.xml" />
 <monster name="Ghoul" file="ghoul.xml" />
+<monster name="Angry Ghoul" file="angry ghoul.xml" />
+<monster name="Furious Ghoul" file="furious ghoul.xml" />
+<monster name="Enraged Ghoul" file="enraged ghoul.xml" />
 <monster name="Giant Spider" file="giant spider.xml" />
 <monster name="Angry Giant Spider" file="angry giant spider.xml" />
 <monster name="Furious Giant Spider" file="furious giant spider.xml" />
@@ -86,7 +113,13 @@
 <monster name="Goblin" file="goblin.xml" />
 <monster name="Green Djinn" file="green djinn.xml" />
 <monster name="Hero" file="hero.xml" />
+<monster name="Angry Hero" file="angry hero.xml" />
+<monster name="Furious Hero" file="furious hero.xml" />
+<monster name="Enraged Hero" file="enraged hero.xml" />
 <monster name="Hunter" file="hunter.xml" />
+<monster name="Angry Hunter" file="angry hunter.xml" />
+<monster name="Furious Hunter" file="furious hunter.xml" />
+<monster name="Enraged Hunter" file="enraged hunter.xml" />
 <monster name="Hyaena" file="hyaena.xml" />
 <monster name="Hydra" file="hydra.xml" />
 <monster name="Angry Hydra" file="angry hydra.xml" />
@@ -95,6 +128,9 @@
 <monster name="Kongra" file="kongra.xml" />
 <monster name="Larva" file="larva.xml" />
 <monster name="Lich" file="lich.xml" />
+<monster name="Angry Lich" file="angry lich.xml" />
+<monster name="Furious Lich" file="furious lich.xml" />
+<monster name="Enraged Lich" file="enraged lich.xml" />
 <monster name="Lion" file="lion.xml" />
 <monster name="Lizard Sentinel" file="lizard sentinel.xml" />
 <monster name="Lizard Snakecharmer" file="lizard snakecharmer.xml" />
@@ -109,13 +145,28 @@
 <monster name="Furious Minotaur" file="furious minotaur.xml" />
 <monster name="Enraged Minotaur" file="enraged minotaur.xml" />
 <monster name="Minotaur Archer" file="minotaur archer.xml" />
+<monster name="Angry Minotaur Archer" file="angry minotaur archer.xml" />
+<monster name="Furious Minotaur Archer" file="furious minotaur archer.xml" />
+<monster name="Enraged Minotaur Archer" file="enraged minotaur archer.xml" />
 <monster name="Minotaur Guard" file="minotaur guard.xml" />
+<monster name="Angry Minotaur Guard" file="angry minotaur guard.xml" />
+<monster name="Furious Minotaur Guard" file="furious minotaur guard.xml" />
+<monster name="Enraged Minotaur Guard" file="enraged minotaur guard.xml" />
 <monster name="Minotaur Mage" file="minotaur mage.xml" />
+<monster name="Angry Minotaur Mage" file="angry minotaur mage.xml" />
+<monster name="Furious Minotaur Mage" file="furious minotaur mage.xml" />
+<monster name="Enraged Minotaur Mage" file="enraged minotaur mage.xml" />
 <monster name="Monk" file="monk.xml" />
 <monster name="Trainer Monk" file="trainer monk.xml" />
 <monster name="Elite Trainer Monk" file="elite trainer monk.xml" />
 <monster name="Mummy" file="mummy.xml" />
+<monster name="Angry Mummy" file="angry mummy.xml" />
+<monster name="Furious Mummy" file="furious mummy.xml" />
+<monster name="Enraged Mummy" file="enraged mummy.xml" />
 <monster name="Necromancer" file="necromancer.xml" />
+<monster name="Angry Necromancer" file="angry necromancer.xml" />
+<monster name="Furious Necromancer" file="furious necromancer.xml" />
+<monster name="Enraged Necromancer" file="enraged necromancer.xml" />
 <monster name="Orc" file="orc.xml" />
 <monster name="Angry Orc" file="angry orc.xml" />
 <monster name="Furious Orc" file="furious orc.xml" />
@@ -125,14 +176,23 @@
 <monster name="Furious Orc Berserker" file="furious orc berserker.xml" />
 <monster name="Enraged Orc Berserker" file="enraged orc berserker.xml" />
 <monster name="Orc Leader" file="orc leader.xml" />
+<monster name="Angry Orc Leader" file="angry orc leader.xml" />
+<monster name="Furious Orc Leader" file="furious orc leader.xml" />
+<monster name="Enraged Orc Leader" file="enraged orc leader.xml" />
 <monster name="Orc Rider" file="orc rider.xml" />
 <monster name="Orc Shaman" file="orc shaman.xml" />
+<monster name="Angry Orc Shaman" file="angry orc shaman.xml" />
+<monster name="Furious Orc Shaman" file="furious orc shaman.xml" />
+<monster name="Enraged Orc Shaman" file="enraged orc shaman.xml" />
 <monster name="Orc Spearman" file="orc spearman.xml" />
 <monster name="Orc Warlord" file="orc warlord.xml" />
 <monster name="Angry Orc Warlord" file="angry orc warlord.xml" />
 <monster name="Furious Orc Warlord" file="furious orc warlord.xml" />
 <monster name="Enraged Orc Warlord" file="enraged orc warlord.xml" />
 <monster name="Orc Warrior" file="orc warrior.xml" />
+<monster name="Angry Orc Warrior" file="angry orc warrior.xml" />
+<monster name="Furious Orc Warrior" file="furious orc warrior.xml" />
+<monster name="Enraged Orc Warrior" file="enraged orc warrior.xml" />
 <monster name="Panda" file="panda.xml" />
 <monster name="Parrot" file="parrot.xml" />
 <monster name="Pig" file="pig.xml" />
@@ -142,6 +202,9 @@
 <monster name="Rabbit" file="rabbit.xml" />
 <monster name="Rat" file="rat.xml" />
 <monster name="Rotworm" file="rotworm.xml" />
+<monster name="Angry Rotworm" file="angry rotworm.xml" />
+<monster name="Furious Rotworm" file="furious rotworm.xml" />
+<monster name="Enraged Rotworm" file="enraged rotworm.xml" />
 <monster name="Scarab" file="scarab.xml" />
 <monster name="Angry Scarab" file="angry scarab.xml" />
 <monster name="Furious Scarab" file="furious scarab.xml" />
@@ -150,6 +213,9 @@
 <monster name="Sheep" file="sheep.xml" />
 <monster name="Sibang" file="sibang.xml" />
 <monster name="Skeleton" file="skeleton.xml" />
+<monster name="Angry Skeleton" file="angry skeleton.xml" />
+<monster name="Furious Skeleton" file="furious skeleton.xml" />
+<monster name="Enraged Skeleton" file="enraged skeleton.xml" />
 <monster name="Skunk" file="skunk.xml" />
 <monster name="Slime" file="slime.xml" />
 <monster name="Smuggler" file="smuggler.xml" />
@@ -158,12 +224,18 @@
 <monster name="Spit Nettle" file="spit nettle.xml" />
 <monster name="Stalker" file="stalker.xml" />
 <monster name="Stone Golem" file="stone golem.xml" />
+<monster name="Angry Stone Golem" file="angry stone golem.xml" />
+<monster name="Furious Stone Golem" file="furious stone golem.xml" />
+<monster name="Enraged Stone Golem" file="enraged stone golem.xml" />
 <monster name="Swamp Troll" file="swamp troll.xml" />
 <monster name="Tarantula" file="tarantula.xml" />
 <monster name="Terror Bird" file="terror bird.xml" />
 <monster name="Tiger" file="tiger.xml" />
 <monster name="Troll" file="troll.xml" />
 <monster name="Valkyrie" file="valkyrie.xml" />
+<monster name="Angry Valkyrie" file="angry valkyrie.xml" />
+<monster name="Furious Valkyrie" file="furious valkyrie.xml" />
+<monster name="Enraged Valkyrie" file="enraged valkyrie.xml" />
 <monster name="Vampire" file="vampire.xml" />
 <monster name="Angry Vampire" file="angry vampire.xml" />
 <monster name="Furious Vampire" file="furious vampire.xml" />

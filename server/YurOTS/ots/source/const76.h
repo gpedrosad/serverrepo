@@ -304,4 +304,18 @@ enum bloodsplash_t //for splashes (count)
 #define RUBY_ATTACK_SPEED_PERCENT 15
 #define EMERALD_SKILL_BONUS 3
 
+#define ITEM_SMALL_DIAMOND  2145
+#define ITEM_SMALL_SAPPHIRE 2146
+#define ITEM_SMALL_RUBY     2147
+#define ITEM_SMALL_EMERALD  2149
+#define ITEM_SMALL_AMETHYST 2150
+#define ITEM_TALON          2151
+#define ITEM_VIOLET_GEM     2153
+#define ITEM_YELLOW_GEM     2154
+#define ITEM_BIG_EMERALD    2155
+#define ITEM_BIG_RUBY       2156
+#define ITEM_GOLD_NUGGET    2157
+#define ITEM_BLUE_GEM       2158
+#define ITEM_SCARAB_COIN    2159
+
 #endif

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Angry Gargoyle" level="27" maglevel="37" experience="315" pushable="0" armor="34" defense="34" canpushitems="1" staticattack="50" changetarget="200" speed="184">
+	<health now="425" max="425" />
+	<look type="95" head="20" body="30" legs="40" feet="50" corpse="3022" />
+	<combat targetdistance="1" runonhealth="0" />
+	<blood color="86" effect="9" splash="255" />
+	<attacks>
+		<attack type="melee" maxdamage="210" probability="100" />
+		<attack type="distance" name="smallstone" mindamage="45" maxdamage="90" cycleticks="2000" probability="90" />
+	</attacks>
+	<defenses>
+		<defense immunity="fire" />
+		<defense immunity="poison" />
+	</defenses>
+	<voices>
+		<voice sentence="GRAAAH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="20" chance1="100000" chancemax="0" />
+		<item id="2671" countmax="2" chance1="33333" chancemax="0" />
+		<item id="2666" countmax="3" chance1="33333" chancemax="0" />
+		<item id="0000" chance="10000" />
+		<item id="1987" chance="100000">
+			<inside>
+				<item id="2489" chance="2500" />
+				<item id="2148" countmax="5" chance1="100000" chancemax="0" />
+			</inside>
+		</item>
+		<item id="2150" countmax="2" chance1="12000" chancemax="0" />
+		<item id="2149" countmax="2" chance1="9000" chancemax="0" />
+		<item id="2147" countmax="1" chance1="6000" chancemax="0" />
+		<item id="2146" countmax="1" chance1="4000" chancemax="0" />
+		<item id="2145" countmax="1" chance1="2000" chancemax="0" />
+	</loot>
+</monster>

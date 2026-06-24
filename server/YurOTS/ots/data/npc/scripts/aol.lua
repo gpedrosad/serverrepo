@@ -23,13 +23,15 @@ function onCreatureSay(cid, type, msg)
 	local state = npcHandleMessage(
 		cid,
 		msg,
-		'Hello ' .. creatureGetName(cid) .. '! I sell scarfs (1k) and aols (10k).'
+		'Hi ' .. creatureGetName(cid) .. '! I sell scarf (1k gp) and amulet of loss / AOL (10k gp). Say "scarf" or "aol".'
 	)
 	if state ~= 'focused' then
 		return
 	end
 
-	if msgcontains(msg, 'aol') then
+	if npcIsHelp(msg) then
+		selfSay('Scarf: 1000 gp. Amulet of loss (AOL): 10000 gp.')
+	elseif msgcontains(msg, 'aol') or msgcontains(msg, 'amulet of loss') then
 		buy(cid, 2173, 1, 10000)
 	elseif msgcontains(msg, 'scarf') then
 		buy(cid, 2661, 1, 1000)

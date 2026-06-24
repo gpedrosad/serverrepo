@@ -329,7 +329,7 @@ void Npc::onCreatureSay(const Creature *creature, SpeakClasses type, const std::
 	if(it != pendingTrades.end() && it->second.cid == (int)creature->getID()){
 		std::string lower = text;
 		std::transform(lower.begin(), lower.end(), lower.begin(), ::tolower);
-		if(lower == "yes" || lower == "si" || lower == "y"){
+		if(lower == "yes" || lower == "si" || lower == "sí" || lower == "sip" || lower == "dale" || lower == "y"){
 			Player* player = dynamic_cast<Player*>(game->getCreatureByID(creature->getID()));
 			if(player){
 				PendingTransaction& pt = it->second;
@@ -345,13 +345,13 @@ void Npc::onCreatureSay(const Creature *creature, SpeakClasses type, const std::
 								player->removeItem(pt.bulkItems[i].first, pt.bulkItems[i].second);
 							}
 							player->payBack(pt.cost);
-							doSay("Thanks for your gems!");
+							doSay("Thanks! Here is your gold.");
 						}else
 							doSay("Sorry, you do not have those items.");
 					}else if(player->getItem(pt.itemid, pt.count)){
 						if(player->removeItem(pt.itemid, pt.count)){
 							player->payBack(pt.cost);
-							doSay("Thanks for this item!");
+							doSay("Thanks! Here is your gold.");
 						}else
 							doSay("Sorry, you do not have that item.");
 					}else
@@ -360,17 +360,17 @@ void Npc::onCreatureSay(const Creature *creature, SpeakClasses type, const std::
 					if(player->getCoins(pt.cost)){
 						if(player->removeCoins(pt.cost)){
 							player->TLMaddItem(pt.itemid, pt.count);
-							doSay("Here you are.");
+							doSay("Here you go!");
 						}else
-							doSay("Sorry, you do not have enough money.");
+							doSay("Sorry, you do not have enough gold.");
 					}else
-						doSay("Sorry, you do not have enough money.");
+						doSay("Sorry, you do not have enough gold.");
 				}
 			}
 			pendingTrades.erase(it);
 			return;
-		}else if(lower == "no" || lower == "n"){
-			doSay("Maybe next time.");
+		}else if(lower == "no" || lower == "n" || lower == "nop"){
+			doSay("No problem! Maybe next time.");
 			pendingTrades.erase(it);
 			return;
 		}
@@ -749,9 +749,9 @@ int NpcScript::luaBuyItem(lua_State *L)
 
 		std::stringstream ss;
 		if(Item::items[itemid].isFluidContainer() && count != 0) {
-			ss << "Do you want to buy 1 " << Item::getFluidTypeName(count) << " for " << cost << " gold? (yes/no)";
+			ss << "Buy 1 " << Item::getFluidTypeName(count) << " for " << cost << " gp? (yes or si)";
 		} else {
-			ss << "Do you want to buy " << count << "x " << Item::items[itemid].name << " for " << cost << " gold? (yes/no)";
+			ss << "Buy " << count << "x " << Item::items[itemid].name << " for " << cost << " gp? (yes or si)";
 		}
 		mynpc->doSay(ss.str());
 	}
@@ -781,7 +781,7 @@ int NpcScript::luaSellItem(lua_State *L)
 		pt.isSell = true;
 
 		std::stringstream ss;
-		ss << "Do you want to sell " << count << "x " << Item::items[itemid].name << " for " << cost << " gold? (yes/no)";
+		ss << "Sell " << count << "x " << Item::items[itemid].name << " for " << cost << " gp? (yes or si)";
 		mynpc->doSay(ss.str());
 	}
 
@@ -829,7 +829,7 @@ int NpcScript::luaSellBundle(lua_State *L)
 		}
 
 		std::stringstream ss;
-		ss << "Do you want to sell " << pt.bulkLabel << " for " << cost << " gold? (yes/no)";
+		ss << "Sell " << pt.bulkLabel << " for " << cost << " gp? (yes or si)";
 		mynpc->doSay(ss.str());
 	}
 

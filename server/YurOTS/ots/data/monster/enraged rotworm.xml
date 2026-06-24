@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Enraged Rotworm" level="13" maglevel="12" experience="112" pushable="0" armor="8" defense="15" canpushitems="1" staticattack="50" changetarget="200" speed="138">
+	<health now="143" max="143" />
+	<look type="26" head="20" body="30" legs="40" feet="50" corpse="2824" />
+	<combat targetdistance="1" runonhealth="0" />
+	<attacks>
+		<attack type="melee" maxdamage="70" />
+	</attacks>
+	<defenses>
+
+</defenses>
+	<voices>
+		<voice sentence="Klurk! Klurk!" />
+		<voice sentence="Klork! Klork!" />
+		<voice sentence="Klirk! Klirk!" />
+		<voice sentence="Klerk! Klerk!" />
+		<voice sentence="Klark! Klark!" />
+		<voice sentence="SKREEEAAAH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="40" chance1="100000" chancemax="0" />
+		<item id="2480" chance="3333" />
+		<item id="2530" chance="2857" />
+		<item id="3976" countmax="5" chance1="20000" chancemax="0" />
+		<item id="1987" chance="100000">
+			<inside>
+				<item id="2398" chance="3333" />
+				<item id="2671" countmax="2" chance1="20000" chancemax="0" />
+				<item id="2376" chance="10000" />
+				<item id="2412" chance="2222" />
+			</inside>
+		</item>
+		<item id="2150" countmax="2" chance1="12000" chancemax="0" />
+		<item id="2149" countmax="1" chance1="8000" chancemax="0" />
+		<item id="2147" countmax="1" chance1="5000" chancemax="0" />
+		<item id="2146" countmax="1" chance1="2500" chancemax="0" />
+	</loot>
+</monster>

@@ -1,4 +1,5 @@
--- get the distance to a creature
+-- Shared NPC helpers. Dialogue in English; accepts English and Spanish player replies.
+
 function getDistanceToCreature(id)
 	if id == 0 or id == nil then
 		selfGotoIdle()
@@ -15,12 +16,10 @@ function msgcontains(txt, str)
 	return (string.find(txt, str) and not string.find(txt, '(%w+)' .. str) and not string.find(txt, str .. '(%w+)'))
 end
 
--- do one step to reach position
 function moveToPosition(x, y, z)
 	selfMoveTo(x, y, z)
 end
 
--- do one step to reach creature
 function moveToCreature(id)
 	if id == 0 or id == nil then
 		selfGotoIdle()
@@ -40,11 +39,46 @@ function selfGotoIdle()
 	target = 0
 end
 
+function npcIsGreeting(msg)
+	return msgcontains(msg, 'hi') or msgcontains(msg, 'hola') or msgcontains(msg, 'buenas') or msgcontains(msg, 'hey')
+end
+
+function npcIsFarewell(msg)
+	return msgcontains(msg, 'bye') or msgcontains(msg, 'adios') or msgcontains(msg, 'chau') or msgcontains(msg, 'chao')
+end
+
+function npcIsYes(msg)
+	if msg == 'y' or msg == 's' or msg == 'si' or msg == 'sí' then
+		return true
+	end
+	return msgcontains(msg, 'yes') or msgcontains(msg, 'sip') or msgcontains(msg, 'dale')
+end
+
+function npcIsNo(msg)
+	if msg == 'n' then
+		return true
+	end
+	return msgcontains(msg, 'no') or msgcontains(msg, 'nop')
+end
+
+function npcIsHelp(msg)
+	return msgcontains(msg, 'help') or msgcontains(msg, 'ayuda') or msgcontains(msg, 'list')
+		or msgcontains(msg, 'lista') or msgcontains(msg, 'offer') or msgcontains(msg, 'oferta')
+		or msgcontains(msg, 'prices') or msgcontains(msg, 'precios') or msgcontains(msg, 'trade')
+		or msgcontains(msg, 'info')
+end
+
 function npcResetState()
 	focus = 0
 	talk_start = 0
 	if talk_state ~= nil then
 		talk_state = 0
+	end
+	if pending_exchange ~= nil then
+		pending_exchange = nil
+	end
+	if pending_travel ~= nil then
+		pending_travel = nil
 	end
 end
 
@@ -56,6 +90,12 @@ function npcBeginConversation(cid, message)
 	talk_start = os.clock()
 	if talk_state ~= nil then
 		talk_state = 0
+	end
+	if pending_exchange ~= nil then
+		pending_exchange = nil
+	end
+	if pending_travel ~= nil then
+		pending_travel = nil
 	end
 end
 
@@ -78,22 +118,22 @@ function npcEndConversation(cid, message)
 end
 
 function npcHandleMessage(cid, msg, greetMessage, busyMessage, byeMessage)
-	if msgcontains(msg, 'hi') and focus == 0 and getDistanceToCreature(cid) < 4 then
+	if npcIsGreeting(msg) and focus == 0 and getDistanceToCreature(cid) < 4 then
 		npcBeginConversation(cid, greetMessage)
 		return 'greet'
 	end
 
-	if msgcontains(msg, 'hi') and focus ~= cid and getDistanceToCreature(cid) < 4 then
+	if npcIsGreeting(msg) and focus ~= cid and getDistanceToCreature(cid) < 4 then
 		if busyMessage == nil or busyMessage == '' then
-			busyMessage = 'Sorry, ' .. creatureGetName(cid) .. '! I talk to you in a minute.'
+			busyMessage = 'One moment, ' .. creatureGetName(cid) .. '! I am helping someone else.'
 		end
 		selfSay(busyMessage)
 		return 'busy'
 	end
 
-	if focus == cid and msgcontains(msg, 'bye') and getDistanceToCreature(cid) < 4 then
+	if focus == cid and npcIsFarewell(msg) and getDistanceToCreature(cid) < 4 then
 		if byeMessage == nil or byeMessage == '' then
-			byeMessage = 'Good bye, ' .. creatureGetName(cid) .. '!'
+			byeMessage = 'Bye, ' .. creatureGetName(cid) .. '! Come back anytime.'
 		end
 		npcEndConversation(cid, byeMessage)
 		return 'bye'
@@ -109,7 +149,7 @@ end
 function npcOnCreatureDisappear(cid, message)
 	if focus == cid then
 		if message == nil or message == '' then
-			message = 'Good bye then.'
+			message = 'See you later!'
 		end
 		npcEndConversation(cid, message)
 	end
@@ -125,13 +165,13 @@ function npcOnThink(idleTimeout, idleMessage, maxDistance)
 
 	if focus ~= 0 and (os.clock() - talk_start) > idleTimeout then
 		if idleMessage == nil or idleMessage == '' then
-			idleMessage = 'Next Please...'
+			idleMessage = 'Next please...'
 		end
 		npcEndConversation(focus, idleMessage)
 	elseif focus ~= 0 then
 		local distance = getDistanceToCreature(focus)
 		if distance == nil or distance > maxDistance then
-			npcEndConversation(focus, 'Good bye then.')
+			npcEndConversation(focus, 'See you later!')
 		end
 	end
 end
@@ -185,6 +225,26 @@ function npcTryCatalogSell(cid, msg, entries)
 	local entry = npcFindCatalogEntry(msg, entries)
 	if entry then
 		sell(cid, entry.itemid, entry.count or 1, entry.price)
+		return true
+	end
+
+	return false
+end
+
+function npcHandlePendingYesNo(cid, msg, onYes, onNo)
+	if npcIsYes(msg) then
+		if onYes then
+			onYes()
+		end
+		return true
+	end
+
+	if npcIsNo(msg) then
+		if onNo then
+			onNo()
+		else
+			selfSay('No problem! Come back when you are ready.')
+		end
 		return true
 	end
 
