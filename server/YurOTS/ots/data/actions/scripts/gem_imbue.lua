@@ -14,30 +14,40 @@ BOOTS = {
 	[2646] = true, [3982] = true,
 }
 
-function isWeapon(itemid)
-	if not itemid or itemid == 0 then return false end
-	if WANDS[itemid] then return false end
-	if itemid == 2512 then return false end -- shield placeholder, real check in C++
+-- Items that are not weapons but can sit in hand slots.
+NOT_WEAPONS = {
+	[2006] = true, [2120] = true, [2148] = true, [2152] = true, [2160] = true,
+	[2260] = true, [2268] = true, [2273] = true, [2304] = true, [2311] = true,
+	[2313] = true, [2389] = true, [2543] = true, [2544] = true, [2547] = true,
+	[2554] = true, [1988] = true, [2512] = true,
+}
+
+function isImbueWeapon(itemid)
+	if not itemid or itemid == 0 then
+		return false
+	end
+	if WANDS[itemid] or NOT_WEAPONS[itemid] then
+		return false
+	end
 	return true
 end
 
 function getWandSlot(cid)
 	local left = getPlayerSlotItem(cid, SLOT_LEFT)
 	local right = getPlayerSlotItem(cid, SLOT_RIGHT)
-	if left.uid and left.uid > 0 and WANDS[left.itemid] then return left end
 	if right.uid and right.uid > 0 and WANDS[right.itemid] then return right end
+	if left.uid and left.uid > 0 and WANDS[left.itemid] then return left end
 	return nil
 end
 
 function getWeaponSlot(cid)
-	local left = getPlayerSlotItem(cid, SLOT_LEFT)
 	local right = getPlayerSlotItem(cid, SLOT_RIGHT)
-	for _, it in ipairs({left, right}) do
-		if it.uid and it.uid > 0 and WANDS[it.itemid] then
-			-- skip
-		elseif it.uid and it.uid > 0 and it.itemid ~= 2512 then
-			return it
-		end
+	local left = getPlayerSlotItem(cid, SLOT_LEFT)
+	if right.uid and right.uid > 0 and isImbueWeapon(right.itemid) then
+		return right
+	end
+	if left.uid and left.uid > 0 and isImbueWeapon(left.itemid) then
+		return left
 	end
 	return nil
 end
@@ -108,11 +118,11 @@ function onUse(cid, item, frompos, item2, topos)
 	if gem == 2156 then
 		local weapon = getWeaponSlot(cid)
 		if not weapon then
-			doPlayerSendCancel(cid, "Equip a weapon to imbue it.")
+			doPlayerSendCancel(cid, "Equip a weapon in your right or left hand to imbue it.")
 			return 1
 		end
 		if weapon.actionid == 9040 then
-			doPlayerSendCancel(cid, "Weapon already has attack speed imbuement.")
+			doPlayerSendCancel(cid, "This weapon already has attack speed imbuement.")
 			return 1
 		end
 		if weapon.actionid >= 9020 then

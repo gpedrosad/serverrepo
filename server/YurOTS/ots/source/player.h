@@ -586,8 +586,10 @@ protected:
 	unsigned short healthTick;
 
 #ifdef YUR_PREMIUM_PROMOTION
-	static const int64_t promotedGainManaVector[5][2];
-	static const int64_t promotedGainHealthVector[5][2];
+	static const int64_t premiumGainManaVector[5][2];
+	static const int64_t premiumGainHealthVector[5][2];
+	static const int64_t advancedGainManaVector[5][2];
+	static const int64_t advancedGainHealthVector[5][2];
 #endif //YUR_PREMIUM_PROMOTION
 
 	unsigned char level_percent;

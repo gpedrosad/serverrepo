@@ -3722,6 +3722,14 @@ void Game::creatureMakeDamage(Creature *creature, Creature *attackedCreature, fi
 				if(creatureState.damage > 0) {
 					std::stringstream dmg;
 					dmg << std::abs(creatureState.damage);
+#ifdef YUR_BOH
+					if(player && player->imbueRubyWeapon){
+						spectator->sendAnimatedText(attackedCreature->pos, 0xB4, dmg.str());
+						spectator->sendMagicEffect(attackedCreature->pos, NM_ME_YELLOW_RINGS);
+					}
+					else
+#endif //YUR_BOH
+					{
 #ifdef TJ_MONSTER_BLOOD
 					spectator->sendAnimatedText(attackedCreature->pos, attackedCreature->bloodcolor, dmg.str());
 					spectator->sendMagicEffect(attackedCreature->pos, attackedCreature->bloodeffect);
@@ -3729,13 +3737,7 @@ void Game::creatureMakeDamage(Creature *creature, Creature *attackedCreature, fi
 					spectator->sendAnimatedText(attackedCreature->pos, 0xB4, dmg.str());
 					spectator->sendMagicEffect(attackedCreature->pos, NM_ME_DRAW_BLOOD);
 #endif //TJ_MONSTER_BLOOD
-#ifdef YUR_BOH
-					if(player && player->imbueRubyWeapon){
-						spectator->sendMagicEffect(attackedCreature->pos, NM_ME_YELLOW_RINGS);
-						if(damagetype == FIGHT_MELEE)
-							spectator->sendMagicEffect(creature->pos, NM_ME_SOUND_YELLOW);
 					}
-#endif //YUR_BOH
 				}
 
 				if(creatureState.manaDamage >0) {

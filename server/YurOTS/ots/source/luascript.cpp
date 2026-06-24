@@ -141,6 +141,7 @@ int LuaScript::OpenFile(const char *filename)
 #ifdef YUR_PREMIUM_PROMOTION
 	FREE_PREMMY = getGlobalString("freepremmy") == "yes";
 	QUEUE_PREMMY = getGlobalString("queuepremmy") == "yes";
+	PREMMY_EXP_BONUS = getGlobalNumber("premmyexpbonus", 10);
 #endif //YUR_PREMIUM_PROMOTION
 
 #ifdef YUR_CVS_MODS

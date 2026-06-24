@@ -72,7 +72,7 @@ function onCreatureSay(cid, type, msg)
 		selfSay('10 premium hours cost 10,000gp. Interested? (yes or si)')
 		talk_state = 2
 	elseif npcIsHelp(msg) then
-		selfSay('Premium: 10 hours for 10k. Promotion: 20k (level 20+, premium required).')
+		selfSay('Premium (10h = 10k): +10% exp, faster life/mana regen, outfits, queue priority. Promotion (20k, lvl 20+): advanced vocation title and advanced regen.')
 	end
 end
 

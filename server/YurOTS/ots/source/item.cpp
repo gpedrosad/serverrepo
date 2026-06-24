@@ -666,7 +666,12 @@ std::string Item::getDescription(bool fullDescription) const
 			}
 			else if(isWeapon() && (getAttack() || getDefense()))
 			{
-				s << article(it.name) << " (Atk:" << (int)getAttack() << " Def:" << (int)getDefense() << ")";
+				s << article(it.name) << " (Atk:" << (int)getAttack() << " Def:" << (int)getDefense();
+#ifdef YUR_BOH
+				if(actionId == ITEM_RUBY_ATTACK_AID)
+					s << ", +" << RUBY_ATTACK_SPEED_PERCENT << "% speed";
+#endif //YUR_BOH
+				s << ")";
 			}
 			else if(getArmor())
 			{
@@ -756,16 +761,16 @@ std::string Item::getDescription(bool fullDescription) const
 #ifdef YUR_BOH
 	if(fullDescription){
 		appendGemUseDescription(s, id);
-		if(actionId >= ITEM_HASTE_ENCHANT_AID && actionId <= ITEM_HASTE_ENCHANT_AID_MAX)
-			s << std::endl << "Imbued: +" << (HASTE_ENCHANT_SPEED * (actionId - ITEM_HASTE_ENCHANT_AID + 1)) << " haste (" << (actionId - ITEM_HASTE_ENCHANT_AID + 1) << "/3).";
-		else if(actionId >= ITEM_VIOLET_ML_AID && actionId <= ITEM_VIOLET_ML_AID_MAX)
-			s << std::endl << "Imbued: +" << (actionId - ITEM_VIOLET_ML_AID + 1) << " ML (" << (actionId - ITEM_VIOLET_ML_AID + 1) << "/4).";
-		else if(actionId == ITEM_RUBY_ATTACK_AID)
-			s << std::endl << "Imbued: +" << RUBY_ATTACK_SPEED_PERCENT << "% attack speed ("
-			  << RUBY_ATTACK_DELAY_MS << "ms per hit, default 1000ms).";
-		else if(actionId == ITEM_EMERALD_SKILL_AID)
-			s << std::endl << "Imbued: +" << EMERALD_SKILL_BONUS << " attack skills (P/K).";
 	}
+	if(actionId >= ITEM_HASTE_ENCHANT_AID && actionId <= ITEM_HASTE_ENCHANT_AID_MAX)
+		s << std::endl << "Imbued: +" << (HASTE_ENCHANT_SPEED * (actionId - ITEM_HASTE_ENCHANT_AID + 1)) << " haste (" << (actionId - ITEM_HASTE_ENCHANT_AID + 1) << "/3).";
+	else if(actionId >= ITEM_VIOLET_ML_AID && actionId <= ITEM_VIOLET_ML_AID_MAX)
+		s << std::endl << "Imbued: +" << (actionId - ITEM_VIOLET_ML_AID + 1) << " ML (" << (actionId - ITEM_VIOLET_ML_AID + 1) << "/4).";
+	else if(actionId == ITEM_RUBY_ATTACK_AID && fullDescription)
+		s << std::endl << "It attacks faster: +" << RUBY_ATTACK_SPEED_PERCENT << "% speed ("
+		  << RUBY_ATTACK_DELAY_MS << "ms per hit, default 1000ms).";
+	else if(actionId == ITEM_EMERALD_SKILL_AID)
+		s << std::endl << "Imbued: +" << EMERALD_SKILL_BONUS << " attack skills (P/K).";
 #endif //YUR_BOH
 
 	str = s.str();

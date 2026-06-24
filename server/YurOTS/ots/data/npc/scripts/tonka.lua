@@ -16,6 +16,8 @@ EXCHANGES = {
 
 NEED = 20
 
+TONKA_HELP = 'I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots. Say "exchange" to start a trade.'
+
 function onThingMove(creature, thing, oldpos, oldstackpos)
 end
 
@@ -29,8 +31,13 @@ end
 function onCreatureTurn(creature)
 end
 
+function showHelp()
+	selfSay(TONKA_HELP)
+	selfSay('Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".')
+end
+
 function showExchangeList()
-	selfSay('I upgrade gems: trade 20 small gems for 1 big gem of the same color.')
+	selfSay('Trade 20 small gems for 1 big gem of the same color.')
 	selfSay('Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".')
 end
 
@@ -89,7 +96,7 @@ function onCreatureSay(cid, type, msg)
 	local state = npcHandleMessage(
 		cid,
 		msg,
-		'Hi ' .. creatureGetName(cid) .. '! I turn small gems into big ones. Say "exchange" to see options.',
+		'Hi ' .. creatureGetName(cid) .. '! I turn small gems into big ones. Say "help" or "exchange" to see what I do.',
 		'One moment, ' .. creatureGetName(cid) .. '!'
 	)
 	if state ~= 'focused' then
@@ -106,7 +113,9 @@ function onCreatureSay(cid, type, msg)
 		return
 	end
 
-	if msgcontains(msg, 'exchange') or msgcontains(msg, 'cambiar') or msgcontains(msg, 'trade') or npcIsHelp(msg) then
+	if msgcontains(msg, 'help') or msgcontains(msg, 'ayuda') then
+		showHelp()
+	elseif msgcontains(msg, 'exchange') or msgcontains(msg, 'cambiar') or msgcontains(msg, 'trade') then
 		local ex = matchExchange(msg)
 		if ex then
 			offerExchange(cid, ex)

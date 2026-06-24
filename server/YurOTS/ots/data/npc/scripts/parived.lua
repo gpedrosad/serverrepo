@@ -20,6 +20,8 @@ GEMS = {
 	{keys = {'talon'}, id = 2151, price = 320, name = 'talon'}
 }
 
+PARIVED_HELP = 'I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.'
+
 function onThingMove(creature, thing, oldpos, oldstackpos)
 end
 
@@ -31,6 +33,10 @@ function onCreatureDisappear(cid, pos)
 end
 
 function onCreatureTurn(creature)
+end
+
+function showHelp()
+	selfSay(PARIVED_HELP)
 end
 
 function showTradeList()
@@ -122,13 +128,16 @@ function onCreatureSay(cid, type, msg)
 	local state = npcHandleMessage(
 		cid,
 		msg,
-		'Hi ' .. creatureGetName(cid) .. '! I buy gems and diamonds. Say "list" for prices.'
+		'Hi ' .. creatureGetName(cid) .. '! I buy gems and diamonds. Say "help" or "list" for prices.'
 	)
 	if state ~= 'focused' then
 		return
 	end
 
-	if npcIsHelp(msg) or msgcontains(msg, 'gems') then
+	if msgcontains(msg, 'help') or msgcontains(msg, 'ayuda') then
+		showHelp()
+	elseif msgcontains(msg, 'gems') or msgcontains(msg, 'list') or msgcontains(msg, 'lista')
+		or msgcontains(msg, 'prices') or msgcontains(msg, 'precios') then
 		showTradeList()
 	elseif msgcontains(msg, 'sell all') or msgcontains(msg, 'vender todo') or msgcontains(msg, 'all gems') then
 		sellAllGems(cid)

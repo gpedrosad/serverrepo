@@ -2,7 +2,8 @@
 <spells maxVoc="4">
 
 
-<!--// Instant \\--><spell name="Light"					words="utevo lux"			maglv="0"	mana="20"	enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /><vocation id="4" /></spell>
+<!--// Instant \\-->
+<spell name="Light"					words="utevo lux"			maglv="0"	mana="20"	enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /><vocation id="4" /></spell>
 <spell name="Greater Light"			words="utevo gran lux"		maglv="3"	mana="60"	enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /><vocation id="4" /></spell>
 <spell name="Ultimate Light"		words="utevo vis lux"		maglv="12"	mana="140"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
 <spell name="Poison Storm"			words="exevo gran mas pox"	maglv="28"	mana="600"	enabled="1"><vocation id="2" /></spell>
@@ -149,9 +150,9 @@
 
 
 <!--// Runes \\-->
-<rune name="Light Magic Missile"	id="2287"	charges="5"		maglv="0"	mana="0"	enabled="1"></rune>
+<rune name="Light Magic Missile"	id="2287"	charges="10"		maglv="0"	mana="0"	enabled="1"></rune>
 <rune name="Poison Field"			id="2285"	charges="3"		maglv="0"	mana="0"	enabled="1"></rune>
-<rune name="Heavy Magic Missile"	id="2311"	charges="5"		maglv="1"	mana="0"	enabled="1"></rune>
+<rune name="Heavy Magic Missile"	id="2311"	charges="8"		maglv="1"	mana="0"	enabled="1"></rune>
 <rune name="Fire Field"				id="2301"	charges="3"		maglv="1"	mana="0"	enabled="1"></rune>
 <rune name="Intense Healing"		id="2265"	charges="1"		maglv="1"	mana="0"	enabled="1"></rune>
 <rune name="Fireball"				id="2302"	charges="3"		maglv="2"	mana="0"	enabled="1"></rune>
@@ -160,20 +161,20 @@
 <rune name="Animate Dead"			id="2316"	charges="2"		maglv="4"	mana="0"	enabled="1"></rune>
 <rune name="Envenom"				id="2292"	charges="3"		maglv="4"	mana="0"	enabled="1"></rune>
 <rune name="Desintegrate"			id="2310"	charges="3"		maglv="4"	mana="0"	enabled="1"></rune>
-<rune name="Poisonbomb"				id="2286"	charges="2"		maglv="4"	mana="0"	enabled="1"></rune>
+<rune name="Poisonbomb"				id="2286"	charges="6"		maglv="4"	mana="0"	enabled="1"></rune>
 <rune name="Great Fireball"			id="2304"	charges="2"		maglv="4"	mana="0"	enabled="1"></rune>
-<rune name="Firebomb"				id="2305"	charges="2"		maglv="5"	mana="0"	enabled="1"></rune>
+<rune name="Firebomb"				id="2305"	charges="6"		maglv="5"	mana="0"	enabled="1"></rune>
 <rune name="Convince Creature"		id="2290"	charges="1"		maglv="5"	mana="0"	enabled="1"></rune>
 <rune name="Poison Wall"			id="2289"	charges="4"		maglv="5"	mana="0"	enabled="1"></rune>
 <rune name="Chameleon"				id="2291"	charges="1"		maglv="4"	mana="0"	enabled="1"></rune>
-<rune name="Ultimate Healing"		id="2273"	charges="1"		maglv="4"	mana="0"	enabled="1"></rune>
-<rune name="Explosion"				id="2313"	charges="3"		maglv="6"	mana="0"	enabled="1"></rune>
+<rune name="Ultimate Healing"		id="2273"	charges="2"		maglv="4"	mana="0"	enabled="1"></rune>
+<rune name="Explosion"				id="2313"	charges="6"		maglv="6"	mana="0"	enabled="1"></rune>
 <rune name="Soulfire"				id="2308"	charges="2"		maglv="7"	mana="0"	enabled="1"></rune>
 <rune name="Fire Wall"				id="2303"	charges="4"		maglv="13"	mana="0"	enabled="1"></rune>
 <rune name="Magic Wall"				id="2293"	charges="4"		maglv="9"	mana="0"	enabled="1"></rune>
-<rune name="Energy Bomb"			id="2262"	charges="2"		maglv="10"	mana="0"	enabled="1"></rune>
+<rune name="Energy Bomb"			id="2262"	charges="6"		maglv="10"	mana="0"	enabled="1"></rune>
 <rune name="Energy Wall"			id="2279"	charges="4"		maglv="9"	mana="0"	enabled="1"></rune>
-<rune name="Sudden Death"			id="2268"	charges="1"		maglv="15"	mana="0"	enabled="1"></rune>
+<rune name="Sudden Death"			id="2268"	charges="2"		maglv="15"	mana="0"	enabled="1"></rune>
 <rune name="Paralyze"				id="2278"	charges="1"		maglv="18"	mana="0"	enabled="1"></rune>
 <!--\\ End Runes //-->
 </spells>

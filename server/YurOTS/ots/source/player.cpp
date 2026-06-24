@@ -49,8 +49,10 @@ extern Chat g_chat;
 AutoList<Player> Player::listPlayer;
 
 #ifdef YUR_PREMIUM_PROMOTION
-const int64_t Player::promotedGainManaVector[5][2] = {{6,1},{2,1},{2,1},{3,1},{6,1}};
-const int64_t Player::promotedGainHealthVector[5][2] = {{6,1},{6,1},{6,1},{3,1},{2,1}};
+const int64_t Player::premiumGainManaVector[5][2] = {{6,1},{2,1},{2,1},{3,1},{6,1}};
+const int64_t Player::premiumGainHealthVector[5][2] = {{6,1},{6,1},{6,1},{3,1},{2,1}};
+const int64_t Player::advancedGainManaVector[5][2] = {{4,1},{1,1},{1,1},{2,1},{4,1}};
+const int64_t Player::advancedGainHealthVector[5][2] = {{4,1},{4,1},{4,1},{2,1},{1,1}};
 #endif //YUR_PREMIUM_PROMOTION
 
 const int64_t Player::gainManaVector[5][2] = {{6,1},{3,1},{3,1},{4,1},{6,1}};
@@ -1997,12 +1999,19 @@ bool Player::gainManaTick()
 	if(vocation >= 0 && vocation < 5)
 	{
 #ifdef YUR_PREMIUM_PROMOTION
-		if (promoted)
+		if (isPromoted())
 		{
-			if(manaTick < promotedGainManaVector[vocation][0])
+			if(manaTick < advancedGainManaVector[vocation][0])
 				return false;
 			manaTick = 0;
-			add = promotedGainManaVector[vocation][1];
+			add = advancedGainManaVector[vocation][1];
+		}
+		else if (isPremium())
+		{
+			if(manaTick < premiumGainManaVector[vocation][0])
+				return false;
+			manaTick = 0;
+			add = premiumGainManaVector[vocation][1];
 		}
 		else
 #endif //YUR_PREMIUM_PROMOTION
@@ -2033,12 +2042,19 @@ bool Player::gainHealthTick()
 	if(vocation >= 0 && vocation < 5)
 	{
 #ifdef YUR_PREMIUM_PROMOTION
-		if (promoted)
+		if (isPromoted())
 		{
-			if(healthTick < promotedGainHealthVector[vocation][0])
+			if(healthTick < advancedGainHealthVector[vocation][0])
 				return false;
 			healthTick = 0;
-			add = promotedGainHealthVector[vocation][1];
+			add = advancedGainHealthVector[vocation][1];
+		}
+		else if (isPremium())
+		{
+			if(healthTick < premiumGainHealthVector[vocation][0])
+				return false;
+			healthTick = 0;
+			add = premiumGainHealthVector[vocation][1];
 		}
 		else
 #endif //YUR_PREMIUM_PROMOTION
@@ -2608,6 +2624,13 @@ static bool isWandItem(int id)
 	}
 }
 
+static bool isRubyImbueWeaponItem(const Item* item)
+{
+	return item && item->isWeapon() && item->getWeaponType() != SHIELD &&
+		!isWandItem(item->getID()) &&
+		item->getActionId() == ITEM_RUBY_ATTACK_AID;
+}
+
 void Player::checkBoh()
 {
 	bool bohNow = (items[SLOT_FEET] && items[SLOT_FEET]->getID() == ITEM_BOH);
@@ -2623,9 +2646,7 @@ void Player::checkBoh()
 
 	bool rubyNow = false;
 	for(int slot = SLOT_RIGHT; slot <= SLOT_LEFT; slot++){
-		if(items[slot] && !isWandItem(items[slot]->getID()) &&
-			items[slot]->getWeaponType() != SHIELD &&
-			items[slot]->getActionId() == ITEM_RUBY_ATTACK_AID){
+		if(isRubyImbueWeaponItem(items[slot])){
 			rubyNow = true;
 			break;
 		}

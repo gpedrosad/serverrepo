@@ -106,6 +106,9 @@ freepremmy = "no"
 -- do you want premium players to wait in queue as others? (yes/no)
 queuepremmy = "yes"
 
+-- extra exp % from monsters for premium players (10 = +10%)
+premmyexpbonus = 10
+
 -- how much % of {exp, mana, skill, eq, bp} do you lose when dying
 diepercent = {"7", "7", "7", "7", "100"}
 
