@@ -31,11 +31,7 @@ end
 
 
 function onCreatureDisappear(cid, pos)
-  	if focus == cid then
-          selfSay('Good bye then.')
-          focus = 0
-          talk_start = 0
-  	end
+	npcOnCreatureDisappear(cid)
 end
 
 
@@ -48,20 +44,18 @@ end
 
 
 function onCreatureSay(cid, type, msg)
-  	cname = creatureGetName(cid)
+	cname = creatureGetName(cid)
+	msg = string.lower(msg)
 
-  	if (msgcontains(msg, 'hi') and (focus == 0)) and getDistanceToCreature(cid) < 4 then
+	if (msgcontains(msg, 'hi') and (focus == 0)) and getDistanceToCreature(cid) < 4 then
   		selfSay('Hello ' .. cname .. '! How can I help you?')
   		talk_state = 0
   		focus = cid
   		talk_start = os.clock()	elseif msgcontains(msg, 'hi') and (focus ~= cid) and getDistanceToCreature(cid) < 4 then
   		selfSay('Sorry, ' .. cname .. '! I talk to you in a minute.')
 
-  	elseif msgcontains(msg, 'bye') and (focus == cid) and getDistanceToCreature(cid) < 4 then
-  			selfSay('Good bye, ' .. cname .. '!')
-  			talk_state = 0
-  			focus = 0
-  			talk_start = 0
+	elseif msgcontains(msg, 'bye') and (focus == cid) and getDistanceToCreature(cid) < 4 then
+			npcEndConversation(cid, 'Good bye, ' .. cname .. '!')
   	elseif focus == cid then
   		if talk_state == 0 then
   			msg = string.lower(msg)			if msgcontains(msg, 'found') then	-- found a new guild
@@ -410,16 +404,5 @@ end
 
 
 function onThink()
-  	if (os.clock() - talk_start) > 45 then
-  		if focus > 0 then
-  			selfSay('Next Please...')
-  		end
-  			focus = 0
-  	end
- 	if focus ~= 0 then
- 		if getDistanceToCreature(focus) > 5 then
- 			selfSay('Good bye then.')
- 			focus = 0
- 		end
- 	end
+	npcOnThink(45)
 end

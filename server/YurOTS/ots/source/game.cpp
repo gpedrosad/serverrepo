@@ -75,6 +75,7 @@ extern Spells spells;
 extern Actions actions;
 extern Commands commands;
 extern Chat g_chat;
+extern Monsters g_monsters;
 
 extern std::vector< std::pair<unsigned long, unsigned long> > bannedIPs;
 
@@ -585,8 +586,8 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 		game->startDecay(corpseitem);
 
 		Monster* slainMonster = dynamic_cast<Monster*>(attackedCreature);
-		if(slainMonster && slainMonster->getName() == "Troll") {
-			game->trySpawnAngryTroll(CreaturePos);
+		if(slainMonster) {
+			game->trySpawnRageMonster(slainMonster, CreaturePos);
 		}
 
 		//Get all creatures that will gain xp from this kill..
@@ -4087,7 +4088,13 @@ void Game::checkCreatureAttacking(unsigned long id)
 						}
 					}
 
-					creature->eventCheckAttacking = addEvent(makeTask(1000, std::bind2nd(std::mem_fun(&Game::checkCreatureAttacking), id)));
+					int attackDelay = 1000;
+					Player* atkPlayer = dynamic_cast<Player*>(creature);
+#ifdef YUR_BOH
+					if(atkPlayer)
+						attackDelay = atkPlayer->getAttackDelayMs();
+#endif //YUR_BOH
+					creature->eventCheckAttacking = addEvent(makeTask(attackDelay, std::bind2nd(std::mem_fun(&Game::checkCreatureAttacking), id)));
 				}
 			}
 		}
@@ -4293,7 +4300,7 @@ bool Game::creatureSaySpell(Creature *creature, const std::string &text)
 		if(tmp){
 			std::map<std::string, Spell*>::iterator sit = tmp->find(temp);
 			if( sit != tmp->end() ) {
-				if(player->maglevel >= sit->second->getMagLv()){
+				if(player->getEffectiveMagLevel() >= sit->second->getMagLv()){
 #ifdef YUR_LEARN_SPELLS
 					if (g_config.LEARN_SPELLS && !player->knowsSpell(temp))
 						ret = false;
@@ -4385,7 +4392,7 @@ bool Game::playerUseItemEx(Player *player, const Position& posFrom,const unsigne
 			}
 			else {
 				std::string var = std::string("");
-				if(player->access >= g_config.ACCESS_PROTECT || sit->second->getMagLv() <= player->maglevel)
+				if(player->access >= g_config.ACCESS_PROTECT || sit->second->getMagLv() <= player->getEffectiveMagLevel())
 				{
 					bool success = sit->second->getSpellScript()->castSpell(player, posTo, var);
 					ret = success;
@@ -4453,7 +4460,7 @@ bool Game::playerUseBattleWindow(Player *player, Position &posFrom, unsigned cha
 			}
 			else {
 				std::string var = std::string("");
-				if(player->access >= g_config.ACCESS_PROTECT || sit->second->getMagLv() <= player->maglevel) {
+				if(player->access >= g_config.ACCESS_PROTECT || sit->second->getMagLv() <= player->getEffectiveMagLevel()) {
 					bool success = sit->second->getSpellScript()->castSpell(player, creature->pos, var);
 					ret = success;
 					if(success) {
@@ -4800,7 +4807,7 @@ void Game::playerSetAttackedCreature(Player* player, unsigned long creatureid)
 	else if(attackedCreature) {
 		player->setAttackedCreature(attackedCreature);
 		stopEvent(player->eventCheckAttacking);
-		player->eventCheckAttacking = addEvent(makeTask(1000, std::bind2nd(std::mem_fun(&Game::checkCreatureAttacking), player->getID())));
+		player->eventCheckAttacking = addEvent(makeTask(player->getAttackDelayMs(), std::bind2nd(std::mem_fun(&Game::checkCreatureAttacking), player->getID())));
 	}
 
 }
@@ -5961,19 +5968,136 @@ bool Game::placeSummon(Player* p, const std::string& name)
 #endif //TR_SUMMONS
 
 
-bool Game::trySpawnAngryTroll(const Position& deathPos)
-{
-	// TODO: mover a config.lua cuando definamos el rate final.
-	static const int ANGRY_TROLL_SPAWN_CHANCE = 100;
+enum RageVariantStage {
+	RAGE_VARIANT_NONE = 0,
+	RAGE_VARIANT_ANGRY,
+	RAGE_VARIANT_FURIOUS,
+	RAGE_VARIANT_ENRAGED
+};
 
-	if(random_range(1, 100) > ANGRY_TROLL_SPAWN_CHANCE) {
+static bool isRageMonsterName(const std::string& name)
+{
+	return (name.size() >= 6 && name.compare(0, 6, "Angry ") == 0) ||
+		(name.size() >= 8 && name.compare(0, 8, "Furious ") == 0) ||
+		(name.size() >= 9 && name.compare(0, 9, "Enraged ") == 0);
+}
+
+static RageVariantStage getRageVariantStage(const std::string& name)
+{
+	if(name.size() >= 9 && name.compare(0, 9, "Enraged ") == 0) {
+		return RAGE_VARIANT_ENRAGED;
+	}
+	if(name.size() >= 8 && name.compare(0, 8, "Furious ") == 0) {
+		return RAGE_VARIANT_FURIOUS;
+	}
+	if(name.size() >= 6 && name.compare(0, 6, "Angry ") == 0) {
+		return RAGE_VARIANT_ANGRY;
+	}
+	return RAGE_VARIANT_NONE;
+}
+
+static bool hasRageVariant(const std::string& prefix, const std::string& slainName)
+{
+	return g_monsters.getIdByName(prefix + slainName) != 0;
+}
+
+static std::string chooseRageVariantName(const std::string& slainName)
+{
+	// Roll exclusivo:
+	// 1-10   => Enraged (1%)
+	// 11-30  => Furious (2%)
+	// 31-130 => Angry (10%)
+	const int roll = random_range(1, 1000);
+
+	if(roll <= 10) {
+		if(hasRageVariant("Enraged ", slainName)) {
+			return "Enraged " + slainName;
+		}
+		if(hasRageVariant("Furious ", slainName)) {
+			return "Furious " + slainName;
+		}
+		if(hasRageVariant("Angry ", slainName)) {
+			return "Angry " + slainName;
+		}
+		return "";
+	}
+
+	if(roll <= 30) {
+		if(hasRageVariant("Furious ", slainName)) {
+			return "Furious " + slainName;
+		}
+		if(hasRageVariant("Angry ", slainName)) {
+			return "Angry " + slainName;
+		}
+		return "";
+	}
+
+	if(roll <= 130 && hasRageVariant("Angry ", slainName)) {
+		return "Angry " + slainName;
+	}
+
+	return "";
+}
+
+static void sendRageSpawnEffects(Player* spectator, const Position& spawnPos, RageVariantStage stage)
+{
+	switch(stage) {
+		case RAGE_VARIANT_ENRAGED:
+			spectator->sendMagicEffect(spawnPos, NM_ME_EXPLOSION_DAMAGE);
+			spectator->sendMagicEffect(spawnPos, NM_ME_ENERGY_AREA);
+			spectator->sendMagicEffect(spawnPos, NM_ME_SOUND_PURPLE);
+			break;
+		case RAGE_VARIANT_FURIOUS:
+			spectator->sendMagicEffect(spawnPos, NM_ME_EXPLOSION_AREA);
+			spectator->sendMagicEffect(spawnPos, NM_ME_FIRE_AREA);
+			spectator->sendMagicEffect(spawnPos, NM_ME_SOUND_YELLOW);
+			break;
+		case RAGE_VARIANT_ANGRY:
+			spectator->sendMagicEffect(spawnPos, NM_ME_MORT_AREA);
+			spectator->sendMagicEffect(spawnPos, NM_ME_SOUND_RED);
+			spectator->sendMagicEffect(spawnPos, NM_ME_HIT_AREA);
+			break;
+		default:
+			break;
+	}
+}
+
+static const char* getRageSpawnYell(RageVariantStage stage)
+{
+	switch(stage) {
+		case RAGE_VARIANT_ENRAGED:
+			return "MI FURIA NO TIENE LIMITE!";
+		case RAGE_VARIANT_FURIOUS:
+			return "RAAAH! AHORA SI ESTOY FURIOSO!";
+		case RAGE_VARIANT_ANGRY:
+			return "GRAAAH! VOLVI MAS ENOJADO!";
+		default:
+			return "GRAAAH!";
+	}
+}
+
+bool Game::trySpawnRageMonster(const Monster* slainMonster, const Position& deathPos)
+{
+	if(!slainMonster) {
 		return false;
 	}
 
-	Monster* monster = Monster::createMonster("Angry Troll", this);
+	const std::string& slainName = slainMonster->getName();
+	if(isRageMonsterName(slainName)) {
+		return false;
+	}
+
+	const std::string rageMonsterName = chooseRageVariantName(slainName);
+	if(rageMonsterName.empty()) {
+		return false;
+	}
+
+	Monster* monster = Monster::createMonster(rageMonsterName, this);
 	if(!monster) {
 		return false;
 	}
+
+	const RageVariantStage stage = getRageVariantStage(rageMonsterName);
 
 	Position spawnPos = deathPos;
 	Tile* tile = getTile(spawnPos);
@@ -5993,9 +6117,7 @@ bool Game::trySpawnAngryTroll(const Position& deathPos)
 		if(!spectator) {
 			continue;
 		}
-		spectator->sendMagicEffect(spawnPos, NM_ME_MORT_AREA);
-		spectator->sendMagicEffect(spawnPos, NM_ME_SOUND_RED);
-		spectator->sendMagicEffect(spawnPos, NM_ME_HIT_AREA);
+		sendRageSpawnEffects(spectator, spawnPos, stage);
 	}
 
 	if(!placeCreature(spawnPos, monster)) {
@@ -6003,7 +6125,7 @@ bool Game::trySpawnAngryTroll(const Position& deathPos)
 		return false;
 	}
 
-	creatureMonsterYell(monster, "GRAAAH! ME VOLVI... Y ESTOY ENOJADO!");
+	creatureMonsterYell(monster, getRageSpawnYell(stage));
 	return true;
 }
 

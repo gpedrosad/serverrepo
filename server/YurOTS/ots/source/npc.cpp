@@ -52,6 +52,31 @@ struct PendingTransaction {
 
 static std::map<unsigned long, PendingTransaction> pendingTrades;
 
+static void resetPendingTrade(PendingTransaction& trade)
+{
+	trade = PendingTransaction();
+}
+
+static PendingTransaction& preparePendingTrade(unsigned long npcId)
+{
+	PendingTransaction& trade = pendingTrades[npcId];
+	resetPendingTrade(trade);
+	return trade;
+}
+
+static bool clearPendingTrade(unsigned long npcId, int cid = 0)
+{
+	std::map<unsigned long, PendingTransaction>::iterator it = pendingTrades.find(npcId);
+	if(it == pendingTrades.end())
+		return false;
+
+	if(cid != 0 && it->second.cid != cid)
+		return false;
+
+	pendingTrades.erase(it);
+	return true;
+}
+
 extern LuaScript g_config;
 
 AutoList<Npc> Npc::listNpc;
@@ -246,6 +271,7 @@ Npc::Npc(const std::string& name, Game* game) :
 
 Npc::~Npc()
 {
+	clearPendingTrade(this->getID());
 	delete this->script;
 }
 
@@ -268,13 +294,16 @@ void Npc::onCreatureAppear(const Creature *creature){
 }
 
 void Npc::onCreatureDisappear(const Creature *creature, unsigned char stackPos, bool tele){
+	clearPendingTrade(this->getID(), (int)creature->getID());
 	this->script->onCreatureDisappear(creature->getID());
 }
 
 void Npc::onThingDisappear(const Thing* thing, unsigned char stackPos){
 	const Creature *creature = dynamic_cast<const Creature*>(thing);
-	if(creature)
+	if(creature){
+		clearPendingTrade(this->getID(), (int)creature->getID());
 		this->script->onCreatureDisappear(creature->getID());
+	}
 }
 void Npc::onThingAppear(const Thing* thing){
 	const Creature *creature = dynamic_cast<const Creature*>(thing);
@@ -524,6 +553,7 @@ int NpcScript::registerFunctions()
 	lua_register(luaState, "buy", NpcScript::luaBuyItem);
 	lua_register(luaState, "sell", NpcScript::luaSellItem);
 	lua_register(luaState, "sellBundle", NpcScript::luaSellBundle);
+	lua_register(luaState, "cancelPendingTrade", NpcScript::luaCancelPendingTrade);
 	lua_register(luaState, "pay", NpcScript::luaPayMoney);
 #endif
 
@@ -531,6 +561,7 @@ int NpcScript::registerFunctions()
 	lua_register(luaState, "getPlayerStorageValue", NpcScript::luaGetPlayerStorageValue);
 	lua_register(luaState, "setPlayerStorageValue", NpcScript::luaSetPlayerStorageValue);
 	lua_register(luaState, "doPlayerRemoveItem", NpcScript::luaPlayerRemoveItem);
+	lua_register(luaState, "doPlayerAddItem", NpcScript::luaPlayerAddItem);
 	lua_register(luaState, "getPlayerLevel", NpcScript::luaGetPlayerLevel);
 	lua_register(luaState, "getPlayerItemCount", NpcScript::luaGetPlayerItemCount);
 	lua_register(luaState, "getPlayerVocation", NpcScript::luaGetPlayerVocation);
@@ -709,7 +740,7 @@ int NpcScript::luaBuyItem(lua_State *L)
 
 	if (player)
 	{
-		PendingTransaction& pt = pendingTrades[mynpc->getID()];
+		PendingTransaction& pt = preparePendingTrade(mynpc->getID());
 		pt.cid = cid;
 		pt.itemid = itemid;
 		pt.count = count;
@@ -742,7 +773,7 @@ int NpcScript::luaSellItem(lua_State *L)
 
 	if (player)
 	{
-		PendingTransaction& pt = pendingTrades[mynpc->getID()];
+		PendingTransaction& pt = preparePendingTrade(mynpc->getID());
 		pt.cid = cid;
 		pt.itemid = itemid;
 		pt.count = count;
@@ -772,7 +803,7 @@ int NpcScript::luaSellBundle(lua_State *L)
 
 	if(player)
 	{
-		PendingTransaction& pt = pendingTrades[mynpc->getID()];
+		PendingTransaction& pt = preparePendingTrade(mynpc->getID());
 		pt.cid = cid;
 		pt.itemid = 0;
 		pt.count = 0;
@@ -803,6 +834,24 @@ int NpcScript::luaSellBundle(lua_State *L)
 	}
 
 	return 0;
+}
+
+int NpcScript::luaCancelPendingTrade(lua_State *L)
+{
+	int cid = 0;
+	int top = lua_gettop(L);
+	if(top >= 1)
+		cid = (int)lua_tonumber(L, -1);
+	lua_pop(L, top);
+
+	Npc* mynpc = getNpc(L);
+	if(!mynpc){
+		lua_pushboolean(L, false);
+		return 1;
+	}
+
+	lua_pushboolean(L, clearPendingTrade(mynpc->getID(), cid));
+	return 1;
 }
 
 int NpcScript::luaPayMoney(lua_State *L)
@@ -874,17 +923,41 @@ int NpcScript::luaSetPlayerStorageValue(lua_State* L)
 
 int NpcScript::luaPlayerRemoveItem(lua_State* L)
 {
-	int id = (int)lua_tonumber(L, -2);
-	unsigned long item_id = (unsigned long)lua_tonumber(L, -1);
-	lua_pop(L, 2);
+	int count = 1;
+	if(lua_gettop(L) >= 3)
+		count = (int)lua_tonumber(L, -1);
+
+	int item_id = (int)lua_tonumber(L, -2);
+	int id = (int)lua_tonumber(L, -3);
+	lua_pop(L, 3);
 
 	Npc* mynpc = getNpc(L);
 	Creature* creature = mynpc->game->getCreatureByID(id);
 	Player* player = creature? dynamic_cast<Player*>(creature) : NULL;
 
-	if (player && player->removeItem(item_id, 1))
+	if (player && player->removeItem(item_id, count))
 		lua_pushnumber(L, 0);
 	else
+		lua_pushnumber(L, -1);
+
+	return 1;
+}
+
+int NpcScript::luaPlayerAddItem(lua_State* L)
+{
+	int count = (int)lua_tonumber(L, -1);
+	int itemid = (int)lua_tonumber(L, -2);
+	int cid = (int)lua_tonumber(L, -3);
+	lua_pop(L, 3);
+
+	Npc* mynpc = getNpc(L);
+	Creature* creature = mynpc->game->getCreatureByID(cid);
+	Player* player = creature? dynamic_cast<Player*>(creature) : NULL;
+
+	if(player){
+		player->TLMaddItem(itemid, (unsigned char)count);
+		lua_pushnumber(L, 0);
+	}else
 		lua_pushnumber(L, -1);
 
 	return 1;

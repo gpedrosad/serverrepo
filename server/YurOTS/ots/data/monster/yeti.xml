@@ -1,30 +1,38 @@
 <?xml version="1.0"?>
-<monster name="Yeti" level="80" maglevel="80" experience="460" pushable="0" armor="30" defense="30" canpushitems="1" staticattack="50" changetarget="200" speed="270">
-	<health now="950" max="950"/>
+<monster name="Yeti" level="40" maglevel="30" experience="700" pushable="0" armor="30" defense="31" canpushitems="1" staticattack="50" changetarget="200" speed="170">
+	<health now="1000" max="1000"/>
 	<look type="110" head="20" body="30" legs="40" feet="50" corpse="3055"/>
-	<combat targetdistance="1" runonhealth="0"/>
+	<combat targetdistance="1" runonhealth="100"/>
 
 <attacks>
-	<attack type="distance" name="largerock" mindamage="80" maxdamage="500" cycleticks="3000" probability="90"/> 
-	<attack type="instant" name="exura" cycleticks="5000" probability="80"/>
+	<attack type="melee" mindamage="37" maxdamage="110" probability="100"/>
+	<attack type="instant" name="exura" exhaustion="500" cycleticks="6000" probability="65"/>
+	<attack type="distance" name="largerock" mindamage="25" maxdamage="65" exhaustion="500" cycleticks="5000" probability="35"/>
 </attacks>
 
 <defenses>
-	<defense immunity="energy"/>
 	<defense immunity="paralyze"/>
 	<defense immunity="drunk"/>
 </defenses>
 
 <voices>
 	<voice sentence="GROOOUUURRRR!"/>
-	<voice sentence="AARRRHHHHG.. YOU WILL MINE!"/>
+	<voice sentence="Brrrr..."/>
 </voices>
 
 <loot>
-	<item id="2666" countmax="5" chance1="33333" chancemax="0"/>
-	<item id="2111" countmax="6" chance1="10000" chancemax="0"/>
- 	<item id="2444" chance="333"/>
- 	<item id="2448" chance="10000"/>
-	<item id="2688" countmax="4" chance1="2500" chancemax="0"/>
+	<item id="2148" countmax="60" chance1="100000" chancemax="0"/>
+	<item id="2666" countmax="3" chance1="25000" chancemax="0"/>
+	<item id="2111" countmax="4" chance1="8000" chancemax="0"/>
+	<item id="2146" chance="2000"/>
+	<item id="2448" chance="5000"/>
+
+	<item id="1987" chance="80000">
+	<inside>
+	<item id="2148" countmax="20" chance1="100000" chancemax="0"/>
+	<item id="2146" countmax="1" chance1="1200" chancemax="0"/>
+	<item id="2688" countmax="2" chance1="3000" chancemax="0"/>
+	</inside>
+	</item>
 </loot>
 </monster>

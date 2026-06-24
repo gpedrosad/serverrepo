@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Furious Cyclops" level="14" maglevel="43" experience="405" pushable="0" armor="27" defense="28" canpushitems="1" staticattack="50" changetarget="200" speed="210">
+	<health now="546" max="546" />
+	<look type="22" head="20" body="30" legs="40" feet="50" corpse="3069" />
+	<combat targetdistance="1" runonhealth="0" />
+	<attacks>
+		<attack type="melee" mindamage="48" maxdamage="152" probability="100" />
+	</attacks>
+	<defenses>
+
+</defenses>
+	<voices>
+		<voice sentence="Let da mashing begin!" />
+		<voice sentence="Toks utat" />
+		<voice sentence="Youh ah trak" />
+		<voice sentence="Il lorstok human" />
+		<voice sentence="Human, uh whil dyh!" />
+		<voice sentence="RAAAARGH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="24" chance1="100000" chancemax="0" />
+		<item id="2406" chance="33333" />
+		<item id="2381" chance="1818" />
+		<item id="2209" chance="2000" />
+		<item id="2490" chance="2857" />
+		<item id="2129" chance="6666" />
+		<item id="2666" countmax="3" chance1="33333" chancemax="0" />
+		<item id="1987" chance="100000">
+			<inside>
+				<item id="2513" chance="2500" />
+				<item id="2511" chance="2857" />
+				<item id="2381" chance="5000" />
+				<item id="2148" countmax="16" chance1="20000" chancemax="0" />
+				<item id="2671" countmax="3" chance1="33333" chancemax="0" />
+			</inside>
+		</item>
+		<item id="2150" countmax="2" chance1="19000" chancemax="0" />
+		<item id="2149" countmax="2" chance1="15000" chancemax="0" />
+		<item id="2147" countmax="2" chance1="11000" chancemax="0" />
+		<item id="2146" countmax="1" chance1="7500" chancemax="0" />
+		<item id="2145" countmax="1" chance1="4000" chancemax="0" />
+	</loot>
+</monster>

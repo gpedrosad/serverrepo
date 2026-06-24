@@ -27,7 +27,12 @@ CUSTOM
   Perac: flechas (50=100 gp), bolts (50=150 gp), power bolts (50=400 gp)
   Seller: mana/life fluid, rope, shovel, backpack
   Parived: compra gemas y diamantes (say gems)
-  Yellow gem: usa la gema (Use) con botas puestas (+20 haste; BOH suma encima)
+  Tonka (1 piso arriba de Parived): 20 small → 1 big (say exchange)
+  Imbuements (Use gema con item equipado; el imbue queda en el item si lo pierdes):
+    Yellow gem → botas: +20 haste c/u, max 3 (BOH suma)
+    Violet gem → wand/rod: +1 ML c/u, max 4
+    Big ruby → arma: +15% attack speed
+    Big emerald → armadura: +3 sword/club/axe/dist (P/K)
 
 OTROS
   Max 28 players  |  Autosave 10 min  |  Spells libres  |  Party/Guilds

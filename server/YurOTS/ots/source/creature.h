@@ -247,8 +247,8 @@ public:
 	#else //YUR_RINGS_AMULETS
 		s = std::min(900, 220 + (2* (level + 30*boh - 1)));
 	#endif //YUR_RINGS_AMULETS
-		if(hasteEnchant)
-			s = std::min(900, s + HASTE_ENCHANT_SPEED);
+		if(hasteEnchantStacks > 0)
+			s = std::min(900, s + HASTE_ENCHANT_SPEED * hasteEnchantStacks);
 		return s;
 #else //YUR_BOH
 	#ifdef YUR_RINGS_AMULETS
@@ -296,7 +296,10 @@ protected:
 
 #ifdef YUR_BOH
 	bool boh;
-	bool hasteEnchant;
+	int hasteEnchantStacks;
+	int imbueWandMl;
+	bool imbueRubyWeapon;
+	bool imbueEmeraldArmor;
 #endif //YUR_BOH
 #ifdef YUR_RINGS_AMULETS
 	bool timeRing;

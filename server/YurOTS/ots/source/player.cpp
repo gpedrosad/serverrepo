@@ -1069,6 +1069,13 @@ int64_t Player::getSkill(skills_t skilltype, skillsid_t skillinfo) const
 			return skills[skilltype][skillinfo] + 4;
 	}
 #endif //YUR_RINGS_AMULETS
+#ifdef YUR_BOH
+	if(skillinfo == SKILL_LEVEL && imbueEmeraldArmor &&
+		(vocation == VOCATION_PALADIN || vocation == VOCATION_KNIGHT) &&
+		(skilltype == SKILL_SWORD || skilltype == SKILL_AXE ||
+		 skilltype == SKILL_CLUB || skilltype == SKILL_DIST))
+		return skills[skilltype][skillinfo] + EMERALD_SKILL_BONUS;
+#endif //YUR_BOH
 	return skills[skilltype][skillinfo];
 }
 
@@ -1287,6 +1294,9 @@ void Player::dropLoot(Container *corpse)
 			items[slot] = NULL;
 		}
 	}
+#ifdef YUR_BOH
+	checkBoh();
+#endif //YUR_BOH
 }
 
 fight_t Player::getFightType()
@@ -1635,7 +1645,8 @@ void Player::onThingMove(const Creature *creature, slots_t fromSlot, const Item*
 #endif //YUR_RINGS_AMULETS
 	client->sendThingMove(creature, fromSlot, fromItem, oldFromCount, toContainer, to_slotid, toItem, oldToCount, count);
 #ifdef YUR_BOH
-	if (fromSlot == SLOT_FEET)
+	if (fromSlot == SLOT_FEET || fromSlot == SLOT_ARMOR ||
+		fromSlot == SLOT_LEFT || fromSlot == SLOT_RIGHT)
 		checkBoh();
 #endif //YUR_BOH
 }
@@ -1658,7 +1669,10 @@ void Player::onThingMove(const Creature *creature, slots_t fromSlot, const Item*
 #endif //YUR_RINGS_AMULETS
 	client->sendThingMove(creature, fromSlot, fromItem, oldFromCount, toSlot, toItem, oldToCount, count);
 #ifdef YUR_BOH
-	if (fromSlot == SLOT_FEET || toSlot == SLOT_FEET)
+	if (fromSlot == SLOT_FEET || toSlot == SLOT_FEET ||
+		fromSlot == SLOT_ARMOR || toSlot == SLOT_ARMOR ||
+		fromSlot == SLOT_LEFT || toSlot == SLOT_LEFT ||
+		fromSlot == SLOT_RIGHT || toSlot == SLOT_RIGHT)
 		checkBoh();
 #endif //YUR_BOH
 }
@@ -1676,7 +1690,8 @@ void Player::onThingMove(const Creature *creature, const Container *fromContaine
 #endif //YUR_RINGS_AMULETS
 	client->sendThingMove(creature, fromContainer, from_slotid, fromItem, oldFromCount, toSlot, toItem, oldToCount, count);
 #ifdef YUR_BOH
-	if (toSlot == SLOT_FEET)
+	if (toSlot == SLOT_FEET || toSlot == SLOT_ARMOR ||
+		toSlot == SLOT_LEFT || toSlot == SLOT_RIGHT)
 		checkBoh();
 #endif //YUR_BOH
 }
@@ -1701,7 +1716,8 @@ void Player::onThingMove(const Creature *creature, slots_t fromSlot,
 #endif //YUR_RINGS_AMULETS
 	client->sendThingMove(creature, fromSlot, fromItem, oldFromCount, toPos, toItem, oldToCount, count);
 #ifdef YUR_BOH
-	if (fromSlot == SLOT_FEET)
+	if (fromSlot == SLOT_FEET || fromSlot == SLOT_ARMOR ||
+		fromSlot == SLOT_LEFT || fromSlot == SLOT_RIGHT)
 		checkBoh();
 #endif //YUR_BOH
 }
@@ -1726,7 +1742,8 @@ void Player::onThingMove(const Creature *creature, const Position &fromPos, int 
 #endif //YUR_RINGS_AMULETS
 	client->sendThingMove(creature, fromPos, stackpos, fromItem, oldFromCount, toSlot, toItem, oldToCount, count);
 #ifdef YUR_BOH
-	if (toSlot == SLOT_FEET)
+	if (toSlot == SLOT_FEET || toSlot == SLOT_ARMOR ||
+		toSlot == SLOT_LEFT || toSlot == SLOT_RIGHT)
 		checkBoh();
 #endif //YUR_BOH
 }
@@ -2558,20 +2575,90 @@ void Player::receiveHouseWindow(std::string membersAfter)
 
 
 #ifdef YUR_BOH
+static int imbueMlFromAid(unsigned short aid)
+{
+	if(aid >= ITEM_VIOLET_ML_AID && aid <= ITEM_VIOLET_ML_AID_MAX)
+		return aid - ITEM_VIOLET_ML_AID + 1;
+	return 0;
+}
+
+static int hasteStacksFromAid(unsigned short aid)
+{
+	if(aid >= ITEM_HASTE_ENCHANT_AID && aid <= ITEM_HASTE_ENCHANT_AID_MAX)
+		return aid - ITEM_HASTE_ENCHANT_AID + 1;
+	return 0;
+}
+
+static bool isWandItem(int id)
+{
+	switch(id){
+	case ITEM_QUAGMIRE_ROD:
+	case ITEM_SNAKEBITE_ROD:
+	case ITEM_TEMPEST_ROD:
+	case ITEM_VOLCANIC_ROD:
+	case ITEM_MOONLIGHT_ROD:
+	case ITEM_WAND_OF_INFERNO:
+	case ITEM_WAND_OF_PLAGUE:
+	case ITEM_WAND_OF_COSMIC_ENERGY:
+	case ITEM_WAND_OF_VORTEX:
+	case ITEM_WAND_OF_DRAGONBREATH:
+		return true;
+	default:
+		return false;
+	}
+}
+
 void Player::checkBoh()
 {
 	bool bohNow = (items[SLOT_FEET] && items[SLOT_FEET]->getID() == ITEM_BOH);
-	bool hasteEnchantNow = (items[SLOT_FEET] && items[SLOT_FEET]->getActionId() == ITEM_HASTE_ENCHANT_AID);
+	int hasteNow = items[SLOT_FEET] ? hasteStacksFromAid(items[SLOT_FEET]->getActionId()) : 0;
 
-	if (boh != bohNow || hasteEnchant != hasteEnchantNow)
+	int wandMlNow = 0;
+	for(int slot = SLOT_RIGHT; slot <= SLOT_LEFT; slot++){
+		if(items[slot] && isWandItem(items[slot]->getID())){
+			wandMlNow = imbueMlFromAid(items[slot]->getActionId());
+			break;
+		}
+	}
+
+	bool rubyNow = false;
+	for(int slot = SLOT_RIGHT; slot <= SLOT_LEFT; slot++){
+		if(items[slot] && !isWandItem(items[slot]->getID()) &&
+			items[slot]->getWeaponType() != SHIELD &&
+			items[slot]->getActionId() == ITEM_RUBY_ATTACK_AID){
+			rubyNow = true;
+			break;
+		}
+	}
+
+	bool emeraldNow = (items[SLOT_ARMOR] &&
+		items[SLOT_ARMOR]->getActionId() == ITEM_EMERALD_SKILL_AID);
+
+	if(boh != bohNow || hasteEnchantStacks != hasteNow || imbueWandMl != wandMlNow ||
+		imbueRubyWeapon != rubyNow || imbueEmeraldArmor != emeraldNow)
 	{
 		boh = bohNow;
-		hasteEnchant = hasteEnchantNow;
+		hasteEnchantStacks = hasteNow;
+		imbueWandMl = wandMlNow;
+		imbueRubyWeapon = rubyNow;
+		imbueEmeraldArmor = emeraldNow;
 		setNormalSpeed();
 		hasteTicks = 0;
 		sendChangeSpeed(this);
 		sendIcons();
 	}
+}
+
+int64_t Player::getEffectiveMagLevel() const
+{
+	return maglevel + imbueWandMl;
+}
+
+int Player::getAttackDelayMs() const
+{
+	if(imbueRubyWeapon)
+		return 1000 * (100 - RUBY_ATTACK_SPEED_PERCENT) / 100;
+	return 1000;
 }
 #endif //YUR_BOH
 

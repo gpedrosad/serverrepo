@@ -66,6 +66,7 @@ public:
 	static int luaBuyItem(lua_State *L);
 	static int luaSellItem(lua_State *L);
 	static int luaSellBundle(lua_State *L);
+	static int luaCancelPendingTrade(lua_State *L);
 	static int luaPayMoney(lua_State *L);
 #endif
 
@@ -73,6 +74,7 @@ public:
 	static int luaGetPlayerStorageValue(lua_State *L);
 	static int luaSetPlayerStorageValue(lua_State *L);
 	static int luaPlayerRemoveItem(lua_State *L);
+	static int luaPlayerAddItem(lua_State *L);
 	static int luaGetPlayerLevel(lua_State *L);
 	static int luaGetPlayerItemCount(lua_State *L);
 	static int luaSetPlayerMasterPos(lua_State* L);

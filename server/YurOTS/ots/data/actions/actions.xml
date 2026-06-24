@@ -500,10 +500,9 @@
 <action uniqueid="7000" script="annilever.lua" />
 <action uniqueid="7001" script="arenalever.lua" />
 
-<action uniqueid="7002" script="steerwheel.lua" />
-<action uniqueid="7003" script="steerwheel.lua" />
-
-
 <!-- <action itemid="2112" script="invasion.lua" /> -->
-<action itemid="2154" script="yellow_gem_boots.lua" />
+<action itemid="2153" script="gem_imbue.lua" />
+<action itemid="2154" script="gem_imbue.lua" />
+<action itemid="2155" script="gem_imbue.lua" />
+<action itemid="2156" script="gem_imbue.lua" />
 </actions>

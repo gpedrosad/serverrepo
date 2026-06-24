@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Angry Scarab" level="25" maglevel="35" experience="228" pushable="0" armor="20" defense="23" canpushitems="1" staticattack="50" changetarget="200" speed="172">
+	<health now="496" max="496" />
+	<look type="83" head="20" body="30" legs="40" feet="50" corpse="3013" />
+	<combat targetdistance="1" runonhealth="0" />
+	<blood color="30" effect="16" splash="4" />
+	<attacks>
+		<attack type="melee" mindamage="29" maxdamage="84" />
+		<attack type="instant" name="sc_haste" exhaustion="500" cycleticks="5000" probability="40" />
+	</attacks>
+	<defenses>
+		<defense immunity="poison" />
+	</defenses>
+	<voices>
+		<voice sentence="GRAAAH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="50" chance1="80000" chancemax="0" />
+		<item id="1987" chance="100000">
+			<inside>
+				<item id="2666" countmax="3" chance1="20000" chancemax="0" />
+				<item id="2544" countmax="4" chance1="20000" chancemax="0" />
+				<item id="2439" chance="2500" />
+				<item id="2442" chance="2500" />
+				<item id="2159" countmax="1" chance1="1000" chancemax="0" />
+				<item id="2149" countmax="2" chance1="2000" chancemax="0" />
+				<item id="2150" countmax="3" chance1="2000" chancemax="0" />
+			</inside>
+		</item>
+		<item id="2150" countmax="1" chance1="8000" chancemax="0" />
+		<item id="2149" countmax="1" chance1="5500" chancemax="0" />
+		<item id="2147" countmax="1" chance1="3000" chancemax="0" />
+		<item id="2146" countmax="1" chance1="1500" chancemax="0" />
+		<item id="2159" countmax="1" chance1="3500" chancemax="0" />
+	</loot>
+</monster>

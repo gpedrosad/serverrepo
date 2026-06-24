@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<npc name="Tonka" script="data/npc/scripts/tonka.lua" access="3">
+	<look type="136" head="77" body="81" legs="79" feet="95"/>
+</npc>

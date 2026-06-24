@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Enraged Minotaur" level="35" maglevel="45" experience="152" pushable="0" armor="16" defense="18" canpushitems="1" staticattack="50" changetarget="200" speed="194">
+	<health now="235" max="235" />
+	<look type="25" head="20" body="30" legs="40" feet="50" corpse="2830" />
+	<combat targetdistance="1" runonhealth="0" />
+	<attacks>
+		<attack type="melee" maxdamage="84" />
+	</attacks>
+	<defenses>
+
+</defenses>
+	<voices>
+		<voice sentence="SKREEEAAAH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="28" chance1="100000" chancemax="0" />
+		<item id="2666" countmax="2" chance1="10000" chancemax="0" />
+		<item id="2464" chance="10000" />
+		<item id="2386" chance="10000" />
+		<item id="2649" chance="10000" />
+		<item id="2554" chance="10000" />
+		<item id="2395" chance="10000" />
+		<item id="1987" chance="100000">
+			<inside>
+				<item id="2458" chance="10000" />
+				<item id="2148" countmax="5" chance1="20000" chancemax="0" />
+				<item id="2460" chance="10000" />
+				<item id="2510" chance="10000" />
+				<item id="2398" chance="10000" />
+				<item id="2172" chance="2500" />
+			</inside>
+		</item>
+		<item id="2150" countmax="2" chance1="18000" chancemax="0" />
+		<item id="2149" countmax="2" chance1="13000" chancemax="0" />
+		<item id="2147" countmax="2" chance1="9000" chancemax="0" />
+		<item id="2146" countmax="1" chance1="6000" chancemax="0" />
+		<item id="2145" countmax="1" chance1="2500" chancemax="0" />
+	</loot>
+</monster>

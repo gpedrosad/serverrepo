@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Angry Orc Berserker" level="77" maglevel="37" experience="410" pushable="0" armor="13" defense="15" canpushitems="1" staticattack="50" changetarget="200" speed="264">
+	<health now="357" max="357" />
+	<look type="8" head="20" body="30" legs="40" feet="50" corpse="2864" />
+	<combat targetdistance="1" runonhealth="0" />
+	<attacks>
+		<attack type="melee" mindamage="114" maxdamage="285" probability="100" />
+		<attack type="instant" name="orcb_haste" exhaustion="500" cycleticks="7000" probability="60" />
+	</attacks>
+	<defenses>
+		<defense immunity="poison" />
+	</defenses>
+	<voices>
+		<voice sentence="KRAAKK OOORRRRKKKK" />
+		<voice sentence="GRAAAH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="15" chance1="100000" chancemax="0" />
+		<item id="2666" countmax="3" chance1="33333" chancemax="0" />
+		<item id="2381" chance="6666" />
+		<item id="1987" chance="100000">
+			<inside>
+				<item id="2464" chance="10000" />
+				<item id="2458" chance="10000" />
+				<item id="2044" chance="5000" />
+				<item id="2378" chance="5000" />
+				<item id="2207" chance="1857" />
+			</inside>
+		</item>
+		<item id="2150" countmax="2" chance1="12000" chancemax="0" />
+		<item id="2149" countmax="2" chance1="9000" chancemax="0" />
+		<item id="2147" countmax="1" chance1="6000" chancemax="0" />
+		<item id="2146" countmax="1" chance1="4000" chancemax="0" />
+		<item id="2145" countmax="1" chance1="2000" chancemax="0" />
+	</loot>
+</monster>

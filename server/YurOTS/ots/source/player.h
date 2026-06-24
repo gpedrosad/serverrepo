@@ -363,6 +363,8 @@ public:
 
 #ifdef YUR_BOH
 	void checkBoh();
+	int64_t getEffectiveMagLevel() const;
+	int getAttackDelayMs() const;
 #endif //YUR_BOH
 
 #ifdef YUR_RINGS_AMULETS

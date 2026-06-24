@@ -83,7 +83,10 @@ access(0)
 
 #ifdef YUR_BOH
 	boh = false;
-	hasteEnchant = false;
+	hasteEnchantStacks = 0;
+	imbueWandMl = 0;
+	imbueRubyWeapon = false;
+	imbueEmeraldArmor = false;
 #endif //YUR_BOH
 
 #ifdef YUR_RINGS_AMULETS

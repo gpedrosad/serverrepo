@@ -708,8 +708,16 @@ std::string Item::getDescription(bool fullDescription) const
 		s<<"an item of type " << id <<".";
 
 #ifdef YUR_BOH
-	if(fullDescription && actionId == ITEM_HASTE_ENCHANT_AID)
-		s << std::endl << "It has +20 haste.";
+	if(fullDescription){
+		if(actionId >= ITEM_HASTE_ENCHANT_AID && actionId <= ITEM_HASTE_ENCHANT_AID_MAX)
+			s << std::endl << "Imbued: +" << (HASTE_ENCHANT_SPEED * (actionId - ITEM_HASTE_ENCHANT_AID + 1)) << " haste (" << (actionId - ITEM_HASTE_ENCHANT_AID + 1) << "/3).";
+		else if(actionId >= ITEM_VIOLET_ML_AID && actionId <= ITEM_VIOLET_ML_AID_MAX)
+			s << std::endl << "Imbued: +" << (actionId - ITEM_VIOLET_ML_AID + 1) << " ML (" << (actionId - ITEM_VIOLET_ML_AID + 1) << "/4).";
+		else if(actionId == ITEM_RUBY_ATTACK_AID)
+			s << std::endl << "Imbued: +" << RUBY_ATTACK_SPEED_PERCENT << "% attack speed.";
+		else if(actionId == ITEM_EMERALD_SKILL_AID)
+			s << std::endl << "Imbued: +" << EMERALD_SKILL_BONUS << " attack skills (P/K).";
+	}
 #endif //YUR_BOH
 
 	str = s.str();

@@ -21,40 +21,23 @@ GEMS = {
 }
 
 function onThingMove(creature, thing, oldpos, oldstackpos)
-
 end
-
 
 function onCreatureAppear(creature)
-
 end
-
 
 function onCreatureDisappear(cid, pos)
-  	if focus == cid then
-          selfSay('Good bye then.')
-          focus = 0
-          talk_start = 0
-  	end
+	npcOnCreatureDisappear(cid)
 end
-
 
 function onCreatureTurn(creature)
-
 end
-
-
-function msgcontains(txt, str)
-  	return (string.find(txt, str) and not string.find(txt, '(%w+)' .. str) and not string.find(txt, str .. '(%w+)'))
-end
-
 
 function showTradeList()
 	selfSay('Small: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.')
 	selfSay('Rare: yellow gem 1k, blue gem 5k, violet gem 10k, big emerald 10k, big ruby 10k, gold nugget 10k, scarab coin 100gp.')
 	selfSay('Say sell 3 amethyst, sell all, or the gem name.')
 end
-
 
 function parseSellCount(msg)
 	local n = string.match(msg, 'sell%s+(%d+)')
@@ -68,13 +51,11 @@ function parseSellCount(msg)
 	return 1
 end
 
-
 function normalizeSellMsg(msg)
 	msg = string.gsub(msg, '^sell%s+', '')
 	msg = string.gsub(msg, '^(%d+)%s+', '')
 	return msg
 end
-
 
 function matchGem(msg)
 	local text = normalizeSellMsg(msg)
@@ -88,7 +69,6 @@ function matchGem(msg)
 	end
 	return nil
 end
-
 
 function offerSell(cid, gem, msg)
 	local count = parseSellCount(msg)
@@ -109,7 +89,6 @@ function offerSell(cid, gem, msg)
 
 	sell(cid, gem.id, count, count * gem.price)
 end
-
 
 function sellAllGems(cid)
 	local total = 0
@@ -136,60 +115,34 @@ function sellAllGems(cid)
 	sellBundle(cid, total, table.concat(parts, ', '), bundle)
 end
 
-
 function onCreatureSay(cid, type, msg)
-  	msg = string.lower(msg)
+	msg = string.lower(msg)
 
-  	if (msgcontains(msg, 'hi') and (focus == 0)) and getDistanceToCreature(cid) < 4 then
-  		selfSay('Hello ' .. creatureGetName(cid) .. '! I buy gems and diamonds. Say gems for prices.')
-  		focus = cid
-  		talk_start = os.clock()
+	local state = npcHandleMessage(
+		cid,
+		msg,
+		'Hello ' .. creatureGetName(cid) .. '! I buy gems and diamonds. Say gems for prices.'
+	)
+	if state ~= 'focused' then
+		return
+	end
 
-  	elseif msgcontains(msg, 'hi') and (focus ~= cid) and getDistanceToCreature(cid) < 4 then
-  		selfSay('Sorry, ' .. creatureGetName(cid) .. '! I talk to you in a minute.')
-
-	elseif focus == cid then
-		talk_start = os.clock()
-
-		if msgcontains(msg, 'trade') or msgcontains(msg, 'offer') or msgcontains(msg, 'list')
-			or msgcontains(msg, 'help') or msgcontains(msg, 'gems') or msgcontains(msg, 'prices') then
-			showTradeList()
-
-		elseif msgcontains(msg, 'sell all') or msgcontains(msg, 'all gems') or msgcontains(msg, 'sell everything') then
-			sellAllGems(cid)
-
-		else
-			local gem = matchGem(msg)
-			if gem then
-				offerSell(cid, gem, msg)
-			end
-		end
-
-		if string.find(msg, '(%a*)bye(%a*)') and getDistanceToCreature(cid) < 4 then
-			selfSay('Good bye, ' .. creatureGetName(cid) .. '!')
-			focus = 0
-			talk_start = 0
+	if msgcontains(msg, 'trade') or msgcontains(msg, 'offer') or msgcontains(msg, 'list')
+		or msgcontains(msg, 'help') or msgcontains(msg, 'gems') or msgcontains(msg, 'prices') then
+		showTradeList()
+	elseif msgcontains(msg, 'sell all') or msgcontains(msg, 'all gems') or msgcontains(msg, 'sell everything') then
+		sellAllGems(cid)
+	else
+		local gem = matchGem(msg)
+		if gem then
+			offerSell(cid, gem, msg)
 		end
 	end
 end
 
-
 function onCreatureChangeOutfit(creature)
-
 end
 
-
 function onThink()
-  	if (os.clock() - talk_start) > 30 then
-  		if focus > 0 then
-  			selfSay('Next Please...')
-  		end
-  			focus = 0
-  	end
- 	if focus ~= 0 then
- 		if getDistanceToCreature(focus) > 5 then
- 			selfSay('Good bye then.')
- 			focus = 0
- 		end
- 	end
+	npcOnThink()
 end
