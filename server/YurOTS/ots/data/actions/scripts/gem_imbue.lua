@@ -122,7 +122,7 @@ function onUse(cid, item, frompos, item2, topos)
 		doRemoveItem(item.uid, 1)
 		doSetItemActionId(weapon.uid, 9040)
 		doSendMagicEffect(getPlayerPosition(cid), 13)
-		doPlayerSendTextMessage(cid, 22, "Weapon imbued with +15% attack speed.")
+		doPlayerSendTextMessage(cid, 22, "Weapon imbued: +15% attack speed (850ms per hit, was 1000ms).")
 		doPlayerCheckFeetSpeed(cid)
 		return 1
 	end

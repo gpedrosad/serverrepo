@@ -200,9 +200,9 @@
       <input type="number" name="account" required min="100000" max="999999" inputmode="numeric" placeholder="Cuenta (6 dígitos)"
         class="w-full rounded-md border border-white/[0.08] bg-black/40 px-2.5 py-2 text-xs text-zinc-100 outline-none focus:border-white/20">
       <div class="grid grid-cols-2 gap-2">
-        <input type="password" name="password" required minlength="3" maxlength="20" pattern="[a-zA-Z0-9]{3,20}" autocomplete="new-password" placeholder="Password"
+        <input type="password" name="password" required minlength="3" maxlength="20" pattern="[a-zA-Z0-9]{3,20}" autocomplete="new-password" placeholder="Contraseña"
           class="rounded-md border border-white/[0.08] bg-black/40 px-2.5 py-2 text-xs text-zinc-100 outline-none focus:border-white/20">
-        <input type="password" name="password2" required minlength="3" maxlength="20" autocomplete="new-password" placeholder="Repetir"
+        <input type="password" name="password2" required minlength="3" maxlength="20" autocomplete="new-password" placeholder="Repetir contraseña"
           class="rounded-md border border-white/[0.08] bg-black/40 px-2.5 py-2 text-xs text-zinc-100 outline-none focus:border-white/20">
       </div>
       <input type="text" name="name" required minlength="3" maxlength="20" pattern="[a-zA-Z ]{3,20}" autocomplete="username" placeholder="Nombre del personaje"
@@ -234,25 +234,25 @@
   <section id="panel-gems" class="panel space-y-4">
     <div class="anim-in rounded-lg border border-amber-500/15 bg-amber-500/[0.04] px-3 py-2.5">
       <p class="text-[11px] leading-relaxed text-zinc-300">
-        Las <span class="text-amber-200/90">gemas</span> dropean de monstruos fuertes. Las juntás, las cambiás por gemas grandes y las imbuis en tu equipo para bonus permanentes.
+        Las <span class="text-amber-200/90">gemas</span> las obtienes del loot de monstruos fuertes. Puedes juntarlas, cambiarlas por gemas grandes e imbuir tu equipo con bonificaciones permanentes.
       </p>
     </div>
 
     <div>
       <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">1 · Loot</p>
-      <p class="mb-2 text-[11px] text-zinc-500">Gemas chicas que caen del loot (rates x3):</p>
+      <p class="mb-2 text-[11px] text-zinc-500">Gemas pequeñas del botín (loot x3):</p>
       <div id="gems-small" class="grid grid-cols-5 gap-1.5 sm:gap-2"></div>
     </div>
 
     <div>
       <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">2 · Cambiar con Tonka</p>
-      <p class="mb-2 text-[11px] text-zinc-500">Temple <span class="text-zinc-400">132, 29</span> · piso 6 · di <span class="chip inline-block text-zinc-400">hi</span> y <span class="chip inline-block text-zinc-400">exchange ruby</span> (también <span class="text-zinc-400">si</span> para confirmar)</p>
+      <p class="mb-2 text-[11px] text-zinc-500">Temple <span class="text-zinc-400">132, 29</span> · piso 6 · escribe <span class="chip inline-block text-zinc-400">hi</span> y <span class="chip inline-block text-zinc-400">exchange ruby</span> (también <span class="text-zinc-400">si</span> para confirmar)</p>
       <div id="gems-exchange" class="space-y-2"></div>
     </div>
 
     <div>
       <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">3 · Imbuir</p>
-      <p class="mb-2 text-[11px] text-zinc-500">Usá la gema grande con el item <span class="text-zinc-400">equipado</span>. El bonus queda en el item aunque lo pierdas.</p>
+      <p class="mb-2 text-[11px] text-zinc-500">Usa la gema grande con el objeto <span class="text-zinc-400">equipado</span>. La bonificación queda en el objeto aunque lo pierdas.</p>
       <div id="gems-imbue" class="overflow-hidden rounded-lg border border-white/[0.06] divide-y divide-white/[0.05]"></div>
     </div>
 
@@ -300,17 +300,17 @@ const GEMS_SMALL = [
 ];
 
 const GEMS_EXCHANGE = [
-  { small: 2147, big: 2156, smallName: 'Ruby', bigName: 'Big Ruby', bonus: '+15% atk speed en arma' },
+  { small: 2147, big: 2156, smallName: 'Ruby', bigName: 'Big Ruby', bonus: '+15% speed (850 ms/golpe, antes 1000 ms)' },
   { small: 2149, big: 2155, smallName: 'Emerald', bigName: 'Big Emerald', bonus: '+3 skills en armadura' },
   { small: 2150, big: 2153, smallName: 'Amethyst', bigName: 'Violet Gem', bonus: '+1 ML en wand (max 4)' },
   { small: 2146, big: 2154, smallName: 'Sapphire', bigName: 'Yellow Gem', bonus: '+20 haste en botas (max 3)' },
-  { small: 2145, big: 2158, smallName: 'Diamond', bigName: 'Blue Gem', bonus: 'rara · vendé a Parived' },
+  { small: 2145, big: 2158, smallName: 'Diamond', bigName: 'Blue Gem', bonus: 'rara · véndela a Parived' },
 ];
 
 const GEMS_IMBUE = [
   { id: 2154, name: 'Yellow Gem', item: 'Botas', effect: '+20 haste por stack', max: '3/3' },
   { id: 2153, name: 'Violet Gem', item: 'Wand / Rod', effect: '+1 ML por stack', max: '4/4' },
-  { id: 2156, name: 'Big Ruby', item: 'Arma', effect: '+15% velocidad de ataque', max: '1x' },
+  { id: 2156, name: 'Big Ruby', item: 'Arma', effect: '+15% velocidad (850 ms/golpe)', max: '1x' },
   { id: 2155, name: 'Big Emerald', item: 'Armadura', effect: '+3 sword/club/axe/dist', max: '1x' },
 ];
 
@@ -354,7 +354,7 @@ async function loadRegisterChallenge() {
     document.getElementById('captcha-q').textContent = d.question || '—';
     form.captcha.value = '';
   } catch {
-    document.getElementById('captcha-q').textContent = 'recargá la página';
+    document.getElementById('captcha-q').textContent = 'recarga la página';
   }
 }
 
@@ -607,7 +607,7 @@ document.getElementById('account-form').addEventListener('submit', async e => {
   const f = e.target, btn = document.getElementById('account-submit'), res = document.getElementById('account-result');
   res.classList.add('hidden');
   if (f.password.value !== f.password2.value) {
-    res.textContent = 'Los passwords no coinciden';
+    res.textContent = 'Las contraseñas no coinciden';
     res.className = 'mt-2 rounded-md px-2.5 py-2 text-xs bg-red-500/10 text-red-300/90';
     res.classList.remove('hidden');
     return;

@@ -594,7 +594,8 @@ static void appendGemUseDescription(std::stringstream& s, unsigned short itemId)
 		s << std::endl << "Imbue: use on equipped wand or rod (+1 ML/stack, max 4).";
 		break;
 	case ITEM_BIG_RUBY:
-		s << std::endl << "Imbue: use on equipped weapon (+15% attack speed, not wands).";
+		s << std::endl << "Imbue: use on equipped weapon (+" << RUBY_ATTACK_SPEED_PERCENT << "% attack speed, "
+		  << RUBY_ATTACK_DELAY_MS << "ms per hit, not wands).";
 		break;
 	case ITEM_BIG_EMERALD:
 		s << std::endl << "Imbue: use on equipped armor (+3 sword/club/axe/dist, Paladin/Knight).";
@@ -760,7 +761,8 @@ std::string Item::getDescription(bool fullDescription) const
 		else if(actionId >= ITEM_VIOLET_ML_AID && actionId <= ITEM_VIOLET_ML_AID_MAX)
 			s << std::endl << "Imbued: +" << (actionId - ITEM_VIOLET_ML_AID + 1) << " ML (" << (actionId - ITEM_VIOLET_ML_AID + 1) << "/4).";
 		else if(actionId == ITEM_RUBY_ATTACK_AID)
-			s << std::endl << "Imbued: +" << RUBY_ATTACK_SPEED_PERCENT << "% attack speed.";
+			s << std::endl << "Imbued: +" << RUBY_ATTACK_SPEED_PERCENT << "% attack speed ("
+			  << RUBY_ATTACK_DELAY_MS << "ms per hit, default 1000ms).";
 		else if(actionId == ITEM_EMERALD_SKILL_AID)
 			s << std::endl << "Imbued: +" << EMERALD_SKILL_BONUS << " attack skills (P/K).";
 	}

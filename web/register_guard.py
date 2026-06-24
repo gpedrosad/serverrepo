@@ -57,7 +57,7 @@ class RegisterGuard:
         self._prune(data, now)
         rec = data.setdefault("ips", {}).setdefault(ip, {"hour": [], "day": []})
         if len(rec["hour"]) >= HOUR_LIMIT:
-            return "Demasiados intentos. Probá más tarde."
+            return "Demasiados intentos. Inténtalo más tarde."
         if len(rec["day"]) >= DAY_LIMIT:
             return "Límite diario alcanzado desde esta IP."
         return None
@@ -92,7 +92,7 @@ class RegisterGuard:
         ch = data.get("challenges", {}).pop(challenge_id, None)
         self._save(data)
         if not ch:
-            return "Captcha expirado. Recargá la página."
+            return "Captcha expirado. Recarga la página."
         try:
             if int(str(answer).strip()) != ch["a"] + ch["b"]:
                 return "Captcha incorrecto."

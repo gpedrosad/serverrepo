@@ -3729,6 +3729,13 @@ void Game::creatureMakeDamage(Creature *creature, Creature *attackedCreature, fi
 					spectator->sendAnimatedText(attackedCreature->pos, 0xB4, dmg.str());
 					spectator->sendMagicEffect(attackedCreature->pos, NM_ME_DRAW_BLOOD);
 #endif //TJ_MONSTER_BLOOD
+#ifdef YUR_BOH
+					if(player && player->imbueRubyWeapon){
+						spectator->sendMagicEffect(attackedCreature->pos, NM_ME_YELLOW_RINGS);
+						if(damagetype == FIGHT_MELEE)
+							spectator->sendMagicEffect(creature->pos, NM_ME_SOUND_YELLOW);
+					}
+#endif //YUR_BOH
 				}
 
 				if(creatureState.manaDamage >0) {

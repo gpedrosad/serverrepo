@@ -74,7 +74,7 @@ def _validate_registration(acc: int, name: str, password: str, sex: int, voc: in
     if name.lower().startswith("gm"):
         return "El nombre no puede empezar por GM"
     if not re.fullmatch(r"[a-zA-Z0-9]{3,20}", password):
-        return "Password inválido (3-20 alfanuméricos)"
+        return "Contraseña inválida (3-20 alfanuméricos)"
     if sex not in (0, 1):
         return "Sexo inválido"
     if voc not in (1, 2, 3, 4):
@@ -133,7 +133,7 @@ def create_account(
     return {
         "ok": True,
         "account": acc,
-        "message": f"Cuenta {acc} creada. Entrá con ese número y tu password en el cliente.",
+        "message": f"Cuenta {acc} creada. Entra con ese número y tu contraseña en el cliente.",
     }
 
 

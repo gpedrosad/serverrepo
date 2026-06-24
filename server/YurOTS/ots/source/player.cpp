@@ -2637,6 +2637,7 @@ void Player::checkBoh()
 	if(boh != bohNow || hasteEnchantStacks != hasteNow || imbueWandMl != wandMlNow ||
 		imbueRubyWeapon != rubyNow || imbueEmeraldArmor != emeraldNow)
 	{
+		bool hadRuby = imbueRubyWeapon;
 		boh = bohNow;
 		hasteEnchantStacks = hasteNow;
 		imbueWandMl = wandMlNow;
@@ -2646,6 +2647,13 @@ void Player::checkBoh()
 		hasteTicks = 0;
 		sendChangeSpeed(this);
 		sendIcons();
+		if(rubyNow && !hadRuby){
+			char buf[96];
+			snprintf(buf, sizeof(buf),
+				"Your weapon is powered up: +%d%% attack speed (%dms per hit, was 1000ms).",
+				RUBY_ATTACK_SPEED_PERCENT, RUBY_ATTACK_DELAY_MS);
+			sendTextMessage(MSG_INFO, buf);
+		}
 	}
 }
 
@@ -2657,7 +2665,7 @@ int64_t Player::getEffectiveMagLevel() const
 int Player::getAttackDelayMs() const
 {
 	if(imbueRubyWeapon)
-		return 1000 * (100 - RUBY_ATTACK_SPEED_PERCENT) / 100;
+		return RUBY_ATTACK_DELAY_MS;
 	return 1000;
 }
 #endif //YUR_BOH

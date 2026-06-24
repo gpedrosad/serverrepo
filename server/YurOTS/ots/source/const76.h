@@ -302,6 +302,7 @@ enum bloodsplash_t //for splashes (count)
 
 #define HASTE_ENCHANT_SPEED 20
 #define RUBY_ATTACK_SPEED_PERCENT 15
+#define RUBY_ATTACK_DELAY_MS (1000 * (100 - RUBY_ATTACK_SPEED_PERCENT) / 100)
 #define EMERALD_SKILL_BONUS 3
 
 #define ITEM_SMALL_DIAMOND  2145
