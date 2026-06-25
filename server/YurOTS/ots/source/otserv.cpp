@@ -52,6 +52,7 @@
 
 #include "summons.h"
 #include "pvparena.h"
+#include "trainingarea.h"
 #include "readables.h"
 #include "aac.h"
 
@@ -688,6 +689,16 @@ int main(int argc, char *argv[])
 	}
 	std::cout << "[done]" << std::endl;
 #endif //YUR_PVP_ARENA
+
+#ifdef YUR_TRAINING_AREA
+	std::cout << ":: Loading trainingareas.xml...    ";
+	if (!TrainingArea::Load(&g_game))
+	{
+		ErrorMessage("Could not load trainingareas.xml!");
+		return -1;
+	}
+	std::cout << "[done]" << std::endl;
+#endif //YUR_TRAINING_AREA
 
 #ifdef YUR_READABLES
 	std::cout << ":: Loading readables.xml...         ";

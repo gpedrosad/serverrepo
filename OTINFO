@@ -18,11 +18,16 @@ COMBATE
   Flechas/bolts se gastan  |  Spears y piedras no se gastan
 
 CAP / RUNAS
-  Cap activo  |  Peso por carga (IH liviana, SD media, UH pesada)
+  Cap activo  |  Base 300 (nivel <=10) + capgain por nivel  |  Recalcula al login
+  Peso por carga (IH liviana, SD media, UH pesada)
 
 CUSTOM
-  Trainer Monk / Elite Trainer  |  Angry Troll (al matar Troll)
+  Trainer Monk (sala training 133-160, 7-18)  |  Elite Trainer (otras zonas)
+  Training: 20 min/dia por personaje, aviso rojo al entrar y a 5 min, contador blanco abajo
+  Angry Troll (al matar Troll)
   exori gran (Knight)  |  exevo vis lux Energy Beam (Sorc ML 10)
+  exevo pan (Create Food, todas las vocaciones, 30 mana)
+  Magic Wall: usar runa ML 9 | conjurar (adevo grav tera) ML 14, todas las vocaciones
   Dark Rodo: runas + strong mana potion (250 gp; sorc/druid 50+ al usar)
   Perac: flechas (50=100 gp), bolts (50=150 gp), power bolts (50=400 gp)
   Seller: mana/life fluid, rope, shovel, backpack
@@ -37,4 +42,4 @@ CUSTOM
     Big emerald → armadura: +3 sword/club/axe/dist (P/K)
 
 OTROS
-  Max 28 players  |  Autosave 10 min  |  Spells libres  |  Party/Guilds
+  Autosave 10 min  |  Spells libres  |  Party/Guilds

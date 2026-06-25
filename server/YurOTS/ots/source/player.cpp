@@ -38,6 +38,10 @@ using namespace std;
 #include "const76.h"
 #include "chat.h"
 
+#ifdef YUR_TRAINING_AREA
+#include "tile.h"
+#endif //YUR_TRAINING_AREA
+
 #ifdef ELEM_VIP_LIST
 #include "networkmessage.h"
 #endif //ELEM_VIP_LIST
@@ -101,6 +105,10 @@ Creature()
 	idleTime   = 0;
 	warned     = false;
 #endif //TR_ANTI_AFK
+#ifdef YUR_TRAINING_AREA
+	trainingWarned = false;
+	trainingInArea = false;
+#endif //YUR_TRAINING_AREA
 #ifdef TRS_GM_INVISIBLE
 	gmInvisible = false;
 	oldlookhead = 0;
@@ -733,6 +741,22 @@ void Player::updateInventoryWeigth()
 	}
 }
 
+void Player::reconcileCapacity()
+{
+	if(access >= g_config.ACCESS_PROTECT)
+		return;
+
+	int voc = (int)vocation;
+	if(voc < 0 || voc > 4)
+		voc = 0;
+
+	int levelsAbove = level - g_config.START_CAP_LEVEL;
+	if(levelsAbove < 0)
+		levelsAbove = 0;
+
+	capacity = g_config.START_CAP + levelsAbove * g_config.CAP_GAIN[voc];
+}
+
 int Player::sendInventory(unsigned char sl_id){
 	client->sendInventory(sl_id);
 	return true;
@@ -1078,6 +1102,10 @@ int64_t Player::getSkill(skills_t skilltype, skillsid_t skillinfo) const
 		 skilltype == SKILL_CLUB || skilltype == SKILL_DIST))
 		return skills[skilltype][skillinfo] + EMERALD_SKILL_BONUS;
 #endif //YUR_BOH
+	if(skillinfo == SKILL_LEVEL && tempoBuffTicks > 0 &&
+		(skilltype == SKILL_SWORD || skilltype == SKILL_AXE ||
+		 skilltype == SKILL_CLUB || skilltype == SKILL_DIST))
+		return skills[skilltype][skillinfo] + tempoBuffBonus;
 	return skills[skilltype][skillinfo];
 }
 
@@ -1839,11 +1867,7 @@ void Player::addManaSpent(uint64_t spent){
 		this->manaspent -= reqMana;
 		this->maglevel++;
 		std::stringstream MaglvMsg;
-		  time_t timer;
-		  static time_t previous_timer=0;
-          time(&timer);  /* get current time; same as: timer = time(NULL)  */
-		MaglvMsg << timer-previous_timer << "You advanced from magic level " << (this->maglevel - 1) << " to magic level " << this->maglevel << ".";
-		previous_timer=timer;
+		MaglvMsg << "You advanced from magic level " << (this->maglevel - 1) << " to magic level " << this->maglevel << ".";
 		this->sendTextMessage(MSG_ADVANCE, MaglvMsg.str().c_str());
 		this->sendStats();
 	}
@@ -2726,6 +2750,132 @@ void Player::checkAfk(int thinkTicks)
 		kickPlayer();
 }
 #endif //TR_ANTI_AFK
+
+
+#ifdef YUR_TRAINING_AREA
+static const unsigned long STORAGE_TRAINING_DATE = 9100;
+static const unsigned long STORAGE_TRAINING_USED = 9101;
+
+static std::string formatTrainingTime(long ms)
+{
+	if (ms < 0)
+		ms = 0;
+
+	const long totalSec = ms / 1000;
+	const long min = totalSec / 60;
+	const long sec = totalSec % 60;
+
+	std::stringstream ss;
+	if (min > 0)
+		ss << min << " min " << sec << " s";
+	else
+		ss << sec << " s";
+	return ss.str();
+}
+
+static void sendTrainingEnterMessage(Player* player, long usedMs, long limitMs)
+{
+	const long remaining = limitMs - usedMs;
+	std::stringstream ss;
+	ss << "Sala de entrenamiento: cada personaje tiene "
+	   << g_config.TRAINING_DAILY_MINUTES
+	   << " min por dia. Llevas "
+	   << formatTrainingTime(usedMs)
+	   << " usados y te quedan "
+	   << formatTrainingTime(remaining)
+	   << ". Al agotar el tiempo seras enviado al templo. El limite se reinicia cada dia.";
+	player->sendTextMessage(MSG_RED_INFO, ss.str().c_str());
+}
+
+static void sendTrainingProgressLine(Player* player, long usedMs, long limitMs)
+{
+	const long remaining = limitMs - usedMs;
+	std::stringstream ss;
+	ss << "Entrenamiento: quedan "
+	   << formatTrainingTime(remaining)
+	   << " hoy | usado: "
+	   << formatTrainingTime(usedMs);
+	player->sendTextMessage(MSG_SMALLINFO, ss.str().c_str());
+}
+
+static void sendTrainingWarningMessage(Player* player, long usedMs, long limitMs)
+{
+	const long remaining = limitMs - usedMs;
+	std::stringstream ss;
+	ss << "Aviso: te quedan menos de 5 minutos de entrenamiento hoy ("
+	   << formatTrainingTime(remaining)
+	   << " restantes). Preparate para salir al templo.";
+	player->sendTextMessage(MSG_RED_INFO, ss.str().c_str());
+}
+
+void Player::checkTraining(int thinkTicks, Tile* tile)
+{
+	if (!tile || !tile->isTrainingArea())
+	{
+		trainingWarned = false;
+		trainingInArea = false;
+		return;
+	}
+
+	if (access >= g_config.ACCESS_PROTECT)
+		return;
+
+	time_t now = time(NULL);
+	struct tm* tmNow = localtime(&now);
+	long today = (tmNow->tm_year + 1900) * 10000L + (tmNow->tm_mon + 1) * 100L + tmNow->tm_mday;
+
+	long storedDate = 0;
+	long usedMs = 0;
+	getStorageValue(STORAGE_TRAINING_DATE, storedDate);
+	getStorageValue(STORAGE_TRAINING_USED, usedMs);
+
+	if (storedDate != today)
+	{
+		storedDate = today;
+		usedMs = 0;
+		addStorageValue(STORAGE_TRAINING_DATE, today);
+		addStorageValue(STORAGE_TRAINING_USED, 0);
+	}
+
+	const long limitMs = (long)g_config.TRAINING_DAILY_MINUTES * 60L * 1000L;
+	const Position exitPos = tile->getTrainingExit();
+
+	if (usedMs >= limitMs)
+	{
+		g_game.teleport(this, exitPos);
+		sendTextMessage(MSG_RED_INFO, "Se acabo tu tiempo de entrenamiento de hoy. Teletransporte al templo. Vuelve manana.");
+		trainingWarned = false;
+		trainingInArea = false;
+		return;
+	}
+
+	if (!trainingInArea)
+	{
+		trainingInArea = true;
+		sendTrainingEnterMessage(this, usedMs, limitMs);
+	}
+
+	usedMs += thinkTicks;
+	addStorageValue(STORAGE_TRAINING_USED, usedMs);
+
+	const long remaining = limitMs - usedMs;
+	sendTrainingProgressLine(this, usedMs, limitMs);
+
+	if (!trainingWarned && remaining <= 5 * 60 * 1000 && remaining > 0)
+	{
+		trainingWarned = true;
+		sendTrainingWarningMessage(this, usedMs, limitMs);
+	}
+
+	if (usedMs >= limitMs)
+	{
+		g_game.teleport(this, exitPos);
+		sendTextMessage(MSG_RED_INFO, "Se acabo tu tiempo de entrenamiento de hoy. Teletransporte al templo. Vuelve manana.");
+		trainingWarned = false;
+		trainingInArea = false;
+	}
+}
+#endif //YUR_TRAINING_AREA
 
 
 #ifdef ELEM_VIP_LIST

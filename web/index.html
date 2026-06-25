@@ -118,10 +118,7 @@
 
   <!-- LIVE -->
   <section id="panel-live" class="panel active space-y-4">
-    <div id="stats" class="grid grid-cols-4 gap-2"></div>
-    <div id="load-wrap" class="hidden h-1 overflow-hidden rounded-full bg-white/[0.06]">
-      <div id="load-bar" class="load-bar h-full rounded-full bg-emerald-500/70"></div>
-    </div>
+    <div id="stats" class="grid grid-cols-3 gap-2"></div>
     <div id="snapshots" class="grid grid-cols-2 gap-2 sm:grid-cols-4"></div>
     <div>
       <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">Online</p>
@@ -359,24 +356,14 @@ async function loadRegisterChallenge() {
 }
 
 function renderStats(srv) {
-  const occ = srv.players_max ? Math.round((srv.players_online / srv.players_max) * 100) : 0;
   document.getElementById('stats').innerHTML = [
-    { k: 'Online', v: `${srv.players_online}/${srv.players_max}` },
+    { k: 'Online', v: srv.players_online },
     { k: 'Peak', v: srv.players_peak },
     { k: 'Uptime', v: srv.uptime_fmt || '—' },
-    { k: 'Load', v: `${occ}%` },
   ].map((c, i) => `<div class="anim-in rounded-md border border-white/[0.06] bg-white/[0.02] px-2 py-1.5" style="--d:${i * 45}ms">
     <p class="text-[10px] text-zinc-600">${c.k}</p>
     <p class="mt-0.5 tabular-nums text-zinc-200">${esc(String(c.v))}</p>
   </div>`).join('');
-  const wrap = document.getElementById('load-wrap');
-  const bar = document.getElementById('load-bar');
-  wrap.classList.remove('hidden');
-  bar.style.width = `${Math.max(occ, 2)}%`;
-  bar.style.setProperty('--d', '180ms');
-  bar.classList.remove('load-bar');
-  bar.offsetWidth;
-  bar.classList.add('load-bar');
 }
 
 function renderSnapshots(data) {
@@ -560,7 +547,7 @@ function renderAll() {
   meta.classList.remove('tick');
   meta.offsetWidth;
   meta.classList.add('tick');
-  document.getElementById('presence').textContent = `${srv.players_online}/${srv.players_max} online`;
+  document.getElementById('presence').textContent = `${srv.players_online} online`;
   document.getElementById('server-label').textContent = srv.online ? 'online' : 'offline';
   const dot = document.getElementById('dot');
   dot.className = `h-1.5 w-1.5 rounded-full ${srv.online ? 'bg-emerald-500 dot-live' : 'bg-red-500/80'}`;

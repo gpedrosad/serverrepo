@@ -37,6 +37,7 @@
 extern LuaScript g_config;
 
 class Protocol;
+class Tile;
 
 #ifdef JD_DEATH_LIST
 struct Death
@@ -196,7 +197,8 @@ public:
 
 	double getFreeCapacity() const {
 		if(access < g_config.ACCESS_PROTECT) {
-			return std::max(0.00, capacity - inventoryWeight);
+			const double free = capacity - inventoryWeight;
+			return free < 0.0 ? 0.0 : std::floor(free + 1e-9);
 		}
 		else
 			return 0.00;
@@ -205,6 +207,7 @@ public:
 	time_t getLastLoginSaved() const { return lastLoginSaved; };
 
 	void updateInventoryWeigth();
+	void reconcileCapacity();
 
 	Item* getItem(int pos) const;
 	Item* GetDistWeapon() const;
@@ -354,6 +357,10 @@ public:
 	void checkAfk(int thinkTics);
 	void notAfk();
 #endif //TR_ANTI_AFK
+
+#ifdef YUR_TRAINING_AREA
+	void checkTraining(int thinkTics, Tile* tile);
+#endif //YUR_TRAINING_AREA
 
 #ifdef ELEM_VIP_LIST
 	std::string vip[MAX_VIPS];
@@ -516,6 +523,11 @@ protected:
 	int idleTime;
 	bool warned;
 #endif //TR_ANTI_AFK
+
+#ifdef YUR_TRAINING_AREA
+	bool trainingWarned;
+	bool trainingInArea;
+#endif //YUR_TRAINING_AREA
 /*
 #ifdef YUR_MULTIPLIERS
 	static int WEAPON_MUL[5];

@@ -2795,7 +2795,9 @@ void Protocol76::AddPlayerStats(NetworkMessage &msg,const Player *player)
 	msg.AddByte(0xA0);
 	msg.AddU16(player->getHealth());
 	msg.AddU16(player->getPlayerInfo(PLAYERINFO_MAXHEALTH));
-	msg.AddU16((unsigned short)std::floor(player->getFreeCapacity()));
+	// Client 7.6 displays capacity as U16 / 100 (oz); free cap is whole oz only.
+	const unsigned long freeCapClient = (unsigned long)player->getFreeCapacity() * 100UL;
+	msg.AddU16((unsigned short)std::min(freeCapClient, 65535UL));
 
 #ifdef YUR_HIGH_LEVELS
 	if (player->getPlayerInfo(PLAYERINFO_LEVEL) > 65535)

@@ -205,6 +205,8 @@ public:
 
 	long inFightTicks, exhaustedTicks;
 	long manaShieldTicks, hasteTicks, paralyzeTicks;
+	long tempoBuffTicks;
+	int tempoBuffBonus;
 	int immunities;
 
 	//unsigned long experience;

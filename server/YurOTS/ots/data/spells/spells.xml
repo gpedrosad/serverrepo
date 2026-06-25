@@ -20,11 +20,13 @@
 <spell name="Brutal Strike"			words="exori con"			maglv="4"	mana="30"	enabled="1"><vocation id="4" /></spell>
 <spell name="Whirlwind Throw"		words="exori hur"			maglv="3"	mana="40"	enabled="1"><vocation id="4" /></spell>
 <spell name="Berzeker Gran"			words="exori gran"			maglv="9"	mana="200"	enabled="1"><vocation id="4" /></spell>
+<spell name="Skill Buff"			words="utito tempo"			maglv="8"	mana="150"	enabled="1"><vocation id="4" /></spell>
 <spell name="Mass Healing"			words="exura gran mas res"	maglv="19"	mana="150"	enabled="1"><vocation id="2" /></spell>
 <spell name="Heal Friend"			words="exura sio"			maglv="7"	mana="50"	enabled="1"><vocation id="2" /></spell>
 <spell name="Ultimate Healing"		words="exura vita"			maglv="8"	mana="80"	enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /></spell>
 <spell name="Intense Healing"		words="exura gran"			maglv="4"	mana="40"	enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /></spell>
 <spell name="Light Healing"			words="exura"				maglv="1"	mana="25"	enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /><vocation id="4" /></spell>
+<spell name="Create Food"			words="exevo pan"			maglv="0"	mana="30"	enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /><vocation id="4" /></spell>
 <spell name="Mana Shield"			words="utamo vita"			maglv="4"	mana="50"	enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /></spell>
 <spell name="Strong Haste"			words="utani gran hur"		maglv="8"	mana="100"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
 <spell name="Haste"					words="utani hur"			maglv="4"	mana="60"	enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /><vocation id="4" /></spell>
@@ -108,10 +110,6 @@
 <spell name="Power Bolt"	words="exevo con vis"	maglv="14"	mana="200"	enabled="1"><vocation id="3" /><vocation id="5" /></spell>
 <!--\\ End Make arrow and bolt //-->
 
-
-<spell name="Create Food" words="exevo pan" maglv="0" mana="30" enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /><vocation id="4" /><vocation id="5" /></spell>
-
-
 <!--// Make Runes \\-->
 <spell name="Light Magic Missle"	words="adori"				maglv="1"	mana="40"	enabled="1"><vocation id="1"/><vocation id="2"/><vocation id="3"/></spell>
 <spell name="Poison Field"			words="adevo grav pox"		maglv="1"	mana="50"	enabled="1"><vocation id="1"/><vocation id="2"/></spell>
@@ -135,7 +133,7 @@
 <spell name="Explosion" 			words="adevo mas hur"		maglv="12"	mana="180"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
 <spell name="Soulfire" 				words="adevo res flam"		maglv="13"	mana="150"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
 <spell name="Fire Wall"				words="adevo mas grav flam"	maglv="13"	mana="200"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
-<spell name="Magic Wall" 			words="adevo grav tera"		maglv="14"	mana="250"	enabled="1"><vocation id="1" /></spell>
+<spell name="Magic Wall" 			words="adevo grav tera"		maglv="14"	mana="250"	enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /><vocation id="4" /></spell>
 <spell name="Energy Bomb" 			words="adevo mas vis"		maglv="18"	mana="220"	enabled="1"><vocation id="1" /></spell>
 <spell name="Energy Wall" 			words="adevo mas grav vis"	maglv="18"	mana="250"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
 <spell name="Sudden Death" 			words="adori vita vis"		maglv="25"	mana="220"	enabled="1"><vocation id="1" /></spell>

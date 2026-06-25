@@ -11,18 +11,16 @@
 <skill skillid="1" level="10" tries="0"/>
 <skill skillid="2" level="10" tries="0"/>
 <skill skillid="3" level="10" tries="0"/>
-<skill skillid="4" level="71" tries="0"/>
-<skill skillid="5" level="41" tries="0"/>
+<skill skillid="4" level="10" tries="0"/>
+<skill skillid="5" level="10" tries="0"/>
 <skill skillid="6" level="10" tries="0"/>
 </skills><spells><spell words="adana pox"/><spell words="adito grav"/><spell words="adito tera"/><spell words="adori"/><spell words="adori blank"/><spell words="adori flam"/><spell words="adori gran"/><spell words="adori gran dec"/><spell words="death"/><spell words="exevo con"/><spell words="exevo con flam"/><spell words="exevo con mort"/><spell words="exevo con pox"/><spell words="exevo con vis"/><spell words="exevo pan"/><spell words="exura"/><spell words="exura gran"/><spell words="exura vita"/><spell words="utamo vita"/><spell words="utana vid"/><spell words="utani hur"/><spell words="utani slow"/><spell words="utevo gran lux"/><spell words="utevo lux"/></spells>
-<inventory><slot slotid="1"><item id="2490"/></slot>
-<slot slotid="2"><item id="2129"/></slot>
-<slot slotid="3"><item id="1988"><inside><item id="2152" count="2"/><item id="2543" count="10"/></inside></item></slot>
-<slot slotid="4"><item id="2463"/></slot>
-<slot slotid="5"><item id="2455"/></slot>
+<inventory><slot slotid="1"><item id="2461"/></slot>
+<slot slotid="3"><item id="1988"><inside><item id="2152" count="2"/><item id="2382" count="1"/><item id="2386" count="1"/></inside></item></slot>
+<slot slotid="4"><item id="2465"/></slot>
+<slot slotid="5"><item id="2376"/></slot>
 <slot slotid="7"><item id="2468"/></slot>
 <slot slotid="8"><item id="2643"/></slot>
-<slot slotid="9"><item id="2164"/></slot>
 </inventory>
 <depots><depot depotid="1"><item id="2590"><inside><item id="2594"/></inside></item></depot></depots>
 <storage/>

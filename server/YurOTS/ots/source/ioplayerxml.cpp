@@ -637,6 +637,7 @@ bool IOPlayerXML::loadPlayer(Player* player, std::string name){
 			p=p->next;
 		}
 
+		player->reconcileCapacity();
 		player->updateInventoryWeigth();
 
 		std::cout << "loaded " << filename << std::endl;
@@ -751,7 +752,7 @@ bool IOPlayerXML::savePlayer(Player* player){
 	sb << player->level;              xmlSetProp(root, (const xmlChar*) "level", (const xmlChar*)sb.str().c_str());     sb.str("");
 	sb << player->access;             xmlSetProp(root, (const xmlChar*) "access", (const xmlChar*)sb.str().c_str());	sb.str("");
 	//sb << player->cap;    	        xmlSetProp(root, (const xmlChar*) "cap", (const xmlChar*)sb.str().c_str());       sb.str("");
-	sb << player->getCapacity();      xmlSetProp(root, (const xmlChar*) "cap", (const xmlChar*)sb.str().c_str());       sb.str("");
+	sb << (int)std::floor(player->getCapacity() + 0.5); xmlSetProp(root, (const xmlChar*) "cap", (const xmlChar*)sb.str().c_str()); sb.str("");
 	sb << player->maglevel;	          xmlSetProp(root, (const xmlChar*) "maglevel", (const xmlChar*)sb.str().c_str());  sb.str("");
 	sb << (long)player->lastlogin;	        xmlSetProp(root, (const xmlChar*) "lastlogin", (const xmlChar*)sb.str().c_str());  sb.str("");
 

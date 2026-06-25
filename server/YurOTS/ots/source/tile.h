@@ -61,6 +61,10 @@ public:
 #ifdef YUR_PVP_ARENA
 	pvpArena = false;
 #endif //YUR_PVP_ARENA
+
+#ifdef YUR_TRAINING_AREA
+	trainingArea = false;
+#endif //YUR_TRAINING_AREA
   }
 
   Item*          ground;
@@ -80,6 +84,12 @@ public:
 	void setPvpArena(const Position& exit);
 	Position getPvpArenaExit() const;
 #endif //YUR_PVP_ARENA
+
+#ifdef YUR_TRAINING_AREA
+	bool isTrainingArea() const;
+	void setTrainingArea(const Position& exit);
+	Position getTrainingExit() const;
+#endif //YUR_TRAINING_AREA
 
 #ifdef YUR_CLEAN_MAP
 	long clean();
@@ -132,6 +142,11 @@ protected:
 	bool pvpArena;
 	Position arenaExit;
 #endif //YUR_PVP_ARENA
+
+#ifdef YUR_TRAINING_AREA
+	bool trainingArea;
+	Position trainingExit;
+#endif //YUR_TRAINING_AREA
 };
 
 

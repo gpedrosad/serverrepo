@@ -52,6 +52,8 @@ public:
 	int64_t HEALTH_TICK_MUL;
 	int64_t MANA_TICK_MUL;
 	int64_t CAP_GAIN[5];
+	int START_CAP;
+	int START_CAP_LEVEL;
 	int64_t MANA_GAIN[5];
 	int64_t HP_GAIN[5];
 	int WEAPON_MUL[5];
@@ -107,6 +109,10 @@ public:
 	bool QUEUE_PREMMY;
 	int PREMMY_EXP_BONUS;
 #endif //YUR_PREMIUM_PROMOTION
+
+#ifdef YUR_TRAINING_AREA
+	int TRAINING_DAILY_MINUTES;
+#endif //YUR_TRAINING_AREA
 
 #ifdef YUR_CVS_MODS
 	std::string VOCATIONS[5];

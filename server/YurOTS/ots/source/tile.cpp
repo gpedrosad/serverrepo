@@ -608,6 +608,25 @@ Position Tile::getPvpArenaExit() const
 #endif //YUR_PVP_ARENA
 
 
+#ifdef YUR_TRAINING_AREA
+bool Tile::isTrainingArea() const
+{
+	return trainingArea;
+}
+
+void Tile::setTrainingArea(const Position& exit)
+{
+	trainingArea = true;
+	trainingExit = exit;
+}
+
+Position Tile::getTrainingExit() const
+{
+	return trainingExit;
+}
+#endif //YUR_TRAINING_AREA
+
+
 #ifdef YUR_CLEAN_MAP
 long Tile::clean()
 {

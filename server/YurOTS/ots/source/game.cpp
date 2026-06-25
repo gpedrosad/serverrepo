@@ -545,6 +545,54 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 			attackedCreature->dropLoot(lootcontainer);
 		}
 
+		//Log loot of monsters
+		Monster* lootMonster = dynamic_cast<Monster*>(attackedCreature);
+		if(lootMonster && lootcontainer && lootcontainer->size() > 0) {
+			std::stringstream lootStr;
+			bool first = true;
+			for(ContainerList::const_iterator cit = lootcontainer->getItems(); cit != lootcontainer->getEnd(); ++cit) {
+				Item* lootItem = *cit;
+				if(!lootItem) continue;
+				if(!first) lootStr << ", ";
+				first = false;
+				unsigned short iid = lootItem->getID();
+				std::string itemName = Item::items[iid].name;
+				if(itemName.empty()) itemName = "item";
+				if(Item::items[iid].stackable && lootItem->getItemCountOrSubtype() > 1) {
+					lootStr << (int)lootItem->getItemCountOrSubtype() << " " << itemName;
+				} else {
+					lootStr << itemName;
+				}
+				Container* subContainer = dynamic_cast<Container*>(lootItem);
+				if(subContainer && subContainer->size() > 0) {
+					lootStr << " (inside: ";
+					bool subFirst = true;
+					for(ContainerList::const_iterator sit = subContainer->getItems(); sit != subContainer->getEnd(); ++sit) {
+						Item* subItem = *sit;
+						if(!subItem) continue;
+						if(!subFirst) lootStr << ", ";
+						subFirst = false;
+						unsigned short sid = subItem->getID();
+						std::string subName = Item::items[sid].name;
+						if(subName.empty()) subName = "item";
+						if(Item::items[sid].stackable && subItem->getItemCountOrSubtype() > 1) {
+							lootStr << (int)subItem->getItemCountOrSubtype() << " " << subName;
+						} else {
+							lootStr << subName;
+						}
+					}
+					lootStr << ")";
+				}
+			}
+			if(!first) {
+				time_t now = time(0);
+				struct tm* t = localtime(&now);
+				char timeBuf[8];
+				snprintf(timeBuf, sizeof(timeBuf), "%02d:%02d", t->tm_hour, t->tm_min);
+				std::cout << timeBuf << " Loot of " << lootMonster->getName() << ": " << lootStr.str() << "." << std::endl;
+			}
+		}
+
 		if(attackedplayer){
 			attackedplayer->onThingDisappear(attackedplayer,stackpos);
 			attackedplayer->die();        //handles exp/skills/maglevel loss
@@ -3875,6 +3923,9 @@ void Game::checkCreature(unsigned long id)
 #ifdef YUR_RINGS_AMULETS
 			player->checkRing(thinkTicks);
 #endif //YUR_RINGS_AMULETS
+#ifdef YUR_TRAINING_AREA
+			player->checkTraining(thinkTicks, tile);
+#endif //YUR_TRAINING_AREA
 #ifdef YUR_LIGHT_ITEM
 			player->checkLightItem(thinkTicks);
 #endif //YUR_LIGHT_ITEM
@@ -3943,6 +3994,14 @@ void Game::checkCreature(unsigned long id)
 			if(player->hasteTicks >=1000){
 				player->hasteTicks -= thinkTicks;
 			}
+
+			if(player->tempoBuffTicks > 0){
+				player->tempoBuffTicks -= thinkTicks;
+				if(player->tempoBuffTicks <= 0){
+					player->tempoBuffTicks = 0;
+					player->tempoBuffBonus = 0;
+				}
+			}
 		}
 		else {
 			if(creature->manaShieldTicks >=1000){
@@ -3951,6 +4010,14 @@ void Game::checkCreature(unsigned long id)
 
 			if(creature->hasteTicks >=1000){
 				creature->hasteTicks -= thinkTicks;
+			}
+
+			if(creature->tempoBuffTicks > 0){
+				creature->tempoBuffTicks -= thinkTicks;
+				if(creature->tempoBuffTicks <= 0){
+					creature->tempoBuffTicks = 0;
+					creature->tempoBuffBonus = 0;
+				}
 			}
 
 #ifdef YUR_INVISIBLE

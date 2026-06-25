@@ -2,5 +2,6 @@
 <account pass="242424" type="0" premDays="90">
  	<characters>
  		<character name="Broskas" />
+ 		<character name="Bro Knight" />
  	</characters>
 </account>

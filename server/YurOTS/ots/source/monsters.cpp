@@ -21,6 +21,7 @@
 #include "monsters.h"
 #include "spells.h"
 #include "luascript.h"
+#include "const76.h"
 
 extern Spells spells;
 extern LuaScript g_config;
@@ -110,6 +111,34 @@ void MonsterType::createLoot(Container* corpse)
 			}
 		}
 	}
+
+	//Convert gold > 100 to platinum coins
+	unsigned long totalGold = 0;
+	for(ContainerList::const_iterator cit = corpse->getItems(); cit != corpse->getEnd(); ++cit){
+		Item* item = *cit;
+		if(item && item->getID() == ITEM_COINS_GOLD){
+			totalGold += item->getItemCountOrSubtype();
+		}
+	}
+	if(totalGold > 100){
+		unsigned long platCount = totalGold / 100;
+		unsigned long remainder = totalGold % 100;
+		std::list<Item*> toRemove;
+		for(ContainerList::const_iterator cit = corpse->getItems(); cit != corpse->getEnd(); ++cit){
+			Item* item = *cit;
+			if(item && item->getID() == ITEM_COINS_GOLD){
+				toRemove.push_back(item);
+			}
+		}
+		for(std::list<Item*>::iterator rit = toRemove.begin(); rit != toRemove.end(); ++rit){
+			corpse->removeItem(*rit);
+			delete *rit;
+		}
+		if(remainder > 0){
+			corpse->addItem(Item::CreateItem(ITEM_COINS_GOLD, (unsigned short)remainder));
+		}
+		corpse->addItem(Item::CreateItem(ITEM_COINS_PLATINUM, (unsigned short)platCount));
+	}
 }
 
 Item* MonsterType::createLootItem(const LootBlock& lootBlock)
@@ -143,6 +172,12 @@ Item* MonsterType::createLootItem(const LootBlock& lootBlock)
 			tmpItem = Item::CreateItem(lootBlock.id);
 		}
 	}
+
+	if(tmpItem && tmpItem->getID() == ITEM_COINS_GOLD){
+		unsigned long goldCount = (unsigned long)tmpItem->getItemCountOrSubtype() * 2;
+		tmpItem->setItemCountOrSubtype((unsigned char)goldCount);
+	}
+
 	return tmpItem;
 }
 

@@ -157,6 +157,7 @@ public:
   static int luaActionMakeFood(lua_State *L);
   static int luaActionReduceExhaustion(lua_State *L);
   static int luaActionReduceExhaustionByPercent(lua_State *L);
+  static int luaActionSkillBuff(lua_State *L);
 
 #ifdef BDB_UTEVO_LUX
 	static int luaSetPlayerLightLevel(lua_State *L);

@@ -29,7 +29,7 @@
 <loot>
  	<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
   	<item id="2600" chance="10000"/>
-  	<item id="2151" countmax="8" chance1="12000" chancemax="0"/>
+  	<item id="2152" countmax="8" chance1="12000" chancemax="0"/>
  
   	<item id="1987" chance="100000">
  	<inside>

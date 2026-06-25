@@ -109,6 +109,9 @@ queuepremmy = "yes"
 -- extra exp % from monsters for premium players (10 = +10%)
 premmyexpbonus = 10
 
+-- daily training room limit per character (minutes)
+trainingdailyminutes = 20
+
 -- how much % of {exp, mana, skill, eq, bp} do you lose when dying
 diepercent = {"7", "7", "7", "7", "100"}
 
@@ -174,6 +177,9 @@ manamul = {"5", "5", "5", "5", "5"}
 
 -- how much points of life,mana,cap do you get when advancing {no-voc, sorcerer, druid, paladin, knight}
 capgain = {"10", "10", "10", "20", "25"}
+-- base capacity at startcaplevel (matches vocation templates); levels below still get startcap
+startcap = 300
+startcaplevel = 10
 managain = {"5", "30", "30", "15", "5"}
 hpgain = {"5", "5", "5", "10", "15"}
 

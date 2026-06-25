@@ -357,6 +357,14 @@ int Monster::onThink(int& newThinkTicks)
 
 	//process movement
 	if(state != STATE_IDLE && !(state == STATE_IDLESUMMON && hasLostMaster)) {
+		if(mType->trainer) {
+			updateLookDirection();
+			newThinkTicks = std::max(1500, getStepDuration());
+			int ret = oldThinkTicks;
+			oldThinkTicks = newThinkTicks;
+			return ret;
+		}
+
 		if(state == STATE_TARGETNOTREACHABLE) {
 			Position newMovePos;
 			if(getRandomPosition(targetPos, newMovePos)) {
@@ -392,8 +400,10 @@ int Monster::onThink(int& newThinkTicks)
 
 	if(mType->trainer && state == STATE_IDLE) {
 		tryTrainerSelfCare();
-		if(!hasNearbyMagicField()) {
-			tryTrainerWander();
+		bool canReach = false;
+		Creature* target = findTarget(0, canReach);
+		if(target && canReach) {
+			selectTarget(target, true);
 		}
 		newThinkTicks = std::max(1500, getStepDuration());
 		int ret = oldThinkTicks;
@@ -854,7 +864,10 @@ void Monster::onCreatureMove(const Creature* creature, const Position* oldPos)
 		if(attackedCreature == creature->getID()) {
 			if(state == STATE_ATTACKING && !isCreatureReachable(creature)) {
 
-				if(isSummon()) {
+				if(mType->trainer) {
+					setAttackedCreature(NULL);
+				}
+				else if(isSummon()) {
 					state = STATE_TARGETNOTREACHABLE;
 					route.clear();
 				}
@@ -867,7 +880,9 @@ void Monster::onCreatureMove(const Creature* creature, const Position* oldPos)
 			}
 			else {
 				targetPos = creature->pos;
-				setUpdateMovePos();
+				if(!mType->trainer) {
+					setUpdateMovePos();
+				}
 			}
 		}
 		else if(isSummon()) {
@@ -912,6 +927,9 @@ void Monster::onCreatureEnter(const Creature* creature, bool canReach /* = true*
 	}
 	else if(state == STATE_IDLE || (state == STATE_TARGETNOTREACHABLE && canReach)) {
 		if(isCreatureAttackable(creature)) {
+			if(mType->trainer && !canReach) {
+				return;
+			}
 			selectTarget(creature, canReach);
 		}
 	}
@@ -954,6 +972,10 @@ void Monster::onCreatureLeave(const Creature *creature)
 
 void Monster::selectTarget(const Creature* creature, bool canReach /* = true*/)
 {
+	if(mType->trainer && !canReach) {
+		return;
+	}
+
 	Creature::setAttackedCreature(creature);
 	targetPos = creature->pos;
 
@@ -1055,8 +1077,13 @@ void Monster::reThink(bool updateOnlyState /* = true*/)
 		if(state == STATE_ATTACKING) {
 			Creature *attackedCreature = game->getCreatureByID(this->attackedCreature);
 			if (!attackedCreature || !isCreatureReachable(attackedCreature)) {
-				state = STATE_TARGETNOTREACHABLE;
-				route.clear();
+				if(mType->trainer) {
+					setAttackedCreature(NULL);
+				}
+				else {
+					state = STATE_TARGETNOTREACHABLE;
+					route.clear();
+				}
 			}
 		}
 
@@ -1083,8 +1110,8 @@ void Monster::reThink(bool updateOnlyState /* = true*/)
 			}
 
 			//static walking
-			if(getTargetDistance() <= 1 && getCurrentDistanceToTarget(targetPos) == 1) {
-				if(!mType->trainer || !hasNearbyMagicField()) {
+			if(!mType->trainer && getTargetDistance() <= 1 && getCurrentDistanceToTarget(targetPos) == 1) {
+				if(!hasNearbyMagicField()) {
 					if(mType->staticAttack > 0 && rand() % mType->staticAttack == 0) {
 						Position newMovePos;
 						if(getRandomPosition(targetPos, newMovePos) && !tileHasMagicField(newMovePos)) {
@@ -1095,7 +1122,12 @@ void Monster::reThink(bool updateOnlyState /* = true*/)
 			}
 			//to far away from target?
 			else if(route.empty() && getCurrentDistanceToTarget(targetPos) > getTargetDistance()) {
-				setUpdateMovePos();
+				if(mType->trainer) {
+					setAttackedCreature(NULL);
+				}
+				else {
+					setUpdateMovePos();
+				}
 			}
 		}
 
@@ -1222,6 +1254,9 @@ std::string	Monster::getDescription(bool self) const
 
 int64_t Monster::getWeaponDamage() const
 {
+	if(mType->trainer)
+		return 0;
+
 	if(curPhysicalAttack != NULL)
 		return random_range(curPhysicalAttack->minWeapondamage, curPhysicalAttack->maxWeapondamage);
 	else

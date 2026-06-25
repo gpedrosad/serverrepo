@@ -296,6 +296,7 @@ int SpellScript::registerFunctions(){
 	lua_register(luaState, "makeFood", SpellScript::luaActionMakeFood);
 	lua_register(luaState, "reduceExhaustion", SpellScript::luaActionReduceExhaustion);
 	lua_register(luaState, "reduceExhaustionByPercent", SpellScript::luaActionReduceExhaustionByPercent);
+	lua_register(luaState, "skillBuff", SpellScript::luaActionSkillBuff);
 
 #ifdef BDB_UTEVO_LUX
 	lua_register(luaState, "setPlayerLightLevel", SpellScript::luaSetPlayerLightLevel);
@@ -1065,24 +1066,23 @@ int SpellScript::luaActionMakeFood(lua_State *L){
 
 		if(isSuccess) {
 			int r,foodtype;
-			r = rand()%7;
+			r = rand()%8;
 			if(r == 0) foodtype = ITEM_MEAT;
-			if(r == 1) foodtype = ITEM_HAM;
-			if(r == 2) foodtype = ITEM_GRAPE;
-			if(r == 3) foodtype = ITEM_APPLE;
-			if(r == 4) foodtype = ITEM_BREAD;
-			if(r == 5) foodtype = ITEM_CHEESE;
-			if(r == 6) foodtype = ITEM_ROLL;
-    	if(r == 7) foodtype = ITEM_BREAD;
+			else if(r == 1) foodtype = ITEM_HAM;
+			else if(r == 2) foodtype = ITEM_GRAPE;
+			else if(r == 3) foodtype = ITEM_APPLE;
+			else if(r == 4) foodtype = ITEM_BREAD;
+			else if(r == 5) foodtype = ITEM_CHEESE;
+			else if(r == 6) foodtype = ITEM_ROLL;
+			else foodtype = ITEM_BREAD;
 
-  		Item* new_item = Item::CreateItem(foodtype,count);
+			Item* new_item = Item::CreateItem(foodtype,count);
 			if(!player->addItem(new_item)){
-				//add item on the ground
 				spell->game->addThing(NULL,player->pos,new_item);
 			}
 		}
 
-		lua_pushnumber(L, 1);
+		lua_pushnumber(L, isSuccess ? 1 : 0);
 		return 1;
 	}
 	lua_pushnumber(L, 0);
@@ -1154,6 +1154,26 @@ int SpellScript::luaActionReduceExhaustionByPercent(lua_State *L)
 		if(player->exhaustedTicks >= newExhaust){
 			player->exhaustedTicks = newExhaust;
 		}
+	}
+	return 0;
+}
+
+int SpellScript::luaActionSkillBuff(lua_State *L)
+{
+	int bonus = (int)lua_tonumber(L, -1);
+	lua_pop(L,1);
+
+	long time = (long)lua_tonumber(L, -1) * 1000;
+	lua_pop(L,1);
+
+	Spell* spell = getSpell(L);
+	Creature* creature = spell->game->getCreatureByID((unsigned long)lua_tonumber(L, -1));
+	lua_pop(L,1);
+
+	Player* player = creature ? dynamic_cast<Player*>(creature) : NULL;
+	if(player && player->access < g_config.ACCESS_PROTECT){
+		player->tempoBuffTicks = time;
+		player->tempoBuffBonus = bonus;
 	}
 	return 0;
 }

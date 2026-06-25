@@ -58,6 +58,8 @@ int LuaScript::OpenFile(const char *filename)
 	CAP_GAIN[VOCATION_DRUID] = atoi(getGlobalStringField("capgain", VOCATION_DRUID + 1, "10").c_str());
 	CAP_GAIN[VOCATION_PALADIN] = atoi(getGlobalStringField("capgain", VOCATION_PALADIN + 1, "20").c_str());
 	CAP_GAIN[VOCATION_KNIGHT] = atoi(getGlobalStringField("capgain", VOCATION_KNIGHT + 1, "25").c_str());
+	START_CAP = getGlobalNumber("startcap", 300);
+	START_CAP_LEVEL = getGlobalNumber("startcaplevel", 10);
 
 	MANA_GAIN[VOCATION_NONE] = atoll(getGlobalStringField("managain", VOCATION_NONE + 1, "5").c_str());
 	MANA_GAIN[VOCATION_SORCERER] = atoll(getGlobalStringField("managain", VOCATION_SORCERER + 1, "30").c_str());
@@ -143,6 +145,10 @@ int LuaScript::OpenFile(const char *filename)
 	QUEUE_PREMMY = getGlobalString("queuepremmy") == "yes";
 	PREMMY_EXP_BONUS = getGlobalNumber("premmyexpbonus", 10);
 #endif //YUR_PREMIUM_PROMOTION
+
+#ifdef YUR_TRAINING_AREA
+	TRAINING_DAILY_MINUTES = getGlobalNumber("trainingdailyminutes", 20);
+#endif //YUR_TRAINING_AREA
 
 #ifdef YUR_CVS_MODS
 	VOCATIONS[VOCATION_KNIGHT] = getGlobalStringField("vocations",VOCATION_KNIGHT);
