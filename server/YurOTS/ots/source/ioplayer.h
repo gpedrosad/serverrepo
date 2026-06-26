@@ -47,6 +47,10 @@ class IOPlayer {
 	
 	virtual bool getGuidByName(unsigned long &guid, unsigned long &alvl, std::string &name);
 	virtual bool getNameByGuid(unsigned long guid, std::string &name);
+
+	static std::string playerFilePath(const std::string& datadir, const std::string& name);
+	static bool playerFileExists(const std::string& datadir, const std::string& name);
+	static void normalizePlayerFilenames(const std::string& datadir);
 	
   protected:
 	IOPlayer(){};

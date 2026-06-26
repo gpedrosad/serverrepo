@@ -52,8 +52,7 @@ std::string AccountCreator::process(std::string request)
 		voc = 0;
 
 		// check if name exists
-	std::ifstream file((g_config.DATA_DIR + "players/" + name + ".xml").c_str());
-	if (file)
+	if (IOPlayer::playerFileExists(g_config.DATA_DIR, name))
 		return "Sorry, name already in use";
 
 		// create account

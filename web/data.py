@@ -24,6 +24,23 @@ SKILL_NAMES = {
     5: "Shield",
     6: "Fishing",
 }
+VOC_TEMPLATES = frozenset({"0", "1", "2", "3", "4"})
+
+
+def player_save_path(players_dir: Path, name: str) -> Path:
+    return players_dir / f"{name.strip().lower()}.xml"
+
+
+def player_name_taken(players_dir: Path, name: str) -> bool:
+    key = name.strip().lower()
+    if not players_dir.is_dir():
+        return False
+    for path in players_dir.glob("*.xml"):
+        if path.stem in VOC_TEMPLATES:
+            continue
+        if path.stem.lower() == key:
+            return True
+    return False
 
 
 def read_server_ip(config_path: Path) -> str:
@@ -97,12 +114,12 @@ def create_account(
 
     name = name.strip()
     acc_path = accounts_dir / f"{acc}.xml"
-    player_path = players_dir / f"{name}.xml"
+    player_path = player_save_path(players_dir, name)
     template_path = players_dir / f"{voc}.xml"
 
     if acc_path.exists():
         return {"ok": False, "message": "Ese número de cuenta ya existe"}
-    if player_path.exists():
+    if player_name_taken(players_dir, name):
         return {"ok": False, "message": "Ese nombre ya está en uso"}
     if not template_path.is_file():
         return {"ok": False, "message": "Vocación no disponible"}

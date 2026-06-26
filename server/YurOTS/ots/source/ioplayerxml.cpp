@@ -38,8 +38,7 @@ IOPlayerXML::IOPlayerXML(){
 
 bool IOPlayerXML::loadPlayer(Player* player, std::string name){
 	std::string datadir = g_config.getGlobalString("datadir");
-	std::string filename = datadir + "players/" + name + ".xml";
-	std::transform (filename.begin(),filename.end(), filename.begin(), tolower);
+	std::string filename = IOPlayer::playerFilePath(datadir, name);
 
 	xmlDocPtr doc;
 	xmlMutexLock(xmlmutex);
@@ -732,8 +731,7 @@ bool IOPlayerXML::SaveContainer(xmlNodePtr nodeitem,Container* ccontainer)
 
 bool IOPlayerXML::savePlayer(Player* player){
 	std::string datadir = g_config.getGlobalString("datadir");
-	std::string filename = datadir + "players/" + player->getName() + ".xml";
-	std::transform (filename.begin(),filename.end(), filename.begin(), tolower);
+	std::string filename = IOPlayer::playerFilePath(datadir, player->getName());
     std::stringstream sb;
 
     xmlDocPtr doc;

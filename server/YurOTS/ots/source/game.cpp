@@ -5591,6 +5591,10 @@ void Game::serverSave()
 void Game::autoServerSave()
 {
 	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::autoServerSave()");
+
+	for(AutoList<Player>::listiterator it = Player::listPlayer.list.begin(); it != Player::listPlayer.list.end(); ++it)
+		(*it).second->sendTextMessage(MSG_RED_TEXT, "Server save en progreso.");
+
 	serverSave();
 	addEvent(makeTask(g_config.getGlobalNumber("autosave", 1)*60000, std::mem_fun(&Game::autoServerSave)));
 }
@@ -5629,8 +5633,7 @@ bool Game::isPlayer(std::string name)
 	extern xmlMutexPtr xmlmutex;
 
 	std::string datadir = g_config.getGlobalString("datadir");
-	std::string filenamecheck = datadir + "players/" + name + ".xml";
-	std::transform(filenamecheck.begin(),filenamecheck.end(), filenamecheck.begin(), (int(*)(int))tolower);
+	std::string filenamecheck = IOPlayer::playerFilePath(datadir, name);
 
 	xmlDocPtr doc;
 	xmlMutexLock(xmlmutex);

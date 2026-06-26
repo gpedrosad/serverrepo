@@ -522,6 +522,8 @@ int main(int argc, char *argv[])
 	}
 	std::cout << "[done]" << std::endl;
 
+	IOPlayer::normalizePlayerFilenames(g_config.getGlobalString("datadir"));
+
 	//load spells data
 	std::cout << ":: Loading spells.xml...            ";
 	if(!spells.loadFromXml(g_config.getGlobalString("datadir")))

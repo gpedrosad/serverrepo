@@ -20,6 +20,15 @@
 
 #include "ioplayer.h"
 
+#include <algorithm>
+#include <fstream>
+#include <cctype>
+
+#ifndef WIN32
+#include <dirent.h>
+#include <unistd.h>
+#endif
+
 #ifdef __USE_MYSQL__
 	#include "ioplayersql.h"
 #endif
@@ -46,6 +55,58 @@ IOPlayer* IOPlayer::instance(){
 	printf("%s \n", _instance->getSourceDescription());
 	#endif 
 	return _instance;
+}
+
+std::string IOPlayer::playerFilePath(const std::string& datadir, const std::string& name)
+{
+	std::string filename = datadir + "players/" + name + ".xml";
+	std::transform(filename.begin(), filename.end(), filename.begin(),
+		[](unsigned char c){ return (char)std::tolower(c); });
+	return filename;
+}
+
+bool IOPlayer::playerFileExists(const std::string& datadir, const std::string& name)
+{
+	std::ifstream file(playerFilePath(datadir, name).c_str());
+	return file.good();
+}
+
+void IOPlayer::normalizePlayerFilenames(const std::string& datadir)
+{
+#ifndef WIN32
+	std::string dirpath = datadir + "players/";
+	DIR* dir = opendir(dirpath.c_str());
+	if(!dir)
+		return;
+
+	struct dirent* ent;
+	while((ent = readdir(dir)) != NULL) {
+		std::string fname = ent->d_name;
+		if(fname.length() < 5 || fname.compare(fname.length() - 4, 4, ".xml") != 0)
+			continue;
+
+		std::string stem = fname.substr(0, fname.length() - 4);
+		if(stem.length() == 1 && stem[0] >= '0' && stem[0] <= '4')
+			continue;
+
+		std::string lower = stem;
+		std::transform(lower.begin(), lower.end(), lower.begin(),
+			[](unsigned char c){ return (char)std::tolower(c); });
+		if(stem == lower)
+			continue;
+
+		std::string from = dirpath + fname;
+		std::string to = dirpath + lower + ".xml";
+		if(access(to.c_str(), F_OK) == 0) {
+			std::cout << ":: Warning: player filename conflict " << fname << " / " << lower << ".xml" << std::endl;
+			continue;
+		}
+
+		if(rename(from.c_str(), to.c_str()) == 0)
+			std::cout << ":: Renamed player file " << fname << " -> " << lower << ".xml" << std::endl;
+	}
+	closedir(dir);
+#endif //WIN32
 }
 
 bool IOPlayer::loadPlayer(Player* player, std::string name){
