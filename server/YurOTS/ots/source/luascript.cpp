@@ -161,7 +161,7 @@ int LuaScript::OpenFile(const char *filename)
 #endif //YUR_PREMIUM_PROMOTION
 
 #ifdef YUR_TRAINING_AREA
-	TRAINING_DAILY_MINUTES = getGlobalNumber("trainingdailyminutes", 20);
+	TRAINING_DAILY_MINUTES = getGlobalNumber("trainingdailyminutes", 120);
 #endif //YUR_TRAINING_AREA
 
 #ifdef YUR_CVS_MODS
@@ -184,6 +184,7 @@ int LuaScript::OpenFile(const char *filename)
 	PVP_UNDERDOG_EXP = getGlobalString("pvpunderdogexp", "yes") == "yes";
 	PVP_UNDERDOG_EXP_PERCENT = getGlobalNumber("pvpunderdogexp_percent", 50);
 	PVP_UNDERDOG_EXP_MIN_DIFF = getGlobalNumber("pvpunderdogexp_mindiff", 1);
+	PVP_UNDERDOG_EXP_MIN_LEVEL = getGlobalNumber("pvpunderdogexp_minlevel", 15);
 
 	ACCESS_PROTECT = getGlobalNumber("accessprotect",3);
 	ACCESS_REMOTE = getGlobalNumber("accessremote",3);

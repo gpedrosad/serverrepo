@@ -87,7 +87,7 @@ access(0)
 	boh = false;
 	hasteEnchantStacks = 0;
 	imbueWandMl = 0;
-	imbueRubyWeapon = false;
+	imbueRubyWeapon = 0;
 	imbueEmeraldArmor = false;
 #endif //YUR_BOH
 

@@ -499,8 +499,80 @@ void GameState::addCreatureState(Tile* tile, Creature* attackedCreature, int64_t
 	creaturestates[tile].push_back( make_pair(attackedCreature, cs) );
 }
 
+static bool isRareLootItem(unsigned short itemId)
+{
+	switch(itemId) {
+	case ITEM_VIOLET_GEM:
+	case ITEM_YELLOW_GEM:
+	case ITEM_BIG_EMERALD:
+	case ITEM_BIG_RUBY:
+	case ITEM_GOLD_NUGGET:
+	case ITEM_BLUE_GEM:
+	case ITEM_SCARAB_COIN:
+	case ITEM_TALON:
+		return true;
+	default:
+		return false;
+	}
+}
+
+static bool isRareEquipmentLootItem(unsigned short itemId)
+{
+	switch(itemId) {
+	case ITEM_BOH:
+	case 2392: // fire sword
+	case 2393: // giantsword
+	case 2396: // ice rapier
+	case 2400: // magic sword
+	case 2407: // bright sword
+	case 2414: // dragon lance
+	case 2421: // thunder hammer
+	case 2466: // golden armor
+	case 2470: // golden legs
+	case 2472: // magic plate armor
+	case 2487: // crown armor
+	case 2488: // crown legs
+	case 2491: // crown helmet
+	case 2492: // dragon scale mail
+	case 2494: // demon armor
+		return true;
+	default:
+		break;
+	}
+
+	const ItemType& itemType = Item::items[itemId];
+	if(!itemType.pickupable)
+		return false;
+
+	if((itemType.weaponType == SWORD || itemType.weaponType == CLUB || itemType.weaponType == AXE)
+		&& itemType.attack >= 30)
+		return true;
+
+	if(itemType.weaponType == SHIELD && itemType.defence >= 28)
+		return true;
+
+	if((itemType.slot_position & SLOTP_ARMOR) && itemType.armor >= 10)
+		return true;
+
+	if((itemType.slot_position & SLOTP_HEAD) && itemType.armor >= 7)
+		return true;
+
+	if((itemType.slot_position & SLOTP_LEGS) && itemType.armor >= 6)
+		return true;
+
+	if((itemType.slot_position & SLOTP_FEET) && (itemType.speed > 0 || itemType.armor >= 3))
+		return true;
+
+	return false;
+}
+
+static bool isHighlightedLootItem(unsigned short itemId)
+{
+	return isRareLootItem(itemId) || isRareEquipmentLootItem(itemId);
+}
+
 static void notifyMonsterLoot(Game* game, Creature* victim, Creature* attacker,
-	Creature* attackerMaster, Monster* lootMonster, const std::string& lootText)
+	Creature* attackerMaster, Monster* lootMonster, const std::string& lootText, bool hasHighlightedLoot)
 {
 	std::string monsterLabel = lootMonster->getName();
 	std::transform(monsterLabel.begin(), monsterLabel.end(), monsterLabel.begin(), (int(*)(int))tolower);
@@ -513,7 +585,10 @@ static void notifyMonsterLoot(Game* game, Creature* victim, Creature* attacker,
 	logLine << timeBuf << " Loot of " << article(monsterLabel) << ": " << lootText << ".";
 	const std::string logText = logLine.str();
 
-	std::cout << logText << std::endl;
+	if(hasHighlightedLoot)
+		std::cout << "\033[1;31m" << logText << "\033[0m" << std::endl;
+	else
+		std::cout << logText << std::endl;
 	std::cout.flush();
 	std::ofstream serverLog("server.log", std::ios::app);
 	if(serverLog.is_open()) {
@@ -523,12 +598,13 @@ static void notifyMonsterLoot(Game* game, Creature* victim, Creature* attacker,
 	std::ostringstream playerMsg;
 	playerMsg << "Loot of " << article(monsterLabel) << ": " << lootText << ".";
 	const std::string msg = playerMsg.str();
+	const MessageClasses msgClass = hasHighlightedLoot ? MSG_RED_TEXT : MSG_EVENT;
 
 	std::set<Player*> notified;
 	auto sendTo = [&](Player* player) {
 		if(!player || notified.find(player) != notified.end())
 			return;
-		player->sendTextMessage(MSG_EVENT, msg.c_str());
+		player->sendTextMessage(msgClass, msg.c_str());
 		player->flushMsg();
 		notified.insert(player);
 	};
@@ -548,6 +624,40 @@ static void notifyMonsterLoot(Game* game, Creature* victim, Creature* attacker,
 		}
 		sendTo(damagePlayer);
 	}
+}
+
+static void notifyPlayerKill(Player* victim, Player* killer)
+{
+	if(!victim || !killer || victim == killer)
+		return;
+
+	std::ostringstream msg;
+	msg << victim->getName() << " [" << victim->level << "] was killed by "
+		<< killer->getName() << " [" << killer->level << "].";
+	const std::string text = msg.str();
+
+	std::cout << "\033[1;31m" << text << "\033[0m" << std::endl;
+	std::cout.flush();
+
+	std::ofstream serverLog("server.log", std::ios::app);
+	if(serverLog.is_open()) {
+		serverLog << text << std::endl;
+	}
+
+	for(AutoList<Player>::listiterator it = Player::listPlayer.list.begin(); it != Player::listPlayer.list.end(); ++it) {
+		if(it->second)
+			it->second->sendTextMessage(MSG_RED_TEXT, text.c_str());
+	}
+}
+
+static std::string formatLootItemName(unsigned short itemId, const std::string& itemName)
+{
+	if(!isHighlightedLootItem(itemId))
+		return itemName;
+
+	std::string styledName = itemName;
+	std::transform(styledName.begin(), styledName.end(), styledName.begin(), (int(*)(int))toupper);
+	return styledName;
 }
 
 void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* attackedCreature, int64_t damage, bool drawBlood)
@@ -602,6 +712,7 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 		Monster* lootMonster = dynamic_cast<Monster*>(attackedCreature);
 		if(lootMonster) {
 			std::string lootText = "nothing";
+			bool hasHighlightedLoot = false;
 			if(lootcontainer && lootcontainer->size() > 0) {
 				std::stringstream lootStr;
 				bool first = true;
@@ -613,6 +724,9 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 					unsigned short iid = lootItem->getID();
 					std::string itemName = Item::items[iid].name;
 					if(itemName.empty()) itemName = "item";
+					if(isHighlightedLootItem(iid))
+						hasHighlightedLoot = true;
+					itemName = formatLootItemName(iid, itemName);
 					if(Item::items[iid].stackable && lootItem->getItemCountOrSubtype() > 1) {
 						lootStr << (int)lootItem->getItemCountOrSubtype() << " " << itemName;
 					} else {
@@ -630,6 +744,9 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 							unsigned short sid = subItem->getID();
 							std::string subName = Item::items[sid].name;
 							if(subName.empty()) subName = "item";
+							if(isHighlightedLootItem(sid))
+								hasHighlightedLoot = true;
+							subName = formatLootItemName(sid, subName);
 							if(Item::items[sid].stackable && subItem->getItemCountOrSubtype() > 1) {
 								lootStr << (int)subItem->getItemCountOrSubtype() << " " << subName;
 							} else {
@@ -642,7 +759,16 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 				if(!first)
 					lootText = lootStr.str();
 			}
-			notifyMonsterLoot(game, attackedCreature, attacker, attackerMaster, lootMonster, lootText);
+			notifyMonsterLoot(game, attackedCreature, attacker, attackerMaster, lootMonster, lootText, hasHighlightedLoot);
+		}
+
+		if(attackedplayer) {
+			Player* killerPlayer = dynamic_cast<Player*>(attacker);
+#ifdef TR_SUMMONS
+			if(!killerPlayer && attackerMaster)
+				killerPlayer = dynamic_cast<Player*>(attackerMaster);
+#endif //TR_SUMMONS
+			notifyPlayerKill(attackedplayer, killerPlayer);
 		}
 
 		if(attackedplayer){
@@ -743,7 +869,8 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 			if(!killerPlayer && attackerMaster)
 				killerPlayer = dynamic_cast<Player*>(attackerMaster);
 #endif //TR_SUMMONS
-			if(killerPlayer && killerPlayer != attackedplayer && killerPlayer->access < g_config.ACCESS_PROTECT) {
+			if(killerPlayer && killerPlayer != attackedplayer && killerPlayer->access < g_config.ACCESS_PROTECT
+				&& killerPlayer->level >= g_config.PVP_UNDERDOG_EXP_MIN_LEVEL) {
 				int levelDiff = attackedplayer->level - killerPlayer->level;
 				if(levelDiff >= g_config.PVP_UNDERDOG_EXP_MIN_DIFF) {
 					exp_t lostExp = attackedplayer->getLostExperience();
@@ -4221,7 +4348,7 @@ void Game::checkCreatureAttacking(unsigned long id)
 						}
 					}
 
-					int attackDelay = 1000;
+					int attackDelay = PLAYER_ATTACK_DELAY_MS;
 					Player* atkPlayer = dynamic_cast<Player*>(creature);
 #ifdef YUR_BOH
 					if(atkPlayer)

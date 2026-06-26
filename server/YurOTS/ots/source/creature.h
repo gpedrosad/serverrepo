@@ -300,7 +300,7 @@ protected:
 	bool boh;
 	int hasteEnchantStacks;
 	int imbueWandMl;
-	bool imbueRubyWeapon;
+	int imbueRubyWeapon;
 	bool imbueEmeraldArmor;
 #endif //YUR_BOH
 #ifdef YUR_RINGS_AMULETS

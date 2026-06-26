@@ -584,6 +584,31 @@ std::string Item::getFluidTypeName(unsigned char fluidType)
 }
 
 #ifdef YUR_BOH
+static int rubyStacksFromAid(unsigned short aid)
+{
+	if(aid >= ITEM_RUBY_ATTACK_AID && aid <= ITEM_RUBY_ATTACK_AID_MAX)
+		return aid - ITEM_RUBY_ATTACK_AID + 1;
+	return 0;
+}
+
+static int rubySpeedPercentFromStacks(int stacks)
+{
+	switch(stacks){
+	case 1: return 5;
+	case 2: return 9;
+	case 3: return 16;
+	default: return 0;
+	}
+}
+
+static int rubyAttackDelayFromStacks(int stacks)
+{
+	const int percent = rubySpeedPercentFromStacks(stacks);
+	if(percent <= 0)
+		return PLAYER_ATTACK_DELAY_MS;
+	return PLAYER_ATTACK_DELAY_MS * (100 - percent) / 100;
+}
+
 static void appendGemUseDescription(std::stringstream& s, unsigned short itemId)
 {
 	switch(itemId){
@@ -594,8 +619,7 @@ static void appendGemUseDescription(std::stringstream& s, unsigned short itemId)
 		s << std::endl << "Imbue: use on equipped wand or rod (+1 ML/stack, max 4).";
 		break;
 	case ITEM_BIG_RUBY:
-		s << std::endl << "Imbue: use on equipped weapon (+" << RUBY_ATTACK_SPEED_PERCENT << "% attack speed, "
-		  << RUBY_ATTACK_DELAY_MS << "ms per hit, not wands).";
+		s << std::endl << "Imbue: use on equipped weapon (max 3: +5%, +9%, +16% attack speed; not wands).";
 		break;
 	case ITEM_BIG_EMERALD:
 		s << std::endl << "Imbue: use on equipped armor (+3 sword/club/axe/dist, Paladin/Knight).";
@@ -668,8 +692,8 @@ std::string Item::getDescription(bool fullDescription) const
 			{
 				s << article(it.name) << " (Atk:" << (int)getAttack() << " Def:" << (int)getDefense();
 #ifdef YUR_BOH
-				if(actionId == ITEM_RUBY_ATTACK_AID)
-					s << ", +" << RUBY_ATTACK_SPEED_PERCENT << "% speed";
+				if(rubyStacksFromAid(actionId) > 0)
+					s << ", +" << rubySpeedPercentFromStacks(rubyStacksFromAid(actionId)) << "% speed";
 #endif //YUR_BOH
 				s << ")";
 			}
@@ -686,7 +710,7 @@ std::string Item::getDescription(bool fullDescription) const
 					s << " of " << getFluidTypeName(fluid);
 				}
 				if(fullDescription && fluid == FLUID_STRONG_MANA) {
-					s << std::endl << "It restores 150 mana. Sorcerers and druids level 50+ only.";
+					s << std::endl << "It restores 250 mana. Sorcerers and druids level 50+ only.";
 				}
 			}
 			else if(isSplash()){
@@ -766,9 +790,10 @@ std::string Item::getDescription(bool fullDescription) const
 		s << std::endl << "Imbued: +" << (HASTE_ENCHANT_SPEED * (actionId - ITEM_HASTE_ENCHANT_AID + 1)) << " haste (" << (actionId - ITEM_HASTE_ENCHANT_AID + 1) << "/3).";
 	else if(actionId >= ITEM_VIOLET_ML_AID && actionId <= ITEM_VIOLET_ML_AID_MAX)
 		s << std::endl << "Imbued: +" << (actionId - ITEM_VIOLET_ML_AID + 1) << " ML (" << (actionId - ITEM_VIOLET_ML_AID + 1) << "/4).";
-	else if(actionId == ITEM_RUBY_ATTACK_AID && fullDescription)
-		s << std::endl << "It attacks faster: +" << RUBY_ATTACK_SPEED_PERCENT << "% speed ("
-		  << RUBY_ATTACK_DELAY_MS << "ms per hit, default 1000ms).";
+	else if(rubyStacksFromAid(actionId) > 0 && fullDescription)
+		s << std::endl << "It attacks faster: +" << rubySpeedPercentFromStacks(rubyStacksFromAid(actionId)) << "% speed ("
+		  << rubyAttackDelayFromStacks(rubyStacksFromAid(actionId)) << "ms per hit, default " << PLAYER_ATTACK_DELAY_MS << "ms, "
+		  << rubyStacksFromAid(actionId) << "/3).";
 	else if(actionId == ITEM_EMERALD_SKILL_AID)
 		s << std::endl << "Imbued: +" << EMERALD_SKILL_BONUS << " attack skills (P/K).";
 #endif //YUR_BOH

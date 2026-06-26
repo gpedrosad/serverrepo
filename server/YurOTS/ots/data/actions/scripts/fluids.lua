@@ -45,7 +45,7 @@ if frompos.x == 65535 then
                                            doSendMagicEffect(topos,12)
    					doPlayerSay(cid,"Aaaaah...",1)
    				elseif item.type == 14 then
-   					doPlayerAddMana(cid,150)
+   					doPlayerAddMana(cid,250)
    					doSendMagicEffect(topos,23)
    					doPlayerSay(cid,"Aaaaah...",1)
    				elseif item.type == 19 then

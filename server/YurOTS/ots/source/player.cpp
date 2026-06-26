@@ -2693,6 +2693,31 @@ static int hasteStacksFromAid(unsigned short aid)
 	return 0;
 }
 
+static int rubyStacksFromAid(unsigned short aid)
+{
+	if(aid >= ITEM_RUBY_ATTACK_AID && aid <= ITEM_RUBY_ATTACK_AID_MAX)
+		return aid - ITEM_RUBY_ATTACK_AID + 1;
+	return 0;
+}
+
+static int rubySpeedPercentFromStacks(int stacks)
+{
+	switch(stacks){
+	case 1: return 5;
+	case 2: return 9;
+	case 3: return 16;
+	default: return 0;
+	}
+}
+
+static int rubyAttackDelayFromStacks(int stacks)
+{
+	const int percent = rubySpeedPercentFromStacks(stacks);
+	if(percent <= 0)
+		return PLAYER_ATTACK_DELAY_MS;
+	return PLAYER_ATTACK_DELAY_MS * (100 - percent) / 100;
+}
+
 static bool isWandItem(int id)
 {
 	switch(id){
@@ -2716,7 +2741,7 @@ static bool isRubyImbueWeaponItem(const Item* item)
 {
 	return item && item->isWeapon() && item->getWeaponType() != SHIELD &&
 		!isWandItem(item->getID()) &&
-		item->getActionId() == ITEM_RUBY_ATTACK_AID;
+		rubyStacksFromAid(item->getActionId()) > 0;
 }
 
 void Player::checkBoh()
@@ -2732,10 +2757,10 @@ void Player::checkBoh()
 		}
 	}
 
-	bool rubyNow = false;
+	int rubyNow = 0;
 	for(int slot = SLOT_RIGHT; slot <= SLOT_LEFT; slot++){
 		if(isRubyImbueWeaponItem(items[slot])){
-			rubyNow = true;
+			rubyNow = rubyStacksFromAid(items[slot]->getActionId());
 			break;
 		}
 	}
@@ -2746,7 +2771,7 @@ void Player::checkBoh()
 	if(boh != bohNow || hasteEnchantStacks != hasteNow || imbueWandMl != wandMlNow ||
 		imbueRubyWeapon != rubyNow || imbueEmeraldArmor != emeraldNow)
 	{
-		bool hadRuby = imbueRubyWeapon;
+		int hadRuby = imbueRubyWeapon;
 		boh = bohNow;
 		hasteEnchantStacks = hasteNow;
 		imbueWandMl = wandMlNow;
@@ -2756,13 +2781,14 @@ void Player::checkBoh()
 		hasteTicks = 0;
 		sendChangeSpeed(this);
 		sendIcons();
-		if(rubyNow && !hadRuby){
+		if(rubyNow && rubyNow != hadRuby){
 			char buf[96];
 			snprintf(buf, sizeof(buf),
-				"Your weapon is powered up: +%d%% attack speed (%dms per hit, was 1000ms).",
-				RUBY_ATTACK_SPEED_PERCENT, RUBY_ATTACK_DELAY_MS);
+				"Your weapon is powered up: +%d%% attack speed (%dms per hit, was %dms).",
+				rubySpeedPercentFromStacks(rubyNow), rubyAttackDelayFromStacks(rubyNow), PLAYER_ATTACK_DELAY_MS);
 			sendTextMessage(MSG_INFO, buf);
 		}
+		sendStats();
 	}
 }
 
@@ -2774,8 +2800,8 @@ int64_t Player::getEffectiveMagLevel() const
 int Player::getAttackDelayMs() const
 {
 	if(imbueRubyWeapon)
-		return RUBY_ATTACK_DELAY_MS;
-	return 1000;
+		return rubyAttackDelayFromStacks(imbueRubyWeapon);
+	return PLAYER_ATTACK_DELAY_MS;
 }
 #endif //YUR_BOH
 

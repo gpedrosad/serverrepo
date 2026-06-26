@@ -9,6 +9,7 @@
 Account::Account()
 {
 	accnumber = 0;
+	balance = 0;
 	accType = 0;
 	premDays = 90;
 }

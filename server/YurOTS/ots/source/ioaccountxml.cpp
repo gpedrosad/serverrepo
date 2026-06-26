@@ -20,6 +20,7 @@
 
 #include "ioaccountxml.h"
 #include <algorithm>
+#include <cstdlib>
 #include <functional>
 #include <iostream>
 #include <sstream>
@@ -73,6 +74,15 @@ Account IOAccountXML::loadAccount(unsigned long accno){
 		nodeValue = (char*)xmlGetProp(root, (xmlChar*)"premDays");
 		acc.premDays  = atoi(nodeValue);
 		xmlFreeOTSERV(nodeValue);
+
+		nodeValue = (char*)xmlGetProp(root, (xmlChar*)"balance");
+		if(nodeValue) {
+			acc.balance = strtoull(nodeValue, NULL, 10);
+			xmlFreeOTSERV(nodeValue);
+		}
+		else {
+			acc.balance = 0;
+		}
 
 		// now load in characters.
 		while (p)
@@ -192,6 +202,7 @@ bool IOAccountXML::saveAccount(const Account& account)
 	xmlSetProp(root, (const xmlChar*)"pass", (const xmlChar*)account.password.c_str());
 	xmlSetProp(root, (const xmlChar*)"type", (const xmlChar*)str(account.accType).c_str());
 	xmlSetProp(root, (const xmlChar*)"premDays", (const xmlChar*)str(account.premDays).c_str());
+	xmlSetProp(root, (const xmlChar*)"balance", (const xmlChar*)str(account.balance).c_str());
 
 	charsNode = xmlNewNode(NULL, (const xmlChar*)"characters");
 	xmlAddChild(root, charsNode);

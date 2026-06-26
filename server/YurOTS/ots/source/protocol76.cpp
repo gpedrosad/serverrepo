@@ -2823,7 +2823,8 @@ void Protocol76::AddPlayerStats(NetworkMessage &msg,const Player *player)
 	msg.AddByte(player->getPlayerInfo(PLAYERINFO_LEVELPERCENT));
 	msg.AddU16(player->getMana() > std::numeric_limits<uint16_t>::max() ? 0:player->getMana());
 	msg.AddU16(player->getPlayerInfo(PLAYERINFO_MAXMANA) > std::numeric_limits<uint16_t>::max() ? 0:player->getPlayerInfo(PLAYERINFO_MAXMANA));
-	msg.AddByte(player->getMagicLevel() > std::numeric_limits<uint8_t>::max() ? 0:player->getMagicLevel());
+	const int64_t displayMagLevel = player->getEffectiveMagLevel();
+	msg.AddByte(displayMagLevel > std::numeric_limits<uint8_t>::max() ? 0 : (unsigned char)displayMagLevel);
 	msg.AddByte(player->getPlayerInfo(PLAYERINFO_MAGICLEVELPERCENT));
 	msg.AddByte(player->getPlayerInfo(PLAYERINFO_SOUL));
 }

@@ -24,6 +24,7 @@
 
 
 #include <list>
+#include <stdint.h>
 #include <string>
 
 //class Player;
@@ -38,6 +39,7 @@ public:
   ~Account();
 
   uint32_t accnumber;
+  uint64_t balance;
   int accType;     // ?
   int premDays;    // Premium days
 

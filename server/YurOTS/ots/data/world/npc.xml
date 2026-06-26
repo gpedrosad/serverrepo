@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <npclist>
 <npc name="Seller" x="145" y="50" z="7" dir="3"/>
+<npc name="Banker" x="146" y="50" z="6" dir="3"/>
 <npc name="Dark Rodo" x="129" y="50" z="6" dir="0"/>
 <npc name="Mad" x="145" y="51" z="6" dir="3"/>
 <npc name="Lector" x="127" y="49" z="7" dir="1"/>

@@ -32,6 +32,8 @@
 #include <libxml/parser.h>
 
 #include "npc.h"
+#include "ioaccount.h"
+#include "ioplayer.h"
 #include "luascript.h"
 #include "player.h"
 #include "item.h"
@@ -51,6 +53,51 @@ struct PendingTransaction {
 };
 
 static std::map<unsigned long, PendingTransaction> pendingTrades;
+
+enum BankActionResult {
+	BANK_ACTION_SUCCESS = 1,
+	BANK_ACTION_INVALID_AMOUNT = -1,
+	BANK_ACTION_PLAYER_NOT_FOUND = -2,
+	BANK_ACTION_ACCOUNT_NOT_FOUND = -3,
+	BANK_ACTION_NOT_ENOUGH_MONEY = -4,
+	BANK_ACTION_NOT_ENOUGH_BALANCE = -5,
+	BANK_ACTION_TARGET_NOT_FOUND = -6,
+	BANK_ACTION_SAME_ACCOUNT = -7,
+	BANK_ACTION_SAVE_FAILED = -8
+};
+
+static bool loadAccountByNumber(unsigned long accountNumber, Account& account)
+{
+	account = IOAccount::instance()->loadAccount(accountNumber);
+	return account.accnumber == accountNumber;
+}
+
+static bool resolvePlayerAccountByName(const std::string& name, Account& account)
+{
+	Player target(name, NULL);
+	if(!IOPlayer::instance()->loadPlayer(&target, name))
+		return false;
+
+	return loadAccountByNumber((unsigned long)target.getAccount(), account);
+}
+
+static void addMoneyToPlayer(Player* player, uint64_t amount)
+{
+	while(amount >= 10000) {
+		const uint64_t crystalCount = std::min<uint64_t>(amount / 10000, 100);
+		player->TLMaddItem(ITEM_COINS_CRYSTAL, (unsigned char)crystalCount);
+		amount -= crystalCount * 10000;
+	}
+
+	while(amount >= 100) {
+		const uint64_t platinumCount = std::min<uint64_t>(amount / 100, 100);
+		player->TLMaddItem(ITEM_COINS_PLATINUM, (unsigned char)platinumCount);
+		amount -= platinumCount * 100;
+	}
+
+	if(amount > 0)
+		player->TLMaddItem(ITEM_COINS_GOLD, (unsigned char)amount);
+}
 
 static void resetPendingTrade(PendingTransaction& trade)
 {
@@ -564,6 +611,11 @@ int NpcScript::registerFunctions()
 	lua_register(luaState, "doPlayerAddItem", NpcScript::luaPlayerAddItem);
 	lua_register(luaState, "getPlayerLevel", NpcScript::luaGetPlayerLevel);
 	lua_register(luaState, "getPlayerItemCount", NpcScript::luaGetPlayerItemCount);
+	lua_register(luaState, "getPlayerMoney", NpcScript::luaGetPlayerMoney);
+	lua_register(luaState, "getPlayerBankBalance", NpcScript::luaGetPlayerBankBalance);
+	lua_register(luaState, "doPlayerDepositMoney", NpcScript::luaDepositPlayerMoney);
+	lua_register(luaState, "doPlayerWithdrawMoney", NpcScript::luaWithdrawPlayerMoney);
+	lua_register(luaState, "doPlayerTransferMoneyTo", NpcScript::luaTransferPlayerMoneyTo);
 	lua_register(luaState, "getPlayerVocation", NpcScript::luaGetPlayerVocation);
 	lua_register(luaState, "setPlayerMasterPos", NpcScript::luaSetPlayerMasterPos);
 #endif //YUR_NPC_EXT
@@ -977,6 +1029,195 @@ int NpcScript::luaGetPlayerLevel(lua_State* L)
 	else
 		lua_pushnumber(L, -1);
 
+	return 1;
+}
+
+int NpcScript::luaGetPlayerMoney(lua_State* L)
+{
+	int cid = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Npc* mynpc = getNpc(L);
+	Creature* creature = mynpc->game->getCreatureByID(cid);
+	Player* player = creature ? dynamic_cast<Player*>(creature) : NULL;
+
+	if(player)
+		lua_pushnumber(L, player->getMoney());
+	else
+		lua_pushnumber(L, -1);
+
+	return 1;
+}
+
+int NpcScript::luaGetPlayerBankBalance(lua_State* L)
+{
+	int cid = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Npc* mynpc = getNpc(L);
+	Creature* creature = mynpc->game->getCreatureByID(cid);
+	Player* player = creature ? dynamic_cast<Player*>(creature) : NULL;
+
+	if(!player) {
+		lua_pushnumber(L, -1);
+		return 1;
+	}
+
+	Account account;
+	if(!loadAccountByNumber((unsigned long)player->getAccount(), account)) {
+		lua_pushnumber(L, -1);
+		return 1;
+	}
+
+	lua_pushnumber(L, (lua_Number)account.balance);
+	return 1;
+}
+
+int NpcScript::luaDepositPlayerMoney(lua_State* L)
+{
+	int64_t amount = (int64_t)lua_tonumber(L, -1);
+	int cid = (int)lua_tonumber(L, -2);
+	lua_pop(L, 2);
+
+	if(amount <= 0) {
+		lua_pushnumber(L, BANK_ACTION_INVALID_AMOUNT);
+		return 1;
+	}
+
+	Npc* mynpc = getNpc(L);
+	Creature* creature = mynpc->game->getCreatureByID(cid);
+	Player* player = creature ? dynamic_cast<Player*>(creature) : NULL;
+	if(!player) {
+		lua_pushnumber(L, BANK_ACTION_PLAYER_NOT_FOUND);
+		return 1;
+	}
+
+	Account account;
+	if(!loadAccountByNumber((unsigned long)player->getAccount(), account)) {
+		lua_pushnumber(L, BANK_ACTION_ACCOUNT_NOT_FOUND);
+		return 1;
+	}
+
+	if(player->getMoney() < (unsigned long)amount || !player->substractMoney((unsigned long)amount)) {
+		lua_pushnumber(L, BANK_ACTION_NOT_ENOUGH_MONEY);
+		return 1;
+	}
+
+	account.balance += (uint64_t)amount;
+	if(!IOAccount::instance()->saveAccount(account)) {
+		addMoneyToPlayer(player, (uint64_t)amount);
+		lua_pushnumber(L, BANK_ACTION_SAVE_FAILED);
+		return 1;
+	}
+
+	lua_pushnumber(L, BANK_ACTION_SUCCESS);
+	return 1;
+}
+
+int NpcScript::luaWithdrawPlayerMoney(lua_State* L)
+{
+	int64_t amount = (int64_t)lua_tonumber(L, -1);
+	int cid = (int)lua_tonumber(L, -2);
+	lua_pop(L, 2);
+
+	if(amount <= 0) {
+		lua_pushnumber(L, BANK_ACTION_INVALID_AMOUNT);
+		return 1;
+	}
+
+	Npc* mynpc = getNpc(L);
+	Creature* creature = mynpc->game->getCreatureByID(cid);
+	Player* player = creature ? dynamic_cast<Player*>(creature) : NULL;
+	if(!player) {
+		lua_pushnumber(L, BANK_ACTION_PLAYER_NOT_FOUND);
+		return 1;
+	}
+
+	Account account;
+	if(!loadAccountByNumber((unsigned long)player->getAccount(), account)) {
+		lua_pushnumber(L, BANK_ACTION_ACCOUNT_NOT_FOUND);
+		return 1;
+	}
+
+	if(account.balance < (uint64_t)amount) {
+		lua_pushnumber(L, BANK_ACTION_NOT_ENOUGH_BALANCE);
+		return 1;
+	}
+
+	account.balance -= (uint64_t)amount;
+	if(!IOAccount::instance()->saveAccount(account)) {
+		lua_pushnumber(L, BANK_ACTION_SAVE_FAILED);
+		return 1;
+	}
+
+	addMoneyToPlayer(player, (uint64_t)amount);
+	lua_pushnumber(L, BANK_ACTION_SUCCESS);
+	return 1;
+}
+
+int NpcScript::luaTransferPlayerMoneyTo(lua_State* L)
+{
+	const char* target = lua_tostring(L, -1);
+	int64_t amount = (int64_t)lua_tonumber(L, -2);
+	int cid = (int)lua_tonumber(L, -3);
+	lua_pop(L, 3);
+
+	if(amount <= 0) {
+		lua_pushnumber(L, BANK_ACTION_INVALID_AMOUNT);
+		return 1;
+	}
+
+	if(!target || target[0] == '\0') {
+		lua_pushnumber(L, BANK_ACTION_TARGET_NOT_FOUND);
+		return 1;
+	}
+
+	Npc* mynpc = getNpc(L);
+	Creature* creature = mynpc->game->getCreatureByID(cid);
+	Player* player = creature ? dynamic_cast<Player*>(creature) : NULL;
+	if(!player) {
+		lua_pushnumber(L, BANK_ACTION_PLAYER_NOT_FOUND);
+		return 1;
+	}
+
+	Account sourceAccount;
+	if(!loadAccountByNumber((unsigned long)player->getAccount(), sourceAccount)) {
+		lua_pushnumber(L, BANK_ACTION_ACCOUNT_NOT_FOUND);
+		return 1;
+	}
+
+	if(sourceAccount.balance < (uint64_t)amount) {
+		lua_pushnumber(L, BANK_ACTION_NOT_ENOUGH_BALANCE);
+		return 1;
+	}
+
+	Account targetAccount;
+	if(!resolvePlayerAccountByName(target, targetAccount)) {
+		lua_pushnumber(L, BANK_ACTION_TARGET_NOT_FOUND);
+		return 1;
+	}
+
+	if(targetAccount.accnumber == sourceAccount.accnumber) {
+		lua_pushnumber(L, BANK_ACTION_SAME_ACCOUNT);
+		return 1;
+	}
+
+	sourceAccount.balance -= (uint64_t)amount;
+	targetAccount.balance += (uint64_t)amount;
+
+	if(!IOAccount::instance()->saveAccount(sourceAccount)) {
+		lua_pushnumber(L, BANK_ACTION_SAVE_FAILED);
+		return 1;
+	}
+
+	if(!IOAccount::instance()->saveAccount(targetAccount)) {
+		sourceAccount.balance += (uint64_t)amount;
+		IOAccount::instance()->saveAccount(sourceAccount);
+		lua_pushnumber(L, BANK_ACTION_SAVE_FAILED);
+		return 1;
+	}
+
+	lua_pushnumber(L, BANK_ACTION_SUCCESS);
 	return 1;
 }
 

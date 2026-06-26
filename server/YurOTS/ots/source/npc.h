@@ -77,6 +77,11 @@ public:
 	static int luaPlayerAddItem(lua_State *L);
 	static int luaGetPlayerLevel(lua_State *L);
 	static int luaGetPlayerItemCount(lua_State *L);
+	static int luaGetPlayerMoney(lua_State *L);
+	static int luaGetPlayerBankBalance(lua_State *L);
+	static int luaDepositPlayerMoney(lua_State *L);
+	static int luaWithdrawPlayerMoney(lua_State *L);
+	static int luaTransferPlayerMoneyTo(lua_State *L);
 	static int luaSetPlayerMasterPos(lua_State* L);
 #endif //YUR_NPC_EXT
 

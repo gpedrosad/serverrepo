@@ -90,6 +90,90 @@ MonsterType::~MonsterType()
 	physicalAttacks.clear();
 }
 
+static bool isRareEquipmentLootItem(unsigned short itemId)
+{
+	switch(itemId) {
+	case ITEM_BOH:
+	case 2392: // fire sword
+	case 2393: // giantsword
+	case 2396: // ice rapier
+	case 2400: // magic sword
+	case 2407: // bright sword
+	case 2414: // dragon lance
+	case 2421: // thunder hammer
+	case 2466: // golden armor
+	case 2470: // golden legs
+	case 2472: // magic plate armor
+	case 2487: // crown armor
+	case 2488: // crown legs
+	case 2491: // crown helmet
+	case 2492: // dragon scale mail
+	case 2494: // demon armor
+		return true;
+	default:
+		break;
+	}
+
+	const ItemType& itemType = Item::items[itemId];
+	if(!itemType.pickupable)
+		return false;
+
+	if((itemType.weaponType == SWORD || itemType.weaponType == CLUB || itemType.weaponType == AXE)
+		&& itemType.attack >= 30)
+		return true;
+
+	if(itemType.weaponType == SHIELD && itemType.defence >= 28)
+		return true;
+
+	if((itemType.slot_position & SLOTP_ARMOR) && itemType.armor >= 10)
+		return true;
+
+	if((itemType.slot_position & SLOTP_HEAD) && itemType.armor >= 7)
+		return true;
+
+	if((itemType.slot_position & SLOTP_LEGS) && itemType.armor >= 6)
+		return true;
+
+	if((itemType.slot_position & SLOTP_FEET) && (itemType.speed > 0 || itemType.armor >= 3))
+		return true;
+
+	return false;
+}
+
+static bool isSmallGemItem(unsigned short itemId)
+{
+	return itemId == ITEM_SMALL_AMETHYST || itemId == ITEM_SMALL_EMERALD ||
+		itemId == ITEM_SMALL_RUBY || itemId == ITEM_SMALL_SAPPHIRE ||
+		itemId == ITEM_SMALL_DIAMOND;
+}
+
+static int getRageGemChancePercent(const std::string& monsterName)
+{
+	if(monsterName.find("angry ") == 0)
+		return 175;
+	if(monsterName.find("furious ") == 0)
+		return 240;
+	if(monsterName.find("enraged ") == 0)
+		return 320;
+	return 100;
+}
+
+static bool isRageTroll(const std::string& monsterName)
+{
+	return monsterName == "angry troll" || monsterName == "furious troll" || monsterName == "enraged troll";
+}
+
+static unsigned short randomSmallGemId()
+{
+	switch(random_range(0, 4)) {
+	case 0: return ITEM_SMALL_AMETHYST;
+	case 1: return ITEM_SMALL_EMERALD;
+	case 2: return ITEM_SMALL_RUBY;
+	case 3: return ITEM_SMALL_SAPPHIRE;
+	default: return ITEM_SMALL_DIAMOND;
+	}
+}
+
 void MonsterType::createLoot(Container* corpse)
 {
 	LootItems::const_iterator it;
@@ -109,6 +193,22 @@ void MonsterType::createLoot(Container* corpse)
 			else{
 				corpse->addItem(tmpItem);
 			}
+		}
+	}
+
+	const int rageGemChancePercent = getRageGemChancePercent(name);
+	if(rageGemChancePercent > 100) {
+		bool hasSmallGem = false;
+		for(ContainerList::const_iterator cit = corpse->getItems(); cit != corpse->getEnd(); ++cit){
+			Item* item = *cit;
+			if(item && isSmallGemItem(item->getID())) {
+				hasSmallGem = true;
+				break;
+			}
+		}
+
+		if(!hasSmallGem && isRageTroll(name)) {
+			corpse->addItem(Item::CreateItem(randomSmallGemId(), 1));
 		}
 	}
 
@@ -153,6 +253,16 @@ Item* MonsterType::createLootItem(const LootBlock& lootBlock)
 #else
 	unsigned long chance = lootBlock.chance1;
 #endif //YUR_MULTIPLIERS
+
+	const int rageGemChancePercent = getRageGemChancePercent(name);
+	if(rageGemChancePercent > 100 && isSmallGemItem(lootBlock.id)) {
+		unsigned long scaled = chance * (unsigned long)rageGemChancePercent / 100;
+		chance = scaled > CHANCE_MAX ? CHANCE_MAX : scaled;
+	}
+
+	if(isRareEquipmentLootItem(lootBlock.id))
+		chance /= 2;
+
 	if(Item::items[lootBlock.id].stackable == true){
 		unsigned long randvalue = Monster::getRandom();
 		unsigned long n = 1;

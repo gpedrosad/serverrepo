@@ -22,6 +22,18 @@ NOT_WEAPONS = {
 	[2554] = true, [1988] = true, [2512] = true,
 }
 
+IMBUE_FAIL_CHANCE = 50
+
+function rubySpeedPercent(stacks)
+	if stacks == 1 then return 5 end
+	if stacks == 2 then return 9 end
+	return 16
+end
+
+function rubyDelayMs(stacks)
+	return math.floor(1333 * (100 - rubySpeedPercent(stacks)) / 100)
+end
+
 function isImbueWeapon(itemid)
 	if not itemid or itemid == 0 then
 		return false
@@ -62,10 +74,25 @@ function stackAid(minAid, currentAid, maxStacks)
 	return currentAid + 1
 end
 
+function rollImbueFailure(cid, gemItem)
+	if math.random(1, 100) > IMBUE_FAIL_CHANCE then
+		return false
+	end
+
+	doRemoveItem(gemItem.uid, 1)
+	doSendMagicEffect(getPlayerPosition(cid), 2)
+	doPlayerSendCancel(cid, "The imbuement failed and the gem crumbled.")
+	doPlayerSendTextMessage(cid, 22, "Imbuement failed. The gem was lost.")
+	return true
+end
+
 function applyImbue(cid, gemItem, target, minAid, maxStacks, msg)
 	local nextAid = stackAid(minAid, target.actionid, maxStacks)
 	if not nextAid then
 		doPlayerSendCancel(cid, "Maximum imbuement level reached.")
+		return false
+	end
+	if rollImbueFailure(cid, gemItem) then
 		return false
 	end
 	doRemoveItem(gemItem.uid, 1)
@@ -121,18 +148,29 @@ function onUse(cid, item, frompos, item2, topos)
 			doPlayerSendCancel(cid, "Equip a weapon in your right or left hand to imbue it.")
 			return 1
 		end
-		if weapon.actionid == 9040 then
-			doPlayerSendCancel(cid, "This weapon already has attack speed imbuement.")
+		local stacks = 0
+		if weapon.actionid >= 9040 and weapon.actionid <= 9042 then
+			stacks = weapon.actionid - 9039
+		end
+		if stacks >= 3 then
+			doPlayerSendCancel(cid, "This weapon already has 3/3 attack speed imbuements.")
 			return 1
 		end
 		if weapon.actionid >= 9020 then
+			if weapon.actionid >= 9040 and weapon.actionid <= 9042 then
+				-- allowed: ruby stacks on same weapon
+			else
 			doPlayerSendCancel(cid, "That item already has another imbuement.")
+			return 1
+			end
+		end
+		if rollImbueFailure(cid, item) then
 			return 1
 		end
 		doRemoveItem(item.uid, 1)
-		doSetItemActionId(weapon.uid, 9040)
+		doSetItemActionId(weapon.uid, 9040 + stacks)
 		doSendMagicEffect(getPlayerPosition(cid), 13)
-		doPlayerSendTextMessage(cid, 22, "Weapon imbued: +15% attack speed (850ms per hit, was 1000ms).")
+		doPlayerSendTextMessage(cid, 22, "Weapon imbued with attack speed (" .. (stacks + 1) .. "/3): +" .. rubySpeedPercent(stacks + 1) .. "% (" .. rubyDelayMs(stacks + 1) .. "ms per hit).")
 		doPlayerCheckFeetSpeed(cid)
 		return 1
 	end
@@ -149,6 +187,9 @@ function onUse(cid, item, frompos, item2, topos)
 		end
 		if armor.actionid >= 9020 then
 			doPlayerSendCancel(cid, "That item already has another imbuement.")
+			return 1
+		end
+		if rollImbueFailure(cid, item) then
 			return 1
 		end
 		doRemoveItem(item.uid, 1)

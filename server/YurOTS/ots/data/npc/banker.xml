@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<npc name="Banker" script="data/npc/scripts/banker.lua" access="3">
+	<look type="133" head="57" body="95" legs="113" feet="114"/>
+</npc>

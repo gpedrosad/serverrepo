@@ -110,7 +110,7 @@ queuepremmy = "yes"
 premmyexpbonus = 10
 
 -- daily training room limit per character (minutes)
-trainingdailyminutes = 20
+trainingdailyminutes = 120
 
 -- how much % of {exp, mana, skill, eq, bp} do you lose when dying
 diepercent = {"7", "7", "7", "7", "100"}
@@ -120,6 +120,7 @@ diepercent = {"7", "7", "7", "7", "100"}
 pvpunderdogexp = "yes"
 pvpunderdogexp_percent = 50
 pvpunderdogexp_mindiff = 1
+pvpunderdogexp_minlevel = 15
 
 -- how many summons player can have
 maxsummons = 2

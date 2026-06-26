@@ -222,6 +222,11 @@
     <p id="account-result" class="mt-2 hidden rounded-md px-2.5 py-2 text-xs"></p>
   </section>
 
+  <!-- REGLAS -->
+  <section id="panel-rules" class="panel space-y-3">
+    <div id="rules-list" class="space-y-2"></div>
+  </section>
+
   <!-- INFO -->
   <section id="panel-info" class="panel">
     <div id="info-list" class="space-y-2"></div>
@@ -265,7 +270,8 @@
 const state = { panel: 'live', rank: 'level', voc: 'all', data: null };
 const NAV = [
   ['live', 'Live'], ['rank', 'Top'], ['power', 'Power'], ['frags', 'Frags'],
-  ['deaths', 'Muertes'], ['guilds', 'Guilds'], ['gems', 'Gemas'], ['account', 'Cuenta'], ['info', 'Info'],
+  ['deaths', 'Muertes'], ['guilds', 'Guilds'], ['gems', 'Gemas'], ['account', 'Cuenta'],
+  ['rules', 'Reglas'], ['info', 'Info'],
 ];
 const RANK_META = {
   level: { label: 'Lvl', cols: ['level','exp_fmt','maglevel','guild','lastlogin_rel'] },
@@ -485,10 +491,43 @@ function renderGuilds(guilds) {
   ).join('');
 }
 
+function renderRules(sections) {
+  const el = document.getElementById('rules-list');
+  const rules = sections.find(s => s.title === 'REGLAS');
+  if (!rules) { el.innerHTML = empty('—'); return; }
+
+  const groups = new Map();
+  for (const line of rules.lines) {
+    const sep = line.indexOf(' · ');
+    const cat = sep >= 0 ? line.slice(0, sep) : 'General';
+    const text = sep >= 0 ? line.slice(sep + 3) : line;
+    if (!groups.has(cat)) groups.set(cat, []);
+    groups.get(cat).push(text);
+  }
+
+  const intro = `
+    <div class="anim-in rounded-lg border border-rose-500/15 bg-rose-500/[0.04] px-3 py-2.5">
+      <p class="text-[11px] leading-relaxed text-zinc-300">
+        Reglas cortas. El staff revisa logs y reportes; las sanciones dependen de cada caso.
+      </p>
+    </div>`;
+
+  const cards = [...groups.entries()].map(([cat, items], i) => `
+    <div class="anim-in rounded-md border border-white/[0.06] px-3 py-2" style="--d:${60 + i * 35}ms">
+      <p class="text-[10px] uppercase tracking-widest text-zinc-600">${esc(cat)}</p>
+      <ul class="mt-1.5 space-y-1 text-[11px] leading-relaxed text-zinc-400">
+        ${items.map(t => `<li class="flex gap-2"><span class="text-zinc-600 shrink-0">·</span><span>${esc(t)}</span></li>`).join('')}
+      </ul>
+    </div>`).join('');
+
+  el.innerHTML = intro + cards;
+}
+
 function renderInfo(sections) {
   const el = document.getElementById('info-list');
-  if (!sections.length) { el.innerHTML = empty('—'); return; }
-  el.innerHTML = sections.map(s =>
+  const filtered = sections.filter(s => s.title !== 'REGLAS');
+  if (!filtered.length) { el.innerHTML = empty('—'); return; }
+  el.innerHTML = filtered.map(s =>
     `<div class="rounded-md border border-white/[0.06] px-3 py-2">
       <p class="text-[10px] uppercase tracking-widest text-zinc-600">${esc(s.title)}</p>
       <ul class="mt-1.5 space-y-0.5 text-[11px] leading-relaxed text-zinc-500">${s.lines.map(l => `<li>${esc(l)}</li>`).join('')}</ul>
@@ -561,6 +600,7 @@ function renderAll() {
   renderRankings();
   renderDeaths(state.data.deaths || []);
   renderGuilds(state.data.guilds || []);
+  renderRules(state.data.otinfo || []);
   renderInfo(state.data.otinfo || []);
   renderGems();
 }

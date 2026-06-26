@@ -4,7 +4,7 @@ target = 0
 following = false
 attacking = false
 
-AOL_PRICE = 25000
+AOL_PRICE = 50000
 SCARF_PRICE = 1000
 
 RINGS = {
@@ -49,7 +49,7 @@ function onCreatureSay(cid, type, msg)
 	local state = npcHandleMessage(
 		cid,
 		msg,
-		'Hi ' .. creatureGetName(cid) .. '! I sell rings, scarf (1k) and amulet of loss / AOL (25k). Say "rings" or "help" for prices.'
+		'Hi ' .. creatureGetName(cid) .. '! I sell rings, scarf (1k) and amulet of loss / AOL (50k). Say "rings" or "help" for prices.'
 	)
 	if state ~= 'focused' then
 		return
