@@ -7,6 +7,7 @@ import os
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
+from analytics import WebAnalytics
 from data import build_payload, create_account, read_server_ip
 from register_guard import RegisterGuard
 
@@ -17,6 +18,7 @@ OTINFO_FILE = Path(os.environ.get("OTINFO_FILE", ROOT / "OTINFO"))
 ONLINE_FILE = Path(os.environ.get("ONLINE_FILE", ROOT / "server/YurOTS/ots/data/online.xml"))
 STATE_FILE = Path(os.environ.get("STATE_FILE", ROOT / "web/state/daily.json"))
 REGISTER_STATE = Path(os.environ.get("REGISTER_STATE", ROOT / "web/state/register.json"))
+ANALYTICS_STATE = Path(os.environ.get("ANALYTICS_STATE", ROOT / "web/state/analytics.json"))
 CONFIG_FILE = Path(os.environ.get("CONFIG_FILE", ROOT / "server/YurOTS/ots/config.lua"))
 OT_HOST = os.environ.get("OT_HOST", "127.0.0.1")
 OT_PORT = int(os.environ.get("OT_PORT", "7171"))
@@ -36,6 +38,7 @@ ASSET_TYPES = {
 }
 
 guard = RegisterGuard(REGISTER_STATE)
+analytics = WebAnalytics(ANALYTICS_STATE)
 
 
 def get_payload() -> dict:
@@ -79,6 +82,7 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
         path = self.path.split("?", 1)[0]
         if path in ("/", "/index.html"):
+            analytics.record_visit(client_ip(self))
             self._file(INDEX, "text/html; charset=utf-8")
         elif path == "/api/data":
             self._json(200, get_payload())
@@ -170,6 +174,8 @@ class Handler(BaseHTTPRequestHandler):
             self.send_header("Content-Disposition", f'attachment; filename="{download_name}"')
         self.end_headers()
         if not head_only:
+            if download_name:
+                analytics.record_download(download_name)
             self.wfile.write(data)
 
     def log_message(self, fmt: str, *args) -> None:

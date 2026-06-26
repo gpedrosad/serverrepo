@@ -8,3 +8,4 @@ server/YurOTS/ots/source/*.patch
 client-760/
 web/downloads/*.zip
 web/downloads/*.dmg
+web/state/analytics.json
