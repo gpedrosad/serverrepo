@@ -112,6 +112,20 @@ enum passwordType_t{
 
 passwordType_t passwordType;
 
+static in_addr_t resolveHostToIPv4(const std::string& host)
+{
+	in_addr_t addr = inet_addr(host.c_str());
+	if (addr != INADDR_NONE)
+		return addr;
+
+	hostent *he = gethostbyname(host.c_str());
+	if (he != NULL && he->h_addr_list != NULL && he->h_addr_list[0] != NULL)
+		return *(in_addr_t*)he->h_addr_list[0];
+
+	std::cout << "WARNING: Could not resolve IP host \"" << host << "\", using 127.0.0.1" << std::endl;
+	return inet_addr("127.0.0.1");
+}
+
 bool passwordTest(std::string &plain, std::string &hash)
 {
 	if(passwordType == PASSWORD_TYPE_MD5){
@@ -212,7 +226,7 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 			unsigned int accnumber = msg.GetU32();
 			std::string  password  = msg.GetString();
 
-			int serverip = inet_addr(g_config.getGlobalString("ip", "127.0.0.1").c_str());
+			int serverip = resolveHostToIPv4(g_config.getGlobalString("ip", "127.0.0.1"));
 
 			msg.Reset();
 
@@ -807,7 +821,7 @@ int main(int argc, char *argv[])
 		std::cout << "WARNING: Change your IP in config.lua!\n" << std::endl;
 #endif //YUR_CVS_MODS
 
-	IpNetMask.first  = inet_addr(ip.c_str());
+	IpNetMask.first  = resolveHostToIPv4(ip);
 	IpNetMask.second = 0;
 	serverIPs.push_back(IpNetMask);
 	std::cout << ":: Starting Server... ";

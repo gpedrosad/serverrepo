@@ -25,7 +25,7 @@ SKILL_NAMES = {
     6: "Fishing",
 }
 VOC_TEMPLATES = frozenset({"0", "1", "2", "3", "4"})
-HIDDEN_RANK_PLAYERS = frozenset({"yurez", "yurez the next"})
+HIDDEN_RANK_PLAYERS = frozenset({"yurez", "yurez the next", "gm kaiser"})
 
 
 def is_public_rank_player(name: str) -> bool:
