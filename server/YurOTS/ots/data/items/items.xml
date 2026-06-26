@@ -45,8 +45,8 @@
 <item id="2208" time="1800000"/>	-- axe ring
 <item id="2209" time="1800000"/>	-- club ring
 	<item id="2165" time="600000"/>		-- stealth ring
-	<item id="2640" time="14400000" weight="8.0"/>	-- soft boots (4 h)
-	<item id="2641" weight="8.0"/>		-- worn soft boots
+	<item id="3549" time="14400000" weight="8.0"/>	-- soft boots (4 h)
+	<item id="3550" weight="8.0"/>		-- worn soft boots
 <item id="1740" questbox="1" />		-- unmovables
 <item id="1747" questbox="1" />
 <item id="1748" questbox="1" />
