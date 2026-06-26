@@ -23,6 +23,17 @@ OT_PORT = int(os.environ.get("OT_PORT", "7171"))
 SERVER_IP = os.environ.get("SERVER_IP") or read_server_ip(CONFIG_FILE)
 PORT = int(os.environ.get("PORT", "8080"))
 INDEX = Path(__file__).resolve().parent / "index.html"
+DOWNLOADS_DIR = Path(__file__).resolve().parent / "downloads"
+WEB_DIR = Path(__file__).resolve().parent
+ASSET_TYPES = {
+    ".png": "image/png",
+    ".jpg": "image/jpeg",
+    ".jpeg": "image/jpeg",
+    ".webp": "image/webp",
+    ".svg": "image/svg+xml",
+    ".js": "application/javascript; charset=utf-8",
+    ".css": "text/css; charset=utf-8",
+}
 
 guard = RegisterGuard(REGISTER_STATE)
 
@@ -56,6 +67,15 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(data)
 
+    def do_HEAD(self) -> None:
+        path = self.path.split("?", 1)[0]
+        if path.startswith("/downloads/"):
+            self._download(path[len("/downloads/"):], head_only=True)
+        elif path.startswith("/assets/") or path.startswith("/components/"):
+            self._static(path, head_only=True)
+        else:
+            self.send_error(404)
+
     def do_GET(self) -> None:
         path = self.path.split("?", 1)[0]
         if path in ("/", "/index.html"):
@@ -64,6 +84,10 @@ class Handler(BaseHTTPRequestHandler):
             self._json(200, get_payload())
         elif path == "/api/register-challenge":
             self._json(200, guard.new_challenge())
+        elif path.startswith("/downloads/"):
+            self._download(path[len("/downloads/"):])
+        elif path.startswith("/assets/") or path.startswith("/components/"):
+            self._static(path)
         else:
             self.send_error(404)
 
@@ -103,7 +127,36 @@ class Handler(BaseHTTPRequestHandler):
 
         self._json(200, result)
 
-    def _file(self, path: Path, ctype: str) -> None:
+    def _static(self, url_path: str, *, head_only: bool = False) -> None:
+        rel = url_path.lstrip("/")
+        path = (WEB_DIR / rel).resolve()
+        if not str(path).startswith(str(WEB_DIR.resolve())):
+            self.send_error(404)
+            return
+        if not path.is_file():
+            self.send_error(404)
+            return
+        suffix = path.suffix.lower()
+        ctype = ASSET_TYPES.get(suffix, "application/octet-stream")
+        cache = "public, max-age=86400" if suffix in {".png", ".jpg", ".jpeg", ".webp", ".svg"} else "no-store"
+        self._file(path, ctype, head_only=head_only, cache=cache)
+
+    def _download(self, name: str, *, head_only: bool = False) -> None:
+        if not name or ".." in name or "/" in name:
+            self.send_error(404)
+            return
+        path = DOWNLOADS_DIR / name
+        if not path.is_file():
+            self.send_error(404)
+            return
+        ctype = "application/octet-stream"
+        if name.endswith(".zip"):
+            ctype = "application/zip"
+        elif name.endswith(".dmg"):
+            ctype = "application/x-apple-diskimage"
+        self._file(path, ctype, head_only=head_only, download_name=name)
+
+    def _file(self, path: Path, ctype: str, *, head_only: bool = False, cache: str | None = None, download_name: str | None = None) -> None:
         if not path.is_file():
             self.send_error(404)
             return
@@ -111,8 +164,13 @@ class Handler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-Type", ctype)
         self.send_header("Content-Length", str(len(data)))
+        if cache:
+            self.send_header("Cache-Control", cache)
+        if download_name:
+            self.send_header("Content-Disposition", f'attachment; filename="{download_name}"')
         self.end_headers()
-        self.wfile.write(data)
+        if not head_only:
+            self.wfile.write(data)
 
     def log_message(self, fmt: str, *args) -> None:
         return

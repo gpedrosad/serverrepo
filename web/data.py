@@ -25,6 +25,11 @@ SKILL_NAMES = {
     6: "Fishing",
 }
 VOC_TEMPLATES = frozenset({"0", "1", "2", "3", "4"})
+HIDDEN_RANK_PLAYERS = frozenset({"yurez", "yurez the next"})
+
+
+def is_public_rank_player(name: str) -> bool:
+    return name.strip().lower() not in HIDDEN_RANK_PLAYERS
 
 
 def player_save_path(players_dir: Path, name: str) -> Path:
@@ -418,11 +423,12 @@ def build_payload(
             all_deaths.extend(p["deaths"])
 
     players.sort(key=lambda p: (-p["level"], -p["exp"], p["name"].lower()))
+    public_players = [p for p in players if is_public_rank_player(p["name"])]
 
-    by_ml = sorted(players, key=lambda p: (-p["maglevel"], -p["level"], p["name"].lower()))
-    by_sword = sorted(players, key=lambda p: (-p["sword"], -p["level"], p["name"].lower()))
-    by_dist = sorted(players, key=lambda p: (-p["distance"], -p["level"], p["name"].lower()))
-    by_frags = sorted(players, key=lambda p: (-p["frags"], -p["level"], p["name"].lower()))
+    by_ml = sorted(public_players, key=lambda p: (-p["maglevel"], -p["level"], p["name"].lower()))
+    by_sword = sorted(public_players, key=lambda p: (-p["sword"], -p["level"], p["name"].lower()))
+    by_dist = sorted(public_players, key=lambda p: (-p["distance"], -p["level"], p["name"].lower()))
+    by_frags = sorted(public_players, key=lambda p: (-p["frags"], -p["level"], p["name"].lower()))
 
     all_deaths.sort(key=lambda d: -d["time"])
     for i, d in enumerate(all_deaths[:20], 1):
@@ -432,9 +438,9 @@ def build_payload(
     status = fetch_server_status(ot_host, ot_port)
     status["uptime_fmt"] = fmt_uptime(status["uptime_seconds"])
 
-    online = load_online(online_file)
-    powergamers, frags_today = daily_rankings(players, state_file)
-    top_frags = top_fraggers(players)
+    online = [p for p in load_online(online_file) if is_public_rank_player(p.get("name", ""))]
+    powergamers, frags_today = daily_rankings(public_players, state_file)
+    top_frags = top_fraggers(public_players)
 
     return {
         "updated": datetime.now(timezone.utc).strftime("%H:%M:%S UTC"),
@@ -444,9 +450,9 @@ def build_payload(
         "powergamers": powergamers[:15],
         "top_fraggers": top_frags[:15],
         "frags_today": frags_today[:15],
-        "players": players,
+        "players": public_players,
         "rankings": {
-            "level": players,
+            "level": public_players,
             "ml": by_ml,
             "sword": by_sword,
             "distance": by_dist,
