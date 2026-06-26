@@ -98,6 +98,18 @@ int LuaScript::OpenFile(const char *filename)
 	MANA_MUL[VOCATION_DRUID] = atoll(getGlobalStringField("manamul", VOCATION_DRUID+1, "1").c_str());
 	MANA_MUL[VOCATION_PALADIN] = atoll(getGlobalStringField("manamul", VOCATION_PALADIN+1, "1").c_str());
 	MANA_MUL[VOCATION_KNIGHT] = atoll(getGlobalStringField("manamul", VOCATION_KNIGHT+1, "1").c_str());
+
+	EXP_TIER_COUNT = 0;
+	for(int i = 1; i <= MAX_EXP_TIERS; i++) {
+		std::string minStr = getGlobalStringField("expmulmin", i, "");
+		if(minStr.empty())
+			break;
+
+		EXP_TIER_MIN[EXP_TIER_COUNT] = atoi(minStr.c_str());
+		EXP_TIER_MAX[EXP_TIER_COUNT] = atoi(getGlobalStringField("expmulmax", i, "0").c_str());
+		EXP_TIER_MUL[EXP_TIER_COUNT] = atoi(getGlobalStringField("expmulrate", i, "1").c_str());
+		EXP_TIER_COUNT++;
+	}
 #endif //YUR_MULTIPLIERS
 
 #ifdef TR_ANTI_AFK
@@ -225,6 +237,21 @@ int LuaScript::OpenFile(const char *filename)
 
 	return true;
 }
+
+#ifdef YUR_MULTIPLIERS
+exp_t LuaScript::getExpMulForLevel(int level) const
+{
+	for(int i = 0; i < EXP_TIER_COUNT; i++) {
+		if(level >= EXP_TIER_MIN[i] && (EXP_TIER_MAX[i] == 0 || level <= EXP_TIER_MAX[i]))
+			return EXP_TIER_MUL[i];
+	}
+
+	if(EXP_TIER_COUNT > 0 && level < EXP_TIER_MIN[0])
+		return EXP_TIER_MUL[0];
+
+	return EXP_MUL;
+}
+#endif //YUR_MULTIPLIERS
 
 
 std::string LuaScript::getGlobalString(std::string var, const std::string &defString)

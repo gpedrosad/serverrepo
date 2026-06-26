@@ -269,6 +269,9 @@ exp_t Creature::getGainedExperience(Creature* attacker)
 		return gainexperience * g_config.EXP_MUL_PVP;
 	else {
 		exp_t result = gainexperience * g_config.EXP_MUL;
+		Player* attackerPlayer = dynamic_cast<Player*>(attacker);
+		if(attackerPlayer)
+			result = gainexperience * g_config.getExpMulForLevel(attackerPlayer->level);
 #ifdef YUR_PREMIUM_PROMOTION
 		Player* attackerPlayer = dynamic_cast<Player*>(attacker);
 		if(attackerPlayer && attackerPlayer->isPremium() && g_config.PREMMY_EXP_BONUS > 0)

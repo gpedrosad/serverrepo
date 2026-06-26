@@ -160,8 +160,13 @@ burstarrowdmg = {"1.0", "5.0", "0.24", "0.55"}
 
 --------------------------- Multipliers and gains ------------------------------
 
--- experience multiplier (how much faster you got exp from monsters)
+-- experience multiplier (fallback if expmulmin/rate tiers are not set)
 expmul = 3
+
+-- experience multiplier by level: min, max (0 = no max), rate
+expmulmin = {"9", "41", "71", "101"}
+expmulmax = {"40", "70", "100", "0"}
+expmulrate = {"5", "4", "3", "2"}
 
 -- loot multiplier (drop chance from monsters, 1 = rl tibia)
 lootmul = 3

@@ -62,6 +62,14 @@ public:
 	int SHIELD_MUL[5];
 	int DIST_MUL[5];
 	int64_t MANA_MUL[5];
+
+	static const int MAX_EXP_TIERS = 4;
+	int EXP_TIER_MIN[MAX_EXP_TIERS];
+	int EXP_TIER_MAX[MAX_EXP_TIERS];
+	exp_t EXP_TIER_MUL[MAX_EXP_TIERS];
+	int EXP_TIER_COUNT;
+
+	exp_t getExpMulForLevel(int level) const;
 #endif //YUR_MULTIPLIERS
 
 #ifdef TR_ANTI_AFK
