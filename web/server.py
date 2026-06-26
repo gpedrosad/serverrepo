@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""YurOTS web — highscores, status, deaths, guilds, OTINFO."""
+"""Retro76 web — highscores, status, deaths, OTINFO."""
 from __future__ import annotations
 
 import json
@@ -13,7 +13,6 @@ from register_guard import RegisterGuard
 ROOT = Path(__file__).resolve().parents[1]
 PLAYERS_DIR = Path(os.environ.get("PLAYERS_DIR", ROOT / "server/YurOTS/ots/data/players"))
 ACCOUNTS_DIR = Path(os.environ.get("ACCOUNTS_DIR", ROOT / "server/YurOTS/ots/data/accounts"))
-GUILDS_FILE = Path(os.environ.get("GUILDS_FILE", ROOT / "server/YurOTS/ots/data/guilds.xml"))
 OTINFO_FILE = Path(os.environ.get("OTINFO_FILE", ROOT / "OTINFO"))
 ONLINE_FILE = Path(os.environ.get("ONLINE_FILE", ROOT / "server/YurOTS/ots/data/online.xml"))
 STATE_FILE = Path(os.environ.get("STATE_FILE", ROOT / "web/state/daily.json"))
@@ -31,7 +30,6 @@ guard = RegisterGuard(REGISTER_STATE)
 def get_payload() -> dict:
     return build_payload(
         PLAYERS_DIR,
-        GUILDS_FILE,
         OTINFO_FILE,
         ONLINE_FILE,
         STATE_FILE,
@@ -121,5 +119,5 @@ class Handler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    print(f"YurOTS web: http://localhost:{PORT}/")
+    print(f"Retro76 web: http://localhost:{PORT}/")
     ThreadingHTTPServer(("", PORT), Handler).serve_forever()

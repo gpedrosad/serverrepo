@@ -49,6 +49,7 @@ public:
 	exp_t EXP_MUL;
 	exp_t EXP_MUL_PVP;
 	int LOOT_MUL;
+	int GOLD_LOOT_FLOOR_PERCENT;
 	int SOUL_MAX;
 	int SOUL_REGEN_TICKS;
 	int64_t HEALTH_TICK_MUL;

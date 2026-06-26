@@ -328,6 +328,11 @@ public:
 
 #ifdef TLM_BUY_SELL
 	bool getCoins(unsigned long requiredcoins);
+	unsigned long getCarriedCoinValue();
+	bool canPayWithBank(unsigned long cost);
+	bool removeCoinsWithBank(unsigned long cost);
+	bool hasGoldenAmuletEquipped() const;
+	uint64_t bankMonsterLootCoins(Container* container);
 	unsigned long getContainerCoins(Container* container, unsigned long coins);
 	bool removeCoins(signed long cost);
 	signed long removeContainerCoins(Container* container, signed long cost);
@@ -464,6 +469,10 @@ public:
 #endif //YUR_BUILTIN_AAC
 
 protected:
+#ifdef TLM_BUY_SELL
+	bool addGoldToBankBalance(uint64_t amount);
+#endif //TLM_BUY_SELL
+
 	void sendCancelAttacking();
 	void addSkillTryInternal(int skilltry,int skill);
 	virtual void onCreatureAppear(const Creature *creature);

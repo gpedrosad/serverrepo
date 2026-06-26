@@ -34,6 +34,11 @@ MonsterType::MonsterType()
 	reset();
 }
 
+static bool isCoinLootItem(unsigned short id)
+{
+	return id == ITEM_COINS_GOLD || id == ITEM_COINS_PLATINUM || id == ITEM_COINS_CRYSTAL;
+}
+
 void MonsterType::reset()
 {
 	armor = 0;
@@ -272,7 +277,28 @@ Item* MonsterType::createLootItem(const LootBlock& lootBlock)
 			}
 			else{
 				//if chancemax < randvalue < chance1
-				n = (unsigned char)(randvalue % lootBlock.countmax + 1);
+				if(isCoinLootItem(lootBlock.id) && lootBlock.countmax > 1) {
+					unsigned long floorPercent = (unsigned long)g_config.GOLD_LOOT_FLOOR_PERCENT;
+					if(floorPercent > 100)
+						floorPercent = 100;
+
+					if(floorPercent > 0) {
+						unsigned long minCount = (lootBlock.countmax * floorPercent + 99) / 100;
+						if(minCount < 1)
+							minCount = 1;
+						if(minCount > lootBlock.countmax)
+							minCount = lootBlock.countmax;
+
+						const unsigned long spread = lootBlock.countmax - minCount + 1;
+						n = (unsigned char)(minCount + (randvalue % spread));
+					}
+					else {
+						n = (unsigned char)(randvalue % lootBlock.countmax + 1);
+					}
+				}
+				else {
+					n = (unsigned char)(randvalue % lootBlock.countmax + 1);
+				}
 			}		
 			tmpItem = Item::CreateItem(lootBlock.id, (unsigned short)n);
 		}

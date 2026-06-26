@@ -572,7 +572,8 @@ static bool isHighlightedLootItem(unsigned short itemId)
 }
 
 static void notifyMonsterLoot(Game* game, Creature* victim, Creature* attacker,
-	Creature* attackerMaster, Monster* lootMonster, const std::string& lootText, bool hasHighlightedLoot)
+	Creature* attackerMaster, Monster* lootMonster, const std::string& lootText, bool hasHighlightedLoot,
+	Player* exclusiveRecipient = NULL, uint64_t bankedGold = 0)
 {
 	std::string monsterLabel = lootMonster->getName();
 	std::transform(monsterLabel.begin(), monsterLabel.end(), monsterLabel.begin(), (int(*)(int))tolower);
@@ -585,7 +586,9 @@ static void notifyMonsterLoot(Game* game, Creature* victim, Creature* attacker,
 	logLine << timeBuf << " Loot of " << article(monsterLabel) << ": " << lootText << ".";
 	const std::string logText = logLine.str();
 
-	if(hasHighlightedLoot)
+	if(bankedGold > 0)
+		std::cout << "\033[1;32m" << logText << "\033[0m" << std::endl;
+	else if(hasHighlightedLoot)
 		std::cout << "\033[1;31m" << logText << "\033[0m" << std::endl;
 	else
 		std::cout << logText << std::endl;
@@ -598,7 +601,11 @@ static void notifyMonsterLoot(Game* game, Creature* victim, Creature* attacker,
 	std::ostringstream playerMsg;
 	playerMsg << "Loot of " << article(monsterLabel) << ": " << lootText << ".";
 	const std::string msg = playerMsg.str();
-	const MessageClasses msgClass = hasHighlightedLoot ? MSG_RED_TEXT : MSG_EVENT;
+	MessageClasses msgClass = MSG_EVENT;
+	if(bankedGold > 0)
+		msgClass = MSG_ADVANCE;
+	else if(hasHighlightedLoot)
+		msgClass = MSG_RED_TEXT;
 
 	std::set<Player*> notified;
 	auto sendTo = [&](Player* player) {
@@ -608,6 +615,11 @@ static void notifyMonsterLoot(Game* game, Creature* victim, Creature* attacker,
 		player->flushMsg();
 		notified.insert(player);
 	};
+
+	if(exclusiveRecipient) {
+		sendTo(exclusiveRecipient);
+		return;
+	}
 
 	sendTo(dynamic_cast<Player*>(attacker));
 #ifdef TR_SUMMONS
@@ -708,6 +720,16 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 			attackedCreature->dropLoot(lootcontainer);
 		}
 
+		Player* killerPlayer = dynamic_cast<Player*>(attacker);
+#ifdef TR_SUMMONS
+		if(!killerPlayer && attackerMaster)
+			killerPlayer = dynamic_cast<Player*>(attackerMaster);
+#endif //TR_SUMMONS
+
+		uint64_t bankedGold = 0;
+		if(killerPlayer && lootcontainer)
+			bankedGold = killerPlayer->bankMonsterLootCoins(lootcontainer);
+
 		//Log loot of monsters (server log + default channel in client)
 		Monster* lootMonster = dynamic_cast<Monster*>(attackedCreature);
 		if(lootMonster) {
@@ -759,16 +781,27 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 				if(!first)
 					lootText = lootStr.str();
 			}
-			notifyMonsterLoot(game, attackedCreature, attacker, attackerMaster, lootMonster, lootText, hasHighlightedLoot);
+			if(bankedGold > 0) {
+				std::ostringstream bankNote;
+				bankNote << bankedGold << " gp transferred to bank account";
+				if(lootText == "nothing")
+					lootText = bankNote.str();
+				else
+					lootText += "; " + bankNote.str();
+			}
+			if(bankedGold > 0 && killerPlayer)
+				notifyMonsterLoot(game, attackedCreature, attacker, attackerMaster, lootMonster, lootText, hasHighlightedLoot, killerPlayer, bankedGold);
+			else
+				notifyMonsterLoot(game, attackedCreature, attacker, attackerMaster, lootMonster, lootText, hasHighlightedLoot);
 		}
 
 		if(attackedplayer) {
-			Player* killerPlayer = dynamic_cast<Player*>(attacker);
+			Player* killNotifyPlayer = dynamic_cast<Player*>(attacker);
 #ifdef TR_SUMMONS
-			if(!killerPlayer && attackerMaster)
-				killerPlayer = dynamic_cast<Player*>(attackerMaster);
+			if(!killNotifyPlayer && attackerMaster)
+				killNotifyPlayer = dynamic_cast<Player*>(attackerMaster);
 #endif //TR_SUMMONS
-			notifyPlayerKill(attackedplayer, killerPlayer);
+			notifyPlayerKill(attackedplayer, killNotifyPlayer);
 		}
 
 		if(attackedplayer){

@@ -35,6 +35,10 @@ using namespace std;
 #include "protocol.h"
 #include "player.h"
 #include "luascript.h"
+#ifdef TLM_BUY_SELL
+#include "ioaccount.h"
+#include "ioplayer.h"
+#endif //TLM_BUY_SELL
 #include "const76.h"
 #include "chat.h"
 
@@ -2246,7 +2250,7 @@ bool Player::addVIP(unsigned long _guid, std::string &name, bool isOnline, bool 
 
 
 #ifdef TLM_BUY_SELL
-bool Player::getCoins(unsigned long requiredcoins)
+unsigned long Player::getCarriedCoinValue()
 {
    unsigned long coins = 0;
    for(int slot = 1; slot <= 10; slot++){
@@ -2267,12 +2271,170 @@ bool Player::getCoins(unsigned long requiredcoins)
            }
        }
    }
-   if (coins >= requiredcoins){
+   return coins;
+}
+
+static unsigned long coinStackGoldValue(unsigned short id, unsigned char count)
+{
+	if(id == ITEM_COINS_GOLD)
+		return count;
+	if(id == ITEM_COINS_PLATINUM)
+		return (unsigned long)count * 100;
+	if(id == ITEM_COINS_CRYSTAL)
+		return (unsigned long)count * 10000;
+	return 0;
+}
+
+static unsigned long countLootCoinsInContainer(Container* container)
+{
+	unsigned long total = 0;
+	if(!container)
+		return 0;
+
+	for(ContainerList::const_iterator cit = container->getItems(); cit != container->getEnd(); ++cit) {
+		Item* item = *cit;
+		if(!item)
+			continue;
+
+		Container* sub = dynamic_cast<Container*>(item);
+		if(sub) {
+			total += countLootCoinsInContainer(sub);
+			continue;
+		}
+
+		unsigned short id = item->getID();
+		if(id == ITEM_COINS_GOLD || id == ITEM_COINS_PLATINUM || id == ITEM_COINS_CRYSTAL)
+			total += coinStackGoldValue(id, item->getItemCountOrSubtype());
+	}
+
+	return total;
+}
+
+static void removeLootCoinsFromContainer(Container* container)
+{
+	if(!container)
+		return;
+
+	std::list<Item*> toRemove;
+	for(ContainerList::const_iterator cit = container->getItems(); cit != container->getEnd(); ++cit) {
+		Item* item = *cit;
+		if(!item)
+			continue;
+
+		Container* sub = dynamic_cast<Container*>(item);
+		if(sub) {
+			removeLootCoinsFromContainer(sub);
+			continue;
+		}
+
+		unsigned short id = item->getID();
+		if(id == ITEM_COINS_GOLD || id == ITEM_COINS_PLATINUM || id == ITEM_COINS_CRYSTAL)
+			toRemove.push_back(item);
+	}
+
+	for(std::list<Item*>::iterator it = toRemove.begin(); it != toRemove.end(); ++it) {
+		container->removeItem(*it);
+		g_game.FreeThing(*it);
+	}
+}
+
+bool Player::hasGoldenAmuletEquipped() const
+{
+	return items[SLOT_NECKLACE] && items[SLOT_NECKLACE]->getID() == ITEM_GOLDEN_AMULET;
+}
+
+bool Player::addGoldToBankBalance(uint64_t amount)
+{
+	if(amount == 0)
+		return true;
+
+	Account account = IOAccount::instance()->loadAccount((unsigned long)getAccount());
+	if(account.accnumber != (unsigned long)getAccount())
+		return false;
+
+	account.balance += amount;
+	return IOAccount::instance()->saveAccount(account);
+}
+
+uint64_t Player::bankMonsterLootCoins(Container* container)
+{
+	if(!hasGoldenAmuletEquipped() || !container)
+		return 0;
+
+	unsigned long total = countLootCoinsInContainer(container);
+	if(total == 0)
+		return 0;
+
+	if(!addGoldToBankBalance((uint64_t)total))
+		return 0;
+
+	removeLootCoinsFromContainer(container);
+	return (uint64_t)total;
+}
+
+bool Player::canPayWithBank(unsigned long cost)
+{
+   unsigned long hand = getCarriedCoinValue();
+   if(hand >= cost)
        return true;
-   }
-   else{
+
+   Account account = IOAccount::instance()->loadAccount((unsigned long)getAccount());
+   if(account.accnumber != (unsigned long)getAccount())
        return false;
+
+   return hand + account.balance >= cost;
+}
+
+bool Player::removeCoinsWithBank(unsigned long cost)
+{
+   unsigned long hand = getCarriedCoinValue();
+
+   Account account = IOAccount::instance()->loadAccount((unsigned long)getAccount());
+   if(account.accnumber != (unsigned long)getAccount())
+       return hand >= cost && removeCoins((signed long)cost);
+
+   if(hand + account.balance < cost)
+       return false;
+
+   unsigned long fromHand = hand < cost ? hand : cost;
+   unsigned long fromBank = cost - fromHand;
+
+   if(fromHand > 0){
+       if(!removeCoins((signed long)fromHand))
+           return false;
+
+       if(!IOPlayer::instance()->savePlayer(this)){
+           payBack(fromHand);
+           IOPlayer::instance()->savePlayer(this);
+           return false;
+       }
    }
+
+   if(fromBank > 0){
+       account.balance -= (uint64_t)fromBank;
+       if(!IOAccount::instance()->saveAccount(account)){
+           if(fromHand > 0)
+               payBack(fromHand);
+           if(fromHand > 0)
+               IOPlayer::instance()->savePlayer(this);
+           return false;
+       }
+
+       std::stringstream bankMsg;
+       bankMsg << "Paid " << fromBank << " gp from your bank account.";
+       if(fromHand > 0)
+           bankMsg << " (" << fromHand << " gp from inventory).";
+       else
+           bankMsg << " Balance: " << account.balance << " gp.";
+       sendTextMessage(MSG_EVENT, bankMsg.str().c_str());
+   }
+
+   return true;
+}
+
+bool Player::getCoins(unsigned long requiredcoins)
+{
+   return canPayWithBank(requiredcoins);
 }
 
 unsigned long Player::getContainerCoins(Container* container, unsigned long coins)
@@ -2520,21 +2682,17 @@ signed long Player::removeContainerItem(Container* container, int itemid, int co
 
 void Player::payBack(unsigned long cost)
 {
-	if (cost/10000 > 100)
-	{
-		std::cout << "Player: payBack: too much money to pay back!" << std::endl;
-		return;
-	}
-
-   if (cost/10000 > 0){
-       TLMaddItem(ITEM_COINS_CRYSTAL, (unsigned char)(cost/10000));
-       cost -= 10000*(cost/10000);
+   while(cost >= 10000){
+       const unsigned long crystals = std::min<unsigned long>(cost / 10000, 100);
+       TLMaddItem(ITEM_COINS_CRYSTAL, (unsigned char)crystals);
+       cost -= 10000 * crystals;
    }
-   if (cost/100 > 0){
-       TLMaddItem(ITEM_COINS_PLATINUM, (unsigned char)(cost/100));
-       cost -= 100*(cost/100);
+   while(cost >= 100){
+       const unsigned long platinums = std::min<unsigned long>(cost / 100, 100);
+       TLMaddItem(ITEM_COINS_PLATINUM, (unsigned char)platinums);
+       cost -= 100 * platinums;
    }
-   if (cost > 0 && cost < 100){
+   if(cost > 0){
        TLMaddItem(ITEM_COINS_GOLD, (unsigned char)cost);
    }
 }
@@ -2693,6 +2851,18 @@ static int hasteStacksFromAid(unsigned short aid)
 	return 0;
 }
 
+static bool isEmeraldImbueItem(const Item* item)
+{
+	if(!item)
+		return false;
+	const unsigned short aid = item->getActionId();
+	if(aid == ITEM_EMERALD_SKILL_AID)
+		return true;
+	if(aid == ITEM_EMERALD_SKILL_AID_LEGACY && item->getArmor() > 0 && !item->isWeapon())
+		return true;
+	return false;
+}
+
 static int rubyStacksFromAid(unsigned short aid)
 {
 	if(aid >= ITEM_RUBY_ATTACK_AID && aid <= ITEM_RUBY_ATTACK_AID_MAX)
@@ -2765,8 +2935,7 @@ void Player::checkBoh()
 		}
 	}
 
-	bool emeraldNow = (items[SLOT_ARMOR] &&
-		items[SLOT_ARMOR]->getActionId() == ITEM_EMERALD_SKILL_AID);
+	bool emeraldNow = isEmeraldImbueItem(items[SLOT_ARMOR]);
 
 	if(boh != bohNow || hasteEnchantStacks != hasteNow || imbueWandMl != wandMlNow ||
 		imbueRubyWeapon != rubyNow || imbueEmeraldArmor != emeraldNow)

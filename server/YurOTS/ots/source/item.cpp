@@ -584,8 +584,20 @@ std::string Item::getFluidTypeName(unsigned char fluidType)
 }
 
 #ifdef YUR_BOH
-static int rubyStacksFromAid(unsigned short aid)
+static bool isEmeraldImbueAid(unsigned short aid, const Item& item)
 {
+	if(aid == ITEM_EMERALD_SKILL_AID)
+		return true;
+	// Legacy: emerald used to share 9041 with ruby stack 2.
+	if(aid == ITEM_EMERALD_SKILL_AID_LEGACY && item.getArmor() > 0 && !item.isWeapon())
+		return true;
+	return false;
+}
+
+static int rubyStacksFromAid(unsigned short aid, const Item* item = NULL)
+{
+	if(item && isEmeraldImbueAid(aid, *item))
+	 return 0;
 	if(aid >= ITEM_RUBY_ATTACK_AID && aid <= ITEM_RUBY_ATTACK_AID_MAX)
 		return aid - ITEM_RUBY_ATTACK_AID + 1;
 	return 0;
@@ -692,8 +704,8 @@ std::string Item::getDescription(bool fullDescription) const
 			{
 				s << article(it.name) << " (Atk:" << (int)getAttack() << " Def:" << (int)getDefense();
 #ifdef YUR_BOH
-				if(rubyStacksFromAid(actionId) > 0)
-					s << ", +" << rubySpeedPercentFromStacks(rubyStacksFromAid(actionId)) << "% speed";
+				if(rubyStacksFromAid(actionId, this) > 0)
+					s << ", +" << rubySpeedPercentFromStacks(rubyStacksFromAid(actionId, this)) << "% speed";
 #endif //YUR_BOH
 				s << ")";
 			}
@@ -790,13 +802,18 @@ std::string Item::getDescription(bool fullDescription) const
 		s << std::endl << "Imbued: +" << (HASTE_ENCHANT_SPEED * (actionId - ITEM_HASTE_ENCHANT_AID + 1)) << " haste (" << (actionId - ITEM_HASTE_ENCHANT_AID + 1) << "/3).";
 	else if(actionId >= ITEM_VIOLET_ML_AID && actionId <= ITEM_VIOLET_ML_AID_MAX)
 		s << std::endl << "Imbued: +" << (actionId - ITEM_VIOLET_ML_AID + 1) << " ML (" << (actionId - ITEM_VIOLET_ML_AID + 1) << "/4).";
-	else if(rubyStacksFromAid(actionId) > 0 && fullDescription)
-		s << std::endl << "It attacks faster: +" << rubySpeedPercentFromStacks(rubyStacksFromAid(actionId)) << "% speed ("
-		  << rubyAttackDelayFromStacks(rubyStacksFromAid(actionId)) << "ms per hit, default " << PLAYER_ATTACK_DELAY_MS << "ms, "
-		  << rubyStacksFromAid(actionId) << "/3).";
-	else if(actionId == ITEM_EMERALD_SKILL_AID)
-		s << std::endl << "Imbued: +" << EMERALD_SKILL_BONUS << " attack skills (P/K).";
+	else if(isEmeraldImbueAid(actionId, *this))
+		s << std::endl << "Imbued: +" << EMERALD_SKILL_BONUS << " sword/club/axe/dist (Paladin/Knight).";
+	else if(rubyStacksFromAid(actionId, this) > 0 && fullDescription && isWeapon())
+		s << std::endl << "It attacks faster: +" << rubySpeedPercentFromStacks(rubyStacksFromAid(actionId, this)) << "% speed ("
+		  << rubyAttackDelayFromStacks(rubyStacksFromAid(actionId, this)) << "ms per hit, default " << PLAYER_ATTACK_DELAY_MS << "ms, "
+		  << rubyStacksFromAid(actionId, this) << "/3).";
 #endif //YUR_BOH
+
+#ifdef TLM_BUY_SELL
+	if(fullDescription && id == ITEM_GOLDEN_AMULET)
+		s << std::endl << "Equipado: el oro de monstruos que mates se deposita en tu banco al instante (sin abrir el cuerpo).";
+#endif //TLM_BUY_SELL
 
 	str = s.str();
 	return str;

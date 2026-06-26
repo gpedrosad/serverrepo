@@ -99,6 +99,11 @@ static void addMoneyToPlayer(Player* player, uint64_t amount)
 		player->TLMaddItem(ITEM_COINS_GOLD, (unsigned char)amount);
 }
 
+static bool persistPlayerState(Player* player)
+{
+	return player && IOPlayer::instance()->savePlayer(player);
+}
+
 static void resetPendingTrade(PendingTransaction& trade)
 {
 	trade = PendingTransaction();
@@ -404,8 +409,8 @@ void Npc::onCreatureSay(const Creature *creature, SpeakClasses type, const std::
 					}else
 						doSay("Sorry, you do not have that item.");
 				}else{
-					if(player->getCoins(pt.cost)){
-						if(player->removeCoins(pt.cost)){
+					if(player->canPayWithBank(pt.cost)){
+						if(player->removeCoinsWithBank(pt.cost)){
 							player->TLMaddItem(pt.itemid, pt.count);
 							doSay("Here you go!");
 						}else
@@ -918,9 +923,9 @@ int NpcScript::luaPayMoney(lua_State *L)
 
 	if (player)
 	{
-		if (player->getCoins(cost))
+		if (player->canPayWithBank((unsigned long)cost))
 		{
-			if (player->removeCoins(cost)) // double check
+			if (player->removeCoinsWithBank((unsigned long)cost))
 				lua_pushboolean(L, true);
 			else
 				lua_pushboolean(L, false);
@@ -1103,9 +1108,17 @@ int NpcScript::luaDepositPlayerMoney(lua_State* L)
 		return 1;
 	}
 
+	if(!persistPlayerState(player)) {
+		addMoneyToPlayer(player, (uint64_t)amount);
+		persistPlayerState(player);
+		lua_pushnumber(L, BANK_ACTION_SAVE_FAILED);
+		return 1;
+	}
+
 	account.balance += (uint64_t)amount;
 	if(!IOAccount::instance()->saveAccount(account)) {
 		addMoneyToPlayer(player, (uint64_t)amount);
+		persistPlayerState(player);
 		lua_pushnumber(L, BANK_ACTION_SAVE_FAILED);
 		return 1;
 	}
@@ -1151,6 +1164,15 @@ int NpcScript::luaWithdrawPlayerMoney(lua_State* L)
 	}
 
 	addMoneyToPlayer(player, (uint64_t)amount);
+	if(!persistPlayerState(player)) {
+		player->substractMoney((unsigned long)amount);
+		account.balance += (uint64_t)amount;
+		IOAccount::instance()->saveAccount(account);
+		persistPlayerState(player);
+		lua_pushnumber(L, BANK_ACTION_SAVE_FAILED);
+		return 1;
+	}
+
 	lua_pushnumber(L, BANK_ACTION_SUCCESS);
 	return 1;
 }
@@ -1426,9 +1448,9 @@ int NpcScript::luaLearnSpell(lua_State *L)
 		{
 			mynpc->doSay("You already know this spell.");
 		}
-		else if (player->getCoins(cost))
+		else if (player->canPayWithBank((unsigned long)cost))
 		{
-			if (player->removeCoins(cost)) // double check
+			if (player->removeCoinsWithBank((unsigned long)cost))
 			{
 				player->learnSpell(words);
 				player->sendMagicEffect(player->pos, NM_ME_MAGIC_ENERGIE);

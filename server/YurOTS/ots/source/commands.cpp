@@ -98,7 +98,6 @@ s_defcommands Commands::defined_commands[] = {
 #endif //YUR_CLEAN_MAP
 #ifdef YUR_PREMIUM_PROMOTION
 	{"/promote",&Commands::promote},
-	{"/premmy",&Commands::premmy},
 	{"!premmy",&Commands::showPremmy},
 #endif //YUR_PREMIUM_PROMOTION
 };

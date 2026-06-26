@@ -24,13 +24,13 @@ function onCreatureSay(cid, type, msg)
 	local state = npcHandleMessage(
 		cid,
 		msg,
-		'Hi ' .. creatureGetName(cid) .. '! I sell premium time and promotions. Say "premium" or "promotion".'
+		'Hi ' .. creatureGetName(cid) .. '! I handle promotions. Say "promotion" if you are interested.'
 	)
 	if state ~= 'focused' then
 		return
 	end
 
-	if talk_state == 1 or talk_state == 2 then
+	if talk_state == 1 then
 		if talk_state == 1 then
 			if npcHandlePendingYesNo(cid, msg, function()
 				if pay(cid, 20000) then
@@ -38,17 +38,6 @@ function onCreatureSay(cid, type, msg)
 					selfSay('Congratulations! You are now promoted!')
 				else
 					selfSay('Sorry, you need 20,000 gold.')
-				end
-			end) then
-				talk_state = 0
-			end
-		elseif talk_state == 2 then
-			if npcHandlePendingYesNo(cid, msg, function()
-				if pay(cid, 10000) then
-					selfSay('/premmy 10 ' .. creatureGetName(cid))
-					selfSay('Done! You have 10 more premium hours.')
-				else
-					selfSay('Sorry, you need 10,000 gold.')
 				end
 			end) then
 				talk_state = 0
@@ -63,16 +52,15 @@ function onCreatureSay(cid, type, msg)
 		elseif getPlayerLevel(creatureGetName(cid)) < 20 then
 			selfSay('You need level 20 to buy a promotion.')
 		elseif not isPremium(cid) then
-			selfSay('You need to be premium first. Say "premium" to buy time.')
+			selfSay('You need to be premium first.')
 		else
 			selfSay('Promotion costs 20,000gp. Want to buy it? (yes or si)')
 			talk_state = 1
 		end
 	elseif msgcontains(msg, 'premium') or msgcontains(msg, 'premmy') then
-		selfSay('10 premium hours cost 10,000gp. Interested? (yes or si)')
-		talk_state = 2
+		selfSay('I do not sell premium time anymore.')
 	elseif npcIsHelp(msg) then
-		selfSay('Premium (10h = 10k): +10% exp, faster life/mana regen, outfits, queue priority. Promotion (20k, lvl 20+): advanced vocation title and advanced regen.')
+		selfSay('Promotion costs 20,000gp and requires level 20 plus premium status.')
 	end
 end
 

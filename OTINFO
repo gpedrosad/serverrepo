@@ -1,4 +1,4 @@
-YurOTS — Tibia 7.6 | Puerto 7171
+Retro76 — Tibia 7.6 | retro76.cl:7171
 
 REGLAS
   General · Sanciones de referencia; el staff ajusta según gravedad (aviso → 3-7 días → permanente)
@@ -39,7 +39,7 @@ CAP / RUNAS
   Peso por carga (IH liviana, SD media, UH pesada)
 
 CUSTOM
-  Trainer Monk (sala training 133-160, 7-18)  |  Elite Trainer (otras zonas)
+  Trainer Monk (sala training 133-160, 7-18)
   Training: 20 min/dia por personaje, aviso rojo al entrar y a 5 min, contador blanco abajo
   Angry Troll (al matar Troll)
   exori gran (Knight)  |  exevo vis lux Energy Beam (Sorc ML 10)
@@ -52,6 +52,7 @@ CUSTOM
   Tonka (1 piso arriba de Parived): 20 small → 1 big (say exchange)
   Premium (10h = 10k, NPC promote): +10% exp monstruos, regen vida/mana rápida, outfits, cola preferente
   Promoción (20k, lvl 20+, premium): título vocación avanzada + regen vida/mana avanzada
+  Golden amulet (2130) equipado: el gold del loot va directo al banco al matar (sin abrir cuerpo)
   Imbuements (Use gema con item equipado; el imbue queda en el item si lo pierdes):
     Yellow gem → botas: +20 haste c/u, max 3 (BOH suma)
     Violet gem → wand/rod: +1 ML c/u, max 4

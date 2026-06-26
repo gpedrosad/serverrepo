@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Lanza OTClientV8 (otclientv8-master) apuntando a YurOTS.
+# Lanza OTClientV8 apuntando a Retro76.
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -35,13 +35,13 @@ import re, sys
 path, ip = sys.argv[1], sys.argv[2]
 text = open(path, encoding="utf-8").read()
 new, n = re.subn(
-    r'(Servers\s*=\s*\{\s*\n\s*YurOTS\s*=\s*")[^"]*(")',
-    rf'\g<1>{ip}:7171:760\2',
+    r'(Servers\s*=\s*\{\s*\n\s*)(YurOTS|Retro76)(\s*=\s*")[^"]*(")',
+    rf'\g<1>Retro76\g<3>{ip}:7171:760\4',
     text,
     count=1,
 )
 if not n:
-    sys.exit("No se pudo actualizar Servers.YurOTS en init.lua")
+    sys.exit("No se pudo actualizar Servers.Retro76 en init.lua")
 open(path, "w", encoding="utf-8").write(new)
 PY
 

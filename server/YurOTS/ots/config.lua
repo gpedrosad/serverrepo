@@ -13,13 +13,13 @@ mapkind = "OTBM"
 sourcedata = "XML"
 
 -- the message the player gets when he logs in
-loginmsg = "Welcome to YurOTS"
+loginmsg = "Welcome to Retro76"
 
 -- the port otserv listens on
 port = "7171"
 
 -- name of our server
-servername = "YurOTS"
+servername = "Retro76"
 
 -- name of the owner of our server
 ownername = "Yurez"
@@ -28,16 +28,16 @@ ownername = "Yurez"
 owneremail = ""
 
 -- the url for more server info
-url = ""
+url = "https://retro76.cl"
 
 -- the location of the server
-location = "Poland"
+location = "Chile"
 
 -- the ip the server should redirect too (auto - set as first local ip)
-ip = "127.0.0.1"
+ip = "retro76.cl"
 
 -- The messagebox you sometimes get before you choose characters
-motd = "Welcome to YurOTS"
+motd = "Welcome to Retro76"
 motdnum="0"
 
 -- use md5 passwords for accounts, yes/no
@@ -86,7 +86,7 @@ map_db   = ""
 ------------------------- YurOTS basic configuration ---------------------------
 
 -- name of your world (seen on the character list when logging in)
-worldname = "YurOTS"
+worldname = "Retro76"
 
 -- how often do server saves it's state (0 = off, 5 = 5min, 60 = hour)
 autosave = 10
@@ -111,6 +111,9 @@ premmyexpbonus = 10
 
 -- daily training room limit per character (minutes)
 trainingdailyminutes = 120
+
+-- minimum % of coin-stack loot rolls (higher = less random low gold drops)
+goldlootfloorpercent = 70
 
 -- how much % of {exp, mana, skill, eq, bp} do you lose when dying
 diepercent = {"7", "7", "7", "7", "100"}

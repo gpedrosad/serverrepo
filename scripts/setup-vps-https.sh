@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# HTTPS para la web YurOTS en el VPS (nginx + Let's Encrypt).
+# HTTPS para la web Retro76 en el VPS (nginx + Let's Encrypt).
 #
-# Requiere un dominio (o subdominio gratis) apuntando a la IP del VPS.
-# Ejemplo gratis: DuckDNS → yurots.duckdns.org → 64.176.20.238
+# Requiere un dominio apuntando a la IP del VPS.
+# Ejemplo: retro76.cl → 64.176.20.238
 #
 # Uso en el VPS (como root):
 #   cd /root/yurots-principal
@@ -21,7 +21,7 @@ NGINX_ENABLED="/etc/nginx/sites-enabled/yurots"
 
 if [[ -z "$DOMAIN" ]]; then
   echo "Uso: $0 <dominio>" >&2
-  echo "Ejemplo: $0 yurots.duckdns.org" >&2
+  echo "Ejemplo: $0 retro76.cl" >&2
   exit 1
 fi
 
@@ -79,7 +79,7 @@ fi
 echo ""
 echo "============================================"
 echo "  HTTPS listo: https://$DOMAIN/"
-echo "  El OT sigue en 64.176.20.238:7171 (cliente Tibia)"
+echo "  Juego: $DOMAIN:7171 (o retro76.cl:7171)"
 echo "============================================"
 echo ""
 echo "Renovación automática: certbot renew (timer systemd ya instalado)"

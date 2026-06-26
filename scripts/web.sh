@@ -8,5 +8,5 @@ docker stop yurots-web 2>/dev/null || true
 
 export OT_HOST=127.0.0.1
 export SERVER_IP=127.0.0.1
-echo "YurOTS web → http://localhost:8080/"
+echo "Retro76 web → http://localhost:8080/"
 exec python3 web/server.py

@@ -524,40 +524,40 @@
 		<monster name="wolf" x="-2" y="-2" z="6" spawntime="60" direction="2" />
 	</spawn>
 	<spawn centerx="146" centery="8" centerz="7" radius="1">
-		<monster name="Elite Trainer Monk" x="0" y="0" z="7" spawntime="60" />
+		<monster name="Trainer Monk" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="134" centery="16" centerz="7" radius="1">
-		<monster name="Elite Trainer Monk" x="0" y="0" z="7" spawntime="60" />
+		<monster name="Trainer Monk" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="136" centery="16" centerz="7" radius="1">
-		<monster name="Elite Trainer Monk" x="0" y="0" z="7" spawntime="60" />
+		<monster name="Trainer Monk" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="138" centery="16" centerz="7" radius="1">
-		<monster name="Elite Trainer Monk" x="0" y="0" z="7" spawntime="60" />
+		<monster name="Trainer Monk" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="140" centery="16" centerz="7" radius="1">
-		<monster name="Elite Trainer Monk" x="0" y="0" z="7" spawntime="60" />
+		<monster name="Trainer Monk" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="142" centery="16" centerz="7" radius="1">
-		<monster name="Elite Trainer Monk" x="0" y="0" z="7" spawntime="60" />
+		<monster name="Trainer Monk" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="144" centery="16" centerz="7" radius="1">
-		<monster name="Elite Trainer Monk" x="0" y="0" z="7" spawntime="60" />
+		<monster name="Trainer Monk" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="146" centery="16" centerz="7" radius="1">
-		<monster name="Elite Trainer Monk" x="0" y="0" z="7" spawntime="60" />
+		<monster name="Trainer Monk" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="148" centery="16" centerz="7" radius="1">
-		<monster name="Elite Trainer Monk" x="0" y="0" z="7" spawntime="60" />
+		<monster name="Trainer Monk" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="150" centery="16" centerz="7" radius="1">
-		<monster name="Elite Trainer Monk" x="0" y="0" z="7" spawntime="60" />
+		<monster name="Trainer Monk" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="152" centery="16" centerz="7" radius="1">
-		<monster name="Elite Trainer Monk" x="0" y="0" z="7" spawntime="60" />
+		<monster name="Trainer Monk" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="154" centery="16" centerz="7" radius="1">
-		<monster name="Elite Trainer Monk" x="0" y="0" z="7" spawntime="60" />
+		<monster name="Trainer Monk" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="193" centery="25" centerz="7" radius="3">
 		<monster name="pig" x="3" y="0" z="7" spawntime="60" direction="2" />
@@ -633,8 +633,8 @@
 		<monster name="elf" x="5" y="5" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="177" centery="63" centerz="7" radius="5">
-		<monster name="Elite Trainer Monk" x="0" y="0" z="7" spawntime="60" />
-		<monster name="Elite Trainer Monk" x="-1" y="1" z="7" spawntime="60" />
+		<monster name="Trainer Monk" x="0" y="0" z="7" spawntime="60" />
+		<monster name="Trainer Monk" x="-1" y="1" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="64" centery="68" centerz="7" radius="12">
 		<monster name="demon skeleton" x="-3" y="-9" z="7" spawntime="60" direction="2" />

@@ -181,7 +181,7 @@ function onUse(cid, item, frompos, item2, topos)
 			doPlayerSendCancel(cid, "Wear armor to imbue it.")
 			return 1
 		end
-		if armor.actionid == 9041 then
+		if armor.actionid == 9050 or armor.actionid == 9041 then
 			doPlayerSendCancel(cid, "Armor already has skill imbuement.")
 			return 1
 		end
@@ -193,7 +193,7 @@ function onUse(cid, item, frompos, item2, topos)
 			return 1
 		end
 		doRemoveItem(item.uid, 1)
-		doSetItemActionId(armor.uid, 9041)
+		doSetItemActionId(armor.uid, 9050)
 		doSendMagicEffect(getPlayerPosition(cid), 13)
 		doPlayerSendTextMessage(cid, 22, "Armor imbued with +3 attack skills (Paladin/Knight).")
 		doPlayerCheckFeetSpeed(cid)

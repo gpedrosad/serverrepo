@@ -6,9 +6,9 @@
 
 <attacks>
 	<attack type="melee" mindamage="0" maxdamage="0"/>
-	<attack type="instant" name="exura vita" exhaustion="800" cycleticks="4500" probability="55"/>
-	<attack type="instant" name="exura" exhaustion="600" cycleticks="6000" probability="35"/>
-	<attack type="instant" name="dm_haste" exhaustion="400" cycleticks="12000" probability="25"/>
+	<attack type="instant" name="exura vita" exhaustion="800" cycleticks="3800" probability="60"/>
+	<attack type="instant" name="exura gran" exhaustion="800" cycleticks="6200" probability="34"/>
+	<attack type="instant" name="dm_haste" exhaustion="400" cycleticks="12000" probability="20"/>
 </attacks>
 
 <defenses>

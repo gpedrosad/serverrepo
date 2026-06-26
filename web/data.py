@@ -1,4 +1,4 @@
-"""Lee datos del server YurOTS para la web."""
+"""Lee datos del server Retro76 para la web."""
 from __future__ import annotations
 
 import json
@@ -161,7 +161,7 @@ def fetch_server_status(host: str, port: int, timeout: float = 2.0) -> dict:
         "players_max": 28,
         "players_peak": 0,
         "uptime_seconds": 0,
-        "servername": "YurOTS",
+        "servername": "Retro76",
         "version": "",
     }
     try:
@@ -180,7 +180,7 @@ def fetch_server_status(host: str, port: int, timeout: float = 2.0) -> dict:
         si = root.find("serverinfo")
         if si is not None:
             out["uptime_seconds"] = int(si.get("uptime", "0"))
-            out["servername"] = si.get("servername", "YurOTS")
+            out["servername"] = si.get("servername", "Retro76")
             out["version"] = si.get("version", "")
             out["players_max"] = int(root.find("players").get("max", "28") if root.find("players") is not None else "28")
         pl = root.find("players")
@@ -258,22 +258,6 @@ def parse_player(path: Path) -> dict | None:
         "skills": skills,
         "deaths": deaths,
     }
-
-
-def load_guilds(guilds_file: Path) -> list[dict]:
-    if not guilds_file.is_file():
-        return []
-    try:
-        root = ET.parse(guilds_file).getroot()
-    except ET.ParseError:
-        return []
-    guilds = []
-    for g in root.findall("guild"):
-        name = g.get("name", "?")
-        members = [m.get("name", "?") for m in g.findall("member")]
-        guilds.append({"name": name, "members": members, "count": len(members)})
-    guilds.sort(key=lambda x: (-x["count"], x["name"].lower()))
-    return guilds
 
 
 def load_otinfo(otinfo_file: Path) -> list[dict]:
@@ -411,7 +395,6 @@ def top_fraggers(players: list[dict]) -> list[dict]:
 
 def build_payload(
     players_dir: Path,
-    guilds_file: Path,
     otinfo_file: Path,
     online_file: Path,
     state_file: Path,
@@ -470,7 +453,6 @@ def build_payload(
             "frags": by_frags,
         },
         "deaths": all_deaths[:20],
-        "guilds": load_guilds(guilds_file),
         "otinfo": load_otinfo(otinfo_file),
         "vocations": VOCATIONS[1:],
     }

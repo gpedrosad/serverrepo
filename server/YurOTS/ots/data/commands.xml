@@ -33,7 +33,6 @@
 <command cmd="/shutdown"	access="3" />
 <command cmd="/max"			access="3" />
 <command cmd="/clean"		access="2" />
-<command cmd="/premmy"		access="3" />
 <command cmd="/promote"		access="3" />
 
 <command cmd="!exp"			access="0" />

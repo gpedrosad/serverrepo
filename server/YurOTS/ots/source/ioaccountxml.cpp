@@ -20,6 +20,7 @@
 
 #include "ioaccountxml.h"
 #include <algorithm>
+#include <cstdio>
 #include <cstdlib>
 #include <functional>
 #include <iostream>
@@ -219,18 +220,27 @@ bool IOAccountXML::saveAccount(const Account& account)
 	std::ostringstream filename;
 	filename << g_config.DATA_DIR << "accounts/" << account.accnumber << ".xml";
 	std::string file = filename.str();
+	std::string tempFile = file + ".tmp";
 
-	if (xmlSaveFile(file.c_str(), doc))
+	std::remove(tempFile.c_str());
+	if (xmlSaveFile(tempFile.c_str(), doc))
 	{
 		xmlFreeDoc(doc);
+		if(std::rename(tempFile.c_str(), file.c_str()) == 0) {
+			xmlMutexUnlock(xmlmutex);
+			return true;
+		}
+
+		std::remove(tempFile.c_str());
 		xmlMutexUnlock(xmlmutex);
-		return true;
+		std::cout << "Failed to replace " << file << " with " << tempFile << std::endl;
+		return false;
 	}
 	else
 	{
 		xmlFreeDoc(doc);
 		xmlMutexUnlock(xmlmutex);
-		std::cout << "Failed to save " << file << std::endl;
+		std::cout << "Failed to save " << tempFile << std::endl;
 		return false;
 	}
 }

@@ -8,7 +8,7 @@ import shutil
 import sys
 from pathlib import Path
 
-CLIENT_EXE = "YurOTS.exe"
+CLIENT_EXE = "Retro76.exe"
 SOURCE_EXE = "Tibia.exe"
 ASSET_FILES = ("Tibia.dat", "Tibia.spr", "Tibia.pic")
 HOST_SLOTS = (
@@ -53,7 +53,7 @@ def patch_exe(data: bytearray, ip: str) -> None:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Parchea Tibia 7.6 para YurOTS")
+    parser = argparse.ArgumentParser(description="Parchea Tibia 7.6 para Retro76")
     parser.add_argument(
         "--source",
         type=Path,
@@ -76,7 +76,7 @@ def main() -> int:
     parser.add_argument(
         "--desktop",
         action="store_true",
-        help="Copia el cliente listo a ~/Desktop/YurOTS-Cliente-7.6 y crea .zip",
+        help="Copia el cliente listo a ~/Desktop/Retro76-Cliente-7.6 y crea .zip",
     )
     args = parser.parse_args()
 
@@ -105,17 +105,24 @@ def main() -> int:
     if legacy.is_file():
         legacy.unlink()
 
+    if ip == "127.0.0.1":
+        web_url = "http://127.0.0.1:8080/"
+    elif ip.replace(".", "").isdigit():
+        web_url = f"http://{ip}:8080/"
+    else:
+        web_url = f"https://{ip}/"
+
     readme = dest / "LEEME.txt"
     readme.write_text(
-        f"""YurOTS — Cliente Tibia 7.6
+        f"""Retro76 — Cliente Tibia 7.6
 ==========================
 
 1. Ejecutá {CLIENT_EXE} (Windows).
 2. Login con número de cuenta y contraseña.
 3. No hace falta IP changer: ya apunta a {ip}:7171
 
-Crear cuenta: http://{ip}:8080/ (pestaña Cuenta)
-Info del server: http://{ip}:8080/
+Crear cuenta: {web_url} (pestaña Cuenta)
+Info del server: {web_url}
 
 Solo Windows nativo. En Mac hace falta Wine/CrossOver.
 """,
@@ -129,8 +136,8 @@ Solo Windows nativo. En Mac hace falta Wine/CrossOver.
     if args.desktop:
         import zipfile
 
-        desktop_dir = Path.home() / "Desktop" / "YurOTS-Cliente-7.6"
-        zip_path = Path.home() / "Desktop" / "YurOTS-Cliente-7.6.zip"
+        desktop_dir = Path.home() / "Desktop" / "Retro76-Cliente-7.6"
+        zip_path = Path.home() / "Desktop" / "Retro76-Cliente-7.6.zip"
         if desktop_dir.exists():
             shutil.rmtree(desktop_dir)
         shutil.copytree(dest, desktop_dir)
