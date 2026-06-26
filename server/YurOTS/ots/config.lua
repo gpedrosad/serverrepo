@@ -47,7 +47,7 @@ md5passwords = "no"
 worldtype = "pvp"
 
 -- max number of players allowed
-maxplayers = "28"
+maxplayers = "200"
 
 -- exhausted time in ms (1000 = 1sec)
 exhausted = 2000
