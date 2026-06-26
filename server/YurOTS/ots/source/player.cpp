@@ -83,6 +83,8 @@ Creature()
 	mana       = 0;
 	manamax    = 0;
 	manaspent  = 0;
+	soul       = 100;
+	soulRegenTicks = 0;
 	this->name = name;
 	food       = 0;
 	guildId    = 0;
@@ -109,6 +111,9 @@ Creature()
 	trainingWarned = false;
 	trainingInArea = false;
 #endif //YUR_TRAINING_AREA
+#ifdef YUR_SOFT_BOOTS
+	softBootsTick = 0;
+#endif //YUR_SOFT_BOOTS
 #ifdef TRS_GM_INVISIBLE
 	gmInvisible = false;
 	oldlookhead = 0;
@@ -180,6 +185,7 @@ Creature()
 	lastSentStats.manamax = 0;
 	lastSentStats.manaspent = 0;
 	lastSentStats.maglevel = 0;
+	lastSentStats.soul = 0;
 	level_percent = 0;
 	maglevel_percent = 0;
 
@@ -1072,12 +1078,46 @@ int64_t Player::getPlayerInfo(playerinfo_t playerinfo) const
 		case PLAYERINFO_MANA: return mana; break;
 		case PLAYERINFO_MAXMANA: return manamax; break;
 		case PLAYERINFO_MANAPERCENT: return maglevel_percent; break;
-		case PLAYERINFO_SOUL: return 100; break;
+		case PLAYERINFO_SOUL: return soul; break;
 		default:
 			return 0; break;
 	}
 
 	return 0;
+}
+
+bool Player::spendSoul(unsigned short amount)
+{
+	if(amount > soul)
+		return false;
+
+	soul -= amount;
+	sendStats();
+	return true;
+}
+
+void Player::setSoul(unsigned short value)
+{
+	soul = std::min<unsigned short>(value, 255);
+}
+
+void Player::checkSoulRegen(int thinkTicks)
+{
+#ifdef YUR_MULTIPLIERS
+	if(soul >= g_config.SOUL_MAX)
+		return;
+
+	soulRegenTicks += thinkTicks;
+	if(soulRegenTicks < g_config.SOUL_REGEN_TICKS)
+		return;
+
+	soulRegenTicks -= g_config.SOUL_REGEN_TICKS;
+	if(soul >= g_config.SOUL_MAX)
+		return;
+
+	soul = std::min<unsigned short>(soul + 1, (unsigned short)g_config.SOUL_MAX);
+	sendStats();
+#endif //YUR_MULTIPLIERS
 }
 
 int64_t Player::getSkill(skills_t skilltype, skillsid_t skillinfo) const
@@ -1551,6 +1591,7 @@ void Player::sendStats(){
 	lastSentStats.manamax = this->manamax;
 	lastSentStats.manaspent = this->manaspent;
 	lastSentStats.maglevel = this->maglevel;
+	lastSentStats.soul = this->soul;
 
 	client->sendStats();
 }
@@ -1640,7 +1681,8 @@ bool Player::NeedUpdateStats(){
 		 lastSentStats.mana != this->mana ||
 		 lastSentStats.manamax != this->manamax ||
 		 lastSentStats.manaspent != this->manaspent ||
-		 lastSentStats.maglevel != this->maglevel){
+		 lastSentStats.maglevel != this->maglevel ||
+		 lastSentStats.soul != this->soul){
 		return true;
 	}
 	else{
@@ -1679,6 +1721,10 @@ void Player::onThingMove(const Creature *creature, slots_t fromSlot, const Item*
 		fromSlot == SLOT_LEFT || fromSlot == SLOT_RIGHT)
 		checkBoh();
 #endif //YUR_BOH
+#ifdef YUR_SOFT_BOOTS
+	if (fromSlot == SLOT_FEET)
+		softBootsTick = 0;
+#endif //YUR_SOFT_BOOTS
 }
 
 //inventory to inventory
@@ -1705,6 +1751,12 @@ void Player::onThingMove(const Creature *creature, slots_t fromSlot, const Item*
 		fromSlot == SLOT_RIGHT || toSlot == SLOT_RIGHT)
 		checkBoh();
 #endif //YUR_BOH
+#ifdef YUR_SOFT_BOOTS
+	if (fromSlot == SLOT_FEET)
+		softBootsTick = 0;
+	if (toSlot == SLOT_FEET && fromItem && fromItem->getID() == ITEM_SOFT_BOOTS)
+		onSoftBootsEquipped(const_cast<Item*>(fromItem));
+#endif //YUR_SOFT_BOOTS
 }
 
 //container to inventory
@@ -1724,6 +1776,10 @@ void Player::onThingMove(const Creature *creature, const Container *fromContaine
 		toSlot == SLOT_LEFT || toSlot == SLOT_RIGHT)
 		checkBoh();
 #endif //YUR_BOH
+#ifdef YUR_SOFT_BOOTS
+	if (toSlot == SLOT_FEET && fromItem && fromItem->getID() == ITEM_SOFT_BOOTS)
+		onSoftBootsEquipped(const_cast<Item*>(fromItem));
+#endif //YUR_SOFT_BOOTS
 }
 
 //container to ground
@@ -1750,6 +1806,10 @@ void Player::onThingMove(const Creature *creature, slots_t fromSlot,
 		fromSlot == SLOT_LEFT || fromSlot == SLOT_RIGHT)
 		checkBoh();
 #endif //YUR_BOH
+#ifdef YUR_SOFT_BOOTS
+	if (fromSlot == SLOT_FEET)
+		softBootsTick = 0;
+#endif //YUR_SOFT_BOOTS
 }
 
 //ground to container
@@ -1776,6 +1836,10 @@ void Player::onThingMove(const Creature *creature, const Position &fromPos, int 
 		toSlot == SLOT_LEFT || toSlot == SLOT_RIGHT)
 		checkBoh();
 #endif //YUR_BOH
+#ifdef YUR_SOFT_BOOTS
+	if (toSlot == SLOT_FEET && fromItem && fromItem->getID() == ITEM_SOFT_BOOTS)
+		onSoftBootsEquipped(const_cast<Item*>(fromItem));
+#endif //YUR_SOFT_BOOTS
 }
 
 /*
@@ -2715,6 +2779,70 @@ int Player::getAttackDelayMs() const
 }
 #endif //YUR_BOH
 
+#ifdef YUR_SOFT_BOOTS
+void Player::onSoftBootsEquipped(Item* boots)
+{
+	if(!boots || boots->getID() != ITEM_SOFT_BOOTS)
+		return;
+
+	if(boots->getTime() <= 0)
+		boots->restoreDuration(Item::items[ITEM_SOFT_BOOTS].newTime);
+
+	boots->useTime(SOFT_BOOTS_EQUIP_PENALTY_MS);
+	softBootsTick = 0;
+}
+
+void Player::checkSoftBoots(int thinkTicks)
+{
+	Item* feet = items[SLOT_FEET];
+	if(!feet || feet->getID() != ITEM_SOFT_BOOTS) {
+		softBootsTick = 0;
+		return;
+	}
+
+	if(feet->getTime() <= 0) {
+		feet->setID(ITEM_WORN_SOFT_BOOTS);
+		feet->clearDuration();
+		sendInventory(SLOT_FEET);
+		softBootsTick = 0;
+		return;
+	}
+
+	feet->useTime(thinkTicks);
+	if(feet->getTime() <= 0) {
+		feet->setID(ITEM_WORN_SOFT_BOOTS);
+		feet->clearDuration();
+		sendInventory(SLOT_FEET);
+		softBootsTick = 0;
+		return;
+	}
+
+	softBootsTick += thinkTicks;
+	if(softBootsTick < SOFT_BOOTS_INTERVAL_MS)
+		return;
+
+	softBootsTick -= SOFT_BOOTS_INTERVAL_MS;
+
+	bool statsChanged = false;
+
+	if(mana < manamax) {
+		mana += std::min((int64_t)SOFT_BOOTS_MANA_GAIN, manamax - mana);
+		statsChanged = true;
+	}
+
+	if(health < healthmax) {
+		const int add = std::min<int>(SOFT_BOOTS_HP_GAIN, healthmax - health);
+		if(add > 0) {
+			health += add;
+			statsChanged = true;
+		}
+	}
+
+	if(statsChanged)
+		sendStats();
+}
+#endif //YUR_SOFT_BOOTS
+
 
 #ifdef YUR_GUILD_SYSTEM
 void Player::setGuildInfo(gstat_t gstat, unsigned long gid, std::string gname, std::string rank, std::string nick)
@@ -3161,4 +3289,3 @@ int Player::getWandId() const
 	return 0;
 }
 #endif //JD_WANDS
-

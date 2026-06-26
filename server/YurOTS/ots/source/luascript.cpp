@@ -50,6 +50,8 @@ int LuaScript::OpenFile(const char *filename)
 	EXP_MUL = getGlobalNumber("expmul",1);
 	EXP_MUL_PVP = getGlobalNumber("expmulpvp",1);
 	LOOT_MUL = getGlobalNumber("lootmul",1);
+	SOUL_MAX = getGlobalNumber("soulmax", 100);
+	SOUL_REGEN_TICKS = getGlobalNumber("soulregen", 120) * 1000;
 	HEALTH_TICK_MUL = getGlobalNumber("healthtickmul",1);
 	MANA_TICK_MUL = getGlobalNumber("manatickmul",1);
 

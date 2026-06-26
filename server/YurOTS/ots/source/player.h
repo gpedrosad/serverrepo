@@ -167,6 +167,10 @@ public:
 	int64_t getHealth() const {return health;}
 	int64_t getMana() const {return mana;}
 	int64_t getMagicLevel() const {return maglevel;}
+	unsigned short getSoul() const { return soul; }
+	bool spendSoul(unsigned short amount);
+	void setSoul(unsigned short value);
+	void checkSoulRegen(int thinkTicks);
 	playersex_t getSex() {return sex;}
 	bool gainManaTick();
 	bool gainHealthTick();
@@ -374,6 +378,11 @@ public:
 	int getAttackDelayMs() const;
 #endif //YUR_BOH
 
+#ifdef YUR_SOFT_BOOTS
+	void checkSoftBoots(int thinkTicks);
+	void onSoftBootsEquipped(Item* boots);
+#endif //YUR_SOFT_BOOTS
+
 #ifdef YUR_RINGS_AMULETS
 	void checkRing(int thinkTics);
 #endif //YUR_RINGS_AMULETS
@@ -528,6 +537,10 @@ protected:
 	bool trainingWarned;
 	bool trainingInArea;
 #endif //YUR_TRAINING_AREA
+
+#ifdef YUR_SOFT_BOOTS
+	int softBootsTick;
+#endif //YUR_SOFT_BOOTS
 /*
 #ifdef YUR_MULTIPLIERS
 	static int WEAPON_MUL[5];
@@ -606,6 +619,8 @@ protected:
 
 	unsigned char level_percent;
 	unsigned char maglevel_percent;
+	unsigned short soul;
+	int soulRegenTicks;
 	//trade variables
 	unsigned long tradePartner;
 	trade_state tradeState;
@@ -635,6 +650,7 @@ protected:
 		int64_t manamax;
 		int64_t manaspent;
 		int64_t maglevel;
+		unsigned short soul;
 	};
 
 	SentStats lastSentStats;

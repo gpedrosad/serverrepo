@@ -126,6 +126,13 @@ bool IOPlayerXML::loadPlayer(Player* player, std::string name){
 		else
 			isLoaded = false;
 
+		nodeValue = (char*)xmlGetProp(root, (const xmlChar *) "soul");
+		if(nodeValue) {
+			const int soul = atoi(nodeValue);
+			player->setSoul(soul < 0 ? 0 : soul);
+			xmlFreeOTSERV(nodeValue);
+		}
+
 		nodeValue = (char*)xmlGetProp(root, (const xmlChar *) "voc");
 		if(nodeValue) {
 			player->vocation = (playervoc_t)atoi(nodeValue);
@@ -754,6 +761,7 @@ bool IOPlayerXML::savePlayer(Player* player){
 	//sb << player->cap;    	        xmlSetProp(root, (const xmlChar*) "cap", (const xmlChar*)sb.str().c_str());       sb.str("");
 	sb << (int)std::floor(player->getCapacity() + 0.5); xmlSetProp(root, (const xmlChar*) "cap", (const xmlChar*)sb.str().c_str()); sb.str("");
 	sb << player->maglevel;	          xmlSetProp(root, (const xmlChar*) "maglevel", (const xmlChar*)sb.str().c_str());  sb.str("");
+	sb << player->getSoul();          xmlSetProp(root, (const xmlChar*) "soul", (const xmlChar*)sb.str().c_str());      sb.str("");
 	sb << (long)player->lastlogin;	        xmlSetProp(root, (const xmlChar*) "lastlogin", (const xmlChar*)sb.str().c_str());  sb.str("");
 
 #ifdef YUR_PREMIUM_PROMOTION

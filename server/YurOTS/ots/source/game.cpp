@@ -26,6 +26,7 @@
 #include <fstream>
 
 #include <map>
+#include <set>
 //#include <algorithm>
 
 #ifdef __DEBUG_CRITICALSECTION__
@@ -60,6 +61,7 @@ using namespace std;
 #include "houses.h"
 #include "summons.h"
 #include "pvparena.h"
+#include "tools.h"
 #include <ctype.h>
 
 #if defined __EXCEPTION_TRACER__
@@ -497,6 +499,57 @@ void GameState::addCreatureState(Tile* tile, Creature* attackedCreature, int64_t
 	creaturestates[tile].push_back( make_pair(attackedCreature, cs) );
 }
 
+static void notifyMonsterLoot(Game* game, Creature* victim, Creature* attacker,
+	Creature* attackerMaster, Monster* lootMonster, const std::string& lootText)
+{
+	std::string monsterLabel = lootMonster->getName();
+	std::transform(monsterLabel.begin(), monsterLabel.end(), monsterLabel.begin(), (int(*)(int))tolower);
+
+	time_t now = time(0);
+	struct tm* t = localtime(&now);
+	char timeBuf[8];
+	snprintf(timeBuf, sizeof(timeBuf), "%02d:%02d", t->tm_hour, t->tm_min);
+	std::ostringstream logLine;
+	logLine << timeBuf << " Loot of " << article(monsterLabel) << ": " << lootText << ".";
+	const std::string logText = logLine.str();
+
+	std::cout << logText << std::endl;
+	std::cout.flush();
+	std::ofstream serverLog("server.log", std::ios::app);
+	if(serverLog.is_open()) {
+		serverLog << logText << std::endl;
+	}
+
+	std::ostringstream playerMsg;
+	playerMsg << "Loot of " << article(monsterLabel) << ": " << lootText << ".";
+	const std::string msg = playerMsg.str();
+
+	std::set<Player*> notified;
+	auto sendTo = [&](Player* player) {
+		if(!player || notified.find(player) != notified.end())
+			return;
+		player->sendTextMessage(MSG_EVENT, msg.c_str());
+		player->flushMsg();
+		notified.insert(player);
+	};
+
+	sendTo(dynamic_cast<Player*>(attacker));
+#ifdef TR_SUMMONS
+	if(attackerMaster)
+		sendTo(dynamic_cast<Player*>(attackerMaster));
+#endif //TR_SUMMONS
+	const std::vector<long>& damagers = victim->getInflicatedDamageCreatureList();
+	for(std::vector<long>::const_iterator dit = damagers.begin(); dit != damagers.end(); ++dit) {
+		Player* damagePlayer = game->getPlayerByID(*dit);
+		if(!damagePlayer) {
+			Creature* damageCreature = game->getCreatureByID(*dit);
+			if(damageCreature && damageCreature->getMaster())
+				damagePlayer = dynamic_cast<Player*>(damageCreature->getMaster());
+		}
+		sendTo(damagePlayer);
+	}
+}
+
 void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* attackedCreature, int64_t damage, bool drawBlood)
 {
 	Player *attackedplayer = dynamic_cast<Player*>(attackedCreature);
@@ -545,52 +598,51 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 			attackedCreature->dropLoot(lootcontainer);
 		}
 
-		//Log loot of monsters
+		//Log loot of monsters (server log + default channel in client)
 		Monster* lootMonster = dynamic_cast<Monster*>(attackedCreature);
-		if(lootMonster && lootcontainer && lootcontainer->size() > 0) {
-			std::stringstream lootStr;
-			bool first = true;
-			for(ContainerList::const_iterator cit = lootcontainer->getItems(); cit != lootcontainer->getEnd(); ++cit) {
-				Item* lootItem = *cit;
-				if(!lootItem) continue;
-				if(!first) lootStr << ", ";
-				first = false;
-				unsigned short iid = lootItem->getID();
-				std::string itemName = Item::items[iid].name;
-				if(itemName.empty()) itemName = "item";
-				if(Item::items[iid].stackable && lootItem->getItemCountOrSubtype() > 1) {
-					lootStr << (int)lootItem->getItemCountOrSubtype() << " " << itemName;
-				} else {
-					lootStr << itemName;
-				}
-				Container* subContainer = dynamic_cast<Container*>(lootItem);
-				if(subContainer && subContainer->size() > 0) {
-					lootStr << " (inside: ";
-					bool subFirst = true;
-					for(ContainerList::const_iterator sit = subContainer->getItems(); sit != subContainer->getEnd(); ++sit) {
-						Item* subItem = *sit;
-						if(!subItem) continue;
-						if(!subFirst) lootStr << ", ";
-						subFirst = false;
-						unsigned short sid = subItem->getID();
-						std::string subName = Item::items[sid].name;
-						if(subName.empty()) subName = "item";
-						if(Item::items[sid].stackable && subItem->getItemCountOrSubtype() > 1) {
-							lootStr << (int)subItem->getItemCountOrSubtype() << " " << subName;
-						} else {
-							lootStr << subName;
-						}
+		if(lootMonster) {
+			std::string lootText = "nothing";
+			if(lootcontainer && lootcontainer->size() > 0) {
+				std::stringstream lootStr;
+				bool first = true;
+				for(ContainerList::const_iterator cit = lootcontainer->getItems(); cit != lootcontainer->getEnd(); ++cit) {
+					Item* lootItem = *cit;
+					if(!lootItem) continue;
+					if(!first) lootStr << ", ";
+					first = false;
+					unsigned short iid = lootItem->getID();
+					std::string itemName = Item::items[iid].name;
+					if(itemName.empty()) itemName = "item";
+					if(Item::items[iid].stackable && lootItem->getItemCountOrSubtype() > 1) {
+						lootStr << (int)lootItem->getItemCountOrSubtype() << " " << itemName;
+					} else {
+						lootStr << itemName;
 					}
-					lootStr << ")";
+					Container* subContainer = dynamic_cast<Container*>(lootItem);
+					if(subContainer && subContainer->size() > 0) {
+						lootStr << " (inside: ";
+						bool subFirst = true;
+						for(ContainerList::const_iterator sit = subContainer->getItems(); sit != subContainer->getEnd(); ++sit) {
+							Item* subItem = *sit;
+							if(!subItem) continue;
+							if(!subFirst) lootStr << ", ";
+							subFirst = false;
+							unsigned short sid = subItem->getID();
+							std::string subName = Item::items[sid].name;
+							if(subName.empty()) subName = "item";
+							if(Item::items[sid].stackable && subItem->getItemCountOrSubtype() > 1) {
+								lootStr << (int)subItem->getItemCountOrSubtype() << " " << subName;
+							} else {
+								lootStr << subName;
+							}
+						}
+						lootStr << ")";
+					}
 				}
+				if(!first)
+					lootText = lootStr.str();
 			}
-			if(!first) {
-				time_t now = time(0);
-				struct tm* t = localtime(&now);
-				char timeBuf[8];
-				snprintf(timeBuf, sizeof(timeBuf), "%02d:%02d", t->tm_hour, t->tm_min);
-				std::cout << timeBuf << " Loot of " << lootMonster->getName() << ": " << lootStr.str() << "." << std::endl;
-			}
+			notifyMonsterLoot(game, attackedCreature, attacker, attackerMaster, lootMonster, lootText);
 		}
 
 		if(attackedplayer){
@@ -3923,6 +3975,9 @@ void Game::checkCreature(unsigned long id)
 #ifdef YUR_RINGS_AMULETS
 			player->checkRing(thinkTicks);
 #endif //YUR_RINGS_AMULETS
+#ifdef YUR_SOFT_BOOTS
+			player->checkSoftBoots(thinkTicks);
+#endif //YUR_SOFT_BOOTS
 #ifdef YUR_TRAINING_AREA
 			player->checkTraining(thinkTicks, tile);
 #endif //YUR_TRAINING_AREA
@@ -3940,6 +3995,8 @@ void Game::checkCreature(unsigned long id)
 			if (player->checkInvisible(thinkTicks))
 				creatureChangeOutfit(player);
 #endif //YUR_INVISIBLE
+
+			player->checkSoulRegen(thinkTicks);
 
 			if(!tile->isPz()){
 				if(player->food > 1000){

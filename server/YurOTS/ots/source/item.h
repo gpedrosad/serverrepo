@@ -99,6 +99,8 @@ public:
 	 int getTime() const { return time; }
 	 void useCharge() { --charges; }
 	 void useTime(int thinkTicks) { time -= thinkTicks; }
+	 void clearDuration() { time = 0; charges = 0; }
+	 void restoreDuration(int duration) { time = duration; }
 	 void setGlimmer();
 	 void removeGlimmer();
 #endif //YUR_RINGS_AMULETS

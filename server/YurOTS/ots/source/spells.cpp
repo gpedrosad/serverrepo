@@ -918,25 +918,49 @@ int SpellScript::luaActionMakeRune(lua_State *L){
 
 		int a = -1;
 		int b = -1;
+		bool missingSoul = false;
+		unsigned short spentSoul = 0;
+		unsigned short availableSoul = player->getSoul();
+		Tile* tile = spell->game->getTile(player->pos);
+		const bool requireSoul = (tile && tile->isPz());
 
 		//try to create rune 1
-		a = internalMakeRune(player,SLOT_RIGHT,spell,type,charges);
+		a = internalMakeRune(player, SLOT_RIGHT, spell, type, charges, requireSoul, availableSoul);
 		if(a == 1) {
 			magicTarget.manaCost = spell->getMana();
+			if(requireSoul) {
+				++spentSoul;
+				--availableSoul;
+			}
+		}
+		else if(a == -2) {
+			missingSoul = true;
 		}
 
 		//check if we got enough mana for the left hand
 		if(player->getMana() - magicTarget.manaCost >= magicTarget.manaCost) {
 			//try to create rune 2
-			b = internalMakeRune(player,SLOT_LEFT,spell,type,charges);
+			b = internalMakeRune(player, SLOT_LEFT, spell, type, charges, requireSoul, availableSoul);
 			if(b == 1) {
 				magicTarget.manaCost += spell->getMana();
+				if(requireSoul) {
+					++spentSoul;
+					--availableSoul;
+				}
+			}
+			else if(b == -2) {
+				missingSoul = true;
 			}
 		}
 
 		if(a == -1 && b == -1){ //not enough mana
 			magicTarget.damageEffect = 2; //NM_ME_PUFF
 			magicTarget.manaCost = player->getPlayerInfo(PLAYERINFO_MAXMANA) + 1; //force not enough mana
+		}
+		else if(missingSoul && a != 1 && b != 1) {
+			magicTarget.damageEffect = 2; //NM_ME_PUFF
+			magicTarget.manaCost = 0;
+			player->sendCancel("You do not have enough soul.");
 		}
 		else if( a == 0 && b == 0){ //not create any rune
 			magicTarget.damageEffect = 2; //NM_ME_PUFF
@@ -958,6 +982,9 @@ int SpellScript::luaActionMakeRune(lua_State *L){
 		}*/
 
 		bool isSuccess = spell->game->creatureThrowRune(player, player->pos, magicTarget);
+		if(isSuccess && spentSoul > 0) {
+			player->spendSoul(spentSoul);
+		}
 
 		lua_pushnumber(L, 1);
 		return 1;
@@ -967,13 +994,16 @@ int SpellScript::luaActionMakeRune(lua_State *L){
 }
 
 //create new runes and delete blank ones
-int SpellScript::internalMakeRune(Player *p,unsigned short sl_id,Spell *S,unsigned short id, unsigned char charges){
+int SpellScript::internalMakeRune(Player *p, unsigned short sl_id, Spell *S, unsigned short id,
+	unsigned char charges, bool requireSoul, unsigned short availableSoul){
 	//check mana
 	if(p->mana < S->getMana() || p->exhaustedTicks >= 1000)
 		return -1;
 	Item *item = p->getItem(sl_id);
 	if(item){
 		if(item->getID() == ITEM_RUNE_BLANK){
+			if(requireSoul && availableSoul == 0)
+				return -2;
 			p->addItemInventory(Item::CreateItem(id, charges ),sl_id);
 			return 1;
 		}
@@ -1009,9 +1039,17 @@ int SpellScript::luaActionMakeArrows(lua_State *L){
  		magicTarget.hitEffect = 255; //NM_ME_NONE
  		magicTarget.animationColor = 19; //GREEN
 
+		Tile* tile = spell->game->getTile(player->pos);
+		const bool requireSoul = (tile && tile->isPz());
+
 		if(player->mana < spell->getMana()){
 			magicTarget.damageEffect = 2; //NM_ME_PUFF
   			magicTarget.manaCost = player->getPlayerInfo(PLAYERINFO_MAXMANA) + 1; //force not enough mana
+		}
+		else if(requireSoul && player->getSoul() == 0) {
+			magicTarget.damageEffect = 2; //NM_ME_PUFF
+			magicTarget.manaCost = 0;
+			player->sendCancel("You do not have enough soul.");
 		}
 		else{
 			magicTarget.manaCost = spell->getMana();
@@ -1025,6 +1063,8 @@ int SpellScript::luaActionMakeArrows(lua_State *L){
 			if(!player->addItem(new_item)){
 				spell->game->addThing(NULL,player->pos,new_item);
 			}
+			if(requireSoul)
+				player->spendSoul(1);
 		}
 
  		lua_pushnumber(L, 1);

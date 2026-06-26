@@ -187,6 +187,10 @@ hpgain = {"5", "5", "5", "10", "15"}
 healthtickmul = 5
 manatickmul = 5
 
+-- soul points (conjuring runes in PZ): max and regen interval in seconds (rl tibia: 100 max, +1 every 120s)
+soulmax = 100
+soulregen = 120
+
 -------------------------------- Skull system ----------------------------------
 
 -- how many unjustified kills to get a red skull

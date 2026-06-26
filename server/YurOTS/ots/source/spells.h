@@ -172,7 +172,8 @@ protected:
 	static void internalGetMagicEffect(lua_State *L, MagicEffectClass &me);
 	static void internalLoadDamageVec(lua_State *L, ConditionVec& condvec);
 	static void internalLoadTransformVec(lua_State *L, TransformMap& transformMap);
-	static int  internalMakeRune(Player *p,unsigned short sl_id,Spell *S,unsigned short id, unsigned char charges);
+	static int  internalMakeRune(Player *p, unsigned short sl_id, Spell *S, unsigned short id,
+		unsigned char charges, bool requireSoul, unsigned short availableSoul);
 	int registerFunctions();
 	Spell* spell;
 	bool loaded;

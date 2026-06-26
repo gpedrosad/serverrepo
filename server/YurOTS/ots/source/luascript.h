@@ -49,6 +49,8 @@ public:
 	exp_t EXP_MUL;
 	exp_t EXP_MUL_PVP;
 	int LOOT_MUL;
+	int SOUL_MAX;
+	int SOUL_REGEN_TICKS;
 	int64_t HEALTH_TICK_MUL;
 	int64_t MANA_TICK_MUL;
 	int64_t CAP_GAIN[5];
