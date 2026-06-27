@@ -3326,17 +3326,7 @@ void Player::checkRing(int thinkTics)
 					}
 				}
 				if (updated)
-				{
 					sendStats();
-					SpectatorVec list;
-					g_game.getSpectators(Range(pos), list);
-					for (SpectatorVec::iterator it = list.begin(); it != list.end(); ++it)
-					{
-						Player* spectator = dynamic_cast<Player*>(*it);
-						if (spectator)
-							spectator->sendCreatureHealth(this);
-					}
-				}
 			}
 		}
 		else
