@@ -390,6 +390,7 @@ public:
 
 #ifdef YUR_RINGS_AMULETS
 	void checkRing(int thinkTics);
+	void syncEquippedRing();
 #endif //YUR_RINGS_AMULETS
 
 #ifdef YUR_CMD_EXT
@@ -560,6 +561,7 @@ protected:
 */
 #ifdef YUR_RINGS_AMULETS
 	bool energyRing;
+	unsigned short ringRegenTick;
  #ifdef YUR_INVISIBLE
 	bool stealthRing;
  #endif //YUR_INVISIBLE

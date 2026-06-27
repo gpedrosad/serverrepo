@@ -964,6 +964,8 @@ void Item::setGlimmer()
 		case ITEM_POWER_RING: setID(ITEM_POWER_RING_IN_USE); break;
 		case ITEM_ENERGY_RING: setID(ITEM_ENERGY_RING_IN_USE); break;
 		case ITEM_STEALTH_RING: setID(ITEM_STEALTH_RING_IN_USE); break;
+		case ITEM_LIFE_RING: setID(ITEM_LIFE_RING_IN_USE); break;
+		case ITEM_RING_OF_HEALING: setID(ITEM_RING_OF_HEALING_IN_USE); break;
 	}
 }
 
@@ -978,6 +980,8 @@ void Item::removeGlimmer()
 		case ITEM_POWER_RING_IN_USE: setID(ITEM_POWER_RING); break;
 		case ITEM_ENERGY_RING_IN_USE: setID(ITEM_ENERGY_RING); break;
 		case ITEM_STEALTH_RING_IN_USE: setID(ITEM_STEALTH_RING); break;
+		case ITEM_LIFE_RING_IN_USE: setID(ITEM_LIFE_RING); break;
+		case ITEM_RING_OF_HEALING_IN_USE: setID(ITEM_RING_OF_HEALING); break;
 	}
 }
 #endif //YUR_RINGS_AMULETS

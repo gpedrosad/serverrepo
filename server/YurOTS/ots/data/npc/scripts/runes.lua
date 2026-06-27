@@ -4,7 +4,7 @@ target = 0
 following = false
 attacking = false
 
-RUNES_HELP = 'Runes: HMM 5gp, UH 40gp, GFB 60gp, explosion 60gp, SD 90gp, blank 5gp. Say "10 uh" or "100 sd" for bulk. Strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.'
+RUNES_HELP = 'Runes: HMM 5gp, UH 40gp, GFB 60gp, explosion 60gp, SD 90gp, blank 5gp. Say "10 uh" or "100 sd" for bulk. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.'
 
 function onThingMove(creature, thing, oldpos, oldstackpos)
 end
@@ -25,7 +25,7 @@ function onCreatureSay(cid, type, msg)
 	local state = npcHandleMessage(
 		cid,
 		msg,
-		'Hi ' .. creatureGetName(cid) .. '! I sell runes, strong mana potions, wands and rods. Say "help" for prices.'
+		'Hi ' .. creatureGetName(cid) .. '! I sell runes, mana fluids, strong mana potions, wands and rods. Say "help" for prices.'
 	)
 	if state ~= 'focused' then
 		return
@@ -34,7 +34,7 @@ function onCreatureSay(cid, type, msg)
 	if npcIsHelp(msg) or msgcontains(msg, 'runes') then
 		selfSay(RUNES_HELP)
 	elseif msgcontains(msg, 'potions') or msgcontains(msg, 'potion') then
-		selfSay('Strong mana potion: 250gp. Just say "smp" or "strong mana potion".')
+		selfSay('Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid" or "smp".')
 	elseif msgcontains(msg, 'wands') then
 		selfSay('Wands: inferno 15k, plague 5k, cosmic energy 10k, vortex 500gp, dragonbreath 1k.')
 	elseif msgcontains(msg, 'rods') then
@@ -93,6 +93,8 @@ function onCreatureSay(cid, type, msg)
 		buy(cid, 2260, 1, 5)
 	elseif msgcontains(msg, 'strong mana potion') or msgcontains(msg, 'smp') or msgcontains(msg, 'strong mana') then
 		buy(cid, 2006, 14, 250)
+	elseif msgcontains(msg, 'manafluid') or msgcontains(msg, 'mana fluid') or msgcontains(msg, 'mana') then
+		buy(cid, 2006, 7, 100)
 	end
 end
 

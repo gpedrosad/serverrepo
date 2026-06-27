@@ -179,9 +179,9 @@ lootmul = 3
 expmulpvp = 2
 
 -- skill multipliers: 1 - rl tibia, 5 - five times faster etc. {no-voc, sorcerer, druid, paladin, knight}
-weaponmul = {"5", "5", "5", "5", "5"}
-distmul = {"5", "5", "5", "5", "5"}
-shieldmul = {"5", "5", "5", "5", "5"}
+weaponmul = {"4", "4", "4", "4", "4"}
+distmul = {"4", "4", "4", "4", "4"}
+shieldmul = {"4", "4", "4", "4", "4"}
 manamul = {"5", "5", "5", "5", "5"}
 
 -- how much points of life,mana,cap do you get when advancing {no-voc, sorcerer, druid, paladin, knight}

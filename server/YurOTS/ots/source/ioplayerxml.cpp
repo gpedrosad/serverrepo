@@ -645,6 +645,9 @@ bool IOPlayerXML::loadPlayer(Player* player, std::string name){
 
 		player->reconcileCapacity();
 		player->updateInventoryWeigth();
+#ifdef YUR_RINGS_AMULETS
+		player->syncEquippedRing();
+#endif //YUR_RINGS_AMULETS
 
 		std::cout << "loaded " << filename << std::endl;
 		xmlFreeDoc(doc);

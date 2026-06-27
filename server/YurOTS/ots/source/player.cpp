@@ -137,6 +137,7 @@ Creature()
 #endif //TLM_SKULLS_PARTY
 #ifdef YUR_RINGS_AMULETS
 	energyRing = false;
+	ringRegenTick = 0;
  #ifdef YUR_INVISIBLE
 	stealthRing = false;
  #endif //YUR_INVISIBLE
@@ -3295,8 +3296,81 @@ void Player::checkRing(int thinkTics)
 		g_game.creatureChangeOutfit(this);
 	}
  #endif //YUR_INVISIBLE
+
+	if (thinkTics > 0 && items[SLOT_RING])
+	{
+		int ringId = items[SLOT_RING]->getID();
+		if (ringId == ITEM_LIFE_RING_IN_USE || ringId == ITEM_RING_OF_HEALING_IN_USE)
+		{
+			ringRegenTick += thinkTics;
+			if (ringRegenTick >= 6000)
+			{
+				ringRegenTick -= 6000;
+				bool updated = false;
+				if (ringId == ITEM_LIFE_RING_IN_USE && health < healthmax)
+				{
+					health = std::min(healthmax, health + 8);
+					updated = true;
+				}
+				else if (ringId == ITEM_RING_OF_HEALING_IN_USE)
+				{
+					if (health < healthmax)
+					{
+						health = std::min(healthmax, health + 6);
+						updated = true;
+					}
+					if (mana < manamax)
+					{
+						mana = std::min(manamax, mana + 6);
+						updated = true;
+					}
+				}
+				if (updated)
+				{
+					sendStats();
+					SpectatorVec list;
+					g_game.getSpectators(Range(pos), list);
+					for (SpectatorVec::iterator it = list.begin(); it != list.end(); ++it)
+					{
+						Player* spectator = dynamic_cast<Player*>(*it);
+						if (spectator)
+							spectator->sendCreatureHealth(this);
+					}
+				}
+			}
+		}
+		else
+			ringRegenTick = 0;
+	}
 }
 #endif //YUR_RINGS_AMULETS
+
+void Player::syncEquippedRing()
+{
+#ifdef YUR_RINGS_AMULETS
+	if (!items[SLOT_RING])
+		return;
+
+	switch (items[SLOT_RING]->getID())
+	{
+		case ITEM_TIME_RING:
+		case ITEM_SWORD_RING:
+		case ITEM_AXE_RING:
+		case ITEM_CLUB_RING:
+		case ITEM_POWER_RING:
+		case ITEM_ENERGY_RING:
+		case ITEM_STEALTH_RING:
+		case ITEM_LIFE_RING:
+		case ITEM_RING_OF_HEALING:
+			items[SLOT_RING]->setGlimmer();
+			break;
+		default:
+			break;
+	}
+
+	checkRing(0);
+#endif //YUR_RINGS_AMULETS
+}
 
 
 #ifdef TLM_SKULLS_PARTY

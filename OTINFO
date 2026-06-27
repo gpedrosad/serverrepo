@@ -18,7 +18,7 @@ REGLAS
   Reportes · Avisá al staff in-game si ves bots, MC o abusos
 
 RATES
-  Exp por nivel: 9-40 x5 | 41-70 x4 | 71-100 x3 | 101+ x2  |  Loot x3  |  Skills x5  |  ML x5  |  Regen comida x5
+  Exp por nivel: 9-40 x5 | 41-70 x4 | 71-100 x3 | 101+ x2  |  Loot x3  |  Skills x4  |  ML x5  |  Regen comida x5
 
 MUERTE
   -7% exp, ML, skills y equipo  |  -100% backpack
@@ -36,7 +36,7 @@ COMBATE
 
 CAP / RUNAS
   Cap activo  |  Base 300 (nivel <=10) + capgain por nivel  |  Recalcula al login
-  Peso por carga (IH liviana, SD media, UH pesada)
+  Peso runas: estándar Tibia 7.6 (oz por carga)
 
 CUSTOM
   Trainer Monk (sala training 133-160, 7-18)
