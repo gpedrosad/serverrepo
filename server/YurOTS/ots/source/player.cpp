@@ -1577,6 +1577,9 @@ void Player::sendCancelWalk() const
 }
 
 void Player::sendStats(){
+	if (!client)
+		return;
+
 	//update level and maglevel percents
 	if(lastSentStats.experience != this->experience || lastSentStats.level != this->level)
 		level_percent  = (unsigned char)(100*(experience-getExpForLv(level))/(1.*getExpForLv(level+1)-getExpForLv(level)));
@@ -2481,6 +2484,73 @@ bool Player::getItem(int itemid, int count)
        }
    }
    return false;
+}
+
+static void collectExactContainerItems(Container* container, unsigned short itemid, int subtype, std::vector<Item*>& matches)
+{
+	for(int number = container->size()-1; number >= 0; number--){
+		Item* item = container->getItem(number);
+		if(!item)
+			continue;
+
+		if(item->getID() == itemid && (int)item->getFluidType() == subtype)
+			matches.push_back(item);
+
+		Container* subcontainer = dynamic_cast<Container*>(item);
+		if(subcontainer)
+			collectExactContainerItems(subcontainer, itemid, subtype, matches);
+	}
+}
+
+int Player::getExactItemCount(unsigned short itemid, int subtype)
+{
+	std::vector<Item*> matches;
+
+	for(int slot = 1; slot <= 10; slot++){
+		Item* item = items[slot];
+		if(!item)
+			continue;
+
+		if(item->getID() == itemid && (int)item->getFluidType() == subtype)
+			matches.push_back(item);
+
+		Container* container = dynamic_cast<Container*>(item);
+		if(container)
+			collectExactContainerItems(container, itemid, subtype, matches);
+	}
+
+	return (int)matches.size();
+}
+
+bool Player::removeExactItems(unsigned short itemid, int subtype, int count)
+{
+	if(count <= 0)
+		return false;
+
+	std::vector<Item*> matches;
+
+	for(int slot = 1; slot <= 10; slot++){
+		Item* item = items[slot];
+		if(!item)
+			continue;
+
+		if(item->getID() == itemid && (int)item->getFluidType() == subtype)
+			matches.push_back(item);
+
+		Container* container = dynamic_cast<Container*>(item);
+		if(container)
+			collectExactContainerItems(container, itemid, subtype, matches);
+	}
+
+	if((int)matches.size() < count)
+		return false;
+
+	for(int i = 0; i < count; i++){
+		if(!removeItem(matches[i]))
+			return false;
+	}
+
+	return true;
 }
 
 signed long Player::getContainerItem(Container* container, int itemid, int count)

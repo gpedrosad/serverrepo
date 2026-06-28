@@ -87,8 +87,9 @@ end
 function onCreatureTurn(creature)
 end
 
-function buyFurniture(cid, entry)
-	buy(cid, entry.itemid, 1, FURNITURE_PRICE)
+function buyFurniture(cid, entry, msg)
+	local qty = npcParseBuyQuantity(msg or '', 20)
+	buy(cid, entry.itemid, qty, FURNITURE_PRICE * qty)
 end
 
 function onCreatureSay(cid, type, msg)
@@ -97,7 +98,7 @@ function onCreatureSay(cid, type, msg)
 	local state = npcHandleMessage(
 		cid,
 		msg,
-		'Hi ' .. creatureGetName(cid) .. '! I sell furniture for your house — everything is 500gp. Say "chairs", "tables", "pillows" or an item name.'
+		'Hi ' .. creatureGetName(cid) .. '! I sell furniture for your house — everything is 500gp each. Say "2 wooden chair" or any amount. Say "chairs", "tables", "pillows" or an item name.'
 	)
 	if state ~= 'focused' then
 		return
@@ -110,7 +111,7 @@ function onCreatureSay(cid, type, msg)
 
 	local entry = npcFindCatalogEntry(msg, FURNITURE_OFFERS)
 	if entry then
-		buyFurniture(cid, entry)
+		buyFurniture(cid, entry, msg)
 		return
 	end
 

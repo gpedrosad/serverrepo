@@ -1,6 +1,12 @@
-# YurOTS Principal
+# Retro76 / YurOTS Principal
 
-Repositorio **principal** del servidor YurOTS 7.6 (Tibia clásico) en Docker.
+Repositorio **principal** del servidor YurOTS 7.6 (Tibia clásico) en Docker — producción en **retro76.cl**.
+
+> **Guía completa del proyecto, hosting y deploy (leer primero):**
+> **[docs/PROYECTO.md](docs/PROYECTO.md)** — arquitectura Mac/GitHub/VPS, data de jugadores, cómo aplicar cambios sin borrar saves.
+>
+> **Deploy en producción (obligatorio antes de tocar el VPS):**
+> **[scripts/README-DEPLOY-VPS.md](scripts/README-DEPLOY-VPS.md)**
 
 Incluye mapa, spawns, NPCs, monstruos custom, spells y assets de RME para evitar confusiones con copias locales.
 
@@ -76,6 +82,8 @@ Ver [docs/RME_SETUP.md](docs/RME_SETUP.md).
 Ver [OTINFO](OTINFO) — rates, PvP, frags y reglas.
 
 ## Documentación técnica
+- **[docs/PROYECTO.md](docs/PROYECTO.md)** — Proyecto, VPS, data de jugadores, flujo de cambios
+- **[scripts/README-DEPLOY-VPS.md](scripts/README-DEPLOY-VPS.md)** — Deploy seguro en producción (**obligatorio**)
 - [docs/SETUP.md](docs/SETUP.md) — Docker, compilación i386, errores resueltos
 - [docs/RME_SETUP.md](docs/RME_SETUP.md) — Remere's Map Editor 7.6
 - [docs/SPELL_EXORI_GRAN.md](docs/SPELL_EXORI_GRAN.md) — Spells custom Knight
@@ -106,6 +114,21 @@ yurots-principal/
 ./run.sh
 cd /app/YurOTS/ots/source && make clean && make
 ```
+
+## Deploy en VPS (producción)
+
+> **Obligatorio leer antes de tocar el servidor:**
+> **[scripts/README-DEPLOY-VPS.md](scripts/README-DEPLOY-VPS.md)**
+
+Un deploy mal hecho puede borrar cuentas y personajes de jugadores. Solo usar:
+
+```bash
+# En el VPS (64.176.20.238)
+cd ~/yurots-principal
+DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh
+```
+
+**Prohibido en el VPS:** `git stash -u`, `git clean`, `git reset --hard` sin backup, `git pull` a mano.
 
 ## Remoto
 

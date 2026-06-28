@@ -79,6 +79,21 @@ extern Commands commands;
 extern Chat g_chat;
 extern Monsters g_monsters;
 
+#ifdef YUR_TRAINING_AREA
+static bool isTrainingNoPvpTilePair(const Tile* attackerTile, const Tile* targetTile)
+{
+	return attackerTile && targetTile && attackerTile->isTrainingArea() && targetTile->isTrainingArea();
+}
+
+static bool isTrainingNoPvp(Game* game, const Creature* attacker, const Creature* target)
+{
+	if (!game || !attacker || !target)
+		return false;
+
+	return isTrainingNoPvpTilePair(game->getTile(attacker->pos), game->getTile(target->pos));
+}
+#endif //YUR_TRAINING_AREA
+
 extern std::vector< std::pair<unsigned long, unsigned long> > bannedIPs;
 
 GameState::GameState(Game *game, const Range &range)
@@ -180,11 +195,16 @@ void GameState::onAttack(Creature* attacker, const Position& pos, const MagicEff
 		targetPlayer = dynamic_cast<Player*>(targetCreature);
 
 		bool pvpArena = false;
+		bool trainingNoPvp = false;
 
 #ifdef TR_SUMMONS
 		bool targetIsSummon = (targetCreature && targetCreature->isPlayersSummon());
 		bool summonVsPlayer = (attacker && attacker->isPlayersSummon() && targetPlayer);
 #endif //TR_SUMMONS
+
+#ifdef YUR_TRAINING_AREA
+		trainingNoPvp = isTrainingNoPvp(game, attacker, targetCreature);
+#endif //YUR_TRAINING_AREA
 
 		int64_t damage = me->getDamage(targetCreature, attacker);
 		int64_t manaDamage = 0;
@@ -194,12 +214,13 @@ void GameState::onAttack(Creature* attacker, const Position& pos, const MagicEff
 #endif //YUR_RINGS_AMULETS
 
 		if (damage > 0) {
-			if(attackPlayer && attackPlayer->access < g_config.ACCESS_PROTECT) {
+			if(attackPlayer && attackPlayer->access < g_config.ACCESS_PROTECT && !trainingNoPvp) {
 				if(targetPlayer && targetPlayer != attackPlayer && game->getWorldType() != WORLD_TYPE_NO_PVP)
 					attackPlayer->pzLocked = true;
 			}
 
-			if(targetCreature->access < g_config.ACCESS_PROTECT && targetPlayer && game->getWorldType() != WORLD_TYPE_NO_PVP)
+			if(targetCreature->access < g_config.ACCESS_PROTECT && targetPlayer &&
+				game->getWorldType() != WORLD_TYPE_NO_PVP && !trainingNoPvp)
 			{
 #ifdef YUR_CVS_MODS
 				targetPlayer->inFightTicks = std::max(g_config.PZ_LOCKED, targetPlayer->inFightTicks);
@@ -214,10 +235,12 @@ void GameState::onAttack(Creature* attacker, const Position& pos, const MagicEff
 #endif //YUR_PVP_ARENA
 
 #ifdef TR_SUMMONS
-			if ((game->getWorldType() == WORLD_TYPE_NO_PVP && !pvpArena && summonVsPlayer) ||
-				(game->getWorldType() == WORLD_TYPE_NO_PVP && !pvpArena && attackPlayer && (targetPlayer || targetIsSummon) && attackPlayer->access < g_config.ACCESS_PROTECT)) {
+			if ((((game->getWorldType() == WORLD_TYPE_NO_PVP) || trainingNoPvp) && !pvpArena && summonVsPlayer) ||
+				(((game->getWorldType() == WORLD_TYPE_NO_PVP) || trainingNoPvp) && !pvpArena &&
+				attackPlayer && (targetPlayer || targetIsSummon) && attackPlayer->access < g_config.ACCESS_PROTECT)) {
 #else
-			if(game->getWorldType() == WORLD_TYPE_NO_PVP && !pvpArena && attackPlayer && targetPlayer && attackPlayer->access < ACCESS_PROTECT){
+			if(((game->getWorldType() == WORLD_TYPE_NO_PVP) || trainingNoPvp) && !pvpArena &&
+				attackPlayer && targetPlayer && attackPlayer->access < ACCESS_PROTECT){
 #endif //TR_SUMMONS
 				damage = 0;
 			}
@@ -390,10 +413,14 @@ void GameState::onAttack(Creature* attacker, const Position& pos, const MagicEff
 void GameState::onAttack(Creature* attacker, const Position& pos, Creature* attackedCreature)
 {
 	bool pvpArena = false;
+	bool trainingNoPvp = false;
 #ifdef YUR_PVP_ARENA
 	CreatureVector arenaLosers;
 	pvpArena = isPvpArena(attacker) && isPvpArena(attackedCreature);
 #endif //YUR_PVP_ARENA
+#ifdef YUR_TRAINING_AREA
+	trainingNoPvp = isTrainingNoPvp(game, attacker, attackedCreature);
+#endif //YUR_TRAINING_AREA
 
 	//TODO: Decent formulas and such...
 	int64_t damage = attacker->getWeaponDamage();
@@ -424,9 +451,15 @@ void GameState::onAttack(Creature* attacker, const Position& pos, Creature* atta
 #endif //YUR_CVS_MODS
 
 	int64_t manaDamage = 0;
+	const bool summonVsPlayer = attacker && attacker->isPlayersSummon() && attackedPlayer;
+	const bool playerVsSummon = attackedCreature && attackedCreature->isPlayersSummon() && attackPlayer;
 
 	if(attackPlayer && attackedPlayer){
 		damage -= damage / 2;
+	}
+
+	if(trainingNoPvp && (summonVsPlayer || playerVsSummon || (attackPlayer && attackedPlayer))) {
+		damage = 0;
 	}
 
 	if (attacker->access >= g_config.ACCESS_PROTECT)
@@ -3824,11 +3857,8 @@ bool Game::creatureOnPrepareMagicAttack(Creature *creature, Position pos, const 
 		if(player) {
 			if(player->access < g_config.ACCESS_PROTECT) {
 				if(player->exhaustedTicks >= 1000 && me->causeExhaustion(true)) {
-					if(me->offensive) {
-						player->sendTextMessage(MSG_SMALLINFO, "You are exhausted.",player->pos, NM_ME_PUFF);
-						player->exhaustedTicks += g_config.EXHAUSTED_ADD;
-					}
-
+					player->sendTextMessage(MSG_SMALLINFO, "You are exhausted.", player->pos, NM_ME_PUFF);
+					player->exhaustedTicks += g_config.EXHAUSTED_ADD;
 					return false;
 				}
 				else if(player->mana < me->manaCost) {
@@ -4584,8 +4614,7 @@ bool Game::creatureSaySpell(Creature *creature, const std::string &text)
 	if(creature->access >= g_config.ACCESS_PROTECT || !player){
 		std::map<std::string, Spell*>::iterator sit = spells.getAllSpells()->find(temp);
 		if( sit != spells.getAllSpells()->end() ) {
-			sit->second->getSpellScript()->castSpell(creature, creature->pos, var);
-			ret = true;
+			ret = sit->second->getSpellScript()->castSpell(creature, creature->pos, var);
 		}
 	}
 	else if(player){
@@ -4600,8 +4629,7 @@ bool Game::creatureSaySpell(Creature *creature, const std::string &text)
 					else
 #endif //YUR_LEARN_SPELLS
 					{
-						sit->second->getSpellScript()->castSpell(creature, creature->pos, var);
-						ret = true;
+						ret = sit->second->getSpellScript()->castSpell(creature, creature->pos, var);
 					}
 				}
 				else {
@@ -5069,7 +5097,7 @@ void Game::playerSetAttackedCreature(Player* player, unsigned long creatureid)
 	}
 
 	Player* attackedPlayer = dynamic_cast<Player*>(attackedCreature);
-	bool pvpArena = false, rook = false, attackedIsSummon = false;
+	bool pvpArena = false, rook = false, attackedIsSummon = false, trainingNoPvp = false;
 
 #ifdef YUR_PVP_ARENA
 	if (player && attackedCreature)
@@ -5079,6 +5107,14 @@ void Game::playerSetAttackedCreature(Player* player, unsigned long creatureid)
 	}
 #endif //YUR_PVP_ARENA
 
+#ifdef YUR_TRAINING_AREA
+	if (player && attackedCreature)
+	{
+		Tile *t1 = map->getTile(player->pos), *t2 = map->getTile(attackedCreature->pos);
+		trainingNoPvp = isTrainingNoPvpTilePair(t1, t2);
+	}
+#endif //YUR_TRAINING_AREA
+
 #ifdef YUR_ROOKGARD
 	rook = player && player->isRookie() && attackedPlayer && attackedPlayer->isRookie();
 #endif //YUR_ROOKGARD
@@ -5087,10 +5123,13 @@ void Game::playerSetAttackedCreature(Player* player, unsigned long creatureid)
 	attackedIsSummon = (attackedCreature && attackedCreature->isPlayersSummon() && attackedCreature->getMaster() != player);
 #endif //TR_SUMMONS
 
-	if(!attackedCreature || (attackedCreature->access >= g_config.ACCESS_PROTECT || ((getWorldType() == WORLD_TYPE_NO_PVP || rook) &&
+	if(!attackedCreature || (attackedCreature->access >= g_config.ACCESS_PROTECT || ((getWorldType() == WORLD_TYPE_NO_PVP || rook || trainingNoPvp) &&
 		!pvpArena && player->access < g_config.ACCESS_PROTECT && (dynamic_cast<Player*>(attackedCreature) || attackedIsSummon)))) {
 	if(attackedCreature) {
-		  player->sendTextMessage(MSG_SMALLINFO, "You may not attack this player.");
+		  if(trainingNoPvp)
+			  player->sendCancel("Players cannot PvP inside the training zone.");
+		  else
+			  player->sendTextMessage(MSG_SMALLINFO, "You may not attack this player.");
     }
 		player->sendCancelAttacking();
 		player->setAttackedCreature(NULL);

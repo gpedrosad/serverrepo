@@ -47,9 +47,45 @@ struct PendingTransaction {
 	int cost;
 	bool isSell;
 	bool isBulkSell;
+	bool hasSubtype;
+	int subtype;
+	bool isFluidBackpackBuy;
+	bool isItemBackpackBuy;
+	bool isFluidQuantityBuy;
+	int fluidQuantity;
+	bool isRuneQuantityBuy;
+	int runeQuantity;
+	int runeCharges;
+	bool isItemQuantityBuy;
+	int itemQuantity;
+	int backpackItemId;
+	int backpackContentItemId;
+	int backpackContentCountOrSubtype;
+	int backpackContentItemCount;
 	std::vector<std::pair<int,int> > bulkItems;
 	std::string bulkLabel;
-	PendingTransaction() : cid(0), itemid(0), count(0), cost(0), isSell(false), isBulkSell(false) {}
+	PendingTransaction() :
+		cid(0),
+		itemid(0),
+		count(0),
+		cost(0),
+		isSell(false),
+		isBulkSell(false),
+		hasSubtype(false),
+		subtype(0),
+		isFluidBackpackBuy(false),
+		isItemBackpackBuy(false),
+		isFluidQuantityBuy(false),
+		fluidQuantity(0),
+		isRuneQuantityBuy(false),
+		runeQuantity(0),
+		runeCharges(0),
+		isItemQuantityBuy(false),
+		itemQuantity(0),
+		backpackItemId(0),
+		backpackContentItemId(0),
+		backpackContentCountOrSubtype(0),
+		backpackContentItemCount(0) {}
 };
 
 static std::map<unsigned long, PendingTransaction> pendingTrades;
@@ -97,6 +133,80 @@ static void addMoneyToPlayer(Player* player, uint64_t amount)
 
 	if(amount > 0)
 		player->TLMaddItem(ITEM_COINS_GOLD, (unsigned char)amount);
+}
+
+static int getPlayerExactItemCount(Player* player, int itemid, bool useSubtype, int subtype)
+{
+	if(!player)
+		return 0;
+
+	if(useSubtype)
+		return player->getExactItemCount((unsigned short)itemid, subtype);
+
+	return player->getItemCount((unsigned short)itemid);
+}
+
+static bool removePlayerExactItems(Player* player, int itemid, bool useSubtype, int subtype, int count)
+{
+	if(!player || count <= 0)
+		return false;
+
+	if(useSubtype)
+		return player->removeExactItems((unsigned short)itemid, subtype, count);
+
+	return player->removeItem((unsigned short)itemid, count);
+}
+
+static bool addChargedItemsToPlayer(Player* player, int itemId, int chargesPerItem, int itemCount)
+{
+	if(!player || itemCount <= 0)
+		return false;
+
+	for(int i = 0; i < itemCount; i++){
+		Item* item = Item::CreateItem((unsigned short)itemId, (unsigned short)chargesPerItem);
+		if(!item || !player->addItem(item)){
+			delete item;
+			return false;
+		}
+	}
+
+	return true;
+}
+
+static bool addItemBackpackToPlayer(Player* player, int backpackItemId, int contentItemId, int contentCountOrSubtype, int contentItemCount)
+{
+	if(!player || contentItemCount <= 0)
+		return false;
+
+	Container* backpack = dynamic_cast<Container*>(Item::CreateItem((unsigned short)backpackItemId, 1));
+	if(!backpack)
+		return false;
+
+	if(backpack->capacity() < contentItemCount){
+		delete backpack;
+		return false;
+	}
+
+	for(int i = 0; i < contentItemCount; i++){
+		Item* contentItem = Item::CreateItem((unsigned short)contentItemId, (unsigned short)contentCountOrSubtype);
+		if(!contentItem || !backpack->addItem(contentItem)){
+			delete contentItem;
+			delete backpack;
+			return false;
+		}
+	}
+
+	if(!player->addItem(backpack)){
+		delete backpack;
+		return false;
+	}
+
+	return true;
+}
+
+static bool addFluidBackpackToPlayer(Player* player, int backpackItemId, int fluidItemId, int fluidSubtype, int fluidCount)
+{
+	return addItemBackpackToPlayer(player, backpackItemId, fluidItemId, fluidSubtype, fluidCount);
 }
 
 static bool persistPlayerState(Player* player)
@@ -400,8 +510,9 @@ void Npc::onCreatureSay(const Creature *creature, SpeakClasses type, const std::
 							doSay("Thanks! Here is your gold.");
 						}else
 							doSay("Sorry, you do not have those items.");
-					}else if(player->getItem(pt.itemid, pt.count)){
-						if(player->removeItem(pt.itemid, pt.count)){
+					}else if((pt.hasSubtype && getPlayerExactItemCount(player, pt.itemid, true, pt.subtype) >= pt.count) ||
+						(!pt.hasSubtype && player->getItem(pt.itemid, pt.count))){
+						if(removePlayerExactItems(player, pt.itemid, pt.hasSubtype, pt.subtype, pt.count)){
 							player->payBack(pt.cost);
 							doSay("Thanks! Here is your gold.");
 						}else
@@ -411,8 +522,49 @@ void Npc::onCreatureSay(const Creature *creature, SpeakClasses type, const std::
 				}else{
 					if(player->canPayWithBank(pt.cost)){
 						if(player->removeCoinsWithBank(pt.cost)){
-							player->TLMaddItem(pt.itemid, pt.count);
-							doSay("Here you go!");
+							if(pt.isFluidBackpackBuy){
+								if(addFluidBackpackToPlayer(player, pt.backpackItemId, pt.backpackContentItemId, pt.backpackContentCountOrSubtype, pt.backpackContentItemCount))
+									doSay("Here you go!");
+								else{
+									player->payBack(pt.cost);
+									doSay("You do not have enough capacity or room for that backpack.");
+								}
+							}else if(pt.isItemBackpackBuy){
+								if(addItemBackpackToPlayer(player, pt.backpackItemId, pt.backpackContentItemId, pt.backpackContentCountOrSubtype, pt.backpackContentItemCount))
+									doSay("Here you go!");
+								else{
+									player->payBack(pt.cost);
+									doSay("You do not have enough capacity or room for that backpack.");
+								}
+							}else if(pt.isFluidQuantityBuy){
+								bool delivered = true;
+								for(int i = 0; i < pt.fluidQuantity; i++){
+									player->TLMaddItem(pt.itemid, (unsigned char)pt.count);
+								}
+								if(delivered)
+									doSay("Here you go!");
+								else{
+									player->payBack(pt.cost);
+									doSay("You do not have enough capacity or room for that.");
+								}
+							}else if(pt.isRuneQuantityBuy){
+								if(addChargedItemsToPlayer(player, pt.itemid, pt.runeCharges, pt.runeQuantity))
+									doSay("Here you go!");
+								else{
+									player->payBack(pt.cost);
+									doSay("You do not have enough capacity or room for that.");
+								}
+							}else if(pt.isItemQuantityBuy){
+								if(addChargedItemsToPlayer(player, pt.itemid, 1, pt.itemQuantity))
+									doSay("Here you go!");
+								else{
+									player->payBack(pt.cost);
+									doSay("You do not have enough capacity or room for that.");
+								}
+							}else{
+								player->TLMaddItem(pt.itemid, pt.count);
+								doSay("Here you go!");
+							}
 						}else
 							doSay("Sorry, you do not have enough gold.");
 					}else
@@ -603,7 +755,13 @@ int NpcScript::registerFunctions()
 
 #ifdef TLM_BUY_SELL
 	lua_register(luaState, "buy", NpcScript::luaBuyItem);
+	lua_register(luaState, "buyFluidBackpack", NpcScript::luaBuyFluidBackpack);
+	lua_register(luaState, "buyFluidQty", NpcScript::luaBuyFluidQty);
+	lua_register(luaState, "buyRuneQty", NpcScript::luaBuyRuneQty);
+	lua_register(luaState, "buyItemQty", NpcScript::luaBuyItemQty);
+	lua_register(luaState, "buyItemBackpack", NpcScript::luaBuyItemBackpack);
 	lua_register(luaState, "sell", NpcScript::luaSellItem);
+	lua_register(luaState, "sellFluid", NpcScript::luaSellFluidItem);
 	lua_register(luaState, "sellBundle", NpcScript::luaSellBundle);
 	lua_register(luaState, "cancelPendingTrade", NpcScript::luaCancelPendingTrade);
 	lua_register(luaState, "pay", NpcScript::luaPayMoney);
@@ -616,6 +774,7 @@ int NpcScript::registerFunctions()
 	lua_register(luaState, "doPlayerAddItem", NpcScript::luaPlayerAddItem);
 	lua_register(luaState, "getPlayerLevel", NpcScript::luaGetPlayerLevel);
 	lua_register(luaState, "getPlayerItemCount", NpcScript::luaGetPlayerItemCount);
+	lua_register(luaState, "getPlayerFluidCount", NpcScript::luaGetPlayerFluidCount);
 	lua_register(luaState, "getPlayerMoney", NpcScript::luaGetPlayerMoney);
 	lua_register(luaState, "getPlayerBankBalance", NpcScript::luaGetPlayerBankBalance);
 	lua_register(luaState, "doPlayerDepositMoney", NpcScript::luaDepositPlayerMoney);
@@ -816,6 +975,189 @@ int NpcScript::luaBuyItem(lua_State *L)
 	return 0;
 }
 
+int NpcScript::luaBuyFluidBackpack(lua_State *L)
+{
+	int cost = (int)lua_tonumber(L, -1);
+	int fluidCount = (int)lua_tonumber(L, -2);
+	int fluidSubtype = (int)lua_tonumber(L, -3);
+	int fluidItemId = (int)lua_tonumber(L, -4);
+	int backpackItemId = (int)lua_tonumber(L, -5);
+	int cid = (int)lua_tonumber(L, -6);
+	lua_pop(L, 6);
+
+	Npc* mynpc = getNpc(L);
+	Creature* creature = mynpc->game->getCreatureByID(cid);
+	Player* player = creature? dynamic_cast<Player*>(creature) : NULL;
+
+	if(player)
+	{
+		PendingTransaction& pt = preparePendingTrade(mynpc->getID());
+		pt.cid = cid;
+		pt.itemid = backpackItemId;
+		pt.count = 1;
+		pt.cost = cost;
+		pt.isSell = false;
+		pt.isFluidBackpackBuy = true;
+		pt.backpackItemId = backpackItemId;
+		pt.backpackContentItemId = fluidItemId;
+		pt.backpackContentCountOrSubtype = fluidSubtype;
+		pt.backpackContentItemCount = fluidCount;
+
+		std::stringstream ss;
+		ss << "Buy a backpack of " << Item::getFluidTypeName(fluidSubtype) << " for " << cost << " gp? (yes or si)";
+		mynpc->doSay(ss.str());
+	}
+
+	return 0;
+}
+
+int NpcScript::luaBuyFluidQty(lua_State *L)
+{
+	int cost = (int)lua_tonumber(L, -1);
+	int qty = (int)lua_tonumber(L, -2);
+	int fluidSubtype = (int)lua_tonumber(L, -3);
+	int fluidItemId = (int)lua_tonumber(L, -4);
+	int cid = (int)lua_tonumber(L, -5);
+	lua_pop(L, 5);
+
+	if(qty < 1)
+		qty = 1;
+	if(qty > 100)
+		qty = 100;
+
+	Npc* mynpc = getNpc(L);
+	Creature* creature = mynpc->game->getCreatureByID(cid);
+	Player* player = creature? dynamic_cast<Player*>(creature) : NULL;
+
+	if(player)
+	{
+		PendingTransaction& pt = preparePendingTrade(mynpc->getID());
+		pt.cid = cid;
+		pt.itemid = fluidItemId;
+		pt.count = fluidSubtype;
+		pt.fluidQuantity = qty;
+		pt.cost = cost;
+		pt.isSell = false;
+		pt.isFluidQuantityBuy = true;
+
+		std::stringstream ss;
+		ss << "Buy " << qty << " " << Item::getFluidTypeName(fluidSubtype) << " for " << cost << " gp? (yes or si)";
+		mynpc->doSay(ss.str());
+	}
+
+	return 0;
+}
+
+int NpcScript::luaBuyRuneQty(lua_State *L)
+{
+	int cost = (int)lua_tonumber(L, -1);
+	int runeCharges = (int)lua_tonumber(L, -2);
+	int qty = (int)lua_tonumber(L, -3);
+	int itemid = (int)lua_tonumber(L, -4);
+	int cid = (int)lua_tonumber(L, -5);
+	lua_pop(L, 5);
+
+	if(qty < 1)
+		qty = 1;
+	if(qty > 100)
+		qty = 100;
+	if(runeCharges < 1)
+		runeCharges = 1;
+
+	Npc* mynpc = getNpc(L);
+	Creature* creature = mynpc->game->getCreatureByID(cid);
+	Player* player = creature? dynamic_cast<Player*>(creature) : NULL;
+
+	if(player)
+	{
+		PendingTransaction& pt = preparePendingTrade(mynpc->getID());
+		pt.cid = cid;
+		pt.itemid = itemid;
+		pt.runeCharges = runeCharges;
+		pt.runeQuantity = qty;
+		pt.cost = cost;
+		pt.isSell = false;
+		pt.isRuneQuantityBuy = true;
+
+		std::stringstream ss;
+		ss << "Buy " << qty << "x " << Item::items[itemid].name << " for " << cost << " gp? (yes or si)";
+		mynpc->doSay(ss.str());
+	}
+
+	return 0;
+}
+
+int NpcScript::luaBuyItemQty(lua_State *L)
+{
+	int cost = (int)lua_tonumber(L, -1);
+	int qty = (int)lua_tonumber(L, -2);
+	int itemid = (int)lua_tonumber(L, -3);
+	int cid = (int)lua_tonumber(L, -4);
+	lua_pop(L, 4);
+
+	if(qty < 1)
+		qty = 1;
+	if(qty > 100)
+		qty = 100;
+
+	Npc* mynpc = getNpc(L);
+	Creature* creature = mynpc->game->getCreatureByID(cid);
+	Player* player = creature? dynamic_cast<Player*>(creature) : NULL;
+
+	if(player)
+	{
+		PendingTransaction& pt = preparePendingTrade(mynpc->getID());
+		pt.cid = cid;
+		pt.itemid = itemid;
+		pt.itemQuantity = qty;
+		pt.cost = cost;
+		pt.isSell = false;
+		pt.isItemQuantityBuy = true;
+
+		std::stringstream ss;
+		ss << "Buy " << qty << "x " << Item::items[itemid].name << " for " << cost << " gp? (yes or si)";
+		mynpc->doSay(ss.str());
+	}
+
+	return 0;
+}
+
+int NpcScript::luaBuyItemBackpack(lua_State *L)
+{
+	int cost = (int)lua_tonumber(L, -1);
+	int contentItemCount = (int)lua_tonumber(L, -2);
+	int contentCountOrSubtype = (int)lua_tonumber(L, -3);
+	int contentItemId = (int)lua_tonumber(L, -4);
+	int backpackItemId = (int)lua_tonumber(L, -5);
+	int cid = (int)lua_tonumber(L, -6);
+	lua_pop(L, 6);
+
+	Npc* mynpc = getNpc(L);
+	Creature* creature = mynpc->game->getCreatureByID(cid);
+	Player* player = creature? dynamic_cast<Player*>(creature) : NULL;
+
+	if(player)
+	{
+		PendingTransaction& pt = preparePendingTrade(mynpc->getID());
+		pt.cid = cid;
+		pt.itemid = backpackItemId;
+		pt.count = 1;
+		pt.cost = cost;
+		pt.isSell = false;
+		pt.isItemBackpackBuy = true;
+		pt.backpackItemId = backpackItemId;
+		pt.backpackContentItemId = contentItemId;
+		pt.backpackContentCountOrSubtype = contentCountOrSubtype;
+		pt.backpackContentItemCount = contentItemCount;
+
+		std::stringstream ss;
+		ss << "Buy a backpack of " << Item::items[contentItemId].name << " for " << cost << " gp? (yes or si)";
+		mynpc->doSay(ss.str());
+	}
+
+	return 0;
+}
+
 int NpcScript::luaSellItem(lua_State *L)
 {
    int cost = (int)lua_tonumber(L, -1);
@@ -839,6 +1181,43 @@ int NpcScript::luaSellItem(lua_State *L)
 
 		std::stringstream ss;
 		ss << "Sell " << count << "x " << Item::items[itemid].name << " for " << cost << " gp? (yes or si)";
+		mynpc->doSay(ss.str());
+	}
+
+	return 0;
+}
+
+int NpcScript::luaSellFluidItem(lua_State *L)
+{
+	int cost = (int)lua_tonumber(L, -1);
+	int count = (int)lua_tonumber(L, -2);
+	int subtype = (int)lua_tonumber(L, -3);
+	int itemid = (int)lua_tonumber(L, -4);
+	int cid = (int)lua_tonumber(L, -5);
+	lua_pop(L, 5);
+
+	Npc* mynpc = getNpc(L);
+	Creature* creature = mynpc->game->getCreatureByID(cid);
+	Player* player = creature? dynamic_cast<Player*>(creature) : NULL;
+
+	if(player && count > 0)
+	{
+		PendingTransaction& pt = preparePendingTrade(mynpc->getID());
+		pt.cid = cid;
+		pt.itemid = itemid;
+		pt.count = count;
+		pt.cost = cost;
+		pt.isSell = true;
+		pt.hasSubtype = true;
+		pt.subtype = subtype;
+
+		std::stringstream ss;
+		ss << "Sell " << count << "x " << Item::items[itemid].name;
+		if(Item::items[itemid].isFluidContainer() && subtype == 0)
+			ss << " (empty)";
+		else if(Item::items[itemid].isFluidContainer())
+			ss << " (" << Item::getFluidTypeName(subtype) << ")";
+		ss << " for " << cost << " gp? (yes or si)";
 		mynpc->doSay(ss.str());
 	}
 
@@ -1255,6 +1634,25 @@ int NpcScript::luaGetPlayerItemCount(lua_State* L)
 
 	if(player)
 		lua_pushnumber(L, player->getItemCount(itemid));
+	else
+		lua_pushnumber(L, 0);
+
+	return 1;
+}
+
+int NpcScript::luaGetPlayerFluidCount(lua_State* L)
+{
+	int subtype = (int)lua_tonumber(L, -1);
+	int itemid = (int)lua_tonumber(L, -2);
+	int cid = (int)lua_tonumber(L, -3);
+	lua_pop(L, 3);
+
+	Npc* mynpc = getNpc(L);
+	Creature* creature = mynpc->game->getCreatureByID(cid);
+	Player* player = creature? dynamic_cast<Player*>(creature) : NULL;
+
+	if(player)
+		lua_pushnumber(L, player->getExactItemCount((unsigned short)itemid, subtype));
 	else
 		lua_pushnumber(L, 0);
 

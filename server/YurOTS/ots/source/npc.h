@@ -64,7 +64,13 @@ public:
 
 #ifdef TLM_BUY_SELL
 	static int luaBuyItem(lua_State *L);
+	static int luaBuyFluidBackpack(lua_State *L);
+	static int luaBuyFluidQty(lua_State *L);
+	static int luaBuyRuneQty(lua_State *L);
+	static int luaBuyItemQty(lua_State *L);
+	static int luaBuyItemBackpack(lua_State *L);
 	static int luaSellItem(lua_State *L);
+	static int luaSellFluidItem(lua_State *L);
 	static int luaSellBundle(lua_State *L);
 	static int luaCancelPendingTrade(lua_State *L);
 	static int luaPayMoney(lua_State *L);
@@ -77,6 +83,7 @@ public:
 	static int luaPlayerAddItem(lua_State *L);
 	static int luaGetPlayerLevel(lua_State *L);
 	static int luaGetPlayerItemCount(lua_State *L);
+	static int luaGetPlayerFluidCount(lua_State *L);
 	static int luaGetPlayerMoney(lua_State *L);
 	static int luaGetPlayerBankBalance(lua_State *L);
 	static int luaDepositPlayerMoney(lua_State *L);

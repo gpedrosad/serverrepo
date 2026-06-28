@@ -8,18 +8,18 @@ AOL_PRICE = 50000
 SCARF_PRICE = 1000
 
 RINGS = {
-	{keys = {'energy ring', 'energy'}, itemid = 2167, price = 3000},
-	{keys = {'might ring', 'might'}, itemid = 2164, price = 7000},
-	{keys = {'time ring', 'time'}, itemid = 2169, price = 2000},
-	{keys = {'stealth ring', 'stealth'}, itemid = 2165, price = 4000},
-	{keys = {'life ring', 'life'}, itemid = 2168, price = 1000},
-	{keys = {'ring of healing', 'healing ring', 'healing'}, itemid = 2214, price = 2000},
-	{keys = {'sword ring', 'sword'}, itemid = 2207, price = 1000},
-	{keys = {'axe ring', 'axe'}, itemid = 2208, price = 1000},
-	{keys = {'club ring', 'club'}, itemid = 2209, price = 1000},
+	{keys = {'energy ring', 'energy'}, itemid = 2167, unitPrice = 3000},
+	{keys = {'might ring', 'might'}, itemid = 2164, unitPrice = 7000},
+	{keys = {'time ring', 'time'}, itemid = 2169, unitPrice = 2000},
+	{keys = {'stealth ring', 'stealth'}, itemid = 2165, unitPrice = 4000},
+	{keys = {'ring of healing', 'healing ring', 'healing'}, itemid = 2214, unitPrice = 2000},
+	{keys = {'life ring', 'life'}, itemid = 2168, unitPrice = 1000},
+	{keys = {'sword ring', 'sword'}, itemid = 2207, unitPrice = 1000},
+	{keys = {'axe ring', 'axe'}, itemid = 2208, unitPrice = 1000},
+	{keys = {'club ring', 'club'}, itemid = 2209, unitPrice = 1000},
 }
 
-RINGS_HELP = 'Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1k, ring of healing 2k, sword/axe/club ring 1k each.'
+RINGS_HELP = 'Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1k, ring of healing 2k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".'
 
 function onThingMove(creature, thing, oldpos, oldstackpos)
 end
@@ -36,7 +36,7 @@ end
 
 function showHelp()
 	selfSay('Scarf: ' .. SCARF_PRICE .. 'gp. Amulet of loss (AOL): ' .. AOL_PRICE .. 'gp.')
-	selfSay(RINGS_HELP .. ' Say the item name to buy.')
+	selfSay(RINGS_HELP)
 end
 
 function showRingPrices()
@@ -63,8 +63,8 @@ function onCreatureSay(cid, type, msg)
 		buy(cid, 2173, 1, AOL_PRICE)
 	elseif msgcontains(msg, 'scarf') then
 		buy(cid, 2661, 1, SCARF_PRICE)
-	else
-		npcTryCatalogBuy(cid, msg, RINGS)
+	elseif npcTryCatalogBuyQuantity(cid, msg, RINGS) then
+		return
 	end
 end
 

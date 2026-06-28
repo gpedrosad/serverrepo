@@ -140,6 +140,8 @@ public:
 	bool removeItem(Item* item, bool test = false);
 	bool internalRemoveItemContainer(Container *parent, Item* item, bool test = false);
 	int getItemCount(unsigned short id);
+	int getExactItemCount(unsigned short id, int subtype);
+	bool removeExactItems(unsigned short id, int subtype, int count);
 
 	int removeItemInventory(int pos, bool internal = false);
 	int addItemInventory(Item* item, int pos, bool internal = false);

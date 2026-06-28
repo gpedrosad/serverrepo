@@ -4,7 +4,16 @@ target = 0
 following = false
 attacking = false
 
-BOWS_HELP = 'I sell crossbow (200gp), bow (100gp), arrows 50x (100gp), bolts 50x (150gp), power bolts 50x (400gp) and spears 10x (100gp). Just say the item name!'
+BOWS_HELP = 'Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".'
+
+BOW_BUYS = {
+	{keys = {'power bolt', 'power bolts'}, itemid = 2547, unitPrice = 8},
+	{keys = {'crossbow'}, itemid = 2455, unitPrice = 200},
+	{keys = {'bow'}, itemid = 2456, unitPrice = 100},
+	{keys = {'arrow', 'arrows'}, itemid = 2544, unitPrice = 2},
+	{keys = {'bolt', 'bolts'}, itemid = 2543, unitPrice = 3},
+	{keys = {'spear', 'spears'}, itemid = 2389, unitPrice = 10},
+}
 
 function onThingMove(creature, thing, oldpos, oldstackpos)
 end
@@ -33,20 +42,8 @@ function onCreatureSay(cid, type, msg)
 
 	if npcIsHelp(msg) or msgcontains(msg, 'distance') or msgcontains(msg, 'ammo') or msgcontains(msg, 'ammunition') then
 		selfSay(BOWS_HELP)
-	elseif msgcontains(msg, '100 power bolt') or msgcontains(msg, '100 power bolts') then
-		buy(cid, 2547, 100, 800)
-	elseif msgcontains(msg, 'power bolt') or msgcontains(msg, 'power bolts') then
-		buy(cid, 2547, 50, 400)
-	elseif msgcontains(msg, 'crossbow') then
-		buy(cid, 2455, 1, 200)
-	elseif msgcontains(msg, 'bow') then
-		buy(cid, 2456, 1, 100)
-	elseif msgcontains(msg, 'arrows') then
-		buy(cid, 2544, 50, 100)
-	elseif msgcontains(msg, 'bolts') and not string.find(msg, 'power') then
-		buy(cid, 2543, 50, 150)
-	elseif msgcontains(msg, 'spears') or msgcontains(msg, 'spear') then
-		buy(cid, 2389, 10, 100)
+	elseif npcTryCatalogBuyQuantity(cid, msg, BOW_BUYS) then
+		return
 	end
 end
 

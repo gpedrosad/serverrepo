@@ -214,11 +214,78 @@ end
 function npcTryCatalogBuy(cid, msg, entries)
 	local entry = npcFindCatalogEntry(msg, entries)
 	if entry then
-		buy(cid, entry.itemid, entry.count or 1, entry.price)
+		local qty = entry.count or 1
+		local price = entry.price or (entry.unitPrice * qty)
+		buy(cid, entry.itemid, qty, price)
 		return true
 	end
 
 	return false
+end
+
+function npcParseBuyQuantity(msg, maxQty)
+	maxQty = maxQty or 100
+	local qty = tonumber(string.match(msg, '(%d+)'))
+	if qty == nil or qty < 1 then
+		return 1
+	end
+	if qty > maxQty then
+		return maxQty
+	end
+	return qty
+end
+
+function npcCatalogKeyLength(entry)
+	local keys = entry.keys
+	if type(keys) == 'string' then
+		return string.len(keys)
+	end
+
+	local maxLen = 0
+	for i = 1, table.getn(keys) do
+		local len = string.len(keys[i])
+		if len > maxLen then
+			maxLen = len
+		end
+	end
+	return maxLen
+end
+
+function npcFindCatalogBuyEntry(msg, entries)
+	local best = nil
+	local bestLen = 0
+
+	for i = 1, table.getn(entries) do
+		local entry = entries[i]
+		if npcMatchesAny(msg, entry.keys) then
+			local len = npcCatalogKeyLength(entry)
+			if len > bestLen then
+				best = entry
+				bestLen = len
+			end
+		end
+	end
+
+	return best
+end
+
+function npcTryCatalogBuyQuantity(cid, msg, entries, maxQty)
+	local entry = npcFindCatalogBuyEntry(msg, entries)
+	if entry == nil then
+		return false
+	end
+
+	local qty = npcParseBuyQuantity(msg, maxQty)
+	if entry.fluidSubtype ~= nil then
+		buyFluidQty(cid, entry.itemid, entry.fluidSubtype, qty, entry.unitPrice * qty)
+	elseif entry.runeCharges ~= nil then
+		buyRuneQty(cid, entry.itemid, qty, entry.runeCharges, entry.unitPrice * qty)
+	elseif entry.itemQuantity ~= nil then
+		buyItemQty(cid, entry.itemid, qty, entry.unitPrice * qty)
+	else
+		buy(cid, entry.itemid, qty, entry.unitPrice * qty)
+	end
+	return true
 end
 
 function npcTryCatalogSell(cid, msg, entries)
