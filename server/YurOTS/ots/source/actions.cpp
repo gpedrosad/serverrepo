@@ -697,6 +697,9 @@ int ActionScript::registerFunctions()
 	lua_register(luaState, "doPlayerSetVocation", ActionScript::luaActionDoPlayerSetVocation);
 	//doPlayerRemoveItem(cid,itemid,count)
 	lua_register(luaState, "doPlayerRemoveItem", ActionScript::luaActionDoPlayerRemoveItem);
+#ifdef YUR_PREMIUM_PROMOTION
+	lua_register(luaState, "doAccountAddPremiumTime", ActionScript::luaActionDoAccountAddPremiumTime);
+#endif //YUR_PREMIUM_PROMOTION
 
 	//doMoveItem(uid,toPos)
 	//doMovePlayer(cid,direction)
@@ -1239,6 +1242,31 @@ int ActionScript::luaActionDoPlayerAddHealth(lua_State *L)
 	lua_pushnumber(L, 0);
 	return 1;
 }
+
+#ifdef YUR_PREMIUM_PROMOTION
+int ActionScript::luaActionDoAccountAddPremiumTime(lua_State *L)
+{
+	//doAccountAddPremiumTime(cid,hours)
+	int hours = (int)internalGetNumber(L);
+	unsigned int cid = (unsigned int)internalGetNumber(L);
+
+	ActionScript *action = getActionScript(L);
+	const KnownThing* tmp = action->GetPlayerByUID(cid);
+	if(tmp){
+		Player *player = (Player*)(tmp->thing);
+		if (hours > 0)
+			player->premiumTicks += hours * 3600 * 1000;
+	}
+	else{
+		lua_pushnumber(L, -1);
+		std::cout << "luaDoAccountAddPremiumTime: player not found" << std::endl;
+		return 1;
+	}
+
+	lua_pushnumber(L, 0);
+	return 1;
+}
+#endif //YUR_PREMIUM_PROMOTION
 
 int ActionScript::luaActionDoPlayerAddMana(lua_State *L)
 {

@@ -33,22 +33,24 @@
 		<item id="2666" countmax="3" chance1="20000" chancemax="0" />
 		<item id="1987" chance="10000">
 			<inside>
-				<item id="2392" chance="1818" />
-				<item id="2519" chance="1444" />
-				<item id="2488" chance="1411" />
-				<item id="2487" chance="1201" />
+				<item id="2392" chance="2545" />
+				<item id="2519" chance="2021" />
+				<item id="2488" chance="1975" />
+				<item id="2487" chance="1681" />
 				<item id="2071" chance="10000" />
 				<item id="2544" countmax="10" chance1="20000" chancemax="0" />
 				<item id="2652" chance="10000" />
-				<item id="2164" chance="1393" />
-				<item id="2391" chance="1668" />
+				<item id="2164" chance="1950" />
+				<item id="2391" chance="2335" />
 				<item id="2744" chance="6696" />
 			</inside>
 		</item>
-		<item id="2150" countmax="3" chance1="26000" chancemax="0" />
-		<item id="2149" countmax="3" chance1="22000" chancemax="0" />
-		<item id="2147" countmax="2" chance1="18000" chancemax="0" />
-		<item id="2146" countmax="2" chance1="13000" chancemax="0" />
-		<item id="2145" countmax="2" chance1="8000" chancemax="0" />
+		<item id="2150" countmax="4" chance1="36000" chancemax="0" />
+		<item id="2149" countmax="4" chance1="30000" chancemax="0" />
+		<item id="2147" countmax="3" chance1="24000" chancemax="0" />
+		<item id="2146" countmax="3" chance1="18000" chancemax="0" />
+		<item id="2145" countmax="2" chance1="10000" chancemax="0" />
+	
+		<item id="2157" countmax="1" chance1="2000" chancemax="0" />
 	</loot>
 </monster>

@@ -24,43 +24,49 @@ function onCreatureSay(cid, type, msg)
 	local state = npcHandleMessage(
 		cid,
 		msg,
-		'Hi ' .. creatureGetName(cid) .. '! I handle promotions. Say "promotion" if you are interested.'
+		'Hola ' .. creatureGetName(cid) .. '. Gestiono la promotion. Di "promotion" si te interesa.'
 	)
 	if state ~= 'focused' then
 		return
 	end
 
 	if talk_state == 1 then
-		if talk_state == 1 then
-			if npcHandlePendingYesNo(cid, msg, function()
-				if pay(cid, 20000) then
-					selfSay('/promote ' .. creatureGetName(cid))
-					selfSay('Congratulations! You are now promoted!')
-				else
-					selfSay('Sorry, you need 20,000 gold.')
-				end
-			end) then
-				talk_state = 0
+		if npcHandlePendingYesNo(cid, msg, function()
+			if not isPremium(cid) then
+				selfSay('Necesitas premium activo para comprar la promotion.')
+				return
 			end
+			if pay(cid, 20000) then
+				selfSay('/promote ' .. creatureGetName(cid))
+				if isPromoted(cid) then
+					selfSay('Felicidades! Ya tienes promotion.')
+				else
+					selfSay('No se pudo completar la promotion. Necesitas premium activo.')
+				end
+			else
+				selfSay('Necesitas 20,000 gold.')
+			end
+		end) then
+			talk_state = 0
 		end
 		return
 	end
 
 	if msgcontains(msg, 'promotion') or msgcontains(msg, 'promote') then
 		if isPromoted(cid) then
-			selfSay('You are already promoted. Nice!')
+			selfSay('Ya tienes promotion.')
 		elseif getPlayerLevel(creatureGetName(cid)) < 20 then
-			selfSay('You need level 20 to buy a promotion.')
+			selfSay('Necesitas nivel 20 para la promotion.')
 		elseif not isPremium(cid) then
-			selfSay('You need to be premium first.')
+			selfSay('Necesitas premium activo. Puedes donar por premium en retro76.cl.')
 		else
-			selfSay('Promotion costs 20,000gp. Want to buy it? (yes or si)')
+			selfSay('La promotion cuesta 20,000 gp. Quieres comprarla? (yes o si)')
 			talk_state = 1
 		end
 	elseif msgcontains(msg, 'premium') or msgcontains(msg, 'premmy') then
-		selfSay('I do not sell premium time anymore.')
+		selfSay('Donacion premium en retro76.cl. Usa !premmy para ver el tiempo restante.')
 	elseif npcIsHelp(msg) then
-		selfSay('Promotion costs 20,000gp and requires level 20 plus premium status.')
+		selfSay('Promotion: 20,000 gp, nivel 20 y cuenta premium activa.')
 	end
 end
 

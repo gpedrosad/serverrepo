@@ -82,7 +82,7 @@ class RegisterGuard:
         if honeypot:
             return "No se pudo crear la cuenta."
         if time.time() - form_ts < MIN_FORM_SECONDS:
-            return "Enviaste el formulario demasiado rápido."
+            return "El formulario se envió demasiado rápido."
         rate_err = self.check_rate(ip)
         if rate_err:
             return rate_err

@@ -13,6 +13,8 @@ web/state/analytics.json
 web/state/daily.json
 web/state/register.json
 web/state/peak.json
+web/state/premium_orders.json
+web/uploads/
 
 # Runtime OT data — never versionar ni pisar en deploy del VPS
 server/YurOTS/ots/data/online.xml

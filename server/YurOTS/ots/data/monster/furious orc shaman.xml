@@ -25,16 +25,18 @@
 		<item id="2458" chance="2222" />
 		<item id="1987" chance="100000">
 			<inside>
-				<item id="2817" chance="5000" />
+				<item id="2817" chance="7000" />
 				<item id="2389" countmax="1" chance1="4000" chancemax="0" />
-				<item id="2369" chance="3333" />
-				<item id="2190" chance="1538" />
+				<item id="2369" chance="4666" />
+				<item id="2190" chance="2153" />
 			</inside>
 		</item>
-		<item id="2150" countmax="2" chance1="13000" chancemax="0" />
-		<item id="2149" countmax="2" chance1="9000" chancemax="0" />
-		<item id="2147" countmax="1" chance1="6000" chancemax="0" />
-		<item id="2146" countmax="1" chance1="3500" chancemax="0" />
+		<item id="2150" countmax="2" chance1="18000" chancemax="0" />
+		<item id="2149" countmax="2" chance1="13000" chancemax="0" />
+		<item id="2147" countmax="2" chance1="9000" chancemax="0" />
+		<item id="2146" countmax="1" chance1="6000" chancemax="0" />
+		<item id="2145" countmax="1" chance1="2500" chancemax="0" />
+	
 	</loot>
 	<summons maxSummons="5">
 		<summon name="Snake" chance="2857" />

@@ -765,15 +765,14 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 
 		//Add eventual loot
 		Container *lootcontainer = dynamic_cast<Container*>(corpseitem);
-		if(lootcontainer) {
-			attackedCreature->dropLoot(lootcontainer);
-		}
-
 		Player* killerPlayer = dynamic_cast<Player*>(attacker);
 #ifdef TR_SUMMONS
 		if(!killerPlayer && attackerMaster)
 			killerPlayer = dynamic_cast<Player*>(attackerMaster);
 #endif //TR_SUMMONS
+		if(lootcontainer) {
+			attackedCreature->dropLoot(lootcontainer, killerPlayer);
+		}
 
 		uint64_t bankedGold = 0;
 		if(killerPlayer && lootcontainer)

@@ -131,7 +131,7 @@ protected:
 
 	virtual exp_t getLostExperience();
 
-	virtual void dropLoot(Container *corpse);
+	virtual void dropLoot(Container *corpse, Player* killer = NULL);
 
 	virtual void onThingMove(const Creature *creature, const Thing *thing, const Position *oldPos,
 		unsigned char oldstackpos, unsigned char oldcount, unsigned char count);

@@ -176,9 +176,9 @@ public:
 
 	LootItems lootItems;
 	
-	void createLoot(Container* corpse);
-	void createLootContainer(Container* parent, const LootBlock& lootblock);
-	Item* createLootItem(const LootBlock& lootblock);
+	void createLoot(Container* corpse, Player* killer = NULL);
+	void createLootContainer(Container* parent, const LootBlock& lootblock, bool premiumLoot = false);
+	Item* createLootItem(const LootBlock& lootblock, bool premiumLoot = false);
 };
 
 class Monsters{

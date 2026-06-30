@@ -113,8 +113,15 @@ queuepremmy = "yes"
 -- extra exp % from monsters for premium players (10 = +10%)
 premmyexpbonus = 10
 
+-- extra loot chance % for premium killers (10 = +10%)
+premmylootbonus = 10
+
+-- skill/magic level rate multiplier for premium players (2 = x2)
+premmyskillmul = 2
+
 -- daily training room limit per character (minutes)
 trainingdailyminutes = 120
+trainingpremiumminutes = 360
 
 -- minimum % of coin-stack loot rolls (higher = less random low gold drops)
 goldlootfloorpercent = 70

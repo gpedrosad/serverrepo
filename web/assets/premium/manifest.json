@@ -1,0 +1,55 @@
+{
+  "source": {
+    "dat": "/Users/gonzalo/Desktop/yurots-principal/rme-client-760/Tibia.dat",
+    "spr": "/Users/gonzalo/Desktop/yurots-principal/rme-client-760/Tibia.spr",
+    "otb": "/Users/gonzalo/Desktop/yurots-principal/server/YurOTS/ots/data/items/items.otb",
+    "clientVersion": 760
+  },
+  "items": [
+    {
+      "serverId": 1954,
+      "slug": "scroll-1w",
+      "name": "Premium scroll (1 semana)",
+      "tier": "small",
+      "spriteId": 2480,
+      "files": {
+        "png": "1954-small.png",
+        "png2x": "1954-small@2x.png",
+        "jpg": "1954-small.jpg",
+        "jpg2x": "1954-small@2x.jpg"
+      },
+      "sizePx": 32,
+      "clientId": 2820
+    },
+    {
+      "serverId": 2345,
+      "slug": "scroll-2w",
+      "name": "Premium scroll (2 semanas)",
+      "tier": "small",
+      "spriteId": 5905,
+      "files": {
+        "png": "2345-small.png",
+        "png2x": "2345-small@2x.png",
+        "jpg": "2345-small.jpg",
+        "jpg2x": "2345-small@2x.jpg"
+      },
+      "sizePx": 32,
+      "clientId": 3232
+    },
+    {
+      "serverId": 2130,
+      "slug": "golden-amulet",
+      "name": "Golden amulet",
+      "tier": "small",
+      "spriteId": 2507,
+      "files": {
+        "png": "2130-small.png",
+        "png2x": "2130-small@2x.png",
+        "jpg": "2130-small.jpg",
+        "jpg2x": "2130-small@2x.jpg"
+      },
+      "sizePx": 32,
+      "clientId": 3013
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<npc name="Bounty Master" script="data/npc/scripts/bounty_master.lua" access="3">
+	<look type="130" head="95" body="57" legs="76" feet="114"/>
+</npc>

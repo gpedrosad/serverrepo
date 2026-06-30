@@ -114,7 +114,7 @@ bool NetworkMessage::WriteToSocket(SOCKET socket)
 	ioctlsocket(socket, FIONBIO, &mode);
 	flags = 0;
 #else
-	flags = MSG_DONTWAIT;
+	flags = 0;
 #endif
 	int retry = 0;
   	do{
@@ -132,12 +132,26 @@ bool NetworkMessage::WriteToSocket(SOCKET socket)
 				}
 			}
 			else
+#else
+			int errnum = errno;
+			if(errnum == EAGAIN || errnum == EWOULDBLOCK){
+				b = 0;
+				OTSYS_SLEEP(10);
+				retry++;
+				if(retry >= 1000){
+					ret = false;
+					break;
+				}
+			}
+			else
 #endif
 			{
 				ret = false;
 				break;
 			}
 		}
+		else
+			retry = 0;
     	sendBytes += b;
 	}while(sendBytes < m_MsgSize+2);
 

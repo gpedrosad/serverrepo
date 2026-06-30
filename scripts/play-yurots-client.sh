@@ -60,11 +60,8 @@ open(path, "w", encoding="utf-8").write(text)
 PY
 
 if [[ "$(uname -s)" == "Darwin" ]]; then
-  open -a XQuartz 2>/dev/null || true
-  sleep 2
-  if [[ -z "${DISPLAY:-}" ]]; then
-    export DISPLAY="$(ls -d /private/tmp/com.apple.launchd.*/org.xquartz:0 2>/dev/null | head -1)"
-  fi
+  pkill -f otclient_mac 2>/dev/null || true
+  sleep 0.5
   CLIENT="$OTC_DIR/otclient_mac"
   chmod +x "$CLIENT" 2>/dev/null || true
   cd "$OTC_DIR"

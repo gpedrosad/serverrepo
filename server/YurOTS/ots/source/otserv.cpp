@@ -212,7 +212,9 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 
 	srand((unsigned)time(NULL));
 
-	SOCKET s = *(SOCKET*)dat;
+	SOCKET* sockptr = (SOCKET*)dat;
+	SOCKET s = *sockptr;
+	delete sockptr;
 
 	NetworkMessage msg;
 	if (msg.ReadFromSocket(s))
@@ -422,6 +424,12 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 					if(isLocked){
 						OTSYS_THREAD_UNLOCK(g_game.gameLock, "ConnectionHandler()")
 					}
+				}
+				else{
+					msg.Reset();
+					msg.AddByte(0x14);
+					msg.AddString("Please enter a valid account number and password.");
+					msg.WriteToSocket(s);
 				}
 			}
 		}
@@ -919,7 +927,8 @@ int main(int argc, char *argv[])
 
 			SOCKET s = accept(listen_socket, NULL, NULL); // accept a new connection
 			if(s > 0){
-				OTSYS_CREATE_THREAD(ConnectionHandler, (void*)&s);
+				SOCKET* sock = new SOCKET(s);
+				OTSYS_CREATE_THREAD(ConnectionHandler, (void*)sock);
 			}
 			else{
 					accept_errors++;

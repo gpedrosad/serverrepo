@@ -155,7 +155,7 @@ def create_account(
     return {
         "ok": True,
         "account": acc,
-        "message": f"Cuenta {acc} creada. Entra con ese número y tu contraseña en el cliente.",
+        "message": f"Cuenta {acc} creada. Ingresa con ese número y tu contraseña en el cliente.",
     }
 
 

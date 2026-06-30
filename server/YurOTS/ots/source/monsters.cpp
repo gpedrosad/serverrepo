@@ -22,6 +22,7 @@
 #include "spells.h"
 #include "luascript.h"
 #include "const76.h"
+#include "player.h"
 
 extern Spells spells;
 extern LuaScript g_config;
@@ -180,15 +181,16 @@ static unsigned short randomSmallGemId()
 	}
 }
 
-void MonsterType::createLoot(Container* corpse)
+void MonsterType::createLoot(Container* corpse, Player* killer)
 {
+	const bool premiumLoot = killer && killer->isPremium() && g_config.PREMMY_LOOT_BONUS > 0;
 	LootItems::const_iterator it;
 	for(it = lootItems.begin(); it != lootItems.end(); it++){
-		Item* tmpItem = createLootItem(*it);
+		Item* tmpItem = createLootItem(*it, premiumLoot);
 		if(tmpItem){
 			//check containers
 			if(Container* container = dynamic_cast<Container*>(tmpItem)){
-				createLootContainer(container, *it);
+				createLootContainer(container, *it, premiumLoot);
 				if(container->size() == 0){
 					delete container;
 				}
@@ -247,7 +249,7 @@ void MonsterType::createLoot(Container* corpse)
 	}
 }
 
-Item* MonsterType::createLootItem(const LootBlock& lootBlock)
+Item* MonsterType::createLootItem(const LootBlock& lootBlock, bool premiumLoot)
 {
 	Item* tmpItem = NULL;
 #ifdef YUR_MULTIPLIERS
@@ -259,6 +261,13 @@ Item* MonsterType::createLootItem(const LootBlock& lootBlock)
 #else
 	unsigned long chance = lootBlock.chance1;
 #endif //YUR_MULTIPLIERS
+
+#ifdef YUR_PREMIUM_PROMOTION
+	if(premiumLoot) {
+		unsigned long scaled = chance * (unsigned long)(100 + g_config.PREMMY_LOOT_BONUS) / 100;
+		chance = scaled > CHANCE_MAX ? CHANCE_MAX : scaled;
+	}
+#endif //YUR_PREMIUM_PROMOTION
 
 	const int rageGemChancePercent = getRageGemChancePercent(name);
 	if(rageGemChancePercent > 100 && isSmallGemItem(lootBlock.id)) {
@@ -318,14 +327,14 @@ Item* MonsterType::createLootItem(const LootBlock& lootBlock)
 	return tmpItem;
 }
 
-void MonsterType::createLootContainer(Container* parent, const LootBlock& lootblock)
+void MonsterType::createLootContainer(Container* parent, const LootBlock& lootblock, bool premiumLoot)
 {
 	LootItems::const_iterator it;
 	for(it = lootblock.childLoot.begin(); it != lootblock.childLoot.end(); it++){
-		Item* tmpItem = createLootItem(*it);
+		Item* tmpItem = createLootItem(*it, premiumLoot);
 		if(tmpItem){
 			if(Container* container = dynamic_cast<Container*>(tmpItem)){
-				createLootContainer(container, *it);
+				createLootContainer(container, *it, premiumLoot);
 				if(container->size() == 0){
 					delete container;
 				}

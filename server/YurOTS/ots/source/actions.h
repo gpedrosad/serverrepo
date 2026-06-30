@@ -175,6 +175,9 @@ public:
 	static int luaActionDoPlayerSetMasterPos(lua_State *L);
 	static int luaActionDoPlayerSetVocation(lua_State *L);
 	static int luaActionDoPlayerRemoveItem(lua_State *L);
+#ifdef YUR_PREMIUM_PROMOTION
+	static int luaActionDoAccountAddPremiumTime(lua_State *L);
+#endif //YUR_PREMIUM_PROMOTION
 
 	//get item info
 	static int luaActionGetItemRWInfo(lua_State *L);

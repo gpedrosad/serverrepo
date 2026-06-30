@@ -1274,12 +1274,12 @@ int64_t Monster::getWeaponDamage() const
 		return 0;
 }
 
-void Monster::dropLoot(Container *corpse)
+void Monster::dropLoot(Container *corpse, Player* killer)
 {
 	if(isSummon())
 		return;
 
-	mType->createLoot(corpse);
+	mType->createLoot(corpse, killer);
 }
 
 bool Monster::doAttacks(Creature* attackedCreature, monstermode_t mode /*= MODE_NORMAL*/)

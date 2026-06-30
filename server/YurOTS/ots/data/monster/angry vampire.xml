@@ -34,6 +34,7 @@
 				<item id="2396" chance="1333" />
 				<item id="2144" countmax="3" chance1="1538" chancemax="0" />
 				<item id="2479" chance="1428" />
+				<item id="2195" chance="666" />
 			</inside>
 		</item>
 		<item id="2150" countmax="2" chance1="12000" chancemax="0" />

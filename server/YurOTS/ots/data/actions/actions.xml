@@ -191,7 +191,8 @@
 
 
 <action itemid="1947" script="rwitems.lua" />
-<action itemid="1954" script="rwitems.lua" />
+<action itemid="1954" script="premium_scroll.lua" />
+<action itemid="2345" script="premium_scroll.lua" />
 <action itemid="2597" script="rwitems.lua" />
 <action itemid="2598" script="rwitems.lua" />
 <action itemid="2599" script="rwitems.lua" />

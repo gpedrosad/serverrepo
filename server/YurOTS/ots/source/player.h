@@ -285,7 +285,7 @@ public:
 	//virtual void setAttackedCreature(unsigned long id);
 	virtual bool isAttackable() const { return (access < g_config.ACCESS_PROTECT); };
 	virtual bool isPushable() const;
-	virtual void dropLoot(Container *corpse);
+	virtual void dropLoot(Container *corpse, Player* killer = NULL);
 	virtual int getLookCorpse();
 	bool NeedUpdateStats();
 
@@ -432,7 +432,7 @@ public:
 	bool isPremium() const { return g_config.FREE_PREMMY || premiumTicks > 0; }
 	void checkPremium(int);
 	bool isPromoted() const { return promoted && isPremium(); }
-	void promote() { promoted = true; }
+	void promote() { if (isPremium()) promoted = true; }
 #endif //YUR_PREMIUM_PROMOTION
 
 #ifdef YUR_ROOKGARD

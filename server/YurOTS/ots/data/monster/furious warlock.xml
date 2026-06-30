@@ -30,20 +30,22 @@
 		<item id="1987" chance="100000">
 			<inside>
 				<item id="2148" countmax="50" chance1="80000" chancemax="0" />
-				<item id="2411" chance="5000" />
+				<item id="2411" chance="7000" />
 				<item id="2792" countmax="5" chance1="6666" chancemax="0" />
 				<item id="2793" countmax="2" chance1="6666" chancemax="0" />
-				<item id="2656" chance="1333" />
-				<item id="2466" chance="1111" />
-				<item id="2436" chance="1428" />
-				<item id="2123" chance="1200" />
+				<item id="2656" chance="1866" />
+				<item id="2466" chance="1555" />
+				<item id="2436" chance="1999" />
+				<item id="2123" chance="1680" />
 			</inside>
 		</item>
-		<item id="2150" countmax="4" chance1="34000" chancemax="0" />
-		<item id="2149" countmax="4" chance1="30000" chancemax="0" />
-		<item id="2147" countmax="3" chance1="25000" chancemax="0" />
-		<item id="2146" countmax="3" chance1="19000" chancemax="0" />
-		<item id="2145" countmax="2" chance1="12000" chancemax="0" />
+		<item id="2150" countmax="5" chance1="46000" chancemax="0" />
+		<item id="2149" countmax="5" chance1="40000" chancemax="0" />
+		<item id="2147" countmax="4" chance1="32000" chancemax="0" />
+		<item id="2146" countmax="4" chance1="25000" chancemax="0" />
+		<item id="2145" countmax="3" chance1="14000" chancemax="0" />
+	
+		<item id="2157" countmax="1" chance1="4000" chancemax="0" />
 	</loot>
 	<summons maxSummons="3">
 		<summon name="Stone Golem" chance="1000" />

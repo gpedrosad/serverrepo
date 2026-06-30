@@ -4,11 +4,13 @@ from __future__ import annotations
 
 import json
 import os
+import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 from analytics import WebAnalytics
 from data import build_payload, create_account, read_server_ip
+from premium_orders import create_premium_order, parse_multipart_form, premium_config_payload
 from register_guard import RegisterGuard
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -19,6 +21,8 @@ ONLINE_FILE = Path(os.environ.get("ONLINE_FILE", ROOT / "server/YurOTS/ots/data/
 STATE_FILE = Path(os.environ.get("STATE_FILE", ROOT / "web/state/daily.json"))
 PEAK_STATE = Path(os.environ.get("PEAK_STATE", ROOT / "web/state/peak.json"))
 REGISTER_STATE = Path(os.environ.get("REGISTER_STATE", ROOT / "web/state/register.json"))
+PREMIUM_ORDERS_FILE = Path(os.environ.get("PREMIUM_ORDERS_FILE", ROOT / "web/state/premium_orders.json"))
+PREMIUM_UPLOADS_DIR = Path(os.environ.get("PREMIUM_UPLOADS_DIR", ROOT / "web/uploads/comprobantes"))
 ANALYTICS_STATE = Path(os.environ.get("ANALYTICS_STATE", ROOT / "web/state/analytics.json"))
 CONFIG_FILE = Path(os.environ.get("CONFIG_FILE", ROOT / "server/YurOTS/ots/config.lua"))
 OT_HOST = os.environ.get("OT_HOST", "127.0.0.1")
@@ -34,6 +38,7 @@ ASSET_TYPES = {
     ".jpeg": "image/jpeg",
     ".webp": "image/webp",
     ".svg": "image/svg+xml",
+    ".pdf": "application/pdf",
     ".js": "application/javascript; charset=utf-8",
     ".css": "text/css; charset=utf-8",
 }
@@ -90,6 +95,8 @@ class Handler(BaseHTTPRequestHandler):
             self._json(200, get_payload())
         elif path == "/api/register-challenge":
             self._json(200, guard.new_challenge())
+        elif path == "/api/premium-config":
+            self._json(200, premium_config_payload())
         elif path.startswith("/downloads/"):
             self._download(path[len("/downloads/"):])
         elif path.startswith("/assets/") or path.startswith("/components/"):
@@ -99,10 +106,14 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self) -> None:
         path = self.path.split("?", 1)[0]
-        if path != "/api/create-account":
+        if path == "/api/create-account":
+            self._create_account()
+        elif path == "/api/premium-order":
+            self._premium_order()
+        else:
             self.send_error(404)
-            return
 
+    def _create_account(self) -> None:
         length = int(self.headers.get("Content-Length", "0"))
         ip = client_ip(self)
         try:
@@ -131,6 +142,42 @@ class Handler(BaseHTTPRequestHandler):
         except (json.JSONDecodeError, TypeError, ValueError):
             result = {"ok": False, "message": "Datos inválidos"}
 
+        self._json(200, result)
+
+    def _premium_order(self) -> None:
+        ip = client_ip(self)
+        rate_err = guard.check_rate(ip)
+        if rate_err:
+            self._json(200, {"ok": False, "message": rate_err})
+            return
+        try:
+            fields = parse_multipart_form(self)
+        except ValueError as exc:
+            self._json(200, {"ok": False, "message": str(exc)})
+            return
+        if fields.get("company"):
+            self._json(200, {"ok": False, "message": "No se pudo enviar la donación."})
+            return
+        try:
+            form_ts = float(fields.get("form_ts", 0))
+        except (TypeError, ValueError):
+            form_ts = 0.0
+        if time.time() - form_ts < 3:
+            self._json(200, {"ok": False, "message": "El formulario se envió demasiado rápido."})
+            return
+        result = create_premium_order(
+            orders_file=PREMIUM_ORDERS_FILE,
+            uploads_dir=PREMIUM_UPLOADS_DIR,
+            players_dir=PLAYERS_DIR,
+            character_name=str(fields.get("character_name", "")),
+            plan_id=str(fields.get("plan_id", "")),
+            golden_amulet=str(fields.get("golden_amulet", "")).lower() in {"1", "true", "on", "yes"},
+            receipt_name=str(fields.get("_receipt_name", "")),
+            receipt_bytes=fields.get("_receipt_bytes") or b"",
+            client_ip=ip,
+        )
+        if result.get("ok"):
+            guard.record_attempt(ip)
         self._json(200, result)
 
     def _static(self, url_path: str, *, head_only: bool = False) -> None:

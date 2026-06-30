@@ -2,12 +2,12 @@ services:
   yurots:
     build: .
     container_name: yurots
+    platform: linux/386
     working_dir: /app/YurOTS/ots
     volumes:
       - ./server/YurOTS:/app/YurOTS
+      - ./scripts/docker-start-yurots.sh:/docker-start-yurots.sh:ro
     ports:
       - "7171:7171"
       - "7172:7172"
-    stdin_open: true
-    tty: true
-    command: bash
+    command: bash /docker-start-yurots.sh

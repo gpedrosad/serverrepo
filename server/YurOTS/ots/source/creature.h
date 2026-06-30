@@ -189,7 +189,7 @@ public:
 
 	virtual bool isAttackable() const { return true; };
 	virtual bool isPushable() const {return true;}
-	virtual void dropLoot(Container *corpse) {return;};
+	virtual void dropLoot(Container *corpse, Player* killer = NULL) {return;};
 	virtual int getLookCorpse() {return lookcorpse;};
 
 	//  virtual int sendInventory(){return 0;};

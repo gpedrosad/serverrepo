@@ -1034,7 +1034,14 @@ void Player::addSkillTry(int skilltry)
 			 	}//switch
 
 #ifdef YUR_MULTIPLIERS
-				addSkillTryInternal(skilltry * (skill==4? g_config.DIST_MUL[vocation] : g_config.WEAPON_MUL[vocation]), skill);
+				{
+					int mul = (skill==4? g_config.DIST_MUL[vocation] : g_config.WEAPON_MUL[vocation]);
+#ifdef YUR_PREMIUM_PROMOTION
+					if (isPremium() && g_config.PREMMY_SKILL_MUL > 1)
+						mul *= g_config.PREMMY_SKILL_MUL;
+#endif //YUR_PREMIUM_PROMOTION
+					addSkillTryInternal(skilltry * mul, skill);
+				}
 #else
 			 	addSkillTryInternal(skilltry,skill);
 #endif //YUR_MULTIPLIERS
@@ -1045,7 +1052,14 @@ void Player::addSkillTry(int skilltry)
 	}
 	if(foundSkill == false)
 #ifdef YUR_MULTIPLIERS
-		addSkillTryInternal(skilltry * g_config.WEAPON_MUL[vocation],0);//add fist try
+	{
+		int mul = g_config.WEAPON_MUL[vocation];
+#ifdef YUR_PREMIUM_PROMOTION
+		if (isPremium() && g_config.PREMMY_SKILL_MUL > 1)
+			mul *= g_config.PREMMY_SKILL_MUL;
+#endif //YUR_PREMIUM_PROMOTION
+		addSkillTryInternal(skilltry * mul, 0);//add fist try
+	}
 #else
 		addSkillTryInternal(skilltry,0);//add fist try
 #endif //YUR_MULTIPLIERS
@@ -1056,6 +1070,10 @@ void Player::addSkillShieldTry(int skilltry){
 #ifdef YUR_MULTIPLIERS
 	skilltry *= g_config.SHIELD_MUL[vocation];
 #endif //YUR_MULTIPLIERS
+#ifdef YUR_PREMIUM_PROMOTION
+	if (isPremium() && g_config.PREMMY_SKILL_MUL > 1)
+		skilltry *= g_config.PREMMY_SKILL_MUL;
+#endif //YUR_PREMIUM_PROMOTION
 
 	//look for a shield
 
@@ -1324,7 +1342,7 @@ int Player::getLookCorpse(){
 		return ITEM_FEMALE_CORPSE;
 }
 
-void Player::dropLoot(Container *corpse)
+void Player::dropLoot(Container *corpse, Player* /*killer*/)
 {
 #ifdef TLM_SKULLS_PARTY
 	if (skullType == SKULL_RED)
@@ -1944,6 +1962,10 @@ void Player::addManaSpent(uint64_t spent){
 #ifdef YUR_MULTIPLIERS
 	spent *= g_config.MANA_MUL[vocation];
 #endif //YUR_MULTIPLIERS
+#ifdef YUR_PREMIUM_PROMOTION
+	if (isPremium() && g_config.PREMMY_SKILL_MUL > 1)
+		spent *= g_config.PREMMY_SKILL_MUL;
+#endif //YUR_PREMIUM_PROMOTION
 
 	this->manaspent += spent;
 	//Magic Level Advance
@@ -3162,6 +3184,29 @@ void Player::checkAfk(int thinkTicks)
 #ifdef YUR_TRAINING_AREA
 static const unsigned long STORAGE_TRAINING_DATE = 9100;
 static const unsigned long STORAGE_TRAINING_USED = 9101;
+static const unsigned long STORAGE_TRAINING_BONUS_DATE = 9102;
+static const unsigned long STORAGE_TRAINING_BONUS_MINUTES = 9103;
+
+static long getTrainingTodayCode()
+{
+	time_t now = time(NULL);
+	struct tm* tmNow = localtime(&now);
+	return (tmNow->tm_year + 1900) * 10000L + (tmNow->tm_mon + 1) * 100L + tmNow->tm_mday;
+}
+
+static long getTrainingDailyLimitMs(Player* player, long today)
+{
+	long limitMinutes = player->isPremium()
+		? (long)g_config.TRAINING_PREMIUM_MINUTES
+		: (long)g_config.TRAINING_DAILY_MINUTES;
+	long bonusDate = 0;
+	long bonusMinutes = 0;
+	player->getStorageValue(STORAGE_TRAINING_BONUS_DATE, bonusDate);
+	player->getStorageValue(STORAGE_TRAINING_BONUS_MINUTES, bonusMinutes);
+	if (bonusDate == today && bonusMinutes > 0)
+		limitMinutes += bonusMinutes;
+	return limitMinutes * 60L * 1000L;
+}
 
 static std::string formatTrainingTime(long ms)
 {
@@ -3183,9 +3228,10 @@ static std::string formatTrainingTime(long ms)
 static void sendTrainingEnterMessage(Player* player, long usedMs, long limitMs)
 {
 	const long remaining = limitMs - usedMs;
+	const long limitMinutes = limitMs / (60L * 1000L);
 	std::stringstream ss;
 	ss << "Sala de entrenamiento: cada personaje tiene "
-	   << g_config.TRAINING_DAILY_MINUTES
+	   << limitMinutes
 	   << " min por dia. Llevas "
 	   << formatTrainingTime(usedMs)
 	   << " usados y te quedan "
@@ -3227,9 +3273,7 @@ void Player::checkTraining(int thinkTicks, Tile* tile)
 	if (access >= g_config.ACCESS_PROTECT)
 		return;
 
-	time_t now = time(NULL);
-	struct tm* tmNow = localtime(&now);
-	long today = (tmNow->tm_year + 1900) * 10000L + (tmNow->tm_mon + 1) * 100L + tmNow->tm_mday;
+	const long today = getTrainingTodayCode();
 
 	long storedDate = 0;
 	long usedMs = 0;
@@ -3244,7 +3288,7 @@ void Player::checkTraining(int thinkTicks, Tile* tile)
 		addStorageValue(STORAGE_TRAINING_USED, 0);
 	}
 
-	const long limitMs = (long)g_config.TRAINING_DAILY_MINUTES * 60L * 1000L;
+	const long limitMs = getTrainingDailyLimitMs(this, today);
 	const Position exitPos = tile->getTrainingExit();
 
 	if (usedMs >= limitMs)
