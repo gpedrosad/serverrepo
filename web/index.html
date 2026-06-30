@@ -85,6 +85,7 @@
       width: 32px;
       height: 32px;
       flex-shrink: 0;
+      object-fit: contain;
     }
     .gem-sprite.lg { width: 40px; height: 40px; }
     .flow-arrow {
@@ -476,16 +477,13 @@ const RANK_META = {
 };
 const COL_LABEL = { level:'Lvl', exp_fmt:'Exp', maglevel:'ML', lastlogin_rel:'Login', vocation_short:'Voc', sword:'Swd', distance:'Dist', frags:'Frg' };
 
-const GEM_COLORS = {
-  2145: '#b8e4ff', 2146: '#f0c84a', 2147: '#e8384f', 2149: '#3ecf6e', 2150: '#b06cff',
-  2153: '#9b4dff', 2154: '#ffd84a', 2155: '#2ecc71', 2156: '#ff3d57', 2158: '#4aa3ff',
-};
-
-function gemSvg(id, large) {
-  const c = GEM_COLORS[id] || '#a1a1aa';
-  const s = large ? 40 : 32;
+function gemImg(id, large, alt) {
+  const tier = large ? 'large' : 'small';
+  const size = large ? 40 : 32;
+  const base = `/assets/gems/${id}-${tier}`;
   const cls = large ? 'gem-sprite lg shrink-0' : 'gem-sprite shrink-0';
-  return `<svg class="${cls}" width="${s}" height="${s}" viewBox="0 0 32 32" aria-hidden="true"><polygon points="16,2 28,12 22,30 10,30 4,12" fill="${c}" stroke="rgba(255,255,255,.35)" stroke-width="1"/><polygon points="16,6 24,13 20,26 12,26 8,13" fill="rgba(255,255,255,.2)"/></svg>`;
+  const s2 = ` srcset="${esc(base)}@2x.jpg 2x"`;
+  return `<img src="${esc(base + '.jpg')}"${s2} alt="${esc(alt || '')}" class="${cls}" width="${size}" height="${size}" loading="lazy">`;
 }
 
 const GEMS_SMALL = [
@@ -1111,7 +1109,7 @@ function renderPremium() {
 function renderGems() {
   document.getElementById('gems-small').innerHTML = GEMS_SMALL.map((g, i) =>
     `<div class="gem-card anim-in flex flex-col items-center rounded-md px-1 py-2 text-center" style="--d:${i * 35}ms">
-      ${gemSvg(g.id, false)}
+      ${gemImg(g.id, false, g.name)}
       <p class="mt-1 text-[9px] leading-tight text-zinc-400">${esc(g.name)}</p>
     </div>`
   ).join('');
@@ -1120,11 +1118,11 @@ function renderGems() {
     `<div class="gem-card anim-in flex items-center gap-2 rounded-lg px-2.5 py-2" style="--d:${80 + i * 40}ms">
       <div class="flex shrink-0 items-center gap-1">
         <span class="text-[10px] tabular-nums text-zinc-500">20×</span>
-        ${gemSvg(x.small, false)}
+        ${gemImg(x.small, false, x.smallName)}
       </div>
       <span class="flow-arrow">→</span>
       <div class="flex shrink-0 items-center gap-1">
-        ${gemSvg(x.big, true)}
+        ${gemImg(x.big, true, x.bigName)}
         <span class="hidden text-[10px] text-zinc-500 sm:inline">1×</span>
       </div>
       <div class="min-w-0 flex-1">
@@ -1136,7 +1134,7 @@ function renderGems() {
 
   document.getElementById('gems-imbue').innerHTML = GEMS_IMBUE.map((g, i) =>
     `<div class="imbue-row anim-in flex items-center gap-2.5 px-3 py-2 transition-colors" style="--d:${120 + i * 35}ms">
-      ${gemSvg(g.id, true)}
+      ${gemImg(g.id, true, g.name)}
       <div class="min-w-0 flex-1">
         <p class="text-[11px] text-zinc-300">${esc(g.name)} <span class="text-zinc-600">→</span> ${esc(g.item)}</p>
         <p class="text-[10px] text-zinc-600">${esc(g.effect)} · ${esc(g.max)}</p>
