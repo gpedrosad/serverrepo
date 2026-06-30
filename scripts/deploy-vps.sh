@@ -74,8 +74,9 @@ fi
 
 echo "==> compile (dentro del container)"
 docker compose -f docker-compose.prod.yml up -d yurots
+# make clean: evita .o viejos tras cambios en headers (p. ej. luascript.h)
 docker compose -f docker-compose.prod.yml exec -T yurots bash -c \
-  'cd /app/YurOTS/ots/source && make -j"$(nproc 2>/dev/null || echo 4)" yurots'
+  'cd /app/YurOTS/ots/source && make clean && make -j"$(nproc 2>/dev/null || echo 4)" yurots'
 
 echo "==> restart services"
 docker compose -f docker-compose.prod.yml restart yurots
