@@ -83,6 +83,8 @@ public:
 	static int luaPlayerAddItem(lua_State *L);
 	static int luaGetPlayerLevel(lua_State *L);
 	static int luaGetPlayerItemCount(lua_State *L);
+	// YUR CHANGE (Dark Rodo audit 2026-06-30): free slots pre-check.
+	static int luaGetPlayerFreeSlots(lua_State *L);
 	static int luaGetPlayerFluidCount(lua_State *L);
 	static int luaGetPlayerMoney(lua_State *L);
 	static int luaGetPlayerBankBalance(lua_State *L);

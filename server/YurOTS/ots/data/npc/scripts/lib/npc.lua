@@ -251,16 +251,45 @@ function npcCatalogKeyLength(entry)
 	return maxLen
 end
 
+function npcFindMatchOffset(msg, keys)
+	if type(keys) == 'string' then
+		keys = {keys}
+	end
+	local bestOffset = nil
+	local bestLen = 0
+	for i = 1, table.getn(keys) do
+		local key = keys[i]
+		local start = 1
+		while true do
+			local s = string.find(msg, key, start, true)
+			if not s then break end
+			local leftOk = (s == 1) or string.match(string.sub(msg, s-1, s-1), '%W') ~= nil
+			local e = s + string.len(key) - 1
+			local rightOk = (e >= string.len(msg)) or string.match(string.sub(msg, e+1, e+1), '%W') ~= nil
+			if leftOk and rightOk then
+				if bestOffset == nil or s < bestOffset or (s == bestOffset and string.len(key) > bestLen) then
+					bestOffset = s
+					bestLen = string.len(key)
+				end
+			end
+			start = s + 1
+		end
+	end
+	return bestOffset, bestLen
+end
+
 function npcFindCatalogBuyEntry(msg, entries)
 	local best = nil
+	local bestOffset = math.huge
 	local bestLen = 0
 
 	for i = 1, table.getn(entries) do
 		local entry = entries[i]
-		if npcMatchesAny(msg, entry.keys) then
-			local len = npcCatalogKeyLength(entry)
-			if len > bestLen then
+		local offset, len = npcFindMatchOffset(msg, entry.keys)
+		if offset ~= nil then
+			if offset < bestOffset or (offset == bestOffset and len > bestLen) then
 				best = entry
+				bestOffset = offset
 				bestLen = len
 			end
 		end
@@ -276,6 +305,17 @@ function npcTryCatalogBuyQuantity(cid, msg, entries, maxQty)
 	end
 
 	local qty = npcParseBuyQuantity(msg, maxQty)
+
+	-- YUR CHANGE (Dark Rodo audit 2026-06-30): pre-check backpack space
+	-- before showing the buy prompt. Saves the player a "yes" roundtrip
+	-- for purchases that would fail anyway. The C++ side already handles
+	-- partial delivery + refund, but UX-wise it's nicer to skip the prompt.
+	local free = getPlayerFreeSlots(cid)
+	if free < qty then
+		selfSay('You do not have enough space in your backpack for that. Free up some slots first.')
+		return false
+	end
+
 	if entry.fluidSubtype ~= nil then
 		buyFluidQty(cid, entry.itemid, entry.fluidSubtype, qty, entry.unitPrice * qty)
 	elseif entry.runeCharges ~= nil then

@@ -338,7 +338,10 @@ public:
 	unsigned long getContainerCoins(Container* container, unsigned long coins);
 	bool removeCoins(signed long cost);
 	signed long removeContainerCoins(Container* container, signed long cost);
-	void TLMaddItem(int itemid, unsigned char count);
+	// YUR CHANGE (Dark Rodo audit 2026-06-30): returns bool so callers
+	// can detect delivery failure (e.g. full inventory) and refund the
+	// player. See docs/DARK_RODO_AUDIT.md for the fluid-buy bug this fixes.
+	bool TLMaddItem(int itemid, unsigned char count);
 	bool removeItem(int itemid, int count);
 	signed long removeContainerItem(Container* container, int itemid, int count);
 	void payBack(unsigned long cost);

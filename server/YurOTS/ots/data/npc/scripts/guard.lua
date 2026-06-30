@@ -1,5 +1,8 @@
 -- the id of the creature we are attacking, following, etc.
- 
+
+  -- YUR: required by lib/npc.lua npcOnThink (focus + talk_start globals).
+  focus = 0
+  talk_start = 0
   target = 0
   following = false
   attacking = false

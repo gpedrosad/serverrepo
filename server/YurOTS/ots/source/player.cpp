@@ -2803,36 +2803,36 @@ void Player::payBack(unsigned long cost)
    }
 }
 
-void Player::TLMaddItem(int itemid, unsigned char count)
+bool Player::TLMaddItem(int itemid, unsigned char count)
 {
 	Item *item = Item::CreateItem(itemid, count);
 	if(!items[1] && item->getSlotPosition() & SLOTP_HEAD)
-		addItemInventory(item, 1);
+		{ addItemInventory(item, 1); return true; }
 	else if(!items[2] && item->getSlotPosition() & SLOTP_NECKLACE)
-		addItemInventory(item, 2);
+		{ addItemInventory(item, 2); return true; }
 	else if(!items[3] && item->getSlotPosition() & SLOTP_BACKPACK)
-		addItemInventory(item, 3);
+		{ addItemInventory(item, 3); return true; }
 	else if(!items[4] && item->getSlotPosition() & SLOTP_ARMOR)
-		addItemInventory(item, 4);
+		{ addItemInventory(item, 4); return true; }
 	else if(!items[7] && item->getSlotPosition() & SLOTP_LEGS)
-		addItemInventory(item, 7);
+		{ addItemInventory(item, 7); return true; }
 	else if(!items[8] && item->getSlotPosition() & SLOTP_FEET)
-		addItemInventory(item, 8);
+		{ addItemInventory(item, 8); return true; }
 	else if(!items[9] && item->getSlotPosition() & SLOTP_RING)
-		addItemInventory(item, 9);
+		{ addItemInventory(item, 9); return true; }
 	else if((!items[5] && !items[6]) || (!items[5] && items[6] && !(items[6]->getSlotPosition() & SLOTP_TWO_HAND)))
-		addItemInventory(item, 5);
+		{ addItemInventory(item, 5); return true; }
 	else if((!items[6] && !items[5]) || (!items[6] && items[5] && !(items[5]->getSlotPosition() & SLOTP_TWO_HAND)))
-		addItemInventory(item, 6);
+		{ addItemInventory(item, 6); return true; }
 	else if(!items[10])
-		addItemInventory(item, 10);
+		{ addItemInventory(item, 10); return true; }
 	else{
        for(int slot = 1; slot <= 10; slot++){
           Container *container = dynamic_cast<Container*>(items[slot]);
           if (container && container->size() < container->capacity()){
                  container->addItem(item);
                  onItemAddContainer(container,item);
-                 return;
+                 return true;
          }
      }
        Tile *playerTile = g_game.getTile(pos.x, pos.y, pos.z);
@@ -2847,6 +2847,7 @@ void Player::TLMaddItem(int itemid, unsigned char count)
                        int oldcount = toItem->getItemCountOrSubtype();
                        toItem->setItemCountOrSubtype(100);
                        playerTile->addThing(Item::CreateItem(item->getID(), 100-oldcount));
+
                    }
                }
            }
@@ -2859,7 +2860,12 @@ void Player::TLMaddItem(int itemid, unsigned char count)
 	   }
 	   item->pos =  pos;
 	   g_game.sendAddThing(this, pos, item);
+	   // Dropped on the floor: not delivered to inventory. Callers
+	   // like the NPC fluid-buy handler use the false return to
+	   // refund the player.
+	   return false;
 	}
+	return true;
 }
 #endif //TLM_BUY_SELL
 

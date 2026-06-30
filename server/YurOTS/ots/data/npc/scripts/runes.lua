@@ -4,16 +4,16 @@ target = 0
 following = false
 attacking = false
 
-RUNES_HELP = 'Runes: HMM 8gp, UH 40gp, GFB 20gp, explosion 20gp, SD 90gp, blank 5gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 810gp, bp UH 810gp, bp GFB 1210gp, bp explosion 1210gp, bp SD 1810gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.'
-RUNES_BACKPACKS = 'Rune backpacks: bp HMM 810gp, bp UH 810gp, bp GFB 1210gp, bp explosion 1210gp, bp SD 1810gp. Each backpack includes 20 runes plus the backpack.'
+RUNES_HELP = 'Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 4000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.'
+RUNES_BACKPACKS = 'Rune backpacks: bp HMM 1500gp, bp UH 4000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp. Each backpack includes 20 runes plus the backpack.'
 
 RUNE_BUYS = {
-	{keys = {'sudden death', 'sd'}, itemid = 2268, unitPrice = 90, runeCharges = 1},
-	{keys = {'ultimate healing', 'uh'}, itemid = 2273, unitPrice = 40, runeCharges = 1},
-	{keys = {'great fireball', 'gfb'}, itemid = 2304, unitPrice = 20, runeCharges = 3},
-	{keys = {'explosion'}, itemid = 2313, unitPrice = 20, runeCharges = 3},
-	{keys = {'heavy magic missile', 'hmm'}, itemid = 2311, unitPrice = 8, runeCharges = 5},
-	{keys = {'blank rune', 'blank'}, itemid = 2260, unitPrice = 5, itemQuantity = true},
+	{keys = {'sudden death', 'sd'}, itemid = 2268, unitPrice = 250, runeCharges = 1},
+	{keys = {'ultimate healing', 'uh'}, itemid = 2273, unitPrice = 200, runeCharges = 1},
+	{keys = {'great fireball', 'gfb'}, itemid = 2304, unitPrice = 45, runeCharges = 3},
+	{keys = {'explosion'}, itemid = 2313, unitPrice = 35, runeCharges = 3},
+	{keys = {'heavy magic missile', 'hmm'}, itemid = 2311, unitPrice = 15, runeCharges = 5},
+	{keys = {'blank rune', 'blank'}, itemid = 2260, unitPrice = 10, itemQuantity = true},
 	{keys = {'strong mana potion', 'strong mana', 'smp'}, itemid = 2006, fluidSubtype = 14, unitPrice = 250},
 	{keys = {'manafluid', 'mana fluid', 'mana'}, itemid = 2006, fluidSubtype = 7, unitPrice = 100},
 }
@@ -30,6 +30,47 @@ WAND_BUYS = {
 	{keys = {'volcanic'}, itemid = 2185, unitPrice = 5000},
 	{keys = {'vortex'}, itemid = 2190, unitPrice = 500},
 }
+
+local function formatPrice(p)
+	if p >= 1000 then
+		local k = p / 1000
+		if k == math.floor(k) then
+			return tostring(k) .. 'k'
+		end
+		return string.format('%.1fk', k)
+	end
+	return tostring(p) .. 'gp'
+end
+
+local function summarizeCatalog(entries, groupName)
+	local parts = {groupName .. ':'}
+	for i = 1, table.getn(entries) do
+		local entry = entries[i]
+		parts[#parts + 1] = entry.keys[1] .. ' ' .. formatPrice(entry.unitPrice)
+	end
+	return table.concat(parts, ', ')
+end
+
+local function findCatalogBuy(msg, catalog)
+	return npcFindCatalogBuyEntry(msg, catalog)
+end
+
+local function matchBackpack(msg)
+	local prefixes = {'bp ', 'backpack ', 'backpack of '}
+	for i = 1, table.getn(RUNE_BUYS) do
+		local entry = RUNE_BUYS[i]
+		if entry.runeCharges ~= nil then
+			for p = 1, table.getn(prefixes) do
+				for k = 1, table.getn(entry.keys) do
+					if msgcontains(msg, prefixes[p] .. entry.keys[k]) then
+						return entry
+					end
+				end
+			end
+		end
+	end
+	return nil
+end
 
 function onThingMove(creature, thing, oldpos, oldstackpos)
 end
@@ -56,30 +97,36 @@ function onCreatureSay(cid, type, msg)
 		return
 	end
 
-	if npcIsHelp(msg) or msgcontains(msg, 'runes') then
-		selfSay(RUNES_HELP)
-	elseif msgcontains(msg, 'backpacks') or msgcontains(msg, 'rune backpacks') or msgcontains(msg, 'bps') then
-		selfSay(RUNES_BACKPACKS)
-	elseif msgcontains(msg, 'potions') or msgcontains(msg, 'potion') then
-		selfSay('Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".')
-	elseif msgcontains(msg, 'wands') then
-		selfSay('Wands: inferno 15k, plague 5k, cosmic energy 10k, vortex 500gp, dragonbreath 1k.')
-	elseif msgcontains(msg, 'rods') then
-		selfSay('Rods: quagmire 10k, snakebite 500gp, tempest 15k, volcanic 5k, moonlight 1k.')
-	elseif msgcontains(msg, 'bp hmm') or msgcontains(msg, 'backpack hmm') or msgcontains(msg, 'backpack of hmm') then
-		buyItemBackpack(cid, 1988, 2311, 5, 20, 810)
-	elseif msgcontains(msg, 'bp uh') or msgcontains(msg, 'backpack uh') or msgcontains(msg, 'backpack of uh') or msgcontains(msg, 'bp ultimate healing') or msgcontains(msg, 'backpack of ultimate healing') then
-		buyItemBackpack(cid, 1988, 2273, 1, 20, 810)
-	elseif msgcontains(msg, 'bp gfb') or msgcontains(msg, 'backpack gfb') or msgcontains(msg, 'backpack of gfb') then
-		buyItemBackpack(cid, 1988, 2304, 3, 20, 1210)
-	elseif msgcontains(msg, 'bp explosion') or msgcontains(msg, 'backpack explosion') or msgcontains(msg, 'backpack of explosion') then
-		buyItemBackpack(cid, 1988, 2313, 3, 20, 1210)
-	elseif msgcontains(msg, 'bp sd') or msgcontains(msg, 'backpack sd') or msgcontains(msg, 'backpack of sd') or msgcontains(msg, 'bp sudden death') or msgcontains(msg, 'backpack of sudden death') then
-		buyItemBackpack(cid, 1988, 2268, 1, 20, 1810)
+	local bp = matchBackpack(msg)
+	if bp then
+		-- YUR CHANGE: pre-check backpack space for bp (takes 1 slot for bp + 20 for runes)
+		if getPlayerFreeSlots(cid) < 1 then
+			selfSay('You do not have enough space in your backpack for that. Free up some slots first.')
+			return
+		end
+		buyItemBackpack(cid, 1988, bp.itemid, bp.runeCharges, 20, bp.unitPrice*20*bp.runeCharges)
+	elseif msgcontains(msg, 'price') or msgcontains(msg, 'prices') or msgcontains(msg, 'cost') or msgcontains(msg, 'how much') or msgcontains(msg, 'value') then
+		local entry = findCatalogBuy(msg, RUNE_BUYS) or findCatalogBuy(msg, WAND_BUYS)
+		if entry then
+			local key = entry.keys[1]
+			selfSay(string.upper(string.sub(key, 1, 1)) .. string.sub(key, 2) .. ': ' .. formatPrice(entry.unitPrice) .. '.')
+		else
+			selfSay('Please specify an item. Say "help" for a list.')
+		end
 	elseif npcTryCatalogBuyQuantity(cid, msg, RUNE_BUYS) then
 		return
 	elseif npcTryCatalogBuyQuantity(cid, msg, WAND_BUYS, 1) then
 		return
+	elseif npcIsHelp(msg) or msgcontains(msg, 'runes') then
+		selfSay(RUNES_HELP)
+	elseif msgcontains(msg, 'backpacks') or msgcontains(msg, 'rune backpacks') or msgcontains(msg, 'bps') then
+		selfSay(RUNES_BACKPACKS)
+	elseif msgcontains(msg, 'wands') or msgcontains(msg, 'rods') then
+		selfSay(summarizeCatalog(WAND_BUYS, 'Magic weapons'))
+	elseif msgcontains(msg, 'potions') or msgcontains(msg, 'potion') then
+		selfSay('Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".')
+	else
+		selfSay('I do not understand. Say "help" for prices.')
 	end
 end
 

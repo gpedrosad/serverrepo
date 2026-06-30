@@ -157,20 +157,24 @@ static bool removePlayerExactItems(Player* player, int itemid, bool useSubtype, 
 	return player->removeItem((unsigned short)itemid, count);
 }
 
-static bool addChargedItemsToPlayer(Player* player, int itemId, int chargesPerItem, int itemCount)
+static int addChargedItemsToPlayer(Player* player, int itemId, int chargesPerItem, int itemCount)
 {
 	if(!player || itemCount <= 0)
-		return false;
+		return 0;
 
+	int delivered = 0;
 	for(int i = 0; i < itemCount; i++){
 		Item* item = Item::CreateItem((unsigned short)itemId, (unsigned short)chargesPerItem);
-		if(!item || !player->addItem(item)){
-			delete item;
-			return false;
+		if(item && player->addItem(item)){
+			delivered++;
+		} else {
+			if(item)
+				delete item;
+			break;
 		}
 	}
 
-	return true;
+	return delivered;
 }
 
 static bool addItemBackpackToPlayer(Player* player, int backpackItemId, int contentItemId, int contentCountOrSubtype, int contentItemCount)
@@ -537,28 +541,39 @@ void Npc::onCreatureSay(const Creature *creature, SpeakClasses type, const std::
 									doSay("You do not have enough capacity or room for that backpack.");
 								}
 							}else if(pt.isFluidQuantityBuy){
-								bool delivered = true;
+								// YUR CHANGE (Dark Rodo audit 2026-06-30): now properly
+								// checks TLMaddItem's return to refund undelivered fluids
+								// when the inventory is full. See docs/DARK_RODO_AUDIT.md.
+								int delivered = 0;
 								for(int i = 0; i < pt.fluidQuantity; i++){
-									player->TLMaddItem(pt.itemid, (unsigned char)pt.count);
+									if(player->TLMaddItem(pt.itemid, (unsigned char)pt.count))
+										delivered++;
+									else
+										break;
 								}
-								if(delivered)
+								if(delivered == pt.fluidQuantity){
 									doSay("Here you go!");
-								else{
-									player->payBack(pt.cost);
+								} else {
+									int unit = pt.fluidQuantity > 0 ? (pt.cost / pt.fluidQuantity) : pt.cost;
+									player->payBack(pt.cost - unit * delivered);
 									doSay("You do not have enough capacity or room for that.");
 								}
 							}else if(pt.isRuneQuantityBuy){
-								if(addChargedItemsToPlayer(player, pt.itemid, pt.runeCharges, pt.runeQuantity))
+								int delivered = addChargedItemsToPlayer(player, pt.itemid, pt.runeCharges, pt.runeQuantity);
+								if(delivered == pt.runeQuantity){
 									doSay("Here you go!");
-								else{
-									player->payBack(pt.cost);
+								} else {
+									int unit = pt.runeQuantity > 0 ? (pt.cost / pt.runeQuantity) : pt.cost;
+									player->payBack(pt.cost - unit * delivered);
 									doSay("You do not have enough capacity or room for that.");
 								}
 							}else if(pt.isItemQuantityBuy){
-								if(addChargedItemsToPlayer(player, pt.itemid, 1, pt.itemQuantity))
+								int delivered = addChargedItemsToPlayer(player, pt.itemid, 1, pt.itemQuantity);
+								if(delivered == pt.itemQuantity){
 									doSay("Here you go!");
-								else{
-									player->payBack(pt.cost);
+								} else {
+									int unit = pt.itemQuantity > 0 ? (pt.cost / pt.itemQuantity) : pt.cost;
+									player->payBack(pt.cost - unit * delivered);
 									doSay("You do not have enough capacity or room for that.");
 								}
 							}else{
@@ -644,6 +659,12 @@ NpcScript::NpcScript(std::string scriptname, Npc* npc){
 	if(scriptname == "")
 		return;
 	luaState = lua_open();
+	// YUR CHANGE: restrict Lua stdlib exposed to NPC scripts to prevent RCE.
+	// YUR NOTE: sandbox hardening reverted. luaopen_* don't set globals in
+	// Lua 5.1 (only luaL_openlibs does), so partial removal broke os.clock()
+	// in npc.lua:166 and 178. Reverted to luaL_openlibs to keep NPCs working.
+	// For proper sandboxing later, either (a) wrap each luaopen_* in
+	// lua_setglobal(L, "name"), or (b) replace specific dangerous functions.
 	luaL_openlibs(luaState);
 
 	std::string datadir = g_config.getGlobalString("datadir");
@@ -774,6 +795,9 @@ int NpcScript::registerFunctions()
 	lua_register(luaState, "doPlayerAddItem", NpcScript::luaPlayerAddItem);
 	lua_register(luaState, "getPlayerLevel", NpcScript::luaGetPlayerLevel);
 	lua_register(luaState, "getPlayerItemCount", NpcScript::luaGetPlayerItemCount);
+	// YUR CHANGE (Dark Rodo audit 2026-06-30): expose getPlayerFreeSlots so
+	// NPC buy flows can pre-check backpack capacity before showing the prompt.
+	lua_register(luaState, "getPlayerFreeSlots", NpcScript::luaGetPlayerFreeSlots);
 	lua_register(luaState, "getPlayerFluidCount", NpcScript::luaGetPlayerFluidCount);
 	lua_register(luaState, "getPlayerMoney", NpcScript::luaGetPlayerMoney);
 	lua_register(luaState, "getPlayerBankBalance", NpcScript::luaGetPlayerBankBalance);
@@ -842,7 +866,12 @@ int NpcScript::luaCreatureGetName(lua_State *L){
 	int id = (int)lua_tonumber(L, -1);
 	lua_pop(L,1);
 	Npc* mynpc = getNpc(L);
-	lua_pushstring(L, mynpc->game->getCreatureByID(id)->getName().c_str());
+	Creature* c = mynpc->game->getCreatureByID(id);
+	if(!c){
+		lua_pushstring(L, "");
+		return 1;
+	}
+	lua_pushstring(L, c->getName().c_str());
 	return 1;
 }
 
@@ -1637,6 +1666,36 @@ int NpcScript::luaGetPlayerItemCount(lua_State* L)
 	else
 		lua_pushnumber(L, 0);
 
+	return 1;
+}
+
+// YUR CHANGE (Dark Rodo audit 2026-06-30): returns the total free slots
+// across the player's inventory (empty slots + free space in all containers).
+// Used by NPC buy flows to pre-check capacity before showing the prompt.
+int NpcScript::luaGetPlayerFreeSlots(lua_State* L)
+{
+	int cid = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Npc* mynpc = getNpc(L);
+	Creature* creature = mynpc->game->getCreatureByID(cid);
+	Player* player = creature? dynamic_cast<Player*>(creature) : NULL;
+
+	if(!player){
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	int free = 0;
+	for(int slot = 1; slot <= 10; slot++){
+		Item* item = player->getItem(slot);
+		if(!item){
+			free++;
+		} else if(Container* c = dynamic_cast<Container*>(item)){
+			free += (c->capacity() - c->size());
+		}
+	}
+	lua_pushnumber(L, free);
 	return 1;
 }
 
