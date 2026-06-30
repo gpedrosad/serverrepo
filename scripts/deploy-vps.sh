@@ -72,14 +72,13 @@ if [[ "$AFTER_ACCOUNTS" -lt "$BEFORE_ACCOUNTS" ]] || [[ "$AFTER_PLAYERS" -lt "$B
   exit 1
 fi
 
-echo "==> compile (dentro del container)"
-docker compose -f docker-compose.prod.yml up -d yurots
-# make clean: evita .o viejos tras cambios en headers (p. ej. luascript.h)
-docker compose -f docker-compose.prod.yml exec -T yurots bash -c \
+echo "==> compile (container parado para no tocar el binario en uso)"
+docker compose -f docker-compose.prod.yml stop yurots
+docker compose -f docker-compose.prod.yml run --rm --entrypoint bash yurots -c \
   'cd /app/YurOTS/ots/source && make clean && make -j"$(nproc 2>/dev/null || echo 4)" yurots'
 
 echo "==> restart services"
-docker compose -f docker-compose.prod.yml restart yurots
+docker compose -f docker-compose.prod.yml up -d yurots
 if systemctl is-active --quiet yurots-web 2>/dev/null; then
   systemctl restart yurots-web
 fi

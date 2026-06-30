@@ -3451,9 +3451,6 @@ void Player::checkRing(int thinkTics)
 				bool updated = false;
 				if (ringId == ITEM_LIFE_RING_IN_USE)
 				{
-					std::cout << "[RINGDBG] LIFE_RING tick for " << getName()
-						<< " hp=" << health << "/" << healthmax
-						<< " timeLeft=" << items[SLOT_RING]->getTime() << std::endl;
 					if (health < healthmax)
 					{
 						health = std::min(healthmax, health + 10);
