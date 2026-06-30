@@ -1004,7 +1004,11 @@ int SpellScript::internalMakeRune(Player *p, unsigned short sl_id, Spell *S, uns
 		if(item->getID() == ITEM_RUNE_BLANK){
 			if(requireSoul && availableSoul == 0)
 				return -2;
-			p->addItemInventory(Item::CreateItem(id, charges ),sl_id);
+			// Player-made runes get 3 extra charges over store-bought ones.
+			int craftedCharges = (int)charges + 3;
+			if(craftedCharges > 255)
+				craftedCharges = 255;
+			p->addItemInventory(Item::CreateItem(id, (unsigned char)craftedCharges), sl_id);
 			return 1;
 		}
 		else{

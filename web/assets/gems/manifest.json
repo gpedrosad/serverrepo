@@ -1,0 +1,160 @@
+{
+  "source": {
+    "dat": "rme-client-760/Tibia.dat",
+    "spr": "rme-client-760/Tibia.spr",
+    "otb": "server/YurOTS/ots/data/items/items.otb",
+    "clientVersion": 760
+  },
+  "gems": [
+    {
+      "serverId": 2150,
+      "slug": "amethyst",
+      "name": "Amethyst",
+      "tier": "small",
+      "spriteId": 10955,
+      "files": {
+        "png": "2150-small.png",
+        "png2x": "2150-small@2x.png",
+        "jpg": "2150-small.jpg",
+        "jpg2x": "2150-small@2x.jpg"
+      },
+      "sizePx": 32,
+      "clientId": 3033
+    },
+    {
+      "serverId": 2149,
+      "slug": "emerald",
+      "name": "Emerald",
+      "tier": "small",
+      "spriteId": 10948,
+      "files": {
+        "png": "2149-small.png",
+        "png2x": "2149-small@2x.png",
+        "jpg": "2149-small.jpg",
+        "jpg2x": "2149-small@2x.jpg"
+      },
+      "sizePx": 32,
+      "clientId": 3032
+    },
+    {
+      "serverId": 2147,
+      "slug": "ruby",
+      "name": "Ruby",
+      "tier": "small",
+      "spriteId": 10941,
+      "files": {
+        "png": "2147-small.png",
+        "png2x": "2147-small@2x.png",
+        "jpg": "2147-small.jpg",
+        "jpg2x": "2147-small@2x.jpg"
+      },
+      "sizePx": 32,
+      "clientId": 3030
+    },
+    {
+      "serverId": 2146,
+      "slug": "sapphire",
+      "name": "Sapphire",
+      "tier": "small",
+      "spriteId": 7326,
+      "files": {
+        "png": "2146-small.png",
+        "png2x": "2146-small@2x.png",
+        "jpg": "2146-small.jpg",
+        "jpg2x": "2146-small@2x.jpg"
+      },
+      "sizePx": 32,
+      "clientId": 3029
+    },
+    {
+      "serverId": 2145,
+      "slug": "diamond",
+      "name": "Diamond",
+      "tier": "small",
+      "spriteId": 1047,
+      "files": {
+        "png": "2145-small.png",
+        "png2x": "2145-small@2x.png",
+        "jpg": "2145-small.jpg",
+        "jpg2x": "2145-small@2x.jpg"
+      },
+      "sizePx": 32,
+      "clientId": 3028
+    },
+    {
+      "serverId": 2153,
+      "slug": "violet-gem",
+      "name": "Violet Gem",
+      "tier": "large",
+      "spriteId": 4123,
+      "files": {
+        "png": "2153-large.png",
+        "png2x": "2153-large@2x.png",
+        "jpg": "2153-large.jpg",
+        "jpg2x": "2153-large@2x.jpg"
+      },
+      "sizePx": 40,
+      "clientId": 3036
+    },
+    {
+      "serverId": 2154,
+      "slug": "yellow-gem",
+      "name": "Yellow Gem",
+      "tier": "large",
+      "spriteId": 4124,
+      "files": {
+        "png": "2154-large.png",
+        "png2x": "2154-large@2x.png",
+        "jpg": "2154-large.jpg",
+        "jpg2x": "2154-large@2x.jpg"
+      },
+      "sizePx": 40,
+      "clientId": 3037
+    },
+    {
+      "serverId": 2155,
+      "slug": "big-emerald",
+      "name": "Big Emerald",
+      "tier": "large",
+      "spriteId": 4121,
+      "files": {
+        "png": "2155-large.png",
+        "png2x": "2155-large@2x.png",
+        "jpg": "2155-large.jpg",
+        "jpg2x": "2155-large@2x.jpg"
+      },
+      "sizePx": 40,
+      "clientId": 3038
+    },
+    {
+      "serverId": 2156,
+      "slug": "big-ruby",
+      "name": "Big Ruby",
+      "tier": "large",
+      "spriteId": 4122,
+      "files": {
+        "png": "2156-large.png",
+        "png2x": "2156-large@2x.png",
+        "jpg": "2156-large.jpg",
+        "jpg2x": "2156-large@2x.jpg"
+      },
+      "sizePx": 40,
+      "clientId": 3039
+    },
+    {
+      "serverId": 2158,
+      "slug": "blue-gem",
+      "name": "Blue Gem",
+      "tier": "large",
+      "spriteId": 4120,
+      "files": {
+        "png": "2158-large.png",
+        "png2x": "2158-large@2x.png",
+        "jpg": "2158-large.jpg",
+        "jpg2x": "2158-large@2x.jpg"
+      },
+      "sizePx": 40,
+      "clientId": 3041
+    }
+  ]
+}

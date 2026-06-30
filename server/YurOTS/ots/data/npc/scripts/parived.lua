@@ -5,19 +5,19 @@ following = false
 attacking = false
 
 GEMS = {
-	{keys = {'big emerald'}, id = 2155, price = 10000, name = 'big emerald'},
-	{keys = {'big ruby'}, id = 2156, price = 10000, name = 'big ruby'},
-	{keys = {'gold nugget', 'nugget'}, id = 2157, price = 10000, name = 'gold nugget'},
-	{keys = {'scarab coin', 'scarab'}, id = 2159, price = 100, name = 'scarab coin'},
-	{keys = {'violet gem'}, id = 2153, price = 10000, name = 'violet gem'},
-	{keys = {'yellow gem'}, id = 2154, price = 1000, name = 'yellow gem'},
-	{keys = {'blue gem'}, id = 2158, price = 5000, name = 'blue gem'},
-	{keys = {'small diamond', 'diamond'}, id = 2145, price = 300, name = 'small diamond'},
-	{keys = {'small sapphire', 'sapphire'}, id = 2146, price = 250, name = 'small sapphire'},
-	{keys = {'small ruby', 'ruby'}, id = 2147, price = 250, name = 'small ruby'},
-	{keys = {'small emerald', 'emerald'}, id = 2149, price = 250, name = 'small emerald'},
-	{keys = {'small amethyst', 'amethyst'}, id = 2150, price = 200, name = 'small amethyst'},
-	{keys = {'talon'}, id = 2151, price = 320, name = 'talon'}
+	{keys = {'big emerald', 'big emeralds', 'large emerald', 'green gem', 'big green'}, id = 2155, price = 10000, name = 'big emerald'},
+	{keys = {'big ruby', 'big rubies', 'big rubys', 'large ruby', 'red gem', 'big red'}, id = 2156, price = 10000, name = 'big ruby'},
+	{keys = {'gold nugget', 'nugget', 'nuggets', 'gold'}, id = 2157, price = 10000, name = 'gold nugget'},
+	{keys = {'scarab coin', 'scarab', 'scarabs', 'scarab coins', 'coin', 'coins'}, id = 2159, price = 100, name = 'scarab coin'},
+	{keys = {'violet gem', 'violet', 'violet gems', 'purple gem', 'purple'}, id = 2153, price = 10000, name = 'violet gem'},
+	{keys = {'yellow gem', 'yellow', 'yellow gems', 'topaz'}, id = 2154, price = 1000, name = 'yellow gem'},
+	{keys = {'blue gem', 'blue', 'blue gems'}, id = 2158, price = 5000, name = 'blue gem'},
+	{keys = {'small diamond', 'diamond', 'diamonds', 'diamont', 'diamons'}, id = 2145, price = 300, name = 'small diamond'},
+	{keys = {'small sapphire', 'sapphire', 'sapphires', 'saphire', 'safir', 'zafiro'}, id = 2146, price = 250, name = 'small sapphire'},
+	{keys = {'small ruby', 'ruby', 'rubies', 'rubys', 'rubi'}, id = 2147, price = 250, name = 'small ruby'},
+	{keys = {'small emerald', 'emerald', 'emeralds', 'esmerald', 'esmeralda'}, id = 2149, price = 250, name = 'small emerald'},
+	{keys = {'small amethyst', 'amethyst', 'amethysts', 'ametist', 'amatista'}, id = 2150, price = 200, name = 'small amethyst'},
+	{keys = {'talon', 'talons'}, id = 2151, price = 320, name = 'talon'}
 }
 
 PARIVED_HELP = 'I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.'
@@ -74,6 +74,23 @@ function matchGem(msg)
 			end
 		end
 	end
+
+	-- Fuzzy fallback: strip a trailing plural ('s' or 'es') from the
+	-- last word of the message and try again, so 'rubies', 'rubys',
+	-- 'emeralds' etc. still match even without an explicit alias.
+	local fuzzy = string.gsub(text, '(%w+)s%s*$', '%1')
+	fuzzy = string.gsub(fuzzy, '(%w+)es%s*$', '%1')
+	if fuzzy ~= text then
+		for i = 1, table.getn(GEMS) do
+			local gem = GEMS[i]
+			for j = 1, table.getn(gem.keys) do
+				if msgcontains(fuzzy, gem.keys[j]) then
+					return gem
+				end
+			end
+		end
+	end
+
 	return nil
 end
 

@@ -64,6 +64,10 @@ pzlocked = 10*1000
 -- allow multiple logins of the same char
 allowclones = 0
 
+-- when allowclones = 0, let a fresh login replace the currently connected session
+-- disable this to restore the old "You are already logged in." rejection
+replaceconnectedcharacter = 1
+
 -- vocation names
 vocations = {"a sorcerer", "a druid", "a paladin", "a knight"}
 promoted_vocations = {"a master sorcerer", "an elder druid", "a royal paladin", "an elite knight"}
@@ -118,12 +122,10 @@ goldlootfloorpercent = 70
 -- how much % of {exp, mana, skill, eq, bp} do you lose when dying
 diepercent = {"7", "7", "7", "7", "100"}
 
--- exp reward when killing a higher level player (pvp / pvp-enforced)
+-- exp reward when killing another player (pvp world)
 -- killer receives this % of the victim's lost exp, scaled by damage dealt
 pvpunderdogexp = "yes"
 pvpunderdogexp_percent = 50
-pvpunderdogexp_mindiff = 1
-pvpunderdogexp_minlevel = 15
 
 -- how many summons player can have
 maxsummons = 2

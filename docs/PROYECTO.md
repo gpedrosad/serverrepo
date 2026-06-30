@@ -4,6 +4,11 @@ Documento de referencia para entender **qué es este repo**, **cómo está hoste
 
 Para el checklist detallado de deploy en producción, ver también **[scripts/README-DEPLOY-VPS.md](../scripts/README-DEPLOY-VPS.md)** (lectura obligatoria antes de tocar el VPS).
 
+Para cambios delicados del core que hoy estan aplicados pero pueden necesitar
+rollback, ver tambien:
+
+- [docs/STAIRS_DEFAULT_ROLLBACK.md](STAIRS_DEFAULT_ROLLBACK.md)
+
 ---
 
 ## Qué es este proyecto

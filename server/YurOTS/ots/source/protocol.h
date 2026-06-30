@@ -40,6 +40,7 @@ public:
 
 	void setPlayer(Player* p);
 	unsigned long getIP() const;
+	void disconnectConnection();
 
 	virtual bool CanSee(int x, int y, int z) const = 0;
 	virtual bool CanSee(const Creature*) const = 0;

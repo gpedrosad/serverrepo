@@ -67,6 +67,18 @@ unsigned long Protocol::getIP() const
 	return 0;
 }
 
+void Protocol::disconnectConnection()
+{
+	if(!s)
+		return;
+
+#if defined WIN32 || defined __WINDOWS__
+	shutdown(s, SD_BOTH);
+#else
+	shutdown(s, SHUT_RDWR);
+#endif
+}
+
 void Protocol::setPlayer(Player* p)
 {
 	player = p;

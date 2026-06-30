@@ -1131,6 +1131,17 @@ void Monster::reThink(bool updateOnlyState /* = true*/)
 			}
 		}
 
+		if(state == STATE_IDLE) {
+			//Idle monsters still scan for nearby targets so they attack
+			//even if a player walks into range and stands still (or if the
+			//monster spawned next to a player that never moved).
+			bool canReach;
+			Creature* target = findTarget(0, canReach);
+			if(target) {
+				selectTarget(target, canReach);
+			}
+		}
+
 		if(state == STATE_TARGETNOTREACHABLE) {
 			//try find a target
 			bool canReach;

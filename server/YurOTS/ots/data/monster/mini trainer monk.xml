@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<monster name="Mini Trainer Monk" level="1" maglevel="0" experience="0" skillmul="1" skillrate="0.5" trainer="1" pushable="0" armor="50" defense="50" canpushitems="0" staticattack="8" changetarget="0" speed="220">
+	<health now="9999" max="9999"/>
+	<look type="57" head="114" body="114" legs="114" feet="114" corpse="3128"/>
+	<combat targetdistance="1" runonhealth="0"/>
+
+<attacks>
+	<attack type="melee" mindamage="0" maxdamage="0"/>
+	<attack type="instant" name="exura vita" exhaustion="800" cycleticks="3800" probability="60"/>
+	<attack type="instant" name="exura gran" exhaustion="800" cycleticks="6200" probability="34"/>
+	<attack type="instant" name="dm_haste" exhaustion="400" cycleticks="12000" probability="20"/>
+</attacks>
+
+<defenses>
+	<defense immunity="invisible"/>
+</defenses>
+
+<voices>
+	<voice sentence="Heads up: skills only go up at half rate here." cycleticks="30000" probability="24"/>
+	<voice sentence="Train with me and your skills rise at half the normal speed." cycleticks="32000" probability="22"/>
+	<voice sentence="Patience, young one. Skills grow at half rate on this ground." cycleticks="34000" probability="22"/>
+</voices>
+</monster>

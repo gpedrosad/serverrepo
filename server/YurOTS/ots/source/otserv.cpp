@@ -302,15 +302,27 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 					OTSYS_THREAD_LOCK(g_game.gameLock, "ConnectionHandler()")
 					Player* player = g_game.getPlayerByName(name);
 					bool playerexist = (player != NULL);
+					const bool allowClones = (g_config.getGlobalNumber("allowclones", 0) != 0);
+					const bool replaceConnectedCharacter = (g_config.getGlobalNumber("replaceconnectedcharacter", 1) != 0);
 					if(player){
 						//reattach player?
-						if(player->client->s == 0 && player->isRemoved == false && !g_config.getGlobalNumber("allowclones", 0)){
+						if(player->client->s == 0 && player->isRemoved == false && !allowClones){
 							player->lastlogin = std::time(NULL);
 							player->client->reinitializeProtocol();
 							player->client->s = s;
 							player->client->sendThingAppear(player);
 							player->lastip = player->getIP();
 							s = 0;
+						}
+						// If the character is still online, replace the old session instead of
+						// rejecting the new login. We remove/save the existing player first and
+						// then shut down the old socket so its ReceiveLoop can terminate cleanly.
+						else if(player->client && player->client->s != 0 && player->isRemoved == false &&
+							!allowClones && replaceConnectedCharacter){
+							std::cout << "Replacing active session for player: " << name << std::endl;
+							player->client->logout();
+							player->client->disconnectConnection();
+							playerexist = (g_game.getPlayerByName(name) != NULL);
 						}
 
 						//guess not...
@@ -331,7 +343,7 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 #endif //YUR_LOGIN_QUEUE
 						static const int ACCESS_ENTER = g_config.getGlobalNumber("accessenter",3);
 
-						if(playerexist && !g_config.getGlobalNumber("allowclones", 0)){
+						if(playerexist && !allowClones){
 							#ifdef __DEBUG_PLAYERS__
 							std::cout << "reject player... (already logged in)" << std::endl;
 							#endif

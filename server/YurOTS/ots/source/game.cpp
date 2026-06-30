@@ -94,6 +94,22 @@ static bool isTrainingNoPvp(Game* game, const Creature* attacker, const Creature
 }
 #endif //YUR_TRAINING_AREA
 
+static int resolveSkillTriesFromRate(double skillRate)
+{
+	if(skillRate <= 0.0)
+		return 0;
+
+	int skillTries = (int)skillRate;
+	const double fractional = skillRate - skillTries;
+	if(fractional > 0.0) {
+		const int rollMax = 1000000;
+		if(random_range(1, rollMax) <= (int)(fractional * rollMax))
+			++skillTries;
+	}
+
+	return skillTries;
+}
+
 extern std::vector< std::pair<unsigned long, unsigned long> > bannedIPs;
 
 GameState::GameState(Game *game, const Range &range)
@@ -935,27 +951,23 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 			if(!killerPlayer && attackerMaster)
 				killerPlayer = dynamic_cast<Player*>(attackerMaster);
 #endif //TR_SUMMONS
-			if(killerPlayer && killerPlayer != attackedplayer && killerPlayer->access < g_config.ACCESS_PROTECT
-				&& killerPlayer->level >= g_config.PVP_UNDERDOG_EXP_MIN_LEVEL) {
-				int levelDiff = attackedplayer->level - killerPlayer->level;
-				if(levelDiff >= g_config.PVP_UNDERDOG_EXP_MIN_DIFF) {
-					exp_t lostExp = attackedplayer->getLostExperience();
-					int totalDamage = attackedCreature->getTotalInflictedDamage();
-					int killerDamage = attackedCreature->getInflicatedDamage(killerPlayer);
-					exp_t gainExp = 0;
+			if(killerPlayer && killerPlayer != attackedplayer && killerPlayer->access < g_config.ACCESS_PROTECT) {
+				exp_t lostExp = attackedplayer->getLostExperience();
+				int totalDamage = attackedCreature->getTotalInflictedDamage();
+				int killerDamage = attackedCreature->getInflicatedDamage(killerPlayer);
+				exp_t gainExp = 0;
 
-					if(totalDamage > 0 && killerDamage > 0)
-						gainExp = (exp_t)killerDamage * lostExp * g_config.PVP_UNDERDOG_EXP_PERCENT / (100 * totalDamage);
-					else if(attacker)
-						gainExp = lostExp * g_config.PVP_UNDERDOG_EXP_PERCENT / 100;
+				if(totalDamage > 0 && killerDamage > 0)
+					gainExp = (exp_t)killerDamage * lostExp * g_config.PVP_UNDERDOG_EXP_PERCENT / (100 * totalDamage);
+				else if(attacker)
+					gainExp = lostExp * g_config.PVP_UNDERDOG_EXP_PERCENT / 100;
 
-					if(gainExp > 0) {
-						killerPlayer->addExp(gainExp);
-						killerPlayer->sendStats();
-						std::stringstream msg;
-						msg << "You gained " << gainExp << " experience for defeating a higher level opponent.";
-						killerPlayer->sendTextMessage(MSG_ADVANCE, msg.str().c_str());
-					}
+				if(gainExp > 0) {
+					killerPlayer->addExp(gainExp);
+					killerPlayer->sendStats();
+					std::stringstream msg;
+					msg << "You gained " << gainExp << " experience for defeating another player.";
+					killerPlayer->sendTextMessage(MSG_ADVANCE, msg.str().c_str());
 				}
 			}
 		}
@@ -3961,17 +3973,18 @@ void Game::creatureMakeDamage(Creature *creature, Creature *attackedCreature, fi
 	const CreatureStateVec& creatureStateVec = gamestate.getCreatureStateList(targettile);
 	const CreatureState& creatureState = creatureStateVec[0].second;
 
-	int skillTries = 1;
+	double skillRate = 1.0;
 	if(Monster* targetMonster = dynamic_cast<Monster*>(attackedCreature)){
 		MonsterType* mtype = targetMonster->getMonsterType();
-		if(mtype && mtype->skillmul > 0)
-			skillTries = mtype->skillmul;
+		if(mtype && mtype->skillrate > 0.0)
+			skillRate = mtype->skillrate;
 	}
+	const int skillTries = resolveSkillTriesFromRate(skillRate);
 
-	if(player && (creatureState.damage > 0 || creatureState.manaDamage > 0)) {
+	if(player && skillTries > 0 && (creatureState.damage > 0 || creatureState.manaDamage > 0)) {
 		player->addSkillTry(skillTries);
 	}
-	else if(player)
+	else if(player && skillTries > 0)
 		player->addSkillTry(skillTries);
 
 
@@ -4395,6 +4408,7 @@ void Game::checkCreatureAttacking(unsigned long id)
 						if (!attackedCreature->isRemoved)
 						{
 							Player* player = dynamic_cast<Player*>(creature);
+							bool usedWand = false;
 							if (player)
 							{
 #ifdef SD_BURST_ARROW
@@ -4403,11 +4417,15 @@ void Game::checkCreatureAttacking(unsigned long id)
 #endif //SD_BURST_ARROW
 #ifdef JD_WANDS
 								int wandid = player->getWandId();
-								if (wandid > 0)
+								if (wandid > 0) {
 									useWand(player, attackedCreature, wandid);
+									usedWand = true;
+								}
 #endif //JD_WANDS
 							}
-							this->creatureMakeDamage(creature, attackedCreature, creature->getFightType());
+
+							if(!usedWand)
+								this->creatureMakeDamage(creature, attackedCreature, creature->getFightType());
 						}
 					}
 

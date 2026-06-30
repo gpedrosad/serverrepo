@@ -155,6 +155,7 @@ public:
 	int level;
 	int maglevel;
 	int skillmul;
+	double skillrate;
 	bool trainer;
 	int health;
 	int health_max;

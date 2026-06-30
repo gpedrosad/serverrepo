@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<monster name="Elite Trainer Monk" level="1" maglevel="0" experience="0" skillmul="1" trainer="1" pushable="0" armor="50" defense="50" canpushitems="0" staticattack="8" changetarget="0" speed="220">
+<monster name="Elite Trainer Monk" level="1" maglevel="0" experience="0" skillmul="1" skillrate="1.0" trainer="1" pushable="0" armor="50" defense="50" canpushitems="0" staticattack="8" changetarget="0" speed="220">
 	<health now="9999" max="9999"/>
 	<look type="57" head="94" body="94" legs="94" feet="94" corpse="3128"/>
 	<combat targetdistance="1" runonhealth="0"/>

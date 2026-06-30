@@ -138,11 +138,6 @@
 <spell name="Energy Wall" 			words="adevo mas grav vis"	maglv="18"	mana="250"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
 <spell name="Sudden Death" 			words="adori vita vis"		maglv="25"	mana="220"	enabled="1"><vocation id="1" /></spell>
 
-<spell name="Heavy Magic Missile 10"	words="adori gran dec"	maglv="3"	mana="140"	enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /></spell>
-<spell name="Great Fireball 10"		words="adori gran flam dec"	maglv="9"	mana="400"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
-<spell name="Ultimate Healing 10"	words="adura vita dec"		maglv="11"	mana="1000"	enabled="1"><vocation id="2" /></spell>
-<spell name="Explosion 10" 			words="adevo mas hur dec"	maglv="12"	mana="600"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
-<spell name="Sudden Death 10" 		words="adori vita vis dec"	maglv="25"	mana="2200" enabled="1"><vocation id="1" /></spell>
 <spell name="Blank" 				words="adori blank"			maglv="3"	mana="60"	enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /></spell>
 <!--\\ End Make Runes //-->
 

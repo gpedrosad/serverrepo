@@ -12,6 +12,7 @@ web/downloads/*.dmg
 web/state/analytics.json
 web/state/daily.json
 web/state/register.json
+web/state/peak.json
 
 # Runtime OT data — never versionar ni pisar en deploy del VPS
 server/YurOTS/ots/data/online.xml

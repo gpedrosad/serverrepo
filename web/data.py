@@ -329,6 +329,35 @@ def save_daily_state(state_file: Path, state: dict) -> None:
     state_file.write_text(json.dumps(state, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def load_players_peak(peak_file: Path) -> int:
+    if not peak_file.is_file():
+        return 0
+    try:
+        data = json.loads(peak_file.read_text(encoding="utf-8"))
+        return max(0, int(data.get("players_peak", 0)))
+    except (json.JSONDecodeError, OSError, TypeError, ValueError):
+        return 0
+
+
+def update_players_peak(peak_file: Path, *candidates: int) -> int:
+    stored = load_players_peak(peak_file)
+    new_peak = stored
+    for value in candidates:
+        try:
+            new_peak = max(new_peak, int(value))
+        except (TypeError, ValueError):
+            continue
+    if new_peak > stored:
+        peak_file.parent.mkdir(parents=True, exist_ok=True)
+        tmp = peak_file.with_suffix(".json.tmp")
+        tmp.write_text(
+            json.dumps({"players_peak": new_peak}, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+        tmp.replace(peak_file)
+    return new_peak
+
+
 def daily_rankings(players: list[dict], state_file: Path) -> tuple[list[dict], list[dict]]:
     today = datetime.now().strftime("%Y%m%d")
     state = load_daily_state(state_file)
@@ -406,7 +435,10 @@ def build_payload(
     ot_host: str,
     ot_port: int,
     server_ip: str = "127.0.0.1",
+    peak_state_file: Path | None = None,
 ) -> dict:
+    if peak_state_file is None:
+        peak_state_file = state_file.parent / "peak.json"
     players: list[dict] = []
     all_deaths: list[dict] = []
 
@@ -439,6 +471,12 @@ def build_payload(
     status["uptime_fmt"] = fmt_uptime(status["uptime_seconds"])
 
     online = [p for p in load_online(online_file) if is_public_rank_player(p.get("name", ""))]
+    status["players_peak"] = update_players_peak(
+        peak_state_file,
+        status["players_peak"],
+        status["players_online"],
+        len(online),
+    )
     powergamers, frags_today = daily_rankings(public_players, state_file)
     top_frags = top_fraggers(public_players)
 

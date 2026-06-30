@@ -1721,6 +1721,9 @@ void Player::onThingMove(const Creature *creature, slots_t fromSlot, const Item*
 	{
 		const_cast<Item*>(fromItem)->removeGlimmer();
 		client->sendSkills();
+		// FIX rings: refrescar flags (timeRing/energyRing/stealthRing) y
+		// efectos (velocidad/mana shield/invisible) inmediatamente al desequipar.
+		checkRing(0);
 	}
 #endif //YUR_RINGS_AMULETS
 	client->sendThingMove(creature, fromSlot, fromItem, oldFromCount, toContainer, to_slotid, toItem, oldToCount, count);
@@ -1744,11 +1747,15 @@ void Player::onThingMove(const Creature *creature, slots_t fromSlot, const Item*
 	{
 		const_cast<Item*>(fromItem)->removeGlimmer();
 		client->sendSkills();
+		// FIX rings: refrescar flags al desequipar.
+		checkRing(0);
 	}
 	else if (toSlot == SLOT_RING)
 	{
 		const_cast<Item*>(fromItem)->setGlimmer();
 		client->sendSkills();
+		// FIX rings: refrescar flags al equipar.
+		checkRing(0);
 	}
 #endif //YUR_RINGS_AMULETS
 	client->sendThingMove(creature, fromSlot, fromItem, oldFromCount, toSlot, toItem, oldToCount, count);
@@ -1776,6 +1783,8 @@ void Player::onThingMove(const Creature *creature, const Container *fromContaine
 	{
 		const_cast<Item*>(fromItem)->setGlimmer();
 		client->sendSkills();
+		// FIX rings: refrescar flags al equipar.
+		checkRing(0);
 	}
 #endif //YUR_RINGS_AMULETS
 	client->sendThingMove(creature, fromContainer, from_slotid, fromItem, oldFromCount, toSlot, toItem, oldToCount, count);
@@ -1806,6 +1815,8 @@ void Player::onThingMove(const Creature *creature, slots_t fromSlot,
 	{
 		const_cast<Item*>(fromItem)->removeGlimmer();
 		client->sendSkills();
+		// FIX rings: refrescar flags al desequipar.
+		checkRing(0);
 	}
 #endif //YUR_RINGS_AMULETS
 	client->sendThingMove(creature, fromSlot, fromItem, oldFromCount, toPos, toItem, oldToCount, count);
@@ -1836,6 +1847,8 @@ void Player::onThingMove(const Creature *creature, const Position &fromPos, int 
 	{
 		const_cast<Item*>(fromItem)->setGlimmer();
 		client->sendSkills();
+		// FIX rings: refrescar flags al equipar.
+		checkRing(0);
 	}
 #endif //YUR_RINGS_AMULETS
 	client->sendThingMove(creature, fromPos, stackpos, fromItem, oldFromCount, toSlot, toItem, oldToCount, count);
@@ -3323,11 +3336,20 @@ void Player::checkRing(int thinkTics)
 {
 	if (items[SLOT_RING] && items[SLOT_RING]->getTime() > 0) 	// eat time from ring
 	{
+		// FIX rings: skill rings nacen con time = 0, asi que en la practica
+		// este bloque solo aplica a rings temporales. Mantenemos el chequeo
+		// defensivo por si en el futuro se les asigna time.
+		int consumedId = items[SLOT_RING]->getID();
 		items[SLOT_RING]->useTime(thinkTics);
 		if (items[SLOT_RING]->getTime() <= 0)
 		{
 			removeItemInventory(SLOT_RING);
-			client->sendSkills();	// TODO: send only if it was skill ring
+			// FIX rings: solo enviar skills si el ring expirado era de skill.
+			if (consumedId == ITEM_SWORD_RING_IN_USE ||
+				consumedId == ITEM_AXE_RING_IN_USE ||
+				consumedId == ITEM_CLUB_RING_IN_USE ||
+				consumedId == ITEM_POWER_RING_IN_USE)
+				client->sendSkills();
 		}
 	}
 
@@ -3373,25 +3395,25 @@ void Player::checkRing(int thinkTics)
 		if (ringId == ITEM_LIFE_RING_IN_USE || ringId == ITEM_RING_OF_HEALING_IN_USE)
 		{
 			ringRegenTick += thinkTics;
-			if (ringRegenTick >= 6000)
+			if (ringRegenTick >= 4000)
 			{
-				ringRegenTick -= 6000;
+				ringRegenTick -= 4000;
 				bool updated = false;
 				if (ringId == ITEM_LIFE_RING_IN_USE && health < healthmax)
 				{
-					health = std::min(healthmax, health + 8);
+					health = std::min(healthmax, health + 10);
 					updated = true;
 				}
 				else if (ringId == ITEM_RING_OF_HEALING_IN_USE)
 				{
 					if (health < healthmax)
 					{
-						health = std::min(healthmax, health + 6);
+						health = std::min(healthmax, health + 10);
 						updated = true;
 					}
 					if (mana < manamax)
 					{
-						mana = std::min(manamax, mana + 6);
+						mana = std::min(manamax, mana + 10);
 						updated = true;
 					}
 				}

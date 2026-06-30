@@ -553,6 +553,7 @@ protected:
 #ifdef YUR_SOFT_BOOTS
 	int softBootsTick;
 #endif //YUR_SOFT_BOOTS
+
 /*
 #ifdef YUR_MULTIPLIERS
 	static int WEAPON_MUL[5];

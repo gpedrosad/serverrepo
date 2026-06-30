@@ -12,14 +12,14 @@ RINGS = {
 	{keys = {'might ring', 'might'}, itemid = 2164, unitPrice = 7000},
 	{keys = {'time ring', 'time'}, itemid = 2169, unitPrice = 2000},
 	{keys = {'stealth ring', 'stealth'}, itemid = 2165, unitPrice = 4000},
-	{keys = {'ring of healing', 'healing ring', 'healing'}, itemid = 2214, unitPrice = 2000},
-	{keys = {'life ring', 'life'}, itemid = 2168, unitPrice = 1000},
+	{keys = {'ring of healing', 'healing ring', 'healing'}, itemid = 2214, unitPrice = 2500},
+	{keys = {'life ring', 'life'}, itemid = 2168, unitPrice = 1500},
 	{keys = {'sword ring', 'sword'}, itemid = 2207, unitPrice = 1000},
 	{keys = {'axe ring', 'axe'}, itemid = 2208, unitPrice = 1000},
 	{keys = {'club ring', 'club'}, itemid = 2209, unitPrice = 1000},
 }
 
-RINGS_HELP = 'Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1k, ring of healing 2k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".'
+RINGS_HELP = 'Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".'
 
 function onThingMove(creature, thing, oldpos, oldstackpos)
 end

@@ -13,7 +13,7 @@
 <npc name="Obi" x="173" y="46" z="7" dir="1"/>
 <npc name="Nimral" x="122" y="117" z="7" dir="3"/>
 
-<npc name="Parived" x="132" y="29" z="7" dir="2"/>
+<npc name="Parived" x="133" y="58" z="7" dir="2"/>
 <npc name="Tonka" x="132" y="29" z="6" dir="2"/>
 
 <npc name="Orlan" x="127" y="49" z="4" dir="1"/>

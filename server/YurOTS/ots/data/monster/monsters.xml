@@ -158,6 +158,7 @@
 <monster name="Enraged Minotaur Mage" file="enraged minotaur mage.xml" />
 <monster name="Monk" file="monk.xml" />
 <monster name="Trainer Monk" file="trainer monk.xml" />
+<monster name="Mini Trainer Monk" file="mini trainer monk.xml" />
 <monster name="Elite Trainer Monk" file="elite trainer monk.xml" />
 <monster name="Mummy" file="mummy.xml" />
 <monster name="Angry Mummy" file="angry mummy.xml" />
