@@ -230,6 +230,53 @@
       padding: 0.5rem 0.75rem;
       font-size: 11px;
     }
+    .premium-value-pill {
+      border: 1px solid rgba(251, 191, 36, 0.2);
+      background: rgba(245, 158, 11, 0.08);
+      border-radius: 0.5rem;
+      padding: 0.45rem 0.55rem;
+      text-align: center;
+    }
+    .premium-plan-chip {
+      border: 1px solid rgba(251, 191, 36, 0.22);
+      background: linear-gradient(165deg, rgba(245, 158, 11, 0.1), rgba(255,255,255,.02));
+      border-radius: 0.5rem;
+      padding: 0.65rem 0.75rem;
+      text-align: left;
+      cursor: pointer;
+      transition: border-color 0.18s ease, transform 0.12s ease, background 0.18s ease;
+    }
+    .premium-plan-chip:hover { border-color: rgba(251, 191, 36, 0.42); background: rgba(245, 158, 11, 0.14); }
+    .premium-plan-chip:active { transform: scale(0.98); }
+    .premium-plan-chip.featured { border-color: rgba(251, 191, 36, 0.48); }
+    .premium-compare-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+    .premium-compare-col {
+      padding: 0.65rem 0.75rem;
+    }
+    .premium-compare-col + .premium-compare-col {
+      border-left: 1px solid rgba(255,255,255,.06);
+      background: linear-gradient(165deg, rgba(245, 158, 11, 0.08), rgba(255,255,255,.02));
+    }
+    .premium-trust-step {
+      border: 1px solid rgba(255,255,255,.06);
+      background: rgba(255,255,255,.02);
+      border-radius: 0.5rem;
+      padding: 0.55rem 0.65rem;
+    }
+    .premium-step-label {
+      font-size: 9px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(161, 161, 170, 0.9);
+    }
+    .premium-step-label.active { color: rgba(253, 230, 138, 0.95); }
     .dl-card {
       border: 1px solid rgba(255,255,255,.08);
       background: linear-gradient(165deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
@@ -379,15 +426,23 @@
   <!-- PREMIUM -->
   <section id="panel-premium" class="panel space-y-4">
     <div id="premium-hero" class="premium-hero anim-in rounded-lg px-3 py-3"></div>
+    <div>
+      <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">Qué incluye</p>
+      <div id="premium-perks" class="grid grid-cols-1 gap-2 sm:grid-cols-2"></div>
+    </div>
+    <div id="premium-compare" class="anim-in"></div>
+    <div id="premium-trust" class="anim-in"></div>
     <div id="premium-checkout" class="premium-checkout-box space-y-3">
       <div id="premium-checkout-launcher"></div>
       <div id="premium-checkout-flow" class="hidden space-y-3">
         <div class="flex items-center justify-between gap-2">
-          <p class="text-[11px] font-medium uppercase tracking-widest text-amber-200/90">Donar por premium</p>
-          <div class="flex items-center gap-1.5" aria-hidden="true">
-            <span id="premium-dot-1" class="premium-step-dot active"></span>
-            <span id="premium-dot-2" class="premium-step-dot"></span>
-            <span id="premium-dot-3" class="premium-step-dot"></span>
+          <p class="text-[11px] font-medium text-amber-200/90">Tu donación</p>
+          <div class="flex items-center gap-2" aria-hidden="true">
+            <span id="premium-label-1" class="premium-step-label active">Plan</span>
+            <span class="text-zinc-700">·</span>
+            <span id="premium-label-2" class="premium-step-label">Extra</span>
+            <span class="text-zinc-700">·</span>
+            <span id="premium-label-3" class="premium-step-label">Pago</span>
           </div>
         </div>
         <div id="premium-step-1" class="space-y-2"></div>
@@ -395,10 +450,6 @@
         <div id="premium-step-3" class="hidden space-y-2"></div>
         <p id="premium-order-result" class="hidden rounded-md px-2.5 py-2 text-xs"></p>
       </div>
-    </div>
-    <div>
-      <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">Qué incluye</p>
-      <div id="premium-perks" class="grid grid-cols-1 gap-2 sm:grid-cols-2"></div>
     </div>
     <div id="premium-cta" class="anim-in rounded-lg border border-white/[0.06] bg-white/[0.02] px-3 py-2.5"></div>
   </section>
@@ -552,8 +603,16 @@ function trackPremiumEvent(event, detail) {
 
 function openPremiumCheckout(planId) {
   premiumState.checkoutOpen = true;
-  if (planId) premiumState.planId = String(planId);
-  premiumState.step = premiumState.planId ? 2 : 1;
+  if (planId) {
+    premiumState.planId = String(planId);
+    premiumState.step = 2;
+  } else {
+    if (!premiumState.planId) {
+      const featured = getPremiumPlans().find(p => p.featured);
+      if (featured) premiumState.planId = String(featured.id || featured.itemId);
+    }
+    premiumState.step = 1;
+  }
   trackPremiumEvent('checkout_open', {
     plan_id: premiumState.planId || null,
     step: premiumState.step,
@@ -576,12 +635,20 @@ function renderPremiumLauncher() {
   }
   flow.classList.add('hidden');
   el.classList.remove('hidden');
-  const minPrice = fmtPrice(PREMIUM_PLANS[0].price);
+  const plans = getPremiumPlans();
+  const featured = plans.find(p => p.featured) || plans[0];
+  const saveLine = featured?.save
+    ? `<p class="mt-2 text-[10px] text-emerald-400/90">El plan de 2 semanas ahorra ${fmtPrice(featured.save)} frente a comprar 2× semanal.</p>`
+    : '';
   el.innerHTML = `
-    <p class="text-[11px] leading-relaxed text-zinc-300">Donación por transferencia. Al confirmar el pago activamos premium en tu personaje.</p>
+    <p class="text-[11px] leading-relaxed text-zinc-300">
+      Transferencia bancaria · activamos premium en tu personaje al confirmar el pago.
+    </p>
+    ${saveLine}
     <button type="button" class="premium-btn-primary lg mt-3 premium-open-buy">
-      Donar por Premium · desde ${minPrice}
-    </button>`;
+      Elegir plan · desde ${fmtPrice(plans[0]?.price || PREMIUM_PLANS[0].price)}
+    </button>
+    <p class="mt-2 text-center text-[10px] text-zinc-600">Sin compromiso · el juego sigue siendo free to play</p>`;
 }
 
 function premiumItemImg(src, src2x, alt) {
@@ -604,9 +671,9 @@ function setPremiumStep(step) {
   premiumState.step = step;
   for (let i = 1; i <= 3; i++) {
     const el = document.getElementById('premium-step-' + i);
-    const dot = document.getElementById('premium-dot-' + i);
+    const label = document.getElementById('premium-label-' + i);
     if (el) el.classList.toggle('hidden', i !== step);
-    if (dot) dot.classList.toggle('active', i === step);
+    if (label) label.classList.toggle('active', i === step);
   }
 }
 
@@ -653,10 +720,11 @@ function renderPremiumCheckout() {
   const pay = cfg?.payment || {};
 
   document.getElementById('premium-step-1').innerHTML = `
-    <p class="text-[11px] text-zinc-400">Elige cuánto tiempo de premium quieres apoyar. Se acredita en el personaje que indiques.</p>
+    <p class="text-[11px] text-zinc-400">Elige el tiempo de premium. Se acredita en el personaje que indiques al pagar.</p>
     <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
       ${plans.map((plan, i) => {
         const save = plan.save ? `<span class="text-emerald-400/90">Ahorras ${fmtPrice(plan.save)}</span> vs 2× semanal.` : '';
+        const perDay = plan.days ? `~${fmtPrice(Math.round(plan.price / plan.days))}/día` : '';
         return `
         <button type="button" data-plan="${esc(plan.id || plan.itemId)}"
           class="premium-price selectable anim-in rounded-lg px-3 py-3 text-left ${premiumState.planId === String(plan.id || plan.itemId) ? 'selected' : ''} ${plan.featured ? 'featured' : ''}"
@@ -668,10 +736,11 @@ function renderPremiumCheckout() {
                 <div>
                   <p class="text-[10px] uppercase tracking-widest text-zinc-600">${esc(plan.label)}</p>
                   <p class="mt-1 text-lg font-medium tabular-nums tracking-tight text-amber-100">${fmtPrice(plan.price)}</p>
+                  ${perDay ? `<p class="text-[9px] text-zinc-500">${perDay}</p>` : ''}
                 </div>
-                ${plan.featured ? '<span class="premium-badge">Recomendado</span>' : ''}
+                ${plan.featured ? '<span class="premium-badge">Mejor valor</span>' : ''}
               </div>
-              <p class="mt-1 text-[10px] leading-relaxed text-zinc-500">${plan.days} días de premium en tu personaje. ${save}</p>
+              <p class="mt-1 text-[10px] leading-relaxed text-zinc-500">${plan.days} días de premium. ${save}</p>
             </div>
           </div>
         </button>`;
@@ -679,13 +748,13 @@ function renderPremiumCheckout() {
     </div>
     <button type="button" id="premium-next-1" ${premiumState.planId ? '' : 'disabled'}
       class="premium-btn-primary">
-      Continuar al paso 2
+      Continuar con este plan
     </button>`;
 
   const sel = premiumPlanById(premiumState.planId);
   document.getElementById('premium-step-2').innerHTML = `
-    <p class="text-[11px] text-zinc-400">¿Quieres agregar el Golden Amulet por ${fmtPrice(amulet.price)}?</p>
-    ${sel ? `<p class="text-[10px] text-zinc-600">Plan: <span class="text-zinc-400">${esc(sel.label)}</span> · ${fmtPrice(sel.price)}</p>` : ''}
+    <p class="text-[11px] text-zinc-400">Opcional: Golden Amulet por ${fmtPrice(amulet.price)}. Puedes saltarlo si no lo necesitas.</p>
+    ${sel ? `<p class="text-[10px] text-zinc-600">Plan elegido: <span class="text-amber-200/90">${esc(sel.label)}</span> · ${fmtPrice(sel.price)}</p>` : ''}
     <label class="premium-addon ${premiumState.goldenAmulet ? 'selected' : ''} flex cursor-pointer items-start gap-3 rounded-lg px-3 py-3">
       <input type="checkbox" id="premium-amulet-check" class="mt-1" ${premiumState.goldenAmulet ? 'checked' : ''}>
       ${premiumItemImg(amulet.image, amulet.image2x, amulet.label)}
@@ -696,14 +765,15 @@ function renderPremiumCheckout() {
     </label>
     <div class="flex flex-wrap gap-2">
       <button type="button" id="premium-back-2" class="premium-btn-secondary">Volver</button>
+      <button type="button" id="premium-skip-2" class="premium-btn-secondary">Sin amulet</button>
       <button type="button" id="premium-next-2" class="premium-btn-primary flex-1">
-        Continuar · ${fmtPrice(premiumTotal())}
+        Ir al pago · ${fmtPrice(premiumTotal())}
       </button>
     </div>`;
 
   document.getElementById('premium-step-3').innerHTML = `
     <div class="rounded-lg border border-white/[0.06] bg-white/[0.02] px-3 py-2.5 text-[11px] leading-relaxed text-zinc-400">
-      <p class="text-zinc-300">Transfiere <span class="text-amber-200/90 font-medium">${fmtPrice(premiumTotal())}</span> como donación y adjunta el comprobante.</p>
+      <p class="text-zinc-300">Transfiere <span class="text-amber-200/90 font-medium">${fmtPrice(premiumTotal())}</span> y adjunta el comprobante. Revisamos y activamos premium en tu personaje.</p>
       <p class="mt-1.5 text-[10px] text-zinc-500">${esc(pay.note || '')}</p>
       <ul class="mt-2 space-y-0.5 text-[10px] text-zinc-500">
         <li>Titular: <span class="text-zinc-400">${esc(pay.holder || '—')}</span></li>
@@ -719,17 +789,17 @@ function renderPremiumCheckout() {
       <label class="block">
         <span class="mb-1 block text-[10px] text-zinc-500">Nombre del personaje</span>
         <input name="character_name" required maxlength="20" pattern="[A-Za-z ]{3,20}"
-          class="w-full rounded-md border border-white/10 bg-black/20 px-2.5 py-1.5 text-xs text-zinc-200" placeholder="Nombre exacto del personaje">
+          class="w-full rounded-md border border-white/10 bg-black/20 px-2.5 py-1.5 text-xs text-zinc-200" placeholder="Nombre exacto en el juego">
       </label>
       <label class="block">
-        <span class="mb-1 block text-[10px] text-zinc-500">Comprobante de pago (JPG, PNG o PDF · máx. 5 MB)</span>
+        <span class="mb-1 block text-[10px] text-zinc-500">Comprobante (JPG, PNG o PDF · máx. 5 MB)</span>
         <input name="receipt" type="file" required accept=".jpg,.jpeg,.png,.pdf,.webp,image/jpeg,image/png,application/pdf"
           class="w-full text-[10px] text-zinc-500 file:mr-2 file:rounded file:border-0 file:bg-white/10 file:px-2 file:py-1 file:text-[10px] file:text-zinc-300">
       </label>
       <div class="flex flex-wrap gap-2 pt-1">
         <button type="button" id="premium-back-3" class="premium-btn-secondary">Volver</button>
         <button type="submit" id="premium-submit" class="premium-btn-primary flex-1 disabled:opacity-40">
-          Enviar donación y comprobante
+          Enviar comprobante · ${fmtPrice(premiumTotal())}
         </button>
       </div>
     </form>`;
@@ -748,6 +818,11 @@ function bindPremiumCheckoutEvents() {
   if (!panel || !root) return;
 
   panel.addEventListener('click', e => {
+    const planOpen = e.target.closest('[data-plan-open]');
+    if (planOpen) {
+      openPremiumCheckout(planOpen.dataset.planOpen);
+      return;
+    }
     if (e.target.id === 'premium-hero-buy' || e.target.closest('.premium-open-buy')) {
       openPremiumCheckout();
     }
@@ -758,9 +833,8 @@ function bindPremiumCheckoutEvents() {
     if (planBtn) {
       premiumState.planId = planBtn.dataset.plan;
       trackPremiumEvent('plan_select', { plan_id: premiumState.planId });
+      premiumState.step = 2;
       renderPremiumCheckout();
-      const next = document.getElementById('premium-next-1');
-      if (next) next.removeAttribute('disabled');
       return;
     }
     if (e.target.id === 'premium-next-1' && premiumState.planId) {
@@ -772,6 +846,20 @@ function bindPremiumCheckoutEvents() {
     if (e.target.id === 'premium-back-2') {
       premiumState.step = 1;
       renderPremiumCheckout();
+      return;
+    }
+    if (e.target.id === 'premium-skip-2') {
+      premiumState.goldenAmulet = false;
+      premiumState.step = 3;
+      trackPremiumEvent('step3', {
+        plan_id: premiumState.planId,
+        golden_amulet: false,
+        total: premiumTotal(),
+        skipped_amulet: true,
+      });
+      renderPremiumCheckout();
+      const ts = document.getElementById('premium-form-ts');
+      if (ts) ts.value = String(Date.now() / 1000);
       return;
     }
     if (e.target.id === 'premium-next-2') {
@@ -1107,23 +1195,51 @@ function renderInfo(sections) {
 }
 
 function renderPremium() {
+  const plans = getPremiumPlans();
+  const featured = plans.find(p => p.featured) || plans[1] || plans[0];
+  const weekly = plans.find(p => !p.featured) || plans[0];
+
   document.getElementById('premium-hero').innerHTML = `
     <div class="flex flex-wrap items-start justify-between gap-2">
       <div class="min-w-0">
         <p class="premium-badge inline-block">Donación Premium</p>
-        <h2 class="mt-2 text-sm font-medium tracking-tight text-amber-100/95">Apoya el servidor</h2>
+        <h2 class="mt-2 text-sm font-medium tracking-tight text-amber-100/95">Más exp, skills x2 y 6 h de training</h2>
         <p class="mt-1.5 max-w-md text-[11px] leading-relaxed text-zinc-300">
-          Tu donación ayuda a mantener Retro76 online. Como agradecimiento recibes tiempo premium con comodidades,
-          outfits clásicos 7.6 y acceso a promotion.
+          Apoya Retro76 y recibe comodidades en el juego: bonus de caza, outfits 7.6 y regen mejorado.
+          Donación voluntaria — el servidor sigue siendo free to play.
         </p>
       </div>
-      <p class="text-right text-[10px] leading-relaxed text-zinc-500">
-        Donación voluntaria<br>
-        <span class="text-zinc-400">no es obligatoria</span> · el juego es free to play
-      </p>
+    </div>
+    <div class="mt-3 grid grid-cols-3 gap-1.5">
+      <div class="premium-value-pill">
+        <p class="text-[13px] font-medium tabular-nums text-amber-100">+10%</p>
+        <p class="mt-0.5 text-[9px] leading-tight text-zinc-500">exp y botín</p>
+      </div>
+      <div class="premium-value-pill">
+        <p class="text-[13px] font-medium tabular-nums text-amber-100">x2</p>
+        <p class="mt-0.5 text-[9px] leading-tight text-zinc-500">skills y ML</p>
+      </div>
+      <div class="premium-value-pill">
+        <p class="text-[13px] font-medium tabular-nums text-amber-100">6 h</p>
+        <p class="mt-0.5 text-[9px] leading-tight text-zinc-500">training/día</p>
+      </div>
+    </div>
+    <div class="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
+      ${plans.map(plan => `
+        <button type="button" data-plan-open="${esc(plan.id || plan.itemId)}"
+          class="premium-plan-chip ${plan.featured ? 'featured' : ''}">
+          <div class="flex items-center justify-between gap-2">
+            <div>
+              <p class="text-[10px] uppercase tracking-widest text-zinc-600">${esc(plan.label)}</p>
+              <p class="mt-0.5 text-base font-medium tabular-nums text-amber-100">${fmtPrice(plan.price)}</p>
+            </div>
+            ${plan.featured ? '<span class="premium-badge">Mejor valor</span>' : ''}
+          </div>
+          ${plan.save ? `<p class="mt-1 text-[9px] text-emerald-400/90">Ahorras ${fmtPrice(plan.save)}</p>` : `<p class="mt-1 text-[9px] text-zinc-600">${plan.days} días</p>`}
+        </button>`).join('')}
     </div>
     <button type="button" id="premium-hero-buy" class="premium-btn-primary lg mt-3 w-full">
-      Donar por Premium · desde ${fmtPrice(PREMIUM_PLANS[0].price)}
+      Ver planes y donar
     </button>`;
 
   document.getElementById('premium-perks').innerHTML = PREMIUM_PERKS.map((p, i) => `
@@ -1133,14 +1249,53 @@ function renderPremium() {
       <p class="mt-0.5 text-[10px] leading-relaxed text-zinc-500">${esc(p.desc)}</p>
     </div>`).join('');
 
+  document.getElementById('premium-compare').innerHTML = `
+    <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">Gratis vs Premium</p>
+    <div class="premium-compare-row">
+      <div class="premium-compare-col">
+        <p class="text-[10px] font-medium text-zinc-500">Gratis</p>
+        <ul class="mt-1.5 space-y-1 text-[10px] leading-relaxed text-zinc-600">
+          <li>2 h training/día</li>
+          <li>Skills a velocidad normal</li>
+          <li>Sin bonus de exp ni botín</li>
+        </ul>
+      </div>
+      <div class="premium-compare-col">
+        <p class="text-[10px] font-medium text-amber-200/90">Premium</p>
+        <ul class="mt-1.5 space-y-1 text-[10px] leading-relaxed text-zinc-400">
+          <li><span class="text-amber-100/90">6 h</span> training/día</li>
+          <li><span class="text-amber-100/90">Skills x2</span> y regen mejorado</li>
+          <li><span class="text-amber-100/90">+10%</span> exp y botín</li>
+        </ul>
+      </div>
+    </div>`;
+
+  document.getElementById('premium-trust').innerHTML = `
+    <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">Cómo funciona</p>
+    <div class="grid grid-cols-1 gap-2 sm:grid-cols-3">
+      <div class="premium-trust-step">
+        <p class="text-[10px] font-medium text-zinc-300">1. Eliges plan</p>
+        <p class="mt-0.5 text-[9px] leading-relaxed text-zinc-600">Semanal o quincenal${featured?.save ? ` · ahorra ${fmtPrice(featured.save)}` : ''}.</p>
+      </div>
+      <div class="premium-trust-step">
+        <p class="text-[10px] font-medium text-zinc-300">2. Transfieres</p>
+        <p class="mt-0.5 text-[9px] leading-relaxed text-zinc-600">Datos bancarios y comprobante en el formulario.</p>
+      </div>
+      <div class="premium-trust-step">
+        <p class="text-[10px] font-medium text-zinc-300">3. Activamos</p>
+        <p class="mt-0.5 text-[9px] leading-relaxed text-zinc-600">Premium en tu personaje · <span class="text-zinc-500">Use</span> en el juego.</p>
+      </div>
+    </div>`;
+
   document.getElementById('premium-cta').innerHTML = `
     <p class="text-[11px] leading-relaxed text-zinc-300">
-      Tras confirmar tu donación, activamos premium en tu personaje. Usa
-      <span class="text-amber-200/90">Use</span> en el juego para activar el tiempo.
+      ¿Listo? Elige un plan, transfiere y envía el comprobante. Activamos premium en tu personaje al confirmar.
     </p>
-    <p class="mt-1.5 text-[10px] text-zinc-600">Golden amulet opcional +${fmtPrice(2000)} · oro del botín al banco · <span class="text-zinc-500">!premmy</span> para ver tiempo restante</p>
+    <p class="mt-1.5 text-[10px] text-zinc-600">
+      Golden amulet opcional +${fmtPrice(2000)} · oro del botín al banco · <span class="text-zinc-500">!premmy</span> para ver tiempo restante
+    </p>
     <button type="button" class="premium-btn-primary mt-3 premium-open-buy">
-      Hacer donación Premium
+      Elegir plan · desde ${fmtPrice(weekly?.price || PREMIUM_PLANS[0].price)}
     </button>`;
 
   renderPremiumLauncher();
