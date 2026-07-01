@@ -57,15 +57,16 @@ extern Chat g_chat;
 AutoList<Player> Player::listPlayer;
 
 #ifdef YUR_PREMIUM_PROMOTION
-//Vectores de regen [voc 0..4] = [NONE, SORCERER, DRUID, PALADIN, KNIGHT]
-//Cada entrada: {thinkTicks_entre_regens, amount_por_regen} — menor tick = más frecuente
-//Orden de prioridad: promoted (advanced) > premium > normal
-//Cambio 2026-07-01: amount del advanced sube de 1 a 2 para que la diferencia promoted > premium
-//                   sea visible (además de la frecuencia).
-const int64_t Player::premiumGainManaVector[5][2] = {{6,1},{2,1},{2,1},{3,1},{6,1}};
-const int64_t Player::premiumGainHealthVector[5][2] = {{6,1},{6,1},{6,1},{3,1},{2,1}};
-const int64_t Player::advancedGainManaVector[5][2] = {{4,2},{1,2},{1,2},{2,2},{4,2}};
-const int64_t Player::advancedGainHealthVector[5][2] = {{4,2},{4,2},{4,2},{2,2},{1,2}};
+// Regen [voc 0..4] = [NONE, SORCERER, DRUID, PALADIN, KNIGHT]
+// {thinkTicks_entre_regens, amount_por_regen} — menor tick = más frecuente
+// 4 tiers: free -> promoted (free) -> premium -> promoted+premium (advanced)
+// Ver docs/REGEN_FOOD.md
+const int64_t Player::promotedGainManaVector[5][2]   = {{6,1},{2,1},{2,1},{3,1},{5,1}};
+const int64_t Player::promotedGainHealthVector[5][2] = {{6,1},{5,1},{5,1},{3,1},{2,1}};
+const int64_t Player::premiumGainManaVector[5][2]   = {{6,2},{2,2},{2,2},{2,2},{5,2}};
+const int64_t Player::premiumGainHealthVector[5][2] = {{6,2},{5,2},{5,2},{3,2},{2,2}};
+const int64_t Player::advancedGainManaVector[5][2]  = {{4,2},{2,3},{2,3},{2,3},{4,2}};
+const int64_t Player::advancedGainHealthVector[5][2]= {{4,2},{4,2},{4,2},{2,2},{2,3}};
 #endif //YUR_PREMIUM_PROMOTION
 
 const int64_t Player::gainManaVector[5][2] = {{6,1},{3,1},{3,1},{4,1},{6,1}};
@@ -2135,12 +2136,22 @@ bool Player::gainManaTick()
 	if(vocation >= 0 && vocation < 5)
 	{
 #ifdef YUR_PREMIUM_PROMOTION
-		if (isPromoted())
+		if (promoted)
 		{
-			if(manaTick < advancedGainManaVector[vocation][0])
-				return false;
-			manaTick = 0;
-			add = advancedGainManaVector[vocation][1];
+			if (isPremium())
+			{
+				if(manaTick < advancedGainManaVector[vocation][0])
+					return false;
+				manaTick = 0;
+				add = advancedGainManaVector[vocation][1];
+			}
+			else
+			{
+				if(manaTick < promotedGainManaVector[vocation][0])
+					return false;
+				manaTick = 0;
+				add = promotedGainManaVector[vocation][1];
+			}
 		}
 		else if (isPremium())
 		{
@@ -2178,12 +2189,22 @@ bool Player::gainHealthTick()
 	if(vocation >= 0 && vocation < 5)
 	{
 #ifdef YUR_PREMIUM_PROMOTION
-		if (isPromoted())
+		if (promoted)
 		{
-			if(healthTick < advancedGainHealthVector[vocation][0])
-				return false;
-			healthTick = 0;
-			add = advancedGainHealthVector[vocation][1];
+			if (isPremium())
+			{
+				if(healthTick < advancedGainHealthVector[vocation][0])
+					return false;
+				healthTick = 0;
+				add = advancedGainHealthVector[vocation][1];
+			}
+			else
+			{
+				if(healthTick < promotedGainHealthVector[vocation][0])
+					return false;
+				healthTick = 0;
+				add = promotedGainHealthVector[vocation][1];
+			}
 		}
 		else if (isPremium())
 		{

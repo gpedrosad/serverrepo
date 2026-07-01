@@ -24,7 +24,7 @@ function onCreatureSay(cid, type, msg)
 	local state = npcHandleMessage(
 		cid,
 		msg,
-		'Hola ' .. creatureGetName(cid) .. '. Gestiono la promotion. Di "promotion" si te interesa.'
+		'Hello ' .. creatureGetName(cid) .. '. I handle promotions. Say "promotion" if you are interested.'
 	)
 	if state ~= 'focused' then
 		return
@@ -32,19 +32,15 @@ function onCreatureSay(cid, type, msg)
 
 	if talk_state == 1 then
 		if npcHandlePendingYesNo(cid, msg, function()
-			if not isPremium(cid) then
-				selfSay('Necesitas premium activo para comprar la promotion.')
-				return
-			end
 			if pay(cid, 20000) then
 				selfSay('/promote ' .. creatureGetName(cid))
 				if isPromoted(cid) then
-					selfSay('Felicidades! Ya tienes promotion.')
+					selfSay('Congratulations! You are promoted.')
 				else
-					selfSay('No se pudo completar la promotion. Necesitas premium activo.')
+					selfSay('Promotion failed. Try again or contact a gamemaster.')
 				end
 			else
-				selfSay('Necesitas 20,000 gold.')
+				selfSay('You need 20,000 gold.')
 			end
 		end) then
 			talk_state = 0
@@ -54,19 +50,17 @@ function onCreatureSay(cid, type, msg)
 
 	if msgcontains(msg, 'promotion') or msgcontains(msg, 'promote') then
 		if isPromoted(cid) then
-			selfSay('Ya tienes promotion.')
+			selfSay('You are already promoted.')
 		elseif getPlayerLevel(creatureGetName(cid)) < 20 then
-			selfSay('Necesitas nivel 20 para la promotion.')
-		elseif not isPremium(cid) then
-			selfSay('Necesitas premium activo. Puedes donar por premium en retro76.cl.')
+			selfSay('You need level 20 for promotion.')
 		else
-			selfSay('La promotion cuesta 20,000 gp. Quieres comprarla? (yes o si)')
+			selfSay('Promotion costs 20,000 gp. Do you want to buy it? (yes or si)')
 			talk_state = 1
 		end
 	elseif msgcontains(msg, 'premium') or msgcontains(msg, 'premmy') then
-		selfSay('Donacion premium en retro76.cl. Usa !premmy para ver el tiempo restante.')
+		selfSay('Premium donations at https://retro76.cl. Premium boosts regen further. Use !premmy to check your time.')
 	elseif npcIsHelp(msg) then
-		selfSay('Promotion: 20,000 gp, nivel 20 y cuenta premium activa.')
+		selfSay('Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).')
 	end
 end
 

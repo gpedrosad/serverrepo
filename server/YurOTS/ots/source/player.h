@@ -434,8 +434,8 @@ public:
 #ifdef YUR_PREMIUM_PROMOTION
 	bool isPremium() const { return g_config.FREE_PREMMY || premiumTicks > 0; }
 	void checkPremium(int);
-	bool isPromoted() const { return promoted && isPremium(); }
-	void promote() { if (isPremium()) promoted = true; }
+	bool isPromoted() const { return promoted; }
+	void promote() { promoted = true; }
 #endif //YUR_PREMIUM_PROMOTION
 
 #ifdef YUR_ROOKGARD
@@ -628,6 +628,8 @@ protected:
 	unsigned short healthTick;
 
 #ifdef YUR_PREMIUM_PROMOTION
+	static const int64_t promotedGainManaVector[5][2];
+	static const int64_t promotedGainHealthVector[5][2];
 	static const int64_t premiumGainManaVector[5][2];
 	static const int64_t premiumGainHealthVector[5][2];
 	static const int64_t advancedGainManaVector[5][2];

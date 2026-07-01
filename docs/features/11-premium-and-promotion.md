@@ -2,36 +2,35 @@
 
 ## Que es
 
-Escalera simple de progreso/estatus:
+Escalera de progreso/estatus en dos ejes:
 
-- premium con beneficios jugables concretos
-- promotion como siguiente paso de identidad y regen
+- **Premium** — donación; exp, training, outfits, regen tier alto
+- **Promotion** (Orlan) — lvl 20 + 20k gp; **free y premium**; título de vocación + regen tier intermedio
 
-En esta base premium y promotion no son solo un flag cosmetico; afectan regen y, en premium, tambien exp adicional contra monstruos.
+Regen al comer usa **4 tiers**: free → promoted → premium → promoted+premium. Detalle en [REGEN_FOOD.md](../REGEN_FOOD.md).
 
 ## Por que valio la pena
 
-- hace que premium se sienta util
-- hace que promotion tenga peso real
-- permite monetizacion o rewards del staff con impacto claro
+- premium se siente util (cantidad de regen mayor)
+- promotion tiene peso para todos (ticks mas rapidos)
+- premium + promotion es el combo tope sin ser tan extremo como el sistema viejo de 3 tiers
 
 ## Que conviene conservar al portarlo
 
-- perks comprensibles
-- diferencia clara entre premium y promoted
-- requisitos simples de comunicar
-- persistencia limpia de premium time y promoted state
+- perks comprensibles (ticks vs cantidad en pantalla)
+- promotion no atada a premium en Orlan; premium sigue siendo ventaja en regen
+- persistencia de `promoted` en XML del player
 
 ## Riesgos
 
 - si premium da demasiado poder, se siente pay to win
-- si promotion casi no cambia nada, el sistema pierde interes
-- la prioridad de cola conviene tratarla como opcion de config, no como verdad fija
+- vectores hardcodeados en C++; tuning requiere recompilar
 
 ## Nota de esta copia
 
-El motor soporta premium/promotion y bonus reales.
-La prioridad de cola existe como patron, pero hoy la config actual esta con `queuepremmy = "yes"`, asi que no esta actuando como bypass premium.
+- Orlan: `data/npc/scripts/promote.lua` (ingles, lvl 20 + 20k, sin premium obligatorio)
+- Vectores: `player.cpp` (`promotedGain*`, `premiumGain*`, `advancedGain*`)
+- `queuepremmy = "yes"` en config — cola premium opcional segun config
 
 ## Portabilidad
 
@@ -39,6 +38,7 @@ Media. El concepto es bueno, pero depende mucho del modelo economico del otro se
 
 ## Referencias actuales
 
+- `docs/REGEN_FOOD.md`
 - `server/YurOTS/ots/data/npc/scripts/promote.lua`
 - `server/YurOTS/ots/source/player.cpp`
 - `server/YurOTS/ots/source/creature.cpp`

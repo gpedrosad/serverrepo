@@ -1147,8 +1147,6 @@ bool Commands::promote(Creature* c, const std::string &cmd, const std::string &p
 	Player* target = dynamic_cast<Player*>(creature);
 
 	if (target) {
-		if (!target->isPremium())
-			return true;
 		target->promote();
 	}
 
