@@ -57,10 +57,15 @@ extern Chat g_chat;
 AutoList<Player> Player::listPlayer;
 
 #ifdef YUR_PREMIUM_PROMOTION
+//Vectores de regen [voc 0..4] = [NONE, SORCERER, DRUID, PALADIN, KNIGHT]
+//Cada entrada: {thinkTicks_entre_regens, amount_por_regen} — menor tick = más frecuente
+//Orden de prioridad: promoted (advanced) > premium > normal
+//Cambio 2026-07-01: amount del advanced sube de 1 a 2 para que la diferencia promoted > premium
+//                   sea visible (además de la frecuencia).
 const int64_t Player::premiumGainManaVector[5][2] = {{6,1},{2,1},{2,1},{3,1},{6,1}};
 const int64_t Player::premiumGainHealthVector[5][2] = {{6,1},{6,1},{6,1},{3,1},{2,1}};
-const int64_t Player::advancedGainManaVector[5][2] = {{4,1},{1,1},{1,1},{2,1},{4,1}};
-const int64_t Player::advancedGainHealthVector[5][2] = {{4,1},{4,1},{4,1},{2,1},{1,1}};
+const int64_t Player::advancedGainManaVector[5][2] = {{4,2},{1,2},{1,2},{2,2},{4,2}};
+const int64_t Player::advancedGainHealthVector[5][2] = {{4,2},{4,2},{4,2},{2,2},{1,2}};
 #endif //YUR_PREMIUM_PROMOTION
 
 const int64_t Player::gainManaVector[5][2] = {{6,1},{3,1},{3,1},{4,1},{6,1}};

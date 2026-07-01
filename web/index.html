@@ -539,10 +539,25 @@ const premiumState = {
   checkoutOpen: false,
 };
 
+function trackPremiumEvent(event, detail) {
+  try {
+    fetch('/api/premium-event', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ event, detail: detail || undefined }),
+      keepalive: true,
+    }).catch(() => {});
+  } catch { /* noop */ }
+}
+
 function openPremiumCheckout(planId) {
   premiumState.checkoutOpen = true;
   if (planId) premiumState.planId = String(planId);
   premiumState.step = premiumState.planId ? 2 : 1;
+  trackPremiumEvent('checkout_open', {
+    plan_id: premiumState.planId || null,
+    step: premiumState.step,
+  });
   renderPremiumCheckout();
   renderPremiumLauncher();
   const box = document.getElementById('premium-checkout');
@@ -742,6 +757,7 @@ function bindPremiumCheckoutEvents() {
     const planBtn = e.target.closest('[data-plan]');
     if (planBtn) {
       premiumState.planId = planBtn.dataset.plan;
+      trackPremiumEvent('plan_select', { plan_id: premiumState.planId });
       renderPremiumCheckout();
       const next = document.getElementById('premium-next-1');
       if (next) next.removeAttribute('disabled');
@@ -749,6 +765,7 @@ function bindPremiumCheckoutEvents() {
     }
     if (e.target.id === 'premium-next-1' && premiumState.planId) {
       premiumState.step = 2;
+      trackPremiumEvent('step2', { plan_id: premiumState.planId });
       renderPremiumCheckout();
       return;
     }
@@ -759,6 +776,11 @@ function bindPremiumCheckoutEvents() {
     }
     if (e.target.id === 'premium-next-2') {
       premiumState.step = 3;
+      trackPremiumEvent('step3', {
+        plan_id: premiumState.planId,
+        golden_amulet: premiumState.goldenAmulet,
+        total: premiumTotal(),
+      });
       renderPremiumCheckout();
       const ts = document.getElementById('premium-form-ts');
       if (ts) ts.value = String(Date.now() / 1000);
@@ -773,11 +795,20 @@ function bindPremiumCheckoutEvents() {
   root.addEventListener('change', e => {
     if (e.target.id === 'premium-amulet-check') {
       premiumState.goldenAmulet = e.target.checked;
+      trackPremiumEvent('amulet_toggle', { enabled: premiumState.goldenAmulet, plan_id: premiumState.planId });
       renderPremiumCheckout();
       premiumState.step = 2;
       setPremiumStep(2);
       const chk = document.getElementById('premium-amulet-check');
       if (chk) chk.checked = premiumState.goldenAmulet;
+    }
+    if (e.target.name === 'receipt' && e.target.files?.length) {
+      const f = e.target.files[0];
+      trackPremiumEvent('receipt_selected', {
+        size: f.size,
+        type: f.type || '',
+        name_ext: (f.name.split('.').pop() || '').toLowerCase(),
+      });
     }
   });
 
@@ -789,6 +820,13 @@ function bindPremiumCheckoutEvents() {
     const res = document.getElementById('premium-order-result');
     res.classList.add('hidden');
     btn.disabled = true;
+    trackPremiumEvent('submit_click', {
+      plan_id: premiumState.planId,
+      golden_amulet: premiumState.goldenAmulet,
+      total: premiumTotal(),
+      character_name_len: String(form.character_name?.value || '').trim().length,
+      has_receipt: !!(form.receipt?.files?.length),
+    });
     try {
       const fd = new FormData(form);
       fd.set('golden_amulet', premiumState.goldenAmulet ? '1' : '0');
@@ -801,6 +839,7 @@ function bindPremiumCheckoutEvents() {
       res.classList.remove('hidden');
       if (d.ok) form.reset();
     } catch {
+      trackPremiumEvent('submit_fail', { reason: 'network' });
       res.textContent = 'No se pudo enviar. Inténtalo de nuevo.';
       res.className = 'rounded-md px-2.5 py-2 text-xs bg-red-500/10 text-red-300/90';
       res.classList.remove('hidden');
@@ -849,7 +888,10 @@ function showPanel(name) {
   panel.classList.add('active');
   renderNav();
   if (name === 'account') loadRegisterChallenge();
-  if (name === 'premium') loadPremiumConfig();
+  if (name === 'premium') {
+    trackPremiumEvent('tab_view');
+    loadPremiumConfig();
+  }
 }
 
 async function loadRegisterChallenge() {

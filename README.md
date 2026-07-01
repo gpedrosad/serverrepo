@@ -85,6 +85,7 @@ Ver [OTINFO](OTINFO) — rates, PvP, frags y reglas.
 - **[docs/PROYECTO.md](docs/PROYECTO.md)** — Proyecto, VPS, data de jugadores, flujo de cambios
 - **[scripts/README-DEPLOY-VPS.md](scripts/README-DEPLOY-VPS.md)** — Deploy seguro en producción (**obligatorio**)
 - [docs/SETUP.md](docs/SETUP.md) — Docker, compilación i386, errores resueltos
+- [docs/SMOKE_TESTS.md](docs/SMOKE_TESTS.md) — Smoke tests locales para login, save, spells, runas, muerte y movimiento
 - [docs/RME_SETUP.md](docs/RME_SETUP.md) — Remere's Map Editor 7.6
 - [docs/SPELL_EXORI_GRAN.md](docs/SPELL_EXORI_GRAN.md) — Spells custom Knight
 

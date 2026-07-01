@@ -97,6 +97,8 @@ class Handler(BaseHTTPRequestHandler):
             self._json(200, guard.new_challenge())
         elif path == "/api/premium-config":
             self._json(200, premium_config_payload())
+        elif path == "/api/premium-analytics":
+            self._premium_analytics()
         elif path.startswith("/downloads/"):
             self._download(path[len("/downloads/"):])
         elif path.startswith("/assets/") or path.startswith("/components/"):
@@ -108,6 +110,8 @@ class Handler(BaseHTTPRequestHandler):
         path = self.path.split("?", 1)[0]
         if path == "/api/create-account":
             self._create_account()
+        elif path == "/api/premium-event":
+            self._premium_event()
         elif path == "/api/premium-order":
             self._premium_order()
         else:
@@ -144,18 +148,56 @@ class Handler(BaseHTTPRequestHandler):
 
         self._json(200, result)
 
+    def _premium_event(self) -> None:
+        ip = client_ip(self)
+        length = int(self.headers.get("Content-Length", "0"))
+        if length <= 0 or length > 4096:
+            self._json(400, {"ok": False})
+            return
+        try:
+            body = json.loads(self.rfile.read(length).decode("utf-8"))
+        except (json.JSONDecodeError, UnicodeDecodeError):
+            self._json(400, {"ok": False})
+            return
+        event = str(body.get("event", "")).strip()
+        detail = body.get("detail")
+        if not isinstance(detail, dict):
+            detail = None
+        analytics.record_premium_event(ip, event, detail)
+        self._json(200, {"ok": True})
+
+    def _premium_analytics(self) -> None:
+        token = os.environ.get("PREMIUM_ANALYTICS_TOKEN", "")
+        if not token or self.headers.get("X-Analytics-Token") != token:
+            self.send_error(404)
+            return
+        days = 14
+        q = self.path.split("?", 1)
+        if len(q) > 1:
+            for part in q[1].split("&"):
+                if part.startswith("days="):
+                    try:
+                        days = max(1, min(90, int(part.split("=", 1)[1])))
+                    except ValueError:
+                        pass
+        self._json(200, {"days": analytics.premium_summary(days)})
+
     def _premium_order(self) -> None:
         ip = client_ip(self)
+        analytics.record_premium_event(ip, "submit_received")
         rate_err = guard.check_rate(ip)
         if rate_err:
+            analytics.record_premium_event(ip, "submit_fail", {"reason": "rate_limit"})
             self._json(200, {"ok": False, "message": rate_err})
             return
         try:
             fields = parse_multipart_form(self)
         except ValueError as exc:
+            analytics.record_premium_event(ip, "submit_fail", {"reason": "invalid_form", "message": str(exc)})
             self._json(200, {"ok": False, "message": str(exc)})
             return
         if fields.get("company"):
+            analytics.record_premium_event(ip, "submit_fail", {"reason": "honeypot"})
             self._json(200, {"ok": False, "message": "No se pudo enviar la donación."})
             return
         try:
@@ -163,6 +205,7 @@ class Handler(BaseHTTPRequestHandler):
         except (TypeError, ValueError):
             form_ts = 0.0
         if time.time() - form_ts < 3:
+            analytics.record_premium_event(ip, "submit_fail", {"reason": "too_fast"})
             self._json(200, {"ok": False, "message": "El formulario se envió demasiado rápido."})
             return
         result = create_premium_order(
@@ -178,6 +221,21 @@ class Handler(BaseHTTPRequestHandler):
         )
         if result.get("ok"):
             guard.record_attempt(ip)
+            analytics.record_premium_event(
+                ip,
+                "submit_ok",
+                {
+                    "order_id": result.get("order_id"),
+                    "plan_id": str(fields.get("plan_id", "")),
+                    "golden_amulet": str(fields.get("golden_amulet", "")).lower() in {"1", "true", "on", "yes"},
+                },
+            )
+        else:
+            analytics.record_premium_event(
+                ip,
+                "submit_fail",
+                {"reason": "validation", "message": result.get("message", "")},
+            )
         self._json(200, result)
 
     def _static(self, url_path: str, *, head_only: bool = False) -> None:

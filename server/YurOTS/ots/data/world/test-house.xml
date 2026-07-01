@@ -1,2 +1,39 @@
 <?xml version="1.0"?>
-<houses />
+<houses>
+	<house name="Small Street I" houseid="1" entryx="144" entryy="42" entryz="7" rent="0" townid="1" size="6" />
+	<house name="Small Street II" houseid="2" entryx="146" entryy="42" entryz="7" rent="0" townid="1" size="3" />
+	<house name="Small Street III" houseid="3" entryx="144" entryy="42" entryz="6" rent="0" townid="1" size="6" />
+	<house name="Small Street IV" houseid="4" entryx="146" entryy="42" entryz="6" rent="0" townid="1" size="3" />
+	<house name="Small Street V" houseid="5" entryx="144" entryy="42" entryz="5" rent="0" townid="1" size="6" />
+	<house name="Small Street VI" houseid="6" entryx="146" entryy="42" entryz="5" rent="0" townid="1" size="3" />
+	<house name="Great Street I" houseid="7" entryx="140" entryy="32" entryz="7" rent="0" townid="1" size="42" />
+	<house name="Great Street II" houseid="8" entryx="148" entryy="32" entryz="7" rent="0" townid="1" size="21" />
+	<house name="Great Street III" houseid="9" entryx="157" entryy="33" entryz="7" rent="0" townid="1" size="20" />
+	<house name="Great Street IV" houseid="10" entryx="164" entryy="37" entryz="7" rent="0" townid="1" size="30" />
+	<house name="Upper Street I" houseid="11" entryx="164" entryy="31" entryz="6" rent="0" townid="1" size="34" />
+	<house name="Upper Street II" houseid="12" entryx="165" entryy="36" entryz="6" rent="0" townid="1" size="15" />
+	<house name="Upper Street III" houseid="13" entryx="166" entryy="33" entryz="6" rent="0" townid="1" size="12" />
+	<house name="Upper Street IV" houseid="14" entryx="167" entryy="31" entryz="5" rent="0" townid="1" size="22" />
+	<house name="Upper Street V" houseid="15" entryx="168" entryy="34" entryz="5" rent="0" townid="1" size="25" />
+	<house name="Green Street I" houseid="16" entryx="177" entryy="36" entryz="7" rent="0" townid="1" size="15" />
+	<house name="Green Street II" houseid="17" entryx="180" entryy="32" entryz="7" rent="0" townid="1" size="15" />
+	<house name="Green Street III" houseid="18" entryx="176" entryy="32" entryz="7" rent="0" townid="1" size="15" />
+	<house name="Pirate Street" houseid="19" entryx="176" entryy="56" entryz="7" rent="0" townid="1" size="45" />
+	<house name="River Street I" houseid="20" entryx="129" entryy="61" entryz="7" rent="0" townid="1" size="12" />
+	<house name="River Street II" houseid="21" entryx="134" entryy="61" entryz="7" rent="0" townid="1" size="12" />
+	<house name="River Street III" houseid="22" entryx="148" entryy="59" entryz="7" rent="0" townid="1" size="15" />
+	<house name="River Street IV" houseid="23" entryx="153" entryy="59" entryz="7" rent="0" townid="1" size="15" />
+	<house name="River Street V" houseid="24" entryx="158" entryy="59" entryz="7" rent="0" townid="1" size="15" />
+	<house name="Desert Street I" houseid="25" entryx="213" entryy="77" entryz="7" rent="0" townid="1" size="15" />
+	<house name="Desert Street II" houseid="26" entryx="213" entryy="73" entryz="7" rent="0" townid="1" size="15" />
+	<house name="Desert Street III" houseid="27" entryx="213" entryy="73" entryz="6" rent="0" townid="1" size="15" />
+	<house name="Desert Street IV" houseid="28" entryx="212" entryy="75" entryz="6" rent="0" townid="1" size="30" />
+	<house name="Desert Street V" houseid="29" entryx="206" entryy="75" entryz="6" rent="0" townid="1" size="21" />
+	<house name="Desert Street VI" houseid="30" entryx="205" entryy="76" entryz="6" rent="0" townid="1" size="22" />
+	<house name="Bamboo Camp I" houseid="32" entryx="181" entryy="104" entryz="7" rent="0" townid="1" size="30" />
+	<house name="Bamboo Camp II" houseid="33" entryx="171" entryy="101" entryz="7" rent="0" townid="1" size="15" />
+	<house name="Bamboo Camp III" houseid="34" entryx="176" entryy="96" entryz="7" rent="0" townid="1" size="15" />
+	<house name="Bamboo Camp IV" houseid="35" entryx="185" entryy="96" entryz="7" rent="0" townid="1" size="12" />
+	<house name="Bamboo Camp V" houseid="36" entryx="186" entryy="101" entryz="7" rent="0" townid="1" size="12" />
+	<house name="Bamboo Camp VI" houseid="37" entryx="185" entryy="106" entryz="7" rent="0" townid="1" size="15" />
+</houses>

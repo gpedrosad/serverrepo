@@ -11,6 +11,22 @@ DOWNLOAD_KEYS = {
     "Retro76-Mac.zip": "mac",
 }
 
+PREMIUM_EVENTS = frozenset({
+    "tab_view",
+    "checkout_open",
+    "plan_select",
+    "step2",
+    "amulet_toggle",
+    "step3",
+    "receipt_selected",
+    "submit_click",
+    "submit_received",
+    "submit_ok",
+    "submit_fail",
+})
+
+MAX_PREMIUM_RECENT = 200
+
 _lock = threading.Lock()
 
 
@@ -43,10 +59,13 @@ class WebAnalytics:
         days = data.setdefault("days", {})
         bucket = days.setdefault(
             day,
-            {"visitors": [], "downloads": {"windows": 0, "mac": 0}},
+            {"visitors": [], "downloads": {"windows": 0, "mac": 0}, "premium": {"counts": {}, "recent": []}},
         )
         bucket.setdefault("visitors", [])
         bucket.setdefault("downloads", {"windows": 0, "mac": 0})
+        premium = bucket.setdefault("premium", {"counts": {}, "recent": []})
+        premium.setdefault("counts", {})
+        premium.setdefault("recent", [])
         return bucket
 
     def record_visit(self, ip: str) -> None:
@@ -68,6 +87,44 @@ class WebAnalytics:
             bucket = self._day_bucket(data, _today())
             bucket["downloads"][key] = bucket["downloads"].get(key, 0) + 1
             self._save(data)
+
+    def record_premium_event(self, ip: str, event: str, detail: dict | None = None) -> None:
+        if event not in PREMIUM_EVENTS:
+            return
+        with _lock:
+            data = self._load()
+            bucket = self._day_bucket(data, _today())
+            premium = bucket["premium"]
+            counts = premium["counts"]
+            counts[event] = counts.get(event, 0) + 1
+            entry = {
+                "t": int(datetime.now(timezone.utc).timestamp()),
+                "ip": ip or "",
+                "event": event,
+            }
+            if detail:
+                entry["detail"] = detail
+            recent = premium["recent"]
+            recent.append(entry)
+            if len(recent) > MAX_PREMIUM_RECENT:
+                del recent[: len(recent) - MAX_PREMIUM_RECENT]
+            self._save(data)
+
+    def premium_summary(self, last_days: int = 30) -> list[dict]:
+        data = self._load()
+        days = sorted(data.get("days", {}).keys(), reverse=True)[:last_days]
+        rows = []
+        for day in sorted(days):
+            premium = data["days"][day].get("premium", {})
+            counts = premium.get("counts", {})
+            rows.append(
+                {
+                    "date": day,
+                    "counts": dict(counts),
+                    "recent": list(premium.get("recent", [])),
+                }
+            )
+        return rows
 
     def summary(self, last_days: int = 30) -> list[dict]:
         data = self._load()
