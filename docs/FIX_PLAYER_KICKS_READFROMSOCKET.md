@@ -60,9 +60,11 @@ Windows para el caso sin datos), lo que agrava fallos en timeouts de socket.
 | Timeout 5 s en todas las conexiones | Ya corregido: handshake 5 s, sesión de juego 7 días (`clearSocketRecvTimeout`) |
 | `{0,0}` en `SO_RCVTIMEO` (Linux) | Ya corregido: no usar timeout cero |
 
-### Contribuyentes secundarios (no el fix de este doc)
+### Contribuyentes secundarios (corregidos)
 
-- **`replaceconnectedcharacter = 1`**: si el cliente re-loguea con sesión viva,
+- **`clearSocketRecvTimeout(s)` después de `s = 0`** en login de juego (`otserv.cpp`): el timeout de
+  handshake (5 s) nunca se quitaba → `recv timeout or would block` en logs y kicks ~cada 5 s.
+  **Fix:** llamar `clearSocketRecvTimeout(s)` antes de `s = 0`.
   reemplaza la sesión (`Replacing active session for player: ...`). Agravante al
   reconectar, no explica la caída inicial.
 - **Reinicio del container** (`exit 137` en deploy): desconecta a todos, no es

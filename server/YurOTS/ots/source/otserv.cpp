@@ -432,12 +432,13 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 							g_game.writeOnlineList();
 							player->lastlogin = std::time(NULL);
 							player->lastip = player->getIP();
+							// Quitar timeout de handshake ANTES de anular s (si no queda 5s y kickea).
+							clearSocketRecvTimeout(s);
 							s = 0;            // protocol/player will close socket
 
 							OTSYS_THREAD_UNLOCK(g_game.gameLock, "ConnectionHandler()")
 							isLocked = false;
 
-							clearSocketRecvTimeout(s);
 							protocol->ReceiveLoop();
 							stat->removePlayer();
 							g_game.writeOnlineList();
