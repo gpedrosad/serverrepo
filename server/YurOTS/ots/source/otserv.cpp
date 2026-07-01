@@ -127,26 +127,6 @@ static in_addr_t resolveHostToIPv4(const std::string& host)
 	return inet_addr("127.0.0.1");
 }
 
-static void setSocketRecvTimeout(SOCKET sock, int seconds)
-{
-#ifdef WIN32
-	DWORD ms = (DWORD)(seconds * 1000);
-	setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, (const char*)&ms, sizeof(ms));
-#else
-	struct timeval tv;
-	tv.tv_sec = seconds;
-	tv.tv_usec = 0;
-	setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv));
-#endif
-}
-
-static void clearSocketRecvTimeout(SOCKET sock)
-{
-	// En Linux {0,0} NO es "sin timeout": recv devuelve al instante si no hay datos
-	// y el cliente queda kickeado. Usamos un timeout largo para sesiones de juego.
-	setSocketRecvTimeout(sock, 7 * 24 * 3600);
-}
-
 bool passwordTest(std::string &plain, std::string &hash)
 {
 	if(passwordType == PASSWORD_TYPE_MD5){
@@ -237,13 +217,14 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 	SOCKET s = *sockptr;
 	delete sockptr;
 
-	// Timeout corto solo para el handshake inicial (bots/info/login).
-	// Las sesiones de juego no deben tenerlo: el cliente manda pocos paquetes si está quieto.
-	setSocketRecvTimeout(s, 5);
+	setSocketHandshakeRecvTimeout(s);
 
 	NetworkMessage msg;
 	if (msg.ReadFromSocket(s))
 	{
+		// Quitar timeout de handshake en cuanto llega el primer paquete.
+		setSocketGameRecvBlocking(s);
+
 		unsigned short protId = msg.GetU16();
 
 		// login server connection
@@ -336,7 +317,7 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 						if(player->client->s == 0 && player->isRemoved == false && !allowClones){
 							player->lastlogin = std::time(NULL);
 							player->client->reinitializeProtocol();
-							clearSocketRecvTimeout(s);
+							setSocketGameRecvBlocking(s);
 							player->client->s = s;
 							player->client->sendThingAppear(player);
 							player->lastip = player->getIP();
@@ -432,8 +413,7 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 							g_game.writeOnlineList();
 							player->lastlogin = std::time(NULL);
 							player->lastip = player->getIP();
-							// Quitar timeout de handshake ANTES de anular s (si no queda 5s y kickea).
-							clearSocketRecvTimeout(s);
+							setSocketGameRecvBlocking(s);
 							s = 0;            // protocol/player will close socket
 
 							OTSYS_THREAD_UNLOCK(g_game.gameLock, "ConnectionHandler()")

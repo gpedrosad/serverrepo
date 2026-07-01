@@ -91,6 +91,9 @@ bool Protocol76::ConnectPlayer()
 
 void Protocol76::ReceiveLoop()
 {
+	if(s)
+		setSocketGameRecvBlocking(s);
+
 	NetworkMessage msg;
 	do{
 		while(pendingLogout == false){

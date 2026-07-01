@@ -31,6 +31,10 @@ class Player;
 class Item;
 class Position;
 
+// Handshake: timeout corto para bots que no mandan datos. Juego: recv bloqueante sin límite.
+void setSocketHandshakeRecvTimeout(SOCKET socket);
+void setSocketGameRecvBlocking(SOCKET socket);
+
 
 class NetworkMessage
 {

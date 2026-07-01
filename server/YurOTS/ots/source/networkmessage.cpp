@@ -21,9 +21,11 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <cstring>
 
 #if !defined WIN32 && !defined __WINDOWS__
 #include <errno.h>
+#include <fcntl.h>
 #endif
 
 #include "networkmessage.h"
@@ -36,6 +38,44 @@
 #include "position.h"
 
 
+
+/******************************************************************************/
+
+void setSocketHandshakeRecvTimeout(SOCKET socket)
+{
+	if(socket <= 0)
+		return;
+#ifdef WIN32
+	DWORD ms = 5000;
+	setsockopt(socket, SOL_SOCKET, SO_RCVTIMEO, (const char*)&ms, sizeof(ms));
+#else
+	struct timeval tv;
+	tv.tv_sec = 5;
+	tv.tv_usec = 0;
+	setsockopt(socket, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv));
+#endif
+}
+
+void setSocketGameRecvBlocking(SOCKET socket)
+{
+	if(socket <= 0)
+		return;
+#if defined WIN32 || defined __WINDOWS__
+	unsigned long mode = 0;
+	ioctlsocket(socket, FIONBIO, &mode);
+	DWORD ms = 0;
+	setsockopt(socket, SOL_SOCKET, SO_RCVTIMEO, (const char*)&ms, sizeof(ms));
+#else
+	int flags = fcntl(socket, F_GETFL, 0);
+	if(flags != -1)
+		fcntl(socket, F_SETFL, flags & ~O_NONBLOCK);
+	struct timeval tv;
+	tv.tv_sec = 0;
+	tv.tv_usec = 0;
+	// Linux: {0,0} = recv bloqueante sin timeout (man 7 socket).
+	setsockopt(socket, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv));
+#endif
+}
 
 /******************************************************************************/
 
@@ -100,34 +140,47 @@ bool recvExact(SOCKET socket, unsigned char* buf, int len, const char*& failReas
 
 bool NetworkMessage::ReadFromSocket(SOCKET socket)
 {
-	m_LastReadFailReason = "";
+	for(int attempt = 0; attempt < 2; attempt++){
+		m_LastReadFailReason = "";
 
-	if(!recvExact(socket, m_MsgBuf, 2, m_LastReadFailReason)){
-		const char* fail = m_LastReadFailReason;
-		Reset();
-		m_LastReadFailReason = fail;
-		return false;
+		if(!recvExact(socket, m_MsgBuf, 2, m_LastReadFailReason)){
+			const char* fail = m_LastReadFailReason;
+			if(attempt == 0 && fail && strcmp(fail, "recv timeout or would block") == 0){
+				setSocketGameRecvBlocking(socket);
+				continue;
+			}
+			Reset();
+			m_LastReadFailReason = fail;
+			return false;
+		}
+
+		int datasize = m_MsgBuf[0] | (m_MsgBuf[1] << 8);
+		if(datasize < 0 || datasize > NETWORKMESSAGE_MAXSIZE - 2){
+			m_LastReadFailReason = "invalid packet size";
+			const char* fail = m_LastReadFailReason;
+			Reset();
+			m_LastReadFailReason = fail;
+			return false;
+		}
+
+		if(!recvExact(socket, m_MsgBuf + 2, datasize, m_LastReadFailReason)){
+			const char* fail = m_LastReadFailReason;
+			if(attempt == 0 && fail && strcmp(fail, "recv timeout or would block") == 0){
+				setSocketGameRecvBlocking(socket);
+				continue;
+			}
+			Reset();
+			m_LastReadFailReason = fail;
+			return false;
+		}
+
+		m_MsgSize = 2 + datasize;
+		m_ReadPos = 2;
+		return true;
 	}
 
-	int datasize = m_MsgBuf[0] | (m_MsgBuf[1] << 8);
-	if(datasize < 0 || datasize > NETWORKMESSAGE_MAXSIZE - 2){
-		m_LastReadFailReason = "invalid packet size";
-		const char* fail = m_LastReadFailReason;
-		Reset();
-		m_LastReadFailReason = fail;
-		return false;
-	}
-
-	if(!recvExact(socket, m_MsgBuf + 2, datasize, m_LastReadFailReason)){
-		const char* fail = m_LastReadFailReason;
-		Reset();
-		m_LastReadFailReason = fail;
-		return false;
-	}
-
-	m_MsgSize = 2 + datasize;
-	m_ReadPos = 2;
-	return true;
+	m_LastReadFailReason = "recv timeout or would block";
+	return false;
 }
 
 
