@@ -52,6 +52,7 @@ public:
   bool ReadFromSocket(SOCKET socket);
   bool WriteToSocket(SOCKET socket);
   const char* getLastReadFailReason() const { return m_LastReadFailReason; }
+  int getLastReadErrno() const { return m_LastReadErrno; }
 
 
   // simply read functions for incoming message
@@ -98,6 +99,7 @@ protected:
   int m_MsgSize;
   int m_ReadPos;
   const char* m_LastReadFailReason;
+  int m_LastReadErrno;
 
   unsigned char m_MsgBuf[NETWORKMESSAGE_MAXSIZE];
 };

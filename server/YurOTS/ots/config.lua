@@ -202,8 +202,9 @@ managain = {"5", "30", "30", "15", "5"}
 hpgain = {"5", "5", "5", "10", "15"}
 
 -- how much faster do you recovery life,mana after eating food (1 - rl tibia)
+-- mana: valores del vector = mana visible por pulso (manatickmul=1). HP sigue x5.
 healthtickmul = 5
-manatickmul = 5
+manatickmul = 1
 
 -- soul points (conjuring runes in PZ): max and regen interval in seconds (rl tibia: 100 max, +1 every 120s)
 soulmax = 100

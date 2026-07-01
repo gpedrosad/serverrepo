@@ -30,23 +30,28 @@ else                      // tier 1 — gain*
 
 ## Formato de vectores
 
-`{thinkTicks, amount}` — ticks del game loop entre pulsos de regen; `amount` es HP/mana **antes** de `healthtickmul` / `manatickmul` (default **5** en `config.lua`).
+`{thinkTicks, amount}` — ticks del game loop entre pulsos de regen.
 
-Think ≈ 1 s → tiempo entre pulsos ≈ `thinkTicks` segundos.  
-Mana/s efectiva ≈ `(amount × manatickmul) / thinkTicks`.
+- **Mana** (`manatickmul = 1`): `amount` = +mana que ve el jugador por pulso.
+- **HP** (`healthtickmul = 5`): `amount × healthtickmul` = +vida en pantalla.
+
+Think ≈ 1 s → tiempo entre pulsos ≈ `thinkTicks` segundos.
 
 ## Tablas por vocación
 
-### Mana
+### Mana (manatickmul = 1 — el número del vector es lo que sube en pantalla)
+
+Referencia **sorcerer**: free **+5**, premium **+8**, promoted+premium **+10**.  
+Promotion sin premium: **+5** con ticks más rápidos (no más cantidad). Knight tope: **+7** (7/10 del sorc).
 
 | Vocación | Free | Promoted (free) | Premium | Promoted+premium |
 |----------|------|-----------------|---------|------------------|
-| Sorcerer (1) | `{3,1}` | `{2,1}` | `{2,2}` | `{2,3}` |
-| Druid (2) | `{3,1}` | `{2,1}` | `{2,2}` | `{2,3}` |
-| Paladin (3) | `{4,1}` | `{3,1}` | `{2,2}` | `{2,3}` |
-| Knight (4) | `{6,1}` | `{5,1}` | `{5,2}` | `{4,2}` |
+| Sorcerer (1) | `{3,5}` | `{2,5}` | `{3,8}` | `{3,10}` |
+| Druid (2) | `{3,5}` | `{2,5}` | `{3,8}` | `{3,10}` |
+| Paladin (3) | `{4,5}` | `{3,5}` | `{3,8}` | `{3,10}` |
+| Knight (4) | `{6,5}` | `{5,5}` | `{5,8}` | `{5,7}` |
 
-### Health
+### Health (sin cambio — healthtickmul = 5)
 
 | Vocación | Free | Promoted (free) | Premium | Promoted+premium |
 |----------|------|-----------------|---------|------------------|
@@ -55,16 +60,21 @@ Mana/s efectiva ≈ `(amount × manatickmul) / thinkTicks`.
 | Paladin (3) | `{4,1}` | `{3,1}` | `{3,2}` | `{2,2}` |
 | Knight (4) | `{3,1}` | `{2,1}` | `{2,2}` | `{2,3}` |
 
-## Ejemplo: Sorcerer comiendo (`manatickmul = 5`)
+## Ejemplo: Sorcerer comiendo (`manatickmul = 1`)
 
 | Estado | Vector | Pulso | +Mana en pantalla | ~Mana/s |
 |--------|--------|-------|-------------------|---------|
-| Free | `{3,1}` | ~3 s | +5 | ~1.7 |
-| Free + promotion | `{2,1}` | ~2 s | +5 | ~2.5 |
-| Premium | `{2,2}` | ~2 s | +10 | ~5.0 |
-| Premium + promotion | `{2,3}` | ~2 s | +15 | ~7.5 |
+| Free | `{3,5}` | ~3 s | +5 | ~1.7 |
+| Free + promotion | `{2,5}` | ~2 s | +5 | ~2.5 |
+| Premium | `{3,8}` | ~3 s | +8 | ~2.7 |
+| Premium + promotion | `{3,10}` | ~3 s | +10 | ~3.3 |
 
-**Qué ve el jugador:** promotion = regenera más seguido; premium = números más grandes; ambos = mejor tope sin el salto extremo del sistema anterior (`{1,2}` → ~10 mana/s).
+**Qué ve el jugador:** free +5 por pulso; premium +8; promotion+premium +10. Promotion sin premium regenera más seguido (+5 igual que free).
+
+## Tuning mana 2026-07 (sorcerer 5 / 8 / 10)
+
+Bajó la mana pasiva de magos (antes ~+15/pulso en premium+promo con `manatickmul=5`).  
+`manatickmul` pasó a **1** solo para mana; HP sigue con `healthtickmul=5`.
 
 ## Orlan (`data/npc/scripts/promote.lua`)
 
@@ -91,7 +101,7 @@ Los multiplicadores globales en `config.lua` afectan todos los tiers por igual:
 
 ```lua
 healthtickmul = 5
-manatickmul = 5
+manatickmul = 1   -- mana: el amount del vector es el +mana en pantalla
 ```
 
-Para cambiar la diferencia entre tiers hay que editar los vectores en `player.cpp` y recompilar.
+Para cambiar +5/+8/+10 del sorcerer hay que editar los vectores de **mana** en `player.cpp` y recompilar. HP no se toca.

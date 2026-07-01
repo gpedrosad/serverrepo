@@ -105,6 +105,7 @@ Monsters g_monsters;
 #endif
 #include "crashhandler.h"
 #include "networkmessage.h"
+#include "socket_debug.h"
 
 enum passwordType_t{
 	PASSWORD_TYPE_PLAIN,
@@ -217,6 +218,8 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 	SOCKET s = *sockptr;
 	delete sockptr;
 
+	socketDebugLog("accept " + socketDescribeState(s) + " peer=" + socketPeerIp(s));
+
 	setSocketHandshakeRecvTimeout(s);
 
 	NetworkMessage msg;
@@ -226,6 +229,12 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 		setSocketGameRecvBlocking(s);
 
 		unsigned short protId = msg.GetU16();
+		{
+			std::ostringstream oss;
+			oss << "first packet protId=0x" << std::hex << protId << std::dec
+			    << " " << socketDescribeState(s);
+			socketDebugLog(oss.str());
+		}
 
 		// login server connection
 		if (protId == 0x0201)
@@ -319,6 +328,7 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 							player->client->reinitializeProtocol();
 							setSocketGameRecvBlocking(s);
 							player->client->s = s;
+							socketDebugLog("reattach player=" + name + " " + socketDescribeState(s));
 							player->client->sendThingAppear(player);
 							player->lastip = player->getIP();
 							s = 0;
@@ -414,6 +424,7 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 							player->lastlogin = std::time(NULL);
 							player->lastip = player->getIP();
 							setSocketGameRecvBlocking(s);
+							socketDebugLog("game login ok player=" + name + " entering ReceiveLoop " + socketDescribeState(s));
 							s = 0;            // protocol/player will close socket
 
 							OTSYS_THREAD_UNLOCK(g_game.gameLock, "ConnectionHandler()")
@@ -478,6 +489,12 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 			msg.WriteToSocket(s);
 		}
 #endif //YUR_BUILTIN_AAC
+  }
+  else{
+		socketDebugLog(
+			std::string("handshake read failed peer=") + socketPeerIp(s) +
+			" reason=" + (msg.getLastReadFailReason()[0] ? msg.getLastReadFailReason() : "?") +
+			" errno=" + std::to_string(msg.getLastReadErrno()));
   }
   if(s)
 	  closesocket(s);
@@ -936,14 +953,15 @@ int main(int argc, char *argv[])
 			errnum = errno;
 #endif
 			if(reads == SOCKET_ERROR){
+				if(errnum == ERROR_EINTR)
+					continue;
+				std::cout << ":: Listen select failed (errno=" << errnum << "), reopening port..." << std::endl;
 				break;
 			}
-			else if(reads == 0 && errnum == ERROR_EINTR){
-				accept_errors++;
+			if(reads == 0)
 				continue;
-			}
 
-			SOCKET s = accept(listen_socket, NULL, NULL); // accept a new connection
+			SOCKET s = accept(listen_socket, NULL, NULL);
 			if(s > 0){
 				SOCKET* sock = new SOCKET(s);
 				OTSYS_CREATE_THREAD(ConnectionHandler, (void*)sock);

@@ -58,18 +58,18 @@ AutoList<Player> Player::listPlayer;
 
 #ifdef YUR_PREMIUM_PROMOTION
 // Regen [voc 0..4] = [NONE, SORCERER, DRUID, PALADIN, KNIGHT]
-// {thinkTicks_entre_regens, amount_por_regen} — menor tick = más frecuente
-// 4 tiers: free -> promoted (free) -> premium -> promoted+premium (advanced)
-// Ver docs/REGEN_FOOD.md
-const int64_t Player::promotedGainManaVector[5][2]   = {{6,1},{2,1},{2,1},{3,1},{5,1}};
+// {thinkTicks_entre_regens, mana_por_pulso} — con manatickmul=1 el pulso es lo que ve el cliente.
+// Referencia sorcerer: free +5, premium +8, promoted+premium +10; promotion sin premium = +5 más rápido.
+// Knight tope mana: 7/10 del sorcerer (ratio histórico advanced). Ver docs/REGEN_FOOD.md
+const int64_t Player::promotedGainManaVector[5][2]   = {{6,5},{2,5},{2,5},{3,5},{5,5}};
 const int64_t Player::promotedGainHealthVector[5][2] = {{6,1},{5,1},{5,1},{3,1},{2,1}};
-const int64_t Player::premiumGainManaVector[5][2]   = {{6,2},{2,2},{2,2},{2,2},{5,2}};
+const int64_t Player::premiumGainManaVector[5][2]   = {{6,8},{3,8},{3,8},{3,8},{5,8}};
 const int64_t Player::premiumGainHealthVector[5][2] = {{6,2},{5,2},{5,2},{3,2},{2,2}};
-const int64_t Player::advancedGainManaVector[5][2]  = {{4,2},{2,3},{2,3},{2,3},{4,2}};
+const int64_t Player::advancedGainManaVector[5][2]  = {{4,10},{3,10},{3,10},{3,10},{5,7}};
 const int64_t Player::advancedGainHealthVector[5][2]= {{4,2},{4,2},{4,2},{2,2},{2,3}};
 #endif //YUR_PREMIUM_PROMOTION
 
-const int64_t Player::gainManaVector[5][2] = {{6,1},{3,1},{3,1},{4,1},{6,1}};
+const int64_t Player::gainManaVector[5][2] = {{6,5},{3,5},{3,5},{4,5},{6,5}};
 const int64_t Player::gainHealthVector[5][2] = {{6,1},{6,1},{6,1},{4,1},{3,1}};
 
 #ifdef CVS_GAINS_MULS

@@ -29,6 +29,7 @@
 #include <limits>
 #include "networkmessage.h"
 #include "protocol76.h"
+#include "socket_debug.h"
 
 #include "items.h"
 
@@ -94,14 +95,17 @@ void Protocol76::ReceiveLoop()
 	if(s)
 		setSocketGameRecvBlocking(s);
 
+	if(player && socketDebugVerbose()){
+		socketDebugLog("ReceiveLoop start player=" + player->getName() + " " + socketDescribeState(s));
+	}
+
 	NetworkMessage msg;
 	do{
 		while(pendingLogout == false){
 			if(!msg.ReadFromSocket(s)){
 				const char* reason = msg.getLastReadFailReason();
-				if(reason && reason[0] != '\0'){
-					std::cout << "Player recv disconnect: " << player->getName()
-					          << " (" << reason << ")" << std::endl;
+				if(player){
+					socketLogDisconnect(player->getName().c_str(), s, reason, msg.getLastReadErrno());
 				}
 				break;
 			}
@@ -121,6 +125,7 @@ void Protocol76::ReceiveLoop()
 			}
 			OTSYS_THREAD_LOCK(game->gameLock, "Protocol76::ReceiveLoop()")
 			if(s == 0 && player->isRemoved == false){
+				socketDebugLog("removeCreature after disconnect player=" + player->getName());
 				game->removeCreature(player);
 			}
 			OTSYS_THREAD_UNLOCK(game->gameLock, "Protocol76::ReceiveLoop()")

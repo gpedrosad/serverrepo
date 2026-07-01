@@ -100,11 +100,14 @@ docker logs -f yurots 2>&1 | grep -E 'Player recv disconnect|Server Running'
 
 **Mal:** sigue el patrón → revisar que el binario compiló (`docker exec yurots stat yurots`).
 
+**Logs detallados:** ver `docs/SOCKET_DEBUG_LOGGING.md` (estado de socket, errno, modo verbose).
+
 ## Historial de commits relacionados
 
 - `f2c8754` — `recvExact` + log de desconexión
 - `da16261` — `clearSocketRecvTimeout` antes de `s=0` (insuficiente solo)
 - *(este fix)* — handshake vs juego separados; recv bloqueante real en `ReceiveLoop`
+- **Listen `EINTR`** — `select()==-1` por señal cerraba el puerto 7171; el juego seguía pero nadie conectaba
 
 ## Archivos
 
