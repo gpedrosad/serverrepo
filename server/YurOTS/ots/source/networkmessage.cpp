@@ -22,6 +22,10 @@
 #include <iostream>
 #include <sstream>
 
+#if !defined WIN32 && !defined __WINDOWS__
+#include <errno.h>
+#endif
+
 #include "networkmessage.h"
 
 #include "item.h"
@@ -36,6 +40,7 @@
 /******************************************************************************/
 
 NetworkMessage::NetworkMessage()
+  : m_LastReadFailReason("")
 {
   Reset();
 }
@@ -50,48 +55,78 @@ NetworkMessage::~NetworkMessage()
 void NetworkMessage::Reset()
 {
   m_MsgSize = 0;
-  m_ReadPos = 2;  
+  m_ReadPos = 2;
 }
 
 
 /******************************************************************************/
 
-bool NetworkMessage::ReadFromSocket(SOCKET socket)
+namespace {
+
+bool recvExact(SOCKET socket, unsigned char* buf, int len, const char*& failReason)
 {
-	// just read the size to avoid reading 2 messages at once
-	m_MsgSize = recv(socket, (char*)m_MsgBuf, 2, 0);
-	
-	// for now we expect 2 bytes at once, it should not be splitted
-	int datasize = m_MsgBuf[0] | m_MsgBuf[1] << 8;
-	if((m_MsgSize != 2) || (datasize > NETWORKMESSAGE_MAXSIZE-2)){
+	int received = 0;
+	while(received < len){
+		int n = recv(socket, (char*)buf + received, len - received, 0);
+		if(n > 0){
+			received += n;
+			continue;
+		}
+		if(n == 0){
+			failReason = "peer closed connection";
+			return false;
+		}
 		int errnum;
 #if defined WIN32 || defined __WINDOWS__
 		errnum = ::WSAGetLastError();
 		if(errnum == EWOULDBLOCK){
-			m_MsgSize = 0;
-			return true;
+			failReason = "recv timeout or would block";
+			return false;
 		}
 #else
 		errnum = errno;
+		if(errnum == EAGAIN || errnum == EWOULDBLOCK){
+			failReason = "recv timeout or would block";
+			return false;
+		}
 #endif
+		failReason = "recv error";
+		return false;
+	}
+	return true;
+}
 
+} // namespace
+
+bool NetworkMessage::ReadFromSocket(SOCKET socket)
+{
+	m_LastReadFailReason = "";
+
+	if(!recvExact(socket, m_MsgBuf, 2, m_LastReadFailReason)){
+		const char* fail = m_LastReadFailReason;
 		Reset();
+		m_LastReadFailReason = fail;
 		return false;
 	}
 
-	// read the real data
-	m_MsgSize += recv(socket, (char*)m_MsgBuf+2, datasize, 0);
-
-	// we got something unexpected/incomplete
-	if ((m_MsgSize <= 2) || ((m_MsgBuf[0] | m_MsgBuf[1] << 8) != m_MsgSize-2))
-	{
+	int datasize = m_MsgBuf[0] | (m_MsgBuf[1] << 8);
+	if(datasize < 0 || datasize > NETWORKMESSAGE_MAXSIZE - 2){
+		m_LastReadFailReason = "invalid packet size";
+		const char* fail = m_LastReadFailReason;
 		Reset();
+		m_LastReadFailReason = fail;
 		return false;
 	}
 
-	// ok, ...reading starts after the size
+	if(!recvExact(socket, m_MsgBuf + 2, datasize, m_LastReadFailReason)){
+		const char* fail = m_LastReadFailReason;
+		Reset();
+		m_LastReadFailReason = fail;
+		return false;
+	}
+
+	m_MsgSize = 2 + datasize;
 	m_ReadPos = 2;
-
 	return true;
 }
 

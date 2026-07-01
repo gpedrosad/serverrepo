@@ -103,6 +103,7 @@ Monsters g_monsters;
 #if defined __EXCEPTION_TRACER__
 #include "exception.h"
 #endif
+#include "crashhandler.h"
 #include "networkmessage.h"
 
 enum passwordType_t{
@@ -124,6 +125,26 @@ static in_addr_t resolveHostToIPv4(const std::string& host)
 
 	std::cout << "WARNING: Could not resolve IP host \"" << host << "\", using 127.0.0.1" << std::endl;
 	return inet_addr("127.0.0.1");
+}
+
+static void setSocketRecvTimeout(SOCKET sock, int seconds)
+{
+#ifdef WIN32
+	DWORD ms = (DWORD)(seconds * 1000);
+	setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, (const char*)&ms, sizeof(ms));
+#else
+	struct timeval tv;
+	tv.tv_sec = seconds;
+	tv.tv_usec = 0;
+	setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv));
+#endif
+}
+
+static void clearSocketRecvTimeout(SOCKET sock)
+{
+	// En Linux {0,0} NO es "sin timeout": recv devuelve al instante si no hay datos
+	// y el cliente queda kickeado. Usamos un timeout largo para sesiones de juego.
+	setSocketRecvTimeout(sock, 7 * 24 * 3600);
 }
 
 bool passwordTest(std::string &plain, std::string &hash)
@@ -215,6 +236,10 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 	SOCKET* sockptr = (SOCKET*)dat;
 	SOCKET s = *sockptr;
 	delete sockptr;
+
+	// Timeout corto solo para el handshake inicial (bots/info/login).
+	// Las sesiones de juego no deben tenerlo: el cliente manda pocos paquetes si está quieto.
+	setSocketRecvTimeout(s, 5);
 
 	NetworkMessage msg;
 	if (msg.ReadFromSocket(s))
@@ -311,6 +336,7 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 						if(player->client->s == 0 && player->isRemoved == false && !allowClones){
 							player->lastlogin = std::time(NULL);
 							player->client->reinitializeProtocol();
+							clearSocketRecvTimeout(s);
 							player->client->s = s;
 							player->client->sendThingAppear(player);
 							player->lastip = player->getIP();
@@ -411,6 +437,7 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 							OTSYS_THREAD_UNLOCK(g_game.gameLock, "ConnectionHandler()")
 							isLocked = false;
 
+							clearSocketRecvTimeout(s);
 							protocol->ReceiveLoop();
 							stat->removePlayer();
 							g_game.writeOnlineList();
@@ -445,6 +472,11 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 				#endif
 				std::string str = status->getStatusString();
 				send(s, str.c_str(), (int)str.size(), 0);
+#ifdef WIN32
+				shutdown(s, SD_BOTH);
+#else
+				shutdown(s, SHUT_RDWR);
+#endif
 			}
 		}
 		// Another ServerInfo protocol
@@ -490,6 +522,11 @@ void ErrorMessage(const char* message) {
 
 int main(int argc, char *argv[])
 {
+	//Install crash handler FIRST — before any init that could segfault.
+	//This is the only signal handler on Linux; the legacy EXCEPTION_TRACER
+	//below is Windows-only (SEH) and does nothing on i386 Linux.
+	CrashHandler::install();
+
 #ifdef __OTSERV_ALLOCATOR_STATS__
 	OTSYS_CREATE_THREAD(allocatorStatsThread, NULL);
 #endif
@@ -891,7 +928,7 @@ int main(int argc, char *argv[])
   		} // if (bind(...))
 
 		// now we start listen on the new socket
-		if(listen(listen_socket, 10) == SOCKET_ERROR){
+		if(listen(listen_socket, 128) == SOCKET_ERROR){
 #ifdef WIN32
     			WSACleanup();
 #endif
@@ -910,7 +947,7 @@ int main(int argc, char *argv[])
 			tv.tv_sec = 1;
 			tv.tv_usec = 0;
 
-			int reads = select(1, &listen_set, NULL, NULL, &tv);
+			int reads = select((int)listen_socket + 1, &listen_set, NULL, NULL, &tv);
 			int errnum;
 #ifdef WIN32
 			errnum = WSAGetLastError();

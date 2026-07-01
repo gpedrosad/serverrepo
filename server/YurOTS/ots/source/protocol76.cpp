@@ -93,7 +93,15 @@ void Protocol76::ReceiveLoop()
 {
 	NetworkMessage msg;
 	do{
-		while(pendingLogout == false && msg.ReadFromSocket(s)){
+		while(pendingLogout == false){
+			if(!msg.ReadFromSocket(s)){
+				const char* reason = msg.getLastReadFailReason();
+				if(reason && reason[0] != '\0'){
+					std::cout << "Player recv disconnect: " << player->getName()
+					          << " (" << reason << ")" << std::endl;
+				}
+				break;
+			}
 			parsePacket(msg);
 		}
 
