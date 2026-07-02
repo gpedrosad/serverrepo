@@ -2975,8 +2975,17 @@ void Protocol76::RemoveItemContainer(NetworkMessage &msg,unsigned char cid,unsig
 void Protocol76::flushOutputBuffer(){
 	OTSYS_THREAD_LOCK_CLASS lockClass(bufferLock, "Protocol76::flushOutputBuffer()");
 	//force writetosocket
-	OutputBuffer.WriteToSocket(s);
+	bool ok = true;
+	if(s)
+		ok = OutputBuffer.WriteToSocket(s);
 	OutputBuffer.Reset();
+	if(!ok && s){
+		if(player){
+			std::cout << "Player send disconnect: " << player->getName()
+				<< " (send stalled or error) " << socketDescribeState(s) << std::endl;
+		}
+		disconnectConnection();
+	}
 
 	return;
 }

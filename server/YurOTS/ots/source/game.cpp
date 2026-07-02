@@ -4073,73 +4073,77 @@ std::list<Position> Game::getPathTo(Creature *creature, Position start, Position
 
 void Game::checkPlayerWalk(unsigned long id)
 {
-	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::checkPlayerWalk");
+	{
+		OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::checkPlayerWalk");
 
-	Player *player = getPlayerByID(id);
+		Player *player = getPlayerByID(id);
 
-	if(!player)
-		return;
+		if(!player)
+			return;
 
-	Position pos = player->pos;
-	Direction dir = player->pathlist.front();
-	player->pathlist.pop_front();
+		Position pos = player->pos;
+		Direction dir = player->pathlist.front();
+		player->pathlist.pop_front();
 
-	switch (dir) {
-		case NORTH:
-			pos.y--;
-			break;
-		case EAST:
-			pos.x++;
-			break;
-		case SOUTH:
-			pos.y++;
-			break;
-		case WEST:
-			pos.x--;
-			break;
-		case NORTHEAST:
-			pos.x++;
-			pos.y--;
-			break;
-		case NORTHWEST:
-			pos.x--;
-			pos.y--;
-			break;
-		case SOUTHWEST:
-			pos.x--;
-			pos.y++;
-			break;
-		case SOUTHEAST:
-			pos.x++;
-			pos.y++;
-			break;
-	}
+		switch (dir) {
+			case NORTH:
+				pos.y--;
+				break;
+			case EAST:
+				pos.x++;
+				break;
+			case SOUTH:
+				pos.y++;
+				break;
+			case WEST:
+				pos.x--;
+				break;
+			case NORTHEAST:
+				pos.x++;
+				pos.y--;
+				break;
+			case NORTHWEST:
+				pos.x--;
+				pos.y--;
+				break;
+			case SOUTHWEST:
+				pos.x--;
+				pos.y++;
+				break;
+			case SOUTHEAST:
+				pos.x++;
+				pos.y++;
+				break;
+		}
 
 /*
 #ifdef __DEBUG__
-	std::cout << "move to: " << dir << std::endl;
+		std::cout << "move to: " << dir << std::endl;
 #endif
 */
 
-	player->lastmove = OTSYS_TIME();
-	this->thingMove(player, player, pos.x, pos.y, pos.z, 1);
+		player->lastmove = OTSYS_TIME();
+		this->thingMove(player, player, pos.x, pos.y, pos.z, 1);
+
+		if(!player->pathlist.empty()) {
+			int ticks = (int)player->getSleepTicks();
+/*
+#ifdef __DEBUG__
+			std::cout << "checkPlayerWalk - " << ticks << std::endl;
+#endif
+*/
+			player->eventAutoWalk = addEvent(makeTask(ticks, std::bind2nd(std::mem_fun(&Game::checkPlayerWalk), id)));
+		}
+		else
+			player->eventAutoWalk = 0;
+	}
+
 	flushSendBuffers();
-
-	if(!player->pathlist.empty()) {
-		int ticks = (int)player->getSleepTicks();
-/*
-#ifdef __DEBUG__
-		std::cout << "checkPlayerWalk - " << ticks << std::endl;
-#endif
-*/
-		player->eventAutoWalk = addEvent(makeTask(ticks, std::bind2nd(std::mem_fun(&Game::checkPlayerWalk), id)));
-	}
-	else
-		player->eventAutoWalk = 0;
 }
 
 void Game::checkCreature(unsigned long id)
 {
+	{
 	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::checkCreature()");
 
 	Creature *creature = getCreatureByID(id);
@@ -4306,8 +4310,10 @@ void Game::checkCreature(unsigned long id)
 				}
 			}
 		}
-		flushSendBuffers();
 	}
+	}
+
+	flushSendBuffers();
 }
 
 void Game::changeOutfit(unsigned long id, int looktype){
@@ -4356,6 +4362,7 @@ void Game::changeSpeed(unsigned long id, unsigned short speed)
 
 void Game::checkCreatureAttacking(unsigned long id)
 {
+	{
 	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::checkCreatureAttacking()");
 
 	Creature *creature = getCreatureByID(id);
@@ -4438,14 +4445,17 @@ void Game::checkCreatureAttacking(unsigned long id)
 				}
 			}
 		}
-		flushSendBuffers();
 	}
+	}
+
+	flushSendBuffers();
 
 
 }
 
 void Game::checkDecay(int t)
 {
+	{
 	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::checkDecay()");
 
 	addEvent(makeTask(DECAY_INTERVAL, boost::bind(&Game::checkDecay,this,DECAY_INTERVAL)));
@@ -4512,6 +4522,8 @@ void Game::checkDecay(int t)
 			it++;
 		}
 	}//for it
+
+	}
 
 	flushSendBuffers();
 }
@@ -5183,28 +5195,28 @@ bool Game::requestAddVip(Player* player, const std::string &vip_name)
 
 void Game::flushSendBuffers()
 {
-	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::flushSendBuffers()");
+	std::vector<Player*> bufferedPlayers;
+	std::vector<Thing*> toReleaseThings;
 
-	for(std::vector<Player*>::iterator it = BufferedPlayers.begin(); it != BufferedPlayers.end(); ++it) {
-		(*it)->flushMsg();
-		(*it)->SendBuffer = false;
-		(*it)->releaseThing();
-/*
-#ifdef __DEBUG__
-		std::cout << "flushSendBuffers() - releaseThing()" << std::endl;
-#endif
-*/
+	{
+		OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::flushSendBuffers()");
+
+		bufferedPlayers.swap(BufferedPlayers);
+		for(std::vector<Player*>::iterator it = bufferedPlayers.begin(); it != bufferedPlayers.end(); ++it) {
+			(*it)->SendBuffer = false;
 		}
-	BufferedPlayers.clear();
 
-	//free memory
-	for(std::vector<Thing*>::iterator it = ToReleaseThings.begin(); it != ToReleaseThings.end(); ++it){
+		toReleaseThings.swap(ToReleaseThings);
+	}
+
+	for(std::vector<Player*>::iterator it = bufferedPlayers.begin(); it != bufferedPlayers.end(); ++it) {
+		(*it)->flushMsg();
 		(*it)->releaseThing();
 	}
-	ToReleaseThings.clear();
 
-
-	return;
+	for(std::vector<Thing*>::iterator it = toReleaseThings.begin(); it != toReleaseThings.end(); ++it){
+		(*it)->releaseThing();
+	}
 }
 
 void Game::addPlayerBuffer(Player* p)

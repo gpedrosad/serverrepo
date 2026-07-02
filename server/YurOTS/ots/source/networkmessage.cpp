@@ -205,6 +205,7 @@ bool NetworkMessage::WriteToSocket(SOCKET socket)
 	bool ret = true;
 	int sendBytes = 0;
 	int flags;
+	const int retryDelayMs = 10;
 
 #if defined WIN32 || defined __WINDOWS__
 	// Set the socket I/O mode; iMode = 0 for blocking; iMode != 0 for non-blocking
@@ -213,35 +214,51 @@ bool NetworkMessage::WriteToSocket(SOCKET socket)
 	flags = 0;
 #else
 	flags = 0;
+	// Keep recv blocking for gameplay, but make individual sends bounded so one
+	// slow client cannot stall the whole server forever.
+	#ifdef MSG_DONTWAIT
+	flags |= MSG_DONTWAIT;
+	#endif
+	#ifdef MSG_NOSIGNAL
+	flags |= MSG_NOSIGNAL;
+	#endif
 #endif
 	int retry = 0;
-  	do{
-    	int b = send(socket, (char*)m_MsgBuf+sendBytes, std::min(m_MsgSize-sendBytes+2, 1000), flags);
-		if(b <= 0){
+	int maxRetries = 10;
+#if !defined WIN32 && !defined __WINDOWS__
+	maxRetries = 100;
+#endif
+	  	do{
+	    	int b = send(socket, (char*)m_MsgBuf+sendBytes, std::min(m_MsgSize-sendBytes+2, 1000), flags);
+			if(b <= 0){
 #if defined WIN32 || defined __WINDOWS__
-			int errnum = ::WSAGetLastError();
-			if(errnum == EWOULDBLOCK){
-				b = 0;
-				OTSYS_SLEEP(10);
-				retry++;
-				if(retry == 10){
-					ret = false;
-					break;
+				int errnum = ::WSAGetLastError();
+				if(errnum == EWOULDBLOCK){
+					b = 0;
+					OTSYS_SLEEP(retryDelayMs);
+					retry++;
+					if(retry >= maxRetries){
+						ret = false;
+						break;
+					}
 				}
-			}
-			else
+				else
 #else
-			int errnum = errno;
-			if(errnum == EAGAIN || errnum == EWOULDBLOCK){
-				b = 0;
-				OTSYS_SLEEP(10);
-				retry++;
-				if(retry >= 1000){
-					ret = false;
-					break;
+				int errnum = errno;
+				if(errnum == EINTR){
+					b = 0;
+					continue;
 				}
-			}
-			else
+				if(errnum == EAGAIN || errnum == EWOULDBLOCK){
+					b = 0;
+					OTSYS_SLEEP(retryDelayMs);
+					retry++;
+					if(retry >= maxRetries){
+						ret = false;
+						break;
+					}
+				}
+				else
 #endif
 			{
 				ret = false;

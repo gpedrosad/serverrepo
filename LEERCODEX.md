@@ -358,6 +358,18 @@ python3 ~/yurots-principal/scripts/sync-houses-with-map.py --dry-run
 | `174d9c7` | Templo corregido 130,53,6 |
 | `ec9b0dd` | `YUROTS_SOCKET_DEBUG=1` en prod |
 | `468447f` | Docs cuelgues + socket debug |
+| `pre-ot-send-blocking-fix` (tag) | Estado **antes** del fix send/gameLock |
+| (commit fix) | `game.cpp` + `networkmessage.cpp` + `protocol76.cpp` |
+
+### Rollback del fix send bloqueante
+
+```bash
+cd ~/yurots-principal
+git fetch --tags
+DEPLOY_I_READ_README=yes ./scripts/rollback-ot-send-blocking-fix.sh
+```
+
+Ver [docs/OT_HANG_ROOT_CAUSE_SEND_BLOCKING.md](docs/OT_HANG_ROOT_CAUSE_SEND_BLOCKING.md).
 
 ---
 
