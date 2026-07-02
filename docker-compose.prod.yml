@@ -20,8 +20,13 @@ services:
     security_opt:
       - seccomp=unconfined
     healthcheck:
-      # Protocolo info real: detecta cuelgues donde TCP acepta pero no responde.
-      test: ["CMD-SHELL", "python3 /app/scripts/ot-probe.py 127.0.0.1 7171 --quiet --timeout 5 || exit 1"]
+      # Protocolo info real (bash): detecta cuelgues donde TCP acepta pero no responde.
+      test:
+        - CMD-SHELL
+        - |
+          bash -c 'exec 3<>/dev/tcp/127.0.0.1/7171 \
+            && printf "\x06\x00\xff\xffinfo" >&3 \
+            && head -c 2048 <&3 | grep -q serverinfo' || exit 1
       interval: 30s
       timeout: 8s
       retries: 2
