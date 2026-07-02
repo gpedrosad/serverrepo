@@ -10,6 +10,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 from analytics import WebAnalytics
+from bug_reports import BugReportStore
 from data import build_payload, create_account, read_server_ip, server_status_from_files
 from debug_log import get_logger, log_exception, log_http, setup_logging
 from premium_orders import create_premium_order, parse_multipart_form, premium_config_payload
@@ -23,6 +24,7 @@ ONLINE_FILE = Path(os.environ.get("ONLINE_FILE", ROOT / "server/YurOTS/ots/data/
 STATE_FILE = Path(os.environ.get("STATE_FILE", ROOT / "web/state/daily.json"))
 PEAK_STATE = Path(os.environ.get("PEAK_STATE", ROOT / "web/state/peak.json"))
 REGISTER_STATE = Path(os.environ.get("REGISTER_STATE", ROOT / "web/state/register.json"))
+BUG_REPORTS_FILE = Path(os.environ.get("BUG_REPORTS_FILE", ROOT / "web/state/bug_reports.json"))
 PREMIUM_ORDERS_FILE = Path(os.environ.get("PREMIUM_ORDERS_FILE", ROOT / "web/state/premium_orders.json"))
 PREMIUM_UPLOADS_DIR = Path(os.environ.get("PREMIUM_UPLOADS_DIR", ROOT / "web/uploads/comprobantes"))
 ANALYTICS_STATE = Path(os.environ.get("ANALYTICS_STATE", ROOT / "web/state/analytics.json"))
@@ -46,6 +48,7 @@ ASSET_TYPES = {
 }
 
 guard = RegisterGuard(REGISTER_STATE)
+bug_reports = BugReportStore(BUG_REPORTS_FILE)
 analytics = WebAnalytics(ANALYTICS_STATE)
 setup_logging()
 log = get_logger("server")
@@ -126,7 +129,7 @@ class Handler(BaseHTTPRequestHandler):
         path = "?"
         try:
             super().handle_one_request()
-            path = self.path.split("?", 1)[0]
+            path = getattr(self, "path", "?").split("?", 1)[0]
         except (ConnectionResetError, BrokenPipeError):
             self._response_code = 499
             path = getattr(self, "path", "?").split("?", 1)[0]
@@ -193,6 +196,8 @@ class Handler(BaseHTTPRequestHandler):
             self._premium_event()
         elif path == "/api/premium-order":
             self._premium_order()
+        elif path == "/api/bug-report":
+            self._bug_report()
         else:
             self.send_error(404)
 
@@ -224,6 +229,35 @@ class Handler(BaseHTTPRequestHandler):
                     guard.record_attempt(ip)
         except (json.JSONDecodeError, TypeError, ValueError):
             result = {"ok": False, "message": "Datos inválidos"}
+
+        self._json(200, result)
+
+    def _bug_report(self) -> None:
+        length = int(self.headers.get("Content-Length", "0"))
+        if length <= 0 or length > 8192:
+            self._json(400, {"ok": False, "message": "Datos inválidos."})
+            return
+        ip = client_ip(self)
+        try:
+            body = json.loads(self.rfile.read(length).decode("utf-8"))
+            err = guard.verify_captcha(
+                str(body.get("challenge_id", "")),
+                str(body.get("captcha", "")),
+                str(body.get("company", "")),
+                float(body.get("form_ts", 0)),
+            )
+            if err:
+                result = {"ok": False, "message": err}
+            else:
+                result = bug_reports.add_report(
+                    character=str(body.get("character", "")),
+                    category=str(body.get("category", "")),
+                    title=str(body.get("title", "")),
+                    description=str(body.get("description", "")),
+                    ip=ip,
+                )
+        except (json.JSONDecodeError, TypeError, ValueError):
+            result = {"ok": False, "message": "Datos inválidos."}
 
         self._json(200, result)
 

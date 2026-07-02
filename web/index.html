@@ -128,6 +128,17 @@
       border-color: rgba(251, 191, 36, 0.6);
       background: rgba(245, 158, 11, 0.28);
     }
+    .chip-accent-bugs {
+      color: #fca5a5;
+      border-color: rgba(248, 113, 113, 0.35);
+      background: rgba(239, 68, 68, 0.1);
+    }
+    .chip-accent-bugs:hover { color: #fecaca; border-color: rgba(248, 113, 113, 0.5); }
+    .chip-accent-bugs.nav-btn.active {
+      color: #fef2f2;
+      border-color: rgba(248, 113, 113, 0.55);
+      background: rgba(239, 68, 68, 0.22);
+    }
     .premium-hero {
       border: 1px solid rgba(251, 191, 36, 0.2);
       background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(168, 85, 247, 0.06) 55%, rgba(255,255,255,.02));
@@ -423,6 +434,43 @@
     <p id="account-result" class="mt-2 hidden rounded-md px-2.5 py-2 text-xs"></p>
   </section>
 
+  <!-- BUGS -->
+  <section id="panel-bugs" class="panel">
+    <div class="anim-in mb-3 rounded-lg border border-red-500/15 bg-red-500/[0.04] px-3 py-2.5">
+      <p class="text-[11px] leading-relaxed text-zinc-300">
+        ¿Encontraste un bug? Cuéntanos qué pasó. Revisamos cada reporte para mejorar el servidor.
+      </p>
+    </div>
+    <form id="bug-form" class="space-y-2.5 rounded-lg border border-white/[0.06] bg-white/[0.02] p-3">
+      <input type="text" name="company" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
+      <input type="hidden" name="form_ts" id="bug-form-ts">
+      <input type="hidden" name="challenge_id" id="bug-challenge-id">
+      <input type="text" name="character" maxlength="20" pattern="[a-zA-Z ]{0,20}" autocomplete="username" placeholder="Personaje (opcional)"
+        class="w-full rounded-md border border-white/[0.08] bg-black/40 px-2.5 py-2 text-xs text-zinc-100 outline-none focus:border-white/20">
+      <select name="category" required
+        class="w-full rounded-md border border-white/[0.08] bg-black/40 px-2.5 py-2 text-xs text-zinc-100 outline-none focus:border-white/20">
+        <option value="">Categoría…</option>
+        <option value="gameplay">Gameplay / mecánicas</option>
+        <option value="crash">Crash / desconexión</option>
+        <option value="visual">Visual / mapa</option>
+        <option value="cuenta">Cuenta / login</option>
+        <option value="otro">Otro</option>
+      </select>
+      <input type="text" name="title" required minlength="5" maxlength="80" placeholder="Título breve del bug"
+        class="w-full rounded-md border border-white/[0.08] bg-black/40 px-2.5 py-2 text-xs text-zinc-100 outline-none focus:border-white/20">
+      <textarea name="description" required minlength="15" maxlength="2000" rows="5" placeholder="¿Qué hiciste? ¿Qué esperabas? ¿Qué ocurrió en su lugar?"
+        class="w-full resize-y rounded-md border border-white/[0.08] bg-black/40 px-2.5 py-2 text-xs text-zinc-100 outline-none focus:border-white/20"></textarea>
+      <label class="block">
+        <span class="mb-1 block text-[10px] text-zinc-600">Verificación: <span id="bug-captcha-q">…</span></span>
+        <input type="number" name="captcha" required inputmode="numeric" placeholder="Resultado"
+          class="w-full rounded-md border border-white/[0.08] bg-black/40 px-2.5 py-2 text-xs text-zinc-100 outline-none focus:border-white/20">
+      </label>
+      <p class="text-[10px] leading-relaxed text-zinc-600">Máx. 3 reportes por hora por IP. No incluyas contraseñas ni datos sensibles.</p>
+      <button type="submit" id="bug-submit" class="w-full rounded-md border border-red-400/20 py-2 text-xs text-red-200/90 hover:bg-red-500/[0.06] disabled:opacity-40">Enviar reporte</button>
+    </form>
+    <p id="bug-result" class="mt-2 hidden rounded-md px-2.5 py-2 text-xs"></p>
+  </section>
+
   <!-- PREMIUM -->
   <section id="panel-premium" class="panel space-y-4">
     <div id="premium-hero" class="premium-hero anim-in rounded-lg px-3 py-3"></div>
@@ -505,6 +553,7 @@ const NAV = [
   { id: 'account', label: 'Cuenta', accent: 'account' },
   { id: 'download', label: 'Cliente', accent: 'download' },
   { id: 'premium', label: 'Premium', accent: 'premium' },
+  { id: 'bugs', label: 'Bugs', accent: 'bugs' },
   { id: 'rank', label: 'Top' },
   { id: 'power', label: 'Power' },
   { id: 'frags', label: 'Frags' },
@@ -947,6 +996,7 @@ function navClass(item) {
   if (item.accent === 'account') return `chip cursor-pointer chip-accent-account ${active ? 'nav-btn active' : ''}`;
   if (item.accent === 'download') return `chip cursor-pointer chip-accent-download ${active ? 'nav-btn active' : ''}`;
   if (item.accent === 'premium') return `chip cursor-pointer chip-accent-premium ${active ? 'nav-btn active' : ''}`;
+  if (item.accent === 'bugs') return `chip cursor-pointer chip-accent-bugs ${active ? 'nav-btn active' : ''}`;
   return chip(active);
 }
 function empty(msg) { return `<p class="px-3 py-6 text-center text-zinc-600">${msg}</p>`; }
@@ -976,9 +1026,24 @@ function showPanel(name) {
   panel.classList.add('active');
   renderNav();
   if (name === 'account') loadRegisterChallenge();
+  if (name === 'bugs') loadBugChallenge();
   if (name === 'premium') {
     trackPremiumEvent('tab_view');
     loadPremiumConfig();
+  }
+}
+
+async function loadBugChallenge() {
+  const form = document.getElementById('bug-form');
+  document.getElementById('bug-form-ts').value = String(Date.now() / 1000);
+  try {
+    const r = await fetch('/api/register-challenge', { cache: 'no-store' });
+    const d = await r.json();
+    document.getElementById('bug-challenge-id').value = d.id || '';
+    document.getElementById('bug-captcha-q').textContent = d.question || '—';
+    form.captcha.value = '';
+  } catch {
+    document.getElementById('bug-captcha-q').textContent = 'Recarga la página';
   }
 }
 
@@ -1434,6 +1499,45 @@ document.getElementById('account-form').addEventListener('submit', async e => {
       loadRegisterChallenge();
     } else {
       loadRegisterChallenge();
+    }
+  } catch {
+    res.textContent = 'Error de conexión';
+    res.className = 'mt-2 rounded-md px-2.5 py-2 text-xs bg-red-500/10 text-red-300/90';
+    res.classList.remove('hidden');
+  } finally {
+    btn.disabled = false;
+  }
+});
+
+document.getElementById('bug-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = e.target, btn = document.getElementById('bug-submit'), res = document.getElementById('bug-result');
+  res.classList.add('hidden');
+  btn.disabled = true;
+  try {
+    const r = await fetch('/api/bug-report', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        character: f.character.value.trim(),
+        category: f.category.value,
+        title: f.title.value.trim(),
+        description: f.description.value.trim(),
+        captcha: f.captcha.value,
+        challenge_id: f.challenge_id.value,
+        company: f.company.value,
+        form_ts: parseFloat(f.form_ts.value),
+      }),
+    });
+    const d = await r.json();
+    res.textContent = d.message || 'Error';
+    res.className = 'mt-2 rounded-md px-2.5 py-2 text-xs ' + (d.ok ? 'bg-emerald-500/10 text-emerald-300/90' : 'bg-red-500/10 text-red-300/90');
+    res.classList.remove('hidden');
+    if (d.ok) {
+      f.reset();
+      loadBugChallenge();
+    } else {
+      loadBugChallenge();
     }
   } catch {
     res.textContent = 'Error de conexión';

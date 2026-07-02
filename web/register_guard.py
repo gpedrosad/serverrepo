@@ -71,21 +71,19 @@ class RegisterGuard:
         rec["day"].append(now)
         self._save(data)
 
-    def verify(
+    def verify_captcha(
         self,
-        ip: str,
         challenge_id: str,
         answer: str,
         honeypot: str,
         form_ts: float,
+        *,
+        honeypot_message: str = "No se pudo enviar el formulario.",
     ) -> str | None:
         if honeypot:
-            return "No se pudo crear la cuenta."
+            return honeypot_message
         if time.time() - form_ts < MIN_FORM_SECONDS:
             return "El formulario se envió demasiado rápido."
-        rate_err = self.check_rate(ip)
-        if rate_err:
-            return rate_err
         now = time.time()
         data = self._load()
         self._prune(data, now)
@@ -99,3 +97,22 @@ class RegisterGuard:
         except (TypeError, ValueError):
             return "Captcha incorrecto."
         return None
+
+    def verify(
+        self,
+        ip: str,
+        challenge_id: str,
+        answer: str,
+        honeypot: str,
+        form_ts: float,
+    ) -> str | None:
+        captcha_err = self.verify_captcha(
+            challenge_id,
+            answer,
+            honeypot,
+            form_ts,
+            honeypot_message="No se pudo crear la cuenta.",
+        )
+        if captcha_err:
+            return captcha_err
+        return self.check_rate(ip)

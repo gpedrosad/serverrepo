@@ -7,4 +7,4 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 HOST="${1:-127.0.0.1}"
 PORT="${2:-7171}"
 
-exec python3 "$ROOT/scripts/ot-probe.py" "$HOST" "$PORT" --quiet --timeout 8
+exec python3 "$ROOT/scripts/ot-probe.py" "$HOST" "$PORT" --quiet --timeout "${OT_PROBE_TIMEOUT:-5}"

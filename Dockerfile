@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   liblua5.1-0-dev \
   libboost-regex-dev \
   zlib1g-dev \
+  python3-minimal \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app/YurOTS
@@ -24,6 +25,7 @@ WORKDIR /app/YurOTS
 #Copied into the image so the bind-mount in compose doesn't have to
 #include the script in the live data tree.
 COPY scripts/docker-entrypoint.sh /app/YurOTS/docker-entrypoint.sh
-RUN chmod +x /app/YurOTS/docker-entrypoint.sh
+COPY scripts/ot-probe.py /app/scripts/ot-probe.py
+RUN chmod +x /app/YurOTS/docker-entrypoint.sh /app/scripts/ot-probe.py
 
 CMD ["/app/YurOTS/docker-entrypoint.sh"]
