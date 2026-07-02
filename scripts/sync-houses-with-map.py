@@ -300,6 +300,8 @@ def main():
         print(f"Total tiles invalidos: {removed}")
         if not dry_run:
             print("houses.xml actualizado.")
+        elif dry_run:
+            sys.exit(1)
     else:
         print("houses.xml ya coincide con el mapa.")
 

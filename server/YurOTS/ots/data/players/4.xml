@@ -23,6 +23,6 @@
 <slot slotid="7"><item id="2468"/></slot>
 <slot slotid="8"><item id="2643"/></slot>
 </inventory>
-<depots><depot depotid="1"><item id="2590"><inside><item id="2594"/></inside></item></depot></depots>
+<depots><depot depotid="1"><item id="2590"><inside><item id="2594"/></inside></item></depot><depot depotid="405"><item id="2590"/></depot></depots>
 <storage/>
 </player>

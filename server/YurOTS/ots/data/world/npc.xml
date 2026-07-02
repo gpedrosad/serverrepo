@@ -6,7 +6,7 @@
 <npc name="Mad" x="145" y="51" z="6" dir="3"/>
 <npc name="Lector" x="127" y="49" z="7" dir="1"/>
 <npc name="Perac" x="144" y="54" z="5" dir="0"/>
-<npc name="Dufi" x="128" y="55" z="7" dir="1"/>
+<npc name="Dufi" x="128" y="51" z="5" dir="1"/>
 <npc name="Seller" x="208" y="80" z="7" dir="3"/>
 <!-- Dark Rodo duplicate removed: (207, 71, 7) was a copy-paste of the spawn at (129, 50, 6). Re-enable if both are intentional. -->
 <!-- <npc name="Dark Rodo" x="207" y="71" z="7" dir="2"/> -->

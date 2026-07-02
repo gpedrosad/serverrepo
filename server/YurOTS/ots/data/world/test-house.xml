@@ -19,8 +19,6 @@
 	<house name="Green Street II" houseid="17" entryx="180" entryy="32" entryz="7" rent="0" townid="1" size="15" />
 	<house name="Green Street III" houseid="18" entryx="176" entryy="32" entryz="7" rent="0" townid="1" size="15" />
 	<house name="Pirate Street" houseid="19" entryx="176" entryy="56" entryz="7" rent="0" townid="1" size="45" />
-	<house name="River Street I" houseid="20" entryx="129" entryy="61" entryz="7" rent="0" townid="1" size="12" />
-	<house name="River Street II" houseid="21" entryx="134" entryy="61" entryz="7" rent="0" townid="1" size="12" />
 	<house name="River Street III" houseid="22" entryx="148" entryy="59" entryz="7" rent="0" townid="1" size="15" />
 	<house name="River Street IV" houseid="23" entryx="153" entryy="59" entryz="7" rent="0" townid="1" size="15" />
 	<house name="River Street V" houseid="24" entryx="158" entryy="59" entryz="7" rent="0" townid="1" size="15" />
@@ -30,6 +28,7 @@
 	<house name="Desert Street IV" houseid="28" entryx="212" entryy="75" entryz="6" rent="0" townid="1" size="30" />
 	<house name="Desert Street V" houseid="29" entryx="206" entryy="75" entryz="6" rent="0" townid="1" size="21" />
 	<house name="Desert Street VI" houseid="30" entryx="205" entryy="76" entryz="6" rent="0" townid="1" size="22" />
+	<house name="Sand Mansion" houseid="31" entryx="218" entryy="101" entryz="7" rent="0" townid="1" size="67" />
 	<house name="Bamboo Camp I" houseid="32" entryx="181" entryy="104" entryz="7" rent="0" townid="1" size="30" />
 	<house name="Bamboo Camp II" houseid="33" entryx="171" entryy="101" entryz="7" rent="0" townid="1" size="15" />
 	<house name="Bamboo Camp III" houseid="34" entryx="176" entryy="96" entryz="7" rent="0" townid="1" size="15" />

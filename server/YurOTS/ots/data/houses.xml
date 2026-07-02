@@ -1,7 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <houses>
 <house name="Small Street I">
-<tiles fromx="143" fromy="43" fromz="7" tox="144" toy="45" toz="7" />
+<tile x="143" y="43" z="7" />
+<tile x="143" y="44" z="7" />
+<tile x="143" y="45" z="7" />
+<tile x="144" y="43" z="7" />
+<tile x="144" y="44" z="7" />
+<tile x="144" y="45" z="7" />
 </house>
 <house name="Small Street II">
 <tile x="146" y="43" z="7" />
@@ -9,7 +14,12 @@
 <tile x="146" y="45" z="7" />
 </house>
 <house name="Small Street III">
-<tiles fromx="143" fromy="43" fromz="6" tox="144" toy="45" toz="6" />
+<tile x="143" y="43" z="6" />
+<tile x="143" y="44" z="6" />
+<tile x="143" y="45" z="6" />
+<tile x="144" y="43" z="6" />
+<tile x="144" y="44" z="6" />
+<tile x="144" y="45" z="6" />
 </house>
 <house name="Small Street IV">
 <tile x="146" y="43" z="6" />
@@ -17,7 +27,12 @@
 <tile x="146" y="45" z="6" />
 </house>
 <house name="Small Street V">
-<tiles fromx="143" fromy="43" fromz="5" tox="144" toy="45" toz="5" />
+<tile x="143" y="43" z="5" />
+<tile x="143" y="44" z="5" />
+<tile x="143" y="45" z="5" />
+<tile x="144" y="43" z="5" />
+<tile x="144" y="44" z="5" />
+<tile x="144" y="45" z="5" />
 </house>
 <house name="Small Street VI">
 <tile x="146" y="43" z="5" />
@@ -25,98 +40,848 @@
 <tile x="146" y="45" z="5" />
 </house>
 <house name="Great Street I">
-<tiles fromx="137" fromy="29" fromz="7" tox="143" toy="31" toz="6" />
+<tile x="137" y="29" z="6" />
+<tile x="137" y="30" z="6" />
+<tile x="137" y="31" z="6" />
+<tile x="138" y="29" z="6" />
+<tile x="138" y="30" z="6" />
+<tile x="138" y="31" z="6" />
+<tile x="139" y="29" z="6" />
+<tile x="139" y="30" z="6" />
+<tile x="139" y="31" z="6" />
+<tile x="140" y="29" z="6" />
+<tile x="140" y="30" z="6" />
+<tile x="140" y="31" z="6" />
+<tile x="141" y="29" z="6" />
+<tile x="141" y="30" z="6" />
+<tile x="141" y="31" z="6" />
+<tile x="142" y="29" z="6" />
+<tile x="142" y="30" z="6" />
+<tile x="142" y="31" z="6" />
+<tile x="143" y="29" z="6" />
+<tile x="143" y="30" z="6" />
+<tile x="143" y="31" z="6" />
+<tile x="137" y="29" z="7" />
+<tile x="137" y="30" z="7" />
+<tile x="137" y="31" z="7" />
+<tile x="138" y="29" z="7" />
+<tile x="138" y="30" z="7" />
+<tile x="138" y="31" z="7" />
+<tile x="139" y="29" z="7" />
+<tile x="139" y="30" z="7" />
+<tile x="139" y="31" z="7" />
+<tile x="140" y="29" z="7" />
+<tile x="140" y="30" z="7" />
+<tile x="140" y="31" z="7" />
+<tile x="141" y="29" z="7" />
+<tile x="141" y="30" z="7" />
+<tile x="141" y="31" z="7" />
+<tile x="142" y="29" z="7" />
+<tile x="142" y="30" z="7" />
+<tile x="142" y="31" z="7" />
+<tile x="143" y="29" z="7" />
+<tile x="143" y="30" z="7" />
+<tile x="143" y="31" z="7" />
 </house>
 <house name="Great Street II">
-<tiles fromx="145" fromy="29" fromz="7" tox="151" toy="31" toz="7" />
+<tile x="145" y="29" z="7" />
+<tile x="145" y="30" z="7" />
+<tile x="145" y="31" z="7" />
+<tile x="146" y="29" z="7" />
+<tile x="146" y="30" z="7" />
+<tile x="146" y="31" z="7" />
+<tile x="147" y="29" z="7" />
+<tile x="147" y="30" z="7" />
+<tile x="147" y="31" z="7" />
+<tile x="148" y="29" z="7" />
+<tile x="148" y="30" z="7" />
+<tile x="148" y="31" z="7" />
+<tile x="149" y="29" z="7" />
+<tile x="149" y="30" z="7" />
+<tile x="149" y="31" z="7" />
+<tile x="150" y="29" z="7" />
+<tile x="150" y="30" z="7" />
+<tile x="150" y="31" z="7" />
+<tile x="151" y="29" z="7" />
+<tile x="151" y="30" z="7" />
+<tile x="151" y="31" z="7" />
 </house>
 <house name="Great Street III">
-<tiles fromx="155" fromy="29" fromz="7" tox="159" toy="32" toz="7" />
+<tile x="155" y="29" z="7" />
+<tile x="155" y="30" z="7" />
+<tile x="155" y="31" z="7" />
+<tile x="155" y="32" z="7" />
+<tile x="156" y="29" z="7" />
+<tile x="156" y="30" z="7" />
+<tile x="156" y="31" z="7" />
+<tile x="156" y="32" z="7" />
+<tile x="157" y="29" z="7" />
+<tile x="157" y="30" z="7" />
+<tile x="157" y="31" z="7" />
+<tile x="157" y="32" z="7" />
+<tile x="158" y="29" z="7" />
+<tile x="158" y="30" z="7" />
+<tile x="158" y="31" z="7" />
+<tile x="158" y="32" z="7" />
+<tile x="159" y="29" z="7" />
+<tile x="159" y="30" z="7" />
+<tile x="159" y="31" z="7" />
+<tile x="159" y="32" z="7" />
 </house>
 <house name="Great Street IV">
-<tiles fromx="165" fromy="33" fromz="7" tox="169" toy="39" toz="7" />
+<tile x="165" y="33" z="7" />
+<tile x="165" y="34" z="7" />
+<tile x="165" y="35" z="7" />
+<tile x="165" y="36" z="7" />
+<tile x="165" y="37" z="7" />
+<tile x="165" y="38" z="7" />
+<tile x="165" y="39" z="7" />
+<tile x="166" y="33" z="7" />
+<tile x="166" y="34" z="7" />
+<tile x="166" y="35" z="7" />
+<tile x="166" y="36" z="7" />
+<tile x="166" y="37" z="7" />
+<tile x="166" y="38" z="7" />
+<tile x="166" y="39" z="7" />
+<tile x="167" y="33" z="7" />
+<tile x="167" y="34" z="7" />
+<tile x="167" y="35" z="7" />
+<tile x="167" y="36" z="7" />
+<tile x="167" y="37" z="7" />
+<tile x="167" y="38" z="7" />
+<tile x="167" y="39" z="7" />
+<tile x="168" y="33" z="7" />
+<tile x="168" y="34" z="7" />
+<tile x="168" y="35" z="7" />
+<tile x="168" y="36" z="7" />
+<tile x="168" y="37" z="7" />
+<tile x="168" y="38" z="7" />
+<tile x="168" y="39" z="7" />
+<tile x="169" y="33" z="7" />
+<tile x="169" y="34" z="7" />
+<tile x="169" y="35" z="7" />
+<tile x="169" y="36" z="7" />
+<tile x="169" y="37" z="7" />
+<tile x="169" y="38" z="7" />
+<tile x="169" y="39" z="7" />
 </house>
 <house name="Upper Street I">
-<tiles fromx="155" fromy="29" fromz="6" tox="163" toy="33" toz="6" />
+<tile x="155" y="29" z="6" />
+<tile x="155" y="30" z="6" />
+<tile x="155" y="31" z="6" />
+<tile x="155" y="32" z="6" />
+<tile x="155" y="33" z="6" />
+<tile x="156" y="29" z="6" />
+<tile x="156" y="30" z="6" />
+<tile x="156" y="31" z="6" />
+<tile x="156" y="32" z="6" />
+<tile x="156" y="33" z="6" />
+<tile x="157" y="29" z="6" />
+<tile x="157" y="30" z="6" />
+<tile x="157" y="31" z="6" />
+<tile x="157" y="32" z="6" />
+<tile x="157" y="33" z="6" />
+<tile x="158" y="29" z="6" />
+<tile x="158" y="30" z="6" />
+<tile x="158" y="31" z="6" />
+<tile x="158" y="32" z="6" />
+<tile x="158" y="33" z="6" />
+<tile x="159" y="29" z="6" />
+<tile x="159" y="30" z="6" />
+<tile x="159" y="31" z="6" />
+<tile x="159" y="32" z="6" />
+<tile x="159" y="33" z="6" />
+<tile x="160" y="29" z="6" />
+<tile x="160" y="30" z="6" />
+<tile x="160" y="31" z="6" />
+<tile x="160" y="32" z="6" />
+<tile x="160" y="33" z="6" />
+<tile x="161" y="29" z="6" />
+<tile x="161" y="30" z="6" />
+<tile x="161" y="31" z="6" />
+<tile x="161" y="32" z="6" />
+<tile x="161" y="33" z="6" />
+<tile x="162" y="29" z="6" />
+<tile x="162" y="30" z="6" />
+<tile x="162" y="31" z="6" />
+<tile x="162" y="32" z="6" />
+<tile x="162" y="33" z="6" />
+<tile x="163" y="29" z="6" />
+<tile x="163" y="30" z="6" />
+<tile x="163" y="31" z="6" />
+<tile x="163" y="32" z="6" />
+<tile x="163" y="33" z="6" />
 </house>
 <house name="Upper Street II">
-<tiles fromx="165" fromy="37" fromz="6" tox="169" toy="39" toz="6" />
+<tile x="165" y="37" z="6" />
+<tile x="165" y="38" z="6" />
+<tile x="165" y="39" z="6" />
+<tile x="166" y="37" z="6" />
+<tile x="166" y="38" z="6" />
+<tile x="166" y="39" z="6" />
+<tile x="167" y="37" z="6" />
+<tile x="167" y="38" z="6" />
+<tile x="167" y="39" z="6" />
+<tile x="168" y="37" z="6" />
+<tile x="168" y="38" z="6" />
+<tile x="168" y="39" z="6" />
+<tile x="169" y="37" z="6" />
+<tile x="169" y="38" z="6" />
+<tile x="169" y="39" z="6" />
 </house>
 <house name="Upper Street III">
-<tiles fromx="167" fromy="32" fromz="6" tox="169" toy="35" toz="6" />
+<tile x="167" y="32" z="6" />
+<tile x="167" y="33" z="6" />
+<tile x="167" y="34" z="6" />
+<tile x="167" y="35" z="6" />
+<tile x="168" y="32" z="6" />
+<tile x="168" y="33" z="6" />
+<tile x="168" y="34" z="6" />
+<tile x="168" y="35" z="6" />
+<tile x="169" y="32" z="6" />
+<tile x="169" y="33" z="6" />
+<tile x="169" y="34" z="6" />
+<tile x="169" y="35" z="6" />
 </house>
 <house name="Upper Street IV">
-<tiles fromx="161" fromy="29" fromz="5" tox="166" toy="33" toz="5" />
+<tile x="161" y="29" z="5" />
+<tile x="161" y="30" z="5" />
+<tile x="161" y="31" z="5" />
+<tile x="161" y="32" z="5" />
+<tile x="161" y="33" z="5" />
+<tile x="162" y="29" z="5" />
+<tile x="162" y="30" z="5" />
+<tile x="162" y="31" z="5" />
+<tile x="162" y="32" z="5" />
+<tile x="162" y="33" z="5" />
+<tile x="163" y="29" z="5" />
+<tile x="163" y="30" z="5" />
+<tile x="163" y="31" z="5" />
+<tile x="163" y="32" z="5" />
+<tile x="163" y="33" z="5" />
+<tile x="164" y="29" z="5" />
+<tile x="164" y="30" z="5" />
+<tile x="164" y="31" z="5" />
+<tile x="164" y="32" z="5" />
+<tile x="164" y="33" z="5" />
+<tile x="165" y="29" z="5" />
+<tile x="165" y="30" z="5" />
+<tile x="165" y="31" z="5" />
+<tile x="165" y="32" z="5" />
+<tile x="165" y="33" z="5" />
+<tile x="166" y="29" z="5" />
+<tile x="166" y="30" z="5" />
+<tile x="166" y="31" z="5" />
+<tile x="166" y="32" z="5" />
+<tile x="166" y="33" z="5" />
 </house>
 <house name="Upper Street V">
-<tiles fromx="165" fromy="35" fromz="5" tox="169" toy="39" toz="5" />
+<tile x="165" y="35" z="5" />
+<tile x="165" y="36" z="5" />
+<tile x="165" y="37" z="5" />
+<tile x="165" y="38" z="5" />
+<tile x="165" y="39" z="5" />
+<tile x="166" y="35" z="5" />
+<tile x="166" y="36" z="5" />
+<tile x="166" y="37" z="5" />
+<tile x="166" y="38" z="5" />
+<tile x="166" y="39" z="5" />
+<tile x="167" y="35" z="5" />
+<tile x="167" y="36" z="5" />
+<tile x="167" y="37" z="5" />
+<tile x="167" y="38" z="5" />
+<tile x="167" y="39" z="5" />
+<tile x="168" y="35" z="5" />
+<tile x="168" y="36" z="5" />
+<tile x="168" y="37" z="5" />
+<tile x="168" y="38" z="5" />
+<tile x="168" y="39" z="5" />
+<tile x="169" y="35" z="5" />
+<tile x="169" y="36" z="5" />
+<tile x="169" y="37" z="5" />
+<tile x="169" y="38" z="5" />
+<tile x="169" y="39" z="5" />
 </house>
 <house name="Green Street I">
-<tiles fromx="172" fromy="35" fromz="7" tox="177" toy="37" toz="7" />
+<tile x="172" y="35" z="7" />
+<tile x="172" y="36" z="7" />
+<tile x="172" y="37" z="7" />
+<tile x="173" y="35" z="7" />
+<tile x="173" y="36" z="7" />
+<tile x="173" y="37" z="7" />
+<tile x="174" y="35" z="7" />
+<tile x="174" y="36" z="7" />
+<tile x="174" y="37" z="7" />
+<tile x="175" y="35" z="7" />
+<tile x="175" y="36" z="7" />
+<tile x="175" y="37" z="7" />
+<tile x="176" y="35" z="7" />
+<tile x="176" y="36" z="7" />
+<tile x="176" y="37" z="7" />
+<tile x="177" y="35" z="7" />
+<tile x="177" y="36" z="7" />
+<tile x="177" y="37" z="7" />
 </house>
 <house name="Green Street II">
-<tiles fromx="179" fromy="29" fromz="7" tox="183" toy="32" toz="7" />
+<tile x="179" y="29" z="7" />
+<tile x="179" y="30" z="7" />
+<tile x="179" y="31" z="7" />
+<tile x="179" y="32" z="7" />
+<tile x="180" y="29" z="7" />
+<tile x="180" y="30" z="7" />
+<tile x="180" y="31" z="7" />
+<tile x="180" y="32" z="7" />
+<tile x="181" y="29" z="7" />
+<tile x="181" y="30" z="7" />
+<tile x="181" y="31" z="7" />
+<tile x="181" y="32" z="7" />
+<tile x="182" y="29" z="7" />
+<tile x="182" y="30" z="7" />
+<tile x="182" y="31" z="7" />
+<tile x="182" y="32" z="7" />
+<tile x="183" y="29" z="7" />
+<tile x="183" y="30" z="7" />
+<tile x="183" y="31" z="7" />
+<tile x="183" y="32" z="7" />
 </house>
 <house name="Green Street III">
-<tiles fromx="172" fromy="29" fromz="7" tox="176" toy="32" toz="7" />
+<tile x="172" y="29" z="7" />
+<tile x="172" y="30" z="7" />
+<tile x="172" y="31" z="7" />
+<tile x="172" y="32" z="7" />
+<tile x="173" y="29" z="7" />
+<tile x="173" y="30" z="7" />
+<tile x="173" y="31" z="7" />
+<tile x="173" y="32" z="7" />
+<tile x="174" y="29" z="7" />
+<tile x="174" y="30" z="7" />
+<tile x="174" y="31" z="7" />
+<tile x="174" y="32" z="7" />
+<tile x="175" y="29" z="7" />
+<tile x="175" y="30" z="7" />
+<tile x="175" y="31" z="7" />
+<tile x="175" y="32" z="7" />
+<tile x="176" y="29" z="7" />
+<tile x="176" y="30" z="7" />
+<tile x="176" y="31" z="7" />
+<tile x="176" y="32" z="7" />
 </house>
 <house name="Pirate Street">
-<tiles fromx="173" fromy="52" fromz="7" tox="178" toy="55" toz="6" />
-</house>
-<house name="River Street I">
-<tiles fromx="128" fromy="62" fromz="7" tox="130" toy="65" toz="7" />
-</house>
-<house name="River Street II">
-<tiles fromx="133" fromy="62" fromz="7" tox="135" toy="65" toz="7" />
+<tile x="173" y="52" z="6" />
+<tile x="173" y="53" z="6" />
+<tile x="173" y="54" z="6" />
+<tile x="173" y="55" z="6" />
+<tile x="174" y="52" z="6" />
+<tile x="174" y="53" z="6" />
+<tile x="174" y="54" z="6" />
+<tile x="174" y="55" z="6" />
+<tile x="175" y="52" z="6" />
+<tile x="175" y="53" z="6" />
+<tile x="175" y="54" z="6" />
+<tile x="175" y="55" z="6" />
+<tile x="176" y="52" z="6" />
+<tile x="176" y="53" z="6" />
+<tile x="176" y="54" z="6" />
+<tile x="176" y="55" z="6" />
+<tile x="177" y="52" z="6" />
+<tile x="177" y="53" z="6" />
+<tile x="177" y="54" z="6" />
+<tile x="177" y="55" z="6" />
+<tile x="178" y="52" z="6" />
+<tile x="178" y="53" z="6" />
+<tile x="178" y="54" z="6" />
+<tile x="178" y="55" z="6" />
+<tile x="173" y="52" z="7" />
+<tile x="173" y="53" z="7" />
+<tile x="173" y="54" z="7" />
+<tile x="173" y="55" z="7" />
+<tile x="174" y="52" z="7" />
+<tile x="174" y="53" z="7" />
+<tile x="174" y="54" z="7" />
+<tile x="174" y="55" z="7" />
+<tile x="175" y="52" z="7" />
+<tile x="175" y="53" z="7" />
+<tile x="175" y="54" z="7" />
+<tile x="175" y="55" z="7" />
+<tile x="176" y="52" z="7" />
+<tile x="176" y="53" z="7" />
+<tile x="176" y="54" z="7" />
+<tile x="176" y="55" z="7" />
+<tile x="177" y="52" z="7" />
+<tile x="177" y="53" z="7" />
+<tile x="177" y="54" z="7" />
+<tile x="177" y="55" z="7" />
+<tile x="178" y="52" z="7" />
+<tile x="178" y="53" z="7" />
+<tile x="178" y="54" z="7" />
+<tile x="178" y="55" z="7" />
 </house>
 <house name="River Street III">
-<tiles fromx="147" fromy="60" fromz="7" tox="149" toy="64" toz="7" />
+<tile x="147" y="60" z="7" />
+<tile x="147" y="61" z="7" />
+<tile x="147" y="62" z="7" />
+<tile x="147" y="63" z="7" />
+<tile x="147" y="64" z="7" />
+<tile x="148" y="60" z="7" />
+<tile x="148" y="61" z="7" />
+<tile x="148" y="62" z="7" />
+<tile x="148" y="63" z="7" />
+<tile x="148" y="64" z="7" />
+<tile x="149" y="60" z="7" />
+<tile x="149" y="61" z="7" />
+<tile x="149" y="62" z="7" />
+<tile x="149" y="63" z="7" />
+<tile x="149" y="64" z="7" />
 </house>
 <house name="River Street IV">
-<tiles fromx="152" fromy="60" fromz="7" tox="154" toy="64" toz="7" />
+<tile x="152" y="60" z="7" />
+<tile x="152" y="61" z="7" />
+<tile x="152" y="62" z="7" />
+<tile x="152" y="63" z="7" />
+<tile x="152" y="64" z="7" />
+<tile x="153" y="60" z="7" />
+<tile x="153" y="61" z="7" />
+<tile x="153" y="62" z="7" />
+<tile x="153" y="63" z="7" />
+<tile x="153" y="64" z="7" />
+<tile x="154" y="60" z="7" />
+<tile x="154" y="61" z="7" />
+<tile x="154" y="62" z="7" />
+<tile x="154" y="63" z="7" />
+<tile x="154" y="64" z="7" />
 </house>
 <house name="River Street V">
-<tiles fromx="157" fromy="60" fromz="7" tox="159" toy="64" toz="7" />
+<tile x="157" y="60" z="7" />
+<tile x="157" y="61" z="7" />
+<tile x="157" y="62" z="7" />
+<tile x="157" y="63" z="7" />
+<tile x="157" y="64" z="7" />
+<tile x="158" y="60" z="7" />
+<tile x="158" y="61" z="7" />
+<tile x="158" y="62" z="7" />
+<tile x="158" y="63" z="7" />
+<tile x="158" y="64" z="7" />
+<tile x="159" y="60" z="7" />
+<tile x="159" y="61" z="7" />
+<tile x="159" y="62" z="7" />
+<tile x="159" y="63" z="7" />
+<tile x="159" y="64" z="7" />
 </house>
 <house name="Desert Street I">
-<tiles fromx="213" fromy="76" fromz="7" tox="218" toy="78" toz="7" />
+<tile x="213" y="76" z="7" />
+<tile x="213" y="77" z="7" />
+<tile x="213" y="78" z="7" />
+<tile x="214" y="76" z="7" />
+<tile x="214" y="77" z="7" />
+<tile x="214" y="78" z="7" />
+<tile x="215" y="76" z="7" />
+<tile x="215" y="77" z="7" />
+<tile x="215" y="78" z="7" />
+<tile x="216" y="76" z="7" />
+<tile x="216" y="77" z="7" />
+<tile x="216" y="78" z="7" />
+<tile x="217" y="76" z="7" />
+<tile x="217" y="77" z="7" />
+<tile x="217" y="78" z="7" />
+<tile x="218" y="76" z="7" />
+<tile x="218" y="77" z="7" />
+<tile x="218" y="78" z="7" />
 </house>
 <house name="Desert Street II">
-<tiles fromx="213" fromy="72" fromz="7" tox="218" toy="74" toz="7" />
+<tile x="213" y="72" z="7" />
+<tile x="213" y="73" z="7" />
+<tile x="213" y="74" z="7" />
+<tile x="214" y="72" z="7" />
+<tile x="214" y="73" z="7" />
+<tile x="214" y="74" z="7" />
+<tile x="215" y="72" z="7" />
+<tile x="215" y="73" z="7" />
+<tile x="215" y="74" z="7" />
+<tile x="216" y="72" z="7" />
+<tile x="216" y="73" z="7" />
+<tile x="216" y="74" z="7" />
+<tile x="217" y="72" z="7" />
+<tile x="217" y="73" z="7" />
+<tile x="217" y="74" z="7" />
+<tile x="218" y="72" z="7" />
+<tile x="218" y="73" z="7" />
+<tile x="218" y="74" z="7" />
 </house>
 <house name="Desert Street III">
-<tiles fromx="213" fromy="72" fromz="6" tox="218" toy="74" toz="6" />
+<tile x="213" y="72" z="6" />
+<tile x="213" y="73" z="6" />
+<tile x="213" y="74" z="6" />
+<tile x="214" y="72" z="6" />
+<tile x="214" y="73" z="6" />
+<tile x="214" y="74" z="6" />
+<tile x="215" y="72" z="6" />
+<tile x="215" y="73" z="6" />
+<tile x="215" y="74" z="6" />
+<tile x="216" y="72" z="6" />
+<tile x="216" y="73" z="6" />
+<tile x="216" y="74" z="6" />
+<tile x="217" y="72" z="6" />
+<tile x="217" y="73" z="6" />
+<tile x="217" y="74" z="6" />
+<tile x="218" y="72" z="6" />
+<tile x="218" y="73" z="6" />
+<tile x="218" y="74" z="6" />
 </house>
 <house name="Desert Street IV">
-<tiles fromx="211" fromy="75" fromz="6" tox="218" toy="78" toz="6" />
-<tiles fromx="211" fromy="79" fromz="6" tox="213" toy="82" toz="6" />
+<tile x="211" y="75" z="6" />
+<tile x="211" y="76" z="6" />
+<tile x="211" y="77" z="6" />
+<tile x="211" y="78" z="6" />
+<tile x="211" y="79" z="6" />
+<tile x="211" y="80" z="6" />
+<tile x="211" y="81" z="6" />
+<tile x="211" y="82" z="6" />
+<tile x="212" y="75" z="6" />
+<tile x="212" y="76" z="6" />
+<tile x="212" y="77" z="6" />
+<tile x="212" y="78" z="6" />
+<tile x="212" y="79" z="6" />
+<tile x="212" y="80" z="6" />
+<tile x="212" y="81" z="6" />
+<tile x="212" y="82" z="6" />
+<tile x="213" y="75" z="6" />
+<tile x="213" y="76" z="6" />
+<tile x="213" y="77" z="6" />
+<tile x="213" y="78" z="6" />
+<tile x="213" y="79" z="6" />
+<tile x="213" y="80" z="6" />
+<tile x="213" y="81" z="6" />
+<tile x="213" y="82" z="6" />
+<tile x="214" y="75" z="6" />
+<tile x="214" y="76" z="6" />
+<tile x="214" y="77" z="6" />
+<tile x="214" y="78" z="6" />
+<tile x="215" y="75" z="6" />
+<tile x="215" y="76" z="6" />
+<tile x="215" y="77" z="6" />
+<tile x="215" y="78" z="6" />
+<tile x="216" y="75" z="6" />
+<tile x="216" y="76" z="6" />
+<tile x="216" y="77" z="6" />
+<tile x="216" y="78" z="6" />
+<tile x="217" y="75" z="6" />
+<tile x="217" y="76" z="6" />
+<tile x="217" y="77" z="6" />
+<tile x="217" y="78" z="6" />
+<tile x="218" y="75" z="6" />
+<tile x="218" y="76" z="6" />
+<tile x="218" y="77" z="6" />
+<tile x="218" y="78" z="6" />
 </house>
 <house name="Desert Street V">
-<tiles fromx="204" fromy="70" fromz="6" tox="208" toy="72" toz="6" />
-<tiles fromx="206" fromy="73" fromz="6" tox="208" toy="75" toz="6" />
+<tile x="204" y="70" z="6" />
+<tile x="204" y="71" z="6" />
+<tile x="204" y="72" z="6" />
+<tile x="205" y="70" z="6" />
+<tile x="205" y="71" z="6" />
+<tile x="205" y="72" z="6" />
+<tile x="206" y="70" z="6" />
+<tile x="206" y="71" z="6" />
+<tile x="206" y="72" z="6" />
+<tile x="206" y="73" z="6" />
+<tile x="206" y="74" z="6" />
+<tile x="206" y="75" z="6" />
+<tile x="207" y="70" z="6" />
+<tile x="207" y="71" z="6" />
+<tile x="207" y="72" z="6" />
+<tile x="207" y="73" z="6" />
+<tile x="207" y="74" z="6" />
+<tile x="207" y="75" z="6" />
+<tile x="208" y="70" z="6" />
+<tile x="208" y="71" z="6" />
+<tile x="208" y="72" z="6" />
+<tile x="208" y="73" z="6" />
+<tile x="208" y="74" z="6" />
+<tile x="208" y="75" z="6" />
 </house>
 <house name="Desert Street VI">
-<tiles fromx="204" fromy="76" fromz="6" tox="209" toy="82" toz="6" />
+<tile x="204" y="76" z="6" />
+<tile x="204" y="77" z="6" />
+<tile x="204" y="78" z="6" />
+<tile x="204" y="79" z="6" />
+<tile x="204" y="80" z="6" />
+<tile x="204" y="81" z="6" />
+<tile x="204" y="82" z="6" />
+<tile x="205" y="76" z="6" />
+<tile x="205" y="77" z="6" />
+<tile x="205" y="78" z="6" />
+<tile x="205" y="79" z="6" />
+<tile x="205" y="80" z="6" />
+<tile x="205" y="81" z="6" />
+<tile x="205" y="82" z="6" />
+<tile x="206" y="76" z="6" />
+<tile x="206" y="77" z="6" />
+<tile x="206" y="78" z="6" />
+<tile x="206" y="79" z="6" />
+<tile x="206" y="80" z="6" />
+<tile x="206" y="81" z="6" />
+<tile x="206" y="82" z="6" />
+<tile x="207" y="76" z="6" />
+<tile x="207" y="77" z="6" />
+<tile x="207" y="78" z="6" />
+<tile x="207" y="79" z="6" />
+<tile x="207" y="80" z="6" />
+<tile x="207" y="81" z="6" />
+<tile x="207" y="82" z="6" />
+<tile x="208" y="76" z="6" />
+<tile x="208" y="77" z="6" />
+<tile x="208" y="78" z="6" />
+<tile x="208" y="79" z="6" />
+<tile x="208" y="80" z="6" />
+<tile x="208" y="81" z="6" />
+<tile x="208" y="82" z="6" />
+<tile x="209" y="76" z="6" />
+<tile x="209" y="77" z="6" />
+<tile x="209" y="78" z="6" />
+<tile x="209" y="79" z="6" />
+<tile x="209" y="80" z="6" />
+<tile x="209" y="81" z="6" />
+<tile x="209" y="82" z="6" />
 </house>
 <house name="Sand Mansion">
-<tiles fromx="213" fromy="102" fromz="7" tox="223" toy="110" toz="7" />
+<tile x="213" y="102" z="7" />
+<tile x="213" y="103" z="7" />
+<tile x="213" y="104" z="7" />
+<tile x="213" y="105" z="7" />
+<tile x="213" y="106" z="7" />
+<tile x="213" y="107" z="7" />
+<tile x="213" y="108" z="7" />
+<tile x="213" y="109" z="7" />
+<tile x="213" y="110" z="7" />
+<tile x="214" y="102" z="7" />
+<tile x="214" y="103" z="7" />
+<tile x="214" y="104" z="7" />
+<tile x="214" y="105" z="7" />
+<tile x="214" y="106" z="7" />
+<tile x="214" y="107" z="7" />
+<tile x="214" y="108" z="7" />
+<tile x="214" y="109" z="7" />
+<tile x="214" y="110" z="7" />
+<tile x="215" y="102" z="7" />
+<tile x="215" y="103" z="7" />
+<tile x="215" y="104" z="7" />
+<tile x="215" y="105" z="7" />
+<tile x="215" y="106" z="7" />
+<tile x="215" y="107" z="7" />
+<tile x="215" y="108" z="7" />
+<tile x="215" y="109" z="7" />
+<tile x="215" y="110" z="7" />
+<tile x="216" y="102" z="7" />
+<tile x="216" y="103" z="7" />
+<tile x="216" y="104" z="7" />
+<tile x="216" y="105" z="7" />
+<tile x="216" y="106" z="7" />
+<tile x="216" y="107" z="7" />
+<tile x="216" y="108" z="7" />
+<tile x="216" y="109" z="7" />
+<tile x="216" y="110" z="7" />
+<tile x="217" y="102" z="7" />
+<tile x="217" y="103" z="7" />
+<tile x="217" y="104" z="7" />
+<tile x="217" y="105" z="7" />
+<tile x="217" y="106" z="7" />
+<tile x="217" y="107" z="7" />
+<tile x="217" y="108" z="7" />
+<tile x="217" y="109" z="7" />
+<tile x="217" y="110" z="7" />
+<tile x="218" y="102" z="7" />
+<tile x="218" y="103" z="7" />
+<tile x="218" y="104" z="7" />
+<tile x="218" y="105" z="7" />
+<tile x="218" y="106" z="7" />
+<tile x="218" y="107" z="7" />
+<tile x="218" y="108" z="7" />
+<tile x="218" y="109" z="7" />
+<tile x="218" y="110" z="7" />
+<tile x="219" y="102" z="7" />
+<tile x="219" y="103" z="7" />
+<tile x="219" y="104" z="7" />
+<tile x="219" y="105" z="7" />
+<tile x="219" y="106" z="7" />
+<tile x="219" y="107" z="7" />
+<tile x="219" y="108" z="7" />
+<tile x="219" y="109" z="7" />
+<tile x="219" y="110" z="7" />
+<tile x="220" y="102" z="7" />
+<tile x="220" y="103" z="7" />
+<tile x="220" y="104" z="7" />
+<tile x="220" y="105" z="7" />
+<tile x="220" y="106" z="7" />
+<tile x="220" y="107" z="7" />
+<tile x="220" y="108" z="7" />
+<tile x="220" y="109" z="7" />
+<tile x="220" y="110" z="7" />
+<tile x="221" y="102" z="7" />
+<tile x="221" y="103" z="7" />
+<tile x="221" y="104" z="7" />
+<tile x="221" y="105" z="7" />
+<tile x="221" y="106" z="7" />
+<tile x="221" y="107" z="7" />
+<tile x="221" y="108" z="7" />
+<tile x="221" y="109" z="7" />
+<tile x="221" y="110" z="7" />
+<tile x="222" y="102" z="7" />
+<tile x="222" y="103" z="7" />
+<tile x="222" y="104" z="7" />
+<tile x="222" y="105" z="7" />
+<tile x="222" y="106" z="7" />
+<tile x="222" y="107" z="7" />
+<tile x="222" y="108" z="7" />
+<tile x="222" y="109" z="7" />
+<tile x="222" y="110" z="7" />
+<tile x="223" y="102" z="7" />
+<tile x="223" y="103" z="7" />
+<tile x="223" y="104" z="7" />
+<tile x="223" y="105" z="7" />
+<tile x="223" y="106" z="7" />
+<tile x="223" y="107" z="7" />
+<tile x="223" y="108" z="7" />
+<tile x="223" y="109" z="7" />
+<tile x="223" y="110" z="7" />
 </house>
 <house name="Bamboo Camp I">
-<tiles fromx="178" fromy="99" fromz="7" tox="183" toy="104" toz="7" />
+<tile x="178" y="99" z="7" />
+<tile x="178" y="100" z="7" />
+<tile x="178" y="101" z="7" />
+<tile x="178" y="102" z="7" />
+<tile x="178" y="103" z="7" />
+<tile x="178" y="104" z="7" />
+<tile x="179" y="99" z="7" />
+<tile x="179" y="100" z="7" />
+<tile x="179" y="101" z="7" />
+<tile x="179" y="102" z="7" />
+<tile x="179" y="103" z="7" />
+<tile x="179" y="104" z="7" />
+<tile x="180" y="99" z="7" />
+<tile x="180" y="100" z="7" />
+<tile x="180" y="101" z="7" />
+<tile x="180" y="102" z="7" />
+<tile x="180" y="103" z="7" />
+<tile x="180" y="104" z="7" />
+<tile x="181" y="99" z="7" />
+<tile x="181" y="100" z="7" />
+<tile x="181" y="101" z="7" />
+<tile x="181" y="102" z="7" />
+<tile x="181" y="103" z="7" />
+<tile x="181" y="104" z="7" />
+<tile x="182" y="99" z="7" />
+<tile x="182" y="100" z="7" />
+<tile x="182" y="101" z="7" />
+<tile x="182" y="102" z="7" />
+<tile x="182" y="103" z="7" />
+<tile x="182" y="104" z="7" />
+<tile x="183" y="99" z="7" />
+<tile x="183" y="100" z="7" />
+<tile x="183" y="101" z="7" />
+<tile x="183" y="102" z="7" />
+<tile x="183" y="103" z="7" />
+<tile x="183" y="104" z="7" />
 </house>
 <house name="Bamboo Camp II">
-<tiles fromx="169" fromy="98" fromz="7" tox="173" toy="101" toz="7" />
+<tile x="169" y="98" z="7" />
+<tile x="169" y="99" z="7" />
+<tile x="169" y="100" z="7" />
+<tile x="169" y="101" z="7" />
+<tile x="170" y="98" z="7" />
+<tile x="170" y="99" z="7" />
+<tile x="170" y="100" z="7" />
+<tile x="170" y="101" z="7" />
+<tile x="171" y="98" z="7" />
+<tile x="171" y="99" z="7" />
+<tile x="171" y="100" z="7" />
+<tile x="171" y="101" z="7" />
+<tile x="172" y="98" z="7" />
+<tile x="172" y="99" z="7" />
+<tile x="172" y="100" z="7" />
+<tile x="172" y="101" z="7" />
+<tile x="173" y="98" z="7" />
+<tile x="173" y="99" z="7" />
+<tile x="173" y="100" z="7" />
+<tile x="173" y="101" z="7" />
 </house>
 <house name="Bamboo Camp III">
-<tiles fromx="174" fromy="93" fromz="7" tox="178" toy="96" toz="7" />
+<tile x="174" y="93" z="7" />
+<tile x="174" y="94" z="7" />
+<tile x="174" y="95" z="7" />
+<tile x="174" y="96" z="7" />
+<tile x="175" y="93" z="7" />
+<tile x="175" y="94" z="7" />
+<tile x="175" y="95" z="7" />
+<tile x="175" y="96" z="7" />
+<tile x="176" y="93" z="7" />
+<tile x="176" y="94" z="7" />
+<tile x="176" y="95" z="7" />
+<tile x="176" y="96" z="7" />
+<tile x="177" y="93" z="7" />
+<tile x="177" y="94" z="7" />
+<tile x="177" y="95" z="7" />
+<tile x="177" y="96" z="7" />
+<tile x="178" y="93" z="7" />
+<tile x="178" y="94" z="7" />
+<tile x="178" y="95" z="7" />
+<tile x="178" y="96" z="7" />
 </house>
 <house name="Bamboo Camp IV">
-<tiles fromx="183" fromy="93" fromz="7" tox="186" toy="96" toz="7" />
+<tile x="183" y="93" z="7" />
+<tile x="183" y="94" z="7" />
+<tile x="183" y="95" z="7" />
+<tile x="183" y="96" z="7" />
+<tile x="184" y="93" z="7" />
+<tile x="184" y="94" z="7" />
+<tile x="184" y="95" z="7" />
+<tile x="184" y="96" z="7" />
+<tile x="185" y="93" z="7" />
+<tile x="185" y="94" z="7" />
+<tile x="185" y="95" z="7" />
+<tile x="185" y="96" z="7" />
+<tile x="186" y="93" z="7" />
+<tile x="186" y="94" z="7" />
+<tile x="186" y="95" z="7" />
+<tile x="186" y="96" z="7" />
 </house>
 <house name="Bamboo Camp V">
-<tiles fromx="186" fromy="99" fromz="7" tox="189" toy="102" toz="7" />
+<tile x="186" y="99" z="7" />
+<tile x="186" y="100" z="7" />
+<tile x="186" y="101" z="7" />
+<tile x="186" y="102" z="7" />
+<tile x="187" y="99" z="7" />
+<tile x="187" y="100" z="7" />
+<tile x="187" y="101" z="7" />
+<tile x="187" y="102" z="7" />
+<tile x="188" y="99" z="7" />
+<tile x="188" y="100" z="7" />
+<tile x="188" y="101" z="7" />
+<tile x="188" y="102" z="7" />
+<tile x="189" y="99" z="7" />
+<tile x="189" y="100" z="7" />
+<tile x="189" y="101" z="7" />
+<tile x="189" y="102" z="7" />
 </house>
 <house name="Bamboo Camp VI">
-<tiles fromx="183" fromy="106" fromz="7" tox="187" toy="109" toz="7" />
+<tile x="183" y="106" z="7" />
+<tile x="183" y="107" z="7" />
+<tile x="183" y="108" z="7" />
+<tile x="183" y="109" z="7" />
+<tile x="184" y="106" z="7" />
+<tile x="184" y="107" z="7" />
+<tile x="184" y="108" z="7" />
+<tile x="184" y="109" z="7" />
+<tile x="185" y="106" z="7" />
+<tile x="185" y="107" z="7" />
+<tile x="185" y="108" z="7" />
+<tile x="185" y="109" z="7" />
+<tile x="186" y="106" z="7" />
+<tile x="186" y="107" z="7" />
+<tile x="186" y="108" z="7" />
+<tile x="186" y="109" z="7" />
+<tile x="187" y="106" z="7" />
+<tile x="187" y="107" z="7" />
+<tile x="187" y="108" z="7" />
+<tile x="187" y="109" z="7" />
 </house>
 </houses>

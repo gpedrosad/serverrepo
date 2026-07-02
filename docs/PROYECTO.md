@@ -291,6 +291,7 @@ docker compose -f docker-compose.prod.yml up -d --build
 | [OTINFO](../OTINFO) | Reglas del juego, rates, custom |
 | [docs/SETUP.md](SETUP.md) | Docker, compilación i386 |
 | [docs/RME_SETUP.md](RME_SETUP.md) | Editor de mapa |
+| [docs/CAMBIAR-MAPA.md](CAMBIAR-MAPA.md) | Reemplazar OTBM, casas, spawns y deploy |
 | [README.md](../README.md) | Arranque rápido local |
 
 ---

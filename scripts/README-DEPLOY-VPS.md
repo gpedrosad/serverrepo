@@ -48,8 +48,27 @@ Las cuentas nuevas se crean en **https://retro76.cl** (web) → archivos XML en 
 2. **`git pull origin main`** — actualiza código y plantillas
 3. **Restaura** el backup con `cp -an` (no pisa archivos que ya existan; repone los que git haya tocado)
 4. **Compila** dentro del container Docker
-5. **Reinicia** `yurots` y `yurots-web`
-6. **Verifica** conteo de cuentas y personajes
+5. **Reinicia** `yurots` (stop con 45 s de gracia) y `yurots-web`
+6. **Valida** mapa/casas, arranque del binario y healthcheck en puerto 7171
+7. **Verifica** conteo de cuentas y personajes
+
+**Watchdog en producción** (auto-recuperación si el puerto deja de responder):
+
+```bash
+./scripts/install-ot-observability.sh   # en el VPS, una vez (watchdog + logs)
+tail -f /var/log/retro76/diagnostics.log
+tail -f /var/log/retro76/web.log
+tail -f /var/log/retro76/watchdog.log
+```
+
+La web **no abre el puerto 7171**: lee `online.xml` + estado del container Docker (`OT_STATUS_SOURCE=docker`).
+
+Diagnóstico manual inmediato:
+
+```bash
+./scripts/ot-diagnostics.sh
+./scripts/ot-probe.py 127.0.0.1 7171
+```
 
 ---
 
@@ -128,6 +147,12 @@ done
 ```bash
 docker compose -f docker-compose.prod.yml restart yurots
 ```
+
+---
+
+## Cambiar el mapa antes del deploy
+
+Si el commit incluye un `.otbm` nuevo, seguí la guía completa en [docs/CAMBIAR-MAPA.md](../docs/CAMBIAR-MAPA.md): exportar desde RME, `sync-houses-from-rme.py`, probar en Docker local y solo entonces push + deploy.
 
 ---
 

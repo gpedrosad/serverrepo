@@ -4,12 +4,14 @@ from __future__ import annotations
 
 import json
 import os
+import threading
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 from analytics import WebAnalytics
-from data import build_payload, create_account, read_server_ip
+from data import build_payload, create_account, read_server_ip, server_status_from_files
+from debug_log import get_logger, log_exception, log_http, setup_logging
 from premium_orders import create_premium_order, parse_multipart_form, premium_config_payload
 from register_guard import RegisterGuard
 
@@ -45,29 +47,102 @@ ASSET_TYPES = {
 
 guard = RegisterGuard(REGISTER_STATE)
 analytics = WebAnalytics(ANALYTICS_STATE)
+setup_logging()
+log = get_logger("server")
+_ot_monitor_last_online: bool | None = None
 
 
 def get_payload() -> dict:
-    return build_payload(
-        PLAYERS_DIR,
-        OTINFO_FILE,
-        ONLINE_FILE,
-        STATE_FILE,
-        OT_HOST,
-        OT_PORT,
-        SERVER_IP,
-        PEAK_STATE,
-    )
+    t0 = time.monotonic()
+    try:
+        return build_payload(
+            PLAYERS_DIR,
+            OTINFO_FILE,
+            ONLINE_FILE,
+            STATE_FILE,
+            OT_HOST,
+            OT_PORT,
+            SERVER_IP,
+            PEAK_STATE,
+            CONFIG_FILE,
+        )
+    except Exception as exc:
+        log_exception("payload", exc, context="build_payload")
+        raise
+    finally:
+        elapsed_ms = (time.monotonic() - t0) * 1000
+        if elapsed_ms >= 2000:
+            log.warning("build_payload lento: %.0fms", elapsed_ms)
+
+
+def ot_monitor_loop() -> None:
+    global _ot_monitor_last_online
+    monitor_log = get_logger("monitor")
+    while True:
+        time.sleep(60)
+        try:
+            status = server_status_from_files(ONLINE_FILE, CONFIG_FILE, PEAK_STATE)
+            online = bool(status.get("online"))
+            players = status.get("players_online", 0)
+            source = status.get("source", "?")
+            if _ot_monitor_last_online is not None and online != _ot_monitor_last_online:
+                monitor_log.warning(
+                    "OT cambió estado (%s): %s → %s (players=%s)",
+                    source,
+                    _ot_monitor_last_online,
+                    online,
+                    players,
+                )
+            if not online:
+                monitor_log.warning("OT offline según %s (players=%s)", source, players)
+            _ot_monitor_last_online = online
+        except Exception as exc:
+            log_exception("monitor", exc, context="ot_monitor_loop")
 
 
 def client_ip(handler: BaseHTTPRequestHandler) -> str:
-    fwd = handler.headers.get("X-Forwarded-For", "")
-    if fwd:
-        return fwd.split(",")[0].strip()
-    return handler.client_address[0]
+    headers = getattr(handler, "headers", None)
+    if headers is not None:
+        fwd = headers.get("X-Forwarded-For", "")
+        if fwd:
+            return fwd.split(",")[0].strip()
+    addr = getattr(handler, "client_address", None)
+    if addr:
+        return addr[0]
+    return "?"
 
 
 class Handler(BaseHTTPRequestHandler):
+    server_version = "Retro76Web/1.0"
+    _response_code = 0
+
+    def send_response(self, code: int, message: str | None = None) -> None:
+        self._response_code = code
+        super().send_response(code, message)
+
+    def handle_one_request(self) -> None:
+        t0 = time.monotonic()
+        self._response_code = 0
+        path = "?"
+        try:
+            super().handle_one_request()
+            path = self.path.split("?", 1)[0]
+        except (ConnectionResetError, BrokenPipeError):
+            self._response_code = 499
+            path = getattr(self, "path", "?").split("?", 1)[0]
+        except Exception as exc:
+            path = getattr(self, "path", "?").split("?", 1)[0]
+            log_exception("http", exc, context=f"{self.command} {path}")
+            try:
+                self.send_error(500, "Internal Server Error")
+            except Exception:
+                pass
+        finally:
+            elapsed_ms = (time.monotonic() - t0) * 1000
+            code = self._response_code or 0
+            cmd = getattr(self, "command", "?")
+            log_http(cmd, path, code, elapsed_ms, client_ip(self))
+
     def _json(self, code: int, payload: dict) -> None:
         data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
         self.send_response(code)
@@ -92,7 +167,11 @@ class Handler(BaseHTTPRequestHandler):
             analytics.record_visit(client_ip(self))
             self._file(INDEX, "text/html; charset=utf-8")
         elif path == "/api/data":
-            self._json(200, get_payload())
+            try:
+                self._json(200, get_payload())
+            except Exception as exc:
+                log_exception("api", exc, context="/api/data")
+                self._json(500, {"ok": False, "message": "Error interno al cargar datos"})
         elif path == "/api/register-challenge":
             self._json(200, guard.new_challenge())
         elif path == "/api/premium-config":
@@ -289,6 +368,19 @@ class Handler(BaseHTTPRequestHandler):
         return
 
 
+def start_ot_monitor() -> None:
+    t = threading.Thread(target=ot_monitor_loop, name="ot-monitor", daemon=True)
+    t.start()
+    log.info(
+        "web iniciada port=%s status=files+docker ot=%s:%s log=%s",
+        PORT,
+        OT_HOST,
+        OT_PORT,
+        os.environ.get("WEB_LOG_FILE", "web/logs/retro76-web.log"),
+    )
+
+
 if __name__ == "__main__":
+    start_ot_monitor()
     print(f"Retro76 web: http://localhost:{PORT}/")
     ThreadingHTTPServer(("", PORT), Handler).serve_forever()

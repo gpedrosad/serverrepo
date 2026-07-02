@@ -73,9 +73,17 @@ if [[ "$AFTER_ACCOUNTS" -lt "$BEFORE_ACCOUNTS" ]] || [[ "$AFTER_PLAYERS" -lt "$B
 fi
 
 echo "==> compile (container parado para no tocar el binario en uso)"
-docker compose -f docker-compose.prod.yml stop yurots
+docker compose -f docker-compose.prod.yml stop -t 45 yurots
 docker compose -f docker-compose.prod.yml run --rm --entrypoint bash yurots -c \
   'cd /app/YurOTS/ots/source && make clean && make -j"$(nproc 2>/dev/null || echo 4)" yurots'
+
+echo "==> validar mapa vs casas (solo lectura)"
+python3 "$ROOT/scripts/sync-houses-with-map.py" --dry-run || {
+  echo ""
+  echo "ERROR: houses.xml tiene tiles que no existen en test.otbm."
+  echo "       Arreglá el mapa antes de levantar el servidor."
+  exit 1
+}
 
 echo "==> restart services"
 docker compose -f docker-compose.prod.yml up -d yurots
@@ -83,8 +91,33 @@ if systemctl is-active --quiet yurots-web 2>/dev/null; then
   systemctl restart yurots-web
 fi
 
-sleep 3
-docker logs yurots --tail 20
+echo "==> post-deploy: esperar arranque"
+ok=0
+for _ in $(seq 1 60); do
+  if docker logs yurots 2>&1 | tail -40 | grep -q "Could not load houses"; then
+    echo ""
+    echo "ERROR: el servidor no pudo cargar casas — revisá test.otbm / houses.xml"
+    docker logs yurots --tail 25
+    exit 1
+  fi
+  if docker logs yurots 2>&1 | tail -8 | grep -q "Retro76 Server Running"; then
+    ok=1
+    break
+  fi
+  sleep 1
+done
+if [[ "$ok" -ne 1 ]]; then
+  echo "ERROR: el servidor no llegó a 'Server Running' en 60s"
+  docker logs yurots --tail 25
+  exit 1
+fi
+
+chmod +x "$ROOT/scripts/healthcheck-ot.sh" 2>/dev/null || true
+if ! "$ROOT/scripts/healthcheck-ot.sh" 127.0.0.1 7171; then
+  echo "ERROR: healthcheck en 7171 falló tras el deploy"
+  exit 1
+fi
+echo "    healthcheck 7171 OK"
 
 echo ""
 echo "Deploy OK. Backup en $BACKUP"

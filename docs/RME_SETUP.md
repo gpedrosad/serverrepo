@@ -145,3 +145,7 @@ Referencia: [OTLand — custom monsters in RME](https://otland.net/threads/put-c
 - Los assets vienen de `data/things/760/` del OTClient V8; compatibles con RME 7.60.
 - `rme-client-760/` está incluido en el repo principal (`Tibia.dat` + `Tibia.spr`).
 - Backup del mapa: `backups/yurots-original.otbm`
+
+## 9. Después de guardar cambios
+
+Para llevar el mapa al servidor (local o VPS): [docs/CAMBIAR-MAPA.md](CAMBIAR-MAPA.md).

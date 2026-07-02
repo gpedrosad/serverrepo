@@ -2,7 +2,13 @@
 *.swp
 *~
 client-760/
-server/YurOTS/ots/server.log
+cliente-oficial-retro/mac/otclient_mac
+cliente-oficial-retro/windows/otclient_gl.exe
+cliente-oficial-retro/windows/otclient_dx.exe
+cliente-oficial-retro/windows/*.dll
+web/logs/
+web/logs/*.log
+/var/log/retro76/
 server/YurOTS/ots/source/*.o
 server/YurOTS/ots/source/*.bak
 server/YurOTS/ots/source/*.patch

@@ -2,14 +2,18 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import socket
 import struct
+import subprocess
 import time
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from pathlib import Path
 from xml.sax.saxutils import escape
+
+from debug_log import log_ot_probe
 
 VOCATIONS = ["Rook", "Sorcerer", "Druid", "Paladin", "Knight"]
 VOC_SHORT = ["—", "S", "D", "P", "K"]
@@ -25,7 +29,7 @@ SKILL_NAMES = {
     6: "Fishing",
 }
 VOC_TEMPLATES = frozenset({"0", "1", "2", "3", "4"})
-HIDDEN_RANK_PLAYERS = frozenset({"yurez", "yurez the next", "gm kaiser", "test sorc", "test knight"})
+HIDDEN_RANK_PLAYERS = frozenset({"yurez", "yurez the next", "gm kaiser", "gm tio", "test sorc", "test knight"})
 
 
 def is_public_rank_player(name: str) -> bool:
@@ -159,7 +163,102 @@ def create_account(
     }
 
 
-def fetch_server_status(host: str, port: int, timeout: float = 2.0) -> dict:
+def read_max_players(config_path: Path) -> int:
+    if not config_path.is_file():
+        return 28
+    for line in config_path.read_text(encoding="utf-8", errors="ignore").splitlines():
+        m = re.match(r'^\s*maxplayers\s*=\s*"?(\d+)"?', line)
+        if m:
+            return int(m.group(1))
+    return 28
+
+
+def _docker_inspect(field: str, container: str) -> str | None:
+    try:
+        result = subprocess.run(
+            ["docker", "inspect", "-f", field, container],
+            capture_output=True,
+            text=True,
+            timeout=3,
+            check=False,
+        )
+    except (OSError, subprocess.TimeoutExpired):
+        return None
+    if result.returncode != 0:
+        return None
+    return result.stdout.strip()
+
+
+def docker_container_running(container: str) -> bool | None:
+    value = _docker_inspect("{{.State.Running}}", container)
+    if value is None:
+        return None
+    return value == "true"
+
+
+def docker_container_uptime_seconds(container: str) -> int:
+    raw = _docker_inspect("{{.State.StartedAt}}", container)
+    if not raw:
+        return 0
+    try:
+        if raw.endswith("Z"):
+            raw = raw[:-1] + "+00:00"
+        started = datetime.fromisoformat(raw)
+        return max(0, int((datetime.now(timezone.utc) - started).total_seconds()))
+    except ValueError:
+        return 0
+
+
+def server_status_from_files(
+    online_file: Path,
+    config_file: Path,
+    peak_file: Path,
+) -> dict:
+    """Estado del OT sin abrir el puerto 7171 (online.xml + docker en prod)."""
+    all_online = load_online(online_file)
+    public_online = [p for p in all_online if is_public_rank_player(p.get("name", ""))]
+    players_online = len(public_online)
+
+    docker_name = os.environ.get("OT_DOCKER_NAME", "yurots")
+    mode = os.environ.get("OT_STATUS_SOURCE", "auto").lower()
+
+    server_online = False
+    uptime_seconds = 0
+    source = "file"
+
+    if mode == "file":
+        server_online = online_file.is_file()
+    elif mode == "docker":
+        running = docker_container_running(docker_name)
+        server_online = running is True
+        source = "docker"
+        if server_online:
+            uptime_seconds = docker_container_uptime_seconds(docker_name)
+    else:
+        running = docker_container_running(docker_name)
+        if running is not None:
+            server_online = running
+            source = "docker"
+            if running:
+                uptime_seconds = docker_container_uptime_seconds(docker_name)
+        else:
+            server_online = players_online > 0 or online_file.is_file()
+            source = "file"
+
+    return {
+        "online": server_online,
+        "players_online": players_online,
+        "players_max": read_max_players(config_file),
+        "players_peak": load_players_peak(peak_file),
+        "uptime_seconds": uptime_seconds,
+        "servername": "Retro76",
+        "version": "",
+        "source": source,
+    }
+
+
+def fetch_server_status(host: str, port: int, timeout: float = 2.0, *, quiet: bool = False) -> dict:
+    """Sonda protocolo info en 7171. Solo para scripts/diagnóstico — la web no lo usa."""
     out = {
         "online": False,
         "players_online": 0,
@@ -169,10 +268,13 @@ def fetch_server_status(host: str, port: int, timeout: float = 2.0) -> dict:
         "servername": "Retro76",
         "version": "",
     }
+    t0 = time.monotonic()
+    err = ""
     try:
         payload = struct.pack("<H", 0xFFFF) + b"info"
         packet = struct.pack("<H", len(payload)) + payload
         with socket.create_connection((host, port), timeout) as sock:
+            sock.settimeout(timeout)
             sock.sendall(packet)
             data = b""
             while True:
@@ -193,12 +295,25 @@ def fetch_server_status(host: str, port: int, timeout: float = 2.0) -> dict:
             out["players_online"] = int(pl.get("online", "0"))
             out["players_peak"] = int(pl.get("peak", "0"))
             out["players_max"] = int(pl.get("max", str(out["players_max"])))
-    except OSError:
-        pass
-    except ET.ParseError:
+    except OSError as exc:
+        err = f"{type(exc).__name__}: {exc}"
+    except ET.ParseError as exc:
+        err = f"ParseError: {exc}"
         out["online"] = False
+    finally:
+        elapsed_ms = (time.monotonic() - t0) * 1000
+        if not quiet:
+            if out["online"]:
+                log_ot_probe(
+                    host,
+                    port,
+                    ok=True,
+                    elapsed_ms=elapsed_ms,
+                    players_online=out["players_online"],
+                )
+            else:
+                log_ot_probe(host, port, ok=False, elapsed_ms=elapsed_ms, error=err)
     return out
-
 
 def parse_player(path: Path) -> dict | None:
     try:
@@ -436,9 +551,12 @@ def build_payload(
     ot_port: int,
     server_ip: str = "127.0.0.1",
     peak_state_file: Path | None = None,
+    config_file: Path | None = None,
 ) -> dict:
     if peak_state_file is None:
         peak_state_file = state_file.parent / "peak.json"
+    if config_file is None:
+        config_file = online_file.parent.parent / "config.lua"
     players: list[dict] = []
     all_deaths: list[dict] = []
 
@@ -467,10 +585,10 @@ def build_payload(
         d["rank"] = i
         d["time_rel"] = rel_time(d["time"])
 
-    status = fetch_server_status(ot_host, ot_port)
-    status["uptime_fmt"] = fmt_uptime(status["uptime_seconds"])
-
+    status = server_status_from_files(online_file, config_file, peak_state_file)
     online = [p for p in load_online(online_file) if is_public_rank_player(p.get("name", ""))]
+    status["players_online"] = len(online)
+    status["uptime_fmt"] = fmt_uptime(status["uptime_seconds"])
     status["players_peak"] = update_players_peak(
         peak_state_file,
         status["players_peak"],

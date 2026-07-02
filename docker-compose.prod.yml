@@ -5,8 +5,31 @@ services:
     working_dir: /app/YurOTS/ots
     volumes:
       - ./server/YurOTS:/app/YurOTS
+      #Host-side dir for core dumps from the yurots process. Persists
+      #across container restarts so you can extract them later with
+      #./scripts/extract-core.sh.
+      - ./cores:/cores
     ports:
       - "7171:7171"
       - "7172:7172"
     restart: unless-stopped
-    command: ["./source/yurots"]
+    #Required so docker-entrypoint.sh can set core_pattern to /cores.
+    #If denied at runtime, the entrypoint silently falls back to the
+    #default (cwd = /app/YurOTS/ots) — cores still work, just harder to find.
+    privileged: false
+    security_opt:
+      - seccomp=unconfined
+    healthcheck:
+      # TCP solo no basta: un listen colgado puede aceptar y no responder al protocolo.
+      # El watchdog en el host usa ot-probe.py (protocolo info).
+      test: ["CMD-SHELL", "bash -c 'echo >/dev/tcp/127.0.0.1/7171' || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 45s
+    #Wrapper que sets ulimit -c, redirects to /cores, and persists
+    #stdout+stderr to server/YurOTS/ots/yurots.log (bind mount). Ver scripts/docker-entrypoint.sh.
+    command: ["/app/YurOTS/docker-entrypoint.sh"]
+    # Descomentar solo para investigar kicks / sockets (ver docs/SOCKET_DEBUG_LOGGING.md):
+    # environment:
+    #   - YUROTS_SOCKET_DEBUG=1

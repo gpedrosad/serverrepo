@@ -254,6 +254,18 @@
 		<monster name="witch" x="-2" y="0" z="6" spawntime="20" direction="2" />
 		<monster name="vampire" x="-3" y="5" z="6" spawntime="90" direction="2" />
 	</spawn>
+	<spawn centerx="129" centery="63" centerz="6" radius="1">
+		<monster name="Enraged Hydra" x="-1" y="0" z="6" spawntime="60" />
+		<monster name="Enraged Hydra" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="131" centery="63" centerz="6" radius="1">
+		<monster name="Enraged Vampire" x="0" y="0" z="6" spawntime="60" />
+		<monster name="Enraged Vampire" x="1" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="134" centery="63" centerz="6" radius="1">
+		<monster name="Angry Giant Spider" x="0" y="0" z="6" spawntime="60" />
+		<monster name="Angry Giant Spider" x="0" y="1" z="6" spawntime="60" />
+	</spawn>
 	<spawn centerx="108" centery="65" centerz="6" radius="5">
 		<monster name="elf" x="-1" y="-1" z="6" spawntime="60" direction="2" />
 		<monster name="elf" x="1" y="-1" z="6" spawntime="60" direction="2" />
@@ -627,6 +639,15 @@
 	<spawn centerx="155" centery="44" centerz="7" radius="5">
 		<monster name="parrot" x="0" y="-1" z="7" spawntime="60" direction="2" />
 	</spawn>
+	<spawn centerx="122" centery="55" centerz="7" radius="1">
+		<monster name="Mini Trainer Monk" x="1" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="125" centery="55" centerz="7" radius="1">
+		<monster name="Mini Trainer Monk" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="123" centery="57" centerz="7" radius="1">
+		<monster name="Mini Trainer Monk" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
 	<spawn centerx="106" centery="62" centerz="7" radius="5">
 		<monster name="elf" x="-1" y="-1" z="7" spawntime="60" direction="2" />
 		<monster name="elf" x="5" y="1" z="7" spawntime="60" direction="2" />
@@ -635,9 +656,18 @@
 		<monster name="elf" x="0" y="5" z="7" spawntime="60" />
 		<monster name="elf" x="5" y="5" z="7" spawntime="60" />
 	</spawn>
-	<spawn centerx="176" centery="63" centerz="7" radius="1">
-		<monster name="Mini Trainer Monk" x="0" y="0" z="7" spawntime="60" />
-		<monster name="Mini Trainer Monk" x="1" y="1" z="7" spawntime="60" />
+	<spawn centerx="128" centery="63" centerz="7" radius="1">
+		<monster name="Angry Orc Berserker" x="0" y="0" z="7" spawntime="60" />
+		<monster name="Angry Orc Berserker" x="1" y="0" z="7" spawntime="60" />
+		<monster name="Angry Orc Berserker" x="0" y="1" z="7" spawntime="60" />
+		<monster name="Angry Orc Berserker" x="1" y="1" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="130" centery="63" centerz="7" radius="1">
+		<monster name="Furious Cyclops" x="1" y="1" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="134" centery="63" centerz="7" radius="1">
+		<monster name="Angry Minotaur Guard" x="-1" y="0" z="7" spawntime="60" />
+		<monster name="Angry Troll" x="1" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="64" centery="68" centerz="7" radius="12">
 		<monster name="demon skeleton" x="-3" y="-9" z="7" spawntime="90" direction="2" />

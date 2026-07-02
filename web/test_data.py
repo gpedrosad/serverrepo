@@ -3,6 +3,7 @@ from __future__ import annotations
 import tempfile
 import unittest
 import sys
+import os
 from pathlib import Path
 from unittest.mock import patch
 
@@ -68,7 +69,7 @@ class PeakPersistenceTests(unittest.TestCase):
                 "players_peak": 3,
             }
 
-            with patch("data.fetch_server_status", return_value=fake_status_high):
+            with patch("data.server_status_from_files", return_value=fake_status_high):
                 payload = data.build_payload(
                     players_dir,
                     otinfo,
@@ -81,7 +82,7 @@ class PeakPersistenceTests(unittest.TestCase):
                 )
             self.assertEqual(payload["server"]["players_peak"], 12)
 
-            with patch("data.fetch_server_status", return_value=fake_status_reset):
+            with patch("data.server_status_from_files", return_value=fake_status_reset):
                 payload = data.build_payload(
                     players_dir,
                     otinfo,
@@ -93,6 +94,33 @@ class PeakPersistenceTests(unittest.TestCase):
                     peak_file,
                 )
             self.assertEqual(payload["server"]["players_peak"], 12)
+
+
+class ServerStatusFromFilesTests(unittest.TestCase):
+    def test_reads_players_from_online_xml_without_socket(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            online = root / "online.xml"
+            online.write_text(
+                """<?xml version="1.0"?>
+<online>
+  <player name="Alice" level="10" voc="1" exp="1000"/>
+  <player name="Bob" level="8" voc="2" exp="500"/>
+</online>
+""",
+                encoding="utf-8",
+            )
+            config = root / "config.lua"
+            config.write_text('maxplayers = "200"\n', encoding="utf-8")
+            peak = root / "peak.json"
+
+            with patch.dict(os.environ, {"OT_STATUS_SOURCE": "file"}, clear=False):
+                status = data.server_status_from_files(online, config, peak)
+
+            self.assertEqual(status["players_online"], 2)
+            self.assertEqual(status["players_max"], 200)
+            self.assertTrue(status["online"])
+            self.assertEqual(status["source"], "file")
 
 
 class MostWantedDataTests(unittest.TestCase):
@@ -137,7 +165,7 @@ class MostWantedDataTests(unittest.TestCase):
                 "version": "",
             }
 
-            with patch("data.fetch_server_status", return_value=fake_status):
+            with patch("data.server_status_from_files", return_value=fake_status):
                 payload = data.build_payload(
                     players_dir,
                     otinfo,

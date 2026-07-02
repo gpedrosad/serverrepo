@@ -289,6 +289,14 @@ bool Actions::openContainer(Player *player,Container *container, const unsigned 
 	}
 	else{// depot container
 		Container *container2 = player->getDepot(container->depot);
+		if(!container2){
+			Item* depotItem = Item::CreateItem(2590);
+			Container* newDepot = dynamic_cast<Container*>(depotItem);
+			if(newDepot && player->addDepot(newDepot, container->depot))
+				container2 = newDepot;
+			else
+				delete depotItem;
+		}
 		if(container2){
 			//update depot coordinates
 			container2->pos = container->pos;
