@@ -178,6 +178,24 @@ En tu Mac/local: `ip = "127.0.0.1"`. No commitees la IP del VPS al repo.
 
 ---
 
+## Si el OT se cuelga (7171 no responde)
+
+Síntoma: jugadores no entran, pero `docker ps` muestra el container **Up**. No es lo mismo que un crash.
+
+| Guía | Contenido |
+|------|-----------|
+| [docs/PREVENT_OT_HANGS.md](../docs/PREVENT_OT_HANGS.md) | Incidente jul 2026, recuperación, watchdog |
+| [docs/SOCKET_DEBUG_LOGGING.md](../docs/SOCKET_DEBUG_LOGGING.md) | `YUROTS_SOCKET_DEBUG=1` (activo en prod), lectura de logs |
+
+Recuperación rápida en el VPS:
+
+```bash
+docker compose -f docker-compose.prod.yml restart -t 45 yurots
+python3 scripts/ot-probe.py 127.0.0.1 7171
+```
+
+---
+
 ## Resumen en una línea
 
 **Backup → pull → restaurar backup → compilar → reiniciar.** Nunca stash, nunca clean, nunca reset sin backup.

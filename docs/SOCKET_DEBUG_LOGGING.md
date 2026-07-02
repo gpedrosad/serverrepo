@@ -1,8 +1,42 @@
 # Logs de red OT — guía de diagnóstico
 
-> **En repo, no desplegado aún** (jul 2026). Cuando se despliegue, activar verbose solo si hace falta.
+> **Estado (jul 2026):** `YUROTS_SOCKET_DEBUG=1` **activo en producción** (VPS) desde commit `ec9b0dd` para investigar cuelgues recurrentes. Desactivar cuando se identifique la causa raíz (ver § Desactivar).
 
-## Qué ha estado pasando (resumen)
+Relacionado: [PREVENT_OT_HANGS.md](PREVENT_OT_HANGS.md), [FIX_OT_STABILITY_KICKS_AND_HANG.md](FIX_OT_STABILITY_KICKS_AND_HANG.md).
+
+---
+
+## Incidente en curso (jul 2026)
+
+Tras el deploy del **mapa once** (2 jul 2026), el OT en **retro76.cl** volvió a colgarse varias veces el mismo día:
+
+| Hora UTC (aprox.) | Síntoma | Acción |
+|-------------------|---------|--------|
+| ~18:54 | Probe timeout, jugadores `peer closed` / `errno=110` | Restart manual |
+| ~19:07 | Mismo patrón tras loot/save normal | Restart manual |
+| ~19:02–19:10 | Watchdog detectó 1 fallo, luego probe OK (ventana de restart) | Auto / manual |
+
+**Patrón:** no es crash del proceso. Docker muestra `Up (healthy)` pero `ot-probe` hace **timeout ~8 s** con **0 bytes**. Los logs se cortan con desconexiones masivas de jugadores; antes suele haber loot y `server save... ok` normales.
+
+**Hipótesis abierta:** cuelgue del event loop (hilos/sockets), posiblemente relacionado con tormenta de desconexiones o bug distinto al timeout de handshake ya corregido. Los logs `[socket]` activados deben mostrar si reaparece `rcv_ms=5000` en sesión de juego o anomalías en `ReceiveLoop`.
+
+**Evidencia a capturar en el próximo cuelgue:**
+
+```bash
+# En el VPS, justo cuando falle el probe:
+cd ~/yurots-principal
+python3 scripts/ot-probe.py 127.0.0.1 7171
+./scripts/ot-diagnostics.sh
+tail -80 server/YurOTS/ots/yurots.log | grep -E '\[socket\]|Player recv disconnect|Listen select'
+tail -20 /var/log/ot-watchdog.log
+ss -tan | grep 7171 | head -20
+```
+
+Guardar la salida antes de reiniciar manualmente (el watchdog tarda ~4 min en 2 fallos consecutivos con cron cada 2 min).
+
+---
+
+## Qué ha estado pasando (histórico)
 
 | Fase | Síntoma | Causa |
 |------|---------|-------|
@@ -52,31 +86,54 @@ Prefijo `[socket]` — login, cambios de modo, reintentos:
 
 ---
 
-## Cómo activar (cuando se despliegue)
+## Estado actual en producción
 
-### Local / Docker
+| Item | Valor |
+|------|--------|
+| Commit que activó debug | `ec9b0dd` |
+| Archivo | `docker-compose.prod.yml` → `environment: YUROTS_SOCKET_DEBUG=1` |
+| Aplicar cambio | `docker compose -f docker-compose.prod.yml up -d yurots` (recrea container; no recompila) |
+| Verificar | `docker exec yurots printenv YUROTS_SOCKET_DEBUG` → `1` |
+| Log en disco | `~/yurots-principal/server/YurOTS/ots/yurots.log` |
+| Log Docker | `docker logs yurots 2>&1 \| grep '\[socket\]'` |
 
-```bash
-# docker-compose.yml — servicio yurots:
+Ejemplo de login **correcto** (sin timeout residual en juego):
+
+```
+[socket] game recv blocking on sock=13 rcv_ms=0 nonblock=0
+[socket] game login ok player=Pallo entering ReceiveLoop sock=13 rcv_ms=0 nonblock=0
+[socket] ReceiveLoop start player=Pallo sock=13 rcv_ms=0 nonblock=0
+```
+
+El healthcheck de Docker envía `protId=0xffff` (info) desde `172.18.0.1` — es normal, no es un jugador.
+
+---
+
+## Cómo activar / desactivar
+
+### Activar (local o VPS)
+
+```yaml
+# docker-compose.yml (local) o docker-compose.prod.yml (VPS) — servicio yurots:
 environment:
   - YUROTS_SOCKET_DEBUG=1
+```
 
-docker compose up -d yurots
+```bash
+docker compose -f docker-compose.prod.yml up -d yurots   # VPS
+docker compose up -d yurots                               # local
 docker logs -f yurots 2>&1 | grep -E '\[socket\]|Player recv disconnect'
 ```
 
-### VPS (sin tocar jugadores en horario pico)
+La variable se lee **al arrancar** el proceso (caché estática en `socket_debug.cpp`). Cambiarla exige **recrear/reiniciar** el container.
 
-En `docker-compose.prod.yml`, agregar bajo `yurots`:
+### Desactivar (cuando termine la investigación)
 
-```yaml
-environment:
-  - YUROTS_SOCKET_DEBUG=1
-```
+1. Comentar o borrar el bloque `environment` en `docker-compose.prod.yml`.
+2. `git commit` + `git push` + en VPS: `git pull && docker compose -f docker-compose.prod.yml up -d yurots`.
+3. Confirmar: `docker exec yurots printenv YUROTS_SOCKET_DEBUG` debe fallar o estar vacío.
 
-Luego `docker compose -f docker-compose.prod.yml up -d yurots` (solo reinicia OT, no recompila).
-
-Para verbose **sin** reinicio: no es posible — la variable se lee al arrancar cada hilo la primera vez.
+En producción estable conviene dejarlo **apagado**; las líneas `Player recv disconnect` ya incluyen `rcv_ms` y `errno` sin verbose.
 
 ---
 
@@ -96,7 +153,8 @@ docker logs yurots 2>&1 | grep '\[socket\]'
 python3 scripts/ot-probe.py 127.0.0.1 7171
 
 # Watchdog
-tail -f /var/log/retro76/watchdog.log
+tail -f /var/log/retro76/watchdog.log    # si install-ot-observability.sh
+tail -f /var/log/ot-watchdog.log           # cron legado en algunos VPS
 ```
 
 ---
@@ -125,8 +183,12 @@ tail -f /var/log/retro76/watchdog.log
 
 ---
 
-## Próximo deploy
+## Próximos pasos (investigación)
 
-1. `git pull` + `deploy-vps.sh` (compila con logs nuevos).
-2. Dejar **sin** `YUROTS_SOCKET_DEBUG` al principio — las líneas `Player recv disconnect` ya traen `rcv_ms` y `errno`.
-3. Si sigue el problema, activar `YUROTS_SOCKET_DEBUG=1` y reproducir con un jugador quieto 30 s.
+1. **Mantener** `YUROTS_SOCKET_DEBUG=1` hasta el próximo cuelgue reproducido.
+2. Antes de reiniciar manualmente, ejecutar el bloque de evidencia de § Incidente en curso.
+3. Buscar en logs:
+   - `rcv_ms=5000` en disconnect de jugador **en juego** → bug de handshake residual.
+   - Ráfaga de `Player recv disconnect` seguida de silencio en logs + probe FAIL → cuelgue clásico.
+   - `Listen select failed` → puerto listen cerrado (otro bug).
+4. Cuando haya causa y fix, **desactivar** verbose (§ Desactivar) y documentar el fix en [FIX_OT_STABILITY_KICKS_AND_HANG.md](FIX_OT_STABILITY_KICKS_AND_HANG.md).
