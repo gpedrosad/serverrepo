@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <!-- sorcerer template for builtin account creator -->
 <player name="1" account="1" sex="1" lookdir="1" exp="9300" voc="1" level="10" access="0" cap="300" maglevel="0" lastlogin="0">
-<spawn x="160" y="54" z="7"/>
-<temple x="160" y="54" z="7"/>
+<spawn x="130" y="56" z="6"/>
+<temple x="130" y="56" z="6"/>
 <health now="195" max="195" food="0"/>
 <mana now="95" max="95" spent="0"/>
 <look type="130" head="20" body="30" legs="40" feet="50"/>
