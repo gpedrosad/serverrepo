@@ -34,6 +34,6 @@ services:
     #Wrapper que sets ulimit -c, redirects to /cores, and persists
     #stdout+stderr to server/YurOTS/ots/yurots.log (bind mount). Ver scripts/docker-entrypoint.sh.
     command: ["/app/YurOTS/docker-entrypoint.sh"]
-    # Descomentar solo para investigar kicks / sockets (ver docs/SOCKET_DEBUG_LOGGING.md):
-    # environment:
-    #   - YUROTS_SOCKET_DEBUG=1
+    # Investigación cuelgues OT — ver docs/SOCKET_DEBUG_LOGGING.md
+    environment:
+      - YUROTS_SOCKET_DEBUG=1
