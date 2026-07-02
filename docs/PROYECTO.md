@@ -2,6 +2,8 @@
 
 Documento de referencia para entender **qué es este repo**, **cómo está hosteado** y **cómo aplicar cambios sin perder cuentas ni personajes**.
 
+> **Agentes IA (Codex, etc.):** empezar por **[LEERCODEX.md](../LEERCODEX.md)** — acceso SSH, logs, cuelgues, scripts de diagnóstico.
+
 Para el checklist detallado de deploy en producción, ver también **[scripts/README-DEPLOY-VPS.md](../scripts/README-DEPLOY-VPS.md)** (lectura obligatoria antes de tocar el VPS).
 
 Para cambios delicados del core que hoy estan aplicados pero pueden necesitar

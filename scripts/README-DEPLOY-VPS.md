@@ -1,5 +1,7 @@
 # Deploy en VPS — LECTURA OBLIGATORIA
 
+> **Agentes IA:** ver también **[LEERCODEX.md](../LEERCODEX.md)** (diagnóstico de cuelgues, logs, SSH, playbooks).
+
 > Contexto general del proyecto (Mac, GitHub, VPS, data de jugadores):
 > **[docs/PROYECTO.md](../docs/PROYECTO.md)**
 
