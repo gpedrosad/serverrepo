@@ -88,7 +88,7 @@ access(0)
 	hasteEnchantStacks = 0;
 	imbueWandMl = 0;
 	imbueRubyWeapon = 0;
-	imbueEmeraldArmor = false;
+	imbueEmeraldArmor = 0;
 #endif //YUR_BOH
 
 #ifdef YUR_RINGS_AMULETS

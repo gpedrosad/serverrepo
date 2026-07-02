@@ -301,7 +301,7 @@ protected:
 	int hasteEnchantStacks;
 	int imbueWandMl;
 	int imbueRubyWeapon;
-	bool imbueEmeraldArmor;
+	int imbueEmeraldArmor;
 #endif //YUR_BOH
 #ifdef YUR_RINGS_AMULETS
 	bool timeRing;

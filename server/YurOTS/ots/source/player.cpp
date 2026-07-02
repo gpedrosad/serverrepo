@@ -1165,11 +1165,11 @@ int64_t Player::getSkill(skills_t skilltype, skillsid_t skillinfo) const
 	}
 #endif //YUR_RINGS_AMULETS
 #ifdef YUR_BOH
-	if(skillinfo == SKILL_LEVEL && imbueEmeraldArmor &&
+	if(skillinfo == SKILL_LEVEL && imbueEmeraldArmor > 0 &&
 		(vocation == VOCATION_PALADIN || vocation == VOCATION_KNIGHT) &&
 		(skilltype == SKILL_SWORD || skilltype == SKILL_AXE ||
 		 skilltype == SKILL_CLUB || skilltype == SKILL_DIST))
-		return skills[skilltype][skillinfo] + EMERALD_SKILL_BONUS;
+		return skills[skilltype][skillinfo] + imbueEmeraldArmor;
 #endif //YUR_BOH
 	if(skillinfo == SKILL_LEVEL && tempoBuffTicks > 0 &&
 		(skilltype == SKILL_SWORD || skilltype == SKILL_AXE ||
@@ -2989,16 +2989,13 @@ static int hasteStacksFromAid(unsigned short aid)
 	return 0;
 }
 
-static bool isEmeraldImbueItem(const Item* item)
+static int emeraldStacksFromAid(unsigned short aid, const Item* item)
 {
-	if(!item)
-		return false;
-	const unsigned short aid = item->getActionId();
-	if(aid == ITEM_EMERALD_SKILL_AID)
-		return true;
-	if(aid == ITEM_EMERALD_SKILL_AID_LEGACY && item->getArmor() > 0 && !item->isWeapon())
-		return true;
-	return false;
+	if(aid >= ITEM_EMERALD_SKILL_AID && aid <= ITEM_EMERALD_SKILL_AID_MAX)
+		return aid - ITEM_EMERALD_SKILL_AID + 1;
+	if(aid == ITEM_EMERALD_SKILL_AID_LEGACY && item && item->getArmor() > 0 && !item->isWeapon())
+		return 3;
+	return 0;
 }
 
 static int rubyStacksFromAid(unsigned short aid)
@@ -3073,7 +3070,7 @@ void Player::checkBoh()
 		}
 	}
 
-	bool emeraldNow = isEmeraldImbueItem(items[SLOT_ARMOR]);
+	int emeraldNow = items[SLOT_ARMOR] ? emeraldStacksFromAid(items[SLOT_ARMOR]->getActionId(), items[SLOT_ARMOR]) : 0;
 
 	if(boh != bohNow || hasteEnchantStacks != hasteNow || imbueWandMl != wandMlNow ||
 		imbueRubyWeapon != rubyNow || imbueEmeraldArmor != emeraldNow)

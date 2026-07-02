@@ -5,7 +5,7 @@ Monstruos fuertes dropean gemas pequeñas (2145-2150). Dos NPCs en temple x=132,
 ### Tonka (piso 6)
 Fusiona **20 gemas pequeñas → 1 grande**:
 - 20 Small Ruby → Big Ruby (+15% vel. ataque en arma)
-- 20 Small Emerald → Big Emerald (+3 skills en armadura, Knight/Pala)
+- 20 Small Emerald → Big Emerald (+1 skill/stack en armadura, max 4/4, Knight/Pala)
 - 20 Small Amethyst → Violet Gem (+1 ML en wand/rod, max 4)
 - 20 Small Sapphire → Yellow Gem (+20 speed en boots, max 3)
 
@@ -19,4 +19,4 @@ Compra gemas:
 - **Yellow Gem** → boots → +20 speed/stack (max 3)
 - **Violet Gem** → wand/rod → +1 ML/stack (max 4)
 - **Big Ruby** → arma (no wand) → +15% vel. ataque
-- **Big Emerald** → armadura → +3 skills (sword/club/axe/dist)
+- **Big Emerald** → armadura → +1 skill/stack sword/club/axe/dist (max 4/4)
