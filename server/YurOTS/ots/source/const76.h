@@ -310,7 +310,7 @@ enum bloodsplash_t //for splashes (count)
 }; 
 #endif //TJ_MONSTER_BLOOD
 
-#define HASTE_ENCHANT_SPEED 20
+#define HASTE_ENCHANT_SPEED 10
 
 #define SOFT_BOOTS_INTERVAL_MS 6000
 #define SOFT_BOOTS_MANA_GAIN 12

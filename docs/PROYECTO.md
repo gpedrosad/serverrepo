@@ -252,6 +252,15 @@ A junio 2026, en el VPS:
 - **Aplicado encima (solo datos):** pesos de runas Tibia 7.6 + Dark Rodo vende mana fluid a 100 gp
 - **Pendiente / revertido:** implementación C++ de life ring y ring of healing; rates skills x4 / ML x5 del deploy `3786f92`
 
+## Estado local del workspace (2026-07-03)
+
+- Hay cambios **solo locales** en `player.cpp` para rings:
+  `life ring` ahora suma **HP y mana** como pulso adicional y la activación se
+  fuerza también cuando el ring entra directo al `SLOT_RING` por código.
+- Estos cambios **no implican deploy** ni validación runtime; en esta pasada
+  no se levantó servidor ni cliente.
+- Detalle técnico y caveats: `docs/RINGS_ANALYSIS.md`
+
 Antes de volver a desplegar features de C++ nuevas, probar en Mac y hacer deploy con el script seguro.
 
 ---

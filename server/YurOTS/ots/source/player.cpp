@@ -794,6 +794,13 @@ int Player::addItemInventory(Item* item, int pos, bool internal /*= false*/) {
 			items[pos]->pos.x = 0xFFFF;
 		}
 
+#ifdef YUR_RINGS_AMULETS
+		if (pos == SLOT_RING && items[pos]) {
+			items[pos]->setGlimmer();
+			checkRing(0);
+		}
+#endif //YUR_RINGS_AMULETS
+
 		updateInventoryWeigth();
 
 		if(!internal) {
@@ -3076,6 +3083,7 @@ void Player::checkBoh()
 		imbueRubyWeapon != rubyNow || imbueEmeraldArmor != emeraldNow)
 	{
 		int hadRuby = imbueRubyWeapon;
+		int hadEmerald = imbueEmeraldArmor;
 		boh = bohNow;
 		hasteEnchantStacks = hasteNow;
 		imbueWandMl = wandMlNow;
@@ -3092,6 +3100,8 @@ void Player::checkBoh()
 				rubySpeedPercentFromStacks(rubyNow), rubyAttackDelayFromStacks(rubyNow), PLAYER_ATTACK_DELAY_MS);
 			sendTextMessage(MSG_INFO, buf);
 		}
+		if(client && hadEmerald != emeraldNow)
+			client->sendSkills();
 		sendStats();
 	}
 }
@@ -3477,6 +3487,11 @@ void Player::checkRing(int thinkTics)
 					if (health < healthmax)
 					{
 						health = std::min(healthmax, health + 10);
+						updated = true;
+					}
+					if (mana < manamax)
+					{
+						mana = std::min(manamax, mana + 10);
 						updated = true;
 					}
 				}

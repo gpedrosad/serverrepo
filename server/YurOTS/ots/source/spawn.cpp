@@ -520,14 +520,17 @@ void Spawn::idle(int t)
 				for(it = list.begin(); it != list.end(); ++it) {
 					Player *player = dynamic_cast<Player*>(*it);
 
-					if(player && player->access < g_config.ACCESS_PROTECT) {
+					// Gameplay change 2026-07-03:
+					// - if a player is near but the spawn tile is not on screen, do not block
+					// - if the tile is on screen, keep the spawn pending instead of resetting the timer
+					if(player && player->access < g_config.ACCESS_PROTECT &&
+						player->CanSee(sit->second.pos.x, sit->second.pos.y, sit->second.pos.z)) {
 						playerFound = true;
 						break;
 					}
 				}
 				
 				if(playerFound) {
-					sit->second.lastspawn = OTSYS_TIME();
 					continue;
 				}
 

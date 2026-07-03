@@ -629,7 +629,7 @@ static void appendGemUseDescription(std::stringstream& s, unsigned short itemId)
 {
 	switch(itemId){
 	case ITEM_YELLOW_GEM:
-		s << std::endl << "Imbue: use on equipped boots (+20 haste/stack, max 3). Stacks with BOH.";
+		s << std::endl << "Imbue: use on equipped boots (+10 haste/stack, max 3). Stacks with BOH.";
 		break;
 	case ITEM_VIOLET_GEM:
 		s << std::endl << "Imbue: use on equipped wand or rod (+1 ML/stack, max 4).";

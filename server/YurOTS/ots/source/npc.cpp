@@ -558,32 +558,56 @@ void Npc::onCreatureSay(const Creature *creature, SpeakClasses type, const std::
 									player->payBack(pt.cost - unit * delivered);
 									doSay("You do not have enough capacity or room for that.");
 								}
-							}else if(pt.isRuneQuantityBuy){
-								int delivered = addChargedItemsToPlayer(player, pt.itemid, pt.runeCharges, pt.runeQuantity);
-								if(delivered == pt.runeQuantity){
-									doSay("Here you go!");
-								} else {
-									int unit = pt.runeQuantity > 0 ? (pt.cost / pt.runeQuantity) : pt.cost;
-									player->payBack(pt.cost - unit * delivered);
-									doSay("You do not have enough capacity or room for that.");
+								}else if(pt.isRuneQuantityBuy){
+									int delivered = addChargedItemsToPlayer(player, pt.itemid, pt.runeCharges, pt.runeQuantity);
+									if(delivered == pt.runeQuantity){
+										doSay("Here you go!");
+									} else {
+										int unit = pt.runeQuantity > 0 ? (pt.cost / pt.runeQuantity) : pt.cost;
+										player->payBack(pt.cost - unit * delivered);
+										doSay("You do not have enough capacity or room for that.");
+									}
+								}else if(pt.isItemQuantityBuy){
+									int delivered = addChargedItemsToPlayer(player, pt.itemid, 1, pt.itemQuantity);
+									if(delivered == pt.itemQuantity){
+										doSay("Here you go!");
+									} else {
+										int unit = pt.itemQuantity > 0 ? (pt.cost / pt.itemQuantity) : pt.cost;
+										player->payBack(pt.cost - unit * delivered);
+										doSay("You do not have enough capacity or room for that.");
+									}
+								}else{
+									const ItemType& itemType = Item::items[pt.itemid];
+									// Legacy buy() stores the requested amount in pt.count even for
+									// non-stackables. Deliver those one by one or players get charged
+									// for many and receive only a single item.
+									if(pt.count > 1 && !itemType.stackable && !itemType.isFluidContainer() && itemType.runeMagLevel == -1){
+										int delivered = 0;
+										for(int i = 0; i < pt.count; i++){
+											if(player->TLMaddItem(pt.itemid, 1))
+												delivered++;
+											else
+												break;
+										}
+
+										if(delivered == pt.count){
+											doSay("Here you go!");
+										} else {
+											int unit = pt.count > 0 ? (pt.cost / pt.count) : pt.cost;
+											player->payBack(pt.cost - unit * delivered);
+											doSay("You do not have enough capacity or room for that.");
+										}
+									}else if(player->TLMaddItem(pt.itemid, pt.count)){
+										doSay("Here you go!");
+									}else{
+										player->payBack(pt.cost);
+										doSay("You do not have enough capacity or room for that.");
+									}
 								}
-							}else if(pt.isItemQuantityBuy){
-								int delivered = addChargedItemsToPlayer(player, pt.itemid, 1, pt.itemQuantity);
-								if(delivered == pt.itemQuantity){
-									doSay("Here you go!");
-								} else {
-									int unit = pt.itemQuantity > 0 ? (pt.cost / pt.itemQuantity) : pt.cost;
-									player->payBack(pt.cost - unit * delivered);
-									doSay("You do not have enough capacity or room for that.");
-								}
-							}else{
-								player->TLMaddItem(pt.itemid, pt.count);
-								doSay("Here you go!");
-							}
+							}else
+								doSay("Sorry, you do not have enough gold.");
 						}else
 							doSay("Sorry, you do not have enough gold.");
-					}else
-						doSay("Sorry, you do not have enough gold.");
 				}
 			}
 			pendingTrades.erase(it);
@@ -1420,8 +1444,10 @@ int NpcScript::luaPlayerAddItem(lua_State* L)
 	Player* player = creature? dynamic_cast<Player*>(creature) : NULL;
 
 	if(player){
-		player->TLMaddItem(itemid, (unsigned char)count);
-		lua_pushnumber(L, 0);
+		if(player->TLMaddItem(itemid, (unsigned char)count))
+			lua_pushnumber(L, 0);
+		else
+			lua_pushnumber(L, -1);
 	}else
 		lua_pushnumber(L, -1);
 

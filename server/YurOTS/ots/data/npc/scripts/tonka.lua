@@ -42,15 +42,32 @@ function showExchangeList()
 end
 
 function matchExchange(msg)
+	local best = nil
+	local bestOffset = math.huge
+	local bestLen = 0
+
 	for i = 1, table.getn(EXCHANGES) do
 		local ex = EXCHANGES[i]
-		for j = 1, table.getn(ex.keys) do
-			if msgcontains(msg, ex.keys[j]) then
-				return ex
+		local offset, len = npcFindMatchOffset(msg, ex.keys)
+		if offset ~= nil then
+			if offset < bestOffset or (offset == bestOffset and len > bestLen) then
+				best = ex
+				bestOffset = offset
+				bestLen = len
 			end
 		end
 	end
-	return nil
+
+	return best
+end
+
+function addItemsExact(cid, itemid, count)
+	for i = 1, count do
+		if doPlayerAddItem(cid, itemid, 1) == -1 then
+			return false, i - 1
+		end
+	end
+	return true, count
 end
 
 function doExchange(cid, ex)
@@ -65,13 +82,17 @@ function doExchange(cid, ex)
 	end
 
 	if doPlayerRemoveItem(cid, ex.small, NEED) == -1 then
-		selfSay('Something went wrong. Please try again.')
+		selfSay('You no longer have enough ' .. ex.smallName .. '.')
 		return
 	end
 
 	if doPlayerAddItem(cid, ex.big, 1) == -1 then
-		doPlayerAddItem(cid, ex.small, NEED)
-		selfSay('You need more free space in your backpack.')
+		local restored, restoredCount = addItemsExact(cid, ex.small, NEED)
+		if restored then
+			selfSay('Something went wrong delivering your ' .. ex.bigName .. '. Your ' .. ex.smallName .. ' were returned.')
+		else
+			selfSay('Something went wrong delivering your ' .. ex.bigName .. ' and only ' .. restoredCount .. '/' .. NEED .. ' ' .. ex.smallName .. ' could be returned. Contact a GM.')
+		end
 		return
 	end
 

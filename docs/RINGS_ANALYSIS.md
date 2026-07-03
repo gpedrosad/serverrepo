@@ -1,5 +1,39 @@
 # Análisis: sistema de Rings
 
+## Estado local actual (2026-07-03)
+
+> Esta sección describe el **workspace local actual**. No implica deploy ni
+> validación runtime en VPS.
+
+### Comportamiento local vigente
+
+- `life ring` y `ring of healing` hoy regeneran **HP y mana** como pulso
+  adicional mientras estén equipados y con tiempo restante.
+- El pulso actual en código es **cada 4 s** y suma **+10 HP / +10 mana**,
+  capped a `healthmax` / `manamax`.
+- Esta regeneración es **aditiva** sobre la regen normal de comida/premium:
+  no reemplaza `gainHealthTick()` / `gainManaTick()`, corre aparte dentro de
+  `Player::checkRing()`.
+- La activación ya no depende solo de arrastrar el ring al slot: si un ring
+  entra directo al `SLOT_RING` por `addItemInventory()` (por NPC, script o
+  auto-equip), también se marca como activo y se fuerza `checkRing(0)`.
+
+### Nota de validación
+
+- En esta pasada **no se levantó** servidor ni cliente.
+- La build local del server **no quedó validada** en este turno porque el
+  entorno local de compilación está incompleto (`boost/tokenizer.hpp`,
+  `lua.h` y errores viejos de compatibilidad en otros archivos).
+
+### Referencias de código
+
+- `server/YurOTS/ots/source/player.cpp:782-808` — activación defensiva al
+  entrar directo al `SLOT_RING`
+- `server/YurOTS/ots/source/player.cpp:3465-3497` — pulso de regen de
+  `life ring` / `ring of healing`
+- `server/YurOTS/ots/source/game.cpp:4181-4225` — orden de ejecución respecto
+  de la regen normal del player
+
 ## Archivos relevantes
 
 - `server/YurOTS/ots/source/player.cpp:3360-3443` — `Player::checkRing`
@@ -221,3 +255,13 @@ cd ~/Desktop/yurots-principal
 # restaurar el if (items[SLOT_RING] && items[SLOT_RING]->getTime() > 0) original
 # con sendSkills() incondicional
 ```
+
+## Pendiente recomendado
+
+- Si se quiere comportamiento RL/documentado, restaurar los valores
+  originales del primer port:
+  `life ring = +8 HP cada 6 s`
+  `ring of healing = +6 HP y +6 mana cada 6 s`
+- Si se mantiene el comportamiento custom actual, conviene actualizar la tabla
+  “Tipos de ring soportados” de este documento y cualquier texto público para
+  que no siga diciendo `+8/+6` cada `6 s`.

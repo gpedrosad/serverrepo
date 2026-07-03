@@ -4,12 +4,12 @@ target = 0
 following = false
 attacking = false
 
-RUNES_HELP = 'Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 4000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.'
-RUNES_BACKPACKS = 'Rune backpacks: bp HMM 1500gp, bp UH 4000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp. Each backpack includes 20 runes plus the backpack.'
+RUNES_HELP = 'Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.'
+RUNES_BACKPACKS = 'Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.'
 
 RUNE_BUYS = {
 	{keys = {'sudden death', 'sd'}, itemid = 2268, unitPrice = 250, runeCharges = 1},
-	{keys = {'ultimate healing', 'uh'}, itemid = 2273, unitPrice = 200, runeCharges = 1},
+	{keys = {'ultimate healing', 'uh'}, itemid = 2273, unitPrice = 200, runeCharges = 2},
 	{keys = {'great fireball', 'gfb'}, itemid = 2304, unitPrice = 45, runeCharges = 3},
 	{keys = {'explosion'}, itemid = 2313, unitPrice = 35, runeCharges = 3},
 	{keys = {'heavy magic missile', 'hmm'}, itemid = 2311, unitPrice = 15, runeCharges = 5},
@@ -59,7 +59,7 @@ local function matchBackpack(msg)
 	local prefixes = {'bp ', 'backpack ', 'backpack of '}
 	for i = 1, table.getn(RUNE_BUYS) do
 		local entry = RUNE_BUYS[i]
-		if entry.runeCharges ~= nil then
+		if entry.runeCharges ~= nil or entry.itemQuantity ~= nil then
 			for p = 1, table.getn(prefixes) do
 				for k = 1, table.getn(entry.keys) do
 					if msgcontains(msg, prefixes[p] .. entry.keys[k]) then
@@ -104,7 +104,9 @@ function onCreatureSay(cid, type, msg)
 			selfSay('You do not have enough space in your backpack for that. Free up some slots first.')
 			return
 		end
-		buyItemBackpack(cid, 1988, bp.itemid, bp.runeCharges, 20, bp.unitPrice*20*bp.runeCharges)
+		local contentCount = bp.runeCharges or 1
+		local cost = bp.unitPrice * 20 * contentCount
+		buyItemBackpack(cid, 1988, bp.itemid, contentCount, 20, cost)
 	elseif msgcontains(msg, 'price') or msgcontains(msg, 'prices') or msgcontains(msg, 'cost') or msgcontains(msg, 'how much') or msgcontains(msg, 'value') then
 		local entry = findCatalogBuy(msg, RUNE_BUYS) or findCatalogBuy(msg, WAND_BUYS)
 		if entry then

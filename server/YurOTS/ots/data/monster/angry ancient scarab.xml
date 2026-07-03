@@ -26,7 +26,7 @@
 			<inside>
 				<item id="2135" chance="1428" />
 				<item id="2159" countmax="4" chance1="999" chancemax="0" />
-				<item id="2149" countmax="4" chance1="555" chancemax="0" />
+				<item id="2149" countmax="1" chance1="250" chancemax="0" />
 				<item id="2440" chance="1000" />
 				<item id="2142" chance="800" />
 				<item id="2443" chance="555" />
@@ -63,12 +63,9 @@
 --500  = each 200 time--
 --400  = each 250 time--
 --333  = each 300 time--
- <item id="2150" countmax="3" chance1="18000" chancemax="0" />
-		<item id="2149" countmax="3" chance1="14000" chancemax="0" />
-		<item id="2147" countmax="2" chance1="10000" chancemax="0" />
-		<item id="2146" countmax="2" chance1="7500" chancemax="0" />
-		<item id="2145" countmax="1" chance1="4500" chancemax="0" />
-		<item id="2159" countmax="2" chance1="8000" chancemax="0" />
+ <item id="2150" countmax="1" chance1="4500" chancemax="0" />
+		<item id="2149" countmax="1" chance1="3500" chancemax="0" />
+								<item id="2159" countmax="2" chance1="8000" chancemax="0" />
 	</loot>
 	<summons maxSummons="5">
 		<summon name="Larva" chance="1856" />

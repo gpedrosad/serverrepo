@@ -45,10 +45,10 @@
 				<item id="2744" chance="6696" />
 			</inside>
 		</item>
-		<item id="2150" countmax="3" chance1="18000" chancemax="0" />
-		<item id="2149" countmax="3" chance1="14000" chancemax="0" />
-		<item id="2147" countmax="2" chance1="10000" chancemax="0" />
-		<item id="2146" countmax="2" chance1="7500" chancemax="0" />
-		<item id="2145" countmax="1" chance1="4500" chancemax="0" />
+		<item id="2150" countmax="2" chance1="9000" chancemax="0" />
+		<item id="2149" countmax="2" chance1="7000" chancemax="0" />
+		<item id="2147" countmax="1" chance1="5000" chancemax="0" />
+		<item id="2146" countmax="1" chance1="3750" chancemax="0" />
+		<item id="2145" countmax="1" chance1="2250" chancemax="0" />
 	</loot>
 </monster>

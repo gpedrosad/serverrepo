@@ -29,10 +29,7 @@
 				<item id="2179" chance="1000" />
 			</inside>
 		</item>
-		<item id="2150" countmax="3" chance1="18000" chancemax="0" />
-		<item id="2149" countmax="3" chance1="14000" chancemax="0" />
-		<item id="2147" countmax="2" chance1="10000" chancemax="0" />
-		<item id="2146" countmax="2" chance1="7500" chancemax="0" />
-		<item id="2145" countmax="1" chance1="4500" chancemax="0" />
-	</loot>
+		<item id="2150" countmax="1" chance1="4500" chancemax="0" />
+		<item id="2149" countmax="1" chance1="3500" chancemax="0" />
+							</loot>
 </monster>

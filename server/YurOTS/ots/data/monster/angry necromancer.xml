@@ -33,11 +33,11 @@
 				<item id="2423" chance="5000" />
 			</inside>
 		</item>
-		<item id="2150" countmax="2" chance1="12000" chancemax="0" />
-		<item id="2149" countmax="2" chance1="9000" chancemax="0" />
-		<item id="2147" countmax="1" chance1="6000" chancemax="0" />
-		<item id="2146" countmax="1" chance1="4000" chancemax="0" />
-		<item id="2145" countmax="1" chance1="2000" chancemax="0" />
+		<item id="2150" countmax="1" chance1="6000" chancemax="0" />
+		<item id="2149" countmax="1" chance1="4500" chancemax="0" />
+		<item id="2147" countmax="1" chance1="3000" chancemax="0" />
+		<item id="2146" countmax="1" chance1="2000" chancemax="0" />
+		<item id="2145" countmax="1" chance1="1000" chancemax="0" />
 	</loot>
 	<summons maxSummons="5">
 		<summon name="Skeleton" chance="2000" />

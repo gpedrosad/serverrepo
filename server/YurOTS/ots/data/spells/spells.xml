@@ -160,7 +160,7 @@
 <rune name="Convince Creature"		id="2290"	charges="1"		maglv="5"	mana="0"	enabled="1"></rune>
 <rune name="Poison Wall"			id="2289"	charges="4"		maglv="5"	mana="0"	enabled="1"></rune>
 <rune name="Chameleon"				id="2291"	charges="1"		maglv="4"	mana="0"	enabled="1"></rune>
-<rune name="Ultimate Healing"		id="2273"	charges="2"		maglv="4"	mana="0"	enabled="1"></rune>
+<rune name="Ultimate Healing"		id="2273"	charges="5"		maglv="4"	mana="0"	enabled="1"></rune>
 <rune name="Explosion"				id="2313"	charges="6"		maglv="6"	mana="0"	enabled="1"></rune>
 <rune name="Soulfire"				id="2308"	charges="2"		maglv="7"	mana="0"	enabled="1"></rune>
 <rune name="Fire Wall"				id="2303"	charges="4"		maglv="13"	mana="0"	enabled="1"></rune>

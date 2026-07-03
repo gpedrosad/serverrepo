@@ -79,6 +79,106 @@ extern Commands commands;
 extern Chat g_chat;
 extern Monsters g_monsters;
 
+namespace {
+
+Position getStepInDirection(const Position& pos, Direction dir)
+{
+	Position step = pos;
+
+	switch(dir){
+	case NORTH: step.y--; break;
+	case SOUTH: step.y++; break;
+	case EAST: step.x++; break;
+	case WEST: step.x--; break;
+	default: break;
+	}
+
+	return step;
+}
+
+bool getLevitateUpDestination(Game* game, const Player* player, Position& dest)
+{
+	if(player->pos.z == 0)
+		return false;
+
+	Position frontPos = getStepInDirection(player->pos, player->direction);
+	Tile* frontTile = game->getTile(frontPos);
+	if(!frontTile)
+		return false;
+
+	switch(player->direction){
+	case NORTH:
+		if(!frontTile->floorChange(NORTH))
+			return false;
+		dest = Position(frontPos.x, frontPos.y - 1, frontPos.z - 1);
+		break;
+	case SOUTH:
+		if(!frontTile->floorChange(SOUTH))
+			return false;
+		dest = Position(frontPos.x, frontPos.y + 1, frontPos.z - 1);
+		break;
+	case EAST:
+		if(!frontTile->floorChange(EAST))
+			return false;
+		dest = Position(frontPos.x + 1, frontPos.y, frontPos.z - 1);
+		break;
+	case WEST:
+		if(!frontTile->floorChange(WEST))
+			return false;
+		dest = Position(frontPos.x - 1, frontPos.y, frontPos.z - 1);
+		break;
+	default:
+		return false;
+	}
+
+	return game->getTile(dest) != NULL;
+}
+
+bool getLevitateDownDestination(Game* game, const Player* player, Position& dest)
+{
+	Position frontPos = getStepInDirection(player->pos, player->direction);
+	Tile* downTile = game->getTile(frontPos.x, frontPos.y, player->pos.z + 1);
+	if(!downTile)
+		return false;
+
+	if(downTile->floorChange(NORTH))
+		dest = Position(frontPos.x, frontPos.y + 1, player->pos.z + 1);
+	else if(downTile->floorChange(SOUTH))
+		dest = Position(frontPos.x, frontPos.y - 1, player->pos.z + 1);
+	else if(downTile->floorChange(EAST))
+		dest = Position(frontPos.x - 1, frontPos.y, player->pos.z + 1);
+	else if(downTile->floorChange(WEST))
+		dest = Position(frontPos.x + 1, frontPos.y, player->pos.z + 1);
+	else
+		return false;
+
+	return game->getTile(dest) != NULL;
+}
+
+bool getLevitateDestination(Game* game, const Player* player, std::string var, Position& dest)
+{
+	while(!var.empty() && isspace(var[var.size() - 1]))
+		var.erase(var.size() - 1);
+
+	if(!var.empty() && var[var.size() - 1] == '"')
+		var.erase(var.size() - 1);
+
+	while(!var.empty() && isspace(var[0]))
+		var.erase(0, 1);
+
+	std::transform(var.begin(), var.end(), var.begin(), (int(*)(int))tolower);
+
+	if(var == "up")
+		return getLevitateUpDestination(game, player, dest);
+
+	if(var == "down")
+		return getLevitateDownDestination(game, player, dest);
+
+	return false;
+}
+
+}
+
 #ifdef YUR_TRAINING_AREA
 static bool isTrainingNoPvpTilePair(const Tile* attackerTile, const Tile* targetTile)
 {
@@ -4628,6 +4728,8 @@ bool Game::creatureSaySpell(Creature *creature, const std::string &text)
 
 	Player* player = dynamic_cast<Player*>(creature);
 	std::string temp, var;
+	std::string lowerText = text;
+	std::transform(lowerText.begin(), lowerText.end(), lowerText.begin(), (int(*)(int))tolower);
 	unsigned int loc = (uint32_t)text.find( "\"", 0 );
 	if( loc != string::npos && loc >= 0){
 		temp = std::string(text, 0, loc-1);
@@ -4639,6 +4741,44 @@ bool Game::creatureSaySpell(Creature *creature, const std::string &text)
 	}
 
 	std::transform(temp.begin(), temp.end(), temp.begin(), (int(*)(int))tolower);
+
+#ifdef CT_EXANI_TERA
+	if(temp == lowerText && lowerText.substr(0, 10) == "exani hur "){
+		temp = "exani hur";
+		var = lowerText.substr(10);
+	}
+
+	if(player && !player->isRookie() && temp == "exani hur" &&
+		(!g_config.LEARN_SPELLS || player->knowsSpell("exani hur")))
+	{
+		const int REQ_MANA = 50;
+		Position dest;
+
+		if(!getLevitateDestination(this, player, var, dest)){
+			player->sendMagicEffect(player->pos, NM_ME_PUFF);
+			player->sendTextMessage(MSG_SMALLINFO, "Sorry, not possible.");
+		}
+		else if(player->mana < REQ_MANA){
+			player->sendMagicEffect(player->pos, NM_ME_PUFF);
+			player->sendTextMessage(MSG_SMALLINFO, "Not enough mana.");
+		}
+		else if(player->exhaustedTicks >= 1000 && player->access < g_config.ACCESS_PROTECT){
+			player->sendMagicEffect(player->pos, NM_ME_PUFF);
+			player->sendTextMessage(MSG_SMALLINFO, "You are exhausted.");
+		}
+		else{
+			teleport(player, dest);
+			player->sendMagicEffect(player->pos, NM_ME_ENERGY_AREA);
+
+			if(player->access < g_config.ACCESS_PROTECT){
+				player->mana -= REQ_MANA;
+				player->addManaSpent(REQ_MANA);
+			}
+		}
+
+		return true;
+	}
+#endif //CT_EXANI_TERA
 
 	if(creature->access >= g_config.ACCESS_PROTECT || !player){
 		std::map<std::string, Spell*>::iterator sit = spells.getAllSpells()->find(temp);

@@ -157,7 +157,7 @@ static bool isSmallGemItem(unsigned short itemId)
 static int getRageGemChancePercent(const std::string& monsterName)
 {
 	if(monsterName.find("angry ") == 0)
-		return 175;
+		return 100;
 	if(monsterName.find("furious ") == 0)
 		return 240;
 	if(monsterName.find("enraged ") == 0)
