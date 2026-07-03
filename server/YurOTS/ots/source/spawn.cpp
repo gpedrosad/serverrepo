@@ -22,6 +22,7 @@
 #include "game.h"
 #include "player.h"
 #include "npc.h"
+#include "monster.h"
 #include "const76.h"
 #include "scheduler.h"
 

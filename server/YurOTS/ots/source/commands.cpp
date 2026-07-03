@@ -24,6 +24,7 @@
 #include <utility>
 
 #include "commands.h"
+#include "monster.h"
 #include "player.h"
 #include "npc.h"
 #include "game.h"

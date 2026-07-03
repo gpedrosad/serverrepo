@@ -24,8 +24,9 @@
 
 #include "tile.h"
 #include "position.h"
-#include "monster.h"
 #include "templates.h"
+
+class Monster;
 
 #include <vector>
 #include <map>
