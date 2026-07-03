@@ -45,6 +45,16 @@ class SpellsPayloadTests(unittest.TestCase):
             else:
                 self.assertFalse(has, f"{ue} no debería estar en {sec['label']}")
 
+    def test_poison_storm_only_druid(self) -> None:
+        payload = build_spells_payload(SPELLS_XML)
+        ps = "exevo gran mas pox"
+        for sec in payload["sections"]:
+            has = any(s["words"] == ps for s in sec["spells"])
+            if sec["id"] == "druid":
+                self.assertTrue(has)
+            else:
+                self.assertFalse(has, f"{ps} no debería estar en {sec['label']}")
+
 
 if __name__ == "__main__":
     unittest.main()

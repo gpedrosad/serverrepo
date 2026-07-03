@@ -17,6 +17,17 @@ VOCATION_SECTIONS: tuple[tuple[str, str, frozenset[int]], ...] = (
 _SKIP_SPELL_NAMES = frozenset({"death"})
 _MAX_PLAYER_MAGLV = 99
 
+# Ultimates de una sola vocación: no mostrar en otras secciones aunque el XML vecino ensucie el parseo.
+_EXCLUSIVE_BY_SECTION: dict[str, frozenset[str]] = {
+    "sorcerer": frozenset({"exevo gran mas vis"}),
+    "druid": frozenset({"exevo gran mas pox"}),
+    "paladin": frozenset(),
+    "knight": frozenset(),
+}
+_EXCLUSIVE_DENY_OTHERS = frozenset(
+    words for words in {w for s in _EXCLUSIVE_BY_SECTION.values() for w in s}
+)
+
 _SPELL_OPEN = re.compile(
     r'<spell\s+name="([^"]+)"\s+words="([^"]+)"\s+maglv="(\d+)"\s+mana="(\d+)"\s+enabled="(\d+)"',
     re.IGNORECASE,
@@ -31,6 +42,12 @@ def _spell_kind(words: str) -> str:
     if w.startswith(("adori", "adevo", "adura", "adana", "adito", "adeta")):
         return "Runa"
     return "Instant"
+
+
+def _allowed_in_section(words: str, section_id: str) -> bool:
+    if words in _EXCLUSIVE_DENY_OTHERS:
+        return words in _EXCLUSIVE_BY_SECTION.get(section_id, frozenset())
+    return True
 
 
 def _parse_spells_xml(text: str) -> list[dict]:
@@ -75,7 +92,10 @@ def _cached_by_path(path_str: str, mtime_ns: int) -> dict:
 
     sections: list[dict] = []
     for section_id, label, voc_ids in VOCATION_SECTIONS:
-        items = [s for s in all_spells if voc_ids.intersection(s["vocations"])]
+        items = [
+            s for s in all_spells
+            if voc_ids.intersection(s["vocations"]) and _allowed_in_section(s["words"], section_id)
+        ]
         items.sort(key=lambda s: (s["mana"], s["maglv"], s["name"].lower()))
         sections.append(
             {
