@@ -1409,8 +1409,11 @@ void Protocol76::parseSay(NetworkMessage &msg)
 		channelId = msg.GetU16();
 	std::string text = msg.GetString();
 
-	if(game->creatureSaySpell(player, text))
+	SpellCastResult spellResult = game->creatureSaySpell(player, text);
+	if(spellResult == SPELL_CAST_SUCCESS)
 		type = SPEAK_SAY;
+	else if(spellResult == SPELL_CAST_BLOCKED)
+		return;
 
 	switch (type)
 	{

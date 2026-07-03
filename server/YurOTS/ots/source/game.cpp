@@ -79,6 +79,31 @@ extern Commands commands;
 extern Chat g_chat;
 extern Monsters g_monsters;
 
+static void trimSpellText(std::string& text)
+{
+	std::string::size_type start = 0;
+	while(start < text.length() && isspace((unsigned char)text[start]))
+		++start;
+
+	std::string::size_type end = text.length();
+	while(end > start && isspace((unsigned char)text[end - 1]))
+		--end;
+
+	if(start == 0 && end == text.length())
+		return;
+
+	text = text.substr(start, end - start);
+}
+
+static bool didPlayerSpendSpellResources(const Player* player, int64_t manaBefore, long exhaustedBefore, unsigned short soulBefore)
+{
+	return player && (
+		player->mana < manaBefore ||
+		player->exhaustedTicks > exhaustedBefore ||
+		player->getSoul() < soulBefore
+	);
+}
+
 namespace {
 
 Position getStepInDirection(const Position& pos, Direction dir)
@@ -4720,16 +4745,18 @@ void Game::CreateManaDamageUpdate(Creature* creature, Creature* attackCreature, 
 	}
 }
 
-bool Game::creatureSaySpell(Creature *creature, const std::string &text)
+SpellCastResult Game::creatureSaySpell(Creature *creature, const std::string &text)
 {
 	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::creatureSaySpell()");
 
 	bool ret = false;
+	bool recognized = false;
 
 	Player* player = dynamic_cast<Player*>(creature);
 	std::string temp, var;
 	std::string lowerText = text;
 	std::transform(lowerText.begin(), lowerText.end(), lowerText.begin(), (int(*)(int))tolower);
+	trimSpellText(lowerText);
 	unsigned int loc = (uint32_t)text.find( "\"", 0 );
 	if( loc != string::npos && loc >= 0){
 		temp = std::string(text, 0, loc-1);
@@ -4741,6 +4768,7 @@ bool Game::creatureSaySpell(Creature *creature, const std::string &text)
 	}
 
 	std::transform(temp.begin(), temp.end(), temp.begin(), (int(*)(int))tolower);
+	trimSpellText(temp);
 
 #ifdef CT_EXANI_TERA
 	if(temp == lowerText && lowerText.substr(0, 10) == "exani hur "){
@@ -4751,6 +4779,7 @@ bool Game::creatureSaySpell(Creature *creature, const std::string &text)
 	if(player && !player->isRookie() && temp == "exani hur" &&
 		(!g_config.LEARN_SPELLS || player->knowsSpell("exani hur")))
 	{
+		recognized = true;
 		const int REQ_MANA = 50;
 		Position dest;
 
@@ -4774,15 +4803,18 @@ bool Game::creatureSaySpell(Creature *creature, const std::string &text)
 				player->mana -= REQ_MANA;
 				player->addManaSpent(REQ_MANA);
 			}
+
+			ret = true;
 		}
 
-		return true;
+		return ret ? SPELL_CAST_SUCCESS : SPELL_CAST_BLOCKED;
 	}
 #endif //CT_EXANI_TERA
 
 	if(creature->access >= g_config.ACCESS_PROTECT || !player){
 		std::map<std::string, Spell*>::iterator sit = spells.getAllSpells()->find(temp);
 		if( sit != spells.getAllSpells()->end() ) {
+			recognized = true;
 			ret = sit->second->getSpellScript()->castSpell(creature, creature->pos, var);
 		}
 	}
@@ -4791,6 +4823,7 @@ bool Game::creatureSaySpell(Creature *creature, const std::string &text)
 		if(tmp){
 			std::map<std::string, Spell*>::iterator sit = tmp->find(temp);
 			if( sit != tmp->end() ) {
+				recognized = true;
 				if(player->getEffectiveMagLevel() >= sit->second->getMagLv()){
 #ifdef YUR_LEARN_SPELLS
 					if (g_config.LEARN_SPELLS && !player->knowsSpell(temp))
@@ -4798,7 +4831,12 @@ bool Game::creatureSaySpell(Creature *creature, const std::string &text)
 					else
 #endif //YUR_LEARN_SPELLS
 					{
+						const int64_t manaBefore = player->mana;
+						const long exhaustedBefore = player->exhaustedTicks;
+						const unsigned short soulBefore = player->getSoul();
 						ret = sit->second->getSpellScript()->castSpell(creature, creature->pos, var);
+						if(!ret && didPlayerSpendSpellResources(player, manaBefore, exhaustedBefore, soulBefore))
+							ret = true;
 					}
 				}
 				else {
@@ -4810,6 +4848,7 @@ bool Game::creatureSaySpell(Creature *creature, const std::string &text)
 			else {
 				std::map<std::string, Spell*>::iterator ait = spells.getAllSpells()->find(temp);
 				if(ait != spells.getAllSpells()->end()) {
+					recognized = true;
 					static const char* vocName[] = {"none", "sorcerer", "druid", "paladin", "knight"};
 					std::string needed;
 					for(int v = 1; v <= 4; v++) {
@@ -4830,8 +4869,10 @@ bool Game::creatureSaySpell(Creature *creature, const std::string &text)
 		}
 	}
 
+	if(recognized)
+		return ret ? SPELL_CAST_SUCCESS : SPELL_CAST_BLOCKED;
 
-	return ret;
+	return SPELL_NOT_RECOGNIZED;
 }
 
 void Game::playerAutoWalk(Player* player, std::list<Direction>& path)

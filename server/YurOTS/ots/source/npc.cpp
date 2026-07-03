@@ -636,7 +636,7 @@ int Npc::onThink(int& newThinkTicks){
 
 
 void Npc::doSay(std::string msg){
-	if(!game->creatureSaySpell(this, msg))
+	if(game->creatureSaySpell(this, msg) == SPELL_NOT_RECOGNIZED)
 		this->game->creatureSay(this, SPEAK_SAY, msg);
 }
 

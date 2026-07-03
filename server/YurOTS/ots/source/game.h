@@ -84,6 +84,12 @@ typedef std::map<Tile*, CreatureStateVec> CreatureStates;
 
 class Game;
 
+enum SpellCastResult {
+	SPELL_NOT_RECOGNIZED = 0,
+	SPELL_CAST_SUCCESS = 1,
+	SPELL_CAST_BLOCKED = 2,
+};
+
 class GameState {
 public:
 	GameState(Game *game, const Range &range);
@@ -244,7 +250,7 @@ public:
 
 	bool creatureThrowRune(Creature *creature, const Position& centerpos, const MagicEffectClass& me);
 	bool creatureCastSpell(Creature *creature, const Position& centerpos, const MagicEffectClass& me);
-	bool creatureSaySpell(Creature *creature, const std::string &text);
+	SpellCastResult creatureSaySpell(Creature *creature, const std::string &text);
 
 	void playerAutoWalk(Player* player, std::list<Direction>& path);
 	bool playerUseItemEx(Player *player, const Position& posFrom,const unsigned char  stack_from,

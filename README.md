@@ -83,6 +83,7 @@ Ver [OTINFO](OTINFO) — rates, PvP, frags y reglas.
 
 ## Documentación técnica
 - **[docs/PROYECTO.md](docs/PROYECTO.md)** — Proyecto, VPS, data de jugadores, flujo de cambios
+- [docs/CLIENT.md](docs/CLIENT.md) — Clientes recomendados y ajustes visuales de cursor/crosshair
 - **[scripts/README-DEPLOY-VPS.md](scripts/README-DEPLOY-VPS.md)** — Deploy seguro en producción (**obligatorio**)
 - [docs/SETUP.md](docs/SETUP.md) — Docker, compilación i386, errores resueltos
 - [docs/SMOKE_TESTS.md](docs/SMOKE_TESTS.md) — Smoke tests locales para login, save, spells, runas, muerte y movimiento
