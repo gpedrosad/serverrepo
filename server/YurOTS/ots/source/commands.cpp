@@ -26,6 +26,7 @@
 #include "commands.h"
 #include "player.h"
 #include "npc.h"
+#include "monster.h"   // [QA] tipo Monster completo; include transitivo perdido (build break)
 #include "game.h"
 #include "actions.h"
 #include "map.h"

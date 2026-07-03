@@ -271,6 +271,20 @@ bool Actions::UseItem(Player* player, const Position &pos,const unsigned char st
 			return true;
 	}
 
+	//default para ítems legibles/escribibles (cartas, scrolls, papel, libros en
+	//blanco) que no tienen un action script propio: abrir la ventana de texto.
+	//canWrite honra el flag WRITEABLE del .otb -> los ítems de texto predefinido
+	//(lore fijo = solo READABLE, o ya mutados por readOnlyId) se abren read-only.
+	{
+		int rw = item->getRWInfo();
+		if(rw & (CAN_BE_READ | CAN_BE_WRITTEN)){
+			bool canWrite = (rw & CAN_BE_WRITTEN) != 0;
+			unsigned short maxlen = canWrite ? 100 : 0;
+			player->sendTextWindow(item, maxlen, canWrite);
+			return true;
+		}
+	}
+
   //we dont know what to do with this item
   player->sendCancel("You can not use this object.");
   return false;

@@ -190,50 +190,16 @@
 <action itemid="2033" script="fluids.lua" />
 
 
-<action itemid="1947" script="rwitems.lua" />
+<!-- Ítems legibles/escribibles (cartas, scrolls, papel, labels, libros en
+     blanco): los maneja el DEFAULT en Actions::UseItem (actions.cpp), que abre
+     la ventana de texto honrando el flag del items.otb (WRITEABLE -> editable;
+     READABLE-only / lore fijo -> solo lectura). Ya NO se listan por itemid.
+     Se conservan solo los casos con lógica propia. -->
 <action itemid="1954" script="premium_scroll.lua" />
 <action itemid="2345" script="premium_scroll.lua" />
-<action itemid="2597" script="rwitems.lua" />
-<action itemid="2598" script="rwitems.lua" />
-<action itemid="2599" script="rwitems.lua" />
-<action itemid="1948" script="rwitems.lua" />
-<action itemid="1949" script="rwitems.lua" />
-<action itemid="1950" script="rwitems.lua" />
-<action itemid="1951" script="rwitems.lua" />
-<action itemid="1952" script="rwitems.lua" />
+<!-- Training bonus parchment @135,130,9: claim de +5h. Debe seguir por script
+     (getAction matchea antes del default y preserva la lógica especial). -->
 <action itemid="1953" script="rwitems.lua" />
-<action itemid="1955" script="rwitems.lua" />
-<action itemid="1956" script="rwitems.lua" />
-<action itemid="1957" script="rwitems.lua" />
-<action itemid="1958" script="rwitems.lua" />
-<action itemid="1959" script="rwitems.lua" />
-<action itemid="1960" script="rwitems.lua" />
-<action itemid="1961" script="rwitems.lua" />
-<action itemid="1962" script="rwitems.lua" />
-<action itemid="1963" script="rwitems.lua" />
-<action itemid="1964" script="rwitems.lua" />
-<action itemid="1965" script="rwitems.lua" />
-<action itemid="1966" script="rwitems.lua" />
-<action itemid="1967" script="rwitems.lua" />
-<action itemid="1968" script="rwitems.lua" />
-<action itemid="1969" script="rwitems.lua" />
-<action itemid="1970" script="rwitems.lua" />
-<action itemid="1971" script="rwitems.lua" />
-<action itemid="1972" script="rwitems.lua" />
-<action itemid="1973" script="rwitems.lua" />
-<action itemid="1974" script="rwitems.lua" />
-<action itemid="1975" script="rwitems.lua" />
-<action itemid="1976" script="rwitems.lua" />
-<action itemid="1977" script="rwitems.lua" />
-<action itemid="1978" script="rwitems.lua" />
-<action itemid="1979" script="rwitems.lua" />
-<action itemid="1980" script="rwitems.lua" />
-<action itemid="1981" script="rwitems.lua" />
-<action itemid="1982" script="rwitems.lua" />
-<action itemid="1983" script="rwitems.lua" />
-<action itemid="1984" script="rwitems.lua" />
-<action itemid="1985" script="rwitems.lua" />
-<action itemid="1986" script="rwitems.lua" />
 
 
 -- decayto items --

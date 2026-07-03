@@ -46,6 +46,7 @@
 #include "otsystem.h"
 #include "actions.h"
 #include "game.h"
+#include "readables.h"
 #include "ioplayer.h"
 
 extern LuaScript g_config;
@@ -1452,17 +1453,38 @@ void Protocol76::parseTextWindow(NetworkMessage &msg)
 	unsigned long id = msg.GetU32();
 	std::string new_text = msg.GetString();
 	if(readItem && windowTextID == id){
-		sendTextMessage(MSG_SMALLINFO, "Write not working yet.");
-		//move to Game, and use gameLock
-		/*//TODO: check that the item is in
-		//an accesible place for the player
-		unsigned short itemid = readItem->getID();
-		readItem->setText(new_text);
-		if(readItem->getID() != id){
-		//TODO:update the item in the clients.
-		//Can be done when find a method to get
-		// items position its pointer.
-	}*/
+		// Cap defensivo: un cliente modificado puede exceder el maxlen enviado.
+		if(new_text.size() > 255)
+			new_text.resize(255);
+
+		// Sanitizar para XML 1.0: quitar caracteres de control salvo '\n'.
+		std::string clean;
+		for(size_t i = 0; i < new_text.size(); i++){
+			unsigned char c = (unsigned char)new_text[i];
+			if(c >= 0x20 || c == '\n')
+				clean += (char)c;
+		}
+
+		// Mutamos estado del mundo -> tomar gameLock (patrón de los otros parseX).
+		OTSYS_THREAD_LOCK_CLASS lockClass(game->gameLock, "Protocol76::parseTextWindow()");
+
+		if(!readItem->isRemoved){
+			readItem->setText(clean);
+#ifdef YUR_READABLES
+			// Solo los ítems en el PISO del mapa necesitan persistencia aparte:
+			// el mapa se carga read-only, no se guardan sus ítems al reiniciar.
+			// pos.x == 0xFFFF es el sentinel del engine para inventario/container/
+			// depot -> esos ya persisten vía savePlayer (Item::serialize guarda text).
+			if(readItem->pos.x != 0xFFFF){
+				Readables::SaveScrollText(readItem->pos.x, readItem->pos.y, readItem->pos.z, clean);
+			}
+#endif //YUR_READABLES
+		}
+		readItem->releaseThing();
+		readItem = NULL;
+	}
+	else if(readItem){
+		// Token no coincide: soltar la referencia igual para no filtrarla.
 		readItem->releaseThing();
 		readItem = NULL;
 	}

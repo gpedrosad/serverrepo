@@ -44,6 +44,7 @@ using namespace std;
 #include "items.h"
 #include "commands.h"
 #include "creature.h"
+#include "spawn.h"   // [QA] SpawnManager/Spawn usados abajo; include transitivo perdido (build break)
 #include "player.h"
 #include "monster.h"
 #include "npc.h"

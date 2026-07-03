@@ -34,6 +34,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "game.h"
+#include "spawn.h"   // [QA] SpawnManager usado abajo; include transitivo perdido (build break)
 
 #include "ioaccount.h"
 #include "ioplayer.h"
@@ -778,6 +779,11 @@ int main(int argc, char *argv[])
 		ErrorMessage("Could not load readables.xml!");
 		return -1;
 	}
+	std::cout << "[done]" << std::endl;
+
+	std::cout << ":: Loading scrolltexts.xml...       ";
+	// No-fatal: si el archivo no existe (primer arranque) se ignora.
+	Readables::LoadScrollTexts(&g_game);
 	std::cout << "[done]" << std::endl;
 #endif //YUR_READABLES
 

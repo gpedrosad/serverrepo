@@ -21,12 +21,18 @@
 
 #ifndef READABLES_H
 #define READABLES_H
+#include <string>
 class Game;
 
 class Readables
 {
 public:
 	static bool Load(Game* game);
+	// Scrolls escribibles por jugadores: texto compartido y persistente.
+	// LoadScrollTexts se llama en el boot (tras Load); SaveScrollText en cada
+	// escritura (desde Protocol76::parseTextWindow). Persisten en scrolltexts.xml.
+	static bool LoadScrollTexts(Game* game);
+	static bool SaveScrollText(int x, int y, int z, const std::string& text);
 };
 
 #endif //READABLES_H
