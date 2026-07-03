@@ -793,7 +793,10 @@ bool Commands::whoIsOnline(Creature* c, const std::string &cmd, const std::strin
 
 		while (iter != Player::listPlayer.list.end())
 		{
-			info += (*iter).second->getName() + ", ";
+			Player* onlinePlayer = (*iter).second;
+			std::stringstream line;
+			line << onlinePlayer->getName() << " [" << onlinePlayer->getLevel() << "], ";
+			info += line.str();
 			++iter;
 			++count;
 
