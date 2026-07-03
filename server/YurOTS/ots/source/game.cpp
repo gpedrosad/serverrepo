@@ -4690,6 +4690,15 @@ void Game::checkSpawns(int t)
 	this->addEvent(makeTask(t, std::bind2nd(std::mem_fun(&Game::checkSpawns), t)));
 }
 
+void Game::animatedSpawnStep(Spawn* spawn, unsigned long spawnid, int step)
+{
+	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::animatedSpawnStep()");
+
+	if(spawn) {
+		spawn->runAnimatedRespawnStep(spawnid, step);
+	}
+}
+
 void Game::CreateDamageUpdate(Creature* creature, Creature* attackCreature, int64_t damage)
 {
 	Player* player = dynamic_cast<Player*>(creature);
