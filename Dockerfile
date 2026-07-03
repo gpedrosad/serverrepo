@@ -11,7 +11,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   cmake \
   git \
   gdb \
-  moreutils \
   libxml2-dev \
   liblua5.1-0-dev \
   libboost-regex-dev \
