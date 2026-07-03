@@ -19,6 +19,7 @@
 //////////////////////////////////////////////////////////////////////
 
 #include "monsters.h"
+#include "monster.h"
 #include "spells.h"
 #include "luascript.h"
 #include "const76.h"
