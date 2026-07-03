@@ -299,6 +299,49 @@
     }
     .dl-card:not(.dl-disabled):active { transform: scale(0.98); }
     .dl-disabled { opacity: 0.55; cursor: not-allowed; }
+    .spell-voc {
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 0.5rem;
+      background: rgba(255,255,255,.02);
+      overflow: hidden;
+    }
+    .spell-voc + .spell-voc { margin-top: 0.5rem; }
+    .spell-voc > summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 0.65rem 0.85rem;
+      font-size: 12px;
+      font-weight: 500;
+      color: #e4e4e7;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      user-select: none;
+      transition: background 0.18s ease;
+    }
+    .spell-voc > summary::-webkit-details-marker { display: none; }
+    .spell-voc > summary::after {
+      content: '▾';
+      color: #71717a;
+      font-size: 11px;
+      transition: transform 0.18s ease;
+    }
+    .spell-voc[open] > summary { background: rgba(255,255,255,.035); }
+    .spell-voc[open] > summary::after { transform: rotate(180deg); }
+    .spell-kind {
+      font-size: 9px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.1rem 0.4rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.08);
+      color: #a1a1aa;
+      white-space: nowrap;
+    }
+    .spell-kind.runa { color: #c4b5fd; border-color: rgba(167, 139, 250, 0.25); }
+    .spell-kind.municion { color: #fcd34d; border-color: rgba(251, 191, 36, 0.25); }
+    .spell-kind.instant { color: #93c5fd; border-color: rgba(96, 165, 250, 0.25); }
     #nav { flex-wrap: wrap; }
   </style>
 </head>
@@ -544,6 +587,16 @@
       <div id="gems-sell" class="rounded-lg border border-white/[0.06] px-3 py-2 text-[11px] text-zinc-500"></div>
     </div>
   </section>
+
+  <!-- SPELLS -->
+  <section id="panel-spells" class="panel space-y-3">
+    <div class="anim-in rounded-lg border border-sky-500/15 bg-sky-500/[0.04] px-3 py-2.5">
+      <p class="text-[11px] leading-relaxed text-zinc-300">
+        Hechizos por vocación, ordenados de <span class="text-sky-200/90">menor a mayor costo de mana</span>. Incluye instantáneos, conjuro de runas y munición.
+      </p>
+    </div>
+    <div id="spells-list" class="space-y-2"></div>
+  </section>
 </div>
 
 <script>
@@ -559,6 +612,7 @@ const NAV = [
   { id: 'frags', label: 'Frags' },
   { id: 'deaths', label: 'Muertes' },
   { id: 'gems', label: 'Gemas' },
+  { id: 'spells', label: 'Spells' },
   { id: 'rules', label: 'Reglas' },
   { id: 'info', label: 'Info' },
 ];
@@ -1407,6 +1461,49 @@ function renderGems() {
   document.getElementById('gems-sell').innerHTML = GEMS_SELL_LINES.map(l => `<p>${esc(l)}</p>`).join('');
 }
 
+function spellKindClass(kind) {
+  if (kind === 'Runa') return 'runa';
+  if (kind === 'Munición') return 'municion';
+  return 'instant';
+}
+
+function renderSpells() {
+  const root = document.getElementById('spells-list');
+  if (!root) return;
+  const sections = state.data?.spells?.sections || [];
+  if (!sections.length) {
+    root.innerHTML = '<p class="text-[11px] text-zinc-600">No hay datos de hechizos.</p>';
+    return;
+  }
+  root.innerHTML = sections.map((sec, si) => {
+    const rows = (sec.spells || []).map((s, i) =>
+      `<tr class="anim-in" style="--d:${i * 18}ms">
+        <td class="tabular-nums text-zinc-500">${s.mana}</td>
+        <td class="text-zinc-200">${esc(s.name)}</td>
+        <td class="hidden sm:table-cell"><span class="chip text-zinc-500">${esc(s.words)}</span></td>
+        <td class="tabular-nums text-zinc-600">ML ${s.maglv}</td>
+        <td class="text-right"><span class="spell-kind ${spellKindClass(s.kind)}">${esc(s.kind)}</span></td>
+      </tr>`
+    ).join('');
+    return `<details class="spell-voc anim-in" style="--d:${si * 40}ms">
+      <summary>
+        <span>${esc(sec.label)}</span>
+        <span class="text-[10px] font-normal text-zinc-600">${sec.count} hechizos</span>
+      </summary>
+      <div class="overflow-x-auto border-t border-white/[0.05]">
+        <table class="tbl w-full text-[11px]">
+          <thead>
+            <tr class="text-left text-[10px] uppercase tracking-wider text-zinc-600">
+              <th>Mana</th><th>Nombre</th><th class="hidden sm:table-cell">Palabras</th><th>ML</th><th class="text-right">Tipo</th>
+            </tr>
+          </thead>
+          <tbody>${rows || '<tr><td colspan="5" class="text-zinc-600">Sin hechizos</td></tr>'}</tbody>
+        </table>
+      </div>
+    </details>`;
+  }).join('');
+}
+
 function renderAll() {
   if (!state.data) return;
   const srv = state.data.server;
@@ -1436,6 +1533,7 @@ function renderAll() {
   renderInfo(state.data.otinfo || []);
   renderPremium();
   renderGems();
+  renderSpells();
   renderDownload(conn);
 }
 

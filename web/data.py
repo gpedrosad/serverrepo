@@ -14,6 +14,7 @@ from pathlib import Path
 from xml.sax.saxutils import escape
 
 from debug_log import log_ot_probe
+from spells import build_spells_payload
 
 VOCATIONS = ["Rook", "Sorcerer", "Druid", "Paladin", "Knight"]
 VOC_SHORT = ["—", "S", "D", "P", "K"]
@@ -552,11 +553,14 @@ def build_payload(
     server_ip: str = "127.0.0.1",
     peak_state_file: Path | None = None,
     config_file: Path | None = None,
+    spells_file: Path | None = None,
 ) -> dict:
     if peak_state_file is None:
         peak_state_file = state_file.parent / "peak.json"
     if config_file is None:
         config_file = online_file.parent.parent / "config.lua"
+    if spells_file is None:
+        spells_file = config_file.parent / "data/spells/spells.xml"
     players: list[dict] = []
     all_deaths: list[dict] = []
 
@@ -617,4 +621,5 @@ def build_payload(
         "deaths": all_deaths[:20],
         "otinfo": load_otinfo(otinfo_file),
         "vocations": VOCATIONS[1:],
+        "spells": build_spells_payload(spells_file),
     }
