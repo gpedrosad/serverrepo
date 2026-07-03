@@ -30,7 +30,6 @@
 #include <libxml/xmlmemory.h>
 #include <libxml/parser.h>
 
-#include "spawn.h"
 #include "position.h"
 #include "item.h"
 #include "container.h"
@@ -43,6 +42,7 @@ class Creature;   // see creature.h
 class Player;
 class Monster;
 class Npc;
+class Spawn;
 class Commands;
 class SchedulerTask;
 class lessSchedTask;
@@ -502,6 +502,7 @@ protected:
 #endif //CVS_DAY_CYCLE
 
 	void checkSpawns(int t);
+	void animatedSpawnStep(Spawn* spawn, unsigned long spawnid, int step);
 	std::priority_queue<SchedulerTask*, std::vector<SchedulerTask*>, lessSchedTask > eventList;
 	std::map<unsigned long, SchedulerTask*> eventIdMap;
 	unsigned long eventIdCount;

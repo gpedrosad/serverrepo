@@ -43,6 +43,8 @@ public:
 public:
 	bool startup();
 
+	void runAnimatedRespawnStep(unsigned long spawnid, int step);
+
 	/*
 	virtual void onCreatureEnter(const Creature *creature, const Position &pos);
 	virtual void onCreatureLeave(const Creature *creature, const Position &pos);
@@ -55,6 +57,8 @@ private:
 
 	bool isInSpawnRange(const Position &pos);
 	Monster* respawn(unsigned long spawnid, Position &pos, std::string &name, Direction dir);
+	void sendSpawnAppearEffects(const Position &pos, int step);
+	void beginAnimatedRespawn(unsigned long spawnid);
 
 	struct spawninfo {
 		Position pos;
@@ -62,6 +66,7 @@ private:
 		Direction dir;
 		int spawntime;
 		uint64_t lastspawn;
+		bool pendingAnimatedSpawn;
 	};
 
 	//List of monsters in the spawn
