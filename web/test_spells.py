@@ -35,6 +35,16 @@ class SpellsPayloadTests(unittest.TestCase):
         self.assertIn("exevo con", words)
         self.assertIn("utani slow", words)
 
+    def test_ultimate_explosion_only_sorcerer(self) -> None:
+        payload = build_spells_payload(SPELLS_XML)
+        ue = "exevo gran mas vis"
+        for sec in payload["sections"]:
+            has = any(s["words"] == ue for s in sec["spells"])
+            if sec["id"] == "sorcerer":
+                self.assertTrue(has)
+            else:
+                self.assertFalse(has, f"{ue} no debería estar en {sec['label']}")
+
 
 if __name__ == "__main__":
     unittest.main()

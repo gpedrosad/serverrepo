@@ -43,7 +43,13 @@ def _parse_spells_xml(text: str) -> list[dict]:
         if maglv > _MAX_PLAYER_MAGLV:
             continue
 
-        chunk = text[match.start() : match.end() + 400]
+        open_end = text.find(">", match.end())
+        if open_end == -1:
+            continue
+        close = text.find("</spell>", open_end)
+        if close == -1:
+            continue
+        chunk = text[open_end + 1 : close]
         voc_ids = {int(v) for v in _VOCATION_ID.findall(chunk)}
         if not voc_ids:
             continue
