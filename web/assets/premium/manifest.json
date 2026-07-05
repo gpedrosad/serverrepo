@@ -50,6 +50,21 @@
       },
       "sizePx": 32,
       "clientId": 3013
+    },
+    {
+      "serverId": 2179,
+      "slug": "golden-ring",
+      "name": "Golden ring",
+      "tier": "small",
+      "spriteId": 1933,
+      "files": {
+        "png": "2179-small.png",
+        "png2x": "2179-small@2x.png",
+        "jpg": "2179-small.jpg",
+        "jpg2x": "2179-small@2x.jpg"
+      },
+      "sizePx": 32,
+      "clientId": 3063
     }
   ]
 }

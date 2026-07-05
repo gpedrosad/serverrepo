@@ -23,6 +23,9 @@ NOT_WEAPONS = {
 }
 
 IMBUE_FAIL_CHANCE = 50
+NIGHTGLASS_DAGGER = 20137
+NIGHTGLASS_SPEED_AID = 9060
+NIGHTGLASS_MAX_STACKS = 5
 
 function rubySpeedPercent(stacks)
 	if stacks == 1 then return 5 end
@@ -84,6 +87,31 @@ function rollImbueFailure(cid, gemItem)
 	doPlayerSendCancel(cid, "The imbuement failed and the gem crumbled.")
 	doPlayerSendTextMessage(cid, 22, "Imbuement failed. The gem was lost.")
 	return true
+end
+
+function nightglassSuccessPercent(currentStacks)
+	return 90 - (currentStacks * 10)
+end
+
+function rollNightglassImbueFailure(cid, gemItem, currentStacks)
+	local successPct = nightglassSuccessPercent(currentStacks)
+	if math.random(1, 100) <= successPct then
+		return false
+	end
+
+	doRemoveItem(gemItem.uid, 1)
+	doSendMagicEffect(getPlayerPosition(cid), 2)
+	doPlayerSendCancel(cid, "The nightglass imbuement failed and the gem crumbled.")
+	doPlayerSendTextMessage(cid, 22, "Imbuement failed (" .. successPct .. "% chance). The gem was lost.")
+	return true
+end
+
+function nightglassSpeedPercent(stacks)
+	return stacks * 5
+end
+
+function nightglassDelayMs(stacks)
+	return math.floor(1333 * (100 - nightglassSpeedPercent(stacks)) / 100)
 end
 
 function applyImbue(cid, gemItem, target, minAid, maxStacks, msg)
@@ -148,6 +176,36 @@ function onUse(cid, item, frompos, item2, topos)
 			doPlayerSendCancel(cid, "Equip a weapon in your right or left hand to imbue it.")
 			return 1
 		end
+
+		if weapon.itemid == NIGHTGLASS_DAGGER then
+			local stacks = 0
+			if weapon.actionid >= NIGHTGLASS_SPEED_AID and weapon.actionid <= NIGHTGLASS_SPEED_AID + NIGHTGLASS_MAX_STACKS - 1 then
+				stacks = weapon.actionid - NIGHTGLASS_SPEED_AID + 1
+			end
+			if stacks >= NIGHTGLASS_MAX_STACKS then
+				doPlayerSendCancel(cid, "Nightglass dagger already has 5/5 speed imbuements.")
+				return 1
+			end
+			local isNightglassAid = weapon.actionid >= NIGHTGLASS_SPEED_AID and
+				weapon.actionid <= NIGHTGLASS_SPEED_AID + NIGHTGLASS_MAX_STACKS - 1
+			if weapon.actionid >= 9020 and not isNightglassAid and weapon.actionid ~= 9041 and
+				((weapon.actionid >= 9040 and weapon.actionid <= 9042) == false) then
+				doPlayerSendCancel(cid, "That item already has another imbuement.")
+				return 1
+			end
+			if rollNightglassImbueFailure(cid, item, stacks) then
+				return 1
+			end
+			doRemoveItem(item.uid, 1)
+			doSetItemActionId(weapon.uid, NIGHTGLASS_SPEED_AID + stacks)
+			doSendMagicEffect(getPlayerPosition(cid), 13)
+			local nextStacks = stacks + 1
+			doPlayerSendTextMessage(cid, 22, "Nightglass dagger imbued with speed (" .. nextStacks .. "/5): +" ..
+				nightglassSpeedPercent(nextStacks) .. "% (" .. nightglassDelayMs(nextStacks) .. "ms per hit).")
+			doPlayerCheckFeetSpeed(cid)
+			return 1
+		end
+
 		local stacks = 0
 		if weapon.actionid >= 9040 and weapon.actionid <= 9042 then
 			stacks = weapon.actionid - 9039

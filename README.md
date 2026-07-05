@@ -82,13 +82,15 @@ Ver [docs/RME_SETUP.md](docs/RME_SETUP.md).
 Ver [OTINFO](OTINFO) — rates, PvP, frags y reglas.
 
 ## Documentación técnica
+
 - **[docs/PROYECTO.md](docs/PROYECTO.md)** — Proyecto, VPS, data de jugadores, flujo de cambios
-- [docs/CLIENT.md](docs/CLIENT.md) — Clientes recomendados y ajustes visuales de cursor/crosshair
+- [docs/gameplay/BOAT_TRAVEL.md](docs/gameplay/BOAT_TRAVEL.md) — Viajes de Nimral/Fargum: destinos, Hell Quest y reglas de teleport/temple
+- [docs/gameplay/GOLDEN_ACCESSORIES.md](docs/gameplay/GOLDEN_ACCESSORIES.md) — Golden amulet y golden ring: auto-bank, bonus de oro y cómo se combinan
 - **[scripts/README-DEPLOY-VPS.md](scripts/README-DEPLOY-VPS.md)** — Deploy seguro en producción (**obligatorio**)
-- [docs/SETUP.md](docs/SETUP.md) — Docker, compilación i386, errores resueltos
-- [docs/SMOKE_TESTS.md](docs/SMOKE_TESTS.md) — Smoke tests locales para login, save, spells, runas, muerte y movimiento
-- [docs/RME_SETUP.md](docs/RME_SETUP.md) — Remere's Map Editor 7.6
-- [docs/SPELL_EXORI_GRAN.md](docs/SPELL_EXORI_GRAN.md) — Spells custom Knight
+
+Para el índice completo de documentación, ver [docs/INDEX.md](docs/INDEX.md).
+
+Si sos un agente IA, ver también [AGENTS.md](AGENTS.md).
 
 ## Estructura
 

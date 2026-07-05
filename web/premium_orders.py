@@ -14,11 +14,63 @@ PREMIUM_PLANS = {
     "1954": {"days": 7, "label": "1 semana", "price": 4000, "item_id": 1954},
     "2345": {"days": 14, "label": "2 semanas", "price": 6000, "item_id": 2345},
 }
-GOLDEN_AMULET_ID = 2130
-GOLDEN_AMULET_PRICE = 2000
 MAX_RECEIPT_BYTES = 5 * 1024 * 1024
 ALLOWED_RECEIPT_EXT = frozenset({".jpg", ".jpeg", ".png", ".pdf", ".webp"})
 CHAR_RE = re.compile(r"^[a-zA-Z ]{3,20}$")
+
+# Extras opcionales en checkout web (orden de visualización).
+PREMIUM_ADDONS: tuple[dict, ...] = (
+    {
+        "key": "golden_amulet",
+        "item_id": 2130,
+        "price": 2000,
+        "label": "Golden amulet",
+        "desc": "El oro del botín va directo a tu cuenta bancaria.",
+        "ext": "jpg",
+    },
+    {
+        "key": "golden_ring",
+        "item_id": 2179,
+        "price": 2000,
+        "label": "Golden ring",
+        "desc": "+20% de oro de monstruos mientras lo llevas equipado.",
+        "ext": "jpg",
+    },
+    {
+        "key": "experience_recovery_rune",
+        "item_id": 20131,
+        "price": 2500,
+        "label": "Experience recovery rune",
+        "desc": "Recupera 60-80% de la exp perdida en tu última muerte.",
+        "ext": "png",
+    },
+    {
+        "key": "training_extension_rune",
+        "item_id": 20132,
+        "price": 1500,
+        "label": "Training extension rune",
+        "desc": "+12 horas de training ese día (una vez por personaje).",
+        "ext": "png",
+    },
+)
+
+GOLDEN_AMULET_ID = 2130
+GOLDEN_AMULET_PRICE = 2000
+
+
+def _addon_by_key(key: str) -> dict | None:
+    for addon in PREMIUM_ADDONS:
+        if addon["key"] == key:
+            return addon
+    return None
+
+
+def _addon_images(item_id: int, ext: str) -> dict:
+    base = f"/assets/premium/{item_id}-small"
+    return {
+        "image": f"{base}.{ext}",
+        "image2x": f"{base}@2x.{ext}",
+    }
 
 
 def default_payment_info() -> dict:
@@ -45,15 +97,31 @@ def premium_config_payload() -> dict:
             "image2x": f"{base}@2x.jpg",
         }
 
-    amulet_base = f"/assets/premium/{GOLDEN_AMULET_ID}-small"
+    addons = []
+    for addon in PREMIUM_ADDONS:
+        imgs = _addon_images(addon["item_id"], addon["ext"])
+        addons.append(
+            {
+                "key": addon["key"],
+                "itemId": addon["item_id"],
+                "price": addon["price"],
+                "label": addon["label"],
+                "desc": addon["desc"],
+                **imgs,
+            }
+        )
+
+    amulet = _addon_by_key("golden_amulet")
+    amulet_imgs = _addon_images(amulet["item_id"], amulet["ext"]) if amulet else {}
     return {
         "plans": [plan_entry("1954"), plan_entry("2345")],
+        "addons": addons,
+        # Compat con JS/cache viejo
         "goldenAmulet": {
             "price": GOLDEN_AMULET_PRICE,
             "label": "Golden amulet",
-            "desc": "El oro del botín va directo a tu cuenta bancaria.",
-            "image": f"{amulet_base}.jpg",
-            "image2x": f"{amulet_base}@2x.jpg",
+            "desc": amulet["desc"] if amulet else "",
+            **amulet_imgs,
         },
         "payment": default_payment_info(),
     }
@@ -91,6 +159,14 @@ def parse_multipart_form(handler) -> dict:
     return fields
 
 
+def parse_addon_selections(fields: dict) -> dict[str, bool]:
+    truthy = {"1", "true", "on", "yes"}
+    return {
+        addon["key"]: str(fields.get(addon["key"], "")).lower() in truthy
+        for addon in PREMIUM_ADDONS
+    }
+
+
 def _load_orders(path: Path) -> list[dict]:
     if not path.is_file():
         return []
@@ -113,7 +189,7 @@ def create_premium_order(
     players_dir: Path,
     character_name: str,
     plan_id: str,
-    golden_amulet: bool,
+    addon_selections: dict[str, bool],
     receipt_name: str,
     receipt_bytes: bytes,
     client_ip: str,
@@ -135,12 +211,26 @@ def create_premium_order(
     if ext not in ALLOWED_RECEIPT_EXT:
         return {"ok": False, "message": "Formato no permitido. Usa JPG, PNG o PDF."}
 
-    total = plan["price"] + (GOLDEN_AMULET_PRICE if golden_amulet else 0)
+    addon_lines: dict[str, dict] = {}
+    addons_total = 0
+    for addon in PREMIUM_ADDONS:
+        selected = bool(addon_selections.get(addon["key"]))
+        price = addon["price"] if selected else 0
+        addon_lines[addon["key"]] = {
+            "selected": selected,
+            "price": price,
+            "label": addon["label"],
+            "item_id": addon["item_id"],
+        }
+        addons_total += price
+
+    total = plan["price"] + addons_total
     order_id = time.strftime("%Y%m%d") + "-" + uuid.uuid4().hex[:8]
     uploads_dir.mkdir(parents=True, exist_ok=True)
     receipt_path = uploads_dir / f"{order_id}{ext}"
     receipt_path.write_bytes(receipt_bytes)
 
+    golden_amulet = addon_lines["golden_amulet"]["selected"]
     order = {
         "id": order_id,
         "created_at": int(time.time()),
@@ -149,8 +239,10 @@ def create_premium_order(
         "plan_id": plan_id,
         "plan_label": plan["label"],
         "plan_price": plan["price"],
+        "addons": addon_lines,
+        "addons_total": addons_total,
         "golden_amulet": golden_amulet,
-        "golden_amulet_price": GOLDEN_AMULET_PRICE if golden_amulet else 0,
+        "golden_amulet_price": addon_lines["golden_amulet"]["price"],
         "total_price": total,
         "receipt_file": receipt_path.name,
         "client_ip": client_ip,

@@ -20,6 +20,7 @@ PREMIUM_EXPORTS = (
     mod.GemExport(1954, "scroll-1w", "Premium scroll (1 semana)", "small", 32),
     mod.GemExport(2345, "scroll-2w", "Premium scroll (2 semanas)", "small", 32),
     mod.GemExport(2130, "golden-amulet", "Golden amulet", "small", 32),
+    mod.GemExport(2179, "golden-ring", "Golden ring", "small", 32),
 )
 
 

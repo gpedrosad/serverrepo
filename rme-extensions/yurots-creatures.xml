@@ -2,7 +2,7 @@
 	name="YurOTS Custom Creatures"
 	author="YurOTS"
 	description="Trainer Monk, Elite Trainer Monk y otros monstruos custom del servidor."
-	client="7.6">
+	client="all">
 
 	<tileset name="YurOTS Training">
 		<creatures>

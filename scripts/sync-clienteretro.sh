@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Rebuild Zagan assets and push Tibia.dat/spr to ~/clienteretro (mac + windows).
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+# shellcheck source=scripts/resolve-project-root.sh
+source "$SCRIPT_DIR/resolve-project-root.sh"
+ROOT="$(resolve_project_root)"
+
+CLIENTERETRO="${CLIENTERETRO:-$HOME/clienteretro}"
+
+"$ROOT/scripts/install-zagan-test-env.sh"
+
+if [[ ! -x "$CLIENTERETRO/sync-from-yurots.sh" ]]; then
+  echo "ERROR: No existe $CLIENTERETRO/sync-from-yurots.sh" >&2
+  exit 1
+fi
+
+YUROTS_ROOT="$ROOT" "$CLIENTERETRO/sync-from-yurots.sh"
+echo "Cliente publicado actualizado en $CLIENTERETRO"

@@ -147,32 +147,26 @@ Nota tecnica:
 
 Objetivo de gameplay elegido:
 
-- Si el respawn ya esta listo, **aparece aunque haya players mirando** el tile
-- Antes de aparecer, si alguien lo ve en pantalla, se muestra una **animacion de aviso** (~2,4 s)
-- Si nadie ve el tile, el monstruo sale **al instante** en el siguiente chequeo
-- El timer **no** se reinicia por tener gente cerca
+- Si el respawn ya esta listo pero hay players viendo la zona, **no** hacer pop delante de ellos
+- Pero tampoco reiniciar todo el timer y castigar al spawn innecesariamente
 
-Cambios aplicados en `server/YurOTS/ots/source/spawn.cpp` (+ `game.cpp` para el callback con lock):
+Cambios aplicados en `server/YurOTS/ots/source/spawn.cpp`:
 
-- Si el `spawntime` ya vencio y el tile es visible para algun player normal:
-  - secuencia de 3 efectos magicos (anillos → energia → humo), 800 ms entre pasos
-  - luego `respawn()`
-- Si el tile no es visible para nadie: `respawn()` directo
-- Flag `pendingAnimatedSpawn` evita disparar dos animaciones en paralelo para el mismo punto
-
-Documentacion detallada: `docs/SPAWN_ANIMATION.md`
+- Si el `spawntime` ya vencio y el tile de spawn sigue visible para algun player normal:
+  - el monstruo **no** respawnea todavia
+  - el timer **no** se reinicia
+- Apenas deja de estar visible, respawnea en el siguiente ciclo de chequeo
 
 Resultado practico:
 
-- El spawn queda “ready” al vencer el timer
+- El spawn queda “ready”
 - No se vuelve a contar desde cero por tener gente cerca
-- Los players ven telegraph antes del pop en pantalla
+- El monstruo sale apenas la zona se libera
 
 Importante:
 
 - La visibilidad usada aca es `Player::CanSee`, o sea **visibilidad de pantalla/rango de cliente**, no line-of-sight real por paredes.
 - El chequeo corre con la cadencia normal del sistema de spawns, hoy cada `20s`.
-- La animacion usa eventos del scheduler cada `800ms`; el spawn efectivo llega ~2,4 s despues de iniciar la secuencia.
 
 No afectado:
 

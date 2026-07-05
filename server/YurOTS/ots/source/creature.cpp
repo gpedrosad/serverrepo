@@ -89,6 +89,8 @@ access(0)
 	imbueWandMl = 0;
 	imbueRubyWeapon = 0;
 	imbueEmeraldArmor = 0;
+	imbueHelmMl = 0;
+	imbueNightglassSpeed = 0;
 #endif //YUR_BOH
 
 #ifdef YUR_RINGS_AMULETS

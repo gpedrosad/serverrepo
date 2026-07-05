@@ -7,7 +7,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 source "$SCRIPT_DIR/resolve-project-root.sh"
 PROJECT_ROOT="$(resolve_project_root)"
 
-CLIENT_DIR="$PROJECT_ROOT/rme-client-760"
+CLIENT_DIR="${RME_CLIENT_DIR_OVERRIDE:-$PROJECT_ROOT/rme-client-760}"
 RME_ROOT="${RME_ROOT:-$HOME/dev/rme}"
 RME_BUILD="${RME_BUILD:-$RME_ROOT/build}"
 RME_CFG_GLOBAL="$HOME/Library/Preferences/.rme/rme.cfg"
@@ -48,9 +48,18 @@ MAP="$PROJECT_ROOT/server/YurOTS/ots/data/world/test.otbm"
 # Centro aproximado de la ciudad (NPCs/spawns de YurOTS).
 MAP_POSITION="140:50:7"
 
+ZAGAN_RME_FLAG=0
+RME_DATA_DIR=""
+RME_EXT_DIR=""
+if [[ "${ZAGAN_RME:-0}" == "1" || "$RME_CLIENT_DIR" == *zagan-test* ]]; then
+  ZAGAN_RME_FLAG=1
+  RME_DATA_DIR="$PROJECT_ROOT/rme-zagan-test-root/data"
+  RME_EXT_DIR="$PROJECT_ROOT/rme-zagan-test-root/extensions"
+fi
+
 patch_cfg() {
   local dest="$1"
-  python3 - "$dest" "$RME_CLIENT_DIR" "$MAP" "$MAP_POSITION" <<'PY'
+  python3 - "$dest" "$RME_CLIENT_DIR" "$MAP" "$MAP_POSITION" "$ZAGAN_RME_FLAG" "$RME_DATA_DIR" "$RME_EXT_DIR" <<'PY'
 import json
 import re
 import sys
@@ -60,6 +69,13 @@ dest = Path(sys.argv[1])
 client_path = sys.argv[2]
 map_path = sys.argv[3]
 map_position = sys.argv[4]
+zagan_rme = sys.argv[5] == "1"
+rme_data_dir = sys.argv[6] if len(sys.argv) > 6 else ""
+rme_ext_dir = sys.argv[7] if len(sys.argv) > 7 else ""
+if rme_data_dir and not rme_data_dir.endswith("/"):
+    rme_data_dir += "/"
+if rme_ext_dir and not rme_ext_dir.endswith("/"):
+    rme_ext_dir += "/"
 # Una sola entrada: evita que RME rellene paths vacíos para otras versiones.
 assets_line = f'ASSETS_DATA_DIRS=[{{"id":"7.6","path":"{client_path}"}}]'
 
@@ -105,6 +121,20 @@ if dest.exists() and dest.stat().st_size > 0:
             text = text.replace("[View]\n", f"[View]\n{key}={val}\n", 1)
         elif "[Graphics]" in text and key == "HIDE_ITEMS_WHEN_ZOOMED":
             text = text.replace("[Graphics]\n", f"[Graphics]\n{key}={val}\n", 1)
+    if zagan_rme and rme_data_dir:
+        zagan_pairs = [
+            ("USE_CUSTOM_DATA_DIRECTORY", "1"),
+            ("DATA_DIRECTORY", rme_data_dir),
+            ("EXTENSIONS_DIRECTORY", rme_ext_dir),
+            ("WELCOME_DIALOG", "0"),
+        ]
+        for key, val in zagan_pairs:
+            if re.search(rf"^{key}=", text, flags=re.M):
+                text = re.sub(rf"^{key}=.*$", f"{key}={val}", text, count=1, flags=re.M)
+            elif key in ("USE_CUSTOM_DATA_DIRECTORY", "DATA_DIRECTORY", "EXTENSIONS_DIRECTORY") and "[Version]" in text:
+                text = text.replace("[Version]\n", f"[Version]\n{key}={val}\n", 1)
+            elif "[Editor]" in text:
+                text = text.replace("[Editor]\n", f"[Editor]\n{key}={val}\n", 1)
     dest.write_text(text, encoding="utf-8")
 else:
     dest.write_text(

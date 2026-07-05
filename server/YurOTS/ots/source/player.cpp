@@ -24,6 +24,7 @@
 #include <string>
 #include <sstream>
 #include <iostream>
+#include <fstream>
 #include <algorithm>
 #include <boost/tokenizer.hpp>
 
@@ -41,6 +42,8 @@ using namespace std;
 #endif //TLM_BUY_SELL
 #include "const76.h"
 #include "chat.h"
+
+static const unsigned long STORAGE_LAST_DEATH_LOST_EXP = 9110;
 
 #ifdef YUR_TRAINING_AREA
 #include "tile.h"
@@ -157,6 +160,7 @@ Creature()
 #endif //YUR_LIGHT_ITEM
 
 	eventAutoWalk = 0;
+	lastGoldenRingBonus = 0;
 	level      = 1;
 	experience = 180;
 
@@ -744,6 +748,24 @@ void Player::sendIcons()
 	}
 
 	client->sendIcons(icons);
+}
+
+bool Player::hasGoldenRingEquipped() const
+{
+	return items[SLOT_RING] && items[SLOT_RING]->getID() == ITEM_GOLDEN_RING;
+}
+
+void Player::addGoldenRingBonus(unsigned long bonusGp)
+{
+	if(bonusGp > 0)
+		lastGoldenRingBonus += bonusGp;
+}
+
+unsigned long Player::takeGoldenRingBonus()
+{
+	const unsigned long bonus = lastGoldenRingBonus;
+	lastGoldenRingBonus = 0;
+	return bonus;
 }
 
 void Player::updateInventoryWeigth()
@@ -2024,6 +2046,11 @@ unsigned long Player::getIP() const
 
 void Player::die()
 {
+	exp_t lostExp = getLostExperience();
+	if(lostExp > 0) {
+		addStorageValue(STORAGE_LAST_DEATH_LOST_EXP, (long)lostExp);
+	}
+
 	//Magic Level downgrade
 	uint64_t sumMana = 0;
 	int64_t lostMana = 0;
@@ -2103,7 +2130,11 @@ void Player::preSave()
 		pos.y = masterPos.y;
 		pos.z = masterPos.z;
 
-		experience -= getLostExperience(); //(int)(experience*0.1f);        //0.1f is also used in die().. maybe we make a little function for exp-loss?
+		exp_t lostExp = getLostExperience();
+		if(lostExp > 0) {
+			addStorageValue(STORAGE_LAST_DEATH_LOST_EXP, (long)lostExp);
+		}
+		experience -= lostExp;
 
 		while(experience < getExpForLv(level))
 		{
@@ -3049,11 +3080,44 @@ static bool isWandItem(int id)
 	}
 }
 
+static int nightglassStacksFromAid(unsigned short aid)
+{
+	if(aid >= ITEM_NIGHTGLASS_SPEED_AID && aid <= ITEM_NIGHTGLASS_SPEED_AID_MAX)
+		return aid - ITEM_NIGHTGLASS_SPEED_AID + 1;
+	return 0;
+}
+
+static int nightglassSpeedPercentFromStacks(int stacks)
+{
+	if(stacks <= 0)
+		return 0;
+	return stacks * 5;
+}
+
+static int nightglassAttackDelayFromStacks(int stacks)
+{
+	const int percent = nightglassSpeedPercentFromStacks(stacks);
+	if(percent <= 0)
+		return PLAYER_ATTACK_DELAY_MS;
+	return PLAYER_ATTACK_DELAY_MS * (100 - percent) / 100;
+}
+
+static bool isNightglassDaggerItem(const Item* item)
+{
+	return item && item->getID() == ITEM_NIGHTGLASS_DAGGER;
+}
+
 static bool isRubyImbueWeaponItem(const Item* item)
 {
 	return item && item->isWeapon() && item->getWeaponType() != SHIELD &&
-		!isWandItem(item->getID()) &&
+		!isWandItem(item->getID()) && !isNightglassDaggerItem(item) &&
 		rubyStacksFromAid(item->getActionId()) > 0;
+}
+
+static bool isNightglassImbueWeaponItem(const Item* item)
+{
+	return isNightglassDaggerItem(item) &&
+		nightglassStacksFromAid(item->getActionId()) > 0;
 }
 
 void Player::checkBoh()
@@ -3070,25 +3134,36 @@ void Player::checkBoh()
 	}
 
 	int rubyNow = 0;
+	int nightglassNow = 0;
 	for(int slot = SLOT_RIGHT; slot <= SLOT_LEFT; slot++){
 		if(isRubyImbueWeaponItem(items[slot])){
 			rubyNow = rubyStacksFromAid(items[slot]->getActionId());
 			break;
 		}
+		if(isNightglassImbueWeaponItem(items[slot])){
+			nightglassNow = nightglassStacksFromAid(items[slot]->getActionId());
+			break;
+		}
 	}
+
+	int helmMlNow = (items[SLOT_HEAD] && items[SLOT_HEAD]->getID() == ITEM_MAGIC_TURBAN) ? 1 : 0;
 
 	int emeraldNow = items[SLOT_ARMOR] ? emeraldStacksFromAid(items[SLOT_ARMOR]->getActionId(), items[SLOT_ARMOR]) : 0;
 
 	if(boh != bohNow || hasteEnchantStacks != hasteNow || imbueWandMl != wandMlNow ||
-		imbueRubyWeapon != rubyNow || imbueEmeraldArmor != emeraldNow)
+		imbueRubyWeapon != rubyNow || imbueEmeraldArmor != emeraldNow ||
+		imbueHelmMl != helmMlNow || imbueNightglassSpeed != nightglassNow)
 	{
 		int hadRuby = imbueRubyWeapon;
 		int hadEmerald = imbueEmeraldArmor;
+		int hadNightglass = imbueNightglassSpeed;
 		boh = bohNow;
 		hasteEnchantStacks = hasteNow;
 		imbueWandMl = wandMlNow;
 		imbueRubyWeapon = rubyNow;
 		imbueEmeraldArmor = emeraldNow;
+		imbueHelmMl = helmMlNow;
+		imbueNightglassSpeed = nightglassNow;
 		setNormalSpeed();
 		hasteTicks = 0;
 		sendChangeSpeed(this);
@@ -3100,6 +3175,13 @@ void Player::checkBoh()
 				rubySpeedPercentFromStacks(rubyNow), rubyAttackDelayFromStacks(rubyNow), PLAYER_ATTACK_DELAY_MS);
 			sendTextMessage(MSG_INFO, buf);
 		}
+		if(nightglassNow && nightglassNow != hadNightglass){
+			char buf[96];
+			snprintf(buf, sizeof(buf),
+				"Nightglass dagger surges: +%d%% attack speed (%dms per hit, was %dms).",
+				nightglassSpeedPercentFromStacks(nightglassNow), nightglassAttackDelayFromStacks(nightglassNow), PLAYER_ATTACK_DELAY_MS);
+			sendTextMessage(MSG_INFO, buf);
+		}
 		if(client && hadEmerald != emeraldNow)
 			client->sendSkills();
 		sendStats();
@@ -3108,14 +3190,34 @@ void Player::checkBoh()
 
 int64_t Player::getEffectiveMagLevel() const
 {
-	return maglevel + imbueWandMl;
+	return maglevel + imbueWandMl + imbueHelmMl;
 }
 
 int Player::getAttackDelayMs() const
 {
+	if(imbueNightglassSpeed)
+		return nightglassAttackDelayFromStacks(imbueNightglassSpeed);
 	if(imbueRubyWeapon)
 		return rubyAttackDelayFromStacks(imbueRubyWeapon);
 	return PLAYER_ATTACK_DELAY_MS;
+}
+
+int Player::getInitialAttackDelayMs() const
+{
+	const int delay = getAttackDelayMs();
+	if(!wieldsNightglassDagger())
+		return delay;
+	const int faster = delay * NIGHTGLASS_FIRST_HIT_FASTER_PERCENT / 100;
+	return delay - (faster > 0 ? faster : 1);
+}
+
+bool Player::wieldsNightglassDagger() const
+{
+	for(int slot = SLOT_RIGHT; slot <= SLOT_LEFT; ++slot){
+		if(items[slot] && items[slot]->getID() == ITEM_NIGHTGLASS_DAGGER)
+			return true;
+	}
+	return false;
 }
 #endif //YUR_BOH
 
@@ -3580,7 +3682,48 @@ bool Player::checkSkull(int thinkTicks)
 		else
 			absolveTicks = g_config.FRAG_TIME;
 	}
+
+	for(std::map<unsigned long, int>::iterator it = yellowSkullTicks.begin(); it != yellowSkullTicks.end(); )
+	{
+		it->second -= thinkTicks;
+		if(it->second <= 0)
+		{
+			Player* yellowPlayer = dynamic_cast<Player*>(g_game.getCreatureByID(it->first));
+			if(yellowPlayer && CanSee(yellowPlayer->pos.x, yellowPlayer->pos.y, yellowPlayer->pos.z))
+				onSkull(yellowPlayer);
+			yellowSkullTicks.erase(it++);
+		}
+		else
+			++it;
+	}
 	return skullChanged;
+}
+
+void Player::addYellowSkull(Player* player, int ticks)
+{
+	if(!player || player == this || ticks <= 0)
+		return;
+
+	const unsigned long id = player->getID();
+	std::map<unsigned long, int>::iterator it = yellowSkullTicks.find(id);
+	const bool newEntry = (it == yellowSkullTicks.end());
+
+	if(newEntry)
+		yellowSkullTicks[id] = ticks;
+	else
+		it->second = std::max(it->second, ticks);
+
+	if(CanSee(player->pos.x, player->pos.y, player->pos.z))
+		onSkull(player);
+}
+
+bool Player::hasYellowSkull(const Player* player) const
+{
+	if(!player)
+		return false;
+
+	std::map<unsigned long, int>::const_iterator it = yellowSkullTicks.find(player->getID());
+	return it != yellowSkullTicks.end() && it->second > 0;
 }
 
 void Player::onSkull(Player* player)

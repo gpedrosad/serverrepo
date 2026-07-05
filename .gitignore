@@ -13,14 +13,19 @@ server/YurOTS/ots/source/*.o
 server/YurOTS/ots/source/*.bak
 server/YurOTS/ots/source/*.patch
 server/YurOTS/ots/source/yurots
+# Cliente público — ZIPs de release (no van a git)
 web/downloads/*.zip
 web/downloads/*.dmg
+web/updater/files/data/
 web/state/analytics.json
 web/state/daily.json
 web/state/register.json
 web/state/peak.json
 web/state/premium_orders.json
 web/uploads/
+web/private/
+web/.items-admin-token
+web/state/zagan_items_catalog.json
 
 # Runtime OT data — never versionar ni pisar en deploy del VPS
 server/YurOTS/ots/data/online.xml

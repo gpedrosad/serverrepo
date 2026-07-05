@@ -5,6 +5,7 @@ Guía paso a paso para reemplazar `test.otbm` sin romper casas, spawns ni el arr
 Relacionado:
 
 - [docs/RME_SETUP.md](RME_SETUP.md) — abrir RME y assets 7.6
+- [docs/MAPEAR_CON_CODIGO.md](MAPEAR_CON_CODIGO.md) — generar terreno (islas) con `generate-island.py`
 - [scripts/README-DEPLOY-VPS.md](../scripts/README-DEPLOY-VPS.md) — deploy seguro en producción
 - [docs/PROYECTO.md](PROYECTO.md) — qué data es sagrada y qué va en git
 

@@ -164,6 +164,7 @@ public:
 
 	static int luaActionDoPlayerAddSkillTry(lua_State *L);
 	static int luaActionDoPlayerAddHealth(lua_State *L);
+	static int luaActionDoPlayerAddExp(lua_State *L);
 	static int luaActionDoPlayerAddMana(lua_State *L);
 	static int luaActionDoPlayerAddItem(lua_State *L);
 	static int luaActionDoPlayerSendTextMessage(lua_State *L);

@@ -221,6 +221,7 @@
 <monster name="Slime" file="slime.xml" />
 <monster name="Smuggler" file="smuggler.xml" />
 <monster name="Snake" file="snake.xml" />
+<monster name="Serpent Spawn" file="serpent spawn.xml" />
 <monster name="Spider" file="spider.xml" />
 <monster name="Spit Nettle" file="spit nettle.xml" />
 <monster name="Stalker" file="stalker.xml" />

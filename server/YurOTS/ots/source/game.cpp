@@ -747,7 +747,7 @@ static bool isHighlightedLootItem(unsigned short itemId)
 
 static void notifyMonsterLoot(Game* game, Creature* victim, Creature* attacker,
 	Creature* attackerMaster, Monster* lootMonster, const std::string& lootText, bool hasHighlightedLoot,
-	Player* exclusiveRecipient = NULL, uint64_t bankedGold = 0)
+	Player* exclusiveRecipient = NULL, uint64_t bankedGold = 0, unsigned long goldenRingBonus = 0)
 {
 	std::string monsterLabel = lootMonster->getName();
 	std::transform(monsterLabel.begin(), monsterLabel.end(), monsterLabel.begin(), (int(*)(int))tolower);
@@ -762,6 +762,8 @@ static void notifyMonsterLoot(Game* game, Creature* victim, Creature* attacker,
 
 	if(bankedGold > 0)
 		std::cout << "\033[1;32m" << logText << "\033[0m" << std::endl;
+	else if(goldenRingBonus > 0)
+		std::cout << "\033[1;33m" << logText << "\033[0m" << std::endl;
 	else if(hasHighlightedLoot)
 		std::cout << "\033[1;31m" << logText << "\033[0m" << std::endl;
 	else
@@ -776,7 +778,7 @@ static void notifyMonsterLoot(Game* game, Creature* victim, Creature* attacker,
 	playerMsg << "Loot of " << article(monsterLabel) << ": " << lootText << ".";
 	const std::string msg = playerMsg.str();
 	MessageClasses msgClass = MSG_EVENT;
-	if(bankedGold > 0)
+	if(bankedGold > 0 || goldenRingBonus > 0)
 		msgClass = MSG_ADVANCE;
 	else if(hasHighlightedLoot)
 		msgClass = MSG_RED_TEXT;
@@ -900,8 +902,11 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 		}
 
 		uint64_t bankedGold = 0;
-		if(killerPlayer && lootcontainer)
+		unsigned long goldenRingBonus = 0;
+		if(killerPlayer && lootcontainer) {
 			bankedGold = killerPlayer->bankMonsterLootCoins(lootcontainer);
+			goldenRingBonus = killerPlayer->takeGoldenRingBonus();
+		}
 
 		//Log loot of monsters (server log + default channel in client)
 		Monster* lootMonster = dynamic_cast<Monster*>(attackedCreature);
@@ -962,8 +967,16 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 				else
 					lootText += "; " + bankNote.str();
 			}
-			if(bankedGold > 0 && killerPlayer)
-				notifyMonsterLoot(game, attackedCreature, attacker, attackerMaster, lootMonster, lootText, hasHighlightedLoot, killerPlayer, bankedGold);
+			if(goldenRingBonus > 0) {
+				std::ostringstream ringNote;
+				ringNote << goldenRingBonus << " gp golden ring bonus";
+				if(lootText == "nothing")
+					lootText = ringNote.str();
+				else
+					lootText += "; " + ringNote.str();
+			}
+			if((bankedGold > 0 || goldenRingBonus > 0) && killerPlayer)
+				notifyMonsterLoot(game, attackedCreature, attacker, attackerMaster, lootMonster, lootText, hasHighlightedLoot, killerPlayer, bankedGold, goldenRingBonus);
 			else
 				notifyMonsterLoot(game, attackedCreature, attacker, attackerMaster, lootMonster, lootText, hasHighlightedLoot);
 		}
@@ -4123,6 +4136,11 @@ void Game::creatureMakeDamage(Creature *creature, Creature *attackedCreature, fi
 		if(damagetype != FIGHT_MELEE){
 			spectator->sendDistanceShoot(creature->pos, attackedCreature->pos, creature->getSubFightType());
 		}
+#ifdef YUR_BOH
+		else if(player && player->wieldsNightglassDagger()){
+			spectator->sendDistanceShoot(creature->pos, attackedCreature->pos, NM_ANI_FIRE);
+		}
+#endif //YUR_BOH
 
 		if (attackedCreature->manaShieldTicks < 1000 && (creatureState.damage == 0) &&
 			(spectator->CanSee(attackedCreature->pos.x, attackedCreature->pos.y, attackedCreature->pos.z))) {
@@ -4150,7 +4168,11 @@ void Game::creatureMakeDamage(Creature *creature, Creature *attackedCreature, fi
 					std::stringstream dmg;
 					dmg << std::abs(creatureState.damage);
 #ifdef YUR_BOH
-					if(player && player->imbueRubyWeapon){
+					if(player && player->wieldsNightglassDagger()){
+						spectator->sendAnimatedText(attackedCreature->pos, 0x2A, dmg.str());
+						spectator->sendMagicEffect(attackedCreature->pos, NM_ME_HITBY_FIRE);
+					}
+					else if(player && player->imbueRubyWeapon){
 						spectator->sendAnimatedText(attackedCreature->pos, 0xB4, dmg.str());
 						spectator->sendMagicEffect(attackedCreature->pos, NM_ME_YELLOW_RINGS);
 					}
@@ -4690,15 +4712,6 @@ void Game::checkSpawns(int t)
 	this->addEvent(makeTask(t, std::bind2nd(std::mem_fun(&Game::checkSpawns), t)));
 }
 
-void Game::animatedSpawnStep(Spawn* spawn, unsigned long spawnid, int step)
-{
-	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::animatedSpawnStep()");
-
-	if(spawn) {
-		spawn->runAnimatedRespawnStep(spawnid, step);
-	}
-}
-
 void Game::CreateDamageUpdate(Creature* creature, Creature* attackCreature, int64_t damage)
 {
 	Player* player = dynamic_cast<Player*>(creature);
@@ -5056,6 +5069,13 @@ void Game::playerRequestTrade(Player* player, const Position& pos,
 		return;
 	}
 
+	if((std::abs(player->pos.x - tradePartner->pos.x) > 2) ||
+		(std::abs(player->pos.y - tradePartner->pos.y) > 2) ||
+		(player->pos.z != tradePartner->pos.z)) {
+		player->sendCancel("Too far away.");
+		return;
+	}
+
 	if(player->tradeState != TRADE_NONE && !(player->tradeState == TRADE_ACKNOWLEDGE && player->tradePartner == playerid)) {
 		player->sendCancel("You are already trading.");
 		return;
@@ -5127,8 +5147,28 @@ void Game::playerAcceptTrade(Player* player)
 	if(player->isRemoved)
 		return;
 
-	player->setAcceptTrade(true);
 	Player *tradePartner = getPlayerByID(player->tradePartner);
+	if(player->tradePartner == 0 || !player->getTradeItem() || !tradePartner || tradePartner == player ||
+		tradePartner->tradePartner != player->getID() || !tradePartner->getTradeItem()) {
+		if(tradePartner && tradePartner->tradePartner == player->getID()) {
+			playerCloseTrade(player);
+		}
+		else {
+			player->setAcceptTrade(false);
+			player->sendTextMessage(MSG_SMALLINFO, "Trade cancelled.");
+			player->sendCloseTrade();
+		}
+		return;
+	}
+
+	if((std::abs(player->pos.x - tradePartner->pos.x) > 2) ||
+		(std::abs(player->pos.y - tradePartner->pos.y) > 2) ||
+		(player->pos.z != tradePartner->pos.z)) {
+		playerCloseTrade(player);
+		return;
+	}
+
+	player->setAcceptTrade(true);
 	if(tradePartner && tradePartner->getAcceptTrade()) {
 		Item *tradeItem1 = player->tradeItem;
 		Item *tradeItem2 = tradePartner->tradeItem;
@@ -5358,7 +5398,7 @@ void Game::playerSetAttackedCreature(Player* player, unsigned long creatureid)
 	else if(attackedCreature) {
 		player->setAttackedCreature(attackedCreature);
 		stopEvent(player->eventCheckAttacking);
-		player->eventCheckAttacking = addEvent(makeTask(player->getAttackDelayMs(), std::bind2nd(std::mem_fun(&Game::checkCreatureAttacking), player->getID())));
+		player->eventCheckAttacking = addEvent(makeTask(player->getInitialAttackDelayMs(), std::bind2nd(std::mem_fun(&Game::checkCreatureAttacking), player->getID())));
 	}
 
 }
@@ -6557,13 +6597,14 @@ static bool hasRageVariant(const std::string& prefix, const std::string& slainNa
 
 static std::string chooseRageVariantName(const std::string& slainName)
 {
-	// Roll exclusivo:
-	// 1-10   => Enraged (1%)
-	// 11-30  => Furious (2%)
-	// 31-130 => Angry (10%)
+	// Roll exclusivo (sobre 1000):
+	// 1-3    => Enraged (0.3%)
+	// 4-13   => Furious (1%)
+	// 14-53  => Angry (4%)
+	// Total rage: 5.3% (antes: 13% — 1% / 2% / 10%)
 	const int roll = random_range(1, 1000);
 
-	if(roll <= 10) {
+	if(roll <= 3) {
 		if(hasRageVariant("Enraged ", slainName)) {
 			return "Enraged " + slainName;
 		}
@@ -6576,7 +6617,7 @@ static std::string chooseRageVariantName(const std::string& slainName)
 		return "";
 	}
 
-	if(roll <= 30) {
+	if(roll <= 13) {
 		if(hasRageVariant("Furious ", slainName)) {
 			return "Furious " + slainName;
 		}
@@ -6586,7 +6627,7 @@ static std::string chooseRageVariantName(const std::string& slainName)
 		return "";
 	}
 
-	if(roll <= 130 && hasRageVariant("Angry ", slainName)) {
+	if(roll <= 53 && hasRageVariant("Angry ", slainName)) {
 		return "Angry " + slainName;
 	}
 
@@ -6750,6 +6791,8 @@ void Game::onPvP(Creature* creature, Creature* attacked, bool murder)
 
 	if (!murder)
 	{
+		attackedPlayer->addYellowSkull(player, g_config.HIT_TIME);
+
 		if (attackedPlayer->skullType == SKULL_NONE)
 		{
 			if (player->skullType == SKULL_NONE)
@@ -6765,7 +6808,7 @@ void Game::onPvP(Creature* creature, Creature* attacked, bool murder)
 	{
 		player->inFightTicks = g_config.WHITE_TIME;
 
-		if (attackedPlayer->skullType == SKULL_NONE)
+		if (attackedPlayer->skullType == SKULL_NONE && !player->hasYellowSkull(attackedPlayer))
 		{
 			player->skullKills++;
 			std::string justice(std::string("Warning! The murder of ") + attackedPlayer->getName() + " was not justified!");
@@ -6797,15 +6840,17 @@ void Game::LeaveParty(Player *player)
 	int members = 0;
 	std::stringstream bericht1;
 	bericht1 << player->getName() << " has left the party";
+	unsigned long oldParty = player->party;
 
-	if(player->getID() == player->party)
+	if(player->getID() == oldParty)
 	{
-		disbandParty(player->party);
+		disbandParty(oldParty);
 		return;
 	}
+	player->party = 0;
 	for(AutoList<Player>::listiterator it = Player::listPlayer.list.begin(); it != Player::listPlayer.list.end(); ++it)
 	{
-		if((*it).second->party == player->party)
+		if((*it).second->party == oldParty)
 		{
 			members++;
 			if((*it).second->getID() != player->getID())
@@ -6814,13 +6859,12 @@ void Game::LeaveParty(Player *player)
 			player->onPartyIcons((*it).second, 0, false, true);
 		}
 	}
-	if(members <= 2)
+	if(members <= 1)
 	{
-		disbandParty(player->party);
+		disbandParty(oldParty);
 		return;
 	}
 	player->sendTextMessage(MSG_INFO, "You have left the party.");
-	player->party = 0;
 }
 
 void Game::disbandParty(unsigned long partyID)
@@ -6882,8 +6926,12 @@ void Game::burstArrow(Creature* c, const Position& pos)
 
 	/* hard no ? */
 	runeAreaSpell.direction = 1;
-	runeAreaSpell.minDamage = int(((c->level*g_config.BURST_DMG_LVL)+(c->maglevel*g_config.BURST_DMG_MLVL))*g_config.BURST_DMG_LO);
-	runeAreaSpell.maxDamage = int(((c->level*g_config.BURST_DMG_LVL)+(c->maglevel*g_config.BURST_DMG_MLVL))*g_config.BURST_DMG_HI);
+	double burstBase = (c->level * g_config.BURST_DMG_LVL) + (c->maglevel * g_config.BURST_DMG_MLVL);
+	const Player* burstPlayer = dynamic_cast<const Player*>(c);
+	if(burstPlayer && (burstPlayer->vocation == VOCATION_SORCERER || burstPlayer->vocation == VOCATION_DRUID))
+		burstBase *= 0.5;
+	runeAreaSpell.minDamage = int(burstBase * g_config.BURST_DMG_LO);
+	runeAreaSpell.maxDamage = int(burstBase * g_config.BURST_DMG_HI);
 	creatureThrowRune(c, pos, runeAreaSpell);
 }
 #endif //SD_BURST_ARROW

@@ -607,6 +607,28 @@ static int rubyStacksFromAid(unsigned short aid, const Item* item = NULL)
 	return 0;
 }
 
+static int nightglassStacksFromAid(unsigned short aid)
+{
+	if(aid >= ITEM_NIGHTGLASS_SPEED_AID && aid <= ITEM_NIGHTGLASS_SPEED_AID_MAX)
+		return aid - ITEM_NIGHTGLASS_SPEED_AID + 1;
+	return 0;
+}
+
+static int nightglassSpeedPercentFromStacks(int stacks)
+{
+	if(stacks <= 0)
+		return 0;
+	return stacks * 5;
+}
+
+static int nightglassAttackDelayFromStacks(int stacks)
+{
+	const int percent = nightglassSpeedPercentFromStacks(stacks);
+	if(percent <= 0)
+		return PLAYER_ATTACK_DELAY_MS;
+	return PLAYER_ATTACK_DELAY_MS * (100 - percent) / 100;
+}
+
 static int rubySpeedPercentFromStacks(int stacks)
 {
 	switch(stacks){
@@ -635,7 +657,7 @@ static void appendGemUseDescription(std::stringstream& s, unsigned short itemId)
 		s << std::endl << "Imbue: use on equipped wand or rod (+1 ML/stack, max 4).";
 		break;
 	case ITEM_BIG_RUBY:
-		s << std::endl << "Imbue: use on equipped weapon (max 3: +5%, +9%, +16% attack speed; not wands).";
+		s << std::endl << "Imbue: use on equipped weapon (max 3: +5%, +9%, +16% attack speed; not wands). Nightglass dagger: up to 5 speed stacks.";
 		break;
 	case ITEM_BIG_EMERALD:
 		s << std::endl << "Imbue: use on equipped armor (+3 sword/club/axe/dist, Paladin/Knight).";
@@ -814,11 +836,22 @@ std::string Item::getDescription(bool fullDescription) const
 		s << std::endl << "It attacks faster: +" << rubySpeedPercentFromStacks(rubyStacksFromAid(actionId, this)) << "% speed ("
 		  << rubyAttackDelayFromStacks(rubyStacksFromAid(actionId, this)) << "ms per hit, default " << PLAYER_ATTACK_DELAY_MS << "ms, "
 		  << rubyStacksFromAid(actionId, this) << "/3).";
+	else if(id == ITEM_MAGIC_TURBAN && fullDescription)
+		s << std::endl << "Magic turban. Wearing it grants +1 magic level.";
+	else if(id == ITEM_NIGHTGLASS_DAGGER && fullDescription) {
+		s << std::endl << "A shadowy dagger. Imbue with a big ruby for up to 5 speed stacks (-10% success chance per stack).";
+		const int ngStacks = nightglassStacksFromAid(actionId);
+		if(ngStacks > 0)
+			s << std::endl << "Imbued: +" << nightglassSpeedPercentFromStacks(ngStacks) << "% attack speed ("
+			  << nightglassAttackDelayFromStacks(ngStacks) << "ms per hit, " << ngStacks << "/5).";
+	}
 #endif //YUR_BOH
 
 #ifdef TLM_BUY_SELL
 	if(fullDescription && id == ITEM_GOLDEN_AMULET)
 		s << std::endl << "Equipado: el oro de monstruos que mates se deposita en tu banco al instante (sin abrir el cuerpo).";
+	if(fullDescription && id == ITEM_GOLDEN_RING)
+		s << std::endl << "Equipado en el slot de ring: ganas 20% mas oro de monstruos que mates.";
 #endif //TLM_BUY_SELL
 
 	str = s.str();

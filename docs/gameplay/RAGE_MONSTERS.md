@@ -1,12 +1,14 @@
 # Monstruos Furiosos
 
-Al matar un monstruo, **13% de chance** de que reviva al instante convertido en versión furiosa:
+Al matar un monstruo elegible, **5.3% de chance** de que reviva al instante convertido en versión furiosa:
 
 | Variante | Probabilidad | Grito |
 |----------|-------------|-------|
-| **Angry** | 10% | "GRAAAH! VOLVI MAS ENOJADO!" |
-| **Furious** | 2% | "RAAAH! AHORA SI ESTOY FURIOSO!" |
-| **Enraged** | 1% | "MI FURIA NO TIENE LIMITE!" |
+| **Angry** | 4% | "GRAAAH! VOLVI MAS ENOJADO!" |
+| **Furious** | 1% | "RAAAH! AHORA SI ESTOY FURIOSO!" |
+| **Enraged** | 0.3% | "MI FURIA NO TIENE LIMITE!" |
+
+> **Histórico:** hasta 2026-07-04 era 13% total (10% / 2% / 1%). Ajuste en `game.cpp` → `chooseRageVariantName`.
 
 ### ¿Qué cambia?
 - **Stats**: nivel, HP, daño, armadura, defensa, velocidad suben progresivamente

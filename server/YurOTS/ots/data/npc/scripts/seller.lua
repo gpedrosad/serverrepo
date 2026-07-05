@@ -4,14 +4,16 @@ target = 0
 following = false
 attacking = false
 
-SELLER_HELP = 'I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". I buy empty vials (10gp each). You can also say sell all vials.'
+SELLER_HELP = 'I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp mana fluid", "backpack mana fluid", "bp life" or "bp life fluid". I buy empty vials (10gp each). You can also say sell all vials.'
 SELLER_WEAPONS = 'Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.'
 SELLER_ARMORS = 'Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.'
 SELLER_SETS = 'Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.'
+SELLER_FLUID_BACKPACKS = {
+	{aliases = {'mana fluid', 'manafluid', 'mana'}, fluidSubtype = 7, cost = 2010},
+	{aliases = {'life fluid', 'lifefluid', 'life'}, fluidSubtype = 10, cost = 1210},
+}
 
 SELLER_BUYS = {
-	{keys = {'bp mana fluid', 'bp of mana fluid', 'backpack of mana fluid', 'bp manafluid'}, special = 'bp_mana'},
-	{keys = {'bp life fluid', 'bp of life fluid', 'backpack of life fluid', 'bp lifefluid'}, special = 'bp_life'},
 	{keys = {'serpent sword', 'serpent'}, itemid = 2409, unitPrice = 2500},
 	{keys = {'knight axe'}, itemid = 2430, unitPrice = 2800},
 	{keys = {'war hammer', 'hammer'}, itemid = 2391, unitPrice = 3000},
@@ -53,19 +55,37 @@ end
 function onCreatureTurn(creature)
 end
 
+local function sellerMatchFluidBackpack(msg)
+	-- Match fluid backpacks before the generic catalog so
+	-- "backpack mana fluid" does not buy a plain backpack.
+	local prefixes = {'bp ', 'bp of ', 'bp de ', 'backpack ', 'backpack of ', 'backpack de ', 'mochila ', 'mochila de '}
+	for i = 1, #SELLER_FLUID_BACKPACKS do
+		local entry = SELLER_FLUID_BACKPACKS[i]
+		for p = 1, #prefixes do
+			for a = 1, #entry.aliases do
+				if msgcontains(msg, prefixes[p] .. entry.aliases[a]) then
+					return entry
+				end
+			end
+		end
+	end
+	return nil
+end
+
 function sellerTryBuy(cid, msg)
+	local fluidBackpack = sellerMatchFluidBackpack(msg)
+	if fluidBackpack ~= nil then
+		if getPlayerFreeSlots(cid) < 1 then
+			selfSay('You do not have enough space in your backpack for that. Free up some slots first.')
+			return true
+		end
+		buyFluidBackpack(cid, 1988, 2006, fluidBackpack.fluidSubtype, 20, fluidBackpack.cost)
+		return true
+	end
+
 	local entry = npcFindCatalogBuyEntry(msg, SELLER_BUYS)
 	if entry == nil then
 		return false
-	end
-
-	if entry.special == 'bp_mana' then
-		buyFluidBackpack(cid, 1988, 2006, 7, 20, 2010)
-		return true
-	end
-	if entry.special == 'bp_life' then
-		buyFluidBackpack(cid, 1988, 2006, 10, 20, 1210)
-		return true
 	end
 
 	local qty = npcParseBuyQuantity(msg)

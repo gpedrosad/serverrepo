@@ -52,6 +52,17 @@ extern LuaScript g_config;
 extern Actions actions;
 Chat g_chat;
 
+#ifdef TLM_SKULLS_PARTY
+namespace {
+void erasePlayerRef(std::vector<Player*> &list, Player *target)
+{
+	std::vector<Player*>::iterator it = std::find(list.begin(), list.end(), target);
+	if(it != list.end())
+		list.erase(it);
+}
+}
+#endif //TLM_SKULLS_PARTY
+
 Protocol76::Protocol76(SOCKET s)
 {
 	OTSYS_THREAD_LOCKVARINIT(bufferLock);
@@ -73,6 +84,22 @@ void Protocol76::reinitializeProtocol()
 	OutputBuffer.Reset();
 	knownPlayers.clear();
 }
+
+#ifdef TLM_SKULLS_PARTY
+unsigned char Protocol76::getDisplayedSkull(const Player *playa) const
+{
+	if(!playa)
+		return SKULL_NONE;
+
+	if(playa == player)
+		return playa->skullType;
+
+	if(player && player->hasYellowSkull(playa) && playa->skullType != SKULL_RED)
+		return SKULL_YELLOW;
+
+	return playa->skullType;
+}
+#endif //TLM_SKULLS_PARTY
 
 #ifdef YUR_LOGIN_QUEUE
 bool Protocol76::ConnectPlayer(int* placeInQueue)
@@ -2784,8 +2811,8 @@ void Protocol76::AddCreature(NetworkMessage &msg,const Creature *creature, bool 
 	std::vector<Player*>::iterator invited = std::find(player->invitedplayers.begin(), player->invitedplayers.end(), target);
 	std::vector<Player*>::iterator inviter = std::find(player->inviterplayers.begin(), player->inviterplayers.end(), target);
 
-	if(target && target->skullType == SKULL_NONE && target->party != 0 && player->party == target->party)
-		msg.AddByte(2);
+	if(target)
+		msg.AddByte(getDisplayedSkull(target));
 	else
 		msg.AddByte(creature->skullType);
 
@@ -3104,7 +3131,11 @@ void Protocol76::sendSkull(const Creature *creature)
   NetworkMessage msg;
   msg.AddByte(0x90);
   msg.AddU32(creature->getID());
-  msg.AddByte(creature->skullType);
+  const Player* skullPlayer = dynamic_cast<const Player*>(creature);
+  if(skullPlayer)
+	msg.AddByte(getDisplayedSkull(skullPlayer));
+  else
+	msg.AddByte(creature->skullType);
   WriteBuffer(msg);
 }
 
@@ -3117,13 +3148,10 @@ void Protocol76::sendPartyIcons(const Player *playa, int icontype, bool skull, b
   WriteBuffer(msg);
   msg.Reset();
   if(skull || removeskull){
-  msg.AddByte(0x90);
-  msg.AddU32(playa->getID());
-  if(skull)
-  msg.AddByte(2);
-  if(removeskull)
-  msg.AddByte(0);
-  WriteBuffer(msg);
+	msg.AddByte(0x90);
+	msg.AddU32(playa->getID());
+	msg.AddByte(getDisplayedSkull(playa));
+	WriteBuffer(msg);
   }
 }
 
@@ -3134,6 +3162,8 @@ void Protocol76::parseInviteParty(NetworkMessage &msg)
 	Player* target = dynamic_cast<Player*>(creature);
 	if (!target)
 		return;
+	if (target == player)
+		return;
 
 	if (target->party != 0)
 	{
@@ -3143,7 +3173,23 @@ void Protocol76::parseInviteParty(NetworkMessage &msg)
 		return;
 	}
 
-	player->party = player->getID();
+	if(player->party != 0 && player->party != player->getID())
+	{
+		player->sendTextMessage(MSG_INFO, "Only the party leader can invite players.");
+		return;
+	}
+
+	if(std::find(player->invitedplayers.begin(), player->invitedplayers.end(), target) != player->invitedplayers.end())
+	{
+		std::stringstream bericht;
+		bericht << target->getName() << " has already been invited.";
+		player->sendTextMessage(MSG_INFO, bericht.str().c_str());
+		return;
+	}
+
+	if(player->party == 0)
+		player->party = player->getID();
+
 	target->inviterplayers.push_back(player);
 	player->invitedplayers.push_back(target);
 
@@ -3158,11 +3204,9 @@ void Protocol76::parseInviteParty(NetworkMessage &msg)
 		bericht2 << player->getName() <<" invites you to her party.";}
 
 	target->sendTextMessage(MSG_INFO, bericht2.str().c_str());
+	sendPartyIcons(player, 4, false, false);
+	sendPartyIcons(target, 1, false, false);
 	target->onPartyIcons(player, 2, false, false);
-	sendPartyIcons(player, 1, true, false);
-	sendPartyIcons(player, 4, true, false);
-	sendPartyIcons(target, 2, false, false);
-	target->onPartyIcons(player, 1, false, false);
 }
 
 void Protocol76::parseRevokeParty(NetworkMessage &msg)
@@ -3174,8 +3218,11 @@ void Protocol76::parseRevokeParty(NetworkMessage &msg)
 		return;
 
 	std::vector<Player*>::iterator invited = std::find(player->invitedplayers.begin(), player->invitedplayers.end(), target);
-	if(invited != player->invitedplayers.end())
-		player->invitedplayers.erase(invited);
+	if(invited == player->invitedplayers.end())
+		return;
+
+	player->invitedplayers.erase(invited);
+	erasePlayerRef(target->inviterplayers, player);
 
 	std::stringstream bericht1;
 	bericht1 << "Invitation for " << target->getName() << " has been revoked.";
@@ -3187,6 +3234,22 @@ void Protocol76::parseRevokeParty(NetworkMessage &msg)
 
 	target->onPartyIcons(player, 0, false, false);
 	sendPartyIcons(target, 0, false, false);
+
+	bool hasMembers = false;
+	for(AutoList<Player>::listiterator it = Player::listPlayer.list.begin(); it != Player::listPlayer.list.end(); ++it)
+	{
+		if((*it).second != player && (*it).second->party == player->party)
+		{
+			hasMembers = true;
+			break;
+		}
+	}
+
+	if(player->party == player->getID() && player->invitedplayers.empty() && !hasMembers)
+	{
+		player->party = 0;
+		sendPartyIcons(player, 0, false, false);
+	}
 }
 
 void Protocol76::parseJoinParty(NetworkMessage &msg)
@@ -3196,13 +3259,30 @@ void Protocol76::parseJoinParty(NetworkMessage &msg)
 	Player* target = dynamic_cast<Player*>(creature);
 	if (!target)
 		return;
+	if (target == player || player->party != 0 || target->party == 0)
+		return;
 
-	player->party = target->party;
 	std::vector<Player*>::iterator invited = std::find(target->invitedplayers.begin(), target->invitedplayers.end(), player);
-	if(invited != target->invitedplayers.end())
-		target->invitedplayers.erase(invited);
+	if(invited == target->invitedplayers.end())
+	{
+		player->sendTextMessage(MSG_INFO, "You have not been invited to that party.");
+		return;
+	}
+
+	target->invitedplayers.erase(invited);
+
+	for(std::vector<Player*>::iterator it = player->inviterplayers.begin(); it != player->inviterplayers.end(); ++it)
+	{
+		Player* inviter = *it;
+		if(inviter == target)
+			continue;
+		erasePlayerRef(inviter->invitedplayers, player);
+		player->onPartyIcons(inviter, 0, false, false);
+		inviter->onPartyIcons(player, 0, false, false);
+	}
 
 	player->inviterplayers.clear();
+	player->party = target->party;
 	std::stringstream bericht1;
 	bericht1 <<  "You have joined "<< target->getName() << "'s party.";
 	player->sendTextMessage(MSG_INFO, bericht1.str().c_str());
@@ -3234,6 +3314,8 @@ void Protocol76::parsePassLeadership(NetworkMessage &msg)
 	Creature* creature = game->getCreatureByID(creatureid);
 	Player* target = dynamic_cast<Player*>(creature);
 	if (!target)
+		return;
+	if(target->party != player->party || player->party == 0)
 		return;
 
 	target->sendTextMessage(MSG_INFO, "You are now leader of your party.");

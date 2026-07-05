@@ -29,6 +29,14 @@
 extern Game g_game;
 extern LuaScript g_config;
 
+static bool isHydraMonster(const Creature* target)
+{
+	const Monster* monster = dynamic_cast<const Monster*>(target);
+	if(!monster)
+		return false;
+	return monster->getName().find("Hydra") != std::string::npos;
+}
+
 MagicEffectClass::MagicEffectClass()
 {
 	animationColor = 0;
@@ -262,6 +270,8 @@ int64_t MagicEffectTargetCreatureCondition::getDamage(Creature *target, const Cr
 
 		if(!offensive)
 			damage = -damage;
+		else if(attackType == ATTACK_ENERGY && damage > 0 && isHydraMonster(target))
+			damage = damage / 2;
 
 		return damage;
 	}

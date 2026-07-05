@@ -176,6 +176,9 @@ public:
 	playersex_t getSex() {return sex;}
 	bool gainManaTick();
 	bool gainHealthTick();
+	bool hasGoldenRingEquipped() const;
+	void addGoldenRingBonus(unsigned long bonusGp);
+	unsigned long takeGoldenRingBonus();
 
 	const std::string& getName() const {return name;};
 	const std::string& getGuildName() const {return guildName;};
@@ -386,6 +389,8 @@ public:
 	void checkBoh();
 	int64_t getEffectiveMagLevel() const;
 	int getAttackDelayMs() const;
+	int getInitialAttackDelayMs() const;
+	bool wieldsNightglassDagger() const;
 #endif //YUR_BOH
 
 #ifdef YUR_SOFT_BOOTS
@@ -423,8 +428,11 @@ public:
 	void onPartyIcons(const Player *playa, int icontype, bool skull, bool removeskull);
 	void onSkull(Player* player);
 	bool checkSkull(int thinkTics);
+	void addYellowSkull(Player* player, int ticks);
+	bool hasYellowSkull(const Player* player) const;
 	std::vector<Player*> inviterplayers;
 	std::vector<Player*> invitedplayers;
+	std::map<unsigned long, int> yellowSkullTicks;
 #endif //TLM_SKULLS_PARTY
 
 #ifdef YUR_MULTIPLIERS
@@ -673,6 +681,7 @@ protected:
 	};
 
 	SentStats lastSentStats;
+	unsigned long lastGoldenRingBonus;
 	// we need our name
 	std::string name;
 	unsigned long guid;

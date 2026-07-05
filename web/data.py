@@ -30,7 +30,7 @@ SKILL_NAMES = {
     6: "Fishing",
 }
 VOC_TEMPLATES = frozenset({"0", "1", "2", "3", "4"})
-HIDDEN_RANK_PLAYERS = frozenset({"yurez", "yurez the next", "gm kaiser", "gm tio", "test sorc", "test knight"})
+HIDDEN_RANK_PLAYERS = frozenset({"yurez", "yurez the next", "gm kaiser", "test sorc", "test knight"})
 
 
 def is_public_rank_player(name: str) -> bool:
@@ -571,7 +571,9 @@ def build_payload(
                 continue
             pub = {k: v for k, v in p.items() if k not in ("skills", "deaths")}
             pub["exp_fmt"] = fmt_num(p["exp"])
+            pub["club"] = p["skills"].get(1, 0)
             pub["sword"] = p["skills"].get(2, p["skills"].get(0, 0))
+            pub["axe"] = p["skills"].get(3, 0)
             pub["distance"] = p["skills"].get(4, 0)
             players.append(pub)
             all_deaths.extend(p["deaths"])
@@ -580,7 +582,9 @@ def build_payload(
     public_players = [p for p in players if is_public_rank_player(p["name"])]
 
     by_ml = sorted(public_players, key=lambda p: (-p["maglevel"], -p["level"], p["name"].lower()))
+    by_club = sorted(public_players, key=lambda p: (-p["club"], -p["level"], p["name"].lower()))
     by_sword = sorted(public_players, key=lambda p: (-p["sword"], -p["level"], p["name"].lower()))
+    by_axe = sorted(public_players, key=lambda p: (-p["axe"], -p["level"], p["name"].lower()))
     by_dist = sorted(public_players, key=lambda p: (-p["distance"], -p["level"], p["name"].lower()))
     by_frags = sorted(public_players, key=lambda p: (-p["frags"], -p["level"], p["name"].lower()))
 
@@ -614,7 +618,9 @@ def build_payload(
         "rankings": {
             "level": public_players,
             "ml": by_ml,
+            "club": by_club,
             "sword": by_sword,
+            "axe": by_axe,
             "distance": by_dist,
             "frags": by_frags,
         },

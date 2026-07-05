@@ -18,7 +18,7 @@ REGLAS
   Reportes · Avísa al staff en el juego si ves bots, MC o abusos
 
 RATES
-  Exp por nivel: 9-40 x5 | 41-70 x4 | 71-100 x3 | 101+ x2  |  Loot x3  |  Skills x4  |  ML x5  |  Regen comida x5
+  Exp por nivel: 9-40 x5 | 41-70 x4 | 71-100 x2 | 101+ x1  |  Loot x3  |  Skills x4  |  ML x3  |  Regen comida x5
 
 PREMIUM
   Donación voluntaria para apoyar el servidor
@@ -34,8 +34,9 @@ MUERTE
 
 PVP
   Mundo PvP con skulls  |  PZ lock 10 seg  |  !pz
+  Yellow skull personal: si un player te pega, lo ves yellow por 1 min y matarlo en esa ventana no da frag
   White skull: 1 min al pegar  |  15 min al matar
-  3 frags = red skull (6 h)  |  6 frags = ban
+  3 frags = red skull (6 h)  |  10 frags = ban
   1 frag cada 5 h  |  !frags
   Matar jugador: obtienes 50% de la exp que perdió (según tu daño)
 
@@ -59,7 +60,9 @@ CUSTOM
   Seller: mana/life fluid, rope, shovel, backpack
   Parived: compra gemas y diamantes (say gems)
   Tonka (1 piso arriba de Parived): 20 small → 1 big (say exchange)
+  Golden ring (2179) equipado en ring: +20% oro de monstruos
   Golden amulet (2130) equipado: el oro del botín va directo al banco al matar (sin abrir cuerpo)
+  Ring + amulet: el ring suma el bonus primero y el amulet deposita ese total al banco
   Imbuements (Use gema con item equipado; el imbue queda en el item si lo pierdes):
     Yellow gem → botas: +10 haste c/u, max 3 (BOH suma)
     Violet gem → wand/rod: +1 ML c/u, max 4

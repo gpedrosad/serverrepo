@@ -62,16 +62,17 @@ El caso **más frecuente en jul 2026** es **cuelgue**: el proceso vive, el puert
 
 ## 4. Mapa de documentación (leer según el problema)
 
-| Archivo | Cuándo leerlo |
-|---------|----------------|
-| **[LEERCODEX.md](LEERCODEX.md)** (este) | Entrada rápida para IA |
-| [docs/PREVENT_OT_HANGS.md](docs/PREVENT_OT_HANGS.md) | Cuelgues, watchdog, recuperación |
-| [docs/SOCKET_DEBUG_LOGGING.md](docs/SOCKET_DEBUG_LOGGING.md) | Logs `[socket]`, `YUROTS_SOCKET_DEBUG`, incidente jul 2026 |
-| [docs/FIX_OT_STABILITY_KICKS_AND_HANG.md](docs/FIX_OT_STABILITY_KICKS_AND_HANG.md) | Fixes históricos de sockets (código) |
-| [docs/CRASH_DIAGNOSTICS.md](docs/CRASH_DIAGNOSTICS.md) | Core dumps, `crash-*.log`, `snapshot-*.txt` |
-| [scripts/README-DEPLOY-VPS.md](scripts/README-DEPLOY-VPS.md) | Deploy seguro, backups, comandos prohibidos |
-| [docs/PROYECTO.md](docs/PROYECTO.md) | Arquitectura Mac / GitHub / VPS |
-| [docs/CAMBIAR-MAPA.md](docs/CAMBIAR-MAPA.md) | Cambiar `.otbm`, casas, spawns |
+Para el índice completo y actualizado de toda la documentación, ver **[docs/INDEX.md](docs/INDEX.md)**.
+
+### Top 5 documentos por problema
+
+| Problema | Documento |
+|----------|-----------|
+| **Server se cayó / cuelgue** | [docs/systems/PREVENT_OT_HANGS.md](docs/systems/PREVENT_OT_HANGS.md) |
+| **Crash real / SIGSEGV** | [docs/systems/CRASH_DIAGNOSTICS.md](docs/systems/CRASH_DIAGNOSTICS.md) |
+| **Sos un agente IA** | [AGENTS.md](AGENTS.md) (raíz) |
+| **Deploy al VPS** | [scripts/README-DEPLOY-VPS.md](scripts/README-DEPLOY-VPS.md) (lectura **OBLIGATORIA**) |
+| **Arquitectura / data sagrada** | [docs/PROYECTO.md](docs/PROYECTO.md) |
 
 ---
 
@@ -176,7 +177,7 @@ ss -tan state close-wait | grep 7171
 | Socket debug | **`YUROTS_SOCKET_DEBUG=1`** — commit `ec9b0dd` en `docker-compose.prod.yml` |
 | Verificar debug | `docker exec yurots printenv YUROTS_SOCKET_DEBUG` → `1` |
 
-**Desactivar debug** cuando termine la investigación: quitar `environment` en `docker-compose.prod.yml`, push, `docker compose -f docker-compose.prod.yml up -d yurots`. Ver [docs/SOCKET_DEBUG_LOGGING.md](docs/SOCKET_DEBUG_LOGGING.md).
+**Desactivar debug** cuando termine la investigación: quitar `environment` en `docker-compose.prod.yml`, push, `docker compose -f docker-compose.prod.yml up -d yurots`. Ver [docs/systems/SOCKET_DEBUG_LOGGING.md](docs/systems/SOCKET_DEBUG_LOGGING.md).
 
 ---
 
@@ -238,7 +239,7 @@ ls -lt cores/ 2>/dev/null | head -5
 ./scripts/extract-core.sh
 ```
 
-Ver [docs/CRASH_DIAGNOSTICS.md](docs/CRASH_DIAGNOSTICS.md).
+Ver [docs/systems/CRASH_DIAGNOSTICS.md](docs/systems/CRASH_DIAGNOSTICS.md).
 
 ---
 
@@ -369,7 +370,7 @@ git fetch --tags
 DEPLOY_I_READ_README=yes ./scripts/rollback-ot-send-blocking-fix.sh
 ```
 
-Ver [docs/OT_HANG_ROOT_CAUSE_SEND_BLOCKING.md](docs/OT_HANG_ROOT_CAUSE_SEND_BLOCKING.md).
+Ver [docs/systems/OT_HANG_ROOT_CAUSE_SEND_BLOCKING.md](docs/systems/OT_HANG_ROOT_CAUSE_SEND_BLOCKING.md).
 
 ---
 

@@ -41,6 +41,63 @@ static bool isCoinLootItem(unsigned short id)
 	return id == ITEM_COINS_GOLD || id == ITEM_COINS_PLATINUM || id == ITEM_COINS_CRYSTAL;
 }
 
+static unsigned long countCoinWorthInContainer(const Container* container)
+{
+	if(!container)
+		return 0;
+
+	unsigned long total = 0;
+	for(ContainerList::const_iterator cit = container->getItems(); cit != container->getEnd(); ++cit) {
+		const Item* item = *cit;
+		if(!item)
+			continue;
+
+		const Container* sub = dynamic_cast<const Container*>(item);
+		if(sub) {
+			total += countCoinWorthInContainer(sub);
+			continue;
+		}
+
+		if(isCoinLootItem(item->getID()))
+			total += item->getWorth();
+	}
+
+	return total;
+}
+
+static void addCoinStackToContainer(Container* container, unsigned short itemId, unsigned long count)
+{
+	while(container && count > 0) {
+		const unsigned short chunk = (unsigned short)std::min(count, 100UL);
+		Item* coinStack = Item::CreateItem(itemId, chunk);
+		if(!container->addItem(coinStack)) {
+			coinStack->releaseThing();
+			return;
+		}
+
+		count -= chunk;
+	}
+}
+
+static void addCoinWorthToContainer(Container* container, unsigned long amount)
+{
+	if(!container || amount == 0)
+		return;
+
+	const unsigned long crystalCount = amount / 10000;
+	amount %= 10000;
+
+	const unsigned long platinumCount = amount / 100;
+	amount %= 100;
+
+	if(crystalCount > 0)
+		addCoinStackToContainer(container, ITEM_COINS_CRYSTAL, crystalCount);
+	if(platinumCount > 0)
+		addCoinStackToContainer(container, ITEM_COINS_PLATINUM, platinumCount);
+	if(amount > 0)
+		addCoinStackToContainer(container, ITEM_COINS_GOLD, amount);
+}
+
 void MonsterType::reset()
 {
 	armor = 0;
@@ -248,10 +305,22 @@ void MonsterType::createLoot(Container* corpse, Player* killer)
 		}
 		corpse->addItem(Item::CreateItem(ITEM_COINS_PLATINUM, (unsigned short)platCount));
 	}
+
+	if(killer && killer->hasGoldenRingEquipped()) {
+		const unsigned long totalCoinWorth = countCoinWorthInContainer(corpse);
+		const unsigned long bonusCoinWorth = totalCoinWorth / 5;
+		if(bonusCoinWorth > 0) {
+			addCoinWorthToContainer(corpse, bonusCoinWorth);
+			killer->addGoldenRingBonus(bonusCoinWorth);
+		}
+	}
 }
 
 Item* MonsterType::createLootItem(const LootBlock& lootBlock, bool premiumLoot)
 {
+	if(lootBlock.id == ITEM_GOLDEN_RING)
+		return NULL;
+
 	Item* tmpItem = NULL;
 #ifdef YUR_MULTIPLIERS
 	unsigned long chance = lootBlock.chance1;

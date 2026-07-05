@@ -23,13 +23,6 @@
 #include "player.h"
 #include "npc.h"
 #include "monster.h"
-#include "const76.h"
-#include "scheduler.h"
-
-#include <boost/bind.hpp>
-
-static const int SPAWN_ANIM_STEP_MS = 800;
-static const int SPAWN_ANIM_STEPS = 3;
 
 #ifdef ENABLESQLMAPSUPPORT
 #include <mysql++.h>
@@ -455,7 +448,6 @@ bool Spawn::addMonster(std::string name, Direction dir, int x, int y, int spawnt
 	si.pos.z = centerPos.z;
 	si.spawntime = spawntime;
 	si.lastspawn = 0;
-	si.pendingAnimatedSpawn = false;
 
 	unsigned long spawnid = (int)spawnmap.size() + 1;
 	spawnmap[spawnid] = si;
@@ -495,78 +487,6 @@ bool Spawn::isInSpawnRange(const Position &p)
 	return false;
 }
 
-void Spawn::sendSpawnAppearEffects(const Position &pos, int step)
-{
-	unsigned char effect = NM_ME_PUFF;
-	switch(step) {
-		case 0:
-			effect = NM_ME_YELLOW_RINGS;
-			break;
-		case 1:
-			effect = NM_ME_MAGIC_ENERGIE;
-			break;
-		case 2:
-			effect = NM_ME_PUFF;
-			break;
-		default:
-			break;
-	}
-
-	SpectatorVec list;
-	game->getSpectators(Range(pos, true), list);
-
-	for(SpectatorVec::iterator it = list.begin(); it != list.end(); ++it) {
-		Player *player = dynamic_cast<Player*>(*it);
-		if(player) {
-			player->sendMagicEffect(pos, effect);
-		}
-	}
-}
-
-void Spawn::beginAnimatedRespawn(unsigned long spawnid)
-{
-	SpawnMap::iterator sit = spawnmap.find(spawnid);
-	if(sit == spawnmap.end()) {
-		return;
-	}
-
-	if(spawnedmap.count(spawnid) != 0) {
-		return;
-	}
-
-	sit->second.pendingAnimatedSpawn = true;
-	sendSpawnAppearEffects(sit->second.pos, 0);
-	game->addEvent(makeTask(SPAWN_ANIM_STEP_MS,
-		boost::bind(&Game::animatedSpawnStep, game, this, spawnid, 1)));
-}
-
-void Spawn::runAnimatedRespawnStep(unsigned long spawnid, int step)
-{
-	SpawnMap::iterator sit = spawnmap.find(spawnid);
-	if(sit == spawnmap.end()) {
-		return;
-	}
-
-	if(!sit->second.pendingAnimatedSpawn) {
-		return;
-	}
-
-	if(spawnedmap.count(spawnid) != 0) {
-		sit->second.pendingAnimatedSpawn = false;
-		return;
-	}
-
-	if(step < SPAWN_ANIM_STEPS) {
-		sendSpawnAppearEffects(sit->second.pos, step);
-		game->addEvent(makeTask(SPAWN_ANIM_STEP_MS,
-			boost::bind(&Game::animatedSpawnStep, game, this, spawnid, step + 1)));
-		return;
-	}
-
-	sit->second.pendingAnimatedSpawn = false;
-	respawn(spawnid, sit->second.pos, sit->second.name, sit->second.dir);
-}
-
 void Spawn::idle(int t)
 {
 	SpawnedMap::iterator it;
@@ -590,32 +510,32 @@ void Spawn::idle(int t)
 	for(SpawnMap::iterator sit = spawnmap.begin(); sit != spawnmap.end(); ++sit) {
 
 		if(spawnedmap.count(sit->first) == 0) {
-			if(sit->second.pendingAnimatedSpawn) {
-				continue;
-			}
-
 			if((OTSYS_TIME() - sit->second.lastspawn) >= sit->second.spawntime) {
+
 				SpectatorVec list;
 				SpectatorVec::iterator it;
 
 				game->getSpectators(Range(sit->second.pos, true), list);
 
-				bool playerWatching = false;
+				bool playerFound = false;
 				for(it = list.begin(); it != list.end(); ++it) {
 					Player *player = dynamic_cast<Player*>(*it);
 
+					// Gameplay change 2026-07-03:
+					// - if a player is near but the spawn tile is not on screen, do not block
+					// - if the tile is on screen, keep the spawn pending instead of resetting the timer
 					if(player && player->access < g_config.ACCESS_PROTECT &&
 						player->CanSee(sit->second.pos.x, sit->second.pos.y, sit->second.pos.z)) {
-						playerWatching = true;
+						playerFound = true;
 						break;
 					}
 				}
 
-				if(playerWatching) {
-					beginAnimatedRespawn(sit->first);
-				} else {
-					respawn(sit->first, sit->second.pos, sit->second.name, sit->second.dir);
+				if(playerFound) {
+					continue;
 				}
+
+				respawn(sit->first, sit->second.pos, sit->second.name, sit->second.dir);
 			}
 		}
 	}

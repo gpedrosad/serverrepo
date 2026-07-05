@@ -117,6 +117,17 @@
       border-color: rgba(96, 165, 250, 0.55);
       background: rgba(59, 130, 246, 0.22);
     }
+    .site-announcement {
+      border: 1px solid rgba(96, 165, 250, 0.28);
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.14), rgba(16, 185, 129, 0.06) 60%, rgba(255,255,255,.02));
+      box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.06);
+    }
+    .site-announcement a {
+      color: #93c5fd;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .site-announcement a:hover { color: #bfdbfe; }
     .chip-accent-premium {
       color: #fcd34d;
       border-color: rgba(251, 191, 36, 0.4);
@@ -367,6 +378,23 @@
 
   <!-- LIVE -->
   <section id="panel-live" class="panel active space-y-4">
+    <div class="site-announcement anim-in rounded-lg px-3 py-3 sm:px-4" style="--d:0ms">
+      <p class="text-[10px] font-medium uppercase tracking-widest text-sky-300/90">Cliente actualizado · julio 2026</p>
+      <p class="mt-1.5 text-[12px] leading-relaxed text-zinc-200">
+        Nuevo cliente oficial con <strong class="font-medium text-zinc-100">items custom</strong> incluidos.
+      </p>
+      <p class="mt-2 text-[11px] leading-relaxed text-zinc-400">
+        <span class="text-zinc-300">Instalación nueva:</span> bajá el ZIP, descomprimí y ejecutá el lanzador.
+        <span class="text-zinc-300">¿Ya tenés el cliente?</span> en la pestaña
+        <button type="button" class="text-sky-300/90 underline underline-offset-2 hover:text-sky-200" data-goto="download">Cliente</button>
+        usá la opción <span class="text-zinc-300">solo sprites</span>.
+      </p>
+      <div class="mt-3 flex flex-wrap gap-2">
+        <a href="/downloads/Retro76-Windows.zip" class="inline-flex items-center rounded-md border border-sky-500/25 bg-sky-500/10 px-2.5 py-1.5 text-[11px] font-medium text-sky-100 no-underline hover:border-sky-400/40 hover:bg-sky-500/15">ZIP Windows</a>
+        <a href="/downloads/Retro76-Mac.zip" class="inline-flex items-center rounded-md border border-sky-500/25 bg-sky-500/10 px-2.5 py-1.5 text-[11px] font-medium text-sky-100 no-underline hover:border-sky-400/40 hover:bg-sky-500/15">ZIP macOS</a>
+        <a href="/downloads/Retro76-Sprites-760.zip" class="inline-flex items-center rounded-md border border-emerald-500/25 bg-emerald-500/10 px-2.5 py-1.5 text-[11px] font-medium text-emerald-100 no-underline hover:border-emerald-400/40 hover:bg-emerald-500/15">Solo sprites</a>
+      </div>
+    </div>
     <div id="stats" class="grid grid-cols-3 gap-2"></div>
     <div id="snapshots" class="grid grid-cols-2 gap-2 sm:grid-cols-4"></div>
     <div>
@@ -432,13 +460,29 @@
   </section>
 
   <!-- DOWNLOAD -->
-  <section id="panel-download" class="panel space-y-3">
-    <div class="anim-in rounded-lg border border-sky-500/15 bg-sky-500/[0.04] px-3 py-2.5">
-      <p class="text-[11px] leading-relaxed text-zinc-300">
-        Cliente <span class="text-sky-200/90">OTClient</span> para Retro76. Descarga, descomprime y conéctate con tu cuenta.
-      </p>
+  <section id="panel-download" class="panel space-y-4">
+    <div>
+      <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">Opción 1 · Cliente completo (ZIP)</p>
+      <div class="anim-in rounded-lg border border-sky-500/15 bg-sky-500/[0.04] px-3 py-2.5 mb-2" style="--d:0ms">
+        <p class="text-[11px] leading-relaxed text-zinc-300">
+          Para <span class="text-zinc-100">instalación nueva</span> o si no tenés el cliente.
+          Descargá, <span class="text-zinc-100">descomprimí</span> y ejecutá
+          <span class="text-zinc-400">Iniciar Cliente.bat</span> / <span class="text-zinc-400">.command</span>.
+        </p>
+      </div>
+      <div id="download-list" class="grid grid-cols-1 gap-2 sm:grid-cols-2"></div>
     </div>
-    <div id="download-list" class="grid grid-cols-1 gap-2 sm:grid-cols-2"></div>
+    <div>
+      <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">Opción 2 · Solo sprites (alternativa)</p>
+      <div class="anim-in rounded-lg border border-emerald-500/15 bg-emerald-500/[0.04] px-3 py-2.5 mb-2" style="--d:45ms">
+        <p class="text-[11px] leading-relaxed text-zinc-300">
+          Si <span class="text-zinc-100">ya tenés el cliente descomprimido</span>, bajá solo
+          <span class="text-zinc-400">Tibia.dat</span> + <span class="text-zinc-400">Tibia.spr</span>
+          (~16 MB) y copialos en <span class="text-zinc-500">data/things/760/</span> de tu carpeta.
+        </p>
+      </div>
+      <div id="download-patch-list" class="grid grid-cols-1 gap-2"></div>
+    </div>
     <p class="text-center text-[10px] text-zinc-600">Servidor: <span id="download-connect" class="text-zinc-500">—</span></p>
   </section>
 
@@ -619,17 +663,41 @@ const NAV = [
 
 // Archivos en web/downloads/ en el servidor
 const CLIENT_DOWNLOADS = {
-  windows: { file: 'Retro76-Windows.zip', label: 'Windows', ready: true, hint: 'Descomprimir → doble clic en Iniciar Cliente.bat' },
-  mac: { file: 'Retro76-Mac.zip', label: 'macOS', ready: true, hint: 'Descomprimir → doble clic en Iniciar Cliente.command' },
+  windows: { file: 'Retro76-Windows.zip', label: 'Windows', ready: true, hint: 'ZIP completo · descomprimir y ejecutar .bat' },
+  mac: { file: 'Retro76-Mac.zip', label: 'macOS', ready: true, hint: 'ZIP completo · descomprimir y ejecutar .command' },
+};
+const CLIENT_PATCH = {
+  zip: {
+    file: 'Retro76-Sprites-760.zip',
+    label: 'Sprites 7.6 (ZIP)',
+    ready: true,
+    hint: 'Solo Tibia.dat + Tibia.spr · copiar a data/things/760/',
+  },
+  dat: {
+    file: null,
+    url: '/updater/files/data/things/760/Tibia.dat',
+    label: 'Tibia.dat',
+    ready: true,
+    hint: 'Archivo suelto · reemplazar en data/things/760/',
+  },
+  spr: {
+    file: null,
+    url: '/updater/files/data/things/760/Tibia.spr',
+    label: 'Tibia.spr',
+    ready: true,
+    hint: 'Archivo suelto · reemplazar en data/things/760/',
+  },
 };
 const RANK_META = {
   level: { label: 'Lvl', cols: ['level','exp_fmt','maglevel','vocation_short','lastlogin_rel'] },
   ml: { label: 'ML', cols: ['maglevel','level','vocation_short','lastlogin_rel'] },
+  club: { label: 'Club', cols: ['club','level','vocation_short','lastlogin_rel'] },
   sword: { label: 'Swd', cols: ['sword','level','vocation_short','lastlogin_rel'] },
+  axe: { label: 'Axe', cols: ['axe','level','vocation_short','lastlogin_rel'] },
   distance: { label: 'Dist', cols: ['distance','level','vocation_short','lastlogin_rel'] },
   frags: { label: 'Frg', cols: ['frags','level','vocation_short','lastlogin_rel'] },
 };
-const COL_LABEL = { level:'Lvl', exp_fmt:'Exp', maglevel:'ML', lastlogin_rel:'Login', vocation_short:'Voc', sword:'Swd', distance:'Dist', frags:'Frg' };
+const COL_LABEL = { level:'Lvl', exp_fmt:'Exp', maglevel:'ML', lastlogin_rel:'Login', vocation_short:'Voc', club:'Club', sword:'Swd', axe:'Axe', distance:'Dist', frags:'Frg' };
 
 function gemImg(id, large, alt) {
   const tier = large ? 'large' : 'small';
@@ -684,14 +752,32 @@ const PREMIUM_PLANS = [
   { days: 14, label: '2 semanas', price: 6000, itemId: 2345, featured: true, save: 2000, id: '2345' },
 ];
 
+const DEFAULT_PREMIUM_ADDONS = [
+  { key: 'golden_amulet', itemId: 2130, price: 2000, label: 'Golden amulet', desc: 'El oro del botín va directo a tu cuenta bancaria.', image: '/assets/premium/2130-small.jpg', image2x: '/assets/premium/2130-small@2x.jpg' },
+  { key: 'golden_ring', itemId: 2179, price: 2000, label: 'Golden ring', desc: '+20% de oro de monstruos mientras lo llevas equipado.', image: '/assets/premium/2179-small.jpg', image2x: '/assets/premium/2179-small@2x.jpg' },
+  { key: 'experience_recovery_rune', itemId: 20131, price: 2500, label: 'Experience recovery rune', desc: 'Recupera 60-80% de la exp perdida en tu última muerte.', image: '/assets/premium/20131-small.png', image2x: '/assets/premium/20131-small@2x.png' },
+  { key: 'training_extension_rune', itemId: 20132, price: 1500, label: 'Training extension rune', desc: '+12 horas de training ese día (una vez por personaje).', image: '/assets/premium/20132-small.png', image2x: '/assets/premium/20132-small@2x.png' },
+];
+
 const premiumState = {
   config: null,
   step: 1,
   planId: null,
-  goldenAmulet: false,
+  addons: {
+    golden_amulet: false,
+    golden_ring: false,
+    experience_recovery_rune: false,
+    training_extension_rune: false,
+  },
   configLoading: false,
   checkoutOpen: false,
+  formTs: null,
 };
+
+function ensurePremiumFormTs() {
+  if (!premiumState.formTs) premiumState.formTs = Date.now() / 1000;
+  return premiumState.formTs;
+}
 
 function trackPremiumEvent(event, detail) {
   try {
@@ -706,6 +792,8 @@ function trackPremiumEvent(event, detail) {
 
 function openPremiumCheckout(planId) {
   premiumState.checkoutOpen = true;
+  premiumState.formTs = null;
+  clearPremiumAddons();
   if (planId) {
     premiumState.planId = String(planId);
     premiumState.step = 2;
@@ -759,15 +847,26 @@ function premiumItemImg(src, src2x, alt) {
   return `<img src="${esc(src)}"${s2} alt="${esc(alt)}" class="premium-item-img" width="32" height="32" loading="lazy">`;
 }
 
-function premiumPlanById(id) {
-  return (premiumState.config?.plans || PREMIUM_PLANS).find(p => String(p.id || p.itemId) === String(id));
+function getPremiumAddons() {
+  return (premiumState.config?.addons?.length ? premiumState.config.addons : DEFAULT_PREMIUM_ADDONS);
+}
+
+function clearPremiumAddons() {
+  for (const addon of getPremiumAddons()) premiumState.addons[addon.key] = false;
 }
 
 function premiumTotal() {
   const plan = premiumPlanById(premiumState.planId);
   if (!plan) return 0;
-  const addon = premiumState.config?.goldenAmulet;
-  return plan.price + (premiumState.goldenAmulet && addon ? addon.price : 0);
+  let extra = 0;
+  for (const addon of getPremiumAddons()) {
+    if (premiumState.addons[addon.key]) extra += addon.price;
+  }
+  return plan.price + extra;
+}
+
+function premiumPlanById(id) {
+  return (premiumState.config?.plans || PREMIUM_PLANS).find(p => String(p.id || p.itemId) === String(id));
 }
 
 function setPremiumStep(step) {
@@ -811,15 +910,29 @@ function getPremiumPlans() {
   });
 }
 
+function renderPremiumAddonRow(addon) {
+  const checked = !!premiumState.addons[addon.key];
+  return `
+    <label class="premium-addon ${checked ? 'selected' : ''} flex cursor-pointer items-start gap-3 rounded-lg px-3 py-3">
+      <input type="checkbox" class="premium-addon-check mt-1" data-addon="${esc(addon.key)}" ${checked ? 'checked' : ''}>
+      ${premiumItemImg(addon.image, addon.image2x, addon.label)}
+      <div class="min-w-0 flex-1">
+        <p class="text-[12px] font-medium text-zinc-100">${esc(addon.label)} <span class="text-amber-200/90">+${fmtPrice(addon.price)}</span></p>
+        <p class="mt-0.5 text-[10px] leading-relaxed text-zinc-500">${esc(addon.desc)}</p>
+      </div>
+    </label>`;
+}
+
+function selectedAddonsSummary() {
+  const out = {};
+  for (const addon of getPremiumAddons()) out[addon.key] = !!premiumState.addons[addon.key];
+  return out;
+}
+
 function renderPremiumCheckout() {
   const cfg = premiumState.config;
   const plans = getPremiumPlans();
-  const amulet = cfg?.goldenAmulet || {
-    itemId: 2130, price: 2000, label: 'Golden amulet',
-    desc: 'El oro del botín va directo a tu cuenta bancaria.',
-    image: '/assets/premium/2130-small.jpg',
-    image2x: '/assets/premium/2130-small@2x.jpg',
-  };
+  const addons = getPremiumAddons();
   const pay = cfg?.payment || {};
 
   document.getElementById('premium-step-1').innerHTML = `
@@ -856,19 +969,12 @@ function renderPremiumCheckout() {
 
   const sel = premiumPlanById(premiumState.planId);
   document.getElementById('premium-step-2').innerHTML = `
-    <p class="text-[11px] text-zinc-400">Opcional: Golden Amulet por ${fmtPrice(amulet.price)}. Puedes saltarlo si no lo necesitas.</p>
+    <p class="text-[11px] text-zinc-400">Extras opcionales. Puedes elegir uno, varios o ninguno.</p>
     ${sel ? `<p class="text-[10px] text-zinc-600">Plan elegido: <span class="text-amber-200/90">${esc(sel.label)}</span> · ${fmtPrice(sel.price)}</p>` : ''}
-    <label class="premium-addon ${premiumState.goldenAmulet ? 'selected' : ''} flex cursor-pointer items-start gap-3 rounded-lg px-3 py-3">
-      <input type="checkbox" id="premium-amulet-check" class="mt-1" ${premiumState.goldenAmulet ? 'checked' : ''}>
-      ${premiumItemImg(amulet.image, amulet.image2x, amulet.label)}
-      <div class="min-w-0 flex-1">
-        <p class="text-[12px] font-medium text-zinc-100">${esc(amulet.label)} <span class="text-amber-200/90">+${fmtPrice(amulet.price)}</span></p>
-        <p class="mt-0.5 text-[10px] leading-relaxed text-zinc-500">${esc(amulet.desc)}</p>
-      </div>
-    </label>
+    <div class="space-y-2">${addons.map(renderPremiumAddonRow).join('')}</div>
     <div class="flex flex-wrap gap-2">
       <button type="button" id="premium-back-2" class="premium-btn-secondary">Volver</button>
-      <button type="button" id="premium-skip-2" class="premium-btn-secondary">Sin amulet</button>
+      <button type="button" id="premium-skip-2" class="premium-btn-secondary">Sin extras</button>
       <button type="button" id="premium-next-2" class="premium-btn-primary flex-1">
         Ir al pago · ${fmtPrice(premiumTotal())}
       </button>
@@ -886,8 +992,8 @@ function renderPremiumCheckout() {
     </div>
     <form id="premium-order-form" class="space-y-2" enctype="multipart/form-data">
       <input type="hidden" name="plan_id" value="${esc(premiumState.planId || '')}">
-      <input type="hidden" name="golden_amulet" value="${premiumState.goldenAmulet ? '1' : '0'}">
-      <input type="hidden" name="form_ts" id="premium-form-ts" value="">
+      ${addons.map(a => `<input type="hidden" name="${esc(a.key)}" value="${premiumState.addons[a.key] ? '1' : '0'}">`).join('\n      ')}
+      <input type="hidden" name="form_ts" id="premium-form-ts" value="${premiumState.step === 3 ? ensurePremiumFormTs() : ''}">
       <label class="hidden" aria-hidden="true"><input type="text" name="company" tabindex="-1" autocomplete="off"></label>
       <label class="block">
         <span class="mb-1 block text-[10px] text-zinc-500">Nombre del personaje</span>
@@ -952,29 +1058,27 @@ function bindPremiumCheckoutEvents() {
       return;
     }
     if (e.target.id === 'premium-skip-2') {
-      premiumState.goldenAmulet = false;
+      clearPremiumAddons();
       premiumState.step = 3;
+      ensurePremiumFormTs();
       trackPremiumEvent('step3', {
         plan_id: premiumState.planId,
-        golden_amulet: false,
+        addons: selectedAddonsSummary(),
         total: premiumTotal(),
-        skipped_amulet: true,
+        skipped_addons: true,
       });
       renderPremiumCheckout();
-      const ts = document.getElementById('premium-form-ts');
-      if (ts) ts.value = String(Date.now() / 1000);
       return;
     }
     if (e.target.id === 'premium-next-2') {
       premiumState.step = 3;
+      ensurePremiumFormTs();
       trackPremiumEvent('step3', {
         plan_id: premiumState.planId,
-        golden_amulet: premiumState.goldenAmulet,
+        addons: selectedAddonsSummary(),
         total: premiumTotal(),
       });
       renderPremiumCheckout();
-      const ts = document.getElementById('premium-form-ts');
-      if (ts) ts.value = String(Date.now() / 1000);
       return;
     }
     if (e.target.id === 'premium-back-3') {
@@ -984,14 +1088,15 @@ function bindPremiumCheckoutEvents() {
   });
 
   root.addEventListener('change', e => {
-    if (e.target.id === 'premium-amulet-check') {
-      premiumState.goldenAmulet = e.target.checked;
-      trackPremiumEvent('amulet_toggle', { enabled: premiumState.goldenAmulet, plan_id: premiumState.planId });
-      renderPremiumCheckout();
-      premiumState.step = 2;
-      setPremiumStep(2);
-      const chk = document.getElementById('premium-amulet-check');
-      if (chk) chk.checked = premiumState.goldenAmulet;
+    if (e.target.classList.contains('premium-addon-check')) {
+      const key = e.target.dataset.addon;
+      if (key && Object.prototype.hasOwnProperty.call(premiumState.addons, key)) {
+        premiumState.addons[key] = e.target.checked;
+        trackPremiumEvent('addon_toggle', { addon: key, enabled: premiumState.addons[key], plan_id: premiumState.planId });
+        renderPremiumCheckout();
+        premiumState.step = 2;
+        setPremiumStep(2);
+      }
     }
     if (e.target.name === 'receipt' && e.target.files?.length) {
       const f = e.target.files[0];
@@ -1013,16 +1118,18 @@ function bindPremiumCheckoutEvents() {
     btn.disabled = true;
     trackPremiumEvent('submit_click', {
       plan_id: premiumState.planId,
-      golden_amulet: premiumState.goldenAmulet,
+      addons: selectedAddonsSummary(),
       total: premiumTotal(),
       character_name_len: String(form.character_name?.value || '').trim().length,
       has_receipt: !!(form.receipt?.files?.length),
     });
     try {
       const fd = new FormData(form);
-      fd.set('golden_amulet', premiumState.goldenAmulet ? '1' : '0');
+      for (const addon of getPremiumAddons()) {
+        fd.set(addon.key, premiumState.addons[addon.key] ? '1' : '0');
+      }
       fd.set('plan_id', premiumState.planId || '');
-      if (!fd.get('form_ts')) fd.set('form_ts', String(Date.now() / 1000));
+      fd.set('form_ts', String(ensurePremiumFormTs()));
       const r = await fetch('/api/premium-order', { method: 'POST', body: fd });
       const d = await r.json();
       res.textContent = d.message || (d.ok ? 'Donación enviada.' : 'Error.');
@@ -1115,6 +1222,24 @@ async function loadRegisterChallenge() {
   }
 }
 
+function downloadCard(href, dl, icon, i, accent) {
+  const ready = dl.ready;
+  const accentClass = accent === 'patch' ? 'text-emerald-300/80' : 'text-sky-300/80';
+  const inner = `
+    <div class="flex items-center gap-3">
+      ${icon ? `<span class="text-zinc-200">${icon}</span>` : ''}
+      <div class="min-w-0 flex-1">
+        <p class="text-[11px] font-medium text-zinc-200">${esc(dl.label)}</p>
+        <p class="text-[10px] leading-relaxed text-zinc-600">${esc(dl.hint || '')}</p>
+      </div>
+      <span class="text-[10px] shrink-0 ${ready ? accentClass : 'text-zinc-600'}">${ready ? 'Descargar' : 'Próximamente'}</span>
+    </div>`;
+  if (ready) {
+    return `<a href="${esc(href)}" download class="dl-card anim-in block rounded-lg px-3 py-3" style="--d:${i * 45}ms">${inner}</a>`;
+  }
+  return `<div class="dl-card dl-disabled anim-in rounded-lg px-3 py-3" style="--d:${i * 45}ms" aria-disabled="true">${inner}</div>`;
+}
+
 function renderDownload(connect) {
   const addr = connect?.host && connect?.port ? `${connect.host}:${connect.port}` : '—';
   document.getElementById('download-connect').textContent = addr;
@@ -1124,21 +1249,18 @@ function renderDownload(connect) {
   ];
   document.getElementById('download-list').innerHTML = items.map((item, i) => {
     const dl = CLIENT_DOWNLOADS[item.key];
-    const href = `/downloads/${dl.file}`;
-    const ready = dl.ready;
-    const inner = `
-      <div class="flex items-center gap-3">
-        <span class="text-zinc-200">${item.icon}</span>
-        <div class="min-w-0 flex-1">
-          <p class="text-[11px] font-medium text-zinc-200">${esc(dl.label)}</p>
-          <p class="text-[10px] leading-relaxed text-zinc-600">${esc(dl.hint || 'ZIP · Tibia 7.60')}</p>
-        </div>
-        <span class="text-[10px] shrink-0 ${ready ? 'text-sky-300/80' : 'text-zinc-600'}">${ready ? 'Descargar' : 'Próximamente'}</span>
-      </div>`;
-    if (ready) {
-      return `<a href="${esc(href)}" download class="dl-card anim-in block rounded-lg px-3 py-3" style="--d:${i * 45}ms">${inner}</a>`;
-    }
-    return `<div class="dl-card dl-disabled anim-in rounded-lg px-3 py-3" style="--d:${i * 45}ms" aria-disabled="true">${inner}</div>`;
+    return downloadCard(`/downloads/${dl.file}`, dl, item.icon, i, 'full');
+  }).join('');
+
+  const patchItems = [
+    { key: 'zip', icon: '' },
+    { key: 'dat', icon: '' },
+    { key: 'spr', icon: '' },
+  ];
+  document.getElementById('download-patch-list').innerHTML = patchItems.map((item, i) => {
+    const dl = CLIENT_PATCH[item.key];
+    const href = dl.url || `/downloads/${dl.file}`;
+    return downloadCard(href, dl, item.icon, i + 2, 'patch');
   }).join('');
 }
 
@@ -1148,6 +1270,12 @@ async function probeDownloads() {
     try {
       const r = await fetch(`/downloads/${dl.file}`, { method: 'HEAD', cache: 'no-store' });
       if (r.ok) dl.ready = true;
+    } catch { /* sin archivo aún */ }
+  }
+  if (!CLIENT_PATCH.zip.ready) {
+    try {
+      const r = await fetch(`/downloads/${CLIENT_PATCH.zip.file}`, { method: 'HEAD', cache: 'no-store' });
+      if (r.ok) CLIENT_PATCH.zip.ready = true;
     } catch { /* sin archivo aún */ }
   }
   if (state.data) renderDownload(state.data.connect);
@@ -1165,13 +1293,18 @@ function renderStats(srv) {
 }
 
 function renderSnapshots(data) {
-  const top = data.rankings.level[0];
-  const ml = data.rankings.ml[0];
-  const death = data.deaths[0];
+  const r = data.rankings || {};
+  const top = r.level?.[0];
+  const ml = r.ml?.[0];
+  const topClub = r.club?.[0];
+  const topAxe = r.axe?.[0];
+  const death = data.deaths?.[0];
   const topFrag = (data.top_fraggers || [])[0];
   const items = [
     { k: 'Top lvl', v: top ? top.name : '—', s: top ? `L${top.level}` : '' },
     { k: 'Top ML', v: ml ? ml.name : '—', s: ml ? `ML ${ml.maglevel}` : '' },
+    { k: 'Top club', v: topClub ? topClub.name : '—', s: topClub ? `Club ${topClub.club}` : '' },
+    { k: 'Top axe', v: topAxe ? topAxe.name : '—', s: topAxe ? `Axe ${topAxe.axe}` : '' },
     { k: 'Muerte', v: death ? death.victim : '—', s: death ? death.killer : '' },
     { k: 'Top frag', v: topFrag ? topFrag.name : '—', s: topFrag ? `${topFrag.frags} fr` : '' },
   ];
@@ -1542,16 +1675,26 @@ async function refresh() {
     const r = await fetch('/api/data', { cache: 'no-store' });
     if (!r.ok) throw new Error('bad');
     state.data = await r.json();
-    renderAll();
   } catch {
     document.getElementById('meta-line').textContent = 'Sin conexión';
     document.getElementById('presence').textContent = '—';
+    return;
+  }
+  try {
+    renderAll();
+  } catch (err) {
+    console.error('renderAll', err);
   }
 }
 
 document.getElementById('nav').addEventListener('click', e => {
   const b = e.target.closest('[data-panel]');
   if (b) showPanel(b.dataset.panel);
+});
+
+document.addEventListener('click', e => {
+  const goto = e.target.closest('[data-goto]');
+  if (goto) showPanel(goto.dataset.goto);
 });
 
 document.getElementById('panel-rank').addEventListener('click', e => {

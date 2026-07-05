@@ -121,6 +121,7 @@ private:
 #ifdef TLM_SKULLS_PARTY
 	void sendSkull(const Creature *creature);
 	void sendPartyIcons(const Player *playa, int icontype, bool skull, bool removeskull);
+	unsigned char getDisplayedSkull(const Player *playa) const;
 	void parseInviteParty(NetworkMessage &msg);
 	void parseRevokeParty(NetworkMessage &msg);
 	void parseJoinParty(NetworkMessage &msg);

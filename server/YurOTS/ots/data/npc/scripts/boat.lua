@@ -6,10 +6,63 @@ attacking = false
 talk_state = 0
 pending_travel = nil
 
-TRAVELS = {
+-- Script compartido por Nimral y Fargum.
+-- dest = sqm exacto de aterrizaje. Viajar no cambia el temple del player.
+ALL_TRAVELS = {
+	{keys = {'elfland', 'elf land'}, price = 20, dest = '111 60 6', name = 'Elfland'},
+	{keys = {'epstein island', 'epstein'}, price = 20, dest = '85 209 7', name = 'Epstein Island'},
+	{keys = {'hell quest', 'hell'}, price = 20, dest = '347 168 7', name = 'Hell Quest'},
 	{keys = {'dragon land'}, price = 50, dest = '122 119 7', name = 'Dragon Land'},
 	{keys = {'city', 'the city'}, price = 20, dest = '171 65 7', name = 'The City'}
 }
+
+function getTravels()
+	return ALL_TRAVELS
+end
+
+function parsePosition(pos)
+	local x, y, z = string.match(pos, '(%d+) (%d+) (%d+)')
+	if not x or not y or not z then
+		return nil
+	end
+	return tonumber(x), tonumber(y), tonumber(z)
+end
+
+function creatureIsAtPosition(cid, pos)
+	local x, y, z = parsePosition(pos)
+	if not x then
+		return false
+	end
+	local px, py, pz = creatureGetPosition(cid)
+	return px == x and py == y and pz == z
+end
+
+function travelSummary(travels)
+	local parts = {}
+	for i = 1, table.getn(travels) do
+		local travel = travels[i]
+		table.insert(parts, travel.name .. ' (' .. travel.price .. 'gp)')
+	end
+	return table.concat(parts, ', ')
+end
+
+function travelHelp(travels)
+	local parts = {}
+	for i = 1, table.getn(travels) do
+		local travel = travels[i]
+		local line = travel.name .. ': ' .. travel.price .. 'gp'
+		table.insert(parts, line)
+	end
+	return table.concat(parts, '. ') .. '. Just say where you want to go!'
+end
+
+function canTravel(cid, travel)
+	if creatureIsAtPosition(cid, travel.dest) then
+		selfSay('You are already in ' .. travel.name .. '.')
+		return false
+	end
+	return true
+end
 
 function onThingMove(creature, thing, oldpos, oldstackpos)
 end
@@ -24,9 +77,9 @@ end
 function onCreatureTurn(creature)
 end
 
-function matchTravel(msg)
-	for i = 1, table.getn(TRAVELS) do
-		local travel = TRAVELS[i]
+function matchTravel(msg, travels)
+	for i = 1, table.getn(travels) do
+		local travel = travels[i]
 		for j = 1, table.getn(travel.keys) do
 			if msgcontains(msg, travel.keys[j]) then
 				return travel
@@ -37,16 +90,26 @@ function matchTravel(msg)
 end
 
 function doTravel(cid, travel)
+	if not canTravel(cid, travel) then
+		return
+	end
 	if pay(cid, travel.price) then
+		cancelPendingTrade(cid)
+		npcResetState()
 		selfSay('All aboard! Enjoy the trip!')
-		selfSay('/send ' .. creatureGetName(cid) .. ', ' .. travel.dest)
-		npcEndConversation(cid)
+		local x, y, z = parsePosition(travel.dest)
+		if x and y and z then
+			travelPlayerTo(cid, x, y, z)
+		end
 	else
 		selfSay('Sorry, you need ' .. travel.price .. ' gold for that trip.')
 	end
 end
 
 function offerTravel(cid, travel)
+	if not canTravel(cid, travel) then
+		return
+	end
 	pending_travel = travel
 	talk_state = 1
 	selfSay('A trip to ' .. travel.name .. ' costs ' .. travel.price .. 'gp. Ready to go? (yes or si)')
@@ -54,13 +117,10 @@ end
 
 function onCreatureSay(cid, type, msg)
 	msg = string.lower(msg)
+	local travels = getTravels()
 
 	if npcIsGreeting(msg) and focus == 0 and getDistanceToCreature(cid) < 4 then
-		if isPremium(cid) then
-			npcBeginConversation(cid, 'Hi ' .. creatureGetName(cid) .. '! I sail to The City (20gp) or Dragon Land (50gp). Where do you want to go?')
-		else
-			selfSay('Sorry, only premium players can travel by boat.')
-		end
+		npcBeginConversation(cid, 'Hi ' .. creatureGetName(cid) .. '! I sail to ' .. travelSummary(travels) .. '. Where do you want to go?')
 		return
 	end
 
@@ -84,16 +144,18 @@ function onCreatureSay(cid, type, msg)
 		end) then
 			talk_state = 0
 			pending_travel = nil
+		else
+			selfSay('Please say yes or no.')
 		end
 		return
 	end
 
 	if npcIsHelp(msg) then
-		selfSay('The City: 20gp. Dragon Land: 50gp. Just say where you want to go!')
+		selfSay(travelHelp(travels))
 		return
 	end
 
-	local travel = matchTravel(msg)
+	local travel = matchTravel(msg, travels)
 	if travel then
 		offerTravel(cid, travel)
 	end

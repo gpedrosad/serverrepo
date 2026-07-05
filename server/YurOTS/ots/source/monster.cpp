@@ -26,6 +26,7 @@
 #include "monsters.h"
 #include "spells.h"
 #include "player.h"
+#include "map.h"
 
 extern Spells spells;
 
@@ -142,25 +143,26 @@ void Monster::tryTrainerSelfCare()
 		return;
 	}
 
-	// Evita spam de curaciones cuando el dano es leve.
-	if(healthmax > 0 && (health * 100 / healthmax) > 80) {
+	// Curar solo cuando falta vida real; evita trabajo extra con golpes leves.
+	if(healthmax > 0 && (health * 100 / healthmax) > 85) {
 		return;
 	}
 
-	for(InstantAttackSpells::iterator iaIt = mType->instantSpells.begin(); iaIt != mType->instantSpells.end(); ++iaIt) {
-		for(TimeProbabilityClassVec::iterator asIt = iaIt->second.begin(); asIt != iaIt->second.end(); ++asIt) {
-			TimeProbabilityClass& timeprobsystem = *asIt;
-			if(!timeprobsystem.onTick(2000)) {
-				continue;
-			}
+	const int missing = healthmax - health;
+	if(missing <= 0) {
+		return;
+	}
 
-			std::map<std::string, Spell*>::iterator rit = spells.getAllSpells()->find(iaIt->first);
-			if(rit != spells.getAllSpells()->end()) {
-				if(rit->second->getSpellScript()->castSpell(this, this->pos, "")) {
-					exhaustedTicks = timeprobsystem.getExhaustion();
-					return;
-				}
-			}
+	// Curación directa: sin castSpell ni efectos mágicos (menos lag que exura en XML).
+	const int heal = std::min(missing, 800);
+	health += heal;
+	exhaustedTicks = 4000;
+
+	SpectatorVec list;
+	game->getSpectators(Range(pos, true), list);
+	for(SpectatorVec::const_iterator it = list.begin(); it != list.end(); ++it) {
+		if(Player* spectator = dynamic_cast<Player*>(*it)) {
+			spectator->sendCreatureHealth(this);
 		}
 	}
 }
@@ -359,7 +361,7 @@ int Monster::onThink(int& newThinkTicks)
 	if(state != STATE_IDLE && !(state == STATE_IDLESUMMON && hasLostMaster)) {
 		if(mType->trainer) {
 			updateLookDirection();
-			newThinkTicks = std::max(1500, getStepDuration());
+			newThinkTicks = std::max(2500, getStepDuration());
 			int ret = oldThinkTicks;
 			oldThinkTicks = newThinkTicks;
 			return ret;
@@ -405,7 +407,7 @@ int Monster::onThink(int& newThinkTicks)
 		if(target && canReach) {
 			selectTarget(target, true);
 		}
-		newThinkTicks = std::max(1500, getStepDuration());
+		newThinkTicks = std::max(2500, getStepDuration());
 		int ret = oldThinkTicks;
 		oldThinkTicks = newThinkTicks;
 		return ret;
@@ -1336,6 +1338,9 @@ bool Monster::doAttacks(Creature* attackedCreature, monstermode_t mode /*= MODE_
 		}
 
 		for(InstantAttackSpells::iterator iaIt = mType->instantSpells.begin(); iaIt != mType->instantSpells.end(); ++iaIt) {
+			if(mType->trainer) {
+				break;
+			}
 			for(TimeProbabilityClassVec::iterator asIt = iaIt->second.begin(); asIt != iaIt->second.end(); ++asIt) {
 				TimeProbabilityClass& timeprobsystem = *asIt;
 				if(timeprobsystem.onTick(500) || (random_range(1, 100) <= modeProb)) {
@@ -1379,6 +1384,10 @@ void Monster::onAttack()
 		}
 		else
 			setAttackedCreature(NULL);
+
+		if(mType->trainer) {
+			tryTrainerSelfCare();
+		}
 	}
 }
 

@@ -86,3 +86,10 @@ En `Options > Interface`:
 - `Highlight things under cursor`: checkbox
 
 Si alguna vez hace falta cambiar la forma del cursor base, los assets están en `client-local/data/cursors/` y el `hot-spot` se define en `cursors.otml`.
+
+## Cliente público Retro76 (clienteretro)
+
+Distribución para jugadores: repo `~/clienteretro`, ZIPs en `web/downloads/`.
+
+- Sync sprites Zagan: `scripts/sync-clienteretro.sh`
+- **Auto-actualización (plan pendiente):** [CLIENT_UPDATER_RETRO76.md](./CLIENT_UPDATER_RETRO76.md)

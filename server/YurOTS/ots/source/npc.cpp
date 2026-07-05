@@ -154,7 +154,7 @@ static bool removePlayerExactItems(Player* player, int itemid, bool useSubtype, 
 	if(useSubtype)
 		return player->removeExactItems((unsigned short)itemid, subtype, count);
 
-	return player->removeItem((unsigned short)itemid, count);
+	return player->removeItem((unsigned short)itemid, (long)count);
 }
 
 static int addChargedItemsToPlayer(Player* player, int itemId, int chargesPerItem, int itemCount)
@@ -461,7 +461,10 @@ void Npc::onCreatureAppear(const Creature *creature){
 
 void Npc::onCreatureDisappear(const Creature *creature, unsigned char stackPos, bool tele){
 	clearPendingTrade(this->getID(), (int)creature->getID());
-	this->script->onCreatureDisappear(creature->getID());
+	// Teleports already close boat travel in Lua; re-entering the NPC script here
+	// during onCreatureSay can recurse on the same lua_State and hang the server.
+	if(!tele)
+		this->script->onCreatureDisappear(creature->getID());
 }
 
 void Npc::onThingDisappear(const Thing* thing, unsigned char stackPos){
@@ -708,7 +711,8 @@ NpcScript::NpcScript(std::string scriptname, Npc* npc){
 	lua_dofile(luaState, scriptname.c_str());
 	this->loaded=true;
 	this->npc=npc;
-	this->setGlobalNumber("addressOfNpc", (int)npc);
+	lua_pushlightuserdata(luaState, npc);
+	lua_setglobal(luaState, "addressOfNpc");
 	this->registerFunctions();
 }
 
@@ -830,6 +834,7 @@ int NpcScript::registerFunctions()
 	lua_register(luaState, "doPlayerTransferMoneyTo", NpcScript::luaTransferPlayerMoneyTo);
 	lua_register(luaState, "getPlayerVocation", NpcScript::luaGetPlayerVocation);
 	lua_register(luaState, "setPlayerMasterPos", NpcScript::luaSetPlayerMasterPos);
+	lua_register(luaState, "travelPlayerTo", NpcScript::luaTravelPlayerTo);
 #endif //YUR_NPC_EXT
 
 #ifdef YUR_GUILD_SYSTEM
@@ -861,9 +866,8 @@ int NpcScript::registerFunctions()
 
 Npc* NpcScript::getNpc(lua_State *L){
 	lua_getglobal(L, "addressOfNpc");
-	int val = (int)lua_tonumber(L, -1);
+	Npc* mynpc = (Npc*)lua_touserdata(L, -1);
 	lua_pop(L,1);
-	Npc* mynpc = (Npc*)val;
 
 	if(!mynpc){
 		return 0;
@@ -1765,6 +1769,29 @@ int NpcScript::luaSetPlayerMasterPos(lua_State* L)
 			player->masterPos = pos;
 		else
 			std::cout << "NpcScript: luaSetPlayerMasterPos: given position is invalid!" << std::endl;
+	}
+
+	return 0;
+}
+
+int NpcScript::luaTravelPlayerTo(lua_State* L)
+{
+	int id = (int)lua_tonumber(L, -4);
+	int x = (int)lua_tonumber(L, -3);
+	int y = (int)lua_tonumber(L, -2);
+	int z = (int)lua_tonumber(L, -1);
+	lua_pop(L, 4);
+
+	Npc* mynpc = getNpc(L);
+	Creature* creature = mynpc->game->getCreatureByID(id);
+	Player* player = creature ? dynamic_cast<Player*>(creature) : NULL;
+
+	if(player) {
+		Position pos(x, y, z);
+		if(mynpc->game->getTile(pos))
+			mynpc->game->teleport(player, pos);
+		else
+			std::cout << "NpcScript: travelPlayerTo: invalid position " << x << ' ' << y << ' ' << z << std::endl;
 	}
 
 	return 0;

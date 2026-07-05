@@ -10,6 +10,7 @@ En esta base termina impactando en varias cosas:
 - Banker con balance, deposit, withdraw y transfer
 - Bounty financiada desde bank balance
 - Golden amulet que manda el oro del loot directo al banco
+- Golden ring que aumenta el oro del monstruo y se combina con el amulet
 
 ## Por que valio la pena
 
@@ -39,5 +40,7 @@ Media. La idea vale mucho, pero toca persistencia, NPCs y economia base.
 
 - `server/YurOTS/ots/source/player.cpp`
 - `server/YurOTS/ots/source/game.cpp`
+- `server/YurOTS/ots/source/monsters.cpp`
 - `server/YurOTS/ots/data/npc/scripts/banker.lua`
 - `docs/MOST_WANTED_SYSTEM.md`
+- `docs/gameplay/GOLDEN_ACCESSORIES.md`

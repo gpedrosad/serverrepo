@@ -506,4 +506,6 @@
 <action itemid="2154" script="gem_imbue.lua" />
 <action itemid="2155" script="gem_imbue.lua" />
 <action itemid="2156" script="gem_imbue.lua" />
+<action itemid="20131" script="experience_recovery_rune.lua" />
+<action itemid="20132" script="training_extension_rune.lua" />
 </actions>

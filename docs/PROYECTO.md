@@ -250,7 +250,8 @@ A junio 2026, en el VPS:
 
 - **Binario estable:** basado en commit `3b7f99c` (antes de life/healing rings y cambio de rates x4/x5 que causaban crashes)
 - **Aplicado encima (solo datos):** pesos de runas Tibia 7.6 + Dark Rodo vende mana fluid a 100 gp
-- **Pendiente / revertido:** implementación C++ de life ring y ring of healing; rates skills x4 / ML x5 del deploy `3786f92`
+- **Pendiente / revertido:** implementación C++ de life ring y ring of healing; rates skills x4 del deploy `3786f92`
+- **Pendiente restart (solo config):** rates en repo — ML ×3 (`manamul`, ver `docs/gameplay/ML_RATE.md`); exp 71–100 ×2 y 101+ ×1 (ver `docs/gameplay/EXP_RATE.md`)
 
 ## Estado local del workspace (2026-07-03)
 

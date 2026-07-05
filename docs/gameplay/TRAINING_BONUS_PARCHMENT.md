@@ -39,6 +39,7 @@ El bonus parchment responde en ingles:
 
 - `9102`: fecha del bonus diario
 - `9103`: minutos extra de training para ese dia
+- `9104`: fecha de uso de training extension rune (`20132`) — ver `ZAGAN_CONSUMABLE_RUNES.md`
 
 ## Detalle tecnico
 
@@ -53,7 +54,9 @@ Se extendio el calculo del limite diario para sumar el bonus si:
 
 Entonces el limite diario pasa a ser:
 
-- `trainingdailyminutes + 300`
+- `trainingdailyminutes + minutos_en_9103` (p. ej. parchment +300, training extension rune `20132` +720)
+
+Ver tambien [`ZAGAN_CONSUMABLE_RUNES.md`](ZAGAN_CONSUMABLE_RUNES.md) para la runa portable `20132` (training extension rune).
 
 ## Como probar
 

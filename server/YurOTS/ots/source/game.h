@@ -502,7 +502,6 @@ protected:
 #endif //CVS_DAY_CYCLE
 
 	void checkSpawns(int t);
-	void animatedSpawnStep(Spawn* spawn, unsigned long spawnid, int step);
 	std::priority_queue<SchedulerTask*, std::vector<SchedulerTask*>, lessSchedTask > eventList;
 	std::map<unsigned long, SchedulerTask*> eventIdMap;
 	unsigned long eventIdCount;

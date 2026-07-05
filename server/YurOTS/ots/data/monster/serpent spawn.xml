@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<monster name="Serpent Spawn" level="58" maglevel="50" experience="3600" pushable="0" speed="240" armor="42" defense="40" canpushitems="1" staticattack="50" changetarget="200">
+	<health now="5000" max="5000"/>
+	<look type="220" corpse="4323"/>
+	<combat targetdistance="1" runonhealth="0"/>
+	<blood color="30" effect="16" splash="4"/>
+
+<attacks>
+	<attack type="melee" mindamage="90" maxdamage="260" probability="100"/>
+	<attack type="instant" name="hydra_bubblewave" exhaustion="500" cycleticks="3000" probability="55"/>
+	<attack type="instant" name="hydra_poisonwave" exhaustion="500" cycleticks="4500" probability="80"/>
+	<attack type="distance" name="poisonfield" maxdamage="140" probability="55" cycleticks="3500"/>
+	<attack type="instant" name="exura vita" exhaustion="500" cycleticks="4500" probability="50"/>
+</attacks>
+
+<defenses>
+	<defense immunity="poison"/>
+	<defense immunity="fire"/>
+	<defense immunity="energy"/>
+	<defense immunity="paralyze"/>
+	<defense immunity="drunk"/>
+	<defense immunity="invisible"/>
+</defenses>
+
+<loot>
+	<item id="2148" countmax="180" chance1="100000" chancemax="0"/>
+	<item id="2152" countmax="6" chance1="12000" chancemax="0"/>
+	<item id="2671" countmax="3" chance1="15000" chancemax="0"/>
+	<item id="2146" countmax="2" chance1="2500" chancemax="0"/>
+	<item id="2149" countmax="2" chance1="2000" chancemax="0"/>
+	<item id="2162" chance="1800"/>
+	<item id="2663" chance="1400"/>
+	<item id="2409" chance="3500"/>
+	<item id="1987" chance="100000">
+	<inside>
+	<item id="2148" countmax="80" chance1="80000" chancemax="0"/>
+	<item id="2476" chance="2200"/>
+	<item id="2477" chance="1800"/>
+	<item id="2528" chance="1500"/>
+	<item id="2168" chance="1200"/>
+	<item id="2214" chance="1000"/>
+	<item id="2182" chance="900"/>
+	<item id="2195" chance="600"/>
+	<item id="2393" chance="500"/>
+	<item id="20137" chance="450"/>
+	<item id="2150" countmax="1" chance1="800" chancemax="0"/>
+	</inside>
+	</item>
+</loot>
+
+<summons maxSummons="3">
+	<summon name="Snake" chance="2500"/>
+</summons>
+
+<voices>
+	<voice sentence="Sssssouls for the sssspawn!"/>
+	<voice sentence="HISSSS"/>
+</voices>
+</monster>

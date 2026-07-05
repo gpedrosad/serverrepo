@@ -36,4 +36,6 @@ services:
     command: ["/app/YurOTS/docker-entrypoint.sh"]
     # Investigación cuelgues OT — ver docs/SOCKET_DEBUG_LOGGING.md
     environment:
+      - YUROTS_ITEMS_OTB=data/items/items-zagan-test.otb
+      - YUROTS_ITEMS_XML=data/items/items-zagan-test.xml
       - YUROTS_SOCKET_DEBUG=1

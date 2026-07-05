@@ -621,8 +621,21 @@ int main(int argc, char *argv[])
 	std::cout << "[done]" << std::endl;
 
 	// load item data
+	std::string itemsOtbPath = g_config.getGlobalString("items_otb", g_config.getGlobalString("datadir") + "items/items.otb");
+	std::string itemsXmlPath = g_config.getGlobalString("items_xml", g_config.getGlobalString("datadir") + "items/items.xml");
+	if(const char* envItemsOtb = getenv("YUROTS_ITEMS_OTB"))
+	{
+		if(*envItemsOtb)
+			itemsOtbPath = envItemsOtb;
+	}
+	if(const char* envItemsXml = getenv("YUROTS_ITEMS_XML"))
+	{
+		if(*envItemsXml)
+			itemsXmlPath = envItemsXml;
+	}
+
 	std::cout << ":: Loading items.otb...             ";
-	if (Item::items.loadFromOtb(g_config.getGlobalString("datadir") + "items/items.otb"))
+	if (Item::items.loadFromOtb(itemsOtbPath))
 	{
 		ErrorMessage("Could not load items.otb!");
 		return -1;
@@ -630,7 +643,7 @@ int main(int argc, char *argv[])
 	std::cout << "[done]" << std::endl;
 
 	std::cout << ":: Loading items.xml...             ";
-	if (!Item::items.loadXMLInfos(g_config.getGlobalString("datadir") + "items/items.xml"))
+	if (!Item::items.loadXMLInfos(itemsXmlPath))
 	{
 		ErrorMessage("Could not load /items/items.xml ...!");
 		return -1;

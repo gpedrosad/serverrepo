@@ -26,4 +26,16 @@ install_ext() {
 install_ext "$RME_ROOT"
 install_ext "$RME_BUILD"
 
+ZAGAN_EXT="$PROJECT_ROOT/rme-extensions/yurots-zagan-items.xml"
+if [[ -f "$ZAGAN_EXT" ]]; then
+  install_zagan() {
+    local dir="$1/extensions"
+    mkdir -p "$dir"
+    cp -f "$ZAGAN_EXT" "$dir/yurots-zagan-items.xml"
+    echo "Extension: $dir/yurots-zagan-items.xml"
+  }
+  install_zagan "$RME_ROOT"
+  install_zagan "$RME_BUILD"
+fi
+
 echo "OK — extensiones YurOTS instaladas."

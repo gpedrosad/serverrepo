@@ -8,13 +8,16 @@ import threading
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from urllib.parse import unquote
 
 from analytics import WebAnalytics
 from bug_reports import BugReportStore
 from data import build_payload, create_account, read_server_ip, server_status_from_files
 from debug_log import get_logger, log_exception, log_http, setup_logging
-from premium_orders import create_premium_order, parse_multipart_form, premium_config_payload
+from premium_orders import create_premium_order, parse_addon_selections, parse_multipart_form, premium_config_payload
 from register_guard import RegisterGuard
+from client_updater import UPDATER_FILES_DIR, build_updater_response
+from zagan_items import image_path, load_catalog
 
 ROOT = Path(__file__).resolve().parents[1]
 PLAYERS_DIR = Path(os.environ.get("PLAYERS_DIR", ROOT / "server/YurOTS/ots/data/players"))
@@ -31,9 +34,11 @@ ANALYTICS_STATE = Path(os.environ.get("ANALYTICS_STATE", ROOT / "web/state/analy
 CONFIG_FILE = Path(os.environ.get("CONFIG_FILE", ROOT / "server/YurOTS/ots/config.lua"))
 OT_HOST = os.environ.get("OT_HOST", "127.0.0.1")
 OT_PORT = int(os.environ.get("OT_PORT", "7171"))
+UPDATER_FILES_URL = os.environ.get("UPDATER_FILES_URL", "https://retro76.cl/updater/files")
 SERVER_IP = os.environ.get("SERVER_IP") or read_server_ip(CONFIG_FILE)
 PORT = int(os.environ.get("PORT", "8080"))
 INDEX = Path(__file__).resolve().parent / "index.html"
+ITEMS_PAGE = Path(__file__).resolve().parent / "items.html"
 DOWNLOADS_DIR = Path(__file__).resolve().parent / "downloads"
 WEB_DIR = Path(__file__).resolve().parent
 ASSET_TYPES = {
@@ -159,6 +164,8 @@ class Handler(BaseHTTPRequestHandler):
         path = self.path.split("?", 1)[0]
         if path.startswith("/downloads/"):
             self._download(path[len("/downloads/"):], head_only=True)
+        elif path.startswith("/updater/files/"):
+            self._updater_file(path[len("/updater/files/"):], head_only=True)
         elif path.startswith("/assets/") or path.startswith("/components/"):
             self._static(path, head_only=True)
         else:
@@ -168,7 +175,7 @@ class Handler(BaseHTTPRequestHandler):
         path = self.path.split("?", 1)[0]
         if path in ("/", "/index.html"):
             analytics.record_visit(client_ip(self))
-            self._file(INDEX, "text/html; charset=utf-8")
+            self._file(INDEX, "text/html; charset=utf-8", cache="no-store")
         elif path == "/api/data":
             try:
                 self._json(200, get_payload())
@@ -181,8 +188,16 @@ class Handler(BaseHTTPRequestHandler):
             self._json(200, premium_config_payload())
         elif path == "/api/premium-analytics":
             self._premium_analytics()
+        elif path == "/items":
+            self._items_page()
+        elif path == "/api/zagan-items":
+            self._zagan_items_api()
+        elif path.startswith("/api/zagan-items/img/"):
+            self._zagan_item_image(path[len("/api/zagan-items/img/"):])
         elif path.startswith("/downloads/"):
             self._download(path[len("/downloads/"):])
+        elif path.startswith("/updater/files/"):
+            self._updater_file(path[len("/updater/files/"):])
         elif path.startswith("/assets/") or path.startswith("/components/"):
             self._static(path)
         else:
@@ -198,6 +213,8 @@ class Handler(BaseHTTPRequestHandler):
             self._premium_order()
         elif path == "/api/bug-report":
             self._bug_report()
+        elif path == "/api/updater.php":
+            self._updater_api()
         else:
             self.send_error(404)
 
@@ -279,6 +296,50 @@ class Handler(BaseHTTPRequestHandler):
         analytics.record_premium_event(ip, event, detail)
         self._json(200, {"ok": True})
 
+    def _items_admin_token(self) -> str:
+        return os.environ.get("ITEMS_ADMIN_TOKEN", "")
+
+    def _items_token_ok(self) -> bool:
+        token = self._items_admin_token()
+        if not token:
+            return False
+        if self.headers.get("X-Items-Token") == token:
+            return True
+        query = self.path.split("?", 1)
+        if len(query) > 1:
+            for part in query[1].split("&"):
+                if part.startswith("token="):
+                    return unquote(part.split("=", 1)[1]) == token
+        return False
+
+    def _items_page(self) -> None:
+        if not self._items_admin_token():
+            self.send_error(404)
+            return
+        self._file(ITEMS_PAGE, "text/html; charset=utf-8", cache="no-store")
+
+    def _zagan_items_api(self) -> None:
+        if not self._items_token_ok():
+            self.send_error(404)
+            return
+        self._json(200, {"items": load_catalog()})
+
+    def _zagan_item_image(self, name: str) -> None:
+        if not self._items_token_ok():
+            self.send_error(404)
+            return
+        safe_name = name.split("?", 1)[0]
+        if not safe_name or "/" in safe_name or ".." in safe_name:
+            self.send_error(404)
+            return
+        path = image_path(safe_name)
+        if path is None:
+            self.send_error(404)
+            return
+        suffix = path.suffix.lower()
+        ctype = "image/jpeg" if suffix in {".jpg", ".jpeg"} else "image/png"
+        self._file(path, ctype, cache="private, max-age=3600")
+
     def _premium_analytics(self) -> None:
         token = os.environ.get("PREMIUM_ANALYTICS_TOKEN", "")
         if not token or self.headers.get("X-Analytics-Token") != token:
@@ -313,34 +374,28 @@ class Handler(BaseHTTPRequestHandler):
             analytics.record_premium_event(ip, "submit_fail", {"reason": "honeypot"})
             self._json(200, {"ok": False, "message": "No se pudo enviar la donación."})
             return
-        try:
-            form_ts = float(fields.get("form_ts", 0))
-        except (TypeError, ValueError):
-            form_ts = 0.0
-        if time.time() - form_ts < 3:
-            analytics.record_premium_event(ip, "submit_fail", {"reason": "too_fast"})
-            self._json(200, {"ok": False, "message": "El formulario se envió demasiado rápido."})
-            return
         result = create_premium_order(
             orders_file=PREMIUM_ORDERS_FILE,
             uploads_dir=PREMIUM_UPLOADS_DIR,
             players_dir=PLAYERS_DIR,
             character_name=str(fields.get("character_name", "")),
             plan_id=str(fields.get("plan_id", "")),
-            golden_amulet=str(fields.get("golden_amulet", "")).lower() in {"1", "true", "on", "yes"},
+            addon_selections=parse_addon_selections(fields),
             receipt_name=str(fields.get("_receipt_name", "")),
             receipt_bytes=fields.get("_receipt_bytes") or b"",
             client_ip=ip,
         )
         if result.get("ok"):
             guard.record_attempt(ip)
+            selections = parse_addon_selections(fields)
             analytics.record_premium_event(
                 ip,
                 "submit_ok",
                 {
                     "order_id": result.get("order_id"),
                     "plan_id": str(fields.get("plan_id", "")),
-                    "golden_amulet": str(fields.get("golden_amulet", "")).lower() in {"1", "true", "on", "yes"},
+                    "addons": selections,
+                    "golden_amulet": selections.get("golden_amulet", False),
                 },
             )
         else:
@@ -364,6 +419,31 @@ class Handler(BaseHTTPRequestHandler):
         ctype = ASSET_TYPES.get(suffix, "application/octet-stream")
         cache = "public, max-age=86400" if suffix in {".png", ".jpg", ".jpeg", ".webp", ".svg"} else "no-store"
         self._file(path, ctype, head_only=head_only, cache=cache)
+
+    def _updater_api(self) -> None:
+        length = int(self.headers.get("Content-Length", "0"))
+        if length > 0:
+            try:
+                self.rfile.read(length)
+            except Exception:
+                pass
+        payload = build_updater_response(UPDATER_FILES_URL)
+        if payload.get("error"):
+            log.warning("updater manifest incompleto: %s", payload["error"])
+        self._json(200, payload)
+
+    def _updater_file(self, rel: str, *, head_only: bool = False) -> None:
+        if not rel or ".." in rel.split("/"):
+            self.send_error(404)
+            return
+        path = (UPDATER_FILES_DIR / rel).resolve()
+        root = UPDATER_FILES_DIR.resolve()
+        if not str(path).startswith(str(root)) or not path.is_file():
+            self.send_error(404)
+            return
+        suffix = path.suffix.lower()
+        ctype = ASSET_TYPES.get(suffix, "application/octet-stream")
+        self._file(path, ctype, head_only=head_only, cache="public, max-age=300")
 
     def _download(self, name: str, *, head_only: bool = False) -> None:
         if not name or ".." in name or "/" in name:

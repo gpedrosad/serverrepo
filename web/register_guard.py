@@ -11,6 +11,17 @@ HOUR_LIMIT = 5
 DAY_LIMIT = 15
 CHALLENGE_TTL = 600
 MIN_FORM_SECONDS = 3
+TOO_FAST_MESSAGE = "El formulario se envió demasiado rápido."
+
+
+def check_form_timing(form_ts: float) -> str | None:
+    """Anti-bot: rechaza envíos instantáneos. Tolera reloj del cliente adelantado."""
+    if form_ts <= 0:
+        return None
+    elapsed = time.time() - form_ts
+    if 0 <= elapsed < MIN_FORM_SECONDS:
+        return TOO_FAST_MESSAGE
+    return None
 
 
 class RegisterGuard:
@@ -82,8 +93,9 @@ class RegisterGuard:
     ) -> str | None:
         if honeypot:
             return honeypot_message
-        if time.time() - form_ts < MIN_FORM_SECONDS:
-            return "El formulario se envió demasiado rápido."
+        timing_err = check_form_timing(form_ts)
+        if timing_err:
+            return timing_err
         now = time.time()
         data = self._load()
         self._prune(data, now)

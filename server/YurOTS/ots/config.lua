@@ -34,7 +34,7 @@ url = "https://retro76.cl"
 location = "Chile"
 
 -- the ip the server should redirect too (auto - set as first local ip)
-ip = "retro76.cl"
+ip = "127.0.0.1"
 
 -- The messagebox you sometimes get before you choose characters
 motd = "Welcome to Retro76"
@@ -179,7 +179,7 @@ expmul = 3
 -- experience multiplier by level: min, max (0 = no max), rate
 expmulmin = {"9", "41", "71", "101"}
 expmulmax = {"40", "70", "100", "0"}
-expmulrate = {"5", "4", "3", "2"}
+expmulrate = {"5", "4", "2", "1"}
 
 -- loot multiplier (drop chance from monsters, 1 = rl tibia)
 lootmul = 3
@@ -191,7 +191,9 @@ expmulpvp = 2
 weaponmul = {"4", "4", "4", "4", "4"}
 distmul = {"4", "4", "4", "4", "4"}
 shieldmul = {"4", "4", "4", "4", "4"}
-manamul = {"5", "5", "5", "5", "5"}
+-- ML rate: mana gastada → progreso de magic level (1 = RL). No afecta regen de mana.
+-- 2026-07: bajado de x5 a x3 (punto intermedio; ver docs/ML_RATE.md).
+manamul = {"3", "3", "3", "3", "3"}
 
 -- how much points of life,mana,cap do you get when advancing {no-voc, sorcerer, druid, paladin, knight}
 capgain = {"10", "10", "10", "20", "25"}
@@ -216,7 +218,7 @@ soulregen = 120
 redunjust = 3
 
 -- how many unjustified kills to get banned
-banunjust = 6
+banunjust = 10
 
 -- how long do you have white skull after attacking player (1 = 1min)
 hittime = 1

@@ -683,6 +683,8 @@ int ActionScript::registerFunctions()
 	lua_register(luaState, "doPlayerAddSkillTry", ActionScript::luaActionDoPlayerAddSkillTry);
 	//doPlayerAddHealth(uid,health)
 	lua_register(luaState, "doPlayerAddHealth", ActionScript::luaActionDoPlayerAddHealth);
+	//doPlayerAddExp(uid,exp)
+	lua_register(luaState, "doPlayerAddExp", ActionScript::luaActionDoPlayerAddExp);
 	//doPlayerAddMana(uid,mana)
 	lua_register(luaState, "doPlayerAddMana", ActionScript::luaActionDoPlayerAddMana);
 	//doPlayerAddItem(uid,itemid,count or type) . returns uid of the created item
@@ -1244,6 +1246,32 @@ int ActionScript::luaActionDoPlayerAddHealth(lua_State *L)
 	else{
 		lua_pushnumber(L, -1);
 		std::cout << "luaDoPlayerAddHealth: player not found" << std::endl;
+		return 1;
+	}
+
+	lua_pushnumber(L, 0);
+	return 1;
+}
+
+int ActionScript::luaActionDoPlayerAddExp(lua_State *L)
+{
+	//doPlayerAddExp(uid,exp)
+	exp_t addexp = (exp_t)internalGetNumber(L);
+	unsigned int cid = (unsigned int)internalGetNumber(L);
+
+	ActionScript *action = getActionScript(L);
+
+	const KnownThing* tmp = action->GetPlayerByUID(cid);
+	if(tmp){
+		Player *player = (Player*)(tmp->thing);
+		if(addexp > 0) {
+			player->addExp(addexp);
+			player->sendStats();
+		}
+	}
+	else{
+		lua_pushnumber(L, -1);
+		std::cout << "luaDoPlayerAddExp: player not found" << std::endl;
 		return 1;
 	}
 
