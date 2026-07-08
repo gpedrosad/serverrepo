@@ -23,6 +23,8 @@ DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh
 
 Nada más. Sin atajos, sin “solo un git pull rápido”.
 
+> **Deploy pendiente (jul 2026):** inventario de cambios de gameplay Zagan, private trainers y fixes C++ → [`docs/DEPLOY-PENDIENTE-VPS-JUL2026.md`](../docs/DEPLOY-PENDIENTE-VPS-JUL2026.md).
+
 ---
 
 ## Qué es “data runtime” (sagrada)
@@ -37,6 +39,7 @@ Estos archivos **viven solo en el VPS**. No están en git (o no deben estarlo):
 | `server/YurOTS/ots/data/online.xml` | Quién está conectado |
 | `server/YurOTS/ots/data/queue.xml` | Cola de login |
 | `server/YurOTS/ots/data/houseitems.xml` | Items en casas |
+| `server/YurOTS/ots/data/private_trainers.xml` | Trainers privados colocados en casas |
 | `web/state/daily.json` | Baseline rankings web |
 | `web/state/register.json` | Estado anti-bot registro |
 
@@ -46,7 +49,7 @@ Las cuentas nuevas se crean en **https://retro76.cl** (web) → archivos XML en 
 
 ## Qué hace `deploy-vps.sh` (y por qué es seguro)
 
-1. **Backup** con `cp -a` de `players/`, `accounts/`, `vip/`, `online.xml`, `queue.xml`, `houseitems.xml` → `~/ot-backups/pre-deploy-FECHA/`
+1. **Backup** con `cp -a` de `players/`, `accounts/`, `vip/`, `online.xml`, `queue.xml`, `houseitems.xml`, `private_trainers.xml` → `~/ot-backups/pre-deploy-FECHA/`
 2. **`git pull origin main`** — actualiza código y plantillas
 3. **Restaura** el backup con `cp -an` (no pisa archivos que ya existan; repone los que git haya tocado)
 4. **Compila** dentro del container Docker

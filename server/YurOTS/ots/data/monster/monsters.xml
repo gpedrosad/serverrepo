@@ -96,6 +96,7 @@
 <monster name="Fire Elemental" file="fire elemental.xml" />
 <monster name="Flamingo" file="flamingo.xml" />
 <monster name="Frost Troll" file="frost troll.xml" />
+<monster name="Fury" file="fury.xml" />
 <monster name="Gargoyle" file="gargoyle.xml" />
 <monster name="Angry Gargoyle" file="angry gargoyle.xml" />
 <monster name="Furious Gargoyle" file="furious gargoyle.xml" />
@@ -160,6 +161,7 @@
 <monster name="Trainer Monk" file="trainer monk.xml" />
 <monster name="Mini Trainer Monk" file="mini trainer monk.xml" />
 <monster name="Elite Trainer Monk" file="elite trainer monk.xml" />
+<monster name="Private Trainer Dummy" file="private trainer dummy.xml" />
 <monster name="Mummy" file="mummy.xml" />
 <monster name="Angry Mummy" file="angry mummy.xml" />
 <monster name="Furious Mummy" file="furious mummy.xml" />

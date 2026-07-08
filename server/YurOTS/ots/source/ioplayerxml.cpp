@@ -570,6 +570,9 @@ bool IOPlayerXML::loadPlayer(Player* player, std::string name){
 					}
 					slot=slot->next;
 				}
+#ifdef YUR_BOH
+				player->checkBoh();
+#endif //YUR_BOH
 			}
 			else if(str=="depots")
 			{

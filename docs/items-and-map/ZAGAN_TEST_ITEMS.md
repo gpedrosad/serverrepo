@@ -30,3 +30,11 @@ Cada item hereda slot/atributos del prototipo OTB duplicado (arma, escudo, casco
 - `zagan-test/previews/`
 - `server/YurOTS/ots/data/items/items-zagan-test.otb`
 - `server/YurOTS/ots/data/items/items-zagan-test.xml`
+
+## Producción (VPS)
+
+El OTB/XML Zagan ya está en producción desde el deploy `7312baf8`. La **lógica C++** (crimson helmet/wand, fury cape, medusa sword) y fixes asociados están **pendientes de commit/deploy**.
+
+Plan completo, restricciones (no tocar DP ni casas) y checklist:
+
+→ [`../DEPLOY-PENDIENTE-VPS-JUL2026.md`](../DEPLOY-PENDIENTE-VPS-JUL2026.md)

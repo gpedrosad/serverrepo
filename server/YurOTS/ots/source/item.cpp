@@ -838,6 +838,14 @@ std::string Item::getDescription(bool fullDescription) const
 		  << rubyStacksFromAid(actionId, this) << "/3).";
 	else if(id == ITEM_MAGIC_TURBAN && fullDescription)
 		s << std::endl << "Magic turban. Wearing it grants +1 magic level.";
+	else if(id == ITEM_CRIMSON_HELMET && fullDescription)
+		s << std::endl << "Knights, elite knights, paladins and royal paladins: +1 sword, club, axe and distance.";
+	else if(id == ITEM_CRIMSON_WAND && fullDescription)
+		s << std::endl << "Sorcerers, master sorcerers, druids and elder druids (level 33+): heavy magic missiles, 55-65 dmg, 13 mana, range 5. Imbue up to +4 ML.";
+	else if(id == ITEM_FURY_CAPE && fullDescription)
+		s << std::endl << "Sorcerers and druids: +1 magic level while worn.";
+	else if(id == ITEM_MEDUSA_SWORD && fullDescription)
+		s << std::endl << "Paralyzes players on every hit in PvP.";
 	else if(id == ITEM_NIGHTGLASS_DAGGER && fullDescription) {
 		s << std::endl << "A shadowy dagger. Imbue with a big ruby for up to 5 speed stacks (-10% success chance per stack).";
 		const int ngStacks = nightglassStacksFromAid(actionId);

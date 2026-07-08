@@ -89,7 +89,9 @@ access(0)
 	imbueWandMl = 0;
 	imbueRubyWeapon = 0;
 	imbueEmeraldArmor = 0;
+	imbueCrimsonHelm = 0;
 	imbueHelmMl = 0;
+	imbueArmorMl = 0;
 	imbueNightglassSpeed = 0;
 #endif //YUR_BOH
 

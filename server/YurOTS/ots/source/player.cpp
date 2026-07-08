@@ -70,10 +70,30 @@ const int64_t Player::premiumGainManaVector[5][2]   = {{6,8},{3,8},{3,8},{3,8},{
 const int64_t Player::premiumGainHealthVector[5][2] = {{6,2},{5,2},{5,2},{3,2},{2,2}};
 const int64_t Player::advancedGainManaVector[5][2]  = {{4,10},{3,10},{3,10},{3,10},{5,7}};
 const int64_t Player::advancedGainHealthVector[5][2]= {{4,2},{4,2},{4,2},{2,2},{2,3}};
+
+static void setBasicOutfit(Player* player)
+{
+	if (!player)
+		return;
+
+	const int baseLookType = (player->getSex() == PLAYERSEX_FEMALE)
+		? PLAYER_FEMALE_1
+		: PLAYER_MALE_1;
+
+	CREATURE_SET_OUTFIT(player, baseLookType, 20, 30, 40, 50);
+	player->lookmaster = player->looktype;
+}
 #endif //YUR_PREMIUM_PROMOTION
 
 const int64_t Player::gainManaVector[5][2] = {{6,5},{3,5},{3,5},{4,5},{6,5}};
 const int64_t Player::gainHealthVector[5][2] = {{6,1},{6,1},{6,1},{4,1},{3,1}};
+
+static bool isKnightOrPaladinFamily(playervoc_t vocation)
+{
+	// Promotion is stored in Player::promoted; royal paladins and elite knights
+	// keep VOCATION_PALADIN/VOCATION_KNIGHT as their base vocation ids here.
+	return vocation == VOCATION_PALADIN || vocation == VOCATION_KNIGHT;
+}
 
 #ifdef CVS_GAINS_MULS
 int Player::CapGain[5] = {10, 10, 10, 20, 25};
@@ -825,6 +845,10 @@ int Player::addItemInventory(Item* item, int pos, bool internal /*= false*/) {
 
 		updateInventoryWeigth();
 
+#ifdef YUR_BOH
+		if(pos == SLOT_HEAD)
+			refreshHeadSkillBonus(SLOT_HEAD);
+#endif //YUR_BOH
 		if(!internal) {
 			client->sendStats();
 			client->sendInventory(pos);
@@ -993,6 +1017,10 @@ int Player::removeItemInventory(int pos, bool internal /*= false*/)
 
 		updateInventoryWeigth();
 
+#ifdef YUR_BOH
+		if(pos == SLOT_HEAD)
+			refreshHeadSkillBonus(SLOT_HEAD);
+#endif //YUR_BOH
 		if(!internal) {
 			client->sendStats();
 			client->sendInventory(pos);
@@ -1195,10 +1223,16 @@ int64_t Player::getSkill(skills_t skilltype, skillsid_t skillinfo) const
 #endif //YUR_RINGS_AMULETS
 #ifdef YUR_BOH
 	if(skillinfo == SKILL_LEVEL && imbueEmeraldArmor > 0 &&
-		(vocation == VOCATION_PALADIN || vocation == VOCATION_KNIGHT) &&
+		isKnightOrPaladinFamily(vocation) &&
 		(skilltype == SKILL_SWORD || skilltype == SKILL_AXE ||
 		 skilltype == SKILL_CLUB || skilltype == SKILL_DIST))
 		return skills[skilltype][skillinfo] + imbueEmeraldArmor;
+	if(skillinfo == SKILL_LEVEL && items[SLOT_HEAD] &&
+		items[SLOT_HEAD]->getID() == ITEM_CRIMSON_HELMET &&
+		isKnightOrPaladinFamily(vocation) &&
+		(skilltype == SKILL_SWORD || skilltype == SKILL_AXE ||
+		 skilltype == SKILL_CLUB || skilltype == SKILL_DIST))
+		return skills[skilltype][skillinfo] + 1;
 #endif //YUR_BOH
 	if(skillinfo == SKILL_LEVEL && tempoBuffTicks > 0 &&
 		(skilltype == SKILL_SWORD || skilltype == SKILL_AXE ||
@@ -1780,6 +1814,7 @@ void Player::onThingMove(const Creature *creature, slots_t fromSlot, const Item*
 	}
 #endif //YUR_RINGS_AMULETS
 	client->sendThingMove(creature, fromSlot, fromItem, oldFromCount, toContainer, to_slotid, toItem, oldToCount, count);
+	refreshHeadSkillBonus(fromSlot);
 #ifdef YUR_BOH
 	if (fromSlot == SLOT_FEET || fromSlot == SLOT_ARMOR ||
 		fromSlot == SLOT_LEFT || fromSlot == SLOT_RIGHT)
@@ -1812,6 +1847,7 @@ void Player::onThingMove(const Creature *creature, slots_t fromSlot, const Item*
 	}
 #endif //YUR_RINGS_AMULETS
 	client->sendThingMove(creature, fromSlot, fromItem, oldFromCount, toSlot, toItem, oldToCount, count);
+	refreshHeadSkillBonus(fromSlot, toSlot);
 #ifdef YUR_BOH
 	if (fromSlot == SLOT_FEET || toSlot == SLOT_FEET ||
 		fromSlot == SLOT_ARMOR || toSlot == SLOT_ARMOR ||
@@ -1841,6 +1877,7 @@ void Player::onThingMove(const Creature *creature, const Container *fromContaine
 	}
 #endif //YUR_RINGS_AMULETS
 	client->sendThingMove(creature, fromContainer, from_slotid, fromItem, oldFromCount, toSlot, toItem, oldToCount, count);
+	refreshHeadSkillBonus(toSlot);
 #ifdef YUR_BOH
 	if (toSlot == SLOT_FEET || toSlot == SLOT_ARMOR ||
 		toSlot == SLOT_LEFT || toSlot == SLOT_RIGHT)
@@ -1873,6 +1910,7 @@ void Player::onThingMove(const Creature *creature, slots_t fromSlot,
 	}
 #endif //YUR_RINGS_AMULETS
 	client->sendThingMove(creature, fromSlot, fromItem, oldFromCount, toPos, toItem, oldToCount, count);
+	refreshHeadSkillBonus(fromSlot);
 #ifdef YUR_BOH
 	if (fromSlot == SLOT_FEET || fromSlot == SLOT_ARMOR ||
 		fromSlot == SLOT_LEFT || fromSlot == SLOT_RIGHT)
@@ -1905,6 +1943,7 @@ void Player::onThingMove(const Creature *creature, const Position &fromPos, int 
 	}
 #endif //YUR_RINGS_AMULETS
 	client->sendThingMove(creature, fromPos, stackpos, fromItem, oldFromCount, toSlot, toItem, oldToCount, count);
+	refreshHeadSkillBonus(toSlot);
 #ifdef YUR_BOH
 	if (toSlot == SLOT_FEET || toSlot == SLOT_ARMOR ||
 		toSlot == SLOT_LEFT || toSlot == SLOT_RIGHT)
@@ -3074,6 +3113,7 @@ static bool isWandItem(int id)
 	case ITEM_WAND_OF_COSMIC_ENERGY:
 	case ITEM_WAND_OF_VORTEX:
 	case ITEM_WAND_OF_DRAGONBREATH:
+	case ITEM_CRIMSON_WAND:
 		return true;
 	default:
 		return false;
@@ -3120,6 +3160,17 @@ static bool isNightglassImbueWeaponItem(const Item* item)
 		nightglassStacksFromAid(item->getActionId()) > 0;
 }
 
+void Player::refreshHeadSkillBonus(slots_t fromSlot, slots_t toSlot)
+{
+	if(fromSlot != SLOT_HEAD && toSlot != SLOT_HEAD)
+		return;
+#ifdef YUR_BOH
+	checkBoh();
+#endif //YUR_BOH
+	if(client)
+		client->sendSkills();
+}
+
 void Player::checkBoh()
 {
 	bool bohNow = (items[SLOT_FEET] && items[SLOT_FEET]->getID() == ITEM_BOH);
@@ -3148,21 +3199,32 @@ void Player::checkBoh()
 
 	int helmMlNow = (items[SLOT_HEAD] && items[SLOT_HEAD]->getID() == ITEM_MAGIC_TURBAN) ? 1 : 0;
 
+	int armorMlNow = (items[SLOT_ARMOR] && items[SLOT_ARMOR]->getID() == ITEM_FURY_CAPE &&
+		(vocation == VOCATION_SORCERER || vocation == VOCATION_DRUID)) ? 1 : 0;
+
 	int emeraldNow = items[SLOT_ARMOR] ? emeraldStacksFromAid(items[SLOT_ARMOR]->getActionId(), items[SLOT_ARMOR]) : 0;
+
+	int crimsonHelmNow = (items[SLOT_HEAD] && items[SLOT_HEAD]->getID() == ITEM_CRIMSON_HELMET &&
+		isKnightOrPaladinFamily(vocation)) ? 1 : 0;
 
 	if(boh != bohNow || hasteEnchantStacks != hasteNow || imbueWandMl != wandMlNow ||
 		imbueRubyWeapon != rubyNow || imbueEmeraldArmor != emeraldNow ||
-		imbueHelmMl != helmMlNow || imbueNightglassSpeed != nightglassNow)
+		imbueCrimsonHelm != crimsonHelmNow ||
+		imbueHelmMl != helmMlNow || imbueArmorMl != armorMlNow ||
+		imbueNightglassSpeed != nightglassNow)
 	{
 		int hadRuby = imbueRubyWeapon;
 		int hadEmerald = imbueEmeraldArmor;
+		int hadCrimsonHelm = imbueCrimsonHelm;
 		int hadNightglass = imbueNightglassSpeed;
 		boh = bohNow;
 		hasteEnchantStacks = hasteNow;
 		imbueWandMl = wandMlNow;
 		imbueRubyWeapon = rubyNow;
 		imbueEmeraldArmor = emeraldNow;
+		imbueCrimsonHelm = crimsonHelmNow;
 		imbueHelmMl = helmMlNow;
+		imbueArmorMl = armorMlNow;
 		imbueNightglassSpeed = nightglassNow;
 		setNormalSpeed();
 		hasteTicks = 0;
@@ -3182,7 +3244,7 @@ void Player::checkBoh()
 				nightglassSpeedPercentFromStacks(nightglassNow), nightglassAttackDelayFromStacks(nightglassNow), PLAYER_ATTACK_DELAY_MS);
 			sendTextMessage(MSG_INFO, buf);
 		}
-		if(client && hadEmerald != emeraldNow)
+		if(client && (hadEmerald != emeraldNow || hadCrimsonHelm != crimsonHelmNow))
 			client->sendSkills();
 		sendStats();
 	}
@@ -3190,11 +3252,15 @@ void Player::checkBoh()
 
 int64_t Player::getEffectiveMagLevel() const
 {
-	return maglevel + imbueWandMl + imbueHelmMl;
+	return maglevel + imbueWandMl + imbueHelmMl + imbueArmorMl;
 }
 
 int Player::getAttackDelayMs() const
 {
+#ifdef JD_WANDS
+	if(getWandId() == ITEM_CRIMSON_WAND)
+		return 667;
+#endif //JD_WANDS
 	if(imbueNightglassSpeed)
 		return nightglassAttackDelayFromStacks(imbueNightglassSpeed);
 	if(imbueRubyWeapon)
@@ -3817,6 +3883,16 @@ void Player::checkPremium(int thinkTics)
 		premiumTicks -= thinkTics;
 		if (premiumTicks < 0)
 			premiumTicks = 0;
+
+		// Premium expired while the player was online: return to temple and
+		// remove any premium-only look expectation in a single transition.
+		if (premiumTicks == 0 && access < g_config.ACCESS_PROTECT && !g_config.FREE_PREMMY)
+		{
+			setBasicOutfit(this);
+			g_game.teleport(this, masterPos);
+			g_game.creatureChangeOutfit(this);
+			sendTextMessage(MSG_RED_INFO, "Se te acabo el premium. Fuiste enviado al templo con la ropa basica.");
+		}
 	}
 }
 #endif //YUR_PREMIUM_PROMOTION
@@ -3868,6 +3944,7 @@ int Player::getWandId() const
 		case ITEM_WAND_OF_COSMIC_ENERGY:
 		case ITEM_WAND_OF_VORTEX:
 		case ITEM_WAND_OF_DRAGONBREATH:
+		case ITEM_CRIMSON_WAND:
 			return id;
 		}
 	}

@@ -22,6 +22,8 @@
 #include <sstream>
 #include <fstream>
 #include <utility>
+#include <vector>
+#include <algorithm>
 
 #include "commands.h"
 #include "monster.h"
@@ -61,6 +63,7 @@ s_defcommands Commands::defined_commands[] = {
 	{"/closeserver",&Commands::closeServer},
 	{"/openserver",&Commands::openServer},
 	{"/getonline",&Commands::onlineList},
+	{"/ips",&Commands::onlineIpList},
 	{"/a",&Commands::teleportNTiles},
 	{"/kick",&Commands::kickPlayer},
 #ifdef YUR_CMD_EXT
@@ -666,6 +669,78 @@ bool Commands::onlineList(Creature* c, const std::string &cmd, const std::string
 	players.str("");
 	players << "Total: " << n << " player(s)" << std::endl;
 	player->sendTextMessage(MSG_BLUE_TEXT,players.str().c_str());
+	return true;
+}
+
+namespace {
+std::string formatIp(unsigned long ipValue)
+{
+	unsigned char ip[4];
+	*(unsigned long*)&ip = ipValue;
+	std::ostringstream os;
+	os << (unsigned int)ip[0] << "." << (unsigned int)ip[1] << "."
+	   << (unsigned int)ip[2] << "." << (unsigned int)ip[3];
+	return os.str();
+}
+
+struct OnlineIpEntry {
+	unsigned long ip;
+	std::string name;
+	int level;
+};
+} // namespace
+
+bool Commands::onlineIpList(Creature* c, const std::string &cmd, const std::string &param)
+{
+	Player* player = dynamic_cast<Player*>(c);
+	if(!player)
+		return false;
+
+	std::vector<OnlineIpEntry> entries;
+	AutoList<Player>::listiterator it = Player::listPlayer.list.begin();
+	for(; it != Player::listPlayer.list.end(); ++it) {
+		Player* onlinePlayer = (*it).second;
+		if(onlinePlayer->access >= player->access && onlinePlayer != player)
+			continue;
+
+		OnlineIpEntry entry;
+		entry.ip = onlinePlayer->getIP();
+		entry.name = onlinePlayer->getName();
+		entry.level = onlinePlayer->getPlayerInfo(PLAYERINFO_LEVEL);
+		entries.push_back(entry);
+	}
+
+	std::sort(entries.begin(), entries.end(),
+		[](const OnlineIpEntry& a, const OnlineIpEntry& b) {
+			if(a.ip != b.ip)
+				return a.ip > b.ip;
+			return a.name < b.name;
+		});
+
+	player->sendTextMessage(MSG_BLUE_TEXT, "Players online (by IP, desc):");
+	player->sendTextMessage(MSG_BLUE_TEXT, "ip   name   lvl");
+
+	std::stringstream chunk;
+	int lines = 0;
+	for(size_t i = 0; i < entries.size(); ++i) {
+		const OnlineIpEntry& entry = entries[i];
+		chunk << formatIp(entry.ip) << "   " << entry.name << "   "
+		      << entry.level << std::endl;
+		++lines;
+
+		if(lines == 10) {
+			player->sendTextMessage(MSG_BLUE_TEXT, chunk.str().c_str());
+			chunk.str("");
+			lines = 0;
+		}
+	}
+
+	if(lines != 0)
+		player->sendTextMessage(MSG_BLUE_TEXT, chunk.str().c_str());
+
+	std::stringstream total;
+	total << "Total: " << entries.size() << " player(s)";
+	player->sendTextMessage(MSG_BLUE_TEXT, total.str().c_str());
 	return true;
 }
 

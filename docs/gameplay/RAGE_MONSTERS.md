@@ -22,3 +22,17 @@ Al matar un monstruo elegible, **5.3% de chance** de que reviva al instante conv
 - No spawnan en zonas PZ ni PvP Arena
 - Son criaturas adicionales — no afectan el respawn normal del spawnpoint
 - El sistema es puro C++ (sin Lua), se gatilla automáticamente al morir cualquier monstruo
+
+### Inmunidad a magic fields (jul 2026)
+
+Las variantes `Angry` / `Furious` / `Enraged` son **inmunes a magic fields** (energy, fire, poison, etc.). Esto cubre:
+
+- Fields que ya estaban en el tile cuando el monstruo entra o cae sobre él.
+- Fields que un player tira encima mientras el monstruo está quieto.
+- Fields que aparecen bajo el monstruo por spells o AoE.
+
+**Implementación:** `server/YurOTS/ots/source/game.cpp` → `Game::thingMoveInternal(...)`, bloque "Magic Field in destiny field". Antes de llamar a `fieldItem->getDamage(creatureMoving)`, se chequea si `creatureMoving` es un `Monster` cuyo nombre matchea el helper `isRageMonsterName()` (prefijo `Angry ` / `Furious ` / `Enraged `). Si matchea, no se aplica el daño.
+
+**Nota:** el pathfinding de monsters ya evita tiles con fields (`Monster::tileHasMagicField` en `monster.cpp:119`), por lo que en condiciones normales los rage variants no caminan hacia fields. El fix en `game.cpp` cubre los casos residuales (spawn sobre field, teletransporte, push por spell).
+
+**Sin recompilar** este cambio no toma efecto — requiere rebuild del binario `yurots`.

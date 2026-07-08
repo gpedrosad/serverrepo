@@ -172,6 +172,7 @@ public:
 	static int luaActionDoDecayItem(lua_State *L);
 	static int luaActionDoCreateItem(lua_State *L);
 	static int luaActionDoSummonCreature(lua_State *L);
+	static int luaActionDoPlacePrivateTrainer(lua_State *L);
 	static int luaActionDoPlayerRemoveMoney(lua_State *L);
 	static int luaActionDoPlayerSetMasterPos(lua_State *L);
 	static int luaActionDoPlayerSetVocation(lua_State *L);

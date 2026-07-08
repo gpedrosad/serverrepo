@@ -499,11 +499,10 @@ void Spawn::idle(int t)
 			//delete it->second;
 			spawnedmap.erase(it++);
 		}
-		else if(!isInSpawnRange(it->second->pos) && it->first != 0) {
-			spawnedmap.insert(spawned_pair(0, it->second));
-			spawnedmap.erase(it++);
-		}
 		else
+			// Keep the original slot occupied even if the monster is lured away.
+			// Freeing it here allows the spawn to create duplicates while the
+			// original monster is still alive somewhere else in the world.
 			++it;
 	}
 	

@@ -26,6 +26,7 @@
 #include "npc.h"
 #include "game.h"
 #include "item.h"
+#include "private_trainers.h"
 
 #include <libxml/xmlmemory.h>
 #include <libxml/parser.h>
@@ -325,7 +326,7 @@ bool Actions::UseItemEx(Player* player, const Position &from_pos,
 	if(item->getID() != itemid)
 		return false;
 
-	if(!item->isUseable())
+	if(!item->isUseable() && item->getID() != PrivateTrainers::ITEM_ID)
 		return false;
 
 	Action *action = getAction(item);
@@ -701,6 +702,8 @@ int ActionScript::registerFunctions()
 	lua_register(luaState, "doCreateItem", ActionScript::luaActionDoCreateItem);
 	//doSummonCreature(name, position)
 	lua_register(luaState, "doSummonCreature", ActionScript::luaActionDoSummonCreature);
+	//doPlacePrivateTrainer(cid, itemuid, position)
+	lua_register(luaState, "doPlacePrivateTrainer", ActionScript::luaActionDoPlacePrivateTrainer);
 	//doPlayerSetMasterPos(cid,pos)
 	lua_register(luaState, "doPlayerSetMasterPos", ActionScript::luaActionDoPlayerSetMasterPos);
 	//doPlayerSetVocation(cid,voc)
@@ -1778,6 +1781,56 @@ int ActionScript::luaActionDoSummonCreature(lua_State *L){
 	unsigned int cid = action->AddThingToMap((Thing*)monster,pos);
 
 	lua_pushnumber(L, cid);
+	return 1;
+}
+
+int ActionScript::luaActionDoPlacePrivateTrainer(lua_State *L)
+{
+	//doPlacePrivateTrainer(cid, itemuid, position)
+	PositionEx pos;
+	internalGetPositionEx(L, pos);
+	unsigned int itemuid = (unsigned int)internalGetNumber(L);
+	unsigned int cid = (unsigned int)internalGetNumber(L);
+
+	ActionScript *action = getActionScript(L);
+
+	const KnownThing* playerThing = action->GetPlayerByUID(cid);
+	const KnownThing* itemThing = action->GetItemByUID(itemuid);
+	if (!playerThing || !itemThing) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Player* player = (Player*)playerThing->thing;
+	Item* item = (Item*)itemThing->thing;
+	if (!player || !item || item->getID() != PrivateTrainers::ITEM_ID) {
+		if (player)
+			player->sendCancel("You can not use this object.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	std::string message;
+	if (!PrivateTrainers::Place(action->game, player, (Position&)pos, message)) {
+		player->sendCancel(message.c_str());
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	PositionEx itempos = itemThing->pos;
+	if (item->isStackable() && item->getItemCountOrSubtype() > 1) {
+		item->setItemCountOrSubtype(item->getItemCountOrSubtype() - 1);
+		action->game->sendUpdateThing(action->_player, (Position&)itempos, item, itempos.stackpos);
+	}
+	else if (action->game->removeThing(action->_player, (Position&)itempos, item)) {
+		action->game->FreeThing(item);
+	}
+	else {
+		std::cout << "luaDoPlacePrivateTrainer: could not consume item " << PrivateTrainers::ITEM_ID << std::endl;
+	}
+
+	player->sendTextMessage(MSG_INFO, message.c_str(), (Position&)pos, NM_ME_MAGIC_ENERGIE);
+	lua_pushnumber(L, 1);
 	return 1;
 }
 

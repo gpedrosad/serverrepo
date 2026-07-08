@@ -284,14 +284,16 @@ public:
   std::vector<Thing*> ToReleaseThings;
   void FreeThing(Thing* thing);
 
-  Thing* getThing(const Position &pos,unsigned char stack,Player* player = NULL);
-  void addThing(Player* player,const Position &pos,Thing* thing);
-  bool removeThing(Player* player,const Position &pos,Thing* thing, bool setRemoved = true);
-  Position getThingMapPos(Player *player, const Position &pos);
+	  Thing* getThing(const Position &pos,unsigned char stack,Player* player = NULL);
+	  void addThing(Player* player,const Position &pos,Thing* thing);
+	  bool removeThing(Player* player,const Position &pos,Thing* thing, bool setRemoved = true);
+	  Position getThingMapPos(Player *player, const Position &pos);
+	  ReturnValue canThrowObjectTo(const Position& from, const Position& to, int objectstate = BLOCK_PROJECTILE);
+	  void sendMagicEffect(const Position& pos, unsigned char type);
 
-  void sendAddThing(Player* player,const Position &pos,const Thing* thing);
-  void sendRemoveThing(Player* player,const Position &pos,const Thing* thing,const unsigned char stackpos = 1,const bool autoclose = false);
-  void sendUpdateThing(Player* player,const Position &pos,const Thing* thing,const unsigned char stackpos = 1);
+	  void sendAddThing(Player* player,const Position &pos,const Thing* thing);
+	  void sendRemoveThing(Player* player,const Position &pos,const Thing* thing,const unsigned char stackpos = 1,const bool autoclose = false);
+	  void sendUpdateThing(Player* player,const Position &pos,const Thing* thing,const unsigned char stackpos = 1);
 
 	Creature* getCreatureByID(unsigned long id);
 	Player* getPlayerByID(unsigned long id);

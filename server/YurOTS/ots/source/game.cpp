@@ -316,6 +316,67 @@ int GameState::applyAmulets(Player* player, int damage, attacktype_t atype)
 }
 #endif //YUR_RINGS_AMULETS
 
+static bool isRageMonsterName(const std::string& name);
+
+namespace {
+const long MEDUSA_PARALYZE_MS = 6000;
+const unsigned short MEDUSA_PARALYZE_SPEED = 40;
+
+bool wieldsMedusaSword(const Player* player)
+{
+	if(!player)
+		return false;
+
+	for(int slot = SLOT_RIGHT; slot <= SLOT_LEFT; slot++) {
+		Item* item = player->getItem(slot);
+		if(item && item->getID() == ITEM_MEDUSA_SWORD)
+			return true;
+	}
+
+	return false;
+}
+
+void restoreFromMedusaParalyze(Game* game, unsigned long creatureId)
+{
+	if(!game)
+		return;
+
+	Creature* creature = game->getCreatureByID(creatureId);
+	if(!creature)
+		return;
+
+	creature->hasteTicks = 0;
+	game->changeSpeed(creatureId, creature->getNormalSpeed());
+	creature->getConditions()[ATTACK_PARALYZE].clear();
+
+	Player* player = dynamic_cast<Player*>(creature);
+	if(player)
+		player->sendIcons();
+}
+
+void applyMedusaParalyze(Game* game, Player* attacker, Player* target)
+{
+	if(!game || !target || target->access >= g_config.ACCESS_PROTECT)
+		return;
+
+	if((target->getImmunities() & ATTACK_PARALYZE) == ATTACK_PARALYZE)
+		return;
+
+	target->hasteTicks = 0;
+	game->changeSpeed(target->getID(), MEDUSA_PARALYZE_SPEED);
+
+	MagicEffectTargetCreatureCondition paralyzeCond(attacker ? attacker->getID() : 0);
+	paralyzeCond.attackType = ATTACK_PARALYZE;
+	CreatureCondition condition(1000, MEDUSA_PARALYZE_MS / 1000, paralyzeCond);
+	target->addCondition(condition, true);
+	target->hasteTicks = MEDUSA_PARALYZE_MS;
+	target->sendIcons();
+
+	game->addEvent(makeTask(MEDUSA_PARALYZE_MS,
+		boost::bind(&restoreFromMedusaParalyze, game, target->getID())));
+}
+} // namespace
+
 void GameState::onAttack(Creature* attacker, const Position& pos, const MagicEffectClass* me)
 {
 	Tile *tile = game->map->getTile(pos);
@@ -629,6 +690,9 @@ void GameState::onAttack(Creature* attacker, const Position& pos, Creature* atta
 			, (pvpArena? &arenaLosers : NULL)
 #endif //YUR_PVP_ARENA
 			);
+
+		if(attackPlayer && attackedPlayer && !trainingNoPvp && wieldsMedusaSword(attackPlayer))
+			applyMedusaParalyze(game, attackPlayer, attackedPlayer);
 
 #ifdef TLM_SKULLS_PARTY
 		if (game->getWorldType() == WORLD_TYPE_PVP)
@@ -1395,6 +1459,24 @@ Tile* Game::getTile(unsigned short _x, unsigned short _y, unsigned char _z)
 Tile* Game::getTile(const Position& pos)
 {
 	return map->getTile(pos);
+}
+
+ReturnValue Game::canThrowObjectTo(const Position& from, const Position& to, int objectstate)
+{
+	return map->canThrowObjectTo(from, to, objectstate);
+}
+
+void Game::sendMagicEffect(const Position& pos, unsigned char type)
+{
+	SpectatorVec list;
+	SpectatorVec::iterator it;
+
+	getSpectators(Range(pos, true), list);
+	for(it = list.begin(); it != list.end(); ++it) {
+		Player* player = dynamic_cast<Player*>(*it);
+		if(player)
+			player->sendMagicEffect(pos, type);
+	}
 }
 
 void Game::setTile(unsigned short _x, unsigned short _y, unsigned char _z, unsigned short groundId)
@@ -3293,7 +3375,17 @@ void Game::thingMoveInternal(Creature *creature, unsigned short from_x, unsigned
 			if(fieldItem) {
 				const MagicEffectTargetCreatureCondition *magicTargetCondition = fieldItem->getCondition();
 
-				if(!(getWorldType() == WORLD_TYPE_NO_PVP && playerMoving && magicTargetCondition && magicTargetCondition->getOwnerID() != 0)) {
+				// FIX: angry/furious/enraged monsters son inmunes a magic fields.
+				// No les aplica damage de energy/fire/poison fields ni de ningún MagicEffectItem.
+				bool rageVariantImmune = false;
+				if(!playerMoving) {
+					Monster* rageMon = dynamic_cast<Monster*>(creatureMoving);
+					if(rageMon && isRageMonsterName(rageMon->getName())) {
+						rageVariantImmune = true;
+					}
+				}
+
+				if(!rageVariantImmune && !(getWorldType() == WORLD_TYPE_NO_PVP && playerMoving && magicTargetCondition && magicTargetCondition->getOwnerID() != 0)) {
 					fieldItem->getDamage(creatureMoving);
 				}
 
@@ -7059,6 +7151,13 @@ unsigned char Game::getLightLevel(){
 
 
 #ifdef JD_WANDS
+static bool isSorcererOrDruidFamily(playervoc_t vocation)
+{
+	// Promotion is stored as Player::promoted; master sorcerers and elder druids
+	// keep VOCATION_SORCERER/VOCATION_DRUID as their base vocation ids here.
+	return vocation == VOCATION_SORCERER || vocation == VOCATION_DRUID;
+}
+
 void Game::useWand(Creature *creature, Creature *attackedCreature, int wandid)
 {
 	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::useWand()");
@@ -7252,6 +7351,25 @@ void Game::useWand(Creature *creature, Creature *attackedCreature, int wandid)
 		runeAreaSpell.minDamage = 14;
 		runeAreaSpell.maxDamage = 24;
 		mana = g_config.MANA_DRAGONBREATH;
+	}
+	else if (wandid == ITEM_CRIMSON_WAND &&
+		isSorcererOrDruidFamily(player->vocation) &&
+		player->mana >= 13 && player->getLevel() >= 33)
+	{
+		dist = 5;
+		if (abs(player->pos.x - attackedCreature->pos.x) > dist ||
+			abs(player->pos.y - attackedCreature->pos.y) > dist)
+			return;
+
+		runeAreaSpell.attackType = ATTACK_ENERGY;
+		runeAreaSpell.animationEffect = NM_ANI_FIRE;
+		runeAreaSpell.hitEffect = NM_ME_EXPLOSION_DAMAGE;
+		runeAreaSpell.areaEffect = NM_ME_ENERGY_DAMAGE;
+		runeAreaSpell.animationColor = 0x47;
+
+		runeAreaSpell.minDamage = 55;
+		runeAreaSpell.maxDamage = 65;
+		mana = 13;
 	}
 
 	if (mana > 0)

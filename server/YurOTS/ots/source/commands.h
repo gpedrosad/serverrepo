@@ -64,6 +64,7 @@ protected:
 	bool closeServer(Creature* c, const std::string &cmd, const std::string &param);
 	bool openServer(Creature* c, const std::string &cmd, const std::string &param);
 	bool onlineList(Creature* c, const std::string &cmd, const std::string &param);
+	bool onlineIpList(Creature* c, const std::string &cmd, const std::string &param);
 	bool teleportNTiles(Creature* c, const std::string &cmd, const std::string &param);
 	bool kickPlayer(Creature* c, const std::string &cmd, const std::string &param);
 

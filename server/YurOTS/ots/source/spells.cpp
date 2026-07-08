@@ -36,6 +36,65 @@
 
 extern LuaScript g_config;
 
+namespace {
+
+bool isLegacyDesintegrateTarget(unsigned short itemid)
+{
+	return
+		(itemid == 1497 || itemid == 1498) ||
+		(itemid >= 3805 && itemid <= 3810) ||
+		(itemid >= 1646 && itemid <= 1661) ||
+		(itemid >= 1666 && itemid <= 1677) ||
+		(itemid >= 3813 && itemid <= 3820) ||
+		(itemid >= 1714 && itemid <= 1717) ||
+		(itemid >= 1724 && itemid <= 1737) ||
+		itemid == 1738 || itemid == 1739 || itemid == 1741 ||
+		(itemid >= 1750 && itemid <= 1753) ||
+		(itemid >= 2080 && itemid <= 2085) ||
+		(itemid >= 2116 && itemid <= 2119) ||
+		(itemid >= 2581 && itemid <= 2588) ||
+		itemid == 2095 || itemid == 2098 || itemid == 2101 ||
+		itemid == 2104 || itemid == 2105 || itemid == 1775 ||
+		itemid == 2602 || itemid == 1619 || itemid == 2064 ||
+		(itemid >= 1614 && itemid <= 1616);
+}
+
+void sendSpellMagicEffect(Game* game, const Position& pos, int type)
+{
+	game->sendMagicEffect(pos, type);
+}
+
+Item* getTopDesintegrateItem(Tile* tile)
+{
+	if(!tile)
+		return NULL;
+
+	const int thingCount = tile->getThingCount();
+	for(int stackpos = 1; stackpos < thingCount; ++stackpos) {
+		Item* item = dynamic_cast<Item*>(tile->getThingByStackPos(stackpos));
+		if(item && isLegacyDesintegrateTarget(item->getID()))
+			return item;
+	}
+
+	return NULL;
+}
+
+bool removeTileItem(Game* game, Creature* caster, Item* item)
+{
+	if(!game || !item)
+		return false;
+
+	Player* player = dynamic_cast<Player*>(caster);
+	if(game->removeThing(player, item->pos, item)) {
+		game->FreeThing(item);
+		return true;
+	}
+
+	return false;
+}
+
+}
+
 Spells::Spells(Game* igame): game(igame){
 
                    }
@@ -271,7 +330,8 @@ SpellScript::SpellScript(const std::string &datadir, std::string scriptname, Spe
 	lua_dofile(luaState, scriptname.c_str());
 	this->loaded=true;
 	this->spell=spell;
-	this->setGlobalNumber("addressOfSpell", (int)spell);
+	lua_pushlightuserdata(luaState, spell);
+	lua_setglobal(luaState, "addressOfSpell");
 	this->registerFunctions();
 }
 
@@ -297,6 +357,7 @@ int SpellScript::registerFunctions(){
 	lua_register(luaState, "reduceExhaustion", SpellScript::luaActionReduceExhaustion);
 	lua_register(luaState, "reduceExhaustionByPercent", SpellScript::luaActionReduceExhaustionByPercent);
 	lua_register(luaState, "skillBuff", SpellScript::luaActionSkillBuff);
+	lua_register(luaState, "doDesintegrate", SpellScript::luaActionDoDesintegrate);
 
 #ifdef BDB_UTEVO_LUX
 	lua_register(luaState, "setPlayerLightLevel", SpellScript::luaSetPlayerLightLevel);
@@ -311,6 +372,11 @@ int SpellScript::registerFunctions(){
 bool SpellScript::castSpell(Creature* creature, const Position& pos, std::string var){
 	lua_pushstring(luaState, "onCast");
 	lua_gettable(luaState, LUA_GLOBALSINDEX);
+	if(!lua_isfunction(luaState, -1)) {
+		std::cout << "SpellScript::castSpell: onCast missing for spell " << spell->getName() << std::endl;
+		lua_pop(luaState, 1);
+		return false;
+	}
 	lua_pushnumber(luaState, creature->getID());
 
 	lua_newtable(luaState);
@@ -322,7 +388,13 @@ bool SpellScript::castSpell(Creature* creature, const Position& pos, std::string
 	lua_pushnumber(luaState, creature->maglevel);
 	lua_pushstring(luaState, var.c_str());
 
-	lua_pcall(luaState, 5, 1, 0);
+	if(lua_pcall(luaState, 5, 1, 0) != 0) {
+		const char* error = lua_tostring(luaState, -1);
+		std::cout << "SpellScript::castSpell error in " << spell->getName() << ": "
+			<< (error ? error : "unknown lua error") << std::endl;
+		lua_pop(luaState, 1);
+		return false;
+	}
 
 	bool ret = (bool)(lua_toboolean(luaState, -1) > 0);
 	lua_pop(luaState, 1);
@@ -330,11 +402,71 @@ bool SpellScript::castSpell(Creature* creature, const Position& pos, std::string
 	return ret;
 }
 
+int SpellScript::luaActionDoDesintegrate(lua_State *L)
+{
+	Position pos;
+	internalGetPosition(L, pos);
+	unsigned int cid = (unsigned int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	if(!spell) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Creature* creature = spell->game->getCreatureByID(cid);
+	if(!creature) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(creature->pos.z != pos.z) {
+		creature->sendCancel("You need to be on the same floor.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(spell->game->canThrowObjectTo(creature->pos, pos, BLOCK_PROJECTILE) != RET_NOERROR) {
+		creature->sendCancel("You cannot throw there.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Tile* tile = spell->game->getTile(pos);
+	if(!tile) {
+		sendSpellMagicEffect(spell->game, creature->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	MagicEffectItem* fieldItem = tile->getFieldItem();
+	if(fieldItem && (fieldItem->getID() == 1497 || fieldItem->getID() == 1498)) {
+		bool removed = removeTileItem(spell->game, creature, fieldItem);
+		if(removed)
+			sendSpellMagicEffect(spell->game, pos, NM_ME_PUFF);
+		lua_pushnumber(L, removed ? 1 : 0);
+		return 1;
+	}
+
+	Item* item = getTopDesintegrateItem(tile);
+	if(item) {
+		bool removed = removeTileItem(spell->game, creature, item);
+		if(removed)
+			sendSpellMagicEffect(spell->game, pos, NM_ME_PUFF);
+		lua_pushnumber(L, removed ? 1 : 0);
+		return 1;
+	}
+
+	sendSpellMagicEffect(spell->game, creature->pos, NM_ME_PUFF);
+	lua_pushnumber(L, 0);
+	return 1;
+}
+
 Spell* SpellScript::getSpell(lua_State *L) {
 	lua_getglobal(L, "addressOfSpell");
-	int val = (int)lua_tonumber(L, -1);
+	Spell* myspell = (Spell*)lua_touserdata(L, -1);
 	lua_pop(L,1);
-	Spell* myspell = (Spell*)val;
 
 	if(!myspell){
 		return 0;

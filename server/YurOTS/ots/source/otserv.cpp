@@ -54,6 +54,7 @@
 #include "pvparena.h"
 #include "trainingarea.h"
 #include "readables.h"
+#include "private_trainers.h"
 #include "aac.h"
 
 #ifdef __OTSERV_ALLOCATOR__
@@ -759,6 +760,14 @@ int main(int argc, char *argv[])
 	if (!Houses::Load(&g_game))
 	{
 		ErrorMessage("Could not load houses!");
+		return -1;
+	}
+	std::cout << "[done]" << std::endl;
+
+	std::cout << ":: Loading private_trainers.xml...  ";
+	if (!PrivateTrainers::Load(&g_game))
+	{
+		ErrorMessage("Could not load private_trainers.xml!");
 		return -1;
 	}
 	std::cout << "[done]" << std::endl;

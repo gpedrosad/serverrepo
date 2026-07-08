@@ -18,6 +18,7 @@
 <command cmd="/closeserver"	access="3" />
 <command cmd="/openserver"	access="3" />
 <command cmd="/getonline"	access="2" />
+<command cmd="/ips"			access="2" />
 <command cmd="/summon"		access="3" />
 <command cmd="/kick"		access="2" />
 

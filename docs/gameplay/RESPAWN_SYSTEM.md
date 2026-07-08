@@ -1,0 +1,303 @@
+# Respawn de monstruos en Retro76 / YurOTS
+
+Documento de comportamiento actual del sistema de respawn de monstruos.
+Describe como funciona hoy el motor, no como "deberia" funcionar.
+
+Actualizado con el fix aplicado el `2026-07-06` para evitar duplicacion de
+monstruos cuando eran lureados fuera del area del spawn.
+
+Relacionado:
+
+- `server/YurOTS/ots/source/spawn.cpp`
+- `server/YurOTS/ots/source/spawn.h`
+- `server/YurOTS/ots/source/otserv.cpp`
+- `server/YurOTS/ots/data/world/test-spawn.xml`
+- `docs/CAMBIAR-MAPA.md`
+- `docs/gameplay/RAGE_MONSTERS.md`
+
+## Resumen corto
+
+Hoy el sistema puede parecer que "acumula" respawns por un motivo normal:
+
+1. **Burst legitimo por visibilidad**:
+   si el respawn ya vencio pero un player normal sigue viendo el tile, el
+   monstruo no aparece todavia, pero el timer tampoco se reinicia. Cuando el
+   tile deja de estar visible, puede reaparecer en el siguiente chequeo y
+   varios slots pueden salir juntos.
+
+El bug de duplicacion real por kiteo fuera del area fue corregido el
+`2026-07-06`: ahora un monstruo vivo sigue ocupando su slot original aunque se
+aleje del radio del spawn.
+
+## Archivos que participan
+
+### 1. Archivo de spawns del mapa
+
+El mapa activo usa:
+
+- `server/YurOTS/ots/data/world/test.otbm`
+- `server/YurOTS/ots/data/world/test-spawn.xml`
+
+El `.otbm` no guarda los monstruos activos del mundo. Solo referencia el archivo
+externo de spawns. En OTBM, la referencia se lee por `OTBM_ATTR_EXT_SPAWN_FILE`.
+
+### 2. Loader del mapa
+
+Durante el arranque:
+
+- `Map::loadMap(...)` devuelve `SPAWN_XML` para mapas `OTBM` y `XML`
+- `otserv.cpp` inicializa `SpawnManager`
+- `SpawnManager::loadSpawnsXML(...)` lee `test-spawn.xml`
+- `SpawnManager::startup()` hace el spawn inicial
+
+## Formato real de `test-spawn.xml`
+
+Cada bloque:
+
+```xml
+<spawn centerx="153" centery="46" centerz="4" radius="5">
+  <monster name="dragon" x="0" y="-1" z="4" spawntime="90" direction="2" />
+</spawn>
+```
+
+Se interpreta asi:
+
+- `centerx`, `centery`, `centerz`: centro del spawn area
+- `radius`: radio cuadrado del area de spawn
+- `monster x`, `monster y`: **offsets relativos** al centro, no coordenadas
+  absolutas
+- `monster z`: hoy el loader **no lo usa**; la Z efectiva sale de `centerz`
+- `spawntime`: segundos en XML, milisegundos internamente
+- `direction`: orientacion inicial
+
+La posicion real del monstruo queda:
+
+- `real_x = centerx + x`
+- `real_y = centery + y`
+- `real_z = centerz`
+
+## Estado actual del mapa activo
+
+Analizando `server/YurOTS/ots/data/world/test-spawn.xml` hoy:
+
+- `373` bloques `<spawn>`
+- `1201` slots `<monster>`
+- `18` bloques `<spawn />` vacios
+- no hay posiciones absolutas duplicadas
+- no hay centros de spawn duplicados
+
+Distribucion actual de `spawntime`:
+
+- `60s`: `980` slots
+- `90s`: `152` slots
+- `120s`: `55` slots
+- otros valores: marginales
+
+O sea: la data actual no parece duplicada. El problema venia del comportamiento
+del motor, no del XML del mapa.
+
+## Ciclo de vida actual de un spawn
+
+### 1. Carga
+
+`SpawnManager::loadSpawnsXML(...)` crea un `Spawn` por cada bloque `<spawn>` y
+un slot interno por cada `<monster>`.
+
+Cada slot guarda:
+
+- nombre del monstruo
+- posicion absoluta
+- direccion
+- `spawntime`
+- `lastspawn`
+
+### 2. Spawn inicial al boot
+
+`Spawn::startup()` recorre todos los slots y llama `respawn(...)` de inmediato.
+
+Consecuencia:
+
+- al reiniciar el server, el mundo queda repoblado enseguida
+- el `spawntime` no se espera al arrancar
+
+### 3. Loop de chequeo
+
+Si existe al menos un spawn, el server agenda `Game::checkSpawns(20000)`.
+
+Eso significa:
+
+- el respawn se revisa cada `20s`
+- no es continuo ni por evento fino
+- cualquier cosa "lista" sale en el siguiente tick de `20s`
+
+### 4. Cuando un monstruo muere
+
+En `Spawn::idle(...)`, si un monstruo asociado al slot aparece como
+`isRemoved == true`:
+
+- se actualiza `lastspawn = OTSYS_TIME()`
+- se elimina del tracking activo del spawn
+
+Consecuencia:
+
+- el timer de respawn empieza a contar desde la remocion real
+
+### 5. Cuando el monstruo sale del area del spawn
+
+Este punto cambio el `2026-07-06`.
+
+Comportamiento actual:
+
+- si el monstruo sigue vivo pero sale del cuadrado del spawn
+- **sigue ocupando su `spawnid` original**
+- ese slot no vuelve a considerarse libre hasta que el monstruo muera o sea
+  removido
+
+Consecuencia directa:
+
+- un monstruo lureado lejos **no** habilita un respawn duplicado del mismo slot
+- si alguien deja un monstruo vivo muy lejos, ese spawn queda bloqueado hasta
+  que ese monstruo desaparezca de verdad
+
+Este tradeoff es intencional: es preferible un spawn bloqueado por un lure a
+duplicar monstruos vivos en el mundo.
+
+## Como decide reaparecer
+
+Para cada slot:
+
+1. Si no hay monstruo activo asociado a ese `spawnid`
+2. y `OTSYS_TIME() - lastspawn >= spawntime`
+3. entonces revisa espectadores cerca del tile
+4. si ningun player normal puede ver ese tile, respawnea
+
+La visibilidad usa `Player::CanSee(...)`, que a su vez usa el rango visible del
+cliente Tibia 7.6. No usa line-of-sight real.
+
+## Cambio aplicado el 2026-07-03
+
+Hay un cambio reciente documentado en
+`docs/_archive/CAMBIOS_SESION_2026-07-03.md`:
+
+- antes, si habia players cerca, el respawn podia patearse reiniciando su espera
+- ahora, si el tile esta visible:
+  - el monstruo no reaparece todavia
+  - pero el timer **no** se reinicia
+
+Consecuencia:
+
+- el slot queda "ready"
+- apenas nadie lo ve, sale en el proximo tick de `20s`
+- varios slots pueden quedar ready a la vez y reaparecer juntos
+
+Esto explica acumulacion visual por rafagas, pero no duplicacion permanente.
+
+## Cambio aplicado el 2026-07-06
+
+En `Spawn::idle(...)` se elimino la logica que liberaba el slot cuando un
+monstruo salia del area del spawn sin morir.
+
+Antes:
+
+- el monstruo se movia internamente a la clave `0`
+- el `spawnid` original quedaba libre
+- pasado el `spawntime`, el spawn podia crear otro monstruo
+- si el original seguia vivo, se producia duplicacion real
+
+Ahora:
+
+- el monstruo conserva su `spawnid`
+- el slot sigue ocupado mientras ese monstruo exista
+- no deberian aparecer duplicados por lure fuera del radio
+
+## Por que hoy puede parecer que "se acumulan"
+
+### Caso actual. Rafaga al dejar de mirar
+
+Escenario:
+
+1. Matan varios monstruos de un mismo sector.
+2. Los timers vencen mientras un player sigue viendo tiles de respawn.
+3. Ninguno reaparece aun.
+4. El player se aleja o deja de verlos.
+5. En el siguiente tick de `20s`, varios reaparecen juntos.
+
+Resultado:
+
+- parece que "se acumularon"
+- en realidad estaban pendientes, no duplicados
+
+## Bug historico corregido
+
+### Duplicacion por kiteo fuera del radio
+
+Antes del fix del `2026-07-06`, el siguiente escenario podia duplicar monstruos:
+
+1. Un monstruo salia vivo del area cuadrada de su spawn.
+2. El spawn dejaba de contarlo como ocupante del slot.
+3. Cuando se cumplia el `spawntime`, el slot podia crear otro monstruo.
+4. El monstruo original podia seguir vivo fuera del area.
+
+Resultado historico:
+
+- habia dos criaturas relacionadas al mismo slot de spawn
+- si esto se repetia, el mapa podia verse "acumulado"
+
+Ese ya no deberia ser el comportamiento del binario actualizado.
+
+## Cosas que NO afectan este respawn
+
+El sistema de `rage monsters` es aparte:
+
+- puede crear una variante especial al morir un monstruo
+- no usa el loop normal de `spawn.cpp`
+- no reemplaza ni bloquea el slot base del spawnpoint
+
+Ver `docs/gameplay/RAGE_MONSTERS.md`.
+
+## Quirks utiles para mantenimiento
+
+- El area del spawn se evalua como cuadrado alrededor del centro, no como
+  circulo.
+- El chequeo de visibilidad usa pantalla de cliente, no line-of-sight real.
+- El check corre cada `20s`, asi que siempre hay granularidad gruesa.
+- `monster z` en XML no gobierna el spawn real; manda `centerz`.
+- Un restart del server repuebla inmediatamente todos los slots.
+- Los bloques `<spawn />` vacios no hacen nada.
+
+## Como probarlo
+
+### Prueba actual de rafaga por visibilidad
+
+1. Mata monstruos de un mismo sector.
+2. Quedate mirando el tile donde deberian reaparecer.
+3. Espera mas que su `spawntime`.
+4. Alejate o deja de ver esos tiles.
+5. Espera el proximo tick de hasta `20s`.
+
+Esperado hoy:
+
+- varios pueden reaparecer juntos
+
+### Prueba del fix de no-duplicacion
+
+1. Lurea un monstruo fuera del cuadrado de su spawn.
+2. Mantenelo vivo.
+3. Espera su `spawntime` mas el siguiente tick de hasta `20s`.
+4. Volve al spawn original.
+
+Esperado hoy:
+
+- el spawn original **no** deberia generar otro monstruo mientras el primero
+  siga vivo
+
+## Diagnostico actual
+
+Con el codigo actual, la explicacion mas precisa para "los respawns se
+acumulan" es:
+
+- **si reaparecen muchos juntos**: efecto del cambio de visibilidad del
+  `2026-07-03`
+- **si siguen apareciendo monstruos extra vivos al mismo tiempo**: o el binario
+  corriendo no incluye el fix del `2026-07-06`, o existe otro camino distinto
+  al tracking normal del spawn

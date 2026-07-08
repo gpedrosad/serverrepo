@@ -1,10 +1,16 @@
 -- simple quests based on uniqueId
 -- to make quest create chest on map and set its uniqueId to id of quest item
+-- vanilla items: uniqueId 1001-4999 (prize id = uniqueId)
+-- zagan custom items: uniqueId 20100-20199 (prize id = uniqueId)
+
+local function isQuestPrizeId(prize)
+	return (prize > 1000 and prize < 5000) or (prize >= 20100 and prize <= 20199)
+end
 
 function onUse(cid, item, frompos, item2, topos)
 	prize = item.uid
 
-	if prize > 1000 and prize < 5000 then
+	if isQuestPrizeId(prize) then
 		queststatus = getPlayerStorageValue(cid,prize)
 
 		if queststatus == -1 then

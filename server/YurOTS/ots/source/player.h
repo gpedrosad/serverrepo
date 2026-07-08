@@ -387,6 +387,7 @@ public:
 
 #ifdef YUR_BOH
 	void checkBoh();
+	void refreshHeadSkillBonus(slots_t fromSlot, slots_t toSlot = (slots_t)0);
 	int64_t getEffectiveMagLevel() const;
 	int getAttackDelayMs() const;
 	int getInitialAttackDelayMs() const;

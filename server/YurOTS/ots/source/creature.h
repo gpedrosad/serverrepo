@@ -302,7 +302,9 @@ protected:
 	int imbueWandMl;
 	int imbueRubyWeapon;
 	int imbueEmeraldArmor;
+	int imbueCrimsonHelm;
 	int imbueHelmMl;
+	int imbueArmorMl;
 	int imbueNightglassSpeed;
 #endif //YUR_BOH
 #ifdef YUR_RINGS_AMULETS

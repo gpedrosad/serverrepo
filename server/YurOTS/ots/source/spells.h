@@ -135,7 +135,7 @@ public:
 	virtual ~SpellScript(){}
   bool castSpell(Creature* creature, const Position& pos, std::string var);
   bool isLoaded(){return loaded;}
-  static Spell* SpellScript::getSpell(lua_State *L);
+  static Spell* getSpell(lua_State *L);
 
 	static int luaActionDoTargetSpell(lua_State *L);
 	static int luaActionDoTargetExSpell(lua_State *L);
@@ -154,14 +154,15 @@ public:
   static int luaActionGetSpeed(lua_State *L);
   static int luaActionMakeRune(lua_State *L);
   static int luaActionMakeArrows(lua_State *L);
-  static int luaActionMakeFood(lua_State *L);
-  static int luaActionReduceExhaustion(lua_State *L);
-  static int luaActionReduceExhaustionByPercent(lua_State *L);
-  static int luaActionSkillBuff(lua_State *L);
+	static int luaActionMakeFood(lua_State *L);
+	static int luaActionReduceExhaustion(lua_State *L);
+	static int luaActionReduceExhaustionByPercent(lua_State *L);
+	static int luaActionSkillBuff(lua_State *L);
+	static int luaActionDoDesintegrate(lua_State *L);
 
-#ifdef BDB_UTEVO_LUX
-	static int luaSetPlayerLightLevel(lua_State *L);
-#endif //BDB_UTEVO_LUX
+	#ifdef BDB_UTEVO_LUX
+		static int luaSetPlayerLightLevel(lua_State *L);
+	#endif //BDB_UTEVO_LUX
 #ifdef YUR_INVISIBLE
 	static int luaActionInvisible(lua_State *L);
 #endif //YUR_INVISIBLE
