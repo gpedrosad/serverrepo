@@ -32,8 +32,8 @@ area = {
         BerserkGranObject.minDmg = 0
         BerserkGranObject.maxDmg = 0
     else
-        BerserkGranObject.minDmg = (level * 2 + maglv * 3) * 2.8 - 30
-        BerserkGranObject.maxDmg = (level * 2 + maglv * 3) * 3.6
+        BerserkGranObject.minDmg = (level * 1.5 + maglv * 1.5) * 1.32
+        BerserkGranObject.maxDmg = (level * 1.5 + maglv * 1.5) * 2.53
     end
 
     return doAreaMagic(cid, centerpos, needDirection, areaEffect, area, BerserkGranObject:ordered())

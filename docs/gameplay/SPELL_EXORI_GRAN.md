@@ -19,8 +19,8 @@ YurOTS.
 | damageEffect      | `NM_ME_HIT_AREA`           | **`NM_ME_EXPLOSION_AREA` (explosión)** |
 | animationColor    | `RED` (180)                | **`ORANGE` (193)**               |
 | drawblood         | true                       | true                             |
-| damage min        | `(level*1.5 + maglv*1.5) * 1.2` | **`(level*2 + maglv*3) * 2.8 - 30`** |
-| damage max        | `(level*1.5 + maglv*1.5) * 2.3` | **`(level*2 + maglv*3) * 3.6`**   |
+| damage min        | `(level*1.5 + maglv*1.5) * 1.2` | **`(level*1.5 + maglv*1.5) * 1.32`** (+10% vs exori) |
+| damage max        | `(level*1.5 + maglv*1.5) * 2.3` | **`(level*1.5 + maglv*1.5) * 2.53`** (+10% vs exori) |
 
 Diferencias visuales en el cliente 7.6:
 - **exori**: nube de polvo blanco (`NM_ME_HIT_AREA`) en un cuadrado 3×3 alrededor del caster, texto de daño rojo.
@@ -65,8 +65,8 @@ area = {
         BerserkGranObject.minDmg = 0
         BerserkGranObject.maxDmg = 0
     else
-        BerserkGranObject.minDmg = (level * 2 + maglv * 3) * 2.8 - 30
-        BerserkGranObject.maxDmg = (level * 2 + maglv * 3) * 3.6
+        BerserkGranObject.minDmg = (level * 1.5 + maglv * 1.5) * 1.32
+        BerserkGranObject.maxDmg = (level * 1.5 + maglv * 1.5) * 2.53
     end
 
     return doAreaMagic(cid, centerpos, needDirection, areaEffect, area, BerserkGranObject:ordered())
@@ -152,18 +152,17 @@ ancha, alcanza a enemigos en diagonales lejanas que el exori no toca.
 2. Loguear con account `111111` / pass `tibia`, elegir **GM Yurez** (level 100, access 3, maglevel 300) o un Knight.
 3. Decir `exori gran` en el chat (default: Enter).
 4. Con maglevel 300 y level 100, el daño ronda:
-   - min = (200 + 900) * 2.8 - 30 = 3050
-   - max = (200 + 900) * 3.6 = 3960
-   Útil para testing agresivo. Con un knight normal level 37 maglv 5: min ≈ 46, max ≈ 59.
+   - min = 135 * 1.32 = 178
+   - max = 135 * 2.53 = 342
+   Con un knight normal level 80 maglv 10: min ≈ 178, max ≈ 342 (exori: 162–311).
 
 ## 7. Notas de diseño
 
 - Se mantuvo `attackType = ATTACK_PHYSICAL` porque temáticamente es un golpe
   berserker (knight), no mágico. La diferencia visual viene por los efectos
   (`NM_ME_EXPLOSION_AREA` + `NM_ME_DRAW_BLOOD`) y el color del texto (`ORANGE`).
-- El `mana` 200 y `maglv` 9 lo posicionan como upgrade del `exori` (100/5) sin
-  romper el balance: cuesta el doble de maná y requiere casi el doble de magic
-  level, pero hace ~2-3× el daño y cubre más área.
+- El `mana` 200 y `maglv` 9 lo posicionan como upgrade del `exori` (100/5): más área
+  (12 vs 8 casillas) y +10% daño por casilla, al doble de costo de maná.
 - El daño usa la fórmula clásica de YurOTS `(level*2 + maglv*3) * factor`, igual
   que el `Ultimate Explosion` original, escalando bien con level.
 - No se modificó código C++: el spell es 100% data-driven (XML + Lua). No
