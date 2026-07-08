@@ -48,6 +48,8 @@ Si alguno de estos archivos no existe, **avisar** al usuario antes de seguir.
 8. **SIEMPRE** consultar `docs/INDEX.md` y el doc del subsistema antes de tocar ese subsistema.
 9. **SIEMPRE** leer el doc de deploy completo al menos una vez antes del primer deploy al VPS.
 10. Si algo no se entiende del flujo o del incidente, **preguntar antes de actuar**.
+11. **NUNCA** deployar un `test.otbm` nuevo sin probar depots in-game (locker temple → debe mostrar items del jugador, no contenedor vacío). Ver `docs/gameplay/DEPOTS.md`.
+12. Si un jugador reporta “depot vacío”, **no tocar** `players/*.xml` de entrada: los items suelen estar en `<depot depotid="1">`; el bug es mapa/C++, no pérdida de data.
 
 ---
 
@@ -60,6 +62,8 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 | Gemas / minería / crafting | `docs/gameplay/GEMS.md` |
 | PvP, frag list, balance de combate | `docs/PVP_SYSTEM.md` |
 | Trade, items, transacciones | `docs/TRADE_SYSTEM.md` |
+| Depots, lockers 2589, deploy de mapa | `docs/gameplay/DEPOTS.md` |
+| Cambiar / exportar mapa OTBM | `docs/CAMBIAR-MAPA.md` |
 | Cliente retro76 / updater | `docs/CLIENT.md` y `docs/CLIENT_UPDATER_RETRO76.md` |
 | Sockets, cuelgues, kicks | `docs/systems/SOCKET_DEBUG_LOGGING.md` y `docs/systems/PREVENT_OT_HANGS.md` |
 | Crash / core dumps | `docs/systems/CRASH_DIAGNOSTICS.md` |
@@ -289,22 +293,34 @@ Caminos de `onThingMove` que deben cubrir `SLOT_HEAD`: inventory↔inventory, in
 - **Solo manifest / solo OTB no alcanza** — si el item “debería” hacer algo en combate o stats, buscar en `source/` si existe `ITEM_*`; si no, implementar.
 - **Rebuild parcial tras tocar `creature.h`** — agregar miembros a `Creature` sin `make clean` dejó el server en crash loop al cargar mapa (jul 2026).
 
-### Depots en mapa (lockers 2589) — jul 2026
+### Depots en mapa (lockers 2589) — incidente jul 2026
 
-**Síntoma:** jugadores abren el depot del temple y ven contenedor vacío; sus items “desaparecieron” (siguen en `players/*.xml` bajo `<depot depotid="1">`).
+**Doc completo:** [`docs/gameplay/DEPOTS.md`](docs/gameplay/DEPOTS.md) — leer **antes** de tocar `test.otbm` o deployar mapa.
 
-**Causa:** los lockers `2589` en `test.otbm` exportados desde RME vienen como **tile inline** (`OTBM_ATTR_ITEM`) **sin** `OTBM_ATTR_DEPOT_ID`. El motor trataba el locker como contenedor normal del mapa (`container->depot == 0`), no como depot del jugador.
+**Síntoma:** jugadores abren locker del temple → contenedor vacío; reportan que “perdieron” el depot.
 
-**Fix en código (producción):** `actions.cpp` → `resolveMapDepotId()` asigna `depotid=1` a lockers `2589–2592` del mapa cuando el OTBM no trae depot id. Los items del jugador vuelven al abrir **en la ubicación actual** del locker — no hace falta mover tiles.
+**Realidad:** los items siguen en `players/*.xml` (`<depot depotid="1">`). El mapa no enlazaba el locker con ese id.
 
-**Reglas para agentes:**
+**Causa raíz:** lockers `2589` exportados desde RME como **tile inline** (`OTBM_ATTR_ITEM`) **sin** `OTBM_ATTR_DEPOT_ID` → `container->depot == 0` → el motor abre el contenedor vacío del mapa, no el depot del jugador.
 
-1. **Nunca** deployar un mapa nuevo sin probar depots in-game (abrir locker temple y verificar que muestra items guardados).
-2. Los items del depot viven en **`players/*.xml`** (data sagrada). Un mapa roto **no borra** el depot XML; solo desconecta el locker del `depotid` correcto.
-3. `scripts/patch-map-depot-ids.py` solo parchea nodos `OTBM_ITEM` hijos; **no** alcanza lockers inline en tile. Preferir depot id en RME al colocar, o el fallback C++ anterior.
-4. `scripts/scan-map-depots.py <map.otbm>` lista lockers y si tienen `depotid` — correr antes de deploy de mapa.
-5. En deploy de mapa: **no tocar** `houseitems.xml` ni depots en XML; `deploy-vps.sh` los preserva del backup.
-6. Si un locker debe usar otro `depotid` (ej. otra ciudad), colocarlo en RME con depot id explícito o extender `resolveMapDepotId()` — el default del temple es **1** (83 players en prod usan `depotid="1"`).
+**Fix en producción (commit `8acdba0`):** `actions.cpp` → `resolveMapDepotId()` + `openContainer()` — lockers `2589–2592` sin depot id en OTBM resuelven a **`depotid=1`**. Funciona en las **ubicaciones actuales** del mapa (no hace falta mover tiles).
+
+**Checklist mínimo antes de deploy de mapa:**
+
+```bash
+python3 scripts/scan-map-depots.py server/YurOTS/ots/data/world/test.otbm
+python3 scripts/sync-houses-with-map.py --dry-run
+# In-game local: abrir locker temple con char que tenga items en depot → deben verse
+```
+
+**Reglas para agentes (resumen):**
+
+1. **Nunca** deployar mapa sin prueba in-game de depot (regla de oro §2.11).
+2. **Nunca** editar `players/*.xml` por “depot vacío” sin verificar que el XML aún tiene items.
+3. `patch-map-depot-ids.py` **no** parchea lockers inline de RME — no confiar solo en ese script.
+4. `scan-map-depots.py` audita lockers antes del deploy.
+5. `deploy-vps.sh` preserva `players/` — el deploy de mapa no debe tocar depots XML.
+6. Temple = `depotid 1`. Otros ids (`405` casas, etc.) requieren config explícita en RME o extender `resolveMapDepotId()`.
 
 ---
 
@@ -318,3 +334,4 @@ Caminos de `onThingMove` que deben cubrir `SLOT_HEAD`: inventory↔inventory, in
 - Cuando dudes: **preguntá**.
 - Items Zagan con `gameplaySpec` en el manifest **requieren C++** para funcionar en juego (ver sección 8).
 - Helmet con bonus de skills: **`refreshHeadSkillBonus()`** + `getSkill()` leyendo `items[SLOT_HEAD]` en vivo — no solo cache en `checkBoh()`.
+- **Depot vacío tras cambio de mapa:** items en XML, locker sin enlace → `docs/gameplay/DEPOTS.md` + `resolveMapDepotId()` en `actions.cpp`. Probar locker antes de deploy de `test.otbm`.

@@ -57,6 +57,8 @@ Las cuentas nuevas se crean en **https://retro76.cl** (web) → archivos XML en 
 6. **Valida** mapa/casas, arranque del binario y healthcheck en puerto 7171
 7. **Verifica** conteo de cuentas y personajes
 
+**Antes de un deploy que incluya `test.otbm`:** leer [`docs/gameplay/DEPOTS.md`](../docs/gameplay/DEPOTS.md) y probar locker temple in-game en local. Un mapa mal exportado hace que los jugadores vean depot vacío (los items siguen en `players/*.xml`).
+
 **Watchdog en producción** (auto-recuperación si el puerto deja de responder):
 
 ```bash

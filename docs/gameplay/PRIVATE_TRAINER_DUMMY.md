@@ -36,6 +36,9 @@ trainer:
 - No hay retiro ni devolucion del item.
 - No se coloca sobre puerta de house, teleports, escaleras/floor change, tiles
   ocupados por creatures o tiles donde el monster no pueda pararse.
+- Si la house es protection zone, cualquier player que ya este dentro de la
+  misma house puede atacar al `Private Trainer Dummy`; la regla no abre PvP ni
+  permite atacar otros monsters/players en PZ.
 
 ## Como usarlo como item
 
@@ -65,7 +68,3 @@ Creatures -> YurOTS Training -> Private Trainer Dummy
 Si un jugador tiene un item `20118` real en inventario o en una casa, ese item
 no se vuelve atacable por si mismo. La version atacable es la criatura que usa
 `20118` como look visual.
-
-Si una house o el SQM elegido es protection zone y el motor no permite atacar
-desde ahi, el dummy puede colocarse pero el cliente no podra usarlo para
-entrenar. En ese caso hay que ajustar el mapa/regla de combat aparte.

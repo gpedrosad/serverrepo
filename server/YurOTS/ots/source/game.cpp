@@ -62,6 +62,7 @@ using namespace std;
 #include "summons.h"
 #include "pvparena.h"
 #include "tools.h"
+#include "private_trainers.h"
 #include <ctype.h>
 
 #if defined __EXCEPTION_TRACER__
@@ -200,6 +201,25 @@ bool getLevitateDestination(Game* game, const Player* player, std::string var, P
 		return getLevitateDownDestination(game, player, dest);
 
 	return false;
+}
+
+bool canAttackPrivateTrainerInHouse(const Creature* attacker, const Creature* target, const Tile* attackerTile, const Tile* targetTile)
+{
+	if(!attacker || !target || !attackerTile || !targetTile)
+		return false;
+
+	if(!dynamic_cast<const Player*>(attacker))
+		return false;
+
+	if(!attackerTile->isHouse() || !targetTile->isHouse() || attackerTile->getHouse() != targetTile->getHouse())
+		return false;
+
+	const Monster* targetMonster = dynamic_cast<const Monster*>(target);
+	if(!targetMonster)
+		return false;
+
+	MonsterType* monsterType = targetMonster->getMonsterType();
+	return monsterType && monsterType->trainer && targetMonster->getName() == PrivateTrainers::MONSTER_NAME;
 }
 
 }
@@ -4048,7 +4068,7 @@ bool Game::creatureThrowRune(Creature *creature, const Position& centerpos, cons
 	return ret;
 }
 
-bool Game::creatureOnPrepareAttack(Creature *creature, Position pos)
+bool Game::creatureOnPrepareAttack(Creature *creature, Position pos, const Creature* attackedCreature)
 {
   if(creature){
 		Player* player = dynamic_cast<Player*>(creature);
@@ -4057,9 +4077,10 @@ bool Game::creatureOnPrepareAttack(Creature *creature, Position pos)
 		Tile* tile = map->getTile(creature->pos);
 		//Tile* targettile = getTile(pos.x, pos.y, pos.z);
 		Tile* targettile = map->getTile(pos);
+		bool privateTrainerHouseAttack = canAttackPrivateTrainerInHouse(creature, attackedCreature, tile, targettile);
 
 		if(creature->access < g_config.ACCESS_PROTECT) {
-			if(tile && tile->isPz()) {
+			if(tile && tile->isPz() && !privateTrainerHouseAttack) {
 				if(player) {
 					player->sendTextMessage(MSG_SMALLINFO, "You may not attack a person while you are in a protection zone.");
 					playerSetAttackedCreature(player, 0);
@@ -4067,7 +4088,7 @@ bool Game::creatureOnPrepareAttack(Creature *creature, Position pos)
 
 				return false;
 			}
-			else if(targettile && targettile->isPz()) {
+			else if(targettile && targettile->isPz() && !privateTrainerHouseAttack) {
 				if(player) {
 					player->sendTextMessage(MSG_SMALLINFO, "You may not attack a person in a protection zone.");
 					playerSetAttackedCreature(player, 0);
@@ -4121,7 +4142,7 @@ bool Game::creatureOnPrepareMagicAttack(Creature *creature, Position pos, const 
 
 void Game::creatureMakeDamage(Creature *creature, Creature *attackedCreature, fight_t damagetype)
 {
-	if(!creatureOnPrepareAttack(creature, attackedCreature->pos))
+	if(!creatureOnPrepareAttack(creature, attackedCreature->pos, attackedCreature))
 		return;
 
 
@@ -4625,7 +4646,10 @@ void Game::checkCreatureAttacking(unsigned long id)
 						std::cout << "checkCreatureAttacking NULL tile: " << creature->getName() << std::endl;
 						//return;
 					}
-					if (!attackedCreature->isAttackable() == 0 && fromtile && fromtile->isPz() && creature->access < g_config.ACCESS_PROTECT)
+					Tile* targettile = map->getTile(attackedCreature->pos);
+					bool privateTrainerHouseAttack = canAttackPrivateTrainerInHouse(creature, attackedCreature, fromtile, targettile);
+					if (attackedCreature->isAttackable() && fromtile && fromtile->isPz() &&
+						!privateTrainerHouseAttack && creature->access < g_config.ACCESS_PROTECT)
 					{
 						Player* player = dynamic_cast<Player*>(creature);
 						if (player) {

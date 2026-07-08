@@ -5,7 +5,8 @@ Guía paso a paso para reemplazar `test.otbm` sin romper casas, spawns ni el arr
 Relacionado:
 
 - [docs/RME_SETUP.md](RME_SETUP.md) — abrir RME y assets 7.6
-- [docs/MAPEAR_CON_CODIGO.md](MAPEAR_CON_CODIGO.md) — generar terreno (islas) con `generate-island.py`
+- [docs/items-and-map/MAPEAR_CON_CODIGO.md](items-and-map/MAPEAR_CON_CODIGO.md) — generar terreno (islas) con `generate-island.py`
+- [docs/items-and-map/MAPEAR_LABERINTO.md](items-and-map/MAPEAR_LABERINTO.md) — laberinto 2 sqm (camino 406, fondo 100, teleport templo) con `generate-maze.py`
 - [scripts/README-DEPLOY-VPS.md](../scripts/README-DEPLOY-VPS.md) — deploy seguro en producción
 - [docs/PROYECTO.md](PROYECTO.md) — qué data es sagrada y qué va en git
 
@@ -35,7 +36,7 @@ Antes de guardar:
 
 - **Casas:** definilas en RME (HOUSETILE). Si borrás una casa del mapa, también hay que quitar su entrada en `data/houses/*.xml` (ver paso 4).
 - **Spawns:** usá el spawn editor de RME; al exportar genera `test-spawn.xml`.
-- **Depots:** colocalos en RME con el depot ID correcto. No hace falta parchear el OTBM a mano si RME ya los exporta bien.
+- **Depots:** colocalos en RME con el depot ID correcto. En Retro76 el temple usa **`depotid=1`**. Tras exportar, corré `python3 scripts/scan-map-depots.py server/YurOTS/ots/data/world/test.otbm`. **Probar in-game** antes de deploy (ver [`gameplay/DEPOTS.md`](gameplay/DEPOTS.md)).
 - **Puertas de nivel:** puerta cerrada + **actionId = nivel + 1000** (ej. nivel 20 → `1020`). Script: `data/actions/scripts/leveldoor.lua`.
 - **NPCs:** las posiciones van en `npc.xml`, no solo en el mapa.
 
@@ -201,10 +202,11 @@ El deploy:
 [ ] Copiar los 3 archivos a server/YurOTS/ots/data/world/
 [ ] python3 scripts/sync-houses-from-rme.py
 [ ] python3 scripts/sync-houses-with-map.py --dry-run
+[ ] python3 scripts/scan-map-depots.py server/YurOTS/ots/data/world/test.otbm
 [ ] Borrar data/houses/*.xml de casas eliminadas (si aplica)
 [ ] Actualizar npc.xml (si moviste NPCs)
 [ ] docker compose restart yurots + revisar logs
-[ ] Probar in-game: casas, depots, spawns nuevos, puertas de nivel
+[ ] Probar in-game: casas, depots (locker temple con char que tenga items), spawns, puertas
 [ ] git commit + push (solo cuando estés conforme)
 [ ] DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh en el VPS
 ```
@@ -217,7 +219,8 @@ El deploy:
 |---------|--------|----------|
 | `Tile (x/y/z) is not valid!` al cargar casas | `houses.xml` con tiles que ya no están en el mapa | `sync-houses-from-rme.py` |
 | `Could not load houses!` | Casa en `houses.xml` sin archivo en `data/houses/Nombre.xml` | Crear XML o quitar casa del mapa |
-| `You can not use this object` (depot) | Jugador sin ese `depotid` en su XML | Abrir depot en RME con ID estándar (ej. 1) o fix en `actions.cpp` (auto-crear depot) |
+| `You can not use this object` (depot) | Jugador sin ese `depotid` en su XML | Abrir depot en RME con ID estándar (ej. 1) o fix en `actions.cpp` |
+| Depot vacío al abrir locker 2589 | Locker sin `depotid` en OTBM (export RME inline) | Ver [`gameplay/DEPOTS.md`](gameplay/DEPOTS.md); `resolveMapDepotId()` en `actions.cpp`; probar in-game antes de deploy |
 | Puerta no pide nivel | Falta actionId o itemid sin `leveldoor.lua` | actionId = nivel + 1000 |
 | Spawns no aparecen | `test-spawn.xml` viejo o monstruo sin definición | Reexportar spawns; revisar `data/monster/monsters.xml` |
 | Deploy VPS falla validación | Mismo desajuste mapa/casas | Arreglar en Mac, push, volver a deploy |

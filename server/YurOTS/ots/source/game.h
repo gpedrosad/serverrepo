@@ -441,7 +441,7 @@ protected:
 			unsigned short to_x, unsigned short to_y, unsigned char to_z, unsigned char count);
 
 	void changeOutfit(unsigned long id, int looktype);
-	bool creatureOnPrepareAttack(Creature *creature, Position pos);
+	bool creatureOnPrepareAttack(Creature *creature, Position pos, const Creature* attackedCreature = NULL);
 	void creatureMakeDamage(Creature *creature, Creature *attackedCreature, fight_t damagetype);
 
 	bool creatureMakeMagic(Creature *creature, const Position& centerpos, const MagicEffectClass* me);

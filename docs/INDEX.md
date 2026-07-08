@@ -66,6 +66,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/BOAT_TRAVEL.md`](gameplay/BOAT_TRAVEL.md) | Viajes de Nimral/Fargum: destinos, Hell Quest, confirmación y reglas de temple. |
 | [`gameplay/MOST_WANTED_SYSTEM.md`](gameplay/MOST_WANTED_SYSTEM.md) | Sistema de bounty / most wanted entre jugadores. |
 | [`gameplay/GEMS.md`](gameplay/GEMS.md) | Sistema de gemas: drop, uso, imbuements. Antes de tocar gemas, leer esto. |
+| [`gameplay/DEPOTS.md`](gameplay/DEPOTS.md) | **Depots:** lockers 2589, XML vs mapa, incidente jul 2026, checklist pre-deploy de mapa. |
 | [`gameplay/GOLDEN_ACCESSORIES.md`](gameplay/GOLDEN_ACCESSORIES.md) | Golden amulet y golden ring: auto-bank, bonus de oro e interacción entre ambos. |
 | [`gameplay/NPC_CONFIRMATION.md`](gameplay/NPC_CONFIRMATION.md) | Confirmación de transacciones con NPC (anti-misflow). |
 | [`gameplay/SELLER_FLUIDS.md`](gameplay/SELLER_FLUIDS.md) | Sistema de vendedores de fluids/potions. |
@@ -136,7 +137,8 @@ Catálogo completo de features del juego. Cada feature tiene su doc individual e
 | Voy a tocar gemas o imbuements | [`gameplay/GEMS.md`](gameplay/GEMS.md) → [`features/10-gems-and-imbuements.md`](features/10-gems-and-imbuements.md) |
 | Voy a hacer deploy a producción | [`../scripts/README-DEPLOY-VPS.md`](../scripts/README-DEPLOY-VPS.md) |
 | Necesito migrar DB o data crítica | [`MIGRATION_PLAYBOOK.md`](MIGRATION_PLAYBOOK.md) |
-| Voy a cambiar el mapa del server | [`CAMBIAR-MAPA.md`](CAMBIAR-MAPA.md) |
+| Voy a cambiar el mapa del server | [`CAMBIAR-MAPA.md`](CAMBIAR-MAPA.md) → [`gameplay/DEPOTS.md`](gameplay/DEPOTS.md) |
+| Jugadores reportan depot vacío | [`gameplay/DEPOTS.md`](gameplay/DEPOTS.md) |
 | Quiero ver qué features tiene el juego | [`FEATURE_CATALOG.md`](FEATURE_CATALOG.md) |
 | Necesito configurar el editor RME | [`RME_SETUP.md`](RME_SETUP.md) |
 | Tests de humo antes de release | [`SMOKE_TESTS.md`](SMOKE_TESTS.md) |
