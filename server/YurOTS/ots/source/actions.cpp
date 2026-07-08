@@ -33,6 +33,31 @@
 
 #include "actions.h"
 
+namespace {
+
+// Lockers 2589-2592 en el OTBM exportado desde RME suelen venir sin OTBM_ATTR_DEPOT_ID
+// (tile inline OTBM_ATTR_ITEM). Sin depotid el motor abre el contenedor vacío del mapa
+// en vez del depot del jugador (players/*.xml depotid="1").
+unsigned long resolveMapDepotId(Container* container)
+{
+	if(!container)
+		return 0;
+	if(container->depot != 0)
+		return container->depot;
+
+	switch(container->getID()) {
+		case 2589:
+		case 2590:
+		case 2591:
+		case 2592:
+			return 1;
+		default:
+			return 0;
+	}
+}
+
+} // namespace
+
 bool readXMLInteger(xmlNodePtr p, const char *tag, int &value);
 
 Actions::Actions(Game* igame)
@@ -278,7 +303,8 @@ bool Actions::UseItem(Player* player, const Position &pos,const unsigned char st
 }
 
 bool Actions::openContainer(Player *player,Container *container, const unsigned char index){
-	if(container->depot == 0){ //normal container
+	const unsigned long depotId = resolveMapDepotId(container);
+	if(depotId == 0){ //normal container
 		unsigned char oldcontainerid = player->getContainerID(container);
 		if(oldcontainerid != 0xFF) {
 			player->closeContainer(oldcontainerid);
@@ -289,11 +315,11 @@ bool Actions::openContainer(Player *player,Container *container, const unsigned 
 		}
 	}
 	else{// depot container
-		Container *container2 = player->getDepot(container->depot);
+		Container *container2 = player->getDepot(depotId);
 		if(!container2){
 			Item* depotItem = Item::CreateItem(2590);
 			Container* newDepot = dynamic_cast<Container*>(depotItem);
-			if(newDepot && player->addDepot(newDepot, container->depot))
+			if(newDepot && player->addDepot(newDepot, depotId))
 				container2 = newDepot;
 			else
 				delete depotItem;

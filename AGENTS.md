@@ -289,6 +289,23 @@ Caminos de `onThingMove` que deben cubrir `SLOT_HEAD`: inventory↔inventory, in
 - **Solo manifest / solo OTB no alcanza** — si el item “debería” hacer algo en combate o stats, buscar en `source/` si existe `ITEM_*`; si no, implementar.
 - **Rebuild parcial tras tocar `creature.h`** — agregar miembros a `Creature` sin `make clean` dejó el server en crash loop al cargar mapa (jul 2026).
 
+### Depots en mapa (lockers 2589) — jul 2026
+
+**Síntoma:** jugadores abren el depot del temple y ven contenedor vacío; sus items “desaparecieron” (siguen en `players/*.xml` bajo `<depot depotid="1">`).
+
+**Causa:** los lockers `2589` en `test.otbm` exportados desde RME vienen como **tile inline** (`OTBM_ATTR_ITEM`) **sin** `OTBM_ATTR_DEPOT_ID`. El motor trataba el locker como contenedor normal del mapa (`container->depot == 0`), no como depot del jugador.
+
+**Fix en código (producción):** `actions.cpp` → `resolveMapDepotId()` asigna `depotid=1` a lockers `2589–2592` del mapa cuando el OTBM no trae depot id. Los items del jugador vuelven al abrir **en la ubicación actual** del locker — no hace falta mover tiles.
+
+**Reglas para agentes:**
+
+1. **Nunca** deployar un mapa nuevo sin probar depots in-game (abrir locker temple y verificar que muestra items guardados).
+2. Los items del depot viven en **`players/*.xml`** (data sagrada). Un mapa roto **no borra** el depot XML; solo desconecta el locker del `depotid` correcto.
+3. `scripts/patch-map-depot-ids.py` solo parchea nodos `OTBM_ITEM` hijos; **no** alcanza lockers inline en tile. Preferir depot id en RME al colocar, o el fallback C++ anterior.
+4. `scripts/scan-map-depots.py <map.otbm>` lista lockers y si tienen `depotid` — correr antes de deploy de mapa.
+5. En deploy de mapa: **no tocar** `houseitems.xml` ni depots en XML; `deploy-vps.sh` los preserva del backup.
+6. Si un locker debe usar otro `depotid` (ej. otra ciudad), colocarlo en RME con depot id explícito o extender `resolveMapDepotId()` — el default del temple es **1** (83 players en prod usan `depotid="1"`).
+
 ---
 
 ## 9. Resumen ejecutivo para agentes con poca atención
