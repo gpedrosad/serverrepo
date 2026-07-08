@@ -86,15 +86,14 @@ Analizando `server/YurOTS/ots/data/world/test-spawn.xml` hoy:
 - no hay posiciones absolutas duplicadas
 - no hay centros de spawn duplicados
 
-Distribucion actual de `spawntime`:
+Distribucion actual de `spawntime` (balance jul 2026, opcion A: +50% en tiers):
 
-- `60s`: `980` slots
-- `90s`: `152` slots
-- `120s`: `55` slots
-- otros valores: marginales
+- `90s`: `1049` slots (antes 60s)
+- `120s`: `152` slots (antes 90s)
+- `150s`: `55` slots (antes 120s)
+- otros valores: marginales (`25`–`45`, `300` bosses)
 
-O sea: la data actual no parece duplicada. El problema venia del comportamiento
-del motor, no del XML del mapa.
+Promedio configurado: ~96 s (antes ~66 s).
 
 ## Ciclo de vida actual de un spawn
 
