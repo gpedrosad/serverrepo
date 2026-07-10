@@ -55,6 +55,7 @@
 		<item id="2147" countmax="4" chance1="32000" chancemax="0" />
 		<item id="2146" countmax="4" chance1="25000" chancemax="0" />
 		<item id="2145" countmax="3" chance1="14000" chancemax="0" />
+		<item id="20105" chance="550" />
 	</loot>
 	<summons maxSummons="2">
 		<summon name="Fire Elemental" chance="1333" />
