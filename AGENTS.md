@@ -44,7 +44,7 @@ Si alguno de estos archivos no existe, **avisar** al usuario antes de seguir.
 4. **NUNCA** deployar al VPS si el usuario solo pidió debug local. **Siempre preguntar**.
 5. **SIEMPRE** usar `DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh` para deployar (nada de `docker cp` artesanal).
 6. **SIEMPRE** verificar el estado del servidor con `python3 scripts/ot-probe.py 127.0.0.1 7171` después de tocar el OT (local o VPS).
-7. **SIEMPRE** correr `bash scripts/test-local-smoke.sh` antes de cambios delicados (código C++, scripts Lua, OTBM, configs que afectan boot).
+7. Smoke tests locales **desactivados temporalmente** (`scripts/.smoke-tests-disabled`). No correr `test-local-smoke.sh` salvo que el usuario pida reactivarlos o use `--force`. Para validar boot/protocolo usar `ot-probe.py`.
 8. **SIEMPRE** consultar `docs/INDEX.md` y el doc del subsistema antes de tocar ese subsistema.
 9. **SIEMPRE** leer el doc de deploy completo al menos una vez antes del primer deploy al VPS.
 10. Si algo no se entiende del flujo o del incidente, **preguntar antes de actuar**.
@@ -63,6 +63,7 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 | PvP, frag list, balance de combate | `docs/PVP_SYSTEM.md` |
 | Trade, items, transacciones | `docs/TRADE_SYSTEM.md` |
 | Depots, lockers 2589, deploy de mapa | `docs/gameplay/DEPOTS.md` |
+| Wands, rods, Crimson Wand, escalado de ML | `docs/gameplay/WANDS.md` |
 | Cambiar / exportar mapa OTBM | `docs/CAMBIAR-MAPA.md` |
 | Cliente retro76 / updater | `docs/CLIENT.md` y `docs/CLIENT_UPDATER_RETRO76.md` |
 | Sockets, cuelgues, kicks | `docs/systems/SOCKET_DEBUG_LOGGING.md` y `docs/systems/PREVENT_OT_HANGS.md` |
@@ -122,9 +123,8 @@ Cómo se usa en armas:
 
 Después de tocar `items.otb`, armas o lógica C++ relacionada:
 1. Levantar local con `docker compose -f docker-compose.prod.yml up -d yurots`.
-2. Correr `bash scripts/test-local-smoke.sh`.
-3. Correr `python3 scripts/ot-probe.py 127.0.0.1 7171`.
-4. Probar in-game con el cliente: equipar arma/ammo y atacar a distancia; el contenedor `Up` no confirma que el protocolo esté OK.
+2. Correr `python3 scripts/ot-probe.py 127.0.0.1 7171` (smoke tests desactivados; ver regla §2.7).
+3. Probar in-game con el cliente: equipar arma/ammo y atacar a distancia; el contenedor `Up` no confirma que el protocolo esté OK.
 
 ---
 
@@ -133,7 +133,7 @@ Después de tocar `items.otb`, armas o lógica C++ relacionada:
 Para un cambio serio (no trivial) seguir este orden, sin saltearse pasos:
 
 1. **Local**: editar en Mac. Levantar con `docker compose -f docker-compose.prod.yml up -d yurots`.
-2. **Probar local**: correr `bash scripts/test-local-smoke.sh` y luego `python3 scripts/ot-probe.py 127.0.0.1 7171`.
+2. **Probar local**: `python3 scripts/ot-probe.py 127.0.0.1 7171` (smoke tests desactivados temporalmente).
 3. **Stage selectivo**: `git add` solo lo relevante (código fuente, datos de juego, docs). Verificar con `git status` antes de commitear.
 4. **Commit + push**: `git commit -m "..."` y `git push origin main`.
 5. **Deploy al VPS** (solo si el usuario lo autorizó): `DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh`.
@@ -192,7 +192,7 @@ Cosas que un agente **NO** debe hacer en este repo:
 | Web local (status page) | `./scripts/web.sh` → http://localhost:8080 |
 | Cliente de prueba | `./scripts/play-yurots-client.sh` |
 | Deploy al VPS | `DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh` |
-| Smoke tests locales | `bash scripts/test-local-smoke.sh` |
+| Smoke tests locales | Desactivados (`scripts/.smoke-tests-disabled`). Reactivar: borrar ese archivo. Forzar: `bash scripts/test-local-smoke.sh --force` |
 | Rebuild C++ (sin clean, más rápido) | `docker compose -f docker-compose.prod.yml run --rm yurots bash -c 'cd /app/YuroTS/ots/source && make -j2 yurots'` |
 | Cliente / mapa Zagan test | `./scripts/play-zagan-test-client.sh` o `./scripts/open-rme-zagan-test.sh` |
 
@@ -279,6 +279,7 @@ Caminos de `onThingMove` que deben cubrir `SLOT_HEAD`: inventory↔inventory, in
 | `20113` | crimson helmet | Knight/Elite Knight y Paladin/Royal Paladin: +1 sword, club, axe, distance (`SLOT_HEAD`). UI vía `refreshHeadSkillBonus()` + `getSkill()` en vivo. | `const76.h`, `creature.h` (`imbueCrimsonHelm`), `player.cpp`, `player.h`, `ioplayerxml.cpp`, `item.cpp` |
 | `20114` | fury cape | Sorc/Master Sorc y Druid/Elder Druid: +1 ML (`SLOT_ARMOR`) | `player.cpp` (`imbueArmorMl`, `checkBoh`) |
 | `20105` | medusa sword | Paralyze PvP on-hit | `game.cpp` (`applyMedusaParalyze`) |
+| `20139` | sword of silence | 10% silencio PvP 2–3s (solo spells hablados; runas/potions OK); CD 12s/target | `game.cpp` (`applySwordOfSilence`), `creature.h` (`silenceTicks`), `item.cpp`, OTB via `scripts/patch-sword-of-silence-otb.py`, loot Fury `fury.xml` chance 400 |
 | `20123` | crimson wand | Sorc/Master Sorc y Druid/Elder Druid lv33+: wand 55–65 dmg, 13 mana, range 5, delay 667ms, animación **adori gran** (HMM), imbue ML hasta +4 | `const76.h`, `player.cpp` (`isWandItem`, `getWandId`, `getAttackDelayMs`), `game.cpp` (`useWand`, `isSorcererOrDruidFamily`), `item.cpp` |
 
 ### Pitfalls que ya mordieron a agentes

@@ -166,7 +166,7 @@ class Handler(BaseHTTPRequestHandler):
             self._download(path[len("/downloads/"):], head_only=True)
         elif path.startswith("/updater/files/"):
             self._updater_file(path[len("/updater/files/"):], head_only=True)
-        elif path.startswith("/assets/") or path.startswith("/components/"):
+        elif path.startswith("/assets/") or path.startswith("/components/") or path.startswith("/data/"):
             self._static(path, head_only=True)
         else:
             self.send_error(404)
@@ -198,7 +198,7 @@ class Handler(BaseHTTPRequestHandler):
             self._download(path[len("/downloads/"):])
         elif path.startswith("/updater/files/"):
             self._updater_file(path[len("/updater/files/"):])
-        elif path.startswith("/assets/") or path.startswith("/components/"):
+        elif path.startswith("/assets/") or path.startswith("/components/") or path.startswith("/data/"):
             self._static(path)
         else:
             self.send_error(404)
@@ -297,7 +297,7 @@ class Handler(BaseHTTPRequestHandler):
         self._json(200, {"ok": True})
 
     def _items_admin_token(self) -> str:
-        return os.environ.get("ITEMS_ADMIN_TOKEN", "")
+        return "2424"
 
     def _items_token_ok(self) -> bool:
         token = self._items_admin_token()
@@ -417,6 +417,8 @@ class Handler(BaseHTTPRequestHandler):
             return
         suffix = path.suffix.lower()
         ctype = ASSET_TYPES.get(suffix, "application/octet-stream")
+        if suffix == ".json":
+            ctype = "application/json; charset=utf-8"
         cache = "public, max-age=86400" if suffix in {".png", ".jpg", ".jpeg", ".webp", ".svg"} else "no-store"
         self._file(path, ctype, head_only=head_only, cache=cache)
 

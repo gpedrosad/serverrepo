@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
-<monster name="Demon" level="20" maglevel="20" experience="6000" pushable="0" armor="49" defense="51" canpushitems="1" staticattack="40" changetarget="200" speed="210">
+<monster name="Demon" level="20" maglevel="20" experience="6000" pushable="0" armor="49" defense="51" canpushitems="1" staticattack="1000" changetarget="200" speed="280">
 	<health now="8200" max="8200"/>
 	<look type="35" head="20" body="30" legs="40" feet="50" corpse="2916"/>
 	<combat targetdistance="1" runonhealth="0"/>
       <blood color="199" effect="0" splash="255"/>
 
 <attacks>
-	<attack type="melee" mindamage="192" maxdamage="510" probability="100"/>
+	<attack type="melee" mindamage="192" maxdamage="510" cycleticks="500" probability="100"/>
 	<attack type="instant" name="exura" cycleticks="5000" probability="50"/>
-	<attack type="rune" name="firefield" cycleticks="3000" probability="40"/>
-	<attack type="instant" name="d exevo gran vis lux" exhaustion="500" cycleticks="7000" probability="60"/>
-	<attack type="instant" name="demon_manadrain" exhaustion="100" cycleticks="4000" probability="30"/>
-	<attack type="rune" name="demon fireball" exhaustion="500" cycleticks="3500" probability="60"/>
+	<attack type="rune" name="firefield" cycleticks="2500" probability="40"/>
+	<attack type="instant" name="d exevo gran vis lux" exhaustion="500" cycleticks="6000" probability="60"/>
+	<attack type="instant" name="demon_manadrain" exhaustion="100" cycleticks="2500" probability="30"/>
+	<attack type="rune" name="demon fireball" exhaustion="500" cycleticks="2000" probability="60"/>
 </attacks>
 
 <defenses>

@@ -48,6 +48,7 @@ backup_tree() {
   [[ -d "$src_data/vip" ]] && cp -a "$src_data/vip" "$dest/"
   cp -a "$src_data/online.xml" "$src_data/queue.xml" "$dest/" 2>/dev/null || true
   [[ -f "$src_data/houseitems.xml" ]] && cp -a "$src_data/houseitems.xml" "$dest/"
+  [[ -f "$src_data/private_trainers.xml" ]] && cp -a "$src_data/private_trainers.xml" "$dest/"
   [[ -d "$src_data/houses" ]] && cp -a "$src_data/houses" "$dest/" 2>/dev/null || true
 }
 
@@ -90,6 +91,7 @@ cp -a "\$DATA/accounts" "\$DATA/players" "\$DEST/"
 [[ -d "\$DATA/vip" ]] && cp -a "\$DATA/vip" "\$DEST/"
 cp -a "\$DATA/online.xml" "\$DATA/queue.xml" "\$DEST/" 2>/dev/null || true
 [[ -f "\$DATA/houseitems.xml" ]] && cp -a "\$DATA/houseitems.xml" "\$DEST/"
+[[ -f "\$DATA/private_trainers.xml" ]] && cp -a "\$DATA/private_trainers.xml" "\$DEST/"
 ACC=\$(find "\$DATA/accounts" -maxdepth 1 -name '*.xml' | wc -l | tr -d ' ')
 PLR=\$(find "\$DATA/players" -maxdepth 1 -name '*.xml' | wc -l | tr -d ' ')
 cat > "\$DEST/BACKUP_INFO.txt" <<EOF

@@ -31,6 +31,7 @@ web/state/zagan_items_catalog.json
 server/YurOTS/ots/data/online.xml
 server/YurOTS/ots/data/queue.xml
 server/YurOTS/ots/data/houseitems.xml
+server/YurOTS/ots/data/private_trainers.xml
 server/YurOTS/ots/data/accounts/
 server/YurOTS/ots/data/vip/
 server/YurOTS/ots/data/players/

@@ -72,6 +72,8 @@ access(0)
 	manaShieldTicks = 0;
 	hasteTicks = 0;
 	paralyzeTicks = 0;
+	silenceTicks = 0;
+	rootTicks = 0;
 	tempoBuffTicks = 0;
 	tempoBuffBonus = 0;
 	exhaustedTicks  = 0;

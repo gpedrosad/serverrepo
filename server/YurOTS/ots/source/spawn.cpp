@@ -510,30 +510,10 @@ void Spawn::idle(int t)
 
 		if(spawnedmap.count(sit->first) == 0) {
 			if((OTSYS_TIME() - sit->second.lastspawn) >= sit->second.spawntime) {
-
-				SpectatorVec list;
-				SpectatorVec::iterator it;
-
-				game->getSpectators(Range(sit->second.pos, true), list);
-
-				bool playerFound = false;
-				for(it = list.begin(); it != list.end(); ++it) {
-					Player *player = dynamic_cast<Player*>(*it);
-
-					// Gameplay change 2026-07-03:
-					// - if a player is near but the spawn tile is not on screen, do not block
-					// - if the tile is on screen, keep the spawn pending instead of resetting the timer
-					if(player && player->access < g_config.ACCESS_PROTECT &&
-						player->CanSee(sit->second.pos.x, sit->second.pos.y, sit->second.pos.z)) {
-						playerFound = true;
-						break;
-					}
-				}
-
-				if(playerFound) {
-					continue;
-				}
-
+				// Gameplay change 2026-07-10: respawn as soon as the slot is free
+				// and spawntime elapsed, even if players are watching the tile.
+				// Duplicates are prevented by spawnedmap (slot occupied while alive,
+				// including monsters lured away from the spawn area).
 				respawn(sit->first, sit->second.pos, sit->second.name, sit->second.dir);
 			}
 		}
