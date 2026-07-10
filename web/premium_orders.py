@@ -52,14 +52,6 @@ PREMIUM_ADDONS: tuple[dict, ...] = (
         "desc": "+12 horas de training ese día (una vez por personaje).",
         "ext": "png",
     },
-    {
-        "key": "private_trainer_dummy",
-        "item_id": 20118,
-        "price": 15000,
-        "label": "Private trainer dummy",
-        "desc": "Muñeco de entrenamiento para colocar en tu casa (1 por house, solo el dueño).",
-        "ext": "png",
-    },
 )
 
 GOLDEN_AMULET_ID = 2130

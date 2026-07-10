@@ -134,7 +134,6 @@ public:
 	SpellScript(const std::string&, std::string scriptname, Spell* spell);
 	virtual ~SpellScript(){}
   bool castSpell(Creature* creature, const Position& pos, std::string var);
-  static bool safeCast(Spell* spell, Creature* creature, const Position& pos, const std::string& var);
   bool isLoaded(){return loaded;}
   static Spell* getSpell(lua_State *L);
 
@@ -160,12 +159,6 @@ public:
 	static int luaActionReduceExhaustionByPercent(lua_State *L);
 	static int luaActionSkillBuff(lua_State *L);
 	static int luaActionDoDesintegrate(lua_State *L);
-	static int luaActionDoAnchorRoot(lua_State *L);
-	static int luaActionDoCurePoison(lua_State *L);
-	static int luaActionDoAnimateDead(lua_State *L);
-	static int luaActionDoConvinceCreature(lua_State *L);
-	static int luaActionDoChameleon(lua_State *L);
-	static int luaActionDoParalyze(lua_State *L);
 
 	#ifdef BDB_UTEVO_LUX
 		static int luaSetPlayerLightLevel(lua_State *L);

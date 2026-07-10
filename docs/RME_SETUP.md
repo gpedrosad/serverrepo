@@ -117,7 +117,7 @@ ls -la ~/Desktop/yurots-principal/rme-client-760/
 
 Reiniciá RME después de cambiar la config.
 
-## 7. Monstruos custom (Trainer Monk, Fury, etc.)
+## 7. Monstruos custom (Trainer Monk, etc.)
 
 Los monstruos propios de YurOTS **no están en la lista estándar de Tibia 7.6**. RME los carga de dos formas:
 
@@ -126,46 +126,17 @@ Los monstruos propios de YurOTS **no están en la lista estándar de Tibia 7.6**
 
 Al abrir RME con `open-rme.sh`, ambos se instalan solos. **Reiniciá RME** si ya lo tenías abierto.
 
-`setup-rme-creatures.sh` hoy lee:
-
-- `server/YurOTS/ots/data/monster/*.xml`
-- `server/YurOTS/ots/data/npc/*.xml`
-
-Si un monstruo tiene `<look .../>`, puede exportarse a RME aunque todavía no
-esté dado de alta en `monsters.xml`. Ojo: en ese caso se puede ver en el editor,
-pero el server no lo va a spawnear.
-
-Para el flujo completo de alta de monstruos, ver
-[`gameplay/MONSTER_CREATION.md`](gameplay/MONSTER_CREATION.md).
-
 ### Dónde encontrarlos en RME
 
 Paleta **Creatures** → desplegable de categorías:
 
 | Categoría | Monstruos |
 |-----------|-----------|
-| **YurOTS Training** | Trainer Monk, Elite Trainer Monk, Private Trainer Dummy |
-| **YurOTS Custom** | Angry Troll, Bone Beast, Fury, Murius, Old Widow |
+| **YurOTS Training** | Trainer Monk, Elite Trainer Monk |
+| **YurOTS Custom** | Bone Beast, Murius, Old Widow |
 | **Others** | Cualquier otro importado manualmente |
 
 Alternativa manual: **File → Import → Import Monsters/NPCs** y elegir el `.xml` del monstruo (aparece en **Others**).
-
-### Si agregaste un monstruo nuevo
-
-1. Crear `server/YurOTS/ots/data/monster/NOMBRE.xml`
-2. Darlo de alta en `server/YurOTS/ots/data/monster/monsters.xml`
-3. Agregarlo al tileset correcto en `rme-extensions/yurots-creatures.xml`
-4. Correr:
-
-   ```bash
-   ./scripts/setup-rme-creatures.sh
-   ./scripts/setup-rme-extensions.sh
-   ```
-
-5. Cerrar y reabrir RME
-6. Si también tiene que salir in-game, agregarlo a `test-spawn.xml` o exportar spawns desde RME
-
-Ejemplo actual: `Fury` ya está incluida en `YurOTS Custom`.
 
 Referencia: [OTLand — custom monsters in RME](https://otland.net/threads/put-custom-monsters-in-rme-map-editor.142548/).
 

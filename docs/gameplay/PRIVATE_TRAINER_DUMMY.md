@@ -23,7 +23,7 @@ trainer:
 ## Comportamiento
 
 - Es atacable como creature.
-- Tiene `trainer="1"` y `skillrate="0.7"` (~30% mas lento que el Trainer Monk normal).
+- Tiene `trainer="1"` y `skillrate="1.0"`, igual que el Trainer Monk normal.
 - No hace dano.
 - No se puede empujar (`pushable="0"`).
 - No empuja ni destruye items (`canpushitems="0"`).

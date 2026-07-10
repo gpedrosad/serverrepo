@@ -846,8 +846,6 @@ std::string Item::getDescription(bool fullDescription) const
 		s << std::endl << "Sorcerers and druids: +1 magic level while worn.";
 	else if(id == ITEM_MEDUSA_SWORD && fullDescription)
 		s << std::endl << "Paralyzes players on every hit in PvP.";
-	else if(id == ITEM_SWORD_OF_SILENCE && fullDescription)
-		s << std::endl << "10% chance to silence a player for 2-3s in PvP (spoken spells only; 12s cooldown per target).";
 	else if(id == ITEM_NIGHTGLASS_DAGGER && fullDescription) {
 		s << std::endl << "A shadowy dagger. Imbue with a big ruby for up to 5 speed stacks (-10% success chance per stack).";
 		const int ngStacks = nightglassStacksFromAid(actionId);

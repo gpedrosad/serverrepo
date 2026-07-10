@@ -33,23 +33,7 @@ Cada item hereda slot/atributos del prototipo OTB duplicado (arma, escudo, casco
 
 ## Producción (VPS)
 
-El OTB/XML Zagan ya está en producción desde el deploy `7312baf8`. La **lógica C++** (crimson helmet/wand, fury cape, medusa sword, sword of silence) y fixes asociados están **pendientes de commit/deploy**.
-
-## Sword of Silence (`20139`) — local jul 2026
-
-Renombrado desde `dawnbreak falchion`. Ataque **42** / defensa **30**.
-
-| Pieza | Detalle |
-|-------|---------|
-| Efecto | 10% al pegar a un jugador: silencio 2–3 s |
-| Bloquea | Spells hablados (`creatureSaySpell`) |
-| No bloquea | Runas (`playerUseItemEx`) ni potions |
-| Cooldown | 12 s por target (por atacante) |
-| C++ | `ITEM_SWORD_OF_SILENCE`, `Creature::silenceTicks`, `applySwordOfSilence()` |
-| OTB | `python3 scripts/patch-sword-of-silence-otb.py` |
-| Loot | Fury (`data/monster/fury.xml`): rare drop `chance="400"` (fury cape sigue en `750`) |
-
-**Solo local por ahora** — no deployar al VPS hasta autorización.
+El OTB/XML Zagan ya está en producción desde el deploy `7312baf8`. La **lógica C++** (crimson helmet/wand, fury cape, medusa sword) y fixes asociados están **pendientes de commit/deploy**.
 
 Plan completo, restricciones (no tocar DP ni casas) y checklist:
 

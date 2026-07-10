@@ -171,16 +171,6 @@ wandrange = {"5", "5", "5", "5", "5"}
 -- default is from (1*lvl+5*mlvl)*0.24 to (1*lvl+5*mlvl)*0.55
 burstarrowdmg = {"1.0", "5.0", "0.24", "0.55"}
 
--- magic level damage factor for wands/rods (JD_WANDS)
--- damage is increased by: floor( getEffectiveMagLevel() * wandmlfactor )
--- getEffectiveMagLevel() = maglevel + imbueWandMl (violet gem) + imbueHelmMl + imbueArmorMl
---   ML 20 (no imbue) at factor 0.5 -> +10 dmg
---   ML 50 (no imbue) at factor 0.5 -> +25 dmg
---   ML 50 + violet gem 4/4 at factor 0.5 -> +27 dmg
---   crimson wand 55-65 + ML 50 + 4/4 violet -> ~82-92 dmg
--- set to 0 to disable ML scaling on wands (vanilla YurOTS behavior)
-wandmlfactor = 0.5
-
 --------------------------- Multipliers and gains ------------------------------
 
 -- experience multiplier (fallback if expmulmin/rate tiers are not set)

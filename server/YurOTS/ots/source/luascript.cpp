@@ -233,8 +233,6 @@ int LuaScript::OpenFile(const char *filename)
 	RANGE_PLAGUE = atoi(getGlobalStringField("wandrange", 3, "2").c_str());
 	RANGE_COSMIC = atoi(getGlobalStringField("wandrange", 4, "1").c_str());
 	RANGE_INFERNO = atoi(getGlobalStringField("wandrange", 5, "3").c_str());
-
-	WAND_ML_FACTOR = atof(getGlobalString("wandmlfactor", "0.5").c_str());
 #endif //JD_WANDS
 
 #ifdef YUR_BUILTIN_AAC

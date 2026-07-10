@@ -4,8 +4,7 @@ Documento de comportamiento actual del sistema de respawn de monstruos.
 Describe como funciona hoy el motor, no como "deberia" funcionar.
 
 Actualizado con el fix aplicado el `2026-07-06` para evitar duplicacion de
-monstruos cuando eran lureados fuera del area del spawn, y el cambio del
-`2026-07-10` que elimina el bloqueo por visibilidad de pantalla.
+monstruos cuando eran lureados fuera del area del spawn.
 
 Relacionado:
 
@@ -18,13 +17,13 @@ Relacionado:
 
 ## Resumen corto
 
-Hoy el respawn funciona asi:
+Hoy el sistema puede parecer que "acumula" respawns por un motivo normal:
 
-1. **Aparece aunque haya gente mirando**: cuando vence el `spawntime` y el slot
-   esta libre, el monstruo respawnea en el siguiente tick (hasta `20s`), sin
-   esperar a que nadie vea el tile.
-2. **No duplica si ya esta vivo**: el slot sigue ocupado mientras el monstruo
-   exista, aunque se haya lureado fuera del area del spawn (fix `2026-07-06`).
+1. **Burst legitimo por visibilidad**:
+   si el respawn ya vencio pero un player normal sigue viendo el tile, el
+   monstruo no aparece todavia, pero el timer tampoco se reinicia. Cuando el
+   tile deja de estar visible, puede reaparecer en el siguiente chequeo y
+   varios slots pueden salir juntos.
 
 El bug de duplicacion real por kiteo fuera del area fue corregido el
 `2026-07-06`: ahora un monstruo vivo sigue ocupando su slot original aunque se
@@ -168,35 +167,29 @@ Para cada slot:
 
 1. Si no hay monstruo activo asociado a ese `spawnid`
 2. y `OTSYS_TIME() - lastspawn >= spawntime`
-3. entonces respawnea en el siguiente tick de chequeo (cada `20s`)
+3. entonces revisa espectadores cerca del tile
+4. si ningun player normal puede ver ese tile, respawnea
 
-No hay bloqueo por visibilidad de pantalla desde el `2026-07-10`. La unica
-proteccion contra duplicados es que el slot siga marcado como ocupado mientras
-el monstruo original siga vivo.
+La visibilidad usa `Player::CanSee(...)`, que a su vez usa el rango visible del
+cliente Tibia 7.6. No usa line-of-sight real.
 
-## Cambio aplicado el 2026-07-10
+## Cambio aplicado el 2026-07-03
 
-Se elimino el bloqueo por `Player::CanSee(...)` que retenia el respawn mientras
-un jugador normal veia el tile.
+Hay un cambio reciente documentado en
+`docs/_archive/CAMBIOS_SESION_2026-07-03.md`:
 
-Comportamiento anterior (`2026-07-03` a `2026-07-09`):
+- antes, si habia players cerca, el respawn podia patearse reiniciando su espera
+- ahora, si el tile esta visible:
+  - el monstruo no reaparece todavia
+  - pero el timer **no** se reinicia
 
-- si el tile estaba visible, el monstruo no reaparecia todavia
-- el timer no se reiniciaba
-- al dejar de ver el tile, varios slots podian salir en rafaga
+Consecuencia:
 
-Comportamiento actual:
+- el slot queda "ready"
+- apenas nadie lo ve, sale en el proximo tick de `20s`
+- varios slots pueden quedar ready a la vez y reaparecer juntos
 
-- el monstruo reaparece al vencer `spawntime` + proximo tick, aunque haya
-  espectadores mirando
-- no reaparece si el slot sigue ocupado (monstruo vivo, incluido lureado fuera
-  del area)
-
-## Cambio historico: visibilidad (2026-07-03, revertido 2026-07-10)
-
-Entre el `2026-07-03` y el `2026-07-09` existia un bloqueo por visibilidad de
-pantalla documentado en `docs/_archive/CAMBIOS_SESION_2026-07-03.md`. Ese
-comportamiento ya no aplica.
+Esto explica acumulacion visual por rafagas, pero no duplicacion permanente.
 
 ## Cambio aplicado el 2026-07-06
 
@@ -216,13 +209,22 @@ Ahora:
 - el slot sigue ocupado mientras ese monstruo exista
 - no deberian aparecer duplicados por lure fuera del radio
 
-## Por que hoy puede parecer lento un spawn
+## Por que hoy puede parecer que "se acumulan"
 
-### Monstruo lureado fuera del area
+### Caso actual. Rafaga al dejar de mirar
 
-Si alguien deja un monstruo vivo lejos del spawn original, ese slot no genera
-otro hasta que el primero muera o sea removido. Esto es intencional para evitar
-duplicados.
+Escenario:
+
+1. Matan varios monstruos de un mismo sector.
+2. Los timers vencen mientras un player sigue viendo tiles de respawn.
+3. Ninguno reaparece aun.
+4. El player se aleja o deja de verlos.
+5. En el siguiente tick de `20s`, varios reaparecen juntos.
+
+Resultado:
+
+- parece que "se acumularon"
+- en realidad estaban pendientes, no duplicados
 
 ## Bug historico corregido
 
@@ -256,6 +258,7 @@ Ver `docs/gameplay/RAGE_MONSTERS.md`.
 
 - El area del spawn se evalua como cuadrado alrededor del centro, no como
   circulo.
+- El chequeo de visibilidad usa pantalla de cliente, no line-of-sight real.
 - El check corre cada `20s`, asi que siempre hay granularidad gruesa.
 - `monster z` en XML no gobierna el spawn real; manda `centerz`.
 - Un restart del server repuebla inmediatamente todos los slots.
@@ -263,15 +266,17 @@ Ver `docs/gameplay/RAGE_MONSTERS.md`.
 
 ## Como probarlo
 
-### Prueba de respawn con espectadores
+### Prueba actual de rafaga por visibilidad
 
 1. Mata monstruos de un mismo sector.
 2. Quedate mirando el tile donde deberian reaparecer.
-3. Espera su `spawntime` mas el siguiente tick de hasta `20s`.
+3. Espera mas que su `spawntime`.
+4. Alejate o deja de ver esos tiles.
+5. Espera el proximo tick de hasta `20s`.
 
 Esperado hoy:
 
-- el monstruo reaparece aunque sigas mirando el tile
+- varios pueden reaparecer juntos
 
 ### Prueba del fix de no-duplicacion
 
@@ -287,11 +292,11 @@ Esperado hoy:
 
 ## Diagnostico actual
 
-Con el codigo actual:
+Con el codigo actual, la explicacion mas precisa para "los respawns se
+acumulan" es:
 
-- **si no reaparece pese a haber pasado el `spawntime`**: el slot sigue ocupado
-  (monstruo vivo, a menudo lureado fuera del area) o el tile no admite
-  `placeCreature`
-- **si aparecen monstruos extra vivos al mismo tiempo**: el binario corriendo no
-  incluye el fix del `2026-07-06`, o existe otro camino distinto al tracking
-  normal del spawn
+- **si reaparecen muchos juntos**: efecto del cambio de visibilidad del
+  `2026-07-03`
+- **si siguen apareciendo monstruos extra vivos al mismo tiempo**: o el binario
+  corriendo no incluye el fix del `2026-07-06`, o existe otro camino distinto
+  al tracking normal del spawn

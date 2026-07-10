@@ -205,8 +205,6 @@ public:
 
 	long inFightTicks, exhaustedTicks;
 	long manaShieldTicks, hasteTicks, paralyzeTicks;
-	long silenceTicks;
-	long rootTicks;
 	long tempoBuffTicks;
 	int tempoBuffBonus;
 	int immunities;
