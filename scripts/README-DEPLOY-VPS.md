@@ -39,6 +39,7 @@ Estos archivos **viven solo en el VPS**. No están en git (o no deben estarlo):
 | `server/YurOTS/ots/data/online.xml` | Quién está conectado |
 | `server/YurOTS/ots/data/queue.xml` | Cola de login |
 | `server/YurOTS/ots/data/houseitems.xml` | Items en casas |
+| `server/YurOTS/ots/data/houses/*.xml` | Dueños, guests y permisos por casa (runtime en VPS) |
 | `server/YurOTS/ots/data/private_trainers.xml` | Trainers privados colocados en casas |
 | `web/state/daily.json` | Baseline rankings web |
 | `web/state/register.json` | Estado anti-bot registro |
@@ -49,9 +50,9 @@ Las cuentas nuevas se crean en **https://retro76.cl** (web) → archivos XML en 
 
 ## Qué hace `deploy-vps.sh` (y por qué es seguro)
 
-1. **Backup** con `cp -a` de `players/`, `accounts/`, `vip/`, `online.xml`, `queue.xml`, `houseitems.xml`, `private_trainers.xml` → `~/ot-backups/pre-deploy-FECHA/`
+1. **Backup** con `cp -a` de `players/`, `accounts/`, `vip/`, `online.xml`, `queue.xml`, `houseitems.xml`, `data/houses/`, `private_trainers.xml` → `~/ot-backups/pre-deploy-FECHA/`
 2. **`git pull origin main`** — actualiza código y plantillas
-3. **Restaura** el backup con `cp -an` (no pisa archivos que ya existan; repone los que git haya tocado)
+3. **Restaura** el backup: `players/`/`accounts/` con `cp -an`; `data/houses/` y `houseitems.xml` con `cp -a` (sobrescribe dueños que git haya pisado)
 4. **Compila** dentro del container Docker
 5. **Reinicia** `yurots` (stop con 45 s de gracia) y `yurots-web`
 6. **Valida** mapa/casas, arranque del binario y healthcheck en puerto 7171
@@ -87,6 +88,7 @@ Diagnóstico manual inmediato:
 | `git reset --hard` sin backup previo | Puede borrar archivos que git aún rastrea o dejar el repo inconsistente |
 | `git clean -fd` / `git clean -fdx` | **Borra** todos los XML de cuentas/personajes no rastreados |
 | `git pull` a mano sin backup | El commit que sacó data del repo (`2d94838`) eliminó del disco archivos que git seguía trackeando |
+| `git checkout -- data/houses/` en el VPS | Borra dueños reales; volverán plantillas vacías del repo |
 | Copiar `players/` desde tu Mac al VPS | Pisás progreso real de jugadores |
 | `git add` / commit de `accounts/` o `players/` reales | No deben ir al repo |
 

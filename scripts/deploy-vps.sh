@@ -35,10 +35,20 @@ count_files() {
   find "$dir" -maxdepth 1 -name "$pattern" 2>/dev/null | wc -l | tr -d ' '
 }
 
+count_house_owners() {
+  local houses_dir="$1"
+  if [[ ! -d "$houses_dir" ]]; then
+    echo 0
+    return
+  fi
+  grep -h 'owner name=' "$houses_dir"/*.xml 2>/dev/null | grep -cv 'owner name=""' || echo 0
+}
+
 BEFORE_ACCOUNTS=$(count_files "$DATA/accounts" "*.xml")
 BEFORE_PLAYERS=$(count_files "$DATA/players" "*.xml")
+BEFORE_HOUSE_OWNERS=$(count_house_owners "$DATA/houses")
 
-echo "==> pre-deploy: $BEFORE_ACCOUNTS cuentas, $BEFORE_PLAYERS archivos en players/"
+echo "==> pre-deploy: $BEFORE_ACCOUNTS cuentas, $BEFORE_PLAYERS archivos en players/, $BEFORE_HOUSE_OWNERS casas con dueño"
 echo "==> backup runtime data"
 mkdir -p "$BACKUP"
 cp -a "$DATA/players" "$DATA/accounts" "$BACKUP/"
@@ -46,6 +56,7 @@ cp -a "$DATA/players" "$DATA/accounts" "$BACKUP/"
 cp -a "$DATA/online.xml" "$DATA/queue.xml" "$BACKUP/" 2>/dev/null || true
 [ -f "$DATA/houseitems.xml" ] && cp -a "$DATA/houseitems.xml" "$BACKUP/"
 [ -f "$DATA/private_trainers.xml" ] && cp -a "$DATA/private_trainers.xml" "$BACKUP/"
+[ -d "$DATA/houses" ] && cp -a "$DATA/houses" "$BACKUP/"
 echo "    guardado en $BACKUP"
 
 echo "==> git pull"
@@ -59,17 +70,32 @@ cp -an "$BACKUP/accounts/." "$DATA/accounts/"
 [ -f "$BACKUP/queue.xml" ] && cp -an "$BACKUP/queue.xml" "$DATA/queue.xml"
 [ -f "$BACKUP/houseitems.xml" ] && cp -an "$BACKUP/houseitems.xml" "$DATA/houseitems.xml"
 [ -f "$BACKUP/private_trainers.xml" ] && cp -an "$BACKUP/private_trainers.xml" "$DATA/private_trainers.xml"
+if [[ -d "$BACKUP/houses" ]]; then
+  mkdir -p "$DATA/houses"
+  # Sobrescribe lo que git pull haya pisado (dueños, guests, subowners).
+  cp -a "$BACKUP/houses/." "$DATA/houses/"
+fi
 
 AFTER_ACCOUNTS=$(count_files "$DATA/accounts" "*.xml")
 AFTER_PLAYERS=$(count_files "$DATA/players" "*.xml")
+AFTER_HOUSE_OWNERS=$(count_house_owners "$DATA/houses")
 
-echo "==> post-restore: $AFTER_ACCOUNTS cuentas, $AFTER_PLAYERS archivos en players/"
+echo "==> post-restore: $AFTER_ACCOUNTS cuentas, $AFTER_PLAYERS archivos en players/, $AFTER_HOUSE_OWNERS casas con dueño"
 
 if [[ "$AFTER_ACCOUNTS" -lt "$BEFORE_ACCOUNTS" ]] || [[ "$AFTER_PLAYERS" -lt "$BEFORE_PLAYERS" ]]; then
   echo ""
   echo "ERROR: bajó el número de cuentas o personajes tras el deploy."
   echo "       NO reinicies. Restaurá desde: $BACKUP"
   echo "       Si usaste git stash antes, ver scripts/README-DEPLOY-VPS.md § Recuperación"
+  echo ""
+  exit 1
+fi
+
+if [[ "$AFTER_HOUSE_OWNERS" -lt "$BEFORE_HOUSE_OWNERS" ]]; then
+  echo ""
+  echo "ERROR: bajó el número de casas con dueño tras el deploy ($BEFORE_HOUSE_OWNERS -> $AFTER_HOUSE_OWNERS)."
+  echo "       NO reinicies. Restaurá data/houses/ desde: $BACKUP/houses/"
+  echo "       Ver docs/gameplay/HOUSES.md"
   echo ""
   exit 1
 fi

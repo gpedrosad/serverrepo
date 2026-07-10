@@ -63,9 +63,10 @@ run_local_backup() {
   echo "==> backup LOCAL → $dest"
   backup_tree "$DATA" "$dest"
   write_manifest "$DATA" "$dest/accounts-state.json"
-  local acc players
+  local acc players owners
   acc=$(count_files "$DATA/accounts" "*.xml")
   players=$(count_files "$DATA/players" "*.xml")
+  owners=$(grep -h 'owner name=' "$DATA/houses"/*.xml 2>/dev/null | grep -cv 'owner name=""' || echo 0)
   cat > "$dest/BACKUP_INFO.txt" <<EOF
 label=$LABEL
 stamp=$STAMP
@@ -73,9 +74,10 @@ source=local
 host=$(hostname)
 accounts=$acc
 players=$players
+house_owners=$owners
 path=$dest
 EOF
-  echo "    $acc cuentas, $players archivos players/"
+  echo "    $acc cuentas, $players archivos players/, $owners casas con dueño"
   echo "$dest"
 }
 
@@ -92,8 +94,10 @@ cp -a "\$DATA/accounts" "\$DATA/players" "\$DEST/"
 cp -a "\$DATA/online.xml" "\$DATA/queue.xml" "\$DEST/" 2>/dev/null || true
 [[ -f "\$DATA/houseitems.xml" ]] && cp -a "\$DATA/houseitems.xml" "\$DEST/"
 [[ -f "\$DATA/private_trainers.xml" ]] && cp -a "\$DATA/private_trainers.xml" "\$DEST/"
+[[ -d "\$DATA/houses" ]] && cp -a "\$DATA/houses" "\$DEST/"
 ACC=\$(find "\$DATA/accounts" -maxdepth 1 -name '*.xml' | wc -l | tr -d ' ')
 PLR=\$(find "\$DATA/players" -maxdepth 1 -name '*.xml' | wc -l | tr -d ' ')
+OWN=\$(grep -h 'owner name=' "\$DATA/houses"/*.xml 2>/dev/null | grep -cv 'owner name=""' || echo 0)
 cat > "\$DEST/BACKUP_INFO.txt" <<EOF
 label=$LABEL
 stamp=$STAMP
@@ -101,9 +105,10 @@ source=vps
 host=\$(hostname)
 accounts=\$ACC
 players=\$PLR
+house_owners=\$OWN
 path=\$DEST
 EOF
-echo "    \$ACC cuentas, \$PLR archivos players/"
+echo "    \$ACC cuentas, \$PLR archivos players/, \$OWN casas con dueño"
 echo "\$DEST"
 REMOTE
 

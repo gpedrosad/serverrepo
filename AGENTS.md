@@ -39,7 +39,7 @@ Si alguno de estos archivos no existe, **avisar** al usuario antes de seguir.
 ## 2. Reglas de oro (no negociables)
 
 1. **NUNCA** ejecutar `git stash -u`, `git clean -fd`, `git reset --hard` ni borrado masivo dentro del VPS. Eso borra cuentas y personajes reales.
-2. **NUNCA** commitear data runtime de jugadores: `accounts/`, `players/` (excepto `0-4.xml`), `online.xml`, `queue.xml`, `houseitems.xml`, `web/state/*.json`.
+2. **NUNCA** commitear data runtime de jugadores: `accounts/`, `players/` (excepto `0-4.xml`), `online.xml`, `queue.xml`, `houseitems.xml`, `data/houses/*.xml` con dueños reales de prod, `web/state/*.json`.
 3. **NUNCA** commitear binarios ni artefactos: `source/yurots`, `*.o`, `*.bak`, `*.patch`, `core.*`, `*.log` rotados.
 4. **NUNCA** deployar al VPS si el usuario solo pidió debug local. **Siempre preguntar**.
 5. **SIEMPRE** usar `DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh` para deployar (nada de `docker cp` artesanal).
@@ -336,3 +336,4 @@ python3 scripts/sync-houses-with-map.py --dry-run
 - Items Zagan con `gameplaySpec` en el manifest **requieren C++** para funcionar en juego (ver sección 8).
 - Helmet con bonus de skills: **`refreshHeadSkillBonus()`** + `getSkill()` leyendo `items[SLOT_HEAD]` en vivo — no solo cache en `checkBoh()`.
 - **Depot vacío tras cambio de mapa:** items en XML, locker sin enlace → `docs/gameplay/DEPOTS.md` + `resolveMapDepotId()` en `actions.cpp`. Probar locker antes de deploy de `test.otbm`.
+- **Dueños de casas en deploy:** `data/houses/*.xml` es runtime en VPS → `docs/gameplay/HOUSES.md`. Nunca `git checkout -- data/houses/` en prod; `deploy-vps.sh` respalda y restaura dueños.

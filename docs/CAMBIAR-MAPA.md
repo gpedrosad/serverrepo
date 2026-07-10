@@ -119,6 +119,7 @@ Si borraste casas en RME (ej. River Street I y II):
 | Mover NPC (Dufi, Guild Master, etc.) | `server/YurOTS/ots/data/world/npc.xml` |
 | Nuevo monstruo en spawn | `test-spawn.xml` + definición en `data/monster/` |
 | Items en casas de jugadores | `houseitems.xml` (runtime VPS, no git) |
+| Dueños y permisos de casas | `data/houses/*.xml` (runtime VPS; ver [`gameplay/HOUSES.md`](gameplay/HOUSES.md)) |
 
 Tras mover NPCs, reiniciá el servidor (no hace falta recompilar).
 
