@@ -95,6 +95,124 @@
       padding: 0 2px;
     }
     .imbue-row:hover { background: rgba(255,255,255,.025); }
+    .gem-tier-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .gem-tier-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.08);
+      padding: 4px 10px;
+      font-size: 10px;
+      line-height: 1.2;
+    }
+    .gem-tier-pill .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      flex-shrink: 0;
+    }
+    .gem-tier-pill.t-angry .dot { background: #fbbf24; }
+    .gem-tier-pill.t-furious .dot { background: #fb923c; }
+    .gem-tier-pill.t-enraged .dot { background: #f87171; }
+    .gem-drop-acc {
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 10px;
+      background: linear-gradient(165deg, rgba(255,255,255,.035), rgba(255,255,255,.01));
+      overflow: hidden;
+    }
+    .gem-drop-acc + .gem-drop-acc { margin-top: 8px; }
+    .gem-drop-acc summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .gem-drop-acc summary::-webkit-details-marker { display: none; }
+    .gem-drop-acc[open] summary {
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      background: rgba(255,255,255,.02);
+    }
+    .gem-drop-chevron {
+      margin-left: auto;
+      color: rgba(161,161,170,.8);
+      font-size: 11px;
+      transition: transform 0.15s ease;
+    }
+    .gem-drop-acc[open] .gem-drop-chevron { transform: rotate(180deg); }
+    .gem-drop-body { padding: 10px 12px 12px; }
+    .gem-tier-block + .gem-tier-block { margin-top: 12px; }
+    .gem-tier-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .gem-tier-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .gem-tier-label.t-angry { color: #fcd34d; }
+    .gem-tier-label.t-furious { color: #fdba74; }
+    .gem-tier-label.t-enraged { color: #fca5a5; }
+    .gem-tier-count {
+      font-size: 10px;
+      color: rgba(161,161,170,.9);
+      font-variant-numeric: tabular-nums;
+    }
+    .mob-chip-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .mob-chip {
+      display: inline-block;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.2);
+      padding: 5px 8px;
+      font-size: 10px;
+      line-height: 1.25;
+      color: #d4d4d8;
+    }
+    .mob-chip mark {
+      background: rgba(251,191,36,.25);
+      color: #fde68a;
+      border-radius: 3px;
+      padding: 0 2px;
+    }
+    .gem-drops-filter {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(0,0,0,.25);
+      padding: 8px 10px;
+      font-size: 12px;
+      color: #e4e4e7;
+    }
+    .gem-drops-filter::placeholder { color: #71717a; }
+    .gem-drops-filter:focus {
+      outline: none;
+      border-color: rgba(251,191,36,.35);
+    }
+    .gem-drop-empty {
+      font-size: 10px;
+      color: #71717a;
+      padding: 4px 0;
+    }
     .chip-accent-account {
       color: #6ee7b7;
       border-color: rgba(52, 211, 153, 0.35);
@@ -384,10 +502,10 @@
         Nuevo cliente oficial con <strong class="font-medium text-zinc-100">items custom</strong> incluidos.
       </p>
       <p class="mt-2 text-[11px] leading-relaxed text-zinc-400">
-        <span class="text-zinc-300">Instalación nueva:</span> bajá el ZIP, descomprimí y ejecutá el lanzador.
-        <span class="text-zinc-300">¿Ya tenés el cliente?</span> en la pestaña
+        <span class="text-zinc-300">Instalación nueva:</span> descarga el ZIP, descomprime y ejecuta el lanzador.
+        <span class="text-zinc-300">¿Ya tienes el cliente?</span> en la pestaña
         <button type="button" class="text-sky-300/90 underline underline-offset-2 hover:text-sky-200" data-goto="download">Cliente</button>
-        usá la opción <span class="text-zinc-300">solo sprites</span>.
+        usa la opción <span class="text-zinc-300">solo sprites</span>.
       </p>
       <div class="mt-3 flex flex-wrap gap-2">
         <a href="/downloads/Retro76-Windows.zip" class="inline-flex items-center rounded-md border border-sky-500/25 bg-sky-500/10 px-2.5 py-1.5 text-[11px] font-medium text-sky-100 no-underline hover:border-sky-400/40 hover:bg-sky-500/15">ZIP Windows</a>
@@ -465,8 +583,8 @@
       <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">Opción 1 · Cliente completo (ZIP)</p>
       <div class="anim-in rounded-lg border border-sky-500/15 bg-sky-500/[0.04] px-3 py-2.5 mb-2" style="--d:0ms">
         <p class="text-[11px] leading-relaxed text-zinc-300">
-          Para <span class="text-zinc-100">instalación nueva</span> o si no tenés el cliente.
-          Descargá, <span class="text-zinc-100">descomprimí</span> y ejecutá
+          Para <span class="text-zinc-100">instalación nueva</span> o si no tienes el cliente.
+          Descarga, <span class="text-zinc-100">descomprime</span> y ejecuta
           <span class="text-zinc-400">Iniciar Cliente.bat</span> / <span class="text-zinc-400">.command</span>.
         </p>
       </div>
@@ -476,9 +594,9 @@
       <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">Opción 2 · Solo sprites (alternativa)</p>
       <div class="anim-in rounded-lg border border-emerald-500/15 bg-emerald-500/[0.04] px-3 py-2.5 mb-2" style="--d:45ms">
         <p class="text-[11px] leading-relaxed text-zinc-300">
-          Si <span class="text-zinc-100">ya tenés el cliente descomprimido</span>, bajá solo
+          Si <span class="text-zinc-100">ya tienes el cliente descomprimido</span>, descarga solo
           <span class="text-zinc-400">Tibia.dat</span> + <span class="text-zinc-400">Tibia.spr</span>
-          (~16 MB) y copialos en <span class="text-zinc-500">data/things/760/</span> de tu carpeta.
+          (~16 MB) y cópialos en <span class="text-zinc-500">data/things/760/</span> de tu carpeta.
         </p>
       </div>
       <div id="download-patch-list" class="grid grid-cols-1 gap-2"></div>
@@ -609,8 +727,17 @@
 
     <div>
       <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">1 · Loot</p>
-      <p class="mb-2 text-[11px] text-zinc-500">Gemas pequeñas del botín (x3):</p>
-      <div id="gems-small" class="grid grid-cols-5 gap-1.5 sm:gap-2"></div>
+      <p class="mb-2 text-[11px] text-zinc-500">Gemas pequeñas del botín de criaturas <span class="text-zinc-400">Angry</span>, <span class="text-zinc-400">Furious</span> y <span class="text-zinc-400">Enraged</span>:</p>
+      <div id="gems-small" class="grid grid-cols-5 gap-1.5 sm:gap-2 mb-3"></div>
+      <div id="gems-drops-wrap" class="space-y-2.5 anim-in rounded-lg border border-white/[0.06] bg-white/[0.02] p-3" style="--d:120ms">
+        <div>
+          <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">¿Quién dropea qué?</p>
+          <p class="mb-2 text-[11px] leading-relaxed text-zinc-500">Furious y Enraged tienen más chance en gemas pequeñas (<span class="text-orange-300/90">×2.4</span> y <span class="text-red-300/90">×3.2</span>). Tocá cada gema para ver la lista completa.</p>
+          <div id="gems-tier-legend" class="gem-tier-legend mb-2.5"></div>
+          <input type="search" id="gems-drops-filter" class="gem-drops-filter" placeholder="Buscar criatura (ej. hydra, orc)…" autocomplete="off" enterkeyhint="search">
+        </div>
+        <div id="gems-drops" class="space-y-0"></div>
+      </div>
     </div>
 
     <div>
@@ -737,6 +864,85 @@ const GEMS_SELL_LINES = [
   'Extras: talon 320gp · scarab coin 100gp · gold nugget 10k',
 ];
 
+let gemDropsData = null;
+let gemDropsFilter = '';
+
+function highlightMatch(text, query) {
+  if (!query) return esc(text);
+  const re = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'ig');
+  return esc(text).replace(re, '<mark>$1</mark>');
+}
+
+function renderGemDropsLegend(tiers) {
+  const el = document.getElementById('gems-tier-legend');
+  if (!el || !tiers) return;
+  el.innerHTML = tiers.map(t =>
+    `<span class="gem-tier-pill t-${esc(t.id)}"><span class="dot"></span><span class="text-zinc-300">${esc(t.label)}</span><span class="text-zinc-500">${esc(t.mult)}</span></span>`
+  ).join('');
+}
+
+function renderGemDropsList() {
+  const root = document.getElementById('gems-drops');
+  if (!root || !gemDropsData) return;
+  const q = gemDropsFilter.trim().toLowerCase();
+  const tiers = gemDropsData.tiers || [];
+
+  root.innerHTML = gemDropsData.gems.map((gem, idx) => {
+    const tierBlocks = tiers.map(t => {
+      const all = gem.monsters[t.id] || [];
+      const list = q ? all.filter(name => name.toLowerCase().includes(q)) : all;
+      if (!list.length) return '';
+      const chips = list.map(name =>
+        `<span class="mob-chip">${highlightMatch(name, q)}</span>`
+      ).join('');
+      return `<div class="gem-tier-block">
+        <div class="gem-tier-head">
+          <span class="gem-tier-label t-${esc(t.id)}">${esc(t.label)} <span class="font-normal normal-case text-zinc-500">${esc(t.mult)}</span></span>
+          <span class="gem-tier-count">${list.length} criatura${list.length === 1 ? '' : 's'}</span>
+        </div>
+        <div class="mob-chip-grid">${chips}</div>
+      </div>`;
+    }).filter(Boolean).join('');
+
+    if (!tierBlocks) return '';
+
+    const openAttr = q ? ' open' : '';
+    return `<details class="gem-drop-acc anim-in"${openAttr} style="--d:${160 + idx * 30}ms">
+      <summary>
+        ${gemImg(gem.id, false, gem.short)}
+        <div class="min-w-0 flex-1 text-left">
+          <p class="text-[11px] font-medium text-zinc-200">${esc(gem.short)}</p>
+          <p class="truncate text-[10px] text-zinc-500">${esc(gem.use)}</p>
+        </div>
+        <span class="hidden text-[9px] tabular-nums text-zinc-600 sm:inline" title="Angry / Furious / Enraged">${esc(String(gem.counts.angry || 0))}/${esc(String(gem.counts.furious || 0))}/${esc(String(gem.counts.enraged || 0))}</span>
+        <span class="gem-drop-chevron" aria-hidden="true">▼</span>
+      </summary>
+      <div class="gem-drop-body">${tierBlocks}</div>
+    </details>`;
+  }).filter(Boolean).join('') || '<p class="gem-drop-empty">Ninguna criatura coincide con la búsqueda.</p>';
+}
+
+async function loadGemDrops() {
+  try {
+    const r = await fetch('/data/gem-drops.json', { cache: 'no-store' });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    gemDropsData = await r.json();
+    renderGemDropsLegend(gemDropsData.tiers);
+    renderGemDropsList();
+    const filterEl = document.getElementById('gems-drops-filter');
+    if (filterEl && !filterEl.dataset.bound) {
+      filterEl.dataset.bound = '1';
+      filterEl.addEventListener('input', () => {
+        gemDropsFilter = filterEl.value;
+        renderGemDropsList();
+      });
+    }
+  } catch (e) {
+    const root = document.getElementById('gems-drops');
+    if (root) root.innerHTML = '<p class="gem-drop-empty">No se pudo cargar la tabla de loot.</p>';
+  }
+}
+
 const PREMIUM_PERKS = [
   { tag: 'Incluye', title: '+10% exp', desc: 'Pequeño extra de experiencia al cazar.' },
   { tag: 'Incluye', title: '+10% botín', desc: 'Ligero bonus de botín en monstruos.' },
@@ -757,6 +963,7 @@ const DEFAULT_PREMIUM_ADDONS = [
   { key: 'golden_ring', itemId: 2179, price: 2000, label: 'Golden ring', desc: '+20% de oro de monstruos mientras lo llevas equipado.', image: '/assets/premium/2179-small.jpg', image2x: '/assets/premium/2179-small@2x.jpg' },
   { key: 'experience_recovery_rune', itemId: 20131, price: 2500, label: 'Experience recovery rune', desc: 'Recupera 60-80% de la exp perdida en tu última muerte.', image: '/assets/premium/20131-small.png', image2x: '/assets/premium/20131-small@2x.png' },
   { key: 'training_extension_rune', itemId: 20132, price: 1500, label: 'Training extension rune', desc: '+12 horas de training ese día (una vez por personaje).', image: '/assets/premium/20132-small.png', image2x: '/assets/premium/20132-small@2x.png' },
+  { key: 'private_trainer_dummy', itemId: 20118, price: 15000, label: 'Private trainer dummy', desc: 'Muñeco de entrenamiento para colocar en tu casa (1 por house, solo el dueño).', image: '/assets/premium/20118-small.png', image2x: '/assets/premium/20118-small@2x.png' },
 ];
 
 const premiumState = {
@@ -768,6 +975,7 @@ const premiumState = {
     golden_ring: false,
     experience_recovery_rune: false,
     training_extension_rune: false,
+    private_trainer_dummy: false,
   },
   configLoading: false,
   checkoutOpen: false,
@@ -1592,6 +1800,7 @@ function renderGems() {
   ).join('');
 
   document.getElementById('gems-sell').innerHTML = GEMS_SELL_LINES.map(l => `<p>${esc(l)}</p>`).join('');
+  if (gemDropsData) renderGemDropsList();
 }
 
 function spellKindClass(kind) {
@@ -1793,6 +2002,7 @@ renderNav();
 renderPremium();
 bindPremiumCheckoutEvents();
 renderGems();
+loadGemDrops();
 renderDownload(null);
 probeDownloads();
 refresh();

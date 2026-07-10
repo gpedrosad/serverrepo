@@ -7,6 +7,7 @@ Relacionado:
 - [docs/CAMBIAR-MAPA.md](CAMBIAR-MAPA.md) — flujo RME → servidor → deploy
 - [docs/RME_SETUP.md](RME_SETUP.md) — abrir Remere's Map Editor
 - `scripts/generate-island.py` — generador de islas
+- [MAPEAR_LABERINTO.md](MAPEAR_LABERINTO.md) — laberinto 2 sqm con suelo 406 (`generate-maze.py`)
 - `scripts/sync-houses-from-rme.py` — casas (no aplica a islas vacías)
 
 ---
@@ -303,6 +304,7 @@ Ideas naturales para seguir el mismo enfoque:
 | Feature | Descripción |
 |---------|-------------|
 | `generate-spawns-from-yaml.py` | Lista `monsters: [{name, count}]` → bloque XML |
+| `generate-maze.py` | ✅ Laberinto 2 sqm, camino 406, fondo 100, validación walkable — [MAPEAR_LABERINTO.md](MAPEAR_LABERINTO.md) |
 | `generate-cave.py` | Room rectangular con paredes y entrada |
 | `patch-map-from-yaml.py` | Lista `{x, y, z, ground, items[]}` → OTBM |
 | OTBM2JSON | Migraciones masivas (reemplazar item ids en todo el mapa) |

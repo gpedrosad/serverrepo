@@ -181,6 +181,8 @@ public:
 	int RANGE_PLAGUE;
 	int RANGE_COSMIC;
 	int RANGE_INFERNO;
+
+	double WAND_ML_FACTOR;
 #endif //JD_WANDS
 
 #ifdef YUR_BUILTIN_AAC

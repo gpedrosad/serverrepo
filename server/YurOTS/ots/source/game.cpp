@@ -342,6 +342,14 @@ namespace {
 const long MEDUSA_PARALYZE_MS = 6000;
 const unsigned short MEDUSA_PARALYZE_SPEED = 40;
 
+const int SILENCE_CHANCE_PERCENT = 10;
+const long SILENCE_DURATION_MIN_MS = 2000;
+const long SILENCE_DURATION_MAX_MS = 3000;
+const long SILENCE_COOLDOWN_PER_TARGET_MS = 12000;
+
+// attackerId -> (targetId -> cooldown-until ms)
+std::map<unsigned long, std::map<unsigned long, int64_t> > g_silenceCooldownUntil;
+
 bool wieldsMedusaSword(const Player* player)
 {
 	if(!player)
@@ -350,6 +358,20 @@ bool wieldsMedusaSword(const Player* player)
 	for(int slot = SLOT_RIGHT; slot <= SLOT_LEFT; slot++) {
 		Item* item = player->getItem(slot);
 		if(item && item->getID() == ITEM_MEDUSA_SWORD)
+			return true;
+	}
+
+	return false;
+}
+
+bool wieldsSwordOfSilence(const Player* player)
+{
+	if(!player)
+		return false;
+
+	for(int slot = SLOT_RIGHT; slot <= SLOT_LEFT; slot++) {
+		Item* item = player->getItem(slot);
+		if(item && item->getID() == ITEM_SWORD_OF_SILENCE)
 			return true;
 	}
 
@@ -394,6 +416,31 @@ void applyMedusaParalyze(Game* game, Player* attacker, Player* target)
 
 	game->addEvent(makeTask(MEDUSA_PARALYZE_MS,
 		boost::bind(&restoreFromMedusaParalyze, game, target->getID())));
+}
+
+void applySwordOfSilence(Game* game, Player* attacker, Player* target)
+{
+	if(!game || !attacker || !target || target->access >= g_config.ACCESS_PROTECT)
+		return;
+
+	const int64_t now = OTSYS_TIME();
+	std::map<unsigned long, int64_t>& byTarget = g_silenceCooldownUntil[attacker->getID()];
+	std::map<unsigned long, int64_t>::iterator cit = byTarget.find(target->getID());
+	if(cit != byTarget.end() && cit->second > now)
+		return;
+
+	if((rand() % 100) >= SILENCE_CHANCE_PERCENT)
+		return;
+
+	const long durationMs = SILENCE_DURATION_MIN_MS +
+		(rand() % (SILENCE_DURATION_MAX_MS - SILENCE_DURATION_MIN_MS + 1));
+
+	target->silenceTicks = durationMs;
+	byTarget[target->getID()] = now + SILENCE_COOLDOWN_PER_TARGET_MS;
+
+	game->sendMagicEffect(target->pos, NM_ME_SOUND_BLUE);
+	target->sendTextMessage(MSG_SMALLINFO, "You are silenced.");
+	attacker->sendTextMessage(MSG_SMALLINFO, "Your sword of silence muted your target.");
 }
 } // namespace
 
@@ -713,6 +760,9 @@ void GameState::onAttack(Creature* attacker, const Position& pos, Creature* atta
 
 		if(attackPlayer && attackedPlayer && !trainingNoPvp && wieldsMedusaSword(attackPlayer))
 			applyMedusaParalyze(game, attackPlayer, attackedPlayer);
+
+		if(attackPlayer && attackedPlayer && !trainingNoPvp && wieldsSwordOfSilence(attackPlayer))
+			applySwordOfSilence(game, attackPlayer, attackedPlayer);
 
 #ifdef TLM_SKULLS_PARTY
 		if (game->getWorldType() == WORLD_TYPE_PVP)
@@ -1984,6 +2034,19 @@ bool Game::onPrepareMoveCreature(Creature *creature, const Creature* creatureMov
 {
 	const Player* playerMoving = dynamic_cast<const Player*>(creatureMoving);
 	Player* player = dynamic_cast<Player*>(creature);
+
+	if(creatureMoving && creatureMoving->rootTicks >= 1000 &&
+		creatureMoving->access < g_config.ACCESS_PROTECT)
+	{
+		if(creature == creatureMoving && player) {
+			player->sendTextMessage(MSG_SMALLINFO, "You are rooted.");
+			player->sendCancelWalk();
+		}
+		else {
+			creature->sendCancel("Sorry, not possible.");
+		}
+		return false;
+	}
 
 	if (creature->access < g_config.ACCESS_PROTECT && creature != creatureMoving && !creatureMoving->isPushable()) {
 		creature->sendCancel("Sorry, not possible.");
@@ -4514,6 +4577,24 @@ void Game::checkCreature(unsigned long id)
 					player->sendIcons();
 			}
 
+			if(player->silenceTicks >= 1000){
+				player->silenceTicks -= thinkTicks;
+				if(player->silenceTicks < 0)
+					player->silenceTicks = 0;
+			}
+			else if(player->silenceTicks > 0){
+				player->silenceTicks = 0;
+			}
+
+			if(player->rootTicks >= 1000){
+				player->rootTicks -= thinkTicks;
+				if(player->rootTicks < 0)
+					player->rootTicks = 0;
+			}
+			else if(player->rootTicks > 0){
+				player->rootTicks = 0;
+			}
+
 			if(player->hasteTicks >=1000){
 				player->hasteTicks -= thinkTicks;
 			}
@@ -4529,6 +4610,15 @@ void Game::checkCreature(unsigned long id)
 		else {
 			if(creature->manaShieldTicks >=1000){
 				creature->manaShieldTicks -= thinkTicks;
+			}
+
+			if(creature->rootTicks >= 1000){
+				creature->rootTicks -= thinkTicks;
+				if(creature->rootTicks < 0)
+					creature->rootTicks = 0;
+			}
+			else if(creature->rootTicks > 0){
+				creature->rootTicks = 0;
 			}
 
 			if(creature->hasteTicks >=1000){
@@ -4921,7 +5011,11 @@ SpellCastResult Game::creatureSaySpell(Creature *creature, const std::string &te
 		const int REQ_MANA = 50;
 		Position dest;
 
-		if(!getLevitateDestination(this, player, var, dest)){
+		if(player->silenceTicks >= 1000 && player->access < g_config.ACCESS_PROTECT){
+			player->sendMagicEffect(player->pos, NM_ME_PUFF);
+			player->sendTextMessage(MSG_SMALLINFO, "You are silenced.");
+		}
+		else if(!getLevitateDestination(this, player, var, dest)){
 			player->sendMagicEffect(player->pos, NM_ME_PUFF);
 			player->sendTextMessage(MSG_SMALLINFO, "Sorry, not possible.");
 		}
@@ -4953,7 +5047,7 @@ SpellCastResult Game::creatureSaySpell(Creature *creature, const std::string &te
 		std::map<std::string, Spell*>::iterator sit = spells.getAllSpells()->find(temp);
 		if( sit != spells.getAllSpells()->end() ) {
 			recognized = true;
-			ret = sit->second->getSpellScript()->castSpell(creature, creature->pos, var);
+			ret = SpellScript::safeCast(sit->second, creature, creature->pos, var);
 		}
 	}
 	else if(player){
@@ -4962,7 +5056,12 @@ SpellCastResult Game::creatureSaySpell(Creature *creature, const std::string &te
 			std::map<std::string, Spell*>::iterator sit = tmp->find(temp);
 			if( sit != tmp->end() ) {
 				recognized = true;
-				if(player->getEffectiveMagLevel() >= sit->second->getMagLv()){
+				if(player->silenceTicks >= 1000){
+					player->sendMagicEffect(player->pos, NM_ME_PUFF);
+					player->sendTextMessage(MSG_SMALLINFO, "You are silenced.");
+					ret = false;
+				}
+				else if(player->getEffectiveMagLevel() >= sit->second->getMagLv()){
 #ifdef YUR_LEARN_SPELLS
 					if (g_config.LEARN_SPELLS && !player->knowsSpell(temp))
 						ret = false;
@@ -4972,7 +5071,7 @@ SpellCastResult Game::creatureSaySpell(Creature *creature, const std::string &te
 						const int64_t manaBefore = player->mana;
 						const long exhaustedBefore = player->exhaustedTicks;
 						const unsigned short soulBefore = player->getSoul();
-						ret = sit->second->getSpellScript()->castSpell(creature, creature->pos, var);
+						ret = SpellScript::safeCast(sit->second, creature, creature->pos, var);
 						if(!ret && didPlayerSpendSpellResources(player, manaBefore, exhaustedBefore, soulBefore))
 							ret = true;
 					}
@@ -5063,7 +5162,7 @@ bool Game::playerUseItemEx(Player *player, const Position& posFrom,const unsigne
 				std::string var = std::string("");
 				if(player->access >= g_config.ACCESS_PROTECT || sit->second->getMagLv() <= player->getEffectiveMagLevel())
 				{
-					bool success = sit->second->getSpellScript()->castSpell(player, posTo, var);
+					bool success = SpellScript::safeCast(sit->second, player, posTo, var);
 					ret = success;
 					if(success) {
 						autoCloseTrade(item);
@@ -5130,7 +5229,7 @@ bool Game::playerUseBattleWindow(Player *player, Position &posFrom, unsigned cha
 			else {
 				std::string var = std::string("");
 				if(player->access >= g_config.ACCESS_PROTECT || sit->second->getMagLv() <= player->getEffectiveMagLevel()) {
-					bool success = sit->second->getSpellScript()->castSpell(player, creature->pos, var);
+					bool success = SpellScript::safeCast(sit->second, player, creature->pos, var);
 					ret = success;
 					if(success) {
 						autoCloseTrade(item);
@@ -7414,6 +7513,14 @@ void Game::useWand(Creature *creature, Creature *attackedCreature, int wandid)
 		col.push_back(0);
 		col.push_back(0);
 		runeAreaSpell.areaVec.push_back(col);
+
+		if(g_config.WAND_ML_FACTOR > 0.0){
+			const int64_t mlBonus = (int64_t)(player->getEffectiveMagLevel() * g_config.WAND_ML_FACTOR);
+			if(mlBonus > 0){
+				runeAreaSpell.minDamage += (int)mlBonus;
+				runeAreaSpell.maxDamage += (int)mlBonus;
+			}
+		}
 
 		creatureThrowRune(player, attackedCreature->pos, runeAreaSpell);
 		player->addManaSpent(mana);

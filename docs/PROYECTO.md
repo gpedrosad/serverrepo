@@ -90,6 +90,7 @@ Estos archivos son el **progreso real de los jugadores**. Viven en el VPS y est�
 | `server/YurOTS/ots/data/online.xml` | Sesiones conectadas |
 | `server/YurOTS/ots/data/queue.xml` | Cola de login |
 | `server/YurOTS/ots/data/houseitems.xml` | Items en casas |
+| `server/YurOTS/ots/data/private_trainers.xml` | Trainers privados colocados en casas |
 | `web/state/daily.json` | Baseline de rankings |
 | `web/state/register.json` | Estado anti-bot del registro |
 | `web/downloads/*.zip` | Clientes OTClient (**no en git**, solo en VPS) |
@@ -139,7 +140,7 @@ Se usó `git stash -u` en el VPS antes de un deploy. Eso **movió del disco al s
 ### No commitear
 
 - Cuentas y personajes reales (`accounts/`, `players/*` excepto 0–4)
-- `online.xml`, `queue.xml`, `houseitems.xml`
+- `online.xml`, `queue.xml`, `houseitems.xml`, `private_trainers.xml`
 - `web/state/*.json` (runtime)
 - Binario compilado `source/yurots`, objetos `.o`
 - `server.log`

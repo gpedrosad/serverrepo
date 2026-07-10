@@ -1,5 +1,11 @@
 # Smoke Tests Locales
 
+> **Estado (jul 2026): desactivados temporalmente.** Existe el sentinel
+> `scripts/.smoke-tests-disabled`; mientras esté presente, `test-local-smoke.sh`
+> sale en 0 sin correr casos. Para reactivar: `rm scripts/.smoke-tests-disabled`
+> y actualizar `AGENTS.md`. Corrida puntual sin borrar el sentinel:
+> `bash scripts/test-local-smoke.sh --force`.
+
 Esta base de pruebas existe para tocar el server viejo con un poco mas de red.
 La idea no es reemplazar QA completo, sino darnos una verificacion corta y
 repetible antes de meter mano en cosas delicadas.

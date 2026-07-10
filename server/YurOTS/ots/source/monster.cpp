@@ -1323,7 +1323,7 @@ bool Monster::doAttacks(Creature* attackedCreature, monstermode_t mode /*= MODE_
 
 					std::map<unsigned short, Spell*>::iterator rit = spells.getAllRuneSpells()->find(raIt->first);
 					if(rit != spells.getAllRuneSpells()->end()) {
-						bool success = rit->second->getSpellScript()->castSpell(this, attackedCreature->pos, "");
+						bool success = SpellScript::safeCast(rit->second, this, attackedCreature->pos, "");
 
 						if(success) {
 							ret = true;
@@ -1347,7 +1347,7 @@ bool Monster::doAttacks(Creature* attackedCreature, monstermode_t mode /*= MODE_
 
 					std::map<std::string, Spell*>::iterator rit = spells.getAllSpells()->find(iaIt->first);
 					if(rit != spells.getAllSpells()->end()) {
-						bool success = rit->second->getSpellScript()->castSpell(this, this->pos, "");
+						bool success = SpellScript::safeCast(rit->second, this, this->pos, "");
 
 						if(success) {
 							ret = true;

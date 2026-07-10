@@ -45,6 +45,7 @@ cp -a "$DATA/players" "$DATA/accounts" "$BACKUP/"
 [ -d "$DATA/vip" ] && cp -a "$DATA/vip" "$BACKUP/"
 cp -a "$DATA/online.xml" "$DATA/queue.xml" "$BACKUP/" 2>/dev/null || true
 [ -f "$DATA/houseitems.xml" ] && cp -a "$DATA/houseitems.xml" "$BACKUP/"
+[ -f "$DATA/private_trainers.xml" ] && cp -a "$DATA/private_trainers.xml" "$BACKUP/"
 echo "    guardado en $BACKUP"
 
 echo "==> git pull"
@@ -57,6 +58,7 @@ cp -an "$BACKUP/accounts/." "$DATA/accounts/"
 [ -f "$BACKUP/online.xml" ] && cp -an "$BACKUP/online.xml" "$DATA/online.xml"
 [ -f "$BACKUP/queue.xml" ] && cp -an "$BACKUP/queue.xml" "$DATA/queue.xml"
 [ -f "$BACKUP/houseitems.xml" ] && cp -an "$BACKUP/houseitems.xml" "$DATA/houseitems.xml"
+[ -f "$BACKUP/private_trainers.xml" ] && cp -an "$BACKUP/private_trainers.xml" "$DATA/private_trainers.xml"
 
 AFTER_ACCOUNTS=$(count_files "$DATA/accounts" "*.xml")
 AFTER_PLAYERS=$(count_files "$DATA/players" "*.xml")

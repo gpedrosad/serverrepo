@@ -36,8 +36,8 @@ area = {
     	UltimateExplosionObject.minDmg = 0
     	UltimateExplosionObject.maxDmg = 0 
     else
-    	UltimateExplosionObject.minDmg = (level * 2 + maglv * 3) * 2.3 - 30
-    	UltimateExplosionObject.maxDmg = (level * 2 + maglv * 3) * 3.0 	
+    	UltimateExplosionObject.minDmg = (level * 2 + maglv * 3) * 1.5 - 20
+    	UltimateExplosionObject.maxDmg = (level * 2 + maglv * 3) * 2.0 	
     end 
     
     return doAreaMagic(cid, centerpos, needDirection, areaEffect, area, UltimateExplosionObject:ordered())

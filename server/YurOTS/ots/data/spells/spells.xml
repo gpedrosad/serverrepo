@@ -169,5 +169,6 @@
 <rune name="Energy Wall"			id="2279"	charges="4"		maglv="9"	mana="0"	enabled="1"></rune>
 <rune name="Sudden Death"			id="2268"	charges="2"		maglv="15"	mana="0"	enabled="1"></rune>
 <rune name="Paralyze"				id="2278"	charges="1"		maglv="18"	mana="0"	enabled="1"></rune>
+<rune name="Anchor"					id="2296"	charges="3"		maglv="8"	mana="0"	enabled="1"></rune>
 <!--\\ End Runes //-->
 </spells>

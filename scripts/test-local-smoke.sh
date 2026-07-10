@@ -2,13 +2,19 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+DISABLE_FILE="$ROOT/scripts/.smoke-tests-disabled"
 HOST="127.0.0.1"
 PORT="7171"
 START_SERVER=0
+FORCE=0
 PASSTHRU=()
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
+    --force)
+      FORCE=1
+      shift
+      ;;
     --start)
       START_SERVER=1
       shift
@@ -29,6 +35,13 @@ while [[ $# -gt 0 ]]; do
       ;;
   esac
 done
+
+if [[ -f "$DISABLE_FILE" && "$FORCE" -eq 0 ]]; then
+  echo "Smoke tests desactivados temporalmente ($DISABLE_FILE existe)."
+  echo "Para reactivar: rm scripts/.smoke-tests-disabled"
+  echo "Para forzar una corrida puntual: bash scripts/test-local-smoke.sh --force"
+  exit 0
+fi
 
 if [[ "$START_SERVER" -eq 1 ]]; then
   echo "-> Levantando contenedor local de YurOTS..."

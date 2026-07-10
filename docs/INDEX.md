@@ -73,12 +73,14 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/DARK_RODO_RUNE_BACKPACKS.md`](gameplay/DARK_RODO_RUNE_BACKPACKS.md) | Backpacks especiales de runas y Dark Rodo. |
 | [`gameplay/RUNE_WEIGHT_RL.md`](gameplay/RUNE_WEIGHT_RL.md) | Peso de runas y lógica RL asociada. |
 | [`gameplay/DESINTEGRATE_RUNE.md`](gameplay/DESINTEGRATE_RUNE.md) | Implementación real de la rune Desintegrate: magic wall, wild growth y objetos destruibles. |
+| [`gameplay/ANCHOR_RUNE.md`](gameplay/ANCHOR_RUNE.md) | Anchor Rune (2296): root de 1s (no paralyze) para war/combos. |
 | [`gameplay/SPELL_CAST_VISIBILITY.md`](gameplay/SPELL_CAST_VISIBILITY.md) | Visibilidad del cast de hechizos (efectos visuales). |
 | [`gameplay/SPELL_EXORI_GRAN.md`](gameplay/SPELL_EXORI_GRAN.md) | Hechizo exori gran: balance, área, daño. |
 | [`gameplay/TRAINING_BONUS_PARCHMENT.md`](gameplay/TRAINING_BONUS_PARCHMENT.md) | Sistema de pergaminos de bonus de training. |
 | [`gameplay/PRIVATE_TRAINER_DUMMY.md`](gameplay/PRIVATE_TRAINER_DUMMY.md) | Private Trainer Dummy para casas usando sprite de item `20118`. |
 | [`gameplay/ZAGAN_CONSUMABLE_RUNES.md`](gameplay/ZAGAN_CONSUMABLE_RUNES.md) | Runas consumibles Zagan: experience recovery (20131) y training extension (20132). |
 | [`gameplay/TRAINING_ZONE_NO_PVP.md`](gameplay/TRAINING_ZONE_NO_PVP.md) | Zonas de training con flag de no-PvP. |
+| [`gameplay/WANDS.md`](gameplay/WANDS.md) | Wands/rods (11 items), flujo de `useWand()`, escalado de daño por ML, Crimson Wand (20123), tuning `wandmlfactor`. |
 
 ---
 
@@ -91,6 +93,7 @@ Importación de items, mapeo por código, items de prueba, sesiones de editor.
 | [`items-and-map/IMPORTAR_ITEM_DESDE_IMAGEN.md`](items-and-map/IMPORTAR_ITEM_DESDE_IMAGEN.md) | Si un item nuevo no entra o se ve mal: pipeline de import desde imagen. |
 | [`items-and-map/MAPEAR_CON_CODIGO.md`](items-and-map/MAPEAR_CON_CODIGO.md) | Mapear items/pisos por código (no manual) usando scripts. |
 | [`items-and-map/MAPEAR_LABERINTO.md`](items-and-map/MAPEAR_LABERINTO.md) | Laberinto procedural 2 sqm: camino 406, fondo 100 (pared), teleport al templo (`generate-maze.py`). |
+| [`items-and-map/ISLAND_BANDS.md`](items-and-map/ISLAND_BANDS.md) | Cómo componer las bandas agua→shore→dirt→grass para que una isla no se vea con corte duro. Especificación de las 5 bandas y 7 reglas críticas. |
 | [`items-and-map/ZAGAN_TEST_ITEMS.md`](items-and-map/ZAGAN_TEST_ITEMS.md) | Items de prueba del entorno Zagan (dev/test). |
 | [`items-and-map/SESION_EDITOR_MAPA_JUL2026.md`](items-and-map/SESION_EDITOR_MAPA_JUL2026.md) | Bitácora de la sesión de editor de mapa de julio 2026. |
 
@@ -132,6 +135,7 @@ Catálogo completo de features del juego. Cada feature tiene su doc individual e
 | Quiero entender la causa raíz de cuelgues | [`systems/OT_HANG_ROOT_CAUSE_SEND_BLOCKING.md`](systems/OT_HANG_ROOT_CAUSE_SEND_BLOCKING.md) |
 | Un item no entra o se ve mal | [`items-and-map/IMPORTAR_ITEM_DESDE_IMAGEN.md`](items-and-map/IMPORTAR_ITEM_DESDE_IMAGEN.md) |
 | Necesito mapear items por código | [`items-and-map/MAPEAR_CON_CODIGO.md`](items-and-map/MAPEAR_CON_CODIGO.md) |
+| Generar una isla coherente (bandas agua/pasto) | [`items-and-map/ISLAND_BANDS.md`](items-and-map/ISLAND_BANDS.md) |
 | Quiero generar un laberinto por código | [`items-and-map/MAPEAR_LABERINTO.md`](items-and-map/MAPEAR_LABERINTO.md) |
 | Quiero crear un monstruo nuevo | [`gameplay/MONSTER_CREATION.md`](gameplay/MONSTER_CREATION.md) |
 | Voy a tocar gemas o imbuements | [`gameplay/GEMS.md`](gameplay/GEMS.md) → [`features/10-gems-and-imbuements.md`](features/10-gems-and-imbuements.md) |
@@ -139,6 +143,7 @@ Catálogo completo de features del juego. Cada feature tiene su doc individual e
 | Necesito migrar DB o data crítica | [`MIGRATION_PLAYBOOK.md`](MIGRATION_PLAYBOOK.md) |
 | Voy a cambiar el mapa del server | [`CAMBIAR-MAPA.md`](CAMBIAR-MAPA.md) → [`gameplay/DEPOTS.md`](gameplay/DEPOTS.md) |
 | Jugadores reportan depot vacío | [`gameplay/DEPOTS.md`](gameplay/DEPOTS.md) |
+| Wand pega siempre igual sin importar ML / imbue de Violet | [`gameplay/WANDS.md`](gameplay/WANDS.md) |
 | Quiero ver qué features tiene el juego | [`FEATURE_CATALOG.md`](FEATURE_CATALOG.md) |
 | Necesito configurar el editor RME | [`RME_SETUP.md`](RME_SETUP.md) |
 | Tests de humo antes de release | [`SMOKE_TESTS.md`](SMOKE_TESTS.md) |

@@ -51,6 +51,7 @@ Sin esto los items existen en OTB pero no funcionan bien en prod.
 | Crimson Wand | `20123` | `game.cpp/h`, `player.cpp`, `const76.h`, `item.cpp` | Wand real: sorc/druid lv33+, dmg 55–65, mana 13, range 5, delay 667 ms, animación adori gran. Incluye Master Sorcerer / Elder Druid. |
 | Fury Cape | `20114` | `player.cpp`, `game.cpp`, `item.cpp` | Bonus ML en armor slot (misma familia voc que helmet). |
 | Medusa Sword | `20105` | `game.cpp`, `item.cpp` | Lógica de combate custom del arma. |
+| Sword of Silence | `20139` | `game.cpp`, `creature.h/cpp`, `item.cpp`, `const76.h`, OTB patch | 10% silencio PvP 2–3s (spells hablados); CD 12s/target; atk 42. **Local only** hasta autorización. |
 
 Constantes en `server/YurOTS/ots/source/const76.h`:
 
@@ -59,6 +60,7 @@ ITEM_MEDUSA_SWORD = 20105,
 ITEM_CRIMSON_HELMET = 20113,
 ITEM_FURY_CAPE = 20114,
 ITEM_CRIMSON_WAND = 20123,
+ITEM_SWORD_OF_SILENCE = 20139,
 ```
 
 **Rebuild obligatorio** en VPS (el script de deploy compila dentro del container). Si se tocó `creature.h`, preferir `make clean && make` local antes de confiar en el build.
