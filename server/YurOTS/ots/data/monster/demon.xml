@@ -11,7 +11,7 @@
 	<attack type="rune" name="firefield" cycleticks="2750" probability="40"/>
 	<attack type="instant" name="d exevo gran vis lux" exhaustion="500" cycleticks="6500" probability="60"/>
 	<attack type="instant" name="demon_manadrain" exhaustion="100" cycleticks="3250" probability="30"/>
-	<attack type="rune" name="demon fireball" exhaustion="500" cycleticks="2750" probability="60"/>
+	<attack type="rune" name="demon fireball" exhaustion="250" cycleticks="2000" probability="70"/>
 </attacks>
 
 <defenses>

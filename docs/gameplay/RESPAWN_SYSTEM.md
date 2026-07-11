@@ -87,14 +87,22 @@ Analizando `server/YurOTS/ots/data/world/test-spawn.xml` hoy:
 - no hay posiciones absolutas duplicadas
 - no hay centros de spawn duplicados
 
-Distribucion actual de `spawntime` (balance jul 2026, opcion A: +50% en tiers):
+Distribucion actual de `spawntime` (balance jul 2026, opcion B: +50% sobre opcion A):
 
-- `90s`: `1049` slots (antes 60s)
-- `120s`: `152` slots (antes 90s)
-- `150s`: `55` slots (antes 120s)
-- otros valores: marginales (`25`–`45`, `300` bosses)
+- `135s`: `1049` slots (antes 90s en opcion A; 60s RL)
+- `180s`: `152` slots (antes 120s; 90s RL)
+- `225s`: `55` slots (antes 150s; 120s RL)
+- otros valores: marginales (`40`–`90`, `450` bosses)
 
-Promedio configurado: ~96 s (antes ~66 s).
+Promedio configurado: ~144 s (opcion A ~96 s; RL ~66 s).
+
+Historial de tiers:
+
+| Etapa | Tier comun | Promedio |
+|-------|------------|----------|
+| RL clasico | 60 / 90 / 120 s | ~66 s |
+| Opcion A (jul 2026) | 90 / 120 / 150 s | ~96 s |
+| **Opcion B (jul 2026)** | **135 / 180 / 225 s** | **~144 s** |
 
 ## Ciclo de vida actual de un spawn
 
