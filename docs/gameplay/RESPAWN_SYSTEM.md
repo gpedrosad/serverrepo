@@ -253,13 +253,34 @@ Ese ya no deberia ser el comportamiento del binario actualizado.
 
 ## Cosas que NO afectan este respawn
 
-El sistema de `rage monsters` es aparte:
+El sistema de `rage monsters` al matar un monstruo normal es aparte:
 
 - puede crear una variante especial al morir un monstruo
 - no usa el loop normal de `spawn.cpp`
 - no reemplaza ni bloquea el slot base del spawnpoint
 
 Ver `docs/gameplay/RAGE_MONSTERS.md`.
+
+### Excepcion: rage variants colocados en el mapa
+
+Hay **20 slots** en `test-spawn.xml` con monstruos `Angry` / `Furious` / `Enraged`
+colocados directamente en el mapa (no salen del proc on-death). Esos slots **si**
+usan `spawn.cpp` y, desde jul 2026, respawnean **4 veces mas lento** que el
+`spawntime` del XML:
+
+| Ejemplo XML | Efectivo en motor |
+|-------------|-------------------|
+| `175s` (tier comun hoy) | `700s` (~11.7 min) |
+| `235s` | `940s` (~15.7 min) |
+| `290s` | `1160s` (~19.3 min) |
+
+Implementacion: `spawn.cpp` → `Spawn::addMonster()` multiplica `spawntime` por 4
+si el nombre empieza con `Angry `, `Furious ` o `Enraged `. El XML no cambia; el
+multiplicador se aplica al cargar el mapa. Requiere rebuild del binario.
+
+Slots actuales con rage en mapa: Angry Orc Berserker (4), Furious Hunter (2),
+Furious Rotworm (2), Enraged Hydra (2), Enraged Vampire (2), Angry Giant Spider (2),
+y 6 slots sueltos de otras familias.
 
 ## Quirks utiles para mantenimiento
 

@@ -35,6 +35,15 @@ typedef boost::tokenizer<boost::char_separator<char> > tokenizer;
 
 extern LuaScript g_config;
 
+namespace {
+static bool isRageVariantSpawnName(const std::string& name)
+{
+	return (name.size() >= 6 && name.compare(0, 6, "Angry ") == 0) ||
+		(name.size() >= 8 && name.compare(0, 8, "Furious ") == 0) ||
+		(name.size() >= 9 && name.compare(0, 9, "Enraged ") == 0);
+}
+}
+
 SpawnManager* SpawnManager::_instance = NULL;
 Game* SpawnManager::game = NULL;
 spawnsList SpawnManager::spawns;
@@ -447,6 +456,10 @@ bool Spawn::addMonster(std::string name, Direction dir, int x, int y, int spawnt
 	si.pos.y = centerPos.y + y;
 	si.pos.z = centerPos.z;
 	si.spawntime = spawntime;
+	// Gameplay jul 2026: rage variants placed on the map respawn 4x slower.
+	if(isRageVariantSpawnName(name)) {
+		si.spawntime *= 4;
+	}
 	si.lastspawn = 0;
 
 	unsigned long spawnid = (int)spawnmap.size() + 1;

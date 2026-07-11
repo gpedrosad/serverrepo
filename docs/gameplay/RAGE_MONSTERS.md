@@ -20,7 +20,8 @@ Al matar un monstruo elegible, **5.3% de chance** de que reviva al instante conv
 ### Detalles
 - Aplica a **42 familias** de monstruos (Demon, Dragon Lord, Behemoth, Warlock, etc.)
 - No spawnan en zonas PZ ni PvP Arena
-- Son criaturas adicionales — no afectan el respawn normal del spawnpoint
+- Las variantes que aparecen **al matar** un monstruo normal son criaturas adicionales — no afectan el respawn del spawnpoint base
+- Las variantes **colocadas en el mapa** (`test-spawn.xml`, nombres `Angry`/`Furious`/`Enraged`) sí respawnean por `spawn.cpp` y demoran **4×** el `spawntime` del XML (ver `docs/gameplay/RESPAWN_SYSTEM.md`)
 - El sistema es puro C++ (sin Lua), se gatilla automáticamente al morir cualquier monstruo
 
 ### Inmunidad a magic fields (jul 2026)
