@@ -5047,7 +5047,7 @@ SpellCastResult Game::creatureSaySpell(Creature *creature, const std::string &te
 		std::map<std::string, Spell*>::iterator sit = spells.getAllSpells()->find(temp);
 		if( sit != spells.getAllSpells()->end() ) {
 			recognized = true;
-			ret = sit->second->getSpellScript()->castSpell(creature, creature->pos, var);
+			ret = SpellScript::safeCast(sit->second, creature, creature->pos, var);
 		}
 	}
 	else if(player){
@@ -5071,7 +5071,7 @@ SpellCastResult Game::creatureSaySpell(Creature *creature, const std::string &te
 						const int64_t manaBefore = player->mana;
 						const long exhaustedBefore = player->exhaustedTicks;
 						const unsigned short soulBefore = player->getSoul();
-						ret = sit->second->getSpellScript()->castSpell(creature, creature->pos, var);
+						ret = SpellScript::safeCast(sit->second, creature, creature->pos, var);
 						if(!ret && didPlayerSpendSpellResources(player, manaBefore, exhaustedBefore, soulBefore))
 							ret = true;
 					}
@@ -5162,7 +5162,7 @@ bool Game::playerUseItemEx(Player *player, const Position& posFrom,const unsigne
 				std::string var = std::string("");
 				if(player->access >= g_config.ACCESS_PROTECT || sit->second->getMagLv() <= player->getEffectiveMagLevel())
 				{
-					bool success = sit->second->getSpellScript()->castSpell(player, posTo, var);
+					bool success = SpellScript::safeCast(sit->second, player, posTo, var);
 					ret = success;
 					if(success) {
 						autoCloseTrade(item);
@@ -5229,7 +5229,7 @@ bool Game::playerUseBattleWindow(Player *player, Position &posFrom, unsigned cha
 			else {
 				std::string var = std::string("");
 				if(player->access >= g_config.ACCESS_PROTECT || sit->second->getMagLv() <= player->getEffectiveMagLevel()) {
-					bool success = sit->second->getSpellScript()->castSpell(player, creature->pos, var);
+					bool success = SpellScript::safeCast(sit->second, player, creature->pos, var);
 					ret = success;
 					if(success) {
 						autoCloseTrade(item);

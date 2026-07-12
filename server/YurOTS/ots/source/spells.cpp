@@ -33,6 +33,14 @@
 #include <boost/bind.hpp>
 
 #include "spells.h"
+#include "monster.h"
+#include "tile.h"
+#include "items.h"
+#include "item.h"
+#include "const76.h"
+#ifdef TR_SUMMONS
+#include "summons.h"
+#endif //TR_SUMMONS
 
 extern LuaScript g_config;
 
@@ -310,6 +318,7 @@ RuneSpell::RuneSpell(const std::string &datadir, std::string iname, unsigned sho
 
 SpellScript::SpellScript(const std::string &datadir, std::string scriptname, Spell* spell){
 	this->loaded = false;
+	this->spell = spell;
 	if(scriptname == "")
 		return;
 	luaState = lua_open();
@@ -358,6 +367,12 @@ int SpellScript::registerFunctions(){
 	lua_register(luaState, "reduceExhaustionByPercent", SpellScript::luaActionReduceExhaustionByPercent);
 	lua_register(luaState, "skillBuff", SpellScript::luaActionSkillBuff);
 	lua_register(luaState, "doDesintegrate", SpellScript::luaActionDoDesintegrate);
+	lua_register(luaState, "doAnchorRoot", SpellScript::luaActionDoAnchorRoot);
+	lua_register(luaState, "doCurePoison", SpellScript::luaActionDoCurePoison);
+	lua_register(luaState, "doAnimateDead", SpellScript::luaActionDoAnimateDead);
+	lua_register(luaState, "doConvinceCreature", SpellScript::luaActionDoConvinceCreature);
+	lua_register(luaState, "doChameleon", SpellScript::luaActionDoChameleon);
+	lua_register(luaState, "doParalyze", SpellScript::luaActionDoParalyze);
 
 #ifdef BDB_UTEVO_LUX
 	lua_register(luaState, "setPlayerLightLevel", SpellScript::luaSetPlayerLightLevel);
@@ -369,7 +384,28 @@ int SpellScript::registerFunctions(){
 	return true;
 }
 
+bool SpellScript::safeCast(Spell* spell, Creature* creature, const Position& pos, const std::string& var)
+{
+	if(!spell || !spell->isLoaded())
+		return false;
+
+	SpellScript* script = spell->getSpellScript();
+	if(!script || !script->isLoaded())
+		return false;
+
+	return script->castSpell(creature, pos, var);
+}
+
 bool SpellScript::castSpell(Creature* creature, const Position& pos, std::string var){
+	if(!spell) {
+		std::cout << "SpellScript::castSpell: spell pointer is null" << std::endl;
+		return false;
+	}
+	if(!loaded || !luaState) {
+		std::cout << "SpellScript::castSpell: script not loaded for spell " << spell->getName() << std::endl;
+		return false;
+	}
+
 	lua_pushstring(luaState, "onCast");
 	lua_gettable(luaState, LUA_GLOBALSINDEX);
 	if(!lua_isfunction(luaState, -1)) {
@@ -460,6 +496,530 @@ int SpellScript::luaActionDoDesintegrate(lua_State *L)
 
 	sendSpellMagicEffect(spell->game, creature->pos, NM_ME_PUFF);
 	lua_pushnumber(L, 0);
+	return 1;
+}
+
+int SpellScript::luaActionDoAnchorRoot(lua_State *L)
+{
+	const long ANCHOR_ROOT_MS = 1000;
+
+	Position pos;
+	internalGetPosition(L, pos);
+	unsigned int cid = (unsigned int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	if(!spell) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Creature* creature = spell->game->getCreatureByID(cid);
+	if(!creature) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Player* caster = dynamic_cast<Player*>(creature);
+	if(creature->pos.z != pos.z) {
+		creature->sendCancel("You need to be on the same floor.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(spell->game->canThrowObjectTo(creature->pos, pos, BLOCK_PROJECTILE) != RET_NOERROR) {
+		creature->sendCancel("You cannot throw there.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Tile* tile = spell->game->getTile(pos);
+	if(!tile) {
+		sendSpellMagicEffect(spell->game, creature->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Creature* target = tile->getTopCreature();
+	if(!target) {
+		sendSpellMagicEffect(spell->game, creature->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(target == creature) {
+		sendSpellMagicEffect(spell->game, creature->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(target->access >= g_config.ACCESS_PROTECT) {
+		sendSpellMagicEffect(spell->game, creature->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Player* targetPlayer = dynamic_cast<Player*>(target);
+	Tile* fromTile = spell->game->getTile(creature->pos);
+
+	if(caster && caster->access < g_config.ACCESS_PROTECT) {
+		if(fromTile && fromTile->isPz()) {
+			caster->sendTextMessage(MSG_SMALLINFO, "You may not attack a person while you are in a protection zone.");
+			lua_pushnumber(L, 0);
+			return 1;
+		}
+		if(tile->isPz()) {
+			caster->sendTextMessage(MSG_SMALLINFO, "You may not attack a person in a protection zone.");
+			lua_pushnumber(L, 0);
+			return 1;
+		}
+	}
+
+	// Visual: magic energy hit (not paralyze icon / condition).
+	sendSpellMagicEffect(spell->game, target->pos, NM_ME_MAGIC_ENERGIE);
+
+	target->rootTicks = ANCHOR_ROOT_MS;
+
+	if(targetPlayer) {
+		targetPlayer->sendTextMessage(MSG_SMALLINFO, "You are rooted.");
+		targetPlayer->sendCancelWalk();
+	}
+
+	if(caster && targetPlayer && caster->access < g_config.ACCESS_PROTECT &&
+		spell->game->getWorldType() != WORLD_TYPE_NO_PVP)
+	{
+		caster->pzLocked = true;
+		caster->inFightTicks = std::max(g_config.PZ_LOCKED, caster->inFightTicks);
+		targetPlayer->inFightTicks = std::max(g_config.PZ_LOCKED, targetPlayer->inFightTicks);
+		caster->sendIcons();
+		targetPlayer->sendIcons();
+	}
+
+	lua_pushnumber(L, 1);
+	return 1;
+}
+
+namespace {
+
+Item* findCorpseOnTile(Tile* tile)
+{
+	if(!tile)
+		return NULL;
+
+	const int thingCount = tile->getThingCount();
+	for(int stackpos = 1; stackpos < thingCount; ++stackpos) {
+		Item* item = dynamic_cast<Item*>(tile->getThingByStackPos(stackpos));
+		if(!item)
+			continue;
+
+		const unsigned short itemId = item->getID();
+		if(itemId == ITEM_MALE_CORPSE || itemId == ITEM_FEMALE_CORPSE || itemId == ITEM_HUMAN_CORPSE)
+			return item;
+
+		if(Item::items[itemId].isContainer() && itemId >= 2800 && itemId <= 3110)
+			return item;
+	}
+
+	return NULL;
+}
+
+void restoreFromParalyzeRune(Game* game, unsigned long creatureId)
+{
+	if(!game)
+		return;
+
+	Creature* creature = game->getCreatureByID(creatureId);
+	if(!creature)
+		return;
+
+	creature->hasteTicks = 0;
+	game->changeSpeed(creatureId, creature->getNormalSpeed());
+	creature->getConditions()[ATTACK_PARALYZE].clear();
+
+	Player* player = dynamic_cast<Player*>(creature);
+	if(player)
+		player->sendIcons();
+}
+
+}
+
+int SpellScript::luaActionDoCurePoison(lua_State *L)
+{
+	Position pos;
+	internalGetPosition(L, pos);
+	unsigned int cid = (unsigned int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	if(!spell) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Creature* caster = spell->game->getCreatureByID(cid);
+	if(!caster) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(caster->pos.z != pos.z) {
+		caster->sendCancel("You need to be on the same floor.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(spell->game->canThrowObjectTo(caster->pos, pos, BLOCK_PROJECTILE) != RET_NOERROR) {
+		caster->sendCancel("You cannot throw there.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Tile* tile = spell->game->getTile(pos);
+	if(!tile) {
+		sendSpellMagicEffect(spell->game, caster->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Creature* target = tile->getTopCreature();
+	if(!target)
+		target = caster;
+
+	if(!target->getConditions().hasCondition(ATTACK_POISON)) {
+		sendSpellMagicEffect(spell->game, caster->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	target->getConditions()[ATTACK_POISON].clear();
+	Player* targetPlayer = dynamic_cast<Player*>(target);
+	if(targetPlayer)
+		targetPlayer->sendIcons();
+
+	sendSpellMagicEffect(spell->game, target->pos, NM_ME_MAGIC_ENERGIE);
+	lua_pushnumber(L, 1);
+	return 1;
+}
+
+int SpellScript::luaActionDoAnimateDead(lua_State *L)
+{
+	Position pos;
+	internalGetPosition(L, pos);
+	unsigned int cid = (unsigned int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	if(!spell) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Player* player = dynamic_cast<Player*>(spell->game->getCreatureByID(cid));
+	if(!player) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(player->pos.z != pos.z) {
+		player->sendCancel("You need to be on the same floor.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(spell->game->canThrowObjectTo(player->pos, pos, BLOCK_PROJECTILE) != RET_NOERROR) {
+		player->sendCancel("You cannot throw there.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Tile* tile = spell->game->getTile(pos);
+	if(!tile || tile->isPz()) {
+		sendSpellMagicEffect(spell->game, player->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Item* corpse = findCorpseOnTile(tile);
+	if(!corpse) {
+		sendSpellMagicEffect(spell->game, player->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(player->getSummonCount() >= g_config.MAX_SUMMONS) {
+		player->sendCancel("You cannot have more summons.");
+		sendSpellMagicEffect(spell->game, player->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Monster* skeleton = Monster::createMonster("skeleton", spell->game);
+	if(!skeleton) {
+		sendSpellMagicEffect(spell->game, player->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Position spawnPos = pos;
+	if(!spell->game->placeCreature(spawnPos, skeleton)) {
+		delete skeleton;
+		sendSpellMagicEffect(spell->game, player->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(!removeTileItem(spell->game, player, corpse)) {
+		spell->game->removeCreature(skeleton);
+		sendSpellMagicEffect(spell->game, player->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	player->addSummon(skeleton);
+	sendSpellMagicEffect(spell->game, spawnPos, NM_ME_MAGIC_ENERGIE);
+	lua_pushnumber(L, 1);
+	return 1;
+}
+
+int SpellScript::luaActionDoConvinceCreature(lua_State *L)
+{
+	Position pos;
+	internalGetPosition(L, pos);
+	unsigned int cid = (unsigned int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	if(!spell) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Player* player = dynamic_cast<Player*>(spell->game->getCreatureByID(cid));
+	if(!player) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(player->pos.z != pos.z) {
+		player->sendCancel("You need to be on the same floor.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(spell->game->canThrowObjectTo(player->pos, pos, BLOCK_PROJECTILE) != RET_NOERROR) {
+		player->sendCancel("You cannot throw there.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Tile* tile = spell->game->getTile(pos);
+	if(!tile || tile->isPz()) {
+		sendSpellMagicEffect(spell->game, player->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Monster* monster = dynamic_cast<Monster*>(tile->getTopCreature());
+	if(!monster || monster->isSummon() || dynamic_cast<Player*>(monster)) {
+		sendSpellMagicEffect(spell->game, player->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(player->getSummonCount() >= g_config.MAX_SUMMONS) {
+		player->sendCancel("You cannot have more summons.");
+		sendSpellMagicEffect(spell->game, player->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	int64_t reqMana = (monster->healthmax + monster->manamax) / 4;
+#ifdef TR_SUMMONS
+	const int64_t summonMana = Summons::getRequiredMana(monster->getName());
+	if(summonMana >= 0)
+		reqMana = summonMana;
+#endif //TR_SUMMONS
+
+	if(player->access < g_config.ACCESS_PROTECT && player->mana < reqMana) {
+		player->sendCancel("Not enough mana.");
+		sendSpellMagicEffect(spell->game, player->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	player->addSummon(monster);
+	if(player->access < g_config.ACCESS_PROTECT) {
+		player->mana -= reqMana;
+		player->addManaSpent(reqMana);
+	}
+
+	sendSpellMagicEffect(spell->game, monster->pos, NM_ME_MAGIC_ENERGIE);
+	lua_pushnumber(L, 1);
+	return 1;
+}
+
+int SpellScript::luaActionDoChameleon(lua_State *L)
+{
+	const long CHAMELEON_MS = 200000;
+
+	Position pos;
+	internalGetPosition(L, pos);
+	unsigned int cid = (unsigned int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	if(!spell) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Player* player = dynamic_cast<Player*>(spell->game->getCreatureByID(cid));
+	if(!player) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(player->pos.z != pos.z) {
+		player->sendCancel("You need to be on the same floor.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(spell->game->canThrowObjectTo(player->pos, pos, BLOCK_PROJECTILE) != RET_NOERROR) {
+		player->sendCancel("You cannot throw there.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Tile* tile = spell->game->getTile(pos);
+	if(!tile) {
+		sendSpellMagicEffect(spell->game, player->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Creature* target = tile->getTopCreature();
+	if(!target) {
+		sendSpellMagicEffect(spell->game, player->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	const int savedLookMaster = player->lookmaster;
+	player->looktype = target->looktype;
+	player->lookhead = target->lookhead;
+	player->lookbody = target->lookbody;
+	player->looklegs = target->looklegs;
+	player->lookfeet = target->lookfeet;
+	spell->game->creatureChangeOutfit(player);
+	spell->game->changeOutfitAfter(player->getID(), savedLookMaster, CHAMELEON_MS);
+	sendSpellMagicEffect(spell->game, player->pos, NM_ME_MAGIC_ENERGIE);
+	lua_pushnumber(L, 1);
+	return 1;
+}
+
+int SpellScript::luaActionDoParalyze(lua_State *L)
+{
+	const long PARALYZE_RUNE_MS = 60000;
+	const unsigned short PARALYZE_SPEED = 40;
+
+	Position pos;
+	internalGetPosition(L, pos);
+	unsigned int cid = (unsigned int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	if(!spell) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Creature* caster = spell->game->getCreatureByID(cid);
+	if(!caster) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(caster->pos.z != pos.z) {
+		caster->sendCancel("You need to be on the same floor.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(spell->game->canThrowObjectTo(caster->pos, pos, BLOCK_PROJECTILE) != RET_NOERROR) {
+		caster->sendCancel("You cannot throw there.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Tile* tile = spell->game->getTile(pos);
+	if(!tile) {
+		sendSpellMagicEffect(spell->game, caster->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Creature* target = tile->getTopCreature();
+	if(!target || target == caster) {
+		sendSpellMagicEffect(spell->game, caster->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(target->access >= g_config.ACCESS_PROTECT) {
+		sendSpellMagicEffect(spell->game, caster->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if((target->getImmunities() & ATTACK_PARALYZE) == ATTACK_PARALYZE) {
+		sendSpellMagicEffect(spell->game, caster->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Player* casterPlayer = dynamic_cast<Player*>(caster);
+	Player* targetPlayer = dynamic_cast<Player*>(target);
+	if(casterPlayer && casterPlayer->access < g_config.ACCESS_PROTECT) {
+		Tile* fromTile = spell->game->getTile(caster->pos);
+		if(fromTile && fromTile->isPz()) {
+			casterPlayer->sendTextMessage(MSG_SMALLINFO, "You may not attack a person while you are in a protection zone.");
+			lua_pushnumber(L, 0);
+			return 1;
+		}
+		if(tile->isPz()) {
+			casterPlayer->sendTextMessage(MSG_SMALLINFO, "You may not attack a person in a protection zone.");
+			lua_pushnumber(L, 0);
+			return 1;
+		}
+	}
+
+	target->hasteTicks = 0;
+	spell->game->changeSpeed(target->getID(), PARALYZE_SPEED);
+
+	MagicEffectTargetCreatureCondition paralyzeCond(caster ? caster->getID() : 0);
+	paralyzeCond.attackType = ATTACK_PARALYZE;
+	CreatureCondition condition(1000, PARALYZE_RUNE_MS / 1000, paralyzeCond);
+	target->addCondition(condition, true);
+	target->hasteTicks = PARALYZE_RUNE_MS;
+
+	if(targetPlayer)
+		targetPlayer->sendIcons();
+
+	if(casterPlayer && targetPlayer && casterPlayer->access < g_config.ACCESS_PROTECT &&
+		spell->game->getWorldType() != WORLD_TYPE_NO_PVP)
+	{
+		casterPlayer->pzLocked = true;
+		casterPlayer->inFightTicks = std::max(g_config.PZ_LOCKED, casterPlayer->inFightTicks);
+		targetPlayer->inFightTicks = std::max(g_config.PZ_LOCKED, targetPlayer->inFightTicks);
+		casterPlayer->sendIcons();
+	}
+
+	sendSpellMagicEffect(spell->game, target->pos, NM_ME_MAGIC_ENERGIE);
+	spell->game->addEvent(makeTask(PARALYZE_RUNE_MS,
+		boost::bind(&restoreFromParalyzeRune, spell->game, target->getID())));
+
+	lua_pushnumber(L, 1);
 	return 1;
 }
 

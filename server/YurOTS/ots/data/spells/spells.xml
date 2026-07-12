@@ -30,7 +30,8 @@
 <spell name="Mana Shield"			words="utamo vita"			maglv="4"	mana="50"	enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /></spell>
 <spell name="Strong Haste"			words="utani gran hur"		maglv="8"	mana="100"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
 <spell name="Haste"					words="utani hur"			maglv="4"	mana="60"	enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /><vocation id="4" /></spell>
-<spell name="Paralyze"				words="utani slow"			maglv="4"	mana="60"	enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /><vocation id="5" /></spell>
+<!-- Real Paralyze is rune 2278; this instant was empty/broken. -->
+<spell name="Paralyze"				words="utani slow"			maglv="4"	mana="60"	enabled="0"><vocation id="1" /><vocation id="2" /><vocation id="3" /></spell>
 <spell name="Creature Illusion"		words="utevo res ina"		maglv="10"	mana="100"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
 <spell name="Invisible"				words="utana vid"			maglv="15"	mana="210"	enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /></spell>
 <!--\\ End Instant //-->
@@ -47,7 +48,6 @@
 <spell name="o exori" words="o exori" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="o exevo gran vis lux" words="o exevo gran vis lux" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="demondras_firewave" words="demondras_firewave" maglv="4000" mana="800" enabled="1"></spell>
-<spell name="old widow pox" words="old widow pox" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="dip atk" words="dip atk" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="as exevo gran mas pox" words="as exevo gran mas pox" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="gs_haste" words="gs_haste" maglv="4000" mana="800" enabled="1"></spell>
@@ -101,6 +101,7 @@
 <rune name="warlock_manadrain" id="5029" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 <rune name="dwarfgeo_manadrain" id="5030" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 <rune name="priestess_manadrain" id="5031" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="old widow pox" id="5032" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 
 <!--// Make arrow and bolt \\-->
 <spell name="Conjure Arrow"	words="exevo con"		maglv="2"	mana="40"	enabled="1"><vocation id="3" /><vocation id="5" /></spell>
@@ -169,5 +170,6 @@
 <rune name="Energy Wall"			id="2279"	charges="4"		maglv="9"	mana="0"	enabled="1"></rune>
 <rune name="Sudden Death"			id="2268"	charges="2"		maglv="15"	mana="0"	enabled="1"></rune>
 <rune name="Paralyze"				id="2278"	charges="1"		maglv="18"	mana="0"	enabled="1"></rune>
+<rune name="Anchor"					id="2296"	charges="3"		maglv="8"	mana="0"	enabled="1"></rune>
 <!--\\ End Runes //-->
 </spells>
