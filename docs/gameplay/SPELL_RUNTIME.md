@@ -62,16 +62,11 @@ SpellScript::safeCast(spell, creature, pos, var);
 
 `safeCast` (`spells.cpp`):
 
-1. Rechaza `spell` null o no `isLoaded()`.
-2. Rechaza script null o no `isLoaded()`.
+1. Rechaza `spell` null.
+2. Rechaza script null o no `isLoaded()` (archivo Lua faltante).
 3. Solo entonces llama `castSpell`.
 
-`castSpell` ya fallaba cerrado si faltaba `onCast` o si `lua_pcall` fallaba (ver también `DESINTEGRATE_RUNE.md`). Con `safeCast` el fallo se queda en **cast fallido** (no consume / no crashea), no en segfault.
-
-Call sites:
-
-- `game.cpp` — `creatureSaySpell`, `playerUseItemEx`, `playerUseBattleWindow`
-- `monster.cpp` — ataques por runa/instant del monstruo
+**Pitfall jul 2026:** el primer `safeCast` también chequeaba `spell->isLoaded()`, pero `InstantSpell`/`RuneSpell` **nunca** ponían `Spell::loaded = true` (solo lo dejaban en `false` si el script fallaba). Resultado: **ninguna** spell casteeaba. Fix: setear `this->loaded = script->isLoaded()` en los constructores, y no depender solo de ese flag en el cast path.
 
 ## Runas / scripts restaurados en el fix
 

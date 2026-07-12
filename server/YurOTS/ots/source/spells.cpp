@@ -299,8 +299,8 @@ InstantSpell::InstantSpell(const std::string &datadir, std::string iname, std::s
 : Spell(iname, magLv, mana, game), words(iwords)
 {
 	this->script = new SpellScript(datadir, std::string(datadir + "spells/instant/")+(this->words)+std::string(".lua"), this);
-	if(!this->script->isLoaded())
-		this->loaded=false;
+	// Spell starts loaded=false; set true only when the Lua script actually loaded.
+	this->loaded = this->script && this->script->isLoaded();
 }
 
 
@@ -311,8 +311,7 @@ RuneSpell::RuneSpell(const std::string &datadir, std::string iname, unsigned sho
 	this->charges = charges;
 
 	this->script = new SpellScript(datadir, std::string(datadir + "spells/runes/")+(this->name)+std::string(".lua"), this);
-	if(!this->script->isLoaded())
-		this->loaded=false;
+	this->loaded = this->script && this->script->isLoaded();
 }
 
 
@@ -386,7 +385,9 @@ int SpellScript::registerFunctions(){
 
 bool SpellScript::safeCast(Spell* spell, Creature* creature, const Position& pos, const std::string& var)
 {
-	if(!spell || !spell->isLoaded())
+	// Guard only the script pointer/load state. Missing/broken Lua must fail soft
+	// (no crash); do not rely solely on Spell::loaded for the cast path.
+	if(!spell)
 		return false;
 
 	SpellScript* script = spell->getSpellScript();
