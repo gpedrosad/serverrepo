@@ -37,6 +37,8 @@ Tambien se corrigio `SpellScript::castSpell(...)` para que falle cerrado:
 
 Con eso evitamos el caso anterior donde una rune/spell roto podia terminar "saliendo bien" y consumiendose sin ejecutar efecto real.
 
+Mas adelante (jul 2026, commit `33557889`) se agrego `SpellScript::safeCast(...)` en los call sites de `game.cpp` / `monster.cpp` para no crashear si el script nunca cargo (archivo faltante / nombre mal). Ver [`SPELL_RUNTIME.md`](SPELL_RUNTIME.md).
+
 ## Archivos clave
 
 - `server/YurOTS/ots/data/spells/instant/adito tera.lua`
