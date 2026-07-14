@@ -48,15 +48,18 @@ El placement item y el look del monstruo viven en **`20155`**.
 
 ## Como usarlo como item
 
-El player recibe el item **`20155`** y lo usa (**use with**) sobre un SQM valido
-dentro de su house. Si pasa las validaciones, el servidor crea el monster en
-ese SQM, guarda la posicion en `private_trainers.xml` y consume el item.
+1. Poné el item **`20155`** en el **suelo** de tu house (SQM libre).
+2. Dale **Use** al item en el piso (no use-with).
+3. Si pasa las validaciones, el servidor crea el monster en ese mismo SQM,
+   guarda la posicion en `private_trainers.xml` y consume el item.
 
 GM:
 
 ```text
 /i 20155 1
 ```
+
+Si lo usás desde el inventario te pide: *Put the private trainer dummy on a house tile first.*
 
 El archivo `private_trainers.xml` es data runtime: no se versiona, pero los
 scripts de backup/deploy lo conservan junto a `houseitems.xml`.

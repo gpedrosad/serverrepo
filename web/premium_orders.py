@@ -57,7 +57,7 @@ PREMIUM_ADDONS: tuple[dict, ...] = (
         "item_id": 20155,
         "price": 15000,
         "label": "Private trainer dummy",
-        "desc": "Muñeco de entrenamiento para colocar en tu casa (1 por house, solo el dueño).",
+        "desc": "Ponelo en un SQM libre de tu casa y dale Use (1 por house, solo el dueño).",
         "ext": "png",
     },
 )

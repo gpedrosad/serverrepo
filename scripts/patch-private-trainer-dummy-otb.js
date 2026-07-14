@@ -17,7 +17,7 @@ const OTB = path.join(ROOT, "server/YurOTS/ots/data/items/items-zagan-test.otb")
 const NEW_SERVER_ID = 20155;
 const SOURCE_SERVER_ID = 20118; // starbinder hood — sprite source only
 const NAME = "private trainer dummy";
-const DESCR = "Use on a tile inside your house to place a training dummy.";
+const DESCR = "Put it on a free house tile and use it to place a training dummy.";
 
 const NODE_START = 0xfe;
 const NODE_END = 0xff;
