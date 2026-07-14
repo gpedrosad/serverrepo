@@ -33,6 +33,7 @@ Documentación técnica del sistema de wands/rods en YurOTS 7.6 (mod Retro76): q
 | **2188** | **Wand of Plague** | **Sorcerer** | **19** | **5** | **5** | **25–35** | **poison (NM_ANI_FLYPOISONFIELD)** |
 | **2189** | **Wand of Cosmic Energy** | **Sorcerer** | **26** | **8** | **5** | **40–50** | **energy (NM_ANI_ENERGY)** |
 | **20123** | **Crimson Wand** | **Sorc / MS / Druid / ED** | **33** | **13** | **5** | **55–65** | **energy + animación HMM (NM_ANI_FIRE + NM_ME_EXPLOSION_DAMAGE + NM_ME_ENERGY_DAMAGE)** |
+| **20126** | **Train Wand** | **Sorc / MS / Druid / ED** | **1** | **0** (crédito ML 1) | **5** | **1–1** | **energy (NM_ANI_ENERGY) — solo trainers** |
 
 > Constantes en `server/YurOTS/ots/source/const76.h:218-279`. Crimson Wand en línea `233`.
 > Lógica de daño: `server/YurOTS/ots/source/game.cpp:7298-7496` (`Game::useWand`).
@@ -43,6 +44,7 @@ Documentación técnica del sistema de wands/rods en YurOTS 7.6 (mod Retro76): q
 - **Energy wands** (Moonlight, Quagmire NO — Quagmire es poison, Tempest, Vortex, Cosmic): `NM_ANI_ENERGY`/`NM_ME_ENERGY_DAMAGE`/`NM_ME_ENERGY_AREA`, color `0x47` (o `0x49` para Tempest).
 - **Poison wands/rods** (Snakebite, Quagmire, Plague): `NM_ANI_FLYPOISONFIELD`/`NM_ME_POISEN_RINGS`, color `0x60`.
 - **Crimson Wand** (custom, server id 20123): `ATTACK_ENERGY` + `NM_ANI_FIRE` + `NM_ME_EXPLOSION_DAMAGE` + `NM_ME_ENERGY_DAMAGE`. Animación copiada de la runa **Heavy Magic Missile** (`data/spells/runes/heavy magic missile.lua`).
+- **Train Wand** (custom, server id 20126): misma animación energy que Vortex. Solo funciona contra monstruos `trainer="1"`; no gasta mana; `addManaSpent(1)` por hit (~50% Vortex); sin scaling `wandmlfactor`.
 
 ---
 
@@ -255,6 +257,7 @@ python3 scripts/ot-probe.py retro76.cl 7171
 | Server ID | Nombre | Qué hace | Doc |
 |-----------|--------|----------|-----|
 | `20123` | Crimson Wand | Wand 55-65 dmg, 13 mana, range 5, delay 667ms, animación HMM, scaling por ML (este fix) | este doc + `docs/items-and-map/ZAGAN_TEST_ITEMS.md` |
+| `20126` | Train Wand | Solo trainers (`trainer=1`): 0 mana, `addManaSpent(1)` (~50% Vortex), daño 1-1, sorc/druid (incl. promoted) | este doc + `docs/gameplay/PRIVATE_TRAINER_DUMMY.md` |
 
 Items custom con gameplay C++ adicional que **conviven** con el sistema de wands:
 - `20113` Crimson Helmet: bonus de skills (no toca wands)

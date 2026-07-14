@@ -16,7 +16,7 @@ EXCHANGES = {
 
 NEED = 20
 
-TONKA_HELP = 'I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots. Say "exchange" to start a trade.'
+TONKA_HELP = 'I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.'
 
 function onThingMove(creature, thing, oldpos, oldstackpos)
 end

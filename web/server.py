@@ -162,7 +162,9 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_HEAD(self) -> None:
         path = self.path.split("?", 1)[0]
-        if path.startswith("/downloads/"):
+        if path in ("/favicon.png", "/favicon.ico"):
+            self._file(WEB_DIR / "assets/brand/favicon.png", "image/png", head_only=True, cache="public, max-age=86400")
+        elif path.startswith("/downloads/"):
             self._download(path[len("/downloads/"):], head_only=True)
         elif path.startswith("/updater/files/"):
             self._updater_file(path[len("/updater/files/"):], head_only=True)
@@ -176,6 +178,8 @@ class Handler(BaseHTTPRequestHandler):
         if path in ("/", "/index.html"):
             analytics.record_visit(client_ip(self))
             self._file(INDEX, "text/html; charset=utf-8", cache="no-store")
+        elif path in ("/favicon.png", "/favicon.ico"):
+            self._file(WEB_DIR / "assets/brand/favicon.png", "image/png", cache="public, max-age=86400")
         elif path == "/api/data":
             try:
                 self._json(200, get_payload())

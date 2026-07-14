@@ -68,3 +68,16 @@ Creatures -> YurOTS Training -> Private Trainer Dummy
 Si un jugador tiene un item `20118` real en inventario o en una casa, ese item
 no se vuelve atacable por si mismo. La version atacable es la criatura que usa
 `20118` como look visual.
+
+## Train Wand (`20126`) — ML en casa
+
+Los mages pueden entrenar **magic level** en el Private Trainer Dummy (y en
+Trainer Monks del mapa) con el **Train Wand** (`20126`):
+
+- Solo Sorcerer / Master Sorcerer / Druid / Elder Druid.
+- Solo dispara contra monstruos con `trainer="1"`.
+- No gasta mana (en casas la comida no regenera mana por PZ).
+- Cada hit da `addManaSpent(1)` — ~50% del ritmo de Wand of Vortex.
+- No sirve para cazar (cancel message fuera de dummies).
+
+Ver [`WANDS.md`](WANDS.md).

@@ -21,6 +21,8 @@ Eso deja la separacion asi:
 - `Destroy Field` quita fire/energy/poison fields, pero sigue excluyendo `1497` y `1498`
 - `Desintegrate` cubre justamente esos solidos (`magic wall` / `wild growth`) y tambien basura/objetos destruibles del suelo
 
+Duracion y decay de Magic Wall (15s, `DECAY_INTERVAL`): ver [`MAGIC_WALL.md`](MAGIC_WALL.md).
+
 ## Reglas de uso
 
 - Si el target esta en otro piso: `You need to be on the same floor.`

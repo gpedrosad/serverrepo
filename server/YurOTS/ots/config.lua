@@ -131,8 +131,9 @@ diepercent = {"7", "7", "7", "7", "100"}
 
 -- exp reward when killing another player (pvp world)
 -- killer receives this % of the victim's lost exp, scaled by damage dealt
+-- 80 = sweet spot: kill se nota, sin incentivar tanto farm de alts (antes 50)
 pvpunderdogexp = "yes"
-pvpunderdogexp_percent = 50
+pvpunderdogexp_percent = 80
 
 -- how many summons player can have
 maxsummons = 2

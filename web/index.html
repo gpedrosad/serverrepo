@@ -6,6 +6,14 @@
   <meta name="theme-color" content="#0a0a0a">
   <meta name="description" content="Retro76 — Tibia 7.6. Status, rankings, muertes y registro.">
   <title>Retro76</title>
+  <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/assets/brand/favicon.png" type="image/png" sizes="any">
+  <link rel="apple-touch-icon" href="/assets/brand/favicon.png">
+  <meta property="og:title" content="Retro76">
+  <meta property="og:description" content="Tibia 7.6 — status, rankings, muertes y registro.">
+  <meta property="og:image" content="/assets/brand/favicon.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="/assets/brand/favicon.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { background: #0a0a0a; }
@@ -480,7 +488,10 @@
 
   <header class="mb-4 flex items-end justify-between gap-3 border-b border-white/[0.06] pb-3">
     <div class="min-w-0">
-      <h1 class="text-sm font-medium tracking-tight text-zinc-100">Retro76</h1>
+      <h1 class="flex items-center gap-2 text-sm font-medium tracking-tight text-zinc-100">
+        <img src="/assets/brand/favicon.png" alt="" width="20" height="20" class="brand-mark h-5 w-5 shrink-0 [image-rendering:pixelated]" decoding="async">
+        Retro76
+      </h1>
       <p id="meta-line" class="mt-0.5 text-[11px] text-zinc-500">—</p>
     </div>
     <div class="text-right">
@@ -497,7 +508,10 @@
   <!-- LIVE -->
   <section id="panel-live" class="panel active space-y-4">
     <div class="site-announcement anim-in rounded-lg px-3 py-3 sm:px-4" style="--d:0ms">
-      <p class="text-[10px] font-medium uppercase tracking-widest text-sky-300/90">Cliente actualizado · julio 2026</p>
+      <p class="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-widest text-sky-300/90">
+        <img src="/assets/brand/favicon.png" alt="" width="12" height="12" class="h-3 w-3 [image-rendering:pixelated]" decoding="async">
+        Cliente actualizado · julio 2026
+      </p>
       <p class="mt-1.5 text-[12px] leading-relaxed text-zinc-200">
         Nuevo cliente oficial con <strong class="font-medium text-zinc-100">items custom</strong> incluidos.
       </p>
@@ -1662,7 +1676,10 @@ function renderPremium() {
   document.getElementById('premium-hero').innerHTML = `
     <div class="flex flex-wrap items-start justify-between gap-2">
       <div class="min-w-0">
-        <p class="premium-badge inline-block">Donación Premium</p>
+        <p class="premium-badge inline-flex items-center gap-1.5">
+          <img src="/assets/brand/favicon.png" alt="" width="12" height="12" class="h-3 w-3 [image-rendering:pixelated]" decoding="async">
+          Donación Premium
+        </p>
         <h2 class="mt-2 text-sm font-medium tracking-tight text-amber-100/95">Más exp, skills x2 y 6 h de training</h2>
         <p class="mt-1.5 max-w-md text-[11px] leading-relaxed text-zinc-300">
           Apoya Retro76 y recibe comodidades en el juego: bonus de caza, outfits 7.6 y regen mejorado.

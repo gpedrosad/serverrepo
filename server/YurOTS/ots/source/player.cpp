@@ -32,6 +32,8 @@ using namespace std;
 
 #include <stdlib.h>
 #include <time.h>       /* time_t, struct tm, difftime, time, mktime */
+#include <cctype>
+#include <cstring>
 
 #include "protocol.h"
 #include "player.h"
@@ -394,7 +396,13 @@ int64_t Player::getWeaponDamage() const
 							if(distitem->getWeaponType() == AMO){//projectile
 								hitchance = 90;
 							}
-							else{//thrown weapons
+							else if(distitem->getID() == ITEM_CRYSTAL_ARROW){
+								hitchance = CRYSTAL_ARROW_HIT_CHANCE;
+							}
+							else if(distitem->getID() == ITEM_SPEAR){
+								hitchance = SPEAR_HIT_CHANCE;
+							}
+							else{//other thrown weapons (stars, knives, stones)
 								hitchance = 50;
 							}
 							if(rand()%100 < hitchance){ //hit
@@ -765,6 +773,9 @@ void Player::sendIcons()
 	}
 	if(conditions.hasCondition(ATTACK_PARALYZE) /*speed < getNormalSpeed()*/ /*paralyzeTicks >= 1000*/) {
 		icons |= ICON_PARALYZE | ICON_SWORDS;
+	}
+	if(drunkTicks >= 1000){
+		icons |= ICON_DRUNK;
 	}
 
 	client->sendIcons(icons);
@@ -1208,37 +1219,39 @@ void Player::checkSoulRegen(int thinkTicks)
 
 int64_t Player::getSkill(skills_t skilltype, skillsid_t skillinfo) const
 {
+	int64_t value = skills[skilltype][skillinfo];
+	if(skillinfo != SKILL_LEVEL)
+		return value;
+
 #ifdef YUR_RINGS_AMULETS
-	if (skillinfo == SKILL_LEVEL && items[SLOT_RING])
+	if(items[SLOT_RING])
 	{
 		int id = items[SLOT_RING]->getID();
 
-		if (skilltype == SKILL_FIST && id == ITEM_POWER_RING_IN_USE)
-			return skills[skilltype][skillinfo] + 6;
-		else if ((skilltype == SKILL_SWORD && id == ITEM_SWORD_RING_IN_USE) ||
+		if(skilltype == SKILL_FIST && id == ITEM_POWER_RING_IN_USE)
+			value += 6;
+		else if((skilltype == SKILL_SWORD && id == ITEM_SWORD_RING_IN_USE) ||
 			(skilltype == SKILL_AXE && id == ITEM_AXE_RING_IN_USE) ||
 			(skilltype == SKILL_CLUB && id == ITEM_CLUB_RING_IN_USE))
-			return skills[skilltype][skillinfo] + 4;
+			value += 4;
 	}
 #endif //YUR_RINGS_AMULETS
 #ifdef YUR_BOH
-	if(skillinfo == SKILL_LEVEL && imbueEmeraldArmor > 0 &&
-		isKnightOrPaladinFamily(vocation) &&
+	if(isKnightOrPaladinFamily(vocation) &&
 		(skilltype == SKILL_SWORD || skilltype == SKILL_AXE ||
 		 skilltype == SKILL_CLUB || skilltype == SKILL_DIST))
-		return skills[skilltype][skillinfo] + imbueEmeraldArmor;
-	if(skillinfo == SKILL_LEVEL && items[SLOT_HEAD] &&
-		items[SLOT_HEAD]->getID() == ITEM_CRIMSON_HELMET &&
-		isKnightOrPaladinFamily(vocation) &&
-		(skilltype == SKILL_SWORD || skilltype == SKILL_AXE ||
-		 skilltype == SKILL_CLUB || skilltype == SKILL_DIST))
-		return skills[skilltype][skillinfo] + 1;
+	{
+		if(imbueEmeraldArmor > 0)
+			value += imbueEmeraldArmor;
+		if(items[SLOT_HEAD] && items[SLOT_HEAD]->getID() == ITEM_CRIMSON_HELMET)
+			value += 1;
+	}
 #endif //YUR_BOH
-	if(skillinfo == SKILL_LEVEL && tempoBuffTicks > 0 &&
+	if(tempoBuffTicks > 0 &&
 		(skilltype == SKILL_SWORD || skilltype == SKILL_AXE ||
 		 skilltype == SKILL_CLUB || skilltype == SKILL_DIST))
-		return skills[skilltype][skillinfo] + tempoBuffBonus;
-	return skills[skilltype][skillinfo];
+		value += tempoBuffBonus;
+	return value;
 }
 
 std::string Player::getSkillName(int skillid){
@@ -2075,6 +2088,125 @@ void Player::addExp(exp_t exp)
 		lvMsg << "You advanced from level " << lastLv << " to level " << level << ".";
 		this->sendTextMessage(MSG_ADVANCE,lvMsg.str().c_str());
 		this->sendStats();
+	}
+}
+
+// Keep in sync with data/npc/scripts/lib/daily_task.lua DAILY_MONSTERS
+static const char* DAILY_TASK_MONSTER_NAMES[] = {
+	"",
+	"Rat",
+	"Spider",
+	"Troll",
+	"Rotworm",
+	"Orc",
+	"Minotaur",
+	"Orc Warrior",
+	"Cyclops",
+	"Dwarf Guard",
+	"Larva",
+	"Dragon",
+	"Hero",
+	"Ancient Scarab",
+	"Behemoth",
+	"Giant Spider",
+	"Dragon Lord",
+	"Hydra",
+	"Warlock",
+	"Demon Skeleton",
+	"Demon",
+	"Fury"
+};
+static const int DAILY_TASK_MONSTER_COUNT = 21;
+
+static const unsigned long DAILY_STORAGE_DATE = 9200;
+static const unsigned long DAILY_STORAGE_STATE = 9201;
+static const unsigned long DAILY_STORAGE_MONSTER = 9202;
+static const unsigned long DAILY_STORAGE_REQUIRED = 9203;
+static const unsigned long DAILY_STORAGE_KILLS = 9204;
+static const long DAILY_STATE_ACTIVE = 2;
+static const long DAILY_STATE_DONE = 3;
+
+static long dailyTaskTodayCode()
+{
+	time_t now = time(NULL);
+	struct tm* tmNow = localtime(&now);
+	return (tmNow->tm_year + 1900) * 10000L + (tmNow->tm_mon + 1) * 100L + tmNow->tm_mday;
+}
+
+static bool dailyTaskNamesEqualIgnoreCase(const std::string& a, const std::string& b)
+{
+	if(a.size() != b.size())
+		return false;
+	for(size_t i = 0; i < a.size(); ++i) {
+		if(tolower((unsigned char)a[i]) != tolower((unsigned char)b[i]))
+			return false;
+	}
+	return true;
+}
+
+static bool dailyTaskMonsterMatches(const std::string& slainName, const std::string& targetName)
+{
+	if(dailyTaskNamesEqualIgnoreCase(slainName, targetName))
+		return true;
+
+	static const char* prefixes[] = { "Angry ", "Furious ", "Enraged " };
+	for(size_t i = 0; i < sizeof(prefixes) / sizeof(prefixes[0]); ++i) {
+		const size_t prefixLen = strlen(prefixes[i]);
+		if(slainName.size() > prefixLen) {
+			bool prefixOk = true;
+			for(size_t j = 0; j < prefixLen; ++j) {
+				if(tolower((unsigned char)slainName[j]) != tolower((unsigned char)prefixes[i][j])) {
+					prefixOk = false;
+					break;
+				}
+			}
+			if(prefixOk) {
+				const std::string rest = slainName.substr(prefixLen);
+				if(dailyTaskNamesEqualIgnoreCase(rest, targetName))
+					return true;
+			}
+		}
+	}
+	return false;
+}
+
+void Player::tryProgressDailyTask(const std::string& monsterName)
+{
+	long date = 0;
+	long state = 0;
+	long monsterId = 0;
+	long required = 0;
+	long kills = 0;
+
+	if(!getStorageValue(DAILY_STORAGE_DATE, date) || date != dailyTaskTodayCode())
+		return;
+	if(!getStorageValue(DAILY_STORAGE_STATE, state) || state != DAILY_STATE_ACTIVE)
+		return;
+	if(!getStorageValue(DAILY_STORAGE_MONSTER, monsterId) || monsterId < 1 || monsterId > DAILY_TASK_MONSTER_COUNT)
+		return;
+	if(!getStorageValue(DAILY_STORAGE_REQUIRED, required) || required <= 0)
+		return;
+
+	const std::string targetName = DAILY_TASK_MONSTER_NAMES[monsterId];
+	if(targetName.empty() || !dailyTaskMonsterMatches(monsterName, targetName))
+		return;
+
+	if(!getStorageValue(DAILY_STORAGE_KILLS, kills) || kills < 0)
+		kills = 0;
+
+	if(kills >= required)
+		return;
+
+	++kills;
+	addStorageValue(DAILY_STORAGE_KILLS, kills);
+
+	std::stringstream msg;
+	msg << "Daily task: " << kills << "/" << required << " " << targetName << ".";
+	sendTextMessage(MSG_INFO, msg.str().c_str());
+
+	if(kills >= required) {
+		addStorageValue(DAILY_STORAGE_STATE, DAILY_STATE_DONE);
+		sendTextMessage(MSG_ADVANCE, "Daily task complete! Report to the Huntmaster and say \"reward\".");
 	}
 }
 
@@ -3114,6 +3246,7 @@ static bool isWandItem(int id)
 	case ITEM_WAND_OF_VORTEX:
 	case ITEM_WAND_OF_DRAGONBREATH:
 	case ITEM_CRIMSON_WAND:
+	case ITEM_TRAIN_WAND:
 		return true;
 	default:
 		return false;
@@ -3142,15 +3275,43 @@ static int nightglassAttackDelayFromStacks(int stacks)
 	return PLAYER_ATTACK_DELAY_MS * (100 - percent) / 100;
 }
 
+static int crystalArrowStacksFromAid(unsigned short aid)
+{
+	if(aid >= ITEM_CRYSTAL_ARROW_SPEED_AID && aid <= ITEM_CRYSTAL_ARROW_SPEED_AID_MAX)
+		return aid - ITEM_CRYSTAL_ARROW_SPEED_AID + 1;
+	return 0;
+}
+
+static int crystalArrowSpeedPercentFromStacks(int stacks)
+{
+	if(stacks <= 0)
+		return 0;
+	return stacks * 5;
+}
+
+static int crystalArrowAttackDelayFromStacks(int stacks)
+{
+	const int percent = crystalArrowSpeedPercentFromStacks(stacks);
+	if(percent <= 0)
+		return PLAYER_ATTACK_DELAY_MS;
+	return PLAYER_ATTACK_DELAY_MS * (100 - percent) / 100;
+}
+
 static bool isNightglassDaggerItem(const Item* item)
 {
 	return item && item->getID() == ITEM_NIGHTGLASS_DAGGER;
+}
+
+static bool isCrystalArrowItem(const Item* item)
+{
+	return item && item->getID() == ITEM_CRYSTAL_ARROW;
 }
 
 static bool isRubyImbueWeaponItem(const Item* item)
 {
 	return item && item->isWeapon() && item->getWeaponType() != SHIELD &&
 		!isWandItem(item->getID()) && !isNightglassDaggerItem(item) &&
+		!isCrystalArrowItem(item) &&
 		rubyStacksFromAid(item->getActionId()) > 0;
 }
 
@@ -3158,6 +3319,12 @@ static bool isNightglassImbueWeaponItem(const Item* item)
 {
 	return isNightglassDaggerItem(item) &&
 		nightglassStacksFromAid(item->getActionId()) > 0;
+}
+
+static bool isCrystalArrowImbueWeaponItem(const Item* item)
+{
+	return isCrystalArrowItem(item) &&
+		crystalArrowStacksFromAid(item->getActionId()) > 0;
 }
 
 void Player::refreshHeadSkillBonus(slots_t fromSlot, slots_t toSlot)
@@ -3186,6 +3353,7 @@ void Player::checkBoh()
 
 	int rubyNow = 0;
 	int nightglassNow = 0;
+	int crystalArrowNow = 0;
 	for(int slot = SLOT_RIGHT; slot <= SLOT_LEFT; slot++){
 		if(isRubyImbueWeaponItem(items[slot])){
 			rubyNow = rubyStacksFromAid(items[slot]->getActionId());
@@ -3193,6 +3361,10 @@ void Player::checkBoh()
 		}
 		if(isNightglassImbueWeaponItem(items[slot])){
 			nightglassNow = nightglassStacksFromAid(items[slot]->getActionId());
+			break;
+		}
+		if(isCrystalArrowImbueWeaponItem(items[slot])){
+			crystalArrowNow = crystalArrowStacksFromAid(items[slot]->getActionId());
 			break;
 		}
 	}
@@ -3211,12 +3383,14 @@ void Player::checkBoh()
 		imbueRubyWeapon != rubyNow || imbueEmeraldArmor != emeraldNow ||
 		imbueCrimsonHelm != crimsonHelmNow ||
 		imbueHelmMl != helmMlNow || imbueArmorMl != armorMlNow ||
-		imbueNightglassSpeed != nightglassNow)
+		imbueNightglassSpeed != nightglassNow ||
+		imbueCrystalArrowSpeed != crystalArrowNow)
 	{
 		int hadRuby = imbueRubyWeapon;
 		int hadEmerald = imbueEmeraldArmor;
 		int hadCrimsonHelm = imbueCrimsonHelm;
 		int hadNightglass = imbueNightglassSpeed;
+		int hadCrystalArrow = imbueCrystalArrowSpeed;
 		boh = bohNow;
 		hasteEnchantStacks = hasteNow;
 		imbueWandMl = wandMlNow;
@@ -3226,6 +3400,7 @@ void Player::checkBoh()
 		imbueHelmMl = helmMlNow;
 		imbueArmorMl = armorMlNow;
 		imbueNightglassSpeed = nightglassNow;
+		imbueCrystalArrowSpeed = crystalArrowNow;
 		setNormalSpeed();
 		hasteTicks = 0;
 		sendChangeSpeed(this);
@@ -3242,6 +3417,13 @@ void Player::checkBoh()
 			snprintf(buf, sizeof(buf),
 				"Nightglass dagger surges: +%d%% attack speed (%dms per hit, was %dms).",
 				nightglassSpeedPercentFromStacks(nightglassNow), nightglassAttackDelayFromStacks(nightglassNow), PLAYER_ATTACK_DELAY_MS);
+			sendTextMessage(MSG_INFO, buf);
+		}
+		if(crystalArrowNow && crystalArrowNow != hadCrystalArrow){
+			char buf[96];
+			snprintf(buf, sizeof(buf),
+				"Crystal arrow hums: +%d%% attack speed (%dms per hit, was %dms).",
+				crystalArrowSpeedPercentFromStacks(crystalArrowNow), crystalArrowAttackDelayFromStacks(crystalArrowNow), PLAYER_ATTACK_DELAY_MS);
 			sendTextMessage(MSG_INFO, buf);
 		}
 		if(client && (hadEmerald != emeraldNow || hadCrimsonHelm != crimsonHelmNow))
@@ -3263,6 +3445,8 @@ int Player::getAttackDelayMs() const
 #endif //JD_WANDS
 	if(imbueNightglassSpeed)
 		return nightglassAttackDelayFromStacks(imbueNightglassSpeed);
+	if(imbueCrystalArrowSpeed)
+		return crystalArrowAttackDelayFromStacks(imbueCrystalArrowSpeed);
 	if(imbueRubyWeapon)
 		return rubyAttackDelayFromStacks(imbueRubyWeapon);
 	return PLAYER_ATTACK_DELAY_MS;
@@ -3945,6 +4129,7 @@ int Player::getWandId() const
 		case ITEM_WAND_OF_VORTEX:
 		case ITEM_WAND_OF_DRAGONBREATH:
 		case ITEM_CRIMSON_WAND:
+		case ITEM_TRAIN_WAND:
 			return id;
 		}
 	}

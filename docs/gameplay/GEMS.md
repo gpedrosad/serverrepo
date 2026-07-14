@@ -45,12 +45,12 @@ Archivos de referencia:
 | 2153 | Violet Gem | 20× Small Amethyst | Wand/rod | +1 ML/stack (máx. 4) |
 | 2156 | Big Ruby | 20× Small Ruby | Arma (no wand) | +5% / +9% / +16% attack speed |
 | 2155 | Big Emerald | 20× Small Emerald | Armadura | +1 sword/club/axe/dist por stack (máx. 4, P/K) |
+| 2158 | **Blue Gem** | 20× Small Diamond | **Crystal Arrow** (`2352`) | +5% attack speed/stack (máx. 5) |
 
 ### Gemas sin imbuement
 
 | ID | Nombre | Origen | Uso |
 |----|--------|--------|-----|
-| 2158 | Blue Gem | 20× Small Diamond | Solo vender a Parived |
 | 2151 | Talon | Loot | Vender a Parived |
 | 2157 | Gold Nugget | Loot | Vender a Parived |
 | 2159 | Scarab Coin | Loot | Vender a Parived |
@@ -84,7 +84,7 @@ exchange sapphire  → Yellow Gem
 exchange amethyst  → Violet Gem
 exchange ruby      → Big Ruby
 exchange emerald   → Big Emerald
-exchange diamond   → Blue Gem
+exchange diamond   → Blue Gem (imbue crystal arrow)
 ```
 
 Requiere confirmación (`yes` / `si`). Si no hay espacio en backpack, devuelve las 20 pequeñas.
@@ -140,6 +140,8 @@ El imbue se guarda en el **`actionid`** del ítem. Si pierdes o tradeas el ítem
 | Violet (ML) | 9030 – 9033 | 1 / 2 / 3 / 4 |
 | Big Ruby (attack speed) | 9040 – 9042 | 1 / 2 / 3 |
 | Big Emerald (skills) | 9050 – 9053 | 1 / 2 / 3 / 4 |
+| Nightglass (ruby special) | 9060 – 9064 | 1 … 5 |
+| Crystal Arrow (blue gem) | 9070 – 9074 | 1 … 5 |
 
 Legacy: AID `9041` en armadura cuenta como 3 stacks de emerald (compatibilidad con datos viejos).
 
@@ -147,7 +149,8 @@ Legacy: AID `9041` en armadura cuenta como 3 stacks de emerald (compatibilidad c
 
 - **Arma + Big Ruby**: bloqueada si el ítem ya tiene otro imbue (AID ≥ 9020), salvo que ya tenga stacks ruby (9040–9042).
 - **Armadura + Big Emerald**: bloqueada si AID está entre 9020–9042 (excepto legacy 9041).
-- **Yellow en botas** y **Violet en wand** no comparten slot; no hay conflicto directo.
+- **Yellow en botas**, **Violet en wand**, **Blue en crystal arrow** no comparten slot/ítem; no hay conflicto directo.
+- **Crystal Arrow** no acepta Big Ruby (excluida en Lua/C++); solo Blue Gem.
 
 Tras imbuir, se llama `doPlayerCheckFeetSpeed(cid)` → `Player::checkBoh()` para refrescar velocidad, ML efectivo, attack delay y skills.
 
@@ -269,8 +272,18 @@ onUse Yellow Gem
 
 - **Slot:** armadura (slot 4).
 - **Efecto:** +1 sword, club, axe y distance **por stack**.
-- **Restricción:** solo **Paladin** y **Knight** (`player.cpp` → `getSkill`).
+- **Restricción:** solo **Paladin** y **Knight** (incluye promoted: Royal Paladin / Elite Knight) vía `isKnightOrPaladinFamily()` en `getSkill`.
 - **Máx.:** 4 stacks (AID 9050–9053).
+- **Stacking (debe sumar):** skill ring (+4 axe/sword/club o +6 fist power) + emerald stacks + Crimson Helmet (+1) + `tempoBuff` si aplica. Ejemplo: axe skill base `B` + axe ring + emerald 3/4 + crimson = **`B+8`**.
+- **Bug jul 2026 (corregido):** `getSkill()` hacía early `return base + bonus` por fuente; ring ocultaba emerald/crimson, y emerald ocultaba crimson/`tempoBuff`. Fix: acumular como `getEffectiveMagLevel()` (ML).
+
+### Blue Gem (2158) → Crystal Arrow
+
+- **Cadena:** 20× Small Diamond → Tonka → Blue Gem → use con **crystal arrow** (`2352`) equipada.
+- **Efecto:** +5% attack speed por stack (máx. 5 → +25%, delay ~1000 ms).
+- **AID:** 9070–9074.
+- **Fail:** 50% (igual que yellow/violet/ruby/emerald).
+- **Doc dedicado:** [`CRYSTAL_ARROW.md`](CRYSTAL_ARROW.md).
 
 ---
 
@@ -280,6 +293,8 @@ Al mirar una gema grande (`item.cpp` → `appendGemUseDescription`):
 
 - **Yellow Gem:** *"Imbue: use on equipped boots (+10 haste/stack, max 3). Stacks with BOH."*
 - **Small Sapphire:** *"Tonka: trade 20 for a yellow gem (imbue boots)."*
+- **Blue Gem:** *"Imbue: use on equipped crystal arrow (+5% attack speed/stack, max 5)."*
+- **Small Diamond:** *"Tonka: trade 20 for a blue gem (imbue crystal arrow)."*
 
 En botas ya imbuidas:
 

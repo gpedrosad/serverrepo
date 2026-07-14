@@ -51,6 +51,19 @@ Renombrado desde `dawnbreak falchion`. Ataque **42** / defensa **30**.
 
 **Solo local por ahora** — no deployar al VPS hasta autorización.
 
+## Windsting Axe (`20130`) — local jul 2026
+
+Renombrado desde `windsting bow` (era DIST 2H). Ahora **axe** 1H: ataque **43** / defensa **22**.
+
+| Pieza | Detalle |
+|-------|---------|
+| Efecto | 20% al pegar a un jugador: drunk 6 s (`ICON_DRUNK`; el cliente 7.6 tuerce el walk) |
+| C++ | `ITEM_WINDSTING_AXE`, `Creature::drunkTicks`, `applyWindstingDrunk()` |
+| OTB | `python3 scripts/patch-windsting-axe-otb.py` |
+| Loot | Rare `chance="400"`: Enraged Dwarf Guard, Enraged Orc Berserker, Enraged Behemoth, Enraged Black Knight |
+
+**Solo local por ahora** — no deployar al VPS hasta autorización.
+
 Plan completo, restricciones (no tocar DP ni casas) y checklist:
 
 → [`../DEPLOY-PENDIENTE-VPS-JUL2026.md`](../DEPLOY-PENDIENTE-VPS-JUL2026.md)

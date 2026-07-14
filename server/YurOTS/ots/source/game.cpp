@@ -347,6 +347,9 @@ const long SILENCE_DURATION_MIN_MS = 2000;
 const long SILENCE_DURATION_MAX_MS = 3000;
 const long SILENCE_COOLDOWN_PER_TARGET_MS = 12000;
 
+const int WINDSTING_DRUNK_CHANCE_PERCENT = 20;
+const long WINDSTING_DRUNK_MS = 6000;
+
 // attackerId -> (targetId -> cooldown-until ms)
 std::map<unsigned long, std::map<unsigned long, int64_t> > g_silenceCooldownUntil;
 
@@ -372,6 +375,20 @@ bool wieldsSwordOfSilence(const Player* player)
 	for(int slot = SLOT_RIGHT; slot <= SLOT_LEFT; slot++) {
 		Item* item = player->getItem(slot);
 		if(item && item->getID() == ITEM_SWORD_OF_SILENCE)
+			return true;
+	}
+
+	return false;
+}
+
+bool wieldsWindstingAxe(const Player* player)
+{
+	if(!player)
+		return false;
+
+	for(int slot = SLOT_RIGHT; slot <= SLOT_LEFT; slot++) {
+		Item* item = player->getItem(slot);
+		if(item && item->getID() == ITEM_WINDSTING_AXE)
 			return true;
 	}
 
@@ -441,6 +458,25 @@ void applySwordOfSilence(Game* game, Player* attacker, Player* target)
 	game->sendMagicEffect(target->pos, NM_ME_SOUND_BLUE);
 	target->sendTextMessage(MSG_SMALLINFO, "You are silenced.");
 	attacker->sendTextMessage(MSG_SMALLINFO, "Your sword of silence muted your target.");
+}
+
+void applyWindstingDrunk(Game* game, Player* attacker, Player* target)
+{
+	if(!game || !attacker || !target || target->access >= g_config.ACCESS_PROTECT)
+		return;
+
+	if((target->getImmunities() & ATTACK_DRUNKNESS) == ATTACK_DRUNKNESS)
+		return;
+
+	if((rand() % 100) >= WINDSTING_DRUNK_CHANCE_PERCENT)
+		return;
+
+	target->drunkTicks = WINDSTING_DRUNK_MS;
+	target->sendIcons();
+
+	game->sendMagicEffect(target->pos, NM_ME_LOOSE_ENERGY);
+	target->sendTextMessage(MSG_SMALLINFO, "You feel drunk.");
+	attacker->sendTextMessage(MSG_SMALLINFO, "Your windsting axe intoxicated your target.");
 }
 } // namespace
 
@@ -568,77 +604,59 @@ void GameState::onAttack(Creature* attacker, const Position& pos, const MagicEff
 		MagicEffectItem *magicItem = tile->getFieldItem();
 
 		if(magicItem) {
-			//Replace existing magic field
-			magicItem->transform(newmagicItem);
-
+			// Quitar el field anterior por completo. transform() in-place no reiniciaba
+			// el timer de decay (isDecaying quedaba true y startDecay early-return),
+			// asi que un MW/field relanzado sobre otro heredaba el tiempo restante.
 			int stackpos = tile->getThingStackPos(magicItem);
 			if(tile->removeThing(magicItem)) {
-
 				SpectatorVec list;
 				SpectatorVec::iterator it;
 
 				game->getSpectators(Range(pos, true), list);
 
-				//players
 				for(it = list.begin(); it != list.end(); ++it) {
 					if(dynamic_cast<Player*>(*it)) {
 						(*it)->onThingDisappear(magicItem, stackpos);
 					}
 				}
 
-				//none-players
 				for(it = list.begin(); it != list.end(); ++it) {
 					if(!dynamic_cast<Player*>(*it)) {
 						(*it)->onThingDisappear(magicItem, stackpos);
 					}
 				}
 
-				tile->addThing(magicItem);
+				magicItem->isRemoved = true;
+				game->FreeThing(magicItem);
+			}
+			magicItem = NULL;
+		}
 
-				//players
-				for(it = list.begin(); it != list.end(); ++it) {
-					if(dynamic_cast<Player*>(*it)) {
-						(*it)->onThingAppear(magicItem);
-					}
-				}
+		magicItem = new MagicEffectItem(*newmagicItem);
+		magicItem->useThing();
+		magicItem->pos = pos;
 
-				//none-players
-				for(it = list.begin(); it != list.end(); ++it) {
-					if(!dynamic_cast<Player*>(*it)) {
-						(*it)->onThingAppear(magicItem);
-					}
-				}
+		tile->addThing(magicItem);
+
+		SpectatorVec list;
+		SpectatorVec::iterator it;
+
+		game->getSpectators(Range(pos, true), list);
+
+		for(it = list.begin(); it != list.end(); ++it) {
+			if(dynamic_cast<Player*>(*it)) {
+				(*it)->onThingAppear(magicItem);
 			}
 		}
-		else {
-			magicItem = new MagicEffectItem(*newmagicItem);
-			magicItem->useThing();
-			magicItem->pos = pos;
 
-			tile->addThing(magicItem);
-
-			SpectatorVec list;
-			SpectatorVec::iterator it;
-
-			game->getSpectators(Range(pos, true), list);
-
-			//players
-			for(it = list.begin(); it != list.end(); ++it) {
-				if(dynamic_cast<Player*>(*it)) {
-					(*it)->onThingAppear(magicItem);
-				}
+		for(it = list.begin(); it != list.end(); ++it) {
+			if(!dynamic_cast<Player*>(*it)) {
+				(*it)->onThingAppear(magicItem);
 			}
-
-			//none-players
-			for(it = list.begin(); it != list.end(); ++it) {
-				if(!dynamic_cast<Player*>(*it)) {
-					(*it)->onThingAppear(magicItem);
-				}
-			}
-
-			magicItem->isRemoved = false;
-			game->startDecay(magicItem);
 		}
+
+		magicItem->isRemoved = false;
+		game->startDecay(magicItem);
 	}
 
 	//Clean up
@@ -764,6 +782,9 @@ void GameState::onAttack(Creature* attacker, const Position& pos, Creature* atta
 		if(attackPlayer && attackedPlayer && !trainingNoPvp && wieldsSwordOfSilence(attackPlayer))
 			applySwordOfSilence(game, attackPlayer, attackedPlayer);
 
+		if(attackPlayer && attackedPlayer && !trainingNoPvp && wieldsWindstingAxe(attackPlayer))
+			applyWindstingDrunk(game, attackPlayer, attackedPlayer);
+
 #ifdef TLM_SKULLS_PARTY
 		if (game->getWorldType() == WORLD_TYPE_PVP)
 			game->onPvP(attacker, attackedCreature, attackedCreature->health <= 0);
@@ -843,6 +864,7 @@ static bool isRareEquipmentLootItem(unsigned short itemId)
 	case 2491: // crown helmet
 	case 2492: // dragon scale mail
 	case 2494: // demon armor
+	case ITEM_CRYSTAL_ARROW:
 		return true;
 	default:
 		break;
@@ -1196,6 +1218,11 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 
 					if(gainExpPlayer) {
 						gainExpPlayer->addExp(gainedExperience);
+						if(slainMonster) {
+							MonsterType* slainType = slainMonster->getMonsterType();
+							if(slainType && !slainType->trainer)
+								gainExpPlayer->tryProgressDailyTask(slainMonster->getName());
+						}
 					}
 
 					//Need to add this creature and all that can see it to spectators, unless they already added
@@ -4586,6 +4613,17 @@ void Game::checkCreature(unsigned long id)
 				player->silenceTicks = 0;
 			}
 
+			if(player->drunkTicks >= 1000){
+				player->drunkTicks -= thinkTicks;
+				if(player->drunkTicks < 1000)
+					player->sendIcons();
+				if(player->drunkTicks < 0)
+					player->drunkTicks = 0;
+			}
+			else if(player->drunkTicks > 0){
+				player->drunkTicks = 0;
+			}
+
 			if(player->rootTicks >= 1000){
 				player->rootTicks -= thinkTicks;
 				if(player->rootTicks < 0)
@@ -7290,6 +7328,7 @@ void Game::useWand(Creature *creature, Creature *attackedCreature, int wandid)
 		return;
 
 	int64_t dist, mana = 0;
+	bool trainWand = false;
 	MagicEffectAreaNoExhaustionClass runeAreaSpell;
 	runeAreaSpell.drawblood = true;
 	runeAreaSpell.offensive = true;
@@ -7494,6 +7533,32 @@ void Game::useWand(Creature *creature, Creature *attackedCreature, int wandid)
 		runeAreaSpell.maxDamage = 65;
 		mana = 13;
 	}
+	else if (wandid == ITEM_TRAIN_WAND &&
+		isSorcererOrDruidFamily(player->vocation))
+	{
+		Monster* targetMonster = dynamic_cast<Monster*>(attackedCreature);
+		MonsterType* mtype = targetMonster ? targetMonster->getMonsterType() : NULL;
+		if(!mtype || !mtype->trainer){
+			player->sendCancel("You can only use a train wand on a training dummy.");
+			return;
+		}
+
+		dist = 5;
+		if (abs(player->pos.x - attackedCreature->pos.x) > dist ||
+			abs(player->pos.y - attackedCreature->pos.y) > dist)
+			return;
+
+		runeAreaSpell.attackType = ATTACK_ENERGY;
+		runeAreaSpell.animationEffect = NM_ANI_ENERGY;
+		runeAreaSpell.hitEffect = NM_ME_ENERGY_DAMAGE;
+		runeAreaSpell.areaEffect = NM_ME_ENERGY_AREA;
+		runeAreaSpell.animationColor = 0x47;
+
+		runeAreaSpell.minDamage = 1;
+		runeAreaSpell.maxDamage = 1;
+		mana = 1; // ML credit only; mana is not consumed
+		trainWand = true;
+	}
 
 	if (mana > 0)
 	{
@@ -7514,7 +7579,7 @@ void Game::useWand(Creature *creature, Creature *attackedCreature, int wandid)
 		col.push_back(0);
 		runeAreaSpell.areaVec.push_back(col);
 
-		if(g_config.WAND_ML_FACTOR > 0.0){
+		if(!trainWand && g_config.WAND_ML_FACTOR > 0.0){
 			const int64_t mlBonus = (int64_t)(player->getEffectiveMagLevel() * g_config.WAND_ML_FACTOR);
 			if(mlBonus > 0){
 				runeAreaSpell.minDamage += (int)mlBonus;
@@ -7524,7 +7589,8 @@ void Game::useWand(Creature *creature, Creature *attackedCreature, int wandid)
 
 		creatureThrowRune(player, attackedCreature->pos, runeAreaSpell);
 		player->addManaSpent(mana);
-		player->mana -= mana;
+		if(!trainWand)
+			player->mana -= mana;
 	}
 }
 #endif //JD_WANDS

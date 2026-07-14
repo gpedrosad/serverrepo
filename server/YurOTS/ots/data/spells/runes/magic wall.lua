@@ -9,7 +9,8 @@
  animationEffect = NM_ANI_ENERGY
  offensive = true
  magicDamageListCount = 0
- durationTicks = 20000
+ -- 15s real: DECAY_INTERVAL es 5000ms; valores no multiplo de ese interval se redondean.
+ durationTicks = 15000
  itemid = 1498
  transformCount = 1
 

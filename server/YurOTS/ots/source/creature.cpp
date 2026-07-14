@@ -73,6 +73,7 @@ access(0)
 	hasteTicks = 0;
 	paralyzeTicks = 0;
 	silenceTicks = 0;
+	drunkTicks = 0;
 	rootTicks = 0;
 	tempoBuffTicks = 0;
 	tempoBuffBonus = 0;
@@ -95,6 +96,7 @@ access(0)
 	imbueHelmMl = 0;
 	imbueArmorMl = 0;
 	imbueNightglassSpeed = 0;
+	imbueCrystalArrowSpeed = 0;
 #endif //YUR_BOH
 
 #ifdef YUR_RINGS_AMULETS

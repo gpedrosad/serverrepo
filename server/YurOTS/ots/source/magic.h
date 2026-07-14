@@ -258,7 +258,7 @@ public:
 
 	virtual Item* decay();
 	bool transform(const MagicEffectItem *rhs);
-	long getDecayTime();
+	virtual long getDecayTime();
 
 protected:
 	int useCount;

@@ -223,6 +223,8 @@ public:
 
 	void addManaSpent(uint64_t spent);
 	void addExp(exp_t exp);
+	// Daily hunt contracts (Huntmaster): increment storage kill counter when name matches.
+	void tryProgressDailyTask(const std::string& monsterName);
 	virtual int64_t getWeaponDamage() const;
 	virtual int getArmor() const;
 	virtual int getDefense() const;

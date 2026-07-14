@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<npc name="Huntmaster" script="data/npc/scripts/huntmaster.lua" access="3">
+	<look type="131" head="19" body="113" legs="95" feet="115"/>
+</npc>

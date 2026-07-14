@@ -27,6 +27,7 @@
 				<item id="2690" countmax="2" chance1="20000" chancemax="0" />
 				<item id="2147" countmax="2" chance1="3333" chancemax="0" />
 				<item id="2050" chance="20000" />
+				<item id="2352" chance="300" />
 			</inside>
 		</item>
 		<item id="2150" countmax="2" chance1="18000" chancemax="0" />

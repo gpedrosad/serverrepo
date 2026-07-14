@@ -629,6 +629,28 @@ static int nightglassAttackDelayFromStacks(int stacks)
 	return PLAYER_ATTACK_DELAY_MS * (100 - percent) / 100;
 }
 
+static int crystalArrowStacksFromAid(unsigned short aid)
+{
+	if(aid >= ITEM_CRYSTAL_ARROW_SPEED_AID && aid <= ITEM_CRYSTAL_ARROW_SPEED_AID_MAX)
+		return aid - ITEM_CRYSTAL_ARROW_SPEED_AID + 1;
+	return 0;
+}
+
+static int crystalArrowSpeedPercentFromStacks(int stacks)
+{
+	if(stacks <= 0)
+		return 0;
+	return stacks * 5;
+}
+
+static int crystalArrowAttackDelayFromStacks(int stacks)
+{
+	const int percent = crystalArrowSpeedPercentFromStacks(stacks);
+	if(percent <= 0)
+		return PLAYER_ATTACK_DELAY_MS;
+	return PLAYER_ATTACK_DELAY_MS * (100 - percent) / 100;
+}
+
 static int rubySpeedPercentFromStacks(int stacks)
 {
 	switch(stacks){
@@ -675,10 +697,10 @@ static void appendGemUseDescription(std::stringstream& s, unsigned short itemId)
 		s << std::endl << "Tonka: trade 20 for a big emerald (imbue armor).";
 		break;
 	case ITEM_SMALL_DIAMOND:
-		s << std::endl << "Tonka: trade 20 for a blue gem.";
+		s << std::endl << "Tonka: trade 20 for a blue gem (imbue crystal arrow).";
 		break;
 	case ITEM_BLUE_GEM:
-		s << std::endl << "Rare gem. Sell to Parived (say gems).";
+		s << std::endl << "Imbue: use on equipped crystal arrow (+5% attack speed/stack, max 5).";
 		break;
 	case ITEM_TALON:
 	case ITEM_GOLD_NUGGET:
@@ -707,7 +729,15 @@ std::string Item::getDescription(bool fullDescription) const
 		}
 	}
 	else if (it.name.length()) {
-		if(isStackable() && count > 1) {
+		if(id == ITEM_TRAIN_WAND) {
+			s << "a train wand.";
+			if(fullDescription) {
+				double weight = getWeight();
+				if(weight > 0)
+					s << std::endl << "It weighs " << std::fixed << std::setprecision(1) << weight << " oz.";
+			}
+		}
+		else if(isStackable() && count > 1) {
 			s << (int)count << " " << it.name << "s.";
 
 			if(fullDescription) {
@@ -732,6 +762,8 @@ std::string Item::getDescription(bool fullDescription) const
 #ifdef YUR_BOH
 				if(rubyStacksFromAid(actionId, this) > 0)
 					s << ", +" << rubySpeedPercentFromStacks(rubyStacksFromAid(actionId, this)) << "% speed";
+				else if(crystalArrowStacksFromAid(actionId) > 0)
+					s << ", +" << crystalArrowSpeedPercentFromStacks(crystalArrowStacksFromAid(actionId)) << "% speed";
 #endif //YUR_BOH
 				s << ")";
 			}
@@ -842,18 +874,33 @@ std::string Item::getDescription(bool fullDescription) const
 		s << std::endl << "Knights, elite knights, paladins and royal paladins: +1 sword, club, axe and distance.";
 	else if(id == ITEM_CRIMSON_WAND && fullDescription)
 		s << std::endl << "Sorcerers, master sorcerers, druids and elder druids (level 33+): heavy magic missiles, 55-65 dmg, 13 mana, range 5. Imbue up to +4 ML.";
+	else if(id == ITEM_TRAIN_WAND && fullDescription)
+		s << std::endl << "Sorcerers, master sorcerers, druids and elder druids: trains magic level slowly on training dummies without spending mana.";
 	else if(id == ITEM_FURY_CAPE && fullDescription)
 		s << std::endl << "Sorcerers and druids: +1 magic level while worn.";
 	else if(id == ITEM_MEDUSA_SWORD && fullDescription)
 		s << std::endl << "Paralyzes players on every hit in PvP.";
 	else if(id == ITEM_SWORD_OF_SILENCE && fullDescription)
 		s << std::endl << "10% chance to silence a player for 2-3s in PvP (spoken spells only; 12s cooldown per target).";
+	else if(id == ITEM_WINDSTING_AXE && fullDescription)
+		s << std::endl << "20% chance to make a player drunk for 6s in PvP.";
 	else if(id == ITEM_NIGHTGLASS_DAGGER && fullDescription) {
 		s << std::endl << "A shadowy dagger. Imbue with a big ruby for up to 5 speed stacks (-10% success chance per stack).";
 		const int ngStacks = nightglassStacksFromAid(actionId);
 		if(ngStacks > 0)
 			s << std::endl << "Imbued: +" << nightglassSpeedPercentFromStacks(ngStacks) << "% attack speed ("
 			  << nightglassAttackDelayFromStacks(ngStacks) << "ms per hit, " << ngStacks << "/5).";
+	}
+	else if(id == ITEM_CRYSTAL_ARROW && fullDescription) {
+		s << std::endl << "A throwable crystal missile (spear-like, " << CRYSTAL_ARROW_HIT_CHANCE
+		  << "% hit). Imbue with a blue gem for up to 5 attack speed stacks.";
+		const int caStacks = crystalArrowStacksFromAid(actionId);
+		if(caStacks > 0)
+			s << std::endl << "Imbued: +" << crystalArrowSpeedPercentFromStacks(caStacks) << "% attack speed ("
+			  << crystalArrowAttackDelayFromStacks(caStacks) << "ms per hit, " << caStacks << "/5).";
+	}
+	else if(id == ITEM_SPEAR && fullDescription) {
+		s << std::endl << "A throwable spear (" << SPEAR_HIT_CHANCE << "% hit chance).";
 	}
 #endif //YUR_BOH
 

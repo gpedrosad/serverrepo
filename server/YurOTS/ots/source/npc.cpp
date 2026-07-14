@@ -832,6 +832,8 @@ int NpcScript::registerFunctions()
 	lua_register(luaState, "doPlayerDepositMoney", NpcScript::luaDepositPlayerMoney);
 	lua_register(luaState, "doPlayerWithdrawMoney", NpcScript::luaWithdrawPlayerMoney);
 	lua_register(luaState, "doPlayerTransferMoneyTo", NpcScript::luaTransferPlayerMoneyTo);
+	lua_register(luaState, "doPlayerAddExp", NpcScript::luaDoPlayerAddExp);
+	lua_register(luaState, "doPlayerAddMoney", NpcScript::luaDoPlayerAddMoney);
 	lua_register(luaState, "getPlayerVocation", NpcScript::luaGetPlayerVocation);
 	lua_register(luaState, "setPlayerMasterPos", NpcScript::luaSetPlayerMasterPos);
 	lua_register(luaState, "travelPlayerTo", NpcScript::luaTravelPlayerTo);
@@ -1795,6 +1797,49 @@ int NpcScript::luaTravelPlayerTo(lua_State* L)
 	}
 
 	return 0;
+}
+
+int NpcScript::luaDoPlayerAddExp(lua_State* L)
+{
+	exp_t addexp = (exp_t)lua_tonumber(L, -1);
+	int cid = (int)lua_tonumber(L, -2);
+	lua_pop(L, 2);
+
+	Npc* mynpc = getNpc(L);
+	Creature* creature = mynpc->game->getCreatureByID(cid);
+	Player* player = creature ? dynamic_cast<Player*>(creature) : NULL;
+
+	if(player && addexp > 0) {
+		player->addExp(addexp);
+		player->sendStats();
+		lua_pushnumber(L, 0);
+	}
+	else {
+		lua_pushnumber(L, -1);
+	}
+
+	return 1;
+}
+
+int NpcScript::luaDoPlayerAddMoney(lua_State* L)
+{
+	int64_t amount = (int64_t)lua_tonumber(L, -1);
+	int cid = (int)lua_tonumber(L, -2);
+	lua_pop(L, 2);
+
+	Npc* mynpc = getNpc(L);
+	Creature* creature = mynpc->game->getCreatureByID(cid);
+	Player* player = creature ? dynamic_cast<Player*>(creature) : NULL;
+
+	if(player && amount > 0) {
+		addMoneyToPlayer(player, (uint64_t)amount);
+		lua_pushnumber(L, 0);
+	}
+	else {
+		lua_pushnumber(L, -1);
+	}
+
+	return 1;
 }
 #endif //YUR_NPC_EXT
 

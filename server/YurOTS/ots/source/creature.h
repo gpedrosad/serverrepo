@@ -206,6 +206,7 @@ public:
 	long inFightTicks, exhaustedTicks;
 	long manaShieldTicks, hasteTicks, paralyzeTicks;
 	long silenceTicks;
+	long drunkTicks;
 	long rootTicks;
 	long tempoBuffTicks;
 	int tempoBuffBonus;
@@ -308,6 +309,7 @@ protected:
 	int imbueHelmMl;
 	int imbueArmorMl;
 	int imbueNightglassSpeed;
+	int imbueCrystalArrowSpeed;
 #endif //YUR_BOH
 #ifdef YUR_RINGS_AMULETS
 	bool timeRing;

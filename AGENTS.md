@@ -60,9 +60,12 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 | Subsistema | Doc |
 |------------|-----|
 | Gemas / minería / crafting | `docs/gameplay/GEMS.md` |
+| Crystal Arrow (spear-like + Blue Gem speed + hit chance) | `docs/gameplay/CRYSTAL_ARROW.md` |
+| Daily Task / Huntmaster (contratos diarios) | `docs/gameplay/DAILY_TASK.md` |
 | PvP, frag list, balance de combate | `docs/PVP_SYSTEM.md` |
 | Trade, items, transacciones | `docs/TRADE_SYSTEM.md` |
 | Depots, lockers 2589, deploy de mapa | `docs/gameplay/DEPOTS.md` |
+| Magic Wall (duración / decay de fields) | `docs/gameplay/MAGIC_WALL.md` |
 | Wands, rods, Crimson Wand, escalado de ML | `docs/gameplay/WANDS.md` |
 | Spells / runas (carga Lua, safeCast, Soulfire, Paralyze, Anchor) | `docs/gameplay/SPELL_RUNTIME.md` |
 | Cambiar / exportar mapa OTBM | `docs/CAMBIAR-MAPA.md` |
@@ -282,11 +285,14 @@ Caminos de `onThingMove` que deben cubrir `SLOT_HEAD`: inventory↔inventory, in
 | `20105` | medusa sword | Paralyze PvP on-hit | `game.cpp` (`applyMedusaParalyze`) |
 | `20139` | sword of silence | 10% silencio PvP 2–3s (solo spells hablados; runas/potions OK); CD 12s/target | `game.cpp` (`applySwordOfSilence`), `creature.h` (`silenceTicks`), `item.cpp`, OTB via `scripts/patch-sword-of-silence-otb.py`, loot Fury `fury.xml` chance 400 |
 | `20123` | crimson wand | Sorc/Master Sorc y Druid/Elder Druid lv33+: wand 55–65 dmg, 13 mana, range 5, delay 667ms, animación **adori gran** (HMM), imbue ML hasta +4 | `const76.h`, `player.cpp` (`isWandItem`, `getWandId`, `getAttackDelayMs`), `game.cpp` (`useWand`, `isSorcererOrDruidFamily`), `item.cpp` |
+| `20126` | train wand | Sorc/MS y Druid/ED: solo trainers (`trainer=1`), 0 mana, `addManaSpent(1)` (~50% Vortex), daño 1–1 | `const76.h`, `player.cpp` (`isWandItem`, `getWandId`), `game.cpp` (`useWand`), `item.cpp` |
+| `2352` | crystal arrow | Throwable DIST tipo spear (atk 35, **85% hit**, no se consume). Blue Gem → hasta 5 stacks +5% attack speed (AID 9070–9074). Spears (`2389`) suben a **70% hit**. Loot: Enraged Hero `450`, Furious Amazon `300`. | `const76.h` (`SPEAR_HIT_CHANCE`, `CRYSTAL_ARROW_HIT_CHANCE`), `creature.h` (`imbueCrystalArrowSpeed`), `player.cpp`, `item.cpp`, `game.cpp` (rare loot), `gem_imbue.lua`, OTB via `scripts/patch-crystal-arrow-otb.py` |
 
 ### Pitfalls que ya mordieron a agentes
 
 - **Bonus en `getSkill()` pero la UI no sube al equipar** — falta `sendSkills()` en algún camino de `SLOT_HEAD` (típico: ground→inventory olvidado). Usar `refreshHeadSkillBonus()`.
 - **Bonus en UI no baja al desequipar** — bug real jul 2026 en Crimson Helmet: `sendSkills()` se llamaba **antes** de `checkBoh()`, y `getSkill()` leía solo `imbueCrimsonHelm` cacheado. Fix: `getSkill()` lee `items[SLOT_HEAD]` en vivo + `refreshHeadSkillBonus()` siempre hace `checkBoh()` → `sendSkills()` **después** del move.
+- **Bonuses de skill que no se apilan** — bug real jul 2026: axe ring + emerald armor + crimson helmet no sumaban porque `getSkill()` hacía `return base + X` en cascada (ring ganaba; sin ring emerald ocultaba crimson/`tempoBuff`). Fix: acumular en una sola `value` (mismo patrón que `getEffectiveMagLevel()`). No volver a early-return por fuente.
 - **Wand con sprite de inferno pero ataca melee** — falta registrar el id en `isWandItem()` + `getWandId()` + rama en `useWand()`. Sin eso `getWandId()` devuelve 0 y el combate usa daño físico normal.
 - **Crimson Wand / promoted mages** — Master Sorcerer y Elder Druid son `promoted=1` con `VOCATION_SORCERER`/`VOCATION_DRUID`. Usar `isSorcererOrDruidFamily()` en `useWand()`; no crear voc ids nuevos.
 - **Crimson Helmet / promoted fighters** — Elite Knight y Royal Paladin son `promoted=1` con `VOCATION_KNIGHT`/`VOCATION_PALADIN`. Usar `isKnightOrPaladinFamily()` en `getSkill()` y `checkBoh()`.

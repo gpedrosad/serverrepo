@@ -18,7 +18,7 @@ Valores vigentes en [server/YurOTS/ots/config.lua](/Users/gonzalo/Desktop/yurots
 - `worldtype = "pvp"`
 - `pzlocked = 10*1000`
 - `pvpunderdogexp = "yes"`
-- `pvpunderdogexp_percent = 50`
+- `pvpunderdogexp_percent = 80`
 - `redunjust = 3`
 - `banunjust = 6`
 - `hittime = 1`
@@ -324,8 +324,14 @@ Referencias:
 Adicionalmente, en mundo `pvp` normal:
 
 - el killer puede ganar una parte de la exp perdida por la victima
-- el porcentaje actual es `50%`
+- el porcentaje actual es `80%` (`pvpunderdogexp_percent` en `config.lua`)
 - se escala por proporcion de dano
+- la victima pierde `7%` de su exp (`diepercent`); con underdog al 80% el killer se lleva ~5.6% de la exp total de la victima (si hizo todo el dano), mas el camino base con `expmulpvp = 2`
+
+Historial:
+
+- antes: `50%` — premio bajo, poco incentivo a buscar pelea
+- jul 2026: `80%` — kill se nota sin empujar tanto farm de alts; alternativa considerada `75` / `100`
 
 No aplica en:
 
@@ -334,7 +340,8 @@ No aplica en:
 
 Referencia:
 
-- [game.cpp](/Users/gonzalo/Desktop/yurots-principal/server/YurOTS/ots/source/game.cpp:1047)
+- [game.cpp](/Users/gonzalo/Desktop/yurots-principal/server/YurOTS/ots/source/game.cpp:1240)
+- config: [config.lua](/Users/gonzalo/Desktop/yurots-principal/server/YurOTS/ots/config.lua) (`pvpunderdogexp*`)
 
 ## 9. Zonas y excepciones
 

@@ -482,7 +482,9 @@ protected:
 	void checkCreatureAttacking(unsigned long id);
 	void checkDecay(int t);
 
-	#define DECAY_INTERVAL  10000
+	// 5000ms permite duraciones como magic wall 15s (15000). Con 10000ms,
+	// startDecay redondeaba hacia abajo a multiplos de 10s (15s -> 10s).
+	#define DECAY_INTERVAL  5000
 	void startDecay(Item* item);
 	struct decayBlock{
 		long decayTime;

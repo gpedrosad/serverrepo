@@ -65,7 +65,9 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/MONSTER_CREATION.md`](gameplay/MONSTER_CREATION.md) | Flujo completo para crear monstruos nuevos: XML, alta en `monsters.xml`, RME y spawns. |
 | [`gameplay/BOAT_TRAVEL.md`](gameplay/BOAT_TRAVEL.md) | Viajes de Nimral/Fargum: destinos, Hell Quest, confirmación y reglas de temple. |
 | [`gameplay/MOST_WANTED_SYSTEM.md`](gameplay/MOST_WANTED_SYSTEM.md) | Sistema de bounty / most wanted entre jugadores. |
+| [`gameplay/DAILY_TASK.md`](gameplay/DAILY_TASK.md) | **Daily Task (Huntmaster):** 3 contratos/día por rango de level, kills + oro o exp, streak. |
 | [`gameplay/GEMS.md`](gameplay/GEMS.md) | Sistema de gemas: drop, uso, imbuements. Antes de tocar gemas, leer esto. |
+| [`gameplay/CRYSTAL_ARROW.md`](gameplay/CRYSTAL_ARROW.md) | **Crystal Arrow (2352):** throwable tipo spear, Blue Gem speed ×5, hit 85%; spears 70% hit. |
 | [`gameplay/DEPOTS.md`](gameplay/DEPOTS.md) | **Depots:** lockers 2589, XML vs mapa, incidente jul 2026, checklist pre-deploy de mapa. |
 | [`gameplay/HOUSES.md`](gameplay/HOUSES.md) | **Casas:** dueños en `data/houses/*.xml`, deploy, backup y recuperación (incidente jul 2026). |
 | [`gameplay/GOLDEN_ACCESSORIES.md`](gameplay/GOLDEN_ACCESSORIES.md) | Golden amulet y golden ring: auto-bank, bonus de oro e interacción entre ambos. |
@@ -75,6 +77,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/RUNE_WEIGHT_RL.md`](gameplay/RUNE_WEIGHT_RL.md) | Peso de runas y lógica RL asociada. |
 | [`gameplay/DESINTEGRATE_RUNE.md`](gameplay/DESINTEGRATE_RUNE.md) | Implementación real de la rune Desintegrate: magic wall, wild growth y objetos destruibles. |
 | [`gameplay/SPELL_RUNTIME.md`](gameplay/SPELL_RUNTIME.md) | **Spells/runas:** carga XML→Lua, `safeCast` anti-crash, restauración Soulfire/Paralyze/etc. (jul 2026). Leer antes de tocar `spells.xml` / `spells.cpp`. |
+| [`gameplay/MAGIC_WALL.md`](gameplay/MAGIC_WALL.md) | **Magic Wall:** duración 15s, `DECAY_INTERVAL`, bug de relanzar sin reiniciar timer (jul 2026). |
 | [`gameplay/ANCHOR_RUNE.md`](gameplay/ANCHOR_RUNE.md) | Anchor Rune (2296): root de 1s (no paralyze) para war/combos. |
 | [`gameplay/SPELL_CAST_VISIBILITY.md`](gameplay/SPELL_CAST_VISIBILITY.md) | Visibilidad del cast de hechizos (efectos visuales). |
 | [`gameplay/SPELL_EXORI_GRAN.md`](gameplay/SPELL_EXORI_GRAN.md) | Hechizo exori gran: balance, área, daño. |
@@ -141,6 +144,7 @@ Catálogo completo de features del juego. Cada feature tiene su doc individual e
 | Quiero generar un laberinto por código | [`items-and-map/MAPEAR_LABERINTO.md`](items-and-map/MAPEAR_LABERINTO.md) |
 | Quiero crear un monstruo nuevo | [`gameplay/MONSTER_CREATION.md`](gameplay/MONSTER_CREATION.md) |
 | Voy a tocar gemas o imbuements | [`gameplay/GEMS.md`](gameplay/GEMS.md) → [`features/10-gems-and-imbuements.md`](features/10-gems-and-imbuements.md) |
+| Skill ring + emerald armor + crimson no suman | [`gameplay/GEMS.md`](gameplay/GEMS.md) (Big Emerald / stacking) + `Player::getSkill` en `player.cpp` |
 | Voy a hacer deploy a producción | [`../scripts/README-DEPLOY-VPS.md`](../scripts/README-DEPLOY-VPS.md) |
 | Necesito migrar DB o data crítica | [`MIGRATION_PLAYBOOK.md`](MIGRATION_PLAYBOOK.md) |
 | Voy a cambiar el mapa del server | [`CAMBIAR-MAPA.md`](CAMBIAR-MAPA.md) → [`gameplay/DEPOTS.md`](gameplay/DEPOTS.md) |

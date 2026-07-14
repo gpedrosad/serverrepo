@@ -26,6 +26,10 @@ IMBUE_FAIL_CHANCE = 50
 NIGHTGLASS_DAGGER = 20137
 NIGHTGLASS_SPEED_AID = 9060
 NIGHTGLASS_MAX_STACKS = 5
+CRYSTAL_ARROW = 2352
+CRYSTAL_ARROW_SPEED_AID = 9070
+CRYSTAL_ARROW_MAX_STACKS = 5
+BLUE_GEM = 2158
 
 function rubySpeedPercent(stacks)
 	if stacks == 1 then return 5 end
@@ -42,6 +46,9 @@ function isImbueWeapon(itemid)
 		return false
 	end
 	if WANDS[itemid] or NOT_WEAPONS[itemid] then
+		return false
+	end
+	if itemid == CRYSTAL_ARROW then
 		return false
 	end
 	return true
@@ -112,6 +119,26 @@ end
 
 function nightglassDelayMs(stacks)
 	return math.floor(1333 * (100 - nightglassSpeedPercent(stacks)) / 100)
+end
+
+function crystalArrowSpeedPercent(stacks)
+	return stacks * 5
+end
+
+function crystalArrowDelayMs(stacks)
+	return math.floor(1333 * (100 - crystalArrowSpeedPercent(stacks)) / 100)
+end
+
+function getCrystalArrowSlot(cid)
+	local right = getPlayerSlotItem(cid, SLOT_RIGHT)
+	local left = getPlayerSlotItem(cid, SLOT_LEFT)
+	if right.uid and right.uid > 0 and right.itemid == CRYSTAL_ARROW then
+		return right
+	end
+	if left.uid and left.uid > 0 and left.itemid == CRYSTAL_ARROW then
+		return left
+	end
+	return nil
 end
 
 function applyImbue(cid, gemItem, target, minAid, maxStacks, msg)
@@ -260,6 +287,40 @@ function onUse(cid, item, frompos, item2, topos)
 		doSetItemActionId(armor.uid, 9050 + stacks)
 		doSendMagicEffect(getPlayerPosition(cid), 13)
 		doPlayerSendTextMessage(cid, 22, "Armor imbued with skills (" .. (stacks + 1) .. "/4). +1 sword/club/axe/dist per stack.")
+		doPlayerCheckFeetSpeed(cid)
+		return 1
+	end
+
+	if gem == BLUE_GEM then
+		local arrow = getCrystalArrowSlot(cid)
+		if not arrow then
+			doPlayerSendCancel(cid, "Equip a crystal arrow to imbue it.")
+			return 1
+		end
+		local stacks = 0
+		if arrow.actionid >= CRYSTAL_ARROW_SPEED_AID and
+			arrow.actionid <= CRYSTAL_ARROW_SPEED_AID + CRYSTAL_ARROW_MAX_STACKS - 1 then
+			stacks = arrow.actionid - CRYSTAL_ARROW_SPEED_AID + 1
+		end
+		if stacks >= CRYSTAL_ARROW_MAX_STACKS then
+			doPlayerSendCancel(cid, "Crystal arrow already has 5/5 speed imbuements.")
+			return 1
+		end
+		local isCrystalAid = arrow.actionid >= CRYSTAL_ARROW_SPEED_AID and
+			arrow.actionid <= CRYSTAL_ARROW_SPEED_AID + CRYSTAL_ARROW_MAX_STACKS - 1
+		if arrow.actionid >= 9020 and not isCrystalAid then
+			doPlayerSendCancel(cid, "That item already has another imbuement.")
+			return 1
+		end
+		if rollImbueFailure(cid, item) then
+			return 1
+		end
+		doRemoveItem(item.uid, 1)
+		doSetItemActionId(arrow.uid, CRYSTAL_ARROW_SPEED_AID + stacks)
+		doSendMagicEffect(getPlayerPosition(cid), 13)
+		local nextStacks = stacks + 1
+		doPlayerSendTextMessage(cid, 22, "Crystal arrow imbued with speed (" .. nextStacks .. "/5): +" ..
+			crystalArrowSpeedPercent(nextStacks) .. "% (" .. crystalArrowDelayMs(nextStacks) .. "ms per hit).")
 		doPlayerCheckFeetSpeed(cid)
 		return 1
 	end

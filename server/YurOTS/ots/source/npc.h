@@ -91,6 +91,8 @@ public:
 	static int luaDepositPlayerMoney(lua_State *L);
 	static int luaWithdrawPlayerMoney(lua_State *L);
 	static int luaTransferPlayerMoneyTo(lua_State *L);
+	static int luaDoPlayerAddExp(lua_State *L);
+	static int luaDoPlayerAddMoney(lua_State *L);
 	static int luaSetPlayerMasterPos(lua_State* L);
 	static int luaTravelPlayerTo(lua_State* L);
 #endif //YUR_NPC_EXT
