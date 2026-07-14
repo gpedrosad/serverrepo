@@ -2,9 +2,11 @@
 /**
  * Add / refresh Private Trainer Dummy item (20155) in items-zagan-test.otb.
  *
- * Clones client appearance from starbinder hood (20118 / clientId 4835) but
- * creates a dedicated usable placement item so premium/GM /i no longer gives
- * the hood casco.
+ * Placement item must use a CLIENT id that is Use-able in Tibia.dat.
+ * Starbinder hood (20118 / clientId 4835) is a helmet → client equips on Use
+ * and never runs the action. We reuse wooden chair kit clientId (3901 → 2775).
+ *
+ * Creature look stays on server id 20118 (hood sprite) via monster XML.
  */
 "use strict";
 
@@ -15,7 +17,8 @@ const ROOT = path.resolve(__dirname, "..");
 const OTB = path.join(ROOT, "server/YurOTS/ots/data/items/items-zagan-test.otb");
 
 const NEW_SERVER_ID = 20155;
-const SOURCE_SERVER_ID = 20118; // starbinder hood — sprite source only
+// Construction kit: usable in client DAT (Use works). Not a helmet.
+const CLIENT_ID_PROTOTYPE_SERVER_ID = 3901; // wooden chair kit → clientId 2775
 const NAME = "private trainer dummy";
 const DESCR = "Put it on a free house tile and use it to place a training dummy.";
 
@@ -28,19 +31,6 @@ const FLAG_USEABLE = 16;
 const FLAG_PICKUPABLE = 32;
 const FLAG_MOVEABLE = 64;
 const FLAGS = FLAG_USEABLE | FLAG_PICKUPABLE | FLAG_MOVEABLE; // 0x70
-
-function unescapeProps(buf) {
-  const out = [];
-  for (let i = 0; i < buf.length; i++) {
-    if (buf[i] === ESCAPE) {
-      i++;
-      if (i < buf.length) out.push(buf[i]);
-    } else {
-      out.push(buf[i]);
-    }
-  }
-  return Buffer.from(out);
-}
 
 function escapeProps(buf) {
   const out = [];
@@ -131,29 +121,29 @@ function main() {
   }
 
   let data = Buffer.from(fs.readFileSync(OTB));
-  const clientId = clientIdOf(data, SOURCE_SERVER_ID);
+  const clientId = clientIdOf(data, CLIENT_ID_PROTOTYPE_SERVER_ID);
   const newNode = buildNode(NEW_SERVER_ID, clientId);
 
   const existing = findServerIdAttr(data, NEW_SERVER_ID);
   if (existing >= 0) {
     const { start, end } = findNodeBounds(data, existing);
     data = Buffer.concat([data.slice(0, start), newNode, data.slice(end)]);
-    console.log(`OK replaced id=${NEW_SERVER_ID} in ${path.basename(OTB)} (clientId=${clientId})`);
+    console.log(
+      `OK replaced id=${NEW_SERVER_ID} in ${path.basename(OTB)} ` +
+        `(clientId=${clientId} from kit ${CLIENT_ID_PROTOTYPE_SERVER_ID})`
+    );
   } else {
-    // Insert before final root NODE_END if present, else append.
     let insertAt = data.length;
-    if (data[data.length - 1] === NODE_END) {
-      // Prefer appending as last child before the very last END that closes root.
-      // Practical approach: append just before the last NODE_END of the file.
-      insertAt = data.length - 1;
-    }
+    if (data[data.length - 1] === NODE_END) insertAt = data.length - 1;
     data = Buffer.concat([data.slice(0, insertAt), newNode, data.slice(insertAt)]);
-    console.log(`OK added id=${NEW_SERVER_ID} to ${path.basename(OTB)} (clientId=${clientId} from ${SOURCE_SERVER_ID})`);
+    console.log(
+      `OK added id=${NEW_SERVER_ID} to ${path.basename(OTB)} ` +
+        `(clientId=${clientId} from kit ${CLIENT_ID_PROTOTYPE_SERVER_ID})`
+    );
   }
 
   fs.writeFileSync(OTB, data);
 
-  // Verify
   const verify = fs.readFileSync(OTB);
   if (findServerIdAttr(verify, NEW_SERVER_ID) < 0) {
     console.error("ERROR: verify failed — new id not found after write");
@@ -164,6 +154,7 @@ function main() {
     process.exit(1);
   }
   console.log(`OK name="${NAME}" flags=0x${FLAGS.toString(16)} usable+pickupable+moveable`);
+  console.log("NOTE: monster look should stay on server id 20118 (hood sprite).");
 }
 
 main();

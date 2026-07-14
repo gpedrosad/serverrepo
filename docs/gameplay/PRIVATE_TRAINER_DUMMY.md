@@ -13,7 +13,7 @@ trainer:
 
 - Monster: `Private Trainer Dummy`
 - Archivo: `server/YurOTS/ots/data/monster/private trainer dummy.xml`
-- Apariencia: `<look type="20155" .../>` (server item id → `clientId` en protocolo)
+- Apariencia criatura: `<look type="20118" .../>` (starbinder hood sprite vía clientId)
 - Registro: `server/YurOTS/ots/data/monster/monsters.xml`
 - RME: categoria `YurOTS Training` en `rme-extensions/yurots-creatures.xml`
 - Item de placement: **`20155`** (`private trainer dummy`)
@@ -23,8 +23,12 @@ trainer:
 
 ### Nota sobre ids (jul 2026)
 
-El id **`20118` es `starbinder hood`** (casco Zagan). No usarlo para el dummy.
-El placement item y el look del monstruo viven en **`20155`**.
+| Id | Rol |
+|----|-----|
+| **`20118`** | `starbinder hood` (casco). **Look** del monstruo dummy. No usar como item de placement. |
+| **`20155`** | Item de placement. **clientId** = kit de silla (`3901` → `2775`) para que el cliente mande **Use** (si usa el clientId del casco, el cliente equipa y nunca corre el script). |
+
+El item en inventario se ve como construction kit; la criatura colocada se ve como hood.
 
 ## Comportamiento
 
@@ -81,8 +85,12 @@ Creatures -> YurOTS Training -> Private Trainer Dummy
 ## Nota importante
 
 Si un jugador tiene un item `20155` real en inventario, ese item no se vuelve
-atacable por si mismo. La version atacable es la criatura que usa `20155` como
-look visual (`looktype > 1000` → clientId del item).
+atacable por si mismo. La version atacable es la criatura con
+`look type="20118"` (hood).
+
+**Pitfall:** el clientId del item de placement **no** puede ser el del casco
+(`4835`). En 7.6 el cliente decide Use vs equipar según el DAT/clientId; con
+sprite de helmet, Use equipa y el action Lua nunca corre.
 
 ## Train Wand (`20126`) — ML en casa
 
