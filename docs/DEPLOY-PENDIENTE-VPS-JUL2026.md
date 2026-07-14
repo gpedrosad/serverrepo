@@ -65,15 +65,18 @@ ITEM_SWORD_OF_SILENCE = 20139,
 
 **Rebuild obligatorio** en VPS (el script de deploy compila dentro del container). Si se tocó `creature.h`, preferir `make clean && make` local antes de confiar en el build.
 
-### 2. Private Trainer Dummy (`20118`)
+### 2. Private Trainer Dummy (`20155`)
 
 | Pieza | Ruta |
 |-------|------|
-| C++ persistencia | `source/private_trainers.cpp`, `source/private_trainers.h` (archivos nuevos) |
+| C++ persistencia | `source/private_trainers.cpp`, `source/private_trainers.h` (`ITEM_ID = 20155`) |
 | Boot | `source/otserv.cpp` — carga `private_trainers.xml` |
 | Actions | `source/actions.cpp/h`, `data/actions/actions.xml`, `data/actions/scripts/private_trainer_dummy.lua` |
-| Monster | `data/monster/private trainer dummy.xml`, entrada en `data/monster/monsters.xml` |
+| Monster | `data/monster/private trainer dummy.xml` (`look type="20155"`), entrada en `data/monster/monsters.xml` |
+| OTB | `scripts/patch-private-trainer-dummy-otb.js` → `items-zagan-test.otb` |
 | Doc | `docs/gameplay/PRIVATE_TRAINER_DUMMY.md` |
+
+> **No usar `20118`:** ese id es **starbinder hood** (casco Zagan). El dummy de pago/placement es **`20155`**.
 
 `private_trainers.xml` es **runtime** (gitignored). Si no existe en VPS, el boot **sigue** (`Load()` retorna `true` con archivo ausente). El deploy lo incluye en backup/restore cuando exista.
 
@@ -204,7 +207,7 @@ Pruebas in-game (con items Zagan en mano o vía GM):
 - Crimson Helmet: skills suben al equipar y bajan al sacar (knight/paladin promoted incluidos)
 - Crimson Wand: ataca con proyectil, consume mana
 - Fury cape / Medusa: según diseño
-- Private trainer `20118` en casa (si se distribuye el item)
+- Private trainer `20155` en casa (si se distribuye el item)
 - Desintegrate sobre magic wall / wild growth
 
 **Cliente:** no debería hacer falta nuevo parche si el deploy de julio ya publicó sprites Zagan; estos cambios son servidor.

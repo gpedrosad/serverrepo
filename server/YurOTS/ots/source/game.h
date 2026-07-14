@@ -323,6 +323,9 @@ public:
 #ifdef TLM_SERVER_SAVE
 	void serverSave();
 	void autoServerSave();
+	// Poll data/.request-server-save and SIGTERM/SIGINT flags so deploy
+	// can flush players (daily-task storage, inventory) before restart.
+	void checkSaveRequest();
 #endif //TLM_SERVER_SAVE
 	void writeOnlineList();
 

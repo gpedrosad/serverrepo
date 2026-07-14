@@ -44,12 +44,43 @@ count_house_owners() {
   grep -h 'owner name=' "$houses_dir"/*.xml 2>/dev/null | grep -cv 'owner name=""' || echo 0
 }
 
+# Flush online players (daily-task storage, inventory, houseitems) to disk
+# BEFORE backing up / pulling. Without this, docker stop could lose RAM state.
+graceful_stop_yurots() {
+  if ! docker ps --format '{{.Names}}' 2>/dev/null | grep -qx 'yurots'; then
+    echo "==> yurots no está corriendo; skip graceful stop"
+    return 0
+  fi
+
+  echo "==> graceful save+stop (daily tasks / inventory / houseitems)"
+  rm -f "$DATA/.server-save-ok" "$DATA/.request-server-save"
+  # File request works once the new binary with checkSaveRequest is live.
+  # Also safe no-op on older binaries.
+  : > "$DATA/.request-shutdown"
+
+  # Explicit compose stop: sends SIGTERM, marks container stopped so
+  # restart: unless-stopped does NOT bring it back mid-deploy.
+  docker compose -f docker-compose.prod.yml stop -t 50 yurots || true
+
+  if docker ps --format '{{.Names}}' 2>/dev/null | grep -qx 'yurots'; then
+    echo "    WARNING: container aún Up; forzando docker kill"
+    docker kill yurots >/dev/null 2>&1 || true
+    sleep 2
+  else
+    echo "    container detenido"
+  fi
+  rm -f "$DATA/.request-shutdown"
+}
+
 BEFORE_ACCOUNTS=$(count_files "$DATA/accounts" "*.xml")
 BEFORE_PLAYERS=$(count_files "$DATA/players" "*.xml")
 BEFORE_HOUSE_OWNERS=$(count_house_owners "$DATA/houses")
 
 echo "==> pre-deploy: $BEFORE_ACCOUNTS cuentas, $BEFORE_PLAYERS archivos en players/, $BEFORE_HOUSE_OWNERS casas con dueño"
-echo "==> backup runtime data"
+
+graceful_stop_yurots
+
+echo "==> backup runtime data (post-save)"
 mkdir -p "$BACKUP"
 cp -a "$DATA/players" "$DATA/accounts" "$BACKUP/"
 [ -d "$DATA/vip" ] && cp -a "$DATA/vip" "$BACKUP/"
@@ -62,14 +93,20 @@ echo "    guardado en $BACKUP"
 echo "==> git pull"
 git pull origin main
 
+# Bind-mounted entrypoint lives under server/YurOTS/; keep it in sync with scripts/.
+if [[ -f "$ROOT/scripts/docker-entrypoint.sh" ]]; then
+  cp -a "$ROOT/scripts/docker-entrypoint.sh" "$ROOT/server/YurOTS/docker-entrypoint.sh"
+  chmod +x "$ROOT/server/YurOTS/docker-entrypoint.sh"
+fi
+
 echo "==> restaurar runtime data (por si git tocó algo)"
 cp -an "$BACKUP/players/." "$DATA/players/"
 cp -an "$BACKUP/accounts/." "$DATA/accounts/"
 [ -d "$BACKUP/vip" ] && mkdir -p "$DATA/vip" && cp -an "$BACKUP/vip/." "$DATA/vip/"
 [ -f "$BACKUP/online.xml" ] && cp -an "$BACKUP/online.xml" "$DATA/online.xml"
 [ -f "$BACKUP/queue.xml" ] && cp -an "$BACKUP/queue.xml" "$DATA/queue.xml"
-[ -f "$BACKUP/houseitems.xml" ] && cp -an "$BACKUP/houseitems.xml" "$DATA/houseitems.xml"
-[ -f "$BACKUP/private_trainers.xml" ] && cp -an "$BACKUP/private_trainers.xml" "$DATA/private_trainers.xml"
+[ -f "$BACKUP/houseitems.xml" ] && cp -a "$BACKUP/houseitems.xml" "$DATA/houseitems.xml"
+[ -f "$BACKUP/private_trainers.xml" ] && cp -a "$BACKUP/private_trainers.xml" "$DATA/private_trainers.xml"
 if [[ -d "$BACKUP/houses" ]]; then
   mkdir -p "$DATA/houses"
   # Sobrescribe lo que git pull haya pisado (dueños, guests, subowners).
@@ -100,8 +137,7 @@ if [[ "$AFTER_HOUSE_OWNERS" -lt "$BEFORE_HOUSE_OWNERS" ]]; then
   exit 1
 fi
 
-echo "==> compile (container parado para no tocar el binario en uso)"
-docker compose -f docker-compose.prod.yml stop -t 45 yurots
+echo "==> compile (container ya parado)"
 docker compose -f docker-compose.prod.yml run --rm --entrypoint bash yurots -c \
   'cd /app/YurOTS/ots/source && make clean && make -j"$(nproc 2>/dev/null || echo 4)" yurots'
 

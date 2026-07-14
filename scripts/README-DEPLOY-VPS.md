@@ -50,13 +50,18 @@ Las cuentas nuevas se crean en **https://retro76.cl** (web) → archivos XML en 
 
 ## Qué hace `deploy-vps.sh` (y por qué es seguro)
 
-1. **Backup** con `cp -a` de `players/`, `accounts/`, `vip/`, `online.xml`, `queue.xml`, `houseitems.xml`, `data/houses/`, `private_trainers.xml` → `~/ot-backups/pre-deploy-FECHA/`
-2. **`git pull origin main`** — actualiza código y plantillas
-3. **Restaura** el backup: `players/`/`accounts/` con `cp -an`; `data/houses/` y `houseitems.xml` con `cp -a` (sobrescribe dueños que git haya pisado)
-4. **Compila** dentro del container Docker
-5. **Reinicia** `yurots` (stop con 45 s de gracia) y `yurots-web`
-6. **Valida** mapa/casas, arranque del binario y healthcheck en puerto 7171
-7. **Verifica** conteo de cuentas y personajes
+1. **Graceful save+stop** — pide al OT que guarde jugadores online (storage de Daily Task, inventario, `houseitems.xml`) y apague limpio (`data/.request-shutdown` + SIGTERM). Sin esto, un `docker stop` brusco puede perder progreso en RAM.
+2. **Backup** con `cp -a` de `players/`, `accounts/`, `vip/`, `online.xml`, `queue.xml`, `houseitems.xml`, `data/houses/`, `private_trainers.xml` → `~/ot-backups/pre-deploy-FECHA/` (después del save).
+3. **`git pull origin main`** — actualiza código y plantillas; sincroniza `docker-entrypoint.sh` al bind mount.
+4. **Restaura** el backup: `players/`/`accounts/` con `cp -an`; `data/houses/` y `houseitems.xml` con `cp -a` (sobrescribe dueños que git haya pisado)
+5. **Compila** dentro del container Docker (ya parado)
+6. **Levanta** `yurots` y reinicia `yurots-web` si aplica
+7. **Valida** mapa/casas, arranque del binario y healthcheck en puerto 7171
+8. **Verifica** conteo de cuentas y personajes
+
+**Persistencia Daily Task / inventario online:** el progreso vive en `players/*.xml` (`<storage>` keys `9200–9215`). Solo se escribe a disco en logout, autosave (~10 min) o **serverSave** del graceful stop. Por eso el deploy **siempre** guarda antes de backup/restart.
+
+> **Primer deploy con este fix:** el binario viejo aún no tiene `checkSaveRequest`. Antes de ese deploy, un GM debería hacer `/save` in-game. Desde el deploy siguiente, el stop ya flushea solo.
 
 **Antes de un deploy que incluya `test.otbm`:** leer [`docs/gameplay/DEPOTS.md`](../docs/gameplay/DEPOTS.md) y probar locker temple in-game en local. Un mapa mal exportado hace que los jugadores vean depot vacío (los items siguen en `players/*.xml`).
 
@@ -207,4 +212,4 @@ python3 scripts/ot-probe.py 127.0.0.1 7171
 
 ## Resumen en una línea
 
-**Backup → pull → restaurar backup → compilar → reiniciar.** Nunca stash, nunca clean, nunca reset sin backup.
+**Backup → graceful save/stop → pull → restaurar backup → compilar → levantar.** Nunca stash, nunca clean, nunca reset sin backup.

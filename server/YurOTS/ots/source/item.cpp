@@ -884,6 +884,8 @@ std::string Item::getDescription(bool fullDescription) const
 		s << std::endl << "10% chance to silence a player for 2-3s in PvP (spoken spells only; 12s cooldown per target).";
 	else if(id == ITEM_WINDSTING_AXE && fullDescription)
 		s << std::endl << "20% chance to make a player drunk for 6s in PvP.";
+	else if(id == ITEM_PRIVATE_TRAINER_DUMMY && fullDescription)
+		s << std::endl << "Use with on a free tile inside your house (owner only, max 1 per house).";
 	else if(id == ITEM_NIGHTGLASS_DAGGER && fullDescription) {
 		s << std::endl << "A shadowy dagger. Imbue with a big ruby for up to 5 speed stacks (-10% success chance per stack).";
 		const int ngStacks = nightglassStacksFromAid(actionId);

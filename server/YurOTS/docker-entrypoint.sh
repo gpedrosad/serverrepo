@@ -4,8 +4,8 @@
 #   2) Pipes stdout+stderr through `ts` (timestamps) + `tee` (persistence)
 #   3) Forwards SIGTERM/SIGINT to yurots so deploy can graceful-save players
 #
-# Invoked by docker-compose.prod.yml: command: ["/app/YurOTS/docker-entrypoint.sh"]
-# The Dockerfile copies this file into /app/YurOTS/.
+# Used via bind mount: server/YurOTS/docker-entrypoint.sh → /app/YurOTS/
+# Keep in sync with scripts/docker-entrypoint.sh (Dockerfile COPY source).
 
 set -u
 

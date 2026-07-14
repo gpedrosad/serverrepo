@@ -2,8 +2,8 @@
 
 ## Objetivo
 
-Permitir training dentro de casas usando el sprite del item custom `20118`, sin
-crear un sistema nuevo de combate contra items.
+Permitir training dentro de casas usando un item de placement dedicado
+(`20155`), sin crear un sistema nuevo de combate contra items.
 
 ## Implementacion
 
@@ -13,12 +13,18 @@ trainer:
 
 - Monster: `Private Trainer Dummy`
 - Archivo: `server/YurOTS/ots/data/monster/private trainer dummy.xml`
-- Apariencia: `<look type="20118" .../>`
+- Apariencia: `<look type="20155" .../>` (server item id → `clientId` en protocolo)
 - Registro: `server/YurOTS/ots/data/monster/monsters.xml`
 - RME: categoria `YurOTS Training` en `rme-extensions/yurots-creatures.xml`
-- Item de placement: `20118`
+- Item de placement: **`20155`** (`private trainer dummy`)
 - Script Lua: `server/YurOTS/ots/data/actions/scripts/private_trainer_dummy.lua`
 - Persistencia runtime: `server/YurOTS/ots/data/private_trainers.xml`
+- OTB: `scripts/patch-private-trainer-dummy-otb.js` → `items-zagan-test.otb`
+
+### Nota sobre ids (jul 2026)
+
+El id **`20118` es `starbinder hood`** (casco Zagan). No usarlo para el dummy.
+El placement item y el look del monstruo viven en **`20155`**.
 
 ## Comportamiento
 
@@ -32,7 +38,7 @@ trainer:
 - Solo se puede colocar dentro de una house.
 - Solo el owner de la house puede colocarlo.
 - Maximo 1 Private Trainer Dummy por house.
-- Al colocarlo, el item `20118` se consume.
+- Al colocarlo, el item `20155` se consume.
 - No hay retiro ni devolucion del item.
 - No se coloca sobre puerta de house, teleports, escaleras/floor change, tiles
   ocupados por creatures o tiles donde el monster no pueda pararse.
@@ -42,9 +48,15 @@ trainer:
 
 ## Como usarlo como item
 
-El player recibe el item `20118` y lo usa sobre un SQM valido dentro de su
-house. Si pasa las validaciones, el servidor crea el monster en ese SQM, guarda
-la posicion en `private_trainers.xml` y consume el item.
+El player recibe el item **`20155`** y lo usa (**use with**) sobre un SQM valido
+dentro de su house. Si pasa las validaciones, el servidor crea el monster en
+ese SQM, guarda la posicion en `private_trainers.xml` y consume el item.
+
+GM:
+
+```text
+/i 20155 1
+```
 
 El archivo `private_trainers.xml` es data runtime: no se versiona, pero los
 scripts de backup/deploy lo conservan junto a `houseitems.xml`.
@@ -65,9 +77,9 @@ Creatures -> YurOTS Training -> Private Trainer Dummy
 
 ## Nota importante
 
-Si un jugador tiene un item `20118` real en inventario o en una casa, ese item
-no se vuelve atacable por si mismo. La version atacable es la criatura que usa
-`20118` como look visual.
+Si un jugador tiene un item `20155` real en inventario, ese item no se vuelve
+atacable por si mismo. La version atacable es la criatura que usa `20155` como
+look visual (`looktype > 1000` → clientId del item).
 
 ## Train Wand (`20126`) — ML en casa
 

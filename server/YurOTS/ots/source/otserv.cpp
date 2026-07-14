@@ -519,6 +519,15 @@ void ErrorMessage(const char* message) {
   std::cin >> s;
 }
 
+#if defined __WINDOWS__ || defined WIN32
+#else
+extern volatile sig_atomic_t g_yurotsWantShutdown;
+static void yurotsTermSignal(int)
+{
+	g_yurotsWantShutdown = 1;
+}
+#endif
+
 int main(int argc, char *argv[])
 {
 	//Install crash handler FIRST — before any init that could segfault.
@@ -565,7 +574,17 @@ int main(int argc, char *argv[])
 #else
 	struct sigaction sigh;
 	sigh.sa_handler = SIG_IGN;
+	sigemptyset(&sigh.sa_mask);
+	sigh.sa_flags = 0;
 	sigaction(SIGPIPE, &sigh, NULL);
+
+	// Graceful stop for docker stop / deploy: flush players (daily tasks, inventory).
+	struct sigaction sighTerm;
+	sighTerm.sa_handler = yurotsTermSignal;
+	sigemptyset(&sighTerm.sa_mask);
+	sighTerm.sa_flags = 0;
+	sigaction(SIGTERM, &sighTerm, NULL);
+	sigaction(SIGINT, &sighTerm, NULL);
 #endif
 
 //	LOG_MESSAGE("main", EVENT, 1, "Starting server");
@@ -808,6 +827,8 @@ int main(int argc, char *argv[])
 		g_game.addEvent(makeTask(g_config.getGlobalNumber("autosave")*60000, std::mem_fun(&Game::autoServerSave)));
 	else
 		std::cout << ":: Auto server save disabled!" << std::endl;
+	// Always poll save/shutdown requests (deploy + docker stop).
+	g_game.addEvent(makeTask(2000, std::mem_fun(&Game::checkSaveRequest)));
 #endif //TLM_SERVER_SAVE
 
 

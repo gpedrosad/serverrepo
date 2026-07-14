@@ -40,6 +40,11 @@
 using namespace std;
 
 #include <stdio.h>
+#include <signal.h>
+#if defined WIN32 || defined WINDOWS
+#else
+#include <unistd.h>
+#endif
 #include "otsystem.h"
 #include "items.h"
 #include "commands.h"
@@ -6291,6 +6296,9 @@ void Game::writeOnlineList()
 }
 
 #ifdef TLM_SERVER_SAVE
+// Set from SIGTERM/SIGINT (otserv.cpp). Polled by checkSaveRequest on game thread.
+volatile sig_atomic_t g_yurotsWantShutdown = 0;
+
 void Game::serverSave()
 {
 	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::serverSave()");
@@ -6320,6 +6328,56 @@ void Game::autoServerSave()
 
 	serverSave();
 	addEvent(makeTask(g_config.getGlobalNumber("autosave", 1)*60000, std::mem_fun(&Game::autoServerSave)));
+}
+
+void Game::checkSaveRequest()
+{
+	// No outer gameLock: serverSave() takes it. Nested lock would deadlock.
+	const std::string dataDir = g_config.DATA_DIR;
+	const std::string requestSave = dataDir + ".request-server-save";
+	const std::string saveOk = dataDir + ".server-save-ok";
+	const std::string requestShutdown = dataDir + ".request-shutdown";
+
+	bool wantShutdown = (g_yurotsWantShutdown != 0);
+	if(!wantShutdown) {
+		FILE* rf = fopen(requestShutdown.c_str(), "r");
+		if(rf) {
+			fclose(rf);
+			wantShutdown = true;
+			unlink(requestShutdown.c_str());
+		}
+	}
+
+	FILE* sf = fopen(requestSave.c_str(), "r");
+	if(sf) {
+		fclose(sf);
+		unlink(requestSave.c_str());
+		serverSave();
+		FILE* ok = fopen(saveOk.c_str(), "w");
+		if(ok) {
+			fputs("ok\n", ok);
+			fclose(ok);
+		}
+	}
+
+	if(wantShutdown) {
+		std::cout << ":: graceful shutdown (SIGTERM/request): saving players..." << std::endl;
+		g_yurotsWantShutdown = 0;
+		setGameState(GAME_STATE_CLOSED);
+		while(!Player::listPlayer.list.empty())
+			Player::listPlayer.list.begin()->second->kickPlayer();
+		serverSave();
+		FILE* ok = fopen(saveOk.c_str(), "w");
+		if(ok) {
+			fputs("shutdown\n", ok);
+			fclose(ok);
+		}
+		std::cout << ":: graceful shutdown complete" << std::endl;
+		OTSYS_SLEEP(500);
+		exit(0);
+	}
+
+	addEvent(makeTask(2000, std::mem_fun(&Game::checkSaveRequest)));
 }
 #endif //TLM_SERVER_SAVE
 

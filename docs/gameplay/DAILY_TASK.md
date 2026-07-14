@@ -57,6 +57,19 @@ Enganche de login diario: contratos distintos cada día, elección (agency), fee
 - Trainers (`trainer=1`) no cuentan.
 - Crédito: jugadores que reciben exp del kill (share de daño).
 
+## Persistencia / deploy
+
+El progreso (contrato, kills, streak, ofertas) vive en **`<storage>` del XML del jugador** (`players/*.xml`), no en un archivo aparte.
+
+| Momento | ¿Se guarda a disco? |
+|---------|---------------------|
+| Logout | Sí (`savePlayer`) |
+| Autosave (`config.lua` → `autosave`, ~10 min) | Sí (`serverSave`) |
+| Deploy vía `deploy-vps.sh` | Sí — **graceful save+stop** antes del backup (`data/.request-shutdown` + SIGTERM) |
+| `docker stop` / kill brusco sin save | **No** — se pierde lo que estaba solo en RAM |
+
+Tras un deploy correcto, al reconectar el jugador debe conservar contrato activo, kills y streak.
+
 ## Catálogo monstruo (sync Lua ↔ C++)
 
 IDs en `daily_task.lua` `DAILY_MONSTERS` y `DAILY_TASK_MONSTER_NAMES[]` en `player.cpp` **deben coincidir**.
