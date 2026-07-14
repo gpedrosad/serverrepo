@@ -42,7 +42,7 @@ El item en inventario se ve como construction kit (sofá); la criatura colocada 
 - Tiene armor/defense muy altos e inmunidades para que no se consuma/muera en
   uso normal.
 - Solo se puede colocar dentro de una house.
-- Solo el owner de la house puede colocarlo.
+- Cualquier player que este dentro de esa misma house puede colocarlo.
 - Maximo 1 Private Trainer Dummy por house.
 - Al colocarlo, el item `20155` se consume.
 - No hay retiro ni devolucion del item.
@@ -54,7 +54,7 @@ El item en inventario se ve como construction kit (sofá); la criatura colocada 
 
 ## Como usarlo como item
 
-1. Poné el item **`20155`** en el **suelo** de tu house (SQM libre).
+1. Poné el item **`20155`** en el **suelo** de una house donde estes adentro (SQM libre).
 2. Dale **Use** al item en el piso (no use-with).
 3. Si pasa las validaciones, el servidor crea el monster en ese mismo SQM,
    guarda la posicion en `private_trainers.xml` y consume el item.

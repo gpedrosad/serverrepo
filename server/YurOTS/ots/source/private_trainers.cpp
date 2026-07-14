@@ -109,15 +109,16 @@ namespace {
 		return tile->getHouse();
 	}
 
-	bool canUseHouse(Player* player, House* house)
+	bool canUseHouse(Game* game, Player* player, House* house)
 	{
-		if (!player || !house)
+		if (!game || !player || !house)
 			return false;
 
 		if (player->access >= g_config.ACCESS_HOUSE)
 			return true;
 
-		return house->getPlayerRights(player->getName()) == HOUSE_OWNER;
+		Tile* playerTile = game->getTile(player->pos);
+		return playerTile && playerTile->isHouse() && playerTile->getHouse() == house;
 	}
 
 	bool canPlaceOnTile(Game* game, House* house, const Position& pos, std::string& message)
@@ -308,8 +309,8 @@ bool PrivateTrainers::Place(Game* game, Player* player, const Position& pos, std
 	if (!house)
 		return false;
 
-	if (!canUseHouse(player, house)) {
-		message = "Only the house owner can place a private trainer.";
+	if (!canUseHouse(game, player, house)) {
+		message = "You must stand inside this house to place a private trainer.";
 		return false;
 	}
 
