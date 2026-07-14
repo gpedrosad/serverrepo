@@ -257,7 +257,7 @@ python3 scripts/ot-probe.py retro76.cl 7171
 | Server ID | Nombre | Qué hace | Doc |
 |-----------|--------|----------|-----|
 | `20123` | Crimson Wand | Wand 55-65 dmg, 13 mana, range 5, delay 667ms, animación HMM, scaling por ML (este fix) | este doc + `docs/items-and-map/ZAGAN_TEST_ITEMS.md` |
-| `20126` | Train Wand | Solo trainers (`trainer=1`): 0 mana, `addManaSpent(1)` (~50% Vortex), daño 1-1, sorc/druid (incl. promoted) | este doc + `docs/gameplay/PRIVATE_TRAINER_DUMMY.md` |
+| `20126` | Train Wand | Solo trainers (`trainer=1`): 0 mana, `addManaSpent(1)` (~50% Vortex), daño 1-1, sorc/druid (incl. promoted). En house PZ usa `canAttackPrivateTrainerInHouse` en el path mágico. | este doc + `docs/gameplay/PRIVATE_TRAINER_DUMMY.md` |
 
 Items custom con gameplay C++ adicional que **conviven** con el sistema de wands:
 - `20113` Crimson Helmet: bonus de skills (no toca wands)
@@ -278,6 +278,7 @@ Ver `docs/items-and-map/ZAGAN_TEST_ITEMS.md` para el pipeline completo (assets +
 - **No confundir `getEffectiveMagLevel()` con `maglevel` raw.** En el protocolo76 se muestra el primero. En el XML del player se persiste el segundo. El bonus usa el primero.
 - **Wands/rods no consumen charges** (no son `wand` con `charges` en el OTB). Cuestan mana por hit. El violet gem imbue es **persistente en el actionid** del item (`AID 9030-9033`).
 - **Crimson Wand NO usa el rango ni la mana de `g_config.MANA_INFERNO`/`RANGE_INFERNO`.** Tiene valores hardcoded (`mana = 13`, `dist = 5`) en el branch de `useWand()`. Esto es deliberado (item custom), pero si se cambia la config de inferno, crimson no se ve afectada.
+- **Train Wand en house PZ:** melee ya tenía `canAttackPrivateTrainerInHouse`, pero el path de wands (`creatureThrowRune` → `creatureMakeMagic`) no pasaba el target a `creatureOnPrepareAttack` y el filtro PZ descartaba el tile. Sin esa excepción mágica, la Train Wand cancelaba en casa aunque el dummy sea `trainer=1`.
 
 ---
 

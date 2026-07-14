@@ -3927,9 +3927,14 @@ bool Game::creatureMakeMagic(Creature *creature, const Position& centerpos, cons
 	Position topLeft(0xFFFF, 0xFFFF, frompos.z), bottomRight(0, 0, frompos.z);
 
 	//Filter out the tiles we actually can work on
+	Tile *attackerTile = creature ? map->getTile(creature->pos) : NULL;
 	for(MagicAreaVec::iterator maIt = tmpMagicAreaVec.begin(); maIt != tmpMagicAreaVec.end(); ++maIt) {
 		Tile *t = map->getTile(maIt->x, maIt->y, maIt->z);
-		if(t && (!creature || (creature->access >= g_config.ACCESS_PROTECT || !me->offensive || !t->isPz()) ) ) {
+		bool allowPrivateTrainerPz = false;
+		if(t && creature && me->offensive && t->isPz()) {
+			allowPrivateTrainerPz = canAttackPrivateTrainerInHouse(creature, t->getCreature(), attackerTile, t);
+		}
+		if(t && (!creature || (creature->access >= g_config.ACCESS_PROTECT || !me->offensive || !t->isPz() || allowPrivateTrainerPz) ) ) {
 			if((t->isBlocking(BLOCK_PROJECTILE) == RET_NOERROR) && (me->isIndirect() ||
 				//(map->canThrowItemTo(frompos, (*maIt), false, true) && !t->floorChange()))) {
 				((map->canThrowObjectTo(centerpos, (*maIt), BLOCK_PROJECTILE) == RET_NOERROR) && !t->floorChange()))) {
@@ -4196,7 +4201,14 @@ bool Game::creatureOnPrepareAttack(Creature *creature, Position pos, const Creat
 
 bool Game::creatureOnPrepareMagicAttack(Creature *creature, Position pos, const MagicEffectClass* me)
 {
-	if(!me->offensive || me->isIndirect() || creatureOnPrepareAttack(creature, pos)) {
+	// Resolve target so house PZ exception for Private Trainer Dummy applies to wands/runes
+	// (same rule as melee via creatureOnPrepareAttack(..., attackedCreature)).
+	const Creature* magicTarget = NULL;
+	Tile* magicTargetTile = map->getTile(pos);
+	if(magicTargetTile)
+		magicTarget = magicTargetTile->getCreature();
+
+	if(!me->offensive || me->isIndirect() || creatureOnPrepareAttack(creature, pos, magicTarget)) {
 		/*
 			if(creature->access < ACCESS_PROTECT) {
 				if(!((std::abs(creature->pos.x-centerpos.x) <= 8) && (std::abs(creature->pos.y-centerpos.y) <= 6) &&

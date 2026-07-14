@@ -41,7 +41,7 @@ end
 
 function describeOfferLine(offer)
 	return offer.slot .. ') ' .. offer.count .. ' ' .. offer.name
-		.. ' — ' .. fmtAmount(offer.gold) .. ' gp or ' .. fmtAmount(offer.exp) .. ' exp'
+		.. ' - ' .. fmtAmount(offer.gold) .. ' gp or ' .. fmtAmount(offer.exp) .. ' exp'
 end
 
 function sayOffers(cid)
@@ -53,6 +53,10 @@ function sayOffers(cid)
 
 	if state == DAILY_STATE_OFFER and bracketIndex >= 1 then
 		bracket = DAILY_BRACKETS[bracketIndex]
+		-- Refresh kill counts from current bracket balance (no monster reroll).
+		dailyTaskSet(cid, DAILY_STORAGE_OPT1_COUNT, bracket.counts[1])
+		dailyTaskSet(cid, DAILY_STORAGE_OPT2_COUNT, bracket.counts[2])
+		dailyTaskSet(cid, DAILY_STORAGE_OPT3_COUNT, bracket.counts[3])
 	else
 		local name = creatureGetName(cid)
 		bracket, ids = dailyTaskGenerateOffers(cid, level, name)

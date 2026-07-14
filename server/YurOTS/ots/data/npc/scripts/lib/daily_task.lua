@@ -57,7 +57,7 @@ DAILY_BRACKETS = {
 		minLevel = 1,
 		maxLevel = 20,
 		pool = {1, 2, 3, 4, 5},
-		counts = {50, 65, 80},
+		counts = {100, 130, 160},
 		gold = {800, 1400, 2000},
 		exp = {8000, 14000, 20000}
 	},
@@ -67,7 +67,7 @@ DAILY_BRACKETS = {
 		minLevel = 21,
 		maxLevel = 40,
 		pool = {6, 7, 8, 9, 10},
-		counts = {35, 45, 55},
+		counts = {70, 90, 110},
 		gold = {3000, 4500, 6000},
 		exp = {40000, 65000, 90000}
 	},
@@ -77,7 +77,7 @@ DAILY_BRACKETS = {
 		minLevel = 41,
 		maxLevel = 70,
 		pool = {11, 12, 13, 14, 15},
-		counts = {25, 32, 40},
+		counts = {55, 70, 90},
 		gold = {8000, 11500, 15000},
 		exp = {120000, 200000, 280000}
 	},
@@ -87,7 +87,7 @@ DAILY_BRACKETS = {
 		minLevel = 71,
 		maxLevel = 100,
 		pool = {16, 17, 14, 18, 19},
-		counts = {18, 24, 30},
+		counts = {45, 60, 75},
 		gold = {15000, 22000, 30000},
 		exp = {150000, 250000, 350000}
 	},
@@ -97,7 +97,7 @@ DAILY_BRACKETS = {
 		minLevel = 101,
 		maxLevel = 9999,
 		pool = {20, 18, 21, 14, 17},
-		counts = {12, 18, 25},
+		counts = {40, 55, 70},
 		gold = {25000, 35000, 45000},
 		exp = {120000, 200000, 280000}
 	}

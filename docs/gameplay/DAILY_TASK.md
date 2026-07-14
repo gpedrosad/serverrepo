@@ -46,11 +46,11 @@ Enganche de login diario: contratos distintos cada día, elección (agency), fee
 
 | Bracket | Levels | Pool | Kills | Oro | Exp |
 |---------|--------|------|-------|-----|-----|
-| Novice | 1–20 | Rat, Spider, Troll, Rotworm, Orc | 50–80 | 800–2k | 8k–20k |
-| Adventurer | 21–40 | Minotaur, Orc Warrior, Cyclops, Dwarf Guard, Larva | 35–55 | 3k–6k | 40k–90k |
-| Hunter | 41–70 | Dragon, Hero, Ancient Scarab, Behemoth, Giant Spider | 25–40 | 8k–15k | 120k–280k |
-| Elite | 71–100 | Dragon Lord, Hydra, Behemoth, Warlock, Demon Skeleton | 18–30 | 15k–30k | 150k–350k |
-| Legend | 101+ | Demon, Warlock, Fury, Behemoth, Hydra | 12–25 | 25k–45k | 120k–280k |
+| Novice | 1–20 | Rat, Spider, Troll, Rotworm, Orc | 100–160 | 800–2k | 8k–20k |
+| Adventurer | 21–40 | Minotaur, Orc Warrior, Cyclops, Dwarf Guard, Larva | 70–110 | 3k–6k | 40k–90k |
+| Hunter | 41–70 | Dragon, Hero, Ancient Scarab, Behemoth, Giant Spider | 55–90 | 8k–15k | 120k–280k |
+| Elite | 71–100 | Dragon Lord, Hydra, Behemoth, Warlock, Demon Skeleton | 45–75 | 15k–30k | 150k–350k |
+| Legend | 101+ | Demon, Warlock, Fury, Behemoth, Hydra | 40–70 | 25k–45k | 120k–280k |
 
 - Exp del reward es **flat** (`addExp`), no pasa por `expmul`.
 - 1 daily / personaje / día.

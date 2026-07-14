@@ -79,5 +79,8 @@ Trainer Monks del mapa) con el **Train Wand** (`20126`):
 - No gasta mana (en casas la comida no regenera mana por PZ).
 - Cada hit da `addManaSpent(1)` — ~50% del ritmo de Wand of Vortex.
 - No sirve para cazar (cancel message fuera de dummies).
+- En house PZ usa la misma excepción que melee: `canAttackPrivateTrainerInHouse`
+  también aplica al path mágico (`creatureOnPrepareMagicAttack` + filtro PZ de
+  `creatureMakeMagic`), así la Train Wand funciona contra el dummy en casa.
 
 Ver [`WANDS.md`](WANDS.md).
