@@ -4,9 +4,14 @@
  *
  * Placement item must use a CLIENT id that is Use-able in Tibia.dat.
  * Starbinder hood (20118 / clientId 4835) is a helmet → client equips on Use
- * and never runs the action. We reuse wooden chair kit clientId (3901 → 2775).
+ * and never runs the action.
  *
- * Creature look stays on server id 20118 (hood sprite) via monster XML.
+ * IMPORTANT: do NOT reuse wooden chair kit (3901 → 2775). reverseLookUp(clientId)
+ * is 1:1; sharing 2775 makes Use resolve to the wrong server id and the action
+ * never runs (or breaks real chair kits).
+ *
+ * Creature look: trainer monk outfit (look type 57) so it is always visible
+ * even without custom Zagan sprites.
  */
 "use strict";
 
@@ -17,8 +22,8 @@ const ROOT = path.resolve(__dirname, "..");
 const OTB = path.join(ROOT, "server/YurOTS/ots/data/items/items-zagan-test.otb");
 
 const NEW_SERVER_ID = 20155;
-// Construction kit: usable in client DAT (Use works). Not a helmet.
-const CLIENT_ID_PROTOTYPE_SERVER_ID = 3901; // wooden chair kit → clientId 2775
+// Sofa chair kit: usable in DAT, unique clientId (2776) — no reverseLookUp clash.
+const CLIENT_ID_PROTOTYPE_SERVER_ID = 3902; // sofa chair kit → clientId 2776
 const NAME = "private trainer dummy";
 const DESCR = "Put it on a free house tile and use it to place a training dummy.";
 
@@ -154,7 +159,7 @@ function main() {
     process.exit(1);
   }
   console.log(`OK name="${NAME}" flags=0x${FLAGS.toString(16)} usable+pickupable+moveable`);
-  console.log("NOTE: monster look should stay on server id 20118 (hood sprite).");
+  console.log("NOTE: monster look uses trainer monk outfit (type 57) for visibility.");
 }
 
 main();

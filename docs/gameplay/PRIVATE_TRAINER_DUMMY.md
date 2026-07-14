@@ -13,7 +13,7 @@ trainer:
 
 - Monster: `Private Trainer Dummy`
 - Archivo: `server/YurOTS/ots/data/monster/private trainer dummy.xml`
-- Apariencia criatura: `<look type="20118" .../>` (starbinder hood sprite vía clientId)
+- Apariencia criatura: look type **`57`** (trainer monk, visible en cliente vanilla)
 - Registro: `server/YurOTS/ots/data/monster/monsters.xml`
 - RME: categoria `YurOTS Training` en `rme-extensions/yurots-creatures.xml`
 - Item de placement: **`20155`** (`private trainer dummy`)
@@ -25,10 +25,12 @@ trainer:
 
 | Id | Rol |
 |----|-----|
-| **`20118`** | `starbinder hood` (casco). **Look** del monstruo dummy. No usar como item de placement. |
-| **`20155`** | Item de placement. **clientId** = kit de silla (`3901` → `2775`) para que el cliente mande **Use** (si usa el clientId del casco, el cliente equipa y nunca corre el script). |
+| **`20118`** | `starbinder hood` (casco). Ya **no** se usa como look del monstruo (quedaba invisible sin sprite custom). |
+| **`20155`** | Item de placement. **clientId** = kit de sofá (`3902` → `2776`, usable y sin choque de `reverseLookUp`). |
 
-El item en inventario se ve como construction kit; la criatura colocada se ve como hood.
+El item en inventario se ve como construction kit (sofá); la criatura colocada se ve como **trainer monk** (look type `57`).
+
+> **Pitfall jul 2026:** reutilizar el clientId del wooden chair kit (`2775` / server `3901`) rompía el Use: `GetItemId()` hace `reverseLookUp(clientId)` 1:1 y el action no corría (o rompía los kits reales).
 
 ## Comportamiento
 
@@ -85,12 +87,12 @@ Creatures -> YurOTS Training -> Private Trainer Dummy
 ## Nota importante
 
 Si un jugador tiene un item `20155` real en inventario, ese item no se vuelve
-atacable por si mismo. La version atacable es la criatura con
-`look type="20118"` (hood).
+atacable por si mismo. La version atacable es la criatura (look type `57`).
 
 **Pitfall:** el clientId del item de placement **no** puede ser el del casco
-(`4835`). En 7.6 el cliente decide Use vs equipar según el DAT/clientId; con
-sprite de helmet, Use equipa y el action Lua nunca corre.
+(`4835`) ni reutilizar el del wooden chair kit (`2775`/`3901`). En 7.6 el
+cliente decide Use vs equipar según el DAT/clientId; además `reverseLookUp`
+es 1:1 y dos server ids con el mismo clientId rompen el Use.
 
 ## Train Wand (`20126`) — ML en casa
 

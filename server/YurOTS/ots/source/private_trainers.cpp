@@ -62,16 +62,32 @@ namespace {
 		return pos.x > 0 && pos.x != 0xFFFF && pos.y > 0 && pos.z >= 0;
 	}
 
+	bool isPrivateTrainerCreature(Creature* creature)
+	{
+		Monster* monster = dynamic_cast<Monster*>(creature);
+		return monster && monster->getName() == PrivateTrainers::MONSTER_NAME;
+	}
+
 	bool hasTrainerInHouse(Game* game, House* house)
 	{
 		if (!game || !house)
 			return false;
 
-		for (std::vector<PrivateTrainerEntry>::const_iterator it = privateTrainerEntries.begin();
-			 it != privateTrainerEntries.end(); ++it) {
+		for (std::vector<PrivateTrainerEntry>::iterator it = privateTrainerEntries.begin();
+			 it != privateTrainerEntries.end(); ) {
 			Tile* tile = game->getTile(it->pos);
-			if (tile && tile->getHouse() == house)
-				return true;
+			if (!tile || tile->getHouse() != house) {
+				++it;
+				continue;
+			}
+
+			// Stale XML entry (creature gone / never visible) must not lock the house.
+			if (!isPrivateTrainerCreature(tile->getCreature())) {
+				it = privateTrainerEntries.erase(it);
+				continue;
+			}
+
+			return true;
 		}
 
 		return false;
@@ -320,6 +336,7 @@ bool PrivateTrainers::Place(Game* game, Player* player, const Position& pos, std
 		return false;
 	}
 
+	std::cout << "Private trainer placed at " << pos << " by " << player->getName() << std::endl;
 	message = "Your Private Trainer Dummy has been placed.";
 	return true;
 }

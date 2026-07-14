@@ -256,7 +256,10 @@ bool Actions::UseItem(Player* player, const Position &pos,const unsigned char st
 		return false;
 	}
 
-	if(item->getID() != itemid){
+	// reverseLookUp(clientId) is 1:1. Custom items that reuse a vanilla clientId
+	// (e.g. furniture kit sprite) can make itemid != item->getID(). Trust the
+	// thing on the tile when it has an action; otherwise keep the strict check.
+	if(item->getID() != itemid && !getAction(item)){
 		#ifdef __DEBUG__
 		std::cout << "no id" << std::endl;
 		#endif
@@ -265,7 +268,7 @@ bool Actions::UseItem(Player* player, const Position &pos,const unsigned char st
 	}
 
 #ifdef TLM_HOUSE_SYSTEM
-	if (Item::items[itemid].isDoor)
+	if (Item::items[item->getID()].isDoor)
 	{
 		Tile* tile = game->getTile(pos);
 		House* house = tile? tile->getHouse() : NULL;
@@ -349,7 +352,7 @@ bool Actions::UseItemEx(Player* player, const Position &from_pos,
 	if(!item)
 		return false;
 
-	if(item->getID() != itemid)
+	if(item->getID() != itemid && !getAction(item))
 		return false;
 
 	if(!item->isUseable() && item->getID() != PrivateTrainers::ITEM_ID)

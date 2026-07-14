@@ -1,7 +1,9 @@
 <?xml version="1.0"?>
 <monster name="Private Trainer Dummy" level="1" maglevel="0" experience="0" skillmul="1" skillrate="0.7" trainer="1" pushable="0" armor="1000000" defense="1000000" canpushitems="0" staticattack="8" changetarget="0" speed="220">
 	<health now="500000" max="500000"/>
-	<look type="20118" corpse="3128"/>
+	<!-- look 57 = trainer monk (vanilla, always visible). Item-look 20118/4835
+	     needs Zagan client sprites and was reporting as "invisible" for some players. -->
+	<look type="57" head="94" body="94" legs="94" feet="94" corpse="3128"/>
 	<combat targetdistance="1" runonhealth="0"/>
 	<blood color="86" effect="9" splash="255"/>
 
