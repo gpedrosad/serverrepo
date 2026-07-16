@@ -10,8 +10,9 @@ Fecha: 2026-07-15 (noche CL).
 
 | SHA | Mensaje |
 |-----|---------|
-| `456c6d6` | `feat(spells): exori hur a target y nuevo exori vis hur.` |
-| `41bdadb` | `feat(npc): no comprar imbues y SMP en Seller.` |
+| `219e191` | `feat(spells): exori hur a target y nuevo exori vis hur.` |
+| `e3c3120` | `feat(npc): no comprar imbues y SMP en Seller.` |
+| `2b704dc` | `docs: anotar SHAs del push main (sin VPS).` (este doc; SHAs post-rebase abajo) |
 
 | Tema | Resumen |
 |------|---------|
