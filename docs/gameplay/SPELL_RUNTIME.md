@@ -4,6 +4,8 @@ Documento del incidente/fix `33557889` (*fix(spells): restaurar runas rotas y sa
 
 Leer **antes** de agregar una runa/spell nueva o de tocar `spells.cpp` / `spells.xml`.
 
+Cooldown mágico del jugador (exhausted / heal exhaust / bindings sin exhaust): [`SPELL_EXHAUSTION.md`](SPELL_EXHAUSTION.md).
+
 ## Síntoma
 
 Al castear ciertas runas (sobre todo **Soulfire** / `adevo res flam`, item `2308`) el server podía **crashear** o fallar en runtime. La causa raíz no era el daño del hechizo: faltaban scripts `.lua` cuyo nombre coincidiera con el `name` del XML (tras `tolower`), y el C++ llamaba `getSpellScript()->castSpell(...)` sin chequear si el script había cargado.
@@ -107,6 +109,7 @@ Registrados en el constructor de `SpellScript`:
 | `doConvinceCreature` | `luaActionDoConvinceCreature` |
 | `doChameleon` | `luaActionDoChameleon` |
 | `doParalyze` | `luaActionDoParalyze` |
+| `getAttackedCreaturePos` | `luaActionGetAttackedCreaturePos` — pos del target de battle list (usado por `exori hur`; ver [`SPELL_EXORI_HUR.md`](SPELL_EXORI_HUR.md)) |
 
 Patrones comunes: mismo piso, `canThrowObjectTo`, puff en fallo, PZ / immunities donde corresponde.
 
@@ -115,10 +118,11 @@ Patrones comunes: mismo piso, `canThrowObjectTo`, puff en fallo, PZ / immunities
 1. Nombre del `.lua` = `tolower(name)` (runas) o `words` exactos (instants).
 2. `function onCast` presente.
 3. Si el efecto no se puede hacer solo en Lua → binding C++ + `lua_register`.
-4. Rebuild del binario si tocaste `spells.cpp` / `.h` / `game.cpp` / `monster.cpp` (`make clean && make` si cambió un header compartido).
-5. `docker compose -f docker-compose.prod.yml up -d yurots`
-6. `python3 scripts/ot-probe.py 127.0.0.1 7171`
-7. Probar in-game al menos: Soulfire (`2308`), Paralyze (`2278`), Antidote (`2266`).
+4. Si el binding **no** pasa por `creatureMakeMagic`, decidir exhausted explícitamente (ver [`SPELL_EXHAUSTION.md`](SPELL_EXHAUSTION.md) — hoy Paralyze/Anchor/etc. no exhaustean).
+5. Rebuild del binario si tocaste `spells.cpp` / `.h` / `game.cpp` / `monster.cpp` (`make clean && make` si cambió un header compartido).
+6. `docker compose -f docker-compose.prod.yml up -d yurots`
+7. `python3 scripts/ot-probe.py 127.0.0.1 7171`
+8. Probar in-game al menos: Soulfire (`2308`), Paralyze (`2278`), Antidote (`2266`).
 
 ## Archivos clave
 

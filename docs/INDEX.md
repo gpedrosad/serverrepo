@@ -35,6 +35,7 @@ Docs operativos planos. Setup, deploy, cliente, smoke tests, migración.
 | [`MIGRATION_PLAYBOOK.md`](MIGRATION_PLAYBOOK.md) | Playbook para migraciones grandes (esquema DB, data, deploys críticos). |
 | [`../scripts/README-DEPLOY-VPS.md`](../scripts/README-DEPLOY-VPS.md) | Deploy seguro en VPS de producción (checklist, rollback). |
 | [`DEPLOY-PENDIENTE-VPS-JUL2026.md`](DEPLOY-PENDIENTE-VPS-JUL2026.md) | **Deploy pendiente jul 2026:** gameplay Zagan C++, private trainers, spawn/desintegrate; qué sí/no va al VPS. |
+| [`PUSH-MAIN-JUL2026-SPELLS-NPC-NO-VPS.md`](PUSH-MAIN-JUL2026-SPELLS-NPC-NO-VPS.md) | **Push a main (jul 2026) sin VPS:** exori hur/vis hur, NPC no compra imbues, SMP seller; requiere rebuild C++ en próximo deploy. |
 
 ---
 
@@ -77,10 +78,13 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/RUNE_WEIGHT_RL.md`](gameplay/RUNE_WEIGHT_RL.md) | Peso de runas y lógica RL asociada. |
 | [`gameplay/DESINTEGRATE_RUNE.md`](gameplay/DESINTEGRATE_RUNE.md) | Implementación real de la rune Desintegrate: magic wall, wild growth y objetos destruibles. |
 | [`gameplay/SPELL_RUNTIME.md`](gameplay/SPELL_RUNTIME.md) | **Spells/runas:** carga XML→Lua, `safeCast` anti-crash, restauración Soulfire/Paralyze/etc. (jul 2026). Leer antes de tocar `spells.xml` / `spells.cpp`. |
+| [`gameplay/SPELL_EXHAUSTION.md`](gameplay/SPELL_EXHAUSTION.md) | **Exhausted:** `exhausted`/`exhaustedheal`/`exhaustedadd`, pipeline `creatureMakeMagic`, reduceExhaustion, bindings custom sin exhaust (Paralyze/Anchor/etc.). |
 | [`gameplay/MAGIC_WALL.md`](gameplay/MAGIC_WALL.md) | **Magic Wall:** duración 15s, `DECAY_INTERVAL`, bug de relanzar sin reiniciar timer (jul 2026). |
 | [`gameplay/ANCHOR_RUNE.md`](gameplay/ANCHOR_RUNE.md) | Anchor Rune (2296): root de 1s (no paralyze) para war/combos. |
 | [`gameplay/SPELL_CAST_VISIBILITY.md`](gameplay/SPELL_CAST_VISIBILITY.md) | Visibilidad del cast de hechizos (efectos visuales). |
 | [`gameplay/SPELL_EXORI_GRAN.md`](gameplay/SPELL_EXORI_GRAN.md) | Hechizo exori gran: balance, área, daño. |
+| [`gameplay/SPELL_EXORI_HUR.md`](gameplay/SPELL_EXORI_HUR.md) | **exori hur** target a distancia (battle list, rango 5) + binding `getAttackedCreaturePos`; incluye script viejo y pasos de revert (jul 2026). |
+| [`gameplay/SPELL_EXORI_VIS_HUR.md`](gameplay/SPELL_EXORI_VIS_HUR.md) | **exori vis hur**: Energy Strike a distancia (Sorc/Druid), visual HMM, rango 5; revert solo Lua+XML. |
 | [`gameplay/TRAINING_BONUS_PARCHMENT.md`](gameplay/TRAINING_BONUS_PARCHMENT.md) | Sistema de pergaminos de bonus de training. |
 | [`gameplay/PRIVATE_TRAINER_DUMMY.md`](gameplay/PRIVATE_TRAINER_DUMMY.md) | Private Trainer Dummy: item **`20155`** (clientId kit sofá `2776`), look monstruo trainer monk (`57`). |
 | [`gameplay/ZAGAN_CONSUMABLE_RUNES.md`](gameplay/ZAGAN_CONSUMABLE_RUNES.md) | Runas consumibles Zagan: experience recovery (20131) y training extension (20132). |

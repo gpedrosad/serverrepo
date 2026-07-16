@@ -356,6 +356,7 @@ int SpellScript::registerFunctions(){
 	lua_register(luaState, "changeOutfit", SpellScript::luaActionChangeOutfit);
 	lua_register(luaState, "manaShield", SpellScript::luaActionManaShield);
 	lua_register(luaState, "getPosition", SpellScript::luaActionGetPos);
+	lua_register(luaState, "getAttackedCreaturePos", SpellScript::luaActionGetAttackedCreaturePos);
 	lua_register(luaState, "getSpeed", SpellScript::luaActionGetSpeed);
 	lua_register(luaState, "changeSpeed", SpellScript::luaActionChangeSpeed);
 	lua_register(luaState, "changeSpeedMonster", SpellScript::luaActionChangeSpeedMonster);
@@ -1584,6 +1585,40 @@ int SpellScript::luaActionGetPos(lua_State *L){
       lua_pushnumber(L, c->pos.z);
       lua_settable(L, -3);
 	}
+	return 1;
+}
+
+// getAttackedCreaturePos(cid) — live pos of the caster's current attack target (battle list).
+int SpellScript::luaActionGetAttackedCreaturePos(lua_State *L){
+	Spell* spell = getSpell(L);
+	Creature* caster = spell->game->getCreatureByID((unsigned long)lua_tonumber(L, -1));
+	lua_pop(L, 1);
+
+	Creature* target = NULL;
+	if(caster && caster->attackedCreature != 0)
+		target = spell->game->getCreatureByID(caster->attackedCreature);
+
+	lua_newtable(L);
+	lua_pushstring(L, "x");
+	if(target)
+		lua_pushnumber(L, target->pos.x);
+	else
+		lua_pushnil(L);
+	lua_settable(L, -3);
+
+	lua_pushstring(L, "y");
+	if(target)
+		lua_pushnumber(L, target->pos.y);
+	else
+		lua_pushnil(L);
+	lua_settable(L, -3);
+
+	lua_pushstring(L, "z");
+	if(target)
+		lua_pushnumber(L, target->pos.z);
+	else
+		lua_pushnil(L);
+	lua_settable(L, -3);
 	return 1;
 }
 

@@ -4,6 +4,8 @@
 
 Evitar que el texto del spell aparezca en chat cuando el spell no llega a ejecutarse.
 
+Detalle del sistema exhausted (tiempos, heal vs attack, runas): [`SPELL_EXHAUSTION.md`](SPELL_EXHAUSTION.md).
+
 Caso reportado:
 
 - el jugador spamea palabras magicas

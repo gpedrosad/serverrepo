@@ -148,6 +148,7 @@ public:
 
 	//static int luaActionDoSpell(lua_State *L);
   static int luaActionGetPos(lua_State *L);
+  static int luaActionGetAttackedCreaturePos(lua_State *L);
   static int luaActionChangeOutfit(lua_State *L);
   static int luaActionManaShield(lua_State *L);
   static int luaActionChangeSpeed(lua_State *L);
