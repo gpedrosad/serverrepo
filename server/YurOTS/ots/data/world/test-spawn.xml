@@ -639,6 +639,12 @@
 	<spawn centerx="402" centery="18" centerz="7" radius="1">
 		<monster name="Fury" x="0" y="0" z="7" spawntime="175" />
 	</spawn>
+	<spawn centerx="408" centery="18" centerz="7" radius="1">
+		<monster name="Wrath" x="0" y="0" z="7" spawntime="280" />
+	</spawn>
+	<spawn centerx="425" centery="40" centerz="7" radius="1">
+		<monster name="Wrath" x="0" y="0" z="7" spawntime="280" />
+	</spawn>
 	<spawn centerx="411" centery="22" centerz="7" radius="1">
 		<monster name="Fury" x="0" y="0" z="7" spawntime="175" />
 	</spawn>
@@ -2134,4 +2140,129 @@
 		<monster name="dwarf guard" x="-4" y="2" z="10" spawntime="175" direction="2" />
 		<monster name="dwarf guard" x="2" y="3" z="10" spawntime="175" direction="2" />
 	</spawn>
+						<!-- BEGIN TP_GAUNTLET -->
+	<spawn centerx="451" centery="41" centerz="7" radius="1">
+		<monster name="Rat" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="457" centery="41" centerz="7" radius="1">
+		<monster name="Cave Rat" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="463" centery="41" centerz="7" radius="1">
+		<monster name="Snake" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="469" centery="41" centerz="7" radius="1">
+		<monster name="Spider" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="475" centery="41" centerz="7" radius="1">
+		<monster name="Bug" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="481" centery="41" centerz="7" radius="1">
+		<monster name="Wolf" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="487" centery="41" centerz="7" radius="1">
+		<monster name="Bear" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="451" centery="47" centerz="7" radius="1">
+		<monster name="Orc" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="457" centery="47" centerz="7" radius="1">
+		<monster name="Orc Warrior" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="463" centery="47" centerz="7" radius="1">
+		<monster name="Minotaur" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="469" centery="47" centerz="7" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="475" centery="47" centerz="7" radius="1">
+		<monster name="Skeleton" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="481" centery="47" centerz="7" radius="1">
+		<monster name="Ghoul" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="487" centery="47" centerz="7" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="451" centery="53" centerz="7" radius="1">
+		<monster name="Dwarf Guard" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="457" centery="53" centerz="7" radius="1">
+		<monster name="Beholder" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="463" centery="53" centerz="7" radius="1">
+		<monster name="Dragon" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="469" centery="53" centerz="7" radius="1">
+		<monster name="Demon Skeleton" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="475" centery="53" centerz="7" radius="1">
+		<monster name="Hero" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="481" centery="53" centerz="7" radius="1">
+		<monster name="Giant Spider" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="487" centery="53" centerz="7" radius="1">
+		<monster name="Black Knight" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="451" centery="59" centerz="7" radius="1">
+		<monster name="Dragon Lord" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="457" centery="59" centerz="7" radius="1">
+		<monster name="Demon" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="463" centery="59" centerz="7" radius="1">
+		<monster name="Behemoth" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="469" centery="59" centerz="7" radius="1">
+		<monster name="Furious Dragon" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="475" centery="59" centerz="7" radius="1">
+		<monster name="Enraged Demon" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="481" centery="59" centerz="7" radius="1">
+		<monster name="Warlock" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="487" centery="59" centerz="7" radius="1">
+		<monster name="Ancient Scarab" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="451" centery="65" centerz="7" radius="1">
+		<monster name="Hydra" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="457" centery="65" centerz="7" radius="1">
+		<monster name="Serpent Spawn" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="463" centery="65" centerz="7" radius="1">
+		<monster name="Necromancer" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="469" centery="65" centerz="7" radius="1">
+		<monster name="Vampire" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="475" centery="65" centerz="7" radius="1">
+		<monster name="Priestess" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="481" centery="65" centerz="7" radius="1">
+		<monster name="Hero" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="487" centery="65" centerz="7" radius="1">
+		<monster name="Fury" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="451" centery="71" centerz="7" radius="1">
+		<monster name="Furious Black Knight" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="457" centery="71" centerz="7" radius="1">
+		<monster name="Enraged Dragon Lord" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="463" centery="71" centerz="7" radius="1">
+		<monster name="Demon" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="469" centery="71" centerz="7" radius="1">
+		<monster name="Warlock" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="475" centery="71" centerz="7" radius="1">
+		<monster name="Furious Behemoth" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<spawn centerx="451" centery="78" centerz="7" radius="1">
+		<monster name="Wrath" x="0" y="0" z="7" spawntime="120" direction="2" />
+	</spawn>
+	<!-- END TP_GAUNTLET -->
 </spawns>

@@ -14,6 +14,7 @@ ALL_TRAVELS = {
 	{keys = {'hell quest', 'hell'}, price = 20, dest = '347 168 7', name = 'Hell Quest'},
 	{keys = {'dragon land'}, price = 50, dest = '122 119 7', name = 'Dragon Land'},
 	{keys = {'alice maze', 'maze', 'laberinto'}, price = 20, dest = '413 103 7', name = 'Alice Maze'},
+	{keys = {'gauntlet'}, price = 20, dest = '452 41 7', name = 'Gauntlet'},
 	{keys = {'city', 'the city'}, price = 20, dest = '171 65 7', name = 'The City'}
 }
 

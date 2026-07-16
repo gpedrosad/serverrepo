@@ -1,0 +1,3279 @@
+{
+  "name": "generated-tp-gauntlet",
+  "puzzleRooms": 40,
+  "roomSize": 3,
+  "groundPathId": 406,
+  "groundBackgroundId": 100,
+  "teleportItemId": 1387,
+  "questChestItemId": 1740,
+  "questPrizeUniqueId": 3549,
+  "monsters": [
+    "Rat",
+    "Cave Rat",
+    "Snake",
+    "Spider",
+    "Bug",
+    "Wolf",
+    "Bear",
+    "Orc",
+    "Orc Warrior",
+    "Minotaur",
+    "Rotworm",
+    "Skeleton",
+    "Ghoul",
+    "Cyclops",
+    "Dwarf Guard",
+    "Beholder",
+    "Dragon",
+    "Demon Skeleton",
+    "Hero",
+    "Giant Spider",
+    "Black Knight",
+    "Dragon Lord",
+    "Demon",
+    "Behemoth",
+    "Furious Dragon",
+    "Enraged Demon",
+    "Warlock",
+    "Ancient Scarab",
+    "Hydra",
+    "Serpent Spawn",
+    "Necromancer",
+    "Vampire",
+    "Priestess",
+    "Hero",
+    "Fury",
+    "Furious Black Knight",
+    "Enraged Dragon Lord",
+    "Demon",
+    "Warlock",
+    "Furious Behemoth"
+  ],
+  "finalBoss": "Wrath",
+  "mapFile": "server/YurOTS/ots/data/world/test.otbm",
+  "spawnFile": "server/YurOTS/ots/data/world/test-spawn.xml",
+  "nPuzzleRooms": 40,
+  "seed": 76,
+  "grid": {
+    "cols": 7,
+    "rows": 6
+  },
+  "furyRoomIndex": 34,
+  "rules": {
+    "cornersPerRoom": 4,
+    "correctPerRoom": 1,
+    "wrongPerRoom": 3,
+    "wrongPreferEarlier": true,
+    "landOnRoomCenter": true,
+    "lastPuzzleGoesToFinalRoom": true,
+    "finalRoomSize": 3,
+    "finalRoomSingleTeleport": true
+  },
+  "footprint": {
+    "fromX": 449,
+    "toX": 489,
+    "fromY": 39,
+    "toY": 80,
+    "z": 7
+  },
+  "gridFootprint": {
+    "fromX": 449,
+    "toX": 489,
+    "fromY": 39,
+    "toY": 73,
+    "z": 7
+  },
+  "entryPad": {
+    "x": 436,
+    "y": 102,
+    "z": 7
+  },
+  "room0": {
+    "x": 451,
+    "y": 41,
+    "z": 7
+  },
+  "templeDest": {
+    "x": 130,
+    "y": 53,
+    "z": 6
+  },
+  "rooms": [
+    {
+      "index": 0,
+      "col": 0,
+      "row": 0,
+      "kind": "puzzle",
+      "origin": {
+        "x": 450,
+        "y": 40,
+        "z": 7
+      },
+      "center": {
+        "x": 451,
+        "y": 41,
+        "z": 7
+      },
+      "correctCorner": "SE",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 450,
+          "y": 40,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room31",
+          "dest": {
+            "x": 469,
+            "y": 65,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 452,
+          "y": 40,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room26",
+          "dest": {
+            "x": 481,
+            "y": 59,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 452,
+          "y": 42,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room1",
+          "dest": {
+            "x": 457,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 450,
+          "y": 42,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room14",
+          "dest": {
+            "x": 451,
+            "y": 53,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Rat"
+    },
+    {
+      "index": 1,
+      "col": 1,
+      "row": 0,
+      "kind": "puzzle",
+      "origin": {
+        "x": 456,
+        "y": 40,
+        "z": 7
+      },
+      "center": {
+        "x": 457,
+        "y": 41,
+        "z": 7
+      },
+      "correctCorner": "SE",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 456,
+          "y": 40,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room0",
+          "dest": {
+            "x": 451,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 458,
+          "y": 40,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room21",
+          "dest": {
+            "x": 451,
+            "y": 59,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 458,
+          "y": 42,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room2",
+          "dest": {
+            "x": 463,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 456,
+          "y": 42,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room23",
+          "dest": {
+            "x": 463,
+            "y": 59,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Cave Rat"
+    },
+    {
+      "index": 2,
+      "col": 2,
+      "row": 0,
+      "kind": "puzzle",
+      "origin": {
+        "x": 462,
+        "y": 40,
+        "z": 7
+      },
+      "center": {
+        "x": 463,
+        "y": 41,
+        "z": 7
+      },
+      "correctCorner": "SW",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 462,
+          "y": 40,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room0",
+          "dest": {
+            "x": 451,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 464,
+          "y": 40,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room1",
+          "dest": {
+            "x": 457,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 464,
+          "y": 42,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room18",
+          "dest": {
+            "x": 475,
+            "y": 53,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 462,
+          "y": 42,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room3",
+          "dest": {
+            "x": 469,
+            "y": 41,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Snake"
+    },
+    {
+      "index": 3,
+      "col": 3,
+      "row": 0,
+      "kind": "puzzle",
+      "origin": {
+        "x": 468,
+        "y": 40,
+        "z": 7
+      },
+      "center": {
+        "x": 469,
+        "y": 41,
+        "z": 7
+      },
+      "correctCorner": "SE",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 468,
+          "y": 40,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room5",
+          "dest": {
+            "x": 481,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 470,
+          "y": 40,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room1",
+          "dest": {
+            "x": 457,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 470,
+          "y": 42,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room4",
+          "dest": {
+            "x": 475,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 468,
+          "y": 42,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room2",
+          "dest": {
+            "x": 463,
+            "y": 41,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Spider"
+    },
+    {
+      "index": 4,
+      "col": 4,
+      "row": 0,
+      "kind": "puzzle",
+      "origin": {
+        "x": 474,
+        "y": 40,
+        "z": 7
+      },
+      "center": {
+        "x": 475,
+        "y": 41,
+        "z": 7
+      },
+      "correctCorner": "NE",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 474,
+          "y": 40,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room3",
+          "dest": {
+            "x": 469,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 476,
+          "y": 40,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room5",
+          "dest": {
+            "x": 481,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 476,
+          "y": 42,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room2",
+          "dest": {
+            "x": 463,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 474,
+          "y": 42,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room1",
+          "dest": {
+            "x": 457,
+            "y": 41,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Bug"
+    },
+    {
+      "index": 5,
+      "col": 5,
+      "row": 0,
+      "kind": "puzzle",
+      "origin": {
+        "x": 480,
+        "y": 40,
+        "z": 7
+      },
+      "center": {
+        "x": 481,
+        "y": 41,
+        "z": 7
+      },
+      "correctCorner": "NE",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 480,
+          "y": 40,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room0",
+          "dest": {
+            "x": 451,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 482,
+          "y": 40,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room6",
+          "dest": {
+            "x": 487,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 482,
+          "y": 42,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room3",
+          "dest": {
+            "x": 469,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 480,
+          "y": 42,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room1",
+          "dest": {
+            "x": 457,
+            "y": 41,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Wolf"
+    },
+    {
+      "index": 6,
+      "col": 6,
+      "row": 0,
+      "kind": "puzzle",
+      "origin": {
+        "x": 486,
+        "y": 40,
+        "z": 7
+      },
+      "center": {
+        "x": 487,
+        "y": 41,
+        "z": 7
+      },
+      "correctCorner": "NW",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 486,
+          "y": 40,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room7",
+          "dest": {
+            "x": 451,
+            "y": 47,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 488,
+          "y": 40,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room1",
+          "dest": {
+            "x": 457,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 488,
+          "y": 42,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room34",
+          "dest": {
+            "x": 487,
+            "y": 65,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 486,
+          "y": 42,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room5",
+          "dest": {
+            "x": 481,
+            "y": 41,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Bear"
+    },
+    {
+      "index": 7,
+      "col": 0,
+      "row": 1,
+      "kind": "puzzle",
+      "origin": {
+        "x": 450,
+        "y": 46,
+        "z": 7
+      },
+      "center": {
+        "x": 451,
+        "y": 47,
+        "z": 7
+      },
+      "correctCorner": "SW",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 450,
+          "y": 46,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room3",
+          "dest": {
+            "x": 469,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 452,
+          "y": 46,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room0",
+          "dest": {
+            "x": 451,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 452,
+          "y": 48,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room5",
+          "dest": {
+            "x": 481,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 450,
+          "y": 48,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room8",
+          "dest": {
+            "x": 457,
+            "y": 47,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Orc"
+    },
+    {
+      "index": 8,
+      "col": 1,
+      "row": 1,
+      "kind": "puzzle",
+      "origin": {
+        "x": 456,
+        "y": 46,
+        "z": 7
+      },
+      "center": {
+        "x": 457,
+        "y": 47,
+        "z": 7
+      },
+      "correctCorner": "SW",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 456,
+          "y": 46,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room31",
+          "dest": {
+            "x": 469,
+            "y": 65,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 458,
+          "y": 46,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room25",
+          "dest": {
+            "x": 475,
+            "y": 59,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 458,
+          "y": 48,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room2",
+          "dest": {
+            "x": 463,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 456,
+          "y": 48,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room9",
+          "dest": {
+            "x": 463,
+            "y": 47,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Orc Warrior"
+    },
+    {
+      "index": 9,
+      "col": 2,
+      "row": 1,
+      "kind": "puzzle",
+      "origin": {
+        "x": 462,
+        "y": 46,
+        "z": 7
+      },
+      "center": {
+        "x": 463,
+        "y": 47,
+        "z": 7
+      },
+      "correctCorner": "NE",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 462,
+          "y": 46,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room0",
+          "dest": {
+            "x": 451,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 464,
+          "y": 46,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room10",
+          "dest": {
+            "x": 469,
+            "y": 47,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 464,
+          "y": 48,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room2",
+          "dest": {
+            "x": 463,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 462,
+          "y": 48,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room1",
+          "dest": {
+            "x": 457,
+            "y": 41,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Minotaur"
+    },
+    {
+      "index": 10,
+      "col": 3,
+      "row": 1,
+      "kind": "puzzle",
+      "origin": {
+        "x": 468,
+        "y": 46,
+        "z": 7
+      },
+      "center": {
+        "x": 469,
+        "y": 47,
+        "z": 7
+      },
+      "correctCorner": "NE",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 468,
+          "y": 46,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room8",
+          "dest": {
+            "x": 457,
+            "y": 47,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 470,
+          "y": 46,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room11",
+          "dest": {
+            "x": 475,
+            "y": 47,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 470,
+          "y": 48,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room6",
+          "dest": {
+            "x": 487,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 468,
+          "y": 48,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room2",
+          "dest": {
+            "x": 463,
+            "y": 41,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Rotworm"
+    },
+    {
+      "index": 11,
+      "col": 4,
+      "row": 1,
+      "kind": "puzzle",
+      "origin": {
+        "x": 474,
+        "y": 46,
+        "z": 7
+      },
+      "center": {
+        "x": 475,
+        "y": 47,
+        "z": 7
+      },
+      "correctCorner": "NW",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 474,
+          "y": 46,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room12",
+          "dest": {
+            "x": 481,
+            "y": 47,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 476,
+          "y": 46,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room3",
+          "dest": {
+            "x": 469,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 476,
+          "y": 48,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room4",
+          "dest": {
+            "x": 475,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 474,
+          "y": 48,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room6",
+          "dest": {
+            "x": 487,
+            "y": 41,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Skeleton"
+    },
+    {
+      "index": 12,
+      "col": 5,
+      "row": 1,
+      "kind": "puzzle",
+      "origin": {
+        "x": 480,
+        "y": 46,
+        "z": 7
+      },
+      "center": {
+        "x": 481,
+        "y": 47,
+        "z": 7
+      },
+      "correctCorner": "SW",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 480,
+          "y": 46,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room5",
+          "dest": {
+            "x": 481,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 482,
+          "y": 46,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room6",
+          "dest": {
+            "x": 487,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 482,
+          "y": 48,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room24",
+          "dest": {
+            "x": 469,
+            "y": 59,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 480,
+          "y": 48,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room13",
+          "dest": {
+            "x": 487,
+            "y": 47,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Ghoul"
+    },
+    {
+      "index": 13,
+      "col": 6,
+      "row": 1,
+      "kind": "puzzle",
+      "origin": {
+        "x": 486,
+        "y": 46,
+        "z": 7
+      },
+      "center": {
+        "x": 487,
+        "y": 47,
+        "z": 7
+      },
+      "correctCorner": "SE",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 486,
+          "y": 46,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room12",
+          "dest": {
+            "x": 481,
+            "y": 47,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 488,
+          "y": 46,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room10",
+          "dest": {
+            "x": 469,
+            "y": 47,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 488,
+          "y": 48,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room14",
+          "dest": {
+            "x": 451,
+            "y": 53,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 486,
+          "y": 48,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room5",
+          "dest": {
+            "x": 481,
+            "y": 41,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Cyclops"
+    },
+    {
+      "index": 14,
+      "col": 0,
+      "row": 2,
+      "kind": "puzzle",
+      "origin": {
+        "x": 450,
+        "y": 52,
+        "z": 7
+      },
+      "center": {
+        "x": 451,
+        "y": 53,
+        "z": 7
+      },
+      "correctCorner": "SW",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 450,
+          "y": 52,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room27",
+          "dest": {
+            "x": 487,
+            "y": 59,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 452,
+          "y": 52,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room5",
+          "dest": {
+            "x": 481,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 452,
+          "y": 54,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room13",
+          "dest": {
+            "x": 487,
+            "y": 47,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 450,
+          "y": 54,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room15",
+          "dest": {
+            "x": 457,
+            "y": 53,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Dwarf Guard"
+    },
+    {
+      "index": 15,
+      "col": 1,
+      "row": 2,
+      "kind": "puzzle",
+      "origin": {
+        "x": 456,
+        "y": 52,
+        "z": 7
+      },
+      "center": {
+        "x": 457,
+        "y": 53,
+        "z": 7
+      },
+      "correctCorner": "NW",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 456,
+          "y": 52,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room16",
+          "dest": {
+            "x": 463,
+            "y": 53,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 458,
+          "y": 52,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room10",
+          "dest": {
+            "x": 469,
+            "y": 47,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 458,
+          "y": 54,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room2",
+          "dest": {
+            "x": 463,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 456,
+          "y": 54,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room1",
+          "dest": {
+            "x": 457,
+            "y": 41,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Beholder"
+    },
+    {
+      "index": 16,
+      "col": 2,
+      "row": 2,
+      "kind": "puzzle",
+      "origin": {
+        "x": 462,
+        "y": 52,
+        "z": 7
+      },
+      "center": {
+        "x": 463,
+        "y": 53,
+        "z": 7
+      },
+      "correctCorner": "NE",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 462,
+          "y": 52,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room13",
+          "dest": {
+            "x": 487,
+            "y": 47,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 464,
+          "y": 52,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room17",
+          "dest": {
+            "x": 469,
+            "y": 53,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 464,
+          "y": 54,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room12",
+          "dest": {
+            "x": 481,
+            "y": 47,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 462,
+          "y": 54,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room8",
+          "dest": {
+            "x": 457,
+            "y": 47,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Dragon"
+    },
+    {
+      "index": 17,
+      "col": 3,
+      "row": 2,
+      "kind": "puzzle",
+      "origin": {
+        "x": 468,
+        "y": 52,
+        "z": 7
+      },
+      "center": {
+        "x": 469,
+        "y": 53,
+        "z": 7
+      },
+      "correctCorner": "SE",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 468,
+          "y": 52,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room30",
+          "dest": {
+            "x": 463,
+            "y": 65,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 470,
+          "y": 52,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room6",
+          "dest": {
+            "x": 487,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 470,
+          "y": 54,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room18",
+          "dest": {
+            "x": 475,
+            "y": 53,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 468,
+          "y": 54,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room16",
+          "dest": {
+            "x": 463,
+            "y": 53,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Demon Skeleton"
+    },
+    {
+      "index": 18,
+      "col": 4,
+      "row": 2,
+      "kind": "puzzle",
+      "origin": {
+        "x": 474,
+        "y": 52,
+        "z": 7
+      },
+      "center": {
+        "x": 475,
+        "y": 53,
+        "z": 7
+      },
+      "correctCorner": "SW",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 474,
+          "y": 52,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room16",
+          "dest": {
+            "x": 463,
+            "y": 53,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 476,
+          "y": 52,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room6",
+          "dest": {
+            "x": 487,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 476,
+          "y": 54,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room10",
+          "dest": {
+            "x": 469,
+            "y": 47,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 474,
+          "y": 54,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room19",
+          "dest": {
+            "x": 481,
+            "y": 53,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Hero"
+    },
+    {
+      "index": 19,
+      "col": 5,
+      "row": 2,
+      "kind": "puzzle",
+      "origin": {
+        "x": 480,
+        "y": 52,
+        "z": 7
+      },
+      "center": {
+        "x": 481,
+        "y": 53,
+        "z": 7
+      },
+      "correctCorner": "SW",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 480,
+          "y": 52,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room3",
+          "dest": {
+            "x": 469,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 482,
+          "y": 52,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room8",
+          "dest": {
+            "x": 457,
+            "y": 47,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 482,
+          "y": 54,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room18",
+          "dest": {
+            "x": 475,
+            "y": 53,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 480,
+          "y": 54,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room20",
+          "dest": {
+            "x": 487,
+            "y": 53,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Giant Spider"
+    },
+    {
+      "index": 20,
+      "col": 6,
+      "row": 2,
+      "kind": "puzzle",
+      "origin": {
+        "x": 486,
+        "y": 52,
+        "z": 7
+      },
+      "center": {
+        "x": 487,
+        "y": 53,
+        "z": 7
+      },
+      "correctCorner": "SW",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 486,
+          "y": 52,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room14",
+          "dest": {
+            "x": 451,
+            "y": 53,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 488,
+          "y": 52,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room17",
+          "dest": {
+            "x": 469,
+            "y": 53,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 488,
+          "y": 54,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room2",
+          "dest": {
+            "x": 463,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 486,
+          "y": 54,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room21",
+          "dest": {
+            "x": 451,
+            "y": 59,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Black Knight"
+    },
+    {
+      "index": 21,
+      "col": 0,
+      "row": 3,
+      "kind": "puzzle",
+      "origin": {
+        "x": 450,
+        "y": 58,
+        "z": 7
+      },
+      "center": {
+        "x": 451,
+        "y": 59,
+        "z": 7
+      },
+      "correctCorner": "SW",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 450,
+          "y": 58,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room14",
+          "dest": {
+            "x": 451,
+            "y": 53,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 452,
+          "y": 58,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room23",
+          "dest": {
+            "x": 463,
+            "y": 59,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 452,
+          "y": 60,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room16",
+          "dest": {
+            "x": 463,
+            "y": 53,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 450,
+          "y": 60,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room22",
+          "dest": {
+            "x": 457,
+            "y": 59,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Dragon Lord"
+    },
+    {
+      "index": 22,
+      "col": 1,
+      "row": 3,
+      "kind": "puzzle",
+      "origin": {
+        "x": 456,
+        "y": 58,
+        "z": 7
+      },
+      "center": {
+        "x": 457,
+        "y": 59,
+        "z": 7
+      },
+      "correctCorner": "NE",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 456,
+          "y": 58,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room0",
+          "dest": {
+            "x": 451,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 458,
+          "y": 58,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room23",
+          "dest": {
+            "x": 463,
+            "y": 59,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 458,
+          "y": 60,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room3",
+          "dest": {
+            "x": 469,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 456,
+          "y": 60,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room11",
+          "dest": {
+            "x": 475,
+            "y": 47,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Demon"
+    },
+    {
+      "index": 23,
+      "col": 2,
+      "row": 3,
+      "kind": "puzzle",
+      "origin": {
+        "x": 462,
+        "y": 58,
+        "z": 7
+      },
+      "center": {
+        "x": 463,
+        "y": 59,
+        "z": 7
+      },
+      "correctCorner": "NW",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 462,
+          "y": 58,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room24",
+          "dest": {
+            "x": 469,
+            "y": 59,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 464,
+          "y": 58,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room8",
+          "dest": {
+            "x": 457,
+            "y": 47,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 464,
+          "y": 60,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room20",
+          "dest": {
+            "x": 487,
+            "y": 53,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 462,
+          "y": 60,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room4",
+          "dest": {
+            "x": 475,
+            "y": 41,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Behemoth"
+    },
+    {
+      "index": 24,
+      "col": 3,
+      "row": 3,
+      "kind": "puzzle",
+      "origin": {
+        "x": 468,
+        "y": 58,
+        "z": 7
+      },
+      "center": {
+        "x": 469,
+        "y": 59,
+        "z": 7
+      },
+      "correctCorner": "NE",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 468,
+          "y": 58,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room3",
+          "dest": {
+            "x": 469,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 470,
+          "y": 58,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room25",
+          "dest": {
+            "x": 475,
+            "y": 59,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 470,
+          "y": 60,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room0",
+          "dest": {
+            "x": 451,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 468,
+          "y": 60,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room23",
+          "dest": {
+            "x": 463,
+            "y": 59,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Furious Dragon"
+    },
+    {
+      "index": 25,
+      "col": 4,
+      "row": 3,
+      "kind": "puzzle",
+      "origin": {
+        "x": 474,
+        "y": 58,
+        "z": 7
+      },
+      "center": {
+        "x": 475,
+        "y": 59,
+        "z": 7
+      },
+      "correctCorner": "NE",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 474,
+          "y": 58,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room5",
+          "dest": {
+            "x": 481,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 476,
+          "y": 58,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room26",
+          "dest": {
+            "x": 481,
+            "y": 59,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 476,
+          "y": 60,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room24",
+          "dest": {
+            "x": 469,
+            "y": 59,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 474,
+          "y": 60,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room18",
+          "dest": {
+            "x": 475,
+            "y": 53,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Enraged Demon"
+    },
+    {
+      "index": 26,
+      "col": 5,
+      "row": 3,
+      "kind": "puzzle",
+      "origin": {
+        "x": 480,
+        "y": 58,
+        "z": 7
+      },
+      "center": {
+        "x": 481,
+        "y": 59,
+        "z": 7
+      },
+      "correctCorner": "NE",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 480,
+          "y": 58,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room20",
+          "dest": {
+            "x": 487,
+            "y": 53,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 482,
+          "y": 58,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room27",
+          "dest": {
+            "x": 487,
+            "y": 59,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 482,
+          "y": 60,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room37",
+          "dest": {
+            "x": 463,
+            "y": 71,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 480,
+          "y": 60,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room7",
+          "dest": {
+            "x": 451,
+            "y": 47,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Warlock"
+    },
+    {
+      "index": 27,
+      "col": 6,
+      "row": 3,
+      "kind": "puzzle",
+      "origin": {
+        "x": 486,
+        "y": 58,
+        "z": 7
+      },
+      "center": {
+        "x": 487,
+        "y": 59,
+        "z": 7
+      },
+      "correctCorner": "SE",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 486,
+          "y": 58,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room18",
+          "dest": {
+            "x": 475,
+            "y": 53,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 488,
+          "y": 58,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room25",
+          "dest": {
+            "x": 475,
+            "y": 59,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 488,
+          "y": 60,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room28",
+          "dest": {
+            "x": 451,
+            "y": 65,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 486,
+          "y": 60,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room22",
+          "dest": {
+            "x": 457,
+            "y": 59,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Ancient Scarab"
+    },
+    {
+      "index": 28,
+      "col": 0,
+      "row": 4,
+      "kind": "puzzle",
+      "origin": {
+        "x": 450,
+        "y": 64,
+        "z": 7
+      },
+      "center": {
+        "x": 451,
+        "y": 65,
+        "z": 7
+      },
+      "correctCorner": "NE",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 450,
+          "y": 64,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room32",
+          "dest": {
+            "x": 475,
+            "y": 65,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 452,
+          "y": 64,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room29",
+          "dest": {
+            "x": 457,
+            "y": 65,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 452,
+          "y": 66,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room1",
+          "dest": {
+            "x": 457,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 450,
+          "y": 66,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room17",
+          "dest": {
+            "x": 469,
+            "y": 53,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Hydra"
+    },
+    {
+      "index": 29,
+      "col": 1,
+      "row": 4,
+      "kind": "puzzle",
+      "origin": {
+        "x": 456,
+        "y": 64,
+        "z": 7
+      },
+      "center": {
+        "x": 457,
+        "y": 65,
+        "z": 7
+      },
+      "correctCorner": "NE",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 456,
+          "y": 64,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room3",
+          "dest": {
+            "x": 469,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 458,
+          "y": 64,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room30",
+          "dest": {
+            "x": 463,
+            "y": 65,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 458,
+          "y": 66,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room20",
+          "dest": {
+            "x": 487,
+            "y": 53,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 456,
+          "y": 66,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room11",
+          "dest": {
+            "x": 475,
+            "y": 47,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Serpent Spawn"
+    },
+    {
+      "index": 30,
+      "col": 2,
+      "row": 4,
+      "kind": "puzzle",
+      "origin": {
+        "x": 462,
+        "y": 64,
+        "z": 7
+      },
+      "center": {
+        "x": 463,
+        "y": 65,
+        "z": 7
+      },
+      "correctCorner": "SE",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 462,
+          "y": 64,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room12",
+          "dest": {
+            "x": 481,
+            "y": 47,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 464,
+          "y": 64,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room8",
+          "dest": {
+            "x": 457,
+            "y": 47,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 464,
+          "y": 66,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room31",
+          "dest": {
+            "x": 469,
+            "y": 65,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 462,
+          "y": 66,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room25",
+          "dest": {
+            "x": 475,
+            "y": 59,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Necromancer"
+    },
+    {
+      "index": 31,
+      "col": 3,
+      "row": 4,
+      "kind": "puzzle",
+      "origin": {
+        "x": 468,
+        "y": 64,
+        "z": 7
+      },
+      "center": {
+        "x": 469,
+        "y": 65,
+        "z": 7
+      },
+      "correctCorner": "SE",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 468,
+          "y": 64,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room10",
+          "dest": {
+            "x": 469,
+            "y": 47,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 470,
+          "y": 64,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room21",
+          "dest": {
+            "x": 451,
+            "y": 59,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 470,
+          "y": 66,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room32",
+          "dest": {
+            "x": 475,
+            "y": 65,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 468,
+          "y": 66,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room9",
+          "dest": {
+            "x": 463,
+            "y": 47,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Vampire"
+    },
+    {
+      "index": 32,
+      "col": 4,
+      "row": 4,
+      "kind": "puzzle",
+      "origin": {
+        "x": 474,
+        "y": 64,
+        "z": 7
+      },
+      "center": {
+        "x": 475,
+        "y": 65,
+        "z": 7
+      },
+      "correctCorner": "NE",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 474,
+          "y": 64,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room17",
+          "dest": {
+            "x": 469,
+            "y": 53,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 476,
+          "y": 64,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room33",
+          "dest": {
+            "x": 481,
+            "y": 65,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 476,
+          "y": 66,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room30",
+          "dest": {
+            "x": 463,
+            "y": 65,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 474,
+          "y": 66,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room26",
+          "dest": {
+            "x": 481,
+            "y": 59,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Priestess"
+    },
+    {
+      "index": 33,
+      "col": 5,
+      "row": 4,
+      "kind": "puzzle",
+      "origin": {
+        "x": 480,
+        "y": 64,
+        "z": 7
+      },
+      "center": {
+        "x": 481,
+        "y": 65,
+        "z": 7
+      },
+      "correctCorner": "NW",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 480,
+          "y": 64,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room34",
+          "dest": {
+            "x": 487,
+            "y": 65,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 482,
+          "y": 64,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room5",
+          "dest": {
+            "x": 481,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 482,
+          "y": 66,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room0",
+          "dest": {
+            "x": 451,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 480,
+          "y": 66,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room15",
+          "dest": {
+            "x": 457,
+            "y": 53,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Hero"
+    },
+    {
+      "index": 34,
+      "col": 6,
+      "row": 4,
+      "kind": "puzzle",
+      "origin": {
+        "x": 486,
+        "y": 64,
+        "z": 7
+      },
+      "center": {
+        "x": 487,
+        "y": 65,
+        "z": 7
+      },
+      "correctCorner": "SE",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 486,
+          "y": 64,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room15",
+          "dest": {
+            "x": 457,
+            "y": 53,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 488,
+          "y": 64,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room31",
+          "dest": {
+            "x": 469,
+            "y": 65,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 488,
+          "y": 66,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room35",
+          "dest": {
+            "x": 451,
+            "y": 71,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 486,
+          "y": 66,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room32",
+          "dest": {
+            "x": 475,
+            "y": 65,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Fury"
+    },
+    {
+      "index": 35,
+      "col": 0,
+      "row": 5,
+      "kind": "puzzle",
+      "origin": {
+        "x": 450,
+        "y": 70,
+        "z": 7
+      },
+      "center": {
+        "x": 451,
+        "y": 71,
+        "z": 7
+      },
+      "correctCorner": "NW",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 450,
+          "y": 70,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room36",
+          "dest": {
+            "x": 457,
+            "y": 71,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 452,
+          "y": 70,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room7",
+          "dest": {
+            "x": 451,
+            "y": 47,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 452,
+          "y": 72,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room23",
+          "dest": {
+            "x": 463,
+            "y": 59,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 450,
+          "y": 72,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room21",
+          "dest": {
+            "x": 451,
+            "y": 59,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Furious Black Knight"
+    },
+    {
+      "index": 36,
+      "col": 1,
+      "row": 5,
+      "kind": "puzzle",
+      "origin": {
+        "x": 456,
+        "y": 70,
+        "z": 7
+      },
+      "center": {
+        "x": 457,
+        "y": 71,
+        "z": 7
+      },
+      "correctCorner": "NW",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 456,
+          "y": 70,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room37",
+          "dest": {
+            "x": 463,
+            "y": 71,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 458,
+          "y": 70,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room20",
+          "dest": {
+            "x": 487,
+            "y": 53,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 458,
+          "y": 72,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room22",
+          "dest": {
+            "x": 457,
+            "y": 59,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 456,
+          "y": 72,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room15",
+          "dest": {
+            "x": 457,
+            "y": 53,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Enraged Dragon Lord"
+    },
+    {
+      "index": 37,
+      "col": 2,
+      "row": 5,
+      "kind": "puzzle",
+      "origin": {
+        "x": 462,
+        "y": 70,
+        "z": 7
+      },
+      "center": {
+        "x": 463,
+        "y": 71,
+        "z": 7
+      },
+      "correctCorner": "NE",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 462,
+          "y": 70,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room8",
+          "dest": {
+            "x": 457,
+            "y": 47,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 464,
+          "y": 70,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room38",
+          "dest": {
+            "x": 469,
+            "y": 71,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 464,
+          "y": 72,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room20",
+          "dest": {
+            "x": 487,
+            "y": 53,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 462,
+          "y": 72,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room10",
+          "dest": {
+            "x": 469,
+            "y": 47,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Demon"
+    },
+    {
+      "index": 38,
+      "col": 3,
+      "row": 5,
+      "kind": "puzzle",
+      "origin": {
+        "x": 468,
+        "y": 70,
+        "z": 7
+      },
+      "center": {
+        "x": 469,
+        "y": 71,
+        "z": 7
+      },
+      "correctCorner": "NE",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 468,
+          "y": 70,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room20",
+          "dest": {
+            "x": 487,
+            "y": 53,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 470,
+          "y": 70,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "room39",
+          "dest": {
+            "x": 475,
+            "y": 71,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 470,
+          "y": 72,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room10",
+          "dest": {
+            "x": 469,
+            "y": 47,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 468,
+          "y": 72,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room6",
+          "dest": {
+            "x": 487,
+            "y": 41,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": false,
+      "monster": "Warlock"
+    },
+    {
+      "index": 39,
+      "col": 4,
+      "row": 5,
+      "kind": "puzzle",
+      "origin": {
+        "x": 474,
+        "y": 70,
+        "z": 7
+      },
+      "center": {
+        "x": 475,
+        "y": 71,
+        "z": 7
+      },
+      "correctCorner": "SW",
+      "teleports": [
+        {
+          "corner": "NW",
+          "x": 474,
+          "y": 70,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room30",
+          "dest": {
+            "x": 463,
+            "y": 65,
+            "z": 7
+          }
+        },
+        {
+          "corner": "NE",
+          "x": 476,
+          "y": 70,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room5",
+          "dest": {
+            "x": 481,
+            "y": 41,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SE",
+          "x": 476,
+          "y": 72,
+          "z": 7,
+          "kind": "wrong",
+          "destLabel": "room27",
+          "dest": {
+            "x": 487,
+            "y": 59,
+            "z": 7
+          }
+        },
+        {
+          "corner": "SW",
+          "x": 474,
+          "y": 72,
+          "z": 7,
+          "kind": "correct",
+          "destLabel": "finalRoom",
+          "dest": {
+            "x": 451,
+            "y": 77,
+            "z": 7
+          }
+        }
+      ],
+      "isLastPuzzle": true,
+      "monster": "Furious Behemoth"
+    }
+  ],
+  "finalRoom": {
+    "kind": "finalRoom",
+    "size": 3,
+    "origin": {
+      "x": 450,
+      "y": 77,
+      "z": 7
+    },
+    "landing": {
+      "x": 451,
+      "y": 77,
+      "z": 7
+    },
+    "monster": {
+      "name": "Wrath",
+      "x": 451,
+      "y": 78,
+      "z": 7
+    },
+    "questChest": {
+      "itemId": 1740,
+      "uniqueId": 3549,
+      "prizeItemId": 3549,
+      "prizeName": "soft boots",
+      "x": 450,
+      "y": 79,
+      "z": 7,
+      "corner": "SW"
+    },
+    "templeTeleport": {
+      "x": 452,
+      "y": 79,
+      "z": 7,
+      "corner": "SE",
+      "dest": {
+        "x": 130,
+        "y": 53,
+        "z": 6
+      }
+    },
+    "teleportCount": 1,
+    "note": "Sala 3\u00d73 final: Wrath en centro, cofre soft boots (SW), un solo TP al templo (SE)."
+  },
+  "solutionPath": [
+    {
+      "room": 0,
+      "correctCorner": "SE",
+      "goesTo": "room1"
+    },
+    {
+      "room": 1,
+      "correctCorner": "SE",
+      "goesTo": "room2"
+    },
+    {
+      "room": 2,
+      "correctCorner": "SW",
+      "goesTo": "room3"
+    },
+    {
+      "room": 3,
+      "correctCorner": "SE",
+      "goesTo": "room4"
+    },
+    {
+      "room": 4,
+      "correctCorner": "NE",
+      "goesTo": "room5"
+    },
+    {
+      "room": 5,
+      "correctCorner": "NE",
+      "goesTo": "room6"
+    },
+    {
+      "room": 6,
+      "correctCorner": "NW",
+      "goesTo": "room7"
+    },
+    {
+      "room": 7,
+      "correctCorner": "SW",
+      "goesTo": "room8"
+    },
+    {
+      "room": 8,
+      "correctCorner": "SW",
+      "goesTo": "room9"
+    },
+    {
+      "room": 9,
+      "correctCorner": "NE",
+      "goesTo": "room10"
+    },
+    {
+      "room": 10,
+      "correctCorner": "NE",
+      "goesTo": "room11"
+    },
+    {
+      "room": 11,
+      "correctCorner": "NW",
+      "goesTo": "room12"
+    },
+    {
+      "room": 12,
+      "correctCorner": "SW",
+      "goesTo": "room13"
+    },
+    {
+      "room": 13,
+      "correctCorner": "SE",
+      "goesTo": "room14"
+    },
+    {
+      "room": 14,
+      "correctCorner": "SW",
+      "goesTo": "room15"
+    },
+    {
+      "room": 15,
+      "correctCorner": "NW",
+      "goesTo": "room16"
+    },
+    {
+      "room": 16,
+      "correctCorner": "NE",
+      "goesTo": "room17"
+    },
+    {
+      "room": 17,
+      "correctCorner": "SE",
+      "goesTo": "room18"
+    },
+    {
+      "room": 18,
+      "correctCorner": "SW",
+      "goesTo": "room19"
+    },
+    {
+      "room": 19,
+      "correctCorner": "SW",
+      "goesTo": "room20"
+    },
+    {
+      "room": 20,
+      "correctCorner": "SW",
+      "goesTo": "room21"
+    },
+    {
+      "room": 21,
+      "correctCorner": "SW",
+      "goesTo": "room22"
+    },
+    {
+      "room": 22,
+      "correctCorner": "NE",
+      "goesTo": "room23"
+    },
+    {
+      "room": 23,
+      "correctCorner": "NW",
+      "goesTo": "room24"
+    },
+    {
+      "room": 24,
+      "correctCorner": "NE",
+      "goesTo": "room25"
+    },
+    {
+      "room": 25,
+      "correctCorner": "NE",
+      "goesTo": "room26"
+    },
+    {
+      "room": 26,
+      "correctCorner": "NE",
+      "goesTo": "room27"
+    },
+    {
+      "room": 27,
+      "correctCorner": "SE",
+      "goesTo": "room28"
+    },
+    {
+      "room": 28,
+      "correctCorner": "NE",
+      "goesTo": "room29"
+    },
+    {
+      "room": 29,
+      "correctCorner": "NE",
+      "goesTo": "room30"
+    },
+    {
+      "room": 30,
+      "correctCorner": "SE",
+      "goesTo": "room31"
+    },
+    {
+      "room": 31,
+      "correctCorner": "SE",
+      "goesTo": "room32"
+    },
+    {
+      "room": 32,
+      "correctCorner": "NE",
+      "goesTo": "room33"
+    },
+    {
+      "room": 33,
+      "correctCorner": "NW",
+      "goesTo": "room34"
+    },
+    {
+      "room": 34,
+      "correctCorner": "SE",
+      "goesTo": "room35"
+    },
+    {
+      "room": 35,
+      "correctCorner": "NW",
+      "goesTo": "room36"
+    },
+    {
+      "room": 36,
+      "correctCorner": "NW",
+      "goesTo": "room37"
+    },
+    {
+      "room": 37,
+      "correctCorner": "NE",
+      "goesTo": "room38"
+    },
+    {
+      "room": 38,
+      "correctCorner": "NE",
+      "goesTo": "room39"
+    },
+    {
+      "room": 39,
+      "correctCorner": "SW",
+      "goesTo": "finalRoom"
+    },
+    {
+      "room": "finalRoom",
+      "action": "Wrath + soft boots chest \u2192 temple TP (SE)"
+    }
+  ],
+  "tileCounts": {
+    "path": 384,
+    "background": 1353,
+    "teleports": 162,
+    "chests": 1,
+    "total": 1737
+  }
+}

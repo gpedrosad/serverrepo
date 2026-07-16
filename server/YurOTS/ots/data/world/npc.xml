@@ -18,6 +18,7 @@
 <npc name="Nimral" x="85" y="210" z="7" dir="3"/>
 <npc name="Nimral" x="111" y="61" z="6" dir="3"/>
 <npc name="Nimral" x="413" y="102" z="7" dir="3"/>
+<npc name="Nimral" x="450" y="41" z="7" dir="1"/>
 
 <npc name="Parived" x="133" y="58" z="7" dir="2"/>
 <npc name="Tonka" x="140" y="50" z="7" dir="2"/>
