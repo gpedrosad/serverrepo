@@ -44,7 +44,7 @@ Archivos de referencia:
 | 2154 | **Yellow Gem** | 20× Small Sapphire | Botas | +10 haste/stack (máx. 3) |
 | 2153 | Violet Gem | 20× Small Amethyst | Wand/rod | +1 ML/stack (máx. 4) |
 | 2156 | Big Ruby | 20× Small Ruby | Arma (no wand) | +5% / +9% / +16% attack speed |
-| 2155 | Big Emerald | 20× Small Emerald | Armadura | +1 sword/club/axe/dist por stack (máx. 4, P/K) |
+| 2155 | Big Emerald | 20× Small Emerald | Armadura | +1 sword/club/axe/dist por stack (**máx. 4**; **demon armor `2494` hasta 6**) |
 | 2158 | **Blue Gem** | 20× Small Diamond | **Crystal Arrow** (`2352`) | +5% attack speed/stack (máx. 5) |
 
 ### Gemas sin imbuement
@@ -141,7 +141,7 @@ El imbue se guarda en el **`actionid`** del ítem. Si pierdes o tradeas el ítem
 | Yellow (haste) | 9020 – 9022 | 1 / 2 / 3 |
 | Violet (ML) | 9030 – 9033 | 1 / 2 / 3 / 4 |
 | Big Ruby (attack speed) | 9040 – 9042 | 1 / 2 / 3 |
-| Big Emerald (skills) | 9050 – 9053 | 1 / 2 / 3 / 4 |
+| Big Emerald (skills) | 9050 – 9055 | 1 … 4 (cualquier armadura); **1 … 6 en demon armor (`2494`)** |
 | Nightglass (ruby special) | 9060 – 9064 | 1 … 5 |
 | Crystal Arrow (blue gem) | 9070 – 9074 | 1 … 5 |
 
@@ -276,10 +276,10 @@ onUse Yellow Gem
 - **Slot:** armadura (slot 4).
 - **Efecto:** +1 sword, club, axe y distance **por stack**.
 - **Restricción:** solo **Paladin** y **Knight** (incluye promoted: Royal Paladin / Elite Knight) vía `isKnightOrPaladinFamily()` en `getSkill`.
-- **Máx.:** 4 stacks (AID 9050–9053).
+- **Máx.:** 4 stacks (AID 9050–9053) en armaduras normales; **6 stacks (AID 9050–9055) en demon armor (`2494`)**.
 - **Stacking (debe sumar):** skill ring (+4 axe/sword/club o +6 fist power) + emerald stacks + Crimson Helmet (+1) + `tempoBuff` si aplica. Ejemplo: axe skill base `B` + axe ring + emerald 3/4 + crimson = **`B+8`**.
 - **Bug jul 2026 (corregido):** `getSkill()` hacía early `return base + bonus` por fuente; ring ocultaba emerald/crimson, y emerald ocultaba crimson/`tempoBuff`. Fix: acumular como `getEffectiveMagLevel()` (ML).
-
+- **jul 2026:** tope de demon armor subido a 6/6 (`ITEM_EMERALD_SKILL_AID_MAX=9055` + `gem_imbue.lua`).
 ### Blue Gem (2158) → Crystal Arrow
 
 - **Cadena:** 20× Small Diamond → Tonka → Blue Gem → use con **crystal arrow** (`2352`) equipada.

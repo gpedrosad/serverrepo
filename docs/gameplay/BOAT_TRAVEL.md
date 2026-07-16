@@ -35,7 +35,7 @@ Destino del gauntlet de teleports (ver [`MAPEAR_TP_GAUNTLET.md`](../items-and-ma
 
 - Aterrizaje: `452 41 7` (borde este de la sala 0).
 - NPC de vuelta: un solo `Nimral` en la **primera sala** en `450 41 7`.
-- Tras las salas puzzle hay una **sala final 3×3** con Wrath, cofre de quest (soft boots) y un solo TP al templo.
+- Tras las salas puzzle hay una **sala final 3×3** con Wrath, cofres (demon armor + fury cape) y un solo TP al templo.
 - Desde cualquier Nimral/Fargum: `hi` → `gauntlet` → `yes` (20 gp).
 
 ## Hell Quest

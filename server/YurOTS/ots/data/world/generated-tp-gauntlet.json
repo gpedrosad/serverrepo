@@ -6,7 +6,8 @@
   "groundBackgroundId": 100,
   "teleportItemId": 1387,
   "questChestItemId": 1740,
-  "questPrizeUniqueId": 3549,
+  "questPrizeUniqueId": 2494,
+  "questPrizeFuryCapeUniqueId": 20114,
   "monsters": [
     "Rat",
     "Cave Rat",
@@ -3041,13 +3042,23 @@
     },
     "questChest": {
       "itemId": 1740,
-      "uniqueId": 3549,
-      "prizeItemId": 3549,
-      "prizeName": "soft boots",
+      "uniqueId": 2494,
+      "prizeItemId": 2494,
+      "prizeName": "demon armor",
       "x": 450,
       "y": 79,
       "z": 7,
       "corner": "SW"
+    },
+    "questChestFuryCape": {
+      "itemId": 1740,
+      "uniqueId": 20114,
+      "prizeItemId": 20114,
+      "prizeName": "fury cape",
+      "x": 450,
+      "y": 77,
+      "z": 7,
+      "corner": "NW"
     },
     "templeTeleport": {
       "x": 452,
@@ -3061,7 +3072,7 @@
       }
     },
     "teleportCount": 1,
-    "note": "Sala 3\u00d73 final: Wrath en centro, cofre soft boots (SW), un solo TP al templo (SE)."
+    "note": "Sala 3\u00d73 final: Wrath centro; cofres demon armor (SW) + fury cape (NW); 1 TP templo (SE)."
   },
   "solutionPath": [
     {
@@ -3266,14 +3277,14 @@
     },
     {
       "room": "finalRoom",
-      "action": "Wrath + soft boots chest \u2192 temple TP (SE)"
+      "action": "Wrath + demon armor + fury cape chests \u2192 temple TP (SE)"
     }
   ],
   "tileCounts": {
     "path": 384,
     "background": 1353,
     "teleports": 162,
-    "chests": 1,
+    "chests": 2,
     "total": 1737
   }
 }

@@ -270,14 +270,20 @@ function onUse(cid, item, frompos, item2, topos)
 			doPlayerSendCancel(cid, "Wear armor to imbue it.")
 			return 1
 		end
+		-- Demon armor (2494): hasta 6 stacks (AID 9050–9055). Otras armaduras: 4 (9050–9053).
+		local DEMON_ARMOR = 2494
+		local maxStacks = 4
+		if armor.itemid == DEMON_ARMOR then
+			maxStacks = 6
+		end
 		local stacks = 0
-		if armor.actionid >= 9050 and armor.actionid <= 9053 then
+		if armor.actionid >= 9050 and armor.actionid <= 9055 then
 			stacks = armor.actionid - 9049
 		elseif armor.actionid == 9041 then
 			stacks = 3
 		end
-		if stacks >= 4 then
-			doPlayerSendCancel(cid, "Armor already has 4/4 skill imbuements.")
+		if stacks >= maxStacks then
+			doPlayerSendCancel(cid, "Armor already has " .. maxStacks .. "/" .. maxStacks .. " skill imbuements.")
 			return 1
 		end
 		if armor.actionid >= 9020 and armor.actionid <= 9042 and armor.actionid ~= 9041 then
@@ -290,7 +296,7 @@ function onUse(cid, item, frompos, item2, topos)
 		doRemoveItem(item.uid, 1)
 		doSetItemActionId(armor.uid, 9050 + stacks)
 		doSendMagicEffect(getPlayerPosition(cid), 13)
-		doPlayerSendTextMessage(cid, 22, "Armor imbued with skills (" .. (stacks + 1) .. "/4). +1 sword/club/axe/dist per stack.")
+		doPlayerSendTextMessage(cid, 22, "Armor imbued with skills (" .. (stacks + 1) .. "/" .. maxStacks .. "). +1 sword/club/axe/dist per stack.")
 		doPlayerCheckFeetSpeed(cid)
 		return 1
 	end

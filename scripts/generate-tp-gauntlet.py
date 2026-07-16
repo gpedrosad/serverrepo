@@ -6,7 +6,7 @@ tienen teleport (1387); solo 1 avanza, 3 mandan atrás. Una de las salas tiene
 Fury. La última sala puzzle teleporta a la sala final.
 
 Sala final: mismo formato 3×3, un solo TP (al templo), Wrath en el centro y
-cofre de quest (soft boots).
+cofre de quest (demon armor).
 
 Acceso: barco "gauntlet" (boat.lua) → sala 0; Nimral solo ahí (npc.xml).
 
@@ -48,9 +48,12 @@ write_props = _maze.write_props
 
 OTBM_ATTR_UNIQUE_ID = 5
 QUEST_CHEST_ID = 1740
-# Premio del cofre: Soft Boots (uniqueId = item id; quest.lua acepta 1001–4999).
-QUEST_PRIZE_UID = 3549
-QUEST_PRIZE_NAME = "soft boots"
+# Premio 1: Demon Armor. No usar 3549 (soft boots): en este server también es door.
+QUEST_PRIZE_UID = 2494
+QUEST_PRIZE_NAME = "demon armor"
+# Premio 2: Fury Cape (Zagan; quest.lua acepta uniqueId 20100–20199).
+QUEST_PRIZE_FURY_CAPE_UID = 20114
+QUEST_PRIZE_FURY_CAPE_NAME = "fury cape"
 
 ROOM_SIZE = 3
 ROOM_GAP = 3
@@ -271,14 +274,15 @@ def build_gauntlet_tiles(
 
     # Sala final 3×3 al sur del grid (mismo formato que las puzzle).
     # Layout:
-    #   .  L  .     L = landing (desde última puzzle)
+    #   F  L  .     F = cofre fury cape (NW), L = landing
     #   .  W  .     W = Wrath (centro)
-    #   C  .  T     C = cofre soft boots, T = único TP → templo
+    #   D  .  T     D = cofre demon armor (SW), T = único TP → templo
     fox = origin_x
     foy = gy1 + FINAL_ROOM_GAP
     landing = (fox + CENTER[0], foy + 0, z)
     wrath_pos = (fox + CENTER[0], foy + CENTER[1], z)
-    chest_pos = (fox + 0, foy + 2, z)  # SW
+    chest_demon_pos = (fox + 0, foy + 2, z)  # SW
+    chest_fury_pos = (fox + 0, foy + 0, z)  # NW
     temple_tp_pos = (fox + 2, foy + 2, z)  # SE — único TP
 
     x0 = min(gx0, fox - 1)
@@ -368,9 +372,13 @@ def build_gauntlet_tiles(
         for dx in range(ROOM_SIZE):
             tiles[(fox + dx, foy + dy, z)] = GauntletTile(ground=GROUND_PATH)
     tiles[temple_tp_pos] = GauntletTile(ground=GROUND_PATH, teleport=temple_dest)
-    tiles[chest_pos] = GauntletTile(
+    tiles[chest_demon_pos] = GauntletTile(
         ground=GROUND_PATH,
         items=[(QUEST_CHEST_ID, QUEST_PRIZE_UID)],
+    )
+    tiles[chest_fury_pos] = GauntletTile(
+        ground=GROUND_PATH,
+        items=[(QUEST_CHEST_ID, QUEST_PRIZE_FURY_CAPE_UID)],
     )
 
     # Pad de entrada mundo
@@ -401,10 +409,20 @@ def build_gauntlet_tiles(
             "uniqueId": QUEST_PRIZE_UID,
             "prizeItemId": QUEST_PRIZE_UID,
             "prizeName": QUEST_PRIZE_NAME,
-            "x": chest_pos[0],
-            "y": chest_pos[1],
-            "z": chest_pos[2],
+            "x": chest_demon_pos[0],
+            "y": chest_demon_pos[1],
+            "z": chest_demon_pos[2],
             "corner": "SW",
+        },
+        "questChestFuryCape": {
+            "itemId": QUEST_CHEST_ID,
+            "uniqueId": QUEST_PRIZE_FURY_CAPE_UID,
+            "prizeItemId": QUEST_PRIZE_FURY_CAPE_UID,
+            "prizeName": QUEST_PRIZE_FURY_CAPE_NAME,
+            "x": chest_fury_pos[0],
+            "y": chest_fury_pos[1],
+            "z": chest_fury_pos[2],
+            "corner": "NW",
         },
         "templeTeleport": {
             "x": temple_tp_pos[0],
@@ -414,7 +432,7 @@ def build_gauntlet_tiles(
             "dest": {"x": temple_dest[0], "y": temple_dest[1], "z": temple_dest[2]},
         },
         "teleportCount": 1,
-        "note": "Sala 3×3 final: Wrath en centro, cofre soft boots (SW), un solo TP al templo (SE).",
+        "note": "Sala 3×3 final: Wrath centro; cofres demon armor (SW) + fury cape (NW); 1 TP templo (SE).",
     }
 
     meta = {
@@ -447,7 +465,7 @@ def build_gauntlet_tiles(
             }
             for r in rooms
         ]
-        + [{"room": "finalRoom", "action": "Wrath + soft boots chest → temple TP (SE)"}],
+        + [{"room": "finalRoom", "action": "Wrath + demon armor + fury cape chests → temple TP (SE)"}],
     }
     return tiles, meta
 
@@ -571,7 +589,7 @@ def main() -> int:
     )
     print(
         "Reglas: 4 TPs/sala puzzle; última → sala final; "
-        "final: 1 TP templo + Wrath + cofre soft boots"
+        "final: 1 TP templo + Wrath + cofres demon armor + fury cape"
     )
     print(f"Fury en sala puzzle #{meta['furyRoomIndex']}")
     print(f"Origen NW: ({args.origin_x}, {args.origin_y}, {args.z})")
@@ -586,8 +604,9 @@ def main() -> int:
     print(
         f"Sala final: origen ({fr['origin']['x']},{fr['origin']['y']}) | "
         f"boss {fr['monster']['name']} @ ({fr['monster']['x']},{fr['monster']['y']}) | "
-        f"cofre uid={fr['questChest']['uniqueId']} ({fr['questChest']['prizeName']}) "
-        f"@ SW | TP templo @ SE ({fr['templeTeleport']['x']},{fr['templeTeleport']['y']})"
+        f"cofre {fr['questChest']['prizeName']} uid={fr['questChest']['uniqueId']} @ SW | "
+        f"cofre {fr['questChestFuryCape']['prizeName']} uid={fr['questChestFuryCape']['uniqueId']} @ NW | "
+        f"TP templo @ SE ({fr['templeTeleport']['x']},{fr['templeTeleport']['y']})"
     )
     print(f"Footprint: X {fp['fromX']}-{fp['toX']}, Y {fp['fromY']}-{fp['toY']}, z {fp['z']}")
     print("Solución puzzle (GM):")
@@ -613,6 +632,7 @@ def main() -> int:
         "teleportItemId": TELEPORT_ITEM,
         "questChestItemId": QUEST_CHEST_ID,
         "questPrizeUniqueId": QUEST_PRIZE_UID,
+        "questPrizeFuryCapeUniqueId": QUEST_PRIZE_FURY_CAPE_UID,
         "monsters": monsters,
         "finalBoss": FINAL_BOSS,
         "mapFile": str(otbm_path.relative_to(project)),

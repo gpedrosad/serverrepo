@@ -862,7 +862,8 @@ std::string Item::getDescription(bool fullDescription) const
 		s << std::endl << "Imbued: +" << (actionId - ITEM_VIOLET_ML_AID + 1) << " ML (" << (actionId - ITEM_VIOLET_ML_AID + 1) << "/4).";
 	else if(isEmeraldImbueAid(actionId, *this)) {
 		const int stacks = emeraldStacksFromAid(actionId, *this);
-		s << std::endl << "Imbued: +" << stacks << " sword/club/axe/dist (Paladin/Knight) (" << stacks << "/4).";
+		const int maxStacks = (id == ITEM_DEMON_ARMOR) ? 6 : 4;
+		s << std::endl << "Imbued: +" << stacks << " sword/club/axe/dist (Paladin/Knight) (" << stacks << "/" << maxStacks << ").";
 	}
 	else if(rubyStacksFromAid(actionId, this) > 0 && fullDescription && isWeapon())
 		s << std::endl << "It attacks faster: +" << rubySpeedPercentFromStacks(rubyStacksFromAid(actionId, this)) << "% speed ("
