@@ -4,11 +4,13 @@ target = 0
 following = false
 attacking = false
 
-SELLER_HELP = 'I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp mana fluid", "backpack mana fluid", "bp life" or "bp life fluid". I buy empty vials (10gp each). You can also say sell all vials.'
+SELLER_HELP = 'I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.'
 SELLER_WEAPONS = 'Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.'
 SELLER_ARMORS = 'Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.'
 SELLER_SETS = 'Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.'
+-- Match longer/more specific aliases first (strong mana before plain mana).
 SELLER_FLUID_BACKPACKS = {
+	{aliases = {'strong mana potion', 'strong mana', 'smp'}, fluidSubtype = 14, cost = 5010},
 	{aliases = {'mana fluid', 'manafluid', 'mana'}, fluidSubtype = 7, cost = 2010},
 	{aliases = {'life fluid', 'lifefluid', 'life'}, fluidSubtype = 10, cost = 1210},
 }
@@ -34,6 +36,7 @@ SELLER_BUYS = {
 	{keys = {'guardian shield', 'guardians shield'}, itemid = 2515, unitPrice = 2500},
 	{keys = {'leather boots'}, itemid = 2643, unitPrice = 8},
 	{keys = {'fishing rod', 'cana'}, itemid = 2580, unitPrice = 100},
+	{keys = {'strong mana potion', 'strong mana', 'smp'}, itemid = 2006, fluidSubtype = 14, unitPrice = 250},
 	{keys = {'manafluid', 'mana fluid'}, itemid = 2006, fluidSubtype = 7, unitPrice = 100},
 	{keys = {'lifefluid', 'life fluid'}, itemid = 2006, fluidSubtype = 10, unitPrice = 60},
 	{keys = {'backpack', 'mochila'}, itemid = 1988, unitPrice = 10},
@@ -132,6 +135,8 @@ function onCreatureSay(cid, type, msg)
 		local qty = npcParseBuyQuantity(msg)
 		buyFluidQty(cid, 2006, 10, qty, 60 * qty)
 	elseif msgcontains(msg, 'mana') then
+		-- Fallback only for plain mana fluid. SMP is handled above via SELLER_BUYS /
+		-- SELLER_FLUID_BACKPACKS ("strong mana", "smp", "bp smp", etc.).
 		local qty = npcParseBuyQuantity(msg)
 		buyFluidQty(cid, 2006, 7, qty, 100 * qty)
 	end

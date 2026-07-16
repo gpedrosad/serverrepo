@@ -22,7 +22,7 @@ Enganche de login diario: contratos distintos cada día, elección (agency), fee
 | `data/npc/scripts/lib/daily_task.lua` | Catálogo, brackets, ofertas, streak, claim |
 | `data/npc/scripts/huntmaster.lua` | Diálogo |
 | `data/npc/huntmaster.xml` | Definición NPC |
-| `data/world/npc.xml` | Spawn `138,50,7` |
+| `data/world/npc.xml` | Spawn `138,53,6` |
 | `source/npc.cpp` | `doPlayerAddExp`, `doPlayerAddMoney` |
 | `source/player.cpp` | `tryProgressDailyTask` (+ catálogo sync) |
 | `source/game.cpp` | Hook al dar exp por kill de monstruo |

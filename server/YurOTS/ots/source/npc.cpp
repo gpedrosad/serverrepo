@@ -37,8 +37,36 @@
 #include "luascript.h"
 #include "player.h"
 #include "item.h"
+#include "const76.h"
+#include "game.h"
 #include <cctype>
 #include <map>
+#include <list>
+
+extern Game g_game;
+
+// Gem imbuements live in item actionid ranges (see docs/gameplay/GEMS.md).
+static bool isGemImbueActionId(unsigned short aid)
+{
+	if(aid >= ITEM_HASTE_ENCHANT_AID && aid <= ITEM_HASTE_ENCHANT_AID_MAX)
+		return true;
+	if(aid >= ITEM_VIOLET_ML_AID && aid <= ITEM_VIOLET_ML_AID_MAX)
+		return true;
+	if(aid >= ITEM_RUBY_ATTACK_AID && aid <= ITEM_RUBY_ATTACK_AID_MAX)
+		return true;
+	if(aid >= ITEM_EMERALD_SKILL_AID && aid <= ITEM_EMERALD_SKILL_AID_MAX)
+		return true;
+	if(aid >= ITEM_NIGHTGLASS_SPEED_AID && aid <= ITEM_NIGHTGLASS_SPEED_AID_MAX)
+		return true;
+	if(aid >= ITEM_CRYSTAL_ARROW_SPEED_AID && aid <= ITEM_CRYSTAL_ARROW_SPEED_AID_MAX)
+		return true;
+	return false;
+}
+
+static bool isNpcSellableItem(const Item* item)
+{
+	return item && !isGemImbueActionId(item->getActionId());
+}
 
 struct PendingTransaction {
 	int cid;
@@ -135,6 +163,132 @@ static void addMoneyToPlayer(Player* player, uint64_t amount)
 		player->TLMaddItem(ITEM_COINS_GOLD, (unsigned char)amount);
 }
 
+static int getPlayerSellableItemCount(Player* player, int itemid)
+{
+	if(!player)
+		return 0;
+
+	unsigned long counter = 0;
+	std::list<const Container*> stack;
+
+	for(int i = 0; i < 11; i++){
+		Item* invItem = player->getItem(i);
+		if(!invItem)
+			continue;
+
+		if(invItem->getID() == itemid && isNpcSellableItem(invItem)){
+			if(invItem->isStackable())
+				counter += invItem->getItemCountOrSubtype();
+			else
+				counter++;
+		}
+
+		if(Container* tmpcontainer = dynamic_cast<Container*>(invItem))
+			stack.push_back(tmpcontainer);
+	}
+
+	while(!stack.empty()){
+		const Container* container = stack.front();
+		stack.pop_front();
+		for(ContainerList::const_iterator cit = container->getItems(); cit != container->getEnd(); ++cit){
+			Item* item = *cit;
+			if(!item)
+				continue;
+
+			if(item->getID() == itemid && isNpcSellableItem(item)){
+				if(item->isStackable())
+					counter += item->getItemCountOrSubtype();
+				else
+					counter++;
+			}
+
+			if(Container* sub = dynamic_cast<Container*>(item))
+				stack.push_back(sub);
+		}
+	}
+
+	return (int)counter;
+}
+
+static bool removePlayerSellableItems(Player* player, int itemid, int count)
+{
+	if(!player || count <= 0)
+		return false;
+
+	if(getPlayerSellableItemCount(player, itemid) < count)
+		return false;
+
+	std::list<Container*> stack;
+
+	for(int i = 0; i < 11 && count > 0; i++){
+		Item* invItem = player->getItem(i);
+		if(!invItem)
+			continue;
+
+		if(invItem->getID() == (unsigned short)itemid && isNpcSellableItem(invItem)){
+			if(invItem->isStackable()){
+				if(invItem->getItemCountOrSubtype() > count){
+					invItem->setItemCountOrSubtype((unsigned char)(invItem->getItemCountOrSubtype() - count));
+					player->sendInventory(i);
+					count = 0;
+				}
+				else{
+					count -= invItem->getItemCountOrSubtype();
+					g_game.FreeThing(invItem);
+					player->removeItemInventory(i);
+				}
+			}
+			else{
+				count--;
+				g_game.FreeThing(invItem);
+				player->removeItemInventory(i);
+			}
+		}
+		else if(Container* tmpcontainer = dynamic_cast<Container*>(invItem)){
+			stack.push_back(tmpcontainer);
+		}
+	}
+
+	while(!stack.empty() && count > 0){
+		Container* container = stack.front();
+		stack.pop_front();
+		for(int i = 0; i < container->size() && count > 0; i++){
+			Item* item = container->getItem(i);
+			if(!item)
+				continue;
+
+			if(item->getID() == (unsigned short)itemid && isNpcSellableItem(item)){
+				if(item->isStackable()){
+					if(item->getItemCountOrSubtype() > count){
+						item->setItemCountOrSubtype((unsigned char)(item->getItemCountOrSubtype() - count));
+						player->onItemUpdateContainer(container, item, i);
+						count = 0;
+					}
+					else{
+						count -= item->getItemCountOrSubtype();
+						g_game.FreeThing(item);
+						player->onItemRemoveContainer(container, i);
+						container->removeItem(item);
+						i--;
+					}
+				}
+				else{
+					count--;
+					g_game.FreeThing(item);
+					player->onItemRemoveContainer(container, i);
+					container->removeItem(item);
+					i--;
+				}
+			}
+			else if(Container* sub = dynamic_cast<Container*>(item)){
+				stack.push_back(sub);
+			}
+		}
+	}
+
+	return count == 0;
+}
+
 static int getPlayerExactItemCount(Player* player, int itemid, bool useSubtype, int subtype)
 {
 	if(!player)
@@ -143,7 +297,7 @@ static int getPlayerExactItemCount(Player* player, int itemid, bool useSubtype, 
 	if(useSubtype)
 		return player->getExactItemCount((unsigned short)itemid, subtype);
 
-	return player->getItemCount((unsigned short)itemid);
+	return getPlayerSellableItemCount(player, itemid);
 }
 
 static bool removePlayerExactItems(Player* player, int itemid, bool useSubtype, int subtype, int count)
@@ -154,7 +308,17 @@ static bool removePlayerExactItems(Player* player, int itemid, bool useSubtype, 
 	if(useSubtype)
 		return player->removeExactItems((unsigned short)itemid, subtype, count);
 
-	return player->removeItem((unsigned short)itemid, (long)count);
+	return removePlayerSellableItems(player, itemid, count);
+}
+
+static bool playerHasOnlyImbuedCopies(Player* player, int itemid, int count)
+{
+	if(!player || count <= 0)
+		return false;
+
+	const int total = player->getItemCount((unsigned short)itemid);
+	const int sellable = getPlayerSellableItemCount(player, itemid);
+	return total >= count && sellable < count;
 }
 
 static int addChargedItemsToPlayer(Player* player, int itemId, int chargesPerItem, int itemCount)
@@ -505,26 +669,35 @@ void Npc::onCreatureSay(const Creature *creature, SpeakClasses type, const std::
 				if(pt.isSell){
 					if(pt.isBulkSell){
 						bool hasAll = true;
+						bool blockedByImbue = false;
 						for(size_t i = 0; i < pt.bulkItems.size(); i++){
-							if(!player->getItem(pt.bulkItems[i].first, pt.bulkItems[i].second))
+							const int need = pt.bulkItems[i].second;
+							const int sellable = getPlayerSellableItemCount(player, pt.bulkItems[i].first);
+							if(sellable < need){
 								hasAll = false;
+								if(playerHasOnlyImbuedCopies(player, pt.bulkItems[i].first, need))
+									blockedByImbue = true;
+							}
 						}
 						if(hasAll){
 							for(size_t i = 0; i < pt.bulkItems.size(); i++){
-								player->removeItem(pt.bulkItems[i].first, pt.bulkItems[i].second);
+								removePlayerSellableItems(player, pt.bulkItems[i].first, pt.bulkItems[i].second);
 							}
 							player->payBack(pt.cost);
 							doSay("Thanks! Here is your gold.");
-						}else
+						}else if(blockedByImbue)
+							doSay("Sorry, I do not buy items with imbuements.");
+						else
 							doSay("Sorry, you do not have those items.");
-					}else if((pt.hasSubtype && getPlayerExactItemCount(player, pt.itemid, true, pt.subtype) >= pt.count) ||
-						(!pt.hasSubtype && player->getItem(pt.itemid, pt.count))){
+					}else if(getPlayerExactItemCount(player, pt.itemid, pt.hasSubtype, pt.subtype) >= pt.count){
 						if(removePlayerExactItems(player, pt.itemid, pt.hasSubtype, pt.subtype, pt.count)){
 							player->payBack(pt.cost);
 							doSay("Thanks! Here is your gold.");
 						}else
 							doSay("Sorry, you do not have that item.");
-					}else
+					}else if(!pt.hasSubtype && playerHasOnlyImbuedCopies(player, pt.itemid, pt.count))
+						doSay("Sorry, I do not buy items with imbuements.");
+					else
 						doSay("Sorry, you do not have that item.");
 				}else{
 					if(player->canPayWithBank(pt.cost)){
@@ -1231,6 +1404,11 @@ int NpcScript::luaSellItem(lua_State *L)
 
 	if (player)
 	{
+		if(playerHasOnlyImbuedCopies(player, itemid, count)){
+			mynpc->doSay("Sorry, I do not buy items with imbuements.");
+			return 0;
+		}
+
 		PendingTransaction& pt = preparePendingTrade(mynpc->getID());
 		pt.cid = cid;
 		pt.itemid = itemid;
@@ -1298,16 +1476,7 @@ int NpcScript::luaSellBundle(lua_State *L)
 
 	if(player)
 	{
-		PendingTransaction& pt = preparePendingTrade(mynpc->getID());
-		pt.cid = cid;
-		pt.itemid = 0;
-		pt.count = 0;
-		pt.cost = cost;
-		pt.isSell = true;
-		pt.isBulkSell = true;
-		pt.bulkItems.clear();
-		pt.bulkLabel = label? label : "";
-
+		std::vector<std::pair<int,int> > bulkItems;
 		lua_pushnil(L);
 		while(lua_next(L, 4) != 0){
 			if(lua_istable(L, -1)){
@@ -1318,10 +1487,27 @@ int NpcScript::luaSellBundle(lua_State *L)
 				int count = (int)lua_tonumber(L, -1);
 				lua_pop(L, 1);
 				if(itemid > 0 && count > 0)
-					pt.bulkItems.push_back(std::make_pair(itemid, count));
+					bulkItems.push_back(std::make_pair(itemid, count));
 			}
 			lua_pop(L, 1);
 		}
+
+		for(size_t i = 0; i < bulkItems.size(); i++){
+			if(playerHasOnlyImbuedCopies(player, bulkItems[i].first, bulkItems[i].second)){
+				mynpc->doSay("Sorry, I do not buy items with imbuements.");
+				return 0;
+			}
+		}
+
+		PendingTransaction& pt = preparePendingTrade(mynpc->getID());
+		pt.cid = cid;
+		pt.itemid = 0;
+		pt.count = 0;
+		pt.cost = cost;
+		pt.isSell = true;
+		pt.isBulkSell = true;
+		pt.bulkItems = bulkItems;
+		pt.bulkLabel = label? label : "";
 
 		std::stringstream ss;
 		ss << "Sell " << pt.bulkLabel << " for " << cost << " gp? (yes or si)";

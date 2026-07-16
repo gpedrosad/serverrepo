@@ -13,7 +13,7 @@ Ampliacion del Seller para vender backpacks ya armadas de fluids y permitir vent
 
 ## Que conviene conservar al portarlo
 
-- backpacks listas de mana/life fluid
+- backpacks listas de mana/life fluid y strong mana potion (SMP)
 - diferenciacion exacta entre vial vacio y fluid container con subtipo
 - venta masiva de vials
 - confirmacion antes de ejecutar
@@ -30,4 +30,4 @@ Alta. Se adapta facil y se nota enseguida en la experiencia del jugador.
 
 ## Referencias actuales
 
-- `docs/SELLER_FLUIDS.md`
+- `docs/gameplay/SELLER_FLUIDS.md` — lógica de BPs, precios y matching

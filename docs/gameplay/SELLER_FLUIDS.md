@@ -1,125 +1,151 @@
-# Seller fluids y vials
+# Seller: fluids, potions y backpacks llenas
 
-## Objetivo
+Documentación del NPC `seller` (`data/npc/scripts/seller.lua`) para compra de fluids/potions unitarios, **backpacks llenas (BPs)** y venta de vials vacíos.
 
-Se amplió el NPC `seller` para:
+## Resumen
 
-- vender `backpack of mana fluid`
-- vender `backpack of life fluid`
-- permitir `sell all vials`
-- vender solamente `empty vials`, sin confundirlas con mana/life fluids
+| Oferta | Cómo pedirla | Precio | Contenido |
+|--------|--------------|--------|-----------|
+| Mana fluid | `mana fluid`, `3 mana fluid` | 100 gp c/u | vial subtype `7` |
+| Life fluid | `life fluid`, `2 life` | 60 gp c/u | vial subtype `10` |
+| Strong mana potion (SMP) | `smp`, `strong mana`, `strong mana potion` | 250 gp c/u | vial subtype `14` |
+| BP mana fluid | `bp mana`, `bp mana fluid`, `backpack mana fluid` | **2010 gp** | 1× backpack `1988` + 20× mana fluid |
+| BP life fluid | `bp life`, `bp life fluid`, `backpack life fluid` | **1210 gp** | 1× backpack + 20× life fluid |
+| BP strong mana / SMP | `bp smp`, `bp strong mana`, `backpack strong mana potion` | **5010 gp** | 1× backpack + 20× SMP |
+| Empty vial (vende el jugador) | `vial` / `flask` / `frasco` | 10 gp c/u | solo subtype `0` |
+| Sell all empty vials | `sell all vials` | 10 gp × N | solo subtype `0` |
 
-## Archivos tocados
+Fórmula de precio de BP:
 
-- `/Users/gonzalo/Desktop/yurots-principal/server/YurOTS/ots/data/npc/scripts/seller.lua`
-- `/Users/gonzalo/Desktop/yurots-principal/server/YurOTS/ots/source/npc.cpp`
-- `/Users/gonzalo/Desktop/yurots-principal/server/YurOTS/ots/source/npc.h`
-- `/Users/gonzalo/Desktop/yurots-principal/server/YurOTS/ots/source/player.cpp`
-- `/Users/gonzalo/Desktop/yurots-principal/server/YurOTS/ots/source/player.h`
+```
+cost = (unitPrice × 20) + backpack(10 gp)
+```
 
-## Cambios funcionales
+| BP | Cálculo |
+|----|---------|
+| Mana fluid | `20 × 100 + 10 = 2010` |
+| Life fluid | `20 × 60 + 10 = 1210` |
+| Strong mana potion | `20 × 250 + 10 = 5010` |
 
-### Nuevas compras
+---
 
-- `bp mana fluid`
-- `bp of mana fluid`
-- `backpack of mana fluid`
-- `bp manafluid`
+## Lógica de venta de backpacks (BPs)
 
-Precio:
+### Flujo
 
-- `2010 gp` = `20 x mana fluid (100 gp)` + `1 backpack (10 gp)`
+```
+Jugador: "bp smp"
+    │
+    ▼
+sellerMatchFluidBackpack(msg)     -- ANTES del catálogo unitario
+    │  prefixes × aliases
+    │  ej. "bp " + "smp" → match
+    ▼
+getPlayerFreeSlots(cid) < 1 ? → "not enough space"
+    ▼
+buyFluidBackpack(cid, 1988, 2006, fluidSubtype, 20, cost)
+    │
+    ▼
+C++ (npc.cpp): PendingTransaction isFluidBackpackBuy
+NPC: "Buy a backpack of <fluid name> for <cost> gp? (yes or si)"
+    │
+    ▼ yes / si
+addFluidBackpackToPlayer → 1 backpack 1988 con 20 vials del subtype
+```
 
-Contenido:
+Es el mismo binding C++ que usan mana/life: `buyFluidBackpack`. No hace falta tocar C++ para agregar otro fluid BP; solo una fila en `SELLER_FLUID_BACKPACKS`.
 
-- `1 backpack`
-- `20 mana fluids`
+### Matching (`sellerMatchFluidBackpack`)
 
-Tambien se agrego:
+1. Se evalúa **antes** de `SELLER_BUYS`, para que `backpack mana fluid` no compre una backpack vacía (`1988`).
+2. Prefijos reconocidos:
 
-- `bp life fluid`
-- `bp of life fluid`
-- `backpack of life fluid`
-- `bp lifefluid`
+```lua
+'bp ', 'bp of ', 'bp de ',
+'backpack ', 'backpack of ', 'backpack de ',
+'mochila ', 'mochila de '
+```
 
-Precio:
+3. Cada entrada de `SELLER_FLUID_BACKPACKS` tiene `aliases` + `fluidSubtype` + `cost`.
+4. Orden importa: **aliases más específicos primero** (strong mana / smp antes que `mana`), para no ambiguar con mana fluid.
 
-- `1210 gp` = `20 x life fluid (60 gp)` + `1 backpack (10 gp)`
+Tabla actual en Lua:
 
-Contenido:
+| aliases | subtype | cost |
+|---------|---------|------|
+| `strong mana potion`, `strong mana`, `smp` | `14` (`FLUID_STRONG_MANA`) | 5010 |
+| `mana fluid`, `manafluid`, `mana` | `7` (`FLUID_MANAFLUID`) | 2010 |
+| `life fluid`, `lifefluid`, `life` | `10` (`FLUID_LIFEFLUID`) | 1210 |
 
-- `1 backpack`
-- `20 life fluids`
+### Core C++ (referencia)
 
-### Venta de vials vacios
+| Función Lua | Rol |
+|-------------|-----|
+| `buyFluidBackpack(cid, bpId, fluidItemId, subtype, count, cost)` | Confirma y entrega BP llena |
+| `buyFluidQty(cid, itemid, subtype, qty, cost)` | Compra unitaria de fluids |
+| `sellFluid(cid, itemid, subtype, count, cost)` | Venta de vials (vacíos = subtype 0) |
+| `getPlayerFluidCount(cid, itemid, subtype)` | Cuenta vials exactos |
 
-Antes el seller usaba el `itemid 2006` sin distinguir subtipo, asi que podia terminar aceptando cualquier fluid container.
+Implementación: `npc.cpp` → `luaBuyFluidBackpack` / `addFluidBackpackToPlayer`.  
+Confirmación: ver `docs/gameplay/NPC_CONFIRMATION.md`.
 
-Ahora:
+Nombre del fluid en el prompt: `Item::getFluidTypeName(subtype)` (`"strong mana potion"`, `"manafluid"`, `"lifefluid"`).
 
-- `vial`
-- `flask`
-- `frasco`
+### Capacidad
 
-solo venden `empty vials` por:
+- Pre-check Lua: `getPlayerFreeSlots(cid) < 1` → aborta sin prompt.
+- La BP ocupa **1 slot** en el inventario del jugador; los 20 fluids van *dentro* de esa backpack.
+- Si al confirmar falla capacidad/espacio, C++ reembolsa el oro.
 
-- `10 gp` cada una
+---
 
-### Venta masiva
+## Compra unitaria
 
-Se agrego:
+Catálogo `SELLER_BUYS` (vía `npcFindCatalogBuyEntry` + `buyFluidQty` / `buy`):
 
-- `sell all vials`
-- `sell all flasks`
-- `sell all frascos`
+- SMP: keys `strong mana potion`, `strong mana`, `smp` → subtype `14`, 250 gp
+- Mana fluid / life fluid / supplies / armas / gear de knight
 
-El NPC cuenta todos los `empty vials` del jugador y arma una sola confirmacion por el total.
+Fallbacks sueltos al final de `onCreatureSay`:
 
-## Cambios tecnicos
+- mensaje con `life` → life fluid
+- mensaje con `mana` → mana fluid (SMP ya se resolvió arriba por catálogo/BP)
 
-### `npc.cpp` / `npc.h`
+---
 
-Se agregaron bindings Lua nuevos:
+## Venta de vials vacíos
 
-- `buyFluidBackpack(cid, backpackItemId, fluidItemId, fluidSubtype, fluidCount, cost)`
-- `sellFluid(cid, itemid, subtype, count, cost)`
-- `getPlayerFluidCount(cid, itemid, subtype)`
+- `vial` / `flask` / `frasco` → 1 empty vial (subtype `0`) a 10 gp
+- `sell all vials` / `sell all flasks` / `sell all frascos` → todos los empty vials
 
-Tambien se extendio `PendingTransaction` para soportar:
+Usa `getExactItemCount` / `removeExactItems` para no vender mana/life/SMP por error.
 
-- ventas por subtipo de fluid
-- compra especial de backpack llena
+---
 
-### `player.cpp` / `player.h`
+## Archivos
 
-Se agregaron helpers para trabajar con fluid containers exactos:
+| Archivo | Rol |
+|---------|-----|
+| `server/YurOTS/ots/data/npc/scripts/seller.lua` | Catálogo, match de BPs, help |
+| `server/YurOTS/ots/source/npc.cpp` | `buyFluidBackpack`, pending trade, entrega |
+| `server/YurOTS/ots/source/player.cpp` | `getExactItemCount` / `removeExactItems` |
+| `server/YurOTS/ots/source/const76.h` | `FLUID_STRONG_MANA = 14` |
 
-- `getExactItemCount(id, subtype)`
-- `removeExactItems(id, subtype, count)`
+---
 
-Esto evita borrar accidentalmente mana/life fluids cuando el NPC compra vials vacios.
+## Cómo probar
 
-## Como probar
+1. `hi` → `bp smp` → `yes` → backpack con 20 strong mana potions; cobró 5010 gp.
+2. `bp strong mana potion` / `backpack of smp` → mismo resultado.
+3. `smp` / `2 strong mana` → compra unitaria a 250 gp.
+4. `bp mana fluid` / `bp life` → siguen en 2010 / 1210.
+5. `backpack` solo → backpack vacía a 10 gp (no un pack de fluids).
+6. `sell all vials` → solo vacíos; SMP/mana/life no se venden.
 
-1. Hablar con el seller y decir `bp mana fluid`
-2. Confirmar con `yes`
-3. Verificar que llegue una backpack con 20 mana fluids
-4. Repetir con `bp life fluid`
-5. Darse vials vacios y decir `sell all vials`
-6. Confirmar con `yes`
-7. Verificar que desaparezcan solo los vials vacios
-8. Verificar que mana/life fluids no se vendan al usar `vial` o `sell all vials`
+## Si falla
 
-## Que revisar si falla
-
-- Si el NPC cobra pero no entrega la backpack, revisar `addFluidBackpackToPlayer(...)` en `npc.cpp`
-- Si el NPC dice que no hay espacio, revisar capacidad y slots libres del jugador
-- Si `sell all vials` no encuentra items, revisar que el subtype vacio siga siendo `0`
-- Si el script Lua no reconoce frases, revisar `seller.lua`
-- Si hay errores de compilacion, revisar las nuevas firmas en `npc.h` y `player.h`
-
-## Riesgos conocidos
-
-- La venta masiva nueva aplica especificamente a `itemid 2006` subtype `0`
-- Si en el futuro el datapack usa otro contenedor o subtype para vials vacios, hay que actualizar esa parte
-- La logica de backpack llena fue agregada en el core del NPC, no como hack solo de Lua
+- Cobra y no entrega BP → `addFluidBackpackToPlayer` en `npc.cpp`
+- No reconoce `bp smp` → orden/aliases en `SELLER_FLUID_BACKPACKS`
+- `smp` compra mana fluid → el entry de SMP debe estar en `SELLER_BUYS` y `sellerTryBuy` debe correr antes del fallback `mana`
+- `sell all vials` toca potions → subtype vacío debe ser `0` y usarse `sellFluid`/`getPlayerFluidCount` exactos
+)

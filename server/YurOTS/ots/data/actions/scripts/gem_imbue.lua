@@ -7,6 +7,7 @@ SLOT_LEFT = 6
 WANDS = {
 	[2181] = true, [2182] = true, [2183] = true, [2185] = true, [2186] = true,
 	[2187] = true, [2188] = true, [2189] = true, [2190] = true, [2191] = true,
+	[20123] = true, -- Crimson Wand (Violet Gem ML). Train Wand 20126 excluded on purpose.
 }
 
 BOOTS = {
@@ -46,6 +47,9 @@ function isImbueWeapon(itemid)
 		return false
 	end
 	if WANDS[itemid] or NOT_WEAPONS[itemid] then
+		return false
+	end
+	if itemid == 20126 then -- Train Wand: no gem imbues
 		return false
 	end
 	if itemid == CRYSTAL_ARROW then

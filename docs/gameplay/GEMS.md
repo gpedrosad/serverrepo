@@ -130,7 +130,9 @@ IMBUE_FAIL_CHANCE = 50  -- gem_imbue.lua
 
 ### Persistencia
 
-El imbue se guarda en el **`actionid`** del ítem. Si pierdes o tradeas el ítem, el imbue viaja con él. Al mirar el ítem (`item.cpp`) se muestra el estado imbuido.
+El imbue se guarda en el **`actionid`** del ítem. Si pierdes o tradeas el ítem (jugador a jugador), el imbue viaja con él. Al mirar el ítem (`item.cpp`) se muestra el estado imbuido.
+
+**NPCs no compran ítems imbuidos.** La venta a NPC (`sell` / `sellBundle` en `npc.cpp`) ignora copias con AID de gema (9020–9074) y responde *"Sorry, I do not buy items with imbuements."* si solo tenés versiones imbuidas. Si tenés una copia limpia y otra imbuida, el NPC compra solo la limpia.
 
 ### Rangos de actionid
 
@@ -252,9 +254,10 @@ onUse Yellow Gem
 
 ### Violet Gem (2153) → Wand/Rod
 
-- **Slot:** mano derecha o izquierda, solo wands/rods (IDs 2181–2191 en Lua).
+- **Slot:** mano derecha o izquierda, solo wands/rods (IDs 2181–2191 + Crimson Wand `20123` en Lua). Train Wand (`20126`) no admite imbue.
 - **Efecto:** +1 ML efectivo por stack (`getEffectiveMagLevel()` = `maglevel + imbueWandMl`).
 - **Máx.:** 4 stacks (AID 9030–9033).
+- **Bug jul 2026 (corregido):** Crimson Wand no estaba en la tabla `WANDS` de `gem_imbue.lua`, así que Violet Gem respondía "Equip a wand or rod". C++ (`isWandItem` / `checkBoh`) ya la soportaba; faltaba solo el whitelist Lua.
 
 ### Big Ruby (2156) → Arma
 
