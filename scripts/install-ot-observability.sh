@@ -50,13 +50,19 @@ install_cron() {
 install_cron "$MARK_DIAG" "$CRON_DIAG"
 install_cron "$MARK_WD" "$CRON_WD"
 
+if [[ -x "$ROOT/scripts/install-midnight-server-save.sh" ]]; then
+  "$ROOT/scripts/install-midnight-server-save.sh"
+fi
+
 echo ""
 echo "Observabilidad instalada."
 echo "  Diagnóstico cada 5 min → $LOG_DIR/diagnostics.log"
 echo "  Watchdog cada 2 min   → $LOG_DIR/watchdog.log"
+echo "  Server save 00:00 CL  → $LOG_DIR/server-save.log"
 echo "  Web                   → $LOG_DIR/web.log (o web/logs/retro76-web.log local)"
 echo ""
 echo "Comandos útiles:"
 echo "  tail -f $LOG_DIR/diagnostics.log"
 echo "  tail -f $LOG_DIR/web.log"
+echo "  tail -f $LOG_DIR/server-save.log"
 echo "  $ROOT/scripts/ot-diagnostics.sh"

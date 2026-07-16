@@ -6298,6 +6298,24 @@ void Game::writeOnlineList()
 #ifdef TLM_SERVER_SAVE
 // Set from SIGTERM/SIGINT (otserv.cpp). Polled by checkSaveRequest on game thread.
 volatile sig_atomic_t g_yurotsWantShutdown = 0;
+static bool g_delayedServerSavePending = false;
+
+static void broadcastServerSaveRed(const char* message)
+{
+	for(AutoList<Player>::listiterator it = Player::listPlayer.list.begin();
+	    it != Player::listPlayer.list.end(); ++it)
+		(*it).second->sendTextMessage(MSG_RED_TEXT, message);
+}
+
+static void writeServerSaveOk(const char* content)
+{
+	const std::string saveOk = g_config.DATA_DIR + ".server-save-ok";
+	FILE* ok = fopen(saveOk.c_str(), "w");
+	if(ok) {
+		fputs(content, ok);
+		fclose(ok);
+	}
+}
 
 void Game::serverSave()
 {
@@ -6323,11 +6341,19 @@ void Game::autoServerSave()
 {
 	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::autoServerSave()");
 
-	for(AutoList<Player>::listiterator it = Player::listPlayer.list.begin(); it != Player::listPlayer.list.end(); ++it)
-		(*it).second->sendTextMessage(MSG_RED_TEXT, "Server save en progreso.");
+	broadcastServerSaveRed("Server save en progreso.");
 
 	serverSave();
 	addEvent(makeTask(g_config.getGlobalNumber("autosave", 1)*60000, std::mem_fun(&Game::autoServerSave)));
+}
+
+void Game::scheduledServerSave()
+{
+	g_delayedServerSavePending = false;
+	broadcastServerSaveRed("Server save en progreso.");
+	std::cout << ":: scheduled server save (after 5 min warning)" << std::endl;
+	serverSave();
+	writeServerSaveOk("ok\n");
 }
 
 void Game::checkSaveRequest()
@@ -6335,7 +6361,7 @@ void Game::checkSaveRequest()
 	// No outer gameLock: serverSave() takes it. Nested lock would deadlock.
 	const std::string dataDir = g_config.DATA_DIR;
 	const std::string requestSave = dataDir + ".request-server-save";
-	const std::string saveOk = dataDir + ".server-save-ok";
+	const std::string requestSaveNow = dataDir + ".request-server-save-now";
 	const std::string requestShutdown = dataDir + ".request-shutdown";
 
 	bool wantShutdown = (g_yurotsWantShutdown != 0);
@@ -6348,30 +6374,41 @@ void Game::checkSaveRequest()
 		}
 	}
 
+	// Immediate save (scripts/deploy with --now). No 5-minute delay.
+	FILE* sn = fopen(requestSaveNow.c_str(), "r");
+	if(sn) {
+		fclose(sn);
+		unlink(requestSaveNow.c_str());
+		broadcastServerSaveRed("Server save en progreso.");
+		serverSave();
+		writeServerSaveOk("ok\n");
+	}
+
+	// Delayed save: red warning now, actual save in 5 minutes.
 	FILE* sf = fopen(requestSave.c_str(), "r");
 	if(sf) {
 		fclose(sf);
 		unlink(requestSave.c_str());
-		serverSave();
-		FILE* ok = fopen(saveOk.c_str(), "w");
-		if(ok) {
-			fputs("ok\n", ok);
-			fclose(ok);
+		if(!g_delayedServerSavePending) {
+			g_delayedServerSavePending = true;
+			broadcastServerSaveRed("Server save en 5 minutos. Terminen lo que estan haciendo.");
+			std::cout << ":: server save announced; running in 5 minutes" << std::endl;
+			addEvent(makeTask(5 * 60 * 1000, std::mem_fun(&Game::scheduledServerSave)));
+		}
+		else {
+			std::cout << ":: server save already pending; ignoring duplicate request" << std::endl;
 		}
 	}
 
 	if(wantShutdown) {
 		std::cout << ":: graceful shutdown (SIGTERM/request): saving players..." << std::endl;
 		g_yurotsWantShutdown = 0;
+		g_delayedServerSavePending = false;
 		setGameState(GAME_STATE_CLOSED);
 		while(!Player::listPlayer.list.empty())
 			Player::listPlayer.list.begin()->second->kickPlayer();
 		serverSave();
-		FILE* ok = fopen(saveOk.c_str(), "w");
-		if(ok) {
-			fputs("shutdown\n", ok);
-			fclose(ok);
-		}
+		writeServerSaveOk("shutdown\n");
 		std::cout << ":: graceful shutdown complete" << std::endl;
 		OTSYS_SLEEP(500);
 		exit(0);
