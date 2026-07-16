@@ -12,7 +12,8 @@ Fecha: 2026-07-15 (noche CL).
 |-----|---------|
 | `219e191` | `feat(spells): exori hur a target y nuevo exori vis hur.` |
 | `e3c3120` | `feat(npc): no comprar imbues y SMP en Seller.` |
-| `2b704dc` | `docs: anotar SHAs del push main (sin VPS).` (este doc; SHAs post-rebase abajo) |
+| `2b704dc` | `docs: anotar SHAs del push main (sin VPS).` |
+| `1031f54` | `docs: corregir SHAs post-rebase del push main.` |
 
 | Tema | Resumen |
 |------|---------|
