@@ -8,6 +8,11 @@ Fecha: 2026-07-15 (noche CL).
 
 ## Commits incluidos en este push
 
+| SHA | Mensaje |
+|-----|---------|
+| `456c6d6` | `feat(spells): exori hur a target y nuevo exori vis hur.` |
+| `41bdadb` | `feat(npc): no comprar imbues y SMP en Seller.` |
+
 | Tema | Resumen |
 |------|---------|
 | Spells | `exori hur` → target battle list rango 5; nuevo `exori vis hur` (Sorc/Druid, visual HMM); binding C++ `getAttackedCreaturePos` |
