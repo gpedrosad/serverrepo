@@ -254,6 +254,8 @@
 <monster name="Winter Wolf" file="winter wolf.xml" />
 <monster name="Witch" file="Witch.xml" />
 <monster name="Wolf" file="wolf.xml" />
+<monster name="Wrath" file="wrath.xml" />
+
 <monster name="Yeti" file="Yeti.xml" />
 
 <!-- Bosses -->
