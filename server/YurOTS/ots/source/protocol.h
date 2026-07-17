@@ -104,6 +104,8 @@ public:
 	virtual void sendThingDisappear(const Thing *thing, unsigned char stackPos, bool tele) = 0;
 	virtual void sendCreatureTurn(const Creature *creature, unsigned char stackPos) = 0;
 	virtual void sendCreatureSay(const Creature *creature, SpeakClasses type, const std::string &text) = 0;
+	// Red broadcast like GM /B (name "Server"). Default no-op for non-76 protocols.
+	virtual void sendServerBroadcast(const std::string &/*text*/) {}
 	virtual void sendSetOutfit(const Creature* creature) = 0;
 	virtual void sendTileUpdated(const Position &pos) = 0;
 

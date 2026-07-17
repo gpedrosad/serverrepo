@@ -36,7 +36,6 @@ using namespace std;
 #include <cstring>
 
 #include "protocol.h"
-#include "protocol76.h"
 #include "player.h"
 #include "luascript.h"
 #ifdef TLM_BUY_SELL
@@ -1714,9 +1713,7 @@ void Player::sendServerBroadcast(const char* message) const
 {
 	if(!client || !message)
 		return;
-	Protocol76* p76 = dynamic_cast<Protocol76*>(client);
-	if(p76)
-		p76->sendServerBroadcast(message);
+	client->sendServerBroadcast(message);
 }
 
 void Player::flushMsg(){
