@@ -1,0 +1,107 @@
+<materialsextension
+	name="YurOTS Zagan Items"
+	author="YurOTS"
+	description="Items custom del pack Zagan+Square (server ids 20100+)."
+	client="all">
+
+	<tileset name="Zagan Armors">
+		<raw>
+			<item id="20103"/>
+			<item id="20109"/>
+			<item id="20127"/>
+			<item id="20145"/>
+			<item id="20146"/>
+		</raw>
+	</tileset>
+
+	<tileset name="Zagan Boots">
+		<raw>
+			<item id="20129"/>
+		</raw>
+	</tileset>
+
+	<tileset name="Zagan Helmets">
+		<raw>
+			<item id="20102"/>
+			<item id="20113"/>
+			<item id="20118"/>
+			<item id="20152"/>
+		</raw>
+	</tileset>
+
+	<tileset name="Zagan Jewelry">
+		<raw>
+			<item id="20107"/>
+		</raw>
+	</tileset>
+
+	<tileset name="Zagan Legs">
+		<raw>
+			<item id="20104"/>
+			<item id="20116"/>
+			<item id="20117"/>
+			<item id="20148"/>
+		</raw>
+	</tileset>
+
+	<tileset name="Zagan Other">
+		<raw>
+			<item id="20106"/>
+			<item id="20108"/>
+			<item id="20110"/>
+			<item id="20114"/>
+			<item id="20115"/>
+			<item id="20119"/>
+			<item id="20122"/>
+			<item id="20124"/>
+			<item id="20125"/>
+			<item id="20126"/>
+			<item id="20128"/>
+			<item id="20137"/>
+			<item id="20144"/>
+			<item id="20147"/>
+			<item id="20150"/>
+		</raw>
+	</tileset>
+
+	<tileset name="Zagan Runes">
+		<raw>
+			<item id="20131"/>
+			<item id="20132"/>
+			<item id="20133"/>
+			<item id="20134"/>
+			<item id="20135"/>
+			<item id="20136"/>
+			<item id="20140"/>
+			<item id="20141"/>
+			<item id="20142"/>
+			<item id="20143"/>
+		</raw>
+	</tileset>
+
+	<tileset name="Zagan Shields">
+		<raw>
+			<item id="20101"/>
+			<item id="20149"/>
+			<item id="20151"/>
+			<item id="20153"/>
+		</raw>
+	</tileset>
+
+	<tileset name="Zagan Weapons">
+		<raw>
+			<item id="20100"/>
+			<item id="20105"/>
+			<item id="20111"/>
+			<item id="20112"/>
+			<item id="20120"/>
+			<item id="20121"/>
+			<item id="20123"/>
+			<item id="20130"/>
+			<item id="20138"/>
+			<item id="20139"/>
+			<item id="20154"/>
+		</raw>
+	</tileset>
+
+</materialsextension>

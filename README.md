@@ -100,17 +100,21 @@ yurots-principal/
 ├── docker-compose.yml
 ├── docker-compose.prod.yml
 ├── run.sh
-├── rme-client-760/          # Tibia.dat + Tibia.spr para RME
-├── scripts/                 # open-rme, setup, rebuild, etc.
+├── scripts/                 # deploy/, ot/, map/, otb/, client-rme/, web/
+├── devtools/                # clientes + RME + zagan (ver devtools/README.md)
+│   ├── clients/             # client-local, zagan-test client, etc.
+│   └── rme/                 # rme-client-760, extensions, zagan RME root
 ├── server/YurOTS/           # Servidor YurOTS (bind mount)
 │   └── ots/
 │       ├── config.lua
 │       ├── data/world/      # mapa, spawns, casas
 │       ├── data/monster/    # incl. Trainer Monk, Elite Trainer Monk
 │       └── source/          # C++ + binario yurots
-├── backups/
+├── backups/                 # yurots-original.otbm; backups/map/ = locales (gitignored)
 └── docs/
 ```
+
+Los nombres históricos en la raíz (`client-local`, `rme-client-760`, `zagan-test`, …) son **symlinks** a `devtools/`.
 
 ## Compilar dentro del container
 

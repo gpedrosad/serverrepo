@@ -30,6 +30,7 @@ Antes de proponer **cualquier** cambio, leer en este orden:
 5. Según la tarea:
    - Deploy al VPS → `scripts/deploy/README-DEPLOY-VPS.md` (symlink: `scripts/README-DEPLOY-VPS.md`)
    - Índice de scripts → `scripts/README.md` (`deploy/`, `ot/`, `map/`, `otb/`, `client-rme/`, `web/`)
+   - Clientes / RME / Zagan assets → `devtools/README.md` (symlinks en raíz con nombres históricos)
    - Cambios grandes / arquitectura → `docs/PROYECTO.md`
    - Subsistema puntual → el doc específico (ver sección 3).
 

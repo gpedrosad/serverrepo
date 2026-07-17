@@ -1,11 +1,23 @@
 .DS_Store
 *.swp
 *~
+# Clientes locales (también vía symlink en raíz → devtools/clients/)
 client-760/
+devtools/clients/client-760/
 cliente-oficial-retro/mac/otclient_mac
 cliente-oficial-retro/windows/otclient_gl.exe
 cliente-oficial-retro/windows/otclient_dx.exe
 cliente-oficial-retro/windows/*.dll
+devtools/clients/cliente-oficial-retro/mac/otclient_mac
+devtools/clients/cliente-oficial-retro/windows/otclient_gl.exe
+devtools/clients/cliente-oficial-retro/windows/otclient_dx.exe
+devtools/clients/cliente-oficial-retro/windows/*.dll
+# Árboles locales grandes (contenido; los symlinks de raíz sí pueden trackearse)
+devtools/clients/client-local/
+devtools/clients/client-local-zagan-test/
+devtools/rme/rme-client-760-zagan-test/
+devtools/rme/rme-zagan-test-root/
+devtools/zagan-test/
 web/logs/
 web/logs/*.log
 /var/log/retro76/
@@ -45,9 +57,20 @@ server/YurOTS/ots/data/players/
 server/YurOTS/ots/data/crash-*.log
 server/YurOTS/ots/yurots.log
 server/YurOTS/ots/*.log
+server/YurOTS/ots/*.core
+server/YurOTS/ots/qemu_yurots_*.core
+server/YurOTS/ots/data/**/*.bak
+server/YurOTS/ots/data/**/*.bak-*
+server/YurOTS/ots/data/world/generated-island.json
+server/YurOTS/ots/data/world/generated-maze.json
+server/YurOTS/ots/data/items/_test-items.otb
+backups/map/*
+!backups/map/README.md
 yurots_local.log
 cores/
 /Tibia.dat
 /Tibia.spr
 __pycache__/
 *.pyc
+.agents/
+skills-lock.json
