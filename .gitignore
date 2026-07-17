@@ -40,3 +40,14 @@ server/YurOTS/ots/data/players/
 !server/YurOTS/ots/data/players/2.xml
 !server/YurOTS/ots/data/players/3.xml
 !server/YurOTS/ots/data/players/4.xml
+
+# Runtime noise — logs, cores, local symlinks de assets
+server/YurOTS/ots/data/crash-*.log
+server/YurOTS/ots/yurots.log
+server/YurOTS/ots/*.log
+yurots_local.log
+cores/
+/Tibia.dat
+/Tibia.spr
+__pycache__/
+*.pyc

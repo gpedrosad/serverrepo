@@ -23,7 +23,7 @@ WORKDIR /app/YurOTS
 #Crash diagnostics entrypoint (ulimit + ts + tee for stdout persistence).
 #Copied into the image so the bind-mount in compose doesn't have to
 #include the script in the live data tree.
-COPY scripts/docker-entrypoint.sh /app/YurOTS/docker-entrypoint.sh
+COPY scripts/deploy/docker-entrypoint.sh /app/YurOTS/docker-entrypoint.sh
 RUN chmod +x /app/YurOTS/docker-entrypoint.sh
 
 CMD ["/app/YurOTS/docker-entrypoint.sh"]

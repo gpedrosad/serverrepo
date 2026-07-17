@@ -5,7 +5,7 @@
 #   3) Forwards SIGTERM/SIGINT to yurots so deploy can graceful-save players
 #
 # Used via bind mount: server/YurOTS/docker-entrypoint.sh → /app/YurOTS/
-# Keep in sync with scripts/docker-entrypoint.sh (Dockerfile COPY source).
+# Keep in sync with scripts/deploy/docker-entrypoint.sh (Dockerfile COPY source).
 
 set -u
 

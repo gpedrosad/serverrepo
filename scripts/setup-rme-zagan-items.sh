@@ -1,0 +1,1 @@
+client-rme/setup-rme-zagan-items.sh

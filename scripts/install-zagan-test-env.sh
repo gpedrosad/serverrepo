@@ -1,0 +1,1 @@
+client-rme/install-zagan-test-env.sh

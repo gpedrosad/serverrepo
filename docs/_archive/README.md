@@ -17,6 +17,8 @@ Documentación **archivada** — obsoleta, superseded, o one-off.
 | `FIX_MONSTER_AGGRO_ON_RESPAWN.md` | Fix que terminó rompiendo el build (`malloc(): invalid size`). NO se aplicó. |
 | `DARK_RODO_AUDIT.md` | Auditoría one-off (jun 2026). La mayoría de los fixes están aplicados en `data/npc/scripts/runes.lua`, `data/npc/scripts/lib/npc.lua`, `data/world/npc.xml` y `source/npc.cpp`. |
 | `ZAGAN_TEST_HANDOFF.md` | Handoff técnico inicial. Superseded por `docs/items-and-map/ZAGAN_TEST_ITEMS.md` y `docs/items-and-map/SESION_EDITOR_MAPA_JUL2026.md`. |
+| `DEPLOY-PENDIENTE-VPS-JUL2026.md` | Checklist operativo one-off (jul 2026). El procedimiento vigente es `scripts/deploy/README-DEPLOY-VPS.md`. |
+| `PUSH-MAIN-JUL2026-SPELLS-NPC-NO-VPS.md` | Nota de release one-off (jul 2026). Spells vigentes en `docs/gameplay/SPELL_*.md`. |
 
 ## Reglas para esta carpeta
 

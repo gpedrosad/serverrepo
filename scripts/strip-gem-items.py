@@ -1,0 +1,1 @@
+otb/strip-gem-items.py

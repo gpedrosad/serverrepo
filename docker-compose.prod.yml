@@ -32,7 +32,7 @@ services:
       retries: 2
       start_period: 60s
     #Wrapper que sets ulimit -c, redirects to /cores, and persists
-    #stdout+stderr to server/YurOTS/ots/yurots.log (bind mount). Ver scripts/docker-entrypoint.sh.
+    #stdout+stderr to server/YurOTS/ots/yurots.log (bind mount). Ver scripts/deploy/docker-entrypoint.sh.
     command: ["/app/YurOTS/docker-entrypoint.sh"]
     # Investigación cuelgues OT — ver docs/SOCKET_DEBUG_LOGGING.md
     environment:

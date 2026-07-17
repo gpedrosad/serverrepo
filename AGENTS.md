@@ -28,7 +28,8 @@ Antes de proponer **cualquier** cambio, leer en este orden:
 3. `LEERCODEX.md` — playbooks de incidente, SSH, scripts y diagnóstico.
 4. `docs/INDEX.md` — índice maestro de toda la documentación.
 5. Según la tarea:
-   - Deploy al VPS → `scripts/README-DEPLOY-VPS.md`
+   - Deploy al VPS → `scripts/deploy/README-DEPLOY-VPS.md` (symlink: `scripts/README-DEPLOY-VPS.md`)
+   - Índice de scripts → `scripts/README.md` (`deploy/`, `ot/`, `map/`, `otb/`, `client-rme/`, `web/`)
    - Cambios grandes / arquitectura → `docs/PROYECTO.md`
    - Subsistema puntual → el doc específico (ver sección 3).
 
@@ -42,9 +43,9 @@ Si alguno de estos archivos no existe, **avisar** al usuario antes de seguir.
 2. **NUNCA** commitear data runtime de jugadores: `accounts/`, `players/` (excepto `0-4.xml`), `online.xml`, `queue.xml`, `houseitems.xml`, `data/houses/*.xml` con dueños reales de prod, `web/state/*.json`.
 3. **NUNCA** commitear binarios ni artefactos: `source/yurots`, `*.o`, `*.bak`, `*.patch`, `core.*`, `*.log` rotados.
 4. **NUNCA** deployar al VPS si el usuario solo pidió debug local. **Siempre preguntar**.
-5. **SIEMPRE** usar `DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh` para deployar (nada de `docker cp` artesanal).
-6. **SIEMPRE** verificar el estado del servidor con `python3 scripts/ot-probe.py 127.0.0.1 7171` después de tocar el OT (local o VPS).
-7. Smoke tests locales **desactivados temporalmente** (`scripts/.smoke-tests-disabled`). No correr `test-local-smoke.sh` salvo que el usuario pida reactivarlos o use `--force`. Para validar boot/protocolo usar `ot-probe.py`.
+5. **SIEMPRE** usar `DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh` para deployar (nada de `docker cp` artesanal). Canónico: `scripts/deploy/deploy-vps.sh` (symlink en `scripts/`).
+6. **SIEMPRE** verificar el estado del servidor con `python3 scripts/ot-probe.py 127.0.0.1 7171` después de tocar el OT (local o VPS). Canónico: `scripts/ot/ot-probe.py`.
+7. Smoke tests locales **desactivados temporalmente** (`scripts/ot/.smoke-tests-disabled`, symlink en `scripts/`). No correr `test-local-smoke.sh` salvo que el usuario pida reactivarlos o use `--force`. Para validar boot/protocolo usar `ot-probe.py`.
 8. **SIEMPRE** consultar `docs/INDEX.md` y el doc del subsistema antes de tocar ese subsistema.
 9. **SIEMPRE** leer el doc de deploy completo al menos una vez antes del primer deploy al VPS.
 10. Si algo no se entiende del flujo o del incidente, **preguntar antes de actuar**.
@@ -61,6 +62,7 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 |------------|-----|
 | Gemas / minería / crafting | `docs/gameplay/GEMS.md` |
 | Crystal Arrow (spear-like + Blue Gem speed + hit chance) | `docs/gameplay/CRYSTAL_ARROW.md` |
+| Soft Boots (regen HP/MP cada 3 s + desgaste → worn) | `docs/gameplay/SOFT_BOOTS.md` |
 | Daily Task / Huntmaster (contratos diarios) | `docs/gameplay/DAILY_TASK.md` |
 | PvP, frag list, balance de combate | `docs/PVP_SYSTEM.md` |
 | Trade, items, transacciones | `docs/TRADE_SYSTEM.md` |

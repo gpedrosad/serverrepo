@@ -12,7 +12,7 @@ Antes de tocar cualquier cosa, leer en este orden:
 | 1 | [`../LEERCODEX.md`](../LEERCODEX.md) | Siempre primero. Punto de entrada rápido para IAs, diagnóstico de cuelgues OT. |
 | 2 | [`PROYECTO.md`](PROYECTO.md) | Para entender la arquitectura general, deploy, data sagrada, decisiones de diseño. |
 | 3 | [`../AGENTS.md`](../AGENTS.md) | Si sos un agente AI: instrucciones operativas, restricciones, convenciones. |
-| 4 | [`../scripts/README-DEPLOY-VPS.md`](../scripts/README-DEPLOY-VPS.md) | Antes de cualquier deploy a producción. |
+| 4 | [`../scripts/deploy/README-DEPLOY-VPS.md`](../scripts/deploy/README-DEPLOY-VPS.md) | Antes de cualquier deploy a producción. |
 | 5 | [`INDEX.md`](INDEX.md) | Este archivo. Mapa completo de la documentación. |
 
 ---
@@ -33,9 +33,9 @@ Docs operativos planos. Setup, deploy, cliente, smoke tests, migración.
 | [`CHARACTER_SESSION_REPLACEMENT.md`](CHARACTER_SESSION_REPLACEMENT.md) | Reemplazo de sesión de personaje, recovery de cuentas. |
 | [`SMOKE_TESTS.md`](SMOKE_TESTS.md) | Tests de humo locales y en VPS antes de cada release. |
 | [`MIGRATION_PLAYBOOK.md`](MIGRATION_PLAYBOOK.md) | Playbook para migraciones grandes (esquema DB, data, deploys críticos). |
-| [`../scripts/README-DEPLOY-VPS.md`](../scripts/README-DEPLOY-VPS.md) | Deploy seguro en VPS de producción (checklist, rollback). |
-| [`DEPLOY-PENDIENTE-VPS-JUL2026.md`](DEPLOY-PENDIENTE-VPS-JUL2026.md) | **Deploy pendiente jul 2026:** gameplay Zagan C++, private trainers, spawn/desintegrate; qué sí/no va al VPS. |
-| [`PUSH-MAIN-JUL2026-SPELLS-NPC-NO-VPS.md`](PUSH-MAIN-JUL2026-SPELLS-NPC-NO-VPS.md) | **Push a main (jul 2026) sin VPS:** exori hur/vis hur, NPC no compra imbues, SMP seller; requiere rebuild C++ en próximo deploy. |
+| [`../scripts/deploy/README-DEPLOY-VPS.md`](../scripts/deploy/README-DEPLOY-VPS.md) | Deploy seguro en VPS de producción (checklist, rollback). Ver también [`../scripts/README.md`](../scripts/README.md). |
+| [`_archive/DEPLOY-PENDIENTE-VPS-JUL2026.md`](_archive/DEPLOY-PENDIENTE-VPS-JUL2026.md) | *(archivado)* Snapshot jul 2026: qué faltaba deployar al VPS. |
+| [`_archive/PUSH-MAIN-JUL2026-SPELLS-NPC-NO-VPS.md`](_archive/PUSH-MAIN-JUL2026-SPELLS-NPC-NO-VPS.md) | *(archivado)* Push a main jul 2026 sin VPS (spells/NPC). |
 
 ---
 
@@ -152,7 +152,7 @@ Catálogo completo de features del juego. Cada feature tiene su doc individual e
 | Quiero crear un monstruo nuevo | [`gameplay/MONSTER_CREATION.md`](gameplay/MONSTER_CREATION.md) |
 | Voy a tocar gemas o imbuements | [`gameplay/GEMS.md`](gameplay/GEMS.md) → [`features/10-gems-and-imbuements.md`](features/10-gems-and-imbuements.md) |
 | Skill ring + emerald armor + crimson no suman | [`gameplay/GEMS.md`](gameplay/GEMS.md) (Big Emerald / stacking) + `Player::getSkill` en `player.cpp` |
-| Voy a hacer deploy a producción | [`../scripts/README-DEPLOY-VPS.md`](../scripts/README-DEPLOY-VPS.md) |
+| Voy a hacer deploy a producción | [`../scripts/deploy/README-DEPLOY-VPS.md`](../scripts/deploy/README-DEPLOY-VPS.md) |
 | Necesito migrar DB o data crítica | [`MIGRATION_PLAYBOOK.md`](MIGRATION_PLAYBOOK.md) |
 | Voy a cambiar el mapa del server | [`CAMBIAR-MAPA.md`](CAMBIAR-MAPA.md) → [`gameplay/DEPOTS.md`](gameplay/DEPOTS.md) |
 | Jugadores reportan depot vacío | [`gameplay/DEPOTS.md`](gameplay/DEPOTS.md) |

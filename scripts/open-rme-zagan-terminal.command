@@ -1,0 +1,1 @@
+client-rme/open-rme-zagan-terminal.command

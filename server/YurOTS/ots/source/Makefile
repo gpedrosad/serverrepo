@@ -27,7 +27,7 @@ CXXFLAGS = -g -O0 -std=gnu++14 -Wno-deprecated -fpermissive \
 
 LDFLAGS  = -L$(LOCAL_PREFIX)/lib -lxml2 $(LUA_LIBS) -lboost_regex -lpthread -lz
 
-SRCS     = $(filter-out mdump.cpp bounty.cpp, $(wildcard *.cpp))
+SRCS     = $(filter-out mdump.cpp, $(wildcard *.cpp))
 OBJS     = $(SRCS:.cpp=.o)
 TARGET   = yurots
 

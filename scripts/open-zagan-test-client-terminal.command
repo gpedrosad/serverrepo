@@ -1,0 +1,1 @@
+client-rme/open-zagan-test-client-terminal.command
