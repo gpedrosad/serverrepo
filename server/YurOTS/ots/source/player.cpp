@@ -36,6 +36,7 @@ using namespace std;
 #include <cstring>
 
 #include "protocol.h"
+#include "protocol76.h"
 #include "player.h"
 #include "luascript.h"
 #ifdef TLM_BUY_SELL
@@ -1707,6 +1708,15 @@ void Player::sendStats(){
 void Player::sendTextMessage(MessageClasses mclass, const char* message) const
 {
 	client->sendTextMessage(mclass,message);
+}
+
+void Player::sendServerBroadcast(const char* message) const
+{
+	if(!client || !message)
+		return;
+	Protocol76* p76 = dynamic_cast<Protocol76*>(client);
+	if(p76)
+		p76->sendServerBroadcast(message);
 }
 
 void Player::flushMsg(){
@@ -3513,20 +3523,21 @@ void Player::checkSoftBoots(int thinkTicks)
 	if(softBootsTick < SOFT_BOOTS_INTERVAL_MS)
 		return;
 
-	softBootsTick -= SOFT_BOOTS_INTERVAL_MS;
-
 	bool statsChanged = false;
+	while(softBootsTick >= SOFT_BOOTS_INTERVAL_MS) {
+		softBootsTick -= SOFT_BOOTS_INTERVAL_MS;
 
-	if(mana < manamax) {
-		mana += std::min((int64_t)SOFT_BOOTS_MANA_GAIN, manamax - mana);
-		statsChanged = true;
-	}
-
-	if(health < healthmax) {
-		const int add = std::min<int>(SOFT_BOOTS_HP_GAIN, healthmax - health);
-		if(add > 0) {
-			health += add;
+		if(mana < manamax) {
+			mana += std::min((int64_t)SOFT_BOOTS_MANA_GAIN, manamax - mana);
 			statsChanged = true;
+		}
+
+		if(health < healthmax) {
+			const int add = std::min<int>(SOFT_BOOTS_HP_GAIN, healthmax - health);
+			if(add > 0) {
+				health += add;
+				statsChanged = true;
+			}
 		}
 	}
 

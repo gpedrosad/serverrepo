@@ -50,7 +50,6 @@ using namespace std;
 #include "commands.h"
 #include "creature.h"
 #include "player.h"
-#include "protocol76.h"
 #include "monster.h"
 #include "npc.h"
 #include "game.h"
@@ -6309,12 +6308,8 @@ static void broadcastServerSaveRed(const char* message)
 		Player* player = (*it).second;
 		// Default red console line (same as autosave).
 		player->sendTextMessage(MSG_RED_TEXT, message);
-		// GM-style red broadcast so it is hard to miss.
-		if(player->client) {
-			Protocol76* p76 = dynamic_cast<Protocol76*>(player->client);
-			if(p76)
-				p76->sendServerBroadcast(message);
-		}
+		// GM-style red broadcast ("Server: ...") so it is hard to miss.
+		player->sendServerBroadcast(message);
 	}
 }
 
