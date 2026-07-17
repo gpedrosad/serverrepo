@@ -15,6 +15,7 @@ devtools/clients/cliente-oficial-retro/windows/*.dll
 # Árboles locales grandes (contenido; los symlinks de raíz sí pueden trackearse)
 devtools/clients/client-local/
 devtools/clients/client-local-zagan-test/
+devtools/clients/cliente-oficial-retro/
 devtools/rme/rme-client-760-zagan-test/
 devtools/rme/rme-zagan-test-root/
 devtools/zagan-test/
