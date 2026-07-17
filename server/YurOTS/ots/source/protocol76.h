@@ -197,6 +197,8 @@ private:
 	virtual void sendPing();
 	virtual void sendCreatureTurn(const Creature *creature, unsigned char stackpos);
 	virtual void sendCreatureSay(const Creature *creature, SpeakClasses type, const std::string &text);
+	// Red broadcast like GM /B, without needing a speaker creature.
+	void sendServerBroadcast(const std::string &text);
 	
 	virtual void sendCancel(const char *msg);
 	virtual void sendCancelWalk();

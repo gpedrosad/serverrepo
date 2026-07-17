@@ -50,6 +50,7 @@ using namespace std;
 #include "commands.h"
 #include "creature.h"
 #include "player.h"
+#include "protocol76.h"
 #include "monster.h"
 #include "npc.h"
 #include "game.h"
@@ -6304,7 +6305,17 @@ static void broadcastServerSaveRed(const char* message)
 {
 	for(AutoList<Player>::listiterator it = Player::listPlayer.list.begin();
 	    it != Player::listPlayer.list.end(); ++it)
-		(*it).second->sendTextMessage(MSG_RED_TEXT, message);
+	{
+		Player* player = (*it).second;
+		// Default red console line (same as autosave).
+		player->sendTextMessage(MSG_RED_TEXT, message);
+		// GM-style red broadcast so it is hard to miss.
+		if(player->client) {
+			Protocol76* p76 = dynamic_cast<Protocol76*>(player->client);
+			if(p76)
+				p76->sendServerBroadcast(message);
+		}
+	}
 }
 
 static void writeServerSaveOk(const char* content)
@@ -6391,7 +6402,7 @@ void Game::checkSaveRequest()
 		unlink(requestSave.c_str());
 		if(!g_delayedServerSavePending) {
 			g_delayedServerSavePending = true;
-			broadcastServerSaveRed("Server save en 5 minutos. Terminen lo que estan haciendo.");
+			broadcastServerSaveRed("Server save en 5 minutos. Terminen lo que estan haciendo!");
 			std::cout << ":: server save announced; running in 5 minutes" << std::endl;
 			addEvent(makeTask(5 * 60 * 1000, std::mem_fun(&Game::scheduledServerSave)));
 		}

@@ -157,21 +157,23 @@ fi
 
 echo "==> post-deploy: esperar arranque"
 ok=0
-for _ in $(seq 1 60); do
-  if docker logs yurots 2>&1 | tail -40 | grep -q "Could not load houses"; then
+for _ in $(seq 1 90); do
+  if docker logs yurots 2>&1 | tail -80 | grep -q "Could not load houses"; then
     echo ""
     echo "ERROR: el servidor no pudo cargar casas — revisá test.otbm / houses.xml"
     docker logs yurots --tail 25
     exit 1
   fi
-  if docker logs yurots 2>&1 | tail -8 | grep -q "Retro76 Server Running"; then
+  # No confiar solo en el string de boot (sale del tail en segundos).
+  # ot-probe confirma protocolo OT real.
+  if python3 "$ROOT/scripts/ot-probe.py" 127.0.0.1 7171 --quiet 2>/dev/null; then
     ok=1
     break
   fi
   sleep 1
 done
 if [[ "$ok" -ne 1 ]]; then
-  echo "ERROR: el servidor no llegó a 'Server Running' en 60s"
+  echo "ERROR: el servidor no respondió ot-probe en 90s"
   docker logs yurots --tail 25
   exit 1
 fi

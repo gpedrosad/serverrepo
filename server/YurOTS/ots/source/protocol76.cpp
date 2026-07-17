@@ -2303,6 +2303,16 @@ void Protocol76::sendCreatureTurn(const Creature *creature, unsigned char stackP
 }
 
 
+void Protocol76::sendServerBroadcast(const std::string &text)
+{
+	NetworkMessage msg;
+	msg.AddByte(0xAA);
+	msg.AddString("Server");
+	msg.AddByte(SPEAK_BROADCAST);
+	msg.AddString(text);
+	WriteBuffer(msg);
+}
+
 void Protocol76::sendCreatureSay(const Creature *creature, SpeakClasses type, const std::string &text)
 {
 	NetworkMessage msg;
