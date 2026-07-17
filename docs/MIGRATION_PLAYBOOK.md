@@ -463,6 +463,7 @@ Si portas este patron, intenta que el item tenga:
 
 ### Referencias en este repo
 
+- [`docs/gameplay/SOFT_BOOTS.md`](gameplay/SOFT_BOOTS.md)
 - `OTINFO`
 - `server/YurOTS/ots/source/player.cpp`
 - `server/YurOTS/ots/data/items/items.xml`
