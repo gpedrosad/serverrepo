@@ -1939,13 +1939,21 @@ int SpellScript::luaActionSkillBuff(lua_State *L)
 	lua_pop(L,1);
 
 	Spell* spell = getSpell(L);
+	if(!spell){
+		return 0;
+	}
+
 	Creature* creature = spell->game->getCreatureByID((unsigned long)lua_tonumber(L, -1));
 	lua_pop(L,1);
 
 	Player* player = creature ? dynamic_cast<Player*>(creature) : NULL;
 	if(player && player->access < g_config.ACCESS_PROTECT){
+		// Refresh duration/bonus on every successful cast; player must recast
+		// after it expires to get the skill boost again.
 		player->tempoBuffTicks = time;
 		player->tempoBuffBonus = bonus;
+		if(player->client)
+			player->client->sendSkills();
 	}
 	return 0;
 }

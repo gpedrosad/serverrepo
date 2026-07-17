@@ -4659,6 +4659,9 @@ void Game::checkCreature(unsigned long id)
 				if(player->tempoBuffTicks <= 0){
 					player->tempoBuffTicks = 0;
 					player->tempoBuffBonus = 0;
+					// Drop the +skills from the client UI so the next cast is obvious.
+					if(player->client)
+						player->client->sendSkills();
 				}
 			}
 		}
