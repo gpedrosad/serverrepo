@@ -972,17 +972,40 @@ void Monster::onCreatureLeave(const Creature *creature)
 	}
 }
 
+void Monster::applyChallenge(Creature* caster, long durationMs)
+{
+	if(!caster || isSummon() || mType->trainer)
+		return;
+
+	challengeTicks = durationMs;
+	challengedBy = caster->getID();
+
+	bool canReach = isCreatureReachable(caster);
+	Creature::setAttackedCreature(caster);
+	targetPos = caster->pos;
+	// Locked: attack the knight, do not flee while challenge is active.
+	state = canReach ? STATE_ATTACKING : STATE_TARGETNOTREACHABLE;
+	if(canReach)
+		updateLookDirection();
+	startThink();
+}
+
 void Monster::selectTarget(const Creature* creature, bool canReach /* = true*/)
 {
 	if(mType->trainer && !canReach) {
 		return;
 	}
 
+	// Challenge lock: ignore other targets until the timer expires.
+	if(isChallengeLocked() && creature && creature->getID() != challengedBy)
+		return;
+
 	Creature::setAttackedCreature(creature);
 	targetPos = creature->pos;
 
-	//start fleeing?
-	if(!isSummon() && mType->runAwayHealth > 0 && this->health <= mType->runAwayHealth) {
+	//start fleeing? (Challenge suppresses flee for the lock duration.)
+	if(!isSummon() && !isChallengeLocked() &&
+		mType->runAwayHealth > 0 && this->health <= mType->runAwayHealth) {
 		state = STATE_FLEEING;
 	}
 	else if(canReach) {
@@ -1045,8 +1068,25 @@ void Monster::reThink(bool updateOnlyState /* = true*/)
 		}
 	}
 	else {
+		// Challenge (exeta res): keep focusing the challenger; no retarget / flee.
+		if(isChallengeLocked()) {
+			Creature* challenger = game->getCreatureByID(challengedBy);
+			if(!challenger) {
+				challengeTicks = 0;
+				challengedBy = 0;
+			}
+			else {
+				if(attackedCreature != challengedBy) {
+					bool canReach = isCreatureReachable(challenger);
+					selectTarget(challenger, canReach);
+				}
+				if(state == STATE_FLEEING)
+					state = isCreatureReachable(challenger) ? STATE_ATTACKING : STATE_TARGETNOTREACHABLE;
+			}
+		}
+
 		//change target
-		if(state != STATE_IDLE) {
+		if(state != STATE_IDLE && !isChallengeLocked()) {
 			if(mType->changeTargetChance > rand()*10000/(RAND_MAX+1)){
 				bool canReach;
 				Creature *newtarget = findTarget(3, canReach);
@@ -1056,7 +1096,7 @@ void Monster::reThink(bool updateOnlyState /* = true*/)
 			}
 		}
 
-		if(state == STATE_FLEEING) {
+		if(state == STATE_FLEEING && !isChallengeLocked()) {
 			if(this->health > mType->runAwayHealth || !isInRange(targetPos)) {
 				bool canReach;
 				Creature *newtarget = findTarget(0, canReach);
@@ -1069,7 +1109,7 @@ void Monster::reThink(bool updateOnlyState /* = true*/)
 			}
 		}
 
-		if(state == STATE_ATTACKING) {
+		if(state == STATE_ATTACKING && !isChallengeLocked()) {
 			if(mType->runAwayHealth > 0 && this->health <= mType->runAwayHealth) {
 				state = STATE_FLEEING;
 				setUpdateMovePos();

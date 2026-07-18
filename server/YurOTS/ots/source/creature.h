@@ -208,6 +208,8 @@ public:
 	long silenceTicks;
 	long drunkTicks;
 	long rootTicks;
+	long challengeTicks;      // Challenge (exeta res): lock target to challenger
+	unsigned long challengedBy; // creature id of the knight who challenged
 	long tempoBuffTicks;
 	int tempoBuffBonus;
 	int immunities;

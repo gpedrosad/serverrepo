@@ -73,6 +73,7 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 | Spells / runas (carga Lua, safeCast, Soulfire, Paralyze, Anchor) | `docs/gameplay/SPELL_RUNTIME.md` |
 | Whirlwind Throw (`exori hur`) target a distancia | `docs/gameplay/SPELL_EXORI_HUR.md` |
 | Energy Strike Hur (`exori vis hur`) target a distancia (Sorc/Druid, visual HMM) | `docs/gameplay/SPELL_EXORI_VIS_HUR.md` |
+| Challenge (`exeta res`) taunt Knight lock 6 s | `docs/gameplay/SPELL_EXETA_RES.md` |
 | Exhausted (spells/runas, heal vs attack, bindings sin exhaust) | `docs/gameplay/SPELL_EXHAUSTION.md` |
 | Cambiar / exportar mapa OTBM | `docs/CAMBIAR-MAPA.md` |
 | Cliente retro76 / updater | `docs/CLIENT.md` y `docs/CLIENT_UPDATER_RETRO76.md` |

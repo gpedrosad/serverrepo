@@ -70,7 +70,7 @@ configuracion.
 
 ### 4. Spell ofensivo
 
-Intenta lanzar un spell ofensivo (`exori con` por defecto) para tocar tambien
+Intenta lanzar un spell ofensivo (`exori` por defecto; Knight) para tocar tambien
 el camino de combate/magia, y vuelve a validar el guardado.
 
 Si el personaje de prueba esta parado en una zona segura y el cast no puede

@@ -109,6 +109,9 @@ private:
 	void stopThink();
 	void reThink(bool updateOnlyState = true);
 	void selectTarget(const Creature* creature, bool canReach /* = true*/);
+	/** Force target to caster and lock retarget/flee for durationMs (Challenge). */
+	void applyChallenge(Creature* caster, long durationMs);
+	bool isChallengeLocked() const { return challengeTicks >= 1000; }
 
 protected:
 	int useCount;

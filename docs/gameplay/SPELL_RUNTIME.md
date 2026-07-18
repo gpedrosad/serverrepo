@@ -110,6 +110,7 @@ Registrados en el constructor de `SpellScript`:
 | `doChameleon` | `luaActionDoChameleon` |
 | `doParalyze` | `luaActionDoParalyze` |
 | `getAttackedCreaturePos` | `luaActionGetAttackedCreaturePos` — pos del target de battle list (usado por `exori hur`; ver [`SPELL_EXORI_HUR.md`](SPELL_EXORI_HUR.md)) |
+| `doChallenge` | `luaActionDoChallenge` — taunt 3×3 / lock 6 s (`exeta res`; ver [`SPELL_EXETA_RES.md`](SPELL_EXETA_RES.md)) |
 
 Patrones comunes: mismo piso, `canThrowObjectTo`, puff en fallo, PZ / immunities donde corresponde.
 

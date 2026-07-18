@@ -171,6 +171,7 @@ o bien reescribir el efecto para que pase por `creatureThrowRune` / `creatureMak
 | Caso | Exhaust |
 |------|---------|
 | Spells Lua normales (`doAreaMagic` / `doTargetMagic`) | Pipeline normal |
+| `exeta res` | Exhaust vía `doTargetMagic` previo; `doChallenge` solo aplica taunt (no gasta mana solo) |
 | `exani hur` / `exani tera` (C++ hardcode) | Chequean `exhaustedTicks >= 1000` **antes**; **no** setean exhausted al éxito (solo mana) |
 | Conjurar runas / arrows / food | Via `creatureThrowRune` → exhaust **2000** (no heal) |
 | Yell | Si exhausted: `+= EXHAUSTED_ADD` + mensaje; si no: setea `EXHAUSTED` y yellea |

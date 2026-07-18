@@ -4691,6 +4691,14 @@ void Game::checkCreature(unsigned long id)
 				}
 			}
 
+			if(creature->challengeTicks > 0){
+				creature->challengeTicks -= thinkTicks;
+				if(creature->challengeTicks <= 0){
+					creature->challengeTicks = 0;
+					creature->challengedBy = 0;
+				}
+			}
+
 #ifdef YUR_INVISIBLE
 			if (creature->checkInvisible(thinkTicks))
 				creatureChangeOutfit(creature);

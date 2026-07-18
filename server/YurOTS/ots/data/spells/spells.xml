@@ -18,7 +18,8 @@
 <spell name="Energy Strike"			words="exori vis"			maglv="3"	mana="20"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
 <spell name="Energy Strike Hur"		words="exori vis hur"		maglv="4"	mana="30"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
 <spell name="Berzeker"				words="exori"				maglv="5"	mana="100"	enabled="1"><vocation id="4" /></spell>
-<spell name="Brutal Strike"			words="exori con"			maglv="4"	mana="30"	enabled="1"><vocation id="4" /></spell>
+<spell name="Brutal Strike"			words="exori con"			maglv="4"	mana="30"	enabled="1"><vocation id="3" /></spell>
+<spell name="Challenge"				words="exeta res"			maglv="5"	mana="40"	enabled="1"><vocation id="4" /></spell>
 <spell name="Whirlwind Throw"		words="exori hur"			maglv="3"	mana="40"	enabled="1"><vocation id="4" /></spell>
 <spell name="Berzeker Gran"			words="exori gran"			maglv="9"	mana="200"	enabled="1"><vocation id="4" /></spell>
 <spell name="Skill Buff"			words="utito tempo"			maglv="8"	mana="150"	enabled="1"><vocation id="4" /></spell>

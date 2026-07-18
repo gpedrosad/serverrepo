@@ -25,6 +25,7 @@
 #include <functional>
 #include <string>
 #include <fstream>
+#include <vector>
 
 #include <libxml/xmlmemory.h>
 #include <libxml/parser.h>
@@ -373,6 +374,7 @@ int SpellScript::registerFunctions(){
 	lua_register(luaState, "doConvinceCreature", SpellScript::luaActionDoConvinceCreature);
 	lua_register(luaState, "doChameleon", SpellScript::luaActionDoChameleon);
 	lua_register(luaState, "doParalyze", SpellScript::luaActionDoParalyze);
+	lua_register(luaState, "doChallenge", SpellScript::luaActionDoChallenge);
 
 #ifdef BDB_UTEVO_LUX
 	lua_register(luaState, "setPlayerLightLevel", SpellScript::luaSetPlayerLightLevel);
@@ -1022,6 +1024,66 @@ int SpellScript::luaActionDoParalyze(lua_State *L)
 		boost::bind(&restoreFromParalyzeRune, spell->game, target->getID())));
 
 	lua_pushnumber(L, 1);
+	return 1;
+}
+
+// doChallenge(cid) — Challenge / exeta res: nearby monsters target caster for 6s.
+int SpellScript::luaActionDoChallenge(lua_State *L)
+{
+	const long CHALLENGE_MS = 6000;
+	const int RANGE = 1; // Chebyshev: 3×3 around caster (classic "nearby")
+
+	unsigned int cid = (unsigned int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	if(!spell) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Creature* caster = spell->game->getCreatureByID(cid);
+	if(!caster) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	int affected = 0;
+	for(int dy = -RANGE; dy <= RANGE; ++dy) {
+		for(int dx = -RANGE; dx <= RANGE; ++dx) {
+			Position p(caster->pos.x + dx, caster->pos.y + dy, caster->pos.z);
+			Tile* tile = spell->game->getTile(p);
+			if(!tile)
+				continue;
+
+			// Copy ids first — applyChallenge may mutate think state.
+			std::vector<unsigned long> ids;
+			for(CreatureVector::const_iterator it = tile->creatures.begin();
+				it != tile->creatures.end(); ++it) {
+				if(*it)
+					ids.push_back((*it)->getID());
+			}
+
+			for(std::vector<unsigned long>::const_iterator idIt = ids.begin();
+				idIt != ids.end(); ++idIt) {
+				Creature* c = spell->game->getCreatureByID(*idIt);
+				if(!c || c == caster)
+					continue;
+
+				Monster* monster = dynamic_cast<Monster*>(c);
+				if(!monster || monster->isSummon())
+					continue;
+
+				monster->applyChallenge(caster, CHALLENGE_MS);
+				sendSpellMagicEffect(spell->game, monster->pos, NM_ME_MAGIC_ENERGIE);
+				++affected;
+			}
+		}
+	}
+
+	sendSpellMagicEffect(spell->game, caster->pos, NM_ME_SOUND_BLUE);
+	(void)affected;
+	lua_pushnumber(L, 1); // success even with no monsters nearby (mana already spent via doTargetMagic)
 	return 1;
 }
 

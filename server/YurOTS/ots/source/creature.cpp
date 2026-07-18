@@ -75,6 +75,8 @@ access(0)
 	silenceTicks = 0;
 	drunkTicks = 0;
 	rootTicks = 0;
+	challengeTicks = 0;
+	challengedBy = 0;
 	tempoBuffTicks = 0;
 	tempoBuffBonus = 0;
 	exhaustedTicks  = 0;

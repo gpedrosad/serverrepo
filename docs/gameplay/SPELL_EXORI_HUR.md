@@ -145,6 +145,6 @@ Strike direccional con `doAreaMagic`. Bug conocido: el `4` (sur) estaba a **5 SQ
 
 | Spell | Rol |
 |-------|-----|
-| `exori con` | Brutal Strike — 1 SQM delante, más daño, mana 30 |
+| `exori con` | Brutal Strike — 1 SQM delante, Paladin/RP (`voc 3`), mana 30 |
 | `exori` / `exori gran` | Área alrededor del caster |
 | `exura sio` | Target por nombre (`getPosition`); solo players |

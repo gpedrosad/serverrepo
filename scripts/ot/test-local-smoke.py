@@ -833,13 +833,13 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--offensive-spell",
-        default="exori con",
+        default="exori",
         help="Spell ofensivo para validar el camino de combate.",
     )
     parser.add_argument(
         "--offensive-cost",
         type=int,
-        default=30,
+        default=100,
         help="Costo de mana esperado del spell ofensivo.",
     )
     parser.add_argument(
