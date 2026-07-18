@@ -2014,8 +2014,7 @@ int SpellScript::luaActionSkillBuff(lua_State *L)
 		// after it expires to get the skill boost again.
 		player->tempoBuffTicks = time;
 		player->tempoBuffBonus = bonus;
-		if(player->client)
-			player->client->sendSkills();
+		player->sendSkills();
 	}
 	return 0;
 }

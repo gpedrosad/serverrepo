@@ -1704,6 +1704,12 @@ void Player::sendStats(){
 	client->sendStats();
 }
 
+void Player::sendSkills()
+{
+	if(client)
+		client->sendSkills();
+}
+
 void Player::sendTextMessage(MessageClasses mclass, const char* message) const
 {
 	client->sendTextMessage(mclass,message);

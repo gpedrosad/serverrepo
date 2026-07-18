@@ -270,6 +270,7 @@ public:
 	virtual void sendCancelWalk() const;
 	int sendInventory(unsigned char sl_id);
 	void sendStats();
+	void sendSkills();
 	void sendTextMessage(MessageClasses mclass, const char* message) const;
 	void sendTextMessage(MessageClasses mclass, const char* message,const Position &pos, unsigned char type) const;
 	// Red SPEAK_BROADCAST as "Server" (same visual as GM /B).
