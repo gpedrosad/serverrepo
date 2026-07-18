@@ -111,9 +111,107 @@ docker compose -f docker-compose.prod.yml restart yurots
 
 Ver checklist de mapa en `docs/CAMBIAR-MAPA.md` y depots en `docs/gameplay/DEPOTS.md`.
 
+## Items fantasma en casa (look vs `houseitems.xml`)
+
+Síntoma típico: en un SQM se ve un item “fantasma” encima de otro (ej. algo flotando sobre una fire sword), pero al mirar el save no hay un tercer id.
+
+### Diagnóstico rápido (VPS, solo lectura)
+
+```bash
+ssh retro76
+DATA=~/yurots-principal/server/YurOTS/ots/data
+# Reemplazar X Y Z
+python3 - <<'PY'
+from pathlib import Path
+import re
+x, y, z = 166, 39, 7
+t = Path("/root/yurots-principal/server/YurOTS/ots/data/houseitems.xml").read_text(encoding="utf-8", errors="replace")
+m = re.search(rf'<tile x="{x}" y="{y}" z="{z}">(.*?)</tile>', t, re.S)
+print(m.group(0) if m else "tile no está en houseitems.xml")
+PY
+```
+
+Caso documentado **Great Street IV / Maximus** (`166, 39, 7`, jul 2026):
+
+| Capa | Contenido |
+|------|-----------|
+| OTBM | solo piso `405` |
+| `houseitems.xml` | `<item id="2528"/>` (tower shield) + `<item id="2392"/>` (fire sword) |
+
+No había tercer item en disco. El “fantasma” era el **tower shield debajo** mal dibujado sobre la fire sword (orden de stack / sprite grande).
+
+### Arreglo recomendado: in-game (sin tocar XML)
+
+1. Entrar con dueño/subowner o GM.
+2. En `166, 39, 7`: sacar la fire sword y el tower shield (o limpiar el tile con GM).
+3. Volver a poner solo lo deseado (si quieren solo la espada, no dejen el `2528`).
+4. Esperar un save de casas / logout de quien tenga la casa abierta, o reiniciar luego para persistir.
+
+Preferible cuando el server está online y no querés downtime.
+
+### Arreglo por XML en VPS (cuando haga falta)
+
+`houseitems.xml` se carga al **boot**. Si editás el XML con el OT corriendo y reiniciás, el **stop suele guardar** la memoria otra vez y **pisa** tu edición. Orden obligatorio:
+
+```bash
+ssh retro76
+cd ~/yurots-principal
+DATA=server/YurOTS/ots/data
+BACKUP=~/ot-backups/house-ghost-$(date -u +%Y%m%d-%H%M%S)
+mkdir -p "$BACKUP"
+cp -a "$DATA/houseitems.xml" "$BACKUP/"
+echo "Backup: $BACKUP"
+
+# 1) Parar OT (puede reescribir houseitems al bajar — por eso el backup previo)
+docker compose -f docker-compose.prod.yml stop yurots
+
+# 2) Editar DESPUÉS del stop (en el archivo ya guardado por el shutdown)
+python3 - <<'PY'
+from pathlib import Path
+import re
+p = Path("server/YurOTS/ots/data/houseitems.xml")
+t = p.read_text(encoding="utf-8", errors="replace")
+old = '<tile x="166" y="39" z="7"><item id="2528"/><item id="2392"/></tile>'
+new = '<tile x="166" y="39" z="7"><item id="2392"/></tile>'
+if old not in t:
+    raise SystemExit("bloque esperado no encontrado — revisar XML a mano antes de seguir")
+p.write_text(t.replace(old, new, 1), encoding="utf-8")
+print("OK: quitado 2528 en 166,39,7; queda solo fire sword 2392")
+PY
+
+# 3) Subir y verificar protocolo
+docker compose -f docker-compose.prod.yml start yurots
+# esperar unos segundos
+python3 scripts/ot-probe.py 127.0.0.1 7171
+```
+
+Verificación in-game: en `166, 39, 7` solo debe verse la fire sword (sin fantasma/escudo).
+
+### Rollback
+
+```bash
+BACKUP=~/ot-backups/house-ghost-FECHA   # el del paso anterior
+docker compose -f docker-compose.prod.yml stop yurots
+cp -a "$BACKUP/houseitems.xml" ~/yurots-principal/server/YurOTS/ots/data/houseitems.xml
+docker compose -f docker-compose.prod.yml start yurots
+python3 scripts/ot-probe.py 127.0.0.1 7171
+```
+
+Nota: el 2026-07-18 quedó un backup parcial en VPS  
+`/root/ot-backups/house-ghost-166-39-7-20260718-025101/` (copia de `houseitems.xml` **antes** de aplicar el fix; el fix XML **no** se llegó a aplicar).
+
+### Para agentes
+
+- **Nunca** editar `houseitems.xml` en caliente y reiniciar sin asumir que el stop re-guarda.
+- Backup **antes** del stop y, si hace falta, re-chequear el bloque del tile **después** del stop.
+- No tocar otros tiles ni el chest de `167,39,7` (tiene mucho contenido anidado).
+
+---
+
 ## Para agentes IA
 
 - **Nunca** `git checkout` ni `git reset` sobre `data/houses/` en el VPS.
 - Deploy **solo** con `DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh`.
 - Si un jugador reporta “perdí mi casa”, verificar primero `data/houses/<nombre>.xml` en el VPS antes de tocar `players/*.xml`.
 - Los dueños que el admin asigna manualmente en prod **no deben perderse** en el próximo deploy: el script los restaura del backup pre-pull.
+- Items fantasma / stack raro en casa: sección **Items fantasma en casa** arriba (no asumir pérdida de data).

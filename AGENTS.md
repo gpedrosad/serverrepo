@@ -68,6 +68,7 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 | PvP, frag list, balance de combate | `docs/PVP_SYSTEM.md` |
 | Trade, items, transacciones | `docs/TRADE_SYSTEM.md` |
 | Depots, lockers 2589, deploy de mapa | `docs/gameplay/DEPOTS.md` |
+| Casas (dueños, houseitems, items fantasma) | `docs/gameplay/HOUSES.md` |
 | Magic Wall (duración / decay de fields) | `docs/gameplay/MAGIC_WALL.md` |
 | Wands, rods, Crimson Wand, escalado de ML | `docs/gameplay/WANDS.md` |
 | Spells / runas (carga Lua, safeCast, Soulfire, Paralyze, Anchor) | `docs/gameplay/SPELL_RUNTIME.md` |

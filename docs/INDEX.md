@@ -70,7 +70,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/GEMS.md`](gameplay/GEMS.md) | Sistema de gemas: drop, uso, imbuements. Antes de tocar gemas, leer esto. |
 | [`gameplay/CRYSTAL_ARROW.md`](gameplay/CRYSTAL_ARROW.md) | **Crystal Arrow (2352):** throwable tipo spear, Blue Gem speed ×5, hit 85%; spears 70% hit. |
 | [`gameplay/DEPOTS.md`](gameplay/DEPOTS.md) | **Depots:** lockers 2589, XML vs mapa, incidente jul 2026, checklist pre-deploy de mapa. |
-| [`gameplay/HOUSES.md`](gameplay/HOUSES.md) | **Casas:** dueños en `data/houses/*.xml`, deploy, backup y recuperación (incidente jul 2026). |
+| [`gameplay/HOUSES.md`](gameplay/HOUSES.md) | **Casas:** dueños en `data/houses/*.xml`, deploy, backup/recuperación, **items fantasma** (caso Maximus `166,39,7` jul 2026). |
 | [`gameplay/GOLDEN_ACCESSORIES.md`](gameplay/GOLDEN_ACCESSORIES.md) | Golden amulet y golden ring: auto-bank, bonus de oro e interacción entre ambos. |
 | [`gameplay/SOFT_BOOTS.md`](gameplay/SOFT_BOOTS.md) | **Soft Boots (3549):** +3 HP / +12 MP cada 3 s, 4 h de uso → worn (3550); C++ `YUR_SOFT_BOOTS`. |
 | [`gameplay/NPC_CONFIRMATION.md`](gameplay/NPC_CONFIRMATION.md) | Confirmación de transacciones con NPC (anti-misflow). |
