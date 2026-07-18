@@ -216,7 +216,7 @@ def main() -> int:
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
-    project = Path(__file__).resolve().parents[1]
+    project = next(p for p in [Path(__file__).resolve().parent, *Path(__file__).resolve().parents] if (p / "AGENTS.md").is_file() or (p / ".git").is_dir())
     mod = load_sync_module(project)
 
     otbm_path = project / "server/YurOTS/ots/data/world/test.otbm"

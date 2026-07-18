@@ -283,8 +283,17 @@ def sync_houses(otbm_path: Path, houses_path: Path, dry_run: bool = False) -> in
     return removed
 
 
+def project_root() -> Path:
+    p = Path(__file__).resolve().parent
+    for _ in range(8):
+        if (p / "AGENTS.md").is_file() or (p / ".git").is_dir():
+            return p
+        p = p.parent
+    raise SystemExit(f"project root not found from {__file__}")
+
+
 def main():
-    project = Path(__file__).resolve().parents[1]
+    project = project_root()
     otbm = project / "server/YurOTS/ots/data/world/test.otbm"
     houses = project / "server/YurOTS/ots/data/houses.xml"
     dry_run = "--dry-run" in sys.argv
