@@ -293,7 +293,7 @@ def main() -> int:
     parser.add_argument("--dry-run", action="store_true", help="no escribe archivos")
     args = parser.parse_args()
 
-    project = Path(__file__).resolve().parents[1]
+    project = next(p for p in [Path(__file__).resolve().parent, *Path(__file__).resolve().parents] if (p / "AGENTS.md").is_file() or (p / ".git").is_dir())
     otbm_path = args.map or (project / "server/YurOTS/ots/data/world/test.otbm")
     manifest_path = args.manifest or (project / "server/YurOTS/ots/data/world/generated-island.json")
 

@@ -387,7 +387,8 @@ bool Houses::Save(Game* game)
 bool Houses::LoadHouseItems(Game* game)
 {
 	xmlDocPtr doc;
-	doc = xmlParseFile((g_config.DATA_DIR + "houseitems.xml").c_str());
+	// Nested containers in houseitems.xml easily exceed libxml's default depth (256).
+	doc = xmlReadFile((g_config.DATA_DIR + "houseitems.xml").c_str(), NULL, XML_PARSE_HUGE);
 
 	if (doc)
 	{
