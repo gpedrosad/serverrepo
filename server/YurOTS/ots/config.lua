@@ -55,8 +55,8 @@ exhausted = 2000
 -- exhaustion time for healing spells (1000 = 1sec)
 exhaustedheal = 1000
 
--- how many ms to add if the player is already exhausted and tries to cast a spell (1000 = 1sec)
-exhaustedadd = 300
+-- ms to add on yell while already exhausted (spells no longer extend on fail; 0 = Nostalrius/Cip-style)
+exhaustedadd = 0
 
 -- how long does the player has to stay out of fight to get pz unlocked in ms (1000 = 1sec)
 pzlocked = 10*1000

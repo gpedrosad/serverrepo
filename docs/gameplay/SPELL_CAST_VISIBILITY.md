@@ -8,7 +8,7 @@ Detalle del sistema exhausted (tiempos, heal vs attack, runas): [`SPELL_EXHAUSTI
 
 Caso reportado:
 
-- el jugador spamea palabras magicas
+- el jugador spamea / deja apretado un hotkey
 - el spell falla por exhausted u otra validacion interna
 - igual se ve el mensaje en pantalla
 
@@ -16,65 +16,49 @@ Caso reportado:
 
 El flujo de voz del cliente pasa por:
 
-- `/Users/gonzalo/Desktop/yurots-principal/server/YurOTS/ots/source/protocol76.cpp`
-- `/Users/gonzalo/Desktop/yurots-principal/server/YurOTS/ots/source/game.cpp`
+- `server/YurOTS/ots/source/protocol76.cpp`
+- `server/YurOTS/ots/source/game.cpp`
 
 `Protocol76::parseSay(...)` llama `game->creatureSaySpell(player, text)`.
 
-Si esa funcion devuelve `true`, el mensaje se reenvia como `SPEAK_SAY`.
+| Resultado | Comportamiento |
+|-----------|----------------|
+| `SPELL_CAST_SUCCESS` | Reenvia como `SPEAK_SAY` (palabras visibles) |
+| `SPELL_CAST_BLOCKED` | `return` sin hablar |
+| `SPELL_NOT_RECOGNIZED` | Chat normal (no era spell) |
 
-El problema era que `Game::creatureSaySpell(...)` devolvia `true` apenas encontraba un spell valido por palabras, aunque `castSpell(...)` devolviera `false`.
+### Bug original
+
+`Game::creatureSaySpell(...)` devolvia exito apenas encontraba un spell valido por palabras, aunque `castSpell(...)` fallara.
+
+### Bug residual (hotkey hold)
+
+Habia un heuristic `didPlayerSpendSpellResources` que forzaba exito si subia `exhaustedTicks`.
+
+Antes, al fallar por exhausted se hacia `exhaustedTicks += EXHAUSTED_ADD` sin gastar mana → el heuristic marcaba SUCCESS → palabras fantasma.
 
 ## Cambio aplicado
 
-Archivo tocado:
+Archivo: `server/YurOTS/ots/source/game.cpp`
 
-- `/Users/gonzalo/Desktop/yurots-principal/server/YurOTS/ots/source/game.cpp`
-
-Se cambio el retorno para usar el resultado real de:
-
-- `SpellScript::castSpell(...)`
-
-Antes:
-
-- si el texto matcheaba un spell, el mensaje se mostraba igual
-
-Ahora:
-
-- el mensaje solo se muestra si `castSpell(...)` devuelve `true`
+1. Retorno real: `SPELL_CAST_SUCCESS` / `SPELL_CAST_BLOCKED` / `SPELL_NOT_RECOGNIZED`.
+2. Heuristic solo mira **mana** o **soul** gastados. **No** mira `exhaustedTicks`.
+3. Fallar por exhausted en spells **ya no** suma `exhaustedadd` (ver [`SPELL_EXHAUSTION.md`](SPELL_EXHAUSTION.md)).
 
 ## Impacto funcional
 
-Esto no solo cubre exhausted.
-
-Tambien evita mostrar el texto si el spell falla por:
-
-- target invalido
-- validaciones internas del script Lua
-- cualquier `return false` del `onCast`
+Cubren exhausted, target invalido, validaciones Lua, y cualquier `return false` del `onCast`.
 
 ## Archivos relacionados
 
-- `/Users/gonzalo/Desktop/yurots-principal/server/YurOTS/ots/source/game.cpp`
-- `/Users/gonzalo/Desktop/yurots-principal/server/YurOTS/ots/source/protocol76.cpp`
-- `/Users/gonzalo/Desktop/yurots-principal/server/YurOTS/ots/source/spells.cpp`
+- `server/YurOTS/ots/source/game.cpp` (`creatureSaySpell`, `didPlayerSpendSpellResources`)
+- `server/YurOTS/ots/source/protocol76.cpp` (`parseSay`)
+- `server/YurOTS/ots/source/spells.cpp`
+- [`SPELL_EXHAUSTION.md`](SPELL_EXHAUSTION.md)
 
 ## Como probar
 
-1. Tirar un spell repetidamente hasta entrar en exhausted
-2. Verificar que aparezca `You are exhausted.`
-3. Verificar que las palabras magicas no se impriman mientras el cast falle
-4. Esperar que termine el exhausted
-5. Volver a tirar el spell
-6. Verificar que ahora si aparezca el texto y se ejecute
-
-## Que revisar si algo raro pasa
-
-- spells Lua que hoy dependan de devolver `false`
-- spells con target que fallen silenciosamente
-- scripts custom en `server/YurOTS/ots/data/spells/instant/`
-
-## Nota tecnica
-
-La base ya soportaba este comportamiento porque `SpellScript::castSpell(...)` devuelve boolean.
-El bug era que `Game::creatureSaySpell(...)` ignoraba ese valor y trataba cualquier match de palabras como cast exitoso.
+1. Dejar apretado hotkey de `exura` / `exori` hasta exhausted
+2. Debe aparecer `You are exhausted.`
+3. Las palabras magicas **no** deben imprimirse mientras falle
+4. Al terminar el exhausted, el siguiente cast si muestra texto y aplica

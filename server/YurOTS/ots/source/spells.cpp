@@ -104,6 +104,30 @@ bool removeTileItem(Game* game, Creature* caster, Item* item)
 
 }
 
+// Shared exhaust for bindings that skip creatureMakeMagic (Paralyze, Anchor, etc.).
+// healStyle=true → exhaustedheal (support); false → exhausted (offensive).
+static bool playerSpellExhaustBlocked(Player* player)
+{
+	if(!player || player->access >= g_config.ACCESS_PROTECT)
+		return false;
+	if(player->exhaustedTicks < 1000)
+		return false;
+	player->sendTextMessage(MSG_SMALLINFO, "You are exhausted.", player->pos, NM_ME_PUFF);
+	return true;
+}
+
+static void applyPlayerSpellExhaust(Player* player, bool healStyle)
+{
+	if(!player || player->access >= g_config.ACCESS_PROTECT)
+		return;
+#ifdef YUR_HEAL_EXHAUST
+	player->exhaustedTicks = healStyle ? g_config.EXHAUSTED_HEAL : g_config.EXHAUSTED;
+#else
+	(void)healStyle;
+	player->exhaustedTicks = g_config.EXHAUSTED;
+#endif
+}
+
 Spells::Spells(Game* igame): game(igame){
 
                    }
@@ -461,6 +485,12 @@ int SpellScript::luaActionDoDesintegrate(lua_State *L)
 		return 1;
 	}
 
+	Player* casterPlayer = dynamic_cast<Player*>(creature);
+	if(playerSpellExhaustBlocked(casterPlayer)) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
 	if(creature->pos.z != pos.z) {
 		creature->sendCancel("You need to be on the same floor.");
 		lua_pushnumber(L, 0);
@@ -483,8 +513,10 @@ int SpellScript::luaActionDoDesintegrate(lua_State *L)
 	MagicEffectItem* fieldItem = tile->getFieldItem();
 	if(fieldItem && (fieldItem->getID() == 1497 || fieldItem->getID() == 1498)) {
 		bool removed = removeTileItem(spell->game, creature, fieldItem);
-		if(removed)
+		if(removed) {
 			sendSpellMagicEffect(spell->game, pos, NM_ME_PUFF);
+			applyPlayerSpellExhaust(casterPlayer, true);
+		}
 		lua_pushnumber(L, removed ? 1 : 0);
 		return 1;
 	}
@@ -492,8 +524,10 @@ int SpellScript::luaActionDoDesintegrate(lua_State *L)
 	Item* item = getTopDesintegrateItem(tile);
 	if(item) {
 		bool removed = removeTileItem(spell->game, creature, item);
-		if(removed)
+		if(removed) {
 			sendSpellMagicEffect(spell->game, pos, NM_ME_PUFF);
+			applyPlayerSpellExhaust(casterPlayer, true);
+		}
 		lua_pushnumber(L, removed ? 1 : 0);
 		return 1;
 	}
@@ -525,6 +559,11 @@ int SpellScript::luaActionDoAnchorRoot(lua_State *L)
 	}
 
 	Player* caster = dynamic_cast<Player*>(creature);
+	if(playerSpellExhaustBlocked(caster)) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
 	if(creature->pos.z != pos.z) {
 		creature->sendCancel("You need to be on the same floor.");
 		lua_pushnumber(L, 0);
@@ -599,6 +638,7 @@ int SpellScript::luaActionDoAnchorRoot(lua_State *L)
 		targetPlayer->sendIcons();
 	}
 
+	applyPlayerSpellExhaust(caster, false);
 	lua_pushnumber(L, 1);
 	return 1;
 }
@@ -666,6 +706,12 @@ int SpellScript::luaActionDoCurePoison(lua_State *L)
 		return 1;
 	}
 
+	Player* casterPlayer = dynamic_cast<Player*>(caster);
+	if(playerSpellExhaustBlocked(casterPlayer)) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
 	if(caster->pos.z != pos.z) {
 		caster->sendCancel("You need to be on the same floor.");
 		lua_pushnumber(L, 0);
@@ -701,6 +747,7 @@ int SpellScript::luaActionDoCurePoison(lua_State *L)
 		targetPlayer->sendIcons();
 
 	sendSpellMagicEffect(spell->game, target->pos, NM_ME_MAGIC_ENERGIE);
+	applyPlayerSpellExhaust(casterPlayer, true);
 	lua_pushnumber(L, 1);
 	return 1;
 }
@@ -720,6 +767,11 @@ int SpellScript::luaActionDoAnimateDead(lua_State *L)
 
 	Player* player = dynamic_cast<Player*>(spell->game->getCreatureByID(cid));
 	if(!player) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(playerSpellExhaustBlocked(player)) {
 		lua_pushnumber(L, 0);
 		return 1;
 	}
@@ -781,6 +833,7 @@ int SpellScript::luaActionDoAnimateDead(lua_State *L)
 
 	player->addSummon(skeleton);
 	sendSpellMagicEffect(spell->game, spawnPos, NM_ME_MAGIC_ENERGIE);
+	applyPlayerSpellExhaust(player, false);
 	lua_pushnumber(L, 1);
 	return 1;
 }
@@ -800,6 +853,11 @@ int SpellScript::luaActionDoConvinceCreature(lua_State *L)
 
 	Player* player = dynamic_cast<Player*>(spell->game->getCreatureByID(cid));
 	if(!player) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(playerSpellExhaustBlocked(player)) {
 		lua_pushnumber(L, 0);
 		return 1;
 	}
@@ -858,6 +916,7 @@ int SpellScript::luaActionDoConvinceCreature(lua_State *L)
 	}
 
 	sendSpellMagicEffect(spell->game, monster->pos, NM_ME_MAGIC_ENERGIE);
+	applyPlayerSpellExhaust(player, false);
 	lua_pushnumber(L, 1);
 	return 1;
 }
@@ -879,6 +938,11 @@ int SpellScript::luaActionDoChameleon(lua_State *L)
 
 	Player* player = dynamic_cast<Player*>(spell->game->getCreatureByID(cid));
 	if(!player) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(playerSpellExhaustBlocked(player)) {
 		lua_pushnumber(L, 0);
 		return 1;
 	}
@@ -918,6 +982,7 @@ int SpellScript::luaActionDoChameleon(lua_State *L)
 	spell->game->creatureChangeOutfit(player);
 	spell->game->changeOutfitAfter(player->getID(), savedLookMaster, CHAMELEON_MS);
 	sendSpellMagicEffect(spell->game, player->pos, NM_ME_MAGIC_ENERGIE);
+	applyPlayerSpellExhaust(player, true);
 	lua_pushnumber(L, 1);
 	return 1;
 }
@@ -940,6 +1005,12 @@ int SpellScript::luaActionDoParalyze(lua_State *L)
 
 	Creature* caster = spell->game->getCreatureByID(cid);
 	if(!caster) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Player* casterPlayer = dynamic_cast<Player*>(caster);
+	if(playerSpellExhaustBlocked(casterPlayer)) {
 		lua_pushnumber(L, 0);
 		return 1;
 	}
@@ -982,7 +1053,6 @@ int SpellScript::luaActionDoParalyze(lua_State *L)
 		return 1;
 	}
 
-	Player* casterPlayer = dynamic_cast<Player*>(caster);
 	Player* targetPlayer = dynamic_cast<Player*>(target);
 	if(casterPlayer && casterPlayer->access < g_config.ACCESS_PROTECT) {
 		Tile* fromTile = spell->game->getTile(caster->pos);
@@ -1023,6 +1093,7 @@ int SpellScript::luaActionDoParalyze(lua_State *L)
 	spell->game->addEvent(makeTask(PARALYZE_RUNE_MS,
 		boost::bind(&restoreFromParalyzeRune, spell->game, target->getID())));
 
+	applyPlayerSpellExhaust(casterPlayer, false);
 	lua_pushnumber(L, 1);
 	return 1;
 }

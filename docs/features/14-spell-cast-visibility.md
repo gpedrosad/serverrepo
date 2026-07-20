@@ -1,10 +1,8 @@
-# 14. Visibilidad correcta del casteo
-
 ## Que es
 
 Fix para que las palabras magicas solo aparezcan cuando el spell realmente sale.
 
-Antes podia verse el texto aunque el cast fallara por exhausted u otra validacion.
+Antes podia verse el texto aunque el cast fallara por exhausted u otra validacion (incluido hotkey hold por heuristic de `exhaustedTicks`).
 
 ## Por que valio la pena
 
@@ -16,6 +14,7 @@ Antes podia verse el texto aunque el cast fallara por exhausted u otra validacio
 
 - el texto del spell debe depender del exito real del cast
 - cubrir no solo exhausted, tambien invalid target y fallos del script
+- heuristic de recursos solo mana/soul — nunca `exhaustedTicks`
 
 ## Riesgos
 
@@ -28,4 +27,5 @@ Alta. Es una de esas mejoras chicas que elevan mucho la calidad percibida.
 
 ## Referencias actuales
 
-- `docs/SPELL_CAST_VISIBILITY.md`
+- `docs/gameplay/SPELL_CAST_VISIBILITY.md`
+- `docs/gameplay/SPELL_EXHAUSTION.md`

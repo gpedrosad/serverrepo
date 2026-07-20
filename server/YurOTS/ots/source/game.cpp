@@ -101,11 +101,12 @@ static void trimSpellText(std::string& text)
 	text = text.substr(start, end - start);
 }
 
-static bool didPlayerSpendSpellResources(const Player* player, int64_t manaBefore, long exhaustedBefore, unsigned short soulBefore)
+// Heuristic for Lua scripts that spend mana/soul but return false.
+// Only mana/soul count — never exhaustedTicks (failed casts must not look like success).
+static bool didPlayerSpendSpellResources(const Player* player, int64_t manaBefore, unsigned short soulBefore)
 {
 	return player && (
 		player->mana < manaBefore ||
-		player->exhaustedTicks > exhaustedBefore ||
 		player->getSoul() < soulBefore
 	);
 }
@@ -674,7 +675,8 @@ void GameState::onAttack(Creature* attacker, const Position& pos, const MagicEff
 		if(me->causeExhaustion(true) /*!areaTargetVec.empty())*/)
 		{
 #ifdef YUR_HEAL_EXHAUST
-			if (!me->offensive && me->minDamage != 0)	// healing
+			// Non-offensive = heal + support (haste, light, food, conjure…), like Nostalrius aggressive=false → 1s.
+			if (!me->offensive)
 				attackPlayer->exhaustedTicks = g_config.EXHAUSTED_HEAL;
 			else
 #endif //YUR_HEAL_EXHAUST
@@ -4226,8 +4228,8 @@ bool Game::creatureOnPrepareMagicAttack(Creature *creature, Position pos, const 
 		if(player) {
 			if(player->access < g_config.ACCESS_PROTECT) {
 				if(player->exhaustedTicks >= 1000 && me->causeExhaustion(true)) {
+					// Do not extend the timer on fail (Nostalrius/Cip-style). exhaustedadd is yell-only.
 					player->sendTextMessage(MSG_SMALLINFO, "You are exhausted.", player->pos, NM_ME_PUFF);
-					player->exhaustedTicks += g_config.EXHAUSTED_ADD;
 					return false;
 				}
 				else if(player->mana < me->manaCost) {
@@ -5135,10 +5137,9 @@ SpellCastResult Game::creatureSaySpell(Creature *creature, const std::string &te
 #endif //YUR_LEARN_SPELLS
 					{
 						const int64_t manaBefore = player->mana;
-						const long exhaustedBefore = player->exhaustedTicks;
 						const unsigned short soulBefore = player->getSoul();
 						ret = SpellScript::safeCast(sit->second, creature, creature->pos, var);
-						if(!ret && didPlayerSpendSpellResources(player, manaBefore, exhaustedBefore, soulBefore))
+						if(!ret && didPlayerSpendSpellResources(player, manaBefore, soulBefore))
 							ret = true;
 					}
 				}

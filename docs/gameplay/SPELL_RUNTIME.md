@@ -4,7 +4,7 @@ Documento del incidente/fix `33557889` (*fix(spells): restaurar runas rotas y sa
 
 Leer **antes** de agregar una runa/spell nueva o de tocar `spells.cpp` / `spells.xml`.
 
-Cooldown mágico del jugador (exhausted / heal exhaust / bindings sin exhaust): [`SPELL_EXHAUSTION.md`](SPELL_EXHAUSTION.md).
+Cooldown mágico del jugador (exhausted / heal vs support / bindings con exhaust): [`SPELL_EXHAUSTION.md`](SPELL_EXHAUSTION.md).
 
 ## Síntoma
 
@@ -119,7 +119,7 @@ Patrones comunes: mismo piso, `canThrowObjectTo`, puff en fallo, PZ / immunities
 1. Nombre del `.lua` = `tolower(name)` (runas) o `words` exactos (instants).
 2. `function onCast` presente.
 3. Si el efecto no se puede hacer solo en Lua → binding C++ + `lua_register`.
-4. Si el binding **no** pasa por `creatureMakeMagic`, decidir exhausted explícitamente (ver [`SPELL_EXHAUSTION.md`](SPELL_EXHAUSTION.md) — hoy Paralyze/Anchor/etc. no exhaustean).
+4. Si el binding **no** pasa por `creatureMakeMagic`, usar `playerSpellExhaustBlocked` + `applyPlayerSpellExhaust` (ver [`SPELL_EXHAUSTION.md`](SPELL_EXHAUSTION.md)).
 5. Rebuild del binario si tocaste `spells.cpp` / `.h` / `game.cpp` / `monster.cpp` (`make clean && make` si cambió un header compartido).
 6. `docker compose -f docker-compose.prod.yml up -d yurots`
 7. `python3 scripts/ot-probe.py 127.0.0.1 7171`

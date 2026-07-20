@@ -6,17 +6,19 @@ Leer **antes** de tocar tiempos de cast, spam de curas/runas, o bindings C++ nue
 
 Relacionados: [`SPELL_RUNTIME.md`](SPELL_RUNTIME.md) (carga Lua / `safeCast`), [`SPELL_CAST_VISIBILITY.md`](SPELL_CAST_VISIBILITY.md) (texto del spell vs exhausted), [`ML_RATE.md`](ML_RATE.md) (spam `exura` y ML).
 
+Referencia de diseño (jul 2026): alineado con [Nostalrius 7.7](https://github.com/Ezzz-dev/Nostalrius) / consenso Cip 7.4–7.6 — timer único, ofensivo 2 s / no-ofensivo 1 s, **sin** alargar exhaust al fallar un cast.
+
 ---
 
 ## Config actual (`config.lua`)
 
 | Clave | Valor actual | Qué hace |
 |-------|--------------|----------|
-| `exhausted` | **2000** ms | Exhaust post-cast ofensivo / no-heal (spells, runas “mágicas”, conjurar, haste, yell…) |
-| `exhaustedheal` | **1000** ms | Exhaust post-cast de **curas** (`offensive=false` y `minDamage != 0`) |
-| `exhaustedadd` | **300** ms | Penalidad al intentar castear / yell mientras ya estás exhausted |
+| `exhausted` | **2000** ms | Exhaust post-cast **ofensivo** (`offensive=true`) |
+| `exhaustedheal` | **1000** ms | Exhaust post-cast **no-ofensivo**: curas + support (haste, light, food, conjurar, antidote, chameleon, desintegrate…) |
+| `exhaustedadd` | **0** ms | Solo yell: ms a sumar si yell mientras exhausted. Spells **no** lo usan (fallar por exhaust no alarga el timer). |
 
-Carga en C++ (`luascript.cpp` → `g_config.EXHAUSTED` / `EXHAUSTED_HEAL` / `EXHAUSTED_ADD`). Requiere **restart del OT** (no recompilar).
+Carga en C++ (`luascript.cpp` → `g_config.EXHAUSTED` / `EXHAUSTED_HEAL` / `EXHAUSTED_ADD`). Requiere **restart del OT** (no recompilar) para cambios de config.
 
 GM / access ≥ `accessprotect` (2): **no** se les aplica exhausted en casts mágicos ni yell.
 
@@ -36,9 +38,10 @@ Con los valores actuales:
 
 | Acción | Exhaust aplicado | Ventana efectiva de bloqueo |
 |--------|------------------|-----------------------------|
-| Cura (`exura`, etc.) | 1000 ms | ~1 s (un tick de player) |
-| Ataque / área / runa vía `creatureMakeMagic` | 2000 ms | ~2 s (dos ticks) |
-| Spam mientras exhausted | `+= 300` ms | Alarga el timer |
+| Cura / support (`exura`, haste, conjure…) | 1000 ms | ~1 s (un tick de player) |
+| Ataque / área / runa ofensiva | 2000 ms | ~2 s (dos ticks) |
+| Spam cast mientras exhausted | **no** suma tiempo | Solo mensaje; timer sigue bajando |
+| Yell mientras exhausted | `+= exhaustedadd` (hoy 0) | Sin penalidad con config actual |
 
 ---
 
@@ -60,7 +63,7 @@ Lua onCast
 
 Para players con `access < ACCESS_PROTECT`:
 
-1. Si `exhaustedTicks >= 1000` **y** `me->causeExhaustion(true)` → mensaje + `exhaustedTicks += EXHAUSTED_ADD` → **return false** (no gasta mana).
+1. Si `exhaustedTicks >= 1000` **y** `me->causeExhaustion(true)` → mensaje → **return false** (no gasta mana, **no** alarga el timer).
 2. Si mana insuficiente → puff / “not enough mana”.
 3. Si OK → resta mana y `addManaSpent`.
 
@@ -69,7 +72,7 @@ Para players con `access < ACCESS_PROTECT`:
 ```cpp
 if (me->causeExhaustion(true)) {
 #ifdef YUR_HEAL_EXHAUST
-  if (!me->offensive && me->minDamage != 0)  // cura
+  if (!me->offensive)  // heal + support
     attackPlayer->exhaustedTicks = g_config.EXHAUSTED_HEAL;
   else
 #endif
@@ -92,18 +95,19 @@ if (me->causeExhaustion(true)) {
 
 ---
 
-## Curas vs ofensivos
+## Ofensivo vs no-ofensivo
 
 | Condición | Exhaust |
 |-----------|---------|
-| `offensive == false` **y** `minDamage != 0` | `exhaustedheal` (1000) |
-| Cualquier otro efecto que cause exhaust | `exhausted` (2000) |
+| `offensive == false` | `exhaustedheal` (1000) |
+| `offensive == true` (u otro efecto que cause exhaust) | `exhausted` (2000) |
 
 Implicaciones prácticas:
 
-- `exura` / `exura gran` / `exura vita` / `exura sio` → heal exhaust.
-- Haste (`utani hur`), light, food, **conjurar runas** (`makeRune`): `offensive=false` pero `minDamage==0` → **exhaust de ataque (2000)**, no heal.
-- Mass healing con rama `minDmg = 0` (algunos scripts) puede caer en exhaust de ataque si esa rama se usa.
+- `exura` / `exura gran` / `exura vita` / `exura sio` → 1 s.
+- Haste (`utani hur`), light, food, **conjurar runas** (`makeRune`): `offensive=false` → **1 s** (antes caían en 2 s por exigir `minDamage != 0`).
+- Ataque / runas ofensivas → 2 s.
+- SD → UH: mismo timer; tras SD hay que esperar ~2 s.
 
 ---
 
@@ -120,49 +124,43 @@ Usado hoy en:
 
 | Spell | Helper |
 |-------|--------|
-| `exori vis`, `exori flam`, `exori mort` | `reduceExhaustion` |
+| `exori vis`, `exori flam`, `exori mort`, `exori vis hur` | `reduceExhaustion` |
 | `exevo mort hur` | `reduceExhaustionByPercent(..., 75)` |
 
 Se llaman **después** de un `doAreaMagic` exitoso: el cast pone 2000 y luego el helper lo corta.
 
 ---
 
-## Runas: dos mundos
+## Runas: pipeline mágico + bindings C++
 
-### A) Runas vía magic pipeline (sí exhausted)
+### A) Runas vía magic pipeline
 
 Cualquier runa cuyo Lua use `doTargetMagic`, `doAreaMagic`, `doTargetExMagic`, `do*GroundMagic`, etc.
 
 Ejemplos: HMM, SD, GFB, Explosion, MW, Soulfire, Envenom, UH rune…
 
 - Chequean exhausted en `creatureOnPrepareMagicAttack`.
-- Aplican exhausted al éxito.
+- Aplican exhausted al éxito (ofensivo 2 s / no-ofensivo 1 s).
 - DoTs (Soulfire): el **lanzamiento** exhaustea; los ticks del condition **no**.
+- Charge se consume solo si `safeCast` / binding devolvió éxito.
 
-Uso de runa: `Game::playerUseItemEx` / `playerUseBattleWindow` → `SpellScript::safeCast` → script Lua. No hay chequeo de exhausted **fuera** de `creatureMakeMagic`.
+### B) Bindings C++ custom (**con** exhausted, jul 2026)
 
-### B) Bindings C++ custom (hoy: **sin** exhausted)
+Helpers compartidos en `spells.cpp`: `playerSpellExhaustBlocked` / `applyPlayerSpellExhaust`.
 
-Estos helpers **no** pasan por `creatureMakeMagic`. No chequean `exhaustedTicks` al inicio ni lo setean al éxito:
+| Lua / binding | Exhaust al éxito | Estilo |
+|---------------|------------------|--------|
+| `doParalyze` | 2000 | ofensivo |
+| `doAnchorRoot` | 2000 | ofensivo |
+| `doAnimateDead` | 2000 | ofensivo |
+| `doConvinceCreature` | 2000 | ofensivo |
+| `doCurePoison` | 1000 | support |
+| `doChameleon` | 1000 | support |
+| `doDesintegrate` | 1000 | support |
 
-| Lua / binding | Runa / uso |
-|---------------|------------|
-| `doParalyze` | Paralyze `2278` |
-| `doAnchorRoot` | Anchor `2296` |
-| `doDesintegrate` | Desintegrate `2310` |
-| `doCurePoison` | Antidote `2266` |
-| `doAnimateDead` | Animate Dead `2316` |
-| `doConvinceCreature` | Convince `2290` |
-| `doChameleon` | Chameleon `2291` |
+Comparten el mismo `exhaustedTicks` que SD/UH. Fallar por exhausted **no** gasta charge (el charge se descuenta solo si el cast tuvo éxito en `playerUseItemEx` / `playerUseBattleWindow`).
 
-Consecuencia: se pueden spamear a ritmo de click / charges (y validaciones propias: PZ, line of sight, target, etc.), **sin** cooldown de exhausted compartido con SD/UH.
-
-Si se quiere exhausted en una de estas, hay que:
-
-1. Chequear `exhaustedTicks >= 1000` al inicio (y opcionalmente `+= EXHAUSTED_ADD` + mensaje), y
-2. Setear `exhaustedTicks = EXHAUSTED` (o `EXHAUSTED_HEAL`) al éxito,
-
-o bien reescribir el efecto para que pase por `creatureThrowRune` / `creatureMakeMagic`.
+Binding C++ nuevo: **usar esos helpers** (o pasar por `creatureMakeMagic`). No dejar paths sin exhaust.
 
 ---
 
@@ -171,9 +169,9 @@ o bien reescribir el efecto para que pase por `creatureThrowRune` / `creatureMak
 | Caso | Exhaust |
 |------|---------|
 | Spells Lua normales (`doAreaMagic` / `doTargetMagic`) | Pipeline normal |
-| `exeta res` | Exhaust vía `doTargetMagic` previo; `doChallenge` solo aplica taunt (no gasta mana solo) |
+| `exeta res` | Exhaust vía `doTargetMagic` previo; `doChallenge` solo aplica taunt |
 | `exani hur` / `exani tera` (C++ hardcode) | Chequean `exhaustedTicks >= 1000` **antes**; **no** setean exhausted al éxito (solo mana) |
-| Conjurar runas / arrows / food | Via `creatureThrowRune` → exhaust **2000** (no heal) |
+| Conjurar runas / arrows / food | Via `creatureThrowRune` → **exhaustedheal** (1 s, `offensive=false`) |
 | Yell | Si exhausted: `+= EXHAUSTED_ADD` + mensaje; si no: setea `EXHAUSTED` y yellea |
 
 Visibilidad del texto del spell al fallar por exhausted: [`SPELL_CAST_VISIBILITY.md`](SPELL_CAST_VISIBILITY.md).
@@ -198,9 +196,9 @@ Visibilidad del texto del spell al fallar por exhausted: [`SPELL_CAST_VISIBILITY
 | `server/YurOTS/ots/config.lua` | `exhausted`, `exhaustedheal`, `exhaustedadd` |
 | `server/YurOTS/ots/source/luascript.cpp` | Carga a `g_config` |
 | `server/YurOTS/ots/source/creature.h` | `exhaustedTicks` |
-| `server/YurOTS/ots/source/game.cpp` | Chequeo, aplicación, tick, yell, `exani *` |
+| `server/YurOTS/ots/source/game.cpp` | Chequeo, aplicación, tick, yell, `exani *`, visibilidad say |
 | `server/YurOTS/ots/source/magic.h` / `magic.cpp` | `causeExhaustion` por clase de efecto |
-| `server/YurOTS/ots/source/spells.cpp` | `reduceExhaustion*`, bindings custom, `makeRune` |
+| `server/YurOTS/ots/source/spells.cpp` | `reduceExhaustion*`, bindings + helpers de exhaust |
 | `server/YurOTS/ots/data/spells/instant/*.lua` | Scripts que llaman helpers de reduce |
 
 ---
@@ -208,9 +206,9 @@ Visibilidad del texto del spell al fallar por exhausted: [`SPELL_CAST_VISIBILITY
 ## Checklist al tocar exhausted
 
 1. ¿El cambio es solo config? Editá `config.lua` y restart — no hace falta rebuild.
-2. ¿Querés heal más lento/rápido? Tocá `exhaustedheal`, no `exhausted`.
-3. ¿Spell nuevo con `doAreaMagic`/`doTargetMagic`? Hereda el pipeline solo; no hace falta código extra.
-4. ¿Binding C++ nuevo tipo Paralyze/Anchor? **Decidir explícitamente** si debe compartir exhausted; hoy los custom no lo hacen.
+2. ¿Querés heal/support más lento/rápido? Tocá `exhaustedheal`, no `exhausted`.
+3. ¿Spell nuevo con `doAreaMagic`/`doTargetMagic`? Hereda el pipeline solo; marcá `offensive` bien en Lua.
+4. ¿Binding C++ nuevo? Usar `playerSpellExhaustBlocked` + `applyPlayerSpellExhaust(healStyle)`.
 5. ¿Usás `reduceExhaustion*`? Probar in-game el timing real (post-cast + tick de 1 s).
 6. Tras rebuild C++: `docker compose … up -d yurots` + `python3 scripts/ot-probe.py 127.0.0.1 7171`.
 
@@ -218,9 +216,10 @@ Visibilidad del texto del spell al fallar por exhausted: [`SPELL_CAST_VISIBILITY
 
 ## Cómo probar in-game
 
-1. Spam `exura` → exhausted ~1 s; mensaje; palabras no deben verse si el cast falla (ver visibility).
-2. Spam `exori` / SD → exhausted ~2 s.
-3. Castear SD y luego UH → deben compartir el mismo `exhaustedTicks`.
-4. Usar Paralyze / Anchor en cadena → hoy **sin** exhausted (solo charges / validaciones).
-5. Wand spam → sin mensaje de exhausted; ritmo = attack delay.
-6. Conjurar runa en PZ → exhaust 2 s + soul si aplica.
+1. Spam / hotkey hold `exura` → exhausted ~1 s; mensaje; **sin** palabras fantasma (ver visibility).
+2. Spam `exori` / SD → exhausted ~2 s; fallos **no** alargan el timer.
+3. Castear SD y luego UH → deben compartir el mismo `exhaustedTicks` (~2 s).
+4. Haste / conjurar blank → exhaust ~1 s (no 2 s).
+5. Paralyze / Anchor en cadena → exhausted compartido; no spam libre.
+6. Wand spam → sin mensaje de exhausted; ritmo = attack delay.
+7. Conjurar runa en PZ → exhaust 1 s + soul si aplica.
