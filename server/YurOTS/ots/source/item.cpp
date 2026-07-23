@@ -885,6 +885,20 @@ std::string Item::getDescription(bool fullDescription) const
 		s << std::endl << "10% chance to silence a player for 2-3s in PvP (spoken spells only; 12s cooldown per target).";
 	else if(id == ITEM_WINDSTING_AXE && fullDescription)
 		s << std::endl << "20% chance to make a player drunk for 6s in PvP.";
+	else if(id == ITEM_ASHLORD_EMBERBLADE && fullDescription)
+		s << std::endl << "Crucible rare. Faster swings, fire trail, 20% chance to burn (DoT).";
+	else if(id == ITEM_FROSTWARDEN_CHILLBLADE && fullDescription)
+		s << std::endl << "Crucible rare. 18% chance to chill (slow) a player for 4s in PvP.";
+	else if(id == ITEM_BONEPRIEST_REAVER && fullDescription)
+		s << std::endl << "Crucible rare. 15% chance to drain mana on hit.";
+	else if(id == ITEM_IRONHIDE_CRUSHER && fullDescription)
+		s << std::endl << "Crucible rare. Slow heavy hits; 22% chance to root a player for 2.5s in PvP.";
+	else if(id == ITEM_VENOMQUEEN_FANG && fullDescription)
+		s << std::endl << "Crucible rare. Very fast; 25% chance to poison on hit.";
+	else if(id == ITEM_STORMCALLER_MAUL && fullDescription)
+		s << std::endl << "Crucible rare. Fast club with energy trail; 20% chance for an energy burst.";
+	else if(id == ITEM_BLOODREAVER_SABER && fullDescription)
+		s << std::endl << "Crucible rare. 30% chance to life-leech 25% of the damage dealt.";
 	else if(id == ITEM_PRIVATE_TRAINER_DUMMY && fullDescription)
 		s << std::endl << "Looks like a kit. Put it on a free house tile and use it from inside that house (max 1 per house).";
 	else if(id == ITEM_NIGHTGLASS_DAGGER && fullDescription) {

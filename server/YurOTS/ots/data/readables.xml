@@ -3,4 +3,14 @@
 <readable x="159" y="36" z="7" text="depots and shops"/>
 <readable x="131" y="53" z="7" text="depots are upstairs"/>
 <readable x="141" y="51" z="6" text="some\nmulti\nline\ntext"/>
+	<!-- BEGIN CRUCIBLE_SIGNS -->
+	<readable x="157" y="53" z="7" text="CRISOL\n3 puertas. Boss diario.\nBronce / Plata / Oro"/>
+	<readable x="159" y="53" z="7" text="WAVE ARENA\nOleadas. Palanca = next.\nRanking semanal"/>
+	<readable x="160" y="53" z="7" text="HUNT MAZE\nLaberinto mid-hard\nDesde Minotauros"/>
+	<readable x="162" y="53" z="7" text="FLOOR CAMPUS\n16 salas separadas\nMinos -> Behemoth"/>
+	<readable x="83" y="87" z="0" text="BRONCE - riesgo bajo"/>
+	<readable x="85" y="87" z="0" text="PLATA - riesgo medio"/>
+	<readable x="87" y="87" z="0" text="ORO - boss diario"/>
+	<readable x="90" y="87" z="0" text="INFO - bosses de hoy"/>
+	<!-- END CRUCIBLE_SIGNS -->
 </readables>

@@ -356,8 +356,22 @@ const long SILENCE_COOLDOWN_PER_TARGET_MS = 12000;
 const int WINDSTING_DRUNK_CHANCE_PERCENT = 20;
 const long WINDSTING_DRUNK_MS = 6000;
 
+const int ASHLORD_BURN_CHANCE_PERCENT = 20;
+const int FROSTWARDEN_CHILL_CHANCE_PERCENT = 18;
+const long FROSTWARDEN_CHILL_MS = 4000;
+const unsigned short FROSTWARDEN_CHILL_SPEED = 120;
+const long FROSTWARDEN_CHILL_COOLDOWN_MS = 8000;
+const int BONEPRIEST_MANA_CHANCE_PERCENT = 15;
+const int IRONHIDE_ROOT_CHANCE_PERCENT = 22;
+const long IRONHIDE_ROOT_MS = 2500;
+const int VENOMQUEEN_POISON_CHANCE_PERCENT = 25;
+const int STORMCALLER_BURST_CHANCE_PERCENT = 20;
+const int BLOODREAVER_LEECH_CHANCE_PERCENT = 30;
+const int BLOODREAVER_LEECH_PERCENT = 25;
+
 // attackerId -> (targetId -> cooldown-until ms)
 std::map<unsigned long, std::map<unsigned long, int64_t> > g_silenceCooldownUntil;
+std::map<unsigned long, std::map<unsigned long, int64_t> > g_chillCooldownUntil;
 
 bool wieldsMedusaSword(const Player* player)
 {
@@ -483,6 +497,216 @@ void applyWindstingDrunk(Game* game, Player* attacker, Player* target)
 	game->sendMagicEffect(target->pos, NM_ME_LOOSE_ENERGY);
 	target->sendTextMessage(MSG_SMALLINFO, "You feel drunk.");
 	attacker->sendTextMessage(MSG_SMALLINFO, "Your windsting axe intoxicated your target.");
+}
+
+void restoreFromFrostwardenChill(Game* game, unsigned long creatureId)
+{
+	if(!game)
+		return;
+
+	Creature* creature = game->getCreatureByID(creatureId);
+	if(!creature)
+		return;
+
+	creature->chillTicks = 0;
+	game->changeSpeed(creatureId, creature->getNormalSpeed());
+
+	Player* player = dynamic_cast<Player*>(creature);
+	if(player)
+		player->sendIcons();
+}
+
+void applyAshlordBurn(Game* game, Player* attacker, Creature* target)
+{
+	if(!game || !attacker || !target || target->access >= g_config.ACCESS_PROTECT)
+		return;
+	if((target->getImmunities() & ATTACK_FIRE) == ATTACK_FIRE)
+		return;
+	if((rand() % 100) >= ASHLORD_BURN_CHANCE_PERCENT)
+		return;
+
+	MagicEffectTargetCreatureCondition fireCond(attacker->getID());
+	fireCond.attackType = ATTACK_FIRE;
+	fireCond.minDamage = 15;
+	fireCond.maxDamage = 28;
+	fireCond.offensive = true;
+	fireCond.drawblood = false;
+	fireCond.damageEffect = NM_ME_HITBY_FIRE;
+	fireCond.hitEffect = NM_ME_HITBY_FIRE;
+	fireCond.animationColor = 198;
+	CreatureCondition condition(2000, 4, fireCond);
+	target->addCondition(condition, true);
+
+	game->sendMagicEffect(target->pos, NM_ME_HITBY_FIRE);
+	if(Player* targetPlayer = dynamic_cast<Player*>(target))
+		targetPlayer->sendTextMessage(MSG_SMALLINFO, "You are burning.");
+	attacker->sendTextMessage(MSG_SMALLINFO, "Ashlord emberblade scorches your foe.");
+}
+
+void applyFrostwardenChill(Game* game, Player* attacker, Player* target)
+{
+	if(!game || !attacker || !target || target->access >= g_config.ACCESS_PROTECT)
+		return;
+	if((target->getImmunities() & ATTACK_PARALYZE) == ATTACK_PARALYZE)
+		return;
+
+	const int64_t now = OTSYS_TIME();
+	std::map<unsigned long, int64_t>& byTarget = g_chillCooldownUntil[attacker->getID()];
+	std::map<unsigned long, int64_t>::iterator cit = byTarget.find(target->getID());
+	if(cit != byTarget.end() && cit->second > now)
+		return;
+	if((rand() % 100) >= FROSTWARDEN_CHILL_CHANCE_PERCENT)
+		return;
+
+	target->hasteTicks = 0;
+	target->chillTicks = FROSTWARDEN_CHILL_MS;
+	game->changeSpeed(target->getID(), FROSTWARDEN_CHILL_SPEED);
+	target->sendIcons();
+	byTarget[target->getID()] = now + FROSTWARDEN_CHILL_COOLDOWN_MS;
+
+	game->sendMagicEffect(target->pos, NM_ME_SOUND_BLUE);
+	target->sendTextMessage(MSG_SMALLINFO, "You feel chilled.");
+	attacker->sendTextMessage(MSG_SMALLINFO, "Frostwarden chillblade slows your target.");
+
+	game->addEvent(makeTask(FROSTWARDEN_CHILL_MS,
+		boost::bind(&restoreFromFrostwardenChill, game, target->getID())));
+}
+
+void applyBonepriestManaDrain(Game* game, Player* attacker, Player* target)
+{
+	if(!game || !attacker || !target || target->access >= g_config.ACCESS_PROTECT)
+		return;
+	if((rand() % 100) >= BONEPRIEST_MANA_CHANCE_PERCENT)
+		return;
+
+	const int64_t drain = 40 + (rand() % 41);
+	const int64_t actual = std::min(drain, target->mana);
+	if(actual <= 0)
+		return;
+
+	target->drainMana(actual);
+	target->sendStats();
+	game->sendMagicEffect(target->pos, NM_ME_LOOSE_ENERGY);
+	target->sendTextMessage(MSG_SMALLINFO, "Your mana is drained.");
+	attacker->sendTextMessage(MSG_SMALLINFO, "Bonepriest reaver drains mana.");
+}
+
+void applyIronhideRoot(Game* game, Player* attacker, Player* target)
+{
+	if(!game || !attacker || !target || target->access >= g_config.ACCESS_PROTECT)
+		return;
+	if((rand() % 100) >= IRONHIDE_ROOT_CHANCE_PERCENT)
+		return;
+
+	target->rootTicks = IRONHIDE_ROOT_MS;
+	game->sendMagicEffect(target->pos, NM_ME_SOUND_YELLOW);
+	target->sendTextMessage(MSG_SMALLINFO, "You are rooted.");
+	attacker->sendTextMessage(MSG_SMALLINFO, "Ironhide crusher roots your target.");
+}
+
+void applyVenomqueenPoison(Game* game, Player* attacker, Creature* target)
+{
+	if(!game || !attacker || !target || target->access >= g_config.ACCESS_PROTECT)
+		return;
+	if((target->getImmunities() & ATTACK_POISON) == ATTACK_POISON)
+		return;
+	if((rand() % 100) >= VENOMQUEEN_POISON_CHANCE_PERCENT)
+		return;
+
+	MagicEffectTargetCreatureCondition poisonCond(attacker->getID());
+	poisonCond.attackType = ATTACK_POISON;
+	poisonCond.minDamage = 12;
+	poisonCond.maxDamage = 22;
+	poisonCond.offensive = true;
+	poisonCond.drawblood = false;
+	poisonCond.damageEffect = NM_ME_POISEN;
+	poisonCond.hitEffect = NM_ME_POISEN_RINGS;
+	poisonCond.animationColor = 96;
+	CreatureCondition condition(2000, 5, poisonCond);
+	target->addCondition(condition, true);
+
+	game->sendMagicEffect(target->pos, NM_ME_POISEN);
+	if(Player* targetPlayer = dynamic_cast<Player*>(target)){
+		targetPlayer->sendIcons();
+		targetPlayer->sendTextMessage(MSG_SMALLINFO, "You are poisoned.");
+	}
+	attacker->sendTextMessage(MSG_SMALLINFO, "Venomqueen fang injects poison.");
+}
+
+void applyStormcallerBurst(Game* game, Player* attacker, Creature* target)
+{
+	if(!game || !attacker || !target || target->access >= g_config.ACCESS_PROTECT)
+		return;
+	if((target->getImmunities() & ATTACK_ENERGY) == ATTACK_ENERGY)
+		return;
+	if((rand() % 100) >= STORMCALLER_BURST_CHANCE_PERCENT)
+		return;
+
+	int64_t dmg = 30 + (rand() % 26);
+	if(dmg > target->health)
+		dmg = target->health;
+	if(dmg > 0)
+		target->health -= dmg;
+	game->sendMagicEffect(target->pos, NM_ME_ENERGY_DAMAGE);
+	if(Player* targetPlayer = dynamic_cast<Player*>(target))
+		targetPlayer->sendStats();
+	attacker->sendTextMessage(MSG_SMALLINFO, "Stormcaller maul unleashes energy.");
+}
+
+void applyBloodreaverLeech(Game* game, Player* attacker, int64_t damageDealt)
+{
+	if(!game || !attacker || damageDealt <= 0)
+		return;
+	if((rand() % 100) >= BLOODREAVER_LEECH_CHANCE_PERCENT)
+		return;
+
+	int64_t heal = damageDealt * BLOODREAVER_LEECH_PERCENT / 100;
+	if(heal < 1)
+		heal = 1;
+	attacker->health = std::min(attacker->healthmax, attacker->health + heal);
+	attacker->sendStats();
+	game->sendMagicEffect(attacker->pos, NM_ME_MAGIC_BLOOD);
+	attacker->sendTextMessage(MSG_SMALLINFO, "Bloodreaver saber drinks blood.");
+}
+
+void applyCrucibleWeaponProcs(Game* game, Player* attackPlayer, Creature* attackedCreature,
+	Player* attackedPlayer, int64_t damageDealt, bool trainingNoPvp)
+{
+	if(!game || !attackPlayer || !attackedCreature || trainingNoPvp || damageDealt <= 0)
+		return;
+
+	const unsigned short wid = attackPlayer->getCrucibleWeaponId();
+	if(wid == 0)
+		return;
+
+	switch(wid){
+		case ITEM_ASHLORD_EMBERBLADE:
+			applyAshlordBurn(game, attackPlayer, attackedCreature);
+			break;
+		case ITEM_FROSTWARDEN_CHILLBLADE:
+			if(attackedPlayer)
+				applyFrostwardenChill(game, attackPlayer, attackedPlayer);
+			break;
+		case ITEM_BONEPRIEST_REAVER:
+			if(attackedPlayer)
+				applyBonepriestManaDrain(game, attackPlayer, attackedPlayer);
+			break;
+		case ITEM_IRONHIDE_CRUSHER:
+			if(attackedPlayer)
+				applyIronhideRoot(game, attackPlayer, attackedPlayer);
+			break;
+		case ITEM_VENOMQUEEN_FANG:
+			applyVenomqueenPoison(game, attackPlayer, attackedCreature);
+			break;
+		case ITEM_STORMCALLER_MAUL:
+			applyStormcallerBurst(game, attackPlayer, attackedCreature);
+			break;
+		case ITEM_BLOODREAVER_SABER:
+			applyBloodreaverLeech(game, attackPlayer, damageDealt);
+			break;
+		default:
+			break;
+	}
 }
 } // namespace
 
@@ -791,6 +1015,11 @@ void GameState::onAttack(Creature* attacker, const Position& pos, Creature* atta
 
 		if(attackPlayer && attackedPlayer && !trainingNoPvp && wieldsWindstingAxe(attackPlayer))
 			applyWindstingDrunk(game, attackPlayer, attackedPlayer);
+
+#ifdef YUR_BOH
+		if(attackPlayer)
+			applyCrucibleWeaponProcs(game, attackPlayer, attackedCreature, attackedPlayer, damage, trainingNoPvp);
+#endif //YUR_BOH
 
 #ifdef TLM_SKULLS_PARTY
 		if (game->getWorldType() == WORLD_TYPE_PVP)
@@ -4362,6 +4591,15 @@ void Game::creatureMakeDamage(Creature *creature, Creature *attackedCreature, fi
 		else if(player && player->wieldsNightglassDagger()){
 			spectator->sendDistanceShoot(creature->pos, attackedCreature->pos, NM_ANI_FIRE);
 		}
+		else if(player){
+			const unsigned short crucibleWeapon = player->getCrucibleWeaponId();
+			if(crucibleWeapon == ITEM_ASHLORD_EMBERBLADE)
+				spectator->sendDistanceShoot(creature->pos, attackedCreature->pos, NM_ANI_FIRE);
+			else if(crucibleWeapon == ITEM_STORMCALLER_MAUL)
+				spectator->sendDistanceShoot(creature->pos, attackedCreature->pos, NM_ANI_ENERGY);
+			else if(crucibleWeapon == ITEM_VENOMQUEEN_FANG)
+				spectator->sendDistanceShoot(creature->pos, attackedCreature->pos, NM_ANI_POISONARROW);
+		}
 #endif //YUR_BOH
 
 		if (attackedCreature->manaShieldTicks < 1000 && (creatureState.damage == 0) &&
@@ -4393,6 +4631,18 @@ void Game::creatureMakeDamage(Creature *creature, Creature *attackedCreature, fi
 					if(player && player->wieldsNightglassDagger()){
 						spectator->sendAnimatedText(attackedCreature->pos, 0x2A, dmg.str());
 						spectator->sendMagicEffect(attackedCreature->pos, NM_ME_HITBY_FIRE);
+					}
+					else if(player && player->getCrucibleWeaponId() == ITEM_ASHLORD_EMBERBLADE){
+						spectator->sendAnimatedText(attackedCreature->pos, 0xC0, dmg.str());
+						spectator->sendMagicEffect(attackedCreature->pos, NM_ME_HITBY_FIRE);
+					}
+					else if(player && player->getCrucibleWeaponId() == ITEM_STORMCALLER_MAUL){
+						spectator->sendAnimatedText(attackedCreature->pos, 0x83, dmg.str());
+						spectator->sendMagicEffect(attackedCreature->pos, NM_ME_ENERGY_DAMAGE);
+					}
+					else if(player && player->getCrucibleWeaponId() == ITEM_VENOMQUEEN_FANG){
+						spectator->sendAnimatedText(attackedCreature->pos, 0x60, dmg.str());
+						spectator->sendMagicEffect(attackedCreature->pos, NM_ME_POISEN);
 					}
 					else if(player && player->imbueRubyWeapon){
 						spectator->sendAnimatedText(attackedCreature->pos, 0xB4, dmg.str());
@@ -4641,6 +4891,15 @@ void Game::checkCreature(unsigned long id)
 			}
 			else if(player->drunkTicks > 0){
 				player->drunkTicks = 0;
+			}
+
+			if(player->chillTicks >= 1000){
+				player->chillTicks -= thinkTicks;
+				if(player->chillTicks < 0)
+					player->chillTicks = 0;
+			}
+			else if(player->chillTicks > 0){
+				player->chillTicks = 0;
 			}
 
 			if(player->rootTicks >= 1000){

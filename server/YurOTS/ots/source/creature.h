@@ -207,6 +207,7 @@ public:
 	long manaShieldTicks, hasteTicks, paralyzeTicks;
 	long silenceTicks;
 	long drunkTicks;
+	long chillTicks;
 	long rootTicks;
 	long challengeTicks;      // Challenge (exeta res): lock target to challenger
 	unsigned long challengedBy; // creature id of the knight who challenged

@@ -74,6 +74,7 @@ access(0)
 	paralyzeTicks = 0;
 	silenceTicks = 0;
 	drunkTicks = 0;
+	chillTicks = 0;
 	rootTicks = 0;
 	challengeTicks = 0;
 	challengedBy = 0;

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<monster name="Crucible Frostwarden" level="50" maglevel="48" experience="6400" pushable="0" armor="44" defense="48" canpushitems="1" staticattack="35" changetarget="140" speed="320">
+	<health now="7500" max="7500"/>
+	<look type="67" head="0" body="0" legs="0" feet="0" corpse="2952"/>
+	<combat targetdistance="1" runonhealth="0"/>
+	<attacks>
+		<attack type="melee" mindamage="160" maxdamage="400" probability="100"/>
+		<attack type="instant" name="exori vis" exhaustion="300" cycleticks="2500" probability="50"/>
+		<attack type="rune" name="heavy magic missile" exhaustion="300" cycleticks="2200" probability="60"/>
+		<attack type="instant" name="exevo gran vis lux" exhaustion="600" cycleticks="4500" probability="30"/>
+	</attacks>
+	<defenses>
+		<defense immunity="energy"/>
+		<defense immunity="paralyze"/>
+		<defense immunity="invisible"/>
+	</defenses>
+	<voices>
+		<voice sentence="Ice seals the gate!"/>
+		<voice sentence="Freeze!"/>
+	</voices>
+	<loot>
+		<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
+		<item id="2152" countmax="8" chance1="35000" chancemax="0"/>
+		<item id="2150" countmax="4" chance1="12000" chancemax="0"/>
+		<item id="2158" chance="8000"/>
+		<item id="2656" chance="1000"/>
+		<item id="2167" chance="5000"/>
+		<!-- exclusive: frostwarden chillblade -->
+		<item id="20138" chance="4500"/>
+	</loot>
+</monster>

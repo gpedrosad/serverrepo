@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<monster name="Crucible Venomqueen" level="52" maglevel="40" experience="7000" pushable="0" armor="40" defense="42" canpushitems="1" staticattack="40" changetarget="90" speed="360">
+	<health now="7800" max="7800"/>
+	<look type="38" head="0" body="0" legs="0" feet="0" corpse="2857"/>
+	<combat targetdistance="1" runonhealth="0"/>
+	<attacks>
+		<attack type="melee" mindamage="150" maxdamage="380" probability="100"/>
+		<attack type="rune" name="gs poison" exhaustion="500" cycleticks="4000" probability="55"/>
+		<attack type="rune" name="poisonfield" cycleticks="2000" probability="45"/>
+		<attack type="instant" name="exori mort" exhaustion="400" cycleticks="3000" probability="35"/>
+	</attacks>
+	<defenses>
+		<defense immunity="poison"/>
+		<defense immunity="paralyze"/>
+		<defense immunity="invisible"/>
+	</defenses>
+	<voices>
+		<voice sentence="My venom is the trial!"/>
+		<voice sentence="Hiss!"/>
+	</voices>
+	<loot>
+		<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
+		<item id="2152" countmax="8" chance1="35000" chancemax="0"/>
+		<item id="2149" countmax="4" chance1="12000" chancemax="0"/>
+		<item id="2155" chance="8000"/>
+		<item id="2477" chance="1200"/>
+		<item id="2497" chance="900"/>
+		<!-- exclusive: venomqueen fang -->
+		<item id="20100" chance="4500"/>
+	</loot>
+</monster>

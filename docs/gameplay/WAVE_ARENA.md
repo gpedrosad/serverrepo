@@ -4,9 +4,10 @@ Arena PvE de oleadas: matás el pack, usás la palanca, viene la siguiente. Rank
 
 | Sistema | Portal templo viejo |
 |---------|---------------------|
-| Hunt maze plano | `160, 54, 7` |
-| Floor hunt (16 pisos) | `162, 54, 7` |
+| El Crisol (bosses diarios) | `157, 54, 7` |
 | **Wave Arena** | `159, 54, 7` |
+| Hunt maze plano | `160, 54, 7` |
+| Floor hunt (campus) | `162, 54, 7` |
 
 ---
 

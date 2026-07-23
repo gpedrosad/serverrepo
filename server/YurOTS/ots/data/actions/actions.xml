@@ -506,6 +506,12 @@
 <action uniqueid="7100" script="wave_arena.lua" />
 <action uniqueid="7101" script="wave_arena.lua" />
 
+<!-- El Crisol (templo 157,54,7): Bronce/Plata/Oro + info bosses diarios -->
+<action uniqueid="7200" script="crucible.lua" />
+<action uniqueid="7201" script="crucible.lua" />
+<action uniqueid="7202" script="crucible.lua" />
+<action uniqueid="7203" script="crucible.lua" />
+
 <!-- <action itemid="2112" script="invasion.lua" /> -->
 <action itemid="2153" script="gem_imbue.lua" />
 <action itemid="2154" script="gem_imbue.lua" />

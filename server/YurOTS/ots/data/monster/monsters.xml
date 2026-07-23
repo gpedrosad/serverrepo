@@ -265,6 +265,15 @@
 <monster name="Murius" file="murius.xml" />
 <monster name="Grorlam" file="grorlam.xml" />
 
+<!-- El Crisol — bosses diarios (rotacion por dia del anio) -->
+<monster name="Crucible Ashlord" file="crucible ashlord.xml" />
+<monster name="Crucible Frostwarden" file="crucible frostwarden.xml" />
+<monster name="Crucible Bonepriest" file="crucible bonepriest.xml" />
+<monster name="Crucible Ironhide" file="crucible ironhide.xml" />
+<monster name="Crucible Venomqueen" file="crucible venomqueen.xml" />
+<monster name="Crucible Stormcaller" file="crucible stormcaller.xml" />
+<monster name="Crucible Bloodreaver" file="crucible bloodreaver.xml" />
+
 <!-- Pharaos -->
 <monster name="Omruc" file="omruc.xml" />
 <monster name="Morguthis" file="morguthis.xml" />

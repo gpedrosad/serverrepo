@@ -3456,6 +3456,15 @@ int Player::getAttackDelayMs() const
 	if(getWandId() == ITEM_CRIMSON_WAND)
 		return 667;
 #endif //JD_WANDS
+	switch(getCrucibleWeaponId()){
+		case ITEM_VENOMQUEEN_FANG: return VENOMQUEEN_ATTACK_DELAY_MS;
+		case ITEM_STORMCALLER_MAUL: return STORMCALLER_ATTACK_DELAY_MS;
+		case ITEM_ASHLORD_EMBERBLADE: return ASHLORD_ATTACK_DELAY_MS;
+		case ITEM_IRONHIDE_CRUSHER: return IRONHIDE_ATTACK_DELAY_MS;
+		case ITEM_BLOODREAVER_SABER: return BLOODREAVER_ATTACK_DELAY_MS;
+		case ITEM_FROSTWARDEN_CHILLBLADE: return FROSTWARDEN_ATTACK_DELAY_MS;
+		default: break;
+	}
 	if(imbueNightglassSpeed)
 		return nightglassAttackDelayFromStacks(imbueNightglassSpeed);
 	if(imbueCrystalArrowSpeed)
@@ -3481,6 +3490,28 @@ bool Player::wieldsNightglassDagger() const
 			return true;
 	}
 	return false;
+}
+
+unsigned short Player::getCrucibleWeaponId() const
+{
+	for(int slot = SLOT_RIGHT; slot <= SLOT_LEFT; ++slot){
+		if(!items[slot])
+			continue;
+		const unsigned short id = items[slot]->getID();
+		switch(id){
+			case ITEM_VENOMQUEEN_FANG:
+			case ITEM_STORMCALLER_MAUL:
+			case ITEM_ASHLORD_EMBERBLADE:
+			case ITEM_IRONHIDE_CRUSHER:
+			case ITEM_BLOODREAVER_SABER:
+			case ITEM_FROSTWARDEN_CHILLBLADE:
+			case ITEM_BONEPRIEST_REAVER:
+				return id;
+			default:
+				break;
+		}
+	}
+	return 0;
 }
 #endif //YUR_BOH
 

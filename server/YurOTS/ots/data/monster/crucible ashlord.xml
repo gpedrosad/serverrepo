@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<monster name="Crucible Ashlord" level="50" maglevel="45" experience="6200" pushable="0" armor="42" defense="45" canpushitems="1" staticattack="40" changetarget="120" speed="340">
+	<health now="7200" max="7200"/>
+	<look type="39" head="0" body="0" legs="0" feet="0" corpse="2881"/>
+	<combat targetdistance="1" runonhealth="0"/>
+	<attacks>
+		<attack type="melee" mindamage="180" maxdamage="420" probability="100"/>
+		<attack type="rune" name="firefield" cycleticks="2200" probability="50"/>
+		<attack type="rune" name="great fireball" exhaustion="400" cycleticks="2800" probability="55"/>
+		<attack type="instant" name="exevo flam hur" exhaustion="500" cycleticks="4000" probability="35"/>
+	</attacks>
+	<defenses>
+		<defense immunity="fire"/>
+		<defense immunity="paralyze"/>
+		<defense immunity="invisible"/>
+	</defenses>
+	<voices>
+		<voice sentence="Ash claims the Crucible!"/>
+		<voice sentence="Burn!"/>
+	</voices>
+	<loot>
+		<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
+		<item id="2152" countmax="8" chance1="35000" chancemax="0"/>
+		<item id="2147" countmax="4" chance1="12000" chancemax="0"/>
+		<item id="2156" chance="8000"/>
+		<item id="2392" chance="1500"/>
+		<item id="2498" chance="800"/>
+		<!-- exclusive: ashlord emberblade -->
+		<item id="20112" chance="4500"/>
+	</loot>
+</monster>
