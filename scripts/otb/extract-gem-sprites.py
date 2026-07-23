@@ -41,7 +41,10 @@ try:
 except ImportError as exc:  # pragma: no cover
     raise SystemExit("Falta Pillow: pip install pillow") from exc
 
-ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from lib.project_root import project_root  # noqa: E402
+
+ROOT = project_root(Path(__file__))
 CLIENT_VERSION = 760
 SPRITE_SIZE = 32
 THING_LAST_ATTR = 0xFF

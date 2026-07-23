@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
@@ -67,7 +68,10 @@ def collect_gem_ids(el: ET.Element, acc: set[int]) -> None:
 
 
 def main() -> None:
-    root = Path(__file__).resolve().parents[1]
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    from lib.project_root import project_root  # noqa: E402
+
+    root = project_root(Path(__file__))
     monster_dir = root / "server/YurOTS/ots/data/monster"
     out_path = root / "web/data/gem-drops.json"
 

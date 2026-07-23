@@ -10,6 +10,7 @@ Relacionado:
 - [docs/items-and-map/MAPEAR_HUNT_MAZE.md](items-and-map/MAPEAR_HUNT_MAZE.md) — hunt maze **aparte** de Alice; portal `160,54,7` con `generate-hunt-maze.py`
 - [docs/items-and-map/MAPEAR_FLOOR_HUNT.md](items-and-map/MAPEAR_FLOOR_HUNT.md) — torre 16 pisos z0–z15 con teleports; portal `162,54,7`
 - [docs/gameplay/WAVE_ARENA.md](gameplay/WAVE_ARENA.md) — Wave Arena oleadas; portal `159,54,7`
+- [docs/gameplay/CRUCIBLE.md](gameplay/CRUCIBLE.md) — El Crisol (3 puertas + bosses diarios); portal `157,54,7` con `scripts/map/generate-crucible.py`
 - [scripts/README-DEPLOY-VPS.md](../scripts/README-DEPLOY-VPS.md) — deploy seguro en producción
 - [docs/PROYECTO.md](PROYECTO.md) — qué data es sagrada y qué va en git
 

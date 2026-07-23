@@ -4,8 +4,8 @@ Guía de cómo generar terreno en el mapa de YurOTS **sin pintar tile por tile e
 
 Relacionado:
 
-- [docs/CAMBIAR-MAPA.md](CAMBIAR-MAPA.md) — flujo RME → servidor → deploy
-- [docs/RME_SETUP.md](RME_SETUP.md) — abrir Remere's Map Editor
+- [docs/CAMBIAR-MAPA.md](../CAMBIAR-MAPA.md) — flujo RME → servidor → deploy
+- [docs/RME_SETUP.md](../RME_SETUP.md) — abrir Remere's Map Editor
 - `scripts/generate-island.py` — generador de islas
 - [MAPEAR_LABERINTO.md](MAPEAR_LABERINTO.md) — laberinto 2 sqm con suelo 406 (`generate-maze.py`)
 - `scripts/sync-houses-from-rme.py` — casas (no aplica a islas vacías)
@@ -281,7 +281,7 @@ git add server/YurOTS/ots/data/world/generated-island.json   # opcional, metadat
 git add server/YurOTS/ots/data/world/test-spawn.xml
 ```
 
-En VPS: seguir [docs/CAMBIAR-MAPA.md](CAMBIAR-MAPA.md) y [scripts/README-DEPLOY-VPS.md](../scripts/README-DEPLOY-VPS.md). **No hace falta** `sync-houses-from-rme.py` si solo agregaste terreno vacío sin casas.
+En VPS: seguir [docs/CAMBIAR-MAPA.md](../CAMBIAR-MAPA.md) y [scripts/README-DEPLOY-VPS.md](../../scripts/README-DEPLOY-VPS.md). **No hace falta** `sync-houses-from-rme.py` si solo agregaste terreno vacío sin casas.
 
 ---
 

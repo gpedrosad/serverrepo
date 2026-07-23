@@ -105,8 +105,9 @@ Importación de items, mapeo por código, items de prueba, sesiones de editor.
 | [`items-and-map/MAPEAR_CON_CODIGO.md`](items-and-map/MAPEAR_CON_CODIGO.md) | Mapear items/pisos por código (no manual) usando scripts. |
 | [`items-and-map/MAPEAR_LABERINTO.md`](items-and-map/MAPEAR_LABERINTO.md) | Laberinto procedural 2 sqm: camino 406, fondo 100 (pared), teleport al templo (`generate-maze.py`). |
 | [`items-and-map/MAPEAR_HUNT_MAZE.md`](items-and-map/MAPEAR_HUNT_MAZE.md) | Hunt maze **aparte** de Alice: portal templo viejo `160,54,7`, retorno al llegar (`generate-hunt-maze.py`). |
-| [`items-and-map/MAPEAR_FLOOR_HUNT.md`](items-and-map/MAPEAR_FLOOR_HUNT.md) | Floor hunt: **16 pisos** z0–z15 con teleports/express/hitos, portal `162,54,7`. |
+| [`items-and-map/MAPEAR_FLOOR_HUNT.md`](items-and-map/MAPEAR_FLOOR_HUNT.md) | Floor hunt campus XY en z7 (16 salas), portal `162,54,7`. |
 | [`gameplay/WAVE_ARENA.md`](gameplay/WAVE_ARENA.md) | Wave Arena: oleadas + ranking semanal, portal templo `159,54,7`. |
+| [`gameplay/CRUCIBLE.md`](gameplay/CRUCIBLE.md) | El Crisol: 3 puertas + bosses diarios, portal templo `157,54,7`, carteles `y=53`. |
 | [`items-and-map/MAPEAR_TP_GAUNTLET.md`](items-and-map/MAPEAR_TP_GAUNTLET.md) | Gauntlet: 40 salas 3×3 + sala final 3×3 (Wrath + demon armor, 1 TP); barco `gauntlet`. |
 | [`items-and-map/ISLAND_BANDS.md`](items-and-map/ISLAND_BANDS.md) | Cómo componer las bandas agua→shore→dirt→grass para que una isla no se vea con corte duro. Especificación de las 5 bandas y 7 reglas críticas. |
 | [`items-and-map/ZAGAN_TEST_ITEMS.md`](items-and-map/ZAGAN_TEST_ITEMS.md) | Items de prueba del entorno Zagan (dev/test). |
@@ -116,11 +117,11 @@ Importación de items, mapeo por código, items de prueba, sesiones de editor.
 
 ## Catálogo de features
 
-Catálogo completo de features del juego. Cada feature tiene su doc individual en `docs/features/`. El index maestro está en [`FEATURE_CATALOG.md`](FEATURE_CATALOG.md).
+Catálogo de **migración/portabilidad** (16 fichas congeladas). No es el inventario exhaustivo del server: mecánicas nuevas viven en [`gameplay/`](gameplay/) y se listan arriba. El índice de fichas está en [`FEATURE_CATALOG.md`](FEATURE_CATALOG.md).
 
 | Doc | Feature |
 |-----|---------|
-| [`FEATURE_CATALOG.md`](FEATURE_CATALOG.md) | Índice maestro de features (leer primero si buscás una feature específica). |
+| [`FEATURE_CATALOG.md`](FEATURE_CATALOG.md) | Índice de fichas de portabilidad (no exhaustivo; ver sección Gameplay). |
 | [`features/01-training-daily-system.md`](features/01-training-daily-system.md) | Training diario. |
 | [`features/02-training-no-pvp.md`](features/02-training-no-pvp.md) | Training en zonas no-PvP. |
 | [`features/03-training-bonus-parchment.md`](features/03-training-bonus-parchment.md) | Pergaminos de bonus de training. |
@@ -162,6 +163,10 @@ Catálogo completo de features del juego. Cada feature tiene su doc individual e
 | Jugadores reportan depot vacío | [`gameplay/DEPOTS.md`](gameplay/DEPOTS.md) |
 | Deploy / dueños de casas borrados | [`gameplay/HOUSES.md`](gameplay/HOUSES.md) |
 | Wand pega siempre igual sin importar ML / imbue de Violet | [`gameplay/WANDS.md`](gameplay/WANDS.md) |
-| Quiero ver qué features tiene el juego | [`FEATURE_CATALOG.md`](FEATURE_CATALOG.md) |
+| Quiero ver fichas de portabilidad (migración) | [`FEATURE_CATALOG.md`](FEATURE_CATALOG.md) |
+| Quiero ver qué features tiene el juego | [`INDEX.md`](INDEX.md) (sección Gameplay) + [`FEATURE_CATALOG.md`](FEATURE_CATALOG.md) |
+| Portal templo / El Crisol | [`gameplay/CRUCIBLE.md`](gameplay/CRUCIBLE.md) |
+| Wave Arena / oleadas | [`gameplay/WAVE_ARENA.md`](gameplay/WAVE_ARENA.md) |
+| Private Trainer Dummy | [`gameplay/PRIVATE_TRAINER_DUMMY.md`](gameplay/PRIVATE_TRAINER_DUMMY.md) |
 | Necesito configurar el editor RME | [`RME_SETUP.md`](RME_SETUP.md) |
 | Tests de humo antes de release | [`SMOKE_TESTS.md`](SMOKE_TESTS.md) |

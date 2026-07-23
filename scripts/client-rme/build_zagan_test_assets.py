@@ -5,13 +5,16 @@ import json
 import re
 import shutil
 import struct
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 
 from PIL import Image
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from lib.project_root import project_root  # noqa: E402
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = project_root(Path(__file__))
 SOURCE_DIR = Path("/Users/gonzalo/Downloads/Zagan+Square")
 MAP_OTBM = ROOT / "server" / "YurOTS" / "ots" / "data" / "world" / "test.otbm"
 BASE_DAT = ROOT / "client-local" / "data" / "things" / "760" / "Tibia.dat"

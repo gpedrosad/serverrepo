@@ -2,7 +2,7 @@
 
 Esta documentación cubre el **trade jugador vs jugador** del cliente 7.6 usado por este proyecto.
 
-No cubre el **NPC trade**. Ese flujo vive aparte en `game_npctrade`, `npc.cpp` y documentación específica como [NPC_CONFIRMATION.md](NPC_CONFIRMATION.md).
+No cubre el **NPC trade**. Ese flujo vive aparte en `game_npctrade`, `npc.cpp` y documentación específica como [NPC_CONFIRMATION.md](gameplay/NPC_CONFIRMATION.md).
 
 ## Resumen
 

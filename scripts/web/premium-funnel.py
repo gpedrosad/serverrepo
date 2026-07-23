@@ -23,11 +23,14 @@ FUNNEL = [
 
 
 def main() -> int:
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    from lib.project_root import project_root  # noqa: E402
+
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--file",
         type=Path,
-        default=Path(__file__).resolve().parents[1] / "web/state/analytics.json",
+        default=project_root(Path(__file__)) / "web/state/analytics.json",
     )
     parser.add_argument("--days", type=int, default=7)
     args = parser.parse_args()

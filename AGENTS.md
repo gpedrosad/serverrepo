@@ -65,6 +65,9 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 | Crystal Arrow (spear-like + Blue Gem speed + hit chance) | `docs/gameplay/CRYSTAL_ARROW.md` |
 | Soft Boots (regen HP/MP cada 3 s + desgaste → worn) | `docs/gameplay/SOFT_BOOTS.md` |
 | Daily Task / Huntmaster (contratos diarios) | `docs/gameplay/DAILY_TASK.md` |
+| El Crisol (puertas diarias + rares Zagan) | `docs/gameplay/CRUCIBLE.md` |
+| Wave Arena (oleadas + ranking) | `docs/gameplay/WAVE_ARENA.md` |
+| Private Trainer Dummy | `docs/gameplay/PRIVATE_TRAINER_DUMMY.md` |
 | PvP, frag list, balance de combate | `docs/PVP_SYSTEM.md` |
 | Trade, items, transacciones | `docs/TRADE_SYSTEM.md` |
 | Depots, lockers 2589, deploy de mapa | `docs/gameplay/DEPOTS.md` |
@@ -295,6 +298,7 @@ Caminos de `onThingMove` que deben cubrir `SLOT_HEAD`: inventory↔inventory, in
 | `20123` | crimson wand | Sorc/Master Sorc y Druid/Elder Druid lv33+: wand 55–65 dmg, 13 mana, range 5, delay 667ms, animación **adori gran** (HMM), imbue ML hasta +4 | `const76.h`, `player.cpp` (`isWandItem`, `getWandId`, `getAttackDelayMs`), `game.cpp` (`useWand`, `isSorcererOrDruidFamily`), `item.cpp` |
 | `20126` | train wand | Sorc/MS y Druid/ED: solo trainers (`trainer=1`), 0 mana, `addManaSpent(1)` (~50% Vortex), daño 1–1 | `const76.h`, `player.cpp` (`isWandItem`, `getWandId`), `game.cpp` (`useWand`), `item.cpp` |
 | `2352` | crystal arrow | Throwable DIST tipo spear (atk 35, **85% hit**, no se consume). Blue Gem → hasta 5 stacks +5% attack speed (AID 9070–9074). Spears (`2389`) suben a **70% hit**. Loot: Enraged Hero `450`, Furious Amazon `300`. | `const76.h` (`SPEAR_HIT_CHANCE`, `CRYSTAL_ARROW_HIT_CHANCE`), `creature.h` (`imbueCrystalArrowSpeed`), `player.cpp`, `item.cpp`, `game.cpp` (rare loot), `gem_imbue.lua`, OTB via `scripts/patch-crystal-arrow-otb.py` |
+| `20112` / `20138` / `20154` / `20121` / `20100` / `20110` / `20122` | El Crisol rares | 7 armas diarias (emberblade / chillblade / reaver / crusher / fang / maul / saber): delays custom + burn/chill/mana drain/root/poison/energy burst/leech. Loot solo boss Oro. | `const76.h`, `creature.h` (`chillTicks`), `player.cpp` (`getCrucibleWeaponId`), `game.cpp` (`applyCrucibleWeaponProcs`), `item.cpp`, OTB `scripts/patch-crucible-rares-otb.py`, doc `docs/gameplay/CRUCIBLE.md` |
 
 ### Pitfalls que ya mordieron a agentes
 

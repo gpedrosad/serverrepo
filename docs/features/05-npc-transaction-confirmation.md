@@ -1,5 +1,7 @@
 # 05. Confirmacion universal en NPCs
 
+> Doc técnico canónico: [`docs/gameplay/NPC_CONFIRMATION.md`](../gameplay/NPC_CONFIRMATION.md).
+
 ## Que es
 
 Capa comun para que compras y ventas con NPC pidan confirmacion `yes/no` antes de ejecutar la transaccion.

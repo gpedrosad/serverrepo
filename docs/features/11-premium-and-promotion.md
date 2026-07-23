@@ -7,7 +7,7 @@ Escalera de progreso/estatus en dos ejes:
 - **Premium** — donación; exp, training, outfits, regen tier alto
 - **Promotion** (Orlan) — lvl 20 + 20k gp; **free y premium**; título de vocación + regen tier intermedio
 
-Regen al comer usa **4 tiers**: free → promoted → premium → promoted+premium. Detalle en [REGEN_FOOD.md](../REGEN_FOOD.md).
+Regen al comer usa **4 tiers**: free → promoted → premium → promoted+premium. Detalle en [REGEN_FOOD.md](../gameplay/REGEN_FOOD.md).
 
 ## Por que valio la pena
 
@@ -59,7 +59,7 @@ Media. El concepto es bueno, pero depende mucho del modelo economico del otro se
 
 ## Referencias actuales
 
-- `docs/REGEN_FOOD.md`
+- `docs/gameplay/REGEN_FOOD.md`
 - `server/YurOTS/ots/data/npc/scripts/promote.lua`
 - `server/YurOTS/ots/source/player.cpp`
 - `server/YurOTS/ots/source/creature.cpp`

@@ -2,7 +2,7 @@
 
 > **Estado (jul 2026):** `YUROTS_SOCKET_DEBUG=1` **activo en producción** (VPS) desde commit `ec9b0dd` para investigar cuelgues recurrentes. Desactivar cuando se identifique la causa raíz (ver § Desactivar).
 
-Relacionado: [PREVENT_OT_HANGS.md](PREVENT_OT_HANGS.md), [FIX_OT_STABILITY_KICKS_AND_HANG.md](FIX_OT_STABILITY_KICKS_AND_HANG.md).
+Relacionado: [PREVENT_OT_HANGS.md](PREVENT_OT_HANGS.md), [FIX_OT_STABILITY_KICKS_AND_HANG.md](../_archive/FIX_OT_STABILITY_KICKS_AND_HANG.md).
 
 ---
 
@@ -48,7 +48,7 @@ Guardar la salida antes de reiniciar manualmente (el watchdog tarda ~4 min en 2 
 
 **No era** WiFi del cliente, anti-AFK ni ping kick. Era **lógica de sockets en el servidor**.
 
-Commits clave: `f2c8754`, `da16261`, `87deae2`. Ver `docs/FIX_OT_STABILITY_KICKS_AND_HANG.md`.
+Commits clave: `f2c8754`, `da16261`, `87deae2`. Ver `docs/_archive/FIX_OT_STABILITY_KICKS_AND_HANG.md`.
 
 ---
 
@@ -191,4 +191,4 @@ tail -f /var/log/ot-watchdog.log           # cron legado en algunos VPS
    - `rcv_ms=5000` en disconnect de jugador **en juego** → bug de handshake residual.
    - Ráfaga de `Player recv disconnect` seguida de silencio en logs + probe FAIL → cuelgue clásico.
    - `Listen select failed` → puerto listen cerrado (otro bug).
-4. Cuando haya causa y fix, **desactivar** verbose (§ Desactivar) y documentar el fix en [FIX_OT_STABILITY_KICKS_AND_HANG.md](FIX_OT_STABILITY_KICKS_AND_HANG.md).
+4. Cuando haya causa y fix, **desactivar** verbose (§ Desactivar) y documentar el fix en [FIX_OT_STABILITY_KICKS_AND_HANG.md](../_archive/FIX_OT_STABILITY_KICKS_AND_HANG.md).

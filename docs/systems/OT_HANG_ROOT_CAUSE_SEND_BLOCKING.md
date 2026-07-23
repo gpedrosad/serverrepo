@@ -5,10 +5,10 @@
 > Alcance: cuelgues del OT en `retro76.cl` donde el proceso sigue vivo, el watchdog termina reiniciando, y no hay `SIGSEGV` ni core dump nuevo.
 
 Relacionado:
-- [FIX_OT_STABILITY_KICKS_AND_HANG.md](FIX_OT_STABILITY_KICKS_AND_HANG.md)
+- [FIX_OT_STABILITY_KICKS_AND_HANG.md](../_archive/FIX_OT_STABILITY_KICKS_AND_HANG.md)
 - [PREVENT_OT_HANGS.md](PREVENT_OT_HANGS.md)
 - [SOCKET_DEBUG_LOGGING.md](SOCKET_DEBUG_LOGGING.md)
-- [LEERCODEX.md](../LEERCODEX.md)
+- [LEERCODEX.md](../../LEERCODEX.md)
 
 ---
 

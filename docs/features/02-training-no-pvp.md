@@ -1,5 +1,7 @@
 # 02. No PvP dentro de training
 
+> Doc técnico canónico: [`docs/gameplay/TRAINING_ZONE_NO_PVP.md`](../gameplay/TRAINING_ZONE_NO_PVP.md).
+
 ## Que es
 
 Bloqueo completo de PvP dentro de la training zone, sin tocar el PvP del resto del server.

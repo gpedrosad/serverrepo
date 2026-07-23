@@ -1,5 +1,7 @@
 # 09. Rage monsters
 
+> Doc técnico canónico: [`docs/gameplay/RAGE_MONSTERS.md`](../gameplay/RAGE_MONSTERS.md).
+
 ## Que es
 
 Sistema por el cual un monstruo muerto puede volver inmediatamente en version `Angry`, `Furious` o `Enraged`, con mejores stats, mejor recompensa y mas tension.

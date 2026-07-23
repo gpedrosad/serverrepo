@@ -1,5 +1,8 @@
 # Catalogo de features para traspasar
 
+> **Alcance:** fichas de **migración/portabilidad** (16). No es el catálogo exhaustivo del server.
+> Para mecánicas operativas actuales (Crisol, Wave Arena, Crystal Arrow, Depots, spells, etc.) ver [`INDEX.md`](INDEX.md) → sección Gameplay.
+
 ## Objetivo
 
 Este catalogo divide las features importantes del server en fichas individuales, una por archivo, para que sea facil decidir cuales queremos portar a otro proyecto.

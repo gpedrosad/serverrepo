@@ -1,5 +1,7 @@
 # 03. Parchment de bonus de training
 
+> Doc técnico canónico: [`docs/gameplay/TRAINING_BONUS_PARCHMENT.md`](../gameplay/TRAINING_BONUS_PARCHMENT.md).
+
 ## Que es
 
 Parchment especial que entrega `+5 horas` de training extra para el dia actual y solo una vez por jugador por dia.

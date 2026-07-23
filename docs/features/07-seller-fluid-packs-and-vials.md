@@ -1,5 +1,7 @@
 # 07. Seller: packs de fluids y venta de vials
 
+> Doc técnico canónico: [`docs/gameplay/SELLER_FLUIDS.md`](../gameplay/SELLER_FLUIDS.md).
+
 ## Que es
 
 Ampliacion del Seller para vender backpacks ya armadas de fluids y permitir venta segura de vials vacios, incluida la opcion `sell all vials`.

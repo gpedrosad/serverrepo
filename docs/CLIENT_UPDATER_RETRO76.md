@@ -237,7 +237,7 @@ Servidor de juego: debe cargar `items-zagan-test.otb` (o equivalente) para que s
 ## Relacionado
 
 - [CLIENT.md](./CLIENT.md) — cliente local de desarrollo
-- [ZAGAN_TEST_ITEMS.md](./ZAGAN_TEST_ITEMS.md) — pipeline items custom
-- [IMPORTAR_ITEM_DESDE_IMAGEN.md](./IMPORTAR_ITEM_DESDE_IMAGEN.md) — llevar items a producción
+- [ZAGAN_TEST_ITEMS.md](./items-and-map/ZAGAN_TEST_ITEMS.md) — pipeline items custom
+- [IMPORTAR_ITEM_DESDE_IMAGEN.md](./items-and-map/IMPORTAR_ITEM_DESDE_IMAGEN.md) — llevar items a producción
 - `~/clienteretro/Contexto/MEMORY.md` — nota de pack Zagan en cliente publicado
 - `~/clienteretro/README.md` — sync manual actual (`sync-from-yurots.sh`)

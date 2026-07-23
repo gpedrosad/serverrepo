@@ -1,7 +1,7 @@
 # Cómo prevenir cuelgues del OT y tener logs útiles
 
 Guía operativa para **retro76.cl** (VPS). Complementa:
-- [FIX_OT_STABILITY_KICKS_AND_HANG.md](FIX_OT_STABILITY_KICKS_AND_HANG.md) — causas técnicas ya corregidas en código
+- [FIX_OT_STABILITY_KICKS_AND_HANG.md](../_archive/FIX_OT_STABILITY_KICKS_AND_HANG.md) — causas técnicas ya corregidas en código
 - [SOCKET_DEBUG_LOGGING.md](SOCKET_DEBUG_LOGGING.md) — logs de red detallados (**debug activo en prod desde jul 2026**)
 
 ---
@@ -62,9 +62,9 @@ Mantener el servidor en un commit que incluya al menos `4d78ee7`:
 
 1. **Sockets de juego** — sin timeout de handshake en sesión activa (`setSocketGameRecvBlocking`).
 2. **Listen `EINTR`** — no cerrar el puerto 7171 si `select()` es interrumpido.
-3. **Mana** — valores y pulso documentados en [REGEN_FOOD.md](REGEN_FOOD.md).
+3. **Mana** — valores y pulso documentados en [REGEN_FOOD.md](../gameplay/REGEN_FOOD.md).
 
-**No hacer en el VPS:** `git stash -u`, `git clean`, `git pull` a mano sin backup (ver [README-DEPLOY-VPS.md](../scripts/README-DEPLOY-VPS.md)).
+**No hacer en el VPS:** `git stash -u`, `git clean`, `git pull` a mano sin backup (ver [README-DEPLOY-VPS.md](../../scripts/README-DEPLOY-VPS.md)).
 
 ---
 

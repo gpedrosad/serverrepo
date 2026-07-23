@@ -1,5 +1,7 @@
 # 13. Peso de runas tipo RL
 
+> Doc técnico canónico: [`docs/gameplay/RUNE_WEIGHT_RL.md`](../gameplay/RUNE_WEIGHT_RL.md).
+
 ## Que es
 
 Ajuste para que las runas pesen como items completos tipo RL y no queden infladas por una multiplicacion extra sobre las cargas.

@@ -66,4 +66,4 @@ Renombrado desde `windsting bow` (era DIST 2H). Ahora **axe** 1H: ataque **43** 
 
 Plan completo, restricciones (no tocar DP ni casas) y checklist:
 
-→ [`../DEPLOY-PENDIENTE-VPS-JUL2026.md`](../DEPLOY-PENDIENTE-VPS-JUL2026.md)
+→ [`../_archive/DEPLOY-PENDIENTE-VPS-JUL2026.md`](../_archive/DEPLOY-PENDIENTE-VPS-JUL2026.md)

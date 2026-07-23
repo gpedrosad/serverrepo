@@ -9,7 +9,7 @@ Para el checklist detallado de deploy en producción, ver también **[scripts/RE
 Para cambios delicados del core que hoy estan aplicados pero pueden necesitar
 rollback, ver tambien:
 
-- [docs/STAIRS_DEFAULT_ROLLBACK.md](STAIRS_DEFAULT_ROLLBACK.md)
+- [docs/_archive/STAIRS_DEFAULT_ROLLBACK.md](_archive/STAIRS_DEFAULT_ROLLBACK.md)
 
 ---
 

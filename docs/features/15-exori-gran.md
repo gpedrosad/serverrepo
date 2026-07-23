@@ -1,5 +1,7 @@
 # 15. Exori gran
 
+> Doc técnico canónico: [`docs/gameplay/SPELL_EXORI_GRAN.md`](../gameplay/SPELL_EXORI_GRAN.md).
+
 ## Que es
 
 Spell custom para Knight pensado como upgrade claro de `exori`:

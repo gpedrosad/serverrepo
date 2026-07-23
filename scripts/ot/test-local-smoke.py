@@ -885,7 +885,10 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
-    repo_root = Path(__file__).resolve().parents[1]
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    from lib.project_root import project_root  # noqa: E402
+
+    repo_root = project_root(Path(__file__))
     player_path = player_file_path(repo_root, args.char)
     gm_account = args.gm_account if args.gm_account is not None else args.account
     gm_password = args.gm_password if args.gm_password is not None else args.password

@@ -3,6 +3,7 @@
 Los scripts viven en subcarpetas por dominio. En la raíz de `scripts/` quedan **symlinks de compatibilidad** con los nombres históricos (`deploy-vps.sh`, `ot-probe.py`, etc.) para no romper docs, cron del VPS ni hábitos.
 
 `resolve-project-root.sh` se queda en la raíz de `scripts/` (lo usan casi todos los `.sh`).
+Python en subcarpetas debe resolver el repo con `lib.project_root.project_root()` (no `parents[1]`).
 
 ## Carpetas
 
@@ -14,6 +15,7 @@ Los scripts viven en subcarpetas por dominio. En la raíz de `scripts/` quedan *
 | [`otb/`](otb/) | Patches OTB / gems sprites / loot tables |
 | [`client-rme/`](client-rme/) | RME, clientes locales, Zagan test assets, patcher |
 | [`web/`](web/) | Web local, analytics, premium funnel |
+| [`lib/`](lib/) | Helpers compartidos (`project_root.py`) |
 
 ## Comandos más usados (rutas históricas = OK)
 
@@ -36,6 +38,43 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 ./scripts/client-rme/play-yurots-client.sh
 ./scripts/client-rme/open-rme.sh
 ```
+
+## Inventario por carpeta
+
+### map/
+
+| Script | Uso |
+|--------|-----|
+| `generate-crucible.py` | El Crisol OTBM + carteles (portal `157,54,7`) |
+| `generate-wave-arena.py` | Wave Arena |
+| `generate-floor-hunt.py` | Floor hunt campus |
+| `generate-hunt-maze.py` | Hunt maze |
+| `generate-maze.py` | Laberinto Alice |
+| `generate-tp-gauntlet.py` | Gauntlet |
+| `generate-island.py` | Islas procedurales |
+| `scan-map-depots.py` / `patch-map-depot-ids.py` | Auditoría/parche depots |
+| `sync-houses-*.py` | Houses ↔ mapa / RME |
+
+### otb/
+
+| Script | Uso |
+|--------|-----|
+| `patch-crucible-rares-otb.py` | 7 armas exclusivas del Crisol |
+| `patch-crystal-arrow-otb.py` | Crystal Arrow DIST |
+| `patch-fury-cape-otb.py` / `patch-medusa-sword-otb.py` / `patch-sword-of-silence-otb.py` / `patch-windsting-axe-otb.py` | Items Zagan |
+| `extract-gem-sprites.py` / `build-gem-loot-table.py` | Assets/web de gemas |
+
+### client-rme/
+
+| Script | Uso |
+|--------|-----|
+| `build_zagan_test_assets.py` | Pipeline sprites/OTB/dat Zagan |
+| `play-yurots-client.sh` / `open-rme.sh` | Cliente y RME locales |
+| `patch-tibia760-client.py` | Patcher cliente 7.6 |
+
+### ot / web / deploy
+
+Ver comandos de arriba; deploy: leer **antes** [`deploy/README-DEPLOY-VPS.md`](deploy/README-DEPLOY-VPS.md).
 
 ## Deploy
 

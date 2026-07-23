@@ -1,5 +1,7 @@
 ## Que es
 
+> Doc técnico canónico: [`docs/gameplay/SPELL_CAST_VISIBILITY.md`](../gameplay/SPELL_CAST_VISIBILITY.md).
+
 Fix para que las palabras magicas solo aparezcan cuando el spell realmente sale.
 
 Antes podia verse el texto aunque el cast fallara por exhausted u otra validacion (incluido hotkey hold por heuristic de `exhaustedTicks`).

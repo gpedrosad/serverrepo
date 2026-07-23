@@ -1,5 +1,7 @@
 # 10. Gemas e imbuements
 
+> Doc técnico canónico: [`docs/gameplay/GEMS.md`](../gameplay/GEMS.md).
+
 ## Que es
 
 Sistema de progresion lateral basado en:

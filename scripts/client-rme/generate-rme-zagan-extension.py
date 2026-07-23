@@ -29,7 +29,10 @@ def categorize(name: str) -> str:
 
 
 def main() -> int:
-    root = Path(__file__).resolve().parents[1]
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    from lib.project_root import project_root  # noqa: E402
+
+    root = project_root(Path(__file__))
     manifest_path = root / "zagan-test" / "manifest.json"
     out_path = root / "rme-extensions" / "yurots-zagan-items.xml"
 

@@ -1,5 +1,7 @@
 # 04. Bounty / Most Wanted
 
+> Doc técnico canónico: [`docs/gameplay/MOST_WANTED_SYSTEM.md`](../gameplay/MOST_WANTED_SYSTEM.md).
+
 ## Que es
 
 Sistema de recompensas entre jugadores financiado desde banco, con visibilidad publica en web y transferencia de la bounty al killer en PvP valido.

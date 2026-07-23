@@ -74,7 +74,7 @@ Excepciones/restricciones especiales:
 
 Documentacion relacionada:
 
-- [docs/TRAINING_ZONE_NO_PVP.md](/Users/gonzalo/Desktop/yurots-principal/docs/TRAINING_ZONE_NO_PVP.md)
+- [docs/gameplay/TRAINING_ZONE_NO_PVP.md](gameplay/TRAINING_ZONE_NO_PVP.md)
 
 ## 2. Dano, combate y PZ lock
 
@@ -355,7 +355,7 @@ Si ambos estan dentro del contexto bloqueado de training:
 
 Ver:
 
-- [docs/TRAINING_ZONE_NO_PVP.md](/Users/gonzalo/Desktop/yurots-principal/docs/TRAINING_ZONE_NO_PVP.md)
+- [docs/gameplay/TRAINING_ZONE_NO_PVP.md](gameplay/TRAINING_ZONE_NO_PVP.md)
 
 ### PvP Arena
 

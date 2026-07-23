@@ -1,5 +1,7 @@
 # 08. Dark Rodo: backpacks de runas
 
+> Doc técnico canónico: [`docs/gameplay/DARK_RODO_RUNE_BACKPACKS.md`](../gameplay/DARK_RODO_RUNE_BACKPACKS.md).
+
 ## Que es
 
 Extension del NPC de runas para vender backpacks completas de las runas mas usadas, en vez de obligar a comprar todo de a una.
