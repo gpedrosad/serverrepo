@@ -6,7 +6,7 @@ Laberinto **separado** (no es Alice Maze ni el gauntlet). Misma geometría 2 sqm
 |---------|-----------|--------|
 | **Alice Maze** (intacto) | X `380–433`, Y `18–103` | Barco `alice maze` → `413 103 7` |
 | **Hunt Maze** (este doc) | X `280–349`, Y `243–400` | Portal templo viejo `160,54,7` |
-| **Floor hunt** | X `200–245`, Y `339–400`, z0–15 (16 pisos) | Portal templo `162,54,7` — ver [`MAPEAR_FLOOR_HUNT.md`](MAPEAR_FLOOR_HUNT.md) |
+| **Floor hunt (campus)** | 16 salas z7, X `40–452` Y `220–400` | Portal templo `162,54,7` — ver [`MAPEAR_FLOOR_HUNT.md`](MAPEAR_FLOOR_HUNT.md) |
 | **Wave Arena** | X `174–180`, Y `386–392` | Portal templo `159,54,7` — ver [`../gameplay/WAVE_ARENA.md`](../gameplay/WAVE_ARENA.md) |
 | Gauntlet | ~`450+` | Barco `gauntlet` |
 
@@ -48,4 +48,4 @@ Manifiesto: `server/YurOTS/ots/data/world/generated-hunt-maze.json`
 
 ## Caza
 
-Spawns progresivos (poco usados en el mapa): rats / spiders → orc/war wolf/amazon → valkyrie/assassin → mummy/gazer → blue djinn al fondo.
+Progresión mid→hard (sin rats): **Minotaur** en la entrada → Guard/Mage → Cyclops/Dwarf → Beholder/Demon Skeleton → Spider/Vampire → Necro/Hero → Dragon/Dragon Lord → Hydra/Lich → Demon/Behemoth/Fury al fondo.

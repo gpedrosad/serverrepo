@@ -1,11 +1,11 @@
-# Floor Hunt — torre de 16 pisos con teleports
+# Floor Hunt — campus de 16 salas (teleports, sin apilar z)
 
-Zona de hunt **multi-piso** generada por código. Avance **solo por teleports** (`1387`). No toca Alice ni el hunt maze plano.
+Zona de hunt **multi-sala** generada por código. Avance **solo por teleports** (`1387`). Las salas están en **z7**, separadas en XY (alas oeste / centro / este) para que no se vean teleports de otra sala. Fondo opaco (no void). No toca Alice ni el hunt maze plano.
 
 | Sistema | Acceso templo viejo | Footprint |
 |---------|---------------------|-----------|
 | Hunt maze (plano) | `160, 54, 7` | X `280–349`, Y `243–400`, z7 |
-| **Floor hunt** | `162, 54, 7` | X `200–245`, Y `339–400`, **z0–z15** (16 pisos) |
+| **Floor hunt (campus)** | `162, 54, 7` | 16 salas en z7 — envelope X `40–452`, Y `220–400` |
 | Wave Arena | `159, 54, 7` | sala 7×7 oleadas — [`WAVE_ARENA.md`](../gameplay/WAVE_ARENA.md) |
 | Alice Maze | barco `alice maze` | X `380–433`, Y `18–103`, z7 |
 
@@ -14,49 +14,63 @@ Manifiesto: `server/YurOTS/ots/data/world/generated-floor-hunt.json`
 
 ---
 
-## Teleports (cada piso)
+## Por qué campus (no torre apilada)
+
+La versión anterior ponía 16 laberintos en la **misma huella XY** (z0–z15). El cliente mostraba teleports/suelos del piso de abajo a través del void (`100`).
+
+Ahora:
+
+1. Cada sala tiene **XY propio** con hueco entre footprints.
+2. Todo en **z7** (sin stack vertical).
+3. Fondos **opacos** (mármol/piedra/tierra/pasto) distintos por sala.
+
+Al regenerar se **borra** la torre vieja `X200–245 Y339–400` en z0–z15.
+
+---
+
+## Teleports (cada sala)
 
 Entrada sur (2×2):
 
 ```
-        laberinto → norte: TELEPORT BAJAR (o templo en z15)
+        laberinto → norte: TELEPORT BAJAR (o templo en sala 15)
    ┌────┬────┐
    │LAND│EXP │   LAND = llegar
-   ├────┼────┤   EXP  = express +2 pisos (pisos pares; atajo)
-   │ UP │HOME│   UP   = subir (z0 → templo)
+   ├────┼────┤   EXP  = express +2 salas (pares; atajo)
+   │ UP │HOME│   UP   = sala anterior (sala 0 → templo)
    └────┴────┘   HOME = templo siempre
 ```
 
 ```
-templo 162,54,7 --TP--> z0 Rat Cellars
-                         ↓ … 16 pisos …
-                        z15 Djinn Depths --TP--> templo
+templo 162,54,7 --TP--> sala 0 Minotaur Courts
+                         ↓ … 16 salas …
+                        sala 15 Behemoth Throne --TP--> templo
 ```
 
 ---
 
-## Los 16 pisos
+## Las 16 salas
 
-| z | Nombre | Fauna (resumen) | Extra |
-|---|--------|-----------------|-------|
-| 0 | Rat Cellars | Rat, Cave Rat, Hyaena | entrada |
-| 1 | Damp Tunnels | Cave Rat, Hyaena, Poison Spider | |
-| 2 | Spider Nest | Poison Spider, Centipede | express +2 |
-| 3 | Larva Pits | Centipede, Larva, Scorpion | |
-| 4 | Spear Halls | Larva, Scorpion, Orc Spearman | ★ hito (packs×2) + express |
-| 5 | Wolf Den | Orc Spearman, Bandit, War Wolf | |
-| 6 | Bandit Vault | Bandit, War Wolf, Dworc | express |
-| 7 | Amazon Wing | War Wolf, Amazon, Bandit | |
-| 8 | Valkyrie March | Amazon, Valkyrie, Stalker | ★ hito + express |
-| 9 | Stalker Dark | Valkyrie, Stalker, Assassin | |
-| 10 | Assassin Row | Stalker, Assassin, Hunter | express |
-| 11 | Hunter Gallery | Assassin, Hunter, Mummy | |
-| 12 | Mummy Crypt | Hunter, Mummy, Terror Bird | ★ hito + express |
-| 13 | Terror Aviary | Mummy, Terror Bird, Gazer | |
-| 14 | Gazer Spire | Terror Bird, Gazer, Blue Djinn | express |
-| 15 | Djinn Depths | Gazer, Blue Djinn | fondo → templo |
+| # | Nombre | Ala | Fauna (resumen) | Extra |
+|---|--------|-----|-----------------|-------|
+| 0 | Minotaur Courts | oeste | Minotaur, Archer, Guard | entrada |
+| 1 | Guard Barracks | oeste | Guard, Archer, Mage | |
+| 2 | Cyclops Yard | oeste | Cyclops, Dwarf Soldier | express +2 |
+| 3 | Dwarf Bastion | oeste | Dwarf Guard, Geomancer | |
+| 4 | Beholder Vault | oeste | Beholder, Demon Skeleton | ★ hito + express |
+| 5 | Bone Crypt | oeste | Demon Skeleton, Ghoul, Ghost | |
+| 6 | Spider Catacombs | centro | Giant Spider, Vampire | express |
+| 7 | Necro Cloister | centro | Necromancer, Priestess | |
+| 8 | Hero Hall | este | Hero, Black Knight | ★ hito + express |
+| 9 | Dragon Roost | este | Dragon | |
+| 10 | Scarabs & Hex | este | Ancient Scarab, Warlock | express |
+| 11 | Lord Lair | este | Dragon Lord | |
+| 12 | Hydra Cistern | este | Hydra, Green Djinn | ★ hito + express |
+| 13 | Lich Spire | este | Lich, Blue Djinn | |
+| 14 | Demon Gate | este | Demon, Serpent Spawn | |
+| 15 | Behemoth Throne | este | Behemoth, Fury | fondo → templo |
 
-★ Hitos (z4, z8, z12): más densidad de spawns.
+★ Hitos (4, 8, 12): packs×2 en algunas celdas.
 
 ---
 
@@ -64,13 +78,12 @@ templo 162,54,7 --TP--> z0 Rat Cellars
 
 | Qué | Pos |
 |-----|-----|
-| Portal templo | `162, 54, 7` → `200, 399, 0` |
-| Landing / piso | `200, 399, z` |
-| TP home | `201, 400, z` → `163, 54, 7` |
-| TP up | `200, 400, z` |
-| TP express (si hay) | `201, 399, z` → landing z+2 |
-| TP down | `224, 339, z` |
-| Celdas / seed | `12×16` / piso, seed `421` |
+| Portal templo | `162, 54, 7` → `40, 399, 7` |
+| Landing sala 0 | `40, 399, 7` |
+| Celdas / seed | `10×12` / sala, seed `421` |
+| Spawns | `<!-- BEGIN FLOOR_HUNT -->` |
+
+Orígenes `(originX, originYSouth)`: ver `FLOOR_ORIGINS` en el script / manifiesto.
 
 ---
 
@@ -83,15 +96,10 @@ docker compose -f docker-compose.prod.yml restart yurots
 python3 scripts/ot-probe.py 127.0.0.1 7171
 ```
 
-Limpia z0–z15 en la huella + portal `162,54,7`.
-
 ---
 
-## Probar
+## Relacionado
 
-```
-/pos 162 54 7      # portal → z0
-/pos 200 399 4     # hito Spear Halls
-/pos 200 399 8     # hito Valkyrie
-/pos 200 399 15    # Djinn Depths
-```
+- Hunt maze plano: [`MAPEAR_HUNT_MAZE.md`](MAPEAR_HUNT_MAZE.md)
+- Wave Arena: [`../gameplay/WAVE_ARENA.md`](../gameplay/WAVE_ARENA.md)
+- Alice Maze: [`MAPEAR_LABERINTO.md`](MAPEAR_LABERINTO.md)

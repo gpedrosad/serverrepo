@@ -18,99 +18,110 @@
   "teleportItemId": 1387,
   "difficultyBands": [
     [
-      "Rat",
-      "Cave Rat"
+      "Minotaur",
+      "Minotaur Archer"
     ],
     [
-      "Cave Rat",
-      "Hyaena"
+      "Minotaur",
+      "Minotaur Guard"
     ],
     [
-      "Hyaena",
-      "Poison Spider",
-      "Cave Rat"
+      "Minotaur Guard",
+      "Minotaur Archer",
+      "Minotaur"
     ],
     [
-      "Poison Spider",
-      "Centipede"
+      "Minotaur Mage",
+      "Minotaur Guard"
     ],
     [
-      "Centipede",
-      "Larva",
-      "Scorpion"
+      "Cyclops",
+      "Minotaur Guard",
+      "Dwarf Soldier"
     ],
     [
-      "Larva",
-      "Scorpion",
-      "Orc Spearman"
+      "Dwarf Guard",
+      "Cyclops",
+      "Dwarf Geomancer"
     ],
     [
-      "Orc Spearman",
-      "Bandit",
-      "War Wolf"
+      "Beholder",
+      "Dwarf Guard",
+      "Demon Skeleton"
     ],
     [
-      "War Wolf",
-      "Bandit",
-      "Amazon",
-      "Dworc Fleshhunter"
+      "Demon Skeleton",
+      "Ghoul",
+      "Beholder"
     ],
     [
-      "Amazon",
-      "Valkyrie",
-      "Stalker"
+      "Giant Spider",
+      "Vampire",
+      "Demon Skeleton"
     ],
     [
-      "Valkyrie",
-      "Assassin",
-      "Stalker"
+      "Necromancer",
+      "Priestess",
+      "Vampire"
     ],
     [
-      "Assassin",
-      "Hunter",
-      "Mummy"
+      "Hero",
+      "Black Knight",
+      "Necromancer"
     ],
     [
-      "Mummy",
-      "Hunter",
-      "Terror Bird"
+      "Dragon",
+      "Hero",
+      "Ancient Scarab"
     ],
     [
-      "Terror Bird",
-      "Gazer",
-      "Mummy"
+      "Dragon Lord",
+      "Warlock",
+      "Dragon"
     ],
     [
-      "Gazer",
-      "Blue Djinn"
+      "Hydra",
+      "Lich",
+      "Green Djinn"
     ],
     [
-      "Blue Djinn"
+      "Demon",
+      "Behemoth",
+      "Serpent Spawn",
+      "Fury"
     ]
   ],
   "spawnTime": 70,
   "spawnCount": 720,
   "spawnCounts": {
-    "Cave Rat": 96,
-    "Rat": 49,
-    "Hyaena": 52,
-    "Poison Spider": 47,
-    "Centipede": 45,
-    "Scorpion": 31,
-    "Larva": 30,
-    "Orc Spearman": 28,
-    "War Wolf": 29,
-    "Bandit": 21,
-    "Dworc Fleshhunter": 12,
-    "Amazon": 26,
-    "Stalker": 24,
-    "Valkyrie": 28,
-    "Assassin": 27,
-    "Hunter": 24,
-    "Mummy": 40,
-    "Terror Bird": 24,
-    "Gazer": 33,
-    "Blue Djinn": 54
+    "Minotaur Archer": 70,
+    "Minotaur": 97,
+    "Minotaur Guard": 95,
+    "Minotaur Mage": 25,
+    "Dwarf Soldier": 14,
+    "Cyclops": 35,
+    "Dwarf Geomancer": 15,
+    "Dwarf Guard": 25,
+    "Beholder": 29,
+    "Demon Skeleton": 47,
+    "Ghoul": 13,
+    "Giant Spider": 14,
+    "Vampire": 25,
+    "Necromancer": 28,
+    "Priestess": 15,
+    "Black Knight": 13,
+    "Hero": 23,
+    "Ancient Scarab": 13,
+    "Dragon": 26,
+    "Warlock": 14,
+    "Dragon Lord": 11,
+    "Green Djinn": 12,
+    "Hydra": 15,
+    "Lich": 10,
+    "Fury": 10,
+    "Serpent Spawn": 9,
+    "Demon": 10,
+    "Behemoth": 7
   },
   "mapFile": "server/YurOTS/ots/data/world/test.otbm",
   "spawnFile": "server/YurOTS/ots/data/world/test-spawn.xml",

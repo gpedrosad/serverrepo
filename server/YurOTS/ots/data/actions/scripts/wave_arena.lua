@@ -1,5 +1,6 @@
 -- Wave Arena: palanca uniqueid 7100 (start/next) y 7101 (ranking semanal).
--- Tras limpiar la sala, usá la palanca para la siguiente oleada.
+-- Tras limpiar la sala, usa la palanca para la siguiente oleada.
+-- Textos en ASCII (cliente 7.6 no muestra bien acentos/signos raros).
 
 UID_START = 7100
 UID_RANK = 7101
@@ -144,8 +145,8 @@ function waveRankMessage(cid)
 	if all < 0 then
 		all = 0
 	end
-	doPlayerSendTextMessage(cid, 22, "Wave Arena — semana " .. data.week)
-	doPlayerSendTextMessage(cid, 22, "Tu mejor esta semana: oleada " .. mine .. " | historico: " .. all)
+	doPlayerSendTextMessage(cid, 22, "Wave Arena - ranking semana " .. data.week)
+	doPlayerSendTextMessage(cid, 22, "Tu mejor: oleada " .. mine .. " (semana) / " .. all .. " (historico)")
 	local list = {}
 	for n, s in pairs(data.scores) do
 		table.insert(list, {name = n, score = s})
@@ -154,12 +155,12 @@ function waveRankMessage(cid)
 		return a.score > b.score
 	end)
 	if table.getn(list) == 0 then
-		doPlayerSendTextMessage(cid, 22, "Aun no hay ranking esta semana. ¡Sé el primero!")
+		doPlayerSendTextMessage(cid, 22, "Sin ranking esta semana. Se el primero!")
 		return
 	end
 	local n = math.min(5, table.getn(list))
 	for i = 1, n do
-		doPlayerSendTextMessage(cid, 22, i .. ". " .. list[i].name .. " — oleada " .. list[i].score)
+		doPlayerSendTextMessage(cid, 22, i .. ") " .. list[i].name .. " - oleada " .. list[i].score)
 	end
 end
 
@@ -233,41 +234,41 @@ end
 
 function waveStartOrNext(cid)
 	if not wavePlayerInArena(cid) then
-		doPlayerSendCancel(cid, "Entra a la Wave Arena primero (TP del templo viejo).")
+		doPlayerSendCancel(cid, "Entra a la Wave Arena primero (TP del templo).")
 		return
 	end
 
 	local monsters = waveCountMonsters(cid)
 	if monsters > 0 then
-		doPlayerSendCancel(cid, "Aun hay " .. monsters .. " criatura(s). ¡Eliminalas!")
+		doPlayerSendCancel(cid, "Quedan " .. monsters .. " monstruo(s). Mata a todos primero.")
 		return
 	end
 
-	-- Si el dueño anterior se fue, reiniciar corrida al estar vacía.
+	-- Si el dueno anterior se fue, reiniciar corrida al estar vacia.
 	if WaveArenaState.wave > 0 and WaveArenaState.owner ~= 0 and WaveArenaState.owner ~= cid then
 		if not wavePlayerInArena(WaveArenaState.owner) then
 			WaveArenaState.wave = 0
 			WaveArenaState.owner = 0
 			WaveArenaState.ownerName = ""
 		else
-			doPlayerSendCancel(cid, "Hay una corrida activa de " .. WaveArenaState.ownerName .. ".")
+			doPlayerSendCancel(cid, "Corrida activa de " .. WaveArenaState.ownerName .. ".")
 			return
 		end
 	end
 
 	local nextWave = WaveArenaState.wave + 1
 	if nextWave > table.getn(WAVES) then
-		doPlayerSendTextMessage(cid, 22, "¡Completaste las " .. table.getn(WAVES) .. " oleadas! Ranking actualizado.")
+		doPlayerSendTextMessage(cid, 22, "Completaste las " .. table.getn(WAVES) .. " oleadas. Ranking actualizado.")
 		waveUpdateBest(cid, table.getn(WAVES))
 		WaveArenaState.wave = 0
 		WaveArenaState.owner = 0
 		WaveArenaState.ownerName = ""
-		doPlayerSendTextMessage(cid, 22, "Usá la palanca otra vez para empezar de cero.")
+		doPlayerSendTextMessage(cid, 22, "Usa la palanca otra vez para reiniciar.")
 		return
 	end
 
 	if not waveSpawn(nextWave) then
-		doPlayerSendCancel(cid, "No se pudieron invocar monstruos. Avisá a un GM.")
+		doPlayerSendCancel(cid, "No se pudieron invocar monstruos. Avisa a un GM.")
 		return
 	end
 

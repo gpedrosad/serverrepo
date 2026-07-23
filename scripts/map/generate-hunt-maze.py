@@ -62,22 +62,23 @@ LEGACY_ALICE_HUNT_BEGIN = "<!-- BEGIN ALICE_HUNT -->"
 LEGACY_ALICE_HUNT_END = "<!-- END ALICE_HUNT -->"
 SPAWN_TIME = 70
 
+# Progresión mid→hard: entra en Minotaur, sube hasta demonios al fondo.
 DIFFICULTY_BANDS: list[tuple[str, ...]] = [
-    ("Rat", "Cave Rat"),
-    ("Cave Rat", "Hyaena"),
-    ("Hyaena", "Poison Spider", "Cave Rat"),
-    ("Poison Spider", "Centipede"),
-    ("Centipede", "Larva", "Scorpion"),
-    ("Larva", "Scorpion", "Orc Spearman"),
-    ("Orc Spearman", "Bandit", "War Wolf"),
-    ("War Wolf", "Bandit", "Amazon", "Dworc Fleshhunter"),
-    ("Amazon", "Valkyrie", "Stalker"),
-    ("Valkyrie", "Assassin", "Stalker"),
-    ("Assassin", "Hunter", "Mummy"),
-    ("Mummy", "Hunter", "Terror Bird"),
-    ("Terror Bird", "Gazer", "Mummy"),
-    ("Gazer", "Blue Djinn"),
-    ("Blue Djinn",),
+    ("Minotaur", "Minotaur Archer"),
+    ("Minotaur", "Minotaur Guard"),
+    ("Minotaur Guard", "Minotaur Archer", "Minotaur"),
+    ("Minotaur Mage", "Minotaur Guard"),
+    ("Cyclops", "Minotaur Guard", "Dwarf Soldier"),
+    ("Dwarf Guard", "Cyclops", "Dwarf Geomancer"),
+    ("Beholder", "Dwarf Guard", "Demon Skeleton"),
+    ("Demon Skeleton", "Ghoul", "Beholder"),
+    ("Giant Spider", "Vampire", "Demon Skeleton"),
+    ("Necromancer", "Priestess", "Vampire"),
+    ("Hero", "Black Knight", "Necromancer"),
+    ("Dragon", "Hero", "Ancient Scarab"),
+    ("Dragon Lord", "Warlock", "Dragon"),
+    ("Hydra", "Lich", "Green Djinn"),
+    ("Demon", "Behemoth", "Serpent Spawn", "Fury"),
 ]
 
 

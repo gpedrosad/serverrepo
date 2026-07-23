@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
-"""Zona de caza por PISOS + TELEPORTS (aparte de Alice y hunt maze plano).
+"""Floor Hunt — campus de salas separadas en XY (sin apilar z).
 
-- 16 plantas (z0→z15), misma huella XY, laberinto 2 sqm (406/100).
-- Todo el avance entre pisos es por teleport (item 1387).
-- Portal templo viejo 162,54,7 → z0 (más fácil); z15 = fondo.
-- Entrada sur: LAND + TP home + TP subir; norte: TP bajar.
-- NE: express TP (+2 pisos) en pisos pares — atajo arriesgado.
-- Hitos cada 4 pisos: spawns densos (pack×2).
-- Spawns en <!-- BEGIN FLOOR_HUNT -->.
+Antes: 16 pisos en la misma huella XY (z0–z15) → se veían teleports del piso de abajo.
+Ahora: 16 salas en z7, separadas en el mapa (alas oeste / centro / este),
+conectadas solo por teleports. Fondo opaco (no void 100) por ala.
+
+Portal templo 162,54,7 → sala 0. Avance up/down/express + home.
 
 Uso:
   python3 scripts/generate-floor-hunt.py --dry-run
@@ -30,8 +28,6 @@ sys.modules["generate_maze"] = _maze
 assert _spec.loader is not None
 _spec.loader.exec_module(_maze)
 
-GROUND_PATH = _maze.GROUND_PATH
-GROUND_BG = _maze.GROUND_BG
 TELEPORT_ITEM = _maze.TELEPORT_ITEM
 TileSpec = _maze.TileSpec
 group_tile_areas = _maze.group_tile_areas
@@ -43,15 +39,16 @@ add_connection = _maze.add_connection
 north_exit_tiles = _maze.north_exit_tiles
 validate_walkable_path = _maze.validate_walkable_path
 
-# Huella al oeste del hunt maze plano (280–349). Vacía en z0–z15.
-DEFAULT_ORIGIN_X = 200
-DEFAULT_ORIGIN_Y_SOUTH = 400
-DEFAULT_CELLS_X = 12
-DEFAULT_CELLS_Y = 16
+# Salas más compactas; gap entre footprints ~12–17 sqm.
+DEFAULT_CELLS_X = 10
+DEFAULT_CELLS_Y = 12
 DEFAULT_SEED = 421
-# Torre completa: z0 (fácil) → z15 (fondo). Todo vía teleports.
-FLOORS = tuple(range(0, 16))
-CLEAR_Z_EXTRA = tuple(range(0, 16))
+CAMPUS_Z = 7
+NUM_FLOORS = 16
+
+# Torre vieja apilada (limpiar siempre al regenerar).
+LEGACY_STACKED_FOOTPRINT = (200, 339, 245, 400)  # x0,y0,x1,y1
+LEGACY_STACKED_Z = tuple(range(0, 16))
 
 # Portal distinto al hunt maze (160,54,7).
 HUB_PORTAL = (162, 54, 7)
@@ -60,48 +57,88 @@ HUB_GROUND = 406
 
 ALICE_FOOTPRINT = (380, 18, 433, 103, 7)
 HUNT_MAZE_FOOTPRINT = (280, 243, 349, 400, 7)
+WAVE_ARENA_FOOTPRINT = (174, 386, 180, 392, 7)
 
 SPAWN_MARK_BEGIN = "<!-- BEGIN FLOOR_HUNT -->"
 SPAWN_MARK_END = "<!-- END FLOOR_HUNT -->"
 SPAWN_TIME = 65
 
-FLOOR_LABELS: tuple[str, ...] = (
-    "Rat Cellars",
-    "Damp Tunnels",
-    "Spider Nest",
-    "Larva Pits",
-    "Spear Halls",
-    "Wolf Den",
-    "Bandit Vault",
-    "Amazon Wing",
-    "Valkyrie March",
-    "Stalker Dark",
-    "Assassin Row",
-    "Hunter Gallery",
-    "Mummy Crypt",
-    "Terror Aviary",
-    "Gazer Spire",
-    "Djinn Depths",
+# (origin_x, origin_y_south) — 6 oeste + 2 centro + 8 este, todo z7.
+FLOOR_ORIGINS: tuple[tuple[int, int], ...] = (
+    (40, 400),
+    (95, 400),
+    (40, 350),
+    (95, 350),
+    (40, 300),
+    (95, 300),
+    (200, 400),
+    (200, 350),
+    (360, 400),
+    (415, 400),
+    (360, 355),
+    (415, 355),
+    (360, 310),
+    (415, 310),
+    (360, 265),
+    (415, 265),
 )
 
-# 16 bandas — subida lenta y variada.
+# Temas opacos: camino / fondo (sin void 100 — evita ver a través).
+FLOOR_THEMES: tuple[tuple[int, int], ...] = (
+    (406, 405),  # marble white / black
+    (405, 919),  # black marble / dark stone
+    (919, 412),  # dark stone / stone
+    (231, 351),  # dirt / sand
+    (101, 103),  # grass
+    (407, 405),  # yellow / black marble
+    (412, 919),  # stone / dark
+    (351, 231),  # sand / dirt
+    (406, 919),
+    (405, 412),
+    (919, 405),
+    (231, 103),
+    (101, 351),
+    (407, 919),
+    (412, 405),
+    (405, 231),
+)
+
+FLOOR_LABELS: tuple[str, ...] = (
+    "Minotaur Courts",
+    "Guard Barracks",
+    "Cyclops Yard",
+    "Dwarf Bastion",
+    "Beholder Vault",
+    "Bone Crypt",
+    "Spider Catacombs",
+    "Necro Cloister",
+    "Hero Hall",
+    "Dragon Roost",
+    "Scarabs & Hex",
+    "Lord Lair",
+    "Hydra Cistern",
+    "Lich Spire",
+    "Demon Gate",
+    "Behemoth Throne",
+)
+
 FLOOR_ROSTERS: tuple[tuple[str, ...], ...] = (
-    ("Rat", "Cave Rat", "Rat", "Hyaena"),
-    ("Cave Rat", "Hyaena", "Poison Spider", "Cave Rat"),
-    ("Poison Spider", "Centipede", "Hyaena", "Poison Spider"),
-    ("Centipede", "Larva", "Scorpion", "Centipede"),
-    ("Larva", "Scorpion", "Orc Spearman", "Larva"),
-    ("Orc Spearman", "Bandit", "War Wolf", "Scorpion"),
-    ("Bandit", "War Wolf", "Dworc Fleshhunter", "Orc Spearman"),
-    ("War Wolf", "Amazon", "Bandit", "Dworc Fleshhunter"),
-    ("Amazon", "Valkyrie", "Stalker", "Amazon"),
-    ("Valkyrie", "Stalker", "Assassin", "Amazon"),
-    ("Stalker", "Assassin", "Hunter", "Valkyrie"),
-    ("Assassin", "Hunter", "Mummy", "Stalker"),
-    ("Hunter", "Mummy", "Terror Bird", "Assassin"),
-    ("Mummy", "Terror Bird", "Gazer", "Hunter"),
-    ("Terror Bird", "Gazer", "Blue Djinn", "Mummy"),
-    ("Gazer", "Blue Djinn", "Blue Djinn", "Terror Bird"),
+    ("Minotaur", "Minotaur Archer", "Minotaur", "Minotaur Guard"),
+    ("Minotaur Guard", "Minotaur Archer", "Minotaur Mage", "Minotaur"),
+    ("Cyclops", "Minotaur Guard", "Dwarf Soldier", "Cyclops"),
+    ("Dwarf Guard", "Dwarf Geomancer", "Cyclops", "Dwarf Guard"),
+    ("Beholder", "Dwarf Guard", "Demon Skeleton", "Beholder"),
+    ("Demon Skeleton", "Ghoul", "Ghost", "Beholder"),
+    ("Giant Spider", "Vampire", "Demon Skeleton", "Giant Spider"),
+    ("Necromancer", "Priestess", "Vampire", "Necromancer"),
+    ("Hero", "Black Knight", "Necromancer", "Hero"),
+    ("Dragon", "Hero", "Black Knight", "Dragon"),
+    ("Ancient Scarab", "Warlock", "Dragon", "Ancient Scarab"),
+    ("Dragon Lord", "Warlock", "Dragon", "Dragon Lord"),
+    ("Hydra", "Green Djinn", "Dragon Lord", "Hydra"),
+    ("Lich", "Blue Djinn", "Hydra", "Lich"),
+    ("Demon", "Serpent Spawn", "Lich", "Demon"),
+    ("Behemoth", "Fury", "Demon", "Behemoth"),
 )
 
 
@@ -132,34 +169,49 @@ def build_floor_maze(
     cells_x: int,
     cells_y: int,
     seed: int,
+    ground_path: int,
+    ground_bg: int,
 ) -> tuple[dict[tuple[int, int, int], TileSpec], set[tuple[int, int]], set, dict]:
     visited, edges = generate_maze_cells(cells_x, cells_y, seed)
     x0, y0, x1, y1 = maze_footprint(origin_x, origin_y_south, cells_x, cells_y)
     tiles: dict[tuple[int, int, int], TileSpec] = {}
     for y in range(y0, y1 + 1):
         for x in range(x0, x1 + 1):
-            tiles[(x, y, z)] = TileSpec(ground=GROUND_BG)
+            tiles[(x, y, z)] = TileSpec(ground=ground_bg)
     for cell in visited:
         add_cell_block(tiles, origin_x, origin_y_south, z, cells_y, cell[0], cell[1])
     for edge in edges:
         add_connection(tiles, origin_x, origin_y_south, z, cells_y, edge[0], edge[1])
 
+    if ground_bg == _maze.GROUND_PATH:
+        raise ValueError("ground_bg no puede ser 406 (se confunde con el camino)")
+
     entry_cell = (0, cells_y - 1)
     entry_block = cell_block_tiles(origin_x, origin_y_south, cells_y, *entry_cell)
-    # 2×2 ordenado: NW, NE, SW, SE (por y luego x).
     entry_sorted = sorted(entry_block, key=lambda p: (p[1], p[0]))
     nw, ne, sw, se = entry_sorted
     exit_tiles = north_exit_tiles(visited, origin_x, origin_y_south, z, cells_x, cells_y)
 
+    # Validar con 406; después aplicar tema del piso.
+    conn = validate_walkable_path(
+        tiles, z, (nw[0], nw[1]), list(exit_tiles)
+    )
+    for pos, spec in list(tiles.items()):
+        if pos[2] == z and spec.ground == _maze.GROUND_PATH:
+            tiles[pos] = TileSpec(ground=ground_path, teleport=spec.teleport)
+
     meta = {
-        "landing": (nw[0], nw[1], z),       # llegar (sin TP)
-        "tpHome": (se[0], se[1], z),        # teleport → templo
-        "tpUp": (sw[0], sw[1], z),          # teleport → piso de arriba
-        "tpSpare": (ne[0], ne[1], z),       # camino libre / señal
+        "landing": (nw[0], nw[1], z),
+        "tpHome": (se[0], se[1], z),
+        "tpUp": (sw[0], sw[1], z),
+        "tpSpare": (ne[0], ne[1], z),
         "north": exit_tiles[0],
-        "northAll": exit_tiles,             # todos → bajar (teleport)
+        "northAll": exit_tiles,
         "entryCell": entry_cell,
+        "origin": {"x": origin_x, "ySouth": origin_y_south},
+        "theme": {"path": ground_path, "background": ground_bg},
         "footprint": {"fromX": x0, "toX": x1, "fromY": y0, "toY": y1, "z": z},
+        "connectivity": conn,
     }
     return tiles, visited, edges, meta
 
@@ -197,6 +249,7 @@ def plan_floor_spawns(
     entry_cell: tuple[int, int],
     skip: set[tuple[int, int, int]],
     roster: tuple[str, ...],
+    floor_index: int,
     *,
     milestone: bool = False,
 ) -> list[dict]:
@@ -213,7 +266,7 @@ def plan_floor_spawns(
                 break
         if chosen is None:
             continue
-        name = roster[(cell[0] * 3 + cell[1] * 5 + z) % len(roster)]
+        name = roster[(cell[0] * 3 + cell[1] * 5 + floor_index) % len(roster)]
         pack = 1
         if milestone and (cell[0] + cell[1]) % 3 == 0:
             pack = 2
@@ -223,7 +276,7 @@ def plan_floor_spawns(
                 "x": chosen[0],
                 "y": chosen[1],
                 "z": z,
-                "floor": z,
+                "floor": floor_index,
                 "pack": pack,
             }
         )
@@ -231,81 +284,82 @@ def plan_floor_spawns(
 
 
 def build_all_floors(
-    origin_x: int,
-    origin_y_south: int,
     cells_x: int,
     cells_y: int,
     seed: int,
-    floors: tuple[int, ...],
     hub_portal: tuple[int, int, int],
     hub_landing: tuple[int, int, int],
 ) -> tuple[dict[tuple[int, int, int], TileSpec], dict, list[dict]]:
+    if len(FLOOR_ORIGINS) != NUM_FLOORS:
+        raise ValueError("FLOOR_ORIGINS debe tener 16 entradas")
+
     all_tiles: dict[tuple[int, int, int], TileSpec] = {}
     floor_meta: dict[int, dict] = {}
     all_spawns: list[dict] = []
     floor_graphs: dict[int, tuple] = {}
+    z = CAMPUS_Z
 
-    for i, z in enumerate(floors):
+    for i in range(NUM_FLOORS):
+        ox, oy = FLOOR_ORIGINS[i]
+        path_g, bg_g = FLOOR_THEMES[i]
         tiles, visited, edges, meta = build_floor_maze(
-            origin_x, origin_y_south, z, cells_x, cells_y, seed + z * 17
+            ox, oy, z, cells_x, cells_y, seed + i * 17, path_g, bg_g
         )
         all_tiles.update(tiles)
-        floor_meta[z] = meta
-        floor_graphs[z] = (visited, edges, meta["entryCell"])
+        floor_meta[i] = meta
+        floor_graphs[i] = (visited, edges, meta["entryCell"], ox, oy)
 
-    # Cablear TELEPORTS entre pisos + hub.
-    z0 = floors[0]
-    m0 = floor_meta[z0]
+    m0 = floor_meta[0]
     landing0 = m0["landing"]
-
     all_tiles[hub_portal] = TileSpec(ground=HUB_GROUND, teleport=landing0)
 
-    for i, z in enumerate(floors):
-        meta = floor_meta[z]
+    for i in range(NUM_FLOORS):
+        meta = floor_meta[i]
         landing = meta["landing"]
         tp_home = meta["tpHome"]
         tp_up = meta["tpUp"]
         tp_spare = meta["tpSpare"]
+        path_g = meta["theme"]["path"]
 
-        # Llegada siempre limpia (sin TP).
-        all_tiles[landing] = TileSpec(ground=GROUND_PATH)
+        all_tiles[landing] = TileSpec(ground=path_g)
+        all_tiles[tp_home] = TileSpec(ground=path_g, teleport=hub_landing)
 
-        # Home desde cualquier piso.
-        all_tiles[tp_home] = TileSpec(ground=GROUND_PATH, teleport=hub_landing)
-
-        # Subir (teleport) — en el primer piso también vuelve al templo.
         if i == 0:
-            all_tiles[tp_up] = TileSpec(ground=GROUND_PATH, teleport=hub_landing)
+            all_tiles[tp_up] = TileSpec(ground=path_g, teleport=hub_landing)
             up_dest = "temple"
         else:
-            dest_up = floor_meta[floors[i - 1]]["landing"]
-            all_tiles[tp_up] = TileSpec(ground=GROUND_PATH, teleport=dest_up)
-            up_dest = f"z{floors[i - 1]}"
+            dest_up = floor_meta[i - 1]["landing"]
+            all_tiles[tp_up] = TileSpec(ground=path_g, teleport=dest_up)
+            up_dest = f"floor{i - 1}"
 
-        # Bajar: TODOS los tiles del bloque norte son teleport (bien visible).
-        if i < len(floors) - 1:
-            dest_down = floor_meta[floors[i + 1]]["landing"]
-            down_dest = f"z{floors[i + 1]}"
+        if i < NUM_FLOORS - 1:
+            dest_down = floor_meta[i + 1]["landing"]
+            down_dest = f"floor{i + 1}"
         else:
-            dest_down = hub_landing  # fondo → templo
+            dest_down = hub_landing
             down_dest = "temple"
         for pos in meta["northAll"]:
-            all_tiles[pos] = TileSpec(ground=GROUND_PATH, teleport=dest_down)
+            all_tiles[pos] = TileSpec(ground=path_g, teleport=dest_down)
 
-        # Express +2 (NE): atajo arriesgado en pisos pares (no en los 2 últimos).
         express_dest = None
-        if i % 2 == 0 and i < len(floors) - 2:
-            dest_ex = floor_meta[floors[i + 2]]["landing"]
-            all_tiles[tp_spare] = TileSpec(ground=GROUND_PATH, teleport=dest_ex)
-            express_dest = f"z{floors[i + 2]}"
+        if i % 2 == 0 and i < NUM_FLOORS - 2:
+            dest_ex = floor_meta[i + 2]["landing"]
+            all_tiles[tp_spare] = TileSpec(ground=path_g, teleport=dest_ex)
+            express_dest = f"floor{i + 2}"
         else:
-            all_tiles[tp_spare] = TileSpec(ground=GROUND_PATH)
+            all_tiles[tp_spare] = TileSpec(ground=path_g)
 
-        label = FLOOR_LABELS[i] if i < len(FLOOR_LABELS) else f"Floor {i}"
+        label = FLOOR_LABELS[i]
+        meta["index"] = i
         meta["label"] = label
         meta["milestone"] = i > 0 and i % 4 == 0
         meta["teleports"] = {
-            "home": {"x": tp_home[0], "y": tp_home[1], "z": z, "dest": "temple"},
+            "home": {
+                "x": tp_home[0],
+                "y": tp_home[1],
+                "z": z,
+                "dest": "temple",
+            },
             "up": {"x": tp_up[0], "y": tp_up[1], "z": z, "dest": up_dest},
             "down": {
                 "x": meta["north"][0],
@@ -325,35 +379,16 @@ def build_all_floors(
             ),
         }
 
-    # Validar cada piso (solo footprint; el portal del hub está fuera).
-    for z in floors:
-        meta = floor_meta[z]
-        fpz = meta["footprint"]
-        floor_tiles = {
-            p: s
-            for p, s in all_tiles.items()
-            if p[2] == z
-            and fpz["fromX"] <= p[0] <= fpz["toX"]
-            and fpz["fromY"] <= p[1] <= fpz["toY"]
-        }
-        conn = validate_walkable_path(
-            floor_tiles,
-            z,
-            (meta["landing"][0], meta["landing"][1]),
-            list(meta["northAll"]),
-        )
-        meta["connectivity"] = conn
-
     skip = {p for p, s in all_tiles.items() if s.teleport is not None}
     skip.add(hub_portal)
 
-    for i, z in enumerate(floors):
-        visited, edges, entry_cell = floor_graphs[z]
-        roster = FLOOR_ROSTERS[min(i, len(FLOOR_ROSTERS) - 1)]
+    for i in range(NUM_FLOORS):
+        visited, edges, entry_cell, ox, oy = floor_graphs[i]
+        roster = FLOOR_ROSTERS[i]
         all_spawns.extend(
             plan_floor_spawns(
-                origin_x,
-                origin_y_south,
+                ox,
+                oy,
                 z,
                 cells_y,
                 visited,
@@ -361,27 +396,34 @@ def build_all_floors(
                 entry_cell,
                 skip,
                 roster,
-                milestone=bool(floor_meta[z].get("milestone")),
+                i,
+                milestone=bool(floor_meta[i].get("milestone")),
             )
         )
 
+    fps = [floor_meta[i]["footprint"] for i in range(NUM_FLOORS)]
     summary_meta = {
+        "layout": "campus-xy-separated",
+        "campusZ": CAMPUS_Z,
         "floors": [
             {
-                "z": z,
                 "index": i,
-                "label": floor_meta[z].get("label", f"z{z}"),
-                "milestone": floor_meta[z].get("milestone", False),
+                "z": CAMPUS_Z,
+                "label": floor_meta[i].get("label", f"floor{i}"),
+                "milestone": floor_meta[i].get("milestone", False),
+                "origin": floor_meta[i]["origin"],
+                "theme": floor_meta[i]["theme"],
                 "landing": {
-                    "x": floor_meta[z]["landing"][0],
-                    "y": floor_meta[z]["landing"][1],
-                    "z": z,
+                    "x": floor_meta[i]["landing"][0],
+                    "y": floor_meta[i]["landing"][1],
+                    "z": CAMPUS_Z,
                 },
-                "teleports": floor_meta[z]["teleports"],
-                "roster": list(FLOOR_ROSTERS[min(i, len(FLOOR_ROSTERS) - 1)]),
-                "connectivity": floor_meta[z]["connectivity"],
+                "teleports": floor_meta[i]["teleports"],
+                "roster": list(FLOOR_ROSTERS[i]),
+                "footprint": floor_meta[i]["footprint"],
+                "connectivity": floor_meta[i]["connectivity"],
             }
-            for i, z in enumerate(floors)
+            for i in range(NUM_FLOORS)
         ],
         "hubPortal": {"x": hub_portal[0], "y": hub_portal[1], "z": hub_portal[2]},
         "hubLanding": {"x": hub_landing[0], "y": hub_landing[1], "z": hub_landing[2]},
@@ -396,13 +438,22 @@ def build_all_floors(
             "z": m0["tpHome"][2],
         },
         "footprint": {
-            "fromX": floor_meta[z0]["footprint"]["fromX"],
-            "toX": floor_meta[z0]["footprint"]["toX"],
-            "fromY": floor_meta[z0]["footprint"]["fromY"],
-            "toY": floor_meta[z0]["footprint"]["toY"],
-            "fromZ": floors[0],
-            "toZ": floors[-1],
+            "fromX": min(f["fromX"] for f in fps),
+            "toX": max(f["toX"] for f in fps),
+            "fromY": min(f["fromY"] for f in fps),
+            "toY": max(f["toY"] for f in fps),
+            "z": CAMPUS_Z,
         },
+        "clearBoxes": [
+            {
+                "fromX": f["fromX"],
+                "toX": f["toX"],
+                "fromY": f["fromY"],
+                "toY": f["toY"],
+                "z": CAMPUS_Z,
+            }
+            for f in fps
+        ],
     }
     return all_tiles, summary_meta, all_spawns
 
@@ -449,8 +500,6 @@ def validate_monsters(names: list[str], monsters_xml: Path) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--origin-x", type=int, default=DEFAULT_ORIGIN_X)
-    parser.add_argument("--origin-y-south", type=int, default=DEFAULT_ORIGIN_Y_SOUTH)
     parser.add_argument("--cells-x", type=int, default=DEFAULT_CELLS_X)
     parser.add_argument("--cells-y", type=int, default=DEFAULT_CELLS_Y)
     parser.add_argument("--seed", type=int, default=DEFAULT_SEED)
@@ -482,30 +531,31 @@ def main() -> int:
         return 1
 
     new_tiles, meta, spawns = build_all_floors(
-        args.origin_x,
-        args.origin_y_south,
         args.cells_x,
         args.cells_y,
         args.seed,
-        FLOORS,
         hub_portal,
         hub_landing,
     )
-    fp = meta["footprint"]
-    # Chequeo anti-solape en z7 (Alice / hunt maze plano).
-    fp7 = {
-        "fromX": fp["fromX"],
-        "toX": fp["toX"],
-        "fromY": fp["fromY"],
-        "toY": fp["toY"],
-        "z": 7,
-    }
-    if overlaps(fp7, ALICE_FOOTPRINT):
-        print("ERROR: solapa Alice Maze", file=sys.stderr)
-        return 1
-    if overlaps(fp7, HUNT_MAZE_FOOTPRINT):
-        print("ERROR: solapa hunt maze plano", file=sys.stderr)
-        return 1
+
+    for fl in meta["floors"]:
+        fp = fl["footprint"]
+        fp7 = {
+            "fromX": fp["fromX"],
+            "toX": fp["toX"],
+            "fromY": fp["fromY"],
+            "toY": fp["toY"],
+            "z": CAMPUS_Z,
+        }
+        if overlaps(fp7, ALICE_FOOTPRINT):
+            print(f"ERROR: sala {fl['index']} solapa Alice Maze", file=sys.stderr)
+            return 1
+        if overlaps(fp7, HUNT_MAZE_FOOTPRINT):
+            print(f"ERROR: sala {fl['index']} solapa hunt maze", file=sys.stderr)
+            return 1
+        if overlaps(fp7, WAVE_ARENA_FOOTPRINT):
+            print(f"ERROR: sala {fl['index']} solapa wave arena", file=sys.stderr)
+            return 1
 
     try:
         validate_monsters([s["name"] for s in spawns], monsters_xml)
@@ -513,50 +563,46 @@ def main() -> int:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 1
 
-    path_count = sum(1 for s in new_tiles.values() if s.ground == GROUND_PATH)
-    bg_count = sum(1 for s in new_tiles.values() if s.ground == GROUND_BG)
+    path_ids = {t[0] for t in FLOOR_THEMES}
+    bg_ids = {t[1] for t in FLOOR_THEMES}
+    path_count = sum(1 for s in new_tiles.values() if s.ground in path_ids)
+    bg_count = sum(1 for s in new_tiles.values() if s.ground in bg_ids)
     tele_count = sum(1 for s in new_tiles.values() if s.teleport is not None)
     counts = Counter(s["name"] for s in spawns)
-    by_floor = Counter(s["z"] for s in spawns)
+    by_floor = Counter(s["floor"] for s in spawns)
 
     print(
-        f"Floor hunt — {len(FLOORS)} pisos con TELEPORTS "
-        "(aparte de Alice y hunt maze plano)"
+        f"Floor hunt — {NUM_FLOORS} salas en campus XY (z{CAMPUS_Z}), "
+        "sin apilar pisos"
     )
-    print(
-        f"Celdas {args.cells_x}x{args.cells_y}/piso, seed {args.seed}, "
-        f"pisos z{FLOORS[0]}…z{FLOORS[-1]}"
-    )
+    print(f"Celdas {args.cells_x}x{args.cells_y}/sala, seed {args.seed}")
     print(
         f"Portal templo: ({hub_portal[0]},{hub_portal[1]},{hub_portal[2]}) → "
         f"({meta['entryLanding']['x']},{meta['entryLanding']['y']},{meta['entryLanding']['z']})"
     )
+    fp = meta["footprint"]
     print(
-        f"TP home (cada piso, SE entrada): ej. z7 "
-        f"({meta['entryReturn']['x']},{meta['entryReturn']['y']},"
-        f"{meta['entryReturn']['z']}) → "
-        f"({hub_landing[0]},{hub_landing[1]},{hub_landing[2]})"
-    )
-    print(
-        f"Footprint XY: X {fp['fromX']}-{fp['toX']}, Y {fp['fromY']}-{fp['toY']} | "
-        f"Z {fp['fromZ']}-{fp['toZ']}"
+        f"Envelope: X {fp['fromX']}-{fp['toX']}, Y {fp['fromY']}-{fp['toY']}, z{fp['z']}"
     )
     for fl in meta["floors"]:
-        z = fl["z"]
         tps = fl["teleports"]
         ex = tps.get("express")
         ex_s = (
-            f" | TP express→{ex['dest']} @ ({ex['x']},{ex['y']})"
+            f" | express→{ex['dest']} @ ({ex['x']},{ex['y']})"
             if ex
             else ""
         )
         mark = " ★" if fl.get("milestone") else ""
+        th = fl["theme"]
         print(
-            f"  z{z}{mark} {fl.get('label','')}: "
+            f"  f{fl['index']:02d}{mark} {fl.get('label', '')}: "
+            f"X{fl['footprint']['fromX']}-{fl['footprint']['toX']} "
+            f"Y{fl['footprint']['fromY']}-{fl['footprint']['toY']} "
+            f"path={th['path']} bg={th['background']} | "
             f"down→{tps['down']['dest']} up→{tps['up']['dest']}"
-            f"{ex_s} | spawns {by_floor[z]}"
+            f"{ex_s} | spawns {by_floor[fl['index']]}"
         )
-    print(f"Tiles: camino {path_count}, fondo {bg_count}, teleports {tele_count}")
+    print(f"Tiles: path~{path_count}, bg~{bg_count}, teleports {tele_count}")
     print(f"Spawns total: {len(spawns)}")
     for name, n in counts.most_common():
         print(f"  {name:<22} {n:3}")
@@ -565,11 +611,10 @@ def main() -> int:
         "name": "generated-floor-hunt",
         "separateFromAlice": True,
         "separateFromHuntMaze": True,
+        "layout": "campus-xy-separated",
         "cells": {"x": args.cells_x, "y": args.cells_y},
         "seed": args.seed,
-        "floorsZ": list(FLOORS),
-        "groundPathId": GROUND_PATH,
-        "groundBackgroundId": GROUND_BG,
+        "campusZ": CAMPUS_Z,
         "teleportItemId": TELEPORT_ITEM,
         "spawnTime": SPAWN_TIME,
         "spawnCount": len(spawns),
@@ -578,8 +623,8 @@ def main() -> int:
         "mapFile": str(otbm_path.relative_to(project)),
         "spawnFile": str(spawn_path.relative_to(project)),
         "tileCounts": {
-            "path": path_count,
-            "background": bg_count,
+            "pathApprox": path_count,
+            "backgroundApprox": bg_count,
             "teleports": tele_count,
             "total": len(new_tiles),
         },
@@ -595,10 +640,16 @@ def main() -> int:
 
     raw = otbm_path.read_bytes()
     body = raw[4:]
-    clear_zs = sorted(set(FLOORS) | set(CLEAR_Z_EXTRA))
-    for z in clear_zs:
+
+    # Limpiar torre apilada vieja (todas las z).
+    lx0, ly0, lx1, ly1 = LEGACY_STACKED_FOOTPRINT
+    for z in LEGACY_STACKED_Z:
+        body = _maze.filter_tiles_in_bbox(body, lx0, ly0, lx1, ly1, z)
+
+    # Limpiar cada sala del campus + portal hub.
+    for box in meta["clearBoxes"]:
         body = _maze.filter_tiles_in_bbox(
-            body, fp["fromX"], fp["fromY"], fp["toX"], fp["toY"], z
+            body, box["fromX"], box["fromY"], box["toX"], box["toY"], box["z"]
         )
     body = _maze.filter_tiles_in_bbox(
         body,
@@ -608,6 +659,7 @@ def main() -> int:
         hub_portal[1],
         hub_portal[2],
     )
+
     insert_at = _maze.find_map_data_insert(body)
     patch = b"".join(group_tile_areas(new_tiles))
     patched = raw[:4] + body[:insert_at] + patch + body[insert_at:]
@@ -626,7 +678,7 @@ def main() -> int:
     print(f"OK — manifiesto: {manifest_path}")
     print("Reiniciá: docker compose -f docker-compose.prod.yml restart yurots")
     print(
-        f"Portal pisos: /pos {hub_portal[0]} {hub_portal[1]} {hub_portal[2]}  |  "
+        f"Portal campus: /pos {hub_portal[0]} {hub_portal[1]} {hub_portal[2]}  |  "
         f"Hunt plano: /pos 160 54 7  |  Alice: barco maze"
     )
     return 0

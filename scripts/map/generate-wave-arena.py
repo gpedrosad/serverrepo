@@ -38,7 +38,12 @@ OTBM_ITEM = _maze.OTBM_ITEM
 OTBM_ATTR_TELE_DEST = _maze.OTBM_ATTR_TELE_DEST
 OTBM_ATTR_ITEM = _maze.OTBM_ATTR_ITEM
 OTBM_ATTR_UNIQUE_ID = 5
+OTBM_ATTR_DESC = 7
 write_props = _maze.write_props
+
+# Look-text ASCII (cliente 7.6).
+LEVER_START_DESC = "Start / next wave"
+LEVER_RANK_DESC = "Weekly ranking"
 
 HUB_PORTAL = (159, 54, 7)
 HUB_LANDING = (158, 54, 7)
@@ -61,10 +66,17 @@ UID_RANK = 7101
 
 
 @dataclass
+class ArenaItem:
+    item_id: int
+    unique_id: int | None = None
+    description: str | None = None
+
+
+@dataclass
 class ArenaTile:
     ground: int
     teleport: tuple[int, int, int] | None = None
-    items: list[tuple[int, int | None]] = field(default_factory=list)
+    items: list[ArenaItem] = field(default_factory=list)
 
 
 def project_root() -> Path:
@@ -75,15 +87,23 @@ def project_root() -> Path:
     )
 
 
+def encode_otbm_string(text: str) -> bytes:
+    raw = text.encode("ascii", errors="replace")
+    return struct.pack("<H", len(raw)) + raw
+
+
 def encode_item_node(
     item_id: int,
     *,
     unique_id: int | None = None,
     tele: tuple[int, int, int] | None = None,
+    description: str | None = None,
 ) -> bytes:
     props = struct.pack("<H", item_id)
     if unique_id is not None:
         props += struct.pack("<BH", OTBM_ATTR_UNIQUE_ID, unique_id)
+    if description is not None:
+        props += struct.pack("<B", OTBM_ATTR_DESC) + encode_otbm_string(description)
     if tele is not None:
         props += struct.pack("<BHHB", OTBM_ATTR_TELE_DEST, tele[0], tele[1], tele[2])
     buf = bytearray()
@@ -103,8 +123,14 @@ def encode_tile_node(x_off: int, y_off: int, spec: ArenaTile) -> bytes:
     write_props(buf, props)
     if spec.teleport is not None:
         buf.extend(encode_item_node(TELEPORT_ITEM, tele=spec.teleport))
-    for item_id, uid in spec.items:
-        buf.extend(encode_item_node(item_id, unique_id=uid))
+    for it in spec.items:
+        buf.extend(
+            encode_item_node(
+                it.item_id,
+                unique_id=it.unique_id,
+                description=it.description,
+            )
+        )
     buf.append(NODE_END)
     return bytes(buf)
 
@@ -173,10 +199,20 @@ def build_arena_tiles(
     tiles[LANDING] = ArenaTile(ground=GROUND_PATH)
     tiles[RETURN_TP] = ArenaTile(ground=GROUND_PATH, teleport=hub_landing)
     tiles[LEVER_START] = ArenaTile(
-        ground=GROUND_PATH, items=[(LEVER_ITEM, UID_START)]
+        ground=GROUND_PATH,
+        items=[
+            ArenaItem(
+                LEVER_ITEM, unique_id=UID_START, description=LEVER_START_DESC
+            )
+        ],
     )
     tiles[LEVER_RANK] = ArenaTile(
-        ground=GROUND_PATH, items=[(LEVER_ITEM, UID_RANK)]
+        ground=GROUND_PATH,
+        items=[
+            ArenaItem(
+                LEVER_ITEM, unique_id=UID_RANK, description=LEVER_RANK_DESC
+            )
+        ],
     )
     tiles[hub_portal] = ArenaTile(ground=HUB_GROUND, teleport=LANDING)
 
