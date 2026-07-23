@@ -81,8 +81,9 @@ function onCreatureSay(cid, type, msg)
 		if msgcontains(msg, 'city') then
 			selfSay('Good luck out there, ' .. cname .. '!')
 			setPlayerVocation(cid, vocation)
-			setPlayerMasterPos(cid, 160, 54, 7)
-			selfSay('/send ' .. cname .. ', 160 54 7')
+			-- Templo actual (mapa once). Portales templo viejo: 159 wave arena, 160 hunt plano, 162 pisos.
+			setPlayerMasterPos(cid, 130, 53, 6)
+			selfSay('/send ' .. cname .. ', 130 53 6')
 			npcEndConversation(cid)
 		else
 			selfSay('Just say "city" when you want me to send you to the mainland.')

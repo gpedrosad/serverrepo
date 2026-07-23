@@ -502,6 +502,10 @@
 <action uniqueid="7000" script="annilever.lua" />
 <action uniqueid="7001" script="arenalever.lua" />
 
+<!-- Wave Arena (templo viejo 159,54,7): start/next + ranking semanal -->
+<action uniqueid="7100" script="wave_arena.lua" />
+<action uniqueid="7101" script="wave_arena.lua" />
+
 <!-- <action itemid="2112" script="invasion.lua" /> -->
 <action itemid="2153" script="gem_imbue.lua" />
 <action itemid="2154" script="gem_imbue.lua" />

@@ -55,6 +55,7 @@ server/YurOTS/ots/data/players/
 !server/YurOTS/ots/data/players/4.xml
 
 # Runtime noise — logs, cores, local symlinks de assets
+server/YurOTS/ots/data/logs/wave_arena_rank.json
 server/YurOTS/ots/data/crash-*.log
 server/YurOTS/ots/yurots.log
 server/YurOTS/ots/*.log

@@ -1,0 +1,166 @@
+{
+  "name": "generated-hunt-maze",
+  "separateFromAlice": true,
+  "aliceFootprint": {
+    "fromX": 380,
+    "toX": 433,
+    "fromY": 18,
+    "toY": 103,
+    "z": 7
+  },
+  "cells": {
+    "x": 18,
+    "y": 40
+  },
+  "seed": 230,
+  "groundPathId": 406,
+  "groundBackgroundId": 100,
+  "teleportItemId": 1387,
+  "difficultyBands": [
+    [
+      "Rat",
+      "Cave Rat"
+    ],
+    [
+      "Cave Rat",
+      "Hyaena"
+    ],
+    [
+      "Hyaena",
+      "Poison Spider",
+      "Cave Rat"
+    ],
+    [
+      "Poison Spider",
+      "Centipede"
+    ],
+    [
+      "Centipede",
+      "Larva",
+      "Scorpion"
+    ],
+    [
+      "Larva",
+      "Scorpion",
+      "Orc Spearman"
+    ],
+    [
+      "Orc Spearman",
+      "Bandit",
+      "War Wolf"
+    ],
+    [
+      "War Wolf",
+      "Bandit",
+      "Amazon",
+      "Dworc Fleshhunter"
+    ],
+    [
+      "Amazon",
+      "Valkyrie",
+      "Stalker"
+    ],
+    [
+      "Valkyrie",
+      "Assassin",
+      "Stalker"
+    ],
+    [
+      "Assassin",
+      "Hunter",
+      "Mummy"
+    ],
+    [
+      "Mummy",
+      "Hunter",
+      "Terror Bird"
+    ],
+    [
+      "Terror Bird",
+      "Gazer",
+      "Mummy"
+    ],
+    [
+      "Gazer",
+      "Blue Djinn"
+    ],
+    [
+      "Blue Djinn"
+    ]
+  ],
+  "spawnTime": 70,
+  "spawnCount": 720,
+  "spawnCounts": {
+    "Cave Rat": 96,
+    "Rat": 49,
+    "Hyaena": 52,
+    "Poison Spider": 47,
+    "Centipede": 45,
+    "Scorpion": 31,
+    "Larva": 30,
+    "Orc Spearman": 28,
+    "War Wolf": 29,
+    "Bandit": 21,
+    "Dworc Fleshhunter": 12,
+    "Amazon": 26,
+    "Stalker": 24,
+    "Valkyrie": 28,
+    "Assassin": 27,
+    "Hunter": 24,
+    "Mummy": 40,
+    "Terror Bird": 24,
+    "Gazer": 33,
+    "Blue Djinn": 54
+  },
+  "mapFile": "server/YurOTS/ots/data/world/test.otbm",
+  "spawnFile": "server/YurOTS/ots/data/world/test-spawn.xml",
+  "tileCounts": {
+    "path": 5756,
+    "background": 5304,
+    "teleports": 3,
+    "total": 11061
+  },
+  "entryLanding": {
+    "x": 280,
+    "y": 399,
+    "z": 7
+  },
+  "entryReturn": {
+    "x": 281,
+    "y": 400,
+    "z": 7
+  },
+  "exit": {
+    "x": 316,
+    "y": 243,
+    "z": 7
+  },
+  "hubPortal": {
+    "x": 160,
+    "y": 54,
+    "z": 7
+  },
+  "hubLanding": {
+    "x": 161,
+    "y": 54,
+    "z": 7
+  },
+  "footprint": {
+    "fromX": 280,
+    "toX": 349,
+    "fromY": 243,
+    "toY": 400,
+    "z": 7
+  },
+  "connectivity": {
+    "reachablePathTiles": 5756,
+    "totalPathTiles": 5756,
+    "entryReachable": true,
+    "exitReachable": true
+  },
+  "entryCell": [
+    0,
+    39
+  ],
+  "aliceUntouched": true
+}

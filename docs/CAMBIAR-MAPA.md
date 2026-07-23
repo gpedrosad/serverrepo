@@ -7,6 +7,9 @@ Relacionado:
 - [docs/RME_SETUP.md](RME_SETUP.md) — abrir RME y assets 7.6
 - [docs/items-and-map/MAPEAR_CON_CODIGO.md](items-and-map/MAPEAR_CON_CODIGO.md) — generar terreno (islas) con `generate-island.py`
 - [docs/items-and-map/MAPEAR_LABERINTO.md](items-and-map/MAPEAR_LABERINTO.md) — laberinto 2 sqm (camino 406, fondo 100, teleport templo) con `generate-maze.py`
+- [docs/items-and-map/MAPEAR_HUNT_MAZE.md](items-and-map/MAPEAR_HUNT_MAZE.md) — hunt maze **aparte** de Alice; portal `160,54,7` con `generate-hunt-maze.py`
+- [docs/items-and-map/MAPEAR_FLOOR_HUNT.md](items-and-map/MAPEAR_FLOOR_HUNT.md) — torre 16 pisos z0–z15 con teleports; portal `162,54,7`
+- [docs/gameplay/WAVE_ARENA.md](gameplay/WAVE_ARENA.md) — Wave Arena oleadas; portal `159,54,7`
 - [scripts/README-DEPLOY-VPS.md](../scripts/README-DEPLOY-VPS.md) — deploy seguro en producción
 - [docs/PROYECTO.md](PROYECTO.md) — qué data es sagrada y qué va en git
 

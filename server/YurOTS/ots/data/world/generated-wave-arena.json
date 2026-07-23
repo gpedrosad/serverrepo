@@ -1,0 +1,58 @@
+{
+  "name": "generated-wave-arena",
+  "leverItemId": 1945,
+  "uidStart": 7100,
+  "uidRank": 7101,
+  "tileCounts": {
+    "path": 64,
+    "teleports": 2,
+    "items": 2,
+    "total": 144
+  },
+  "fight": {
+    "fromX": 174,
+    "toX": 180,
+    "fromY": 386,
+    "toY": 392,
+    "z": 7
+  },
+  "landing": {
+    "x": 177,
+    "y": 394,
+    "z": 7
+  },
+  "returnTp": {
+    "x": 178,
+    "y": 395,
+    "z": 7
+  },
+  "leverStart": {
+    "x": 176,
+    "y": 394,
+    "z": 7,
+    "uid": 7100
+  },
+  "leverRank": {
+    "x": 179,
+    "y": 394,
+    "z": 7,
+    "uid": 7101
+  },
+  "hubPortal": {
+    "x": 159,
+    "y": 54,
+    "z": 7
+  },
+  "hubLanding": {
+    "x": 158,
+    "y": 54,
+    "z": 7
+  },
+  "footprint": {
+    "fromX": 172,
+    "toX": 182,
+    "fromY": 384,
+    "toY": 396,
+    "z": 7
+  }
+}

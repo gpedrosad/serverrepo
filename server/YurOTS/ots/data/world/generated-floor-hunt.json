@@ -1,0 +1,850 @@
+{
+  "name": "generated-floor-hunt",
+  "separateFromAlice": true,
+  "separateFromHuntMaze": true,
+  "cells": {
+    "x": 12,
+    "y": 16
+  },
+  "seed": 421,
+  "floorsZ": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "groundPathId": 406,
+  "groundBackgroundId": 100,
+  "teleportItemId": 1387,
+  "spawnTime": 65,
+  "spawnCount": 3056,
+  "spawnCounts": {
+    "Hyaena": 144,
+    "Rat": 95,
+    "Cave Rat": 143,
+    "Poison Spider": 143,
+    "Centipede": 144,
+    "Scorpion": 143,
+    "Larva": 143,
+    "Orc Spearman": 143,
+    "War Wolf": 144,
+    "Bandit": 143,
+    "Dworc Fleshhunter": 96,
+    "Amazon": 190,
+    "Stalker": 190,
+    "Valkyrie": 144,
+    "Assassin": 192,
+    "Hunter": 190,
+    "Mummy": 192,
+    "Terror Bird": 190,
+    "Gazer": 144,
+    "Blue Djinn": 143
+  },
+  "spawnsByFloor": {
+    "0": 191,
+    "1": 191,
+    "2": 191,
+    "3": 191,
+    "4": 191,
+    "5": 191,
+    "6": 191,
+    "7": 191,
+    "8": 191,
+    "9": 191,
+    "10": 191,
+    "11": 191,
+    "12": 191,
+    "13": 191,
+    "14": 191,
+    "15": 191
+  },
+  "mapFile": "server/YurOTS/ots/data/world/test.otbm",
+  "spawnFile": "server/YurOTS/ots/data/world/test-spawn.xml",
+  "tileCounts": {
+    "path": 24513,
+    "background": 21120,
+    "teleports": 104,
+    "total": 45633
+  },
+  "floors": [
+    {
+      "z": 0,
+      "index": 0,
+      "label": "Rat Cellars",
+      "milestone": false,
+      "landing": {
+        "x": 200,
+        "y": 399,
+        "z": 0
+      },
+      "teleports": {
+        "home": {
+          "x": 201,
+          "y": 400,
+          "z": 0,
+          "dest": "temple"
+        },
+        "up": {
+          "x": 200,
+          "y": 400,
+          "z": 0,
+          "dest": "temple"
+        },
+        "down": {
+          "x": 224,
+          "y": 339,
+          "z": 0,
+          "dest": "z1"
+        },
+        "express": {
+          "x": 201,
+          "y": 399,
+          "z": 0,
+          "dest": "z2"
+        }
+      },
+      "roster": [
+        "Rat",
+        "Cave Rat",
+        "Rat",
+        "Hyaena"
+      ],
+      "connectivity": {
+        "reachablePathTiles": 1532,
+        "totalPathTiles": 1532,
+        "entryReachable": true,
+        "exitReachable": true
+      }
+    },
+    {
+      "z": 1,
+      "index": 1,
+      "label": "Damp Tunnels",
+      "milestone": false,
+      "landing": {
+        "x": 200,
+        "y": 399,
+        "z": 1
+      },
+      "teleports": {
+        "home": {
+          "x": 201,
+          "y": 400,
+          "z": 1,
+          "dest": "temple"
+        },
+        "up": {
+          "x": 200,
+          "y": 400,
+          "z": 1,
+          "dest": "z0"
+        },
+        "down": {
+          "x": 224,
+          "y": 339,
+          "z": 1,
+          "dest": "z2"
+        },
+        "express": null
+      },
+      "roster": [
+        "Cave Rat",
+        "Hyaena",
+        "Poison Spider",
+        "Cave Rat"
+      ],
+      "connectivity": {
+        "reachablePathTiles": 1532,
+        "totalPathTiles": 1532,
+        "entryReachable": true,
+        "exitReachable": true
+      }
+    },
+    {
+      "z": 2,
+      "index": 2,
+      "label": "Spider Nest",
+      "milestone": false,
+      "landing": {
+        "x": 200,
+        "y": 399,
+        "z": 2
+      },
+      "teleports": {
+        "home": {
+          "x": 201,
+          "y": 400,
+          "z": 2,
+          "dest": "temple"
+        },
+        "up": {
+          "x": 200,
+          "y": 400,
+          "z": 2,
+          "dest": "z1"
+        },
+        "down": {
+          "x": 224,
+          "y": 339,
+          "z": 2,
+          "dest": "z3"
+        },
+        "express": {
+          "x": 201,
+          "y": 399,
+          "z": 2,
+          "dest": "z4"
+        }
+      },
+      "roster": [
+        "Poison Spider",
+        "Centipede",
+        "Hyaena",
+        "Poison Spider"
+      ],
+      "connectivity": {
+        "reachablePathTiles": 1532,
+        "totalPathTiles": 1532,
+        "entryReachable": true,
+        "exitReachable": true
+      }
+    },
+    {
+      "z": 3,
+      "index": 3,
+      "label": "Larva Pits",
+      "milestone": false,
+      "landing": {
+        "x": 200,
+        "y": 399,
+        "z": 3
+      },
+      "teleports": {
+        "home": {
+          "x": 201,
+          "y": 400,
+          "z": 3,
+          "dest": "temple"
+        },
+        "up": {
+          "x": 200,
+          "y": 400,
+          "z": 3,
+          "dest": "z2"
+        },
+        "down": {
+          "x": 224,
+          "y": 339,
+          "z": 3,
+          "dest": "z4"
+        },
+        "express": null
+      },
+      "roster": [
+        "Centipede",
+        "Larva",
+        "Scorpion",
+        "Centipede"
+      ],
+      "connectivity": {
+        "reachablePathTiles": 1532,
+        "totalPathTiles": 1532,
+        "entryReachable": true,
+        "exitReachable": true
+      }
+    },
+    {
+      "z": 4,
+      "index": 4,
+      "label": "Spear Halls",
+      "milestone": true,
+      "landing": {
+        "x": 200,
+        "y": 399,
+        "z": 4
+      },
+      "teleports": {
+        "home": {
+          "x": 201,
+          "y": 400,
+          "z": 4,
+          "dest": "temple"
+        },
+        "up": {
+          "x": 200,
+          "y": 400,
+          "z": 4,
+          "dest": "z3"
+        },
+        "down": {
+          "x": 224,
+          "y": 339,
+          "z": 4,
+          "dest": "z5"
+        },
+        "express": {
+          "x": 201,
+          "y": 399,
+          "z": 4,
+          "dest": "z6"
+        }
+      },
+      "roster": [
+        "Larva",
+        "Scorpion",
+        "Orc Spearman",
+        "Larva"
+      ],
+      "connectivity": {
+        "reachablePathTiles": 1532,
+        "totalPathTiles": 1532,
+        "entryReachable": true,
+        "exitReachable": true
+      }
+    },
+    {
+      "z": 5,
+      "index": 5,
+      "label": "Wolf Den",
+      "milestone": false,
+      "landing": {
+        "x": 200,
+        "y": 399,
+        "z": 5
+      },
+      "teleports": {
+        "home": {
+          "x": 201,
+          "y": 400,
+          "z": 5,
+          "dest": "temple"
+        },
+        "up": {
+          "x": 200,
+          "y": 400,
+          "z": 5,
+          "dest": "z4"
+        },
+        "down": {
+          "x": 224,
+          "y": 339,
+          "z": 5,
+          "dest": "z6"
+        },
+        "express": null
+      },
+      "roster": [
+        "Orc Spearman",
+        "Bandit",
+        "War Wolf",
+        "Scorpion"
+      ],
+      "connectivity": {
+        "reachablePathTiles": 1532,
+        "totalPathTiles": 1532,
+        "entryReachable": true,
+        "exitReachable": true
+      }
+    },
+    {
+      "z": 6,
+      "index": 6,
+      "label": "Bandit Vault",
+      "milestone": false,
+      "landing": {
+        "x": 200,
+        "y": 399,
+        "z": 6
+      },
+      "teleports": {
+        "home": {
+          "x": 201,
+          "y": 400,
+          "z": 6,
+          "dest": "temple"
+        },
+        "up": {
+          "x": 200,
+          "y": 400,
+          "z": 6,
+          "dest": "z5"
+        },
+        "down": {
+          "x": 224,
+          "y": 339,
+          "z": 6,
+          "dest": "z7"
+        },
+        "express": {
+          "x": 201,
+          "y": 399,
+          "z": 6,
+          "dest": "z8"
+        }
+      },
+      "roster": [
+        "Bandit",
+        "War Wolf",
+        "Dworc Fleshhunter",
+        "Orc Spearman"
+      ],
+      "connectivity": {
+        "reachablePathTiles": 1532,
+        "totalPathTiles": 1532,
+        "entryReachable": true,
+        "exitReachable": true
+      }
+    },
+    {
+      "z": 7,
+      "index": 7,
+      "label": "Amazon Wing",
+      "milestone": false,
+      "landing": {
+        "x": 200,
+        "y": 399,
+        "z": 7
+      },
+      "teleports": {
+        "home": {
+          "x": 201,
+          "y": 400,
+          "z": 7,
+          "dest": "temple"
+        },
+        "up": {
+          "x": 200,
+          "y": 400,
+          "z": 7,
+          "dest": "z6"
+        },
+        "down": {
+          "x": 224,
+          "y": 339,
+          "z": 7,
+          "dest": "z8"
+        },
+        "express": null
+      },
+      "roster": [
+        "War Wolf",
+        "Amazon",
+        "Bandit",
+        "Dworc Fleshhunter"
+      ],
+      "connectivity": {
+        "reachablePathTiles": 1532,
+        "totalPathTiles": 1532,
+        "entryReachable": true,
+        "exitReachable": true
+      }
+    },
+    {
+      "z": 8,
+      "index": 8,
+      "label": "Valkyrie March",
+      "milestone": true,
+      "landing": {
+        "x": 200,
+        "y": 399,
+        "z": 8
+      },
+      "teleports": {
+        "home": {
+          "x": 201,
+          "y": 400,
+          "z": 8,
+          "dest": "temple"
+        },
+        "up": {
+          "x": 200,
+          "y": 400,
+          "z": 8,
+          "dest": "z7"
+        },
+        "down": {
+          "x": 224,
+          "y": 339,
+          "z": 8,
+          "dest": "z9"
+        },
+        "express": {
+          "x": 201,
+          "y": 399,
+          "z": 8,
+          "dest": "z10"
+        }
+      },
+      "roster": [
+        "Amazon",
+        "Valkyrie",
+        "Stalker",
+        "Amazon"
+      ],
+      "connectivity": {
+        "reachablePathTiles": 1532,
+        "totalPathTiles": 1532,
+        "entryReachable": true,
+        "exitReachable": true
+      }
+    },
+    {
+      "z": 9,
+      "index": 9,
+      "label": "Stalker Dark",
+      "milestone": false,
+      "landing": {
+        "x": 200,
+        "y": 399,
+        "z": 9
+      },
+      "teleports": {
+        "home": {
+          "x": 201,
+          "y": 400,
+          "z": 9,
+          "dest": "temple"
+        },
+        "up": {
+          "x": 200,
+          "y": 400,
+          "z": 9,
+          "dest": "z8"
+        },
+        "down": {
+          "x": 224,
+          "y": 339,
+          "z": 9,
+          "dest": "z10"
+        },
+        "express": null
+      },
+      "roster": [
+        "Valkyrie",
+        "Stalker",
+        "Assassin",
+        "Amazon"
+      ],
+      "connectivity": {
+        "reachablePathTiles": 1532,
+        "totalPathTiles": 1532,
+        "entryReachable": true,
+        "exitReachable": true
+      }
+    },
+    {
+      "z": 10,
+      "index": 10,
+      "label": "Assassin Row",
+      "milestone": false,
+      "landing": {
+        "x": 200,
+        "y": 399,
+        "z": 10
+      },
+      "teleports": {
+        "home": {
+          "x": 201,
+          "y": 400,
+          "z": 10,
+          "dest": "temple"
+        },
+        "up": {
+          "x": 200,
+          "y": 400,
+          "z": 10,
+          "dest": "z9"
+        },
+        "down": {
+          "x": 224,
+          "y": 339,
+          "z": 10,
+          "dest": "z11"
+        },
+        "express": {
+          "x": 201,
+          "y": 399,
+          "z": 10,
+          "dest": "z12"
+        }
+      },
+      "roster": [
+        "Stalker",
+        "Assassin",
+        "Hunter",
+        "Valkyrie"
+      ],
+      "connectivity": {
+        "reachablePathTiles": 1532,
+        "totalPathTiles": 1532,
+        "entryReachable": true,
+        "exitReachable": true
+      }
+    },
+    {
+      "z": 11,
+      "index": 11,
+      "label": "Hunter Gallery",
+      "milestone": false,
+      "landing": {
+        "x": 200,
+        "y": 399,
+        "z": 11
+      },
+      "teleports": {
+        "home": {
+          "x": 201,
+          "y": 400,
+          "z": 11,
+          "dest": "temple"
+        },
+        "up": {
+          "x": 200,
+          "y": 400,
+          "z": 11,
+          "dest": "z10"
+        },
+        "down": {
+          "x": 224,
+          "y": 339,
+          "z": 11,
+          "dest": "z12"
+        },
+        "express": null
+      },
+      "roster": [
+        "Assassin",
+        "Hunter",
+        "Mummy",
+        "Stalker"
+      ],
+      "connectivity": {
+        "reachablePathTiles": 1532,
+        "totalPathTiles": 1532,
+        "entryReachable": true,
+        "exitReachable": true
+      }
+    },
+    {
+      "z": 12,
+      "index": 12,
+      "label": "Mummy Crypt",
+      "milestone": true,
+      "landing": {
+        "x": 200,
+        "y": 399,
+        "z": 12
+      },
+      "teleports": {
+        "home": {
+          "x": 201,
+          "y": 400,
+          "z": 12,
+          "dest": "temple"
+        },
+        "up": {
+          "x": 200,
+          "y": 400,
+          "z": 12,
+          "dest": "z11"
+        },
+        "down": {
+          "x": 224,
+          "y": 339,
+          "z": 12,
+          "dest": "z13"
+        },
+        "express": {
+          "x": 201,
+          "y": 399,
+          "z": 12,
+          "dest": "z14"
+        }
+      },
+      "roster": [
+        "Hunter",
+        "Mummy",
+        "Terror Bird",
+        "Assassin"
+      ],
+      "connectivity": {
+        "reachablePathTiles": 1532,
+        "totalPathTiles": 1532,
+        "entryReachable": true,
+        "exitReachable": true
+      }
+    },
+    {
+      "z": 13,
+      "index": 13,
+      "label": "Terror Aviary",
+      "milestone": false,
+      "landing": {
+        "x": 200,
+        "y": 399,
+        "z": 13
+      },
+      "teleports": {
+        "home": {
+          "x": 201,
+          "y": 400,
+          "z": 13,
+          "dest": "temple"
+        },
+        "up": {
+          "x": 200,
+          "y": 400,
+          "z": 13,
+          "dest": "z12"
+        },
+        "down": {
+          "x": 224,
+          "y": 339,
+          "z": 13,
+          "dest": "z14"
+        },
+        "express": null
+      },
+      "roster": [
+        "Mummy",
+        "Terror Bird",
+        "Gazer",
+        "Hunter"
+      ],
+      "connectivity": {
+        "reachablePathTiles": 1532,
+        "totalPathTiles": 1532,
+        "entryReachable": true,
+        "exitReachable": true
+      }
+    },
+    {
+      "z": 14,
+      "index": 14,
+      "label": "Gazer Spire",
+      "milestone": false,
+      "landing": {
+        "x": 200,
+        "y": 399,
+        "z": 14
+      },
+      "teleports": {
+        "home": {
+          "x": 201,
+          "y": 400,
+          "z": 14,
+          "dest": "temple"
+        },
+        "up": {
+          "x": 200,
+          "y": 400,
+          "z": 14,
+          "dest": "z13"
+        },
+        "down": {
+          "x": 224,
+          "y": 339,
+          "z": 14,
+          "dest": "z15"
+        },
+        "express": null
+      },
+      "roster": [
+        "Terror Bird",
+        "Gazer",
+        "Blue Djinn",
+        "Mummy"
+      ],
+      "connectivity": {
+        "reachablePathTiles": 1532,
+        "totalPathTiles": 1532,
+        "entryReachable": true,
+        "exitReachable": true
+      }
+    },
+    {
+      "z": 15,
+      "index": 15,
+      "label": "Djinn Depths",
+      "milestone": false,
+      "landing": {
+        "x": 200,
+        "y": 399,
+        "z": 15
+      },
+      "teleports": {
+        "home": {
+          "x": 201,
+          "y": 400,
+          "z": 15,
+          "dest": "temple"
+        },
+        "up": {
+          "x": 200,
+          "y": 400,
+          "z": 15,
+          "dest": "z14"
+        },
+        "down": {
+          "x": 224,
+          "y": 339,
+          "z": 15,
+          "dest": "temple"
+        },
+        "express": null
+      },
+      "roster": [
+        "Gazer",
+        "Blue Djinn",
+        "Blue Djinn",
+        "Terror Bird"
+      ],
+      "connectivity": {
+        "reachablePathTiles": 1532,
+        "totalPathTiles": 1532,
+        "entryReachable": true,
+        "exitReachable": true
+      }
+    }
+  ],
+  "hubPortal": {
+    "x": 162,
+    "y": 54,
+    "z": 7
+  },
+  "hubLanding": {
+    "x": 163,
+    "y": 54,
+    "z": 7
+  },
+  "entryLanding": {
+    "x": 200,
+    "y": 399,
+    "z": 0
+  },
+  "entryReturn": {
+    "x": 201,
+    "y": 400,
+    "z": 0
+  },
+  "footprint": {
+    "fromX": 200,
+    "toX": 245,
+    "fromY": 339,
+    "toY": 400,
+    "fromZ": 0,
+    "toZ": 15
+  }
+}
