@@ -558,30 +558,57 @@ def top_fraggers(players: list[dict]) -> list[dict]:
     return rows
 
 
+# Misma fórmula que Creature::getExpForLv + diepercent[1]=7 + pvpunderdogexp_percent=80
+_DIE_PERCENT_EXP = 7
+_PVP_KILL_EXP_PERCENT = 80
+
+
+def exp_for_level(level: int) -> int:
+    lv = max(1, int(level))
+    return int((50 * lv * lv * lv) / 3 - 100 * lv * lv + (850 * lv) / 3 - 200)
+
+
+def estimate_pvp_kill_exp(victim_level: int) -> int:
+    """Exp aprox. que gana el killer (víctima en el piso de su level)."""
+    lost = exp_for_level(victim_level) * _DIE_PERCENT_EXP // 100
+    return lost * _PVP_KILL_EXP_PERCENT // 100
+
+
 def top_player_killers(players: list[dict], deaths: list[dict]) -> list[dict]:
-    """Ranking de quién aparece más como killer de jugadores en el registro de muertes."""
+    """Ranking PvP desde registro de muertes: kills + exp estimada por matar."""
     by_name = {p["name"].lower(): p for p in players}
-    counts: dict[str, int] = {}
+    kills: dict[str, int] = {}
+    exp_gain: dict[str, int] = {}
     for d in deaths:
         killer = (d.get("killer") or "").strip()
         if not killer:
             continue
         key = killer.lower()
         if key not in by_name:
-            continue  # monstruo / NPC / desconocido
-        counts[key] = counts.get(key, 0) + 1
+            continue
+        kills[key] = kills.get(key, 0) + 1
+        exp_gain[key] = exp_gain.get(key, 0) + estimate_pvp_kill_exp(int(d.get("level") or 0))
     rows = []
-    for key, kills in counts.items():
+    for key, n in kills.items():
         p = by_name[key]
+        gain = exp_gain.get(key, 0)
         rows.append(
             {
                 "name": p["name"],
                 "level": p["level"],
                 "vocation_short": p["vocation_short"],
-                "kills": kills,
+                "kills": n,
+                "exp": gain,
+                "exp_fmt": fmt_num(gain),
             }
         )
     rows.sort(key=lambda x: (-x["kills"], -x["level"], x["name"].lower()))
+    return rows
+
+
+def top_pk_exp(killers: list[dict]) -> list[dict]:
+    rows = [r for r in killers if r.get("exp", 0) > 0]
+    rows.sort(key=lambda x: (-x["exp"], -x["kills"], -x["level"], x["name"].lower()))
     return rows
 
 
@@ -648,6 +675,7 @@ def build_payload(
     powergamers, frags_today = daily_rankings(public_players, state_file)
     top_frags = top_fraggers(public_players)
     top_killers = top_player_killers(public_players, all_deaths)
+    pk_exp = top_pk_exp(top_killers)
 
     return {
         "updated": datetime.now(timezone.utc).strftime("%H:%M:%S UTC"),
@@ -657,6 +685,7 @@ def build_payload(
         "powergamers": powergamers[:15],
         "top_fraggers": top_frags[:15],
         "top_killers": top_killers[:15],
+        "top_pk_exp": pk_exp[:15],
         "frags_today": frags_today[:15],
         "players": public_players,
         "rankings": {
