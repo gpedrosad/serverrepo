@@ -1384,6 +1384,11 @@ function fmtPrice(n) {
 }
 
 function esc(s) { const d = document.createElement('div'); d.textContent = s ?? ''; return d.innerHTML; }
+function charHref(name) { return `/character/${encodeURIComponent(name || '')}`; }
+function charLink(name, cls = 'text-zinc-200 hover:text-sky-300') {
+  const n = name || '';
+  return `<a href="${charHref(n)}" class="${cls} no-underline hover:underline">${esc(n)}</a>`;
+}
 function chip(active) { return `chip cursor-pointer ${active ? 'nav-btn active text-zinc-100' : 'text-zinc-500 hover:text-zinc-300'}`; }
 function navClass(item) {
   const active = state.panel === item.id;
@@ -1544,8 +1549,8 @@ function renderSnapshots(data) {
   document.getElementById('snapshots').innerHTML = items.map((i, idx) =>
     `<div class="anim-in rounded-md border border-white/[0.06] px-2 py-1.5 min-w-0" style="--d:${120 + idx * 40}ms">
       <p class="text-[10px] text-zinc-600">${i.k}</p>
-      <p class="mt-0.5 truncate text-zinc-200">${esc(i.v)}</p>
-      ${i.s ? `<p class="truncate text-[10px] text-zinc-600">${esc(i.s)}</p>` : ''}
+      <p class="mt-0.5 truncate">${i.v !== '—' ? charLink(i.v) : `<span class="text-zinc-200">—</span>`}</p>
+      ${i.s ? `<p class="truncate text-[10px] text-zinc-600">${i.k === 'Muerte' && death ? charLink(death.killer, 'text-zinc-600 hover:text-sky-300') : esc(i.s)}</p>` : ''}
     </div>`
   ).join('');
 }
@@ -1557,7 +1562,7 @@ function renderOnline(list) {
     `<div class="online-row anim-in flex items-center justify-between gap-2 px-3 py-2" style="--d:${i * 35}ms">
       <div class="min-w-0 flex items-center gap-2">
         <span class="live-dot h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500/80"></span>
-        <span class="truncate text-zinc-200">${esc(p.name)}</span>
+        <span class="truncate">${charLink(p.name)}</span>
         <span class="text-[10px] text-zinc-600">${esc(p.vocation_short || p.vocation)}</span>
       </div>
       <span class="tabular-nums text-zinc-400">${p.level}</span>
@@ -1573,7 +1578,7 @@ function renderPower(list) {
   const b = document.getElementById('power-body');
   if (!list.length) { b.innerHTML = `<tr><td colspan="5">${empty('Sin exp hoy')}</td></tr>`; return; }
   b.innerHTML = list.map((p, i) =>
-    `<tr class="anim-in" style="--d:${i * 30}ms"><td class="text-zinc-600">${i+1}</td><td class="text-zinc-200">${esc(p.name)}</td>${row([esc(p.gain_fmt), p.level, `<span class="hidden sm:inline">${esc(p.vocation_short)}</span>`], 0)}</tr>`
+    `<tr class="anim-in" style="--d:${i * 30}ms"><td class="text-zinc-600">${i+1}</td><td>${charLink(p.name)}</td>${row([esc(p.gain_fmt), p.level, `<span class="hidden sm:inline">${esc(p.vocation_short)}</span>`], 0)}</tr>`
   ).join('');
 }
 
@@ -1583,7 +1588,7 @@ function renderFrags(today, pkExp) {
   else {
     sec.classList.remove('hidden');
     document.getElementById('frags-today-body').innerHTML = today.map((p, i) =>
-      `<tr><td class="text-zinc-600">${i+1}</td><td class="text-zinc-200">${esc(p.name)}</td>${row([p.frags, p.level], 0)}</tr>`
+      `<tr><td class="text-zinc-600">${i+1}</td><td>${charLink(p.name)}</td>${row([p.frags, p.level], 0)}</tr>`
     ).join('');
   }
 
@@ -1609,7 +1614,7 @@ function renderFrags(today, pkExp) {
   const hl = state.pkSort === 'kills' ? 1 : 0;
   if (!list.length) eb.innerHTML = `<tr><td colspan="6">${empty('Sin kills PvP en registro')}</td></tr>`;
   else eb.innerHTML = list.map((p, i) =>
-    `<tr class="anim-in" style="--d:${i * 30}ms"><td class="text-zinc-600">${i+1}</td><td class="text-zinc-200">${esc(p.name)}</td>${row([esc(p.exp_fmt), p.kills, p.level, `<span class="hidden sm:inline">${esc(p.vocation_short)}</span>`], hl)}</tr>`
+    `<tr class="anim-in" style="--d:${i * 30}ms"><td class="text-zinc-600">${i+1}</td><td>${charLink(p.name)}</td>${row([esc(p.exp_fmt), p.kills, p.level, `<span class="hidden sm:inline">${esc(p.vocation_short)}</span>`], hl)}</tr>`
   ).join('');
 }
 
@@ -1645,7 +1650,7 @@ function renderRankings() {
       const cls = c === hl ? 'text-amber-200/90 tabular-nums' : 'text-zinc-400';
       return `<td class="${cls}${hide}">${esc(String(p[c] ?? '—'))}</td>`;
     }).join('');
-    return `<tr class="anim-in" style="--d:${Math.min(i, 12) * 25}ms"><td class="text-zinc-600">${i+1}</td><td class="text-zinc-200">${esc(p.name)}</td>${cells}</tr>`;
+    return `<tr class="anim-in" style="--d:${Math.min(i, 12) * 25}ms"><td class="text-zinc-600">${i+1}</td><td>${charLink(p.name)}</td>${cells}</tr>`;
   }).join('');
 }
 
@@ -1653,7 +1658,7 @@ function renderDeaths(deaths) {
   const b = document.getElementById('deaths-body');
   if (!deaths.length) { b.innerHTML = `<tr><td colspan="5">${empty('—')}</td></tr>`; return; }
   b.innerHTML = deaths.map((d, i) =>
-    `<tr class="anim-in" style="--d:${i * 25}ms"><td class="text-zinc-600">${d.rank}</td><td class="text-zinc-200">${esc(d.victim)}</td><td class="text-rose-300/80">${esc(d.killer)}</td><td class="text-zinc-400">${d.level}</td><td class="text-zinc-600">${esc(d.time_rel)}</td></tr>`
+    `<tr class="anim-in" style="--d:${i * 25}ms"><td class="text-zinc-600">${d.rank}</td><td>${charLink(d.victim)}</td><td>${charLink(d.killer, 'text-rose-300/80 hover:text-rose-200')}</td><td class="text-zinc-400">${d.level}</td><td class="text-zinc-600">${esc(d.time_rel)}</td></tr>`
   ).join('');
 }
 

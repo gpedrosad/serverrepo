@@ -612,6 +612,50 @@ def top_pk_exp(killers: list[dict]) -> list[dict]:
     return rows
 
 
+def get_character_profile(players_dir: Path, name: str) -> dict | None:
+    """Perfil público: nombre, level, ML y muertes del personaje."""
+    raw = (name or "").strip()
+    if not raw or not is_public_rank_player(raw):
+        return None
+    path = player_save_path(players_dir, raw)
+    if not path.is_file():
+        key = raw.lower()
+        if players_dir.is_dir():
+            for candidate in players_dir.glob("*.xml"):
+                if candidate.stem.lower() == key:
+                    path = candidate
+                    break
+        if not path.is_file():
+            return None
+    parsed = parse_player(path)
+    if not parsed:
+        return None
+    if parsed["name"].lower() != raw.lower():
+        return None
+    deaths = sorted(parsed.get("deaths") or [], key=lambda d: -d["time"])
+    return {
+        "name": parsed["name"],
+        "level": parsed["level"],
+        "maglevel": parsed["maglevel"],
+        "vocation": parsed["vocation"],
+        "vocation_short": parsed["vocation_short"],
+        "exp": parsed["exp"],
+        "exp_fmt": fmt_num(parsed["exp"]),
+        "frags": parsed["frags"],
+        "guild": parsed.get("guild") or "",
+        "lastlogin_rel": parsed["lastlogin_rel"],
+        "deaths": [
+            {
+                "killer": d["killer"],
+                "level": d["level"],
+                "time": d["time"],
+                "time_rel": rel_time(d["time"]),
+            }
+            for d in deaths
+        ],
+    }
+
+
 def build_payload(
     players_dir: Path,
     otinfo_file: Path,

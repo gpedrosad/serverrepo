@@ -12,7 +12,7 @@ from urllib.parse import unquote
 
 from analytics import WebAnalytics
 from bug_reports import BugReportStore
-from data import build_payload, create_account, read_server_ip, server_status_from_files
+from data import build_payload, create_account, get_character_profile, read_server_ip, server_status_from_files
 from debug_log import get_logger, log_exception, log_http, setup_logging
 from premium_orders import create_premium_order, parse_addon_selections, parse_multipart_form, premium_config_payload
 from register_guard import RegisterGuard
@@ -38,6 +38,7 @@ UPDATER_FILES_URL = os.environ.get("UPDATER_FILES_URL", "https://retro76.cl/upda
 SERVER_IP = os.environ.get("SERVER_IP") or read_server_ip(CONFIG_FILE)
 PORT = int(os.environ.get("PORT", "8080"))
 INDEX = Path(__file__).resolve().parent / "index.html"
+CHARACTER_PAGE = Path(__file__).resolve().parent / "character.html"
 ITEMS_PAGE = Path(__file__).resolve().parent / "items.html"
 DOWNLOADS_DIR = Path(__file__).resolve().parent / "downloads"
 WEB_DIR = Path(__file__).resolve().parent
@@ -192,6 +193,10 @@ class Handler(BaseHTTPRequestHandler):
             self._json(200, premium_config_payload())
         elif path == "/api/premium-analytics":
             self._premium_analytics()
+        elif path.startswith("/api/character/"):
+            self._character_api(path[len("/api/character/"):])
+        elif path.startswith("/character/"):
+            self._file(CHARACTER_PAGE, "text/html; charset=utf-8", cache="no-store")
         elif path == "/items":
             self._items_page()
         elif path == "/api/zagan-items":
@@ -315,6 +320,22 @@ class Handler(BaseHTTPRequestHandler):
                 if part.startswith("token="):
                     return unquote(part.split("=", 1)[1]) == token
         return False
+
+    def _character_api(self, raw_name: str) -> None:
+        name = unquote(raw_name.split("?", 1)[0]).strip()
+        if not name or "/" in name or ".." in name or len(name) > 40:
+            self._json(404, {"ok": False, "message": "Personaje no encontrado"})
+            return
+        try:
+            profile = get_character_profile(PLAYERS_DIR, name)
+        except Exception as exc:
+            log_exception("api", exc, context="/api/character")
+            self._json(500, {"ok": False, "message": "Error interno"})
+            return
+        if not profile:
+            self._json(404, {"ok": False, "message": "Personaje no encontrado"})
+            return
+        self._json(200, {"ok": True, "character": profile})
 
     def _items_page(self) -> None:
         if not self._items_admin_token():
