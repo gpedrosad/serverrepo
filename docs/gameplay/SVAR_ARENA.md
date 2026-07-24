@@ -125,10 +125,15 @@ Cofres uid `7310` / `7311` / `7312` en `y=407`.
 
 ## Regenerar mapa
 
+Orden si regenerás varias arenas: **Fosos → Fish TP → Reloj**. Tras cada `--replace`:
+
 ```bash
 python3 scripts/map/generate-svar-arena.py --dry-run
 python3 scripts/map/generate-svar-arena.py --replace
+python3 scripts/map/validate-tele-dest.py server/YurOTS/ots/data/world/test.otbm
 ```
+
+`validate-tele-dest.py` falla si hay `TELE_DEST` en un item que no sea teleport `1387` (el OT falla el boot con *couldnt determine the map format*).
 
 Tras solo cambios Lua/XML: restart del OT (sin regenerar OTBM).
 

@@ -119,7 +119,6 @@ TEMPLE_SIGN = (
 class SItem:
     item_id: int
     unique_id: int | None = None
-    text: str | None = None
     description: str | None = None
 
 
@@ -166,8 +165,6 @@ def encode_item_node(it: SItem, tele: tuple[int, int, int] | None = None) -> byt
     props = struct.pack("<H", it.item_id)
     if it.unique_id is not None:
         props += struct.pack("<BH", OTBM_ATTR_UNIQUE_ID, it.unique_id)
-    if it.text is not None:
-        props += struct.pack("<B", OTBM_ATTR_TEXT) + encode_string(it.text)
     if it.description is not None:
         props += struct.pack("<B", OTBM_ATTR_DESC) + encode_string(it.description)
     if tele is not None:

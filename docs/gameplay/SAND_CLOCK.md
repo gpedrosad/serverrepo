@@ -121,9 +121,12 @@ Diálogo Chronos: `hi` → `time` / `fase` / `reloj` / `help`.
 
 ## Regenerar / deploy
 
+Orden de regeneración OTBM: Fosos → Fish → Reloj. Validar teleport attrs antes de deploy:
+
 ```bash
 python3 scripts/map/generate-sand-clock.py --dry-run
 python3 scripts/map/generate-sand-clock.py --replace
+python3 scripts/map/validate-tele-dest.py server/YurOTS/ots/data/world/test.otbm
 ```
 
 - Solo Lua/NPC XML: restart OT.
