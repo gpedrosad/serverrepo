@@ -40,7 +40,6 @@
 #include "item.h"
 #include "const76.h"
 #include "game.h"
-#include "map.h"
 #include <cctype>
 #include <map>
 #include <list>
@@ -2127,7 +2126,7 @@ int NpcScript::luaGetTopCreature(lua_State* L)
 		return 1;
 	}
 
-	Tile* tile = mynpc->game->map->getTile(pos);
+	Tile* tile = mynpc->game->getTile(pos);
 	Creature* creature = tile ? tile->getTopCreature() : NULL;
 	lua_pushnumber(L, creature ? (int)creature->getID() : 0);
 	return 1;
