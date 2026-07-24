@@ -36,9 +36,11 @@
 #include "ioplayer.h"
 #include "luascript.h"
 #include "player.h"
+#include "monster.h"
 #include "item.h"
 #include "const76.h"
 #include "game.h"
+#include "map.h"
 #include <cctype>
 #include <map>
 #include <list>
@@ -1010,6 +1012,12 @@ int NpcScript::registerFunctions()
 	lua_register(luaState, "getPlayerVocation", NpcScript::luaGetPlayerVocation);
 	lua_register(luaState, "setPlayerMasterPos", NpcScript::luaSetPlayerMasterPos);
 	lua_register(luaState, "travelPlayerTo", NpcScript::luaTravelPlayerTo);
+	// Sand Clock / Chronos arena driver
+	lua_register(luaState, "doSummonCreature", NpcScript::luaDoSummonCreature);
+	lua_register(luaState, "doRemoveCreature", NpcScript::luaDoRemoveCreature);
+	lua_register(luaState, "doSendMagicEffect", NpcScript::luaDoSendMagicEffect);
+	lua_register(luaState, "getTopCreature", NpcScript::luaGetTopCreature);
+	lua_register(luaState, "isMonster", NpcScript::luaIsMonster);
 #endif //YUR_NPC_EXT
 
 #ifdef YUR_GUILD_SYSTEM
@@ -2025,6 +2033,120 @@ int NpcScript::luaDoPlayerAddMoney(lua_State* L)
 		lua_pushnumber(L, -1);
 	}
 
+	return 1;
+}
+
+// doSummonCreature(name, {x,y,z}) -> creature id or 0
+int NpcScript::luaDoSummonCreature(lua_State* L)
+{
+	Position pos;
+	pos.z = (int)getField(L, "z");
+	pos.y = (int)getField(L, "y");
+	pos.x = (int)getField(L, "x");
+	lua_pop(L, 1);
+	const char* name = lua_tostring(L, -1);
+	lua_pop(L, 1);
+
+	Npc* mynpc = getNpc(L);
+	if(!mynpc || !name){
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Monster* monster = Monster::createMonster(name, mynpc->game);
+	if(!monster){
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(!mynpc->game->placeCreature(pos, monster)){
+		delete monster;
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	lua_pushnumber(L, monster->getID());
+	return 1;
+}
+
+// doRemoveCreature(cid) — solo monstruos (nunca player/npc)
+int NpcScript::luaDoRemoveCreature(lua_State* L)
+{
+	int cid = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Npc* mynpc = getNpc(L);
+	if(!mynpc){
+		lua_pushnumber(L, -1);
+		return 1;
+	}
+
+	Creature* creature = mynpc->game->getCreatureByID(cid);
+	Monster* monster = creature ? dynamic_cast<Monster*>(creature) : NULL;
+	if(!monster){
+		lua_pushnumber(L, -1);
+		return 1;
+	}
+
+	mynpc->game->removeCreature(monster);
+	lua_pushnumber(L, 0);
+	return 1;
+}
+
+// doSendMagicEffect({x,y,z}, type)
+int NpcScript::luaDoSendMagicEffect(lua_State* L)
+{
+	int type = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	Position pos;
+	pos.z = (int)getField(L, "z");
+	pos.y = (int)getField(L, "y");
+	pos.x = (int)getField(L, "x");
+	lua_pop(L, 1);
+
+	Npc* mynpc = getNpc(L);
+	if(mynpc)
+		mynpc->game->sendMagicEffect(pos, (unsigned char)type);
+
+	lua_pushnumber(L, 0);
+	return 1;
+}
+
+// getTopCreature({x,y,z}) -> creature id or 0
+int NpcScript::luaGetTopCreature(lua_State* L)
+{
+	Position pos;
+	pos.z = (int)getField(L, "z");
+	pos.y = (int)getField(L, "y");
+	pos.x = (int)getField(L, "x");
+	lua_pop(L, 1);
+
+	Npc* mynpc = getNpc(L);
+	if(!mynpc){
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Tile* tile = mynpc->game->map->getTile(pos);
+	Creature* creature = tile ? tile->getTopCreature() : NULL;
+	lua_pushnumber(L, creature ? (int)creature->getID() : 0);
+	return 1;
+}
+
+// isMonster(cid) -> boolean
+int NpcScript::luaIsMonster(lua_State* L)
+{
+	int cid = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Npc* mynpc = getNpc(L);
+	if(!mynpc){
+		lua_pushboolean(L, false);
+		return 1;
+	}
+
+	Creature* creature = mynpc->game->getCreatureByID(cid);
+	lua_pushboolean(L, creature && dynamic_cast<Monster*>(creature) != NULL);
 	return 1;
 }
 #endif //YUR_NPC_EXT

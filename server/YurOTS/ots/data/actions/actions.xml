@@ -512,6 +512,17 @@
 <action uniqueid="7202" script="crucible.lua" />
 <action uniqueid="7203" script="crucible.lua" />
 
+<!-- Arena de Fosos (templo 161,54,7): Greenhorn/Scrapper/Warlord + next/forfeit + 3 cofres -->
+<action uniqueid="7300" script="svar_arena.lua" />
+<action uniqueid="7301" script="svar_arena.lua" />
+<action uniqueid="7302" script="svar_arena.lua" />
+<action uniqueid="7303" script="svar_arena.lua" />
+<action uniqueid="7304" script="svar_arena.lua" />
+<action uniqueid="7305" script="svar_arena.lua" />
+<action uniqueid="7310" script="svar_arena.lua" />
+<action uniqueid="7311" script="svar_arena.lua" />
+<action uniqueid="7312" script="svar_arena.lua" />
+
 <!-- <action itemid="2112" script="invasion.lua" /> -->
 <action itemid="2153" script="gem_imbue.lua" />
 <action itemid="2154" script="gem_imbue.lua" />

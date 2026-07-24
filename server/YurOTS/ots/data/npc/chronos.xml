@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<npc name="Chronos" script="data/npc/scripts/chronos.lua" access="3">
+	<look type="130" head="78" body="38" legs="95" feet="114"/>
+</npc>

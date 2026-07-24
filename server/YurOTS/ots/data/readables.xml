@@ -13,4 +13,13 @@
 	<readable x="87" y="87" z="0" text="ORO - boss diario"/>
 	<readable x="90" y="87" z="0" text="INFO - bosses de hoy"/>
 	<!-- END CRUCIBLE_SIGNS -->
+	<!-- BEGIN SVAR_ARENA_SIGNS -->
+	<readable x="161" y="53" z="7" text="FOSOS\n3 dificultades. 10 pits.\nElegi 1 cofre al final"/>
+	<!-- END SVAR_ARENA_SIGNS -->
+	<!-- BEGIN FISH_TP_SIGNS -->
+	<readable x="164" y="53" z="7" text="FISH TP\nUsa fishing rod en el agua.\nLagoon + crabs"/>
+	<!-- END FISH_TP_SIGNS -->
+	<!-- BEGIN SAND_CLOCK_SIGNS -->
+	<readable x="166" y="53" z="7" text="RELOJ DE ARENA\nSala compartida.\nFases cada 120 s"/>
+	<!-- END SAND_CLOCK_SIGNS -->
 </readables>

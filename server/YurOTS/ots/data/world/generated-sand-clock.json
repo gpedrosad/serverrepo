@@ -1,0 +1,82 @@
+{
+  "name": "generated-sand-clock",
+  "tileCount": 807,
+  "hubPortal": {
+    "x": 166,
+    "y": 54,
+    "z": 7
+  },
+  "templeReturn": {
+    "x": 167,
+    "y": 54,
+    "z": 7
+  },
+  "landing": {
+    "x": 338,
+    "y": 392,
+    "z": 6
+  },
+  "returnTp": {
+    "x": 338,
+    "y": 398,
+    "z": 6
+  },
+  "chronos": {
+    "x": 338,
+    "y": 387,
+    "z": 6
+  },
+  "room": {
+    "x0": 330,
+    "y0": 385,
+    "x1": 346,
+    "y1": 399,
+    "z": 6
+  },
+  "zPlay": 6,
+  "zBg": 5,
+  "phaseSec": 120,
+  "templeSign": {
+    "x": 166,
+    "y": 53,
+    "z": 7,
+    "text": "RELOJ DE ARENA\nSala compartida.\nFases cada 120 s"
+  },
+  "clearBoxes": [
+    {
+      "fromX": 328,
+      "toX": 348,
+      "fromY": 383,
+      "toY": 401,
+      "z": 6
+    },
+    {
+      "fromX": 328,
+      "toX": 348,
+      "fromY": 383,
+      "toY": 401,
+      "z": 5
+    },
+    {
+      "fromX": 165,
+      "toX": 167,
+      "fromY": 53,
+      "toY": 55,
+      "z": 7
+    },
+    {
+      "fromX": 167,
+      "toX": 167,
+      "fromY": 54,
+      "toY": 54,
+      "z": 7
+    },
+    {
+      "fromX": 166,
+      "toX": 166,
+      "fromY": 53,
+      "toY": 53,
+      "z": 7
+    }
+  ]
+}

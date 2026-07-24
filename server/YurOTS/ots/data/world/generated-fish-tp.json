@@ -1,0 +1,83 @@
+{
+  "name": "generated-fish-tp",
+  "tileCount": 929,
+  "fishHole": {
+    "x": 164,
+    "y": 54,
+    "z": 7
+  },
+  "templeReturn": {
+    "x": 165,
+    "y": 54,
+    "z": 7
+  },
+  "landing": {
+    "x": 309,
+    "y": 392,
+    "z": 6
+  },
+  "returnTp": {
+    "x": 310,
+    "y": 398,
+    "z": 6
+  },
+  "lagoon": {
+    "x0": 300,
+    "y0": 385,
+    "x1": 318,
+    "y1": 400,
+    "z": 6
+  },
+  "water": {
+    "x0": 304,
+    "y0": 388,
+    "x1": 314,
+    "y1": 395,
+    "z": 6
+  },
+  "zPlay": 6,
+  "zBg": 5,
+  "templeSign": {
+    "x": 164,
+    "y": 53,
+    "z": 7,
+    "text": "FISH TP\nUsa fishing rod en el agua.\nLagoon + crabs"
+  },
+  "clearBoxes": [
+    {
+      "fromX": 298,
+      "toX": 320,
+      "fromY": 383,
+      "toY": 402,
+      "z": 6
+    },
+    {
+      "fromX": 298,
+      "toX": 320,
+      "fromY": 383,
+      "toY": 402,
+      "z": 5
+    },
+    {
+      "fromX": 163,
+      "toX": 165,
+      "fromY": 53,
+      "toY": 55,
+      "z": 7
+    },
+    {
+      "fromX": 165,
+      "toX": 165,
+      "fromY": 54,
+      "toY": 54,
+      "z": 7
+    },
+    {
+      "fromX": 164,
+      "toX": 164,
+      "fromY": 53,
+      "toY": 53,
+      "z": 7
+    }
+  ]
+}

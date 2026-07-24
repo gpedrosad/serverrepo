@@ -1,6 +1,16 @@
 -- example of fishing script--
-   
-   function onUse(cid, item, frompos, item2, topos)
+-- Fish TP: pozo templo 164,54,7 (ver fish_tp.lua + docs/gameplay/FISH_TP.md)
+
+if not fishTpTry then
+	dofile("data/actions/scripts/fish_tp.lua")
+end
+
+function onUse(cid, item, frompos, item2, topos)
+	-- Fish TP hole (must run before normal water fishing)
+	if fishTpTry(cid, topos) then
+		return 1
+	end
+
          -- itemid means that is a creature
         if item2.itemid == 490 then
                  skill_level = getPlayerSkill(cid,6)
