@@ -556,19 +556,8 @@
     </div>
   </section>
 
-  <!-- PK: Top PK + exp por matar -->
+  <!-- PK: PK hoy + exp por matar (click PK → ordenar por kills) -->
   <section id="panel-frags" class="panel space-y-5">
-    <div>
-      <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">Top PK</p>
-      <div class="overflow-x-auto rounded-lg border border-white/[0.06]">
-        <table class="tbl w-full min-w-[280px] text-left">
-          <thead class="text-[10px] uppercase tracking-wide text-zinc-600">
-            <tr><th>#</th><th>Nombre</th><th>PK</th><th>Lvl</th><th class="hidden sm:table-cell">Voc</th></tr>
-          </thead>
-          <tbody id="frags-body"></tbody>
-        </table>
-      </div>
-    </div>
     <div id="frags-today-section" class="hidden">
       <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">PK hoy</p>
       <div class="overflow-x-auto rounded-lg border border-white/[0.06]">
@@ -582,11 +571,18 @@
     </div>
     <div>
       <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">Más exp por matar jugadores</p>
-      <p class="mb-2 text-[10px] text-zinc-600">Estimado desde el registro de muertes (7% exp víctima × 80% underdog).</p>
+      <p class="mb-2 text-[10px] text-zinc-600">Estimado desde el registro de muertes (7% exp víctima × 80% underdog). Tocá <span class="text-zinc-400">PK</span> para ordenar por cantidad.</p>
       <div class="overflow-x-auto rounded-lg border border-white/[0.06]">
         <table class="tbl w-full min-w-[280px] text-left">
           <thead class="text-[10px] uppercase tracking-wide text-zinc-600">
-            <tr><th>#</th><th>Nombre</th><th>Exp PK</th><th>Kills</th><th>Lvl</th><th class="hidden sm:table-cell">Voc</th></tr>
+            <tr>
+              <th>#</th>
+              <th>Nombre</th>
+              <th><button type="button" id="pk-sort-exp" class="text-amber-200/90 hover:text-amber-100">Exp PK</button></th>
+              <th><button type="button" id="pk-sort-kills" class="text-zinc-500 hover:text-zinc-300">PK</button></th>
+              <th>Lvl</th>
+              <th class="hidden sm:table-cell">Voc</th>
+            </tr>
           </thead>
           <tbody id="pk-exp-body"></tbody>
         </table>
@@ -800,7 +796,7 @@
 </div>
 
 <script>
-const state = { panel: 'live', rank: 'level', voc: 'all', data: null };
+const state = { panel: 'live', rank: 'level', voc: 'all', data: null, pkSort: 'exp' };
 const NAV = [
   { id: 'live', label: 'Live' },
   { id: 'account', label: 'Cuenta', accent: 'account' },
@@ -1536,14 +1532,14 @@ function renderSnapshots(data) {
   const topClub = r.club?.[0];
   const topAxe = r.axe?.[0];
   const death = data.deaths?.[0];
-  const topFrag = (data.top_fraggers || [])[0];
+  const topFrag = (data.top_pk_exp || data.top_fraggers || [])[0];
   const items = [
     { k: 'Top lvl', v: top ? top.name : '—', s: top ? `L${top.level}` : '' },
     { k: 'Top ML', v: ml ? ml.name : '—', s: ml ? `ML ${ml.maglevel}` : '' },
     { k: 'Top club', v: topClub ? topClub.name : '—', s: topClub ? `Club ${topClub.club}` : '' },
     { k: 'Top axe', v: topAxe ? topAxe.name : '—', s: topAxe ? `Axe ${topAxe.axe}` : '' },
     { k: 'Muerte', v: death ? death.victim : '—', s: death ? death.killer : '' },
-    { k: 'Top PK', v: topFrag ? topFrag.name : '—', s: topFrag ? `${topFrag.frags} pk` : '' },
+    { k: 'Top PK', v: topFrag ? topFrag.name : '—', s: topFrag ? (topFrag.exp_fmt ? `${topFrag.exp_fmt} exp` : `${topFrag.frags} pk`) : '' },
   ];
   document.getElementById('snapshots').innerHTML = items.map((i, idx) =>
     `<div class="anim-in rounded-md border border-white/[0.06] px-2 py-1.5 min-w-0" style="--d:${120 + idx * 40}ms">
@@ -1581,13 +1577,7 @@ function renderPower(list) {
   ).join('');
 }
 
-function renderFrags(all, today, pkExp) {
-  const b = document.getElementById('frags-body');
-  if (!all.length) b.innerHTML = `<tr><td colspan="5">${empty('Sin PK aún')}</td></tr>`;
-  else b.innerHTML = all.map((p, i) =>
-    `<tr class="anim-in" style="--d:${i * 30}ms"><td class="text-zinc-600">${i+1}</td><td class="text-zinc-200">${esc(p.name)}</td>${row([p.frags, p.level, `<span class="hidden sm:inline">${esc(p.vocation_short)}</span>`], 0)}</tr>`
-  ).join('');
-
+function renderFrags(today, pkExp) {
   const sec = document.getElementById('frags-today-section');
   if (!today.length) sec.classList.add('hidden');
   else {
@@ -1597,10 +1587,29 @@ function renderFrags(all, today, pkExp) {
     ).join('');
   }
 
+  const list = [...(pkExp || [])];
+  if (state.pkSort === 'kills') {
+    list.sort((a, b) => (b.kills - a.kills) || (b.exp - a.exp) || (b.level - a.level));
+  } else {
+    list.sort((a, b) => (b.exp - a.exp) || (b.kills - a.kills) || (b.level - a.level));
+  }
+
+  const expBtn = document.getElementById('pk-sort-exp');
+  const killsBtn = document.getElementById('pk-sort-kills');
+  if (expBtn && killsBtn) {
+    expBtn.className = state.pkSort === 'exp'
+      ? 'text-amber-200/90 hover:text-amber-100'
+      : 'text-zinc-500 hover:text-zinc-300';
+    killsBtn.className = state.pkSort === 'kills'
+      ? 'text-amber-200/90 hover:text-amber-100'
+      : 'text-zinc-500 hover:text-zinc-300';
+  }
+
   const eb = document.getElementById('pk-exp-body');
-  if (!pkExp.length) eb.innerHTML = `<tr><td colspan="6">${empty('Sin kills PvP en registro')}</td></tr>`;
-  else eb.innerHTML = pkExp.map((p, i) =>
-    `<tr class="anim-in" style="--d:${i * 30}ms"><td class="text-zinc-600">${i+1}</td><td class="text-zinc-200">${esc(p.name)}</td>${row([esc(p.exp_fmt), p.kills, p.level, `<span class="hidden sm:inline">${esc(p.vocation_short)}</span>`], 0)}</tr>`
+  const hl = state.pkSort === 'kills' ? 1 : 0;
+  if (!list.length) eb.innerHTML = `<tr><td colspan="6">${empty('Sin kills PvP en registro')}</td></tr>`;
+  else eb.innerHTML = list.map((p, i) =>
+    `<tr class="anim-in" style="--d:${i * 30}ms"><td class="text-zinc-600">${i+1}</td><td class="text-zinc-200">${esc(p.name)}</td>${row([esc(p.exp_fmt), p.kills, p.level, `<span class="hidden sm:inline">${esc(p.vocation_short)}</span>`], hl)}</tr>`
   ).join('');
 }
 
@@ -1908,7 +1917,6 @@ function renderAll() {
   renderOnline(state.data.online || []);
   renderPower(state.data.powergamers || []);
   renderFrags(
-    state.data.top_fraggers || [],
     state.data.frags_today || [],
     state.data.top_pk_exp || []
   );
@@ -1956,6 +1964,18 @@ document.getElementById('panel-rank').addEventListener('click', e => {
   if (r) { state.rank = r.dataset.rank; renderRankTabs(); renderRankings(); return; }
   const v = e.target.closest('[data-voc]');
   if (v) { state.voc = v.dataset.voc; renderVocFilters(state.data?.vocations || []); renderRankings(); }
+});
+
+document.getElementById('panel-frags').addEventListener('click', e => {
+  if (e.target.closest('#pk-sort-exp')) {
+    state.pkSort = 'exp';
+    renderFrags(state.data?.frags_today || [], state.data?.top_pk_exp || []);
+    return;
+  }
+  if (e.target.closest('#pk-sort-kills')) {
+    state.pkSort = 'kills';
+    renderFrags(state.data?.frags_today || [], state.data?.top_pk_exp || []);
+  }
 });
 
 document.getElementById('account-form').addEventListener('submit', async e => {
