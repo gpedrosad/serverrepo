@@ -204,7 +204,22 @@ def docker_container_uptime_seconds(container: str) -> int:
     try:
         if raw.endswith("Z"):
             raw = raw[:-1] + "+00:00"
+        # Docker emite fracciones con nanosegundos (9 dígitos); fromisoformat
+        # solo acepta microsegundos (6). Truncar o el uptime queda en 0s.
+        if "." in raw:
+            head, frac_and_tz = raw.split(".", 1)
+            digits = []
+            tz = ""
+            for i, ch in enumerate(frac_and_tz):
+                if ch.isdigit():
+                    digits.append(ch)
+                else:
+                    tz = frac_and_tz[i:]
+                    break
+            raw = f"{head}.{''.join(digits[:6])}{tz}"
         started = datetime.fromisoformat(raw)
+        if started.tzinfo is None:
+            started = started.replace(tzinfo=timezone.utc)
         return max(0, int((datetime.now(timezone.utc) - started).total_seconds()))
     except ValueError:
         return 0
