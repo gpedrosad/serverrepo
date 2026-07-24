@@ -556,24 +556,49 @@
     </div>
   </section>
 
-  <!-- FRAGS -->
-  <section id="panel-frags" class="panel space-y-4">
-    <div class="overflow-x-auto rounded-lg border border-white/[0.06]">
-      <table class="tbl w-full min-w-[280px] text-left">
-        <thead class="text-[10px] uppercase tracking-wide text-zinc-600">
-          <tr><th>#</th><th>Nombre</th><th>Frags</th><th>Lvl</th><th class="hidden sm:table-cell">Voc</th></tr>
-        </thead>
-        <tbody id="frags-body"></tbody>
-      </table>
+  <!-- FRAGS: Top PK + kills registro + exp hoy -->
+  <section id="panel-frags" class="panel space-y-5">
+    <div>
+      <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">Top PK · frags totales</p>
+      <div class="overflow-x-auto rounded-lg border border-white/[0.06]">
+        <table class="tbl w-full min-w-[280px] text-left">
+          <thead class="text-[10px] uppercase tracking-wide text-zinc-600">
+            <tr><th>#</th><th>Nombre</th><th>Frags</th><th>Lvl</th><th class="hidden sm:table-cell">Voc</th></tr>
+          </thead>
+          <tbody id="frags-body"></tbody>
+        </table>
+      </div>
     </div>
     <div id="frags-today-section" class="hidden">
-      <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">Hoy</p>
+      <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">PK hoy</p>
       <div class="overflow-x-auto rounded-lg border border-white/[0.06]">
         <table class="tbl w-full min-w-[240px] text-left">
           <thead class="text-[10px] uppercase tracking-wide text-zinc-600">
             <tr><th>#</th><th>Nombre</th><th>Frags</th><th>Lvl</th></tr>
           </thead>
           <tbody id="frags-today-body"></tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">Más players matados · registro de muertes</p>
+      <div class="overflow-x-auto rounded-lg border border-white/[0.06]">
+        <table class="tbl w-full min-w-[280px] text-left">
+          <thead class="text-[10px] uppercase tracking-wide text-zinc-600">
+            <tr><th>#</th><th>Nombre</th><th>Kills</th><th>Lvl</th><th class="hidden sm:table-cell">Voc</th></tr>
+          </thead>
+          <tbody id="killers-body"></tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">Más exp ganada · hoy</p>
+      <div class="overflow-x-auto rounded-lg border border-white/[0.06]">
+        <table class="tbl w-full min-w-[280px] text-left">
+          <thead class="text-[10px] uppercase tracking-wide text-zinc-600">
+            <tr><th>#</th><th>Nombre</th><th>Exp hoy</th><th>Lvl</th><th class="hidden sm:table-cell">Voc</th></tr>
+          </thead>
+          <tbody id="frags-power-body"></tbody>
         </table>
       </div>
     </div>
@@ -1566,17 +1591,32 @@ function renderPower(list) {
   ).join('');
 }
 
-function renderFrags(all, today) {
+function renderFrags(all, today, killers, power) {
   const b = document.getElementById('frags-body');
-  if (!all.length) b.innerHTML = `<tr><td colspan="5">${empty('—')}</td></tr>`;
+  if (!all.length) b.innerHTML = `<tr><td colspan="5">${empty('Sin frags aún')}</td></tr>`;
   else b.innerHTML = all.map((p, i) =>
     `<tr class="anim-in" style="--d:${i * 30}ms"><td class="text-zinc-600">${i+1}</td><td class="text-zinc-200">${esc(p.name)}</td>${row([p.frags, p.level, `<span class="hidden sm:inline">${esc(p.vocation_short)}</span>`], 0)}</tr>`
   ).join('');
+
   const sec = document.getElementById('frags-today-section');
-  if (!today.length) { sec.classList.add('hidden'); return; }
-  sec.classList.remove('hidden');
-  document.getElementById('frags-today-body').innerHTML = today.map((p, i) =>
-    `<tr><td class="text-zinc-600">${i+1}</td><td class="text-zinc-200">${esc(p.name)}</td>${row([p.frags, p.level], 0)}</tr>`
+  if (!today.length) sec.classList.add('hidden');
+  else {
+    sec.classList.remove('hidden');
+    document.getElementById('frags-today-body').innerHTML = today.map((p, i) =>
+      `<tr><td class="text-zinc-600">${i+1}</td><td class="text-zinc-200">${esc(p.name)}</td>${row([p.frags, p.level], 0)}</tr>`
+    ).join('');
+  }
+
+  const kb = document.getElementById('killers-body');
+  if (!killers.length) kb.innerHTML = `<tr><td colspan="5">${empty('Sin kills PvP en registro')}</td></tr>`;
+  else kb.innerHTML = killers.map((p, i) =>
+    `<tr class="anim-in" style="--d:${i * 30}ms"><td class="text-zinc-600">${i+1}</td><td class="text-zinc-200">${esc(p.name)}</td>${row([p.kills, p.level, `<span class="hidden sm:inline">${esc(p.vocation_short)}</span>`], 0)}</tr>`
+  ).join('');
+
+  const pb = document.getElementById('frags-power-body');
+  if (!power.length) pb.innerHTML = `<tr><td colspan="5">${empty('Sin exp hoy')}</td></tr>`;
+  else pb.innerHTML = power.map((p, i) =>
+    `<tr class="anim-in" style="--d:${i * 30}ms"><td class="text-zinc-600">${i+1}</td><td class="text-zinc-200">${esc(p.name)}</td>${row([esc(p.gain_fmt), p.level, `<span class="hidden sm:inline">${esc(p.vocation_short)}</span>`], 0)}</tr>`
   ).join('');
 }
 
@@ -1883,7 +1923,12 @@ function renderAll() {
   renderSnapshots(state.data);
   renderOnline(state.data.online || []);
   renderPower(state.data.powergamers || []);
-  renderFrags(state.data.top_fraggers || [], state.data.frags_today || []);
+  renderFrags(
+    state.data.top_fraggers || [],
+    state.data.frags_today || [],
+    state.data.top_killers || [],
+    state.data.powergamers || []
+  );
   renderRankTabs();
   renderVocFilters(state.data.vocations || []);
   renderRankings();

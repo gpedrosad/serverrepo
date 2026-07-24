@@ -558,6 +558,33 @@ def top_fraggers(players: list[dict]) -> list[dict]:
     return rows
 
 
+def top_player_killers(players: list[dict], deaths: list[dict]) -> list[dict]:
+    """Ranking de quién aparece más como killer de jugadores en el registro de muertes."""
+    by_name = {p["name"].lower(): p for p in players}
+    counts: dict[str, int] = {}
+    for d in deaths:
+        killer = (d.get("killer") or "").strip()
+        if not killer:
+            continue
+        key = killer.lower()
+        if key not in by_name:
+            continue  # monstruo / NPC / desconocido
+        counts[key] = counts.get(key, 0) + 1
+    rows = []
+    for key, kills in counts.items():
+        p = by_name[key]
+        rows.append(
+            {
+                "name": p["name"],
+                "level": p["level"],
+                "vocation_short": p["vocation_short"],
+                "kills": kills,
+            }
+        )
+    rows.sort(key=lambda x: (-x["kills"], -x["level"], x["name"].lower()))
+    return rows
+
+
 def build_payload(
     players_dir: Path,
     otinfo_file: Path,
@@ -620,6 +647,7 @@ def build_payload(
     )
     powergamers, frags_today = daily_rankings(public_players, state_file)
     top_frags = top_fraggers(public_players)
+    top_killers = top_player_killers(public_players, all_deaths)
 
     return {
         "updated": datetime.now(timezone.utc).strftime("%H:%M:%S UTC"),
@@ -628,6 +656,7 @@ def build_payload(
         "online": online,
         "powergamers": powergamers[:15],
         "top_fraggers": top_frags[:15],
+        "top_killers": top_killers[:15],
         "frags_today": frags_today[:15],
         "players": public_players,
         "rankings": {
