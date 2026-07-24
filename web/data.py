@@ -633,6 +633,13 @@ def get_character_profile(players_dir: Path, name: str) -> dict | None:
     if parsed["name"].lower() != raw.lower():
         return None
     deaths = sorted(parsed.get("deaths") or [], key=lambda d: -d["time"])
+
+    def killer_is_player(killer: str) -> bool:
+        key = (killer or "").strip()
+        if not key or not is_public_rank_player(key):
+            return False
+        return player_save_path(players_dir, key).is_file()
+
     return {
         "name": parsed["name"],
         "level": parsed["level"],
@@ -647,6 +654,7 @@ def get_character_profile(players_dir: Path, name: str) -> dict | None:
         "deaths": [
             {
                 "killer": d["killer"],
+                "killer_is_player": killer_is_player(d["killer"]),
                 "level": d["level"],
                 "time": d["time"],
                 "time_rel": rel_time(d["time"]),
@@ -702,9 +710,11 @@ def build_payload(
     by_frags = sorted(public_players, key=lambda p: (-p["frags"], -p["level"], p["name"].lower()))
 
     all_deaths.sort(key=lambda d: -d["time"])
+    public_names = {p["name"].strip().lower() for p in public_players}
     for i, d in enumerate(all_deaths[:20], 1):
         d["rank"] = i
         d["time_rel"] = rel_time(d["time"])
+        d["killer_is_player"] = (d.get("killer") or "").strip().lower() in public_names
 
     status = server_status_from_files(online_file, config_file, peak_state_file)
     online = [p for p in load_online(online_file) if is_public_rank_player(p.get("name", ""))]

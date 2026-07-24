@@ -1401,7 +1401,7 @@ function navClass(item) {
 function empty(msg) { return `<p class="px-3 py-6 text-center text-zinc-600">${msg}</p>`; }
 
 function iconWindows() {
-  return `<svg class="h-6 w-6 shrink-0" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 5.5L10.5 4.6V11H3V5.5zm0 7h7.5v6.4L3 18.1V12.5zm9-7.2l9-1.3v9.5h-9V5.3zm9 10.5v9.5l-9-1.3v-8.2h9z"/></svg>`;
+  return `<svg class="h-6 w-6 shrink-0" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>`;
 }
 function iconMac() {
   return `<svg class="h-6 w-6 shrink-0" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>`;
@@ -1550,7 +1550,7 @@ function renderSnapshots(data) {
     `<div class="anim-in rounded-md border border-white/[0.06] px-2 py-1.5 min-w-0" style="--d:${120 + idx * 40}ms">
       <p class="text-[10px] text-zinc-600">${i.k}</p>
       <p class="mt-0.5 truncate">${i.v !== '—' ? charLink(i.v) : `<span class="text-zinc-200">—</span>`}</p>
-      ${i.s ? `<p class="truncate text-[10px] text-zinc-600">${i.k === 'Muerte' && death ? charLink(death.killer, 'text-zinc-600 hover:text-sky-300') : esc(i.s)}</p>` : ''}
+      ${i.s ? `<p class="truncate text-[10px] text-zinc-600">${i.k === 'Muerte' && death && death.killer_is_player ? charLink(death.killer, 'text-zinc-600 hover:text-sky-300') : esc(i.s)}</p>` : ''}
     </div>`
   ).join('');
 }
@@ -1658,7 +1658,7 @@ function renderDeaths(deaths) {
   const b = document.getElementById('deaths-body');
   if (!deaths.length) { b.innerHTML = `<tr><td colspan="5">${empty('—')}</td></tr>`; return; }
   b.innerHTML = deaths.map((d, i) =>
-    `<tr class="anim-in" style="--d:${i * 25}ms"><td class="text-zinc-600">${d.rank}</td><td>${charLink(d.victim)}</td><td>${charLink(d.killer, 'text-rose-300/80 hover:text-rose-200')}</td><td class="text-zinc-400">${d.level}</td><td class="text-zinc-600">${esc(d.time_rel)}</td></tr>`
+    `<tr class="anim-in" style="--d:${i * 25}ms"><td class="text-zinc-600">${d.rank}</td><td>${charLink(d.victim)}</td><td>${d.killer_is_player ? charLink(d.killer, 'text-rose-300/80 hover:text-rose-200') : `<span class="text-rose-300/80">${esc(d.killer)}</span>`}</td><td class="text-zinc-400">${d.level}</td><td class="text-zinc-600">${esc(d.time_rel)}</td></tr>`
   ).join('');
 }
 

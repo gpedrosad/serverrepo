@@ -85,7 +85,7 @@ async function load() {
       ? deaths.map((d, i) =>
           `<tr class="anim-in" style="--d:${Math.min(i, 12) * 25}ms">
             <td class="text-zinc-600">${i + 1}</td>
-            <td class="text-rose-300/80"><a class="no-underline hover:underline hover:text-rose-200" href="${charHref(d.killer)}">${esc(d.killer)}</a></td>
+            <td class="text-rose-300/80">${d.killer_is_player ? `<a class="no-underline hover:underline hover:text-rose-200" href="${charHref(d.killer)}">${esc(d.killer)}</a>` : esc(d.killer)}</td>
             <td class="text-zinc-400 tabular-nums">${d.level}</td>
             <td class="text-zinc-600">${esc(d.time_rel)}</td>
           </tr>`
