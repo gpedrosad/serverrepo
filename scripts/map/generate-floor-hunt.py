@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """Floor Hunt — campus de salas separadas en XY (sin apilar z).
 
-Antes: 16 pisos en la misma huella XY (z0–z15) → se veían teleports del piso de abajo.
-Ahora: 16 salas en z7, separadas en el mapa (alas oeste / centro / este),
-conectadas solo por teleports. Fondo opaco (no void 100) por ala.
+16 salas en z7, separadas en el mapa (alas oeste / centro / este),
+conectadas solo por teleports. Estética Alice Maze: camino 406 + fondo 100
+(sin murallas / temas opacos).
 
 Portal templo 162,54,7 → sala 0. Avance up/down/express + home.
 
 Uso:
-  python3 scripts/generate-floor-hunt.py --dry-run
-  python3 scripts/generate-floor-hunt.py --replace
+  python3 scripts/map/generate-floor-hunt.py --dry-run
+  python3 scripts/map/generate-floor-hunt.py --replace
 """
 from __future__ import annotations
 
@@ -29,6 +29,8 @@ assert _spec.loader is not None
 _spec.loader.exec_module(_maze)
 
 TELEPORT_ITEM = _maze.TELEPORT_ITEM
+GROUND_PATH = _maze.GROUND_PATH  # 406 — white marble (camino)
+GROUND_BG = _maze.GROUND_BG  # 100 — void (fondo / no walkable)
 TileSpec = _maze.TileSpec
 group_tile_areas = _maze.group_tile_areas
 maze_footprint = _maze.maze_footprint
@@ -53,7 +55,6 @@ LEGACY_STACKED_Z = tuple(range(0, 16))
 # Portal distinto al hunt maze (160,54,7).
 HUB_PORTAL = (162, 54, 7)
 HUB_LANDING = (163, 54, 7)
-HUB_GROUND = 406
 
 ALICE_FOOTPRINT = (380, 18, 433, 103, 7)
 HUNT_MAZE_FOOTPRINT = (280, 243, 349, 400, 7)
@@ -81,26 +82,6 @@ FLOOR_ORIGINS: tuple[tuple[int, int], ...] = (
     (415, 310),
     (360, 265),
     (415, 265),
-)
-
-# Temas opacos: camino / fondo (sin void 100 — evita ver a través).
-FLOOR_THEMES: tuple[tuple[int, int], ...] = (
-    (406, 405),  # marble white / black
-    (405, 919),  # black marble / dark stone
-    (919, 412),  # dark stone / stone
-    (231, 351),  # dirt / sand
-    (101, 103),  # grass
-    (407, 405),  # yellow / black marble
-    (412, 919),  # stone / dark
-    (351, 231),  # sand / dirt
-    (406, 919),
-    (405, 412),
-    (919, 405),
-    (231, 103),
-    (101, 351),
-    (407, 919),
-    (412, 405),
-    (405, 231),
 )
 
 FLOOR_LABELS: tuple[str, ...] = (
@@ -169,22 +150,18 @@ def build_floor_maze(
     cells_x: int,
     cells_y: int,
     seed: int,
-    ground_path: int,
-    ground_bg: int,
 ) -> tuple[dict[tuple[int, int, int], TileSpec], set[tuple[int, int]], set, dict]:
+    """Misma estética que Alice Maze: camino 406 + fondo 100."""
     visited, edges = generate_maze_cells(cells_x, cells_y, seed)
     x0, y0, x1, y1 = maze_footprint(origin_x, origin_y_south, cells_x, cells_y)
     tiles: dict[tuple[int, int, int], TileSpec] = {}
     for y in range(y0, y1 + 1):
         for x in range(x0, x1 + 1):
-            tiles[(x, y, z)] = TileSpec(ground=ground_bg)
+            tiles[(x, y, z)] = TileSpec(ground=GROUND_BG)
     for cell in visited:
         add_cell_block(tiles, origin_x, origin_y_south, z, cells_y, cell[0], cell[1])
     for edge in edges:
         add_connection(tiles, origin_x, origin_y_south, z, cells_y, edge[0], edge[1])
-
-    if ground_bg == _maze.GROUND_PATH:
-        raise ValueError("ground_bg no puede ser 406 (se confunde con el camino)")
 
     entry_cell = (0, cells_y - 1)
     entry_block = cell_block_tiles(origin_x, origin_y_south, cells_y, *entry_cell)
@@ -192,13 +169,7 @@ def build_floor_maze(
     nw, ne, sw, se = entry_sorted
     exit_tiles = north_exit_tiles(visited, origin_x, origin_y_south, z, cells_x, cells_y)
 
-    # Validar con 406; después aplicar tema del piso.
-    conn = validate_walkable_path(
-        tiles, z, (nw[0], nw[1]), list(exit_tiles)
-    )
-    for pos, spec in list(tiles.items()):
-        if pos[2] == z and spec.ground == _maze.GROUND_PATH:
-            tiles[pos] = TileSpec(ground=ground_path, teleport=spec.teleport)
+    conn = validate_walkable_path(tiles, z, (nw[0], nw[1]), list(exit_tiles))
 
     meta = {
         "landing": (nw[0], nw[1], z),
@@ -209,7 +180,7 @@ def build_floor_maze(
         "northAll": exit_tiles,
         "entryCell": entry_cell,
         "origin": {"x": origin_x, "ySouth": origin_y_south},
-        "theme": {"path": ground_path, "background": ground_bg},
+        "theme": {"path": GROUND_PATH, "background": GROUND_BG},
         "footprint": {"fromX": x0, "toX": x1, "fromY": y0, "toY": y1, "z": z},
         "connectivity": conn,
     }
@@ -301,9 +272,8 @@ def build_all_floors(
 
     for i in range(NUM_FLOORS):
         ox, oy = FLOOR_ORIGINS[i]
-        path_g, bg_g = FLOOR_THEMES[i]
         tiles, visited, edges, meta = build_floor_maze(
-            ox, oy, z, cells_x, cells_y, seed + i * 17, path_g, bg_g
+            ox, oy, z, cells_x, cells_y, seed + i * 17
         )
         all_tiles.update(tiles)
         floor_meta[i] = meta
@@ -311,7 +281,7 @@ def build_all_floors(
 
     m0 = floor_meta[0]
     landing0 = m0["landing"]
-    all_tiles[hub_portal] = TileSpec(ground=HUB_GROUND, teleport=landing0)
+    all_tiles[hub_portal] = TileSpec(ground=GROUND_PATH, teleport=landing0)
 
     for i in range(NUM_FLOORS):
         meta = floor_meta[i]
@@ -319,17 +289,16 @@ def build_all_floors(
         tp_home = meta["tpHome"]
         tp_up = meta["tpUp"]
         tp_spare = meta["tpSpare"]
-        path_g = meta["theme"]["path"]
 
-        all_tiles[landing] = TileSpec(ground=path_g)
-        all_tiles[tp_home] = TileSpec(ground=path_g, teleport=hub_landing)
+        all_tiles[landing] = TileSpec(ground=GROUND_PATH)
+        all_tiles[tp_home] = TileSpec(ground=GROUND_PATH, teleport=hub_landing)
 
         if i == 0:
-            all_tiles[tp_up] = TileSpec(ground=path_g, teleport=hub_landing)
+            all_tiles[tp_up] = TileSpec(ground=GROUND_PATH, teleport=hub_landing)
             up_dest = "temple"
         else:
             dest_up = floor_meta[i - 1]["landing"]
-            all_tiles[tp_up] = TileSpec(ground=path_g, teleport=dest_up)
+            all_tiles[tp_up] = TileSpec(ground=GROUND_PATH, teleport=dest_up)
             up_dest = f"floor{i - 1}"
 
         if i < NUM_FLOORS - 1:
@@ -339,15 +308,15 @@ def build_all_floors(
             dest_down = hub_landing
             down_dest = "temple"
         for pos in meta["northAll"]:
-            all_tiles[pos] = TileSpec(ground=path_g, teleport=dest_down)
+            all_tiles[pos] = TileSpec(ground=GROUND_PATH, teleport=dest_down)
 
         express_dest = None
         if i % 2 == 0 and i < NUM_FLOORS - 2:
             dest_ex = floor_meta[i + 2]["landing"]
-            all_tiles[tp_spare] = TileSpec(ground=path_g, teleport=dest_ex)
+            all_tiles[tp_spare] = TileSpec(ground=GROUND_PATH, teleport=dest_ex)
             express_dest = f"floor{i + 2}"
         else:
-            all_tiles[tp_spare] = TileSpec(ground=path_g)
+            all_tiles[tp_spare] = TileSpec(ground=GROUND_PATH)
 
         label = FLOOR_LABELS[i]
         meta["index"] = i
@@ -563,17 +532,15 @@ def main() -> int:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 1
 
-    path_ids = {t[0] for t in FLOOR_THEMES}
-    bg_ids = {t[1] for t in FLOOR_THEMES}
-    path_count = sum(1 for s in new_tiles.values() if s.ground in path_ids)
-    bg_count = sum(1 for s in new_tiles.values() if s.ground in bg_ids)
+    path_count = sum(1 for s in new_tiles.values() if s.ground == GROUND_PATH)
+    bg_count = sum(1 for s in new_tiles.values() if s.ground == GROUND_BG)
     tele_count = sum(1 for s in new_tiles.values() if s.teleport is not None)
     counts = Counter(s["name"] for s in spawns)
     by_floor = Counter(s["floor"] for s in spawns)
 
     print(
         f"Floor hunt — {NUM_FLOORS} salas en campus XY (z{CAMPUS_Z}), "
-        "sin apilar pisos"
+        f"estética Alice (camino {GROUND_PATH} / fondo {GROUND_BG})"
     )
     print(f"Celdas {args.cells_x}x{args.cells_y}/sala, seed {args.seed}")
     print(
@@ -593,16 +560,14 @@ def main() -> int:
             else ""
         )
         mark = " ★" if fl.get("milestone") else ""
-        th = fl["theme"]
         print(
             f"  f{fl['index']:02d}{mark} {fl.get('label', '')}: "
             f"X{fl['footprint']['fromX']}-{fl['footprint']['toX']} "
-            f"Y{fl['footprint']['fromY']}-{fl['footprint']['toY']} "
-            f"path={th['path']} bg={th['background']} | "
+            f"Y{fl['footprint']['fromY']}-{fl['footprint']['toY']} | "
             f"down→{tps['down']['dest']} up→{tps['up']['dest']}"
             f"{ex_s} | spawns {by_floor[fl['index']]}"
         )
-    print(f"Tiles: path~{path_count}, bg~{bg_count}, teleports {tele_count}")
+    print(f"Tiles: path {path_count}, bg {bg_count}, teleports {tele_count}")
     print(f"Spawns total: {len(spawns)}")
     for name, n in counts.most_common():
         print(f"  {name:<22} {n:3}")
@@ -615,6 +580,8 @@ def main() -> int:
         "cells": {"x": args.cells_x, "y": args.cells_y},
         "seed": args.seed,
         "campusZ": CAMPUS_Z,
+        "groundPathId": GROUND_PATH,
+        "groundBackgroundId": GROUND_BG,
         "teleportItemId": TELEPORT_ITEM,
         "spawnTime": SPAWN_TIME,
         "spawnCount": len(spawns),
@@ -623,8 +590,8 @@ def main() -> int:
         "mapFile": str(otbm_path.relative_to(project)),
         "spawnFile": str(spawn_path.relative_to(project)),
         "tileCounts": {
-            "pathApprox": path_count,
-            "backgroundApprox": bg_count,
+            "path": path_count,
+            "background": bg_count,
             "teleports": tele_count,
             "total": len(new_tiles),
         },

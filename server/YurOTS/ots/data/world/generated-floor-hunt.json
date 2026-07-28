@@ -9,6 +9,8 @@
   },
   "seed": 421,
   "campusZ": 7,
+  "groundPathId": 406,
+  "groundBackgroundId": 100,
   "teleportItemId": 1387,
   "spawnTime": 65,
   "spawnCount": 1904,
@@ -65,8 +67,8 @@
   "mapFile": "server/YurOTS/ots/data/world/test.otbm",
   "spawnFile": "server/YurOTS/ots/data/world/test-spawn.xml",
   "tileCounts": {
-    "pathApprox": 26161,
-    "backgroundApprox": 22110,
+    "path": 15089,
+    "background": 12652,
     "teleports": 104,
     "total": 27741
   },
@@ -82,7 +84,7 @@
       },
       "theme": {
         "path": 406,
-        "background": 405
+        "background": 100
       },
       "landing": {
         "x": 40,
@@ -145,8 +147,8 @@
         "ySouth": 400
       },
       "theme": {
-        "path": 405,
-        "background": 919
+        "path": 406,
+        "background": 100
       },
       "landing": {
         "x": 95,
@@ -204,8 +206,8 @@
         "ySouth": 350
       },
       "theme": {
-        "path": 919,
-        "background": 412
+        "path": 406,
+        "background": 100
       },
       "landing": {
         "x": 40,
@@ -268,8 +270,8 @@
         "ySouth": 350
       },
       "theme": {
-        "path": 231,
-        "background": 351
+        "path": 406,
+        "background": 100
       },
       "landing": {
         "x": 95,
@@ -327,8 +329,8 @@
         "ySouth": 300
       },
       "theme": {
-        "path": 101,
-        "background": 103
+        "path": 406,
+        "background": 100
       },
       "landing": {
         "x": 40,
@@ -391,8 +393,8 @@
         "ySouth": 300
       },
       "theme": {
-        "path": 407,
-        "background": 405
+        "path": 406,
+        "background": 100
       },
       "landing": {
         "x": 95,
@@ -450,8 +452,8 @@
         "ySouth": 400
       },
       "theme": {
-        "path": 412,
-        "background": 919
+        "path": 406,
+        "background": 100
       },
       "landing": {
         "x": 200,
@@ -514,8 +516,8 @@
         "ySouth": 350
       },
       "theme": {
-        "path": 351,
-        "background": 231
+        "path": 406,
+        "background": 100
       },
       "landing": {
         "x": 200,
@@ -574,7 +576,7 @@
       },
       "theme": {
         "path": 406,
-        "background": 919
+        "background": 100
       },
       "landing": {
         "x": 360,
@@ -637,8 +639,8 @@
         "ySouth": 400
       },
       "theme": {
-        "path": 405,
-        "background": 412
+        "path": 406,
+        "background": 100
       },
       "landing": {
         "x": 415,
@@ -696,8 +698,8 @@
         "ySouth": 355
       },
       "theme": {
-        "path": 919,
-        "background": 405
+        "path": 406,
+        "background": 100
       },
       "landing": {
         "x": 360,
@@ -760,8 +762,8 @@
         "ySouth": 355
       },
       "theme": {
-        "path": 231,
-        "background": 103
+        "path": 406,
+        "background": 100
       },
       "landing": {
         "x": 415,
@@ -819,8 +821,8 @@
         "ySouth": 310
       },
       "theme": {
-        "path": 101,
-        "background": 351
+        "path": 406,
+        "background": 100
       },
       "landing": {
         "x": 360,
@@ -883,8 +885,8 @@
         "ySouth": 310
       },
       "theme": {
-        "path": 407,
-        "background": 919
+        "path": 406,
+        "background": 100
       },
       "landing": {
         "x": 415,
@@ -942,8 +944,8 @@
         "ySouth": 265
       },
       "theme": {
-        "path": 412,
-        "background": 405
+        "path": 406,
+        "background": 100
       },
       "landing": {
         "x": 360,
@@ -1001,8 +1003,8 @@
         "ySouth": 265
       },
       "theme": {
-        "path": 405,
-        "background": 231
+        "path": 406,
+        "background": 100
       },
       "landing": {
         "x": 415,

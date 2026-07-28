@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0a0a0a">
+  <title>Todos los items — Retro76</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: #0a0a0a; }
+    .chip.active {
+      color: #fafafa;
+      border-color: rgba(255,255,255,.2);
+      background: rgba(255,255,255,.08);
+    }
+    .sprite {
+      width: 32px;
+      height: 32px;
+      background-image: url('/assets/items/items-atlas.png');
+      background-repeat: no-repeat;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+    }
+    .items-table th,
+    .items-table td {
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      padding: 0.4rem 0.65rem;
+      vertical-align: middle;
+    }
+    .items-table tbody tr:hover { background: rgba(255,255,255,.03); }
+    .items-table th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: #0f0f0f;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #71717a;
+      white-space: nowrap;
+    }
+    .items-table td.num {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.82rem;
+      white-space: nowrap;
+    }
+    .flag {
+      display: inline-block;
+      margin: 1px 2px 1px 0;
+      padding: 0 6px;
+      border-radius: 9999px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.04);
+      color: #a1a1aa;
+      font-size: 0.66rem;
+      line-height: 1.35rem;
+      white-space: nowrap;
+    }
+    .flag.block { border-color: rgba(248,113,113,.35); color: #fca5a5; }
+  </style>
+</head>
+<body class="h-full text-zinc-100 antialiased">
+  <div class="min-h-full flex flex-col">
+    <header class="border-b border-white/10 bg-[#0a0a0a] px-4 py-4">
+      <div class="mx-auto max-w-[1400px] flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <p class="text-xs uppercase tracking-[0.2em] text-zinc-500">Retro76 · referencia</p>
+          <h1 class="text-2xl font-semibold">Todos los items (items.otb)</h1>
+          <p id="summary" class="text-sm text-zinc-400 mt-1">Cargando…</p>
+        </div>
+        <input id="search" type="search" placeholder="Buscar nombre, id, flag…"
+          class="rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm outline-none focus:border-white/25 w-full sm:w-80">
+      </div>
+      <div id="filters" class="mx-auto max-w-[1400px] mt-4 flex flex-wrap gap-2"></div>
+    </header>
+
+    <main class="flex-1 px-4 py-4">
+      <div class="mx-auto max-w-[1400px]">
+        <table class="items-table w-full text-sm">
+          <thead>
+            <tr>
+              <th class="text-left w-12">Img</th>
+              <th class="text-right w-20">Server</th>
+              <th class="text-right w-20">Client</th>
+              <th class="text-left">Nombre</th>
+              <th class="text-left w-28">Grupo</th>
+              <th class="text-left">Flags</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+        <p id="empty" class="hidden text-center text-zinc-500 py-16">No hay items con ese filtro.</p>
+        <div id="sentinel" class="h-8"></div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const CHUNK = 250;
+    const BLOCK_FLAGS = new Set(['blockSolid', 'blockProjectile', 'blockPathFind']);
+
+    let atlas = { cell: 64, cols: 80 };
+    let allItems = [];
+    let filtered = [];
+    let rendered = 0;
+    let activeGroup = 'todos';
+
+    const tbody = document.getElementById('tbody');
+    const summary = document.getElementById('summary');
+    const emptyMsg = document.getElementById('empty');
+    const searchInput = document.getElementById('search');
+    const filtersBox = document.getElementById('filters');
+    const sentinel = document.getElementById('sentinel');
+
+    function spriteStyle(item) {
+      if (!item.img) return null;
+      const idx = item.index;
+      const x = (idx % atlas.cols) * 32;
+      const y = Math.floor(idx / atlas.cols) * 32;
+      const rows = Math.ceil(allItems.length / atlas.cols);
+      return `background-position:-${x}px -${y}px;background-size:${atlas.cols * 32}px ${rows * 32}px;`;
+    }
+
+    function rowHtml(item) {
+      const style = spriteStyle(item);
+      const img = style
+        ? `<div class="sprite" style="${style}" title="sprite"></div>`
+        : `<div class="sprite" style="background:none"></div>`;
+      const flags = item.flags.map(f =>
+        `<span class="flag${BLOCK_FLAGS.has(f) ? ' block' : ''}">${f}</span>`).join('');
+      return `<tr>
+        <td>${img}</td>
+        <td class="num text-right text-zinc-300">${item.sid}</td>
+        <td class="num text-right text-zinc-500">${item.cid ?? '—'}</td>
+        <td class="text-zinc-100">${item.name || '<span class="text-zinc-600">—</span>'}</td>
+        <td class="text-zinc-400">${item.group}</td>
+        <td>${flags || '<span class="text-zinc-700">—</span>'}</td>
+      </tr>`;
+    }
+
+    function renderMore() {
+      if (rendered >= filtered.length) return;
+      const next = filtered.slice(rendered, rendered + CHUNK);
+      tbody.insertAdjacentHTML('beforeend', next.map(rowHtml).join(''));
+      rendered += next.length;
+    }
+
+    function applyFilter() {
+      const q = searchInput.value.trim().toLowerCase();
+      filtered = allItems.filter(it => {
+        if (activeGroup !== 'todos' && it.group !== activeGroup) return false;
+        if (!q) return true;
+        return String(it.sid).includes(q)
+          || String(it.cid ?? '').includes(q)
+          || it.name.toLowerCase().includes(q)
+          || it.group.includes(q)
+          || it.flags.some(f => f.toLowerCase().includes(q));
+      });
+      tbody.innerHTML = '';
+      rendered = 0;
+      renderMore();
+      emptyMsg.classList.toggle('hidden', filtered.length > 0);
+      summary.textContent = `${filtered.length} de ${allItems.length} items · ordenados por server id`;
+    }
+
+    function buildFilters() {
+      const groups = ['todos', ...new Set(allItems.map(it => it.group))];
+      filtersBox.innerHTML = groups.map(g =>
+        `<button data-group="${g}" class="chip rounded-full border border-white/10 px-3 py-1 text-xs text-zinc-400 hover:border-white/20${g === 'todos' ? ' active' : ''}">${g}</button>`
+      ).join('');
+      filtersBox.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          activeGroup = btn.dataset.group;
+          filtersBox.querySelectorAll('button').forEach(b => b.classList.toggle('active', b === btn));
+          applyFilter();
+        });
+      });
+    }
+
+    new IntersectionObserver(entries => {
+      if (entries.some(e => e.isIntersecting)) renderMore();
+    }, { rootMargin: '600px' }).observe(sentinel);
+
+    let searchTimer;
+    searchInput.addEventListener('input', () => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(applyFilter, 150);
+    });
+
+    fetch('/data/items_all.json')
+      .then(r => r.json())
+      .then(data => {
+        atlas = data.atlas;
+        allItems = data.items.map((it, index) => ({ ...it, index }));
+        buildFilters();
+        applyFilter();
+      })
+      .catch(() => { summary.textContent = 'Error cargando data/items_all.json'; });
+  </script>
+</body>
+</html>

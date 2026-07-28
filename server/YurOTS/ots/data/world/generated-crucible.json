@@ -1,0 +1,222 @@
+{
+  "name": "generated-crucible",
+  "tileCount": 1186,
+  "hubPortal": {
+    "x": 157,
+    "y": 54,
+    "z": 7
+  },
+  "landing": {
+    "x": 85,
+    "y": 92,
+    "z": 0
+  },
+  "returnTp": {
+    "x": 86,
+    "y": 93,
+    "z": 0
+  },
+  "levers": {
+    "bronze": {
+      "x": 83,
+      "y": 88,
+      "z": 0,
+      "uid": 7200
+    },
+    "silver": {
+      "x": 85,
+      "y": 88,
+      "z": 0,
+      "uid": 7201
+    },
+    "gold": {
+      "x": 87,
+      "y": 88,
+      "z": 0,
+      "uid": 7202
+    },
+    "info": {
+      "x": 90,
+      "y": 88,
+      "z": 0,
+      "uid": 7203
+    }
+  },
+  "arenas": {
+    "bronze": {
+      "x0": 110,
+      "y0": 80,
+      "x1": 122,
+      "y1": 92,
+      "z": 0,
+      "entry": [
+        116,
+        86,
+        0
+      ],
+      "exit": [
+        116,
+        91,
+        0
+      ]
+    },
+    "silver": {
+      "x0": 140,
+      "y0": 80,
+      "x1": 154,
+      "y1": 96,
+      "z": 0,
+      "entry": [
+        147,
+        88,
+        0
+      ],
+      "exit": [
+        147,
+        95,
+        0
+      ]
+    },
+    "gold": {
+      "x0": 170,
+      "y0": 80,
+      "x1": 188,
+      "y1": 100,
+      "z": 0,
+      "entry": [
+        179,
+        90,
+        0
+      ],
+      "exit": [
+        179,
+        99,
+        0
+      ]
+    }
+  },
+  "templeSigns": [
+    {
+      "x": 157,
+      "y": 53,
+      "z": 7,
+      "text": "CRISOL\n3 puertas. Boss diario.\nBronce / Plata / Oro"
+    },
+    {
+      "x": 159,
+      "y": 53,
+      "z": 7,
+      "text": "WAVE ARENA\nOleadas. Palanca = next.\nRanking semanal"
+    },
+    {
+      "x": 160,
+      "y": 53,
+      "z": 7,
+      "text": "HUNT MAZE\nLaberinto mid-hard\nDesde Minotauros"
+    },
+    {
+      "x": 162,
+      "y": 53,
+      "z": 7,
+      "text": "FLOOR CAMPUS\n16 salas separadas\nMinos -> Behemoth"
+    }
+  ],
+  "hubSigns": [
+    {
+      "x": 83,
+      "y": 87,
+      "z": 0,
+      "text": "BRONCE - riesgo bajo"
+    },
+    {
+      "x": 85,
+      "y": 87,
+      "z": 0,
+      "text": "PLATA - riesgo medio"
+    },
+    {
+      "x": 87,
+      "y": 87,
+      "z": 0,
+      "text": "ORO - boss diario"
+    },
+    {
+      "x": 90,
+      "y": 87,
+      "z": 0,
+      "text": "INFO - bosses de hoy"
+    }
+  ],
+  "clearBoxes": [
+    {
+      "fromX": 80,
+      "toX": 100,
+      "fromY": 80,
+      "toY": 96,
+      "z": 0
+    },
+    {
+      "fromX": 110,
+      "toX": 122,
+      "fromY": 80,
+      "toY": 92,
+      "z": 0
+    },
+    {
+      "fromX": 140,
+      "toX": 154,
+      "fromY": 80,
+      "toY": 96,
+      "z": 0
+    },
+    {
+      "fromX": 170,
+      "toX": 188,
+      "fromY": 80,
+      "toY": 100,
+      "z": 0
+    },
+    {
+      "fromX": 157,
+      "toX": 157,
+      "fromY": 54,
+      "toY": 54,
+      "z": 7
+    },
+    {
+      "fromX": 156,
+      "toX": 156,
+      "fromY": 54,
+      "toY": 54,
+      "z": 7
+    },
+    {
+      "fromX": 157,
+      "toX": 157,
+      "fromY": 53,
+      "toY": 53,
+      "z": 7
+    },
+    {
+      "fromX": 159,
+      "toX": 159,
+      "fromY": 53,
+      "toY": 53,
+      "z": 7
+    },
+    {
+      "fromX": 160,
+      "toX": 160,
+      "fromY": 53,
+      "toY": 53,
+      "z": 7
+    },
+    {
+      "fromX": 162,
+      "toX": 162,
+      "fromY": 53,
+      "toY": 53,
+      "z": 7
+    }
+  ]
+}

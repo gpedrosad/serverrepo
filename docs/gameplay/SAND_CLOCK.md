@@ -11,6 +11,7 @@ Una sola sala. Todos los que entran viven el **mismo** evento: cada **120 s** ca
 | Floor campus | `162, 54, 7` |
 | Fish TP | agua `164, 54, 7` |
 | **Reloj de Arena** | `166, 54, 7` |
+| Bleed Room | `168, 54, 7` |
 
 Retorno: TP sur de la sala → templo `167, 54, 7`. Cartel `166, 53, 7`.
 

@@ -28,4 +28,9 @@ Lagoon + crabs"/>
 Sala compartida.
 Fases cada 120 s"/>
 	<!-- END SAND_CLOCK_SIGNS -->
+		<!-- BEGIN BLEED_ROOM_SIGNS -->
+	<readable x="168" y="53" z="7" text="BLEED ROOM
+Mana -8/s. 10 mobs.
+TP sur = salida"/>
+	<!-- END BLEED_ROOM_SIGNS -->
 </readables>

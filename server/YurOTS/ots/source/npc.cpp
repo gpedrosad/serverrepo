@@ -1011,12 +1011,14 @@ int NpcScript::registerFunctions()
 	lua_register(luaState, "getPlayerVocation", NpcScript::luaGetPlayerVocation);
 	lua_register(luaState, "setPlayerMasterPos", NpcScript::luaSetPlayerMasterPos);
 	lua_register(luaState, "travelPlayerTo", NpcScript::luaTravelPlayerTo);
-	// Sand Clock / Chronos arena driver
+	// Sand Clock (Chronos) / Bleed Room (Leech)
 	lua_register(luaState, "doSummonCreature", NpcScript::luaDoSummonCreature);
 	lua_register(luaState, "doRemoveCreature", NpcScript::luaDoRemoveCreature);
 	lua_register(luaState, "doSendMagicEffect", NpcScript::luaDoSendMagicEffect);
 	lua_register(luaState, "getTopCreature", NpcScript::luaGetTopCreature);
 	lua_register(luaState, "isMonster", NpcScript::luaIsMonster);
+	lua_register(luaState, "getPlayerMana", NpcScript::luaGetPlayerMana);
+	lua_register(luaState, "doPlayerAddMana", NpcScript::luaDoPlayerAddMana);
 #endif //YUR_NPC_EXT
 
 #ifdef YUR_GUILD_SYSTEM
@@ -2146,6 +2148,57 @@ int NpcScript::luaIsMonster(lua_State* L)
 
 	Creature* creature = mynpc->game->getCreatureByID(cid);
 	lua_pushboolean(L, creature && dynamic_cast<Monster*>(creature) != NULL);
+	return 1;
+}
+
+// getPlayerMana(cid) -> mana or 0
+int NpcScript::luaGetPlayerMana(lua_State* L)
+{
+	int cid = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Npc* mynpc = getNpc(L);
+	if(!mynpc){
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Creature* creature = mynpc->game->getCreatureByID(cid);
+	Player* player = creature ? dynamic_cast<Player*>(creature) : NULL;
+	lua_pushnumber(L, player ? (double)player->mana : 0);
+	return 1;
+}
+
+// doPlayerAddMana(cid, mana) — mana puede ser negativo (Bleed Room drain)
+int NpcScript::luaDoPlayerAddMana(lua_State* L)
+{
+	int64_t addmana = (int64_t)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	int cid = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Npc* mynpc = getNpc(L);
+	if(!mynpc){
+		lua_pushnumber(L, -1);
+		return 1;
+	}
+
+	Creature* creature = mynpc->game->getCreatureByID(cid);
+	Player* player = creature ? dynamic_cast<Player*>(creature) : NULL;
+	if(!player){
+		lua_pushnumber(L, -1);
+		return 1;
+	}
+
+	int64_t next = (int64_t)player->mana + addmana;
+	if(next < 0)
+		next = 0;
+	if(next > (int64_t)player->manamax)
+		next = (int64_t)player->manamax;
+	player->mana = next;
+	player->sendStats();
+
+	lua_pushnumber(L, 0);
 	return 1;
 }
 #endif //YUR_NPC_EXT

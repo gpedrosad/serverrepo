@@ -111,6 +111,7 @@ Importación de items, mapeo por código, items de prueba, sesiones de editor.
 | [`gameplay/SVAR_ARENA.md`](gameplay/SVAR_ARENA.md) | **Arena de Fosos:** estilo Svargrond 8.x, portal `161,54,7`, 10 pits, 3 cofres (1 elección). |
 | [`gameplay/FISH_TP.md`](gameplay/FISH_TP.md) | **Fish TP:** fishing rod en agua `164,54,7` → lagoon + mobs con animación. |
 | [`gameplay/SAND_CLOCK.md`](gameplay/SAND_CLOCK.md) | **Reloj de Arena:** sala compartida, fases globales 120 s, Chronos + countdown tipo trainers; portal `166,54,7`. |
+| [`gameplay/BLEED_ROOM.md`](gameplay/BLEED_ROOM.md) | **Bleed Room:** mana drain + cadena 10 mobs, HUD tipo trainers; portal `168,54,7`. |
 | [`items-and-map/MAPEAR_TP_GAUNTLET.md`](items-and-map/MAPEAR_TP_GAUNTLET.md) | Gauntlet: 40 salas 3×3 + sala final 3×3 (Wrath + demon armor, 1 TP); barco `gauntlet`. |
 | [`items-and-map/ISLAND_BANDS.md`](items-and-map/ISLAND_BANDS.md) | Cómo componer las bandas agua→shore→dirt→grass para que una isla no se vea con corte duro. Especificación de las 5 bandas y 7 reglas críticas. |
 | [`items-and-map/ZAGAN_TEST_ITEMS.md`](items-and-map/ZAGAN_TEST_ITEMS.md) | Items de prueba del entorno Zagan (dev/test). |
@@ -173,6 +174,7 @@ Catálogo de **migración/portabilidad** (16 fichas congeladas). No es el invent
 | Arena de Fosos / Svargrond-style | [`gameplay/SVAR_ARENA.md`](gameplay/SVAR_ARENA.md) |
 | Fish TP / pescar teleporte | [`gameplay/FISH_TP.md`](gameplay/FISH_TP.md) |
 | Reloj de Arena / fases globales | [`gameplay/SAND_CLOCK.md`](gameplay/SAND_CLOCK.md) |
+| Bleed Room / mana drain + cadena | [`gameplay/BLEED_ROOM.md`](gameplay/BLEED_ROOM.md) |
 | Private Trainer Dummy | [`gameplay/PRIVATE_TRAINER_DUMMY.md`](gameplay/PRIVATE_TRAINER_DUMMY.md) |
 | Necesito configurar el editor RME | [`RME_SETUP.md`](RME_SETUP.md) |
 | Tests de humo antes de release | [`SMOKE_TESTS.md`](SMOKE_TESTS.md) |

@@ -11,11 +11,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   cmake \
   git \
   gdb \
-  moreutils \
   libxml2-dev \
   liblua5.1-0-dev \
   libboost-regex-dev \
   zlib1g-dev \
+  # moreutils (ts) dejo de estar disponible en focal i386; el entrypoint
+  # tiene fallback sin timestamps si `ts` no existe.
+  && (apt-get install -y --no-install-recommends moreutils || true) \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app/YurOTS

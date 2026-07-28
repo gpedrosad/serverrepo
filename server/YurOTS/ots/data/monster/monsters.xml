@@ -175,6 +175,7 @@
 <monster name="Furious Orc" file="furious orc.xml" />
 <monster name="Enraged Orc" file="enraged orc.xml" />
 <monster name="Orc Berserker" file="orc berserker.xml" />
+<monster name="Orc Berserker Pot Thrower" file="orc berserker pot thrower.xml" />
 <monster name="Angry Orc Berserker" file="angry orc berserker.xml" />
 <monster name="Furious Orc Berserker" file="furious orc berserker.xml" />
 <monster name="Enraged Orc Berserker" file="enraged orc berserker.xml" />

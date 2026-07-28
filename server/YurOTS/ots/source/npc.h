@@ -95,12 +95,14 @@ public:
 	static int luaDoPlayerAddMoney(lua_State *L);
 	static int luaSetPlayerMasterPos(lua_State* L);
 	static int luaTravelPlayerTo(lua_State* L);
-	// Sand Clock (Chronos): summon/remove/FX from NPC onThink.
+	// Sand Clock (Chronos) / Bleed Room (Leech): summon/remove/FX/mana from NPC onThink.
 	static int luaDoSummonCreature(lua_State *L);
 	static int luaDoRemoveCreature(lua_State *L);
 	static int luaDoSendMagicEffect(lua_State *L);
 	static int luaGetTopCreature(lua_State *L);
 	static int luaIsMonster(lua_State *L);
+	static int luaGetPlayerMana(lua_State *L);
+	static int luaDoPlayerAddMana(lua_State *L);
 #endif //YUR_NPC_EXT
 
 #ifdef YUR_GUILD_SYSTEM

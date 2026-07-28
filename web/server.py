@@ -8,11 +8,19 @@ import threading
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import unquote
+from urllib.parse import quote, unquote
 
 from analytics import WebAnalytics
 from bug_reports import BugReportStore
-from data import build_payload, create_account, get_character_profile, read_server_ip, server_status_from_files
+from data import (
+    HIDDEN_RANK_PLAYERS,
+    VOC_TEMPLATES,
+    build_payload,
+    create_account,
+    get_character_profile,
+    read_server_ip,
+    server_status_from_files,
+)
 from debug_log import get_logger, log_exception, log_http, setup_logging
 from premium_orders import create_premium_order, parse_addon_selections, parse_multipart_form, premium_config_payload
 from register_guard import RegisterGuard
@@ -35,11 +43,13 @@ CONFIG_FILE = Path(os.environ.get("CONFIG_FILE", ROOT / "server/YurOTS/ots/confi
 OT_HOST = os.environ.get("OT_HOST", "127.0.0.1")
 OT_PORT = int(os.environ.get("OT_PORT", "7171"))
 UPDATER_FILES_URL = os.environ.get("UPDATER_FILES_URL", "https://retro76.cl/updater/files")
+SITE_URL = os.environ.get("SITE_URL", "https://retro76.cl").rstrip("/")
 SERVER_IP = os.environ.get("SERVER_IP") or read_server_ip(CONFIG_FILE)
 PORT = int(os.environ.get("PORT", "8080"))
 INDEX = Path(__file__).resolve().parent / "index.html"
 CHARACTER_PAGE = Path(__file__).resolve().parent / "character.html"
 ITEMS_PAGE = Path(__file__).resolve().parent / "items.html"
+ITEMS_ALL_PAGE = Path(__file__).resolve().parent / "items-all.html"
 DOWNLOADS_DIR = Path(__file__).resolve().parent / "downloads"
 WEB_DIR = Path(__file__).resolve().parent
 ASSET_TYPES = {
@@ -197,8 +207,14 @@ class Handler(BaseHTTPRequestHandler):
             self._character_api(path[len("/api/character/"):])
         elif path.startswith("/character/"):
             self._file(CHARACTER_PAGE, "text/html; charset=utf-8", cache="no-store")
+        elif path == "/robots.txt":
+            self._robots_txt()
+        elif path == "/sitemap.xml":
+            self._sitemap_xml()
         elif path == "/items":
             self._items_page()
+        elif path == "/items-all":
+            self._file(ITEMS_ALL_PAGE, "text/html; charset=utf-8", cache="no-store")
         elif path == "/api/zagan-items":
             self._zagan_items_api()
         elif path.startswith("/api/zagan-items/img/"):
@@ -336,6 +352,45 @@ class Handler(BaseHTTPRequestHandler):
             self._json(404, {"ok": False, "message": "Personaje no encontrado"})
             return
         self._json(200, {"ok": True, "character": profile})
+
+    def _robots_txt(self) -> None:
+        body = (
+            "User-agent: *\n"
+            "Allow: /\n"
+            "Disallow: /api/\n"
+            "Disallow: /items\n"
+            "Disallow: /updater/\n"
+            f"\nSitemap: {SITE_URL}/sitemap.xml\n"
+        ).encode("utf-8")
+        self.send_response(200)
+        self.send_header("Content-Type", "text/plain; charset=utf-8")
+        self.send_header("Cache-Control", "public, max-age=3600")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def _sitemap_xml(self) -> None:
+        urls = [f"{SITE_URL}/"]
+        if PLAYERS_DIR.is_dir():
+            names = sorted(
+                p.stem
+                for p in PLAYERS_DIR.glob("*.xml")
+                if p.stem not in VOC_TEMPLATES and p.stem.lower() not in HIDDEN_RANK_PLAYERS
+            )
+            urls.extend(f"{SITE_URL}/character/{quote(name)}" for name in names)
+        entries = "\n".join(f"  <url><loc>{u}</loc></url>" for u in urls)
+        body = (
+            '<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            f"{entries}\n"
+            "</urlset>\n"
+        ).encode("utf-8")
+        self.send_response(200)
+        self.send_header("Content-Type", "application/xml; charset=utf-8")
+        self.send_header("Cache-Control", "public, max-age=3600")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
 
     def _items_page(self) -> None:
         if not self._items_admin_token():

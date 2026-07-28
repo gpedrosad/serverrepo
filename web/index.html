@@ -1,19 +1,60 @@
 <!DOCTYPE html>
-<html lang="es" class="h-full">
+<html lang="es-CL" class="h-full">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0a0a0a">
-  <meta name="description" content="Retro76 — Tibia 7.6. Status, rankings, muertes y registro.">
-  <title>Retro76</title>
+  <meta name="description" content="Retro76: OT server chileno de Tibia 7.6 (Open Tibia). PvP retro, comunidad latina, baja latencia desde Chile y sistemas custom: gemas, El Crisol, arenas y más. Crea tu cuenta gratis y descarga el cliente.">
+  <title>Retro76 — OT Server Chileno Tibia 7.6 | Open Tibia Chile</title>
+  <link rel="canonical" href="https://retro76.cl/">
   <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32">
   <link rel="icon" href="/assets/brand/favicon.png" type="image/png" sizes="any">
   <link rel="apple-touch-icon" href="/assets/brand/favicon.png">
-  <meta property="og:title" content="Retro76">
-  <meta property="og:description" content="Tibia 7.6 — status, rankings, muertes y registro.">
-  <meta property="og:image" content="/assets/brand/favicon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Retro76">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:url" content="https://retro76.cl/">
+  <meta property="og:title" content="Retro76 — OT Server Chileno Tibia 7.6">
+  <meta property="og:description" content="Open Tibia 7.6 chileno: PvP retro, comunidad latina y sistemas custom (gemas, El Crisol, arenas). Cuenta gratis y cliente listo para jugar.">
+  <meta property="og:image" content="https://retro76.cl/assets/brand/favicon.png">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:image" content="/assets/brand/favicon.png">
+  <meta name="twitter:title" content="Retro76 — OT Server Chileno Tibia 7.6">
+  <meta name="twitter:description" content="Open Tibia 7.6 chileno: PvP retro, comunidad latina y sistemas custom. Cuenta gratis.">
+  <meta name="twitter:image" content="https://retro76.cl/assets/brand/favicon.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "Retro76",
+        "url": "https://retro76.cl/",
+        "inLanguage": "es-CL",
+        "description": "OT server chileno de Tibia 7.6 (Open Tibia): rankings, registro de cuentas y descarga del cliente."
+      },
+      {
+        "@type": "VideoGame",
+        "name": "Retro76",
+        "url": "https://retro76.cl/",
+        "genre": "MMORPG",
+        "gamePlatform": ["Windows", "macOS"],
+        "playMode": "MultiPlayer",
+        "applicationCategory": "Game",
+        "inLanguage": "es-CL",
+        "countryOfOrigin": {
+          "@type": "Country",
+          "name": "Chile"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "CLP",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    ]
+  }
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { background: #0a0a0a; }
@@ -516,15 +557,11 @@
         Nuevo cliente oficial con <strong class="font-medium text-zinc-100">items custom</strong> incluidos.
       </p>
       <p class="mt-2 text-[11px] leading-relaxed text-zinc-400">
-        <span class="text-zinc-300">Instalación nueva:</span> descarga el ZIP, descomprime y ejecuta el lanzador.
-        <span class="text-zinc-300">¿Ya tienes el cliente?</span> en la pestaña
-        <button type="button" class="text-sky-300/90 underline underline-offset-2 hover:text-sky-200" data-goto="download">Cliente</button>
-        usa la opción <span class="text-zinc-300">solo sprites</span>.
+        Descarga el ZIP, <span class="text-zinc-300">descomprime</span> y ejecuta el lanzador. Eso es todo.
       </p>
       <div class="mt-3 flex flex-wrap gap-2">
         <a href="/downloads/Retro76-Windows.zip" class="inline-flex items-center rounded-md border border-sky-500/25 bg-sky-500/10 px-2.5 py-1.5 text-[11px] font-medium text-sky-100 no-underline hover:border-sky-400/40 hover:bg-sky-500/15">ZIP Windows</a>
         <a href="/downloads/Retro76-Mac.zip" class="inline-flex items-center rounded-md border border-sky-500/25 bg-sky-500/10 px-2.5 py-1.5 text-[11px] font-medium text-sky-100 no-underline hover:border-sky-400/40 hover:bg-sky-500/15">ZIP macOS</a>
-        <a href="/downloads/Retro76-Sprites-760.zip" class="inline-flex items-center rounded-md border border-emerald-500/25 bg-emerald-500/10 px-2.5 py-1.5 text-[11px] font-medium text-emerald-100 no-underline hover:border-emerald-400/40 hover:bg-emerald-500/15">Solo sprites</a>
       </div>
     </div>
     <div id="stats" class="grid grid-cols-3 gap-2"></div>
@@ -605,26 +642,14 @@
   <!-- DOWNLOAD -->
   <section id="panel-download" class="panel space-y-4">
     <div>
-      <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">Opción 1 · Cliente completo (ZIP)</p>
+      <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">Descargar cliente</p>
       <div class="anim-in rounded-lg border border-sky-500/15 bg-sky-500/[0.04] px-3 py-2.5 mb-2" style="--d:0ms">
         <p class="text-[11px] leading-relaxed text-zinc-300">
-          Para <span class="text-zinc-100">instalación nueva</span> o si no tienes el cliente.
           Descarga, <span class="text-zinc-100">descomprime</span> y ejecuta
           <span class="text-zinc-400">Iniciar Cliente.bat</span> / <span class="text-zinc-400">.command</span>.
         </p>
       </div>
       <div id="download-list" class="grid grid-cols-1 gap-2 sm:grid-cols-2"></div>
-    </div>
-    <div>
-      <p class="mb-2 text-[10px] uppercase tracking-widest text-zinc-600">Opción 2 · Solo sprites (alternativa)</p>
-      <div class="anim-in rounded-lg border border-emerald-500/15 bg-emerald-500/[0.04] px-3 py-2.5 mb-2" style="--d:45ms">
-        <p class="text-[11px] leading-relaxed text-zinc-300">
-          Si <span class="text-zinc-100">ya tienes el cliente descomprimido</span>, descarga solo
-          <span class="text-zinc-400">Tibia.dat</span> + <span class="text-zinc-400">Tibia.spr</span>
-          (~16 MB) y cópialos en <span class="text-zinc-500">data/things/760/</span> de tu carpeta.
-        </p>
-      </div>
-      <div id="download-patch-list" class="grid grid-cols-1 gap-2"></div>
     </div>
     <p class="text-center text-[10px] text-zinc-600">Servidor: <span id="download-connect" class="text-zinc-500">—</span></p>
   </section>
@@ -793,6 +818,24 @@
     </div>
     <div id="spells-list" class="space-y-2"></div>
   </section>
+
+  <footer class="mt-10 border-t border-white/[0.06] pt-5 pb-4 text-[11px] leading-relaxed text-zinc-500">
+    <h2 class="text-[12px] font-medium text-zinc-300">Retro76 — Open Tibia Server chileno 7.6</h2>
+    <p class="mt-2">
+      <strong class="font-medium text-zinc-400">Retro76</strong> es un <strong class="font-medium text-zinc-400">OT server chileno</strong> de
+      <strong class="font-medium text-zinc-400">Tibia 7.6</strong> (Open Tibia), alojado con baja latencia para Chile y Latinoamérica.
+      Revive el Tibia clásico: PvP retro sin protecciones modernas, runas, vocaciones promovidas y economía de jugadores.
+    </p>
+    <p class="mt-2">
+      Además del contenido clásico, Retro76 tiene sistemas propios que no vas a encontrar en otro servidor:
+      minería de <a href="#" onclick="showPanel('gems');return false" class="text-sky-300/80 no-underline hover:text-sky-200 hover:underline">gemas e imbuiciones</a>,
+      El Crisol con rares diarios, Wave Arena, arena de fosos, tareas diarias del Huntmaster e items custom.
+      La cuenta es gratis y el cliente viene listo para Windows y macOS.
+    </p>
+    <p class="mt-2 text-zinc-600">
+      Servidor Open Tibia 7.6 · Chile · retro76.cl
+    </p>
+  </footer>
 </div>
 
 <script>
@@ -817,28 +860,6 @@ const NAV = [
 const CLIENT_DOWNLOADS = {
   windows: { file: 'Retro76-Windows.zip', label: 'Windows', ready: true, hint: 'ZIP completo · descomprimir y ejecutar .bat' },
   mac: { file: 'Retro76-Mac.zip', label: 'macOS', ready: true, hint: 'ZIP completo · descomprimir y ejecutar .command' },
-};
-const CLIENT_PATCH = {
-  zip: {
-    file: 'Retro76-Sprites-760.zip',
-    label: 'Sprites 7.6 (ZIP)',
-    ready: true,
-    hint: 'Solo Tibia.dat + Tibia.spr · copiar a data/things/760/',
-  },
-  dat: {
-    file: null,
-    url: '/updater/files/data/things/760/Tibia.dat',
-    label: 'Tibia.dat',
-    ready: true,
-    hint: 'Archivo suelto · reemplazar en data/things/760/',
-  },
-  spr: {
-    file: null,
-    url: '/updater/files/data/things/760/Tibia.spr',
-    label: 'Tibia.spr',
-    ready: true,
-    hint: 'Archivo suelto · reemplazar en data/things/760/',
-  },
 };
 const RANK_META = {
   level: { label: 'Lvl', cols: ['level','exp_fmt','maglevel','vocation_short','lastlogin_rel'] },
@@ -1489,17 +1510,6 @@ function renderDownload(connect) {
     const dl = CLIENT_DOWNLOADS[item.key];
     return downloadCard(`/downloads/${dl.file}`, dl, item.icon, i, 'full');
   }).join('');
-
-  const patchItems = [
-    { key: 'zip', icon: '' },
-    { key: 'dat', icon: '' },
-    { key: 'spr', icon: '' },
-  ];
-  document.getElementById('download-patch-list').innerHTML = patchItems.map((item, i) => {
-    const dl = CLIENT_PATCH[item.key];
-    const href = dl.url || `/downloads/${dl.file}`;
-    return downloadCard(href, dl, item.icon, i + 2, 'patch');
-  }).join('');
 }
 
 async function probeDownloads() {
@@ -1508,12 +1518,6 @@ async function probeDownloads() {
     try {
       const r = await fetch(`/downloads/${dl.file}`, { method: 'HEAD', cache: 'no-store' });
       if (r.ok) dl.ready = true;
-    } catch { /* sin archivo aún */ }
-  }
-  if (!CLIENT_PATCH.zip.ready) {
-    try {
-      const r = await fetch(`/downloads/${CLIENT_PATCH.zip.file}`, { method: 'HEAD', cache: 'no-store' });
-      if (r.ok) CLIENT_PATCH.zip.ready = true;
     } catch { /* sin archivo aún */ }
   }
   if (state.data) renderDownload(state.data.connect);

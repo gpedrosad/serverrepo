@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
-"""Reloj de Arena — sala compartida con fases globales (Chronos).
+"""Bleed Room — mini sala con drain de mana + 10 mobs en cadena.
 
-Templo: TP 166,54,7 → sala z6. Retorno templo 167,54,7.
-Sala simple path 406 + fondo neutro z5 (mismo patrón Wave/Fish/Fosos).
-NPC Chronos se spawnea vía data/world/npc.xml (no en OTBM).
+Templo: TP 168,54,7 → sala z6. Retorno templo 169,54,7.
+Estética Alice: camino 406 + fondo 100. NPC Leech (npc.xml).
 
 Uso:
-  python3 scripts/map/generate-sand-clock.py --dry-run
-  python3 scripts/map/generate-sand-clock.py --replace
+  python3 scripts/map/generate-bleed-room.py --dry-run
+  python3 scripts/map/generate-bleed-room.py --replace
 """
 from __future__ import annotations
 
@@ -27,8 +26,8 @@ sys.modules["generate_maze"] = _maze
 assert _spec.loader is not None
 _spec.loader.exec_module(_maze)
 
-GROUND_PATH = 406
-GROUND_BG = 405
+GROUND_PATH = 406  # Alice camino
+GROUND_BG = 100  # Alice fondo (no walkable)
 TELEPORT_ITEM = _maze.TELEPORT_ITEM
 NODE_START = _maze.NODE_START
 NODE_END = _maze.NODE_END
@@ -40,39 +39,47 @@ OTBM_ATTR_ITEM = _maze.OTBM_ATTR_ITEM
 OTBM_ATTR_TEXT = 6
 write_props = _maze.write_props
 
-HUB_PORTAL = (166, 54, 7)
-TEMPLE_RETURN = (167, 54, 7)
+HUB_PORTAL = (168, 54, 7)
+TEMPLE_RETURN = (169, 54, 7)
 HUB_GROUND = 407
 SIGN_ITEM = 1429
 
 Z_PLAY = 6
-Z_BG = 5
 
-ROOM = dict(x0=330, y0=385, x1=346, y1=399)
-LANDING = (338, 392, Z_PLAY)
-RETURN_TP = (338, 398, Z_PLAY)
-# Chronos stand (libre, norte de la sala) — documentado; spawn en npc.xml
-CHRONOS_POS = (338, 387, Z_PLAY)
+# Sala chica 5×5 (Alice 406/100). Sur = TP salida al templo.
+# Layout:
+#   N: Leech
+#   C: spawn mob
+#   S-1: landing
+#   S: TP → templo
+ROOM = dict(x0=353, y0=388, x1=357, y1=392)
+LEECH_POS = (355, 388, Z_PLAY)
+SPAWN_POS = (355, 390, Z_PLAY)
+LANDING = (355, 391, Z_PLAY)
+RETURN_TP = (355, 392, Z_PLAY)
+
+# Footprint anterior (11×11) — limpiar al regenerar.
+LEGACY_ROOM = dict(x0=350, y0=388, x1=360, y1=398)
 
 TEMPLE_SIGN = (
-    166,
+    168,
     53,
     7,
-    "RELOJ DE ARENA\nSala compartida.\nFases cada 120 s",
+    "BLEED ROOM\nMana -8/s. 10 mobs.\nTP sur = salida",
 )
 
 
 @dataclass
-class SItem:
+class BItem:
     item_id: int
     text: str | None = None
 
 
 @dataclass
-class STile:
+class BTile:
     ground: int
     teleport: tuple[int, int, int] | None = None
-    items: list[SItem] = field(default_factory=list)
+    items: list[BItem] = field(default_factory=list)
 
 
 def project_root() -> Path:
@@ -88,7 +95,7 @@ def encode_string(text: str) -> bytes:
     return struct.pack("<H", len(raw)) + raw
 
 
-def encode_item_node(it: SItem, tele: tuple[int, int, int] | None = None) -> bytes:
+def encode_item_node(it: BItem, tele: tuple[int, int, int] | None = None) -> bytes:
     props = struct.pack("<H", it.item_id)
     if it.text is not None:
         props += struct.pack("<B", OTBM_ATTR_TEXT) + encode_string(it.text)
@@ -102,7 +109,7 @@ def encode_item_node(it: SItem, tele: tuple[int, int, int] | None = None) -> byt
     return bytes(buf)
 
 
-def encode_tile_node(x_off: int, y_off: int, spec: STile) -> bytes:
+def encode_tile_node(x_off: int, y_off: int, spec: BTile) -> bytes:
     props = struct.pack("<BB", x_off, y_off)
     props += struct.pack("<BH", OTBM_ATTR_ITEM, spec.ground)
     buf = bytearray()
@@ -110,7 +117,7 @@ def encode_tile_node(x_off: int, y_off: int, spec: STile) -> bytes:
     buf.append(OTBM_TILE)
     write_props(buf, props)
     if spec.teleport is not None:
-        buf.extend(encode_item_node(SItem(TELEPORT_ITEM), tele=spec.teleport))
+        buf.extend(encode_item_node(BItem(TELEPORT_ITEM), tele=spec.teleport))
     for it in spec.items:
         buf.extend(encode_item_node(it))
     buf.append(NODE_END)
@@ -129,7 +136,7 @@ def encode_tile_area(base_x: int, base_y: int, base_z: int, rel: list) -> bytes:
     return bytes(buf)
 
 
-def group_tile_areas(tiles: dict[tuple[int, int, int], STile]) -> list[bytes]:
+def group_tile_areas(tiles: dict[tuple[int, int, int], BTile]) -> list[bytes]:
     from collections import defaultdict
 
     by_z: dict[int, list] = defaultdict(list)
@@ -150,16 +157,16 @@ def group_tile_areas(tiles: dict[tuple[int, int, int], STile]) -> list[bytes]:
 def fill_rect(tiles, x0, y0, x1, y1, z, ground) -> None:
     for y in range(y0, y1 + 1):
         for x in range(x0, x1 + 1):
-            tiles[(x, y, z)] = STile(ground=ground)
+            tiles[(x, y, z)] = BTile(ground=ground)
 
 
-def build_tiles() -> tuple[dict[tuple[int, int, int], STile], dict]:
+def build_tiles() -> tuple[dict[tuple[int, int, int], BTile], dict]:
     pad = 2
     x0, y0 = ROOM["x0"] - pad, ROOM["y0"] - pad
     x1, y1 = ROOM["x1"] + pad, ROOM["y1"] + pad
-    tiles: dict[tuple[int, int, int], STile] = {}
+    tiles: dict[tuple[int, int, int], BTile] = {}
 
-    fill_rect(tiles, x0, y0, x1, y1, Z_BG, GROUND_BG)
+    # Alice: fondo 100 en footprint, camino 406 en la sala.
     fill_rect(tiles, x0, y0, x1, y1, Z_PLAY, GROUND_BG)
     fill_rect(
         tiles,
@@ -171,19 +178,19 @@ def build_tiles() -> tuple[dict[tuple[int, int, int], STile], dict]:
         GROUND_PATH,
     )
 
-    tiles[LANDING] = STile(ground=GROUND_PATH)
-    tiles[RETURN_TP] = STile(ground=GROUND_PATH, teleport=TEMPLE_RETURN)
-    tiles[CHRONOS_POS] = STile(ground=GROUND_PATH)
+    tiles[LANDING] = BTile(ground=GROUND_PATH)
+    tiles[RETURN_TP] = BTile(ground=GROUND_PATH, teleport=TEMPLE_RETURN)
+    tiles[LEECH_POS] = BTile(ground=GROUND_PATH)
+    tiles[SPAWN_POS] = BTile(ground=GROUND_PATH)
 
-    # Temple pad + portal + return + sign
     for dy in (-1, 0, 1):
         for dx in (-1, 0, 1):
             tx, ty = HUB_PORTAL[0] + dx, HUB_PORTAL[1] + dy
-            tiles[(tx, ty, 7)] = STile(ground=HUB_GROUND)
-    tiles[HUB_PORTAL] = STile(ground=HUB_GROUND, teleport=LANDING)
-    tiles[TEMPLE_RETURN] = STile(ground=HUB_GROUND)
+            tiles[(tx, ty, 7)] = BTile(ground=HUB_GROUND)
+    tiles[HUB_PORTAL] = BTile(ground=HUB_GROUND, teleport=LANDING)
+    tiles[TEMPLE_RETURN] = BTile(ground=HUB_GROUND)
     sx, sy, sz, stext = TEMPLE_SIGN
-    tiles[(sx, sy, sz)] = STile(ground=HUB_GROUND, items=[SItem(SIGN_ITEM)])
+    tiles[(sx, sy, sz)] = BTile(ground=HUB_GROUND, items=[BItem(SIGN_ITEM)])
 
     meta = {
         "hubPortal": {"x": HUB_PORTAL[0], "y": HUB_PORTAL[1], "z": HUB_PORTAL[2]},
@@ -194,15 +201,24 @@ def build_tiles() -> tuple[dict[tuple[int, int, int], STile], dict]:
         },
         "landing": {"x": LANDING[0], "y": LANDING[1], "z": LANDING[2]},
         "returnTp": {"x": RETURN_TP[0], "y": RETURN_TP[1], "z": RETURN_TP[2]},
-        "chronos": {"x": CHRONOS_POS[0], "y": CHRONOS_POS[1], "z": CHRONOS_POS[2]},
+        "leech": {"x": LEECH_POS[0], "y": LEECH_POS[1], "z": LEECH_POS[2]},
+        "spawn": {"x": SPAWN_POS[0], "y": SPAWN_POS[1], "z": SPAWN_POS[2]},
         "room": {**ROOM, "z": Z_PLAY},
         "zPlay": Z_PLAY,
-        "zBg": Z_BG,
-        "phaseSec": 120,
+        "groundPathId": GROUND_PATH,
+        "groundBackgroundId": GROUND_BG,
+        "manaDrainPerTick": 8,
+        "mobCount": 10,
         "templeSign": {"x": sx, "y": sy, "z": sz, "text": stext},
         "clearBoxes": [
+            {
+                "fromX": LEGACY_ROOM["x0"] - pad,
+                "toX": LEGACY_ROOM["x1"] + pad,
+                "fromY": LEGACY_ROOM["y0"] - pad,
+                "toY": LEGACY_ROOM["y1"] + pad,
+                "z": Z_PLAY,
+            },
             {"fromX": x0, "toX": x1, "fromY": y0, "toY": y1, "z": Z_PLAY},
-            {"fromX": x0, "toX": x1, "fromY": y0, "toY": y1, "z": Z_BG},
             {
                 "fromX": HUB_PORTAL[0] - 1,
                 "toX": HUB_PORTAL[0] + 1,
@@ -218,15 +234,15 @@ def build_tiles() -> tuple[dict[tuple[int, int, int], STile], dict]:
                 "z": 7,
             },
             {"fromX": sx, "toX": sx, "fromY": sy, "toY": sy, "z": sz},
-        ],
+       ],
     }
     return tiles, meta
 
 
 def patch_readables(project: Path, meta: dict) -> None:
     path = project / "server/YurOTS/ots/data/readables.xml"
-    begin = "<!-- BEGIN SAND_CLOCK_SIGNS -->"
-    end = "<!-- END SAND_CLOCK_SIGNS -->"
+    begin = "<!-- BEGIN BLEED_ROOM_SIGNS -->"
+    end = "<!-- END BLEED_ROOM_SIGNS -->"
     s = meta["templeSign"]
     text = s["text"].replace("\n", "\\n")
     block = (
@@ -254,22 +270,22 @@ def main() -> int:
     project = project_root()
     otbm_path = args.map or (project / "server/YurOTS/ots/data/world/test.otbm")
     manifest_path = args.manifest or (
-        project / "server/YurOTS/ots/data/world/generated-sand-clock.json"
+        project / "server/YurOTS/ots/data/world/generated-bleed-room.json"
     )
 
     tiles, meta = build_tiles()
-    print("Reloj de Arena / Sand Clock")
+    print("Bleed Room")
     print(
         f"Portal ({HUB_PORTAL[0]},{HUB_PORTAL[1]},{HUB_PORTAL[2]}) "
         f"→ landing ({LANDING[0]},{LANDING[1]},{LANDING[2]})"
     )
     print(
-        f"Chronos ({CHRONOS_POS[0]},{CHRONOS_POS[1]},{CHRONOS_POS[2]}) "
+        f"Leech ({LEECH_POS[0]},{LEECH_POS[1]},{LEECH_POS[2]}) "
         f"room {ROOM['x0']}-{ROOM['x1']},{ROOM['y0']}-{ROOM['y1']} z{Z_PLAY}"
     )
-    print(f"tiles={len(tiles)} zPlay={Z_PLAY} zBg={Z_BG}")
+    print(f"Alice path={GROUND_PATH} bg={GROUND_BG} tiles={len(tiles)}")
 
-    summary = {"name": "generated-sand-clock", "tileCount": len(tiles), **meta}
+    summary = {"name": "generated-bleed-room", "tileCount": len(tiles), **meta}
     if args.dry_run:
         print("(dry-run)")
         return 0
@@ -287,7 +303,7 @@ def main() -> int:
     patch = b"".join(group_tile_areas(tiles))
     patched = raw[:4] + body[:insert_at] + patch + body[insert_at:]
 
-    backup = otbm_path.with_suffix(".otbm.bak-sand-clock")
+    backup = otbm_path.with_suffix(".otbm.bak-bleed-room")
     if not backup.exists():
         backup.write_bytes(raw)
         print(f"Backup: {backup}")

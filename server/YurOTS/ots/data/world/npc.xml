@@ -25,6 +25,8 @@
 <npc name="Huntmaster" x="138" y="53" z="6" dir="2"/>
 <!-- Reloj de Arena: Chronos drive fases globales (docs/gameplay/SAND_CLOCK.md) -->
 <npc name="Chronos" x="338" y="387" z="6" dir="2"/>
+<!-- Bleed Room: Leech drive mana drain + cadena 10 mobs (docs/gameplay/BLEED_ROOM.md) -->
+<npc name="Leech" x="355" y="388" z="6" dir="2"/>
 
 <npc name="Orlan" x="127" y="49" z="4" dir="1"/>
 <npc name="The Oracle" x="96" y="207" z="6"/>

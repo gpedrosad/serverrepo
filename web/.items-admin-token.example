@@ -1,0 +1,7 @@
+# Copia este archivo a web/.items-admin-token y pon un secreto largo.
+# En local, scripts/web.sh genera uno automáticamente si no existe.
+#
+# En el VPS (systemd yurots-web), agregá:
+#   Environment=ITEMS_ADMIN_TOKEN=tu-secreto-aqui
+#
+# Luego: http://retro76.cl/items

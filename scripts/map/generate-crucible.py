@@ -2,7 +2,7 @@
 """El Crisol — 3 puertas (Bronce/Plata/Oro) + bosses diarios + carteles templo.
 
 Portal templo 157,54,7 → hub z0. Salas separadas en XY (z0 vacío).
-Carteles 1433 en templo (y=53) para Wave / Maze / Floor / Crisol.
+Carteles 1429 en templo (y=53) para Wave / Maze / Floor / Crisol.
 UID palancas: 7200 Bronce, 7201 Plata, 7202 Oro, 7203 cartel del dia.
 
 Uso:
@@ -44,7 +44,7 @@ write_props = _maze.write_props
 HUB_PORTAL = (157, 54, 7)
 HUB_LANDING_TEMPLE = (156, 54, 7)
 HUB_GROUND = 407
-SIGN_ITEM = 1433  # wall sign (ya usado en templo)
+SIGN_ITEM = 1429  # sign de templo (board)
 LEVER_ITEM = 1945
 
 Z = 0

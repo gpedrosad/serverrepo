@@ -43,7 +43,7 @@ write_props = _maze.write_props
 FISH_HOLE = (164, 54, 7)
 TEMPLE_RETURN = (165, 54, 7)
 HUB_GROUND = 407
-SIGN_ITEM = 1433
+SIGN_ITEM = 1429
 
 Z_PLAY = 6
 Z_BG = 5

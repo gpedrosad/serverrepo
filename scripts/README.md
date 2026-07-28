@@ -49,6 +49,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | `generate-svar-arena.py` | Arena de Fosos OTBM (portal `161,54,7`) |
 | `generate-fish-tp.py` | Fish TP OTBM (agua `164,54,7`) |
 | `generate-sand-clock.py` | Reloj de Arena OTBM (portal `166,54,7`) |
+| `generate-bleed-room.py` | Bleed Room OTBM (portal `168,54,7`) |
 | `generate-wave-arena.py` | Wave Arena |
 | `generate-floor-hunt.py` | Floor hunt campus |
 | `generate-hunt-maze.py` | Hunt maze |

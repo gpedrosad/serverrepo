@@ -1,6 +1,6 @@
 # Floor Hunt — campus de 16 salas (teleports, sin apilar z)
 
-Zona de hunt **multi-sala** generada por código. Avance **solo por teleports** (`1387`). Las salas están en **z7**, separadas en XY (alas oeste / centro / este) para que no se vean teleports de otra sala. Fondo opaco (no void). No toca Alice ni el hunt maze plano.
+Zona de hunt **multi-sala** generada por código. Avance **solo por teleports** (`1387`). Las salas están en **z7**, separadas en XY (alas oeste / centro / este). Estética **igual que Alice Maze**: camino `406` + fondo `100` (sin murallas ni temas opacos). No toca Alice ni el hunt maze plano.
 
 | Sistema | Acceso templo viejo | Footprint |
 |---------|---------------------|-----------|
@@ -9,7 +9,7 @@ Zona de hunt **multi-sala** generada por código. Avance **solo por teleports** 
 | Wave Arena | `159, 54, 7` | sala 7×7 oleadas — [`WAVE_ARENA.md`](../gameplay/WAVE_ARENA.md) |
 | Alice Maze | barco `alice maze` | X `380–433`, Y `18–103`, z7 |
 
-Script: `scripts/generate-floor-hunt.py`  
+Script: `scripts/map/generate-floor-hunt.py`  
 Manifiesto: `server/YurOTS/ots/data/world/generated-floor-hunt.json`
 
 ---
@@ -22,7 +22,7 @@ Ahora:
 
 1. Cada sala tiene **XY propio** con hueco entre footprints.
 2. Todo en **z7** (sin stack vertical).
-3. Fondos **opacos** (mármol/piedra/tierra/pasto) distintos por sala.
+3. Suelo/fondo **Alice**: camino `406`, fondo `100` (no walkable) — sin temas de mármol/piedra/pasto por sala.
 
 Al regenerar se **borra** la torre vieja `X200–245 Y339–400` en z0–z15.
 
@@ -74,12 +74,14 @@ templo 162,54,7 --TP--> sala 0 Minotaur Courts
 
 ---
 
-## Coordenadas
+## Coordenadas / estética
 
-| Qué | Pos |
-|-----|-----|
+| Qué | Pos / valor |
+|-----|-------------|
 | Portal templo | `162, 54, 7` → `40, 399, 7` |
 | Landing sala 0 | `40, 399, 7` |
+| Camino | server id `406` (white marble) |
+| Fondo | server id `100` (void; no walkable) |
 | Celdas / seed | `10×12` / sala, seed `421` |
 | Spawns | `<!-- BEGIN FLOOR_HUNT -->` |
 
@@ -90,8 +92,8 @@ Orígenes `(originX, originYSouth)`: ver `FLOOR_ORIGINS` en el script / manifies
 ## Regenerar
 
 ```bash
-python3 scripts/generate-floor-hunt.py --dry-run
-python3 scripts/generate-floor-hunt.py --replace
+python3 scripts/map/generate-floor-hunt.py --dry-run
+python3 scripts/map/generate-floor-hunt.py --replace
 docker compose -f docker-compose.prod.yml restart yurots
 python3 scripts/ot-probe.py 127.0.0.1 7171
 ```
@@ -101,5 +103,5 @@ python3 scripts/ot-probe.py 127.0.0.1 7171
 ## Relacionado
 
 - Hunt maze plano: [`MAPEAR_HUNT_MAZE.md`](MAPEAR_HUNT_MAZE.md)
+- Alice Maze (misma estética 406/100): [`MAPEAR_LABERINTO.md`](MAPEAR_LABERINTO.md)
 - Wave Arena: [`../gameplay/WAVE_ARENA.md`](../gameplay/WAVE_ARENA.md)
-- Alice Maze: [`MAPEAR_LABERINTO.md`](MAPEAR_LABERINTO.md)

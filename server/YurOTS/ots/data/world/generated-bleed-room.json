@@ -1,0 +1,89 @@
+{
+  "name": "generated-bleed-room",
+  "tileCount": 90,
+  "hubPortal": {
+    "x": 168,
+    "y": 54,
+    "z": 7
+  },
+  "templeReturn": {
+    "x": 169,
+    "y": 54,
+    "z": 7
+  },
+  "landing": {
+    "x": 355,
+    "y": 391,
+    "z": 6
+  },
+  "returnTp": {
+    "x": 355,
+    "y": 392,
+    "z": 6
+  },
+  "leech": {
+    "x": 355,
+    "y": 388,
+    "z": 6
+  },
+  "spawn": {
+    "x": 355,
+    "y": 390,
+    "z": 6
+  },
+  "room": {
+    "x0": 353,
+    "y0": 388,
+    "x1": 357,
+    "y1": 392,
+    "z": 6
+  },
+  "zPlay": 6,
+  "groundPathId": 406,
+  "groundBackgroundId": 100,
+  "manaDrainPerTick": 8,
+  "mobCount": 10,
+  "templeSign": {
+    "x": 168,
+    "y": 53,
+    "z": 7,
+    "text": "BLEED ROOM\nMana -8/s. 10 mobs.\nTP sur = salida"
+  },
+  "clearBoxes": [
+    {
+      "fromX": 348,
+      "toX": 362,
+      "fromY": 386,
+      "toY": 400,
+      "z": 6
+    },
+    {
+      "fromX": 351,
+      "toX": 359,
+      "fromY": 386,
+      "toY": 394,
+      "z": 6
+    },
+    {
+      "fromX": 167,
+      "toX": 169,
+      "fromY": 53,
+      "toY": 55,
+      "z": 7
+    },
+    {
+      "fromX": 169,
+      "toX": 169,
+      "fromY": 54,
+      "toY": 54,
+      "z": 7
+    },
+    {
+      "fromX": 168,
+      "toX": 168,
+      "fromY": 53,
+      "toY": 53,
+      "z": 7
+    }
+  ]
+}

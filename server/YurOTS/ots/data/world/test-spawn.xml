@@ -2265,7 +2265,7 @@
 	<spawn centerx="425" centery="103" centerz="7" radius="1">
 		<monster name="necromancer" x="0" y="0" z="7" spawntime="175" />
 	</spawn>
-						<!-- BEGIN FLOOR_HUNT -->
+							<!-- BEGIN FLOOR_HUNT -->
 	<spawn centerx="40" centery="399" centerz="7" radius="1">
 		<monster name="Minotaur Guard" x="0" y="0" z="7" spawntime="65" direction="2" />
 	</spawn>

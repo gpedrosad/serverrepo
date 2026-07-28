@@ -104,6 +104,7 @@
 <rune name="dwarfgeo_manadrain" id="5030" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 <rune name="priestess_manadrain" id="5031" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 <rune name="old widow pox" id="5032" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="orcb_pot_throw" id="5033" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 
 <!--// Make arrow and bolt \\-->
 <spell name="Conjure Arrow"	words="exevo con"		maglv="2"	mana="40"	enabled="1"><vocation id="3" /><vocation id="5" /></spell>

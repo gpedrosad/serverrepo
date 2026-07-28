@@ -11,6 +11,7 @@ Pozo de agua en el templo: usás la **fishing rod** (`2580`) y te “pesca” ha
 | Floor campus | `162, 54, 7` |
 | **Fish TP** | agua `164, 54, 7` (no se pisa: se pesca) |
 | Reloj de Arena | `166, 54, 7` |
+| Bleed Room | `168, 54, 7` |
 
 Retorno: TP en la lagoon → `165, 54, 7`. Cartel `164, 53, 7`.
 

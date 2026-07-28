@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html lang="es" class="h-full">
+<html lang="es-CL" class="h-full">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0a0a0a">
-  <meta name="description" content="Perfil de personaje — Retro76">
-  <title>Personaje — Retro76</title>
+  <meta name="description" content="Perfil de personaje en Retro76, OT server chileno de Tibia 7.6: nivel, vocación, experiencia y muertes.">
+  <title>Personaje — Retro76 | OT Server Chileno Tibia 7.6</title>
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="Retro76">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:title" content="Personaje — Retro76">
+  <meta property="og:description" content="Perfil de personaje en Retro76, OT server chileno de Tibia 7.6.">
+  <meta property="og:image" content="https://retro76.cl/assets/brand/favicon.png">
   <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -78,6 +84,7 @@ async function load() {
       return;
     }
     const c = d.character;
+    document.title = `${c.name} — ${c.vocation} nivel ${c.level} | Retro76`;
     status.classList.add('hidden');
     root.classList.remove('hidden');
     const deaths = c.deaths || [];
