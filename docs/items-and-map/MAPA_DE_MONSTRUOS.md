@@ -1,15 +1,28 @@
 # Mapa interactivo de monstruos
 
-Página HTML con todos los pisos de `test.otbm` y cada spawn, NPC y zona encima. Sirve para ver qué hay en cada lugar del mundo, buscar un monstruo y saltar entre sus spawns.
+Página HTML con todos los pisos de `test.otbm` **como se ven en el juego** (sprites reales) y cada monstruo y NPC dibujado en su lugar. Sirve para ver qué hay en cada lugar del mundo, buscar un monstruo y saltar entre sus spawns.
 
 ```bash
-python3 scripts/map/build-monster-map.py SALIDA/
+python3 -m pip install pillow                                   # una vez (la vista del juego lo necesita)
+python3 scripts/map/build-monster-map.py SALIDA/                # vista del juego + minimapa (~90 s, ~55 MB)
+python3 scripts/map/build-monster-map.py SALIDA/ --minimap      # solo minimapa, sin Pillow (~5 s)
 ```
 
-Escribe `SALIDA/monstruos.html` y `SALIDA/monstruos/`, que tiene una imagen por piso (`z*.png`, 1 píxel por casilla, colores del minimapa del `Tibia.dat`) y un `data.json`. Si `SALIDA` es el sitio local de Retro76 (con `site.css` y `menu.js`), la página aparece con el menú común; sin ellos funciona igual. Tarda unos 5 segundos y solo lee el repo.
+Escribe `SALIDA/monstruos.html` y `SALIDA/monstruos/`:
+
+| Carpeta | Contenido |
+|---------|-----------|
+| `t/{piso}/{nivel}/{i}_{j}.webp` | Mosaicos de 512 px con los sprites del juego (`scripts/map/game_render.py`). Nivel 0 = tamaño real (32 px por casilla, 16×16 casillas por mosaico); cada nivel siguiente es la mitad, hasta 1 px por casilla. El visor carga el nivel que corresponde al zoom, como Google Maps. |
+| `look/*.png` | Cada monstruo y NPC mirando al sur, con los colores de su outfit (head/body/legs/feet) aplicados con la misma fórmula que el cliente. |
+| `z*.png` | Minimapa por piso (1 px por casilla), de fondo mientras cargan los mosaicos. |
+| `data.json` | Spawns, NPC, zonas y datos de cada monstruo. |
+
+Si `SALIDA` es el sitio local de Retro76 (con `site.css` y `menu.js`), la página aparece con el menú común; sin ellos funciona igual. Solo lee el repo. Los sprites salen del `Tibia.dat`/`.spr` de RME (`devtools/rme/rme-client-760`): los ítems Zagan que reutilizan ids se ven con el sprite vanilla, igual que en map-kb.
 
 ## Qué muestra
 
+- **Vista del juego:** de cerca, cada casilla con sus sprites (suelo, bordes, paredes, ítems, elevación). Desactivándola se ve el minimapa de colores.
+- **Monstruos y NPC dibujados:** desde un zoom de 10 px por casilla se dibuja cada monstruo en su posición con su sprite, y desde 22 px también su nombre. Más lejos, cada spawn es un círculo.
 - **Pisos:** botones por piso, con la cantidad de monstruos de cada uno.
 - **Spawns:** un círculo por spawn, de tamaño según la cantidad de monstruos y de color según la experiencia del más fuerte (verde < 50, amarillo < 300, naranja < 1000, rojo < 3000, violeta 3000+). La ★ marca un respawn de 30 minutos o más (jefes y raros).
 - **NPC:** cuadrados blancos.

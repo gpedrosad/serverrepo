@@ -2,9 +2,11 @@
 """Mapa interactivo de monstruos: todos los pisos de test.otbm con cada spawn, NPC y zona.
 
 Uso (desde la raíz del repo):
-  python3 scripts/map/build-monster-map.py SALIDA/
-Escribe SALIDA/monstruos.html y SALIDA/monstruos/ (z*.png, data.json). La página usa site.css y
-menu.js si están en SALIDA (sitio local de Retro76); sin ellos funciona igual.
+  python3 scripts/map/build-monster-map.py SALIDA/            # vista "como en el juego" (necesita Pillow)
+  python3 scripts/map/build-monster-map.py SALIDA/ --minimap  # solo colores de minimapa, sin Pillow
+Escribe SALIDA/monstruos.html y SALIDA/monstruos/: z*.png (minimapa), data.json, t/ (mosaicos con los
+sprites del juego por nivel de zoom) y look/ (cada monstruo y NPC con su sprite y colores). La página usa
+site.css y menu.js si están en SALIDA (sitio local de Retro76); sin ellos funciona igual.
 
 Fuentes: server/YurOTS/ots/data/world/{test.otbm,test-spawn.xml,npc.xml,generated-*.json},
 data/monster/monsters.xml (+ cada XML) y el Tibia.dat de RME para los colores del minimapa.
@@ -20,6 +22,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent / "kb"))
+sys.path.insert(0, str(Path(__file__).resolve().parent))  # game_render.py
 from mapdata import MAP, REPO, iter_tiles, load_otb, parse_dat, parse_tree, png_bytes  # noqa: E402
 
 DATA = REPO / "server/YurOTS/ots/data"
@@ -76,7 +79,9 @@ def monster_info() -> dict:
             mm = re.search(pat, txt)
             return int(mm.group(1)) if mm else default
         info[name.lower()] = {"name": name, "hp": g(r'<health now="(\d+)"'), "exp": g(r'experience="(\d+)"'),
-                              "look": g(r'<look type="(\d+)"'), "speed": g(r'speed="(\d+)"')}
+                              "look": g(r'<look type="(\d+)"'), "speed": g(r'speed="(\d+)"'),
+                              "colors": [g(r'<look [^>]*head="(\d+)"'), g(r'<look [^>]*body="(\d+)"'),
+                                         g(r'<look [^>]*legs="(\d+)"'), g(r'<look [^>]*feet="(\d+)"')]}
     return info
 
 
@@ -104,6 +109,19 @@ def npcs() -> list:
             for n in ET.fromstring(re.sub(r"<\?xml[^>]*\?>", "", txt)).iter("npc")]
 
 
+def npc_looks() -> dict:
+    """nombre -> look, de data/npc/*.xml."""
+    out = {}
+    for f in (DATA / "npc").glob("*.xml"):
+        txt = f.read_text(encoding="latin-1")
+        name = re.search(r'<npc[^>]*name="([^"]+)"', txt)
+        look = re.search(r"<look ([^>]*)>", txt)
+        if name and look:
+            at = dict(re.findall(r'(\w+)="(\d+)"', look.group(1)))
+            out[name.group(1)] = {k: int(at.get(k, 0)) for k in ("type", "head", "body", "legs", "feet")}
+    return out
+
+
 def zones() -> list:
     out = list(ZONES)
     for f in sorted(WORLD.glob("generated-*.json")):
@@ -118,15 +136,40 @@ def zones() -> list:
 
 
 def main() -> int:
-    if len(sys.argv) != 2:
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    if len(args) != 1:
         sys.exit(__doc__)
-    site = Path(sys.argv[1])
+    site = Path(args[0])
     out = site / "monstruos"
     out.mkdir(parents=True, exist_ok=True)
     counts = floor_images(out)
     info = monster_info()
     data = {"size": SIZE, "floors": sorted(counts), "tiles": counts, "spawns": spawns(info), "npcs": npcs(),
             "zones": zones(), "monsters": {v["name"]: v for v in info.values()}}
+    if "--minimap" not in sys.argv:
+        try:
+            import game_render  # noqa: PLC0415 (necesita Pillow)
+        except ImportError:
+            print("Sin Pillow: solo minimapa (python3 -m pip install pillow para la vista del juego)")
+        else:
+            print("render del juego: mosaicos…")
+            data["game"] = game_render.render_tiles(MAP, out)
+            used = {m["n"] for s in data["spawns"] for m in s["m"]}
+            looks = {}
+            for n in used:
+                v = data["monsters"].get(n)
+                if v and v["look"]:
+                    h, b, l, f = v["colors"]
+                    looks[n] = {"type": v["look"], "head": h, "body": b, "legs": l, "feet": f}
+            for n, img in game_render.render_creatures(looks, out).items():
+                data["monsters"][n].update(img)
+            nl = npc_looks()
+            nimg = game_render.render_creatures({n["n"]: nl[n["n"]] for n in data["npcs"] if n["n"] in nl}, out)
+            for n in data["npcs"]:
+                if n["n"] in nimg:
+                    n.update(nimg[n["n"]])
+            print(f"  criaturas: {sum(1 for v in data['monsters'].values() if 'img' in v)} monstruos, "
+                  f"{len(nimg)} NPC con sprite")
     (out / "data.json").write_text(json.dumps(data, separators=(",", ":")))
     (site / "monstruos.html").write_text(PAGE, encoding="utf-8")
     nm = sum(len(s["m"]) for s in data["spawns"])
@@ -174,6 +217,7 @@ canvas{position:absolute;inset:0;width:100%;height:100%}
 <div class="bar">
 <button id="zin" title="Acercar">＋</button><button id="zout" title="Alejar">－</button><button id="fit">Ver todo</button>
 <span class="sep"></span>
+<label><input type="checkbox" id="tGame" checked> Vista del juego</label>
 <label><input type="checkbox" id="tSp" checked> Spawns</label>
 <label><input type="checkbox" id="tNpc" checked> NPC</label>
 <label><input type="checkbox" id="tZon"> Zonas</label>
@@ -188,7 +232,7 @@ canvas{position:absolute;inset:0;width:100%;height:100%}
 </aside></div>
 <script>
 const $=s=>document.querySelector(s), cv=$('#cv'), ctx=cv.getContext('2d'), stage=$('#stage'), tip=$('#tip');
-let D, imgs={}, floor=7, sel=null, q='', view={x:0,y:0,k:2}, show={sp:1,npc:1,zon:0};
+let D, imgs={}, floor=7, sel=null, q='', view={x:0,y:0,k:2}, show={sp:1,npc:1,zon:0,game:1};
 const st=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){}};
 const tier=e=>e<50?'#5bd16a':e<300?'#e6d24a':e<1000?'#f39a3d':e<3000?'#ef5350':'#c06cff';
 const exp=n=>(D.monsters[n]||{}).exp||0;
@@ -234,17 +278,37 @@ function resize(){const r=stage.getBoundingClientRect(),dpr=devicePixelRatio||1;
 addEventListener('resize',resize);
 function fit(){const r=stage.getBoundingClientRect();view.k=Math.max(0.5,Math.min(r.width,r.height)/D.size);view.x=(r.width-D.size*view.k)/2;view.y=(r.height-D.size*view.k)/2;draw()}
 function center(x,y){const r=stage.getBoundingClientRect();view.x=r.width/2-(x+.5)*view.k;view.y=r.height/2-(y+.5)*view.k;draw();hash()}
-function zoomAt(f,px,py){const k2=Math.min(40,Math.max(.5,view.k*f));view.x=px-(px-view.x)*k2/view.k;view.y=py-(py-view.y)*k2/view.k;view.k=k2;draw();hash()}
+function zoomAt(f,px,py){const k2=Math.min(64,Math.max(.5,view.k*f));view.x=px-(px-view.x)*k2/view.k;view.y=py-(py-view.y)*k2/view.k;view.k=k2;draw();hash()}
+const tcache={},lcache={};let raf=0;
+function schedule(){if(!raf)raf=requestAnimationFrame(()=>{raf=0;draw()})}
+function tileImg(z,L,key){const k=z+'/'+L+'/'+key;let im=tcache[k];if(!im){im=tcache[k]=new Image();im.onload=schedule;im.src=`monstruos/t/${z}/${L}/${key}.webp`}return im}
+function lookImg(src){let im=lcache[src];if(!im){im=lcache[src]=new Image();im.onload=schedule;im.src='monstruos/'+src}return im}
+function drawSprite(src,w,h,tx,ty,alpha){const im=lookImg(src);if(!(im.complete&&im.naturalWidth))return false;const k=view.k,W=w*k,H=h*k;
+  ctx.globalAlpha=alpha;ctx.drawImage(im,view.x+(tx+1)*k-W-k*.25,view.y+(ty+1)*k-H-k*.25,W,H);ctx.globalAlpha=1;return true}
 function draw(){if(!D)return;const r=stage.getBoundingClientRect();ctx.clearRect(0,0,r.width,r.height);
   const im=imgs[floor];ctx.imageSmoothingEnabled=false;if(im&&im.complete)ctx.drawImage(im,view.x,view.y,D.size*view.k,D.size*view.k);
+  const G=D.game;
+  if(G&&show.game){const L=Math.max(0,Math.min(G.levels-1,Math.floor(Math.log2(32/view.k)))),span=G.chunk*2**L,sz=span*view.k;
+    G.sets=G.sets||{};const sk=floor+'/'+L,set=G.sets[sk]||(G.sets[sk]=new Set(((G.index[floor]||{})[L])||[]));
+    ctx.imageSmoothingEnabled=view.k<32/2**L;
+    const i0=Math.floor(-view.x/sz),j0=Math.floor(-view.y/sz),i1=Math.floor((r.width-view.x)/sz),j1=Math.floor((r.height-view.y)/sz);
+    for(let i=i0;i<=i1;i++)for(let j=j0;j<=j1;j++){const key=i+'_'+j;if(!set.has(key))continue;const t=tileImg(floor,L,key);
+      if(t.complete&&t.naturalWidth)ctx.drawImage(t,view.x+i*sz,view.y+j*sz,sz+.6,sz+.6)}
+    ctx.imageSmoothingEnabled=false}
   const P=(x,y)=>[view.x+(x+.5)*view.k,view.y+(y+.5)*view.k];
   if(show.zon){ctx.lineWidth=1.5;ctx.font='12px system-ui';D.zones.filter(z=>z.z==floor).forEach(z=>{const [a,b]=P(z.box[0]-.5,z.box[1]-.5),[c,d]=P(z.box[2]+.5,z.box[3]+.5);ctx.strokeStyle='#6cc6ffaa';ctx.strokeRect(a,b,c-a,d-b);ctx.fillStyle='#6cc6ff';ctx.fillText(z.name,a+3,b+13)})}
-  if(show.sp){spawnsOn(floor).forEach(s=>{const has=sel?s.m.some(m=>m.n==sel):true;const [x,y]=P(s.x,s.y);
-      const top=s.m.reduce((a,m)=>exp(m.n)>exp(a.n)?m:a,s.m[0]);const rad=Math.max(3,Math.min(10,2+Math.sqrt(s.m.length)*2))*Math.min(1.6,Math.max(.7,view.k/3));
-      ctx.globalAlpha=has?1:.15;ctx.beginPath();ctx.arc(x,y,rad,0,7);ctx.fillStyle=tier(exp(top.n));ctx.fill();ctx.lineWidth=has&&sel?2.5:1;ctx.strokeStyle=has&&sel?'#fff':'#000a';ctx.stroke();
-      if(s.m.some(m=>m.t>=1800)){ctx.fillStyle='#fff';ctx.font='bold 11px system-ui';ctx.fillText('★',x+rad,y-rad)}
-      if(view.k>=10&&has){ctx.fillStyle='#fff';ctx.font='11px system-ui';ctx.fillText(top.n+(s.m.length>1?' ×'+s.m.length:''),x+rad+3,y+4)}});ctx.globalAlpha=1}
-  if(show.npc){D.npcs.filter(n=>n.z==floor).forEach(n=>{const [x,y]=P(n.x,n.y),s=Math.max(4,Math.min(9,view.k*.8));ctx.fillStyle='#fff';ctx.fillRect(x-s/2,y-s/2,s,s);ctx.strokeStyle='#000';ctx.strokeRect(x-s/2,y-s/2,s,s);if(view.k>=8){ctx.fillText(n.n,x+s,y+4)}})}
+  const close=view.k>=10;
+  if(show.sp){spawnsOn(floor).forEach(s=>{const has=sel?s.m.some(m=>m.n==sel):true;
+    if(close){s.m.forEach(m=>{const mi=D.monsters[m.n]||{},a=sel&&m.n!=sel?.3:1;
+        if(sel&&m.n==sel){const [x,y]=P(m.x,m.y);ctx.beginPath();ctx.ellipse(x,y+view.k*.3,view.k*.55,view.k*.25,0,0,7);ctx.strokeStyle='#ffd54a';ctx.lineWidth=2;ctx.stroke()}
+        if(!(mi.img&&drawSprite(mi.img,mi.w,mi.h,m.x,m.y,a))){const [x,y]=P(m.x,m.y);ctx.globalAlpha=a;ctx.beginPath();ctx.arc(x,y,view.k*.3,0,7);ctx.fillStyle=tier(mi.exp||0);ctx.fill();ctx.globalAlpha=1}
+        if(view.k>=22&&(!sel||m.n==sel)){const [x,y]=P(m.x,m.y);ctx.font='bold 11px system-ui';ctx.lineWidth=3;ctx.strokeStyle='#000c';ctx.strokeText(m.n,x-ctx.measureText(m.n).width/2,y-view.k*.95);ctx.fillStyle=tier(mi.exp||0);ctx.fillText(m.n,x-ctx.measureText(m.n).width/2,y-view.k*.95)}});return}
+    const [x,y]=P(s.x,s.y);const top=s.m.reduce((a,m)=>exp(m.n)>exp(a.n)?m:a,s.m[0]);const rad=Math.max(3,Math.min(10,2+Math.sqrt(s.m.length)*2))*Math.min(1.6,Math.max(.7,view.k/3));
+    ctx.globalAlpha=has?1:.15;ctx.beginPath();ctx.arc(x,y,rad,0,7);ctx.fillStyle=tier(exp(top.n));ctx.fill();ctx.lineWidth=has&&sel?2.5:1;ctx.strokeStyle=has&&sel?'#fff':'#000a';ctx.stroke();
+    if(s.m.some(m=>m.t>=1800)){ctx.fillStyle='#fff';ctx.font='bold 11px system-ui';ctx.fillText('★',x+rad,y-rad)}ctx.globalAlpha=1})}
+  if(show.npc){D.npcs.filter(n=>n.z==floor).forEach(n=>{const [x,y]=P(n.x,n.y);
+    if(close&&n.img&&drawSprite(n.img,n.w,n.h,n.x,n.y,1)){}else{const s=Math.max(4,Math.min(9,view.k*.8));ctx.fillStyle='#fff';ctx.fillRect(x-s/2,y-s/2,s,s);ctx.strokeStyle='#000';ctx.strokeRect(x-s/2,y-s/2,s,s)}
+    if(view.k>=14){ctx.font='bold 11px system-ui';ctx.lineWidth=3;ctx.strokeStyle='#000c';const w=ctx.measureText(n.n).width;ctx.strokeText(n.n,x-w/2,y-view.k*.95);ctx.fillStyle='#fff';ctx.fillText(n.n,x-w/2,y-view.k*.95)}})}
 }
 function hash(){const r=stage.getBoundingClientRect(),cx=Math.round((r.width/2-view.x)/view.k),cy=Math.round((r.height/2-view.y)/view.k);
   history.replaceState(null,'',`#z=${floor}&x=${cx}&y=${cy}&k=${view.k.toFixed(1)}${sel?'&m='+encodeURIComponent(sel):''}`)}
@@ -267,7 +331,7 @@ stage.ondblclick=e=>{const r=stage.getBoundingClientRect();zoomAt(2,e.clientX-r.
 $('#zin').onclick=()=>{const r=stage.getBoundingClientRect();zoomAt(1.5,r.width/2,r.height/2)};
 $('#zout').onclick=()=>{const r=stage.getBoundingClientRect();zoomAt(1/1.5,r.width/2,r.height/2)};
 $('#fit').onclick=fit;
-$('#tSp').onchange=e=>{show.sp=e.target.checked;draw()};$('#tNpc').onchange=e=>{show.npc=e.target.checked;draw()};$('#tZon').onchange=e=>{show.zon=e.target.checked;draw()};
+$('#tGame').onchange=e=>{show.game=e.target.checked;draw()};$('#tSp').onchange=e=>{show.sp=e.target.checked;draw()};$('#tNpc').onchange=e=>{show.npc=e.target.checked;draw()};$('#tZon').onchange=e=>{show.zon=e.target.checked;draw()};
 $('#q').oninput=e=>{q=e.target.value.trim().toLowerCase();buildList()};
 </script></body></html>
 """
