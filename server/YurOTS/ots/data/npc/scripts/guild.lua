@@ -1,380 +1,334 @@
--- Guild Master (fundar guild, invitar, expulsar, rangos, nicks).
-talk_state = 0
-gstat = 0		-- guild status
-grank = ''		-- guild rank
-gname = ''		-- guild name
-cname = ''		-- name of player who talks to us
-pname = ''		-- name of some other player
-maxnamelen = 30
-maxranklen = 20
-maxnicklen = 20
-leaderlevel = 50
-NONE = 0
-INVITED = 1
-MEMBER = 2
-VICE = 3
-LEADER = 4
-allow_pattern = '^[a-zA-Z0-9 -]+$'
+-- Guild Master: fundar guild, unirse, invitar, expulsar, salir, pasar el liderazgo, vices y nicks.
+-- Los datos viven en el C++ (guilds.cpp -> data/guilds.xml); este script es solo la charla.
+-- Los nombres se toman del texto tal cual lo escribió el jugador (raw), no en minúsculas.
+NONE, INVITED, MEMBER, VICE, LEADER = 0, 1, 2, 3, 4
+LEADER_LEVEL = 50
+MAX_NAME, MAX_RANK, MAX_NICK = 30, 20, 20
+ALLOWED = '^[a-zA-Z0-9 %-]+$'
 
-local function onMessage(cid, msg)
-	cname = creatureGetName(cid)
-	if talk_state == 0 then
-		if npcIsHelp(msg) then
-			selfSay('Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.')
-		elseif msgcontains(msg, 'found') then	-- found a new guild
-  				level = getPlayerLevel(cname)
+-- talk_state es 0 (sin pregunta pendiente) o la función que recibe la respuesta.
+-- npcResetState lo vuelve a 0 al saludar o al cortar la charla.
 
-  				if level >= leaderlevel then
-  					gstat = getPlayerGuildStatus(cname)
+local function trim(text)
+	return (string.gsub(text, '^%s*(.-)%s*$', '%1'))
+end
 
-  					if gstat == NONE or gstat == INVITED then
-  						selfSay('What name your guild should have?')
-  						talk_state = 1
-  					elseif gstat == MEMBER or gstat == VICE or gstat == LEADER then
-  						selfSay('Sorry, you are member of a guild.')
-  						talk_state = 0
-  					end
-  				else
-  					selfSay('Sorry, you need level ' .. leaderlevel .. ' to found a guild.')
-  				end
+local function statusOf(name)
+	return getPlayerGuildStatus(name)
+end
 
-  				talk_start = os.clock()
+local function guildOf(name)
+	return getPlayerGuildName(name)
+end
 
-  			elseif msgcontains(msg, 'join')  then	-- join a guild when invited
-  				gstat = getPlayerGuildStatus(cname)
+local function isOnline(name)
+	return getPlayerLevel(name) >= 0
+end
 
-  				if gstat == NONE then
-  					selfSay('Sorry, you are not invited to any guild.')
-  					talk_state = 0
-  				elseif gstat == INVITED then
-  					gname = getPlayerGuildName(cname)
-					selfSay('Do you want to join ' .. gname .. '? (yes or si)')
-  					talk_state = 3
-  				elseif gstat == MEMBER or gstat == VICE or gstat == LEADER then
-  					selfSay('Sorry, you are a member of a guild.')
-  					talk_state = 0
-  				end
+-- Nombre real si el jugador está online ("bob" -> "Bob"); si no, lo escrito.
+local function playerName(text)
+	local id = creatureGetName2(text)
+	if id ~= 0 then
+		return creatureGetName(id)
+	end
+	return text
+end
 
-  				talk_start = os.clock()
+local function sameName(a, b)
+	return string.lower(a) == string.lower(b)
+end
 
-  			elseif msgcontains(msg, 'exclude') or msgcontains(msg, 'kick') then		-- kick player from a guild
-  				gstat = getPlayerGuildStatus(cname)
+local function validText(text, maxLen, what)
+	if string.len(text) > maxLen then
+		selfSay('Sorry, ' .. what .. ' cannot be longer than ' .. maxLen .. ' characters.')
+		return false
+	end
+	if not string.find(text, ALLOWED) then
+		selfSay('Sorry, ' .. what .. ' contains illegal characters.')
+		return false
+	end
+	return true
+end
 
-  				if gstat == VICE or gstat == LEADER then
-  					selfSay('Who do you want to kick today?')
-  					talk_state = 4
-  				else
-  					selfSay('Sorry, only leader and vice-leaders can kick players from a guild.')
-  					talk_state = 0
-  				end
+local function ask(question, nextStep)
+	selfSay(question)
+	talk_state = nextStep
+end
 
-  				talk_start = os.clock()
+-- Pregunta sí/no: cualquier otra respuesta deja la pregunta abierta.
+local function askYesNo(question, onYes, noText)
+	local function answer(msg)
+		if npcIsYes(msg) then
+			onYes()
+		elseif npcIsNo(msg) then
+			selfSay(noText)
+		else
+			talk_state = answer
+		end
+	end
+	ask(question, answer)
+end
 
-  			elseif msgcontains(msg, 'invite') then		-- invite player to a guild
-  				gstat = getPlayerGuildStatus(cname)
+-- Otro jugador de la misma guild que quien habla (nil y avisa si no).
+local function guildMate(me, text)
+	local name = playerName(text)
+	if guildOf(name) == '' or guildOf(name) ~= guildOf(me) then
+		selfSay('Sorry, ' .. name .. ' is not in your guild.')
+		return nil
+	end
+	return name
+end
 
-  				if gstat == VICE or gstat == LEADER then
-  					selfSay('Who do you want to invite to your guild?')
-  					talk_state = 5
-  				else
-  					selfSay('Sorry, only leader and vice-leaders can invite players to a guild.')
-  					talk_state = 0
-  				end
+-- found ---------------------------------------------------------------------------------------
+local function foundGuild(me)
+	local newName
+	local function getRank(_, raw)
+		local rank = trim(raw)
+		if not validText(rank, MAX_RANK, 'rank name') then
+			return
+		end
+		if statusOf(me) > INVITED then
+			selfSay('Sorry, you are member of a guild.')
+		elseif foundNewGuild(newName) == 0 then	-- se crea recién acá: un "found" abandonado no deja guilds vacías
+			selfSay('Sorry, there is already a guild with that name.')
+		else
+			setPlayerGuild(me, LEADER, rank, newName)	-- si estaba invitado a otra, el C++ lo saca de esa
+			selfSay('You are now leader of ' .. newName .. '.')
+		end
+	end
+	local function getName(_, raw)
+		newName = trim(raw)
+		if validText(newName, MAX_NAME, 'guild name') then
+			ask('And what rank do you wish to have?', getRank)
+		end
+	end
 
-  				talk_start = os.clock()
+	if getPlayerLevel(me) < LEADER_LEVEL then
+		selfSay('Sorry, you need level ' .. LEADER_LEVEL .. ' to found a guild.')
+	elseif statusOf(me) > INVITED then
+		selfSay('Sorry, you are member of a guild.')
+	else
+		ask('What name should your guild have?', getName)
+	end
+end
 
-  			elseif msgcontains(msg, 'leave') then		-- leave a guild
-  				gstat = getPlayerGuildStatus(cname)
+-- join / leave --------------------------------------------------------------------------------
+local function joinGuild(me)
+	local status = statusOf(me)
+	if status == NONE then
+		selfSay('Sorry, you are not invited to any guild.')
+	elseif status > INVITED then
+		selfSay('Sorry, you are a member of a guild.')
+	else
+		askYesNo('Do you want to join ' .. guildOf(me) .. '? (yes or si)', function()
+			if statusOf(me) == INVITED then
+				setPlayerGuildStatus(me, MEMBER)
+				selfSay('Welcome! You are now a guild member.')
+			end
+		end, 'No problem! What else can I do for you?')
+	end
+end
 
-  				if gstat == NONE or gstat == INVITED then
-  					selfSay('You are not in a guild.')
-  					talk_state = 0
-  				elseif gstat == MEMBER or gstat == VICE then
-  					gname = getPlayerGuildName(cname)
-					selfSay('Do you want to leave ' .. gname .. '? (yes or si)')
-  					talk_state = 7
-  				elseif gstat == LEADER then
-					selfSay('You are the guild leader. If you leave, no one can invite new players. Are you sure? (yes or si)')
-  					talk_state = 7
-  				end
+local function leaveGuild(me)
+	local status = statusOf(me)
+	local question = 'Do you want to leave ' .. guildOf(me) .. '? (yes or si)'
+	if status == NONE or status == INVITED then
+		selfSay('You are not in a guild.')
+		return
+	elseif status == LEADER then
+		question = 'You are the guild leader. If you leave, no one can invite new players. Are you sure? (yes or si)'
+	end
+	askYesNo(question, function()
+		if statusOf(me) > INVITED then
+			clearPlayerGuild(me)
+			selfSay('You have left your guild. Take care!')
+		end
+	end, 'Glad you stayed! What else can I do for you?')
+end
 
-  			elseif msgcontains(msg, 'pass') then		-- pass leadership
-  				gstat = getPlayerGuildStatus(cname)
+-- invite / kick -------------------------------------------------------------------------------
+local function invitePlayer(me)
+	if statusOf(me) < VICE then
+		selfSay('Sorry, only leader and vice-leaders can invite players to a guild.')
+		return
+	end
+	ask('Who do you want to invite to your guild?', function(_, raw)
+		local name = playerName(trim(raw))
+		if not isOnline(name) then
+			selfSay('Sorry, ' .. name .. ' is not online.')
+		elseif statusOf(name) > INVITED then
+			selfSay('Sorry, ' .. name .. ' is already in a guild.')
+		else
+			ask('And what rank do you wish to give him/her?', function(_, rankRaw)
+				local rank = trim(rankRaw)
+				if validText(rank, MAX_RANK, 'rank name') and statusOf(me) >= VICE then
+					setPlayerGuild(name, INVITED, rank, guildOf(me))
+					selfSay('You have invited ' .. name .. ' to your guild.')
+				end
+			end)
+		end
+	end)
+end
 
-  				if gstat == LEADER then
-  					selfSay('Who do you want to be a new leader?')
-  					talk_state = 8
-  				else
-  					selfSay('Sorry, only leader can resign from his position.')
-  					talk_state = 0
-  				end
+local function kickPlayer(me)
+	if statusOf(me) < VICE then
+		selfSay('Sorry, only leader and vice-leaders can kick players from a guild.')
+		return
+	end
+	ask('Who do you want to kick today?', function(_, raw)
+		local text = trim(raw)
+		if sameName(text, me) then
+			selfSay('To kick yourself say leave.')
+			return
+		end
+		local name = guildMate(me, text)
+		if name == nil then
+			return
+		end
+		if statusOf(me) > statusOf(name) then
+			clearPlayerGuild(name)
+			selfSay('You kicked ' .. name .. ' from your guild.')
+		else
+			selfSay('Sorry, vice-leaders can kick only regular members.')
+		end
+	end)
+end
 
-  			elseif msgcontains(msg, 'vice') then		-- set vice leader
-  				gstat = getPlayerGuildStatus(cname)
+-- leader only: pass, vice, member, nick -------------------------------------------------------
+local function leaderOnly(me, deny)
+	if statusOf(me) ~= LEADER then
+		selfSay(deny)
+		return false
+	end
+	return true
+end
 
-				if gstat == LEADER then
-					selfSay('Which member do you want to promote to vice-leader?')
-  					talk_state = 9
-  				else
-  					selfSay('Sorry, only leader can promote member to vice-leader.')
-  					talk_state = 0
-  				end
+-- Pide el nombre de un compañero de guild (no uno mismo) y llama a action(name, status).
+local function askMate(me, question, action)
+	ask(question, function(_, raw)
+		local text = trim(raw)
+		if sameName(text, me) then
+			selfSay('To resign from leadership say pass.')
+			return
+		end
+		local name = guildMate(me, text)
+		if name == nil then
+			return
+		end
+		local status = statusOf(name)
+		if status == INVITED then
+			selfSay('Sorry, ' .. name .. ' hasn\'t joined your guild yet.')
+		elseif statusOf(me) == LEADER then
+			action(name, status)
+		end
+	end)
+end
 
-  			elseif msgcontains(msg, 'member') then		-- remove vice-leader
-  				gstat = getPlayerGuildStatus(cname)
+local function passLeadership(me)
+	if not leaderOnly(me, 'Sorry, only the leader can pass the leadership.') then
+		return
+	end
+	askMate(me, 'Who do you want to be the new leader?', function(name)
+		if getPlayerLevel(name) < 0 then
+			selfSay('Sorry, ' .. name .. ' is not online.')
+		elseif getPlayerLevel(name) < LEADER_LEVEL then
+			selfSay('Sorry, the new leader needs level ' .. LEADER_LEVEL .. '.')
+		else
+			setPlayerGuildStatus(me, MEMBER)
+			setPlayerGuildStatus(name, LEADER)
+			selfSay(name .. ' is the new leader of ' .. guildOf(name) .. '.')
+		end
+	end)
+end
 
-  				if gstat == LEADER then
-  					selfSay('Which vice-leader do you want to demote to regular member?')
-  					talk_state = 10
-  				else
-  					selfSay('Sorry, only leader can demote vice-leaders to members.')
-  					talk_state = 0
-  				end
+local function promoteVice(me)
+	if not leaderOnly(me, 'Sorry, only the leader can promote members to vice-leader.') then
+		return
+	end
+	askMate(me, 'Which member do you want to promote to vice-leader?', function(name, status)
+		if status == VICE then
+			selfSay(name .. ' is already a vice-leader.')
+		else
+			setPlayerGuildStatus(name, VICE)
+			selfSay(name .. ' is now a vice-leader of your guild.')
+		end
+	end)
+end
 
-  			elseif msgcontains(msg, 'nick') or msgcontains(msg, 'title') then	-- set nick
-  				gstat = getPlayerGuildStatus(cname);
+local function demoteVice(me)
+	if not leaderOnly(me, 'Sorry, only the leader can demote vice-leaders to members.') then
+		return
+	end
+	askMate(me, 'Which vice-leader do you want to demote to regular member?', function(name, status)
+		if status == MEMBER then
+			selfSay(name .. ' is already a regular member.')
+		else
+			setPlayerGuildStatus(name, MEMBER)
+			selfSay(name .. ' is now a regular member of your guild.')
+		end
+	end)
+end
 
-  				if gstat == LEADER then
-  					selfSay('Whom player do you want to change nick?')
-  					talk_state = 11
-  				else
-  					selfSay('Sorry, only leader can change nicks.')
-  					talk_state = 0
-  				end
-  			end
+local function changeNick(me)
+	if not leaderOnly(me, 'Sorry, only the leader can change nicks.') then
+		return
+	end
+	ask('Whose nick do you want to change?', function(_, raw)
+		local name = guildMate(me, trim(raw))
+		if name == nil then
+			return
+		end
+		ask('And what nick do you want him/her to have (say none to clear)?', function(msg, nickRaw)
+			local nick = trim(nickRaw)
+			if msg == 'none' then
+				setPlayerGuildNick(name, '')
+				selfSay(name .. ' now has no nick.')
+			elseif validText(nick, MAX_NICK, 'nick') then
+				setPlayerGuildNick(name, nick)
+				selfSay('You have changed ' .. name .. '\'s nick.')
+			end
+		end)
+	end)
+end
 
-	else	-- talk_state != 0
-  			talk_start = os.clock()
+COMMANDS = {
+	{keys = {'found'}, run = foundGuild},
+	{keys = {'join'}, run = joinGuild},
+	{keys = {'kick', 'exclude'}, run = kickPlayer},
+	{keys = {'invite'}, run = invitePlayer},
+	{keys = {'leave'}, run = leaveGuild},
+	{keys = {'pass'}, run = passLeadership},
+	{keys = {'vice'}, run = promoteVice},
+	{keys = {'member'}, run = demoteVice},
+	{keys = {'nick', 'title'}, run = changeNick},
+}
 
-  			if talk_state == 1 then		-- get name of new guild
-  				gname = msg
-
-  				if string.len(gname) <= maxnamelen then
- 					if string.find(gname, allow_pattern) then
- 						if foundNewGuild(gname) == 0 then
-							selfSay('Sorry, there is already a guild with that name.')
- 							talk_state = 0
- 						else
- 							selfSay('And what rank do you wish to have?')
- 							talk_state = 2
- 						end
- 					else
- 						selfSay('Sorry, guild name contains illegal characters.')
- 						talk_state = 0
- 					end
-  				else
-  					selfSay('Sorry, guild name cannot be longer than ' .. maxnamelen .. ' characters.')
-  					talk_state = 0
-  				end
-
-  			elseif talk_state == 2 then		-- get rank of leader
-  				grank = msg
-
-  				if string.len(grank) <= maxranklen then
- 					if string.find(grank, allow_pattern) then
- 						setPlayerGuild(cname,LEADER,grank,gname)
- 						selfSay('You are now leader of your new guild.')
- 						talk_state = 0
- 					else
-						selfSay('Sorry, rank name contains illegal characters.')
- 						talk_state = 0
- 					end
-  				else
-  					selfSay('Sorry, rank name cannot be longer than ' .. maxranklen .. ' characters.')
-  					talk_state = 0
-  				end
-
-  			elseif talk_state == 3 then		-- join a guild
-  				if npcIsYes(msg) then
-  					setPlayerGuildStatus(cname, MEMBER)
-  					selfSay('Welcome! You are now a guild member.')
-  					talk_state = 0
-  				elseif npcIsNo(msg) then
-  					selfSay('No problem! What else can I do for you?')
-  					talk_state = 0
-  				end
-
-  			elseif talk_state == 4 then		-- kick player
-  				pname = msg
-  				gname = getPlayerGuildName(cname)
-  				gname2 = getPlayerGuildName(pname)
-
-  				if cname == pname then
-  					selfSay('To kick yourself say leave.')
-  					talk_state = 0
-  				elseif gname == gname2 then
-  					gstat2 = getPlayerGuildStatus(pname)
-
-  					if gstat > gstat2 then
-  						clearPlayerGuild(pname)
-  						selfSay('You kicked ' .. pname .. ' from your guild.')
-  						talk_state = 0
-  					else
-  						selfSay('Sorry, vice-leaders can kick only regular members.')
-  						talk_state = 0
-  					end
-  				else
-  					selfSay('Sorry, ' .. pname .. ' is not in your guild.')
-  					talk_state = 0
-  				end
-
-  			elseif talk_state == 5 then		-- get invited name
-  				pname = msg
-  				gstat = getPlayerGuildStatus(pname)
-
-  				if gstat == MEMBER or gstat == VICE or gstat == LEADER then
-  					selfSay('Sorry, ' .. pname .. ' is in another guild.')
-  					talk_state = 0
-  				else
-  					selfSay('And what rank do you wish to give him/her?')
-  					talk_state = 6
-  				end
-
-  			elseif talk_state == 6 then		-- get invited rank
-  				grank = msg
-
-  				if string.len(grank) <= maxranklen then
- 					if string.find(grank, allow_pattern) then
- 						gname = getPlayerGuildName(cname)
- 						setPlayerGuild(pname, INVITED, grank, gname)
- 						selfSay('You have invited ' .. pname .. ' to your guild.')
- 						talk_state = 0
- 					else
- 						selfSay('Sorry, rank name contains illegal characters.')
- 						talk_state = 0
- 					end
-  				else
-					selfSay('Sorry, rank name cannot be longer than ' .. maxranklen .. ' characters.')
-  					talk_state = 0
-  				end
-
-  			elseif talk_state == 7 then		-- leave a guild
-  				if npcIsYes(msg) then
-  					clearPlayerGuild(cname)
-  					selfSay('You have left your guild. Take care!')
-  					talk_state = 0
-  				elseif npcIsNo(msg) then
-  					selfSay('Glad you stayed! What else can I do for you?')
-  					talk_state = 0
-  				end
-
-  			elseif talk_state == 8 then		-- pass leadership
-  				pname = msg
-  				level = getPlayerLevel(pname)
-
-  				if level >= leaderlevel then
-  					gname = getPlayerGuildName(cname)
-  					gname2 = getPlayerGuildName(pname)
-
-  					if gname == gname2 then
-  						setPlayerGuildStatus(cname,MEMBER)
-  						setPlayerGuildStatus(pname,LEADER)
-  						gname = getPlayerGuildName(cname)
-  						selfSay(pname .. ' is a new leader of ' .. gname .. '.')
-  						talk_state = 0
-  					else
-  						selfSay('Sorry, ' .. pname .. ' is not in your guild.')
-  						talk_state = 0;
-  					end
-  				else
-  					selfSay('Sorry, ' .. pname .. ' is not online.')
-  					talk_state = 0
-  				end
-
-  			elseif talk_state == 9 then		-- set vice-leader
-  				pname = msg
-  				gname = getPlayerGuildName(cname)
-  				gname2 = getPlayerGuildName(pname)
-
-  				if cname == pname then
-  					selfSay('To resign from leadership say pass.')
-  					talk_state = 0
-  				elseif gname == gname2 then
-  					gstat = getPlayerGuildStatus(pname)
-
-  					if gstat == INVITED then
-						selfSay('Sorry, ' .. pname .. ' hasn\'t joined your guild yet.');
-						talk_state = 0
-  					elseif gstat == VICE then
-  						selfSay(pname .. ' is already a vice-leader.')
-						talk_state = 0
-  					elseif gstat == MEMBER then
-  						setPlayerGuildStatus(pname, VICE)
-  						selfSay(pname .. ' is now a vice-leader of your guild.')
-						talk_state = 0
-  					end
-  				else
-  					selfSay('Sorry, ' .. pname .. ' is not in your guild.')
-  					talk_state = 0
-  				end
-
-  			elseif talk_state == 10 then	-- set member
-  				pname = msg
-  				gname = getPlayerGuildName(cname)
-  				gname2 = getPlayerGuildName(pname)
-
-  				if cname == pname then
-  					selfSay('To resign from leadership say pass.')
-  					talk_state = 0
-  				elseif gname == gname2 then
-  					gstat = getPlayerGuildStatus(pname)
-
-  					if gstat == INVITED then
-  						selfSay('Sorry, ' .. pname .. ' hasn\'t joined your guild yet.');
-  						talk_state = 0
-  					elseif gstat == VICE then
-  						setPlayerGuildStatus(pname, MEMBER)
-  						selfSay(pname .. ' is now a regular member of your guild.')
-  						talk_state = 0
-  					elseif gstat == MEMBER then
-  						selfSay(pname .. ' is already a regular member.')
-  						talk_state = 0
-  					end
-  				else
-  					selfSay('Sorry, ' .. pname .. ' is not in your guild.')
-  					talk_state = 0
-  				end
-
-  			elseif talk_state == 11 then	-- get name of player to change nick
-  				pname = msg
-				gname = getPlayerGuildName(cname)
-  				gname2 = getPlayerGuildName(pname)
-
-  				if gname == gname2 then
-  					selfSay('And what nick do you want him to have (say none to clear)?')
-  					talk_state = 12
-  				else
-  					selfSay('Sorry, ' .. pname .. ' is not in your guild.')
-  					talk_state = 0
-  				end
-
-  			elseif talk_state == 12 then	-- get nick
-  				if msg == 'none' then
-  					setPlayerGuildNick(pname, '')
-  					selfSay(pname .. ' now has no nick.')
-  					talk_state = 0
-  				else
-  					if string.len(msg) <= maxnicklen then
- 						if string.find(msg, allow_pattern) then
- 							setPlayerGuildNick(pname, msg)
- 							selfSay('You have changed ' .. pname .. '\'s nick.')
- 							talk_state = 0
- 						else
-							selfSay('Sorry, nick contains illegal characters.')
- 							talk_state = 0
- 						end
-  					else
-  						selfSay('Sorry, nick cannot be longer than ' .. maxnicklen .. ' characters.')
-  						talk_state = 0
-  					end
-  				end
-  			end
+local function onMessage(cid, msg, raw)
+	local me = creatureGetName(cid)
+	if talk_state ~= 0 then
+		local step = talk_state
+		talk_state = 0
+		talk_start = npcNow()
+		step(msg, raw or msg)
+		return
+	end
+	if npcIsHelp(msg) then
+		selfSay('Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.')
+		return
+	end
+	for i = 1, table.getn(COMMANDS) do
+		if npcMatchesAny(msg, COMMANDS[i].keys) then
+			talk_start = npcNow()
+			COMMANDS[i].run(me)
+			return
+		end
 	end
 end
 
 npcDefine{
 	greet = function(cid) return 'Hi ' .. creatureGetName(cid) .. '! I handle guild business. Say "help" to see what you can do.' end,
 	busy = function(cid) return 'One moment, ' .. creatureGetName(cid) .. '!' end,
+	state = {talk_state = 0},
 	idleTimeout = 45,
 	onMessage = onMessage,
 }

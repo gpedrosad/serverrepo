@@ -138,6 +138,11 @@ function bankerPrepareTransfer(cid, amountText, playerName)
 		selfSay('Say transfer 10000 name')
 		return false
 	end
+	-- mismo criterio que el C++ (isValidPlayerName): letras, espacio, ' y -; hasta 30
+	if string.len(playerName) > 30 or not string.find(playerName, "^%a[%a '%-]*$") then
+		selfSay('There is no player called ' .. playerName .. '.')
+		return false
+	end
 	pending_transfer_amount = amount
 	pending_transfer_target = playerName
 	bankerAskTransferConfirm()
@@ -237,7 +242,7 @@ function bankerHandleConfirm(cid, msg)
 	return false
 end
 
-function bankerTryCommand(cid, msg)
+function bankerTryCommand(cid, msg, raw)
 	if msgcontains(msg, 'balance') or msgcontains(msg, 'saldo') then
 		bankerGetBalance(cid)
 		return true
@@ -260,6 +265,8 @@ function bankerTryCommand(cid, msg)
 
 	local transferAmount, transferTarget = bankerParseTransfer(msg)
 	if transferAmount ~= nil and transferTarget ~= nil then
+		-- el nombre tal como lo escribió el jugador (msg está en minúsculas; mismo largo)
+		transferTarget = string.sub(raw or msg, -string.len(transferTarget))
 		bankerPrepareTransfer(cid, transferAmount, transferTarget)
 		return true
 	end
@@ -267,7 +274,7 @@ function bankerTryCommand(cid, msg)
 	return false
 end
 
-local function onMessage(cid, msg)
+local function onMessage(cid, msg, raw)
 	if npcIsHelp(msg) or msgcontains(msg, 'bank') or msgcontains(msg, 'banco') then
 		bankerShowHelp()
 		return
@@ -277,14 +284,14 @@ local function onMessage(cid, msg)
 		if bankerHandleConfirm(cid, msg) then
 			return
 		end
-		if bankerTryCommand(cid, msg) then
+		if bankerTryCommand(cid, msg, raw) then
 			return
 		end
 		selfSay('Please say yes or no.')
 		return
 	end
 
-	if bankerTryCommand(cid, msg) then
+	if bankerTryCommand(cid, msg, raw) then
 		return
 	end
 
