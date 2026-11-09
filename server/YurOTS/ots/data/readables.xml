@@ -18,4 +18,11 @@
 	<readable x="166" y="46" z="7" text="WAVE ARENA\nOleadas. Palanca = next.\nRanking semanal"/>
 	<readable x="168" y="46" z="7" text="RELOJ DE ARENA\nSala compartida.\nFases cada 120 s"/>
 	<!-- END TEMPLE_PORTAL_SIGNS -->
+	<!-- BEGIN NORTH_PASS_SIGNS -->
+	<readable x="188" y="7" z="7" text="PASO DEL NORTE\nBosque, Tundra Helada y Cuevas del Dragon.\nCuevas: nivel 60+."/>
+	<readable x="414" y="352" z="7" text="TUNDRA HELADA\nLobos de invierno, osos polares y trolls.\nDicen que un yeti ronda el lago."/>
+	<readable x="422" y="258" z="7" text="CUEVAS DEL DRAGON\nSolo para cazadores experimentados."/>
+	<readable x="422" y="451" z="7" text="PASO DEL NORTE\nNorte: Tundra Helada y Cuevas del Dragon.\nPortal al sur: Retro76."/>
+	<readable x="433" y="409" z="7" text="Campamento de cazadores.\nDescansa junto al fuego."/>
+	<!-- END NORTH_PASS_SIGNS -->
 </readables>
