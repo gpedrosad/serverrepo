@@ -1,0 +1,140 @@
+#!/usr/bin/env python3
+"""Crea un looktype nuevo recoloreando una criatura existente del cliente 7.6 (genérico).
+
+Mismo método que add_black_dragon_look.py (que queda como referencia): copia la estructura
+de la criatura base (tamaño, direcciones, cuadros) a un looktype vacío y le pone sprites
+nuevos recoloreados por píxel, así la animación queda idéntica a la original.
+
+Presets:
+  black-dragon   Dragon (34) -> 230, negro con brillo violeta, ojos rojos
+  frost-dragon   Dragon (34) -> 231, hielo: cuerpo azul acero a blanco, panza y alas
+                 blanco hielo, ojos celestes brillantes (estilo Frost Dragon de versiones nuevas)
+
+Uso:
+  python3 scripts/client-rme/add_recolor_look.py --preset frost-dragon DIR_THINGS [--preview x.png]
+  python3 scripts/client-rme/add_recolor_look.py --preset frost-dragon --preview x.png   # solo vista previa
+
+DIR_THINGS = carpeta con Tibia.dat y Tibia.spr (se modifican en el lugar, con copia
+.bak-<preset>). Idempotente: si el looktype destino ya tiene sprites, no cambia nada.
+Aplicar a devtools/rme/rme-client-760/ (RME, en git) y a la base del cliente de jugadores
+antes de build_zagan_test_assets.py. Ver docs/gameplay/CUSTOM_MONSTER_WORKFLOW.md.
+"""
+from __future__ import annotations
+
+import argparse
+import colorsys
+import shutil
+import struct
+import sys
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+from add_black_dragon_look import (decode_sprite, encode_sprite, read_outfits, read_spr,  # noqa: E402
+                                   recolor as recolor_black, write_preview, write_spr)
+
+RME_THINGS = HERE.parents[1] / "devtools/rme/rme-client-760"
+
+
+def gradient(stops, k):
+    k = max(0.0, min(1.0, k))
+    for (k0, c0), (k1, c1) in zip(stops, stops[1:]):
+        if k <= k1:
+            t = (k - k0) / (k1 - k0) if k1 > k0 else 0
+            return tuple(int(a + (b - a) * t) for a, b in zip(c0, c1))
+    return stops[-1][1]
+
+
+FROST_BODY = [(0, (10, 16, 40)), (0.22, (36, 64, 120)), (0.45, (92, 142, 206)),
+              (0.72, (176, 210, 240)), (1, (248, 252, 255))]
+FROST_PALE = [(0, (26, 46, 82)), (0.35, (118, 174, 216)), (0.7, (196, 232, 246)), (1, (252, 255, 255))]
+
+
+def recolor_frost(pixel):
+    r, g, b, a = pixel
+    if a == 0:
+        return pixel
+    h, s, v = colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
+    if (h < 0.09 or h > 0.95) and s > 0.6 and v > 0.5:      # ojos, lengua, garras rojas
+        return (120, 245, 255, 255)
+    lum = (0.30 * r + 0.59 * g + 0.11 * b) / 255
+    if 0.06 < h < 0.2 and s > 0.35:                          # panza y membranas (amarillo/naranja)
+        return gradient(FROST_PALE, (lum ** 0.75) * 1.15) + (255,)
+    return gradient(FROST_BODY, (lum ** 0.7) * 1.25) + (255,)  # cuerpo verde -> hielo
+
+
+PRESETS = {
+    "black-dragon": dict(source=34, target=230, recolor=recolor_black, name="Black Dragon"),
+    "frost-dragon": dict(source=34, target=231, recolor=recolor_frost, name="Frost Dragon"),
+}
+
+
+def frames_2x2(decoded: dict[int, list]) -> list[list]:
+    """Cuadros 64x64 en orden anim -> dirección; tiles 2x2 empezando por abajo-derecha."""
+    frames = []
+    for anim in range(3):
+        for direction in range(4):
+            frame = [(0, 0, 0, 0)] * (64 * 64)
+            base = (anim * 4 + direction) * 4
+            for tile in range(4):
+                ox, oy = (1 - tile % 2) * 32, (1 - tile // 2) * 32
+                for i, p in enumerate(decoded[base + tile]):
+                    if p[3]:
+                        frame[(oy + i // 32) * 64 + ox + i % 32] = p
+            frames.append(frame)
+    return frames
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("things_dir", type=Path, nargs="?")
+    ap.add_argument("--preset", choices=sorted(PRESETS), required=True)
+    ap.add_argument("--preview", type=Path)
+    a = ap.parse_args()
+    p = PRESETS[a.preset]
+
+    src_dir = a.things_dir or RME_THINGS
+    dat_path, spr_path = src_dir / "Tibia.dat", src_dir / "Tibia.spr"
+    dat, spr = dat_path.read_bytes(), spr_path.read_bytes()
+    outfits, counts = read_outfits(dat)
+    if counts[1] < p["target"]:
+        raise SystemExit(f"El dat tiene {counts[1]} looktypes; se esperaba al menos {p['target']}")
+    source, target = outfits[p["source"] - 1], outfits[p["target"] - 1]
+    spr_count, offsets = read_spr(spr)
+    decoded = {i: [p["recolor"](px) for px in decode_sprite(spr, offsets, sid)]
+               for i, sid in enumerate(source["ids"])}
+
+    if a.preview:
+        if len(source["ids"]) != 48:
+            raise SystemExit("La vista previa asume una criatura 2x2, 4 direcciones y 3 cuadros")
+        write_preview(a.preview, frames_2x2(decoded))
+        print(f"Vista previa: {a.preview}")
+    if a.things_dir is None:
+        return 0
+
+    if any(target["ids"]):
+        print(f"El looktype {p['target']} ya tiene sprites; no se cambia nada.")
+        return 0
+    new_records = [encode_sprite(decoded[i]) for i in range(len(source["ids"]))]
+    new_ids = [spr_count + 1 + i for i in range(len(new_records))]
+    entry = dat[source["start"]:source["sprite_pos"]] + struct.pack(f"<{len(new_ids)}H", *new_ids)
+    new_dat = dat[:target["start"]] + entry + dat[target["end"]:]
+    new_spr = write_spr(struct.unpack_from("<I", spr, 0)[0], offsets, spr, new_records)
+
+    check, _ = read_outfits(new_dat)
+    assert check[p["target"] - 1]["ids"] == new_ids
+    _c, new_offsets = read_spr(new_spr)
+    assert decode_sprite(new_spr, new_offsets, new_ids[0]) == decoded[0]
+
+    for path, data in ((dat_path, new_dat), (spr_path, new_spr)):
+        backup = path.with_name(f"{path.name}.bak-{a.preset}")
+        if not backup.exists():
+            shutil.copy2(path, backup)
+        path.write_bytes(data)
+    print(f"Looktype {p['target']} = {p['name']}; sprites {new_ids[0]}-{new_ids[-1]} agregados "
+          f"({spr_count} -> {spr_count + len(new_records)}).")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!-- Frost Dragon: dragón de hielo, entre Dragon Lord y Black Dragon. Sin fuego: aliento helado,
+     bola de hielo a distancia y ventisca alrededor (daño físico con los efectos de hielo nuevos; 7.6 no tiene daño de hielo).
+     Look 231: sprite propio (recoloreado del Dragon 34), ver docs/gameplay/FROST_DRAGON.md. -->
+<monster name="Frost Dragon" level="55" maglevel="65" experience="2400" pushable="0" armor="33" defense="35" canpushitems="1" staticattack="50" changetarget="200" speed="200">
+	<health now="2200" max="2200"/>
+	<look type="231" head="0" body="0" legs="0" feet="0" corpse="3104"/>
+	<combat targetdistance="1" runonhealth="220"/>
+
+<attacks>
+	<attack type="instant" name="frostdragon_icewave" exhaustion="500" cycleticks="6000" probability="80"/>
+	<attack type="rune" name="frostdragon_iceball" exhaustion="500" cycleticks="4000" probability="50"/>
+	<attack type="instant" name="frostdragon_blizzard" exhaustion="500" cycleticks="9000" probability="40"/>
+	<attack type="instant" name="exura" exhaustion="500" cycleticks="7000" probability="50"/>
+	<attack type="melee" mindamage="70" maxdamage="210" probability="100"/>
+</attacks>
+
+<defenses>
+	<defense immunity="paralyze"/>
+	<defense immunity="invisible"/>
+	<defense immunity="drunk"/>
+</defenses>
+
+<voices>
+	<voice sentence="YOU WILL FREEZE!"/>
+	<voice sentence="ZCHHHHH!"/>
+	<voice sentence="GRRRRRAAAAH!"/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
+	<item id="2148" countmax="70" chance1="60000" chancemax="0"/>
+	<item id="2146" countmax="3" chance1="15000" chancemax="0"/>
+	<item id="2672" countmax="2" chance1="20000" chancemax="0"/>
+	<item id="2396" chance="2500"/>
+	<item id="2516" chance="1500"/>
+	<item id="2414" chance="1000"/>
+	<item id="2445" chance="800"/>
+
+	<item id="1987" chance="50000">
+	<inside>
+	<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
+	<item id="2152" countmax="2" chance1="1500" chancemax="0"/>
+	<item id="2146" chance="4000"/>
+	</inside>
+	</item>
+</loot>
+</monster>

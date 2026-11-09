@@ -166,7 +166,9 @@ end
 | `NM_ANI_*` (proyectil) | `BOLT`, `ARROW`, `FIRE`, `ENERGY`, `POISONARROW`, `BURSTARROW`, `THROWINGSTAR`, `THROWINGKNIFE`, `SMALLSTONE`, `SUDDENDEATH`, `LARGEROCK`, `SNOWBALL`, `POWERBOLT`, `NONE` |
 | Colores del número | `GREEN`, `RED`, `DARK_BLUE`, `LIGHT_BLUE`, `ORANGE`, `ENERGY`, `FIRE`, `GREY`, `BLUE`, `PURPLE`, `YELLOW`, `BLACK` |
 
-Los efectos del cliente 7.6 llegan hasta el 25: no hay efectos de hielo, sagrado ni tierra.
+El cliente 7.6 base trae 25 efectos (0–24) y 15 proyectiles (0–14), sin hielo, sagrado ni tierra. **Se pueden agregar
+efectos nuevos recoloreando los existentes**: ver [`CLIENT_EFFECTS.md`](CLIENT_EFFECTS.md) (pack "ice": `NM_ME_ICE_*` 25–28 y
+`NM_ANI_FROSTBALL` 15).
 
 ### 3.4 Matrices de área
 
@@ -247,7 +249,12 @@ Se verificó leyendo los archivos resultantes con un parser independiente:
 
 ### 6.4 Adaptarlo a otro monstruo
 
-Copiar el script (ej. `add_frost_wolf_look.py`) y cambiar:
+**Script genérico:** `scripts/client-rme/add_recolor_look.py --preset NOMBRE [DIR_THINGS] [--preview x.png]`.
+Cada criatura nueva es un preset (base, looktype destino y función de paleta). Presets: `black-dragon` (230)
+y `frost-dragon` (231, ver [`FROST_DRAGON.md`](FROST_DRAGON.md)). Sin `DIR_THINGS` solo genera la vista previa.
+Usados hasta ahora: **230 Black Dragon, 231 Frost Dragon**.
+
+Para un preset nuevo, lo que cambia es:
 
 | Constante | Qué es |
 |-----------|--------|
