@@ -45,6 +45,7 @@
 <spell name="demon_largefireball" words="demon_largefireball" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="dragon_firewave" words="dragon_firewave" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="dragonlord_firewave" words="dragonlord_firewave" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="blackdragon_darkwave" words="blackdragon_darkwave" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="djinn_exori" words="djinn_exori" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="d exevo gran vis lux" words="d exevo gran vis lux" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="w exevo gran vis lux" words="w exevo gran vis lux" maglv="4000" mana="800" enabled="1"></spell>
