@@ -380,60 +380,72 @@ SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faste
 >> think
 >> say 1001 promotion
 CALL isPromoted(1001)
+CALL getPlayerVocation(1001)
 CALL getPlayerLevel("Player1001")
 SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
 >> say 1001 yes
 CALL pay(1001, 20000)
 SAY /promote Player1001
 CALL isPromoted(1001)
-SAY Promotion failed. Try again or contact a gamemaster.
+CALL doPlayerAddMoney(1001, 20000)
+SAY Promotion failed, here is your gold back. Please contact a gamemaster.
 >> say 1001 promotion
 CALL isPromoted(1001)
+CALL getPlayerVocation(1001)
 CALL getPlayerLevel("Player1001")
 SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
 >> say 1001 no
 SAY No problem! Come back when you are ready.
 >> say 1001 5 promotion
 CALL isPromoted(1001)
+CALL getPlayerVocation(1001)
 CALL getPlayerLevel("Player1001")
 SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
 >> say 1001 yes
 CALL pay(1001, 20000)
 SAY /promote Player1001
 CALL isPromoted(1001)
-SAY Promotion failed. Try again or contact a gamemaster.
+CALL doPlayerAddMoney(1001, 20000)
+SAY Promotion failed, here is your gold back. Please contact a gamemaster.
 >> say 1001 5 promotion
 CALL isPromoted(1001)
+CALL getPlayerVocation(1001)
 CALL getPlayerLevel("Player1001")
 SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
 >> say 1001 no
 SAY No problem! Come back when you are ready.
 >> say 1001 promotion 100
 CALL isPromoted(1001)
+CALL getPlayerVocation(1001)
 CALL getPlayerLevel("Player1001")
 SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
 >> say 1001 yes
 CALL pay(1001, 20000)
 SAY /promote Player1001
 CALL isPromoted(1001)
-SAY Promotion failed. Try again or contact a gamemaster.
+CALL doPlayerAddMoney(1001, 20000)
+SAY Promotion failed, here is your gold back. Please contact a gamemaster.
 >> say 1001 promotion 100
 CALL isPromoted(1001)
+CALL getPlayerVocation(1001)
 CALL getPlayerLevel("Player1001")
 SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
 >> say 1001 no
 SAY No problem! Come back when you are ready.
 >> say 1001 promotion all
 CALL isPromoted(1001)
+CALL getPlayerVocation(1001)
 CALL getPlayerLevel("Player1001")
 SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
 >> say 1001 yes
 CALL pay(1001, 20000)
 SAY /promote Player1001
 CALL isPromoted(1001)
-SAY Promotion failed. Try again or contact a gamemaster.
+CALL doPlayerAddMoney(1001, 20000)
+SAY Promotion failed, here is your gold back. Please contact a gamemaster.
 >> say 1001 promotion all
 CALL isPromoted(1001)
+CALL getPlayerVocation(1001)
 CALL getPlayerLevel("Player1001")
 SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
 >> say 1001 no
@@ -458,21 +470,25 @@ SAY No problem! Come back when you are ready.
 >> think
 >> say 1001 promote
 CALL isPromoted(1001)
+CALL getPlayerVocation(1001)
 CALL getPlayerLevel("Player1001")
 SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
 >> say 1001 yes
 CALL pay(1001, 20000)
 SAY /promote Player1001
 CALL isPromoted(1001)
-SAY Promotion failed. Try again or contact a gamemaster.
+CALL doPlayerAddMoney(1001, 20000)
+SAY Promotion failed, here is your gold back. Please contact a gamemaster.
 >> say 1001 promote
 CALL isPromoted(1001)
+CALL getPlayerVocation(1001)
 CALL getPlayerLevel("Player1001")
 SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
 >> say 1001 no
 SAY No problem! Come back when you are ready.
 >> say 1001 5 promote
 CALL isPromoted(1001)
+CALL getPlayerVocation(1001)
 CALL getPlayerLevel("Player1001")
 SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
 >> say 1001 yes
@@ -480,12 +496,14 @@ CALL pay(1001, 20000)
 SAY You need 20,000 gold.
 >> say 1001 5 promote
 CALL isPromoted(1001)
+CALL getPlayerVocation(1001)
 CALL getPlayerLevel("Player1001")
 SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
 >> say 1001 no
 SAY No problem! Come back when you are ready.
 >> say 1001 promote 100
 CALL isPromoted(1001)
+CALL getPlayerVocation(1001)
 CALL getPlayerLevel("Player1001")
 SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
 >> say 1001 yes
@@ -493,12 +511,14 @@ CALL pay(1001, 20000)
 SAY You need 20,000 gold.
 >> say 1001 promote 100
 CALL isPromoted(1001)
+CALL getPlayerVocation(1001)
 CALL getPlayerLevel("Player1001")
 SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
 >> say 1001 no
 SAY No problem! Come back when you are ready.
 >> say 1001 promote all
 CALL isPromoted(1001)
+CALL getPlayerVocation(1001)
 CALL getPlayerLevel("Player1001")
 SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
 >> say 1001 yes
@@ -506,6 +526,7 @@ CALL pay(1001, 20000)
 SAY You need 20,000 gold.
 >> say 1001 promote all
 CALL isPromoted(1001)
+CALL getPlayerVocation(1001)
 CALL getPlayerLevel("Player1001")
 SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
 >> say 1001 no
@@ -589,6 +610,7 @@ SAY Hello Player1002. I handle promotions. Say "promotion" if you are interested
 >> set 1002 level 1
 >> say 1002 promotion
 CALL isPromoted(1002)
+CALL getPlayerVocation(1002)
 CALL getPlayerLevel("Player1002")
 SAY You need level 20 for promotion.
 >> say 1002 yes
@@ -596,6 +618,7 @@ SAY You need level 20 for promotion.
 >> say 1002 yes
 >> say 1002 promote
 CALL isPromoted(1002)
+CALL getPlayerVocation(1002)
 CALL getPlayerLevel("Player1002")
 SAY You need level 20 for promotion.
 >> say 1002 yes

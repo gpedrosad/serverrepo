@@ -1,0 +1,19 @@
+# Barco: Rookgaard, cambio de destino en la confirmación, combate y "ya estás aquí"
+set 1001 voc 0
+say 1001 hi
+say 1001 city
+say 1001 epstein
+say 1001 yes
+say 1001 bye
+set 1001 voc 1
+say 1001 hi
+say 1001 epstein
+say 1001 hell
+say 1001 maze
+say 1001 yes
+say 1001 hi
+set 1001 pz 1
+say 1001 gauntlet
+set 1001 pz 0
+pos 1001 452 43 7
+say 1001 gauntlet

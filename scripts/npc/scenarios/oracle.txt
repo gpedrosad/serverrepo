@@ -1,0 +1,21 @@
+# Oracle: flujo completo sin vocación, nivel bajo, cambio de idea, y rechazo con vocación
+set 1001 voc 0
+set 1001 level 5
+say 1001 hi
+say 1001 yes
+say 1001 bye
+set 1001 level 8
+say 1001 hi
+say 1001 yes
+say 1001 wizard
+say 1001 druid
+say 1001 no
+say 1001 knight
+say 1001 yes
+say 1001 boat
+say 1001 city
+# ya con vocación (antes podía volver a elegir otra gratis)
+set 1002 voc 4
+say 1002 hi
+say 1002 yes
+say 1002 sorcerer

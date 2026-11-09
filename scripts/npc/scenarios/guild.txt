@@ -1,0 +1,35 @@
+# Guild Master: fundar con mayúsculas, invitar en minúsculas, unirse, vice, nick, pasar el mando
+near 1003
+say 1001 hi
+say 1001 found
+say 1001 Los Halcones
+say 1001 Jefe Supremo
+say 1001 invite
+say 1001 player1003
+say 1001 Recluta
+say 1001 bye
+say 1003 hi
+say 1003 join
+say 1003 maybe
+say 1003 si
+say 1003 bye
+say 1001 hi
+say 1001 vice
+say 1001 PLAYER1001
+say 1001 vice
+say 1001 nobody
+say 1001 vice
+say 1001 player1003
+say 1001 nick
+say 1001 Player1003
+say 1001 El Rapido!
+say 1001 pass
+say 1001 player1003
+say 1001 found
+say 1001 bye
+# nivel bajo no puede ser lider; invitado a otra guild puede fundar
+set 1003 level 10
+say 1003 hi
+say 1003 leave
+say 1003 no
+say 1003 bye

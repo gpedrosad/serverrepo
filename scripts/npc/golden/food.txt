@@ -396,11 +396,11 @@ CALL buy(1001, 2691, 5, 40)
 >> say 1001 no
 >> say 1001 brown bread 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2691, 100, 800)
 >> say 1001 yes
 >> say 1001 brown bread 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2691, 100, 800)
 >> say 1001 no
 >> say 1001 brown bread all
 CALL getPlayerFreeSlots(1001)
@@ -429,11 +429,11 @@ CALL buy(1001, 2691, 5, 40)
 >> say 1001 no
 >> say 1001 bread 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2691, 100, 800)
 >> say 1001 yes
 >> say 1001 bread 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2691, 100, 800)
 >> say 1001 no
 >> say 1001 bread all
 CALL getPlayerFreeSlots(1001)
@@ -462,11 +462,11 @@ CALL buy(1001, 2789, 5, 40)
 >> say 1001 no
 >> say 1001 brown mushroom 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2789, 100, 800)
 >> say 1001 yes
 >> say 1001 brown mushroom 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2789, 100, 800)
 >> say 1001 no
 >> say 1001 brown mushroom all
 CALL getPlayerFreeSlots(1001)
@@ -495,11 +495,11 @@ CALL buy(1001, 2789, 5, 40)
 >> say 1001 no
 >> say 1001 mushroom 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2789, 100, 800)
 >> say 1001 yes
 >> say 1001 mushroom 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2789, 100, 800)
 >> say 1001 no
 >> say 1001 mushroom all
 CALL getPlayerFreeSlots(1001)
@@ -528,11 +528,11 @@ CALL buy(1001, 2671, 5, 40)
 >> say 1001 no
 >> say 1001 ham 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2671, 100, 800)
 >> say 1001 yes
 >> say 1001 ham 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2671, 100, 800)
 >> say 1001 no
 >> say 1001 ham all
 CALL getPlayerFreeSlots(1001)
@@ -561,11 +561,11 @@ CALL buy(1001, 2684, 5, 40)
 >> say 1001 no
 >> say 1001 carrot 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2684, 100, 800)
 >> say 1001 yes
 >> say 1001 carrot 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2684, 100, 800)
 >> say 1001 no
 >> say 1001 carrot all
 CALL getPlayerFreeSlots(1001)
@@ -594,11 +594,11 @@ CALL buy(1001, 2666, 5, 40)
 >> say 1001 no
 >> say 1001 meat 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2666, 100, 800)
 >> say 1001 yes
 >> say 1001 meat 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2666, 100, 800)
 >> say 1001 no
 >> say 1001 meat all
 CALL getPlayerFreeSlots(1001)
@@ -627,11 +627,11 @@ CALL buy(1001, 2674, 5, 40)
 >> say 1001 no
 >> say 1001 apple 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2674, 100, 800)
 >> say 1001 yes
 >> say 1001 apple 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2674, 100, 800)
 >> say 1001 no
 >> say 1001 apple all
 CALL getPlayerFreeSlots(1001)
@@ -660,11 +660,11 @@ CALL buy(1001, 2695, 5, 40)
 >> say 1001 no
 >> say 1001 egg 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2695, 100, 800)
 >> say 1001 yes
 >> say 1001 egg 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2695, 100, 800)
 >> say 1001 no
 >> say 1001 egg all
 CALL getPlayerFreeSlots(1001)

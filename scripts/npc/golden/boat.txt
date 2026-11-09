@@ -379,8 +379,12 @@ SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Al
 >> say 1001 no
 >> think
 >> say 1001 elfland
+CALL isPzLocked(1001)
+CALL getPlayerVocation(1001)
 SAY A trip to Elfland costs 20gp. Ready to go? (yes or si)
 >> say 1001 yes
+CALL isPzLocked(1001)
+CALL getPlayerVocation(1001)
 CALL pay(1001, 20)
 CALL cancelPendingTrade(1001)
 SAY All aboard! Enjoy the trip!
@@ -680,68 +684,112 @@ SAY Hi Player1002! I sail to Elfland (20gp), Epstein Island (20gp), Hell Quest (
 >> set 1002 slots 0
 >> set 1002 level 1
 >> say 1002 elfland
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
 SAY A trip to Elfland costs 20gp. Ready to go? (yes or si)
 >> say 1002 yes
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
 CALL pay(1002, 20)
 SAY Sorry, you need 20 gold for that trip.
 >> say 1002 elf land
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
 SAY A trip to Elfland costs 20gp. Ready to go? (yes or si)
 >> say 1002 yes
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
 CALL pay(1002, 20)
 SAY Sorry, you need 20 gold for that trip.
 >> say 1002 epstein island
-SAY A trip to Epstein Island costs 20gp. Ready to go? (yes or si)
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
+SAY Only those without a vocation may sail to Epstein Island.
 >> say 1002 yes
-CALL pay(1002, 20)
-SAY Sorry, you need 20 gold for that trip.
 >> say 1002 epstein
-SAY A trip to Epstein Island costs 20gp. Ready to go? (yes or si)
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
+SAY Only those without a vocation may sail to Epstein Island.
 >> say 1002 yes
-CALL pay(1002, 20)
-SAY Sorry, you need 20 gold for that trip.
 >> say 1002 hell quest
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
 SAY A trip to Hell Quest costs 20gp. Ready to go? (yes or si)
 >> say 1002 yes
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
 CALL pay(1002, 20)
 SAY Sorry, you need 20 gold for that trip.
 >> say 1002 hell
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
 SAY A trip to Hell Quest costs 20gp. Ready to go? (yes or si)
 >> say 1002 yes
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
 CALL pay(1002, 20)
 SAY Sorry, you need 20 gold for that trip.
 >> say 1002 dragon land
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
 SAY A trip to Dragon Land costs 50gp. Ready to go? (yes or si)
 >> say 1002 yes
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
 CALL pay(1002, 50)
 SAY Sorry, you need 50 gold for that trip.
 >> say 1002 alice maze
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
 SAY A trip to Alice Maze costs 20gp. Ready to go? (yes or si)
 >> say 1002 yes
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
 CALL pay(1002, 20)
 SAY Sorry, you need 20 gold for that trip.
 >> say 1002 maze
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
 SAY A trip to Alice Maze costs 20gp. Ready to go? (yes or si)
 >> say 1002 yes
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
 CALL pay(1002, 20)
 SAY Sorry, you need 20 gold for that trip.
 >> say 1002 laberinto
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
 SAY A trip to Alice Maze costs 20gp. Ready to go? (yes or si)
 >> say 1002 yes
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
 CALL pay(1002, 20)
 SAY Sorry, you need 20 gold for that trip.
 >> say 1002 gauntlet
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
 SAY A trip to Gauntlet costs 20gp. Ready to go? (yes or si)
 >> say 1002 yes
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
 CALL pay(1002, 20)
 SAY Sorry, you need 20 gold for that trip.
 >> say 1002 city
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
 SAY A trip to The City costs 20gp. Ready to go? (yes or si)
 >> say 1002 yes
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
 CALL pay(1002, 20)
 SAY Sorry, you need 20 gold for that trip.
 >> say 1002 the city
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
 SAY A trip to The City costs 20gp. Ready to go? (yes or si)
 >> say 1002 yes
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
 CALL pay(1002, 20)
 SAY Sorry, you need 20 gold for that trip.
 >> say 1002 gp

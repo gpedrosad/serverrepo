@@ -1579,53 +1579,53 @@ CALL buy(1001, 1689, 1, 500)
 >> say 1001 no
 >> think
 >> say 1001 round blue pillow
-CALL buy(1001, 1686, 1, 500)
+CALL buy(1001, 1690, 1, 500)
 >> say 1001 yes
 >> say 1001 round blue pillow
-CALL buy(1001, 1686, 1, 500)
+CALL buy(1001, 1690, 1, 500)
 >> say 1001 no
 >> say 1001 5 round blue pillow
-CALL buy(1001, 1686, 5, 2500)
+CALL buy(1001, 1690, 5, 2500)
 >> say 1001 yes
 >> say 1001 5 round blue pillow
-CALL buy(1001, 1686, 5, 2500)
+CALL buy(1001, 1690, 5, 2500)
 >> say 1001 no
 >> say 1001 round blue pillow 100
-CALL buy(1001, 1686, 20, 10000)
+CALL buy(1001, 1690, 20, 10000)
 >> say 1001 yes
 >> say 1001 round blue pillow 100
-CALL buy(1001, 1686, 20, 10000)
+CALL buy(1001, 1690, 20, 10000)
 >> say 1001 no
 >> say 1001 round blue pillow all
-CALL buy(1001, 1686, 1, 500)
+CALL buy(1001, 1690, 1, 500)
 >> say 1001 yes
 >> say 1001 round blue pillow all
-CALL buy(1001, 1686, 1, 500)
+CALL buy(1001, 1690, 1, 500)
 >> say 1001 no
 >> think
 >> say 1001 round red pillow
-CALL buy(1001, 1687, 1, 500)
+CALL buy(1001, 1691, 1, 500)
 >> say 1001 yes
 >> say 1001 round red pillow
-CALL buy(1001, 1687, 1, 500)
+CALL buy(1001, 1691, 1, 500)
 >> say 1001 no
 >> say 1001 5 round red pillow
-CALL buy(1001, 1687, 5, 2500)
+CALL buy(1001, 1691, 5, 2500)
 >> say 1001 yes
 >> say 1001 5 round red pillow
-CALL buy(1001, 1687, 5, 2500)
+CALL buy(1001, 1691, 5, 2500)
 >> say 1001 no
 >> say 1001 round red pillow 100
-CALL buy(1001, 1687, 20, 10000)
+CALL buy(1001, 1691, 20, 10000)
 >> say 1001 yes
 >> say 1001 round red pillow 100
-CALL buy(1001, 1687, 20, 10000)
+CALL buy(1001, 1691, 20, 10000)
 >> say 1001 no
 >> say 1001 round red pillow all
-CALL buy(1001, 1687, 1, 500)
+CALL buy(1001, 1691, 1, 500)
 >> say 1001 yes
 >> say 1001 round red pillow all
-CALL buy(1001, 1687, 1, 500)
+CALL buy(1001, 1691, 1, 500)
 >> say 1001 no
 >> think
 >> say 1001 round purple pillow
@@ -2141,10 +2141,10 @@ CALL buy(1002, 1688, 1, 500)
 CALL buy(1002, 1689, 1, 500)
 >> say 1002 yes
 >> say 1002 round blue pillow
-CALL buy(1002, 1686, 1, 500)
+CALL buy(1002, 1690, 1, 500)
 >> say 1002 yes
 >> say 1002 round red pillow
-CALL buy(1002, 1687, 1, 500)
+CALL buy(1002, 1691, 1, 500)
 >> say 1002 yes
 >> say 1002 round purple pillow
 CALL buy(1002, 1692, 1, 500)

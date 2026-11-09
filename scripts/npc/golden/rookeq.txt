@@ -396,11 +396,11 @@ CALL buy(1001, 2484, 5, 150)
 >> say 1001 no
 >> say 1001 studded armor 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2484, 100, 3000)
 >> say 1001 yes
 >> say 1001 studded armor 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2484, 100, 3000)
 >> say 1001 no
 >> say 1001 studded armor all
 CALL getPlayerFreeSlots(1001)
@@ -429,11 +429,11 @@ CALL buy(1001, 2464, 5, 450)
 >> say 1001 no
 >> say 1001 chain armor 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2464, 100, 9000)
 >> say 1001 yes
 >> say 1001 chain armor 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2464, 100, 9000)
 >> say 1001 no
 >> say 1001 chain armor all
 CALL getPlayerFreeSlots(1001)
@@ -462,11 +462,11 @@ CALL buy(1001, 2465, 5, 1500)
 >> say 1001 no
 >> say 1001 brass armor 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2465, 100, 30000)
 >> say 1001 yes
 >> say 1001 brass armor 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2465, 100, 30000)
 >> say 1001 no
 >> say 1001 brass armor all
 CALL getPlayerFreeSlots(1001)
@@ -495,11 +495,11 @@ CALL buy(1001, 2643, 5, 25)
 >> say 1001 no
 >> say 1001 leather boots 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2643, 100, 500)
 >> say 1001 yes
 >> say 1001 leather boots 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2643, 100, 500)
 >> say 1001 no
 >> say 1001 leather boots all
 CALL getPlayerFreeSlots(1001)
@@ -528,11 +528,11 @@ CALL buy(1001, 2460, 5, 100)
 >> say 1001 no
 >> say 1001 brass helmet 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2460, 100, 2000)
 >> say 1001 yes
 >> say 1001 brass helmet 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2460, 100, 2000)
 >> say 1001 no
 >> say 1001 brass helmet all
 CALL getPlayerFreeSlots(1001)
@@ -561,11 +561,11 @@ CALL buy(1001, 2461, 5, 25)
 >> say 1001 no
 >> say 1001 leather helmet 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2461, 100, 500)
 >> say 1001 yes
 >> say 1001 leather helmet 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2461, 100, 500)
 >> say 1001 no
 >> say 1001 leather helmet all
 CALL getPlayerFreeSlots(1001)
@@ -594,11 +594,11 @@ CALL buy(1001, 2511, 5, 75)
 >> say 1001 no
 >> say 1001 brass shield 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2511, 100, 1500)
 >> say 1001 yes
 >> say 1001 brass shield 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2511, 100, 1500)
 >> say 1001 no
 >> say 1001 brass shield all
 CALL getPlayerFreeSlots(1001)
@@ -627,11 +627,11 @@ CALL buy(1001, 2530, 5, 250)
 >> say 1001 no
 >> say 1001 copper shield 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2530, 100, 5000)
 >> say 1001 yes
 >> say 1001 copper shield 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2530, 100, 5000)
 >> say 1001 no
 >> say 1001 copper shield all
 CALL getPlayerFreeSlots(1001)
@@ -660,11 +660,11 @@ CALL buy(1001, 2649, 5, 40)
 >> say 1001 no
 >> say 1001 leather legs 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2649, 100, 800)
 >> say 1001 yes
 >> say 1001 leather legs 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2649, 100, 800)
 >> say 1001 no
 >> say 1001 leather legs all
 CALL getPlayerFreeSlots(1001)
@@ -693,11 +693,11 @@ CALL buy(1001, 2468, 5, 100)
 >> say 1001 no
 >> say 1001 studded legs 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2468, 100, 2000)
 >> say 1001 yes
 >> say 1001 studded legs 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2468, 100, 2000)
 >> say 1001 no
 >> say 1001 studded legs all
 CALL getPlayerFreeSlots(1001)
@@ -726,11 +726,11 @@ CALL buy(1001, 2388, 5, 100)
 >> say 1001 no
 >> say 1001 hatchet 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2388, 100, 2000)
 >> say 1001 yes
 >> say 1001 hatchet 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2388, 100, 2000)
 >> say 1001 no
 >> say 1001 hatchet all
 CALL getPlayerFreeSlots(1001)
@@ -759,11 +759,11 @@ CALL buy(1001, 2412, 5, 100)
 >> say 1001 no
 >> say 1001 katana 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2412, 100, 2000)
 >> say 1001 yes
 >> say 1001 katana 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2412, 100, 2000)
 >> say 1001 no
 >> say 1001 katana all
 CALL getPlayerFreeSlots(1001)
@@ -792,11 +792,11 @@ CALL buy(1001, 2398, 5, 100)
 >> say 1001 no
 >> say 1001 mace 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2398, 100, 2000)
 >> say 1001 yes
 >> say 1001 mace 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2398, 100, 2000)
 >> say 1001 no
 >> say 1001 mace all
 CALL getPlayerFreeSlots(1001)
@@ -825,11 +825,11 @@ CALL buy(1001, 2050, 5, 10)
 >> say 1001 no
 >> say 1001 torch 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2050, 100, 200)
 >> say 1001 yes
 >> say 1001 torch 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
+CALL buy(1001, 2050, 100, 200)
 >> say 1001 no
 >> say 1001 torch all
 CALL getPlayerFreeSlots(1001)

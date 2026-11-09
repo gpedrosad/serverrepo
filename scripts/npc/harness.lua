@@ -9,7 +9,8 @@
 --   advance <seg>          avanza el reloj virtual (os.clock / os.time)
 --   near <cid> | far <cid> jugador al lado del NPC o lejos
 --   pos <cid> <x> <y> <z>  posición exacta del jugador
---   set <cid> <campo> <n>  money, bank, level, items, slots, voc, premium, promoted, mana, guildstatus
+--   set <cid> <campo> <n>  money, bank, level, items, slots, voc, premium, promoted, mana, guildstatus, pz
+--   storage <cid> <k> <n>  storage value del jugador (p. ej. tarea diaria)
 --   disappear <cid>        onCreatureDisappear
 --   # comentario
 
@@ -42,14 +43,14 @@ local function P(cid)
 	cid = tonumber(cid) or 0
 	if not players[cid] then
 		players[cid] = {name = 'Player' .. cid, pos = {x = 101, y = 100, z = 7}, money = 100000, bank = 50000,
-			level = 50, items = 10, slots = 20, voc = 1, premium = 1, promoted = 0, mana = 500,
+			level = 50, items = 10, slots = 20, voc = 1, premium = 1, promoted = 0, mana = 500, pz = 0,
 			guildstatus = 0, guildname = '', storage = {}}
 	end
 	return players[cid]
 end
 local function byAny(x)  -- algunas funciones del C++ reciben el nombre, no el cid
 	if type(x) == 'string' then
-		for _, p in pairs(players) do if p.name == x then return p end end
+		for _, p in pairs(players) do if string.lower(p.name) == string.lower(x) then return p end end
 		return {level = -1, guildstatus = 0, guildname = ''}
 	end
 	return P(x)
@@ -91,11 +92,14 @@ creatureGetPosition = function(cid)
 	return p.pos.x, p.pos.y, p.pos.z
 end
 creatureGetName = function(cid) return P(cid).name end
-creatureGetName2 = function(name) for cid, p in pairs(players) do if p.name == name then return cid end end return 0 end
+creatureGetName2 = function(name)  -- como getCreatureByName: sin distinguir mayúsculas
+	for cid, p in pairs(players) do if string.lower(p.name) == string.lower(name) then return cid end end
+	return 0
+end
 for _, n in ipairs({'selfMove', 'selfMoveTo', 'selfAttackCreature', 'doPlayerSendTextMessage', 'buy', 'buyFluidBackpack',
 	'buyFluidQty', 'buyRuneQty', 'buyItemQty', 'buyItemBackpack', 'sell', 'sellFluid', 'sellBundle',
 	'travelPlayerTo', 'doSendMagicEffect', 'setPlayerMasterPos', 'doPlayerAddExp', 'learnSpell', 'setPlayerVocation',
-	'setPlayerGuild', 'clearPlayerGuild', 'setPlayerGuildNick', 'setPlayerGuildTitle', 'setPlayerGuildStatus', 'doRemoveCreature'}) do
+	'setPlayerGuildNick', 'setPlayerGuildTitle', 'doRemoveCreature'}) do
 	api(n, nil)
 end
 api('cancelPendingTrade', true)
@@ -121,9 +125,14 @@ api('isMonster', function(cid) return (tonumber(cid) or 0) >= 5000 end)  -- bool
 api('getPlayerMana', function(cid) return P(cid).mana end)
 api('doPlayerAddMana', 1)
 api('foundNewGuild', 1)
+-- guilds con estado mínimo (status y nombre de guild por jugador) para probar el Guild Master
+api('setPlayerGuild', function(name, st, rank, g) local p = byAny(name); p.guildstatus = st; p.guildname = g end)
+api('setPlayerGuildStatus', function(name, st) byAny(name).guildstatus = st end)
+api('clearPlayerGuild', function(name) local p = byAny(name); p.guildstatus = 0; p.guildname = '' end)
 api('getPlayerGuildStatus', function(name) return byAny(name).guildstatus end)
 api('getPlayerGuildName', function(name) return byAny(name).guildname end)
 api('isPremium', function(cid) return P(cid).premium == 1 end)
+api('isPzLocked', function(cid) return P(cid).pz == 1 end)
 api('isPromoted', function(cid) return P(cid).promoted == 1 end)
 
 -- carga como npc.cpp: lib primero, después el script --------------------------
@@ -162,6 +171,9 @@ for line in io.lines(scenario) do
 		elseif cmd == 'set' then
 			local cid, field, val = rest:match('(%d+)%s+(%S+)%s+(%S+)')
 			P(cid)[field] = tonumber(val) or val
+		elseif cmd == 'storage' then
+			local cid, key, val = rest:match('(%d+)%s+(%d+)%s+(%-?%d+)')
+			P(cid).storage[tonumber(key)] = tonumber(val)
 		elseif cmd == 'disappear' then
 			if onCreatureDisappear then run('onCreatureDisappear', onCreatureDisappear, tonumber(rest), P(rest).pos) end
 		end

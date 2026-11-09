@@ -12,3 +12,19 @@ say 1001 2
 say 1001 yes
 say 1001 streak
 say 1001 bye
+# Contrato terminado ayer y no cobrado: sigue disponible hoy; la racha de ayer suma
+say 1002 hi
+storage 1002 9200 20231113
+storage 1002 9201 3
+storage 1002 9213 800
+storage 1002 9214 8000
+storage 1002 9205 2
+storage 1002 9206 20231113
+say 1002 streak
+say 1002 status
+say 1002 reward
+say 1002 gold
+say 1002 yes
+say 1002 streak
+say 1002 task
+say 1002 bye

@@ -865,14 +865,15 @@ SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | de
 SAY I ask yes or no before moving gold.
 >> think
 >> say 1001 transfer 10 to player1002
-SAY Transfer 10 gp to player1002? yes or no.
+SAY There is no player called player1002.
 >> say 1001 yes
-CALL doPlayerTransferMoneyTo(1001, 10, "player1002")
-SAY I could not complete that transfer.
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
 >> say 1001 transfer 10 to player1002
-SAY Transfer 10 gp to player1002? yes or no.
+SAY There is no player called player1002.
 >> say 1001 no
-SAY Transfer cancelled.
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
 >> say 1001 5 transfer 10 to player1002
 SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
 SAY I ask yes or no before moving gold.
@@ -886,23 +887,25 @@ SAY I ask yes or no before moving gold.
 SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
 SAY I ask yes or no before moving gold.
 >> say 1001 transfer 10 to player1002 100
-SAY Transfer 10 gp to player1002 100? yes or no.
+SAY There is no player called player1002 100.
 >> say 1001 yes
-CALL doPlayerTransferMoneyTo(1001, 10, "player1002 100")
-SAY I could not complete that transfer.
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
 >> say 1001 transfer 10 to player1002 100
-SAY Transfer 10 gp to player1002 100? yes or no.
+SAY There is no player called player1002 100.
 >> say 1001 no
-SAY Transfer cancelled.
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
 >> say 1001 transfer 10 to player1002 all
-SAY Transfer 10 gp to player1002 all? yes or no.
+SAY There is no player called player1002 all.
 >> say 1001 yes
-CALL doPlayerTransferMoneyTo(1001, 10, "player1002 all")
-SAY I could not complete that transfer.
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
 >> say 1001 transfer 10 to player1002 all
-SAY Transfer 10 gp to player1002 all? yes or no.
+SAY There is no player called player1002 all.
 >> say 1001 no
-SAY Transfer cancelled.
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
 >> think
 >> say 1001 all
 SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all

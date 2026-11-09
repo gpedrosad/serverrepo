@@ -6,202 +6,202 @@ SAY Hi Player1001! I sell runes, rune backpacks, mana fluids, strong mana potion
 >> say 1002 hi
 SAY One moment, Player1002! I am helping someone else.
 >> say 1001 help
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 help
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 help
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 help
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 help
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 help 100
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 help 100
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 help all
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 help all
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> think
 >> say 1001 ayuda
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 ayuda
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 ayuda
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 ayuda
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 ayuda 100
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 ayuda 100
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 ayuda all
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 ayuda all
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> think
 >> say 1001 offer
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 offer
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 offer
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 offer
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 offer 100
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 offer 100
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 offer all
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 offer all
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> think
 >> say 1001 trade
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 trade
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 trade
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 trade
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 trade 100
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 trade 100
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 trade all
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 trade all
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> think
 >> say 1001 list
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 list
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 list
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 list
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 list 100
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 list 100
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 list all
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 list all
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> think
 >> say 1001 info
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 info
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 info
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 info
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 info 100
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 info 100
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 info all
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 info all
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> think
@@ -635,35 +635,35 @@ SAY I do not understand. Say "help" for prices.
 SAY I do not understand. Say "help" for prices.
 >> think
 >> say 1001 backpacks
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 backpacks
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 backpacks
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 backpacks
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 backpacks 100
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 backpacks 100
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 backpacks all
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 backpacks all
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> think
@@ -755,14 +755,12 @@ CALL buyRuneQty(1001, 2268, 5, 1, 1250)
 SAY I do not understand. Say "help" for prices.
 >> say 1001 sudden death 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyRuneQty(1001, 2268, 100, 1, 25000)
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 sudden death 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyRuneQty(1001, 2268, 100, 1, 25000)
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 sudden death all
@@ -798,14 +796,12 @@ CALL buyRuneQty(1001, 2268, 5, 1, 1250)
 SAY I do not understand. Say "help" for prices.
 >> say 1001 sd 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyRuneQty(1001, 2268, 100, 1, 25000)
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 sd 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyRuneQty(1001, 2268, 100, 1, 25000)
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 sd all
@@ -841,14 +837,12 @@ CALL buyRuneQty(1001, 2273, 5, 2, 1000)
 SAY I do not understand. Say "help" for prices.
 >> say 1001 ultimate healing 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyRuneQty(1001, 2273, 100, 2, 20000)
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 ultimate healing 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyRuneQty(1001, 2273, 100, 2, 20000)
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 ultimate healing all
@@ -884,14 +878,12 @@ CALL buyRuneQty(1001, 2273, 5, 2, 1000)
 SAY I do not understand. Say "help" for prices.
 >> say 1001 uh 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyRuneQty(1001, 2273, 100, 2, 20000)
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 uh 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyRuneQty(1001, 2273, 100, 2, 20000)
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 uh all
@@ -927,14 +919,12 @@ CALL buyRuneQty(1001, 2304, 5, 3, 225)
 SAY I do not understand. Say "help" for prices.
 >> say 1001 great fireball 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyRuneQty(1001, 2304, 100, 3, 4500)
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 great fireball 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyRuneQty(1001, 2304, 100, 3, 4500)
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 great fireball all
@@ -970,14 +960,12 @@ CALL buyRuneQty(1001, 2304, 5, 3, 225)
 SAY I do not understand. Say "help" for prices.
 >> say 1001 gfb 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyRuneQty(1001, 2304, 100, 3, 4500)
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 gfb 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyRuneQty(1001, 2304, 100, 3, 4500)
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 gfb all
@@ -1013,14 +1001,12 @@ CALL buyRuneQty(1001, 2313, 5, 3, 175)
 SAY I do not understand. Say "help" for prices.
 >> say 1001 explosion 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyRuneQty(1001, 2313, 100, 3, 3500)
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 explosion 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyRuneQty(1001, 2313, 100, 3, 3500)
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 explosion all
@@ -1056,14 +1042,12 @@ CALL buyRuneQty(1001, 2311, 5, 5, 75)
 SAY I do not understand. Say "help" for prices.
 >> say 1001 heavy magic missile 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyRuneQty(1001, 2311, 100, 5, 1500)
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 heavy magic missile 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyRuneQty(1001, 2311, 100, 5, 1500)
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 heavy magic missile all
@@ -1099,14 +1083,12 @@ CALL buyRuneQty(1001, 2311, 5, 5, 75)
 SAY I do not understand. Say "help" for prices.
 >> say 1001 hmm 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyRuneQty(1001, 2311, 100, 5, 1500)
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 hmm 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyRuneQty(1001, 2311, 100, 5, 1500)
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 hmm all
@@ -1142,14 +1124,12 @@ CALL buyItemQty(1001, 2260, 5, 50)
 SAY I do not understand. Say "help" for prices.
 >> say 1001 blank rune 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyItemQty(1001, 2260, 100, 1000)
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 blank rune 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyItemQty(1001, 2260, 100, 1000)
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 blank rune all
@@ -1185,14 +1165,12 @@ CALL buyItemQty(1001, 2260, 5, 50)
 SAY I do not understand. Say "help" for prices.
 >> say 1001 blank 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyItemQty(1001, 2260, 100, 1000)
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 blank 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyItemQty(1001, 2260, 100, 1000)
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 blank all
@@ -1228,14 +1206,12 @@ CALL buyFluidQty(1001, 2006, 14, 5, 1250)
 SAY I do not understand. Say "help" for prices.
 >> say 1001 strong mana potion 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".
+CALL buyFluidQty(1001, 2006, 14, 100, 25000)
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 strong mana potion 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".
+CALL buyFluidQty(1001, 2006, 14, 100, 25000)
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 strong mana potion all
@@ -1271,14 +1247,12 @@ CALL buyFluidQty(1001, 2006, 14, 5, 1250)
 SAY I do not understand. Say "help" for prices.
 >> say 1001 strong mana 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyFluidQty(1001, 2006, 14, 100, 25000)
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 strong mana 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyFluidQty(1001, 2006, 14, 100, 25000)
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 strong mana all
@@ -1314,14 +1288,12 @@ CALL buyFluidQty(1001, 2006, 14, 5, 1250)
 SAY I do not understand. Say "help" for prices.
 >> say 1001 smp 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyFluidQty(1001, 2006, 14, 100, 25000)
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 smp 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyFluidQty(1001, 2006, 14, 100, 25000)
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 smp all
@@ -1357,14 +1329,12 @@ CALL buyFluidQty(1001, 2006, 7, 5, 500)
 SAY I do not understand. Say "help" for prices.
 >> say 1001 manafluid 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyFluidQty(1001, 2006, 7, 100, 10000)
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 manafluid 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyFluidQty(1001, 2006, 7, 100, 10000)
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 manafluid all
@@ -1400,14 +1370,12 @@ CALL buyFluidQty(1001, 2006, 7, 5, 500)
 SAY I do not understand. Say "help" for prices.
 >> say 1001 mana fluid 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyFluidQty(1001, 2006, 7, 100, 10000)
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 mana fluid 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyFluidQty(1001, 2006, 7, 100, 10000)
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 mana fluid all
@@ -1443,14 +1411,12 @@ CALL buyFluidQty(1001, 2006, 7, 5, 500)
 SAY I do not understand. Say "help" for prices.
 >> say 1001 mana 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyFluidQty(1001, 2006, 7, 100, 10000)
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 mana 100
 CALL getPlayerFreeSlots(1001)
-SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
+CALL buyFluidQty(1001, 2006, 7, 100, 10000)
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 mana all
@@ -2040,35 +2006,35 @@ SAY I do not understand. Say "help" for prices.
 SAY I do not understand. Say "help" for prices.
 >> think
 >> say 1001 help
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 help
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 help
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 help
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 help 100
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 help 100
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 help all
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 help all
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> think
@@ -2106,266 +2072,266 @@ SAY I do not understand. Say "help" for prices.
 SAY I do not understand. Say "help" for prices.
 >> think
 >> say 1001 price
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 price
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 price
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 price
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 price 100
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 price 100
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 price all
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 price all
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> think
 >> say 1001 prices
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 prices
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 prices
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 prices
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 prices 100
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 prices 100
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 prices all
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 prices all
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> think
 >> say 1001 cost
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 cost
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 cost
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 cost
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 cost 100
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 cost 100
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 cost all
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 cost all
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> think
 >> say 1001 how much
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 how much
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 how much
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 how much
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 how much 100
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 how much 100
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 how much all
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 how much all
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> think
 >> say 1001 value
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 value
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 value
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 value
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 value 100
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 value 100
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 value all
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 value all
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> think
 >> say 1001 runes
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 runes
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 runes
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 runes
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 runes 100
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 runes 100
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 runes all
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 runes all
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> think
 >> say 1001 rune backpacks
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 rune backpacks
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 rune backpacks
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 rune backpacks
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 rune backpacks 100
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 rune backpacks 100
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 rune backpacks all
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 rune backpacks all
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> think
 >> say 1001 bps
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 bps
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 bps
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 5 bps
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 bps 100
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 bps 100
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> say 1001 bps all
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1001 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1001 bps all
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1001 no
 SAY I do not understand. Say "help" for prices.
 >> think
@@ -2462,7 +2428,7 @@ SAY Hi Player1002! I sell runes, rune backpacks, mana fluids, strong mana potion
 >> set 1002 slots 0
 >> set 1002 level 1
 >> say 1002 backpacks
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 wands
@@ -2476,163 +2442,136 @@ SAY I do not understand. Say "help" for prices.
 >> say 1002 sudden death
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 sd
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 ultimate healing
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 uh
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 great fireball
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 gfb
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 explosion
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 heavy magic missile
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 hmm
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 blank rune
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 blank
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 strong mana potion
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 strong mana
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 smp
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 manafluid
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 mana fluid
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 mana
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 cosmic energy
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 dragonbreath
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 inferno
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 moonlight
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 plague
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 quagmire
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 snakebite
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 tempest
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 volcanic
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 vortex
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
-SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 k
@@ -2656,7 +2595,7 @@ SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 help
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 focused
@@ -2664,35 +2603,35 @@ SAY I do not understand. Say "help" for prices.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 price
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 prices
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 cost
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 how much
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 value
-SAY Please specify an item. Say "help" for a list.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 runes
-SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 rune backpacks
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 bps
-SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+SAY Rune backpacks (20 runes + backpack): bp sd 5k, bp uh 4k, bp gfb 900gp, bp explosion 700gp, bp hmm 300gp, bp blank 200gp.
 >> say 1002 yes
 SAY I do not understand. Say "help" for prices.
 >> say 1002 potions

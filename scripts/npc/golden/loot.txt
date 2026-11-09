@@ -529,28 +529,28 @@ CALL sell(1001, 2663, 1, 500)
 >> say 1001 no
 >> think
 >> say 1001 chain helmet
-CALL sell(1001, 2458, 1, 50)
+CALL sell(1001, 2458, 1, 30)
 >> say 1001 yes
 >> say 1001 chain helmet
-CALL sell(1001, 2458, 1, 50)
+CALL sell(1001, 2458, 1, 30)
 >> say 1001 no
 >> say 1001 5 chain helmet
-CALL sell(1001, 2458, 1, 50)
+CALL sell(1001, 2458, 1, 30)
 >> say 1001 yes
 >> say 1001 5 chain helmet
-CALL sell(1001, 2458, 1, 50)
+CALL sell(1001, 2458, 1, 30)
 >> say 1001 no
 >> say 1001 chain helmet 100
-CALL sell(1001, 2458, 1, 50)
+CALL sell(1001, 2458, 1, 30)
 >> say 1001 yes
 >> say 1001 chain helmet 100
-CALL sell(1001, 2458, 1, 50)
+CALL sell(1001, 2458, 1, 30)
 >> say 1001 no
 >> say 1001 chain helmet all
-CALL sell(1001, 2458, 1, 50)
+CALL sell(1001, 2458, 1, 30)
 >> say 1001 yes
 >> say 1001 chain helmet all
-CALL sell(1001, 2458, 1, 50)
+CALL sell(1001, 2458, 1, 30)
 >> say 1001 no
 >> think
 >> say 1001 iron helmet
@@ -804,28 +804,28 @@ CALL sell(1001, 2487, 1, 12000)
 >> say 1001 no
 >> think
 >> say 1001 knight armor
-CALL sell(1001, 2476, 1, 4500)
+CALL sell(1001, 2476, 1, 3500)
 >> say 1001 yes
 >> say 1001 knight armor
-CALL sell(1001, 2476, 1, 4500)
+CALL sell(1001, 2476, 1, 3500)
 >> say 1001 no
 >> say 1001 5 knight armor
-CALL sell(1001, 2476, 1, 4500)
+CALL sell(1001, 2476, 1, 3500)
 >> say 1001 yes
 >> say 1001 5 knight armor
-CALL sell(1001, 2476, 1, 4500)
+CALL sell(1001, 2476, 1, 3500)
 >> say 1001 no
 >> say 1001 knight armor 100
-CALL sell(1001, 2476, 1, 4500)
+CALL sell(1001, 2476, 1, 3500)
 >> say 1001 yes
 >> say 1001 knight armor 100
-CALL sell(1001, 2476, 1, 4500)
+CALL sell(1001, 2476, 1, 3500)
 >> say 1001 no
 >> say 1001 knight armor all
-CALL sell(1001, 2476, 1, 4500)
+CALL sell(1001, 2476, 1, 3500)
 >> say 1001 yes
 >> say 1001 knight armor all
-CALL sell(1001, 2476, 1, 4500)
+CALL sell(1001, 2476, 1, 3500)
 >> say 1001 no
 >> think
 >> say 1001 blue robe
@@ -904,53 +904,53 @@ CALL sell(1001, 2463, 1, 500)
 >> say 1001 no
 >> think
 >> say 1001 brass armor
-CALL sell(1001, 2465, 1, 300)
+CALL sell(1001, 2465, 1, 250)
 >> say 1001 yes
 >> say 1001 brass armor
-CALL sell(1001, 2465, 1, 300)
+CALL sell(1001, 2465, 1, 250)
 >> say 1001 no
 >> say 1001 5 brass armor
-CALL sell(1001, 2465, 1, 300)
+CALL sell(1001, 2465, 1, 250)
 >> say 1001 yes
 >> say 1001 5 brass armor
-CALL sell(1001, 2465, 1, 300)
+CALL sell(1001, 2465, 1, 250)
 >> say 1001 no
 >> say 1001 brass armor 100
-CALL sell(1001, 2465, 1, 300)
+CALL sell(1001, 2465, 1, 250)
 >> say 1001 yes
 >> say 1001 brass armor 100
-CALL sell(1001, 2465, 1, 300)
+CALL sell(1001, 2465, 1, 250)
 >> say 1001 no
 >> say 1001 brass armor all
-CALL sell(1001, 2465, 1, 300)
+CALL sell(1001, 2465, 1, 250)
 >> say 1001 yes
 >> say 1001 brass armor all
-CALL sell(1001, 2465, 1, 300)
+CALL sell(1001, 2465, 1, 250)
 >> say 1001 no
 >> think
 >> say 1001 chain armor
-CALL sell(1001, 2464, 1, 150)
+CALL sell(1001, 2464, 1, 50)
 >> say 1001 yes
 >> say 1001 chain armor
-CALL sell(1001, 2464, 1, 150)
+CALL sell(1001, 2464, 1, 50)
 >> say 1001 no
 >> say 1001 5 chain armor
-CALL sell(1001, 2464, 1, 150)
+CALL sell(1001, 2464, 1, 50)
 >> say 1001 yes
 >> say 1001 5 chain armor
-CALL sell(1001, 2464, 1, 150)
+CALL sell(1001, 2464, 1, 50)
 >> say 1001 no
 >> say 1001 chain armor 100
-CALL sell(1001, 2464, 1, 150)
+CALL sell(1001, 2464, 1, 50)
 >> say 1001 yes
 >> say 1001 chain armor 100
-CALL sell(1001, 2464, 1, 150)
+CALL sell(1001, 2464, 1, 50)
 >> say 1001 no
 >> say 1001 chain armor all
-CALL sell(1001, 2464, 1, 150)
+CALL sell(1001, 2464, 1, 50)
 >> say 1001 yes
 >> say 1001 chain armor all
-CALL sell(1001, 2464, 1, 150)
+CALL sell(1001, 2464, 1, 50)
 >> say 1001 no
 >> think
 >> say 1001 golden legs
@@ -1004,28 +1004,28 @@ CALL sell(1001, 2488, 1, 12000)
 >> say 1001 no
 >> think
 >> say 1001 knight legs
-CALL sell(1001, 2477, 1, 4500)
+CALL sell(1001, 2477, 1, 3500)
 >> say 1001 yes
 >> say 1001 knight legs
-CALL sell(1001, 2477, 1, 4500)
+CALL sell(1001, 2477, 1, 3500)
 >> say 1001 no
 >> say 1001 5 knight legs
-CALL sell(1001, 2477, 1, 4500)
+CALL sell(1001, 2477, 1, 3500)
 >> say 1001 yes
 >> say 1001 5 knight legs
-CALL sell(1001, 2477, 1, 4500)
+CALL sell(1001, 2477, 1, 3500)
 >> say 1001 no
 >> say 1001 knight legs 100
-CALL sell(1001, 2477, 1, 4500)
+CALL sell(1001, 2477, 1, 3500)
 >> say 1001 yes
 >> say 1001 knight legs 100
-CALL sell(1001, 2477, 1, 4500)
+CALL sell(1001, 2477, 1, 3500)
 >> say 1001 no
 >> say 1001 knight legs all
-CALL sell(1001, 2477, 1, 4500)
+CALL sell(1001, 2477, 1, 3500)
 >> say 1001 yes
 >> say 1001 knight legs all
-CALL sell(1001, 2477, 1, 4500)
+CALL sell(1001, 2477, 1, 3500)
 >> say 1001 no
 >> think
 >> say 1001 plate legs
@@ -1054,28 +1054,28 @@ CALL sell(1001, 2647, 1, 700)
 >> say 1001 no
 >> think
 >> say 1001 brass legs
-CALL sell(1001, 2478, 1, 200)
+CALL sell(1001, 2478, 1, 100)
 >> say 1001 yes
 >> say 1001 brass legs
-CALL sell(1001, 2478, 1, 200)
+CALL sell(1001, 2478, 1, 100)
 >> say 1001 no
 >> say 1001 5 brass legs
-CALL sell(1001, 2478, 1, 200)
+CALL sell(1001, 2478, 1, 100)
 >> say 1001 yes
 >> say 1001 5 brass legs
-CALL sell(1001, 2478, 1, 200)
+CALL sell(1001, 2478, 1, 100)
 >> say 1001 no
 >> say 1001 brass legs 100
-CALL sell(1001, 2478, 1, 200)
+CALL sell(1001, 2478, 1, 100)
 >> say 1001 yes
 >> say 1001 brass legs 100
-CALL sell(1001, 2478, 1, 200)
+CALL sell(1001, 2478, 1, 100)
 >> say 1001 no
 >> say 1001 brass legs all
-CALL sell(1001, 2478, 1, 200)
+CALL sell(1001, 2478, 1, 100)
 >> say 1001 yes
 >> say 1001 brass legs all
-CALL sell(1001, 2478, 1, 200)
+CALL sell(1001, 2478, 1, 100)
 >> say 1001 no
 >> think
 >> say 1001 chain legs
@@ -1504,28 +1504,28 @@ CALL sell(1001, 2392, 1, 4000)
 >> say 1001 no
 >> think
 >> say 1001 serpent sword
-CALL sell(1001, 2409, 1, 2500)
+CALL sell(1001, 2409, 1, 2000)
 >> say 1001 yes
 >> say 1001 serpent sword
-CALL sell(1001, 2409, 1, 2500)
+CALL sell(1001, 2409, 1, 2000)
 >> say 1001 no
 >> say 1001 5 serpent sword
-CALL sell(1001, 2409, 1, 2500)
+CALL sell(1001, 2409, 1, 2000)
 >> say 1001 yes
 >> say 1001 5 serpent sword
-CALL sell(1001, 2409, 1, 2500)
+CALL sell(1001, 2409, 1, 2000)
 >> say 1001 no
 >> say 1001 serpent sword 100
-CALL sell(1001, 2409, 1, 2500)
+CALL sell(1001, 2409, 1, 2000)
 >> say 1001 yes
 >> say 1001 serpent sword 100
-CALL sell(1001, 2409, 1, 2500)
+CALL sell(1001, 2409, 1, 2000)
 >> say 1001 no
 >> say 1001 serpent sword all
-CALL sell(1001, 2409, 1, 2500)
+CALL sell(1001, 2409, 1, 2000)
 >> say 1001 yes
 >> say 1001 serpent sword all
-CALL sell(1001, 2409, 1, 2500)
+CALL sell(1001, 2409, 1, 2000)
 >> say 1001 no
 >> think
 >> say 1001 spike sword
@@ -1729,28 +1729,28 @@ CALL sell(1001, 2432, 1, 10000)
 >> say 1001 no
 >> think
 >> say 1001 knight axe
-CALL sell(1001, 2430, 1, 3000)
+CALL sell(1001, 2430, 1, 2000)
 >> say 1001 yes
 >> say 1001 knight axe
-CALL sell(1001, 2430, 1, 3000)
+CALL sell(1001, 2430, 1, 2000)
 >> say 1001 no
 >> say 1001 5 knight axe
-CALL sell(1001, 2430, 1, 3000)
+CALL sell(1001, 2430, 1, 2000)
 >> say 1001 yes
 >> say 1001 5 knight axe
-CALL sell(1001, 2430, 1, 3000)
+CALL sell(1001, 2430, 1, 2000)
 >> say 1001 no
 >> say 1001 knight axe 100
-CALL sell(1001, 2430, 1, 3000)
+CALL sell(1001, 2430, 1, 2000)
 >> say 1001 yes
 >> say 1001 knight axe 100
-CALL sell(1001, 2430, 1, 3000)
+CALL sell(1001, 2430, 1, 2000)
 >> say 1001 no
 >> say 1001 knight axe all
-CALL sell(1001, 2430, 1, 3000)
+CALL sell(1001, 2430, 1, 2000)
 >> say 1001 yes
 >> say 1001 knight axe all
-CALL sell(1001, 2430, 1, 3000)
+CALL sell(1001, 2430, 1, 2000)
 >> say 1001 no
 >> think
 >> say 1001 double axe
@@ -1829,53 +1829,53 @@ CALL sell(1001, 2378, 1, 200)
 >> say 1001 no
 >> think
 >> say 1001 hatchet
-CALL sell(1001, 2388, 1, 40)
+CALL sell(1001, 2388, 1, 10)
 >> say 1001 yes
 >> say 1001 hatchet
-CALL sell(1001, 2388, 1, 40)
+CALL sell(1001, 2388, 1, 10)
 >> say 1001 no
 >> say 1001 5 hatchet
-CALL sell(1001, 2388, 1, 40)
+CALL sell(1001, 2388, 1, 10)
 >> say 1001 yes
 >> say 1001 5 hatchet
-CALL sell(1001, 2388, 1, 40)
+CALL sell(1001, 2388, 1, 10)
 >> say 1001 no
 >> say 1001 hatchet 100
-CALL sell(1001, 2388, 1, 40)
+CALL sell(1001, 2388, 1, 10)
 >> say 1001 yes
 >> say 1001 hatchet 100
-CALL sell(1001, 2388, 1, 40)
+CALL sell(1001, 2388, 1, 10)
 >> say 1001 no
 >> say 1001 hatchet all
-CALL sell(1001, 2388, 1, 40)
+CALL sell(1001, 2388, 1, 10)
 >> say 1001 yes
 >> say 1001 hatchet all
-CALL sell(1001, 2388, 1, 40)
+CALL sell(1001, 2388, 1, 10)
 >> say 1001 no
 >> think
 >> say 1001 war hammer
-CALL sell(1001, 2391, 1, 5000)
+CALL sell(1001, 2391, 1, 2500)
 >> say 1001 yes
 >> say 1001 war hammer
-CALL sell(1001, 2391, 1, 5000)
+CALL sell(1001, 2391, 1, 2500)
 >> say 1001 no
 >> say 1001 5 war hammer
-CALL sell(1001, 2391, 1, 5000)
+CALL sell(1001, 2391, 1, 2500)
 >> say 1001 yes
 >> say 1001 5 war hammer
-CALL sell(1001, 2391, 1, 5000)
+CALL sell(1001, 2391, 1, 2500)
 >> say 1001 no
 >> say 1001 war hammer 100
-CALL sell(1001, 2391, 1, 5000)
+CALL sell(1001, 2391, 1, 2500)
 >> say 1001 yes
 >> say 1001 war hammer 100
-CALL sell(1001, 2391, 1, 5000)
+CALL sell(1001, 2391, 1, 2500)
 >> say 1001 no
 >> say 1001 war hammer all
-CALL sell(1001, 2391, 1, 5000)
+CALL sell(1001, 2391, 1, 2500)
 >> say 1001 yes
 >> say 1001 war hammer all
-CALL sell(1001, 2391, 1, 5000)
+CALL sell(1001, 2391, 1, 2500)
 >> say 1001 no
 >> think
 >> say 1001 skull staff
@@ -1954,53 +1954,53 @@ CALL sell(1001, 2423, 1, 300)
 >> say 1001 no
 >> think
 >> say 1001 battle hammer
-CALL sell(1001, 2417, 1, 120)
+CALL sell(1001, 2417, 1, 100)
 >> say 1001 yes
 >> say 1001 battle hammer
-CALL sell(1001, 2417, 1, 120)
+CALL sell(1001, 2417, 1, 100)
 >> say 1001 no
 >> say 1001 5 battle hammer
-CALL sell(1001, 2417, 1, 120)
+CALL sell(1001, 2417, 1, 100)
 >> say 1001 yes
 >> say 1001 5 battle hammer
-CALL sell(1001, 2417, 1, 120)
+CALL sell(1001, 2417, 1, 100)
 >> say 1001 no
 >> say 1001 battle hammer 100
-CALL sell(1001, 2417, 1, 120)
+CALL sell(1001, 2417, 1, 100)
 >> say 1001 yes
 >> say 1001 battle hammer 100
-CALL sell(1001, 2417, 1, 120)
+CALL sell(1001, 2417, 1, 100)
 >> say 1001 no
 >> say 1001 battle hammer all
-CALL sell(1001, 2417, 1, 120)
+CALL sell(1001, 2417, 1, 100)
 >> say 1001 yes
 >> say 1001 battle hammer all
-CALL sell(1001, 2417, 1, 120)
+CALL sell(1001, 2417, 1, 100)
 >> say 1001 no
 >> think
 >> say 1001 mace
-CALL sell(1001, 2398, 1, 50)
+CALL sell(1001, 2398, 1, 10)
 >> say 1001 yes
 >> say 1001 mace
-CALL sell(1001, 2398, 1, 50)
+CALL sell(1001, 2398, 1, 10)
 >> say 1001 no
 >> say 1001 5 mace
-CALL sell(1001, 2398, 1, 50)
+CALL sell(1001, 2398, 1, 10)
 >> say 1001 yes
 >> say 1001 5 mace
-CALL sell(1001, 2398, 1, 50)
+CALL sell(1001, 2398, 1, 10)
 >> say 1001 no
 >> say 1001 mace 100
-CALL sell(1001, 2398, 1, 50)
+CALL sell(1001, 2398, 1, 10)
 >> say 1001 yes
 >> say 1001 mace 100
-CALL sell(1001, 2398, 1, 50)
+CALL sell(1001, 2398, 1, 10)
 >> say 1001 no
 >> say 1001 mace all
-CALL sell(1001, 2398, 1, 50)
+CALL sell(1001, 2398, 1, 10)
 >> say 1001 yes
 >> say 1001 mace all
-CALL sell(1001, 2398, 1, 50)
+CALL sell(1001, 2398, 1, 10)
 >> say 1001 no
 >> think
 >> say 1001 platinum amulet
@@ -2054,28 +2054,28 @@ CALL sell(1001, 2661, 1, 600)
 >> say 1001 no
 >> think
 >> say 1001 helmets
-SAY I buy royal (30k), warrior (5k), crusader (6k), crown (2.5k), devil (2k), mystic turbans (500gp), chain (50gp) and iron helmets (150gp).
+SAY I buy royal (30k), warrior (5k), crusader (6k), crown (2.5k), devil (2k), mystic turbans (500gp), chain (30gp) and iron helmets (150gp).
 >> say 1001 yes
 >> say 1001 helmets
-SAY I buy royal (30k), warrior (5k), crusader (6k), crown (2.5k), devil (2k), mystic turbans (500gp), chain (50gp) and iron helmets (150gp).
+SAY I buy royal (30k), warrior (5k), crusader (6k), crown (2.5k), devil (2k), mystic turbans (500gp), chain (30gp) and iron helmets (150gp).
 >> say 1001 no
 >> say 1001 5 helmets
-SAY I buy royal (30k), warrior (5k), crusader (6k), crown (2.5k), devil (2k), mystic turbans (500gp), chain (50gp) and iron helmets (150gp).
+SAY I buy royal (30k), warrior (5k), crusader (6k), crown (2.5k), devil (2k), mystic turbans (500gp), chain (30gp) and iron helmets (150gp).
 >> say 1001 yes
 >> say 1001 5 helmets
-SAY I buy royal (30k), warrior (5k), crusader (6k), crown (2.5k), devil (2k), mystic turbans (500gp), chain (50gp) and iron helmets (150gp).
+SAY I buy royal (30k), warrior (5k), crusader (6k), crown (2.5k), devil (2k), mystic turbans (500gp), chain (30gp) and iron helmets (150gp).
 >> say 1001 no
 >> say 1001 helmets 100
-SAY I buy royal (30k), warrior (5k), crusader (6k), crown (2.5k), devil (2k), mystic turbans (500gp), chain (50gp) and iron helmets (150gp).
+SAY I buy royal (30k), warrior (5k), crusader (6k), crown (2.5k), devil (2k), mystic turbans (500gp), chain (30gp) and iron helmets (150gp).
 >> say 1001 yes
 >> say 1001 helmets 100
-SAY I buy royal (30k), warrior (5k), crusader (6k), crown (2.5k), devil (2k), mystic turbans (500gp), chain (50gp) and iron helmets (150gp).
+SAY I buy royal (30k), warrior (5k), crusader (6k), crown (2.5k), devil (2k), mystic turbans (500gp), chain (30gp) and iron helmets (150gp).
 >> say 1001 no
 >> say 1001 helmets all
-SAY I buy royal (30k), warrior (5k), crusader (6k), crown (2.5k), devil (2k), mystic turbans (500gp), chain (50gp) and iron helmets (150gp).
+SAY I buy royal (30k), warrior (5k), crusader (6k), crown (2.5k), devil (2k), mystic turbans (500gp), chain (30gp) and iron helmets (150gp).
 >> say 1001 yes
 >> say 1001 helmets all
-SAY I buy royal (30k), warrior (5k), crusader (6k), crown (2.5k), devil (2k), mystic turbans (500gp), chain (50gp) and iron helmets (150gp).
+SAY I buy royal (30k), warrior (5k), crusader (6k), crown (2.5k), devil (2k), mystic turbans (500gp), chain (30gp) and iron helmets (150gp).
 >> say 1001 no
 >> think
 >> say 1001 boots
@@ -2104,53 +2104,53 @@ SAY I buy steel boots (30k) and boots of haste (30k).
 >> say 1001 no
 >> think
 >> say 1001 armors
-SAY I buy mpa (100k), dsm (40k), golden (20k), crown (12k), blue robe (10k), knight (4.5k), lady (1.5k), plate (500gp), brass (300gp) and chain armors (150gp).
+SAY I buy mpa (100k), dsm (40k), golden (20k), crown (12k), blue robe (10k), knight (3.5k), lady (1.5k), plate (500gp), brass (250gp) and chain armors (50gp).
 >> say 1001 yes
 >> say 1001 armors
-SAY I buy mpa (100k), dsm (40k), golden (20k), crown (12k), blue robe (10k), knight (4.5k), lady (1.5k), plate (500gp), brass (300gp) and chain armors (150gp).
+SAY I buy mpa (100k), dsm (40k), golden (20k), crown (12k), blue robe (10k), knight (3.5k), lady (1.5k), plate (500gp), brass (250gp) and chain armors (50gp).
 >> say 1001 no
 >> say 1001 5 armors
-SAY I buy mpa (100k), dsm (40k), golden (20k), crown (12k), blue robe (10k), knight (4.5k), lady (1.5k), plate (500gp), brass (300gp) and chain armors (150gp).
+SAY I buy mpa (100k), dsm (40k), golden (20k), crown (12k), blue robe (10k), knight (3.5k), lady (1.5k), plate (500gp), brass (250gp) and chain armors (50gp).
 >> say 1001 yes
 >> say 1001 5 armors
-SAY I buy mpa (100k), dsm (40k), golden (20k), crown (12k), blue robe (10k), knight (4.5k), lady (1.5k), plate (500gp), brass (300gp) and chain armors (150gp).
+SAY I buy mpa (100k), dsm (40k), golden (20k), crown (12k), blue robe (10k), knight (3.5k), lady (1.5k), plate (500gp), brass (250gp) and chain armors (50gp).
 >> say 1001 no
 >> say 1001 armors 100
-SAY I buy mpa (100k), dsm (40k), golden (20k), crown (12k), blue robe (10k), knight (4.5k), lady (1.5k), plate (500gp), brass (300gp) and chain armors (150gp).
+SAY I buy mpa (100k), dsm (40k), golden (20k), crown (12k), blue robe (10k), knight (3.5k), lady (1.5k), plate (500gp), brass (250gp) and chain armors (50gp).
 >> say 1001 yes
 >> say 1001 armors 100
-SAY I buy mpa (100k), dsm (40k), golden (20k), crown (12k), blue robe (10k), knight (4.5k), lady (1.5k), plate (500gp), brass (300gp) and chain armors (150gp).
+SAY I buy mpa (100k), dsm (40k), golden (20k), crown (12k), blue robe (10k), knight (3.5k), lady (1.5k), plate (500gp), brass (250gp) and chain armors (50gp).
 >> say 1001 no
 >> say 1001 armors all
-SAY I buy mpa (100k), dsm (40k), golden (20k), crown (12k), blue robe (10k), knight (4.5k), lady (1.5k), plate (500gp), brass (300gp) and chain armors (150gp).
+SAY I buy mpa (100k), dsm (40k), golden (20k), crown (12k), blue robe (10k), knight (3.5k), lady (1.5k), plate (500gp), brass (250gp) and chain armors (50gp).
 >> say 1001 yes
 >> say 1001 armors all
-SAY I buy mpa (100k), dsm (40k), golden (20k), crown (12k), blue robe (10k), knight (4.5k), lady (1.5k), plate (500gp), brass (300gp) and chain armors (150gp).
+SAY I buy mpa (100k), dsm (40k), golden (20k), crown (12k), blue robe (10k), knight (3.5k), lady (1.5k), plate (500gp), brass (250gp) and chain armors (50gp).
 >> say 1001 no
 >> think
 >> say 1001 legs
-SAY I buy golden (80k), crown (12k), knight (4.5k), plate (700gp), brass (200gp) and chain legs (100gp).
+SAY I buy golden (80k), crown (12k), knight (3.5k), plate (700gp), brass (100gp) and chain legs (100gp).
 >> say 1001 yes
 >> say 1001 legs
-SAY I buy golden (80k), crown (12k), knight (4.5k), plate (700gp), brass (200gp) and chain legs (100gp).
+SAY I buy golden (80k), crown (12k), knight (3.5k), plate (700gp), brass (100gp) and chain legs (100gp).
 >> say 1001 no
 >> say 1001 5 legs
-SAY I buy golden (80k), crown (12k), knight (4.5k), plate (700gp), brass (200gp) and chain legs (100gp).
+SAY I buy golden (80k), crown (12k), knight (3.5k), plate (700gp), brass (100gp) and chain legs (100gp).
 >> say 1001 yes
 >> say 1001 5 legs
-SAY I buy golden (80k), crown (12k), knight (4.5k), plate (700gp), brass (200gp) and chain legs (100gp).
+SAY I buy golden (80k), crown (12k), knight (3.5k), plate (700gp), brass (100gp) and chain legs (100gp).
 >> say 1001 no
 >> say 1001 legs 100
-SAY I buy golden (80k), crown (12k), knight (4.5k), plate (700gp), brass (200gp) and chain legs (100gp).
+SAY I buy golden (80k), crown (12k), knight (3.5k), plate (700gp), brass (100gp) and chain legs (100gp).
 >> say 1001 yes
 >> say 1001 legs 100
-SAY I buy golden (80k), crown (12k), knight (4.5k), plate (700gp), brass (200gp) and chain legs (100gp).
+SAY I buy golden (80k), crown (12k), knight (3.5k), plate (700gp), brass (100gp) and chain legs (100gp).
 >> say 1001 no
 >> say 1001 legs all
-SAY I buy golden (80k), crown (12k), knight (4.5k), plate (700gp), brass (200gp) and chain legs (100gp).
+SAY I buy golden (80k), crown (12k), knight (3.5k), plate (700gp), brass (100gp) and chain legs (100gp).
 >> say 1001 yes
 >> say 1001 legs all
-SAY I buy golden (80k), crown (12k), knight (4.5k), plate (700gp), brass (200gp) and chain legs (100gp).
+SAY I buy golden (80k), crown (12k), knight (3.5k), plate (700gp), brass (100gp) and chain legs (100gp).
 >> say 1001 no
 >> think
 >> say 1001 shields
@@ -2179,78 +2179,78 @@ SAY I buy mms (80k), demon (40k), vampire (15k), medusa (9k), crown (8k), tower 
 >> say 1001 no
 >> think
 >> say 1001 swords
-SAY I buy giant (17k), bright (7k), fire (4k), ice rapiers (5k), serpent (2.5k), spike (1.2k) and two handed swords (600gp), also broad swords (500gp), short swords (60gp), sabres (50gp) and swords (50gp).
+SAY I buy giant (17k), bright (7k), fire (4k), ice rapiers (5k), serpent (2k), spike (1.2k) and two handed swords (600gp), also broad swords (500gp), short swords (60gp), sabres (50gp) and swords (50gp).
 >> say 1001 yes
 >> say 1001 swords
-SAY I buy giant (17k), bright (7k), fire (4k), ice rapiers (5k), serpent (2.5k), spike (1.2k) and two handed swords (600gp), also broad swords (500gp), short swords (60gp), sabres (50gp) and swords (50gp).
+SAY I buy giant (17k), bright (7k), fire (4k), ice rapiers (5k), serpent (2k), spike (1.2k) and two handed swords (600gp), also broad swords (500gp), short swords (60gp), sabres (50gp) and swords (50gp).
 >> say 1001 no
 >> say 1001 5 swords
-SAY I buy giant (17k), bright (7k), fire (4k), ice rapiers (5k), serpent (2.5k), spike (1.2k) and two handed swords (600gp), also broad swords (500gp), short swords (60gp), sabres (50gp) and swords (50gp).
+SAY I buy giant (17k), bright (7k), fire (4k), ice rapiers (5k), serpent (2k), spike (1.2k) and two handed swords (600gp), also broad swords (500gp), short swords (60gp), sabres (50gp) and swords (50gp).
 >> say 1001 yes
 >> say 1001 5 swords
-SAY I buy giant (17k), bright (7k), fire (4k), ice rapiers (5k), serpent (2.5k), spike (1.2k) and two handed swords (600gp), also broad swords (500gp), short swords (60gp), sabres (50gp) and swords (50gp).
+SAY I buy giant (17k), bright (7k), fire (4k), ice rapiers (5k), serpent (2k), spike (1.2k) and two handed swords (600gp), also broad swords (500gp), short swords (60gp), sabres (50gp) and swords (50gp).
 >> say 1001 no
 >> say 1001 swords 100
-SAY I buy giant (17k), bright (7k), fire (4k), ice rapiers (5k), serpent (2.5k), spike (1.2k) and two handed swords (600gp), also broad swords (500gp), short swords (60gp), sabres (50gp) and swords (50gp).
+SAY I buy giant (17k), bright (7k), fire (4k), ice rapiers (5k), serpent (2k), spike (1.2k) and two handed swords (600gp), also broad swords (500gp), short swords (60gp), sabres (50gp) and swords (50gp).
 >> say 1001 yes
 >> say 1001 swords 100
-SAY I buy giant (17k), bright (7k), fire (4k), ice rapiers (5k), serpent (2.5k), spike (1.2k) and two handed swords (600gp), also broad swords (500gp), short swords (60gp), sabres (50gp) and swords (50gp).
+SAY I buy giant (17k), bright (7k), fire (4k), ice rapiers (5k), serpent (2k), spike (1.2k) and two handed swords (600gp), also broad swords (500gp), short swords (60gp), sabres (50gp) and swords (50gp).
 >> say 1001 no
 >> say 1001 swords all
-SAY I buy giant (17k), bright (7k), fire (4k), ice rapiers (5k), serpent (2.5k), spike (1.2k) and two handed swords (600gp), also broad swords (500gp), short swords (60gp), sabres (50gp) and swords (50gp).
+SAY I buy giant (17k), bright (7k), fire (4k), ice rapiers (5k), serpent (2k), spike (1.2k) and two handed swords (600gp), also broad swords (500gp), short swords (60gp), sabres (50gp) and swords (50gp).
 >> say 1001 yes
 >> say 1001 swords all
-SAY I buy giant (17k), bright (7k), fire (4k), ice rapiers (5k), serpent (2.5k), spike (1.2k) and two handed swords (600gp), also broad swords (500gp), short swords (60gp), sabres (50gp) and swords (50gp).
+SAY I buy giant (17k), bright (7k), fire (4k), ice rapiers (5k), serpent (2k), spike (1.2k) and two handed swords (600gp), also broad swords (500gp), short swords (60gp), sabres (50gp) and swords (50gp).
 >> say 1001 no
 >> think
 >> say 1001 axes
-SAY I buy fire (10k), dragon lances (10k), knight (3k), double (300gp), halberds (400gp), battle (200gp) and hatchets (40gp).
+SAY I buy fire (10k), dragon lances (10k), knight (2k), double (300gp), halberds (400gp), battle (200gp) and hatchets (10gp).
 >> say 1001 yes
 >> say 1001 axes
-SAY I buy fire (10k), dragon lances (10k), knight (3k), double (300gp), halberds (400gp), battle (200gp) and hatchets (40gp).
+SAY I buy fire (10k), dragon lances (10k), knight (2k), double (300gp), halberds (400gp), battle (200gp) and hatchets (10gp).
 >> say 1001 no
 >> say 1001 5 axes
-SAY I buy fire (10k), dragon lances (10k), knight (3k), double (300gp), halberds (400gp), battle (200gp) and hatchets (40gp).
+SAY I buy fire (10k), dragon lances (10k), knight (2k), double (300gp), halberds (400gp), battle (200gp) and hatchets (10gp).
 >> say 1001 yes
 >> say 1001 5 axes
-SAY I buy fire (10k), dragon lances (10k), knight (3k), double (300gp), halberds (400gp), battle (200gp) and hatchets (40gp).
+SAY I buy fire (10k), dragon lances (10k), knight (2k), double (300gp), halberds (400gp), battle (200gp) and hatchets (10gp).
 >> say 1001 no
 >> say 1001 axes 100
-SAY I buy fire (10k), dragon lances (10k), knight (3k), double (300gp), halberds (400gp), battle (200gp) and hatchets (40gp).
+SAY I buy fire (10k), dragon lances (10k), knight (2k), double (300gp), halberds (400gp), battle (200gp) and hatchets (10gp).
 >> say 1001 yes
 >> say 1001 axes 100
-SAY I buy fire (10k), dragon lances (10k), knight (3k), double (300gp), halberds (400gp), battle (200gp) and hatchets (40gp).
+SAY I buy fire (10k), dragon lances (10k), knight (2k), double (300gp), halberds (400gp), battle (200gp) and hatchets (10gp).
 >> say 1001 no
 >> say 1001 axes all
-SAY I buy fire (10k), dragon lances (10k), knight (3k), double (300gp), halberds (400gp), battle (200gp) and hatchets (40gp).
+SAY I buy fire (10k), dragon lances (10k), knight (2k), double (300gp), halberds (400gp), battle (200gp) and hatchets (10gp).
 >> say 1001 yes
 >> say 1001 axes all
-SAY I buy fire (10k), dragon lances (10k), knight (3k), double (300gp), halberds (400gp), battle (200gp) and hatchets (40gp).
+SAY I buy fire (10k), dragon lances (10k), knight (2k), double (300gp), halberds (400gp), battle (200gp) and hatchets (10gp).
 >> say 1001 no
 >> think
 >> say 1001 clubs
-SAY I buy war (5k), skull staffs (6k), dragon (3k) and battle hammers (120gp), also clerical maces (300gp) and maces (50gp).
+SAY I buy war (2.5k), skull staffs (6k), dragon (3k) and battle hammers (100gp), also clerical maces (300gp) and maces (10gp).
 >> say 1001 yes
 >> say 1001 clubs
-SAY I buy war (5k), skull staffs (6k), dragon (3k) and battle hammers (120gp), also clerical maces (300gp) and maces (50gp).
+SAY I buy war (2.5k), skull staffs (6k), dragon (3k) and battle hammers (100gp), also clerical maces (300gp) and maces (10gp).
 >> say 1001 no
 >> say 1001 5 clubs
-SAY I buy war (5k), skull staffs (6k), dragon (3k) and battle hammers (120gp), also clerical maces (300gp) and maces (50gp).
+SAY I buy war (2.5k), skull staffs (6k), dragon (3k) and battle hammers (100gp), also clerical maces (300gp) and maces (10gp).
 >> say 1001 yes
 >> say 1001 5 clubs
-SAY I buy war (5k), skull staffs (6k), dragon (3k) and battle hammers (120gp), also clerical maces (300gp) and maces (50gp).
+SAY I buy war (2.5k), skull staffs (6k), dragon (3k) and battle hammers (100gp), also clerical maces (300gp) and maces (10gp).
 >> say 1001 no
 >> say 1001 clubs 100
-SAY I buy war (5k), skull staffs (6k), dragon (3k) and battle hammers (120gp), also clerical maces (300gp) and maces (50gp).
+SAY I buy war (2.5k), skull staffs (6k), dragon (3k) and battle hammers (100gp), also clerical maces (300gp) and maces (10gp).
 >> say 1001 yes
 >> say 1001 clubs 100
-SAY I buy war (5k), skull staffs (6k), dragon (3k) and battle hammers (120gp), also clerical maces (300gp) and maces (50gp).
+SAY I buy war (2.5k), skull staffs (6k), dragon (3k) and battle hammers (100gp), also clerical maces (300gp) and maces (10gp).
 >> say 1001 no
 >> say 1001 clubs all
-SAY I buy war (5k), skull staffs (6k), dragon (3k) and battle hammers (120gp), also clerical maces (300gp) and maces (50gp).
+SAY I buy war (2.5k), skull staffs (6k), dragon (3k) and battle hammers (100gp), also clerical maces (300gp) and maces (10gp).
 >> say 1001 yes
 >> say 1001 clubs all
-SAY I buy war (5k), skull staffs (6k), dragon (3k) and battle hammers (120gp), also clerical maces (300gp) and maces (50gp).
+SAY I buy war (2.5k), skull staffs (6k), dragon (3k) and battle hammers (100gp), also clerical maces (300gp) and maces (10gp).
 >> say 1001 no
 >> think
 >> say 1001 amulets
@@ -2340,7 +2340,7 @@ CALL sell(1002, 2462, 1, 2000)
 CALL sell(1002, 2663, 1, 500)
 >> say 1002 yes
 >> say 1002 chain helmet
-CALL sell(1002, 2458, 1, 50)
+CALL sell(1002, 2458, 1, 30)
 >> say 1002 yes
 >> say 1002 iron helmet
 CALL sell(1002, 2459, 1, 150)
@@ -2373,7 +2373,7 @@ CALL sell(1002, 2466, 1, 20000)
 CALL sell(1002, 2487, 1, 12000)
 >> say 1002 yes
 >> say 1002 knight armor
-CALL sell(1002, 2476, 1, 4500)
+CALL sell(1002, 2476, 1, 3500)
 >> say 1002 yes
 >> say 1002 blue robe
 CALL sell(1002, 2656, 1, 10000)
@@ -2385,10 +2385,10 @@ CALL sell(1002, 2500, 1, 1500)
 CALL sell(1002, 2463, 1, 500)
 >> say 1002 yes
 >> say 1002 brass armor
-CALL sell(1002, 2465, 1, 300)
+CALL sell(1002, 2465, 1, 250)
 >> say 1002 yes
 >> say 1002 chain armor
-CALL sell(1002, 2464, 1, 150)
+CALL sell(1002, 2464, 1, 50)
 >> say 1002 yes
 >> say 1002 golden legs
 CALL sell(1002, 2470, 1, 80000)
@@ -2397,13 +2397,13 @@ CALL sell(1002, 2470, 1, 80000)
 CALL sell(1002, 2488, 1, 12000)
 >> say 1002 yes
 >> say 1002 knight legs
-CALL sell(1002, 2477, 1, 4500)
+CALL sell(1002, 2477, 1, 3500)
 >> say 1002 yes
 >> say 1002 plate legs
 CALL sell(1002, 2647, 1, 700)
 >> say 1002 yes
 >> say 1002 brass legs
-CALL sell(1002, 2478, 1, 200)
+CALL sell(1002, 2478, 1, 100)
 >> say 1002 yes
 >> say 1002 chain legs
 CALL sell(1002, 2547, 1, 100)
@@ -2457,7 +2457,7 @@ CALL sell(1002, 2396, 1, 5000)
 CALL sell(1002, 2392, 1, 4000)
 >> say 1002 yes
 >> say 1002 serpent sword
-CALL sell(1002, 2409, 1, 2500)
+CALL sell(1002, 2409, 1, 2000)
 >> say 1002 yes
 >> say 1002 spike sword
 CALL sell(1002, 2383, 1, 1200)
@@ -2484,7 +2484,7 @@ CALL sell(1002, 2414, 1, 10000)
 CALL sell(1002, 2432, 1, 10000)
 >> say 1002 yes
 >> say 1002 knight axe
-CALL sell(1002, 2430, 1, 3000)
+CALL sell(1002, 2430, 1, 2000)
 >> say 1002 yes
 >> say 1002 double axe
 CALL sell(1002, 2387, 1, 300)
@@ -2496,10 +2496,10 @@ CALL sell(1002, 2381, 1, 400)
 CALL sell(1002, 2378, 1, 200)
 >> say 1002 yes
 >> say 1002 hatchet
-CALL sell(1002, 2388, 1, 40)
+CALL sell(1002, 2388, 1, 10)
 >> say 1002 yes
 >> say 1002 war hammer
-CALL sell(1002, 2391, 1, 5000)
+CALL sell(1002, 2391, 1, 2500)
 >> say 1002 yes
 >> say 1002 chau
 CALL cancelPendingTrade(1002)

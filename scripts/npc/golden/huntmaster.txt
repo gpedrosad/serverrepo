@@ -7,6 +7,7 @@ SAY Hi Player1001! Daily hunt contracts keep the city safer. Say "task", "status
 SAY One moment, Player1002!
 >> say 1001 help
 CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
 CALL getPlayerStorageValue(1001, 9205)
 CALL getPlayerStorageValue(1001, 9206)
 CALL setPlayerStorageValue(1001, 9200, 20231114)
@@ -1024,6 +1025,10 @@ CALL getPlayerStorageValue(1001, 9200)
 >> say 1001 streak
 CALL getPlayerStorageValue(1001, 9200)
 CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9205)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9206)
 CALL getPlayerStorageValue(1001, 9205)
 SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
 >> say 1001 yes
@@ -1031,6 +1036,10 @@ CALL getPlayerStorageValue(1001, 9200)
 >> say 1001 streak
 CALL getPlayerStorageValue(1001, 9200)
 CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9205)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9206)
 CALL getPlayerStorageValue(1001, 9205)
 SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
 >> say 1001 no
@@ -1038,6 +1047,10 @@ CALL getPlayerStorageValue(1001, 9200)
 >> say 1001 5 streak
 CALL getPlayerStorageValue(1001, 9200)
 CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9205)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9206)
 CALL getPlayerStorageValue(1001, 9205)
 SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
 >> say 1001 yes
@@ -1045,6 +1058,10 @@ CALL getPlayerStorageValue(1001, 9200)
 >> say 1001 5 streak
 CALL getPlayerStorageValue(1001, 9200)
 CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9205)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9206)
 CALL getPlayerStorageValue(1001, 9205)
 SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
 >> say 1001 no
@@ -1052,6 +1069,10 @@ CALL getPlayerStorageValue(1001, 9200)
 >> say 1001 streak 100
 CALL getPlayerStorageValue(1001, 9200)
 CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9205)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9206)
 CALL getPlayerStorageValue(1001, 9205)
 SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
 >> say 1001 yes
@@ -1059,6 +1080,10 @@ CALL getPlayerStorageValue(1001, 9200)
 >> say 1001 streak 100
 CALL getPlayerStorageValue(1001, 9200)
 CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9205)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9206)
 CALL getPlayerStorageValue(1001, 9205)
 SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
 >> say 1001 no
@@ -1066,6 +1091,10 @@ CALL getPlayerStorageValue(1001, 9200)
 >> say 1001 streak all
 CALL getPlayerStorageValue(1001, 9200)
 CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9205)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9206)
 CALL getPlayerStorageValue(1001, 9205)
 SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
 >> say 1001 yes
@@ -1073,6 +1102,10 @@ CALL getPlayerStorageValue(1001, 9200)
 >> say 1001 streak all
 CALL getPlayerStorageValue(1001, 9200)
 CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9205)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9206)
 CALL getPlayerStorageValue(1001, 9205)
 SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
 >> say 1001 no
@@ -1315,6 +1348,10 @@ CALL getPlayerStorageValue(1001, 9200)
 >> say 1001 racha
 CALL getPlayerStorageValue(1001, 9200)
 CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9205)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9206)
 CALL getPlayerStorageValue(1001, 9205)
 SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
 >> say 1001 yes
@@ -1322,6 +1359,10 @@ CALL getPlayerStorageValue(1001, 9200)
 >> say 1001 racha
 CALL getPlayerStorageValue(1001, 9200)
 CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9205)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9206)
 CALL getPlayerStorageValue(1001, 9205)
 SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
 >> say 1001 no
@@ -1329,6 +1370,10 @@ CALL getPlayerStorageValue(1001, 9200)
 >> say 1001 5 racha
 CALL getPlayerStorageValue(1001, 9200)
 CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9205)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9206)
 CALL getPlayerStorageValue(1001, 9205)
 SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
 >> say 1001 yes
@@ -1336,6 +1381,10 @@ CALL getPlayerStorageValue(1001, 9200)
 >> say 1001 5 racha
 CALL getPlayerStorageValue(1001, 9200)
 CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9205)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9206)
 CALL getPlayerStorageValue(1001, 9205)
 SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
 >> say 1001 no
@@ -1343,6 +1392,10 @@ CALL getPlayerStorageValue(1001, 9200)
 >> say 1001 racha 100
 CALL getPlayerStorageValue(1001, 9200)
 CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9205)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9206)
 CALL getPlayerStorageValue(1001, 9205)
 SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
 >> say 1001 yes
@@ -1350,6 +1403,10 @@ CALL getPlayerStorageValue(1001, 9200)
 >> say 1001 racha 100
 CALL getPlayerStorageValue(1001, 9200)
 CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9205)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9206)
 CALL getPlayerStorageValue(1001, 9205)
 SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
 >> say 1001 no
@@ -1357,6 +1414,10 @@ CALL getPlayerStorageValue(1001, 9200)
 >> say 1001 racha all
 CALL getPlayerStorageValue(1001, 9200)
 CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9205)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9206)
 CALL getPlayerStorageValue(1001, 9205)
 SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
 >> say 1001 yes
@@ -1364,6 +1425,10 @@ CALL getPlayerStorageValue(1001, 9200)
 >> say 1001 racha all
 CALL getPlayerStorageValue(1001, 9200)
 CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9205)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9206)
 CALL getPlayerStorageValue(1001, 9205)
 SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
 >> say 1001 no
@@ -2682,6 +2747,7 @@ SAY Hi Player1002! Daily hunt contracts keep the city safer. Say "task", "status
 >> set 1002 level 1
 >> say 1002 task
 CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9201)
 CALL getPlayerStorageValue(1002, 9205)
 CALL getPlayerStorageValue(1002, 9206)
 CALL setPlayerStorageValue(1002, 9200, 20231114)
@@ -2753,6 +2819,10 @@ CALL getPlayerStorageValue(1002, 9200)
 >> say 1002 streak
 CALL getPlayerStorageValue(1002, 9200)
 CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9206)
+CALL getPlayerStorageValue(1002, 9205)
+CALL getPlayerStorageValue(1002, 9206)
+CALL getPlayerStorageValue(1002, 9206)
 CALL getPlayerStorageValue(1002, 9205)
 SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
 >> say 1002 yes
@@ -2796,6 +2866,10 @@ CALL getPlayerStorageValue(1002, 9200)
 >> say 1002 racha
 CALL getPlayerStorageValue(1002, 9200)
 CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9206)
+CALL getPlayerStorageValue(1002, 9205)
+CALL getPlayerStorageValue(1002, 9206)
+CALL getPlayerStorageValue(1002, 9206)
 CALL getPlayerStorageValue(1002, 9205)
 SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
 >> say 1002 yes
@@ -3046,6 +3120,10 @@ CALL getPlayerStorageValue(1001, 9200)
 >> say 1001 streak
 CALL getPlayerStorageValue(1001, 9200)
 CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9205)
+CALL getPlayerStorageValue(1001, 9206)
+CALL getPlayerStorageValue(1001, 9206)
 CALL getPlayerStorageValue(1001, 9205)
 SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
 >> say 1001 bye
