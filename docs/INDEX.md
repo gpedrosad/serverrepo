@@ -64,6 +64,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/RAGE_MONSTERS.md`](gameplay/RAGE_MONSTERS.md) | Mecánica de monstruos enraged. |
 | [`gameplay/RESPAWN_SYSTEM.md`](gameplay/RESPAWN_SYSTEM.md) | Funcionamiento real del respawn de monstruos, visibilidad, timers y acumulacion por kiteo fuera del area. |
 | [`gameplay/MONSTER_CREATION.md`](gameplay/MONSTER_CREATION.md) | Flujo completo para crear monstruos nuevos: XML, alta en `monsters.xml`, RME y spawns. |
+| [`gameplay/BLACK_DRAGON.md`](gameplay/BLACK_DRAGON.md) | Black Dragon: stats, aliento oscuro y sprite propio (looktype 230, requiere actualizar el cliente). |
 | [`gameplay/BOAT_TRAVEL.md`](gameplay/BOAT_TRAVEL.md) | Viajes de Nimral/Fargum: destinos (incl. Gauntlet), Hell Quest, confirmación y reglas de temple. |
 | [`gameplay/MOST_WANTED_SYSTEM.md`](gameplay/MOST_WANTED_SYSTEM.md) | Sistema de bounty / most wanted entre jugadores. |
 | [`gameplay/DAILY_TASK.md`](gameplay/DAILY_TASK.md) | **Daily Task (Huntmaster):** 3 contratos/día por rango de level, kills + oro o exp, streak. |
