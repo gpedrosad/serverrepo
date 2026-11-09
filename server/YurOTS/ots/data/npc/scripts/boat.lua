@@ -1,98 +1,59 @@
 -- Fargum y Nimral (barco): viajes pagos a destinos fijos, con confirmación.
+-- Script compartido por todos los barqueros. Viajar no cambia el temple del jugador.
 talk_state = 0
 pending_travel = nil
 
--- Script compartido por Nimral y Fargum.
--- dest = sqm exacto de aterrizaje. Viajar no cambia el temple del player.
-ALL_TRAVELS = {
-	{keys = {'elfland', 'elf land'}, price = 20, dest = '111 60 6', name = 'Elfland'},
-	{keys = {'epstein island', 'epstein'}, price = 20, dest = '85 209 7', name = 'Epstein Island'},
-	{keys = {'hell quest', 'hell'}, price = 20, dest = '347 168 7', name = 'Hell Quest'},
-	{keys = {'dragon land'}, price = 50, dest = '122 119 7', name = 'Dragon Land'},
-	{keys = {'alice maze', 'maze', 'laberinto'}, price = 20, dest = '413 103 7', name = 'Alice Maze'},
-	{keys = {'gauntlet'}, price = 20, dest = '452 41 7', name = 'Gauntlet'},
-	{keys = {'city', 'the city'}, price = 20, dest = '171 65 7', name = 'The City'}
+EPSTEIN = 'Epstein Island' -- Rookgaard: solo para jugadores sin vocación
+
+-- dest = sqm exacto de llegada.
+TRAVELS = {
+	{keys = {'elfland', 'elf land'}, price = 20, dest = {111, 60, 6}, name = 'Elfland'},
+	{keys = {'epstein island', 'epstein'}, price = 20, dest = {85, 209, 7}, name = EPSTEIN},
+	{keys = {'hell quest', 'hell'}, price = 20, dest = {347, 168, 7}, name = 'Hell Quest'},
+	{keys = {'dragon land'}, price = 50, dest = {121, 118, 7}, name = 'Dragon Land'},
+	{keys = {'alice maze', 'maze', 'laberinto'}, price = 20, dest = {413, 103, 7}, name = 'Alice Maze'},
+	{keys = {'gauntlet'}, price = 20, dest = {452, 41, 7}, name = 'Gauntlet'},
+	{keys = {'city', 'the city'}, price = 20, dest = {172, 65, 7}, name = 'The City'},
 }
 
-function getTravels()
-	return ALL_TRAVELS
-end
-
-function parsePosition(pos)
-	local x, y, z = string.match(pos, '(%d+) (%d+) (%d+)')
-	if not x or not y or not z then
-		return nil
-	end
-	return tonumber(x), tonumber(y), tonumber(z)
-end
-
-function creatureIsAtPosition(cid, pos)
-	local x, y, z = parsePosition(pos)
-	if not x then
-		return false
-	end
-	local px, py, pz = creatureGetPosition(cid)
-	return px == x and py == y and pz == z
-end
-
-function travelSummary(travels)
+local function summary(sep, withPrice)
 	local parts = {}
-	for i = 1, table.getn(travels) do
-		local travel = travels[i]
-		table.insert(parts, travel.name .. ' (' .. travel.price .. 'gp)')
+	for i = 1, table.getn(TRAVELS) do
+		local t = TRAVELS[i]
+		table.insert(parts, withPrice(t))
 	end
-	return table.concat(parts, ', ')
+	return table.concat(parts, sep)
 end
 
-function travelHelp(travels)
-	local parts = {}
-	for i = 1, table.getn(travels) do
-		local travel = travels[i]
-		local line = travel.name .. ': ' .. travel.price .. 'gp'
-		table.insert(parts, line)
-	end
-	return table.concat(parts, '. ') .. '. Just say where you want to go!'
+-- Ya está en ese muelle (cerca del punto de llegada, mismo piso): no se cobra por moverse un sqm.
+local function isAlreadyThere(cid, travel)
+	local x, y, z = creatureGetPosition(cid)
+	return x ~= nil and z == travel.dest[3]
+		and math.abs(x - travel.dest[1]) <= 6 and math.abs(y - travel.dest[2]) <= 6
 end
 
-function canTravel(cid, travel)
-	if creatureIsAtPosition(cid, travel.dest) then
-		selfSay('You are already in ' .. travel.name .. '.')
-		return false
+-- Motivo por el que no puede viajar, o nil.
+local function travelProblem(cid, travel)
+	if isAlreadyThere(cid, travel) then
+		return 'You are already in ' .. travel.name .. '.'
 	end
-	return true
-end
-
-function matchTravel(msg, travels)
-	for i = 1, table.getn(travels) do
-		local travel = travels[i]
-		for j = 1, table.getn(travel.keys) do
-			if msgcontains(msg, travel.keys[j]) then
-				return travel
-			end
-		end
+	if isPzLocked(cid) then
+		return 'You are in a fight! Calm down before you board.'
+	end
+	local rookie = getPlayerVocation(cid) == 0
+	if rookie and travel.name ~= EPSTEIN then
+		return 'You cannot leave ' .. EPSTEIN .. ' yet. Talk to the Oracle first.'
+	end
+	if not rookie and travel.name == EPSTEIN then
+		return 'Only those without a vocation may sail to ' .. EPSTEIN .. '.'
 	end
 	return nil
 end
 
-function doTravel(cid, travel)
-	if not canTravel(cid, travel) then
-		return
-	end
-	if pay(cid, travel.price) then
-		cancelPendingTrade(cid)
-		npcResetState()
-		selfSay('All aboard! Enjoy the trip!')
-		local x, y, z = parsePosition(travel.dest)
-		if x and y and z then
-			travelPlayerTo(cid, x, y, z)
-		end
-	else
-		selfSay('Sorry, you need ' .. travel.price .. ' gold for that trip.')
-	end
-end
-
-function offerTravel(cid, travel)
-	if not canTravel(cid, travel) then
+local function offerTravel(cid, travel)
+	local problem = travelProblem(cid, travel)
+	if problem then
+		selfSay(problem)
 		return
 	end
 	pending_travel = travel
@@ -100,33 +61,32 @@ function offerTravel(cid, travel)
 	selfSay('A trip to ' .. travel.name .. ' costs ' .. travel.price .. 'gp. Ready to go? (yes or si)')
 end
 
--- Saludo propio (lista de destinos) antes del manejo estándar de ocupado/despedida.
-local function onSay(cid, msg)
-	local travels = getTravels()
-
-	if npcIsGreeting(msg) and focus == 0 and getDistanceToCreature(cid) < 4 then
-		npcBeginConversation(cid, 'Hi ' .. creatureGetName(cid) .. '! I sail to ' .. travelSummary(travels) .. '. Where do you want to go?')
+local function doTravel(cid, travel)
+	local problem = travelProblem(cid, travel) -- pudo cambiar desde la oferta (p. ej. entró en combate)
+	if problem then
+		selfSay(problem)
 		return
 	end
-
-	local state = npcHandleMessage(
-		cid,
-		msg,
-		nil,
-		'One moment, ' .. creatureGetName(cid) .. '!'
-	)
-	if state == 'busy' or state == 'bye' then
+	if not pay(cid, travel.price) then
+		selfSay('Sorry, you need ' .. travel.price .. ' gold for that trip.')
 		return
 	end
+	cancelPendingTrade(cid)
+	npcResetState()
+	selfSay('All aboard! Enjoy the trip!')
+	travelPlayerTo(cid, travel.dest[1], travel.dest[2], travel.dest[3])
+end
 
-	if focus ~= cid then
-		return
-	end
+local function onMessage(cid, msg)
+	local travel = npcFindCatalogEntry(msg, TRAVELS)
 
 	if talk_state == 1 then
-		if npcHandlePendingYesNo(cid, msg, function()
-			doTravel(cid, pending_travel)
-		end) then
+		if travel and travel ~= pending_travel then -- cambió de destino: se ofrece el nuevo
+			offerTravel(cid, travel)
+			return
+		end
+		local chosen = pending_travel
+		if npcHandlePendingYesNo(cid, msg, function() doTravel(cid, chosen) end) then
 			talk_state = 0
 			pending_travel = nil
 		else
@@ -136,16 +96,18 @@ local function onSay(cid, msg)
 	end
 
 	if npcIsHelp(msg) then
-		selfSay(travelHelp(travels))
-		return
-	end
-
-	local travel = matchTravel(msg, travels)
-	if travel then
+		selfSay(summary('. ', function(t) return t.name .. ': ' .. t.price .. 'gp' end) .. '. Just say where you want to go!')
+	elseif travel then
 		offerTravel(cid, travel)
 	end
 end
 
 npcDefine{
-	onSay = onSay,
+	greet = function(cid)
+		return 'Hi ' .. creatureGetName(cid) .. '! I sail to '
+			.. summary(', ', function(t) return t.name .. ' (' .. t.price .. 'gp)' end) .. '. Where do you want to go?'
+	end,
+	busy = function(cid) return 'One moment, ' .. creatureGetName(cid) .. '!' end,
+	state = {talk_state = 0, pending_travel = nil},
+	onMessage = onMessage,
 }
