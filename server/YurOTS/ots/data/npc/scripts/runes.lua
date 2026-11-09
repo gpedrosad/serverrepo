@@ -1,7 +1,4 @@
 -- Dark Rodo (runas, backpacks de runas, fluidos, wands y rods).
-RUNES_HELP = 'Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.'
-RUNES_BACKPACKS = 'Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.'
-
 RUNE_BUYS = {
 	{keys = {'sudden death', 'sd'}, itemid = 2268, unitPrice = 250, runeCharges = 1},
 	{keys = {'ultimate healing', 'uh'}, itemid = 2273, unitPrice = 200, runeCharges = 2},
@@ -26,6 +23,29 @@ WAND_BUYS = {
 	{keys = {'vortex'}, itemid = 2190, unitPrice = 500},
 }
 
+BP_RUNES = 20       -- runas por mochila
+
+-- Una mochila cuesta lo mismo que 20 runas sueltas; la mochila va de regalo para que el precio
+-- sea redondo (antes multiplicaba además por las cargas: la bp de UH salía 8000 y 20 UH 4000).
+local function backpackPrice(entry)
+	return entry.unitPrice * BP_RUNES
+end
+
+local function backpackSummary()
+	local parts = {}
+	for i = 1, table.getn(RUNE_BUYS) do
+		local e = RUNE_BUYS[i]
+		if e.runeCharges ~= nil or e.itemQuantity ~= nil then
+			table.insert(parts, 'bp ' .. e.keys[table.getn(e.keys)] .. ' ' .. npcFormatPrice(backpackPrice(e)))
+		end
+	end
+	return table.concat(parts, ', ')
+end
+
+RUNES_BACKPACKS = 'Rune backpacks (' .. BP_RUNES .. ' runes + backpack): ' .. backpackSummary() .. '.'
+RUNES_HELP = 'Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". '
+	.. RUNES_BACKPACKS .. ' Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.'
+
 local function summarizeCatalog(entries, groupName)
 	local parts = {groupName .. ':'}
 	for i = 1, table.getn(entries) do
@@ -35,12 +55,8 @@ local function summarizeCatalog(entries, groupName)
 	return table.concat(parts, ', ')
 end
 
-local function findCatalogBuy(msg, catalog)
-	return npcFindCatalogBuyEntry(msg, catalog)
-end
-
 local function matchBackpack(msg)
-	local prefixes = {'bp ', 'backpack ', 'backpack of '}
+	local prefixes = {'bp of ', 'backpack of ', 'bp ', 'backpack '}
 	for i = 1, table.getn(RUNE_BUYS) do
 		local entry = RUNE_BUYS[i]
 		if entry.runeCharges ~= nil or entry.itemQuantity ~= nil then
@@ -64,17 +80,17 @@ local function onMessage(cid, msg)
 			selfSay('You do not have enough space in your backpack for that. Free up some slots first.')
 			return
 		end
-		local contentCount = bp.runeCharges or 1
-		local cost = bp.unitPrice * 20 * contentCount
-		buyItemBackpack(cid, 1988, bp.itemid, contentCount, 20, cost)
+		buyItemBackpack(cid, 1988, bp.itemid, bp.runeCharges or 1, BP_RUNES, backpackPrice(bp))
 	elseif msgcontains(msg, 'price') or msgcontains(msg, 'prices') or msgcontains(msg, 'cost') or msgcontains(msg, 'how much') or msgcontains(msg, 'value') then
-		local entry = findCatalogBuy(msg, RUNE_BUYS) or findCatalogBuy(msg, WAND_BUYS)
+		local entry = npcFindCatalogEntry(msg, RUNE_BUYS) or npcFindCatalogEntry(msg, WAND_BUYS)
 		if entry then
 			local key = entry.keys[1]
 			selfSay(string.upper(string.sub(key, 1, 1)) .. string.sub(key, 2) .. ': ' .. npcFormatPrice(entry.unitPrice) .. '.')
 		else
-			selfSay('Please specify an item. Say "help" for a list.')
+			selfSay(RUNES_HELP)
 		end
+	elseif (msgcontains(msg, 'bp') or msgcontains(msg, 'backpack')) and (msgcontains(msg, 'mana') or msgcontains(msg, 'smp') or msgcontains(msg, 'life')) then
+		selfSay('I do not sell fluid backpacks. The Seller in the temple does.')
 	elseif npcTryCatalogBuyQuantity(cid, msg, RUNE_BUYS) then
 		return
 	elseif npcTryCatalogBuyQuantity(cid, msg, WAND_BUYS, 1) then

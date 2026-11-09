@@ -1,10 +1,10 @@
 -- Parived (compra gemas y diamantes).
 GEMS = {
-	{keys = {'big emerald', 'big emeralds', 'large emerald', 'green gem', 'big green'}, id = 2155, price = 10000, name = 'big emerald'},
-	{keys = {'big ruby', 'big rubies', 'big rubys', 'large ruby', 'red gem', 'big red'}, id = 2156, price = 10000, name = 'big ruby'},
+	{keys = {'big emerald', 'big emeralds', 'large emerald', 'green gem', 'big green'}, id = 2155, price = 5000, name = 'big emerald'},
+	{keys = {'big ruby', 'big rubies', 'big rubys', 'large ruby', 'red gem', 'big red'}, id = 2156, price = 5000, name = 'big ruby'},
 	{keys = {'gold nugget', 'nugget', 'nuggets', 'gold'}, id = 2157, price = 10000, name = 'gold nugget'},
 	{keys = {'scarab coin', 'scarab', 'scarabs', 'scarab coins', 'coin', 'coins'}, id = 2159, price = 100, name = 'scarab coin'},
-	{keys = {'violet gem', 'violet', 'violet gems', 'purple gem', 'purple'}, id = 2153, price = 10000, name = 'violet gem'},
+	{keys = {'violet gem', 'violet', 'violet gems', 'purple gem', 'purple'}, id = 2153, price = 4000, name = 'violet gem'},
 	{keys = {'yellow gem', 'yellow', 'yellow gems', 'topaz'}, id = 2154, price = 1000, name = 'yellow gem'},
 	{keys = {'blue gem', 'blue', 'blue gems'}, id = 2158, price = 5000, name = 'blue gem'},
 	{keys = {'small diamond', 'diamond', 'diamonds', 'diamont', 'diamons'}, id = 2145, price = 300, name = 'small diamond'},
@@ -12,7 +12,7 @@ GEMS = {
 	{keys = {'small ruby', 'ruby', 'rubies', 'rubys', 'rubi'}, id = 2147, price = 250, name = 'small ruby'},
 	{keys = {'small emerald', 'emerald', 'emeralds', 'esmerald', 'esmeralda'}, id = 2149, price = 250, name = 'small emerald'},
 	{keys = {'small amethyst', 'amethyst', 'amethysts', 'ametist', 'amatista'}, id = 2150, price = 200, name = 'small amethyst'},
-	{keys = {'talon', 'talons'}, id = 2151, price = 320, name = 'talon'}
+	{keys = {'talon', 'talons'}, id = 2151, price = 300, name = 'talon'}
 }
 
 PARIVED_HELP = 'I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.'
@@ -22,8 +22,8 @@ function showHelp()
 end
 
 function showTradeList()
-	selfSay('Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.')
-	selfSay('Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.')
+	selfSay('Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.')
+	selfSay('Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.')
 	selfSay('Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.')
 end
 

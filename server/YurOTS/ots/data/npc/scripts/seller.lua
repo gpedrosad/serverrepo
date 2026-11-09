@@ -1,13 +1,13 @@
 -- Seller (suministros, backpacks de fluidos, armas medias y equipo de knight; compra vials vacíos).
-SELLER_HELP = 'I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.'
+SELLER_HELP = 'I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2000gp), backpack of life fluid (1200gp), backpack of strong mana potion (5000gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.'
 SELLER_WEAPONS = 'Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.'
 SELLER_ARMORS = 'Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.'
 SELLER_SETS = 'Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.'
 -- Match longer/more specific aliases first (strong mana before plain mana).
 SELLER_FLUID_BACKPACKS = {
-	{aliases = {'strong mana potion', 'strong mana', 'smp'}, fluidSubtype = 14, cost = 5010},
-	{aliases = {'mana fluid', 'manafluid', 'mana'}, fluidSubtype = 7, cost = 2010},
-	{aliases = {'life fluid', 'lifefluid', 'life'}, fluidSubtype = 10, cost = 1210},
+	{aliases = {'strong mana potion', 'strong mana', 'smp'}, fluidSubtype = 14, cost = 5000},
+	{aliases = {'mana fluid', 'manafluid', 'mana'}, fluidSubtype = 7, cost = 2000},
+	{aliases = {'life fluid', 'lifefluid', 'life'}, fluidSubtype = 10, cost = 1200},
 }
 
 SELLER_BUYS = {
@@ -82,9 +82,15 @@ function sellerTryBuy(cid, msg)
 	return true
 end
 
+function sellerMentionsVial(msg)
+	return npcMatchesAny(msg, {'vial', 'vials', 'flask', 'flasks', 'frasco', 'frascos'})
+end
+
 local function onMessage(cid, msg)
 	if npcIsHelp(msg) then
 		selfSay(SELLER_HELP)
+	elseif (msgcontains(msg, 'sell') or msgcontains(msg, 'vender')) and not sellerMentionsVial(msg) then
+		selfSay('I only buy empty vials. Mad buys weapons and armor.') -- antes "sell X" ofrecía comprar X
 	elseif sellerTryBuy(cid, msg) then
 		return
 	elseif msgcontains(msg, 'weapons') or msgcontains(msg, 'weapon') or msgcontains(msg, 'armas') or msgcontains(msg, 'arma') then
@@ -100,7 +106,7 @@ local function onMessage(cid, msg)
 		else
 			selfSay('You do not have any empty vials to sell.')
 		end
-	elseif msgcontains(msg, 'vial') or msgcontains(msg, 'flask') or msgcontains(msg, 'frasco') then
+	elseif sellerMentionsVial(msg) then
 		sellFluid(cid, 2006, 0, 1, 10)
 	elseif msgcontains(msg, 'life') then
 		local qty = npcParseBuyQuantity(msg)
