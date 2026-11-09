@@ -1,0 +1,1005 @@
+{
+ "_schema": "wall_sets.v1",
+ "sets": [
+  {
+   "material": "lava",
+   "parts": {
+    "vertical": [
+     {
+      "id": 1201,
+      "name": "light wall",
+      "map_uses": 9
+     }
+    ]
+   }
+  },
+  {
+   "material": "marble",
+   "parts": {
+    "horizontal": [
+     {
+      "id": 1590,
+      "name": "marble railing",
+      "map_uses": 52
+     },
+     {
+      "id": 1164,
+      "name": "marble wall",
+      "map_uses": 8
+     },
+     {
+      "id": 1178,
+      "name": "marble wall",
+      "map_uses": 6
+     },
+     {
+      "id": 1140,
+      "name": "marble wall",
+      "map_uses": 4
+     },
+     {
+      "id": 1124,
+      "name": "marble wall",
+      "map_uses": 2
+     }
+    ],
+    "unknown": [
+     {
+      "id": 1176,
+      "name": "marble wall",
+      "map_uses": 6
+     }
+    ]
+   }
+  },
+  {
+   "material": "metal",
+   "parts": {
+    "horizontal": [
+     {
+      "id": 1094,
+      "name": "metal wall",
+      "map_uses": 9
+     }
+    ]
+   }
+  },
+  {
+   "material": "none",
+   "parts": {
+    "horizontal": [
+     {
+      "id": 906,
+      "name": "stone wall",
+      "map_uses": 211
+     },
+     {
+      "id": 1061,
+      "name": "sandstone wall",
+      "map_uses": 136
+     },
+     {
+      "id": 434,
+      "name": "wooden floor",
+      "map_uses": 123
+     },
+     {
+      "id": 1045,
+      "name": "framework wall",
+      "map_uses": 69
+     },
+     {
+      "id": 1112,
+      "name": "marble wall",
+      "map_uses": 46
+     },
+     {
+      "id": 1118,
+      "name": "marble wall",
+      "map_uses": 41
+     },
+     {
+      "id": 1197,
+      "name": "light wall",
+      "map_uses": 26
+     },
+     {
+      "id": 1068,
+      "name": "sandstone wall",
+      "map_uses": 16
+     },
+     {
+      "id": 1057,
+      "name": "stone wall",
+      "map_uses": 9
+     },
+     {
+      "id": 1199,
+      "name": "light wall",
+      "map_uses": 9
+     },
+     {
+      "id": 1515,
+      "name": "marble pillar",
+      "map_uses": 8
+     },
+     {
+      "id": 3424,
+      "name": "bamboo wall",
+      "map_uses": 8
+     },
+     {
+      "id": 1113,
+      "name": "marble wall",
+      "map_uses": 6
+     },
+     {
+      "id": 945,
+      "name": "wooden roof",
+      "map_uses": 5
+     },
+     {
+      "id": 932,
+      "name": "tiled roof",
+      "map_uses": 2
+     },
+     {
+      "id": 1192,
+      "name": "marble wall",
+      "map_uses": 2
+     },
+     {
+      "id": 1267,
+      "name": "stone window",
+      "map_uses": 2
+     },
+     {
+      "id": 3475,
+      "name": "stone wall",
+      "map_uses": 2
+     },
+     {
+      "id": 3869,
+      "name": "cloth wall",
+      "map_uses": 2
+     },
+     {
+      "id": 3867,
+      "name": "cloth wall",
+      "map_uses": 1
+     }
+    ],
+    "unknown": [
+     {
+      "id": 1032,
+      "name": "brick wall",
+      "map_uses": 234
+     },
+     {
+      "id": 1052,
+      "name": "stone wall",
+      "map_uses": 190
+     },
+     {
+      "id": 1547,
+      "name": "bars",
+      "map_uses": 170
+     },
+     {
+      "id": 1043,
+      "name": "framework wall",
+      "map_uses": 166
+     },
+     {
+      "id": 1065,
+      "name": "sandstone wall",
+      "map_uses": 126
+     },
+     {
+      "id": 3462,
+      "name": "stone wall",
+      "map_uses": 118
+     },
+     {
+      "id": 1546,
+      "name": "bars",
+      "map_uses": 104
+     },
+     {
+      "id": 1051,
+      "name": "stone wall",
+      "map_uses": 99
+     },
+     {
+      "id": 1062,
+      "name": "sandstone wall",
+      "map_uses": 88
+     },
+     {
+      "id": 1277,
+      "name": "wooden pilar",
+      "map_uses": 76
+     },
+     {
+      "id": 1038,
+      "name": "framework wall",
+      "map_uses": 71
+     },
+     {
+      "id": 3509,
+      "name": "wooden wall",
+      "map_uses": 36
+     },
+     {
+      "id": 1053,
+      "name": "stone wall",
+      "map_uses": 35
+     },
+     {
+      "id": 1040,
+      "name": "framework wall",
+      "map_uses": 32
+     },
+     {
+      "id": 442,
+      "name": "wooden floor",
+      "map_uses": 24
+     },
+     {
+      "id": 3423,
+      "name": "bamboo wall",
+      "map_uses": 24
+     },
+     {
+      "id": 1536,
+      "name": "fence",
+      "map_uses": 22
+     },
+     {
+      "id": 3520,
+      "name": "wooden wall",
+      "map_uses": 21
+     },
+     {
+      "id": 1042,
+      "name": "framework wall",
+      "map_uses": 20
+     },
+     {
+      "id": 1601,
+      "name": "metal railing",
+      "map_uses": 20
+     },
+     {
+      "id": 3471,
+      "name": "window",
+      "map_uses": 18
+     },
+     {
+      "id": 3448,
+      "name": "bamboo wall",
+      "map_uses": 10
+     },
+     {
+      "id": 3428,
+      "name": "bamboo wall",
+      "map_uses": 9
+     },
+     {
+      "id": 1208,
+      "name": "brick wall",
+      "map_uses": 7
+     },
+     {
+      "id": 3464,
+      "name": "stone wall",
+      "map_uses": 7
+     },
+     {
+      "id": 1059,
+      "name": "stone wall",
+      "map_uses": 6
+     },
+     {
+      "id": 1085,
+      "name": "broken wall",
+      "map_uses": 6
+     },
+     {
+      "id": 1114,
+      "name": "marble wall",
+      "map_uses": 6
+     },
+     {
+      "id": 1119,
+      "name": "marble wall",
+      "map_uses": 6
+     },
+     {
+      "id": 1096,
+      "name": "metal wall",
+      "map_uses": 5
+     },
+     {
+      "id": 1198,
+      "name": "light wall",
+      "map_uses": 5
+     },
+     {
+      "id": 3530,
+      "name": "wooden wall",
+      "map_uses": 5
+     },
+     {
+      "id": 1141,
+      "name": "marble wall",
+      "map_uses": 4
+     },
+     {
+      "id": 1525,
+      "name": "stone railing",
+      "map_uses": 4
+     },
+     {
+      "id": 3511,
+      "name": "wooden wall",
+      "map_uses": 4
+     },
+     {
+      "id": 1086,
+      "name": "broken wall",
+      "map_uses": 3
+     },
+     {
+      "id": 3532,
+      "name": "wooden wall",
+      "map_uses": 3
+     },
+     {
+      "id": 1125,
+      "name": "marble wall",
+      "map_uses": 2
+     },
+     {
+      "id": 3491,
+      "name": "stone wall",
+      "map_uses": 2
+     },
+     {
+      "id": 3761,
+      "name": "bridge",
+      "map_uses": 2
+     },
+     {
+      "id": 3766,
+      "name": "pillar",
+      "map_uses": 2
+     },
+     {
+      "id": 1091,
+      "name": "metal wall",
+      "map_uses": 1
+     },
+     {
+      "id": 1120,
+      "name": "marble wall",
+      "map_uses": 1
+     },
+     {
+      "id": 1121,
+      "name": "marble wall",
+      "map_uses": 1
+     },
+     {
+      "id": 1528,
+      "name": "stone railing",
+      "map_uses": 1
+     },
+     {
+      "id": 3484,
+      "name": "stone wall",
+      "map_uses": 1
+     },
+     {
+      "id": 3779,
+      "name": "bridge",
+      "map_uses": 1
+     }
+    ],
+    "vertical": [
+     {
+      "id": 1030,
+      "name": "brick wall",
+      "map_uses": 268
+     },
+     {
+      "id": 1060,
+      "name": "sandstone wall",
+      "map_uses": 191
+     },
+     {
+      "id": 1036,
+      "name": "framework wall",
+      "map_uses": 119
+     },
+     {
+      "id": 905,
+      "name": "stone wall",
+      "map_uses": 114
+     },
+     {
+      "id": 1056,
+      "name": "stone wall",
+      "map_uses": 70
+     },
+     {
+      "id": 1526,
+      "name": "stone railing",
+      "map_uses": 70
+     },
+     {
+      "id": 1543,
+      "name": "bars",
+      "map_uses": 70
+     },
+     {
+      "id": 1111,
+      "name": "marble wall",
+      "map_uses": 60
+     },
+     {
+      "id": 1116,
+      "name": "marble wall",
+      "map_uses": 55
+     },
+     {
+      "id": 1591,
+      "name": "marble railing",
+      "map_uses": 54
+     },
+     {
+      "id": 928,
+      "name": "tiled roof",
+      "map_uses": 37
+     },
+     {
+      "id": 1054,
+      "name": "stone wall",
+      "map_uses": 37
+     },
+     {
+      "id": 1518,
+      "name": "wooden railing",
+      "map_uses": 36
+     },
+     {
+      "id": 1497,
+      "name": "magic wall",
+      "map_uses": 19
+     },
+     {
+      "id": 1266,
+      "name": "window brick wall",
+      "map_uses": 15
+     },
+     {
+      "id": 1031,
+      "name": "brick wall",
+      "map_uses": 13
+     },
+     {
+      "id": 3451,
+      "name": "bamboo wall",
+      "map_uses": 11
+     },
+     {
+      "id": 1087,
+      "name": "broken wall",
+      "map_uses": 10
+     },
+     {
+      "id": 1088,
+      "name": "broken wall",
+      "map_uses": 9
+     },
+     {
+      "id": 1534,
+      "name": "fence",
+      "map_uses": 8
+     },
+     {
+      "id": 1519,
+      "name": "wooden railing",
+      "map_uses": 6
+     },
+     {
+      "id": 3516,
+      "name": "wooden wall",
+      "map_uses": 6
+     },
+     {
+      "id": 3776,
+      "name": "bridge",
+      "map_uses": 6
+     },
+     {
+      "id": 959,
+      "name": "wooden roof",
+      "map_uses": 5
+     },
+     {
+      "id": 1196,
+      "name": "light wall",
+      "map_uses": 5
+     },
+     {
+      "id": 1206,
+      "name": "brick wall",
+      "map_uses": 5
+     },
+     {
+      "id": 3777,
+      "name": "bridge",
+      "map_uses": 5
+     },
+     {
+      "id": 3796,
+      "name": "bamboo wall",
+      "map_uses": 4
+     },
+     {
+      "id": 3430,
+      "name": "bamboo wall",
+      "map_uses": 3
+     },
+     {
+      "id": 3466,
+      "name": "stone wall",
+      "map_uses": 2
+     },
+     {
+      "id": 3488,
+      "name": "stone wall",
+      "map_uses": 2
+     },
+     {
+      "id": 3485,
+      "name": "stone wall",
+      "map_uses": 1
+     },
+     {
+      "id": 4197,
+      "name": "log",
+      "map_uses": 1
+     }
+    ],
+    "none": [
+     {
+      "id": 909,
+      "name": "stone wall",
+      "map_uses": 19
+     }
+    ],
+    "corner_se": [
+     {
+      "id": 1066,
+      "name": "sandstone wall",
+      "map_uses": 27
+     },
+     {
+      "id": 1033,
+      "name": "brick wall",
+      "map_uses": 26
+     },
+     {
+      "id": 1064,
+      "name": "sandstone wall",
+      "map_uses": 20
+     },
+     {
+      "id": 913,
+      "name": "stone wall",
+      "map_uses": 10
+     },
+     {
+      "id": 1530,
+      "name": "stone railing",
+      "map_uses": 7
+     },
+     {
+      "id": 3531,
+      "name": "wooden wall",
+      "map_uses": 6
+     },
+     {
+      "id": 1127,
+      "name": "marble wall",
+      "map_uses": 2
+     },
+     {
+      "id": 1099,
+      "name": "metal wall",
+      "map_uses": 1
+     },
+     {
+      "id": 1191,
+      "name": "marble wall",
+      "map_uses": 1
+     },
+     {
+      "id": 1202,
+      "name": "light wall",
+      "map_uses": 1
+     },
+     {
+      "id": 1204,
+      "name": "light wall",
+      "map_uses": 1
+     },
+     {
+      "id": 3489,
+      "name": "stone wall",
+      "map_uses": 1
+     }
+    ],
+    "corner_nw": [
+     {
+      "id": 1070,
+      "name": "sandstone wall",
+      "map_uses": 46
+     },
+     {
+      "id": 1044,
+      "name": "framework wall",
+      "map_uses": 27
+     },
+     {
+      "id": 1598,
+      "name": "metal railing",
+      "map_uses": 22
+     },
+     {
+      "id": 3473,
+      "name": "stone wall",
+      "map_uses": 18
+     },
+     {
+      "id": 1115,
+      "name": "marble wall",
+      "map_uses": 7
+     },
+     {
+      "id": 1207,
+      "name": "brick wall",
+      "map_uses": 7
+     },
+     {
+      "id": 1126,
+      "name": "marble wall",
+      "map_uses": 2
+     },
+     {
+      "id": 3495,
+      "name": "stone wall",
+      "map_uses": 1
+     }
+    ]
+   }
+  },
+  {
+   "material": "sand",
+   "parts": {
+    "horizontal": [
+     {
+      "id": 1063,
+      "name": "sandstone wall",
+      "map_uses": 255
+     },
+     {
+      "id": 1069,
+      "name": "sandstone wall",
+      "map_uses": 201
+     }
+    ],
+    "vertical": [
+     {
+      "id": 1067,
+      "name": "sandstone wall",
+      "map_uses": 274
+     }
+    ],
+    "pole": [
+     {
+      "id": 1560,
+      "name": "egipcian column",
+      "map_uses": 2
+     }
+    ]
+   }
+  },
+  {
+   "material": "stone",
+   "parts": {
+    "vertical": [
+     {
+      "id": 903,
+      "name": "stone wall",
+      "map_uses": 467
+     },
+     {
+      "id": 1049,
+      "name": "stone wall",
+      "map_uses": 384
+     },
+     {
+      "id": 1025,
+      "name": "brick wall",
+      "map_uses": 197
+     },
+     {
+      "id": 3463,
+      "name": "stone wall",
+      "map_uses": 132
+     },
+     {
+      "id": 910,
+      "name": "stone wall",
+      "map_uses": 128
+     },
+     {
+      "id": 908,
+      "name": "stone wall",
+      "map_uses": 103
+     },
+     {
+      "id": 1055,
+      "name": "stone wall",
+      "map_uses": 8
+     },
+     {
+      "id": 1205,
+      "name": "brick wall",
+      "map_uses": 5
+     },
+     {
+      "id": 3487,
+      "name": "stone wall",
+      "map_uses": 1
+     }
+    ],
+    "horizontal": [
+     {
+      "id": 1034,
+      "name": "brick wall",
+      "map_uses": 354
+     },
+     {
+      "id": 1050,
+      "name": "stone wall",
+      "map_uses": 333
+     },
+     {
+      "id": 1028,
+      "name": "brick wall",
+      "map_uses": 290
+     },
+     {
+      "id": 904,
+      "name": "stone wall",
+      "map_uses": 261
+     },
+     {
+      "id": 912,
+      "name": "stone wall",
+      "map_uses": 170
+     },
+     {
+      "id": 3454,
+      "name": "stone wall",
+      "map_uses": 134
+     },
+     {
+      "id": 1026,
+      "name": "brick wall",
+      "map_uses": 116
+     },
+     {
+      "id": 1058,
+      "name": "stone wall",
+      "map_uses": 77
+     },
+     {
+      "id": 938,
+      "name": "tiled roof",
+      "map_uses": 47
+     },
+     {
+      "id": 1273,
+      "name": "sandstone window",
+      "map_uses": 8
+     },
+     {
+      "id": 1084,
+      "name": "broken wall",
+      "map_uses": 4
+     },
+     {
+      "id": 3474,
+      "name": "stone wall",
+      "map_uses": 2
+     }
+    ],
+    "corner_nw": [
+     {
+      "id": 911,
+      "name": "stone wall",
+      "map_uses": 17
+     },
+     {
+      "id": 1029,
+      "name": "brick wall",
+      "map_uses": 15
+     }
+    ],
+    "none": [
+     {
+      "id": 1027,
+      "name": "brick wall",
+      "map_uses": 164
+     },
+     {
+      "id": 1200,
+      "name": "light wall",
+      "map_uses": 3
+     },
+     {
+      "id": 1345,
+      "name": "stone",
+      "map_uses": 2
+     }
+    ],
+    "corner_se": [
+     {
+      "id": 1117,
+      "name": "marble wall",
+      "map_uses": 4
+     }
+    ],
+    "end": [
+     {
+      "id": 3492,
+      "name": "stone wall",
+      "map_uses": 1
+     }
+    ]
+   }
+  },
+  {
+   "material": "wood",
+   "parts": {
+    "vertical": [
+     {
+      "id": 1041,
+      "name": "framework wall",
+      "map_uses": 134
+     },
+     {
+      "id": 437,
+      "name": "wooden floor",
+      "map_uses": 114
+     },
+     {
+      "id": 1264,
+      "name": "framework window",
+      "map_uses": 74
+     },
+     {
+      "id": 3517,
+      "name": "wooden wall",
+      "map_uses": 14
+     },
+     {
+      "id": 1538,
+      "name": "fence",
+      "map_uses": 2
+     }
+    ],
+    "horizontal": [
+     {
+      "id": 1039,
+      "name": "framework wall",
+      "map_uses": 226
+     },
+     {
+      "id": 1037,
+      "name": "framework wall",
+      "map_uses": 93
+     },
+     {
+      "id": 3426,
+      "name": "bamboo wall",
+      "map_uses": 39
+     },
+     {
+      "id": 3512,
+      "name": "wooden wall",
+      "map_uses": 37
+     },
+     {
+      "id": 3353,
+      "name": "wooden roof",
+      "map_uses": 34
+     },
+     {
+      "id": 1517,
+      "name": "wooden railing",
+      "map_uses": 26
+     },
+     {
+      "id": 1516,
+      "name": "wooden railing",
+      "map_uses": 8
+     },
+     {
+      "id": 1537,
+      "name": "fence",
+      "map_uses": 5
+     },
+     {
+      "id": 3797,
+      "name": "bamboo wall",
+      "map_uses": 4
+     }
+    ],
+    "corner_nw": [
+     {
+      "id": 1046,
+      "name": "framework wall",
+      "map_uses": 10
+     },
+     {
+      "id": 3425,
+      "name": "bamboo wall",
+      "map_uses": 6
+     },
+     {
+      "id": 3427,
+      "name": "bamboo wall",
+      "map_uses": 1
+     },
+     {
+      "id": 3897,
+      "name": "cloth wall",
+      "map_uses": 1
+     }
+    ],
+    "corner_se": [
+     {
+      "id": 3429,
+      "name": "bamboo wall",
+      "map_uses": 5
+     }
+    ],
+    "unknown": [
+     {
+      "id": 3798,
+      "name": "bamboo wall",
+      "map_uses": 1
+     }
+    ],
+    "none": [
+     {
+      "id": 3799,
+      "name": "bamboo wall",
+      "map_uses": 1
+     },
+     {
+      "id": 3801,
+      "name": "bamboo wall",
+      "map_uses": 1
+     }
+    ]
+   }
+  }
+ ]
+}

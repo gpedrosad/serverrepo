@@ -1,0 +1,5719 @@
+{
+ "_schema": "review.v1",
+ "count": 683,
+ "items": [
+  {
+   "id": 3263,
+   "name": "grass",
+   "map_uses": 1142,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 724,
+   "name": "cobbled pavement",
+   "map_uses": 467,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 371,
+   "name": "dirt wall",
+   "map_uses": 405,
+   "reasons": [
+    "categoría ground"
+   ]
+  },
+  {
+   "id": 372,
+   "name": "dirt wall",
+   "map_uses": 380,
+   "reasons": [
+    "sin flag ground_border",
+    "categoría ground"
+   ]
+  },
+  {
+   "id": 111,
+   "name": "grass",
+   "map_uses": 302,
+   "reasons": [
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 671,
+   "name": "ice",
+   "map_uses": 288,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 374,
+   "name": "dirt wall",
+   "map_uses": 275,
+   "reasons": [
+    "categoría ground"
+   ]
+  },
+  {
+   "id": 373,
+   "name": "dirt wall",
+   "map_uses": 273,
+   "reasons": [
+    "sin flag ground_border",
+    "categoría ground"
+   ]
+  },
+  {
+   "id": 112,
+   "name": "grass",
+   "map_uses": 254,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 113,
+   "name": "grass",
+   "map_uses": 242,
+   "reasons": [
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 1032,
+   "name": "brick wall",
+   "map_uses": 234,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 4645,
+   "name": "shallow water",
+   "map_uses": 234,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 906,
+   "name": "stone wall",
+   "map_uses": 211,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1387,
+   "name": "magic forcefield",
+   "map_uses": 207,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1060,
+   "name": "sandstone wall",
+   "map_uses": 191,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1052,
+   "name": "stone wall",
+   "map_uses": 190,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1547,
+   "name": "bars",
+   "map_uses": 170,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1043,
+   "name": "framework wall",
+   "map_uses": 166,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.58"
+   ]
+  },
+  {
+   "id": 3139,
+   "name": "wooden roof",
+   "map_uses": 154,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2061,
+   "name": "wall torch",
+   "map_uses": 144,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1509,
+   "name": "lava",
+   "map_uses": 141,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1061,
+   "name": "sandstone wall",
+   "map_uses": 136,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 3463,
+   "name": "stone wall",
+   "map_uses": 132,
+   "reasons": [
+    "sin flag ground_border"
+   ]
+  },
+  {
+   "id": 4634,
+   "name": "shallow water",
+   "map_uses": 127,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1065,
+   "name": "sandstone wall",
+   "map_uses": 126,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 434,
+   "name": "wooden floor",
+   "map_uses": 123,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.3"
+   ]
+  },
+  {
+   "id": 435,
+   "name": "wooden floor",
+   "map_uses": 119,
+   "reasons": [
+    "confianza 0.45",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 1036,
+   "name": "framework wall",
+   "map_uses": 119,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 3462,
+   "name": "stone wall",
+   "map_uses": 118,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.58"
+   ]
+  },
+  {
+   "id": 905,
+   "name": "stone wall",
+   "map_uses": 114,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 4651,
+   "name": "shallow water",
+   "map_uses": 112,
+   "reasons": [
+    "flag ground_border y categoría borde"
+   ]
+  },
+  {
+   "id": 4667,
+   "name": "dirt",
+   "map_uses": 112,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 353,
+   "name": "dirt",
+   "map_uses": 111,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4655,
+   "name": "shallow water",
+   "map_uses": 109,
+   "reasons": [
+    "flag ground_border y categoría borde"
+   ]
+  },
+  {
+   "id": 1546,
+   "name": "bars",
+   "map_uses": 104,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1051,
+   "name": "stone wall",
+   "map_uses": 99,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1596,
+   "name": "metal railing",
+   "map_uses": 99,
+   "reasons": [
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 4648,
+   "name": "shallow water",
+   "map_uses": 94,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 4650,
+   "name": "shallow water",
+   "map_uses": 94,
+   "reasons": [
+    "flag ground_border y categoría borde"
+   ]
+  },
+  {
+   "id": 114,
+   "name": "grass",
+   "map_uses": 92,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 936,
+   "name": "tiled roof",
+   "map_uses": 91,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1336,
+   "name": "stone",
+   "map_uses": 90,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 116,
+   "name": "grass",
+   "map_uses": 89,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1062,
+   "name": "sandstone wall",
+   "map_uses": 88,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 457,
+   "name": "marble",
+   "map_uses": 86,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4649,
+   "name": "shallow water",
+   "map_uses": 86,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 922,
+   "name": "flat roof",
+   "map_uses": 82,
+   "reasons": [
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 4653,
+   "name": "shallow water",
+   "map_uses": 82,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 4669,
+   "name": "dirt",
+   "map_uses": 80,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 115,
+   "name": "grass",
+   "map_uses": 79,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 117,
+   "name": "grass",
+   "map_uses": 79,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1277,
+   "name": "wooden pilar",
+   "map_uses": 76,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 120,
+   "name": "grass",
+   "map_uses": 73,
+   "reasons": [
+    "flag unpassable del .dat",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 118,
+   "name": "grass",
+   "map_uses": 72,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.5",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 381,
+   "name": "dirt wall",
+   "map_uses": 72,
+   "reasons": [
+    "sin flag ground_border"
+   ]
+  },
+  {
+   "id": 907,
+   "name": "stone wall",
+   "map_uses": 72,
+   "reasons": [
+    "confianza 0.45"
+   ]
+  },
+  {
+   "id": 1038,
+   "name": "framework wall",
+   "map_uses": 71,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 4544,
+   "name": "grass",
+   "map_uses": 71,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1056,
+   "name": "stone wall",
+   "map_uses": 70,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1526,
+   "name": "stone railing",
+   "map_uses": 70,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1543,
+   "name": "bars",
+   "map_uses": 70,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1045,
+   "name": "framework wall",
+   "map_uses": 69,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 2040,
+   "name": "wall lamp",
+   "map_uses": 62,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 119,
+   "name": "grass",
+   "map_uses": 61,
+   "reasons": [
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 1111,
+   "name": "marble wall",
+   "map_uses": 60,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 377,
+   "name": "dirt wall",
+   "map_uses": 59,
+   "reasons": [
+    "categoría ground"
+   ]
+  },
+  {
+   "id": 3305,
+   "name": "grass",
+   "map_uses": 59,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 4635,
+   "name": "shallow water",
+   "map_uses": 59,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 121,
+   "name": "grass",
+   "map_uses": 58,
+   "reasons": [
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 3304,
+   "name": "grass",
+   "map_uses": 58,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1491,
+   "name": "energy",
+   "map_uses": 57,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4668,
+   "name": "dirt",
+   "map_uses": 57,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1116,
+   "name": "marble wall",
+   "map_uses": 55,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 3177,
+   "name": "strange carving",
+   "map_uses": 55,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 836,
+   "name": "sand",
+   "map_uses": 54,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 991,
+   "name": "marble",
+   "map_uses": 54,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1591,
+   "name": "marble railing",
+   "map_uses": 54,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 2038,
+   "name": "wall lamp",
+   "map_uses": 52,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3265,
+   "name": "mud",
+   "map_uses": 52,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 791,
+   "name": "grass",
+   "map_uses": 51,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4398,
+   "name": "red carpet",
+   "map_uses": 51,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 458,
+   "name": "wooden floor",
+   "map_uses": 50,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4542,
+   "name": "grass",
+   "map_uses": 50,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1492,
+   "name": "fire",
+   "map_uses": 49,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 109,
+   "name": "flowers",
+   "map_uses": 46,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1070,
+   "name": "sandstone wall",
+   "map_uses": 46,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 1112,
+   "name": "marble wall",
+   "map_uses": 46,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 3307,
+   "name": "grass",
+   "map_uses": 42,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 1118,
+   "name": "marble wall",
+   "map_uses": 41,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 108,
+   "name": "flowers",
+   "map_uses": 40,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 427,
+   "name": "trapdoor",
+   "map_uses": 39,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1396,
+   "name": "stairs",
+   "map_uses": 39,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2737,
+   "name": "wheat",
+   "map_uses": 38,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4638,
+   "name": "shallow water",
+   "map_uses": 38,
+   "reasons": [
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 780,
+   "name": "sand stone",
+   "map_uses": 37,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 781,
+   "name": "sand stone",
+   "map_uses": 37,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1054,
+   "name": "stone wall",
+   "map_uses": 37,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1488,
+   "name": "fire",
+   "map_uses": 37,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1518,
+   "name": "wooden railing",
+   "map_uses": 36,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 3509,
+   "name": "wooden wall",
+   "map_uses": 36,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1053,
+   "name": "stone wall",
+   "map_uses": 35,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 1812,
+   "name": "tapestry",
+   "map_uses": 35,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 378,
+   "name": "dirt wall",
+   "map_uses": 34,
+   "reasons": [
+    "categoría ground"
+   ]
+  },
+  {
+   "id": 779,
+   "name": "sand stone",
+   "map_uses": 33,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1040,
+   "name": "framework wall",
+   "map_uses": 32,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 1265,
+   "name": "window brick wall",
+   "map_uses": 32,
+   "reasons": [
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 4007,
+   "name": "willow",
+   "map_uses": 31,
+   "reasons": [
+    "confianza 0.45"
+   ]
+  },
+  {
+   "id": 4641,
+   "name": "shallow water",
+   "map_uses": 31,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 364,
+   "name": "dirt wall",
+   "map_uses": 30,
+   "reasons": [
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 367,
+   "name": "dirt wall",
+   "map_uses": 30,
+   "reasons": [
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 891,
+   "name": "stone floor",
+   "map_uses": 30,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 360,
+   "name": "dirt wall",
+   "map_uses": 29,
+   "reasons": [
+    "sin flag ground_border"
+   ]
+  },
+  {
+   "id": 4545,
+   "name": "grass",
+   "map_uses": 29,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 445,
+   "name": "wooden floor",
+   "map_uses": 27,
+   "reasons": [
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 893,
+   "name": "stone floor",
+   "map_uses": 27,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1044,
+   "name": "framework wall",
+   "map_uses": 27,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1066,
+   "name": "sandstone wall",
+   "map_uses": 27,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 1385,
+   "name": "stairs",
+   "map_uses": 27,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.58"
+   ]
+  },
+  {
+   "id": 428,
+   "name": "ladder",
+   "map_uses": 26,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1033,
+   "name": "brick wall",
+   "map_uses": 26,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1197,
+   "name": "light wall",
+   "map_uses": 26,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1489,
+   "name": "fire",
+   "map_uses": 26,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1594,
+   "name": "metal railing",
+   "map_uses": 26,
+   "reasons": [
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 947,
+   "name": "wooden roof",
+   "map_uses": 25,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4543,
+   "name": "grass",
+   "map_uses": 25,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4643,
+   "name": "shallow water",
+   "map_uses": 25,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4737,
+   "name": "snow",
+   "map_uses": 25,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 194,
+   "name": "grass",
+   "map_uses": 24,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 442,
+   "name": "wooden floor",
+   "map_uses": 24,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 443,
+   "name": "wooden floor",
+   "map_uses": 24,
+   "reasons": [
+    "confianza 0.4"
+   ]
+  },
+  {
+   "id": 3423,
+   "name": "bamboo wall",
+   "map_uses": 24,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 135,
+   "name": "sand",
+   "map_uses": 23,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 1494,
+   "name": "fire",
+   "map_uses": 23,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3302,
+   "name": "grass",
+   "map_uses": 23,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3313,
+   "name": "ant trail",
+   "map_uses": 23,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 1536,
+   "name": "fence",
+   "map_uses": 22,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1595,
+   "name": "metal railing",
+   "map_uses": 22,
+   "reasons": [
+    "sin flag ground_border"
+   ]
+  },
+  {
+   "id": 1598,
+   "name": "metal railing",
+   "map_uses": 22,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.45"
+   ]
+  },
+  {
+   "id": 3303,
+   "name": "grass",
+   "map_uses": 22,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 134,
+   "name": "sand",
+   "map_uses": 21,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.42"
+   ]
+  },
+  {
+   "id": 1285,
+   "name": "stone",
+   "map_uses": 21,
+   "reasons": [
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 3520,
+   "name": "wooden wall",
+   "map_uses": 21,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 444,
+   "name": "wooden floor",
+   "map_uses": 20,
+   "reasons": [
+    "confianza 0.4"
+   ]
+  },
+  {
+   "id": 1042,
+   "name": "framework wall",
+   "map_uses": 20,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1064,
+   "name": "sandstone wall",
+   "map_uses": 20,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1601,
+   "name": "metal railing",
+   "map_uses": 20,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 3209,
+   "name": "strange carving",
+   "map_uses": 20,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 432,
+   "name": "stair",
+   "map_uses": 19,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 909,
+   "name": "stone wall",
+   "map_uses": 19,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1497,
+   "name": "magic wall",
+   "map_uses": 19,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 3300,
+   "name": "grass",
+   "map_uses": 19,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 4640,
+   "name": "shallow water",
+   "map_uses": 19,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 4742,
+   "name": "snow",
+   "map_uses": 19,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 125,
+   "name": "grass",
+   "map_uses": 18,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 1670,
+   "name": "green cushioned chair",
+   "map_uses": 18,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1941,
+   "name": "green fungi",
+   "map_uses": 18,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3299,
+   "name": "grass",
+   "map_uses": 18,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3471,
+   "name": "window",
+   "map_uses": 18,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 3473,
+   "name": "stone wall",
+   "map_uses": 18,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 4746,
+   "name": "snow",
+   "map_uses": 18,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 122,
+   "name": "grass",
+   "map_uses": 17,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 441,
+   "name": "wooden floor",
+   "map_uses": 17,
+   "reasons": [
+    "sin flag ground_border"
+   ]
+  },
+  {
+   "id": 2700,
+   "name": "firetree",
+   "map_uses": 17,
+   "reasons": [
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 3308,
+   "name": "grass",
+   "map_uses": 17,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4401,
+   "name": "red carpet",
+   "map_uses": 17,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 124,
+   "name": "grass",
+   "map_uses": 16,
+   "reasons": [
+    "sin flag ground_border"
+   ]
+  },
+  {
+   "id": 1068,
+   "name": "sandstone wall",
+   "map_uses": 16,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1493,
+   "name": "fire",
+   "map_uses": 16,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4671,
+   "name": "dirt",
+   "map_uses": 16,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 123,
+   "name": "grass",
+   "map_uses": 15,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 447,
+   "name": "wooden floor",
+   "map_uses": 15,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1266,
+   "name": "window brick wall",
+   "map_uses": 15,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 4675,
+   "name": "dirt",
+   "map_uses": 15,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 898,
+   "name": "stone floor",
+   "map_uses": 14,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "confianza 0.38"
+   ]
+  },
+  {
+   "id": 3210,
+   "name": "strange carving",
+   "map_uses": 14,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 892,
+   "name": "stone floor",
+   "map_uses": 13,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 896,
+   "name": "stone floor",
+   "map_uses": 13,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "confianza 0.45"
+   ]
+  },
+  {
+   "id": 1031,
+   "name": "brick wall",
+   "map_uses": 13,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1211,
+   "name": "open door",
+   "map_uses": 13,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1495,
+   "name": "energy",
+   "map_uses": 13,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1645,
+   "name": "altar stone",
+   "map_uses": 13,
+   "reasons": [
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 1798,
+   "name": "red carpet",
+   "map_uses": 13,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 440,
+   "name": "wooden floor",
+   "map_uses": 12,
+   "reasons": [
+    "confianza 0.42"
+   ]
+  },
+  {
+   "id": 507,
+   "name": "water",
+   "map_uses": 12,
+   "reasons": [
+    "sin flag ground_border"
+   ]
+  },
+  {
+   "id": 894,
+   "name": "stone floor",
+   "map_uses": 12,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 927,
+   "name": "tiled roof",
+   "map_uses": 12,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1671,
+   "name": "green cushioned chair",
+   "map_uses": 12,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1672,
+   "name": "green cushioned chair",
+   "map_uses": 12,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1673,
+   "name": "green cushioned chair",
+   "map_uses": 12,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3176,
+   "name": "strange carving",
+   "map_uses": 12,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3178,
+   "name": "strange carving",
+   "map_uses": 12,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 4179,
+   "name": "mushroom",
+   "map_uses": 12,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4672,
+   "name": "dirt",
+   "map_uses": 12,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 4673,
+   "name": "dirt",
+   "map_uses": 12,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 916,
+   "name": "stone archway",
+   "map_uses": 11,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 917,
+   "name": "stone archway",
+   "map_uses": 11,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 923,
+   "name": "flat roof",
+   "map_uses": 11,
+   "reasons": [
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 1214,
+   "name": "open door",
+   "map_uses": 11,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1390,
+   "name": "ramp",
+   "map_uses": 11,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1391,
+   "name": "ramp",
+   "map_uses": 11,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 1900,
+   "name": "bloodspot",
+   "map_uses": 11,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2738,
+   "name": "wheat",
+   "map_uses": 11,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3451,
+   "name": "bamboo wall",
+   "map_uses": 11,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 4677,
+   "name": "dirt",
+   "map_uses": 11,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 232,
+   "name": "grass",
+   "map_uses": 10,
+   "reasons": [
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 913,
+   "name": "stone wall",
+   "map_uses": 10,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 914,
+   "name": "stone archway",
+   "map_uses": 10,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 915,
+   "name": "stone archway",
+   "map_uses": 10,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1087,
+   "name": "broken wall",
+   "map_uses": 10,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1490,
+   "name": "poison field",
+   "map_uses": 10,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2006,
+   "name": "vial",
+   "map_uses": 10,
+   "reasons": [
+    "flag unpassable del .dat",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 3448,
+   "name": "bamboo wall",
+   "map_uses": 10,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 3570,
+   "name": "waterfall",
+   "map_uses": 10,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3572,
+   "name": "waterfall",
+   "map_uses": 10,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3574,
+   "name": "waterfall",
+   "map_uses": 10,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4549,
+   "name": "grass",
+   "map_uses": 10,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4747,
+   "name": "snow",
+   "map_uses": 10,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 137,
+   "name": "sand",
+   "map_uses": 9,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 806,
+   "name": "dirt",
+   "map_uses": 9,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1057,
+   "name": "stone wall",
+   "map_uses": 9,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1088,
+   "name": "broken wall",
+   "map_uses": 9,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1199,
+   "name": "light wall",
+   "map_uses": 9,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1504,
+   "name": "yellow energy",
+   "map_uses": 9,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1644,
+   "name": "altar stone",
+   "map_uses": 9,
+   "reasons": [
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 1938,
+   "name": "green fungi",
+   "map_uses": 9,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2781,
+   "name": "jungle gras",
+   "map_uses": 9,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3301,
+   "name": "grass",
+   "map_uses": 9,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 3428,
+   "name": "bamboo wall",
+   "map_uses": 9,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 4674,
+   "name": "dirt",
+   "map_uses": 9,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4676,
+   "name": "dirt",
+   "map_uses": 9,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4740,
+   "name": "snow",
+   "map_uses": 9,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 128,
+   "name": "grass",
+   "map_uses": 8,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 413,
+   "name": "a tile",
+   "map_uses": 8,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 449,
+   "name": "wooden floor",
+   "map_uses": 8,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 895,
+   "name": "stone floor",
+   "map_uses": 8,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "confianza 0.55",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 897,
+   "name": "stone floor",
+   "map_uses": 8,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "confianza 0.4"
+   ]
+  },
+  {
+   "id": 1515,
+   "name": "marble pillar",
+   "map_uses": 8,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1534,
+   "name": "fence",
+   "map_uses": 8,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1906,
+   "name": "spider web",
+   "map_uses": 8,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1945,
+   "name": "switch",
+   "map_uses": 8,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2740,
+   "name": "moonflowers",
+   "map_uses": 8,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3298,
+   "name": "grass",
+   "map_uses": 8,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 3424,
+   "name": "bamboo wall",
+   "map_uses": 8,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 4224,
+   "name": "branch",
+   "map_uses": 8,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4745,
+   "name": "snow",
+   "map_uses": 8,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 145,
+   "name": "sand",
+   "map_uses": 7,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 197,
+   "name": "grass",
+   "map_uses": 7,
+   "reasons": [
+    "flag unpassable del .dat",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 198,
+   "name": "grass",
+   "map_uses": 7,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 233,
+   "name": "grass",
+   "map_uses": 7,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 429,
+   "name": "trapdoor",
+   "map_uses": 7,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 902,
+   "name": "stone floor",
+   "map_uses": 7,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1115,
+   "name": "marble wall",
+   "map_uses": 7,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 1207,
+   "name": "brick wall",
+   "map_uses": 7,
+   "reasons": [
+    "flag unpassable del .dat",
+    "categoría wall",
+    "confianza 0.35"
+   ]
+  },
+  {
+   "id": 1208,
+   "name": "brick wall",
+   "map_uses": 7,
+   "reasons": [
+    "flag unpassable del .dat",
+    "categoría wall",
+    "confianza 0.45"
+   ]
+  },
+  {
+   "id": 1215,
+   "name": "wooden door",
+   "map_uses": 7,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.4",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 1216,
+   "name": "wooden door",
+   "map_uses": 7,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1399,
+   "name": "ramp",
+   "map_uses": 7,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1401,
+   "name": "ramp",
+   "map_uses": 7,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1530,
+   "name": "stone railing",
+   "map_uses": 7,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1903,
+   "name": "bloodspot",
+   "map_uses": 7,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1904,
+   "name": "bloodspot",
+   "map_uses": 7,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3180,
+   "name": "strange carving",
+   "map_uses": 7,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3306,
+   "name": "grass",
+   "map_uses": 7,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 3309,
+   "name": "grass",
+   "map_uses": 7,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 3464,
+   "name": "stone wall",
+   "map_uses": 7,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 4138,
+   "name": "plant",
+   "map_uses": 7,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4550,
+   "name": "grass",
+   "map_uses": 7,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 130,
+   "name": "grass",
+   "map_uses": 6,
+   "reasons": [
+    "confianza 0.3",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 132,
+   "name": "grass",
+   "map_uses": 6,
+   "reasons": [
+    "confianza 0.55",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 142,
+   "name": "sand",
+   "map_uses": 6,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 235,
+   "name": "grass",
+   "map_uses": 6,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 242,
+   "name": "grass",
+   "map_uses": 6,
+   "reasons": [
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 713,
+   "name": "tar",
+   "map_uses": 6,
+   "reasons": [
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 900,
+   "name": "stone floor",
+   "map_uses": 6,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 1059,
+   "name": "stone wall",
+   "map_uses": 6,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 1085,
+   "name": "broken wall",
+   "map_uses": 6,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1113,
+   "name": "marble wall",
+   "map_uses": 6,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 1114,
+   "name": "marble wall",
+   "map_uses": 6,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1119,
+   "name": "marble wall",
+   "map_uses": 6,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1227,
+   "name": "closed door",
+   "map_uses": 6,
+   "reasons": [
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 1354,
+   "name": "stone",
+   "map_uses": 6,
+   "reasons": [
+    "confianza 0.45"
+   ]
+  },
+  {
+   "id": 1406,
+   "name": "grave",
+   "map_uses": 6,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1519,
+   "name": "wooden railing",
+   "map_uses": 6,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1795,
+   "name": "red carpet",
+   "map_uses": 6,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 1905,
+   "name": "bloodspot",
+   "map_uses": 6,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1937,
+   "name": "green fungi",
+   "map_uses": 6,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 2067,
+   "name": "wall lamp",
+   "map_uses": 6,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2815,
+   "name": "rat skeleton",
+   "map_uses": 6,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3133,
+   "name": "human skeleton",
+   "map_uses": 6,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3516,
+   "name": "wooden wall",
+   "map_uses": 6,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 3531,
+   "name": "wooden wall",
+   "map_uses": 6,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 3776,
+   "name": "bridge",
+   "map_uses": 6,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 4678,
+   "name": "dirt",
+   "map_uses": 6,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 129,
+   "name": "grass",
+   "map_uses": 5,
+   "reasons": [
+    "flag unpassable del .dat",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 144,
+   "name": "sand",
+   "map_uses": 5,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 238,
+   "name": "grass",
+   "map_uses": 5,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 420,
+   "name": "tiled floor",
+   "map_uses": 5,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 426,
+   "name": "stone tile",
+   "map_uses": 5,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 469,
+   "name": "hole",
+   "map_uses": 5,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 782,
+   "name": "sand stone",
+   "map_uses": 5,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 945,
+   "name": "wooden roof",
+   "map_uses": 5,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 959,
+   "name": "wooden roof",
+   "map_uses": 5,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1096,
+   "name": "metal wall",
+   "map_uses": 5,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1196,
+   "name": "light wall",
+   "map_uses": 5,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1198,
+   "name": "light wall",
+   "map_uses": 5,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1205,
+   "name": "brick wall",
+   "map_uses": 5,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1206,
+   "name": "brick wall",
+   "map_uses": 5,
+   "reasons": [
+    "flag unpassable del .dat",
+    "categoría wall",
+    "confianza 0.45"
+   ]
+  },
+  {
+   "id": 1394,
+   "name": "ramp",
+   "map_uses": 5,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1395,
+   "name": "ramp",
+   "map_uses": 5,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1487,
+   "name": "fire",
+   "map_uses": 5,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1527,
+   "name": "stone railing",
+   "map_uses": 5,
+   "reasons": [
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 1531,
+   "name": "stone railing",
+   "map_uses": 5,
+   "reasons": [
+    "sin flag ground_border"
+   ]
+  },
+  {
+   "id": 1774,
+   "name": "barrel",
+   "map_uses": 5,
+   "reasons": [
+    "confianza 0.55",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 1797,
+   "name": "red carpet",
+   "map_uses": 5,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1799,
+   "name": "red carpet",
+   "map_uses": 5,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2113,
+   "name": "shipmodel",
+   "map_uses": 5,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3267,
+   "name": "grass",
+   "map_uses": 5,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3312,
+   "name": "ant trail",
+   "map_uses": 5,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 3317,
+   "name": "ant trail",
+   "map_uses": 5,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "confianza 0.55",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 3429,
+   "name": "bamboo wall",
+   "map_uses": 5,
+   "reasons": [
+    "sin flag ground_border"
+   ]
+  },
+  {
+   "id": 3530,
+   "name": "wooden wall",
+   "map_uses": 5,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 3535,
+   "name": "closed door",
+   "map_uses": 5,
+   "reasons": [
+    "confianza 0.35",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 3777,
+   "name": "bridge",
+   "map_uses": 5,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 4183,
+   "name": "small mushrooms",
+   "map_uses": 5,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4546,
+   "name": "grass",
+   "map_uses": 5,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 139,
+   "name": "sand",
+   "map_uses": 4,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 236,
+   "name": "grass",
+   "map_uses": 4,
+   "reasons": [
+    "sin flag ground_border"
+   ]
+  },
+  {
+   "id": 240,
+   "name": "grass",
+   "map_uses": 4,
+   "reasons": [
+    "flag unpassable del .dat",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 409,
+   "name": "ladder",
+   "map_uses": 4,
+   "reasons": [
+    "dat flag ground",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 423,
+   "name": "stair",
+   "map_uses": 4,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 425,
+   "name": "stone tile",
+   "map_uses": 4,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 784,
+   "name": "sand stone",
+   "map_uses": 4,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 965,
+   "name": "white marble floor",
+   "map_uses": 4,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1140,
+   "name": "marble wall",
+   "map_uses": 4,
+   "reasons": [
+    "confianza 0.5",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 1141,
+   "name": "marble wall",
+   "map_uses": 4,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.45"
+   ]
+  },
+  {
+   "id": 1378,
+   "name": "small basin",
+   "map_uses": 4,
+   "reasons": [
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 1392,
+   "name": "ramp",
+   "map_uses": 4,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1393,
+   "name": "ramp",
+   "map_uses": 4,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1403,
+   "name": "ramp",
+   "map_uses": 4,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1405,
+   "name": "ramp",
+   "map_uses": 4,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1415,
+   "name": "buried coffin",
+   "map_uses": 4,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1416,
+   "name": "buried coffin",
+   "map_uses": 4,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 1525,
+   "name": "stone railing",
+   "map_uses": 4,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1662,
+   "name": "bank",
+   "map_uses": 4,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1663,
+   "name": "bank",
+   "map_uses": 4,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1813,
+   "name": "tapestry",
+   "map_uses": 4,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1815,
+   "name": "blackboard",
+   "map_uses": 4,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1861,
+   "name": "yellow tapestry",
+   "map_uses": 4,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1934,
+   "name": "green fungi",
+   "map_uses": 4,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1943,
+   "name": "green fungi",
+   "map_uses": 4,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 3211,
+   "name": "strange carving",
+   "map_uses": 4,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3213,
+   "name": "strange carving",
+   "map_uses": 4,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 3214,
+   "name": "strange carving",
+   "map_uses": 4,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3511,
+   "name": "wooden wall",
+   "map_uses": 4,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.45"
+   ]
+  },
+  {
+   "id": 3796,
+   "name": "bamboo wall",
+   "map_uses": 4,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 4762,
+   "name": "sand",
+   "map_uses": 4,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 133,
+   "name": "grass",
+   "map_uses": 3,
+   "reasons": [
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 141,
+   "name": "sand",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 195,
+   "name": "grass",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 196,
+   "name": "grass",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 451,
+   "name": "wooden floor",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 805,
+   "name": "dirt",
+   "map_uses": 3,
+   "reasons": [
+    "sin flag ground_border"
+   ]
+  },
+  {
+   "id": 807,
+   "name": "dirt",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1086,
+   "name": "broken wall",
+   "map_uses": 3,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 1220,
+   "name": "open door",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1222,
+   "name": "open door",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1229,
+   "name": "closed door",
+   "map_uses": 3,
+   "reasons": [
+    "confianza 0.45"
+   ]
+  },
+  {
+   "id": 1332,
+   "name": "stone",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 1388,
+   "name": "ramp",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1400,
+   "name": "ramp",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1440,
+   "name": "sign",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1592,
+   "name": "marble railing",
+   "map_uses": 3,
+   "reasons": [
+    "confianza 0.42"
+   ]
+  },
+  {
+   "id": 1664,
+   "name": "bank, lengthwise",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 1665,
+   "name": "bank, lengthwise",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 1822,
+   "name": "banner",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1868,
+   "name": "red tapestry",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1886,
+   "name": "orc trophy",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1902,
+   "name": "bloodspot",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1933,
+   "name": "green fungi",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.45"
+   ]
+  },
+  {
+   "id": 2069,
+   "name": "wall lamp",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3316,
+   "name": "ant trail",
+   "map_uses": 3,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 3430,
+   "name": "bamboo wall",
+   "map_uses": 3,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 3476,
+   "name": "stone archway",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3477,
+   "name": "stone archway",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3532,
+   "name": "wooden wall",
+   "map_uses": 3,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.58"
+   ]
+  },
+  {
+   "id": 3590,
+   "name": "boat",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3850,
+   "name": "hay",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3851,
+   "name": "hay",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 4397,
+   "name": "red carpet",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4399,
+   "name": "red carpet",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4744,
+   "name": "snow",
+   "map_uses": 3,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4761,
+   "name": "sand",
+   "map_uses": 3,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 4766,
+   "name": "sand",
+   "map_uses": 3,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4770,
+   "name": "sand",
+   "map_uses": 3,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 138,
+   "name": "sand",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.4",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 200,
+   "name": "grass",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 282,
+   "name": "grass",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 408,
+   "name": "trapdoor",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 411,
+   "name": "stair",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 433,
+   "name": "stairs",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 463,
+   "name": "altar",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 484,
+   "name": "hole",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 786,
+   "name": "sand stone",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 787,
+   "name": "sand stone",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 932,
+   "name": "tiled roof",
+   "map_uses": 2,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1124,
+   "name": "marble wall",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1125,
+   "name": "marble wall",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat",
+    "categoría wall",
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 1126,
+   "name": "marble wall",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat",
+    "categoría wall",
+    "confianza 0.45"
+   ]
+  },
+  {
+   "id": 1127,
+   "name": "marble wall",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat",
+    "categoría wall",
+    "confianza 0.4"
+   ]
+  },
+  {
+   "id": 1192,
+   "name": "marble wall",
+   "map_uses": 2,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.45"
+   ]
+  },
+  {
+   "id": 1217,
+   "name": "wooden door",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.35"
+   ]
+  },
+  {
+   "id": 1218,
+   "name": "wooden door",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.4",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 1252,
+   "name": "closed door",
+   "map_uses": 2,
+   "reasons": [
+    "confianza 0.5",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 1267,
+   "name": "stone window",
+   "map_uses": 2,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1311,
+   "name": "stone",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1330,
+   "name": "stone",
+   "map_uses": 2,
+   "reasons": [
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 1352,
+   "name": "stone",
+   "map_uses": 2,
+   "reasons": [
+    "confianza 0.35"
+   ]
+  },
+  {
+   "id": 1377,
+   "name": "big fontain",
+   "map_uses": 2,
+   "reasons": [
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 1474,
+   "name": "sobra statue",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1502,
+   "name": "yellow fire",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1552,
+   "name": "ramp",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 1554,
+   "name": "ramp",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1556,
+   "name": "ramp",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 1558,
+   "name": "ramp",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1667,
+   "name": "red cushioned chair",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1794,
+   "name": "red carpet",
+   "map_uses": 2,
+   "reasons": [
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 1800,
+   "name": "red carpet",
+   "map_uses": 2,
+   "reasons": [
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 1802,
+   "name": "red carpet",
+   "map_uses": 2,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 1867,
+   "name": "red tapestry",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1879,
+   "name": "white tapestry",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1882,
+   "name": "demon trophy",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1935,
+   "name": "green fungi",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 1964,
+   "name": "book",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1967,
+   "name": "parchment",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1988,
+   "name": "backpack",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2248,
+   "name": "skull",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2273,
+   "name": "adura vita",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2317,
+   "name": "dead human",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2320,
+   "name": "skull",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2414,
+   "name": "dragon lance",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 2427,
+   "name": "guardian halberd",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2431,
+   "name": "stonecutter's axe",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2607,
+   "name": "altar",
+   "map_uses": 2,
+   "reasons": [
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 2797,
+   "name": "stone",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 3166,
+   "name": "strange carving",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3167,
+   "name": "strange carving",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3202,
+   "name": "strange carving",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3269,
+   "name": "grass",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3310,
+   "name": "mud stain",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3314,
+   "name": "ant trail",
+   "map_uses": 2,
+   "reasons": [
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 3466,
+   "name": "stone wall",
+   "map_uses": 2,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 3475,
+   "name": "stone wall",
+   "map_uses": 2,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 3488,
+   "name": "stone wall",
+   "map_uses": 2,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 3491,
+   "name": "stone wall",
+   "map_uses": 2,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 3569,
+   "name": "waterfall",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3571,
+   "name": "waterfall",
+   "map_uses": 2,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 3573,
+   "name": "waterfall",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3589,
+   "name": "boat",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3591,
+   "name": "boat",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3678,
+   "name": "ladder",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3760,
+   "name": "bridge",
+   "map_uses": 2,
+   "reasons": [
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 3761,
+   "name": "bridge",
+   "map_uses": 2,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.45"
+   ]
+  },
+  {
+   "id": 3766,
+   "name": "pillar",
+   "map_uses": 2,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 3790,
+   "name": "bridge",
+   "map_uses": 2,
+   "reasons": [
+    "confianza 0.4"
+   ]
+  },
+  {
+   "id": 3847,
+   "name": "grass",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3848,
+   "name": "hay",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3869,
+   "name": "cloth wall",
+   "map_uses": 2,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.45"
+   ]
+  },
+  {
+   "id": 3950,
+   "name": "lit wall lamp",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4139,
+   "name": "plant",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4194,
+   "name": "log",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4201,
+   "name": "log",
+   "map_uses": 2,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4768,
+   "name": "sand",
+   "map_uses": 2,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 4771,
+   "name": "sand",
+   "map_uses": 2,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 131,
+   "name": "grass",
+   "map_uses": 1,
+   "reasons": [
+    "confianza 0.4",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 199,
+   "name": "grass",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 201,
+   "name": "grass",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 206,
+   "name": "grass",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.4",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 241,
+   "name": "grass",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 461,
+   "name": "trap",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 488,
+   "name": "ramp",
+   "map_uses": 1,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 511,
+   "name": "water",
+   "map_uses": 1,
+   "reasons": [
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 515,
+   "name": "water",
+   "map_uses": 1,
+   "reasons": [
+    "sin flag ground_border"
+   ]
+  },
+  {
+   "id": 788,
+   "name": "sand stone",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 789,
+   "name": "sand stone",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 934,
+   "name": "tiled roof",
+   "map_uses": 1,
+   "reasons": [
+    "confianza 0.35"
+   ]
+  },
+  {
+   "id": 954,
+   "name": "wooden roof",
+   "map_uses": 1,
+   "reasons": [
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 964,
+   "name": "wooden roof",
+   "map_uses": 1,
+   "reasons": [
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 1091,
+   "name": "metal wall",
+   "map_uses": 1,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.35"
+   ]
+  },
+  {
+   "id": 1099,
+   "name": "metal wall",
+   "map_uses": 1,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 1120,
+   "name": "marble wall",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat",
+    "categoría wall",
+    "confianza 0.45"
+   ]
+  },
+  {
+   "id": 1121,
+   "name": "marble wall",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat",
+    "categoría wall",
+    "confianza 0.38"
+   ]
+  },
+  {
+   "id": 1191,
+   "name": "marble wall",
+   "map_uses": 1,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.35"
+   ]
+  },
+  {
+   "id": 1202,
+   "name": "light wall",
+   "map_uses": 1,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 1204,
+   "name": "light wall",
+   "map_uses": 1,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 1247,
+   "name": "closed door",
+   "map_uses": 1,
+   "reasons": [
+    "confianza 0.4",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 1308,
+   "name": "stone",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1320,
+   "name": "stone",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1327,
+   "name": "stone",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.42"
+   ]
+  },
+  {
+   "id": 1334,
+   "name": "stone",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1350,
+   "name": "stone",
+   "map_uses": 1,
+   "reasons": [
+    "confianza 0.35"
+   ]
+  },
+  {
+   "id": 1351,
+   "name": "stone",
+   "map_uses": 1,
+   "reasons": [
+    "confianza 0.32"
+   ]
+  },
+  {
+   "id": 1355,
+   "name": "stone",
+   "map_uses": 1,
+   "reasons": [
+    "confianza 0.55",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 1423,
+   "name": "campfire",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1475,
+   "name": "cobra statue",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.45"
+   ]
+  },
+  {
+   "id": 1528,
+   "name": "stone railing",
+   "map_uses": 1,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 1637,
+   "name": "table",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1650,
+   "name": "wooden chairs",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1651,
+   "name": "wooden chairs",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1652,
+   "name": "wooden chairs",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.55",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 1653,
+   "name": "wooden chairs",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1655,
+   "name": "thron",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1656,
+   "name": "thron",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1666,
+   "name": "red cushioned chair",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1669,
+   "name": "red cushioned chair",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1694,
+   "name": "sofa",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1695,
+   "name": "sofa",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1698,
+   "name": "sofa",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1699,
+   "name": "sofa",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1725,
+   "name": "drawer",
+   "map_uses": 1,
+   "reasons": [
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 1738,
+   "name": "box",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1805,
+   "name": "oriental carpet",
+   "map_uses": 1,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 1806,
+   "name": "oriental carpet",
+   "map_uses": 1,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1808,
+   "name": "oriental carpet",
+   "map_uses": 1,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1819,
+   "name": "banner",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1847,
+   "name": "wall mirror",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1908,
+   "name": "spider web",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1936,
+   "name": "green fungi",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1944,
+   "name": "green fungi",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 1953,
+   "name": "parchment",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1956,
+   "name": "map",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1961,
+   "name": "book",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1963,
+   "name": "book",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1968,
+   "name": "document",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 1976,
+   "name": "book",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2024,
+   "name": "broken brown glas",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2065,
+   "name": "table lamp",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2084,
+   "name": "harp",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2183,
+   "name": "tempest rod",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2187,
+   "name": "wand of Inferno",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2192,
+   "name": "crystal ball",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2195,
+   "name": "boots of haste",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2246,
+   "name": "burnt down firewood",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2247,
+   "name": "skull",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2254,
+   "name": "wooden trash",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2256,
+   "name": "metal trash",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2268,
+   "name": "adori vita vis",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2304,
+   "name": "adori gran flam",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2353,
+   "name": "burning heart",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2366,
+   "name": "plume",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2378,
+   "name": "battle axe",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2383,
+   "name": "spikesword",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2389,
+   "name": "spear",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2392,
+   "name": "fire sword",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2396,
+   "name": "ice rapier",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2400,
+   "name": "magic sword",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2408,
+   "name": "warlord sword",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2421,
+   "name": "thunder hammer",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2423,
+   "name": "clerical mace",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2424,
+   "name": "silver mace",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2432,
+   "name": "fire axe",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2433,
+   "name": "magic staff",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2434,
+   "name": "dragon hammer",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2436,
+   "name": "skull staff",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2444,
+   "name": "hammer of wrath",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2445,
+   "name": "crystal mace",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2455,
+   "name": "crossbow",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2494,
+   "name": "demon armor",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2534,
+   "name": "vampire shield",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2543,
+   "name": "bolt",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2544,
+   "name": "arrow",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2580,
+   "name": "fishing rod",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2656,
+   "name": "blue robe",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2666,
+   "name": "meat",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2671,
+   "name": "ham",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2750,
+   "name": "yellow royal blossom",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2752,
+   "name": "sunflowers",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 2754,
+   "name": "tulip",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3121,
+   "name": "rabbit skeleton",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 3219,
+   "name": "stone stairway",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3273,
+   "name": "grass",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3274,
+   "name": "grass",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3275,
+   "name": "grass",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3318,
+   "name": "ant trail",
+   "map_uses": 1,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 3319,
+   "name": "ant trail",
+   "map_uses": 1,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 3484,
+   "name": "stone wall",
+   "map_uses": 1,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 3485,
+   "name": "stone wall",
+   "map_uses": 1,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 3489,
+   "name": "stone wall",
+   "map_uses": 1,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 3495,
+   "name": "stone wall",
+   "map_uses": 1,
+   "reasons": [
+    "categoría wall",
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 3505,
+   "name": "grass archway",
+   "map_uses": 1,
+   "reasons": [
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 3544,
+   "name": "closed door",
+   "map_uses": 1,
+   "reasons": [
+    "confianza 0.5",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 3588,
+   "name": "boat",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3686,
+   "name": "ramp",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3687,
+   "name": "stairs",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3734,
+   "name": "fountain",
+   "map_uses": 1,
+   "reasons": [
+    "confianza 0.45"
+   ]
+  },
+  {
+   "id": 3778,
+   "name": "bridge",
+   "map_uses": 1,
+   "reasons": [
+    "confianza 0.4"
+   ]
+  },
+  {
+   "id": 3779,
+   "name": "bridge",
+   "map_uses": 1,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 3791,
+   "name": "bridge",
+   "map_uses": 1,
+   "reasons": [
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 3817,
+   "name": "wooden chair",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3819,
+   "name": "wooden chair",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3845,
+   "name": "grass",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3875,
+   "name": "fishing net",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3878,
+   "name": "fishing net",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3889,
+   "name": "big footprint",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3890,
+   "name": "big footprint",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3891,
+   "name": "big footprint",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3892,
+   "name": "big footprint",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3899,
+   "name": "tiger skin",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3948,
+   "name": "lit wall lamp",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 3994,
+   "name": "branch",
+   "map_uses": 1,
+   "reasons": [
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 4027,
+   "name": "tree",
+   "map_uses": 1,
+   "reasons": [
+    "confianza 0.4"
+   ]
+  },
+  {
+   "id": 4062,
+   "name": "skinny branch",
+   "map_uses": 1,
+   "reasons": [
+    "confianza 0.55"
+   ]
+  },
+  {
+   "id": 4117,
+   "name": "tree",
+   "map_uses": 1,
+   "reasons": [
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 4185,
+   "name": "oversized marigold",
+   "map_uses": 1,
+   "reasons": [
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 4193,
+   "name": "log",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4195,
+   "name": "log",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4197,
+   "name": "log",
+   "map_uses": 1,
+   "reasons": [
+    "categoría wall"
+   ]
+  },
+  {
+   "id": 4198,
+   "name": "log",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4199,
+   "name": "log",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4223,
+   "name": "branch",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4225,
+   "name": "branch",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4226,
+   "name": "branch",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4241,
+   "name": "log covered in moss",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4242,
+   "name": "log covered in moss",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4244,
+   "name": "log covered in moss",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4394,
+   "name": "red carpet",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4396,
+   "name": "red carpet",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4400,
+   "name": "red carpet",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 4656,
+   "name": "shallow water",
+   "map_uses": 1,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 4764,
+   "name": "sand",
+   "map_uses": 1,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 20100,
+   "name": "venomqueen fang",
+   "map_uses": 1,
+   "reasons": [
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 20101,
+   "name": "quarry ward",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.4"
+   ]
+  },
+  {
+   "id": 20104,
+   "name": "basalt greaves",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.3"
+   ]
+  },
+  {
+   "id": 20110,
+   "name": "stormcaller maul",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.35",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 20111,
+   "name": "rift hammer",
+   "map_uses": 1,
+   "reasons": [
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 20112,
+   "name": "ashlord emberblade",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.55",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 20121,
+   "name": "ironhide crusher",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 20122,
+   "name": "bloodreaver saber",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 20129,
+   "name": "wayfarer boots",
+   "map_uses": 1,
+   "reasons": [
+    "confianza 0.2",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 20130,
+   "name": "windsting axe",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.3",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 20139,
+   "name": "sword of silence",
+   "map_uses": 1,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "confianza 0.3",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 20140,
+   "name": "flamecoil rune",
+   "map_uses": 1,
+   "reasons": [
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 20144,
+   "name": "relic of ulm",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat",
+    "confianza 0.3"
+   ]
+  },
+  {
+   "id": 20147,
+   "name": "obsidian regalia",
+   "map_uses": 1,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 20149,
+   "name": "mosaic shield",
+   "map_uses": 1,
+   "reasons": [
+    "flag unpassable del .dat",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 20154,
+   "name": "bonepriest reaver",
+   "map_uses": 1,
+   "reasons": [
+    "flag ground_border y categoría borde",
+    "flag unpassable del .dat",
+    "confianza 0.2",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)",
+    "borde sin lado"
+   ]
+  },
+  {
+   "id": 146,
+   "name": "gravel",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 150,
+   "name": "gravel",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 151,
+   "name": "gravel",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 153,
+   "name": "gravel",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.4"
+   ]
+  },
+  {
+   "id": 209,
+   "name": "gravel",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.3",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 213,
+   "name": "gravel",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.3",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 244,
+   "name": "sand",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.3",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 245,
+   "name": "sand",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.5",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 246,
+   "name": "sand",
+   "map_uses": 0,
+   "reasons": [
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 249,
+   "name": "sand",
+   "map_uses": 0,
+   "reasons": [
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 253,
+   "name": "sand",
+   "map_uses": 0,
+   "reasons": [
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 254,
+   "name": "sand",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.3",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 259,
+   "name": "rock soil",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.4"
+   ]
+  },
+  {
+   "id": 270,
+   "name": "grass",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.3",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 273,
+   "name": "grass",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 279,
+   "name": "grass",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.4",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 283,
+   "name": "grass",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.2",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 290,
+   "name": "grass",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.5",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 291,
+   "name": "grass",
+   "map_uses": 0,
+   "reasons": [
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 316,
+   "name": "grass",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 327,
+   "name": "grass",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 328,
+   "name": "grass",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.4",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 336,
+   "name": "sand",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.5",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 369,
+   "name": "trapdoor",
+   "map_uses": 0,
+   "reasons": [
+    "dat flag ground",
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 383,
+   "name": "hole",
+   "map_uses": 0,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 388,
+   "name": "lava hole, without lava",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.4"
+   ]
+  },
+  {
+   "id": 391,
+   "name": "stalagmite",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.5"
+   ]
+  },
+  {
+   "id": 401,
+   "name": "grass",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.4",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 404,
+   "name": "grass",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.3",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 418,
+   "name": "stone tile",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.4",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 460,
+   "name": "strange carving",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.3"
+   ]
+  },
+  {
+   "id": 465,
+   "name": "stone tile",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.4"
+   ]
+  },
+  {
+   "id": 473,
+   "name": "time tile",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.3",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 475,
+   "name": "hole",
+   "map_uses": 0,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 497,
+   "name": "water",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.4"
+   ]
+  },
+  {
+   "id": 498,
+   "name": "water",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.4",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  },
+  {
+   "id": 531,
+   "name": "swamp",
+   "map_uses": 0,
+   "reasons": [
+    "flag unpassable del .dat"
+   ]
+  },
+  {
+   "id": 570,
+   "name": "water",
+   "map_uses": 0,
+   "reasons": [
+    "confianza 0.3",
+    "sprite no coincide con el nombre (¿id Zagan reutilizado?)"
+   ]
+  }
+ ]
+}

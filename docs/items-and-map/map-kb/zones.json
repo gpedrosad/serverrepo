@@ -1,0 +1,2569 @@
+{
+ "_schema": "zones.v1",
+ "zones": [
+  {
+   "zone": "crucible",
+   "file": "server/YurOTS/ots/data/world/generated-crucible.json",
+   "generator": "scripts/map/generate-crucible.py",
+   "points_missing_in_map": 0,
+   "boxes": [
+    {
+     "path": "/arenas/bronze",
+     "x1": 110,
+     "y1": 80,
+     "x2": 122,
+     "y2": 92,
+     "z": 0,
+     "tiles_in_map": 169,
+     "tiles_in_box": 169
+    },
+    {
+     "path": "/arenas/silver",
+     "x1": 140,
+     "y1": 80,
+     "x2": 154,
+     "y2": 96,
+     "z": 0,
+     "tiles_in_map": 255,
+     "tiles_in_box": 255
+    },
+    {
+     "path": "/arenas/gold",
+     "x1": 170,
+     "y1": 80,
+     "x2": 188,
+     "y2": 100,
+     "z": 0,
+     "tiles_in_map": 399,
+     "tiles_in_box": 399
+    },
+    {
+     "path": "/clearBoxes/0",
+     "x1": 80,
+     "y1": 80,
+     "x2": 100,
+     "y2": 96,
+     "z": 0,
+     "tiles_in_map": 357,
+     "tiles_in_box": 357
+    },
+    {
+     "path": "/clearBoxes/1",
+     "x1": 110,
+     "y1": 80,
+     "x2": 122,
+     "y2": 92,
+     "z": 0,
+     "tiles_in_map": 169,
+     "tiles_in_box": 169
+    },
+    {
+     "path": "/clearBoxes/2",
+     "x1": 140,
+     "y1": 80,
+     "x2": 154,
+     "y2": 96,
+     "z": 0,
+     "tiles_in_map": 255,
+     "tiles_in_box": 255
+    },
+    {
+     "path": "/clearBoxes/3",
+     "x1": 170,
+     "y1": 80,
+     "x2": 188,
+     "y2": 100,
+     "z": 0,
+     "tiles_in_map": 399,
+     "tiles_in_box": 399
+    },
+    {
+     "path": "/clearBoxes/4",
+     "x1": 157,
+     "y1": 54,
+     "x2": 157,
+     "y2": 54,
+     "z": 7,
+     "tiles_in_map": 1,
+     "tiles_in_box": 1
+    },
+    {
+     "path": "/clearBoxes/5",
+     "x1": 156,
+     "y1": 54,
+     "x2": 156,
+     "y2": 54,
+     "z": 7,
+     "tiles_in_map": 1,
+     "tiles_in_box": 1
+    },
+    {
+     "path": "/clearBoxes/6",
+     "x1": 157,
+     "y1": 53,
+     "x2": 157,
+     "y2": 53,
+     "z": 7,
+     "tiles_in_map": 1,
+     "tiles_in_box": 1
+    },
+    {
+     "path": "/clearBoxes/7",
+     "x1": 159,
+     "y1": 53,
+     "x2": 159,
+     "y2": 53,
+     "z": 7,
+     "tiles_in_map": 1,
+     "tiles_in_box": 1
+    },
+    {
+     "path": "/clearBoxes/8",
+     "x1": 160,
+     "y1": 53,
+     "x2": 160,
+     "y2": 53,
+     "z": 7,
+     "tiles_in_map": 1,
+     "tiles_in_box": 1
+    },
+    {
+     "path": "/clearBoxes/9",
+     "x1": 162,
+     "y1": 53,
+     "x2": 162,
+     "y2": 53,
+     "z": 7,
+     "tiles_in_map": 1,
+     "tiles_in_box": 1
+    }
+   ],
+   "points": [
+    {
+     "path": "/hubPortal",
+     "x": 157,
+     "y": 54,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 407,
+       "name": "black marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/landing",
+     "x": 85,
+     "y": 92,
+     "z": 0,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/returnTp",
+     "x": 86,
+     "y": 93,
+     "z": 0,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/levers/bronze",
+     "x": 83,
+     "y": 88,
+     "z": 0,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1945,
+       "name": "switch"
+      }
+     ]
+    },
+    {
+     "path": "/levers/silver",
+     "x": 85,
+     "y": 88,
+     "z": 0,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1945,
+       "name": "switch"
+      }
+     ]
+    },
+    {
+     "path": "/levers/gold",
+     "x": 87,
+     "y": 88,
+     "z": 0,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1945,
+       "name": "switch"
+      }
+     ]
+    },
+    {
+     "path": "/levers/info",
+     "x": 90,
+     "y": 88,
+     "z": 0,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1945,
+       "name": "switch"
+      }
+     ]
+    },
+    {
+     "path": "/templeSigns/0",
+     "x": 157,
+     "y": 53,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 407,
+       "name": "black marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/templeSigns/1",
+     "x": 159,
+     "y": 53,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 407,
+       "name": "black marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/templeSigns/2",
+     "x": 160,
+     "y": 53,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/templeSigns/3",
+     "x": 162,
+     "y": 53,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/hubSigns/0",
+     "x": 83,
+     "y": 87,
+     "z": 0,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1429,
+       "name": "sign"
+      }
+     ]
+    },
+    {
+     "path": "/hubSigns/1",
+     "x": 85,
+     "y": 87,
+     "z": 0,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1429,
+       "name": "sign"
+      }
+     ]
+    },
+    {
+     "path": "/hubSigns/2",
+     "x": 87,
+     "y": 87,
+     "z": 0,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1429,
+       "name": "sign"
+      }
+     ]
+    },
+    {
+     "path": "/hubSigns/3",
+     "x": 90,
+     "y": 87,
+     "z": 0,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1429,
+       "name": "sign"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "zone": "hunt-maze",
+   "file": "server/YurOTS/ots/data/world/generated-hunt-maze.json",
+   "generator": "scripts/map/generate-hunt-maze.py",
+   "points_missing_in_map": 0,
+   "boxes": [
+    {
+     "path": "/aliceFootprint",
+     "x1": 380,
+     "y1": 18,
+     "x2": 433,
+     "y2": 103,
+     "z": 7,
+     "tiles_in_map": 4644,
+     "tiles_in_box": 4644
+    },
+    {
+     "path": "/footprint",
+     "x1": 280,
+     "y1": 243,
+     "x2": 349,
+     "y2": 400,
+     "z": 7,
+     "tiles_in_map": 11060,
+     "tiles_in_box": 11060
+    }
+   ],
+   "points": [
+    {
+     "path": "/entryLanding",
+     "x": 280,
+     "y": 399,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/entryReturn",
+     "x": 281,
+     "y": 400,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/exit",
+     "x": 316,
+     "y": 243,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/hubPortal",
+     "x": 160,
+     "y": 54,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/hubLanding",
+     "x": 161,
+     "y": 54,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "zone": "natural-island",
+   "file": "server/YurOTS/ots/data/world/generated-natural-island.json",
+   "generator": "scripts/map/generate-natural-island.py",
+   "points_missing_in_map": 0,
+   "boxes": [
+    {
+     "path": "/box",
+     "x1": 124,
+     "y1": 426,
+     "x2": 187,
+     "y2": 483,
+     "z": 7,
+     "tiles_in_map": 3712,
+     "tiles_in_box": 3712
+    },
+    {
+     "path": "/land",
+     "x1": 133,
+     "y1": 433,
+     "x2": 178,
+     "y2": 476,
+     "z": 7,
+     "tiles_in_map": 2024,
+     "tiles_in_box": 2024
+    }
+   ],
+   "points": [
+    {
+     "path": "/center",
+     "x": 156,
+     "y": 455,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 4756,
+       "name": "grass"
+      }
+     ]
+    },
+    {
+     "path": "/cave/hole",
+     "x": 160,
+     "y": 461,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 469,
+       "name": "hole"
+      }
+     ]
+    },
+    {
+     "path": "/cave/ladder",
+     "x": 160,
+     "y": 461,
+     "z": 8,
+     "in_map": true,
+     "items": [
+      {
+       "id": 355,
+       "name": "muddy floor"
+      },
+      {
+       "id": 1386,
+       "name": "ladder"
+      }
+     ]
+    },
+    {
+     "path": "/cave/ladderExit",
+     "x": 160,
+     "y": 462,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 4756,
+       "name": "grass"
+      }
+     ]
+    },
+    {
+     "path": "/cave/spawns/0",
+     "x": 138,
+     "y": 461,
+     "z": 8,
+     "in_map": true,
+     "items": [
+      {
+       "id": 351,
+       "name": "dirt"
+      }
+     ]
+    },
+    {
+     "path": "/cave/spawns/1",
+     "x": 166,
+     "y": 454,
+     "z": 8,
+     "in_map": true,
+     "items": [
+      {
+       "id": 351,
+       "name": "dirt"
+      }
+     ]
+    },
+    {
+     "path": "/cave/spawns/2",
+     "x": 164,
+     "y": 469,
+     "z": 8,
+     "in_map": true,
+     "items": [
+      {
+       "id": 352,
+       "name": "dirt"
+      }
+     ]
+    },
+    {
+     "path": "/cave/spawns/3",
+     "x": 149,
+     "y": 462,
+     "z": 8,
+     "in_map": true,
+     "items": [
+      {
+       "id": 355,
+       "name": "muddy floor"
+      }
+     ]
+    },
+    {
+     "path": "/cave/spawns/4",
+     "x": 157,
+     "y": 453,
+     "z": 8,
+     "in_map": true,
+     "items": [
+      {
+       "id": 351,
+       "name": "dirt"
+      }
+     ]
+    },
+    {
+     "path": "/cave/spawns/5",
+     "x": 163,
+     "y": 449,
+     "z": 8,
+     "in_map": true,
+     "items": [
+      {
+       "id": 351,
+       "name": "dirt"
+      }
+     ]
+    },
+    {
+     "path": "/cave/spawns/6",
+     "x": 152,
+     "y": 459,
+     "z": 8,
+     "in_map": true,
+     "items": [
+      {
+       "id": 352,
+       "name": "dirt"
+      }
+     ]
+    },
+    {
+     "path": "/cave/spawns/7",
+     "x": 150,
+     "y": 455,
+     "z": 8,
+     "in_map": true,
+     "items": [
+      {
+       "id": 351,
+       "name": "dirt"
+      }
+     ]
+    },
+    {
+     "path": "/cave/spawns/8",
+     "x": 163,
+     "y": 446,
+     "z": 8,
+     "in_map": true,
+     "items": [
+      {
+       "id": 355,
+       "name": "muddy floor"
+      }
+     ]
+    },
+    {
+     "path": "/cave/spawns/9",
+     "x": 173,
+     "y": 447,
+     "z": 8,
+     "in_map": true,
+     "items": [
+      {
+       "id": 355,
+       "name": "muddy floor"
+      }
+     ]
+    },
+    {
+     "path": "/cave/spawns/10",
+     "x": 157,
+     "y": 473,
+     "z": 8,
+     "in_map": true,
+     "items": [
+      {
+       "id": 351,
+       "name": "dirt"
+      }
+     ]
+    },
+    {
+     "path": "/cave/spawns/11",
+     "x": 159,
+     "y": 449,
+     "z": 8,
+     "in_map": true,
+     "items": [
+      {
+       "id": 351,
+       "name": "dirt"
+      }
+     ]
+    },
+    {
+     "path": "/cave/spawns/12",
+     "x": 161,
+     "y": 470,
+     "z": 8,
+     "in_map": true,
+     "items": [
+      {
+       "id": 351,
+       "name": "dirt"
+      }
+     ]
+    },
+    {
+     "path": "/cave/spawns/13",
+     "x": 148,
+     "y": 451,
+     "z": 8,
+     "in_map": true,
+     "items": [
+      {
+       "id": 352,
+       "name": "dirt"
+      }
+     ]
+    },
+    {
+     "path": "/cave/spawns/14",
+     "x": 148,
+     "y": 448,
+     "z": 8,
+     "in_map": true,
+     "items": [
+      {
+       "id": 351,
+       "name": "dirt"
+      }
+     ]
+    },
+    {
+     "path": "/cave/spawns/15",
+     "x": 145,
+     "y": 454,
+     "z": 8,
+     "in_map": true,
+     "items": [
+      {
+       "id": 351,
+       "name": "dirt"
+      }
+     ]
+    },
+    {
+     "path": "/cave/spawns/16",
+     "x": 151,
+     "y": 445,
+     "z": 8,
+     "in_map": true,
+     "items": [
+      {
+       "id": 351,
+       "name": "dirt"
+      }
+     ]
+    },
+    {
+     "path": "/cave/spawns/17",
+     "x": 165,
+     "y": 443,
+     "z": 8,
+     "in_map": true,
+     "items": [
+      {
+       "id": 351,
+       "name": "dirt"
+      }
+     ]
+    },
+    {
+     "path": "/cave/spawns/18",
+     "x": 171,
+     "y": 444,
+     "z": 8,
+     "in_map": true,
+     "items": [
+      {
+       "id": 351,
+       "name": "dirt"
+      }
+     ]
+    },
+    {
+     "path": "/cave/spawns/19",
+     "x": 144,
+     "y": 463,
+     "z": 8,
+     "in_map": true,
+     "items": [
+      {
+       "id": 351,
+       "name": "dirt"
+      }
+     ]
+    },
+    {
+     "path": "/portal/templeTp",
+     "x": 155,
+     "y": 54,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 407,
+       "name": "black marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/portal/templeSign",
+     "x": 155,
+     "y": 53,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 407,
+       "name": "black marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/portal/templeLanding",
+     "x": 156,
+     "y": 54,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 407,
+       "name": "black marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/portal/islandLanding",
+     "x": 148,
+     "y": 449,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 4756,
+       "name": "grass"
+      }
+     ]
+    },
+    {
+     "path": "/portal/islandReturnTp",
+     "x": 148,
+     "y": 450,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 4756,
+       "name": "grass"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/surfaceSpawns/0",
+     "x": 139,
+     "y": 460,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 4756,
+       "name": "grass"
+      }
+     ]
+    },
+    {
+     "path": "/surfaceSpawns/1",
+     "x": 158,
+     "y": 439,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 4756,
+       "name": "grass"
+      }
+     ]
+    },
+    {
+     "path": "/surfaceSpawns/2",
+     "x": 174,
+     "y": 455,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 4756,
+       "name": "grass"
+      }
+     ]
+    },
+    {
+     "path": "/surfaceSpawns/3",
+     "x": 155,
+     "y": 468,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 4756,
+       "name": "grass"
+      }
+     ]
+    },
+    {
+     "path": "/surfaceSpawns/4",
+     "x": 168,
+     "y": 443,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 4756,
+       "name": "grass"
+      }
+     ]
+    },
+    {
+     "path": "/surfaceSpawns/5",
+     "x": 145,
+     "y": 462,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 112,
+       "name": "grass"
+      }
+     ]
+    },
+    {
+     "path": "/surfaceSpawns/6",
+     "x": 161,
+     "y": 448,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 103,
+       "name": "dirt"
+      }
+     ]
+    },
+    {
+     "path": "/surfaceSpawns/7",
+     "x": 165,
+     "y": 456,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 4756,
+       "name": "grass"
+      }
+     ]
+    },
+    {
+     "path": "/surfaceSpawns/8",
+     "x": 149,
+     "y": 439,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 4756,
+       "name": "grass"
+      }
+     ]
+    },
+    {
+     "path": "/surfaceSpawns/9",
+     "x": 163,
+     "y": 462,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 4756,
+       "name": "grass"
+      }
+     ]
+    },
+    {
+     "path": "/surfaceSpawns/10",
+     "x": 164,
+     "y": 467,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 4756,
+       "name": "grass"
+      }
+     ]
+    },
+    {
+     "path": "/surfaceSpawns/11",
+     "x": 176,
+     "y": 450,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 4756,
+       "name": "grass"
+      }
+     ]
+    },
+    {
+     "path": "/surfaceSpawns/12",
+     "x": 159,
+     "y": 475,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 4756,
+       "name": "grass"
+      },
+      {
+       "id": 4150,
+       "name": "weeds"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "zone": "sand-clock",
+   "file": "server/YurOTS/ots/data/world/generated-sand-clock.json",
+   "generator": "scripts/map/generate-sand-clock.py",
+   "points_missing_in_map": 0,
+   "boxes": [
+    {
+     "path": "/room",
+     "x1": 330,
+     "y1": 385,
+     "x2": 346,
+     "y2": 399,
+     "z": 6,
+     "tiles_in_map": 255,
+     "tiles_in_box": 255
+    },
+    {
+     "path": "/clearBoxes/0",
+     "x1": 328,
+     "y1": 383,
+     "x2": 348,
+     "y2": 401,
+     "z": 6,
+     "tiles_in_map": 384,
+     "tiles_in_box": 399
+    },
+    {
+     "path": "/clearBoxes/1",
+     "x1": 328,
+     "y1": 383,
+     "x2": 348,
+     "y2": 401,
+     "z": 5,
+     "tiles_in_map": 399,
+     "tiles_in_box": 399
+    },
+    {
+     "path": "/clearBoxes/2",
+     "x1": 165,
+     "y1": 53,
+     "x2": 167,
+     "y2": 55,
+     "z": 7,
+     "tiles_in_map": 9,
+     "tiles_in_box": 9
+    },
+    {
+     "path": "/clearBoxes/3",
+     "x1": 167,
+     "y1": 54,
+     "x2": 167,
+     "y2": 54,
+     "z": 7,
+     "tiles_in_map": 1,
+     "tiles_in_box": 1
+    },
+    {
+     "path": "/clearBoxes/4",
+     "x1": 166,
+     "y1": 53,
+     "x2": 166,
+     "y2": 53,
+     "z": 7,
+     "tiles_in_map": 1,
+     "tiles_in_box": 1
+    }
+   ],
+   "points": [
+    {
+     "path": "/hubPortal",
+     "x": 166,
+     "y": 54,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 407,
+       "name": "black marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/templeReturn",
+     "x": 167,
+     "y": 54,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 407,
+       "name": "black marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/landing",
+     "x": 338,
+     "y": 392,
+     "z": 6,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/returnTp",
+     "x": 338,
+     "y": 398,
+     "z": 6,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/chronos",
+     "x": 338,
+     "y": 387,
+     "z": 6,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/templeSign",
+     "x": 166,
+     "y": 53,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 407,
+       "name": "black marble floor"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "zone": "tp-gauntlet",
+   "file": "server/YurOTS/ots/data/world/generated-tp-gauntlet.json",
+   "generator": "scripts/map/generate-tp-gauntlet.py",
+   "points_missing_in_map": 0,
+   "boxes": [
+    {
+     "path": "/footprint",
+     "x1": 449,
+     "y1": 39,
+     "x2": 489,
+     "y2": 80,
+     "z": 7,
+     "tiles_in_map": 1722,
+     "tiles_in_box": 1722
+    },
+    {
+     "path": "/gridFootprint",
+     "x1": 449,
+     "y1": 39,
+     "x2": 489,
+     "y2": 73,
+     "z": 7,
+     "tiles_in_map": 1435,
+     "tiles_in_box": 1435
+    }
+   ],
+   "points": [
+    {
+     "path": "/entryPad",
+     "x": 436,
+     "y": 102,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/room0",
+     "x": 451,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/templeDest",
+     "x": 130,
+     "y": 53,
+     "z": 6,
+     "in_map": true,
+     "items": [
+      {
+       "id": 415,
+       "name": "stone floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/0/origin",
+     "x": 450,
+     "y": 40,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/0/center",
+     "x": 451,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/0/teleports/0",
+     "x": 450,
+     "y": 40,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/0/teleports/0/dest",
+     "x": 469,
+     "y": 65,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/0/teleports/1",
+     "x": 452,
+     "y": 40,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/0/teleports/1/dest",
+     "x": 481,
+     "y": 59,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/0/teleports/2",
+     "x": 452,
+     "y": 42,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/0/teleports/2/dest",
+     "x": 457,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/0/teleports/3",
+     "x": 450,
+     "y": 42,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/0/teleports/3/dest",
+     "x": 451,
+     "y": 53,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/1/origin",
+     "x": 456,
+     "y": 40,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/1/center",
+     "x": 457,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/1/teleports/0",
+     "x": 456,
+     "y": 40,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/1/teleports/0/dest",
+     "x": 451,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/1/teleports/1",
+     "x": 458,
+     "y": 40,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/1/teleports/1/dest",
+     "x": 451,
+     "y": 59,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/1/teleports/2",
+     "x": 458,
+     "y": 42,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/1/teleports/2/dest",
+     "x": 463,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/1/teleports/3",
+     "x": 456,
+     "y": 42,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/1/teleports/3/dest",
+     "x": 463,
+     "y": 59,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/2/origin",
+     "x": 462,
+     "y": 40,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/2/center",
+     "x": 463,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/2/teleports/0",
+     "x": 462,
+     "y": 40,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/2/teleports/0/dest",
+     "x": 451,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/2/teleports/1",
+     "x": 464,
+     "y": 40,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/2/teleports/1/dest",
+     "x": 457,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/2/teleports/2",
+     "x": 464,
+     "y": 42,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/2/teleports/2/dest",
+     "x": 475,
+     "y": 53,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/2/teleports/3",
+     "x": 462,
+     "y": 42,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/2/teleports/3/dest",
+     "x": 469,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/3/origin",
+     "x": 468,
+     "y": 40,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/3/center",
+     "x": 469,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/3/teleports/0",
+     "x": 468,
+     "y": 40,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/3/teleports/0/dest",
+     "x": 481,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/3/teleports/1",
+     "x": 470,
+     "y": 40,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/3/teleports/1/dest",
+     "x": 457,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/3/teleports/2",
+     "x": 470,
+     "y": 42,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/3/teleports/2/dest",
+     "x": 475,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/3/teleports/3",
+     "x": 468,
+     "y": 42,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/3/teleports/3/dest",
+     "x": 463,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/4/origin",
+     "x": 474,
+     "y": 40,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/4/center",
+     "x": 475,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/4/teleports/0",
+     "x": 474,
+     "y": 40,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/4/teleports/0/dest",
+     "x": 469,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/4/teleports/1",
+     "x": 476,
+     "y": 40,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/4/teleports/1/dest",
+     "x": 481,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/4/teleports/2",
+     "x": 476,
+     "y": 42,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/4/teleports/2/dest",
+     "x": 463,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/4/teleports/3",
+     "x": 474,
+     "y": 42,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/4/teleports/3/dest",
+     "x": 457,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/5/origin",
+     "x": 480,
+     "y": 40,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/5/center",
+     "x": 481,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/5/teleports/0",
+     "x": 480,
+     "y": 40,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/5/teleports/0/dest",
+     "x": 451,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/5/teleports/1",
+     "x": 482,
+     "y": 40,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/5/teleports/1/dest",
+     "x": 487,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/5/teleports/2",
+     "x": 482,
+     "y": 42,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/5/teleports/2/dest",
+     "x": 469,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/5/teleports/3",
+     "x": 480,
+     "y": 42,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/5/teleports/3/dest",
+     "x": 457,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/6/origin",
+     "x": 486,
+     "y": 40,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/6/center",
+     "x": 487,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/6/teleports/0",
+     "x": 486,
+     "y": 40,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/6/teleports/0/dest",
+     "x": 451,
+     "y": 47,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/6/teleports/1",
+     "x": 488,
+     "y": 40,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/6/teleports/1/dest",
+     "x": 457,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/6/teleports/2",
+     "x": 488,
+     "y": 42,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/6/teleports/2/dest",
+     "x": 487,
+     "y": 65,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/6/teleports/3",
+     "x": 486,
+     "y": 42,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/6/teleports/3/dest",
+     "x": 481,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/7/origin",
+     "x": 450,
+     "y": 46,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/7/center",
+     "x": 451,
+     "y": 47,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/7/teleports/0",
+     "x": 450,
+     "y": 46,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/7/teleports/0/dest",
+     "x": 469,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/7/teleports/1",
+     "x": 452,
+     "y": 46,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/7/teleports/1/dest",
+     "x": 451,
+     "y": 41,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/rooms/7/teleports/2",
+     "x": 452,
+     "y": 48,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "zone": "wave-arena",
+   "file": "server/YurOTS/ots/data/world/generated-wave-arena.json",
+   "generator": "scripts/map/generate-wave-arena.py",
+   "points_missing_in_map": 0,
+   "boxes": [
+    {
+     "path": "/fight",
+     "x1": 174,
+     "y1": 386,
+     "x2": 180,
+     "y2": 392,
+     "z": 7,
+     "tiles_in_map": 49,
+     "tiles_in_box": 49
+    },
+    {
+     "path": "/footprint",
+     "x1": 172,
+     "y1": 384,
+     "x2": 182,
+     "y2": 396,
+     "z": 7,
+     "tiles_in_map": 143,
+     "tiles_in_box": 143
+    }
+   ],
+   "points": [
+    {
+     "path": "/landing",
+     "x": 177,
+     "y": 394,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/returnTp",
+     "x": 178,
+     "y": 395,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/leverStart",
+     "x": 176,
+     "y": 394,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1945,
+       "name": "switch"
+      }
+     ]
+    },
+    {
+     "path": "/leverRank",
+     "x": 179,
+     "y": 394,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 406,
+       "name": "white marble floor"
+      },
+      {
+       "id": 1945,
+       "name": "switch"
+      }
+     ]
+    },
+    {
+     "path": "/hubPortal",
+     "x": 159,
+     "y": 54,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 407,
+       "name": "black marble floor"
+      }
+     ]
+    },
+    {
+     "path": "/hubLanding",
+     "x": 158,
+     "y": 54,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 407,
+       "name": "black marble floor"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
