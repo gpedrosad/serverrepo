@@ -24,10 +24,10 @@ Ambos usan el mismo script:
 | Elfland | `20 gp` | `elfland`, `elf land` | `111 60 6` |
 | Epstein Island | `20 gp` | `epstein island`, `epstein` | `85 209 7` |
 | Hell Quest | `20 gp` | `hell quest`, `hell` | `347 168 7` |
-| Dragon Land | `50 gp` | `dragon land` | `122 119 7` |
+| Dragon Land | `50 gp` | `dragon land` | `121 118 7` |
 | Alice Maze | `20 gp` | `alice maze`, `maze`, `laberinto` | `413 103 7` |
 | Gauntlet | `20 gp` | `gauntlet` | `452 41 7` |
-| The City | `20 gp` | `city`, `the city` | `171 65 7` |
+| The City | `20 gp` | `city`, `the city` | `172 65 7` |
 
 ## Gauntlet
 
@@ -42,11 +42,13 @@ Destino del gauntlet de teleports (ver [`MAPEAR_TP_GAUNTLET.md`](../items-and-ma
 
 El `Fargum` de City está en:
 
-- `171 66 7`
+- `172 66 7`
 
 El aterrizaje de City está al lado, un `sqm` al norte:
 
-- `171 65 7`
+- `172 65 7`
+
+(Hasta nov 2026 eran `171 66` y `171 65`, casillas con borde de agua que bloquea; igual Dragon Land `122 119`.)
 
 El `Nimral` de Hell Quest está en:
 
@@ -73,3 +75,10 @@ Eso evita que el jugador caiga sobre el mismo tile del NPC.
 - `server/YurOTS/ots/data/world/npc.xml`
 - `docs/items-and-map/MAPEAR_TP_GAUNTLET.md`
 - `docs/items-and-map/SESION_EDITOR_MAPA_JUL2026.md`
+
+## Reglas (nov 2026)
+
+- Sin vocación (Rookgaard) solo se puede viajar a Epstein Island; con vocación, nunca a Epstein.
+- No se viaja en combate (`isPzLocked`).
+- "Ya estás aquí" si el destino está a 6 casillas o menos en el mismo piso.
+- Si en la confirmación se nombra otro destino, el barquero vuelve a preguntar por ese.

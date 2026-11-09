@@ -50,10 +50,12 @@ Enganche de login diario: contratos distintos cada día, elección (agency), fee
 | Adventurer | 21–40 | Minotaur, Orc Warrior, Cyclops, Dwarf Guard, Larva | 70–110 | 3k–6k | 40k–90k |
 | Hunter | 41–70 | Dragon, Hero, Ancient Scarab, Behemoth, Giant Spider | 55–90 | 8k–15k | 120k–280k |
 | Elite | 71–100 | Dragon Lord, Hydra, Behemoth, Warlock, Demon Skeleton | 45–75 | 15k–30k | 150k–350k |
-| Legend | 101+ | Demon, Warlock, Fury, Behemoth, Hydra | 40–70 | 25k–45k | 120k–280k |
+| Legend | 101+ | Demon, Warlock, Fury, Behemoth, Hydra | 40–70 | 25k–45k | 200k–400k |
 
 - Exp del reward es **flat** (`addExp`), no pasa por `expmul`.
 - 1 daily / personaje / día.
+- Un contrato **terminado y no cobrado** no se pierde a medianoche: sigue en DONE hasta decir "reward" (cuenta como cobro de ese día; después se pueden pedir los contratos del día). Antes de nov 2026 se borraba al cambiar el día.
+- Racha: sigue viva si el último cobro fue hoy o ayer; "streak" muestra la vigente y el bonus del próximo cobro. Un segundo cobro el mismo día no la sube ni la corta.
 - Trainers (`trainer=1`) no cuentan.
 - Crédito: jugadores que reciben exp del kill (share de daño).
 

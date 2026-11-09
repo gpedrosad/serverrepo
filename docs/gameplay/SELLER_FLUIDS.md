@@ -9,23 +9,23 @@ Documentación del NPC `seller` (`data/npc/scripts/seller.lua`) para compra de f
 | Mana fluid | `mana fluid`, `3 mana fluid` | 100 gp c/u | vial subtype `7` |
 | Life fluid | `life fluid`, `2 life` | 60 gp c/u | vial subtype `10` |
 | Strong mana potion (SMP) | `smp`, `strong mana`, `strong mana potion` | 250 gp c/u | vial subtype `14` |
-| BP mana fluid | `bp mana`, `bp mana fluid`, `backpack mana fluid` | **2010 gp** | 1× backpack `1988` + 20× mana fluid |
-| BP life fluid | `bp life`, `bp life fluid`, `backpack life fluid` | **1210 gp** | 1× backpack + 20× life fluid |
-| BP strong mana / SMP | `bp smp`, `bp strong mana`, `backpack strong mana potion` | **5010 gp** | 1× backpack + 20× SMP |
+| BP mana fluid | `bp mana`, `bp mana fluid`, `backpack mana fluid` | **2000 gp** | 1× backpack `1988` + 20× mana fluid |
+| BP life fluid | `bp life`, `bp life fluid`, `backpack life fluid` | **1200 gp** | 1× backpack + 20× life fluid |
+| BP strong mana / SMP | `bp smp`, `bp strong mana`, `backpack strong mana potion` | **5000 gp** | 1× backpack + 20× SMP |
 | Empty vial (vende el jugador) | `vial` / `flask` / `frasco` | 10 gp c/u | solo subtype `0` |
 | Sell all empty vials | `sell all vials` | 10 gp × N | solo subtype `0` |
 
 Fórmula de precio de BP:
 
 ```
-cost = (unitPrice × 20) + backpack(10 gp)
+cost = unitPrice × 20   (la mochila va de regalo para que el precio sea redondo; nov 2026)
 ```
 
 | BP | Cálculo |
 |----|---------|
-| Mana fluid | `20 × 100 + 10 = 2010` |
-| Life fluid | `20 × 60 + 10 = 1210` |
-| Strong mana potion | `20 × 250 + 10 = 5010` |
+| Mana fluid | `20 × 100 = 2000` (mochila de regalo) |
+| Life fluid | `20 × 60 = 1200` |
+| Strong mana potion | `20 × 250 = 5000` |
 
 ---
 
@@ -73,9 +73,9 @@ Tabla actual en Lua:
 
 | aliases | subtype | cost |
 |---------|---------|------|
-| `strong mana potion`, `strong mana`, `smp` | `14` (`FLUID_STRONG_MANA`) | 5010 |
-| `mana fluid`, `manafluid`, `mana` | `7` (`FLUID_MANAFLUID`) | 2010 |
-| `life fluid`, `lifefluid`, `life` | `10` (`FLUID_LIFEFLUID`) | 1210 |
+| `strong mana potion`, `strong mana`, `smp` | `14` (`FLUID_STRONG_MANA`) | 5000 |
+| `mana fluid`, `manafluid`, `mana` | `7` (`FLUID_MANAFLUID`) | 2000 |
+| `life fluid`, `lifefluid`, `life` | `10` (`FLUID_LIFEFLUID`) | 1200 |
 
 ### Core C++ (referencia)
 
@@ -135,10 +135,10 @@ Usa `getExactItemCount` / `removeExactItems` para no vender mana/life/SMP por er
 
 ## Cómo probar
 
-1. `hi` → `bp smp` → `yes` → backpack con 20 strong mana potions; cobró 5010 gp.
+1. `hi` → `bp smp` → `yes` → backpack con 20 strong mana potions; cobró 5000 gp.
 2. `bp strong mana potion` / `backpack of smp` → mismo resultado.
 3. `smp` / `2 strong mana` → compra unitaria a 250 gp.
-4. `bp mana fluid` / `bp life` → siguen en 2010 / 1210.
+4. `bp mana fluid` / `bp life` → siguen en 2000 / 1200.
 5. `backpack` solo → backpack vacía a 10 gp (no un pack de fluids).
 6. `sell all vials` → solo vacíos; SMP/mana/life no se venden.
 

@@ -98,11 +98,15 @@ Compra gemas al jugador. Precios actuales (`parived.lua`):
 | Small Amethyst | 200 gp |
 | Small Emerald / Ruby / Sapphire | 250 gp |
 | Small Diamond | 300 gp |
-| Talon | 320 gp |
+| Talon | 300 gp |
 | Scarab Coin | 100 gp |
 | **Yellow Gem** | **1.000 gp** |
 | Blue Gem | 5.000 gp |
-| Violet Gem / Big Emerald / Big Ruby / Gold Nugget | 10.000 gp |
+| Big Emerald / Big Ruby | 5.000 gp |
+| Violet Gem | 4.000 gp |
+| Gold Nugget | 10.000 gp |
+
+Nov 2026: big emerald/ruby y violet bajaron de 10k para que el canje de Tonka (20 chicas → 1 grande) no cree oro: 20 small emerald/ruby = 5.000 gp y 20 small amethyst = 4.000 gp en Parived.
 
 Comandos: `sell ruby`, `sell 3 amethyst`, `sell all`, `list`.
 
@@ -335,7 +339,7 @@ flowchart TD
 ## Notas de balance y mantenimiento
 
 - El **50% de fallo** hace que el coste esperado de un stack completo sea ~2 gemas por nivel (media geométrica).
-- La **Yellow Gem** es la gema grande más barata en Parived (1k vs 10k de violet/ruby/emerald), coherente con ser la más accesible vía sapphire drops.
+- La **Yellow Gem** es la gema grande más barata en Parived (1k vs 4k–5k de violet/ruby/emerald), coherente con ser la más accesible vía sapphire drops.
 - `docs/GEMS.md` anterior listaba yellow a 10k en Parived; el precio real en código es **1.000 gp**.
 - `OTINFO` mencionaba Big Ruby como +15% flat; corregido: ahora lista **+5% / +9% / +16%** escalonado por stack.
 - Cambios de balance: editar `IMBUE_FAIL_CHANCE`, `HASTE_ENCHANT_SPEED`, tablas `BOOTS`/`WANDS` en Lua, o rangos AID en `const76.h`.

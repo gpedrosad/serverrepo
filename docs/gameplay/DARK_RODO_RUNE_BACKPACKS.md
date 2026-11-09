@@ -6,9 +6,9 @@ Agregar venta de backpacks de runas al NPC `dark rodo` cuando el jugador diga `b
 
 ## Archivos tocados
 
-- `/Users/gonzalo/Desktop/yurots-principal/server/YurOTS/ots/data/npc/scripts/runes.lua`
-- `/Users/gonzalo/Desktop/yurots-principal/server/YurOTS/ots/source/npc.cpp`
-- `/Users/gonzalo/Desktop/yurots-principal/server/YurOTS/ots/source/npc.h`
+- `server/YurOTS/ots/data/npc/scripts/runes.lua`
+- `server/YurOTS/ots/source/npc.cpp`
+- `server/YurOTS/ots/source/npc.h`
 
 ## Cambio funcional
 
@@ -18,38 +18,18 @@ El NPC ahora responde a:
 - `rune backpacks`
 - `bps`
 
-Y ofrece estas opciones:
+Y ofrece estas opciones (precios actuales, nov 2026: 20 runas al precio suelto, la mochila va de regalo):
 
-- `bp hmm` = `810 gp`
-- `bp uh` = `810 gp`
-- `bp gfb` = `1210 gp`
-- `bp explosion` = `1210 gp`
-- `bp sd` = `1810 gp`
+- `bp hmm` = `300 gp` (20 × 15)
+- `bp uh` = `4000 gp` (20 × 200)
+- `bp gfb` = `900 gp` (20 × 45)
+- `bp explosion` = `700 gp` (20 × 35)
+- `bp sd` = `5000 gp` (20 × 250)
+- `bp blank` = `200 gp` (20 × 10)
 
-Cada backpack incluye:
+Los precios salen de la tabla de runas de `runes.lua` (`backpackPrice`), así que si cambia el precio suelto cambia también el de la mochila. Los valores viejos de este documento (810/1210/1810, y después 20 × precio × cargas + 10, que cobraba la bp de UH al doble) ya no aplican.
 
-- `1 backpack`
-- `20 runes`
-
-Tambien se agregaron aliases mas largos:
-
-- `bp ultimate healing`
-- `bp sudden death`
-- `backpack of uh`
-- `backpack of sd`
-- `backpack of explosion`
-- `backpack of gfb`
-- `backpack of hmm`
-
-## Precios
-
-Los precios siguen la logica actual del NPC:
-
-- `bp hmm`: `20 x 40 gp` + `10 gp backpack` = `810 gp`
-- `bp uh`: `20 x 40 gp` + `10 gp backpack` = `810 gp`
-- `bp gfb`: `20 x 60 gp` + `10 gp backpack` = `1210 gp`
-- `bp explosion`: `20 x 60 gp` + `10 gp backpack` = `1210 gp`
-- `bp sd`: `20 x 90 gp` + `10 gp backpack` = `1810 gp`
+Tambien hay aliases mas largos: `bp ultimate healing`, `bp sudden death`, `backpack of uh`, `backpack of sd`, etc. "bp mana" / "bp smp" no las vende Dark Rodo: deriva al Seller.
 
 ## Cambio tecnico
 
