@@ -137,8 +137,28 @@ static bool loadAccountByNumber(unsigned long accountNumber, Account& account)
 	return account.accnumber == accountNumber;
 }
 
+// Upper bound for any bank amount. Money checks cast to unsigned long, which is 32 bits in
+// the i386 build: "deposit 4294967296" compared as 0 and credited the full 64-bit amount.
+static const int64_t BANK_MAX_AMOUNT = 1000000000;
+
+// Player names are used to build data/players/<name>.xml: only letters, spaces, ' and -.
+// "transfer 1 ../items/items" loaded a non-player XML and crashed on atoi(NULL).
+static bool isValidPlayerName(const std::string& name)
+{
+	if(name.empty() || name.size() > 30)
+		return false;
+	for(size_t i = 0; i < name.size(); i++){
+		const unsigned char c = (unsigned char)name[i];
+		if(!isalpha(c) && c != ' ' && c != '\'' && c != '-')
+			return false;
+	}
+	return true;
+}
+
 static bool resolvePlayerAccountByName(const std::string& name, Account& account)
 {
+	if(!isValidPlayerName(name))
+		return false;
 	Player target(name, NULL);
 	if(!IOPlayer::instance()->loadPlayer(&target, name))
 		return false;
@@ -150,18 +170,18 @@ static void addMoneyToPlayer(Player* player, uint64_t amount)
 {
 	while(amount >= 10000) {
 		const uint64_t crystalCount = std::min<uint64_t>(amount / 10000, 100);
-		player->TLMaddItem(ITEM_COINS_CRYSTAL, (unsigned char)crystalCount);
+		player->TLMaddItem(ITEM_COINS_CRYSTAL, (unsigned char)crystalCount, true);
 		amount -= crystalCount * 10000;
 	}
 
 	while(amount >= 100) {
 		const uint64_t platinumCount = std::min<uint64_t>(amount / 100, 100);
-		player->TLMaddItem(ITEM_COINS_PLATINUM, (unsigned char)platinumCount);
+		player->TLMaddItem(ITEM_COINS_PLATINUM, (unsigned char)platinumCount, true);
 		amount -= platinumCount * 100;
 	}
 
 	if(amount > 0)
-		player->TLMaddItem(ITEM_COINS_GOLD, (unsigned char)amount);
+		player->TLMaddItem(ITEM_COINS_GOLD, (unsigned char)amount, true);
 }
 
 static int getPlayerSellableItemCount(Player* player, int itemid)
@@ -221,33 +241,11 @@ static bool removePlayerSellableItems(Player* player, int itemid, int count)
 
 	std::list<Container*> stack;
 
-	for(int i = 0; i < 11 && count > 0; i++){
-		Item* invItem = player->getItem(i);
-		if(!invItem)
-			continue;
-
-		if(invItem->getID() == (unsigned short)itemid && isNpcSellableItem(invItem)){
-			if(invItem->isStackable()){
-				if(invItem->getItemCountOrSubtype() > count){
-					invItem->setItemCountOrSubtype((unsigned char)(invItem->getItemCountOrSubtype() - count));
-					player->sendInventory(i);
-					count = 0;
-				}
-				else{
-					count -= invItem->getItemCountOrSubtype();
-					g_game.FreeThing(invItem);
-					player->removeItemInventory(i);
-				}
-			}
-			else{
-				count--;
-				g_game.FreeThing(invItem);
-				player->removeItemInventory(i);
-			}
-		}
-		else if(Container* tmpcontainer = dynamic_cast<Container*>(invItem)){
+	// Backpacks first, worn equipment last: selling "plate armor" used to sell the one the
+	// player was wearing even with another one in the backpack.
+	for(int i = 0; i < 11; i++){
+		if(Container* tmpcontainer = dynamic_cast<Container*>(player->getItem(i)))
 			stack.push_back(tmpcontainer);
-		}
 	}
 
 	while(!stack.empty() && count > 0){
@@ -287,6 +285,32 @@ static bool removePlayerSellableItems(Player* player, int itemid, int count)
 		}
 	}
 
+
+	for(int i = 0; i < 11 && count > 0; i++){
+		Item* invItem = player->getItem(i);
+		if(!invItem)
+			continue;
+
+		if(invItem->getID() == (unsigned short)itemid && isNpcSellableItem(invItem)){
+			if(invItem->isStackable()){
+				if(invItem->getItemCountOrSubtype() > count){
+					invItem->setItemCountOrSubtype((unsigned char)(invItem->getItemCountOrSubtype() - count));
+					player->sendInventory(i);
+					count = 0;
+				}
+				else{
+					count -= invItem->getItemCountOrSubtype();
+					g_game.FreeThing(invItem);
+					player->removeItemInventory(i);
+				}
+			}
+			else{
+				count--;
+				g_game.FreeThing(invItem);
+				player->removeItemInventory(i);
+			}
+		}
+	}
 	return count == 0;
 }
 
@@ -995,6 +1019,7 @@ int NpcScript::registerFunctions()
 	lua_register(luaState, "setPlayerStorageValue", NpcScript::luaSetPlayerStorageValue);
 	lua_register(luaState, "doPlayerRemoveItem", NpcScript::luaPlayerRemoveItem);
 	lua_register(luaState, "doPlayerAddItem", NpcScript::luaPlayerAddItem);
+	lua_register(luaState, "isPzLocked", NpcScript::luaIsPzLocked);
 	lua_register(luaState, "getPlayerLevel", NpcScript::luaGetPlayerLevel);
 	lua_register(luaState, "getPlayerItemCount", NpcScript::luaGetPlayerItemCount);
 	// YUR CHANGE (Dark Rodo audit 2026-06-30): expose getPlayerFreeSlots so
@@ -1645,7 +1670,7 @@ int NpcScript::luaPlayerAddItem(lua_State* L)
 	Player* player = creature? dynamic_cast<Player*>(creature) : NULL;
 
 	if(player){
-		if(player->TLMaddItem(itemid, (unsigned char)count))
+		if(player->TLMaddItem(itemid, (unsigned char)count, true))
 			lua_pushnumber(L, 0);
 		else
 			lua_pushnumber(L, -1);
@@ -1719,7 +1744,7 @@ int NpcScript::luaDepositPlayerMoney(lua_State* L)
 	int cid = (int)lua_tonumber(L, -2);
 	lua_pop(L, 2);
 
-	if(amount <= 0) {
+	if(amount <= 0 || amount > BANK_MAX_AMOUNT) {
 		lua_pushnumber(L, BANK_ACTION_INVALID_AMOUNT);
 		return 1;
 	}
@@ -1768,7 +1793,7 @@ int NpcScript::luaWithdrawPlayerMoney(lua_State* L)
 	int cid = (int)lua_tonumber(L, -2);
 	lua_pop(L, 2);
 
-	if(amount <= 0) {
+	if(amount <= 0 || amount > BANK_MAX_AMOUNT) {
 		lua_pushnumber(L, BANK_ACTION_INVALID_AMOUNT);
 		return 1;
 	}
@@ -1819,7 +1844,7 @@ int NpcScript::luaTransferPlayerMoneyTo(lua_State* L)
 	int cid = (int)lua_tonumber(L, -3);
 	lua_pop(L, 3);
 
-	if(amount <= 0) {
+	if(amount <= 0 || amount > BANK_MAX_AMOUNT) {
 		lua_pushnumber(L, BANK_ACTION_INVALID_AMOUNT);
 		return 1;
 	}
@@ -2089,6 +2114,10 @@ int NpcScript::luaDoRemoveCreature(lua_State* L)
 		return 1;
 	}
 
+	// A player's summon must also leave its master's list, or the player keeps getting
+	// "You cannot have more summons" until relog (Chronos clears its room every phase).
+	if(Creature* master = monster->getMaster())
+		master->removeSummon(monster);
 	mynpc->game->removeCreature(monster);
 	lua_pushnumber(L, 0);
 	return 1;
@@ -2382,6 +2411,20 @@ int NpcScript::luaLearnSpell(lua_State *L)
 }
 #endif //YUR_LEARN_SPELLS
 
+
+// isPzLocked(cid): true while the player is in combat (PZ locked). The boat uses it so a trip
+// cannot be used to run away from a fight.
+int NpcScript::luaIsPzLocked(lua_State* L)
+{
+	int id = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Npc* mynpc = getNpc(L);
+	Creature* creature = mynpc ? mynpc->game->getCreatureByID(id) : NULL;
+	Player* player = creature ? dynamic_cast<Player*>(creature) : NULL;
+	lua_pushboolean(L, player != NULL && player->pzLocked);
+	return 1;
+}
 
 #ifdef YUR_PREMIUM_PROMOTION
 int NpcScript::luaIsPromoted(lua_State* L)

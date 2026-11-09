@@ -59,7 +59,8 @@ bool IOPlayerXML::loadPlayer(Player* player, std::string name){
 		p = root->children;
 
 		nodeValue = (char*)xmlGetProp(root, (const xmlChar *) "account");
-		int account = atoi(nodeValue);
+		// No "account" attribute (not a player file): account 0 fails the check below.
+		int account = nodeValue ? atoi(nodeValue) : 0;
 
 		//need to unlock and relock in order to load xml account (both share the same mutex)
 		xmlMutexUnlock(xmlmutex);

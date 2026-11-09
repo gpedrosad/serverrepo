@@ -115,6 +115,7 @@ public:
 	static int luaSetPlayerGuildNick(lua_State* L);
 #endif //YUR_GUILD_SYSTEM
 
+	static int luaIsPzLocked(lua_State* L);
 #ifdef YUR_PREMIUM_PROMOTION
 	static int luaIsPremium(lua_State* L);
 	static int luaIsPromoted(lua_State* L);
