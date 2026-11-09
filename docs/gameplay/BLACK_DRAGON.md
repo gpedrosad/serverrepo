@@ -4,6 +4,17 @@ Dragón oscuro, un escalón por encima del Dragon Lord. En vez de fuego, su alie
 
 ![Black Dragon: 4 direcciones x 3 cuadros](img/black-dragon.png)
 
+## Imágenes para la web
+
+| Archivo | Uso |
+|---------|-----|
+| `web/assets/monsters/black-dragon-portrait.jpg` (1024×1024) | Retrato para catálogo o ficha del monstruo |
+| `web/assets/monsters/black-dragon-banner.jpg` (1344×768) | Banner de anuncio; la mitad derecha está vacía para poner el texto en HTML |
+
+Generadas con nano banana (`google/nano-banana` en Replicate), usando el sprite del juego como referencia de diseño. Sin texto incrustado, para que el texto quede en la web y sea editable. Todavía no están enlazadas desde `index.html`.
+
+nano banana no sirve para el sprite animado: redibuja cada cuadro distinto, no respeta la grilla y deja bordes magenta. Por eso el sprite del juego es el recoloreado por algoritmo.
+
 ## Antes de ponerlo en el mapa: el cliente
 
 **El Black Dragon usa el looktype 230, que es un sprite nuevo.** Si un jugador con el cliente viejo ve un Black Dragon, el looktype 230 está vacío en su `Tibia.dat` y el monstruo sale invisible (o el cliente puede fallar). Por eso:
