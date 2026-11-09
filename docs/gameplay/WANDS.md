@@ -22,11 +22,11 @@ Documentación técnica del sistema de wands/rods en YurOTS 7.6 (mod Retro76): q
 
 | Server ID | Nombre | Vocación | Level | Mana | Rango | Daño base (sin ML) | Attack type |
 |-----------|--------|----------|-------|------|-------|--------------------|-------------|
-| 2181 | Snakebite Rod | Druid | 7 | 2 | 5 | 8–18 | poison (NM_ANI_FLYPOISONFIELD) |
-| 2182 | Moonlight Rod | Druid | 13 | 3 | 5 | 14–24 | energy (NM_ANI_ENERGY) |
-| 2183 | Volcanic Rod | Druid | 19 | 5 | 5 | 25–35 | fire (NM_ANI_FIRE) |
-| 2185 | Quagmire Rod | Druid | 26 | 8 | 5 | 40–50 | poison (NM_ANI_FLYPOISONFIELD) |
-| 2186 | Tempest Rod | Druid | 33 | 13 | 5 | 60–70 | energy (NM_ANI_ENERGY) |
+| 2181 | Quagmire Rod | Druid | 26 | 8 | 5 | 40–50 | poison (NM_ANI_FLYPOISONFIELD) |
+| 2182 | Snakebite Rod | Druid | 7 | 2 | 5 | 8–18 | poison (NM_ANI_FLYPOISONFIELD) |
+| 2183 | Tempest Rod | Druid | 33 | 13 | 5 | 60–70 | energy (NM_ANI_ENERGY) |
+| 2185 | Volcanic Rod | Druid | 19 | 5 | 5 | 25–35 | fire (NM_ANI_FIRE) |
+| 2186 | Moonlight Rod | Druid | 13 | 3 | 5 | 14–24 | energy (NM_ANI_ENERGY) |
 | 2187 | Wand of Inferno | Sorcerer | 33 | 13 | 5 | 60–70 | fire (NM_ANI_FIRE) |
 | **2190** | **Wand of Vortex** | **Sorcerer** | **7** | **2** | **5** | **8–18** | **energy (NM_ANI_ENERGY)** |
 | **2191** | **Wand of Dragonbreath** | **Sorcerer** | **13** | **3** | **5** | **14–24** | **fire (NM_ANI_FIRE)** |
@@ -41,7 +41,7 @@ Documentación técnica del sistema de wands/rods en YurOTS 7.6 (mod Retro76): q
 ### Diferencias visuales por wand
 
 - **Fire wands** (Volcanic, Dragonbreath, Inferno): animación `NM_ANI_FIRE`, color `0xC7`, hit `NM_ME_FIRE_AREA`.
-- **Energy wands** (Moonlight, Quagmire NO — Quagmire es poison, Tempest, Vortex, Cosmic): `NM_ANI_ENERGY`/`NM_ME_ENERGY_DAMAGE`/`NM_ME_ENERGY_AREA`, color `0x47` (o `0x49` para Tempest).
+- **Energy wands** (Moonlight, Tempest, Vortex, Cosmic): `NM_ANI_ENERGY`/`NM_ME_ENERGY_DAMAGE`/`NM_ME_ENERGY_AREA`, color `0x47` (o `0x49` para Tempest).
 - **Poison wands/rods** (Snakebite, Quagmire, Plague): `NM_ANI_FLYPOISONFIELD`/`NM_ME_POISEN_RINGS`, color `0x60`.
 - **Crimson Wand** (custom, server id 20123): `ATTACK_ENERGY` + `NM_ANI_FIRE` + `NM_ME_EXPLOSION_DAMAGE` + `NM_ME_ENERGY_DAMAGE`. Animación copiada de la runa **Heavy Magic Missile** (`data/spells/runes/heavy magic missile.lua`).
 - **Train Wand** (custom, server id 20126): misma animación energy que Vortex. Solo funciona contra monstruos `trainer="1"`; no gasta mana; `addManaSpent(1)` por hit (~50% Vortex); sin scaling `wandmlfactor`.

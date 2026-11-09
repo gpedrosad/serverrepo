@@ -5,7 +5,7 @@
 	<combat targetdistance="3" runonhealth="30"/>
 
 <attacks>
-	<attack type="distance" name="throwing-knife" mindamage="27" maxdamage="64" cycleticks="3000" probability="100"/>
+	<attack type="distance" name="throwingknife" mindamage="27" maxdamage="64" cycleticks="3000" probability="100"/>
 	<attack type="instant" name="invis" exhaustion="100" cycleticks="3000" probability="50"/>
 </attacks>
 

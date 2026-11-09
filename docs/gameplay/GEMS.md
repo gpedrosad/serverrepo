@@ -16,7 +16,7 @@ Archivos de referencia:
 | Archivo | Rol |
 |---------|-----|
 | `server/YurOTS/ots/data/actions/scripts/gem_imbue.lua` | Lógica de imbuir (validación, stacks, fail chance) |
-| `server/YurOTS/ots/source/player.cpp` (`checkBoh`, `getEffectiveMagLevel`, `getAttackDelayMs`) | Aplicación de efectos al jugador |
+| `server/YurOTS/ots/source/player.cpp` (`checkBoh`, `getActiveWeapon`, `getEffectiveMagLevel`, `getAttackDelayMs`) | Aplicación de efectos al jugador |
 | `server/YurOTS/ots/source/creature.h` (`getNormalSpeed`) | Fórmula de velocidad (BOH + yellow gem) |
 | `server/YurOTS/ots/source/const76.h` | IDs de ítems y rangos de `actionid` |
 | `server/YurOTS/ots/source/item.cpp` | Descripciones al mirar gemas/ítems imbuidos |
@@ -73,9 +73,9 @@ Monstruos con prefijo de furia (`angry`, `furious`, `enraged`) tienen multiplica
 
 Los **rage trolls** (`angry/furious/enraged troll`) tienen además un fallback: si el cadáver no tiene ninguna gema pequeña, se añade una aleatoria.
 
-Las gemas grandes (yellow, violet, big ruby, big emerald, blue gem, etc.) pueden dropear directamente como loot raro (`game.cpp` → `isRareLootItem`).
+Las gemas grandes (yellow, violet, big ruby, big emerald, blue gem, etc.) pueden dropear directamente desde el loot XML de ciertos monstruos/jefes; `game.cpp` → `isRareLootItem` solo las resalta en el aviso de loot.
 
-### NPC Tonka (temple, piso 6 — x=132, y=29)
+### NPC Tonka (temple — x=140, y=50, z=7 según `data/world/npc.xml`)
 
 Intercambio **20 gemas pequeñas del mismo tipo → 1 gema grande**:
 
@@ -89,7 +89,7 @@ exchange diamond   → Blue Gem (imbue crystal arrow)
 
 Requiere confirmación (`yes` / `si`). Si no hay espacio en backpack, devuelve las 20 pequeñas.
 
-### NPC Parived (temple, piso 7)
+### NPC Parived (temple — x=133, y=58, z=7 según `data/world/npc.xml`)
 
 Compra gemas al jugador. Precios actuales (`parived.lua`):
 
@@ -254,22 +254,23 @@ onUse Yellow Gem
 
 ### Violet Gem (2153) → Wand/Rod
 
-- **Slot:** mano derecha o izquierda, solo wands/rods (IDs 2181–2191 + Crimson Wand `20123` en Lua). Train Wand (`20126`) no admite imbue.
-- **Efecto:** +1 ML efectivo por stack (`getEffectiveMagLevel()` = `maglevel + imbueWandMl`).
+- **Slot:** mano derecha o izquierda, solo wands/rods funcionales (2181–2183, 2185–2191 + Crimson Wand `20123` en Lua). Crystal Wand `2184` es decorativa; Train Wand (`20126`) no admite imbue.
+- **Efecto:** +1 ML efectivo por stack (`getEffectiveMagLevel()` = `maglevel + imbueWandMl`). Ese ML efectivo aplica al **daño de wand**, requisitos de casteo y display del cliente; las fórmulas Lua de spells siguen recibiendo `creature->maglevel` base (no incluyen imbue).
 - **Máx.:** 4 stacks (AID 9030–9033).
 - **Bug jul 2026 (corregido):** Crimson Wand no estaba en la tabla `WANDS` de `gem_imbue.lua`, así que Violet Gem respondía "Equip a wand or rod". C++ (`isWandItem` / `checkBoh`) ya la soportaba; faltaba solo el whitelist Lua.
 
 ### Big Ruby (2156) → Arma
 
-- **Slot:** mano derecha o izquierda; cualquier arma excepto wands, rods, escudos y ítems en lista `NOT_WEAPONS`.
+- **Slot:** mano derecha o izquierda; cualquier arma excepto wands, rods, escudos, antorchas/lámparas y ítems en lista `NOT_WEAPONS` de `gem_imbue.lua`. La lista incluye todos los shields estándar (2509–2542, 3973–3975) y los shields custom de Zagan (`20101`, `20128`, `20149`, `20150`, `20151`, `20153`); si se agrega otro shield custom hay que sumarlo o exponer un chequeo de `weaponType` en C++.
 - **Efecto:** reduce delay entre ataques (`getAttackDelayMs()`).
+- **Arma activa:** `checkBoh()` y los helpers de delay (`getCrucibleWeaponId`, `wieldsNightglassDagger`) leen solo el arma que realmente ataca (`Player::getActiveWeapon()`), no cualquier mano. Así un crystal arrow azul o un ruby en la mano secundaria no aceleran el arma principal.
 - **Base:** `PLAYER_ATTACK_DELAY_MS` = 1333 ms (`2000 × 100 / 150`).
 
 | Stacks | Bonus speed | Delay por golpe |
 |--------|-------------|-----------------|
-| 1/3 | +5% | ~1266 ms |
-| 2/3 | +9% | ~1212 ms |
-| 3/3 | +16% | ~1120 ms |
+| 1/3 | +5% | 1266 ms |
+| 2/3 | +9% | 1213 ms |
+| 3/3 | +16% | 1119 ms |
 
 ### Big Emerald (2155) → Armadura
 
@@ -280,10 +281,11 @@ onUse Yellow Gem
 - **Stacking (debe sumar):** skill ring (+4 axe/sword/club o +6 fist power) + emerald stacks + Crimson Helmet (+1) + `tempoBuff` si aplica. Ejemplo: axe skill base `B` + axe ring + emerald 3/4 + crimson = **`B+8`**.
 - **Bug jul 2026 (corregido):** `getSkill()` hacía early `return base + bonus` por fuente; ring ocultaba emerald/crimson, y emerald ocultaba crimson/`tempoBuff`. Fix: acumular como `getEffectiveMagLevel()` (ML).
 - **jul 2026:** tope de demon armor subido a 6/6 (`ITEM_EMERALD_SKILL_AID_MAX=9055` + `gem_imbue.lua`).
+
 ### Blue Gem (2158) → Crystal Arrow
 
 - **Cadena:** 20× Small Diamond → Tonka → Blue Gem → use con **crystal arrow** (`2352`) equipada.
-- **Efecto:** +5% attack speed por stack (máx. 5 → +25%, delay ~1000 ms).
+- **Efecto:** +5% attack speed por stack (máx. 5 → +25%, delay 999 ms).
 - **AID:** 9070–9074.
 - **Fail:** 50% (igual que yellow/violet/ruby/emerald).
 - **Doc dedicado:** [`CRYSTAL_ARROW.md`](CRYSTAL_ARROW.md).
@@ -335,5 +337,5 @@ flowchart TD
 - El **50% de fallo** hace que el coste esperado de un stack completo sea ~2 gemas por nivel (media geométrica).
 - La **Yellow Gem** es la gema grande más barata en Parived (1k vs 10k de violet/ruby/emerald), coherente con ser la más accesible vía sapphire drops.
 - `docs/GEMS.md` anterior listaba yellow a 10k en Parived; el precio real en código es **1.000 gp**.
-- `OTINFO` menciona Big Ruby como +15% flat; el código usa **+5% / +9% / +16%** escalonado por stack.
+- `OTINFO` mencionaba Big Ruby como +15% flat; corregido: ahora lista **+5% / +9% / +16%** escalonado por stack.
 - Cambios de balance: editar `IMBUE_FAIL_CHANCE`, `HASTE_ENCHANT_SPEED`, tablas `BOOTS`/`WANDS` en Lua, o rangos AID en `const76.h`.

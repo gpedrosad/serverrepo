@@ -329,7 +329,7 @@ Funciona mejor si las mejoras son:
 
 ### Referencias en este repo
 
-- `docs/GEMS.md`
+- `docs/gameplay/GEMS.md`
 - `server/YurOTS/ots/data/actions/scripts/gem_imbue.lua`
 
 ---

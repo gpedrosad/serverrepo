@@ -37,5 +37,5 @@ Media. Muy buena feature, pero conviene reequilibrarla segun la economia del ser
 
 ## Referencias actuales
 
-- `docs/GEMS.md`
+- `docs/gameplay/GEMS.md`
 - `server/YurOTS/ots/data/actions/scripts/gem_imbue.lua`

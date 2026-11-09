@@ -67,12 +67,12 @@ Small Diamond ×20 ──Tonka──► Blue Gem ──Use──► Crystal Arro
 |--------|-----|-------|------------|
 | 0 | 0 | +0% | 1333 |
 | 1/5 | 9070 | +5% | 1266 |
-| 2/5 | 9071 | +10% | 1200 |
+| 2/5 | 9071 | +10% | 1199 |
 | 3/5 | 9072 | +15% | 1133 |
 | 4/5 | 9073 | +20% | 1066 |
-| 5/5 | 9074 | +25% | 1000 |
+| 5/5 | 9074 | +25% | 999 |
 
-`PLAYER_ATTACK_DELAY_MS` = 1333. Prioridad en `getAttackDelayMs()`: Crimson Wand → Nightglass → **Crystal Arrow** → Big Ruby → default.
+`PLAYER_ATTACK_DELAY_MS` = 1333. Prioridad en `getAttackDelayMs()`: Crimson Wand → armas del Crisol → Nightglass → **Crystal Arrow** → Big Ruby → default.
 
 ---
 

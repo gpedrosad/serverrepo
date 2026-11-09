@@ -16,11 +16,34 @@ BOOTS = {
 }
 
 -- Items that are not weapons but can sit in hand slots.
+-- Big Ruby must never target shields/torches/ammo/tools: the gem would be
+-- consumed and the actionid written, but C++ only applies ruby speed to real
+-- weapons (isRubyImbueWeaponItem excludes SHIELD and requires isWeapon()).
 NOT_WEAPONS = {
+	-- ammo, runes, tools, containers, coins
 	[2006] = true, [2120] = true, [2148] = true, [2152] = true, [2160] = true,
 	[2260] = true, [2268] = true, [2273] = true, [2304] = true, [2311] = true,
 	[2313] = true, [2389] = true, [2543] = true, [2544] = true, [2547] = true,
-	[2554] = true, [1988] = true, [2512] = true,
+	[2554] = true, [1988] = true,
+	-- shields 7.6 (2509-2542) + newer standard shields (3973-3975)
+	[2509] = true, [2510] = true, [2511] = true, [2512] = true, [2513] = true,
+	[2514] = true, [2515] = true, [2516] = true, [2517] = true, [2518] = true,
+	[2519] = true, [2520] = true, [2521] = true, [2522] = true, [2523] = true,
+	[2524] = true, [2525] = true, [2526] = true, [2527] = true, [2528] = true,
+	[2529] = true, [2530] = true, [2531] = true, [2532] = true, [2533] = true,
+	[2534] = true, [2535] = true, [2536] = true, [2537] = true, [2538] = true,
+	[2539] = true, [2540] = true, [2541] = true, [2542] = true,
+	[3973] = true, [3974] = true, [3975] = true,
+	-- Zagan/custom shields present in items-zagan-test.otb (weaponType SHIELD)
+	[20101] = true, [20128] = true, [20149] = true, [20150] = true,
+	[20151] = true, [20153] = true,
+	-- hand-held light sources/tools (equippable, but weaponType NONE)
+	[2050] = true, [2051] = true, [2052] = true, [2053] = true, [2054] = true,
+	[2055] = true, [2056] = true, [2057] = true,
+	[2580] = true, [2581] = true, [2582] = true, [2583] = true, [2584] = true,
+	[2585] = true, [2586] = true, [2587] = true, [2588] = true,
+	-- decorative/non-functional crystal wand (not in WANDS)
+	[2184] = true,
 }
 
 IMBUE_FAIL_CHANCE = 50

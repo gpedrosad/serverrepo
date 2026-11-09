@@ -7,7 +7,7 @@
 		<attack type="melee" maxdamage="30" />
 		<attack type="rune" name="mm explosion" exhaustion="500" cycleticks="1500" probability="40" />
 		<attack type="rune" name="mm explosion" exhaustion="500" cycleticks="2500" probability="85" />
-		<attack type="rune" name="soul fire" exhaustion="500" cycleticks="5000" probability="75" />
+		<attack type="rune" name="soulfire" exhaustion="500" cycleticks="5000" probability="75" />
 	</attacks>
 	<defenses>
 		<defense immunity="energy" />

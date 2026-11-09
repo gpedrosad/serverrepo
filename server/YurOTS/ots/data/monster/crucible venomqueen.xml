@@ -6,7 +6,7 @@
 	<attacks>
 		<attack type="melee" mindamage="150" maxdamage="380" probability="100"/>
 		<attack type="rune" name="gs poison" exhaustion="500" cycleticks="4000" probability="55"/>
-		<attack type="rune" name="poisonfield" cycleticks="2000" probability="45"/>
+		<attack type="rune" name="poison field" cycleticks="2000" probability="45"/>
 		<attack type="instant" name="exori mort" exhaustion="400" cycleticks="3000" probability="35"/>
 	</attacks>
 	<defenses>

@@ -14,7 +14,7 @@ GEMS = [
         "name": "Small Diamond",
         "short": "Diamond",
         "big": "Blue Gem",
-        "use": "Vender a Parived · 20× → Blue Gem",
+        "use": "Imbuir crystal arrow · 20× → Blue Gem",
     },
     {
         "id": 2146,

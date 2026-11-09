@@ -7,7 +7,7 @@ animationEffect = NM_ANI_NONE
 hitEffect = NM_ME_NONE
 damageEffect = NM_ME_SOUND_BLUE
 animationColor = LIGHT_BLUE
-offensive = false
+offensive = true
 drawblood = false
 
 ChallengeObject = MagicDamageObject(attackType, animationEffect, hitEffect, damageEffect, animationColor, offensive, drawblood, 0, 0)

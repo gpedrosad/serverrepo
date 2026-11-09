@@ -398,6 +398,7 @@ public:
 	int getInitialAttackDelayMs() const;
 	bool wieldsNightglassDagger() const;
 	unsigned short getCrucibleWeaponId() const;
+	Item* getActiveWeapon() const;
 #endif //YUR_BOH
 
 #ifdef YUR_SOFT_BOOTS

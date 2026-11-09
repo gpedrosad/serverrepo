@@ -7,7 +7,7 @@ import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-# docs/GEMS.md + const76.h — NOT coins (2148 gold, 2152 platinum).
+# docs/gameplay/GEMS.md + const76.h — NOT coins (2148 gold, 2152 platinum).
 GEM_ITEM_IDS = frozenset({
     2145,  # small diamond
     2146,  # small sapphire

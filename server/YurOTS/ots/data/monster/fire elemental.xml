@@ -7,7 +7,7 @@
 
 <attacks>
 	<attack type="melee" mindamage="25" maxdamage="90"/>
-        <attack type="rune" name="soul fire" exhaustion="500" cycleticks="5000" probability="80"/>
+        <attack type="rune" name="soulfire" exhaustion="500" cycleticks="5000" probability="80"/>
         <attack type="rune" name="fe fireball" exhaustion="500" cycleticks="4000" probability="70"/>
         <attack type="rune" name="fe fireball" exhaustion="500" cycleticks="12000" probability="95"/>
         <attack type="rune" name="fe explosion" exhaustion="500" cycleticks="4500" probability="80"/>

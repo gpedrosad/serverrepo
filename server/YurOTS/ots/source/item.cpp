@@ -682,7 +682,7 @@ static void appendGemUseDescription(std::stringstream& s, unsigned short itemId)
 		s << std::endl << "Imbue: use on equipped weapon (max 3: +5%, +9%, +16% attack speed; not wands). Nightglass dagger: up to 5 speed stacks.";
 		break;
 	case ITEM_BIG_EMERALD:
-		s << std::endl << "Imbue: use on equipped armor (+3 sword/club/axe/dist, Paladin/Knight).";
+		s << std::endl << "Imbue: use on equipped armor (+1 sword/club/axe/dist per stack, max 4; demon armor max 6. Paladin/Knight).";
 		break;
 	case ITEM_SMALL_AMETHYST:
 		s << std::endl << "Tonka: trade 20 for a violet gem (imbue wand/rod).";
@@ -760,7 +760,7 @@ std::string Item::getDescription(bool fullDescription) const
 			{
 				s << article(it.name) << " (Atk:" << (int)getAttack() << " Def:" << (int)getDefense();
 #ifdef YUR_BOH
-				if(rubyStacksFromAid(actionId, this) > 0)
+				if(rubyStacksFromAid(actionId, this) > 0 && getWeaponType() != SHIELD)
 					s << ", +" << rubySpeedPercentFromStacks(rubyStacksFromAid(actionId, this)) << "% speed";
 				else if(crystalArrowStacksFromAid(actionId) > 0)
 					s << ", +" << crystalArrowSpeedPercentFromStacks(crystalArrowStacksFromAid(actionId)) << "% speed";
@@ -865,7 +865,7 @@ std::string Item::getDescription(bool fullDescription) const
 		const int maxStacks = (id == ITEM_DEMON_ARMOR) ? 6 : 4;
 		s << std::endl << "Imbued: +" << stacks << " sword/club/axe/dist (Paladin/Knight) (" << stacks << "/" << maxStacks << ").";
 	}
-	else if(rubyStacksFromAid(actionId, this) > 0 && fullDescription && isWeapon())
+	else if(rubyStacksFromAid(actionId, this) > 0 && fullDescription && isWeapon() && getWeaponType() != SHIELD)
 		s << std::endl << "It attacks faster: +" << rubySpeedPercentFromStacks(rubyStacksFromAid(actionId, this)) << "% speed ("
 		  << rubyAttackDelayFromStacks(rubyStacksFromAid(actionId, this)) << "ms per hit, default " << PLAYER_ATTACK_DELAY_MS << "ms, "
 		  << rubyStacksFromAid(actionId, this) << "/3).";

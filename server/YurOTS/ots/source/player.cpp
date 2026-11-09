@@ -3340,6 +3340,34 @@ static bool isCrystalArrowImbueWeaponItem(const Item* item)
 		crystalArrowStacksFromAid(item->getActionId()) > 0;
 }
 
+Item* Player::getActiveWeapon() const
+{
+#ifdef JD_WANDS
+	// Any equipped wand overrides melee/ranged attacks in combat.
+	if(getWandId() > 0){
+		for(int slot = SLOT_RIGHT; slot <= SLOT_LEFT; ++slot){
+			if(items[slot] && isWandItem(items[slot]->getID()))
+				return items[slot];
+		}
+	}
+#endif //JD_WANDS
+
+	for(int slot = SLOT_RIGHT; slot <= SLOT_LEFT; ++slot){
+		Item* item = items[slot];
+		if(!item || !item->isWeapon() || item->getWeaponType() == SHIELD)
+			continue;
+
+		// Combat skips a DIST weapon without matching ammo and can fall back
+		// to the other hand; only treat it as active if GetDistWeapon resolves.
+		if(item->getWeaponType() == DIST && !GetDistWeapon())
+			continue;
+
+		return item;
+	}
+
+	return NULL;
+}
+
 void Player::refreshHeadSkillBonus(slots_t fromSlot, slots_t toSlot)
 {
 	if(fromSlot != SLOT_HEAD && toSlot != SLOT_HEAD)
@@ -3367,19 +3395,14 @@ void Player::checkBoh()
 	int rubyNow = 0;
 	int nightglassNow = 0;
 	int crystalArrowNow = 0;
-	for(int slot = SLOT_RIGHT; slot <= SLOT_LEFT; slot++){
-		if(isRubyImbueWeaponItem(items[slot])){
-			rubyNow = rubyStacksFromAid(items[slot]->getActionId());
-			break;
-		}
-		if(isNightglassImbueWeaponItem(items[slot])){
-			nightglassNow = nightglassStacksFromAid(items[slot]->getActionId());
-			break;
-		}
-		if(isCrystalArrowImbueWeaponItem(items[slot])){
-			crystalArrowNow = crystalArrowStacksFromAid(items[slot]->getActionId());
-			break;
-		}
+	Item* activeWeapon = getActiveWeapon();
+	if(activeWeapon){
+		if(isRubyImbueWeaponItem(activeWeapon))
+			rubyNow = rubyStacksFromAid(activeWeapon->getActionId());
+		else if(isNightglassImbueWeaponItem(activeWeapon))
+			nightglassNow = nightglassStacksFromAid(activeWeapon->getActionId());
+		else if(isCrystalArrowImbueWeaponItem(activeWeapon))
+			crystalArrowNow = crystalArrowStacksFromAid(activeWeapon->getActionId());
 	}
 
 	int helmMlNow = (items[SLOT_HEAD] && items[SLOT_HEAD]->getID() == ITEM_MAGIC_TURBAN) ? 1 : 0;
@@ -3485,31 +3508,27 @@ int Player::getInitialAttackDelayMs() const
 
 bool Player::wieldsNightglassDagger() const
 {
-	for(int slot = SLOT_RIGHT; slot <= SLOT_LEFT; ++slot){
-		if(items[slot] && items[slot]->getID() == ITEM_NIGHTGLASS_DAGGER)
-			return true;
-	}
-	return false;
+	Item* item = getActiveWeapon();
+	return item && item->getID() == ITEM_NIGHTGLASS_DAGGER;
 }
 
 unsigned short Player::getCrucibleWeaponId() const
 {
-	for(int slot = SLOT_RIGHT; slot <= SLOT_LEFT; ++slot){
-		if(!items[slot])
-			continue;
-		const unsigned short id = items[slot]->getID();
-		switch(id){
-			case ITEM_VENOMQUEEN_FANG:
-			case ITEM_STORMCALLER_MAUL:
-			case ITEM_ASHLORD_EMBERBLADE:
-			case ITEM_IRONHIDE_CRUSHER:
-			case ITEM_BLOODREAVER_SABER:
-			case ITEM_FROSTWARDEN_CHILLBLADE:
-			case ITEM_BONEPRIEST_REAVER:
-				return id;
-			default:
-				break;
-		}
+	Item* item = getActiveWeapon();
+	if(!item)
+		return 0;
+
+	switch(item->getID()){
+		case ITEM_VENOMQUEEN_FANG:
+		case ITEM_STORMCALLER_MAUL:
+		case ITEM_ASHLORD_EMBERBLADE:
+		case ITEM_IRONHIDE_CRUSHER:
+		case ITEM_BLOODREAVER_SABER:
+		case ITEM_FROSTWARDEN_CHILLBLADE:
+		case ITEM_BONEPRIEST_REAVER:
+			return item->getID();
+		default:
+			break;
 	}
 	return 0;
 }

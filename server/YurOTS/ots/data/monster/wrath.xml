@@ -8,7 +8,7 @@
 <attacks>
 	<attack type="melee" mindamage="320" maxdamage="780" probability="100"/>
 	<attack type="instant" name="exura vita" exhaustion="500" cycleticks="4500" probability="22"/>
-	<attack type="rune" name="firefield" cycleticks="2200" probability="40"/>
+	<attack type="rune" name="fire field" cycleticks="2200" probability="40"/>
 	<attack type="rune" name="energy field" cycleticks="2800" probability="35"/>
 	<attack type="instant" name="demon_manadrain" exhaustion="100" cycleticks="2500" probability="50"/>
 	<attack type="rune" name="demon fireball" exhaustion="500" cycleticks="2000" probability="75"/>

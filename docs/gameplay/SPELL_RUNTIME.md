@@ -139,6 +139,14 @@ Patrones comunes: mismo piso, `canThrowObjectTo`, puff en fallo, PZ / immunities
 
 ## Estado de verificación (local, post-pull)
 
-- Inventario XML↔Lua: **150** entries `enabled=1` con archivo + `onCast`; **0** faltantes.
+- Inventario XML↔Lua: **151** entries `enabled=1` con archivo + `onCast`; **0** faltantes (auditoría nov 2026).
+- Ataques de monstruos `instant`/`rune`: **0** referencias sin spell cargado. Se corrigieron alias
+  `firefield` → `fire field`, `poisonfield` → `poison field` (solo runas; los `type="distance"`
+  conservan `poisonfield` porque el loader lo usa como clave exacta), `Soul fire`/`soul fire` →
+  `soulfire` y `o firefield` → rune `o fire field`.
+- Se deshabilitó el spell leftover `death` (era casteable por todas las vocaciones con 1 mana / ML 1
+  y ejecutaba un área ofensiva; ningún monstruo lo referencia).
+- Ataques `type="distance"`: `throwing-knife` → `throwingknife` y `largestone` → `largerock`.
+  Quedan 14 `name="spear"` que el loader no mapea (no hay proyectil visual, el daño sí funciona).
 - Docker local no estaba levantado al documentar → no se pudo `ot-probe` ni prueba in-game en esa sesión.
 - El binario `source/yurots` local puede estar desfasado respecto al C++ nuevo: hace falta rebuild antes de probar casts.
