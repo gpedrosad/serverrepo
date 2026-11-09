@@ -106,6 +106,8 @@ Importación de items, mapeo por código, items de prueba, sesiones de editor.
 |-----|-----------------------|
 | [`items-and-map/IMPORTAR_ITEM_DESDE_IMAGEN.md`](items-and-map/IMPORTAR_ITEM_DESDE_IMAGEN.md) | Si un item nuevo no entra o se ve mal: pipeline de import desde imagen. |
 | [`items-and-map/MAPEAR_CON_CODIGO.md`](items-and-map/MAPEAR_CON_CODIGO.md) | Mapear items/pisos por código (no manual) usando scripts. |
+| [`items-and-map/MAPEAR_PASO_DEL_NORTE.md`](items-and-map/MAPEAR_PASO_DEL_NORTE.md) | Paso del Norte: puerta norte, bosque, Tundra Helada, Cuevas del Dragón (z8) y Nido Negro (z9) con `generate-north-pass.py`. |
+| [`items-and-map/MAPA_DE_MONSTRUOS.md`](items-and-map/MAPA_DE_MONSTRUOS.md) | Mapa interactivo de todos los pisos con cada spawn, NPC y zona (`build-monster-map.py`). |
 | [`items-and-map/MAPEAR_LABERINTO.md`](items-and-map/MAPEAR_LABERINTO.md) | Laberinto procedural 2 sqm: camino 406, fondo 100 (pared), teleport al templo (`generate-maze.py`). |
 | [`items-and-map/MAPEAR_HUNT_MAZE.md`](items-and-map/MAPEAR_HUNT_MAZE.md) | Hunt maze **aparte** de Alice: portal plaza del templo `158,47,7`, retorno al llegar (`generate-hunt-maze.py`). |
 | [`gameplay/WAVE_ARENA.md`](gameplay/WAVE_ARENA.md) | Wave Arena: oleadas + ranking semanal, portal plaza del templo `166,47,7`. |
@@ -158,6 +160,7 @@ Catálogo de **migración/portabilidad** (16 fichas congeladas). No es el invent
 | Quiero generar un laberinto por código | [`items-and-map/MAPEAR_LABERINTO.md`](items-and-map/MAPEAR_LABERINTO.md) |
 | Quiero un gauntlet de salas 3×3 con TPs | [`items-and-map/MAPEAR_TP_GAUNTLET.md`](items-and-map/MAPEAR_TP_GAUNTLET.md) + [`gameplay/BOAT_TRAVEL.md`](gameplay/BOAT_TRAVEL.md) |
 | Quiero crear un monstruo nuevo | [`gameplay/MONSTER_CREATION.md`](gameplay/MONSTER_CREATION.md) |
+| Dónde está cada monstruo del mapa | [`items-and-map/MAPA_DE_MONSTRUOS.md`](items-and-map/MAPA_DE_MONSTRUOS.md) |
 | Quiero un monstruo con sprite propio o hechizos nuevos | [`gameplay/CUSTOM_MONSTER_WORKFLOW.md`](gameplay/CUSTOM_MONSTER_WORKFLOW.md) |
 | Voy a tocar gemas o imbuements | [`gameplay/GEMS.md`](gameplay/GEMS.md) → [`features/10-gems-and-imbuements.md`](features/10-gems-and-imbuements.md) |
 | Skill ring + emerald armor + crimson no suman | [`gameplay/GEMS.md`](gameplay/GEMS.md) (Big Emerald / stacking) + `Player::getSkill` en `player.cpp` |
