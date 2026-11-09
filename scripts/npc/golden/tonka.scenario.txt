@@ -1,0 +1,935 @@
+# generado por run_npc_tests.py
+near 1001
+near 1002
+say 1001 hello there
+say 1001 hi
+say 1002 hi
+say 1001 help
+say 1001 help
+say 1001 yes
+say 1001 help
+say 1001 no
+say 1001 5 help
+say 1001 yes
+say 1001 5 help
+say 1001 no
+say 1001 help 100
+say 1001 yes
+say 1001 help 100
+say 1001 no
+say 1001 help all
+say 1001 yes
+say 1001 help all
+say 1001 no
+think
+say 1001 ayuda
+say 1001 yes
+say 1001 ayuda
+say 1001 no
+say 1001 5 ayuda
+say 1001 yes
+say 1001 5 ayuda
+say 1001 no
+say 1001 ayuda 100
+say 1001 yes
+say 1001 ayuda 100
+say 1001 no
+say 1001 ayuda all
+say 1001 yes
+say 1001 ayuda all
+say 1001 no
+think
+say 1001 offer
+say 1001 yes
+say 1001 offer
+say 1001 no
+say 1001 5 offer
+say 1001 yes
+say 1001 5 offer
+say 1001 no
+say 1001 offer 100
+say 1001 yes
+say 1001 offer 100
+say 1001 no
+say 1001 offer all
+say 1001 yes
+say 1001 offer all
+say 1001 no
+think
+say 1001 trade
+say 1001 yes
+say 1001 trade
+say 1001 no
+say 1001 5 trade
+say 1001 yes
+say 1001 5 trade
+say 1001 no
+say 1001 trade 100
+say 1001 yes
+say 1001 trade 100
+say 1001 no
+say 1001 trade all
+say 1001 yes
+say 1001 trade all
+say 1001 no
+think
+say 1001 list
+say 1001 yes
+say 1001 list
+say 1001 no
+say 1001 5 list
+say 1001 yes
+say 1001 5 list
+say 1001 no
+say 1001 list 100
+say 1001 yes
+say 1001 list 100
+say 1001 no
+say 1001 list all
+say 1001 yes
+say 1001 list all
+say 1001 no
+think
+say 1001 info
+say 1001 yes
+say 1001 info
+say 1001 no
+say 1001 5 info
+say 1001 yes
+say 1001 5 info
+say 1001 no
+say 1001 info 100
+say 1001 yes
+say 1001 info 100
+say 1001 no
+say 1001 info all
+say 1001 yes
+say 1001 info all
+say 1001 no
+think
+say 1001 job
+say 1001 yes
+say 1001 job
+say 1001 no
+say 1001 5 job
+say 1001 yes
+say 1001 5 job
+say 1001 no
+say 1001 job 100
+say 1001 yes
+say 1001 job 100
+say 1001 no
+say 1001 job all
+say 1001 yes
+say 1001 job all
+say 1001 no
+think
+say 1001 name
+say 1001 yes
+say 1001 name
+say 1001 no
+say 1001 5 name
+say 1001 yes
+say 1001 5 name
+say 1001 no
+say 1001 name 100
+say 1001 yes
+say 1001 name 100
+say 1001 no
+say 1001 name all
+say 1001 yes
+say 1001 name all
+say 1001 no
+think
+say 1001 yes
+say 1001 yes
+say 1001 yes
+say 1001 no
+say 1001 5 yes
+say 1001 yes
+say 1001 5 yes
+say 1001 no
+say 1001 yes 100
+say 1001 yes
+say 1001 yes 100
+say 1001 no
+say 1001 yes all
+say 1001 yes
+say 1001 yes all
+say 1001 no
+think
+say 1001 no
+say 1001 yes
+say 1001 no
+say 1001 no
+say 1001 5 no
+say 1001 yes
+say 1001 5 no
+say 1001 no
+say 1001 no 100
+say 1001 yes
+say 1001 no 100
+say 1001 no
+say 1001 no all
+say 1001 yes
+say 1001 no all
+say 1001 no
+think
+say 1001 si
+say 1001 yes
+say 1001 si
+say 1001 no
+say 1001 5 si
+say 1001 yes
+say 1001 5 si
+say 1001 no
+say 1001 si 100
+say 1001 yes
+say 1001 si 100
+say 1001 no
+say 1001 si all
+say 1001 yes
+say 1001 si all
+say 1001 no
+think
+say 1001 sell
+say 1001 yes
+say 1001 sell
+say 1001 no
+say 1001 5 sell
+say 1001 yes
+say 1001 5 sell
+say 1001 no
+say 1001 sell 100
+say 1001 yes
+say 1001 sell 100
+say 1001 no
+say 1001 sell all
+say 1001 yes
+say 1001 sell all
+say 1001 no
+think
+say 1001 buy
+say 1001 yes
+say 1001 buy
+say 1001 no
+say 1001 5 buy
+say 1001 yes
+say 1001 5 buy
+say 1001 no
+say 1001 buy 100
+say 1001 yes
+say 1001 buy 100
+say 1001 no
+say 1001 buy all
+say 1001 yes
+say 1001 buy all
+say 1001 no
+think
+say 1001 all
+say 1001 yes
+say 1001 all
+say 1001 no
+say 1001 5 all
+say 1001 yes
+say 1001 5 all
+say 1001 no
+say 1001 all 100
+say 1001 yes
+say 1001 all 100
+say 1001 no
+say 1001 all all
+say 1001 yes
+say 1001 all all
+say 1001 no
+think
+say 1001 status
+say 1001 yes
+say 1001 status
+say 1001 no
+say 1001 5 status
+say 1001 yes
+say 1001 5 status
+say 1001 no
+say 1001 status 100
+say 1001 yes
+say 1001 status 100
+say 1001 no
+say 1001 status all
+say 1001 yes
+say 1001 status all
+say 1001 no
+think
+say 1001 deposit 100
+say 1001 yes
+say 1001 deposit 100
+say 1001 no
+say 1001 5 deposit 100
+say 1001 yes
+say 1001 5 deposit 100
+say 1001 no
+say 1001 deposit 100 100
+say 1001 yes
+say 1001 deposit 100 100
+say 1001 no
+say 1001 deposit 100 all
+say 1001 yes
+say 1001 deposit 100 all
+say 1001 no
+think
+say 1001 withdraw 50
+say 1001 yes
+say 1001 withdraw 50
+say 1001 no
+say 1001 5 withdraw 50
+say 1001 yes
+say 1001 5 withdraw 50
+say 1001 no
+say 1001 withdraw 50 100
+say 1001 yes
+say 1001 withdraw 50 100
+say 1001 no
+say 1001 withdraw 50 all
+say 1001 yes
+say 1001 withdraw 50 all
+say 1001 no
+think
+say 1001 balance
+say 1001 yes
+say 1001 balance
+say 1001 no
+say 1001 5 balance
+say 1001 yes
+say 1001 5 balance
+say 1001 no
+say 1001 balance 100
+say 1001 yes
+say 1001 balance 100
+say 1001 no
+say 1001 balance all
+say 1001 yes
+say 1001 balance all
+say 1001 no
+think
+say 1001 transfer 10 to player1002
+say 1001 yes
+say 1001 transfer 10 to player1002
+say 1001 no
+say 1001 5 transfer 10 to player1002
+say 1001 yes
+say 1001 5 transfer 10 to player1002
+say 1001 no
+say 1001 transfer 10 to player1002 100
+say 1001 yes
+say 1001 transfer 10 to player1002 100
+say 1001 no
+say 1001 transfer 10 to player1002 all
+say 1001 yes
+say 1001 transfer 10 to player1002 all
+say 1001 no
+think
+say 1001 ruby
+say 1001 yes
+say 1001 ruby
+say 1001 no
+say 1001 5 ruby
+say 1001 yes
+say 1001 5 ruby
+say 1001 no
+say 1001 ruby 100
+say 1001 yes
+say 1001 ruby 100
+say 1001 no
+say 1001 ruby all
+say 1001 yes
+say 1001 ruby all
+say 1001 no
+think
+say 1001 small ruby
+say 1001 yes
+say 1001 small ruby
+say 1001 no
+say 1001 5 small ruby
+say 1001 yes
+say 1001 5 small ruby
+say 1001 no
+say 1001 small ruby 100
+say 1001 yes
+say 1001 small ruby 100
+say 1001 no
+say 1001 small ruby all
+say 1001 yes
+say 1001 small ruby all
+say 1001 no
+think
+say 1001 small rubies
+say 1001 yes
+say 1001 small rubies
+say 1001 no
+say 1001 5 small rubies
+say 1001 yes
+say 1001 5 small rubies
+say 1001 no
+say 1001 small rubies 100
+say 1001 yes
+say 1001 small rubies 100
+say 1001 no
+say 1001 small rubies all
+say 1001 yes
+say 1001 small rubies all
+say 1001 no
+think
+say 1001 big ruby
+say 1001 yes
+say 1001 big ruby
+say 1001 no
+say 1001 5 big ruby
+say 1001 yes
+say 1001 5 big ruby
+say 1001 no
+say 1001 big ruby 100
+say 1001 yes
+say 1001 big ruby 100
+say 1001 no
+say 1001 big ruby all
+say 1001 yes
+say 1001 big ruby all
+say 1001 no
+think
+say 1001 emerald
+say 1001 yes
+say 1001 emerald
+say 1001 no
+say 1001 5 emerald
+say 1001 yes
+say 1001 5 emerald
+say 1001 no
+say 1001 emerald 100
+say 1001 yes
+say 1001 emerald 100
+say 1001 no
+say 1001 emerald all
+say 1001 yes
+say 1001 emerald all
+say 1001 no
+think
+say 1001 small emerald
+say 1001 yes
+say 1001 small emerald
+say 1001 no
+say 1001 5 small emerald
+say 1001 yes
+say 1001 5 small emerald
+say 1001 no
+say 1001 small emerald 100
+say 1001 yes
+say 1001 small emerald 100
+say 1001 no
+say 1001 small emerald all
+say 1001 yes
+say 1001 small emerald all
+say 1001 no
+think
+say 1001 small emeralds
+say 1001 yes
+say 1001 small emeralds
+say 1001 no
+say 1001 5 small emeralds
+say 1001 yes
+say 1001 5 small emeralds
+say 1001 no
+say 1001 small emeralds 100
+say 1001 yes
+say 1001 small emeralds 100
+say 1001 no
+say 1001 small emeralds all
+say 1001 yes
+say 1001 small emeralds all
+say 1001 no
+think
+say 1001 big emerald
+say 1001 yes
+say 1001 big emerald
+say 1001 no
+say 1001 5 big emerald
+say 1001 yes
+say 1001 5 big emerald
+say 1001 no
+say 1001 big emerald 100
+say 1001 yes
+say 1001 big emerald 100
+say 1001 no
+say 1001 big emerald all
+say 1001 yes
+say 1001 big emerald all
+say 1001 no
+think
+say 1001 amethyst
+say 1001 yes
+say 1001 amethyst
+say 1001 no
+say 1001 5 amethyst
+say 1001 yes
+say 1001 5 amethyst
+say 1001 no
+say 1001 amethyst 100
+say 1001 yes
+say 1001 amethyst 100
+say 1001 no
+say 1001 amethyst all
+say 1001 yes
+say 1001 amethyst all
+say 1001 no
+think
+say 1001 small amethyst
+say 1001 yes
+say 1001 small amethyst
+say 1001 no
+say 1001 5 small amethyst
+say 1001 yes
+say 1001 5 small amethyst
+say 1001 no
+say 1001 small amethyst 100
+say 1001 yes
+say 1001 small amethyst 100
+say 1001 no
+say 1001 small amethyst all
+say 1001 yes
+say 1001 small amethyst all
+say 1001 no
+think
+say 1001 small amethysts
+say 1001 yes
+say 1001 small amethysts
+say 1001 no
+say 1001 5 small amethysts
+say 1001 yes
+say 1001 5 small amethysts
+say 1001 no
+say 1001 small amethysts 100
+say 1001 yes
+say 1001 small amethysts 100
+say 1001 no
+say 1001 small amethysts all
+say 1001 yes
+say 1001 small amethysts all
+say 1001 no
+think
+say 1001 violet gem
+say 1001 yes
+say 1001 violet gem
+say 1001 no
+say 1001 5 violet gem
+say 1001 yes
+say 1001 5 violet gem
+say 1001 no
+say 1001 violet gem 100
+say 1001 yes
+say 1001 violet gem 100
+say 1001 no
+say 1001 violet gem all
+say 1001 yes
+say 1001 violet gem all
+say 1001 no
+think
+say 1001 sapphire
+say 1001 yes
+say 1001 sapphire
+say 1001 no
+say 1001 5 sapphire
+say 1001 yes
+say 1001 5 sapphire
+say 1001 no
+say 1001 sapphire 100
+say 1001 yes
+say 1001 sapphire 100
+say 1001 no
+say 1001 sapphire all
+say 1001 yes
+say 1001 sapphire all
+say 1001 no
+think
+say 1001 small sapphire
+say 1001 yes
+say 1001 small sapphire
+say 1001 no
+say 1001 5 small sapphire
+say 1001 yes
+say 1001 5 small sapphire
+say 1001 no
+say 1001 small sapphire 100
+say 1001 yes
+say 1001 small sapphire 100
+say 1001 no
+say 1001 small sapphire all
+say 1001 yes
+say 1001 small sapphire all
+say 1001 no
+think
+say 1001 small sapphires
+say 1001 yes
+say 1001 small sapphires
+say 1001 no
+say 1001 5 small sapphires
+say 1001 yes
+say 1001 5 small sapphires
+say 1001 no
+say 1001 small sapphires 100
+say 1001 yes
+say 1001 small sapphires 100
+say 1001 no
+say 1001 small sapphires all
+say 1001 yes
+say 1001 small sapphires all
+say 1001 no
+think
+say 1001 yellow gem
+say 1001 yes
+say 1001 yellow gem
+say 1001 no
+say 1001 5 yellow gem
+say 1001 yes
+say 1001 5 yellow gem
+say 1001 no
+say 1001 yellow gem 100
+say 1001 yes
+say 1001 yellow gem 100
+say 1001 no
+say 1001 yellow gem all
+say 1001 yes
+say 1001 yellow gem all
+say 1001 no
+think
+say 1001 diamond
+say 1001 yes
+say 1001 diamond
+say 1001 no
+say 1001 5 diamond
+say 1001 yes
+say 1001 5 diamond
+say 1001 no
+say 1001 diamond 100
+say 1001 yes
+say 1001 diamond 100
+say 1001 no
+say 1001 diamond all
+say 1001 yes
+say 1001 diamond all
+say 1001 no
+think
+say 1001 small diamond
+say 1001 yes
+say 1001 small diamond
+say 1001 no
+say 1001 5 small diamond
+say 1001 yes
+say 1001 5 small diamond
+say 1001 no
+say 1001 small diamond 100
+say 1001 yes
+say 1001 small diamond 100
+say 1001 no
+say 1001 small diamond all
+say 1001 yes
+say 1001 small diamond all
+say 1001 no
+think
+say 1001 small diamonds
+say 1001 yes
+say 1001 small diamonds
+say 1001 no
+say 1001 5 small diamonds
+say 1001 yes
+say 1001 5 small diamonds
+say 1001 no
+say 1001 small diamonds 100
+say 1001 yes
+say 1001 small diamonds 100
+say 1001 no
+say 1001 small diamonds all
+say 1001 yes
+say 1001 small diamonds all
+say 1001 no
+think
+say 1001 blue gem
+say 1001 yes
+say 1001 blue gem
+say 1001 no
+say 1001 5 blue gem
+say 1001 yes
+say 1001 5 blue gem
+say 1001 no
+say 1001 blue gem 100
+say 1001 yes
+say 1001 blue gem 100
+say 1001 no
+say 1001 blue gem all
+say 1001 yes
+say 1001 blue gem all
+say 1001 no
+think
+say 1001 exchange
+say 1001 yes
+say 1001 exchange
+say 1001 no
+say 1001 5 exchange
+say 1001 yes
+say 1001 5 exchange
+say 1001 no
+say 1001 exchange 100
+say 1001 yes
+say 1001 exchange 100
+say 1001 no
+say 1001 exchange all
+say 1001 yes
+say 1001 exchange all
+say 1001 no
+think
+say 1001 exchange ruby
+say 1001 yes
+say 1001 exchange ruby
+say 1001 no
+say 1001 5 exchange ruby
+say 1001 yes
+say 1001 5 exchange ruby
+say 1001 no
+say 1001 exchange ruby 100
+say 1001 yes
+say 1001 exchange ruby 100
+say 1001 no
+say 1001 exchange ruby all
+say 1001 yes
+say 1001 exchange ruby all
+say 1001 no
+think
+say 1001 exchange emerald
+say 1001 yes
+say 1001 exchange emerald
+say 1001 no
+say 1001 5 exchange emerald
+say 1001 yes
+say 1001 5 exchange emerald
+say 1001 no
+say 1001 exchange emerald 100
+say 1001 yes
+say 1001 exchange emerald 100
+say 1001 no
+say 1001 exchange emerald all
+say 1001 yes
+say 1001 exchange emerald all
+say 1001 no
+think
+say 1001 exchange amethyst
+say 1001 yes
+say 1001 exchange amethyst
+say 1001 no
+say 1001 5 exchange amethyst
+say 1001 yes
+say 1001 5 exchange amethyst
+say 1001 no
+say 1001 exchange amethyst 100
+say 1001 yes
+say 1001 exchange amethyst 100
+say 1001 no
+say 1001 exchange amethyst all
+say 1001 yes
+say 1001 exchange amethyst all
+say 1001 no
+think
+say 1001 exchange sapphire
+say 1001 yes
+say 1001 exchange sapphire
+say 1001 no
+say 1001 5 exchange sapphire
+say 1001 yes
+say 1001 5 exchange sapphire
+say 1001 no
+say 1001 exchange sapphire 100
+say 1001 yes
+say 1001 exchange sapphire 100
+say 1001 no
+say 1001 exchange sapphire all
+say 1001 yes
+say 1001 exchange sapphire all
+say 1001 no
+think
+say 1001 exchange diamond
+say 1001 yes
+say 1001 exchange diamond
+say 1001 no
+say 1001 5 exchange diamond
+say 1001 yes
+say 1001 5 exchange diamond
+say 1001 no
+say 1001 exchange diamond 100
+say 1001 yes
+say 1001 exchange diamond 100
+say 1001 no
+say 1001 exchange diamond all
+say 1001 yes
+say 1001 exchange diamond all
+say 1001 no
+think
+say 1001 help
+say 1001 yes
+say 1001 help
+say 1001 no
+say 1001 5 help
+say 1001 yes
+say 1001 5 help
+say 1001 no
+say 1001 help 100
+say 1001 yes
+say 1001 help 100
+say 1001 no
+say 1001 help all
+say 1001 yes
+say 1001 help all
+say 1001 no
+think
+say 1001 focused
+say 1001 yes
+say 1001 focused
+say 1001 no
+say 1001 5 focused
+say 1001 yes
+say 1001 5 focused
+say 1001 no
+say 1001 focused 100
+say 1001 yes
+say 1001 focused 100
+say 1001 no
+say 1001 focused all
+say 1001 yes
+say 1001 focused all
+say 1001 no
+think
+say 1001 ayuda
+say 1001 yes
+say 1001 ayuda
+say 1001 no
+say 1001 5 ayuda
+say 1001 yes
+say 1001 5 ayuda
+say 1001 no
+say 1001 ayuda 100
+say 1001 yes
+say 1001 ayuda 100
+say 1001 no
+say 1001 ayuda all
+say 1001 yes
+say 1001 ayuda all
+say 1001 no
+think
+say 1001 cambiar
+say 1001 yes
+say 1001 cambiar
+say 1001 no
+say 1001 5 cambiar
+say 1001 yes
+say 1001 5 cambiar
+say 1001 no
+say 1001 cambiar 100
+say 1001 yes
+say 1001 cambiar 100
+say 1001 no
+say 1001 cambiar all
+say 1001 yes
+say 1001 cambiar all
+say 1001 no
+think
+say 1001 trade
+say 1001 yes
+say 1001 trade
+say 1001 no
+say 1001 5 trade
+say 1001 yes
+say 1001 5 trade
+say 1001 no
+say 1001 trade 100
+say 1001 yes
+say 1001 trade 100
+say 1001 no
+say 1001 trade all
+say 1001 yes
+say 1001 trade all
+say 1001 no
+think
+say 1001 bye
+say 1001 hi
+advance 40
+think
+say 1001 hi
+far 1001
+think
+near 1001
+say 1001 hola
+disappear 1001
+say 1002 hi
+set 1002 money 0
+set 1002 slots 0
+set 1002 level 1
+say 1002 ruby
+say 1002 yes
+say 1002 small ruby
+say 1002 yes
+say 1002 small rubies
+say 1002 yes
+say 1002 big ruby
+say 1002 yes
+say 1002 emerald
+say 1002 yes
+say 1002 small emerald
+say 1002 yes
+say 1002 small emeralds
+say 1002 yes
+say 1002 big emerald
+say 1002 yes
+say 1002 amethyst
+say 1002 yes
+say 1002 small amethyst
+say 1002 yes
+say 1002 small amethysts
+say 1002 yes
+say 1002 violet gem
+say 1002 yes
+say 1002 sapphire
+say 1002 yes
+say 1002 small sapphire
+say 1002 yes
+say 1002 small sapphires
+say 1002 yes
+say 1002 yellow gem
+say 1002 yes
+say 1002 diamond
+say 1002 yes
+say 1002 small diamond
+say 1002 yes
+say 1002 small diamonds
+say 1002 yes
+say 1002 blue gem
+say 1002 yes
+say 1002 exchange
+say 1002 yes
+say 1002 exchange ruby
+say 1002 yes
+say 1002 exchange emerald
+say 1002 yes
+say 1002 exchange amethyst
+say 1002 yes
+say 1002 exchange sapphire
+say 1002 yes
+say 1002 exchange diamond
+say 1002 yes
+say 1002 help
+say 1002 yes
+say 1002 focused
+say 1002 yes
+say 1002 ayuda
+say 1002 yes
+say 1002 cambiar
+say 1002 yes
+say 1002 trade
+say 1002 yes
+say 1002 chau
+think 3

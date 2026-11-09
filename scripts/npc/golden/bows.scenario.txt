@@ -1,0 +1,612 @@
+# generado por run_npc_tests.py
+near 1001
+near 1002
+say 1001 hello there
+say 1001 hi
+say 1002 hi
+say 1001 help
+say 1001 help
+say 1001 yes
+say 1001 help
+say 1001 no
+say 1001 5 help
+say 1001 yes
+say 1001 5 help
+say 1001 no
+say 1001 help 100
+say 1001 yes
+say 1001 help 100
+say 1001 no
+say 1001 help all
+say 1001 yes
+say 1001 help all
+say 1001 no
+think
+say 1001 ayuda
+say 1001 yes
+say 1001 ayuda
+say 1001 no
+say 1001 5 ayuda
+say 1001 yes
+say 1001 5 ayuda
+say 1001 no
+say 1001 ayuda 100
+say 1001 yes
+say 1001 ayuda 100
+say 1001 no
+say 1001 ayuda all
+say 1001 yes
+say 1001 ayuda all
+say 1001 no
+think
+say 1001 offer
+say 1001 yes
+say 1001 offer
+say 1001 no
+say 1001 5 offer
+say 1001 yes
+say 1001 5 offer
+say 1001 no
+say 1001 offer 100
+say 1001 yes
+say 1001 offer 100
+say 1001 no
+say 1001 offer all
+say 1001 yes
+say 1001 offer all
+say 1001 no
+think
+say 1001 trade
+say 1001 yes
+say 1001 trade
+say 1001 no
+say 1001 5 trade
+say 1001 yes
+say 1001 5 trade
+say 1001 no
+say 1001 trade 100
+say 1001 yes
+say 1001 trade 100
+say 1001 no
+say 1001 trade all
+say 1001 yes
+say 1001 trade all
+say 1001 no
+think
+say 1001 list
+say 1001 yes
+say 1001 list
+say 1001 no
+say 1001 5 list
+say 1001 yes
+say 1001 5 list
+say 1001 no
+say 1001 list 100
+say 1001 yes
+say 1001 list 100
+say 1001 no
+say 1001 list all
+say 1001 yes
+say 1001 list all
+say 1001 no
+think
+say 1001 info
+say 1001 yes
+say 1001 info
+say 1001 no
+say 1001 5 info
+say 1001 yes
+say 1001 5 info
+say 1001 no
+say 1001 info 100
+say 1001 yes
+say 1001 info 100
+say 1001 no
+say 1001 info all
+say 1001 yes
+say 1001 info all
+say 1001 no
+think
+say 1001 job
+say 1001 yes
+say 1001 job
+say 1001 no
+say 1001 5 job
+say 1001 yes
+say 1001 5 job
+say 1001 no
+say 1001 job 100
+say 1001 yes
+say 1001 job 100
+say 1001 no
+say 1001 job all
+say 1001 yes
+say 1001 job all
+say 1001 no
+think
+say 1001 name
+say 1001 yes
+say 1001 name
+say 1001 no
+say 1001 5 name
+say 1001 yes
+say 1001 5 name
+say 1001 no
+say 1001 name 100
+say 1001 yes
+say 1001 name 100
+say 1001 no
+say 1001 name all
+say 1001 yes
+say 1001 name all
+say 1001 no
+think
+say 1001 yes
+say 1001 yes
+say 1001 yes
+say 1001 no
+say 1001 5 yes
+say 1001 yes
+say 1001 5 yes
+say 1001 no
+say 1001 yes 100
+say 1001 yes
+say 1001 yes 100
+say 1001 no
+say 1001 yes all
+say 1001 yes
+say 1001 yes all
+say 1001 no
+think
+say 1001 no
+say 1001 yes
+say 1001 no
+say 1001 no
+say 1001 5 no
+say 1001 yes
+say 1001 5 no
+say 1001 no
+say 1001 no 100
+say 1001 yes
+say 1001 no 100
+say 1001 no
+say 1001 no all
+say 1001 yes
+say 1001 no all
+say 1001 no
+think
+say 1001 si
+say 1001 yes
+say 1001 si
+say 1001 no
+say 1001 5 si
+say 1001 yes
+say 1001 5 si
+say 1001 no
+say 1001 si 100
+say 1001 yes
+say 1001 si 100
+say 1001 no
+say 1001 si all
+say 1001 yes
+say 1001 si all
+say 1001 no
+think
+say 1001 sell
+say 1001 yes
+say 1001 sell
+say 1001 no
+say 1001 5 sell
+say 1001 yes
+say 1001 5 sell
+say 1001 no
+say 1001 sell 100
+say 1001 yes
+say 1001 sell 100
+say 1001 no
+say 1001 sell all
+say 1001 yes
+say 1001 sell all
+say 1001 no
+think
+say 1001 buy
+say 1001 yes
+say 1001 buy
+say 1001 no
+say 1001 5 buy
+say 1001 yes
+say 1001 5 buy
+say 1001 no
+say 1001 buy 100
+say 1001 yes
+say 1001 buy 100
+say 1001 no
+say 1001 buy all
+say 1001 yes
+say 1001 buy all
+say 1001 no
+think
+say 1001 all
+say 1001 yes
+say 1001 all
+say 1001 no
+say 1001 5 all
+say 1001 yes
+say 1001 5 all
+say 1001 no
+say 1001 all 100
+say 1001 yes
+say 1001 all 100
+say 1001 no
+say 1001 all all
+say 1001 yes
+say 1001 all all
+say 1001 no
+think
+say 1001 status
+say 1001 yes
+say 1001 status
+say 1001 no
+say 1001 5 status
+say 1001 yes
+say 1001 5 status
+say 1001 no
+say 1001 status 100
+say 1001 yes
+say 1001 status 100
+say 1001 no
+say 1001 status all
+say 1001 yes
+say 1001 status all
+say 1001 no
+think
+say 1001 deposit 100
+say 1001 yes
+say 1001 deposit 100
+say 1001 no
+say 1001 5 deposit 100
+say 1001 yes
+say 1001 5 deposit 100
+say 1001 no
+say 1001 deposit 100 100
+say 1001 yes
+say 1001 deposit 100 100
+say 1001 no
+say 1001 deposit 100 all
+say 1001 yes
+say 1001 deposit 100 all
+say 1001 no
+think
+say 1001 withdraw 50
+say 1001 yes
+say 1001 withdraw 50
+say 1001 no
+say 1001 5 withdraw 50
+say 1001 yes
+say 1001 5 withdraw 50
+say 1001 no
+say 1001 withdraw 50 100
+say 1001 yes
+say 1001 withdraw 50 100
+say 1001 no
+say 1001 withdraw 50 all
+say 1001 yes
+say 1001 withdraw 50 all
+say 1001 no
+think
+say 1001 balance
+say 1001 yes
+say 1001 balance
+say 1001 no
+say 1001 5 balance
+say 1001 yes
+say 1001 5 balance
+say 1001 no
+say 1001 balance 100
+say 1001 yes
+say 1001 balance 100
+say 1001 no
+say 1001 balance all
+say 1001 yes
+say 1001 balance all
+say 1001 no
+think
+say 1001 transfer 10 to player1002
+say 1001 yes
+say 1001 transfer 10 to player1002
+say 1001 no
+say 1001 5 transfer 10 to player1002
+say 1001 yes
+say 1001 5 transfer 10 to player1002
+say 1001 no
+say 1001 transfer 10 to player1002 100
+say 1001 yes
+say 1001 transfer 10 to player1002 100
+say 1001 no
+say 1001 transfer 10 to player1002 all
+say 1001 yes
+say 1001 transfer 10 to player1002 all
+say 1001 no
+think
+say 1001 power bolt
+say 1001 yes
+say 1001 power bolt
+say 1001 no
+say 1001 5 power bolt
+say 1001 yes
+say 1001 5 power bolt
+say 1001 no
+say 1001 power bolt 100
+say 1001 yes
+say 1001 power bolt 100
+say 1001 no
+say 1001 power bolt all
+say 1001 yes
+say 1001 power bolt all
+say 1001 no
+think
+say 1001 power bolts
+say 1001 yes
+say 1001 power bolts
+say 1001 no
+say 1001 5 power bolts
+say 1001 yes
+say 1001 5 power bolts
+say 1001 no
+say 1001 power bolts 100
+say 1001 yes
+say 1001 power bolts 100
+say 1001 no
+say 1001 power bolts all
+say 1001 yes
+say 1001 power bolts all
+say 1001 no
+think
+say 1001 crossbow
+say 1001 yes
+say 1001 crossbow
+say 1001 no
+say 1001 5 crossbow
+say 1001 yes
+say 1001 5 crossbow
+say 1001 no
+say 1001 crossbow 100
+say 1001 yes
+say 1001 crossbow 100
+say 1001 no
+say 1001 crossbow all
+say 1001 yes
+say 1001 crossbow all
+say 1001 no
+think
+say 1001 bow
+say 1001 yes
+say 1001 bow
+say 1001 no
+say 1001 5 bow
+say 1001 yes
+say 1001 5 bow
+say 1001 no
+say 1001 bow 100
+say 1001 yes
+say 1001 bow 100
+say 1001 no
+say 1001 bow all
+say 1001 yes
+say 1001 bow all
+say 1001 no
+think
+say 1001 arrow
+say 1001 yes
+say 1001 arrow
+say 1001 no
+say 1001 5 arrow
+say 1001 yes
+say 1001 5 arrow
+say 1001 no
+say 1001 arrow 100
+say 1001 yes
+say 1001 arrow 100
+say 1001 no
+say 1001 arrow all
+say 1001 yes
+say 1001 arrow all
+say 1001 no
+think
+say 1001 arrows
+say 1001 yes
+say 1001 arrows
+say 1001 no
+say 1001 5 arrows
+say 1001 yes
+say 1001 5 arrows
+say 1001 no
+say 1001 arrows 100
+say 1001 yes
+say 1001 arrows 100
+say 1001 no
+say 1001 arrows all
+say 1001 yes
+say 1001 arrows all
+say 1001 no
+think
+say 1001 bolt
+say 1001 yes
+say 1001 bolt
+say 1001 no
+say 1001 5 bolt
+say 1001 yes
+say 1001 5 bolt
+say 1001 no
+say 1001 bolt 100
+say 1001 yes
+say 1001 bolt 100
+say 1001 no
+say 1001 bolt all
+say 1001 yes
+say 1001 bolt all
+say 1001 no
+think
+say 1001 bolts
+say 1001 yes
+say 1001 bolts
+say 1001 no
+say 1001 5 bolts
+say 1001 yes
+say 1001 5 bolts
+say 1001 no
+say 1001 bolts 100
+say 1001 yes
+say 1001 bolts 100
+say 1001 no
+say 1001 bolts all
+say 1001 yes
+say 1001 bolts all
+say 1001 no
+think
+say 1001 spear
+say 1001 yes
+say 1001 spear
+say 1001 no
+say 1001 5 spear
+say 1001 yes
+say 1001 5 spear
+say 1001 no
+say 1001 spear 100
+say 1001 yes
+say 1001 spear 100
+say 1001 no
+say 1001 spear all
+say 1001 yes
+say 1001 spear all
+say 1001 no
+think
+say 1001 spears
+say 1001 yes
+say 1001 spears
+say 1001 no
+say 1001 5 spears
+say 1001 yes
+say 1001 5 spears
+say 1001 no
+say 1001 spears 100
+say 1001 yes
+say 1001 spears 100
+say 1001 no
+say 1001 spears all
+say 1001 yes
+say 1001 spears all
+say 1001 no
+think
+say 1001 focused
+say 1001 yes
+say 1001 focused
+say 1001 no
+say 1001 5 focused
+say 1001 yes
+say 1001 5 focused
+say 1001 no
+say 1001 focused 100
+say 1001 yes
+say 1001 focused 100
+say 1001 no
+say 1001 focused all
+say 1001 yes
+say 1001 focused all
+say 1001 no
+think
+say 1001 distance
+say 1001 yes
+say 1001 distance
+say 1001 no
+say 1001 5 distance
+say 1001 yes
+say 1001 5 distance
+say 1001 no
+say 1001 distance 100
+say 1001 yes
+say 1001 distance 100
+say 1001 no
+say 1001 distance all
+say 1001 yes
+say 1001 distance all
+say 1001 no
+think
+say 1001 ammo
+say 1001 yes
+say 1001 ammo
+say 1001 no
+say 1001 5 ammo
+say 1001 yes
+say 1001 5 ammo
+say 1001 no
+say 1001 ammo 100
+say 1001 yes
+say 1001 ammo 100
+say 1001 no
+say 1001 ammo all
+say 1001 yes
+say 1001 ammo all
+say 1001 no
+think
+say 1001 ammunition
+say 1001 yes
+say 1001 ammunition
+say 1001 no
+say 1001 5 ammunition
+say 1001 yes
+say 1001 5 ammunition
+say 1001 no
+say 1001 ammunition 100
+say 1001 yes
+say 1001 ammunition 100
+say 1001 no
+say 1001 ammunition all
+say 1001 yes
+say 1001 ammunition all
+say 1001 no
+think
+say 1001 bye
+say 1001 hi
+advance 40
+think
+say 1001 hi
+far 1001
+think
+near 1001
+say 1001 hola
+disappear 1001
+say 1002 hi
+set 1002 money 0
+set 1002 slots 0
+set 1002 level 1
+say 1002 power bolt
+say 1002 yes
+say 1002 power bolts
+say 1002 yes
+say 1002 crossbow
+say 1002 yes
+say 1002 bow
+say 1002 yes
+say 1002 arrow
+say 1002 yes
+say 1002 arrows
+say 1002 yes
+say 1002 bolt
+say 1002 yes
+say 1002 bolts
+say 1002 yes
+say 1002 spear
+say 1002 yes
+say 1002 spears
+say 1002 yes
+say 1002 focused
+say 1002 yes
+say 1002 distance
+say 1002 yes
+say 1002 ammo
+say 1002 yes
+say 1002 ammunition
+say 1002 yes
+say 1002 chau
+think 3

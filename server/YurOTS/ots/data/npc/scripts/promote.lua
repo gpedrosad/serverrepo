@@ -1,35 +1,7 @@
-focus = 0
-talk_start = 0
-target = 0
-following = false
-attacking = false
+-- Orlan (promoción: nivel 20 + 20.000 gp; info de premium).
 talk_state = 0
 
-function onThingMove(creature, thing, oldpos, oldstackpos)
-end
-
-function onCreatureAppear(creature)
-end
-
-function onCreatureDisappear(cid, pos)
-	npcOnCreatureDisappear(cid)
-end
-
-function onCreatureTurn(creature)
-end
-
-function onCreatureSay(cid, type, msg)
-	msg = string.lower(msg)
-
-	local state = npcHandleMessage(
-		cid,
-		msg,
-		'Hello ' .. creatureGetName(cid) .. '. I handle promotions. Say "promotion" if you are interested.'
-	)
-	if state ~= 'focused' then
-		return
-	end
-
+local function onMessage(cid, msg)
 	if talk_state == 1 then
 		if npcHandlePendingYesNo(cid, msg, function()
 			if pay(cid, 20000) then
@@ -64,9 +36,7 @@ function onCreatureSay(cid, type, msg)
 	end
 end
 
-function onCreatureChangeOutfit(creature)
-end
-
-function onThink()
-	npcOnThink()
-end
+npcDefine{
+	greet = function(cid) return 'Hello ' .. creatureGetName(cid) .. '. I handle promotions. Say "promotion" if you are interested.' end,
+	onMessage = onMessage,
+}

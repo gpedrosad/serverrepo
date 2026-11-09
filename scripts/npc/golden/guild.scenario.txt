@@ -1,0 +1,612 @@
+# generado por run_npc_tests.py
+near 1001
+near 1002
+say 1001 hello there
+say 1001 hi
+say 1002 hi
+say 1001 help
+say 1001 help
+say 1001 yes
+say 1001 help
+say 1001 no
+say 1001 5 help
+say 1001 yes
+say 1001 5 help
+say 1001 no
+say 1001 help 100
+say 1001 yes
+say 1001 help 100
+say 1001 no
+say 1001 help all
+say 1001 yes
+say 1001 help all
+say 1001 no
+think
+say 1001 ayuda
+say 1001 yes
+say 1001 ayuda
+say 1001 no
+say 1001 5 ayuda
+say 1001 yes
+say 1001 5 ayuda
+say 1001 no
+say 1001 ayuda 100
+say 1001 yes
+say 1001 ayuda 100
+say 1001 no
+say 1001 ayuda all
+say 1001 yes
+say 1001 ayuda all
+say 1001 no
+think
+say 1001 offer
+say 1001 yes
+say 1001 offer
+say 1001 no
+say 1001 5 offer
+say 1001 yes
+say 1001 5 offer
+say 1001 no
+say 1001 offer 100
+say 1001 yes
+say 1001 offer 100
+say 1001 no
+say 1001 offer all
+say 1001 yes
+say 1001 offer all
+say 1001 no
+think
+say 1001 trade
+say 1001 yes
+say 1001 trade
+say 1001 no
+say 1001 5 trade
+say 1001 yes
+say 1001 5 trade
+say 1001 no
+say 1001 trade 100
+say 1001 yes
+say 1001 trade 100
+say 1001 no
+say 1001 trade all
+say 1001 yes
+say 1001 trade all
+say 1001 no
+think
+say 1001 list
+say 1001 yes
+say 1001 list
+say 1001 no
+say 1001 5 list
+say 1001 yes
+say 1001 5 list
+say 1001 no
+say 1001 list 100
+say 1001 yes
+say 1001 list 100
+say 1001 no
+say 1001 list all
+say 1001 yes
+say 1001 list all
+say 1001 no
+think
+say 1001 info
+say 1001 yes
+say 1001 info
+say 1001 no
+say 1001 5 info
+say 1001 yes
+say 1001 5 info
+say 1001 no
+say 1001 info 100
+say 1001 yes
+say 1001 info 100
+say 1001 no
+say 1001 info all
+say 1001 yes
+say 1001 info all
+say 1001 no
+think
+say 1001 job
+say 1001 yes
+say 1001 job
+say 1001 no
+say 1001 5 job
+say 1001 yes
+say 1001 5 job
+say 1001 no
+say 1001 job 100
+say 1001 yes
+say 1001 job 100
+say 1001 no
+say 1001 job all
+say 1001 yes
+say 1001 job all
+say 1001 no
+think
+say 1001 name
+say 1001 yes
+say 1001 name
+say 1001 no
+say 1001 5 name
+say 1001 yes
+say 1001 5 name
+say 1001 no
+say 1001 name 100
+say 1001 yes
+say 1001 name 100
+say 1001 no
+say 1001 name all
+say 1001 yes
+say 1001 name all
+say 1001 no
+think
+say 1001 yes
+say 1001 yes
+say 1001 yes
+say 1001 no
+say 1001 5 yes
+say 1001 yes
+say 1001 5 yes
+say 1001 no
+say 1001 yes 100
+say 1001 yes
+say 1001 yes 100
+say 1001 no
+say 1001 yes all
+say 1001 yes
+say 1001 yes all
+say 1001 no
+think
+say 1001 no
+say 1001 yes
+say 1001 no
+say 1001 no
+say 1001 5 no
+say 1001 yes
+say 1001 5 no
+say 1001 no
+say 1001 no 100
+say 1001 yes
+say 1001 no 100
+say 1001 no
+say 1001 no all
+say 1001 yes
+say 1001 no all
+say 1001 no
+think
+say 1001 si
+say 1001 yes
+say 1001 si
+say 1001 no
+say 1001 5 si
+say 1001 yes
+say 1001 5 si
+say 1001 no
+say 1001 si 100
+say 1001 yes
+say 1001 si 100
+say 1001 no
+say 1001 si all
+say 1001 yes
+say 1001 si all
+say 1001 no
+think
+say 1001 sell
+say 1001 yes
+say 1001 sell
+say 1001 no
+say 1001 5 sell
+say 1001 yes
+say 1001 5 sell
+say 1001 no
+say 1001 sell 100
+say 1001 yes
+say 1001 sell 100
+say 1001 no
+say 1001 sell all
+say 1001 yes
+say 1001 sell all
+say 1001 no
+think
+say 1001 buy
+say 1001 yes
+say 1001 buy
+say 1001 no
+say 1001 5 buy
+say 1001 yes
+say 1001 5 buy
+say 1001 no
+say 1001 buy 100
+say 1001 yes
+say 1001 buy 100
+say 1001 no
+say 1001 buy all
+say 1001 yes
+say 1001 buy all
+say 1001 no
+think
+say 1001 all
+say 1001 yes
+say 1001 all
+say 1001 no
+say 1001 5 all
+say 1001 yes
+say 1001 5 all
+say 1001 no
+say 1001 all 100
+say 1001 yes
+say 1001 all 100
+say 1001 no
+say 1001 all all
+say 1001 yes
+say 1001 all all
+say 1001 no
+think
+say 1001 status
+say 1001 yes
+say 1001 status
+say 1001 no
+say 1001 5 status
+say 1001 yes
+say 1001 5 status
+say 1001 no
+say 1001 status 100
+say 1001 yes
+say 1001 status 100
+say 1001 no
+say 1001 status all
+say 1001 yes
+say 1001 status all
+say 1001 no
+think
+say 1001 deposit 100
+say 1001 yes
+say 1001 deposit 100
+say 1001 no
+say 1001 5 deposit 100
+say 1001 yes
+say 1001 5 deposit 100
+say 1001 no
+say 1001 deposit 100 100
+say 1001 yes
+say 1001 deposit 100 100
+say 1001 no
+say 1001 deposit 100 all
+say 1001 yes
+say 1001 deposit 100 all
+say 1001 no
+think
+say 1001 withdraw 50
+say 1001 yes
+say 1001 withdraw 50
+say 1001 no
+say 1001 5 withdraw 50
+say 1001 yes
+say 1001 5 withdraw 50
+say 1001 no
+say 1001 withdraw 50 100
+say 1001 yes
+say 1001 withdraw 50 100
+say 1001 no
+say 1001 withdraw 50 all
+say 1001 yes
+say 1001 withdraw 50 all
+say 1001 no
+think
+say 1001 balance
+say 1001 yes
+say 1001 balance
+say 1001 no
+say 1001 5 balance
+say 1001 yes
+say 1001 5 balance
+say 1001 no
+say 1001 balance 100
+say 1001 yes
+say 1001 balance 100
+say 1001 no
+say 1001 balance all
+say 1001 yes
+say 1001 balance all
+say 1001 no
+think
+say 1001 transfer 10 to player1002
+say 1001 yes
+say 1001 transfer 10 to player1002
+say 1001 no
+say 1001 5 transfer 10 to player1002
+say 1001 yes
+say 1001 5 transfer 10 to player1002
+say 1001 no
+say 1001 transfer 10 to player1002 100
+say 1001 yes
+say 1001 transfer 10 to player1002 100
+say 1001 no
+say 1001 transfer 10 to player1002 all
+say 1001 yes
+say 1001 transfer 10 to player1002 all
+say 1001 no
+think
+say 1001 help
+say 1001 yes
+say 1001 help
+say 1001 no
+say 1001 5 help
+say 1001 yes
+say 1001 5 help
+say 1001 no
+say 1001 help 100
+say 1001 yes
+say 1001 help 100
+say 1001 no
+say 1001 help all
+say 1001 yes
+say 1001 help all
+say 1001 no
+think
+say 1001 focused
+say 1001 yes
+say 1001 focused
+say 1001 no
+say 1001 5 focused
+say 1001 yes
+say 1001 5 focused
+say 1001 no
+say 1001 focused 100
+say 1001 yes
+say 1001 focused 100
+say 1001 no
+say 1001 focused all
+say 1001 yes
+say 1001 focused all
+say 1001 no
+think
+say 1001 found
+say 1001 yes
+say 1001 found
+say 1001 no
+say 1001 5 found
+say 1001 yes
+say 1001 5 found
+say 1001 no
+say 1001 found 100
+say 1001 yes
+say 1001 found 100
+say 1001 no
+say 1001 found all
+say 1001 yes
+say 1001 found all
+say 1001 no
+think
+say 1001 join
+say 1001 yes
+say 1001 join
+say 1001 no
+say 1001 5 join
+say 1001 yes
+say 1001 5 join
+say 1001 no
+say 1001 join 100
+say 1001 yes
+say 1001 join 100
+say 1001 no
+say 1001 join all
+say 1001 yes
+say 1001 join all
+say 1001 no
+think
+say 1001 exclude
+say 1001 yes
+say 1001 exclude
+say 1001 no
+say 1001 5 exclude
+say 1001 yes
+say 1001 5 exclude
+say 1001 no
+say 1001 exclude 100
+say 1001 yes
+say 1001 exclude 100
+say 1001 no
+say 1001 exclude all
+say 1001 yes
+say 1001 exclude all
+say 1001 no
+think
+say 1001 kick
+say 1001 yes
+say 1001 kick
+say 1001 no
+say 1001 5 kick
+say 1001 yes
+say 1001 5 kick
+say 1001 no
+say 1001 kick 100
+say 1001 yes
+say 1001 kick 100
+say 1001 no
+say 1001 kick all
+say 1001 yes
+say 1001 kick all
+say 1001 no
+think
+say 1001 invite
+say 1001 yes
+say 1001 invite
+say 1001 no
+say 1001 5 invite
+say 1001 yes
+say 1001 5 invite
+say 1001 no
+say 1001 invite 100
+say 1001 yes
+say 1001 invite 100
+say 1001 no
+say 1001 invite all
+say 1001 yes
+say 1001 invite all
+say 1001 no
+think
+say 1001 leave
+say 1001 yes
+say 1001 leave
+say 1001 no
+say 1001 5 leave
+say 1001 yes
+say 1001 5 leave
+say 1001 no
+say 1001 leave 100
+say 1001 yes
+say 1001 leave 100
+say 1001 no
+say 1001 leave all
+say 1001 yes
+say 1001 leave all
+say 1001 no
+think
+say 1001 pass
+say 1001 yes
+say 1001 pass
+say 1001 no
+say 1001 5 pass
+say 1001 yes
+say 1001 5 pass
+say 1001 no
+say 1001 pass 100
+say 1001 yes
+say 1001 pass 100
+say 1001 no
+say 1001 pass all
+say 1001 yes
+say 1001 pass all
+say 1001 no
+think
+say 1001 vice
+say 1001 yes
+say 1001 vice
+say 1001 no
+say 1001 5 vice
+say 1001 yes
+say 1001 5 vice
+say 1001 no
+say 1001 vice 100
+say 1001 yes
+say 1001 vice 100
+say 1001 no
+say 1001 vice all
+say 1001 yes
+say 1001 vice all
+say 1001 no
+think
+say 1001 member
+say 1001 yes
+say 1001 member
+say 1001 no
+say 1001 5 member
+say 1001 yes
+say 1001 5 member
+say 1001 no
+say 1001 member 100
+say 1001 yes
+say 1001 member 100
+say 1001 no
+say 1001 member all
+say 1001 yes
+say 1001 member all
+say 1001 no
+think
+say 1001 nick
+say 1001 yes
+say 1001 nick
+say 1001 no
+say 1001 5 nick
+say 1001 yes
+say 1001 5 nick
+say 1001 no
+say 1001 nick 100
+say 1001 yes
+say 1001 nick 100
+say 1001 no
+say 1001 nick all
+say 1001 yes
+say 1001 nick all
+say 1001 no
+think
+say 1001 title
+say 1001 yes
+say 1001 title
+say 1001 no
+say 1001 5 title
+say 1001 yes
+say 1001 5 title
+say 1001 no
+say 1001 title 100
+say 1001 yes
+say 1001 title 100
+say 1001 no
+say 1001 title all
+say 1001 yes
+say 1001 title all
+say 1001 no
+think
+say 1001 none
+say 1001 yes
+say 1001 none
+say 1001 no
+say 1001 5 none
+say 1001 yes
+say 1001 5 none
+say 1001 no
+say 1001 none 100
+say 1001 yes
+say 1001 none 100
+say 1001 no
+say 1001 none all
+say 1001 yes
+say 1001 none all
+say 1001 no
+think
+say 1001 bye
+say 1001 hi
+advance 40
+think
+say 1001 hi
+far 1001
+think
+near 1001
+say 1001 hola
+disappear 1001
+say 1002 hi
+set 1002 money 0
+set 1002 slots 0
+set 1002 level 1
+say 1002 help
+say 1002 yes
+say 1002 focused
+say 1002 yes
+say 1002 found
+say 1002 yes
+say 1002 join
+say 1002 yes
+say 1002 exclude
+say 1002 yes
+say 1002 kick
+say 1002 yes
+say 1002 invite
+say 1002 yes
+say 1002 leave
+say 1002 yes
+say 1002 pass
+say 1002 yes
+say 1002 vice
+say 1002 yes
+say 1002 member
+say 1002 yes
+say 1002 nick
+say 1002 yes
+say 1002 title
+say 1002 yes
+say 1002 none
+say 1002 yes
+say 1002 chau
+think 3

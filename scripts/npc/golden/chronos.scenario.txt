@@ -1,0 +1,475 @@
+# generado por run_npc_tests.py
+near 1001
+near 1002
+say 1001 hello there
+say 1001 hi
+say 1002 hi
+say 1001 help
+say 1001 help
+say 1001 yes
+say 1001 help
+say 1001 no
+say 1001 5 help
+say 1001 yes
+say 1001 5 help
+say 1001 no
+say 1001 help 100
+say 1001 yes
+say 1001 help 100
+say 1001 no
+say 1001 help all
+say 1001 yes
+say 1001 help all
+say 1001 no
+think
+say 1001 ayuda
+say 1001 yes
+say 1001 ayuda
+say 1001 no
+say 1001 5 ayuda
+say 1001 yes
+say 1001 5 ayuda
+say 1001 no
+say 1001 ayuda 100
+say 1001 yes
+say 1001 ayuda 100
+say 1001 no
+say 1001 ayuda all
+say 1001 yes
+say 1001 ayuda all
+say 1001 no
+think
+say 1001 offer
+say 1001 yes
+say 1001 offer
+say 1001 no
+say 1001 5 offer
+say 1001 yes
+say 1001 5 offer
+say 1001 no
+say 1001 offer 100
+say 1001 yes
+say 1001 offer 100
+say 1001 no
+say 1001 offer all
+say 1001 yes
+say 1001 offer all
+say 1001 no
+think
+say 1001 trade
+say 1001 yes
+say 1001 trade
+say 1001 no
+say 1001 5 trade
+say 1001 yes
+say 1001 5 trade
+say 1001 no
+say 1001 trade 100
+say 1001 yes
+say 1001 trade 100
+say 1001 no
+say 1001 trade all
+say 1001 yes
+say 1001 trade all
+say 1001 no
+think
+say 1001 list
+say 1001 yes
+say 1001 list
+say 1001 no
+say 1001 5 list
+say 1001 yes
+say 1001 5 list
+say 1001 no
+say 1001 list 100
+say 1001 yes
+say 1001 list 100
+say 1001 no
+say 1001 list all
+say 1001 yes
+say 1001 list all
+say 1001 no
+think
+say 1001 info
+say 1001 yes
+say 1001 info
+say 1001 no
+say 1001 5 info
+say 1001 yes
+say 1001 5 info
+say 1001 no
+say 1001 info 100
+say 1001 yes
+say 1001 info 100
+say 1001 no
+say 1001 info all
+say 1001 yes
+say 1001 info all
+say 1001 no
+think
+say 1001 job
+say 1001 yes
+say 1001 job
+say 1001 no
+say 1001 5 job
+say 1001 yes
+say 1001 5 job
+say 1001 no
+say 1001 job 100
+say 1001 yes
+say 1001 job 100
+say 1001 no
+say 1001 job all
+say 1001 yes
+say 1001 job all
+say 1001 no
+think
+say 1001 name
+say 1001 yes
+say 1001 name
+say 1001 no
+say 1001 5 name
+say 1001 yes
+say 1001 5 name
+say 1001 no
+say 1001 name 100
+say 1001 yes
+say 1001 name 100
+say 1001 no
+say 1001 name all
+say 1001 yes
+say 1001 name all
+say 1001 no
+think
+say 1001 yes
+say 1001 yes
+say 1001 yes
+say 1001 no
+say 1001 5 yes
+say 1001 yes
+say 1001 5 yes
+say 1001 no
+say 1001 yes 100
+say 1001 yes
+say 1001 yes 100
+say 1001 no
+say 1001 yes all
+say 1001 yes
+say 1001 yes all
+say 1001 no
+think
+say 1001 no
+say 1001 yes
+say 1001 no
+say 1001 no
+say 1001 5 no
+say 1001 yes
+say 1001 5 no
+say 1001 no
+say 1001 no 100
+say 1001 yes
+say 1001 no 100
+say 1001 no
+say 1001 no all
+say 1001 yes
+say 1001 no all
+say 1001 no
+think
+say 1001 si
+say 1001 yes
+say 1001 si
+say 1001 no
+say 1001 5 si
+say 1001 yes
+say 1001 5 si
+say 1001 no
+say 1001 si 100
+say 1001 yes
+say 1001 si 100
+say 1001 no
+say 1001 si all
+say 1001 yes
+say 1001 si all
+say 1001 no
+think
+say 1001 sell
+say 1001 yes
+say 1001 sell
+say 1001 no
+say 1001 5 sell
+say 1001 yes
+say 1001 5 sell
+say 1001 no
+say 1001 sell 100
+say 1001 yes
+say 1001 sell 100
+say 1001 no
+say 1001 sell all
+say 1001 yes
+say 1001 sell all
+say 1001 no
+think
+say 1001 buy
+say 1001 yes
+say 1001 buy
+say 1001 no
+say 1001 5 buy
+say 1001 yes
+say 1001 5 buy
+say 1001 no
+say 1001 buy 100
+say 1001 yes
+say 1001 buy 100
+say 1001 no
+say 1001 buy all
+say 1001 yes
+say 1001 buy all
+say 1001 no
+think
+say 1001 all
+say 1001 yes
+say 1001 all
+say 1001 no
+say 1001 5 all
+say 1001 yes
+say 1001 5 all
+say 1001 no
+say 1001 all 100
+say 1001 yes
+say 1001 all 100
+say 1001 no
+say 1001 all all
+say 1001 yes
+say 1001 all all
+say 1001 no
+think
+say 1001 status
+say 1001 yes
+say 1001 status
+say 1001 no
+say 1001 5 status
+say 1001 yes
+say 1001 5 status
+say 1001 no
+say 1001 status 100
+say 1001 yes
+say 1001 status 100
+say 1001 no
+say 1001 status all
+say 1001 yes
+say 1001 status all
+say 1001 no
+think
+say 1001 deposit 100
+say 1001 yes
+say 1001 deposit 100
+say 1001 no
+say 1001 5 deposit 100
+say 1001 yes
+say 1001 5 deposit 100
+say 1001 no
+say 1001 deposit 100 100
+say 1001 yes
+say 1001 deposit 100 100
+say 1001 no
+say 1001 deposit 100 all
+say 1001 yes
+say 1001 deposit 100 all
+say 1001 no
+think
+say 1001 withdraw 50
+say 1001 yes
+say 1001 withdraw 50
+say 1001 no
+say 1001 5 withdraw 50
+say 1001 yes
+say 1001 5 withdraw 50
+say 1001 no
+say 1001 withdraw 50 100
+say 1001 yes
+say 1001 withdraw 50 100
+say 1001 no
+say 1001 withdraw 50 all
+say 1001 yes
+say 1001 withdraw 50 all
+say 1001 no
+think
+say 1001 balance
+say 1001 yes
+say 1001 balance
+say 1001 no
+say 1001 5 balance
+say 1001 yes
+say 1001 5 balance
+say 1001 no
+say 1001 balance 100
+say 1001 yes
+say 1001 balance 100
+say 1001 no
+say 1001 balance all
+say 1001 yes
+say 1001 balance all
+say 1001 no
+think
+say 1001 transfer 10 to player1002
+say 1001 yes
+say 1001 transfer 10 to player1002
+say 1001 no
+say 1001 5 transfer 10 to player1002
+say 1001 yes
+say 1001 5 transfer 10 to player1002
+say 1001 no
+say 1001 transfer 10 to player1002 100
+say 1001 yes
+say 1001 transfer 10 to player1002 100
+say 1001 no
+say 1001 transfer 10 to player1002 all
+say 1001 yes
+say 1001 transfer 10 to player1002 all
+say 1001 no
+think
+say 1001 time
+say 1001 yes
+say 1001 time
+say 1001 no
+say 1001 5 time
+say 1001 yes
+say 1001 5 time
+say 1001 no
+say 1001 time 100
+say 1001 yes
+say 1001 time 100
+say 1001 no
+say 1001 time all
+say 1001 yes
+say 1001 time all
+say 1001 no
+think
+say 1001 fase
+say 1001 yes
+say 1001 fase
+say 1001 no
+say 1001 5 fase
+say 1001 yes
+say 1001 5 fase
+say 1001 no
+say 1001 fase 100
+say 1001 yes
+say 1001 fase 100
+say 1001 no
+say 1001 fase all
+say 1001 yes
+say 1001 fase all
+say 1001 no
+think
+say 1001 focused
+say 1001 yes
+say 1001 focused
+say 1001 no
+say 1001 5 focused
+say 1001 yes
+say 1001 5 focused
+say 1001 no
+say 1001 focused 100
+say 1001 yes
+say 1001 focused 100
+say 1001 no
+say 1001 focused all
+say 1001 yes
+say 1001 focused all
+say 1001 no
+think
+say 1001 tiempo
+say 1001 yes
+say 1001 tiempo
+say 1001 no
+say 1001 5 tiempo
+say 1001 yes
+say 1001 5 tiempo
+say 1001 no
+say 1001 tiempo 100
+say 1001 yes
+say 1001 tiempo 100
+say 1001 no
+say 1001 tiempo all
+say 1001 yes
+say 1001 tiempo all
+say 1001 no
+think
+say 1001 phase
+say 1001 yes
+say 1001 phase
+say 1001 no
+say 1001 5 phase
+say 1001 yes
+say 1001 5 phase
+say 1001 no
+say 1001 phase 100
+say 1001 yes
+say 1001 phase 100
+say 1001 no
+say 1001 phase all
+say 1001 yes
+say 1001 phase all
+say 1001 no
+think
+say 1001 reloj
+say 1001 yes
+say 1001 reloj
+say 1001 no
+say 1001 5 reloj
+say 1001 yes
+say 1001 5 reloj
+say 1001 no
+say 1001 reloj 100
+say 1001 yes
+say 1001 reloj 100
+say 1001 no
+say 1001 reloj all
+say 1001 yes
+say 1001 reloj all
+say 1001 no
+think
+say 1001 bye
+say 1001 hi
+advance 40
+think
+say 1001 hi
+far 1001
+think
+near 1001
+say 1001 hola
+disappear 1001
+say 1002 hi
+set 1002 money 0
+set 1002 slots 0
+set 1002 level 1
+say 1002 time
+say 1002 yes
+say 1002 fase
+say 1002 yes
+say 1002 focused
+say 1002 yes
+say 1002 tiempo
+say 1002 yes
+say 1002 phase
+say 1002 yes
+say 1002 reloj
+say 1002 yes
+say 1002 chau
+think 3
+# Chronos: jugadores dentro de la sala, cambio de fase y sala vacía
+pos 1001 338 390 6
+pos 1002 340 392 6
+think 5
+advance 115
+think 10
+advance 120
+think 3
+say 1001 hi
+say 1001 time
+say 1001 fase
+far 1001
+far 1002
+advance 300
+think 5

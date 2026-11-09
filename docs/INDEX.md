@@ -73,6 +73,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/HOUSES.md`](gameplay/HOUSES.md) | **Casas:** dueños en `data/houses/*.xml`, deploy, backup/recuperación, **items fantasma** (caso Maximus `166,39,7` jul 2026). |
 | [`gameplay/GOLDEN_ACCESSORIES.md`](gameplay/GOLDEN_ACCESSORIES.md) | Golden amulet y golden ring: auto-bank, bonus de oro e interacción entre ambos. |
 | [`gameplay/SOFT_BOOTS.md`](gameplay/SOFT_BOOTS.md) | **Soft Boots (3549):** +3 HP / +12 MP cada 3 s, 4 h de uso → worn (3550); C++ `YUR_SOFT_BOOTS`. |
+| [`gameplay/NPC_SYSTEM.md`](gameplay/NPC_SYSTEM.md) | **NPCs:** cómo se cargan, componentes de `lib/npc/`, `npcDefine`, recetas, API C++, lista de NPCs y pruebas sin servidor (`scripts/npc/run_npc_tests.py`). |
 | [`gameplay/NPC_CONFIRMATION.md`](gameplay/NPC_CONFIRMATION.md) | Confirmación de transacciones con NPC (anti-misflow). |
 | [`gameplay/SELLER_FLUIDS.md`](gameplay/SELLER_FLUIDS.md) | Sistema de vendedores de fluids/potions. |
 | [`gameplay/DARK_RODO_RUNE_BACKPACKS.md`](gameplay/DARK_RODO_RUNE_BACKPACKS.md) | Backpacks especiales de runas y Dark Rodo. |
@@ -104,14 +105,10 @@ Importación de items, mapeo por código, items de prueba, sesiones de editor.
 | [`items-and-map/IMPORTAR_ITEM_DESDE_IMAGEN.md`](items-and-map/IMPORTAR_ITEM_DESDE_IMAGEN.md) | Si un item nuevo no entra o se ve mal: pipeline de import desde imagen. |
 | [`items-and-map/MAPEAR_CON_CODIGO.md`](items-and-map/MAPEAR_CON_CODIGO.md) | Mapear items/pisos por código (no manual) usando scripts. |
 | [`items-and-map/MAPEAR_LABERINTO.md`](items-and-map/MAPEAR_LABERINTO.md) | Laberinto procedural 2 sqm: camino 406, fondo 100 (pared), teleport al templo (`generate-maze.py`). |
-| [`items-and-map/MAPEAR_HUNT_MAZE.md`](items-and-map/MAPEAR_HUNT_MAZE.md) | Hunt maze **aparte** de Alice: portal templo viejo `160,54,7`, retorno al llegar (`generate-hunt-maze.py`). |
-| [`items-and-map/MAPEAR_FLOOR_HUNT.md`](items-and-map/MAPEAR_FLOOR_HUNT.md) | Floor hunt campus XY en z7 (16 salas), portal `162,54,7`. |
-| [`gameplay/WAVE_ARENA.md`](gameplay/WAVE_ARENA.md) | Wave Arena: oleadas + ranking semanal, portal templo `159,54,7`. |
-| [`gameplay/CRUCIBLE.md`](gameplay/CRUCIBLE.md) | El Crisol: 3 puertas + bosses diarios, portal templo `157,54,7`, carteles `y=53`. |
-| [`gameplay/SVAR_ARENA.md`](gameplay/SVAR_ARENA.md) | **Arena de Fosos:** estilo Svargrond 8.x, portal `161,54,7`, 10 pits, 3 cofres (1 elección). |
-| [`gameplay/FISH_TP.md`](gameplay/FISH_TP.md) | **Fish TP:** fishing rod en agua `164,54,7` → lagoon + mobs con animación. |
-| [`gameplay/SAND_CLOCK.md`](gameplay/SAND_CLOCK.md) | **Reloj de Arena:** sala compartida, fases globales 120 s, Chronos + countdown tipo trainers; portal `166,54,7`. |
-| [`gameplay/BLEED_ROOM.md`](gameplay/BLEED_ROOM.md) | **Bleed Room:** mana drain + cadena 10 mobs, HUD tipo trainers; portal `168,54,7`. |
+| [`items-and-map/MAPEAR_HUNT_MAZE.md`](items-and-map/MAPEAR_HUNT_MAZE.md) | Hunt maze **aparte** de Alice: portal plaza del templo `158,47,7`, retorno al llegar (`generate-hunt-maze.py`). |
+| [`gameplay/WAVE_ARENA.md`](gameplay/WAVE_ARENA.md) | Wave Arena: oleadas + ranking semanal, portal plaza del templo `166,47,7`. |
+| [`gameplay/CRUCIBLE.md`](gameplay/CRUCIBLE.md) | El Crisol: 3 puertas + bosses diarios, portal plaza del templo `164,47,7`. |
+| [`gameplay/SAND_CLOCK.md`](gameplay/SAND_CLOCK.md) | **Reloj de Arena:** sala compartida, fases globales 120 s, Chronos + countdown tipo trainers; portal plaza del templo `168,47,7`. |
 | [`items-and-map/MAPEAR_TP_GAUNTLET.md`](items-and-map/MAPEAR_TP_GAUNTLET.md) | Gauntlet: 40 salas 3×3 + sala final 3×3 (Wrath + demon armor, 1 TP); barco `gauntlet`. |
 | [`items-and-map/ISLAND_BANDS.md`](items-and-map/ISLAND_BANDS.md) | Cómo componer las bandas agua→shore→dirt→grass para que una isla no se vea con corte duro. Especificación de las 5 bandas y 7 reglas críticas. |
 | [`items-and-map/ZAGAN_TEST_ITEMS.md`](items-and-map/ZAGAN_TEST_ITEMS.md) | Items de prueba del entorno Zagan (dev/test). |
@@ -171,10 +168,5 @@ Catálogo de **migración/portabilidad** (16 fichas congeladas). No es el invent
 | Quiero ver qué features tiene el juego | [`INDEX.md`](INDEX.md) (sección Gameplay) + [`FEATURE_CATALOG.md`](FEATURE_CATALOG.md) |
 | Portal templo / El Crisol | [`gameplay/CRUCIBLE.md`](gameplay/CRUCIBLE.md) |
 | Wave Arena / oleadas | [`gameplay/WAVE_ARENA.md`](gameplay/WAVE_ARENA.md) |
-| Arena de Fosos / Svargrond-style | [`gameplay/SVAR_ARENA.md`](gameplay/SVAR_ARENA.md) |
-| Fish TP / pescar teleporte | [`gameplay/FISH_TP.md`](gameplay/FISH_TP.md) |
-| Reloj de Arena / fases globales | [`gameplay/SAND_CLOCK.md`](gameplay/SAND_CLOCK.md) |
-| Bleed Room / mana drain + cadena | [`gameplay/BLEED_ROOM.md`](gameplay/BLEED_ROOM.md) |
-| Private Trainer Dummy | [`gameplay/PRIVATE_TRAINER_DUMMY.md`](gameplay/PRIVATE_TRAINER_DUMMY.md) |
 | Necesito configurar el editor RME | [`RME_SETUP.md`](RME_SETUP.md) |
 | Tests de humo antes de release | [`SMOKE_TESTS.md`](SMOKE_TESTS.md) |

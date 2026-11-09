@@ -1,8 +1,4 @@
-focus = 0
-talk_start = 0
-target = 0
-following = false
-attacking = false
+-- Guild Master (fundar guild, invitar, expulsar, rangos, nicks).
 talk_state = 0
 gstat = 0		-- guild status
 grank = ''		-- guild rank
@@ -20,44 +16,8 @@ VICE = 3
 LEADER = 4
 allow_pattern = '^[a-zA-Z0-9 -]+$'
 
-function onThingMove(creature, thing, oldpos, oldstackpos)
-
-end
-
-
-function onCreatureAppear(creature)
-
-end
-
-
-function onCreatureDisappear(cid, pos)
-	npcOnCreatureDisappear(cid)
-end
-
-
-function onCreatureTurn(creature)
-
-end
-
-function msgcontains(txt, str)
-  	return (string.find(txt, str) and not string.find(txt, '(%w+)' .. str) and not string.find(txt, str .. '(%w+)'))
-end
-
-
-function onCreatureSay(cid, type, msg)
+local function onMessage(cid, msg)
 	cname = creatureGetName(cid)
-	msg = string.lower(msg)
-
-	local state = npcHandleMessage(
-		cid,
-		msg,
-		'Hi ' .. cname .. '! I handle guild business. Say "help" to see what you can do.',
-		'One moment, ' .. cname .. '!'
-	)
-	if state ~= 'focused' then
-		return
-	end
-
 	if talk_state == 0 then
 		if npcIsHelp(msg) then
 			selfSay('Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.')
@@ -412,12 +372,9 @@ function onCreatureSay(cid, type, msg)
 	end
 end
 
-
-function onCreatureChangeOutfit(creature)
-
-end
-
-
-function onThink()
-	npcOnThink(45)
-end
+npcDefine{
+	greet = function(cid) return 'Hi ' .. creatureGetName(cid) .. '! I handle guild business. Say "help" to see what you can do.' end,
+	busy = function(cid) return 'One moment, ' .. creatureGetName(cid) .. '!' end,
+	idleTimeout = 45,
+	onMessage = onMessage,
+}

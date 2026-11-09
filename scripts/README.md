@@ -45,13 +45,12 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 
 | Script | Uso |
 |--------|-----|
-| `generate-crucible.py` | El Crisol OTBM + carteles (portal `157,54,7`) |
-| `generate-svar-arena.py` | Arena de Fosos OTBM (portal `161,54,7`) |
-| `generate-fish-tp.py` | Fish TP OTBM (agua `164,54,7`) |
-| `generate-sand-clock.py` | Reloj de Arena OTBM (portal `166,54,7`) |
-| `generate-bleed-room.py` | Bleed Room OTBM (portal `168,54,7`) |
+| `generate-crucible.py` | El Crisol OTBM + carteles (portal en la plaza: `temple-portals.py`) |
+| `temple-portals.py` | Plaza del templo con todos los portales + reapunta vueltas (correr después de cualquier generador de zona) |
+| `generate-natural-island.py` | Isla irregular con costa/bordes del mapa real; `--cave` agrega cueva z+1 con agujero y escalera |
+| `spawn-island-cave.py` / `link-island-temple.py` | Spawns de la cueva / vuelta al templo + cyclops de la isla |
+| `generate-sand-clock.py` | Reloj de Arena OTBM (portal en la plaza: `temple-portals.py`) |
 | `generate-wave-arena.py` | Wave Arena |
-| `generate-floor-hunt.py` | Floor hunt campus |
 | `generate-hunt-maze.py` | Hunt maze |
 | `generate-maze.py` | Laberinto Alice |
 | `generate-tp-gauntlet.py` | Gauntlet |
@@ -89,3 +88,9 @@ Leer **antes**: [`deploy/README-DEPLOY-VPS.md`](deploy/README-DEPLOY-VPS.md)
 
 Flag: `ot/.smoke-tests-disabled` (symlink en `scripts/.smoke-tests-disabled`).  
 Desactivados temporalmente — ver `AGENTS.md` §2.7.
+
+## NPCs
+
+| Script | Qué hace |
+|--------|----------|
+| `npc/run_npc_tests.py` | Prueba todos los NPCs contra transcripciones grabadas (LuaJIT + `npc/harness.lua`), sin levantar el servidor. Ver `docs/gameplay/NPC_SYSTEM.md` |

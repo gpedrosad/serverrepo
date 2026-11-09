@@ -1,9 +1,5 @@
-focus = 0
-talk_start = 0
+-- Bounty Master (contratos de caza pagados con el banco). INACTIVO: no está en npc.xml y usa getPlayerBountyByName / doPlayerPlaceBounty, que npc.cpp no registra.
 talk_state = 0
-target = 0
-following = false
-attacking = false
 
 BOUNTY_SUCCESS = 1
 BOUNTY_INVALID_AMOUNT = -21
@@ -22,42 +18,10 @@ STATE_BOUNTY_CONFIRM = 1
 pending_bounty_amount = 0
 pending_bounty_target = ''
 
-function bountyTrim(text)
-	if text == nil then
-		return ''
-	end
-	text = string.gsub(text, '^%s+', '')
-	text = string.gsub(text, '%s+$', '')
-	return text
-end
-
 function bountyReset()
 	talk_state = STATE_NONE
 	pending_bounty_amount = 0
 	pending_bounty_target = ''
-end
-
-function bountyResolveAmount(cid, text)
-	text = bountyTrim(text)
-	if text == '' then
-		return nil
-	end
-
-	if text == 'all' or text == 'todo' then
-		return getPlayerBankBalance(cid)
-	end
-
-	local amount = tonumber(text)
-	if amount == nil then
-		return nil
-	end
-
-	amount = math.floor(amount)
-	if amount <= 0 then
-		return nil
-	end
-
-	return amount
 end
 
 function bountyShowHelp()
@@ -89,7 +53,7 @@ function bountyDescribeResult(result)
 end
 
 function bountyShowStatus(targetName)
-	local resolved = bountyTrim(targetName)
+	local resolved = npcTrim(targetName)
 	if resolved == '' then
 		selfSay('Say status name.')
 		return false
@@ -112,7 +76,7 @@ function bountyAskConfirm()
 end
 
 function bountyPrepare(cid, amountText, targetName)
-	local amount = bountyResolveAmount(cid, amountText)
+	local amount = npcResolveGoldAmount(cid, amountText)
 	if amount == nil then
 		selfSay('Say bounty 10000 name or hunt all name.')
 		return false
@@ -122,7 +86,7 @@ function bountyPrepare(cid, amountText, targetName)
 		return false
 	end
 
-	targetName = bountyTrim(targetName)
+	targetName = npcTrim(targetName)
 	if targetName == '' then
 		selfSay('Say bounty 10000 name.')
 		return false
@@ -218,39 +182,7 @@ function bountyTryCommand(cid, msg)
 	return false
 end
 
-function onThingMove(creature, thing, oldpos, oldstackpos)
-end
-
-function onCreatureAppear(creature)
-end
-
-function onCreatureDisappear(cid, pos)
-	if focus == cid then
-		bountyReset()
-	end
-	npcOnCreatureDisappear(cid)
-end
-
-function onCreatureTurn(creature)
-end
-
-function onCreatureSay(cid, type, msg)
-	msg = string.lower(msg)
-
-	local state = npcHandleMessage(
-		cid,
-		msg,
-		'Welcome, ' .. creatureGetName(cid) .. '. I post contracts from your bank balance. Say help for examples.',
-		'One moment please.',
-		'Safe hunting!'
-	)
-	if state == 'greet' then
-		bountyReset()
-		return
-	elseif state ~= 'focused' then
-		return
-	end
-
+local function onMessage(cid, msg)
 	if npcIsHelp(msg) or msg == 'bounty' or msg == 'hunt' or msg == 'wanted' or msg == 'most wanted' then
 		bountyShowHelp()
 		return
@@ -279,9 +211,11 @@ function onCreatureSay(cid, type, msg)
 	bountyShowHelp()
 end
 
-function onCreatureChangeOutfit(creature)
-end
-
-function onThink()
-	npcOnThink()
-end
+npcDefine{
+	greet = function(cid) return 'Welcome, ' .. creatureGetName(cid) .. '. I post contracts from your bank balance. Say help for examples.' end,
+	busy = 'One moment please.',
+	bye = 'Safe hunting!',
+	onLeave = bountyReset,
+	onGreet = bountyReset,
+	onMessage = onMessage,
+}

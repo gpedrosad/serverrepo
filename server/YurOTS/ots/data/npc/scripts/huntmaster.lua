@@ -1,30 +1,10 @@
-focus = 0
-talk_start = 0
-target = 0
-following = false
-attacking = false
+-- Huntmaster (contratos diarios de caza; lógica en lib/daily_task.lua).
 talk_state = 0
 pending_reward = nil
 
 dofile('data/npc/scripts/lib/daily_task.lua')
 
 HUNTMASTER_HELP = 'I post daily hunt contracts by level. Say "task" for today\'s 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.'
-
-function onThingMove(creature, thing, oldpos, oldstackpos)
-end
-
-function onCreatureAppear(creature)
-end
-
-function onCreatureDisappear(cid, pos)
-	npcOnCreatureDisappear(cid)
-end
-
-function onCreatureTurn(creature)
-end
-
-function onCreatureChangeOutfit(creature)
-end
 
 function playerLevel(cid)
 	local name = creatureGetName(cid)
@@ -201,19 +181,7 @@ function beginClaim(cid, chooseExp)
 	end
 end
 
-function onCreatureSay(cid, type, msg)
-	msg = string.lower(msg)
-
-	local state = npcHandleMessage(
-		cid,
-		msg,
-		'Hi ' .. creatureGetName(cid) .. '! Daily hunt contracts keep the city safer. Say "task", "status", "reward" or "help".',
-		'One moment, ' .. creatureGetName(cid) .. '!'
-	)
-	if state ~= 'focused' then
-		return
-	end
-
+local function onMessage(cid, msg)
 	dailyTaskEnsureDay(cid)
 
 	if talk_state == 1 then
@@ -270,6 +238,10 @@ function onCreatureSay(cid, type, msg)
 	end
 end
 
-function onThink()
-	npcOnThink(45, 'Next hunter please...')
-end
+npcDefine{
+	greet = function(cid) return 'Hi ' .. creatureGetName(cid) .. '! Daily hunt contracts keep the city safer. Say "task", "status", "reward" or "help".' end,
+	busy = function(cid) return 'One moment, ' .. creatureGetName(cid) .. '!' end,
+	idleTimeout = 45,
+	idleMessage = 'Next hunter please...',
+	onMessage = onMessage,
+}

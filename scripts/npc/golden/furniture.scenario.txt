@@ -1,0 +1,1554 @@
+# generado por run_npc_tests.py
+near 1001
+near 1002
+say 1001 hello there
+say 1001 hi
+say 1002 hi
+say 1001 help
+say 1001 help
+say 1001 yes
+say 1001 help
+say 1001 no
+say 1001 5 help
+say 1001 yes
+say 1001 5 help
+say 1001 no
+say 1001 help 100
+say 1001 yes
+say 1001 help 100
+say 1001 no
+say 1001 help all
+say 1001 yes
+say 1001 help all
+say 1001 no
+think
+say 1001 ayuda
+say 1001 yes
+say 1001 ayuda
+say 1001 no
+say 1001 5 ayuda
+say 1001 yes
+say 1001 5 ayuda
+say 1001 no
+say 1001 ayuda 100
+say 1001 yes
+say 1001 ayuda 100
+say 1001 no
+say 1001 ayuda all
+say 1001 yes
+say 1001 ayuda all
+say 1001 no
+think
+say 1001 offer
+say 1001 yes
+say 1001 offer
+say 1001 no
+say 1001 5 offer
+say 1001 yes
+say 1001 5 offer
+say 1001 no
+say 1001 offer 100
+say 1001 yes
+say 1001 offer 100
+say 1001 no
+say 1001 offer all
+say 1001 yes
+say 1001 offer all
+say 1001 no
+think
+say 1001 trade
+say 1001 yes
+say 1001 trade
+say 1001 no
+say 1001 5 trade
+say 1001 yes
+say 1001 5 trade
+say 1001 no
+say 1001 trade 100
+say 1001 yes
+say 1001 trade 100
+say 1001 no
+say 1001 trade all
+say 1001 yes
+say 1001 trade all
+say 1001 no
+think
+say 1001 list
+say 1001 yes
+say 1001 list
+say 1001 no
+say 1001 5 list
+say 1001 yes
+say 1001 5 list
+say 1001 no
+say 1001 list 100
+say 1001 yes
+say 1001 list 100
+say 1001 no
+say 1001 list all
+say 1001 yes
+say 1001 list all
+say 1001 no
+think
+say 1001 info
+say 1001 yes
+say 1001 info
+say 1001 no
+say 1001 5 info
+say 1001 yes
+say 1001 5 info
+say 1001 no
+say 1001 info 100
+say 1001 yes
+say 1001 info 100
+say 1001 no
+say 1001 info all
+say 1001 yes
+say 1001 info all
+say 1001 no
+think
+say 1001 job
+say 1001 yes
+say 1001 job
+say 1001 no
+say 1001 5 job
+say 1001 yes
+say 1001 5 job
+say 1001 no
+say 1001 job 100
+say 1001 yes
+say 1001 job 100
+say 1001 no
+say 1001 job all
+say 1001 yes
+say 1001 job all
+say 1001 no
+think
+say 1001 name
+say 1001 yes
+say 1001 name
+say 1001 no
+say 1001 5 name
+say 1001 yes
+say 1001 5 name
+say 1001 no
+say 1001 name 100
+say 1001 yes
+say 1001 name 100
+say 1001 no
+say 1001 name all
+say 1001 yes
+say 1001 name all
+say 1001 no
+think
+say 1001 yes
+say 1001 yes
+say 1001 yes
+say 1001 no
+say 1001 5 yes
+say 1001 yes
+say 1001 5 yes
+say 1001 no
+say 1001 yes 100
+say 1001 yes
+say 1001 yes 100
+say 1001 no
+say 1001 yes all
+say 1001 yes
+say 1001 yes all
+say 1001 no
+think
+say 1001 no
+say 1001 yes
+say 1001 no
+say 1001 no
+say 1001 5 no
+say 1001 yes
+say 1001 5 no
+say 1001 no
+say 1001 no 100
+say 1001 yes
+say 1001 no 100
+say 1001 no
+say 1001 no all
+say 1001 yes
+say 1001 no all
+say 1001 no
+think
+say 1001 si
+say 1001 yes
+say 1001 si
+say 1001 no
+say 1001 5 si
+say 1001 yes
+say 1001 5 si
+say 1001 no
+say 1001 si 100
+say 1001 yes
+say 1001 si 100
+say 1001 no
+say 1001 si all
+say 1001 yes
+say 1001 si all
+say 1001 no
+think
+say 1001 sell
+say 1001 yes
+say 1001 sell
+say 1001 no
+say 1001 5 sell
+say 1001 yes
+say 1001 5 sell
+say 1001 no
+say 1001 sell 100
+say 1001 yes
+say 1001 sell 100
+say 1001 no
+say 1001 sell all
+say 1001 yes
+say 1001 sell all
+say 1001 no
+think
+say 1001 buy
+say 1001 yes
+say 1001 buy
+say 1001 no
+say 1001 5 buy
+say 1001 yes
+say 1001 5 buy
+say 1001 no
+say 1001 buy 100
+say 1001 yes
+say 1001 buy 100
+say 1001 no
+say 1001 buy all
+say 1001 yes
+say 1001 buy all
+say 1001 no
+think
+say 1001 all
+say 1001 yes
+say 1001 all
+say 1001 no
+say 1001 5 all
+say 1001 yes
+say 1001 5 all
+say 1001 no
+say 1001 all 100
+say 1001 yes
+say 1001 all 100
+say 1001 no
+say 1001 all all
+say 1001 yes
+say 1001 all all
+say 1001 no
+think
+say 1001 status
+say 1001 yes
+say 1001 status
+say 1001 no
+say 1001 5 status
+say 1001 yes
+say 1001 5 status
+say 1001 no
+say 1001 status 100
+say 1001 yes
+say 1001 status 100
+say 1001 no
+say 1001 status all
+say 1001 yes
+say 1001 status all
+say 1001 no
+think
+say 1001 deposit 100
+say 1001 yes
+say 1001 deposit 100
+say 1001 no
+say 1001 5 deposit 100
+say 1001 yes
+say 1001 5 deposit 100
+say 1001 no
+say 1001 deposit 100 100
+say 1001 yes
+say 1001 deposit 100 100
+say 1001 no
+say 1001 deposit 100 all
+say 1001 yes
+say 1001 deposit 100 all
+say 1001 no
+think
+say 1001 withdraw 50
+say 1001 yes
+say 1001 withdraw 50
+say 1001 no
+say 1001 5 withdraw 50
+say 1001 yes
+say 1001 5 withdraw 50
+say 1001 no
+say 1001 withdraw 50 100
+say 1001 yes
+say 1001 withdraw 50 100
+say 1001 no
+say 1001 withdraw 50 all
+say 1001 yes
+say 1001 withdraw 50 all
+say 1001 no
+think
+say 1001 balance
+say 1001 yes
+say 1001 balance
+say 1001 no
+say 1001 5 balance
+say 1001 yes
+say 1001 5 balance
+say 1001 no
+say 1001 balance 100
+say 1001 yes
+say 1001 balance 100
+say 1001 no
+say 1001 balance all
+say 1001 yes
+say 1001 balance all
+say 1001 no
+think
+say 1001 transfer 10 to player1002
+say 1001 yes
+say 1001 transfer 10 to player1002
+say 1001 no
+say 1001 5 transfer 10 to player1002
+say 1001 yes
+say 1001 5 transfer 10 to player1002
+say 1001 no
+say 1001 transfer 10 to player1002 100
+say 1001 yes
+say 1001 transfer 10 to player1002 100
+say 1001 no
+say 1001 transfer 10 to player1002 all
+say 1001 yes
+say 1001 transfer 10 to player1002 all
+say 1001 no
+think
+say 1001 wooden chair
+say 1001 yes
+say 1001 wooden chair
+say 1001 no
+say 1001 5 wooden chair
+say 1001 yes
+say 1001 5 wooden chair
+say 1001 no
+say 1001 wooden chair 100
+say 1001 yes
+say 1001 wooden chair 100
+say 1001 no
+say 1001 wooden chair all
+say 1001 yes
+say 1001 wooden chair all
+say 1001 no
+think
+say 1001 sofa chair
+say 1001 yes
+say 1001 sofa chair
+say 1001 no
+say 1001 5 sofa chair
+say 1001 yes
+say 1001 5 sofa chair
+say 1001 no
+say 1001 sofa chair 100
+say 1001 yes
+say 1001 sofa chair 100
+say 1001 no
+say 1001 sofa chair all
+say 1001 yes
+say 1001 sofa chair all
+say 1001 no
+think
+say 1001 red cushioned chair
+say 1001 yes
+say 1001 red cushioned chair
+say 1001 no
+say 1001 5 red cushioned chair
+say 1001 yes
+say 1001 5 red cushioned chair
+say 1001 no
+say 1001 red cushioned chair 100
+say 1001 yes
+say 1001 red cushioned chair 100
+say 1001 no
+say 1001 red cushioned chair all
+say 1001 yes
+say 1001 red cushioned chair all
+say 1001 no
+think
+say 1001 green cushioned chair
+say 1001 yes
+say 1001 green cushioned chair
+say 1001 no
+say 1001 5 green cushioned chair
+say 1001 yes
+say 1001 5 green cushioned chair
+say 1001 no
+say 1001 green cushioned chair 100
+say 1001 yes
+say 1001 green cushioned chair 100
+say 1001 no
+say 1001 green cushioned chair all
+say 1001 yes
+say 1001 green cushioned chair all
+say 1001 no
+think
+say 1001 tusk chair
+say 1001 yes
+say 1001 tusk chair
+say 1001 no
+say 1001 5 tusk chair
+say 1001 yes
+say 1001 5 tusk chair
+say 1001 no
+say 1001 tusk chair 100
+say 1001 yes
+say 1001 tusk chair 100
+say 1001 no
+say 1001 tusk chair all
+say 1001 yes
+say 1001 tusk chair all
+say 1001 no
+think
+say 1001 ivory chair
+say 1001 yes
+say 1001 ivory chair
+say 1001 no
+say 1001 5 ivory chair
+say 1001 yes
+say 1001 5 ivory chair
+say 1001 no
+say 1001 ivory chair 100
+say 1001 yes
+say 1001 ivory chair 100
+say 1001 no
+say 1001 ivory chair all
+say 1001 yes
+say 1001 ivory chair all
+say 1001 no
+think
+say 1001 big table
+say 1001 yes
+say 1001 big table
+say 1001 no
+say 1001 5 big table
+say 1001 yes
+say 1001 5 big table
+say 1001 no
+say 1001 big table 100
+say 1001 yes
+say 1001 big table 100
+say 1001 no
+say 1001 big table all
+say 1001 yes
+say 1001 big table all
+say 1001 no
+think
+say 1001 square table
+say 1001 yes
+say 1001 square table
+say 1001 no
+say 1001 5 square table
+say 1001 yes
+say 1001 5 square table
+say 1001 no
+say 1001 square table 100
+say 1001 yes
+say 1001 square table 100
+say 1001 no
+say 1001 square table all
+say 1001 yes
+say 1001 square table all
+say 1001 no
+think
+say 1001 round table
+say 1001 yes
+say 1001 round table
+say 1001 no
+say 1001 5 round table
+say 1001 yes
+say 1001 5 round table
+say 1001 no
+say 1001 round table 100
+say 1001 yes
+say 1001 round table 100
+say 1001 no
+say 1001 round table all
+say 1001 yes
+say 1001 round table all
+say 1001 no
+think
+say 1001 small table
+say 1001 yes
+say 1001 small table
+say 1001 no
+say 1001 5 small table
+say 1001 yes
+say 1001 5 small table
+say 1001 no
+say 1001 small table 100
+say 1001 yes
+say 1001 small table 100
+say 1001 no
+say 1001 small table all
+say 1001 yes
+say 1001 small table all
+say 1001 no
+think
+say 1001 stone table
+say 1001 yes
+say 1001 stone table
+say 1001 no
+say 1001 5 stone table
+say 1001 yes
+say 1001 5 stone table
+say 1001 no
+say 1001 stone table 100
+say 1001 yes
+say 1001 stone table 100
+say 1001 no
+say 1001 stone table all
+say 1001 yes
+say 1001 stone table all
+say 1001 no
+think
+say 1001 tusk table
+say 1001 yes
+say 1001 tusk table
+say 1001 no
+say 1001 5 tusk table
+say 1001 yes
+say 1001 5 tusk table
+say 1001 no
+say 1001 tusk table 100
+say 1001 yes
+say 1001 tusk table 100
+say 1001 no
+say 1001 tusk table all
+say 1001 yes
+say 1001 tusk table all
+say 1001 no
+think
+say 1001 bamboo table
+say 1001 yes
+say 1001 bamboo table
+say 1001 no
+say 1001 5 bamboo table
+say 1001 yes
+say 1001 5 bamboo table
+say 1001 no
+say 1001 bamboo table 100
+say 1001 yes
+say 1001 bamboo table 100
+say 1001 no
+say 1001 bamboo table all
+say 1001 yes
+say 1001 bamboo table all
+say 1001 no
+think
+say 1001 pink flower
+say 1001 yes
+say 1001 pink flower
+say 1001 no
+say 1001 5 pink flower
+say 1001 yes
+say 1001 5 pink flower
+say 1001 no
+say 1001 pink flower 100
+say 1001 yes
+say 1001 pink flower 100
+say 1001 no
+say 1001 pink flower all
+say 1001 yes
+say 1001 pink flower all
+say 1001 no
+think
+say 1001 green flower
+say 1001 yes
+say 1001 green flower
+say 1001 no
+say 1001 5 green flower
+say 1001 yes
+say 1001 5 green flower
+say 1001 no
+say 1001 green flower 100
+say 1001 yes
+say 1001 green flower 100
+say 1001 no
+say 1001 green flower all
+say 1001 yes
+say 1001 green flower all
+say 1001 no
+think
+say 1001 christmas tree
+say 1001 yes
+say 1001 christmas tree
+say 1001 no
+say 1001 5 christmas tree
+say 1001 yes
+say 1001 5 christmas tree
+say 1001 no
+say 1001 christmas tree 100
+say 1001 yes
+say 1001 christmas tree 100
+say 1001 no
+say 1001 christmas tree all
+say 1001 yes
+say 1001 christmas tree all
+say 1001 no
+think
+say 1001 large trunk
+say 1001 yes
+say 1001 large trunk
+say 1001 no
+say 1001 5 large trunk
+say 1001 yes
+say 1001 5 large trunk
+say 1001 no
+say 1001 large trunk 100
+say 1001 yes
+say 1001 large trunk 100
+say 1001 no
+say 1001 large trunk all
+say 1001 yes
+say 1001 large trunk all
+say 1001 no
+think
+say 1001 drawer
+say 1001 yes
+say 1001 drawer
+say 1001 no
+say 1001 5 drawer
+say 1001 yes
+say 1001 5 drawer
+say 1001 no
+say 1001 drawer 100
+say 1001 yes
+say 1001 drawer 100
+say 1001 no
+say 1001 drawer all
+say 1001 yes
+say 1001 drawer all
+say 1001 no
+think
+say 1001 dresser
+say 1001 yes
+say 1001 dresser
+say 1001 no
+say 1001 5 dresser
+say 1001 yes
+say 1001 5 dresser
+say 1001 no
+say 1001 dresser 100
+say 1001 yes
+say 1001 dresser 100
+say 1001 no
+say 1001 dresser all
+say 1001 yes
+say 1001 dresser all
+say 1001 no
+think
+say 1001 locker
+say 1001 yes
+say 1001 locker
+say 1001 no
+say 1001 5 locker
+say 1001 yes
+say 1001 5 locker
+say 1001 no
+say 1001 locker 100
+say 1001 yes
+say 1001 locker 100
+say 1001 no
+say 1001 locker all
+say 1001 yes
+say 1001 locker all
+say 1001 no
+think
+say 1001 trough
+say 1001 yes
+say 1001 trough
+say 1001 no
+say 1001 5 trough
+say 1001 yes
+say 1001 5 trough
+say 1001 no
+say 1001 trough 100
+say 1001 yes
+say 1001 trough 100
+say 1001 no
+say 1001 trough all
+say 1001 yes
+say 1001 trough all
+say 1001 no
+think
+say 1001 box
+say 1001 yes
+say 1001 box
+say 1001 no
+say 1001 5 box
+say 1001 yes
+say 1001 5 box
+say 1001 no
+say 1001 box 100
+say 1001 yes
+say 1001 box 100
+say 1001 no
+say 1001 box all
+say 1001 yes
+say 1001 box all
+say 1001 no
+think
+say 1001 coal basin
+say 1001 yes
+say 1001 coal basin
+say 1001 no
+say 1001 5 coal basin
+say 1001 yes
+say 1001 5 coal basin
+say 1001 no
+say 1001 coal basin 100
+say 1001 yes
+say 1001 coal basin 100
+say 1001 no
+say 1001 coal basin all
+say 1001 yes
+say 1001 coal basin all
+say 1001 no
+think
+say 1001 birdcage
+say 1001 yes
+say 1001 birdcage
+say 1001 no
+say 1001 5 birdcage
+say 1001 yes
+say 1001 5 birdcage
+say 1001 no
+say 1001 birdcage 100
+say 1001 yes
+say 1001 birdcage 100
+say 1001 no
+say 1001 birdcage all
+say 1001 yes
+say 1001 birdcage all
+say 1001 no
+think
+say 1001 harp
+say 1001 yes
+say 1001 harp
+say 1001 no
+say 1001 5 harp
+say 1001 yes
+say 1001 5 harp
+say 1001 no
+say 1001 harp 100
+say 1001 yes
+say 1001 harp 100
+say 1001 no
+say 1001 harp all
+say 1001 yes
+say 1001 harp all
+say 1001 no
+think
+say 1001 piano
+say 1001 yes
+say 1001 piano
+say 1001 no
+say 1001 5 piano
+say 1001 yes
+say 1001 5 piano
+say 1001 no
+say 1001 piano 100
+say 1001 yes
+say 1001 piano 100
+say 1001 no
+say 1001 piano all
+say 1001 yes
+say 1001 piano all
+say 1001 no
+think
+say 1001 globe
+say 1001 yes
+say 1001 globe
+say 1001 no
+say 1001 5 globe
+say 1001 yes
+say 1001 5 globe
+say 1001 no
+say 1001 globe 100
+say 1001 yes
+say 1001 globe 100
+say 1001 no
+say 1001 globe all
+say 1001 yes
+say 1001 globe all
+say 1001 no
+think
+say 1001 clock
+say 1001 yes
+say 1001 clock
+say 1001 no
+say 1001 5 clock
+say 1001 yes
+say 1001 5 clock
+say 1001 no
+say 1001 clock 100
+say 1001 yes
+say 1001 clock 100
+say 1001 no
+say 1001 clock all
+say 1001 yes
+say 1001 clock all
+say 1001 no
+think
+say 1001 lamp
+say 1001 yes
+say 1001 lamp
+say 1001 no
+say 1001 5 lamp
+say 1001 yes
+say 1001 5 lamp
+say 1001 no
+say 1001 lamp 100
+say 1001 yes
+say 1001 lamp 100
+say 1001 no
+say 1001 lamp all
+say 1001 yes
+say 1001 lamp all
+say 1001 no
+think
+say 1001 blue tapestry
+say 1001 yes
+say 1001 blue tapestry
+say 1001 no
+say 1001 5 blue tapestry
+say 1001 yes
+say 1001 5 blue tapestry
+say 1001 no
+say 1001 blue tapestry 100
+say 1001 yes
+say 1001 blue tapestry 100
+say 1001 no
+say 1001 blue tapestry all
+say 1001 yes
+say 1001 blue tapestry all
+say 1001 no
+think
+say 1001 green tapestry
+say 1001 yes
+say 1001 green tapestry
+say 1001 no
+say 1001 5 green tapestry
+say 1001 yes
+say 1001 5 green tapestry
+say 1001 no
+say 1001 green tapestry 100
+say 1001 yes
+say 1001 green tapestry 100
+say 1001 no
+say 1001 green tapestry all
+say 1001 yes
+say 1001 green tapestry all
+say 1001 no
+think
+say 1001 orange tapestry
+say 1001 yes
+say 1001 orange tapestry
+say 1001 no
+say 1001 5 orange tapestry
+say 1001 yes
+say 1001 5 orange tapestry
+say 1001 no
+say 1001 orange tapestry 100
+say 1001 yes
+say 1001 orange tapestry 100
+say 1001 no
+say 1001 orange tapestry all
+say 1001 yes
+say 1001 orange tapestry all
+say 1001 no
+think
+say 1001 pink tapestry
+say 1001 yes
+say 1001 pink tapestry
+say 1001 no
+say 1001 5 pink tapestry
+say 1001 yes
+say 1001 5 pink tapestry
+say 1001 no
+say 1001 pink tapestry 100
+say 1001 yes
+say 1001 pink tapestry 100
+say 1001 no
+say 1001 pink tapestry all
+say 1001 yes
+say 1001 pink tapestry all
+say 1001 no
+think
+say 1001 red tapestry
+say 1001 yes
+say 1001 red tapestry
+say 1001 no
+say 1001 5 red tapestry
+say 1001 yes
+say 1001 5 red tapestry
+say 1001 no
+say 1001 red tapestry 100
+say 1001 yes
+say 1001 red tapestry 100
+say 1001 no
+say 1001 red tapestry all
+say 1001 yes
+say 1001 red tapestry all
+say 1001 no
+think
+say 1001 white tapestry
+say 1001 yes
+say 1001 white tapestry
+say 1001 no
+say 1001 5 white tapestry
+say 1001 yes
+say 1001 5 white tapestry
+say 1001 no
+say 1001 white tapestry 100
+say 1001 yes
+say 1001 white tapestry 100
+say 1001 no
+say 1001 white tapestry all
+say 1001 yes
+say 1001 white tapestry all
+say 1001 no
+think
+say 1001 yellow tapestry
+say 1001 yes
+say 1001 yellow tapestry
+say 1001 no
+say 1001 5 yellow tapestry
+say 1001 yes
+say 1001 5 yellow tapestry
+say 1001 no
+say 1001 yellow tapestry 100
+say 1001 yes
+say 1001 yellow tapestry 100
+say 1001 no
+say 1001 yellow tapestry all
+say 1001 yes
+say 1001 yellow tapestry all
+say 1001 no
+think
+say 1001 small purple pillow
+say 1001 yes
+say 1001 small purple pillow
+say 1001 no
+say 1001 5 small purple pillow
+say 1001 yes
+say 1001 5 small purple pillow
+say 1001 no
+say 1001 small purple pillow 100
+say 1001 yes
+say 1001 small purple pillow 100
+say 1001 no
+say 1001 small purple pillow all
+say 1001 yes
+say 1001 small purple pillow all
+say 1001 no
+think
+say 1001 small green pillow
+say 1001 yes
+say 1001 small green pillow
+say 1001 no
+say 1001 5 small green pillow
+say 1001 yes
+say 1001 5 small green pillow
+say 1001 no
+say 1001 small green pillow 100
+say 1001 yes
+say 1001 small green pillow 100
+say 1001 no
+say 1001 small green pillow all
+say 1001 yes
+say 1001 small green pillow all
+say 1001 no
+think
+say 1001 small red pillow
+say 1001 yes
+say 1001 small red pillow
+say 1001 no
+say 1001 5 small red pillow
+say 1001 yes
+say 1001 5 small red pillow
+say 1001 no
+say 1001 small red pillow 100
+say 1001 yes
+say 1001 small red pillow 100
+say 1001 no
+say 1001 small red pillow all
+say 1001 yes
+say 1001 small red pillow all
+say 1001 no
+think
+say 1001 small blue pillow
+say 1001 yes
+say 1001 small blue pillow
+say 1001 no
+say 1001 5 small blue pillow
+say 1001 yes
+say 1001 5 small blue pillow
+say 1001 no
+say 1001 small blue pillow 100
+say 1001 yes
+say 1001 small blue pillow 100
+say 1001 no
+say 1001 small blue pillow all
+say 1001 yes
+say 1001 small blue pillow all
+say 1001 no
+think
+say 1001 small orange pillow
+say 1001 yes
+say 1001 small orange pillow
+say 1001 no
+say 1001 5 small orange pillow
+say 1001 yes
+say 1001 5 small orange pillow
+say 1001 no
+say 1001 small orange pillow 100
+say 1001 yes
+say 1001 small orange pillow 100
+say 1001 no
+say 1001 small orange pillow all
+say 1001 yes
+say 1001 small orange pillow all
+say 1001 no
+think
+say 1001 small turquiose pillow
+say 1001 yes
+say 1001 small turquiose pillow
+say 1001 no
+say 1001 5 small turquiose pillow
+say 1001 yes
+say 1001 5 small turquiose pillow
+say 1001 no
+say 1001 small turquiose pillow 100
+say 1001 yes
+say 1001 small turquiose pillow 100
+say 1001 no
+say 1001 small turquiose pillow all
+say 1001 yes
+say 1001 small turquiose pillow all
+say 1001 no
+think
+say 1001 small white pillow
+say 1001 yes
+say 1001 small white pillow
+say 1001 no
+say 1001 5 small white pillow
+say 1001 yes
+say 1001 5 small white pillow
+say 1001 no
+say 1001 small white pillow 100
+say 1001 yes
+say 1001 small white pillow 100
+say 1001 no
+say 1001 small white pillow all
+say 1001 yes
+say 1001 small white pillow all
+say 1001 no
+think
+say 1001 heart pillow
+say 1001 yes
+say 1001 heart pillow
+say 1001 no
+say 1001 5 heart pillow
+say 1001 yes
+say 1001 5 heart pillow
+say 1001 no
+say 1001 heart pillow 100
+say 1001 yes
+say 1001 heart pillow 100
+say 1001 no
+say 1001 heart pillow all
+say 1001 yes
+say 1001 heart pillow all
+say 1001 no
+think
+say 1001 blue pillow
+say 1001 yes
+say 1001 blue pillow
+say 1001 no
+say 1001 5 blue pillow
+say 1001 yes
+say 1001 5 blue pillow
+say 1001 no
+say 1001 blue pillow 100
+say 1001 yes
+say 1001 blue pillow 100
+say 1001 no
+say 1001 blue pillow all
+say 1001 yes
+say 1001 blue pillow all
+say 1001 no
+think
+say 1001 red pillow
+say 1001 yes
+say 1001 red pillow
+say 1001 no
+say 1001 5 red pillow
+say 1001 yes
+say 1001 5 red pillow
+say 1001 no
+say 1001 red pillow 100
+say 1001 yes
+say 1001 red pillow 100
+say 1001 no
+say 1001 red pillow all
+say 1001 yes
+say 1001 red pillow all
+say 1001 no
+think
+say 1001 green pillow
+say 1001 yes
+say 1001 green pillow
+say 1001 no
+say 1001 5 green pillow
+say 1001 yes
+say 1001 5 green pillow
+say 1001 no
+say 1001 green pillow 100
+say 1001 yes
+say 1001 green pillow 100
+say 1001 no
+say 1001 green pillow all
+say 1001 yes
+say 1001 green pillow all
+say 1001 no
+think
+say 1001 yellow pillow
+say 1001 yes
+say 1001 yellow pillow
+say 1001 no
+say 1001 5 yellow pillow
+say 1001 yes
+say 1001 5 yellow pillow
+say 1001 no
+say 1001 yellow pillow 100
+say 1001 yes
+say 1001 yellow pillow 100
+say 1001 no
+say 1001 yellow pillow all
+say 1001 yes
+say 1001 yellow pillow all
+say 1001 no
+think
+say 1001 round blue pillow
+say 1001 yes
+say 1001 round blue pillow
+say 1001 no
+say 1001 5 round blue pillow
+say 1001 yes
+say 1001 5 round blue pillow
+say 1001 no
+say 1001 round blue pillow 100
+say 1001 yes
+say 1001 round blue pillow 100
+say 1001 no
+say 1001 round blue pillow all
+say 1001 yes
+say 1001 round blue pillow all
+say 1001 no
+think
+say 1001 round red pillow
+say 1001 yes
+say 1001 round red pillow
+say 1001 no
+say 1001 5 round red pillow
+say 1001 yes
+say 1001 5 round red pillow
+say 1001 no
+say 1001 round red pillow 100
+say 1001 yes
+say 1001 round red pillow 100
+say 1001 no
+say 1001 round red pillow all
+say 1001 yes
+say 1001 round red pillow all
+say 1001 no
+think
+say 1001 round purple pillow
+say 1001 yes
+say 1001 round purple pillow
+say 1001 no
+say 1001 5 round purple pillow
+say 1001 yes
+say 1001 5 round purple pillow
+say 1001 no
+say 1001 round purple pillow 100
+say 1001 yes
+say 1001 round purple pillow 100
+say 1001 no
+say 1001 round purple pillow all
+say 1001 yes
+say 1001 round purple pillow all
+say 1001 no
+think
+say 1001 round turquiose pillow
+say 1001 yes
+say 1001 round turquiose pillow
+say 1001 no
+say 1001 5 round turquiose pillow
+say 1001 yes
+say 1001 5 round turquiose pillow
+say 1001 no
+say 1001 round turquiose pillow 100
+say 1001 yes
+say 1001 round turquiose pillow 100
+say 1001 no
+say 1001 round turquiose pillow all
+say 1001 yes
+say 1001 round turquiose pillow all
+say 1001 no
+think
+say 1001 chairs
+say 1001 yes
+say 1001 chairs
+say 1001 no
+say 1001 5 chairs
+say 1001 yes
+say 1001 5 chairs
+say 1001 no
+say 1001 chairs 100
+say 1001 yes
+say 1001 chairs 100
+say 1001 no
+say 1001 chairs all
+say 1001 yes
+say 1001 chairs all
+say 1001 no
+think
+say 1001 tables
+say 1001 yes
+say 1001 tables
+say 1001 no
+say 1001 5 tables
+say 1001 yes
+say 1001 5 tables
+say 1001 no
+say 1001 tables 100
+say 1001 yes
+say 1001 tables 100
+say 1001 no
+say 1001 tables all
+say 1001 yes
+say 1001 tables all
+say 1001 no
+think
+say 1001 plants
+say 1001 yes
+say 1001 plants
+say 1001 no
+say 1001 5 plants
+say 1001 yes
+say 1001 5 plants
+say 1001 no
+say 1001 plants 100
+say 1001 yes
+say 1001 plants 100
+say 1001 no
+say 1001 plants all
+say 1001 yes
+say 1001 plants all
+say 1001 no
+think
+say 1001 containers
+say 1001 yes
+say 1001 containers
+say 1001 no
+say 1001 5 containers
+say 1001 yes
+say 1001 5 containers
+say 1001 no
+say 1001 containers 100
+say 1001 yes
+say 1001 containers 100
+say 1001 no
+say 1001 containers all
+say 1001 yes
+say 1001 containers all
+say 1001 no
+think
+say 1001 more
+say 1001 yes
+say 1001 more
+say 1001 no
+say 1001 5 more
+say 1001 yes
+say 1001 5 more
+say 1001 no
+say 1001 more 100
+say 1001 yes
+say 1001 more 100
+say 1001 no
+say 1001 more all
+say 1001 yes
+say 1001 more all
+say 1001 no
+think
+say 1001 tapestry
+say 1001 yes
+say 1001 tapestry
+say 1001 no
+say 1001 5 tapestry
+say 1001 yes
+say 1001 5 tapestry
+say 1001 no
+say 1001 tapestry 100
+say 1001 yes
+say 1001 tapestry 100
+say 1001 no
+say 1001 tapestry all
+say 1001 yes
+say 1001 tapestry all
+say 1001 no
+think
+say 1001 tapestries
+say 1001 yes
+say 1001 tapestries
+say 1001 no
+say 1001 5 tapestries
+say 1001 yes
+say 1001 5 tapestries
+say 1001 no
+say 1001 tapestries 100
+say 1001 yes
+say 1001 tapestries 100
+say 1001 no
+say 1001 tapestries all
+say 1001 yes
+say 1001 tapestries all
+say 1001 no
+think
+say 1001 small
+say 1001 yes
+say 1001 small
+say 1001 no
+say 1001 5 small
+say 1001 yes
+say 1001 5 small
+say 1001 no
+say 1001 small 100
+say 1001 yes
+say 1001 small 100
+say 1001 no
+say 1001 small all
+say 1001 yes
+say 1001 small all
+say 1001 no
+think
+say 1001 round
+say 1001 yes
+say 1001 round
+say 1001 no
+say 1001 5 round
+say 1001 yes
+say 1001 5 round
+say 1001 no
+say 1001 round 100
+say 1001 yes
+say 1001 round 100
+say 1001 no
+say 1001 round all
+say 1001 yes
+say 1001 round all
+say 1001 no
+think
+say 1001 square
+say 1001 yes
+say 1001 square
+say 1001 no
+say 1001 5 square
+say 1001 yes
+say 1001 5 square
+say 1001 no
+say 1001 square 100
+say 1001 yes
+say 1001 square 100
+say 1001 no
+say 1001 square all
+say 1001 yes
+say 1001 square all
+say 1001 no
+think
+say 1001 pillows
+say 1001 yes
+say 1001 pillows
+say 1001 no
+say 1001 5 pillows
+say 1001 yes
+say 1001 5 pillows
+say 1001 no
+say 1001 pillows 100
+say 1001 yes
+say 1001 pillows 100
+say 1001 no
+say 1001 pillows all
+say 1001 yes
+say 1001 pillows all
+say 1001 no
+think
+say 1001 focused
+say 1001 yes
+say 1001 focused
+say 1001 no
+say 1001 5 focused
+say 1001 yes
+say 1001 5 focused
+say 1001 no
+say 1001 focused 100
+say 1001 yes
+say 1001 focused 100
+say 1001 no
+say 1001 focused all
+say 1001 yes
+say 1001 focused all
+say 1001 no
+think
+say 1001 bye
+say 1001 hi
+advance 40
+think
+say 1001 hi
+far 1001
+think
+near 1001
+say 1001 hola
+disappear 1001
+say 1002 hi
+set 1002 money 0
+set 1002 slots 0
+set 1002 level 1
+say 1002 wooden chair
+say 1002 yes
+say 1002 sofa chair
+say 1002 yes
+say 1002 red cushioned chair
+say 1002 yes
+say 1002 green cushioned chair
+say 1002 yes
+say 1002 tusk chair
+say 1002 yes
+say 1002 ivory chair
+say 1002 yes
+say 1002 big table
+say 1002 yes
+say 1002 square table
+say 1002 yes
+say 1002 round table
+say 1002 yes
+say 1002 small table
+say 1002 yes
+say 1002 stone table
+say 1002 yes
+say 1002 tusk table
+say 1002 yes
+say 1002 bamboo table
+say 1002 yes
+say 1002 pink flower
+say 1002 yes
+say 1002 green flower
+say 1002 yes
+say 1002 christmas tree
+say 1002 yes
+say 1002 large trunk
+say 1002 yes
+say 1002 drawer
+say 1002 yes
+say 1002 dresser
+say 1002 yes
+say 1002 locker
+say 1002 yes
+say 1002 trough
+say 1002 yes
+say 1002 box
+say 1002 yes
+say 1002 coal basin
+say 1002 yes
+say 1002 birdcage
+say 1002 yes
+say 1002 harp
+say 1002 yes
+say 1002 piano
+say 1002 yes
+say 1002 globe
+say 1002 yes
+say 1002 clock
+say 1002 yes
+say 1002 lamp
+say 1002 yes
+say 1002 blue tapestry
+say 1002 yes
+say 1002 green tapestry
+say 1002 yes
+say 1002 orange tapestry
+say 1002 yes
+say 1002 pink tapestry
+say 1002 yes
+say 1002 red tapestry
+say 1002 yes
+say 1002 white tapestry
+say 1002 yes
+say 1002 yellow tapestry
+say 1002 yes
+say 1002 small purple pillow
+say 1002 yes
+say 1002 small green pillow
+say 1002 yes
+say 1002 small red pillow
+say 1002 yes
+say 1002 small blue pillow
+say 1002 yes
+say 1002 small orange pillow
+say 1002 yes
+say 1002 small turquiose pillow
+say 1002 yes
+say 1002 small white pillow
+say 1002 yes
+say 1002 heart pillow
+say 1002 yes
+say 1002 blue pillow
+say 1002 yes
+say 1002 red pillow
+say 1002 yes
+say 1002 green pillow
+say 1002 yes
+say 1002 yellow pillow
+say 1002 yes
+say 1002 round blue pillow
+say 1002 yes
+say 1002 round red pillow
+say 1002 yes
+say 1002 round purple pillow
+say 1002 yes
+say 1002 round turquiose pillow
+say 1002 yes
+say 1002 chairs
+say 1002 yes
+say 1002 tables
+say 1002 yes
+say 1002 plants
+say 1002 yes
+say 1002 containers
+say 1002 yes
+say 1002 more
+say 1002 yes
+say 1002 tapestry
+say 1002 yes
+say 1002 tapestries
+say 1002 yes
+say 1002 small
+say 1002 yes
+say 1002 chau
+think 3

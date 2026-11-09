@@ -1,9 +1,4 @@
-focus = 0
-talk_start = 0
-target = 0
-following = false
-attacking = false
-
+-- Seller (suministros, backpacks de fluidos, armas medias y equipo de knight; compra vials vacíos).
 SELLER_HELP = 'I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.'
 SELLER_WEAPONS = 'Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.'
 SELLER_ARMORS = 'Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.'
@@ -44,19 +39,6 @@ SELLER_BUYS = {
 	{keys = {'rope', 'cuerda'}, itemid = 2120, unitPrice = 50},
 	{keys = {'torch', 'antorcha'}, itemid = 2050, unitPrice = 2},
 }
-
-function onThingMove(creature, thing, oldpos, oldstackpos)
-end
-
-function onCreatureAppear(creature)
-end
-
-function onCreatureDisappear(cid, pos)
-	npcOnCreatureDisappear(cid)
-end
-
-function onCreatureTurn(creature)
-end
 
 local function sellerMatchFluidBackpack(msg)
 	-- Match fluid backpacks before the generic catalog so
@@ -100,18 +82,7 @@ function sellerTryBuy(cid, msg)
 	return true
 end
 
-function onCreatureSay(cid, type, msg)
-	msg = string.lower(msg)
-
-	local state = npcHandleMessage(
-		cid,
-		msg,
-		'Hi ' .. creatureGetName(cid) .. '! I sell supplies, fluid backpacks, weapons and knight gear. Say "help", "weapons", "armor" or "sets" for prices.'
-	)
-	if state ~= 'focused' then
-		return
-	end
-
+local function onMessage(cid, msg)
 	if npcIsHelp(msg) then
 		selfSay(SELLER_HELP)
 	elseif sellerTryBuy(cid, msg) then
@@ -142,9 +113,7 @@ function onCreatureSay(cid, type, msg)
 	end
 end
 
-function onCreatureChangeOutfit(creature)
-end
-
-function onThink()
-	npcOnThink()
-end
+npcDefine{
+	greet = function(cid) return 'Hi ' .. creatureGetName(cid) .. '! I sell supplies, fluid backpacks, weapons and knight gear. Say "help", "weapons", "armor" or "sets" for prices.' end,
+	onMessage = onMessage,
+}

@@ -1,9 +1,4 @@
-focus = 0
-talk_start = 0
-target = 0
-following = false
-attacking = false
-
+-- Parived (compra gemas y diamantes).
 GEMS = {
 	{keys = {'big emerald', 'big emeralds', 'large emerald', 'green gem', 'big green'}, id = 2155, price = 10000, name = 'big emerald'},
 	{keys = {'big ruby', 'big rubies', 'big rubys', 'large ruby', 'red gem', 'big red'}, id = 2156, price = 10000, name = 'big ruby'},
@@ -21,19 +16,6 @@ GEMS = {
 }
 
 PARIVED_HELP = 'I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.'
-
-function onThingMove(creature, thing, oldpos, oldstackpos)
-end
-
-function onCreatureAppear(creature)
-end
-
-function onCreatureDisappear(cid, pos)
-	npcOnCreatureDisappear(cid)
-end
-
-function onCreatureTurn(creature)
-end
 
 function showHelp()
 	selfSay(PARIVED_HELP)
@@ -139,18 +121,7 @@ function sellAllGems(cid)
 	sellBundle(cid, total, table.concat(parts, ', '), bundle)
 end
 
-function onCreatureSay(cid, type, msg)
-	msg = string.lower(msg)
-
-	local state = npcHandleMessage(
-		cid,
-		msg,
-		'Hi ' .. creatureGetName(cid) .. '! I buy gems and diamonds. Say "help" or "list" for prices.'
-	)
-	if state ~= 'focused' then
-		return
-	end
-
+local function onMessage(cid, msg)
 	if msgcontains(msg, 'help') or msgcontains(msg, 'ayuda') then
 		showHelp()
 	elseif msgcontains(msg, 'gems') or msgcontains(msg, 'list') or msgcontains(msg, 'lista')
@@ -173,9 +144,7 @@ function onCreatureSay(cid, type, msg)
 	end
 end
 
-function onCreatureChangeOutfit(creature)
-end
-
-function onThink()
-	npcOnThink()
-end
+npcDefine{
+	greet = function(cid) return 'Hi ' .. creatureGetName(cid) .. '! I buy gems and diamonds. Say "help" or "list" for prices.' end,
+	onMessage = onMessage,
+}

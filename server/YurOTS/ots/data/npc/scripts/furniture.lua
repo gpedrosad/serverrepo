@@ -1,9 +1,4 @@
-focus = 0
-talk_start = 0
-target = 0
-following = false
-attacking = false
-
+-- Obi (muebles para casas, todo a 500gp; acepta cantidad).
 FURNITURE_PRICE = 500
 
 FURNITURE_OFFERS = {
@@ -74,36 +69,12 @@ FURNITURE_TOPICS = {
 	{keys = {'pillows'}, reply = 'I sell heart, small, sqare and round pillows.'}
 }
 
-function onThingMove(creature, thing, oldpos, oldstackpos)
-end
-
-function onCreatureAppear(creature)
-end
-
-function onCreatureDisappear(cid, pos)
-	npcOnCreatureDisappear(cid)
-end
-
-function onCreatureTurn(creature)
-end
-
 function buyFurniture(cid, entry, msg)
 	local qty = npcParseBuyQuantity(msg or '', 20)
 	buy(cid, entry.itemid, qty, FURNITURE_PRICE * qty)
 end
 
-function onCreatureSay(cid, type, msg)
-	msg = string.lower(msg)
-
-	local state = npcHandleMessage(
-		cid,
-		msg,
-		'Hi ' .. creatureGetName(cid) .. '! I sell furniture for your house — everything is 500gp each. Say "2 wooden chair" or any amount. Say "chairs", "tables", "pillows" or an item name.'
-	)
-	if state ~= 'focused' then
-		return
-	end
-
+local function onMessage(cid, msg)
 	if npcIsHelp(msg) then
 		selfSay('Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!')
 		return
@@ -118,9 +89,7 @@ function onCreatureSay(cid, type, msg)
 	npcTryCatalogReply(msg, FURNITURE_TOPICS)
 end
 
-function onCreatureChangeOutfit(creature)
-end
-
-function onThink()
-	npcOnThink()
-end
+npcDefine{
+	greet = function(cid) return 'Hi ' .. creatureGetName(cid) .. '! I sell furniture for your house — everything is 500gp each. Say "2 wooden chair" or any amount. Say "chairs", "tables", "pillows" or an item name.' end,
+	onMessage = onMessage,
+}

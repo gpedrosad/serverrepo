@@ -67,11 +67,10 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 | Daily Task / Huntmaster (contratos diarios) | `docs/gameplay/DAILY_TASK.md` |
 | El Crisol (puertas diarias + rares Zagan) | `docs/gameplay/CRUCIBLE.md` |
 | Wave Arena (oleadas + ranking) | `docs/gameplay/WAVE_ARENA.md` |
-| Arena de Fosos (Svargrond-style, 10 pits) | `docs/gameplay/SVAR_ARENA.md` |
-| Fish TP (pescar portal → lagoon) | `docs/gameplay/FISH_TP.md` |
 | Reloj de Arena (sala compartida, fases 120 s) | `docs/gameplay/SAND_CLOCK.md` |
-| Bleed Room (mana drain + cadena 10 mobs) | `docs/gameplay/BLEED_ROOM.md` |
+| Portales del templo (plaza) | `docs/CAMBIAR-MAPA.md` + `scripts/map/temple-portals.py` |
 | Private Trainer Dummy | `docs/gameplay/PRIVATE_TRAINER_DUMMY.md` |
+| NPCs (Lua): componentes, `npcDefine`, pruebas sin server | `docs/gameplay/NPC_SYSTEM.md` |
 | PvP, frag list, balance de combate | `docs/PVP_SYSTEM.md` |
 | Trade, items, transacciones | `docs/TRADE_SYSTEM.md` |
 | Depots, lockers 2589, deploy de mapa | `docs/gameplay/DEPOTS.md` |

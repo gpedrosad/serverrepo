@@ -1,8 +1,4 @@
-focus = 0
-talk_start = 0
-target = 0
-following = false
-attacking = false
+-- Lector (comida). Tienda simple: todo a 8gp, acepta cantidad ("5 ham").
 
 FOOD_HELP = 'Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".'
 
@@ -16,41 +12,7 @@ FOOD_BUYS = {
 	{keys = {'egg'}, itemid = 2695, unitPrice = 8},
 }
 
-function onThingMove(creature, thing, oldpos, oldstackpos)
-end
-
-function onCreatureAppear(creature)
-end
-
-function onCreatureDisappear(cid, pos)
-	npcOnCreatureDisappear(cid)
-end
-
-function onCreatureTurn(creature)
-end
-
-function onCreatureSay(cid, type, msg)
-	msg = string.lower(msg)
-
-	local state = npcHandleMessage(
-		cid,
-		msg,
-		'Hi ' .. creatureGetName(cid) .. '! ' .. FOOD_HELP
-	)
-	if state ~= 'focused' then
-		return
-	end
-
-	if npcIsHelp(msg) then
-		selfSay(FOOD_HELP)
-	elseif npcTryCatalogBuyQuantity(cid, msg, FOOD_BUYS) then
-		return
-	end
-end
-
-function onCreatureChangeOutfit(creature)
-end
-
-function onThink()
-	npcOnThink()
-end
+npcDefine{
+	greet = function(cid) return 'Hi ' .. creatureGetName(cid) .. '! ' .. FOOD_HELP end,
+	onMessage = npcCatalogHandler{help = FOOD_HELP, buys = FOOD_BUYS},
+}

@@ -1,0 +1,611 @@
+>> near 1001
+>> near 1002
+>> say 1001 hello there
+>> say 1001 hi
+SAY Hello Player1001. I handle promotions. Say "promotion" if you are interested.
+>> say 1002 hi
+SAY One moment, Player1002! I am helping someone else.
+>> say 1001 help
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 help
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 yes
+>> say 1001 help
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 no
+>> say 1001 5 help
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 yes
+>> say 1001 5 help
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 no
+>> say 1001 help 100
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 yes
+>> say 1001 help 100
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 no
+>> say 1001 help all
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 yes
+>> say 1001 help all
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 no
+>> think
+>> say 1001 ayuda
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 yes
+>> say 1001 ayuda
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 no
+>> say 1001 5 ayuda
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 yes
+>> say 1001 5 ayuda
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 no
+>> say 1001 ayuda 100
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 yes
+>> say 1001 ayuda 100
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 no
+>> say 1001 ayuda all
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 yes
+>> say 1001 ayuda all
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 no
+>> think
+>> say 1001 offer
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 yes
+>> say 1001 offer
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 no
+>> say 1001 5 offer
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 yes
+>> say 1001 5 offer
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 no
+>> say 1001 offer 100
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 yes
+>> say 1001 offer 100
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 no
+>> say 1001 offer all
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 yes
+>> say 1001 offer all
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 no
+>> think
+>> say 1001 trade
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 yes
+>> say 1001 trade
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 no
+>> say 1001 5 trade
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 yes
+>> say 1001 5 trade
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 no
+>> say 1001 trade 100
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 yes
+>> say 1001 trade 100
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 no
+>> say 1001 trade all
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 yes
+>> say 1001 trade all
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 no
+>> think
+>> say 1001 list
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 yes
+>> say 1001 list
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 no
+>> say 1001 5 list
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 yes
+>> say 1001 5 list
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 no
+>> say 1001 list 100
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 yes
+>> say 1001 list 100
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 no
+>> say 1001 list all
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 yes
+>> say 1001 list all
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 no
+>> think
+>> say 1001 info
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 yes
+>> say 1001 info
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 no
+>> say 1001 5 info
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 yes
+>> say 1001 5 info
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 no
+>> say 1001 info 100
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 yes
+>> say 1001 info 100
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 no
+>> say 1001 info all
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 yes
+>> say 1001 info all
+SAY Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).
+>> say 1001 no
+>> think
+>> say 1001 job
+>> say 1001 yes
+>> say 1001 job
+>> say 1001 no
+>> say 1001 5 job
+>> say 1001 yes
+>> say 1001 5 job
+>> say 1001 no
+>> say 1001 job 100
+>> say 1001 yes
+>> say 1001 job 100
+>> say 1001 no
+>> say 1001 job all
+>> say 1001 yes
+>> say 1001 job all
+>> say 1001 no
+>> think
+>> say 1001 name
+>> say 1001 yes
+>> say 1001 name
+>> say 1001 no
+>> say 1001 5 name
+>> say 1001 yes
+>> say 1001 5 name
+>> say 1001 no
+>> say 1001 name 100
+>> say 1001 yes
+>> say 1001 name 100
+>> say 1001 no
+>> say 1001 name all
+>> say 1001 yes
+>> say 1001 name all
+>> say 1001 no
+>> think
+>> say 1001 yes
+>> say 1001 yes
+>> say 1001 yes
+>> say 1001 no
+>> say 1001 5 yes
+>> say 1001 yes
+>> say 1001 5 yes
+>> say 1001 no
+>> say 1001 yes 100
+>> say 1001 yes
+>> say 1001 yes 100
+>> say 1001 no
+>> say 1001 yes all
+>> say 1001 yes
+>> say 1001 yes all
+>> say 1001 no
+>> think
+>> say 1001 no
+>> say 1001 yes
+>> say 1001 no
+>> say 1001 no
+>> say 1001 5 no
+>> say 1001 yes
+>> say 1001 5 no
+>> say 1001 no
+>> say 1001 no 100
+>> say 1001 yes
+>> say 1001 no 100
+>> say 1001 no
+>> say 1001 no all
+>> say 1001 yes
+>> say 1001 no all
+>> say 1001 no
+>> think
+>> say 1001 si
+>> say 1001 yes
+>> say 1001 si
+>> say 1001 no
+>> say 1001 5 si
+>> say 1001 yes
+>> say 1001 5 si
+>> say 1001 no
+>> say 1001 si 100
+>> say 1001 yes
+>> say 1001 si 100
+>> say 1001 no
+>> say 1001 si all
+>> say 1001 yes
+>> say 1001 si all
+>> say 1001 no
+>> think
+>> say 1001 sell
+>> say 1001 yes
+>> say 1001 sell
+>> say 1001 no
+>> say 1001 5 sell
+>> say 1001 yes
+>> say 1001 5 sell
+>> say 1001 no
+>> say 1001 sell 100
+>> say 1001 yes
+>> say 1001 sell 100
+>> say 1001 no
+>> say 1001 sell all
+>> say 1001 yes
+>> say 1001 sell all
+>> say 1001 no
+>> think
+>> say 1001 buy
+>> say 1001 yes
+>> say 1001 buy
+>> say 1001 no
+>> say 1001 5 buy
+>> say 1001 yes
+>> say 1001 5 buy
+>> say 1001 no
+>> say 1001 buy 100
+>> say 1001 yes
+>> say 1001 buy 100
+>> say 1001 no
+>> say 1001 buy all
+>> say 1001 yes
+>> say 1001 buy all
+>> say 1001 no
+>> think
+>> say 1001 all
+>> say 1001 yes
+>> say 1001 all
+>> say 1001 no
+>> say 1001 5 all
+>> say 1001 yes
+>> say 1001 5 all
+>> say 1001 no
+>> say 1001 all 100
+>> say 1001 yes
+>> say 1001 all 100
+>> say 1001 no
+>> say 1001 all all
+>> say 1001 yes
+>> say 1001 all all
+>> say 1001 no
+>> think
+>> say 1001 status
+>> say 1001 yes
+>> say 1001 status
+>> say 1001 no
+>> say 1001 5 status
+>> say 1001 yes
+>> say 1001 5 status
+>> say 1001 no
+>> say 1001 status 100
+>> say 1001 yes
+>> say 1001 status 100
+>> say 1001 no
+>> say 1001 status all
+>> say 1001 yes
+>> say 1001 status all
+>> say 1001 no
+>> think
+>> say 1001 deposit 100
+>> say 1001 yes
+>> say 1001 deposit 100
+>> say 1001 no
+>> say 1001 5 deposit 100
+>> say 1001 yes
+>> say 1001 5 deposit 100
+>> say 1001 no
+>> say 1001 deposit 100 100
+>> say 1001 yes
+>> say 1001 deposit 100 100
+>> say 1001 no
+>> say 1001 deposit 100 all
+>> say 1001 yes
+>> say 1001 deposit 100 all
+>> say 1001 no
+>> think
+>> say 1001 withdraw 50
+>> say 1001 yes
+>> say 1001 withdraw 50
+>> say 1001 no
+>> say 1001 5 withdraw 50
+>> say 1001 yes
+>> say 1001 5 withdraw 50
+>> say 1001 no
+>> say 1001 withdraw 50 100
+>> say 1001 yes
+>> say 1001 withdraw 50 100
+>> say 1001 no
+>> say 1001 withdraw 50 all
+>> say 1001 yes
+>> say 1001 withdraw 50 all
+>> say 1001 no
+>> think
+>> say 1001 balance
+>> say 1001 yes
+>> say 1001 balance
+>> say 1001 no
+>> say 1001 5 balance
+>> say 1001 yes
+>> say 1001 5 balance
+>> say 1001 no
+>> say 1001 balance 100
+>> say 1001 yes
+>> say 1001 balance 100
+>> say 1001 no
+>> say 1001 balance all
+>> say 1001 yes
+>> say 1001 balance all
+>> say 1001 no
+>> think
+>> say 1001 transfer 10 to player1002
+>> say 1001 yes
+>> say 1001 transfer 10 to player1002
+>> say 1001 no
+>> say 1001 5 transfer 10 to player1002
+>> say 1001 yes
+>> say 1001 5 transfer 10 to player1002
+>> say 1001 no
+>> say 1001 transfer 10 to player1002 100
+>> say 1001 yes
+>> say 1001 transfer 10 to player1002 100
+>> say 1001 no
+>> say 1001 transfer 10 to player1002 all
+>> say 1001 yes
+>> say 1001 transfer 10 to player1002 all
+>> say 1001 no
+>> think
+>> say 1001 promotion
+CALL isPromoted(1001)
+CALL getPlayerLevel("Player1001")
+SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
+>> say 1001 yes
+CALL pay(1001, 20000)
+SAY /promote Player1001
+CALL isPromoted(1001)
+SAY Promotion failed. Try again or contact a gamemaster.
+>> say 1001 promotion
+CALL isPromoted(1001)
+CALL getPlayerLevel("Player1001")
+SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
+>> say 1001 no
+SAY No problem! Come back when you are ready.
+>> say 1001 5 promotion
+CALL isPromoted(1001)
+CALL getPlayerLevel("Player1001")
+SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
+>> say 1001 yes
+CALL pay(1001, 20000)
+SAY /promote Player1001
+CALL isPromoted(1001)
+SAY Promotion failed. Try again or contact a gamemaster.
+>> say 1001 5 promotion
+CALL isPromoted(1001)
+CALL getPlayerLevel("Player1001")
+SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
+>> say 1001 no
+SAY No problem! Come back when you are ready.
+>> say 1001 promotion 100
+CALL isPromoted(1001)
+CALL getPlayerLevel("Player1001")
+SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
+>> say 1001 yes
+CALL pay(1001, 20000)
+SAY /promote Player1001
+CALL isPromoted(1001)
+SAY Promotion failed. Try again or contact a gamemaster.
+>> say 1001 promotion 100
+CALL isPromoted(1001)
+CALL getPlayerLevel("Player1001")
+SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
+>> say 1001 no
+SAY No problem! Come back when you are ready.
+>> say 1001 promotion all
+CALL isPromoted(1001)
+CALL getPlayerLevel("Player1001")
+SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
+>> say 1001 yes
+CALL pay(1001, 20000)
+SAY /promote Player1001
+CALL isPromoted(1001)
+SAY Promotion failed. Try again or contact a gamemaster.
+>> say 1001 promotion all
+CALL isPromoted(1001)
+CALL getPlayerLevel("Player1001")
+SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
+>> say 1001 no
+SAY No problem! Come back when you are ready.
+>> think
+>> say 1001 focused
+>> say 1001 yes
+>> say 1001 focused
+>> say 1001 no
+>> say 1001 5 focused
+>> say 1001 yes
+>> say 1001 5 focused
+>> say 1001 no
+>> say 1001 focused 100
+>> say 1001 yes
+>> say 1001 focused 100
+>> say 1001 no
+>> say 1001 focused all
+>> say 1001 yes
+>> say 1001 focused all
+>> say 1001 no
+>> think
+>> say 1001 promote
+CALL isPromoted(1001)
+CALL getPlayerLevel("Player1001")
+SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
+>> say 1001 yes
+CALL pay(1001, 20000)
+SAY /promote Player1001
+CALL isPromoted(1001)
+SAY Promotion failed. Try again or contact a gamemaster.
+>> say 1001 promote
+CALL isPromoted(1001)
+CALL getPlayerLevel("Player1001")
+SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
+>> say 1001 no
+SAY No problem! Come back when you are ready.
+>> say 1001 5 promote
+CALL isPromoted(1001)
+CALL getPlayerLevel("Player1001")
+SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
+>> say 1001 yes
+CALL pay(1001, 20000)
+SAY You need 20,000 gold.
+>> say 1001 5 promote
+CALL isPromoted(1001)
+CALL getPlayerLevel("Player1001")
+SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
+>> say 1001 no
+SAY No problem! Come back when you are ready.
+>> say 1001 promote 100
+CALL isPromoted(1001)
+CALL getPlayerLevel("Player1001")
+SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
+>> say 1001 yes
+CALL pay(1001, 20000)
+SAY You need 20,000 gold.
+>> say 1001 promote 100
+CALL isPromoted(1001)
+CALL getPlayerLevel("Player1001")
+SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
+>> say 1001 no
+SAY No problem! Come back when you are ready.
+>> say 1001 promote all
+CALL isPromoted(1001)
+CALL getPlayerLevel("Player1001")
+SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
+>> say 1001 yes
+CALL pay(1001, 20000)
+SAY You need 20,000 gold.
+>> say 1001 promote all
+CALL isPromoted(1001)
+CALL getPlayerLevel("Player1001")
+SAY Promotion costs 20,000 gp. Do you want to buy it? (yes or si)
+>> say 1001 no
+SAY No problem! Come back when you are ready.
+>> think
+>> say 1001 premium
+SAY Premium donations at https://retro76.cl. Premium boosts regen further. Use !premmy to check your time.
+>> say 1001 yes
+>> say 1001 premium
+SAY Premium donations at https://retro76.cl. Premium boosts regen further. Use !premmy to check your time.
+>> say 1001 no
+>> say 1001 5 premium
+SAY Premium donations at https://retro76.cl. Premium boosts regen further. Use !premmy to check your time.
+>> say 1001 yes
+>> say 1001 5 premium
+SAY Premium donations at https://retro76.cl. Premium boosts regen further. Use !premmy to check your time.
+>> say 1001 no
+>> say 1001 premium 100
+SAY Premium donations at https://retro76.cl. Premium boosts regen further. Use !premmy to check your time.
+>> say 1001 yes
+>> say 1001 premium 100
+SAY Premium donations at https://retro76.cl. Premium boosts regen further. Use !premmy to check your time.
+>> say 1001 no
+>> say 1001 premium all
+SAY Premium donations at https://retro76.cl. Premium boosts regen further. Use !premmy to check your time.
+>> say 1001 yes
+>> say 1001 premium all
+SAY Premium donations at https://retro76.cl. Premium boosts regen further. Use !premmy to check your time.
+>> say 1001 no
+>> think
+>> say 1001 premmy
+SAY Premium donations at https://retro76.cl. Premium boosts regen further. Use !premmy to check your time.
+>> say 1001 yes
+>> say 1001 premmy
+SAY Premium donations at https://retro76.cl. Premium boosts regen further. Use !premmy to check your time.
+>> say 1001 no
+>> say 1001 5 premmy
+SAY Premium donations at https://retro76.cl. Premium boosts regen further. Use !premmy to check your time.
+>> say 1001 yes
+>> say 1001 5 premmy
+SAY Premium donations at https://retro76.cl. Premium boosts regen further. Use !premmy to check your time.
+>> say 1001 no
+>> say 1001 premmy 100
+SAY Premium donations at https://retro76.cl. Premium boosts regen further. Use !premmy to check your time.
+>> say 1001 yes
+>> say 1001 premmy 100
+SAY Premium donations at https://retro76.cl. Premium boosts regen further. Use !premmy to check your time.
+>> say 1001 no
+>> say 1001 premmy all
+SAY Premium donations at https://retro76.cl. Premium boosts regen further. Use !premmy to check your time.
+>> say 1001 yes
+>> say 1001 premmy all
+SAY Premium donations at https://retro76.cl. Premium boosts regen further. Use !premmy to check your time.
+>> say 1001 no
+>> think
+>> say 1001 bye
+CALL cancelPendingTrade(1001)
+SAY Bye, Player1001! Come back anytime.
+>> say 1001 hi
+SAY Hello Player1001. I handle promotions. Say "promotion" if you are interested.
+>> advance 40
+>> think
+CALL cancelPendingTrade(1001)
+SAY Next please...
+>> say 1001 hi
+SAY Hello Player1001. I handle promotions. Say "promotion" if you are interested.
+>> far 1001
+>> think
+CALL cancelPendingTrade(1001)
+SAY See you later!
+>> near 1001
+>> say 1001 hola
+SAY Hello Player1001. I handle promotions. Say "promotion" if you are interested.
+>> disappear 1001
+CALL cancelPendingTrade(1001)
+SAY See you later!
+>> say 1002 hi
+SAY Hello Player1002. I handle promotions. Say "promotion" if you are interested.
+>> set 1002 money 0
+>> set 1002 slots 0
+>> set 1002 level 1
+>> say 1002 promotion
+CALL isPromoted(1002)
+CALL getPlayerLevel("Player1002")
+SAY You need level 20 for promotion.
+>> say 1002 yes
+>> say 1002 focused
+>> say 1002 yes
+>> say 1002 promote
+CALL isPromoted(1002)
+CALL getPlayerLevel("Player1002")
+SAY You need level 20 for promotion.
+>> say 1002 yes
+>> say 1002 premium
+SAY Premium donations at https://retro76.cl. Premium boosts regen further. Use !premmy to check your time.
+>> say 1002 yes
+>> say 1002 premmy
+SAY Premium donations at https://retro76.cl. Premium boosts regen further. Use !premmy to check your time.
+>> say 1002 yes
+>> say 1002 chau
+CALL cancelPendingTrade(1002)
+SAY Bye, Player1002! Come back anytime.
+>> think 3

@@ -1,0 +1,1358 @@
+>> near 1001
+>> near 1002
+>> say 1001 hello there
+>> say 1001 hi
+SAY Hi Player1001! I sell rings, scarf (1k) and amulet of loss / AOL (50k). Say "rings" or "help" for prices.
+>> say 1002 hi
+SAY One moment, Player1002! I am helping someone else.
+>> say 1001 help
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 help
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 help
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 5 help
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 5 help
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 help 100
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 help 100
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 help all
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 help all
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> think
+>> say 1001 ayuda
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 ayuda
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 5 ayuda
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 5 ayuda
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 ayuda 100
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 ayuda 100
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 ayuda all
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 ayuda all
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> think
+>> say 1001 offer
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 offer
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 5 offer
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 5 offer
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 offer 100
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 offer 100
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 offer all
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 offer all
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> think
+>> say 1001 trade
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 trade
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 5 trade
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 5 trade
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 trade 100
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 trade 100
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 trade all
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 trade all
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> think
+>> say 1001 list
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 list
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 5 list
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 5 list
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 list 100
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 list 100
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 list all
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 list all
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> think
+>> say 1001 info
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 info
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 5 info
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 5 info
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 info 100
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 info 100
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 info all
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 info all
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> think
+>> say 1001 job
+>> say 1001 yes
+>> say 1001 job
+>> say 1001 no
+>> say 1001 5 job
+>> say 1001 yes
+>> say 1001 5 job
+>> say 1001 no
+>> say 1001 job 100
+>> say 1001 yes
+>> say 1001 job 100
+>> say 1001 no
+>> say 1001 job all
+>> say 1001 yes
+>> say 1001 job all
+>> say 1001 no
+>> think
+>> say 1001 name
+>> say 1001 yes
+>> say 1001 name
+>> say 1001 no
+>> say 1001 5 name
+>> say 1001 yes
+>> say 1001 5 name
+>> say 1001 no
+>> say 1001 name 100
+>> say 1001 yes
+>> say 1001 name 100
+>> say 1001 no
+>> say 1001 name all
+>> say 1001 yes
+>> say 1001 name all
+>> say 1001 no
+>> think
+>> say 1001 yes
+>> say 1001 yes
+>> say 1001 yes
+>> say 1001 no
+>> say 1001 5 yes
+>> say 1001 yes
+>> say 1001 5 yes
+>> say 1001 no
+>> say 1001 yes 100
+>> say 1001 yes
+>> say 1001 yes 100
+>> say 1001 no
+>> say 1001 yes all
+>> say 1001 yes
+>> say 1001 yes all
+>> say 1001 no
+>> think
+>> say 1001 no
+>> say 1001 yes
+>> say 1001 no
+>> say 1001 no
+>> say 1001 5 no
+>> say 1001 yes
+>> say 1001 5 no
+>> say 1001 no
+>> say 1001 no 100
+>> say 1001 yes
+>> say 1001 no 100
+>> say 1001 no
+>> say 1001 no all
+>> say 1001 yes
+>> say 1001 no all
+>> say 1001 no
+>> think
+>> say 1001 si
+>> say 1001 yes
+>> say 1001 si
+>> say 1001 no
+>> say 1001 5 si
+>> say 1001 yes
+>> say 1001 5 si
+>> say 1001 no
+>> say 1001 si 100
+>> say 1001 yes
+>> say 1001 si 100
+>> say 1001 no
+>> say 1001 si all
+>> say 1001 yes
+>> say 1001 si all
+>> say 1001 no
+>> think
+>> say 1001 sell
+>> say 1001 yes
+>> say 1001 sell
+>> say 1001 no
+>> say 1001 5 sell
+>> say 1001 yes
+>> say 1001 5 sell
+>> say 1001 no
+>> say 1001 sell 100
+>> say 1001 yes
+>> say 1001 sell 100
+>> say 1001 no
+>> say 1001 sell all
+>> say 1001 yes
+>> say 1001 sell all
+>> say 1001 no
+>> think
+>> say 1001 buy
+>> say 1001 yes
+>> say 1001 buy
+>> say 1001 no
+>> say 1001 5 buy
+>> say 1001 yes
+>> say 1001 5 buy
+>> say 1001 no
+>> say 1001 buy 100
+>> say 1001 yes
+>> say 1001 buy 100
+>> say 1001 no
+>> say 1001 buy all
+>> say 1001 yes
+>> say 1001 buy all
+>> say 1001 no
+>> think
+>> say 1001 all
+>> say 1001 yes
+>> say 1001 all
+>> say 1001 no
+>> say 1001 5 all
+>> say 1001 yes
+>> say 1001 5 all
+>> say 1001 no
+>> say 1001 all 100
+>> say 1001 yes
+>> say 1001 all 100
+>> say 1001 no
+>> say 1001 all all
+>> say 1001 yes
+>> say 1001 all all
+>> say 1001 no
+>> think
+>> say 1001 status
+>> say 1001 yes
+>> say 1001 status
+>> say 1001 no
+>> say 1001 5 status
+>> say 1001 yes
+>> say 1001 5 status
+>> say 1001 no
+>> say 1001 status 100
+>> say 1001 yes
+>> say 1001 status 100
+>> say 1001 no
+>> say 1001 status all
+>> say 1001 yes
+>> say 1001 status all
+>> say 1001 no
+>> think
+>> say 1001 deposit 100
+>> say 1001 yes
+>> say 1001 deposit 100
+>> say 1001 no
+>> say 1001 5 deposit 100
+>> say 1001 yes
+>> say 1001 5 deposit 100
+>> say 1001 no
+>> say 1001 deposit 100 100
+>> say 1001 yes
+>> say 1001 deposit 100 100
+>> say 1001 no
+>> say 1001 deposit 100 all
+>> say 1001 yes
+>> say 1001 deposit 100 all
+>> say 1001 no
+>> think
+>> say 1001 withdraw 50
+>> say 1001 yes
+>> say 1001 withdraw 50
+>> say 1001 no
+>> say 1001 5 withdraw 50
+>> say 1001 yes
+>> say 1001 5 withdraw 50
+>> say 1001 no
+>> say 1001 withdraw 50 100
+>> say 1001 yes
+>> say 1001 withdraw 50 100
+>> say 1001 no
+>> say 1001 withdraw 50 all
+>> say 1001 yes
+>> say 1001 withdraw 50 all
+>> say 1001 no
+>> think
+>> say 1001 balance
+>> say 1001 yes
+>> say 1001 balance
+>> say 1001 no
+>> say 1001 5 balance
+>> say 1001 yes
+>> say 1001 5 balance
+>> say 1001 no
+>> say 1001 balance 100
+>> say 1001 yes
+>> say 1001 balance 100
+>> say 1001 no
+>> say 1001 balance all
+>> say 1001 yes
+>> say 1001 balance all
+>> say 1001 no
+>> think
+>> say 1001 transfer 10 to player1002
+>> say 1001 yes
+>> say 1001 transfer 10 to player1002
+>> say 1001 no
+>> say 1001 5 transfer 10 to player1002
+>> say 1001 yes
+>> say 1001 5 transfer 10 to player1002
+>> say 1001 no
+>> say 1001 transfer 10 to player1002 100
+>> say 1001 yes
+>> say 1001 transfer 10 to player1002 100
+>> say 1001 no
+>> say 1001 transfer 10 to player1002 all
+>> say 1001 yes
+>> say 1001 transfer 10 to player1002 all
+>> say 1001 no
+>> think
+>> say 1001 energy ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2167, 1, 3000)
+>> say 1001 yes
+>> say 1001 energy ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2167, 1, 3000)
+>> say 1001 no
+>> say 1001 5 energy ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2167, 5, 15000)
+>> say 1001 yes
+>> say 1001 5 energy ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2167, 5, 15000)
+>> say 1001 no
+>> say 1001 energy ring 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 energy ring 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 energy ring all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2167, 1, 3000)
+>> say 1001 yes
+>> say 1001 energy ring all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2167, 1, 3000)
+>> say 1001 no
+>> think
+>> say 1001 energy
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2167, 1, 3000)
+>> say 1001 yes
+>> say 1001 energy
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2167, 1, 3000)
+>> say 1001 no
+>> say 1001 5 energy
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2167, 5, 15000)
+>> say 1001 yes
+>> say 1001 5 energy
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2167, 5, 15000)
+>> say 1001 no
+>> say 1001 energy 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 energy 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 energy all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2167, 1, 3000)
+>> say 1001 yes
+>> say 1001 energy all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2167, 1, 3000)
+>> say 1001 no
+>> think
+>> say 1001 might ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2164, 1, 7000)
+>> say 1001 yes
+>> say 1001 might ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2164, 1, 7000)
+>> say 1001 no
+>> say 1001 5 might ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2164, 5, 35000)
+>> say 1001 yes
+>> say 1001 5 might ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2164, 5, 35000)
+>> say 1001 no
+>> say 1001 might ring 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 might ring 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 might ring all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2164, 1, 7000)
+>> say 1001 yes
+>> say 1001 might ring all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2164, 1, 7000)
+>> say 1001 no
+>> think
+>> say 1001 might
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2164, 1, 7000)
+>> say 1001 yes
+>> say 1001 might
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2164, 1, 7000)
+>> say 1001 no
+>> say 1001 5 might
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2164, 5, 35000)
+>> say 1001 yes
+>> say 1001 5 might
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2164, 5, 35000)
+>> say 1001 no
+>> say 1001 might 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 might 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 might all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2164, 1, 7000)
+>> say 1001 yes
+>> say 1001 might all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2164, 1, 7000)
+>> say 1001 no
+>> think
+>> say 1001 time ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2169, 1, 2000)
+>> say 1001 yes
+>> say 1001 time ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2169, 1, 2000)
+>> say 1001 no
+>> say 1001 5 time ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2169, 5, 10000)
+>> say 1001 yes
+>> say 1001 5 time ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2169, 5, 10000)
+>> say 1001 no
+>> say 1001 time ring 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 time ring 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 time ring all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2169, 1, 2000)
+>> say 1001 yes
+>> say 1001 time ring all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2169, 1, 2000)
+>> say 1001 no
+>> think
+>> say 1001 time
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2169, 1, 2000)
+>> say 1001 yes
+>> say 1001 time
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2169, 1, 2000)
+>> say 1001 no
+>> say 1001 5 time
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2169, 5, 10000)
+>> say 1001 yes
+>> say 1001 5 time
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2169, 5, 10000)
+>> say 1001 no
+>> say 1001 time 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 time 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 time all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2169, 1, 2000)
+>> say 1001 yes
+>> say 1001 time all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2169, 1, 2000)
+>> say 1001 no
+>> think
+>> say 1001 stealth ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2165, 1, 4000)
+>> say 1001 yes
+>> say 1001 stealth ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2165, 1, 4000)
+>> say 1001 no
+>> say 1001 5 stealth ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2165, 5, 20000)
+>> say 1001 yes
+>> say 1001 5 stealth ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2165, 5, 20000)
+>> say 1001 no
+>> say 1001 stealth ring 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 stealth ring 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 stealth ring all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2165, 1, 4000)
+>> say 1001 yes
+>> say 1001 stealth ring all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2165, 1, 4000)
+>> say 1001 no
+>> think
+>> say 1001 stealth
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2165, 1, 4000)
+>> say 1001 yes
+>> say 1001 stealth
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2165, 1, 4000)
+>> say 1001 no
+>> say 1001 5 stealth
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2165, 5, 20000)
+>> say 1001 yes
+>> say 1001 5 stealth
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2165, 5, 20000)
+>> say 1001 no
+>> say 1001 stealth 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 stealth 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 stealth all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2165, 1, 4000)
+>> say 1001 yes
+>> say 1001 stealth all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2165, 1, 4000)
+>> say 1001 no
+>> think
+>> say 1001 ring of healing
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2214, 1, 2500)
+>> say 1001 yes
+>> say 1001 ring of healing
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2214, 1, 2500)
+>> say 1001 no
+>> say 1001 5 ring of healing
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2214, 5, 12500)
+>> say 1001 yes
+>> say 1001 5 ring of healing
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2214, 5, 12500)
+>> say 1001 no
+>> say 1001 ring of healing 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 ring of healing 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 ring of healing all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2214, 1, 2500)
+>> say 1001 yes
+>> say 1001 ring of healing all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2214, 1, 2500)
+>> say 1001 no
+>> think
+>> say 1001 healing ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2214, 1, 2500)
+>> say 1001 yes
+>> say 1001 healing ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2214, 1, 2500)
+>> say 1001 no
+>> say 1001 5 healing ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2214, 5, 12500)
+>> say 1001 yes
+>> say 1001 5 healing ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2214, 5, 12500)
+>> say 1001 no
+>> say 1001 healing ring 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 healing ring 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 healing ring all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2214, 1, 2500)
+>> say 1001 yes
+>> say 1001 healing ring all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2214, 1, 2500)
+>> say 1001 no
+>> think
+>> say 1001 healing
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2214, 1, 2500)
+>> say 1001 yes
+>> say 1001 healing
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2214, 1, 2500)
+>> say 1001 no
+>> say 1001 5 healing
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2214, 5, 12500)
+>> say 1001 yes
+>> say 1001 5 healing
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2214, 5, 12500)
+>> say 1001 no
+>> say 1001 healing 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 healing 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 healing all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2214, 1, 2500)
+>> say 1001 yes
+>> say 1001 healing all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2214, 1, 2500)
+>> say 1001 no
+>> think
+>> say 1001 life ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2168, 1, 1500)
+>> say 1001 yes
+>> say 1001 life ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2168, 1, 1500)
+>> say 1001 no
+>> say 1001 5 life ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2168, 5, 7500)
+>> say 1001 yes
+>> say 1001 5 life ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2168, 5, 7500)
+>> say 1001 no
+>> say 1001 life ring 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 life ring 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 life ring all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2168, 1, 1500)
+>> say 1001 yes
+>> say 1001 life ring all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2168, 1, 1500)
+>> say 1001 no
+>> think
+>> say 1001 life
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2168, 1, 1500)
+>> say 1001 yes
+>> say 1001 life
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2168, 1, 1500)
+>> say 1001 no
+>> say 1001 5 life
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2168, 5, 7500)
+>> say 1001 yes
+>> say 1001 5 life
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2168, 5, 7500)
+>> say 1001 no
+>> say 1001 life 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 life 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 life all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2168, 1, 1500)
+>> say 1001 yes
+>> say 1001 life all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2168, 1, 1500)
+>> say 1001 no
+>> think
+>> say 1001 sword ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2207, 1, 1000)
+>> say 1001 yes
+>> say 1001 sword ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2207, 1, 1000)
+>> say 1001 no
+>> say 1001 5 sword ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2207, 5, 5000)
+>> say 1001 yes
+>> say 1001 5 sword ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2207, 5, 5000)
+>> say 1001 no
+>> say 1001 sword ring 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 sword ring 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 sword ring all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2207, 1, 1000)
+>> say 1001 yes
+>> say 1001 sword ring all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2207, 1, 1000)
+>> say 1001 no
+>> think
+>> say 1001 sword
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2207, 1, 1000)
+>> say 1001 yes
+>> say 1001 sword
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2207, 1, 1000)
+>> say 1001 no
+>> say 1001 5 sword
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2207, 5, 5000)
+>> say 1001 yes
+>> say 1001 5 sword
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2207, 5, 5000)
+>> say 1001 no
+>> say 1001 sword 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 sword 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 sword all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2207, 1, 1000)
+>> say 1001 yes
+>> say 1001 sword all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2207, 1, 1000)
+>> say 1001 no
+>> think
+>> say 1001 axe ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2208, 1, 1000)
+>> say 1001 yes
+>> say 1001 axe ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2208, 1, 1000)
+>> say 1001 no
+>> say 1001 5 axe ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2208, 5, 5000)
+>> say 1001 yes
+>> say 1001 5 axe ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2208, 5, 5000)
+>> say 1001 no
+>> say 1001 axe ring 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 axe ring 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 axe ring all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2208, 1, 1000)
+>> say 1001 yes
+>> say 1001 axe ring all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2208, 1, 1000)
+>> say 1001 no
+>> think
+>> say 1001 axe
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2208, 1, 1000)
+>> say 1001 yes
+>> say 1001 axe
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2208, 1, 1000)
+>> say 1001 no
+>> say 1001 5 axe
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2208, 5, 5000)
+>> say 1001 yes
+>> say 1001 5 axe
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2208, 5, 5000)
+>> say 1001 no
+>> say 1001 axe 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 axe 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 axe all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2208, 1, 1000)
+>> say 1001 yes
+>> say 1001 axe all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2208, 1, 1000)
+>> say 1001 no
+>> think
+>> say 1001 club ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2209, 1, 1000)
+>> say 1001 yes
+>> say 1001 club ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2209, 1, 1000)
+>> say 1001 no
+>> say 1001 5 club ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2209, 5, 5000)
+>> say 1001 yes
+>> say 1001 5 club ring
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2209, 5, 5000)
+>> say 1001 no
+>> say 1001 club ring 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 club ring 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 club ring all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2209, 1, 1000)
+>> say 1001 yes
+>> say 1001 club ring all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2209, 1, 1000)
+>> say 1001 no
+>> think
+>> say 1001 club
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2209, 1, 1000)
+>> say 1001 yes
+>> say 1001 club
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2209, 1, 1000)
+>> say 1001 no
+>> say 1001 5 club
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2209, 5, 5000)
+>> say 1001 yes
+>> say 1001 5 club
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2209, 5, 5000)
+>> say 1001 no
+>> say 1001 club 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 club 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 club all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2209, 1, 1000)
+>> say 1001 yes
+>> say 1001 club all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2209, 1, 1000)
+>> say 1001 no
+>> think
+>> say 1001 rings
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 rings
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 5 rings
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 5 rings
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 rings 100
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 rings 100
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 rings all
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 rings all
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> think
+>> say 1001 help
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 help
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 5 help
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 5 help
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 help 100
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 help 100
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 help all
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 help all
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> think
+>> say 1001 focused
+>> say 1001 yes
+>> say 1001 focused
+>> say 1001 no
+>> say 1001 5 focused
+>> say 1001 yes
+>> say 1001 5 focused
+>> say 1001 no
+>> say 1001 focused 100
+>> say 1001 yes
+>> say 1001 focused 100
+>> say 1001 no
+>> say 1001 focused all
+>> say 1001 yes
+>> say 1001 focused all
+>> say 1001 no
+>> think
+>> say 1001 anillos
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 anillos
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 5 anillos
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 5 anillos
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 anillos 100
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 anillos 100
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> say 1001 anillos all
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 yes
+>> say 1001 anillos all
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1001 no
+>> think
+>> say 1001 aol
+CALL buy(1001, 2173, 1, 50000)
+>> say 1001 yes
+>> say 1001 aol
+CALL buy(1001, 2173, 1, 50000)
+>> say 1001 no
+>> say 1001 5 aol
+CALL buy(1001, 2173, 1, 50000)
+>> say 1001 yes
+>> say 1001 5 aol
+CALL buy(1001, 2173, 1, 50000)
+>> say 1001 no
+>> say 1001 aol 100
+CALL buy(1001, 2173, 1, 50000)
+>> say 1001 yes
+>> say 1001 aol 100
+CALL buy(1001, 2173, 1, 50000)
+>> say 1001 no
+>> say 1001 aol all
+CALL buy(1001, 2173, 1, 50000)
+>> say 1001 yes
+>> say 1001 aol all
+CALL buy(1001, 2173, 1, 50000)
+>> say 1001 no
+>> think
+>> say 1001 amulet of loss
+CALL buy(1001, 2173, 1, 50000)
+>> say 1001 yes
+>> say 1001 amulet of loss
+CALL buy(1001, 2173, 1, 50000)
+>> say 1001 no
+>> say 1001 5 amulet of loss
+CALL buy(1001, 2173, 1, 50000)
+>> say 1001 yes
+>> say 1001 5 amulet of loss
+CALL buy(1001, 2173, 1, 50000)
+>> say 1001 no
+>> say 1001 amulet of loss 100
+CALL buy(1001, 2173, 1, 50000)
+>> say 1001 yes
+>> say 1001 amulet of loss 100
+CALL buy(1001, 2173, 1, 50000)
+>> say 1001 no
+>> say 1001 amulet of loss all
+CALL buy(1001, 2173, 1, 50000)
+>> say 1001 yes
+>> say 1001 amulet of loss all
+CALL buy(1001, 2173, 1, 50000)
+>> say 1001 no
+>> think
+>> say 1001 scarf
+CALL buy(1001, 2661, 1, 1000)
+>> say 1001 yes
+>> say 1001 scarf
+CALL buy(1001, 2661, 1, 1000)
+>> say 1001 no
+>> say 1001 5 scarf
+CALL buy(1001, 2661, 1, 1000)
+>> say 1001 yes
+>> say 1001 5 scarf
+CALL buy(1001, 2661, 1, 1000)
+>> say 1001 no
+>> say 1001 scarf 100
+CALL buy(1001, 2661, 1, 1000)
+>> say 1001 yes
+>> say 1001 scarf 100
+CALL buy(1001, 2661, 1, 1000)
+>> say 1001 no
+>> say 1001 scarf all
+CALL buy(1001, 2661, 1, 1000)
+>> say 1001 yes
+>> say 1001 scarf all
+CALL buy(1001, 2661, 1, 1000)
+>> say 1001 no
+>> think
+>> say 1001 bye
+CALL cancelPendingTrade(1001)
+SAY Bye, Player1001! Come back anytime.
+>> say 1001 hi
+SAY Hi Player1001! I sell rings, scarf (1k) and amulet of loss / AOL (50k). Say "rings" or "help" for prices.
+>> advance 40
+>> think
+CALL cancelPendingTrade(1001)
+SAY Next please...
+>> say 1001 hi
+SAY Hi Player1001! I sell rings, scarf (1k) and amulet of loss / AOL (50k). Say "rings" or "help" for prices.
+>> far 1001
+>> think
+CALL cancelPendingTrade(1001)
+SAY See you later!
+>> near 1001
+>> say 1001 hola
+SAY Hi Player1001! I sell rings, scarf (1k) and amulet of loss / AOL (50k). Say "rings" or "help" for prices.
+>> disappear 1001
+CALL cancelPendingTrade(1001)
+SAY See you later!
+>> say 1002 hi
+SAY Hi Player1002! I sell rings, scarf (1k) and amulet of loss / AOL (50k). Say "rings" or "help" for prices.
+>> set 1002 money 0
+>> set 1002 slots 0
+>> set 1002 level 1
+>> say 1002 energy ring
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 energy
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 might ring
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 might
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 time ring
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 time
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 stealth ring
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 stealth
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 ring of healing
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 healing ring
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 healing
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 life ring
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 life
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 sword ring
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 sword
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 axe ring
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 axe
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 club ring
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 club
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 rings
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1002 yes
+>> say 1002 help
+SAY Scarf: 1000gp. Amulet of loss (AOL): 50000gp.
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1002 yes
+>> say 1002 focused
+>> say 1002 yes
+>> say 1002 anillos
+SAY Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".
+>> say 1002 yes
+>> say 1002 aol
+CALL buy(1002, 2173, 1, 50000)
+>> say 1002 yes
+>> say 1002 amulet of loss
+CALL buy(1002, 2173, 1, 50000)
+>> say 1002 yes
+>> say 1002 scarf
+CALL buy(1002, 2661, 1, 1000)
+>> say 1002 yes
+>> say 1002 chau
+CALL cancelPendingTrade(1002)
+SAY Bye, Player1002! Come back anytime.
+>> think 3

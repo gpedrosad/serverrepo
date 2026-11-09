@@ -1,0 +1,762 @@
+>> near 1001
+>> near 1002
+>> say 1001 hello there
+>> say 1001 hi
+SAY Hi Player1001! Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1002 hi
+SAY One moment, Player1002! I am helping someone else.
+>> say 1001 help
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 help
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 yes
+>> say 1001 help
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 no
+>> say 1001 5 help
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 yes
+>> say 1001 5 help
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 no
+>> say 1001 help 100
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 yes
+>> say 1001 help 100
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 no
+>> say 1001 help all
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 yes
+>> say 1001 help all
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 no
+>> think
+>> say 1001 ayuda
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 yes
+>> say 1001 ayuda
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 no
+>> say 1001 5 ayuda
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 yes
+>> say 1001 5 ayuda
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 no
+>> say 1001 ayuda 100
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 yes
+>> say 1001 ayuda 100
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 no
+>> say 1001 ayuda all
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 yes
+>> say 1001 ayuda all
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 no
+>> think
+>> say 1001 offer
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 yes
+>> say 1001 offer
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 no
+>> say 1001 5 offer
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 yes
+>> say 1001 5 offer
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 no
+>> say 1001 offer 100
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 yes
+>> say 1001 offer 100
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 no
+>> say 1001 offer all
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 yes
+>> say 1001 offer all
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 no
+>> think
+>> say 1001 trade
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 yes
+>> say 1001 trade
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 no
+>> say 1001 5 trade
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 yes
+>> say 1001 5 trade
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 no
+>> say 1001 trade 100
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 yes
+>> say 1001 trade 100
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 no
+>> say 1001 trade all
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 yes
+>> say 1001 trade all
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 no
+>> think
+>> say 1001 list
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 yes
+>> say 1001 list
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 no
+>> say 1001 5 list
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 yes
+>> say 1001 5 list
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 no
+>> say 1001 list 100
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 yes
+>> say 1001 list 100
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 no
+>> say 1001 list all
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 yes
+>> say 1001 list all
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 no
+>> think
+>> say 1001 info
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 yes
+>> say 1001 info
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 no
+>> say 1001 5 info
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 yes
+>> say 1001 5 info
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 no
+>> say 1001 info 100
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 yes
+>> say 1001 info 100
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 no
+>> say 1001 info all
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 yes
+>> say 1001 info all
+SAY Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 no
+>> think
+>> say 1001 job
+>> say 1001 yes
+>> say 1001 job
+>> say 1001 no
+>> say 1001 5 job
+>> say 1001 yes
+>> say 1001 5 job
+>> say 1001 no
+>> say 1001 job 100
+>> say 1001 yes
+>> say 1001 job 100
+>> say 1001 no
+>> say 1001 job all
+>> say 1001 yes
+>> say 1001 job all
+>> say 1001 no
+>> think
+>> say 1001 name
+>> say 1001 yes
+>> say 1001 name
+>> say 1001 no
+>> say 1001 5 name
+>> say 1001 yes
+>> say 1001 5 name
+>> say 1001 no
+>> say 1001 name 100
+>> say 1001 yes
+>> say 1001 name 100
+>> say 1001 no
+>> say 1001 name all
+>> say 1001 yes
+>> say 1001 name all
+>> say 1001 no
+>> think
+>> say 1001 yes
+>> say 1001 yes
+>> say 1001 yes
+>> say 1001 no
+>> say 1001 5 yes
+>> say 1001 yes
+>> say 1001 5 yes
+>> say 1001 no
+>> say 1001 yes 100
+>> say 1001 yes
+>> say 1001 yes 100
+>> say 1001 no
+>> say 1001 yes all
+>> say 1001 yes
+>> say 1001 yes all
+>> say 1001 no
+>> think
+>> say 1001 no
+>> say 1001 yes
+>> say 1001 no
+>> say 1001 no
+>> say 1001 5 no
+>> say 1001 yes
+>> say 1001 5 no
+>> say 1001 no
+>> say 1001 no 100
+>> say 1001 yes
+>> say 1001 no 100
+>> say 1001 no
+>> say 1001 no all
+>> say 1001 yes
+>> say 1001 no all
+>> say 1001 no
+>> think
+>> say 1001 si
+>> say 1001 yes
+>> say 1001 si
+>> say 1001 no
+>> say 1001 5 si
+>> say 1001 yes
+>> say 1001 5 si
+>> say 1001 no
+>> say 1001 si 100
+>> say 1001 yes
+>> say 1001 si 100
+>> say 1001 no
+>> say 1001 si all
+>> say 1001 yes
+>> say 1001 si all
+>> say 1001 no
+>> think
+>> say 1001 sell
+>> say 1001 yes
+>> say 1001 sell
+>> say 1001 no
+>> say 1001 5 sell
+>> say 1001 yes
+>> say 1001 5 sell
+>> say 1001 no
+>> say 1001 sell 100
+>> say 1001 yes
+>> say 1001 sell 100
+>> say 1001 no
+>> say 1001 sell all
+>> say 1001 yes
+>> say 1001 sell all
+>> say 1001 no
+>> think
+>> say 1001 buy
+>> say 1001 yes
+>> say 1001 buy
+>> say 1001 no
+>> say 1001 5 buy
+>> say 1001 yes
+>> say 1001 5 buy
+>> say 1001 no
+>> say 1001 buy 100
+>> say 1001 yes
+>> say 1001 buy 100
+>> say 1001 no
+>> say 1001 buy all
+>> say 1001 yes
+>> say 1001 buy all
+>> say 1001 no
+>> think
+>> say 1001 all
+>> say 1001 yes
+>> say 1001 all
+>> say 1001 no
+>> say 1001 5 all
+>> say 1001 yes
+>> say 1001 5 all
+>> say 1001 no
+>> say 1001 all 100
+>> say 1001 yes
+>> say 1001 all 100
+>> say 1001 no
+>> say 1001 all all
+>> say 1001 yes
+>> say 1001 all all
+>> say 1001 no
+>> think
+>> say 1001 status
+>> say 1001 yes
+>> say 1001 status
+>> say 1001 no
+>> say 1001 5 status
+>> say 1001 yes
+>> say 1001 5 status
+>> say 1001 no
+>> say 1001 status 100
+>> say 1001 yes
+>> say 1001 status 100
+>> say 1001 no
+>> say 1001 status all
+>> say 1001 yes
+>> say 1001 status all
+>> say 1001 no
+>> think
+>> say 1001 deposit 100
+>> say 1001 yes
+>> say 1001 deposit 100
+>> say 1001 no
+>> say 1001 5 deposit 100
+>> say 1001 yes
+>> say 1001 5 deposit 100
+>> say 1001 no
+>> say 1001 deposit 100 100
+>> say 1001 yes
+>> say 1001 deposit 100 100
+>> say 1001 no
+>> say 1001 deposit 100 all
+>> say 1001 yes
+>> say 1001 deposit 100 all
+>> say 1001 no
+>> think
+>> say 1001 withdraw 50
+>> say 1001 yes
+>> say 1001 withdraw 50
+>> say 1001 no
+>> say 1001 5 withdraw 50
+>> say 1001 yes
+>> say 1001 5 withdraw 50
+>> say 1001 no
+>> say 1001 withdraw 50 100
+>> say 1001 yes
+>> say 1001 withdraw 50 100
+>> say 1001 no
+>> say 1001 withdraw 50 all
+>> say 1001 yes
+>> say 1001 withdraw 50 all
+>> say 1001 no
+>> think
+>> say 1001 balance
+>> say 1001 yes
+>> say 1001 balance
+>> say 1001 no
+>> say 1001 5 balance
+>> say 1001 yes
+>> say 1001 5 balance
+>> say 1001 no
+>> say 1001 balance 100
+>> say 1001 yes
+>> say 1001 balance 100
+>> say 1001 no
+>> say 1001 balance all
+>> say 1001 yes
+>> say 1001 balance all
+>> say 1001 no
+>> think
+>> say 1001 transfer 10 to player1002
+>> say 1001 yes
+>> say 1001 transfer 10 to player1002
+>> say 1001 no
+>> say 1001 5 transfer 10 to player1002
+>> say 1001 yes
+>> say 1001 5 transfer 10 to player1002
+>> say 1001 no
+>> say 1001 transfer 10 to player1002 100
+>> say 1001 yes
+>> say 1001 transfer 10 to player1002 100
+>> say 1001 no
+>> say 1001 transfer 10 to player1002 all
+>> say 1001 yes
+>> say 1001 transfer 10 to player1002 all
+>> say 1001 no
+>> think
+>> say 1001 brown bread
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2691, 1, 8)
+>> say 1001 yes
+>> say 1001 brown bread
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2691, 1, 8)
+>> say 1001 no
+>> say 1001 5 brown bread
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2691, 5, 40)
+>> say 1001 yes
+>> say 1001 5 brown bread
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2691, 5, 40)
+>> say 1001 no
+>> say 1001 brown bread 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 brown bread 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 brown bread all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2691, 1, 8)
+>> say 1001 yes
+>> say 1001 brown bread all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2691, 1, 8)
+>> say 1001 no
+>> think
+>> say 1001 bread
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2691, 1, 8)
+>> say 1001 yes
+>> say 1001 bread
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2691, 1, 8)
+>> say 1001 no
+>> say 1001 5 bread
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2691, 5, 40)
+>> say 1001 yes
+>> say 1001 5 bread
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2691, 5, 40)
+>> say 1001 no
+>> say 1001 bread 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 bread 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 bread all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2691, 1, 8)
+>> say 1001 yes
+>> say 1001 bread all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2691, 1, 8)
+>> say 1001 no
+>> think
+>> say 1001 brown mushroom
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2789, 1, 8)
+>> say 1001 yes
+>> say 1001 brown mushroom
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2789, 1, 8)
+>> say 1001 no
+>> say 1001 5 brown mushroom
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2789, 5, 40)
+>> say 1001 yes
+>> say 1001 5 brown mushroom
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2789, 5, 40)
+>> say 1001 no
+>> say 1001 brown mushroom 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 brown mushroom 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 brown mushroom all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2789, 1, 8)
+>> say 1001 yes
+>> say 1001 brown mushroom all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2789, 1, 8)
+>> say 1001 no
+>> think
+>> say 1001 mushroom
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2789, 1, 8)
+>> say 1001 yes
+>> say 1001 mushroom
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2789, 1, 8)
+>> say 1001 no
+>> say 1001 5 mushroom
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2789, 5, 40)
+>> say 1001 yes
+>> say 1001 5 mushroom
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2789, 5, 40)
+>> say 1001 no
+>> say 1001 mushroom 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 mushroom 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 mushroom all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2789, 1, 8)
+>> say 1001 yes
+>> say 1001 mushroom all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2789, 1, 8)
+>> say 1001 no
+>> think
+>> say 1001 ham
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2671, 1, 8)
+>> say 1001 yes
+>> say 1001 ham
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2671, 1, 8)
+>> say 1001 no
+>> say 1001 5 ham
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2671, 5, 40)
+>> say 1001 yes
+>> say 1001 5 ham
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2671, 5, 40)
+>> say 1001 no
+>> say 1001 ham 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 ham 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 ham all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2671, 1, 8)
+>> say 1001 yes
+>> say 1001 ham all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2671, 1, 8)
+>> say 1001 no
+>> think
+>> say 1001 carrot
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2684, 1, 8)
+>> say 1001 yes
+>> say 1001 carrot
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2684, 1, 8)
+>> say 1001 no
+>> say 1001 5 carrot
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2684, 5, 40)
+>> say 1001 yes
+>> say 1001 5 carrot
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2684, 5, 40)
+>> say 1001 no
+>> say 1001 carrot 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 carrot 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 carrot all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2684, 1, 8)
+>> say 1001 yes
+>> say 1001 carrot all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2684, 1, 8)
+>> say 1001 no
+>> think
+>> say 1001 meat
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2666, 1, 8)
+>> say 1001 yes
+>> say 1001 meat
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2666, 1, 8)
+>> say 1001 no
+>> say 1001 5 meat
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2666, 5, 40)
+>> say 1001 yes
+>> say 1001 5 meat
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2666, 5, 40)
+>> say 1001 no
+>> say 1001 meat 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 meat 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 meat all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2666, 1, 8)
+>> say 1001 yes
+>> say 1001 meat all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2666, 1, 8)
+>> say 1001 no
+>> think
+>> say 1001 apple
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2674, 1, 8)
+>> say 1001 yes
+>> say 1001 apple
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2674, 1, 8)
+>> say 1001 no
+>> say 1001 5 apple
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2674, 5, 40)
+>> say 1001 yes
+>> say 1001 5 apple
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2674, 5, 40)
+>> say 1001 no
+>> say 1001 apple 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 apple 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 apple all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2674, 1, 8)
+>> say 1001 yes
+>> say 1001 apple all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2674, 1, 8)
+>> say 1001 no
+>> think
+>> say 1001 egg
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2695, 1, 8)
+>> say 1001 yes
+>> say 1001 egg
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2695, 1, 8)
+>> say 1001 no
+>> say 1001 5 egg
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2695, 5, 40)
+>> say 1001 yes
+>> say 1001 5 egg
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2695, 5, 40)
+>> say 1001 no
+>> say 1001 egg 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 egg 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 egg all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2695, 1, 8)
+>> say 1001 yes
+>> say 1001 egg all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2695, 1, 8)
+>> say 1001 no
+>> think
+>> say 1001 focused
+>> say 1001 yes
+>> say 1001 focused
+>> say 1001 no
+>> say 1001 5 focused
+>> say 1001 yes
+>> say 1001 5 focused
+>> say 1001 no
+>> say 1001 focused 100
+>> say 1001 yes
+>> say 1001 focused 100
+>> say 1001 no
+>> say 1001 focused all
+>> say 1001 yes
+>> say 1001 focused all
+>> say 1001 no
+>> think
+>> say 1001 bye
+CALL cancelPendingTrade(1001)
+SAY Bye, Player1001! Come back anytime.
+>> say 1001 hi
+SAY Hi Player1001! Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> advance 40
+>> think
+CALL cancelPendingTrade(1001)
+SAY Next please...
+>> say 1001 hi
+SAY Hi Player1001! Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> far 1001
+>> think
+CALL cancelPendingTrade(1001)
+SAY See you later!
+>> near 1001
+>> say 1001 hola
+SAY Hi Player1001! Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> disappear 1001
+CALL cancelPendingTrade(1001)
+SAY See you later!
+>> say 1002 hi
+SAY Hi Player1002! Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> set 1002 money 0
+>> set 1002 slots 0
+>> set 1002 level 1
+>> say 1002 brown bread
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 bread
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 brown mushroom
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 mushroom
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 ham
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 carrot
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 meat
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 apple
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 egg
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 focused
+>> say 1002 yes
+>> say 1002 chau
+CALL cancelPendingTrade(1002)
+SAY Bye, Player1002! Come back anytime.
+>> think 3

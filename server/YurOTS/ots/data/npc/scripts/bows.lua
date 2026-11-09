@@ -1,8 +1,4 @@
-focus = 0
-talk_start = 0
-target = 0
-following = false
-attacking = false
+-- Perac (arcos y munición). Tienda simple con cantidad ("50 arrows").
 
 BOWS_HELP = 'Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".'
 
@@ -15,41 +11,7 @@ BOW_BUYS = {
 	{keys = {'spear', 'spears'}, itemid = 2389, unitPrice = 10},
 }
 
-function onThingMove(creature, thing, oldpos, oldstackpos)
-end
-
-function onCreatureAppear(creature)
-end
-
-function onCreatureDisappear(cid, pos)
-	npcOnCreatureDisappear(cid)
-end
-
-function onCreatureTurn(creature)
-end
-
-function onCreatureSay(cid, type, msg)
-	msg = string.lower(msg)
-
-	local state = npcHandleMessage(
-		cid,
-		msg,
-		'Hi ' .. creatureGetName(cid) .. '! ' .. BOWS_HELP
-	)
-	if state ~= 'focused' then
-		return
-	end
-
-	if npcIsHelp(msg) or msgcontains(msg, 'distance') or msgcontains(msg, 'ammo') or msgcontains(msg, 'ammunition') then
-		selfSay(BOWS_HELP)
-	elseif npcTryCatalogBuyQuantity(cid, msg, BOW_BUYS) then
-		return
-	end
-end
-
-function onCreatureChangeOutfit(creature)
-end
-
-function onThink()
-	npcOnThink()
-end
+npcDefine{
+	greet = function(cid) return 'Hi ' .. creatureGetName(cid) .. '! ' .. BOWS_HELP end,
+	onMessage = npcCatalogHandler{help = BOWS_HELP, helpKeys = {'distance', 'ammo', 'ammunition'}, buys = BOW_BUYS},
+}

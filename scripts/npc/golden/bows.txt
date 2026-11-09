@@ -1,0 +1,883 @@
+>> near 1001
+>> near 1002
+>> say 1001 hello there
+>> say 1001 hi
+SAY Hi Player1001! Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1002 hi
+SAY One moment, Player1002! I am helping someone else.
+>> say 1001 help
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 help
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 help
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 5 help
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 5 help
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 help 100
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 help 100
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 help all
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 help all
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> think
+>> say 1001 ayuda
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 ayuda
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 5 ayuda
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 5 ayuda
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 ayuda 100
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 ayuda 100
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 ayuda all
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 ayuda all
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> think
+>> say 1001 offer
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 offer
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 5 offer
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 5 offer
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 offer 100
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 offer 100
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 offer all
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 offer all
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> think
+>> say 1001 trade
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 trade
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 5 trade
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 5 trade
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 trade 100
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 trade 100
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 trade all
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 trade all
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> think
+>> say 1001 list
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 list
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 5 list
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 5 list
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 list 100
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 list 100
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 list all
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 list all
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> think
+>> say 1001 info
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 info
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 5 info
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 5 info
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 info 100
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 info 100
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 info all
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 info all
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> think
+>> say 1001 job
+>> say 1001 yes
+>> say 1001 job
+>> say 1001 no
+>> say 1001 5 job
+>> say 1001 yes
+>> say 1001 5 job
+>> say 1001 no
+>> say 1001 job 100
+>> say 1001 yes
+>> say 1001 job 100
+>> say 1001 no
+>> say 1001 job all
+>> say 1001 yes
+>> say 1001 job all
+>> say 1001 no
+>> think
+>> say 1001 name
+>> say 1001 yes
+>> say 1001 name
+>> say 1001 no
+>> say 1001 5 name
+>> say 1001 yes
+>> say 1001 5 name
+>> say 1001 no
+>> say 1001 name 100
+>> say 1001 yes
+>> say 1001 name 100
+>> say 1001 no
+>> say 1001 name all
+>> say 1001 yes
+>> say 1001 name all
+>> say 1001 no
+>> think
+>> say 1001 yes
+>> say 1001 yes
+>> say 1001 yes
+>> say 1001 no
+>> say 1001 5 yes
+>> say 1001 yes
+>> say 1001 5 yes
+>> say 1001 no
+>> say 1001 yes 100
+>> say 1001 yes
+>> say 1001 yes 100
+>> say 1001 no
+>> say 1001 yes all
+>> say 1001 yes
+>> say 1001 yes all
+>> say 1001 no
+>> think
+>> say 1001 no
+>> say 1001 yes
+>> say 1001 no
+>> say 1001 no
+>> say 1001 5 no
+>> say 1001 yes
+>> say 1001 5 no
+>> say 1001 no
+>> say 1001 no 100
+>> say 1001 yes
+>> say 1001 no 100
+>> say 1001 no
+>> say 1001 no all
+>> say 1001 yes
+>> say 1001 no all
+>> say 1001 no
+>> think
+>> say 1001 si
+>> say 1001 yes
+>> say 1001 si
+>> say 1001 no
+>> say 1001 5 si
+>> say 1001 yes
+>> say 1001 5 si
+>> say 1001 no
+>> say 1001 si 100
+>> say 1001 yes
+>> say 1001 si 100
+>> say 1001 no
+>> say 1001 si all
+>> say 1001 yes
+>> say 1001 si all
+>> say 1001 no
+>> think
+>> say 1001 sell
+>> say 1001 yes
+>> say 1001 sell
+>> say 1001 no
+>> say 1001 5 sell
+>> say 1001 yes
+>> say 1001 5 sell
+>> say 1001 no
+>> say 1001 sell 100
+>> say 1001 yes
+>> say 1001 sell 100
+>> say 1001 no
+>> say 1001 sell all
+>> say 1001 yes
+>> say 1001 sell all
+>> say 1001 no
+>> think
+>> say 1001 buy
+>> say 1001 yes
+>> say 1001 buy
+>> say 1001 no
+>> say 1001 5 buy
+>> say 1001 yes
+>> say 1001 5 buy
+>> say 1001 no
+>> say 1001 buy 100
+>> say 1001 yes
+>> say 1001 buy 100
+>> say 1001 no
+>> say 1001 buy all
+>> say 1001 yes
+>> say 1001 buy all
+>> say 1001 no
+>> think
+>> say 1001 all
+>> say 1001 yes
+>> say 1001 all
+>> say 1001 no
+>> say 1001 5 all
+>> say 1001 yes
+>> say 1001 5 all
+>> say 1001 no
+>> say 1001 all 100
+>> say 1001 yes
+>> say 1001 all 100
+>> say 1001 no
+>> say 1001 all all
+>> say 1001 yes
+>> say 1001 all all
+>> say 1001 no
+>> think
+>> say 1001 status
+>> say 1001 yes
+>> say 1001 status
+>> say 1001 no
+>> say 1001 5 status
+>> say 1001 yes
+>> say 1001 5 status
+>> say 1001 no
+>> say 1001 status 100
+>> say 1001 yes
+>> say 1001 status 100
+>> say 1001 no
+>> say 1001 status all
+>> say 1001 yes
+>> say 1001 status all
+>> say 1001 no
+>> think
+>> say 1001 deposit 100
+>> say 1001 yes
+>> say 1001 deposit 100
+>> say 1001 no
+>> say 1001 5 deposit 100
+>> say 1001 yes
+>> say 1001 5 deposit 100
+>> say 1001 no
+>> say 1001 deposit 100 100
+>> say 1001 yes
+>> say 1001 deposit 100 100
+>> say 1001 no
+>> say 1001 deposit 100 all
+>> say 1001 yes
+>> say 1001 deposit 100 all
+>> say 1001 no
+>> think
+>> say 1001 withdraw 50
+>> say 1001 yes
+>> say 1001 withdraw 50
+>> say 1001 no
+>> say 1001 5 withdraw 50
+>> say 1001 yes
+>> say 1001 5 withdraw 50
+>> say 1001 no
+>> say 1001 withdraw 50 100
+>> say 1001 yes
+>> say 1001 withdraw 50 100
+>> say 1001 no
+>> say 1001 withdraw 50 all
+>> say 1001 yes
+>> say 1001 withdraw 50 all
+>> say 1001 no
+>> think
+>> say 1001 balance
+>> say 1001 yes
+>> say 1001 balance
+>> say 1001 no
+>> say 1001 5 balance
+>> say 1001 yes
+>> say 1001 5 balance
+>> say 1001 no
+>> say 1001 balance 100
+>> say 1001 yes
+>> say 1001 balance 100
+>> say 1001 no
+>> say 1001 balance all
+>> say 1001 yes
+>> say 1001 balance all
+>> say 1001 no
+>> think
+>> say 1001 transfer 10 to player1002
+>> say 1001 yes
+>> say 1001 transfer 10 to player1002
+>> say 1001 no
+>> say 1001 5 transfer 10 to player1002
+>> say 1001 yes
+>> say 1001 5 transfer 10 to player1002
+>> say 1001 no
+>> say 1001 transfer 10 to player1002 100
+>> say 1001 yes
+>> say 1001 transfer 10 to player1002 100
+>> say 1001 no
+>> say 1001 transfer 10 to player1002 all
+>> say 1001 yes
+>> say 1001 transfer 10 to player1002 all
+>> say 1001 no
+>> think
+>> say 1001 power bolt
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2547, 1, 8)
+>> say 1001 yes
+>> say 1001 power bolt
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2547, 1, 8)
+>> say 1001 no
+>> say 1001 5 power bolt
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2547, 5, 40)
+>> say 1001 yes
+>> say 1001 5 power bolt
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2547, 5, 40)
+>> say 1001 no
+>> say 1001 power bolt 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 power bolt 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 power bolt all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2547, 1, 8)
+>> say 1001 yes
+>> say 1001 power bolt all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2547, 1, 8)
+>> say 1001 no
+>> think
+>> say 1001 power bolts
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2547, 1, 8)
+>> say 1001 yes
+>> say 1001 power bolts
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2547, 1, 8)
+>> say 1001 no
+>> say 1001 5 power bolts
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2547, 5, 40)
+>> say 1001 yes
+>> say 1001 5 power bolts
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2547, 5, 40)
+>> say 1001 no
+>> say 1001 power bolts 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 power bolts 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 power bolts all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2547, 1, 8)
+>> say 1001 yes
+>> say 1001 power bolts all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2547, 1, 8)
+>> say 1001 no
+>> think
+>> say 1001 crossbow
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2455, 1, 200)
+>> say 1001 yes
+>> say 1001 crossbow
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2455, 1, 200)
+>> say 1001 no
+>> say 1001 5 crossbow
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2455, 5, 1000)
+>> say 1001 yes
+>> say 1001 5 crossbow
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2455, 5, 1000)
+>> say 1001 no
+>> say 1001 crossbow 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 crossbow 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 crossbow all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2455, 1, 200)
+>> say 1001 yes
+>> say 1001 crossbow all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2455, 1, 200)
+>> say 1001 no
+>> think
+>> say 1001 bow
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2456, 1, 100)
+>> say 1001 yes
+>> say 1001 bow
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2456, 1, 100)
+>> say 1001 no
+>> say 1001 5 bow
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2456, 5, 500)
+>> say 1001 yes
+>> say 1001 5 bow
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2456, 5, 500)
+>> say 1001 no
+>> say 1001 bow 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 bow 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 bow all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2456, 1, 100)
+>> say 1001 yes
+>> say 1001 bow all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2456, 1, 100)
+>> say 1001 no
+>> think
+>> say 1001 arrow
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2544, 1, 2)
+>> say 1001 yes
+>> say 1001 arrow
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2544, 1, 2)
+>> say 1001 no
+>> say 1001 5 arrow
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2544, 5, 10)
+>> say 1001 yes
+>> say 1001 5 arrow
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2544, 5, 10)
+>> say 1001 no
+>> say 1001 arrow 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 arrow 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 arrow all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2544, 1, 2)
+>> say 1001 yes
+>> say 1001 arrow all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2544, 1, 2)
+>> say 1001 no
+>> think
+>> say 1001 arrows
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2544, 1, 2)
+>> say 1001 yes
+>> say 1001 arrows
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2544, 1, 2)
+>> say 1001 no
+>> say 1001 5 arrows
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2544, 5, 10)
+>> say 1001 yes
+>> say 1001 5 arrows
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2544, 5, 10)
+>> say 1001 no
+>> say 1001 arrows 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 arrows 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 arrows all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2544, 1, 2)
+>> say 1001 yes
+>> say 1001 arrows all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2544, 1, 2)
+>> say 1001 no
+>> think
+>> say 1001 bolt
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2543, 1, 3)
+>> say 1001 yes
+>> say 1001 bolt
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2543, 1, 3)
+>> say 1001 no
+>> say 1001 5 bolt
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2543, 5, 15)
+>> say 1001 yes
+>> say 1001 5 bolt
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2543, 5, 15)
+>> say 1001 no
+>> say 1001 bolt 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 bolt 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 bolt all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2543, 1, 3)
+>> say 1001 yes
+>> say 1001 bolt all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2543, 1, 3)
+>> say 1001 no
+>> think
+>> say 1001 bolts
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2543, 1, 3)
+>> say 1001 yes
+>> say 1001 bolts
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2543, 1, 3)
+>> say 1001 no
+>> say 1001 5 bolts
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2543, 5, 15)
+>> say 1001 yes
+>> say 1001 5 bolts
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2543, 5, 15)
+>> say 1001 no
+>> say 1001 bolts 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 bolts 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 bolts all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2543, 1, 3)
+>> say 1001 yes
+>> say 1001 bolts all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2543, 1, 3)
+>> say 1001 no
+>> think
+>> say 1001 spear
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2389, 1, 10)
+>> say 1001 yes
+>> say 1001 spear
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2389, 1, 10)
+>> say 1001 no
+>> say 1001 5 spear
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2389, 5, 50)
+>> say 1001 yes
+>> say 1001 5 spear
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2389, 5, 50)
+>> say 1001 no
+>> say 1001 spear 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 spear 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 spear all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2389, 1, 10)
+>> say 1001 yes
+>> say 1001 spear all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2389, 1, 10)
+>> say 1001 no
+>> think
+>> say 1001 spears
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2389, 1, 10)
+>> say 1001 yes
+>> say 1001 spears
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2389, 1, 10)
+>> say 1001 no
+>> say 1001 5 spears
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2389, 5, 50)
+>> say 1001 yes
+>> say 1001 5 spears
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2389, 5, 50)
+>> say 1001 no
+>> say 1001 spears 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 yes
+>> say 1001 spears 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1001 no
+>> say 1001 spears all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2389, 1, 10)
+>> say 1001 yes
+>> say 1001 spears all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2389, 1, 10)
+>> say 1001 no
+>> think
+>> say 1001 focused
+>> say 1001 yes
+>> say 1001 focused
+>> say 1001 no
+>> say 1001 5 focused
+>> say 1001 yes
+>> say 1001 5 focused
+>> say 1001 no
+>> say 1001 focused 100
+>> say 1001 yes
+>> say 1001 focused 100
+>> say 1001 no
+>> say 1001 focused all
+>> say 1001 yes
+>> say 1001 focused all
+>> say 1001 no
+>> think
+>> say 1001 distance
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 distance
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 5 distance
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 5 distance
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 distance 100
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 distance 100
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 distance all
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 distance all
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> think
+>> say 1001 ammo
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 ammo
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 5 ammo
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 5 ammo
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 ammo 100
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 ammo 100
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 ammo all
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 ammo all
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> think
+>> say 1001 ammunition
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 ammunition
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 5 ammunition
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 5 ammunition
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 ammunition 100
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 ammunition 100
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> say 1001 ammunition all
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 yes
+>> say 1001 ammunition all
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 no
+>> think
+>> say 1001 bye
+CALL cancelPendingTrade(1001)
+SAY Bye, Player1001! Come back anytime.
+>> say 1001 hi
+SAY Hi Player1001! Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> advance 40
+>> think
+CALL cancelPendingTrade(1001)
+SAY Next please...
+>> say 1001 hi
+SAY Hi Player1001! Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> far 1001
+>> think
+CALL cancelPendingTrade(1001)
+SAY See you later!
+>> near 1001
+>> say 1001 hola
+SAY Hi Player1001! Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> disappear 1001
+CALL cancelPendingTrade(1001)
+SAY See you later!
+>> say 1002 hi
+SAY Hi Player1002! Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> set 1002 money 0
+>> set 1002 slots 0
+>> set 1002 level 1
+>> say 1002 power bolt
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 power bolts
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 crossbow
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 bow
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 arrow
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 arrows
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 bolt
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 bolts
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 spear
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 spears
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 focused
+>> say 1002 yes
+>> say 1002 distance
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1002 yes
+>> say 1002 ammo
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1002 yes
+>> say 1002 ammunition
+SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1002 yes
+>> say 1002 chau
+CALL cancelPendingTrade(1002)
+SAY Bye, Player1002! Come back anytime.
+>> think 3

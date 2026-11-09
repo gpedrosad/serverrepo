@@ -1,0 +1,15 @@
+# Chronos: jugadores dentro de la sala, cambio de fase y sala vacía
+pos 1001 338 390 6
+pos 1002 340 392 6
+think 5
+advance 115
+think 10
+advance 120
+think 3
+say 1001 hi
+say 1001 time
+say 1001 fase
+far 1001
+far 1002
+advance 300
+think 5

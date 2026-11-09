@@ -1,8 +1,4 @@
-focus = 0
-talk_start = 0
-target = 0
-following = false
-attacking = false
+-- Mad (compra armas y armaduras). Tienda de venta: el jugador vende, el NPC paga.
 
 LOOT_OFFERS = {
 	{keys = {'royal helmet'}, itemid = 2498, price = 30000},
@@ -82,46 +78,11 @@ LOOT_TOPICS = {
 	{keys = {'amulets'}, reply = 'I buy platinum amulets (2.5k) and scarfs (600gp).'}
 }
 
-function onThingMove(creature, thing, oldpos, oldstackpos)
-end
+LOOT_HELP = 'Say helmets, boots, armors, legs, shields, swords, axes, clubs or amulets to see what I buy.'
 
-function onCreatureAppear(creature)
-end
-
-function onCreatureDisappear(cid, pos)
-	npcOnCreatureDisappear(cid)
-end
-
-function onCreatureTurn(creature)
-end
-
-function onCreatureSay(cid, type, msg)
-	msg = string.lower(msg)
-
-	local state = npcHandleMessage(
-		cid,
-		msg,
-		'Hi ' .. creatureGetName(cid) .. '! I buy weapons and armor. Say a item name to sell, or "helmets", "armors", "shields" and so on for prices.'
-	)
-	if state ~= 'focused' then
-		return
-	end
-
-	if npcIsHelp(msg) then
-		selfSay('Say helmets, boots, armors, legs, shields, swords, axes, clubs or amulets to see what I buy.')
-		return
-	end
-
-	if npcTryCatalogSell(cid, msg, LOOT_OFFERS) then
-		return
-	end
-
-	npcTryCatalogReply(msg, LOOT_TOPICS)
-end
-
-function onCreatureChangeOutfit(creature)
-end
-
-function onThink()
-	npcOnThink()
-end
+npcDefine{
+	greet = function(cid)
+		return 'Hi ' .. creatureGetName(cid) .. '! I buy weapons and armor. Say a item name to sell, or "helmets", "armors", "shields" and so on for prices.'
+	end,
+	onMessage = npcCatalogHandler{help = LOOT_HELP, sells = LOOT_OFFERS, topics = LOOT_TOPICS},
+}

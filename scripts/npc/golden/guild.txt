@@ -1,0 +1,892 @@
+>> near 1001
+>> near 1002
+>> say 1001 hello there
+>> say 1001 hi
+SAY Hi Player1001! I handle guild business. Say "help" to see what you can do.
+>> say 1002 hi
+SAY One moment, Player1002!
+>> say 1001 help
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 help
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 help
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> say 1001 5 help
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 5 help
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> say 1001 help 100
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 help 100
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> say 1001 help all
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 help all
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> think
+>> say 1001 ayuda
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 ayuda
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> say 1001 5 ayuda
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 5 ayuda
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> say 1001 ayuda 100
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 ayuda 100
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> say 1001 ayuda all
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 ayuda all
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> think
+>> say 1001 offer
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 offer
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> say 1001 5 offer
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 5 offer
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> say 1001 offer 100
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 offer 100
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> say 1001 offer all
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 offer all
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> think
+>> say 1001 trade
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 trade
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> say 1001 5 trade
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 5 trade
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> say 1001 trade 100
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 trade 100
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> say 1001 trade all
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 trade all
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> think
+>> say 1001 list
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 list
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> say 1001 5 list
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 5 list
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> say 1001 list 100
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 list 100
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> say 1001 list all
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 list all
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> think
+>> say 1001 info
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 info
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> say 1001 5 info
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 5 info
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> say 1001 info 100
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 info 100
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> say 1001 info all
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 info all
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> think
+>> say 1001 job
+>> say 1001 yes
+>> say 1001 job
+>> say 1001 no
+>> say 1001 5 job
+>> say 1001 yes
+>> say 1001 5 job
+>> say 1001 no
+>> say 1001 job 100
+>> say 1001 yes
+>> say 1001 job 100
+>> say 1001 no
+>> say 1001 job all
+>> say 1001 yes
+>> say 1001 job all
+>> say 1001 no
+>> think
+>> say 1001 name
+>> say 1001 yes
+>> say 1001 name
+>> say 1001 no
+>> say 1001 5 name
+>> say 1001 yes
+>> say 1001 5 name
+>> say 1001 no
+>> say 1001 name 100
+>> say 1001 yes
+>> say 1001 name 100
+>> say 1001 no
+>> say 1001 name all
+>> say 1001 yes
+>> say 1001 name all
+>> say 1001 no
+>> think
+>> say 1001 yes
+>> say 1001 yes
+>> say 1001 yes
+>> say 1001 no
+>> say 1001 5 yes
+>> say 1001 yes
+>> say 1001 5 yes
+>> say 1001 no
+>> say 1001 yes 100
+>> say 1001 yes
+>> say 1001 yes 100
+>> say 1001 no
+>> say 1001 yes all
+>> say 1001 yes
+>> say 1001 yes all
+>> say 1001 no
+>> think
+>> say 1001 no
+>> say 1001 yes
+>> say 1001 no
+>> say 1001 no
+>> say 1001 5 no
+>> say 1001 yes
+>> say 1001 5 no
+>> say 1001 no
+>> say 1001 no 100
+>> say 1001 yes
+>> say 1001 no 100
+>> say 1001 no
+>> say 1001 no all
+>> say 1001 yes
+>> say 1001 no all
+>> say 1001 no
+>> think
+>> say 1001 si
+>> say 1001 yes
+>> say 1001 si
+>> say 1001 no
+>> say 1001 5 si
+>> say 1001 yes
+>> say 1001 5 si
+>> say 1001 no
+>> say 1001 si 100
+>> say 1001 yes
+>> say 1001 si 100
+>> say 1001 no
+>> say 1001 si all
+>> say 1001 yes
+>> say 1001 si all
+>> say 1001 no
+>> think
+>> say 1001 sell
+>> say 1001 yes
+>> say 1001 sell
+>> say 1001 no
+>> say 1001 5 sell
+>> say 1001 yes
+>> say 1001 5 sell
+>> say 1001 no
+>> say 1001 sell 100
+>> say 1001 yes
+>> say 1001 sell 100
+>> say 1001 no
+>> say 1001 sell all
+>> say 1001 yes
+>> say 1001 sell all
+>> say 1001 no
+>> think
+>> say 1001 buy
+>> say 1001 yes
+>> say 1001 buy
+>> say 1001 no
+>> say 1001 5 buy
+>> say 1001 yes
+>> say 1001 5 buy
+>> say 1001 no
+>> say 1001 buy 100
+>> say 1001 yes
+>> say 1001 buy 100
+>> say 1001 no
+>> say 1001 buy all
+>> say 1001 yes
+>> say 1001 buy all
+>> say 1001 no
+>> think
+>> say 1001 all
+>> say 1001 yes
+>> say 1001 all
+>> say 1001 no
+>> say 1001 5 all
+>> say 1001 yes
+>> say 1001 5 all
+>> say 1001 no
+>> say 1001 all 100
+>> say 1001 yes
+>> say 1001 all 100
+>> say 1001 no
+>> say 1001 all all
+>> say 1001 yes
+>> say 1001 all all
+>> say 1001 no
+>> think
+>> say 1001 status
+>> say 1001 yes
+>> say 1001 status
+>> say 1001 no
+>> say 1001 5 status
+>> say 1001 yes
+>> say 1001 5 status
+>> say 1001 no
+>> say 1001 status 100
+>> say 1001 yes
+>> say 1001 status 100
+>> say 1001 no
+>> say 1001 status all
+>> say 1001 yes
+>> say 1001 status all
+>> say 1001 no
+>> think
+>> say 1001 deposit 100
+>> say 1001 yes
+>> say 1001 deposit 100
+>> say 1001 no
+>> say 1001 5 deposit 100
+>> say 1001 yes
+>> say 1001 5 deposit 100
+>> say 1001 no
+>> say 1001 deposit 100 100
+>> say 1001 yes
+>> say 1001 deposit 100 100
+>> say 1001 no
+>> say 1001 deposit 100 all
+>> say 1001 yes
+>> say 1001 deposit 100 all
+>> say 1001 no
+>> think
+>> say 1001 withdraw 50
+>> say 1001 yes
+>> say 1001 withdraw 50
+>> say 1001 no
+>> say 1001 5 withdraw 50
+>> say 1001 yes
+>> say 1001 5 withdraw 50
+>> say 1001 no
+>> say 1001 withdraw 50 100
+>> say 1001 yes
+>> say 1001 withdraw 50 100
+>> say 1001 no
+>> say 1001 withdraw 50 all
+>> say 1001 yes
+>> say 1001 withdraw 50 all
+>> say 1001 no
+>> think
+>> say 1001 balance
+>> say 1001 yes
+>> say 1001 balance
+>> say 1001 no
+>> say 1001 5 balance
+>> say 1001 yes
+>> say 1001 5 balance
+>> say 1001 no
+>> say 1001 balance 100
+>> say 1001 yes
+>> say 1001 balance 100
+>> say 1001 no
+>> say 1001 balance all
+>> say 1001 yes
+>> say 1001 balance all
+>> say 1001 no
+>> think
+>> say 1001 transfer 10 to player1002
+>> say 1001 yes
+>> say 1001 transfer 10 to player1002
+>> say 1001 no
+>> say 1001 5 transfer 10 to player1002
+>> say 1001 yes
+>> say 1001 5 transfer 10 to player1002
+>> say 1001 no
+>> say 1001 transfer 10 to player1002 100
+>> say 1001 yes
+>> say 1001 transfer 10 to player1002 100
+>> say 1001 no
+>> say 1001 transfer 10 to player1002 all
+>> say 1001 yes
+>> say 1001 transfer 10 to player1002 all
+>> say 1001 no
+>> think
+>> say 1001 help
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 help
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> say 1001 5 help
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 5 help
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> say 1001 help 100
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 help 100
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> say 1001 help all
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 yes
+>> say 1001 help all
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1001 no
+>> think
+>> say 1001 focused
+>> say 1001 yes
+>> say 1001 focused
+>> say 1001 no
+>> say 1001 5 focused
+>> say 1001 yes
+>> say 1001 5 focused
+>> say 1001 no
+>> say 1001 focused 100
+>> say 1001 yes
+>> say 1001 focused 100
+>> say 1001 no
+>> say 1001 focused all
+>> say 1001 yes
+>> say 1001 focused all
+>> say 1001 no
+>> think
+>> say 1001 found
+CALL getPlayerLevel("Player1001")
+CALL getPlayerGuildStatus("Player1001")
+SAY What name your guild should have?
+>> say 1001 yes
+CALL foundNewGuild("yes")
+SAY And what rank do you wish to have?
+>> say 1001 found
+CALL setPlayerGuild("Player1001", 4, "found", "yes")
+SAY You are now leader of your new guild.
+>> say 1001 no
+>> say 1001 5 found
+CALL getPlayerLevel("Player1001")
+CALL getPlayerGuildStatus("Player1001")
+SAY What name your guild should have?
+>> say 1001 yes
+CALL foundNewGuild("yes")
+SAY And what rank do you wish to have?
+>> say 1001 5 found
+CALL setPlayerGuild("Player1001", 4, "5 found", "yes")
+SAY You are now leader of your new guild.
+>> say 1001 no
+>> say 1001 found 100
+CALL getPlayerLevel("Player1001")
+CALL getPlayerGuildStatus("Player1001")
+SAY What name your guild should have?
+>> say 1001 yes
+CALL foundNewGuild("yes")
+SAY And what rank do you wish to have?
+>> say 1001 found 100
+CALL setPlayerGuild("Player1001", 4, "found 100", "yes")
+SAY You are now leader of your new guild.
+>> say 1001 no
+>> say 1001 found all
+CALL getPlayerLevel("Player1001")
+CALL getPlayerGuildStatus("Player1001")
+SAY What name your guild should have?
+>> say 1001 yes
+CALL foundNewGuild("yes")
+SAY And what rank do you wish to have?
+>> say 1001 found all
+CALL setPlayerGuild("Player1001", 4, "found all", "yes")
+SAY You are now leader of your new guild.
+>> say 1001 no
+>> think
+>> say 1001 join
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, you are not invited to any guild.
+>> say 1001 yes
+>> say 1001 join
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, you are not invited to any guild.
+>> say 1001 no
+>> say 1001 5 join
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, you are not invited to any guild.
+>> say 1001 yes
+>> say 1001 5 join
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, you are not invited to any guild.
+>> say 1001 no
+>> say 1001 join 100
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, you are not invited to any guild.
+>> say 1001 yes
+>> say 1001 join 100
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, you are not invited to any guild.
+>> say 1001 no
+>> say 1001 join all
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, you are not invited to any guild.
+>> say 1001 yes
+>> say 1001 join all
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, you are not invited to any guild.
+>> say 1001 no
+>> think
+>> say 1001 exclude
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader and vice-leaders can kick players from a guild.
+>> say 1001 yes
+>> say 1001 exclude
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader and vice-leaders can kick players from a guild.
+>> say 1001 no
+>> say 1001 5 exclude
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader and vice-leaders can kick players from a guild.
+>> say 1001 yes
+>> say 1001 5 exclude
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader and vice-leaders can kick players from a guild.
+>> say 1001 no
+>> say 1001 exclude 100
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader and vice-leaders can kick players from a guild.
+>> say 1001 yes
+>> say 1001 exclude 100
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader and vice-leaders can kick players from a guild.
+>> say 1001 no
+>> say 1001 exclude all
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader and vice-leaders can kick players from a guild.
+>> say 1001 yes
+>> say 1001 exclude all
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader and vice-leaders can kick players from a guild.
+>> say 1001 no
+>> think
+>> say 1001 kick
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader and vice-leaders can kick players from a guild.
+>> say 1001 yes
+>> say 1001 kick
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader and vice-leaders can kick players from a guild.
+>> say 1001 no
+>> say 1001 5 kick
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader and vice-leaders can kick players from a guild.
+>> say 1001 yes
+>> say 1001 5 kick
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader and vice-leaders can kick players from a guild.
+>> say 1001 no
+>> say 1001 kick 100
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader and vice-leaders can kick players from a guild.
+>> say 1001 yes
+>> say 1001 kick 100
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader and vice-leaders can kick players from a guild.
+>> say 1001 no
+>> say 1001 kick all
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader and vice-leaders can kick players from a guild.
+>> say 1001 yes
+>> say 1001 kick all
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader and vice-leaders can kick players from a guild.
+>> say 1001 no
+>> think
+>> say 1001 invite
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader and vice-leaders can invite players to a guild.
+>> say 1001 yes
+>> say 1001 invite
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader and vice-leaders can invite players to a guild.
+>> say 1001 no
+>> say 1001 5 invite
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader and vice-leaders can invite players to a guild.
+>> say 1001 yes
+>> say 1001 5 invite
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader and vice-leaders can invite players to a guild.
+>> say 1001 no
+>> say 1001 invite 100
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader and vice-leaders can invite players to a guild.
+>> say 1001 yes
+>> say 1001 invite 100
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader and vice-leaders can invite players to a guild.
+>> say 1001 no
+>> say 1001 invite all
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader and vice-leaders can invite players to a guild.
+>> say 1001 yes
+>> say 1001 invite all
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader and vice-leaders can invite players to a guild.
+>> say 1001 no
+>> think
+>> say 1001 leave
+CALL getPlayerGuildStatus("Player1001")
+SAY You are not in a guild.
+>> say 1001 yes
+>> say 1001 leave
+CALL getPlayerGuildStatus("Player1001")
+SAY You are not in a guild.
+>> say 1001 no
+>> say 1001 5 leave
+CALL getPlayerGuildStatus("Player1001")
+SAY You are not in a guild.
+>> say 1001 yes
+>> say 1001 5 leave
+CALL getPlayerGuildStatus("Player1001")
+SAY You are not in a guild.
+>> say 1001 no
+>> say 1001 leave 100
+CALL getPlayerGuildStatus("Player1001")
+SAY You are not in a guild.
+>> say 1001 yes
+>> say 1001 leave 100
+CALL getPlayerGuildStatus("Player1001")
+SAY You are not in a guild.
+>> say 1001 no
+>> say 1001 leave all
+CALL getPlayerGuildStatus("Player1001")
+SAY You are not in a guild.
+>> say 1001 yes
+>> say 1001 leave all
+CALL getPlayerGuildStatus("Player1001")
+SAY You are not in a guild.
+>> say 1001 no
+>> think
+>> say 1001 pass
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can resign from his position.
+>> say 1001 yes
+>> say 1001 pass
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can resign from his position.
+>> say 1001 no
+>> say 1001 5 pass
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can resign from his position.
+>> say 1001 yes
+>> say 1001 5 pass
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can resign from his position.
+>> say 1001 no
+>> say 1001 pass 100
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can resign from his position.
+>> say 1001 yes
+>> say 1001 pass 100
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can resign from his position.
+>> say 1001 no
+>> say 1001 pass all
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can resign from his position.
+>> say 1001 yes
+>> say 1001 pass all
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can resign from his position.
+>> say 1001 no
+>> think
+>> say 1001 vice
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can promote member to vice-leader.
+>> say 1001 yes
+>> say 1001 vice
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can promote member to vice-leader.
+>> say 1001 no
+>> say 1001 5 vice
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can promote member to vice-leader.
+>> say 1001 yes
+>> say 1001 5 vice
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can promote member to vice-leader.
+>> say 1001 no
+>> say 1001 vice 100
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can promote member to vice-leader.
+>> say 1001 yes
+>> say 1001 vice 100
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can promote member to vice-leader.
+>> say 1001 no
+>> say 1001 vice all
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can promote member to vice-leader.
+>> say 1001 yes
+>> say 1001 vice all
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can promote member to vice-leader.
+>> say 1001 no
+>> think
+>> say 1001 member
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can demote vice-leaders to members.
+>> say 1001 yes
+>> say 1001 member
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can demote vice-leaders to members.
+>> say 1001 no
+>> say 1001 5 member
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can demote vice-leaders to members.
+>> say 1001 yes
+>> say 1001 5 member
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can demote vice-leaders to members.
+>> say 1001 no
+>> say 1001 member 100
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can demote vice-leaders to members.
+>> say 1001 yes
+>> say 1001 member 100
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can demote vice-leaders to members.
+>> say 1001 no
+>> say 1001 member all
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can demote vice-leaders to members.
+>> say 1001 yes
+>> say 1001 member all
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can demote vice-leaders to members.
+>> say 1001 no
+>> think
+>> say 1001 nick
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can change nicks.
+>> say 1001 yes
+>> say 1001 nick
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can change nicks.
+>> say 1001 no
+>> say 1001 5 nick
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can change nicks.
+>> say 1001 yes
+>> say 1001 5 nick
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can change nicks.
+>> say 1001 no
+>> say 1001 nick 100
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can change nicks.
+>> say 1001 yes
+>> say 1001 nick 100
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can change nicks.
+>> say 1001 no
+>> say 1001 nick all
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can change nicks.
+>> say 1001 yes
+>> say 1001 nick all
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can change nicks.
+>> say 1001 no
+>> think
+>> say 1001 title
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can change nicks.
+>> say 1001 yes
+>> say 1001 title
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can change nicks.
+>> say 1001 no
+>> say 1001 5 title
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can change nicks.
+>> say 1001 yes
+>> say 1001 5 title
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can change nicks.
+>> say 1001 no
+>> say 1001 title 100
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can change nicks.
+>> say 1001 yes
+>> say 1001 title 100
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can change nicks.
+>> say 1001 no
+>> say 1001 title all
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can change nicks.
+>> say 1001 yes
+>> say 1001 title all
+CALL getPlayerGuildStatus("Player1001")
+SAY Sorry, only leader can change nicks.
+>> say 1001 no
+>> think
+>> say 1001 none
+>> say 1001 yes
+>> say 1001 none
+>> say 1001 no
+>> say 1001 5 none
+>> say 1001 yes
+>> say 1001 5 none
+>> say 1001 no
+>> say 1001 none 100
+>> say 1001 yes
+>> say 1001 none 100
+>> say 1001 no
+>> say 1001 none all
+>> say 1001 yes
+>> say 1001 none all
+>> say 1001 no
+>> think
+>> say 1001 bye
+CALL cancelPendingTrade(1001)
+SAY Bye, Player1001! Come back anytime.
+>> say 1001 hi
+SAY Hi Player1001! I handle guild business. Say "help" to see what you can do.
+>> advance 40
+>> think
+>> say 1001 hi
+>> far 1001
+>> think
+CALL cancelPendingTrade(1001)
+SAY See you later!
+>> near 1001
+>> say 1001 hola
+SAY Hi Player1001! I handle guild business. Say "help" to see what you can do.
+>> disappear 1001
+CALL cancelPendingTrade(1001)
+SAY See you later!
+>> say 1002 hi
+SAY Hi Player1002! I handle guild business. Say "help" to see what you can do.
+>> set 1002 money 0
+>> set 1002 slots 0
+>> set 1002 level 1
+>> say 1002 help
+SAY Commands: found (create guild), join, invite, kick, leave, pass (new leader), vice, member, nick.
+>> say 1002 yes
+>> say 1002 focused
+>> say 1002 yes
+>> say 1002 found
+CALL getPlayerLevel("Player1002")
+SAY Sorry, you need level 50 to found a guild.
+>> say 1002 yes
+>> say 1002 join
+CALL getPlayerGuildStatus("Player1002")
+SAY Sorry, you are not invited to any guild.
+>> say 1002 yes
+>> say 1002 exclude
+CALL getPlayerGuildStatus("Player1002")
+SAY Sorry, only leader and vice-leaders can kick players from a guild.
+>> say 1002 yes
+>> say 1002 kick
+CALL getPlayerGuildStatus("Player1002")
+SAY Sorry, only leader and vice-leaders can kick players from a guild.
+>> say 1002 yes
+>> say 1002 invite
+CALL getPlayerGuildStatus("Player1002")
+SAY Sorry, only leader and vice-leaders can invite players to a guild.
+>> say 1002 yes
+>> say 1002 leave
+CALL getPlayerGuildStatus("Player1002")
+SAY You are not in a guild.
+>> say 1002 yes
+>> say 1002 pass
+CALL getPlayerGuildStatus("Player1002")
+SAY Sorry, only leader can resign from his position.
+>> say 1002 yes
+>> say 1002 vice
+CALL getPlayerGuildStatus("Player1002")
+SAY Sorry, only leader can promote member to vice-leader.
+>> say 1002 yes
+>> say 1002 member
+CALL getPlayerGuildStatus("Player1002")
+SAY Sorry, only leader can demote vice-leaders to members.
+>> say 1002 yes
+>> say 1002 nick
+CALL getPlayerGuildStatus("Player1002")
+SAY Sorry, only leader can change nicks.
+>> say 1002 yes
+>> say 1002 title
+CALL getPlayerGuildStatus("Player1002")
+SAY Sorry, only leader can change nicks.
+>> say 1002 yes
+>> say 1002 none
+>> say 1002 yes
+>> say 1002 chau
+CALL cancelPendingTrade(1002)
+SAY Bye, Player1002! Come back anytime.
+>> think 3

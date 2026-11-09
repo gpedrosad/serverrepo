@@ -1,0 +1,1239 @@
+# generado por run_npc_tests.py
+near 1001
+near 1002
+say 1001 hello there
+say 1001 hi
+say 1002 hi
+say 1001 help
+say 1001 help
+say 1001 yes
+say 1001 help
+say 1001 no
+say 1001 5 help
+say 1001 yes
+say 1001 5 help
+say 1001 no
+say 1001 help 100
+say 1001 yes
+say 1001 help 100
+say 1001 no
+say 1001 help all
+say 1001 yes
+say 1001 help all
+say 1001 no
+think
+say 1001 ayuda
+say 1001 yes
+say 1001 ayuda
+say 1001 no
+say 1001 5 ayuda
+say 1001 yes
+say 1001 5 ayuda
+say 1001 no
+say 1001 ayuda 100
+say 1001 yes
+say 1001 ayuda 100
+say 1001 no
+say 1001 ayuda all
+say 1001 yes
+say 1001 ayuda all
+say 1001 no
+think
+say 1001 offer
+say 1001 yes
+say 1001 offer
+say 1001 no
+say 1001 5 offer
+say 1001 yes
+say 1001 5 offer
+say 1001 no
+say 1001 offer 100
+say 1001 yes
+say 1001 offer 100
+say 1001 no
+say 1001 offer all
+say 1001 yes
+say 1001 offer all
+say 1001 no
+think
+say 1001 trade
+say 1001 yes
+say 1001 trade
+say 1001 no
+say 1001 5 trade
+say 1001 yes
+say 1001 5 trade
+say 1001 no
+say 1001 trade 100
+say 1001 yes
+say 1001 trade 100
+say 1001 no
+say 1001 trade all
+say 1001 yes
+say 1001 trade all
+say 1001 no
+think
+say 1001 list
+say 1001 yes
+say 1001 list
+say 1001 no
+say 1001 5 list
+say 1001 yes
+say 1001 5 list
+say 1001 no
+say 1001 list 100
+say 1001 yes
+say 1001 list 100
+say 1001 no
+say 1001 list all
+say 1001 yes
+say 1001 list all
+say 1001 no
+think
+say 1001 info
+say 1001 yes
+say 1001 info
+say 1001 no
+say 1001 5 info
+say 1001 yes
+say 1001 5 info
+say 1001 no
+say 1001 info 100
+say 1001 yes
+say 1001 info 100
+say 1001 no
+say 1001 info all
+say 1001 yes
+say 1001 info all
+say 1001 no
+think
+say 1001 job
+say 1001 yes
+say 1001 job
+say 1001 no
+say 1001 5 job
+say 1001 yes
+say 1001 5 job
+say 1001 no
+say 1001 job 100
+say 1001 yes
+say 1001 job 100
+say 1001 no
+say 1001 job all
+say 1001 yes
+say 1001 job all
+say 1001 no
+think
+say 1001 name
+say 1001 yes
+say 1001 name
+say 1001 no
+say 1001 5 name
+say 1001 yes
+say 1001 5 name
+say 1001 no
+say 1001 name 100
+say 1001 yes
+say 1001 name 100
+say 1001 no
+say 1001 name all
+say 1001 yes
+say 1001 name all
+say 1001 no
+think
+say 1001 yes
+say 1001 yes
+say 1001 yes
+say 1001 no
+say 1001 5 yes
+say 1001 yes
+say 1001 5 yes
+say 1001 no
+say 1001 yes 100
+say 1001 yes
+say 1001 yes 100
+say 1001 no
+say 1001 yes all
+say 1001 yes
+say 1001 yes all
+say 1001 no
+think
+say 1001 no
+say 1001 yes
+say 1001 no
+say 1001 no
+say 1001 5 no
+say 1001 yes
+say 1001 5 no
+say 1001 no
+say 1001 no 100
+say 1001 yes
+say 1001 no 100
+say 1001 no
+say 1001 no all
+say 1001 yes
+say 1001 no all
+say 1001 no
+think
+say 1001 si
+say 1001 yes
+say 1001 si
+say 1001 no
+say 1001 5 si
+say 1001 yes
+say 1001 5 si
+say 1001 no
+say 1001 si 100
+say 1001 yes
+say 1001 si 100
+say 1001 no
+say 1001 si all
+say 1001 yes
+say 1001 si all
+say 1001 no
+think
+say 1001 sell
+say 1001 yes
+say 1001 sell
+say 1001 no
+say 1001 5 sell
+say 1001 yes
+say 1001 5 sell
+say 1001 no
+say 1001 sell 100
+say 1001 yes
+say 1001 sell 100
+say 1001 no
+say 1001 sell all
+say 1001 yes
+say 1001 sell all
+say 1001 no
+think
+say 1001 buy
+say 1001 yes
+say 1001 buy
+say 1001 no
+say 1001 5 buy
+say 1001 yes
+say 1001 5 buy
+say 1001 no
+say 1001 buy 100
+say 1001 yes
+say 1001 buy 100
+say 1001 no
+say 1001 buy all
+say 1001 yes
+say 1001 buy all
+say 1001 no
+think
+say 1001 all
+say 1001 yes
+say 1001 all
+say 1001 no
+say 1001 5 all
+say 1001 yes
+say 1001 5 all
+say 1001 no
+say 1001 all 100
+say 1001 yes
+say 1001 all 100
+say 1001 no
+say 1001 all all
+say 1001 yes
+say 1001 all all
+say 1001 no
+think
+say 1001 status
+say 1001 yes
+say 1001 status
+say 1001 no
+say 1001 5 status
+say 1001 yes
+say 1001 5 status
+say 1001 no
+say 1001 status 100
+say 1001 yes
+say 1001 status 100
+say 1001 no
+say 1001 status all
+say 1001 yes
+say 1001 status all
+say 1001 no
+think
+say 1001 deposit 100
+say 1001 yes
+say 1001 deposit 100
+say 1001 no
+say 1001 5 deposit 100
+say 1001 yes
+say 1001 5 deposit 100
+say 1001 no
+say 1001 deposit 100 100
+say 1001 yes
+say 1001 deposit 100 100
+say 1001 no
+say 1001 deposit 100 all
+say 1001 yes
+say 1001 deposit 100 all
+say 1001 no
+think
+say 1001 withdraw 50
+say 1001 yes
+say 1001 withdraw 50
+say 1001 no
+say 1001 5 withdraw 50
+say 1001 yes
+say 1001 5 withdraw 50
+say 1001 no
+say 1001 withdraw 50 100
+say 1001 yes
+say 1001 withdraw 50 100
+say 1001 no
+say 1001 withdraw 50 all
+say 1001 yes
+say 1001 withdraw 50 all
+say 1001 no
+think
+say 1001 balance
+say 1001 yes
+say 1001 balance
+say 1001 no
+say 1001 5 balance
+say 1001 yes
+say 1001 5 balance
+say 1001 no
+say 1001 balance 100
+say 1001 yes
+say 1001 balance 100
+say 1001 no
+say 1001 balance all
+say 1001 yes
+say 1001 balance all
+say 1001 no
+think
+say 1001 transfer 10 to player1002
+say 1001 yes
+say 1001 transfer 10 to player1002
+say 1001 no
+say 1001 5 transfer 10 to player1002
+say 1001 yes
+say 1001 5 transfer 10 to player1002
+say 1001 no
+say 1001 transfer 10 to player1002 100
+say 1001 yes
+say 1001 transfer 10 to player1002 100
+say 1001 no
+say 1001 transfer 10 to player1002 all
+say 1001 yes
+say 1001 transfer 10 to player1002 all
+say 1001 no
+think
+say 1001 backpacks
+say 1001 yes
+say 1001 backpacks
+say 1001 no
+say 1001 5 backpacks
+say 1001 yes
+say 1001 5 backpacks
+say 1001 no
+say 1001 backpacks 100
+say 1001 yes
+say 1001 backpacks 100
+say 1001 no
+say 1001 backpacks all
+say 1001 yes
+say 1001 backpacks all
+say 1001 no
+think
+say 1001 wands
+say 1001 yes
+say 1001 wands
+say 1001 no
+say 1001 5 wands
+say 1001 yes
+say 1001 5 wands
+say 1001 no
+say 1001 wands 100
+say 1001 yes
+say 1001 wands 100
+say 1001 no
+say 1001 wands all
+say 1001 yes
+say 1001 wands all
+say 1001 no
+think
+say 1001 rods
+say 1001 yes
+say 1001 rods
+say 1001 no
+say 1001 5 rods
+say 1001 yes
+say 1001 5 rods
+say 1001 no
+say 1001 rods 100
+say 1001 yes
+say 1001 rods 100
+say 1001 no
+say 1001 rods all
+say 1001 yes
+say 1001 rods all
+say 1001 no
+think
+say 1001 sudden death
+say 1001 yes
+say 1001 sudden death
+say 1001 no
+say 1001 5 sudden death
+say 1001 yes
+say 1001 5 sudden death
+say 1001 no
+say 1001 sudden death 100
+say 1001 yes
+say 1001 sudden death 100
+say 1001 no
+say 1001 sudden death all
+say 1001 yes
+say 1001 sudden death all
+say 1001 no
+think
+say 1001 sd
+say 1001 yes
+say 1001 sd
+say 1001 no
+say 1001 5 sd
+say 1001 yes
+say 1001 5 sd
+say 1001 no
+say 1001 sd 100
+say 1001 yes
+say 1001 sd 100
+say 1001 no
+say 1001 sd all
+say 1001 yes
+say 1001 sd all
+say 1001 no
+think
+say 1001 ultimate healing
+say 1001 yes
+say 1001 ultimate healing
+say 1001 no
+say 1001 5 ultimate healing
+say 1001 yes
+say 1001 5 ultimate healing
+say 1001 no
+say 1001 ultimate healing 100
+say 1001 yes
+say 1001 ultimate healing 100
+say 1001 no
+say 1001 ultimate healing all
+say 1001 yes
+say 1001 ultimate healing all
+say 1001 no
+think
+say 1001 uh
+say 1001 yes
+say 1001 uh
+say 1001 no
+say 1001 5 uh
+say 1001 yes
+say 1001 5 uh
+say 1001 no
+say 1001 uh 100
+say 1001 yes
+say 1001 uh 100
+say 1001 no
+say 1001 uh all
+say 1001 yes
+say 1001 uh all
+say 1001 no
+think
+say 1001 great fireball
+say 1001 yes
+say 1001 great fireball
+say 1001 no
+say 1001 5 great fireball
+say 1001 yes
+say 1001 5 great fireball
+say 1001 no
+say 1001 great fireball 100
+say 1001 yes
+say 1001 great fireball 100
+say 1001 no
+say 1001 great fireball all
+say 1001 yes
+say 1001 great fireball all
+say 1001 no
+think
+say 1001 gfb
+say 1001 yes
+say 1001 gfb
+say 1001 no
+say 1001 5 gfb
+say 1001 yes
+say 1001 5 gfb
+say 1001 no
+say 1001 gfb 100
+say 1001 yes
+say 1001 gfb 100
+say 1001 no
+say 1001 gfb all
+say 1001 yes
+say 1001 gfb all
+say 1001 no
+think
+say 1001 explosion
+say 1001 yes
+say 1001 explosion
+say 1001 no
+say 1001 5 explosion
+say 1001 yes
+say 1001 5 explosion
+say 1001 no
+say 1001 explosion 100
+say 1001 yes
+say 1001 explosion 100
+say 1001 no
+say 1001 explosion all
+say 1001 yes
+say 1001 explosion all
+say 1001 no
+think
+say 1001 heavy magic missile
+say 1001 yes
+say 1001 heavy magic missile
+say 1001 no
+say 1001 5 heavy magic missile
+say 1001 yes
+say 1001 5 heavy magic missile
+say 1001 no
+say 1001 heavy magic missile 100
+say 1001 yes
+say 1001 heavy magic missile 100
+say 1001 no
+say 1001 heavy magic missile all
+say 1001 yes
+say 1001 heavy magic missile all
+say 1001 no
+think
+say 1001 hmm
+say 1001 yes
+say 1001 hmm
+say 1001 no
+say 1001 5 hmm
+say 1001 yes
+say 1001 5 hmm
+say 1001 no
+say 1001 hmm 100
+say 1001 yes
+say 1001 hmm 100
+say 1001 no
+say 1001 hmm all
+say 1001 yes
+say 1001 hmm all
+say 1001 no
+think
+say 1001 blank rune
+say 1001 yes
+say 1001 blank rune
+say 1001 no
+say 1001 5 blank rune
+say 1001 yes
+say 1001 5 blank rune
+say 1001 no
+say 1001 blank rune 100
+say 1001 yes
+say 1001 blank rune 100
+say 1001 no
+say 1001 blank rune all
+say 1001 yes
+say 1001 blank rune all
+say 1001 no
+think
+say 1001 blank
+say 1001 yes
+say 1001 blank
+say 1001 no
+say 1001 5 blank
+say 1001 yes
+say 1001 5 blank
+say 1001 no
+say 1001 blank 100
+say 1001 yes
+say 1001 blank 100
+say 1001 no
+say 1001 blank all
+say 1001 yes
+say 1001 blank all
+say 1001 no
+think
+say 1001 strong mana potion
+say 1001 yes
+say 1001 strong mana potion
+say 1001 no
+say 1001 5 strong mana potion
+say 1001 yes
+say 1001 5 strong mana potion
+say 1001 no
+say 1001 strong mana potion 100
+say 1001 yes
+say 1001 strong mana potion 100
+say 1001 no
+say 1001 strong mana potion all
+say 1001 yes
+say 1001 strong mana potion all
+say 1001 no
+think
+say 1001 strong mana
+say 1001 yes
+say 1001 strong mana
+say 1001 no
+say 1001 5 strong mana
+say 1001 yes
+say 1001 5 strong mana
+say 1001 no
+say 1001 strong mana 100
+say 1001 yes
+say 1001 strong mana 100
+say 1001 no
+say 1001 strong mana all
+say 1001 yes
+say 1001 strong mana all
+say 1001 no
+think
+say 1001 smp
+say 1001 yes
+say 1001 smp
+say 1001 no
+say 1001 5 smp
+say 1001 yes
+say 1001 5 smp
+say 1001 no
+say 1001 smp 100
+say 1001 yes
+say 1001 smp 100
+say 1001 no
+say 1001 smp all
+say 1001 yes
+say 1001 smp all
+say 1001 no
+think
+say 1001 manafluid
+say 1001 yes
+say 1001 manafluid
+say 1001 no
+say 1001 5 manafluid
+say 1001 yes
+say 1001 5 manafluid
+say 1001 no
+say 1001 manafluid 100
+say 1001 yes
+say 1001 manafluid 100
+say 1001 no
+say 1001 manafluid all
+say 1001 yes
+say 1001 manafluid all
+say 1001 no
+think
+say 1001 mana fluid
+say 1001 yes
+say 1001 mana fluid
+say 1001 no
+say 1001 5 mana fluid
+say 1001 yes
+say 1001 5 mana fluid
+say 1001 no
+say 1001 mana fluid 100
+say 1001 yes
+say 1001 mana fluid 100
+say 1001 no
+say 1001 mana fluid all
+say 1001 yes
+say 1001 mana fluid all
+say 1001 no
+think
+say 1001 mana
+say 1001 yes
+say 1001 mana
+say 1001 no
+say 1001 5 mana
+say 1001 yes
+say 1001 5 mana
+say 1001 no
+say 1001 mana 100
+say 1001 yes
+say 1001 mana 100
+say 1001 no
+say 1001 mana all
+say 1001 yes
+say 1001 mana all
+say 1001 no
+think
+say 1001 cosmic energy
+say 1001 yes
+say 1001 cosmic energy
+say 1001 no
+say 1001 5 cosmic energy
+say 1001 yes
+say 1001 5 cosmic energy
+say 1001 no
+say 1001 cosmic energy 100
+say 1001 yes
+say 1001 cosmic energy 100
+say 1001 no
+say 1001 cosmic energy all
+say 1001 yes
+say 1001 cosmic energy all
+say 1001 no
+think
+say 1001 dragonbreath
+say 1001 yes
+say 1001 dragonbreath
+say 1001 no
+say 1001 5 dragonbreath
+say 1001 yes
+say 1001 5 dragonbreath
+say 1001 no
+say 1001 dragonbreath 100
+say 1001 yes
+say 1001 dragonbreath 100
+say 1001 no
+say 1001 dragonbreath all
+say 1001 yes
+say 1001 dragonbreath all
+say 1001 no
+think
+say 1001 inferno
+say 1001 yes
+say 1001 inferno
+say 1001 no
+say 1001 5 inferno
+say 1001 yes
+say 1001 5 inferno
+say 1001 no
+say 1001 inferno 100
+say 1001 yes
+say 1001 inferno 100
+say 1001 no
+say 1001 inferno all
+say 1001 yes
+say 1001 inferno all
+say 1001 no
+think
+say 1001 moonlight
+say 1001 yes
+say 1001 moonlight
+say 1001 no
+say 1001 5 moonlight
+say 1001 yes
+say 1001 5 moonlight
+say 1001 no
+say 1001 moonlight 100
+say 1001 yes
+say 1001 moonlight 100
+say 1001 no
+say 1001 moonlight all
+say 1001 yes
+say 1001 moonlight all
+say 1001 no
+think
+say 1001 plague
+say 1001 yes
+say 1001 plague
+say 1001 no
+say 1001 5 plague
+say 1001 yes
+say 1001 5 plague
+say 1001 no
+say 1001 plague 100
+say 1001 yes
+say 1001 plague 100
+say 1001 no
+say 1001 plague all
+say 1001 yes
+say 1001 plague all
+say 1001 no
+think
+say 1001 quagmire
+say 1001 yes
+say 1001 quagmire
+say 1001 no
+say 1001 5 quagmire
+say 1001 yes
+say 1001 5 quagmire
+say 1001 no
+say 1001 quagmire 100
+say 1001 yes
+say 1001 quagmire 100
+say 1001 no
+say 1001 quagmire all
+say 1001 yes
+say 1001 quagmire all
+say 1001 no
+think
+say 1001 snakebite
+say 1001 yes
+say 1001 snakebite
+say 1001 no
+say 1001 5 snakebite
+say 1001 yes
+say 1001 5 snakebite
+say 1001 no
+say 1001 snakebite 100
+say 1001 yes
+say 1001 snakebite 100
+say 1001 no
+say 1001 snakebite all
+say 1001 yes
+say 1001 snakebite all
+say 1001 no
+think
+say 1001 tempest
+say 1001 yes
+say 1001 tempest
+say 1001 no
+say 1001 5 tempest
+say 1001 yes
+say 1001 5 tempest
+say 1001 no
+say 1001 tempest 100
+say 1001 yes
+say 1001 tempest 100
+say 1001 no
+say 1001 tempest all
+say 1001 yes
+say 1001 tempest all
+say 1001 no
+think
+say 1001 volcanic
+say 1001 yes
+say 1001 volcanic
+say 1001 no
+say 1001 5 volcanic
+say 1001 yes
+say 1001 5 volcanic
+say 1001 no
+say 1001 volcanic 100
+say 1001 yes
+say 1001 volcanic 100
+say 1001 no
+say 1001 volcanic all
+say 1001 yes
+say 1001 volcanic all
+say 1001 no
+think
+say 1001 vortex
+say 1001 yes
+say 1001 vortex
+say 1001 no
+say 1001 5 vortex
+say 1001 yes
+say 1001 5 vortex
+say 1001 no
+say 1001 vortex 100
+say 1001 yes
+say 1001 vortex 100
+say 1001 no
+say 1001 vortex all
+say 1001 yes
+say 1001 vortex all
+say 1001 no
+think
+say 1001 k
+say 1001 yes
+say 1001 k
+say 1001 no
+say 1001 5 k
+say 1001 yes
+say 1001 5 k
+say 1001 no
+say 1001 k 100
+say 1001 yes
+say 1001 k 100
+say 1001 no
+say 1001 k all
+say 1001 yes
+say 1001 k all
+say 1001 no
+think
+say 1001 gp
+say 1001 yes
+say 1001 gp
+say 1001 no
+say 1001 5 gp
+say 1001 yes
+say 1001 5 gp
+say 1001 no
+say 1001 gp 100
+say 1001 yes
+say 1001 gp 100
+say 1001 no
+say 1001 gp all
+say 1001 yes
+say 1001 gp all
+say 1001 no
+think
+say 1001 bp
+say 1001 yes
+say 1001 bp
+say 1001 no
+say 1001 5 bp
+say 1001 yes
+say 1001 5 bp
+say 1001 no
+say 1001 bp 100
+say 1001 yes
+say 1001 bp 100
+say 1001 no
+say 1001 bp all
+say 1001 yes
+say 1001 bp all
+say 1001 no
+think
+say 1001 backpack
+say 1001 yes
+say 1001 backpack
+say 1001 no
+say 1001 5 backpack
+say 1001 yes
+say 1001 5 backpack
+say 1001 no
+say 1001 backpack 100
+say 1001 yes
+say 1001 backpack 100
+say 1001 no
+say 1001 backpack all
+say 1001 yes
+say 1001 backpack all
+say 1001 no
+think
+say 1001 backpack of
+say 1001 yes
+say 1001 backpack of
+say 1001 no
+say 1001 5 backpack of
+say 1001 yes
+say 1001 5 backpack of
+say 1001 no
+say 1001 backpack of 100
+say 1001 yes
+say 1001 backpack of 100
+say 1001 no
+say 1001 backpack of all
+say 1001 yes
+say 1001 backpack of all
+say 1001 no
+think
+say 1001 help
+say 1001 yes
+say 1001 help
+say 1001 no
+say 1001 5 help
+say 1001 yes
+say 1001 5 help
+say 1001 no
+say 1001 help 100
+say 1001 yes
+say 1001 help 100
+say 1001 no
+say 1001 help all
+say 1001 yes
+say 1001 help all
+say 1001 no
+think
+say 1001 focused
+say 1001 yes
+say 1001 focused
+say 1001 no
+say 1001 5 focused
+say 1001 yes
+say 1001 5 focused
+say 1001 no
+say 1001 focused 100
+say 1001 yes
+say 1001 focused 100
+say 1001 no
+say 1001 focused all
+say 1001 yes
+say 1001 focused all
+say 1001 no
+think
+say 1001 price
+say 1001 yes
+say 1001 price
+say 1001 no
+say 1001 5 price
+say 1001 yes
+say 1001 5 price
+say 1001 no
+say 1001 price 100
+say 1001 yes
+say 1001 price 100
+say 1001 no
+say 1001 price all
+say 1001 yes
+say 1001 price all
+say 1001 no
+think
+say 1001 prices
+say 1001 yes
+say 1001 prices
+say 1001 no
+say 1001 5 prices
+say 1001 yes
+say 1001 5 prices
+say 1001 no
+say 1001 prices 100
+say 1001 yes
+say 1001 prices 100
+say 1001 no
+say 1001 prices all
+say 1001 yes
+say 1001 prices all
+say 1001 no
+think
+say 1001 cost
+say 1001 yes
+say 1001 cost
+say 1001 no
+say 1001 5 cost
+say 1001 yes
+say 1001 5 cost
+say 1001 no
+say 1001 cost 100
+say 1001 yes
+say 1001 cost 100
+say 1001 no
+say 1001 cost all
+say 1001 yes
+say 1001 cost all
+say 1001 no
+think
+say 1001 how much
+say 1001 yes
+say 1001 how much
+say 1001 no
+say 1001 5 how much
+say 1001 yes
+say 1001 5 how much
+say 1001 no
+say 1001 how much 100
+say 1001 yes
+say 1001 how much 100
+say 1001 no
+say 1001 how much all
+say 1001 yes
+say 1001 how much all
+say 1001 no
+think
+say 1001 value
+say 1001 yes
+say 1001 value
+say 1001 no
+say 1001 5 value
+say 1001 yes
+say 1001 5 value
+say 1001 no
+say 1001 value 100
+say 1001 yes
+say 1001 value 100
+say 1001 no
+say 1001 value all
+say 1001 yes
+say 1001 value all
+say 1001 no
+think
+say 1001 runes
+say 1001 yes
+say 1001 runes
+say 1001 no
+say 1001 5 runes
+say 1001 yes
+say 1001 5 runes
+say 1001 no
+say 1001 runes 100
+say 1001 yes
+say 1001 runes 100
+say 1001 no
+say 1001 runes all
+say 1001 yes
+say 1001 runes all
+say 1001 no
+think
+say 1001 rune backpacks
+say 1001 yes
+say 1001 rune backpacks
+say 1001 no
+say 1001 5 rune backpacks
+say 1001 yes
+say 1001 5 rune backpacks
+say 1001 no
+say 1001 rune backpacks 100
+say 1001 yes
+say 1001 rune backpacks 100
+say 1001 no
+say 1001 rune backpacks all
+say 1001 yes
+say 1001 rune backpacks all
+say 1001 no
+think
+say 1001 bps
+say 1001 yes
+say 1001 bps
+say 1001 no
+say 1001 5 bps
+say 1001 yes
+say 1001 5 bps
+say 1001 no
+say 1001 bps 100
+say 1001 yes
+say 1001 bps 100
+say 1001 no
+say 1001 bps all
+say 1001 yes
+say 1001 bps all
+say 1001 no
+think
+say 1001 potions
+say 1001 yes
+say 1001 potions
+say 1001 no
+say 1001 5 potions
+say 1001 yes
+say 1001 5 potions
+say 1001 no
+say 1001 potions 100
+say 1001 yes
+say 1001 potions 100
+say 1001 no
+say 1001 potions all
+say 1001 yes
+say 1001 potions all
+say 1001 no
+think
+say 1001 potion
+say 1001 yes
+say 1001 potion
+say 1001 no
+say 1001 5 potion
+say 1001 yes
+say 1001 5 potion
+say 1001 no
+say 1001 potion 100
+say 1001 yes
+say 1001 potion 100
+say 1001 no
+say 1001 potion all
+say 1001 yes
+say 1001 potion all
+say 1001 no
+think
+say 1001 bye
+say 1001 hi
+advance 40
+think
+say 1001 hi
+far 1001
+think
+near 1001
+say 1001 hola
+disappear 1001
+say 1002 hi
+set 1002 money 0
+set 1002 slots 0
+set 1002 level 1
+say 1002 backpacks
+say 1002 yes
+say 1002 wands
+say 1002 yes
+say 1002 rods
+say 1002 yes
+say 1002 sudden death
+say 1002 yes
+say 1002 sd
+say 1002 yes
+say 1002 ultimate healing
+say 1002 yes
+say 1002 uh
+say 1002 yes
+say 1002 great fireball
+say 1002 yes
+say 1002 gfb
+say 1002 yes
+say 1002 explosion
+say 1002 yes
+say 1002 heavy magic missile
+say 1002 yes
+say 1002 hmm
+say 1002 yes
+say 1002 blank rune
+say 1002 yes
+say 1002 blank
+say 1002 yes
+say 1002 strong mana potion
+say 1002 yes
+say 1002 strong mana
+say 1002 yes
+say 1002 smp
+say 1002 yes
+say 1002 manafluid
+say 1002 yes
+say 1002 mana fluid
+say 1002 yes
+say 1002 mana
+say 1002 yes
+say 1002 cosmic energy
+say 1002 yes
+say 1002 dragonbreath
+say 1002 yes
+say 1002 inferno
+say 1002 yes
+say 1002 moonlight
+say 1002 yes
+say 1002 plague
+say 1002 yes
+say 1002 quagmire
+say 1002 yes
+say 1002 snakebite
+say 1002 yes
+say 1002 tempest
+say 1002 yes
+say 1002 volcanic
+say 1002 yes
+say 1002 vortex
+say 1002 yes
+say 1002 k
+say 1002 yes
+say 1002 gp
+say 1002 yes
+say 1002 bp
+say 1002 yes
+say 1002 backpack
+say 1002 yes
+say 1002 backpack of
+say 1002 yes
+say 1002 help
+say 1002 yes
+say 1002 focused
+say 1002 yes
+say 1002 price
+say 1002 yes
+say 1002 prices
+say 1002 yes
+say 1002 cost
+say 1002 yes
+say 1002 how much
+say 1002 yes
+say 1002 value
+say 1002 yes
+say 1002 runes
+say 1002 yes
+say 1002 rune backpacks
+say 1002 yes
+say 1002 bps
+say 1002 yes
+say 1002 potions
+say 1002 yes
+say 1002 potion
+say 1002 yes
+say 1002 chau
+think 3

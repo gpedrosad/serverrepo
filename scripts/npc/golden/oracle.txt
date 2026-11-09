@@ -1,0 +1,871 @@
+>> near 1001
+>> near 1002
+>> say 1001 hello there
+>> say 1001 hi
+SAY Hi Player1001! Are you ready to leave Rookgaard and choose your vocation? (yes or si)
+>> say 1002 hi
+SAY One moment, Player1002! I am helping someone else.
+>> say 1001 help
+>> say 1001 help
+>> say 1001 yes
+CALL getPlayerLevel("Player1001")
+SAY Wonderful! Choose your path: knight, paladin, sorcerer or druid?
+>> say 1001 help
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 help
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 help
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 help 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 help 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 help all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 help all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> think
+>> say 1001 ayuda
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 ayuda
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 ayuda
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 ayuda
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 ayuda 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 ayuda 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 ayuda all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 ayuda all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> think
+>> say 1001 offer
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 offer
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 offer
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 offer
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 offer 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 offer 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 offer all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 offer all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> think
+>> say 1001 trade
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 trade
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 trade
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 trade
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 trade 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 trade 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 trade all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 trade all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> think
+>> say 1001 list
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 list
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 list
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 list
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 list 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 list 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 list all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 list all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> think
+>> say 1001 info
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 info
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 info
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 info
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 info 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 info 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 info all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 info all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> think
+>> say 1001 job
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 job
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 job
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 job
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 job 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 job 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 job all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 job all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> think
+>> say 1001 name
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 name
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 name
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 name
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 name 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 name 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 name all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 name all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> think
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> think
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> think
+>> say 1001 si
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 si
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 si
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 si
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 si 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 si 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 si all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 si all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> think
+>> say 1001 sell
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 sell
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 sell
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 sell
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 sell 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 sell 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 sell all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 sell all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> think
+>> say 1001 buy
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 buy
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 buy
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 buy
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 buy 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 buy 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 buy all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 buy all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> think
+>> say 1001 all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 all 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 all 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 all all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 all all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> think
+>> say 1001 status
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 status
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 status
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 status
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 status 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 status 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 status all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 status all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> think
+>> say 1001 deposit 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 deposit 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 deposit 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 deposit 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 deposit 100 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 deposit 100 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 deposit 100 all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 deposit 100 all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> think
+>> say 1001 withdraw 50
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 withdraw 50
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 withdraw 50
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 withdraw 50
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 withdraw 50 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 withdraw 50 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 withdraw 50 all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 withdraw 50 all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> think
+>> say 1001 balance
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 balance
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 balance
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 balance
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 balance 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 balance 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 balance all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 balance all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> think
+>> say 1001 transfer 10 to player1002
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 transfer 10 to player1002
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 transfer 10 to player1002
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 transfer 10 to player1002
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 transfer 10 to player1002 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 transfer 10 to player1002 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 transfer 10 to player1002 all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 transfer 10 to player1002 all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> think
+>> say 1001 focused
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 focused
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 focused
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 5 focused
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 focused 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 focused 100
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 focused all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 yes
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 focused all
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> say 1001 no
+SAY I did not catch that. Say knight, paladin, sorcerer or druid.
+>> think
+>> say 1001 sorcerer
+SAY A mighty sorcerer! Are you sure? (yes or si)
+>> say 1001 yes
+SAY Great choice! Say "city" when you are ready to travel to the mainland.
+>> say 1001 sorcerer
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 no
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 5 sorcerer
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 yes
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 5 sorcerer
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 no
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 sorcerer 100
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 yes
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 sorcerer 100
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 no
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 sorcerer all
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 yes
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 sorcerer all
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 no
+SAY Just say "city" when you want me to send you to the mainland.
+>> think
+>> say 1001 druid
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 yes
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 druid
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 no
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 5 druid
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 yes
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 5 druid
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 no
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 druid 100
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 yes
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 druid 100
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 no
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 druid all
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 yes
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 druid all
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 no
+SAY Just say "city" when you want me to send you to the mainland.
+>> think
+>> say 1001 paladin
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 yes
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 paladin
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 no
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 5 paladin
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 yes
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 5 paladin
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 no
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 paladin 100
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 yes
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 paladin 100
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 no
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 paladin all
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 yes
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 paladin all
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 no
+SAY Just say "city" when you want me to send you to the mainland.
+>> think
+>> say 1001 knight
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 yes
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 knight
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 no
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 5 knight
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 yes
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 5 knight
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 no
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 knight 100
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 yes
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 knight 100
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 no
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 knight all
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 yes
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 knight all
+SAY Just say "city" when you want me to send you to the mainland.
+>> say 1001 no
+SAY Just say "city" when you want me to send you to the mainland.
+>> think
+>> say 1001 city
+SAY Good luck out there, Player1001!
+CALL setPlayerVocation(1001, 1)
+CALL setPlayerMasterPos(1001, 130, 53, 6)
+SAY /send Player1001, 130 53 6
+CALL cancelPendingTrade(1001)
+>> say 1001 yes
+>> say 1001 city
+>> say 1001 no
+>> say 1001 5 city
+>> say 1001 yes
+>> say 1001 5 city
+>> say 1001 no
+>> say 1001 city 100
+>> say 1001 yes
+>> say 1001 city 100
+>> say 1001 no
+>> say 1001 city all
+>> say 1001 yes
+>> say 1001 city all
+>> say 1001 no
+>> think
+>> say 1001 bye
+>> say 1001 hi
+SAY Hi Player1001! Are you ready to leave Rookgaard and choose your vocation? (yes or si)
+>> advance 40
+>> think
+>> say 1001 hi
+>> far 1001
+>> think
+CALL cancelPendingTrade(1001)
+SAY See you later!
+>> near 1001
+>> say 1001 hola
+SAY Hi Player1001! Are you ready to leave Rookgaard and choose your vocation? (yes or si)
+>> disappear 1001
+CALL cancelPendingTrade(1001)
+SAY See you later!
+>> say 1002 hi
+SAY Hi Player1002! Are you ready to leave Rookgaard and choose your vocation? (yes or si)
+>> set 1002 money 0
+>> set 1002 slots 0
+>> set 1002 level 1
+>> say 1002 focused
+>> say 1002 yes
+CALL getPlayerLevel("Player1002")
+SAY Come back at level 8 and we will talk again.
+>> say 1002 sorcerer
+>> say 1002 yes
+CALL getPlayerLevel("Player1002")
+SAY Come back at level 8 and we will talk again.
+>> say 1002 druid
+>> say 1002 yes
+CALL getPlayerLevel("Player1002")
+SAY Come back at level 8 and we will talk again.
+>> say 1002 paladin
+>> say 1002 yes
+CALL getPlayerLevel("Player1002")
+SAY Come back at level 8 and we will talk again.
+>> say 1002 knight
+>> say 1002 yes
+CALL getPlayerLevel("Player1002")
+SAY Come back at level 8 and we will talk again.
+>> say 1002 city
+>> say 1002 yes
+CALL getPlayerLevel("Player1002")
+SAY Come back at level 8 and we will talk again.
+>> say 1002 chau
+CALL cancelPendingTrade(1002)
+SAY Bye, Player1002! Come back anytime.
+>> think 3

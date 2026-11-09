@@ -1,9 +1,5 @@
-focus = 0
-talk_start = 0
+-- Banker (balance, depositar, retirar y transferir oro; siempre pide confirmación).
 talk_state = 0
-target = 0
-following = false
-attacking = false
 
 BANK_SUCCESS = 1
 BANK_INVALID_AMOUNT = -1
@@ -25,15 +21,6 @@ pending_transfer_target = ''
 pending_deposit_amount = 0
 pending_withdraw_amount = 0
 
-function bankerTrim(text)
-	if text == nil then
-		return ''
-	end
-	text = string.gsub(text, '^%s+', '')
-	text = string.gsub(text, '%s+$', '')
-	return text
-end
-
 function bankerReset()
 	talk_state = STATE_NONE
 	pending_transfer_amount = 0
@@ -49,32 +36,6 @@ function bankerGetBalance(cid)
 	else
 		selfSay('Your bank balance is ' .. balance .. ' gp.')
 	end
-end
-
-function bankerResolveAmount(cid, text, source)
-	text = bankerTrim(text)
-	if text == '' then
-		return nil
-	end
-
-	if text == 'all' or text == 'todo' then
-		if source == 'money' then
-			return getPlayerMoney(cid)
-		end
-		return getPlayerBankBalance(cid)
-	end
-
-	local amount = tonumber(text)
-	if amount == nil then
-		return nil
-	end
-
-	amount = math.floor(amount)
-	if amount <= 0 then
-		return nil
-	end
-
-	return amount
 end
 
 function bankerShowHelp()
@@ -163,7 +124,7 @@ function bankerPrepareWithdraw(cid, amount)
 end
 
 function bankerPrepareTransfer(cid, amountText, playerName)
-	local amount = bankerResolveAmount(cid, amountText, 'balance')
+	local amount = npcResolveGoldAmount(cid, amountText, 'balance')
 	if amount == nil then
 		selfSay('Say transfer 10000 name')
 		return false
@@ -172,7 +133,7 @@ function bankerPrepareTransfer(cid, amountText, playerName)
 		selfSay('You do not have any money to transfer.')
 		return false
 	end
-	playerName = bankerTrim(playerName)
+	playerName = npcTrim(playerName)
 	if playerName == '' then
 		selfSay('Say transfer 10000 name')
 		return false
@@ -284,7 +245,7 @@ function bankerTryCommand(cid, msg)
 
 	local depositAmount = bankerParseAmountAfter(msg, 'deposit', 'depositar')
 	if depositAmount ~= nil then
-		bankerPrepareDeposit(cid, bankerResolveAmount(cid, depositAmount, 'money'))
+		bankerPrepareDeposit(cid, npcResolveGoldAmount(cid, depositAmount, 'money'))
 		return true
 	end
 
@@ -293,7 +254,7 @@ function bankerTryCommand(cid, msg)
 		withdrawAmount = bankerParseAmountAfter(msg, 'sacar', nil)
 	end
 	if withdrawAmount ~= nil then
-		bankerPrepareWithdraw(cid, bankerResolveAmount(cid, withdrawAmount, 'balance'))
+		bankerPrepareWithdraw(cid, npcResolveGoldAmount(cid, withdrawAmount, 'balance'))
 		return true
 	end
 
@@ -306,39 +267,7 @@ function bankerTryCommand(cid, msg)
 	return false
 end
 
-function onThingMove(creature, thing, oldpos, oldstackpos)
-end
-
-function onCreatureAppear(creature)
-end
-
-function onCreatureDisappear(cid, pos)
-	if focus == cid then
-		bankerReset()
-	end
-	npcOnCreatureDisappear(cid)
-end
-
-function onCreatureTurn(creature)
-end
-
-function onCreatureSay(cid, type, msg)
-	msg = string.lower(msg)
-
-	local state = npcHandleMessage(
-		cid,
-		msg,
-		'Welcome, ' .. creatureGetName(cid) .. '. Say balance, deposit, withdraw or transfer. Say help for examples.',
-		'One moment please.',
-		'Safe travels!'
-	)
-	if state == 'greet' then
-		bankerReset()
-		return
-	elseif state ~= 'focused' then
-		return
-	end
-
+local function onMessage(cid, msg)
 	if npcIsHelp(msg) or msgcontains(msg, 'bank') or msgcontains(msg, 'banco') then
 		bankerShowHelp()
 		return
@@ -367,9 +296,11 @@ function onCreatureSay(cid, type, msg)
 	bankerShowHelp()
 end
 
-function onCreatureChangeOutfit(creature)
-end
-
-function onThink()
-	npcOnThink()
-end
+npcDefine{
+	greet = function(cid) return 'Welcome, ' .. creatureGetName(cid) .. '. Say balance, deposit, withdraw or transfer. Say help for examples.' end,
+	busy = 'One moment please.',
+	bye = 'Safe travels!',
+	onLeave = bankerReset,
+	onGreet = bankerReset,
+	onMessage = onMessage,
+}

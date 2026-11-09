@@ -1,9 +1,4 @@
-focus = 0
-talk_start = 0
-target = 0
-following = false
-attacking = false
-
+-- Dark Rodo (runas, backpacks de runas, fluidos, wands y rods).
 RUNES_HELP = 'Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.'
 RUNES_BACKPACKS = 'Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.'
 
@@ -31,22 +26,11 @@ WAND_BUYS = {
 	{keys = {'vortex'}, itemid = 2190, unitPrice = 500},
 }
 
-local function formatPrice(p)
-	if p >= 1000 then
-		local k = p / 1000
-		if k == math.floor(k) then
-			return tostring(k) .. 'k'
-		end
-		return string.format('%.1fk', k)
-	end
-	return tostring(p) .. 'gp'
-end
-
 local function summarizeCatalog(entries, groupName)
 	local parts = {groupName .. ':'}
 	for i = 1, table.getn(entries) do
 		local entry = entries[i]
-		parts[#parts + 1] = entry.keys[1] .. ' ' .. formatPrice(entry.unitPrice)
+		parts[#parts + 1] = entry.keys[1] .. ' ' .. npcFormatPrice(entry.unitPrice)
 	end
 	return table.concat(parts, ', ')
 end
@@ -72,31 +56,7 @@ local function matchBackpack(msg)
 	return nil
 end
 
-function onThingMove(creature, thing, oldpos, oldstackpos)
-end
-
-function onCreatureAppear(creature)
-end
-
-function onCreatureDisappear(cid, pos)
-	npcOnCreatureDisappear(cid)
-end
-
-function onCreatureTurn(creature)
-end
-
-function onCreatureSay(cid, type, msg)
-	msg = string.lower(msg)
-
-	local state = npcHandleMessage(
-		cid,
-		msg,
-		'Hi ' .. creatureGetName(cid) .. '! I sell runes, rune backpacks, mana fluids, strong mana potions, wands and rods. Say "help" or "backpacks" for prices.'
-	)
-	if state ~= 'focused' then
-		return
-	end
-
+local function onMessage(cid, msg)
 	local bp = matchBackpack(msg)
 	if bp then
 		-- YUR CHANGE: pre-check backpack space for bp (takes 1 slot for bp + 20 for runes)
@@ -111,7 +71,7 @@ function onCreatureSay(cid, type, msg)
 		local entry = findCatalogBuy(msg, RUNE_BUYS) or findCatalogBuy(msg, WAND_BUYS)
 		if entry then
 			local key = entry.keys[1]
-			selfSay(string.upper(string.sub(key, 1, 1)) .. string.sub(key, 2) .. ': ' .. formatPrice(entry.unitPrice) .. '.')
+			selfSay(string.upper(string.sub(key, 1, 1)) .. string.sub(key, 2) .. ': ' .. npcFormatPrice(entry.unitPrice) .. '.')
 		else
 			selfSay('Please specify an item. Say "help" for a list.')
 		end
@@ -132,9 +92,7 @@ function onCreatureSay(cid, type, msg)
 	end
 end
 
-function onCreatureChangeOutfit(creature)
-end
-
-function onThink()
-	npcOnThink()
-end
+npcDefine{
+	greet = function(cid) return 'Hi ' .. creatureGetName(cid) .. '! I sell runes, rune backpacks, mana fluids, strong mana potions, wands and rods. Say "help" or "backpacks" for prices.' end,
+	onMessage = onMessage,
+}

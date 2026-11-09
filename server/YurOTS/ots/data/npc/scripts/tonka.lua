@@ -1,8 +1,4 @@
-focus = 0
-talk_start = 0
-target = 0
-following = false
-attacking = false
+-- Tonka (canje de gemas: 20 chicas del mismo tipo = 1 grande).
 talk_state = 0
 pending_exchange = nil
 
@@ -17,19 +13,6 @@ EXCHANGES = {
 NEED = 20
 
 TONKA_HELP = 'I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.'
-
-function onThingMove(creature, thing, oldpos, oldstackpos)
-end
-
-function onCreatureAppear(creature)
-end
-
-function onCreatureDisappear(cid, pos)
-	npcOnCreatureDisappear(cid)
-end
-
-function onCreatureTurn(creature)
-end
 
 function showHelp()
 	selfSay(TONKA_HELP)
@@ -111,19 +94,7 @@ function offerExchange(cid, ex)
 	selfSay('Trade ' .. NEED .. ' ' .. ex.smallName .. ' for 1 ' .. ex.bigName .. '? (yes or si)')
 end
 
-function onCreatureSay(cid, type, msg)
-	msg = string.lower(msg)
-
-	local state = npcHandleMessage(
-		cid,
-		msg,
-		'Hi ' .. creatureGetName(cid) .. '! I turn small gems into big ones. Say "help" or "exchange" to see what I do.',
-		'One moment, ' .. creatureGetName(cid) .. '!'
-	)
-	if state ~= 'focused' then
-		return
-	end
-
+local function onMessage(cid, msg)
 	if talk_state == 1 then
 		if npcHandlePendingYesNo(cid, msg, function()
 			doExchange(cid, pending_exchange)
@@ -151,9 +122,10 @@ function onCreatureSay(cid, type, msg)
 	end
 end
 
-function onCreatureChangeOutfit(creature)
-end
-
-function onThink()
-	npcOnThink(30, 'Next please...')
-end
+npcDefine{
+	greet = function(cid) return 'Hi ' .. creatureGetName(cid) .. '! I turn small gems into big ones. Say "help" or "exchange" to see what I do.' end,
+	busy = function(cid) return 'One moment, ' .. creatureGetName(cid) .. '!' end,
+	idleTimeout = 30,
+	idleMessage = 'Next please...',
+	onMessage = onMessage,
+}

@@ -1,0 +1,1732 @@
+>> near 1001
+>> near 1002
+>> say 1001 hello there
+>> say 1001 hi
+SAY Welcome, Player1001. Say balance, deposit, withdraw or transfer. Say help for examples.
+>> say 1002 hi
+SAY One moment please.
+>> say 1001 help
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 help
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 help
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 help
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 help
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 help 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 help 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 help all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 help all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 ayuda
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 ayuda
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 ayuda
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 ayuda
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 ayuda 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 ayuda 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 ayuda all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 ayuda all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 offer
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 offer
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 offer
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 offer
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 offer 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 offer 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 offer all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 offer all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 trade
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 trade
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 trade
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 trade
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 trade 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 trade 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 trade all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 trade all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 list
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 list
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 list
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 list
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 list 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 list 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 list all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 list all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 info
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 info
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 info
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 info
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 info 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 info 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 info all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 info all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 job
+SAY I am the banker.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 job
+SAY I am the banker.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 job
+SAY I am the banker.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 job
+SAY I am the banker.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 job 100
+SAY I am the banker.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 job 100
+SAY I am the banker.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 job all
+SAY I am the banker.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 job all
+SAY I am the banker.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 name
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 name
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 name
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 name
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 name 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 name 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 name all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 name all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 si
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 si
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 si
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 si
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 si 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 si 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 si all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 si all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 sell
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 sell
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 sell
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 sell
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 sell 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 sell 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 sell all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 sell all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 buy
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 buy
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 buy
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 buy
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 buy 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 buy 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 buy all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 buy all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 all 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 all 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 all all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 all all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 status
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 status
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 status
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 status
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 status 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 status 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 status all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 status all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 deposit 100
+SAY Deposit 100 gp? yes or no.
+>> say 1001 yes
+CALL doPlayerDepositMoney(1001, 100)
+SAY I could not complete that deposit.
+>> say 1001 deposit 100
+SAY Deposit 100 gp? yes or no.
+>> say 1001 no
+SAY Deposit cancelled.
+>> say 1001 5 deposit 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 deposit 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 deposit 100 100
+SAY Deposit 100 gp? yes or no.
+>> say 1001 yes
+CALL doPlayerDepositMoney(1001, 100)
+SAY I could not complete that deposit.
+>> say 1001 deposit 100 100
+SAY Deposit 100 gp? yes or no.
+>> say 1001 no
+SAY Deposit cancelled.
+>> say 1001 deposit 100 all
+SAY Deposit 100 gp? yes or no.
+>> say 1001 yes
+CALL doPlayerDepositMoney(1001, 100)
+SAY I could not complete that deposit.
+>> say 1001 deposit 100 all
+SAY Deposit 100 gp? yes or no.
+>> say 1001 no
+SAY Deposit cancelled.
+>> think
+>> say 1001 withdraw 50
+SAY Withdraw 50 gp? yes or no.
+>> say 1001 yes
+CALL doPlayerWithdrawMoney(1001, 50)
+SAY I could not complete that withdrawal.
+>> say 1001 withdraw 50
+SAY Withdraw 50 gp? yes or no.
+>> say 1001 no
+SAY Withdrawal cancelled.
+>> say 1001 5 withdraw 50
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 withdraw 50
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 withdraw 50 100
+SAY Withdraw 50 gp? yes or no.
+>> say 1001 yes
+CALL doPlayerWithdrawMoney(1001, 50)
+SAY I could not complete that withdrawal.
+>> say 1001 withdraw 50 100
+SAY Withdraw 50 gp? yes or no.
+>> say 1001 no
+SAY Withdrawal cancelled.
+>> say 1001 withdraw 50 all
+SAY Withdraw 50 gp? yes or no.
+>> say 1001 yes
+CALL doPlayerWithdrawMoney(1001, 50)
+SAY I could not complete that withdrawal.
+>> say 1001 withdraw 50 all
+SAY Withdraw 50 gp? yes or no.
+>> say 1001 no
+SAY Withdrawal cancelled.
+>> think
+>> say 1001 balance
+CALL getPlayerBankBalance(1001)
+SAY Your bank balance is 50000 gp.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 balance
+CALL getPlayerBankBalance(1001)
+SAY Your bank balance is 50000 gp.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 balance
+CALL getPlayerBankBalance(1001)
+SAY Your bank balance is 50000 gp.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 balance
+CALL getPlayerBankBalance(1001)
+SAY Your bank balance is 50000 gp.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 balance 100
+CALL getPlayerBankBalance(1001)
+SAY Your bank balance is 50000 gp.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 balance 100
+CALL getPlayerBankBalance(1001)
+SAY Your bank balance is 50000 gp.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 balance all
+CALL getPlayerBankBalance(1001)
+SAY Your bank balance is 50000 gp.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 balance all
+CALL getPlayerBankBalance(1001)
+SAY Your bank balance is 50000 gp.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 transfer 10 to player1002
+SAY Transfer 10 gp to player1002? yes or no.
+>> say 1001 yes
+CALL doPlayerTransferMoneyTo(1001, 10, "player1002")
+SAY I could not complete that transfer.
+>> say 1001 transfer 10 to player1002
+SAY Transfer 10 gp to player1002? yes or no.
+>> say 1001 no
+SAY Transfer cancelled.
+>> say 1001 5 transfer 10 to player1002
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 transfer 10 to player1002
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 transfer 10 to player1002 100
+SAY Transfer 10 gp to player1002 100? yes or no.
+>> say 1001 yes
+CALL doPlayerTransferMoneyTo(1001, 10, "player1002 100")
+SAY I could not complete that transfer.
+>> say 1001 transfer 10 to player1002 100
+SAY Transfer 10 gp to player1002 100? yes or no.
+>> say 1001 no
+SAY Transfer cancelled.
+>> say 1001 transfer 10 to player1002 all
+SAY Transfer 10 gp to player1002 all? yes or no.
+>> say 1001 yes
+CALL doPlayerTransferMoneyTo(1001, 10, "player1002 all")
+SAY I could not complete that transfer.
+>> say 1001 transfer 10 to player1002 all
+SAY Transfer 10 gp to player1002 all? yes or no.
+>> say 1001 no
+SAY Transfer cancelled.
+>> think
+>> say 1001 all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 all 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 all 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 all all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 all all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 todo
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 todo
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 todo
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 todo
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 todo 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 todo 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 todo all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 todo all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 money
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 money
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 money
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 money
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 money 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 money 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 money all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 money all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 balance
+CALL getPlayerBankBalance(1001)
+SAY Your bank balance is 50000 gp.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 balance
+CALL getPlayerBankBalance(1001)
+SAY Your bank balance is 50000 gp.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 balance
+CALL getPlayerBankBalance(1001)
+SAY Your bank balance is 50000 gp.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 balance
+CALL getPlayerBankBalance(1001)
+SAY Your bank balance is 50000 gp.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 balance 100
+CALL getPlayerBankBalance(1001)
+SAY Your bank balance is 50000 gp.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 balance 100
+CALL getPlayerBankBalance(1001)
+SAY Your bank balance is 50000 gp.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 balance all
+CALL getPlayerBankBalance(1001)
+SAY Your bank balance is 50000 gp.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 balance all
+CALL getPlayerBankBalance(1001)
+SAY Your bank balance is 50000 gp.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 saldo
+CALL getPlayerBankBalance(1001)
+SAY Your bank balance is 50000 gp.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 saldo
+CALL getPlayerBankBalance(1001)
+SAY Your bank balance is 50000 gp.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 saldo
+CALL getPlayerBankBalance(1001)
+SAY Your bank balance is 50000 gp.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 saldo
+CALL getPlayerBankBalance(1001)
+SAY Your bank balance is 50000 gp.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 saldo 100
+CALL getPlayerBankBalance(1001)
+SAY Your bank balance is 50000 gp.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 saldo 100
+CALL getPlayerBankBalance(1001)
+SAY Your bank balance is 50000 gp.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 saldo all
+CALL getPlayerBankBalance(1001)
+SAY Your bank balance is 50000 gp.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 saldo all
+CALL getPlayerBankBalance(1001)
+SAY Your bank balance is 50000 gp.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 deposit
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 deposit
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 deposit
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 deposit
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 deposit 100
+SAY Deposit 100 gp? yes or no.
+>> say 1001 yes
+CALL doPlayerDepositMoney(1001, 100)
+SAY I could not complete that deposit.
+>> say 1001 deposit 100
+SAY Deposit 100 gp? yes or no.
+>> say 1001 no
+SAY Deposit cancelled.
+>> say 1001 deposit all
+CALL getPlayerMoney(1001)
+SAY Deposit 100000 gp? yes or no.
+>> say 1001 yes
+CALL doPlayerDepositMoney(1001, 100000)
+SAY I could not complete that deposit.
+>> say 1001 deposit all
+CALL getPlayerMoney(1001)
+SAY Deposit 100000 gp? yes or no.
+>> say 1001 no
+SAY Deposit cancelled.
+>> think
+>> say 1001 depositar
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 depositar
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 depositar
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 depositar
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 depositar 100
+SAY Deposit 100 gp? yes or no.
+>> say 1001 yes
+CALL doPlayerDepositMoney(1001, 100)
+SAY I could not complete that deposit.
+>> say 1001 depositar 100
+SAY Deposit 100 gp? yes or no.
+>> say 1001 no
+SAY Deposit cancelled.
+>> say 1001 depositar all
+CALL getPlayerMoney(1001)
+SAY Deposit 100000 gp? yes or no.
+>> say 1001 yes
+CALL doPlayerDepositMoney(1001, 100000)
+SAY I could not complete that deposit.
+>> say 1001 depositar all
+CALL getPlayerMoney(1001)
+SAY Deposit 100000 gp? yes or no.
+>> say 1001 no
+SAY Deposit cancelled.
+>> think
+>> say 1001 withdraw
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 withdraw
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 withdraw
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 withdraw
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 withdraw 100
+SAY Withdraw 100 gp? yes or no.
+>> say 1001 yes
+CALL doPlayerWithdrawMoney(1001, 100)
+SAY I could not complete that withdrawal.
+>> say 1001 withdraw 100
+SAY Withdraw 100 gp? yes or no.
+>> say 1001 no
+SAY Withdrawal cancelled.
+>> say 1001 withdraw all
+CALL getPlayerBankBalance(1001)
+SAY Withdraw 50000 gp? yes or no.
+>> say 1001 yes
+CALL doPlayerWithdrawMoney(1001, 50000)
+SAY I could not complete that withdrawal.
+>> say 1001 withdraw all
+CALL getPlayerBankBalance(1001)
+SAY Withdraw 50000 gp? yes or no.
+>> say 1001 no
+SAY Withdrawal cancelled.
+>> think
+>> say 1001 retirar
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 retirar
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 retirar
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 retirar
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 retirar 100
+SAY Withdraw 100 gp? yes or no.
+>> say 1001 yes
+CALL doPlayerWithdrawMoney(1001, 100)
+SAY I could not complete that withdrawal.
+>> say 1001 retirar 100
+SAY Withdraw 100 gp? yes or no.
+>> say 1001 no
+SAY Withdrawal cancelled.
+>> say 1001 retirar all
+CALL getPlayerBankBalance(1001)
+SAY Withdraw 50000 gp? yes or no.
+>> say 1001 yes
+CALL doPlayerWithdrawMoney(1001, 50000)
+SAY I could not complete that withdrawal.
+>> say 1001 retirar all
+CALL getPlayerBankBalance(1001)
+SAY Withdraw 50000 gp? yes or no.
+>> say 1001 no
+SAY Withdrawal cancelled.
+>> think
+>> say 1001 sacar
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 sacar
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 sacar
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 sacar
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 sacar 100
+SAY Withdraw 100 gp? yes or no.
+>> say 1001 yes
+CALL doPlayerWithdrawMoney(1001, 100)
+SAY I could not complete that withdrawal.
+>> say 1001 sacar 100
+SAY Withdraw 100 gp? yes or no.
+>> say 1001 no
+SAY Withdrawal cancelled.
+>> say 1001 sacar all
+CALL getPlayerBankBalance(1001)
+SAY Withdraw 50000 gp? yes or no.
+>> say 1001 yes
+CALL doPlayerWithdrawMoney(1001, 50000)
+SAY I could not complete that withdrawal.
+>> say 1001 sacar all
+CALL getPlayerBankBalance(1001)
+SAY Withdraw 50000 gp? yes or no.
+>> say 1001 no
+SAY Withdrawal cancelled.
+>> think
+>> say 1001 greet
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 greet
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 greet
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 greet
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 greet 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 greet 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 greet all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 greet all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 focused
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 focused
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 focused
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 focused
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 focused 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 focused 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 focused all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 focused all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 bank
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 bank
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 bank
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 bank
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 bank 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 bank 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 bank all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 bank all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 banco
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 banco
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 banco
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 banco
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 banco 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 banco 100
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 banco all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 banco all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 job
+SAY I am the banker.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 job
+SAY I am the banker.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 job
+SAY I am the banker.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 5 job
+SAY I am the banker.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 job 100
+SAY I am the banker.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 job 100
+SAY I am the banker.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 job all
+SAY I am the banker.
+>> say 1001 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1001 job all
+SAY I am the banker.
+>> say 1001 no
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> think
+>> say 1001 bye
+CALL cancelPendingTrade(1001)
+SAY Safe travels!
+>> say 1001 hi
+SAY Welcome, Player1001. Say balance, deposit, withdraw or transfer. Say help for examples.
+>> advance 40
+>> think
+CALL cancelPendingTrade(1001)
+SAY Next please...
+>> say 1001 hi
+SAY Welcome, Player1001. Say balance, deposit, withdraw or transfer. Say help for examples.
+>> far 1001
+>> think
+CALL cancelPendingTrade(1001)
+SAY See you later!
+>> near 1001
+>> say 1001 hola
+SAY Welcome, Player1001. Say balance, deposit, withdraw or transfer. Say help for examples.
+>> disappear 1001
+CALL cancelPendingTrade(1001)
+SAY See you later!
+>> say 1002 hi
+SAY Welcome, Player1002. Say balance, deposit, withdraw or transfer. Say help for examples.
+>> set 1002 money 0
+>> set 1002 slots 0
+>> set 1002 level 1
+>> say 1002 all
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 todo
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 money
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 balance
+CALL getPlayerBankBalance(1002)
+SAY Your bank balance is 50000 gp.
+>> say 1002 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 saldo
+CALL getPlayerBankBalance(1002)
+SAY Your bank balance is 50000 gp.
+>> say 1002 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 deposit
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 depositar
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 withdraw
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 retirar
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 sacar
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 greet
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 focused
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 bank
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 banco
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 job
+SAY I am the banker.
+>> say 1002 yes
+SAY Examples: balance | deposit 10000 | withdraw 5000 | transfer 10000 name | deposit all
+SAY I ask yes or no before moving gold.
+>> say 1002 chau
+CALL cancelPendingTrade(1002)
+SAY Safe travels!
+>> think 3

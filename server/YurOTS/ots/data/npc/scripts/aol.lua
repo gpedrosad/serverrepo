@@ -1,9 +1,4 @@
-focus = 0
-talk_start = 0
-target = 0
-following = false
-attacking = false
-
+-- Dufi (anillos, scarf y amulet of loss).
 AOL_PRICE = 50000
 SCARF_PRICE = 1000
 
@@ -21,19 +16,6 @@ RINGS = {
 
 RINGS_HELP = 'Energy ring 3k, might ring 7k, time ring 2k, stealth ring 4k, life ring 1.5k, ring of healing 2.5k, sword/axe/club ring 1k each. Say any amount, e.g. "2 life ring".'
 
-function onThingMove(creature, thing, oldpos, oldstackpos)
-end
-
-function onCreatureAppear(creature)
-end
-
-function onCreatureDisappear(cid, pos)
-	npcOnCreatureDisappear(cid)
-end
-
-function onCreatureTurn(creature)
-end
-
 function showHelp()
 	selfSay('Scarf: ' .. SCARF_PRICE .. 'gp. Amulet of loss (AOL): ' .. AOL_PRICE .. 'gp.')
 	selfSay(RINGS_HELP)
@@ -43,18 +25,7 @@ function showRingPrices()
 	selfSay(RINGS_HELP)
 end
 
-function onCreatureSay(cid, type, msg)
-	msg = string.lower(msg)
-
-	local state = npcHandleMessage(
-		cid,
-		msg,
-		'Hi ' .. creatureGetName(cid) .. '! I sell rings, scarf (1k) and amulet of loss / AOL (50k). Say "rings" or "help" for prices.'
-	)
-	if state ~= 'focused' then
-		return
-	end
-
+local function onMessage(cid, msg)
 	if npcIsHelp(msg) then
 		showHelp()
 	elseif msgcontains(msg, 'rings') or msgcontains(msg, 'anillos') then
@@ -68,9 +39,7 @@ function onCreatureSay(cid, type, msg)
 	end
 end
 
-function onCreatureChangeOutfit(creature)
-end
-
-function onThink()
-	npcOnThink()
-end
+npcDefine{
+	greet = function(cid) return 'Hi ' .. creatureGetName(cid) .. '! I sell rings, scarf (1k) and amulet of loss / AOL (50k). Say "rings" or "help" for prices.' end,
+	onMessage = onMessage,
+}

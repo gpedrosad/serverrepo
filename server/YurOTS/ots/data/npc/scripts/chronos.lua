@@ -3,13 +3,6 @@
 -- Requiere bindings NPC YUR_NPC_EXT: doSummonCreature, doRemoveCreature,
 -- doSendMagicEffect, getTopCreature, isMonster.
 
-dofile('data/npc/scripts/lib/npc.lua')
-
-focus = 0
-talk_start = 0
-target = 0
-following = false
-attacking = false
 
 -- Sala (debe coincidir con generate-sand-clock.py)
 ROOM = {x0 = 330, y0 = 385, x1 = 346, y1 = 399, z = 6}
@@ -82,11 +75,11 @@ end
 
 function sandClockPhaseIndex()
 	local n = table.getn(PHASES)
-	return math.mod(math.floor(os.time() / PHASE_SEC), n) + 1
+	return math.fmod(math.floor(os.time() / PHASE_SEC), n) + 1
 end
 
 function sandClockRemainSec()
-	return PHASE_SEC - math.mod(os.time(), PHASE_SEC)
+	return PHASE_SEC - math.fmod(os.time(), PHASE_SEC)
 end
 
 function sandClockFormatRemain(sec)
@@ -96,7 +89,7 @@ function sandClockFormatRemain(sec)
 		sec = 0
 	end
 	local min = math.floor(sec / 60)
-	local s = math.mod(sec, 60)
+	local s = math.fmod(sec, 60)
 	if min > 0 then
 		return min .. " min " .. s .. " s"
 	end
@@ -236,36 +229,12 @@ function sandClockEnsure()
 	end
 end
 
-function onThingMove(creature, thing, oldpos, oldstackpos)
-end
-
-function onCreatureAppear(creature)
-	sandClockTrackPlayer(creature)
-end
-
-function onCreatureDisappear(cid, pos)
+local function chronosDisappear(cid, pos)
 	room_players[cid] = nil
 	npcOnCreatureDisappear(cid)
 end
 
-function onCreatureTurn(creature)
-end
-
-function onCreatureChangeOutfit(creature)
-end
-
-function onCreatureSay(cid, type, msg)
-	msg = string.lower(msg)
-	local state = npcHandleMessage(
-		cid,
-		msg,
-		'Hi ' .. creatureGetName(cid) .. '! Esta sala cambia de fase sola. Di "time" o "fase".',
-		'Un momento...'
-	)
-	if state ~= 'focused' then
-		return
-	end
-
+local function onMessage(cid, msg)
 	if msgcontains(msg, 'time') or msgcontains(msg, 'tiempo') or msgcontains(msg, 'fase')
 		or msgcontains(msg, 'phase') or msgcontains(msg, 'reloj') or npcIsHelp(msg) then
 		local phase = PHASES[sandClockPhaseIndex()]
@@ -274,7 +243,8 @@ function onCreatureSay(cid, type, msg)
 	end
 end
 
-function onThink()
+-- Cada think (~1 s): sigue quién está en la sala, aplica la fase y muestra el timer.
+local function chronosThink()
 	sandClockScanRoomPlayers()
 	sandClockEnsure()
 
@@ -289,3 +259,12 @@ function onThink()
 
 	npcOnThink(45, '...')
 end
+
+npcDefine{
+	greet = function(cid) return 'Hi ' .. creatureGetName(cid) .. '! Esta sala cambia de fase sola. Di "time" o "fase".' end,
+	busy = 'Un momento...',
+	onMessage = onMessage,
+	onAppear = sandClockTrackPlayer,
+	onDisappear = chronosDisappear,
+	onThink = chronosThink,
+}

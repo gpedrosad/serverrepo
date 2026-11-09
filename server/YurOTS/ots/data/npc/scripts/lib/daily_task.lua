@@ -113,8 +113,8 @@ function dailyTaskYesterday(today)
 		today = dailyTaskToday()
 	end
 	local y = math.floor(today / 10000)
-	local m = math.floor(math.mod(today, 10000) / 100)
-	local d = math.mod(today, 100)
+	local m = math.floor(math.fmod(today, 10000) / 100)
+	local d = math.fmod(today, 100)
 	d = d - 1
 	if d < 1 then
 		m = m - 1
@@ -123,7 +123,7 @@ function dailyTaskYesterday(today)
 			y = y - 1
 		end
 		local daysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
-		if math.mod(y, 4) == 0 and (math.mod(y, 100) ~= 0 or math.mod(y, 400) == 0) then
+		if math.fmod(y, 4) == 0 and (math.fmod(y, 100) ~= 0 or math.fmod(y, 400) == 0) then
 			daysInMonth[2] = 29
 		end
 		d = daysInMonth[m]
@@ -172,13 +172,13 @@ function dailyTaskNameSeed(name)
 		name = ''
 	end
 	for i = 1, string.len(name) do
-		s = math.mod(s * 33 + string.byte(name, i), 2147483647)
+		s = math.fmod(s * 33 + string.byte(name, i), 2147483647)
 	end
 	return s
 end
 
 function dailyTaskRngNext(state)
-	return math.mod(state * 1103515245 + 12345, 2147483648)
+	return math.fmod(state * 1103515245 + 12345, 2147483648)
 end
 
 function dailyTaskStreakBonusPercent(streak)
@@ -255,7 +255,7 @@ function dailyTaskPickThree(pool, seed)
 	local t
 	for t = 1, take do
 		state = dailyTaskRngNext(state)
-		local idx = math.mod(state, n - t + 1) + 1
+		local idx = math.fmod(state, n - t + 1) + 1
 		picked[t] = bag[idx]
 		bag[idx] = bag[n - t + 1]
 	end

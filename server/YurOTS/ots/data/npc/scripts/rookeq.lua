@@ -1,8 +1,4 @@
-focus = 0
-talk_start = 0
-target = 0
-following = false
-attacking = false
+-- Sally (equipo inicial de Rookgaard). Tienda simple con cantidad ("3 torch").
 
 ROOKEQ_HELP = 'Starter gear: katana/mace/hatchet 20gp, studded armor 30gp, chain armor 90gp, brass armor 300gp, brass helmet 20gp, leather helmet 5gp, brass shield 15gp, copper shield 50gp, leather legs 8gp, studded legs 20gp, leather boots 5gp, torch 2gp. Say any amount, e.g. "3 torch".'
 
@@ -23,41 +19,9 @@ ROOKEQ_BUYS = {
 	{keys = {'torch'}, itemid = 2050, unitPrice = 2},
 }
 
-function onThingMove(creature, thing, oldpos, oldstackpos)
-end
-
-function onCreatureAppear(creature)
-end
-
-function onCreatureDisappear(cid, pos)
-	npcOnCreatureDisappear(cid)
-end
-
-function onCreatureTurn(creature)
-end
-
-function onCreatureSay(cid, type, msg)
-	msg = string.lower(msg)
-
-	local state = npcHandleMessage(
-		cid,
-		msg,
-		'Hi ' .. creatureGetName(cid) .. '! I sell starter weapons and armor for new adventurers. Say "help" for the full list.'
-	)
-	if state ~= 'focused' then
-		return
-	end
-
-	if npcIsHelp(msg) then
-		selfSay(ROOKEQ_HELP)
-	elseif npcTryCatalogBuyQuantity(cid, msg, ROOKEQ_BUYS) then
-		return
-	end
-end
-
-function onCreatureChangeOutfit(creature)
-end
-
-function onThink()
-	npcOnThink()
-end
+npcDefine{
+	greet = function(cid)
+		return 'Hi ' .. creatureGetName(cid) .. '! I sell starter weapons and armor for new adventurers. Say "help" for the full list.'
+	end,
+	onMessage = npcCatalogHandler{help = ROOKEQ_HELP, buys = ROOKEQ_BUYS},
+}

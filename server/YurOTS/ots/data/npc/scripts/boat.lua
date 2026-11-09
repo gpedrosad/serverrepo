@@ -1,8 +1,4 @@
-focus = 0
-talk_start = 0
-target = 0
-following = false
-attacking = false
+-- Fargum y Nimral (barco): viajes pagos a destinos fijos, con confirmación.
 talk_state = 0
 pending_travel = nil
 
@@ -66,19 +62,6 @@ function canTravel(cid, travel)
 	return true
 end
 
-function onThingMove(creature, thing, oldpos, oldstackpos)
-end
-
-function onCreatureAppear(creature)
-end
-
-function onCreatureDisappear(cid, pos)
-	npcOnCreatureDisappear(cid)
-end
-
-function onCreatureTurn(creature)
-end
-
 function matchTravel(msg, travels)
 	for i = 1, table.getn(travels) do
 		local travel = travels[i]
@@ -117,8 +100,8 @@ function offerTravel(cid, travel)
 	selfSay('A trip to ' .. travel.name .. ' costs ' .. travel.price .. 'gp. Ready to go? (yes or si)')
 end
 
-function onCreatureSay(cid, type, msg)
-	msg = string.lower(msg)
+-- Saludo propio (lista de destinos) antes del manejo estándar de ocupado/despedida.
+local function onSay(cid, msg)
 	local travels = getTravels()
 
 	if npcIsGreeting(msg) and focus == 0 and getDistanceToCreature(cid) < 4 then
@@ -163,9 +146,6 @@ function onCreatureSay(cid, type, msg)
 	end
 end
 
-function onCreatureChangeOutfit(creature)
-end
-
-function onThink()
-	npcOnThink()
-end
+npcDefine{
+	onSay = onSay,
+}

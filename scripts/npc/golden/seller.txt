@@ -1,0 +1,2548 @@
+>> near 1001
+>> near 1002
+>> say 1001 hello there
+>> say 1001 hi
+SAY Hi Player1001! I sell supplies, fluid backpacks, weapons and knight gear. Say "help", "weapons", "armor" or "sets" for prices.
+>> say 1002 hi
+SAY One moment, Player1002! I am helping someone else.
+>> say 1001 help
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 help
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 help
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> say 1001 5 help
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 5 help
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> say 1001 help 100
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 help 100
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> say 1001 help all
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 help all
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> think
+>> say 1001 ayuda
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 ayuda
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> say 1001 5 ayuda
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 5 ayuda
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> say 1001 ayuda 100
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 ayuda 100
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> say 1001 ayuda all
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 ayuda all
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> think
+>> say 1001 offer
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 offer
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> say 1001 5 offer
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 5 offer
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> say 1001 offer 100
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 offer 100
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> say 1001 offer all
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 offer all
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> think
+>> say 1001 trade
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 trade
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> say 1001 5 trade
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 5 trade
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> say 1001 trade 100
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 trade 100
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> say 1001 trade all
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 trade all
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> think
+>> say 1001 list
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 list
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> say 1001 5 list
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 5 list
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> say 1001 list 100
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 list 100
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> say 1001 list all
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 list all
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> think
+>> say 1001 info
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 info
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> say 1001 5 info
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 5 info
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> say 1001 info 100
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 info 100
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> say 1001 info all
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 info all
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> think
+>> say 1001 job
+>> say 1001 yes
+>> say 1001 job
+>> say 1001 no
+>> say 1001 5 job
+>> say 1001 yes
+>> say 1001 5 job
+>> say 1001 no
+>> say 1001 job 100
+>> say 1001 yes
+>> say 1001 job 100
+>> say 1001 no
+>> say 1001 job all
+>> say 1001 yes
+>> say 1001 job all
+>> say 1001 no
+>> think
+>> say 1001 name
+>> say 1001 yes
+>> say 1001 name
+>> say 1001 no
+>> say 1001 5 name
+>> say 1001 yes
+>> say 1001 5 name
+>> say 1001 no
+>> say 1001 name 100
+>> say 1001 yes
+>> say 1001 name 100
+>> say 1001 no
+>> say 1001 name all
+>> say 1001 yes
+>> say 1001 name all
+>> say 1001 no
+>> think
+>> say 1001 yes
+>> say 1001 yes
+>> say 1001 yes
+>> say 1001 no
+>> say 1001 5 yes
+>> say 1001 yes
+>> say 1001 5 yes
+>> say 1001 no
+>> say 1001 yes 100
+>> say 1001 yes
+>> say 1001 yes 100
+>> say 1001 no
+>> say 1001 yes all
+>> say 1001 yes
+>> say 1001 yes all
+>> say 1001 no
+>> think
+>> say 1001 no
+>> say 1001 yes
+>> say 1001 no
+>> say 1001 no
+>> say 1001 5 no
+>> say 1001 yes
+>> say 1001 5 no
+>> say 1001 no
+>> say 1001 no 100
+>> say 1001 yes
+>> say 1001 no 100
+>> say 1001 no
+>> say 1001 no all
+>> say 1001 yes
+>> say 1001 no all
+>> say 1001 no
+>> think
+>> say 1001 si
+>> say 1001 yes
+>> say 1001 si
+>> say 1001 no
+>> say 1001 5 si
+>> say 1001 yes
+>> say 1001 5 si
+>> say 1001 no
+>> say 1001 si 100
+>> say 1001 yes
+>> say 1001 si 100
+>> say 1001 no
+>> say 1001 si all
+>> say 1001 yes
+>> say 1001 si all
+>> say 1001 no
+>> think
+>> say 1001 sell
+>> say 1001 yes
+>> say 1001 sell
+>> say 1001 no
+>> say 1001 5 sell
+>> say 1001 yes
+>> say 1001 5 sell
+>> say 1001 no
+>> say 1001 sell 100
+>> say 1001 yes
+>> say 1001 sell 100
+>> say 1001 no
+>> say 1001 sell all
+>> say 1001 yes
+>> say 1001 sell all
+>> say 1001 no
+>> think
+>> say 1001 buy
+>> say 1001 yes
+>> say 1001 buy
+>> say 1001 no
+>> say 1001 5 buy
+>> say 1001 yes
+>> say 1001 5 buy
+>> say 1001 no
+>> say 1001 buy 100
+>> say 1001 yes
+>> say 1001 buy 100
+>> say 1001 no
+>> say 1001 buy all
+>> say 1001 yes
+>> say 1001 buy all
+>> say 1001 no
+>> think
+>> say 1001 all
+>> say 1001 yes
+>> say 1001 all
+>> say 1001 no
+>> say 1001 5 all
+>> say 1001 yes
+>> say 1001 5 all
+>> say 1001 no
+>> say 1001 all 100
+>> say 1001 yes
+>> say 1001 all 100
+>> say 1001 no
+>> say 1001 all all
+>> say 1001 yes
+>> say 1001 all all
+>> say 1001 no
+>> think
+>> say 1001 status
+>> say 1001 yes
+>> say 1001 status
+>> say 1001 no
+>> say 1001 5 status
+>> say 1001 yes
+>> say 1001 5 status
+>> say 1001 no
+>> say 1001 status 100
+>> say 1001 yes
+>> say 1001 status 100
+>> say 1001 no
+>> say 1001 status all
+>> say 1001 yes
+>> say 1001 status all
+>> say 1001 no
+>> think
+>> say 1001 deposit 100
+>> say 1001 yes
+>> say 1001 deposit 100
+>> say 1001 no
+>> say 1001 5 deposit 100
+>> say 1001 yes
+>> say 1001 5 deposit 100
+>> say 1001 no
+>> say 1001 deposit 100 100
+>> say 1001 yes
+>> say 1001 deposit 100 100
+>> say 1001 no
+>> say 1001 deposit 100 all
+>> say 1001 yes
+>> say 1001 deposit 100 all
+>> say 1001 no
+>> think
+>> say 1001 withdraw 50
+>> say 1001 yes
+>> say 1001 withdraw 50
+>> say 1001 no
+>> say 1001 5 withdraw 50
+>> say 1001 yes
+>> say 1001 5 withdraw 50
+>> say 1001 no
+>> say 1001 withdraw 50 100
+>> say 1001 yes
+>> say 1001 withdraw 50 100
+>> say 1001 no
+>> say 1001 withdraw 50 all
+>> say 1001 yes
+>> say 1001 withdraw 50 all
+>> say 1001 no
+>> think
+>> say 1001 balance
+>> say 1001 yes
+>> say 1001 balance
+>> say 1001 no
+>> say 1001 5 balance
+>> say 1001 yes
+>> say 1001 5 balance
+>> say 1001 no
+>> say 1001 balance 100
+>> say 1001 yes
+>> say 1001 balance 100
+>> say 1001 no
+>> say 1001 balance all
+>> say 1001 yes
+>> say 1001 balance all
+>> say 1001 no
+>> think
+>> say 1001 transfer 10 to player1002
+>> say 1001 yes
+>> say 1001 transfer 10 to player1002
+>> say 1001 no
+>> say 1001 5 transfer 10 to player1002
+>> say 1001 yes
+>> say 1001 5 transfer 10 to player1002
+>> say 1001 no
+>> say 1001 transfer 10 to player1002 100
+>> say 1001 yes
+>> say 1001 transfer 10 to player1002 100
+>> say 1001 no
+>> say 1001 transfer 10 to player1002 all
+>> say 1001 yes
+>> say 1001 transfer 10 to player1002 all
+>> say 1001 no
+>> think
+>> say 1001 bp mana
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 7, 20, 2010)
+>> say 1001 yes
+>> say 1001 bp mana
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 7, 20, 2010)
+>> say 1001 no
+>> say 1001 5 bp mana
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 7, 20, 2010)
+>> say 1001 yes
+>> say 1001 5 bp mana
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 7, 20, 2010)
+>> say 1001 no
+>> say 1001 bp mana 100
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 7, 20, 2010)
+>> say 1001 yes
+>> say 1001 bp mana 100
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 7, 20, 2010)
+>> say 1001 no
+>> say 1001 bp mana all
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 7, 20, 2010)
+>> say 1001 yes
+>> say 1001 bp mana all
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 7, 20, 2010)
+>> say 1001 no
+>> think
+>> say 1001 bp life
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 10, 20, 1210)
+>> say 1001 yes
+>> say 1001 bp life
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 10, 20, 1210)
+>> say 1001 no
+>> say 1001 5 bp life
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 10, 20, 1210)
+>> say 1001 yes
+>> say 1001 5 bp life
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 10, 20, 1210)
+>> say 1001 no
+>> say 1001 bp life 100
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 10, 20, 1210)
+>> say 1001 yes
+>> say 1001 bp life 100
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 10, 20, 1210)
+>> say 1001 no
+>> say 1001 bp life all
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 10, 20, 1210)
+>> say 1001 yes
+>> say 1001 bp life all
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 10, 20, 1210)
+>> say 1001 no
+>> think
+>> say 1001 bp smp
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 14, 20, 5010)
+>> say 1001 yes
+>> say 1001 bp smp
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 14, 20, 5010)
+>> say 1001 no
+>> say 1001 5 bp smp
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 14, 20, 5010)
+>> say 1001 yes
+>> say 1001 5 bp smp
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 14, 20, 5010)
+>> say 1001 no
+>> say 1001 bp smp 100
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 14, 20, 5010)
+>> say 1001 yes
+>> say 1001 bp smp 100
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 14, 20, 5010)
+>> say 1001 no
+>> say 1001 bp smp all
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 14, 20, 5010)
+>> say 1001 yes
+>> say 1001 bp smp all
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 14, 20, 5010)
+>> say 1001 no
+>> think
+>> say 1001 bp strong mana
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 14, 20, 5010)
+>> say 1001 yes
+>> say 1001 bp strong mana
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 14, 20, 5010)
+>> say 1001 no
+>> say 1001 5 bp strong mana
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 14, 20, 5010)
+>> say 1001 yes
+>> say 1001 5 bp strong mana
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 14, 20, 5010)
+>> say 1001 no
+>> say 1001 bp strong mana 100
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 14, 20, 5010)
+>> say 1001 yes
+>> say 1001 bp strong mana 100
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 14, 20, 5010)
+>> say 1001 no
+>> say 1001 bp strong mana all
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 14, 20, 5010)
+>> say 1001 yes
+>> say 1001 bp strong mana all
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 14, 20, 5010)
+>> say 1001 no
+>> think
+>> say 1001 strong mana potion
+CALL buyFluidQty(1001, 2006, 14, 1, 250)
+>> say 1001 yes
+>> say 1001 strong mana potion
+CALL buyFluidQty(1001, 2006, 14, 1, 250)
+>> say 1001 no
+>> say 1001 5 strong mana potion
+CALL buyFluidQty(1001, 2006, 14, 5, 1250)
+>> say 1001 yes
+>> say 1001 5 strong mana potion
+CALL buyFluidQty(1001, 2006, 14, 5, 1250)
+>> say 1001 no
+>> say 1001 strong mana potion 100
+CALL buyFluidQty(1001, 2006, 14, 100, 25000)
+>> say 1001 yes
+>> say 1001 strong mana potion 100
+CALL buyFluidQty(1001, 2006, 14, 100, 25000)
+>> say 1001 no
+>> say 1001 strong mana potion all
+CALL buyFluidQty(1001, 2006, 14, 1, 250)
+>> say 1001 yes
+>> say 1001 strong mana potion all
+CALL buyFluidQty(1001, 2006, 14, 1, 250)
+>> say 1001 no
+>> think
+>> say 1001 strong mana
+CALL buyFluidQty(1001, 2006, 14, 1, 250)
+>> say 1001 yes
+>> say 1001 strong mana
+CALL buyFluidQty(1001, 2006, 14, 1, 250)
+>> say 1001 no
+>> say 1001 5 strong mana
+CALL buyFluidQty(1001, 2006, 14, 5, 1250)
+>> say 1001 yes
+>> say 1001 5 strong mana
+CALL buyFluidQty(1001, 2006, 14, 5, 1250)
+>> say 1001 no
+>> say 1001 strong mana 100
+CALL buyFluidQty(1001, 2006, 14, 100, 25000)
+>> say 1001 yes
+>> say 1001 strong mana 100
+CALL buyFluidQty(1001, 2006, 14, 100, 25000)
+>> say 1001 no
+>> say 1001 strong mana all
+CALL buyFluidQty(1001, 2006, 14, 1, 250)
+>> say 1001 yes
+>> say 1001 strong mana all
+CALL buyFluidQty(1001, 2006, 14, 1, 250)
+>> say 1001 no
+>> think
+>> say 1001 smp
+CALL buyFluidQty(1001, 2006, 14, 1, 250)
+>> say 1001 yes
+>> say 1001 smp
+CALL buyFluidQty(1001, 2006, 14, 1, 250)
+>> say 1001 no
+>> say 1001 5 smp
+CALL buyFluidQty(1001, 2006, 14, 5, 1250)
+>> say 1001 yes
+>> say 1001 5 smp
+CALL buyFluidQty(1001, 2006, 14, 5, 1250)
+>> say 1001 no
+>> say 1001 smp 100
+CALL buyFluidQty(1001, 2006, 14, 100, 25000)
+>> say 1001 yes
+>> say 1001 smp 100
+CALL buyFluidQty(1001, 2006, 14, 100, 25000)
+>> say 1001 no
+>> say 1001 smp all
+CALL buyFluidQty(1001, 2006, 14, 1, 250)
+>> say 1001 yes
+>> say 1001 smp all
+CALL buyFluidQty(1001, 2006, 14, 1, 250)
+>> say 1001 no
+>> think
+>> say 1001 mana fluid
+CALL buyFluidQty(1001, 2006, 7, 1, 100)
+>> say 1001 yes
+>> say 1001 mana fluid
+CALL buyFluidQty(1001, 2006, 7, 1, 100)
+>> say 1001 no
+>> say 1001 5 mana fluid
+CALL buyFluidQty(1001, 2006, 7, 5, 500)
+>> say 1001 yes
+>> say 1001 5 mana fluid
+CALL buyFluidQty(1001, 2006, 7, 5, 500)
+>> say 1001 no
+>> say 1001 mana fluid 100
+CALL buyFluidQty(1001, 2006, 7, 100, 10000)
+>> say 1001 yes
+>> say 1001 mana fluid 100
+CALL buyFluidQty(1001, 2006, 7, 100, 10000)
+>> say 1001 no
+>> say 1001 mana fluid all
+CALL buyFluidQty(1001, 2006, 7, 1, 100)
+>> say 1001 yes
+>> say 1001 mana fluid all
+CALL buyFluidQty(1001, 2006, 7, 1, 100)
+>> say 1001 no
+>> think
+>> say 1001 manafluid
+CALL buyFluidQty(1001, 2006, 7, 1, 100)
+>> say 1001 yes
+>> say 1001 manafluid
+CALL buyFluidQty(1001, 2006, 7, 1, 100)
+>> say 1001 no
+>> say 1001 5 manafluid
+CALL buyFluidQty(1001, 2006, 7, 5, 500)
+>> say 1001 yes
+>> say 1001 5 manafluid
+CALL buyFluidQty(1001, 2006, 7, 5, 500)
+>> say 1001 no
+>> say 1001 manafluid 100
+CALL buyFluidQty(1001, 2006, 7, 100, 10000)
+>> say 1001 yes
+>> say 1001 manafluid 100
+CALL buyFluidQty(1001, 2006, 7, 100, 10000)
+>> say 1001 no
+>> say 1001 manafluid all
+CALL buyFluidQty(1001, 2006, 7, 1, 100)
+>> say 1001 yes
+>> say 1001 manafluid all
+CALL buyFluidQty(1001, 2006, 7, 1, 100)
+>> say 1001 no
+>> think
+>> say 1001 mana
+CALL buyFluidQty(1001, 2006, 7, 1, 100)
+>> say 1001 yes
+>> say 1001 mana
+CALL buyFluidQty(1001, 2006, 7, 1, 100)
+>> say 1001 no
+>> say 1001 5 mana
+CALL buyFluidQty(1001, 2006, 7, 5, 500)
+>> say 1001 yes
+>> say 1001 5 mana
+CALL buyFluidQty(1001, 2006, 7, 5, 500)
+>> say 1001 no
+>> say 1001 mana 100
+CALL buyFluidQty(1001, 2006, 7, 100, 10000)
+>> say 1001 yes
+>> say 1001 mana 100
+CALL buyFluidQty(1001, 2006, 7, 100, 10000)
+>> say 1001 no
+>> say 1001 mana all
+CALL buyFluidQty(1001, 2006, 7, 1, 100)
+>> say 1001 yes
+>> say 1001 mana all
+CALL buyFluidQty(1001, 2006, 7, 1, 100)
+>> say 1001 no
+>> think
+>> say 1001 life fluid
+CALL buyFluidQty(1001, 2006, 10, 1, 60)
+>> say 1001 yes
+>> say 1001 life fluid
+CALL buyFluidQty(1001, 2006, 10, 1, 60)
+>> say 1001 no
+>> say 1001 5 life fluid
+CALL buyFluidQty(1001, 2006, 10, 5, 300)
+>> say 1001 yes
+>> say 1001 5 life fluid
+CALL buyFluidQty(1001, 2006, 10, 5, 300)
+>> say 1001 no
+>> say 1001 life fluid 100
+CALL buyFluidQty(1001, 2006, 10, 100, 6000)
+>> say 1001 yes
+>> say 1001 life fluid 100
+CALL buyFluidQty(1001, 2006, 10, 100, 6000)
+>> say 1001 no
+>> say 1001 life fluid all
+CALL buyFluidQty(1001, 2006, 10, 1, 60)
+>> say 1001 yes
+>> say 1001 life fluid all
+CALL buyFluidQty(1001, 2006, 10, 1, 60)
+>> say 1001 no
+>> think
+>> say 1001 lifefluid
+CALL buyFluidQty(1001, 2006, 10, 1, 60)
+>> say 1001 yes
+>> say 1001 lifefluid
+CALL buyFluidQty(1001, 2006, 10, 1, 60)
+>> say 1001 no
+>> say 1001 5 lifefluid
+CALL buyFluidQty(1001, 2006, 10, 5, 300)
+>> say 1001 yes
+>> say 1001 5 lifefluid
+CALL buyFluidQty(1001, 2006, 10, 5, 300)
+>> say 1001 no
+>> say 1001 lifefluid 100
+CALL buyFluidQty(1001, 2006, 10, 100, 6000)
+>> say 1001 yes
+>> say 1001 lifefluid 100
+CALL buyFluidQty(1001, 2006, 10, 100, 6000)
+>> say 1001 no
+>> say 1001 lifefluid all
+CALL buyFluidQty(1001, 2006, 10, 1, 60)
+>> say 1001 yes
+>> say 1001 lifefluid all
+CALL buyFluidQty(1001, 2006, 10, 1, 60)
+>> say 1001 no
+>> think
+>> say 1001 life
+CALL buyFluidQty(1001, 2006, 10, 1, 60)
+>> say 1001 yes
+>> say 1001 life
+CALL buyFluidQty(1001, 2006, 10, 1, 60)
+>> say 1001 no
+>> say 1001 5 life
+CALL buyFluidQty(1001, 2006, 10, 5, 300)
+>> say 1001 yes
+>> say 1001 5 life
+CALL buyFluidQty(1001, 2006, 10, 5, 300)
+>> say 1001 no
+>> say 1001 life 100
+CALL buyFluidQty(1001, 2006, 10, 100, 6000)
+>> say 1001 yes
+>> say 1001 life 100
+CALL buyFluidQty(1001, 2006, 10, 100, 6000)
+>> say 1001 no
+>> say 1001 life all
+CALL buyFluidQty(1001, 2006, 10, 1, 60)
+>> say 1001 yes
+>> say 1001 life all
+CALL buyFluidQty(1001, 2006, 10, 1, 60)
+>> say 1001 no
+>> think
+>> say 1001 serpent sword
+CALL buy(1001, 2409, 1, 2500)
+>> say 1001 yes
+>> say 1001 serpent sword
+CALL buy(1001, 2409, 1, 2500)
+>> say 1001 no
+>> say 1001 5 serpent sword
+CALL buy(1001, 2409, 5, 12500)
+>> say 1001 yes
+>> say 1001 5 serpent sword
+CALL buy(1001, 2409, 5, 12500)
+>> say 1001 no
+>> say 1001 serpent sword 100
+CALL buy(1001, 2409, 100, 250000)
+>> say 1001 yes
+>> say 1001 serpent sword 100
+CALL buy(1001, 2409, 100, 250000)
+>> say 1001 no
+>> say 1001 serpent sword all
+CALL buy(1001, 2409, 1, 2500)
+>> say 1001 yes
+>> say 1001 serpent sword all
+CALL buy(1001, 2409, 1, 2500)
+>> say 1001 no
+>> think
+>> say 1001 serpent
+CALL buy(1001, 2409, 1, 2500)
+>> say 1001 yes
+>> say 1001 serpent
+CALL buy(1001, 2409, 1, 2500)
+>> say 1001 no
+>> say 1001 5 serpent
+CALL buy(1001, 2409, 5, 12500)
+>> say 1001 yes
+>> say 1001 5 serpent
+CALL buy(1001, 2409, 5, 12500)
+>> say 1001 no
+>> say 1001 serpent 100
+CALL buy(1001, 2409, 100, 250000)
+>> say 1001 yes
+>> say 1001 serpent 100
+CALL buy(1001, 2409, 100, 250000)
+>> say 1001 no
+>> say 1001 serpent all
+CALL buy(1001, 2409, 1, 2500)
+>> say 1001 yes
+>> say 1001 serpent all
+CALL buy(1001, 2409, 1, 2500)
+>> say 1001 no
+>> think
+>> say 1001 knight axe
+CALL buy(1001, 2430, 1, 2800)
+>> say 1001 yes
+>> say 1001 knight axe
+CALL buy(1001, 2430, 1, 2800)
+>> say 1001 no
+>> say 1001 5 knight axe
+CALL buy(1001, 2430, 5, 14000)
+>> say 1001 yes
+>> say 1001 5 knight axe
+CALL buy(1001, 2430, 5, 14000)
+>> say 1001 no
+>> say 1001 knight axe 100
+CALL buy(1001, 2430, 100, 280000)
+>> say 1001 yes
+>> say 1001 knight axe 100
+CALL buy(1001, 2430, 100, 280000)
+>> say 1001 no
+>> say 1001 knight axe all
+CALL buy(1001, 2430, 1, 2800)
+>> say 1001 yes
+>> say 1001 knight axe all
+CALL buy(1001, 2430, 1, 2800)
+>> say 1001 no
+>> think
+>> say 1001 war hammer
+CALL buy(1001, 2391, 1, 3000)
+>> say 1001 yes
+>> say 1001 war hammer
+CALL buy(1001, 2391, 1, 3000)
+>> say 1001 no
+>> say 1001 5 war hammer
+CALL buy(1001, 2391, 5, 15000)
+>> say 1001 yes
+>> say 1001 5 war hammer
+CALL buy(1001, 2391, 5, 15000)
+>> say 1001 no
+>> say 1001 war hammer 100
+CALL buy(1001, 2391, 100, 300000)
+>> say 1001 yes
+>> say 1001 war hammer 100
+CALL buy(1001, 2391, 100, 300000)
+>> say 1001 no
+>> say 1001 war hammer all
+CALL buy(1001, 2391, 1, 3000)
+>> say 1001 yes
+>> say 1001 war hammer all
+CALL buy(1001, 2391, 1, 3000)
+>> say 1001 no
+>> think
+>> say 1001 hammer
+CALL buy(1001, 2391, 1, 3000)
+>> say 1001 yes
+>> say 1001 hammer
+CALL buy(1001, 2391, 1, 3000)
+>> say 1001 no
+>> say 1001 5 hammer
+CALL buy(1001, 2391, 5, 15000)
+>> say 1001 yes
+>> say 1001 5 hammer
+CALL buy(1001, 2391, 5, 15000)
+>> say 1001 no
+>> say 1001 hammer 100
+CALL buy(1001, 2391, 100, 300000)
+>> say 1001 yes
+>> say 1001 hammer 100
+CALL buy(1001, 2391, 100, 300000)
+>> say 1001 no
+>> say 1001 hammer all
+CALL buy(1001, 2391, 1, 3000)
+>> say 1001 yes
+>> say 1001 hammer all
+CALL buy(1001, 2391, 1, 3000)
+>> say 1001 no
+>> think
+>> say 1001 chain helmet
+CALL buy(1001, 2458, 1, 40)
+>> say 1001 yes
+>> say 1001 chain helmet
+CALL buy(1001, 2458, 1, 40)
+>> say 1001 no
+>> say 1001 5 chain helmet
+CALL buy(1001, 2458, 5, 200)
+>> say 1001 yes
+>> say 1001 5 chain helmet
+CALL buy(1001, 2458, 5, 200)
+>> say 1001 no
+>> say 1001 chain helmet 100
+CALL buy(1001, 2458, 100, 4000)
+>> say 1001 yes
+>> say 1001 chain helmet 100
+CALL buy(1001, 2458, 100, 4000)
+>> say 1001 no
+>> say 1001 chain helmet all
+CALL buy(1001, 2458, 1, 40)
+>> say 1001 yes
+>> say 1001 chain helmet all
+CALL buy(1001, 2458, 1, 40)
+>> say 1001 no
+>> think
+>> say 1001 brass helmet
+CALL buy(1001, 2460, 1, 60)
+>> say 1001 yes
+>> say 1001 brass helmet
+CALL buy(1001, 2460, 1, 60)
+>> say 1001 no
+>> say 1001 5 brass helmet
+CALL buy(1001, 2460, 5, 300)
+>> say 1001 yes
+>> say 1001 5 brass helmet
+CALL buy(1001, 2460, 5, 300)
+>> say 1001 no
+>> say 1001 brass helmet 100
+CALL buy(1001, 2460, 100, 6000)
+>> say 1001 yes
+>> say 1001 brass helmet 100
+CALL buy(1001, 2460, 100, 6000)
+>> say 1001 no
+>> say 1001 brass helmet all
+CALL buy(1001, 2460, 1, 60)
+>> say 1001 yes
+>> say 1001 brass helmet all
+CALL buy(1001, 2460, 1, 60)
+>> say 1001 no
+>> think
+>> say 1001 steel helmet
+CALL buy(1001, 2457, 1, 350)
+>> say 1001 yes
+>> say 1001 steel helmet
+CALL buy(1001, 2457, 1, 350)
+>> say 1001 no
+>> say 1001 5 steel helmet
+CALL buy(1001, 2457, 5, 1750)
+>> say 1001 yes
+>> say 1001 5 steel helmet
+CALL buy(1001, 2457, 5, 1750)
+>> say 1001 no
+>> say 1001 steel helmet 100
+CALL buy(1001, 2457, 100, 35000)
+>> say 1001 yes
+>> say 1001 steel helmet 100
+CALL buy(1001, 2457, 100, 35000)
+>> say 1001 no
+>> say 1001 steel helmet all
+CALL buy(1001, 2457, 1, 350)
+>> say 1001 yes
+>> say 1001 steel helmet all
+CALL buy(1001, 2457, 1, 350)
+>> say 1001 no
+>> think
+>> say 1001 chain armor
+CALL buy(1001, 2464, 1, 120)
+>> say 1001 yes
+>> say 1001 chain armor
+CALL buy(1001, 2464, 1, 120)
+>> say 1001 no
+>> say 1001 5 chain armor
+CALL buy(1001, 2464, 5, 600)
+>> say 1001 yes
+>> say 1001 5 chain armor
+CALL buy(1001, 2464, 5, 600)
+>> say 1001 no
+>> say 1001 chain armor 100
+CALL buy(1001, 2464, 100, 12000)
+>> say 1001 yes
+>> say 1001 chain armor 100
+CALL buy(1001, 2464, 100, 12000)
+>> say 1001 no
+>> say 1001 chain armor all
+CALL buy(1001, 2464, 1, 120)
+>> say 1001 yes
+>> say 1001 chain armor all
+CALL buy(1001, 2464, 1, 120)
+>> say 1001 no
+>> think
+>> say 1001 brass armor
+CALL buy(1001, 2465, 1, 300)
+>> say 1001 yes
+>> say 1001 brass armor
+CALL buy(1001, 2465, 1, 300)
+>> say 1001 no
+>> say 1001 5 brass armor
+CALL buy(1001, 2465, 5, 1500)
+>> say 1001 yes
+>> say 1001 5 brass armor
+CALL buy(1001, 2465, 5, 1500)
+>> say 1001 no
+>> say 1001 brass armor 100
+CALL buy(1001, 2465, 100, 30000)
+>> say 1001 yes
+>> say 1001 brass armor 100
+CALL buy(1001, 2465, 100, 30000)
+>> say 1001 no
+>> say 1001 brass armor all
+CALL buy(1001, 2465, 1, 300)
+>> say 1001 yes
+>> say 1001 brass armor all
+CALL buy(1001, 2465, 1, 300)
+>> say 1001 no
+>> think
+>> say 1001 plate armor
+CALL buy(1001, 2463, 1, 800)
+>> say 1001 yes
+>> say 1001 plate armor
+CALL buy(1001, 2463, 1, 800)
+>> say 1001 no
+>> say 1001 5 plate armor
+CALL buy(1001, 2463, 5, 4000)
+>> say 1001 yes
+>> say 1001 5 plate armor
+CALL buy(1001, 2463, 5, 4000)
+>> say 1001 no
+>> say 1001 plate armor 100
+CALL buy(1001, 2463, 100, 80000)
+>> say 1001 yes
+>> say 1001 plate armor 100
+CALL buy(1001, 2463, 100, 80000)
+>> say 1001 no
+>> say 1001 plate armor all
+CALL buy(1001, 2463, 1, 800)
+>> say 1001 yes
+>> say 1001 plate armor all
+CALL buy(1001, 2463, 1, 800)
+>> say 1001 no
+>> think
+>> say 1001 knight armor
+CALL buy(1001, 2476, 1, 4500)
+>> say 1001 yes
+>> say 1001 knight armor
+CALL buy(1001, 2476, 1, 4500)
+>> say 1001 no
+>> say 1001 5 knight armor
+CALL buy(1001, 2476, 5, 22500)
+>> say 1001 yes
+>> say 1001 5 knight armor
+CALL buy(1001, 2476, 5, 22500)
+>> say 1001 no
+>> say 1001 knight armor 100
+CALL buy(1001, 2476, 100, 450000)
+>> say 1001 yes
+>> say 1001 knight armor 100
+CALL buy(1001, 2476, 100, 450000)
+>> say 1001 no
+>> say 1001 knight armor all
+CALL buy(1001, 2476, 1, 4500)
+>> say 1001 yes
+>> say 1001 knight armor all
+CALL buy(1001, 2476, 1, 4500)
+>> say 1001 no
+>> think
+>> say 1001 brass legs
+CALL buy(1001, 2478, 1, 120)
+>> say 1001 yes
+>> say 1001 brass legs
+CALL buy(1001, 2478, 1, 120)
+>> say 1001 no
+>> say 1001 5 brass legs
+CALL buy(1001, 2478, 5, 600)
+>> say 1001 yes
+>> say 1001 5 brass legs
+CALL buy(1001, 2478, 5, 600)
+>> say 1001 no
+>> say 1001 brass legs 100
+CALL buy(1001, 2478, 100, 12000)
+>> say 1001 yes
+>> say 1001 brass legs 100
+CALL buy(1001, 2478, 100, 12000)
+>> say 1001 no
+>> say 1001 brass legs all
+CALL buy(1001, 2478, 1, 120)
+>> say 1001 yes
+>> say 1001 brass legs all
+CALL buy(1001, 2478, 1, 120)
+>> say 1001 no
+>> think
+>> say 1001 plate legs
+CALL buy(1001, 2647, 1, 900)
+>> say 1001 yes
+>> say 1001 plate legs
+CALL buy(1001, 2647, 1, 900)
+>> say 1001 no
+>> say 1001 5 plate legs
+CALL buy(1001, 2647, 5, 4500)
+>> say 1001 yes
+>> say 1001 5 plate legs
+CALL buy(1001, 2647, 5, 4500)
+>> say 1001 no
+>> say 1001 plate legs 100
+CALL buy(1001, 2647, 100, 90000)
+>> say 1001 yes
+>> say 1001 plate legs 100
+CALL buy(1001, 2647, 100, 90000)
+>> say 1001 no
+>> say 1001 plate legs all
+CALL buy(1001, 2647, 1, 900)
+>> say 1001 yes
+>> say 1001 plate legs all
+CALL buy(1001, 2647, 1, 900)
+>> say 1001 no
+>> think
+>> say 1001 knight legs
+CALL buy(1001, 2477, 1, 4500)
+>> say 1001 yes
+>> say 1001 knight legs
+CALL buy(1001, 2477, 1, 4500)
+>> say 1001 no
+>> say 1001 5 knight legs
+CALL buy(1001, 2477, 5, 22500)
+>> say 1001 yes
+>> say 1001 5 knight legs
+CALL buy(1001, 2477, 5, 22500)
+>> say 1001 no
+>> say 1001 knight legs 100
+CALL buy(1001, 2477, 100, 450000)
+>> say 1001 yes
+>> say 1001 knight legs 100
+CALL buy(1001, 2477, 100, 450000)
+>> say 1001 no
+>> say 1001 knight legs all
+CALL buy(1001, 2477, 1, 4500)
+>> say 1001 yes
+>> say 1001 knight legs all
+CALL buy(1001, 2477, 1, 4500)
+>> say 1001 no
+>> think
+>> say 1001 brass shield
+CALL buy(1001, 2511, 1, 40)
+>> say 1001 yes
+>> say 1001 brass shield
+CALL buy(1001, 2511, 1, 40)
+>> say 1001 no
+>> say 1001 5 brass shield
+CALL buy(1001, 2511, 5, 200)
+>> say 1001 yes
+>> say 1001 5 brass shield
+CALL buy(1001, 2511, 5, 200)
+>> say 1001 no
+>> say 1001 brass shield 100
+CALL buy(1001, 2511, 100, 4000)
+>> say 1001 yes
+>> say 1001 brass shield 100
+CALL buy(1001, 2511, 100, 4000)
+>> say 1001 no
+>> say 1001 brass shield all
+CALL buy(1001, 2511, 1, 40)
+>> say 1001 yes
+>> say 1001 brass shield all
+CALL buy(1001, 2511, 1, 40)
+>> say 1001 no
+>> think
+>> say 1001 copper shield
+CALL buy(1001, 2530, 1, 60)
+>> say 1001 yes
+>> say 1001 copper shield
+CALL buy(1001, 2530, 1, 60)
+>> say 1001 no
+>> say 1001 5 copper shield
+CALL buy(1001, 2530, 5, 300)
+>> say 1001 yes
+>> say 1001 5 copper shield
+CALL buy(1001, 2530, 5, 300)
+>> say 1001 no
+>> say 1001 copper shield 100
+CALL buy(1001, 2530, 100, 6000)
+>> say 1001 yes
+>> say 1001 copper shield 100
+CALL buy(1001, 2530, 100, 6000)
+>> say 1001 no
+>> say 1001 copper shield all
+CALL buy(1001, 2530, 1, 60)
+>> say 1001 yes
+>> say 1001 copper shield all
+CALL buy(1001, 2530, 1, 60)
+>> say 1001 no
+>> think
+>> say 1001 plate shield
+CALL buy(1001, 2510, 1, 400)
+>> say 1001 yes
+>> say 1001 plate shield
+CALL buy(1001, 2510, 1, 400)
+>> say 1001 no
+>> say 1001 5 plate shield
+CALL buy(1001, 2510, 5, 2000)
+>> say 1001 yes
+>> say 1001 5 plate shield
+CALL buy(1001, 2510, 5, 2000)
+>> say 1001 no
+>> say 1001 plate shield 100
+CALL buy(1001, 2510, 100, 40000)
+>> say 1001 yes
+>> say 1001 plate shield 100
+CALL buy(1001, 2510, 100, 40000)
+>> say 1001 no
+>> say 1001 plate shield all
+CALL buy(1001, 2510, 1, 400)
+>> say 1001 yes
+>> say 1001 plate shield all
+CALL buy(1001, 2510, 1, 400)
+>> say 1001 no
+>> think
+>> say 1001 steel shield
+CALL buy(1001, 2509, 1, 1200)
+>> say 1001 yes
+>> say 1001 steel shield
+CALL buy(1001, 2509, 1, 1200)
+>> say 1001 no
+>> say 1001 5 steel shield
+CALL buy(1001, 2509, 5, 6000)
+>> say 1001 yes
+>> say 1001 5 steel shield
+CALL buy(1001, 2509, 5, 6000)
+>> say 1001 no
+>> say 1001 steel shield 100
+CALL buy(1001, 2509, 100, 120000)
+>> say 1001 yes
+>> say 1001 steel shield 100
+CALL buy(1001, 2509, 100, 120000)
+>> say 1001 no
+>> say 1001 steel shield all
+CALL buy(1001, 2509, 1, 1200)
+>> say 1001 yes
+>> say 1001 steel shield all
+CALL buy(1001, 2509, 1, 1200)
+>> say 1001 no
+>> think
+>> say 1001 guardian shield
+CALL buy(1001, 2515, 1, 2500)
+>> say 1001 yes
+>> say 1001 guardian shield
+CALL buy(1001, 2515, 1, 2500)
+>> say 1001 no
+>> say 1001 5 guardian shield
+CALL buy(1001, 2515, 5, 12500)
+>> say 1001 yes
+>> say 1001 5 guardian shield
+CALL buy(1001, 2515, 5, 12500)
+>> say 1001 no
+>> say 1001 guardian shield 100
+CALL buy(1001, 2515, 100, 250000)
+>> say 1001 yes
+>> say 1001 guardian shield 100
+CALL buy(1001, 2515, 100, 250000)
+>> say 1001 no
+>> say 1001 guardian shield all
+CALL buy(1001, 2515, 1, 2500)
+>> say 1001 yes
+>> say 1001 guardian shield all
+CALL buy(1001, 2515, 1, 2500)
+>> say 1001 no
+>> think
+>> say 1001 guardians shield
+CALL buy(1001, 2515, 1, 2500)
+>> say 1001 yes
+>> say 1001 guardians shield
+CALL buy(1001, 2515, 1, 2500)
+>> say 1001 no
+>> say 1001 5 guardians shield
+CALL buy(1001, 2515, 5, 12500)
+>> say 1001 yes
+>> say 1001 5 guardians shield
+CALL buy(1001, 2515, 5, 12500)
+>> say 1001 no
+>> say 1001 guardians shield 100
+CALL buy(1001, 2515, 100, 250000)
+>> say 1001 yes
+>> say 1001 guardians shield 100
+CALL buy(1001, 2515, 100, 250000)
+>> say 1001 no
+>> say 1001 guardians shield all
+CALL buy(1001, 2515, 1, 2500)
+>> say 1001 yes
+>> say 1001 guardians shield all
+CALL buy(1001, 2515, 1, 2500)
+>> say 1001 no
+>> think
+>> say 1001 leather boots
+CALL buy(1001, 2643, 1, 8)
+>> say 1001 yes
+>> say 1001 leather boots
+CALL buy(1001, 2643, 1, 8)
+>> say 1001 no
+>> say 1001 5 leather boots
+CALL buy(1001, 2643, 5, 40)
+>> say 1001 yes
+>> say 1001 5 leather boots
+CALL buy(1001, 2643, 5, 40)
+>> say 1001 no
+>> say 1001 leather boots 100
+CALL buy(1001, 2643, 100, 800)
+>> say 1001 yes
+>> say 1001 leather boots 100
+CALL buy(1001, 2643, 100, 800)
+>> say 1001 no
+>> say 1001 leather boots all
+CALL buy(1001, 2643, 1, 8)
+>> say 1001 yes
+>> say 1001 leather boots all
+CALL buy(1001, 2643, 1, 8)
+>> say 1001 no
+>> think
+>> say 1001 fishing rod
+CALL buy(1001, 2580, 1, 100)
+>> say 1001 yes
+>> say 1001 fishing rod
+CALL buy(1001, 2580, 1, 100)
+>> say 1001 no
+>> say 1001 5 fishing rod
+CALL buy(1001, 2580, 5, 500)
+>> say 1001 yes
+>> say 1001 5 fishing rod
+CALL buy(1001, 2580, 5, 500)
+>> say 1001 no
+>> say 1001 fishing rod 100
+CALL buy(1001, 2580, 100, 10000)
+>> say 1001 yes
+>> say 1001 fishing rod 100
+CALL buy(1001, 2580, 100, 10000)
+>> say 1001 no
+>> say 1001 fishing rod all
+CALL buy(1001, 2580, 1, 100)
+>> say 1001 yes
+>> say 1001 fishing rod all
+CALL buy(1001, 2580, 1, 100)
+>> say 1001 no
+>> think
+>> say 1001 cana
+CALL buy(1001, 2580, 1, 100)
+>> say 1001 yes
+>> say 1001 cana
+CALL buy(1001, 2580, 1, 100)
+>> say 1001 no
+>> say 1001 5 cana
+CALL buy(1001, 2580, 5, 500)
+>> say 1001 yes
+>> say 1001 5 cana
+CALL buy(1001, 2580, 5, 500)
+>> say 1001 no
+>> say 1001 cana 100
+CALL buy(1001, 2580, 100, 10000)
+>> say 1001 yes
+>> say 1001 cana 100
+CALL buy(1001, 2580, 100, 10000)
+>> say 1001 no
+>> say 1001 cana all
+CALL buy(1001, 2580, 1, 100)
+>> say 1001 yes
+>> say 1001 cana all
+CALL buy(1001, 2580, 1, 100)
+>> say 1001 no
+>> think
+>> say 1001 backpack
+CALL buy(1001, 1988, 1, 10)
+>> say 1001 yes
+>> say 1001 backpack
+CALL buy(1001, 1988, 1, 10)
+>> say 1001 no
+>> say 1001 5 backpack
+CALL buy(1001, 1988, 5, 50)
+>> say 1001 yes
+>> say 1001 5 backpack
+CALL buy(1001, 1988, 5, 50)
+>> say 1001 no
+>> say 1001 backpack 100
+CALL buy(1001, 1988, 100, 1000)
+>> say 1001 yes
+>> say 1001 backpack 100
+CALL buy(1001, 1988, 100, 1000)
+>> say 1001 no
+>> say 1001 backpack all
+CALL buy(1001, 1988, 1, 10)
+>> say 1001 yes
+>> say 1001 backpack all
+CALL buy(1001, 1988, 1, 10)
+>> say 1001 no
+>> think
+>> say 1001 mochila
+CALL buy(1001, 1988, 1, 10)
+>> say 1001 yes
+>> say 1001 mochila
+CALL buy(1001, 1988, 1, 10)
+>> say 1001 no
+>> say 1001 5 mochila
+CALL buy(1001, 1988, 5, 50)
+>> say 1001 yes
+>> say 1001 5 mochila
+CALL buy(1001, 1988, 5, 50)
+>> say 1001 no
+>> say 1001 mochila 100
+CALL buy(1001, 1988, 100, 1000)
+>> say 1001 yes
+>> say 1001 mochila 100
+CALL buy(1001, 1988, 100, 1000)
+>> say 1001 no
+>> say 1001 mochila all
+CALL buy(1001, 1988, 1, 10)
+>> say 1001 yes
+>> say 1001 mochila all
+CALL buy(1001, 1988, 1, 10)
+>> say 1001 no
+>> think
+>> say 1001 shovel
+CALL buy(1001, 2554, 1, 20)
+>> say 1001 yes
+>> say 1001 shovel
+CALL buy(1001, 2554, 1, 20)
+>> say 1001 no
+>> say 1001 5 shovel
+CALL buy(1001, 2554, 5, 100)
+>> say 1001 yes
+>> say 1001 5 shovel
+CALL buy(1001, 2554, 5, 100)
+>> say 1001 no
+>> say 1001 shovel 100
+CALL buy(1001, 2554, 100, 2000)
+>> say 1001 yes
+>> say 1001 shovel 100
+CALL buy(1001, 2554, 100, 2000)
+>> say 1001 no
+>> say 1001 shovel all
+CALL buy(1001, 2554, 1, 20)
+>> say 1001 yes
+>> say 1001 shovel all
+CALL buy(1001, 2554, 1, 20)
+>> say 1001 no
+>> think
+>> say 1001 pala
+CALL buy(1001, 2554, 1, 20)
+>> say 1001 yes
+>> say 1001 pala
+CALL buy(1001, 2554, 1, 20)
+>> say 1001 no
+>> say 1001 5 pala
+CALL buy(1001, 2554, 5, 100)
+>> say 1001 yes
+>> say 1001 5 pala
+CALL buy(1001, 2554, 5, 100)
+>> say 1001 no
+>> say 1001 pala 100
+CALL buy(1001, 2554, 100, 2000)
+>> say 1001 yes
+>> say 1001 pala 100
+CALL buy(1001, 2554, 100, 2000)
+>> say 1001 no
+>> say 1001 pala all
+CALL buy(1001, 2554, 1, 20)
+>> say 1001 yes
+>> say 1001 pala all
+CALL buy(1001, 2554, 1, 20)
+>> say 1001 no
+>> think
+>> say 1001 rope
+CALL buy(1001, 2120, 1, 50)
+>> say 1001 yes
+>> say 1001 rope
+CALL buy(1001, 2120, 1, 50)
+>> say 1001 no
+>> say 1001 5 rope
+CALL buy(1001, 2120, 5, 250)
+>> say 1001 yes
+>> say 1001 5 rope
+CALL buy(1001, 2120, 5, 250)
+>> say 1001 no
+>> say 1001 rope 100
+CALL buy(1001, 2120, 100, 5000)
+>> say 1001 yes
+>> say 1001 rope 100
+CALL buy(1001, 2120, 100, 5000)
+>> say 1001 no
+>> say 1001 rope all
+CALL buy(1001, 2120, 1, 50)
+>> say 1001 yes
+>> say 1001 rope all
+CALL buy(1001, 2120, 1, 50)
+>> say 1001 no
+>> think
+>> say 1001 cuerda
+CALL buy(1001, 2120, 1, 50)
+>> say 1001 yes
+>> say 1001 cuerda
+CALL buy(1001, 2120, 1, 50)
+>> say 1001 no
+>> say 1001 5 cuerda
+CALL buy(1001, 2120, 5, 250)
+>> say 1001 yes
+>> say 1001 5 cuerda
+CALL buy(1001, 2120, 5, 250)
+>> say 1001 no
+>> say 1001 cuerda 100
+CALL buy(1001, 2120, 100, 5000)
+>> say 1001 yes
+>> say 1001 cuerda 100
+CALL buy(1001, 2120, 100, 5000)
+>> say 1001 no
+>> say 1001 cuerda all
+CALL buy(1001, 2120, 1, 50)
+>> say 1001 yes
+>> say 1001 cuerda all
+CALL buy(1001, 2120, 1, 50)
+>> say 1001 no
+>> think
+>> say 1001 torch
+CALL buy(1001, 2050, 1, 2)
+>> say 1001 yes
+>> say 1001 torch
+CALL buy(1001, 2050, 1, 2)
+>> say 1001 no
+>> say 1001 5 torch
+CALL buy(1001, 2050, 5, 10)
+>> say 1001 yes
+>> say 1001 5 torch
+CALL buy(1001, 2050, 5, 10)
+>> say 1001 no
+>> say 1001 torch 100
+CALL buy(1001, 2050, 100, 200)
+>> say 1001 yes
+>> say 1001 torch 100
+CALL buy(1001, 2050, 100, 200)
+>> say 1001 no
+>> say 1001 torch all
+CALL buy(1001, 2050, 1, 2)
+>> say 1001 yes
+>> say 1001 torch all
+CALL buy(1001, 2050, 1, 2)
+>> say 1001 no
+>> think
+>> say 1001 antorcha
+CALL buy(1001, 2050, 1, 2)
+>> say 1001 yes
+>> say 1001 antorcha
+CALL buy(1001, 2050, 1, 2)
+>> say 1001 no
+>> say 1001 5 antorcha
+CALL buy(1001, 2050, 5, 10)
+>> say 1001 yes
+>> say 1001 5 antorcha
+CALL buy(1001, 2050, 5, 10)
+>> say 1001 no
+>> say 1001 antorcha 100
+CALL buy(1001, 2050, 100, 200)
+>> say 1001 yes
+>> say 1001 antorcha 100
+CALL buy(1001, 2050, 100, 200)
+>> say 1001 no
+>> say 1001 antorcha all
+CALL buy(1001, 2050, 1, 2)
+>> say 1001 yes
+>> say 1001 antorcha all
+CALL buy(1001, 2050, 1, 2)
+>> say 1001 no
+>> think
+>> say 1001 backpack mana fluid
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 7, 20, 2010)
+>> say 1001 yes
+>> say 1001 backpack mana fluid
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 7, 20, 2010)
+>> say 1001 no
+>> say 1001 5 backpack mana fluid
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 7, 20, 2010)
+>> say 1001 yes
+>> say 1001 5 backpack mana fluid
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 7, 20, 2010)
+>> say 1001 no
+>> say 1001 backpack mana fluid 100
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 7, 20, 2010)
+>> say 1001 yes
+>> say 1001 backpack mana fluid 100
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 7, 20, 2010)
+>> say 1001 no
+>> say 1001 backpack mana fluid all
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 7, 20, 2010)
+>> say 1001 yes
+>> say 1001 backpack mana fluid all
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidBackpack(1001, 1988, 2006, 7, 20, 2010)
+>> say 1001 no
+>> think
+>> say 1001 bp
+>> say 1001 yes
+>> say 1001 bp
+>> say 1001 no
+>> say 1001 5 bp
+>> say 1001 yes
+>> say 1001 5 bp
+>> say 1001 no
+>> say 1001 bp 100
+>> say 1001 yes
+>> say 1001 bp 100
+>> say 1001 no
+>> say 1001 bp all
+>> say 1001 yes
+>> say 1001 bp all
+>> say 1001 no
+>> think
+>> say 1001 bp of
+>> say 1001 yes
+>> say 1001 bp of
+>> say 1001 no
+>> say 1001 5 bp of
+>> say 1001 yes
+>> say 1001 5 bp of
+>> say 1001 no
+>> say 1001 bp of 100
+>> say 1001 yes
+>> say 1001 bp of 100
+>> say 1001 no
+>> say 1001 bp of all
+>> say 1001 yes
+>> say 1001 bp of all
+>> say 1001 no
+>> think
+>> say 1001 bp de
+>> say 1001 yes
+>> say 1001 bp de
+>> say 1001 no
+>> say 1001 5 bp de
+>> say 1001 yes
+>> say 1001 5 bp de
+>> say 1001 no
+>> say 1001 bp de 100
+>> say 1001 yes
+>> say 1001 bp de 100
+>> say 1001 no
+>> say 1001 bp de all
+>> say 1001 yes
+>> say 1001 bp de all
+>> say 1001 no
+>> think
+>> say 1001 backpack of
+CALL buy(1001, 1988, 1, 10)
+>> say 1001 yes
+>> say 1001 backpack of
+CALL buy(1001, 1988, 1, 10)
+>> say 1001 no
+>> say 1001 5 backpack of
+CALL buy(1001, 1988, 5, 50)
+>> say 1001 yes
+>> say 1001 5 backpack of
+CALL buy(1001, 1988, 5, 50)
+>> say 1001 no
+>> say 1001 backpack of 100
+CALL buy(1001, 1988, 100, 1000)
+>> say 1001 yes
+>> say 1001 backpack of 100
+CALL buy(1001, 1988, 100, 1000)
+>> say 1001 no
+>> say 1001 backpack of all
+CALL buy(1001, 1988, 1, 10)
+>> say 1001 yes
+>> say 1001 backpack of all
+CALL buy(1001, 1988, 1, 10)
+>> say 1001 no
+>> think
+>> say 1001 backpack de
+CALL buy(1001, 1988, 1, 10)
+>> say 1001 yes
+>> say 1001 backpack de
+CALL buy(1001, 1988, 1, 10)
+>> say 1001 no
+>> say 1001 5 backpack de
+CALL buy(1001, 1988, 5, 50)
+>> say 1001 yes
+>> say 1001 5 backpack de
+CALL buy(1001, 1988, 5, 50)
+>> say 1001 no
+>> say 1001 backpack de 100
+CALL buy(1001, 1988, 100, 1000)
+>> say 1001 yes
+>> say 1001 backpack de 100
+CALL buy(1001, 1988, 100, 1000)
+>> say 1001 no
+>> say 1001 backpack de all
+CALL buy(1001, 1988, 1, 10)
+>> say 1001 yes
+>> say 1001 backpack de all
+CALL buy(1001, 1988, 1, 10)
+>> say 1001 no
+>> think
+>> say 1001 mochila de
+CALL buy(1001, 1988, 1, 10)
+>> say 1001 yes
+>> say 1001 mochila de
+CALL buy(1001, 1988, 1, 10)
+>> say 1001 no
+>> say 1001 5 mochila de
+CALL buy(1001, 1988, 5, 50)
+>> say 1001 yes
+>> say 1001 5 mochila de
+CALL buy(1001, 1988, 5, 50)
+>> say 1001 no
+>> say 1001 mochila de 100
+CALL buy(1001, 1988, 100, 1000)
+>> say 1001 yes
+>> say 1001 mochila de 100
+CALL buy(1001, 1988, 100, 1000)
+>> say 1001 no
+>> say 1001 mochila de all
+CALL buy(1001, 1988, 1, 10)
+>> say 1001 yes
+>> say 1001 mochila de all
+CALL buy(1001, 1988, 1, 10)
+>> say 1001 no
+>> think
+>> say 1001 help
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 help
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> say 1001 5 help
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 5 help
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> say 1001 help 100
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 help 100
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> say 1001 help all
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 yes
+>> say 1001 help all
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1001 no
+>> think
+>> say 1001 weapons
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 yes
+>> say 1001 weapons
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 no
+>> say 1001 5 weapons
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 yes
+>> say 1001 5 weapons
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 no
+>> say 1001 weapons 100
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 yes
+>> say 1001 weapons 100
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 no
+>> say 1001 weapons all
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 yes
+>> say 1001 weapons all
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 no
+>> think
+>> say 1001 armor
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 armor
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 5 armor
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 5 armor
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 armor 100
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 armor 100
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 armor all
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 armor all
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> think
+>> say 1001 sets
+SAY Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.
+>> say 1001 yes
+>> say 1001 sets
+SAY Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.
+>> say 1001 no
+>> say 1001 5 sets
+SAY Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.
+>> say 1001 yes
+>> say 1001 5 sets
+SAY Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.
+>> say 1001 no
+>> say 1001 sets 100
+SAY Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.
+>> say 1001 yes
+>> say 1001 sets 100
+SAY Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.
+>> say 1001 no
+>> say 1001 sets all
+SAY Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.
+>> say 1001 yes
+>> say 1001 sets all
+SAY Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.
+>> say 1001 no
+>> think
+>> say 1001 focused
+>> say 1001 yes
+>> say 1001 focused
+>> say 1001 no
+>> say 1001 5 focused
+>> say 1001 yes
+>> say 1001 5 focused
+>> say 1001 no
+>> say 1001 focused 100
+>> say 1001 yes
+>> say 1001 focused 100
+>> say 1001 no
+>> say 1001 focused all
+>> say 1001 yes
+>> say 1001 focused all
+>> say 1001 no
+>> think
+>> say 1001 weapon
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 yes
+>> say 1001 weapon
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 no
+>> say 1001 5 weapon
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 yes
+>> say 1001 5 weapon
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 no
+>> say 1001 weapon 100
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 yes
+>> say 1001 weapon 100
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 no
+>> say 1001 weapon all
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 yes
+>> say 1001 weapon all
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 no
+>> think
+>> say 1001 armas
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 yes
+>> say 1001 armas
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 no
+>> say 1001 5 armas
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 yes
+>> say 1001 5 armas
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 no
+>> say 1001 armas 100
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 yes
+>> say 1001 armas 100
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 no
+>> say 1001 armas all
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 yes
+>> say 1001 armas all
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 no
+>> think
+>> say 1001 arma
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 yes
+>> say 1001 arma
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 no
+>> say 1001 5 arma
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 yes
+>> say 1001 5 arma
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 no
+>> say 1001 arma 100
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 yes
+>> say 1001 arma 100
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 no
+>> say 1001 arma all
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 yes
+>> say 1001 arma all
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1001 no
+>> think
+>> say 1001 armors
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 armors
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 5 armors
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 5 armors
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 armors 100
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 armors 100
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 armors all
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 armors all
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> think
+>> say 1001 armadura
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 armadura
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 5 armadura
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 5 armadura
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 armadura 100
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 armadura 100
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 armadura all
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 armadura all
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> think
+>> say 1001 armaduras
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 armaduras
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 5 armaduras
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 5 armaduras
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 armaduras 100
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 armaduras 100
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 armaduras all
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 armaduras all
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> think
+>> say 1001 shield
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 shield
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 5 shield
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 5 shield
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 shield 100
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 shield 100
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 shield all
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 shield all
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> think
+>> say 1001 shields
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 shields
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 5 shields
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 5 shields
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 shields 100
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 shields 100
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 shields all
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 shields all
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> think
+>> say 1001 helmet
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 helmet
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 5 helmet
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 5 helmet
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 helmet 100
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 helmet 100
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 helmet all
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 helmet all
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> think
+>> say 1001 helmets
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 helmets
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 5 helmets
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 5 helmets
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 helmets 100
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 helmets 100
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 helmets all
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 helmets all
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> think
+>> say 1001 legs
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 legs
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 5 legs
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 5 legs
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 legs 100
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 legs 100
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 legs all
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 legs all
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> think
+>> say 1001 boots
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 boots
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 5 boots
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 5 boots
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 boots 100
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 boots 100
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> say 1001 boots all
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 yes
+>> say 1001 boots all
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1001 no
+>> think
+>> say 1001 set
+SAY Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.
+>> say 1001 yes
+>> say 1001 set
+SAY Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.
+>> say 1001 no
+>> say 1001 5 set
+SAY Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.
+>> say 1001 yes
+>> say 1001 5 set
+SAY Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.
+>> say 1001 no
+>> say 1001 set 100
+SAY Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.
+>> say 1001 yes
+>> say 1001 set 100
+SAY Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.
+>> say 1001 no
+>> say 1001 set all
+SAY Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.
+>> say 1001 yes
+>> say 1001 set all
+SAY Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.
+>> say 1001 no
+>> think
+>> say 1001 knight set
+SAY Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.
+>> say 1001 yes
+>> say 1001 knight set
+SAY Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.
+>> say 1001 no
+>> say 1001 5 knight set
+SAY Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.
+>> say 1001 yes
+>> say 1001 5 knight set
+SAY Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.
+>> say 1001 no
+>> say 1001 knight set 100
+SAY Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.
+>> say 1001 yes
+>> say 1001 knight set 100
+SAY Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.
+>> say 1001 no
+>> say 1001 knight set all
+SAY Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.
+>> say 1001 yes
+>> say 1001 knight set all
+SAY Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.
+>> say 1001 no
+>> think
+>> say 1001 sell all vials
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
+>> say 1001 yes
+>> say 1001 sell all vials
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
+>> say 1001 no
+>> say 1001 5 sell all vials
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
+>> say 1001 yes
+>> say 1001 5 sell all vials
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
+>> say 1001 no
+>> say 1001 sell all vials 100
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
+>> say 1001 yes
+>> say 1001 sell all vials 100
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
+>> say 1001 no
+>> say 1001 sell all vials all
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
+>> say 1001 yes
+>> say 1001 sell all vials all
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
+>> say 1001 no
+>> think
+>> say 1001 sell all flasks
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
+>> say 1001 yes
+>> say 1001 sell all flasks
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
+>> say 1001 no
+>> say 1001 5 sell all flasks
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
+>> say 1001 yes
+>> say 1001 5 sell all flasks
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
+>> say 1001 no
+>> say 1001 sell all flasks 100
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
+>> say 1001 yes
+>> say 1001 sell all flasks 100
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
+>> say 1001 no
+>> say 1001 sell all flasks all
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
+>> say 1001 yes
+>> say 1001 sell all flasks all
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
+>> say 1001 no
+>> think
+>> say 1001 sell all frascos
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
+>> say 1001 yes
+>> say 1001 sell all frascos
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
+>> say 1001 no
+>> say 1001 5 sell all frascos
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
+>> say 1001 yes
+>> say 1001 5 sell all frascos
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
+>> say 1001 no
+>> say 1001 sell all frascos 100
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
+>> say 1001 yes
+>> say 1001 sell all frascos 100
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
+>> say 1001 no
+>> say 1001 sell all frascos all
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
+>> say 1001 yes
+>> say 1001 sell all frascos all
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
+>> say 1001 no
+>> think
+>> say 1001 vial
+CALL sellFluid(1001, 2006, 0, 1, 10)
+>> say 1001 yes
+>> say 1001 vial
+CALL sellFluid(1001, 2006, 0, 1, 10)
+>> say 1001 no
+>> say 1001 5 vial
+CALL sellFluid(1001, 2006, 0, 1, 10)
+>> say 1001 yes
+>> say 1001 5 vial
+CALL sellFluid(1001, 2006, 0, 1, 10)
+>> say 1001 no
+>> say 1001 vial 100
+CALL sellFluid(1001, 2006, 0, 1, 10)
+>> say 1001 yes
+>> say 1001 vial 100
+CALL sellFluid(1001, 2006, 0, 1, 10)
+>> say 1001 no
+>> say 1001 vial all
+CALL sellFluid(1001, 2006, 0, 1, 10)
+>> say 1001 yes
+>> say 1001 vial all
+CALL sellFluid(1001, 2006, 0, 1, 10)
+>> say 1001 no
+>> think
+>> say 1001 flask
+CALL sellFluid(1001, 2006, 0, 1, 10)
+>> say 1001 yes
+>> say 1001 flask
+CALL sellFluid(1001, 2006, 0, 1, 10)
+>> say 1001 no
+>> say 1001 5 flask
+CALL sellFluid(1001, 2006, 0, 1, 10)
+>> say 1001 yes
+>> say 1001 5 flask
+CALL sellFluid(1001, 2006, 0, 1, 10)
+>> say 1001 no
+>> say 1001 flask 100
+CALL sellFluid(1001, 2006, 0, 1, 10)
+>> say 1001 yes
+>> say 1001 flask 100
+CALL sellFluid(1001, 2006, 0, 1, 10)
+>> say 1001 no
+>> say 1001 flask all
+CALL sellFluid(1001, 2006, 0, 1, 10)
+>> say 1001 yes
+>> say 1001 flask all
+CALL sellFluid(1001, 2006, 0, 1, 10)
+>> say 1001 no
+>> think
+>> say 1001 frasco
+CALL sellFluid(1001, 2006, 0, 1, 10)
+>> say 1001 yes
+>> say 1001 frasco
+CALL sellFluid(1001, 2006, 0, 1, 10)
+>> say 1001 no
+>> say 1001 5 frasco
+CALL sellFluid(1001, 2006, 0, 1, 10)
+>> say 1001 yes
+>> say 1001 5 frasco
+CALL sellFluid(1001, 2006, 0, 1, 10)
+>> say 1001 no
+>> say 1001 frasco 100
+CALL sellFluid(1001, 2006, 0, 1, 10)
+>> say 1001 yes
+>> say 1001 frasco 100
+CALL sellFluid(1001, 2006, 0, 1, 10)
+>> say 1001 no
+>> say 1001 frasco all
+CALL sellFluid(1001, 2006, 0, 1, 10)
+>> say 1001 yes
+>> say 1001 frasco all
+CALL sellFluid(1001, 2006, 0, 1, 10)
+>> say 1001 no
+>> think
+>> say 1001 bye
+CALL cancelPendingTrade(1001)
+SAY Bye, Player1001! Come back anytime.
+>> say 1001 hi
+SAY Hi Player1001! I sell supplies, fluid backpacks, weapons and knight gear. Say "help", "weapons", "armor" or "sets" for prices.
+>> advance 40
+>> think
+CALL cancelPendingTrade(1001)
+SAY Next please...
+>> say 1001 hi
+SAY Hi Player1001! I sell supplies, fluid backpacks, weapons and knight gear. Say "help", "weapons", "armor" or "sets" for prices.
+>> far 1001
+>> think
+CALL cancelPendingTrade(1001)
+SAY See you later!
+>> near 1001
+>> say 1001 hola
+SAY Hi Player1001! I sell supplies, fluid backpacks, weapons and knight gear. Say "help", "weapons", "armor" or "sets" for prices.
+>> disappear 1001
+CALL cancelPendingTrade(1001)
+SAY See you later!
+>> say 1002 hi
+SAY Hi Player1002! I sell supplies, fluid backpacks, weapons and knight gear. Say "help", "weapons", "armor" or "sets" for prices.
+>> set 1002 money 0
+>> set 1002 slots 0
+>> set 1002 level 1
+>> say 1002 bp mana
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 bp life
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 bp smp
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 bp strong mana
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 strong mana potion
+CALL buyFluidQty(1002, 2006, 14, 1, 250)
+>> say 1002 yes
+>> say 1002 strong mana
+CALL buyFluidQty(1002, 2006, 14, 1, 250)
+>> say 1002 yes
+>> say 1002 smp
+CALL buyFluidQty(1002, 2006, 14, 1, 250)
+>> say 1002 yes
+>> say 1002 mana fluid
+CALL buyFluidQty(1002, 2006, 7, 1, 100)
+>> say 1002 yes
+>> say 1002 manafluid
+CALL buyFluidQty(1002, 2006, 7, 1, 100)
+>> say 1002 yes
+>> say 1002 mana
+CALL buyFluidQty(1002, 2006, 7, 1, 100)
+>> say 1002 yes
+>> say 1002 life fluid
+CALL buyFluidQty(1002, 2006, 10, 1, 60)
+>> say 1002 yes
+>> say 1002 lifefluid
+CALL buyFluidQty(1002, 2006, 10, 1, 60)
+>> say 1002 yes
+>> say 1002 life
+CALL buyFluidQty(1002, 2006, 10, 1, 60)
+>> say 1002 yes
+>> say 1002 serpent sword
+CALL buy(1002, 2409, 1, 2500)
+>> say 1002 yes
+>> say 1002 serpent
+CALL buy(1002, 2409, 1, 2500)
+>> say 1002 yes
+>> say 1002 knight axe
+CALL buy(1002, 2430, 1, 2800)
+>> say 1002 yes
+>> say 1002 war hammer
+CALL buy(1002, 2391, 1, 3000)
+>> say 1002 yes
+>> say 1002 hammer
+CALL buy(1002, 2391, 1, 3000)
+>> say 1002 yes
+>> say 1002 chain helmet
+CALL buy(1002, 2458, 1, 40)
+>> say 1002 yes
+>> say 1002 brass helmet
+CALL buy(1002, 2460, 1, 60)
+>> say 1002 yes
+>> say 1002 steel helmet
+CALL buy(1002, 2457, 1, 350)
+>> say 1002 yes
+>> say 1002 chain armor
+CALL buy(1002, 2464, 1, 120)
+>> say 1002 yes
+>> say 1002 brass armor
+CALL buy(1002, 2465, 1, 300)
+>> say 1002 yes
+>> say 1002 plate armor
+CALL buy(1002, 2463, 1, 800)
+>> say 1002 yes
+>> say 1002 knight armor
+CALL buy(1002, 2476, 1, 4500)
+>> say 1002 yes
+>> say 1002 brass legs
+CALL buy(1002, 2478, 1, 120)
+>> say 1002 yes
+>> say 1002 plate legs
+CALL buy(1002, 2647, 1, 900)
+>> say 1002 yes
+>> say 1002 knight legs
+CALL buy(1002, 2477, 1, 4500)
+>> say 1002 yes
+>> say 1002 brass shield
+CALL buy(1002, 2511, 1, 40)
+>> say 1002 yes
+>> say 1002 copper shield
+CALL buy(1002, 2530, 1, 60)
+>> say 1002 yes
+>> say 1002 plate shield
+CALL buy(1002, 2510, 1, 400)
+>> say 1002 yes
+>> say 1002 steel shield
+CALL buy(1002, 2509, 1, 1200)
+>> say 1002 yes
+>> say 1002 guardian shield
+CALL buy(1002, 2515, 1, 2500)
+>> say 1002 yes
+>> say 1002 guardians shield
+CALL buy(1002, 2515, 1, 2500)
+>> say 1002 yes
+>> say 1002 leather boots
+CALL buy(1002, 2643, 1, 8)
+>> say 1002 yes
+>> say 1002 fishing rod
+CALL buy(1002, 2580, 1, 100)
+>> say 1002 yes
+>> say 1002 cana
+CALL buy(1002, 2580, 1, 100)
+>> say 1002 yes
+>> say 1002 backpack
+CALL buy(1002, 1988, 1, 10)
+>> say 1002 yes
+>> say 1002 mochila
+CALL buy(1002, 1988, 1, 10)
+>> say 1002 yes
+>> say 1002 shovel
+CALL buy(1002, 2554, 1, 20)
+>> say 1002 yes
+>> say 1002 pala
+CALL buy(1002, 2554, 1, 20)
+>> say 1002 yes
+>> say 1002 rope
+CALL buy(1002, 2120, 1, 50)
+>> say 1002 yes
+>> say 1002 cuerda
+CALL buy(1002, 2120, 1, 50)
+>> say 1002 yes
+>> say 1002 torch
+CALL buy(1002, 2050, 1, 2)
+>> say 1002 yes
+>> say 1002 antorcha
+CALL buy(1002, 2050, 1, 2)
+>> say 1002 yes
+>> say 1002 backpack mana fluid
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+>> say 1002 yes
+>> say 1002 bp
+>> say 1002 yes
+>> say 1002 bp of
+>> say 1002 yes
+>> say 1002 bp de
+>> say 1002 yes
+>> say 1002 backpack of
+CALL buy(1002, 1988, 1, 10)
+>> say 1002 yes
+>> say 1002 backpack de
+CALL buy(1002, 1988, 1, 10)
+>> say 1002 yes
+>> say 1002 mochila de
+CALL buy(1002, 1988, 1, 10)
+>> say 1002 yes
+>> say 1002 help
+SAY I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (100gp), life fluid (60gp), strong mana potion / SMP (250gp), backpack of mana fluid (2010gp), backpack of life fluid (1210gp), backpack of strong mana potion (5010gp), fishing rod (100gp) and torch (2gp). Weapons: serpent sword (2500gp), knight axe (2800gp), war hammer (3000gp). Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp. Say any amount, e.g. "3 rope". For full fluid backpacks, say "bp mana", "bp life", "bp smp", "bp strong mana" or "backpack strong mana potion". I buy empty vials (10gp each). You can also say sell all vials.
+>> say 1002 yes
+>> say 1002 weapons
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1002 yes
+>> say 1002 armor
+SAY Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.
+>> say 1002 yes
+>> say 1002 sets
+SAY Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.
+>> say 1002 yes
+>> say 1002 focused
+>> say 1002 yes
+>> say 1002 weapon
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1002 yes
+>> say 1002 armas
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1002 yes
+>> say 1002 arma
+SAY Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.
+>> say 1002 yes
+>> say 1002 chau
+CALL cancelPendingTrade(1002)
+SAY Bye, Player1002! Come back anytime.
+>> think 3

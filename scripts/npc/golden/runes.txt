@@ -1,0 +1,2709 @@
+>> near 1001
+>> near 1002
+>> say 1001 hello there
+>> say 1001 hi
+SAY Hi Player1001! I sell runes, rune backpacks, mana fluids, strong mana potions, wands and rods. Say "help" or "backpacks" for prices.
+>> say 1002 hi
+SAY One moment, Player1002! I am helping someone else.
+>> say 1001 help
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 help
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 help
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 help
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 help
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 help 100
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 help 100
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 help all
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 help all
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 ayuda
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 ayuda
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 ayuda
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 ayuda
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 ayuda 100
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 ayuda 100
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 ayuda all
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 ayuda all
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 offer
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 offer
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 offer
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 offer
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 offer 100
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 offer 100
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 offer all
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 offer all
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 trade
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 trade
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 trade
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 trade
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 trade 100
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 trade 100
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 trade all
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 trade all
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 list
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 list
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 list
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 list
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 list 100
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 list 100
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 list all
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 list all
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 info
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 info
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 info
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 info
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 info 100
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 info 100
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 info all
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 info all
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 job
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 job
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 job
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 job
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 job 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 job 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 job all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 job all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 name
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 name
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 name
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 name
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 name 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 name 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 name all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 name all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 si
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 si
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 si
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 si
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 si 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 si 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 si all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 si all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 sell
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 sell
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 sell
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 sell
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 sell 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 sell 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 sell all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 sell all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 buy
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 buy
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 buy
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 buy
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 buy 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 buy 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 buy all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 buy all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 all 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 all 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 all all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 all all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 status
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 status
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 status
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 status
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 status 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 status 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 status all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 status all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 deposit 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 deposit 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 deposit 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 deposit 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 deposit 100 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 deposit 100 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 deposit 100 all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 deposit 100 all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 withdraw 50
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 withdraw 50
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 withdraw 50
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 withdraw 50
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 withdraw 50 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 withdraw 50 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 withdraw 50 all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 withdraw 50 all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 balance
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 balance
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 balance
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 balance
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 balance 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 balance 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 balance all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 balance all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 transfer 10 to player1002
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 transfer 10 to player1002
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 transfer 10 to player1002
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 transfer 10 to player1002
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 transfer 10 to player1002 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 transfer 10 to player1002 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 transfer 10 to player1002 all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 transfer 10 to player1002 all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 backpacks
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 backpacks
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 backpacks
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 backpacks
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 backpacks 100
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 backpacks 100
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 backpacks all
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 backpacks all
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 wands
+SAY Magic weapons:, cosmic energy 10k, dragonbreath 1k, inferno 15k, moonlight 1k, plague 5k, quagmire 10k, snakebite 500gp, tempest 15k, volcanic 5k, vortex 500gp
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 wands
+SAY Magic weapons:, cosmic energy 10k, dragonbreath 1k, inferno 15k, moonlight 1k, plague 5k, quagmire 10k, snakebite 500gp, tempest 15k, volcanic 5k, vortex 500gp
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 wands
+SAY Magic weapons:, cosmic energy 10k, dragonbreath 1k, inferno 15k, moonlight 1k, plague 5k, quagmire 10k, snakebite 500gp, tempest 15k, volcanic 5k, vortex 500gp
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 wands
+SAY Magic weapons:, cosmic energy 10k, dragonbreath 1k, inferno 15k, moonlight 1k, plague 5k, quagmire 10k, snakebite 500gp, tempest 15k, volcanic 5k, vortex 500gp
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 wands 100
+SAY Magic weapons:, cosmic energy 10k, dragonbreath 1k, inferno 15k, moonlight 1k, plague 5k, quagmire 10k, snakebite 500gp, tempest 15k, volcanic 5k, vortex 500gp
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 wands 100
+SAY Magic weapons:, cosmic energy 10k, dragonbreath 1k, inferno 15k, moonlight 1k, plague 5k, quagmire 10k, snakebite 500gp, tempest 15k, volcanic 5k, vortex 500gp
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 wands all
+SAY Magic weapons:, cosmic energy 10k, dragonbreath 1k, inferno 15k, moonlight 1k, plague 5k, quagmire 10k, snakebite 500gp, tempest 15k, volcanic 5k, vortex 500gp
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 wands all
+SAY Magic weapons:, cosmic energy 10k, dragonbreath 1k, inferno 15k, moonlight 1k, plague 5k, quagmire 10k, snakebite 500gp, tempest 15k, volcanic 5k, vortex 500gp
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 rods
+SAY Magic weapons:, cosmic energy 10k, dragonbreath 1k, inferno 15k, moonlight 1k, plague 5k, quagmire 10k, snakebite 500gp, tempest 15k, volcanic 5k, vortex 500gp
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 rods
+SAY Magic weapons:, cosmic energy 10k, dragonbreath 1k, inferno 15k, moonlight 1k, plague 5k, quagmire 10k, snakebite 500gp, tempest 15k, volcanic 5k, vortex 500gp
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 rods
+SAY Magic weapons:, cosmic energy 10k, dragonbreath 1k, inferno 15k, moonlight 1k, plague 5k, quagmire 10k, snakebite 500gp, tempest 15k, volcanic 5k, vortex 500gp
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 rods
+SAY Magic weapons:, cosmic energy 10k, dragonbreath 1k, inferno 15k, moonlight 1k, plague 5k, quagmire 10k, snakebite 500gp, tempest 15k, volcanic 5k, vortex 500gp
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 rods 100
+SAY Magic weapons:, cosmic energy 10k, dragonbreath 1k, inferno 15k, moonlight 1k, plague 5k, quagmire 10k, snakebite 500gp, tempest 15k, volcanic 5k, vortex 500gp
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 rods 100
+SAY Magic weapons:, cosmic energy 10k, dragonbreath 1k, inferno 15k, moonlight 1k, plague 5k, quagmire 10k, snakebite 500gp, tempest 15k, volcanic 5k, vortex 500gp
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 rods all
+SAY Magic weapons:, cosmic energy 10k, dragonbreath 1k, inferno 15k, moonlight 1k, plague 5k, quagmire 10k, snakebite 500gp, tempest 15k, volcanic 5k, vortex 500gp
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 rods all
+SAY Magic weapons:, cosmic energy 10k, dragonbreath 1k, inferno 15k, moonlight 1k, plague 5k, quagmire 10k, snakebite 500gp, tempest 15k, volcanic 5k, vortex 500gp
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 sudden death
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2268, 1, 1, 250)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 sudden death
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2268, 1, 1, 250)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 sudden death
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2268, 5, 1, 1250)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 sudden death
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2268, 5, 1, 1250)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 sudden death 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 sudden death 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 sudden death all
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2268, 1, 1, 250)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 sudden death all
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2268, 1, 1, 250)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 sd
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2268, 1, 1, 250)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 sd
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2268, 1, 1, 250)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 sd
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2268, 5, 1, 1250)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 sd
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2268, 5, 1, 1250)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 sd 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 sd 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 sd all
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2268, 1, 1, 250)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 sd all
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2268, 1, 1, 250)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 ultimate healing
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2273, 1, 2, 200)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 ultimate healing
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2273, 1, 2, 200)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 ultimate healing
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2273, 5, 2, 1000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 ultimate healing
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2273, 5, 2, 1000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 ultimate healing 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 ultimate healing 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 ultimate healing all
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2273, 1, 2, 200)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 ultimate healing all
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2273, 1, 2, 200)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 uh
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2273, 1, 2, 200)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 uh
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2273, 1, 2, 200)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 uh
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2273, 5, 2, 1000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 uh
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2273, 5, 2, 1000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 uh 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 uh 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 uh all
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2273, 1, 2, 200)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 uh all
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2273, 1, 2, 200)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 great fireball
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2304, 1, 3, 45)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 great fireball
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2304, 1, 3, 45)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 great fireball
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2304, 5, 3, 225)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 great fireball
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2304, 5, 3, 225)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 great fireball 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 great fireball 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 great fireball all
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2304, 1, 3, 45)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 great fireball all
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2304, 1, 3, 45)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 gfb
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2304, 1, 3, 45)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 gfb
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2304, 1, 3, 45)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 gfb
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2304, 5, 3, 225)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 gfb
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2304, 5, 3, 225)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 gfb 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 gfb 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 gfb all
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2304, 1, 3, 45)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 gfb all
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2304, 1, 3, 45)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 explosion
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2313, 1, 3, 35)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 explosion
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2313, 1, 3, 35)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 explosion
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2313, 5, 3, 175)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 explosion
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2313, 5, 3, 175)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 explosion 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 explosion 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 explosion all
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2313, 1, 3, 35)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 explosion all
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2313, 1, 3, 35)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 heavy magic missile
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2311, 1, 5, 15)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 heavy magic missile
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2311, 1, 5, 15)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 heavy magic missile
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2311, 5, 5, 75)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 heavy magic missile
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2311, 5, 5, 75)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 heavy magic missile 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 heavy magic missile 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 heavy magic missile all
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2311, 1, 5, 15)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 heavy magic missile all
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2311, 1, 5, 15)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 hmm
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2311, 1, 5, 15)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 hmm
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2311, 1, 5, 15)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 hmm
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2311, 5, 5, 75)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 hmm
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2311, 5, 5, 75)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 hmm 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 hmm 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 hmm all
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2311, 1, 5, 15)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 hmm all
+CALL getPlayerFreeSlots(1001)
+CALL buyRuneQty(1001, 2311, 1, 5, 15)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 blank rune
+CALL getPlayerFreeSlots(1001)
+CALL buyItemQty(1001, 2260, 1, 10)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 blank rune
+CALL getPlayerFreeSlots(1001)
+CALL buyItemQty(1001, 2260, 1, 10)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 blank rune
+CALL getPlayerFreeSlots(1001)
+CALL buyItemQty(1001, 2260, 5, 50)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 blank rune
+CALL getPlayerFreeSlots(1001)
+CALL buyItemQty(1001, 2260, 5, 50)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 blank rune 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 blank rune 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 blank rune all
+CALL getPlayerFreeSlots(1001)
+CALL buyItemQty(1001, 2260, 1, 10)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 blank rune all
+CALL getPlayerFreeSlots(1001)
+CALL buyItemQty(1001, 2260, 1, 10)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 blank
+CALL getPlayerFreeSlots(1001)
+CALL buyItemQty(1001, 2260, 1, 10)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 blank
+CALL getPlayerFreeSlots(1001)
+CALL buyItemQty(1001, 2260, 1, 10)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 blank
+CALL getPlayerFreeSlots(1001)
+CALL buyItemQty(1001, 2260, 5, 50)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 blank
+CALL getPlayerFreeSlots(1001)
+CALL buyItemQty(1001, 2260, 5, 50)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 blank 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 blank 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 blank all
+CALL getPlayerFreeSlots(1001)
+CALL buyItemQty(1001, 2260, 1, 10)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 blank all
+CALL getPlayerFreeSlots(1001)
+CALL buyItemQty(1001, 2260, 1, 10)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 strong mana potion
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 14, 1, 250)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 strong mana potion
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 14, 1, 250)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 strong mana potion
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 14, 5, 1250)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 strong mana potion
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 14, 5, 1250)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 strong mana potion 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 strong mana potion 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 strong mana potion all
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 14, 1, 250)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 strong mana potion all
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 14, 1, 250)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 strong mana
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 14, 1, 250)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 strong mana
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 14, 1, 250)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 strong mana
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 14, 5, 1250)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 strong mana
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 14, 5, 1250)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 strong mana 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 strong mana 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 strong mana all
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 14, 1, 250)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 strong mana all
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 14, 1, 250)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 smp
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 14, 1, 250)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 smp
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 14, 1, 250)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 smp
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 14, 5, 1250)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 smp
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 14, 5, 1250)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 smp 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 smp 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 smp all
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 14, 1, 250)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 smp all
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 14, 1, 250)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 manafluid
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 7, 1, 100)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 manafluid
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 7, 1, 100)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 manafluid
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 7, 5, 500)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 manafluid
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 7, 5, 500)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 manafluid 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 manafluid 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 manafluid all
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 7, 1, 100)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 manafluid all
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 7, 1, 100)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 mana fluid
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 7, 1, 100)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 mana fluid
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 7, 1, 100)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 mana fluid
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 7, 5, 500)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 mana fluid
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 7, 5, 500)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 mana fluid 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 mana fluid 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 mana fluid all
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 7, 1, 100)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 mana fluid all
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 7, 1, 100)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 mana
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 7, 1, 100)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 mana
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 7, 1, 100)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 mana
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 7, 5, 500)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 mana
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 7, 5, 500)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 mana 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 mana 100
+CALL getPlayerFreeSlots(1001)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 mana all
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 7, 1, 100)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 mana all
+CALL getPlayerFreeSlots(1001)
+CALL buyFluidQty(1001, 2006, 7, 1, 100)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 cosmic energy
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2189, 1, 10000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 cosmic energy
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2189, 1, 10000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 cosmic energy
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2189, 1, 10000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 cosmic energy
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2189, 1, 10000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 cosmic energy 100
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2189, 1, 10000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 cosmic energy 100
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2189, 1, 10000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 cosmic energy all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2189, 1, 10000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 cosmic energy all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2189, 1, 10000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 dragonbreath
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2191, 1, 1000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 dragonbreath
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2191, 1, 1000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 dragonbreath
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2191, 1, 1000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 dragonbreath
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2191, 1, 1000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 dragonbreath 100
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2191, 1, 1000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 dragonbreath 100
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2191, 1, 1000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 dragonbreath all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2191, 1, 1000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 dragonbreath all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2191, 1, 1000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 inferno
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2187, 1, 15000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 inferno
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2187, 1, 15000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 inferno
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2187, 1, 15000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 inferno
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2187, 1, 15000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 inferno 100
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2187, 1, 15000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 inferno 100
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2187, 1, 15000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 inferno all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2187, 1, 15000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 inferno all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2187, 1, 15000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 moonlight
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2186, 1, 1000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 moonlight
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2186, 1, 1000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 moonlight
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2186, 1, 1000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 moonlight
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2186, 1, 1000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 moonlight 100
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2186, 1, 1000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 moonlight 100
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2186, 1, 1000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 moonlight all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2186, 1, 1000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 moonlight all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2186, 1, 1000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 plague
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2188, 1, 5000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 plague
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2188, 1, 5000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 plague
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2188, 1, 5000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 plague
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2188, 1, 5000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 plague 100
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2188, 1, 5000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 plague 100
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2188, 1, 5000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 plague all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2188, 1, 5000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 plague all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2188, 1, 5000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 quagmire
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2181, 1, 10000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 quagmire
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2181, 1, 10000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 quagmire
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2181, 1, 10000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 quagmire
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2181, 1, 10000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 quagmire 100
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2181, 1, 10000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 quagmire 100
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2181, 1, 10000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 quagmire all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2181, 1, 10000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 quagmire all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2181, 1, 10000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 snakebite
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2182, 1, 500)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 snakebite
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2182, 1, 500)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 snakebite
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2182, 1, 500)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 snakebite
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2182, 1, 500)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 snakebite 100
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2182, 1, 500)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 snakebite 100
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2182, 1, 500)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 snakebite all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2182, 1, 500)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 snakebite all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2182, 1, 500)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 tempest
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2183, 1, 15000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 tempest
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2183, 1, 15000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 tempest
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2183, 1, 15000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 tempest
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2183, 1, 15000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 tempest 100
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2183, 1, 15000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 tempest 100
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2183, 1, 15000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 tempest all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2183, 1, 15000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 tempest all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2183, 1, 15000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 volcanic
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2185, 1, 5000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 volcanic
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2185, 1, 5000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 volcanic
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2185, 1, 5000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 volcanic
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2185, 1, 5000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 volcanic 100
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2185, 1, 5000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 volcanic 100
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2185, 1, 5000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 volcanic all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2185, 1, 5000)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 volcanic all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2185, 1, 5000)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 vortex
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2190, 1, 500)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 vortex
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2190, 1, 500)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 vortex
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2190, 1, 500)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 vortex
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2190, 1, 500)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 vortex 100
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2190, 1, 500)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 vortex 100
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2190, 1, 500)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 vortex all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2190, 1, 500)
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 vortex all
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2190, 1, 500)
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 k
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 k
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 k
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 k
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 k 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 k 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 k all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 k all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 gp
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 gp
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 gp
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 gp
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 gp 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 gp 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 gp all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 gp all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 bp
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 bp
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 bp
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 bp
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 bp 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 bp 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 bp all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 bp all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 backpack
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 backpack
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 backpack
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 backpack
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 backpack 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 backpack 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 backpack all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 backpack all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 backpack of
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 backpack of
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 backpack of
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 backpack of
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 backpack of 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 backpack of 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 backpack of all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 backpack of all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 help
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 help
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 help
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 help
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 help 100
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 help 100
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 help all
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 help all
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 focused
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 focused
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 focused
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 focused
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 focused 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 focused 100
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 focused all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 focused all
+SAY I do not understand. Say "help" for prices.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 price
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 price
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 price
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 price
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 price 100
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 price 100
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 price all
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 price all
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 prices
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 prices
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 prices
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 prices
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 prices 100
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 prices 100
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 prices all
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 prices all
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 cost
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 cost
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 cost
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 cost
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 cost 100
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 cost 100
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 cost all
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 cost all
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 how much
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 how much
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 how much
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 how much
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 how much 100
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 how much 100
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 how much all
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 how much all
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 value
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 value
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 value
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 value
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 value 100
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 value 100
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 value all
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 value all
+SAY Please specify an item. Say "help" for a list.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 runes
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 runes
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 runes
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 runes
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 runes 100
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 runes 100
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 runes all
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 runes all
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 rune backpacks
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 rune backpacks
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 rune backpacks
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 rune backpacks
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 rune backpacks 100
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 rune backpacks 100
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 rune backpacks all
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 rune backpacks all
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 bps
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 bps
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 bps
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 bps
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 bps 100
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 bps 100
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 bps all
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 bps all
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 potions
+SAY Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 potions
+SAY Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 potions
+SAY Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 potions
+SAY Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 potions 100
+SAY Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 potions 100
+SAY Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 potions all
+SAY Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 potions all
+SAY Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 potion
+SAY Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 potion
+SAY Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 potion
+SAY Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 5 potion
+SAY Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 potion 100
+SAY Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 potion 100
+SAY Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> say 1001 potion all
+SAY Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".
+>> say 1001 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1001 potion all
+SAY Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".
+>> say 1001 no
+SAY I do not understand. Say "help" for prices.
+>> think
+>> say 1001 bye
+CALL cancelPendingTrade(1001)
+SAY Bye, Player1001! Come back anytime.
+>> say 1001 hi
+SAY Hi Player1001! I sell runes, rune backpacks, mana fluids, strong mana potions, wands and rods. Say "help" or "backpacks" for prices.
+>> advance 40
+>> think
+CALL cancelPendingTrade(1001)
+SAY Next please...
+>> say 1001 hi
+SAY Hi Player1001! I sell runes, rune backpacks, mana fluids, strong mana potions, wands and rods. Say "help" or "backpacks" for prices.
+>> far 1001
+>> think
+CALL cancelPendingTrade(1001)
+SAY See you later!
+>> near 1001
+>> say 1001 hola
+SAY Hi Player1001! I sell runes, rune backpacks, mana fluids, strong mana potions, wands and rods. Say "help" or "backpacks" for prices.
+>> disappear 1001
+CALL cancelPendingTrade(1001)
+SAY See you later!
+>> say 1002 hi
+SAY Hi Player1002! I sell runes, rune backpacks, mana fluids, strong mana potions, wands and rods. Say "help" or "backpacks" for prices.
+>> set 1002 money 0
+>> set 1002 slots 0
+>> set 1002 level 1
+>> say 1002 backpacks
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 wands
+SAY Magic weapons:, cosmic energy 10k, dragonbreath 1k, inferno 15k, moonlight 1k, plague 5k, quagmire 10k, snakebite 500gp, tempest 15k, volcanic 5k, vortex 500gp
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 rods
+SAY Magic weapons:, cosmic energy 10k, dragonbreath 1k, inferno 15k, moonlight 1k, plague 5k, quagmire 10k, snakebite 500gp, tempest 15k, volcanic 5k, vortex 500gp
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 sudden death
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 sd
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 ultimate healing
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 uh
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 great fireball
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 gfb
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 explosion
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 heavy magic missile
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 hmm
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 blank rune
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 blank
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 strong mana potion
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 strong mana
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 smp
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 manafluid
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 mana fluid
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 mana
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 cosmic energy
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 dragonbreath
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 inferno
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 moonlight
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 plague
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 quagmire
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 snakebite
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 tempest
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 volcanic
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 vortex
+CALL getPlayerFreeSlots(1002)
+SAY You do not have enough space in your backpack for that. Free up some slots first.
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 k
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 gp
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 bp
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 backpack
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 backpack of
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 help
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 focused
+SAY I do not understand. Say "help" for prices.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 price
+SAY Please specify an item. Say "help" for a list.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 prices
+SAY Please specify an item. Say "help" for a list.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 cost
+SAY Please specify an item. Say "help" for a list.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 how much
+SAY Please specify an item. Say "help" for a list.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 value
+SAY Please specify an item. Say "help" for a list.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 runes
+SAY Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp (20 runes each). Say "backpacks" for details. Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 rune backpacks
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 bps
+SAY Rune backpacks: bp HMM 1500gp, bp UH 8000gp, bp GFB 2700gp, bp explosion 2100gp, bp SD 5000gp, bp blank rune 200gp. Each backpack includes 20 runes plus the backpack.
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 potions
+SAY Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 potion
+SAY Mana fluid: 100gp. Strong mana potion: 250gp. Say "mana fluid", "3 mana fluid" or "smp".
+>> say 1002 yes
+SAY I do not understand. Say "help" for prices.
+>> say 1002 chau
+CALL cancelPendingTrade(1002)
+SAY Bye, Player1002! Come back anytime.
+>> think 3

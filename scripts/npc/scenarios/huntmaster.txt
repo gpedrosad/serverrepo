@@ -1,0 +1,14 @@
+# Huntmaster: niveles distintos y aceptar contratos
+set 1001 level 20
+say 1001 hi
+say 1001 task
+say 1001 1
+say 1001 yes
+say 1001 status
+say 1001 reward
+set 1001 level 150
+say 1001 task
+say 1001 2
+say 1001 yes
+say 1001 streak
+say 1001 bye

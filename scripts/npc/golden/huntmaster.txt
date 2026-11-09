@@ -1,0 +1,3053 @@
+>> near 1001
+>> near 1002
+>> say 1001 hello there
+>> say 1001 hi
+SAY Hi Player1001! Daily hunt contracts keep the city safer. Say "task", "status", "reward" or "help".
+>> say 1002 hi
+SAY One moment, Player1002!
+>> say 1001 help
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9205)
+CALL getPlayerStorageValue(1001, 9206)
+CALL setPlayerStorageValue(1001, 9200, 20231114)
+CALL setPlayerStorageValue(1001, 9201, 0)
+CALL setPlayerStorageValue(1001, 9202, 0)
+CALL setPlayerStorageValue(1001, 9203, 0)
+CALL setPlayerStorageValue(1001, 9204, 0)
+CALL setPlayerStorageValue(1001, 9213, 0)
+CALL setPlayerStorageValue(1001, 9214, 0)
+CALL setPlayerStorageValue(1001, 9215, 0)
+CALL setPlayerStorageValue(1001, 9207, 0)
+CALL setPlayerStorageValue(1001, 9208, 0)
+CALL setPlayerStorageValue(1001, 9209, 0)
+CALL setPlayerStorageValue(1001, 9210, 0)
+CALL setPlayerStorageValue(1001, 9211, 0)
+CALL setPlayerStorageValue(1001, 9212, 0)
+CALL setPlayerStorageValue(1001, 9205, 0)
+CALL setPlayerStorageValue(1001, 9206, 0)
+CALL setPlayerStorageValue(1001, 9200, 20231114)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 help
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 help
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 help
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 help
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 help 100
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 help 100
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 help all
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 help all
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 ayuda
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 ayuda
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 ayuda
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 ayuda
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 ayuda 100
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 ayuda 100
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 ayuda all
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 ayuda all
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 offer
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 offer
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 offer
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 offer
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 offer 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 offer 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 offer all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 offer all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 trade
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 trade
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 trade
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 trade
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 trade 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 trade 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 trade all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 trade all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 list
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 list
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 list
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 list
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 list 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 list 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 list all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 list all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 info
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 info
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 info
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 info
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 info 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 info 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 info all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 info all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 job
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 job
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 job
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 job
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 job 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 job 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 job all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 job all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 name
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 name
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 name
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 name
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 name 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 name 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 name all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 name all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 si
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 si
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 si
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 si
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 si 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 si 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 si all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 si all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 sell
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 sell
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 sell
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 sell
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 sell 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 sell 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 sell all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 sell all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 buy
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 buy
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 buy
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 buy
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 buy 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 buy 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 buy all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 buy all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 all 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 all 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 all all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 all all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 status
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY No contract yet today. Say "task" to see three options.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 status
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY No contract yet today. Say "task" to see three options.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 status
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY No contract yet today. Say "task" to see three options.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 status
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY No contract yet today. Say "task" to see three options.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 status 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY No contract yet today. Say "task" to see three options.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 status 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY No contract yet today. Say "task" to see three options.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 status all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY No contract yet today. Say "task" to see three options.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 status all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY No contract yet today. Say "task" to see three options.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 deposit 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 deposit 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 deposit 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 deposit 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 deposit 100 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 deposit 100 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 deposit 100 all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 deposit 100 all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 withdraw 50
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 withdraw 50
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 withdraw 50
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 withdraw 50
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 withdraw 50 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 withdraw 50 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 withdraw 50 all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 withdraw 50 all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 balance
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 balance
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 balance
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 balance
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 balance 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 balance 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 balance all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 balance all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 transfer 10 to player1002
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 transfer 10 to player1002
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 transfer 10 to player1002
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 transfer 10 to player1002
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 transfer 10 to player1002 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 transfer 10 to player1002 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 transfer 10 to player1002 all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 transfer 10 to player1002 all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 task
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL getPlayerStorageValue(1001, 9200)
+CALL setPlayerStorageValue(1001, 9207, 11)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9209, 15)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9211, 13)
+CALL setPlayerStorageValue(1001, 9212, 90)
+CALL setPlayerStorageValue(1001, 9215, 3)
+CALL setPlayerStorageValue(1001, 9201, 1)
+CALL setPlayerStorageValue(1001, 9200, 20231114)
+CALL setPlayerStorageValue(1001, 9202, 0)
+CALL setPlayerStorageValue(1001, 9203, 0)
+CALL setPlayerStorageValue(1001, 9204, 0)
+CALL setPlayerStorageValue(1001, 9213, 0)
+CALL setPlayerStorageValue(1001, 9214, 0)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 task
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 task
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 task
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 task 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 task 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 task all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 task all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 status
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 status
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 status
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 status
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 status 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 status 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 status all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 status all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 reward
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 reward
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 reward
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 reward
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 reward 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 reward 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 reward all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 reward all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 streak
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9205)
+SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 streak
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9205)
+SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 streak
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9205)
+SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 streak
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9205)
+SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 streak 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9205)
+SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 streak 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9205)
+SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 streak all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9205)
+SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 streak all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9205)
+SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 monsters
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 monsters
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 monsters
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 monsters
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 monsters 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 monsters 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 monsters all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 monsters all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 gold
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 gold
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 gold
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 gold
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 gold 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 gold 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 gold all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 gold all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 exp
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 exp
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 exp
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 exp
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 exp 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 exp 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 exp all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 exp all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 help
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 help
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 help
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 help
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 help 100
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 help 100
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 help all
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 help all
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 focused
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 focused
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 focused
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 focused
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 focused 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 focused 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 focused all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 focused all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 ayuda
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 ayuda
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 ayuda
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 ayuda
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 ayuda 100
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 ayuda 100
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 ayuda all
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 ayuda all
+CALL getPlayerStorageValue(1001, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 racha
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9205)
+SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 racha
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9205)
+SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 racha
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9205)
+SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 racha
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9205)
+SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 racha 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9205)
+SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 racha 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9205)
+SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 racha all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9205)
+SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 racha all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9205)
+SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 report
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 report
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 report
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 report
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 report 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 report 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 report all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 report all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 progress
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 progress
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 progress
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 progress
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 progress 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 progress 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 progress all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 progress all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 claim
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 claim
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 claim
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 claim
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 claim 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 claim 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 claim all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 claim all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 premio
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 premio
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 premio
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 premio
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 premio 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 premio 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 premio all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 premio all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 experience
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 experience
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 experience
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 experience
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 experience 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 experience 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 experience all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 experience all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 money
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 money
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 money
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 money
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 money 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 money 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 money all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 money all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 oro
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 oro
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 oro
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 oro
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 oro 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 oro 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 oro all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 oro all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 mission
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 mission
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 mission
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 mission
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 mission 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 mission 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 mission all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 mission all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 daily
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 daily
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 daily
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 daily
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 daily 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 daily 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 daily all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 daily all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 contrato
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 contrato
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 contrato
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 contrato
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 contrato 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 contrato 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 contrato all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 contrato all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 mision
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 mision
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 mision
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 mision
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 mision 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 mision 100
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 mision all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 mision all
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerLevel("Player1001")
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9208, 55)
+CALL setPlayerStorageValue(1001, 9210, 70)
+CALL setPlayerStorageValue(1001, 9212, 90)
+SAY Today's contracts, Hunter:
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 1) 55 Dragon - 8000 gp or 120000 exp
+CALL getPlayerStorageValue(1001, 9209)
+CALL getPlayerStorageValue(1001, 9210)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 2) 70 Giant Spider - 11500 gp or 200000 exp
+CALL getPlayerStorageValue(1001, 9211)
+CALL getPlayerStorageValue(1001, 9212)
+CALL getPlayerStorageValue(1001, 9215)
+SAY 3) 90 Ancient Scarab - 15000 gp or 280000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 one
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9207)
+CALL getPlayerStorageValue(1001, 9208)
+CALL getPlayerStorageValue(1001, 9215)
+CALL setPlayerStorageValue(1001, 9202, 11)
+CALL setPlayerStorageValue(1001, 9203, 55)
+CALL setPlayerStorageValue(1001, 9204, 0)
+CALL setPlayerStorageValue(1001, 9213, 8000)
+CALL setPlayerStorageValue(1001, 9214, 120000)
+CALL setPlayerStorageValue(1001, 9201, 2)
+SAY Accepted: kill 55 Dragon. Reward: 8000 gp or 120000 exp. Good hunting!
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 one
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You already have a contract today. Say "status".
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 one
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 one
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 one 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 one 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 one all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 one all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 two
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You already have a contract today. Say "status".
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 two
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You already have a contract today. Say "status".
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 two
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 two
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 two 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 two 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 two all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 two all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 three
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You already have a contract today. Say "status".
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 three
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You already have a contract today. Say "status".
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 three
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 5 three
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 three 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 three 100
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 three all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 three all
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 no
+CALL getPlayerStorageValue(1001, 9200)
+>> think
+>> say 1001 bye
+CALL cancelPendingTrade(1001)
+SAY Bye, Player1001! Come back anytime.
+>> say 1001 hi
+SAY Hi Player1001! Daily hunt contracts keep the city safer. Say "task", "status", "reward" or "help".
+>> advance 40
+>> think
+>> say 1001 hi
+CALL getPlayerStorageValue(1001, 9200)
+>> far 1001
+>> think
+CALL cancelPendingTrade(1001)
+SAY See you later!
+>> near 1001
+>> say 1001 hola
+SAY Hi Player1001! Daily hunt contracts keep the city safer. Say "task", "status", "reward" or "help".
+>> disappear 1001
+CALL cancelPendingTrade(1001)
+SAY See you later!
+>> say 1002 hi
+SAY Hi Player1002! Daily hunt contracts keep the city safer. Say "task", "status", "reward" or "help".
+>> set 1002 money 0
+>> set 1002 slots 0
+>> set 1002 level 1
+>> say 1002 task
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9205)
+CALL getPlayerStorageValue(1002, 9206)
+CALL setPlayerStorageValue(1002, 9200, 20231114)
+CALL setPlayerStorageValue(1002, 9201, 0)
+CALL setPlayerStorageValue(1002, 9202, 0)
+CALL setPlayerStorageValue(1002, 9203, 0)
+CALL setPlayerStorageValue(1002, 9204, 0)
+CALL setPlayerStorageValue(1002, 9213, 0)
+CALL setPlayerStorageValue(1002, 9214, 0)
+CALL setPlayerStorageValue(1002, 9215, 0)
+CALL setPlayerStorageValue(1002, 9207, 0)
+CALL setPlayerStorageValue(1002, 9208, 0)
+CALL setPlayerStorageValue(1002, 9209, 0)
+CALL setPlayerStorageValue(1002, 9210, 0)
+CALL setPlayerStorageValue(1002, 9211, 0)
+CALL setPlayerStorageValue(1002, 9212, 0)
+CALL setPlayerStorageValue(1002, 9205, 0)
+CALL setPlayerStorageValue(1002, 9206, 0)
+CALL setPlayerStorageValue(1002, 9200, 20231114)
+CALL getPlayerStorageValue(1002, 9201)
+CALL getPlayerLevel("Player1002")
+CALL getPlayerStorageValue(1002, 9201)
+CALL getPlayerStorageValue(1002, 9215)
+CALL getPlayerStorageValue(1002, 9200)
+CALL setPlayerStorageValue(1002, 9207, 3)
+CALL setPlayerStorageValue(1002, 9208, 100)
+CALL setPlayerStorageValue(1002, 9209, 1)
+CALL setPlayerStorageValue(1002, 9210, 130)
+CALL setPlayerStorageValue(1002, 9211, 2)
+CALL setPlayerStorageValue(1002, 9212, 160)
+CALL setPlayerStorageValue(1002, 9215, 1)
+CALL setPlayerStorageValue(1002, 9201, 1)
+CALL setPlayerStorageValue(1002, 9200, 20231114)
+CALL setPlayerStorageValue(1002, 9202, 0)
+CALL setPlayerStorageValue(1002, 9203, 0)
+CALL setPlayerStorageValue(1002, 9204, 0)
+CALL setPlayerStorageValue(1002, 9213, 0)
+CALL setPlayerStorageValue(1002, 9214, 0)
+SAY Today's contracts, Novice:
+CALL getPlayerStorageValue(1002, 9207)
+CALL getPlayerStorageValue(1002, 9208)
+CALL getPlayerStorageValue(1002, 9215)
+SAY 1) 100 Troll - 800 gp or 8000 exp
+CALL getPlayerStorageValue(1002, 9209)
+CALL getPlayerStorageValue(1002, 9210)
+CALL getPlayerStorageValue(1002, 9215)
+SAY 2) 130 Rat - 1400 gp or 14000 exp
+CALL getPlayerStorageValue(1002, 9211)
+CALL getPlayerStorageValue(1002, 9212)
+CALL getPlayerStorageValue(1002, 9215)
+SAY 3) 160 Spider - 2000 gp or 20000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1002 yes
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 status
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1002 yes
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 reward
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1002 yes
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 streak
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9205)
+SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
+>> say 1002 yes
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 monsters
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 yes
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 gold
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9201)
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1002 yes
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 exp
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9201)
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1002 yes
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 help
+CALL getPlayerStorageValue(1002, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1002 yes
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 focused
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 yes
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 ayuda
+CALL getPlayerStorageValue(1002, 9200)
+SAY I post daily hunt contracts by level. Say "task" for today's 3 contracts, pick 1, 2 or 3, then hunt. Say "status" for progress, "reward" to claim gold or exp, and "streak" for your consecutive-day bonus.
+>> say 1002 yes
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 racha
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9205)
+SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
+>> say 1002 yes
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 report
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1002 yes
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 progress
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9201)
+SAY You have open contracts waiting. Say "task" to see them again, then 1, 2 or 3.
+>> say 1002 yes
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 claim
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1002 yes
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 premio
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1002 yes
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 experience
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9201)
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1002 yes
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 money
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9201)
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1002 yes
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 oro
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9201)
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9201)
+SAY Finish a contract first. Say "task" or "status".
+>> say 1002 yes
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 mission
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9201)
+CALL getPlayerLevel("Player1002")
+CALL getPlayerStorageValue(1002, 9201)
+CALL getPlayerStorageValue(1002, 9215)
+CALL setPlayerStorageValue(1002, 9208, 100)
+CALL setPlayerStorageValue(1002, 9210, 130)
+CALL setPlayerStorageValue(1002, 9212, 160)
+SAY Today's contracts, Novice:
+CALL getPlayerStorageValue(1002, 9207)
+CALL getPlayerStorageValue(1002, 9208)
+CALL getPlayerStorageValue(1002, 9215)
+SAY 1) 100 Troll - 800 gp or 8000 exp
+CALL getPlayerStorageValue(1002, 9209)
+CALL getPlayerStorageValue(1002, 9210)
+CALL getPlayerStorageValue(1002, 9215)
+SAY 2) 130 Rat - 1400 gp or 14000 exp
+CALL getPlayerStorageValue(1002, 9211)
+CALL getPlayerStorageValue(1002, 9212)
+CALL getPlayerStorageValue(1002, 9215)
+SAY 3) 160 Spider - 2000 gp or 20000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1002 yes
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 daily
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9201)
+CALL getPlayerLevel("Player1002")
+CALL getPlayerStorageValue(1002, 9201)
+CALL getPlayerStorageValue(1002, 9215)
+CALL setPlayerStorageValue(1002, 9208, 100)
+CALL setPlayerStorageValue(1002, 9210, 130)
+CALL setPlayerStorageValue(1002, 9212, 160)
+SAY Today's contracts, Novice:
+CALL getPlayerStorageValue(1002, 9207)
+CALL getPlayerStorageValue(1002, 9208)
+CALL getPlayerStorageValue(1002, 9215)
+SAY 1) 100 Troll - 800 gp or 8000 exp
+CALL getPlayerStorageValue(1002, 9209)
+CALL getPlayerStorageValue(1002, 9210)
+CALL getPlayerStorageValue(1002, 9215)
+SAY 2) 130 Rat - 1400 gp or 14000 exp
+CALL getPlayerStorageValue(1002, 9211)
+CALL getPlayerStorageValue(1002, 9212)
+CALL getPlayerStorageValue(1002, 9215)
+SAY 3) 160 Spider - 2000 gp or 20000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1002 yes
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 contrato
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9201)
+CALL getPlayerLevel("Player1002")
+CALL getPlayerStorageValue(1002, 9201)
+CALL getPlayerStorageValue(1002, 9215)
+CALL setPlayerStorageValue(1002, 9208, 100)
+CALL setPlayerStorageValue(1002, 9210, 130)
+CALL setPlayerStorageValue(1002, 9212, 160)
+SAY Today's contracts, Novice:
+CALL getPlayerStorageValue(1002, 9207)
+CALL getPlayerStorageValue(1002, 9208)
+CALL getPlayerStorageValue(1002, 9215)
+SAY 1) 100 Troll - 800 gp or 8000 exp
+CALL getPlayerStorageValue(1002, 9209)
+CALL getPlayerStorageValue(1002, 9210)
+CALL getPlayerStorageValue(1002, 9215)
+SAY 2) 130 Rat - 1400 gp or 14000 exp
+CALL getPlayerStorageValue(1002, 9211)
+CALL getPlayerStorageValue(1002, 9212)
+CALL getPlayerStorageValue(1002, 9215)
+SAY 3) 160 Spider - 2000 gp or 20000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1002 yes
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 mision
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9201)
+CALL getPlayerLevel("Player1002")
+CALL getPlayerStorageValue(1002, 9201)
+CALL getPlayerStorageValue(1002, 9215)
+CALL setPlayerStorageValue(1002, 9208, 100)
+CALL setPlayerStorageValue(1002, 9210, 130)
+CALL setPlayerStorageValue(1002, 9212, 160)
+SAY Today's contracts, Novice:
+CALL getPlayerStorageValue(1002, 9207)
+CALL getPlayerStorageValue(1002, 9208)
+CALL getPlayerStorageValue(1002, 9215)
+SAY 1) 100 Troll - 800 gp or 8000 exp
+CALL getPlayerStorageValue(1002, 9209)
+CALL getPlayerStorageValue(1002, 9210)
+CALL getPlayerStorageValue(1002, 9215)
+SAY 2) 130 Rat - 1400 gp or 14000 exp
+CALL getPlayerStorageValue(1002, 9211)
+CALL getPlayerStorageValue(1002, 9212)
+CALL getPlayerStorageValue(1002, 9215)
+SAY 3) 160 Spider - 2000 gp or 20000 exp
+SAY Say 1, 2 or 3 to accept. You cannot reroll today.
+>> say 1002 yes
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 one
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9201)
+CALL getPlayerStorageValue(1002, 9207)
+CALL getPlayerStorageValue(1002, 9208)
+CALL getPlayerStorageValue(1002, 9215)
+CALL setPlayerStorageValue(1002, 9202, 3)
+CALL setPlayerStorageValue(1002, 9203, 100)
+CALL setPlayerStorageValue(1002, 9204, 0)
+CALL setPlayerStorageValue(1002, 9213, 800)
+CALL setPlayerStorageValue(1002, 9214, 8000)
+CALL setPlayerStorageValue(1002, 9201, 2)
+SAY Accepted: kill 100 Troll. Reward: 800 gp or 8000 exp. Good hunting!
+>> say 1002 yes
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 two
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9201)
+SAY You already have a contract today. Say "status".
+>> say 1002 yes
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 three
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9200)
+CALL getPlayerStorageValue(1002, 9201)
+SAY You already have a contract today. Say "status".
+>> say 1002 yes
+CALL getPlayerStorageValue(1002, 9200)
+>> say 1002 chau
+CALL cancelPendingTrade(1002)
+SAY Bye, Player1002! Come back anytime.
+>> think 3
+>> set 1001 level 20
+>> say 1001 hi
+SAY Hi Player1001! Daily hunt contracts keep the city safer. Say "task", "status", "reward" or "help".
+>> say 1001 task
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9202)
+CALL getPlayerStorageValue(1001, 9203)
+CALL getPlayerStorageValue(1001, 9204)
+SAY Active contract: 0/55 Dragon. Keep hunting, then say "reward".
+>> say 1001 1
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You already have a contract today. Say "status".
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 status
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9202)
+CALL getPlayerStorageValue(1001, 9203)
+CALL getPlayerStorageValue(1001, 9204)
+SAY Active contract: 0/55 Dragon. Keep hunting, then say "reward".
+>> say 1001 reward
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9202)
+CALL getPlayerStorageValue(1001, 9203)
+CALL getPlayerStorageValue(1001, 9204)
+SAY Active contract: 0/55 Dragon. Keep hunting, then say "reward".
+>> set 1001 level 150
+>> say 1001 task
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+CALL getPlayerStorageValue(1001, 9202)
+CALL getPlayerStorageValue(1001, 9203)
+CALL getPlayerStorageValue(1001, 9204)
+SAY Active contract: 0/55 Dragon. Keep hunting, then say "reward".
+>> say 1001 2
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9201)
+SAY You already have a contract today. Say "status".
+>> say 1001 yes
+CALL getPlayerStorageValue(1001, 9200)
+>> say 1001 streak
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9200)
+CALL getPlayerStorageValue(1001, 9205)
+SAY No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.
+>> say 1001 bye
+CALL cancelPendingTrade(1001)
+SAY Bye, Player1001! Come back anytime.

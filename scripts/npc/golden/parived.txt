@@ -1,0 +1,3503 @@
+>> near 1001
+>> near 1002
+>> say 1001 hello there
+>> say 1001 hi
+SAY Hi Player1001! I buy gems and diamonds. Say "help" or "list" for prices.
+>> say 1002 hi
+SAY One moment, Player1002! I am helping someone else.
+>> say 1001 help
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 help
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 yes
+>> say 1001 help
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 no
+>> say 1001 5 help
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 yes
+>> say 1001 5 help
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 no
+>> say 1001 help 100
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 yes
+>> say 1001 help 100
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 no
+>> say 1001 help all
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 yes
+>> say 1001 help all
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 no
+>> think
+>> say 1001 ayuda
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 yes
+>> say 1001 ayuda
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 no
+>> say 1001 5 ayuda
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 yes
+>> say 1001 5 ayuda
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 no
+>> say 1001 ayuda 100
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 yes
+>> say 1001 ayuda 100
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 no
+>> say 1001 ayuda all
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 yes
+>> say 1001 ayuda all
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 no
+>> think
+>> say 1001 offer
+>> say 1001 yes
+>> say 1001 offer
+>> say 1001 no
+>> say 1001 5 offer
+>> say 1001 yes
+>> say 1001 5 offer
+>> say 1001 no
+>> say 1001 offer 100
+>> say 1001 yes
+>> say 1001 offer 100
+>> say 1001 no
+>> say 1001 offer all
+>> say 1001 yes
+>> say 1001 offer all
+>> say 1001 no
+>> think
+>> say 1001 trade
+>> say 1001 yes
+>> say 1001 trade
+>> say 1001 no
+>> say 1001 5 trade
+>> say 1001 yes
+>> say 1001 5 trade
+>> say 1001 no
+>> say 1001 trade 100
+>> say 1001 yes
+>> say 1001 trade 100
+>> say 1001 no
+>> say 1001 trade all
+>> say 1001 yes
+>> say 1001 trade all
+>> say 1001 no
+>> think
+>> say 1001 list
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 list
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 5 list
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 5 list
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 list 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 list 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 list all
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 list all
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> think
+>> say 1001 info
+>> say 1001 yes
+>> say 1001 info
+>> say 1001 no
+>> say 1001 5 info
+>> say 1001 yes
+>> say 1001 5 info
+>> say 1001 no
+>> say 1001 info 100
+>> say 1001 yes
+>> say 1001 info 100
+>> say 1001 no
+>> say 1001 info all
+>> say 1001 yes
+>> say 1001 info all
+>> say 1001 no
+>> think
+>> say 1001 job
+>> say 1001 yes
+>> say 1001 job
+>> say 1001 no
+>> say 1001 5 job
+>> say 1001 yes
+>> say 1001 5 job
+>> say 1001 no
+>> say 1001 job 100
+>> say 1001 yes
+>> say 1001 job 100
+>> say 1001 no
+>> say 1001 job all
+>> say 1001 yes
+>> say 1001 job all
+>> say 1001 no
+>> think
+>> say 1001 name
+>> say 1001 yes
+>> say 1001 name
+>> say 1001 no
+>> say 1001 5 name
+>> say 1001 yes
+>> say 1001 5 name
+>> say 1001 no
+>> say 1001 name 100
+>> say 1001 yes
+>> say 1001 name 100
+>> say 1001 no
+>> say 1001 name all
+>> say 1001 yes
+>> say 1001 name all
+>> say 1001 no
+>> think
+>> say 1001 yes
+>> say 1001 yes
+>> say 1001 yes
+>> say 1001 no
+>> say 1001 5 yes
+>> say 1001 yes
+>> say 1001 5 yes
+>> say 1001 no
+>> say 1001 yes 100
+>> say 1001 yes
+>> say 1001 yes 100
+>> say 1001 no
+>> say 1001 yes all
+>> say 1001 yes
+>> say 1001 yes all
+>> say 1001 no
+>> think
+>> say 1001 no
+>> say 1001 yes
+>> say 1001 no
+>> say 1001 no
+>> say 1001 5 no
+>> say 1001 yes
+>> say 1001 5 no
+>> say 1001 no
+>> say 1001 no 100
+>> say 1001 yes
+>> say 1001 no 100
+>> say 1001 no
+>> say 1001 no all
+>> say 1001 yes
+>> say 1001 no all
+>> say 1001 no
+>> think
+>> say 1001 si
+>> say 1001 yes
+>> say 1001 si
+>> say 1001 no
+>> say 1001 5 si
+>> say 1001 yes
+>> say 1001 5 si
+>> say 1001 no
+>> say 1001 si 100
+>> say 1001 yes
+>> say 1001 si 100
+>> say 1001 no
+>> say 1001 si all
+>> say 1001 yes
+>> say 1001 si all
+>> say 1001 no
+>> think
+>> say 1001 sell
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 sell
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 5 sell
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 5 sell
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 sell 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 sell 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 sell all
+CALL getPlayerItemCount(1001, 2155)
+CALL getPlayerItemCount(1001, 2156)
+CALL getPlayerItemCount(1001, 2157)
+CALL getPlayerItemCount(1001, 2159)
+CALL getPlayerItemCount(1001, 2153)
+CALL getPlayerItemCount(1001, 2154)
+CALL getPlayerItemCount(1001, 2158)
+CALL getPlayerItemCount(1001, 2145)
+CALL getPlayerItemCount(1001, 2146)
+CALL getPlayerItemCount(1001, 2147)
+CALL getPlayerItemCount(1001, 2149)
+CALL getPlayerItemCount(1001, 2150)
+CALL getPlayerItemCount(1001, 2151)
+CALL sellBundle(1001, 476700, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin, 10x violet gem, 10x yellow gem, 10x blue gem, 10x small diamond, 10x small sapphire, 10x small ruby, 10x small emerald, 10x small amethyst, 10x talon", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+>> say 1001 yes
+>> say 1001 sell all
+CALL getPlayerItemCount(1001, 2155)
+CALL getPlayerItemCount(1001, 2156)
+CALL getPlayerItemCount(1001, 2157)
+CALL getPlayerItemCount(1001, 2159)
+CALL getPlayerItemCount(1001, 2153)
+CALL getPlayerItemCount(1001, 2154)
+CALL getPlayerItemCount(1001, 2158)
+CALL getPlayerItemCount(1001, 2145)
+CALL getPlayerItemCount(1001, 2146)
+CALL getPlayerItemCount(1001, 2147)
+CALL getPlayerItemCount(1001, 2149)
+CALL getPlayerItemCount(1001, 2150)
+CALL getPlayerItemCount(1001, 2151)
+CALL sellBundle(1001, 476700, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin, 10x violet gem, 10x yellow gem, 10x blue gem, 10x small diamond, 10x small sapphire, 10x small ruby, 10x small emerald, 10x small amethyst, 10x talon", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+>> say 1001 no
+>> think
+>> say 1001 buy
+>> say 1001 yes
+>> say 1001 buy
+>> say 1001 no
+>> say 1001 5 buy
+>> say 1001 yes
+>> say 1001 5 buy
+>> say 1001 no
+>> say 1001 buy 100
+>> say 1001 yes
+>> say 1001 buy 100
+>> say 1001 no
+>> say 1001 buy all
+>> say 1001 yes
+>> say 1001 buy all
+>> say 1001 no
+>> think
+>> say 1001 all
+>> say 1001 yes
+>> say 1001 all
+>> say 1001 no
+>> say 1001 5 all
+>> say 1001 yes
+>> say 1001 5 all
+>> say 1001 no
+>> say 1001 all 100
+>> say 1001 yes
+>> say 1001 all 100
+>> say 1001 no
+>> say 1001 all all
+>> say 1001 yes
+>> say 1001 all all
+>> say 1001 no
+>> think
+>> say 1001 status
+>> say 1001 yes
+>> say 1001 status
+>> say 1001 no
+>> say 1001 5 status
+>> say 1001 yes
+>> say 1001 5 status
+>> say 1001 no
+>> say 1001 status 100
+>> say 1001 yes
+>> say 1001 status 100
+>> say 1001 no
+>> say 1001 status all
+>> say 1001 yes
+>> say 1001 status all
+>> say 1001 no
+>> think
+>> say 1001 deposit 100
+>> say 1001 yes
+>> say 1001 deposit 100
+>> say 1001 no
+>> say 1001 5 deposit 100
+>> say 1001 yes
+>> say 1001 5 deposit 100
+>> say 1001 no
+>> say 1001 deposit 100 100
+>> say 1001 yes
+>> say 1001 deposit 100 100
+>> say 1001 no
+>> say 1001 deposit 100 all
+>> say 1001 yes
+>> say 1001 deposit 100 all
+>> say 1001 no
+>> think
+>> say 1001 withdraw 50
+>> say 1001 yes
+>> say 1001 withdraw 50
+>> say 1001 no
+>> say 1001 5 withdraw 50
+>> say 1001 yes
+>> say 1001 5 withdraw 50
+>> say 1001 no
+>> say 1001 withdraw 50 100
+>> say 1001 yes
+>> say 1001 withdraw 50 100
+>> say 1001 no
+>> say 1001 withdraw 50 all
+>> say 1001 yes
+>> say 1001 withdraw 50 all
+>> say 1001 no
+>> think
+>> say 1001 balance
+>> say 1001 yes
+>> say 1001 balance
+>> say 1001 no
+>> say 1001 5 balance
+>> say 1001 yes
+>> say 1001 5 balance
+>> say 1001 no
+>> say 1001 balance 100
+>> say 1001 yes
+>> say 1001 balance 100
+>> say 1001 no
+>> say 1001 balance all
+>> say 1001 yes
+>> say 1001 balance all
+>> say 1001 no
+>> think
+>> say 1001 transfer 10 to player1002
+>> say 1001 yes
+>> say 1001 transfer 10 to player1002
+>> say 1001 no
+>> say 1001 5 transfer 10 to player1002
+>> say 1001 yes
+>> say 1001 5 transfer 10 to player1002
+>> say 1001 no
+>> say 1001 transfer 10 to player1002 100
+>> say 1001 yes
+>> say 1001 transfer 10 to player1002 100
+>> say 1001 no
+>> say 1001 transfer 10 to player1002 all
+>> say 1001 yes
+>> say 1001 transfer 10 to player1002 all
+>> say 1001 no
+>> think
+>> say 1001 big emerald
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 yes
+>> say 1001 big emerald
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 no
+>> say 1001 5 big emerald
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 5, 50000)
+>> say 1001 yes
+>> say 1001 5 big emerald
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 5, 50000)
+>> say 1001 no
+>> say 1001 big emerald 100
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 yes
+>> say 1001 big emerald 100
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 no
+>> say 1001 big emerald all
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 yes
+>> say 1001 big emerald all
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 no
+>> think
+>> say 1001 big emeralds
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 yes
+>> say 1001 big emeralds
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 no
+>> say 1001 5 big emeralds
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 5, 50000)
+>> say 1001 yes
+>> say 1001 5 big emeralds
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 5, 50000)
+>> say 1001 no
+>> say 1001 big emeralds 100
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 yes
+>> say 1001 big emeralds 100
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 no
+>> say 1001 big emeralds all
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 yes
+>> say 1001 big emeralds all
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 no
+>> think
+>> say 1001 large emerald
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 yes
+>> say 1001 large emerald
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 no
+>> say 1001 5 large emerald
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 5, 50000)
+>> say 1001 yes
+>> say 1001 5 large emerald
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 5, 50000)
+>> say 1001 no
+>> say 1001 large emerald 100
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 yes
+>> say 1001 large emerald 100
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 no
+>> say 1001 large emerald all
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 yes
+>> say 1001 large emerald all
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 no
+>> think
+>> say 1001 green gem
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 yes
+>> say 1001 green gem
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 no
+>> say 1001 5 green gem
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 5, 50000)
+>> say 1001 yes
+>> say 1001 5 green gem
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 5, 50000)
+>> say 1001 no
+>> say 1001 green gem 100
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 yes
+>> say 1001 green gem 100
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 no
+>> say 1001 green gem all
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 yes
+>> say 1001 green gem all
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 no
+>> think
+>> say 1001 big green
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 yes
+>> say 1001 big green
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 no
+>> say 1001 5 big green
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 5, 50000)
+>> say 1001 yes
+>> say 1001 5 big green
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 5, 50000)
+>> say 1001 no
+>> say 1001 big green 100
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 yes
+>> say 1001 big green 100
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 no
+>> say 1001 big green all
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 yes
+>> say 1001 big green all
+CALL getPlayerItemCount(1001, 2155)
+CALL sell(1001, 2155, 1, 10000)
+>> say 1001 no
+>> think
+>> say 1001 big ruby
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 yes
+>> say 1001 big ruby
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 no
+>> say 1001 5 big ruby
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 5, 50000)
+>> say 1001 yes
+>> say 1001 5 big ruby
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 5, 50000)
+>> say 1001 no
+>> say 1001 big ruby 100
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 yes
+>> say 1001 big ruby 100
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 no
+>> say 1001 big ruby all
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 yes
+>> say 1001 big ruby all
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 no
+>> think
+>> say 1001 big rubies
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 yes
+>> say 1001 big rubies
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 no
+>> say 1001 5 big rubies
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 5, 50000)
+>> say 1001 yes
+>> say 1001 5 big rubies
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 5, 50000)
+>> say 1001 no
+>> say 1001 big rubies 100
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 yes
+>> say 1001 big rubies 100
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 no
+>> say 1001 big rubies all
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 yes
+>> say 1001 big rubies all
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 no
+>> think
+>> say 1001 big rubys
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 yes
+>> say 1001 big rubys
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 no
+>> say 1001 5 big rubys
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 5, 50000)
+>> say 1001 yes
+>> say 1001 5 big rubys
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 5, 50000)
+>> say 1001 no
+>> say 1001 big rubys 100
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 yes
+>> say 1001 big rubys 100
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 no
+>> say 1001 big rubys all
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 yes
+>> say 1001 big rubys all
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 no
+>> think
+>> say 1001 large ruby
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 yes
+>> say 1001 large ruby
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 no
+>> say 1001 5 large ruby
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 5, 50000)
+>> say 1001 yes
+>> say 1001 5 large ruby
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 5, 50000)
+>> say 1001 no
+>> say 1001 large ruby 100
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 yes
+>> say 1001 large ruby 100
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 no
+>> say 1001 large ruby all
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 yes
+>> say 1001 large ruby all
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 no
+>> think
+>> say 1001 red gem
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 yes
+>> say 1001 red gem
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 no
+>> say 1001 5 red gem
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 5, 50000)
+>> say 1001 yes
+>> say 1001 5 red gem
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 5, 50000)
+>> say 1001 no
+>> say 1001 red gem 100
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 yes
+>> say 1001 red gem 100
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 no
+>> say 1001 red gem all
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 yes
+>> say 1001 red gem all
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 no
+>> think
+>> say 1001 big red
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 yes
+>> say 1001 big red
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 no
+>> say 1001 5 big red
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 5, 50000)
+>> say 1001 yes
+>> say 1001 5 big red
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 5, 50000)
+>> say 1001 no
+>> say 1001 big red 100
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 yes
+>> say 1001 big red 100
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 no
+>> say 1001 big red all
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 yes
+>> say 1001 big red all
+CALL getPlayerItemCount(1001, 2156)
+CALL sell(1001, 2156, 1, 10000)
+>> say 1001 no
+>> think
+>> say 1001 gold nugget
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 1, 10000)
+>> say 1001 yes
+>> say 1001 gold nugget
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 1, 10000)
+>> say 1001 no
+>> say 1001 5 gold nugget
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 5, 50000)
+>> say 1001 yes
+>> say 1001 5 gold nugget
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 5, 50000)
+>> say 1001 no
+>> say 1001 gold nugget 100
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 1, 10000)
+>> say 1001 yes
+>> say 1001 gold nugget 100
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 1, 10000)
+>> say 1001 no
+>> say 1001 gold nugget all
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 1, 10000)
+>> say 1001 yes
+>> say 1001 gold nugget all
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 1, 10000)
+>> say 1001 no
+>> think
+>> say 1001 nugget
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 1, 10000)
+>> say 1001 yes
+>> say 1001 nugget
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 1, 10000)
+>> say 1001 no
+>> say 1001 5 nugget
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 5, 50000)
+>> say 1001 yes
+>> say 1001 5 nugget
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 5, 50000)
+>> say 1001 no
+>> say 1001 nugget 100
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 1, 10000)
+>> say 1001 yes
+>> say 1001 nugget 100
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 1, 10000)
+>> say 1001 no
+>> say 1001 nugget all
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 1, 10000)
+>> say 1001 yes
+>> say 1001 nugget all
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 1, 10000)
+>> say 1001 no
+>> think
+>> say 1001 nuggets
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 1, 10000)
+>> say 1001 yes
+>> say 1001 nuggets
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 1, 10000)
+>> say 1001 no
+>> say 1001 5 nuggets
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 5, 50000)
+>> say 1001 yes
+>> say 1001 5 nuggets
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 5, 50000)
+>> say 1001 no
+>> say 1001 nuggets 100
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 1, 10000)
+>> say 1001 yes
+>> say 1001 nuggets 100
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 1, 10000)
+>> say 1001 no
+>> say 1001 nuggets all
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 1, 10000)
+>> say 1001 yes
+>> say 1001 nuggets all
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 1, 10000)
+>> say 1001 no
+>> think
+>> say 1001 gold
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 1, 10000)
+>> say 1001 yes
+>> say 1001 gold
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 1, 10000)
+>> say 1001 no
+>> say 1001 5 gold
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 5, 50000)
+>> say 1001 yes
+>> say 1001 5 gold
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 5, 50000)
+>> say 1001 no
+>> say 1001 gold 100
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 1, 10000)
+>> say 1001 yes
+>> say 1001 gold 100
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 1, 10000)
+>> say 1001 no
+>> say 1001 gold all
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 1, 10000)
+>> say 1001 yes
+>> say 1001 gold all
+CALL getPlayerItemCount(1001, 2157)
+CALL sell(1001, 2157, 1, 10000)
+>> say 1001 no
+>> think
+>> say 1001 scarab coin
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 yes
+>> say 1001 scarab coin
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 no
+>> say 1001 5 scarab coin
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 5, 500)
+>> say 1001 yes
+>> say 1001 5 scarab coin
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 5, 500)
+>> say 1001 no
+>> say 1001 scarab coin 100
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 yes
+>> say 1001 scarab coin 100
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 no
+>> say 1001 scarab coin all
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 yes
+>> say 1001 scarab coin all
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 no
+>> think
+>> say 1001 scarab
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 yes
+>> say 1001 scarab
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 no
+>> say 1001 5 scarab
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 5, 500)
+>> say 1001 yes
+>> say 1001 5 scarab
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 5, 500)
+>> say 1001 no
+>> say 1001 scarab 100
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 yes
+>> say 1001 scarab 100
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 no
+>> say 1001 scarab all
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 yes
+>> say 1001 scarab all
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 no
+>> think
+>> say 1001 scarabs
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 yes
+>> say 1001 scarabs
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 no
+>> say 1001 5 scarabs
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 5, 500)
+>> say 1001 yes
+>> say 1001 5 scarabs
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 5, 500)
+>> say 1001 no
+>> say 1001 scarabs 100
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 yes
+>> say 1001 scarabs 100
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 no
+>> say 1001 scarabs all
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 yes
+>> say 1001 scarabs all
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 no
+>> think
+>> say 1001 scarab coins
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 yes
+>> say 1001 scarab coins
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 no
+>> say 1001 5 scarab coins
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 5, 500)
+>> say 1001 yes
+>> say 1001 5 scarab coins
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 5, 500)
+>> say 1001 no
+>> say 1001 scarab coins 100
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 yes
+>> say 1001 scarab coins 100
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 no
+>> say 1001 scarab coins all
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 yes
+>> say 1001 scarab coins all
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 no
+>> think
+>> say 1001 coin
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 yes
+>> say 1001 coin
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 no
+>> say 1001 5 coin
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 5, 500)
+>> say 1001 yes
+>> say 1001 5 coin
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 5, 500)
+>> say 1001 no
+>> say 1001 coin 100
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 yes
+>> say 1001 coin 100
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 no
+>> say 1001 coin all
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 yes
+>> say 1001 coin all
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 no
+>> think
+>> say 1001 coins
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 yes
+>> say 1001 coins
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 no
+>> say 1001 5 coins
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 5, 500)
+>> say 1001 yes
+>> say 1001 5 coins
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 5, 500)
+>> say 1001 no
+>> say 1001 coins 100
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 yes
+>> say 1001 coins 100
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 no
+>> say 1001 coins all
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 yes
+>> say 1001 coins all
+CALL getPlayerItemCount(1001, 2159)
+CALL sell(1001, 2159, 1, 100)
+>> say 1001 no
+>> think
+>> say 1001 violet gem
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 1, 10000)
+>> say 1001 yes
+>> say 1001 violet gem
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 1, 10000)
+>> say 1001 no
+>> say 1001 5 violet gem
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 5, 50000)
+>> say 1001 yes
+>> say 1001 5 violet gem
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 5, 50000)
+>> say 1001 no
+>> say 1001 violet gem 100
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 1, 10000)
+>> say 1001 yes
+>> say 1001 violet gem 100
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 1, 10000)
+>> say 1001 no
+>> say 1001 violet gem all
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 1, 10000)
+>> say 1001 yes
+>> say 1001 violet gem all
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 1, 10000)
+>> say 1001 no
+>> think
+>> say 1001 violet
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 1, 10000)
+>> say 1001 yes
+>> say 1001 violet
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 1, 10000)
+>> say 1001 no
+>> say 1001 5 violet
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 5, 50000)
+>> say 1001 yes
+>> say 1001 5 violet
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 5, 50000)
+>> say 1001 no
+>> say 1001 violet 100
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 1, 10000)
+>> say 1001 yes
+>> say 1001 violet 100
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 1, 10000)
+>> say 1001 no
+>> say 1001 violet all
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 1, 10000)
+>> say 1001 yes
+>> say 1001 violet all
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 1, 10000)
+>> say 1001 no
+>> think
+>> say 1001 violet gems
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 violet gems
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 5 violet gems
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 5 violet gems
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 violet gems 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 violet gems 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 violet gems all
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 violet gems all
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> think
+>> say 1001 purple gem
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 1, 10000)
+>> say 1001 yes
+>> say 1001 purple gem
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 1, 10000)
+>> say 1001 no
+>> say 1001 5 purple gem
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 5, 50000)
+>> say 1001 yes
+>> say 1001 5 purple gem
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 5, 50000)
+>> say 1001 no
+>> say 1001 purple gem 100
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 1, 10000)
+>> say 1001 yes
+>> say 1001 purple gem 100
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 1, 10000)
+>> say 1001 no
+>> say 1001 purple gem all
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 1, 10000)
+>> say 1001 yes
+>> say 1001 purple gem all
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 1, 10000)
+>> say 1001 no
+>> think
+>> say 1001 purple
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 1, 10000)
+>> say 1001 yes
+>> say 1001 purple
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 1, 10000)
+>> say 1001 no
+>> say 1001 5 purple
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 5, 50000)
+>> say 1001 yes
+>> say 1001 5 purple
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 5, 50000)
+>> say 1001 no
+>> say 1001 purple 100
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 1, 10000)
+>> say 1001 yes
+>> say 1001 purple 100
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 1, 10000)
+>> say 1001 no
+>> say 1001 purple all
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 1, 10000)
+>> say 1001 yes
+>> say 1001 purple all
+CALL getPlayerItemCount(1001, 2153)
+CALL sell(1001, 2153, 1, 10000)
+>> say 1001 no
+>> think
+>> say 1001 yellow gem
+CALL getPlayerItemCount(1001, 2154)
+CALL sell(1001, 2154, 1, 1000)
+>> say 1001 yes
+>> say 1001 yellow gem
+CALL getPlayerItemCount(1001, 2154)
+CALL sell(1001, 2154, 1, 1000)
+>> say 1001 no
+>> say 1001 5 yellow gem
+CALL getPlayerItemCount(1001, 2154)
+CALL sell(1001, 2154, 5, 5000)
+>> say 1001 yes
+>> say 1001 5 yellow gem
+CALL getPlayerItemCount(1001, 2154)
+CALL sell(1001, 2154, 5, 5000)
+>> say 1001 no
+>> say 1001 yellow gem 100
+CALL getPlayerItemCount(1001, 2154)
+CALL sell(1001, 2154, 1, 1000)
+>> say 1001 yes
+>> say 1001 yellow gem 100
+CALL getPlayerItemCount(1001, 2154)
+CALL sell(1001, 2154, 1, 1000)
+>> say 1001 no
+>> say 1001 yellow gem all
+CALL getPlayerItemCount(1001, 2154)
+CALL sell(1001, 2154, 1, 1000)
+>> say 1001 yes
+>> say 1001 yellow gem all
+CALL getPlayerItemCount(1001, 2154)
+CALL sell(1001, 2154, 1, 1000)
+>> say 1001 no
+>> think
+>> say 1001 yellow
+CALL getPlayerItemCount(1001, 2154)
+CALL sell(1001, 2154, 1, 1000)
+>> say 1001 yes
+>> say 1001 yellow
+CALL getPlayerItemCount(1001, 2154)
+CALL sell(1001, 2154, 1, 1000)
+>> say 1001 no
+>> say 1001 5 yellow
+CALL getPlayerItemCount(1001, 2154)
+CALL sell(1001, 2154, 5, 5000)
+>> say 1001 yes
+>> say 1001 5 yellow
+CALL getPlayerItemCount(1001, 2154)
+CALL sell(1001, 2154, 5, 5000)
+>> say 1001 no
+>> say 1001 yellow 100
+CALL getPlayerItemCount(1001, 2154)
+CALL sell(1001, 2154, 1, 1000)
+>> say 1001 yes
+>> say 1001 yellow 100
+CALL getPlayerItemCount(1001, 2154)
+CALL sell(1001, 2154, 1, 1000)
+>> say 1001 no
+>> say 1001 yellow all
+CALL getPlayerItemCount(1001, 2154)
+CALL sell(1001, 2154, 1, 1000)
+>> say 1001 yes
+>> say 1001 yellow all
+CALL getPlayerItemCount(1001, 2154)
+CALL sell(1001, 2154, 1, 1000)
+>> say 1001 no
+>> think
+>> say 1001 yellow gems
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 yellow gems
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 5 yellow gems
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 5 yellow gems
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 yellow gems 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 yellow gems 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 yellow gems all
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 yellow gems all
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> think
+>> say 1001 topaz
+CALL getPlayerItemCount(1001, 2154)
+CALL sell(1001, 2154, 1, 1000)
+>> say 1001 yes
+>> say 1001 topaz
+CALL getPlayerItemCount(1001, 2154)
+CALL sell(1001, 2154, 1, 1000)
+>> say 1001 no
+>> say 1001 5 topaz
+CALL getPlayerItemCount(1001, 2154)
+CALL sell(1001, 2154, 5, 5000)
+>> say 1001 yes
+>> say 1001 5 topaz
+CALL getPlayerItemCount(1001, 2154)
+CALL sell(1001, 2154, 5, 5000)
+>> say 1001 no
+>> say 1001 topaz 100
+CALL getPlayerItemCount(1001, 2154)
+CALL sell(1001, 2154, 1, 1000)
+>> say 1001 yes
+>> say 1001 topaz 100
+CALL getPlayerItemCount(1001, 2154)
+CALL sell(1001, 2154, 1, 1000)
+>> say 1001 no
+>> say 1001 topaz all
+CALL getPlayerItemCount(1001, 2154)
+CALL sell(1001, 2154, 1, 1000)
+>> say 1001 yes
+>> say 1001 topaz all
+CALL getPlayerItemCount(1001, 2154)
+CALL sell(1001, 2154, 1, 1000)
+>> say 1001 no
+>> think
+>> say 1001 blue gem
+CALL getPlayerItemCount(1001, 2158)
+CALL sell(1001, 2158, 1, 5000)
+>> say 1001 yes
+>> say 1001 blue gem
+CALL getPlayerItemCount(1001, 2158)
+CALL sell(1001, 2158, 1, 5000)
+>> say 1001 no
+>> say 1001 5 blue gem
+CALL getPlayerItemCount(1001, 2158)
+CALL sell(1001, 2158, 5, 25000)
+>> say 1001 yes
+>> say 1001 5 blue gem
+CALL getPlayerItemCount(1001, 2158)
+CALL sell(1001, 2158, 5, 25000)
+>> say 1001 no
+>> say 1001 blue gem 100
+CALL getPlayerItemCount(1001, 2158)
+CALL sell(1001, 2158, 1, 5000)
+>> say 1001 yes
+>> say 1001 blue gem 100
+CALL getPlayerItemCount(1001, 2158)
+CALL sell(1001, 2158, 1, 5000)
+>> say 1001 no
+>> say 1001 blue gem all
+CALL getPlayerItemCount(1001, 2158)
+CALL sell(1001, 2158, 1, 5000)
+>> say 1001 yes
+>> say 1001 blue gem all
+CALL getPlayerItemCount(1001, 2158)
+CALL sell(1001, 2158, 1, 5000)
+>> say 1001 no
+>> think
+>> say 1001 blue
+CALL getPlayerItemCount(1001, 2158)
+CALL sell(1001, 2158, 1, 5000)
+>> say 1001 yes
+>> say 1001 blue
+CALL getPlayerItemCount(1001, 2158)
+CALL sell(1001, 2158, 1, 5000)
+>> say 1001 no
+>> say 1001 5 blue
+CALL getPlayerItemCount(1001, 2158)
+CALL sell(1001, 2158, 5, 25000)
+>> say 1001 yes
+>> say 1001 5 blue
+CALL getPlayerItemCount(1001, 2158)
+CALL sell(1001, 2158, 5, 25000)
+>> say 1001 no
+>> say 1001 blue 100
+CALL getPlayerItemCount(1001, 2158)
+CALL sell(1001, 2158, 1, 5000)
+>> say 1001 yes
+>> say 1001 blue 100
+CALL getPlayerItemCount(1001, 2158)
+CALL sell(1001, 2158, 1, 5000)
+>> say 1001 no
+>> say 1001 blue all
+CALL getPlayerItemCount(1001, 2158)
+CALL sell(1001, 2158, 1, 5000)
+>> say 1001 yes
+>> say 1001 blue all
+CALL getPlayerItemCount(1001, 2158)
+CALL sell(1001, 2158, 1, 5000)
+>> say 1001 no
+>> think
+>> say 1001 blue gems
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 blue gems
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 5 blue gems
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 5 blue gems
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 blue gems 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 blue gems 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 blue gems all
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 blue gems all
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> think
+>> say 1001 small diamond
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 yes
+>> say 1001 small diamond
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 no
+>> say 1001 5 small diamond
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 5, 1500)
+>> say 1001 yes
+>> say 1001 5 small diamond
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 5, 1500)
+>> say 1001 no
+>> say 1001 small diamond 100
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 yes
+>> say 1001 small diamond 100
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 no
+>> say 1001 small diamond all
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 yes
+>> say 1001 small diamond all
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 no
+>> think
+>> say 1001 diamond
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 yes
+>> say 1001 diamond
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 no
+>> say 1001 5 diamond
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 5, 1500)
+>> say 1001 yes
+>> say 1001 5 diamond
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 5, 1500)
+>> say 1001 no
+>> say 1001 diamond 100
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 yes
+>> say 1001 diamond 100
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 no
+>> say 1001 diamond all
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 yes
+>> say 1001 diamond all
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 no
+>> think
+>> say 1001 diamonds
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 yes
+>> say 1001 diamonds
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 no
+>> say 1001 5 diamonds
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 5, 1500)
+>> say 1001 yes
+>> say 1001 5 diamonds
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 5, 1500)
+>> say 1001 no
+>> say 1001 diamonds 100
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 yes
+>> say 1001 diamonds 100
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 no
+>> say 1001 diamonds all
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 yes
+>> say 1001 diamonds all
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 no
+>> think
+>> say 1001 diamont
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 yes
+>> say 1001 diamont
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 no
+>> say 1001 5 diamont
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 5, 1500)
+>> say 1001 yes
+>> say 1001 5 diamont
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 5, 1500)
+>> say 1001 no
+>> say 1001 diamont 100
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 yes
+>> say 1001 diamont 100
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 no
+>> say 1001 diamont all
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 yes
+>> say 1001 diamont all
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 no
+>> think
+>> say 1001 diamons
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 yes
+>> say 1001 diamons
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 no
+>> say 1001 5 diamons
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 5, 1500)
+>> say 1001 yes
+>> say 1001 5 diamons
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 5, 1500)
+>> say 1001 no
+>> say 1001 diamons 100
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 yes
+>> say 1001 diamons 100
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 no
+>> say 1001 diamons all
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 yes
+>> say 1001 diamons all
+CALL getPlayerItemCount(1001, 2145)
+CALL sell(1001, 2145, 1, 300)
+>> say 1001 no
+>> think
+>> say 1001 small sapphire
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 yes
+>> say 1001 small sapphire
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 no
+>> say 1001 5 small sapphire
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 5, 1250)
+>> say 1001 yes
+>> say 1001 5 small sapphire
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 5, 1250)
+>> say 1001 no
+>> say 1001 small sapphire 100
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 yes
+>> say 1001 small sapphire 100
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 no
+>> say 1001 small sapphire all
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 yes
+>> say 1001 small sapphire all
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 no
+>> think
+>> say 1001 sapphire
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 yes
+>> say 1001 sapphire
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 no
+>> say 1001 5 sapphire
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 5, 1250)
+>> say 1001 yes
+>> say 1001 5 sapphire
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 5, 1250)
+>> say 1001 no
+>> say 1001 sapphire 100
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 yes
+>> say 1001 sapphire 100
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 no
+>> say 1001 sapphire all
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 yes
+>> say 1001 sapphire all
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 no
+>> think
+>> say 1001 sapphires
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 yes
+>> say 1001 sapphires
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 no
+>> say 1001 5 sapphires
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 5, 1250)
+>> say 1001 yes
+>> say 1001 5 sapphires
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 5, 1250)
+>> say 1001 no
+>> say 1001 sapphires 100
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 yes
+>> say 1001 sapphires 100
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 no
+>> say 1001 sapphires all
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 yes
+>> say 1001 sapphires all
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 no
+>> think
+>> say 1001 saphire
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 yes
+>> say 1001 saphire
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 no
+>> say 1001 5 saphire
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 5, 1250)
+>> say 1001 yes
+>> say 1001 5 saphire
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 5, 1250)
+>> say 1001 no
+>> say 1001 saphire 100
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 yes
+>> say 1001 saphire 100
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 no
+>> say 1001 saphire all
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 yes
+>> say 1001 saphire all
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 no
+>> think
+>> say 1001 safir
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 yes
+>> say 1001 safir
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 no
+>> say 1001 5 safir
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 5, 1250)
+>> say 1001 yes
+>> say 1001 5 safir
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 5, 1250)
+>> say 1001 no
+>> say 1001 safir 100
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 yes
+>> say 1001 safir 100
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 no
+>> say 1001 safir all
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 yes
+>> say 1001 safir all
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 no
+>> think
+>> say 1001 zafiro
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 yes
+>> say 1001 zafiro
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 no
+>> say 1001 5 zafiro
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 5, 1250)
+>> say 1001 yes
+>> say 1001 5 zafiro
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 5, 1250)
+>> say 1001 no
+>> say 1001 zafiro 100
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 yes
+>> say 1001 zafiro 100
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 no
+>> say 1001 zafiro all
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 yes
+>> say 1001 zafiro all
+CALL getPlayerItemCount(1001, 2146)
+CALL sell(1001, 2146, 1, 250)
+>> say 1001 no
+>> think
+>> say 1001 small ruby
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 yes
+>> say 1001 small ruby
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 no
+>> say 1001 5 small ruby
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 5, 1250)
+>> say 1001 yes
+>> say 1001 5 small ruby
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 5, 1250)
+>> say 1001 no
+>> say 1001 small ruby 100
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 yes
+>> say 1001 small ruby 100
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 no
+>> say 1001 small ruby all
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 yes
+>> say 1001 small ruby all
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 no
+>> think
+>> say 1001 ruby
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 yes
+>> say 1001 ruby
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 no
+>> say 1001 5 ruby
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 5, 1250)
+>> say 1001 yes
+>> say 1001 5 ruby
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 5, 1250)
+>> say 1001 no
+>> say 1001 ruby 100
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 yes
+>> say 1001 ruby 100
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 no
+>> say 1001 ruby all
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 yes
+>> say 1001 ruby all
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 no
+>> think
+>> say 1001 rubies
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 yes
+>> say 1001 rubies
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 no
+>> say 1001 5 rubies
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 5, 1250)
+>> say 1001 yes
+>> say 1001 5 rubies
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 5, 1250)
+>> say 1001 no
+>> say 1001 rubies 100
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 yes
+>> say 1001 rubies 100
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 no
+>> say 1001 rubies all
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 yes
+>> say 1001 rubies all
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 no
+>> think
+>> say 1001 rubys
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 yes
+>> say 1001 rubys
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 no
+>> say 1001 5 rubys
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 5, 1250)
+>> say 1001 yes
+>> say 1001 5 rubys
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 5, 1250)
+>> say 1001 no
+>> say 1001 rubys 100
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 yes
+>> say 1001 rubys 100
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 no
+>> say 1001 rubys all
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 yes
+>> say 1001 rubys all
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 no
+>> think
+>> say 1001 rubi
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 yes
+>> say 1001 rubi
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 no
+>> say 1001 5 rubi
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 5, 1250)
+>> say 1001 yes
+>> say 1001 5 rubi
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 5, 1250)
+>> say 1001 no
+>> say 1001 rubi 100
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 yes
+>> say 1001 rubi 100
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 no
+>> say 1001 rubi all
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 yes
+>> say 1001 rubi all
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 no
+>> think
+>> say 1001 small emerald
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 yes
+>> say 1001 small emerald
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 no
+>> say 1001 5 small emerald
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 5, 1250)
+>> say 1001 yes
+>> say 1001 5 small emerald
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 5, 1250)
+>> say 1001 no
+>> say 1001 small emerald 100
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 yes
+>> say 1001 small emerald 100
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 no
+>> say 1001 small emerald all
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 yes
+>> say 1001 small emerald all
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 no
+>> think
+>> say 1001 emerald
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 yes
+>> say 1001 emerald
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 no
+>> say 1001 5 emerald
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 5, 1250)
+>> say 1001 yes
+>> say 1001 5 emerald
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 5, 1250)
+>> say 1001 no
+>> say 1001 emerald 100
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 yes
+>> say 1001 emerald 100
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 no
+>> say 1001 emerald all
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 yes
+>> say 1001 emerald all
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 no
+>> think
+>> say 1001 emeralds
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 yes
+>> say 1001 emeralds
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 no
+>> say 1001 5 emeralds
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 5, 1250)
+>> say 1001 yes
+>> say 1001 5 emeralds
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 5, 1250)
+>> say 1001 no
+>> say 1001 emeralds 100
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 yes
+>> say 1001 emeralds 100
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 no
+>> say 1001 emeralds all
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 yes
+>> say 1001 emeralds all
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 no
+>> think
+>> say 1001 esmerald
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 yes
+>> say 1001 esmerald
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 no
+>> say 1001 5 esmerald
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 5, 1250)
+>> say 1001 yes
+>> say 1001 5 esmerald
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 5, 1250)
+>> say 1001 no
+>> say 1001 esmerald 100
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 yes
+>> say 1001 esmerald 100
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 no
+>> say 1001 esmerald all
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 yes
+>> say 1001 esmerald all
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 no
+>> think
+>> say 1001 esmeralda
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 yes
+>> say 1001 esmeralda
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 no
+>> say 1001 5 esmeralda
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 5, 1250)
+>> say 1001 yes
+>> say 1001 5 esmeralda
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 5, 1250)
+>> say 1001 no
+>> say 1001 esmeralda 100
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 yes
+>> say 1001 esmeralda 100
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 no
+>> say 1001 esmeralda all
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 yes
+>> say 1001 esmeralda all
+CALL getPlayerItemCount(1001, 2149)
+CALL sell(1001, 2149, 1, 250)
+>> say 1001 no
+>> think
+>> say 1001 small amethyst
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 yes
+>> say 1001 small amethyst
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 no
+>> say 1001 5 small amethyst
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 5, 1000)
+>> say 1001 yes
+>> say 1001 5 small amethyst
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 5, 1000)
+>> say 1001 no
+>> say 1001 small amethyst 100
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 yes
+>> say 1001 small amethyst 100
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 no
+>> say 1001 small amethyst all
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 yes
+>> say 1001 small amethyst all
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 no
+>> think
+>> say 1001 amethyst
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 yes
+>> say 1001 amethyst
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 no
+>> say 1001 5 amethyst
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 5, 1000)
+>> say 1001 yes
+>> say 1001 5 amethyst
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 5, 1000)
+>> say 1001 no
+>> say 1001 amethyst 100
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 yes
+>> say 1001 amethyst 100
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 no
+>> say 1001 amethyst all
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 yes
+>> say 1001 amethyst all
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 no
+>> think
+>> say 1001 amethysts
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 yes
+>> say 1001 amethysts
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 no
+>> say 1001 5 amethysts
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 5, 1000)
+>> say 1001 yes
+>> say 1001 5 amethysts
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 5, 1000)
+>> say 1001 no
+>> say 1001 amethysts 100
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 yes
+>> say 1001 amethysts 100
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 no
+>> say 1001 amethysts all
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 yes
+>> say 1001 amethysts all
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 no
+>> think
+>> say 1001 ametist
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 yes
+>> say 1001 ametist
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 no
+>> say 1001 5 ametist
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 5, 1000)
+>> say 1001 yes
+>> say 1001 5 ametist
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 5, 1000)
+>> say 1001 no
+>> say 1001 ametist 100
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 yes
+>> say 1001 ametist 100
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 no
+>> say 1001 ametist all
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 yes
+>> say 1001 ametist all
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 no
+>> think
+>> say 1001 amatista
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 yes
+>> say 1001 amatista
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 no
+>> say 1001 5 amatista
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 5, 1000)
+>> say 1001 yes
+>> say 1001 5 amatista
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 5, 1000)
+>> say 1001 no
+>> say 1001 amatista 100
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 yes
+>> say 1001 amatista 100
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 no
+>> say 1001 amatista all
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 yes
+>> say 1001 amatista all
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 1, 200)
+>> say 1001 no
+>> think
+>> say 1001 talon
+CALL getPlayerItemCount(1001, 2151)
+CALL sell(1001, 2151, 1, 320)
+>> say 1001 yes
+>> say 1001 talon
+CALL getPlayerItemCount(1001, 2151)
+CALL sell(1001, 2151, 1, 320)
+>> say 1001 no
+>> say 1001 5 talon
+CALL getPlayerItemCount(1001, 2151)
+CALL sell(1001, 2151, 5, 1600)
+>> say 1001 yes
+>> say 1001 5 talon
+CALL getPlayerItemCount(1001, 2151)
+CALL sell(1001, 2151, 5, 1600)
+>> say 1001 no
+>> say 1001 talon 100
+CALL getPlayerItemCount(1001, 2151)
+CALL sell(1001, 2151, 1, 320)
+>> say 1001 yes
+>> say 1001 talon 100
+CALL getPlayerItemCount(1001, 2151)
+CALL sell(1001, 2151, 1, 320)
+>> say 1001 no
+>> say 1001 talon all
+CALL getPlayerItemCount(1001, 2151)
+CALL sell(1001, 2151, 1, 320)
+>> say 1001 yes
+>> say 1001 talon all
+CALL getPlayerItemCount(1001, 2151)
+CALL sell(1001, 2151, 1, 320)
+>> say 1001 no
+>> think
+>> say 1001 talons
+CALL getPlayerItemCount(1001, 2151)
+CALL sell(1001, 2151, 1, 320)
+>> say 1001 yes
+>> say 1001 talons
+CALL getPlayerItemCount(1001, 2151)
+CALL sell(1001, 2151, 1, 320)
+>> say 1001 no
+>> say 1001 5 talons
+CALL getPlayerItemCount(1001, 2151)
+CALL sell(1001, 2151, 5, 1600)
+>> say 1001 yes
+>> say 1001 5 talons
+CALL getPlayerItemCount(1001, 2151)
+CALL sell(1001, 2151, 5, 1600)
+>> say 1001 no
+>> say 1001 talons 100
+CALL getPlayerItemCount(1001, 2151)
+CALL sell(1001, 2151, 1, 320)
+>> say 1001 yes
+>> say 1001 talons 100
+CALL getPlayerItemCount(1001, 2151)
+CALL sell(1001, 2151, 1, 320)
+>> say 1001 no
+>> say 1001 talons all
+CALL getPlayerItemCount(1001, 2151)
+CALL sell(1001, 2151, 1, 320)
+>> say 1001 yes
+>> say 1001 talons all
+CALL getPlayerItemCount(1001, 2151)
+CALL sell(1001, 2151, 1, 320)
+>> say 1001 no
+>> think
+>> say 1001 sell ruby
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 yes
+>> say 1001 sell ruby
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 no
+>> say 1001 5 sell ruby
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 5, 1250)
+>> say 1001 yes
+>> say 1001 5 sell ruby
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 5, 1250)
+>> say 1001 no
+>> say 1001 sell ruby 100
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 yes
+>> say 1001 sell ruby 100
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 no
+>> say 1001 sell ruby all
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 yes
+>> say 1001 sell ruby all
+CALL getPlayerItemCount(1001, 2147)
+CALL sell(1001, 2147, 1, 250)
+>> say 1001 no
+>> think
+>> say 1001 sell 3 amethyst
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 3, 600)
+>> say 1001 yes
+>> say 1001 sell 3 amethyst
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 3, 600)
+>> say 1001 no
+>> say 1001 5 sell 3 amethyst
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 3, 600)
+>> say 1001 yes
+>> say 1001 5 sell 3 amethyst
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 3, 600)
+>> say 1001 no
+>> say 1001 sell 3 amethyst 100
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 3, 600)
+>> say 1001 yes
+>> say 1001 sell 3 amethyst 100
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 3, 600)
+>> say 1001 no
+>> say 1001 sell 3 amethyst all
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 3, 600)
+>> say 1001 yes
+>> say 1001 sell 3 amethyst all
+CALL getPlayerItemCount(1001, 2150)
+CALL sell(1001, 2150, 3, 600)
+>> say 1001 no
+>> think
+>> say 1001 sell all
+CALL getPlayerItemCount(1001, 2155)
+CALL getPlayerItemCount(1001, 2156)
+CALL getPlayerItemCount(1001, 2157)
+CALL getPlayerItemCount(1001, 2159)
+CALL getPlayerItemCount(1001, 2153)
+CALL getPlayerItemCount(1001, 2154)
+CALL getPlayerItemCount(1001, 2158)
+CALL getPlayerItemCount(1001, 2145)
+CALL getPlayerItemCount(1001, 2146)
+CALL getPlayerItemCount(1001, 2147)
+CALL getPlayerItemCount(1001, 2149)
+CALL getPlayerItemCount(1001, 2150)
+CALL getPlayerItemCount(1001, 2151)
+CALL sellBundle(1001, 476700, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin, 10x violet gem, 10x yellow gem, 10x blue gem, 10x small diamond, 10x small sapphire, 10x small ruby, 10x small emerald, 10x small amethyst, 10x talon", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+>> say 1001 yes
+>> say 1001 sell all
+CALL getPlayerItemCount(1001, 2155)
+CALL getPlayerItemCount(1001, 2156)
+CALL getPlayerItemCount(1001, 2157)
+CALL getPlayerItemCount(1001, 2159)
+CALL getPlayerItemCount(1001, 2153)
+CALL getPlayerItemCount(1001, 2154)
+CALL getPlayerItemCount(1001, 2158)
+CALL getPlayerItemCount(1001, 2145)
+CALL getPlayerItemCount(1001, 2146)
+CALL getPlayerItemCount(1001, 2147)
+CALL getPlayerItemCount(1001, 2149)
+CALL getPlayerItemCount(1001, 2150)
+CALL getPlayerItemCount(1001, 2151)
+CALL sellBundle(1001, 476700, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin, 10x violet gem, 10x yellow gem, 10x blue gem, 10x small diamond, 10x small sapphire, 10x small ruby, 10x small emerald, 10x small amethyst, 10x talon", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+>> say 1001 no
+>> say 1001 5 sell all
+CALL getPlayerItemCount(1001, 2155)
+CALL getPlayerItemCount(1001, 2156)
+CALL getPlayerItemCount(1001, 2157)
+CALL getPlayerItemCount(1001, 2159)
+CALL getPlayerItemCount(1001, 2153)
+CALL getPlayerItemCount(1001, 2154)
+CALL getPlayerItemCount(1001, 2158)
+CALL getPlayerItemCount(1001, 2145)
+CALL getPlayerItemCount(1001, 2146)
+CALL getPlayerItemCount(1001, 2147)
+CALL getPlayerItemCount(1001, 2149)
+CALL getPlayerItemCount(1001, 2150)
+CALL getPlayerItemCount(1001, 2151)
+CALL sellBundle(1001, 476700, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin, 10x violet gem, 10x yellow gem, 10x blue gem, 10x small diamond, 10x small sapphire, 10x small ruby, 10x small emerald, 10x small amethyst, 10x talon", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+>> say 1001 yes
+>> say 1001 5 sell all
+CALL getPlayerItemCount(1001, 2155)
+CALL getPlayerItemCount(1001, 2156)
+CALL getPlayerItemCount(1001, 2157)
+CALL getPlayerItemCount(1001, 2159)
+CALL getPlayerItemCount(1001, 2153)
+CALL getPlayerItemCount(1001, 2154)
+CALL getPlayerItemCount(1001, 2158)
+CALL getPlayerItemCount(1001, 2145)
+CALL getPlayerItemCount(1001, 2146)
+CALL getPlayerItemCount(1001, 2147)
+CALL getPlayerItemCount(1001, 2149)
+CALL getPlayerItemCount(1001, 2150)
+CALL getPlayerItemCount(1001, 2151)
+CALL sellBundle(1001, 476700, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin, 10x violet gem, 10x yellow gem, 10x blue gem, 10x small diamond, 10x small sapphire, 10x small ruby, 10x small emerald, 10x small amethyst, 10x talon", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+>> say 1001 no
+>> say 1001 sell all 100
+CALL getPlayerItemCount(1001, 2155)
+CALL getPlayerItemCount(1001, 2156)
+CALL getPlayerItemCount(1001, 2157)
+CALL getPlayerItemCount(1001, 2159)
+CALL getPlayerItemCount(1001, 2153)
+CALL getPlayerItemCount(1001, 2154)
+CALL getPlayerItemCount(1001, 2158)
+CALL getPlayerItemCount(1001, 2145)
+CALL getPlayerItemCount(1001, 2146)
+CALL getPlayerItemCount(1001, 2147)
+CALL getPlayerItemCount(1001, 2149)
+CALL getPlayerItemCount(1001, 2150)
+CALL getPlayerItemCount(1001, 2151)
+CALL sellBundle(1001, 476700, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin, 10x violet gem, 10x yellow gem, 10x blue gem, 10x small diamond, 10x small sapphire, 10x small ruby, 10x small emerald, 10x small amethyst, 10x talon", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+>> say 1001 yes
+>> say 1001 sell all 100
+CALL getPlayerItemCount(1001, 2155)
+CALL getPlayerItemCount(1001, 2156)
+CALL getPlayerItemCount(1001, 2157)
+CALL getPlayerItemCount(1001, 2159)
+CALL getPlayerItemCount(1001, 2153)
+CALL getPlayerItemCount(1001, 2154)
+CALL getPlayerItemCount(1001, 2158)
+CALL getPlayerItemCount(1001, 2145)
+CALL getPlayerItemCount(1001, 2146)
+CALL getPlayerItemCount(1001, 2147)
+CALL getPlayerItemCount(1001, 2149)
+CALL getPlayerItemCount(1001, 2150)
+CALL getPlayerItemCount(1001, 2151)
+CALL sellBundle(1001, 476700, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin, 10x violet gem, 10x yellow gem, 10x blue gem, 10x small diamond, 10x small sapphire, 10x small ruby, 10x small emerald, 10x small amethyst, 10x talon", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+>> say 1001 no
+>> say 1001 sell all all
+CALL getPlayerItemCount(1001, 2155)
+CALL getPlayerItemCount(1001, 2156)
+CALL getPlayerItemCount(1001, 2157)
+CALL getPlayerItemCount(1001, 2159)
+CALL getPlayerItemCount(1001, 2153)
+CALL getPlayerItemCount(1001, 2154)
+CALL getPlayerItemCount(1001, 2158)
+CALL getPlayerItemCount(1001, 2145)
+CALL getPlayerItemCount(1001, 2146)
+CALL getPlayerItemCount(1001, 2147)
+CALL getPlayerItemCount(1001, 2149)
+CALL getPlayerItemCount(1001, 2150)
+CALL getPlayerItemCount(1001, 2151)
+CALL sellBundle(1001, 476700, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin, 10x violet gem, 10x yellow gem, 10x blue gem, 10x small diamond, 10x small sapphire, 10x small ruby, 10x small emerald, 10x small amethyst, 10x talon", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+>> say 1001 yes
+>> say 1001 sell all all
+CALL getPlayerItemCount(1001, 2155)
+CALL getPlayerItemCount(1001, 2156)
+CALL getPlayerItemCount(1001, 2157)
+CALL getPlayerItemCount(1001, 2159)
+CALL getPlayerItemCount(1001, 2153)
+CALL getPlayerItemCount(1001, 2154)
+CALL getPlayerItemCount(1001, 2158)
+CALL getPlayerItemCount(1001, 2145)
+CALL getPlayerItemCount(1001, 2146)
+CALL getPlayerItemCount(1001, 2147)
+CALL getPlayerItemCount(1001, 2149)
+CALL getPlayerItemCount(1001, 2150)
+CALL getPlayerItemCount(1001, 2151)
+CALL sellBundle(1001, 476700, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin, 10x violet gem, 10x yellow gem, 10x blue gem, 10x small diamond, 10x small sapphire, 10x small ruby, 10x small emerald, 10x small amethyst, 10x talon", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+>> say 1001 no
+>> think
+>> say 1001 list
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 list
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 5 list
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 5 list
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 list 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 list 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 list all
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 list all
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> think
+>> say 1001 s' or 'es
+>> say 1001 yes
+>> say 1001 s' or 'es
+>> say 1001 no
+>> say 1001 5 s' or 'es
+>> say 1001 yes
+>> say 1001 5 s' or 'es
+>> say 1001 no
+>> say 1001 s' or 'es 100
+>> say 1001 yes
+>> say 1001 s' or 'es 100
+>> say 1001 no
+>> say 1001 s' or 'es all
+>> say 1001 yes
+>> say 1001 s' or 'es all
+>> say 1001 no
+>> think
+>> say 1001 x
+>> say 1001 yes
+>> say 1001 x
+>> say 1001 no
+>> say 1001 5 x
+>> say 1001 yes
+>> say 1001 5 x
+>> say 1001 no
+>> say 1001 x 100
+>> say 1001 yes
+>> say 1001 x 100
+>> say 1001 no
+>> say 1001 x all
+>> say 1001 yes
+>> say 1001 x all
+>> say 1001 no
+>> think
+>> say 1001 help
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 yes
+>> say 1001 help
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 no
+>> say 1001 5 help
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 yes
+>> say 1001 5 help
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 no
+>> say 1001 help 100
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 yes
+>> say 1001 help 100
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 no
+>> say 1001 help all
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 yes
+>> say 1001 help all
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 no
+>> think
+>> say 1001 focused
+>> say 1001 yes
+>> say 1001 focused
+>> say 1001 no
+>> say 1001 5 focused
+>> say 1001 yes
+>> say 1001 5 focused
+>> say 1001 no
+>> say 1001 focused 100
+>> say 1001 yes
+>> say 1001 focused 100
+>> say 1001 no
+>> say 1001 focused all
+>> say 1001 yes
+>> say 1001 focused all
+>> say 1001 no
+>> think
+>> say 1001 ayuda
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 yes
+>> say 1001 ayuda
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 no
+>> say 1001 5 ayuda
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 yes
+>> say 1001 5 ayuda
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 no
+>> say 1001 ayuda 100
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 yes
+>> say 1001 ayuda 100
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 no
+>> say 1001 ayuda all
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 yes
+>> say 1001 ayuda all
+SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+>> say 1001 no
+>> think
+>> say 1001 gems
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 gems
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 5 gems
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 5 gems
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 gems 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 gems 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 gems all
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 gems all
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> think
+>> say 1001 lista
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 lista
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 5 lista
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 5 lista
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 lista 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 lista 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 lista all
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 lista all
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> think
+>> say 1001 prices
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 prices
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 5 prices
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 5 prices
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 prices 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 prices 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 prices all
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 prices all
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> think
+>> say 1001 precios
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 precios
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 5 precios
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 5 precios
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 precios 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 precios 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 precios all
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 precios all
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> think
+>> say 1001 vender todo
+CALL getPlayerItemCount(1001, 2155)
+CALL getPlayerItemCount(1001, 2156)
+CALL getPlayerItemCount(1001, 2157)
+CALL getPlayerItemCount(1001, 2159)
+CALL getPlayerItemCount(1001, 2153)
+CALL getPlayerItemCount(1001, 2154)
+CALL getPlayerItemCount(1001, 2158)
+CALL getPlayerItemCount(1001, 2145)
+CALL getPlayerItemCount(1001, 2146)
+CALL getPlayerItemCount(1001, 2147)
+CALL getPlayerItemCount(1001, 2149)
+CALL getPlayerItemCount(1001, 2150)
+CALL getPlayerItemCount(1001, 2151)
+CALL sellBundle(1001, 476700, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin, 10x violet gem, 10x yellow gem, 10x blue gem, 10x small diamond, 10x small sapphire, 10x small ruby, 10x small emerald, 10x small amethyst, 10x talon", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+>> say 1001 yes
+>> say 1001 vender todo
+CALL getPlayerItemCount(1001, 2155)
+CALL getPlayerItemCount(1001, 2156)
+CALL getPlayerItemCount(1001, 2157)
+CALL getPlayerItemCount(1001, 2159)
+CALL getPlayerItemCount(1001, 2153)
+CALL getPlayerItemCount(1001, 2154)
+CALL getPlayerItemCount(1001, 2158)
+CALL getPlayerItemCount(1001, 2145)
+CALL getPlayerItemCount(1001, 2146)
+CALL getPlayerItemCount(1001, 2147)
+CALL getPlayerItemCount(1001, 2149)
+CALL getPlayerItemCount(1001, 2150)
+CALL getPlayerItemCount(1001, 2151)
+CALL sellBundle(1001, 476700, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin, 10x violet gem, 10x yellow gem, 10x blue gem, 10x small diamond, 10x small sapphire, 10x small ruby, 10x small emerald, 10x small amethyst, 10x talon", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+>> say 1001 no
+>> say 1001 5 vender todo
+CALL getPlayerItemCount(1001, 2155)
+CALL getPlayerItemCount(1001, 2156)
+CALL getPlayerItemCount(1001, 2157)
+CALL getPlayerItemCount(1001, 2159)
+CALL getPlayerItemCount(1001, 2153)
+CALL getPlayerItemCount(1001, 2154)
+CALL getPlayerItemCount(1001, 2158)
+CALL getPlayerItemCount(1001, 2145)
+CALL getPlayerItemCount(1001, 2146)
+CALL getPlayerItemCount(1001, 2147)
+CALL getPlayerItemCount(1001, 2149)
+CALL getPlayerItemCount(1001, 2150)
+CALL getPlayerItemCount(1001, 2151)
+CALL sellBundle(1001, 476700, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin, 10x violet gem, 10x yellow gem, 10x blue gem, 10x small diamond, 10x small sapphire, 10x small ruby, 10x small emerald, 10x small amethyst, 10x talon", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+>> say 1001 yes
+>> say 1001 5 vender todo
+CALL getPlayerItemCount(1001, 2155)
+CALL getPlayerItemCount(1001, 2156)
+CALL getPlayerItemCount(1001, 2157)
+CALL getPlayerItemCount(1001, 2159)
+CALL getPlayerItemCount(1001, 2153)
+CALL getPlayerItemCount(1001, 2154)
+CALL getPlayerItemCount(1001, 2158)
+CALL getPlayerItemCount(1001, 2145)
+CALL getPlayerItemCount(1001, 2146)
+CALL getPlayerItemCount(1001, 2147)
+CALL getPlayerItemCount(1001, 2149)
+CALL getPlayerItemCount(1001, 2150)
+CALL getPlayerItemCount(1001, 2151)
+CALL sellBundle(1001, 476700, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin, 10x violet gem, 10x yellow gem, 10x blue gem, 10x small diamond, 10x small sapphire, 10x small ruby, 10x small emerald, 10x small amethyst, 10x talon", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+>> say 1001 no
+>> say 1001 vender todo 100
+CALL getPlayerItemCount(1001, 2155)
+CALL getPlayerItemCount(1001, 2156)
+CALL getPlayerItemCount(1001, 2157)
+CALL getPlayerItemCount(1001, 2159)
+CALL getPlayerItemCount(1001, 2153)
+CALL getPlayerItemCount(1001, 2154)
+CALL getPlayerItemCount(1001, 2158)
+CALL getPlayerItemCount(1001, 2145)
+CALL getPlayerItemCount(1001, 2146)
+CALL getPlayerItemCount(1001, 2147)
+CALL getPlayerItemCount(1001, 2149)
+CALL getPlayerItemCount(1001, 2150)
+CALL getPlayerItemCount(1001, 2151)
+CALL sellBundle(1001, 476700, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin, 10x violet gem, 10x yellow gem, 10x blue gem, 10x small diamond, 10x small sapphire, 10x small ruby, 10x small emerald, 10x small amethyst, 10x talon", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+>> say 1001 yes
+>> say 1001 vender todo 100
+CALL getPlayerItemCount(1001, 2155)
+CALL getPlayerItemCount(1001, 2156)
+CALL getPlayerItemCount(1001, 2157)
+CALL getPlayerItemCount(1001, 2159)
+CALL getPlayerItemCount(1001, 2153)
+CALL getPlayerItemCount(1001, 2154)
+CALL getPlayerItemCount(1001, 2158)
+CALL getPlayerItemCount(1001, 2145)
+CALL getPlayerItemCount(1001, 2146)
+CALL getPlayerItemCount(1001, 2147)
+CALL getPlayerItemCount(1001, 2149)
+CALL getPlayerItemCount(1001, 2150)
+CALL getPlayerItemCount(1001, 2151)
+CALL sellBundle(1001, 476700, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin, 10x violet gem, 10x yellow gem, 10x blue gem, 10x small diamond, 10x small sapphire, 10x small ruby, 10x small emerald, 10x small amethyst, 10x talon", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+>> say 1001 no
+>> say 1001 vender todo all
+CALL getPlayerItemCount(1001, 2155)
+CALL getPlayerItemCount(1001, 2156)
+CALL getPlayerItemCount(1001, 2157)
+CALL getPlayerItemCount(1001, 2159)
+CALL getPlayerItemCount(1001, 2153)
+CALL getPlayerItemCount(1001, 2154)
+CALL getPlayerItemCount(1001, 2158)
+CALL getPlayerItemCount(1001, 2145)
+CALL getPlayerItemCount(1001, 2146)
+CALL getPlayerItemCount(1001, 2147)
+CALL getPlayerItemCount(1001, 2149)
+CALL getPlayerItemCount(1001, 2150)
+CALL getPlayerItemCount(1001, 2151)
+CALL sellBundle(1001, 476700, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin, 10x violet gem, 10x yellow gem, 10x blue gem, 10x small diamond, 10x small sapphire, 10x small ruby, 10x small emerald, 10x small amethyst, 10x talon", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+>> say 1001 yes
+>> say 1001 vender todo all
+CALL getPlayerItemCount(1001, 2155)
+CALL getPlayerItemCount(1001, 2156)
+CALL getPlayerItemCount(1001, 2157)
+CALL getPlayerItemCount(1001, 2159)
+CALL getPlayerItemCount(1001, 2153)
+CALL getPlayerItemCount(1001, 2154)
+CALL getPlayerItemCount(1001, 2158)
+CALL getPlayerItemCount(1001, 2145)
+CALL getPlayerItemCount(1001, 2146)
+CALL getPlayerItemCount(1001, 2147)
+CALL getPlayerItemCount(1001, 2149)
+CALL getPlayerItemCount(1001, 2150)
+CALL getPlayerItemCount(1001, 2151)
+CALL sellBundle(1001, 476700, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin, 10x violet gem, 10x yellow gem, 10x blue gem, 10x small diamond, 10x small sapphire, 10x small ruby, 10x small emerald, 10x small amethyst, 10x talon", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+>> say 1001 no
+>> think
+>> say 1001 all gems
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 all gems
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 5 all gems
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 5 all gems
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 all gems 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 all gems 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 all gems all
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 all gems all
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> think
+>> say 1001 sell
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 sell
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 5 sell
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 5 sell
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 sell 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 sell 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 sell all
+CALL getPlayerItemCount(1001, 2155)
+CALL getPlayerItemCount(1001, 2156)
+CALL getPlayerItemCount(1001, 2157)
+CALL getPlayerItemCount(1001, 2159)
+CALL getPlayerItemCount(1001, 2153)
+CALL getPlayerItemCount(1001, 2154)
+CALL getPlayerItemCount(1001, 2158)
+CALL getPlayerItemCount(1001, 2145)
+CALL getPlayerItemCount(1001, 2146)
+CALL getPlayerItemCount(1001, 2147)
+CALL getPlayerItemCount(1001, 2149)
+CALL getPlayerItemCount(1001, 2150)
+CALL getPlayerItemCount(1001, 2151)
+CALL sellBundle(1001, 476700, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin, 10x violet gem, 10x yellow gem, 10x blue gem, 10x small diamond, 10x small sapphire, 10x small ruby, 10x small emerald, 10x small amethyst, 10x talon", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+>> say 1001 yes
+>> say 1001 sell all
+CALL getPlayerItemCount(1001, 2155)
+CALL getPlayerItemCount(1001, 2156)
+CALL getPlayerItemCount(1001, 2157)
+CALL getPlayerItemCount(1001, 2159)
+CALL getPlayerItemCount(1001, 2153)
+CALL getPlayerItemCount(1001, 2154)
+CALL getPlayerItemCount(1001, 2158)
+CALL getPlayerItemCount(1001, 2145)
+CALL getPlayerItemCount(1001, 2146)
+CALL getPlayerItemCount(1001, 2147)
+CALL getPlayerItemCount(1001, 2149)
+CALL getPlayerItemCount(1001, 2150)
+CALL getPlayerItemCount(1001, 2151)
+CALL sellBundle(1001, 476700, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin, 10x violet gem, 10x yellow gem, 10x blue gem, 10x small diamond, 10x small sapphire, 10x small ruby, 10x small emerald, 10x small amethyst, 10x talon", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+>> say 1001 no
+>> think
+>> say 1001 vender
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 vender
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 5 vender
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 5 vender
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 vender 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 vender 100
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> say 1001 vender all
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 yes
+>> say 1001 vender all
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1001 no
+>> think
+>> say 1001 bye
+CALL cancelPendingTrade(1001)
+SAY Bye, Player1001! Come back anytime.
+>> say 1001 hi
+SAY Hi Player1001! I buy gems and diamonds. Say "help" or "list" for prices.
+>> advance 40
+>> think
+CALL cancelPendingTrade(1001)
+SAY Next please...
+>> say 1001 hi
+SAY Hi Player1001! I buy gems and diamonds. Say "help" or "list" for prices.
+>> far 1001
+>> think
+CALL cancelPendingTrade(1001)
+SAY See you later!
+>> near 1001
+>> say 1001 hola
+SAY Hi Player1001! I buy gems and diamonds. Say "help" or "list" for prices.
+>> disappear 1001
+CALL cancelPendingTrade(1001)
+SAY See you later!
+>> say 1002 hi
+SAY Hi Player1002! I buy gems and diamonds. Say "help" or "list" for prices.
+>> set 1002 money 0
+>> set 1002 slots 0
+>> set 1002 level 1
+>> say 1002 big emerald
+CALL getPlayerItemCount(1002, 2155)
+CALL sell(1002, 2155, 1, 10000)
+>> say 1002 yes
+>> say 1002 big emeralds
+CALL getPlayerItemCount(1002, 2155)
+CALL sell(1002, 2155, 1, 10000)
+>> say 1002 yes
+>> say 1002 large emerald
+CALL getPlayerItemCount(1002, 2155)
+CALL sell(1002, 2155, 1, 10000)
+>> say 1002 yes
+>> say 1002 green gem
+CALL getPlayerItemCount(1002, 2155)
+CALL sell(1002, 2155, 1, 10000)
+>> say 1002 yes
+>> say 1002 big green
+CALL getPlayerItemCount(1002, 2155)
+CALL sell(1002, 2155, 1, 10000)
+>> say 1002 yes
+>> say 1002 big ruby
+CALL getPlayerItemCount(1002, 2156)
+CALL sell(1002, 2156, 1, 10000)
+>> say 1002 yes
+>> say 1002 big rubies
+CALL getPlayerItemCount(1002, 2156)
+CALL sell(1002, 2156, 1, 10000)
+>> say 1002 yes
+>> say 1002 big rubys
+CALL getPlayerItemCount(1002, 2156)
+CALL sell(1002, 2156, 1, 10000)
+>> say 1002 yes
+>> say 1002 large ruby
+CALL getPlayerItemCount(1002, 2156)
+CALL sell(1002, 2156, 1, 10000)
+>> say 1002 yes
+>> say 1002 red gem
+CALL getPlayerItemCount(1002, 2156)
+CALL sell(1002, 2156, 1, 10000)
+>> say 1002 yes
+>> say 1002 big red
+CALL getPlayerItemCount(1002, 2156)
+CALL sell(1002, 2156, 1, 10000)
+>> say 1002 yes
+>> say 1002 gold nugget
+CALL getPlayerItemCount(1002, 2157)
+CALL sell(1002, 2157, 1, 10000)
+>> say 1002 yes
+>> say 1002 nugget
+CALL getPlayerItemCount(1002, 2157)
+CALL sell(1002, 2157, 1, 10000)
+>> say 1002 yes
+>> say 1002 nuggets
+CALL getPlayerItemCount(1002, 2157)
+CALL sell(1002, 2157, 1, 10000)
+>> say 1002 yes
+>> say 1002 gold
+CALL getPlayerItemCount(1002, 2157)
+CALL sell(1002, 2157, 1, 10000)
+>> say 1002 yes
+>> say 1002 scarab coin
+CALL getPlayerItemCount(1002, 2159)
+CALL sell(1002, 2159, 1, 100)
+>> say 1002 yes
+>> say 1002 scarab
+CALL getPlayerItemCount(1002, 2159)
+CALL sell(1002, 2159, 1, 100)
+>> say 1002 yes
+>> say 1002 scarabs
+CALL getPlayerItemCount(1002, 2159)
+CALL sell(1002, 2159, 1, 100)
+>> say 1002 yes
+>> say 1002 scarab coins
+CALL getPlayerItemCount(1002, 2159)
+CALL sell(1002, 2159, 1, 100)
+>> say 1002 yes
+>> say 1002 coin
+CALL getPlayerItemCount(1002, 2159)
+CALL sell(1002, 2159, 1, 100)
+>> say 1002 yes
+>> say 1002 coins
+CALL getPlayerItemCount(1002, 2159)
+CALL sell(1002, 2159, 1, 100)
+>> say 1002 yes
+>> say 1002 violet gem
+CALL getPlayerItemCount(1002, 2153)
+CALL sell(1002, 2153, 1, 10000)
+>> say 1002 yes
+>> say 1002 violet
+CALL getPlayerItemCount(1002, 2153)
+CALL sell(1002, 2153, 1, 10000)
+>> say 1002 yes
+>> say 1002 violet gems
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1002 yes
+>> say 1002 purple gem
+CALL getPlayerItemCount(1002, 2153)
+CALL sell(1002, 2153, 1, 10000)
+>> say 1002 yes
+>> say 1002 purple
+CALL getPlayerItemCount(1002, 2153)
+CALL sell(1002, 2153, 1, 10000)
+>> say 1002 yes
+>> say 1002 yellow gem
+CALL getPlayerItemCount(1002, 2154)
+CALL sell(1002, 2154, 1, 1000)
+>> say 1002 yes
+>> say 1002 yellow
+CALL getPlayerItemCount(1002, 2154)
+CALL sell(1002, 2154, 1, 1000)
+>> say 1002 yes
+>> say 1002 yellow gems
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1002 yes
+>> say 1002 topaz
+CALL getPlayerItemCount(1002, 2154)
+CALL sell(1002, 2154, 1, 1000)
+>> say 1002 yes
+>> say 1002 blue gem
+CALL getPlayerItemCount(1002, 2158)
+CALL sell(1002, 2158, 1, 5000)
+>> say 1002 yes
+>> say 1002 blue
+CALL getPlayerItemCount(1002, 2158)
+CALL sell(1002, 2158, 1, 5000)
+>> say 1002 yes
+>> say 1002 blue gems
+SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 320gp.
+SAY Rare: yellow 1k, blue 5k, violet 10k, big emerald/ruby 10k, gold nugget 10k, scarab coin 100gp.
+SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
+>> say 1002 yes
+>> say 1002 small diamond
+CALL getPlayerItemCount(1002, 2145)
+CALL sell(1002, 2145, 1, 300)
+>> say 1002 yes
+>> say 1002 diamond
+CALL getPlayerItemCount(1002, 2145)
+CALL sell(1002, 2145, 1, 300)
+>> say 1002 yes
+>> say 1002 diamonds
+CALL getPlayerItemCount(1002, 2145)
+CALL sell(1002, 2145, 1, 300)
+>> say 1002 yes
+>> say 1002 diamont
+CALL getPlayerItemCount(1002, 2145)
+CALL sell(1002, 2145, 1, 300)
+>> say 1002 yes
+>> say 1002 diamons
+CALL getPlayerItemCount(1002, 2145)
+CALL sell(1002, 2145, 1, 300)
+>> say 1002 yes
+>> say 1002 small sapphire
+CALL getPlayerItemCount(1002, 2146)
+CALL sell(1002, 2146, 1, 250)
+>> say 1002 yes
+>> say 1002 sapphire
+CALL getPlayerItemCount(1002, 2146)
+CALL sell(1002, 2146, 1, 250)
+>> say 1002 yes
+>> say 1002 sapphires
+CALL getPlayerItemCount(1002, 2146)
+CALL sell(1002, 2146, 1, 250)
+>> say 1002 yes
+>> say 1002 saphire
+CALL getPlayerItemCount(1002, 2146)
+CALL sell(1002, 2146, 1, 250)
+>> say 1002 yes
+>> say 1002 safir
+CALL getPlayerItemCount(1002, 2146)
+CALL sell(1002, 2146, 1, 250)
+>> say 1002 yes
+>> say 1002 zafiro
+CALL getPlayerItemCount(1002, 2146)
+CALL sell(1002, 2146, 1, 250)
+>> say 1002 yes
+>> say 1002 small ruby
+CALL getPlayerItemCount(1002, 2147)
+CALL sell(1002, 2147, 1, 250)
+>> say 1002 yes
+>> say 1002 ruby
+CALL getPlayerItemCount(1002, 2147)
+CALL sell(1002, 2147, 1, 250)
+>> say 1002 yes
+>> say 1002 rubies
+CALL getPlayerItemCount(1002, 2147)
+CALL sell(1002, 2147, 1, 250)
+>> say 1002 yes
+>> say 1002 rubys
+CALL getPlayerItemCount(1002, 2147)
+CALL sell(1002, 2147, 1, 250)
+>> say 1002 yes
+>> say 1002 rubi
+CALL getPlayerItemCount(1002, 2147)
+CALL sell(1002, 2147, 1, 250)
+>> say 1002 yes
+>> say 1002 small emerald
+CALL getPlayerItemCount(1002, 2149)
+CALL sell(1002, 2149, 1, 250)
+>> say 1002 yes
+>> say 1002 emerald
+CALL getPlayerItemCount(1002, 2149)
+CALL sell(1002, 2149, 1, 250)
+>> say 1002 yes
+>> say 1002 emeralds
+CALL getPlayerItemCount(1002, 2149)
+CALL sell(1002, 2149, 1, 250)
+>> say 1002 yes
+>> say 1002 esmerald
+CALL getPlayerItemCount(1002, 2149)
+CALL sell(1002, 2149, 1, 250)
+>> say 1002 yes
+>> say 1002 esmeralda
+CALL getPlayerItemCount(1002, 2149)
+CALL sell(1002, 2149, 1, 250)
+>> say 1002 yes
+>> say 1002 small amethyst
+CALL getPlayerItemCount(1002, 2150)
+CALL sell(1002, 2150, 1, 200)
+>> say 1002 yes
+>> say 1002 amethyst
+CALL getPlayerItemCount(1002, 2150)
+CALL sell(1002, 2150, 1, 200)
+>> say 1002 yes
+>> say 1002 amethysts
+CALL getPlayerItemCount(1002, 2150)
+CALL sell(1002, 2150, 1, 200)
+>> say 1002 yes
+>> say 1002 ametist
+CALL getPlayerItemCount(1002, 2150)
+CALL sell(1002, 2150, 1, 200)
+>> say 1002 yes
+>> say 1002 amatista
+CALL getPlayerItemCount(1002, 2150)
+CALL sell(1002, 2150, 1, 200)
+>> say 1002 yes
+>> say 1002 talon
+CALL getPlayerItemCount(1002, 2151)
+CALL sell(1002, 2151, 1, 320)
+>> say 1002 yes
+>> say 1002 chau
+CALL cancelPendingTrade(1002)
+SAY Bye, Player1002! Come back anytime.
+>> think 3

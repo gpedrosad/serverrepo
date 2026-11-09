@@ -1,0 +1,835 @@
+# generado por run_npc_tests.py
+near 1001
+near 1002
+say 1001 hello there
+say 1001 hi
+say 1002 hi
+say 1001 help
+say 1001 help
+say 1001 yes
+say 1001 help
+say 1001 no
+say 1001 5 help
+say 1001 yes
+say 1001 5 help
+say 1001 no
+say 1001 help 100
+say 1001 yes
+say 1001 help 100
+say 1001 no
+say 1001 help all
+say 1001 yes
+say 1001 help all
+say 1001 no
+think
+say 1001 ayuda
+say 1001 yes
+say 1001 ayuda
+say 1001 no
+say 1001 5 ayuda
+say 1001 yes
+say 1001 5 ayuda
+say 1001 no
+say 1001 ayuda 100
+say 1001 yes
+say 1001 ayuda 100
+say 1001 no
+say 1001 ayuda all
+say 1001 yes
+say 1001 ayuda all
+say 1001 no
+think
+say 1001 offer
+say 1001 yes
+say 1001 offer
+say 1001 no
+say 1001 5 offer
+say 1001 yes
+say 1001 5 offer
+say 1001 no
+say 1001 offer 100
+say 1001 yes
+say 1001 offer 100
+say 1001 no
+say 1001 offer all
+say 1001 yes
+say 1001 offer all
+say 1001 no
+think
+say 1001 trade
+say 1001 yes
+say 1001 trade
+say 1001 no
+say 1001 5 trade
+say 1001 yes
+say 1001 5 trade
+say 1001 no
+say 1001 trade 100
+say 1001 yes
+say 1001 trade 100
+say 1001 no
+say 1001 trade all
+say 1001 yes
+say 1001 trade all
+say 1001 no
+think
+say 1001 list
+say 1001 yes
+say 1001 list
+say 1001 no
+say 1001 5 list
+say 1001 yes
+say 1001 5 list
+say 1001 no
+say 1001 list 100
+say 1001 yes
+say 1001 list 100
+say 1001 no
+say 1001 list all
+say 1001 yes
+say 1001 list all
+say 1001 no
+think
+say 1001 info
+say 1001 yes
+say 1001 info
+say 1001 no
+say 1001 5 info
+say 1001 yes
+say 1001 5 info
+say 1001 no
+say 1001 info 100
+say 1001 yes
+say 1001 info 100
+say 1001 no
+say 1001 info all
+say 1001 yes
+say 1001 info all
+say 1001 no
+think
+say 1001 job
+say 1001 yes
+say 1001 job
+say 1001 no
+say 1001 5 job
+say 1001 yes
+say 1001 5 job
+say 1001 no
+say 1001 job 100
+say 1001 yes
+say 1001 job 100
+say 1001 no
+say 1001 job all
+say 1001 yes
+say 1001 job all
+say 1001 no
+think
+say 1001 name
+say 1001 yes
+say 1001 name
+say 1001 no
+say 1001 5 name
+say 1001 yes
+say 1001 5 name
+say 1001 no
+say 1001 name 100
+say 1001 yes
+say 1001 name 100
+say 1001 no
+say 1001 name all
+say 1001 yes
+say 1001 name all
+say 1001 no
+think
+say 1001 yes
+say 1001 yes
+say 1001 yes
+say 1001 no
+say 1001 5 yes
+say 1001 yes
+say 1001 5 yes
+say 1001 no
+say 1001 yes 100
+say 1001 yes
+say 1001 yes 100
+say 1001 no
+say 1001 yes all
+say 1001 yes
+say 1001 yes all
+say 1001 no
+think
+say 1001 no
+say 1001 yes
+say 1001 no
+say 1001 no
+say 1001 5 no
+say 1001 yes
+say 1001 5 no
+say 1001 no
+say 1001 no 100
+say 1001 yes
+say 1001 no 100
+say 1001 no
+say 1001 no all
+say 1001 yes
+say 1001 no all
+say 1001 no
+think
+say 1001 si
+say 1001 yes
+say 1001 si
+say 1001 no
+say 1001 5 si
+say 1001 yes
+say 1001 5 si
+say 1001 no
+say 1001 si 100
+say 1001 yes
+say 1001 si 100
+say 1001 no
+say 1001 si all
+say 1001 yes
+say 1001 si all
+say 1001 no
+think
+say 1001 sell
+say 1001 yes
+say 1001 sell
+say 1001 no
+say 1001 5 sell
+say 1001 yes
+say 1001 5 sell
+say 1001 no
+say 1001 sell 100
+say 1001 yes
+say 1001 sell 100
+say 1001 no
+say 1001 sell all
+say 1001 yes
+say 1001 sell all
+say 1001 no
+think
+say 1001 buy
+say 1001 yes
+say 1001 buy
+say 1001 no
+say 1001 5 buy
+say 1001 yes
+say 1001 5 buy
+say 1001 no
+say 1001 buy 100
+say 1001 yes
+say 1001 buy 100
+say 1001 no
+say 1001 buy all
+say 1001 yes
+say 1001 buy all
+say 1001 no
+think
+say 1001 all
+say 1001 yes
+say 1001 all
+say 1001 no
+say 1001 5 all
+say 1001 yes
+say 1001 5 all
+say 1001 no
+say 1001 all 100
+say 1001 yes
+say 1001 all 100
+say 1001 no
+say 1001 all all
+say 1001 yes
+say 1001 all all
+say 1001 no
+think
+say 1001 status
+say 1001 yes
+say 1001 status
+say 1001 no
+say 1001 5 status
+say 1001 yes
+say 1001 5 status
+say 1001 no
+say 1001 status 100
+say 1001 yes
+say 1001 status 100
+say 1001 no
+say 1001 status all
+say 1001 yes
+say 1001 status all
+say 1001 no
+think
+say 1001 deposit 100
+say 1001 yes
+say 1001 deposit 100
+say 1001 no
+say 1001 5 deposit 100
+say 1001 yes
+say 1001 5 deposit 100
+say 1001 no
+say 1001 deposit 100 100
+say 1001 yes
+say 1001 deposit 100 100
+say 1001 no
+say 1001 deposit 100 all
+say 1001 yes
+say 1001 deposit 100 all
+say 1001 no
+think
+say 1001 withdraw 50
+say 1001 yes
+say 1001 withdraw 50
+say 1001 no
+say 1001 5 withdraw 50
+say 1001 yes
+say 1001 5 withdraw 50
+say 1001 no
+say 1001 withdraw 50 100
+say 1001 yes
+say 1001 withdraw 50 100
+say 1001 no
+say 1001 withdraw 50 all
+say 1001 yes
+say 1001 withdraw 50 all
+say 1001 no
+think
+say 1001 balance
+say 1001 yes
+say 1001 balance
+say 1001 no
+say 1001 5 balance
+say 1001 yes
+say 1001 5 balance
+say 1001 no
+say 1001 balance 100
+say 1001 yes
+say 1001 balance 100
+say 1001 no
+say 1001 balance all
+say 1001 yes
+say 1001 balance all
+say 1001 no
+think
+say 1001 transfer 10 to player1002
+say 1001 yes
+say 1001 transfer 10 to player1002
+say 1001 no
+say 1001 5 transfer 10 to player1002
+say 1001 yes
+say 1001 5 transfer 10 to player1002
+say 1001 no
+say 1001 transfer 10 to player1002 100
+say 1001 yes
+say 1001 transfer 10 to player1002 100
+say 1001 no
+say 1001 transfer 10 to player1002 all
+say 1001 yes
+say 1001 transfer 10 to player1002 all
+say 1001 no
+think
+say 1001 task
+say 1001 yes
+say 1001 task
+say 1001 no
+say 1001 5 task
+say 1001 yes
+say 1001 5 task
+say 1001 no
+say 1001 task 100
+say 1001 yes
+say 1001 task 100
+say 1001 no
+say 1001 task all
+say 1001 yes
+say 1001 task all
+say 1001 no
+think
+say 1001 status
+say 1001 yes
+say 1001 status
+say 1001 no
+say 1001 5 status
+say 1001 yes
+say 1001 5 status
+say 1001 no
+say 1001 status 100
+say 1001 yes
+say 1001 status 100
+say 1001 no
+say 1001 status all
+say 1001 yes
+say 1001 status all
+say 1001 no
+think
+say 1001 reward
+say 1001 yes
+say 1001 reward
+say 1001 no
+say 1001 5 reward
+say 1001 yes
+say 1001 5 reward
+say 1001 no
+say 1001 reward 100
+say 1001 yes
+say 1001 reward 100
+say 1001 no
+say 1001 reward all
+say 1001 yes
+say 1001 reward all
+say 1001 no
+think
+say 1001 streak
+say 1001 yes
+say 1001 streak
+say 1001 no
+say 1001 5 streak
+say 1001 yes
+say 1001 5 streak
+say 1001 no
+say 1001 streak 100
+say 1001 yes
+say 1001 streak 100
+say 1001 no
+say 1001 streak all
+say 1001 yes
+say 1001 streak all
+say 1001 no
+think
+say 1001 monsters
+say 1001 yes
+say 1001 monsters
+say 1001 no
+say 1001 5 monsters
+say 1001 yes
+say 1001 5 monsters
+say 1001 no
+say 1001 monsters 100
+say 1001 yes
+say 1001 monsters 100
+say 1001 no
+say 1001 monsters all
+say 1001 yes
+say 1001 monsters all
+say 1001 no
+think
+say 1001 gold
+say 1001 yes
+say 1001 gold
+say 1001 no
+say 1001 5 gold
+say 1001 yes
+say 1001 5 gold
+say 1001 no
+say 1001 gold 100
+say 1001 yes
+say 1001 gold 100
+say 1001 no
+say 1001 gold all
+say 1001 yes
+say 1001 gold all
+say 1001 no
+think
+say 1001 exp
+say 1001 yes
+say 1001 exp
+say 1001 no
+say 1001 5 exp
+say 1001 yes
+say 1001 5 exp
+say 1001 no
+say 1001 exp 100
+say 1001 yes
+say 1001 exp 100
+say 1001 no
+say 1001 exp all
+say 1001 yes
+say 1001 exp all
+say 1001 no
+think
+say 1001 help
+say 1001 yes
+say 1001 help
+say 1001 no
+say 1001 5 help
+say 1001 yes
+say 1001 5 help
+say 1001 no
+say 1001 help 100
+say 1001 yes
+say 1001 help 100
+say 1001 no
+say 1001 help all
+say 1001 yes
+say 1001 help all
+say 1001 no
+think
+say 1001 focused
+say 1001 yes
+say 1001 focused
+say 1001 no
+say 1001 5 focused
+say 1001 yes
+say 1001 5 focused
+say 1001 no
+say 1001 focused 100
+say 1001 yes
+say 1001 focused 100
+say 1001 no
+say 1001 focused all
+say 1001 yes
+say 1001 focused all
+say 1001 no
+think
+say 1001 ayuda
+say 1001 yes
+say 1001 ayuda
+say 1001 no
+say 1001 5 ayuda
+say 1001 yes
+say 1001 5 ayuda
+say 1001 no
+say 1001 ayuda 100
+say 1001 yes
+say 1001 ayuda 100
+say 1001 no
+say 1001 ayuda all
+say 1001 yes
+say 1001 ayuda all
+say 1001 no
+think
+say 1001 racha
+say 1001 yes
+say 1001 racha
+say 1001 no
+say 1001 5 racha
+say 1001 yes
+say 1001 5 racha
+say 1001 no
+say 1001 racha 100
+say 1001 yes
+say 1001 racha 100
+say 1001 no
+say 1001 racha all
+say 1001 yes
+say 1001 racha all
+say 1001 no
+think
+say 1001 report
+say 1001 yes
+say 1001 report
+say 1001 no
+say 1001 5 report
+say 1001 yes
+say 1001 5 report
+say 1001 no
+say 1001 report 100
+say 1001 yes
+say 1001 report 100
+say 1001 no
+say 1001 report all
+say 1001 yes
+say 1001 report all
+say 1001 no
+think
+say 1001 progress
+say 1001 yes
+say 1001 progress
+say 1001 no
+say 1001 5 progress
+say 1001 yes
+say 1001 5 progress
+say 1001 no
+say 1001 progress 100
+say 1001 yes
+say 1001 progress 100
+say 1001 no
+say 1001 progress all
+say 1001 yes
+say 1001 progress all
+say 1001 no
+think
+say 1001 claim
+say 1001 yes
+say 1001 claim
+say 1001 no
+say 1001 5 claim
+say 1001 yes
+say 1001 5 claim
+say 1001 no
+say 1001 claim 100
+say 1001 yes
+say 1001 claim 100
+say 1001 no
+say 1001 claim all
+say 1001 yes
+say 1001 claim all
+say 1001 no
+think
+say 1001 premio
+say 1001 yes
+say 1001 premio
+say 1001 no
+say 1001 5 premio
+say 1001 yes
+say 1001 5 premio
+say 1001 no
+say 1001 premio 100
+say 1001 yes
+say 1001 premio 100
+say 1001 no
+say 1001 premio all
+say 1001 yes
+say 1001 premio all
+say 1001 no
+think
+say 1001 experience
+say 1001 yes
+say 1001 experience
+say 1001 no
+say 1001 5 experience
+say 1001 yes
+say 1001 5 experience
+say 1001 no
+say 1001 experience 100
+say 1001 yes
+say 1001 experience 100
+say 1001 no
+say 1001 experience all
+say 1001 yes
+say 1001 experience all
+say 1001 no
+think
+say 1001 money
+say 1001 yes
+say 1001 money
+say 1001 no
+say 1001 5 money
+say 1001 yes
+say 1001 5 money
+say 1001 no
+say 1001 money 100
+say 1001 yes
+say 1001 money 100
+say 1001 no
+say 1001 money all
+say 1001 yes
+say 1001 money all
+say 1001 no
+think
+say 1001 oro
+say 1001 yes
+say 1001 oro
+say 1001 no
+say 1001 5 oro
+say 1001 yes
+say 1001 5 oro
+say 1001 no
+say 1001 oro 100
+say 1001 yes
+say 1001 oro 100
+say 1001 no
+say 1001 oro all
+say 1001 yes
+say 1001 oro all
+say 1001 no
+think
+say 1001 mission
+say 1001 yes
+say 1001 mission
+say 1001 no
+say 1001 5 mission
+say 1001 yes
+say 1001 5 mission
+say 1001 no
+say 1001 mission 100
+say 1001 yes
+say 1001 mission 100
+say 1001 no
+say 1001 mission all
+say 1001 yes
+say 1001 mission all
+say 1001 no
+think
+say 1001 daily
+say 1001 yes
+say 1001 daily
+say 1001 no
+say 1001 5 daily
+say 1001 yes
+say 1001 5 daily
+say 1001 no
+say 1001 daily 100
+say 1001 yes
+say 1001 daily 100
+say 1001 no
+say 1001 daily all
+say 1001 yes
+say 1001 daily all
+say 1001 no
+think
+say 1001 contrato
+say 1001 yes
+say 1001 contrato
+say 1001 no
+say 1001 5 contrato
+say 1001 yes
+say 1001 5 contrato
+say 1001 no
+say 1001 contrato 100
+say 1001 yes
+say 1001 contrato 100
+say 1001 no
+say 1001 contrato all
+say 1001 yes
+say 1001 contrato all
+say 1001 no
+think
+say 1001 mision
+say 1001 yes
+say 1001 mision
+say 1001 no
+say 1001 5 mision
+say 1001 yes
+say 1001 5 mision
+say 1001 no
+say 1001 mision 100
+say 1001 yes
+say 1001 mision 100
+say 1001 no
+say 1001 mision all
+say 1001 yes
+say 1001 mision all
+say 1001 no
+think
+say 1001 one
+say 1001 yes
+say 1001 one
+say 1001 no
+say 1001 5 one
+say 1001 yes
+say 1001 5 one
+say 1001 no
+say 1001 one 100
+say 1001 yes
+say 1001 one 100
+say 1001 no
+say 1001 one all
+say 1001 yes
+say 1001 one all
+say 1001 no
+think
+say 1001 two
+say 1001 yes
+say 1001 two
+say 1001 no
+say 1001 5 two
+say 1001 yes
+say 1001 5 two
+say 1001 no
+say 1001 two 100
+say 1001 yes
+say 1001 two 100
+say 1001 no
+say 1001 two all
+say 1001 yes
+say 1001 two all
+say 1001 no
+think
+say 1001 three
+say 1001 yes
+say 1001 three
+say 1001 no
+say 1001 5 three
+say 1001 yes
+say 1001 5 three
+say 1001 no
+say 1001 three 100
+say 1001 yes
+say 1001 three 100
+say 1001 no
+say 1001 three all
+say 1001 yes
+say 1001 three all
+say 1001 no
+think
+say 1001 bye
+say 1001 hi
+advance 40
+think
+say 1001 hi
+far 1001
+think
+near 1001
+say 1001 hola
+disappear 1001
+say 1002 hi
+set 1002 money 0
+set 1002 slots 0
+set 1002 level 1
+say 1002 task
+say 1002 yes
+say 1002 status
+say 1002 yes
+say 1002 reward
+say 1002 yes
+say 1002 streak
+say 1002 yes
+say 1002 monsters
+say 1002 yes
+say 1002 gold
+say 1002 yes
+say 1002 exp
+say 1002 yes
+say 1002 help
+say 1002 yes
+say 1002 focused
+say 1002 yes
+say 1002 ayuda
+say 1002 yes
+say 1002 racha
+say 1002 yes
+say 1002 report
+say 1002 yes
+say 1002 progress
+say 1002 yes
+say 1002 claim
+say 1002 yes
+say 1002 premio
+say 1002 yes
+say 1002 experience
+say 1002 yes
+say 1002 money
+say 1002 yes
+say 1002 oro
+say 1002 yes
+say 1002 mission
+say 1002 yes
+say 1002 daily
+say 1002 yes
+say 1002 contrato
+say 1002 yes
+say 1002 mision
+say 1002 yes
+say 1002 one
+say 1002 yes
+say 1002 two
+say 1002 yes
+say 1002 three
+say 1002 yes
+say 1002 chau
+think 3
+# Huntmaster: niveles distintos y aceptar contratos
+set 1001 level 20
+say 1001 hi
+say 1001 task
+say 1001 1
+say 1001 yes
+say 1001 status
+say 1001 reward
+set 1001 level 150
+say 1001 task
+say 1001 2
+say 1001 yes
+say 1001 streak
+say 1001 bye

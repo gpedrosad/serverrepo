@@ -1,39 +1,11 @@
-focus = 0
-talk_start = 0
-target = 0
-following = false
-attacking = false
+-- The Oracle (Rookgaard): elegir vocación y viajar al continente.
 talk_state = 0
 cname = ''
 vocation = 0
 mainlevel = 8
 
-function onThingMove(creature, thing, oldpos, oldstackpos)
-end
-
-function onCreatureAppear(creature)
-end
-
-function onCreatureDisappear(cid, pos)
-	npcOnCreatureDisappear(cid)
-end
-
-function onCreatureTurn(creature)
-end
-
-function onCreatureSay(cid, type, msg)
+local function onMessage(cid, msg)
 	cname = creatureGetName(cid)
-	msg = string.lower(msg)
-
-	local state = npcHandleMessage(
-		cid,
-		msg,
-		'Hi ' .. cname .. '! Are you ready to leave Rookgaard and choose your vocation? (yes or si)'
-	)
-	if state ~= 'focused' then
-		return
-	end
-
 	if talk_state == 0 then
 		if npcIsYes(msg) then
 			level = getPlayerLevel(cname)
@@ -92,9 +64,8 @@ function onCreatureSay(cid, type, msg)
 	end
 end
 
-function onCreatureChangeOutfit(creature)
-end
-
-function onThink()
-	npcOnThink(45)
-end
+npcDefine{
+	greet = function(cid) return 'Hi ' .. creatureGetName(cid) .. '! Are you ready to leave Rookgaard and choose your vocation? (yes or si)' end,
+	idleTimeout = 45,
+	onMessage = onMessage,
+}

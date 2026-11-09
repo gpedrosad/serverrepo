@@ -1,0 +1,1775 @@
+# generado por run_npc_tests.py
+near 1001
+near 1002
+say 1001 hello there
+say 1001 hi
+say 1002 hi
+say 1001 help
+say 1001 help
+say 1001 yes
+say 1001 help
+say 1001 no
+say 1001 5 help
+say 1001 yes
+say 1001 5 help
+say 1001 no
+say 1001 help 100
+say 1001 yes
+say 1001 help 100
+say 1001 no
+say 1001 help all
+say 1001 yes
+say 1001 help all
+say 1001 no
+think
+say 1001 ayuda
+say 1001 yes
+say 1001 ayuda
+say 1001 no
+say 1001 5 ayuda
+say 1001 yes
+say 1001 5 ayuda
+say 1001 no
+say 1001 ayuda 100
+say 1001 yes
+say 1001 ayuda 100
+say 1001 no
+say 1001 ayuda all
+say 1001 yes
+say 1001 ayuda all
+say 1001 no
+think
+say 1001 offer
+say 1001 yes
+say 1001 offer
+say 1001 no
+say 1001 5 offer
+say 1001 yes
+say 1001 5 offer
+say 1001 no
+say 1001 offer 100
+say 1001 yes
+say 1001 offer 100
+say 1001 no
+say 1001 offer all
+say 1001 yes
+say 1001 offer all
+say 1001 no
+think
+say 1001 trade
+say 1001 yes
+say 1001 trade
+say 1001 no
+say 1001 5 trade
+say 1001 yes
+say 1001 5 trade
+say 1001 no
+say 1001 trade 100
+say 1001 yes
+say 1001 trade 100
+say 1001 no
+say 1001 trade all
+say 1001 yes
+say 1001 trade all
+say 1001 no
+think
+say 1001 list
+say 1001 yes
+say 1001 list
+say 1001 no
+say 1001 5 list
+say 1001 yes
+say 1001 5 list
+say 1001 no
+say 1001 list 100
+say 1001 yes
+say 1001 list 100
+say 1001 no
+say 1001 list all
+say 1001 yes
+say 1001 list all
+say 1001 no
+think
+say 1001 info
+say 1001 yes
+say 1001 info
+say 1001 no
+say 1001 5 info
+say 1001 yes
+say 1001 5 info
+say 1001 no
+say 1001 info 100
+say 1001 yes
+say 1001 info 100
+say 1001 no
+say 1001 info all
+say 1001 yes
+say 1001 info all
+say 1001 no
+think
+say 1001 job
+say 1001 yes
+say 1001 job
+say 1001 no
+say 1001 5 job
+say 1001 yes
+say 1001 5 job
+say 1001 no
+say 1001 job 100
+say 1001 yes
+say 1001 job 100
+say 1001 no
+say 1001 job all
+say 1001 yes
+say 1001 job all
+say 1001 no
+think
+say 1001 name
+say 1001 yes
+say 1001 name
+say 1001 no
+say 1001 5 name
+say 1001 yes
+say 1001 5 name
+say 1001 no
+say 1001 name 100
+say 1001 yes
+say 1001 name 100
+say 1001 no
+say 1001 name all
+say 1001 yes
+say 1001 name all
+say 1001 no
+think
+say 1001 yes
+say 1001 yes
+say 1001 yes
+say 1001 no
+say 1001 5 yes
+say 1001 yes
+say 1001 5 yes
+say 1001 no
+say 1001 yes 100
+say 1001 yes
+say 1001 yes 100
+say 1001 no
+say 1001 yes all
+say 1001 yes
+say 1001 yes all
+say 1001 no
+think
+say 1001 no
+say 1001 yes
+say 1001 no
+say 1001 no
+say 1001 5 no
+say 1001 yes
+say 1001 5 no
+say 1001 no
+say 1001 no 100
+say 1001 yes
+say 1001 no 100
+say 1001 no
+say 1001 no all
+say 1001 yes
+say 1001 no all
+say 1001 no
+think
+say 1001 si
+say 1001 yes
+say 1001 si
+say 1001 no
+say 1001 5 si
+say 1001 yes
+say 1001 5 si
+say 1001 no
+say 1001 si 100
+say 1001 yes
+say 1001 si 100
+say 1001 no
+say 1001 si all
+say 1001 yes
+say 1001 si all
+say 1001 no
+think
+say 1001 sell
+say 1001 yes
+say 1001 sell
+say 1001 no
+say 1001 5 sell
+say 1001 yes
+say 1001 5 sell
+say 1001 no
+say 1001 sell 100
+say 1001 yes
+say 1001 sell 100
+say 1001 no
+say 1001 sell all
+say 1001 yes
+say 1001 sell all
+say 1001 no
+think
+say 1001 buy
+say 1001 yes
+say 1001 buy
+say 1001 no
+say 1001 5 buy
+say 1001 yes
+say 1001 5 buy
+say 1001 no
+say 1001 buy 100
+say 1001 yes
+say 1001 buy 100
+say 1001 no
+say 1001 buy all
+say 1001 yes
+say 1001 buy all
+say 1001 no
+think
+say 1001 all
+say 1001 yes
+say 1001 all
+say 1001 no
+say 1001 5 all
+say 1001 yes
+say 1001 5 all
+say 1001 no
+say 1001 all 100
+say 1001 yes
+say 1001 all 100
+say 1001 no
+say 1001 all all
+say 1001 yes
+say 1001 all all
+say 1001 no
+think
+say 1001 status
+say 1001 yes
+say 1001 status
+say 1001 no
+say 1001 5 status
+say 1001 yes
+say 1001 5 status
+say 1001 no
+say 1001 status 100
+say 1001 yes
+say 1001 status 100
+say 1001 no
+say 1001 status all
+say 1001 yes
+say 1001 status all
+say 1001 no
+think
+say 1001 deposit 100
+say 1001 yes
+say 1001 deposit 100
+say 1001 no
+say 1001 5 deposit 100
+say 1001 yes
+say 1001 5 deposit 100
+say 1001 no
+say 1001 deposit 100 100
+say 1001 yes
+say 1001 deposit 100 100
+say 1001 no
+say 1001 deposit 100 all
+say 1001 yes
+say 1001 deposit 100 all
+say 1001 no
+think
+say 1001 withdraw 50
+say 1001 yes
+say 1001 withdraw 50
+say 1001 no
+say 1001 5 withdraw 50
+say 1001 yes
+say 1001 5 withdraw 50
+say 1001 no
+say 1001 withdraw 50 100
+say 1001 yes
+say 1001 withdraw 50 100
+say 1001 no
+say 1001 withdraw 50 all
+say 1001 yes
+say 1001 withdraw 50 all
+say 1001 no
+think
+say 1001 balance
+say 1001 yes
+say 1001 balance
+say 1001 no
+say 1001 5 balance
+say 1001 yes
+say 1001 5 balance
+say 1001 no
+say 1001 balance 100
+say 1001 yes
+say 1001 balance 100
+say 1001 no
+say 1001 balance all
+say 1001 yes
+say 1001 balance all
+say 1001 no
+think
+say 1001 transfer 10 to player1002
+say 1001 yes
+say 1001 transfer 10 to player1002
+say 1001 no
+say 1001 5 transfer 10 to player1002
+say 1001 yes
+say 1001 5 transfer 10 to player1002
+say 1001 no
+say 1001 transfer 10 to player1002 100
+say 1001 yes
+say 1001 transfer 10 to player1002 100
+say 1001 no
+say 1001 transfer 10 to player1002 all
+say 1001 yes
+say 1001 transfer 10 to player1002 all
+say 1001 no
+think
+say 1001 royal helmet
+say 1001 yes
+say 1001 royal helmet
+say 1001 no
+say 1001 5 royal helmet
+say 1001 yes
+say 1001 5 royal helmet
+say 1001 no
+say 1001 royal helmet 100
+say 1001 yes
+say 1001 royal helmet 100
+say 1001 no
+say 1001 royal helmet all
+say 1001 yes
+say 1001 royal helmet all
+say 1001 no
+think
+say 1001 warrior helmet
+say 1001 yes
+say 1001 warrior helmet
+say 1001 no
+say 1001 5 warrior helmet
+say 1001 yes
+say 1001 5 warrior helmet
+say 1001 no
+say 1001 warrior helmet 100
+say 1001 yes
+say 1001 warrior helmet 100
+say 1001 no
+say 1001 warrior helmet all
+say 1001 yes
+say 1001 warrior helmet all
+say 1001 no
+think
+say 1001 crusader helmet
+say 1001 yes
+say 1001 crusader helmet
+say 1001 no
+say 1001 5 crusader helmet
+say 1001 yes
+say 1001 5 crusader helmet
+say 1001 no
+say 1001 crusader helmet 100
+say 1001 yes
+say 1001 crusader helmet 100
+say 1001 no
+say 1001 crusader helmet all
+say 1001 yes
+say 1001 crusader helmet all
+say 1001 no
+think
+say 1001 crown helmet
+say 1001 yes
+say 1001 crown helmet
+say 1001 no
+say 1001 5 crown helmet
+say 1001 yes
+say 1001 5 crown helmet
+say 1001 no
+say 1001 crown helmet 100
+say 1001 yes
+say 1001 crown helmet 100
+say 1001 no
+say 1001 crown helmet all
+say 1001 yes
+say 1001 crown helmet all
+say 1001 no
+think
+say 1001 devil helmet
+say 1001 yes
+say 1001 devil helmet
+say 1001 no
+say 1001 5 devil helmet
+say 1001 yes
+say 1001 5 devil helmet
+say 1001 no
+say 1001 devil helmet 100
+say 1001 yes
+say 1001 devil helmet 100
+say 1001 no
+say 1001 devil helmet all
+say 1001 yes
+say 1001 devil helmet all
+say 1001 no
+think
+say 1001 mystic turban
+say 1001 yes
+say 1001 mystic turban
+say 1001 no
+say 1001 5 mystic turban
+say 1001 yes
+say 1001 5 mystic turban
+say 1001 no
+say 1001 mystic turban 100
+say 1001 yes
+say 1001 mystic turban 100
+say 1001 no
+say 1001 mystic turban all
+say 1001 yes
+say 1001 mystic turban all
+say 1001 no
+think
+say 1001 chain helmet
+say 1001 yes
+say 1001 chain helmet
+say 1001 no
+say 1001 5 chain helmet
+say 1001 yes
+say 1001 5 chain helmet
+say 1001 no
+say 1001 chain helmet 100
+say 1001 yes
+say 1001 chain helmet 100
+say 1001 no
+say 1001 chain helmet all
+say 1001 yes
+say 1001 chain helmet all
+say 1001 no
+think
+say 1001 iron helmet
+say 1001 yes
+say 1001 iron helmet
+say 1001 no
+say 1001 5 iron helmet
+say 1001 yes
+say 1001 5 iron helmet
+say 1001 no
+say 1001 iron helmet 100
+say 1001 yes
+say 1001 iron helmet 100
+say 1001 no
+say 1001 iron helmet all
+say 1001 yes
+say 1001 iron helmet all
+say 1001 no
+think
+say 1001 steel boots
+say 1001 yes
+say 1001 steel boots
+say 1001 no
+say 1001 5 steel boots
+say 1001 yes
+say 1001 5 steel boots
+say 1001 no
+say 1001 steel boots 100
+say 1001 yes
+say 1001 steel boots 100
+say 1001 no
+say 1001 steel boots all
+say 1001 yes
+say 1001 steel boots all
+say 1001 no
+think
+say 1001 boh
+say 1001 yes
+say 1001 boh
+say 1001 no
+say 1001 5 boh
+say 1001 yes
+say 1001 5 boh
+say 1001 no
+say 1001 boh 100
+say 1001 yes
+say 1001 boh 100
+say 1001 no
+say 1001 boh all
+say 1001 yes
+say 1001 boh all
+say 1001 no
+think
+say 1001 boots of haste
+say 1001 yes
+say 1001 boots of haste
+say 1001 no
+say 1001 5 boots of haste
+say 1001 yes
+say 1001 5 boots of haste
+say 1001 no
+say 1001 boots of haste 100
+say 1001 yes
+say 1001 boots of haste 100
+say 1001 no
+say 1001 boots of haste all
+say 1001 yes
+say 1001 boots of haste all
+say 1001 no
+think
+say 1001 magic plate armor
+say 1001 yes
+say 1001 magic plate armor
+say 1001 no
+say 1001 5 magic plate armor
+say 1001 yes
+say 1001 5 magic plate armor
+say 1001 no
+say 1001 magic plate armor 100
+say 1001 yes
+say 1001 magic plate armor 100
+say 1001 no
+say 1001 magic plate armor all
+say 1001 yes
+say 1001 magic plate armor all
+say 1001 no
+think
+say 1001 mpa
+say 1001 yes
+say 1001 mpa
+say 1001 no
+say 1001 5 mpa
+say 1001 yes
+say 1001 5 mpa
+say 1001 no
+say 1001 mpa 100
+say 1001 yes
+say 1001 mpa 100
+say 1001 no
+say 1001 mpa all
+say 1001 yes
+say 1001 mpa all
+say 1001 no
+think
+say 1001 dragon scale mail
+say 1001 yes
+say 1001 dragon scale mail
+say 1001 no
+say 1001 5 dragon scale mail
+say 1001 yes
+say 1001 5 dragon scale mail
+say 1001 no
+say 1001 dragon scale mail 100
+say 1001 yes
+say 1001 dragon scale mail 100
+say 1001 no
+say 1001 dragon scale mail all
+say 1001 yes
+say 1001 dragon scale mail all
+say 1001 no
+think
+say 1001 dsm
+say 1001 yes
+say 1001 dsm
+say 1001 no
+say 1001 5 dsm
+say 1001 yes
+say 1001 5 dsm
+say 1001 no
+say 1001 dsm 100
+say 1001 yes
+say 1001 dsm 100
+say 1001 no
+say 1001 dsm all
+say 1001 yes
+say 1001 dsm all
+say 1001 no
+think
+say 1001 golden armor
+say 1001 yes
+say 1001 golden armor
+say 1001 no
+say 1001 5 golden armor
+say 1001 yes
+say 1001 5 golden armor
+say 1001 no
+say 1001 golden armor 100
+say 1001 yes
+say 1001 golden armor 100
+say 1001 no
+say 1001 golden armor all
+say 1001 yes
+say 1001 golden armor all
+say 1001 no
+think
+say 1001 crown armor
+say 1001 yes
+say 1001 crown armor
+say 1001 no
+say 1001 5 crown armor
+say 1001 yes
+say 1001 5 crown armor
+say 1001 no
+say 1001 crown armor 100
+say 1001 yes
+say 1001 crown armor 100
+say 1001 no
+say 1001 crown armor all
+say 1001 yes
+say 1001 crown armor all
+say 1001 no
+think
+say 1001 knight armor
+say 1001 yes
+say 1001 knight armor
+say 1001 no
+say 1001 5 knight armor
+say 1001 yes
+say 1001 5 knight armor
+say 1001 no
+say 1001 knight armor 100
+say 1001 yes
+say 1001 knight armor 100
+say 1001 no
+say 1001 knight armor all
+say 1001 yes
+say 1001 knight armor all
+say 1001 no
+think
+say 1001 blue robe
+say 1001 yes
+say 1001 blue robe
+say 1001 no
+say 1001 5 blue robe
+say 1001 yes
+say 1001 5 blue robe
+say 1001 no
+say 1001 blue robe 100
+say 1001 yes
+say 1001 blue robe 100
+say 1001 no
+say 1001 blue robe all
+say 1001 yes
+say 1001 blue robe all
+say 1001 no
+think
+say 1001 lady armor
+say 1001 yes
+say 1001 lady armor
+say 1001 no
+say 1001 5 lady armor
+say 1001 yes
+say 1001 5 lady armor
+say 1001 no
+say 1001 lady armor 100
+say 1001 yes
+say 1001 lady armor 100
+say 1001 no
+say 1001 lady armor all
+say 1001 yes
+say 1001 lady armor all
+say 1001 no
+think
+say 1001 plate armor
+say 1001 yes
+say 1001 plate armor
+say 1001 no
+say 1001 5 plate armor
+say 1001 yes
+say 1001 5 plate armor
+say 1001 no
+say 1001 plate armor 100
+say 1001 yes
+say 1001 plate armor 100
+say 1001 no
+say 1001 plate armor all
+say 1001 yes
+say 1001 plate armor all
+say 1001 no
+think
+say 1001 brass armor
+say 1001 yes
+say 1001 brass armor
+say 1001 no
+say 1001 5 brass armor
+say 1001 yes
+say 1001 5 brass armor
+say 1001 no
+say 1001 brass armor 100
+say 1001 yes
+say 1001 brass armor 100
+say 1001 no
+say 1001 brass armor all
+say 1001 yes
+say 1001 brass armor all
+say 1001 no
+think
+say 1001 chain armor
+say 1001 yes
+say 1001 chain armor
+say 1001 no
+say 1001 5 chain armor
+say 1001 yes
+say 1001 5 chain armor
+say 1001 no
+say 1001 chain armor 100
+say 1001 yes
+say 1001 chain armor 100
+say 1001 no
+say 1001 chain armor all
+say 1001 yes
+say 1001 chain armor all
+say 1001 no
+think
+say 1001 golden legs
+say 1001 yes
+say 1001 golden legs
+say 1001 no
+say 1001 5 golden legs
+say 1001 yes
+say 1001 5 golden legs
+say 1001 no
+say 1001 golden legs 100
+say 1001 yes
+say 1001 golden legs 100
+say 1001 no
+say 1001 golden legs all
+say 1001 yes
+say 1001 golden legs all
+say 1001 no
+think
+say 1001 crown legs
+say 1001 yes
+say 1001 crown legs
+say 1001 no
+say 1001 5 crown legs
+say 1001 yes
+say 1001 5 crown legs
+say 1001 no
+say 1001 crown legs 100
+say 1001 yes
+say 1001 crown legs 100
+say 1001 no
+say 1001 crown legs all
+say 1001 yes
+say 1001 crown legs all
+say 1001 no
+think
+say 1001 knight legs
+say 1001 yes
+say 1001 knight legs
+say 1001 no
+say 1001 5 knight legs
+say 1001 yes
+say 1001 5 knight legs
+say 1001 no
+say 1001 knight legs 100
+say 1001 yes
+say 1001 knight legs 100
+say 1001 no
+say 1001 knight legs all
+say 1001 yes
+say 1001 knight legs all
+say 1001 no
+think
+say 1001 plate legs
+say 1001 yes
+say 1001 plate legs
+say 1001 no
+say 1001 5 plate legs
+say 1001 yes
+say 1001 5 plate legs
+say 1001 no
+say 1001 plate legs 100
+say 1001 yes
+say 1001 plate legs 100
+say 1001 no
+say 1001 plate legs all
+say 1001 yes
+say 1001 plate legs all
+say 1001 no
+think
+say 1001 brass legs
+say 1001 yes
+say 1001 brass legs
+say 1001 no
+say 1001 5 brass legs
+say 1001 yes
+say 1001 5 brass legs
+say 1001 no
+say 1001 brass legs 100
+say 1001 yes
+say 1001 brass legs 100
+say 1001 no
+say 1001 brass legs all
+say 1001 yes
+say 1001 brass legs all
+say 1001 no
+think
+say 1001 chain legs
+say 1001 yes
+say 1001 chain legs
+say 1001 no
+say 1001 5 chain legs
+say 1001 yes
+say 1001 5 chain legs
+say 1001 no
+say 1001 chain legs 100
+say 1001 yes
+say 1001 chain legs 100
+say 1001 no
+say 1001 chain legs all
+say 1001 yes
+say 1001 chain legs all
+say 1001 no
+think
+say 1001 shield of the mastermind
+say 1001 yes
+say 1001 shield of the mastermind
+say 1001 no
+say 1001 5 shield of the mastermind
+say 1001 yes
+say 1001 5 shield of the mastermind
+say 1001 no
+say 1001 shield of the mastermind 100
+say 1001 yes
+say 1001 shield of the mastermind 100
+say 1001 no
+say 1001 shield of the mastermind all
+say 1001 yes
+say 1001 shield of the mastermind all
+say 1001 no
+think
+say 1001 mms
+say 1001 yes
+say 1001 mms
+say 1001 no
+say 1001 5 mms
+say 1001 yes
+say 1001 5 mms
+say 1001 no
+say 1001 mms 100
+say 1001 yes
+say 1001 mms 100
+say 1001 no
+say 1001 mms all
+say 1001 yes
+say 1001 mms all
+say 1001 no
+think
+say 1001 demon shield
+say 1001 yes
+say 1001 demon shield
+say 1001 no
+say 1001 5 demon shield
+say 1001 yes
+say 1001 5 demon shield
+say 1001 no
+say 1001 demon shield 100
+say 1001 yes
+say 1001 demon shield 100
+say 1001 no
+say 1001 demon shield all
+say 1001 yes
+say 1001 demon shield all
+say 1001 no
+think
+say 1001 vampire shield
+say 1001 yes
+say 1001 vampire shield
+say 1001 no
+say 1001 5 vampire shield
+say 1001 yes
+say 1001 5 vampire shield
+say 1001 no
+say 1001 vampire shield 100
+say 1001 yes
+say 1001 vampire shield 100
+say 1001 no
+say 1001 vampire shield all
+say 1001 yes
+say 1001 vampire shield all
+say 1001 no
+think
+say 1001 medusa shield
+say 1001 yes
+say 1001 medusa shield
+say 1001 no
+say 1001 5 medusa shield
+say 1001 yes
+say 1001 5 medusa shield
+say 1001 no
+say 1001 medusa shield 100
+say 1001 yes
+say 1001 medusa shield 100
+say 1001 no
+say 1001 medusa shield all
+say 1001 yes
+say 1001 medusa shield all
+say 1001 no
+think
+say 1001 amazon shield
+say 1001 yes
+say 1001 amazon shield
+say 1001 no
+say 1001 5 amazon shield
+say 1001 yes
+say 1001 5 amazon shield
+say 1001 no
+say 1001 amazon shield 100
+say 1001 yes
+say 1001 amazon shield 100
+say 1001 no
+say 1001 amazon shield all
+say 1001 yes
+say 1001 amazon shield all
+say 1001 no
+think
+say 1001 crown shield
+say 1001 yes
+say 1001 crown shield
+say 1001 no
+say 1001 5 crown shield
+say 1001 yes
+say 1001 5 crown shield
+say 1001 no
+say 1001 crown shield 100
+say 1001 yes
+say 1001 crown shield 100
+say 1001 no
+say 1001 crown shield all
+say 1001 yes
+say 1001 crown shield all
+say 1001 no
+think
+say 1001 tower shield
+say 1001 yes
+say 1001 tower shield
+say 1001 no
+say 1001 5 tower shield
+say 1001 yes
+say 1001 5 tower shield
+say 1001 no
+say 1001 tower shield 100
+say 1001 yes
+say 1001 tower shield 100
+say 1001 no
+say 1001 tower shield all
+say 1001 yes
+say 1001 tower shield all
+say 1001 no
+think
+say 1001 dragon shield
+say 1001 yes
+say 1001 dragon shield
+say 1001 no
+say 1001 5 dragon shield
+say 1001 yes
+say 1001 5 dragon shield
+say 1001 no
+say 1001 dragon shield 100
+say 1001 yes
+say 1001 dragon shield 100
+say 1001 no
+say 1001 dragon shield all
+say 1001 yes
+say 1001 dragon shield all
+say 1001 no
+think
+say 1001 guardian shield
+say 1001 yes
+say 1001 guardian shield
+say 1001 no
+say 1001 5 guardian shield
+say 1001 yes
+say 1001 5 guardian shield
+say 1001 no
+say 1001 guardian shield 100
+say 1001 yes
+say 1001 guardian shield 100
+say 1001 no
+say 1001 guardian shield all
+say 1001 yes
+say 1001 guardian shield all
+say 1001 no
+think
+say 1001 beholder shield
+say 1001 yes
+say 1001 beholder shield
+say 1001 no
+say 1001 5 beholder shield
+say 1001 yes
+say 1001 5 beholder shield
+say 1001 no
+say 1001 beholder shield 100
+say 1001 yes
+say 1001 beholder shield 100
+say 1001 no
+say 1001 beholder shield all
+say 1001 yes
+say 1001 beholder shield all
+say 1001 no
+think
+say 1001 dwarven shield
+say 1001 yes
+say 1001 dwarven shield
+say 1001 no
+say 1001 5 dwarven shield
+say 1001 yes
+say 1001 5 dwarven shield
+say 1001 no
+say 1001 dwarven shield 100
+say 1001 yes
+say 1001 dwarven shield 100
+say 1001 no
+say 1001 dwarven shield all
+say 1001 yes
+say 1001 dwarven shield all
+say 1001 no
+think
+say 1001 giant sword
+say 1001 yes
+say 1001 giant sword
+say 1001 no
+say 1001 5 giant sword
+say 1001 yes
+say 1001 5 giant sword
+say 1001 no
+say 1001 giant sword 100
+say 1001 yes
+say 1001 giant sword 100
+say 1001 no
+say 1001 giant sword all
+say 1001 yes
+say 1001 giant sword all
+say 1001 no
+think
+say 1001 bright sword
+say 1001 yes
+say 1001 bright sword
+say 1001 no
+say 1001 5 bright sword
+say 1001 yes
+say 1001 5 bright sword
+say 1001 no
+say 1001 bright sword 100
+say 1001 yes
+say 1001 bright sword 100
+say 1001 no
+say 1001 bright sword all
+say 1001 yes
+say 1001 bright sword all
+say 1001 no
+think
+say 1001 ice rapier
+say 1001 yes
+say 1001 ice rapier
+say 1001 no
+say 1001 5 ice rapier
+say 1001 yes
+say 1001 5 ice rapier
+say 1001 no
+say 1001 ice rapier 100
+say 1001 yes
+say 1001 ice rapier 100
+say 1001 no
+say 1001 ice rapier all
+say 1001 yes
+say 1001 ice rapier all
+say 1001 no
+think
+say 1001 fire sword
+say 1001 yes
+say 1001 fire sword
+say 1001 no
+say 1001 5 fire sword
+say 1001 yes
+say 1001 5 fire sword
+say 1001 no
+say 1001 fire sword 100
+say 1001 yes
+say 1001 fire sword 100
+say 1001 no
+say 1001 fire sword all
+say 1001 yes
+say 1001 fire sword all
+say 1001 no
+think
+say 1001 serpent sword
+say 1001 yes
+say 1001 serpent sword
+say 1001 no
+say 1001 5 serpent sword
+say 1001 yes
+say 1001 5 serpent sword
+say 1001 no
+say 1001 serpent sword 100
+say 1001 yes
+say 1001 serpent sword 100
+say 1001 no
+say 1001 serpent sword all
+say 1001 yes
+say 1001 serpent sword all
+say 1001 no
+think
+say 1001 spike sword
+say 1001 yes
+say 1001 spike sword
+say 1001 no
+say 1001 5 spike sword
+say 1001 yes
+say 1001 5 spike sword
+say 1001 no
+say 1001 spike sword 100
+say 1001 yes
+say 1001 spike sword 100
+say 1001 no
+say 1001 spike sword all
+say 1001 yes
+say 1001 spike sword all
+say 1001 no
+think
+say 1001 two handed sword
+say 1001 yes
+say 1001 two handed sword
+say 1001 no
+say 1001 5 two handed sword
+say 1001 yes
+say 1001 5 two handed sword
+say 1001 no
+say 1001 two handed sword 100
+say 1001 yes
+say 1001 two handed sword 100
+say 1001 no
+say 1001 two handed sword all
+say 1001 yes
+say 1001 two handed sword all
+say 1001 no
+think
+say 1001 broad sword
+say 1001 yes
+say 1001 broad sword
+say 1001 no
+say 1001 5 broad sword
+say 1001 yes
+say 1001 5 broad sword
+say 1001 no
+say 1001 broad sword 100
+say 1001 yes
+say 1001 broad sword 100
+say 1001 no
+say 1001 broad sword all
+say 1001 yes
+say 1001 broad sword all
+say 1001 no
+think
+say 1001 short sword
+say 1001 yes
+say 1001 short sword
+say 1001 no
+say 1001 5 short sword
+say 1001 yes
+say 1001 5 short sword
+say 1001 no
+say 1001 short sword 100
+say 1001 yes
+say 1001 short sword 100
+say 1001 no
+say 1001 short sword all
+say 1001 yes
+say 1001 short sword all
+say 1001 no
+think
+say 1001 sabre
+say 1001 yes
+say 1001 sabre
+say 1001 no
+say 1001 5 sabre
+say 1001 yes
+say 1001 5 sabre
+say 1001 no
+say 1001 sabre 100
+say 1001 yes
+say 1001 sabre 100
+say 1001 no
+say 1001 sabre all
+say 1001 yes
+say 1001 sabre all
+say 1001 no
+think
+say 1001 sword
+say 1001 yes
+say 1001 sword
+say 1001 no
+say 1001 5 sword
+say 1001 yes
+say 1001 5 sword
+say 1001 no
+say 1001 sword 100
+say 1001 yes
+say 1001 sword 100
+say 1001 no
+say 1001 sword all
+say 1001 yes
+say 1001 sword all
+say 1001 no
+think
+say 1001 dragon lance
+say 1001 yes
+say 1001 dragon lance
+say 1001 no
+say 1001 5 dragon lance
+say 1001 yes
+say 1001 5 dragon lance
+say 1001 no
+say 1001 dragon lance 100
+say 1001 yes
+say 1001 dragon lance 100
+say 1001 no
+say 1001 dragon lance all
+say 1001 yes
+say 1001 dragon lance all
+say 1001 no
+think
+say 1001 fire axe
+say 1001 yes
+say 1001 fire axe
+say 1001 no
+say 1001 5 fire axe
+say 1001 yes
+say 1001 5 fire axe
+say 1001 no
+say 1001 fire axe 100
+say 1001 yes
+say 1001 fire axe 100
+say 1001 no
+say 1001 fire axe all
+say 1001 yes
+say 1001 fire axe all
+say 1001 no
+think
+say 1001 knight axe
+say 1001 yes
+say 1001 knight axe
+say 1001 no
+say 1001 5 knight axe
+say 1001 yes
+say 1001 5 knight axe
+say 1001 no
+say 1001 knight axe 100
+say 1001 yes
+say 1001 knight axe 100
+say 1001 no
+say 1001 knight axe all
+say 1001 yes
+say 1001 knight axe all
+say 1001 no
+think
+say 1001 double axe
+say 1001 yes
+say 1001 double axe
+say 1001 no
+say 1001 5 double axe
+say 1001 yes
+say 1001 5 double axe
+say 1001 no
+say 1001 double axe 100
+say 1001 yes
+say 1001 double axe 100
+say 1001 no
+say 1001 double axe all
+say 1001 yes
+say 1001 double axe all
+say 1001 no
+think
+say 1001 halberd
+say 1001 yes
+say 1001 halberd
+say 1001 no
+say 1001 5 halberd
+say 1001 yes
+say 1001 5 halberd
+say 1001 no
+say 1001 halberd 100
+say 1001 yes
+say 1001 halberd 100
+say 1001 no
+say 1001 halberd all
+say 1001 yes
+say 1001 halberd all
+say 1001 no
+think
+say 1001 battle axe
+say 1001 yes
+say 1001 battle axe
+say 1001 no
+say 1001 5 battle axe
+say 1001 yes
+say 1001 5 battle axe
+say 1001 no
+say 1001 battle axe 100
+say 1001 yes
+say 1001 battle axe 100
+say 1001 no
+say 1001 battle axe all
+say 1001 yes
+say 1001 battle axe all
+say 1001 no
+think
+say 1001 hatchet
+say 1001 yes
+say 1001 hatchet
+say 1001 no
+say 1001 5 hatchet
+say 1001 yes
+say 1001 5 hatchet
+say 1001 no
+say 1001 hatchet 100
+say 1001 yes
+say 1001 hatchet 100
+say 1001 no
+say 1001 hatchet all
+say 1001 yes
+say 1001 hatchet all
+say 1001 no
+think
+say 1001 war hammer
+say 1001 yes
+say 1001 war hammer
+say 1001 no
+say 1001 5 war hammer
+say 1001 yes
+say 1001 5 war hammer
+say 1001 no
+say 1001 war hammer 100
+say 1001 yes
+say 1001 war hammer 100
+say 1001 no
+say 1001 war hammer all
+say 1001 yes
+say 1001 war hammer all
+say 1001 no
+think
+say 1001 skull staff
+say 1001 yes
+say 1001 skull staff
+say 1001 no
+say 1001 5 skull staff
+say 1001 yes
+say 1001 5 skull staff
+say 1001 no
+say 1001 skull staff 100
+say 1001 yes
+say 1001 skull staff 100
+say 1001 no
+say 1001 skull staff all
+say 1001 yes
+say 1001 skull staff all
+say 1001 no
+think
+say 1001 dragon hammer
+say 1001 yes
+say 1001 dragon hammer
+say 1001 no
+say 1001 5 dragon hammer
+say 1001 yes
+say 1001 5 dragon hammer
+say 1001 no
+say 1001 dragon hammer 100
+say 1001 yes
+say 1001 dragon hammer 100
+say 1001 no
+say 1001 dragon hammer all
+say 1001 yes
+say 1001 dragon hammer all
+say 1001 no
+think
+say 1001 clerical mace
+say 1001 yes
+say 1001 clerical mace
+say 1001 no
+say 1001 5 clerical mace
+say 1001 yes
+say 1001 5 clerical mace
+say 1001 no
+say 1001 clerical mace 100
+say 1001 yes
+say 1001 clerical mace 100
+say 1001 no
+say 1001 clerical mace all
+say 1001 yes
+say 1001 clerical mace all
+say 1001 no
+think
+say 1001 battle hammer
+say 1001 yes
+say 1001 battle hammer
+say 1001 no
+say 1001 5 battle hammer
+say 1001 yes
+say 1001 5 battle hammer
+say 1001 no
+say 1001 battle hammer 100
+say 1001 yes
+say 1001 battle hammer 100
+say 1001 no
+say 1001 battle hammer all
+say 1001 yes
+say 1001 battle hammer all
+say 1001 no
+think
+say 1001 mace
+say 1001 yes
+say 1001 mace
+say 1001 no
+say 1001 5 mace
+say 1001 yes
+say 1001 5 mace
+say 1001 no
+say 1001 mace 100
+say 1001 yes
+say 1001 mace 100
+say 1001 no
+say 1001 mace all
+say 1001 yes
+say 1001 mace all
+say 1001 no
+think
+say 1001 platinum amulet
+say 1001 yes
+say 1001 platinum amulet
+say 1001 no
+say 1001 5 platinum amulet
+say 1001 yes
+say 1001 5 platinum amulet
+say 1001 no
+say 1001 platinum amulet 100
+say 1001 yes
+say 1001 platinum amulet 100
+say 1001 no
+say 1001 platinum amulet all
+say 1001 yes
+say 1001 platinum amulet all
+say 1001 no
+think
+say 1001 scarf
+say 1001 yes
+say 1001 scarf
+say 1001 no
+say 1001 5 scarf
+say 1001 yes
+say 1001 5 scarf
+say 1001 no
+say 1001 scarf 100
+say 1001 yes
+say 1001 scarf 100
+say 1001 no
+say 1001 scarf all
+say 1001 yes
+say 1001 scarf all
+say 1001 no
+think
+say 1001 helmets
+say 1001 yes
+say 1001 helmets
+say 1001 no
+say 1001 5 helmets
+say 1001 yes
+say 1001 5 helmets
+say 1001 no
+say 1001 helmets 100
+say 1001 yes
+say 1001 helmets 100
+say 1001 no
+say 1001 helmets all
+say 1001 yes
+say 1001 helmets all
+say 1001 no
+think
+say 1001 boots
+say 1001 yes
+say 1001 boots
+say 1001 no
+say 1001 5 boots
+say 1001 yes
+say 1001 5 boots
+say 1001 no
+say 1001 boots 100
+say 1001 yes
+say 1001 boots 100
+say 1001 no
+say 1001 boots all
+say 1001 yes
+say 1001 boots all
+say 1001 no
+think
+say 1001 armors
+say 1001 yes
+say 1001 armors
+say 1001 no
+say 1001 5 armors
+say 1001 yes
+say 1001 5 armors
+say 1001 no
+say 1001 armors 100
+say 1001 yes
+say 1001 armors 100
+say 1001 no
+say 1001 armors all
+say 1001 yes
+say 1001 armors all
+say 1001 no
+think
+say 1001 legs
+say 1001 yes
+say 1001 legs
+say 1001 no
+say 1001 5 legs
+say 1001 yes
+say 1001 5 legs
+say 1001 no
+say 1001 legs 100
+say 1001 yes
+say 1001 legs 100
+say 1001 no
+say 1001 legs all
+say 1001 yes
+say 1001 legs all
+say 1001 no
+think
+say 1001 shields
+say 1001 yes
+say 1001 shields
+say 1001 no
+say 1001 5 shields
+say 1001 yes
+say 1001 5 shields
+say 1001 no
+say 1001 shields 100
+say 1001 yes
+say 1001 shields 100
+say 1001 no
+say 1001 shields all
+say 1001 yes
+say 1001 shields all
+say 1001 no
+think
+say 1001 swords
+say 1001 yes
+say 1001 swords
+say 1001 no
+say 1001 5 swords
+say 1001 yes
+say 1001 5 swords
+say 1001 no
+say 1001 swords 100
+say 1001 yes
+say 1001 swords 100
+say 1001 no
+say 1001 swords all
+say 1001 yes
+say 1001 swords all
+say 1001 no
+think
+say 1001 axes
+say 1001 yes
+say 1001 axes
+say 1001 no
+say 1001 5 axes
+say 1001 yes
+say 1001 5 axes
+say 1001 no
+say 1001 axes 100
+say 1001 yes
+say 1001 axes 100
+say 1001 no
+say 1001 axes all
+say 1001 yes
+say 1001 axes all
+say 1001 no
+think
+say 1001 clubs
+say 1001 yes
+say 1001 clubs
+say 1001 no
+say 1001 5 clubs
+say 1001 yes
+say 1001 5 clubs
+say 1001 no
+say 1001 clubs 100
+say 1001 yes
+say 1001 clubs 100
+say 1001 no
+say 1001 clubs all
+say 1001 yes
+say 1001 clubs all
+say 1001 no
+think
+say 1001 amulets
+say 1001 yes
+say 1001 amulets
+say 1001 no
+say 1001 5 amulets
+say 1001 yes
+say 1001 5 amulets
+say 1001 no
+say 1001 amulets 100
+say 1001 yes
+say 1001 amulets 100
+say 1001 no
+say 1001 amulets all
+say 1001 yes
+say 1001 amulets all
+say 1001 no
+think
+say 1001 focused
+say 1001 yes
+say 1001 focused
+say 1001 no
+say 1001 5 focused
+say 1001 yes
+say 1001 5 focused
+say 1001 no
+say 1001 focused 100
+say 1001 yes
+say 1001 focused 100
+say 1001 no
+say 1001 focused all
+say 1001 yes
+say 1001 focused all
+say 1001 no
+think
+say 1001 bye
+say 1001 hi
+advance 40
+think
+say 1001 hi
+far 1001
+think
+near 1001
+say 1001 hola
+disappear 1001
+say 1002 hi
+set 1002 money 0
+set 1002 slots 0
+set 1002 level 1
+say 1002 royal helmet
+say 1002 yes
+say 1002 warrior helmet
+say 1002 yes
+say 1002 crusader helmet
+say 1002 yes
+say 1002 crown helmet
+say 1002 yes
+say 1002 devil helmet
+say 1002 yes
+say 1002 mystic turban
+say 1002 yes
+say 1002 chain helmet
+say 1002 yes
+say 1002 iron helmet
+say 1002 yes
+say 1002 steel boots
+say 1002 yes
+say 1002 boh
+say 1002 yes
+say 1002 boots of haste
+say 1002 yes
+say 1002 magic plate armor
+say 1002 yes
+say 1002 mpa
+say 1002 yes
+say 1002 dragon scale mail
+say 1002 yes
+say 1002 dsm
+say 1002 yes
+say 1002 golden armor
+say 1002 yes
+say 1002 crown armor
+say 1002 yes
+say 1002 knight armor
+say 1002 yes
+say 1002 blue robe
+say 1002 yes
+say 1002 lady armor
+say 1002 yes
+say 1002 plate armor
+say 1002 yes
+say 1002 brass armor
+say 1002 yes
+say 1002 chain armor
+say 1002 yes
+say 1002 golden legs
+say 1002 yes
+say 1002 crown legs
+say 1002 yes
+say 1002 knight legs
+say 1002 yes
+say 1002 plate legs
+say 1002 yes
+say 1002 brass legs
+say 1002 yes
+say 1002 chain legs
+say 1002 yes
+say 1002 shield of the mastermind
+say 1002 yes
+say 1002 mms
+say 1002 yes
+say 1002 demon shield
+say 1002 yes
+say 1002 vampire shield
+say 1002 yes
+say 1002 medusa shield
+say 1002 yes
+say 1002 amazon shield
+say 1002 yes
+say 1002 crown shield
+say 1002 yes
+say 1002 tower shield
+say 1002 yes
+say 1002 dragon shield
+say 1002 yes
+say 1002 guardian shield
+say 1002 yes
+say 1002 beholder shield
+say 1002 yes
+say 1002 dwarven shield
+say 1002 yes
+say 1002 giant sword
+say 1002 yes
+say 1002 bright sword
+say 1002 yes
+say 1002 ice rapier
+say 1002 yes
+say 1002 fire sword
+say 1002 yes
+say 1002 serpent sword
+say 1002 yes
+say 1002 spike sword
+say 1002 yes
+say 1002 two handed sword
+say 1002 yes
+say 1002 broad sword
+say 1002 yes
+say 1002 short sword
+say 1002 yes
+say 1002 sabre
+say 1002 yes
+say 1002 sword
+say 1002 yes
+say 1002 dragon lance
+say 1002 yes
+say 1002 fire axe
+say 1002 yes
+say 1002 knight axe
+say 1002 yes
+say 1002 double axe
+say 1002 yes
+say 1002 halberd
+say 1002 yes
+say 1002 battle axe
+say 1002 yes
+say 1002 hatchet
+say 1002 yes
+say 1002 war hammer
+say 1002 yes
+say 1002 chau
+think 3
