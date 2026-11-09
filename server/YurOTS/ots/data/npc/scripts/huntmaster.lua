@@ -91,16 +91,15 @@ function sayStatus(cid)
 end
 
 function sayStreak(cid)
-	dailyTaskEnsureDay(cid)
-	local streak = dailyTaskStorage(cid, DAILY_STORAGE_STREAK)
-	if streak < 0 then
-		streak = 0
-	end
-	local bonus = dailyTaskStreakBonusPercent(streak)
+	local today = dailyTaskEnsureDay(cid)
+	local streak = dailyTaskCurrentStreak(cid, today)
+	local bonus = dailyTaskStreakBonusPercent(dailyTaskNextStreak(cid, today))
 	if streak <= 0 then
 		selfSay('No streak yet. Complete a contract today to start one. Bonus grows up to +50% after 6 days.')
+	elseif dailyTaskStorage(cid, DAILY_STORAGE_LAST_CLAIM) == today then
+		selfSay('Current streak: ' .. streak .. ' day(s). Come back tomorrow to keep it.')
 	else
-		selfSay('Current streak: ' .. streak .. ' day(s). Next claim bonus: +' .. bonus .. '%. Miss a day and it resets.')
+		selfSay('Current streak: ' .. streak .. ' day(s). Claim today for +' .. bonus .. '%. Miss a day and it resets.')
 	end
 end
 
@@ -197,7 +196,11 @@ local function onMessage(cid, msg)
 			else
 				selfSay('Done! Here are ' .. fmtAmount(result.gold) .. ' gold coins. Streak: ' .. result.streak .. '.')
 			end
-			selfSay('New contracts tomorrow. Keep the streak going!')
+			if dailyTaskStorage(cid, DAILY_STORAGE_DATE) ~= dailyTaskToday() then
+				selfSay('That was yesterday\'s contract. Say "task" for today\'s.')	-- cobrado tarde
+			else
+				selfSay('New contracts tomorrow. Keep the streak going!')
+			end
 		end, function()
 			pending_reward = nil
 			selfSay('No problem. Say "gold" or "exp" when you are ready.')

@@ -99,7 +99,7 @@ DAILY_BRACKETS = {
 		pool = {20, 18, 21, 14, 17},
 		counts = {40, 55, 70},
 		gold = {25000, 35000, 45000},
-		exp = {120000, 200000, 280000}
+		exp = {200000, 300000, 400000}	-- era igual a Hunter (menos que Elite)
 	}
 }
 
@@ -229,10 +229,12 @@ function dailyTaskClearMission(cid, keepStreak)
 end
 
 -- Lazy day rollover: keeps streak keys, clears active mission if date changed
+-- Un contrato terminado y no cobrado se respeta aunque cambie el día (antes se perdía a
+-- medianoche): queda en DONE hasta que el jugador dice "reward".
 function dailyTaskEnsureDay(cid)
 	local today = dailyTaskToday()
 	local stored = dailyTaskStorage(cid, DAILY_STORAGE_DATE)
-	if stored ~= today then
+	if stored ~= today and dailyTaskStorage(cid, DAILY_STORAGE_STATE) ~= DAILY_STATE_DONE then
 		dailyTaskClearMission(cid, true)
 		dailyTaskSet(cid, DAILY_STORAGE_DATE, today)
 	end
@@ -331,17 +333,23 @@ function dailyTaskAcceptSlot(cid, slot)
 	return offer
 end
 
-function dailyTaskNextStreak(cid, today)
+-- Racha vigente: la guardada si cobró hoy o ayer; si no, ya se cortó.
+function dailyTaskCurrentStreak(cid, today)
 	local lastClaim = dailyTaskStorage(cid, DAILY_STORAGE_LAST_CLAIM)
 	local streak = dailyTaskStorage(cid, DAILY_STORAGE_STREAK)
-	if streak < 0 then
-		streak = 0
+	if streak < 0 or (lastClaim ~= today and lastClaim ~= dailyTaskYesterday(today)) then
+		return 0
 	end
-	local yesterday = dailyTaskYesterday(today)
-	if lastClaim == yesterday then
-		return streak + 1
+	return streak
+end
+
+-- Racha después de cobrar hoy (un segundo cobro el mismo día, posible tras cobrar tarde un
+-- contrato de ayer, no la sube ni la corta).
+function dailyTaskNextStreak(cid, today)
+	if dailyTaskStorage(cid, DAILY_STORAGE_LAST_CLAIM) == today then
+		return math.max(dailyTaskCurrentStreak(cid, today), 1)
 	end
-	return 1
+	return dailyTaskCurrentStreak(cid, today) + 1
 end
 
 function dailyTaskClaimRewards(cid, chooseExp)
