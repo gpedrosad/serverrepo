@@ -24,30 +24,40 @@ GM / access ≥ `accessprotect` (2): **no** se les aplica exhausted en casts má
 
 ---
 
-## Estado runtime
+## Estado runtime (nov 2026: hora exacta)
 
-| Campo | Dónde | Notas |
-|-------|-------|--------|
-| `Creature::exhaustedTicks` | `creature.h` | Contador en ms; se inicializa en 0 |
-| Tick del jugador | `Player::onThink` → **1000** ms | Cada segundo resta `thinkTicks` si `exhaustedTicks >= 1000` |
-| Umbral “estás exhausted” | `exhaustedTicks >= 1000` | Si el contador está entre 1 y 999, **no** bloquea (casi siempre 0 o ≥1000) |
+| Pieza | Dónde | Notas |
+|-------|-------|-------|
+| `PlayerExhaust` | `source/exhaust.h` / `exhaust.cpp` | Guarda **"exhausted hasta"** (`OTSYS_TIME()` en ms) por id de jugador. `isExhausted`, `set(ms)`, `add(ms)`, `cap(ms)`, `remaining` |
+| `Creature::exhaustedTicks` | `creature.h` | Ya **no** se usa para jugadores. Lo siguen usando los monstruos (su AI, otro sistema) |
+
+Se guarda en un mapa aparte (no como miembro de `Player`) para no cambiar el layout de las clases; ver la nota de heap corruption en [`NPC_CONFIRMATION.md`](NPC_CONFIRMATION.md).
+
+**Antes** el contador se descontaba de a 1000 en el think del jugador (cada 1 s), así que la duración real dependía del momento del cast:
+
+| Config | Antes (real) | Ahora |
+|--------|--------------|-------|
+| `exhausted` 2000 | entre 1 y 2 s (promedio 1,5) | 2,0 s exactos |
+| `exhaustedheal` 1000 | entre 0 y 1 s (promedio 0,5; a veces casi nada) | 1,0 s exacto |
+| `reduceExhaustion` (→1000) | 0–1 s | 1,0 s |
+| `reduceExhaustionByPercent(75)` (→1500) | 0–1 s (igual que el 50%) | 1,5 s |
+
+Ojo: en promedio todo dura **más** que antes (antes se sentía más rápido por el redondeo). Si se siente lento, bajar `exhausted` / `exhaustedheal` en `config.lua` (sin recompilar).
 
 Mensaje al fallar: `"You are exhausted."` (`MSG_SMALLINFO`, a veces con puff).
 
-Con los valores actuales:
-
-| Acción | Exhaust aplicado | Ventana efectiva de bloqueo |
-|--------|------------------|-----------------------------|
-| Cura / support (`exura`, haste, conjure…) | 1000 ms | ~1 s (un tick de player) |
-| Ataque / área / runa ofensiva | 2000 ms | ~2 s (dos ticks) |
-| Spam cast mientras exhausted | **no** suma tiempo | Solo mensaje; timer sigue bajando |
-| Yell mientras exhausted | `+= exhaustedadd` (hoy 0) | Sin penalidad con config actual |
+| Acción | Exhaust aplicado |
+|--------|------------------|
+| Cura / support (`exura`, haste, conjure, `exani hur`, `exani tera`…) | `exhaustedheal` (1 s) |
+| Ataque / área / runa ofensiva | `exhausted` (2 s) |
+| Spam cast mientras exhausted | **no** suma tiempo; solo mensaje |
+| Yell | Comparte el timer: gritar deja `exhausted` (2 s); gritar estando exhausted suma `exhaustedadd` (hoy 0) |
 
 ---
 
 ## Flujo canónico (spells / runas “mágicas”)
 
-Casi todo pasa por `Game::creatureMakeMagic` → `creatureOnPrepareMagicAttack` → (éxito) setea `exhaustedTicks`.
+Casi todo pasa por `Game::creatureMakeMagic` → `creatureOnPrepareMagicAttack` → (éxito) `PlayerExhaust::set`.
 
 ```
 Lua onCast
@@ -63,7 +73,7 @@ Lua onCast
 
 Para players con `access < ACCESS_PROTECT`:
 
-1. Si `exhaustedTicks >= 1000` **y** `me->causeExhaustion(true)` → mensaje → **return false** (no gasta mana, **no** alarga el timer).
+1. Si `PlayerExhaust::isExhausted(player)` **y** `me->causeExhaustion(true)` → mensaje → **return false** (no gasta mana, **no** alarga el timer).
 2. Si mana insuficiente → puff / “not enough mana”.
 3. Si OK → resta mana y `addManaSpent`.
 
@@ -73,10 +83,10 @@ Para players con `access < ACCESS_PROTECT`:
 if (me->causeExhaustion(true)) {
 #ifdef YUR_HEAL_EXHAUST
   if (!me->offensive)  // heal + support
-    attackPlayer->exhaustedTicks = g_config.EXHAUSTED_HEAL;
+    PlayerExhaust::set(attackPlayer, g_config.EXHAUSTED_HEAL);
   else
 #endif
-    attackPlayer->exhaustedTicks = g_config.EXHAUSTED;
+    PlayerExhaust::set(attackPlayer, g_config.EXHAUSTED);
 }
 ```
 
@@ -117,8 +127,8 @@ Registradas en `spells.cpp`:
 
 | Función Lua | Efecto |
 |-------------|--------|
-| `reduceExhaustion(cid)` | Si `exhaustedTicks >= EXHAUSTED/2`, lo baja a `EXHAUSTED/2` (hoy: 2000 → **1000**) |
-| `reduceExhaustionByPercent(cid, percent)` | Cap a `EXHAUSTED * percent / 100` (ej. 75 → **1500**) |
+| `reduceExhaustion(cid)` | Si le queda más de `EXHAUSTED/2`, lo baja a `EXHAUSTED/2` (hoy: 2000 → **1000 ms**) |
+| `reduceExhaustionByPercent(cid, percent)` | Cap a `EXHAUSTED * percent / 100` (ej. 75 → **1500 ms**, ahora exacto) |
 
 Usado hoy en:
 
@@ -158,7 +168,7 @@ Helpers compartidos en `spells.cpp`: `playerSpellExhaustBlocked` / `applyPlayerS
 | `doChameleon` | 1000 | support |
 | `doDesintegrate` | 1000 | support |
 
-Comparten el mismo `exhaustedTicks` que SD/UH. Fallar por exhausted **no** gasta charge (el charge se descuenta solo si el cast tuvo éxito en `playerUseItemEx` / `playerUseBattleWindow`).
+Comparten el mismo exhausted (`PlayerExhaust`) que SD/UH. Fallar por exhausted **no** gasta charge (el charge se descuenta solo si el cast tuvo éxito en `playerUseItemEx` / `playerUseBattleWindow`).
 
 Binding C++ nuevo: **usar esos helpers** (o pasar por `creatureMakeMagic`). No dejar paths sin exhaust.
 
@@ -170,7 +180,7 @@ Binding C++ nuevo: **usar esos helpers** (o pasar por `creatureMakeMagic`). No d
 |------|---------|
 | Spells Lua normales (`doAreaMagic` / `doTargetMagic`) | Pipeline normal |
 | `exeta res` | Exhaust vía `doTargetMagic` previo; `doChallenge` solo aplica taunt |
-| `exani hur` / `exani tera` (C++ hardcode) | Chequean `exhaustedTicks >= 1000` **antes**; **no** setean exhausted al éxito (solo mana) |
+| `exani hur` / `exani tera` (C++ hardcode) | Chequean exhausted antes; al éxito dejan `exhaustedheal` (support, 1 s) y suman progreso de ML |
 | Conjurar runas / arrows / food | Via `creatureThrowRune` → **exhaustedheal** (1 s, `offensive=false`) |
 | Yell | Si exhausted: `+= EXHAUSTED_ADD` + mensaje; si no: setea `EXHAUSTED` y yellea |
 
@@ -184,7 +194,7 @@ Visibilidad del texto del spell al fallar por exhausted: [`SPELL_CAST_VISIBILITY
 |---------|----------------|
 | Wands / rods (`useWand`) | `MagicEffectAreaNoExhaustionClass` — delay propio del arma (`getAttackDelayMs`), no exhausted mágico |
 | Burst arrow | Misma clase NoExhaustion |
-| Ataque melee / distancia físico | Cooldown de ataque, no `exhaustedTicks` |
+| Ataque melee / distancia físico | Cooldown de ataque, no exhausted mágico |
 | Monstruos | `exhaustedTicks` propio del AI (`monster.xml` `exhaustion` / `cycleticks`) — **otro sistema** |
 
 ---
@@ -195,7 +205,8 @@ Visibilidad del texto del spell al fallar por exhausted: [`SPELL_CAST_VISIBILITY
 |---------|-----|
 | `server/YurOTS/ots/config.lua` | `exhausted`, `exhaustedheal`, `exhaustedadd` |
 | `server/YurOTS/ots/source/luascript.cpp` | Carga a `g_config` |
-| `server/YurOTS/ots/source/creature.h` | `exhaustedTicks` |
+| `server/YurOTS/ots/source/exhaust.h` / `exhaust.cpp` | `PlayerExhaust`: exhausted de jugadores con hora exacta |
+| `server/YurOTS/ots/source/creature.h` | `exhaustedTicks` (solo monstruos) |
 | `server/YurOTS/ots/source/game.cpp` | Chequeo, aplicación, tick, yell, `exani *`, visibilidad say |
 | `server/YurOTS/ots/source/magic.h` / `magic.cpp` | `causeExhaustion` por clase de efecto |
 | `server/YurOTS/ots/source/spells.cpp` | `reduceExhaustion*`, bindings + helpers de exhaust |
@@ -209,8 +220,9 @@ Visibilidad del texto del spell al fallar por exhausted: [`SPELL_CAST_VISIBILITY
 2. ¿Querés heal/support más lento/rápido? Tocá `exhaustedheal`, no `exhausted`.
 3. ¿Spell nuevo con `doAreaMagic`/`doTargetMagic`? Hereda el pipeline solo; marcá `offensive` bien en Lua.
 4. ¿Binding C++ nuevo? Usar `playerSpellExhaustBlocked` + `applyPlayerSpellExhaust(healStyle)`.
-5. ¿Usás `reduceExhaustion*`? Probar in-game el timing real (post-cast + tick de 1 s).
-6. Tras rebuild C++: `docker compose … up -d yurots` + `python3 scripts/ot-probe.py 127.0.0.1 7171`.
+5. ¿Usás `reduceExhaustion*`? El valor ahora es exacto en ms (no hay redondeo al tick).
+6. Nunca leer/escribir `player->exhaustedTicks`: usar `PlayerExhaust` (`exhaust.h`).
+7. Tras rebuild C++: `docker compose … up -d yurots` + `python3 scripts/ot-probe.py 127.0.0.1 7171`.
 
 ---
 
@@ -218,8 +230,21 @@ Visibilidad del texto del spell al fallar por exhausted: [`SPELL_CAST_VISIBILITY
 
 1. Spam / hotkey hold `exura` → exhausted ~1 s; mensaje; **sin** palabras fantasma (ver visibility).
 2. Spam `exori` / SD → exhausted ~2 s; fallos **no** alargan el timer.
-3. Castear SD y luego UH → deben compartir el mismo `exhaustedTicks` (~2 s).
+3. Castear SD y luego UH → comparten el mismo exhausted (2 s exactos).
 4. Haste / conjurar blank → exhaust ~1 s (no 2 s).
 5. Paralyze / Anchor en cadena → exhausted compartido; no spam libre.
 6. Wand spam → sin mensaje de exhausted; ritmo = attack delay.
 7. Conjurar runa en PZ → exhaust 1 s + soul si aplica.
+
+---
+
+## Levitación (`exani hur up` / `exani hur down`)
+
+`game.cpp` → `getLevitateUpDestination` / `getLevitateDownDestination` (nov 2026, igual que Tibia/TFS):
+
+- **up:** sobre el jugador no hay techo (`x,y,z-1` sin casilla o sin suelo) y la casilla de **adelante en el piso de arriba** tiene suelo libre.
+- **down:** **adelante en el piso actual** hay vacío (sin casilla o sin suelo) y debajo de ese vacío, en el piso de abajo, hay suelo libre.
+- Destino libre = con suelo, sin bloqueo sólido ni criaturas, sin escaleras/agujeros ni teleports.
+- No cruza superficie ↔ subsuelo (up desde z8, down desde z7). 50 de maná, no rookies.
+
+Antes pedía una escalera/rampa adelante (lo mismo que subir caminando), así que en bordes y acantilados nunca funcionaba.

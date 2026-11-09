@@ -56,6 +56,7 @@ using namespace std;
 #include "tile.h"
 
 #include "spells.h"
+#include "exhaust.h"
 #include "actions.h"
 #include "ioplayer.h"
 #include "chat.h"
@@ -128,63 +129,58 @@ Position getStepInDirection(const Position& pos, Direction dir)
 	return step;
 }
 
+// Levitación (exani hur up / down), como en Tibia y OpenTibia (TFS levitate):
+//  up:   sobre el jugador no hay techo (x,y,z-1 sin casilla o sin suelo) y la casilla
+//        de adelante en el piso de arriba tiene suelo libre.
+//  down: adelante, en el piso actual, hay vacío (sin casilla o sin suelo) y debajo de
+//        ese vacío, en el piso de abajo, hay suelo libre.
+//  Destino libre: con suelo, sin bloqueo sólido ni criaturas, sin escaleras/agujeros
+//  ni teleports. No cruza entre superficie (z7) y subsuelo (z8).
+static bool levitateTargetFree(Game* game, const Position& pos)
+{
+	Tile* tile = game->getTile(pos.x, pos.y, pos.z);
+	return tile && tile->ground && !tile->floorChange() && !tile->getTeleportItem()
+		&& tile->isBlocking(BLOCK_SOLID) == RET_NOERROR;
+}
+
+static bool levitateOpen(Game* game, int x, int y, int z)
+{
+	Tile* tile = game->getTile(x, y, z);
+	return !tile || !tile->ground;
+}
+
 bool getLevitateUpDestination(Game* game, const Player* player, Position& dest)
 {
-	if(player->pos.z == 0)
+	if(player->pos.z == 0 || player->pos.z == 8)
 		return false;
 
-	Position frontPos = getStepInDirection(player->pos, player->direction);
-	Tile* frontTile = game->getTile(frontPos);
-	if(!frontTile)
+	if(!levitateOpen(game, player->pos.x, player->pos.y, player->pos.z - 1))
 		return false;
 
-	switch(player->direction){
-	case NORTH:
-		if(!frontTile->floorChange(NORTH))
-			return false;
-		dest = Position(frontPos.x, frontPos.y - 1, frontPos.z - 1);
-		break;
-	case SOUTH:
-		if(!frontTile->floorChange(SOUTH))
-			return false;
-		dest = Position(frontPos.x, frontPos.y + 1, frontPos.z - 1);
-		break;
-	case EAST:
-		if(!frontTile->floorChange(EAST))
-			return false;
-		dest = Position(frontPos.x + 1, frontPos.y, frontPos.z - 1);
-		break;
-	case WEST:
-		if(!frontTile->floorChange(WEST))
-			return false;
-		dest = Position(frontPos.x - 1, frontPos.y, frontPos.z - 1);
-		break;
-	default:
+	Position front = getStepInDirection(player->pos, player->direction);
+	Position target(front.x, front.y, player->pos.z - 1);
+	if(!levitateTargetFree(game, target))
 		return false;
-	}
 
-	return game->getTile(dest) != NULL;
+	dest = target;
+	return true;
 }
 
 bool getLevitateDownDestination(Game* game, const Player* player, Position& dest)
 {
-	Position frontPos = getStepInDirection(player->pos, player->direction);
-	Tile* downTile = game->getTile(frontPos.x, frontPos.y, player->pos.z + 1);
-	if(!downTile)
+	if(player->pos.z == 7 || player->pos.z >= 15)
 		return false;
 
-	if(downTile->floorChange(NORTH))
-		dest = Position(frontPos.x, frontPos.y + 1, player->pos.z + 1);
-	else if(downTile->floorChange(SOUTH))
-		dest = Position(frontPos.x, frontPos.y - 1, player->pos.z + 1);
-	else if(downTile->floorChange(EAST))
-		dest = Position(frontPos.x - 1, frontPos.y, player->pos.z + 1);
-	else if(downTile->floorChange(WEST))
-		dest = Position(frontPos.x + 1, frontPos.y, player->pos.z + 1);
-	else
+	Position front = getStepInDirection(player->pos, player->direction);
+	if(!levitateOpen(game, front.x, front.y, player->pos.z))
 		return false;
 
-	return game->getTile(dest) != NULL;
+	Position target(front.x, front.y, player->pos.z + 1);
+	if(!levitateTargetFree(game, target))
+		return false;
+
+	dest = target;
+	return true;
 }
 
 bool getLevitateDestination(Game* game, const Player* player, std::string var, Position& dest)
@@ -901,10 +897,10 @@ void GameState::onAttack(Creature* attacker, const Position& pos, const MagicEff
 #ifdef YUR_HEAL_EXHAUST
 			// Non-offensive = heal + support (haste, light, food, conjure…), like Nostalrius aggressive=false → 1s.
 			if (!me->offensive)
-				attackPlayer->exhaustedTicks = g_config.EXHAUSTED_HEAL;
+				PlayerExhaust::set(attackPlayer, g_config.EXHAUSTED_HEAL);
 			else
 #endif //YUR_HEAL_EXHAUST
-				attackPlayer->exhaustedTicks = g_config.EXHAUSTED;
+				PlayerExhaust::set(attackPlayer, g_config.EXHAUSTED);
 		}
 
 		//Fight symbol
@@ -4034,13 +4030,16 @@ void Game::creatureYell(Creature *creature, std::string &text)
 	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::creatureYell()");
 	Player* player = dynamic_cast<Player*>(creature);
 
-	if (player && player->access < g_config.ACCESS_PROTECT && player->exhaustedTicks >= 1000)
+	if (player && player->access < g_config.ACCESS_PROTECT && PlayerExhaust::isExhausted(player))
 	{
-		player->exhaustedTicks += g_config.EXHAUSTED_ADD;
+		PlayerExhaust::add(player, g_config.EXHAUSTED_ADD);
 		player->sendTextMessage(MSG_SMALLINFO, "You are exhausted.");
 	}
 	else {
-		creature->exhaustedTicks = g_config.EXHAUSTED;
+		if (player)
+			PlayerExhaust::set(player, g_config.EXHAUSTED);
+		else
+			creature->exhaustedTicks = g_config.EXHAUSTED;
 		std::transform(text.begin(), text.end(), text.begin(), upchar);
 
 		SpectatorVec list;
@@ -4456,7 +4455,7 @@ bool Game::creatureOnPrepareMagicAttack(Creature *creature, Position pos, const 
 		Player* player = dynamic_cast<Player*>(creature);
 		if(player) {
 			if(player->access < g_config.ACCESS_PROTECT) {
-				if(player->exhaustedTicks >= 1000 && me->causeExhaustion(true)) {
+				if(PlayerExhaust::isExhausted(player) && me->causeExhaustion(true)) {
 					// Do not extend the timer on fail (Nostalrius/Cip-style). exhaustedadd is yell-only.
 					player->sendTextMessage(MSG_SMALLINFO, "You are exhausted.", player->pos, NM_ME_PUFF);
 					return false;
@@ -4859,12 +4858,7 @@ void Game::checkCreature(unsigned long id)
 					player->sendIcons();
 			}
 
-			if(player->exhaustedTicks >= 1000){
-				player->exhaustedTicks -= thinkTicks;
-
-				if(player->exhaustedTicks < 0)
-					player->exhaustedTicks = 0;
-			}
+			// Exhausted mágico: hora exacta en PlayerExhaust (exhaust.cpp), no se descuenta acá.
 
 			if(player->manaShieldTicks >=1000){
 				player->manaShieldTicks -= thinkTicks;
@@ -5349,7 +5343,7 @@ SpellCastResult Game::creatureSaySpell(Creature *creature, const std::string &te
 			player->sendMagicEffect(player->pos, NM_ME_PUFF);
 			player->sendTextMessage(MSG_SMALLINFO, "Not enough mana.");
 		}
-		else if(player->exhaustedTicks >= 1000 && player->access < g_config.ACCESS_PROTECT){
+		else if(PlayerExhaust::isExhausted(player) && player->access < g_config.ACCESS_PROTECT){
 			player->sendMagicEffect(player->pos, NM_ME_PUFF);
 			player->sendTextMessage(MSG_SMALLINFO, "You are exhausted.");
 		}
@@ -5360,6 +5354,7 @@ SpellCastResult Game::creatureSaySpell(Creature *creature, const std::string &te
 			if(player->access < g_config.ACCESS_PROTECT){
 				player->mana -= REQ_MANA;
 				player->addManaSpent(REQ_MANA);
+				PlayerExhaust::set(player, g_config.EXHAUSTED_HEAL);  // support, como haste
 			}
 
 			ret = true;
@@ -7125,7 +7120,7 @@ void Game::checkSpell(Player* player, SpeakClasses& type, std::string text)
 		const int REQ_MANA = 20;
 		Tile* tile = getTile(player->pos);
 
-		if (!(tile && (tile->ground->getID() == ITEM_ROPE_SPOT1 || tile->ground->getID() == ITEM_ROPE_SPOT2)))
+		if (!(tile && tile->ground && (tile->ground->getID() == ITEM_ROPE_SPOT1 || tile->ground->getID() == ITEM_ROPE_SPOT2)))
 		{
 			player->sendMagicEffect(player->pos, NM_ME_PUFF);
 			player->sendTextMessage(MSG_SMALLINFO, "Sorry, not possible.");
@@ -7140,7 +7135,7 @@ void Game::checkSpell(Player* player, SpeakClasses& type, std::string text)
 			player->sendMagicEffect(player->pos, NM_ME_PUFF);
 			player->sendTextMessage(MSG_SMALLINFO, "You don't have the required magic level.");
 		}
-		else if (player->exhaustedTicks >= 1000 && player->access < g_config.ACCESS_PROTECT)
+		else if (PlayerExhaust::isExhausted(player) && player->access < g_config.ACCESS_PROTECT)
 		{
 			player->sendMagicEffect(player->pos, NM_ME_PUFF);
 			player->sendTextMessage(MSG_SMALLINFO, "You are exhausted.");
@@ -7154,6 +7149,7 @@ void Game::checkSpell(Player* player, SpeakClasses& type, std::string text)
 			{
 				player->mana -= REQ_MANA;
 				player->addManaSpent(REQ_MANA);
+				PlayerExhaust::set(player, g_config.EXHAUSTED_HEAL);  // support, como haste
 			}
 		}
 	}

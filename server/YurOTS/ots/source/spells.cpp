@@ -34,6 +34,7 @@
 #include <boost/bind.hpp>
 
 #include "spells.h"
+#include "exhaust.h"
 #include "monster.h"
 #include "tile.h"
 #include "items.h"
@@ -110,7 +111,7 @@ static bool playerSpellExhaustBlocked(Player* player)
 {
 	if(!player || player->access >= g_config.ACCESS_PROTECT)
 		return false;
-	if(player->exhaustedTicks < 1000)
+	if(!PlayerExhaust::isExhausted(player))
 		return false;
 	player->sendTextMessage(MSG_SMALLINFO, "You are exhausted.", player->pos, NM_ME_PUFF);
 	return true;
@@ -121,10 +122,10 @@ static void applyPlayerSpellExhaust(Player* player, bool healStyle)
 	if(!player || player->access >= g_config.ACCESS_PROTECT)
 		return;
 #ifdef YUR_HEAL_EXHAUST
-	player->exhaustedTicks = healStyle ? g_config.EXHAUSTED_HEAL : g_config.EXHAUSTED;
+	PlayerExhaust::set(player, healStyle ? g_config.EXHAUSTED_HEAL : g_config.EXHAUSTED);
 #else
 	(void)healStyle;
-	player->exhaustedTicks = g_config.EXHAUSTED;
+	PlayerExhaust::set(player, g_config.EXHAUSTED);
 #endif
 }
 
@@ -1858,7 +1859,7 @@ int SpellScript::luaActionMakeRune(lua_State *L){
 int SpellScript::internalMakeRune(Player *p, unsigned short sl_id, Spell *S, unsigned short id,
 	unsigned char charges, bool requireSoul, unsigned short availableSoul){
 	//check mana
-	if(p->mana < S->getMana() || p->exhaustedTicks >= 1000)
+	if(p->mana < S->getMana() || PlayerExhaust::isExhausted(p))
 		return -1;
 	Item *item = p->getItem(sl_id);
 	if(item){
@@ -2037,9 +2038,7 @@ int SpellScript::luaActionReduceExhaustion(lua_State *L)
 
 	Player* player = creature ? dynamic_cast<Player*>(creature) : NULL;
 	if(player && player->access < g_config.ACCESS_PROTECT){
-		if(player->exhaustedTicks >= g_config.EXHAUSTED / 2){
-			player->exhaustedTicks = g_config.EXHAUSTED / 2;
-		}
+		PlayerExhaust::cap(player, g_config.EXHAUSTED / 2);
 	}
 	return 0;
 }
@@ -2056,9 +2055,7 @@ int SpellScript::luaActionReduceExhaustionByPercent(lua_State *L)
 	Player* player = creature ? dynamic_cast<Player*>(creature) : NULL;
 	if(player && player->access < g_config.ACCESS_PROTECT){
 		long newExhaust = (long)(g_config.EXHAUSTED * percent / 100.0);
-		if(player->exhaustedTicks >= newExhaust){
-			player->exhaustedTicks = newExhaust;
-		}
+		PlayerExhaust::cap(player, (int)newExhaust);
 	}
 	return 0;
 }
