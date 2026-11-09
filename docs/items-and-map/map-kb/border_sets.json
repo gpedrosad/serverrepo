@@ -2,138 +2,128 @@
  "_schema": "border_sets.v1",
  "sets": [
   {
-   "set": "none->none",
+   "set": "dirt->grass",
    "edges": {
     "unknown": [
      {
-      "id": 4645,
-      "name": "shallow water",
-      "map_uses": 234
-     },
-     {
-      "id": 4648,
-      "name": "shallow water",
-      "map_uses": 94
-     },
-     {
-      "id": 4649,
-      "name": "shallow water",
-      "map_uses": 86
-     },
-     {
-      "id": 4653,
-      "name": "shallow water",
-      "map_uses": 82
-     },
-     {
-      "id": 3305,
+      "id": 4580,
       "name": "grass",
-      "map_uses": 59
+      "map_uses": 0
      },
      {
-      "id": 3300,
+      "id": 4581,
       "name": "grass",
-      "map_uses": 19
+      "map_uses": 0
      },
      {
-      "id": 4742,
-      "name": "snow",
-      "map_uses": 19
-     },
-     {
-      "id": 4671,
-      "name": "dirt",
-      "map_uses": 16
-     },
-     {
-      "id": 4675,
-      "name": "dirt",
-      "map_uses": 15
-     },
-     {
-      "id": 892,
-      "name": "stone floor",
-      "map_uses": 13
-     },
-     {
-      "id": 1798,
-      "name": "red carpet",
-      "map_uses": 13
-     },
-     {
-      "id": 4672,
-      "name": "dirt",
-      "map_uses": 12
-     },
-     {
-      "id": 3301,
+      "id": 4582,
       "name": "grass",
-      "map_uses": 9
+      "map_uses": 0
      },
      {
-      "id": 4740,
-      "name": "snow",
-      "map_uses": 9
-     },
-     {
-      "id": 895,
-      "name": "stone floor",
-      "map_uses": 8
-     },
-     {
-      "id": 3298,
+      "id": 4583,
       "name": "grass",
-      "map_uses": 8
+      "map_uses": 0
      },
      {
-      "id": 3306,
+      "id": 4584,
       "name": "grass",
-      "map_uses": 7
+      "map_uses": 0
      },
      {
-      "id": 3309,
+      "id": 4585,
       "name": "grass",
-      "map_uses": 7
+      "map_uses": 0
      },
      {
-      "id": 900,
-      "name": "stone floor",
-      "map_uses": 6
+      "id": 4586,
+      "name": "grass",
+      "map_uses": 0
      },
      {
-      "id": 3317,
-      "name": "ant trail",
-      "map_uses": 5
+      "id": 4587,
+      "name": "grass",
+      "map_uses": 0
      },
      {
-      "id": 4761,
-      "name": "sand",
-      "map_uses": 3
+      "id": 4588,
+      "name": "grass",
+      "map_uses": 0
      },
      {
-      "id": 4768,
-      "name": "sand",
-      "map_uses": 2
+      "id": 4589,
+      "name": "grass",
+      "map_uses": 0
      },
      {
-      "id": 4771,
-      "name": "sand",
-      "map_uses": 2
+      "id": 4590,
+      "name": "grass",
+      "map_uses": 0
      },
      {
-      "id": 3319,
-      "name": "ant trail",
-      "map_uses": 1
+      "id": 4591,
+      "name": "grass",
+      "map_uses": 0
      },
      {
-      "id": 4656,
-      "name": "shallow water",
-      "map_uses": 1
+      "id": 4592,
+      "name": "grass",
+      "map_uses": 0
      },
      {
-      "id": 20154,
-      "name": "bonepriest reaver",
-      "map_uses": 1
+      "id": 4593,
+      "name": "grass",
+      "map_uses": 0
+     },
+     {
+      "id": 4786,
+      "name": "grass",
+      "map_uses": 0
+     },
+     {
+      "id": 4787,
+      "name": "grass",
+      "map_uses": 0
+     },
+     {
+      "id": 4788,
+      "name": "grass",
+      "map_uses": 0
+     },
+     {
+      "id": 4789,
+      "name": "grass",
+      "map_uses": 0
+     },
+     {
+      "id": 4790,
+      "name": "grass",
+      "map_uses": 0
+     },
+     {
+      "id": 4791,
+      "name": "grass",
+      "map_uses": 0
+     },
+     {
+      "id": 4792,
+      "name": "grass",
+      "map_uses": 0
+     },
+     {
+      "id": 4793,
+      "name": "grass",
+      "map_uses": 0
+     },
+     {
+      "id": 4794,
+      "name": "grass",
+      "map_uses": 0
+     },
+     {
+      "id": 4795,
+      "name": "grass",
+      "map_uses": 0
      }
     ]
    },
@@ -150,6 +140,862 @@
     "ne_inner",
     "sw_inner",
     "se_inner"
+   ]
+  },
+  {
+   "set": "stone->stone",
+   "edges": {
+    "unknown": [
+     {
+      "id": 3188,
+      "name": "strange carving",
+      "map_uses": 0
+     },
+     {
+      "id": 3189,
+      "name": "strange carving",
+      "map_uses": 0
+     },
+     {
+      "id": 3218,
+      "name": "stone roof",
+      "map_uses": 0
+     },
+     {
+      "id": 3221,
+      "name": "stone roof",
+      "map_uses": 0
+     },
+     {
+      "id": 3222,
+      "name": "stone roof",
+      "map_uses": 0
+     },
+     {
+      "id": 3223,
+      "name": "stone roof",
+      "map_uses": 0
+     },
+     {
+      "id": 4460,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4461,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4462,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4463,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4464,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4465,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4466,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4467,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4514,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4515,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4516,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4517,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4518,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4519,
+      "name": "rocks",
+      "map_uses": 0
+     }
+    ],
+    "ne_inner": [
+     {
+      "id": 20147,
+      "name": "obsidian regalia",
+      "map_uses": 1
+     }
+    ],
+    "ne_outer": [
+     {
+      "id": 20149,
+      "name": "mosaic shield",
+      "map_uses": 1
+     }
+    ]
+   },
+   "missing_edges": [
+    "n",
+    "s",
+    "e",
+    "w",
+    "nw_outer",
+    "sw_outer",
+    "se_outer",
+    "nw_inner",
+    "sw_inner",
+    "se_inner"
+   ]
+  },
+  {
+   "set": "none->stone",
+   "edges": {
+    "unknown": [
+     {
+      "id": 478,
+      "name": "ramp",
+      "map_uses": 0
+     },
+     {
+      "id": 1078,
+      "name": "sandstone roof",
+      "map_uses": 0
+     },
+     {
+      "id": 1079,
+      "name": "sandstone roof",
+      "map_uses": 0
+     },
+     {
+      "id": 1080,
+      "name": "sandstone roof",
+      "map_uses": 0
+     },
+     {
+      "id": 1081,
+      "name": "sandstone roof",
+      "map_uses": 0
+     },
+     {
+      "id": 1082,
+      "name": "sandstone roof",
+      "map_uses": 0
+     },
+     {
+      "id": 1083,
+      "name": "sandstone roof",
+      "map_uses": 0
+     },
+     {
+      "id": 4596,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4597,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4598,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4599,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4600,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4601,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4602,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4603,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4604,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4605,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4606,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4607,
+      "name": "rocks",
+      "map_uses": 0
+     }
+    ]
+   },
+   "missing_edges": [
+    "n",
+    "s",
+    "e",
+    "w",
+    "nw_outer",
+    "ne_outer",
+    "sw_outer",
+    "se_outer",
+    "nw_inner",
+    "ne_inner",
+    "sw_inner",
+    "se_inner"
+   ]
+  },
+  {
+   "set": "dirt->dirt",
+   "edges": {
+    "unknown": [
+     {
+      "id": 3320,
+      "name": "ant trail",
+      "map_uses": 0
+     },
+     {
+      "id": 3321,
+      "name": "ant trail",
+      "map_uses": 0
+     },
+     {
+      "id": 3322,
+      "name": "ant trail",
+      "map_uses": 0
+     }
+    ],
+    "ne_inner": [
+     {
+      "id": 4801,
+      "name": "dirt",
+      "map_uses": 0
+     },
+     {
+      "id": 4813,
+      "name": "dirt",
+      "map_uses": 0
+     }
+    ],
+    "sw_inner": [
+     {
+      "id": 4802,
+      "name": "dirt",
+      "map_uses": 0
+     },
+     {
+      "id": 4814,
+      "name": "dirt",
+      "map_uses": 0
+     }
+    ],
+    "se_inner": [
+     {
+      "id": 4803,
+      "name": "dirt",
+      "map_uses": 0
+     },
+     {
+      "id": 4815,
+      "name": "dirt",
+      "map_uses": 0
+     }
+    ],
+    "nw_outer": [
+     {
+      "id": 4804,
+      "name": "dirt",
+      "map_uses": 0
+     }
+    ],
+    "ne_outer": [
+     {
+      "id": 4805,
+      "name": "dirt",
+      "map_uses": 0
+     }
+    ],
+    "sw_outer": [
+     {
+      "id": 4806,
+      "name": "dirt",
+      "map_uses": 0
+     }
+    ],
+    "se_outer": [
+     {
+      "id": 4807,
+      "name": "dirt",
+      "map_uses": 0
+     }
+    ],
+    "n": [
+     {
+      "id": 4808,
+      "name": "dirt",
+      "map_uses": 0
+     }
+    ],
+    "e": [
+     {
+      "id": 4809,
+      "name": "dirt",
+      "map_uses": 0
+     }
+    ],
+    "s": [
+     {
+      "id": 4810,
+      "name": "dirt",
+      "map_uses": 0
+     }
+    ],
+    "w": [
+     {
+      "id": 4811,
+      "name": "dirt",
+      "map_uses": 0
+     }
+    ],
+    "nw_inner": [
+     {
+      "id": 4812,
+      "name": "dirt",
+      "map_uses": 0
+     }
+    ]
+   },
+   "missing_edges": []
+  },
+  {
+   "set": "none->dirt",
+   "edges": {
+    "unknown": [
+     {
+      "id": 4679,
+      "name": "dirt",
+      "map_uses": 0
+     },
+     {
+      "id": 4680,
+      "name": "dirt",
+      "map_uses": 0
+     },
+     {
+      "id": 4816,
+      "name": "dirt",
+      "map_uses": 0
+     },
+     {
+      "id": 4817,
+      "name": "dirt",
+      "map_uses": 0
+     },
+     {
+      "id": 4818,
+      "name": "dirt",
+      "map_uses": 0
+     },
+     {
+      "id": 4819,
+      "name": "dirt",
+      "map_uses": 0
+     }
+    ],
+    "s": [
+     {
+      "id": 4681,
+      "name": "dirt",
+      "map_uses": 0
+     }
+    ],
+    "w": [
+     {
+      "id": 4682,
+      "name": "dirt",
+      "map_uses": 0
+     }
+    ],
+    "nw_inner": [
+     {
+      "id": 4683,
+      "name": "dirt",
+      "map_uses": 0
+     }
+    ],
+    "ne_inner": [
+     {
+      "id": 4684,
+      "name": "dirt",
+      "map_uses": 0
+     }
+    ],
+    "sw_inner": [
+     {
+      "id": 4685,
+      "name": "dirt",
+      "map_uses": 0
+     }
+    ],
+    "se_inner": [
+     {
+      "id": 4686,
+      "name": "dirt",
+      "map_uses": 0
+     }
+    ],
+    "nw_outer": [
+     {
+      "id": 4687,
+      "name": "dirt",
+      "map_uses": 0
+     }
+    ],
+    "ne_outer": [
+     {
+      "id": 4688,
+      "name": "dirt",
+      "map_uses": 0
+     }
+    ],
+    "sw_outer": [
+     {
+      "id": 4689,
+      "name": "dirt",
+      "map_uses": 0
+     }
+    ],
+    "se_outer": [
+     {
+      "id": 4690,
+      "name": "dirt",
+      "map_uses": 0
+     }
+    ]
+   },
+   "missing_edges": [
+    "n",
+    "e"
+   ]
+  },
+  {
+   "set": "grass->water",
+   "edges": {
+    "s": [
+     {
+      "id": 4646,
+      "name": "shallow water",
+      "map_uses": 303
+     },
+     {
+      "id": 4644,
+      "name": "shallow water",
+      "map_uses": 297
+     }
+    ],
+    "e": [
+     {
+      "id": 4645,
+      "name": "shallow water",
+      "map_uses": 234
+     }
+    ],
+    "w": [
+     {
+      "id": 4647,
+      "name": "shallow water",
+      "map_uses": 246
+     }
+    ],
+    "nw_outer": [
+     {
+      "id": 4648,
+      "name": "shallow water",
+      "map_uses": 94
+     }
+    ],
+    "ne_outer": [
+     {
+      "id": 4649,
+      "name": "shallow water",
+      "map_uses": 86
+     },
+     {
+      "id": 4656,
+      "name": "shallow water",
+      "map_uses": 1
+     }
+    ],
+    "sw_outer": [
+     {
+      "id": 4650,
+      "name": "shallow water",
+      "map_uses": 94
+     }
+    ],
+    "se_outer": [
+     {
+      "id": 4651,
+      "name": "shallow water",
+      "map_uses": 112
+     },
+     {
+      "id": 4655,
+      "name": "shallow water",
+      "map_uses": 109
+     },
+     {
+      "id": 4657,
+      "name": "shallow water",
+      "map_uses": 1
+     }
+    ],
+    "nw_inner": [
+     {
+      "id": 4652,
+      "name": "shallow water",
+      "map_uses": 87
+     }
+    ],
+    "ne_inner": [
+     {
+      "id": 4653,
+      "name": "shallow water",
+      "map_uses": 82
+     }
+    ],
+    "sw_inner": [
+     {
+      "id": 4654,
+      "name": "shallow water",
+      "map_uses": 86
+     }
+    ]
+   },
+   "missing_edges": [
+    "n",
+    "se_inner"
+   ]
+  },
+  {
+   "set": "swamp->swamp",
+   "edges": {
+    "unknown": [
+     {
+      "id": 4713,
+      "name": "swamp",
+      "map_uses": 0
+     },
+     {
+      "id": 4714,
+      "name": "swamp",
+      "map_uses": 0
+     },
+     {
+      "id": 4715,
+      "name": "swamp",
+      "map_uses": 0
+     },
+     {
+      "id": 4716,
+      "name": "swamp",
+      "map_uses": 0
+     },
+     {
+      "id": 4717,
+      "name": "swamp",
+      "map_uses": 0
+     },
+     {
+      "id": 4718,
+      "name": "swamp",
+      "map_uses": 0
+     },
+     {
+      "id": 4719,
+      "name": "swamp",
+      "map_uses": 0
+     },
+     {
+      "id": 4720,
+      "name": "swamp",
+      "map_uses": 0
+     },
+     {
+      "id": 4721,
+      "name": "swamp",
+      "map_uses": 0
+     },
+     {
+      "id": 4722,
+      "name": "swamp",
+      "map_uses": 0
+     },
+     {
+      "id": 4723,
+      "name": "swamp",
+      "map_uses": 0
+     },
+     {
+      "id": 4724,
+      "name": "swamp",
+      "map_uses": 0
+     },
+     {
+      "id": 4725,
+      "name": "swamp",
+      "map_uses": 0
+     },
+     {
+      "id": 4726,
+      "name": "swamp",
+      "map_uses": 0
+     }
+    ]
+   },
+   "missing_edges": [
+    "n",
+    "s",
+    "e",
+    "w",
+    "nw_outer",
+    "ne_outer",
+    "sw_outer",
+    "se_outer",
+    "nw_inner",
+    "ne_inner",
+    "sw_inner",
+    "se_inner"
+   ]
+  },
+  {
+   "set": "grass->stone",
+   "edges": {
+    "s": [
+     {
+      "id": 488,
+      "name": "ramp",
+      "map_uses": 1
+     }
+    ],
+    "unknown": [
+     {
+      "id": 4554,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4555,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4556,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4557,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4558,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4559,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4560,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4561,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4562,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4563,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4564,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4565,
+      "name": "rocks",
+      "map_uses": 0
+     }
+    ]
+   },
+   "missing_edges": [
+    "n",
+    "e",
+    "w",
+    "nw_outer",
+    "ne_outer",
+    "sw_outer",
+    "se_outer",
+    "nw_inner",
+    "ne_inner",
+    "sw_inner",
+    "se_inner"
+   ]
+  },
+  {
+   "set": "sand->grass",
+   "edges": {
+    "se_inner": [
+     {
+      "id": 3298,
+      "name": "grass",
+      "map_uses": 8
+     }
+    ],
+    "sw_inner": [
+     {
+      "id": 3299,
+      "name": "grass",
+      "map_uses": 18
+     }
+    ],
+    "ne_inner": [
+     {
+      "id": 3300,
+      "name": "grass",
+      "map_uses": 19
+     }
+    ],
+    "nw_inner": [
+     {
+      "id": 3301,
+      "name": "grass",
+      "map_uses": 9
+     }
+    ],
+    "e": [
+     {
+      "id": 3302,
+      "name": "grass",
+      "map_uses": 23
+     }
+    ],
+    "w": [
+     {
+      "id": 3303,
+      "name": "grass",
+      "map_uses": 22
+     }
+    ],
+    "s": [
+     {
+      "id": 3304,
+      "name": "grass",
+      "map_uses": 58
+     }
+    ],
+    "n": [
+     {
+      "id": 3305,
+      "name": "grass",
+      "map_uses": 59
+     }
+    ],
+    "se_outer": [
+     {
+      "id": 3306,
+      "name": "grass",
+      "map_uses": 7
+     }
+    ],
+    "ne_outer": [
+     {
+      "id": 3308,
+      "name": "grass",
+      "map_uses": 17
+     }
+    ],
+    "nw_outer": [
+     {
+      "id": 3309,
+      "name": "grass",
+      "map_uses": 7
+     }
+    ],
+    "unknown": [
+     {
+      "id": 4784,
+      "name": "grass",
+      "map_uses": 0
+     },
+     {
+      "id": 4785,
+      "name": "grass",
+      "map_uses": 0
+     }
+    ]
+   },
+   "missing_edges": [
+    "sw_outer"
    ]
   },
   {
@@ -266,6 +1112,27 @@
       "map_uses": 80
      }
     ],
+    "w": [
+     {
+      "id": 4670,
+      "name": "dirt",
+      "map_uses": 62
+     }
+    ],
+    "nw_inner": [
+     {
+      "id": 4671,
+      "name": "dirt",
+      "map_uses": 16
+     }
+    ],
+    "ne_inner": [
+     {
+      "id": 4672,
+      "name": "dirt",
+      "map_uses": 12
+     }
+    ],
     "sw_inner": [
      {
       "id": 4673,
@@ -280,18 +1147,23 @@
       "map_uses": 9
      }
     ],
-    "ne_outer": [
+    "nw_outer": [
      {
-      "id": 4676,
+      "id": 4675,
       "name": "dirt",
-      "map_uses": 9
+      "map_uses": 15
      }
     ],
-    "sw_outer": [
+    "ne_outer": [
      {
       "id": 4677,
       "name": "dirt",
       "map_uses": 11
+     },
+     {
+      "id": 4676,
+      "name": "dirt",
+      "map_uses": 9
      }
     ],
     "se_outer": [
@@ -303,10 +1175,97 @@
     ]
    },
    "missing_edges": [
-    "w",
-    "nw_outer",
-    "nw_inner",
-    "ne_inner"
+    "sw_outer"
+   ]
+  },
+  {
+   "set": "water->snow",
+   "edges": {
+    "s": [
+     {
+      "id": 4737,
+      "name": "snow",
+      "map_uses": 25
+     }
+    ],
+    "e": [
+     {
+      "id": 4738,
+      "name": "snow",
+      "map_uses": 7
+     }
+    ],
+    "n": [
+     {
+      "id": 4739,
+      "name": "snow",
+      "map_uses": 38
+     }
+    ],
+    "w": [
+     {
+      "id": 4740,
+      "name": "snow",
+      "map_uses": 9
+     }
+    ],
+    "nw_inner": [
+     {
+      "id": 4741,
+      "name": "snow",
+      "map_uses": 9
+     }
+    ],
+    "ne_inner": [
+     {
+      "id": 4742,
+      "name": "snow",
+      "map_uses": 19
+     }
+    ],
+    "ne_outer": [
+     {
+      "id": 4743,
+      "name": "snow",
+      "map_uses": 11
+     }
+    ],
+    "se_inner": [
+     {
+      "id": 4744,
+      "name": "snow",
+      "map_uses": 3
+     }
+    ],
+    "nw_outer": [
+     {
+      "id": 4745,
+      "name": "snow",
+      "map_uses": 8
+     },
+     {
+      "id": 4748,
+      "name": "snow",
+      "map_uses": 3
+     }
+    ],
+    "sw_inner": [
+     {
+      "id": 4746,
+      "name": "snow",
+      "map_uses": 18
+     }
+    ],
+    "sw_outer": [
+     {
+      "id": 4747,
+      "name": "snow",
+      "map_uses": 10
+     }
+    ]
+   },
+   "missing_edges": [
+    "se_outer"
    ]
   },
   {
@@ -317,6 +1276,13 @@
       "id": 4760,
       "name": "sand",
       "map_uses": 5
+     }
+    ],
+    "e": [
+     {
+      "id": 4761,
+      "name": "sand",
+      "map_uses": 3
      }
     ],
     "s": [
@@ -347,16 +1313,25 @@
       "map_uses": 2
      }
     ],
-    "sw_outer": [
+    "sw_inner": [
      {
       "id": 4766,
       "name": "sand",
       "map_uses": 3
-     },
+     }
+    ],
+    "se_inner": [
      {
-      "id": 4770,
+      "id": 4767,
       "name": "sand",
-      "map_uses": 3
+      "map_uses": 1
+     }
+    ],
+    "nw_outer": [
+     {
+      "id": 4768,
+      "name": "sand",
+      "map_uses": 2
      }
     ],
     "ne_outer": [
@@ -365,14 +1340,340 @@
       "name": "sand",
       "map_uses": 4
      }
+    ],
+    "sw_outer": [
+     {
+      "id": 4770,
+      "name": "sand",
+      "map_uses": 3
+     }
+    ],
+    "se_outer": [
+     {
+      "id": 4771,
+      "name": "sand",
+      "map_uses": 2
+     }
+    ]
+   },
+   "missing_edges": []
+  },
+  {
+   "set": "grass->sand",
+   "edges": {
+    "unknown": [
+     {
+      "id": 4772,
+      "name": "sand",
+      "map_uses": 0
+     },
+     {
+      "id": 4773,
+      "name": "sand",
+      "map_uses": 0
+     },
+     {
+      "id": 4774,
+      "name": "sand",
+      "map_uses": 0
+     },
+     {
+      "id": 4775,
+      "name": "sand",
+      "map_uses": 0
+     },
+     {
+      "id": 4776,
+      "name": "sand",
+      "map_uses": 0
+     },
+     {
+      "id": 4777,
+      "name": "sand",
+      "map_uses": 0
+     },
+     {
+      "id": 4778,
+      "name": "sand",
+      "map_uses": 0
+     },
+     {
+      "id": 4779,
+      "name": "sand",
+      "map_uses": 0
+     },
+     {
+      "id": 4780,
+      "name": "sand",
+      "map_uses": 0
+     },
+     {
+      "id": 4781,
+      "name": "sand",
+      "map_uses": 0
+     },
+     {
+      "id": 4782,
+      "name": "sand",
+      "map_uses": 0
+     },
+     {
+      "id": 4783,
+      "name": "sand",
+      "map_uses": 0
+     }
     ]
    },
    "missing_edges": [
+    "n",
+    "s",
     "e",
+    "w",
     "nw_outer",
+    "ne_outer",
+    "sw_outer",
     "se_outer",
+    "nw_inner",
+    "ne_inner",
     "sw_inner",
     "se_inner"
+   ]
+  },
+  {
+   "set": "none->carpet",
+   "edges": {
+    "unknown": [
+     {
+      "id": 1804,
+      "name": "oriental carpet",
+      "map_uses": 0
+     },
+     {
+      "id": 1807,
+      "name": "oriental carpet",
+      "map_uses": 0
+     }
+    ],
+    "nw_outer": [
+     {
+      "id": 3852,
+      "name": "bear skin rug",
+      "map_uses": 0
+     },
+     {
+      "id": 3856,
+      "name": "bear skin rug",
+      "map_uses": 0
+     }
+    ],
+    "ne_outer": [
+     {
+      "id": 3853,
+      "name": "bear skin rug",
+      "map_uses": 0
+     },
+     {
+      "id": 3857,
+      "name": "bear skin rug",
+      "map_uses": 0
+     }
+    ],
+    "sw_outer": [
+     {
+      "id": 3854,
+      "name": "bear skin rug",
+      "map_uses": 0
+     },
+     {
+      "id": 3858,
+      "name": "bear skin rug",
+      "map_uses": 0
+     }
+    ],
+    "se_outer": [
+     {
+      "id": 3855,
+      "name": "bear skin rug",
+      "map_uses": 0
+     },
+     {
+      "id": 3859,
+      "name": "bear skin rug",
+      "map_uses": 0
+     }
+    ],
+    "full": [
+     {
+      "id": 3860,
+      "name": "skunk skin rug",
+      "map_uses": 0
+     }
+    ]
+   },
+   "missing_edges": [
+    "n",
+    "s",
+    "e",
+    "w",
+    "nw_inner",
+    "ne_inner",
+    "sw_inner",
+    "se_inner"
+   ]
+  },
+  {
+   "set": "none->water",
+   "edges": {
+    "unknown": [
+     {
+      "id": 4658,
+      "name": "shallow water",
+      "map_uses": 0
+     },
+     {
+      "id": 4659,
+      "name": "shallow water",
+      "map_uses": 0
+     },
+     {
+      "id": 4660,
+      "name": "shallow water",
+      "map_uses": 0
+     },
+     {
+      "id": 4661,
+      "name": "shallow water",
+      "map_uses": 0
+     },
+     {
+      "id": 4662,
+      "name": "shallow water",
+      "map_uses": 0
+     },
+     {
+      "id": 4663,
+      "name": "shallow water",
+      "map_uses": 0
+     },
+     {
+      "id": 4828,
+      "name": "shallow water",
+      "map_uses": 0
+     },
+     {
+      "id": 4829,
+      "name": "shallow water",
+      "map_uses": 0
+     },
+     {
+      "id": 4830,
+      "name": "shallow water",
+      "map_uses": 0
+     },
+     {
+      "id": 4831,
+      "name": "shallow water",
+      "map_uses": 0
+     },
+     {
+      "id": 4876,
+      "name": "",
+      "map_uses": 0
+     }
+    ]
+   },
+   "missing_edges": [
+    "n",
+    "s",
+    "e",
+    "w",
+    "nw_outer",
+    "ne_outer",
+    "sw_outer",
+    "se_outer",
+    "nw_inner",
+    "ne_inner",
+    "sw_inner",
+    "se_inner"
+   ]
+  },
+  {
+   "set": "mixed->swamp",
+   "edges": {
+    "s": [
+     {
+      "id": 4727,
+      "name": "swamp",
+      "map_uses": 0
+     }
+    ],
+    "w": [
+     {
+      "id": 4728,
+      "name": "swamp",
+      "map_uses": 0
+     }
+    ],
+    "nw_inner": [
+     {
+      "id": 4729,
+      "name": "swamp",
+      "map_uses": 0
+     }
+    ],
+    "ne_inner": [
+     {
+      "id": 4730,
+      "name": "swamp",
+      "map_uses": 0
+     }
+    ],
+    "sw_inner": [
+     {
+      "id": 4731,
+      "name": "swamp",
+      "map_uses": 0
+     }
+    ],
+    "se_inner": [
+     {
+      "id": 4732,
+      "name": "swamp",
+      "map_uses": 0
+     }
+    ],
+    "nw_outer": [
+     {
+      "id": 4733,
+      "name": "swamp",
+      "map_uses": 0
+     }
+    ],
+    "ne_outer": [
+     {
+      "id": 4734,
+      "name": "swamp",
+      "map_uses": 0
+     }
+    ],
+    "sw_outer": [
+     {
+      "id": 4735,
+      "name": "swamp",
+      "map_uses": 0
+     }
+    ],
+    "se_outer": [
+     {
+      "id": 4736,
+      "name": "swamp",
+      "map_uses": 0
+     }
+    ]
+   },
+   "missing_edges": [
+    "n",
+    "e"
    ]
   },
   {
@@ -383,11 +1684,13 @@
       "id": 891,
       "name": "stone floor",
       "map_uses": 30
-     },
+     }
+    ],
+    "e": [
      {
-      "id": 897,
+      "id": 892,
       "name": "stone floor",
-      "map_uses": 8
+      "map_uses": 13
      }
     ],
     "s": [
@@ -404,11 +1707,25 @@
       "map_uses": 12
      }
     ],
+    "nw_inner": [
+     {
+      "id": 895,
+      "name": "stone floor",
+      "map_uses": 8
+     }
+    ],
     "ne_inner": [
      {
       "id": 896,
       "name": "stone floor",
       "map_uses": 13
+     }
+    ],
+    "se_inner": [
+     {
+      "id": 897,
+      "name": "stone floor",
+      "map_uses": 8
      }
     ],
     "sw_inner": [
@@ -427,165 +1744,157 @@
     ]
    },
    "missing_edges": [
-    "e",
     "nw_outer",
     "ne_outer",
-    "se_outer",
-    "nw_inner",
-    "se_inner"
+    "se_outer"
    ]
   },
   {
-   "set": "grass->water",
+   "set": "none->sand",
    "edges": {
-    "s": [
+    "unknown": [
      {
-      "id": 4646,
-      "name": "shallow water",
-      "map_uses": 303
+      "id": 487,
+      "name": "sand",
+      "map_uses": 0
      },
      {
-      "id": 4644,
-      "name": "shallow water",
-      "map_uses": 297
-     }
-    ],
-    "w": [
+      "id": 1072,
+      "name": "sandstone roof",
+      "map_uses": 0
+     },
      {
-      "id": 4647,
-      "name": "shallow water",
-      "map_uses": 246
-     }
-    ],
-    "sw_outer": [
+      "id": 1073,
+      "name": "sandstone roof",
+      "map_uses": 0
+     },
      {
-      "id": 4650,
-      "name": "shallow water",
-      "map_uses": 94
-     }
-    ],
-    "se_outer": [
+      "id": 1075,
+      "name": "sandstone roof",
+      "map_uses": 0
+     },
      {
-      "id": 4651,
-      "name": "shallow water",
-      "map_uses": 112
-     }
-    ],
-    "nw_inner": [
+      "id": 1076,
+      "name": "sandstone roof",
+      "map_uses": 0
+     },
      {
-      "id": 4652,
-      "name": "shallow water",
-      "map_uses": 87
+      "id": 1077,
+      "name": "sandstone roof",
+      "map_uses": 0
      }
     ]
    },
    "missing_edges": [
     "n",
+    "s",
     "e",
+    "w",
     "nw_outer",
     "ne_outer",
+    "sw_outer",
+    "se_outer",
+    "nw_inner",
     "ne_inner",
     "sw_inner",
     "se_inner"
    ]
   },
   {
-   "set": "water->snow",
+   "set": "none->gravel",
    "edges": {
-    "n": [
+    "unknown": [
      {
-      "id": 4737,
-      "name": "snow",
-      "map_uses": 25
-     }
-    ],
-    "w": [
+      "id": 4520,
+      "name": "rocks",
+      "map_uses": 0
+     },
      {
-      "id": 4738,
-      "name": "snow",
-      "map_uses": 7
-     }
-    ],
-    "se_outer": [
+      "id": 4521,
+      "name": "rocks",
+      "map_uses": 0
+     },
      {
-      "id": 4741,
-      "name": "snow",
-      "map_uses": 9
-     }
-    ],
-    "se_inner": [
+      "id": 4522,
+      "name": "rocks",
+      "map_uses": 0
+     },
      {
-      "id": 4744,
-      "name": "snow",
-      "map_uses": 3
-     }
-    ],
-    "sw_inner": [
+      "id": 4523,
+      "name": "rocks",
+      "map_uses": 0
+     },
      {
-      "id": 4746,
-      "name": "snow",
-      "map_uses": 18
-     }
-    ],
-    "sw_outer": [
+      "id": 4524,
+      "name": "rocks",
+      "map_uses": 0
+     },
      {
-      "id": 4747,
-      "name": "snow",
-      "map_uses": 10
-     }
-    ]
-   },
-   "missing_edges": [
-    "s",
-    "e",
-    "nw_outer",
-    "ne_outer",
-    "nw_inner",
-    "ne_inner"
-   ]
-  },
-  {
-   "set": "sand->grass",
-   "edges": {
-    "sw_outer": [
-     {
-      "id": 3299,
-      "name": "grass",
-      "map_uses": 18
-     }
-    ],
-    "e": [
-     {
-      "id": 3302,
-      "name": "grass",
-      "map_uses": 23
-     }
-    ],
-    "w": [
-     {
-      "id": 3303,
-      "name": "grass",
-      "map_uses": 22
-     }
-    ],
-    "s": [
-     {
-      "id": 3304,
-      "name": "grass",
-      "map_uses": 58
-     }
-    ],
-    "ne_outer": [
-     {
-      "id": 3308,
-      "name": "grass",
-      "map_uses": 17
+      "id": 4525,
+      "name": "rocks",
+      "map_uses": 0
      }
     ]
    },
    "missing_edges": [
     "n",
+    "s",
+    "e",
+    "w",
     "nw_outer",
+    "ne_outer",
+    "sw_outer",
+    "se_outer",
+    "nw_inner",
+    "ne_inner",
+    "sw_inner",
+    "se_inner"
+   ]
+  },
+  {
+   "set": "mixed->mixed",
+   "edges": {
+    "unknown": [
+     {
+      "id": 4877,
+      "name": "",
+      "map_uses": 0
+     },
+     {
+      "id": 4878,
+      "name": "",
+      "map_uses": 0
+     },
+     {
+      "id": 4879,
+      "name": "",
+      "map_uses": 0
+     },
+     {
+      "id": 4880,
+      "name": "",
+      "map_uses": 0
+     },
+     {
+      "id": 4881,
+      "name": "",
+      "map_uses": 0
+     },
+     {
+      "id": 4882,
+      "name": "",
+      "map_uses": 0
+     }
+    ]
+   },
+   "missing_edges": [
+    "n",
+    "s",
+    "e",
+    "w",
+    "nw_outer",
+    "ne_outer",
+    "sw_outer",
     "se_outer",
     "nw_inner",
     "ne_inner",
@@ -596,149 +1905,39 @@
   {
    "set": "mixed->carpet",
    "edges": {
-    "none": [
-     {
-      "id": 1794,
-      "name": "red carpet",
-      "map_uses": 2
-     },
-     {
-      "id": 1800,
-      "name": "red carpet",
-      "map_uses": 2
-     },
-     {
-      "id": 1802,
-      "name": "red carpet",
-      "map_uses": 2
-     }
-    ],
-    "nw_outer": [
+    "ne_outer": [
      {
       "id": 1796,
       "name": "red carpet",
       "map_uses": 2
      }
-    ]
-   },
-   "missing_edges": [
-    "n",
-    "s",
-    "e",
-    "w",
-    "ne_outer",
-    "sw_outer",
-    "se_outer",
-    "nw_inner",
-    "ne_inner",
-    "sw_inner",
-    "se_inner"
-   ]
-  },
-  {
-   "set": "grass->none",
-   "edges": {
-    "none": [
+    ],
+    "w": [
      {
-      "id": 3313,
-      "name": "ant trail",
-      "map_uses": 23
-     },
-     {
-      "id": 3312,
-      "name": "ant trail",
+      "id": 1797,
+      "name": "red carpet",
       "map_uses": 5
-     },
+     }
+    ],
+    "e": [
      {
-      "id": 3314,
-      "name": "ant trail",
+      "id": 1799,
+      "name": "red carpet",
+      "map_uses": 5
+     }
+    ],
+    "sw_outer": [
+     {
+      "id": 1800,
+      "name": "red carpet",
       "map_uses": 2
      }
     ],
     "se_outer": [
      {
-      "id": 4655,
-      "name": "shallow water",
-      "map_uses": 109
-     }
-    ]
-   },
-   "missing_edges": [
-    "n",
-    "s",
-    "e",
-    "w",
-    "nw_outer",
-    "ne_outer",
-    "sw_outer",
-    "nw_inner",
-    "ne_inner",
-    "sw_inner",
-    "se_inner"
-   ]
-  },
-  {
-   "set": "water->water",
-   "edges": {
-    "nw_inner": [
-     {
-      "id": 3571,
-      "name": "waterfall",
+      "id": 1802,
+      "name": "red carpet",
       "map_uses": 2
-     }
-    ],
-    "w": [
-     {
-      "id": 3572,
-      "name": "waterfall",
-      "map_uses": 10
-     },
-     {
-      "id": 3574,
-      "name": "waterfall",
-      "map_uses": 10
-     }
-    ],
-    "n": [
-     {
-      "id": 3573,
-      "name": "waterfall",
-      "map_uses": 2
-     }
-    ]
-   },
-   "missing_edges": [
-    "s",
-    "e",
-    "nw_outer",
-    "ne_outer",
-    "sw_outer",
-    "se_outer",
-    "ne_inner",
-    "sw_inner",
-    "se_inner"
-   ]
-  },
-  {
-   "set": "marble->carpet",
-   "edges": {
-    "w": [
-     {
-      "id": 1803,
-      "name": "oriental carpet",
-      "map_uses": 1
-     },
-     {
-      "id": 1806,
-      "name": "oriental carpet",
-      "map_uses": 1
-     }
-    ],
-    "e": [
-     {
-      "id": 1808,
-      "name": "oriental carpet",
-      "map_uses": 1
      }
     ]
    },
@@ -746,9 +1945,6 @@
     "n",
     "s",
     "nw_outer",
-    "ne_outer",
-    "sw_outer",
-    "se_outer",
     "nw_inner",
     "ne_inner",
     "sw_inner",
@@ -763,6 +1959,18 @@
       "id": 3307,
       "name": "grass",
       "map_uses": 42
+     }
+    ],
+    "none": [
+     {
+      "id": 3312,
+      "name": "ant trail",
+      "map_uses": 5
+     },
+     {
+      "id": 3317,
+      "name": "ant trail",
+      "map_uses": 5
      }
     ],
     "se_inner": [
@@ -793,7 +2001,326 @@
    ]
   },
   {
-   "set": "stone->stone",
+   "set": "grass->dirt",
+   "edges": {
+    "unknown": [
+     {
+      "id": 4796,
+      "name": "dirt",
+      "map_uses": 0
+     },
+     {
+      "id": 4797,
+      "name": "dirt",
+      "map_uses": 0
+     },
+     {
+      "id": 4798,
+      "name": "dirt",
+      "map_uses": 0
+     },
+     {
+      "id": 4799,
+      "name": "dirt",
+      "map_uses": 0
+     },
+     {
+      "id": 4800,
+      "name": "dirt",
+      "map_uses": 0
+     }
+    ]
+   },
+   "missing_edges": [
+    "n",
+    "s",
+    "e",
+    "w",
+    "nw_outer",
+    "ne_outer",
+    "sw_outer",
+    "se_outer",
+    "nw_inner",
+    "ne_inner",
+    "sw_inner",
+    "se_inner"
+   ]
+  },
+  {
+   "set": "stone->carpet",
+   "edges": {
+    "nw_outer": [
+     {
+      "id": 1794,
+      "name": "red carpet",
+      "map_uses": 2
+     }
+    ],
+    "n": [
+     {
+      "id": 1795,
+      "name": "red carpet",
+      "map_uses": 6
+     }
+    ],
+    "none": [
+     {
+      "id": 1798,
+      "name": "red carpet",
+      "map_uses": 13
+     }
+    ],
+    "s": [
+     {
+      "id": 1801,
+      "name": "red carpet",
+      "map_uses": 6
+     }
+    ]
+   },
+   "missing_edges": [
+    "e",
+    "w",
+    "ne_outer",
+    "sw_outer",
+    "se_outer",
+    "nw_inner",
+    "ne_inner",
+    "sw_inner",
+    "se_inner"
+   ]
+  },
+  {
+   "set": "marble->carpet",
+   "edges": {
+    "w": [
+     {
+      "id": 1803,
+      "name": "oriental carpet",
+      "map_uses": 1
+     },
+     {
+      "id": 1806,
+      "name": "oriental carpet",
+      "map_uses": 1
+     }
+    ],
+    "unknown": [
+     {
+      "id": 1805,
+      "name": "oriental carpet",
+      "map_uses": 1
+     }
+    ],
+    "e": [
+     {
+      "id": 1808,
+      "name": "oriental carpet",
+      "map_uses": 1
+     }
+    ]
+   },
+   "missing_edges": [
+    "n",
+    "s",
+    "nw_outer",
+    "ne_outer",
+    "sw_outer",
+    "se_outer",
+    "nw_inner",
+    "ne_inner",
+    "sw_inner",
+    "se_inner"
+   ]
+  },
+  {
+   "set": "grass->none",
+   "edges": {
+    "none": [
+     {
+      "id": 3313,
+      "name": "ant trail",
+      "map_uses": 23
+     },
+     {
+      "id": 3314,
+      "name": "ant trail",
+      "map_uses": 2
+     },
+     {
+      "id": 3318,
+      "name": "ant trail",
+      "map_uses": 1
+     },
+     {
+      "id": 3319,
+      "name": "ant trail",
+      "map_uses": 1
+     }
+    ]
+   },
+   "missing_edges": [
+    "n",
+    "s",
+    "e",
+    "w",
+    "nw_outer",
+    "ne_outer",
+    "sw_outer",
+    "se_outer",
+    "nw_inner",
+    "ne_inner",
+    "sw_inner",
+    "se_inner"
+   ]
+  },
+  {
+   "set": "water->water",
+   "edges": {
+    "nw_inner": [
+     {
+      "id": 3571,
+      "name": "waterfall",
+      "map_uses": 2
+     }
+    ],
+    "w": [
+     {
+      "id": 3572,
+      "name": "waterfall",
+      "map_uses": 10
+     },
+     {
+      "id": 3574,
+      "name": "waterfall",
+      "map_uses": 10
+     }
+    ],
+    "nw_outer": [
+     {
+      "id": 3573,
+      "name": "waterfall",
+      "map_uses": 2
+     }
+    ]
+   },
+   "missing_edges": [
+    "n",
+    "s",
+    "e",
+    "ne_outer",
+    "sw_outer",
+    "se_outer",
+    "ne_inner",
+    "sw_inner",
+    "se_inner"
+   ]
+  },
+  {
+   "set": "stone->dirt",
+   "edges": {
+    "unknown": [
+     {
+      "id": 4456,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4457,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4458,
+      "name": "rocks",
+      "map_uses": 0
+     },
+     {
+      "id": 4459,
+      "name": "rocks",
+      "map_uses": 0
+     }
+    ]
+   },
+   "missing_edges": [
+    "n",
+    "s",
+    "e",
+    "w",
+    "nw_outer",
+    "ne_outer",
+    "sw_outer",
+    "se_outer",
+    "nw_inner",
+    "ne_inner",
+    "sw_inner",
+    "se_inner"
+   ]
+  },
+  {
+   "set": "mixed->stone",
+   "edges": {
+    "unknown": [
+     {
+      "id": 899,
+      "name": "stone floor",
+      "map_uses": 0
+     },
+     {
+      "id": 901,
+      "name": "stone floor",
+      "map_uses": 0
+     }
+    ]
+   },
+   "missing_edges": [
+    "n",
+    "s",
+    "e",
+    "w",
+    "nw_outer",
+    "ne_outer",
+    "sw_outer",
+    "se_outer",
+    "nw_inner",
+    "ne_inner",
+    "sw_inner",
+    "se_inner"
+   ]
+  },
+  {
+   "set": "none->grass",
+   "edges": {
+    "unknown": [
+     {
+      "id": 4594,
+      "name": "grass",
+      "map_uses": 0
+     },
+     {
+      "id": 20153,
+      "name": "frostwarden aegis",
+      "map_uses": 0
+     }
+    ]
+   },
+   "missing_edges": [
+    "n",
+    "s",
+    "e",
+    "w",
+    "nw_outer",
+    "ne_outer",
+    "sw_outer",
+    "se_outer",
+    "nw_inner",
+    "ne_inner",
+    "sw_inner",
+    "se_inner"
+   ]
+  },
+  {
+   "set": "stone->cave",
    "edges": {
     "e": [
      {
@@ -802,54 +2329,17 @@
       "map_uses": 1
      }
     ],
-    "ne_inner": [
-     {
-      "id": 20147,
-      "name": "obsidian regalia",
-      "map_uses": 1
-     }
-    ],
-    "ne_outer": [
-     {
-      "id": 20149,
-      "name": "mosaic shield",
-      "map_uses": 1
-     }
-    ]
-   },
-   "missing_edges": [
-    "n",
-    "s",
-    "w",
-    "nw_outer",
-    "sw_outer",
-    "se_outer",
-    "nw_inner",
-    "sw_inner",
-    "se_inner"
-   ]
-  },
-  {
-   "set": "stone->none",
-   "edges": {
-    "s": [
-     {
-      "id": 1801,
-      "name": "red carpet",
-      "map_uses": 6
-     }
-    ],
     "none": [
      {
-      "id": 20139,
-      "name": "sword of silence",
+      "id": 20144,
+      "name": "relic of ulm",
       "map_uses": 1
      }
     ]
    },
    "missing_edges": [
     "n",
-    "e",
+    "s",
     "w",
     "nw_outer",
     "ne_outer",
@@ -862,39 +2352,7 @@
    ]
   },
   {
-   "set": "grass->dirt",
-   "edges": {
-    "unknown": [
-     {
-      "id": 3318,
-      "name": "ant trail",
-      "map_uses": 1
-     }
-    ],
-    "sw_inner": [
-     {
-      "id": 4654,
-      "name": "shallow water",
-      "map_uses": 86
-     }
-    ]
-   },
-   "missing_edges": [
-    "n",
-    "s",
-    "e",
-    "w",
-    "nw_outer",
-    "ne_outer",
-    "sw_outer",
-    "se_outer",
-    "nw_inner",
-    "ne_inner",
-    "se_inner"
-   ]
-  },
-  {
-   "set": "mixed->stone",
+   "set": "mixed->gravel",
    "edges": {
     "e": [
      {
@@ -919,22 +2377,22 @@
    ]
   },
   {
-   "set": "grass->stone",
+   "set": "snow->grass",
    "edges": {
-    "s": [
+    "ne_outer": [
      {
-      "id": 488,
-      "name": "ramp",
-      "map_uses": 1
+      "id": 900,
+      "name": "stone floor",
+      "map_uses": 6
      }
     ]
    },
    "missing_edges": [
     "n",
+    "s",
     "e",
     "w",
     "nw_outer",
-    "ne_outer",
     "sw_outer",
     "se_outer",
     "nw_inner",
@@ -969,13 +2427,13 @@
    ]
   },
   {
-   "set": "stone->carpet",
+   "set": "none->none",
    "edges": {
-    "none": [
+    "unknown": [
      {
-      "id": 1795,
-      "name": "red carpet",
-      "map_uses": 6
+      "id": 20132,
+      "name": "training extension rune",
+      "map_uses": 0
      }
     ]
    },
@@ -995,62 +2453,12 @@
    ]
   },
   {
-   "set": "none->carpet",
-   "edges": {
-    "w": [
-     {
-      "id": 1797,
-      "name": "red carpet",
-      "map_uses": 5
-     }
-    ]
-   },
-   "missing_edges": [
-    "n",
-    "s",
-    "e",
-    "nw_outer",
-    "ne_outer",
-    "sw_outer",
-    "se_outer",
-    "nw_inner",
-    "ne_inner",
-    "sw_inner",
-    "se_inner"
-   ]
-  },
-  {
-   "set": "wood->carpet",
-   "edges": {
-    "e": [
-     {
-      "id": 1799,
-      "name": "red carpet",
-      "map_uses": 5
-     }
-    ]
-   },
-   "missing_edges": [
-    "n",
-    "s",
-    "w",
-    "nw_outer",
-    "ne_outer",
-    "sw_outer",
-    "se_outer",
-    "nw_inner",
-    "ne_inner",
-    "sw_inner",
-    "se_inner"
-   ]
-  },
-  {
-   "set": "marble->none",
+   "set": "stone->lava",
    "edges": {
     "none": [
      {
-      "id": 1805,
-      "name": "oriental carpet",
+      "id": 20139,
+      "name": "sword of silence",
       "map_uses": 1
      }
     ]
@@ -1071,13 +2479,13 @@
    ]
   },
   {
-   "set": "none->snow",
+   "set": "stone->none",
    "edges": {
-    "nw_outer": [
+    "none": [
      {
-      "id": 4745,
-      "name": "snow",
-      "map_uses": 8
+      "id": 20154,
+      "name": "bonepriest reaver",
+      "map_uses": 1
      }
     ]
    },
@@ -1086,6 +2494,7 @@
     "s",
     "e",
     "w",
+    "nw_outer",
     "ne_outer",
     "sw_outer",
     "se_outer",
