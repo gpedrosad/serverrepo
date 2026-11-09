@@ -56,6 +56,9 @@ server/YurOTS/ots/data/players/
 
 # Runtime noise — logs, cores, local symlinks de assets
 server/YurOTS/ots/data/logs/wave_arena_rank.json
+# Registro de accesos (IPs de jugadores): runtime, ver docs/systems/LOGIN_EVENTS.md
+server/YurOTS/ots/data/logs/logins-*.jsonl
+server/YurOTS/ots/data/logs/web-*.jsonl
 server/YurOTS/ots/data/crash-*.log
 server/YurOTS/ots/yurots.log
 server/YurOTS/ots/*.log
