@@ -5,9 +5,8 @@ Laberinto **separado** (no es Alice Maze ni el gauntlet). Misma geometría 2 sqm
 | Sistema | Footprint | Acceso |
 |---------|-----------|--------|
 | **Alice Maze** (intacto) | X `380–433`, Y `18–103` | Barco `alice maze` → `413 103 7` |
-| **Hunt Maze** (este doc) | X `280–349`, Y `243–400` | Portal templo viejo `160,54,7` |
-| **Floor hunt (campus)** | 16 salas z7, X `40–452` Y `220–400` | Portal templo `162,54,7` — ver [`MAPEAR_FLOOR_HUNT.md`](MAPEAR_FLOOR_HUNT.md) |
-| **Wave Arena** | X `174–180`, Y `386–392` | Portal templo `159,54,7` — ver [`../gameplay/WAVE_ARENA.md`](../gameplay/WAVE_ARENA.md) |
+| **Hunt Maze** (este doc) | X `280–349`, Y `243–400` | Portal plaza del templo `158,47,7` |
+| **Wave Arena** | X `174–180`, Y `386–392` | Portal plaza del templo `166,47,7` — ver [`../gameplay/WAVE_ARENA.md`](../gameplay/WAVE_ARENA.md) |
 | Gauntlet | ~`450+` | Barco `gauntlet` |
 
 ---
@@ -16,10 +15,10 @@ Laberinto **separado** (no es Alice Maze ni el gauntlet). Misma geometría 2 sqm
 
 | Qué | Pos |
 |-----|-----|
-| Portal (templo viejo) | `160, 54, 7` → landing |
+| Portal (plaza del templo) | `158, 47, 7` → landing |
 | Llegada | `280, 399, 7` |
-| Retorno (apenas llegás, 1 paso sur) | `281, 400, 7` → `161, 54, 7` |
-| Escape norte (opcional) | `316, 243, 7` → `161, 54, 7` |
+| Retorno (apenas llegás, 1 paso sur) | `281, 400, 7` → `158, 48, 7` |
+| Escape norte (opcional) | `316, 243, 7` → `158, 48, 7` |
 | Celdas / seed | `18 × 40`, seed `230` |
 | Spawns | bloque `<!-- BEGIN HUNT_MAZE -->` |
 

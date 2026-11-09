@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """Arena de oleadas — portal desde templo viejo 159,54,7.
 
+AVISO (nov 2026): los portales del templo viven en la plaza y los maneja
+scripts/map/temple-portals.py. Si corrés este generador, después corré ese script:
+limpia lo que este ponga en la fila vieja (y=53-55) y reapunta la vuelta.
+
+
 Sala 7×7 de caza + vestíbulo con:
 - landing / retorno al templo
 - palanca Start/Next (uniqueid 7100)

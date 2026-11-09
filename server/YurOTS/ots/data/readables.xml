@@ -4,33 +4,18 @@
 <readable x="131" y="53" z="7" text="depots are upstairs"/>
 <readable x="141" y="51" z="6" text="some\nmulti\nline\ntext"/>
 	<!-- BEGIN CRUCIBLE_SIGNS -->
-	<readable x="157" y="53" z="7" text="CRISOL\n3 puertas. Boss diario.\nBronce / Plata / Oro"/>
-	<readable x="159" y="53" z="7" text="WAVE ARENA\nOleadas. Palanca = next.\nRanking semanal"/>
-	<readable x="160" y="53" z="7" text="HUNT MAZE\nLaberinto mid-hard\nDesde Minotauros"/>
-	<readable x="162" y="53" z="7" text="FLOOR CAMPUS\n16 salas separadas\nMinos -> Behemoth"/>
 	<readable x="83" y="87" z="0" text="BRONCE - riesgo bajo"/>
 	<readable x="85" y="87" z="0" text="PLATA - riesgo medio"/>
 	<readable x="87" y="87" z="0" text="ORO - boss diario"/>
 	<readable x="90" y="87" z="0" text="INFO - bosses de hoy"/>
 	<!-- END CRUCIBLE_SIGNS -->
-			<!-- BEGIN SVAR_ARENA_SIGNS -->
-	<readable x="161" y="53" z="7" text="FOSOS
-3 dificultades. 10 pits.
-Elegi 1 cofre al final"/>
-	<!-- END SVAR_ARENA_SIGNS -->
-				<!-- BEGIN FISH_TP_SIGNS -->
-	<readable x="164" y="53" z="7" text="FISH TP
-Usa fishing rod en el agua.
-Lagoon + crabs"/>
-	<!-- END FISH_TP_SIGNS -->
 			<!-- BEGIN SAND_CLOCK_SIGNS -->
-	<readable x="166" y="53" z="7" text="RELOJ DE ARENA
-Sala compartida.
-Fases cada 120 s"/>
 	<!-- END SAND_CLOCK_SIGNS -->
-		<!-- BEGIN BLEED_ROOM_SIGNS -->
-	<readable x="168" y="53" z="7" text="BLEED ROOM
-Mana -8/s. 10 mobs.
-TP sur = salida"/>
-	<!-- END BLEED_ROOM_SIGNS -->
+	<!-- BEGIN TEMPLE_PORTAL_SIGNS -->
+	<readable x="156" y="46" z="7" text="ISLA NATURAL\nCyclops arriba.\nCueva abajo (agujero)."/>
+	<readable x="158" y="46" z="7" text="HUNT MAZE\nLaberinto mid-hard\nDesde Minotauros"/>
+	<readable x="164" y="46" z="7" text="CRISOL\n3 puertas. Boss diario.\nBronce / Plata / Oro"/>
+	<readable x="166" y="46" z="7" text="WAVE ARENA\nOleadas. Palanca = next.\nRanking semanal"/>
+	<readable x="168" y="46" z="7" text="RELOJ DE ARENA\nSala compartida.\nFases cada 120 s"/>
+	<!-- END TEMPLE_PORTAL_SIGNS -->
 </readables>

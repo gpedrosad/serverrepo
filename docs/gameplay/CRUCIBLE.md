@@ -2,23 +2,18 @@
 
 Hub con **3 puertas** (Bronce / Plata / Oro). Cada día rota elite/boss. La puerta Oro dropea un **arma Zagan exclusiva** con efecto C++.
 
-| Sistema | Portal templo |
-|---------|----------------|
-| **El Crisol** | `157, 54, 7` |
-| Wave Arena | `159, 54, 7` |
-| Hunt maze | `160, 54, 7` |
-| Floor campus | `162, 54, 7` |
+Portal en la plaza del templo: `164, 47, 7` (cartel `164, 46, 7`, llegada al volver `164, 48, 7`).
 
-Carteles `1433` + `readables.xml` en `y=53`. No ocupar `158,54,7` (retorno Wave).
+Portales del templo: plaza `155,43–169,52` (z7), tabla completa en [`CAMBIAR-MAPA.md`](../CAMBIAR-MAPA.md#portales-del-templo-plaza-z7--nov-2026). Los maneja `scripts/map/temple-portals.py`.
 
 ---
 
 ## Flujo
 
-1. TP `157, 54, 7` → hub `85, 92, 0`.
+1. TP `164, 47, 7` → hub `85, 92, 0`.
 2. Palanca INFO `7203`: bosses + rare del día.
 3. Bronce `7200` / Plata `7201` / Oro `7202`: pack + elite/boss → arena.
-4. Salida: TP sur de arena → hub → templo `156, 54, 7`.
+4. Salida: TP sur de arena → hub → templo `164, 48, 7`.
 
 ---
 

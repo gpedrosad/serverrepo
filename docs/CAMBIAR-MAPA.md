@@ -7,13 +7,10 @@ Relacionado:
 - [docs/RME_SETUP.md](RME_SETUP.md) — abrir RME y assets 7.6
 - [docs/items-and-map/MAPEAR_CON_CODIGO.md](items-and-map/MAPEAR_CON_CODIGO.md) — generar terreno (islas) con `generate-island.py`
 - [docs/items-and-map/MAPEAR_LABERINTO.md](items-and-map/MAPEAR_LABERINTO.md) — laberinto 2 sqm (camino 406, fondo 100, teleport templo) con `generate-maze.py`
-- [docs/items-and-map/MAPEAR_HUNT_MAZE.md](items-and-map/MAPEAR_HUNT_MAZE.md) — hunt maze **aparte** de Alice; portal `160,54,7` con `generate-hunt-maze.py`
-- [docs/items-and-map/MAPEAR_FLOOR_HUNT.md](items-and-map/MAPEAR_FLOOR_HUNT.md) — torre 16 pisos z0–z15 con teleports; portal `162,54,7`
-- [docs/gameplay/WAVE_ARENA.md](gameplay/WAVE_ARENA.md) — Wave Arena oleadas; portal `159,54,7`
-- [docs/gameplay/CRUCIBLE.md](gameplay/CRUCIBLE.md) — El Crisol (3 puertas + bosses diarios); portal `157,54,7` con `scripts/map/generate-crucible.py`
-- [docs/gameplay/SVAR_ARENA.md](gameplay/SVAR_ARENA.md) — Arena de Fosos (Svargrond-style); portal `161,54,7` con `scripts/map/generate-svar-arena.py`
-- [docs/gameplay/FISH_TP.md](gameplay/FISH_TP.md) — Fish TP (pescar el portal); agua `164,54,7` con `scripts/map/generate-fish-tp.py`
-- [docs/gameplay/SAND_CLOCK.md](gameplay/SAND_CLOCK.md) — Reloj de Arena (fases globales); portal `166,54,7` con `scripts/map/generate-sand-clock.py`
+- [docs/items-and-map/MAPEAR_HUNT_MAZE.md](items-and-map/MAPEAR_HUNT_MAZE.md) — hunt maze **aparte** de Alice; portal `158,47,7` con `generate-hunt-maze.py`
+- [docs/gameplay/WAVE_ARENA.md](gameplay/WAVE_ARENA.md) — Wave Arena oleadas; portal `166,47,7`
+- [docs/gameplay/CRUCIBLE.md](gameplay/CRUCIBLE.md) — El Crisol (3 puertas + bosses diarios); portal `164,47,7` con `scripts/map/generate-crucible.py`
+- [docs/gameplay/SAND_CLOCK.md](gameplay/SAND_CLOCK.md) — Reloj de Arena (fases globales); portal `168,47,7` con `scripts/map/generate-sand-clock.py`
 - [scripts/README-DEPLOY-VPS.md](../scripts/README-DEPLOY-VPS.md) — deploy seguro en producción
 - [docs/PROYECTO.md](PROYECTO.md) — qué data es sagrada y qué va en git
 
@@ -31,23 +28,21 @@ Relacionado:
 
 El servidor carga `test.otbm` desde `config.lua` (`map = "data/world/test.otbm"`).
 
-### Portales templo (fila y=54, z7) — jul 2026
+### Portales del templo (plaza, z7) — nov 2026
 
-| Coord | Sistema | Doc / generador |
-|-------|---------|-----------------|
-| `157,54,7` | El Crisol | [`CRUCIBLE.md`](gameplay/CRUCIBLE.md) |
-| `158,54,7` | Retorno Wave (landing) | no ocupar con TP nuevo |
-| `159,54,7` | Wave Arena | [`WAVE_ARENA.md`](gameplay/WAVE_ARENA.md) |
-| `160,54,7` | Hunt maze | [`MAPEAR_HUNT_MAZE.md`](items-and-map/MAPEAR_HUNT_MAZE.md) |
-| `161,54,7` | Arena de Fosos | [`SVAR_ARENA.md`](gameplay/SVAR_ARENA.md) |
-| `162,54,7` | Floor campus | [`MAPEAR_FLOOR_HUNT.md`](items-and-map/MAPEAR_FLOOR_HUNT.md) |
-| `163,54,7` | Retorno Fosos | |
-| `164,54,7` | Fish TP (agua) | [`FISH_TP.md`](gameplay/FISH_TP.md) |
-| `165,54,7` | Retorno Fish | |
-| `166,54,7` | Reloj de Arena | [`SAND_CLOCK.md`](gameplay/SAND_CLOCK.md) |
-| `167,54,7` | Retorno Reloj | |
+Todos los portales están en la plaza `155,43 – 169,52`, sobre la fila vieja. Portal en `y=47`, cartel en `y=46`, llegada al volver en `y=48`. La fila vieja (`y=53–55`) quedó como pasillo, sin portales.
 
-Carteles en `y=53`. Libre a partir de `168,54,7` aprox.
+Los maneja **un solo script**: `python3 scripts/map/temple-portals.py` (idempotente). Arma la plaza, pone portales y carteles (`readables.xml`, bloque `TEMPLE_PORTAL_SIGNS`) y reapunta todo teleport de vuelta al templo hacia la llegada del portal de su zona. Si regenerás una zona con su generador, volvé a correrlo. Para agregar un portal: sumarlo a `PORTALS` en ese script.
+
+| Portal | Llegada al volver | Sistema | Doc / generador |
+|--------|-------------------|---------|-----------------|
+| `156,47,7` | `156,48,7` | Isla natural (cyclops + cueva) | `generate-natural-island.py --seed 23 --cave`, `link-island-temple.py`, `spawn-island-cave.py` |
+| `158,47,7` | `158,48,7` | Hunt maze (el gauntlet también vuelve acá) | [`MAPEAR_HUNT_MAZE.md`](items-and-map/MAPEAR_HUNT_MAZE.md) |
+| `164,47,7` | `164,48,7` | El Crisol | [`CRUCIBLE.md`](gameplay/CRUCIBLE.md) |
+| `166,47,7` | `166,48,7` | Wave Arena | [`WAVE_ARENA.md`](gameplay/WAVE_ARENA.md) |
+| `168,47,7` | `168,48,7` | Reloj de Arena | [`SAND_CLOCK.md`](gameplay/SAND_CLOCK.md) |
+
+Sacados en nov 2026: Arena de Fosos, Fish TP (ya no existían en el mapa), Bleed Room y Floor campus.
 
 ---
 

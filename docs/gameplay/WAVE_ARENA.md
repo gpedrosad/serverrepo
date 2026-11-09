@@ -1,24 +1,21 @@
-# Wave Arena — oleadas desde el templo viejo
+# Wave Arena — oleadas desde el templo
 
 Arena PvE de oleadas: matás el pack, usás la palanca, viene la siguiente. Ranking semanal por personaje.
 
-| Sistema | Portal templo viejo |
-|---------|---------------------|
-| El Crisol (bosses diarios) | `157, 54, 7` |
-| **Wave Arena** | `159, 54, 7` |
-| Hunt maze plano | `160, 54, 7` |
-| Floor hunt (campus) | `162, 54, 7` |
+Portal en la plaza del templo: `166, 47, 7` (cartel `166, 46, 7`).
+
+Portales del templo: plaza `155,43–169,52` (z7), tabla completa en [`CAMBIAR-MAPA.md`](../CAMBIAR-MAPA.md#portales-del-templo-plaza-z7--nov-2026). Los maneja `scripts/map/temple-portals.py`.
 
 ---
 
 ## Flujo
 
-1. Pisar TP `159, 54, 7` → landing `177, 394, 7`.
+1. Pisar TP `166, 47, 7` → landing `177, 394, 7`.
 2. Palanca **izquierda** (uid `7100`): inicia / siguiente oleada.
 3. Matar todos los monstruos en la sala 7×7.
 4. Volver a usar la palanca → oleada N+1.
 5. Palanca **derecha** (uid `7101`): ranking semanal (top 5) + tu mejor.
-6. Retorno: tile `178, 395, 7` → `158, 54, 7`.
+6. Retorno: tile `178, 395, 7` → `166, 48, 7`.
 
 Si quedan criaturas, la palanca dice cuántas faltan. Si otro jugador tiene una corrida activa y sigue en la zona, no podés hijackearla.
 
@@ -64,4 +61,4 @@ Tras cambiar solo el `.lua` / `actions.xml`, basta restart (sin regenerar OTBM).
 # palanca der → ranking
 ```
 
-Relacionado: [`../items-and-map/MAPEAR_HUNT_MAZE.md`](../items-and-map/MAPEAR_HUNT_MAZE.md), [`../items-and-map/MAPEAR_FLOOR_HUNT.md`](../items-and-map/MAPEAR_FLOOR_HUNT.md).
+Relacionado: [`../items-and-map/MAPEAR_HUNT_MAZE.md`](../items-and-map/MAPEAR_HUNT_MAZE.md).

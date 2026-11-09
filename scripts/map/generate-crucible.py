@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """El Crisol — 3 puertas (Bronce/Plata/Oro) + bosses diarios + carteles templo.
 
+AVISO (nov 2026): los portales del templo viven en la plaza y los maneja
+scripts/map/temple-portals.py. Si corrés este generador, después corré ese script:
+limpia lo que este ponga en la fila vieja (y=53-55) y reapunta la vuelta.
+
+
 Portal templo 157,54,7 → hub z0. Salas separadas en XY (z0 vacío).
 Carteles 1429 en templo (y=53) para Wave / Maze / Floor / Crisol.
 UID palancas: 7200 Bronce, 7201 Plata, 7202 Oro, 7203 cartel del dia.
@@ -82,7 +87,6 @@ TEMPLE_SIGNS = (
     (157, 53, 7, "CRISOL\n3 puertas. Boss diario.\nBronce / Plata / Oro"),
     (159, 53, 7, "WAVE ARENA\nOleadas. Palanca = next.\nRanking semanal"),
     (160, 53, 7, "HUNT MAZE\nLaberinto mid-hard\nDesde Minotauros"),
-    (162, 53, 7, "FLOOR CAMPUS\n16 salas separadas\nMinos -> Behemoth"),
 )
 
 

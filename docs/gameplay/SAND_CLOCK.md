@@ -2,29 +2,22 @@
 
 Una sola sala. Todos los que entran viven el **mismo** evento: cada **120 s** cambia la fase y el pack de mobs. El countdown se muestra como en trainers (`quedan X s` / `X min Y s`) vía `MSG_SMALLINFO`.
 
-| Sistema | Portal templo |
-|---------|----------------|
-| El Crisol | `157, 54, 7` |
-| Wave Arena | `159, 54, 7` |
-| Hunt maze | `160, 54, 7` |
-| Arena de Fosos | `161, 54, 7` |
-| Floor campus | `162, 54, 7` |
-| Fish TP | agua `164, 54, 7` |
-| **Reloj de Arena** | `166, 54, 7` |
-| Bleed Room | `168, 54, 7` |
+Portal en la plaza del templo: `168, 47, 7` (cartel `168, 46, 7`).
 
-Retorno: TP sur de la sala → templo `167, 54, 7`. Cartel `166, 53, 7`.
+Retorno: TP sur de la sala → templo `168, 48, 7`.
+
+Portales del templo: plaza `155,43–169,52` (z7), tabla completa en [`CAMBIAR-MAPA.md`](../CAMBIAR-MAPA.md#portales-del-templo-plaza-z7--nov-2026). Los maneja `scripts/map/temple-portals.py`.
 
 ---
 
 ## Flujo
 
-1. Pisar el TP del templo `166, 54, 7`.
+1. Pisar el TP del templo `168, 47, 7`.
 2. Landing `338, 392, 6`. Chronos (NPC) ya está en la sala.
 3. Mensaje de entrada: fase actual + tiempo restante.
 4. Cada ~1 s (think del NPC): `Reloj: quedan X s | fase: Name` (mismo estilo que training).
 5. Al cambiar la fase: limpia mobs de la sala, spawnea el pack nuevo, anuncia a todos.
-6. Salida: TP `338, 398, 6` → templo `167, 54, 7`.
+6. Salida: TP `338, 398, 6` → templo `168, 48, 7`.
 
 No hay fee, no hay instancias. El reloj es **global** (`os.time()`): si entrás a mitad de fase, ves el mismo countdown y los mismos mobs que el resto.
 
@@ -45,7 +38,7 @@ No hay fee, no hay instancias. El reloj es **global** (`os.time()`): si entrás 
 | `338, 398, 6` | TP retorno |
 | `338, 387, 6` | Chronos (`npc.xml`) |
 
-Tiles simples a propósito (mismo patrón Fish / Fosos / Crisol): un rectángulo de path, sin laberintos ni fosos.
+Tiles simples a propósito (mismo patrón que el Crisol): un rectángulo de path, sin laberintos ni fosos.
 
 ---
 
@@ -122,7 +115,7 @@ Diálogo Chronos: `hi` → `time` / `fase` / `reloj` / `help`.
 
 ## Regenerar / deploy
 
-Orden de regeneración OTBM: Fosos → Fish → Reloj. Validar teleport attrs antes de deploy:
+Después de regenerar, correr `python3 scripts/map/temple-portals.py`. Validar teleport attrs antes de deploy:
 
 ```bash
 python3 scripts/map/generate-sand-clock.py --dry-run
@@ -138,10 +131,10 @@ python3 scripts/map/validate-tele-dest.py server/YurOTS/ots/data/world/test.otbm
 
 ## Probar
 
-1. Entrar por `166, 54, 7`.
+1. Entrar por `168, 47, 7`.
 2. Ver mensaje de fase + línea `Reloj: quedan …` cada segundo.
 3. Esperar cambio de fase (~hasta 120 s) o hablar con Chronos (`time`).
 4. Confirmar que al cambiar limpia mobs viejos y spawnea los nuevos.
-5. Salir por el TP sur → `167, 54, 7`.
+5. Salir por el TP sur → `168, 48, 7`.
 
-Relacionado: [`FISH_TP.md`](FISH_TP.md), [`SVAR_ARENA.md`](SVAR_ARENA.md), [`WAVE_ARENA.md`](WAVE_ARENA.md), [`../CAMBIAR-MAPA.md`](../CAMBIAR-MAPA.md).
+Relacionado: [`WAVE_ARENA.md`](WAVE_ARENA.md), [`../CAMBIAR-MAPA.md`](../CAMBIAR-MAPA.md).

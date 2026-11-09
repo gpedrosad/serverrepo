@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """Laberinto de caza SEPARADO del Alice Maze (y del gauntlet).
 
+AVISO (nov 2026): los portales del templo viven en la plaza y los maneja
+scripts/map/temple-portals.py. Si corrés este generador, después corré ese script:
+limpia lo que este ponga en la fila vieja (y=53-55) y reapunta la vuelta.
+
+
 - No toca el footprint Alice (380–433, 18–103).
 - Misma geometría 2 sqm (camino 406 / fondo 100) que generate-maze.py.
 - Portal en templo viejo 160,54,7 → landing del hunt maze.

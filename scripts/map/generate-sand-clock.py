@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """Reloj de Arena — sala compartida con fases globales (Chronos).
 
+AVISO (nov 2026): los portales del templo viven en la plaza y los maneja
+scripts/map/temple-portals.py. Si corrés este generador, después corré ese script:
+limpia lo que este ponga en la fila vieja (y=53-55) y reapunta la vuelta.
+
+
 Templo: TP 166,54,7 → sala z6. Retorno templo 167,54,7.
 Sala simple path 406 + fondo neutro z5 (mismo patrón Wave/Fish/Fosos).
 NPC Chronos se spawnea vía data/world/npc.xml (no en OTBM).
