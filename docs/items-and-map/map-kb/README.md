@@ -9,15 +9,24 @@ campos `description_es` y `usage_rule_es` dentro de cada etiqueta.
 ```bash
 cd scripts/map/kb
 python3 extract_facts.py                      # hechos deterministas (1 s)
-OPENROUTER_KEY_FILE=~/.openrouter_key \
-  python3 label_deepseek.py --only-used       # etiquetas DeepSeek de piezas usadas (reanudable)
-OPENROUTER_KEY_FILE=~/.openrouter_key \
-  python3 label_deepseek.py --only-unused --effort low
+python3 label_opencode.py                     # etiquetas con DeepSeek flash vía opencode (reanudable)
+python3 label_opencode.py --vision-review     # 2.ª pasada CON IMAGEN para las piezas usadas en el mapa
 python3 build_kb.py                           # une, corrige, agrupa y revisa el mapa (1 s)
 ```
 
-`label_deepseek.py` guarda una etiqueta por pieza en `.cache/labels/<id>.json` y salta las que ya
-existen; `--force` las rehace, `--ids 406,407` limita a piezas concretas. La key nunca va en el repo.
+**Segunda pasada con imagen** (`--vision-review`): para cada pieza con `map_uses >= --min-uses` (por defecto 1)
+manda, de a 5 por pedido, los hechos + la etiqueta anterior + los motivos de `review.json` y una imagen por
+pieza adjunta con `opencode run -f` (sprite ampliado a la izquierda, recorte 7x7 del mapa con la casilla en rojo
+a la derecha). DeepSeek flash sí ve imágenes vía opencode. Marca `pass: 2`, guarda la etiqueta vieja en
+`.cache/labels_v1/` y es reanudable. Ojo: `-f` necesita ruta absoluta (opencode resuelve contra `$PWD`, no contra `cwd`).
+
+**Las etiquetas se hacen con opencode, no con la API de OpenRouter** (decisión de nov 2026).
+`label_opencode.py` llama `opencode run -m opencode-go/deepseek-v4.1-flash` en una carpeta
+temporal sin herramientas (sin shell, sin editar), de a 15 piezas por pedido, y valida cada
+respuesta contra el esquema. Solo texto (flash no ve imágenes): confianza máx 0,8.
+`label_deepseek.py` (OpenRouter, con sprites) queda como referencia; no usarlo.
+
+Las etiquetas se guardan una por pieza en `.cache/labels/<id>.json` y se saltan las que ya existen.
 
 ## Archivos
 
@@ -71,5 +80,6 @@ sin flag `ground_border` ⇒ no es borde; `walkable_expected` = no `unpassable`;
 ## Límites conocidos
 - Sprites del cliente 7.6 base: los ids reutilizados por Zagan se ven con el dibujo vanilla
   (`sprite_matches_name=false` suele marcarlos).
-- Las etiquetas son de un modelo con visión (DeepSeek v4 flash vision): úsalas como guía y
-  revisa `review.json`; los hechos de `facts.json` son exactos.
+- Las etiquetas son de un modelo (DeepSeek, campo `label_model`): las 1273 piezas usadas en el mapa tienen
+  2.ª pasada con imagen vía opencode (nov 2026); las no usadas son solo texto. Úsalas como guía y revisa
+  `review.json`; los hechos de `facts.json` son exactos.

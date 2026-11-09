@@ -3,7 +3,7 @@
  "by_rule": {
   "R2_dos_suelos": 2,
   "R1_sin_suelo": 9,
-  "R4_transicion_sin_borde": 4663,
+  "R4_transicion_sin_borde": 4749,
   "R3_borde_huerfano": 119
  },
  "by_zone": [
@@ -25,7 +25,7 @@
   {
    "zone": "fuera_de_zonas",
    "rule": "R4_transicion_sin_borde",
-   "count": 4549
+   "count": 4635
   },
   {
    "zone": "natural-island",
@@ -2523,30 +2523,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 40,
-   "y": 39,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    142,
-    103
-   ],
-   "detail": "sand junto a dirt (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 40,
-   "y": 39,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    142,
-    103
-   ],
-   "detail": "sand junto a dirt (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 35,
    "y": 40,
    "z": 7,
@@ -2628,30 +2604,6 @@
     103
    ],
    "detail": "sand junto a dirt (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 39,
-   "y": 40,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    142,
-    103
-   ],
-   "detail": "sand junto a dirt (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 39,
-   "y": 40,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    142,
-    103
-   ],
-   "detail": "sand junto a dirt (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -2697,42 +2649,6 @@
    "zone": null,
    "ids": [
     136,
-    103
-   ],
-   "detail": "sand junto a dirt (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 38,
-   "y": 45,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    142,
-    103
-   ],
-   "detail": "sand junto a dirt (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 38,
-   "y": 45,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    142,
-    103
-   ],
-   "detail": "sand junto a dirt (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 57,
-   "y": 32,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    142,
     103
    ],
    "detail": "sand junto a dirt (e) sin borde en ninguna de las dos"
@@ -3060,30 +2976,6 @@
     103
    ],
    "detail": "sand junto a dirt (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 48,
-   "y": 63,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    142,
-    103
-   ],
-   "detail": "sand junto a dirt (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 48,
-   "y": 63,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    142,
-    103
-   ],
-   "detail": "sand junto a dirt (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R3_borde_huerfano",
@@ -3428,222 +3320,6 @@
     4608
    ],
    "detail": "grass junto a water (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 114,
-   "y": 26,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    4691,
-    777
-   ],
-   "detail": "swamp junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 115,
-   "y": 26,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    4691,
-    777
-   ],
-   "detail": "swamp junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 116,
-   "y": 26,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    4691,
-    777
-   ],
-   "detail": "swamp junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 117,
-   "y": 26,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    4691,
-    777
-   ],
-   "detail": "swamp junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 118,
-   "y": 26,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    4691,
-    777
-   ],
-   "detail": "swamp junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 119,
-   "y": 26,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    4691,
-    777
-   ],
-   "detail": "swamp junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 120,
-   "y": 26,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    4691,
-    777
-   ],
-   "detail": "swamp junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 121,
-   "y": 26,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    4691,
-    777
-   ],
-   "detail": "swamp junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 122,
-   "y": 26,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    4691,
-    777
-   ],
-   "detail": "swamp junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 123,
-   "y": 26,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    4691,
-    777
-   ],
-   "detail": "swamp junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 124,
-   "y": 26,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    4691,
-    777
-   ],
-   "detail": "swamp junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 125,
-   "y": 26,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    4691,
-    777
-   ],
-   "detail": "swamp junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 126,
-   "y": 26,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    4691,
-    777
-   ],
-   "detail": "swamp junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 127,
-   "y": 26,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    4691,
-    777
-   ],
-   "detail": "swamp junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 115,
-   "y": 30,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    109
-   ],
-   "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 116,
-   "y": 29,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    109
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 116,
-   "y": 30,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    109,
-    777
-   ],
-   "detail": "grass junto a sand (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 116,
-   "y": 30,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    109,
-    777
-   ],
-   "detail": "grass junto a sand (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -4751,6 +4427,18 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
+   "x": 94,
+   "y": 46,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    378,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
    "x": 95,
    "y": 44,
    "z": 8,
@@ -4760,6 +4448,42 @@
     355
    ],
    "detail": "dirt junto a mud (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 95,
+   "y": 45,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    351,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 95,
+   "y": 46,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    354
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 95,
+   "y": 46,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -4775,30 +4499,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 100,
-   "y": 32,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    123
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 101,
-   "y": 32,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    123
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 102,
    "y": 34,
    "z": 7,
@@ -4820,18 +4520,6 @@
     104
    ],
    "detail": "grass junto a sand (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 104,
-   "y": 33,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    132
-   ],
-   "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -4859,18 +4547,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 105,
-   "y": 32,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    132
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 106,
    "y": 32,
    "z": 7,
@@ -4880,18 +4556,6 @@
     125
    ],
    "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 106,
-   "y": 32,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    123
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -4940,6 +4604,30 @@
     104
    ],
    "detail": "grass junto a sand (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 102,
+   "y": 39,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    124,
+    130
+   ],
+   "detail": "grass junto a snow (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 100,
+   "y": 39,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -4955,6 +4643,42 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
+   "x": 101,
+   "y": 38,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    351,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 101,
+   "y": 39,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    351
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 101,
+   "y": 39,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    379
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
    "x": 102,
    "y": 37,
    "z": 8,
@@ -5048,6 +4772,18 @@
     125
    ],
    "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 104,
+   "y": 37,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    380,
+    355
+   ],
+   "detail": "dirt junto a mud (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -5072,6 +4808,18 @@
     351
    ],
    "detail": "mud junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 106,
+   "y": 39,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    351,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -5268,6 +5016,18 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 101,
+   "y": 40,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    126,
+    130
+   ],
+   "detail": "grass junto a snow (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 101,
    "y": 42,
    "z": 7,
    "zone": null,
@@ -5287,7 +5047,7 @@
     130,
     104
    ],
-   "detail": "grass junto a sand (e) sin borde en ninguna de las dos"
+   "detail": "snow junto a sand (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -5400,30 +5160,6 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 104,
-   "y": 40,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    131
-   ],
-   "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 104,
-   "y": 41,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    123
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 104,
    "y": 43,
    "z": 7,
    "zone": null,
@@ -5432,18 +5168,6 @@
     103
    ],
    "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 105,
-   "y": 40,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    131,
-    104
-   ],
-   "detail": "grass junto a sand (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -5460,74 +5184,74 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 105,
-   "y": 41,
+   "y": 43,
    "z": 7,
    "zone": null,
    "ids": [
-    104,
-    123
+    110,
+    103
    ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
+   "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 106,
+   "y": 43,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    110,
+    118
+   ],
+   "detail": "grass junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 106,
+   "y": 43,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    110,
+    103
+   ],
+   "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 107,
+   "y": 42,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    114,
+    118
+   ],
+   "detail": "grass junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 107,
+   "y": 42,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    114,
+    118
+   ],
+   "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
    "x": 105,
-   "y": 43,
-   "z": 7,
+   "y": 40,
+   "z": 8,
    "zone": null,
    "ids": [
-    110,
-    103
+    381,
+    382
    ],
-   "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 106,
-   "y": 43,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    110,
-    118
-   ],
-   "detail": "grass junto a dirt (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 106,
-   "y": 43,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    110,
-    103
-   ],
-   "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 107,
-   "y": 42,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    114,
-    118
-   ],
-   "detail": "grass junto a dirt (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 107,
-   "y": 42,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    114,
-    118
-   ],
-   "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -5539,7 +5263,19 @@
     382,
     355
    ],
-   "detail": "dirt junto a mud (e) sin borde en ninguna de las dos"
+   "detail": "cave junto a mud (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 106,
+   "y": 40,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -5603,18 +5339,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 109,
-   "y": 43,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 110,
    "y": 40,
    "z": 7,
@@ -5624,18 +5348,6 @@
     118
    ],
    "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 110,
-   "y": 43,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -5664,12 +5376,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 111,
-   "y": 42,
+   "y": 43,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    111
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 111,
+   "y": 43,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -5813,18 +5537,6 @@
    "zone": null,
    "ids": [
     103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 107,
-   "y": 45,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
     111
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
@@ -5868,24 +5580,48 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 108,
-   "y": 44,
+   "y": 45,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
    "x": 108,
+   "y": 45,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
+   ],
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 109,
    "y": 44,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    111
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 109,
+   "y": 44,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -5975,66 +5711,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 115,
-   "y": 39,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 115,
-   "y": 37,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    109
-   ],
-   "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 116,
-   "y": 36,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    109
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 116,
-   "y": 37,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    109,
-    777
-   ],
-   "detail": "grass junto a sand (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 116,
-   "y": 37,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    109,
-    777
-   ],
-   "detail": "grass junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 112,
    "y": 40,
    "z": 7,
@@ -6065,18 +5741,6 @@
    "zone": null,
    "ids": [
     103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 112,
-   "y": 42,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
     111
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
@@ -6084,26 +5748,26 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 113,
-   "y": 41,
+   "y": 42,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    111
    ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 114,
-   "y": 40,
+   "x": 113,
+   "y": 42,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
    ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -6131,183 +5795,27 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 113,
+   "x": 115,
    "y": 40,
-   "z": 9,
+   "z": 7,
    "zone": null,
    "ids": [
-    4691,
-    777
+    120,
+    116
    ],
-   "detail": "swamp junto a sand (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 114,
-   "y": 40,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (s) sin borde en ninguna de las dos"
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
    "x": 115,
    "y": 40,
-   "z": 9,
+   "z": 7,
    "zone": null,
    "ids": [
-    777,
-    4691
+    120,
+    113
    ],
-   "detail": "sand junto a swamp (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 116,
-   "y": 40,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 117,
-   "y": 40,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 118,
-   "y": 40,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 119,
-   "y": 40,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 120,
-   "y": 40,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 121,
-   "y": 40,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 122,
-   "y": 40,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 123,
-   "y": 40,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 124,
-   "y": 40,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 125,
-   "y": 40,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 126,
-   "y": 40,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 127,
-   "y": 40,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (s) sin borde en ninguna de las dos"
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -6953,9 +6461,117 @@
    "zone": null,
    "ids": [
     355,
+    380
+   ],
+   "detail": "mud junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 97,
+   "y": 52,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    355,
     354
    ],
    "detail": "mud junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 107,
+   "y": 54,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 108,
+   "y": 53,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    351,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 108,
+   "y": 54,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    351
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 108,
+   "y": 54,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    378
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 110,
+   "y": 55,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 111,
+   "y": 54,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    351,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 111,
+   "y": 55,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    351
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 111,
+   "y": 55,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -7146,6 +6762,18 @@
     351
    ],
    "detail": "mud junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 114,
+   "y": 63,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    351,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -7341,54 +6969,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 128,
-   "y": 26,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    4691,
-    777
-   ],
-   "detail": "swamp junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 129,
-   "y": 26,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    4691,
-    777
-   ],
-   "detail": "swamp junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 130,
-   "y": 26,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    4691,
-    777
-   ],
-   "detail": "swamp junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 131,
-   "y": 26,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    4691,
-    777
-   ],
-   "detail": "swamp junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 132,
    "y": 26,
    "z": 8,
@@ -7449,78 +7029,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 132,
-   "y": 26,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    4691,
-    777
-   ],
-   "detail": "swamp junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 133,
-   "y": 26,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    4691,
-    777
-   ],
-   "detail": "swamp junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 134,
-   "y": 26,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    4691,
-    777
-   ],
-   "detail": "swamp junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 135,
-   "y": 26,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    4691,
-    777
-   ],
-   "detail": "swamp junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 135,
-   "y": 27,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 136,
-   "y": 27,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    4691,
-    777
-   ],
-   "detail": "swamp junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 130,
    "y": 28,
    "z": 8,
@@ -7638,54 +7146,6 @@
     351
    ],
    "detail": "water junto a dirt (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 132,
-   "y": 30,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    109
-   ],
-   "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 133,
-   "y": 29,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    109
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 133,
-   "y": 30,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    109,
-    777
-   ],
-   "detail": "grass junto a sand (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 133,
-   "y": 30,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    109,
-    777
-   ],
-   "detail": "grass junto a sand (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -7725,54 +7185,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 136,
-   "y": 28,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 136,
-   "y": 29,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 136,
-   "y": 30,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 136,
-   "y": 31,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 130,
    "y": 35,
    "z": 8,
@@ -7929,54 +7341,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 136,
-   "y": 32,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 136,
-   "y": 33,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 136,
-   "y": 34,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 136,
-   "y": 35,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 130,
    "y": 36,
    "z": 8,
@@ -8106,150 +7470,6 @@
     351
    ],
    "detail": "water junto a dirt (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 132,
-   "y": 37,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    109
-   ],
-   "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 133,
-   "y": 36,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    109
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 133,
-   "y": 37,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    109,
-    777
-   ],
-   "detail": "grass junto a sand (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 133,
-   "y": 37,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    109,
-    777
-   ],
-   "detail": "grass junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 136,
-   "y": 36,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 136,
-   "y": 37,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 136,
-   "y": 38,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 136,
-   "y": 39,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 128,
-   "y": 40,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 129,
-   "y": 40,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 130,
-   "y": 40,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 131,
-   "y": 40,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R3_borde_huerfano",
@@ -8316,78 +7536,6 @@
     4545
    ],
    "detail": "borde sin ningún vecino con otro suelo"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 132,
-   "y": 40,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 133,
-   "y": 40,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 134,
-   "y": 40,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 135,
-   "y": 40,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 136,
-   "y": 40,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 136,
-   "y": 40,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    4691
-   ],
-   "detail": "sand junto a swamp (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -9673,6 +8821,18 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
+   "x": 135,
+   "y": 58,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    357,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
    "x": 136,
    "y": 57,
    "z": 8,
@@ -9681,7 +8841,31 @@
     507,
     382
    ],
-   "detail": "water junto a dirt (s) sin borde en ninguna de las dos"
+   "detail": "water junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 136,
+   "y": 58,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    351
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 136,
+   "y": 58,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -9778,6 +8962,18 @@
     352
    ],
    "detail": "water junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 131,
+   "y": 63,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    351,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -10448,6 +9644,18 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 162,
+   "y": 61,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    101,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 162,
    "y": 63,
    "z": 8,
    "zone": null,
@@ -10456,6 +9664,30 @@
     355
    ],
    "detail": "dirt junto a mud (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 163,
+   "y": 61,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    351
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 163,
+   "y": 61,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    379
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -11851,18 +11083,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 194,
-   "y": 35,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 195,
    "y": 32,
    "z": 7,
@@ -11900,12 +11120,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 195,
-   "y": 34,
+   "y": 35,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 195,
+   "y": 35,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    113
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -12476,18 +11708,6 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 193,
-   "y": 54,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 193,
    "y": 55,
    "z": 7,
    "zone": null,
@@ -12500,12 +11720,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 194,
-   "y": 53,
+   "y": 54,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    111
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 194,
+   "y": 54,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    113
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -12928,30 +12160,6 @@
     103
    ],
    "detail": "sand junto a dirt (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 61,
-   "y": 73,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    142,
-    103
-   ],
-   "detail": "sand junto a dirt (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 61,
-   "y": 73,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    142,
-    103
-   ],
-   "detail": "sand junto a dirt (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -13472,18 +12680,6 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 30,
-   "y": 110,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 30,
    "y": 111,
    "z": 7,
    "zone": null,
@@ -13496,24 +12692,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 31,
-   "y": 109,
+   "y": 110,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
    "x": 31,
-   "y": 109,
+   "y": 110,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    113
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -13568,12 +12764,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 32,
-   "y": 108,
+   "y": 109,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    111
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 32,
+   "y": 109,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -14791,18 +13999,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 106,
-   "y": 75,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 108,
    "y": 75,
    "z": 8,
@@ -14905,18 +14101,6 @@
    "zone": null,
    "ids": [
     103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 105,
-   "y": 76,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
     111
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
@@ -14944,6 +14128,30 @@
     115
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 106,
+   "y": 76,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 106,
+   "y": 76,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
+   ],
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -14980,6 +14188,90 @@
     101
    ],
    "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 113,
+   "y": 64,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 114,
+   "y": 64,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    351
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 114,
+   "y": 64,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 113,
+   "y": 69,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 114,
+   "y": 68,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    351,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 114,
+   "y": 69,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    353
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 114,
+   "y": 69,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -15629,6 +14921,18 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
+   "x": 84,
+   "y": 95,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    352,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
    "x": 103,
    "y": 80,
    "z": 7,
@@ -16083,6 +15387,18 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
+   "x": 105,
+   "y": 95,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    352,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
    "x": 112,
    "y": 83,
    "z": 8,
@@ -16359,6 +15675,318 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
+   "x": 83,
+   "y": 96,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 84,
+   "y": 96,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    382,
+    352
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 84,
+   "y": 96,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    382,
+    372
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 88,
+   "y": 97,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 89,
+   "y": 96,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    352,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 89,
+   "y": 97,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    382,
+    352
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 89,
+   "y": 97,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    382,
+    372
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 91,
+   "y": 98,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 92,
+   "y": 97,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    352,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 92,
+   "y": 98,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    382,
+    352
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 92,
+   "y": 98,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 93,
+   "y": 107,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 94,
+   "y": 106,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    352,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 94,
+   "y": 107,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    382,
+    352
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 94,
+   "y": 107,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 104,
+   "y": 96,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 105,
+   "y": 96,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    382,
+    352
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 105,
+   "y": 96,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    382,
+    378
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 105,
+   "y": 97,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    378,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 106,
+   "y": 96,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    352,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 106,
+   "y": 97,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    382,
+    352
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 106,
+   "y": 97,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 106,
+   "y": 99,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    378,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 107,
+   "y": 98,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    352,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 107,
+   "y": 99,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    382,
+    352
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 107,
+   "y": 99,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    382,
+    378
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
    "x": 111,
    "y": 97,
    "z": 6,
@@ -16368,6 +15996,18 @@
     101
    ],
    "detail": "sand junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 110,
+   "y": 99,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    352,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -16416,18 +16056,6 @@
     118
    ],
    "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 106,
-   "y": 103,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -16524,6 +16152,42 @@
     103
    ],
    "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 109,
+   "y": 100,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 110,
+   "y": 100,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    382,
+    352
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 110,
+   "y": 100,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -16628,18 +16292,6 @@
    "zone": null,
    "ids": [
     103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 105,
-   "y": 104,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
     111
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
@@ -16655,6 +16307,30 @@
     103
    ],
    "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 106,
+   "y": 104,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    111
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 106,
+   "y": 104,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
+   ],
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -16935,18 +16611,6 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 103,
-   "y": 110,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 103,
    "y": 111,
    "z": 7,
    "zone": null,
@@ -16995,24 +16659,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 104,
-   "y": 109,
+   "y": 110,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
    "x": 104,
-   "y": 109,
+   "y": 110,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    113
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -17031,12 +16695,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 105,
-   "y": 108,
+   "y": 109,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 105,
+   "y": 109,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -17567,6 +17243,54 @@
     598
    ],
    "detail": "dirt junto a lava (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 90,
+   "y": 125,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 91,
+   "y": 124,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    352,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 91,
+   "y": 125,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    382,
+    352
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 91,
+   "y": 125,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -18467,6 +18191,54 @@
     354
    ],
    "detail": "mud junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 108,
+   "y": 118,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 109,
+   "y": 117,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    352,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 109,
+   "y": 118,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    382,
+    352
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 109,
+   "y": 118,
+   "z": 10,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -19383,18 +19155,6 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 114,
-   "y": 118,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 114,
    "y": 119,
    "z": 7,
    "zone": null,
@@ -19403,18 +19163,6 @@
     113
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 114,
-   "y": 119,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -19443,12 +19191,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 115,
-   "y": 117,
+   "y": 118,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 115,
+   "y": 118,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    113
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -19707,18 +19467,6 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 113,
-   "y": 120,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 113,
    "y": 121,
    "z": 7,
    "zone": null,
@@ -19737,6 +19485,30 @@
    "ids": [
     103,
     111
+   ],
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 114,
+   "y": 120,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 114,
+   "y": 120,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    113
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -19838,6 +19610,90 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
+   "x": 130,
+   "y": 64,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 131,
+   "y": 64,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    351
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 131,
+   "y": 64,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 134,
+   "y": 65,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    381,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 135,
+   "y": 64,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    351,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 135,
+   "y": 65,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    351
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 135,
+   "y": 65,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    378
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
    "x": 136,
    "y": 64,
    "z": 8,
@@ -19895,6 +19751,54 @@
     372
    ],
    "detail": "mud junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 142,
+   "y": 66,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 143,
+   "y": 65,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    351,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 143,
+   "y": 66,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    354
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 143,
+   "y": 66,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -20235,18 +20139,6 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 138,
-   "y": 78,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 138,
    "y": 79,
    "z": 7,
    "zone": null,
@@ -20283,12 +20175,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 139,
-   "y": 77,
+   "y": 78,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    111
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 139,
+   "y": 78,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    113
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -20714,6 +20618,18 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
+   "x": 147,
+   "y": 79,
+   "z": 5,
+   "zone": null,
+   "ids": [
+    106,
+    4757
+   ],
+   "detail": "grass junto a gravel (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
    "x": 144,
    "y": 77,
    "z": 7,
@@ -20795,6 +20711,30 @@
     103
    ],
    "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 153,
+   "y": 79,
+   "z": 5,
+   "zone": null,
+   "ids": [
+    4757,
+    106
+   ],
+   "detail": "gravel junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 154,
+   "y": 79,
+   "z": 5,
+   "zone": null,
+   "ids": [
+    106,
+    4757
+   ],
+   "detail": "grass junto a gravel (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -21410,18 +21350,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 185,
-   "y": 75,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 186,
    "y": 74,
    "z": 7,
@@ -21662,30 +21590,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 183,
-   "y": 79,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 184,
-   "y": 76,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 184,
    "y": 77,
    "z": 7,
@@ -21711,12 +21615,36 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 184,
-   "y": 78,
+   "y": 79,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 185,
+   "y": 76,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    111
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 185,
+   "y": 76,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    113
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -21986,6 +21914,42 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
+   "x": 142,
+   "y": 84,
+   "z": 5,
+   "zone": null,
+   "ids": [
+    106,
+    4757
+   ],
+   "detail": "grass junto a gravel (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 143,
+   "y": 84,
+   "z": 5,
+   "zone": null,
+   "ids": [
+    106,
+    4757
+   ],
+   "detail": "grass junto a gravel (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 143,
+   "y": 85,
+   "z": 5,
+   "zone": null,
+   "ids": [
+    4757,
+    106
+   ],
+   "detail": "gravel junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
    "x": 134,
    "y": 89,
    "z": 7,
@@ -22091,18 +22055,6 @@
     113
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 138,
-   "y": 91,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -22251,18 +22203,6 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 137,
-   "y": 92,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 137,
    "y": 93,
    "z": 7,
    "zone": null,
@@ -22283,6 +22223,30 @@
     113
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 138,
+   "y": 92,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    113
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 138,
+   "y": 92,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    113
+   ],
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -22395,6 +22359,30 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 147,
+   "y": 80,
+   "z": 5,
+   "zone": null,
+   "ids": [
+    106,
+    4757
+   ],
+   "detail": "grass junto a gravel (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 147,
+   "y": 81,
+   "z": 5,
+   "zone": null,
+   "ids": [
+    106,
+    4757
+   ],
+   "detail": "grass junto a gravel (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 147,
    "y": 81,
    "z": 7,
    "zone": null,
@@ -22419,6 +22407,78 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 148,
+   "y": 81,
+   "z": 5,
+   "zone": null,
+   "ids": [
+    4757,
+    106
+   ],
+   "detail": "gravel junto a grass (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 148,
+   "y": 82,
+   "z": 5,
+   "zone": null,
+   "ids": [
+    106,
+    4757
+   ],
+   "detail": "grass junto a gravel (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 149,
+   "y": 82,
+   "z": 5,
+   "zone": null,
+   "ids": [
+    4757,
+    106
+   ],
+   "detail": "gravel junto a grass (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 150,
+   "y": 82,
+   "z": 5,
+   "zone": null,
+   "ids": [
+    4757,
+    106
+   ],
+   "detail": "gravel junto a grass (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 151,
+   "y": 82,
+   "z": 5,
+   "zone": null,
+   "ids": [
+    4757,
+    108
+   ],
+   "detail": "gravel junto a grass (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 151,
+   "y": 83,
+   "z": 5,
+   "zone": null,
+   "ids": [
+    108,
+    4757
+   ],
+   "detail": "grass junto a gravel (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 148,
    "y": 80,
    "z": 7,
    "zone": null,
@@ -22484,18 +22544,6 @@
    "zone": null,
    "ids": [
     103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 150,
-   "y": 82,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
     111
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
@@ -22527,14 +22575,158 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 151,
-   "y": 81,
+   "y": 82,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 151,
+   "y": 82,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 154,
+   "y": 80,
+   "z": 5,
+   "zone": null,
+   "ids": [
+    4757,
+    106
+   ],
+   "detail": "gravel junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 154,
+   "y": 81,
+   "z": 5,
+   "zone": null,
+   "ids": [
+    4757,
+    106
+   ],
+   "detail": "gravel junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 154,
+   "y": 82,
+   "z": 5,
+   "zone": null,
+   "ids": [
+    4757,
+    106
+   ],
+   "detail": "gravel junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 154,
+   "y": 83,
+   "z": 5,
+   "zone": null,
+   "ids": [
+    4757,
+    106
+   ],
+   "detail": "gravel junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 151,
+   "y": 84,
+   "z": 5,
+   "zone": null,
+   "ids": [
+    108,
+    4757
+   ],
+   "detail": "grass junto a gravel (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 151,
+   "y": 85,
+   "z": 5,
+   "zone": null,
+   "ids": [
+    108,
+    4757
+   ],
+   "detail": "grass junto a gravel (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 152,
+   "y": 85,
+   "z": 5,
+   "zone": null,
+   "ids": [
+    4757,
+    108
+   ],
+   "detail": "gravel junto a grass (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 154,
+   "y": 84,
+   "z": 5,
+   "zone": null,
+   "ids": [
+    4757,
+    106
+   ],
+   "detail": "gravel junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 154,
+   "y": 85,
+   "z": 5,
+   "zone": null,
+   "ids": [
+    4757,
+    109
+   ],
+   "detail": "gravel junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 154,
+   "y": 86,
+   "z": 5,
+   "zone": null,
+   "ids": [
+    4757,
+    106
+   ],
+   "detail": "gravel junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 154,
+   "y": 86,
+   "z": 5,
+   "zone": null,
+   "ids": [
+    4757,
+    106
+   ],
+   "detail": "gravel junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -22688,18 +22880,6 @@
    "zone": null,
    "ids": [
     103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 150,
-   "y": 93,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
     111
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
@@ -22707,12 +22887,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 151,
-   "y": 92,
+   "y": 93,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    111
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 151,
+   "y": 93,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -22772,18 +22964,6 @@
    "zone": null,
    "ids": [
     103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 160,
-   "y": 91,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
     111
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
@@ -22815,12 +22995,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 161,
-   "y": 90,
+   "y": 91,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 161,
+   "y": 91,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -22887,18 +23079,6 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 181,
-   "y": 90,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 181,
    "y": 91,
    "z": 7,
    "zone": null,
@@ -22911,24 +23091,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 182,
-   "y": 89,
+   "y": 90,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
    "x": 182,
-   "y": 89,
+   "y": 90,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    113
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -22947,12 +23127,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 183,
-   "y": 88,
+   "y": 89,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 183,
+   "y": 89,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -23187,18 +23379,6 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 137,
-   "y": 98,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 137,
    "y": 99,
    "z": 7,
    "zone": null,
@@ -23211,12 +23391,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 138,
-   "y": 97,
+   "y": 98,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    111
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 138,
+   "y": 98,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    113
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -23402,18 +23594,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 132,
-   "y": 103,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 133,
    "y": 100,
    "z": 7,
@@ -23435,18 +23615,6 @@
     118
    ],
    "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 136,
-   "y": 103,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -23487,12 +23655,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 137,
-   "y": 102,
+   "y": 103,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 137,
+   "y": 103,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    113
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -23583,18 +23763,6 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 131,
-   "y": 104,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 131,
    "y": 105,
    "z": 7,
    "zone": null,
@@ -23636,9 +23804,9 @@
    "zone": null,
    "ids": [
     120,
-    121
+    113
    ],
-   "detail": "grass junto a dirt (e) sin borde en ninguna de las dos"
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -24512,30 +24680,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 168,
-   "y": 107,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 168,
-   "y": 107,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 169,
    "y": 105,
    "z": 7,
@@ -24561,12 +24705,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 169,
-   "y": 106,
+   "y": 107,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 169,
+   "y": 107,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -24629,18 +24785,6 @@
     103
    ],
    "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 160,
-   "y": 111,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -24777,18 +24921,6 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 166,
-   "y": 109,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 166,
    "y": 111,
    "z": 7,
    "zone": null,
@@ -24801,38 +24933,14 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 167,
-   "y": 108,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 167,
-   "y": 108,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 167,
    "y": 109,
    "z": 7,
    "zone": null,
    "ids": [
     120,
-    119
+    116
    ],
-   "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -24855,6 +24963,30 @@
    "ids": [
     103,
     111
+   ],
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 168,
+   "y": 108,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 168,
+   "y": 108,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -24909,18 +25041,6 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 176,
-   "y": 98,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 176,
    "y": 99,
    "z": 7,
    "zone": null,
@@ -24929,6 +25049,42 @@
     113
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 177,
+   "y": 97,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    110,
+    120
+   ],
+   "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 177,
+   "y": 98,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    111
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 177,
+   "y": 98,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    113
+   ],
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -25838,18 +25994,6 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 138,
-   "y": 121,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 138,
    "y": 122,
    "z": 7,
    "zone": null,
@@ -25862,12 +26006,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 139,
-   "y": 120,
+   "y": 121,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    111
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 139,
+   "y": 121,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    113
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -26124,18 +26280,6 @@
    "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
   },
   {
-   "rule": "R4_transicion_sin_borde",
-   "x": 143,
-   "y": 127,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
    "rule": "R3_borde_huerfano",
    "x": 144,
    "y": 112,
@@ -26279,30 +26423,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 151,
-   "y": 115,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 152,
-   "y": 115,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 152,
    "y": 115,
    "z": 7,
@@ -26316,36 +26436,48 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 153,
-   "y": 114,
+   "y": 115,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
    "x": 153,
-   "y": 114,
+   "y": 115,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
    "x": 154,
-   "y": 113,
+   "y": 114,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    111
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 154,
+   "y": 114,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -26393,18 +26525,6 @@
    "zone": null,
    "ids": [
     103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 158,
-   "y": 113,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
     111
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
@@ -26412,24 +26532,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 159,
-   "y": 112,
+   "y": 113,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
    "x": 159,
-   "y": 112,
+   "y": 113,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -26456,18 +26576,6 @@
     118
    ],
    "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 144,
-   "y": 119,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -26501,18 +26609,6 @@
    "zone": null,
    "ids": [
     103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 145,
-   "y": 119,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
     111
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
@@ -26520,26 +26616,26 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 146,
-   "y": 118,
+   "y": 119,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    111
    ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 147,
-   "y": 118,
+   "x": 146,
+   "y": 119,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
    ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -26604,50 +26700,50 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 148,
-   "y": 117,
+   "y": 118,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
    "x": 148,
-   "y": 117,
+   "y": 118,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
    "x": 149,
-   "y": 116,
+   "y": 117,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    111
    ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 150,
-   "y": 116,
+   "x": 149,
+   "y": 117,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
    ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -26658,6 +26754,30 @@
    "ids": [
     103,
     111
+   ],
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 151,
+   "y": 116,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    111
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 151,
+   "y": 116,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -26804,6 +26924,18 @@
     357
    ],
    "detail": "lava junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 144,
+   "y": 120,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    111
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -27020,6 +27152,30 @@
     103
    ],
    "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 160,
+   "y": 112,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    111
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 160,
+   "y": 112,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
+   ],
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -27311,6 +27467,18 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
+   "x": 199,
+   "y": 71,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    4633,
+    719
+   ],
+   "detail": "water junto a mud (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
    "x": 200,
    "y": 70,
    "z": 7,
@@ -27320,6 +27488,18 @@
     231
    ],
    "detail": "water junto a sand (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 200,
+   "y": 70,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    4643,
+    719
+   ],
+   "detail": "water junto a mud (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -27473,18 +27653,6 @@
    "zone": null,
    "ids": [
     103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 193,
-   "y": 75,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
     111
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
@@ -27516,12 +27684,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 194,
-   "y": 74,
+   "y": 75,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    111
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 194,
+   "y": 75,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -27575,30 +27755,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 197,
-   "y": 74,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    234,
-    777
-   ],
-   "detail": "grass junto a sand (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 197,
-   "y": 75,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    234,
-    777
-   ],
-   "detail": "grass junto a sand (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 198,
    "y": 72,
    "z": 7,
@@ -27608,18 +27764,6 @@
     231
    ],
    "detail": "water junto a sand (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 198,
-   "y": 75,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    777,
-    4641
-   ],
-   "detail": "sand junto a water (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -28409,6 +28553,18 @@
    "zone": null,
    "ids": [
     4643,
+    719
+   ],
+   "detail": "water junto a mud (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 196,
+   "y": 82,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    4643,
     231
    ],
    "detail": "water junto a sand (s) sin borde en ninguna de las dos"
@@ -28452,11 +28608,47 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 197,
+   "y": 81,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    4643,
+    719
+   ],
+   "detail": "water junto a mud (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 197,
    "y": 83,
    "z": 7,
    "zone": null,
    "ids": [
     717,
+    231
+   ],
+   "detail": "mud junto a sand (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 198,
+   "y": 83,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    712,
+    231
+   ],
+   "detail": "mud junto a sand (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 199,
+   "y": 83,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    712,
     231
    ],
    "detail": "mud junto a sand (s) sin borde en ninguna de las dos"
@@ -28472,30 +28664,6 @@
     718
    ],
    "detail": "sand junto a mud (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 200,
-   "y": 82,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    718,
-    777
-   ],
-   "detail": "mud junto a sand (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 200,
-   "y": 83,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    716,
-    777
-   ],
-   "detail": "mud junto a sand (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -28560,6 +28728,18 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 195,
+   "y": 85,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    231,
+    719
+   ],
+   "detail": "sand junto a mud (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 195,
    "y": 87,
    "z": 7,
    "zone": null,
@@ -28568,6 +28748,18 @@
     717
    ],
    "detail": "sand junto a mud (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 196,
+   "y": 84,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    231,
+    719
+   ],
+   "detail": "sand junto a mud (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -28584,18 +28776,6 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 201,
-   "y": 84,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    777,
-    718
-   ],
-   "detail": "sand junto a mud (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 201,
    "y": 85,
    "z": 7,
    "zone": null,
@@ -28607,27 +28787,15 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 201,
+   "x": 202,
    "y": 85,
    "z": 7,
    "zone": null,
    "ids": [
-    718,
-    714
+    231,
+    719
    ],
-   "detail": "mud junto a swamp (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 201,
-   "y": 87,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    714,
-    717
-   ],
-   "detail": "swamp junto a mud (e) sin borde en ninguna de las dos"
+   "detail": "sand junto a mud (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -28812,6 +28980,18 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 199,
+   "y": 89,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    712,
+    4634
+   ],
+   "detail": "mud junto a water (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 199,
    "y": 91,
    "z": 8,
    "zone": null,
@@ -28823,27 +29003,15 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 201,
-   "y": 88,
+   "x": 200,
+   "y": 89,
    "z": 7,
    "zone": null,
    "ids": [
-    714,
-    231
+    712,
+    4634
    ],
-   "detail": "swamp junto a sand (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 201,
-   "y": 88,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    714,
-    716
-   ],
-   "detail": "swamp junto a mud (s) sin borde en ninguna de las dos"
+   "detail": "mud junto a water (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -30443,54 +30611,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 244,
-   "y": 95,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    231,
-    242
-   ],
-   "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 244,
-   "y": 95,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    231,
-    242
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 245,
-   "y": 94,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    231,
-    242
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 246,
-   "y": 94,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    231,
-    242
-   ],
-   "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 246,
    "y": 94,
    "z": 7,
@@ -30498,18 +30618,6 @@
    "ids": [
     231,
     233
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 247,
-   "y": 93,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    231,
-    242
    ],
    "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -30635,30 +30743,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 253,
-   "y": 93,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    231,
-    243
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 253,
-   "y": 94,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    243,
-    231
-   ],
-   "detail": "grass junto a sand (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 254,
    "y": 93,
    "z": 7,
@@ -30680,30 +30764,6 @@
     4642
    ],
    "detail": "sand junto a water (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 254,
-   "y": 94,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    231,
-    243
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 254,
-   "y": 95,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    243,
-    231
-   ],
-   "detail": "grass junto a sand (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -31547,102 +31607,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 239,
-   "y": 104,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    231,
-    242
-   ],
-   "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 239,
-   "y": 105,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    231,
-    235
-   ],
-   "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 239,
-   "y": 106,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    231,
-    241
-   ],
-   "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 242,
-   "y": 97,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    231,
-    242
-   ],
-   "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 242,
-   "y": 98,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    231,
-    235
-   ],
-   "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 242,
-   "y": 99,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    231,
-    235
-   ],
-   "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 243,
-   "y": 96,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    231,
-    242
-   ],
-   "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 243,
-   "y": 96,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    231,
-    242
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 254,
    "y": 96,
    "z": 7,
@@ -31688,78 +31652,6 @@
     231
    ],
    "detail": "grass junto a sand (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 240,
-   "y": 101,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    231,
-    242
-   ],
-   "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 240,
-   "y": 102,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    231,
-    235
-   ],
-   "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 240,
-   "y": 103,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    231,
-    235
-   ],
-   "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 240,
-   "y": 103,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    231,
-    242
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 241,
-   "y": 100,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    231,
-    242
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 242,
-   "y": 100,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    231,
-    235
-   ],
-   "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -31901,9 +31793,9 @@
    "zone": null,
    "ids": [
     241,
-    231
+    232
    ],
-   "detail": "grass junto a sand (s) sin borde en ninguna de las dos"
+   "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -33839,37 +33731,121 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 55,
-   "y": 163,
+   "x": 60,
+   "y": 142,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 61,
+   "y": 141,
    "z": 8,
    "zone": null,
    "ids": [
     103,
-    120
+    382
    ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 53,
+   "x": 61,
+   "y": 142,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    103
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 61,
+   "y": 142,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    378
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 62,
+   "y": 143,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 63,
+   "y": 142,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    103,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 63,
+   "y": 143,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    103
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 63,
+   "y": 143,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    378
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 54,
    "y": 163,
    "z": 9,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    111
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
    "x": 54,
-   "y": 162,
+   "y": 163,
    "z": 9,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    113
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -33960,18 +33936,6 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 54,
-   "y": 164,
-   "z": 8,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 54,
    "y": 165,
    "z": 8,
    "zone": null,
@@ -33980,6 +33944,30 @@
     113
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 55,
+   "y": 164,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    120,
+    111
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 55,
+   "y": 164,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    120,
+    113
+   ],
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -34004,6 +33992,18 @@
     110
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 52,
+   "y": 167,
+   "z": 9,
+   "zone": null,
+   "ids": [
+    103,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -34244,6 +34244,102 @@
     118
    ],
    "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 51,
+   "y": 168,
+   "z": 9,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 52,
+   "y": 168,
+   "z": 9,
+   "zone": null,
+   "ids": [
+    382,
+    103
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 52,
+   "y": 168,
+   "z": 9,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 53,
+   "y": 170,
+   "z": 9,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 54,
+   "y": 169,
+   "z": 9,
+   "zone": null,
+   "ids": [
+    103,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 54,
+   "y": 170,
+   "z": 9,
+   "zone": null,
+   "ids": [
+    382,
+    103
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 54,
+   "y": 170,
+   "z": 9,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 68,
+   "y": 143,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    103,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -34740,18 +34836,6 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 104,
-   "y": 130,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 104,
    "y": 131,
    "z": 7,
    "zone": null,
@@ -34764,12 +34848,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 105,
-   "y": 129,
+   "y": 130,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    111
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 105,
+   "y": 130,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    113
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -34931,18 +35027,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 108,
-   "y": 131,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    118,
-    120
-   ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 111,
    "y": 128,
    "z": 8,
@@ -35027,18 +35111,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 103,
-   "y": 135,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 100,
    "y": 132,
    "z": 8,
@@ -35112,26 +35184,14 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 104,
-   "y": 134,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 104,
    "y": 135,
    "z": 7,
    "zone": null,
    "ids": [
     120,
-    119
+    116
    ],
-   "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -35147,39 +35207,63 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 107,
-   "y": 132,
+   "x": 106,
+   "y": 133,
    "z": 7,
    "zone": null,
    "ids": [
-    118,
+    112,
     120
+   ],
+   "detail": "grass junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 107,
+   "y": 133,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
    "x": 107,
-   "y": 132,
+   "y": 133,
    "z": 7,
    "zone": null,
    "ids": [
-    118,
-    120
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 99,
-   "y": 137,
+   "x": 108,
+   "y": 132,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 108,
+   "y": 132,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
+   ],
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -35208,12 +35292,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 100,
-   "y": 136,
+   "y": 137,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    111
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 100,
+   "y": 137,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    113
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -35280,18 +35376,6 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 103,
-   "y": 138,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 103,
    "y": 139,
    "z": 7,
    "zone": null,
@@ -35340,26 +35424,26 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 104,
-   "y": 137,
+   "y": 138,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
    ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 96,
-   "y": 141,
+   "x": 104,
+   "y": 138,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    113
    ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -35376,12 +35460,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 97,
-   "y": 140,
+   "y": 141,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    111
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 97,
+   "y": 141,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    113
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -35480,18 +35576,6 @@
     113
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 100,
-   "y": 143,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -36167,6 +36251,138 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
+   "x": 67,
+   "y": 144,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 68,
+   "y": 144,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    103
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 68,
+   "y": 144,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    378
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 69,
+   "y": 145,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 70,
+   "y": 144,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    103,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 70,
+   "y": 145,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    103
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 70,
+   "y": 145,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    378
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 71,
+   "y": 146,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 72,
+   "y": 145,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    103,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 72,
+   "y": 146,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    103
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 72,
+   "y": 146,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
    "x": 81,
    "y": 145,
    "z": 7,
@@ -36395,30 +36611,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 94,
-   "y": 147,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 95,
-   "y": 146,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 95,
    "y": 147,
    "z": 7,
@@ -36605,6 +36797,18 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
+   "x": 84,
+   "y": 151,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    103,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
    "x": 89,
    "y": 148,
    "z": 7,
@@ -36647,18 +36851,6 @@
    "zone": null,
    "ids": [
     103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 91,
-   "y": 149,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
     111
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
@@ -36666,26 +36858,26 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 92,
-   "y": 148,
+   "y": 149,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    111
    ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 93,
-   "y": 148,
+   "x": 92,
+   "y": 149,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
    ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -36698,6 +36890,42 @@
     111
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 94,
+   "y": 148,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    111
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 94,
+   "y": 148,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
+   ],
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 83,
+   "y": 152,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R3_borde_huerfano",
@@ -36712,13 +36940,337 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 96,
-   "y": 145,
-   "z": 7,
+   "x": 84,
+   "y": 152,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    103
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 84,
+   "y": 152,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 84,
+   "y": 154,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    378,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 85,
+   "y": 153,
+   "z": 8,
    "zone": null,
    "ids": [
     103,
-    120
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 85,
+   "y": 154,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    351
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 85,
+   "y": 154,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    378
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 85,
+   "y": 155,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    378,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 86,
+   "y": 154,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    351,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 86,
+   "y": 155,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    103
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 86,
+   "y": 155,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    378
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 87,
+   "y": 155,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    103,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 86,
+   "y": 156,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    378,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 87,
+   "y": 156,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    103
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 87,
+   "y": 156,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    378
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 87,
+   "y": 157,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    378,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 88,
+   "y": 156,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    103,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 88,
+   "y": 157,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    103
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 88,
+   "y": 157,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    378
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 88,
+   "y": 158,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    378,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 89,
+   "y": 157,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    103,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 89,
+   "y": 158,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    103
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 89,
+   "y": 158,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    378
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 89,
+   "y": 159,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    378,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 90,
+   "y": 158,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    103,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 90,
+   "y": 159,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    103
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 90,
+   "y": 159,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 96,
+   "y": 146,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    111
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 96,
+   "y": 146,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    113
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -36742,18 +37294,6 @@
    "zone": null,
    "ids": [
     103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 98,
-   "y": 145,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
     111
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
@@ -36761,24 +37301,48 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 99,
-   "y": 144,
+   "y": 145,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
    "x": 99,
+   "y": 145,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
+   ],
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 100,
    "y": 144,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 100,
+   "y": 144,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -36988,25 +37552,25 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 122,
+   "x": 123,
    "y": 151,
    "z": 6,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    111
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
    "x": 123,
-   "y": 150,
+   "y": 151,
    "z": 6,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    113
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -37132,6 +37696,18 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
+   "x": 78,
+   "y": 162,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
    "x": 79,
    "y": 161,
    "z": 8,
@@ -37141,6 +37717,42 @@
     355
    ],
    "detail": "dirt junto a mud (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 79,
+   "y": 161,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    351,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 79,
+   "y": 162,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    351
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 79,
+   "y": 162,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    379
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -37228,6 +37840,54 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
+   "x": 74,
+   "y": 167,
+   "z": 9,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 75,
+   "y": 166,
+   "z": 9,
+   "zone": null,
+   "ids": [
+    103,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 75,
+   "y": 167,
+   "z": 9,
+   "zone": null,
+   "ids": [
+    382,
+    103
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 75,
+   "y": 167,
+   "z": 9,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
    "x": 78,
    "y": 164,
    "z": 8,
@@ -37288,6 +37948,102 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
+   "x": 72,
+   "y": 169,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    378,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 73,
+   "y": 168,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    351,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 73,
+   "y": 169,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    354
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 73,
+   "y": 169,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 76,
+   "y": 169,
+   "z": 9,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 77,
+   "y": 168,
+   "z": 9,
+   "zone": null,
+   "ids": [
+    103,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 77,
+   "y": 169,
+   "z": 9,
+   "zone": null,
+   "ids": [
+    382,
+    103
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 77,
+   "y": 169,
+   "z": 9,
+   "zone": null,
+   "ids": [
+    382,
+    378
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
    "x": 74,
    "y": 174,
    "z": 8,
@@ -37312,6 +38068,18 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
+   "x": 74,
+   "y": 175,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    351,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
    "x": 75,
    "y": 173,
    "z": 8,
@@ -37321,6 +38089,18 @@
     355
    ],
    "detail": "dirt junto a mud (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 75,
+   "y": 174,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    355,
+    380
+   ],
+   "detail": "mud junto a dirt (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -37397,6 +38177,18 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 82,
+   "y": 160,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    380,
+    355
+   ],
+   "detail": "dirt junto a mud (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 82,
    "y": 161,
    "z": 8,
    "zone": null,
@@ -37420,6 +38212,30 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
+   "x": 83,
+   "y": 163,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    381,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 84,
+   "y": 162,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    351,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
    "x": 84,
    "y": 163,
    "z": 8,
@@ -37428,7 +38244,19 @@
     382,
     355
    ],
-   "detail": "dirt junto a mud (e) sin borde en ninguna de las dos"
+   "detail": "cave junto a mud (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 84,
+   "y": 163,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -37588,6 +38416,18 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
+   "x": 93,
+   "y": 175,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    351,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
    "x": 109,
    "y": 166,
    "z": 8,
@@ -37744,6 +38584,42 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
+   "x": 73,
+   "y": 176,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    378,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 74,
+   "y": 176,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    351
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 74,
+   "y": 176,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
    "x": 75,
    "y": 183,
    "z": 8,
@@ -37864,6 +38740,18 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
+   "x": 68,
+   "y": 191,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    126,
+    130
+   ],
+   "detail": "grass junto a snow (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
    "x": 69,
    "y": 191,
    "z": 7,
@@ -37906,9 +38794,33 @@
    "zone": null,
    "ids": [
     122,
+    130
+   ],
+   "detail": "grass junto a snow (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 72,
+   "y": 191,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    122,
     104
    ],
    "detail": "grass junto a sand (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 73,
+   "y": 190,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    126,
+    130
+   ],
+   "detail": "grass junto a snow (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -37920,7 +38832,7 @@
     130,
     104
    ],
-   "detail": "grass junto a sand (e) sin borde en ninguna de las dos"
+   "detail": "snow junto a sand (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -37932,7 +38844,7 @@
     130,
     104
    ],
-   "detail": "grass junto a sand (s) sin borde en ninguna de las dos"
+   "detail": "snow junto a sand (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -38044,6 +38956,42 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
+   "x": 92,
+   "y": 176,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 93,
+   "y": 176,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    351
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 93,
+   "y": 176,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
    "x": 86,
    "y": 180,
    "z": 8,
@@ -38104,6 +39052,66 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
+   "x": 92,
+   "y": 181,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 93,
+   "y": 180,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    351,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 93,
+   "y": 181,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    353
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 93,
+   "y": 181,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 81,
+   "y": 187,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    351,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
    "x": 87,
    "y": 187,
    "z": 8,
@@ -38152,6 +39160,18 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
+   "x": 93,
+   "y": 187,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    351,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
    "x": 82,
    "y": 191,
    "z": 7,
@@ -38161,6 +39181,42 @@
     103
    ],
    "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 80,
+   "y": 188,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 81,
+   "y": 188,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    351
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 81,
+   "y": 188,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -38185,6 +39241,66 @@
     355
    ],
    "detail": "dirt junto a mud (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 92,
+   "y": 188,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 93,
+   "y": 188,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    351
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 93,
+   "y": 188,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 97,
+   "y": 179,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    351,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 100,
+   "y": 179,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    351,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -38224,6 +39340,78 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
+   "x": 96,
+   "y": 180,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    381,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 97,
+   "y": 180,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    351
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 97,
+   "y": 180,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 99,
+   "y": 180,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    381,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 100,
+   "y": 180,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    351
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 100,
+   "y": 180,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    378
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
    "x": 101,
    "y": 180,
    "z": 8,
@@ -38257,6 +39445,54 @@
     372
    ],
    "detail": "mud junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 107,
+   "y": 181,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 108,
+   "y": 180,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    351,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 108,
+   "y": 181,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    354
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 108,
+   "y": 181,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -38391,39 +39627,15 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 140,
-   "y": 129,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 141,
-   "y": 128,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 141,
    "y": 129,
    "z": 7,
    "zone": null,
    "ids": [
     120,
-    119
+    111
    ],
-   "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -38457,19 +39669,31 @@
    "zone": null,
    "ids": [
     103,
-    120
+    111
+   ],
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 143,
+   "y": 128,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    111
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 142,
+   "x": 143,
    "y": 128,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    111
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -39026,25 +40250,25 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 132,
+   "x": 133,
    "y": 139,
    "z": 6,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    111
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
    "x": 133,
-   "y": 138,
+   "y": 139,
    "z": 6,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    113
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -46903,18 +48127,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 203,
-   "y": 169,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    101,
-    777
-   ],
-   "detail": "dirt junto a sand (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 204,
    "y": 168,
    "z": 7,
@@ -46984,42 +48196,6 @@
     231
    ],
    "detail": "water junto a sand (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 204,
-   "y": 169,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    101
-   ],
-   "detail": "sand junto a dirt (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 205,
-   "y": 169,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    101
-   ],
-   "detail": "sand junto a dirt (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 205,
-   "y": 169,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    101
-   ],
-   "detail": "sand junto a dirt (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -47141,42 +48317,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 210,
-   "y": 168,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    101
-   ],
-   "detail": "sand junto a dirt (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 210,
-   "y": 169,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    101,
-    777
-   ],
-   "detail": "dirt junto a sand (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 211,
-   "y": 169,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
-    101
-   ],
-   "detail": "sand junto a dirt (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 212,
    "y": 171,
    "z": 7,
@@ -47213,24 +48353,12 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 212,
-   "y": 169,
+   "x": 213,
+   "y": 168,
    "z": 9,
    "zone": null,
    "ids": [
-    777,
-    101
-   ],
-   "detail": "sand junto a dirt (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 212,
-   "y": 169,
-   "z": 9,
-   "zone": null,
-   "ids": [
-    777,
+    781,
     101
    ],
    "detail": "sand junto a dirt (s) sin borde en ninguna de las dos"
@@ -47826,6 +48954,18 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 63,
+   "y": 199,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    126,
+    130
+   ],
+   "detail": "grass junto a snow (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 63,
    "y": 200,
    "z": 7,
    "zone": null,
@@ -47873,15 +49013,27 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 65,
+   "x": 64,
    "y": 195,
    "z": 7,
    "zone": null,
    "ids": [
-    130,
-    104
+    126,
+    130
    ],
-   "detail": "grass junto a sand (e) sin borde en ninguna de las dos"
+   "detail": "grass junto a snow (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 65,
+   "y": 194,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    126,
+    130
+   ],
+   "detail": "grass junto a snow (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -47893,7 +49045,31 @@
     130,
     104
    ],
-   "detail": "grass junto a sand (s) sin borde en ninguna de las dos"
+   "detail": "snow junto a sand (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 65,
+   "y": 195,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    130,
+    104
+   ],
+   "detail": "snow junto a sand (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 66,
+   "y": 194,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    122,
+    130
+   ],
+   "detail": "grass junto a snow (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -47910,6 +49086,18 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 67,
+   "y": 192,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    126,
+    130
+   ],
+   "detail": "grass junto a snow (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 67,
    "y": 193,
    "z": 7,
    "zone": null,
@@ -47922,14 +49110,14 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 67,
-   "y": 194,
+   "y": 193,
    "z": 7,
    "zone": null,
    "ids": [
-    130,
-    104
+    124,
+    130
    ],
-   "detail": "grass junto a sand (e) sin borde en ninguna de las dos"
+   "detail": "grass junto a snow (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -47941,7 +49129,19 @@
     130,
     104
    ],
-   "detail": "grass junto a sand (s) sin borde en ninguna de las dos"
+   "detail": "snow junto a sand (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 67,
+   "y": 194,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    130,
+    104
+   ],
+   "detail": "snow junto a sand (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -47953,7 +49153,7 @@
     130,
     104
    ],
-   "detail": "grass junto a sand (e) sin borde en ninguna de las dos"
+   "detail": "snow junto a sand (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -47965,7 +49165,7 @@
     130,
     104
    ],
-   "detail": "grass junto a sand (s) sin borde en ninguna de las dos"
+   "detail": "snow junto a sand (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -48138,14 +49338,14 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 64,
-   "y": 199,
+   "y": 198,
    "z": 7,
    "zone": null,
    "ids": [
-    130,
-    104
+    124,
+    130
    ],
-   "detail": "grass junto a sand (e) sin borde en ninguna de las dos"
+   "detail": "grass junto a snow (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -48157,7 +49357,19 @@
     130,
     104
    ],
-   "detail": "grass junto a sand (s) sin borde en ninguna de las dos"
+   "detail": "snow junto a sand (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 64,
+   "y": 199,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    130,
+    104
+   ],
+   "detail": "snow junto a sand (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -48170,18 +49382,6 @@
     355
    ],
    "detail": "dirt junto a mud (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 77,
-   "y": 197,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    132
-   ],
-   "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -48209,18 +49409,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 77,
-   "y": 199,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    132
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 78,
    "y": 196,
    "z": 7,
@@ -48230,18 +49418,6 @@
     125
    ],
    "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 78,
-   "y": 196,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    132
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -48269,150 +49445,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 67,
-   "y": 203,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    132
-   ],
-   "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 67,
-   "y": 203,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    132
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 68,
-   "y": 202,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    132
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 69,
-   "y": 202,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    123
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 70,
-   "y": 202,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    123
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 71,
-   "y": 202,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    132
-   ],
-   "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 71,
-   "y": 202,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    123
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 72,
-   "y": 201,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    132
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 73,
-   "y": 201,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    123
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 74,
-   "y": 201,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    123
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 75,
-   "y": 201,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    123
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 76,
-   "y": 200,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    132
-   ],
-   "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 76,
    "y": 201,
    "z": 7,
@@ -48422,18 +49454,6 @@
     125
    ],
    "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 76,
-   "y": 201,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    123
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -48473,42 +49493,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 65,
-   "y": 204,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    123
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 66,
-   "y": 204,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    132
-   ],
-   "detail": "sand junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 66,
-   "y": 204,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    104,
-    123
-   ],
-   "detail": "sand junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 71,
    "y": 207,
    "z": 7,
@@ -48629,63 +49613,51 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 77,
+   "x": 78,
+   "y": 204,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    112,
+    103
+   ],
+   "detail": "grass junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 78,
+   "y": 204,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    112,
+    118
+   ],
+   "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 78,
    "y": 207,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    111
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
    "x": 78,
-   "y": 204,
+   "y": 207,
    "z": 7,
    "zone": null,
    "ids": [
-    112,
-    103
-   ],
-   "detail": "grass junto a dirt (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 78,
-   "y": 204,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    112,
-    118
-   ],
-   "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 78,
-   "y": 206,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
+    120,
+    113
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 79,
-   "y": 204,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -48998,6 +49970,54 @@
     103
    ],
    "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 92,
+   "y": 193,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    372,
+    382
+   ],
+   "detail": "dirt junto a cave (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 93,
+   "y": 192,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    351,
+    382
+   ],
+   "detail": "dirt junto a cave (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 93,
+   "y": 193,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    353
+   ],
+   "detail": "cave junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 93,
+   "y": 193,
+   "z": 8,
+   "zone": null,
+   "ids": [
+    382,
+    373
+   ],
+   "detail": "cave junto a dirt (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -49385,30 +50405,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 80,
-   "y": 203,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 80,
-   "y": 203,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 81,
    "y": 200,
    "z": 7,
@@ -49434,24 +50430,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 81,
-   "y": 202,
+   "y": 203,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
    "x": 81,
-   "y": 202,
+   "y": 203,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -49482,12 +50478,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 82,
-   "y": 201,
+   "y": 202,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 82,
+   "y": 202,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -49547,9 +50555,9 @@
    "zone": null,
    "ids": [
     120,
-    119
+    116
    ],
-   "detail": "grass junto a dirt (s) sin borde en ninguna de las dos"
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -49703,18 +50711,6 @@
    "zone": null,
    "ids": [
     103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 85,
-   "y": 207,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
     111
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
@@ -49734,12 +50730,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 86,
-   "y": 206,
+   "y": 207,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    111
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 86,
+   "y": 207,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -50165,18 +51173,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 78,
-   "y": 211,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 79,
    "y": 210,
    "z": 7,
@@ -50322,18 +51318,6 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 77,
-   "y": 212,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 77,
    "y": 213,
    "z": 7,
    "zone": null,
@@ -50366,6 +51350,30 @@
     113
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 78,
+   "y": 212,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    111
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 78,
+   "y": 212,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    113
+   ],
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -50538,18 +51546,6 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 90,
-   "y": 209,
-   "z": 7,
-   "zone": null,
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 90,
    "y": 210,
    "z": 7,
    "zone": null,
@@ -50586,12 +51582,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 91,
-   "y": 208,
+   "y": 209,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    111
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 91,
+   "y": 209,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    113
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -50724,25 +51732,37 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 85,
-   "y": 217,
+   "x": 84,
+   "y": 218,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
+    112,
     120
+   ],
+   "detail": "grass junto a dirt (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 85,
+   "y": 218,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
    "x": 85,
-   "y": 217,
+   "y": 218,
    "z": 7,
    "zone": null,
    "ids": [
-    103,
-    120
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -50761,12 +51781,24 @@
   {
    "rule": "R4_transicion_sin_borde",
    "x": 86,
-   "y": 216,
+   "y": 217,
    "z": 7,
    "zone": null,
    "ids": [
-    119,
-    120
+    120,
+    116
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 86,
+   "y": 217,
+   "z": 7,
+   "zone": null,
+   "ids": [
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -55214,18 +56246,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 172,
-   "y": 448,
-   "z": 7,
-   "zone": "natural-island",
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 155,
    "y": 449,
    "z": 7,
@@ -55250,30 +56270,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 170,
-   "y": 449,
-   "z": 7,
-   "zone": "natural-island",
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 171,
-   "y": 449,
-   "z": 7,
-   "zone": "natural-island",
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 171,
    "y": 449,
    "z": 7,
@@ -55281,6 +56277,30 @@
    "ids": [
     103,
     111
+   ],
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 172,
+   "y": 449,
+   "z": 7,
+   "zone": "natural-island",
+   "ids": [
+    120,
+    116
+   ],
+   "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 172,
+   "y": 449,
+   "z": 7,
+   "zone": "natural-island",
+   "ids": [
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -55322,15 +56342,27 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 169,
+   "x": 170,
    "y": 450,
    "z": 7,
    "zone": "natural-island",
    "ids": [
-    103,
-    120
+    120,
+    111
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 170,
+   "y": 450,
+   "z": 7,
+   "zone": "natural-island",
+   "ids": [
+    120,
+    113
+   ],
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
@@ -55382,18 +56414,6 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 169,
-   "y": 451,
-   "z": 7,
-   "zone": "natural-island",
-   "ids": [
-    103,
-    120
-   ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
    "x": 160,
    "y": 452,
    "z": 7,
@@ -55413,18 +56433,6 @@
    "ids": [
     121,
     112
-   ],
-   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
-  },
-  {
-   "rule": "R4_transicion_sin_borde",
-   "x": 165,
-   "y": 452,
-   "z": 7,
-   "zone": "natural-island",
-   "ids": [
-    103,
-    120
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -55460,19 +56468,31 @@
    "zone": "natural-island",
    "ids": [
     103,
-    120
+    111
+   ],
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 169,
+   "y": 452,
+   "z": 7,
+   "zone": "natural-island",
+   "ids": [
+    120,
+    116
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 168,
+   "x": 169,
    "y": 452,
    "z": 7,
    "zone": "natural-island",
    "ids": [
-    103,
-    111
+    120,
+    116
    ],
    "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
@@ -55490,15 +56510,27 @@
   },
   {
    "rule": "R4_transicion_sin_borde",
-   "x": 164,
+   "x": 165,
    "y": 453,
    "z": 7,
    "zone": "natural-island",
    "ids": [
-    103,
-    120
+    120,
+    111
    ],
    "detail": "dirt junto a grass (e) sin borde en ninguna de las dos"
+  },
+  {
+   "rule": "R4_transicion_sin_borde",
+   "x": 165,
+   "y": 453,
+   "z": 7,
+   "zone": "natural-island",
+   "ids": [
+    120,
+    113
+   ],
+   "detail": "dirt junto a grass (s) sin borde en ninguna de las dos"
   },
   {
    "rule": "R4_transicion_sin_borde",
