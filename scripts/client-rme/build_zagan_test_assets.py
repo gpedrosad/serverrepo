@@ -97,6 +97,9 @@ class Node:
 
 
 CORE_RESERVED_CLIENT_IDS: tuple[int, ...] = (5080, 5086, 5087, 5088, 5089)
+# Client ids que usan ítems agregados por otros scripts (no por este builder): nunca
+# sacrificarlos. 3576 = enchanted spear (scripts/client-rme/add_enchanted_spear.py).
+EXTERNAL_CLIENT_IDS: tuple[int, ...] = (3576,)
 
 # bmp file -> (display name, prototype server id)
 BMP_ITEM_DEFS: dict[str, tuple[str, int]] = {
@@ -894,7 +897,7 @@ def main() -> None:
 
     original_item_count = dat_reader.item_count
     max_client_id = original_item_count
-    reserved_client_ids = set(CORE_RESERVED_CLIENT_IDS[: len(item_specs)])
+    reserved_client_ids = set(CORE_RESERVED_CLIENT_IDS[: len(item_specs)]) | set(EXTERNAL_CLIENT_IDS)
     zagan_client_ids = list(CORE_RESERVED_CLIENT_IDS[: min(len(item_specs), len(CORE_RESERVED_CLIENT_IDS))])
     extra_needed = len(item_specs) - len(zagan_client_ids)
     if extra_needed > 0:

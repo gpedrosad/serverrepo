@@ -402,6 +402,9 @@ int64_t Player::getWeaponDamage() const
 							else if(distitem->getID() == ITEM_SPEAR){
 								hitchance = SPEAR_HIT_CHANCE;
 							}
+							else if(distitem->getID() == ITEM_ENCHANTED_SPEAR){
+								hitchance = ENCHANTED_SPEAR_HIT_CHANCE;
+							}
 							else{//other thrown weapons (stars, knives, stones)
 								hitchance = 50;
 							}
