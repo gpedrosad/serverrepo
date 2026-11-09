@@ -23,11 +23,24 @@
 #include "luascript.h"
 #include <algorithm>
 #include <locale>
+#include <cctype>
 
 extern LuaScript g_config;
 extern xmlMutexPtr xmlmutex;
 std::vector<Guilds::Guild*> Guilds::guilds;
 unsigned long Guilds::Guild::counter = 0x10;
+
+// Player names are compared case-insensitively: the Guild Master NPC sees the text the player
+// typed ("bob"), while the real name is "Bob". Before, invite/join/kick silently failed.
+static bool sameName(const std::string& a, const std::string& b)
+{
+	if(a.size() != b.size())
+		return false;
+	for(size_t i = 0; i < a.size(); i++)
+		if(tolower((unsigned char)a[i]) != tolower((unsigned char)b[i]))
+			return false;
+	return true;
+}
 
 Guilds::Guild::Guild(std::string name)
 {
@@ -49,7 +62,7 @@ std::string Guilds::Guild::getName() const
 gstat_t Guilds::Guild::getGuildStatus(std::string name) const
 {
 	for (size_t i = 0; i < members.size(); i++)
-		if (members[i].name == name)
+		if (sameName(members[i].name, name))
 			return members[i].status;
 	return GUILD_NONE;
 }
@@ -57,7 +70,7 @@ gstat_t Guilds::Guild::getGuildStatus(std::string name) const
 bool Guilds::Guild::setGuildStatus(std::string name, gstat_t status)
 {
 	for (size_t i = 0; i < members.size(); i++)
-		if (members[i].name == name)
+		if (sameName(members[i].name, name))
 		{
 			members[i].status = status;
 			return true;
@@ -68,7 +81,7 @@ bool Guilds::Guild::setGuildStatus(std::string name, gstat_t status)
 void Guilds::Guild::setGuildInfo(std::string name, gstat_t status, std::string rank)
 {
 	for (size_t i = 0; i < members.size(); i++)
-		if (members[i].name == name)
+		if (sameName(members[i].name, name))
 		{
 			members[i].status = status;
 			members[i].rank = rank;
@@ -81,7 +94,7 @@ void Guilds::Guild::setGuildInfo(std::string name, gstat_t status, std::string r
 bool Guilds::Guild::clearGuildInfo(std::string name)
 {
 	for (size_t i = 0; i < members.size(); i++)
-		if (members[i].name == name)
+		if (sameName(members[i].name, name))
 		{
 			members.erase(members.begin()+i);
 			return true;
@@ -92,7 +105,7 @@ bool Guilds::Guild::clearGuildInfo(std::string name)
 bool Guilds::Guild::setGuildNick(std::string name, std::string nick)
 {
 	for (size_t i = 0; i < members.size(); i++)
-		if (members[i].name == name)
+		if (sameName(members[i].name, name))
 		{
 			members[i].nick = nick;
 			return true;
@@ -100,11 +113,16 @@ bool Guilds::Guild::setGuildNick(std::string name, std::string nick)
 	return false;
 }
 
+bool Guilds::Guild::isEmpty() const
+{
+	return members.empty();
+}
+
 bool Guilds::Guild::reloadGuildInfo(Player* player)
 {
 	std::string name = player->getName();
 	for (size_t i = 0; i < members.size(); i++)
-		if (members[i].name == name)
+		if (sameName(members[i].name, name))
 		{
 			player->setGuildInfo(members[i].status, gid, gname, members[i].rank, members[i].nick);
 			return true;
@@ -223,13 +241,15 @@ bool Guilds::Save()
 bool Guilds::AddNewGuild(std::string gname)
 {
 	for (size_t i = 0; i < guilds.size(); i++)
-		if (guilds[i]->getName() == gname)
+		if (sameName(guilds[i]->getName(), gname))
 			return false;
 
 	guilds.push_back(new Guild(gname));
 	return true;
 }
 
+// These are only called from the Guild Master NPC (Lua). They used to throw std::runtime_error,
+// which unwinds through the Lua C code and can take the server down; now a miss does nothing.
 void Guilds::DeleteGuild(std::string gname)
 {
 	for (size_t i = 0; i < guilds.size(); i++)
@@ -239,8 +259,6 @@ void Guilds::DeleteGuild(std::string gname)
 			guilds.erase(guilds.begin()+i);
 			return;
 		}
-
-	throw std::runtime_error("Guilds: DeleteGuild: guild not found");
 }
 
 std::string Guilds::GetGuildName(std::string name)
@@ -265,28 +283,37 @@ void Guilds::SetGuildStatus(std::string name, gstat_t status)
 	for (size_t i = 0; i < guilds.size(); i++)
 		if (guilds[i]->setGuildStatus(name, status))
 			return;
-
-	throw std::runtime_error("Guilds: SetGuildStatus: player does not belong to any guild");
 }
 
+// A player belongs to at most one guild: an invited player who founds a guild or gets invited
+// somewhere else leaves the old entry first (before, both entries stayed in guilds.xml).
 void Guilds::SetGuildInfo(std::string name, gstat_t status, std::string rank, std::string gname)
 {
+	Guild* target = NULL;
 	for (size_t i = 0; i < guilds.size(); i++)
 		if (guilds[i]->getName() == gname)
-		{
-			guilds[i]->setGuildInfo(name, status, rank);
-			return;
-		}
-	throw std::runtime_error("Guilds: SetGuildInfo: guild not found");
+			target = guilds[i];
+	if (!target)
+		return;
+
+	if (target->getGuildStatus(name) == GUILD_NONE)
+		ClearGuildInfo(name);
+	target->setGuildInfo(name, status, rank);
 }
 
+// Removes the player from their guild; a guild left without members is deleted.
 void Guilds::ClearGuildInfo(std::string name)
 {
 	for (size_t i = 0; i < guilds.size(); i++)
 		if (guilds[i]->clearGuildInfo(name))
+		{
+			if (guilds[i]->isEmpty())
+			{
+				delete guilds[i];
+				guilds.erase(guilds.begin()+i);
+			}
 			return;
-
-	throw std::runtime_error("Guilds: ClearGuildInfo: player does not belong to any guild");
+		}
 }
 
 void Guilds::SetGuildNick(std::string name, std::string nick)
@@ -294,8 +321,6 @@ void Guilds::SetGuildNick(std::string name, std::string nick)
 	for (size_t i = 0; i < guilds.size(); i++)
 		if (guilds[i]->setGuildNick(name, nick))
 			return;
-
-	throw std::runtime_error("Guilds: SetGuildTitle: player does not belong to any guild");
 }
 
 void Guilds::ReloadGuildInfo(Player* player)

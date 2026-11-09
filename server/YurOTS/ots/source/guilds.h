@@ -65,6 +65,7 @@ private:
 		bool clearGuildInfo(std::string name);
 		bool setGuildNick(std::string name, std::string nick);
 		bool reloadGuildInfo(Player* player);
+		bool isEmpty() const;
 	};
 
 	static std::vector<Guild*> guilds;
