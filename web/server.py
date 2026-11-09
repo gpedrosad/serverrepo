@@ -10,6 +10,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import quote, unquote
 
+from access_log import AccessLog
 from analytics import WebAnalytics
 from bug_reports import BugReportStore
 from data import (
@@ -30,6 +31,7 @@ from zagan_items import image_path, load_catalog
 ROOT = Path(__file__).resolve().parents[1]
 PLAYERS_DIR = Path(os.environ.get("PLAYERS_DIR", ROOT / "server/YurOTS/ots/data/players"))
 ACCOUNTS_DIR = Path(os.environ.get("ACCOUNTS_DIR", ROOT / "server/YurOTS/ots/data/accounts"))
+LOGS_DIR = Path(os.environ.get("LOGS_DIR", ROOT / "server/YurOTS/ots/data/logs"))
 OTINFO_FILE = Path(os.environ.get("OTINFO_FILE", ROOT / "OTINFO"))
 ONLINE_FILE = Path(os.environ.get("ONLINE_FILE", ROOT / "server/YurOTS/ots/data/online.xml"))
 STATE_FILE = Path(os.environ.get("STATE_FILE", ROOT / "web/state/daily.json"))
@@ -66,6 +68,7 @@ ASSET_TYPES = {
 guard = RegisterGuard(REGISTER_STATE)
 bug_reports = BugReportStore(BUG_REPORTS_FILE)
 analytics = WebAnalytics(ANALYTICS_STATE)
+access_log = AccessLog(LOGS_DIR)
 setup_logging()
 log = get_logger("server")
 _ot_monitor_last_online: bool | None = None
@@ -246,8 +249,14 @@ class Handler(BaseHTTPRequestHandler):
     def _create_account(self) -> None:
         length = int(self.headers.get("Content-Length", "0"))
         ip = client_ip(self)
+        acc, name = 0, ""
         try:
             body = json.loads(self.rfile.read(length).decode("utf-8"))
+            try:
+                acc = int(body.get("account", 0))
+            except (TypeError, ValueError):
+                acc = 0
+            name = str(body.get("name", ""))[:40]
             err = guard.verify(
                 ip,
                 str(body.get("challenge_id", "")),
@@ -272,6 +281,11 @@ class Handler(BaseHTTPRequestHandler):
         except (json.JSONDecodeError, TypeError, ValueError):
             result = {"ok": False, "message": "Datos inválidos"}
 
+        if result.get("ok"):
+            access_log.record("account_created", acc, name, ip,
+                              voc=body.get("voc"), sex=body.get("sex"))
+        else:
+            access_log.record("account_create_fail", acc, name, ip, reason=str(result.get("message", ""))[:120])
         self._json(200, result)
 
     def _bug_report(self) -> None:
