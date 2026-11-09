@@ -2971,12 +2971,14 @@ bool Player::removeItem(int itemid, int count)
 			Container *container = dynamic_cast<Container*>(item);
 			if (item->getID() == itemid)
 			{
-				if (item->isStackable() && item->getItemCountOrSubtype()-count > 1)
+				// Same rules as removeContainerItem: a stack of exactly count+1 used to be removed
+				// whole ("> 1"), and a non-stackable counted as the whole amount.
+				if (item->isStackable() && item->getItemCountOrSubtype()-count > 0)
 				{
 					item->setItemCountOrSubtype(item->getItemCountOrSubtype()-count);
 					count = 0;
 				}
-				else if(item->isStackable() && item->getItemCountOrSubtype()-count <= 0)
+				else if (item->isStackable())
 				{
 					count -= item->getItemCountOrSubtype();
 					items[slot] = NULL;
@@ -2984,7 +2986,7 @@ bool Player::removeItem(int itemid, int count)
 				else
 				{
 					items[slot] = NULL;
-					count = 0;
+					count--;
 				}
 				sendInventory(slot);
 			}
@@ -3038,20 +3040,20 @@ void Player::payBack(unsigned long cost)
 {
    while(cost >= 10000){
        const unsigned long crystals = std::min<unsigned long>(cost / 10000, 100);
-       TLMaddItem(ITEM_COINS_CRYSTAL, (unsigned char)crystals);
+       TLMaddItem(ITEM_COINS_CRYSTAL, (unsigned char)crystals, true);
        cost -= 10000 * crystals;
    }
    while(cost >= 100){
        const unsigned long platinums = std::min<unsigned long>(cost / 100, 100);
-       TLMaddItem(ITEM_COINS_PLATINUM, (unsigned char)platinums);
+       TLMaddItem(ITEM_COINS_PLATINUM, (unsigned char)platinums, true);
        cost -= 100 * platinums;
    }
    if(cost > 0){
-       TLMaddItem(ITEM_COINS_GOLD, (unsigned char)cost);
+       TLMaddItem(ITEM_COINS_GOLD, (unsigned char)cost, true);
    }
 }
 
-bool Player::TLMaddItem(int itemid, unsigned char count)
+bool Player::TLMaddItem(int itemid, unsigned char count, bool dropIfFull)
 {
 	Item *item = Item::CreateItem(itemid, count);
 	if(!items[1] && item->getSlotPosition() & SLOTP_HEAD)
@@ -3083,35 +3085,20 @@ bool Player::TLMaddItem(int itemid, unsigned char count)
                  return true;
          }
      }
-       Tile *playerTile = g_game.getTile(pos.x, pos.y, pos.z);
-	   if (item->isStackable()){
-           Item *toItem = dynamic_cast<Item*>(playerTile->getThingByStackPos(playerTile->getThingCount() - 1));
-           if (toItem){
-               if (item->getID() == toItem->getID()){
-                   if (toItem->getItemCountOrSubtype()+item->getItemCountOrSubtype() <= 100){
-                       toItem->setItemCountOrSubtype(toItem->getItemCountOrSubtype()+item->getItemCountOrSubtype());
-                   }
-                   else{
-                       int oldcount = toItem->getItemCountOrSubtype();
-                       toItem->setItemCountOrSubtype(100);
-                       playerTile->addThing(Item::CreateItem(item->getID(), 100-oldcount));
-
-                   }
-               }
-           }
-           else{
-               playerTile->addThing(item);
-           }
+       // No room. Buys pass dropIfFull=false: the item is discarded and false makes the NPC
+       // refund (it used to drop the item AND refund = free item). Coins and rewards pass true:
+       // they go to the player's feet instead of being lost. The old stack merging on the
+       // floor, which lost or duplicated coins, is gone.
+       Tile *playerTile = dropIfFull ? g_game.getTile(pos.x, pos.y, pos.z) : NULL;
+       if(!playerTile){
+           delete item;
+           return false;
        }
-       else{
-           playerTile->addThing(item);
-	   }
-	   item->pos =  pos;
-	   g_game.sendAddThing(this, pos, item);
-	   // Dropped on the floor: not delivered to inventory. Callers
-	   // like the NPC fluid-buy handler use the false return to
-	   // refund the player.
-	   return false;
+       playerTile->addThing(item);
+       item->pos = pos;
+       g_game.sendAddThing(this, pos, item);
+       sendTextMessage(MSG_INFO, "You have no room for it. It was placed at your feet.");
+       return true;
 	}
 	return true;
 }

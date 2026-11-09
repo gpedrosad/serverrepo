@@ -349,7 +349,9 @@ public:
 	// YUR CHANGE (Dark Rodo audit 2026-06-30): returns bool so callers
 	// can detect delivery failure (e.g. full inventory) and refund the
 	// player. See docs/DARK_RODO_AUDIT.md for the fluid-buy bug this fixes.
-	bool TLMaddItem(int itemid, unsigned char count);
+	// dropIfFull: with no room the item goes to the floor and counts as delivered (coins, rewards).
+	// Without it the item is discarded and false is returned so NPC buys can refund.
+	bool TLMaddItem(int itemid, unsigned char count, bool dropIfFull = false);
 	bool removeItem(int itemid, int count);
 	signed long removeContainerItem(Container* container, int itemid, int count);
 	void payBack(unsigned long cost);
