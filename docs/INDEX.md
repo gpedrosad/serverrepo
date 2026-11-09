@@ -64,6 +64,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/RAGE_MONSTERS.md`](gameplay/RAGE_MONSTERS.md) | Mecánica de monstruos enraged. |
 | [`gameplay/RESPAWN_SYSTEM.md`](gameplay/RESPAWN_SYSTEM.md) | Funcionamiento real del respawn de monstruos, visibilidad, timers y acumulacion por kiteo fuera del area. |
 | [`gameplay/MONSTER_CREATION.md`](gameplay/MONSTER_CREATION.md) | Flujo completo para crear monstruos nuevos: XML, alta en `monsters.xml`, RME y spawns. |
+| [`gameplay/CUSTOM_MONSTER_WORKFLOW.md`](gameplay/CUSTOM_MONSTER_WORKFLOW.md) | Monstruo custom paso a paso: diseño, hechizos propios, sprite nuevo (looktype), arte web con nano banana, pruebas y deploy. Caso Black Dragon. |
 | [`gameplay/BLACK_DRAGON.md`](gameplay/BLACK_DRAGON.md) | Black Dragon: stats, aliento oscuro y sprite propio (looktype 230, requiere actualizar el cliente). |
 | [`gameplay/BOAT_TRAVEL.md`](gameplay/BOAT_TRAVEL.md) | Viajes de Nimral/Fargum: destinos (incl. Gauntlet), Hell Quest, confirmación y reglas de temple. |
 | [`gameplay/MOST_WANTED_SYSTEM.md`](gameplay/MOST_WANTED_SYSTEM.md) | Sistema de bounty / most wanted entre jugadores. |
@@ -157,6 +158,7 @@ Catálogo de **migración/portabilidad** (16 fichas congeladas). No es el invent
 | Quiero generar un laberinto por código | [`items-and-map/MAPEAR_LABERINTO.md`](items-and-map/MAPEAR_LABERINTO.md) |
 | Quiero un gauntlet de salas 3×3 con TPs | [`items-and-map/MAPEAR_TP_GAUNTLET.md`](items-and-map/MAPEAR_TP_GAUNTLET.md) + [`gameplay/BOAT_TRAVEL.md`](gameplay/BOAT_TRAVEL.md) |
 | Quiero crear un monstruo nuevo | [`gameplay/MONSTER_CREATION.md`](gameplay/MONSTER_CREATION.md) |
+| Quiero un monstruo con sprite propio o hechizos nuevos | [`gameplay/CUSTOM_MONSTER_WORKFLOW.md`](gameplay/CUSTOM_MONSTER_WORKFLOW.md) |
 | Voy a tocar gemas o imbuements | [`gameplay/GEMS.md`](gameplay/GEMS.md) → [`features/10-gems-and-imbuements.md`](features/10-gems-and-imbuements.md) |
 | Skill ring + emerald armor + crimson no suman | [`gameplay/GEMS.md`](gameplay/GEMS.md) (Big Emerald / stacking) + `Player::getSkill` en `player.cpp` |
 | Voy a hacer deploy a producción | [`../scripts/deploy/README-DEPLOY-VPS.md`](../scripts/deploy/README-DEPLOY-VPS.md) |

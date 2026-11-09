@@ -2,6 +2,8 @@
 
 Dragón oscuro, un escalón por encima del Dragon Lord. En vez de fuego, su aliento drena vida.
 
+El proceso completo de creación está explicado paso a paso en [`CUSTOM_MONSTER_WORKFLOW.md`](CUSTOM_MONSTER_WORKFLOW.md).
+
 ![Black Dragon: 4 direcciones x 3 cuadros](img/black-dragon.png)
 
 ## Imágenes para la web
