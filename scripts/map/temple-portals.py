@@ -50,7 +50,7 @@ PORTALS = [
     ("hunt-maze", 158, (280, 399, 7), "HUNT MAZE\nLaberinto mid-hard\nDesde Minotauros",
      [(280, 243, 349, 400, 7), (380, 18, 433, 103, 7), (449, 39, 489, 80, 7)]),
     ("crisol", 164, (85, 92, 0), "CRISOL\n3 puertas. Boss diario.\nBronce / Plata / Oro",
-     [(80, 80, 188, 100, 0)]),
+     [(70, 70, 195, 105, 0)]),
     ("wave", 166, (177, 394, 7), "WAVE ARENA\nOleadas. Palanca = next.\nRanking semanal",
      [(172, 384, 182, 396, 7)]),
     ("reloj", 168, (338, 392, 6), "RELOJ DE ARENA\nSala compartida.\nFases cada 120 s",

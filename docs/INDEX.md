@@ -107,7 +107,7 @@ Importación de items, mapeo por código, items de prueba, sesiones de editor.
 | [`items-and-map/MAPEAR_LABERINTO.md`](items-and-map/MAPEAR_LABERINTO.md) | Laberinto procedural 2 sqm: camino 406, fondo 100 (pared), teleport al templo (`generate-maze.py`). |
 | [`items-and-map/MAPEAR_HUNT_MAZE.md`](items-and-map/MAPEAR_HUNT_MAZE.md) | Hunt maze **aparte** de Alice: portal plaza del templo `158,47,7`, retorno al llegar (`generate-hunt-maze.py`). |
 | [`gameplay/WAVE_ARENA.md`](gameplay/WAVE_ARENA.md) | Wave Arena: oleadas + ranking semanal, portal plaza del templo `166,47,7`. |
-| [`gameplay/CRUCIBLE.md`](gameplay/CRUCIBLE.md) | El Crisol: 3 puertas + bosses diarios, portal plaza del templo `164,47,7`. |
+| [`gameplay/CRUCIBLE.md`](gameplay/CRUCIBLE.md) | El Crisol v2: hub PZ + 3 arenas temáticas (Foso de Arena, Coliseo, Trono de Fuego), entrada en grupo por plataforma, arenas independientes, bosses diarios; portal plaza del templo `164,47,7`. Patrones de paredes y alfombra. |
 | [`gameplay/SAND_CLOCK.md`](gameplay/SAND_CLOCK.md) | **Reloj de Arena:** sala compartida, fases globales 120 s, Chronos + countdown tipo trainers; portal plaza del templo `168,47,7`. |
 | [`items-and-map/MAPEAR_TP_GAUNTLET.md`](items-and-map/MAPEAR_TP_GAUNTLET.md) | Gauntlet: 40 salas 3×3 + sala final 3×3 (Wrath + demon armor, 1 TP); barco `gauntlet`. |
 | [`items-and-map/ISLAND_BANDS.md`](items-and-map/ISLAND_BANDS.md) | Cómo componer las bandas agua→shore→dirt→grass para que una isla no se vea con corte duro. Especificación de las 5 bandas y 7 reglas críticas. |
