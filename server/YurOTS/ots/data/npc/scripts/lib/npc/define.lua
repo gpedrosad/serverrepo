@@ -7,7 +7,8 @@
 --   busy    = string | function(cid)    si ya atiende a otro (default: "One moment, <name>! ...")
 --   bye     = string | function(cid)    despedida (default: "Bye, <name>! ...")
 --   state   = {talk_state = 0, ...}     globales propias del NPC con su valor inicial
---   onMessage = function(cid, msg)      mensaje del jugador atendido (msg ya en minúsculas)
+--   onMessage = function(cid, msg, raw) mensaje del jugador atendido (msg en minúsculas; raw tal cual,
+--                                       para nombres de jugadores, guilds, rangos)
 --   onGreet   = function(cid)           al empezar la charla (p. ej. limpiar pendientes)
 --   onLeave   = function(cid)           si el jugador atendido desaparece (antes del cierre)
 --   idleTimeout, idleMessage            timeout de la charla (default 30 s, "Next please...")
@@ -72,6 +73,7 @@ function npcDefine(spec)
 	end
 
 	function onCreatureSay(cid, msgType, msg)
+		local raw = msg
 		msg = string.lower(msg)
 		if spec.onSay ~= nil then
 			spec.onSay(cid, msg)
@@ -87,7 +89,7 @@ function npcDefine(spec)
 		if state ~= 'focused' then
 			return
 		end
-		spec.onMessage(cid, msg)
+		spec.onMessage(cid, msg, raw)
 	end
 end
 

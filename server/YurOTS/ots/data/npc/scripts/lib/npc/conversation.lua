@@ -19,22 +19,14 @@ function npcBeginConversation(cid, message)
 	if message ~= nil and message ~= '' then
 		selfSay(message)
 	end
+	npcResetState()
 	focus = cid
-	talk_start = os.clock()
-	if talk_state ~= nil then
-		talk_state = 0
-	end
-	if pending_exchange ~= nil then
-		pending_exchange = nil
-	end
-	if pending_travel ~= nil then
-		pending_travel = nil
-	end
+	talk_start = npcNow()
 end
 
 function npcTouchConversation(cid)
 	if focus == cid then
-		talk_start = os.clock()
+		talk_start = npcNow()
 		return true
 	end
 	return false
@@ -96,7 +88,7 @@ function npcOnThink(idleTimeout, idleMessage, maxDistance)
 		maxDistance = 5
 	end
 
-	if focus ~= 0 and (os.clock() - talk_start) > idleTimeout then
+	if focus ~= 0 and (npcNow() - talk_start) > idleTimeout then
 		if idleMessage == nil or idleMessage == '' then
 			idleMessage = 'Next please...'
 		end

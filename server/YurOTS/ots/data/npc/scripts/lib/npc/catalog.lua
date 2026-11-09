@@ -1,16 +1,6 @@
 -- Catálogos de compra/venta: {keys=..., itemid=..., unitPrice|price=...}. Cantidades ("5 ham"), fluidos, runas y respuestas por tema.
 -- Parte de lib/npc.lua (ver docs/gameplay/NPC_SYSTEM.md).
 
-function npcFindCatalogEntry(msg, entries)
-	for i = 1, table.getn(entries) do
-		local entry = entries[i]
-		if npcMatchesAny(msg, entry.keys) then
-			return entry
-		end
-	end
-
-	return nil
-end
 
 function npcTryCatalogReply(msg, entries)
 	local entry = npcFindCatalogEntry(msg, entries)
@@ -89,7 +79,10 @@ function npcFindMatchOffset(msg, keys)
 	return bestOffset, bestLen
 end
 
-function npcFindCatalogBuyEntry(msg, entries)
+-- Mejor coincidencia: la clave que aparece primero en el mensaje y, a igual posición, la más
+-- larga ("round blue pillow" gana a "blue pillow", "fire sword" a "sword"). La usan compra,
+-- venta y temas, así el resultado no depende del orden de la tabla.
+function npcFindCatalogEntry(msg, entries)
 	local best = nil
 	local bestOffset = math.huge
 	local bestLen = 0
@@ -109,22 +102,23 @@ function npcFindCatalogBuyEntry(msg, entries)
 	return best
 end
 
+-- Nombre anterior (algunos scripts lo usan).
+npcFindCatalogBuyEntry = npcFindCatalogEntry
+
 function npcTryCatalogBuyQuantity(cid, msg, entries, maxQty)
-	local entry = npcFindCatalogBuyEntry(msg, entries)
+	local entry = npcFindCatalogEntry(msg, entries)
 	if entry == nil then
 		return false
 	end
 
 	local qty = npcParseBuyQuantity(msg, maxQty)
 
-	-- YUR CHANGE (Dark Rodo audit 2026-06-30): pre-check backpack space
-	-- before showing the buy prompt. Saves the player a "yes" roundtrip
-	-- for purchases that would fail anyway. The C++ side already handles
-	-- partial delivery + refund, but UX-wise it's nicer to skip the prompt.
-	local free = getPlayerFreeSlots(cid)
-	if free < qty then
+	-- Sin ningún lugar libre no tiene sentido preguntar. No se exige un lugar por unidad: los
+	-- apilables ("50 arrows") ocupan uno solo, y si falta lugar el C++ entrega lo que entra y
+	-- devuelve el resto del oro.
+	if getPlayerFreeSlots(cid) < 1 then
 		selfSay('You do not have enough space in your backpack for that. Free up some slots first.')
-		return false
+		return true
 	end
 
 	if entry.fluidSubtype ~= nil then
