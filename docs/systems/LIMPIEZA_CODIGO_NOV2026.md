@@ -20,7 +20,7 @@ comportamiento del servidor (`-O2`) está aparte, en la rama `build-o2`, esperan
 | `6bcc70c` | Saca el código de Windows (`WIN32`, `__WINDOWS__`, `_MSC_VER`), MySQL (`__USE_MYSQL__`), el asignador de depuración (`__OTSERV_ALLOCATOR*__`) y el exception tracer de Windows. Borra `mdump.*`, `allocator.*`, `exception.*` (quedaron vacíos o sin uso); el `Makefile` compila todos los `.cpp` | No |
 | `28192f3` | Borra 262 bloques de código comentado (`//std::cout...`, `/* case ...: */`), ~730 líneas. Los comentarios que explican se quedan | No |
 | `20dc6c2` | Web: `/api/data` guarda el resultado 30 s (`WEB_PAYLOAD_TTL`) en vez de parsear el XML de todos los jugadores en cada visita; si llegan varias visitas juntas lo arma una sola. Se borran los tests del Most Wanted (sistema sacado en julio) | Solo la web: los datos de la portada pueden tener hasta 30 s de atraso |
-| rama `build-o2` | Compila con `-O2 -g -fno-strict-aliasing` (antes `-O0`, el modo de depurar). `make OPT=-O0` vuelve al anterior | **Sí** (más rápido). Pendiente de probar |
+| `a851f34` (merge de `build-o2`) | Compila con `-O2 -g -fno-strict-aliasing` (antes `-O0`, el modo de depurar). `make OPT=-O0` vuelve al anterior | **Sí** (más rápido). En `main` sin probar todavía: ver Pendiente |
 
 ### Decisiones
 
@@ -98,7 +98,7 @@ Hoy da 0: ya está aplicado.
 
 | Qué | Estado / por qué |
 |---|---|
-| **`-O2`** (rama `build-o2`) | Falta Docker en la ThinkPad: `sudo usermod -aG docker gonzalo` y reloguear. Después: compilar en Docker i386, levantar, `ot-probe.py`, un rato de juego y merge a `main`. Riesgo: código viejo con comportamiento indefinido que `-O0` escondía |
+| **`-O2`** (ya en `main`, sin probar) | Antes del próximo deploy: compilar en Docker i386 (ThinkPad con `sudo usermod -aG docker gonzalo`, o compilación de prueba en el VPS), levantar, `ot-probe.py` y un rato de juego. Riesgo: código viejo con comportamiento indefinido que `-O0` escondía. Si da problemas: `OPT ?= -O0` en el `Makefile` |
 | **Guardado automático congela el juego** | `Game::serverSave()` guarda el XML de cada jugador con `gameLock` tomado (cada ~10 min). Primero medir en el log del VPS (`server save... ok (Xs)`, solo lectura, con OK). Si vale la pena: guardar solo los que cambiaron o escribir fuera del lock |
 | **`bind2nd`/`mem_fun` → lambdas** | 19 usos (sobre todo `game.cpp`); ya no existen en C++17 y atan el build a `gnu++14 -fpermissive`. Necesita compilar |
 | **Hechizos repetidos** | 28 archivos de crear runas casi idénticos y 7 copias del haste de monstruos; se pueden pasar a una tabla en `spells/lib` (confirmar que `spells.xml` acepta un script compartido) |
