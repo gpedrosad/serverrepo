@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!-- Drowned Sailor (Marinero Ahogado): tripulante del naufragio de la playa de la selva que volvió del fondo.
+     Sprite propio (look 233, Crypt Shambler recoloreado: piel de ahogado, camiseta rayada, pañuelo rojo,
+     algas y gotas). Rasgo propio: te enreda con algas y te deja quieto 1 segundo para alcanzarte.
+     Ver docs/gameplay/DROWNED_SAILOR.md. -->
+<monster name="Drowned Sailor" level="30" maglevel="20" experience="280" pushable="0" armor="20" defense="18" canpushitems="1" staticattack="50" changetarget="200" speed="170">
+	<health now="520" max="520"/>
+	<look type="233" head="0" body="0" legs="0" feet="0" corpse="3128"/>
+	<combat targetdistance="1" runonhealth="0"/>
+	<blood color="86" effect="9" splash="255"/>
+
+<attacks>
+	<attack type="melee" mindamage="25" maxdamage="85" probability="100"/>
+	<attack type="rune" name="drowned_seaweed" exhaustion="500" cycleticks="6000" probability="45"/>
+</attacks>
+
+<defenses>
+	<defense immunity="poison"/>
+	<defense immunity="paralyze"/>
+	<defense immunity="drunk"/>
+</defenses>
+
+<voices>
+	<voice sentence="Glub... glub..."/>
+	<voice sentence="Join the crew... below."/>
+	<voice sentence="The sea keeps what it takes."/>
+	<voice sentence="Cold... so cold..."/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="40" chance1="100000" chancemax="0"/>
+	<item id="2667" countmax="3" chance1="30000" chancemax="0"/>
+	<item id="2120" chance="5000"/>
+	<item id="1987" chance="100000">
+	<inside>
+		<item id="2143" chance="3000"/>
+		<item id="2144" chance="1000"/>
+		<item id="2385" chance="4000"/>
+		<item id="2649" chance="6000"/>
+	</inside>
+	</item>
+</loot>
+</monster>

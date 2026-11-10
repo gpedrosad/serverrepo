@@ -163,9 +163,9 @@ def recolor(pixel: tuple[int, int, int, int]) -> tuple[int, int, int, int]:
     return (int(14 + 120 * k), int(10 + 104 * k), int(22 + 160 * k), 255)
 
 
-def write_preview(path: Path, frames: list[list[tuple[int, int, int, int]]], scale: int = 3) -> None:
-    """Grilla 4 direcciones x 3 cuadros, cada cuadro 64x64 (2x2 sprites)."""
-    cols, rows, size = 4, 3, 64
+def write_preview(path: Path, frames: list[list[tuple[int, int, int, int]]], scale: int = 3, size: int = 64) -> None:
+    """Grilla 4 direcciones x 3 cuadros; cada cuadro de size x size (64 = 2x2 sprites, 32 = 1x1)."""
+    cols, rows = 4, 3
     width, height = cols * size * scale, rows * size * scale
     canvas = [(60, 60, 70)] * (width * height)
     for index, frame in enumerate(frames):
