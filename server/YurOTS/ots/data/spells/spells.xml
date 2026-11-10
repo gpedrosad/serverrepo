@@ -110,6 +110,8 @@
 <rune name="old widow pox" id="5032" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 <rune name="orcb_pot_throw" id="5033" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 <rune name="frostdragon_iceball" id="5034" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="icemonk_iceshard" id="5035" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="icemonk_frostburst" id="5036" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 
 <!--// Make arrow and bolt \\-->
 <spell name="Conjure Arrow"	words="exevo con"		maglv="2"	mana="40"	enabled="1"><vocation id="3" /></spell>

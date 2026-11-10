@@ -160,6 +160,7 @@
 <monster name="Furious Minotaur Mage" file="furious minotaur mage.xml" />
 <monster name="Enraged Minotaur Mage" file="enraged minotaur mage.xml" />
 <monster name="Monk" file="monk.xml" />
+<monster name="Ice Monk" file="ice monk.xml" />
 <monster name="Trainer Monk" file="trainer monk.xml" />
 <monster name="Mini Trainer Monk" file="mini trainer monk.xml" />
 <monster name="Elite Trainer Monk" file="elite trainer monk.xml" />
