@@ -105,12 +105,21 @@ function npcCatalogHandler(shop)
 		if shop.buys ~= nil and npcTryCatalogBuyQuantity(cid, msg, shop.buys, shop.maxQty) then
 			return true
 		end
-		if shop.sells ~= nil and npcTryCatalogSell(cid, msg, shop.sells) then
-			return true
+		-- Venta y temas compiten por la mejor coincidencia: "swords" muestra precios,
+		-- "steel boots" vende aunque "boots" sea un tema. Con "sell" manda la venta.
+		local entry = nil
+		if npcMatchesAny(msg, {'sell', 'vender', 'vendo'}) then
+			entry = npcFindCatalogEntry(msg, shop.sells)
 		end
-		if shop.topics ~= nil and npcTryCatalogReply(msg, shop.topics) then
-			return true
+		entry = entry or npcFindCatalogEntry(msg, shop.sells, shop.topics)
+		if entry == nil then
+			return false
 		end
-		return false
+		if entry.reply ~= nil then
+			selfSay(entry.reply)
+		else
+			npcSellEntry(cid, msg, entry)
+		end
+		return true
 	end
 end

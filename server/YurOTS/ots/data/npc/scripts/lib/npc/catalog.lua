@@ -12,18 +12,6 @@ function npcTryCatalogReply(msg, entries)
 	return false
 end
 
-function npcTryCatalogBuy(cid, msg, entries)
-	local entry = npcFindCatalogEntry(msg, entries)
-	if entry then
-		local qty = entry.count or 1
-		local price = entry.price or (entry.unitPrice * qty)
-		buy(cid, entry.itemid, qty, price)
-		return true
-	end
-
-	return false
-end
-
 function npcParseBuyQuantity(msg, maxQty)
 	maxQty = maxQty or 100
 	local qty = tonumber(string.match(msg, '(%d+)'))
@@ -36,69 +24,97 @@ function npcParseBuyQuantity(msg, maxQty)
 	return qty
 end
 
-function npcCatalogKeyLength(entry)
-	local keys = entry.keys
-	if type(keys) == 'string' then
-		return string.len(keys)
-	end
-
-	local maxLen = 0
-	for i = 1, table.getn(keys) do
-		local len = string.len(keys[i])
-		if len > maxLen then
-			maxLen = len
-		end
-	end
-	return maxLen
+-- Palabras que pueden rodear a una clave corta sin cambiarle el sentido ("sell 2 life please").
+NPC_FILLER_WORDS = {}
+for _, w in ipairs({'a', 'an', 'the', 'my', 'some', 'of', 'sell', 'buy', 'want', 'i', 'please', 'all', 'x',
+		'un', 'una', 'unos', 'unas', 'mi', 'mis', 'el', 'la', 'los', 'las', 'de', 'vender', 'vendo', 'comprar',
+		'compro', 'quiero', 'todo', 'todos', 'todas', 'por', 'favor'}) do
+	NPC_FILLER_WORDS[w] = true
 end
 
-function npcFindMatchOffset(msg, keys)
-	if type(keys) == 'string' then
-		keys = {keys}
+local function isFillerWord(word)
+	return word == nil or NPC_FILLER_WORDS[word] or string.find(word, '^%d+$') ~= nil
+end
+
+-- Una clave corta ("life", "sword") solo vale si las palabras vecinas son relleno o números:
+-- "2 life" compra, "what time is it" o "magic sword" no.
+local function isAlone(msg, s, e)
+	local before = string.match(string.sub(msg, 1, s - 1), '(%w+)%W*$')
+	local after = string.match(string.sub(msg, e + 1), '^%W*(%w+)')
+	return isFillerWord(before) and isFillerWord(after)
+end
+
+-- Dónde aparece la clave como palabra(s) completa(s), también en plural ("bows", "hams",
+-- "torches"). Devuelve inicio, largo de la clave y si fue plural; nil si no aparece.
+local function findKey(msg, key, alone)
+	local start, len = 1, string.len(msg)
+	while true do
+		local s, e = string.find(msg, key, start, true)
+		if not s then
+			return nil
+		end
+		local plural = false
+		if string.sub(msg, e + 1, e + 1) == 's' then
+			plural, e = true, e + 1
+		elseif string.sub(msg, e + 1, e + 2) == 'es' then
+			plural, e = true, e + 2
+		end
+		local leftOk = s == 1 or string.find(string.sub(msg, s - 1, s - 1), '%W') ~= nil
+		local rightOk = e >= len or string.find(string.sub(msg, e + 1, e + 1), '%W') ~= nil
+		if not rightOk and plural then	-- "bolts" no es plural de "bolt" si sigue una letra
+			e = s + string.len(key) - 1
+			plural = false
+			rightOk = e >= len or string.find(string.sub(msg, e + 1, e + 1), '%W') ~= nil
+		end
+		if leftOk and rightOk and (not alone or isAlone(msg, s, e)) then
+			return s, string.len(key), plural
+		end
+		start = s + 1
 	end
-	local bestOffset = nil
-	local bestLen = 0
-	for i = 1, table.getn(keys) do
-		local key = keys[i]
-		local start = 1
-		while true do
-			local s = string.find(msg, key, start, true)
-			if not s then break end
-			local leftOk = (s == 1) or string.match(string.sub(msg, s-1, s-1), '%W') ~= nil
-			local e = s + string.len(key) - 1
-			local rightOk = (e >= string.len(msg)) or string.match(string.sub(msg, e+1, e+1), '%W') ~= nil
-			if leftOk and rightOk then
-				if bestOffset == nil or s < bestOffset or (s == bestOffset and string.len(key) > bestLen) then
-					bestOffset = s
-					bestLen = string.len(key)
-				end
+end
+
+-- Mejor coincidencia de una entrada: keys normales y shortKeys (claves cortas que tienen que
+-- ir solas, ver isAlone).
+function npcFindMatchOffset(msg, keys, shortKeys)
+	local best, bestLen, bestPlural = nil, 0, false
+	local function try(list, alone)
+		if list == nil then
+			return
+		end
+		if type(list) == 'string' then
+			list = {list}
+		end
+		for i = 1, table.getn(list) do
+			local s, len, plural = findKey(msg, list[i], alone)
+			if s ~= nil and (best == nil or s < best or (s == best and len > bestLen)) then
+				best, bestLen, bestPlural = s, len, plural
 			end
-			start = s + 1
 		end
 	end
-	return bestOffset, bestLen
+	try(keys, false)
+	try(shortKeys, true)
+	return best, bestLen, bestPlural
 end
 
--- Mejor coincidencia: la clave que aparece primero en el mensaje y, a igual posición, la más
--- larga ("round blue pillow" gana a "blue pillow", "fire sword" a "sword"). La usan compra,
--- venta y temas, así el resultado no depende del orden de la tabla.
-function npcFindCatalogEntry(msg, entries)
+-- Mejor coincidencia: la clave que aparece primero en el mensaje; a igual posición la más
+-- larga ("round blue pillow" gana a "blue pillow", "fire sword" a "sword") y a igual largo la
+-- exacta antes que el plural ("swords" es el tema de precios, no vender una "sword"). La usan
+-- compra, venta y temas, así el resultado no depende del orden de la tabla. Acepta varias
+-- listas: npcFindCatalogEntry(msg, ventas, temas).
+function npcFindCatalogEntry(msg, ...)
 	local best = nil
-	local bestOffset = math.huge
-	local bestLen = 0
-
-	for i = 1, table.getn(entries) do
-		local entry = entries[i]
-		local offset, len = npcFindMatchOffset(msg, entry.keys)
-		if offset ~= nil then
-			if offset < bestOffset or (offset == bestOffset and len > bestLen) then
-				best = entry
-				bestOffset = offset
-				bestLen = len
+	local bestOffset, bestLen, bestPlural = math.huge, 0, true
+	for l = 1, select('#', ...) do
+		local entries = select(l, ...)
+		for i = 1, table.getn(entries or {}) do
+			local entry = entries[i]
+			local offset, len, plural = npcFindMatchOffset(msg, entry.keys, entry.shortKeys)
+			if offset ~= nil and (offset < bestOffset
+					or (offset == bestOffset and (len > bestLen or (len == bestLen and bestPlural and not plural)))) then
+				best, bestOffset, bestLen, bestPlural = entry, offset, len, plural
 			end
 		end
 	end
-
 	return best
 end
 
@@ -133,10 +149,27 @@ function npcTryCatalogBuyQuantity(cid, msg, entries, maxQty)
 	return true
 end
 
+-- Cantidad a vender: "3 swords", "sell 3 sword" o "all"/"todo" (todos los que tenga).
+function npcParseSellQuantity(cid, msg, entry)
+	if npcMatchesAny(msg, {'all', 'todo', 'todos', 'todas'}) then
+		return getPlayerItemCount(cid, entry.itemid)
+	end
+	return npcParseBuyQuantity(msg, 100)
+end
+
+function npcSellEntry(cid, msg, entry)
+	local qty = entry.count or npcParseSellQuantity(cid, msg, entry)
+	if qty < 1 then
+		selfSay('You do not have any ' .. (entry.keys or entry.shortKeys)[1] .. '.')
+		return
+	end
+	sell(cid, entry.itemid, qty, entry.price * qty)
+end
+
 function npcTryCatalogSell(cid, msg, entries)
 	local entry = npcFindCatalogEntry(msg, entries)
 	if entry then
-		sell(cid, entry.itemid, entry.count or 1, entry.price)
+		npcSellEntry(cid, msg, entry)
 		return true
 	end
 

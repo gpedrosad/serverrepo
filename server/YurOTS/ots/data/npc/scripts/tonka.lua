@@ -25,23 +25,7 @@ function showExchangeList()
 end
 
 function matchExchange(msg)
-	local best = nil
-	local bestOffset = math.huge
-	local bestLen = 0
-
-	for i = 1, table.getn(EXCHANGES) do
-		local ex = EXCHANGES[i]
-		local offset, len = npcFindMatchOffset(msg, ex.keys)
-		if offset ~= nil then
-			if offset < bestOffset or (offset == bestOffset and len > bestLen) then
-				best = ex
-				bestOffset = offset
-				bestLen = len
-			end
-		end
-	end
-
-	return best
+	return npcFindCatalogEntry(msg, EXCHANGES)
 end
 
 function addItemsExact(cid, itemid, count)

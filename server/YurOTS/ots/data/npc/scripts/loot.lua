@@ -44,11 +44,11 @@ LOOT_OFFERS = {
 	{keys = {'fire sword'}, itemid = 2392, price = 4000},
 	{keys = {'serpent sword'}, itemid = 2409, price = 2000},
 	{keys = {'spike sword'}, itemid = 2383, price = 1200},
-	{keys = {'two handed sword'}, itemid = 2377, price = 600},
+	{keys = {'two handed sword', 'two-handed sword'}, itemid = 2377, price = 600},
 	{keys = {'broad sword'}, itemid = 2413, price = 500},
 	{keys = {'short sword'}, itemid = 2406, price = 60},
 	{keys = {'sabre'}, itemid = 2385, price = 50},
-	{keys = {'sword'}, itemid = 2376, price = 50},
+	{shortKeys = {'sword'}, itemid = 2376, price = 50},
 	{keys = {'dragon lance'}, itemid = 2414, price = 10000},
 	{keys = {'fire axe'}, itemid = 2432, price = 10000},
 	{keys = {'knight axe'}, itemid = 2430, price = 2000},
@@ -61,7 +61,7 @@ LOOT_OFFERS = {
 	{keys = {'dragon hammer'}, itemid = 2434, price = 3000},
 	{keys = {'clerical mace'}, itemid = 2423, price = 300},
 	{keys = {'battle hammer'}, itemid = 2417, price = 100},
-	{keys = {'mace'}, itemid = 2398, price = 10},
+	{shortKeys = {'mace'}, itemid = 2398, price = 10},
 	{keys = {'platinum amulet'}, itemid = 2171, price = 2500},
 	{keys = {'scarf'}, itemid = 2661, price = 600}
 }
