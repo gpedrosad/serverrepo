@@ -9,8 +9,8 @@ Presets:
   black-dragon   Dragon (34) -> 230, negro con brillo violeta, ojos rojos
   frost-dragon   Dragon (34) -> 231, hielo: cuerpo azul acero a blanco, panza y alas
                  blanco hielo, ojos celestes brillantes (estilo Frost Dragon de versiones nuevas)
-  ice-monk       Monk (57) -> 232, túnica azul profundo a blanco hielo, piel celeste pálida,
-                 cinturón celeste brillante
+  ice-monk       Monk (57) -> 232, túnica azul profundo a blanco hielo, cinturón celeste
+                 brillante y la cara en sombra bajo la capucha con ojos celestes que brillan
 
 Uso:
   python3 scripts/client-rme/add_recolor_look.py --preset frost-dragon DIR_THINGS [--preview x.png]
@@ -85,10 +85,74 @@ def recolor_ice_monk(pixel):
     return gradient(ICE_ROBE, (lum ** 0.85) * 1.2) + (255,)       # túnica y sombras
 
 
+def _is_skin(pixel):
+    r, g, b, a = pixel
+    if a == 0:
+        return False
+    h, s, v = colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
+    return 0.06 <= h <= 0.10 and 0.28 <= s <= 0.47 and v > 0.74
+
+
+def _clusters(points):
+    points, seen, out = set(points), set(), []
+    for start in sorted(points, key=lambda t: (t[1], t[0])):
+        if start in seen:
+            continue
+        seen.add(start)
+        stack, comp = [start], []
+        while stack:
+            x, y = stack.pop()
+            comp.append((x, y))
+            for dx in (-1, 0, 1):
+                for dy in (-1, 0, 1):
+                    q = (x + dx, y + dy)
+                    if q in points and q not in seen:
+                        seen.add(q)
+                        stack.append(q)
+        out.append(comp)
+    return out
+
+
+HOOD_SHADOW = (14, 22, 48, 255)
+EYE_GLOW = (150, 248, 255, 255)
+EYE_HALO = (50, 130, 196, 255)
+
+
+def ice_monk_eyes(original, recolored):
+    """Cara en sombra bajo la capucha con ojos celestes que brillan (rasgo del Ice Monk).
+
+    La cara es el grupo de piel más grande del cuadro (las manos tienen 1-3 píxeles). De frente
+    (más ancha que alta) lleva dos ojos en su fila de arriba; de perfil, uno hacia donde mira.
+    De espaldas no hay cara visible y el cuadro queda igual."""
+    out = []
+    for index, (orig, new) in enumerate(zip(original, recolored)):
+        new = list(new)
+        skin = [(i % 64, i // 64) for i, p in enumerate(orig) if _is_skin(p)]
+        faces = [c for c in _clusters(skin) if len(c) >= 6]
+        for face in faces:
+            for x, y in face:
+                new[y * 64 + x] = HOOD_SHADOW
+            xs = [x for x, _ in face]
+            ys = [y for _, y in face]
+            top = sorted(x for x, y in face if y == min(ys))
+            if max(xs) - min(xs) >= max(ys) - min(ys):          # de frente
+                eyes = [(top[0], min(ys)), (top[-1], min(ys))] if len(top) >= 3 else [(top[-1], min(ys))]
+            else:                                                 # de perfil: mira hacia el lado del cuadro
+                facing_east = index % 4 == 1
+                eyes = [(max(xs) if facing_east else min(xs), min(ys) + 1)]
+            face_set = set(face)
+            for x, y in eyes:
+                new[y * 64 + x] = EYE_GLOW
+                if (x, y + 1) in face_set:                        # brillo suave debajo del ojo
+                    new[(y + 1) * 64 + x] = EYE_HALO
+        out.append(new)
+    return out
+
+
 PRESETS = {
     "black-dragon": dict(source=34, target=230, recolor=recolor_black, name="Black Dragon"),
     "frost-dragon": dict(source=34, target=231, recolor=recolor_frost, name="Frost Dragon"),
-    "ice-monk": dict(source=57, target=232, recolor=recolor_ice_monk, name="Ice Monk"),
+    "ice-monk": dict(source=57, target=232, recolor=recolor_ice_monk, name="Ice Monk", frames_post=ice_monk_eyes),
 }
 
 
@@ -108,6 +172,19 @@ def frames_2x2(decoded: dict[int, list]) -> list[list]:
     return frames
 
 
+def split_2x2(frames: list[list]) -> dict[int, list]:
+    """Inverso de frames_2x2: vuelve a los 48 sprites de 32x32 en el orden del .dat."""
+    decoded = {}
+    for anim in range(3):
+        for direction in range(4):
+            frame = frames[anim * 4 + direction]
+            base = (anim * 4 + direction) * 4
+            for tile in range(4):
+                ox, oy = (1 - tile % 2) * 32, (1 - tile // 2) * 32
+                decoded[base + tile] = [frame[(oy + i // 32) * 64 + ox + i % 32] for i in range(1024)]
+    return decoded
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("things_dir", type=Path, nargs="?")
@@ -124,8 +201,12 @@ def main() -> int:
         raise SystemExit(f"El dat tiene {counts[1]} looktypes; se esperaba al menos {p['target']}")
     source, target = outfits[p["source"] - 1], outfits[p["target"] - 1]
     spr_count, offsets = read_spr(spr)
-    decoded = {i: [p["recolor"](px) for px in decode_sprite(spr, offsets, sid)]
-               for i, sid in enumerate(source["ids"])}
+    original = {i: decode_sprite(spr, offsets, sid) for i, sid in enumerate(source["ids"])}
+    decoded = {i: [p["recolor"](px) for px in pixels] for i, pixels in original.items()}
+    if p.get("frames_post"):                      # retoque por cuadro completo (ej. ojos del Ice Monk)
+        if len(source["ids"]) != 48:
+            raise SystemExit("frames_post asume una criatura 2x2, 4 direcciones y 3 cuadros")
+        decoded = split_2x2(p["frames_post"](frames_2x2(original), frames_2x2(decoded)))
 
     if a.preview:
         if len(source["ids"]) != 48:
