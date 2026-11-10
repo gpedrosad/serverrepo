@@ -90,7 +90,6 @@ s_defcommands Commands::defined_commands[] = {
 	{"!premmy",&Commands::showPremmy},
 };
 
-
 Commands::Commands(Game* igame):
 game(igame),
 loaded(false)
@@ -172,7 +171,6 @@ bool Commands::loadXml(const std::string &_datadir){
 		game->addCommandTag(it->first.substr(0,1));
 	}
 
-
 	return this->loaded;
 }
 
@@ -230,7 +228,6 @@ bool Commands::exeCommand(Creature *creature, const std::string &cmd){
 	return true;
 }
 
-
 bool Commands::placeNpc(Creature* c, const std::string &cmd, const std::string &param)
 {
 	Npc *npc = new Npc(param, game);
@@ -279,9 +276,9 @@ bool Commands::placeNpc(Creature* c, const std::string &cmd, const std::string &
 
 bool Commands::placeMonster(Creature* c, const std::string &cmd, const std::string &param)
 {
-	//Monster* monster = new Monster(param, game);
+
 	Monster* monster = Monster::createMonster(param, game);
-	//if(!monster->isLoaded()){
+
 	if(!monster){
 		//delete monster;
 		return true;
@@ -324,16 +321,16 @@ bool Commands::placeMonster(Creature* c, const std::string &cmd, const std::stri
 		return true;
 	}
 	else{
-		//c->addSummon(monster);
+
 		return true;
 	}
 }
 
 bool Commands::placeSummon(Creature* c, const std::string &cmd, const std::string &param)
 {
-	//Monster* monster = new Monster(param, game);
+
 	Monster* monster = Monster::createMonster(param, game);
-	//if(!monster->isLoaded()){
+
 	if(!monster){
 		//delete monster;
 		return true;
@@ -390,15 +387,6 @@ bool Commands::banPlayer(Creature* c, const std::string &cmd, const std::string 
 
 	Player* playerBan = game->getPlayerByName(param);
 	if(playerBan) {
-		/*MagicEffectClass me;
-
-		me.animationColor = 0xB4;
-		me.damageEffect = NM_ME_MAGIC_BLOOD;
-		me.maxDamage = (playerBan->health + playerBan->mana)*10;
-		me.minDamage = (playerBan->health + playerBan->mana)*10;
-		me.offensive = true;
-
-		game->creatureMakeMagic(NULL, playerBan->pos, &me);*/
 
 		Player* player = dynamic_cast<Player*>(c);
 		if(player && player->access <= playerBan->access){
@@ -577,7 +565,6 @@ bool Commands::getInfo(Creature* c, const std::string &cmd, const std::string &p
 
 	return true;
 }
-
 
 bool Commands::closeServer(Creature* c, const std::string &cmd, const std::string &param)
 {
@@ -990,7 +977,6 @@ bool Commands::setMaxPlayers(Creature* c, const std::string &cmd, const std::str
 	return true;
 }
 
-
 bool Commands::reloadRights(Creature* c, const std::string &cmd, const std::string &param)
 {
 	Player* player = dynamic_cast<Player*>(c);
@@ -1026,7 +1012,6 @@ bool Commands::setHouseOwner(Creature* c, const std::string &cmd, const std::str
 	}
 	return true;
 }
-
 
 bool Commands::gmInvisible(Creature* c, const std::string &cmd, const std::string &param)
 {
@@ -1074,7 +1059,6 @@ bool Commands::gmInvisible(Creature* c, const std::string &cmd, const std::strin
 	return true;
 }
 
-
 bool Commands::showFrags(Creature* c, const std::string &cmd, const std::string &param)
 {
 	Player* player = dynamic_cast<Player*>(c);
@@ -1090,7 +1074,6 @@ bool Commands::showFrags(Creature* c, const std::string &cmd, const std::string 
 	return true;
 }
 
-
 bool Commands::forceServerSave(Creature* c, const std::string &cmd, const std::string &param)
 {
 	Player* player = dynamic_cast<Player*>(c);
@@ -1102,7 +1085,6 @@ bool Commands::forceServerSave(Creature* c, const std::string &cmd, const std::s
 	return true;
 }
 
-
 bool Commands::shutdown(Creature* c, const std::string &cmd, const std::string &param)
 {
 	Player* player = dynamic_cast<Player*>(c);
@@ -1110,7 +1092,6 @@ bool Commands::shutdown(Creature* c, const std::string &cmd, const std::string &
 		game->sheduleShutdown(atoi(param.c_str()));
 	return true;
 }
-
 
 bool Commands::cleanMap(Creature* c, const std::string &cmd, const std::string &param)
 {
@@ -1132,7 +1113,6 @@ bool Commands::cleanMap(Creature* c, const std::string &cmd, const std::string &
 	}
 	return true;
 }
-
 
 bool Commands::premmy(Creature* c, const std::string &cmd, const std::string &param)
 {

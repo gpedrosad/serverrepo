@@ -19,7 +19,6 @@
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
 
-
 #include "definitions.h"
 
 #include <string>
@@ -42,18 +41,13 @@ ReturnValue Tile::isBlocking(int objectstate, bool ignoreCreature /* = false*/, 
 	if(((objectstate & BLOCK_PATHFIND) == BLOCK_PATHFIND) && (floorChange() || getTeleportItem())) {
 		return RET_THEREISNOWAY;
 	}
-		
+
 	if(ground) {
 		const ItemType& groundType = Item::items[ground->getID()];
 
 		if(((objectstate & BLOCK_PROJECTILE) == BLOCK_PROJECTILE) &&
 			groundType.blockProjectile)
 			return RET_CANNOTTHROW;
-
-		/*
-		if((groundType.blockPathFind || groundType.blockSolid) && ((objectstate & BLOCK_PATHFIND) == BLOCK_PATHFIND))
-			return RET_THEREISNOWAY;
-		*/
 
 		if(((objectstate & BLOCK_PICKUPABLE) == BLOCK_PICKUPABLE)) {			
 			if(groundType.blockSolid && (!groundType.hasHeight || groundType.pickupable))
@@ -81,12 +75,6 @@ ReturnValue Tile::isBlocking(int objectstate, bool ignoreCreature /* = false*/, 
 				continue;*/
 		}
 
-		/*
-		if((iiType.blockPathFind || iiType.blockSolid) && ((objectstate & BLOCK_PATHFIND) == BLOCK_PATHFIND) &&
-			!(ignoreMoveableBlocking && iiType.moveable))
-			return RET_THEREISNOWAY;
-			*/
-
 		if(((objectstate & BLOCK_PICKUPABLE) == BLOCK_PICKUPABLE)) {			
 			if(iiType.blockSolid && (!iiType.hasHeight || iiType.pickupable))
 				return RET_NOTENOUGHROOM;
@@ -96,7 +84,7 @@ ReturnValue Tile::isBlocking(int objectstate, bool ignoreCreature /* = false*/, 
 			!(ignoreMoveableBlocking && iiType.moveable))
 			return RET_NOTENOUGHROOM;
 	}
-	
+
 	for (iit = downItems.begin(); iit != downItems.end(); ++iit) {
 		const ItemType& iiType = Item::items[(*iit)->getID()];
 
@@ -106,12 +94,6 @@ ReturnValue Tile::isBlocking(int objectstate, bool ignoreCreature /* = false*/, 
 			/*else
 				continue;*/
 		}
-
-		/*
-		if((iiType.blockPathFind || iiType.blockSolid) && ((objectstate & BLOCK_PATHFIND) == BLOCK_PATHFIND) &&
-			!(ignoreMoveableBlocking && iiType.moveable))
-			return RET_THEREISNOWAY;
-		*/
 
 		if(((objectstate & BLOCK_PICKUPABLE) == BLOCK_PICKUPABLE)) {
 			if(iiType.blockSolid && (!iiType.hasHeight || iiType.pickupable))
@@ -123,7 +105,6 @@ ReturnValue Tile::isBlocking(int objectstate, bool ignoreCreature /* = false*/, 
 			return RET_NOTENOUGHROOM;
 	}
 
-	//return false;
 	return RET_NOERROR;
 }
 
@@ -150,7 +131,7 @@ bool Tile::floorChangeDown() const
 {
 	if(ground && ground->floorChangeDown())
 		return true;
-		
+
 	ItemVector::const_iterator iit;
 	for(iit = topItems.begin(); iit != topItems.end(); ++iit){
 		if((*iit)->floorChangeDown())
@@ -161,7 +142,7 @@ bool Tile::floorChangeDown() const
 		if((*iit)->floorChangeDown())
 			return true;
 	}
-	
+
   	return false;
 }
 
@@ -237,7 +218,7 @@ int Tile::getThingStackPos(const Thing *thing) const
       return 1;
     n++;
   }
-  
+
   ItemVector::const_iterator iit;
   for (iit = topItems.begin(); iit != topItems.end(); ++iit)
   {
@@ -276,7 +257,7 @@ Thing* Tile::getThingByStackPos(int pos)
   {
     if (pos == 0)
       return splash;
-      //return NULL;
+
     pos--;
   }
 
@@ -313,7 +294,7 @@ bool Tile::insertThing(Thing *thing, int stackpos)
 	int pos = stackpos;
 
 	if (pos == 0) {
-    //ground = item;
+
 		return false;
 	}
 
@@ -322,7 +303,7 @@ bool Tile::insertThing(Thing *thing, int stackpos)
   if(splash)
   {
 		if (pos == 0) {
-      //splash = item;
+
 			return false;
 		}
 
@@ -342,7 +323,7 @@ bool Tile::insertThing(Thing *thing, int stackpos)
   pos -= (uint32_t)topItems.size();
 
 	if ((unsigned) pos < creatures.size()) {
-		//creatures.insert(creatures[pos], item);
+
 		return false;
 	}
 
@@ -416,7 +397,7 @@ Thing* Tile::getTopMoveableThing(){
     	return ground;
 	if (splash && !splash->isNotMoveable())
     	return splash;
-    
+
     for(size_t i = 0; i < topItems.size(); i++){
 		if(topItems[i] && !topItems[i]->isNotMoveable())
 			return topItems[i];
@@ -497,7 +478,7 @@ Thing* Tile::getTopThing()
 	thing = getTopTopItem();
 	if(thing != NULL)
 		return thing;
-	
+
 	if(splash)
 		return splash;
 
@@ -544,7 +525,7 @@ void Tile::addThing(Thing *thing) {
 	}
     else if (item->isAlwaysOnTop())
     {
-      //topItems.insert(topItems.begin(), item);
+
 			topItems.push_back(item);
     }
     else
@@ -563,7 +544,6 @@ void Tile::setPz()
 {
   pz = true;
 }
-
 
 bool Tile::isHouse() const
 {
@@ -586,7 +566,6 @@ bool Tile::setHouse(House* newHouse)
 	}
 }
 
-
 bool Tile::isPvpArena() const
 {
 	return pvpArena;
@@ -603,7 +582,6 @@ Position Tile::getPvpArenaExit() const
 	return arenaExit;
 }
 
-
 bool Tile::isTrainingArea() const
 {
 	return trainingArea;
@@ -619,7 +597,6 @@ Position Tile::getTrainingExit() const
 {
 	return trainingExit;
 }
-
 
 long Tile::clean()
 {
@@ -666,7 +643,6 @@ long Tile::clean()
 
 	return (long)trash.size();
 }
-
 
 long Tile::getItemHoldingCount() const
 {

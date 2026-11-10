@@ -38,14 +38,13 @@ class Container : public Item
 		Container(const unsigned short _type);
 		virtual ~Container();
 		virtual void useThing() {
-			//std::cout << "Container: useThing() " << this << std::endl;
+
 			useCount++;
 		};
-	
+
 		virtual void releaseThing() {
 			useCount--;
-			//std::cout << "Container: releaseThing() " << this << std::endl;
-			//if (useCount == 0)
+
 			if (useCount <= 0)
 				delete this;
 		};
@@ -59,7 +58,7 @@ class Container : public Item
 		Container *getTopParent();
 		const Container *getTopParent() const;
 
-		ContainerList::const_iterator getItems() const;     // begin();
+		ContainerList::const_iterator getItems() const;
 		ContainerList::const_iterator getEnd() const;       // iterator beyond the last element
 		bool addItem(Item* newitem);     // add an item to the container
 		bool removeItem(Item* item); //remove an item from the container
@@ -73,4 +72,3 @@ class Container : public Item
 };
 
 #endif //__OTSERV_CONTAINER_H
-

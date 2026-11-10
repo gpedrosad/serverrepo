@@ -18,10 +18,8 @@
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
 
-
 #ifndef __OTSERV_GAME_H
 #define __OTSERV_GAME_H
-
 
 #include <queue>
 #include <vector>
@@ -264,7 +262,6 @@ public:
 	unsigned long addEvent(SchedulerTask*);
 	bool stopEvent(unsigned long eventid);
 
-	//void creatureBroadcastTileUpdated(const Position& pos);
 	void teleport(Thing *thing, const Position& newPos);
 
   std::vector<Player*> BufferedPlayers;

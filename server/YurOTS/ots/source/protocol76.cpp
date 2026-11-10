@@ -18,7 +18,6 @@
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
 
-
 #include "definitions.h"
 
 #include <string>
@@ -68,7 +67,6 @@ Protocol76::Protocol76(SOCKET s)
 	readItem = NULL;
 	this->s = s;
 }
-
 
 Protocol76::~Protocol76()
 {
@@ -131,7 +129,7 @@ void Protocol76::ReceiveLoop()
 		// logout by disconnect?  -> kick
 		if(pendingLogout == false){
 			game->playerSetAttackedCreature(player, 0);
-			//player->setAttackedCreature(0);
+
 			while(player->inFightTicks >= 1000 && player->isRemoved == false && s == 0){
 				OTSYS_SLEEP(250);
 			}
@@ -144,7 +142,6 @@ void Protocol76::ReceiveLoop()
 		}
 	}while(s != 0 && player->isRemoved == false);
 }
-
 
 void Protocol76::parsePacket(NetworkMessage &msg)
 {
@@ -462,10 +459,6 @@ void Protocol76::GetMapDescription(unsigned short x, unsigned short y, unsigned 
 
 				}
 				else {
-				/*
-				if(skip == -1)
-				skip = 0;
-					*/
 
 					skip++;
 					if (skip == 0xFF) {
@@ -488,7 +481,6 @@ void Protocol76::GetMapDescription(unsigned short x, unsigned short y, unsigned 
 	printf("tiles in total: %d \n", cc);
 #endif
 }
-
 
 void Protocol76::checkCreatureAsKnown(unsigned long id, bool &known, unsigned long &removedKnown)
 {
@@ -540,7 +532,6 @@ void Protocol76::checkCreatureAsKnown(unsigned long id, bool &known, unsigned lo
 		removedKnown = 0;
 	}
 }
-
 
 // Parse methods
 void Protocol76::parseLogout(NetworkMessage &msg)
@@ -610,8 +601,7 @@ void Protocol76::parseCancelMove(NetworkMessage &msg)
 void Protocol76::parseModes(NetworkMessage &msg)
 {
 	player->setFightMode(msg.GetByte());
-	//player->fightMode = msg.GetByte();
-	//player->followMode = msg.GetByte();
+
 }
 
 void Protocol76::parseDebug(NetworkMessage &msg)
@@ -689,7 +679,6 @@ void Protocol76::parseMoveEast(NetworkMessage &msg)
 		player->pos.x+1, player->pos.y, player->pos.z, 1);
 }
 
-
 void Protocol76::parseMoveSouth(NetworkMessage &msg)
 {
 
@@ -702,7 +691,6 @@ void Protocol76::parseMoveSouth(NetworkMessage &msg)
 	game->thingMove(player, player,
 		player->pos.x, player->pos.y+1, player->pos.z, 1);
 }
-
 
 void Protocol76::parseMoveWest(NetworkMessage &msg)
 {
@@ -773,24 +761,20 @@ void Protocol76::parseMoveNorthWest(NetworkMessage &msg)
 		(player->pos.x-1), (player->pos.y-1), player->pos.z, 1);
 }
 
-
 void Protocol76::parseTurnNorth(NetworkMessage &msg)
 {
 	game->creatureTurn(player, NORTH);
 }
-
 
 void Protocol76::parseTurnEast(NetworkMessage &msg)
 {
 	game->creatureTurn(player, EAST);
 }
 
-
 void Protocol76::parseTurnSouth(NetworkMessage &msg)
 {
 	game->creatureTurn(player, SOUTH);
 }
-
 
 void Protocol76::parseTurnWest(NetworkMessage &msg)
 {
@@ -949,7 +933,6 @@ void Protocol76::parseSetOutfit(NetworkMessage &msg)
 	}
 }
 
-
 void Protocol76::parseUseItemEx(NetworkMessage &msg)
 {
 	Position pos_from = msg.GetPosition();
@@ -985,7 +968,6 @@ void Protocol76::sendContainer(unsigned char index, Container *container)
 	msg.AddByte(0x6E);
 	msg.AddByte(index);
 
-	//msg.AddU16(container->getID());
 	msg.AddItemId(container);
 	msg.AddString(container->getName());
 	msg.AddByte(container->capacity());
@@ -1209,7 +1191,6 @@ void Protocol76::parseThrow(NetworkMessage &msg)
 	}
 }
 
-
 void Protocol76::parseLookAt(NetworkMessage &msg){
 	Position LookPos = msg.GetPosition();
 	unsigned short ItemNum = msg.GetU16();
@@ -1303,8 +1284,6 @@ void Protocol76::parseLookAt(NetworkMessage &msg){
 
 	sendNetworkMessage(&newmsg);
 }
-
-
 
 void Protocol76::parseSay(NetworkMessage &msg)
 {
@@ -2117,7 +2096,6 @@ void Protocol76::sendThingMove(const Creature *creature, const Thing *thing,
 	WriteBuffer(msg);
 }
 
-
 //close container and its child containers
 void Protocol76::autoCloseContainers(const Container *container, NetworkMessage &msg)
 {
@@ -2158,7 +2136,6 @@ void Protocol76::sendCreatureTurn(const Creature *creature, unsigned char stackP
 		WriteBuffer(msg);
 	}
 }
-
 
 void Protocol76::sendServerBroadcast(const std::string &text)
 {
@@ -2270,17 +2247,6 @@ void Protocol76::sendThingAppear(const Thing *thing){
 			msg.AddByte(0x00);
 
 			msg.AddByte(0x00); //can report bugs 0,1
-
-			/*msg.AddByte(0x0B);//TODO?. GM actions
-			  msg.AddByte(0xFF);msg.AddByte(0xFF);msg.AddByte(0xFF);msg.AddByte(0xFF);
-			  msg.AddByte(0xFF);msg.AddByte(0xFF);msg.AddByte(0xFF);msg.AddByte(0xFF);
-			  msg.AddByte(0xFF);msg.AddByte(0xFF);msg.AddByte(0xFF);msg.AddByte(0xFF);
-			  msg.AddByte(0xFF);msg.AddByte(0xFF);msg.AddByte(0xFF);msg.AddByte(0xFF);
-			  msg.AddByte(0xFF);msg.AddByte(0xFF);msg.AddByte(0xFF);msg.AddByte(0xFF);
-			  msg.AddByte(0xFF);msg.AddByte(0xFF);msg.AddByte(0xFF);msg.AddByte(0xFF);
-			  msg.AddByte(0xFF);msg.AddByte(0xFF);msg.AddByte(0xFF);msg.AddByte(0xFF);
-			  msg.AddByte(0xFF);msg.AddByte(0xFF);msg.AddByte(0xFF);msg.AddByte(0xFF);
-			*/
 
 			msg.AddByte(0x64);
 			msg.AddPosition(player->pos);
@@ -2494,7 +2460,7 @@ void Protocol76::sendTextWindow(Item* item,const unsigned short maxlen, const bo
 	msg.AddByte(0x96);
 	windowTextID++;
 	msg.AddU32(windowTextID);
-	//msg.AddU16(item->getID());
+
 	msg.AddItemId(item);
 	if(canWrite){
 		msg.AddU16(maxlen);
@@ -2562,14 +2528,12 @@ void Protocol76::AddAnimatedText(NetworkMessage &msg,const Position &pos, unsign
 	msg.AddString(text);
 }
 
-
 void Protocol76::AddMagicEffect(NetworkMessage &msg,const Position &pos, unsigned char type)
 {
 	msg.AddByte(0x83);
 	msg.AddPosition(pos);
 	msg.AddByte(type+1);
 }
-
 
 void Protocol76::AddDistanceShoot(NetworkMessage &msg,const Position &from, const Position &to, unsigned char type)
 {
@@ -2578,7 +2542,6 @@ void Protocol76::AddDistanceShoot(NetworkMessage &msg,const Position &from, cons
 	msg.AddPosition(to);
 	msg.AddByte(type+1);
 }
-
 
 void Protocol76::AddCreature(NetworkMessage &msg,const Creature *creature, bool known, unsigned int remove)
 {
@@ -2592,7 +2555,7 @@ void Protocol76::AddCreature(NetworkMessage &msg,const Creature *creature, bool 
 	{
 		msg.AddByte(0x61);
 		msg.AddByte(0x00);
-		//AddU32(0);
+
 		msg.AddU32(remove);
 		msg.AddU32(creature->getID());
 		msg.AddString(creature->getName());
@@ -2663,7 +2626,6 @@ void Protocol76::AddCreature(NetworkMessage &msg,const Creature *creature, bool 
 		msg.AddByte(0x00);
 }
 
-
 void Protocol76::AddPlayerStats(NetworkMessage &msg,const Player *player)
 {
 	msg.AddByte(0xA0);
@@ -2718,7 +2680,6 @@ void Protocol76::AddPlayerSkills(NetworkMessage &msg,const Player *player)
 	msg.AddByte(player->getSkill(SKILL_FISH,   SKILL_PERCENT));
 }
 
-
 void Protocol76::AddPlayerInventoryItem(NetworkMessage &msg,const Player *player, int item)
 {
 	if (player->getItem(item) == NULL)
@@ -2733,7 +2694,6 @@ void Protocol76::AddPlayerInventoryItem(NetworkMessage &msg,const Player *player
 		msg.AddItem(player->getItem(item));
 	}
 }
-
 
 void Protocol76::AddCreatureSpeak(NetworkMessage &msg,const Creature *creature, SpeakClasses  type, std::string text, unsigned short channelId)
 {
@@ -2856,7 +2816,6 @@ void Protocol76::WriteBuffer(NetworkMessage &add){
 			return;
 }
 
-
 void Protocol76::sendWorldLightLevel(unsigned char lightlevel, unsigned char color)
 {
 	NetworkMessage msg;
@@ -2875,7 +2834,6 @@ void Protocol76::sendPlayerLightLevel(const Player* player)
 	msg.AddByte(player->getLightColor());		//
 	WriteBuffer(msg);
 }
-
 
 void Protocol76::sendHouseWindow(std::string members)
 {
@@ -2897,7 +2855,6 @@ void Protocol76::parseHouseWindow(NetworkMessage& msg)
 	std::string new_text = msg.GetRaw();
 	player->receiveHouseWindow(new_text);
 }
-
 
 void Protocol76::elemParseAddVip(NetworkMessage &msg)
 {
@@ -2940,7 +2897,6 @@ void Protocol76::elemParseRemoveVip(NetworkMessage &msg)
 	if(id >= 1 && id <= MAX_VIPS)
 		player->vip[id-1].clear();
 }
-
 
 void Protocol76::sendSkull(const Creature *creature)
 {

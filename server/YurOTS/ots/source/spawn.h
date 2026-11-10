@@ -18,7 +18,6 @@
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
 
-
 #ifndef __SPAWN_H
 #define __SPAWN_H
 
@@ -43,11 +42,6 @@ public:
 
 public:
 	bool startup();
-
-	/*
-	virtual void onCreatureEnter(const Creature *creature, const Position &pos);
-	virtual void onCreatureLeave(const Creature *creature, const Position &pos);
-	*/
 
 private:
 	Game *game;
@@ -79,7 +73,7 @@ class SpawnManager {
 public:
 	SpawnManager();
 	~SpawnManager();
-	
+
 	static SpawnManager* instance();
 	static bool initialize(Game *igame);
 	static bool addSpawn(Spawn* spawn);

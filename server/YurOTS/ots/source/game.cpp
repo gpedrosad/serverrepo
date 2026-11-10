@@ -18,7 +18,6 @@
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
 
-
 #include "definitions.h"
 
 #include <string>
@@ -67,7 +66,6 @@ using namespace std;
 #include "tools.h"
 #include "private_trainers.h"
 #include <ctype.h>
-
 
 #define EVENT_CHECKCREATURE          123
 #define EVENT_CHECKCREATUREATTACKING 124
@@ -1414,7 +1412,6 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 		}
 	}
 
-
 	//Add blood?
 	if((drawBlood || attackedCreature->health <= 0) && damage > 0 && attackedCreature->bloodsplash != 255) {
 		Item* splash = Item::CreateItem(dead? ITEM_POOL : ITEM_SPLASH, attackedCreature->bloodsplash);
@@ -1422,7 +1419,6 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 		game->startDecay(splash);
 	}
 }
-
 
 Game::Game()
 {
@@ -1451,7 +1447,6 @@ Game::Game()
 	addEvent(makeTask(10000, boost::bind(&Game::checkLight, this, 10000)));
 }
 
-
 Game::~Game()
 {
 	if(map) {
@@ -1477,8 +1472,6 @@ int Game::loadMap(std::string filename, std::string filekind) {
 	max_players = atoi(g_config.getGlobalString("maxplayers").c_str());
 	return map->loadMap(filename, filekind);
 }
-
-
 
 /*****************************************************************************/
 
@@ -1606,21 +1599,11 @@ unsigned long Game::addEvent(SchedulerTask* event) {
 
 	eventIdMap[event->getEventId()] = event;
 
-	/*
-	if (eventList.empty() ||  *event < *eventList.top())
-    do_signal = true;
-	*/
-
 	bool isEmpty = eventList.empty();
 	eventList.push(event);
 
 	if(isEmpty || *event < *eventList.top())
 		do_signal = true;
-
-	/*
-	if (eventList.empty() ||  *event < *eventList.top())
-    do_signal = true;
-	*/
 
   OTSYS_THREAD_UNLOCK(eventLock, "addEvent()")
 
@@ -1769,7 +1752,7 @@ bool Game::placeCreature(Position &pos, Creature* c
 			c->useThing();
 
 			c->setID();
-			//std::cout << "place: " << c << " " << c->getID() << std::endl;
+
 			listCreature.addList(c);
 			c->addList();
 			c->isRemoved = false;
@@ -1790,7 +1773,6 @@ bool Game::placeCreature(Position &pos, Creature* c
 				c->eventCheck = addEvent(makeTask(500, std::bind2nd(std::mem_fun(&Game::checkCreature), c->getID())));
 			}
 
-			//c->eventCheckAttacking = addEvent(makeTask(2000, std::bind2nd(std::mem_fun(&Game::checkCreatureAttacking), c->getID())));
 		}
 	}
 	else {
@@ -1813,7 +1795,6 @@ bool Game::removeCreature(Creature* c)
 	if(!removeThing(NULL,c->pos,c))
 		return false;
 
-	//std::cout << "remove: " << c << " " << c->getID() << std::endl;
 	listCreature.removeList(c->getID());
 	c->removeList();
 	c->isRemoved = true;
@@ -1862,7 +1843,6 @@ void Game::thingMove(Creature *creature, Thing *thing,
 		thingMoveInternal(creature, thing->pos.x, thing->pos.y, thing->pos.z, oldstackpos, 0, to_x, to_y, to_z, count);
 	}
 }
-
 
 void Game::thingMove(Creature *creature, unsigned short from_x, unsigned short from_y, unsigned char from_z,
 	unsigned char stackPos, unsigned short itemid, unsigned short to_x, unsigned short to_y, unsigned char to_z, unsigned char count)
@@ -2035,7 +2015,7 @@ bool Game::onPrepareMoveThing(Creature* creature, const Thing* thing,
 		}
 	}
 
-	return true; //return thing->canMovedTo(toTile);
+	return true;
 }
 
 /*inventory -> container*/
@@ -2186,7 +2166,6 @@ bool Game::onPrepareMoveCreature(Creature *creature, const Creature* creatureMov
 				player->sendCancelWalk();
 			}
 
-			//player->sendCancelWalk("You can not enter a protection zone after attacking another player.");
 			return false;
 		}
 		else if (playerMoving->pzLocked) {
@@ -2642,7 +2621,6 @@ void Game::thingMoveInternal(Player *player,
 					player->updateInventoryWeigth();
 				}
 
-				//if(fromContainer->pos.x != 0xFFFF) {
 				if(fromContainer->getTopParent()->pos.x != 0xFFFF) {
 					SpectatorVec list;
 					SpectatorVec::iterator it;
@@ -3219,13 +3197,6 @@ void Game::thingMoveInternal(Creature *creature, unsigned short from_x, unsigned
 		return;
 
 	Tile *toTile   = getTile(to_x, to_y, to_z);
-	/*
-	if(!toTile){
-		if(dynamic_cast<Player*>(player))
-			dynamic_cast<Player*>(player)->sendCancelWalk("Sorry, not possible...");
-		return;
-	}
-	*/
 
 	Thing *thing = fromTile->getThingByStackPos(stackPos);
 
@@ -3236,7 +3207,7 @@ void Game::thingMoveInternal(Creature *creature, unsigned short from_x, unsigned
 				<< ", stackpos: "<< (int)stackPos
 				<< ", to_x: "<< (int)to_x << ", to_y: "<< (int)to_y << ", to_z: "<< (int)to_z
 				*/
-				//<< std::endl;
+
 #endif
 
 	if (!thing)
@@ -3251,7 +3222,6 @@ void Game::thingMoveInternal(Creature *creature, unsigned short from_x, unsigned
 	oldPos.x = from_x;
 	oldPos.y = from_y;
 	oldPos.z = from_z;
-
 
 	// *** Creature moving itself to a non-tile
 	if(!toTile && creatureMoving && creatureMoving == creature){
@@ -3304,7 +3274,6 @@ void Game::thingMoveInternal(Creature *creature, unsigned short from_x, unsigned
 		return;
 	}
 
-
 	// *** Checking if the thing can be moved around
 
 	if(!toTile)
@@ -3318,11 +3287,6 @@ void Game::thingMoveInternal(Creature *creature, unsigned short from_x, unsigned
 
 	if(!onPrepareMoveThing(creature, thing, fromTile, toTile, count))
 		return;
-
-	/*
-	if(item && (item->getID() != itemid || item != fromTile->getTopDownItem()))
-		return;
-	*/
 
 	// *** If the destiny is a teleport item, teleport the thing
 
@@ -3648,12 +3612,11 @@ void Game::teleport(Thing *thing, const Position& newPos) {
 
 	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::teleport()");
 
-	//Tile *toTile = getTile( newPos.x, newPos.y, newPos.z );
 	Tile *toTile = map->getTile(newPos);
 	if(toTile){
 		Creature *creature = dynamic_cast<Creature*>(thing);
 		if(creature){
-			//Tile *fromTile = getTile( thing->pos.x, thing->pos.y, thing->pos.z );
+
 			Tile *fromTile = map->getTile(thing->pos);
 			if(!fromTile)
 				return;
@@ -3759,10 +3722,9 @@ void Game::teleport(Thing *thing, const Position& newPos) {
 				addThing(NULL,newPos,thing);
 			}
 		}
-	}//if(toTile)
+	}
 
 }
-
 
 void Game::creatureChangeOutfit(Creature *creature)
 {
@@ -3964,7 +3926,7 @@ bool Game::creatureMakeMagic(Creature *creature, const Position& centerpos, cons
 		}
 		if(t && (!creature || (creature->access >= g_config.ACCESS_PROTECT || !me->offensive || !t->isPz() || allowPrivateTrainerPz) ) ) {
 			if((t->isBlocking(BLOCK_PROJECTILE) == RET_NOERROR) && (me->isIndirect() ||
-				//(map->canThrowItemTo(frompos, (*maIt), false, true) && !t->floorChange()))) {
+
 				((map->canThrowObjectTo(centerpos, (*maIt), BLOCK_PROJECTILE) == RET_NOERROR) && !t->floorChange()))) {
 
 				if(maIt->x < topLeft.x)
@@ -4001,7 +3963,6 @@ bool Game::creatureMakeMagic(Creature *creature, const Position& centerpos, cons
 	//need some more work to work for all situations...
 	GameState gamestate(this, Range(topLeft, bottomRight));
 
-	//Tile *targettile = getTile(centerpos.x, centerpos.y, centerpos.z);
 	Tile *targettile = map->getTile(centerpos);
 	bool bSuccess = false;
 	bool hasTarget = false;
@@ -4036,7 +3997,7 @@ bool Game::creatureMakeMagic(Creature *creature, const Position& centerpos, cons
 			std::vector<Position>::const_iterator tlIt;
 			for(tlIt = poslist.begin(); tlIt != poslist.end(); ++tlIt) {
 				Position pos = *tlIt;
-				//Tile *tile = getTile(pos.x, pos.y, pos.z);
+
 				Tile *tile = map->getTile(pos);
 				const CreatureStateVec& creatureStateVec = gamestate.getCreatureStateList(tile);
 
@@ -4167,14 +4128,12 @@ bool Game::creatureThrowRune(Creature *creature, const Position& centerpos, cons
 	if(creature->pos.z != centerpos.z) {
 		creature->sendCancel("You need to be on the same floor.");
 	}
-	//else if(!map->canThrowItemTo(creature->pos, centerpos, false, true)) {
+
 	else if(map->canThrowObjectTo(creature->pos, centerpos, BLOCK_PROJECTILE) != RET_NOERROR) {
 		creature->sendCancel("You cannot throw there.");
 	}
 	else
 		ret = creatureMakeMagic(creature, centerpos, &me);
-
-
 
 	return ret;
 }
@@ -4184,9 +4143,8 @@ bool Game::creatureOnPrepareAttack(Creature *creature, Position pos, const Creat
   if(creature){
 		Player* player = dynamic_cast<Player*>(creature);
 
-		//Tile* tile = (Tile*)getTile(creature->pos.x, creature->pos.y, creature->pos.z);
 		Tile* tile = map->getTile(creature->pos);
-		//Tile* targettile = getTile(pos.x, pos.y, pos.z);
+
 		Tile* targettile = map->getTile(pos);
 		bool privateTrainerHouseAttack = canAttackPrivateTrainerInHouse(creature, attackedCreature, tile, targettile);
 
@@ -4225,13 +4183,6 @@ bool Game::creatureOnPrepareMagicAttack(Creature *creature, Position pos, const 
 		magicTarget = magicTargetTile->getCreature();
 
 	if(!me->offensive || me->isIndirect() || creatureOnPrepareAttack(creature, pos, magicTarget)) {
-		/*
-			if(creature->access < ACCESS_PROTECT) {
-				if(!((std::abs(creature->pos.x-centerpos.x) <= 8) && (std::abs(creature->pos.y-centerpos.y) <= 6) &&
-					(creature->pos.z == centerpos.z)))
-					return false;
-			}
-		*/
 
 		Player* player = dynamic_cast<Player*>(creature);
 		if(player) {
@@ -4247,7 +4198,7 @@ bool Game::creatureOnPrepareMagicAttack(Creature *creature, Position pos, const 
 				}
 				else
 					player->mana -= (int64_t)me->manaCost;
-					//player->manaspent += me->manaCost;
+
 					player->addManaSpent((int64_t)me->manaCost);
 			}
 		}
@@ -4263,13 +4214,11 @@ void Game::creatureMakeDamage(Creature *creature, Creature *attackedCreature, fi
 	if(!creatureOnPrepareAttack(creature, attackedCreature->pos, attackedCreature))
 		return;
 
-
 	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::creatureMakeDamage()");
 
 	Player* player = dynamic_cast<Player*>(creature);
 	Player* attackedPlayer = dynamic_cast<Player*>(attackedCreature);
 
-	//Tile* targettile = getTile(attackedCreature->pos.x, attackedCreature->pos.y, attackedCreature->pos.z);
 	Tile* targettile = map->getTile(attackedCreature->pos);
 
 	//can the attacker reach the attacked?
@@ -4287,7 +4236,6 @@ void Game::creatureMakeDamage(Creature *creature, Creature *attackedCreature, fi
 				(std::abs(creature->pos.y-attackedCreature->pos.y) <= 5) &&
 				(creature->pos.z == attackedCreature->pos.z)) {
 
-					//if(map->canThrowItemTo(creature->pos, attackedCreature->pos, false, true))
 					if(map->canThrowObjectTo(creature->pos, attackedCreature->pos, BLOCK_PROJECTILE) == RET_NOERROR)
 						inReach = true;
 				}
@@ -4297,7 +4245,6 @@ void Game::creatureMakeDamage(Creature *creature, Creature *attackedCreature, fi
 				(std::abs(creature->pos.y-attackedCreature->pos.y) <= 5) &&
 				(creature->pos.z == attackedCreature->pos.z)) {
 
-					//if(map->canThrowItemTo(creature->pos, attackedCreature->pos, false, true))
 					if(map->canThrowObjectTo(creature->pos, attackedCreature->pos, BLOCK_PROJECTILE) == RET_NOERROR)
 						inReach = true;
 				}
@@ -4346,7 +4293,6 @@ void Game::creatureMakeDamage(Creature *creature, Creature *attackedCreature, fi
 	}
 	else if(player && skillTries > 0)
 		player->addSkillTry(skillTries);
-
 
 	SpectatorVec spectatorlist = gamestate.getSpectators();
 	SpectatorVec::iterator it;
@@ -4446,7 +4392,6 @@ void Game::creatureMakeDamage(Creature *creature, Creature *attackedCreature, fi
 		player->removeDistItem();
 	}
 
-
 }
 
 std::list<Position> Game::getPathTo(Creature *creature, Position start, Position to, bool creaturesBlock){
@@ -4544,7 +4489,7 @@ void Game::checkCreature(unsigned long id)
 		Player* player = dynamic_cast<Player*>(creature);
 		if(player)
 		{
-			//Tile *tile = getTile(player->pos.x, player->pos.y, player->pos.z);
+
 			Tile *tile = map->getTile(player->pos);
 			if(tile == NULL){
 				std::cout << "CheckPlayer NULL tile: " << player->getName() << std::endl;
@@ -4567,11 +4512,11 @@ void Game::checkCreature(unsigned long id)
 
 			if(!tile->isPz()){
 				if(player->food > 1000){
-					//player->mana += min(5, player->manamax - player->mana);
+
 					player->gainManaTick();
 					player->food -= thinkTicks;
 					if(player->healthmax - player->health > 0){
-						//player->health += min(5, player->healthmax - player->health);
+
 						if(player->gainHealthTick()){
 							SpectatorVec list;
 							SpectatorVec::iterator it;
@@ -4762,7 +4707,6 @@ void Game::changeSpeed(unsigned long id, unsigned short speed)
 
 		getSpectators(Range(creature->pos), list);
 
-		//for(unsigned int i = 0; i < list.size(); i++)
 		for(it = list.begin(); it != list.end(); ++it) {
 			Player* p = dynamic_cast<Player*>(*it);
 			if(p)
@@ -4790,12 +4734,12 @@ void Game::checkCreatureAttacking(unsigned long id)
 				Creature *attackedCreature = getCreatureByID(creature->attackedCreature);
 				if (attackedCreature)
 				{
-					//Tile* fromtile = getTile(creature->pos.x, creature->pos.y, creature->pos.z);
+
 					Tile* fromtile = map->getTile(creature->pos);
 					if(fromtile == NULL)
 					{
 						std::cout << "checkCreatureAttacking NULL tile: " << creature->getName() << std::endl;
-						//return;
+
 					}
 					Tile* targettile = map->getTile(attackedCreature->pos);
 					bool privateTrainerHouseAttack = canAttackPrivateTrainerInHouse(creature, attackedCreature, fromtile, targettile);
@@ -4805,7 +4749,7 @@ void Game::checkCreatureAttacking(unsigned long id)
 						Player* player = dynamic_cast<Player*>(creature);
 						if (player) {
 							player->sendTextMessage(MSG_SMALLINFO, "You may not attack a person in a protection zone.");
-							//player->sendCancelAttacking();
+
 							playerSetAttackedCreature(player, 0);
 							return;
 						}
@@ -4855,7 +4799,6 @@ void Game::checkCreatureAttacking(unsigned long id)
 	}
 
 	flushSendBuffers();
-
 
 }
 
@@ -4977,8 +4920,7 @@ void Game::CreateDamageUpdate(Creature* creature, Creature* attackCreature, int6
 	Player* attackPlayer = dynamic_cast<Player*>(attackCreature);
 	if(!player)
 		return;
-	//player->sendStats();
-	//msg.AddPlayerStats(player);
+
 	if (damage > 0) {
 		std::stringstream dmgmesg;
 
@@ -4999,7 +4941,7 @@ void Game::CreateDamageUpdate(Creature* creature, Creature* attackCreature, int6
 		dmgmesg <<".";
 
 		player->sendTextMessage(MSG_EVENT, dmgmesg.str().c_str());
-		//msg.AddTextMessage(MSG_EVENT, dmgmesg.str().c_str());
+
 	}
 	if (player->isRemoved == true){
 		player->sendTextMessage(MSG_ADVANCE, "You are dead.");
@@ -5011,8 +4953,7 @@ void Game::CreateManaDamageUpdate(Creature* creature, Creature* attackCreature, 
 	Player* player = dynamic_cast<Player*>(creature);
 	if(!player)
 		return;
-	//player->sendStats();
-	//msg.AddPlayerStats(player);
+
 	if (damage > 0) {
 		std::stringstream dmgmesg;
 		dmgmesg << "You lose " << damage << " mana";
@@ -5022,7 +4963,7 @@ void Game::CreateManaDamageUpdate(Creature* creature, Creature* attackCreature, 
 		dmgmesg <<".";
 
 		player->sendTextMessage(MSG_EVENT, dmgmesg.str().c_str());
-		//msg.AddTextMessage(MSG_EVENT, dmgmesg.str().c_str());
+
 	}
 }
 
@@ -5182,8 +5123,7 @@ void Game::playerAutoWalk(Player* player, std::list<Direction>& path)
 
 	// then we schedule the movement...
   // the interval seems to depend on the speed of the char?
-	//player->eventAutoWalk = addEvent(makeTask<Direction>(0, MovePlayer(player->getID()), path, 400, StopMovePlayer(player->getID())));
-	//player->pathlist = path;
+
 }
 
 bool Game::playerUseItemEx(Player *player, const Position& posFrom,const unsigned char  stack_from,
@@ -5235,10 +5175,8 @@ bool Game::playerUseItemEx(Player *player, const Position& posFrom,const unsigne
 		}
 	}
 
-
 	return ret;
 }
-
 
 bool Game::playerUseItem(Player *player, const Position& pos, const unsigned char stackpos, const unsigned short itemid, unsigned char index)
 {
@@ -5356,10 +5294,7 @@ void Game::playerRequestTrade(Player* player, const Position& pos,
 	}
 
 	if(!player->removeItem(tradeItem, true)) {
-		/*if( (abs(player->pos.x - pos.x) > 1) || (abs(player->pos.y - pos.y) > 1) ) {
-			player->sendCancel("To far away...");
-			return;
-		}*/
+
 		player->sendCancel("Sorry, not possible.");
 		return;
 	}
@@ -5613,7 +5548,6 @@ void Game::playerSetAttackedCreature(Player* player, unsigned long creatureid)
 		player->sendCancelAttacking();
 	}
 
-
 	Creature* attackedCreature = NULL;
 	if(creatureid != 0) {
 		attackedCreature = getCreatureByID(creatureid);
@@ -5726,7 +5660,7 @@ void Game::addPlayerBuffer(Player* p)
 void Game::FreeThing(Thing* thing){
 
 	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::FreeThing()");
-	//std::cout << "freeThing() " << thing <<std::endl;
+
 	ToReleaseThings.push_back(thing);
 
 	return;
@@ -5936,7 +5870,7 @@ void Game::sendUpdateThing(Player* player,const Position &pos,const Thing* thing
 			else{
 				//never should be here
 				std::cout << "Error: sendUpdateThing" << std::endl;
-				//player->onItemUpdateContainer(container,item,slot);
+
 			}
 
 		}
@@ -6000,7 +5934,7 @@ void Game::addThing(Player* player,const Position &pos,Thing* thing)
 	{
 		if(!thing)
 			return;
-		//Tile *tile = map->getTile(pos.x, pos.y, pos.z);
+
 		Tile *tile = map->getTile(pos);
 		if(tile){
 			thing->pos = pos;
@@ -6043,7 +5977,6 @@ void Game::addThing(Player* player,const Position &pos,Thing* thing)
 					}
 				}
 
-				//Game::creatureBroadcastTileUpdated(thing->pos);
 			}
 			else if(item && item->isStackable()){
 				Item *topitem = tile->getTopDownItem();
@@ -6095,11 +6028,11 @@ bool Game::removeThing(Player* player,const Position &pos,Thing* thing,  bool se
 		}
 		else //inventory
 		{
-			//sendRemoveThing(player,pos,thing,0,true);
+
 			if(!player->removeItemInventory(pos.y))
 				return false;
 			player->onThingRemove(thing);
-			//player->removeItemInventory(pos.y,true);
+
 		}
 		if(setRemoved)
 			item->isRemoved = true;
@@ -6107,7 +6040,7 @@ bool Game::removeThing(Player* player,const Position &pos,Thing* thing,  bool se
 	}
 	else //ground
 	{
-		//Tile *tile = map->getTile(pos.x, pos.y, pos.z);
+
 		Tile *tile = map->getTile(pos);
 		if(tile){
 			unsigned char stackpos = tile->getThingStackPos(thing);
@@ -6175,7 +6108,7 @@ Thing* Game::getThing(const Position &pos,unsigned char stack, Player* player /*
 	}
 	else //from ground
 	{
-		//Tile *t = getTile(pos.x, pos.y, pos.z);
+
 		Tile *t = map->getTile(pos);
 		if(!t)
 			return NULL;
@@ -6183,7 +6116,6 @@ Thing* Game::getThing(const Position &pos,unsigned char stack, Player* player /*
 		return t->getThingByStackPos(stack);
 	}
 }
-
 
 bool Game::loadNpcs()
 {
@@ -6235,7 +6167,6 @@ bool Game::loadNpcs()
 	xmlFreeDoc(doc);
 	return true;
 }
-
 
 static std::string xmlAttrEscape(const std::string& value)
 {
@@ -6405,7 +6336,6 @@ void Game::checkSaveRequest()
 
 	addEvent(makeTask(2000, std::mem_fun(&Game::checkSaveRequest)));
 }
-
 
 void Game::vipLogin(Player* player)
 {
@@ -6791,7 +6721,6 @@ void Game::checkSpell(Player* player, SpeakClasses& type, std::string text)
 	}
 }
 
-
 bool Game::placeSummon(Player* p, const std::string& name)
 {
 	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::placeSummon()");
@@ -6821,7 +6750,6 @@ bool Game::placeSummon(Player* p, const std::string& name)
 		return true;
 	}
 }
-
 
 enum RageVariantStage {
 	RAGE_VARIANT_NONE = 0,
@@ -6981,7 +6909,6 @@ bool Game::trySpawnRageMonster(const Monster* slainMonster, const Position& deat
 	return true;
 }
 
-
 void Game::creatureBroadcastTileUpdated(const Position& pos)
 {
 	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::creatureBroadcastTileUpdated()");
@@ -7003,7 +6930,6 @@ void Game::creatureBroadcastTileUpdated(const Position& pos)
 		}
 	}
 }
-
 
 void Game::Skull(Player* player)
 {
@@ -7140,7 +7066,6 @@ void Game::disbandParty(unsigned long partyID)
 	}
 }
 
-
 class MagicEffectAreaNoExhaustionClass: public MagicEffectAreaClass {
 public:
 	bool causeExhaustion(bool hasTarget) const { return false; }
@@ -7187,7 +7112,6 @@ void Game::burstArrow(Creature* c, const Position& pos)
 	creatureThrowRune(c, pos, runeAreaSpell);
 }
 
-
 void Game::sheduleShutdown(int minutes)
 {
 	if (minutes > 0)
@@ -7205,7 +7129,7 @@ void Game::checkShutdown(int minutes)
 
 		serverSave();
 		std::cout << ":: shutdown..." << std::endl;
-		//setGameState(GAME_STATE_SHUTDOWN);
+
 		OTSYS_SLEEP(1000);
 		exit(1);
 	}
@@ -7225,7 +7149,6 @@ void Game::checkShutdown(int minutes)
 	}
 }
 
-
 void Game::setMaxPlayers(uint32_t newmax)
 {
 	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::setMaxPlayers()");
@@ -7233,13 +7156,11 @@ void Game::setMaxPlayers(uint32_t newmax)
 	Status::instance()->playersmax = newmax;
 }
 
-
 long Game::cleanMap()
 {
 	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::cleanMap()");
 	return map->clean();
 }
-
 
 void Game::creatureChangeLight(Player* player, int time, unsigned char lightlevel, unsigned char lightcolor)
 {
@@ -7299,7 +7220,6 @@ void Game::checkLight(int t)
 unsigned char Game::getLightLevel(){
 	return lightlevel;
 }
-
 
 static bool isSorcererOrDruidFamily(playervoc_t vocation)
 {

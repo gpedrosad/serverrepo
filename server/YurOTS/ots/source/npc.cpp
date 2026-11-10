@@ -18,7 +18,6 @@
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
 
-
 #include "definitions.h"
 
 #include <algorithm>
@@ -285,7 +284,6 @@ static bool removePlayerSellableItems(Player* player, int itemid, int count)
 		}
 	}
 
-
 	for(int i = 0; i < 11 && count > 0; i++){
 		Item* invItem = player->getItem(i);
 		if(!invItem)
@@ -488,7 +486,7 @@ Npc::Npc(const std::string& name, Game* game) :
 			level = atoi(tmp);
 			xmlFreeOTSERV(tmp);
 			setNormalSpeed();
-			//std::cout << level << std::endl;
+
 		}
 		else{
 			level = 1;
@@ -497,7 +495,7 @@ Npc::Npc(const std::string& name, Game* game) :
 		if(tmp = (char*)xmlGetProp(root, (const xmlChar *)"maglevel")) {
 			maglevel = atoi(tmp);
 			xmlFreeOTSERV(tmp);
-			//std::cout << maglevel << std::endl;
+
 		}
 		else{
 			maglevel = 1;
@@ -623,7 +621,6 @@ Npc::Npc(const std::string& name, Game* game) :
 	this->game=game;
 }
 
-
 Npc::~Npc()
 {
 	clearPendingTrade(this->getID());
@@ -672,12 +669,6 @@ void Npc::onThingAppear(const Thing* thing){
 void Npc::onCreatureTurn(const Creature *creature, unsigned char stackpos){
 	//not implemented yet, do we need it?
 }
-
-/*
-void Npc::setAttackedCreature(unsigned long id){
-	//not implemented yet
-}
-*/
 
 void Npc::onCreatureSay(const Creature *creature, SpeakClasses type, const std::string &text){
 	if(creature->getID() == this->getID())
@@ -835,7 +826,6 @@ int Npc::onThink(int& newThinkTicks){
 	return Creature::onThink(newThinkTicks);
 }
 
-
 void Npc::doSay(std::string msg){
 	if(game->creatureSaySpell(this, msg) == SPELL_NOT_RECOGNIZED)
 		this->game->creatureSay(this, SPEAK_SAY, msg);
@@ -923,7 +913,6 @@ void NpcScript::onThink(){
 		}
 	}
 }
-
 
 void NpcScript::onCreatureAppear(unsigned long cid){
 	if(npc->getID() != cid){
@@ -1178,8 +1167,6 @@ int NpcScript::luaActionMoveTo(lua_State* L){
 	return 0;
 }
 
-
-
 int NpcScript::luaActionAttackCreature(lua_State *L){
 	int id=(int)lua_tonumber(L, -1);
 	lua_pop(L,1);
@@ -1188,7 +1175,6 @@ int NpcScript::luaActionAttackCreature(lua_State *L){
 		mynpc->doAttack(id);
 	return 0;
 }
-
 
 int NpcScript::luaBuyItem(lua_State *L)
 {
@@ -1578,7 +1564,6 @@ int NpcScript::luaPayMoney(lua_State *L)
 
 	return 1;
 }
-
 
 int NpcScript::luaGetPlayerStorageValue(lua_State* L)
 {
@@ -2211,7 +2196,6 @@ int NpcScript::luaDoPlayerAddMana(lua_State* L)
 	return 1;
 }
 
-
 int NpcScript::luaFoundNewGuild(lua_State* L)
 {
 	const char* gname = lua_tostring(L, -1);
@@ -2314,7 +2298,6 @@ int NpcScript::luaSetPlayerGuildNick(lua_State* L)
 	return 0;
 }
 
-
 int NpcScript::luaSetPlayerVocation(lua_State* L)
 {
 	int id = (int)lua_tonumber(L, -2);
@@ -2330,7 +2313,6 @@ int NpcScript::luaSetPlayerVocation(lua_State* L)
 
 	return 0;
 }
-
 
 int NpcScript::luaGetPlayerVocation(lua_State* L)
 {
@@ -2383,7 +2365,6 @@ int NpcScript::luaLearnSpell(lua_State *L)
 
 	return 0;
 }
-
 
 // isPzLocked(cid): true while the player is in combat (PZ locked). The boat uses it so a trip
 // cannot be used to run away from a fight.

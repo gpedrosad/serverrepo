@@ -24,7 +24,6 @@
 #include "npc.h"
 #include "monster.h"
 
-
 #include <libxml/xmlmemory.h>
 #include <libxml/parser.h> 
 
@@ -82,19 +81,19 @@ bool SpawnManager::loadSpawnsXML(std::string filename)
 		xmlNodePtr root, p;
 		char* nodeValue = NULL;
 		root = xmlDocGetRootElement(doc);
-		
+
 		root = xmlDocGetRootElement(doc);
-		
+
 		if (xmlStrcmp(root->name,(const xmlChar*) "spawns")){			
 			xmlFreeDoc(doc);
 			return false;
 		}
 
 		p = root->children;
-            
+
 		while (p) {
 			const char* str = (char*)p->name;
-			
+
 			if (strcmp(str, "spawn") == 0) {
 				Position centerpos;
 				int radius;
@@ -228,7 +227,6 @@ bool SpawnManager::loadSpawnsXML(std::string filename)
 	return false;
 }
 
-
 bool SpawnManager::startup()
 {
 	for(spawnsList::iterator it = spawns.begin(); it != spawns.end(); ++it) {
@@ -296,10 +294,10 @@ bool Spawn::addMonster(std::string name, Direction dir, int x, int y, int spawnt
 
 Monster* Spawn::respawn(unsigned long spawnid, Position &pos, std::string &name, Direction dir)
 {
-	//Monster *monster = new Monster(name, game);
+
 	Monster* monster = Monster::createMonster(name, game);
 	if(monster){
-		//if(monster->isLoaded()) {
+
 		monster->setDirection(dir);
 		monster->masterPos = centerPos;
 
@@ -309,7 +307,7 @@ Monster* Spawn::respawn(unsigned long spawnid, Position &pos, std::string &name,
 			spawnmap[spawnid].lastspawn = OTSYS_TIME();
 			return monster;
 		}
-		//}
+
 		//not loaded, or could not place it on the map
 		delete monster;
 		monster = NULL;
@@ -335,7 +333,7 @@ void Spawn::idle(int t)
 				spawnmap[it->first].lastspawn = OTSYS_TIME();
 			}
 			it->second->releaseThing();
-			//delete it->second;
+
 			spawnedmap.erase(it++);
 		}
 		else
@@ -344,7 +342,7 @@ void Spawn::idle(int t)
 			// original monster is still alive somewhere else in the world.
 			++it;
 	}
-	
+
 	for(SpawnMap::iterator sit = spawnmap.begin(); sit != spawnmap.end(); ++sit) {
 
 		if(spawnedmap.count(sit->first) == 0) {

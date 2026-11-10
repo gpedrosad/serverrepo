@@ -75,7 +75,7 @@ protected:
 	inline bool checks(const NODE node);
 	inline bool safeSeek(unsigned long pos);
 	inline bool safeTell(long &pos);
-	//inline bool writeData(void* data, int size, bool unescape);
+
 public:
 	inline bool writeData(const void* data, int size, bool unescape){
 		for(int i = 0; i < size; ++i) {
@@ -119,7 +119,6 @@ protected:
 	long loadCacheBlock(unsigned long pos);
 };
 
-
 class PropStream{
 public:
 	PropStream(){end = NULL; p = NULL;}
@@ -140,7 +139,7 @@ public:
 		p = p + sizeof(T);
 		return true;
 	}
-	
+
 	template <typename T>
 	inline bool GET_VALUE(T &ret){
 		if(size() < sizeof(T)){
@@ -150,23 +149,23 @@ public:
 		p = p + sizeof(T);
 		return true;
 	}
-	
+
 	inline bool GET_ULONG(unsigned long &ret){
 		return GET_VALUE(ret);
 	}
-	
+
 	inline bool GET_USHORT(unsigned short &ret){
 		return GET_VALUE(ret);
 	}
-	
+
 	inline bool GET_UCHAR(unsigned char &ret){
 		return GET_VALUE(ret);
 	}
-	
+
 	inline bool GET_STRING(std::string &ret){
 		char* str;
 		unsigned short str_len;
-		
+
 		if(!GET_USHORT(str_len)){
 			return false;
 		}
@@ -181,13 +180,11 @@ public:
 		p = p + str_len;
 		return true;
 	}
-	
-	
+
 protected:
 	long size(){return long(end - p);};
 	char* p;
 	char* end;
 };
-
 
 #endif

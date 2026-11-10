@@ -96,7 +96,6 @@ enum freeslot_t{
 	SLOT_TYPE_CONTAINER
 };
 
-
 const int MAX_VIPS = 30;
 
 enum trade_state {
@@ -178,7 +177,6 @@ public:
 	const std::string& getGuildName() const {return guildName;};
 	unsigned long getGuildId() const {return guildId;};
 
-
 	int64_t getPlayerInfo(playerinfo_t playerinfo) const;
 	int64_t getSkill(skills_t skilltype, skillsid_t skillinfo) const;
 	std::string getSkillName(int skillid);
@@ -226,20 +224,19 @@ public:
 	bool substractMoney(unsigned long money);
 	bool substractMoneyItem(Item *item, unsigned long money);
 
-
 	unsigned long eventAutoWalk;
 
 	//items
 	containerLayout vcontainers;
 	void preSave();
     virtual void useThing() {
-		//std::cout << "Player: useThing() " << this << std::endl;
+
 		useCount++;
 	};
 
 	virtual void releaseThing() {
 		useCount--;
-		//std::cout << "Player: releaseThing() " << this << std::endl;
+
 		if (useCount == 0)
 			delete this;
 	};
@@ -284,7 +281,6 @@ public:
 
 	void die();      //player loses exp/skills/maglevel on death
 
-	//virtual void setAttackedCreature(unsigned long id);
 	virtual bool isAttackable() const { return (access < g_config.ACCESS_PROTECT); };
 	virtual bool isPushable() const;
 	virtual void dropLoot(Container *corpse, Player* killer = NULL);
@@ -305,9 +301,6 @@ public:
 	void onItemUpdateContainer(const Container* container,const Item* item,const unsigned char slot);
 
 	//inventory - for this use int sendInventory(unsigned char sl_id)
-	//void onItemAddInvnetory(const unsigned char sl_id);
-	//void onItemRemoveInvnetory(const unsigned char sl_id);
-	//void onItemUpdateInvnetory(const unsigned char sl_id);
 
 	void setAcceptTrade(bool b);
 	bool getAcceptTrade() {return (tradeState == TRADE_ACCEPT);};
@@ -360,7 +353,6 @@ public:
 	void receiveHouseWindow(std::string members);
 
 	void setGuildInfo(gstat_t gstat, unsigned long gid, std::string gname, std::string grank, std::string nick);
-
 
 	void checkTraining(int thinkTics, Tile* tile);
 
@@ -497,20 +489,11 @@ protected:
 	unsigned char lightcolor;
 	int last_worldlightlevel;
 
-
 	bool trainingWarned;
 	bool trainingInArea;
 
 	int softBootsTick;
 
-/*
-#ifdef YUR_MULTIPLIERS
-	static int WEAPON_MUL[5];
-	static int DIST_MUL[5];
-	static int SHIELD_MUL[5];
-	static int64_t MANA_MUL[5];
-#endif //YUR_MULTIPLIERS
-*/
 	bool energyRing;
 	unsigned short ringRegenTick;
 	bool stealthRing;
@@ -611,7 +594,6 @@ protected:
 	std::string guildRank;
 	std::string guildNick;
 
-
 	StorageMap storageMap;
 
 	struct MoneyItem{
@@ -622,7 +604,6 @@ protected:
 	};
 	typedef std::multimap<int, struct MoneyItem*, std::less<int> > MoneyMap;
 	typedef MoneyMap::value_type moneymap_pair;
-
 
 	//for skill advances
 	unsigned int getReqSkillTries (int skill, int level, playervoc_t voc);
@@ -639,6 +620,5 @@ protected:
 	friend class IOPlayerXML;
 	friend class IOPlayerSQL;
 };
-
 
 #endif // __player_h_

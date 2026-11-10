@@ -31,7 +31,6 @@
 #include <sstream>
 #include <iomanip>
 
-
 Item* Item::CreateItem(const unsigned short _type, unsigned short _count /*= 0*/)
 {
 	Item *newItem;
@@ -72,7 +71,7 @@ unsigned short Item::getItemCountOrSubtype() const {
 	}
 	else if(isFluidContainer() || isSplash())
 		return fluid;
-	//else if(chargecount != 0)
+
 	else if(items[id].runeMagLevel != -1)
 		return chargecount;
 	else
@@ -82,9 +81,7 @@ unsigned short Item::getItemCountOrSubtype() const {
 void Item::setItemCountOrSubtype(unsigned char n)
 {
 	if(isStackable()){
-		/*if(n == 0){
-			count = 1;
-		}*/
+
 		if(n > 100){
 			count = 100;
 		}
@@ -123,7 +120,7 @@ unsigned short Item::getUniqueId() const{
 }
 
 Item::Item(const unsigned short _type) {
-	//std::cout << "Item constructor1 " << this << std::endl;
+
 	id = _type;
 	count = 0;
 	chargecount = 0;
@@ -144,7 +141,7 @@ Item::Item(const unsigned short _type) {
 }
 
 Item::Item(const Item &i){
-	//std::cout << "Item copy constructor " << this << std::endl;
+
 	id = i.id;
 	count = i.count;
 	chargecount = i.chargecount;
@@ -225,7 +222,7 @@ bool Item::rotate()
 }
 
 Item::Item(const unsigned short _type, unsigned short _count) {
-	//std::cout << "Item constructor2 " << this << std::endl;
+
 	id = _type;
 	count = 0;
 	chargecount = 0;
@@ -237,23 +234,7 @@ Item::Item(const unsigned short _type, unsigned short _count) {
 	specialDescription = NULL;
 	text = NULL;
 	setItemCountOrSubtype((unsigned char)_count);
-	/*
-	if(isStackable()){
-		if(_count == 0){
-			count = 1;
-		}
-		else if(_count > 100){
-			count = 100;
-		}
-		else{
-			count = _count;
-		}
-	}
-	else if(isFluidContainer() || isMultiType() )
-		fluid = _count;
-	else
-		chargecount = _count;
-	*/
+
 	throwRange = 6;
 
 	const ItemType& it = items[id];
@@ -265,7 +246,7 @@ Item::Item(const unsigned short _type, unsigned short _count) {
 
 Item::Item()
 {
-	//std::cout << "Item constructor3 " << this << std::endl;
+
 	id = 0;
 	count = 0;
 	chargecount = 0;
@@ -285,7 +266,7 @@ Item::Item()
 
 Item::~Item()
 {
-	//std::cout << "Item destructor " << this << std::endl;
+
 	if(specialDescription)
 		delete specialDescription;
 	if(text)
@@ -429,13 +410,6 @@ bool Item::isStackable() const {
 	return items[id].stackable;
 }
 
-/*
-bool Item::isMultiType() const {
-	//return items[id].multitype;
-	return (items[id].group == ITEM_GROUP_SPLASH);
-}
-*/
-
 bool Item::isFluidContainer() const {
 	return (items[id].isFluidContainer());
 }
@@ -484,7 +458,7 @@ bool Item::floorChangeWest() const {
 bool Item::isWeapon() const
 {
   //now also returns true on SHIELDS!!! Check back with getWeponType!
-  //old: return (items[id].weaponType != NONE && items[id].weaponType != SHIELD && items[id].weaponType != AMO);
+
   return (items[id].weaponType != NONE && items[id].weaponType != AMO);
 }
 
@@ -989,7 +963,6 @@ int Teleport::unserialize(xmlNodePtr p)
 		destPos.z = atoi(tmp);
 		xmlFreeOTSERV(tmp);
 	}
-
 
 	return 0;
 }

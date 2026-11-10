@@ -22,7 +22,7 @@
 
 Container::Container(const unsigned short _type) : Item(_type)
 {
-	//std::cout << "Container constructor " << this << std::endl;
+
 	maxitems = items[this->getID()].maxItems;
 	actualitems = 0;
 	parent = NULL;
@@ -32,7 +32,7 @@ Container::Container(const unsigned short _type) : Item(_type)
 
 Container::~Container()
 {
-	//std::cout << "Container destructor " << this << std::endl;
+
 	for(ContainerList::iterator cit = lcontained.begin(); cit != lcontained.end(); ++cit)
 	{
     	Container* container = dynamic_cast<Container*>(*cit);
@@ -40,13 +40,13 @@ Container::~Container()
     		container->setParent(NULL);
     	(*cit)->releaseThing();
   	}
-    
+
 	lcontained.clear();
 }
 
 bool Container::addItem(Item *newitem) {
 	//first check if we are a container, there is an item to be added and if we can add more items...
-	//if (!iscontainer) throw TE_NoContainer();
+
 	if (newitem == NULL)
 		return false;
 
@@ -149,7 +149,7 @@ long Container::getItemHoldingCount() const
 
 	std::list<const Container*> stack;
 	stack.push_back(this);
-	
+
 	ContainerList::const_iterator it;
 
 	while(stack.size() > 0) {
@@ -173,7 +173,7 @@ bool Container::isHoldingItem(const Item* item) const
 {
 	std::list<const Container*> stack;
 	stack.push_back(this);
-	
+
 	ContainerList::const_iterator it;
 
 	while(stack.size() > 0) {
@@ -203,7 +203,7 @@ double Container::getWeight() const
 
 	ContainerList::const_iterator it;
 	stack.push_back(this);
-	
+
 	while(stack.size() > 0) {
 		const Container *container = stack.front();
 		stack.pop_front();

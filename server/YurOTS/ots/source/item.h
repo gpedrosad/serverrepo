@@ -18,7 +18,6 @@
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
 
-
 #ifndef __OTSERV_ITEM_H
 #define __OTSERV_ITEM_H
 
@@ -75,7 +74,7 @@ public:
 	bool isBlocking() const;
 	bool isStackable() const;
 	bool isFluidContainer() const;
-	//bool isMultiType() const;
+
 	bool isAlwaysOnTop() const;
 	bool isGroundTile() const;
 	bool isSplash() const;
@@ -150,14 +149,13 @@ public:
 
 	virtual ~Item();
 	virtual void useThing() {
-		//std::cout << "Item: useThing() " << this << std::endl;
+
 		useCount++;
 	};
 
 	virtual void releaseThing() {
 		useCount--;
-		//std::cout << "Item: releaseThing() " << this << std::endl;
-		//if (useCount == 0)
+
 		if (useCount <= 0)
 			delete this;
 	};
@@ -171,14 +169,13 @@ public:
 	Teleport(const unsigned short _type);
 	virtual ~Teleport();
 	virtual void useThing() {
-		//std::cout << "Teleport: useThing() " << this << std::endl;
+
 		useCount++;
 	};
 
 	virtual void releaseThing() {
 		useCount--;
-		//std::cout << "Teleport: releaseThing() " << this << std::endl;
-		//if (useCount == 0)
+
 		if (useCount <= 0)
 			delete this;
 	};

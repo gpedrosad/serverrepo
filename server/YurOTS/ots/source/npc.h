@@ -18,10 +18,8 @@
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
 
-
 #ifndef __npc_h_
 #define __npc_h_
-
 
 #include "creature.h"
 #include "game.h"
@@ -35,7 +33,6 @@ extern "C"
 #include <lualib.h>
 }
 
-
 //////////////////////////////////////////////////////////////////////
 // Defines an NPC...
 class Npc;
@@ -44,13 +41,13 @@ public:
 	NpcScript(std::string name, Npc* npc);
 	virtual ~NpcScript(){}
 	//	virtual void onThingMove(const Player *player, const Thing *thing, const Position *oldPos,
-	//	unsigned char oldstackpos, unsigned char oldcount, unsigned char count);
+
 	virtual void onCreatureAppear(unsigned long cid);
 	virtual void onCreatureDisappear(int cid);
-	//	virtual void onCreatureTurn(const Creature *creature, unsigned char stackpos);
+
 	virtual void onCreatureSay(int cid, SpeakClasses, const std::string &text);
 	virtual void onThink();
-	//	virtual void onCreatureChangeOutfit(const Creature* creature);
+
 	static Npc* getNpc(lua_State *L);
 	static int luaActionSay(lua_State *L);
 	static int luaDoPlayerSendTextMessage(lua_State *L);
@@ -132,12 +129,12 @@ public:
 	Npc(const std::string& name, Game* game);
 	virtual ~Npc();
 	virtual void useThing() {
-		//std::cout << "Npc: useThing() " << this << std::endl;
+
 		useCount++;
 	};
 
 	virtual void releaseThing() {
-		//std::cout << "Npc: releaseThing() " << this << std::endl;
+
 		useCount--;
 		if (useCount == 0)
 			delete this;
@@ -180,7 +177,7 @@ protected:
 	virtual void onCreatureSay(const Creature *creature, SpeakClasses type, const std::string &text);
 	virtual void onCreatureChangeOutfit(const Creature* creature);
 	virtual int onThink(int& newThinkTicks);
-	//virtual void setAttackedCreature(unsigned long id);
+
 	virtual std::string getDescription(bool self = false) const;
 
 	virtual bool isAttackable() const { return false; };

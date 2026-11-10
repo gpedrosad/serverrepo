@@ -386,7 +386,6 @@ bool IOPlayerXML::loadPlayer(Player* player, std::string name){
 					isLoaded = false;
 			}
 
-
 			else if(str=="skills")
 			{
 				tmp=p->children;
@@ -675,7 +674,6 @@ bool IOPlayerXML::SaveContainer(xmlNodePtr nodeitem,Container* ccontainer)
 	return true;
 }
 
-
 bool IOPlayerXML::savePlayer(Player* player){
 	std::string datadir = g_config.getGlobalString("datadir");
 	std::string filename = IOPlayer::playerFilePath(datadir, player->getName());
@@ -703,7 +701,7 @@ bool IOPlayerXML::savePlayer(Player* player){
 	sb << (int)player->vocation;      xmlSetProp(root, (const xmlChar*) "voc", (const xmlChar*)sb.str().c_str());       sb.str("");
 	sb << player->level;              xmlSetProp(root, (const xmlChar*) "level", (const xmlChar*)sb.str().c_str());     sb.str("");
 	sb << player->access;             xmlSetProp(root, (const xmlChar*) "access", (const xmlChar*)sb.str().c_str());	sb.str("");
-	//sb << player->cap;    	        xmlSetProp(root, (const xmlChar*) "cap", (const xmlChar*)sb.str().c_str());       sb.str("");
+
 	sb << (int)std::floor(player->getCapacity() + 0.5); xmlSetProp(root, (const xmlChar*) "cap", (const xmlChar*)sb.str().c_str()); sb.str("");
 	sb << player->maglevel;	          xmlSetProp(root, (const xmlChar*) "maglevel", (const xmlChar*)sb.str().c_str());  sb.str("");
 	sb << player->getSoul();          xmlSetProp(root, (const xmlChar*) "soul", (const xmlChar*)sb.str().c_str());      sb.str("");
@@ -752,7 +750,6 @@ bool IOPlayerXML::savePlayer(Player* player){
 	sb << player->looklegs;         xmlSetProp(pn, (const xmlChar*) "legs", (const xmlChar*)sb.str().c_str());        sb.str("");
 	sb << player->lookfeet;         xmlSetProp(pn, (const xmlChar*) "feet", (const xmlChar*)sb.str().c_str());        sb.str("");
 	xmlAddChild(root, pn);
-
 
 	sn = xmlNewNode(NULL,(const xmlChar*)"skills");
 	for (int i = 0; i <= 6; i++)
@@ -860,7 +857,6 @@ bool IOPlayerXML::savePlayer(Player* player){
 	   return false;
        }
 }
-
 
 bool IOPlayerXML::LoadVIP(Player* player)
 {

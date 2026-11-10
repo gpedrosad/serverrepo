@@ -18,7 +18,6 @@
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
 
-
 #ifndef __monster_h_
 #define __monster_h_
 
@@ -51,19 +50,19 @@ public:
 	static Monster* createMonster(const std::string& name, Game* game);
 
 	virtual ~Monster();
-	//const Monster& operator=(const Monster& rhs);
+
 	virtual unsigned long idRange(){ return 0x40000000;}
 	static AutoList<Monster> listMonster;
 	void removeList() {listMonster.removeList(getID());}
 	void addList() {listMonster.addList(this);}
 
 	virtual void useThing() {
-		//std::cout << "Monster: useThing() " << this << std::endl;
+
 		useCount++;
 	};
 
 	virtual void releaseThing() {
-		//std::cout << "Monster: releaseThing() " << this << std::endl;
+
 		useCount--;
 		if (useCount == 0)
 			delete this;

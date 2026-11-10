@@ -19,10 +19,8 @@
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
 
-
 #ifndef __TILE_H__
 #define __TILE_H__
-
 
 #include "item.h"
 #include "container.h"
@@ -94,7 +92,7 @@ public:
 	Item* getTopTopItem();
 	Item* getTopDownItem();
 	Item* getMoveableBlockingItem();
-	
+
   int getCreatureStackPos(Creature *c) const;
   int getThingStackPos(const Thing *thing) const;
 	int getThingCount() const;
@@ -102,17 +100,15 @@ public:
   Thing* getTopThing();
 	Thing* getThingByStackPos(int pos);
 
-  //bool isBlockingProjectile() const;
-	//bool isBlocking(bool ispickupable = false, bool ignoreMoveableBlocking = false) const;
 	ReturnValue isBlocking(int objectstate, bool ignoreCreature = false, bool ignoreMoveableBlocking = false) const;
 
   bool isPz() const;
   void setPz();
-  
+
   bool floorChange() const;
   bool floorChangeDown() const;
   bool floorChange(Direction direction) const;
-  
+
   std::string getDescription() const;
 
 protected:
@@ -127,6 +123,4 @@ protected:
 	Position trainingExit;
 };
 
-
 #endif // #ifndef __TILE_H__
-

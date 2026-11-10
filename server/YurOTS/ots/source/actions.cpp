@@ -18,7 +18,6 @@
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
 
-
 #include "definitions.h"
 #include "const76.h"
 #include "player.h"
@@ -402,7 +401,6 @@ bool readXMLInteger(xmlNodePtr p, const char *tag, int &value)
 	}
 }
 
-
 Action::Action(Game* igame,const std::string &datadir, const std::string &scriptname)
 {
 	loaded = false;
@@ -421,7 +419,6 @@ Action::~Action()
 	}
 }
 
-
 bool Action::executeUse(Player *player,Item* item, PositionEx &posFrom, PositionEx &posTo)
 {
 	//onUse(uidplayer, item1,position1,item2,position2)
@@ -438,7 +435,7 @@ bool Action::executeUse(Player *player,Item* item, PositionEx &posFrom, Position
 	lua_pushnumber(luaState, cid);
 	script->internalAddThing(luaState,item,itemid1);
 	script->internalAddPositionEx(luaState,posFrom);
-	//std::cout << "posTo" <<  (Position)posTo << " stack" << (int)posTo.stackpos <<std::endl;
+
 	Thing *thing = script->game->getThing((Position)posTo,posTo.stackpos,player);
 	if(thing && posFrom != posTo){
 		int thingId2 = script->AddThingToMap(thing,posTo);
@@ -457,7 +454,6 @@ bool Action::executeUse(Player *player,Item* item, PositionEx &posFrom, Position
 
 	return ret;
 }
-
 
 std::map<unsigned int,KnownThing*> ActionScript::uniqueIdMap;
 
@@ -494,13 +490,7 @@ ActionScript::~ActionScript()
 	}
 
 	ThingMap.clear();
-	/*
-	for(it = uniqueIdMap.begin(); it != uniqueIdMap.end();it++ ){
-		delete it->second;
-	}
 
-	uniqueIdMap.clear();
-	*/
 }
 
 void ActionScript::ClearMap()
@@ -633,7 +623,6 @@ const KnownThing* ActionScript::GetPlayerByUID(int uid)
 	return NULL;
 }
 
-
 int ActionScript::registerFunctions()
 {
 	//getPlayerFood(uid)
@@ -662,7 +651,6 @@ int ActionScript::registerFunctions()
 	lua_register(luaState, "getPlayerGuildId", ActionScript::luaActionGetPlayerGuildId);
 	//getPlayerItemCount(uid,itemid)
 	//getPlayerItem(uid,itemid)
-
 
 	//getPlayerStorageValue(uid,valueid)
 	lua_register(luaState, "getPlayerStorageValue", ActionScript::luaActionGetPlayerStorageValue);
@@ -756,7 +744,6 @@ ActionScript* ActionScript::getActionScript(lua_State *L){
 	}
 	return myaction;
 }
-
 
 Position ActionScript::internalGetRealPosition(ActionScript *action, Player *player, const Position &pos)
 {
@@ -864,7 +851,7 @@ int ActionScript::internalGetPlayerInfo(lua_State *L, ePlayerInfo info)
 			break;
 		case PlayerInfoPosition:
 			pos = player->pos;
-			//tile = action->game->map->getTile(player->pos.x, player->pos.y, player->pos.z);
+
 			tile = action->game->map->getTile(player->pos);
 			if(tile)
 				pos.stackpos = tile->getCreatureStackPos(player);
@@ -1050,7 +1037,6 @@ int ActionScript::luaActionDoSendCancel(lua_State *L)
 	return 1;
 }
 
-
 int ActionScript::luaActionDoTeleportThing(lua_State *L)
 {
 	//doTeleportThing(uid,newpos)
@@ -1070,7 +1056,7 @@ int ActionScript::luaActionDoTeleportThing(lua_State *L)
 		std::cout << "luaTeleport: thing not found" << std::endl;
 		return 1;
 	}
-	//std::cout << "new pos: " << (Position&)pos << std::endl;
+
 	if(tmp->type == thingTypeItem){
 		//avoid teleport notMoveable items
 		if(((Item*)tmp->thing)->isNotMoveable()){
@@ -1081,7 +1067,7 @@ int ActionScript::luaActionDoTeleportThing(lua_State *L)
 	}
 
 	action->game->teleport(tmpthing,(Position&)pos);
-	//Tile *tile = action->game->getTile(pos.x, pos.y, pos.z);
+
 	Tile *tile = action->game->map->getTile(pos);
 	if(tile){
 		pos.stackpos = tile->getThingStackPos(tmpthing);
@@ -1094,7 +1080,6 @@ int ActionScript::luaActionDoTeleportThing(lua_State *L)
 	lua_pushnumber(L, 0);
 	return 1;
 }
-
 
 int ActionScript::luaActionDoTransformItem(lua_State *L)
 {
@@ -1203,7 +1188,6 @@ int ActionScript::luaActionDoChangeTypeItem(lua_State *L)
 	return 1;
 }
 
-
 int ActionScript::luaActionDoPlayerAddSkillTry(lua_State *L)
 {
 	//doPlayerAddSkillTry(uid,skillid,n)
@@ -1227,7 +1211,6 @@ int ActionScript::luaActionDoPlayerAddSkillTry(lua_State *L)
 	lua_pushnumber(L, 0);
 	return 1;
 }
-
 
 int ActionScript::luaActionDoPlayerAddHealth(lua_State *L)
 {
@@ -1362,7 +1345,7 @@ int ActionScript::luaActionDoPlayerAddItem(lua_State *L)
 		if(!player->addItem(newitem)){
 			//add item on the ground
 			action->game->addThing(NULL,action->_player->pos,newitem);
-			//Tile *tile = action->game->getTile(newitem->pos.x, newitem->pos.y, newitem->pos.z);
+
 			Tile *tile = action->game->map->getTile(newitem->pos);
 			if(tile){
 				pos.stackpos = tile->getThingStackPos(newitem);
@@ -1385,7 +1368,6 @@ int ActionScript::luaActionDoPlayerAddItem(lua_State *L)
 	lua_pushnumber(L, uid);
 	return 1;
 }
-
 
 int ActionScript::luaActionDoPlayerSendTextMessage(lua_State *L)
 {
@@ -1548,7 +1530,6 @@ int ActionScript::luaActionGetThingfromPos(lua_State *L)
 
 	ActionScript *action = getActionScript(L);
 
-	//Tile *tile = action->game->getTile(pos.x, pos.y, pos.z);
 	Tile *tile = action->game->map->getTile(pos);
 
 	Thing *thing = NULL;
@@ -1579,7 +1560,7 @@ int ActionScript::luaActionGetThingfromPos(lua_State *L)
 		}
 		return 1;
 
-	}//if(tile)
+	}
 	else{
 		std::cout << "luagetItemfromPos: Tile not found" << std::endl;
 		internalAddThing(L,NULL,0);
@@ -1598,7 +1579,7 @@ int ActionScript::luaActionDoCreateItem(lua_State *L){
 
 	Item *newitem = Item::CreateItem(itemid,type);
 	action->game->addThing(NULL,(Position&)pos,newitem);
-	//Tile *tile = action->game->getTile(pos.x, pos.y, pos.z);
+
 	Tile *tile = action->game->map->getTile(pos);
 	if(tile){
 		pos.stackpos = tile->getThingStackPos(newitem);
@@ -1749,7 +1730,6 @@ int ActionScript::luaActionGetTilePzInfo(lua_State *L)
 
 	ActionScript *action = getActionScript(L);
 
-	//Tile *tile = action->game->getTile(pos.x, pos.y, pos.z);
 	Tile *tile = action->game->map->getTile(pos);
 
 	if(tile){
@@ -1759,7 +1739,7 @@ int ActionScript::luaActionGetTilePzInfo(lua_State *L)
 		else{
 			lua_pushnumber(L, 0);
 		}
-	}//if(tile)
+	}
 	else{
 		std::cout << "luagetTilePzInfo: Tile not found" << std::endl;
 		lua_pushnumber(L, -1);
@@ -1775,9 +1755,8 @@ int ActionScript::luaActionDoSummonCreature(lua_State *L){
 
 	ActionScript *action = getActionScript(L);
 
-	//Monster *monster = new Monster(name, action->game);
 	Monster* monster = Monster::createMonster(name, action->game);
-	//if(!monster->isLoaded()){
+
 	if(!monster){
 		//delete monster;
 		lua_pushnumber(L, 0);
@@ -1847,7 +1826,6 @@ int ActionScript::luaActionDoPlacePrivateTrainer(lua_State *L)
 	lua_pushnumber(L, 1);
 	return 1;
 }
-
 
 int ActionScript::luaActionDoPlayerRemoveMoney(lua_State *L)
 {

@@ -18,10 +18,8 @@
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
 
-
 #ifndef __creature_h
 #define __creature_h
-
 
 #include "thing.h"
 #include "position.h"
@@ -35,7 +33,6 @@
 extern LuaScript g_config;
 
 typedef int64_t exp_t;
-
 
 typedef std::vector<Creature*> CreatureVector;
 
@@ -85,7 +82,6 @@ enum playerLooks
 	PLAYER_FEMALE_7=0x8E,
 };
 
-
 class Map;
 
 class Item;
@@ -108,7 +104,6 @@ public:
 	}
 };
 
-
 //////////////////////////////////////////////////////////////////////
 // Defines the Base class for all creatures and base functions which
 // every creature has
@@ -116,7 +111,7 @@ public:
 class Creature : public AutoID, public Thing
 {
 public:
-	//Creature(const std::string& name);
+
 	Creature();
 	virtual ~Creature();
 
@@ -155,7 +150,6 @@ public:
 	virtual void die(){};
 	virtual std::string getDescription(bool self = false) const;
 	virtual void setAttackedCreature(const Creature* creature);
-	//virtual void setAttackedCreature(unsigned long id);
 
 	virtual void setMaster(Creature* creature);
 	virtual Creature* getMaster() {return master;}
@@ -180,7 +174,6 @@ public:
 	virtual void dropLoot(Container *corpse, Player* killer = NULL) {return;};
 	virtual int getLookCorpse() {return lookcorpse;};
 
-	//  virtual int sendInventory(){return 0;};
 	virtual int addItemInventory(Item* item, int pos){return 0;};
 	virtual Item* getItem(int pos){return NULL;}
 	virtual Direction getDirection(){return direction;}
@@ -351,8 +344,7 @@ protected:
 	friend class GameState;
 
 	unsigned long id;
-	//std::string name;
-};
 
+};
 
 #endif // __creature_h

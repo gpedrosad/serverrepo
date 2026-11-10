@@ -74,7 +74,7 @@ bool IOMapXML::loadMap(Map* map, std::string identifier){
 		}
       	px = atoi(tmp);
       	xmlFreeOTSERV(tmp);
-      	
+
       	tmp = (char*)xmlGetProp(tile, (const xmlChar *) "y");
       	if(!tmp){
 			tile = tile->next;
@@ -90,14 +90,6 @@ bool IOMapXML::loadMap(Map* map, std::string identifier){
 		}
       	pz = atoi(tmp);
       	xmlFreeOTSERV(tmp);
-      
-/*
-#ifdef __DEBUG__
-			if(tmp == NULL) {
-				std::cout << "No ground tile! x: " << px << ", y: " << py << " z: " << pz << std::endl;
-			}
-#endif
-*/
 
 		tmp = (char*)xmlGetProp(tile, (const xmlChar *) "ground");
 		unsigned short ground = 0;
@@ -108,13 +100,13 @@ bool IOMapXML::loadMap(Map* map, std::string identifier){
 
       	map->setTile(px,py,pz,ground);
       	t = map->getTile(px,py,pz);
-      
+
       	tmp = (char*)xmlGetProp(tile, (const xmlChar *) "pz");
       	if(tmp && (strcmp(tmp, "1") == 0)){ 
 			t->setPz();
 			xmlFreeOTSERV(tmp);
 		}
-       
+
       	p = tile->children;
       	while(p){  
         	if(xmlStrcmp(p->name,(const xmlChar*) "item")==0){          
@@ -126,7 +118,7 @@ bool IOMapXML::loadMap(Map* map, std::string identifier){
 				}
 				else
 					id = 0;
-				
+
 				Item* myitem = Item::CreateItem(id);
 				myitem->unserialize(p);
 				myitem->decoration = true;
@@ -151,11 +143,11 @@ bool IOMapXML::loadMap(Map* map, std::string identifier){
 							}
 							else
 								id = 0;
-						
+
 							Item* myitem = Item::CreateItem(id);
 							myitem->unserialize(tmpNode);
 							container->addItem(myitem);
-			
+
 							Container* in_container = dynamic_cast<Container*>(myitem);
 							if(in_container){
 								LoadContainer(tmpNode,in_container);
@@ -168,7 +160,7 @@ bool IOMapXML::loadMap(Map* map, std::string identifier){
 				myitem->pos.x = px;
 				myitem->pos.y = py;
 				myitem->pos.z = pz;		
-			
+
 				if(myitem->isAlwaysOnTop())
 					t->topItems.push_back(myitem);
 				else
@@ -179,7 +171,7 @@ bool IOMapXML::loadMap(Map* map, std::string identifier){
     	tile = tile->next;
    	}
   	xmlFreeDoc(doc);
-	
+
 	return true;
 }
 
@@ -187,7 +179,7 @@ bool IOMapXML::LoadContainer(xmlNodePtr nodeitem,Container* ccontainer)
 {
 	xmlNodePtr tmp,p;
 	char *tmpc;
-	
+
 	if(nodeitem == NULL){
 		return false;
 	}
@@ -195,7 +187,7 @@ bool IOMapXML::LoadContainer(xmlNodePtr nodeitem,Container* ccontainer)
 	if(tmp == NULL){
 		return false;
 	}
-                  
+
 	if(strcmp((const char*)tmp->name, "inside") == 0){
 		//load items
 		p = tmp->children;
@@ -209,7 +201,7 @@ bool IOMapXML::LoadContainer(xmlNodePtr nodeitem,Container* ccontainer)
 			Item* myitem = Item::CreateItem(id);
 			myitem->unserialize(p);			
 			ccontainer->addItem(myitem);
-			
+
 			Container* in_container = dynamic_cast<Container*>(myitem);
 			if(in_container){
 				LoadContainer(p,in_container);
@@ -222,5 +214,3 @@ bool IOMapXML::LoadContainer(xmlNodePtr nodeitem,Container* ccontainer)
 
 	return false;
 }
-
-

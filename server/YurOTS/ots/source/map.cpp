@@ -18,7 +18,6 @@
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
 
-
 #include "definitions.h"
 
 #include <string>
@@ -51,7 +50,6 @@ using namespace std;
 #include "npc.h"
 #include "spells.h"
 
-
 #include "luascript.h"
 #include <ctype.h>
 
@@ -60,7 +58,6 @@ using namespace std;
 
 extern LuaScript g_config;
 extern Spells spells;
-//extern std::map<long, Creature*> channel;
 
 Map::Map() :
 spawnfile(""),
@@ -69,28 +66,22 @@ mapheight(0)
 {
 }
 
-
 Map::~Map()
 {
 }
-
 
 int Map::loadMap(std::string filename, std::string filekind) {
 	int ret;
 	IOMap* loader;
 
-	/*if(filekind == "BIN"){
-		loader = new IOMapBin();
-		ret = SPAWN_BUILTIN;
-	}
-	else */if(filekind == "XML"){
+	if(filekind == "XML"){
 		loader = new IOMapXML();
 		ret = SPAWN_XML;
 	}
 
 	else if(filekind == "OTBM"){
 		loader = new IOMapOTBM();
-		//ret = SPAWN_BUILTIN;
+
 		ret = SPAWN_XML;
 	}
 	else{
@@ -114,15 +105,13 @@ Tile* Map::getTile(unsigned short _x, unsigned short _y, unsigned char _z)
 {
 	if(_z < MAP_LAYER){
 		// _x & 0x7F  is like _x % 128
-		//TileMap *tm = &tileMaps[_x & 0x1F][_y & 0x1F][_z];
-		//TileMap *tm = &tileMaps[_x & 0xFF][_y & 0xFF];
+
     	TileMap *tm = &tileMaps[_x & 0x7F][_y & 0x7F];
 		if(!tm)
 			return NULL;
 
     	// search in the stl map for the requested tile
-    	//TileMap::iterator it = tm->find((_x << 16) | _y);
-    	//TileMap::iterator it = tm->find(_x & 0xFF00) << 8 | (_y & 0xFF00) | _z);
+
     	TileMap::iterator it = tm->find((_x & 0xFF80) << 16 | (_y & 0xFF80) << 1 | _z);
 
     	// ... found
@@ -144,7 +133,7 @@ void Map::setTile(unsigned short _x, unsigned short _y, unsigned char _z, unsign
 	Tile* tile = setTile(_x, _y, _z);
 
 	if(tile->ground)
-		//delete tile->ground;
+
 		tile->ground->releaseThing();
 
 	if(groundId != 0 && Item::items[groundId].isGroundTile()){
@@ -161,8 +150,7 @@ Tile* Map::setTile(unsigned short _x, unsigned short _y, unsigned char _z)
 
 	if(!tile){
     	tile = new Tile();
-		//tileMaps[_x & 0x1F][_y & 0x1F][_z][(_x << 16) | _y] = tile;
-		//tileMaps[_x & 0xFF][_y & 0xFF][ _x & 0xFF00) << 8 | (_y & 0xFF00) | _z] = tile;
+
 		tileMaps[_x & 0x7F][_y & 0x7F][ (_x & 0xFF80) << 16 | (_y & 0xFF80) << 1 | _z] = tile;
   	}
   	return tile;
@@ -294,11 +282,6 @@ ReturnValue Map::canThrowObjectTo(Position from, Position to, int objectstate /*
 	Position start = from;
 	Position end = to;
 
-	/*if(start.x > end.x) {
-		swap(start.x, end.x);
-		swap(start.y, end.y);
-	}*/
-
 	bool steep = std::abs(end.y - start.y) > abs(end.x - start.x);
 
 	if(steep) {
@@ -315,7 +298,6 @@ ReturnValue Map::canThrowObjectTo(Position from, Position to, int objectstate /*
 	int xstep = ((start.x < end.x) ? 1 : -1);
 	int ystep = ((start.y < end.y) ? 1 : -1);
 
-	//for(int x = start.x; x != end.x; x += xstep) {
 	for(int x = start.x; x != end.x + xstep; x += xstep) {
 		int rx = (steep ? y : x);
 		int ry = (steep ? x : y);
@@ -347,7 +329,7 @@ ReturnValue Map::canThrowObjectTo(Position from, Position to, int objectstate /*
 	}
 
 	return RET_NOERROR;
-	//return true;
+
 }
 
 ReturnValue Map::isPathValid(Creature *creature, const std::list<Position>& path, int pathSize,
@@ -364,28 +346,25 @@ ReturnValue Map::isPathValid(Creature *creature, const std::list<Position>& path
 				ret = RET_NOERROR;
 
 			if(ret != RET_NOERROR) {
-				//std::cout << "isPathValid - false: " << (int) ret << std::endl;
+
 				return ret;
 			}
 		}
 		else
 			return RET_NOTILE;
-			//return false;
 
 		if(pathCount++ >= pathSize)
 			return RET_NOERROR;
 	}
 
 	return RET_NOERROR;
-	//return true;
+
 }
 
 std::list<Position> Map::getPathTo(Creature *creature, Position start, Position to,
 	bool creaturesBlock /*=true*/, bool ignoreMoveableBlockingItems /*= false*/, int maxNodSize /*= 100*/){
 	std::list<Position> path;
-/*	if(start.z != to.z)
-		return path;
-*/
+
 	AStarNodes nodes;
 	AStarNode* found = NULL;
 	int z = start.z;
@@ -434,11 +413,7 @@ std::list<Position> Map::getPathTo(Creature *creature, Position start, Position 
 							}
 						}
 					}
-/*					else{
-						if(current->g + 1 < child->g)
-							child->parent = current;
-							child->g=current->g+1;
-					}*/
+
 				}
 			}
 		}
@@ -455,7 +430,6 @@ std::list<Position> Map::getPathTo(Creature *creature, Position start, Position 
 
 	return path;
 }
-
 
 AStarNodes::AStarNodes()
 {
@@ -534,7 +508,6 @@ unsigned long AStarNodes::countOpenNodes()
 	return counter;
 }
 
-
 bool AStarNodes::isInList(unsigned long x, unsigned long y)
 {
 	for(unsigned i = 0; i < curNode; i++){
@@ -544,7 +517,6 @@ bool AStarNodes::isInList(unsigned long x, unsigned long y)
 	}
 	return false;
 }
-
 
 long Map::clean()
 {

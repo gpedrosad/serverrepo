@@ -57,7 +57,6 @@
 #include "private_trainers.h"
 #include "aac.h"
 
-
 	#include <fcntl.h>
 	#include <arpa/inet.h>
 	#include <signal.h>
@@ -69,13 +68,12 @@
 	/* Comment below line if you want to execute otserv with root user (NOT RECOMMENDED) */
 	/* #define _NO_ROOT_PERMISSION_ */
 	/* #define _HOMEDIR_CONF_ */
-	
+
 	extern int errno; 
 
 #ifdef __DEBUG_CRITICALSECTION__
 OTSYS_THREAD_LOCK_CLASS::LogList OTSYS_THREAD_LOCK_CLASS::loglist;
 #endif
-
 
 std::vector< std::pair<unsigned long, unsigned long> > serverIPs;
 std::vector< std::pair<unsigned long, unsigned long> > bannedIPs;
@@ -171,7 +169,6 @@ bool isclientBanished(SOCKET s)
 	return false;
 }
 
-
 std::string MakeRejectMessage(int place)
 {
 	if (place < 0)
@@ -188,7 +185,6 @@ std::string MakeRejectMessage(int place)
 		return msg.str();
 	}
 }
-
 
 OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 {
@@ -233,8 +229,6 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 				msg.AddString("Your IP is banished!");
 			}
 			else {
-				//char accstring[16];
-				//sprintf(accstring, "%i", accnumber);
 
 				Account account = IOAccount::instance()->loadAccount(accnumber);
 				if (account.accnumber == accnumber && passwordTest(password,account.password)) // seems to be a successful load
@@ -278,7 +272,7 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 			unsigned long accnumber = msg.GetU32();
 			std::string name     = msg.GetString();
 			std::string password = msg.GetString();
-		
+
 			if(version != 760){
 				msg.Reset();
 				msg.AddByte(0x14);
@@ -453,11 +447,8 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
   if(s)
 	  closesocket(s);
 
-
   return 0;
 }
-
-
 
 void ErrorMessage(const char* message) {
   std::cout << std::endl << std::endl << "Error: " << message;
@@ -479,12 +470,9 @@ int main(int argc, char *argv[])
 	//below is Windows-only (SEH) and does nothing on i386 Linux.
 	CrashHandler::install();
 
-
 	std::cout << ":: YurOTS 0.9.4f" << std::endl;
 	std::cout << ":: ~~~~~~~~~~~~~" << std::endl;
-	//std::cout << ":: OTServ Development-Version 0.5.0 - CVS Preview" << std::endl;
-	//std::cout << ":: OTServ Version 0.4.1" << std::endl;
-	//std::cout << ":: ====================" << std::endl;
+
 	std::cout << "::" << std::endl;
 
 #ifdef _NO_ROOT_PERMISSION_
@@ -509,9 +497,6 @@ int main(int argc, char *argv[])
 	sighTerm.sa_flags = 0;
 	sigaction(SIGTERM, &sighTerm, NULL);
 	sigaction(SIGINT, &sighTerm, NULL);
-
-//	LOG_MESSAGE("main", EVENT, 1, "Starting server");
-
 
 	// random numbers generator
 	std::cout << ":: Initializing random numbers...   ";
@@ -593,7 +578,6 @@ int main(int argc, char *argv[])
 	}
 	std::cout << "[done]" << std::endl;
 
-
 	std::cout << ":: Loading guilds.xml...            ";
 	if (!Guilds::Load())
 	{
@@ -669,7 +653,6 @@ int main(int argc, char *argv[])
 	double t = timer();
 	std::cout << "Loaded in " << t << " s" << std::endl;
 
-
 	std::cout << ":: Loading npc.xml...               ";
 	if (!g_game.loadNpcs())
 	{
@@ -724,7 +707,6 @@ int main(int argc, char *argv[])
 		std::cout << ":: Auto server save disabled!" << std::endl;
 	// Always poll save/shutdown requests (deploy + docker stop).
 	g_game.addEvent(makeTask(2000, std::mem_fun(&Game::checkSaveRequest)));
-
 
   	// Call to WSA Startup on Windows Systems...
 
@@ -813,7 +795,7 @@ int main(int argc, char *argv[])
 		if(listen_socket <= 0){
 			ErrorMessage("Unable to create server socket (1)!");
 			return -1;
-  		} // if (listen_socket <= 0)
+  		}
 
 		int yes = 1;
 		// lose the pesky "Address already in use" error message
@@ -826,14 +808,13 @@ int main(int argc, char *argv[])
 		if(bind(listen_socket, (struct sockaddr*)&local_adress, sizeof(struct sockaddr_in)) < 0){
 			ErrorMessage("Unable to create server socket (2)!");
 			return -1;
-  		} // if (bind(...))
+  		}
 
 		// now we start listen on the new socket
 		if(listen(listen_socket, 128) == SOCKET_ERROR){
     			ErrorMessage("Listen on server socket not possible!");
 			return -1;
-		} // if (listen(*listen_socket, 10) == -1)
-
+		}
 
 		std::cout << "[done]" << std::endl << ":: " << g_config.getGlobalString("servername") << " Server Running..." << std::endl;
 		accept_errors = 0;

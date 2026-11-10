@@ -164,11 +164,9 @@ public:
 	const unsigned long getOwnerID() const {return ownerid;}
 	void setOwnerID(unsigned long owner) { ownerid=owner;}
 
-
 protected:
 	unsigned long ownerid;
 };
-
 
 class CreatureCondition {
 public:
@@ -231,14 +229,14 @@ public:
 	MagicEffectItem(const TransformMap& transformMap);
 
 	virtual void useThing() {
-		//std::cout << "Magic: useThing() " << this << std::endl;
+
 		useCount++;
 	};
 
 	virtual void releaseThing() {
-		//std::cout << "Magic: releaseThing() " << this << std::endl;
+
 		useCount--;
-		//if (useCount == 0)
+
 		if (useCount <= 0)
 			delete this;
 	};
@@ -347,4 +345,3 @@ protected:
 };
 #include "creature.h"
 #endif //__MAGIC_H__
-

@@ -74,23 +74,23 @@ enum SpeakClasses {
 	SPEAK_WHISPER 		= 0x02, 
 	SPEAK_YELL	  		= 0x03, 
 	//SPEAK_			= 0x0D,	
-		
+
 	SPEAK_BROADCAST		= 0x09, 
-		
+
 	SPEAK_PRIVATE 		= 0x04, 
 	SPEAK_PRIVATE_RED	= 0x0B,	//@name@text
 	//SPEAK_			= 0x0F, 
-		
+
 	//SPEAK_CHANNEL?? 	= 0x06,
-		
+
 	//SPEAK_CHANNEL?? 	= 0x07,
 	//SPEAK_CHANNEL?? 	= 0x08,
-	
+
 	SPEAK_CHANNEL_Y		= 0x05,	//yellow
 	SPEAK_CHANNEL_R1	= 0x0A,	//red - #c text -- gamemaster command
 	SPEAK_CHANNEL_R2	= 0x0E,	//red - #d text -- counsellor command(?)
 	SPEAK_CHANNEL_O		= 0x0C,	//orange
-		
+
 	SPEAK_MONSTER1 		= 0x10,
 	SPEAK_MONSTER2 		= 0x11,
 };
@@ -105,7 +105,6 @@ enum MessageClasses {
 	MSG_BLUE_TEXT = 0x18,
 	MSG_RED_TEXT  = 0x19,
 };
-
 
 enum FluidClasses {
 	FLUID_EMPTY = 0x00,	//note: class = fluid_number mod 8
@@ -131,7 +130,6 @@ enum e_fluids {
 	FLUID_WINE = FLUID_PURPLE+8,
 	FLUID_STRONG_MANA = 14,
 };
-
 
 enum Icons {
 	ICON_POISON = 1,
@@ -161,7 +159,6 @@ enum amu_t{
 	AMU_BOLT = 1,
 	AMU_ARROW = 2
 };
-
 
 enum subfight_t {
 	DIST_NONE = 0,
@@ -327,7 +324,7 @@ enum bloodeffect_t //like draw_blood, or hit_area etc
     EFFECT_NONE = 255,
 };
 
-enum bloodsplash_t //for splashes (count)
+enum bloodsplash_t
 {
     SPLASH_RED = FLUID_BLOOD,
 	SPLASH_GREEN = FLUID_SLIME,

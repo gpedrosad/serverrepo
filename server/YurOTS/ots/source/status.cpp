@@ -71,7 +71,6 @@ std::string Status::getStatusString(){
 
 	xmlSetProp(root, (const xmlChar*) "version", (const xmlChar*)"1.0");
 
-
 	p=xmlNewNode(NULL,(const xmlChar*)"serverinfo");
 	uint64_t running = (OTSYS_TIME() - this->start)/1000;
 	ss << running;
@@ -174,7 +173,7 @@ void Status::getInfo(NetworkMessage &nm) {
     nm.AddU32((uint32_t)(running >> 32)); // this method prevents a big number parsing
     nm.AddU32((uint32_t)(running));       // since servers can be online for months ;)
     nm.AddString(YUR_VERSION);
-    //nm.AddString("0.4.1");
+
   }
 
   if (bplayersinfo) {
@@ -202,4 +201,3 @@ void Status::getInfo(NetworkMessage &nm) {
 bool Status::hasSlot() {
   return this->playersonline < this->playersmax;
 }
-

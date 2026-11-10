@@ -18,10 +18,8 @@
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
 
-
 #ifndef __PROTOCOL_H__
 #define __PROTOCOL_H__
-
 
 #include "definitions.h"
 #include "game.h"
@@ -83,7 +81,6 @@ public:
 		const Position *oldPos, unsigned char oldStackPos, unsigned char oldcount,
 		unsigned char count, bool tele = false) = 0;
 
-	//virtual void sendCreatureAppear(const Creature *creature) = 0;
 	virtual void sendThingAppear(const Thing *thing) = 0;
 	virtual void sendThingRemove(const Thing *thing) = 0;
 	virtual void sendThingTransform(const Thing* thing,int stackpos) = 0;
@@ -169,6 +166,5 @@ protected:
 	SOCKET s;
 	friend OTSYS_THREAD_RETURN ConnectionHandler(void *dat);
 };
-
 
 #endif  // #ifndef __PROTOCOL_H__

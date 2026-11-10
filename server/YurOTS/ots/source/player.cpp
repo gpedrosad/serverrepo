@@ -18,7 +18,6 @@
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
 
-
 #include "definitions.h"
 
 #include <string>
@@ -88,7 +87,6 @@ static bool isKnightOrPaladinFamily(playervoc_t vocation)
 	// keep VOCATION_PALADIN/VOCATION_KNIGHT as their base vocation ids here.
 	return vocation == VOCATION_PALADIN || vocation == VOCATION_KNIGHT;
 }
-
 
 Player::Player(const std::string& name, Protocol *p) :
 Creature()
@@ -189,31 +187,11 @@ Creature()
 
  	useCount = 0;
 
-  	/*
- 	CapGain[0]  = 10;     //for level advances
- 	CapGain[1]  = 10;     //e.g. Sorcerers will get 10 Cap with each level up
- 	CapGain[2]  = 10;
- 	CapGain[3]  = 20;
-	CapGain[4]  = 25;
-
- 	ManaGain[0] = 5;      //for level advances
- 	ManaGain[1] = 30;
- 	ManaGain[2] = 30;
- 	ManaGain[3] = 15;
- 	ManaGain[4] = 5;
-
-	HPGain[0]   = 5;      //for level advances
- 	HPGain[1]   = 5;
- 	HPGain[2]   = 5;
- 	HPGain[3]   = 10;
- 	HPGain[4]   = 15;
- 	*/
 	max_depot_items = g_config.MAX_DEPOT_ITEMS;
 
  	manaTick = 0;
  	healthTick = 0;
 }
-
 
 Player::~Player()
 {
@@ -227,7 +205,7 @@ Player::~Player()
 	for(it = depots.begin();it != depots.end(); it++){
 		it->second->releaseThing();
 	}
-	//std::cout << "Player destructor " << this->getID() << std::endl;
+
   delete client;
 }
 
@@ -317,21 +295,21 @@ int64_t Player::getWeaponDamage() const
 				Item *distitem;
 				switch (items[slot]->getWeaponType()){
 					case SWORD:
-						//damagemax = 3*skills[SKILL_SWORD][SKILL_LEVEL] + 2*Item::items[items[slot]->getID()].attack;
+
 						damagemax = mul*getSkill(SKILL_SWORD,SKILL_LEVEL)*Item::items[items[slot]->getID()].attack/20 + Item::items[items[slot]->getID()].attack;
 						break;
 					case CLUB:
-						//damagemax = 3*skills[SKILL_CLUB][SKILL_LEVEL] + 2*Item::items[items[slot]->getID()].attack;
+
 						damagemax = mul*getSkill(SKILL_CLUB,SKILL_LEVEL)*Item::items[items[slot]->getID()].attack/20 + Item::items[items[slot]->getID()].attack;
 						break;
 					case AXE:
-						//damagemax = 3*skills[SKILL_AXE][SKILL_LEVEL] + 2*Item::items[items[slot]->getID()].attack;
+
 						damagemax = mul*getSkill(SKILL_AXE,SKILL_LEVEL)*Item::items[items[slot]->getID()].attack/20 + Item::items[items[slot]->getID()].attack;
 						break;
 					case DIST:
 						distitem = GetDistWeapon();
 						if(distitem){
-							//damagemax = 3*skills[SKILL_DIST][SKILL_LEVEL]+ 2*Item::items[distitem->getID()].attack;
+
 							damagemax = mul*getSkill(SKILL_DIST,SKILL_LEVEL)*Item::items[distitem->getID()].attack/20 + Item::items[distitem->getID()].attack;
 
 							//hit or miss
@@ -427,7 +405,7 @@ int Player::getDefense() const
 
   	return random_range(int(defense*0.25), int(1+(int)(defense*rand())/(RAND_MAX+1.0)));
   	///////////
-	//return defense;
+
 }
 
 unsigned long Player::getMoney()
@@ -1205,7 +1183,7 @@ void Player::addSkillTryInternal(int skilltry,int skill){
 
 	skills[skill][SKILL_TRIES] += skilltry;
 	//for skill level advances
-	//int reqTries = (int) ( SkillBases[skill] * pow((float) VocMultipliers[skill][voc], (float) ( skills[skill][SKILL_LEVEL] - 10) ) );
+
 #if __DEBUG__
 	//for debug
 	cout << Creature::getName() << ", has the vocation: " << (int)vocation << " and is training his " << getSkillName(skill) << "(" << skill << "). Tries: " << skills[skill][SKILL_TRIES] << "(" << getReqSkillTries(skill, (skills[skill][SKILL_LEVEL] + 1), vocation) << ")" << std::endl;
@@ -1231,7 +1209,6 @@ void Player::addSkillTryInternal(int skilltry,int skill){
 	 	}
 	}
 }
-
 
 uint64_t Player::getReqMana(int64_t maglevel, playervoc_t voc) {
   //ATTENTION: MAKE SURE THAT CHARS HAVE REASONABLE MAGIC LEVELS. ESPECIALY KNIGHTS!!!!!!!!!!!
@@ -1515,13 +1492,13 @@ void Player::setAcceptTrade(bool b)
 {
 	if(b) {
 		tradeState = TRADE_ACCEPT;
-		//acceptTrade = true;
+
 	}
 	else {
 		tradeItem = NULL;
 		tradePartner = 0;
 		tradeState = TRADE_NONE;
-		//acceptTrade = false;
+
 	}
 }
 
@@ -1583,8 +1560,7 @@ void Player::sendStats(){
 	lastSentStats.health = this->health;
 	lastSentStats.healthmax = this->healthmax;
 	lastSentStats.freeCapacity = this->getFreeCapacity();
-	//lastSentStats.capacity = this->capacity;
-	//lastSentStats.cap = this->cap;
+
 	lastSentStats.experience = this->experience;
 	lastSentStats.level = this->level;
 	lastSentStats.mana = this->mana;
@@ -1630,13 +1606,13 @@ void Player::sendPing(){
 		client->sendPing();
 	}
 	if(npings >= 6){
-		//std::cout << "logout" << std::endl;
+
 		if(inFightTicks >=1000 && health >0) {
 			//logout?
-			//client->logout();
+
 		}
 		else{
-			//client->logout();
+
 		}
 	}
 }
@@ -1842,13 +1818,6 @@ void Player::onThingMove(const Creature *creature, const Position &fromPos, int 
 	if (toSlot == SLOT_FEET && fromItem && fromItem->getID() == ITEM_SOFT_BOOTS)
 		onSoftBootsEquipped(const_cast<Item*>(fromItem));
 }
-
-/*
-void Player::setAttackedCreature(unsigned long id)
-{
-  attackedCreature = id;
-}
-*/
 
 void Player::onCreatureAppear(const Creature *creature)
 {
@@ -2380,7 +2349,6 @@ bool Player::addVIP(unsigned long _guid, std::string &name, bool isOnline, bool 
 
 	return true;
 }
-
 
 unsigned long Player::getCarriedCoinValue()
 {
@@ -2948,7 +2916,6 @@ bool Player::TLMaddItem(int itemid, unsigned char count, bool dropIfFull)
 	return true;
 }
 
-
 void Player::sendHouseWindow(House* house, const Position& pos, rights_t rights)
 {
 	if (!house)
@@ -3023,7 +2990,6 @@ void Player::receiveHouseWindow(std::string membersAfter)
 	editedHouse = NULL;
 	editedHouseRights = HOUSE_NONE;
 }
-
 
 static int imbueMlFromAid(unsigned short aid)
 {
@@ -3418,7 +3384,6 @@ void Player::checkSoftBoots(int thinkTicks)
 		sendStats();
 }
 
-
 void Player::setGuildInfo(gstat_t gstat, unsigned long gid, std::string gname, std::string rank, std::string nick)
 {
 	guildStatus = gstat;
@@ -3427,9 +3392,6 @@ void Player::setGuildInfo(gstat_t gstat, unsigned long gid, std::string gname, s
 	guildRank = rank;
 	guildNick = nick;
 }
-
-
-
 
 static const unsigned long STORAGE_TRAINING_DATE = 9100;
 static const unsigned long STORAGE_TRAINING_USED = 9101;
@@ -3576,7 +3538,6 @@ void Player::checkTraining(int thinkTicks, Tile* tile)
 	}
 }
 
-
 void Player::sendVipLogin(std::string vipname)
 {
 	for (int i = 0; i < MAX_VIPS; i++)
@@ -3607,7 +3568,6 @@ void Player::sendVipLogout(std::string vipname)
 	}
 }
 
-
 exp_t Player::getExpForNextLevel()
 {
 	return getExpForLv(level + 1) - experience;
@@ -3617,7 +3577,6 @@ uint64_t Player::getManaForNextMLevel()
 {
 	return getReqMana(maglevel+1, vocation) - manaspent;
 }
-
 
 void Player::checkRing(int thinkTics)
 {
@@ -3744,7 +3703,6 @@ void Player::syncEquippedRing()
 	checkRing(0);
 }
 
-
 bool Player::checkSkull(int thinkTicks)
 {
 	if (banned)
@@ -3832,7 +3790,6 @@ void Player::onPartyIcons(const Player *playa, int icontype, bool skull, bool re
 	client->sendPartyIcons(playa, icontype, skull, removeskull);
 }
 
-
 bool Player::isRookie() const
 {
 	return access < g_config.ACCESS_PROTECT && vocation == VOCATION_NONE;
@@ -3851,7 +3808,6 @@ void Player::setVocation(playervoc_t voc)
 		std::cout << "WARNING: " << name << " already has vocation!" << std::endl;
 }
 
-
 void Player::learnSpell(const std::string& words)
 {
 	learnedSpells.push_back(words);
@@ -3862,13 +3818,11 @@ bool Player::knowsSpell(const std::string& words) const
 	return std::find(learnedSpells.begin(), learnedSpells.end(), words) != learnedSpells.end();
 }
 
-
 bool Player::isUsingSpears() const
 {
 	return (items[SLOT_LEFT] && items[SLOT_LEFT]->getID() == ITEM_SPEAR) ||
 		(items[SLOT_RIGHT] && items[SLOT_RIGHT]->getID() == ITEM_SPEAR);
 }
-
 
 bool Player::isUsingBurstArrows() const
 {
@@ -3876,7 +3830,6 @@ bool Player::isUsingBurstArrows() const
 		(items[SLOT_RIGHT] && items[SLOT_RIGHT]->getID() == ITEM_BOW)) &&
 		(items[SLOT_AMMO] && items[SLOT_AMMO]->getID() == ITEM_BURST_ARROW);
 }
-
 
 void Player::checkLightItem(int /*thinkTics*/)
 {
@@ -3892,7 +3845,6 @@ void Player::checkLightItem(int /*thinkTics*/)
 		lightItem = lightItemNow;
 	}
 }
-
 
 void Player::checkPremium(int thinkTics)
 {
@@ -3914,7 +3866,6 @@ void Player::checkPremium(int thinkTics)
 	}
 }
 
-
 void Player::addDeath(const std::string& killer, int level, time_t time)
 {
 	Death death = { killer, level, time };
@@ -3923,7 +3874,6 @@ void Player::addDeath(const std::string& killer, int level, time_t time)
 	while (deathList.size() > g_config.MAX_DEATH_ENTRIES)
 		deathList.pop_front();
 }
-
 
 void Player::sendWorldLightLevel(unsigned char lightlevel, unsigned char color)
 {
@@ -3937,7 +3887,6 @@ void Player::sendPlayerLightLevel(Player* player)
 {
 	client->sendPlayerLightLevel(player);
 }
-
 
 int Player::getWandId() const
 {

@@ -18,7 +18,6 @@
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
 
-
 #include "definitions.h"
 
 #include <algorithm>
@@ -322,7 +321,6 @@ InstantSpell::InstantSpell(const std::string &datadir, std::string iname, std::s
 	this->loaded = this->script && this->script->isLoaded();
 }
 
-
 RuneSpell::RuneSpell(const std::string &datadir, std::string iname, unsigned short id, unsigned short charges, int64_t magLv, int64_t mana, Game* game)
 : Spell(iname, magLv, mana, game)
 {
@@ -332,7 +330,6 @@ RuneSpell::RuneSpell(const std::string &datadir, std::string iname, unsigned sho
 	this->script = new SpellScript(datadir, std::string(datadir + "spells/runes/")+(this->name)+std::string(".lua"), this);
 	this->loaded = this->script && this->script->isLoaded();
 }
-
 
 SpellScript::SpellScript(const std::string &datadir, std::string scriptname, Spell* spell){
 	this->loaded = false;
@@ -1152,7 +1149,6 @@ Spell* SpellScript::getSpell(lua_State *L) {
 	return myspell;
 }
 
-
 void SpellScript::internalGetArea(lua_State *L, MagicEffectAreaClass &magicArea)
 {
 	std::vector<unsigned char> col;
@@ -1655,7 +1651,6 @@ int SpellScript::luaActionChangeSpeedMonster(lua_State *L){
 	return 0;
 }
 
-
 int SpellScript::luaActionGetSpeed(lua_State *L){
 	Spell* spell = getSpell(L);
 	Creature* creature = spell->game->getCreatureByID((unsigned long)lua_tonumber(L, -1));
@@ -1811,17 +1806,6 @@ int SpellScript::luaActionMakeRune(lua_State *L){
 		else if(a == 1 || b == 1) {
 			magicTarget.damageEffect = 12; //NM_ME_MAGIC_ENERGIE = 12
 		}
-
-		/*else{
-			magicTarget.damageEffect = 12; //NM_ME_MAGIC_ENERGIE = 12
-
-			if(b==1){
-				magicTarget.manaCost = spell->getMana();
-			}
-			else{	//only create 1 rune
-				magicTarget.manaCost = 0;
-			}
-		}*/
 
 		bool isSuccess = spell->game->creatureThrowRune(player, player->pos, magicTarget);
 		if(isSuccess && spentSoul > 0) {
@@ -1990,7 +1974,6 @@ int SpellScript::luaSetPlayerLightLevel(lua_State* L)
 
 	return 0;
 }
-
 
 int SpellScript::luaActionInvisible(lua_State *L)
 {

@@ -18,10 +18,8 @@
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
 
-
 #ifndef __OTSERV_MAP_H
 #define __OTSERV_MAP_H
-
 
 #include <queue>
 #include <bitset>
@@ -66,11 +64,11 @@ class Map;
 
 class Range {
 public:
-	
+
 	Range(Position centerpos, bool multilevel = false) {
 		setRange(centerpos, multilevel);
 	}
-	
+
 	//Creates a union of 2 positions
 	//Should only be used when a player makes a move.
 	Range(const Position& pos1, const Position& pos2)
@@ -112,15 +110,15 @@ private:
 	void setRange(Position pos, bool multilevel = false)
 	{
 		centerpos = pos;
-		
+
 		//This is the maximum view that the viewer AND the viewers that is seeing the viewer :o
-		minRange.x = -9; //minRange.x = -8;
-		minRange.y = -7; //minRange.y = -6;
-		
+		minRange.x = -9;
+		minRange.y = -7;
+
 		//just the visible ones
-		maxRange.x = 9; //maxRange.x = 8;
-		maxRange.y = 7; //maxRange.y = 6;
-		
+		maxRange.x = 9;
+		maxRange.y = 7;
+
 		zstep = 1;
 
 		if(multilevel) {
@@ -197,7 +195,7 @@ class Map {
   public:
     Map();
     ~Map();
-    
+
 	/**
 	  * Load a map.
 	  * \param filename Mapfile to load
@@ -212,7 +210,7 @@ class Map {
 	  */
     Tile* getTile(unsigned short _x, unsigned short _y, unsigned char _z);
     Tile* getTile(const Position &pos);
-    
+
 	/**
 	  * Set a single tile.
 	  * \param groundId Ground kind (ID)
@@ -228,7 +226,7 @@ class Map {
 	  * \param c Creature pointer to the creature to place
 	  */
     bool placeCreature(Position &pos, Creature* c);
-	
+
 	/**
 	  * Remove a creature from the map.
 	  * \param c Creature pointer to the creature to remove
@@ -243,7 +241,7 @@ class Map {
 	 *	\param isProjectile Takes into consideration for windows/door-ways.
 	 *	\returns The result if you can throw there or not
 	 */
-		//bool canThrowItemTo(Position from, Position to, bool creaturesBlock  = true, bool isProjectile = false);
+
 		ReturnValue canThrowObjectTo(Position from, Position to, int objectstate = BLOCK_PROJECTILE);
 
 		ReturnValue isPathValid(Creature *creature, const std::list<Position>& path, int pathSize,
@@ -260,20 +258,18 @@ class Map {
 	std::list<Position> getPathTo(Creature* creature, Position start, Position to,
 		bool creaturesBlock = true, bool ignoreMoveableBlockingItems = false, int maxNodSize = 100);
 
-	
 	/* Map Width and Height - for Info purposes */
 	int mapwidth, mapheight;
 
 	long clean();
-	
+
   protected:    
     /**
 	  * Get the Creatures within a specific Range */
 	void getSpectators(const Range& range, SpectatorVec& list);
-    
+
     typedef std::map<unsigned long, Tile*> TileMap;
-	//TileMap tileMaps[32][32][MAP_LAYER];	
-	//TileMap tileMaps[256][256];
+
 	TileMap tileMaps[128][128];
 
 	friend class Game;

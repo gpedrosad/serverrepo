@@ -18,7 +18,6 @@
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
 
-
 #include "definitions.h"
 
 #include <string>
@@ -49,8 +48,6 @@ access(0)
 	direction  = NORTH;
 	master = NULL;
 
-	//this->name = name;
-
 	lookhead   = 0;
 	lookbody   = 0;
 	looklegs   = 0;
@@ -59,12 +56,11 @@ access(0)
 	looktype   = PLAYER_MALE_1;
 	pzLocked = false;
 
-	//lookcorpse = 3128;
 	lookcorpse = ITEM_HUMAN_CORPSE;
 
 	health     = 1000;//150;
 	healthmax  = 1000;//150;
-	//experience = 100000;
+
 	lastmove=0;
 
 	inFightTicks = 0;
@@ -156,13 +152,13 @@ void Creature::setAttackedCreature(const Creature* creature)
 
 void Creature::setMaster(Creature* creature)
 {
-	//std::cout << "setMaster: " << this << " master=" << creature << std::endl;
+
 	master = creature;
 }
 
 void Creature::addSummon(Creature *creature)
 {
-	//std::cout << "addSummon: " << this << " summon=" << creature << std::endl;
+
 	creature->setMaster(this);
 	creature->useThing();
 	summons.push_back(creature);
@@ -171,7 +167,7 @@ void Creature::addSummon(Creature *creature)
 
 void Creature::removeSummon(Creature *creature)
 {
-	//std::cout << "removeSummon: " << this << " summon=" << creature << std::endl;
+
 	std::list<Creature*>::iterator cit = std::find(summons.begin(), summons.end(), creature);
 	if(cit != summons.end()) {
 		(*cit)->setMaster(NULL);
@@ -208,7 +204,7 @@ void Creature::addInflictedDamage(Creature* attacker, int damage)
 }
 
 exp_t Creature::getLostExperience() {
-	//return (int)std::floor(((double)experience * 0.1));
+
 	return 0;
 }
 
@@ -254,7 +250,7 @@ exp_t Creature::getGainedExperience(Creature* attacker)
 	exp_t gainexperience = 0;
 
 	if(attackerdamage > 0 && totaldamage > 0) {
-		//gainexperience = (int)std::floor(((double)attackerdamage / totaldamage) * lostexperience);
+
 		gainexperience = (exp_t)attackerdamage * lostexperience / totaldamage;
 	}
 
@@ -327,12 +323,10 @@ long long Creature::getSleepTicks() const
 	return delay;
 }
 
-
 bool Creature::isPlayersSummon() const
 {
 	return master && dynamic_cast<Player*>(master);
 }
-
 
 bool Creature::checkInvisible(int thinkTicks)
 {

@@ -18,10 +18,8 @@
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
 
-
 #ifndef __spells_h_
 #define __spells_h_
-
 
 #include "game.h"
 #include "luascript.h"
@@ -33,7 +31,6 @@ extern "C"
 #include <lauxlib.h>
 #include <lualib.h>
 }
-
 
 //////////////////////////////////////////////////////////////////////
 // Defines a Spell...
@@ -85,7 +82,6 @@ protected:
   bool loaded;
   int maxVoc;
 };
-
 
 class Spell
 {
@@ -146,7 +142,6 @@ public:
 	static int luaActionDoAreaExSpell(lua_State *L);
 	static int luaActionDoAreaGroundSpell(lua_State *L);
 
-	//static int luaActionDoSpell(lua_State *L);
   static int luaActionGetPos(lua_State *L);
   static int luaActionGetAttackedCreaturePos(lua_State *L);
   static int luaActionChangeOutfit(lua_State *L);

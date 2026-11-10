@@ -216,8 +216,6 @@ int64_t MagicEffectTargetExClass::getDamage(Creature *target, const Creature *at
 
 	if((!offensive || (target != attacker)) && target->access < g_config.ACCESS_PROTECT) {
 
-		//target->addMagicDamage(dmgContainer, true);
-
 		bool refresh = true;
 		for(ConditionVec::const_iterator condIt = condition.begin(); condIt != condition.end(); ++condIt) {
 			/*if(condIt == condition.begin()) //skip first
@@ -280,9 +278,7 @@ void MagicEffectTargetCreatureCondition::getMagicEffect(Player* spectator, const
 		}
 	}
 
-	//MagicEffectTargetClass::getMagicEffect(spectator, attacker, pos, hasTarget, damage, isPz, isBlocking, msg);
 }
-
 
 //magic wall, wild growth
 MagicEffectTargetGroundClass::MagicEffectTargetGroundClass(MagicEffectItem* item)
@@ -388,7 +384,7 @@ void MagicEffectAreaClass::getArea(const Position& rcenterpos, MagicAreaVec& lis
 
 	for(int y = 0; y < rows /*14*/; y++) {
 		for(int x = 0; x < cols /*18*/; x++) {
-			//if(area[y][x] == direction) {
+
 			if(areaVec[y][x] == direction) {
 
 				list.push_back(tpos);
@@ -413,7 +409,6 @@ int64_t MagicEffectAreaExClass::getDamage(Creature *target, const Creature *atta
 		return 0;
 
 	if(target->access < g_config.ACCESS_PROTECT) {
-		//target->addMagicDamage(dmgContainer, true);
 
 		bool refresh = true;
 		for(ConditionVec::const_iterator condIt = condition.begin(); condIt != condition.end(); ++condIt) {

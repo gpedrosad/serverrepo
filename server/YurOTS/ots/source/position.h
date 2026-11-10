@@ -7,7 +7,6 @@
 #include <cmath>
 #include <iostream>
 
-
 enum Direction {
 	NORTH = 0,
 	EAST = 1,
@@ -23,7 +22,7 @@ class Position {
 public:
 
   // for now we just initialise the position to a startpoint
-  //Position() : x(247), y(218), z(7) { };
+
   Position() : x(31), y(31), z(7) { };
 	~Position() {};
 
@@ -73,23 +72,10 @@ public:
 		return Position(x-p1.x, y-p1.y,z-p1.z);
 	}
 
-	/*
-	void dist(){
-		x=abs(x);
-		y=abs(y);
-		z=abs(z);
-	}
-		
-	bool operator==(const position p){
-		return (x==p.x && y== p.x && z==p.z);
-	}
-	*/
-
 };
 
 std::ostream& operator<<(std::ostream&, const Position&);
 std::ostream& operator<<(std::ostream&, const Direction&);
-
 
 class PositionEx : public Position{
 public:  
@@ -98,13 +84,13 @@ public:
 
 	PositionEx(int _x, int _y, int _z, int _stackpos)
 	: Position(_x,_y,_z), stackpos(_stackpos) {};
-	
+
 	PositionEx(int _x, int _y, int _z)
 	: Position(_x,_y,_z), stackpos(0) {};
 
 	PositionEx(Position p)
 	: Position(p.x,p.y,p.z), stackpos(0) {};
-	
+
 	PositionEx(Position p,int _stackpos)
 	: Position(p.x,p.y,p.z), stackpos(_stackpos) {};
 
@@ -125,6 +111,5 @@ public:
 	}
 
 };
-
 
 #endif
