@@ -11,7 +11,7 @@ ROOKEQ_BUYS = {
 	{keys = {'leather helmet'}, itemid = 2461, unitPrice = 5},
 	{keys = {'brass shield'}, itemid = 2511, unitPrice = 15},
 	{keys = {'copper shield'}, itemid = 2530, unitPrice = 50},
-	{keys = {'leather legs'}, itemid = 2649, unitPrice = 8},
+	{keys = {'leather legs', 'leather trousers'}, itemid = 2649, unitPrice = 8},
 	{keys = {'studded legs'}, itemid = 2468, unitPrice = 20},
 	{keys = {'hatchet'}, itemid = 2388, unitPrice = 20},
 	{keys = {'katana'}, itemid = 2412, unitPrice = 20},

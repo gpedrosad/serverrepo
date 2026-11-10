@@ -1804,53 +1804,53 @@ SAY I sell coal basins, birdcages, harps, pianos, globes, clocks and lamps.
 >> say 1001 no
 >> think
 >> say 1001 tapestry
-SAY I sell blue, green, orange, pink, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
 >> say 1001 yes
 >> say 1001 tapestry
-SAY I sell blue, green, orange, pink, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
 >> say 1001 no
 >> say 1001 5 tapestry
-SAY I sell blue, green, orange, pink, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
 >> say 1001 yes
 >> say 1001 5 tapestry
-SAY I sell blue, green, orange, pink, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
 >> say 1001 no
 >> say 1001 tapestry 100
-SAY I sell blue, green, orange, pink, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
 >> say 1001 yes
 >> say 1001 tapestry 100
-SAY I sell blue, green, orange, pink, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
 >> say 1001 no
 >> say 1001 tapestry all
-SAY I sell blue, green, orange, pink, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
 >> say 1001 yes
 >> say 1001 tapestry all
-SAY I sell blue, green, orange, pink, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
 >> say 1001 no
 >> think
 >> say 1001 tapestries
-SAY I sell blue, green, orange, pink, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
 >> say 1001 yes
 >> say 1001 tapestries
-SAY I sell blue, green, orange, pink, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
 >> say 1001 no
 >> say 1001 5 tapestries
-SAY I sell blue, green, orange, pink, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
 >> say 1001 yes
 >> say 1001 5 tapestries
-SAY I sell blue, green, orange, pink, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
 >> say 1001 no
 >> say 1001 tapestries 100
-SAY I sell blue, green, orange, pink, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
 >> say 1001 yes
 >> say 1001 tapestries 100
-SAY I sell blue, green, orange, pink, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
 >> say 1001 no
 >> say 1001 tapestries all
-SAY I sell blue, green, orange, pink, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
 >> say 1001 yes
 >> say 1001 tapestries all
-SAY I sell blue, green, orange, pink, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
 >> say 1001 no
 >> think
 >> say 1001 small
@@ -1929,28 +1929,28 @@ SAY I sell blue, red, green and yellow pillows.
 >> say 1001 no
 >> think
 >> say 1001 pillows
-SAY I sell heart, small, sqare and round pillows.
+SAY I sell heart, small, square and round pillows.
 >> say 1001 yes
 >> say 1001 pillows
-SAY I sell heart, small, sqare and round pillows.
+SAY I sell heart, small, square and round pillows.
 >> say 1001 no
 >> say 1001 5 pillows
-SAY I sell heart, small, sqare and round pillows.
+SAY I sell heart, small, square and round pillows.
 >> say 1001 yes
 >> say 1001 5 pillows
-SAY I sell heart, small, sqare and round pillows.
+SAY I sell heart, small, square and round pillows.
 >> say 1001 no
 >> say 1001 pillows 100
-SAY I sell heart, small, sqare and round pillows.
+SAY I sell heart, small, square and round pillows.
 >> say 1001 yes
 >> say 1001 pillows 100
-SAY I sell heart, small, sqare and round pillows.
+SAY I sell heart, small, square and round pillows.
 >> say 1001 no
 >> say 1001 pillows all
-SAY I sell heart, small, sqare and round pillows.
+SAY I sell heart, small, square and round pillows.
 >> say 1001 yes
 >> say 1001 pillows all
-SAY I sell heart, small, sqare and round pillows.
+SAY I sell heart, small, square and round pillows.
 >> say 1001 no
 >> think
 >> say 1001 focused
@@ -2168,10 +2168,10 @@ SAY I sell large trunks, boxes, drawers, dressers, lockers and troughs.
 SAY I sell coal basins, birdcages, harps, pianos, globes, clocks and lamps.
 >> say 1002 yes
 >> say 1002 tapestry
-SAY I sell blue, green, orange, pink, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
 >> say 1002 yes
 >> say 1002 tapestries
-SAY I sell blue, green, orange, pink, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
 >> say 1002 yes
 >> say 1002 small
 SAY I sell small purple, small green, small red, small blue, small orange, small turquiose and small white pillows.

@@ -1135,30 +1135,30 @@ CALL sell(1001, 2478, 10, 1000)
 >> say 1001 no
 >> think
 >> say 1001 chain legs
-CALL sell(1001, 2547, 1, 100)
+CALL sell(1001, 2648, 1, 100)
 >> say 1001 yes
 >> say 1001 chain legs
-CALL sell(1001, 2547, 1, 100)
+CALL sell(1001, 2648, 1, 100)
 >> say 1001 no
 >> say 1001 5 chain legs
-CALL sell(1001, 2547, 5, 500)
+CALL sell(1001, 2648, 5, 500)
 >> say 1001 yes
 >> say 1001 5 chain legs
-CALL sell(1001, 2547, 5, 500)
+CALL sell(1001, 2648, 5, 500)
 >> say 1001 no
 >> say 1001 chain legs 100
-CALL sell(1001, 2547, 100, 10000)
+CALL sell(1001, 2648, 100, 10000)
 >> say 1001 yes
 >> say 1001 chain legs 100
-CALL sell(1001, 2547, 100, 10000)
+CALL sell(1001, 2648, 100, 10000)
 >> say 1001 no
 >> say 1001 chain legs all
-CALL getPlayerItemCount(1001, 2547)
-CALL sell(1001, 2547, 10, 1000)
+CALL getPlayerItemCount(1001, 2648)
+CALL sell(1001, 2648, 10, 1000)
 >> say 1001 yes
 >> say 1001 chain legs all
-CALL getPlayerItemCount(1001, 2547)
-CALL sell(1001, 2547, 10, 1000)
+CALL getPlayerItemCount(1001, 2648)
+CALL sell(1001, 2648, 10, 1000)
 >> say 1001 no
 >> think
 >> say 1001 shield of the mastermind
@@ -2550,7 +2550,7 @@ CALL sell(1002, 2647, 1, 700)
 CALL sell(1002, 2478, 1, 100)
 >> say 1002 yes
 >> say 1002 chain legs
-CALL sell(1002, 2547, 1, 100)
+CALL sell(1002, 2648, 1, 100)
 >> say 1002 yes
 >> say 1002 shield of the mastermind
 CALL sell(1002, 2514, 1, 80000)

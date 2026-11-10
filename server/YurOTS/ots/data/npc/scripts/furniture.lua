@@ -34,7 +34,7 @@ FURNITURE_OFFERS = {
 	{keys = {'blue tapestry'}, itemid = 1872},
 	{keys = {'green tapestry'}, itemid = 1860},
 	{keys = {'orange tapestry'}, itemid = 1866},
-	{keys = {'pink tapestry'}, itemid = 1857},
+	{keys = {'purple tapestry', 'pink tapestry'}, itemid = 1857},
 	{keys = {'red tapestry'}, itemid = 1869},
 	{keys = {'white tapestry'}, itemid = 1880},
 	{keys = {'yellow tapestry'}, itemid = 1863},
@@ -43,7 +43,7 @@ FURNITURE_OFFERS = {
 	{keys = {'small red pillow'}, itemid = 1680},
 	{keys = {'small blue pillow'}, itemid = 1681},
 	{keys = {'small orange pillow'}, itemid = 1682},
-	{keys = {'small turquiose pillow'}, itemid = 1683},
+	{keys = {'small turquoise pillow', 'small turqoise pillow', 'small turquiose pillow'}, itemid = 1683},
 	{keys = {'small white pillow'}, itemid = 1684},
 	{keys = {'heart pillow'}, itemid = 1685},
 	{keys = {'blue pillow'}, itemid = 1686},
@@ -53,7 +53,7 @@ FURNITURE_OFFERS = {
 	{keys = {'round blue pillow'}, itemid = 1690},
 	{keys = {'round red pillow'}, itemid = 1691},
 	{keys = {'round purple pillow'}, itemid = 1692},
-	{keys = {'round turquiose pillow'}, itemid = 1693}
+	{keys = {'round turquoise pillow', 'round turqoise pillow', 'round turquiose pillow'}, itemid = 1693}
 }
 
 FURNITURE_TOPICS = {
@@ -62,11 +62,11 @@ FURNITURE_TOPICS = {
 	{keys = {'plants'}, reply = 'I sell pink and green flowers, also christmas trees.'},
 	{keys = {'containers'}, reply = 'I sell large trunks, boxes, drawers, dressers, lockers and troughs.'},
 	{keys = {'more'}, reply = 'I sell coal basins, birdcages, harps, pianos, globes, clocks and lamps.'},
-	{keys = {'tapestry', 'tapestries'}, reply = 'I sell blue, green, orange, pink, red, white and yellow tapestry.'},
+	{keys = {'tapestry', 'tapestries'}, reply = 'I sell blue, green, orange, purple, red, white and yellow tapestry.'},
 	{keys = {'small'}, reply = 'I sell small purple, small green, small red, small blue, small orange, small turquiose and small white pillows.'},
 	{keys = {'round'}, reply = 'I sell round blue, round red, round purple and round turquiose pillows.'},
 	{keys = {'square'}, reply = 'I sell blue, red, green and yellow pillows.'},
-	{keys = {'pillows'}, reply = 'I sell heart, small, sqare and round pillows.'}
+	{keys = {'pillows'}, reply = 'I sell heart, small, square and round pillows.'}
 }
 
 function buyFurniture(cid, entry, msg)
@@ -80,7 +80,9 @@ local function onMessage(cid, msg)
 		return
 	end
 
-	local entry = npcFindCatalogEntry(msg, FURNITURE_OFFERS)
+	-- Best-match (not first-match): "round blue pillow" must not be
+	-- shadowed by the earlier "blue pillow" entry (same for red).
+	local entry = npcFindCatalogBuyEntry(msg, FURNITURE_OFFERS)
 	if entry then
 		buyFurniture(cid, entry, msg)
 		return
