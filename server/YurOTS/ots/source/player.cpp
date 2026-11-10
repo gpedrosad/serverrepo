@@ -3276,6 +3276,16 @@ int Player::getAttackDelayMs() const
 		case ITEM_FROSTWARDEN_CHILLBLADE: return FROSTWARDEN_ATTACK_DELAY_MS;
 		default: break;
 	}
+	// Aurora Blade (Zagan custom): base mas rapida que una espada normal; las
+	// gemas ruby siguen reduciendo el delay. Se detecta por nombre porque el
+	// server id lo asigna build_zagan_test_assets.py al reconstruir el pack.
+	Item* weapon = getActiveWeapon();
+	if(weapon && Item::items[weapon->getID()].name == "aurora blade"){
+		const int percent = rubySpeedPercentFromStacks(imbueRubyWeapon);
+		if(percent > 0)
+			return AURORA_BLADE_ATTACK_DELAY_MS * (100 - percent) / 100;
+		return AURORA_BLADE_ATTACK_DELAY_MS;
+	}
 	if(imbueNightglassSpeed)
 		return nightglassAttackDelayFromStacks(imbueNightglassSpeed);
 	if(imbueCrystalArrowSpeed)

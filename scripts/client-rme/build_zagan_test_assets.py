@@ -220,6 +220,17 @@ ITEM_GAMEPLAY_SPECS: dict[str, dict[str, object]] = {
         "silenceCooldownPerTargetMs": 12000,
         "blocksSpokenSpellsOnly": True,
     },
+    "aurora blade": {
+        "attack": 36,
+        "defence": 30,
+        "weaponType": "sword",
+        "weaponPrototype": "bright sword",
+        "slot": "hand",
+        "attackDelayMs": 1250,
+        "defaultAttackDelayMs": 1333,
+        "speedBonusPercent": 6,
+        "rubyImbueStacks": "siguen reduciendo el delay",
+    },
 }
 
 # PNG/BMP extras living in zagan-test/custom-sprites/
@@ -241,6 +252,12 @@ CUSTOM_ITEM_DEFS: tuple[tuple[str, str, int, str], ...] = (
         "southern axe",
         2386,
         "Twin blades of frost and ember on a volcanic haft.",
+    ),
+    (
+        "aurora_blade.png",
+        "aurora blade",
+        2407,
+        "A swift blade with a cold aurora edge.",
     ),
 )
 

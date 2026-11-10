@@ -1,6 +1,6 @@
 # Zagan Test Items
 
-Pack del directorio `Zagan+Square` más sprites custom en `zagan-test/custom-sprites/`: **54 items** (`20100`–`20153`).
+Pack del directorio `Zagan+Square` más sprites custom en `zagan-test/custom-sprites/`: **54+ items** (desde `20100`; el builder asigna ids nuevos al final).
 
 Los 5 primeros (equipo base):
 
@@ -30,6 +30,23 @@ Cada item hereda slot/atributos del prototipo OTB duplicado (arma, escudo, casco
 - `zagan-test/previews/`
 - `server/YurOTS/ots/data/items/items-zagan-test.otb`
 - `server/YurOTS/ots/data/items/items-zagan-test.xml`
+
+## Aurora Blade — nueva (nov 2026)
+
+Espada 1H rápida pensada para el hueco entre la bright sword y las rares del Crisol.
+
+| Dato | Valor |
+|------|-------|
+| Prototipo | bright sword `2407` (atk 36 / def 30, 1H) |
+| Velocidad | **1250 ms** por golpe (default `PLAYER_ATTACK_DELAY_MS` = 1333 ms; ~6 % más rápida) |
+| Sprite | `zagan-test/custom-sprites/aurora_blade.png` (32×32, PNG con alpha) |
+| Preview | `docs/items-and-map/img/aurora-blade.png` |
+| Builder | entrada `aurora_blade.png` en `CUSTOM_ITEM_DEFS` |
+| C++ | `AURORA_BLADE_ATTACK_DELAY_MS 1250` en `const76.h`; `Player::getAttackDelayMs()` la detecta por nombre porque el server id lo asigna el builder. Las gemas ruby siguen reduciendo el delay. |
+
+**Pendiente:** correr `./scripts/install-zagan-test-env.sh` en la máquina con el pack Zagan para generar el OTB/DAT/SPR y probar in-game. El 32×32 vive en `devtools/zagan-test/custom-sprites/` (esa carpeta está gitignoreada; el PNG se agregó con `git add -f`).
+
+---
 
 ## Producción (VPS)
 
