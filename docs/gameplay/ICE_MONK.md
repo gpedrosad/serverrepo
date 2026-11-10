@@ -1,8 +1,11 @@
 # Ice Monk
 
-Monje-mago del hielo: un Monk recoloreado (túnica azul profundo y blanco hielo, piel pálida, cinturón
-celeste brillante) que **se queda a distancia** y ataca con hielo. Nivel medio, entre el Monk y los
-dragones.
+Monje-mago del hielo: un Monk recoloreado (túnica azul profundo y blanco hielo, cinturón celeste
+brillante) que **se queda a distancia** y ataca con hielo. Nivel medio, entre el Monk y los dragones.
+
+**Lo que lo distingue:**
+- **Ojos que brillan:** la cara queda en sombra bajo la capucha y solo se ven dos ojos celestes.
+- **Su manada:** no anda solo, llama hasta 2 Winter Wolves que lo cuidan mientras ataca de lejos.
 
 Proceso general: [`CUSTOM_MONSTER_WORKFLOW.md`](CUSTOM_MONSTER_WORKFLOW.md). Usa los efectos de hielo del
 pack "ice" ([`CLIENT_EFFECTS.md`](CLIENT_EFFECTS.md)), los mismos del [Frost Dragon](FROST_DRAGON.md).
@@ -22,6 +25,13 @@ pack "ice" ([`CLIENT_EFFECTS.md`](CLIENT_EFFECTS.md)), los mismos del [Frost Dra
 | Look | 57 | **232** |
 
 Inmune a paralyze, drunk e invisible.
+
+## Su manada
+
+Invoca **Winter Wolves** (`<summons maxSummons="2">`, probabilidad 1500 sobre 100000 en cada turno; el
+Necromancer usa 2000). Los lobos lo protegen mientras él se queda a distancia: o los matas primero o le
+llegas al monje esquivándolos. Los invocados dan **0 de experiencia** (`Monster::getLostExperience`), así
+que no sirven para farmear dejándolo vivo. Grita "Come, my wolves!".
 
 ## Ataques
 
@@ -51,12 +61,19 @@ python3 scripts/client-rme/add_recolor_look.py --preset ice-monk --preview /tmp/
 python3 scripts/client-rme/add_recolor_look.py --preset ice-monk devtools/rme/rme-client-760    # aplica (idempotente)
 ```
 
-Paleta (`recolor_ice_monk`): túnica marrón → degradé de azul noche a blanco hielo según la luz; cara y
-manos (tonos piel) → celeste pálido helado; cinturón dorado → celeste brillante. Probado sobre nieve,
-hielo, cueva y pasto: se distingue en todos.
+Paleta (`recolor_ice_monk`): túnica marrón → degradé de azul noche a blanco hielo según la luz; manos
+(tonos piel) → celeste pálido helado; cinturón dorado → celeste brillante.
+
+Después, un retoque por cuadro completo (`ice_monk_eyes`, paso `frames_post` del preset): la cara es el
+grupo de piel más grande del cuadro (las manos tienen 1 a 3 píxeles). Se pinta de sombra de capucha y
+lleva **ojos celestes** con un brillo suave debajo: dos de frente, uno de perfil hacia donde mira. De
+espaldas no hay cara y el cuadro queda igual. Probado sobre nieve, hielo, cueva y pasto: se distingue en
+todos.
 
 Verificado con lectura independiente del `.dat`/`.spr` de RME: solo cambió el look 232 (cabecera del
-Monk, sprites 11103-11150), los ítems quedaron iguales y 400 sprites viejos al azar siguen idénticos.
+Monk, sprites 11103-11150), los ítems quedaron iguales y 400 sprites viejos al azar siguen idénticos. Con los
+ojos se rehízo desde el `.spr` anterior: el `.dat` queda igual y cambian solo 6 sprites (la cabeza en los 6
+cuadros donde se ve la cara).
 
 ## Antes de ponerlo en el mapa: el cliente
 
