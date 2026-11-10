@@ -18,6 +18,7 @@ import json
 import re
 import struct
 import sys
+import time
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
@@ -171,7 +172,8 @@ def main() -> int:
             print(f"  criaturas: {sum(1 for v in data['monsters'].values() if 'img' in v)} monstruos, "
                   f"{len(nimg)} NPC con sprite")
     (out / "data.json").write_text(json.dumps(data, separators=(",", ":")))
-    (site / "monstruos.html").write_text(PAGE, encoding="utf-8")
+    # versión del build en cada URL: si no, el navegador sigue mostrando mosaicos viejos de su caché
+    (site / "monstruos.html").write_text(PAGE.replace("__BUILD__", str(int(time.time()))), encoding="utf-8")
     nm = sum(len(s["m"]) for s in data["spawns"])
     print(f"OK {site / 'monstruos.html'}: {len(counts)} pisos, {len(data['spawns'])} spawns, {nm} monstruos, "
           f"{len(data['npcs'])} NPC, {len(data['zones'])} zonas")
@@ -231,13 +233,14 @@ canvas{position:absolute;inset:0;width:100%;height:100%}
 <div class="legend"><span><i style="background:#5bd16a"></i>&lt; 50 exp</span><span><i style="background:#e6d24a"></i>&lt; 300</span><span><i style="background:#f39a3d"></i>&lt; 1000</span><span><i style="background:#ef5350"></i>&lt; 3000</span><span><i style="background:#c06cff"></i>3000+</span><span><i style="background:#fff;border-radius:2px"></i>NPC</span></div>
 </aside></div>
 <script>
+const BUILD='__BUILD__';
 const $=s=>document.querySelector(s), cv=$('#cv'), ctx=cv.getContext('2d'), stage=$('#stage'), tip=$('#tip');
 let D, imgs={}, floor=7, sel=null, q='', view={x:0,y:0,k:2}, show={sp:1,npc:1,zon:0,game:1};
 const st=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){}};
 const tier=e=>e<50?'#5bd16a':e<300?'#e6d24a':e<1000?'#f39a3d':e<3000?'#ef5350':'#c06cff';
 const exp=n=>(D.monsters[n]||{}).exp||0;
-fetch('monstruos/data.json').then(r=>r.json()).then(d=>{D=d;
-  D.floors.forEach(z=>{const im=new Image();im.src=`monstruos/z${z}.png`;im.onload=draw;imgs[z]=im});
+fetch('monstruos/data.json?v='+BUILD).then(r=>r.json()).then(d=>{D=d;
+  D.floors.forEach(z=>{const im=new Image();im.src=`monstruos/z${z}.png?v=${BUILD}`;im.onload=draw;imgs[z]=im});
   const h=new URLSearchParams(location.hash.slice(1));
   floor=+(h.get('z')??st('mm-floor')??7); sel=h.get('m')||null;
   buildFloors(); buildList(); resize();
@@ -281,8 +284,8 @@ function center(x,y){const r=stage.getBoundingClientRect();view.x=r.width/2-(x+.
 function zoomAt(f,px,py){const k2=Math.min(64,Math.max(.5,view.k*f));view.x=px-(px-view.x)*k2/view.k;view.y=py-(py-view.y)*k2/view.k;view.k=k2;draw();hash()}
 const tcache={},lcache={};let raf=0;
 function schedule(){if(!raf)raf=requestAnimationFrame(()=>{raf=0;draw()})}
-function tileImg(z,L,key){const k=z+'/'+L+'/'+key;let im=tcache[k];if(!im){im=tcache[k]=new Image();im.onload=schedule;im.src=`monstruos/t/${z}/${L}/${key}.webp`}return im}
-function lookImg(src){let im=lcache[src];if(!im){im=lcache[src]=new Image();im.onload=schedule;im.src='monstruos/'+src}return im}
+function tileImg(z,L,key){const k=z+'/'+L+'/'+key;let im=tcache[k];if(!im){im=tcache[k]=new Image();im.onload=schedule;im.src=`monstruos/t/${z}/${L}/${key}.webp?v=${BUILD}`}return im}
+function lookImg(src){let im=lcache[src];if(!im){im=lcache[src]=new Image();im.onload=schedule;im.src='monstruos/'+src+'?v='+BUILD}return im}
 function drawSprite(src,w,h,tx,ty,alpha){const im=lookImg(src);if(!(im.complete&&im.naturalWidth))return false;const k=view.k,W=w*k,H=h*k;
   ctx.globalAlpha=alpha;ctx.drawImage(im,view.x+(tx+1)*k-W-k*.25,view.y+(ty+1)*k-H-k*.25,W,H);ctx.globalAlpha=1;return true}
 function draw(){if(!D)return;const r=stage.getBoundingClientRect();ctx.clearRect(0,0,r.width,r.height);

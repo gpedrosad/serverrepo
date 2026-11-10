@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import json
 import sys
+import time
 from collections import defaultdict
 from pathlib import Path
 
@@ -62,7 +63,7 @@ def main() -> int:
         w, h, px = r.area(tiles, a, b, c, d, z)
         (out / f"{key}.png").write_bytes(png_bytes(w, h, px, scale=scale))
 
-    meta = dict(floors=overview,
+    meta = dict(build=int(time.time()), floors=overview,   # build: versión para las URLs (caché)
                 details=[dict(key=k, title=t, box=list(box), z=z) for k, t, box, z, _s in DETAILS])
     (out / "meta.json").write_text(json.dumps(meta))
     print(f"OK {out}: {len(overview)} pisos, {len(DETAILS)} vistas de detalle")
