@@ -66,6 +66,7 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 | Crystal Arrow (spear-like + Blue Gem speed + hit chance) | `docs/gameplay/CRYSTAL_ARROW.md` |
 | Soft Boots (regen HP/MP cada 3 s + desgaste → worn) | `docs/gameplay/SOFT_BOOTS.md` |
 | Daily Task / Huntmaster (contratos diarios) | `docs/gameplay/DAILY_TASK.md` |
+| Escaleras / escaleras de mano / trampillas con click derecho | `docs/gameplay/STAIRS.md` |
 | El Crisol (puertas diarias + rares Zagan) | `docs/gameplay/CRUCIBLE.md` |
 | Wave Arena (oleadas + ranking) | `docs/gameplay/WAVE_ARENA.md` |
 | Reloj de Arena (sala compartida, fases 120 s) | `docs/gameplay/SAND_CLOCK.md` |

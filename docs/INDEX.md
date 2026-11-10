@@ -72,6 +72,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/BOAT_TRAVEL.md`](gameplay/BOAT_TRAVEL.md) | Viajes de Nimral/Fargum: destinos (incl. Gauntlet), Hell Quest, confirmación y reglas de temple. |
 | [`gameplay/MOST_WANTED_SYSTEM.md`](gameplay/MOST_WANTED_SYSTEM.md) | Sistema de bounty / most wanted entre jugadores. |
 | [`gameplay/DAILY_TASK.md`](gameplay/DAILY_TASK.md) | **Daily Task (Huntmaster):** 3 contratos/día por rango de level, kills + oro o exp, streak. |
+| [`gameplay/STAIRS.md`](gameplay/STAIRS.md) | Escaleras, escaleras de mano, trampillas y agujeros al usarlos con click derecho; dónde se aterriza. |
 | [`gameplay/GEMS.md`](gameplay/GEMS.md) | Sistema de gemas: drop, uso, imbuements. Antes de tocar gemas, leer esto. |
 | [`gameplay/CRYSTAL_ARROW.md`](gameplay/CRYSTAL_ARROW.md) | **Crystal Arrow (2352):** throwable tipo spear, Blue Gem speed ×5, hit 85%; spears 70% hit. |
 | [`gameplay/ENCHANTED_SPEAR.md`](gameplay/ENCHANTED_SPEAR.md) | **Enchanted Spear (20156):** spear mejorada (ataque 36, 80% hit, no se apila), sprite de cristal y luz de color propia; 4 estilos; proyectil propio `NM_ANI_ENCHANTED_SPEAR` (16) con luz en vuelo. |

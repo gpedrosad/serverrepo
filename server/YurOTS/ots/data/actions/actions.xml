@@ -64,7 +64,6 @@
 <action itemid="484" script="teleport.lua" />
 <action itemid="485" script="teleport.lua" />
 <action itemid="489" script="teleport.lua" />
-<action itemid="493" script="teleport.lua" />
 <action itemid="294" script="teleport.lua" />
 <action itemid="469" script="teleport.lua" />
 <action itemid="470" script="teleport.lua" />
