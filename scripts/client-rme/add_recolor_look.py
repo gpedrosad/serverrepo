@@ -9,6 +9,8 @@ Presets:
   black-dragon   Dragon (34) -> 230, negro con brillo violeta, ojos rojos
   frost-dragon   Dragon (34) -> 231, hielo: cuerpo azul acero a blanco, panza y alas
                  blanco hielo, ojos celestes brillantes (estilo Frost Dragon de versiones nuevas)
+  ice-monk       Monk (57) -> 232, túnica azul profundo a blanco hielo, piel celeste pálida,
+                 cinturón celeste brillante
 
 Uso:
   python3 scripts/client-rme/add_recolor_look.py --preset frost-dragon DIR_THINGS [--preview x.png]
@@ -63,9 +65,30 @@ def recolor_frost(pixel):
     return gradient(FROST_BODY, (lum ** 0.7) * 1.25) + (255,)  # cuerpo verde -> hielo
 
 
+ICE_ROBE = [(0, (6, 10, 28)), (0.2, (18, 38, 88)), (0.45, (40, 88, 166)),
+            (0.7, (110, 172, 228)), (0.9, (200, 232, 250)), (1, (245, 252, 255))]
+ICE_SKIN = [(0, (70, 96, 120)), (0.55, (190, 214, 228)), (1, (240, 248, 252))]
+
+
+def recolor_ice_monk(pixel):
+    """Monk (57): túnica marrón -> azul profundo a blanco hielo, piel -> celeste pálido helado,
+    cinturón dorado -> celeste brillante (parece que brilla)."""
+    r, g, b, a = pixel
+    if a == 0:
+        return pixel
+    h, s, v = colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
+    lum = (0.30 * r + 0.59 * g + 0.11 * b) / 255
+    if 0.06 <= h <= 0.10 and 0.28 <= s <= 0.47 and v > 0.74:      # cara y manos
+        return gradient(ICE_SKIN, lum * 1.05) + (255,)
+    if 0.095 <= h <= 0.13 and s > 0.47 and v > 0.76:               # cinturón
+        return gradient([(0, (60, 170, 220)), (1, (190, 250, 255))], (v - 0.76) / 0.24) + (255,)
+    return gradient(ICE_ROBE, (lum ** 0.85) * 1.2) + (255,)       # túnica y sombras
+
+
 PRESETS = {
     "black-dragon": dict(source=34, target=230, recolor=recolor_black, name="Black Dragon"),
     "frost-dragon": dict(source=34, target=231, recolor=recolor_frost, name="Frost Dragon"),
+    "ice-monk": dict(source=57, target=232, recolor=recolor_ice_monk, name="Ice Monk"),
 }
 
 
