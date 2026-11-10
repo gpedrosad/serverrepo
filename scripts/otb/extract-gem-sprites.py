@@ -49,7 +49,7 @@ CLIENT_VERSION = 760
 SPRITE_SIZE = 32
 THING_LAST_ATTR = 0xFF
 
-# Server item id → export spec (alineado con web/index.html GEMS_*)
+# Server item id → export spec (alineado con web/site/src/pages/gemas.astro)
 @dataclass(frozen=True)
 class GemExport:
     server_id: int

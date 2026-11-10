@@ -146,6 +146,7 @@ Catálogo de **migración/portabilidad** (16 fichas congeladas). No es el invent
 | [`features/14-spell-cast-visibility.md`](features/14-spell-cast-visibility.md) | Visibilidad del cast de hechizos. |
 | [`features/15-exori-gran.md`](features/15-exori-gran.md) | Hechizo exori gran. |
 | [`features/16-utility-spell-access.md`](features/16-utility-spell-access.md) | Acceso a hechizos utilitarios. |
+| [`features/18-web-astro.md`](features/18-web-astro.md) | Web en Astro: páginas, diseño, cómo compilar (en la ThinkPad) y cómo la sirve `server.py`. |
 | [`features/17-web-footer-chillan.md`](features/17-web-footer-chillan.md) | Footer de la web: el centro de Chillán en pixel art, animado, de día o de noche según la hora. |
 
 ---

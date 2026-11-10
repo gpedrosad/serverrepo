@@ -44,12 +44,13 @@ echo "==> Subiendo parche updater a $VPS:$REMOTE_UPDATER"
 ssh "$VPS" "mkdir -p $REMOTE_UPDATER/data/things/760"
 rsync -az --progress "$UPDATER_FILES/" "$VPS:$REMOTE_UPDATER/"
 
-echo "==> Subiendo API updater (server.py, client_updater.py)"
+echo "==> Subiendo API updater (server.py, client_updater.py) y el sitio compilado (web/dist)"
 rsync -az --progress \
   "$ROOT/web/server.py" \
   "$ROOT/web/client_updater.py" \
-  "$ROOT/web/index.html" \
   "$VPS:/root/yurots-principal/web/"
+# server.py sirve las páginas desde web/dist (Astro, ver docs/features/18-web-astro.md)
+rsync -az --delete --progress "$ROOT/web/dist/" "$VPS:/root/yurots-principal/web/dist/"
 
 ssh "$VPS" "ls -lh $REMOTE/ $REMOTE_UPDATER/data/things/760/ && systemctl restart yurots-web"
 echo "OK: https://retro76.cl/downloads/Retro76-Windows.zip"

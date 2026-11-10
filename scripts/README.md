@@ -14,7 +14,7 @@ Python en subcarpetas debe resolver el repo con `lib.project_root.project_root()
 | [`map/`](map/) | Generadores OTBM, depots, sync de houses |
 | [`otb/`](otb/) | Patches OTB / gems sprites / loot tables |
 | [`client-rme/`](client-rme/) | RME, clientes locales, Zagan test assets, patcher |
-| [`web/`](web/) | Web local, analytics, premium funnel |
+| [`web/`](web/) | Web local, analytics, premium funnel, `build-site.sh` (compila la web Astro en la ThinkPad) |
 | [`lib/`](lib/) | Helpers compartidos (`project_root.py`) |
 | [`code/`](code/) | Limpieza del C++ y comprobación sin compilar (`check-cpp-equivalence.py`, `strip-dead-comments.py`) |
 | [`npc/`](npc/) | Banco de pruebas de NPCs |

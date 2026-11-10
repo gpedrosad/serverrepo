@@ -1,6 +1,6 @@
 # Web: footer en pixel art del centro de Chillán
 
-Al final de la portada de retro76.cl (`web/index.html`) hay una escena pixel-art del centro de
+Al final de cada página de retro76.cl (layout `web/site/src/layouts/Base.astro`) hay una escena pixel-art del centro de
 Chillán: la Catedral, la Cruz Monumental, la Plaza de Armas con el monumento a O'Higgins y la
 cordillera. Reemplaza al footer de texto que se sacó en nov 2026.
 
@@ -12,7 +12,7 @@ genera `tools/gen-chillan.py` allá.
 | `web/assets/footer/chillan-day.png`, `chillan-night.png` | Arte de día y de noche (415×137, se escala con `image-rendering: pixelated`) |
 | `web/assets/footer/chillan-map.png` | Mapa por píxel: capa de profundidad (R), animación (G) y grupo de luz (B) |
 | `web/assets/footer/chillan-footer.js` | Animación: 4 canvas apilados, parallax al hacer scroll, loop a 8 fps |
-| `web/index.html` | `<footer class="chillan-scene">` y su CSS |
+| `web/site/src/layouts/Base.astro`, `web/site/src/styles/site.css` | `<footer class="chillan-scene">` y su CSS |
 
 **Cómo se comporta**
 - **Día o noche según la hora del visitante:** noche de 20:00 a 7:00. Si la página queda abierta,

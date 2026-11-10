@@ -42,7 +42,7 @@ Si alguno de estos archivos no existe, **avisar** al usuario antes de seguir.
 
 1. **NUNCA** ejecutar `git stash -u`, `git clean -fd`, `git reset --hard` ni borrado masivo dentro del VPS. Eso borra cuentas y personajes reales.
 2. **NUNCA** commitear data runtime de jugadores: `accounts/`, `players/` (excepto `0-4.xml`), `online.xml`, `queue.xml`, `houseitems.xml`, `data/houses/*.xml` con dueños reales de prod, `web/state/*.json`.
-3. **NUNCA** commitear binarios ni artefactos: `source/yurots`, `*.o`, `*.bak`, `*.patch`, `core.*`, `*.log` rotados.
+3. **NUNCA** commitear binarios ni artefactos: `source/yurots`, `*.o`, `*.bak`, `*.patch`, `core.*`, `*.log` rotados. Excepción a propósito: `web/dist/` (la web Astro compilada; se compila en la ThinkPad con `scripts/web/build-site.sh` y va en el mismo commit que el cambio en `web/site/`, ver `docs/features/18-web-astro.md`).
 4. **NUNCA** deployar al VPS si el usuario solo pidió debug local. **Siempre preguntar**.
 5. **SIEMPRE** usar `DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh` para deployar (nada de `docker cp` artesanal). Canónico: `scripts/deploy/deploy-vps.sh` (symlink en `scripts/`).
 6. **SIEMPRE** verificar el estado del servidor con `python3 scripts/ot-probe.py 127.0.0.1 7171` después de tocar el OT (local o VPS). Canónico: `scripts/ot/ot-probe.py`.

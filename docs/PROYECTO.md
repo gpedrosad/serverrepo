@@ -133,7 +133,7 @@ Se usó `git stash -u` en el VPS antes de un deploy. Eso **movió del disco al s
 - Código C++ (`server/YurOTS/ots/source/`)
 - `config.lua` (con IP local; en VPS se ajusta la IP a mano)
 - Mapa, spawns, NPCs, monstruos, items, spells
-- Web (`web/*.py`, `web/index.html`, etc.)
+- Web (`web/*.py`, el sitio Astro `web/site/` y su compilado `web/dist/`, etc.)
 - Scripts (`scripts/`)
 - Documentación
 
