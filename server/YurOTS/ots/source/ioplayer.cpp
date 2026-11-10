@@ -24,30 +24,16 @@
 #include <fstream>
 #include <cctype>
 
-#ifndef WIN32
 #include <dirent.h>
 #include <unistd.h>
-#endif
 
-#ifdef __USE_MYSQL__
-	#include "ioplayersql.h"
-#endif
 #include "ioplayerxml.h"
 
-#ifdef __USE_MYSQL__
-#include "luascript.h"
-extern LuaScript g_config;
-#endif
 
 IOPlayer* IOPlayer::_instance = NULL;
 
 IOPlayer* IOPlayer::instance(){
 	if(!_instance){
-#ifdef __USE_MYSQL__
-        if(g_config.getGlobalString("sourcedata") == "SQL") 
-		_instance = (IOPlayer*)new IOPlayerSQL;
-		else // if(g_config.getGlobalString("sourcedata") == "XML") //fallback to xml
-#endif
 		_instance = (IOPlayer*)new IOPlayerXML;
 
 	}
@@ -73,7 +59,6 @@ bool IOPlayer::playerFileExists(const std::string& datadir, const std::string& n
 
 void IOPlayer::normalizePlayerFilenames(const std::string& datadir)
 {
-#ifndef WIN32
 	std::string dirpath = datadir + "players/";
 	DIR* dir = opendir(dirpath.c_str());
 	if(!dir)
@@ -106,7 +91,6 @@ void IOPlayer::normalizePlayerFilenames(const std::string& datadir)
 			std::cout << ":: Renamed player file " << fname << " -> " << lower << ".xml" << std::endl;
 	}
 	closedir(dir);
-#endif //WIN32
 }
 
 bool IOPlayer::loadPlayer(Player* player, std::string name){

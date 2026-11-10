@@ -57,13 +57,7 @@
 #include "private_trainers.h"
 #include "aac.h"
 
-#ifdef __OTSERV_ALLOCATOR__
-#include "allocator.h"
-#endif
 
-#ifdef WIN32
-	#define ERROR_EINTR WSAEINTR
-#else
 	#include <fcntl.h>
 	#include <arpa/inet.h>
 	#include <signal.h>
@@ -77,7 +71,6 @@
 	/* #define _HOMEDIR_CONF_ */
 	
 	extern int errno; 
-#endif
 
 #ifdef __DEBUG_CRITICALSECTION__
 OTSYS_THREAD_LOCK_CLASS::LogList OTSYS_THREAD_LOCK_CLASS::loglist;
@@ -97,9 +90,6 @@ Actions actions(&g_game);
 Commands commands(&g_game);
 Monsters g_monsters;
 
-#if defined __EXCEPTION_TRACER__
-#include "exception.h"
-#endif
 #include "crashhandler.h"
 #include "networkmessage.h"
 #include "socket_debug.h"
@@ -202,10 +192,6 @@ std::string MakeRejectMessage(int place)
 
 OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 {
-#if defined __EXCEPTION_TRACER__
-	ExceptionHandler playerExceptionHandler;
-	playerExceptionHandler.InstallHandler();
-#endif
 
 	srand((unsigned)time(NULL));
 
@@ -438,11 +424,7 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 				#endif
 				std::string str = status->getStatusString();
 				send(s, str.c_str(), (int)str.size(), 0);
-#ifdef WIN32
-				shutdown(s, SD_BOTH);
-#else
 				shutdown(s, SHUT_RDWR);
-#endif
 			}
 		}
 		// Another ServerInfo protocol
@@ -470,15 +452,9 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
   }
   if(s)
 	  closesocket(s);
-#if defined __EXCEPTION_TRACER__
-  playerExceptionHandler.RemoveHandler();
-#endif
 
 
-#if defined WIN32 || defined WINDOWS
-#else
   return 0;
-#endif
 }
 
 
@@ -490,14 +466,11 @@ void ErrorMessage(const char* message) {
   std::cin >> s;
 }
 
-#if defined __WINDOWS__ || defined WIN32
-#else
 extern volatile sig_atomic_t g_yurotsWantShutdown;
 static void yurotsTermSignal(int)
 {
 	g_yurotsWantShutdown = 1;
 }
-#endif
 
 int main(int argc, char *argv[])
 {
@@ -506,23 +479,6 @@ int main(int argc, char *argv[])
 	//below is Windows-only (SEH) and does nothing on i386 Linux.
 	CrashHandler::install();
 
-#ifdef __OTSERV_ALLOCATOR_STATS__
-	OTSYS_CREATE_THREAD(allocatorStatsThread, NULL);
-#endif
-#if defined __EXCEPTION_TRACER__
-	ExceptionHandler mainExceptionHandler;
-	mainExceptionHandler.InstallHandler();
-#endif
-#ifdef __WIN_LOW_FRAG_HEAP__
-	ULONG  HeapFragValue = 2;
-
-    if(HeapSetInformation(GetProcessHeap(),HeapCompatibilityInformation,&HeapFragValue,sizeof(HeapFragValue))){
-		std::cout << "Heap Success" << std::endl;
-	}
-    else{
-		std::cout << "Heap Error" << std::endl;
-	}
-#endif
 
 	std::cout << ":: YurOTS 0.9.4f" << std::endl;
 	std::cout << ":: ~~~~~~~~~~~~~" << std::endl;
@@ -540,9 +496,6 @@ int main(int argc, char *argv[])
 #endif
 
 	// ignore sigpipe...
-#if defined __WINDOWS__ || defined WIN32
-		//nothing yet
-#else
 	struct sigaction sigh;
 	sigh.sa_handler = SIG_IGN;
 	sigemptyset(&sigh.sa_mask);
@@ -556,7 +509,6 @@ int main(int argc, char *argv[])
 	sighTerm.sa_flags = 0;
 	sigaction(SIGTERM, &sighTerm, NULL);
 	sigaction(SIGINT, &sighTerm, NULL);
-#endif
 
 //	LOG_MESSAGE("main", EVENT, 1, "Starting server");
 
@@ -775,24 +727,6 @@ int main(int argc, char *argv[])
 
 
   	// Call to WSA Startup on Windows Systems...
-#ifdef WIN32
-	WORD wVersionRequested;
-	WSADATA wsaData;
-	wVersionRequested = MAKEWORD( 1, 1 );
-
-	if (WSAStartup(wVersionRequested, &wsaData) != 0)
-	{
-		ErrorMessage("Winsock startup failed!!");
-		return -1;
-	}
-
-	if ((LOBYTE(wsaData.wVersion) != 1) || (HIBYTE(wsaData.wVersion) != 1))
-	{
-		WSACleanup( );
-		ErrorMessage("No Winsock 1.1 found!");
-		return -1;
-	}
-#endif
 
 	std::string localip = "127.0.0.1";
 
@@ -877,36 +811,25 @@ int main(int argc, char *argv[])
 		SOCKET listen_socket = socket(AF_INET, SOCK_STREAM, 0);
 
 		if(listen_socket <= 0){
-#ifdef WIN32
-	    		WSACleanup();
-#endif
 			ErrorMessage("Unable to create server socket (1)!");
 			return -1;
   		} // if (listen_socket <= 0)
 
-#ifndef WIN32
 		int yes = 1;
 		// lose the pesky "Address already in use" error message
 		if(setsockopt(listen_socket, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof (int)) == -1){
 			ErrorMessage("Unable to set socket options!");
 			return -1;
 		}
-#endif
 
 		// bind socket on port
 		if(bind(listen_socket, (struct sockaddr*)&local_adress, sizeof(struct sockaddr_in)) < 0){
-#ifdef WIN32
-	    		WSACleanup();
-#endif
 			ErrorMessage("Unable to create server socket (2)!");
 			return -1;
   		} // if (bind(...))
 
 		// now we start listen on the new socket
 		if(listen(listen_socket, 128) == SOCKET_ERROR){
-#ifdef WIN32
-    			WSACleanup();
-#endif
     			ErrorMessage("Listen on server socket not possible!");
 			return -1;
 		} // if (listen(*listen_socket, 10) == -1)
@@ -924,11 +847,7 @@ int main(int argc, char *argv[])
 
 			int reads = select((int)listen_socket + 1, &listen_set, NULL, NULL, &tv);
 			int errnum;
-#ifdef WIN32
-			errnum = WSAGetLastError();
-#else
 			errnum = errno;
-#endif
 			if(reads == SOCKET_ERROR){
 				if(errnum == ERROR_EINTR)
 					continue;
@@ -950,12 +869,6 @@ int main(int argc, char *argv[])
 		closesocket(listen_socket);
 		listen_errors++;
   	}
-#ifdef WIN32
-  	WSACleanup();
-#endif
 
-#if defined __EXCEPTION_TRACER__
-  	mainExceptionHandler.RemoveHandler();
-#endif
 	return 0;
 }

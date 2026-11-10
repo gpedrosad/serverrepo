@@ -148,7 +148,8 @@ requiere MySQL.** Las cuentas/players viven en `data/accounts/` y
 El repo original solo trae proyectos Dev-C++ (`.dev`) y CodeBlocks (`.cbp`) y
 MSVC (`.vcproj`): **no hay Makefile**. Se generó `ots/source/Makefile` a partir
 del `.cbp`, con los 48 `.cpp` (excluyendo `mdump.cpp` que es Windows-only) y
-todos los defines `YUR_*`/`TLM_*`/etc. del proyecto original.
+todos los defines `YUR_*`/`TLM_*`/etc. del proyecto original. (Nov 2026: los proyectos de Windows,
+los defines y el código de Windows/MySQL ya se sacaron; el `Makefile` compila todos los `.cpp`.)
 
 Compilando en Linux se encontraron estos problemas y se resolvieron así:
 

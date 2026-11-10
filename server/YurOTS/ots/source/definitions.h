@@ -29,39 +29,12 @@
 #define xmlFreeOTSERV(s)	xmlFree(s)
 #endif
 
-#if defined __WINDOWS__ || defined WIN32
-
-#define OTSYS_THREAD_RETURN  void
-
-#define EWOULDBLOCK WSAEWOULDBLOCK
-
-typedef unsigned long long uint64_t;
-typedef unsigned int uint32_t;
-typedef unsigned short uint16_t;
-typedef unsigned char uint8_t;
-
-#pragma warning(disable:4786) // msvc too long debug names in stl
-
-#ifdef MIN
-#undef MIN
-#endif
-
-#ifdef MAX
-#undef MAX
-#endif
-
-#ifndef NOMINMAX
-#define NOMINMAX
-#endif
-
-#else
 
 #define OTSYS_THREAD_RETURN void*
 
 #include <stdint.h>
 typedef int64_t __int64;
 
-#endif
 
 
 #endif // __definitions_h

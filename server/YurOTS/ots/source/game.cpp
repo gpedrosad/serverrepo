@@ -41,10 +41,7 @@ using namespace std;
 
 #include <stdio.h>
 #include <signal.h>
-#if defined WIN32 || defined WINDOWS
-#else
 #include <unistd.h>
-#endif
 #include "otsystem.h"
 #include "items.h"
 #include "commands.h"
@@ -71,10 +68,6 @@ using namespace std;
 #include "private_trainers.h"
 #include <ctype.h>
 
-#if defined __EXCEPTION_TRACER__
-#include "exception.h"
-extern OTSYS_THREAD_LOCKVAR maploadlock;
-#endif
 
 #define EVENT_CHECKCREATURE          123
 #define EVENT_CHECKCREATUREATTACKING 124
@@ -1440,9 +1433,6 @@ Game::Game()
 	OTSYS_THREAD_LOCKVARINIT(gameLock);
 	OTSYS_THREAD_LOCKVARINIT(eventLock);
 	OTSYS_THREAD_LOCKVARINIT(AutoID::autoIDLock);
-#if defined __EXCEPTION_TRACER__
-	OTSYS_THREAD_LOCKVARINIT(maploadlock);
-#endif
 	OTSYS_THREAD_SIGNALVARINIT(eventSignal);
 	BufferedPlayers.clear();
 	OTSYS_CREATE_THREAD(eventThread, this);
@@ -1546,10 +1536,6 @@ OTSYS_THREAD_RETURN Game::monitorThread(void *p)
 
 OTSYS_THREAD_RETURN Game::eventThread(void *p)
 {
-#if defined __EXCEPTION_TRACER__
-	ExceptionHandler eventExceptionHandler;
-	eventExceptionHandler.InstallHandler();
-#endif
 
   Game* _this = (Game*)p;
 
@@ -1602,9 +1588,6 @@ OTSYS_THREAD_RETURN Game::eventThread(void *p)
 			delete task;
     }
   }
-#if defined __EXCEPTION_TRACER__
-	eventExceptionHandler.RemoveHandler();
-#endif
 
 }
 

@@ -23,11 +23,7 @@
 #define __OTSERV_ITEMS_H
 
 
-#ifdef __GNUC__
 #include <ext/hash_map>
-#else
-#include <hash_map>
-#endif
 #include <string>
 #include "const76.h"
 #include "itemloader.h"
@@ -140,11 +136,7 @@ public:
 	//bool						isDoorWithLock;
 };
 
-#ifdef __GNUC__
 typedef __gnu_cxx::hash_map<unsigned long, unsigned long> ReverseItemMap;
-#else
-typedef stdext::hash_map<unsigned long, unsigned long> ReverseItemMap;
-#endif
 
 class Items {
 public:
@@ -163,11 +155,7 @@ public:
 	static long dwBuildNumber;
 	
 protected:
-	#ifdef __GNUC__
 	typedef __gnu_cxx::hash_map<unsigned short, ItemType*> ItemMap;
-	#else
-	typedef stdext::hash_map<unsigned short, ItemType*> ItemMap;
-	#endif
 	
 	ItemMap items;
 	static ReverseItemMap revItems;

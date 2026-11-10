@@ -20,25 +20,13 @@
 
 #include "ioaccount.h"
 
-#ifdef __USE_MYSQL__
-#include "ioaccountsql.h"
-#endif
 #include "ioaccountxml.h"
 
-#ifdef __USE_MYSQL__
-#include "luascript.h"
-extern LuaScript g_config;
-#endif
 
 IOAccount* IOAccount::_instance = NULL;
 
 IOAccount* IOAccount::instance(){
 	if(!_instance){
-#ifdef __USE_MYSQL__
-    if(g_config.getGlobalString("sourcedata") == "SQL")   
-	_instance = (IOAccount*)new IOAccountSQL;
-	else //if(g_config.getGlobalString("sourcedata") == "XML") //fallback to xml
-#endif
 	_instance = (IOAccount*)new IOAccountXML;
 	}
 	#ifdef __DEBUG__

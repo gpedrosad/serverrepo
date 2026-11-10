@@ -29,98 +29,6 @@
 #include <list>
 #include <algorithm>
 
-#if defined WIN32 || defined __WINDOWS__
-#ifdef __WIN_LOW_FRAG_HEAP__
-#define _WIN32_WINNT 0x0501
-#endif
-#include <windows.h>
-#include <process.h>    /* _beginthread, _endthread */
-#include <stddef.h>
-#include <stdlib.h>
-#include <conio.h>
-#include <sys/timeb.h>
-#include <winsock.h>
-
-#define OTSYS_CREATE_THREAD(a, b) _beginthread(a, 0, b)
-
-#ifndef __DEBUG_CRITICALSECTION__
-	#define OTSYS_THREAD_LOCKVAR CRITICAL_SECTION
-
-	#define OTSYS_THREAD_LOCKVARINIT(a) InitializeCriticalSection(&a);
-	#define OTSYS_THREAD_LOCKVARRELEASE(a) DeleteCriticalSection(&a);
-	#define OTSYS_THREAD_LOCK(a, b)        EnterCriticalSection(&a);
-	#define OTSYS_THREAD_UNLOCK(a, b)      LeaveCriticalSection(&a);
-	#define OTSYS_THREAD_UNLOCK_PTR(a, b)  LeaveCriticalSection(a);
-#else
-	#define OTSYS_THREAD_LOCKVAR HANDLE
-	
-	static void addLockLog(OTSYS_THREAD_LOCKVAR* a, const char* s, bool lock);
-
-	struct logBlock {
-		bool lock;
-		unsigned long mutexaddr;
-		std::string str;
-		uint64_t time;
-		int threadid;
-	};
-
-	#define OTSYS_THREAD_LOCKVARINIT(a)    a = CreateMutex(NULL, FALSE, NULL);
-	#define OTSYS_THREAD_LOCKVARRELEASE(a) CloseHandle(a);
-	#define OTSYS_THREAD_LOCK(a, b) { WaitForSingleObject(a,INFINITE); addLockLog(&a, b, true);}
-	inline int OTSYS_THREAD_LOCKEX(HANDLE a, int b)   {return WaitForSingleObject(a, b);}
-	#define OTSYS_THREAD_UNLOCK(a, b)         {addLockLog(&a, b, false); ReleaseMutex(a);}
-	#define OTSYS_THREAD_UNLOCK_PTR(a, b)     {addLockLog(a, b, false); ReleaseMutex(*a);}
-#endif
-
-	#define OTSYS_THREAD_TIMEOUT			  WAIT_TIMEOUT
-	#define OTSYS_THREAD_SIGNALVARINIT(a) a = CreateEvent(NULL, FALSE, FALSE, NULL)
-	#define OTSYS_THREAD_SIGNAL_SEND(a)   SetEvent(a);
-
-typedef HANDLE OTSYS_THREAD_SIGNALVAR;
-
-inline __int64 OTSYS_TIME()
-{
-  _timeb t;
-  _ftime(&t);
-  return ((__int64)t.millitm) + ((__int64)t.time) * 1000;
-}
-
-inline int OTSYS_THREAD_WAITSIGNAL(OTSYS_THREAD_SIGNALVAR& signal, OTSYS_THREAD_LOCKVAR& lock)
-{
-  //LeaveCriticalSection(&lock);
-	OTSYS_THREAD_UNLOCK(lock, "OTSYS_THREAD_WAITSIGNAL");
-  WaitForSingleObject(signal, INFINITE);
-  //EnterCriticalSection(&lock);
-	OTSYS_THREAD_LOCK(lock, "OTSYS_THREAD_WAITSIGNAL");
-
-  return -0x4711;
-}
-
-inline void OTSYS_SLEEP(uint32_t t){
-	Sleep(t);
-}
-
-
-inline int OTSYS_THREAD_WAITSIGNAL_TIMED(OTSYS_THREAD_SIGNALVAR& signal, OTSYS_THREAD_LOCKVAR& lock, __int64 cycle)
-{
-  __int64 tout64 = (cycle - OTSYS_TIME());
-  
-  DWORD tout = 0;
-  if (tout64 > 0)
-    tout = (DWORD)(tout64);
-
-  //LeaveCriticalSection(&lock);
-	OTSYS_THREAD_UNLOCK(lock, "OTSYS_THREAD_WAITSIGNAL_TIMED");
-  int ret = WaitForSingleObject(signal, tout);
-  //EnterCriticalSection(&lock);
-	OTSYS_THREAD_LOCK(lock, "OTSYS_THREAD_WAITSIGNAL_TIMED");
-
-  return ret;
-}
-
-typedef int socklen_t;
-
-#else  // #if defined WIN32 || defined __WINDOWS__
 
 #include <pthread.h>
 #include <semaphore.h>
@@ -201,7 +109,6 @@ inline int OTSYS_THREAD_WAITSIGNAL_TIMED(OTSYS_THREAD_SIGNALVAR& signal, OTSYS_T
 #endif
 
 
-#endif // #if defined WIN32 || defined __WINDOWS__
 
 
 #ifdef __DEBUG_CRITICALSECTION__

@@ -23,10 +23,8 @@
 #include <sstream>
 #include <cstring>
 
-#if !defined WIN32 && !defined __WINDOWS__
 #include <errno.h>
 #include <fcntl.h>
-#endif
 
 #include "networkmessage.h"
 #include "socket_debug.h"
@@ -46,15 +44,10 @@ void setSocketHandshakeRecvTimeout(SOCKET socket)
 {
 	if(socket <= 0)
 		return;
-#ifdef WIN32
-	DWORD ms = 5000;
-	setsockopt(socket, SOL_SOCKET, SO_RCVTIMEO, (const char*)&ms, sizeof(ms));
-#else
 	struct timeval tv;
 	tv.tv_sec = 5;
 	tv.tv_usec = 0;
 	setsockopt(socket, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv));
-#endif
 	socketDebugLog("handshake timeout 5s on " + socketDescribeState(socket));
 }
 
@@ -62,12 +55,6 @@ void setSocketGameRecvBlocking(SOCKET socket)
 {
 	if(socket <= 0)
 		return;
-#if defined WIN32 || defined __WINDOWS__
-	unsigned long mode = 0;
-	ioctlsocket(socket, FIONBIO, &mode);
-	DWORD ms = 0;
-	setsockopt(socket, SOL_SOCKET, SO_RCVTIMEO, (const char*)&ms, sizeof(ms));
-#else
 	int flags = fcntl(socket, F_GETFL, 0);
 	if(flags != -1)
 		fcntl(socket, F_SETFL, flags & ~O_NONBLOCK);
@@ -76,7 +63,6 @@ void setSocketGameRecvBlocking(SOCKET socket)
 	tv.tv_usec = 0;
 	// Linux: {0,0} = recv bloqueante sin timeout (man 7 socket).
 	setsockopt(socket, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv));
-#endif
 	socketDebugLog("game recv blocking on " + socketDescribeState(socket));
 }
 
@@ -121,21 +107,12 @@ bool recvExact(SOCKET socket, unsigned char* buf, int len, const char*& failReas
 			return false;
 		}
 		int errnum;
-#if defined WIN32 || defined __WINDOWS__
-		errnum = ::WSAGetLastError();
-		if(errnum == EWOULDBLOCK){
-			errOut = errnum;
-			failReason = "recv timeout or would block";
-			return false;
-		}
-#else
 		errnum = errno;
 		if(errnum == EAGAIN || errnum == EWOULDBLOCK){
 			errOut = errnum;
 			failReason = "recv timeout or would block";
 			return false;
 		}
-#endif
 		errOut = errnum;
 		failReason = "recv error";
 		return false;
@@ -207,12 +184,6 @@ bool NetworkMessage::WriteToSocket(SOCKET socket)
 	int flags;
 	const int retryDelayMs = 10;
 
-#if defined WIN32 || defined __WINDOWS__
-	// Set the socket I/O mode; iMode = 0 for blocking; iMode != 0 for non-blocking
-	unsigned long mode = 1;
-	ioctlsocket(socket, FIONBIO, &mode);
-	flags = 0;
-#else
 	flags = 0;
 	// Keep recv blocking for gameplay, but make individual sends bounded so one
 	// slow client cannot stall the whole server forever.
@@ -222,28 +193,12 @@ bool NetworkMessage::WriteToSocket(SOCKET socket)
 	#ifdef MSG_NOSIGNAL
 	flags |= MSG_NOSIGNAL;
 	#endif
-#endif
 	int retry = 0;
 	int maxRetries = 10;
-#if !defined WIN32 && !defined __WINDOWS__
 	maxRetries = 100;
-#endif
 	  	do{
 	    	int b = send(socket, (char*)m_MsgBuf+sendBytes, std::min(m_MsgSize-sendBytes+2, 1000), flags);
 			if(b <= 0){
-#if defined WIN32 || defined __WINDOWS__
-				int errnum = ::WSAGetLastError();
-				if(errnum == EWOULDBLOCK){
-					b = 0;
-					OTSYS_SLEEP(retryDelayMs);
-					retry++;
-					if(retry >= maxRetries){
-						ret = false;
-						break;
-					}
-				}
-				else
-#else
 				int errnum = errno;
 				if(errnum == EINTR){
 					b = 0;
@@ -259,7 +214,6 @@ bool NetworkMessage::WriteToSocket(SOCKET socket)
 					}
 				}
 				else
-#endif
 			{
 				ret = false;
 				break;
@@ -270,10 +224,6 @@ bool NetworkMessage::WriteToSocket(SOCKET socket)
     	sendBytes += b;
 	}while(sendBytes < m_MsgSize+2);
 
-#if defined WIN32 || defined __WINDOWS__
-	mode = 0;
-	ioctlsocket(socket, FIONBIO, &mode);
-#endif
 
   return ret;
 }

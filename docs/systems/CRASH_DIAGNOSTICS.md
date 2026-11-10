@@ -54,7 +54,7 @@ Agregado en `main()`:
 CrashHandler::install();  // PRIMERO, antes de cualquier init
 ```
 
-Sigue el bloque legacy `EXCEPTION_TRACER` (que en Linux es código muerto — `ExceptionHandler::InstallHandler()` solo instala SEH en Windows).
+(El bloque legacy `EXCEPTION_TRACER` de Windows, `exception.cpp`, se borró en nov 2026: en Linux no hacía nada.)
 
 ### 2.4. `scripts/docker-entrypoint.sh` (nuevo)
 
@@ -272,7 +272,7 @@ Dentro del handler evitamos `malloc`, `printf`, `std::cout`, `std::string`. Pero
 
 ### 6.4. C++ exceptions vs signals
 
-El `EXCEPTION_TRACER` legacy (Windows SEH) no hace nada en Linux. Si una C++ exception se propaga hasta `main()` sin catch, en Linux se llama `std::terminate()` que en algunas versiones hace `abort()` (señal `SIGABRT`) — ese sí lo capturamos. Pero si el código tiene un `catch(...)` que silencia la exception, no hay crash visible.
+El `EXCEPTION_TRACER` legacy (Windows SEH) ya no existe (borrado en nov 2026). Si una C++ exception se propaga hasta `main()` sin catch, en Linux se llama `std::terminate()` que en algunas versiones hace `abort()` (señal `SIGABRT`) — ese sí lo capturamos. Pero si el código tiene un `catch(...)` que silencia la exception, no hay crash visible.
 
 ### 6.5. Stack overflow
 
