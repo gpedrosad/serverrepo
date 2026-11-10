@@ -10,8 +10,11 @@ Qué hace (ver docs/items-and-map/MAPEAR_PASO_DEL_NORTE.md):
   Ciudad (z7, casillas existentes):
     - abre una puerta en la muralla norte (x 184-185, y 23-25) y un pasillo de piedra por dentro
       (x 185, y 26-33 y y 33, x 182-185) hasta el camino de tierra que baja al templo;
-    - camino de tierra con bordes de pasto por el campo norte (x 184-185, y 5-22);
-    - portal entre rocas al fondo del campo (y 4) con cartel y faroles.
+    - campo norte entero (x 116-213, y 0-22) como bosque cerrado, creando las casillas que faltaban
+      en los bordes; solo queda caminable un claro alrededor del camino (x 180-189, y 12-22);
+    - camino de tierra con bordes de pasto (x 184-185, y 12-22) y portal entre rocas (y 11) con
+      cartel y faroles; la sala de trainers y el agua no se tocan;
+    - pilar oeste de la puerta con pared y esquina (sin triángulo negro).
   Región nueva en zona vacía (x 370-469, y 236-467):
     - z7: llegada con portal de vuelta, bosque de pinos, línea de nieve, Tundra Helada con lago
       congelado y pie de la montaña con la escalera a las cuevas;
@@ -93,10 +96,23 @@ ALL8 = list(DIRS.values())
 GATE_XS = (184, 185)
 GATE_YS = (23, 24, 25)
 INNER_PATH = [(185, y) for y in range(26, 34)] + [(x, 33) for x in range(182, 185)] + [(184, 26), (184, 27)]
-ROAD_YS = range(4, 23)                      # camino de tierra afuera, x 184-185
-CITY_PORTALS = [(184, 3), (185, 3)]
-CITY_LANDING = (184, 6)                     # donde se llega al volver
-FIELD_BOX = (178, 2, 190, 22)               # parte del campo norte que se reescribe (bordes del camino)
+ROAD_YS = range(12, 23)                     # camino de tierra afuera, x 184-185
+CITY_PORTALS = [(184, 11), (185, 11)]       # portal entre rocas al fondo del claro
+CITY_LANDING = (184, 14)                    # donde se llega al volver
+# Campo norte completo (nov 2026): todo bosque cerrado salvo un claro alrededor del camino. El
+# portal quedó lejos del borde del mapa (y 0) y se crean las casillas que faltaban en los bordes,
+# así desde el claro nunca se ve negro. El bosque separa el claro de la sala de trainers.
+FIELD_BOX = (116, 0, 213, 22)
+TRAINING_BOX = (133, 7, 160, 17)            # sala de trainers (cerco incluido): no se toca
+CLEARING = (184.5, 17.5, 5.2, 6.2)          # elipse del claro: centro x, y y radios (x 180-189:
+                                            # al este de la muralla, x 190+, hay campo abierto)
+# pilar oeste de la puerta: pared vertical + esquina, si no queda un triángulo negro de montaña
+GATE_PILLAR = {(183, 24): (919, [1049]), (183, 25): (919, [1053])}
+VIEW = (8, 6)                               # media pantalla del cliente 7.6 (15x11 + 1 de margen)
+PORTAL_ROCKS = [(183, 10), (186, 10), (183, 11), (186, 11)]
+PORTAL_BACK = [(184, 10), (185, 10)]        # detrás del portal
+FIELD_LANTERNS = [(183, 12), (186, 12)]
+FIELD_SIGN = (187, 13)
 
 # --- puntos de la región (coordenadas locales) ------------------------------------------------
 ARRIVAL = (50, 216)
@@ -605,6 +621,130 @@ def new_tile_node(x: int, y: int, bx: int, by: int, items: list[int], tele=None)
     return [T_TILE, props, [item_node(i, tele if i == TELEPORT else None) for i in items[1:]]]
 
 
+def build_north_field(index, otb, bl, city, road, seed, errors):
+    """Campo norte: bosque cerrado con un claro alrededor del camino y el portal entre rocas.
+
+    Escribe en `city` las casillas existentes que cambian y devuelve las que hay que crear
+    ({(x, y): [suelo, ítems...]}). Valida: bordes de tierra, que desde cualquier casilla caminable la
+    pantalla entera tenga casillas, y que el claro solo salga a la ciudad por la puerta."""
+    rng = random.Random(seed + 404)
+    fx1, fy1, fx2, fy2 = FIELD_BOX
+    tx1, ty1, tx2, ty2 = TRAINING_BOX
+    cx, cy, rx, ry = CLEARING
+    water_or_kept = set()
+    field = set()
+    for x in range(fx1, fx2 + 1):
+        for y in range(fy1, fy2 + 1):
+            if tx1 <= x <= tx2 and ty1 <= y <= ty2:
+                continue
+            ex = index.get((x, y, 7))
+            if ex is not None:
+                if ex[1][0] == T_HOUSETILE:
+                    water_or_kept.add((x, y))
+                    continue
+                g, its = tile_ground_and_items(ex[1], otb)
+                ids = [g] + [struct.unpack_from("<H", bytes(c[1]), 0)[0] for c in its if c[0] == T_ITEM]
+                if any("water" in (otb.get(i, {}).get("name") or "") for i in ids):  # agua y orillas
+                    water_or_kept.add((x, y))
+                    continue
+            field.add((x, y))
+
+    clearing = {c for c in field if c[1] >= ROAD_YS.start
+                and ((c[0] - cx) / rx) ** 2 + ((c[1] - cy) / ry) ** 2 <= 1.0}
+    clearing |= road
+    portal_ext = set(CITY_PORTALS)
+    dirt = road | portal_ext
+    blocked_deco = set(PORTAL_ROCKS) | set(PORTAL_BACK) | set(FIELD_LANTERNS) | {FIELD_SIGN}
+    forest = field - clearing - portal_ext - blocked_deco
+
+    def ground_for(c):
+        if c in dirt:
+            return DIRT
+        edge = pieces_for(neighbors_in(dirt, *c), DIRT_SIDE, DIRT_CORNER, DIRT_INNER)
+        if edge is None or len(edge) > 1:
+            errors.append(f"campo norte {c}: borde de tierra sin pieza simple")
+            return GRASS
+        return edge[0] if edge else GRASS
+
+    def dist_to_clearing(c):
+        return min(max(abs(c[0] - o[0]), abs(c[1] - o[1])) for o in clearing)
+
+    big_trees = (4009, 4009, 4009, 2700, 2701, 2707, 2708, 2702)
+    items = {}
+    for c in sorted(forest):
+        near = dist_to_clearing(c) if abs(c[0] - cx) < rx + 4 and abs(c[1] - cy) < ry + 4 else 99
+        behind_portal = 180 <= c[0] <= 189 and c[1] <= 9
+        r = rng.random()
+        if near == 1:                                   # borde del claro: más bajo y variado
+            it = rng.choice(BUSHES) if r < 0.45 else FOREST_SMALL_TREE if r < 0.8 else rng.choice(big_trees)
+        elif behind_portal and r < 0.35:                # loma de piedras detrás del portal
+            it = rng.choice((STONE, RUBBLE_GREY))
+        else:
+            it = rng.choice(big_trees) if r < 0.72 else FOREST_SMALL_TREE if r < 0.9 else rng.choice(BUSHES)
+        items[c] = [it]
+    for c in clearing - road:                           # pasto del claro con flores y hongos al borde
+        r = rng.random()
+        edge = any((c[0] + dx, c[1] + dy) in forest for dx, dy in CARD)
+        if edge and r < 0.3:
+            items[c] = [rng.choice(FLOWERS + MUSHROOMS)]
+        elif r < 0.07:
+            items[c] = [rng.choice(FLOWERS)]
+        else:
+            items[c] = []
+    for c in road:
+        items[c] = []
+    for c in PORTAL_ROCKS:
+        items[c] = [STONE]
+    for c in PORTAL_BACK:
+        items[c] = [RUBBLE_GREY]
+    for c in FIELD_LANTERNS:
+        items[c] = [LANTERN]
+    items[FIELD_SIGN] = [SIGN]
+    for c in CITY_PORTALS:
+        items[c] = [TELEPORT]
+
+    new = {}
+    for c, it in items.items():
+        tile = [ground_for(c)] + it
+        if (c[0], c[1], 7) in index:
+            city[c] = (tile[0], tile[1:])
+        else:
+            new[c] = tile
+
+    # --- validaciones ---
+    walk = {c for c, it in items.items() if bl.walkable([ground_for(c)] + it)}
+    if not walk <= clearing | portal_ext:
+        errors.append(f"campo norte: casillas caminables fuera del claro {sorted(walk - clearing - portal_ext)[:5]}")
+    # el claro solo sale del campo por la puerta de la ciudad
+    for (x, y) in walk:
+        for dx, dy in ALL8:
+            n = (x + dx, y + dy)
+            if fx1 <= n[0] <= fx2 and fy1 <= n[1] <= fy2:
+                continue
+            if n[1] > fy2 and n[0] in GATE_XS:
+                continue
+            ex = index.get((n[0], n[1], 7))
+            if ex is not None:
+                g, its = tile_ground_and_items(ex[1], otb)
+                ids = [struct.unpack_from("<H", bytes(c[1]), 0)[0] for c in its if c[0] == T_ITEM]
+                if bl.walkable([g] + ids):
+                    errors.append(f"campo norte: el claro sale por {n} (no es la puerta)")
+    exists = {k[:2] for k in index if k[2] == 7} | set(new)
+    vx, vy = VIEW
+    for (x, y) in walk | road:
+        for dx in range(-vx, vx + 1):
+            for dy in range(-vy, vy + 1):
+                if (x + dx, y + dy) not in exists:
+                    errors.append(f"campo norte: desde {(x, y)} se vería negro en {(x + dx, y + dy)}")
+                    break
+            else:
+                continue
+            break
+    if any(tx1 - 7 <= x <= tx2 + 7 and ty1 - 7 <= y <= ty2 + 7 for x, y in walk):
+        errors.append("campo norte: el claro queda a menos de 8 casillas de la sala de trainers")
+    return new
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--seed", type=int, default=31)
@@ -695,55 +835,14 @@ def main() -> int:
     for c in INNER_PATH:
         city[c] = (STONE_FLOOR, [])
     road = {(x, y) for x in GATE_XS for y in ROAD_YS}
-    fx1, fy1, fx2, fy2 = FIELD_BOX
-    field = {(x, y) for x in range(fx1, fx2 + 1) for y in range(fy1, fy2 + 1)}
-    for c in field:
-        if c not in road:
-            ex = index.get((c[0], c[1], 7))
-            if ex is None:
-                errors.append(f"campo {c}: casilla inexistente")
-                continue
-            g, _ch = tile_ground_and_items(ex[1], otb)
-            if g not in (GRASS,) + tuple(DIRT_SIDE.values()) + tuple(DIRT_CORNER.values()) + tuple(DIRT_INNER.values()):
-                errors.append(f"campo {c}: suelo inesperado {g}")
-    for c in road:
-        city[c] = (DIRT, [])
-    for c in field - road:
-        edge = pieces_for(neighbors_in(road, *c), DIRT_SIDE, DIRT_CORNER, DIRT_INNER)
-        if edge is None or len(edge) > 1:
-            errors.append(f"borde del camino {c}: sin pieza simple")
-        elif edge:
-            city[c] = (edge[0], None)
-        else:
-            city[c] = (GRASS, None)
-    # portal entre rocas al fondo del campo
-    for c in CITY_PORTALS:
-        city[c] = (DIRT, [TELEPORT])
-    rock_ring = [(182, 2), (183, 2), (186, 2), (187, 2), (183, 3), (186, 3), (183, 4), (186, 4),
-                 (184, 2), (185, 2)]
-    for c in rock_ring:
-        city[c] = (GRASS, [RUBBLE_GREY if c[1] == 2 else STONE])
-    city[(183, 5)] = (city[(183, 5)][0], [LANTERN])
-    city[(186, 5)] = (city[(186, 5)][0], [LANTERN])
-    city[(188, 7)] = (GRASS, [SIGN])
-    # el portal va sobre tierra: sus vecinos de pasto necesitan borde
-    road_ext = road | set(CITY_PORTALS)
-    for c in field:
-        if c in road_ext or c in rock_ring:
-            continue
-        edge = pieces_for(neighbors_in(road_ext, *c), DIRT_SIDE, DIRT_CORNER, DIRT_INNER)
-        g = edge[0] if edge else GRASS
-        cur = city.get(c, (GRASS, None))
-        city[c] = (g, cur[1])
-    for c in rock_ring:
-        edge = pieces_for(neighbors_in(road_ext, *c), DIRT_SIDE, DIRT_CORNER, DIRT_INNER)
-        city[c] = (edge[0] if edge else GRASS, city[c][1])
-
+    field_new = build_north_field(index, otb, bl, city, road, a.seed, errors)
+    city.update(GATE_PILLAR)
     # comprobaciones de la ciudad sobre el estado actual (o ya generado)
     for (x, y) in list(city):
         ex = index.get((x, y, 7))
         if ex is None:
-            errors.append(f"ciudad {(x, y)}: casilla inexistente")
+            if (x, y) not in field_new:
+                errors.append(f"ciudad {(x, y)}: casilla inexistente")
         elif ex[1][0] == T_HOUSETILE:
             errors.append(f"ciudad {(x, y)}: es casa, no se toca")
 
@@ -828,8 +927,10 @@ def main() -> int:
                                               and X0 <= ax + t[1][0] < X0 + W and Y0 <= ay + t[1][1] < Y0 + H)]
         if not area[2]:
             mapdata_node[2].remove(area)
-    # 2) ciudad: reescribir casillas existentes
+    # 2) ciudad: reescribir casillas existentes (las del campo que no existían se crean en 3)
     for (x, y), (ground, items) in city.items():
+        if (x, y, 7) not in index:
+            continue
         _area, tile, _ax, _ay = index[(x, y, 7)]
         g_old, children = tile_ground_and_items(tile, otb)
         if items is None:
@@ -846,6 +947,8 @@ def main() -> int:
         all_new[(X0 + c[0], Y0 + c[1], Z_CAVES)] = it
     for c, it in caves["t9"].items():
         all_new[(X0 + c[0], Y0 + c[1], Z_NEST)] = it
+    for (x, y), it in field_new.items():               # bordes del campo norte que faltaban
+        all_new[(x, y, Z_SURFACE)] = it
     buckets = {}
     for (x, y, z), it in all_new.items():
         buckets.setdefault((x & ~0xFF, y & ~0xFF, z), []).append((x, y, it))
@@ -866,7 +969,7 @@ def main() -> int:
 
     # --- carteles ---
     signs = {(X0 + c[0], Y0 + c[1], 7): t for c, t in info["signs"].items()}
-    signs[(188, 7, 7)] = "PASO DEL NORTE\nBosque, Tundra Helada y Cuevas del Dragon.\nCuevas: nivel 60+."
+    signs[(FIELD_SIGN[0], FIELD_SIGN[1], 7)] = "PASO DEL NORTE\nBosque, Tundra Helada y Cuevas del Dragon.\nCuevas: nivel 60+."
     rd = READABLES.read_text(encoding="latin-1")
     rd = re.sub(r"\t?<!-- BEGIN NORTH_PASS_SIGNS -->.*?<!-- END NORTH_PASS_SIGNS -->\n?", "", rd, flags=re.S)
     lines = ["\t<!-- BEGIN NORTH_PASS_SIGNS -->"]

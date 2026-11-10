@@ -15,7 +15,7 @@ Relacionado:
 
 ## Por qué un portal y no un camino largo
 
-La muralla norte está en y=23–25 y el mapa empieza en y≈2. Al norte solo hay unas 20 casillas de pasto, y a la izquierda está la sala de entrenamiento (Trainer Monks, x 134–154). El camino sale por una puerta nueva, cruza el campo y termina en un portal entre rocas. La región sigue en la zona vacía del mapa (x 370–469, y 236–467): se llega por su lado sur y se avanza hacia el norte, así que se siente continuo.
+La muralla norte está en y=23–25 y el mapa empieza en y=0. Al norte solo hay unas 20 casillas, y a la izquierda está la sala de entrenamiento (Trainer Monks, x 134–154). El camino sale por una puerta nueva, cruza un claro y termina en un portal entre rocas. La región sigue en la zona vacía del mapa (x 370–469, y 236–467): se llega por su lado sur y se avanza hacia el norte, así que se siente continuo.
 
 Correr el mapa entero hacia el sur se descartó: habría cambiado las coordenadas de casas, spawns, NPC, portales, scripts y personajes guardados en el VPS.
 
@@ -23,16 +23,39 @@ Correr el mapa entero hacia el sur se descartó: habría cambiado las coordenada
 
 | Qué | Posición |
 |-----|----------|
-| Puerta en la muralla | `184-185, 23-25, 7` (muro 1050 / montaña 919 / muro 1050 → piedra 431) |
+| Puerta en la muralla | `184-185, 23-25, 7` (muro 1050 / montaña 919 / muro 1050 → piedra 431); pilar oeste `183, 24` con pared 1049 y `183, 25` con esquina 1053 |
 | Pasillo interior | `x 185, y 26-33` y `y 33, x 182-185` (piedra 431), empalma con el camino de tierra al templo |
-| Camino del campo | `184-185, 4-22, 7`, tierra 103 con bordes de pasto 110–121 |
-| Portal de la ciudad | `184-185, 3, 7` → llegada `420, 452, 7` |
-| Vuelta (portales de la región y del Nido) | → `184, 6, 7` |
+| Campo norte | `x 116-213, y 0-22, 7`: bosque cerrado; claro caminable `x 180-189, y 12-22` |
+| Camino del campo | `184-185, 12-22, 7`, tierra 103 con bordes de pasto 110–121 |
+| Portal de la ciudad | `184-185, 11, 7` entre piedras → llegada `420, 452, 7` |
+| Faroles / cartel | `183, 12` y `186, 12` / `187, 13` |
+| Vuelta (portales de la región y del Nido) | → `184, 14, 7` |
 | Portales de la región | `420-421, 456, 7` |
 | Escalera a las cuevas | `420, 258, 7` (432) / `420, 258, 8` (1385, sube al norte) |
 | Bajada al Nido | `437, 376, 8` (432) / `437, 376, 9` (1385) |
 | Portal del Nido | `416, 397, 9` |
 | Manifiesto | `server/YurOTS/ots/data/world/generated-north-pass.json` |
+
+## El campo norte (nov 2026)
+
+Antes el campo era pasto abierto hasta el borde del mapa: desde el portal (y 3) se veía negro arriba y a los costados, el camino quedaba cortado contra el borde y se podía caminar alrededor de la sala de trainers (y atacarlos desde afuera, por la fila y 18).
+
+Ahora el generador reescribe todo el campo (`FIELD_BOX`, x 116-213, y 0-22):
+
+- **Bosque cerrado** de pinos, firetrees, beeches, sycamores, poplars, willows y árboles chicos, con arbustos y árboles bajos en el borde del claro y una loma de piedras detrás del portal. Todo bloquea.
+- **Un solo claro caminable** (elipse `CLEARING`, x 180-189, y 12-22) con flores y hongos en el borde. El portal bajó a y 11, así la pantalla del jugador (15×11) nunca llega al borde del mapa.
+- **Se crean las casillas que faltaban** en los bordes (fila y 0-1, oeste x < 122 y la escalera del este) como bosque.
+- **No se tocan:** la sala de trainers (`TRAINING_BOX`, x 133-160, y 7-17, con su cerco), el agua y sus orillas (casillas con ítems de agua), ni la ciudad.
+- **Al este de la muralla** (x 190+, y 23+) hay campo abierto que sube desde el sur: el claro termina en x 189 y el bosque lo separa.
+
+Validaciones nuevas (si falla una, no se escribe nada):
+
+- desde cada casilla caminable del claro la media pantalla (±8 x, ±6 y) tiene casillas: no se ve negro;
+- solo el claro y el portal son caminables, y el claro sale del campo solo por la puerta;
+- el claro queda a más de 7 casillas de la sala de trainers;
+- cada borde de tierra tiene su pieza exacta.
+
+![Campo norte: bosque, claro, portal y sala de trainers](img/paso-del-norte/campo_norte.png)
 
 ## Zonas y spawns (seed 31)
 
