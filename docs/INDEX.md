@@ -67,6 +67,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/RESPAWN_SYSTEM.md`](gameplay/RESPAWN_SYSTEM.md) | Funcionamiento real del respawn de monstruos, visibilidad, timers y acumulacion por kiteo fuera del area. |
 | [`gameplay/MONSTER_CREATION.md`](gameplay/MONSTER_CREATION.md) | Flujo completo para crear monstruos nuevos: XML, alta en `monsters.xml`, RME y spawns. |
 | [`gameplay/CUSTOM_MONSTER_WORKFLOW.md`](gameplay/CUSTOM_MONSTER_WORKFLOW.md) | Monstruo custom paso a paso: diseño, hechizos propios, sprite nuevo (looktype), arte web con nano banana, pruebas y deploy. Caso Black Dragon. |
+| [`gameplay/SPRITE_RECOLOR_GUIDE.md`](gameplay/SPRITE_RECOLOR_GUIDE.md) | **Receta para crear o editar el sprite de una criatura:** comandos en orden (`sprite_tool.py`), plantilla de preset, trucos, umbrales de cada base y errores conocidos. |
 | [`gameplay/BLACK_DRAGON.md`](gameplay/BLACK_DRAGON.md) | Black Dragon: stats, aliento oscuro y sprite propio (looktype 230, requiere actualizar el cliente). |
 | [`gameplay/FROST_DRAGON.md`](gameplay/FROST_DRAGON.md) | Frost Dragon: dragón de hielo sin fuego (aliento helado, bola de nieve, ventisca), look 231 recoloreado del Dragon. |
 | [`gameplay/ICE_MONK.md`](gameplay/ICE_MONK.md) | Ice Monk: monje-mago de hielo a distancia, look 232 (Monk recoloreado), hechizos y sprite. |
@@ -174,6 +175,7 @@ Catálogo de **migración/portabilidad** (16 fichas congeladas). No es el invent
 | Quiero crear un monstruo nuevo | [`gameplay/MONSTER_CREATION.md`](gameplay/MONSTER_CREATION.md) |
 | Dónde está cada monstruo del mapa | [`items-and-map/MAPA_DE_MONSTRUOS.md`](items-and-map/MAPA_DE_MONSTRUOS.md) |
 | Quiero un monstruo con sprite propio o hechizos nuevos | [`gameplay/CUSTOM_MONSTER_WORKFLOW.md`](gameplay/CUSTOM_MONSTER_WORKFLOW.md) |
+| Quiero crear o retocar el sprite de una criatura | [`gameplay/SPRITE_RECOLOR_GUIDE.md`](gameplay/SPRITE_RECOLOR_GUIDE.md) |
 | Voy a tocar gemas o imbuements | [`gameplay/GEMS.md`](gameplay/GEMS.md) → [`features/10-gems-and-imbuements.md`](features/10-gems-and-imbuements.md) |
 | Skill ring + emerald armor + crimson no suman | [`gameplay/GEMS.md`](gameplay/GEMS.md) (Big Emerald / stacking) + `Player::getSkill` en `player.cpp` |
 | Voy a hacer deploy a producción | [`../scripts/deploy/README-DEPLOY-VPS.md`](../scripts/deploy/README-DEPLOY-VPS.md) |

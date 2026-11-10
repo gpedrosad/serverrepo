@@ -72,6 +72,8 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 | Reloj de Arena (sala compartida, fases 120 s) | `docs/gameplay/SAND_CLOCK.md` |
 | Portales del templo (plaza) | `docs/CAMBIAR-MAPA.md` + `scripts/map/temple-portals.py` |
 | Private Trainer Dummy | `docs/gameplay/PRIVATE_TRAINER_DUMMY.md` |
+| Monstruo custom (XML, hechizos propios, looktype nuevo) | `docs/gameplay/CUSTOM_MONSTER_WORKFLOW.md` |
+| Sprites de criaturas: crear o editar (`add_recolor_look.py`, `sprite_tool.py`) | `docs/gameplay/SPRITE_RECOLOR_GUIDE.md` |
 | NPCs (Lua): componentes, `npcDefine`, pruebas sin server | `docs/gameplay/NPC_SYSTEM.md` |
 | PvP, frag list, balance de combate | `docs/PVP_SYSTEM.md` |
 | Trade, items, transacciones | `docs/TRADE_SYSTEM.md` |
