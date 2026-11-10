@@ -708,23 +708,6 @@ CALL getPlayerFreeSlots(1001)
 CALL buy(1001, 2389, 1, 10)
 >> say 1001 no
 >> think
->> say 1001 focused
->> say 1001 yes
->> say 1001 focused
->> say 1001 no
->> say 1001 5 focused
->> say 1001 yes
->> say 1001 5 focused
->> say 1001 no
->> say 1001 focused 100
->> say 1001 yes
->> say 1001 focused 100
->> say 1001 no
->> say 1001 focused all
->> say 1001 yes
->> say 1001 focused all
->> say 1001 no
->> think
 >> say 1001 distance
 SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
 >> say 1001 yes
@@ -866,8 +849,6 @@ SAY You do not have enough space in your backpack for that. Free up some slots f
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
 >> say 1002 yes
->> say 1002 focused
->> say 1002 yes
 >> say 1002 distance
 SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
 >> say 1002 yes
@@ -881,3 +862,20 @@ SAY Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp 
 CALL cancelPendingTrade(1002)
 SAY Bye, Player1002! Come back anytime.
 >> think 3
+>> say 1001 hi
+SAY Hi Player1001! Crossbow 200gp, bow 100gp, arrows 2gp each, bolts 3gp each, power bolts 8gp each, spears 10gp each. Say any amount, e.g. "50 arrows" or "3 power bolts".
+>> say 1001 2 bows
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2456, 2, 200)
+>> say 1001 no
+>> say 1001 50 bolts
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2543, 50, 150)
+>> say 1001 no
+>> say 1001 10 power bolts
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2547, 10, 80)
+>> say 1001 no
+>> say 1001 bye
+CALL cancelPendingTrade(1001)
+SAY Bye, Player1001! Come back anytime.

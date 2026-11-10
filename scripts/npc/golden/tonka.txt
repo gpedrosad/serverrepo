@@ -562,20 +562,36 @@ SAY You need 20 small emeralds. You have 10.
 >> say 1001 no
 >> think
 >> say 1001 small emeralds
+CALL getPlayerItemCount(1001, 2149)
+SAY You need 20 small emeralds. You have 10.
 >> say 1001 yes
 >> say 1001 small emeralds
+CALL getPlayerItemCount(1001, 2149)
+SAY You need 20 small emeralds. You have 10.
 >> say 1001 no
 >> say 1001 5 small emeralds
+CALL getPlayerItemCount(1001, 2149)
+SAY You need 20 small emeralds. You have 10.
 >> say 1001 yes
 >> say 1001 5 small emeralds
+CALL getPlayerItemCount(1001, 2149)
+SAY You need 20 small emeralds. You have 10.
 >> say 1001 no
 >> say 1001 small emeralds 100
+CALL getPlayerItemCount(1001, 2149)
+SAY You need 20 small emeralds. You have 10.
 >> say 1001 yes
 >> say 1001 small emeralds 100
+CALL getPlayerItemCount(1001, 2149)
+SAY You need 20 small emeralds. You have 10.
 >> say 1001 no
 >> say 1001 small emeralds all
+CALL getPlayerItemCount(1001, 2149)
+SAY You need 20 small emeralds. You have 10.
 >> say 1001 yes
 >> say 1001 small emeralds all
+CALL getPlayerItemCount(1001, 2149)
+SAY You need 20 small emeralds. You have 10.
 >> say 1001 no
 >> think
 >> say 1001 big emerald
@@ -678,20 +694,36 @@ SAY You need 20 small amethysts. You have 10.
 >> say 1001 no
 >> think
 >> say 1001 small amethysts
+CALL getPlayerItemCount(1001, 2150)
+SAY You need 20 small amethysts. You have 10.
 >> say 1001 yes
 >> say 1001 small amethysts
+CALL getPlayerItemCount(1001, 2150)
+SAY You need 20 small amethysts. You have 10.
 >> say 1001 no
 >> say 1001 5 small amethysts
+CALL getPlayerItemCount(1001, 2150)
+SAY You need 20 small amethysts. You have 10.
 >> say 1001 yes
 >> say 1001 5 small amethysts
+CALL getPlayerItemCount(1001, 2150)
+SAY You need 20 small amethysts. You have 10.
 >> say 1001 no
 >> say 1001 small amethysts 100
+CALL getPlayerItemCount(1001, 2150)
+SAY You need 20 small amethysts. You have 10.
 >> say 1001 yes
 >> say 1001 small amethysts 100
+CALL getPlayerItemCount(1001, 2150)
+SAY You need 20 small amethysts. You have 10.
 >> say 1001 no
 >> say 1001 small amethysts all
+CALL getPlayerItemCount(1001, 2150)
+SAY You need 20 small amethysts. You have 10.
 >> say 1001 yes
 >> say 1001 small amethysts all
+CALL getPlayerItemCount(1001, 2150)
+SAY You need 20 small amethysts. You have 10.
 >> say 1001 no
 >> think
 >> say 1001 violet gem
@@ -778,20 +810,36 @@ SAY You need 20 small sapphires. You have 10.
 >> say 1001 no
 >> think
 >> say 1001 small sapphires
+CALL getPlayerItemCount(1001, 2146)
+SAY You need 20 small sapphires. You have 10.
 >> say 1001 yes
 >> say 1001 small sapphires
+CALL getPlayerItemCount(1001, 2146)
+SAY You need 20 small sapphires. You have 10.
 >> say 1001 no
 >> say 1001 5 small sapphires
+CALL getPlayerItemCount(1001, 2146)
+SAY You need 20 small sapphires. You have 10.
 >> say 1001 yes
 >> say 1001 5 small sapphires
+CALL getPlayerItemCount(1001, 2146)
+SAY You need 20 small sapphires. You have 10.
 >> say 1001 no
 >> say 1001 small sapphires 100
+CALL getPlayerItemCount(1001, 2146)
+SAY You need 20 small sapphires. You have 10.
 >> say 1001 yes
 >> say 1001 small sapphires 100
+CALL getPlayerItemCount(1001, 2146)
+SAY You need 20 small sapphires. You have 10.
 >> say 1001 no
 >> say 1001 small sapphires all
+CALL getPlayerItemCount(1001, 2146)
+SAY You need 20 small sapphires. You have 10.
 >> say 1001 yes
 >> say 1001 small sapphires all
+CALL getPlayerItemCount(1001, 2146)
+SAY You need 20 small sapphires. You have 10.
 >> say 1001 no
 >> think
 >> say 1001 yellow gem
@@ -878,20 +926,36 @@ SAY You need 20 small diamonds. You have 10.
 >> say 1001 no
 >> think
 >> say 1001 small diamonds
+CALL getPlayerItemCount(1001, 2145)
+SAY You need 20 small diamonds. You have 10.
 >> say 1001 yes
 >> say 1001 small diamonds
+CALL getPlayerItemCount(1001, 2145)
+SAY You need 20 small diamonds. You have 10.
 >> say 1001 no
 >> say 1001 5 small diamonds
+CALL getPlayerItemCount(1001, 2145)
+SAY You need 20 small diamonds. You have 10.
 >> say 1001 yes
 >> say 1001 5 small diamonds
+CALL getPlayerItemCount(1001, 2145)
+SAY You need 20 small diamonds. You have 10.
 >> say 1001 no
 >> say 1001 small diamonds 100
+CALL getPlayerItemCount(1001, 2145)
+SAY You need 20 small diamonds. You have 10.
 >> say 1001 yes
 >> say 1001 small diamonds 100
+CALL getPlayerItemCount(1001, 2145)
+SAY You need 20 small diamonds. You have 10.
 >> say 1001 no
 >> say 1001 small diamonds all
+CALL getPlayerItemCount(1001, 2145)
+SAY You need 20 small diamonds. You have 10.
 >> say 1001 yes
 >> say 1001 small diamonds all
+CALL getPlayerItemCount(1001, 2145)
+SAY You need 20 small diamonds. You have 10.
 >> say 1001 no
 >> think
 >> say 1001 blue gem
@@ -1140,23 +1204,6 @@ SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapp
 >> say 1001 help all
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
->> say 1001 no
->> think
->> say 1001 focused
->> say 1001 yes
->> say 1001 focused
->> say 1001 no
->> say 1001 5 focused
->> say 1001 yes
->> say 1001 5 focused
->> say 1001 no
->> say 1001 focused 100
->> say 1001 yes
->> say 1001 focused 100
->> say 1001 no
->> say 1001 focused all
->> say 1001 yes
->> say 1001 focused all
 >> say 1001 no
 >> think
 >> say 1001 ayuda
@@ -1307,6 +1354,8 @@ CALL getPlayerItemCount(1002, 2149)
 SAY You need 20 small emeralds. You have 10.
 >> say 1002 yes
 >> say 1002 small emeralds
+CALL getPlayerItemCount(1002, 2149)
+SAY You need 20 small emeralds. You have 10.
 >> say 1002 yes
 >> say 1002 big emerald
 CALL getPlayerItemCount(1002, 2149)
@@ -1321,6 +1370,8 @@ CALL getPlayerItemCount(1002, 2150)
 SAY You need 20 small amethysts. You have 10.
 >> say 1002 yes
 >> say 1002 small amethysts
+CALL getPlayerItemCount(1002, 2150)
+SAY You need 20 small amethysts. You have 10.
 >> say 1002 yes
 >> say 1002 violet gem
 >> say 1002 yes
@@ -1333,6 +1384,8 @@ CALL getPlayerItemCount(1002, 2146)
 SAY You need 20 small sapphires. You have 10.
 >> say 1002 yes
 >> say 1002 small sapphires
+CALL getPlayerItemCount(1002, 2146)
+SAY You need 20 small sapphires. You have 10.
 >> say 1002 yes
 >> say 1002 yellow gem
 >> say 1002 yes
@@ -1345,6 +1398,8 @@ CALL getPlayerItemCount(1002, 2145)
 SAY You need 20 small diamonds. You have 10.
 >> say 1002 yes
 >> say 1002 small diamonds
+CALL getPlayerItemCount(1002, 2145)
+SAY You need 20 small diamonds. You have 10.
 >> say 1002 yes
 >> say 1002 blue gem
 >> say 1002 yes
@@ -1375,8 +1430,6 @@ SAY You need 20 small diamonds. You have 10.
 >> say 1002 help
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
->> say 1002 yes
->> say 1002 focused
 >> say 1002 yes
 >> say 1002 ayuda
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.

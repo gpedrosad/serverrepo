@@ -328,6 +328,57 @@ say 1001 yes
 say 1001 transfer 10 to player1002 all
 say 1001 no
 think
+say 1001 life
+say 1001 yes
+say 1001 life
+say 1001 no
+say 1001 5 life
+say 1001 yes
+say 1001 5 life
+say 1001 no
+say 1001 life 100
+say 1001 yes
+say 1001 life 100
+say 1001 no
+say 1001 life all
+say 1001 yes
+say 1001 life all
+say 1001 no
+think
+say 1001 time
+say 1001 yes
+say 1001 time
+say 1001 no
+say 1001 5 time
+say 1001 yes
+say 1001 5 time
+say 1001 no
+say 1001 time 100
+say 1001 yes
+say 1001 time 100
+say 1001 no
+say 1001 time all
+say 1001 yes
+say 1001 time all
+say 1001 no
+think
+say 1001 what time is it
+say 1001 yes
+say 1001 what time is it
+say 1001 no
+say 1001 5 what time is it
+say 1001 yes
+say 1001 5 what time is it
+say 1001 no
+say 1001 what time is it 100
+say 1001 yes
+say 1001 what time is it 100
+say 1001 no
+say 1001 what time is it all
+say 1001 yes
+say 1001 what time is it all
+say 1001 no
+think
 say 1001 energy ring
 say 1001 yes
 say 1001 energy ring
@@ -411,23 +462,6 @@ say 1001 no
 say 1001 time ring all
 say 1001 yes
 say 1001 time ring all
-say 1001 no
-think
-say 1001 time
-say 1001 yes
-say 1001 time
-say 1001 no
-say 1001 5 time
-say 1001 yes
-say 1001 5 time
-say 1001 no
-say 1001 time 100
-say 1001 yes
-say 1001 time 100
-say 1001 no
-say 1001 time all
-say 1001 yes
-say 1001 time all
 say 1001 no
 think
 say 1001 stealth ring
@@ -532,23 +566,6 @@ say 1001 yes
 say 1001 life ring all
 say 1001 no
 think
-say 1001 life
-say 1001 yes
-say 1001 life
-say 1001 no
-say 1001 5 life
-say 1001 yes
-say 1001 5 life
-say 1001 no
-say 1001 life 100
-say 1001 yes
-say 1001 life 100
-say 1001 no
-say 1001 life all
-say 1001 yes
-say 1001 life all
-say 1001 no
-think
 say 1001 sword ring
 say 1001 yes
 say 1001 sword ring
@@ -651,74 +668,6 @@ say 1001 yes
 say 1001 club all
 say 1001 no
 think
-say 1001 rings
-say 1001 yes
-say 1001 rings
-say 1001 no
-say 1001 5 rings
-say 1001 yes
-say 1001 5 rings
-say 1001 no
-say 1001 rings 100
-say 1001 yes
-say 1001 rings 100
-say 1001 no
-say 1001 rings all
-say 1001 yes
-say 1001 rings all
-say 1001 no
-think
-say 1001 help
-say 1001 yes
-say 1001 help
-say 1001 no
-say 1001 5 help
-say 1001 yes
-say 1001 5 help
-say 1001 no
-say 1001 help 100
-say 1001 yes
-say 1001 help 100
-say 1001 no
-say 1001 help all
-say 1001 yes
-say 1001 help all
-say 1001 no
-think
-say 1001 focused
-say 1001 yes
-say 1001 focused
-say 1001 no
-say 1001 5 focused
-say 1001 yes
-say 1001 5 focused
-say 1001 no
-say 1001 focused 100
-say 1001 yes
-say 1001 focused 100
-say 1001 no
-say 1001 focused all
-say 1001 yes
-say 1001 focused all
-say 1001 no
-think
-say 1001 anillos
-say 1001 yes
-say 1001 anillos
-say 1001 no
-say 1001 5 anillos
-say 1001 yes
-say 1001 5 anillos
-say 1001 no
-say 1001 anillos 100
-say 1001 yes
-say 1001 anillos 100
-say 1001 no
-say 1001 anillos all
-say 1001 yes
-say 1001 anillos all
-say 1001 no
-think
 say 1001 aol
 say 1001 yes
 say 1001 aol
@@ -768,6 +717,57 @@ say 1001 no
 say 1001 scarf all
 say 1001 yes
 say 1001 scarf all
+say 1001 no
+think
+say 1001 rings
+say 1001 yes
+say 1001 rings
+say 1001 no
+say 1001 5 rings
+say 1001 yes
+say 1001 5 rings
+say 1001 no
+say 1001 rings 100
+say 1001 yes
+say 1001 rings 100
+say 1001 no
+say 1001 rings all
+say 1001 yes
+say 1001 rings all
+say 1001 no
+think
+say 1001 anillos
+say 1001 yes
+say 1001 anillos
+say 1001 no
+say 1001 5 anillos
+say 1001 yes
+say 1001 5 anillos
+say 1001 no
+say 1001 anillos 100
+say 1001 yes
+say 1001 anillos 100
+say 1001 no
+say 1001 anillos all
+say 1001 yes
+say 1001 anillos all
+say 1001 no
+think
+say 1001 help
+say 1001 yes
+say 1001 help
+say 1001 no
+say 1001 5 help
+say 1001 yes
+say 1001 5 help
+say 1001 no
+say 1001 help 100
+say 1001 yes
+say 1001 help 100
+say 1001 no
+say 1001 help all
+say 1001 yes
+say 1001 help all
 say 1001 no
 think
 say 1001 bye
@@ -784,6 +784,12 @@ say 1002 hi
 set 1002 money 0
 set 1002 slots 0
 set 1002 level 1
+say 1002 life
+say 1002 yes
+say 1002 time
+say 1002 yes
+say 1002 what time is it
+say 1002 yes
 say 1002 energy ring
 say 1002 yes
 say 1002 energy
@@ -793,8 +799,6 @@ say 1002 yes
 say 1002 might
 say 1002 yes
 say 1002 time ring
-say 1002 yes
-say 1002 time
 say 1002 yes
 say 1002 stealth ring
 say 1002 yes
@@ -808,8 +812,6 @@ say 1002 healing
 say 1002 yes
 say 1002 life ring
 say 1002 yes
-say 1002 life
-say 1002 yes
 say 1002 sword ring
 say 1002 yes
 say 1002 sword
@@ -822,19 +824,27 @@ say 1002 club ring
 say 1002 yes
 say 1002 club
 say 1002 yes
-say 1002 rings
-say 1002 yes
-say 1002 help
-say 1002 yes
-say 1002 focused
-say 1002 yes
-say 1002 anillos
-say 1002 yes
 say 1002 aol
 say 1002 yes
 say 1002 amulet of loss
 say 1002 yes
 say 1002 scarf
 say 1002 yes
+say 1002 rings
+say 1002 yes
+say 1002 anillos
+say 1002 yes
+say 1002 help
+say 1002 yes
 say 1002 chau
 think 3
+# Dufi: claves cortas solo solas; plurales
+say 1001 hi
+say 1001 what time is it
+say 1001 i need life
+say 1001 2 life
+say 1001 no
+say 1001 3 life rings
+say 1001 no
+say 1001 rings
+say 1001 bye

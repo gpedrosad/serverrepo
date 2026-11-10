@@ -787,23 +787,6 @@ say 1001 yes
 say 1001 help all
 say 1001 no
 think
-say 1001 focused
-say 1001 yes
-say 1001 focused
-say 1001 no
-say 1001 5 focused
-say 1001 yes
-say 1001 5 focused
-say 1001 no
-say 1001 focused 100
-say 1001 yes
-say 1001 focused 100
-say 1001 no
-say 1001 focused all
-say 1001 yes
-say 1001 focused all
-say 1001 no
-think
 say 1001 ayuda
 say 1001 yes
 say 1001 ayuda
@@ -922,8 +905,6 @@ say 1002 yes
 say 1002 exchange diamond
 say 1002 yes
 say 1002 help
-say 1002 yes
-say 1002 focused
 say 1002 yes
 say 1002 ayuda
 say 1002 yes

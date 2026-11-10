@@ -1,0 +1,10 @@
+# Dufi: claves cortas solo solas; plurales
+say 1001 hi
+say 1001 what time is it
+say 1001 i need life
+say 1001 2 life
+say 1001 no
+say 1001 3 life rings
+say 1001 no
+say 1001 rings
+say 1001 bye

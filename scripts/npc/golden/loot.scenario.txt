@@ -1144,6 +1144,23 @@ say 1001 yes
 say 1001 two handed sword all
 say 1001 no
 think
+say 1001 two-handed sword
+say 1001 yes
+say 1001 two-handed sword
+say 1001 no
+say 1001 5 two-handed sword
+say 1001 yes
+say 1001 5 two-handed sword
+say 1001 no
+say 1001 two-handed sword 100
+say 1001 yes
+say 1001 two-handed sword 100
+say 1001 no
+say 1001 two-handed sword all
+say 1001 yes
+say 1001 two-handed sword all
+say 1001 no
+think
 say 1001 broad sword
 say 1001 yes
 say 1001 broad sword
@@ -1618,23 +1635,6 @@ say 1001 no
 say 1001 amulets all
 say 1001 yes
 say 1001 amulets all
-say 1001 no
-think
-say 1001 focused
-say 1001 yes
-say 1001 focused
-say 1001 no
-say 1001 5 focused
-say 1001 yes
-say 1001 5 focused
-say 1001 no
-say 1001 focused 100
-say 1001 yes
-say 1001 focused 100
-say 1001 no
-say 1001 focused all
-say 1001 yes
-say 1001 focused all
 say 1001 no
 think
 say 1001 bye
@@ -1747,6 +1747,8 @@ say 1002 spike sword
 say 1002 yes
 say 1002 two handed sword
 say 1002 yes
+say 1002 two-handed sword
+say 1002 yes
 say 1002 broad sword
 say 1002 yes
 say 1002 short sword
@@ -1769,7 +1771,19 @@ say 1002 battle axe
 say 1002 yes
 say 1002 hatchet
 say 1002 yes
-say 1002 war hammer
-say 1002 yes
 say 1002 chau
 think 3
+# Mad: plurales, cantidad, "all", temas vs ventas, claves cortas
+say 1001 hi
+say 1001 swords
+say 1001 sell 3 swords
+say 1001 no
+say 1001 sell all maces
+say 1001 no
+say 1001 sell magic sword
+say 1001 two-handed sword
+say 1001 no
+say 1001 steel boots
+say 1001 no
+say 1001 boots
+say 1001 bye

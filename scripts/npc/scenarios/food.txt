@@ -1,0 +1,7 @@
+# Lector: plurales
+say 1001 hi
+say 1001 5 hams
+say 1001 no
+say 1001 3 apples
+say 1001 no
+say 1001 bye

@@ -1,0 +1,14 @@
+# Mad: plurales, cantidad, "all", temas vs ventas, claves cortas
+say 1001 hi
+say 1001 swords
+say 1001 sell 3 swords
+say 1001 no
+say 1001 sell all maces
+say 1001 no
+say 1001 sell magic sword
+say 1001 two-handed sword
+say 1001 no
+say 1001 steel boots
+say 1001 no
+say 1001 boots
+say 1001 bye

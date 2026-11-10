@@ -498,23 +498,6 @@ say 1001 yes
 say 1001 spears all
 say 1001 no
 think
-say 1001 focused
-say 1001 yes
-say 1001 focused
-say 1001 no
-say 1001 5 focused
-say 1001 yes
-say 1001 5 focused
-say 1001 no
-say 1001 focused 100
-say 1001 yes
-say 1001 focused 100
-say 1001 no
-say 1001 focused all
-say 1001 yes
-say 1001 focused all
-say 1001 no
-think
 say 1001 distance
 say 1001 yes
 say 1001 distance
@@ -600,8 +583,6 @@ say 1002 spear
 say 1002 yes
 say 1002 spears
 say 1002 yes
-say 1002 focused
-say 1002 yes
 say 1002 distance
 say 1002 yes
 say 1002 ammo
@@ -610,3 +591,12 @@ say 1002 ammunition
 say 1002 yes
 say 1002 chau
 think 3
+# Perac: plurales ("bows" no compra "bolts")
+say 1001 hi
+say 1001 2 bows
+say 1001 no
+say 1001 50 bolts
+say 1001 no
+say 1001 10 power bolts
+say 1001 no
+say 1001 bye

@@ -1,0 +1,9 @@
+# Perac: plurales ("bows" no compra "bolts")
+say 1001 hi
+say 1001 2 bows
+say 1001 no
+say 1001 50 bolts
+say 1001 no
+say 1001 10 power bolts
+say 1001 no
+say 1001 bye

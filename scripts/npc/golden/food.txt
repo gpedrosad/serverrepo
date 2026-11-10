@@ -675,23 +675,6 @@ CALL getPlayerFreeSlots(1001)
 CALL buy(1001, 2695, 1, 8)
 >> say 1001 no
 >> think
->> say 1001 focused
->> say 1001 yes
->> say 1001 focused
->> say 1001 no
->> say 1001 5 focused
->> say 1001 yes
->> say 1001 5 focused
->> say 1001 no
->> say 1001 focused 100
->> say 1001 yes
->> say 1001 focused 100
->> say 1001 no
->> say 1001 focused all
->> say 1001 yes
->> say 1001 focused all
->> say 1001 no
->> think
 >> say 1001 bye
 CALL cancelPendingTrade(1001)
 SAY Bye, Player1001! Come back anytime.
@@ -754,9 +737,20 @@ SAY You do not have enough space in your backpack for that. Free up some slots f
 CALL getPlayerFreeSlots(1002)
 SAY You do not have enough space in your backpack for that. Free up some slots first.
 >> say 1002 yes
->> say 1002 focused
->> say 1002 yes
 >> say 1002 chau
 CALL cancelPendingTrade(1002)
 SAY Bye, Player1002! Come back anytime.
 >> think 3
+>> say 1001 hi
+SAY Hi Player1001! Everything is 8gp: ham, meat, carrot, apple, brown bread, brown mushroom and egg. Say any amount, e.g. "5 ham".
+>> say 1001 5 hams
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2671, 5, 40)
+>> say 1001 no
+>> say 1001 3 apples
+CALL getPlayerFreeSlots(1001)
+CALL buy(1001, 2674, 3, 24)
+>> say 1001 no
+>> say 1001 bye
+CALL cancelPendingTrade(1001)
+SAY Bye, Player1001! Come back anytime.

@@ -385,22 +385,24 @@ CALL sell(1001, 2498, 1, 30000)
 CALL sell(1001, 2498, 1, 30000)
 >> say 1001 no
 >> say 1001 5 royal helmet
-CALL sell(1001, 2498, 1, 30000)
+CALL sell(1001, 2498, 5, 150000)
 >> say 1001 yes
 >> say 1001 5 royal helmet
-CALL sell(1001, 2498, 1, 30000)
+CALL sell(1001, 2498, 5, 150000)
 >> say 1001 no
 >> say 1001 royal helmet 100
-CALL sell(1001, 2498, 1, 30000)
+CALL sell(1001, 2498, 100, 3000000)
 >> say 1001 yes
 >> say 1001 royal helmet 100
-CALL sell(1001, 2498, 1, 30000)
+CALL sell(1001, 2498, 100, 3000000)
 >> say 1001 no
 >> say 1001 royal helmet all
-CALL sell(1001, 2498, 1, 30000)
+CALL getPlayerItemCount(1001, 2498)
+CALL sell(1001, 2498, 10, 300000)
 >> say 1001 yes
 >> say 1001 royal helmet all
-CALL sell(1001, 2498, 1, 30000)
+CALL getPlayerItemCount(1001, 2498)
+CALL sell(1001, 2498, 10, 300000)
 >> say 1001 no
 >> think
 >> say 1001 warrior helmet
@@ -410,22 +412,24 @@ CALL sell(1001, 2475, 1, 5000)
 CALL sell(1001, 2475, 1, 5000)
 >> say 1001 no
 >> say 1001 5 warrior helmet
-CALL sell(1001, 2475, 1, 5000)
+CALL sell(1001, 2475, 5, 25000)
 >> say 1001 yes
 >> say 1001 5 warrior helmet
-CALL sell(1001, 2475, 1, 5000)
+CALL sell(1001, 2475, 5, 25000)
 >> say 1001 no
 >> say 1001 warrior helmet 100
-CALL sell(1001, 2475, 1, 5000)
+CALL sell(1001, 2475, 100, 500000)
 >> say 1001 yes
 >> say 1001 warrior helmet 100
-CALL sell(1001, 2475, 1, 5000)
+CALL sell(1001, 2475, 100, 500000)
 >> say 1001 no
 >> say 1001 warrior helmet all
-CALL sell(1001, 2475, 1, 5000)
+CALL getPlayerItemCount(1001, 2475)
+CALL sell(1001, 2475, 10, 50000)
 >> say 1001 yes
 >> say 1001 warrior helmet all
-CALL sell(1001, 2475, 1, 5000)
+CALL getPlayerItemCount(1001, 2475)
+CALL sell(1001, 2475, 10, 50000)
 >> say 1001 no
 >> think
 >> say 1001 crusader helmet
@@ -435,22 +439,24 @@ CALL sell(1001, 2497, 1, 6000)
 CALL sell(1001, 2497, 1, 6000)
 >> say 1001 no
 >> say 1001 5 crusader helmet
-CALL sell(1001, 2497, 1, 6000)
+CALL sell(1001, 2497, 5, 30000)
 >> say 1001 yes
 >> say 1001 5 crusader helmet
-CALL sell(1001, 2497, 1, 6000)
+CALL sell(1001, 2497, 5, 30000)
 >> say 1001 no
 >> say 1001 crusader helmet 100
-CALL sell(1001, 2497, 1, 6000)
+CALL sell(1001, 2497, 100, 600000)
 >> say 1001 yes
 >> say 1001 crusader helmet 100
-CALL sell(1001, 2497, 1, 6000)
+CALL sell(1001, 2497, 100, 600000)
 >> say 1001 no
 >> say 1001 crusader helmet all
-CALL sell(1001, 2497, 1, 6000)
+CALL getPlayerItemCount(1001, 2497)
+CALL sell(1001, 2497, 10, 60000)
 >> say 1001 yes
 >> say 1001 crusader helmet all
-CALL sell(1001, 2497, 1, 6000)
+CALL getPlayerItemCount(1001, 2497)
+CALL sell(1001, 2497, 10, 60000)
 >> say 1001 no
 >> think
 >> say 1001 crown helmet
@@ -460,22 +466,24 @@ CALL sell(1001, 2491, 1, 2500)
 CALL sell(1001, 2491, 1, 2500)
 >> say 1001 no
 >> say 1001 5 crown helmet
-CALL sell(1001, 2491, 1, 2500)
+CALL sell(1001, 2491, 5, 12500)
 >> say 1001 yes
 >> say 1001 5 crown helmet
-CALL sell(1001, 2491, 1, 2500)
+CALL sell(1001, 2491, 5, 12500)
 >> say 1001 no
 >> say 1001 crown helmet 100
-CALL sell(1001, 2491, 1, 2500)
+CALL sell(1001, 2491, 100, 250000)
 >> say 1001 yes
 >> say 1001 crown helmet 100
-CALL sell(1001, 2491, 1, 2500)
+CALL sell(1001, 2491, 100, 250000)
 >> say 1001 no
 >> say 1001 crown helmet all
-CALL sell(1001, 2491, 1, 2500)
+CALL getPlayerItemCount(1001, 2491)
+CALL sell(1001, 2491, 10, 25000)
 >> say 1001 yes
 >> say 1001 crown helmet all
-CALL sell(1001, 2491, 1, 2500)
+CALL getPlayerItemCount(1001, 2491)
+CALL sell(1001, 2491, 10, 25000)
 >> say 1001 no
 >> think
 >> say 1001 devil helmet
@@ -485,22 +493,24 @@ CALL sell(1001, 2462, 1, 2000)
 CALL sell(1001, 2462, 1, 2000)
 >> say 1001 no
 >> say 1001 5 devil helmet
-CALL sell(1001, 2462, 1, 2000)
+CALL sell(1001, 2462, 5, 10000)
 >> say 1001 yes
 >> say 1001 5 devil helmet
-CALL sell(1001, 2462, 1, 2000)
+CALL sell(1001, 2462, 5, 10000)
 >> say 1001 no
 >> say 1001 devil helmet 100
-CALL sell(1001, 2462, 1, 2000)
+CALL sell(1001, 2462, 100, 200000)
 >> say 1001 yes
 >> say 1001 devil helmet 100
-CALL sell(1001, 2462, 1, 2000)
+CALL sell(1001, 2462, 100, 200000)
 >> say 1001 no
 >> say 1001 devil helmet all
-CALL sell(1001, 2462, 1, 2000)
+CALL getPlayerItemCount(1001, 2462)
+CALL sell(1001, 2462, 10, 20000)
 >> say 1001 yes
 >> say 1001 devil helmet all
-CALL sell(1001, 2462, 1, 2000)
+CALL getPlayerItemCount(1001, 2462)
+CALL sell(1001, 2462, 10, 20000)
 >> say 1001 no
 >> think
 >> say 1001 mystic turban
@@ -510,22 +520,24 @@ CALL sell(1001, 2663, 1, 500)
 CALL sell(1001, 2663, 1, 500)
 >> say 1001 no
 >> say 1001 5 mystic turban
-CALL sell(1001, 2663, 1, 500)
+CALL sell(1001, 2663, 5, 2500)
 >> say 1001 yes
 >> say 1001 5 mystic turban
-CALL sell(1001, 2663, 1, 500)
+CALL sell(1001, 2663, 5, 2500)
 >> say 1001 no
 >> say 1001 mystic turban 100
-CALL sell(1001, 2663, 1, 500)
+CALL sell(1001, 2663, 100, 50000)
 >> say 1001 yes
 >> say 1001 mystic turban 100
-CALL sell(1001, 2663, 1, 500)
+CALL sell(1001, 2663, 100, 50000)
 >> say 1001 no
 >> say 1001 mystic turban all
-CALL sell(1001, 2663, 1, 500)
+CALL getPlayerItemCount(1001, 2663)
+CALL sell(1001, 2663, 10, 5000)
 >> say 1001 yes
 >> say 1001 mystic turban all
-CALL sell(1001, 2663, 1, 500)
+CALL getPlayerItemCount(1001, 2663)
+CALL sell(1001, 2663, 10, 5000)
 >> say 1001 no
 >> think
 >> say 1001 chain helmet
@@ -535,22 +547,24 @@ CALL sell(1001, 2458, 1, 30)
 CALL sell(1001, 2458, 1, 30)
 >> say 1001 no
 >> say 1001 5 chain helmet
-CALL sell(1001, 2458, 1, 30)
+CALL sell(1001, 2458, 5, 150)
 >> say 1001 yes
 >> say 1001 5 chain helmet
-CALL sell(1001, 2458, 1, 30)
+CALL sell(1001, 2458, 5, 150)
 >> say 1001 no
 >> say 1001 chain helmet 100
-CALL sell(1001, 2458, 1, 30)
+CALL sell(1001, 2458, 100, 3000)
 >> say 1001 yes
 >> say 1001 chain helmet 100
-CALL sell(1001, 2458, 1, 30)
+CALL sell(1001, 2458, 100, 3000)
 >> say 1001 no
 >> say 1001 chain helmet all
-CALL sell(1001, 2458, 1, 30)
+CALL getPlayerItemCount(1001, 2458)
+CALL sell(1001, 2458, 10, 300)
 >> say 1001 yes
 >> say 1001 chain helmet all
-CALL sell(1001, 2458, 1, 30)
+CALL getPlayerItemCount(1001, 2458)
+CALL sell(1001, 2458, 10, 300)
 >> say 1001 no
 >> think
 >> say 1001 iron helmet
@@ -560,22 +574,24 @@ CALL sell(1001, 2459, 1, 150)
 CALL sell(1001, 2459, 1, 150)
 >> say 1001 no
 >> say 1001 5 iron helmet
-CALL sell(1001, 2459, 1, 150)
+CALL sell(1001, 2459, 5, 750)
 >> say 1001 yes
 >> say 1001 5 iron helmet
-CALL sell(1001, 2459, 1, 150)
+CALL sell(1001, 2459, 5, 750)
 >> say 1001 no
 >> say 1001 iron helmet 100
-CALL sell(1001, 2459, 1, 150)
+CALL sell(1001, 2459, 100, 15000)
 >> say 1001 yes
 >> say 1001 iron helmet 100
-CALL sell(1001, 2459, 1, 150)
+CALL sell(1001, 2459, 100, 15000)
 >> say 1001 no
 >> say 1001 iron helmet all
-CALL sell(1001, 2459, 1, 150)
+CALL getPlayerItemCount(1001, 2459)
+CALL sell(1001, 2459, 10, 1500)
 >> say 1001 yes
 >> say 1001 iron helmet all
-CALL sell(1001, 2459, 1, 150)
+CALL getPlayerItemCount(1001, 2459)
+CALL sell(1001, 2459, 10, 1500)
 >> say 1001 no
 >> think
 >> say 1001 steel boots
@@ -585,22 +601,24 @@ CALL sell(1001, 2645, 1, 30000)
 CALL sell(1001, 2645, 1, 30000)
 >> say 1001 no
 >> say 1001 5 steel boots
-CALL sell(1001, 2645, 1, 30000)
+CALL sell(1001, 2645, 5, 150000)
 >> say 1001 yes
 >> say 1001 5 steel boots
-CALL sell(1001, 2645, 1, 30000)
+CALL sell(1001, 2645, 5, 150000)
 >> say 1001 no
 >> say 1001 steel boots 100
-CALL sell(1001, 2645, 1, 30000)
+CALL sell(1001, 2645, 100, 3000000)
 >> say 1001 yes
 >> say 1001 steel boots 100
-CALL sell(1001, 2645, 1, 30000)
+CALL sell(1001, 2645, 100, 3000000)
 >> say 1001 no
 >> say 1001 steel boots all
-CALL sell(1001, 2645, 1, 30000)
+CALL getPlayerItemCount(1001, 2645)
+CALL sell(1001, 2645, 10, 300000)
 >> say 1001 yes
 >> say 1001 steel boots all
-CALL sell(1001, 2645, 1, 30000)
+CALL getPlayerItemCount(1001, 2645)
+CALL sell(1001, 2645, 10, 300000)
 >> say 1001 no
 >> think
 >> say 1001 boh
@@ -610,22 +628,24 @@ CALL sell(1001, 2195, 1, 30000)
 CALL sell(1001, 2195, 1, 30000)
 >> say 1001 no
 >> say 1001 5 boh
-CALL sell(1001, 2195, 1, 30000)
+CALL sell(1001, 2195, 5, 150000)
 >> say 1001 yes
 >> say 1001 5 boh
-CALL sell(1001, 2195, 1, 30000)
+CALL sell(1001, 2195, 5, 150000)
 >> say 1001 no
 >> say 1001 boh 100
-CALL sell(1001, 2195, 1, 30000)
+CALL sell(1001, 2195, 100, 3000000)
 >> say 1001 yes
 >> say 1001 boh 100
-CALL sell(1001, 2195, 1, 30000)
+CALL sell(1001, 2195, 100, 3000000)
 >> say 1001 no
 >> say 1001 boh all
-CALL sell(1001, 2195, 1, 30000)
+CALL getPlayerItemCount(1001, 2195)
+CALL sell(1001, 2195, 10, 300000)
 >> say 1001 yes
 >> say 1001 boh all
-CALL sell(1001, 2195, 1, 30000)
+CALL getPlayerItemCount(1001, 2195)
+CALL sell(1001, 2195, 10, 300000)
 >> say 1001 no
 >> think
 >> say 1001 boots of haste
@@ -635,22 +655,24 @@ CALL sell(1001, 2195, 1, 30000)
 CALL sell(1001, 2195, 1, 30000)
 >> say 1001 no
 >> say 1001 5 boots of haste
-CALL sell(1001, 2195, 1, 30000)
+CALL sell(1001, 2195, 5, 150000)
 >> say 1001 yes
 >> say 1001 5 boots of haste
-CALL sell(1001, 2195, 1, 30000)
+CALL sell(1001, 2195, 5, 150000)
 >> say 1001 no
 >> say 1001 boots of haste 100
-CALL sell(1001, 2195, 1, 30000)
+CALL sell(1001, 2195, 100, 3000000)
 >> say 1001 yes
 >> say 1001 boots of haste 100
-CALL sell(1001, 2195, 1, 30000)
+CALL sell(1001, 2195, 100, 3000000)
 >> say 1001 no
 >> say 1001 boots of haste all
-CALL sell(1001, 2195, 1, 30000)
+CALL getPlayerItemCount(1001, 2195)
+CALL sell(1001, 2195, 10, 300000)
 >> say 1001 yes
 >> say 1001 boots of haste all
-CALL sell(1001, 2195, 1, 30000)
+CALL getPlayerItemCount(1001, 2195)
+CALL sell(1001, 2195, 10, 300000)
 >> say 1001 no
 >> think
 >> say 1001 magic plate armor
@@ -660,22 +682,24 @@ CALL sell(1001, 2472, 1, 100000)
 CALL sell(1001, 2472, 1, 100000)
 >> say 1001 no
 >> say 1001 5 magic plate armor
-CALL sell(1001, 2472, 1, 100000)
+CALL sell(1001, 2472, 5, 500000)
 >> say 1001 yes
 >> say 1001 5 magic plate armor
-CALL sell(1001, 2472, 1, 100000)
+CALL sell(1001, 2472, 5, 500000)
 >> say 1001 no
 >> say 1001 magic plate armor 100
-CALL sell(1001, 2472, 1, 100000)
+CALL sell(1001, 2472, 100, 10000000)
 >> say 1001 yes
 >> say 1001 magic plate armor 100
-CALL sell(1001, 2472, 1, 100000)
+CALL sell(1001, 2472, 100, 10000000)
 >> say 1001 no
 >> say 1001 magic plate armor all
-CALL sell(1001, 2472, 1, 100000)
+CALL getPlayerItemCount(1001, 2472)
+CALL sell(1001, 2472, 10, 1000000)
 >> say 1001 yes
 >> say 1001 magic plate armor all
-CALL sell(1001, 2472, 1, 100000)
+CALL getPlayerItemCount(1001, 2472)
+CALL sell(1001, 2472, 10, 1000000)
 >> say 1001 no
 >> think
 >> say 1001 mpa
@@ -685,22 +709,24 @@ CALL sell(1001, 2472, 1, 100000)
 CALL sell(1001, 2472, 1, 100000)
 >> say 1001 no
 >> say 1001 5 mpa
-CALL sell(1001, 2472, 1, 100000)
+CALL sell(1001, 2472, 5, 500000)
 >> say 1001 yes
 >> say 1001 5 mpa
-CALL sell(1001, 2472, 1, 100000)
+CALL sell(1001, 2472, 5, 500000)
 >> say 1001 no
 >> say 1001 mpa 100
-CALL sell(1001, 2472, 1, 100000)
+CALL sell(1001, 2472, 100, 10000000)
 >> say 1001 yes
 >> say 1001 mpa 100
-CALL sell(1001, 2472, 1, 100000)
+CALL sell(1001, 2472, 100, 10000000)
 >> say 1001 no
 >> say 1001 mpa all
-CALL sell(1001, 2472, 1, 100000)
+CALL getPlayerItemCount(1001, 2472)
+CALL sell(1001, 2472, 10, 1000000)
 >> say 1001 yes
 >> say 1001 mpa all
-CALL sell(1001, 2472, 1, 100000)
+CALL getPlayerItemCount(1001, 2472)
+CALL sell(1001, 2472, 10, 1000000)
 >> say 1001 no
 >> think
 >> say 1001 dragon scale mail
@@ -710,22 +736,24 @@ CALL sell(1001, 2492, 1, 40000)
 CALL sell(1001, 2492, 1, 40000)
 >> say 1001 no
 >> say 1001 5 dragon scale mail
-CALL sell(1001, 2492, 1, 40000)
+CALL sell(1001, 2492, 5, 200000)
 >> say 1001 yes
 >> say 1001 5 dragon scale mail
-CALL sell(1001, 2492, 1, 40000)
+CALL sell(1001, 2492, 5, 200000)
 >> say 1001 no
 >> say 1001 dragon scale mail 100
-CALL sell(1001, 2492, 1, 40000)
+CALL sell(1001, 2492, 100, 4000000)
 >> say 1001 yes
 >> say 1001 dragon scale mail 100
-CALL sell(1001, 2492, 1, 40000)
+CALL sell(1001, 2492, 100, 4000000)
 >> say 1001 no
 >> say 1001 dragon scale mail all
-CALL sell(1001, 2492, 1, 40000)
+CALL getPlayerItemCount(1001, 2492)
+CALL sell(1001, 2492, 10, 400000)
 >> say 1001 yes
 >> say 1001 dragon scale mail all
-CALL sell(1001, 2492, 1, 40000)
+CALL getPlayerItemCount(1001, 2492)
+CALL sell(1001, 2492, 10, 400000)
 >> say 1001 no
 >> think
 >> say 1001 dsm
@@ -735,22 +763,24 @@ CALL sell(1001, 2492, 1, 40000)
 CALL sell(1001, 2492, 1, 40000)
 >> say 1001 no
 >> say 1001 5 dsm
-CALL sell(1001, 2492, 1, 40000)
+CALL sell(1001, 2492, 5, 200000)
 >> say 1001 yes
 >> say 1001 5 dsm
-CALL sell(1001, 2492, 1, 40000)
+CALL sell(1001, 2492, 5, 200000)
 >> say 1001 no
 >> say 1001 dsm 100
-CALL sell(1001, 2492, 1, 40000)
+CALL sell(1001, 2492, 100, 4000000)
 >> say 1001 yes
 >> say 1001 dsm 100
-CALL sell(1001, 2492, 1, 40000)
+CALL sell(1001, 2492, 100, 4000000)
 >> say 1001 no
 >> say 1001 dsm all
-CALL sell(1001, 2492, 1, 40000)
+CALL getPlayerItemCount(1001, 2492)
+CALL sell(1001, 2492, 10, 400000)
 >> say 1001 yes
 >> say 1001 dsm all
-CALL sell(1001, 2492, 1, 40000)
+CALL getPlayerItemCount(1001, 2492)
+CALL sell(1001, 2492, 10, 400000)
 >> say 1001 no
 >> think
 >> say 1001 golden armor
@@ -760,22 +790,24 @@ CALL sell(1001, 2466, 1, 20000)
 CALL sell(1001, 2466, 1, 20000)
 >> say 1001 no
 >> say 1001 5 golden armor
-CALL sell(1001, 2466, 1, 20000)
+CALL sell(1001, 2466, 5, 100000)
 >> say 1001 yes
 >> say 1001 5 golden armor
-CALL sell(1001, 2466, 1, 20000)
+CALL sell(1001, 2466, 5, 100000)
 >> say 1001 no
 >> say 1001 golden armor 100
-CALL sell(1001, 2466, 1, 20000)
+CALL sell(1001, 2466, 100, 2000000)
 >> say 1001 yes
 >> say 1001 golden armor 100
-CALL sell(1001, 2466, 1, 20000)
+CALL sell(1001, 2466, 100, 2000000)
 >> say 1001 no
 >> say 1001 golden armor all
-CALL sell(1001, 2466, 1, 20000)
+CALL getPlayerItemCount(1001, 2466)
+CALL sell(1001, 2466, 10, 200000)
 >> say 1001 yes
 >> say 1001 golden armor all
-CALL sell(1001, 2466, 1, 20000)
+CALL getPlayerItemCount(1001, 2466)
+CALL sell(1001, 2466, 10, 200000)
 >> say 1001 no
 >> think
 >> say 1001 crown armor
@@ -785,22 +817,24 @@ CALL sell(1001, 2487, 1, 12000)
 CALL sell(1001, 2487, 1, 12000)
 >> say 1001 no
 >> say 1001 5 crown armor
-CALL sell(1001, 2487, 1, 12000)
+CALL sell(1001, 2487, 5, 60000)
 >> say 1001 yes
 >> say 1001 5 crown armor
-CALL sell(1001, 2487, 1, 12000)
+CALL sell(1001, 2487, 5, 60000)
 >> say 1001 no
 >> say 1001 crown armor 100
-CALL sell(1001, 2487, 1, 12000)
+CALL sell(1001, 2487, 100, 1200000)
 >> say 1001 yes
 >> say 1001 crown armor 100
-CALL sell(1001, 2487, 1, 12000)
+CALL sell(1001, 2487, 100, 1200000)
 >> say 1001 no
 >> say 1001 crown armor all
-CALL sell(1001, 2487, 1, 12000)
+CALL getPlayerItemCount(1001, 2487)
+CALL sell(1001, 2487, 10, 120000)
 >> say 1001 yes
 >> say 1001 crown armor all
-CALL sell(1001, 2487, 1, 12000)
+CALL getPlayerItemCount(1001, 2487)
+CALL sell(1001, 2487, 10, 120000)
 >> say 1001 no
 >> think
 >> say 1001 knight armor
@@ -810,22 +844,24 @@ CALL sell(1001, 2476, 1, 3500)
 CALL sell(1001, 2476, 1, 3500)
 >> say 1001 no
 >> say 1001 5 knight armor
-CALL sell(1001, 2476, 1, 3500)
+CALL sell(1001, 2476, 5, 17500)
 >> say 1001 yes
 >> say 1001 5 knight armor
-CALL sell(1001, 2476, 1, 3500)
+CALL sell(1001, 2476, 5, 17500)
 >> say 1001 no
 >> say 1001 knight armor 100
-CALL sell(1001, 2476, 1, 3500)
+CALL sell(1001, 2476, 100, 350000)
 >> say 1001 yes
 >> say 1001 knight armor 100
-CALL sell(1001, 2476, 1, 3500)
+CALL sell(1001, 2476, 100, 350000)
 >> say 1001 no
 >> say 1001 knight armor all
-CALL sell(1001, 2476, 1, 3500)
+CALL getPlayerItemCount(1001, 2476)
+CALL sell(1001, 2476, 10, 35000)
 >> say 1001 yes
 >> say 1001 knight armor all
-CALL sell(1001, 2476, 1, 3500)
+CALL getPlayerItemCount(1001, 2476)
+CALL sell(1001, 2476, 10, 35000)
 >> say 1001 no
 >> think
 >> say 1001 blue robe
@@ -835,22 +871,24 @@ CALL sell(1001, 2656, 1, 10000)
 CALL sell(1001, 2656, 1, 10000)
 >> say 1001 no
 >> say 1001 5 blue robe
-CALL sell(1001, 2656, 1, 10000)
+CALL sell(1001, 2656, 5, 50000)
 >> say 1001 yes
 >> say 1001 5 blue robe
-CALL sell(1001, 2656, 1, 10000)
+CALL sell(1001, 2656, 5, 50000)
 >> say 1001 no
 >> say 1001 blue robe 100
-CALL sell(1001, 2656, 1, 10000)
+CALL sell(1001, 2656, 100, 1000000)
 >> say 1001 yes
 >> say 1001 blue robe 100
-CALL sell(1001, 2656, 1, 10000)
+CALL sell(1001, 2656, 100, 1000000)
 >> say 1001 no
 >> say 1001 blue robe all
-CALL sell(1001, 2656, 1, 10000)
+CALL getPlayerItemCount(1001, 2656)
+CALL sell(1001, 2656, 10, 100000)
 >> say 1001 yes
 >> say 1001 blue robe all
-CALL sell(1001, 2656, 1, 10000)
+CALL getPlayerItemCount(1001, 2656)
+CALL sell(1001, 2656, 10, 100000)
 >> say 1001 no
 >> think
 >> say 1001 lady armor
@@ -860,22 +898,24 @@ CALL sell(1001, 2500, 1, 1500)
 CALL sell(1001, 2500, 1, 1500)
 >> say 1001 no
 >> say 1001 5 lady armor
-CALL sell(1001, 2500, 1, 1500)
+CALL sell(1001, 2500, 5, 7500)
 >> say 1001 yes
 >> say 1001 5 lady armor
-CALL sell(1001, 2500, 1, 1500)
+CALL sell(1001, 2500, 5, 7500)
 >> say 1001 no
 >> say 1001 lady armor 100
-CALL sell(1001, 2500, 1, 1500)
+CALL sell(1001, 2500, 100, 150000)
 >> say 1001 yes
 >> say 1001 lady armor 100
-CALL sell(1001, 2500, 1, 1500)
+CALL sell(1001, 2500, 100, 150000)
 >> say 1001 no
 >> say 1001 lady armor all
-CALL sell(1001, 2500, 1, 1500)
+CALL getPlayerItemCount(1001, 2500)
+CALL sell(1001, 2500, 10, 15000)
 >> say 1001 yes
 >> say 1001 lady armor all
-CALL sell(1001, 2500, 1, 1500)
+CALL getPlayerItemCount(1001, 2500)
+CALL sell(1001, 2500, 10, 15000)
 >> say 1001 no
 >> think
 >> say 1001 plate armor
@@ -885,22 +925,24 @@ CALL sell(1001, 2463, 1, 500)
 CALL sell(1001, 2463, 1, 500)
 >> say 1001 no
 >> say 1001 5 plate armor
-CALL sell(1001, 2463, 1, 500)
+CALL sell(1001, 2463, 5, 2500)
 >> say 1001 yes
 >> say 1001 5 plate armor
-CALL sell(1001, 2463, 1, 500)
+CALL sell(1001, 2463, 5, 2500)
 >> say 1001 no
 >> say 1001 plate armor 100
-CALL sell(1001, 2463, 1, 500)
+CALL sell(1001, 2463, 100, 50000)
 >> say 1001 yes
 >> say 1001 plate armor 100
-CALL sell(1001, 2463, 1, 500)
+CALL sell(1001, 2463, 100, 50000)
 >> say 1001 no
 >> say 1001 plate armor all
-CALL sell(1001, 2463, 1, 500)
+CALL getPlayerItemCount(1001, 2463)
+CALL sell(1001, 2463, 10, 5000)
 >> say 1001 yes
 >> say 1001 plate armor all
-CALL sell(1001, 2463, 1, 500)
+CALL getPlayerItemCount(1001, 2463)
+CALL sell(1001, 2463, 10, 5000)
 >> say 1001 no
 >> think
 >> say 1001 brass armor
@@ -910,22 +952,24 @@ CALL sell(1001, 2465, 1, 250)
 CALL sell(1001, 2465, 1, 250)
 >> say 1001 no
 >> say 1001 5 brass armor
-CALL sell(1001, 2465, 1, 250)
+CALL sell(1001, 2465, 5, 1250)
 >> say 1001 yes
 >> say 1001 5 brass armor
-CALL sell(1001, 2465, 1, 250)
+CALL sell(1001, 2465, 5, 1250)
 >> say 1001 no
 >> say 1001 brass armor 100
-CALL sell(1001, 2465, 1, 250)
+CALL sell(1001, 2465, 100, 25000)
 >> say 1001 yes
 >> say 1001 brass armor 100
-CALL sell(1001, 2465, 1, 250)
+CALL sell(1001, 2465, 100, 25000)
 >> say 1001 no
 >> say 1001 brass armor all
-CALL sell(1001, 2465, 1, 250)
+CALL getPlayerItemCount(1001, 2465)
+CALL sell(1001, 2465, 10, 2500)
 >> say 1001 yes
 >> say 1001 brass armor all
-CALL sell(1001, 2465, 1, 250)
+CALL getPlayerItemCount(1001, 2465)
+CALL sell(1001, 2465, 10, 2500)
 >> say 1001 no
 >> think
 >> say 1001 chain armor
@@ -935,22 +979,24 @@ CALL sell(1001, 2464, 1, 50)
 CALL sell(1001, 2464, 1, 50)
 >> say 1001 no
 >> say 1001 5 chain armor
-CALL sell(1001, 2464, 1, 50)
+CALL sell(1001, 2464, 5, 250)
 >> say 1001 yes
 >> say 1001 5 chain armor
-CALL sell(1001, 2464, 1, 50)
+CALL sell(1001, 2464, 5, 250)
 >> say 1001 no
 >> say 1001 chain armor 100
-CALL sell(1001, 2464, 1, 50)
+CALL sell(1001, 2464, 100, 5000)
 >> say 1001 yes
 >> say 1001 chain armor 100
-CALL sell(1001, 2464, 1, 50)
+CALL sell(1001, 2464, 100, 5000)
 >> say 1001 no
 >> say 1001 chain armor all
-CALL sell(1001, 2464, 1, 50)
+CALL getPlayerItemCount(1001, 2464)
+CALL sell(1001, 2464, 10, 500)
 >> say 1001 yes
 >> say 1001 chain armor all
-CALL sell(1001, 2464, 1, 50)
+CALL getPlayerItemCount(1001, 2464)
+CALL sell(1001, 2464, 10, 500)
 >> say 1001 no
 >> think
 >> say 1001 golden legs
@@ -960,22 +1006,24 @@ CALL sell(1001, 2470, 1, 80000)
 CALL sell(1001, 2470, 1, 80000)
 >> say 1001 no
 >> say 1001 5 golden legs
-CALL sell(1001, 2470, 1, 80000)
+CALL sell(1001, 2470, 5, 400000)
 >> say 1001 yes
 >> say 1001 5 golden legs
-CALL sell(1001, 2470, 1, 80000)
+CALL sell(1001, 2470, 5, 400000)
 >> say 1001 no
 >> say 1001 golden legs 100
-CALL sell(1001, 2470, 1, 80000)
+CALL sell(1001, 2470, 100, 8000000)
 >> say 1001 yes
 >> say 1001 golden legs 100
-CALL sell(1001, 2470, 1, 80000)
+CALL sell(1001, 2470, 100, 8000000)
 >> say 1001 no
 >> say 1001 golden legs all
-CALL sell(1001, 2470, 1, 80000)
+CALL getPlayerItemCount(1001, 2470)
+CALL sell(1001, 2470, 10, 800000)
 >> say 1001 yes
 >> say 1001 golden legs all
-CALL sell(1001, 2470, 1, 80000)
+CALL getPlayerItemCount(1001, 2470)
+CALL sell(1001, 2470, 10, 800000)
 >> say 1001 no
 >> think
 >> say 1001 crown legs
@@ -985,22 +1033,24 @@ CALL sell(1001, 2488, 1, 12000)
 CALL sell(1001, 2488, 1, 12000)
 >> say 1001 no
 >> say 1001 5 crown legs
-CALL sell(1001, 2488, 1, 12000)
+CALL sell(1001, 2488, 5, 60000)
 >> say 1001 yes
 >> say 1001 5 crown legs
-CALL sell(1001, 2488, 1, 12000)
+CALL sell(1001, 2488, 5, 60000)
 >> say 1001 no
 >> say 1001 crown legs 100
-CALL sell(1001, 2488, 1, 12000)
+CALL sell(1001, 2488, 100, 1200000)
 >> say 1001 yes
 >> say 1001 crown legs 100
-CALL sell(1001, 2488, 1, 12000)
+CALL sell(1001, 2488, 100, 1200000)
 >> say 1001 no
 >> say 1001 crown legs all
-CALL sell(1001, 2488, 1, 12000)
+CALL getPlayerItemCount(1001, 2488)
+CALL sell(1001, 2488, 10, 120000)
 >> say 1001 yes
 >> say 1001 crown legs all
-CALL sell(1001, 2488, 1, 12000)
+CALL getPlayerItemCount(1001, 2488)
+CALL sell(1001, 2488, 10, 120000)
 >> say 1001 no
 >> think
 >> say 1001 knight legs
@@ -1010,22 +1060,24 @@ CALL sell(1001, 2477, 1, 3500)
 CALL sell(1001, 2477, 1, 3500)
 >> say 1001 no
 >> say 1001 5 knight legs
-CALL sell(1001, 2477, 1, 3500)
+CALL sell(1001, 2477, 5, 17500)
 >> say 1001 yes
 >> say 1001 5 knight legs
-CALL sell(1001, 2477, 1, 3500)
+CALL sell(1001, 2477, 5, 17500)
 >> say 1001 no
 >> say 1001 knight legs 100
-CALL sell(1001, 2477, 1, 3500)
+CALL sell(1001, 2477, 100, 350000)
 >> say 1001 yes
 >> say 1001 knight legs 100
-CALL sell(1001, 2477, 1, 3500)
+CALL sell(1001, 2477, 100, 350000)
 >> say 1001 no
 >> say 1001 knight legs all
-CALL sell(1001, 2477, 1, 3500)
+CALL getPlayerItemCount(1001, 2477)
+CALL sell(1001, 2477, 10, 35000)
 >> say 1001 yes
 >> say 1001 knight legs all
-CALL sell(1001, 2477, 1, 3500)
+CALL getPlayerItemCount(1001, 2477)
+CALL sell(1001, 2477, 10, 35000)
 >> say 1001 no
 >> think
 >> say 1001 plate legs
@@ -1035,22 +1087,24 @@ CALL sell(1001, 2647, 1, 700)
 CALL sell(1001, 2647, 1, 700)
 >> say 1001 no
 >> say 1001 5 plate legs
-CALL sell(1001, 2647, 1, 700)
+CALL sell(1001, 2647, 5, 3500)
 >> say 1001 yes
 >> say 1001 5 plate legs
-CALL sell(1001, 2647, 1, 700)
+CALL sell(1001, 2647, 5, 3500)
 >> say 1001 no
 >> say 1001 plate legs 100
-CALL sell(1001, 2647, 1, 700)
+CALL sell(1001, 2647, 100, 70000)
 >> say 1001 yes
 >> say 1001 plate legs 100
-CALL sell(1001, 2647, 1, 700)
+CALL sell(1001, 2647, 100, 70000)
 >> say 1001 no
 >> say 1001 plate legs all
-CALL sell(1001, 2647, 1, 700)
+CALL getPlayerItemCount(1001, 2647)
+CALL sell(1001, 2647, 10, 7000)
 >> say 1001 yes
 >> say 1001 plate legs all
-CALL sell(1001, 2647, 1, 700)
+CALL getPlayerItemCount(1001, 2647)
+CALL sell(1001, 2647, 10, 7000)
 >> say 1001 no
 >> think
 >> say 1001 brass legs
@@ -1060,22 +1114,24 @@ CALL sell(1001, 2478, 1, 100)
 CALL sell(1001, 2478, 1, 100)
 >> say 1001 no
 >> say 1001 5 brass legs
-CALL sell(1001, 2478, 1, 100)
+CALL sell(1001, 2478, 5, 500)
 >> say 1001 yes
 >> say 1001 5 brass legs
-CALL sell(1001, 2478, 1, 100)
+CALL sell(1001, 2478, 5, 500)
 >> say 1001 no
 >> say 1001 brass legs 100
-CALL sell(1001, 2478, 1, 100)
+CALL sell(1001, 2478, 100, 10000)
 >> say 1001 yes
 >> say 1001 brass legs 100
-CALL sell(1001, 2478, 1, 100)
+CALL sell(1001, 2478, 100, 10000)
 >> say 1001 no
 >> say 1001 brass legs all
-CALL sell(1001, 2478, 1, 100)
+CALL getPlayerItemCount(1001, 2478)
+CALL sell(1001, 2478, 10, 1000)
 >> say 1001 yes
 >> say 1001 brass legs all
-CALL sell(1001, 2478, 1, 100)
+CALL getPlayerItemCount(1001, 2478)
+CALL sell(1001, 2478, 10, 1000)
 >> say 1001 no
 >> think
 >> say 1001 chain legs
@@ -1085,22 +1141,24 @@ CALL sell(1001, 2547, 1, 100)
 CALL sell(1001, 2547, 1, 100)
 >> say 1001 no
 >> say 1001 5 chain legs
-CALL sell(1001, 2547, 1, 100)
+CALL sell(1001, 2547, 5, 500)
 >> say 1001 yes
 >> say 1001 5 chain legs
-CALL sell(1001, 2547, 1, 100)
+CALL sell(1001, 2547, 5, 500)
 >> say 1001 no
 >> say 1001 chain legs 100
-CALL sell(1001, 2547, 1, 100)
+CALL sell(1001, 2547, 100, 10000)
 >> say 1001 yes
 >> say 1001 chain legs 100
-CALL sell(1001, 2547, 1, 100)
+CALL sell(1001, 2547, 100, 10000)
 >> say 1001 no
 >> say 1001 chain legs all
-CALL sell(1001, 2547, 1, 100)
+CALL getPlayerItemCount(1001, 2547)
+CALL sell(1001, 2547, 10, 1000)
 >> say 1001 yes
 >> say 1001 chain legs all
-CALL sell(1001, 2547, 1, 100)
+CALL getPlayerItemCount(1001, 2547)
+CALL sell(1001, 2547, 10, 1000)
 >> say 1001 no
 >> think
 >> say 1001 shield of the mastermind
@@ -1110,22 +1168,24 @@ CALL sell(1001, 2514, 1, 80000)
 CALL sell(1001, 2514, 1, 80000)
 >> say 1001 no
 >> say 1001 5 shield of the mastermind
-CALL sell(1001, 2514, 1, 80000)
+CALL sell(1001, 2514, 5, 400000)
 >> say 1001 yes
 >> say 1001 5 shield of the mastermind
-CALL sell(1001, 2514, 1, 80000)
+CALL sell(1001, 2514, 5, 400000)
 >> say 1001 no
 >> say 1001 shield of the mastermind 100
-CALL sell(1001, 2514, 1, 80000)
+CALL sell(1001, 2514, 100, 8000000)
 >> say 1001 yes
 >> say 1001 shield of the mastermind 100
-CALL sell(1001, 2514, 1, 80000)
+CALL sell(1001, 2514, 100, 8000000)
 >> say 1001 no
 >> say 1001 shield of the mastermind all
-CALL sell(1001, 2514, 1, 80000)
+CALL getPlayerItemCount(1001, 2514)
+CALL sell(1001, 2514, 10, 800000)
 >> say 1001 yes
 >> say 1001 shield of the mastermind all
-CALL sell(1001, 2514, 1, 80000)
+CALL getPlayerItemCount(1001, 2514)
+CALL sell(1001, 2514, 10, 800000)
 >> say 1001 no
 >> think
 >> say 1001 mms
@@ -1135,22 +1195,24 @@ CALL sell(1001, 2514, 1, 80000)
 CALL sell(1001, 2514, 1, 80000)
 >> say 1001 no
 >> say 1001 5 mms
-CALL sell(1001, 2514, 1, 80000)
+CALL sell(1001, 2514, 5, 400000)
 >> say 1001 yes
 >> say 1001 5 mms
-CALL sell(1001, 2514, 1, 80000)
+CALL sell(1001, 2514, 5, 400000)
 >> say 1001 no
 >> say 1001 mms 100
-CALL sell(1001, 2514, 1, 80000)
+CALL sell(1001, 2514, 100, 8000000)
 >> say 1001 yes
 >> say 1001 mms 100
-CALL sell(1001, 2514, 1, 80000)
+CALL sell(1001, 2514, 100, 8000000)
 >> say 1001 no
 >> say 1001 mms all
-CALL sell(1001, 2514, 1, 80000)
+CALL getPlayerItemCount(1001, 2514)
+CALL sell(1001, 2514, 10, 800000)
 >> say 1001 yes
 >> say 1001 mms all
-CALL sell(1001, 2514, 1, 80000)
+CALL getPlayerItemCount(1001, 2514)
+CALL sell(1001, 2514, 10, 800000)
 >> say 1001 no
 >> think
 >> say 1001 demon shield
@@ -1160,22 +1222,24 @@ CALL sell(1001, 2520, 1, 40000)
 CALL sell(1001, 2520, 1, 40000)
 >> say 1001 no
 >> say 1001 5 demon shield
-CALL sell(1001, 2520, 1, 40000)
+CALL sell(1001, 2520, 5, 200000)
 >> say 1001 yes
 >> say 1001 5 demon shield
-CALL sell(1001, 2520, 1, 40000)
+CALL sell(1001, 2520, 5, 200000)
 >> say 1001 no
 >> say 1001 demon shield 100
-CALL sell(1001, 2520, 1, 40000)
+CALL sell(1001, 2520, 100, 4000000)
 >> say 1001 yes
 >> say 1001 demon shield 100
-CALL sell(1001, 2520, 1, 40000)
+CALL sell(1001, 2520, 100, 4000000)
 >> say 1001 no
 >> say 1001 demon shield all
-CALL sell(1001, 2520, 1, 40000)
+CALL getPlayerItemCount(1001, 2520)
+CALL sell(1001, 2520, 10, 400000)
 >> say 1001 yes
 >> say 1001 demon shield all
-CALL sell(1001, 2520, 1, 40000)
+CALL getPlayerItemCount(1001, 2520)
+CALL sell(1001, 2520, 10, 400000)
 >> say 1001 no
 >> think
 >> say 1001 vampire shield
@@ -1185,22 +1249,24 @@ CALL sell(1001, 2534, 1, 15000)
 CALL sell(1001, 2534, 1, 15000)
 >> say 1001 no
 >> say 1001 5 vampire shield
-CALL sell(1001, 2534, 1, 15000)
+CALL sell(1001, 2534, 5, 75000)
 >> say 1001 yes
 >> say 1001 5 vampire shield
-CALL sell(1001, 2534, 1, 15000)
+CALL sell(1001, 2534, 5, 75000)
 >> say 1001 no
 >> say 1001 vampire shield 100
-CALL sell(1001, 2534, 1, 15000)
+CALL sell(1001, 2534, 100, 1500000)
 >> say 1001 yes
 >> say 1001 vampire shield 100
-CALL sell(1001, 2534, 1, 15000)
+CALL sell(1001, 2534, 100, 1500000)
 >> say 1001 no
 >> say 1001 vampire shield all
-CALL sell(1001, 2534, 1, 15000)
+CALL getPlayerItemCount(1001, 2534)
+CALL sell(1001, 2534, 10, 150000)
 >> say 1001 yes
 >> say 1001 vampire shield all
-CALL sell(1001, 2534, 1, 15000)
+CALL getPlayerItemCount(1001, 2534)
+CALL sell(1001, 2534, 10, 150000)
 >> say 1001 no
 >> think
 >> say 1001 medusa shield
@@ -1210,22 +1276,24 @@ CALL sell(1001, 2536, 1, 9000)
 CALL sell(1001, 2536, 1, 9000)
 >> say 1001 no
 >> say 1001 5 medusa shield
-CALL sell(1001, 2536, 1, 9000)
+CALL sell(1001, 2536, 5, 45000)
 >> say 1001 yes
 >> say 1001 5 medusa shield
-CALL sell(1001, 2536, 1, 9000)
+CALL sell(1001, 2536, 5, 45000)
 >> say 1001 no
 >> say 1001 medusa shield 100
-CALL sell(1001, 2536, 1, 9000)
+CALL sell(1001, 2536, 100, 900000)
 >> say 1001 yes
 >> say 1001 medusa shield 100
-CALL sell(1001, 2536, 1, 9000)
+CALL sell(1001, 2536, 100, 900000)
 >> say 1001 no
 >> say 1001 medusa shield all
-CALL sell(1001, 2536, 1, 9000)
+CALL getPlayerItemCount(1001, 2536)
+CALL sell(1001, 2536, 10, 90000)
 >> say 1001 yes
 >> say 1001 medusa shield all
-CALL sell(1001, 2536, 1, 9000)
+CALL getPlayerItemCount(1001, 2536)
+CALL sell(1001, 2536, 10, 90000)
 >> say 1001 no
 >> think
 >> say 1001 amazon shield
@@ -1235,22 +1303,24 @@ CALL sell(1001, 2537, 1, 4000)
 CALL sell(1001, 2537, 1, 4000)
 >> say 1001 no
 >> say 1001 5 amazon shield
-CALL sell(1001, 2537, 1, 4000)
+CALL sell(1001, 2537, 5, 20000)
 >> say 1001 yes
 >> say 1001 5 amazon shield
-CALL sell(1001, 2537, 1, 4000)
+CALL sell(1001, 2537, 5, 20000)
 >> say 1001 no
 >> say 1001 amazon shield 100
-CALL sell(1001, 2537, 1, 4000)
+CALL sell(1001, 2537, 100, 400000)
 >> say 1001 yes
 >> say 1001 amazon shield 100
-CALL sell(1001, 2537, 1, 4000)
+CALL sell(1001, 2537, 100, 400000)
 >> say 1001 no
 >> say 1001 amazon shield all
-CALL sell(1001, 2537, 1, 4000)
+CALL getPlayerItemCount(1001, 2537)
+CALL sell(1001, 2537, 10, 40000)
 >> say 1001 yes
 >> say 1001 amazon shield all
-CALL sell(1001, 2537, 1, 4000)
+CALL getPlayerItemCount(1001, 2537)
+CALL sell(1001, 2537, 10, 40000)
 >> say 1001 no
 >> think
 >> say 1001 crown shield
@@ -1260,22 +1330,24 @@ CALL sell(1001, 2519, 1, 8000)
 CALL sell(1001, 2519, 1, 8000)
 >> say 1001 no
 >> say 1001 5 crown shield
-CALL sell(1001, 2519, 1, 8000)
+CALL sell(1001, 2519, 5, 40000)
 >> say 1001 yes
 >> say 1001 5 crown shield
-CALL sell(1001, 2519, 1, 8000)
+CALL sell(1001, 2519, 5, 40000)
 >> say 1001 no
 >> say 1001 crown shield 100
-CALL sell(1001, 2519, 1, 8000)
+CALL sell(1001, 2519, 100, 800000)
 >> say 1001 yes
 >> say 1001 crown shield 100
-CALL sell(1001, 2519, 1, 8000)
+CALL sell(1001, 2519, 100, 800000)
 >> say 1001 no
 >> say 1001 crown shield all
-CALL sell(1001, 2519, 1, 8000)
+CALL getPlayerItemCount(1001, 2519)
+CALL sell(1001, 2519, 10, 80000)
 >> say 1001 yes
 >> say 1001 crown shield all
-CALL sell(1001, 2519, 1, 8000)
+CALL getPlayerItemCount(1001, 2519)
+CALL sell(1001, 2519, 10, 80000)
 >> say 1001 no
 >> think
 >> say 1001 tower shield
@@ -1285,22 +1357,24 @@ CALL sell(1001, 2528, 1, 8000)
 CALL sell(1001, 2528, 1, 8000)
 >> say 1001 no
 >> say 1001 5 tower shield
-CALL sell(1001, 2528, 1, 8000)
+CALL sell(1001, 2528, 5, 40000)
 >> say 1001 yes
 >> say 1001 5 tower shield
-CALL sell(1001, 2528, 1, 8000)
+CALL sell(1001, 2528, 5, 40000)
 >> say 1001 no
 >> say 1001 tower shield 100
-CALL sell(1001, 2528, 1, 8000)
+CALL sell(1001, 2528, 100, 800000)
 >> say 1001 yes
 >> say 1001 tower shield 100
-CALL sell(1001, 2528, 1, 8000)
+CALL sell(1001, 2528, 100, 800000)
 >> say 1001 no
 >> say 1001 tower shield all
-CALL sell(1001, 2528, 1, 8000)
+CALL getPlayerItemCount(1001, 2528)
+CALL sell(1001, 2528, 10, 80000)
 >> say 1001 yes
 >> say 1001 tower shield all
-CALL sell(1001, 2528, 1, 8000)
+CALL getPlayerItemCount(1001, 2528)
+CALL sell(1001, 2528, 10, 80000)
 >> say 1001 no
 >> think
 >> say 1001 dragon shield
@@ -1310,22 +1384,24 @@ CALL sell(1001, 2516, 1, 4000)
 CALL sell(1001, 2516, 1, 4000)
 >> say 1001 no
 >> say 1001 5 dragon shield
-CALL sell(1001, 2516, 1, 4000)
+CALL sell(1001, 2516, 5, 20000)
 >> say 1001 yes
 >> say 1001 5 dragon shield
-CALL sell(1001, 2516, 1, 4000)
+CALL sell(1001, 2516, 5, 20000)
 >> say 1001 no
 >> say 1001 dragon shield 100
-CALL sell(1001, 2516, 1, 4000)
+CALL sell(1001, 2516, 100, 400000)
 >> say 1001 yes
 >> say 1001 dragon shield 100
-CALL sell(1001, 2516, 1, 4000)
+CALL sell(1001, 2516, 100, 400000)
 >> say 1001 no
 >> say 1001 dragon shield all
-CALL sell(1001, 2516, 1, 4000)
+CALL getPlayerItemCount(1001, 2516)
+CALL sell(1001, 2516, 10, 40000)
 >> say 1001 yes
 >> say 1001 dragon shield all
-CALL sell(1001, 2516, 1, 4000)
+CALL getPlayerItemCount(1001, 2516)
+CALL sell(1001, 2516, 10, 40000)
 >> say 1001 no
 >> think
 >> say 1001 guardian shield
@@ -1335,22 +1411,24 @@ CALL sell(1001, 2515, 1, 2000)
 CALL sell(1001, 2515, 1, 2000)
 >> say 1001 no
 >> say 1001 5 guardian shield
-CALL sell(1001, 2515, 1, 2000)
+CALL sell(1001, 2515, 5, 10000)
 >> say 1001 yes
 >> say 1001 5 guardian shield
-CALL sell(1001, 2515, 1, 2000)
+CALL sell(1001, 2515, 5, 10000)
 >> say 1001 no
 >> say 1001 guardian shield 100
-CALL sell(1001, 2515, 1, 2000)
+CALL sell(1001, 2515, 100, 200000)
 >> say 1001 yes
 >> say 1001 guardian shield 100
-CALL sell(1001, 2515, 1, 2000)
+CALL sell(1001, 2515, 100, 200000)
 >> say 1001 no
 >> say 1001 guardian shield all
-CALL sell(1001, 2515, 1, 2000)
+CALL getPlayerItemCount(1001, 2515)
+CALL sell(1001, 2515, 10, 20000)
 >> say 1001 yes
 >> say 1001 guardian shield all
-CALL sell(1001, 2515, 1, 2000)
+CALL getPlayerItemCount(1001, 2515)
+CALL sell(1001, 2515, 10, 20000)
 >> say 1001 no
 >> think
 >> say 1001 beholder shield
@@ -1360,22 +1438,24 @@ CALL sell(1001, 2518, 1, 1500)
 CALL sell(1001, 2518, 1, 1500)
 >> say 1001 no
 >> say 1001 5 beholder shield
-CALL sell(1001, 2518, 1, 1500)
+CALL sell(1001, 2518, 5, 7500)
 >> say 1001 yes
 >> say 1001 5 beholder shield
-CALL sell(1001, 2518, 1, 1500)
+CALL sell(1001, 2518, 5, 7500)
 >> say 1001 no
 >> say 1001 beholder shield 100
-CALL sell(1001, 2518, 1, 1500)
+CALL sell(1001, 2518, 100, 150000)
 >> say 1001 yes
 >> say 1001 beholder shield 100
-CALL sell(1001, 2518, 1, 1500)
+CALL sell(1001, 2518, 100, 150000)
 >> say 1001 no
 >> say 1001 beholder shield all
-CALL sell(1001, 2518, 1, 1500)
+CALL getPlayerItemCount(1001, 2518)
+CALL sell(1001, 2518, 10, 15000)
 >> say 1001 yes
 >> say 1001 beholder shield all
-CALL sell(1001, 2518, 1, 1500)
+CALL getPlayerItemCount(1001, 2518)
+CALL sell(1001, 2518, 10, 15000)
 >> say 1001 no
 >> think
 >> say 1001 dwarven shield
@@ -1385,22 +1465,24 @@ CALL sell(1001, 2525, 1, 200)
 CALL sell(1001, 2525, 1, 200)
 >> say 1001 no
 >> say 1001 5 dwarven shield
-CALL sell(1001, 2525, 1, 200)
+CALL sell(1001, 2525, 5, 1000)
 >> say 1001 yes
 >> say 1001 5 dwarven shield
-CALL sell(1001, 2525, 1, 200)
+CALL sell(1001, 2525, 5, 1000)
 >> say 1001 no
 >> say 1001 dwarven shield 100
-CALL sell(1001, 2525, 1, 200)
+CALL sell(1001, 2525, 100, 20000)
 >> say 1001 yes
 >> say 1001 dwarven shield 100
-CALL sell(1001, 2525, 1, 200)
+CALL sell(1001, 2525, 100, 20000)
 >> say 1001 no
 >> say 1001 dwarven shield all
-CALL sell(1001, 2525, 1, 200)
+CALL getPlayerItemCount(1001, 2525)
+CALL sell(1001, 2525, 10, 2000)
 >> say 1001 yes
 >> say 1001 dwarven shield all
-CALL sell(1001, 2525, 1, 200)
+CALL getPlayerItemCount(1001, 2525)
+CALL sell(1001, 2525, 10, 2000)
 >> say 1001 no
 >> think
 >> say 1001 giant sword
@@ -1410,22 +1492,24 @@ CALL sell(1001, 2393, 1, 17000)
 CALL sell(1001, 2393, 1, 17000)
 >> say 1001 no
 >> say 1001 5 giant sword
-CALL sell(1001, 2393, 1, 17000)
+CALL sell(1001, 2393, 5, 85000)
 >> say 1001 yes
 >> say 1001 5 giant sword
-CALL sell(1001, 2393, 1, 17000)
+CALL sell(1001, 2393, 5, 85000)
 >> say 1001 no
 >> say 1001 giant sword 100
-CALL sell(1001, 2393, 1, 17000)
+CALL sell(1001, 2393, 100, 1700000)
 >> say 1001 yes
 >> say 1001 giant sword 100
-CALL sell(1001, 2393, 1, 17000)
+CALL sell(1001, 2393, 100, 1700000)
 >> say 1001 no
 >> say 1001 giant sword all
-CALL sell(1001, 2393, 1, 17000)
+CALL getPlayerItemCount(1001, 2393)
+CALL sell(1001, 2393, 10, 170000)
 >> say 1001 yes
 >> say 1001 giant sword all
-CALL sell(1001, 2393, 1, 17000)
+CALL getPlayerItemCount(1001, 2393)
+CALL sell(1001, 2393, 10, 170000)
 >> say 1001 no
 >> think
 >> say 1001 bright sword
@@ -1435,22 +1519,24 @@ CALL sell(1001, 2407, 1, 7000)
 CALL sell(1001, 2407, 1, 7000)
 >> say 1001 no
 >> say 1001 5 bright sword
-CALL sell(1001, 2407, 1, 7000)
+CALL sell(1001, 2407, 5, 35000)
 >> say 1001 yes
 >> say 1001 5 bright sword
-CALL sell(1001, 2407, 1, 7000)
+CALL sell(1001, 2407, 5, 35000)
 >> say 1001 no
 >> say 1001 bright sword 100
-CALL sell(1001, 2407, 1, 7000)
+CALL sell(1001, 2407, 100, 700000)
 >> say 1001 yes
 >> say 1001 bright sword 100
-CALL sell(1001, 2407, 1, 7000)
+CALL sell(1001, 2407, 100, 700000)
 >> say 1001 no
 >> say 1001 bright sword all
-CALL sell(1001, 2407, 1, 7000)
+CALL getPlayerItemCount(1001, 2407)
+CALL sell(1001, 2407, 10, 70000)
 >> say 1001 yes
 >> say 1001 bright sword all
-CALL sell(1001, 2407, 1, 7000)
+CALL getPlayerItemCount(1001, 2407)
+CALL sell(1001, 2407, 10, 70000)
 >> say 1001 no
 >> think
 >> say 1001 ice rapier
@@ -1460,22 +1546,24 @@ CALL sell(1001, 2396, 1, 5000)
 CALL sell(1001, 2396, 1, 5000)
 >> say 1001 no
 >> say 1001 5 ice rapier
-CALL sell(1001, 2396, 1, 5000)
+CALL sell(1001, 2396, 5, 25000)
 >> say 1001 yes
 >> say 1001 5 ice rapier
-CALL sell(1001, 2396, 1, 5000)
+CALL sell(1001, 2396, 5, 25000)
 >> say 1001 no
 >> say 1001 ice rapier 100
-CALL sell(1001, 2396, 1, 5000)
+CALL sell(1001, 2396, 100, 500000)
 >> say 1001 yes
 >> say 1001 ice rapier 100
-CALL sell(1001, 2396, 1, 5000)
+CALL sell(1001, 2396, 100, 500000)
 >> say 1001 no
 >> say 1001 ice rapier all
-CALL sell(1001, 2396, 1, 5000)
+CALL getPlayerItemCount(1001, 2396)
+CALL sell(1001, 2396, 10, 50000)
 >> say 1001 yes
 >> say 1001 ice rapier all
-CALL sell(1001, 2396, 1, 5000)
+CALL getPlayerItemCount(1001, 2396)
+CALL sell(1001, 2396, 10, 50000)
 >> say 1001 no
 >> think
 >> say 1001 fire sword
@@ -1485,22 +1573,24 @@ CALL sell(1001, 2392, 1, 4000)
 CALL sell(1001, 2392, 1, 4000)
 >> say 1001 no
 >> say 1001 5 fire sword
-CALL sell(1001, 2392, 1, 4000)
+CALL sell(1001, 2392, 5, 20000)
 >> say 1001 yes
 >> say 1001 5 fire sword
-CALL sell(1001, 2392, 1, 4000)
+CALL sell(1001, 2392, 5, 20000)
 >> say 1001 no
 >> say 1001 fire sword 100
-CALL sell(1001, 2392, 1, 4000)
+CALL sell(1001, 2392, 100, 400000)
 >> say 1001 yes
 >> say 1001 fire sword 100
-CALL sell(1001, 2392, 1, 4000)
+CALL sell(1001, 2392, 100, 400000)
 >> say 1001 no
 >> say 1001 fire sword all
-CALL sell(1001, 2392, 1, 4000)
+CALL getPlayerItemCount(1001, 2392)
+CALL sell(1001, 2392, 10, 40000)
 >> say 1001 yes
 >> say 1001 fire sword all
-CALL sell(1001, 2392, 1, 4000)
+CALL getPlayerItemCount(1001, 2392)
+CALL sell(1001, 2392, 10, 40000)
 >> say 1001 no
 >> think
 >> say 1001 serpent sword
@@ -1510,22 +1600,24 @@ CALL sell(1001, 2409, 1, 2000)
 CALL sell(1001, 2409, 1, 2000)
 >> say 1001 no
 >> say 1001 5 serpent sword
-CALL sell(1001, 2409, 1, 2000)
+CALL sell(1001, 2409, 5, 10000)
 >> say 1001 yes
 >> say 1001 5 serpent sword
-CALL sell(1001, 2409, 1, 2000)
+CALL sell(1001, 2409, 5, 10000)
 >> say 1001 no
 >> say 1001 serpent sword 100
-CALL sell(1001, 2409, 1, 2000)
+CALL sell(1001, 2409, 100, 200000)
 >> say 1001 yes
 >> say 1001 serpent sword 100
-CALL sell(1001, 2409, 1, 2000)
+CALL sell(1001, 2409, 100, 200000)
 >> say 1001 no
 >> say 1001 serpent sword all
-CALL sell(1001, 2409, 1, 2000)
+CALL getPlayerItemCount(1001, 2409)
+CALL sell(1001, 2409, 10, 20000)
 >> say 1001 yes
 >> say 1001 serpent sword all
-CALL sell(1001, 2409, 1, 2000)
+CALL getPlayerItemCount(1001, 2409)
+CALL sell(1001, 2409, 10, 20000)
 >> say 1001 no
 >> think
 >> say 1001 spike sword
@@ -1535,22 +1627,24 @@ CALL sell(1001, 2383, 1, 1200)
 CALL sell(1001, 2383, 1, 1200)
 >> say 1001 no
 >> say 1001 5 spike sword
-CALL sell(1001, 2383, 1, 1200)
+CALL sell(1001, 2383, 5, 6000)
 >> say 1001 yes
 >> say 1001 5 spike sword
-CALL sell(1001, 2383, 1, 1200)
+CALL sell(1001, 2383, 5, 6000)
 >> say 1001 no
 >> say 1001 spike sword 100
-CALL sell(1001, 2383, 1, 1200)
+CALL sell(1001, 2383, 100, 120000)
 >> say 1001 yes
 >> say 1001 spike sword 100
-CALL sell(1001, 2383, 1, 1200)
+CALL sell(1001, 2383, 100, 120000)
 >> say 1001 no
 >> say 1001 spike sword all
-CALL sell(1001, 2383, 1, 1200)
+CALL getPlayerItemCount(1001, 2383)
+CALL sell(1001, 2383, 10, 12000)
 >> say 1001 yes
 >> say 1001 spike sword all
-CALL sell(1001, 2383, 1, 1200)
+CALL getPlayerItemCount(1001, 2383)
+CALL sell(1001, 2383, 10, 12000)
 >> say 1001 no
 >> think
 >> say 1001 two handed sword
@@ -1560,22 +1654,51 @@ CALL sell(1001, 2377, 1, 600)
 CALL sell(1001, 2377, 1, 600)
 >> say 1001 no
 >> say 1001 5 two handed sword
-CALL sell(1001, 2377, 1, 600)
+CALL sell(1001, 2377, 5, 3000)
 >> say 1001 yes
 >> say 1001 5 two handed sword
-CALL sell(1001, 2377, 1, 600)
+CALL sell(1001, 2377, 5, 3000)
 >> say 1001 no
 >> say 1001 two handed sword 100
-CALL sell(1001, 2377, 1, 600)
+CALL sell(1001, 2377, 100, 60000)
 >> say 1001 yes
 >> say 1001 two handed sword 100
-CALL sell(1001, 2377, 1, 600)
+CALL sell(1001, 2377, 100, 60000)
 >> say 1001 no
 >> say 1001 two handed sword all
-CALL sell(1001, 2377, 1, 600)
+CALL getPlayerItemCount(1001, 2377)
+CALL sell(1001, 2377, 10, 6000)
 >> say 1001 yes
 >> say 1001 two handed sword all
+CALL getPlayerItemCount(1001, 2377)
+CALL sell(1001, 2377, 10, 6000)
+>> say 1001 no
+>> think
+>> say 1001 two-handed sword
 CALL sell(1001, 2377, 1, 600)
+>> say 1001 yes
+>> say 1001 two-handed sword
+CALL sell(1001, 2377, 1, 600)
+>> say 1001 no
+>> say 1001 5 two-handed sword
+CALL sell(1001, 2377, 5, 3000)
+>> say 1001 yes
+>> say 1001 5 two-handed sword
+CALL sell(1001, 2377, 5, 3000)
+>> say 1001 no
+>> say 1001 two-handed sword 100
+CALL sell(1001, 2377, 100, 60000)
+>> say 1001 yes
+>> say 1001 two-handed sword 100
+CALL sell(1001, 2377, 100, 60000)
+>> say 1001 no
+>> say 1001 two-handed sword all
+CALL getPlayerItemCount(1001, 2377)
+CALL sell(1001, 2377, 10, 6000)
+>> say 1001 yes
+>> say 1001 two-handed sword all
+CALL getPlayerItemCount(1001, 2377)
+CALL sell(1001, 2377, 10, 6000)
 >> say 1001 no
 >> think
 >> say 1001 broad sword
@@ -1585,22 +1708,24 @@ CALL sell(1001, 2413, 1, 500)
 CALL sell(1001, 2413, 1, 500)
 >> say 1001 no
 >> say 1001 5 broad sword
-CALL sell(1001, 2413, 1, 500)
+CALL sell(1001, 2413, 5, 2500)
 >> say 1001 yes
 >> say 1001 5 broad sword
-CALL sell(1001, 2413, 1, 500)
+CALL sell(1001, 2413, 5, 2500)
 >> say 1001 no
 >> say 1001 broad sword 100
-CALL sell(1001, 2413, 1, 500)
+CALL sell(1001, 2413, 100, 50000)
 >> say 1001 yes
 >> say 1001 broad sword 100
-CALL sell(1001, 2413, 1, 500)
+CALL sell(1001, 2413, 100, 50000)
 >> say 1001 no
 >> say 1001 broad sword all
-CALL sell(1001, 2413, 1, 500)
+CALL getPlayerItemCount(1001, 2413)
+CALL sell(1001, 2413, 10, 5000)
 >> say 1001 yes
 >> say 1001 broad sword all
-CALL sell(1001, 2413, 1, 500)
+CALL getPlayerItemCount(1001, 2413)
+CALL sell(1001, 2413, 10, 5000)
 >> say 1001 no
 >> think
 >> say 1001 short sword
@@ -1610,22 +1735,24 @@ CALL sell(1001, 2406, 1, 60)
 CALL sell(1001, 2406, 1, 60)
 >> say 1001 no
 >> say 1001 5 short sword
-CALL sell(1001, 2406, 1, 60)
+CALL sell(1001, 2406, 5, 300)
 >> say 1001 yes
 >> say 1001 5 short sword
-CALL sell(1001, 2406, 1, 60)
+CALL sell(1001, 2406, 5, 300)
 >> say 1001 no
 >> say 1001 short sword 100
-CALL sell(1001, 2406, 1, 60)
+CALL sell(1001, 2406, 100, 6000)
 >> say 1001 yes
 >> say 1001 short sword 100
-CALL sell(1001, 2406, 1, 60)
+CALL sell(1001, 2406, 100, 6000)
 >> say 1001 no
 >> say 1001 short sword all
-CALL sell(1001, 2406, 1, 60)
+CALL getPlayerItemCount(1001, 2406)
+CALL sell(1001, 2406, 10, 600)
 >> say 1001 yes
 >> say 1001 short sword all
-CALL sell(1001, 2406, 1, 60)
+CALL getPlayerItemCount(1001, 2406)
+CALL sell(1001, 2406, 10, 600)
 >> say 1001 no
 >> think
 >> say 1001 sabre
@@ -1635,22 +1762,24 @@ CALL sell(1001, 2385, 1, 50)
 CALL sell(1001, 2385, 1, 50)
 >> say 1001 no
 >> say 1001 5 sabre
-CALL sell(1001, 2385, 1, 50)
+CALL sell(1001, 2385, 5, 250)
 >> say 1001 yes
 >> say 1001 5 sabre
-CALL sell(1001, 2385, 1, 50)
+CALL sell(1001, 2385, 5, 250)
 >> say 1001 no
 >> say 1001 sabre 100
-CALL sell(1001, 2385, 1, 50)
+CALL sell(1001, 2385, 100, 5000)
 >> say 1001 yes
 >> say 1001 sabre 100
-CALL sell(1001, 2385, 1, 50)
+CALL sell(1001, 2385, 100, 5000)
 >> say 1001 no
 >> say 1001 sabre all
-CALL sell(1001, 2385, 1, 50)
+CALL getPlayerItemCount(1001, 2385)
+CALL sell(1001, 2385, 10, 500)
 >> say 1001 yes
 >> say 1001 sabre all
-CALL sell(1001, 2385, 1, 50)
+CALL getPlayerItemCount(1001, 2385)
+CALL sell(1001, 2385, 10, 500)
 >> say 1001 no
 >> think
 >> say 1001 sword
@@ -1660,22 +1789,24 @@ CALL sell(1001, 2376, 1, 50)
 CALL sell(1001, 2376, 1, 50)
 >> say 1001 no
 >> say 1001 5 sword
-CALL sell(1001, 2376, 1, 50)
+CALL sell(1001, 2376, 5, 250)
 >> say 1001 yes
 >> say 1001 5 sword
-CALL sell(1001, 2376, 1, 50)
+CALL sell(1001, 2376, 5, 250)
 >> say 1001 no
 >> say 1001 sword 100
-CALL sell(1001, 2376, 1, 50)
+CALL sell(1001, 2376, 100, 5000)
 >> say 1001 yes
 >> say 1001 sword 100
-CALL sell(1001, 2376, 1, 50)
+CALL sell(1001, 2376, 100, 5000)
 >> say 1001 no
 >> say 1001 sword all
-CALL sell(1001, 2376, 1, 50)
+CALL getPlayerItemCount(1001, 2376)
+CALL sell(1001, 2376, 10, 500)
 >> say 1001 yes
 >> say 1001 sword all
-CALL sell(1001, 2376, 1, 50)
+CALL getPlayerItemCount(1001, 2376)
+CALL sell(1001, 2376, 10, 500)
 >> say 1001 no
 >> think
 >> say 1001 dragon lance
@@ -1685,22 +1816,24 @@ CALL sell(1001, 2414, 1, 10000)
 CALL sell(1001, 2414, 1, 10000)
 >> say 1001 no
 >> say 1001 5 dragon lance
-CALL sell(1001, 2414, 1, 10000)
+CALL sell(1001, 2414, 5, 50000)
 >> say 1001 yes
 >> say 1001 5 dragon lance
-CALL sell(1001, 2414, 1, 10000)
+CALL sell(1001, 2414, 5, 50000)
 >> say 1001 no
 >> say 1001 dragon lance 100
-CALL sell(1001, 2414, 1, 10000)
+CALL sell(1001, 2414, 100, 1000000)
 >> say 1001 yes
 >> say 1001 dragon lance 100
-CALL sell(1001, 2414, 1, 10000)
+CALL sell(1001, 2414, 100, 1000000)
 >> say 1001 no
 >> say 1001 dragon lance all
-CALL sell(1001, 2414, 1, 10000)
+CALL getPlayerItemCount(1001, 2414)
+CALL sell(1001, 2414, 10, 100000)
 >> say 1001 yes
 >> say 1001 dragon lance all
-CALL sell(1001, 2414, 1, 10000)
+CALL getPlayerItemCount(1001, 2414)
+CALL sell(1001, 2414, 10, 100000)
 >> say 1001 no
 >> think
 >> say 1001 fire axe
@@ -1710,22 +1843,24 @@ CALL sell(1001, 2432, 1, 10000)
 CALL sell(1001, 2432, 1, 10000)
 >> say 1001 no
 >> say 1001 5 fire axe
-CALL sell(1001, 2432, 1, 10000)
+CALL sell(1001, 2432, 5, 50000)
 >> say 1001 yes
 >> say 1001 5 fire axe
-CALL sell(1001, 2432, 1, 10000)
+CALL sell(1001, 2432, 5, 50000)
 >> say 1001 no
 >> say 1001 fire axe 100
-CALL sell(1001, 2432, 1, 10000)
+CALL sell(1001, 2432, 100, 1000000)
 >> say 1001 yes
 >> say 1001 fire axe 100
-CALL sell(1001, 2432, 1, 10000)
+CALL sell(1001, 2432, 100, 1000000)
 >> say 1001 no
 >> say 1001 fire axe all
-CALL sell(1001, 2432, 1, 10000)
+CALL getPlayerItemCount(1001, 2432)
+CALL sell(1001, 2432, 10, 100000)
 >> say 1001 yes
 >> say 1001 fire axe all
-CALL sell(1001, 2432, 1, 10000)
+CALL getPlayerItemCount(1001, 2432)
+CALL sell(1001, 2432, 10, 100000)
 >> say 1001 no
 >> think
 >> say 1001 knight axe
@@ -1735,22 +1870,24 @@ CALL sell(1001, 2430, 1, 2000)
 CALL sell(1001, 2430, 1, 2000)
 >> say 1001 no
 >> say 1001 5 knight axe
-CALL sell(1001, 2430, 1, 2000)
+CALL sell(1001, 2430, 5, 10000)
 >> say 1001 yes
 >> say 1001 5 knight axe
-CALL sell(1001, 2430, 1, 2000)
+CALL sell(1001, 2430, 5, 10000)
 >> say 1001 no
 >> say 1001 knight axe 100
-CALL sell(1001, 2430, 1, 2000)
+CALL sell(1001, 2430, 100, 200000)
 >> say 1001 yes
 >> say 1001 knight axe 100
-CALL sell(1001, 2430, 1, 2000)
+CALL sell(1001, 2430, 100, 200000)
 >> say 1001 no
 >> say 1001 knight axe all
-CALL sell(1001, 2430, 1, 2000)
+CALL getPlayerItemCount(1001, 2430)
+CALL sell(1001, 2430, 10, 20000)
 >> say 1001 yes
 >> say 1001 knight axe all
-CALL sell(1001, 2430, 1, 2000)
+CALL getPlayerItemCount(1001, 2430)
+CALL sell(1001, 2430, 10, 20000)
 >> say 1001 no
 >> think
 >> say 1001 double axe
@@ -1760,22 +1897,24 @@ CALL sell(1001, 2387, 1, 300)
 CALL sell(1001, 2387, 1, 300)
 >> say 1001 no
 >> say 1001 5 double axe
-CALL sell(1001, 2387, 1, 300)
+CALL sell(1001, 2387, 5, 1500)
 >> say 1001 yes
 >> say 1001 5 double axe
-CALL sell(1001, 2387, 1, 300)
+CALL sell(1001, 2387, 5, 1500)
 >> say 1001 no
 >> say 1001 double axe 100
-CALL sell(1001, 2387, 1, 300)
+CALL sell(1001, 2387, 100, 30000)
 >> say 1001 yes
 >> say 1001 double axe 100
-CALL sell(1001, 2387, 1, 300)
+CALL sell(1001, 2387, 100, 30000)
 >> say 1001 no
 >> say 1001 double axe all
-CALL sell(1001, 2387, 1, 300)
+CALL getPlayerItemCount(1001, 2387)
+CALL sell(1001, 2387, 10, 3000)
 >> say 1001 yes
 >> say 1001 double axe all
-CALL sell(1001, 2387, 1, 300)
+CALL getPlayerItemCount(1001, 2387)
+CALL sell(1001, 2387, 10, 3000)
 >> say 1001 no
 >> think
 >> say 1001 halberd
@@ -1785,22 +1924,24 @@ CALL sell(1001, 2381, 1, 400)
 CALL sell(1001, 2381, 1, 400)
 >> say 1001 no
 >> say 1001 5 halberd
-CALL sell(1001, 2381, 1, 400)
+CALL sell(1001, 2381, 5, 2000)
 >> say 1001 yes
 >> say 1001 5 halberd
-CALL sell(1001, 2381, 1, 400)
+CALL sell(1001, 2381, 5, 2000)
 >> say 1001 no
 >> say 1001 halberd 100
-CALL sell(1001, 2381, 1, 400)
+CALL sell(1001, 2381, 100, 40000)
 >> say 1001 yes
 >> say 1001 halberd 100
-CALL sell(1001, 2381, 1, 400)
+CALL sell(1001, 2381, 100, 40000)
 >> say 1001 no
 >> say 1001 halberd all
-CALL sell(1001, 2381, 1, 400)
+CALL getPlayerItemCount(1001, 2381)
+CALL sell(1001, 2381, 10, 4000)
 >> say 1001 yes
 >> say 1001 halberd all
-CALL sell(1001, 2381, 1, 400)
+CALL getPlayerItemCount(1001, 2381)
+CALL sell(1001, 2381, 10, 4000)
 >> say 1001 no
 >> think
 >> say 1001 battle axe
@@ -1810,22 +1951,24 @@ CALL sell(1001, 2378, 1, 200)
 CALL sell(1001, 2378, 1, 200)
 >> say 1001 no
 >> say 1001 5 battle axe
-CALL sell(1001, 2378, 1, 200)
+CALL sell(1001, 2378, 5, 1000)
 >> say 1001 yes
 >> say 1001 5 battle axe
-CALL sell(1001, 2378, 1, 200)
+CALL sell(1001, 2378, 5, 1000)
 >> say 1001 no
 >> say 1001 battle axe 100
-CALL sell(1001, 2378, 1, 200)
+CALL sell(1001, 2378, 100, 20000)
 >> say 1001 yes
 >> say 1001 battle axe 100
-CALL sell(1001, 2378, 1, 200)
+CALL sell(1001, 2378, 100, 20000)
 >> say 1001 no
 >> say 1001 battle axe all
-CALL sell(1001, 2378, 1, 200)
+CALL getPlayerItemCount(1001, 2378)
+CALL sell(1001, 2378, 10, 2000)
 >> say 1001 yes
 >> say 1001 battle axe all
-CALL sell(1001, 2378, 1, 200)
+CALL getPlayerItemCount(1001, 2378)
+CALL sell(1001, 2378, 10, 2000)
 >> say 1001 no
 >> think
 >> say 1001 hatchet
@@ -1835,22 +1978,24 @@ CALL sell(1001, 2388, 1, 10)
 CALL sell(1001, 2388, 1, 10)
 >> say 1001 no
 >> say 1001 5 hatchet
-CALL sell(1001, 2388, 1, 10)
+CALL sell(1001, 2388, 5, 50)
 >> say 1001 yes
 >> say 1001 5 hatchet
-CALL sell(1001, 2388, 1, 10)
+CALL sell(1001, 2388, 5, 50)
 >> say 1001 no
 >> say 1001 hatchet 100
-CALL sell(1001, 2388, 1, 10)
+CALL sell(1001, 2388, 100, 1000)
 >> say 1001 yes
 >> say 1001 hatchet 100
-CALL sell(1001, 2388, 1, 10)
+CALL sell(1001, 2388, 100, 1000)
 >> say 1001 no
 >> say 1001 hatchet all
-CALL sell(1001, 2388, 1, 10)
+CALL getPlayerItemCount(1001, 2388)
+CALL sell(1001, 2388, 10, 100)
 >> say 1001 yes
 >> say 1001 hatchet all
-CALL sell(1001, 2388, 1, 10)
+CALL getPlayerItemCount(1001, 2388)
+CALL sell(1001, 2388, 10, 100)
 >> say 1001 no
 >> think
 >> say 1001 war hammer
@@ -1860,22 +2005,24 @@ CALL sell(1001, 2391, 1, 2500)
 CALL sell(1001, 2391, 1, 2500)
 >> say 1001 no
 >> say 1001 5 war hammer
-CALL sell(1001, 2391, 1, 2500)
+CALL sell(1001, 2391, 5, 12500)
 >> say 1001 yes
 >> say 1001 5 war hammer
-CALL sell(1001, 2391, 1, 2500)
+CALL sell(1001, 2391, 5, 12500)
 >> say 1001 no
 >> say 1001 war hammer 100
-CALL sell(1001, 2391, 1, 2500)
+CALL sell(1001, 2391, 100, 250000)
 >> say 1001 yes
 >> say 1001 war hammer 100
-CALL sell(1001, 2391, 1, 2500)
+CALL sell(1001, 2391, 100, 250000)
 >> say 1001 no
 >> say 1001 war hammer all
-CALL sell(1001, 2391, 1, 2500)
+CALL getPlayerItemCount(1001, 2391)
+CALL sell(1001, 2391, 10, 25000)
 >> say 1001 yes
 >> say 1001 war hammer all
-CALL sell(1001, 2391, 1, 2500)
+CALL getPlayerItemCount(1001, 2391)
+CALL sell(1001, 2391, 10, 25000)
 >> say 1001 no
 >> think
 >> say 1001 skull staff
@@ -1885,22 +2032,24 @@ CALL sell(1001, 2436, 1, 6000)
 CALL sell(1001, 2436, 1, 6000)
 >> say 1001 no
 >> say 1001 5 skull staff
-CALL sell(1001, 2436, 1, 6000)
+CALL sell(1001, 2436, 5, 30000)
 >> say 1001 yes
 >> say 1001 5 skull staff
-CALL sell(1001, 2436, 1, 6000)
+CALL sell(1001, 2436, 5, 30000)
 >> say 1001 no
 >> say 1001 skull staff 100
-CALL sell(1001, 2436, 1, 6000)
+CALL sell(1001, 2436, 100, 600000)
 >> say 1001 yes
 >> say 1001 skull staff 100
-CALL sell(1001, 2436, 1, 6000)
+CALL sell(1001, 2436, 100, 600000)
 >> say 1001 no
 >> say 1001 skull staff all
-CALL sell(1001, 2436, 1, 6000)
+CALL getPlayerItemCount(1001, 2436)
+CALL sell(1001, 2436, 10, 60000)
 >> say 1001 yes
 >> say 1001 skull staff all
-CALL sell(1001, 2436, 1, 6000)
+CALL getPlayerItemCount(1001, 2436)
+CALL sell(1001, 2436, 10, 60000)
 >> say 1001 no
 >> think
 >> say 1001 dragon hammer
@@ -1910,22 +2059,24 @@ CALL sell(1001, 2434, 1, 3000)
 CALL sell(1001, 2434, 1, 3000)
 >> say 1001 no
 >> say 1001 5 dragon hammer
-CALL sell(1001, 2434, 1, 3000)
+CALL sell(1001, 2434, 5, 15000)
 >> say 1001 yes
 >> say 1001 5 dragon hammer
-CALL sell(1001, 2434, 1, 3000)
+CALL sell(1001, 2434, 5, 15000)
 >> say 1001 no
 >> say 1001 dragon hammer 100
-CALL sell(1001, 2434, 1, 3000)
+CALL sell(1001, 2434, 100, 300000)
 >> say 1001 yes
 >> say 1001 dragon hammer 100
-CALL sell(1001, 2434, 1, 3000)
+CALL sell(1001, 2434, 100, 300000)
 >> say 1001 no
 >> say 1001 dragon hammer all
-CALL sell(1001, 2434, 1, 3000)
+CALL getPlayerItemCount(1001, 2434)
+CALL sell(1001, 2434, 10, 30000)
 >> say 1001 yes
 >> say 1001 dragon hammer all
-CALL sell(1001, 2434, 1, 3000)
+CALL getPlayerItemCount(1001, 2434)
+CALL sell(1001, 2434, 10, 30000)
 >> say 1001 no
 >> think
 >> say 1001 clerical mace
@@ -1935,22 +2086,24 @@ CALL sell(1001, 2423, 1, 300)
 CALL sell(1001, 2423, 1, 300)
 >> say 1001 no
 >> say 1001 5 clerical mace
-CALL sell(1001, 2423, 1, 300)
+CALL sell(1001, 2423, 5, 1500)
 >> say 1001 yes
 >> say 1001 5 clerical mace
-CALL sell(1001, 2423, 1, 300)
+CALL sell(1001, 2423, 5, 1500)
 >> say 1001 no
 >> say 1001 clerical mace 100
-CALL sell(1001, 2423, 1, 300)
+CALL sell(1001, 2423, 100, 30000)
 >> say 1001 yes
 >> say 1001 clerical mace 100
-CALL sell(1001, 2423, 1, 300)
+CALL sell(1001, 2423, 100, 30000)
 >> say 1001 no
 >> say 1001 clerical mace all
-CALL sell(1001, 2423, 1, 300)
+CALL getPlayerItemCount(1001, 2423)
+CALL sell(1001, 2423, 10, 3000)
 >> say 1001 yes
 >> say 1001 clerical mace all
-CALL sell(1001, 2423, 1, 300)
+CALL getPlayerItemCount(1001, 2423)
+CALL sell(1001, 2423, 10, 3000)
 >> say 1001 no
 >> think
 >> say 1001 battle hammer
@@ -1960,22 +2113,24 @@ CALL sell(1001, 2417, 1, 100)
 CALL sell(1001, 2417, 1, 100)
 >> say 1001 no
 >> say 1001 5 battle hammer
-CALL sell(1001, 2417, 1, 100)
+CALL sell(1001, 2417, 5, 500)
 >> say 1001 yes
 >> say 1001 5 battle hammer
-CALL sell(1001, 2417, 1, 100)
+CALL sell(1001, 2417, 5, 500)
 >> say 1001 no
 >> say 1001 battle hammer 100
-CALL sell(1001, 2417, 1, 100)
+CALL sell(1001, 2417, 100, 10000)
 >> say 1001 yes
 >> say 1001 battle hammer 100
-CALL sell(1001, 2417, 1, 100)
+CALL sell(1001, 2417, 100, 10000)
 >> say 1001 no
 >> say 1001 battle hammer all
-CALL sell(1001, 2417, 1, 100)
+CALL getPlayerItemCount(1001, 2417)
+CALL sell(1001, 2417, 10, 1000)
 >> say 1001 yes
 >> say 1001 battle hammer all
-CALL sell(1001, 2417, 1, 100)
+CALL getPlayerItemCount(1001, 2417)
+CALL sell(1001, 2417, 10, 1000)
 >> say 1001 no
 >> think
 >> say 1001 mace
@@ -1985,22 +2140,24 @@ CALL sell(1001, 2398, 1, 10)
 CALL sell(1001, 2398, 1, 10)
 >> say 1001 no
 >> say 1001 5 mace
-CALL sell(1001, 2398, 1, 10)
+CALL sell(1001, 2398, 5, 50)
 >> say 1001 yes
 >> say 1001 5 mace
-CALL sell(1001, 2398, 1, 10)
+CALL sell(1001, 2398, 5, 50)
 >> say 1001 no
 >> say 1001 mace 100
-CALL sell(1001, 2398, 1, 10)
+CALL sell(1001, 2398, 100, 1000)
 >> say 1001 yes
 >> say 1001 mace 100
-CALL sell(1001, 2398, 1, 10)
+CALL sell(1001, 2398, 100, 1000)
 >> say 1001 no
 >> say 1001 mace all
-CALL sell(1001, 2398, 1, 10)
+CALL getPlayerItemCount(1001, 2398)
+CALL sell(1001, 2398, 10, 100)
 >> say 1001 yes
 >> say 1001 mace all
-CALL sell(1001, 2398, 1, 10)
+CALL getPlayerItemCount(1001, 2398)
+CALL sell(1001, 2398, 10, 100)
 >> say 1001 no
 >> think
 >> say 1001 platinum amulet
@@ -2010,22 +2167,24 @@ CALL sell(1001, 2171, 1, 2500)
 CALL sell(1001, 2171, 1, 2500)
 >> say 1001 no
 >> say 1001 5 platinum amulet
-CALL sell(1001, 2171, 1, 2500)
+CALL sell(1001, 2171, 5, 12500)
 >> say 1001 yes
 >> say 1001 5 platinum amulet
-CALL sell(1001, 2171, 1, 2500)
+CALL sell(1001, 2171, 5, 12500)
 >> say 1001 no
 >> say 1001 platinum amulet 100
-CALL sell(1001, 2171, 1, 2500)
+CALL sell(1001, 2171, 100, 250000)
 >> say 1001 yes
 >> say 1001 platinum amulet 100
-CALL sell(1001, 2171, 1, 2500)
+CALL sell(1001, 2171, 100, 250000)
 >> say 1001 no
 >> say 1001 platinum amulet all
-CALL sell(1001, 2171, 1, 2500)
+CALL getPlayerItemCount(1001, 2171)
+CALL sell(1001, 2171, 10, 25000)
 >> say 1001 yes
 >> say 1001 platinum amulet all
-CALL sell(1001, 2171, 1, 2500)
+CALL getPlayerItemCount(1001, 2171)
+CALL sell(1001, 2171, 10, 25000)
 >> say 1001 no
 >> think
 >> say 1001 scarf
@@ -2035,22 +2194,24 @@ CALL sell(1001, 2661, 1, 600)
 CALL sell(1001, 2661, 1, 600)
 >> say 1001 no
 >> say 1001 5 scarf
-CALL sell(1001, 2661, 1, 600)
+CALL sell(1001, 2661, 5, 3000)
 >> say 1001 yes
 >> say 1001 5 scarf
-CALL sell(1001, 2661, 1, 600)
+CALL sell(1001, 2661, 5, 3000)
 >> say 1001 no
 >> say 1001 scarf 100
-CALL sell(1001, 2661, 1, 600)
+CALL sell(1001, 2661, 100, 60000)
 >> say 1001 yes
 >> say 1001 scarf 100
-CALL sell(1001, 2661, 1, 600)
+CALL sell(1001, 2661, 100, 60000)
 >> say 1001 no
 >> say 1001 scarf all
-CALL sell(1001, 2661, 1, 600)
+CALL getPlayerItemCount(1001, 2661)
+CALL sell(1001, 2661, 10, 6000)
 >> say 1001 yes
 >> say 1001 scarf all
-CALL sell(1001, 2661, 1, 600)
+CALL getPlayerItemCount(1001, 2661)
+CALL sell(1001, 2661, 10, 6000)
 >> say 1001 no
 >> think
 >> say 1001 helmets
@@ -2276,23 +2437,6 @@ SAY I buy platinum amulets (2.5k) and scarfs (600gp).
 >> say 1001 yes
 >> say 1001 amulets all
 SAY I buy platinum amulets (2.5k) and scarfs (600gp).
->> say 1001 no
->> think
->> say 1001 focused
->> say 1001 yes
->> say 1001 focused
->> say 1001 no
->> say 1001 5 focused
->> say 1001 yes
->> say 1001 5 focused
->> say 1001 no
->> say 1001 focused 100
->> say 1001 yes
->> say 1001 focused 100
->> say 1001 no
->> say 1001 focused all
->> say 1001 yes
->> say 1001 focused all
 >> say 1001 no
 >> think
 >> say 1001 bye
@@ -2465,6 +2609,9 @@ CALL sell(1002, 2383, 1, 1200)
 >> say 1002 two handed sword
 CALL sell(1002, 2377, 1, 600)
 >> say 1002 yes
+>> say 1002 two-handed sword
+CALL sell(1002, 2377, 1, 600)
+>> say 1002 yes
 >> say 1002 broad sword
 CALL sell(1002, 2413, 1, 500)
 >> say 1002 yes
@@ -2498,10 +2645,30 @@ CALL sell(1002, 2378, 1, 200)
 >> say 1002 hatchet
 CALL sell(1002, 2388, 1, 10)
 >> say 1002 yes
->> say 1002 war hammer
-CALL sell(1002, 2391, 1, 2500)
->> say 1002 yes
 >> say 1002 chau
 CALL cancelPendingTrade(1002)
 SAY Bye, Player1002! Come back anytime.
 >> think 3
+>> say 1001 hi
+SAY Hi Player1001! I buy weapons and armor. Say a item name to sell, or "helmets", "armors", "shields" and so on for prices.
+>> say 1001 swords
+SAY I buy giant (17k), bright (7k), fire (4k), ice rapiers (5k), serpent (2k), spike (1.2k) and two handed swords (600gp), also broad swords (500gp), short swords (60gp), sabres (50gp) and swords (50gp).
+>> say 1001 sell 3 swords
+CALL sell(1001, 2376, 3, 150)
+>> say 1001 no
+>> say 1001 sell all maces
+CALL getPlayerItemCount(1001, 2398)
+CALL sell(1001, 2398, 10, 100)
+>> say 1001 no
+>> say 1001 sell magic sword
+>> say 1001 two-handed sword
+CALL sell(1001, 2377, 1, 600)
+>> say 1001 no
+>> say 1001 steel boots
+CALL sell(1001, 2645, 1, 30000)
+>> say 1001 no
+>> say 1001 boots
+SAY I buy steel boots (30k) and boots of haste (30k).
+>> say 1001 bye
+CALL cancelPendingTrade(1001)
+SAY Bye, Player1001! Come back anytime.

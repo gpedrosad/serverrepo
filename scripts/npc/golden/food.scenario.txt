@@ -481,23 +481,6 @@ say 1001 yes
 say 1001 egg all
 say 1001 no
 think
-say 1001 focused
-say 1001 yes
-say 1001 focused
-say 1001 no
-say 1001 5 focused
-say 1001 yes
-say 1001 5 focused
-say 1001 no
-say 1001 focused 100
-say 1001 yes
-say 1001 focused 100
-say 1001 no
-say 1001 focused all
-say 1001 yes
-say 1001 focused all
-say 1001 no
-think
 say 1001 bye
 say 1001 hi
 advance 40
@@ -530,7 +513,12 @@ say 1002 apple
 say 1002 yes
 say 1002 egg
 say 1002 yes
-say 1002 focused
-say 1002 yes
 say 1002 chau
 think 3
+# Lector: plurales
+say 1001 hi
+say 1001 5 hams
+say 1001 no
+say 1001 3 apples
+say 1001 no
+say 1001 bye
