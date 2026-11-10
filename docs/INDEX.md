@@ -50,6 +50,7 @@ Todo lo relacionado con estabilidad del OT server, cuelgues, sockets, crashes.
 | [`systems/SOCKET_DEBUG_LOGGING.md`](systems/SOCKET_DEBUG_LOGGING.md) | Si hay kicks masivos, desconexiones o problemas de socket. |
 | [`systems/OT_HANG_ROOT_CAUSE_SEND_BLOCKING.md`](systems/OT_HANG_ROOT_CAUSE_SEND_BLOCKING.md) | Análisis técnico de la causa raíz del cuelgue por send blocking. |
 | [`systems/LIMPIEZA_CODIGO_NOV2026.md`](systems/LIMPIEZA_CODIGO_NOV2026.md) | Limpieza del C++ (opciones de compilación, Windows, código comentado), binarios fuera de git, caché de la web, `-O2` pendiente. Reglas para no volver a ensuciarlo y cómo comprobar sin compilar. |
+| [`systems/LOGIN_EVENTS.md`](systems/LOGIN_EVENTS.md) | Registro de logins y cuentas nuevas: embudo, retención, fallos por motivo, fuerza bruta. |
 
 ---
 
@@ -161,6 +162,7 @@ Catálogo de **migración/portabilidad** (16 fichas congeladas). No es el invent
 | El OT crashea y no sé por qué | [`systems/CRASH_DIAGNOSTICS.md`](systems/CRASH_DIAGNOSTICS.md) |
 | Kicks masivos o desconexiones | [`systems/SOCKET_DEBUG_LOGGING.md`](systems/SOCKET_DEBUG_LOGGING.md) |
 | Quiero entender la causa raíz de cuelgues | [`systems/OT_HANG_ROOT_CAUSE_SEND_BLOCKING.md`](systems/OT_HANG_ROOT_CAUSE_SEND_BLOCKING.md) |
+| Cuántos jugadores nuevos entran, vuelven o fallan al loguear | [`systems/LOGIN_EVENTS.md`](systems/LOGIN_EVENTS.md) |
 | Un item no entra o se ve mal | [`items-and-map/IMPORTAR_ITEM_DESDE_IMAGEN.md`](items-and-map/IMPORTAR_ITEM_DESDE_IMAGEN.md) |
 | Necesito mapear items por código | [`items-and-map/MAPEAR_CON_CODIGO.md`](items-and-map/MAPEAR_CON_CODIGO.md) |
 | Generar una isla coherente (bandas agua/pasto) | [`items-and-map/ISLAND_BANDS.md`](items-and-map/ISLAND_BANDS.md) |

@@ -91,6 +91,7 @@ Monsters g_monsters;
 #include "crashhandler.h"
 #include "networkmessage.h"
 #include "socket_debug.h"
+#include "loginlog.h"
 
 enum passwordType_t{
 	PASSWORD_TYPE_PLAIN,
@@ -195,7 +196,8 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 	SOCKET s = *sockptr;
 	delete sockptr;
 
-	socketDebugLog("accept " + socketDescribeState(s) + " peer=" + socketPeerIp(s));
+	const std::string peerIp = socketPeerIp(s);
+	socketDebugLog("accept " + socketDescribeState(s) + " peer=" + peerIp);
 
 	setSocketHandshakeRecvTimeout(s);
 
@@ -227,6 +229,7 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 			if(isclientBanished(s)) {
 				msg.AddByte(0x0A);
 				msg.AddString("Your IP is banished!");
+				loginLog("charlist_fail", accnumber, "", peerIp, "ip_banished");
 			}
 			else {
 
@@ -253,11 +256,14 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 					}
 
 					msg.AddU16(account.premDays);
+					loginLog("charlist_ok", accnumber, "", peerIp, "", (long)account.charList.size());
 				}
 				else
 				{
 					msg.AddByte(0x0A);
 					msg.AddString("Please enter a valid account number and password.");
+					loginLog("charlist_fail", accnumber, "", peerIp,
+						account.accnumber == accnumber ? "wrong_password" : "no_account");
 				}
 			}
 
@@ -278,17 +284,20 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 				msg.AddByte(0x14);
 				msg.AddString("Only clients with protocol 7.6 allowed!");
 				msg.WriteToSocket(s);
+				loginLog("game_fail", accnumber, name, peerIp, "bad_version", (long)version);
 			}
 			else if(isclientBanished(s)){
 				msg.Reset();
 				msg.AddByte(0x14);
 				msg.AddString("Your IP is banished!");
 				msg.WriteToSocket(s);
+				loginLog("game_fail", accnumber, name, peerIp, "ip_banished");
 			}
 			else{
 				OTSYS_SLEEP(1000);
 				std::string acc_pass;
-				if(IOAccount::instance()->getPassword(accnumber, name, acc_pass) && passwordTest(password,acc_pass))
+				const bool accountHasChar = IOAccount::instance()->getPassword(accnumber, name, acc_pass);
+				if(accountHasChar && passwordTest(password,acc_pass))
 				{
 					bool isLocked = true;
 					OTSYS_THREAD_LOCK(g_game.gameLock, "ConnectionHandler()")
@@ -304,6 +313,7 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 							setSocketGameRecvBlocking(s);
 							player->client->s = s;
 							socketDebugLog("reattach player=" + name + " " + socketDescribeState(s));
+							loginLog("game_reattach", accnumber, name, peerIp);
 							player->client->sendThingAppear(player);
 							player->lastip = player->getIP();
 							s = 0;
@@ -314,6 +324,7 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 						else if(player->client && player->client->s != 0 && player->isRemoved == false &&
 							!allowClones && replaceConnectedCharacter){
 							std::cout << "Replacing active session for player: " << name << std::endl;
+							loginLog("game_replace", accnumber, name, peerIp);
 							player->client->logout();
 							player->client->disconnectConnection();
 							playerexist = (g_game.getPlayerByName(name) != NULL);
@@ -341,6 +352,7 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 							msg.AddByte(0x14);
 							msg.AddString("You are already logged in.");
 							msg.WriteToSocket(s);
+							loginLog("game_fail", accnumber, name, peerIp, "already_logged_in");
 						}
 						else if (player->banned)
 						{
@@ -348,15 +360,18 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 							msg.AddByte(0x14);
 							msg.AddString("Your character has been banished!");
 							msg.WriteToSocket(s);
+							loginLog("game_fail", accnumber, name, peerIp, "char_banished");
 						}
 						else if(g_game.getGameState() == GAME_STATE_SHUTDOWN){
 							//nothing to do
+							loginLog("game_fail", accnumber, name, peerIp, "shutdown");
 						}
 						else if(g_game.getGameState() == GAME_STATE_CLOSED && player->access < ACCESS_ENTER){
 							msg.Reset();
 							msg.AddByte(0x14);
 							msg.AddString("Server temporarly closed.");
 							msg.WriteToSocket(s);
+							loginLog("game_fail", accnumber, name, peerIp, "server_closed");
 						}
 						else if (!protocol->ConnectPlayer(&placeInQueue)) {
 							Status* stat = Status::instance();
@@ -370,6 +385,10 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 							msg.AddString(MakeRejectMessage(placeInQueue));
 							msg.AddByte(30);
 							msg.WriteToSocket(s);
+							if(placeInQueue < 0)
+								loginLog("game_fail", accnumber, name, peerIp, "wrong_temple");
+							else
+								loginLog("game_fail", accnumber, name, peerIp, "queue", (long)placeInQueue);
 						}
 						else{
 							Status* stat = Status::instance();
@@ -380,13 +399,17 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 							setSocketGameRecvBlocking(s);
 							socketDebugLog("game login ok player=" + name + " entering ReceiveLoop " + socketDescribeState(s));
 							s = 0;            // protocol/player will close socket
+							const time_t sessionStart = std::time(NULL);
 
 							OTSYS_THREAD_UNLOCK(g_game.gameLock, "ConnectionHandler()")
 							isLocked = false;
+							// Despues de soltar gameLock: escribir en disco no debe frenar el juego.
+							loginLog("game_login", accnumber, name, peerIp);
 
 							protocol->ReceiveLoop();
 							stat->removePlayer();
 							g_game.writeOnlineList();
+							loginLog("game_logout", accnumber, name, peerIp, "", (long)(std::time(NULL) - sessionStart));
 						}
 
 						if(player){
@@ -403,6 +426,8 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 					msg.AddByte(0x14);
 					msg.AddString("Please enter a valid account number and password.");
 					msg.WriteToSocket(s);
+					loginLog("game_fail", accnumber, name, peerIp,
+						accountHasChar ? "wrong_password" : "no_account_or_char");
 				}
 			}
 		}
