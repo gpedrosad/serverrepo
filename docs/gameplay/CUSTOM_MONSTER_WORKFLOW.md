@@ -250,9 +250,10 @@ Se verificó leyendo los archivos resultantes con un parser independiente:
 ### 6.4 Adaptarlo a otro monstruo
 
 **Script genérico:** `scripts/client-rme/add_recolor_look.py --preset NOMBRE [DIR_THINGS] [--preview x.png]`.
-Cada criatura nueva es un preset (base, looktype destino y función de paleta). Presets: `black-dragon` (230)
-y `frost-dragon` (231, ver [`FROST_DRAGON.md`](FROST_DRAGON.md)). Sin `DIR_THINGS` solo genera la vista previa.
-Usados hasta ahora: **230 Black Dragon, 231 Frost Dragon**.
+Cada criatura nueva es un preset (base, looktype destino y función de paleta). Presets: `black-dragon` (230),
+`frost-dragon` (231, ver [`FROST_DRAGON.md`](FROST_DRAGON.md)) e `ice-monk` (232, desde el Monk 57, ver
+[`ICE_MONK.md`](ICE_MONK.md)). Sin `DIR_THINGS` solo genera la vista previa.
+Usados hasta ahora: **230 Black Dragon, 231 Frost Dragon, 232 Ice Monk**.
 
 Para un preset nuevo, lo que cambia es:
 

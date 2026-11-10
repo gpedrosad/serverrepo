@@ -69,6 +69,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/CUSTOM_MONSTER_WORKFLOW.md`](gameplay/CUSTOM_MONSTER_WORKFLOW.md) | Monstruo custom paso a paso: diseño, hechizos propios, sprite nuevo (looktype), arte web con nano banana, pruebas y deploy. Caso Black Dragon. |
 | [`gameplay/BLACK_DRAGON.md`](gameplay/BLACK_DRAGON.md) | Black Dragon: stats, aliento oscuro y sprite propio (looktype 230, requiere actualizar el cliente). |
 | [`gameplay/FROST_DRAGON.md`](gameplay/FROST_DRAGON.md) | Frost Dragon: dragón de hielo sin fuego (aliento helado, bola de nieve, ventisca), look 231 recoloreado del Dragon. |
+| [`gameplay/ICE_MONK.md`](gameplay/ICE_MONK.md) | Ice Monk: monje-mago de hielo a distancia, look 232 (Monk recoloreado), hechizos y sprite. |
 | [`gameplay/CLIENT_EFFECTS.md`](gameplay/CLIENT_EFFECTS.md) | Efectos y proyectiles nuevos del cliente por recoloreo (pack "ice": `NM_ME_ICE_*`, `NM_ANI_FROSTBALL`), límites y cómo agregar packs. |
 | [`gameplay/BOAT_TRAVEL.md`](gameplay/BOAT_TRAVEL.md) | Viajes de Nimral/Fargum: destinos (incl. Gauntlet), Hell Quest, confirmación y reglas de temple. |
 | [`gameplay/MOST_WANTED_SYSTEM.md`](gameplay/MOST_WANTED_SYSTEM.md) | Sistema de bounty / most wanted entre jugadores. |
