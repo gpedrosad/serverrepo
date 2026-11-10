@@ -49,6 +49,7 @@ Todo lo relacionado con estabilidad del OT server, cuelgues, sockets, crashes.
 | [`systems/CRASH_DIAGNOSTICS.md`](systems/CRASH_DIAGNOSTICS.md) | Si el OT crashea: cómo recolectar diagnóstico y encontrar la causa. |
 | [`systems/SOCKET_DEBUG_LOGGING.md`](systems/SOCKET_DEBUG_LOGGING.md) | Si hay kicks masivos, desconexiones o problemas de socket. |
 | [`systems/OT_HANG_ROOT_CAUSE_SEND_BLOCKING.md`](systems/OT_HANG_ROOT_CAUSE_SEND_BLOCKING.md) | Análisis técnico de la causa raíz del cuelgue por send blocking. |
+| [`systems/LIMPIEZA_CODIGO_NOV2026.md`](systems/LIMPIEZA_CODIGO_NOV2026.md) | Limpieza del C++ (opciones de compilación, Windows, código comentado), binarios fuera de git, caché de la web, `-O2` pendiente. Reglas para no volver a ensuciarlo y cómo comprobar sin compilar. |
 
 ---
 

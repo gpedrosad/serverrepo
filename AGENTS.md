@@ -52,6 +52,7 @@ Si alguno de estos archivos no existe, **avisar** al usuario antes de seguir.
 10. Si algo no se entiende del flujo o del incidente, **preguntar antes de actuar**.
 11. **NUNCA** deployar un `test.otbm` nuevo sin probar depots in-game (locker temple → debe mostrar items del jugador, no contenedor vacío). Ver `docs/gameplay/DEPOTS.md`.
 12. Si un jugador reporta “depot vacío”, **no tocar** `players/*.xml` de entrada: los items suelen estar en `<depot depotid="1">`; el bug es mapa/C++, no pérdida de data.
+13. **NUNCA** agregar `#ifdef` para activar funciones, código de Windows ni código comentado: se borraron en nov 2026 (`docs/systems/LIMPIEZA_CODIGO_NOV2026.md`). Limpiezas mecánicas del C++ → comprobar con `scripts/code/check-cpp-equivalence.py`.
 
 ---
 

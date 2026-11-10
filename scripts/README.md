@@ -16,6 +16,8 @@ Python en subcarpetas debe resolver el repo con `lib.project_root.project_root()
 | [`client-rme/`](client-rme/) | RME, clientes locales, Zagan test assets, patcher |
 | [`web/`](web/) | Web local, analytics, premium funnel |
 | [`lib/`](lib/) | Helpers compartidos (`project_root.py`) |
+| [`code/`](code/) | Limpieza del C++ y comprobación sin compilar (`check-cpp-equivalence.py`, `strip-dead-comments.py`) |
+| [`npc/`](npc/) | Banco de pruebas de NPCs |
 
 ## Comandos más usados (rutas históricas = OK)
 
@@ -94,3 +96,13 @@ Desactivados temporalmente — ver `AGENTS.md` §2.7.
 | Script | Qué hace |
 |--------|----------|
 | `npc/run_npc_tests.py` | Prueba todos los NPCs contra transcripciones grabadas (LuaJIT + `npc/harness.lua`), sin levantar el servidor. Ver `docs/gameplay/NPC_SYSTEM.md` |
+
+## Código C++ (limpieza sin compilar)
+
+| Script | Qué hace |
+|--------|----------|
+| `code/check-cpp-equivalence.py <ref>` | Comprueba que el C++ actual da el mismo código que `<ref>` (resuelve los `#if` con `--flags code/linux-build-flags.h` y compara sin comentarios). `--comments` compara solo sin comentarios |
+| `code/strip-dead-comments.py` | Borra comentarios que son código desactivado (`--dry` para contar) |
+| `code/linux-build-flags.h` | Configuración del build de Linux para `unifdef -f` |
+
+Ver `docs/systems/LIMPIEZA_CODIGO_NOV2026.md`.
