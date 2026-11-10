@@ -49,6 +49,13 @@ NM_ME_SOUND_PURPLE = 22
 NM_ME_SOUND_BLUE = 23
 NM_ME_SOUND_WHITE = 24
 
+-- Efectos nuevos del cliente Retro76 (scripts/client-rme/add_recolor_effects.py, pack "ice").
+-- Requieren el Tibia.dat/.spr actualizado; un cliente viejo no los muestra. Ver docs/gameplay/CLIENT_EFFECTS.md
+NM_ME_ICE_AREA = 25
+NM_ME_ICE_HIT = 26
+NM_ME_ICE_EXPLOSION = 27
+NM_ME_ICE_SHATTER = 28
+
 NM_ANI_BOLT = 1
 NM_ANI_ARROW = 2
 NM_ANI_FIRE = 3
@@ -62,6 +69,8 @@ NM_ANI_SUDDENDEATH = 10
 NM_ANI_LARGEROCK = 11
 NM_ANI_SNOWBALL = 12
 NM_ANI_POWERBOLT = 13
+NM_ANI_FROSTBALL = 15 -- nuevo (pack "ice")
+NM_ANI_ENCHANTED_SPEAR = 16 -- nuevo (proyectil de la enchanted spear)
 
 -- only for internal use, dont send to client
 NM_ANI_NONE = 0

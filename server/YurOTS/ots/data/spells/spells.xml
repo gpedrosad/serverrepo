@@ -45,6 +45,9 @@
 <spell name="demon_largefireball" words="demon_largefireball" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="dragon_firewave" words="dragon_firewave" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="dragonlord_firewave" words="dragonlord_firewave" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="blackdragon_darkwave" words="blackdragon_darkwave" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="frostdragon_icewave" words="frostdragon_icewave" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="frostdragon_blizzard" words="frostdragon_blizzard" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="djinn_exori" words="djinn_exori" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="d exevo gran vis lux" words="d exevo gran vis lux" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="w exevo gran vis lux" words="w exevo gran vis lux" maglv="4000" mana="800" enabled="1"></spell>
@@ -106,6 +109,7 @@
 <rune name="priestess_manadrain" id="5031" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 <rune name="old widow pox" id="5032" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 <rune name="orcb_pot_throw" id="5033" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="frostdragon_iceball" id="5034" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 
 <!--// Make arrow and bolt \\-->
 <spell name="Conjure Arrow"	words="exevo con"		maglv="2"	mana="40"	enabled="1"><vocation id="3" /></spell>

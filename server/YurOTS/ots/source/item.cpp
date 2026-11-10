@@ -527,6 +527,9 @@ amu_t Item::getAmuType() const{
 }
 
 subfight_t Item::getSubfightType() const {
+	// Proyectil propio (no esta en el enum del OTB): el OTB guarda el de la spear.
+	if(id == ITEM_ENCHANTED_SPEAR)
+		return DIST_ENCHANTED_SPEAR;
 	return items[id].shootType;
 }
 
@@ -918,6 +921,9 @@ std::string Item::getDescription(bool fullDescription) const
 	}
 	else if(id == ITEM_SPEAR && fullDescription) {
 		s << std::endl << "A throwable spear (" << SPEAR_HIT_CHANCE << "% hit chance).";
+	}
+	else if(id == ITEM_ENCHANTED_SPEAR && fullDescription) {
+		s << std::endl << "A throwable enchanted spear (" << ENCHANTED_SPEAR_HIT_CHANCE << "% hit chance). It is never used up.";
 	}
 #endif //YUR_BOH
 

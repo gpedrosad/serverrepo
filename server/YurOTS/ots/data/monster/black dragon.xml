@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!-- Black Dragon: dragón oscuro, un escalón sobre Dragon Lord. Aliento que drena vida en vez de fuego.
+     Look 230: sprite propio (recoloreado del Dragon 34), ver docs/gameplay/BLACK_DRAGON.md. -->
+<monster name="Black Dragon" level="60" maglevel="70" experience="2900" pushable="0" armor="34" defense="36" canpushitems="1" staticattack="50" changetarget="200" speed="210">
+	<health now="2600" max="2600"/>
+	<look type="230" head="0" body="0" legs="0" feet="0" corpse="3104"/>
+	<combat targetdistance="1" runonhealth="260"/>
+
+<attacks>
+	<attack type="instant" name="blackdragon_darkwave" exhaustion="500" cycleticks="6000" probability="80"/>
+	<attack type="instant" name="necro_lifedrain" exhaustion="500" cycleticks="5000" probability="60"/>
+	<attack type="rune" name="dragonlord_firebomb" exhaustion="500" cycleticks="8000" probability="25"/>
+	<attack type="instant" name="exura" exhaustion="500" cycleticks="6000" probability="60"/>
+	<attack type="melee" mindamage="80" maxdamage="240" probability="100"/>
+</attacks>
+
+<defenses>
+	<defense immunity="fire"/>
+	<defense immunity="invisible"/>
+	<defense immunity="poison"/>
+	<defense immunity="drunk"/>
+</defenses>
+
+<voices>
+	<voice sentence="DARKNESS FALLS!"/>
+	<voice sentence="YOUR LIFE IS MINE!"/>
+	<voice sentence="GRRRRRAAAAH!"/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
+	<item id="2148" countmax="80" chance1="60000" chancemax="0"/>
+	<item id="2152" countmax="6" chance1="10000" chancemax="0"/>
+	<item id="2672" countmax="2" chance1="20000" chancemax="0"/>
+	<item id="2146" countmax="3" chance1="6000" chancemax="0"/>
+	<item id="2033" chance="2200"/>
+	<item id="2413" chance="5000"/>
+	<item id="2498" chance="1100"/>
+	<item id="2492" chance="650"/>
+	<item id="2414" chance="1200"/>
+	<item id="2796" countmax="1" chance1="6666" chancemax="0"/>
+
+	<item id="1987" chance="50000">
+	<inside>
+	<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
+	<item id="2149" countmax="3" chance1="1200" chancemax="0"/>
+	<item id="2392" chance="1600"/>
+	<item id="2528" chance="2600"/>
+	</inside>
+	</item>
+</loot>
+</monster>

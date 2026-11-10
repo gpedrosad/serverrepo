@@ -66,6 +66,8 @@ enum MagicEffectClasses {
 #define NM_ANI_SPEAR             0
 #define NM_ANI_POWERBOLT         13
 #define NM_ANI_FLYPOISONFIELD    14
+// Proyectiles agregados al cliente (scripts/client-rme): 15 = bola de hielo (pack ice)
+#define NM_ANI_ENCHANTED_SPEAR   16
 
 enum SpeakClasses {
 	SPEAK_SAY	  		= 0x01, 
@@ -177,7 +179,8 @@ enum subfight_t {
 	DIST_SNOWBALL = NM_ANI_SNOWBALL,
 	DIST_POWERBOLT = NM_ANI_POWERBOLT,
 	DIST_SPEAR = NM_ANI_SPEAR,
-	DIST_POISONFIELD = NM_ANI_FLYPOISONFIELD
+	DIST_POISONFIELD = NM_ANI_FLYPOISONFIELD,
+	DIST_ENCHANTED_SPEAR = NM_ANI_ENCHANTED_SPEAR
 };
 
 enum magicfield_t {
@@ -249,6 +252,7 @@ enum item_t {
 	ITEM_FROSTWARDEN_CHILLBLADE = 20138,
 	ITEM_BONEPRIEST_REAVER = 20154,
 	ITEM_PRIVATE_TRAINER_DUMMY = 20155,
+	ITEM_ENCHANTED_SPEAR = 20156,
 	ITEM_SPLASH			= 2019,
 	ITEM_POOL			= 2025,
 	ITEM_BOW			= 2456,
@@ -352,6 +356,7 @@ enum bloodsplash_t //for splashes (count)
 #define NIGHTGLASS_FIRST_HIT_FASTER_PERCENT 6   /* solo el primer golpe al apuntar */
 #define SPEAR_HIT_CHANCE 70           /* thrown spear (era 50 genérico) */
 #define CRYSTAL_ARROW_HIT_CHANCE 85   /* crystal arrow: menos miss que spear */
+#define ENCHANTED_SPEAR_HIT_CHANCE 80 /* enchanted spear: spear mejorada (ataque 36 en el OTB) */
 #define ITEM_SMALL_DIAMOND  2145
 #define ITEM_SMALL_SAPPHIRE 2146
 #define ITEM_SMALL_RUBY     2147

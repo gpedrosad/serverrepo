@@ -5,6 +5,8 @@ aparezca en Remere's Map Editor (RME).
 
 Caso real tomado como ejemplo: `Fury` (`2026-07-06`).
 
+> Guía detallada (hechizos propios, sprite nuevo en el cliente, arte para la web), con el Black Dragon como caso: [`CUSTOM_MONSTER_WORKFLOW.md`](CUSTOM_MONSTER_WORKFLOW.md).
+
 ---
 
 ## Resumen corto
