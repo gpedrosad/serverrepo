@@ -34,7 +34,7 @@ ZONES = [
     {"name": "Ciudad (Retro76)", "z": 7, "box": [120, 18, 200, 80]},
     {"name": "Plaza de portales del templo", "z": 7, "box": [155, 43, 169, 52]},
     {"name": "Sala de entrenamiento", "z": 7, "box": [133, 4, 160, 18]},
-    {"name": "Paso del Norte: campo y portal", "z": 7, "box": [178, 2, 190, 22]},
+    {"name": "Paso del Norte: campo norte y portal", "z": 7, "box": [116, 0, 213, 22]},
 ]
 
 

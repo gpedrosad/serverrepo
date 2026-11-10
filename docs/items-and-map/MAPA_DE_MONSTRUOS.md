@@ -41,4 +41,26 @@ Si `SALIDA` es el sitio local de Retro76 (con `site.css` y `menu.js`), la págin
 | Vida, experiencia, look | `server/YurOTS/ots/data/monster/monsters.xml` y cada XML |
 | Zonas | `server/YurOTS/ots/data/world/generated-*.json` |
 
-Volver a correrlo después de cambiar el mapa o los spawns.
+## Actualización automática (sitio local de docs)
+
+En la Mac mini, el sitio local de docs vive en `~/apps/retro76-docs` y se sirve en
+`http://127.0.0.1:8765`. El mapa de monstruos y el mapa por pisos (`mapa.html`, generado por
+`scripts/map/build-floor-map.py`) se mantienen solos al día con `main`:
+
+| LaunchAgent | Qué hace |
+|-------------|----------|
+| `com.gonzalo.retro76-docs` | Sirve el sitio (`python3 -m http.server 8765 --bind 127.0.0.1`), siempre arriba. |
+| `com.gonzalo.retro76-docs-maps` | Cada 10 minutos (y al iniciar sesión) corre `scripts/docs-site/refresh-maps.sh`. |
+
+`refresh-maps.sh` trae `origin/main` a un worktree propio (`~/proyectos/serverrepo-docs-map`, en
+detached HEAD, separado del checkout principal). Si cambió algo de lo que dibujan los mapas (mapa,
+spawns, NPC, monstruos, cliente de RME o los scripts de `scripts/map`), regenera los dos mapas
+(~2 min). Si no cambió nada, termina sin hacer nada. Registro en `~/apps/retro76-docs/.maps.log`.
+
+```bash
+scripts/docs-site/refresh-maps.sh                       # a mano (solo si cambió algo)
+FORCE=1 scripts/docs-site/refresh-maps.sh               # regenerar igual
+launchctl kickstart gui/$(id -u)/com.gonzalo.retro76-docs-maps   # que lo corra el agente ya
+```
+
+Para otro mapa o una rama, correr los scripts a mano a otra carpeta: el sitio muestra siempre `main`.
