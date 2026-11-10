@@ -58,6 +58,7 @@ spawns, NPC, monstruos, cliente de RME o los scripts de `scripts/map`), regenera
 (~2 min). Si no cambió nada, termina sin hacer nada. Registro en `~/apps/retro76-docs/.maps.log`.
 
 ```bash
+scripts/docs-site/install-agents.sh                     # instala los dos agentes (--remove los quita)
 scripts/docs-site/refresh-maps.sh                       # a mano (solo si cambió algo)
 FORCE=1 scripts/docs-site/refresh-maps.sh               # regenerar igual
 launchctl kickstart gui/$(id -u)/com.gonzalo.retro76-docs-maps   # que lo corra el agente ya
