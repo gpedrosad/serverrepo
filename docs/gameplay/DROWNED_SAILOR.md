@@ -86,6 +86,8 @@ El look 233 es nuevo: un cliente viejo vería el monstruo invisible. Mismo orden
 
 Hoy no está en ningún spawn. El C++ no cambió: no hace falta compilar.
 
+Lo llama también el [Tide Priest](TIDE_PRIEST.md) (hasta 2 a la vez).
+
 ## Archivos
 
 | Pieza | Archivo |

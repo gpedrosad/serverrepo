@@ -71,6 +71,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/FROST_DRAGON.md`](gameplay/FROST_DRAGON.md) | Frost Dragon: dragón de hielo sin fuego (aliento helado, bola de nieve, ventisca), look 231 recoloreado del Dragon. |
 | [`gameplay/ICE_MONK.md`](gameplay/ICE_MONK.md) | Ice Monk: monje-mago de hielo a distancia, look 232 (Monk recoloreado), hechizos y sprite. |
 | [`gameplay/DROWNED_SAILOR.md`](gameplay/DROWNED_SAILOR.md) | Drowned Sailor: marinero ahogado del naufragio, look 233 (Crypt Shambler recoloreado), algas que inmovilizan 1 s. |
+| [`gameplay/TIDE_PRIEST.md`](gameplay/TIDE_PRIEST.md) | Tide Priest: sacerdote de la marea del naufragio, look 234 (Necromancer recoloreado con fuego de San Telmo), saca maná y llama Drowned Sailors. |
 | [`gameplay/CLIENT_EFFECTS.md`](gameplay/CLIENT_EFFECTS.md) | Efectos y proyectiles nuevos del cliente por recoloreo (pack "ice": `NM_ME_ICE_*`, `NM_ANI_FROSTBALL`), límites y cómo agregar packs. |
 | [`gameplay/BOAT_TRAVEL.md`](gameplay/BOAT_TRAVEL.md) | Viajes de Nimral/Fargum: destinos (incl. Gauntlet), Hell Quest, confirmación y reglas de temple. |
 | [`gameplay/MOST_WANTED_SYSTEM.md`](gameplay/MOST_WANTED_SYSTEM.md) | Sistema de bounty / most wanted entre jugadores. |

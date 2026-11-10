@@ -44,6 +44,7 @@
 <monster name="Furious Crypt Shambler" file="furious crypt shambler.xml" />
 <monster name="Enraged Crypt Shambler" file="enraged crypt shambler.xml" />
 <monster name="Drowned Sailor" file="drowned sailor.xml" />
+<monster name="Tide Priest" file="tide priest.xml" />
 <monster name="Cyclops" file="cyclops.xml" />
 <monster name="Angry Cyclops" file="angry cyclops.xml" />
 <monster name="Furious Cyclops" file="furious cyclops.xml" />

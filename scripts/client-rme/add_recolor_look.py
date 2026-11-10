@@ -14,6 +14,9 @@ Presets:
   drowned-sailor Crypt Shambler (100) -> 233, marinero ahogado: piel hinchada gris verdosa,
                  pantalón azul marino, camiseta rayada, pañuelo rojo desteñido, algas que
                  cuelgan, percebes y gotas de agua que cambian en cada cuadro
+  tide-priest    Necromancer (9) -> 234, sacerdote de la marea: túnica verde mar con ribete de
+                 bronce, cara en sombra con ojos celestes y, en vez de la calavera, una bola de
+                 fuego de San Telmo que late, con lengua de fuego, resplandor y chispas
 
 Uso:
   python3 scripts/client-rme/add_recolor_look.py --preset frost-dragon DIR_THINGS [--preview x.png]
@@ -28,6 +31,7 @@ from __future__ import annotations
 
 import argparse
 import colorsys
+import math
 import shutil
 import struct
 import sys
@@ -275,6 +279,96 @@ def drowned_sailor_details(original, recolored):
     return out
 
 
+TIDE_ROBE = [(0, (2, 10, 14)), (0.3, (8, 40, 46)), (0.6, (20, 84, 86)), (0.85, (52, 136, 124)), (1, (120, 196, 172))]
+TIDE_SKIN = [(0, (16, 30, 40)), (0.6, (70, 104, 116)), (1, (132, 168, 170))]
+TIDE_GOLD = [(0, (58, 38, 10)), (0.45, (150, 108, 34)), (0.8, (226, 186, 84)), (1, (255, 240, 170))]
+ELMO_FIRE = [(0, (250, 255, 255)), (0.45, (150, 244, 255)), (0.8, (44, 168, 236)), (1, (20, 92, 190))]
+ELMO_SPARK = [(200, 250, 255, 255), (96, 204, 248, 255)]
+
+
+def _necro_part(pixel):
+    """Partes del Necromancer (9): túnica (casi negra), cara (piel) o claro (calavera, manos, botas, ribete)."""
+    r, g, b, a = pixel
+    if a == 0:
+        return None
+    h, s, v = colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
+    if 0.03 < h < 0.13 and s > 0.3 and v > 0.35:
+        return "skin"
+    return "light" if v >= 0.3 and h < 0.5 else "robe"            # el brillo violeta de la capucha es túnica
+
+
+def recolor_tide_priest(pixel):
+    """Necromancer -> Tide Priest: túnica negra -> verde mar profundo, piel -> pálida de ahogado,
+    manos, botas y ribete grises -> bronce dorado."""
+    part = _necro_part(pixel)
+    if part is None:
+        return pixel
+    _h, _s, v = colorsys.rgb_to_hsv(*(c / 255 for c in pixel[:3]))
+    if part == "skin":
+        return gradient(TIDE_SKIN, (v - 0.35) / 0.65) + (255,)
+    if part == "light":
+        return gradient(TIDE_GOLD, (v - 0.3) / 0.6) + (255,)
+    return gradient(TIDE_ROBE, (v / 0.3) ** 0.8) + (255,)
+
+
+def tide_priest_details(original, recolored):
+    """Rasgos del Tide Priest sobre cada cuadro 32x32 (criatura 1x1).
+
+    - Fuego de San Telmo: la calavera que lleva el Necromancer (el grupo claro más grande del
+      cuadro) pasa a ser una bola de fuego celeste, con el centro blanco, que late con la animación.
+    - Resplandor: la túnica cerca de la bola se aclara hacia el celeste.
+    - Lengua de fuego: 2 o 3 píxeles sobre la bola, que se inclinan distinto en cada cuadro.
+    - Chispas: tres chispas giran alrededor de la bola y cambian de lugar en cada cuadro.
+    - Ojos: la cara lleva ojos celestes que brillan, dos de frente y uno mirando al este. De
+      espaldas y mirando al oeste no se ve la cara."""
+    w = 32
+    out = []
+    for index, (orig, new) in enumerate(zip(original, recolored)):
+        anim, direction = index // 4, index % 4
+        new = list(new)
+        parts = [_necro_part(p) for p in orig]
+        light = [(i % w, i // w) for i, part in enumerate(parts) if part == "light"]
+        groups = _clusters(light)
+        if groups:
+            skull = max(groups, key=len)
+            cx = sum(x for x, _y in skull) / len(skull)
+            cy = sum(y for _x, y in skull) / len(skull)
+            radius = (2.6, 3.1, 2.8)[anim]
+            for y in range(w):
+                for x in range(w):
+                    d = ((x - cx) ** 2 + (y - cy) ** 2) ** 0.5
+                    i = y * w + x
+                    if d <= radius:
+                        new[i] = gradient(ELMO_FIRE, (d / radius) ** 1.3) + (255,)
+                    elif d <= radius + 3 and parts[i] is not None:             # resplandor sobre el cuerpo
+                        k = (1 - (d - radius) / 3) * 0.55
+                        new[i] = tuple(int(c + (g - c) * k) for c, g in zip(new[i][:3], (60, 190, 240))) + (255,)
+            tip = round(cx + (0, 1, -1)[anim]), round(cy - radius)              # lengua de fuego que se mueve
+            length = (2, 3, 2)[anim]
+            for k in range(length):
+                x, y = tip[0] + (k * (1, -1, 1)[anim]) // 2, tip[1] - 1 - k
+                if 0 <= x < w and 0 <= y < w:
+                    new[y * w + x] = (44, 168, 236, 255) if k == length - 1 else (150, 244, 255, 255)
+            for n in range(3):                                                   # chispas
+                angle = 2.1 * n + 0.9 * anim + direction
+                r = radius + 2.2 + (n + anim) % 2
+                x, y = round(cx + math.cos(angle) * r), round(cy + math.sin(angle) * r)
+                if 0 <= x < w and 0 <= y < w:
+                    new[y * w + x] = ELMO_SPARK[(n + anim) % 2]
+        face = [(i % w, i // w) for i, part in enumerate(parts) if part == "skin"]
+        faces = [c for c in _clusters(face) if len(c) >= 6]
+        if faces and direction in (1, 2):
+            f = max(faces, key=len)
+            ys = sorted({y for _x, y in f})
+            row = ys[len(ys) // 3]                                               # un tercio desde arriba
+            xs = sorted(x for x, y in f if y == row)
+            eyes = [xs[0] + 1, xs[-1] - 1] if direction == 2 and len(xs) >= 5 else [xs[-1] if direction == 1 else xs[0]]
+            for x in eyes:
+                new[row * w + x] = (170, 250, 255, 255)
+        out.append(new)
+    return out
+
+
 CARD4 = ((1, 0), (-1, 0), (0, 1), (0, -1))
 
 
@@ -284,6 +378,8 @@ PRESETS = {
     "ice-monk": dict(source=57, target=232, recolor=recolor_ice_monk, name="Ice Monk", frames_post=ice_monk_eyes),
     "drowned-sailor": dict(source=100, target=233, recolor=recolor_drowned, name="Drowned Sailor",
                            frames_post=drowned_sailor_details),
+    "tide-priest": dict(source=9, target=234, recolor=recolor_tide_priest, name="Tide Priest",
+                        frames_post=tide_priest_details),
 }
 
 

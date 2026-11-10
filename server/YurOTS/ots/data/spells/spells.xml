@@ -113,6 +113,8 @@
 <rune name="icemonk_iceshard" id="5035" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 <rune name="icemonk_frostburst" id="5036" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 <rune name="drowned_seaweed" id="5037" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="tidepriest_elmofire" id="5038" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="tidepriest_manatide" id="5039" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 
 <!--// Make arrow and bolt \\-->
 <spell name="Conjure Arrow"	words="exevo con"		maglv="2"	mana="40"	enabled="1"><vocation id="3" /></spell>

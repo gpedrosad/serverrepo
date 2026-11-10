@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!-- Tide Priest (Sacerdote de la Marea): el capellán del naufragio, el que levantó a la tripulación ahogada.
+     Sprite propio (look 234, Necromancer recoloreado: túnica verde mar con ribete de bronce, ojos celestes y,
+     en vez de la calavera, una bola de fuego de San Telmo). Rasgo propio: pelea de lejos, te vacía el maná y
+     levanta hasta 2 Drowned Sailors.
+     Ver docs/gameplay/TIDE_PRIEST.md. -->
+<monster name="Tide Priest" level="40" maglevel="35" experience="620" pushable="0" armor="22" defense="24" canpushitems="1" staticattack="50" changetarget="200" speed="200">
+	<health now="720" max="720"/>
+	<look type="234" head="0" body="0" legs="0" feet="0" corpse="3128"/>
+	<combat targetdistance="4" runonhealth="0"/>
+
+<attacks>
+	<attack type="melee" mindamage="0" maxdamage="40"/>
+	<attack type="rune" name="tidepriest_elmofire" exhaustion="500" cycleticks="2000" probability="70"/>
+	<attack type="rune" name="tidepriest_manatide" exhaustion="500" cycleticks="5000" probability="40"/>
+	<attack type="instant" name="exura" exhaustion="500" cycleticks="5000" probability="40"/>
+</attacks>
+
+<!-- Rasgo propio: levanta a la tripulación. Hasta 2 Drowned Sailors, que te dejan quieto mientras él ataca de lejos. -->
+<summons maxSummons="2">
+	<summon name="Drowned Sailor" chance="1200"/>
+</summons>
+
+<defenses>
+	<defense immunity="energy"/>
+	<defense immunity="poison"/>
+	<defense immunity="invisible"/>
+</defenses>
+
+<voices>
+	<voice sentence="The tide always returns."/>
+	<voice sentence="Rise, crew! Rise!"/>
+	<voice sentence="Saint Elmo lights your grave."/>
+	<voice sentence="The deep is calling you."/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="60" chance1="100000" chancemax="0"/>
+	<item id="2146" countmax="2" chance1="8000" chancemax="0"/>
+	<item id="2260" chance="8000"/>
+	<item id="1987" chance="100000">
+	<inside>
+		<item id="2143" chance="5000"/>
+		<item id="2144" chance="2000"/>
+		<item id="2167" chance="1500"/>
+		<item id="2189" chance="400"/>
+	</inside>
+	</item>
+</loot>
+</monster>
