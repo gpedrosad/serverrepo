@@ -6,6 +6,8 @@ Relacionado:
 
 - [docs/RME_SETUP.md](RME_SETUP.md) — abrir RME y assets 7.6
 - [docs/items-and-map/MAPEAR_CON_CODIGO.md](items-and-map/MAPEAR_CON_CODIGO.md) — generar terreno (islas) con `generate-island.py`
+- [docs/items-and-map/MAPEAR_PASO_DEL_NORTE.md](items-and-map/MAPEAR_PASO_DEL_NORTE.md): puerta norte y región nueva (bosque, tundra, cuevas del dragón) con `generate-north-pass.py`
+- [docs/items-and-map/MAPA_DE_MONSTRUOS.md](items-and-map/MAPA_DE_MONSTRUOS.md): mapa interactivo de spawns y NPC (`build-monster-map.py`)
 - [docs/items-and-map/MAPEAR_LABERINTO.md](items-and-map/MAPEAR_LABERINTO.md) — laberinto 2 sqm (camino 406, fondo 100, teleport templo) con `generate-maze.py`
 - [docs/items-and-map/MAPEAR_HUNT_MAZE.md](items-and-map/MAPEAR_HUNT_MAZE.md) — hunt maze **aparte** de Alice; portal `158,47,7` con `generate-hunt-maze.py`
 - [docs/gameplay/WAVE_ARENA.md](gameplay/WAVE_ARENA.md) — Wave Arena oleadas; portal `166,47,7`

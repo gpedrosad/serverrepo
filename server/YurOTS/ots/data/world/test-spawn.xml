@@ -4530,4 +4530,348 @@
 		<monster name="Cyclops" x="0" y="0" z="7" spawntime="90" />
 	</spawn>
 	<!-- END NATURAL_ISLAND_SURFACE -->
+	<!-- BEGIN NORTH_PASS_SPAWNS (scripts/map/generate-north-pass.py) -->
+	<spawn centerx="379" centery="406" centerz="7" radius="3">
+		<monster name="Wolf" x="2" y="-2" z="7" spawntime="120" />
+		<monster name="Wolf" x="1" y="-2" z="7" spawntime="120" />
+		<monster name="Wolf" x="-1" y="-2" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="405" centery="426" centerz="7" radius="3">
+		<monster name="Wolf" x="-2" y="1" z="7" spawntime="120" />
+		<monster name="Wolf" x="-2" y="2" z="7" spawntime="120" />
+		<monster name="Wolf" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="398" centery="400" centerz="7" radius="3">
+		<monster name="Wolf" x="0" y="0" z="7" spawntime="120" />
+		<monster name="Wolf" x="-2" y="-1" z="7" spawntime="120" />
+		<monster name="Wolf" x="2" y="2" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="417" centery="412" centerz="7" radius="3">
+		<monster name="Wolf" x="1" y="2" z="7" spawntime="120" />
+		<monster name="Wolf" x="0" y="0" z="7" spawntime="120" />
+		<monster name="Wolf" x="-1" y="2" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="444" centery="358" centerz="7" radius="3">
+		<monster name="Wolf" x="-1" y="2" z="7" spawntime="120" />
+		<monster name="Wolf" x="1" y="2" z="7" spawntime="120" />
+		<monster name="Wolf" x="0" y="-1" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="400" centery="349" centerz="7" radius="3">
+		<monster name="Wolf" x="-1" y="0" z="7" spawntime="120" />
+		<monster name="Wolf" x="1" y="2" z="7" spawntime="120" />
+		<monster name="Wolf" x="-2" y="2" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="431" centery="378" centerz="7" radius="3">
+		<monster name="Wolf" x="2" y="0" z="7" spawntime="120" />
+		<monster name="Wolf" x="2" y="-2" z="7" spawntime="120" />
+		<monster name="Wolf" x="-2" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="399" centery="366" centerz="7" radius="3">
+		<monster name="Bear" x="-2" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="411" centery="365" centerz="7" radius="3">
+		<monster name="Bear" x="-2" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="383" centery="346" centerz="7" radius="3">
+		<monster name="Bear" x="1" y="-2" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="408" centery="414" centerz="7" radius="3">
+		<monster name="Bear" x="0" y="-1" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="454" centery="355" centerz="7" radius="3">
+		<monster name="Bear" x="2" y="-1" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="440" centery="372" centerz="7" radius="3">
+		<monster name="War Wolf" x="1" y="-1" z="7" spawntime="180" />
+		<monster name="War Wolf" x="0" y="-2" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="436" centery="364" centerz="7" radius="3">
+		<monster name="War Wolf" x="1" y="1" z="7" spawntime="180" />
+		<monster name="War Wolf" x="0" y="0" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="441" centery="352" centerz="7" radius="3">
+		<monster name="War Wolf" x="0" y="-1" z="7" spawntime="180" />
+		<monster name="War Wolf" x="0" y="2" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="431" centery="357" centerz="7" radius="3">
+		<monster name="War Wolf" x="-1" y="-2" z="7" spawntime="180" />
+		<monster name="War Wolf" x="1" y="0" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="447" centery="391" centerz="7" radius="3">
+		<monster name="Deer" x="2" y="0" z="7" spawntime="120" />
+		<monster name="Deer" x="2" y="-2" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="452" centery="370" centerz="7" radius="3">
+		<monster name="Deer" x="-1" y="-1" z="7" spawntime="120" />
+		<monster name="Deer" x="-2" y="2" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="382" centery="426" centerz="7" radius="3">
+		<monster name="Deer" x="2" y="1" z="7" spawntime="120" />
+		<monster name="Deer" x="0" y="1" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="383" centery="381" centerz="7" radius="3">
+		<monster name="Deer" x="2" y="1" z="7" spawntime="120" />
+		<monster name="Deer" x="0" y="-1" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="408" centery="354" centerz="7" radius="3">
+		<monster name="Rabbit" x="1" y="-1" z="7" spawntime="120" />
+		<monster name="Rabbit" x="-1" y="1" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="404" centery="435" centerz="7" radius="3">
+		<monster name="Rabbit" x="-1" y="0" z="7" spawntime="120" />
+		<monster name="Rabbit" x="2" y="-2" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="434" centery="400" centerz="7" radius="3">
+		<monster name="Rabbit" x="1" y="-1" z="7" spawntime="120" />
+		<monster name="Rabbit" x="-1" y="-1" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="397" centery="437" centerz="7" radius="3">
+		<monster name="Rabbit" x="0" y="2" z="7" spawntime="120" />
+		<monster name="Rabbit" x="-1" y="2" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="380" centery="315" centerz="7" radius="3">
+		<monster name="Winter Wolf" x="2" y="-1" z="7" spawntime="120" />
+		<monster name="Winter Wolf" x="-1" y="-2" z="7" spawntime="120" />
+		<monster name="Winter Wolf" x="-2" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="408" centery="276" centerz="7" radius="3">
+		<monster name="Winter Wolf" x="-2" y="-1" z="7" spawntime="120" />
+		<monster name="Winter Wolf" x="0" y="0" z="7" spawntime="120" />
+		<monster name="Winter Wolf" x="-1" y="-2" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="384" centery="282" centerz="7" radius="3">
+		<monster name="Winter Wolf" x="2" y="2" z="7" spawntime="120" />
+		<monster name="Winter Wolf" x="-2" y="1" z="7" spawntime="120" />
+		<monster name="Winter Wolf" x="1" y="1" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="444" centery="334" centerz="7" radius="3">
+		<monster name="Winter Wolf" x="-1" y="0" z="7" spawntime="120" />
+		<monster name="Winter Wolf" x="-1" y="-2" z="7" spawntime="120" />
+		<monster name="Winter Wolf" x="1" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="453" centery="335" centerz="7" radius="3">
+		<monster name="Winter Wolf" x="1" y="0" z="7" spawntime="120" />
+		<monster name="Winter Wolf" x="1" y="-1" z="7" spawntime="120" />
+		<monster name="Winter Wolf" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="405" centery="327" centerz="7" radius="3">
+		<monster name="Winter Wolf" x="2" y="-2" z="7" spawntime="120" />
+		<monster name="Winter Wolf" x="2" y="1" z="7" spawntime="120" />
+		<monster name="Winter Wolf" x="0" y="2" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="452" centery="315" centerz="7" radius="3">
+		<monster name="Winter Wolf" x="-2" y="2" z="7" spawntime="120" />
+		<monster name="Winter Wolf" x="-1" y="2" z="7" spawntime="120" />
+		<monster name="Winter Wolf" x="2" y="-2" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="440" centery="329" centerz="7" radius="3">
+		<monster name="Polar Bear" x="1" y="-1" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="418" centery="333" centerz="7" radius="3">
+		<monster name="Polar Bear" x="1" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="425" centery="315" centerz="7" radius="3">
+		<monster name="Polar Bear" x="0" y="1" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="434" centery="343" centerz="7" radius="3">
+		<monster name="Polar Bear" x="2" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="400" centery="316" centerz="7" radius="3">
+		<monster name="Polar Bear" x="-1" y="-1" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="427" centery="298" centerz="7" radius="3">
+		<monster name="Frost Troll" x="1" y="-2" z="7" spawntime="150" />
+		<monster name="Frost Troll" x="0" y="0" z="7" spawntime="150" />
+		<monster name="Frost Troll" x="-1" y="2" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="399" centery="341" centerz="7" radius="3">
+		<monster name="Frost Troll" x="2" y="-2" z="7" spawntime="150" />
+		<monster name="Frost Troll" x="1" y="-1" z="7" spawntime="150" />
+		<monster name="Frost Troll" x="1" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="395" centery="278" centerz="7" radius="3">
+		<monster name="Frost Troll" x="-2" y="-1" z="7" spawntime="150" />
+		<monster name="Frost Troll" x="1" y="-2" z="7" spawntime="150" />
+		<monster name="Frost Troll" x="0" y="1" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="451" centery="286" centerz="7" radius="3">
+		<monster name="Frost Troll" x="2" y="2" z="7" spawntime="150" />
+		<monster name="Frost Troll" x="2" y="1" z="7" spawntime="150" />
+		<monster name="Frost Troll" x="1" y="1" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="422" centery="327" centerz="7" radius="3">
+		<monster name="Frost Troll" x="-2" y="-2" z="7" spawntime="150" />
+		<monster name="Frost Troll" x="-1" y="-1" z="7" spawntime="150" />
+		<monster name="Frost Troll" x="0" y="1" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="385" centery="303" centerz="7" radius="3">
+		<monster name="Frost Troll" x="2" y="2" z="7" spawntime="150" />
+		<monster name="Frost Troll" x="-2" y="-1" z="7" spawntime="150" />
+		<monster name="Frost Troll" x="0" y="1" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="443" centery="298" centerz="7" radius="3">
+		<monster name="Yeti" x="-1" y="0" z="7" spawntime="1800" />
+	</spawn>
+	<spawn centerx="395" centery="264" centerz="7" radius="3">
+		<monster name="Winter Wolf" x="-1" y="2" z="7" spawntime="150" />
+		<monster name="Winter Wolf" x="0" y="-2" z="7" spawntime="150" />
+		<monster name="Winter Wolf" x="-2" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="442" centery="259" centerz="7" radius="3">
+		<monster name="Winter Wolf" x="-1" y="-2" z="7" spawntime="150" />
+		<monster name="Winter Wolf" x="-1" y="2" z="7" spawntime="150" />
+		<monster name="Winter Wolf" x="-1" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="454" centery="308" centerz="8" radius="3">
+		<monster name="Dragon" x="0" y="-2" z="8" spawntime="150" />
+		<monster name="Dragon" x="-1" y="1" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="448" centery="298" centerz="8" radius="3">
+		<monster name="Dragon" x="1" y="-2" z="8" spawntime="150" />
+		<monster name="Dragon" x="2" y="2" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="419" centery="284" centerz="8" radius="3">
+		<monster name="Dragon" x="1" y="-1" z="8" spawntime="150" />
+		<monster name="Dragon" x="2" y="-2" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="440" centery="268" centerz="8" radius="3">
+		<monster name="Dragon" x="-1" y="1" z="8" spawntime="150" />
+		<monster name="Dragon" x="2" y="-2" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="450" centery="335" centerz="8" radius="3">
+		<monster name="Dragon" x="-1" y="1" z="8" spawntime="150" />
+		<monster name="Dragon" x="0" y="2" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="425" centery="289" centerz="8" radius="3">
+		<monster name="Dragon" x="1" y="2" z="8" spawntime="150" />
+		<monster name="Dragon" x="0" y="-2" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="404" centery="328" centerz="8" radius="3">
+		<monster name="Dragon" x="0" y="0" z="8" spawntime="150" />
+		<monster name="Dragon" x="-2" y="1" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="389" centery="279" centerz="8" radius="3">
+		<monster name="Dragon" x="-1" y="-1" z="8" spawntime="150" />
+		<monster name="Dragon" x="-1" y="1" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="403" centery="313" centerz="8" radius="3">
+		<monster name="Dragon" x="1" y="1" z="8" spawntime="150" />
+		<monster name="Dragon" x="2" y="0" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="416" centery="347" centerz="8" radius="3">
+		<monster name="Dragon" x="1" y="-1" z="8" spawntime="150" />
+		<monster name="Dragon" x="-1" y="2" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="410" centery="330" centerz="8" radius="3">
+		<monster name="Dragon" x="1" y="0" z="8" spawntime="150" />
+		<monster name="Dragon" x="0" y="0" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="387" centery="313" centerz="8" radius="3">
+		<monster name="Dragon" x="1" y="0" z="8" spawntime="150" />
+		<monster name="Dragon" x="1" y="-2" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="456" centery="283" centerz="8" radius="3">
+		<monster name="Dragon" x="0" y="-2" z="8" spawntime="150" />
+		<monster name="Dragon" x="2" y="2" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="419" centery="326" centerz="8" radius="3">
+		<monster name="Dragon" x="-2" y="-1" z="8" spawntime="150" />
+		<monster name="Dragon" x="0" y="2" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="425" centery="306" centerz="8" radius="3">
+		<monster name="Dragon" x="-2" y="-2" z="8" spawntime="150" />
+		<monster name="Dragon" x="-1" y="0" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="423" centery="297" centerz="8" radius="3">
+		<monster name="Dragon" x="1" y="0" z="8" spawntime="150" />
+		<monster name="Dragon" x="-2" y="-1" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="390" centery="326" centerz="8" radius="3">
+		<monster name="Dragon" x="-2" y="-1" z="8" spawntime="150" />
+		<monster name="Dragon" x="0" y="0" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="430" centery="266" centerz="8" radius="3">
+		<monster name="Dragon" x="-1" y="-1" z="8" spawntime="150" />
+		<monster name="Dragon" x="0" y="0" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="390" centery="339" centerz="8" radius="3">
+		<monster name="Dragon" x="0" y="0" z="8" spawntime="150" />
+		<monster name="Dragon" x="1" y="1" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="428" centery="259" centerz="8" radius="3">
+		<monster name="Dragon" x="2" y="2" z="8" spawntime="150" />
+		<monster name="Dragon" x="-1" y="1" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="426" centery="339" centerz="8" radius="3">
+		<monster name="Dragon" x="2" y="1" z="8" spawntime="150" />
+		<monster name="Dragon" x="0" y="-1" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="450" centery="286" centerz="8" radius="3">
+		<monster name="Dragon" x="2" y="1" z="8" spawntime="150" />
+		<monster name="Dragon" x="-1" y="1" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="436" centery="359" centerz="8" radius="3">
+		<monster name="Dragon Lord" x="-2" y="-2" z="8" spawntime="200" />
+	</spawn>
+	<spawn centerx="430" centery="344" centerz="8" radius="3">
+		<monster name="Dragon Lord" x="0" y="-1" z="8" spawntime="200" />
+	</spawn>
+	<spawn centerx="396" centery="332" centerz="8" radius="3">
+		<monster name="Dragon Lord" x="1" y="-1" z="8" spawntime="200" />
+	</spawn>
+	<spawn centerx="383" centery="336" centerz="8" radius="3">
+		<monster name="Dragon Lord" x="1" y="-1" z="8" spawntime="200" />
+	</spawn>
+	<spawn centerx="383" centery="325" centerz="8" radius="3">
+		<monster name="Dragon Lord" x="-2" y="1" z="8" spawntime="200" />
+	</spawn>
+	<spawn centerx="456" centery="369" centerz="8" radius="3">
+		<monster name="Dragon Lord" x="-1" y="2" z="8" spawntime="200" />
+	</spawn>
+	<spawn centerx="459" centery="329" centerz="8" radius="3">
+		<monster name="Dragon Lord" x="-2" y="-2" z="8" spawntime="200" />
+	</spawn>
+	<spawn centerx="405" centery="354" centerz="8" radius="3">
+		<monster name="Dragon Lord" x="2" y="2" z="8" spawntime="200" />
+	</spawn>
+	<spawn centerx="419" centery="373" centerz="8" radius="3">
+		<monster name="Dragon" x="-2" y="1" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="382" centery="374" centerz="8" radius="3">
+		<monster name="Dragon" x="2" y="-1" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="453" centery="351" centerz="8" radius="3">
+		<monster name="Dragon" x="2" y="0" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="385" centery="357" centerz="8" radius="3">
+		<monster name="Dragon" x="2" y="-2" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="441" centery="347" centerz="8" radius="3">
+		<monster name="Dragon" x="1" y="2" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="408" centery="380" centerz="8" radius="3">
+		<monster name="Dragon" x="0" y="-2" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="415" centery="369" centerz="9" radius="3">
+		<monster name="Dragon Lord" x="-1" y="2" z="9" spawntime="200" />
+	</spawn>
+	<spawn centerx="419" centery="396" centerz="9" radius="3">
+		<monster name="Dragon Lord" x="2" y="0" z="9" spawntime="200" />
+	</spawn>
+	<spawn centerx="419" centery="361" centerz="9" radius="3">
+		<monster name="Dragon Lord" x="1" y="2" z="9" spawntime="200" />
+	</spawn>
+	<spawn centerx="428" centery="367" centerz="9" radius="3">
+		<monster name="Dragon Lord" x="-2" y="-1" z="9" spawntime="200" />
+	</spawn>
+	<spawn centerx="441" centery="392" centerz="9" radius="3">
+		<monster name="Dragon Lord" x="1" y="0" z="9" spawntime="200" />
+	</spawn>
+	<spawn centerx="424" centery="357" centerz="9" radius="3">
+		<monster name="Dragon Lord" x="-1" y="1" z="9" spawntime="200" />
+	</spawn>
+	<spawn centerx="413" centery="374" centerz="9" radius="3">
+		<monster name="Demodras" x="1" y="-2" z="9" spawntime="7200" />
+	</spawn>
+	<!-- END NORTH_PASS_SPAWNS -->
 </spawns>
