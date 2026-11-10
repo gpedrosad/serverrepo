@@ -71,7 +71,26 @@ log = get_logger("server")
 _ot_monitor_last_online: bool | None = None
 
 
+# build_payload lee y parsea el XML de todos los jugadores: antes se hacía en cada visita a la
+# portada. Se guarda PAYLOAD_TTL segundos y, si llegan varias visitas juntas, una sola lo arma
+# (las demás esperan el lock y reciben el mismo resultado).
+PAYLOAD_TTL = float(os.environ.get("WEB_PAYLOAD_TTL", "30"))
+_payload_lock = threading.Lock()
+_payload_cache: tuple[float, dict] | None = None
+
+
 def get_payload() -> dict:
+    global _payload_cache
+    with _payload_lock:
+        now = time.monotonic()
+        if _payload_cache is not None and now - _payload_cache[0] < PAYLOAD_TTL:
+            return _payload_cache[1]
+        payload = _build_payload_logged()
+        _payload_cache = (time.monotonic(), payload)
+        return payload
+
+
+def _build_payload_logged() -> dict:
     t0 = time.monotonic()
     try:
         return build_payload(
