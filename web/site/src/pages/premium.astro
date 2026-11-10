@@ -1,0 +1,230 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Valores de respaldo (los mismos de web/premium_orders.py). La página los reemplaza con
+// /api/premium-config al cargar, así que el precio real siempre lo manda el servidor.
+const PLANS = [
+  { id: '1954', days: 7, label: '1 semana', price: 4000, image: '/assets/premium/1954-small.jpg' },
+  { id: '2345', days: 14, label: '2 semanas', price: 6000, image: '/assets/premium/2345-small.jpg', save: 2000 },
+];
+const PERKS = [
+  ['+10% de experiencia', 'Un extra al cazar.'],
+  ['+10% de botín', 'Algo más de loot en los monstruos.'],
+  ['Skills x2', 'Entrenas skills y magic level al doble de velocidad.'],
+  ['Regeneración', 'Recuperas vida y mana un poco más rápido.'],
+  ['6 h de training', 'Más tiempo diario en la sala de entrenadores (gratis: 2 h).'],
+  ['Outfits 7.6', 'Los outfits premium clásicos: citizen, hunter, mage y knight.'],
+  ['Promotion', 'Con Orlan (nivel 20, 20k gp). Con premium, mejor regeneración.'],
+];
+const clp = (n: number) => '$' + n.toLocaleString('es-CL');
+---
+<Base title="Premium — Retro76" path="/premium" description="Premium en Retro76: +10% exp y botín, skills x2 y 6 h de training. Donación voluntaria; el servidor es free to play.">
+  <section>
+    <h1 class="title">Premium</h1>
+    <p class="lede">Una donación voluntaria para mantener Retro76, con comodidades en el juego. El servidor sigue siendo free to play.</p>
+  </section>
+
+  <section>
+    <dl class="figures">
+      <div><dt>Exp y botín</dt><dd>+10%</dd></div>
+      <div><dt>Skills y ML</dt><dd>x2</dd></div>
+      <div><dt>Training al día</dt><dd>6 h</dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <h2 class="label">Planes</h2>
+    <div class="plans" id="plans">
+      {PLANS.map((p) => (
+        <div class="plan" data-plan-id={p.id}>
+          <p class="muted">{p.label} <span class="tag">{p.save ? `ahorras ${clp(p.save)}` : ''}</span></p>
+          <p class="price" data-price>{clp(p.price)}</p>
+          <p class="faint small">{p.days} días · {clp(Math.round(p.price / p.days))} al día</p>
+          <button type="button" class="btn" data-choose={p.id}>Elegir</button>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section>
+    <h2 class="label">Qué incluye</h2>
+    <dl class="defs">{PERKS.map(([t, d]) => <><dt>{t}</dt><dd>{d}</dd></>)}</dl>
+  </section>
+
+  <section>
+    <h2 class="label">Gratis y premium</h2>
+    <div class="compare">
+      <div><h3>Gratis</h3><ul><li>2 h de training al día</li><li>Skills a velocidad normal</li><li>Sin bonus de exp ni botín</li></ul></div>
+      <div><h3 class="accent">Premium</h3><ul><li>6 h de training al día</li><li>Skills x2 y mejor regeneración</li><li>+10% de exp y botín</li></ul></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="label">Cómo funciona</h2>
+    <ol class="numbered">
+      <li>Eliges el plan y, si quieres, algún extra.</li>
+      <li>Transfieres el total y subes el comprobante acá abajo.</li>
+      <li>Revisamos el pago y activamos premium en tu personaje. En el juego, <span class="mono">!premmy</span> muestra el tiempo que te queda.</li>
+    </ol>
+  </section>
+
+  <section id="donar">
+    <h2 class="label">Donar <span class="aside">total <span class="mono accent" id="total">—</span></span></h2>
+    <form id="order" class="form" style="max-width:none" enctype="multipart/form-data">
+      <div class="honeypot" aria-hidden="true"><input type="text" name="company" tabindex="-1" autocomplete="off"></div>
+
+      <fieldset style="border:0;padding:0;margin:0">
+        <legend class="muted small" style="margin-bottom:.25rem">1. Plan</legend>
+        <div id="plan-choices">
+          {PLANS.map((p, i) => (
+            <label class="choice">
+              <input type="radio" name="plan_id" value={p.id} checked={i === 1}>
+              <img src={p.image} alt="" width="32" height="32" loading="lazy">
+              <span><strong>{p.label}</strong> <span class="price">{clp(p.price)}</span><br><span class="faint small">{p.days} días de premium</span></span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <fieldset style="border:0;padding:0;margin:0">
+        <legend class="muted small" style="margin-bottom:.25rem">2. Extras opcionales</legend>
+        <div id="addon-choices"><p class="faint small">Cargando…</p></div>
+      </fieldset>
+
+      <fieldset style="border:0;padding:0;margin:0" class="form">
+        <legend class="muted small" style="margin-bottom:.25rem">3. Pago</legend>
+        <div class="note">
+          <p>Transfiere <strong class="mono" id="total-2">—</strong> y adjunta el comprobante.</p>
+          <p class="muted small" id="pay-note"></p>
+          <p class="small muted">Titular: <span class="mono" id="pay-holder">—</span> · RUT: <span class="mono" id="pay-rut">—</span> · Cuenta: <span class="mono" id="pay-account">—</span></p>
+        </div>
+        <label class="field" style="max-width:28rem"><span>Nombre del personaje (exacto)</span>
+          <input name="character_name" required maxlength="20" pattern="[A-Za-z ]{3,20}"></label>
+        <label class="field" style="max-width:28rem"><span>Comprobante (JPG, PNG o PDF, máx. 5 MB)</span>
+          <input name="receipt" type="file" required accept=".jpg,.jpeg,.png,.pdf,.webp,image/jpeg,image/png,application/pdf"></label>
+        <div class="actions"><button type="submit" class="btn primary" id="submit">Enviar comprobante</button></div>
+        <p id="result" class="result hidden" role="status"></p>
+      </fieldset>
+    </form>
+  </section>
+</Base>
+
+<script>
+  import { esc, fmtPrice, showResult, $ } from '../lib/client.js';
+
+  const form = $('order');
+  let config = null;
+  const formTs = Date.now() / 1000;   // anti-bot del servidor: mínimo 3 s entre abrir y enviar
+  const once = new Set();
+
+  // Eventos del embudo (web/analytics.py PREMIUM_EVENTS; resumen en scripts/web/premium-funnel.py).
+  function track(event, detail) {
+    try {
+      fetch('/api/premium-event', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ event, detail: detail || undefined }), keepalive: true,
+      }).catch(() => {});
+    } catch { /* noop */ }
+  }
+  function trackOnce(event, detail) { if (!once.has(event)) { once.add(event); track(event, detail); } }
+
+  const plans = () => config?.plans || [];
+  const addons = () => config?.addons || [];
+  const selectedPlan = () => plans().find((p) => p.id === form.plan_id.value);
+  const selectedAddons = () => Object.fromEntries(addons().map((a) => [a.key, !!form.elements[a.key]?.checked]));
+  const total = () => (selectedPlan()?.price || 0) + addons().reduce((s, a) => s + (form.elements[a.key]?.checked ? a.price : 0), 0);
+
+  function updateTotal() {
+    const t = fmtPrice(total());
+    $('total').textContent = t;
+    $('total-2').textContent = t;
+    $('submit').textContent = `Enviar comprobante · ${t}`;
+  }
+
+  function renderConfig() {
+    const current = form.plan_id.value;
+    for (const p of plans()) {
+      const card = document.querySelector(`[data-plan-id="${p.id}"] [data-price]`);
+      if (card) card.textContent = fmtPrice(p.price);
+    }
+    $('plan-choices').innerHTML = plans().map((p) => `
+      <label class="choice">
+        <input type="radio" name="plan_id" value="${esc(p.id)}"${p.id === current ? ' checked' : ''}>
+        <img src="${esc(p.image)}" srcset="${esc(p.image2x)} 2x" alt="" width="32" height="32" loading="lazy">
+        <span><strong>${esc(p.label)}</strong> <span class="price">${fmtPrice(p.price)}</span><br><span class="faint small">${p.days} días de premium</span></span>
+      </label>`).join('');
+    $('addon-choices').innerHTML = addons().map((a) => `
+      <label class="choice">
+        <input type="checkbox" name="${esc(a.key)}" value="1">
+        <img src="${esc(a.image)}" srcset="${esc(a.image2x)} 2x" alt="" width="32" height="32" loading="lazy" onerror="this.style.visibility='hidden'">
+        <span><strong>${esc(a.label)}</strong> <span class="price">+${fmtPrice(a.price)}</span><br><span class="faint small">${esc(a.desc)}</span></span>
+      </label>`).join('');
+    const pay = config.payment || {};
+    $('pay-note').textContent = pay.note || '';
+    $('pay-holder').textContent = pay.holder || '—';
+    $('pay-rut').textContent = pay.rut || '—';
+    $('pay-account').textContent = pay.account || '—';
+    updateTotal();
+  }
+
+  track('tab_view');
+  fetch('/api/premium-config', { cache: 'no-store' })
+    .then((r) => r.json())
+    .then((c) => { config = c; renderConfig(); })
+    .catch(() => { $('addon-choices').innerHTML = '<p class="faint small">No se pudieron cargar los extras.</p>'; });
+
+  // "Elegir" en un plan: lo marca en el formulario y baja hasta él.
+  $('plans').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-choose]');
+    if (!b) return;
+    const radio = form.querySelector(`input[name="plan_id"][value="${b.dataset.choose}"]`);
+    if (radio) radio.checked = true;
+    track('checkout_open', { plan_id: b.dataset.choose, step: 1 });
+    form.dispatchEvent(new Event('change'));
+    $('donar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  form.addEventListener('focusin', () => trackOnce('checkout_open', { plan_id: form.plan_id.value || null, step: 1 }));
+
+  form.addEventListener('change', (e) => {
+    const t = e.target;
+    if (t.name === 'plan_id') {
+      track('plan_select', { plan_id: t.value });
+      trackOnce('step2', { plan_id: t.value });
+    } else if (addons().some((a) => a.key === t.name)) {
+      track('amulet_toggle', { addon: t.name, enabled: t.checked, plan_id: form.plan_id.value });
+    } else if (t.name === 'receipt' && t.files?.length) {
+      const f = t.files[0];
+      track('receipt_selected', { size: f.size, type: f.type || '', name_ext: (f.name.split('.').pop() || '').toLowerCase() });
+    }
+    updateTotal();
+  });
+
+  form.character_name.addEventListener('focus', () => {
+    trackOnce('step3', { plan_id: form.plan_id.value, addons: selectedAddons(), total: total() });
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = $('submit');
+    const result = $('result');
+    btn.disabled = true;
+    track('submit_click', {
+      plan_id: form.plan_id.value, addons: selectedAddons(), total: total(),
+      character_name_len: form.character_name.value.trim().length, has_receipt: !!form.receipt.files?.length,
+    });
+    try {
+      const fd = new FormData(form);
+      for (const a of addons()) fd.set(a.key, form.elements[a.key]?.checked ? '1' : '0');
+      fd.set('form_ts', String(formTs));
+      const r = await fetch('/api/premium-order', { method: 'POST', body: fd });
+      const d = await r.json();
+      showResult(result, !!d.ok, d.message || (d.ok ? 'Donación enviada.' : 'Error.'));
+      if (d.ok) { form.reset(); updateTotal(); }
+    } catch {
+      track('submit_fail', { reason: 'network' });
+      showResult(result, false, 'No se pudo enviar. Inténtalo de nuevo.');
+    }
+    btn.disabled = false;
+  });
+</script>

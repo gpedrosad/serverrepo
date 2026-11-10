@@ -1,0 +1,74 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Reportar un bug — Retro76" path="/bugs" description="Reporta un bug de Retro76.">
+  <section>
+    <h1 class="title">Reportar un bug</h1>
+    <p class="lede">Cuéntanos qué pasó. Leemos cada reporte. Máximo 3 por hora; no incluyas contraseñas.</p>
+  </section>
+  <section>
+    <form id="bug-form" class="form">
+      <div class="honeypot" aria-hidden="true"><input type="text" name="company" tabindex="-1" autocomplete="off"></div>
+      <input type="hidden" name="form_ts">
+      <input type="hidden" name="challenge_id">
+      <div class="row">
+        <label class="field"><span>Personaje (opcional)</span>
+          <input type="text" name="character" maxlength="20" pattern="[a-zA-Z ]{0,20}" autocomplete="username"></label>
+        <label class="field"><span>Tipo</span>
+          <select name="category" required>
+            <option value="">Elegir…</option>
+            <option value="gameplay">Gameplay o mecánicas</option>
+            <option value="crash">Crash o desconexión</option>
+            <option value="visual">Visual o mapa</option>
+            <option value="cuenta">Cuenta o login</option>
+            <option value="otro">Otro</option>
+          </select></label>
+      </div>
+      <label class="field"><span>Título</span>
+        <input type="text" name="title" required minlength="5" maxlength="80"></label>
+      <label class="field"><span>¿Qué hiciste, qué esperabas y qué pasó?</span>
+        <textarea name="description" required minlength="15" maxlength="2000" rows="6"></textarea></label>
+      <label class="field"><span>Verificación: <span id="captcha-q">…</span></span>
+        <input type="number" name="captcha" required inputmode="numeric"></label>
+      <div class="actions"><button type="submit" class="btn primary" id="submit">Enviar reporte</button></div>
+      <p id="result" class="result hidden" role="status"></p>
+    </form>
+  </section>
+</Base>
+
+<script>
+  import { loadChallenge, showResult, $ } from '../lib/client.js';
+  const form = $('bug-form');
+  const result = $('result');
+  const question = $('captcha-q');
+  loadChallenge(form, question);
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    $('submit').disabled = true;
+    try {
+      const r = await fetch('/api/bug-report', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          character: form.character.value.trim(),
+          category: form.category.value,
+          title: form.title.value.trim(),
+          description: form.description.value.trim(),
+          captcha: form.captcha.value,
+          challenge_id: form.challenge_id.value,
+          company: form.company.value,
+          form_ts: parseFloat(form.form_ts.value),
+        }),
+      });
+      const d = await r.json();
+      showResult(result, !!d.ok, d.message || 'Error');
+      if (d.ok) form.reset();
+    } catch {
+      showResult(result, false, 'Error de conexión.');
+    } finally {
+      $('submit').disabled = false;
+      loadChallenge(form, question);
+    }
+  });
+</script>

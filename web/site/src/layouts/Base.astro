@@ -1,0 +1,96 @@
+---
+// Estructura común: <head> con SEO, cabecera con el estado del server, navegación, contenido y
+// el footer en pixel art de Chillán.
+import '../styles/site.css';
+
+interface Props {
+  title: string;          // texto del <title>
+  description?: string;
+  path: string;           // ruta de la página ('/', '/top'...), marca el link actual
+  canonical?: boolean;
+}
+
+const {
+  title,
+  description = 'Retro76: OT server chileno de Tibia 7.6 (Open Tibia). PvP retro, comunidad latina, baja latencia desde Chile y sistemas custom: gemas, El Crisol, arenas y más. Crea tu cuenta gratis y descarga el cliente.',
+  path,
+  canonical = true,
+} = Astro.props;
+
+const NAV_GAME = [
+  ['/', 'Live'], ['/top', 'Top'], ['/power', 'Power'], ['/pk', 'PK'], ['/muertes', 'Muertes'],
+  ['/gemas', 'Gemas'], ['/spells', 'Spells'], ['/reglas', 'Reglas'], ['/info', 'Info'],
+];
+const NAV_PLAY = [['/cuenta', 'Cuenta'], ['/cliente', 'Cliente'], ['/premium', 'Premium'], ['/bugs', 'Bugs']];
+const url = 'https://retro76.cl' + (path === '/' ? '/' : path);
+---
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0d0d0c">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  {canonical && <link rel="canonical" href={url}>}
+  <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/assets/brand/favicon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Retro76">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:url" content={url}>
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image" content="https://retro76.cl/assets/brand/favicon.png">
+  <meta name="twitter:card" content="summary">
+  <slot name="head" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-head">
+      <a class="brand" href="/">
+        <img src="/assets/brand/favicon.png" alt="" width="24" height="24">
+        Retro76 <small>Tibia 7.6 · Chile</small>
+      </a>
+      <p class="status" id="status" aria-live="polite"><span class="dot"></span><span id="status-text">…</span></p>
+    </header>
+    <nav class="site-nav" aria-label="Secciones">
+      <ul>
+        {NAV_GAME.map(([href, label]) => (
+          <li><a href={href} aria-current={href === path ? 'page' : undefined}>{label}</a></li>
+        ))}
+        <li class="sep" aria-hidden="true"></li>
+        {NAV_PLAY.map(([href, label]) => (
+          <li><a href={href} aria-current={href === path ? 'page' : undefined}>{label}</a></li>
+        ))}
+      </ul>
+    </nav>
+    <main>
+      <slot />
+    </main>
+  </div>
+
+  <footer class="chillan-scene" id="scene" role="img" aria-label="Centro de Chillán, Chile, en pixel art: la Catedral y la Cruz Monumental, la Plaza de Armas con el monumento a Bernardo O'Higgins, árboles, faroles, gente paseando y la cordillera de los Andes.">
+    <img class="still-day" src="/assets/footer/chillan-day.png" alt="" width="415" height="137" loading="lazy">
+    <img class="still-night" src="/assets/footer/chillan-night.png" alt="" width="415" height="137" loading="lazy">
+    <canvas width="415" height="137" aria-hidden="true"></canvas>
+    <canvas width="415" height="137" aria-hidden="true"></canvas>
+    <canvas width="415" height="137" aria-hidden="true"></canvas>
+    <canvas width="415" height="137" aria-hidden="true"></canvas>
+  </footer>
+  <script is:inline src="/assets/footer/chillan-footer.js" defer></script>
+
+  <script>
+    import { getData } from '../lib/client.js';
+    const dot = document.querySelector('#status .dot');
+    const text = document.getElementById('status-text');
+    getData().then((d) => {
+      const s = d.server || {};
+      dot.classList.add(s.online ? 'on' : 'off');
+      text.textContent = s.online
+        ? `en línea · ${s.players_online} jugando`
+        : 'fuera de línea';
+    }).catch(() => { text.textContent = 'sin conexión'; });
+  </script>
+</body>
+</html>

@@ -46,8 +46,11 @@ UPDATER_FILES_URL = os.environ.get("UPDATER_FILES_URL", "https://retro76.cl/upda
 SITE_URL = os.environ.get("SITE_URL", "https://retro76.cl").rstrip("/")
 SERVER_IP = os.environ.get("SERVER_IP") or read_server_ip(CONFIG_FILE)
 PORT = int(os.environ.get("PORT", "8080"))
-INDEX = Path(__file__).resolve().parent / "index.html"
-CHARACTER_PAGE = Path(__file__).resolve().parent / "character.html"
+# Páginas del sitio: web/site (Astro) compilado en web/dist (scripts/web/build-site.sh).
+DIST_DIR = Path(__file__).resolve().parent / "dist"
+INDEX = DIST_DIR / "index.html"
+CHARACTER_PAGE = DIST_DIR / "character.html"
+SITE_PAGES = ("top", "power", "pk", "muertes", "gemas", "spells", "reglas", "info", "cuenta", "cliente", "premium", "bugs")
 ITEMS_PAGE = Path(__file__).resolve().parent / "items.html"
 ITEMS_ALL_PAGE = Path(__file__).resolve().parent / "items-all.html"
 DOWNLOADS_DIR = Path(__file__).resolve().parent / "downloads"
@@ -200,6 +203,10 @@ class Handler(BaseHTTPRequestHandler):
             self._updater_file(path[len("/updater/files/"):], head_only=True)
         elif path.startswith("/assets/") or path.startswith("/components/") or path.startswith("/data/"):
             self._static(path, head_only=True)
+        elif path.startswith("/_astro/"):
+            self._astro_asset(path, head_only=True)
+        elif path in ("/", "/index.html") or path.lstrip("/") in SITE_PAGES:
+            self._site_page(path, head_only=True)
         else:
             self.send_error(404)
 
@@ -207,7 +214,7 @@ class Handler(BaseHTTPRequestHandler):
         path = self.path.split("?", 1)[0]
         if path in ("/", "/index.html"):
             analytics.record_visit(client_ip(self))
-            self._file(INDEX, "text/html; charset=utf-8", cache="no-store")
+            self._file(INDEX, "text/html; charset=utf-8", cache="no-cache")
         elif path in ("/favicon.png", "/favicon.ico"):
             self._file(WEB_DIR / "assets/brand/favicon.png", "image/png", cache="public, max-age=86400")
         elif path == "/api/data":
@@ -225,7 +232,11 @@ class Handler(BaseHTTPRequestHandler):
         elif path.startswith("/api/character/"):
             self._character_api(path[len("/api/character/"):])
         elif path.startswith("/character/"):
-            self._file(CHARACTER_PAGE, "text/html; charset=utf-8", cache="no-store")
+            self._file(CHARACTER_PAGE, "text/html; charset=utf-8", cache="no-cache")
+        elif path.lstrip("/") in SITE_PAGES:
+            self._site_page(path)
+        elif path.startswith("/_astro/"):
+            self._astro_asset(path)
         elif path == "/robots.txt":
             self._robots_txt()
         elif path == "/sitemap.xml":
@@ -389,7 +400,7 @@ class Handler(BaseHTTPRequestHandler):
         self.wfile.write(body)
 
     def _sitemap_xml(self) -> None:
-        urls = [f"{SITE_URL}/"]
+        urls = [f"{SITE_URL}/"] + [f"{SITE_URL}/{page}" for page in SITE_PAGES]
         if PLAYERS_DIR.is_dir():
             names = sorted(
                 p.stem
@@ -504,6 +515,21 @@ class Handler(BaseHTTPRequestHandler):
                 {"reason": "validation", "message": result.get("message", "")},
             )
         self._json(200, result)
+
+    def _site_page(self, url_path: str, *, head_only: bool = False) -> None:
+        name = url_path.strip("/") or "index"
+        if name == "index.html":
+            name = "index"
+        self._file(DIST_DIR / f"{name}.html", "text/html; charset=utf-8", head_only=head_only, cache="no-cache")
+
+    def _astro_asset(self, url_path: str, *, head_only: bool = False) -> None:
+        """JS/CSS de Astro: el nombre lleva hash, así que se cachea un año."""
+        path = (DIST_DIR / url_path.lstrip("/")).resolve()
+        if not str(path).startswith(str((DIST_DIR / "_astro").resolve())) or not path.is_file():
+            self.send_error(404)
+            return
+        ctype = ASSET_TYPES.get(path.suffix.lower(), "application/octet-stream")
+        self._file(path, ctype, head_only=head_only, cache="public, max-age=31536000, immutable")
 
     def _static(self, url_path: str, *, head_only: bool = False) -> None:
         rel = url_path.lstrip("/")

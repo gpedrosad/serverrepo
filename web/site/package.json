@@ -1,0 +1,11 @@
+{
+  "name": "retro76-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "astro build"
+  },
+  "dependencies": {
+    "astro": "5.18.2"
+  }
+}
