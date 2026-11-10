@@ -1,0 +1,3 @@
+import{g as c,i as f,$ as l,e as i,t as r}from"./client.PbclRlB1.js";c().then(o=>{const a=(f()&&o.otinfo_en?.length?o.otinfo_en:o.otinfo||[]).find(e=>e.title==="REGLAS"||e.title==="RULES");if(!a){l("rules").innerHTML=`<p class="empty">${i(r("noRules"))}</p>`;return}const t=new Map;for(const e of a.lines){const n=e.indexOf(" · "),s=n>=0?e.slice(0,n):r("general");t.has(s)||t.set(s,[]),t.get(s).push(n>=0?e.slice(n+3):e)}l("rules").innerHTML=[...t].map(([e,n])=>`
+      <h2 class="label">${i(e)}</h2>
+      <ol class="numbered" style="margin-bottom:1.75rem">${n.map(s=>`<li>${i(s)}</li>`).join("")}</ol>`).join("")}).catch(()=>{l("rules").innerHTML=`<p class="empty">${i(r("serverDown"))}</p>`});

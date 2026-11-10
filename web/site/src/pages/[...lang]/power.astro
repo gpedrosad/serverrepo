@@ -1,0 +1,31 @@
+---
+import Base from '../../layouts/Base.astro';
+import { dict, langOf, langPaths } from '../../i18n.js';
+export function getStaticPaths() { return langPaths(); }
+const lang = langOf(Astro.params.lang);
+const T = dict(lang);
+---
+<Base lang={lang} title={`${T.power.title} — Retro76`} path="/power" description={T.power.description}>
+  <section>
+    <h1 class="title">{T.power.title}</h1>
+    <p class="lede">{T.power.lede}</p>
+  </section>
+  <section>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>#</th><th>{T.power.thName}</th><th class="n">{T.power.thExp}</th><th class="n">{T.power.thLevel}</th><th class="wide-only">{T.power.thVoc}</th></tr></thead>
+        <tbody id="power"><tr><td colspan="5" class="empty">{T.loading}</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+</Base>
+
+<script>
+  import { getData, esc, charLink, rowsOrEmpty, t, $ } from '../../lib/client.js';
+  getData().then((d) => {
+    $('power').innerHTML = rowsOrEmpty(d.powergamers, 5, (p, i) =>
+      `<tr><td class="rank">${i + 1}</td><td>${charLink(p.name)}</td><td class="n key">${esc(p.gain_fmt)}</td>` +
+      `<td class="n">${p.level}</td><td class="muted wide-only">${esc(p.vocation_short)}</td></tr>`,
+      t('noPower'));
+  }).catch(() => { $('power').innerHTML = `<tr><td colspan="5" class="empty">${esc(t('serverDown'))}</td></tr>`; });
+</script>

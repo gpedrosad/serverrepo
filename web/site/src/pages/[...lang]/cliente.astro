@@ -1,0 +1,46 @@
+---
+import Base from '../../layouts/Base.astro';
+import { dict, langOf, langPaths, localePath } from '../../i18n.js';
+export function getStaticPaths() { return langPaths(); }
+const lang = langOf(Astro.params.lang);
+const T = dict(lang);
+const DOWNLOADS = [
+  { file: 'Retro76-Windows.zip', os: 'Windows', run: T.client.runWin },
+  { file: 'Retro76-Mac.zip', os: 'macOS', run: T.client.runMac },
+];
+---
+<Base lang={lang} title={`${T.client.title} — Retro76`} path="/cliente" description={T.client.description}>
+  <section>
+    <h1 class="title">{T.client.title}</h1>
+    <p class="lede">{T.client.lede}</p>
+  </section>
+  <section>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>{T.client.thSystem}</th><th>{T.client.thOpen}</th><th></th></tr></thead>
+        <tbody>
+          {DOWNLOADS.map((d) => (
+            <tr>
+              <td><strong>{d.os}</strong></td>
+              <td class="mono muted">{d.run}</td>
+              <td style="text-align:right"><a class="btn primary" href={`/downloads/${d.file}`} download>{T.client.download}</a></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section>
+    <h2 class="label">{T.client.connect}</h2>
+    <p class="muted">{T.client.connectText} <span class="mono" id="addr">retro76.cl:7171</span>.</p>
+    <p class="muted">{T.client.noAccount} <a href={localePath(lang, '/cuenta')}>{T.client.createIt}</a>{T.client.free}</p>
+  </section>
+</Base>
+
+<script>
+  import { getData } from '../../lib/client.js';
+  getData().then((d) => {
+    const c = d.connect || {};
+    if (c.host && c.port) document.getElementById('addr').textContent = `${c.host}:${c.port}`;
+  }).catch(() => {});
+</script>

@@ -1,0 +1,73 @@
+---
+import Base from '../../layouts/Base.astro';
+import { dict, langOf, langPaths, localePath } from '../../i18n.js';
+export function getStaticPaths() { return langPaths(); }
+const lang = langOf(Astro.params.lang);
+const T = dict(lang);
+const C = T.character;
+---
+<Base lang={lang} title={C.title} path="/character" canonical={false} description={C.description}>
+  <section>
+    <p class="faint small"><a href={localePath(lang, '/top')}>Top</a> /</p>
+    <h1 class="title" id="name">…</h1>
+    <p class="lede" id="sub">{T.loading}</p>
+  </section>
+  <section id="body" class="hidden">
+    <dl class="figures">
+      <div><dt>{C.level}</dt><dd id="level">—</dd></div>
+      <div><dt>{C.ml}</dt><dd id="ml">—</dd></div>
+      <div><dt>{C.exp}</dt><dd id="exp">—</dd></div>
+    </dl>
+  </section>
+  <section id="deaths-section" class="hidden">
+    <h2 class="label">{C.deaths} <span class="aside" id="death-count"></span></h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>#</th><th>{C.thKiller}</th><th class="n">{C.thLevel}</th><th class="wide-only">{C.thWhen}</th></tr></thead>
+        <tbody id="deaths"></tbody>
+      </table>
+    </div>
+  </section>
+</Base>
+
+<script>
+  import { esc, charLink, rowsOrEmpty, relTime, serverText, t, $ } from '../../lib/client.js';
+
+  // /character/<nombre> o /en/character/<nombre>
+  function nameFromPath() {
+    const parts = location.pathname.split('/').filter(Boolean);
+    const i = parts.indexOf('character');
+    if (i < 0 || !parts[i + 1]) return '';
+    try { return decodeURIComponent(parts.slice(i + 1).join('/')).trim(); } catch { return ''; }
+  }
+
+  async function load() {
+    const name = nameFromPath();
+    if (!name) { $('name').textContent = '—'; $('sub').textContent = t('invalidName'); return; }
+    $('name').textContent = name;
+    document.title = `${name} — Retro76`;
+    try {
+      const r = await fetch(`/api/character/${encodeURIComponent(name)}`, { cache: 'no-store' });
+      const d = await r.json();
+      if (!r.ok || !d.ok || !d.character) { $('sub').textContent = serverText(d.message) || t('notFound'); return; }
+      const c = d.character;
+      document.title = t('charTitle', { name: c.name, voc: c.vocation, level: c.level });
+      $('name').textContent = c.name;
+      $('sub').textContent = `${c.vocation}${c.guild ? ` · ${c.guild}` : ''} · ${t('seen', { t: relTime(c.lastlogin_rel) })}`;
+      $('level').textContent = c.level;
+      $('ml').textContent = c.maglevel;
+      $('exp').textContent = c.exp_fmt;
+      $('body').classList.remove('hidden');
+      const deaths = c.deaths || [];
+      $('death-count').textContent = String(deaths.length);
+      $('deaths').innerHTML = rowsOrEmpty(deaths, 4, (x, i) =>
+        `<tr><td class="rank">${i + 1}</td><td class="bad">${x.killer_is_player ? charLink(x.killer) : esc(x.killer)}</td>` +
+        `<td class="n">${x.level}</td><td class="faint wide-only">${esc(relTime(x.time_rel))}</td></tr>`,
+        t('noCharDeaths'));
+      $('deaths-section').classList.remove('hidden');
+    } catch {
+      $('sub').textContent = t('serverDown');
+    }
+  }
+  load();
+</script>

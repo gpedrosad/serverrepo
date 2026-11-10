@@ -1,0 +1,32 @@
+---
+import Base from '../../layouts/Base.astro';
+import { dict, langOf, langPaths } from '../../i18n.js';
+export function getStaticPaths() { return langPaths(); }
+const lang = langOf(Astro.params.lang);
+const T = dict(lang);
+---
+<Base lang={lang} title={`${T.deaths.title} — Retro76`} path="/muertes" description={T.deaths.description}>
+  <section>
+    <h1 class="title">{T.deaths.title}</h1>
+    <p class="lede">{T.deaths.lede}</p>
+  </section>
+  <section>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>#</th><th>{T.deaths.thVictim}</th><th>{T.deaths.thKiller}</th><th class="n">{T.deaths.thLevel}</th><th class="wide-only">{T.deaths.thWhen}</th></tr></thead>
+        <tbody id="deaths"><tr><td colspan="5" class="empty">{T.loading}</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+</Base>
+
+<script>
+  import { getData, esc, charLink, rowsOrEmpty, relTime, t, $ } from '../../lib/client.js';
+  getData().then((d) => {
+    $('deaths').innerHTML = rowsOrEmpty(d.deaths, 5, (x) =>
+      `<tr><td class="rank">${x.rank}</td><td>${charLink(x.victim)}</td>` +
+      `<td class="bad">${x.killer_is_player ? charLink(x.killer) : esc(x.killer)}</td>` +
+      `<td class="n">${x.level}</td><td class="faint wide-only">${esc(relTime(x.time_rel))}</td></tr>`,
+      t('noDeaths'));
+  }).catch(() => { $('deaths').innerHTML = `<tr><td colspan="5" class="empty">${esc(t('serverDown'))}</td></tr>`; });
+</script>

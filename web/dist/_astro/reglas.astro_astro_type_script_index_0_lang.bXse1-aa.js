@@ -1,3 +1,0 @@
-import{g as r,$ as l,e as o}from"./client.C1Gwyfwj.js";r().then(a=>{const t=(a.otinfo||[]).find(e=>e.title==="REGLAS");if(!t){l("rules").innerHTML='<p class="empty">Sin reglas publicadas.</p>';return}const i=new Map;for(const e of t.lines){const s=e.indexOf(" · "),n=s>=0?e.slice(0,s):"General";i.has(n)||i.set(n,[]),i.get(n).push(s>=0?e.slice(s+3):e)}l("rules").innerHTML=[...i].map(([e,s])=>`
-      <h2 class="label">${o(e)}</h2>
-      <ol class="numbered" style="margin-bottom:1.75rem">${s.map(n=>`<li>${o(n)}</li>`).join("")}</ol>`).join("")}).catch(()=>{l("rules").innerHTML='<p class="empty">Sin conexión con el servidor.</p>'});

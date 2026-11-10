@@ -55,7 +55,11 @@ h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -0.01em; }
 .brand { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 18px; font-weight: 700; text-decoration: none; letter-spacing: -0.02em; }
 .brand img { width: 24px; height: 24px; image-rendering: pixelated; }
 .brand small { font-weight: 400; color: var(--faint); font-size: 13px; letter-spacing: 0; }
-.status { text-align: right; font-size: 13px; color: var(--muted); }
+.head-right { display: flex; align-items: baseline; gap: 1rem; }
+.status { text-align: right; font-size: 13px; color: var(--muted); margin: 0; }
+.lang-switch { font-size: 13px; color: var(--muted); text-decoration: none; border: 1px solid var(--rule-strong); border-radius: 3px; padding: 0.1rem 0.45rem; }
+.lang-switch:hover { color: var(--fg); border-color: var(--fg); }
+@media (max-width: 480px) { .head-right { flex-direction: column-reverse; align-items: flex-end; gap: 0.3rem; } }
 .status .dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--faint); margin-right: 0.35rem; vertical-align: 1px; }
 .status .dot.on { background: var(--good); }
 .status .dot.off { background: var(--bad); }

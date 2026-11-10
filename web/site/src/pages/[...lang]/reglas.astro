@@ -1,0 +1,34 @@
+---
+import Base from '../../layouts/Base.astro';
+import { dict, langOf, langPaths, localePath } from '../../i18n.js';
+export function getStaticPaths() { return langPaths(); }
+const lang = langOf(Astro.params.lang);
+const T = dict(lang);
+---
+<Base lang={lang} title={`${T.rules.title} — Retro76`} path="/reglas" description={T.rules.description}>
+  <section>
+    <h1 class="title">{T.rules.title}</h1>
+    <p class="lede">{T.rules.lede}</p>
+  </section>
+  <section id="rules"><p class="empty">{T.loading}</p></section>
+</Base>
+
+<script>
+  import { getData, esc, isEnglish, t, $ } from '../../lib/client.js';
+  // Cada línea de las reglas (OTINFO, en inglés OTINFO.en) viene como "Categoría · texto".
+  getData().then((d) => {
+    const info = (isEnglish() && d.otinfo_en?.length) ? d.otinfo_en : (d.otinfo || []);
+    const rules = info.find((s) => s.title === 'REGLAS' || s.title === 'RULES');
+    if (!rules) { $('rules').innerHTML = `<p class="empty">${esc(t('noRules'))}</p>`; return; }
+    const groups = new Map();
+    for (const line of rules.lines) {
+      const i = line.indexOf(' · ');
+      const cat = i >= 0 ? line.slice(0, i) : t('general');
+      if (!groups.has(cat)) groups.set(cat, []);
+      groups.get(cat).push(i >= 0 ? line.slice(i + 3) : line);
+    }
+    $('rules').innerHTML = [...groups].map(([cat, items]) => `
+      <h2 class="label">${esc(cat)}</h2>
+      <ol class="numbered" style="margin-bottom:1.75rem">${items.map((x) => `<li>${esc(x)}</li>`).join('')}</ol>`).join('');
+  }).catch(() => { $('rules').innerHTML = `<p class="empty">${esc(t('serverDown'))}</p>`; });
+</script>

@@ -1,44 +1,46 @@
 ---
-// Estructura común: <head> con SEO, cabecera con el estado del server, navegación, contenido y
-// el footer en pixel art de Chillán.
+// Estructura común: <head> con SEO (y versiones por idioma), cabecera con el estado del server,
+// navegación, contenido y el footer en pixel art de Chillán.
 import '../styles/site.css';
+import { dict, localePath } from '../i18n.js';
 
 interface Props {
-  title: string;          // texto del <title>
+  lang: 'es' | 'en';
+  title: string;
   description?: string;
-  path: string;           // ruta de la página ('/', '/top'...), marca el link actual
+  path: string;           // ruta sin idioma ('/', '/top'...): marca el link actual y arma el cambio de idioma
   canonical?: boolean;
 }
 
-const {
-  title,
-  description = 'Retro76: OT server chileno de Tibia 7.6 (Open Tibia). PvP retro, comunidad latina, baja latencia desde Chile y sistemas custom: gemas, El Crisol, arenas y más. Crea tu cuenta gratis y descarga el cliente.',
-  path,
-  canonical = true,
-} = Astro.props;
+const { lang, title, path, canonical = true } = Astro.props;
+const T = dict(lang);
+const description = Astro.props.description || T.description;
+const other = lang === 'en' ? 'es' : 'en';
+const site = 'https://retro76.cl';
+const url = (l: string) => site + (localePath(l, path) === '/' ? '/' : localePath(l, path));
 
-const NAV_GAME = [
-  ['/', 'Live'], ['/top', 'Top'], ['/power', 'Power'], ['/pk', 'PK'], ['/muertes', 'Muertes'],
-  ['/gemas', 'Gemas'], ['/spells', 'Spells'], ['/reglas', 'Reglas'], ['/info', 'Info'],
-];
-const NAV_PLAY = [['/cuenta', 'Cuenta'], ['/cliente', 'Cliente'], ['/premium', 'Premium'], ['/bugs', 'Bugs']];
-const url = 'https://retro76.cl' + (path === '/' ? '/' : path);
+const NAV_GAME = ['/', '/top', '/power', '/pk', '/muertes', '/gemas', '/spells', '/reglas', '/info'];
+const NAV_PLAY = ['/cuenta', '/cliente', '/premium', '/bugs'];
+const navLink = (p: string) => ({ href: localePath(lang, p), label: T.nav[p as keyof typeof T.nav], current: p === path });
 ---
 <!doctype html>
-<html lang="es-CL">
+<html lang={T.htmlLang === 'en' ? 'en' : T.htmlLang}>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0d0d0c">
   <title>{title}</title>
   <meta name="description" content={description}>
-  {canonical && <link rel="canonical" href={url}>}
+  {canonical && <link rel="canonical" href={url(lang)}>}
+  {canonical && <link rel="alternate" hreflang="es" href={url('es')}>}
+  {canonical && <link rel="alternate" hreflang="en" href={url('en')}>}
+  {canonical && <link rel="alternate" hreflang="x-default" href={url('es')}>}
   <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="/assets/brand/favicon.png">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Retro76">
-  <meta property="og:locale" content="es_CL">
-  <meta property="og:url" content={url}>
+  <meta property="og:locale" content={T.ogLocale}>
+  <meta property="og:url" content={url(lang)}>
   <meta property="og:title" content={title}>
   <meta property="og:description" content={description}>
   <meta property="og:image" content="https://retro76.cl/assets/brand/favicon.png">
@@ -48,21 +50,20 @@ const url = 'https://retro76.cl' + (path === '/' ? '/' : path);
 <body>
   <div class="wrap">
     <header class="site-head">
-      <a class="brand" href="/">
+      <a class="brand" href={localePath(lang, '/')}>
         <img src="/assets/brand/favicon.png" alt="" width="24" height="24">
-        Retro76 <small>Tibia 7.6 · Chile</small>
+        Retro76 <small>{T.tagline}</small>
       </a>
-      <p class="status" id="status" aria-live="polite"><span class="dot"></span><span id="status-text">…</span></p>
+      <div class="head-right">
+        <p class="status" id="status" aria-live="polite"><span class="dot"></span><span id="status-text">…</span></p>
+        <a class="lang-switch" href={localePath(other, path)} hreflang={other} lang={other} title={T.switchTitle}>{T.switchLabel}</a>
+      </div>
     </header>
-    <nav class="site-nav" aria-label="Secciones">
+    <nav class="site-nav" aria-label={T.navLabel}>
       <ul>
-        {NAV_GAME.map(([href, label]) => (
-          <li><a href={href} aria-current={href === path ? 'page' : undefined}>{label}</a></li>
-        ))}
+        {NAV_GAME.map(navLink).map((n) => <li><a href={n.href} aria-current={n.current ? 'page' : undefined}>{n.label}</a></li>)}
         <li class="sep" aria-hidden="true"></li>
-        {NAV_PLAY.map(([href, label]) => (
-          <li><a href={href} aria-current={href === path ? 'page' : undefined}>{label}</a></li>
-        ))}
+        {NAV_PLAY.map(navLink).map((n) => <li><a href={n.href} aria-current={n.current ? 'page' : undefined}>{n.label}</a></li>)}
       </ul>
     </nav>
     <main>
@@ -70,7 +71,7 @@ const url = 'https://retro76.cl' + (path === '/' ? '/' : path);
     </main>
   </div>
 
-  <footer class="chillan-scene" id="scene" role="img" aria-label="Centro de Chillán, Chile, en pixel art: la Catedral y la Cruz Monumental, la Plaza de Armas con el monumento a Bernardo O'Higgins, árboles, faroles, gente paseando y la cordillera de los Andes.">
+  <footer class="chillan-scene" id="scene" role="img" aria-label={T.sceneLabel}>
     <img class="still-day" src="/assets/footer/chillan-day.png" alt="" width="415" height="137" loading="lazy">
     <img class="still-night" src="/assets/footer/chillan-night.png" alt="" width="415" height="137" loading="lazy">
     <canvas width="415" height="137" aria-hidden="true"></canvas>
@@ -79,18 +80,17 @@ const url = 'https://retro76.cl' + (path === '/' ? '/' : path);
     <canvas width="415" height="137" aria-hidden="true"></canvas>
   </footer>
   <script is:inline src="/assets/footer/chillan-footer.js" defer></script>
+  <script type="application/json" id="i18n" set:html={JSON.stringify(T.js)} />
 
   <script>
-    import { getData } from '../lib/client.js';
+    import { getData, t } from '../lib/client.js';
     const dot = document.querySelector('#status .dot');
     const text = document.getElementById('status-text');
     getData().then((d) => {
       const s = d.server || {};
       dot.classList.add(s.online ? 'on' : 'off');
-      text.textContent = s.online
-        ? `en línea · ${s.players_online} jugando`
-        : 'fuera de línea';
-    }).catch(() => { text.textContent = 'sin conexión'; });
+      text.textContent = s.online ? t('online', { n: s.players_online }) : t('offline');
+    }).catch(() => { text.textContent = t('noConnection'); });
   </script>
 </body>
 </html>

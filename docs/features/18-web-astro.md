@@ -25,12 +25,35 @@ compilado y JavaScript solo donde hay datos en vivo. Las APIs de `web/server.py`
 | `/cliente` | `pages/cliente.astro` | Estático |
 | `/character/<nombre>` | `pages/character.astro` | `/api/character/<nombre>` |
 
+Todas existen también en inglés bajo `/en` (ver Idiomas). Las páginas están en `src/pages/[...lang]/`.
+
 Comunes: `layouts/Base.astro` (head con SEO, cabecera con el estado del server, navegación y el
 [footer de Chillán](17-web-footer-chillan.md)), `styles/site.css` (todo el CSS) y
 `lib/client.js` (pedir `/api/data` una vez por página, escapar texto, links a personajes,
 captcha de formularios).
 
 `/items` y `/items-all` (catálogo privado con token) siguen siendo los HTML de siempre.
+
+## Idiomas (español e inglés)
+
+Cada página existe dos veces: en español en la raíz (`/top`) y en inglés bajo `/en` (`/en/top`).
+Las páginas viven en `src/pages/[...lang]/` y `getStaticPaths` genera las dos versiones; el
+botón de la cabecera lleva a la misma página en el otro idioma y el `<head>` declara las dos con
+`hreflang`.
+
+- **Textos:** todos en `src/i18n.js` (`dict(lang)`). Una página nueva o un texto nuevo se agrega
+  en los dos idiomas ahí.
+- **JS del navegador:** solo recibe `dict(lang).js`, embebido en el HTML (`<script id="i18n">`);
+  `lib/client.js` lo lee con `t('clave', {vars})`. Los links a personajes llevan el prefijo del
+  idioma (`/en/character/...`).
+- **Lo que manda el servidor en español** (mensajes de los formularios, "hace 4d", tipos de
+  hechizo, nombres de planes y extras de premium) se traduce en el navegador: `serverText()`,
+  `relTime()` y los mapas `server`, `kinds`, `planLabels`, `addonDesc` de `i18n.js`. Si se agrega
+  un mensaje nuevo en `web/*.py`, sumarlo a `js.server` del inglés.
+- **Reglas e info:** `OTINFO.en` (traducción de `OTINFO`), que `/api/data` entrega como
+  `otinfo_en`. Si se cambia `OTINFO`, actualizar también `OTINFO.en`.
+- **Sin traducir:** los números siguen con formato chileno (`3.267.392`) y los nombres de
+  criaturas, ítems y hechizos quedan como en el juego (en inglés).
 
 ## Diseño
 

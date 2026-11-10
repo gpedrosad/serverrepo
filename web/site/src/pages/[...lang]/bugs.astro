@@ -1,0 +1,75 @@
+---
+import Base from '../../layouts/Base.astro';
+import { dict, langOf, langPaths, localePath } from '../../i18n.js';
+export function getStaticPaths() { return langPaths(); }
+const lang = langOf(Astro.params.lang);
+const T = dict(lang);
+const B = T.bugs;
+---
+<Base lang={lang} title={B.pageTitle} path="/bugs" description={B.description}>
+  <section>
+    <h1 class="title">{B.title}</h1>
+    <p class="lede">{B.lede}</p>
+  </section>
+  <section>
+    <form id="bug-form" class="form">
+      <div class="honeypot" aria-hidden="true"><input type="text" name="company" tabindex="-1" autocomplete="off"></div>
+      <input type="hidden" name="form_ts">
+      <input type="hidden" name="challenge_id">
+      <div class="row">
+        <label class="field"><span>{B.character}</span>
+          <input type="text" name="character" maxlength="20" pattern="[a-zA-Z ]{0,20}" autocomplete="username"></label>
+        <label class="field"><span>{B.type}</span>
+          <select name="category" required>
+            <option value="">{B.choose}</option>
+            {Object.entries(B.cats).map(([v, label]) => <option value={v}>{label}</option>)}
+          </select></label>
+      </div>
+      <label class="field"><span>{B.titleField}</span>
+        <input type="text" name="title" required minlength="5" maxlength="80"></label>
+      <label class="field"><span>{B.descField}</span>
+        <textarea name="description" required minlength="15" maxlength="2000" rows="6"></textarea></label>
+      <label class="field"><span>{B.captcha} <span id="captcha-q">…</span></span>
+        <input type="number" name="captcha" required inputmode="numeric"></label>
+      <div class="actions"><button type="submit" class="btn primary" id="submit">{B.submit}</button></div>
+      <p id="result" class="result hidden" role="status"></p>
+    </form>
+  </section>
+</Base>
+
+<script>
+  import { loadChallenge, showResult, t, $ } from '../../lib/client.js';
+  const form = $('bug-form');
+  const result = $('result');
+  const question = $('captcha-q');
+  loadChallenge(form, question);
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    $('submit').disabled = true;
+    try {
+      const r = await fetch('/api/bug-report', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          character: form.character.value.trim(),
+          category: form.category.value,
+          title: form.title.value.trim(),
+          description: form.description.value.trim(),
+          captcha: form.captcha.value,
+          challenge_id: form.challenge_id.value,
+          company: form.company.value,
+          form_ts: parseFloat(form.form_ts.value),
+        }),
+      });
+      const d = await r.json();
+      showResult(result, !!d.ok, d.message || t('error'));
+      if (d.ok) form.reset();
+    } catch {
+      showResult(result, false, t('connError'));
+    } finally {
+      $('submit').disabled = false;
+      loadChallenge(form, question);
+    }
+  });
+</script>

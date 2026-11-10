@@ -1,1 +1,0 @@
-import{g as o}from"./client.C1Gwyfwj.js";const s=document.querySelector("#status .dot"),e=document.getElementById("status-text");o().then(n=>{const t=n.server||{};s.classList.add(t.online?"on":"off"),e.textContent=t.online?`en línea · ${t.players_online} jugando`:"fuera de línea"}).catch(()=>{e.textContent="sin conexión"});

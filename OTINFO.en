@@ -1,0 +1,75 @@
+Retro76 — Tibia 7.6 | retro76.cl:7171
+
+RULES
+  General · Reference penalties; staff adjust them by severity (warning → 3-7 days → permanent)
+  Bots · No cavebot, healbot, aimbot, modified client or auto-loot
+  Bots · Macros only for training and runemaking; not for hunting, PvP or looting
+  Bots · Benefiting from someone else's cheat is also punished
+  MC · At most 4 characters online per person
+  MC · Not allowed in combat: hunting, PvP, wars, healing, MW, spawn blocking or harassing players
+  MC · Caught in combat: ban on the highest-level character
+  MC · Passive use is OK: runes in the depot or scouting without joining fights
+  Abuse · Don't abuse or hide bugs; RMT and account selling = ban
+  Abuse · No giving away exp, rookgaard hunting, or alts blocking spawns or wars
+  PvP · Hunting players is normal; it doesn't count as griefing
+  PvP · It is griefing to block NPCs/spawns or disrupt wars with low-level characters
+  Account · Offensive names or names imitating a GM → rename or ban
+  Account · Serious insults, spam and advertising other OTs → punished
+  Reports · Tell the staff in game if you see bots, MC or abuse
+
+RATES
+  Exp per level: 9-40 x5 | 41-70 x4 | 71-100 x2 | 101+ x1  |  Loot x3  |  Skills x4  |  ML x3  |  Food regen x5
+
+PREMIUM
+  Voluntary donation to support the server
+  Includes premium time with classic 7.6 perks
+  +10% exp and +10% monster loot  |  Skills and ML x2 (on top of the global rates)
+  Faster health/mana regeneration  |  6 h/day of training (free: 2 h)
+  Classic 7.6 premium outfits (citizen, hunter, mage, knight)
+  Promotion with Orlan: level 20 and 20k gp (free or premium). Premium improves regeneration further (retro76.cl)
+  Suggested amounts: 1 week $4,000  |  2 weeks $6,000 (CLP)
+
+DEATH
+  -7% exp, ML, skills and equipment  |  -100% backpack
+
+PVP
+  PvP world with skulls  |  PZ lock 10 sec  |  !pz
+  Personal yellow skull: if a player hits you, you see them yellow for 1 min and killing them in that window gives no frag
+  White skull: 1 min when attacking  |  15 min when killing
+  3 frags = red skull (6 h)  |  10 frags = ban
+  1 frag every 5 h  |  !frags
+  Killing a player: you get 50% of the exp they lost (based on your damage)
+
+COMBAT
+  Runes/spells: 2 sec exhaust  |  Healing: 1 sec
+  Arrows/bolts are used up  |  Spears and stones are not
+
+CAP / RUNES
+  Capacity enabled  |  Base 300 (level <=10) + capgain per level  |  Recalculated at login
+  Rune weight: standard Tibia 7.6 (oz per charge)
+
+CUSTOM
+  Trainer Monk (training room 133-160, 7-18)
+  Training: 2 h/day (premium 6 h), red warning when entering and at 5 min, white counter at the bottom
+  Angry Troll (when killing a Troll)
+  exori gran (Knight)  |  exevo vis lux Energy Beam (Sorcerer ML 10)
+  exevo pan (Create Food, all vocations, 30 mana)
+  Magic Wall: use the rune at ML 9 | conjure (adevo grav tera) at ML 14, all vocations
+  Soft Boots (3549): +3 HP and +12 MP every 3 s, 4 h of use; when used up → worn (3550)
+  Perac: arrows (50=100 gp), bolts (50=150 gp), power bolts (50=400 gp)
+  Seller: mana/life fluid, rope, shovel, backpack
+  Parived: buys gems and diamonds (say gems)
+  Tonka (1 floor above Parived): 20 small → 1 big (say exchange)
+  Golden ring (2179) in the ring slot: +20% gold from monsters
+  Golden amulet (2130) equipped: loot gold goes straight to the bank when you kill (no need to open the corpse)
+  Ring + amulet: the ring adds its bonus first and the amulet deposits that total in the bank
+  Imbuements (Use a gem on an equipped item; the imbue stays on the item if you lose it):
+    Yellow gem → boots: +10 haste each, max 3 (stacks with BOH)
+    Violet gem → wand/rod: +1 ML each, max 4 (wand damage and shown ML)
+    Big ruby → weapon: +5% / +9% / +16% attack speed, max 3 (nightglass: 5 stacks)
+    Big emerald → armor: +1 sword/club/axe/dist each, max 4 (demon armor 6) (P/K)
+    Blue gem → crystal arrow: +5% attack speed each, max 5
+  Levitate: `exani hur "up"` / `exani hur "down"`
+
+OTHER
+  Autosave 10 min  |  Free spells  |  Party/Guilds

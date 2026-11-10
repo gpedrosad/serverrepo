@@ -1,0 +1,80 @@
+---
+import Base from '../../layouts/Base.astro';
+import { dict, langOf, langPaths } from '../../i18n.js';
+export function getStaticPaths() { return langPaths(); }
+const lang = langOf(Astro.params.lang);
+const T = dict(lang);
+---
+<Base lang={lang} title={`${T.top.title} — Retro76`} path="/top" description={T.top.description}>
+  <section>
+    <h1 class="title">{T.top.title}</h1>
+    <p class="lede">{T.top.lede}</p>
+  </section>
+  <section>
+    <div class="filters" id="rank-tabs" role="group"></div>
+    <div class="filters" id="voc-tabs" role="group"></div>
+    <div class="table-scroll">
+      <table>
+        <thead id="rank-head"></thead>
+        <tbody id="rank-body"><tr><td class="empty">{T.loading}</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+</Base>
+
+<script>
+  import { getData, esc, charLink, rowsOrEmpty, relTime, t, $ } from '../../lib/client.js';
+
+  const RANKS = {
+    level: ['level', 'exp_fmt', 'maglevel', 'vocation_short', 'lastlogin_rel'],
+    ml: ['maglevel', 'level', 'vocation_short', 'lastlogin_rel'],
+    club: ['club', 'level', 'vocation_short', 'lastlogin_rel'],
+    sword: ['sword', 'level', 'vocation_short', 'lastlogin_rel'],
+    axe: ['axe', 'level', 'vocation_short', 'lastlogin_rel'],
+    distance: ['distance', 'level', 'vocation_short', 'lastlogin_rel'],
+    frags: ['frags', 'level', 'vocation_short', 'lastlogin_rel'],
+  };
+  const TEXT_COLS = new Set(['vocation_short', 'lastlogin_rel']);
+  const state = { rank: 'level', voc: 'all', data: null };
+
+  function buttons(el, items, current, attr) {
+    el.innerHTML = items.map(([k, label]) =>
+      `<button type="button" data-${attr}="${esc(k)}" aria-pressed="${k === current}">${esc(label)}</button>`).join('');
+  }
+
+  function cell(p, c) {
+    const v = p[c] ?? '—';
+    return c === 'lastlogin_rel' ? relTime(v) : v;
+  }
+
+  function render() {
+    const d = state.data;
+    if (!d) return;
+    const tabs = t('rankTabs');
+    buttons($('rank-tabs'), Object.keys(RANKS).map((k) => [k, tabs[k]]), state.rank, 'rank');
+    buttons($('voc-tabs'), [['all', t('allVocs')], ...(d.vocations || []).map((v) => [v, v])], state.voc, 'voc');
+    const cols = RANKS[state.rank];
+    const label = t('cols');
+    const cls = (c) => `${TEXT_COLS.has(c) ? 'muted' : 'n'}${c === cols[0] ? ' key' : ''}${TEXT_COLS.has(c) ? ' wide-only' : ''}`;
+    $('rank-head').innerHTML = `<tr><th>#</th><th>${esc(t('name'))}</th>${cols.map((c) =>
+      `<th class="${TEXT_COLS.has(c) ? 'wide-only' : 'n'}">${esc(label[c])}</th>`).join('')}</tr>`;
+    let list = (d.rankings || {})[state.rank] || [];
+    if (state.voc !== 'all') list = list.filter((p) => p.vocation === state.voc);
+    $('rank-body').innerHTML = rowsOrEmpty(list, cols.length + 2, (p, i) =>
+      `<tr><td class="rank">${i + 1}</td><td>${charLink(p.name)}</td>${cols.map((c) =>
+        `<td class="${cls(c)}">${esc(cell(p, c))}</td>`).join('')}</tr>`,
+      t('emptyRanking'));
+  }
+
+  document.querySelector('main').addEventListener('click', (e) => {
+    const r = e.target.closest('[data-rank]');
+    const v = e.target.closest('[data-voc]');
+    if (r) state.rank = r.dataset.rank;
+    else if (v) state.voc = v.dataset.voc;
+    else return;
+    render();
+  });
+
+  getData().then((d) => { state.data = d; render(); })
+    .catch(() => { $('rank-body').innerHTML = `<tr><td class="empty">${esc(t('serverDown'))}</td></tr>`; });
+</script>

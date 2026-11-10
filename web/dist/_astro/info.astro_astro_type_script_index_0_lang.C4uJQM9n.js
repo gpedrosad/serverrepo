@@ -1,0 +1,3 @@
+import{g as a,i as r,$ as i,e,t as s}from"./client.PbclRlB1.js";const f=new Set(["REGLAS","RULES","PREMIUM"]);a().then(t=>{const o=(r()&&t.otinfo_en?.length?t.otinfo_en:t.otinfo||[]).filter(n=>!f.has(n.title));if(!o.length){i("info").innerHTML=`<p class="empty">${e(s("noInfo"))}</p>`;return}i("info").innerHTML=o.map(n=>`
+      <h2 class="label">${e(n.title)}</h2>
+      <ul style="list-style:none;margin-bottom:1.75rem">${n.lines.map(l=>`<li class="muted" style="padding:.2rem 0">${e(l)}</li>`).join("")}</ul>`).join("")}).catch(()=>{i("info").innerHTML=`<p class="empty">${e(s("serverDown"))}</p>`});

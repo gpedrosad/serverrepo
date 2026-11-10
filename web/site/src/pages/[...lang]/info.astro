@@ -1,0 +1,27 @@
+---
+import Base from '../../layouts/Base.astro';
+import { dict, langOf, langPaths, localePath } from '../../i18n.js';
+export function getStaticPaths() { return langPaths(); }
+const lang = langOf(Astro.params.lang);
+const T = dict(lang);
+---
+<Base lang={lang} title={`${T.info.title} — Retro76`} path="/info" description={T.info.description}>
+  <section>
+    <h1 class="title">{T.info.title}</h1>
+    <p class="lede">{T.info.lede}</p>
+  </section>
+  <section id="info"><p class="empty">{T.loading}</p></section>
+</Base>
+
+<script>
+  import { getData, esc, isEnglish, t, $ } from '../../lib/client.js';
+  const SKIP = new Set(['REGLAS', 'RULES', 'PREMIUM']);
+  getData().then((d) => {
+    const info = (isEnglish() && d.otinfo_en?.length) ? d.otinfo_en : (d.otinfo || []);
+    const sections = info.filter((s) => !SKIP.has(s.title));
+    if (!sections.length) { $('info').innerHTML = `<p class="empty">${esc(t('noInfo'))}</p>`; return; }
+    $('info').innerHTML = sections.map((s) => `
+      <h2 class="label">${esc(s.title)}</h2>
+      <ul style="list-style:none;margin-bottom:1.75rem">${s.lines.map((l) => `<li class="muted" style="padding:.2rem 0">${esc(l)}</li>`).join('')}</ul>`).join('');
+  }).catch(() => { $('info').innerHTML = `<p class="empty">${esc(t('serverDown'))}</p>`; });
+</script>

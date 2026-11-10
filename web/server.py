@@ -53,6 +53,21 @@ DIST_DIR = Path(__file__).resolve().parent / "dist"
 INDEX = DIST_DIR / "index.html"
 CHARACTER_PAGE = DIST_DIR / "character.html"
 SITE_PAGES = ("top", "power", "pk", "muertes", "gemas", "spells", "reglas", "info", "cuenta", "cliente", "premium", "bugs")
+CHARACTER_PAGE_EN = DIST_DIR / "en" / "character.html"
+
+
+def site_page_file(path: str) -> Path | None:
+    """'/top' -> dist/top.html, '/en' -> dist/en.html, '/en/top' -> dist/en/top.html; None si no es página."""
+    name = path.strip("/")
+    if name in ("", "index.html"):
+        return DIST_DIR / "index.html"
+    if name == "en":
+        return DIST_DIR / "en.html"
+    if name in SITE_PAGES:
+        return DIST_DIR / f"{name}.html"
+    if name.startswith("en/") and name[3:] in SITE_PAGES:
+        return DIST_DIR / "en" / f"{name[3:]}.html"
+    return None
 ITEMS_PAGE = Path(__file__).resolve().parent / "items.html"
 ITEMS_ALL_PAGE = Path(__file__).resolve().parent / "items-all.html"
 DOWNLOADS_DIR = Path(__file__).resolve().parent / "downloads"
@@ -208,16 +223,16 @@ class Handler(BaseHTTPRequestHandler):
             self._static(path, head_only=True)
         elif path.startswith("/_astro/"):
             self._astro_asset(path, head_only=True)
-        elif path in ("/", "/index.html") or path.lstrip("/") in SITE_PAGES:
+        elif site_page_file(path):
             self._site_page(path, head_only=True)
         else:
             self.send_error(404)
 
     def do_GET(self) -> None:
         path = self.path.split("?", 1)[0]
-        if path in ("/", "/index.html"):
+        if path in ("/", "/index.html", "/en"):
             analytics.record_visit(client_ip(self))
-            self._file(INDEX, "text/html; charset=utf-8", cache="no-cache")
+            self._site_page(path)
         elif path in ("/favicon.png", "/favicon.ico"):
             self._file(WEB_DIR / "assets/brand/favicon.png", "image/png", cache="public, max-age=86400")
         elif path == "/api/data":
@@ -236,7 +251,9 @@ class Handler(BaseHTTPRequestHandler):
             self._character_api(path[len("/api/character/"):])
         elif path.startswith("/character/"):
             self._file(CHARACTER_PAGE, "text/html; charset=utf-8", cache="no-cache")
-        elif path.lstrip("/") in SITE_PAGES:
+        elif path.startswith("/en/character/"):
+            self._file(CHARACTER_PAGE_EN, "text/html; charset=utf-8", cache="no-cache")
+        elif site_page_file(path):
             self._site_page(path)
         elif path.startswith("/_astro/"):
             self._astro_asset(path)
@@ -415,6 +432,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def _sitemap_xml(self) -> None:
         urls = [f"{SITE_URL}/"] + [f"{SITE_URL}/{page}" for page in SITE_PAGES]
+        urls += [f"{SITE_URL}/en"] + [f"{SITE_URL}/en/{page}" for page in SITE_PAGES]
         if PLAYERS_DIR.is_dir():
             names = sorted(
                 p.stem
@@ -531,10 +549,7 @@ class Handler(BaseHTTPRequestHandler):
         self._json(200, result)
 
     def _site_page(self, url_path: str, *, head_only: bool = False) -> None:
-        name = url_path.strip("/") or "index"
-        if name == "index.html":
-            name = "index"
-        self._file(DIST_DIR / f"{name}.html", "text/html; charset=utf-8", head_only=head_only, cache="no-cache")
+        self._file(site_page_file(url_path), "text/html; charset=utf-8", head_only=head_only, cache="no-cache")
 
     def _astro_asset(self, url_path: str, *, head_only: bool = False) -> None:
         """JS/CSS de Astro: el nombre lleva hash, así que se cachea un año."""

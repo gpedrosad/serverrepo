@@ -1,0 +1,227 @@
+---
+import Base from '../../layouts/Base.astro';
+import { dict, langOf, langPaths } from '../../i18n.js';
+
+export function getStaticPaths() { return langPaths(); }
+const lang = langOf(Astro.params.lang);
+const T = dict(lang);
+const P = T.premium;
+
+// Valores de respaldo (los mismos de web/premium_orders.py). La página los reemplaza con
+// /api/premium-config al cargar, así que el precio real siempre lo manda el servidor.
+const PLANS = [
+  { id: '1954', days: 7, price: 4000, image: '/assets/premium/1954-small.jpg' },
+  { id: '2345', days: 14, price: 6000, image: '/assets/premium/2345-small.jpg', save: 2000 },
+].map((p) => ({ ...p, label: P.planLabels[p.id as '1954' | '2345'] }));
+const clp = (n: number) => '$' + n.toLocaleString('es-CL');
+---
+<Base lang={lang} title="Premium — Retro76" path="/premium" description={P.description}>
+  <section>
+    <h1 class="title">{P.title}</h1>
+    <p class="lede">{P.lede}</p>
+  </section>
+
+  <section>
+    <dl class="figures">
+      <div><dt>{P.figExp}</dt><dd>+10%</dd></div>
+      <div><dt>{P.figSkills}</dt><dd>x2</dd></div>
+      <div><dt>{P.figTraining}</dt><dd>6 h</dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <h2 class="label">{P.plans}</h2>
+    <div class="plans" id="plans">
+      {PLANS.map((p) => (
+        <div class="plan" data-plan-id={p.id}>
+          <p class="muted">{p.label} <span class="tag">{p.save ? `${P.save} ${clp(p.save)}` : ''}</span></p>
+          <p class="price" data-price>{clp(p.price)}</p>
+          <p class="faint small">{p.days} {P.days} · {clp(Math.round(p.price / p.days))} {P.perDay}</p>
+          <button type="button" class="btn" data-choose={p.id}>{P.choose}</button>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section>
+    <h2 class="label">{P.includes}</h2>
+    <dl class="defs">{P.perks.map(([title, desc]) => <><dt>{title}</dt><dd>{desc}</dd></>)}</dl>
+  </section>
+
+  <section>
+    <h2 class="label">{P.compare}</h2>
+    <div class="compare">
+      <div><h3>{P.free}</h3><ul>{P.freeList.map((x) => <li>{x}</li>)}</ul></div>
+      <div><h3 class="accent">Premium</h3><ul>{P.premList.map((x) => <li>{x}</li>)}</ul></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="label">{P.how}</h2>
+    <ol class="numbered">
+      <li>{P.steps[0]}</li>
+      <li>{P.steps[1]}</li>
+      <li>{P.steps[2]} <span class="mono">!premmy</span> {P.steps[3]}</li>
+    </ol>
+  </section>
+
+  <section id="donar">
+    <h2 class="label">{P.donate} <span class="aside">{P.total} <span class="mono accent" id="total">—</span></span></h2>
+    <form id="order" class="form" style="max-width:none" enctype="multipart/form-data">
+      <div class="honeypot" aria-hidden="true"><input type="text" name="company" tabindex="-1" autocomplete="off"></div>
+
+      <fieldset style="border:0;padding:0;margin:0">
+        <legend class="muted small" style="margin-bottom:.25rem">{P.step1}</legend>
+        <div id="plan-choices">
+          {PLANS.map((p, i) => (
+            <label class="choice">
+              <input type="radio" name="plan_id" value={p.id} checked={i === 1}>
+              <img src={p.image} alt="" width="32" height="32" loading="lazy">
+              <span><strong>{p.label}</strong> <span class="price">{clp(p.price)}</span><br><span class="faint small">{p.days} {P.premiumDays}</span></span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <fieldset style="border:0;padding:0;margin:0">
+        <legend class="muted small" style="margin-bottom:.25rem">{P.step2}</legend>
+        <div id="addon-choices"><p class="faint small">{T.loading}</p></div>
+      </fieldset>
+
+      <fieldset style="border:0;padding:0;margin:0" class="form">
+        <legend class="muted small" style="margin-bottom:.25rem">{P.step3}</legend>
+        <div class="note">
+          <p>{P.transfer} <strong class="mono" id="total-2">—</strong> {P.attach}</p>
+          <p class="muted small" id="pay-note"></p>
+          <p class="small muted">{P.holder}: <span class="mono" id="pay-holder">—</span> · {P.rut}: <span class="mono" id="pay-rut">—</span> · {P.bankAccount}: <span class="mono" id="pay-account">—</span></p>
+        </div>
+        <label class="field" style="max-width:28rem"><span>{P.character}</span>
+          <input name="character_name" required maxlength="20" pattern="[A-Za-z ]{3,20}"></label>
+        <label class="field" style="max-width:28rem"><span>{P.receipt}</span>
+          <input name="receipt" type="file" required accept=".jpg,.jpeg,.png,.pdf,.webp,image/jpeg,image/png,application/pdf"></label>
+        <div class="actions"><button type="submit" class="btn primary" id="submit">{P.submit}</button></div>
+        <p id="result" class="result hidden" role="status"></p>
+      </fieldset>
+    </form>
+  </section>
+</Base>
+
+<script>
+  import { esc, fmtPrice, showResult, serverText, t, $ } from '../../lib/client.js';
+
+  const form = $('order');
+  let config = null;
+  const formTs = Date.now() / 1000;   // anti-bot del servidor: mínimo 3 s entre abrir y enviar
+  const once = new Set();
+
+  // Eventos del embudo (web/analytics.py PREMIUM_EVENTS; resumen en scripts/web/premium-funnel.py).
+  function track(event, detail) {
+    try {
+      fetch('/api/premium-event', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ event, detail: detail || undefined }), keepalive: true,
+      }).catch(() => {});
+    } catch { /* noop */ }
+  }
+  function trackOnce(event, detail) { if (!once.has(event)) { once.add(event); track(event, detail); } }
+
+  const plans = () => config?.plans || [];
+  const addons = () => config?.addons || [];
+  const selectedPlan = () => plans().find((p) => p.id === form.plan_id.value);
+  const selectedAddons = () => Object.fromEntries(addons().map((a) => [a.key, !!form.elements[a.key]?.checked]));
+  const total = () => (selectedPlan()?.price || 0) + addons().reduce((s, a) => s + (form.elements[a.key]?.checked ? a.price : 0), 0);
+
+  function updateTotal() {
+    const total_ = fmtPrice(total());
+    $('total').textContent = total_;
+    $('total-2').textContent = total_;
+    $('submit').textContent = t('sendReceipt', { t: total_ });
+  }
+
+  function renderConfig() {
+    const current = form.plan_id.value;
+    for (const p of plans()) {
+      const card = document.querySelector(`[data-plan-id="${p.id}"] [data-price]`);
+      if (card) card.textContent = fmtPrice(p.price);
+    }
+    $('plan-choices').innerHTML = plans().map((p) => `
+      <label class="choice">
+        <input type="radio" name="plan_id" value="${esc(p.id)}"${p.id === current ? ' checked' : ''}>
+        <img src="${esc(p.image)}" srcset="${esc(p.image2x)} 2x" alt="" width="32" height="32" loading="lazy">
+        <span><strong>${esc(t('planLabels')[p.id] || p.label)}</strong> <span class="price">${fmtPrice(p.price)}</span><br><span class="faint small">${p.days} ${esc(t('premiumDays'))}</span></span>
+      </label>`).join('');
+    $('addon-choices').innerHTML = addons().map((a) => `
+      <label class="choice">
+        <input type="checkbox" name="${esc(a.key)}" value="1">
+        <img src="${esc(a.image)}" srcset="${esc(a.image2x)} 2x" alt="" width="32" height="32" loading="lazy" onerror="this.style.visibility='hidden'">
+        <span><strong>${esc(a.label)}</strong> <span class="price">+${fmtPrice(a.price)}</span><br><span class="faint small">${esc(t('addonDesc')[a.key] || a.desc)}</span></span>
+      </label>`).join('');
+    const pay = config.payment || {};
+    $('pay-note').textContent = serverText(pay.note || '');
+    $('pay-holder').textContent = pay.holder || '—';
+    $('pay-rut').textContent = pay.rut || '—';
+    $('pay-account').textContent = pay.account || '—';
+    updateTotal();
+  }
+
+  track('tab_view');
+  fetch('/api/premium-config', { cache: 'no-store' })
+    .then((r) => r.json())
+    .then((c) => { config = c; renderConfig(); })
+    .catch(() => { $('addon-choices').innerHTML = `<p class="faint small">${esc(t('addonsError'))}</p>`; });
+
+  // "Elegir" en un plan: lo marca en el formulario y baja hasta él.
+  $('plans').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-choose]');
+    if (!b) return;
+    const radio = form.querySelector(`input[name="plan_id"][value="${b.dataset.choose}"]`);
+    if (radio) radio.checked = true;
+    track('checkout_open', { plan_id: b.dataset.choose, step: 1 });
+    form.dispatchEvent(new Event('change'));
+    $('donar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  form.addEventListener('focusin', () => trackOnce('checkout_open', { plan_id: form.plan_id.value || null, step: 1 }));
+
+  form.addEventListener('change', (e) => {
+    const t = e.target;
+    if (t.name === 'plan_id') {
+      track('plan_select', { plan_id: t.value });
+      trackOnce('step2', { plan_id: t.value });
+    } else if (addons().some((a) => a.key === t.name)) {
+      track('amulet_toggle', { addon: t.name, enabled: t.checked, plan_id: form.plan_id.value });
+    } else if (t.name === 'receipt' && t.files?.length) {
+      const f = t.files[0];
+      track('receipt_selected', { size: f.size, type: f.type || '', name_ext: (f.name.split('.').pop() || '').toLowerCase() });
+    }
+    updateTotal();
+  });
+
+  form.character_name.addEventListener('focus', () => {
+    trackOnce('step3', { plan_id: form.plan_id.value, addons: selectedAddons(), total: total() });
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = $('submit');
+    const result = $('result');
+    btn.disabled = true;
+    track('submit_click', {
+      plan_id: form.plan_id.value, addons: selectedAddons(), total: total(),
+      character_name_len: form.character_name.value.trim().length, has_receipt: !!form.receipt.files?.length,
+    });
+    try {
+      const fd = new FormData(form);
+      for (const a of addons()) fd.set(a.key, form.elements[a.key]?.checked ? '1' : '0');
+      fd.set('form_ts', String(formTs));
+      const r = await fetch('/api/premium-order', { method: 'POST', body: fd });
+      const d = await r.json();
+      showResult(result, !!d.ok, d.message || (d.ok ? t('donationSent') : t('error')));
+      if (d.ok) { form.reset(); updateTotal(); }
+    } catch {
+      track('submit_fail', { reason: 'network' });
+      showResult(result, false, t('sendFailed'));
+    }
+    btn.disabled = false;
+  });
+</script>

@@ -1,0 +1,68 @@
+---
+import Base from '../../layouts/Base.astro';
+import { dict, langOf, langPaths } from '../../i18n.js';
+export function getStaticPaths() { return langPaths(); }
+const lang = langOf(Astro.params.lang);
+const T = dict(lang);
+---
+<Base lang={lang} title={`${T.pk.title} — Retro76`} path="/pk" description={T.pk.description}>
+  <section>
+    <h1 class="title">{T.pk.title}</h1>
+    <p class="lede">{T.pk.lede}</p>
+  </section>
+  <section id="today-section" class="hidden">
+    <h2 class="label">{T.pk.today}</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>#</th><th>{T.pk.thName}</th><th class="n">PK</th><th class="n">{T.pk.thLevel}</th></tr></thead>
+        <tbody id="today"></tbody>
+      </table>
+    </div>
+  </section>
+  <section>
+    <h2 class="label">{T.pk.expTitle}
+      <span class="aside filters" id="sort" role="group">
+        <button type="button" data-sort="exp" aria-pressed="true">{T.pk.byExp}</button>
+        <button type="button" data-sort="kills" aria-pressed="false">{T.pk.byKills}</button>
+      </span>
+    </h2>
+    <p class="faint small">{T.pk.estimate}</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>#</th><th>{T.pk.thName}</th><th class="n">{T.pk.thExp}</th><th class="n">PK</th><th class="n">{T.pk.thLevel}</th><th class="wide-only">{T.pk.thVoc}</th></tr></thead>
+        <tbody id="pk"><tr><td colspan="6" class="empty">{T.loading}</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+</Base>
+
+<script>
+  import { getData, esc, charLink, rowsOrEmpty, t, $ } from '../../lib/client.js';
+  let data = null;
+  let sort = 'exp';
+
+  function render() {
+    const today = data.frags_today || [];
+    $('today-section').classList.toggle('hidden', !today.length);
+    $('today').innerHTML = today.map((p, i) =>
+      `<tr><td class="rank">${i + 1}</td><td>${charLink(p.name)}</td><td class="n key">${p.frags}</td><td class="n">${p.level}</td></tr>`).join('');
+    const list = [...(data.top_pk_exp || [])].sort(sort === 'kills'
+      ? (a, b) => (b.kills - a.kills) || (b.exp - a.exp)
+      : (a, b) => (b.exp - a.exp) || (b.kills - a.kills));
+    $('pk').innerHTML = rowsOrEmpty(list, 6, (p, i) =>
+      `<tr><td class="rank">${i + 1}</td><td>${charLink(p.name)}</td>` +
+      `<td class="n${sort === 'exp' ? ' key' : ''}">${esc(p.exp_fmt)}</td><td class="n${sort === 'kills' ? ' key' : ''}">${p.kills}</td>` +
+      `<td class="n">${p.level}</td><td class="muted wide-only">${esc(p.vocation_short)}</td></tr>`,
+      t('noPk'));
+    document.querySelectorAll('#sort button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.sort === sort)));
+  }
+
+  $('sort').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-sort]');
+    if (!b || !data) return;
+    sort = b.dataset.sort;
+    render();
+  });
+  getData().then((d) => { data = d; render(); })
+    .catch(() => { $('pk').innerHTML = `<tr><td colspan="6" class="empty">${esc(t('serverDown'))}</td></tr>`; });
+</script>

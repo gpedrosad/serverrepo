@@ -1,0 +1,158 @@
+---
+import Base from '../../layouts/Base.astro';
+import { dict, langOf, langPaths } from '../../i18n.js';
+// Quién suelta cada gema: se arma al compilar desde web/data/gem-drops.json (sin JS para mostrarlo).
+import drops from '../../../../data/gem-drops.json';
+
+export function getStaticPaths() { return langPaths(); }
+const lang = langOf(Astro.params.lang);
+const T = dict(lang);
+const G = T.gems;
+
+const img = (id: number, large = false) => {
+  const base = `/assets/gems/${id}-${large ? 'large' : 'small'}`;
+  return { src: `${base}.jpg`, srcset: `${base}@2x.jpg 2x` };
+};
+
+// Ids y nombres del juego; los textos vienen de i18n.js en el mismo orden.
+const EXCHANGE = [
+  { small: 2147, big: 2156, smallName: 'Ruby', bigName: 'Big Ruby' },
+  { small: 2149, big: 2155, smallName: 'Emerald', bigName: 'Big Emerald' },
+  { small: 2150, big: 2153, smallName: 'Amethyst', bigName: 'Violet Gem' },
+  { small: 2146, big: 2154, smallName: 'Sapphire', bigName: 'Yellow Gem' },
+  { small: 2145, big: 2158, smallName: 'Diamond', bigName: 'Blue Gem' },
+].map((x, i) => ({ ...x, bonus: G.exchangeRows[i] }));
+
+const IMBUE = [
+  { id: 2154, name: 'Yellow Gem' }, { id: 2153, name: 'Violet Gem' }, { id: 2156, name: 'Big Ruby' },
+  { id: 2155, name: 'Big Emerald' }, { id: 2158, name: 'Blue Gem' },
+].map((g, i) => ({ ...g, item: G.imbueRows[i][0], effect: G.imbueRows[i][1], max: G.imbueRows[i][2] }));
+
+// Precios de Parived (data/npc/scripts/parived.lua).
+const PRICES = ['200', '250', '300', '1.000', '4.000', '5.000', '300', '100', '10.000'];
+const SELL = G.sellRows.map((name: string, i: number) => [name, PRICES[i]]);
+
+const tiers = drops.tiers as { id: string; label: string; mult: string }[];
+const useText = (gem: any) => (G.use as Record<string, string>)[gem.id] || gem.use;
+---
+<Base lang={lang} title={`${G.title} — Retro76`} path="/gemas" description={G.description}>
+  <section>
+    <h1 class="title">{G.title}</h1>
+    <p class="lede">{G.lede}</p>
+  </section>
+
+  <section>
+    <h2 class="label">{G.loot} <span class="aside">{G.lootAside}</span></h2>
+    <p class="muted">{G.lootText}</p>
+    <div class="field" style="max-width:22rem;margin:.75rem 0">
+      <input type="search" id="mob-filter" placeholder={G.search} autocomplete="off" aria-label={G.searchLabel}>
+    </div>
+    <div id="drops">
+      {drops.gems.map((gem: any) => {
+        const g = img(gem.id);
+        return (
+          <details class="fold">
+            <summary>
+              <img class="sprite" src={g.src} srcset={g.srcset} alt="" width="32" height="32" loading="lazy">
+              <span><strong>{gem.short}</strong> <span class="muted small">{useText(gem)}</span></span>
+            </summary>
+            <div class="fold-body">
+              {tiers.map((tier) => {
+                const list: string[] = gem.monsters[tier.id] || [];
+                return list.length > 0 && (
+                  <div class="tier-block">
+                    <p class={`tier ${tier.id}`}>{tier.label} <span class="faint">{tier.mult} · {list.length}</span></p>
+                    <p class="mobs">{list.map((m) => <span data-mob={m.toLowerCase()}>{m}</span>)}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </details>
+        );
+      })}
+    </div>
+    <p class="empty hidden" id="no-mobs">{G.noMobs}</p>
+  </section>
+
+  <section>
+    <h2 class="label">{G.exchange} <span class="aside">{G.exchangeAside}</span></h2>
+    <p class="muted">{G.exchangeText[0]} <span class="mono">hi</span> {G.exchangeText[1]} <span class="mono">exchange ruby</span> {G.exchangeText[2]} <span class="mono">si</span>{G.exchangeText[3]}</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>{G.thGive}</th><th>{G.thGet}</th><th class="wide-only">{G.thFor}</th></tr></thead>
+        <tbody>
+          {EXCHANGE.map((x) => {
+            const s = img(x.small), b = img(x.big, true);
+            return (
+              <tr>
+                <td><span class="cell-item"><span class="mono faint">20×</span><img class="sprite" src={s.src} srcset={s.srcset} alt="" width="32" height="32" loading="lazy">{x.smallName}</span></td>
+                <td><span class="cell-item"><img class="sprite lg" src={b.src} srcset={b.srcset} alt="" width="40" height="40" loading="lazy">{x.bigName}</span></td>
+                <td class="muted wide-only">{x.bonus}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="label">{G.imbue}</h2>
+    <p class="muted">{G.imbueText[0]} <strong>{G.imbueText[1]}</strong>{G.imbueText[2]}</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>{G.thGem}</th><th>{G.thOn}</th><th>{G.thEffect}</th><th class="n">{G.thMax}</th></tr></thead>
+        <tbody>
+          {IMBUE.map((g) => {
+            const b = img(g.id, true);
+            return (
+              <tr>
+                <td><span class="cell-item"><img class="sprite lg" src={b.src} srcset={b.srcset} alt="" width="40" height="40" loading="lazy">{g.name}</span></td>
+                <td>{g.item}</td>
+                <td class="muted">{g.effect}</td>
+                <td class="n">{g.max}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="label">{G.sell} <span class="aside">{G.sellAside}</span></h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>{G.thGem}</th><th class="n">{G.thGold}</th></tr></thead>
+        <tbody>{SELL.map(([name, gp]) => <tr><td>{name}</td><td class="n">{gp}</td></tr>)}</tbody>
+      </table>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // Filtro de criaturas: oculta las que no coinciden y abre las gemas con resultados.
+  const input = document.getElementById('mob-filter') as HTMLInputElement;
+  const folds = [...document.querySelectorAll<HTMLDetailsElement>('#drops details')];
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    let any = false;
+    for (const fold of folds) {
+      let foldHits = 0;
+      for (const block of fold.querySelectorAll<HTMLElement>('.tier-block')) {
+        let hits = 0;
+        for (const mob of block.querySelectorAll<HTMLElement>('[data-mob]')) {
+          const hit = !q || (mob.dataset.mob || '').includes(q);
+          mob.classList.toggle('hidden', !hit);
+          if (hit) hits++;
+        }
+        block.classList.toggle('hidden', !hits);
+        foldHits += hits;
+      }
+      fold.classList.toggle('hidden', !foldHits);
+      fold.open = !!q && foldHits > 0;
+      if (foldHits) any = true;
+    }
+    document.getElementById('no-mobs')!.classList.toggle('hidden', any);
+  });
+</script>

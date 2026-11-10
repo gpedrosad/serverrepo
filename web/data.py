@@ -753,6 +753,8 @@ def build_payload(
         },
         "deaths": all_deaths[:20],
         "otinfo": load_otinfo(otinfo_file),
+        # Versión en inglés para /en (archivo hermano OTINFO.en); vacía si no existe.
+        "otinfo_en": load_otinfo(otinfo_file.with_name(otinfo_file.name + ".en")),
         "vocations": VOCATIONS[1:],
         "spells": build_spells_payload(spells_file),
     }
