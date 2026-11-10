@@ -29,6 +29,7 @@
 <monster name="Enraged Black Knight" file="enraged black knight.xml" />
 <monster name="Black Sheep" file="black sheep.xml" />
 <monster name="Blue Djinn" file="blue djinn.xml" />
+<monster name="Blue Elf Arcanist" file="blue elf arcanist.xml" />
 <monster name="Bone Beast" file="bone beast.xml" />
 <monster name="Bug" file="bug.xml" />
 <monster name="Butterfly" file="butterfly.xml" />
@@ -130,6 +131,7 @@
 <monster name="Angry Hydra" file="angry hydra.xml" />
 <monster name="Furious Hydra" file="furious hydra.xml" />
 <monster name="Enraged Hydra" file="enraged hydra.xml" />
+<monster name="Ice Spider" file="ice spider.xml" />
 <monster name="Kongra" file="kongra.xml" />
 <monster name="Larva" file="larva.xml" />
 <monster name="Lich" file="lich.xml" />

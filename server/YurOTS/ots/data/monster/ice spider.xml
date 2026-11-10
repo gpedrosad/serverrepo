@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<monster name="Ice Spider" level="20" maglevel="60" experience="1400" pushable="0" armor="40" defense="40" canpushitems="1" staticattack="50" changetarget="200" speed="285">
+	<health now="1800" max="1800"/>
+	<!-- Variante de hielo del Giant Spider, mas fuerte que el original.
+	     Looktype 235 recoloreado por algoritmo desde el 38; los ataques de hielo
+	     usan el pack "ice" del cliente (mismos efectos que el Frost Dragon).
+	     El cliente de los jugadores necesita Tibia.dat/Tibia.spr con el 235 y los
+	     efectos NM_ME_ICE_* antes de spawnearla. Ver docs/gameplay/ICE_SPIDER.md. -->
+	<look type="235" corpse="2857"/>
+	<combat targetdistance="1" runonhealth="0"/>
+	<blood color="30" effect="16" splash="4"/>
+
+<attacks>
+	<attack type="melee" mindamage="140" maxdamage="340" probability="100"/>
+	<attack type="rune" name="frostdragon_iceball" exhaustion="500" cycleticks="6000" probability="35"/>
+	<attack type="instant" name="icespider_blizzard" exhaustion="500" cycleticks="8000" probability="40"/>
+	<attack type="instant" name="exura" exhaustion="500" cycleticks="4500" probability="30"/>
+	<attack type="instant" name="gs_haste" exhaustion="500" cycleticks="9000" probability="40"/>
+</attacks>
+
+<defenses>
+	<defense immunity="poison"/>
+	<defense immunity="paralyze"/>
+	<defense immunity="invisible"/>
+	<defense immunity="drunk"/>
+</defenses>
+
+<loot>
+ 	<item id="2148" countmax="50" chance1="100000" chancemax="0"/>
+ 	<item id="2463" chance="4000"/>
+ 	<item id="2171" chance="1533"/>
+ 	<item id="2459" chance="20000"/>
+ 	<item id="2146" countmax="2" chance1="12000" chancemax="0"/>
+
+ 	<item id="1987" chance="50000">
+ 	<inside>
+ 	<item id="2148" countmax="50" chance1="100000" chancemax="0"/>
+ 	<item id="2476" chance="1766"/>
+ 	<item id="2477" chance="1533"/>
+ 	<item id="0000" countmax="2" chance1="20000" chancemax="0"/>
+ 	<item id="2478" chance="10000"/>
+ 	<item id="2169" chance="800"/>
+ 	</inside>
+ 	</item>
+</loot>
+
+</monster>

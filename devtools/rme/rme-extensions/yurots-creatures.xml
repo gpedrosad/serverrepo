@@ -15,10 +15,12 @@
 	<tileset name="YurOTS Custom">
 		<creatures>
 			<creature name="Angry Troll"/>
+			<creature name="Blue Elf Arcanist"/>
 			<creature name="Bone Beast"/>
 			<creature name="Black Dragon"/>
 			<creature name="Frost Dragon"/>
 			<creature name="Ice Monk"/>
+			<creature name="Ice Spider"/>
 			<creature name="Drowned Sailor"/>
 			<creature name="Tide Priest"/>
 			<creature name="Fury"/>

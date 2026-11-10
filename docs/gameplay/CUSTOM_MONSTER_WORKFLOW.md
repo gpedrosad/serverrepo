@@ -257,10 +257,11 @@ Se verificó leyendo los archivos resultantes con un parser independiente:
 Cada criatura nueva es un preset (base, looktype destino y función de paleta). Presets: `black-dragon` (230),
 `frost-dragon` (231, ver [`FROST_DRAGON.md`](FROST_DRAGON.md)), `ice-monk` (232, desde el Monk 57, ver
 [`ICE_MONK.md`](ICE_MONK.md)), `drowned-sailor` (233, desde el Crypt Shambler 100, ver
-[`DROWNED_SAILOR.md`](DROWNED_SAILOR.md)) y `tide-priest` (234, desde el Necromancer 9, ver
-[`TIDE_PRIEST.md`](TIDE_PRIEST.md)). Sirve para criaturas 2×2 (48 sprites) y 1×1 (12 sprites).
+[`DROWNED_SAILOR.md`](DROWNED_SAILOR.md)), `tide-priest` (234, desde el Necromancer 9, ver
+[`TIDE_PRIEST.md`](TIDE_PRIEST.md)) y `ice-spider` (235, desde el Giant Spider 38, ver
+[`ICE_SPIDER.md`](ICE_SPIDER.md)). Sirve para criaturas 2×2 (48 sprites) y 1×1 (12 sprites).
 Sin `DIR_THINGS` solo genera la vista previa. Con `--replace` rehace un look que ya existe (para editarlo).
-Usados hasta ahora: **230 Black Dragon, 231 Frost Dragon, 232 Ice Monk, 233 Drowned Sailor, 234 Tide Priest**.
+Usados hasta ahora: **230 Black Dragon, 231 Frost Dragon, 232 Ice Monk, 233 Drowned Sailor, 234 Tide Priest, 235 Ice Spider**.
 
 Un preset nuevo es una entrada del diccionario `PRESETS`:
 

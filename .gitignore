@@ -75,6 +75,7 @@ yurots_local.log
 cores/
 /Tibia.dat
 /Tibia.spr
+devtools/rme/**/Tibia.*.bak-*
 __pycache__/
 *.pyc
 .agents/
