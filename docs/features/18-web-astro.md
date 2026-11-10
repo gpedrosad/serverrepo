@@ -24,6 +24,7 @@ compilado y JavaScript solo donde hay datos en vivo. Las APIs de `web/server.py`
 | `/premium` | `pages/premium.astro` | `/api/premium-config` y `/api/premium-order` |
 | `/cliente` | `pages/cliente.astro` | Estático |
 | `/character/<nombre>` | `pages/character.astro` | `/api/character/<nombre>` |
+| `/wiki`, `/wiki/<tema>` | `pages/wiki/` | **Al compilar**, desde `src/wiki/*.md` (HTML puro; el buscador del índice es JS chico). Solo en español. Ver Wiki. |
 
 Todas existen también en inglés bajo `/en` (ver Idiomas). Las páginas están en `src/pages/[...lang]/`.
 
@@ -54,6 +55,23 @@ botón de la cabecera lleva a la misma página en el otro idioma y el `<head>` d
   `otinfo_en`. Si se cambia `OTINFO`, actualizar también `OTINFO.en`.
 - **Sin traducir:** los números siguen con formato chileno (`3.267.392`) y los nombres de
   criaturas, ítems y hechizos quedan como en el juego (en inglés).
+
+## Wiki
+
+Guías cortas para jugadores: gemas, monstruos furiosos, El Crisol, training, ítems especiales, etc.
+
+- **Un archivo por tema:** `web/site/src/wiki/<slug>.md` → `retro76.cl/wiki/<slug>`. Cómo escribirlos
+  (encabezado, secciones, tono, qué se puede usar): [`src/wiki/_GUIA.md`](../../web/site/src/wiki/_GUIA.md).
+  Con `estado: borrador` el artículo no se publica (para lo que todavía no está en el juego).
+- **Markdown:** lo convierte `src/lib/wiki.js` al compilar. Es un subconjunto chico más tres extras:
+  `[[slug]]` (enlace a otro artículo; si no existe o es borrador queda como texto y la compilación
+  avisa), `{item:2154}` (ícono del ítem) y `> **Ojo:**` / `> **Tip:**` (aviso en rojo / verde).
+- **Íconos:** `python3 scripts/web/build-wiki-icons.py` recorta del atlas de ítems los que usan los
+  artículos (`web/assets/wiki/items/<id>.png`, con `sips`, no compila) y escribe `src/wiki/_icons.json`.
+  La wiki solo muestra íconos de esa lista. Correrlo antes de compilar si se agregó un `{item:N}` nuevo.
+- **Solo en español:** las páginas de la wiki no tienen botón de idioma; desde `/en` el link "Wiki (ES)"
+  lleva a la versión en español.
+- `server.py` sirve `/wiki` y `/wiki/<slug>` desde `dist/` y los suma al `sitemap.xml`.
 
 ## Diseño
 

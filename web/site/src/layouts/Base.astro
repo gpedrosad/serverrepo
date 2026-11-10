@@ -10,18 +10,21 @@ interface Props {
   description?: string;
   path: string;           // ruta sin idioma ('/', '/top'...): marca el link actual y arma el cambio de idioma
   canonical?: boolean;
+  langSwitch?: boolean;  // false: página solo en español (wiki), sin botón de idioma ni hreflang
+  footer?: boolean;      // false: sin la escena de Chillán al final (wiki)
 }
 
-const { lang, title, path, canonical = true } = Astro.props;
+const { lang, title, path, canonical = true, langSwitch = true, footer = true } = Astro.props;
 const T = dict(lang);
 const description = Astro.props.description || T.description;
 const other = lang === 'en' ? 'es' : 'en';
 const site = 'https://retro76.cl';
 const url = (l: string) => site + (localePath(l, path) === '/' ? '/' : localePath(l, path));
 
-const NAV_GAME = ['/', '/top', '/power', '/pk', '/muertes', '/gemas', '/spells', '/reglas', '/info'];
+const NAV_GAME = ['/', '/top', '/power', '/pk', '/muertes', '/gemas', '/spells', '/reglas', '/info', '/wiki'];
 const NAV_PLAY = ['/cuenta', '/cliente', '/premium', '/bugs'];
-const navLink = (p: string) => ({ href: localePath(lang, p), label: T.nav[p as keyof typeof T.nav], current: p === path });
+// La wiki existe solo en español: desde /en también lleva a /wiki.
+const navLink = (p: string) => ({ href: p === '/wiki' ? p : localePath(lang, p), label: T.nav[p as keyof typeof T.nav], current: p === path || (p !== '/' && path.startsWith(p + '/')) });
 ---
 <!doctype html>
 <html lang={T.htmlLang === 'en' ? 'en' : T.htmlLang}>
@@ -32,9 +35,9 @@ const navLink = (p: string) => ({ href: localePath(lang, p), label: T.nav[p as k
   <title>{title}</title>
   <meta name="description" content={description}>
   {canonical && <link rel="canonical" href={url(lang)}>}
-  {canonical && <link rel="alternate" hreflang="es" href={url('es')}>}
-  {canonical && <link rel="alternate" hreflang="en" href={url('en')}>}
-  {canonical && <link rel="alternate" hreflang="x-default" href={url('es')}>}
+  {canonical && langSwitch && <link rel="alternate" hreflang="es" href={url('es')}>}
+  {canonical && langSwitch && <link rel="alternate" hreflang="en" href={url('en')}>}
+  {canonical && langSwitch && <link rel="alternate" hreflang="x-default" href={url('es')}>}
   <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="/assets/brand/favicon.png">
   <meta property="og:type" content="website">
@@ -56,7 +59,7 @@ const navLink = (p: string) => ({ href: localePath(lang, p), label: T.nav[p as k
       </a>
       <div class="head-right">
         <p class="status" id="status" aria-live="polite"><span class="dot"></span><span id="status-text">…</span></p>
-        <a class="lang-switch" href={localePath(other, path)} hreflang={other} lang={other} title={T.switchTitle}>{T.switchLabel}</a>
+        {langSwitch && <a class="lang-switch" href={localePath(other, path)} hreflang={other} lang={other} title={T.switchTitle}>{T.switchLabel}</a>}
       </div>
     </header>
     <nav class="site-nav" aria-label={T.navLabel}>
@@ -71,15 +74,19 @@ const navLink = (p: string) => ({ href: localePath(lang, p), label: T.nav[p as k
     </main>
   </div>
 
-  <footer class="chillan-scene" id="scene" role="img" aria-label={T.sceneLabel}>
-    <img class="still-day" src="/assets/footer/chillan-day.png" alt="" width="415" height="137" loading="lazy">
-    <img class="still-night" src="/assets/footer/chillan-night.png" alt="" width="415" height="137" loading="lazy">
-    <canvas width="415" height="137" aria-hidden="true"></canvas>
-    <canvas width="415" height="137" aria-hidden="true"></canvas>
-    <canvas width="415" height="137" aria-hidden="true"></canvas>
-    <canvas width="415" height="137" aria-hidden="true"></canvas>
-  </footer>
-  <script is:inline src="/assets/footer/chillan-footer.js" defer></script>
+  {footer && (
+    <Fragment>
+    <footer class="chillan-scene" id="scene" role="img" aria-label={T.sceneLabel}>
+      <img class="still-day" src="/assets/footer/chillan-day.png" alt="" width="415" height="137" loading="lazy">
+      <img class="still-night" src="/assets/footer/chillan-night.png" alt="" width="415" height="137" loading="lazy">
+      <canvas width="415" height="137" aria-hidden="true"></canvas>
+      <canvas width="415" height="137" aria-hidden="true"></canvas>
+      <canvas width="415" height="137" aria-hidden="true"></canvas>
+      <canvas width="415" height="137" aria-hidden="true"></canvas>
+    </footer>
+    <script is:inline src="/assets/footer/chillan-footer.js" defer></script>
+    </Fragment>
+  )}
   <script type="application/json" id="i18n" set:html={JSON.stringify(T.js)} />
 
   <script>

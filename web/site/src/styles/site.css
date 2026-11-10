@@ -199,6 +199,66 @@ ol.numbered { padding-left: 1.3rem; color: var(--muted); }
 ol.numbered li { padding: 0.2rem 0; }
 ol.numbered li::marker { color: var(--accent); font-family: var(--mono); }
 
+/* ---------- wiki (pages/wiki, lib/wiki.js) ---------- */
+.wiki-search { max-width: 24rem; margin-top: 1rem; }
+.wiki-list { list-style: none; }
+.wiki-list li { border-bottom: 1px solid var(--rule); }
+.wiki-list li:last-child { border-bottom: 0; }
+.wiki-list a { display: flex; align-items: center; gap: 0.8rem; padding: 0.6rem 0; text-decoration: none; }
+.wiki-list a > span:last-child { display: flex; flex-direction: column; min-width: 0; }
+.wiki-list strong { font-weight: 600; }
+.wiki-list .muted { font-size: 14px; }
+.wiki-list a:hover strong { color: var(--accent); }
+.wiki-list .sprite { flex-shrink: 0; }
+span.sprite { display: inline-block; }
+.wiki-count { margin-top: 2rem; }
+
+.wiki-article { max-width: 40rem; }
+.crumbs { margin-bottom: 0.6rem; color: var(--muted); }
+.crumbs a { text-decoration: none; }
+.wiki-article .title { display: flex; align-items: center; gap: 0.6rem; }
+.wiki-toc { display: flex; flex-wrap: wrap; gap: 0.2rem 1rem; margin-top: 0.9rem; padding-top: 0.6rem; border-top: 1px solid var(--rule); }
+.wiki-toc a { color: var(--muted); text-decoration: none; }
+.wiki-toc a:hover { color: var(--accent); }
+
+.wiki-body { margin-top: 1.75rem; }
+.wiki-body h2 { font-size: 19px; margin: 2.1rem 0 0.6rem; scroll-margin-top: 1rem; }
+.wiki-body h3 { font-size: 16px; margin: 1.4rem 0 0.4rem; scroll-margin-top: 1rem; }
+.wiki-body > :first-child, .wiki-body .essentials > h2 { margin-top: 0; }
+.wiki-body p, .wiki-body ul, .wiki-body ol, .wiki-body .table-scroll, .wiki-body figure { margin: 0 0 0.9rem; }
+.wiki-body ul, .wiki-body ol { padding-left: 1.25rem; }
+.wiki-body li { padding: 0.15rem 0; }
+.wiki-body li::marker { color: var(--faint); }
+.wiki-body ol li::marker { color: var(--accent); font-family: var(--mono); }
+.wiki-body strong { font-weight: 600; }
+.wiki-body a { color: var(--accent); text-decoration-color: rgba(224, 170, 72, 0.35); }
+.wiki-body a:hover { text-decoration-color: currentColor; }
+.wiki-body table { margin: 0; }
+.wiki-body td { vertical-align: top; }
+.wiki-body td:has(> .item-icon) { white-space: nowrap; }
+.wiki-body figure { margin-left: 0; margin-right: 0; }
+.wiki-body figure img { display: block; border-radius: 3px; }
+.wiki-body hr { border: 0; border-top: 1px solid var(--rule); margin: 1.75rem 0; }
+code.say { font-family: var(--mono); font-size: 0.9em; color: var(--fg); background: var(--bg-raise); border: 1px solid var(--rule); border-radius: 3px; padding: 0.05em 0.35em; white-space: nowrap; }
+.item-icon { width: 24px; height: 24px; image-rendering: pixelated; vertical-align: -6px; }
+
+/* "Lo esencial": la regla dorada de .note, para que lo principal se lea primero */
+.essentials { border-left: 2px solid var(--accent); padding: 0.1rem 0 0.1rem 1rem; margin-bottom: 1.5rem; }
+.essentials h2 { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); margin-bottom: 0.4rem; }
+.essentials ul { margin-bottom: 0; }
+
+.callout { padding: 0.1rem 0 0.1rem 0.9rem; border-left: 2px solid var(--rule-strong); color: var(--muted); }
+.callout strong:first-child { color: var(--fg); }
+.callout.warn { border-left-color: var(--bad); }
+.callout.warn strong:first-child { color: var(--bad); }
+.callout.tip { border-left-color: var(--good); }
+.callout.tip strong:first-child { color: var(--good); }
+
+.wiki-more { max-width: 40rem; margin-top: 3rem; }
+/* páginas sin la escena de Chillán (wiki): aire al final */
+body:not(:has(.chillan-scene)) .wrap { padding-bottom: 4rem; }
+.wiki-more .small { margin-top: 1rem; }
+
 /* ---------- footer: el centro de Chillán (assets/footer/chillan-footer.js) ---------- */
 .chillan-scene { position: relative; margin-top: 4rem; border-top: 1px solid var(--rule); }
 .chillan-scene:not(.night) { background: linear-gradient(180deg, #0e0e0d 0%, #5f86ad 28%, #a9cbe8 60%, #dcebf7 100%); }

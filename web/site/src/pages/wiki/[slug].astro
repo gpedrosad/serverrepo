@@ -1,0 +1,50 @@
+---
+// Un artículo de la wiki (src/wiki/<slug>.md), convertido a HTML al compilar.
+import Base from '../../layouts/Base.astro';
+import { articles, bySlug, iconSrc, render } from '../../lib/wiki.js';
+
+export function getStaticPaths() {
+  return articles().map((a) => ({ params: { slug: a.slug } }));
+}
+
+const a = bySlug(Astro.params.slug)!;
+const { html, toc: allToc, missing } = render(a.body);
+// Índice corto arriba solo en artículos largos; "Lo esencial" ya está a la vista y "Relacionado" va al final.
+const toc = allToc.filter((t) => t.id !== 'lo-esencial' && t.id !== 'relacionado');
+if (missing.length) console.warn(`wiki: ${a.slug} enlaza a artículos que no existen o son borrador: ${missing.join(', ')}`);
+
+const siblings = articles().filter((x) => x.category === a.category && x.slug !== a.slug);
+---
+<Base lang="es" title={`${a.title} — Wiki Retro76`} path={`/wiki/${a.slug}`} langSwitch={false} footer={false} description={a.summary}>
+  <article class="wiki-article">
+    <p class="crumbs small"><a href="/wiki">Wiki</a> <span class="faint">/</span> <span class="faint">{a.category}</span></p>
+    <h1 class="title">
+      {a.icon && <img class="sprite lg" src={iconSrc(a.icon)} alt="" width="40" height="40">}
+      {a.title}
+    </h1>
+    <p class="lede">{a.summary}</p>
+    {toc.length >= 3 && (
+      <nav class="wiki-toc small" aria-label="En esta página">
+        {toc.map((t) => <a href={`#${t.id}`}>{t.text}</a>)}
+      </nav>
+    )}
+    <div class="wiki-body" set:html={html} />
+  </article>
+
+  {siblings.length > 0 && (
+    <section class="wiki-more">
+      <h2 class="label">Más en {a.category}</h2>
+      <ul class="wiki-list compact">
+        {siblings.map((s) => (
+          <li>
+            <a href={`/wiki/${s.slug}`}>
+              {s.icon ? <img class="sprite" src={iconSrc(s.icon)} alt="" width="32" height="32" loading="lazy"> : <span class="sprite" aria-hidden="true"></span>}
+              <span><strong>{s.title}</strong><span class="muted">{s.summary}</span></span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="small"><a href="/wiki">← Todos los temas</a></p>
+    </section>
+  )}
+</Base>

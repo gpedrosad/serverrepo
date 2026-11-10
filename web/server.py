@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import threading
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -54,6 +55,7 @@ INDEX = DIST_DIR / "index.html"
 CHARACTER_PAGE = DIST_DIR / "character.html"
 SITE_PAGES = ("top", "power", "pk", "muertes", "gemas", "spells", "reglas", "info", "cuenta", "cliente", "premium", "bugs")
 CHARACTER_PAGE_EN = DIST_DIR / "en" / "character.html"
+WIKI_SLUG = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")  # /wiki/<slug> -> dist/wiki/<slug>.html
 
 
 def site_page_file(path: str) -> Path | None:
@@ -67,7 +69,17 @@ def site_page_file(path: str) -> Path | None:
         return DIST_DIR / f"{name}.html"
     if name.startswith("en/") and name[3:] in SITE_PAGES:
         return DIST_DIR / "en" / f"{name[3:]}.html"
+    if name == "wiki":
+        return DIST_DIR / "wiki.html"
+    if name.startswith("wiki/") and WIKI_SLUG.fullmatch(name[5:]):
+        page = DIST_DIR / "wiki" / f"{name[5:]}.html"
+        return page if page.is_file() else None
     return None
+
+
+def wiki_slugs() -> list[str]:
+    """Artículos publicados de la wiki (los que Astro compiló en dist/wiki/)."""
+    return sorted(p.stem for p in (DIST_DIR / "wiki").glob("*.html") if WIKI_SLUG.fullmatch(p.stem))
 ITEMS_PAGE = Path(__file__).resolve().parent / "items.html"
 ITEMS_ALL_PAGE = Path(__file__).resolve().parent / "items-all.html"
 DOWNLOADS_DIR = Path(__file__).resolve().parent / "downloads"
@@ -433,6 +445,7 @@ class Handler(BaseHTTPRequestHandler):
     def _sitemap_xml(self) -> None:
         urls = [f"{SITE_URL}/"] + [f"{SITE_URL}/{page}" for page in SITE_PAGES]
         urls += [f"{SITE_URL}/en"] + [f"{SITE_URL}/en/{page}" for page in SITE_PAGES]
+        urls += [f"{SITE_URL}/wiki"] + [f"{SITE_URL}/wiki/{slug}" for slug in wiki_slugs()]
         if PLAYERS_DIR.is_dir():
             names = sorted(
                 p.stem

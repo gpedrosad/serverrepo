@@ -1,0 +1,56 @@
+---
+// Índice de la wiki: categorías con sus artículos y un buscador chico (sin JS se ve todo igual).
+import Base from '../../layouts/Base.astro';
+import { grouped, iconSrc, searchText, articles } from '../../lib/wiki.js';
+
+const groups = grouped();
+const total = articles().length;
+---
+<Base lang="es" title="Wiki — Retro76" path="/wiki" langSwitch={false} footer={false}
+  description="Wiki de Retro76: cómo funcionan las gemas, los monstruos furiosos, El Crisol, el training y todo lo especial del servidor, explicado corto.">
+  <section>
+    <h1 class="title">Wiki</h1>
+    <p class="lede">Todo lo especial de Retro76, explicado corto. Elige un tema o búscalo.</p>
+    <div class="field wiki-search">
+      <input type="search" id="wiki-filter" placeholder="Buscar: gemas, training, crisol…" autocomplete="off" aria-label="Buscar en la wiki">
+    </div>
+  </section>
+
+  {groups.map((g) => (
+    <section class="wiki-group">
+      <h2 class="label">{g.name}</h2>
+      <ul class="wiki-list">
+        {g.items.map((a) => (
+          <li data-text={searchText(a)}>
+            <a href={`/wiki/${a.slug}`}>
+              {a.icon ? <img class="sprite" src={iconSrc(a.icon)} alt="" width="32" height="32" loading="lazy"> : <span class="sprite" aria-hidden="true"></span>}
+              <span><strong>{a.title}</strong><span class="muted">{a.summary}</span></span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+  <p class="empty hidden" id="wiki-none">Nada con esa palabra. Prueba otra más corta.</p>
+  <p class="faint small wiki-count">{total} artículos.</p>
+</Base>
+
+<script>
+  const input = document.getElementById('wiki-filter') as HTMLInputElement;
+  const norm = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
+  input.addEventListener('input', () => {
+    const words = norm(input.value).split(/\s+/).filter(Boolean);
+    let shown = 0;
+    document.querySelectorAll<HTMLElement>('.wiki-group').forEach((group) => {
+      let groupShown = 0;
+      group.querySelectorAll<HTMLElement>('li[data-text]').forEach((li) => {
+        const ok = words.every((w) => li.dataset.text!.includes(w));
+        li.classList.toggle('hidden', !ok);
+        if (ok) groupShown++;
+      });
+      group.classList.toggle('hidden', groupShown === 0);
+      shown += groupShown;
+    });
+    document.getElementById('wiki-none')!.classList.toggle('hidden', shown > 0);
+  });
+</script>
