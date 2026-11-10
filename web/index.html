@@ -521,9 +521,26 @@
     .spell-kind.municion { color: #fcd34d; border-color: rgba(251, 191, 36, 0.25); }
     .spell-kind.instant { color: #93c5fd; border-color: rgba(96, 165, 250, 0.25); }
     #nav { flex-wrap: wrap; }
+    /* Footer: el centro de Chillán en pixel art (assets/footer/chillan-footer.js) */
+    .chillan-scene { position: relative; margin-top: 4rem; border-top: 1px solid rgba(255,255,255,.06); }
+    /* de día el cielo del arte es transparente: celeste que sale del fondo oscuro de la página */
+    .chillan-scene:not(.night) { background: linear-gradient(180deg, #0b0c0f 0%, #5f86ad 28%, #a9cbe8 60%, #dcebf7 100%); }
+    .chillan-scene img, .chillan-scene canvas {
+      object-fit: cover; object-position: center;
+      image-rendering: crisp-edges; image-rendering: pixelated;
+    }
+    .chillan-scene img { display: block; width: 100%; aspect-ratio: 16 / 9; }
+    @media (min-width: 640px) { .chillan-scene img { aspect-ratio: auto; height: auto; } }
+    .chillan-scene .still-night { display: none; }
+    .chillan-scene.night .still-day { display: none; }
+    .chillan-scene.night .still-night { display: block; }
+    .chillan-scene.is-live img { visibility: hidden; }
+    .chillan-scene canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; will-change: transform; }
+    .chillan-scene:not(.is-live) canvas { display: none; }
+    @media (prefers-reduced-motion: reduce) { .chillan-scene canvas { will-change: auto; transform: none !important; } }
   </style>
 </head>
-<body class="min-h-full text-zinc-300 antialiased text-xs pb-16">
+<body class="min-h-full text-zinc-300 antialiased text-xs">
 
 <div class="mx-auto max-w-2xl px-3 pt-3 sm:px-4">
 
@@ -819,6 +836,16 @@
     <div id="spells-list" class="space-y-2"></div>
   </section>
 </div>
+
+<footer class="chillan-scene" id="scene" role="img" aria-label="Centro de Chillán, Chile, en pixel art: la Catedral y la Cruz Monumental, la Plaza de Armas con el monumento a Bernardo O'Higgins, árboles, faroles, gente paseando y la cordillera de los Andes.">
+  <img class="still-day" src="/assets/footer/chillan-day.png" alt="" width="415" height="137" />
+  <img class="still-night" src="/assets/footer/chillan-night.png" alt="" width="415" height="137" />
+  <canvas width="415" height="137" aria-hidden="true"></canvas>
+  <canvas width="415" height="137" aria-hidden="true"></canvas>
+  <canvas width="415" height="137" aria-hidden="true"></canvas>
+  <canvas width="415" height="137" aria-hidden="true"></canvas>
+</footer>
+<script src="/assets/footer/chillan-footer.js" defer></script>
 
 <script>
 const state = { panel: 'live', rank: 'level', voc: 'all', data: null, pkSort: 'exp' };
