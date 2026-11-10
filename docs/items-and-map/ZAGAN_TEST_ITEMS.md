@@ -46,6 +46,23 @@ Espada 1H rápida pensada para el hueco entre la bright sword y las rares del Cr
 
 **Pendiente:** correr `./scripts/install-zagan-test-env.sh` en la máquina con el pack Zagan para generar el OTB/DAT/SPR y probar in-game. El 32×32 vive en `devtools/zagan-test/custom-sprites/` (esa carpeta está gitignoreada; el PNG se agregó con `git add -f`).
 
+## Aurora Shield — nueva (nov 2026)
+
+Escudo kite que completa el set visual de la Aurora Blade.
+
+| Dato | Valor |
+|------|-------|
+| Server id | **`20160`** (fijo en `CUSTOM_ITEM_SERVER_IDS`; el builder ya no lo reasigna) |
+| Prototipo | guardian shield `2515` (def 30, shield) |
+| C++ | Sin lógica extra: hereda defensa/stats del prototipo |
+| Sprite | `zagan-test/custom-sprites/aurora_shield.png` (32×32, PNG con alpha) |
+| Preview | `docs/items-and-map/img/aurora-shield.png` |
+| Builder | entrada `aurora_shield.png` en `CUSTOM_ITEM_DEFS` |
+| Drop | **Ice Monk**, dentro de la bolsa, `chance="250"` (0,25 %) |
+| Look | Borde amarillo/dorado con degradé y campo morado radial, sin gema central ni el emblema/patrón "G" del guardian shield |
+
+**Pendiente:** mismo build que la Aurora Blade: correr `./scripts/install-zagan-test-env.sh` en la máquina con el pack Zagan y probar in-game. El 32×32 está en `devtools/zagan-test/custom-sprites/` (gitignoreado; agregado con `git add -f`).
+
 ---
 
 ## Producción (VPS)

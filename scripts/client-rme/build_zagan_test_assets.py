@@ -231,6 +231,13 @@ ITEM_GAMEPLAY_SPECS: dict[str, dict[str, object]] = {
         "speedBonusPercent": 6,
         "rubyImbueStacks": "siguen reduciendo el delay",
     },
+    "aurora shield": {
+        "defence": 30,
+        "weaponType": "shield",
+        "weaponPrototype": "guardian shield",
+        "slot": "shield",
+        "set": "aurora",
+    },
 }
 
 # PNG/BMP extras living in zagan-test/custom-sprites/
@@ -259,6 +266,12 @@ CUSTOM_ITEM_DEFS: tuple[tuple[str, str, int, str], ...] = (
         2407,
         "A swift blade with a cold aurora edge.",
     ),
+    (
+        "aurora_shield.png",
+        "aurora shield",
+        2515,
+        "A kite shield with a yellow rim and a deep purple field.",
+    ),
 )
 
 CORE_BMP_ORDER: tuple[str, ...] = (
@@ -268,6 +281,12 @@ CORE_BMP_ORDER: tuple[str, ...] = (
     "armor.bmp",
     "legs.bmp",
 )
+
+
+# Server ids fijos para items que el gameplay/loot referencia por número.
+CUSTOM_ITEM_SERVER_IDS: dict[str, int] = {
+    "aurora shield": 20160,
+}
 
 
 def infer_prototype(bmp_name: str) -> int:
@@ -931,6 +950,8 @@ def main() -> None:
         )
     next_sprite_id = spr_reader.sprite_count + 1
     next_server_id = max(max_server_id + 1, 20100)
+    reserved_server_ids = set(CUSTOM_ITEM_SERVER_IDS.values())
+    used_new_server_ids: set[int] = set()
 
     entry_index_by_client_id = {entry.client_id: index for index, entry in enumerate(item_entries)}
 
@@ -1008,8 +1029,17 @@ def main() -> None:
             new_sprite_id,
         )
 
-        new_server_id = next_server_id
-        next_server_id += 1
+        fixed_server_id = CUSTOM_ITEM_SERVER_IDS.get(spec.item_name)
+        if fixed_server_id is not None:
+            if fixed_server_id in server_id_to_node or fixed_server_id in used_new_server_ids:
+                raise SystemExit(f"Server id fijo {fixed_server_id} para {spec.item_name!r} ya esta en uso")
+            new_server_id = fixed_server_id
+        else:
+            while next_server_id in reserved_server_ids or next_server_id in used_new_server_ids:
+                next_server_id += 1
+            new_server_id = next_server_id
+            next_server_id += 1
+        used_new_server_ids.add(new_server_id)
 
         descr_bytes = spec.description.encode("latin-1")
         if len(descr_bytes) >= 128:
@@ -1064,7 +1094,8 @@ def main() -> None:
     manifest_path = OUT_DIR / "manifest.json"
     manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
 
-    print(f"Wrote {len(item_specs)} Zagan items (server ids {next_server_id - len(item_specs)}..{next_server_id - 1})")
+    server_ids = [entry["serverId"] for entry in manifest]
+    print(f"Wrote {len(item_specs)} Zagan items (server ids {min(server_ids)}..{max(server_ids)})")
     print(f"Wrote {client_things_dir / 'Tibia.dat'}")
     print(f"Wrote {client_things_dir / 'Tibia.spr'}")
     print(f"Wrote {server_items_dir / 'items.otb'}")
