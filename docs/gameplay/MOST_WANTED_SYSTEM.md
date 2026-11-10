@@ -1,5 +1,7 @@
 # Most Wanted / Bounty System
 
+> **Estado (nov 2026): no está activo.** El módulo C++ se sacó en `35373e0` y el NPC Bounty Master se borró en la revisión de NPCs (ver `NPC_SYSTEM.md` §6). Este documento queda como diseño para reconstruirlo.
+
 ## Objetivo
 
 Agregar un NPC que permita contratar una caceria usando **saldo bancario** y mantener una lista dinamica **Most Wanted**:

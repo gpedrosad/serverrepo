@@ -33,7 +33,7 @@ Como cada NPC tiene su propio estado Lua, las globales (`focus`, `talk_state`, .
 | `npc/core.lua` | `npcNow()`, `msgcontains(txt, palabra)`, `getDistanceToCreature(cid)`, `moveToPosition`, `moveToCreature`, `selfGotoIdle` | Reloj en segundos reales (`os.time`; **no** `os.clock`, que es tiempo de CPU), coincidencia de palabras completas con texto literal ("two-handed sword" funciona) y distancia al jugador |
 | `npc/intents.lua` | `npcIsGreeting`, `npcIsFarewell`, `npcIsYes`, `npcIsNo`, `npcIsHelp`, `npcMatchesAny(msg, claves)` | Qué quiso decir el jugador. Acepta inglés y español (`hi/hola/buenas`, `bye/adios/chau`, `yes/si/sí/dale`, `help/ayuda/list/precios`...) |
 | `npc/conversation.lua` | `npcHandleMessage`, `npcBeginConversation`, `npcTouchConversation`, `npcEndConversation`, `npcResetState`, `npcOnThink`, `npcOnCreatureDisappear`, `npcHandlePendingYesNo` | Atiende a **un jugador a la vez** (`focus`). Saludo / "estoy ocupado" / despedida, cierre por inactividad o por alejarse, preguntas sí/no |
-| `npc/catalog.lua` | `npcTryCatalogBuyQuantity`, `npcTryCatalogSell`, `npcTryCatalogReply`, `npcFindCatalogEntry` (alias viejo `npcFindCatalogBuyEntry`), `npcParseBuyQuantity` | Tiendas por catálogo con cantidad ("5 ham"), fluidos, runas con cargas, respuestas por tema |
+| `npc/catalog.lua` | `npcTryCatalogBuyQuantity`, `npcTryCatalogSell`, `npcSellEntry`, `npcTryCatalogReply`, `npcFindCatalogEntry(msg, lista1, lista2...)` (alias viejo `npcFindCatalogBuyEntry`), `npcFindMatchOffset`, `npcParseBuyQuantity`, `npcParseSellQuantity` | Tiendas por catálogo con cantidad ("5 hams", "sell 3 swords", "sell all maces"), plurales, claves cortas, fluidos, runas con cargas, respuestas por tema |
 | `npc/text.lua` | `npcTrim`, `npcResolveGoldAmount(cid, texto, origen)`, `npcFormatPrice`, `NPC_MAX_GOLD` | Montos de oro ("10000", "10k", "all", "todo"; origen `'money'` = encima, otro = banco; tope 1.000.000.000) y precios ("2.5k") |
 | `npc/define.lua` | `npcDefine{...}`, `npcCatalogHandler{...}` | Arma los callbacks del NPC a partir de una descripción |
 | `daily_task.lua` | `dailyTask*` | Sistema de contratos diarios (lo usa el Huntmaster; ver `DAILY_TASK.md`) |
@@ -69,7 +69,7 @@ Cada script termina con un `npcDefine`. Campos:
 | `onThink` | `function()` | **Reemplaza** el think estándar (Chronos: fases de la sala) |
 | `onAppear`, `onDisappear` | funciones | Reemplazan los callbacks de aparecer/desaparecer (Chronos) |
 
-`npcCatalogHandler{help, helpKeys, buys, sells, topics, maxQty}` devuelve un `onMessage` de tienda estándar, en este orden: ayuda → compra con cantidad → venta → respuesta por tema.
+`npcCatalogHandler{help, helpKeys, buys, sells, topics, maxQty}` devuelve un `onMessage` de tienda estándar, en este orden: ayuda → compra con cantidad → venta o tema (compiten por la mejor coincidencia: "swords" lista precios, "steel boots" vende aunque "boots" sea un tema; si el jugador dice "sell" manda la venta).
 
 ### Formato de catálogo
 
@@ -80,7 +80,14 @@ Cada script termina con un `npcDefine`. Campos:
 {keys = {'blank rune'}, itemid = 2260, unitPrice = 10, itemQuantity = true}
 {keys = {'royal helmet'}, itemid = 2498, price = 30000}                  -- venta (el NPC paga)
 {keys = {'helmets'}, reply = 'I buy royal (30k), ...'}                   -- tema: solo responde
+{keys = {'life ring'}, shortKeys = {'life'}, itemid = 2168, unitPrice = 1500}  -- clave corta
 ```
+
+**Plurales:** toda clave acepta `s`/`es` al final ("2 bows", "5 hams", "torches", "small emeralds"); a igual largo gana la clave exacta ("swords" el tema, no la venta de "sword").
+
+**Claves cortas** (`shortKeys`): palabras sueltas que solo valen si lo que las rodea es relleno o un número (`NPC_FILLER_WORDS`: sell, buy, my, all, please, un, mi, todo...). "2 life" compra un life ring; "what time is it" o "sell magic sword" no disparan nada. Las usan Dufi (energy, might, time, life...) y Mad (sword, mace).
+
+**Venta con cantidad:** "sell 3 swords" vende 3; "sell all maces" / "todo" vende todos los que tenga (`getPlayerItemCount`). El precio es por unidad.
 
 Si dos claves coinciden gana la que aparece primero en el mensaje y, a igual posición, la más larga ("strong mana" antes que "mana", "round blue pillow" antes que "blue pillow"); vale para compras, ventas y temas. Antes de mostrar una compra se revisa que haya al menos una casilla libre; si después no entra todo, el C++ entrega lo que cabe y devuelve el oro del resto.
 
@@ -165,9 +172,8 @@ Compra/venta (`buy`, `buyFluidQty`, `buyRuneQty`, `buyItemQty`, `buyItemBackpack
 | Huntmaster | `huntmaster.lua` | `138,53,6` | Contratos diarios (`lib/daily_task.lua`) | Sí/no |
 | Fargum, Nimral ×6 | `boat.lua` | `172,66,7` y 6 muelles | Viajes en barco | `onSay` propio |
 | Chronos | `chronos.lua` | `338,387,6` | Reloj de Arena: fases y spawns de la sala | `onThink` propio |
-| Bounty Master | `bounty_master.lua` | — | Contratos de caza con el banco | **Inactivo** |
 
-**Bounty Master está inactivo:** no está en `npc.xml` y llama a `getPlayerBountyByName` y `doPlayerPlaceBounty`, que `npc.cpp` no registra. Para activarlo hay que agregar esas funciones en C++ (recompilar) y ubicarlo en el mapa.
+**Bounty Master (borrado, nov 2026):** su C++ se sacó en el commit `35373e0` ("remove unused bounty C++ module") y el NPC quedó sin funciones ni ubicación. Se borraron `bounty_master.lua` y `bounty master.xml`. Para recuperarlo: el diseño está en [`MOST_WANTED_SYSTEM.md`](MOST_WANTED_SYSTEM.md) y el código en la historia de git (`git show 35373e0^:server/YurOTS/ots/data/npc/scripts/bounty_master.lua`).
 
 ---
 
@@ -181,7 +187,7 @@ python3 scripts/npc/run_npc_tests.py --record # graba de nuevo (solo si el cambi
 
 - `scripts/npc/harness.lua` simula el servidor: la API de §5 con los mismos tipos de retorno, jugadores, reloj y azar deterministas. Corre con **LuaJIT** (`brew install luajit`), el mismo dialecto que el server.
 - Cada NPC recibe un guion fijo (`scripts/npc/golden/<script>.scenario.txt`): saludo, todas las palabras de su script con cantidades, sí/no, ocupado, timeout y alejarse. Lo que responde queda en `golden/<script>.txt` (`SAY`, `CALL` a la API, `ERROR`).
-- Guiones extra a mano: `scripts/npc/scenarios/<script>.txt` (Boat, Chronos, Guild, Huntmaster, Oracle). Además de `say`/`set`, el guion acepta `storage <cid> <clave> <valor>` (p. ej. para la tarea diaria). Las guilds del banco guardan estado (status y guild por jugador) y los nombres se comparan sin mayúsculas, como en el server.
+- Guiones extra a mano: `scripts/npc/scenarios/<script>.txt` (Dufi, Boat, Bows, Chronos, Food, Guild, Huntmaster, Mad, Oracle). Ojo: si existe `golden/<script>.scenario.txt` (guion congelado) el guion extra solo entra al regrabar después de borrar ese archivo. Además de `say`/`set`, el guion acepta `storage <cid> <clave> <valor>` (p. ej. para la tarea diaria). Las guilds del banco guardan estado (status y guild por jugador) y los nombres se comparan sin mayúsculas, como en el server.
 - Si un cambio modifica un diálogo a propósito, revisar la diferencia que muestra el test y después grabar con `--record`.
 
 Las pruebas no reemplazan probar en el juego: no cubren el C++ (confirmación de trades, travel) ni la carga real de items.
@@ -231,10 +237,18 @@ Rama `npc-review`. Todos los cambios de Lua verificados con el banco de pruebas 
 | Seller, bp de fluidos | SMP 5010, mana 2010, life 1210 | 5000, 2000, 1200 |
 | Parived | talon 320 | 300 |
 
-### Pendientes (no tocados)
+### Segunda tanda (nov 2026)
 
-- **Mad:** claves genéricas (`sword`, `mace`, `halberd`) y la venta siempre de a 1.
-- **Dufi:** claves sueltas (`time`, `life`, `sword`...) pueden disparar compras al hablar de otra cosa.
-- **Plurales** en varias tiendas ("2 bows", "hams").
-- **Bounty Master** sigue inactivo (ver §6).
-- Probar en el juego: compras con la mochila llena, banco, guilds (crear, invitar con mayúsculas, salir el último → la guild desaparece), barco desde Rookgaard y en combate.
+| NPC | Bug | Arreglo |
+|---|---|---|
+| Todas las tiendas | No entendían plurales ("2 bows", "5 hams", "small emeralds" en Tonka) | Las claves aceptan `s`/`es` |
+| Dufi | Claves sueltas ("time", "life", "sword") disparaban compras en cualquier frase | `shortKeys`: solo valen solas o con número; "2 life rings" ya no muestra la lista en vez de comprar |
+| Mad | "sword" y "mace" se vendían con cualquier frase ("sell magic sword" vendía una sword); siempre de a 1; "two-handed sword" no se entendía | Claves cortas, cantidad y "all", alias con guion |
+| Mad | "swords" (tema) contra "sword" (venta) dependía del orden | Venta y tema compiten por mejor coincidencia; "sell" manda la venta |
+| Tonka | Búsqueda propia duplicada | Usa `npcFindCatalogEntry` |
+| Bounty Master | Código muerto (sin C++ ni ubicación) | Borrado; ver §6 |
+| Biblioteca | `npcTryCatalogBuy` y `npcCatalogKeyLength` sin uso | Borradas |
+
+### Pendientes
+
+- Probar en el juego (el C++ de la primera tanda no está compilado): compras con la mochila llena, banco, guilds (crear, invitar con mayúsculas, salir el último → la guild desaparece), barco desde Rookgaard y en combate, ventas con cantidad a Mad.
