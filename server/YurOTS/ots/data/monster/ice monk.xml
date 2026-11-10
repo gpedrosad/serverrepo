@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<!-- Ice Monk: monje-mago del hielo que pelea a distancia. Sprite propio (look 232, Monk recoloreado).
+<!-- Ice Monk: monje-mago del hielo que pelea a distancia con su manada de lobos. Sprite propio (look 232,
+     Monk recoloreado con ojos celestes bajo la capucha).
      Ver docs/gameplay/ICE_MONK.md. -->
 <monster name="Ice Monk" level="35" maglevel="30" experience="520" pushable="0" armor="18" defense="22" canpushitems="1" staticattack="50" changetarget="220" speed="220">
 	<health now="650" max="650"/>
@@ -13,6 +14,11 @@
 	<attack type="instant" name="exura" exhaustion="500" cycleticks="5000" probability="40"/>
 </attacks>
 
+<!-- Rasgo propio: no anda solo. Llama hasta 2 lobos de las nieves que lo protegen mientras ataca de lejos. -->
+<summons maxSummons="2">
+	<summon name="Winter Wolf" chance="1500"/>
+</summons>
+
 <defenses>
 	<defense immunity="paralyze"/>
 	<defense immunity="drunk"/>
@@ -23,6 +29,7 @@
 	<voice sentence="Feel the cold of the north!"/>
 	<voice sentence="Your blood will freeze."/>
 	<voice sentence="Silence... like the snow."/>
+	<voice sentence="Come, my wolves!"/>
 </voices>
 
 <loot>
