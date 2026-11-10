@@ -17,7 +17,6 @@
 // along with this program; if not, write to the Free Software Foundation,
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
-#ifdef YUR_BUILTIN_AAC
 
 #include "aac.h"
 #include "ioaccount.h"
@@ -114,4 +113,3 @@ long AccountCreator::uniqueAccountNumber()
 	return -1;
 }
 
-#endif //YUR_BUILTIN_AAC

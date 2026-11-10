@@ -81,11 +81,7 @@ typedef HANDLE OTSYS_THREAD_SIGNALVAR;
 inline __int64 OTSYS_TIME()
 {
   _timeb t;
-#ifdef USING_VISUAL_2005
-  _ftime_s(&t);
-#else
   _ftime(&t);
-#endif // USING_VISUAL_2005
   return ((__int64)t.millitm) + ((__int64)t.time) * 1000;
 }
 

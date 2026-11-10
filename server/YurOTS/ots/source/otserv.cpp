@@ -83,10 +83,6 @@
 OTSYS_THREAD_LOCK_CLASS::LogList OTSYS_THREAD_LOCK_CLASS::loglist;
 #endif
 
-#ifdef MSVC_EXCEPTION_TRACER
-#include "mdump.h"
-MiniDumper miniDumper("YurOTS");
-#endif //MSVC_EXCEPTION_TRACER
 
 std::vector< std::pair<unsigned long, unsigned long> > serverIPs;
 std::vector< std::pair<unsigned long, unsigned long> > bannedIPs;
@@ -186,7 +182,6 @@ bool isclientBanished(SOCKET s)
 }
 
 
-#ifdef YUR_LOGIN_QUEUE
 std::string MakeRejectMessage(int place)
 {
 	if (place < 0)
@@ -203,7 +198,6 @@ std::string MakeRejectMessage(int place)
 		return msg.str();
 	}
 }
-#endif //YUR_LOGIN_QUEUE
 
 
 OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
@@ -358,21 +352,16 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 						player->useThing();
 						player->setID();
 						IOPlayer::instance()->loadPlayer(player, name);
-#ifdef YUR_LOGIN_QUEUE
 						int placeInQueue = -1;
-#endif //YUR_LOGIN_QUEUE
 						static const int ACCESS_ENTER = g_config.getGlobalNumber("accessenter",3);
 
 						if(playerexist && !allowClones){
-							#ifdef __DEBUG_PLAYERS__
 							std::cout << "reject player... (already logged in)" << std::endl;
-							#endif
 							msg.Reset();
 							msg.AddByte(0x14);
 							msg.AddString("You are already logged in.");
 							msg.WriteToSocket(s);
 						}
-#ifdef TLM_SKULLS_PARTY
 						else if (player->banned)
 						{
 							msg.Reset();
@@ -380,7 +369,6 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 							msg.AddString("Your character has been banished!");
 							msg.WriteToSocket(s);
 						}
-#endif //TLM_SKULLS_PARTY
 						else if(g_game.getGameState() == GAME_STATE_SHUTDOWN){
 							//nothing to do
 						}
@@ -390,34 +378,19 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 							msg.AddString("Server temporarly closed.");
 							msg.WriteToSocket(s);
 						}
-#ifdef YUR_LOGIN_QUEUE
 						else if (!protocol->ConnectPlayer(&placeInQueue)) {
 							Status* stat = Status::instance();
 							stat->playerswaiting = (int)g_game.loginQueue.size();
-							#ifdef __DEBUG_PLAYERS__
 							if (placeInQueue < 0)
 								std::cout << "reject player... wrong temple position" << std::endl;
 							else
 								std::cout << "reject player... place in queue: " << placeInQueue << std::endl;
-							#endif
 							msg.Reset();
 							msg.AddByte(0x16);
 							msg.AddString(MakeRejectMessage(placeInQueue));
 							msg.AddByte(30);
 							msg.WriteToSocket(s);
 						}
-#else
-						else if(!protocol->ConnectPlayer()) {
-							#ifdef __DEBUG_PLAYERS__
-							std::cout << "reject player..." << std::endl;
-							#endif
-							msg.Reset();
-							msg.AddByte(0x16);
-							msg.AddString("Too many Players online.");
-							msg.AddByte(45);
-							msg.WriteToSocket(s);
-						}
-#endif //YUR_LOGIN_QUEUE
 						else{
 							Status* stat = Status::instance();
 							stat->addPlayer();
@@ -481,7 +454,6 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 			status->getInfo(msg);
 			msg.WriteToSocket(s);
 		}
-#ifdef YUR_BUILTIN_AAC
 		else if (protId == 0xFFAC) 
 		{
 			std::string response = AccountCreator::process(msg.GetRaw());
@@ -489,7 +461,6 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 			msg.AddString(response);
 			msg.WriteToSocket(s);
 		}
-#endif //YUR_BUILTIN_AAC
   }
   else{
 		socketDebugLog(
@@ -671,7 +642,6 @@ int main(int argc, char *argv[])
 	std::cout << "[done]" << std::endl;
 
 
-#ifdef YUR_GUILD_SYSTEM
 	std::cout << ":: Loading guilds.xml...            ";
 	if (!Guilds::Load())
 	{
@@ -679,9 +649,7 @@ int main(int argc, char *argv[])
 		return -1;
 	}
 	std::cout << "[done]" << std::endl;
-#endif //YUR_GUILD_SYSTEM
 
-#ifdef YUR_LOGIN_QUEUE
 	std::cout << ":: Loading queue.xml...             ";
 	if (!g_game.loginQueue.load())
 	{
@@ -689,9 +657,7 @@ int main(int argc, char *argv[])
 		return -1;
 	}
 	std::cout << "[done]" << std::endl;
-#endif //YUR_LOGIN_QUEUE
 
-#ifdef TR_SUMMONS
 	std::cout << ":: Loading summons.xml...           ";
 	if (!Summons::Load())
 	{
@@ -699,7 +665,6 @@ int main(int argc, char *argv[])
 		return -1;
 	}
 	std::cout << "[done]" << std::endl;
-#endif //TR_SUMMONS
 
 	// load monster data
 	std::cout << ":: Loading monsters.xml...          ";
@@ -732,9 +697,7 @@ int main(int argc, char *argv[])
 		passwordType = PASSWORD_TYPE_PLAIN;
 	}
 
-#ifdef YUR_CVS_MODS
 	timer();
-#endif
 
 	// loads the map and, if needed, an extra-file spawns
 	switch(g_game.loadMap(g_config.getGlobalString("map"), g_config.getGlobalString("mapkind"))){
@@ -749,22 +712,12 @@ int main(int argc, char *argv[])
 		SpawnManager::instance()->loadSpawnsXML(g_game.getSpawnFile());
 		SpawnManager::instance()->startup();
 		break;
-	#ifdef ENABLESQLMAPSUPPORT
-	case SPAWN_SQL:
-		SpawnManager::initialize(&g_game);
-		SpawnManager::instance()->loadSpawnsSQL(g_config.getGlobalString("map"));
-		SpawnManager::instance()->startup();
-		break;
-	#endif
 	}
 
-#ifdef YUR_CVS_MODS
 	double t = timer();
 	std::cout << "Loaded in " << t << " s" << std::endl;
-#endif
 
 
-#ifdef WOLV_LOAD_NPC
 	std::cout << ":: Loading npc.xml...               ";
 	if (!g_game.loadNpcs())
 	{
@@ -772,9 +725,7 @@ int main(int argc, char *argv[])
 		return -1;
 	}
 	std::cout << "[done]" << std::endl;
-#endif
 
-#ifdef TLM_HOUSE_SYSTEM
 	std::cout << ":: Loading houses.xml...            ";
 	if (!Houses::Load(&g_game))
 	{
@@ -790,9 +741,7 @@ int main(int argc, char *argv[])
 		return -1;
 	}
 	std::cout << "[done]" << std::endl;
-#endif //TLM_HOUSE_SYSTEM
 
-#ifdef YUR_PVP_ARENA
 	std::cout << ":: Loading pvparenas.xml...         ";
 	if (!PvpArena::Load(&g_game))
 	{
@@ -800,9 +749,7 @@ int main(int argc, char *argv[])
 		return -1;
 	}
 	std::cout << "[done]" << std::endl;
-#endif //YUR_PVP_ARENA
 
-#ifdef YUR_TRAINING_AREA
 	std::cout << ":: Loading trainingareas.xml...    ";
 	if (!TrainingArea::Load(&g_game))
 	{
@@ -810,9 +757,7 @@ int main(int argc, char *argv[])
 		return -1;
 	}
 	std::cout << "[done]" << std::endl;
-#endif //YUR_TRAINING_AREA
 
-#ifdef YUR_READABLES
 	std::cout << ":: Loading readables.xml...         ";
 	if (!Readables::Load(&g_game))
 	{
@@ -820,16 +765,13 @@ int main(int argc, char *argv[])
 		return -1;
 	}
 	std::cout << "[done]" << std::endl;
-#endif //YUR_READABLES
 
-#ifdef TLM_SERVER_SAVE
 	if (g_config.getGlobalNumber("autosave") > 0)
 		g_game.addEvent(makeTask(g_config.getGlobalNumber("autosave")*60000, std::mem_fun(&Game::autoServerSave)));
 	else
 		std::cout << ":: Auto server save disabled!" << std::endl;
 	// Always poll save/shutdown requests (deploy + docker stop).
 	g_game.addEvent(makeTask(2000, std::mem_fun(&Game::checkSaveRequest)));
-#endif //TLM_SERVER_SAVE
 
 
   	// Call to WSA Startup on Windows Systems...
@@ -852,9 +794,7 @@ int main(int argc, char *argv[])
 	}
 #endif
 
-#ifdef YUR_CVS_MODS
 	std::string localip = "127.0.0.1";
-#endif
 
 	std::pair<unsigned long, unsigned long> IpNetMask;
 	IpNetMask.first  = inet_addr("127.0.0.1");
@@ -873,13 +813,11 @@ int main(int argc, char *argv[])
 			std::cout << ":: Local IP address(es):  ";
 			unsigned char** addr = (unsigned char**)he->h_addr_list;
 
-#ifdef YUR_CVS_MODS
 			if (addr[0])
 			{
 				localip = str(int(addr[0][0])) + "." + str(int(addr[0][1])) + 
 					"." + str(int(addr[0][2])) + "." + str(int(addr[0][3]));
 			}
-#endif //YUR_CVS_MODS
 
 			while (addr[0] != NULL)
 			{
@@ -907,17 +845,13 @@ int main(int argc, char *argv[])
 	else
 		ip = g_config.getGlobalString("ip", "127.0.0.1");
 
-#ifdef YUR_CVS_MODS
 	if (ip == "auto")
 		ip = localip;
-#endif //YUR_CVS_MODS
 
 	std::cout << ip << std::endl << "::" << std::endl;
 
-#ifdef YUR_CVS_MODS
 	if (ip == "127.0.0.1")
 		std::cout << "WARNING: Change your IP in config.lua!\n" << std::endl;
-#endif //YUR_CVS_MODS
 
 	IpNetMask.first  = resolveHostToIPv4(ip);
 	IpNetMask.second = 0;

@@ -89,7 +89,6 @@ access(0)
 	attackedCreature = 0;
 	speed = 220;
 
-#ifdef YUR_BOH
 	boh = false;
 	hasteEnchantStacks = 0;
 	imbueWandMl = 0;
@@ -100,25 +99,16 @@ access(0)
 	imbueArmorMl = 0;
 	imbueNightglassSpeed = 0;
 	imbueCrystalArrowSpeed = 0;
-#endif //YUR_BOH
 
-#ifdef YUR_RINGS_AMULETS
 	timeRing = false;
-#endif //YUR_RINGS_AMULETS
 
-#ifdef TLM_SKULLS_PARTY
 	skullType = SKULL_NONE;
-#endif //TLM_SKULLS_PARTY
 
-#ifdef YUR_INVISIBLE
 	invisibleTicks = 0;
-#endif //YUR_INVISIBLE
 
-#ifdef TJ_MONSTER_BLOOD
 	bloodcolor = COLOR_RED; //the damage string
     bloodeffect = EFFECT_RED; //the hiteffect
     bloodsplash = SPLASH_RED; //splash on ground
-#endif //TJ_MONSTER_BLOOD
 }
 
 Creature::~Creature()
@@ -133,7 +123,6 @@ Creature::~Creature()
 	summons.clear();
 }
 
-#ifdef YUR_PVP_ARENA
 void Creature::drainHealth(int64_t damage, CreatureVector* arenaLosers)
 {
 	if (arenaLosers && damage >= health)
@@ -144,12 +133,6 @@ void Creature::drainHealth(int64_t damage, CreatureVector* arenaLosers)
 	else
 		health -= min(health, damage);
 }
-#else
-void Creature::drainHealth(int damage)
-{
-	health -= min(health, damage);
-}
-#endif //YUR_PVP_ARENA
 
 void Creature::drainMana(int64_t damage)
 {
@@ -275,7 +258,6 @@ exp_t Creature::getGainedExperience(Creature* attacker)
 		gainexperience = (exp_t)attackerdamage * lostexperience / totaldamage;
 	}
 
-#ifdef YUR_MULTIPLIERS
 	if (dynamic_cast<Player*>(this))
 		return gainexperience * g_config.EXP_MUL_PVP;
 	else {
@@ -283,17 +265,11 @@ exp_t Creature::getGainedExperience(Creature* attacker)
 		Player* attackerPlayer = dynamic_cast<Player*>(attacker);
 		if(attackerPlayer)
 			result = gainexperience * g_config.getExpMulForLevel(attackerPlayer->level);
-#ifdef YUR_PREMIUM_PROMOTION
 		if(attackerPlayer && attackerPlayer->isPremium() && g_config.PREMMY_EXP_BONUS > 0)
 			result = result * (100 + g_config.PREMMY_EXP_BONUS) / 100;
-#endif //YUR_PREMIUM_PROMOTION
 		return result;
 	}
 
-#else
-	return gainexperience;
-
-#endif //YUR_MULTIPLIERS
 }
 
 std::vector<long> Creature::getInflicatedDamageCreatureList()
@@ -352,15 +328,12 @@ long long Creature::getSleepTicks() const
 }
 
 
-#ifdef TR_SUMMONS
 bool Creature::isPlayersSummon() const
 {
 	return master && dynamic_cast<Player*>(master);
 }
-#endif //TR_SUMMONS
 
 
-#ifdef YUR_INVISIBLE
 bool Creature::checkInvisible(int thinkTicks)
 {
 	if (invisibleTicks > 0)
@@ -376,4 +349,3 @@ bool Creature::checkInvisible(int thinkTicks)
 
 	return false;	// outfit stays the same
 }
-#endif //YUR_INVISIBLE

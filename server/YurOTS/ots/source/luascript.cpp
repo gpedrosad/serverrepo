@@ -46,7 +46,6 @@ int LuaScript::OpenFile(const char *filename)
 	if (lua_dofile(luaState, filename))
 		return false;
 
-#ifdef YUR_MULTIPLIERS
 	EXP_MUL = getGlobalNumber("expmul",1);
 	EXP_MUL_PVP = getGlobalNumber("expmulpvp",1);
 	LOOT_MUL = getGlobalNumber("lootmul",1);
@@ -111,64 +110,41 @@ int LuaScript::OpenFile(const char *filename)
 		EXP_TIER_MUL[EXP_TIER_COUNT] = atoi(getGlobalStringField("expmulrate", i, "1").c_str());
 		EXP_TIER_COUNT++;
 	}
-#endif //YUR_MULTIPLIERS
 
-#ifdef TR_ANTI_AFK
-	KICK_TIME = getGlobalNumber("kicktime",15)*60000;
-#endif //TR_ANTI_AFK
 
-#ifdef YUR_LEARN_SPELLS
 	LEARN_SPELLS = getGlobalString("learnspells") == "yes";
-#endif //YUR_LEARN_SPELLS
 
-#ifdef TLM_HOUSE_SYSTEM
 	ACCESS_HOUSE = getGlobalNumber("accesshouse",3);
 	MAX_HOUSE_TILE_ITEMS = getGlobalNumber("maxhousetileitems",10);
-#endif //TLM_HOUSE_SYSTEM
 
-#ifdef TR_SUMMONS
 	SUMMONS_ALL_VOC = getGlobalString("summonsallvoc") == "yes";
 	MAX_SUMMONS = (size_t)getGlobalNumber("maxsummons",2);
-#endif //TR_SUMMONS
 
-#ifdef TLM_SKULLS_PARTY
 	HIT_TIME = getGlobalNumber("hittime",1)*60000;
 	WHITE_TIME = getGlobalNumber("whitetime",15)*60000;
 	RED_TIME = getGlobalNumber("redtime",5*60)*60000;
 	FRAG_TIME = getGlobalNumber("fragtime",10*60)*60000;
 	RED_UNJUST = getGlobalNumber("redunjust",3);
 	BAN_UNJUST = getGlobalNumber("banunjust",6);
-#endif //TLM_SKULLS_PARTY
 
-#ifdef SD_BURST_ARROW
 	BURST_DMG_LVL = atof(getGlobalStringField("burstarrowdmg", 1, "2.0").c_str());
 	BURST_DMG_MLVL = atof(getGlobalStringField("burstarrowdmg", 2, "3.0").c_str());
 	BURST_DMG_LO = atof(getGlobalStringField("burstarrowdmg", 3, "0.24").c_str());
 	BURST_DMG_HI = atof(getGlobalStringField("burstarrowdmg", 4, "0.55").c_str());
-#endif //SD_BURST_ARROW
 
-#ifdef YUR_CONFIG_CAP
 	CAP_SYSTEM = getGlobalString("capsystem") == "yes";
-#endif //YUR_CONFIG_CAP
 
-#ifdef BDB_REPLACE_SPEARS
 	SPEAR_LOSE_CHANCE = getGlobalNumber("spearlosechance",50);
-#endif //BDB_REPLACE_SPEARS
 
-#ifdef YUR_PREMIUM_PROMOTION
 	FREE_PREMMY = getGlobalString("freepremmy") == "yes";
 	QUEUE_PREMMY = getGlobalString("queuepremmy") == "yes";
 	PREMMY_EXP_BONUS = getGlobalNumber("premmyexpbonus", 10);
 	PREMMY_LOOT_BONUS = getGlobalNumber("premmylootbonus", 10);
 	PREMMY_SKILL_MUL = getGlobalNumber("premmyskillmul", 2);
-#endif //YUR_PREMIUM_PROMOTION
 
-#ifdef YUR_TRAINING_AREA
 	TRAINING_DAILY_MINUTES = getGlobalNumber("trainingdailyminutes", 120);
 	TRAINING_PREMIUM_MINUTES = getGlobalNumber("trainingpremiumminutes", 360);
-#endif //YUR_TRAINING_AREA
 
-#ifdef YUR_CVS_MODS
 	VOCATIONS[VOCATION_KNIGHT] = getGlobalStringField("vocations",VOCATION_KNIGHT);
 	VOCATIONS[VOCATION_PALADIN] = getGlobalStringField("vocations",VOCATION_PALADIN);
 	VOCATIONS[VOCATION_SORCERER] = getGlobalStringField("vocations",VOCATION_SORCERER);
@@ -203,13 +179,9 @@ int LuaScript::OpenFile(const char *filename)
 	PZ_LOCKED = getGlobalNumber("pzlocked",0);
 	MAX_DEPOT_ITEMS = getGlobalNumber("maxdepotitem",1000);
 	DATA_DIR = getGlobalString("datadir");
-#endif //YUR_CVS_MODS
 
-#ifdef JD_DEATH_LIST
 	MAX_DEATH_ENTRIES = getGlobalNumber("maxdeathentries",10);
-#endif //JD_DEATH_LIST
 
-#ifdef JD_WANDS
 	MANA_SNAKEBITE = atoll(getGlobalStringField("rodmana", 1, "2").c_str());
 	MANA_MOONLIGHT = atoll(getGlobalStringField("rodmana", 2, "3").c_str());
 	MANA_VOLCANIC = atoll(getGlobalStringField("rodmana", 3, "5").c_str());
@@ -235,17 +207,13 @@ int LuaScript::OpenFile(const char *filename)
 	RANGE_INFERNO = atoi(getGlobalStringField("wandrange", 5, "3").c_str());
 
 	WAND_ML_FACTOR = atof(getGlobalString("wandmlfactor", "0.5").c_str());
-#endif //JD_WANDS
 
-#ifdef YUR_BUILTIN_AAC
 	ACCMAKER = getGlobalString("accmaker") != "none";
 	ACCMAKER_ROOK = getGlobalString("accmaker") == "rook";
-#endif //YUR_BUILTIN_AAC
 
 	return true;
 }
 
-#ifdef YUR_MULTIPLIERS
 exp_t LuaScript::getExpMulForLevel(int level) const
 {
 	for(int i = 0; i < EXP_TIER_COUNT; i++) {
@@ -258,7 +226,6 @@ exp_t LuaScript::getExpMulForLevel(int level) const
 
 	return EXP_MUL;
 }
-#endif //YUR_MULTIPLIERS
 
 
 std::string LuaScript::getGlobalString(std::string var, const std::string &defString)

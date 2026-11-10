@@ -162,11 +162,9 @@ public:
 	int lookhead, lookbody, looklegs, lookfeet, looktype, lookcorpse, lookmaster;
 	int immunities;	
 
-#ifdef TJ_MONSTER_BLOOD
 	int bloodcolor;
 	unsigned char bloodeffect;
 	unsigned char bloodsplash; 
-#endif //TJ_MONSTER_BLOOD
 	
 	InstantAttackSpells instantSpells;
 	RuneAttackSpells runeSpells;

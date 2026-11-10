@@ -17,7 +17,6 @@
 // along with this program; if not, write to the Free Software Foundation,
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
-#ifdef YUR_PVP_ARENA
 #include "pvparena.h"
 #include "game.h"
 #include "luascript.h"
@@ -120,4 +119,3 @@ bool PvpArena::AddArenaTile(Game* game, const Position& pos, const Position& exi
 	tile->setPvpArena(exit);
 	return true;
 }
-#endif //YUR_PVP_ARENA

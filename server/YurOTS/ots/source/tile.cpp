@@ -565,7 +565,6 @@ void Tile::setPz()
 }
 
 
-#ifdef TLM_HOUSE_SYSTEM
 bool Tile::isHouse() const
 {
 	return house != NULL;
@@ -586,10 +585,8 @@ bool Tile::setHouse(House* newHouse)
 		return true;
 	}
 }
-#endif //TLM_HOUSE_SYSTEM
 
 
-#ifdef YUR_PVP_ARENA
 bool Tile::isPvpArena() const
 {
 	return pvpArena;
@@ -605,10 +602,8 @@ Position Tile::getPvpArenaExit() const
 {
 	return arenaExit;
 }
-#endif //YUR_PVP_ARENA
 
 
-#ifdef YUR_TRAINING_AREA
 bool Tile::isTrainingArea() const
 {
 	return trainingArea;
@@ -624,10 +619,8 @@ Position Tile::getTrainingExit() const
 {
 	return trainingExit;
 }
-#endif //YUR_TRAINING_AREA
 
 
-#ifdef YUR_CLEAN_MAP
 long Tile::clean()
 {
 	if (house)
@@ -673,10 +666,8 @@ long Tile::clean()
 
 	return (long)trash.size();
 }
-#endif //YUR_CLEAN_MAP
 
 
-#ifdef YUR_CVS_MODS
 long Tile::getItemHoldingCount() const
 {
 	long count = 0;
@@ -699,4 +690,3 @@ long Tile::getItemHoldingCount() const
 
 	return count;
 }
-#endif //YUR_CVS_MODS

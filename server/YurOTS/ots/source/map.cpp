@@ -34,9 +34,6 @@ using namespace std;
 
 #include "iomap.h"
 
-#ifdef ENABLESQLMAPSUPPORT
-#include "iomapsql.h"
-#endif
 //#include "iomapbin.h"
 #include "iomapxml.h"
 #include "iomapotbm.h"
@@ -96,12 +93,6 @@ int Map::loadMap(std::string filename, std::string filekind) {
 		//ret = SPAWN_BUILTIN;
 		ret = SPAWN_XML;
 	}
-	#ifdef ENABLESQLMAPSUPPORT
-	else if(filekind == "SQL"){
-		loader = new IOMapSQL();
-		ret = SPAWN_SQL;
-	}
-	#endif
 	else{
  		std::cout << "FATAL: couldnt determine the map format! exiting1" << std::endl;
 		exit(1);
@@ -182,13 +173,11 @@ bool Map::placeCreature(Position &pos, Creature* c)
 	Tile* tile = getTile(pos.x, pos.y, pos.z);
 	bool success = tile && !tile->floorChange() && !tile->getTeleportItem() && c->canMovedTo(tile);
 
-#ifdef TLM_HOUSE_SYSTEM
 	Player* p = dynamic_cast<Player*>(c);
 
 	if (success && p && p->access < g_config.ACCESS_HOUSE && tile->isHouse() &&
 		tile->getHouse()->getPlayerRights(p->pos, p->getName()) == HOUSE_NONE)
 		success = false;
-#endif //TLM_HOUSE_SYSTEM
 
 	if(!success)
 	{
@@ -201,11 +190,9 @@ bool Map::placeCreature(Position &pos, Creature* c)
 				tile = getTile(cx, cy, pos.z);
 				success = tile && !tile->floorChange() && !tile->getTeleportItem() && c->canMovedTo(tile);
 
-#ifdef TLM_HOUSE_SYSTEM
 				if (success && p && p->access < g_config.ACCESS_HOUSE && tile->isHouse() &&
 					tile->getHouse()->getPlayerRights(Position(cx,cy,pos.z), p->getName()) == HOUSE_NONE)
 					success = false;
-#endif //TLM_HOUSE_SYSTEM
 
 				if(success) {
 					pos.x = cx;
@@ -559,7 +546,6 @@ bool AStarNodes::isInList(unsigned long x, unsigned long y)
 }
 
 
-#ifdef YUR_CLEAN_MAP
 long Map::clean()
 {
 	long count = 0;
@@ -578,4 +564,3 @@ long Map::clean()
 
 	return count;
 }
-#endif //YUR_CLEAN_MAP

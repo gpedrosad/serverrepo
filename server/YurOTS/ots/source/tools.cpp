@@ -27,12 +27,7 @@
 
 bool fileExists(char* filename)
 {
-#ifdef USING_VISUAL_2005
-	FILE *f = NULL;
-	fopen_s(&f, filename, "rb");
-#else
 	FILE *f = fopen(filename, "rb");
-#endif //USING_VISUAL_2005
 
 	bool exists = (f != NULL);
 	if (f != NULL)
@@ -190,21 +185,13 @@ double timer()
 
 	if (!running)
 	{
-#ifdef USING_VISUAL_2005
-		_ftime_s(&start);
-#else
 		_ftime(&start);
-#endif //USING_VISUAL_2005
 		running = true;
 		return 0.0;
 	}
 	else
 	{
-#ifdef USING_VISUAL_2005
-		_ftime_s(&end);
-#else
 		_ftime(&end);
-#endif //USING_VISUAL_2005
 		running = false;
 		return (end.time-start.time)+(end.millitm-start.millitm)/1000.0;
 	}
@@ -242,50 +229,22 @@ std::string tickstr(int ticks)
 std::string str(int32_t value)
 {
 	char buf[64];
-#ifdef USING_VISUAL_2005
-	if (_ltoa_s(value, buf, sizeof(buf), 10) == 0)
-		return buf;
-	else
-		return "";
-#else
 	return ltoa(value, buf, 10);
-#endif //USING_VISUAL_2005
 }
 
 std::string str(uint32_t value)
 {
 	char buf[64];
-#ifdef USING_VISUAL_2005
-	if (_ultoa_s(value, buf, sizeof(buf), 10) == 0)
-		return buf;
-	else
-		return "";
-#else
 	return _ultoa(value, buf, 10);
-#endif //USING_VISUAL_2005
 }
 
 std::string str(int64_t value)
 {
 	char buf[128];
-#ifdef USING_VISUAL_2005
-	if (_i64toa_s(value, buf, sizeof(buf), 10) == 0)
-		return buf;
-	else
-		return "";
-#else
 	return _i64toa(value, buf, 10);
-#endif //USING_VISUAL_2005
 }
 std::string str(uint64_t value)
 {
 	char buf[128];
-#ifdef USING_VISUAL_2005
-	if (_i64toa_s(value, buf, sizeof(buf), 10) == 0)
-		return buf;
-	else
-		return "";
-#else
 	return _ui64toa(value, buf, 10);
-#endif //USING_VISUAL_2005
 }

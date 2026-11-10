@@ -52,7 +52,6 @@ extern LuaScript g_config;
 extern Actions actions;
 Chat g_chat;
 
-#ifdef TLM_SKULLS_PARTY
 namespace {
 void erasePlayerRef(std::vector<Player*> &list, Player *target)
 {
@@ -61,7 +60,6 @@ void erasePlayerRef(std::vector<Player*> &list, Player *target)
 		list.erase(it);
 }
 }
-#endif //TLM_SKULLS_PARTY
 
 Protocol76::Protocol76(SOCKET s)
 {
@@ -85,7 +83,6 @@ void Protocol76::reinitializeProtocol()
 	knownPlayers.clear();
 }
 
-#ifdef TLM_SKULLS_PARTY
 unsigned char Protocol76::getDisplayedSkull(const Player *playa) const
 {
 	if(!playa)
@@ -99,23 +96,11 @@ unsigned char Protocol76::getDisplayedSkull(const Player *playa) const
 
 	return playa->skullType;
 }
-#endif //TLM_SKULLS_PARTY
 
-#ifdef YUR_LOGIN_QUEUE
 bool Protocol76::ConnectPlayer(int* placeInQueue)
 {
 	return game->placeCreature(player->pos, player, placeInQueue);
 }
-#else //YUR_LOGIN_QUEUE
-bool Protocol76::ConnectPlayer()
-{
-	Status* stat = Status::instance();
-	if(!stat->hasSlot() && player->access == 0)
-		return false;
-	else
-		return game->placeCreature(player->pos, player);
-}
-#endif //YUR_LOGIN_QUEUE
 
 void Protocol76::ReceiveLoop()
 {
@@ -279,11 +264,9 @@ void Protocol76::parsePacket(NetworkMessage &msg)
 		parseTextWindow(msg);
 		break;
 
-#ifdef BD_HOUSE_WINDOW
 	case 0x8A: // save house text
 		parseHouseWindow(msg);
 		break;
-#endif //BD_HOUSE_WINDOW
 
     case 0x8C: // throw item
 		parseLookAt(msg);
@@ -297,7 +280,6 @@ void Protocol76::parsePacket(NetworkMessage &msg)
 		parseAttack(msg);
 		break;
 
-#ifdef TLM_SKULLS_PARTY
 	case 0xA3: // invite party
 		parseInviteParty(msg);
 		break;
@@ -317,7 +299,6 @@ void Protocol76::parsePacket(NetworkMessage &msg)
 	case 0xA6: // pass leadership
 		parsePassLeadership(msg);
 		break;
-#endif //TLM_SKULLS_PARTY
 
     case 0xD2: // request Outfit
 		parseRequestOutfit(msg);
@@ -351,7 +332,6 @@ void Protocol76::parsePacket(NetworkMessage &msg)
 		parseModes(msg);
 		break;
 
-#ifdef ELEM_VIP_LIST
 	case 0xDC: // Add vip
 		elemParseAddVip(msg);
 		break;
@@ -359,15 +339,6 @@ void Protocol76::parsePacket(NetworkMessage &msg)
 	case 0xDD: // Remove VIP
 		elemParseRemoveVip(msg);
 		break;
-#else
-	case 0xDC:
-		parseAddVip(msg);
-		break;
-
-	case 0xDD:
-		parseRemVip(msg);
-		break;
-#endif //ELEM_VIP_LIST
 
     case 0x69: // client quit without logout <- wrong
 		if(game->stopEvent(player->eventAutoWalk)) {
@@ -394,9 +365,7 @@ void Protocol76::parsePacket(NetworkMessage &msg)
 }
 
 void Protocol76::GetTileDescription(const Tile* tile, NetworkMessage &msg
-#ifdef TRS_GM_INVISIBLE
 									, Player* p
-#endif //TRS_GM_INVISIBLE
 									)
 {
 	if (tile)
@@ -420,7 +389,6 @@ void Protocol76::GetTileDescription(const Tile* tile, NetworkMessage &msg
 			count++;
 		}
 
-#ifdef TRS_GM_INVISIBLE
 		CreatureVector::const_iterator itc;
 		for (itc = tile->creatures.begin(); ((itc !=tile->creatures.end()) && (count < 10)); ++itc)
 		{
@@ -445,17 +413,6 @@ void Protocol76::GetTileDescription(const Tile* tile, NetworkMessage &msg
 				count++;
 			}
 		}
-#else //TRS_GM_INVISIBLE
-		CreatureVector::const_iterator itc;
-		for (itc = tile->creatures.begin(); ((itc !=tile->creatures.end()) && (count < 10)); ++itc)
-		{
-			bool known;
-			unsigned long removedKnown;
-			checkCreatureAsKnown((*itc)->getID(), known, removedKnown);
-			AddCreature(msg,*itc, known, removedKnown);
-			count++;
-		}
-#endif //TRS_GM_INVISIBLE
 
 		for (it = tile->downItems.begin(); ((it !=tile->downItems.end()) && (count < 10)); ++it)
 		{
@@ -468,9 +425,7 @@ void Protocol76::GetTileDescription(const Tile* tile, NetworkMessage &msg
 void Protocol76::GetMapDescription(unsigned short x, unsigned short y, unsigned char z,
                                    unsigned short width, unsigned short height,
                                    NetworkMessage &msg
-#ifdef TRS_GM_INVISIBLE
 								   , Player* p
-#endif //TRS_GM_INVISIBLE
 								   )
 {
 	Tile* tile;
@@ -502,11 +457,7 @@ void Protocol76::GetMapDescription(unsigned short x, unsigned short y, unsigned 
 					}
 					skip = 0;
 
-#ifdef TRS_GM_INVISIBLE
 					GetTileDescription(tile, msg, p);
-#else
-					GetTileDescription(tile, msg);
-#endif //TRS_GM_INVISIBLE
 					cc++;
 
 				}
@@ -658,9 +609,7 @@ void Protocol76::parseCancelMove(NetworkMessage &msg)
 
 void Protocol76::parseModes(NetworkMessage &msg)
 {
-#ifdef YUR_FIGHT_MODE
 	player->setFightMode(msg.GetByte());
-#endif //YUR_FIGHT_MODE
 	//player->fightMode = msg.GetByte();
 	//player->followMode = msg.GetByte();
 }
@@ -716,9 +665,6 @@ void Protocol76::parseMoveByMouse(NetworkMessage &msg)
 
 void Protocol76::parseMoveNorth(NetworkMessage &msg)
 {
-#ifdef TR_ANTI_AFK
-	player->notAfk();
-#endif //TR_ANTI_AFK
 
 	if(game->stopEvent(player->eventAutoWalk)) {
 		player->sendCancelWalk();
@@ -732,9 +678,6 @@ void Protocol76::parseMoveNorth(NetworkMessage &msg)
 
 void Protocol76::parseMoveEast(NetworkMessage &msg)
 {
-#ifdef TR_ANTI_AFK
-	player->notAfk();
-#endif //TR_ANTI_AFK
 
 	if(game->stopEvent(player->eventAutoWalk)) {
 		player->sendCancelWalk();
@@ -749,9 +692,6 @@ void Protocol76::parseMoveEast(NetworkMessage &msg)
 
 void Protocol76::parseMoveSouth(NetworkMessage &msg)
 {
-#ifdef TR_ANTI_AFK
-	player->notAfk();
-#endif //TR_ANTI_AFK
 
 	if(game->stopEvent(player->eventAutoWalk)) {
 		player->sendCancelWalk();
@@ -766,9 +706,6 @@ void Protocol76::parseMoveSouth(NetworkMessage &msg)
 
 void Protocol76::parseMoveWest(NetworkMessage &msg)
 {
-#ifdef TR_ANTI_AFK
-	player->notAfk();
-#endif //TR_ANTI_AFK
 
 	if(game->stopEvent(player->eventAutoWalk)) {
 		player->sendCancelWalk();
@@ -782,9 +719,6 @@ void Protocol76::parseMoveWest(NetworkMessage &msg)
 
 void Protocol76::parseMoveNorthEast(NetworkMessage &msg)
 {
-#ifdef TR_ANTI_AFK
-	player->notAfk();
-#endif //TR_ANTI_AFK
 
 	if(game->stopEvent(player->eventAutoWalk)) {
 		player->sendCancelWalk();
@@ -799,9 +733,6 @@ void Protocol76::parseMoveNorthEast(NetworkMessage &msg)
 
 void Protocol76::parseMoveSouthEast(NetworkMessage &msg)
 {
-#ifdef TR_ANTI_AFK
-	player->notAfk();
-#endif //TR_ANTI_AFK
 
 	if(game->stopEvent(player->eventAutoWalk)) {
 		player->sendCancelWalk();
@@ -816,9 +747,6 @@ void Protocol76::parseMoveSouthEast(NetworkMessage &msg)
 
 void Protocol76::parseMoveSouthWest(NetworkMessage &msg)
 {
-#ifdef TR_ANTI_AFK
-	player->notAfk();
-#endif //TR_ANTI_AFK
 
 	if(game->stopEvent(player->eventAutoWalk)) {
 		player->sendCancelWalk();
@@ -833,9 +761,6 @@ void Protocol76::parseMoveSouthWest(NetworkMessage &msg)
 
 void Protocol76::parseMoveNorthWest(NetworkMessage &msg)
 {
-#ifdef TR_ANTI_AFK
-	player->notAfk();
-#endif //TR_ANTI_AFK
 
 	if(game->stopEvent(player->eventAutoWalk)) {
 		player->sendCancelWalk();
@@ -851,36 +776,24 @@ void Protocol76::parseMoveNorthWest(NetworkMessage &msg)
 
 void Protocol76::parseTurnNorth(NetworkMessage &msg)
 {
-#ifdef TR_ANTI_AFK
-	player->notAfk();
-#endif //TR_ANTI_AFK
 	game->creatureTurn(player, NORTH);
 }
 
 
 void Protocol76::parseTurnEast(NetworkMessage &msg)
 {
-#ifdef TR_ANTI_AFK
-	player->notAfk();
-#endif //TR_ANTI_AFK
 	game->creatureTurn(player, EAST);
 }
 
 
 void Protocol76::parseTurnSouth(NetworkMessage &msg)
 {
-#ifdef TR_ANTI_AFK
-	player->notAfk();
-#endif //TR_ANTI_AFK
 	game->creatureTurn(player, SOUTH);
 }
 
 
 void Protocol76::parseTurnWest(NetworkMessage &msg)
 {
-#ifdef TR_ANTI_AFK
-	player->notAfk();
-#endif //TR_ANTI_AFK
 	game->creatureTurn(player, WEST);
 }
 
@@ -899,20 +812,12 @@ void Protocol76::parseRequestOutfit(NetworkMessage &msg)
 	{
 	case PLAYERSEX_FEMALE:
 		msg.AddByte(PLAYER_FEMALE_1);
-#ifdef YUR_PREMIUM_PROMOTION
 		msg.AddByte(player->isPremium()? PLAYER_FEMALE_7 : PLAYER_FEMALE_4);
-#else
-		msg.AddByte(PLAYER_FEMALE_4);
-#endif //YUR_PREMIUM_PROMOTION
 		break;
 
 	case PLAYERSEX_MALE:
 		msg.AddByte(PLAYER_MALE_1);
-#ifdef YUR_PREMIUM_PROMOTION
 		msg.AddByte(player->isPremium()? PLAYER_MALE_7 : PLAYER_MALE_4);
-#else
-		msg.AddByte(PLAYER_MALE_4);
-#endif //YUR_PREMIUM_PROMOTION
 		break;
 
 	case PLAYERSEX_OLDMALE:
@@ -922,11 +827,7 @@ void Protocol76::parseRequestOutfit(NetworkMessage &msg)
 
 	default:
 		msg.AddByte(PLAYER_MALE_1);
-#ifdef YUR_PREMIUM_PROMOTION
 		msg.AddByte(player->isPremium()? PLAYER_MALE_7 : PLAYER_MALE_4);
-#else
-		msg.AddByte(PLAYER_MALE_4);
-#endif //YUR_PREMIUM_PROMOTION
 	}
 
 	WriteBuffer(msg);
@@ -938,23 +839,19 @@ void Protocol76::sendSetOutfit(const Creature* creature) {
 		newmsg.AddByte(0x8E);
 		newmsg.AddU32(creature->getID());
 
-#ifdef BD_ITEM_LOOK
 		if (creature->looktype > 1000)
 		{
 			newmsg.AddByte(0);
 			newmsg.AddU16(Item::items[creature->looktype].clientId);
 		}
 		else
-#endif //BD_ITEM_LOOK
 		{
-#ifdef YUR_INVISIBLE
 			if (creature->isInvisible())
 			{
 				newmsg.AddByte(0);
 				newmsg.AddU16(0);
 			}
 			else
-#endif //YUR_INVISIBLE
 			{
 				newmsg.AddByte(creature->looktype);
 				newmsg.AddByte(creature->lookhead);
@@ -1036,18 +933,10 @@ void Protocol76::parseSetOutfit(NetworkMessage &msg)
 {
 	int temp = msg.GetByte();
 	if ((player->getSex() == PLAYERSEX_FEMALE && temp >= PLAYER_FEMALE_1 &&
-#ifdef YUR_PREMIUM_PROMOTION
 		temp <= (player->isPremium()? PLAYER_FEMALE_7 : PLAYER_FEMALE_4)) ||
-#else
-		temp <= PLAYER_FEMALE_7) ||
-#endif //YUR_PREMIUM_PROMOTION
 
 		(player->getSex() == PLAYERSEX_MALE && temp >= PLAYER_MALE_1 &&
-#ifdef YUR_PREMIUM_PROMOTION
 		temp <= (player->isPremium()? PLAYER_MALE_7 : PLAYER_MALE_4)))
-#else
-		temp <= PLAYER_MALE_7))
-#endif //YUR_PREMIUM_PROMOTION
 	{
 		player->looktype= temp;
 		player->lookmaster = player->looktype;
@@ -1371,7 +1260,6 @@ void Protocol76::parseLookAt(NetworkMessage &msg){
 
 	if(item)
 	{
-#ifdef TLM_HOUSE_SYSTEM
 		Tile* doorTile = game->getTile(LookPos);
 		Thing* doorThing = doorTile? doorTile->getTopThing() : NULL;
 		Item* doorItem = doorThing? dynamic_cast<Item*>(doorThing) : NULL;
@@ -1379,7 +1267,6 @@ void Protocol76::parseLookAt(NetworkMessage &msg){
 		if (doorItem && Item::items[doorItem->getID()].isDoor && doorTile && doorTile->getHouse())
 			AddTextMessage(newmsg, MSG_INFO, doorTile->getHouse()->getDescription().c_str());
 		else
-#endif //TLM_HOUSE_SYSTEM
 		{
 			bool fullDescription = false;
 			if(LookPos.x == 0xFFFF) {
@@ -1393,11 +1280,9 @@ void Protocol76::parseLookAt(NetworkMessage &msg){
 			std::stringstream ss;
 			ss << "You see " << item->getDescription(fullDescription);
 
-#ifdef YUR_GM_LOOK
 			if (player->access >= g_config.ACCESS_LOOK)
 				ss << "\nId: " << Item::items.reverseLookUp(ItemNum)
 				<< ". Pos: " << LookPos.x << ' ' << LookPos.y << ' ' << LookPos.z << '.';
-#endif //YUR_GM_LOOK
 
 			AddTextMessage(newmsg,MSG_INFO, ss.str().c_str());
 		}
@@ -1601,11 +1486,7 @@ void Protocol76::AddTileUpdated(NetworkMessage &msg, const Position &pos)
 		Tile* tile = game->getTile(pos.x, pos.y, pos.z);
 		if(tile)
 		{
-#ifdef TRS_GM_INVISIBLE
 			GetTileDescription(tile, msg, player);
-#else
-			GetTileDescription(tile, msg);
-#endif //TRS_GM_INVISIBLE
 			msg.AddByte(0);
 			msg.AddByte(0xFF);
 		}
@@ -2189,7 +2070,6 @@ void Protocol76::sendThingMove(const Creature *creature, const Thing *thing,
 	}
 
 	if (thing == this->player) {
-#ifdef TRS_GM_INVISIBLE
 		if(tele){
 			msg.AddByte(0x64);
 			msg.AddPosition(player->pos);
@@ -2211,29 +2091,6 @@ void Protocol76::sendThingMove(const Creature *creature, const Thing *thing,
 				GetMapDescription(thing->pos.x - 8, thing->pos.y - 6, thing->pos.z, 1, 14, msg, this->player);
 			}
 		}
-#else //TRS_GM_INVISIBLE
-		if(tele){
-			msg.AddByte(0x64);
-			msg.AddPosition(player->pos);
-			GetMapDescription(player->pos.x-8, player->pos.y-6, player->pos.z, 18, 14, msg);
-		}
-		else{
-			if (oldPos->y > thing->pos.y) { // north, for old x
-				msg.AddByte(0x65);
-				GetMapDescription(oldPos->x - 8, thing->pos.y - 6, thing->pos.z, 18, 1, msg);
-			} else if (oldPos->y < thing->pos.y) { // south, for old x
-				msg.AddByte(0x67);
-				GetMapDescription(oldPos->x - 8, thing->pos.y + 7, thing->pos.z, 18, 1, msg);
-			}
-			if (oldPos->x < thing->pos.x) { // east, [with new y]
-				msg.AddByte(0x66);
-				GetMapDescription(thing->pos.x + 9, thing->pos.y - 6, thing->pos.z, 1, 14, msg);
-			} else if (oldPos->x > thing->pos.x) { // west, [with new y]
-				msg.AddByte(0x68);
-				GetMapDescription(thing->pos.x - 8, thing->pos.y - 6, thing->pos.z, 1, 14, msg);
-			}
-		}
-#endif //TRS_GM_INVISIBLE
 
 		//Auto-close container's
 		std::vector<Container *> containers;
@@ -2427,21 +2284,13 @@ void Protocol76::sendThingAppear(const Thing *thing){
 
 			msg.AddByte(0x64);
 			msg.AddPosition(player->pos);
-#ifdef TRS_GM_INVISIBLE
 			GetMapDescription(player->pos.x-8, player->pos.y-6, player->pos.z, 18, 14, msg, player);
-#else
-			GetMapDescription(player->pos.x-8, player->pos.y-6, player->pos.z, 18, 14, msg);
-#endif //TRS_GM_INVISIBLE
 			AddMagicEffect(msg,player->pos, NM_ME_ENERGY_AREA);
 
 			AddPlayerStats(msg,player);
 
 			msg.AddByte(0x82);
-#ifdef CVS_DAY_CYCLE
 			msg.AddByte(game->getLightLevel());
-#else
-			msg.AddByte(0x6F); //LIGHT LEVEL
-#endif //CVS_DAY_CYCLE
 			msg.AddByte(0xD7);//light? (seems constant)
 
 			/*msg.AddByte(0x8d);//8d
@@ -2467,26 +2316,17 @@ void Protocol76::sendThingAppear(const Thing *thing){
 			std::string tempstring;
 			tempstring = "Your last visit was on ";
 			time_t lastlogin = player->getLastLoginSaved();
-#ifdef USING_VISUAL_2005
-			char buf[128];
-			ctime_s(buf, sizeof(buf), &lastlogin);
-			tempstring += buf;
-#else
 			tempstring += ctime(&lastlogin);
-#endif //USING_VISUAL_2005
 			tempstring.erase(tempstring.length() -1);
 			tempstring += ".";
 
-#ifdef YUR_CVS_MODS
 			if (lastlogin == 0)
 				AddTextMessage(msg,MSG_EVENT,"It is your first visit.");
 			else
-#endif //YUR_CVS_MODS
 				AddTextMessage(msg,MSG_EVENT, tempstring.c_str());
 
 			WriteBuffer(msg);
 
-#ifdef ELEM_VIP_LIST
 			for(int i = 0; i < MAX_VIPS; i++)
 			{
 				if(!player->vip[i].empty())
@@ -2505,17 +2345,6 @@ void Protocol76::sendThingAppear(const Thing *thing){
 					WriteBuffer(msgs);
 				}
 			}
-#else //ELEM_VIP_LIST
-			for(VIPListSet::iterator it = player->VIPList.begin(); it != player->VIPList.end(); it++){
-				bool online;
-				std::string vip_name;
-
-				if(IOPlayer::instance()->getNameByGuid((*it), vip_name)){
-					online = (game->getPlayerByName(vip_name) != NULL);
-					sendVIP((*it), vip_name, online);
-				}
-			}
-#endif //ELEM_VIP_LIST
 
 			//force flush
 			flushOutputBuffer();
@@ -2773,23 +2602,19 @@ void Protocol76::AddCreature(NetworkMessage &msg,const Creature *creature, bool 
 
 	msg.AddByte((unsigned char)creature->getDirection());
 
-#ifdef BD_ITEM_LOOK
 	if (creature->looktype > 1000)
 	{
 		msg.AddByte(0x00);
 		msg.AddU16(Item::items[creature->looktype].clientId);
 	}
 	else
-#endif //BD_ITEM_LOOK
 	{
-#ifdef YUR_INVISIBLE
 		if (creature->isInvisible())
 		{
 			msg.AddByte(0);
 			msg.AddU16(0);
 		}
 		else
-#endif //YUR_INVISIBLE
 		{
 			msg.AddByte(creature->looktype);
 			msg.AddByte(creature->lookhead);
@@ -2799,7 +2624,6 @@ void Protocol76::AddCreature(NetworkMessage &msg,const Creature *creature, bool 
 		}
 	}
 
-#ifdef CVS_DAY_CYCLE
 	const Player* p = dynamic_cast<const Player*>(creature);
 	if (p)
 	{
@@ -2807,7 +2631,6 @@ void Protocol76::AddCreature(NetworkMessage &msg,const Creature *creature, bool 
 		msg.AddByte(p->getLightColor());
 	}
 	else
-#endif //CVS_DAY_CYCLE
 	{
 		msg.AddByte(0x00); // light level
 		msg.AddByte(0xD7); // light color
@@ -2815,7 +2638,6 @@ void Protocol76::AddCreature(NetworkMessage &msg,const Creature *creature, bool 
 
 	msg.AddU16(creature->getSpeed());
 
-#ifdef TLM_SKULLS_PARTY
 	Creature *ctarget = game->getCreatureByID(creature->getID());
 	Player*target=dynamic_cast<Player*>(ctarget);
 	std::vector<Player*>::iterator invited = std::find(player->invitedplayers.begin(), player->invitedplayers.end(), target);
@@ -2839,10 +2661,6 @@ void Protocol76::AddCreature(NetworkMessage &msg,const Creature *creature, bool 
 		msg.AddByte(1);
 	else
 		msg.AddByte(0x00);
-#else
-	msg.AddByte(0x00); // skull
-	msg.AddByte(0x00); // shield
-#endif //TLM_SKULLS_PARTY
 }
 
 
@@ -2855,7 +2673,6 @@ void Protocol76::AddPlayerStats(NetworkMessage &msg,const Player *player)
 	const unsigned long freeCapClient = (unsigned long)player->getFreeCapacity() * 100UL;
 	msg.AddU16((unsigned short)std::min(freeCapClient, 65535UL));
 
-#ifdef YUR_HIGH_LEVELS
 	if (player->getPlayerInfo(PLAYERINFO_LEVEL) > 65535)
 	{
 		msg.AddU32(player->getPlayerInfo(PLAYERINFO_LEVEL));
@@ -2871,10 +2688,6 @@ void Protocol76::AddPlayerStats(NetworkMessage &msg,const Player *player)
 		msg.AddU32((unsigned long)player->getExperience());
 		msg.AddU16(player->getPlayerInfo(PLAYERINFO_LEVEL));
 	}
-#else
-	msg.AddU32(player->getExperience());
-	msg.AddU16(player->getPlayerInfo(PLAYERINFO_LEVEL));
-#endif //YUR_HIGH_LEVELS
 
 	msg.AddByte(player->getPlayerInfo(PLAYERINFO_LEVELPERCENT));
 	msg.AddU16(player->getMana() > std::numeric_limits<uint16_t>::max() ? 0:player->getMana());
@@ -3044,7 +2857,6 @@ void Protocol76::WriteBuffer(NetworkMessage &add){
 }
 
 
-#ifdef CVS_DAY_CYCLE
 void Protocol76::sendWorldLightLevel(unsigned char lightlevel, unsigned char color)
 {
 	NetworkMessage msg;
@@ -3063,10 +2875,8 @@ void Protocol76::sendPlayerLightLevel(const Player* player)
 	msg.AddByte(player->getLightColor());		//
 	WriteBuffer(msg);
 }
-#endif //CVS_DAY_CYCLE
 
 
-#ifdef BD_HOUSE_WINDOW
 void Protocol76::sendHouseWindow(std::string members)
 {
 	NetworkMessage msg;
@@ -3087,10 +2897,8 @@ void Protocol76::parseHouseWindow(NetworkMessage& msg)
 	std::string new_text = msg.GetRaw();
 	player->receiveHouseWindow(new_text);
 }
-#endif //BD_HOUSE_WINDOW
 
 
-#ifdef ELEM_VIP_LIST
 void Protocol76::elemParseAddVip(NetworkMessage &msg)
 {
 	std::string name = msg.GetString();
@@ -3132,10 +2940,8 @@ void Protocol76::elemParseRemoveVip(NetworkMessage &msg)
 	if(id >= 1 && id <= MAX_VIPS)
 		player->vip[id-1].clear();
 }
-#endif //ELEM_VIP_LIST
 
 
-#ifdef TLM_SKULLS_PARTY
 void Protocol76::sendSkull(const Creature *creature)
 {
   NetworkMessage msg;
@@ -3345,4 +3151,3 @@ void Protocol76::parsePassLeadership(NetworkMessage &msg)
 		}
 	}
 }
-#endif //TLM_SKULLS_PARTY

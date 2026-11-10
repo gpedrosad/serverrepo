@@ -17,7 +17,6 @@
 // along with this program; if not, write to the Free Software Foundation,
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
-#ifdef YUR_TRAINING_AREA
 #include "trainingarea.h"
 #include "game.h"
 #include "luascript.h"
@@ -120,4 +119,3 @@ bool TrainingArea::AddTrainingTile(Game* game, const Position& pos, const Positi
 	tile->setTrainingArea(exit);
 	return true;
 }
-#endif //YUR_TRAINING_AREA

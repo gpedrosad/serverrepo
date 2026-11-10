@@ -100,16 +100,9 @@ public:
 	bool            rotable;
 	int 			rotateTo;
 
-#ifdef TLM_HOUSE_SYSTEM
 	bool isDoor;
-#endif //TLM_HOUSE_SYSTEM
-#ifdef YUR_RINGS_AMULETS
 	int newCharges;
 	int newTime;
-#endif //YUR_RINGS_AMULETS
-#ifdef TP_TRASH_BINS
-	bool isDeleter;
-#endif //TP_TRASH_BINS
 
 	int             lightLevel;
 	int             lightColor;

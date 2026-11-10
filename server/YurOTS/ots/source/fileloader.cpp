@@ -61,12 +61,7 @@ FileLoader::~FileLoader()
 bool FileLoader::openFile(const char* filename, bool write, bool caching /*= false*/)
 {
 	if(write) {
-#ifdef USING_VISUAL_2005
-		m_file = NULL;
-		fopen_s(&m_file, filename, "wb");
-#else
 		m_file = fopen(filename, "wb");
-#endif //USING_VISUAL_2005
 		if(m_file) {
 				unsigned long version = 0;
 				writeData(&version, sizeof(version), false);
@@ -79,12 +74,7 @@ bool FileLoader::openFile(const char* filename, bool write, bool caching /*= fal
 	}
 	else {
 		unsigned long version;
-#ifdef USING_VISUAL_2005
-		m_file = NULL;
-		fopen_s(&m_file, filename, "rb");
-#else
 		m_file = fopen(filename, "rb");
-#endif //USING_VISUAL_2005
 		if(m_file){
 			fread(&version, sizeof(unsigned long), 1, m_file);
 			if(version > 0){

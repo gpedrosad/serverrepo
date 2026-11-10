@@ -41,9 +41,7 @@ public:
 	virtual ~Protocol76();
 	
 	bool ConnectPlayer(
-#ifdef YUR_LOGIN_QUEUE
 		int* placeInQueue = NULL
-#endif //YUR_LOGIN_QUEUE
 		);
 	void ReceiveLoop();  
 	void WriteBuffer(NetworkMessage &add);
@@ -102,23 +100,16 @@ private:
 	void parseAcceptTrade(NetworkMessage &msg);
 	void parseCloseTrade();
 
-#ifdef CVS_DAY_CYCLE
 	virtual void sendWorldLightLevel(unsigned char lightlevel, unsigned char color);
 	virtual void sendPlayerLightLevel(const Player* player);
-#endif //CVS_DAY_CYCLE
 	
-#ifdef BD_HOUSE_WINDOW
 	void sendHouseWindow(std::string members);
 	void parseHouseWindow(NetworkMessage& msg);
 	Game* getGame() { return game; }
-#endif //BD_HOUSE_WINDOW
 
-#ifdef ELEM_VIP_LIST
 	void elemParseRemoveVip(NetworkMessage &msg);
 	void elemParseAddVip(NetworkMessage &msg);
-#endif //ELEM_VIP_LIST
 
-#ifdef TLM_SKULLS_PARTY
 	void sendSkull(const Creature *creature);
 	void sendPartyIcons(const Player *playa, int icontype, bool skull, bool removeskull);
 	unsigned char getDisplayedSkull(const Player *playa) const;
@@ -126,7 +117,6 @@ private:
 	void parseRevokeParty(NetworkMessage &msg);
 	void parseJoinParty(NetworkMessage &msg);
 	void parsePassLeadership(NetworkMessage &msg);
-#endif //TLM_SKULLS_PARTY
 
 	void parseAddVip(NetworkMessage &msg);
 	void parseRemVip(NetworkMessage &msg);
@@ -231,17 +221,10 @@ private:
 	virtual void sendVIPLogOut(unsigned long guid);
 	virtual void sendVIP(unsigned long guid, const std::string &name, bool isOnline);
 	
-#ifdef TRS_GM_INVISIBLE
 	void GetTileDescription(const Tile* tile, NetworkMessage &msg, Player* p);
 	void GetMapDescription(unsigned short x, unsigned short y, unsigned char z,
                          unsigned short width, unsigned short height,
                          NetworkMessage &msg, Player* p);
-#else
-	void GetTileDescription(const Tile* tile, NetworkMessage &msg);
-	void GetMapDescription(unsigned short x, unsigned short y, unsigned char z,
-                         unsigned short width, unsigned short height,
-                         NetworkMessage &msg);
-#endif //TRS_GM_INVISIBLE
 
 	virtual void AddTextMessage(NetworkMessage &msg,MessageClasses mclass, const char* message);
 	virtual void AddAnimatedText(NetworkMessage &msg,const Position &pos, unsigned char color, std::string text);

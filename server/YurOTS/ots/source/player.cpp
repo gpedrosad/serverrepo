@@ -38,22 +38,16 @@ using namespace std;
 #include "protocol.h"
 #include "player.h"
 #include "luascript.h"
-#ifdef TLM_BUY_SELL
 #include "ioaccount.h"
 #include "ioplayer.h"
-#endif //TLM_BUY_SELL
 #include "const76.h"
 #include "chat.h"
 
 static const unsigned long STORAGE_LAST_DEATH_LOST_EXP = 9110;
 
-#ifdef YUR_TRAINING_AREA
 #include "tile.h"
-#endif //YUR_TRAINING_AREA
 
-#ifdef ELEM_VIP_LIST
 #include "networkmessage.h"
-#endif //ELEM_VIP_LIST
 
 extern LuaScript g_config;
 extern Game g_game;
@@ -61,7 +55,6 @@ extern Chat g_chat;
 
 AutoList<Player> Player::listPlayer;
 
-#ifdef YUR_PREMIUM_PROMOTION
 // Regen [voc 0..4] = [NONE, SORCERER, DRUID, PALADIN, KNIGHT]
 // {thinkTicks_entre_regens, mana_por_pulso} — con manatickmul=1 el pulso es lo que ve el cliente.
 // Referencia sorcerer: free +5, premium +8, promoted+premium +10; promotion sin premium = +5 más rápido.
@@ -85,7 +78,6 @@ static void setBasicOutfit(Player* player)
 	CREATURE_SET_OUTFIT(player, baseLookType, 20, 30, 40, 50);
 	player->lookmaster = player->looktype;
 }
-#endif //YUR_PREMIUM_PROMOTION
 
 const int64_t Player::gainManaVector[5][2] = {{6,5},{3,5},{3,5},{4,5},{6,5}};
 const int64_t Player::gainHealthVector[5][2] = {{6,1},{6,1},{6,1},{4,1},{3,1}};
@@ -97,19 +89,12 @@ static bool isKnightOrPaladinFamily(playervoc_t vocation)
 	return vocation == VOCATION_PALADIN || vocation == VOCATION_KNIGHT;
 }
 
-#ifdef CVS_GAINS_MULS
-int Player::CapGain[5] = {10, 10, 10, 20, 25};
-int64_t Player::ManaGain[5] = {5, 30, 30, 15, 5};
-int64_t Player::HPGain[5] = {5, 5, 5, 10, 15};
-#endif //CVS_GAINS_MULS
 
 Player::Player(const std::string& name, Protocol *p) :
 Creature()
 {
 	client     = p;
-#ifdef YUR_BUILTIN_AAC
 	if (client)
-#endif //YUR_BUILTIN_AAC
 		client->setPlayer(this);
 
 	looktype   = PLAYER_MALE_1;
@@ -124,32 +109,15 @@ Creature()
 	food       = 0;
 	guildId    = 0;
 
-#ifdef CVS_DAY_CYCLE
 	lightlevel = 0;
 	last_worldlightlevel = -1;
-#endif //CVS_DAY_CYCLE
-#ifdef YUR_GUILD_SYSTEM
 	guildStatus = GUILD_NONE;
-#endif //YUR_GUILD_SYSTEM
-#ifdef BD_HOUSE_WINDOW
 	editedHouse = NULL;
 	editedHouseRights = HOUSE_NONE;
-#endif //BD_HOUSE_WINDOW
-#ifdef TLM_HOUSE_SYSTEM
 	houseRightsChanged = true;
-#endif //TLM_HOUSE_SYSTEM
-#ifdef TR_ANTI_AFK
-	idleTime   = 0;
-	warned     = false;
-#endif //TR_ANTI_AFK
-#ifdef YUR_TRAINING_AREA
 	trainingWarned = false;
 	trainingInArea = false;
-#endif //YUR_TRAINING_AREA
-#ifdef YUR_SOFT_BOOTS
 	softBootsTick = 0;
-#endif //YUR_SOFT_BOOTS
-#ifdef TRS_GM_INVISIBLE
 	gmInvisible = false;
 	oldlookhead = 0;
 	oldlookbody = 0;
@@ -158,28 +126,17 @@ Creature()
 	oldlookmaster = 0;
 	oldlooktype = PLAYER_MALE_1;
 	oldlookcorpse = ITEM_HUMAN_CORPSE;
-#endif //TRS_GM_INVISIBLE
-#ifdef TLM_SKULLS_PARTY
 	party = 0;
 	banned = false;
 	skullTicks = 0;
 	skullKills = 0;
 	absolveTicks = 0;
-#endif //TLM_SKULLS_PARTY
-#ifdef YUR_RINGS_AMULETS
 	energyRing = false;
 	ringRegenTick = 0;
- #ifdef YUR_INVISIBLE
 	stealthRing = false;
- #endif //YUR_INVISIBLE
-#endif //YUR_RINGS_AMULETS
-#ifdef YUR_PREMIUM_PROMOTION
 	premiumTicks = 0;
 	promoted = false;
-#endif //YUR_PREMIUM_PROMOTION
-#ifdef YUR_LIGHT_ITEM
 	lightItem = 0;
-#endif //YUR_LIGHT_ITEM
 
 	eventAutoWalk = 0;
 	lastGoldenRingBonus = 0;
@@ -251,11 +208,7 @@ Creature()
  	HPGain[3]   = 10;
  	HPGain[4]   = 15;
  	*/
-#ifdef YUR_CVS_MODS
 	max_depot_items = g_config.MAX_DEPOT_ITEMS;
-#else
- 	max_depot_items = 1000;
-#endif //YUR_CVS_MODS
 
  	manaTick = 0;
  	healthTick = 0;
@@ -291,11 +244,9 @@ std::string Player::getDescription(bool self) const
 		s << "yourself.";
 
 		if(vocation != VOCATION_NONE) {
-#ifdef YUR_PREMIUM_PROMOTION
 			if (isPromoted())
 				s << " You are " << g_config.PROMOTED_VOCATIONS[(int)vocation] << ".";
 			else
-#endif //YUR_PREMIUM_PROMOTION
 				s << " You are " << g_config.VOCATIONS[(int)vocation] << ".";
 		}
 	}
@@ -308,20 +259,14 @@ std::string Player::getDescription(bool self) const
 			else
 				s << " He";
 
-#ifdef YUR_PREMIUM_PROMOTION
 			if (isPromoted())
 				s << " is "<< g_config.PROMOTED_VOCATIONS[(int)vocation] << ".";
 			else
-#endif //YUR_PREMIUM_PROMOTION
 				s << " is "<< g_config.VOCATIONS[(int)vocation] << ".";
 		}
 	}
 
-#ifdef YUR_GUILD_SYSTEM
 	if (guildStatus >= GUILD_MEMBER)
-#else
-	if(guildId)
-#endif //YUR_GUILD_SYSTEM
 	{
 		if(self)
 			s << " You are ";
@@ -360,9 +305,7 @@ Item* Player::getItem(int pos) const
 int64_t Player::getWeaponDamage() const
 {
 	double mul = 1.0;
-#ifdef YUR_FIGHT_MODE
 	mul = (fightMode==1? 2.0 : (fightMode==2? 1.5 : 1.0));
-#endif //YUR_FIGHT_MODE
 
 	double damagemax = 0;
 	//TODO:what happens with 2 weapons?
@@ -480,9 +423,7 @@ int Player::getDefense() const
 	else
 		defense += (int)random_range(0,(int)skills[SKILL_SHIELD][SKILL_LEVEL]);
 
-#ifdef YUR_FIGHT_MODE
 	defense = int(double(defense) * (fightMode==1? 1.0 : (fightMode==2? 1.5 : 2.0)));
-#endif //YUR_FIGHT_MODE
 
   	return random_range(int(defense*0.25), int(1+(int)(defense*rand())/(RAND_MAX+1.0)));
   	///////////
@@ -850,19 +791,15 @@ int Player::addItemInventory(Item* item, int pos, bool internal /*= false*/) {
 			items[pos]->pos.x = 0xFFFF;
 		}
 
-#ifdef YUR_RINGS_AMULETS
 		if (pos == SLOT_RING && items[pos]) {
 			items[pos]->setGlimmer();
 			checkRing(0);
 		}
-#endif //YUR_RINGS_AMULETS
 
 		updateInventoryWeigth();
 
-#ifdef YUR_BOH
 		if(pos == SLOT_HEAD)
 			refreshHeadSkillBonus(SLOT_HEAD);
-#endif //YUR_BOH
 		if(!internal) {
 			client->sendStats();
 			client->sendInventory(pos);
@@ -1031,10 +968,8 @@ int Player::removeItemInventory(int pos, bool internal /*= false*/)
 
 		updateInventoryWeigth();
 
-#ifdef YUR_BOH
 		if(pos == SLOT_HEAD)
 			refreshHeadSkillBonus(SLOT_HEAD);
-#endif //YUR_BOH
 		if(!internal) {
 			client->sendStats();
 			client->sendInventory(pos);
@@ -1110,47 +1045,31 @@ void Player::addSkillTry(int skilltry)
 					default: skill = 0; break;
 			 	}//switch
 
-#ifdef YUR_MULTIPLIERS
 				{
 					int mul = (skill==4? g_config.DIST_MUL[vocation] : g_config.WEAPON_MUL[vocation]);
-#ifdef YUR_PREMIUM_PROMOTION
 					if (isPremium() && g_config.PREMMY_SKILL_MUL > 1)
 						mul *= g_config.PREMMY_SKILL_MUL;
-#endif //YUR_PREMIUM_PROMOTION
 					addSkillTryInternal(skilltry * mul, skill);
 				}
-#else
-			 	addSkillTryInternal(skilltry,skill);
-#endif //YUR_MULTIPLIERS
 			 	foundSkill = true;
 			 	break;
 			}
 		}
 	}
 	if(foundSkill == false)
-#ifdef YUR_MULTIPLIERS
 	{
 		int mul = g_config.WEAPON_MUL[vocation];
-#ifdef YUR_PREMIUM_PROMOTION
 		if (isPremium() && g_config.PREMMY_SKILL_MUL > 1)
 			mul *= g_config.PREMMY_SKILL_MUL;
-#endif //YUR_PREMIUM_PROMOTION
 		addSkillTryInternal(skilltry * mul, 0);//add fist try
 	}
-#else
-		addSkillTryInternal(skilltry,0);//add fist try
-#endif //YUR_MULTIPLIERS
 }
 
 void Player::addSkillShieldTry(int skilltry){
 
-#ifdef YUR_MULTIPLIERS
 	skilltry *= g_config.SHIELD_MUL[vocation];
-#endif //YUR_MULTIPLIERS
-#ifdef YUR_PREMIUM_PROMOTION
 	if (isPremium() && g_config.PREMMY_SKILL_MUL > 1)
 		skilltry *= g_config.PREMMY_SKILL_MUL;
-#endif //YUR_PREMIUM_PROMOTION
 
 	//look for a shield
 
@@ -1203,7 +1122,6 @@ void Player::setSoul(unsigned short value)
 
 void Player::checkSoulRegen(int thinkTicks)
 {
-#ifdef YUR_MULTIPLIERS
 	if(soul >= g_config.SOUL_MAX)
 		return;
 
@@ -1217,7 +1135,6 @@ void Player::checkSoulRegen(int thinkTicks)
 
 	soul = std::min<unsigned short>(soul + 1, (unsigned short)g_config.SOUL_MAX);
 	sendStats();
-#endif //YUR_MULTIPLIERS
 }
 
 int64_t Player::getSkill(skills_t skilltype, skillsid_t skillinfo) const
@@ -1226,7 +1143,6 @@ int64_t Player::getSkill(skills_t skilltype, skillsid_t skillinfo) const
 	if(skillinfo != SKILL_LEVEL)
 		return value;
 
-#ifdef YUR_RINGS_AMULETS
 	if(items[SLOT_RING])
 	{
 		int id = items[SLOT_RING]->getID();
@@ -1238,8 +1154,6 @@ int64_t Player::getSkill(skills_t skilltype, skillsid_t skillinfo) const
 			(skilltype == SKILL_CLUB && id == ITEM_CLUB_RING_IN_USE))
 			value += 4;
 	}
-#endif //YUR_RINGS_AMULETS
-#ifdef YUR_BOH
 	if(isKnightOrPaladinFamily(vocation) &&
 		(skilltype == SKILL_SWORD || skilltype == SKILL_AXE ||
 		 skilltype == SKILL_CLUB || skilltype == SKILL_DIST))
@@ -1249,7 +1163,6 @@ int64_t Player::getSkill(skills_t skilltype, skillsid_t skillinfo) const
 		if(items[SLOT_HEAD] && items[SLOT_HEAD]->getID() == ITEM_CRIMSON_HELMET)
 			value += 1;
 	}
-#endif //YUR_BOH
 	if(tempoBuffTicks > 0 &&
 		(skilltype == SKILL_SWORD || skilltype == SKILL_AXE ||
 		 skilltype == SKILL_CLUB || skilltype == SKILL_DIST))
@@ -1393,7 +1306,6 @@ void Player::addContainer(unsigned char containerid, Container *container)
 	vcontainers.push_back(vItem);
 }
 
-#ifdef YUR_CLEAN_MAP
 containerLayout::const_iterator Player::closeContainer(unsigned char containerid)
 {
 	for (containerLayout::iterator cl = vcontainers.begin(); cl != vcontainers.end(); ++cl)
@@ -1402,23 +1314,6 @@ containerLayout::const_iterator Player::closeContainer(unsigned char containerid
 
 	return vcontainers.end();
 }
-#else //YUR_CLEAN_MAP
-void Player::closeContainer(unsigned char containerid)
-{
-  for(containerLayout::iterator cl = vcontainers.begin(); cl != vcontainers.end(); ++cl)
-  {
-	  if(cl->first == containerid)
-	  {
-		  vcontainers.erase(cl);
-			break;
-		}
-	}
-
- #ifdef __DEBUG__
-	cout << Creature::getName() << ", closeContainer: " << (int)containerid << std::endl;
- #endif
-}
-#endif //YUR_CLEAN_MAP
 
 int Player::getLookCorpse(){
 	if(sex != 0)
@@ -1429,7 +1324,6 @@ int Player::getLookCorpse(){
 
 void Player::dropLoot(Container *corpse, Player* /*killer*/)
 {
-#ifdef TLM_SKULLS_PARTY
 	if (skullType == SKULL_RED)
 	{
 		for (int slot = 0; slot < 11; slot++)
@@ -1442,15 +1336,12 @@ void Player::dropLoot(Container *corpse, Player* /*killer*/)
 		}
 		return;
 	}
-#endif //TLM_SKULLS_PARTY
 
-#ifdef YUR_AOL
 	if (items[SLOT_NECKLACE] && items[SLOT_NECKLACE]->getID() == ITEM_AOL)
 	{
 		removeItemInventory(SLOT_NECKLACE);
 		return;
 	}
-#endif //YUR_AOL
 
 	for (int slot = 0; slot < 11; slot++)
 	{
@@ -1472,9 +1363,7 @@ void Player::dropLoot(Container *corpse, Player* /*killer*/)
 			items[slot] = NULL;
 		}
 	}
-#ifdef YUR_BOH
 	checkBoh();
-#endif //YUR_BOH
 }
 
 fight_t Player::getFightType()
@@ -1832,7 +1721,6 @@ void Player::onThingMove(const Creature *creature, const Container *fromContaine
 void Player::onThingMove(const Creature *creature, slots_t fromSlot, const Item* fromItem,
 	int oldFromCount, const Container *toContainer, unsigned char to_slotid, const Item *toItem, int oldToCount, int count)
 {
-#ifdef YUR_RINGS_AMULETS
 	if (fromSlot == SLOT_RING)
 	{
 		const_cast<Item*>(fromItem)->removeGlimmer();
@@ -1841,25 +1729,19 @@ void Player::onThingMove(const Creature *creature, slots_t fromSlot, const Item*
 		// efectos (velocidad/mana shield/invisible) inmediatamente al desequipar.
 		checkRing(0);
 	}
-#endif //YUR_RINGS_AMULETS
 	client->sendThingMove(creature, fromSlot, fromItem, oldFromCount, toContainer, to_slotid, toItem, oldToCount, count);
 	refreshHeadSkillBonus(fromSlot);
-#ifdef YUR_BOH
 	if (fromSlot == SLOT_FEET || fromSlot == SLOT_ARMOR ||
 		fromSlot == SLOT_LEFT || fromSlot == SLOT_RIGHT)
 		checkBoh();
-#endif //YUR_BOH
-#ifdef YUR_SOFT_BOOTS
 	if (fromSlot == SLOT_FEET)
 		softBootsTick = 0;
-#endif //YUR_SOFT_BOOTS
 }
 
 //inventory to inventory
 void Player::onThingMove(const Creature *creature, slots_t fromSlot, const Item* fromItem,
 	int oldFromCount, slots_t toSlot, const Item* toItem, int oldToCount, int count)
 {
-#ifdef YUR_RINGS_AMULETS
 	if (fromSlot == SLOT_RING)
 	{
 		const_cast<Item*>(fromItem)->removeGlimmer();
@@ -1874,29 +1756,23 @@ void Player::onThingMove(const Creature *creature, slots_t fromSlot, const Item*
 		// FIX rings: refrescar flags al equipar.
 		checkRing(0);
 	}
-#endif //YUR_RINGS_AMULETS
 	client->sendThingMove(creature, fromSlot, fromItem, oldFromCount, toSlot, toItem, oldToCount, count);
 	refreshHeadSkillBonus(fromSlot, toSlot);
-#ifdef YUR_BOH
 	if (fromSlot == SLOT_FEET || toSlot == SLOT_FEET ||
 		fromSlot == SLOT_ARMOR || toSlot == SLOT_ARMOR ||
 		fromSlot == SLOT_LEFT || toSlot == SLOT_LEFT ||
 		fromSlot == SLOT_RIGHT || toSlot == SLOT_RIGHT)
 		checkBoh();
-#endif //YUR_BOH
-#ifdef YUR_SOFT_BOOTS
 	if (fromSlot == SLOT_FEET)
 		softBootsTick = 0;
 	if (toSlot == SLOT_FEET && fromItem && fromItem->getID() == ITEM_SOFT_BOOTS)
 		onSoftBootsEquipped(const_cast<Item*>(fromItem));
-#endif //YUR_SOFT_BOOTS
 }
 
 //container to inventory
 void Player::onThingMove(const Creature *creature, const Container *fromContainer, unsigned char from_slotid,
 	const Item* fromItem, int oldFromCount, slots_t toSlot, const Item *toItem, int oldToCount, int count)
 {
-#ifdef YUR_RINGS_AMULETS
 	if (toSlot == SLOT_RING)
 	{
 		const_cast<Item*>(fromItem)->setGlimmer();
@@ -1904,18 +1780,13 @@ void Player::onThingMove(const Creature *creature, const Container *fromContaine
 		// FIX rings: refrescar flags al equipar.
 		checkRing(0);
 	}
-#endif //YUR_RINGS_AMULETS
 	client->sendThingMove(creature, fromContainer, from_slotid, fromItem, oldFromCount, toSlot, toItem, oldToCount, count);
 	refreshHeadSkillBonus(toSlot);
-#ifdef YUR_BOH
 	if (toSlot == SLOT_FEET || toSlot == SLOT_ARMOR ||
 		toSlot == SLOT_LEFT || toSlot == SLOT_RIGHT)
 		checkBoh();
-#endif //YUR_BOH
-#ifdef YUR_SOFT_BOOTS
 	if (toSlot == SLOT_FEET && fromItem && fromItem->getID() == ITEM_SOFT_BOOTS)
 		onSoftBootsEquipped(const_cast<Item*>(fromItem));
-#endif //YUR_SOFT_BOOTS
 }
 
 //container to ground
@@ -1929,7 +1800,6 @@ void Player::onThingMove(const Creature *creature, const Container *fromContaine
 void Player::onThingMove(const Creature *creature, slots_t fromSlot,
 	const Item* fromItem, int oldFromCount, const Position &toPos, const Item *toItem, int oldToCount, int count)
 {
-#ifdef YUR_RINGS_AMULETS
 	if (fromSlot == SLOT_RING)
 	{
 		const_cast<Item*>(fromItem)->removeGlimmer();
@@ -1937,18 +1807,13 @@ void Player::onThingMove(const Creature *creature, slots_t fromSlot,
 		// FIX rings: refrescar flags al desequipar.
 		checkRing(0);
 	}
-#endif //YUR_RINGS_AMULETS
 	client->sendThingMove(creature, fromSlot, fromItem, oldFromCount, toPos, toItem, oldToCount, count);
 	refreshHeadSkillBonus(fromSlot);
-#ifdef YUR_BOH
 	if (fromSlot == SLOT_FEET || fromSlot == SLOT_ARMOR ||
 		fromSlot == SLOT_LEFT || fromSlot == SLOT_RIGHT)
 		checkBoh();
-#endif //YUR_BOH
-#ifdef YUR_SOFT_BOOTS
 	if (fromSlot == SLOT_FEET)
 		softBootsTick = 0;
-#endif //YUR_SOFT_BOOTS
 }
 
 //ground to container
@@ -1962,7 +1827,6 @@ void Player::onThingMove(const Creature *creature, const Position &fromPos, int 
 void Player::onThingMove(const Creature *creature, const Position &fromPos, int stackpos, const Item* fromItem,
 	int oldFromCount, slots_t toSlot, const Item *toItem, int oldToCount, int count)
 {
-#ifdef YUR_RINGS_AMULETS
 	if (toSlot == SLOT_RING)
 	{
 		const_cast<Item*>(fromItem)->setGlimmer();
@@ -1970,18 +1834,13 @@ void Player::onThingMove(const Creature *creature, const Position &fromPos, int 
 		// FIX rings: refrescar flags al equipar.
 		checkRing(0);
 	}
-#endif //YUR_RINGS_AMULETS
 	client->sendThingMove(creature, fromPos, stackpos, fromItem, oldFromCount, toSlot, toItem, oldToCount, count);
 	refreshHeadSkillBonus(toSlot);
-#ifdef YUR_BOH
 	if (toSlot == SLOT_FEET || toSlot == SLOT_ARMOR ||
 		toSlot == SLOT_LEFT || toSlot == SLOT_RIGHT)
 		checkBoh();
-#endif //YUR_BOH
-#ifdef YUR_SOFT_BOOTS
 	if (toSlot == SLOT_FEET && fromItem && fromItem->getID() == ITEM_SOFT_BOOTS)
 		onSoftBootsEquipped(const_cast<Item*>(fromItem));
-#endif //YUR_SOFT_BOOTS
 }
 
 /*
@@ -2062,13 +1921,9 @@ void Player::addManaSpent(uint64_t spent){
 	if(spent == 0)
 		return;
 
-#ifdef YUR_MULTIPLIERS
 	spent *= g_config.MANA_MUL[vocation];
-#endif //YUR_MULTIPLIERS
-#ifdef YUR_PREMIUM_PROMOTION
 	if (isPremium() && g_config.PREMMY_SKILL_MUL > 1)
 		spent *= g_config.PREMMY_SKILL_MUL;
-#endif //YUR_PREMIUM_PROMOTION
 
 	this->manaspent += spent;
 	//Magic Level Advance
@@ -2360,7 +2215,6 @@ bool Player::gainManaTick()
 	manaTick++;
 	if(vocation >= 0 && vocation < 5)
 	{
-#ifdef YUR_PREMIUM_PROMOTION
 		if (promoted)
 		{
 			if (isPremium())
@@ -2386,7 +2240,6 @@ bool Player::gainManaTick()
 			add = premiumGainManaVector[vocation][1];
 		}
 		else
-#endif //YUR_PREMIUM_PROMOTION
 		{
 			if(manaTick < gainManaVector[vocation][0])
 				return false;
@@ -2398,11 +2251,7 @@ bool Player::gainManaTick()
 		add = 5;
 	}
 
-#ifdef YUR_MULTIPLIERS
 	mana += min(add * g_config.MANA_TICK_MUL, manamax - mana);
-#else
-	mana += min(add, manamax - mana);
-#endif //YUR_MULTIPLIERS
 
 	return true;
 }
@@ -2413,7 +2262,6 @@ bool Player::gainHealthTick()
 	healthTick++;
 	if(vocation >= 0 && vocation < 5)
 	{
-#ifdef YUR_PREMIUM_PROMOTION
 		if (promoted)
 		{
 			if (isPremium())
@@ -2439,7 +2287,6 @@ bool Player::gainHealthTick()
 			add = premiumGainHealthVector[vocation][1];
 		}
 		else
-#endif //YUR_PREMIUM_PROMOTION
 		{
 			if(healthTick < gainHealthVector[vocation][0])
 				return false;
@@ -2451,11 +2298,7 @@ bool Player::gainHealthTick()
 		add = 5;
 	}
 
-#ifdef YUR_MULTIPLIERS
 	health += min(add * g_config.HEALTH_TICK_MUL, healthmax - health);
-#else
-	health += min(add, healthmax - health);
-#endif //YUR_MULTIPLIERS
 
 	return true;
 }
@@ -2539,7 +2382,6 @@ bool Player::addVIP(unsigned long _guid, std::string &name, bool isOnline, bool 
 }
 
 
-#ifdef TLM_BUY_SELL
 unsigned long Player::getCarriedCoinValue()
 {
    unsigned long coins = 0;
@@ -3105,10 +2947,8 @@ bool Player::TLMaddItem(int itemid, unsigned char count, bool dropIfFull)
 	}
 	return true;
 }
-#endif //TLM_BUY_SELL
 
 
-#ifdef BD_HOUSE_WINDOW
 void Player::sendHouseWindow(House* house, const Position& pos, rights_t rights)
 {
 	if (!house)
@@ -3183,10 +3023,8 @@ void Player::receiveHouseWindow(std::string membersAfter)
 	editedHouse = NULL;
 	editedHouseRights = HOUSE_NONE;
 }
-#endif //BD_HOUSE_WINDOW
 
 
-#ifdef YUR_BOH
 static int imbueMlFromAid(unsigned short aid)
 {
 	if(aid >= ITEM_VIOLET_ML_AID && aid <= ITEM_VIOLET_ML_AID_MAX)
@@ -3332,7 +3170,6 @@ static bool isCrystalArrowImbueWeaponItem(const Item* item)
 
 Item* Player::getActiveWeapon() const
 {
-#ifdef JD_WANDS
 	// Any equipped wand overrides melee/ranged attacks in combat.
 	if(getWandId() > 0){
 		for(int slot = SLOT_RIGHT; slot <= SLOT_LEFT; ++slot){
@@ -3340,7 +3177,6 @@ Item* Player::getActiveWeapon() const
 				return items[slot];
 		}
 	}
-#endif //JD_WANDS
 
 	for(int slot = SLOT_RIGHT; slot <= SLOT_LEFT; ++slot){
 		Item* item = items[slot];
@@ -3362,9 +3198,7 @@ void Player::refreshHeadSkillBonus(slots_t fromSlot, slots_t toSlot)
 {
 	if(fromSlot != SLOT_HEAD && toSlot != SLOT_HEAD)
 		return;
-#ifdef YUR_BOH
 	checkBoh();
-#endif //YUR_BOH
 	if(client)
 		client->sendSkills();
 }
@@ -3465,10 +3299,8 @@ int64_t Player::getEffectiveMagLevel() const
 
 int Player::getAttackDelayMs() const
 {
-#ifdef JD_WANDS
 	if(getWandId() == ITEM_CRIMSON_WAND)
 		return 667;
-#endif //JD_WANDS
 	switch(getCrucibleWeaponId()){
 		case ITEM_VENOMQUEEN_FANG: return VENOMQUEEN_ATTACK_DELAY_MS;
 		case ITEM_STORMCALLER_MAUL: return STORMCALLER_ATTACK_DELAY_MS;
@@ -3522,9 +3354,7 @@ unsigned short Player::getCrucibleWeaponId() const
 	}
 	return 0;
 }
-#endif //YUR_BOH
 
-#ifdef YUR_SOFT_BOOTS
 void Player::onSoftBootsEquipped(Item* boots)
 {
 	if(!boots || boots->getID() != ITEM_SOFT_BOOTS)
@@ -3587,10 +3417,8 @@ void Player::checkSoftBoots(int thinkTicks)
 	if(statsChanged)
 		sendStats();
 }
-#endif //YUR_SOFT_BOOTS
 
 
-#ifdef YUR_GUILD_SYSTEM
 void Player::setGuildInfo(gstat_t gstat, unsigned long gid, std::string gname, std::string rank, std::string nick)
 {
 	guildStatus = gstat;
@@ -3599,34 +3427,10 @@ void Player::setGuildInfo(gstat_t gstat, unsigned long gid, std::string gname, s
 	guildRank = rank;
 	guildNick = nick;
 }
-#endif //YUR_GUILD_SYSTEM
 
 
-#ifdef TR_ANTI_AFK
-void Player::notAfk()
-{
-	idleTime = 0;
-	warned = false;
-}
-
-void Player::checkAfk(int thinkTicks)
-{
-	if (idleTime < g_config.KICK_TIME)
-		idleTime += thinkTicks;
-
-	if (idleTime < g_config.KICK_TIME && idleTime > (g_config.KICK_TIME - 60000) && !warned)	// send warning for kick (1 min)
-	{
-		sendTextMessage(MSG_RED_TEXT,"Warning: You have been afk for too long. You will be kicked in a minute.");
-		warned = true;
-	}
-
-	if (idleTime >= g_config.KICK_TIME && warned)	// player still afk time to kick
-		kickPlayer();
-}
-#endif //TR_ANTI_AFK
 
 
-#ifdef YUR_TRAINING_AREA
 static const unsigned long STORAGE_TRAINING_DATE = 9100;
 static const unsigned long STORAGE_TRAINING_USED = 9101;
 static const unsigned long STORAGE_TRAINING_BONUS_DATE = 9102;
@@ -3771,10 +3575,8 @@ void Player::checkTraining(int thinkTicks, Tile* tile)
 		trainingInArea = false;
 	}
 }
-#endif //YUR_TRAINING_AREA
 
 
-#ifdef ELEM_VIP_LIST
 void Player::sendVipLogin(std::string vipname)
 {
 	for (int i = 0; i < MAX_VIPS; i++)
@@ -3804,10 +3606,8 @@ void Player::sendVipLogout(std::string vipname)
 		}
 	}
 }
-#endif //ELEM_VIP_LIST
 
 
-#ifdef YUR_CMD_EXT
 exp_t Player::getExpForNextLevel()
 {
 	return getExpForLv(level + 1) - experience;
@@ -3817,10 +3617,8 @@ uint64_t Player::getManaForNextMLevel()
 {
 	return getReqMana(maglevel+1, vocation) - manaspent;
 }
-#endif //YUR_CMD_EXT
 
 
-#ifdef YUR_RINGS_AMULETS
 void Player::checkRing(int thinkTics)
 {
 	if (items[SLOT_RING] && items[SLOT_RING]->getTime() > 0) 	// eat time from ring
@@ -3864,7 +3662,6 @@ void Player::checkRing(int thinkTics)
 		sendIcons();
 	}
 
- #ifdef YUR_INVISIBLE
 	bool stealthRingNow = (items[SLOT_RING] && items[SLOT_RING]->getID() == ITEM_STEALTH_RING_IN_USE);
 	if (stealthRingNow)
 		invisibleTicks = items[SLOT_RING]->getTime();
@@ -3876,7 +3673,6 @@ void Player::checkRing(int thinkTics)
 			invisibleTicks = 0;
 		g_game.creatureChangeOutfit(this);
 	}
- #endif //YUR_INVISIBLE
 
 	if (thinkTics > 0 && items[SLOT_RING])
 	{
@@ -3922,11 +3718,9 @@ void Player::checkRing(int thinkTics)
 			ringRegenTick = 0;
 	}
 }
-#endif //YUR_RINGS_AMULETS
 
 void Player::syncEquippedRing()
 {
-#ifdef YUR_RINGS_AMULETS
 	if (!items[SLOT_RING])
 		return;
 
@@ -3948,11 +3742,9 @@ void Player::syncEquippedRing()
 	}
 
 	checkRing(0);
-#endif //YUR_RINGS_AMULETS
 }
 
 
-#ifdef TLM_SKULLS_PARTY
 bool Player::checkSkull(int thinkTicks)
 {
 	if (banned)
@@ -4039,10 +3831,8 @@ void Player::onPartyIcons(const Player *playa, int icontype, bool skull, bool re
 {
 	client->sendPartyIcons(playa, icontype, skull, removeskull);
 }
-#endif //TLM_SKULLS_PARTY
 
 
-#ifdef YUR_ROOKGARD
 bool Player::isRookie() const
 {
 	return access < g_config.ACCESS_PROTECT && vocation == VOCATION_NONE;
@@ -4060,10 +3850,8 @@ void Player::setVocation(playervoc_t voc)
 	else
 		std::cout << "WARNING: " << name << " already has vocation!" << std::endl;
 }
-#endif //YUR_ROOKGARD
 
 
-#ifdef YUR_LEARN_SPELLS
 void Player::learnSpell(const std::string& words)
 {
 	learnedSpells.push_back(words);
@@ -4073,29 +3861,23 @@ bool Player::knowsSpell(const std::string& words) const
 {
 	return std::find(learnedSpells.begin(), learnedSpells.end(), words) != learnedSpells.end();
 }
-#endif //YUR_LEARN_SPELLS
 
 
-#ifdef BDB_REPLACE_SPEARS
 bool Player::isUsingSpears() const
 {
 	return (items[SLOT_LEFT] && items[SLOT_LEFT]->getID() == ITEM_SPEAR) ||
 		(items[SLOT_RIGHT] && items[SLOT_RIGHT]->getID() == ITEM_SPEAR);
 }
-#endif //BDB_REPLACE_SPEARS
 
 
-#ifdef SD_BURST_ARROW
 bool Player::isUsingBurstArrows() const
 {
 	return ((items[SLOT_LEFT] && items[SLOT_LEFT]->getID() == ITEM_BOW) ||
 		(items[SLOT_RIGHT] && items[SLOT_RIGHT]->getID() == ITEM_BOW)) &&
 		(items[SLOT_AMMO] && items[SLOT_AMMO]->getID() == ITEM_BURST_ARROW);
 }
-#endif //SD_BURST_ARROW
 
 
-#ifdef YUR_LIGHT_ITEM
 void Player::checkLightItem(int /*thinkTics*/)
 {
 	int lightItemNow = items[SLOT_AMMO]? items[SLOT_AMMO]->getID() : 0;
@@ -4110,10 +3892,8 @@ void Player::checkLightItem(int /*thinkTics*/)
 		lightItem = lightItemNow;
 	}
 }
-#endif //YUR_LIGHT_ITEM
 
 
-#ifdef YUR_PREMIUM_PROMOTION
 void Player::checkPremium(int thinkTics)
 {
 	if (premiumTicks > 0)
@@ -4133,10 +3913,8 @@ void Player::checkPremium(int thinkTics)
 		}
 	}
 }
-#endif //YUR_PREMIUM_PROMOTION
 
 
-#ifdef JD_DEATH_LIST
 void Player::addDeath(const std::string& killer, int level, time_t time)
 {
 	Death death = { killer, level, time };
@@ -4145,10 +3923,8 @@ void Player::addDeath(const std::string& killer, int level, time_t time)
 	while (deathList.size() > g_config.MAX_DEATH_ENTRIES)
 		deathList.pop_front();
 }
-#endif //JD_DEATH_LIST
 
 
-#ifdef CVS_DAY_CYCLE
 void Player::sendWorldLightLevel(unsigned char lightlevel, unsigned char color)
 {
 	if(last_worldlightlevel != lightlevel){
@@ -4161,10 +3937,8 @@ void Player::sendPlayerLightLevel(Player* player)
 {
 	client->sendPlayerLightLevel(player);
 }
-#endif //CVS_DAY_CYCLE
 
 
-#ifdef JD_WANDS
 int Player::getWandId() const
 {
 	for (int slot = SLOT_RIGHT; slot <= SLOT_LEFT; slot++)
@@ -4189,4 +3963,3 @@ int Player::getWandId() const
 	}
 	return 0;
 }
-#endif //JD_WANDS

@@ -264,9 +264,7 @@ class Map {
 	/* Map Width and Height - for Info purposes */
 	int mapwidth, mapheight;
 
-#ifdef YUR_CLEAN_MAP
 	long clean();
-#endif //YUR_CLEAN_MAP
 	
   protected:    
     /**

@@ -17,7 +17,6 @@
 // along with this program; if not, write to the Free Software Foundation,
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
-#ifdef YUR_LOGIN_QUEUE
 #include "loginqueue.h"
 #include "luascript.h"
 #include "player.h"
@@ -219,4 +218,3 @@ void LoginQueue::show()		// for testing purposes only
 		++iter;
 	}
 }
-#endif //YUR_LOGIN_QUEUE

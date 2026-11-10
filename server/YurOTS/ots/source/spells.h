@@ -169,12 +169,8 @@ public:
 	static int luaActionDoParalyze(lua_State *L);
 	static int luaActionDoChallenge(lua_State *L);
 
-	#ifdef BDB_UTEVO_LUX
 		static int luaSetPlayerLightLevel(lua_State *L);
-	#endif //BDB_UTEVO_LUX
-#ifdef YUR_INVISIBLE
 	static int luaActionInvisible(lua_State *L);
-#endif //YUR_INVISIBLE
 
 protected:
 	static void internalGetArea(lua_State *L, MagicEffectAreaClass &magicArea);

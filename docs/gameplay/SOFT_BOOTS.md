@@ -55,7 +55,7 @@ SOFT_BOOTS_DURATION_MS      (240 * 60 * 1000)  // 4 h — documentativo; la dura
 SOFT_BOOTS_EQUIP_PENALTY_MS 3000              // 1 tick de regen
 ```
 
-Compilación: `-DYUR_SOFT_BOOTS` en `server/YurOTS/ots/source/Makefile` (activo).
+Compilación: siempre activo (el antiguo `-DYUR_SOFT_BOOTS` se fijó en el código en nov 2026).
 
 ---
 

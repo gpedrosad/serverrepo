@@ -47,9 +47,7 @@ class Status{
 	std::string version;
 	uint64_t start;
 
-#ifdef YUR_LOGIN_QUEUE
 	int playerswaiting;
-#endif //YUR_LOGIN_QUEUE
 
   private:
 	Status();

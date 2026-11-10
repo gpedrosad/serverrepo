@@ -70,22 +70,16 @@ int64_t MagicEffectClass::getDamage(Creature *target, const Creature *attacker /
 		int64_t damage = (int64_t)random_range(minDamage, maxDamage);
 
 		if(!offensive)
-#ifdef YUR_NO_MONSTER_HEAL
 		{
 			const Monster* targetMonster = dynamic_cast<const Monster*>(target);
 
 			if (target != attacker && targetMonster
-	#ifdef TR_SUMMONS
 				&& !targetMonster->isPlayersSummon()
-	#endif //TR_SUMMONS
 				)
 				damage = 0;
 			else
 				damage = -damage;
 		}
-#else
-			damage = -damage;
-#endif //YUR_NO_MONSTER_HEAL
 		else {
 			if(attacker && attacker->access >= g_config.ACCESS_PROTECT)
 				return damage;
@@ -116,11 +110,9 @@ void MagicEffectClass::getMagicEffect(Player* spectator, const Creature* attacke
 		if(spectator->CanSee(pos.x, pos.y, pos.z)) {
 			if(damageEffect != 0xFF) {
 				bool trainingNoPvp = false;
-#ifdef YUR_TRAINING_AREA
 				Tile* attackerTile = attacker ? g_game.getTile(attacker->pos) : NULL;
 				Tile* targetTile = target ? g_game.getTile(target->pos) : NULL;
 				trainingNoPvp = attackerTile && targetTile && attackerTile->isTrainingArea() && targetTile->isTrainingArea();
-#endif //YUR_TRAINING_AREA
 				const bool blockedPlayerPvpEffect =
 					(((g_game.getWorldType() == WORLD_TYPE_NO_PVP) || trainingNoPvp) &&
 					((dynamic_cast<const Player*>(attacker) && dynamic_cast<const Player*>(target)) ||
@@ -130,11 +122,7 @@ void MagicEffectClass::getMagicEffect(Player* spectator, const Creature* attacke
 					(!attacker || attacker->access < g_config.ACCESS_PROTECT));
 				if(!offensive || !blockedPlayerPvpEffect || target->access != 0) {
 						if(offensive && (target->getImmunities() & attackType) == attackType) {
-#ifdef TJ_MONSTER_BLOOD
 							spectator->sendMagicEffect(pos, target->bloodeffect);
-#else
-							spectator->sendMagicEffect(pos, NM_ME_BLOCKHIT);
-#endif //TJ_MONSTER_BLOOD
 						}
 						else {
 							spectator->sendMagicEffect(pos, damageEffect);

@@ -75,11 +75,9 @@ Creature()
 	level = mType->level;
 	maglevel = mType->maglevel;
 
-#ifdef TJ_MONSTER_BLOOD
 	bloodcolor = mType->bloodcolor;
     bloodeffect = mType->bloodeffect;
     bloodsplash = mType->bloodsplash;
-#endif //TJ_MONSTER_BLOOD
 }
 
 unsigned long Monster::getRandom(){
@@ -104,11 +102,7 @@ int Monster::getDefense() const
 
 bool Monster::isPushable() const
 {
-#ifdef TR_SUMMONS
 	return mType->pushable || (master && dynamic_cast<Player*>(master));
-#else
-	return mType->pushable;
-#endif //TR_SUMMONS
 }
 
 const std::string& Monster::getName() const
@@ -220,10 +214,8 @@ exp_t Monster::getLostExperience()
 
 bool Monster::validateDistanceAttack(const Creature *target)
 {
-#ifdef YUR_INVISIBLE
 	if (target->isInvisible() && !(immunities & ATTACK_INVISIBLE))
 		return false;
-#endif //YUR_INVISIBLE
 
 	//return isInRange(pos) && game->map->canThrowItemTo(this->pos, target->pos, false, true);
 	return isInRange(pos) && (game->map->canThrowObjectTo(this->pos, target->pos, BLOCK_PROJECTILE) == RET_NOERROR);
@@ -236,10 +228,8 @@ bool Monster::validateDistanceAttack(const Position &pos)
 
 bool Monster::isCreatureReachable(const Creature* creature)
 {
-#ifdef YUR_INVISIBLE
 	if (creature->isInvisible() && !(immunities & ATTACK_INVISIBLE))
 		return false;
-#endif //YUR_INVISIBLE
 
 	Tile* tile = game->getTile(creature->pos.x, creature->pos.y, creature->pos.z);
 	if(!tile || tile->isPz()) {
@@ -1016,11 +1006,7 @@ void Monster::selectTarget(const Creature* creature, bool canReach /* = true*/)
 
 		if(attackedCreature) {
 			if(validateDistanceAttack(attackedCreature)){
-#ifdef YUR_CVS_MODS
 				doAttacks(attackedCreature, MODE_NORMAL);
-#else
-				doAttacks(attackedCreature, getMaster() ? MODE_NORMAL : MODE_AGGRESSIVE);
-#endif //YUR_CVS_MODS
 			}
 		}
 	}
@@ -1294,11 +1280,9 @@ std::string	Monster::getDescription(bool self) const
 	str = getName();
 	std::transform(str.begin(), str.end(), str.begin(), tolower);
 
-#ifdef TR_SUMMONS
 	if (master)
 		ss << article(str) << ".\nIt is " << master->getName() << "'s minion.";
 	else
-#endif //TR_SUMMONS
 		ss << article(str) << ".";
 	str = ss.str();
 

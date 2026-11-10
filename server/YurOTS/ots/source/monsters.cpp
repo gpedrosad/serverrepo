@@ -140,11 +140,9 @@ void MonsterType::reset()
 	summonSpells.clear();
 	lootItems.clear();
 
-#ifdef TJ_MONSTER_BLOOD
 	bloodeffect = EFFECT_RED;
 	bloodcolor = COLOR_RED;
 	bloodsplash = SPLASH_RED; 
-#endif //TJ_MONSTER_BLOOD
 }
 
 MonsterType::~MonsterType()
@@ -322,22 +320,16 @@ Item* MonsterType::createLootItem(const LootBlock& lootBlock, bool premiumLoot)
 		return NULL;
 
 	Item* tmpItem = NULL;
-#ifdef YUR_MULTIPLIERS
 	unsigned long chance = lootBlock.chance1;
 	if(g_config.LOOT_MUL > 1){
 		unsigned long scaled = chance * (unsigned long)g_config.LOOT_MUL;
 		chance = scaled > CHANCE_MAX ? CHANCE_MAX : scaled;
 	}
-#else
-	unsigned long chance = lootBlock.chance1;
-#endif //YUR_MULTIPLIERS
 
-#ifdef YUR_PREMIUM_PROMOTION
 	if(premiumLoot) {
 		unsigned long scaled = chance * (unsigned long)(100 + g_config.PREMMY_LOOT_BONUS) / 100;
 		chance = scaled > CHANCE_MAX ? CHANCE_MAX : scaled;
 	}
-#endif //YUR_PREMIUM_PROMOTION
 
 	const int rageGemChancePercent = getRageGemChancePercent(name);
 	if(rageGemChancePercent > 100 && isSmallGemItem(lootBlock.id)) {
@@ -523,11 +515,7 @@ MonsterType* Monsters::loadMonster(const std::string& file,const std::string& mo
 
 		nodeValue = (char*)xmlGetProp(root, (const xmlChar *)"experience");
 		if(nodeValue){
-#ifdef YUR_HIGH_LEVELS
 			mType->experience = _atoi64(nodeValue);
-#else
-			mType->experience = atoi(nodeValue);
-#endif //YUR_HIGH_LEVELS
 			xmlFreeOTSERV(nodeValue);
 		}
 
@@ -633,7 +621,6 @@ MonsterType* Monsters::loadMonster(const std::string& file,const std::string& mo
 				else
 					monsterLoad = false;
 			}
-#ifdef TJ_MONSTER_BLOOD
 			if (strcmp(str, "blood") == 0) {
 				nodeValue = (char*)xmlGetProp(p, (const xmlChar *)"color");
 				if(nodeValue) {
@@ -659,7 +646,6 @@ MonsterType* Monsters::loadMonster(const std::string& file,const std::string& mo
 				else
 					mType->bloodsplash = SPLASH_RED;
 			} 
-#endif //TJ_MONSTER_BLOOD
 			if(strcmp(str, "combat") == 0){
 				nodeValue = (char*)xmlGetProp(p, (const xmlChar *)"targetdistance");
 				if(nodeValue){
@@ -876,10 +862,8 @@ MonsterType* Monsters::loadMonster(const std::string& file,const std::string& mo
 							mType->immunities |= ATTACK_PARALYZE;
 						else if(strcmp(immunity.c_str(), "drunk") == 0)
 							mType->immunities |= ATTACK_DRUNKNESS;
-#ifdef YUR_INVISIBLE
 						else if(strcmp(immunity.c_str(), "invisible") == 0)
 							mType->immunities |= ATTACK_INVISIBLE;
-#endif //YUR_INVISIBLE
 					}
 
 					tmp = tmp->next;

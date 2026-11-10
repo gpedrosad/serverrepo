@@ -895,12 +895,7 @@ NpcScript::NpcScript(std::string scriptname, Npc* npc){
 	std::string datadir = g_config.getGlobalString("datadir");
     lua_dofile(luaState, std::string(datadir + "npc/scripts/lib/npc.lua").c_str());
 
-#ifdef USING_VISUAL_2005
-	FILE* in = NULL;
-	fopen_s(&in, scriptname.c_str(), "r");
-#else
 	FILE* in=fopen(scriptname.c_str(), "r");
-#endif //USING_VISUAL_2005
 
 	if(!in)
 		return;
@@ -1000,7 +995,6 @@ int NpcScript::registerFunctions()
 	lua_register(luaState, "creatureGetPosition", NpcScript::luaCreatureGetPos);
 	lua_register(luaState, "selfGetPosition", NpcScript::luaSelfGetPos);
 
-#ifdef TLM_BUY_SELL
 	lua_register(luaState, "buy", NpcScript::luaBuyItem);
 	lua_register(luaState, "buyFluidBackpack", NpcScript::luaBuyFluidBackpack);
 	lua_register(luaState, "buyFluidQty", NpcScript::luaBuyFluidQty);
@@ -1012,9 +1006,7 @@ int NpcScript::registerFunctions()
 	lua_register(luaState, "sellBundle", NpcScript::luaSellBundle);
 	lua_register(luaState, "cancelPendingTrade", NpcScript::luaCancelPendingTrade);
 	lua_register(luaState, "pay", NpcScript::luaPayMoney);
-#endif
 
-#ifdef YUR_NPC_EXT
 	lua_register(luaState, "getPlayerStorageValue", NpcScript::luaGetPlayerStorageValue);
 	lua_register(luaState, "setPlayerStorageValue", NpcScript::luaSetPlayerStorageValue);
 	lua_register(luaState, "doPlayerRemoveItem", NpcScript::luaPlayerRemoveItem);
@@ -1044,9 +1036,7 @@ int NpcScript::registerFunctions()
 	lua_register(luaState, "isMonster", NpcScript::luaIsMonster);
 	lua_register(luaState, "getPlayerMana", NpcScript::luaGetPlayerMana);
 	lua_register(luaState, "doPlayerAddMana", NpcScript::luaDoPlayerAddMana);
-#endif //YUR_NPC_EXT
 
-#ifdef YUR_GUILD_SYSTEM
 	lua_register(luaState, "foundNewGuild", NpcScript::luaFoundNewGuild);
 	lua_register(luaState, "getPlayerGuildStatus", NpcScript::luaGetPlayerGuildStatus);
 	lua_register(luaState, "setPlayerGuildStatus", NpcScript::luaSetPlayerGuildStatus);
@@ -1055,20 +1045,13 @@ int NpcScript::registerFunctions()
 	lua_register(luaState, "clearPlayerGuild", NpcScript::luaClearPlayerGuild);
 	lua_register(luaState, "setPlayerGuildNick", NpcScript::luaSetPlayerGuildNick);
 	lua_register(luaState, "setPlayerGuildTitle", NpcScript::luaSetPlayerGuildNick);	// old
-#endif //YUR_GUILD_SYSTEM
 
-#ifdef YUR_PREMIUM_PROMOTION
 	lua_register(luaState, "isPremium", NpcScript::luaIsPremium);
 	lua_register(luaState, "isPromoted", NpcScript::luaIsPromoted);
-#endif //YUR_PREMIUM_PROMOTION
 
-#ifdef YUR_ROOKGARD
 	lua_register(luaState, "setPlayerVocation", NpcScript::luaSetPlayerVocation);
-#endif //YUR_ROOKGARD
 
-#ifdef YUR_LEARN_SPELLS
 	lua_register(luaState, "learnSpell", NpcScript::luaLearnSpell);
-#endif //YUR_LEARN_SPELLS
 
 	return true;
 }
@@ -1207,7 +1190,6 @@ int NpcScript::luaActionAttackCreature(lua_State *L){
 }
 
 
-#ifdef TLM_BUY_SELL
 int NpcScript::luaBuyItem(lua_State *L)
 {
 	int cost = (int)lua_tonumber(L, -1);
@@ -1596,10 +1578,8 @@ int NpcScript::luaPayMoney(lua_State *L)
 
 	return 1;
 }
-#endif //TLM_BUY_SELL
 
 
-#ifdef YUR_NPC_EXT
 int NpcScript::luaGetPlayerStorageValue(lua_State* L)
 {
 	int id = (int)lua_tonumber(L, -2);
@@ -2230,10 +2210,8 @@ int NpcScript::luaDoPlayerAddMana(lua_State* L)
 	lua_pushnumber(L, 0);
 	return 1;
 }
-#endif //YUR_NPC_EXT
 
 
-#ifdef YUR_GUILD_SYSTEM
 int NpcScript::luaFoundNewGuild(lua_State* L)
 {
 	const char* gname = lua_tostring(L, -1);
@@ -2335,10 +2313,8 @@ int NpcScript::luaSetPlayerGuildNick(lua_State* L)
 
 	return 0;
 }
-#endif //YUR_GUILD_SYSTEM
 
 
-#ifdef YUR_ROOKGARD
 int NpcScript::luaSetPlayerVocation(lua_State* L)
 {
 	int id = (int)lua_tonumber(L, -2);
@@ -2354,10 +2330,8 @@ int NpcScript::luaSetPlayerVocation(lua_State* L)
 
 	return 0;
 }
-#endif //YUR_ROOKGARD
 
 
-#ifdef YUR_LEARN_SPELLS
 int NpcScript::luaGetPlayerVocation(lua_State* L)
 {
 	int id = (int)lua_tonumber(L, -1);
@@ -2409,7 +2383,6 @@ int NpcScript::luaLearnSpell(lua_State *L)
 
 	return 0;
 }
-#endif //YUR_LEARN_SPELLS
 
 
 // isPzLocked(cid): true while the player is in combat (PZ locked). The boat uses it so a trip
@@ -2426,7 +2399,6 @@ int NpcScript::luaIsPzLocked(lua_State* L)
 	return 1;
 }
 
-#ifdef YUR_PREMIUM_PROMOTION
 int NpcScript::luaIsPromoted(lua_State* L)
 {
 	int id = (int)lua_tonumber(L, -1);
@@ -2460,4 +2432,3 @@ int NpcScript::luaIsPremium(lua_State* L)
 
 	return 1;
 }
-#endif //YUR_PREMIUM_PROMOTION

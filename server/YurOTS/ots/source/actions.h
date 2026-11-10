@@ -177,9 +177,7 @@ public:
 	static int luaActionDoPlayerSetMasterPos(lua_State *L);
 	static int luaActionDoPlayerSetVocation(lua_State *L);
 	static int luaActionDoPlayerRemoveItem(lua_State *L);
-#ifdef YUR_PREMIUM_PROMOTION
 	static int luaActionDoAccountAddPremiumTime(lua_State *L);
-#endif //YUR_PREMIUM_PROMOTION
 
 	//get item info
 	static int luaActionGetItemRWInfo(lua_State *L);
@@ -209,13 +207,9 @@ public:
 	static int luaActionGetPlayerStorageValue(lua_State *L);
 	static int luaActionSetPlayerStorageValue(lua_State *L);
 
-#ifdef YUR_ACT_EXT
 	static int luaActionGetItemName(lua_State *L);
-#endif //YUR_ACT_EXT
-#ifdef YUR_BOH
 	static int luaActionGetPlayerSlotItem(lua_State *L);
 	static int luaActionDoPlayerCheckFeetSpeed(lua_State *L);
-#endif //YUR_BOH
 
 protected:
 

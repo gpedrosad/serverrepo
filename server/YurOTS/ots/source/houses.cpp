@@ -17,7 +17,6 @@
 // along with this program; if not, write to the Free Software Foundation,
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
-#ifdef TLM_HOUSE_SYSTEM
 #include "houses.h"
 #include "luascript.h"
 #include "game.h"
@@ -560,4 +559,3 @@ bool Houses::SaveContainer(xmlNodePtr nodeitem, Container* ccontainer)
 	}
 	return true;
 }
-#endif //TLM_HOUSE_SYSTEM

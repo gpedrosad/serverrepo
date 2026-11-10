@@ -302,16 +302,13 @@ enum item_t {
 	ITEM_WAND_OF_DRAGONBREATH	= 2191,
 };
 
-#ifdef TLM_SKULLS_PARTY
 enum skull_t {
 	SKULL_NONE = 0,
 	SKULL_YELLOW = 1,
 	SKULL_WHITE = 3,
 	SKULL_RED = 4
 };
-#endif //TLM_SKULLS_PARTY
 
-#ifdef TJ_MONSTER_BLOOD
 enum bloodcolor_t // for dmg string
 {
     COLOR_NONE = 255,
@@ -337,7 +334,6 @@ enum bloodsplash_t //for splashes (count)
 	//SPLASH_PINK = FLUID_PINK,
 	SPLASH_NONE = 0,
 }; 
-#endif //TJ_MONSTER_BLOOD
 
 #define HASTE_ENCHANT_SPEED 10
 

@@ -51,14 +51,12 @@ class lessSchedTask;
 #define MAP_HEIGHT   512
 #define MAP_LAYER     16
 
-#ifdef CVS_DAY_CYCLE
 enum eLightState{
 	LIGHT_STATE_DAY,
 	LIGHT_STATE_NIGHT,
 	LIGHT_STATE_SUNSET,
 	LIGHT_STATE_SUNRISE,
 };
-#endif //CVS_DAY_CYCLE
 
 /** State of a creature at a given time
   * Keeps track of all the changes to be able to send to the client
@@ -105,12 +103,8 @@ protected:
 	void onAttackedCreature(Tile* tile, Creature* attacker, Creature* attackedCreature, int64_t damage, bool drawBlood);
 	Game *game;
 
-#ifdef YUR_PVP_ARENA
 	bool isPvpArena(Creature* c);
-#endif //YUR_PVP_ARENA
-#ifdef YUR_RINGS_AMULETS
 	int applyAmulets(Player* player, int damage, attacktype_t atype);
-#endif //YUR_RINGS_AMULETS
 
 	SpectatorVec spectatorlist;
 	CreatureStates creaturestates;
@@ -178,11 +172,7 @@ public:
 	  * Adds the Creature to playersOnline and to the map
 	  * \param c Creature to add
 	  */
-#ifdef YUR_LOGIN_QUEUE
 	bool placeCreature(Position &pos, Creature* c, int* placeInQueue = NULL);
-#else
-	bool placeCreature(Position &pos, Creature* c);
-#endif //YUR_LOGIN_QUEUE
 
 	/**
 		* Remove Creature from the map.
@@ -311,16 +301,11 @@ public:
 	/** Lockvar for Game. */
   OTSYS_THREAD_LOCKVAR gameLock;
 
-#ifdef CVS_DAY_CYCLE
 	void creatureChangeLight(Player* player, int time, unsigned char lightlevel, unsigned char lightcolor);
 	unsigned char getLightLevel();
-#endif //CVS_DAY_CYCLE
 
-#ifdef WOLV_LOAD_NPC
 	bool loadNpcs();
-#endif //WOLV_LOAD_NPC
 
-#ifdef TLM_SERVER_SAVE
 	void serverSave();
 	void autoServerSave();
 	// Delayed save after red warning to all online players (midnight cron).
@@ -328,55 +313,34 @@ public:
 	// Poll data/.request-server-save (5 min warn) / .request-server-save-now
 	// and SIGTERM/SIGINT flags so deploy can flush players before restart.
 	void checkSaveRequest();
-#endif //TLM_SERVER_SAVE
 	void writeOnlineList();
 
-#ifdef ELEM_VIP_LIST
 	void vipLogin(Player* player);
 	void vipLogout(std::string vipname);
 	bool isPlayer(std::string name);
-#endif //ELEM_VIP_LIST
 
-#ifdef YUR_LOGIN_QUEUE
 	LoginQueue loginQueue;
-#endif //YUR_LOGIN_QUEUE
 
-#ifdef TR_SUMMONS
 	bool placeSummon(Player* p, const std::string& name);
-#endif //TR_SUMMONS
 
-#ifdef TRS_GM_INVISIBLE
 	void creatureBroadcastTileUpdated(const Position& pos);
-#endif //TRS_GM_INVISIBLE
 
-#ifdef TLM_SKULLS_PARTY
 	void onPvP(Creature* creature, Creature* attacked, bool murder = false);
 	void Skull(Player* player);
 	void disbandParty(unsigned long partyID);
 	void LeaveParty(Player *player);
-#endif //TLM_SKULLS_PARTY
 
-#ifdef SD_BURST_ARROW
 	void burstArrow(Creature* c, const Position& pos);
 	static double BURST_DMG_LVL, BURST_DMG_MLVL, BURST_DMG_LO, BURST_DMG_HI;
-#endif //SD_BURST_ARROW
 
-#ifdef YUR_SHUTDOWN
 	void sheduleShutdown(int minutes);
 	void checkShutdown(int minutes);
-#endif //YUR_SHUTDOWN
 
-#ifdef YUR_CMD_EXT
 	void setMaxPlayers(uint32_t newmax);
-#endif //YUR_CMD_EXT
 
-#ifdef YUR_CLEAN_MAP
 	long cleanMap();
-#endif //YUR_CLEAN_MAP
 
-#ifdef JD_WANDS
 	void useWand(Creature *creature, Creature *attackedCreature, int wandid);
-#endif //JD_WANDS
 
 	void checkSpell(Player* player, SpeakClasses& type, std::string text);
 
@@ -457,9 +421,7 @@ protected:
 		* Return: the mana damage and the actual hitpoint loss
 		*/
 	void creatureApplyDamage(Creature *creature, int64_t damage, int64_t &outDamage, int64_t &outManaDamage
-#ifdef YUR_PVP_ARENA
 		, CreatureVector*
-#endif //YUR_PVP_ARENA
 		);
 
 	void CreateDamageUpdate(Creature* player, Creature* attackCreature, int64_t damage);
@@ -497,7 +459,6 @@ protected:
 	};
 	std::list<decayBlock*> decayVector;
 
-#ifdef CVS_DAY_CYCLE
 	static const unsigned char LIGHT_LEVEL_DAY = 220;
 	static const unsigned char LIGHT_LEVEL_NIGHT = 25;
 	static const int SUNSET = 1305;
@@ -508,7 +469,6 @@ protected:
 	int light_hour_delta;
 	//int lightdelta;
 	void checkLight(int delta);
-#endif //CVS_DAY_CYCLE
 
 	void checkSpawns(int t);
 	std::priority_queue<SchedulerTask*, std::vector<SchedulerTask*>, lessSchedTask > eventList;

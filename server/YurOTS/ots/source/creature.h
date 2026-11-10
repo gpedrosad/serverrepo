@@ -34,11 +34,7 @@
 #include "luascript.h"
 extern LuaScript g_config;
 
-#ifdef YUR_HIGH_LEVELS
 typedef int64_t exp_t;
-#else
-typedef unsigned long exp_t;
-#endif //YUR_HIGH_LEVELS
 
 
 typedef std::vector<Creature*> CreatureVector;
@@ -133,12 +129,8 @@ public:
 	virtual void addList() = 0;
 
 	exp_t getExpForLv(const int& lv) const {
-#ifdef YUR_HIGH_LEVELS
 		exp_t x = lv;
 		return ((50*x/3 - 100)*x + 850/3)*x - 200;
-#else
-		return (int)((50*lv*lv*lv)/3 - 100 * lv * lv + (850*lv) / 3 - 200);
-#endif //YUR_HIGH_LEVELS
 	}
 
 	Direction getDirection() const { return direction; }
@@ -157,11 +149,7 @@ public:
 			return immunities;
 	};
 
-#ifdef YUR_PVP_ARENA
 	virtual void drainHealth(int64_t, CreatureVector* arenaLosers);
-#else
-	virtual void drainHealth(int);
-#endif //YUR_PVP_ARENA
 
 	virtual void drainMana(int64_t);
 	virtual void die(){};
@@ -221,11 +209,9 @@ public:
 	int64_t health, healthmax;
 	uint64_t lastmove;
 
-#ifdef TJ_MONSTER_BLOOD
 	int bloodcolor;
     unsigned char bloodeffect;
     unsigned char bloodsplash;
-#endif //TJ_MONSTER_BLOOD
 
 	long long getSleepTicks() const;
 	int getStepDuration() const;
@@ -249,22 +235,10 @@ public:
 			return 1000;
 		}
 		int s;
-#ifdef YUR_BOH
-	#ifdef YUR_RINGS_AMULETS
 		s = std::min(900, 220 + (2* (level + 30*boh + 30*timeRing - 1)));
-	#else //YUR_RINGS_AMULETS
-		s = std::min(900, 220 + (2* (level + 30*boh - 1)));
-	#endif //YUR_RINGS_AMULETS
 		if(hasteEnchantStacks > 0)
 			s = std::min(900, s + HASTE_ENCHANT_SPEED * hasteEnchantStacks);
 		return s;
-#else //YUR_BOH
-	#ifdef YUR_RINGS_AMULETS
-		return std::min(900, 220 + (2* (level + 30*timeRing - 1)));
-	#else //YUR_RINGS_AMULETS
-		return std::min(900, 220 + (2* (level - 1)));
-	#endif //YUR_RINGS_AMULETS
-#endif //YUR_BOH
 	}
 
 	int access;		//access level
@@ -287,22 +261,15 @@ public:
 	virtual int getTotalInflictedDamage();
 	virtual int getInflicatedDamage(unsigned long id);
 
-#ifdef TR_SUMMONS
 	size_t getSummonCount() const { return summons.size(); }
 	bool isPlayersSummon() const;
-#endif //TR_SUMMONS
-#ifdef TLM_SKULLS_PARTY
 	skull_t skullType;
-#endif //TLM_SKULLS_PARTY
-#ifdef YUR_INVISIBLE
 	bool isInvisible() const { return invisibleTicks > 0; }
 	void setInvisible(int ticks) { invisibleTicks = ticks; }
 	bool checkInvisible(int thinkTicks);
-#endif //YUR_INVISIBLE
 
 protected:
 
-#ifdef YUR_BOH
 	bool boh;
 	int hasteEnchantStacks;
 	int imbueWandMl;
@@ -313,13 +280,8 @@ protected:
 	int imbueArmorMl;
 	int imbueNightglassSpeed;
 	int imbueCrystalArrowSpeed;
-#endif //YUR_BOH
-#ifdef YUR_RINGS_AMULETS
 	bool timeRing;
-#endif //YUR_RINGS_AMULETS
-#ifdef YUR_INVISIBLE
 	int invisibleTicks;
-#endif //YUR_INVISIBLE
 
 	unsigned long eventCheck;
 	unsigned long eventCheckAttacking;

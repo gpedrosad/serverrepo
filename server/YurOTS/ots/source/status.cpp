@@ -43,9 +43,7 @@ Status::Status(){
 	this->playersmax    = 0;
 	this->playerspeak   = 0;
 
-#ifdef YUR_LOGIN_QUEUE
 	this->playerswaiting = 0;
-#endif //YUR_LOGIN_QUEUE
 
 	this->start=OTSYS_TIME();
 }
@@ -103,11 +101,9 @@ std::string Status::getStatusString(){
 	ss << this->playerspeak;
 	xmlSetProp(p, (const xmlChar*) "peak", (const xmlChar*)ss.str().c_str());
 	ss.str("");
-#ifdef YUR_LOGIN_QUEUE
 	ss << this->playerswaiting;
 	xmlSetProp(p, (const xmlChar*) "waiting", (const xmlChar*)ss.str().c_str());
 	ss.str("");
-#endif //YUR_LOGIN_QUEUE
 	xmlAddChild(root, p);
 
 	p=xmlNewNode(NULL,(const xmlChar*)"monsters");

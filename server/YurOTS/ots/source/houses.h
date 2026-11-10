@@ -17,7 +17,6 @@
 // along with this program; if not, write to the Free Software Foundation,
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
-#ifdef TLM_HOUSE_SYSTEM
 
 #ifndef HOUSES_H
 #define HOUSES_H
@@ -89,4 +88,3 @@ public:
 
 #endif //HOUSES_H
 
-#endif //TLM_HOUSE_SYSTEM

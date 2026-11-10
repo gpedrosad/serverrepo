@@ -47,13 +47,9 @@ protected:
 	std::string *specialDescription;
 	std::string *text;	//text written
 
-#ifdef YUR_RINGS_AMULETS
 	int time;
 	int charges;
-#endif //YUR_RINGS_AMULETS
-#ifdef YUR_READABLES
 	std::string *readable;
-#endif //YUR_READABLES
 
 private:
 	int useCount;
@@ -94,7 +90,6 @@ public:
 	bool floorChangeEast() const;
 	bool floorChangeWest() const;
 
-#ifdef YUR_RINGS_AMULETS
 	 int getCharges() const { return charges; }
 	 int getTime() const { return time; }
 	 void useCharge() { --charges; }
@@ -103,16 +98,8 @@ public:
 	 void restoreDuration(int duration) { time = duration; }
 	 void setGlimmer();
 	 void removeGlimmer();
-#endif //YUR_RINGS_AMULETS
-#ifdef YUR_READABLES
 	 void setReadable(const std::string& text) { readable = new std::string(text); }
-#endif //YUR_READABLES
-#ifdef TP_TRASH_BINS
-	 bool isDeleter() const { return items[id].isDeleter; }
-#endif //TP_TRASH_BINS
-#ifdef YUR_CLEAN_MAP
 	 bool decoration;
-#endif //YUR_CLEAN_MAP
 
 	virtual std::string getDescription(bool fullDescription) const;
 	static std::string getFluidTypeName(unsigned char fluidType);

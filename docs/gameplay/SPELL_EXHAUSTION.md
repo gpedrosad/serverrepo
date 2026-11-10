@@ -81,11 +81,9 @@ Para players con `access < ACCESS_PROTECT`:
 
 ```cpp
 if (me->causeExhaustion(true)) {
-#ifdef YUR_HEAL_EXHAUST
   if (!me->offensive)  // heal + support
     PlayerExhaust::set(attackPlayer, g_config.EXHAUSTED_HEAL);
   else
-#endif
     PlayerExhaust::set(attackPlayer, g_config.EXHAUSTED);
 }
 ```

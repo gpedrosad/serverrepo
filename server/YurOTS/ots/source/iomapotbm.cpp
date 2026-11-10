@@ -254,9 +254,7 @@ bool IOMapOTBM::loadMap(Map* map, std::string identifier)
 								item->pos.x = px;
 								item->pos.y = py;
 								item->pos.z = pz;
-#ifdef YUR_CLEAN_MAP
 								item->decoration = true;
-#endif //YUR_CLEAN_MAP
 								tile->addThing(item);
 							}
 							else{

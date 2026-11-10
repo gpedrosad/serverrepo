@@ -89,9 +89,8 @@ Si algo no funciona, revisar en este orden:
 
 1. Verificar que el tile realmente pertenezca a `trainingareas.xml`.
 
-2. Confirmar que el binario fue compilado con:
-
-- `-DYUR_TRAINING_AREA`
+2. Confirmar que el binario es reciente (la zona de entrenamiento está siempre compilada; el antiguo
+   `-DYUR_TRAINING_AREA` se fijó en el código en nov 2026).
 
 Referencia:
 

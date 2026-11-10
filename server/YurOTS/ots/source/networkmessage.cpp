@@ -392,11 +392,7 @@ void NetworkMessage::AddString(const char* value)
   if(!canAdd(stringlen+2) || stringlen > 8192)
     return;
   AddU16((unsigned short)stringlen);
-#ifdef USING_VISUAL_2005
-  strcpy_s((char*)m_MsgBuf + m_ReadPos, sizeof(m_MsgBuf)-m_ReadPos-1, value);
-#else
   strcpy((char*)m_MsgBuf + m_ReadPos, value);
-#endif //USING_VISUAL_2005
   m_ReadPos += stringlen;
   m_MsgSize += stringlen;
 }

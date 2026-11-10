@@ -190,7 +190,6 @@ bool IOAccountXML::getPassword(unsigned long accno, const std::string &name, std
 	return false;
 }
 
-#ifdef YUR_BUILTIN_AAC
 bool IOAccountXML::saveAccount(const Account& account)
 {
 	xmlMutexLock(xmlmutex);
@@ -244,4 +243,3 @@ bool IOAccountXML::saveAccount(const Account& account)
 		return false;
 	}
 }
-#endif //YUR_BUILTIN_AAC

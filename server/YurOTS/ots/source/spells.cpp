@@ -40,9 +40,7 @@
 #include "items.h"
 #include "item.h"
 #include "const76.h"
-#ifdef TR_SUMMONS
 #include "summons.h"
-#endif //TR_SUMMONS
 
 extern LuaScript g_config;
 
@@ -121,12 +119,7 @@ static void applyPlayerSpellExhaust(Player* player, bool healStyle)
 {
 	if(!player || player->access >= g_config.ACCESS_PROTECT)
 		return;
-#ifdef YUR_HEAL_EXHAUST
 	PlayerExhaust::set(player, healStyle ? g_config.EXHAUSTED_HEAL : g_config.EXHAUSTED);
-#else
-	(void)healStyle;
-	PlayerExhaust::set(player, g_config.EXHAUSTED);
-#endif
 }
 
 Spells::Spells(Game* igame): game(igame){
@@ -350,12 +343,7 @@ SpellScript::SpellScript(const std::string &datadir, std::string scriptname, Spe
 	luaL_openlibs(luaState);
     lua_dofile(luaState, std::string(datadir + "spells/lib/spells.lua").c_str());
 
-#ifdef USING_VISUAL_2005
-	FILE* in = NULL;
-	fopen_s(&in, scriptname.c_str(), "r");
-#else
 	FILE* in=fopen(scriptname.c_str(), "r");
-#endif //USING_VISUAL_2005
 
 	if(!in)
 		return;
@@ -401,12 +389,8 @@ int SpellScript::registerFunctions(){
 	lua_register(luaState, "doParalyze", SpellScript::luaActionDoParalyze);
 	lua_register(luaState, "doChallenge", SpellScript::luaActionDoChallenge);
 
-#ifdef BDB_UTEVO_LUX
 	lua_register(luaState, "setPlayerLightLevel", SpellScript::luaSetPlayerLightLevel);
-#endif //BDB_UTEVO_LUX
-#ifdef YUR_INVISIBLE
 	lua_register(luaState, "invisible", SpellScript::luaActionInvisible);
-#endif //YUR_INVISIBLE
 
 	return true;
 }
@@ -897,11 +881,9 @@ int SpellScript::luaActionDoConvinceCreature(lua_State *L)
 	}
 
 	int64_t reqMana = (monster->healthmax + monster->manamax) / 4;
-#ifdef TR_SUMMONS
 	const int64_t summonMana = Summons::getRequiredMana(monster->getName());
 	if(summonMana >= 0)
 		reqMana = summonMana;
-#endif //TR_SUMMONS
 
 	if(player->access < g_config.ACCESS_PROTECT && player->mana < reqMana) {
 		player->sendCancel("Not enough mana.");
@@ -1238,10 +1220,8 @@ void SpellScript::internalGetMagicEffect(lua_State *L, MagicEffectClass& me)
 		case 5: me.attackType = ATTACK_POISON; break;
 		case 6: me.attackType = ATTACK_PARALYZE; break;
 		case 7: me.attackType = ATTACK_DRUNKNESS; break;
-#ifdef YUR_DRAINS
 		case 8: me.attackType = ATTACK_LIFEDRAIN; break;
 		case 9: me.attackType = ATTACK_MANADRAIN; break;
-#endif //YUR_DRAINS
 
 		default:
 #ifdef __DEBUG__
@@ -1995,7 +1975,6 @@ int SpellScript::luaActionMakeFood(lua_State *L){
 	return 1;
 }
 
-#ifdef BDB_UTEVO_LUX
 int SpellScript::luaSetPlayerLightLevel(lua_State* L)
 {
 	int id = (int)lua_tonumber(L, -2);
@@ -2011,10 +1990,8 @@ int SpellScript::luaSetPlayerLightLevel(lua_State* L)
 
 	return 0;
 }
-#endif //BDB_UTEVO_LUX
 
 
-#ifdef YUR_INVISIBLE
 int SpellScript::luaActionInvisible(lua_State *L)
 {
 	long time = (long)lua_tonumber(L, -1)*1000;
@@ -2028,7 +2005,6 @@ int SpellScript::luaActionInvisible(lua_State *L)
 	spell->game->creatureChangeOutfit(creature);
 	return 0;
 }
-#endif //YUR_INVISIBLE
 
 int SpellScript::luaActionReduceExhaustion(lua_State *L)
 {

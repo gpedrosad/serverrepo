@@ -136,17 +136,11 @@ Item::Item(const unsigned short _type) {
 	specialDescription = NULL;
 	text = NULL;
 
-#ifdef YUR_RINGS_AMULETS
 	const ItemType& it = items[id];
 	time = it.newTime;
 	charges = it.newCharges;
-#endif //YUR_RINGS_AMULETS
-#ifdef YUR_READABLES
 	readable = NULL;
-#endif //YUR_READABLES
-#ifdef YUR_CLEAN_MAP
 	decoration = false;
-#endif //YUR_CLEAN_MAP
 }
 
 Item::Item(const Item &i){
@@ -172,19 +166,13 @@ Item::Item(const Item &i){
 		text = NULL;
 	}
 
-#ifdef YUR_RINGS_AMULETS
 	time = i.time;
 	charges = i.charges;
-#endif //YUR_RINGS_AMULETS
-#ifdef YUR_READABLES
 	if (i.readable)
 		readable = new std::string(*(i.readable));
 	else
 		readable = NULL;
-#endif //YUR_READABLES
-#ifdef YUR_CLEAN_MAP
 	decoration = i.decoration;
-#endif //YUR_CLEAN_MAP
 }
 
 Item* Item::decay()
@@ -268,17 +256,11 @@ Item::Item(const unsigned short _type, unsigned short _count) {
 	*/
 	throwRange = 6;
 
-#ifdef YUR_RINGS_AMULETS
 	const ItemType& it = items[id];
 	time = it.newTime;
 	charges = it.newCharges;
-#endif //YUR_RINGS_AMULETS
-#ifdef YUR_READABLES
 	readable = NULL;
-#endif //YUR_READABLES
-#ifdef YUR_CLEAN_MAP
 	decoration = false;
-#endif //YUR_CLEAN_MAP
 }
 
 Item::Item()
@@ -295,16 +277,10 @@ Item::Item()
 	specialDescription = NULL;
 	text = NULL;
 
-#ifdef YUR_RINGS_AMULETS
 	time = 0;
 	charges = 0;
-#endif //YUR_RINGS_AMULETS
-#ifdef YUR_READABLES
 	readable = NULL;
-#endif //YUR_READABLES
-#ifdef YUR_CLEAN_MAP
 	decoration = false;
-#endif //YUR_CLEAN_MAP
 }
 
 Item::~Item()
@@ -315,10 +291,8 @@ Item::~Item()
 	if(text)
 		delete text;
 
-#ifdef YUR_READABLES
 	if (readable)
 		delete readable;
-#endif //YUR_READABLES
 }
 
 bool Item::canMovedTo(const Tile *tile) const
@@ -378,7 +352,6 @@ int Item::unserialize(xmlNodePtr p){
 		xmlFreeOTSERV(tmp);
 	}
 
-#ifdef YUR_RINGS_AMULETS
 	tmp = (char*)xmlGetProp(p, (const xmlChar *) "charges");
 	if(tmp){
 		charges = atoi(tmp);
@@ -390,7 +363,6 @@ int Item::unserialize(xmlNodePtr p){
 		time = atoi(tmp);
 		xmlFreeOTSERV(tmp);
 	}
-#endif //YUR_RINGS_AMULETS
 
 	return 0;
 }
@@ -433,7 +405,6 @@ xmlNodePtr Item::serialize(){
 		xmlSetProp(ret, (const xmlChar*)"uniqueId", (const xmlChar*)s.str().c_str());
 	}
 
-#ifdef YUR_RINGS_AMULETS
 	s.str("");
 	if(charges != 0){
 		s << charges;
@@ -445,7 +416,6 @@ xmlNodePtr Item::serialize(){
 		s << time;
 		xmlSetProp(ret, (const xmlChar*)"time", (const xmlChar*)s.str().c_str());
 	}
-#endif //YUR_RINGS_AMULETS
 
 	return ret;
 }
@@ -586,7 +556,6 @@ std::string Item::getFluidTypeName(unsigned char fluidType)
 	}
 }
 
-#ifdef YUR_BOH
 static int emeraldStacksFromAid(unsigned short aid, const Item& item)
 {
 	if(aid >= ITEM_EMERALD_SKILL_AID && aid <= ITEM_EMERALD_SKILL_AID_MAX)
@@ -714,7 +683,6 @@ static void appendGemUseDescription(std::stringstream& s, unsigned short itemId)
 		break;
 	}
 }
-#endif //YUR_BOH
 
 std::string Item::getDescription(bool fullDescription) const
 {
@@ -762,12 +730,10 @@ std::string Item::getDescription(bool fullDescription) const
 			else if(isWeapon() && (getAttack() || getDefense()))
 			{
 				s << article(it.name) << " (Atk:" << (int)getAttack() << " Def:" << (int)getDefense();
-#ifdef YUR_BOH
 				if(rubyStacksFromAid(actionId, this) > 0 && getWeaponType() != SHIELD)
 					s << ", +" << rubySpeedPercentFromStacks(rubyStacksFromAid(actionId, this)) << "% speed";
 				else if(crystalArrowStacksFromAid(actionId) > 0)
 					s << ", +" << crystalArrowSpeedPercentFromStacks(crystalArrowStacksFromAid(actionId)) << "% speed";
-#endif //YUR_BOH
 				s << ")";
 			}
 			else if(getArmor())
@@ -802,7 +768,6 @@ std::string Item::getDescription(bool fullDescription) const
 			{
 				s << it.name;
 			}
-#ifdef YUR_RINGS_AMULETS
 			else if (charges)
 			{
 				s << article(it.name) << ". ";
@@ -821,7 +786,6 @@ std::string Item::getDescription(bool fullDescription) const
 				else
 					s << "\nIt has " << (int)ceil(time/(60.0*1000.0)) << " minutes left";
 			}
-#endif //YUR_RINGS_AMULETS
 
 			else if(it.isContainer() && (container = dynamic_cast<const Container*>(this))) {
 				s << article(it.name) << " (Vol:" << container->capacity() << ")";
@@ -829,7 +793,6 @@ std::string Item::getDescription(bool fullDescription) const
 			else {
 				s << article(it.name);
 
-#ifdef YUR_READABLES
 				if (readable)
 				{
 					if (readable->empty())
@@ -837,7 +800,6 @@ std::string Item::getDescription(bool fullDescription) const
 					else
 						s << "\nYou read: " << *readable;
 				}
-#endif //YUR_READABLES
 			}
 			s << ".";
 			if(fullDescription) {
@@ -855,7 +817,6 @@ std::string Item::getDescription(bool fullDescription) const
 	else
 		s<<"an item of type " << id <<".";
 
-#ifdef YUR_BOH
 	if(fullDescription){
 		appendGemUseDescription(s, id);
 	}
@@ -925,14 +886,11 @@ std::string Item::getDescription(bool fullDescription) const
 	else if(id == ITEM_ENCHANTED_SPEAR && fullDescription) {
 		s << std::endl << "A throwable enchanted spear (" << ENCHANTED_SPEAR_HIT_CHANCE << "% hit chance). It is never used up.";
 	}
-#endif //YUR_BOH
 
-#ifdef TLM_BUY_SELL
 	if(fullDescription && id == ITEM_GOLDEN_AMULET)
 		s << std::endl << "Equipado: el oro de monstruos que mates se deposita en tu banco al instante (sin abrir el cuerpo).";
 	if(fullDescription && id == ITEM_GOLDEN_RING)
 		s << std::endl << "Equipado en el slot de ring: ganas 20% mas oro de monstruos que mates.";
-#endif //TLM_BUY_SELL
 
 	str = s.str();
 	return str;
@@ -1071,7 +1029,6 @@ int Item::getWorth() const
 	}
 }
 
-#ifdef YUR_RINGS_AMULETS
 void Item::setGlimmer()
 {
 	switch (getID())
@@ -1103,4 +1060,3 @@ void Item::removeGlimmer()
 		case ITEM_RING_OF_HEALING_IN_USE: setID(ITEM_RING_OF_HEALING); break;
 	}
 }
-#endif //YUR_RINGS_AMULETS

@@ -54,17 +54,11 @@ public:
     splash = NULL;
 		ground = NULL;
 
-#ifdef TLM_HOUSE_SYSTEM
 	house = NULL;
-#endif //TLM_HOUSE_SYSTEM
 
-#ifdef YUR_PVP_ARENA
 	pvpArena = false;
-#endif //YUR_PVP_ARENA
 
-#ifdef YUR_TRAINING_AREA
 	trainingArea = false;
-#endif //YUR_TRAINING_AREA
   }
 
   Item*          ground;
@@ -73,31 +67,21 @@ public:
   CreatureVector creatures;
   ItemVector     downItems;
 
-#ifdef TLM_HOUSE_SYSTEM
 	bool isHouse() const;
 	House* getHouse() const;
 	bool setHouse(House* newHouse);
-#endif //TLM_HOUSE_SYSTEM
 
-#ifdef YUR_PVP_ARENA
 	bool isPvpArena() const;
 	void setPvpArena(const Position& exit);
 	Position getPvpArenaExit() const;
-#endif //YUR_PVP_ARENA
 
-#ifdef YUR_TRAINING_AREA
 	bool isTrainingArea() const;
 	void setTrainingArea(const Position& exit);
 	Position getTrainingExit() const;
-#endif //YUR_TRAINING_AREA
 
-#ifdef YUR_CLEAN_MAP
 	long clean();
-#endif //YUR_CLEAN_MAP
 
-#ifdef YUR_CVS_MODS
 	long getItemHoldingCount() const;
-#endif //YUR_CVS_MODS
 
   bool removeThing(Thing *thing);
   void addThing(Thing *thing);
@@ -134,19 +118,13 @@ public:
 protected:
   bool pz;
 
-#ifdef TLM_HOUSE_SYSTEM
 	House* house;
-#endif //TLM_HOUSE_SYSTEM
 
-#ifdef YUR_PVP_ARENA
 	bool pvpArena;
 	Position arenaExit;
-#endif //YUR_PVP_ARENA
 
-#ifdef YUR_TRAINING_AREA
 	bool trainingArea;
 	Position trainingExit;
-#endif //YUR_TRAINING_AREA
 };
 
 

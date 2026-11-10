@@ -66,7 +66,6 @@ s_defcommands Commands::defined_commands[] = {
 	{"/ips",&Commands::onlineIpList},
 	{"/a",&Commands::teleportNTiles},
 	{"/kick",&Commands::kickPlayer},
-#ifdef YUR_CMD_EXT
 	{"/ban",&Commands::banCharacter},
 	{"/up",&Commands::goUp},
 	{"/down",&Commands::goDown},
@@ -80,30 +79,15 @@ s_defcommands Commands::defined_commands[] = {
 	{"!online",&Commands::whoIsOnline},
 	{"!uptime",&Commands::showUptime},
 	{"!pz",&Commands::showPz},
-#endif //YUR_CMD_EXT
-#ifdef TLM_HOUSE_SYSTEM
 	{"/owner",&Commands::setHouseOwner},
 	{"!house",&Commands::reloadRights},
-#endif //TLM_HOUSE_SYSTEM
-#ifdef TRS_GM_INVISIBLE
 	{"/invisible",&Commands::gmInvisible},
-#endif //TRS_GM_INVISIBLE
-#ifdef TLM_SKULLS_PARTY
 	{"!frags",&Commands::showFrags},
-#endif //TLM_SKULLS_PARTY
-#ifdef TLM_SERVER_SAVE
 	{"/save",&Commands::forceServerSave},
-#endif //TLM_SERVER_SAVE
-#ifdef YUR_SHUTDOWN
 	{"/shutdown",&Commands::shutdown},
-#endif //YUR_SHUTDOWN
-#ifdef YUR_CLEAN_MAP
 	{"/clean",&Commands::cleanMap},
-#endif //YUR_CLEAN_MAP
-#ifdef YUR_PREMIUM_PROMOTION
 	{"/promote",&Commands::promote},
 	{"!premmy",&Commands::showPremmy},
-#endif //YUR_PREMIUM_PROMOTION
 };
 
 
@@ -521,11 +505,9 @@ bool Commands::reloadInfo(Creature* c, const std::string &cmd, const std::string
 	else if(param=="spells"){
         spells.loadFromXml(g_config.getGlobalString("datadir"));
 	}
-#ifdef SM_RELOAD_CONFIG
 	else if(param == "config"){
 		g_config.OpenFile("config.lua");
 	}
-#endif //SM_RELOAD_CONFIG
 	else{
 		Player *player = dynamic_cast<Player*>(c);
 		if(player)
@@ -549,15 +531,10 @@ bool Commands::testCommand(Creature* c, const std::string &cmd, const std::strin
 bool Commands::teleportTo(Creature* c, const std::string &cmd, const std::string &param){
 	Creature* creature = game->getCreatureByName(param);
 	if(creature) {
-#ifdef TRS_GM_INVISIBLE
 		Position pos = creature->pos;
 		pos.x++; pos.y++;
 		game->teleport(c, pos);
-#else
-		game->teleport(c, creature->pos);
-#endif //TRS_GM_INVISIBLE
 	}
-#ifdef YUR_CMD_EXT
 	else	// teleport to position
 	{
 		std::istringstream in(param.c_str());
@@ -567,7 +544,6 @@ bool Commands::teleportTo(Creature* c, const std::string &cmd, const std::string
 		if (in)
 			game->teleport(c, pos);
 	}
-#endif //YUR_CMD_EXT
 	return true;
 }
 
@@ -785,7 +761,6 @@ bool Commands::kickPlayer(Creature* c, const std::string &cmd, const std::string
 	return false;
 }
 
-#ifdef YUR_CMD_EXT
 bool Commands::goUp(Creature* c, const std::string &cmd, const std::string &param)
 {
 	Position pos = c->pos;
@@ -838,13 +813,7 @@ bool Commands::report(Creature* c, const std::string &cmd, const std::string &pa
 		char buf[64];
 		time_t ticks = time(0);
 
-#ifdef USING_VISUAL_2005
-		tm now;
-		localtime_s(&now, &ticks);
-		strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M", &now);
-#else
 		strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M", localtime(&ticks));
-#endif //USING_VISUAL_2005
 
 		std::ofstream out("report.log", std::ios::app);
 		out << '[' << buf << "] " << player->getName() << ": " << param << std::endl;
@@ -1020,10 +989,8 @@ bool Commands::setMaxPlayers(Creature* c, const std::string &cmd, const std::str
 	}
 	return true;
 }
-#endif //YUR_CMD_EXT
 
 
-#ifdef TLM_HOUSE_SYSTEM
 bool Commands::reloadRights(Creature* c, const std::string &cmd, const std::string &param)
 {
 	Player* player = dynamic_cast<Player*>(c);
@@ -1059,10 +1026,8 @@ bool Commands::setHouseOwner(Creature* c, const std::string &cmd, const std::str
 	}
 	return true;
 }
-#endif //TLM_HOUSE_SYSTEM
 
 
-#ifdef TRS_GM_INVISIBLE
 bool Commands::gmInvisible(Creature* c, const std::string &cmd, const std::string &param)
 {
 	Player *player = dynamic_cast<Player*>(c);
@@ -1108,10 +1073,8 @@ bool Commands::gmInvisible(Creature* c, const std::string &cmd, const std::strin
 
 	return true;
 }
-#endif //TRS_GM_INVISIBLE
 
 
-#ifdef TLM_SKULLS_PARTY
 bool Commands::showFrags(Creature* c, const std::string &cmd, const std::string &param)
 {
 	Player* player = dynamic_cast<Player*>(c);
@@ -1126,10 +1089,8 @@ bool Commands::showFrags(Creature* c, const std::string &cmd, const std::string 
 
 	return true;
 }
-#endif //TLM_SKULLS_PARTY
 
 
-#ifdef TLM_SERVER_SAVE
 bool Commands::forceServerSave(Creature* c, const std::string &cmd, const std::string &param)
 {
 	Player* player = dynamic_cast<Player*>(c);
@@ -1140,10 +1101,8 @@ bool Commands::forceServerSave(Creature* c, const std::string &cmd, const std::s
 	}
 	return true;
 }
-#endif //TLM_SERVER_SAVE
 
 
-#ifdef YUR_SHUTDOWN
 bool Commands::shutdown(Creature* c, const std::string &cmd, const std::string &param)
 {
 	Player* player = dynamic_cast<Player*>(c);
@@ -1151,10 +1110,8 @@ bool Commands::shutdown(Creature* c, const std::string &cmd, const std::string &
 		game->sheduleShutdown(atoi(param.c_str()));
 	return true;
 }
-#endif //YUR_SHUTDOWN
 
 
-#ifdef YUR_CLEAN_MAP
 bool Commands::cleanMap(Creature* c, const std::string &cmd, const std::string &param)
 {
 	std::ostringstream info;
@@ -1175,10 +1132,8 @@ bool Commands::cleanMap(Creature* c, const std::string &cmd, const std::string &
 	}
 	return true;
 }
-#endif //YUR_CLEAN_MAP
 
 
-#ifdef YUR_PREMIUM_PROMOTION
 bool Commands::premmy(Creature* c, const std::string &cmd, const std::string &param)
 {
 	Player* player = dynamic_cast<Player*>(c);
@@ -1231,4 +1186,3 @@ bool Commands::promote(Creature* c, const std::string &cmd, const std::string &p
 
 	return true;
 }
-#endif //YUR_PREMIUM_PROMOTION

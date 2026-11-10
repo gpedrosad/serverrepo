@@ -226,7 +226,6 @@ bool canAttackPrivateTrainerInHouse(const Creature* attacker, const Creature* ta
 
 }
 
-#ifdef YUR_TRAINING_AREA
 static bool isTrainingNoPvpTilePair(const Tile* attackerTile, const Tile* targetTile)
 {
 	return attackerTile && targetTile && attackerTile->isTrainingArea() && targetTile->isTrainingArea();
@@ -239,7 +238,6 @@ static bool isTrainingNoPvp(Game* game, const Creature* attacker, const Creature
 
 	return isTrainingNoPvpTilePair(game->getTile(attacker->pos), game->getTile(target->pos));
 }
-#endif //YUR_TRAINING_AREA
 
 static int resolveSkillTriesFromRate(double skillRate)
 {
@@ -265,7 +263,6 @@ GameState::GameState(Game *game, const Range &range)
 	game->getSpectators(range, spectatorlist);
 }
 
-#ifdef YUR_PVP_ARENA
 bool GameState::isPvpArena(Creature* c)
 {
 	if (!c)
@@ -273,9 +270,7 @@ bool GameState::isPvpArena(Creature* c)
 	Tile *tile = game->map->getTile(c->pos);
 	return tile && tile->isPvpArena();
 }
-#endif //YUR_PVP_ARENA
 
-#ifdef YUR_RINGS_AMULETS
 int GameState::applyAmulets(Player* player, int damage, attacktype_t atype)
 {
 	if (!player || atype == ATTACK_NONE)
@@ -305,7 +300,6 @@ int GameState::applyAmulets(Player* player, int damage, attacktype_t atype)
 			newDamage *= 0.9;
 			necklace->useCharge();
 		}
- #ifdef YUR_DRAINS
 		else if (necklace->getID() == ITEM_BRONZE_AMULET && (atype & ATTACK_MANADRAIN))
 		{
 			newDamage *= 0.5;
@@ -316,7 +310,6 @@ int GameState::applyAmulets(Player* player, int damage, attacktype_t atype)
 			newDamage = 0.05;
 			necklace->useCharge();
 		}
- #endif //YUR_DRAINS
 
 		if (necklace->getCharges() <= 0)
 			player->removeItemInventory(SLOT_NECKLACE);
@@ -336,7 +329,6 @@ int GameState::applyAmulets(Player* player, int damage, attacktype_t atype)
 
 	return (int)newDamage;
 }
-#endif //YUR_RINGS_AMULETS
 
 static bool isRageMonsterName(const std::string& name);
 
@@ -713,9 +705,7 @@ void GameState::onAttack(Creature* attacker, const Position& pos, const MagicEff
 	if(!tile)
 		return;
 
-#ifdef YUR_PVP_ARENA
 	CreatureVector arenaLosers;
-#endif //YUR_PVP_ARENA
 
 	CreatureVector::iterator cit;
 	Player* attackPlayer = dynamic_cast<Player*>(attacker);
@@ -728,21 +718,15 @@ void GameState::onAttack(Creature* attacker, const Position& pos, const MagicEff
 		bool pvpArena = false;
 		bool trainingNoPvp = false;
 
-#ifdef TR_SUMMONS
 		bool targetIsSummon = (targetCreature && targetCreature->isPlayersSummon());
 		bool summonVsPlayer = (attacker && attacker->isPlayersSummon() && targetPlayer);
-#endif //TR_SUMMONS
 
-#ifdef YUR_TRAINING_AREA
 		trainingNoPvp = isTrainingNoPvp(game, attacker, targetCreature);
-#endif //YUR_TRAINING_AREA
 
 		int64_t damage = me->getDamage(targetCreature, attacker);
 		int64_t manaDamage = 0;
 
-#ifdef YUR_RINGS_AMULETS
 		damage = applyAmulets(targetPlayer, damage, me->attackType);
-#endif //YUR_RINGS_AMULETS
 
 		if (damage > 0) {
 			if(attackPlayer && attackPlayer->access < g_config.ACCESS_PROTECT && !trainingNoPvp) {
@@ -753,33 +737,21 @@ void GameState::onAttack(Creature* attacker, const Position& pos, const MagicEff
 			if(targetCreature->access < g_config.ACCESS_PROTECT && targetPlayer &&
 				game->getWorldType() != WORLD_TYPE_NO_PVP && !trainingNoPvp)
 			{
-#ifdef YUR_CVS_MODS
 				targetPlayer->inFightTicks = std::max(g_config.PZ_LOCKED, targetPlayer->inFightTicks);
-#else
-				targetPlayer->inFightTicks = (long)g_config.getGlobalNumber("pzlocked", 0);
-#endif //YUR_CVS_MODS
 				targetPlayer->sendIcons();
 			}
 
-#ifdef YUR_PVP_ARENA
 			pvpArena = isPvpArena(attacker) && isPvpArena(targetCreature);
-#endif //YUR_PVP_ARENA
 
-#ifdef TR_SUMMONS
 			if ((((game->getWorldType() == WORLD_TYPE_NO_PVP) || trainingNoPvp) && !pvpArena && summonVsPlayer) ||
 				(((game->getWorldType() == WORLD_TYPE_NO_PVP) || trainingNoPvp) && !pvpArena &&
 				attackPlayer && (targetPlayer || targetIsSummon) && attackPlayer->access < g_config.ACCESS_PROTECT)) {
-#else
-			if(((game->getWorldType() == WORLD_TYPE_NO_PVP) || trainingNoPvp) && !pvpArena &&
-				attackPlayer && targetPlayer && attackPlayer->access < ACCESS_PROTECT){
-#endif //TR_SUMMONS
 				damage = 0;
 			}
 		}
 
 		if (damage != 0)
 		{
-#ifdef YUR_DRAINS
 			if (me->attackType & ATTACK_MANADRAIN)
 			{
 				manaDamage = std::min(damage, targetCreature->mana);
@@ -787,36 +759,27 @@ void GameState::onAttack(Creature* attacker, const Position& pos, const MagicEff
 				damage = 0;
 			}
 			else
-#endif //YUR_DRAINS
 			{
 				game->creatureApplyDamage(targetCreature, damage, damage, manaDamage
-#ifdef YUR_PVP_ARENA
 					, (pvpArena? &arenaLosers : NULL)
-#endif //YUR_PVP_ARENA
 					);
 			}
 
-#ifdef YUR_DRAINS
 			if (me->attackType & ATTACK_LIFEDRAIN)
 			{
 				attacker->health = std::min(attacker->healthmax, attacker->health + damage);
 				addCreatureState(tile, attacker, 0, 0, false);	// update attacker health
 			}
-#endif //YUR_DRAINS
 
-#ifdef YUR_INVISIBLE
 			if (targetCreature && !targetPlayer)
 			{
 				targetCreature->setInvisible(0);
 				game->creatureChangeOutfit(targetCreature);
 			}
-#endif //YUR_INVISIBLE
 		}
 
-#ifdef TLM_SKULLS_PARTY
 		if (me->offensive && game->getWorldType() == WORLD_TYPE_PVP)
 			game->onPvP(attacker, targetCreature, targetCreature->health <= 0);
-#endif //TLM_SKULLS_PARTY
 
 		addCreatureState(tile, targetCreature, damage, manaDamage, me->drawblood);
 	}
@@ -894,47 +857,35 @@ void GameState::onAttack(Creature* attacker, const Position& pos, const MagicEff
 		//Add exhaustion
 		if(me->causeExhaustion(true) /*!areaTargetVec.empty())*/)
 		{
-#ifdef YUR_HEAL_EXHAUST
 			// Non-offensive = heal + support (haste, light, food, conjure…), like Nostalrius aggressive=false → 1s.
 			if (!me->offensive)
 				PlayerExhaust::set(attackPlayer, g_config.EXHAUSTED_HEAL);
 			else
-#endif //YUR_HEAL_EXHAUST
 				PlayerExhaust::set(attackPlayer, g_config.EXHAUSTED);
 		}
 
 		//Fight symbol
 		if(me->offensive /*&& !areaTargetVec.empty()*/)
 		{
-#ifdef YUR_CVS_MODS
 			attackPlayer->inFightTicks = std::max(g_config.PZ_LOCKED, attackPlayer->inFightTicks);
-#else
-			attackPlayer->inFightTicks = (long)g_config.getGlobalNumber("pzlocked", 0);
-#endif //YUR_CVS_MODS
 		}
 	}
 
-#ifdef YUR_PVP_ARENA
 	for (CreatureVector::iterator it = arenaLosers.begin(); it != arenaLosers.end(); ++it)
 	{
 		Tile* tile = game->getTile((*it)->pos);
 		if (tile)
 			game->teleport(*it, tile->getPvpArenaExit());	// kick losers
 	}
-#endif //YUR_PVP_ARENA
 }
 
 void GameState::onAttack(Creature* attacker, const Position& pos, Creature* attackedCreature)
 {
 	bool pvpArena = false;
 	bool trainingNoPvp = false;
-#ifdef YUR_PVP_ARENA
 	CreatureVector arenaLosers;
 	pvpArena = isPvpArena(attacker) && isPvpArena(attackedCreature);
-#endif //YUR_PVP_ARENA
-#ifdef YUR_TRAINING_AREA
 	trainingNoPvp = isTrainingNoPvp(game, attacker, attackedCreature);
-#endif //YUR_TRAINING_AREA
 
 	//TODO: Decent formulas and such...
 	int64_t damage = attacker->getWeaponDamage();
@@ -949,20 +900,11 @@ void GameState::onAttack(Creature* attacker, const Position& pos, Creature* atta
 
 	int probability = rand() % 10000;
 
-#ifdef YUR_CVS_MODS
 	if (probability * damage < defense * 1000)
 		damage = 0;
 	else
 		damage -= (int)(damage*(armor/100.0)*(rand()/(RAND_MAX+1.0))) + armor;
 		//damage -= (int)((armor)*(rand()/(RAND_MAX+1.0))) + armor;	// wik's
-#else
-	if(probability * damage < defense * 10000)
-		damage = 0;
-	else
-	{
-		damage -= (armor * (10000 + rand() % 10000)) / 10000;
-	}
-#endif //YUR_CVS_MODS
 
 	int64_t manaDamage = 0;
 	const bool summonVsPlayer = attacker && attacker->isPlayersSummon() && attackedPlayer;
@@ -986,21 +928,15 @@ void GameState::onAttack(Creature* attacker, const Position& pos, Creature* atta
 	bool blood;
 	if(damage != 0)
 	{
-#ifdef YUR_ICE_RAPIER
 		if (attackPlayer)
 			for (int slot = SLOT_RIGHT; slot <= SLOT_LEFT; slot++)
 				if(attackPlayer->getItem(slot) && attackPlayer->getItem(slot)->getID() == ITEM_ICE_RAPIER)
 					attackPlayer->removeItemInventory(slot);
-#endif //YUR_ICE_RAPIER
 
-#ifdef YUR_RINGS_AMULETS
 		damage = applyAmulets(attackedPlayer, damage, ATTACK_PHYSICAL);
-#endif //YUR_RINGS_AMULETS
 
 		game->creatureApplyDamage(attackedCreature, damage, damage, manaDamage
-#ifdef YUR_PVP_ARENA
 			, (pvpArena? &arenaLosers : NULL)
-#endif //YUR_PVP_ARENA
 			);
 
 		if(attackPlayer && attackedPlayer && !trainingNoPvp && wieldsMedusaSword(attackPlayer))
@@ -1012,15 +948,11 @@ void GameState::onAttack(Creature* attacker, const Position& pos, Creature* atta
 		if(attackPlayer && attackedPlayer && !trainingNoPvp && wieldsWindstingAxe(attackPlayer))
 			applyWindstingDrunk(game, attackPlayer, attackedPlayer);
 
-#ifdef YUR_BOH
 		if(attackPlayer)
 			applyCrucibleWeaponProcs(game, attackPlayer, attackedCreature, attackedPlayer, damage, trainingNoPvp);
-#endif //YUR_BOH
 
-#ifdef TLM_SKULLS_PARTY
 		if (game->getWorldType() == WORLD_TYPE_PVP)
 			game->onPvP(attacker, attackedCreature, attackedCreature->health <= 0);
-#endif //TLM_SKULLS_PARTY
 
 		blood = true;
 	}
@@ -1031,23 +963,19 @@ void GameState::onAttack(Creature* attacker, const Position& pos, Creature* atta
 	addCreatureState(tile, attackedCreature, damage, manaDamage, blood);
 	onAttackedCreature(tile, attacker, attackedCreature, damage,  true);
 
-#ifdef BDB_REPLACE_SPEARS
 	if (attackPlayer && attackPlayer->isUsingSpears() && random_range(1,100000) > g_config.SPEAR_LOSE_CHANCE)
 	{
 		Item* spear = Item::CreateItem(ITEM_SPEAR, 1);
 		spear->pos = attackedCreature->pos;
 		game->addThing(attackPlayer, spear->pos, spear);
 	}
-#endif //BDB_REPLACE_SPEARS
 
-#ifdef YUR_PVP_ARENA
 	for (CreatureVector::iterator it = arenaLosers.begin(); it != arenaLosers.end(); ++it)
 	{
 		Tile* tile = game->getTile((*it)->pos);
 		if (tile)
 			game->teleport(*it, tile->getPvpArenaExit());
 	}
-#endif //YUR_PVP_ARENA
 }
 
 void GameState::addCreatureState(Tile* tile, Creature* attackedCreature, int64_t damage, int64_t manaDamage, bool drawBlood)
@@ -1186,10 +1114,8 @@ static void notifyMonsterLoot(Game* game, Creature* victim, Creature* attacker,
 	}
 
 	sendTo(dynamic_cast<Player*>(attacker));
-#ifdef TR_SUMMONS
 	if(attackerMaster)
 		sendTo(dynamic_cast<Player*>(attackerMaster));
-#endif //TR_SUMMONS
 	const std::vector<long>& damagers = victim->getInflicatedDamageCreatureList();
 	for(std::vector<long>::const_iterator dit = damagers.begin(); dit != damagers.end(); ++dit) {
 		Player* damagePlayer = game->getPlayerByID(*dit);
@@ -1241,11 +1167,8 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 	Player *attackedplayer = dynamic_cast<Player*>(attackedCreature);
 	Position CreaturePos = attackedCreature->pos;
 
-#ifdef TJ_MONSTER_BLOOD
 	bool dead = false;
-#endif //TJ_MONSTER_BLOOD
 
-#ifdef TR_SUMMONS
 	Creature* attackerMaster = attacker? attacker->getMaster() : NULL;
 	if (attackerMaster && dynamic_cast<Player*>(attackerMaster))	// attacker is players summon
 	{
@@ -1254,9 +1177,6 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 	}
 	else
 		attackedCreature->addInflictedDamage(attacker, damage);
-#else
-	attackedCreature->addInflictedDamage(attacker, damage);
-#endif //TR_SUMMONS
 
 	if(attackedplayer){
 		attackedplayer->sendStats();
@@ -1264,13 +1184,9 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 	//Remove player?
 	if(attackedCreature->health <= 0 && attackedCreature->isRemoved == false)
 	{
-#ifdef TJ_MONSTER_BLOOD
 		dead = true;
-#endif //TJ_MONSTER_BLOOD
-#ifdef JD_DEATH_LIST
 		if (attackedplayer && attacker)
 			attackedplayer->addDeath(attacker->getName(), attackedplayer->level, time(0));
-#endif //JD_DEATH_LIST
 		unsigned char stackpos = tile->getThingStackPos(attackedCreature);
 
 		//Prepare body
@@ -1281,10 +1197,8 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 		//Add eventual loot
 		Container *lootcontainer = dynamic_cast<Container*>(corpseitem);
 		Player* killerPlayer = dynamic_cast<Player*>(attacker);
-#ifdef TR_SUMMONS
 		if(!killerPlayer && attackerMaster)
 			killerPlayer = dynamic_cast<Player*>(attackerMaster);
-#endif //TR_SUMMONS
 		if(lootcontainer) {
 			attackedCreature->dropLoot(lootcontainer, killerPlayer);
 		}
@@ -1371,10 +1285,8 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 
 		if(attackedplayer) {
 			Player* killNotifyPlayer = dynamic_cast<Player*>(attacker);
-#ifdef TR_SUMMONS
 			if(!killNotifyPlayer && attackerMaster)
 				killNotifyPlayer = dynamic_cast<Player*>(attackerMaster);
-#endif //TR_SUMMONS
 			notifyPlayerKill(attackedplayer, killNotifyPlayer);
 		}
 
@@ -1473,14 +1385,11 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 			}
 		}
 
-#ifdef YUR_CVS_MODS
 		if(attackedplayer && g_config.PVP_UNDERDOG_EXP && game->getWorldType() != WORLD_TYPE_NO_PVP
 			&& game->getWorldType() != WORLD_TYPE_PVP_ENFORCED) {
 			Player* killerPlayer = dynamic_cast<Player*>(attacker);
-#ifdef TR_SUMMONS
 			if(!killerPlayer && attackerMaster)
 				killerPlayer = dynamic_cast<Player*>(attackerMaster);
-#endif //TR_SUMMONS
 			if(killerPlayer && killerPlayer != attackedplayer && killerPlayer->access < g_config.ACCESS_PROTECT) {
 				exp_t lostExp = attackedplayer->getLostExperience();
 				int totalDamage = attackedCreature->getTotalInflictedDamage();
@@ -1501,7 +1410,6 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 				}
 			}
 		}
-#endif //YUR_CVS_MODS
 
 		Player *player = dynamic_cast<Player*>(attacker);
 		if(player){
@@ -1515,19 +1423,11 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 
 
 	//Add blood?
-#ifdef TJ_MONSTER_BLOOD
 	if((drawBlood || attackedCreature->health <= 0) && damage > 0 && attackedCreature->bloodsplash != 255) {
 		Item* splash = Item::CreateItem(dead? ITEM_POOL : ITEM_SPLASH, attackedCreature->bloodsplash);
 		game->addThing(NULL, CreaturePos, splash);
 		game->startDecay(splash);
 	}
-#else
-	if((drawBlood || attackedCreature->health <= 0) && damage > 0) {
-		Item* splash = Item::CreateItem(ITEM_SPLASH, FLUID_BLOOD);
-		game->addThing(NULL, CreaturePos, splash);
-		game->startDecay(splash);
-	}
-#endif //TJ_MONSTER_BLOOD
 }
 
 
@@ -1553,14 +1453,12 @@ Game::Game()
 
 	addEvent(makeTask(DECAY_INTERVAL, boost::bind(&Game::checkDecay,this,DECAY_INTERVAL)));
 
-#ifdef CVS_DAY_CYCLE
 	int daycycle = 3600;
 	light_hour_delta = 1440*10/daycycle;
 	light_hour = 0;
 	lightlevel = LIGHT_LEVEL_NIGHT;
 	light_state = LIGHT_STATE_NIGHT;
 	addEvent(makeTask(10000, boost::bind(&Game::checkLight, this, 10000)));
-#endif //CVS_DAY_CYCLE
 }
 
 
@@ -1872,24 +1770,16 @@ Player* Game::getPlayerByName(const std::string &s)
 }
 
 bool Game::placeCreature(Position &pos, Creature* c
-#ifdef YUR_LOGIN_QUEUE
 						 , int* placeInQueue
-#endif //YUR_LOGIN_QUEUE
 						 )
 {
 	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::placeCreature()");
 	bool success = false;
 	Player *p = dynamic_cast<Player*>(c);
 
-#ifdef YUR_LOGIN_QUEUE
 	if (!p || c->access >= g_config.ACCESS_ENTER ||
- #ifdef YUR_PREMIUM_PROMOTION
 		(p->isPremium() && !g_config.QUEUE_PREMMY) ||
- #endif //YUR_PREMIUM_PROMOTION
 		loginQueue.login(p->accountNumber, getPlayersOnline(), max_players, placeInQueue)) {
-#else //YUR_LOGIN_QUEUE
-	if (!p || c->access >= g_config.ACCESS_ENTER || getPlayersOnline() < max_players) {
-#endif //YUR_LOGIN_QUEUE
 
 		success = map->placeCreature(pos, c);
 		if(success) {
@@ -1905,15 +1795,9 @@ bool Game::placeCreature(Position &pos, Creature* c
 
 			if(p)
 			{
-#ifdef __DEBUG_PLAYERS__
 				std::cout << (uint32_t)getPlayersOnline() << " players online." << std::endl;
-#endif
-#ifdef YUR_GUILD_SYSTEM
 				Guilds::ReloadGuildInfo(p);
-#endif //YUR_GUILD_SYSTEM
-#ifdef ELEM_VIP_LIST
 				vipLogin(p);
-#endif //ELEM_VIP_LIST
 			}
 
 			if(p){
@@ -1960,10 +1844,8 @@ bool Game::removeCreature(Creature* c)
 
 	Player* player = dynamic_cast<Player*>(c);
 	if(player){
-#ifdef TLM_SKULLS_PARTY
 		if(player->party != 0)
 			LeaveParty(player);
-#endif //TLM_SKULLS_PARTY
 
 		if(player->tradePartner != 0) {
 			playerCloseTrade(player);
@@ -1975,13 +1857,9 @@ bool Game::removeCreature(Creature* c)
 		if(!IOPlayer::instance()->savePlayer(player)){
 			std::cout << "Error while saving player: " << player->getName() << std::endl;
 		}
-		#ifdef __DEBUG_PLAYERS__
 		std::cout << (uint32_t)getPlayersOnline() << " players online." << std::endl;
-		#endif
 
-#ifdef ELEM_VIP_LIST
 		vipLogout(c->getName());
-#endif //ELEM_VIP_LIST
 	}
 
 	this->FreeThing(c);
@@ -2162,7 +2040,6 @@ bool Game::onPrepareMoveThing(Creature* creature, const Thing* thing,
 		return false;
 	}
 
-#ifdef TLM_HOUSE_SYSTEM
 	if (item && toTile && toTile->isHouse())
 	{
 		const Container* container = dynamic_cast<const Container*>(item);
@@ -2174,7 +2051,6 @@ bool Game::onPrepareMoveThing(Creature* creature, const Thing* thing,
 			return false;
 		}
 	}
-#endif //TLM_HOUSE_SYSTEM
 
 	return true; //return thing->canMovedTo(toTile);
 }
@@ -2938,16 +2814,7 @@ void Game::thingMoveInternal(Player *player,
 			int oldToCount = 0;
 
 			//Do action...
-#ifdef TP_TRASH_BINS
-			if (toItem && toItem->isDeleter())
-			{
-				fromContainer->removeItem(fromItem);
-				FreeThing(fromItem);
-			}
-			else if(fromItem->isStackable()) {
-#else
 			if(fromItem->isStackable()) {
-#endif //TP_TRASH_BINS
 				if(toItem && toItem->getID() == fromItem->getID())
 				{
 					oldToCount = toItem->getItemCountOrSubtype();
@@ -3042,16 +2909,7 @@ void Game::thingMoveInternal(Player *player,
 			int oldToCount = 0;
 
 			//Do action...
-#ifdef TP_TRASH_BINS
-			if(toItem && toItem->isDeleter())
-			{
-				player->removeItemInventory(from_cid, true);
-				FreeThing(fromItem);
-			}
-			else if(fromItem->isStackable()) {
-#else
 			if(fromItem->isStackable()) {
-#endif //TP_TRASH_BINS
 				if(toItem && toItem->getID() == fromItem->getID())
 				{
 					oldToCount = toItem->getItemCountOrSubtype();
@@ -3133,10 +2991,6 @@ void Game::thingMoveInternal(Player *player,
 		}
 	}
 
-#ifdef TP_TRASH_BINS
-	//creatureBroadcastTileUpdated(toPos);
-	//sendAddThing
-#endif //TP_TRASH_BINS
 }
 
 //ground to container/inventory
@@ -3415,22 +3269,6 @@ void Game::thingMoveInternal(Creature *creature, unsigned short from_x, unsigned
 	oldPos.y = from_y;
 	oldPos.z = from_z;
 
-#ifdef TP_TRASH_BINS
-	if(toTile)
-	{
-		Thing *tothing = toTile->getThingByStackPos(stackPos);
-		Item *toItem = dynamic_cast<Item*>(tothing);
-
-		if(item && toItem && !playerMoving && !creature && toItem->isDeleter())
-		{
-			fromTile->removeThing(item);
-			this->FreeThing(item);
-			//creatureBroadcastTileUpdated(oldPos);
-			sendRemoveThing(player, item->pos, item, stackPos);
-			return;
-		}
-    }
-#endif //TP_TRASH_BINS
 
 	// *** Creature moving itself to a non-tile
 	if(!toTile && creatureMoving && creatureMoving == creature){
@@ -3511,7 +3349,6 @@ void Game::thingMoveInternal(Creature *creature, unsigned short from_x, unsigned
 		return;
 	}
 
-#ifdef TLM_HOUSE_SYSTEM
 	if (playerMoving && toTile->getHouse() &&
 		(fromTile->getHouse() != toTile->getHouse() || playerMoving->houseRightsChanged))
 	{
@@ -3525,7 +3362,6 @@ void Game::thingMoveInternal(Creature *creature, unsigned short from_x, unsigned
 		else
 			playerMoving->houseRightsChanged = false;	// if we are invited stop checking rights
 	}
-#endif //TLM_HOUSE_SYSTEM
 
 	// *** Normal moving
 
@@ -3555,7 +3391,6 @@ void Game::thingMoveInternal(Creature *creature, unsigned short from_x, unsigned
 
 		getSpectators(Range(oldPos, Position(to_x, to_y, to_z)), list);
 
-#ifdef TRS_GM_INVISIBLE
 		if(playerMoving && playerMoving->gmInvisible)
 		{
 			for(it = list.begin(); it != list.end(); ++it)
@@ -3601,18 +3436,6 @@ void Game::thingMoveInternal(Creature *creature, unsigned short from_x, unsigned
 				}
 			}
 		}
-#else //TRS_GM_INVISIBLE
-		//players
-		for(it = list.begin(); it != list.end(); ++it)
-		{
-			if(Player* p = dynamic_cast<Player*>(*it)) {
-        if(p->attackedCreature == creature->getID()) {
-          autoCloseAttack(p, creature);
-        }
-				(*it)->onThingMove(creature, thing, &oldPos, oldstackpos, 1, 1);
-			}
-		}
-#endif //TRS_GM_INVISIBLE
 
 		//none-players
 		for(it = list.begin(); it != list.end(); ++it)
@@ -3904,7 +3727,6 @@ void Game::teleport(Thing *thing, const Position& newPos) {
 			list.clear();
 			getSpectators(Range(thing->pos, true), list);
 
-#ifdef TRS_GM_INVISIBLE
 			//players
 			for(it = list.begin(); it != list.end(); ++it)
 			{
@@ -3940,18 +3762,6 @@ void Game::teleport(Thing *thing, const Position& newPos) {
 				else
 				creatureBroadcastTileUpdated(newPos);
 			}
-#else //TRS_GM_INVISIBLE
-			//players
-			for(it = list.begin(); it != list.end(); ++it)
-			{
-				if(Player* p = dynamic_cast<Player*>(*it)) {
-					if(p->attackedCreature == creature->getID()) {
-						autoCloseAttack(p, creature);
-					}
-					(*it)->onTeleport(creature, &oldPos, osp);
-				}
-			}
-#endif //TRS_GM_INVISIBLE
 
 			//none-players
 			for(it = list.begin(); it != list.end(); ++it)
@@ -4279,11 +4089,9 @@ bool Game::creatureMakeMagic(Creature *creature, const Position& centerpos, cons
 							if(creatureState.damage != 0) {
 								std::stringstream dmg;
 								dmg << std::abs(creatureState.damage);
-#ifdef TJ_MONSTER_BLOOD
 								if (me->attackType & ATTACK_PHYSICAL)
 								    spectator->sendAnimatedText(target->pos, target->bloodcolor, dmg.str());
 								else
-#endif //TJ_MONSTER_BLOOD
 									spectator->sendAnimatedText(target->pos, me->animationColor, dmg.str());
 							}
 
@@ -4316,9 +4124,7 @@ bool Game::creatureMakeMagic(Creature *creature, const Position& centerpos, cons
 }
 
 void Game::creatureApplyDamage(Creature *creature, int64_t damage, int64_t &outDamage, int64_t &outManaDamage
-#ifdef YUR_PVP_ARENA
 							   , CreatureVector* arenaLosers
-#endif //YUR_PVP_ARENA
 							   )
 {
 	outDamage = damage;
@@ -4342,18 +4148,10 @@ void Game::creatureApplyDamage(Creature *creature, int64_t damage, int64_t &outD
 		}
 
 		if(creature->manaShieldTicks < 1000 || (creature->mana == 0))
-#ifdef YUR_PVP_ARENA
 			creature->drainHealth(outDamage, arenaLosers);
-#else
-			creature->drainHealth(outDamage);
-#endif //YUR_PVP_ARENA
 		else if(outManaDamage > 0)
 		{
-#ifdef YUR_PVP_ARENA
 			creature->drainHealth(outDamage, arenaLosers);
-#else
-			creature->drainHealth(outDamage);
-#endif //YUR_PVP_ARENA
 			creature->drainMana(outManaDamage);
 		}
 		else
@@ -4526,11 +4324,7 @@ void Game::creatureMakeDamage(Creature *creature, Creature *attackedCreature, fi
 
 	if (player && player->access < g_config.ACCESS_PROTECT)
 	{
-#ifdef YUR_CVS_MODS
 		player->inFightTicks = std::max(g_config.PZ_LOCKED, player->inFightTicks);
-#else
-		player->inFightTicks = (long)g_config.getGlobalNumber("pzlocked", 0);
-#endif //YUR_CVS_MODS
 
 		player->sendIcons();
 		if(attackedPlayer)
@@ -4539,11 +4333,7 @@ void Game::creatureMakeDamage(Creature *creature, Creature *attackedCreature, fi
 
 	if(attackedPlayer && attackedPlayer->access < g_config.ACCESS_PROTECT)
 	{
-#ifdef YUR_CVS_MODS
 		attackedPlayer->inFightTicks = std::max(g_config.PZ_LOCKED, attackedPlayer->inFightTicks);
-#else
-		attackedPlayer->inFightTicks = (long)g_config.getGlobalNumber("pzlocked", 0);
-#endif //YUR_CVS_MODS
 	 attackedPlayer->sendIcons();
   }
 
@@ -4586,7 +4376,6 @@ void Game::creatureMakeDamage(Creature *creature, Creature *attackedCreature, fi
 		if(damagetype != FIGHT_MELEE){
 			spectator->sendDistanceShoot(creature->pos, attackedCreature->pos, creature->getSubFightType());
 		}
-#ifdef YUR_BOH
 		else if(player && player->wieldsNightglassDagger()){
 			spectator->sendDistanceShoot(creature->pos, attackedCreature->pos, NM_ANI_FIRE);
 		}
@@ -4599,7 +4388,6 @@ void Game::creatureMakeDamage(Creature *creature, Creature *attackedCreature, fi
 			else if(crucibleWeapon == ITEM_VENOMQUEEN_FANG)
 				spectator->sendDistanceShoot(creature->pos, attackedCreature->pos, NM_ANI_POISONARROW);
 		}
-#endif //YUR_BOH
 
 		if (attackedCreature->manaShieldTicks < 1000 && (creatureState.damage == 0) &&
 			(spectator->CanSee(attackedCreature->pos.x, attackedCreature->pos.y, attackedCreature->pos.z))) {
@@ -4626,7 +4414,6 @@ void Game::creatureMakeDamage(Creature *creature, Creature *attackedCreature, fi
 				if(creatureState.damage > 0) {
 					std::stringstream dmg;
 					dmg << std::abs(creatureState.damage);
-#ifdef YUR_BOH
 					if(player && player->wieldsNightglassDagger()){
 						spectator->sendAnimatedText(attackedCreature->pos, 0x2A, dmg.str());
 						spectator->sendMagicEffect(attackedCreature->pos, NM_ME_HITBY_FIRE);
@@ -4648,15 +4435,9 @@ void Game::creatureMakeDamage(Creature *creature, Creature *attackedCreature, fi
 						spectator->sendMagicEffect(attackedCreature->pos, NM_ME_YELLOW_RINGS);
 					}
 					else
-#endif //YUR_BOH
 					{
-#ifdef TJ_MONSTER_BLOOD
 					spectator->sendAnimatedText(attackedCreature->pos, attackedCreature->bloodcolor, dmg.str());
 					spectator->sendMagicEffect(attackedCreature->pos, attackedCreature->bloodeffect);
-#else
-					spectator->sendAnimatedText(attackedCreature->pos, 0xB4, dmg.str());
-					spectator->sendMagicEffect(attackedCreature->pos, NM_ME_DRAW_BLOOD);
-#endif //TJ_MONSTER_BLOOD
 					}
 				}
 
@@ -4787,38 +4568,17 @@ void Game::checkCreature(unsigned long id)
 				return;
 			}
 
-#ifdef CVS_DAY_CYCLE
 			player->sendWorldLightLevel(lightlevel, 0xD7);
-#endif //CVS_DAY_CYCLE
-#ifdef TR_ANTI_AFK
-			player->checkAfk(thinkTicks);
-#endif //TR_ANTI_AF
-#ifdef YUR_BOH
 			player->checkBoh();
-#endif //YUR_BOH
-#ifdef YUR_RINGS_AMULETS
 			player->checkRing(thinkTicks);
-#endif //YUR_RINGS_AMULETS
-#ifdef YUR_SOFT_BOOTS
 			player->checkSoftBoots(thinkTicks);
-#endif //YUR_SOFT_BOOTS
-#ifdef YUR_TRAINING_AREA
 			player->checkTraining(thinkTicks, tile);
-#endif //YUR_TRAINING_AREA
-#ifdef YUR_LIGHT_ITEM
 			player->checkLightItem(thinkTicks);
-#endif //YUR_LIGHT_ITEM
-#ifdef TLM_SKULLS_PARTY
 			if (player->checkSkull(thinkTicks))
 				Skull(player);
-#endif //TLM_SKULLS_PARTY
-#ifdef YUR_PREMIUM_PROMOTION
 			player->checkPremium(thinkTicks);
-#endif //YUR_PREMIUM_PROMOTION
-#ifdef YUR_INVISIBLE
 			if (player->checkInvisible(thinkTicks))
 				creatureChangeOutfit(player);
-#endif //YUR_INVISIBLE
 
 			player->checkSoulRegen(thinkTicks);
 
@@ -4953,10 +4713,8 @@ void Game::checkCreature(unsigned long id)
 				}
 			}
 
-#ifdef YUR_INVISIBLE
 			if (creature->checkInvisible(thinkTicks))
 				creatureChangeOutfit(creature);
-#endif //YUR_INVISIBLE
 		}
 
 		Conditions& conditions = creature->getConditions();
@@ -5071,7 +4829,6 @@ void Game::checkCreatureAttacking(unsigned long id)
 					}
 					else
 					{
-#ifdef YUR_INVISIBLE
 						if (attackedCreature->isInvisible())
 						{
 							Player* player = dynamic_cast<Player*>(creature);
@@ -5083,24 +4840,19 @@ void Game::checkCreatureAttacking(unsigned long id)
 								return;
 							}
 						}
-#endif //YUR_INVISIBLE
 						if (!attackedCreature->isRemoved)
 						{
 							Player* player = dynamic_cast<Player*>(creature);
 							bool usedWand = false;
 							if (player)
 							{
-#ifdef SD_BURST_ARROW
 								if (player->isUsingBurstArrows())
 									burstArrow(player, attackedCreature->pos);
-#endif //SD_BURST_ARROW
-#ifdef JD_WANDS
 								int wandid = player->getWandId();
 								if (wandid > 0) {
 									useWand(player, attackedCreature, wandid);
 									usedWand = true;
 								}
-#endif //JD_WANDS
 							}
 
 							if(!usedWand)
@@ -5110,10 +4862,8 @@ void Game::checkCreatureAttacking(unsigned long id)
 
 					int attackDelay = PLAYER_ATTACK_DELAY_MS;
 					Player* atkPlayer = dynamic_cast<Player*>(creature);
-#ifdef YUR_BOH
 					if(atkPlayer)
 						attackDelay = atkPlayer->getAttackDelayMs();
-#endif //YUR_BOH
 					creature->eventCheckAttacking = addEvent(makeTask(attackDelay, std::bind2nd(std::mem_fun(&Game::checkCreatureAttacking), id)));
 				}
 			}
@@ -5318,7 +5068,6 @@ SpellCastResult Game::creatureSaySpell(Creature *creature, const std::string &te
 	std::transform(temp.begin(), temp.end(), temp.begin(), (int(*)(int))tolower);
 	trimSpellText(temp);
 
-#ifdef CT_EXANI_TERA
 	if(temp == lowerText && lowerText.substr(0, 10) == "exani hur "){
 		temp = "exani hur";
 		var = lowerText.substr(10);
@@ -5362,7 +5111,6 @@ SpellCastResult Game::creatureSaySpell(Creature *creature, const std::string &te
 
 		return ret ? SPELL_CAST_SUCCESS : SPELL_CAST_BLOCKED;
 	}
-#endif //CT_EXANI_TERA
 
 	if(creature->access >= g_config.ACCESS_PROTECT || !player){
 		std::map<std::string, Spell*>::iterator sit = spells.getAllSpells()->find(temp);
@@ -5383,11 +5131,9 @@ SpellCastResult Game::creatureSaySpell(Creature *creature, const std::string &te
 					ret = false;
 				}
 				else if(player->getEffectiveMagLevel() >= sit->second->getMagLv()){
-#ifdef YUR_LEARN_SPELLS
 					if (g_config.LEARN_SPELLS && !player->knowsSpell(temp))
 						ret = false;
 					else
-#endif //YUR_LEARN_SPELLS
 					{
 						const int64_t manaBefore = player->mana;
 						const unsigned short soulBefore = player->getSoul();
@@ -5893,29 +5639,21 @@ void Game::playerSetAttackedCreature(Player* player, unsigned long creatureid)
 	Player* attackedPlayer = dynamic_cast<Player*>(attackedCreature);
 	bool pvpArena = false, rook = false, attackedIsSummon = false, trainingNoPvp = false;
 
-#ifdef YUR_PVP_ARENA
 	if (player && attackedCreature)
 	{
 		Tile *t1 = map->getTile(player->pos), *t2 = map->getTile(attackedCreature->pos);
 		pvpArena = t1 && t2 && t1->isPvpArena() && t2->isPvpArena();
 	}
-#endif //YUR_PVP_ARENA
 
-#ifdef YUR_TRAINING_AREA
 	if (player && attackedCreature)
 	{
 		Tile *t1 = map->getTile(player->pos), *t2 = map->getTile(attackedCreature->pos);
 		trainingNoPvp = isTrainingNoPvpTilePair(t1, t2);
 	}
-#endif //YUR_TRAINING_AREA
 
-#ifdef YUR_ROOKGARD
 	rook = player && player->isRookie() && attackedPlayer && attackedPlayer->isRookie();
-#endif //YUR_ROOKGARD
 
-#ifdef TR_SUMMONS
 	attackedIsSummon = (attackedCreature && attackedCreature->isPlayersSummon() && attackedCreature->getMaster() != player);
-#endif //TR_SUMMONS
 
 	if(!attackedCreature || (attackedCreature->access >= g_config.ACCESS_PROTECT || ((getWorldType() == WORLD_TYPE_NO_PVP || rook || trainingNoPvp) &&
 		!pvpArena && player->access < g_config.ACCESS_PROTECT && (dynamic_cast<Player*>(attackedCreature) || attackedIsSummon)))) {
@@ -6464,7 +6202,6 @@ Thing* Game::getThing(const Position &pos,unsigned char stack, Player* player /*
 }
 
 
-#ifdef WOLV_LOAD_NPC
 bool Game::loadNpcs()
 {
 	xmlDocPtr doc;
@@ -6515,7 +6252,6 @@ bool Game::loadNpcs()
 	xmlFreeDoc(doc);
 	return true;
 }
-#endif //WOLV_LOAD_NPC
 
 
 static std::string xmlAttrEscape(const std::string& value)
@@ -6560,7 +6296,6 @@ void Game::writeOnlineList()
 	out << "</online>\n";
 }
 
-#ifdef TLM_SERVER_SAVE
 // Set from SIGTERM/SIGINT (otserv.cpp). Polled by checkSaveRequest on game thread.
 volatile sig_atomic_t g_yurotsWantShutdown = 0;
 static bool g_delayedServerSavePending = false;
@@ -6687,10 +6422,8 @@ void Game::checkSaveRequest()
 
 	addEvent(makeTask(2000, std::mem_fun(&Game::checkSaveRequest)));
 }
-#endif //TLM_SERVER_SAVE
 
 
-#ifdef ELEM_VIP_LIST
 void Game::vipLogin(Player* player)
 {
 	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::vipLogin()");
@@ -6741,7 +6474,6 @@ bool Game::isPlayer(std::string name)
 		return false;
 	}
 }
-#endif //ELEM_VIP_LIST
 
 void Game::checkSpell(Player* player, SpeakClasses& type, std::string text)
 {
@@ -6751,7 +6483,6 @@ void Game::checkSpell(Player* player, SpeakClasses& type, std::string text)
 	{
 		return;
 	}
-#ifdef TLM_HOUSE_SYSTEM
 	else if (text == "aleta gom")		// edit owner
 	{
 		Tile* tile = getTile(player->pos);
@@ -6872,9 +6603,7 @@ void Game::checkSpell(Player* player, SpeakClasses& type, std::string text)
 			player->sendTextMessage(MSG_SMALLINFO, "This player does not exist.");
 		}
 	}
-#endif //TLM_HOUSE_SYSTEM
 
-#ifdef TR_SUMMONS
 	else if (text.substr(0, 11) == "utevo res \"" &&
 		(!g_config.LEARN_SPELLS || player->knowsSpell("utevo res")))
 	{
@@ -6900,13 +6629,11 @@ void Game::checkSpell(Player* player, SpeakClasses& type, std::string text)
 				player->sendMagicEffect(player->pos, NM_ME_PUFF);
 				player->sendCancel("You cannot summon creatures in protection zone.");
 			}
-#ifdef YUR_PVP_ARENA
 			else if (tile->isPvpArena())
 			{
 				player->sendMagicEffect(player->pos, NM_ME_PUFF);
 				player->sendCancel("You cannot summon creatures on arena.");
 			}
-#endif //YUR_PVP_ARENA
 			else if (player->getSummonCount() >= g_config.MAX_SUMMONS)
 			{
 				player->sendMagicEffect(player->pos, NM_ME_PUFF);
@@ -6929,78 +6656,6 @@ void Game::checkSpell(Player* player, SpeakClasses& type, std::string text)
 			}
 		}
 	}
-#endif //TR_SUMMONS
-    #ifdef MAGICLEVEL_TEST
-    else if(text=="mlvltest1"){
-        player->addManaSpent(0xFF);
-        type=SPEAK_MONSTER2;
-    }
-    else if(text=="mlvltest1.5"){
-        player->addManaSpent(0xFFF);
-        type=SPEAK_MONSTER2;
-    }
-    else if(text=="mlvltest2"){
-        player->addManaSpent(0xFFFF);
-        type=SPEAK_MONSTER2;
-    }
-    else if(text=="mlvltest2.5"){
-        player->addManaSpent(0xFFFFF);
-        type=SPEAK_MONSTER2;
-    }
-    else if(text=="mlvltest3"){
-        player->addManaSpent(0xFFFFFF);
-        type=SPEAK_MONSTER2;
-    }
-    else if(text=="mlvltest3.5"){
-        player->addManaSpent(0xFFFFFFF);
-        type=SPEAK_MONSTER2;
-    }
-    else if(text=="mlvltest4"){
-        player->addManaSpent(0xFFFFFFFF);
-        type=SPEAK_MONSTER2;
-    }
-    else if(text=="mlvltest4.5"){
-        player->addManaSpent(0xFFFFFFFFFLL);
-        type=SPEAK_MONSTER2;
-    }
-    else if(text=="mlvltest5"){
-        player->addManaSpent(0xFFFFFFFFFFLL);
-        type=SPEAK_MONSTER2;
-    }
-    else if(text=="mlvltest5.5"){
-        player->addManaSpent(0xFFFFFFFFFFFLL);
-        type=SPEAK_MONSTER2;
-    }
-    else if(text=="mlvltest6"){
-        player->addManaSpent(0xFFFFFFFFFFFFLL);
-        type=SPEAK_MONSTER2;
-    }
-    else if(text=="mlvltest6.5"){
-        player->addManaSpent(0xFFFFFFFFFFFFFLL);
-        type=SPEAK_MONSTER2;
-    }
-    else if(text=="mlvltest7"){
-        player->addManaSpent(0xFFFFFFFFFFFFFFLL);
-        type=SPEAK_MONSTER2;
-    }
-    else if(text=="mlvltest7.5"){
-        player->addManaSpent(0xFFFFFFFFFFFFFFFLL);
-        type=SPEAK_MONSTER2;
-    }
-    else if(text=="mlvltest8"){
-        player->addManaSpent(0xFFFFFFFFFFFFFFFFLL);
-        type=SPEAK_MONSTER2;
-    }//no 8.5/9... like she said, its too big ;)
-    else if(text=="mlvlreset"){
-        player->maglevel=0;
-        player->manaspent=0;
-    }
-    else if(text.substr(0,12)=="setvocation="){
-        player->vocation=(playervoc_t)atoi(text.substr(12,1).c_str());
-        std::cout << "set vocation! " << (playervoc_t)atoi(text.substr(12,1).c_str());
-    }
-    #endif//MAGICLEVEL_TEST
-#ifdef BRN_EXIVA
 	else if (text.substr(0,7) == "exiva \"" &&
 		(!g_config.LEARN_SPELLS || player->knowsSpell("exiva")))
 	{
@@ -7111,9 +6766,7 @@ void Game::checkSpell(Player* player, SpeakClasses& type, std::string text)
 		else
 			player->sendTextMessage(MSG_SMALLINFO, "This player is not online.");
 	}
-#endif //BRN_EXIVA
 
-#ifdef CT_EXANI_TERA
 	else if (text == "exani tera" &&
 		(!g_config.LEARN_SPELLS || player->knowsSpell("exani tera")))
 	{
@@ -7153,11 +6806,9 @@ void Game::checkSpell(Player* player, SpeakClasses& type, std::string text)
 			}
 		}
 	}
-#endif //CT_EXANI_TERA
 }
 
 
-#ifdef TR_SUMMONS
 bool Game::placeSummon(Player* p, const std::string& name)
 {
 	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::placeSummon()");
@@ -7176,11 +6827,7 @@ bool Game::placeSummon(Player* p, const std::string& name)
 	}
 
 	Tile* tile = getTile(pos);
-#ifdef YUR_PVP_ARENA
 	if (!tile || tile->isPz() || tile->isPvpArena() || !placeCreature(pos, monster))
-#else
-	if (!tile || tile->isPz() || !placeCreature(pos, monster))
-#endif //YUR_PVP_ARENA
 	{
 		delete monster;
 		return false;
@@ -7191,7 +6838,6 @@ bool Game::placeSummon(Player* p, const std::string& name)
 		return true;
 	}
 }
-#endif //TR_SUMMONS
 
 
 enum RageVariantStage {
@@ -7328,11 +6974,7 @@ bool Game::trySpawnRageMonster(const Monster* slainMonster, const Position& deat
 
 	Position spawnPos = deathPos;
 	Tile* tile = getTile(spawnPos);
-#ifdef YUR_PVP_ARENA
 	if(!tile || tile->isPz() || tile->isPvpArena()) {
-#else
-	if(!tile || tile->isPz()) {
-#endif //YUR_PVP_ARENA
 		delete monster;
 		return false;
 	}
@@ -7357,7 +6999,6 @@ bool Game::trySpawnRageMonster(const Monster* slainMonster, const Position& deat
 }
 
 
-#ifdef TRS_GM_INVISIBLE
 void Game::creatureBroadcastTileUpdated(const Position& pos)
 {
 	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::creatureBroadcastTileUpdated()");
@@ -7379,10 +7020,8 @@ void Game::creatureBroadcastTileUpdated(const Position& pos)
 		}
 	}
 }
-#endif //TRS_GM_INVISIBLE
 
 
-#ifdef TLM_SKULLS_PARTY
 void Game::Skull(Player* player)
 {
 	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::Skull()");
@@ -7517,10 +7156,8 @@ void Game::disbandParty(unsigned long partyID)
 		}
 	}
 }
-#endif //TLM_SKULLS_PARTY
 
 
-#ifdef SD_BURST_ARROW
 class MagicEffectAreaNoExhaustionClass: public MagicEffectAreaClass {
 public:
 	bool causeExhaustion(bool hasTarget) const { return false; }
@@ -7566,10 +7203,8 @@ void Game::burstArrow(Creature* c, const Position& pos)
 	runeAreaSpell.maxDamage = int(burstBase * g_config.BURST_DMG_HI);
 	creatureThrowRune(c, pos, runeAreaSpell);
 }
-#endif //SD_BURST_ARROW
 
 
-#ifdef YUR_SHUTDOWN
 void Game::sheduleShutdown(int minutes)
 {
 	if (minutes > 0)
@@ -7606,29 +7241,23 @@ void Game::checkShutdown(int minutes)
 		addEvent(makeTask(60000, boost::bind(&Game::checkShutdown, this, minutes - 1)));
 	}
 }
-#endif //YUR_SHUTDOWN
 
 
-#ifdef YUR_CMD_EXT
 void Game::setMaxPlayers(uint32_t newmax)
 {
 	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::setMaxPlayers()");
 	max_players = newmax;
 	Status::instance()->playersmax = newmax;
 }
-#endif //YUR_CMD_EXT
 
 
-#ifdef YUR_CLEAN_MAP
 long Game::cleanMap()
 {
 	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::cleanMap()");
 	return map->clean();
 }
-#endif //YUR_CLEAN_MAP
 
 
-#ifdef CVS_DAY_CYCLE
 void Game::creatureChangeLight(Player* player, int time, unsigned char lightlevel, unsigned char lightcolor)
 {
 	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::creatureChangeLight()");
@@ -7687,10 +7316,8 @@ void Game::checkLight(int t)
 unsigned char Game::getLightLevel(){
 	return lightlevel;
 }
-#endif //CVS_DAY_CYCLE
 
 
-#ifdef JD_WANDS
 static bool isSorcererOrDruidFamily(playervoc_t vocation)
 {
 	// Promotion is stored as Player::promoted; master sorcerers and elder druids
@@ -7972,4 +7599,3 @@ void Game::useWand(Creature *creature, Creature *attackedCreature, int wandid)
 			player->mana -= mana;
 	}
 }
-#endif //JD_WANDS

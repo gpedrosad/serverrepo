@@ -17,7 +17,6 @@
 // along with this program; if not, write to the Free Software Foundation,
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
-#ifdef TR_SUMMONS
 #include "summons.h"
 #include "luascript.h"
 #include <cstring>
@@ -74,4 +73,3 @@ bool Summons::Load()
 	xmlFreeDoc(doc);
 	return true;
 }
-#endif //TR_SUMMONS

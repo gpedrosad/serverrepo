@@ -109,21 +109,15 @@ public:
 	virtual void sendSetOutfit(const Creature* creature) = 0;
 	virtual void sendTileUpdated(const Position &pos) = 0;
 
-#ifdef CVS_DAY_CYCLE
 	virtual void sendWorldLightLevel(unsigned char lightlevel, unsigned char color) = 0;
 	virtual void sendPlayerLightLevel(const Player* player) = 0;
-#endif //CVS_DAY_CYCLE
 
-#ifdef BD_HOUSE_WINDOW
 	virtual void sendHouseWindow(std::string members) = 0;
 	virtual void parseHouseWindow(NetworkMessage& msg) = 0;
 	virtual Game* getGame() = 0;
-#endif //BD_HOUSE_WINDOW
 
-#ifdef TLM_SKULLS_PARTY
 	virtual void sendSkull(const Creature *creature) = 0;
 	virtual void sendPartyIcons(const Player *playa, int icontype, bool skull, bool removeskull) = 0;
-#endif //TLM_SKULLS_PARTY
 
 	virtual void sendIcons(int icons) = 0;
 	virtual void sendCancel(const char *msg) = 0;

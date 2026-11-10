@@ -33,11 +33,7 @@ extern "C"
 
 extern "C" struct lua_State;
 
-#ifdef YUR_HIGH_LEVELS
 typedef __int64 exp_t;
-#else
-typedef unsigned long exp_t;
-#endif //YUR_HIGH_LEVELS
 
 class LuaScript
 {
@@ -45,7 +41,6 @@ public:
 	LuaScript();
 	~LuaScript();
 
-#ifdef YUR_MULTIPLIERS
 	exp_t EXP_MUL;
 	exp_t EXP_MUL_PVP;
 	int LOOT_MUL;
@@ -71,64 +66,41 @@ public:
 	int EXP_TIER_COUNT;
 
 	exp_t getExpMulForLevel(int level) const;
-#endif //YUR_MULTIPLIERS
 
-#ifdef TR_ANTI_AFK
-	int KICK_TIME;
-#endif //TR_ANTI_AFK
 
-#ifdef YUR_LEARN_SPELLS
 	bool LEARN_SPELLS;
-#endif //YUR_LEARN_SPELLS
 
-#ifdef TLM_HOUSE_SYSTEM
 	int ACCESS_HOUSE;
 	int MAX_HOUSE_TILE_ITEMS;
-#endif //TLM_HOUSE_SYSTEM
 
-#ifdef TR_SUMMONS
 	bool  SUMMONS_ALL_VOC;
 	size_t MAX_SUMMONS;
-#endif //TR_SUMMONS
 
-#ifdef TLM_SKULLS_PARTY
 	int HIT_TIME;
 	int WHITE_TIME;
 	int RED_TIME;
 	int FRAG_TIME;
 	int RED_UNJUST;
 	int BAN_UNJUST;
-#endif //TLM_SKULLS_PARTY
 
-#ifdef SD_BURST_ARROW
 	double BURST_DMG_LVL;
 	double BURST_DMG_MLVL;
 	double BURST_DMG_LO;
 	double BURST_DMG_HI;
-#endif //SD_BURST_ARROW
 
-#ifdef YUR_CONFIG_CAP
 	bool CAP_SYSTEM;
-#endif //YUR_CONFIG_CAP
 
-#ifdef BDB_REPLACE_SPEARS
 	int SPEAR_LOSE_CHANCE;
-#endif //BDB_REPLACE_SPEARS
 
-#ifdef YUR_PREMIUM_PROMOTION
 	bool FREE_PREMMY;
 	bool QUEUE_PREMMY;
 	int PREMMY_EXP_BONUS;
 	int PREMMY_LOOT_BONUS;
 	int PREMMY_SKILL_MUL;
-#endif //YUR_PREMIUM_PROMOTION
 
-#ifdef YUR_TRAINING_AREA
 	int TRAINING_DAILY_MINUTES;
 	int TRAINING_PREMIUM_MINUTES;
-#endif //YUR_TRAINING_AREA
 
-#ifdef YUR_CVS_MODS
 	std::string VOCATIONS[5];
 	std::string PROMOTED_VOCATIONS[5];
 	int DIE_PERCENT_EXP;
@@ -151,13 +123,9 @@ public:
 	int ACCESS_LOOK;
 	int MAX_DEPOT_ITEMS;
 	std::string DATA_DIR;
-#endif //YUR_CVS_MODS
 
-#ifdef JD_DEATH_LIST
 	size_t MAX_DEATH_ENTRIES;
-#endif //JD_DEATH_LIST
 
-#ifdef JD_WANDS
 	int64_t MANA_SNAKEBITE;
 	int64_t MANA_MOONLIGHT;
 	int64_t MANA_VOLCANIC;
@@ -183,12 +151,9 @@ public:
 	int RANGE_INFERNO;
 
 	double WAND_ML_FACTOR;
-#endif //JD_WANDS
 
-#ifdef YUR_BUILTIN_AAC
 	bool ACCMAKER;
 	bool ACCMAKER_ROOK;
-#endif //YUR_BUILTIN_AAC
 
   int OpenFile(const char* file);
   int getField (const char *key);

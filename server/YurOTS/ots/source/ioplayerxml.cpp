@@ -100,11 +100,7 @@ bool IOPlayerXML::loadPlayer(Player* player, std::string name){
 
 		nodeValue = (char*)xmlGetProp(root, (const xmlChar *) "exp");
 		if(nodeValue) {
-#ifdef YUR_HIGH_LEVELS
 			player->experience=_atoi64(nodeValue);
-#else
-			player->experience=atoi(nodeValue);
-#endif //YUR_HIGH_LEVELS
 			xmlFreeOTSERV(nodeValue);
 		}
 		else
@@ -149,7 +145,6 @@ bool IOPlayerXML::loadPlayer(Player* player, std::string name){
 		else
 			isLoaded = false;
 
-#ifdef YUR_PREMIUM_PROMOTION
 		nodeValue = (char*)xmlGetProp(root, (const xmlChar *) "premticks");
 		if(nodeValue) {
 			player->premiumTicks = atoi(nodeValue);
@@ -165,9 +160,7 @@ bool IOPlayerXML::loadPlayer(Player* player, std::string name){
 		}
 		else
 			isLoaded = false;
-#endif //YUR_PREMIUM_PROMOTION
 
-#ifdef TLM_SKULLS_PARTY
 		nodeValue = (char*)xmlGetProp(root, (const xmlChar *) "banned");
 		if(nodeValue) {
 			player->banned = (atoi(nodeValue) != 0);
@@ -175,7 +168,6 @@ bool IOPlayerXML::loadPlayer(Player* player, std::string name){
 		}
 		else
 			isLoaded = false;
-#endif //TLM_SKULLS_PARTY
 
 		nodeValue = (char*)xmlGetProp(root, (const xmlChar *) "cap");
 		if(nodeValue) {
@@ -359,7 +351,6 @@ bool IOPlayerXML::loadPlayer(Player* player, std::string name){
 				else
 					isLoaded = false;
 			}
-#ifdef TLM_SKULLS_PARTY
 			else if(str=="skull")
 			{
 				nodeValue = (char*)xmlGetProp(p, (const xmlChar *) "type");
@@ -394,44 +385,7 @@ bool IOPlayerXML::loadPlayer(Player* player, std::string name){
 				else
 					isLoaded = false;
 			}
-#endif //TLM_SKULLS_PARTY
 
-#ifdef CVS_GUILD_SYSTEM
-			else if(str=="guild")
-			{
-				nodeValue = (char*)xmlGetProp(p, (const xmlChar *) "name");
-				if(nodeValue) {
-					player->guildName=nodeValue;
-					xmlFreeOTSERV(nodeValue);
-				}
-				else
-					isLoaded = false;
-
-				nodeValue = (char*)xmlGetProp(p, (const xmlChar *) "rank");
-				if(nodeValue) {
-					player->guildRank=nodeValue;
-					xmlFreeOTSERV(nodeValue);
-				}
-				else
-					isLoaded = false;
-
-				nodeValue = (char*)xmlGetProp(p, (const xmlChar *) "nick");
-				if(nodeValue) {
-					player->guildNick=nodeValue;
-					xmlFreeOTSERV(nodeValue);
-				}
-				else
-					isLoaded = false;
-
-				nodeValue = (char*)xmlGetProp(p, (const xmlChar *) "id");
-				if(nodeValue) {
-					player->guildId=atoi(nodeValue);
-					xmlFreeOTSERV(nodeValue);
-				}
-				else
-					isLoaded = false;
-			}
-#endif //CVS_GUILD_SYSTEM
 
 			else if(str=="skills")
 			{
@@ -475,7 +429,6 @@ bool IOPlayerXML::loadPlayer(Player* player, std::string name){
 				}
 			}
 
-#ifdef YUR_LEARN_SPELLS
 			else if (str == "spells")
 			{
 				tmp = p->children;
@@ -494,9 +447,7 @@ bool IOPlayerXML::loadPlayer(Player* player, std::string name){
 					tmp = tmp->next;
 				}
 			}
-#endif //YUR_LEARN_SPELLS
 
-#ifdef JD_DEATH_LIST
 			else if (str == "deaths")
 			{
 				tmp = p->children;
@@ -532,7 +483,6 @@ bool IOPlayerXML::loadPlayer(Player* player, std::string name){
 					tmp=tmp->next;
 				}
 			}
-#endif //JD_DEATH_LIST
 
 			else if(str=="inventory")
 			{
@@ -571,9 +521,7 @@ bool IOPlayerXML::loadPlayer(Player* player, std::string name){
 					}
 					slot=slot->next;
 				}
-#ifdef YUR_BOH
 				player->checkBoh();
-#endif //YUR_BOH
 			}
 			else if(str=="depots")
 			{
@@ -649,23 +597,15 @@ bool IOPlayerXML::loadPlayer(Player* player, std::string name){
 
 		player->reconcileCapacity();
 		player->updateInventoryWeigth();
-#ifdef YUR_RINGS_AMULETS
 		player->syncEquippedRing();
-#endif //YUR_RINGS_AMULETS
 
 		std::cout << "loaded " << filename << std::endl;
 		xmlFreeDoc(doc);
 		xmlMutexUnlock(xmlmutex);
 
-#ifdef ELEM_VIP_LIST
 		if (!LoadVIP(player))
 			return false;
-#endif //ELEM_VIP_LIST
-#ifdef YUR_BUILTIN_AAC
 		return true;
-#else
-		return isLoaded;
-#endif //YUR_BUILTIN_AAC
 	}
 	xmlMutexUnlock(xmlmutex);
 	return false;
@@ -769,13 +709,9 @@ bool IOPlayerXML::savePlayer(Player* player){
 	sb << player->getSoul();          xmlSetProp(root, (const xmlChar*) "soul", (const xmlChar*)sb.str().c_str());      sb.str("");
 	sb << (long)player->lastlogin;	        xmlSetProp(root, (const xmlChar*) "lastlogin", (const xmlChar*)sb.str().c_str());  sb.str("");
 
-#ifdef YUR_PREMIUM_PROMOTION
 	sb << player->premiumTicks;  xmlSetProp(root, (const xmlChar*) "premticks", (const xmlChar*)sb.str().c_str()); sb.str("");
 	sb << player->promoted;  xmlSetProp(root, (const xmlChar*) "promoted", (const xmlChar*)sb.str().c_str()); sb.str("");
-#endif //YUR_PREMIUM_PROMOTION
-#ifdef TLM_SKULLS_PARTY
 	sb << player->banned;  xmlSetProp(root, (const xmlChar*) "banned", (const xmlChar*)sb.str().c_str()); sb.str("");
-#endif //TLM_SKULLS_PARTY
 
 	pn = xmlNewNode(NULL,(const xmlChar*)"spawn");
 	sb << player->pos.x;    xmlSetProp(pn, (const xmlChar*) "x", (const xmlChar*)sb.str().c_str());        sb.str("");
@@ -789,14 +725,12 @@ bool IOPlayerXML::savePlayer(Player* player){
 	sb << player->masterPos.z; 	xmlSetProp(pn, (const xmlChar*) "z", (const xmlChar*)sb.str().c_str());	       sb.str("");
 	xmlAddChild(root, pn);
 
-#ifdef TLM_SKULLS_PARTY
 	pn = xmlNewNode(NULL,(const xmlChar*)"skull");
 	sb << (int)player->skullType; xmlSetProp(pn, (const xmlChar*) "type", (const xmlChar*)sb.str().c_str()); sb.str("");
 	sb << player->skullKills; xmlSetProp(pn, (const xmlChar*) "kills", (const xmlChar*)sb.str().c_str()); sb.str("");
 	sb << player->skullTicks; xmlSetProp(pn, (const xmlChar*) "ticks", (const xmlChar*)sb.str().c_str()); sb.str("");
 	sb << player->absolveTicks; xmlSetProp(pn, (const xmlChar*) "absolve", (const xmlChar*)sb.str().c_str()); sb.str("");
 	xmlAddChild(root , pn);
-#endif //TLM_SKULLS_PARTY
 
 	pn = xmlNewNode(NULL,(const xmlChar*)"health");
 	sb << player->health;     xmlSetProp(pn, (const xmlChar*) "now", (const xmlChar*)sb.str().c_str());        sb.str("");
@@ -819,15 +753,6 @@ bool IOPlayerXML::savePlayer(Player* player){
 	sb << player->lookfeet;         xmlSetProp(pn, (const xmlChar*) "feet", (const xmlChar*)sb.str().c_str());        sb.str("");
 	xmlAddChild(root, pn);
 
-#ifdef CVS_GUILD_SYSTEM
-    	pn = xmlNewNode(NULL,(const xmlChar*)"guild");
-	sb << player->guildName;     xmlSetProp(pn, (const xmlChar*) "name", (const xmlChar*)sb.str().c_str());        sb.str("");
-	sb << player->guildRank;  xmlSetProp(pn, (const xmlChar*) "rank", (const xmlChar*)sb.str().c_str());        sb.str("");
-	sb << player->guildNick;  	  xmlSetProp(pn, (const xmlChar*) "nick", (const xmlChar*)sb.str().c_str());       sb.str("");
-	sb << player->guildId;  	  xmlSetProp(pn, (const xmlChar*) "id", (const xmlChar*)sb.str().c_str());       sb.str("");
-
-	xmlAddChild(root, pn);
-#endif //CVS_GUILD_SYSTEM
 
 	sn = xmlNewNode(NULL,(const xmlChar*)"skills");
 	for (int i = 0; i <= 6; i++)
@@ -840,7 +765,6 @@ bool IOPlayerXML::savePlayer(Player* player){
       }
    xmlAddChild(root, sn);
 
-#ifdef YUR_LEARN_SPELLS
 	sn = xmlNewNode(NULL,(const xmlChar*)"spells");
 	for (StringVector::iterator it = player->learnedSpells.begin(); it != player->learnedSpells.end(); ++it)
 	{
@@ -849,9 +773,7 @@ bool IOPlayerXML::savePlayer(Player* player){
 		xmlAddChild(sn, pn);
 	}
 	xmlAddChild(root, sn);
-#endif //YUR_LEARN_SPELLS
 
-#ifdef JD_DEATH_LIST
 	sn = xmlNewNode(NULL,(const xmlChar*)"deaths");
 	for (std::list<Death>::iterator it = player->deathList.begin(); it != player->deathList.end(); it++)
 	{
@@ -862,7 +784,6 @@ bool IOPlayerXML::savePlayer(Player* player){
 		xmlAddChild(sn, pn);
 	}
 	xmlAddChild(root, sn);
-#endif //JD_DEATH_LIST
 
 	sn = xmlNewNode(NULL,(const xmlChar*)"inventory");
 	for (int i = 1; i <= 10; i++)
@@ -929,11 +850,7 @@ bool IOPlayerXML::savePlayer(Player* player){
        #endif
        xmlFreeDoc(doc);
        xmlMutexUnlock(xmlmutex);
-#ifdef ELEM_VIP_LIST
 	   return SaveVIP(player);
-#else
-	   return true;
-#endif //ELEM_VIP_LIST
        }
     else
        {
@@ -945,7 +862,6 @@ bool IOPlayerXML::savePlayer(Player* player){
 }
 
 
-#ifdef ELEM_VIP_LIST
 bool IOPlayerXML::LoadVIP(Player* player)
 {
 	std::string datadir = g_config.getGlobalString("datadir");
@@ -1021,4 +937,3 @@ bool IOPlayerXML::SaveVIP(Player* player)
 		return false;
 	}
 }
-#endif //ELEM_VIP_LIST

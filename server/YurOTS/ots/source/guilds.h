@@ -17,7 +17,6 @@
 // along with this program; if not, write to the Free Software Foundation,
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
-#ifdef YUR_GUILD_SYSTEM
 
 #ifndef GUILDS_H
 #define GUILDS_H
@@ -86,4 +85,3 @@ public:
 
 #endif //GUILDS_H
 
-#endif //YUR_GUILD_SYSTEM

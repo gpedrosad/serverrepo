@@ -17,7 +17,6 @@
 // along with this program; if not, write to the Free Software Foundation,
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
-#ifdef YUR_BUILTIN_AAC
 
 #ifndef AAC_H
 #define AAC_H
@@ -34,4 +33,3 @@ public:
 
 #endif //AAC_H
 
-#endif //YUR_BUILTIN_AAC

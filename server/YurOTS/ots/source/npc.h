@@ -62,7 +62,6 @@ public:
 	static int luaCreatureGetPos(lua_State *L);
 	static int luaSelfGetPos(lua_State *L);
 
-#ifdef TLM_BUY_SELL
 	static int luaBuyItem(lua_State *L);
 	static int luaBuyFluidBackpack(lua_State *L);
 	static int luaBuyFluidQty(lua_State *L);
@@ -74,9 +73,7 @@ public:
 	static int luaSellBundle(lua_State *L);
 	static int luaCancelPendingTrade(lua_State *L);
 	static int luaPayMoney(lua_State *L);
-#endif
 
-#ifdef YUR_NPC_EXT
 	static int luaGetPlayerStorageValue(lua_State *L);
 	static int luaSetPlayerStorageValue(lua_State *L);
 	static int luaPlayerRemoveItem(lua_State *L);
@@ -103,9 +100,7 @@ public:
 	static int luaIsMonster(lua_State *L);
 	static int luaGetPlayerMana(lua_State *L);
 	static int luaDoPlayerAddMana(lua_State *L);
-#endif //YUR_NPC_EXT
 
-#ifdef YUR_GUILD_SYSTEM
 	static int luaFoundNewGuild(lua_State* L);
 	static int luaGetPlayerGuildStatus(lua_State* L);
 	static int luaSetPlayerGuildStatus(lua_State* L);
@@ -113,22 +108,15 @@ public:
 	static int luaSetPlayerGuild(lua_State* L);
 	static int luaClearPlayerGuild(lua_State* L);
 	static int luaSetPlayerGuildNick(lua_State* L);
-#endif //YUR_GUILD_SYSTEM
 
 	static int luaIsPzLocked(lua_State* L);
-#ifdef YUR_PREMIUM_PROMOTION
 	static int luaIsPremium(lua_State* L);
 	static int luaIsPromoted(lua_State* L);
-#endif //YUR_PREMIUM_PROMOTION
 
-#ifdef YUR_ROOKGARD
 	static int luaSetPlayerVocation(lua_State* L);
-#endif //YUR_ROOKGARD
 
-#ifdef YUR_LEARN_SPELLS
 	static int luaGetPlayerVocation(lua_State *L);
 	static int luaLearnSpell(lua_State* L);
-#endif //YUR_LEARN_SPELLS
 
 	bool isLoaded(){return loaded;}
 
@@ -197,11 +185,7 @@ protected:
 
 	virtual bool isAttackable() const { return false; };
 
-#ifdef YUR_CVS_MODS
 	virtual bool isPushable() const { return false; };
-#else
-	virtual bool isPushable() const { return true; };
-#endif //YUR_CVS_MODS
 
 	std::string name;
 	std::string scriptname;

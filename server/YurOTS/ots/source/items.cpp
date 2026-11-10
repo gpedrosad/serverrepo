@@ -52,26 +52,15 @@ ItemType::ItemType()
 	rotateTo		= 0;
 	hasHeight       = false;
 
-#ifdef YUR_CVS_MODS
 	floorChangeDown = false;
-#else
-	floorChangeDown = true;
-#endif //YUR_CVS_MODS
 	floorChangeNorth = false;
 	floorChangeSouth = false;
 	floorChangeEast = false;
 	floorChangeWest = false;
 
-#ifdef TLM_HOUSE_SYSTEM
 	isDoor = false;
-#endif //TLM_HOUSE_SYSTEM
-#ifdef YUR_RINGS_AMULETS
 	newCharges = 0;
 	newTime = 0;
-#endif //YUR_RINGS_AMULETS
-#ifdef TP_TRASH_BINS
-	isDeleter = false;
-#endif //TP_TRASH_BINS
 
 	blockSolid = false;
 	blockProjectile = false;
@@ -457,9 +446,7 @@ int Items::loadFromOtb(std::string file)
 							{
 								if(datalen != sizeof(double))
 									return ERROR_INVALID_FORMAT;
-#ifdef YUR_CONFIG_CAP
 								if (g_config.CAP_SYSTEM)
-#endif //YUR_CONFIG_CAP
 									memcpy(&iType->weight, p, sizeof(double));
 								break;
 							}
@@ -641,9 +628,7 @@ int Items::loadFromOtb(std::string file)
 								armorBlock2 ab2;
 								memcpy(&ab2, p, sizeof(armorBlock2));
 								iType->armor = ab2.armor;
-#ifdef YUR_CONFIG_CAP
 								if (g_config.CAP_SYSTEM)
-#endif //YUR_CONFIG_CAP
 									iType->weight = ab2.weight;
 								//ignore this value
 								//iType->slot_position = (slots_t)ab2.slot_position;
@@ -745,7 +730,6 @@ bool Items::loadXMLInfos(std::string file)
 			{
 				ItemType *itemtype = it->second;
 
-#ifdef YUR_ITEM_EXT
 				tmp = (char*)xmlGetProp(itemNode, (xmlChar*)"questbox");
 				if (tmp)
 				{
@@ -753,18 +737,14 @@ bool Items::loadXMLInfos(std::string file)
 					itemtype->moveable = false;
 					xmlFreeOTSERV(tmp);
 				}
-#endif //YUR_ITEM_EXT
 
-#ifdef TLM_HOUSE_SYSTEM
 				tmp = (char*)xmlGetProp(itemNode, (xmlChar*)"door");
 				if (tmp)
 				{
 					itemtype->isDoor = atoi(tmp)!=0;
 					xmlFreeOTSERV(tmp);
 				}
-#endif //TLM_HOUSE_SYSTEM
 
-#ifdef YUR_RINGS_AMULETS
 				tmp = (char*)xmlGetProp(itemNode, (xmlChar*)"charges");
 				if (tmp)
 				{
@@ -778,7 +758,6 @@ bool Items::loadXMLInfos(std::string file)
 					itemtype->newTime = atoi(tmp);
 					xmlFreeOTSERV(tmp);
 				}
-#endif //YUR_RINGS_AMULETS
 
 				tmp = (char*)xmlGetProp(itemNode, (xmlChar*)"weight");
 				if (tmp)

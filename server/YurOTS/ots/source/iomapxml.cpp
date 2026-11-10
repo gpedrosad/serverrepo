@@ -129,9 +129,7 @@ bool IOMapXML::loadMap(Map* map, std::string identifier){
 				
 				Item* myitem = Item::CreateItem(id);
 				myitem->unserialize(p);
-#ifdef YUR_CLEAN_MAP
 				myitem->decoration = true;
-#endif //YUR_CLEAN_MAP
 
 				Container *container = dynamic_cast<Container*>(myitem);
 				if(container){

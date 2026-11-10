@@ -49,10 +49,8 @@ class IOPlayerXML : protected IOPlayer{
 	  bool LoadContainer(xmlNodePtr item,Container* container);
   	  bool SaveContainer(xmlNodePtr item,Container* container);  
 
-#ifdef ELEM_VIP_LIST
 	bool LoadVIP(Player* player);
 	bool SaveVIP(Player* player);
-#endif //ELEM_VIP_LIST
 };
 
 #endif

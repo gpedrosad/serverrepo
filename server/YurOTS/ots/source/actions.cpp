@@ -267,7 +267,6 @@ bool Actions::UseItem(Player* player, const Position &pos,const unsigned char st
 		return false;
 	}
 
-#ifdef TLM_HOUSE_SYSTEM
 	if (Item::items[item->getID()].isDoor)
 	{
 		Tile* tile = game->getTile(pos);
@@ -279,7 +278,6 @@ bool Actions::UseItem(Player* player, const Position &pos,const unsigned char st
 			return false;
 		}
 	}
-#endif //TLM_HOUSE_SYSTEM
 
 	//look for the item in action maps
 	Action *action = getAction(item);
@@ -475,12 +473,7 @@ _player(NULL)
 	luaL_openlibs(luaState);
     lua_dofile(luaState, std::string(datadir + "actions/lib/actions.lua").c_str());
 
-#ifdef USING_VISUAL_2005
-	FILE* in = NULL;
-	fopen_s(&in, scriptname.c_str(), "r");
-#else
 	FILE* in=fopen(scriptname.c_str(), "r");
-#endif //USING_VISUAL_2005
 	if(!in){
 		std::cout << "Error: Can not open " << scriptname.c_str() << std::endl;
 		return;
@@ -739,23 +732,17 @@ int ActionScript::registerFunctions()
 	lua_register(luaState, "doPlayerSetVocation", ActionScript::luaActionDoPlayerSetVocation);
 	//doPlayerRemoveItem(cid,itemid,count)
 	lua_register(luaState, "doPlayerRemoveItem", ActionScript::luaActionDoPlayerRemoveItem);
-#ifdef YUR_PREMIUM_PROMOTION
 	lua_register(luaState, "doAccountAddPremiumTime", ActionScript::luaActionDoAccountAddPremiumTime);
-#endif //YUR_PREMIUM_PROMOTION
 
 	//doMoveItem(uid,toPos)
 	//doMovePlayer(cid,direction)
 
 	//doPlayerAddCondition(....)
 
-#ifdef YUR_ACT_EXT
 	lua_register(luaState, "getItemName", ActionScript::luaActionGetItemName);
-#endif //YUR_ACT_EXT
 
-#ifdef YUR_BOH
 	lua_register(luaState, "getPlayerSlotItem", ActionScript::luaActionGetPlayerSlotItem);
 	lua_register(luaState, "doPlayerCheckFeetSpeed", ActionScript::luaActionDoPlayerCheckFeetSpeed);
-#endif //YUR_BOH
 
 	return true;
 }
@@ -1311,7 +1298,6 @@ int ActionScript::luaActionDoPlayerAddExp(lua_State *L)
 	return 1;
 }
 
-#ifdef YUR_PREMIUM_PROMOTION
 int ActionScript::luaActionDoAccountAddPremiumTime(lua_State *L)
 {
 	//doAccountAddPremiumTime(cid,hours)
@@ -1334,7 +1320,6 @@ int ActionScript::luaActionDoAccountAddPremiumTime(lua_State *L)
 	lua_pushnumber(L, 0);
 	return 1;
 }
-#endif //YUR_PREMIUM_PROMOTION
 
 int ActionScript::luaActionDoPlayerAddMana(lua_State *L)
 {
@@ -1937,7 +1922,6 @@ int ActionScript::luaActionDoPlayerSetVocation(lua_State *L)
 	return 1;
 }
 
-#ifdef YUR_ACT_EXT
 int ActionScript::luaActionGetItemName(lua_State *L)
 {
 	//getItemName(id)
@@ -1945,9 +1929,7 @@ int ActionScript::luaActionGetItemName(lua_State *L)
 	lua_pushstring(L, Item::items[id].name.c_str());
 	return 1;
 }
-#endif //YUR_ACT_EXT
 
-#ifdef YUR_BOH
 int ActionScript::luaActionGetPlayerSlotItem(lua_State *L)
 {
 	int slot = (int)internalGetNumber(L);
@@ -1990,4 +1972,3 @@ int ActionScript::luaActionDoPlayerCheckFeetSpeed(lua_State *L)
 
 	return 0;
 }
-#endif //YUR_BOH

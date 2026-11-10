@@ -68,11 +68,8 @@ protected:
 	bool teleportNTiles(Creature* c, const std::string &cmd, const std::string &param);
 	bool kickPlayer(Creature* c, const std::string &cmd, const std::string &param);
 
-#ifdef TRS_GM_INVISIBLE
 	bool gmInvisible(Creature* c, const std::string &cmd, const std::string &param);
-#endif //TRS_GM_INVISIBLE
 
-#ifdef YUR_CMD_EXT
 	bool banCharacter(Creature* c, const std::string &cmd, const std::string &param);
 	bool goUp(Creature* c, const std::string &cmd, const std::string &param);
 	bool goDown(Creature* c, const std::string &cmd, const std::string &param);
@@ -86,34 +83,21 @@ protected:
 	bool showUptime(Creature* c, const std::string &cmd, const std::string &param);
 	bool showPz(Creature* c, const std::string &cmd, const std::string &param);
 	bool setMaxPlayers(Creature* c, const std::string &cmd, const std::string &param);
-#endif //YUR_CMD_EXT
 
-#ifdef TLM_HOUSE_SYSTEM
 	bool reloadRights(Creature* c, const std::string &cmd, const std::string &param);
 	bool setHouseOwner(Creature* c, const std::string &cmd, const std::string &param);
-#endif //TLM_HOUSE_SYSTEM
 
-#ifdef TLM_SKULLS_PARTY
 	bool showFrags(Creature* c, const std::string &cmd, const std::string &param);
-#endif //TLM_SKULLS_PARTY
 
-#ifdef TLM_SERVER_SAVE
 	bool forceServerSave(Creature* c, const std::string &cmd, const std::string &param);
-#endif //TLM_SERVER_SAVE
 
-#ifdef YUR_SHUTDOWN
 	bool shutdown(Creature* c, const std::string &cmd, const std::string &param);
-#endif //YUR_SHUTDOWN
 
-#ifdef YUR_CLEAN_MAP
 	bool cleanMap(Creature* c, const std::string &cmd, const std::string &param);
-#endif //YUR_CLEAN_MAP
 
-#ifdef YUR_PREMIUM_PROMOTION
 	bool promote(Creature* c, const std::string &cmd, const std::string &param);
 	bool premmy(Creature* c, const std::string &cmd, const std::string &param);
 	bool showPremmy(Creature* c, const std::string &cmd, const std::string &param);
-#endif //YUR_PREMIUM_PROMOTION
 
 	//table of commands
 	static s_defcommands defined_commands[];

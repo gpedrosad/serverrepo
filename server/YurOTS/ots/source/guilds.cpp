@@ -17,7 +17,6 @@
 // along with this program; if not, write to the Free Software Foundation,
 // Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //////////////////////////////////////////////////////////////////////
-#ifdef YUR_GUILD_SYSTEM
 #include "guilds.h"
 #include "player.h"
 #include "luascript.h"
@@ -331,4 +330,3 @@ void Guilds::ReloadGuildInfo(Player* player)
 
 	player->setGuildInfo(GUILD_NONE, 0, "", "", "");
 }
-#endif //YUR_GUILD_SYSTEM
