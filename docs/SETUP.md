@@ -84,8 +84,8 @@ make clean && make
 
 El binario queda en `/app/YurOTS/ots/source/yurots`.
 
-- Compila con `-O0 -g` (sin optimizar). Pasar a `-O2` está en la rama `build-cleanup`, pendiente
-  de probar en Docker i386.
+- Compila con `-O2 -g` (optimizado y con símbolos para leer crashes). Para depurar paso a paso:
+  `make clean && make OPT=-O0`.
 - El binario **no** está en git (`.gitignore`): `deploy-vps.sh` lo compila en cada deploy.
 - No hay opciones `-DYUR_*` / `-DTLM_*`: hasta nov 2026 eran 54 y todas estaban siempre activas;
   se fijaron en el código con `unifdef` y los bloques que nunca se compilaban (anti-AFK, SQL,

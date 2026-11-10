@@ -7,7 +7,11 @@ LUA_CFLAGS ?= $(shell pkg-config --cflags luajit 2>/dev/null || pkg-config --cfl
 LUA_LIBS   ?= $(shell pkg-config --libs luajit 2>/dev/null || pkg-config --libs lua5.1 2>/dev/null || echo -llua5.1)
 # Las 54 opciones -DYUR_*/TLM_*/... que iban acá estaban siempre activas: su código quedó fijo
 # con unifdef (nov 2026) y los bloques que nunca se activaban se borraron.
-CXXFLAGS = -g -O0 -std=gnu++14 -Wno-deprecated -fpermissive \
+# Optimizado (antes -O0, el modo de depurar). -g deja los símbolos para leer crashes con gdb y
+# addr2line; -fno-strict-aliasing evita que -O2 rompa código viejo que reinterpreta punteros.
+# Para depurar paso a paso: make OPT=-O0
+OPT     ?= -O2
+CXXFLAGS = -g $(OPT) -fno-strict-aliasing -std=gnu++14 -Wno-deprecated -fpermissive \
            -include linux_compat.h \
            -I/usr/include/libxml2 -I$(LOCAL_PREFIX)/include $(LUA_CFLAGS) \
            -D_atoi64=atoll \
