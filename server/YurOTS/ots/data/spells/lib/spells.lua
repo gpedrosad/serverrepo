@@ -69,6 +69,7 @@ NM_ANI_SUDDENDEATH = 10
 NM_ANI_LARGEROCK = 11
 NM_ANI_SNOWBALL = 12
 NM_ANI_POWERBOLT = 13
+NM_ANI_FLYPOISONFIELD = 14 -- bola verde voladora (campo de veneno); la usa el Drowned Sailor como algas
 NM_ANI_FROSTBALL = 15 -- nuevo (pack "ice")
 NM_ANI_ENCHANTED_SPEAR = 16 -- nuevo (proyectil de la enchanted spear)
 

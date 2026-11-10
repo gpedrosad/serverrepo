@@ -251,9 +251,11 @@ Se verificó leyendo los archivos resultantes con un parser independiente:
 
 **Script genérico:** `scripts/client-rme/add_recolor_look.py --preset NOMBRE [DIR_THINGS] [--preview x.png]`.
 Cada criatura nueva es un preset (base, looktype destino y función de paleta). Presets: `black-dragon` (230),
-`frost-dragon` (231, ver [`FROST_DRAGON.md`](FROST_DRAGON.md)) e `ice-monk` (232, desde el Monk 57, ver
-[`ICE_MONK.md`](ICE_MONK.md)). Sin `DIR_THINGS` solo genera la vista previa.
-Usados hasta ahora: **230 Black Dragon, 231 Frost Dragon, 232 Ice Monk**.
+`frost-dragon` (231, ver [`FROST_DRAGON.md`](FROST_DRAGON.md)), `ice-monk` (232, desde el Monk 57, ver
+[`ICE_MONK.md`](ICE_MONK.md)) y `drowned-sailor` (233, desde el Crypt Shambler 100, ver
+[`DROWNED_SAILOR.md`](DROWNED_SAILOR.md)). Sirve para criaturas 2×2 (48 sprites) y 1×1 (12 sprites).
+Sin `DIR_THINGS` solo genera la vista previa.
+Usados hasta ahora: **230 Black Dragon, 231 Frost Dragon, 232 Ice Monk, 233 Drowned Sailor**.
 
 Para un preset nuevo, lo que cambia es:
 
