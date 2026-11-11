@@ -83,6 +83,7 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 | Spells / runas (carga Lua, safeCast, Soulfire, Paralyze, Anchor) | `docs/gameplay/SPELL_RUNTIME.md` |
 | Whirlwind Throw (`exori hur`): lanzar el arma según skill y ataque | `docs/gameplay/SPELL_EXORI_HUR.md` |
 | Ethereal Spear (`exori con`): lanza etérea según skill de distancia | `docs/gameplay/SPELL_EXORI_CON.md` |
+| Hechizos nuevos nov 2026 (`exori ico`, `exori min`, `exura ico`, `exori san`, `exura san`, `utito tempo san`, `exori frigo`, `exevo gran mas frigo`) | `docs/gameplay/SPELLS_NOV2026.md` |
 | Energy Strike Hur (`exori vis hur`) target a distancia (Sorc/Druid, visual HMM) | `docs/gameplay/SPELL_EXORI_VIS_HUR.md` |
 | Challenge (`exeta res`) taunt Knight lock 6 s | `docs/gameplay/SPELL_EXETA_RES.md` |
 | Exhausted (spells/runas, ofensivo 2s / no-ofensivo 1s, bindings con exhaust) | `docs/gameplay/SPELL_EXHAUSTION.md` |

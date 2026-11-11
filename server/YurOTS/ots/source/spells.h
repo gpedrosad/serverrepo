@@ -146,6 +146,7 @@ public:
   static int luaActionGetAttackedCreaturePos(lua_State *L);
   static int luaActionGetPlayerSkill(lua_State *L);
   static int luaActionGetPlayerWeapon(lua_State *L);
+  static int luaActionGetCreatureDirection(lua_State *L);
   static int luaActionChangeOutfit(lua_State *L);
   static int luaActionManaShield(lua_State *L);
   static int luaActionChangeSpeed(lua_State *L);

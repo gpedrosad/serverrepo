@@ -103,6 +103,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/SPELL_EXORI_GRAN.md`](gameplay/SPELL_EXORI_GRAN.md) | Hechizo exori gran: balance, área, daño. |
 | [`gameplay/SPELL_EXORI_HUR.md`](gameplay/SPELL_EXORI_HUR.md) | **exori hur** (Whirlwind Throw, knight): lanza el arma de melee al blanco (rango 5); daño por nivel, skill y ataque del arma (fórmula TFS); proyectil según arma. Bindings `getPlayerWeapon` / `getPlayerSkill`. |
 | [`gameplay/SPELL_EXORI_CON.md`](gameplay/SPELL_EXORI_CON.md) | **exori con** (Ethereal Spear, paladin): lanza etérea al blanco (rango 7×5); daño por nivel y skill de distancia (fórmula TFS); proyectil de la Enchanted Spear. |
+| [`gameplay/SPELLS_NOV2026.md`](gameplay/SPELLS_NOV2026.md) | **8 hechizos de versiones nuevas adaptados a 7.6:** Brutal Strike, Front Sweep, Wound Cleansing (knight); Divine Missile, Divine Healing, Sharpshooter (paladin); Ice Strike, Eternal Winter (druid). Fórmulas, adaptaciones y `exeta res`. |
 | [`gameplay/SPELL_EXORI_VIS_HUR.md`](gameplay/SPELL_EXORI_VIS_HUR.md) | **exori vis hur**: Energy Strike a distancia (Sorc/Druid), visual HMM, rango 5; revert solo Lua+XML. |
 | [`gameplay/SPELL_EXETA_RES.md`](gameplay/SPELL_EXETA_RES.md) | **exeta res** (Challenge): taunt Knight 3×3, lock 6 s sin retarget/flee; binding `doChallenge` + rebuild C++. |
 | [`gameplay/TRAINING_BONUS_PARCHMENT.md`](gameplay/TRAINING_BONUS_PARCHMENT.md) | Sistema de pergaminos de bonus de training. |

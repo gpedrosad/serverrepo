@@ -370,6 +370,7 @@ int SpellScript::registerFunctions(){
 	lua_register(luaState, "getAttackedCreaturePos", SpellScript::luaActionGetAttackedCreaturePos);
 	lua_register(luaState, "getPlayerSkill", SpellScript::luaActionGetPlayerSkill);
 	lua_register(luaState, "getPlayerWeapon", SpellScript::luaActionGetPlayerWeapon);
+	lua_register(luaState, "getCreatureDirection", SpellScript::luaActionGetCreatureDirection);
 	lua_register(luaState, "getSpeed", SpellScript::luaActionGetSpeed);
 	lua_register(luaState, "changeSpeed", SpellScript::luaActionChangeSpeed);
 	lua_register(luaState, "changeSpeedMonster", SpellScript::luaActionChangeSpeedMonster);
@@ -1797,6 +1798,30 @@ int SpellScript::luaActionGetPlayerWeapon(lua_State *L)
 	lua_pushstring(L, "id");
 	lua_pushnumber(L, id);
 	lua_settable(L, -3);
+	return 1;
+}
+
+// getCreatureDirection(cid): hacia dónde mira la criatura: "n", "e", "s" o "w" ("" si no existe).
+// Lo usa exori min para armar el barrido de las 3 casillas de adelante: con needDirection el área no puede
+// repetir las esquinas entre dos direcciones.
+int SpellScript::luaActionGetCreatureDirection(lua_State *L)
+{
+	unsigned int cid = (unsigned int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	Creature* creature = spell ? spell->game->getCreatureByID(cid) : NULL;
+	const char* dir = "";
+	if(creature) {
+		switch(creature->getDirection()) {
+			case NORTH: dir = "n"; break;
+			case EAST: dir = "e"; break;
+			case SOUTH: dir = "s"; break;
+			case WEST: dir = "w"; break;
+			default: break;
+		}
+	}
+	lua_pushstring(L, dir);
 	return 1;
 }
 
