@@ -55,11 +55,43 @@ En el log tiene que aparecer `graceful shutdown complete`, `Loaded in …` (el m
 
 ## Cambios de C++
 
-Hay que compilar en la ThinkPad (Docker i386) y reiniciar. Coordinar con la sesión que tenga cambios de
-C++ sin commitear: el binario que corre puede ser de ellos.
+Se compila en la ThinkPad con la imagen del servidor (`serverrepo-yurots:latest`, sin `--platform`), en
+una **copia aparte** del código, así no se mezcla con lo que esté a medio hacer:
+
+```bash
+ssh thinkpad 'rm -rf ~/build/deploy-src && mkdir -p ~/build/deploy-src && \
+  rsync -a --exclude "*.o" --exclude yurots ~/apps/serverrepo/server/YurOTS/ots/source/ ~/build/deploy-src/ && \
+  cd ~/build/deploy-src && docker run --rm --entrypoint "" -v "$PWD":/src -w /src serverrepo-yurots:latest make -j4 yurots'
+```
+
+Para cambiar el binario: respaldarlo, `docker stop -t 45 yurots` (guarda a los conectados), copiarlo **con
+un contenedor** (el archivo es de `root`: un `cp` común da "Permiso denegado" y el servidor queda apagado) y
+`docker start yurots`:
+
+```bash
+docker run --rm --entrypoint "" -v ~/apps/serverrepo/server/YurOTS:/app/YurOTS -v ~/build/deploy-src:/new \
+  serverrepo-yurots:latest cp /new/yurots /app/YurOTS/ots/source/yurots
+```
+
+Si al compilar con `rsync` no cambia nada, `make` no recompila: los archivos copiados conservan la fecha. Hacer
+`touch` de los `.cpp` cambiados o compilar en una carpeta nueva.
+
+## Si `main` trae archivos que otra sesión tiene sin commitear
+
+Pasó el 2026-11-11 (`config.lua`, `game.cpp` y páginas de `web/dist`). Sin `stash` ni `reset --hard`:
+
+1. Respaldar en `~/backups/deploy-FECHA/`: `git diff --binary` de todo, el parche de los archivos en
+   conflicto, una copia (`tar`) de esos archivos y los datos de jugadores.
+2. `git checkout -- <solo esos archivos>`, `git merge --ff-only origin/main`.
+3. Volver a aplicar sus cambios de código con `git apply --3way <parche>` y `git reset -q` (solo saca del
+   índice; no toca archivos). Los generados (`web/dist`) se restauran tal cual desde la copia.
+4. Comprobar que no hay marcas de conflicto, que la lista de archivos con cambios es la misma de antes y
+   que su diff quedó idéntico. Si algo falla, restaurar desde la copia.
+5. Compilar como arriba: el binario lleva su C++ sin commitear y el de `main`.
 
 ## Historial
 
 | Fecha | Qué | Commit |
 |-------|-----|--------|
 | 2026-11-11 | Valle de las Bestias (reemplaza al Hunt Maze), barco (GM viajan a todo), Reloj de Arena chico con oleadas, Paso del Norte e Isla del Hielo compactados | `9d2ca0d` |
+| 2026-11-11 | Binario nuevo: `exori hur` / `exori con` de cero, 8 hechizos de versiones nuevas, Eco (`utevo vis`); sin VPS en el repo. Se combinó con el power hit sin commitear de otra sesión (respaldo en `~/backups/deploy-20261111-202201`) | `2d1d2b5` |
