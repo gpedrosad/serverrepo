@@ -498,6 +498,11 @@
 <action uniqueid="5004" script="pharaochest.lua" />
 <action uniqueid="5017" script="pharaochest.lua" />
 
+<!-- Hell Quest: Camara de la Eleccion (elegir uno) -->
+<action uniqueid="5100" script="hellchest.lua" />
+<action uniqueid="5101" script="hellchest.lua" />
+<action uniqueid="5102" script="hellchest.lua" />
+<action uniqueid="5103" script="hellchest.lua" />
 <action uniqueid="7000" script="annilever.lua" />
 <action uniqueid="7001" script="arenalever.lua" />
 

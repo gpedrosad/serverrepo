@@ -4,7 +4,7 @@ Laberinto **separado** (no es Alice Maze ni el gauntlet). Misma geometría 2 sqm
 
 | Sistema | Footprint | Acceso |
 |---------|-----------|--------|
-| **Alice Maze** (intacto) | X `380–433`, Y `18–103` | Barco `alice maze` → `413 103 7` |
+| ~~Alice Maze~~ → **Isla del Hielo Eterno** (nov 2026) | X `356–433`, Y `2–117`, z7–z9 | Barco `frozen isle` → `395 104 7` — ver [`MAPEAR_ISLA_HELADA.md`](MAPEAR_ISLA_HELADA.md) |
 | **Hunt Maze** (este doc) | X `280–349`, Y `243–400` | Portal plaza del templo `158,47,7` |
 | **Wave Arena** | X `174–180`, Y `386–392` | Portal plaza del templo `166,47,7` — ver [`../gameplay/WAVE_ARENA.md`](../gameplay/WAVE_ARENA.md) |
 | Gauntlet | ~`450+` | Barco `gauntlet` |
@@ -22,7 +22,7 @@ Laberinto **separado** (no es Alice Maze ni el gauntlet). Misma geometría 2 sqm
 | Celdas / seed | `18 × 40`, seed `230` |
 | Spawns | bloque `<!-- BEGIN HUNT_MAZE -->` |
 
-Alice Maze **no se regenera** con este script (hay assert anti-solape).
+Este script no toca la zona del ex Alice Maze, hoy Isla del Hielo Eterno (hay assert anti-solape).
 
 ---
 

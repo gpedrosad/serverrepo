@@ -43,7 +43,8 @@ los 17 items con uso real** (lógica en C++, loot, El Crisol o premium):
 | Armas raras de El Crisol | 20100, 20110, 20112, 20121, 20122, 20138, 20154 |
 | Efecto propio en C++ | 20105 medusa sword, 20139 sword of silence, 20130 windsting axe, 20114 fury cape, 20123 crimson wand, 20137 nightglass dagger |
 | Premium | 20131 experience recovery rune, 20132 training extension rune |
-| C++ sin forma de conseguirlos | 20113 crimson helmet, 20126 train wand (en el OTB se llama "violet sunstone" y es tipo anillo) |
+| Cofres de quest | 20113 crimson helmet y 20123 crimson wand: cofres de la guarida de la Isla del Hielo Eterno (antes, final del Alice Maze) |
+| Sin forma de conseguirlo | 20126 train wand (en el OTB se llama "violet sunstone" y es tipo anillo) |
 
 - Script: `scripts/client-rme/draw_zagan_items.py` (Pillow + numpy; en la Mac mini usar `python3.11`).
   Dibuja cada pieza a 4x con volumen y luz y la reduce a 32x32.

@@ -71,6 +71,8 @@
 <monster name="Furious Dragon Lord" file="furious dragon lord.xml" />
 <monster name="Enraged Dragon Lord" file="enraged dragon lord.xml" />
 <monster name="Black Dragon" file="black dragon.xml" />
+<monster name="Hellhound" file="hellhound.xml" />
+<monster name="Ashen Lord" file="ashen lord.xml" />
 <monster name="Frost Dragon" file="frost dragon.xml" />
 <monster name="Dwarf" file="dwarf.xml" />
 <monster name="Angry Dwarf" file="angry dwarf.xml" />

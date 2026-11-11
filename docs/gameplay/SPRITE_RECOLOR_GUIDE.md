@@ -40,7 +40,7 @@ solo dos veces por vuelta: la hoja y la escena. No hacen falta scripts sueltos n
 | Píxel | `(r, g, b, a)` con `a` 0 o 255. **No hay transparencia parcial** |
 | Índice del píxel | `y * w + x`, con `w` = 32 o 64 |
 | Perspectiva | La figura va inclinada en diagonal, con la cabeza arriba a la izquierda. Es normal |
-| Looktype máximo | 255 (viaja en un byte). Usados: 230 Black Dragon, 231 Frost Dragon, 232 Ice Monk, 233 Drowned Sailor, 234 Tide Priest, 235 Ice Spider, 236 Trainer Monk, 237 Mini Trainer Monk |
+| Looktype máximo | 255 (viaja en un byte). Usados: 230 Black Dragon, 231 Frost Dragon, 232 Ice Monk, 233 Drowned Sailor, 234 Tide Priest, 235 Ice Spider, 236 Trainer Monk, 237 Mini Trainer Monk, 238 Hellhound, 239 Ashen Lord |
 | Formas admitidas | Solo 1×1 y 2×2 con 4 direcciones y 3 cuadros. `looks --all` marca las demás como "otra" (Slime, Rotworm, Wasp, Fire Elemental…): no sirven de base |
 
 Ojo: algunas criaturas que parecen de una casilla están guardadas como 2×2 (el Monk, 57). `inspect` lo dice

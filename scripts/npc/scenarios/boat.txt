@@ -9,7 +9,7 @@ set 1001 voc 1
 say 1001 hi
 say 1001 epstein
 say 1001 hell
-say 1001 maze
+say 1001 frozen isle
 say 1001 yes
 say 1001 hi
 set 1001 pz 1

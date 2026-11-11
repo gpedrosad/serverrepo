@@ -76,6 +76,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/BLUE_ELF_ARCANIST.md`](gameplay/BLUE_ELF_ARCANIST.md) | Blue Elf Arcanist: variante cosmética azul del Elf Arcanist (looktype 63, paleta 33/106/68/124, sin cliente nuevo). |
 | [`gameplay/ICE_SPIDER.md`](gameplay/ICE_SPIDER.md) | Ice Spider: variante de hielo del Giant Spider, más fuerte (1800 HP, 1400 exp, ice ball + blizzard, looktype 235 recoloreado, requiere cliente nuevo). |
 | [`gameplay/CLIENT_EFFECTS.md`](gameplay/CLIENT_EFFECTS.md) | Efectos y proyectiles nuevos del cliente por recoloreo (pack "ice": `NM_ME_ICE_*`, `NM_ANI_FROSTBALL`), límites y cómo agregar packs. |
+| [`gameplay/HELL_QUEST.md`](gameplay/HELL_QUEST.md) | **Hell Quest** (Isla del Infierno): caza en 3 pisos, puertas de nivel 80/100, boss **Ashen Lord** y Cámara de la Elección (4 cofres, se elige uno); criatura nueva **Hellhound** (`generate-hell-quest.py`). |
 | [`gameplay/BOAT_TRAVEL.md`](gameplay/BOAT_TRAVEL.md) | Viajes de Nimral/Fargum: destinos (incl. Gauntlet), Hell Quest, confirmación y reglas de temple. |
 | [`gameplay/MOST_WANTED_SYSTEM.md`](gameplay/MOST_WANTED_SYSTEM.md) | Sistema de bounty / most wanted entre jugadores. |
 | [`gameplay/DAILY_TASK.md`](gameplay/DAILY_TASK.md) | **Daily Task (Huntmaster):** 3 contratos/día por rango de level, kills + oro o exp, streak. |
@@ -121,6 +122,7 @@ Importación de items, mapeo por código, items de prueba, sesiones de editor.
 | [`items-and-map/MAPEAR_PASO_DEL_NORTE.md`](items-and-map/MAPEAR_PASO_DEL_NORTE.md) | Paso del Norte: puerta norte, bosque, Tundra Helada, Cuevas del Dragón (z8) y Nido Negro (z9) con `generate-north-pass.py`. |
 | [`items-and-map/MAPA_DE_MONSTRUOS.md`](items-and-map/MAPA_DE_MONSTRUOS.md) | Mapa interactivo de todos los pisos con cada spawn, NPC y zona (`build-monster-map.py`). |
 | [`items-and-map/MAPEAR_LABERINTO.md`](items-and-map/MAPEAR_LABERINTO.md) | Laberinto procedural 2 sqm: camino 406, fondo 100 (pared), teleport al templo (`generate-maze.py`). |
+| [`items-and-map/MAPEAR_ISLA_HELADA.md`](items-and-map/MAPEAR_ISLA_HELADA.md) | **Isla del Hielo Eterno** (barco `frozen isle`, reemplaza al Alice Maze): sendero por etapas, grutas z8, guarida z9 con los cofres del crimson wand/helmet (`generate-frozen-isle.py`). |
 | [`items-and-map/MAPEAR_HUNT_MAZE.md`](items-and-map/MAPEAR_HUNT_MAZE.md) | Hunt maze **aparte** de Alice: portal plaza del templo `158,47,7`, retorno al llegar (`generate-hunt-maze.py`). |
 | [`gameplay/WAVE_ARENA.md`](gameplay/WAVE_ARENA.md) | Wave Arena: oleadas + ranking semanal, portal plaza del templo `166,47,7`. |
 | [`gameplay/CRUCIBLE.md`](gameplay/CRUCIBLE.md) | El Crisol v2: hub PZ + 3 arenas temáticas (Foso de Arena, Coliseo, Trono de Fuego), entrada en grupo por plataforma, arenas independientes, bosses diarios; portal plaza del templo `164,47,7`. Patrones de paredes y alfombra. |

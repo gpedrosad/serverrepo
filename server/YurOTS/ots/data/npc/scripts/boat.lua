@@ -9,9 +9,9 @@ EPSTEIN = 'Epstein Island' -- Rookgaard: solo para jugadores sin vocación
 TRAVELS = {
 	{keys = {'elfland', 'elf land'}, price = 20, dest = {111, 60, 6}, name = 'Elfland'},
 	{keys = {'epstein island', 'epstein'}, price = 20, dest = {85, 209, 7}, name = EPSTEIN},
-	{keys = {'hell quest', 'hell'}, price = 20, dest = {347, 168, 7}, name = 'Hell Quest'},
+	{keys = {'hell quest', 'hell'}, price = 20, dest = {345, 211, 7}, name = 'Hell Quest'},
 	{keys = {'dragon land'}, price = 50, dest = {121, 118, 7}, name = 'Dragon Land'},
-	{keys = {'alice maze', 'maze', 'laberinto'}, price = 20, dest = {413, 103, 7}, name = 'Alice Maze'},
+	{keys = {'frozen isle', 'frozen', 'isla helada', 'hielo'}, price = 20, dest = {395, 104, 7}, name = 'Frozen Isle'},
 	{keys = {'gauntlet'}, price = 20, dest = {452, 41, 7}, name = 'Gauntlet'},
 	{keys = {'city', 'the city'}, price = 20, dest = {172, 65, 7}, name = 'The City'},
 }

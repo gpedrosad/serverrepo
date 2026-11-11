@@ -89,6 +89,28 @@ El loader (`iomapotbm.cpp`) solo asigna `container->depot` cuando el OTBM trae e
 
 ---
 
+## Orientación y apoyo de los lockers (nov 2026)
+
+Los ids `2589`–`2592` son el mismo locker en sus 4 orientaciones; el frente es el lado de los
+herrajes: **2589 sur, 2590 oeste, 2591 norte, 2592 este**. El frente va hacia donde se para el
+jugador. El server abre como depot cualquiera de las 4.
+
+No apoyar el locker sobre un mostrador (`counter` 1617/1618): el mostrador tiene altura 8 en el
+cliente y el locker se dibuja corrido, "flotando". Los mostradores van entre los puestos.
+
+El mapa venía con los 11 lockers en `2589` sobre mostradores (de espaldas al jugador). Se corrigió con:
+
+```bash
+python3.11 scripts/map/fix-map-lockers.py server/YurOTS/ots/data/world/test.otbm          # ver qué cambia
+python3.11 scripts/map/fix-map-lockers.py server/YurOTS/ots/data/world/test.otbm --write  # aplicar
+```
+
+Elige la orientación según el lado caminable, saca el mostrador de abajo y deja el locker como
+item hijo con `depotid=1` explícito (ya no depende del fallback de `resolveMapDepotId()`).
+Re-correrlo no cambia nada. Sirve también después de editar lockers en RME.
+
+`scan-map-depots.py` salteaba un byte de más en cada item y nunca mostraba el depot id; corregido.
+
 ## Checklist obligatorio antes de deploy de mapa
 
 ```text

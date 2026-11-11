@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!-- Ashen Lord: boss de Hell Quest (Abismo, z9). Guarda la puerta de la Cámara de la Elección.
+     Demon de ceniza y magma: olas y bombas de fuego, drena maná e invoca Hellhounds. Para grupo.
+     Reaparece cada 2 h (spawntime en test-spawn.xml). Look 239: Demon (35) recoloreado, preset
+     ashen-lord de add_recolor_look.py. Ver docs/gameplay/HELL_QUEST.md. -->
+<monster name="Ashen Lord" level="80" maglevel="80" experience="18000" pushable="0" armor="55" defense="58" canpushitems="1" staticattack="200" changetarget="300" speed="280">
+	<health now="32000" max="32000"/>
+	<look type="239" head="0" body="0" legs="0" feet="0" corpse="2916"/>
+	<combat targetdistance="1" runonhealth="0"/>
+	<blood color="199" effect="0" splash="255"/>
+
+<attacks>
+	<attack type="melee" mindamage="220" maxdamage="560" cycleticks="1000" probability="90"/>
+	<attack type="instant" name="demondras_firewave" exhaustion="500" cycleticks="4500" probability="70"/>
+	<attack type="rune" name="dragonlord_firebomb" exhaustion="250" cycleticks="3000" probability="50"/>
+	<attack type="rune" name="great fireball" exhaustion="250" cycleticks="2500" probability="60"/>
+	<attack type="instant" name="demon_manadrain" exhaustion="100" cycleticks="3500" probability="35"/>
+	<attack type="instant" name="exura" cycleticks="6000" probability="40"/>
+</attacks>
+
+<defenses>
+	<defense immunity="fire"/>
+	<defense immunity="energy"/>
+	<defense immunity="poison"/>
+	<defense immunity="paralyze"/>
+	<defense immunity="invisible"/>
+	<defense immunity="drunk"/>
+</defenses>
+
+<voices>
+	<voice sentence="ALL WILL BURN TO ASH!"/>
+	<voice sentence="The chamber is not for you, mortal."/>
+	<voice sentence="I WAS FORGED IN THE FIRST FIRE!"/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
+	<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
+	<item id="2152" countmax="20" chance1="100000" chancemax="0"/>
+	<item id="2160" countmax="2" chance1="30000" chancemax="0"/>
+	<item id="2432" chance="5000"/>
+	<item id="2520" chance="2000"/>
+	<item id="2472" chance="1200"/>
+	<item id="2493" chance="1000"/>
+	<item id="2495" chance="1000"/>
+
+	<item id="1987" chance="100000">
+	<inside>
+	<item id="2146" countmax="5" chance1="25000" chancemax="0"/>
+	<item id="2147" countmax="5" chance1="25000" chancemax="0"/>
+	<item id="2392" chance="4000"/>
+	<item id="2185" chance="3000"/>
+	</inside>
+	</item>
+</loot>
+
+<summons maxSummons="2">
+	<summon name="Hellhound" chance="1500"/>
+</summons>
+
+</monster>

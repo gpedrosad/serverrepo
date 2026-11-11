@@ -25,4 +25,17 @@
 	<readable x="422" y="451" z="7" text="PASO DEL NORTE\nNorte: Tundra Helada y Cuevas del Dragon.\nPortal al sur: Retro76."/>
 	<readable x="433" y="409" z="7" text="Campamento de cazadores.\nDescansa junto al fuego."/>
 	<!-- END NORTH_PASS_SIGNS -->
+	<!-- BEGIN FROZEN_ISLE_SIGNS -->
+	<readable x="367" y="96" z="7" text="Aqui vivia un lenador.\nDejo algo para quien encontrara su escondite."/>
+	<readable x="395" y="15" z="7" text="GRUTAS DE ESCARCHA\nAranas de hielo y, en lo mas hondo, el dragon.\nNivel 80+."/>
+	<readable x="398" y="100" z="7" text="ISLA DEL HIELO ETERNO\nEl sendero sube al norte: Bosque Nevado, Lago Congelado,\nMonasterio de Escarcha y las Grutas."/>
+	<readable x="399" y="73" z="7" text="LAGO CONGELADO\nCruza por el paso de hielo. Al oeste, un islote:\ndicen que ahi vive un yeti."/>
+	<readable x="403" y="42" z="7" text="MONASTERIO DE ESCARCHA\nLos monjes de hielo no perdonan a los intrusos."/>
+	<!-- END FROZEN_ISLE_SIGNS -->
+	<!-- BEGIN HELL_QUEST_SIGNS -->
+	<readable x="316" y="158" z="7" text="FORTALEZA DEL CULTO\nLos brujos de fuego ya no rezan a nadie."/>
+	<readable x="349" y="207" z="7" text="ISLA DEL INFIERNO\nAl norte, el Cruce. Oeste: Campos de Ceniza.\nEste: Rios de Lava. Arriba: la Fortaleza y el Crater."/>
+	<readable x="350" y="181" z="7" text="EL CRUCE\nOeste: Campos de Ceniza. Este: Rios de Lava.\nNorte: Fortaleza del Culto y el Crater."/>
+	<readable x="362" y="150" z="7" text="LAS FAUCES DEL INFIERNO\nPuerta: nivel 80. Abajo cazan los perros del infierno.\nEn el Abismo, la puerta del Senor de la Ceniza pide nivel 100."/>
+	<!-- END HELL_QUEST_SIGNS -->
 </readables>

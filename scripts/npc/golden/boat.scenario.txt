@@ -447,55 +447,72 @@ say 1001 yes
 say 1001 dragon land all
 say 1001 no
 think
-say 1001 alice maze
+say 1001 frozen isle
 say 1001 yes
-say 1001 alice maze
+say 1001 frozen isle
 say 1001 no
-say 1001 5 alice maze
+say 1001 5 frozen isle
 say 1001 yes
-say 1001 5 alice maze
+say 1001 5 frozen isle
 say 1001 no
-say 1001 alice maze 100
+say 1001 frozen isle 100
 say 1001 yes
-say 1001 alice maze 100
+say 1001 frozen isle 100
 say 1001 no
-say 1001 alice maze all
+say 1001 frozen isle all
 say 1001 yes
-say 1001 alice maze all
-say 1001 no
-think
-say 1001 maze
-say 1001 yes
-say 1001 maze
-say 1001 no
-say 1001 5 maze
-say 1001 yes
-say 1001 5 maze
-say 1001 no
-say 1001 maze 100
-say 1001 yes
-say 1001 maze 100
-say 1001 no
-say 1001 maze all
-say 1001 yes
-say 1001 maze all
+say 1001 frozen isle all
 say 1001 no
 think
-say 1001 laberinto
+say 1001 frozen
 say 1001 yes
-say 1001 laberinto
+say 1001 frozen
 say 1001 no
-say 1001 5 laberinto
+say 1001 5 frozen
 say 1001 yes
-say 1001 5 laberinto
+say 1001 5 frozen
 say 1001 no
-say 1001 laberinto 100
+say 1001 frozen 100
 say 1001 yes
-say 1001 laberinto 100
+say 1001 frozen 100
 say 1001 no
-say 1001 laberinto all
+say 1001 frozen all
 say 1001 yes
-say 1001 laberinto all
+say 1001 frozen all
+say 1001 no
+think
+say 1001 isla helada
+say 1001 yes
+say 1001 isla helada
+say 1001 no
+say 1001 5 isla helada
+say 1001 yes
+say 1001 5 isla helada
+say 1001 no
+say 1001 isla helada 100
+say 1001 yes
+say 1001 isla helada 100
+say 1001 no
+say 1001 isla helada all
+say 1001 yes
+say 1001 isla helada all
+say 1001 no
+think
+say 1001 hielo
+say 1001 yes
+say 1001 hielo
+say 1001 no
+say 1001 5 hielo
+say 1001 yes
+say 1001 5 hielo
+say 1001 no
+say 1001 hielo 100
+say 1001 yes
+say 1001 hielo 100
+say 1001 no
+say 1001 hielo all
+say 1001 yes
+say 1001 hielo all
 say 1001 no
 think
 say 1001 gauntlet
@@ -564,40 +581,6 @@ say 1001 no
 say 1001 gp all
 say 1001 yes
 say 1001 gp all
-say 1001 no
-think
-say 1001 busy
-say 1001 yes
-say 1001 busy
-say 1001 no
-say 1001 5 busy
-say 1001 yes
-say 1001 5 busy
-say 1001 no
-say 1001 busy 100
-say 1001 yes
-say 1001 busy 100
-say 1001 no
-say 1001 busy all
-say 1001 yes
-say 1001 busy all
-say 1001 no
-think
-say 1001 bye
-say 1001 yes
-say 1001 bye
-say 1001 no
-say 1001 5 bye
-say 1001 yes
-say 1001 5 bye
-say 1001 no
-say 1001 bye 100
-say 1001 yes
-say 1001 bye 100
-say 1001 no
-say 1001 bye all
-say 1001 yes
-say 1001 bye all
 say 1001 no
 think
 say 1001 bye
@@ -628,11 +611,13 @@ say 1002 hell
 say 1002 yes
 say 1002 dragon land
 say 1002 yes
-say 1002 alice maze
+say 1002 frozen isle
 say 1002 yes
-say 1002 maze
+say 1002 frozen
 say 1002 yes
-say 1002 laberinto
+say 1002 isla helada
+say 1002 yes
+say 1002 hielo
 say 1002 yes
 say 1002 gauntlet
 say 1002 yes
@@ -642,9 +627,24 @@ say 1002 the city
 say 1002 yes
 say 1002 gp
 say 1002 yes
-say 1002 busy
-say 1002 yes
-say 1002 bye
-say 1002 yes
 say 1002 chau
 think 3
+# Barco: Rookgaard, cambio de destino en la confirmación, combate y "ya estás aquí"
+set 1001 voc 0
+say 1001 hi
+say 1001 city
+say 1001 epstein
+say 1001 yes
+say 1001 bye
+set 1001 voc 1
+say 1001 hi
+say 1001 epstein
+say 1001 hell
+say 1001 frozen isle
+say 1001 yes
+say 1001 hi
+set 1001 pz 1
+say 1001 gauntlet
+set 1001 pz 0
+pos 1001 452 43 7
+say 1001 gauntlet

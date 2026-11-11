@@ -23,9 +23,9 @@ Ambos usan el mismo script:
 |---------|--------|----------|------------|
 | Elfland | `20 gp` | `elfland`, `elf land` | `111 60 6` |
 | Epstein Island | `20 gp` | `epstein island`, `epstein` | `85 209 7` |
-| Hell Quest | `20 gp` | `hell quest`, `hell` | `347 168 7` |
+| Hell Quest | `20 gp` | `hell quest`, `hell` | `345 211 7` (Nimral en `348 210 7`) — ver [`HELL_QUEST.md`](HELL_QUEST.md) |
 | Dragon Land | `50 gp` | `dragon land` | `121 118 7` |
-| Alice Maze | `20 gp` | `alice maze`, `maze`, `laberinto` | `413 103 7` |
+| Frozen Isle | `20 gp` | `frozen isle`, `frozen`, `isla helada`, `hielo` | `395 104 7` (Nimral en `397 103 7`) — ver [`MAPEAR_ISLA_HELADA.md`](../items-and-map/MAPEAR_ISLA_HELADA.md). Reemplazó al Alice Maze en nov 2026 |
 | Gauntlet | `20 gp` | `gauntlet` | `452 41 7` |
 | The City | `20 gp` | `city`, `the city` | `172 65 7` |
 
@@ -40,25 +40,12 @@ Destino del gauntlet de teleports (ver [`MAPEAR_TP_GAUNTLET.md`](../items-and-ma
 
 ## Hell Quest
 
-El `Fargum` de City está en:
+Isla del Infierno (nov 2026), ver [`HELL_QUEST.md`](HELL_QUEST.md).
 
-- `172 66 7`
-
-El aterrizaje de City está al lado, un `sqm` al norte:
-
-- `172 65 7`
-
-(Hasta nov 2026 eran `171 66` y `171 65`, casillas con borde de agua que bloquea; igual Dragon Land `122 119`.)
-
-El `Nimral` de Hell Quest está en:
-
-- `346 168 7`
-
-El aterrizaje quedó un `sqm` a la derecha:
-
-- `347 168 7`
-
-Eso evita que el jugador caiga sobre el mismo tile del NPC.
+- Aterrizaje: `345 211 7`; el `Nimral` del puerto está en `348 210 7`.
+- El viaje no tiene requisito de level; la bajada a las Fauces pide **nivel 80** y la arena del boss
+  **nivel 100** (puertas de nivel en el mapa).
+- El `Fargum` de City está en `172 66 7` y el aterrizaje de City en `172 65 7`.
 
 ## Notas de implementación
 

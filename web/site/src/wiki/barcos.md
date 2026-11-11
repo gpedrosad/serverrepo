@@ -30,8 +30,8 @@ Si en la confirmación nombras otro destino, el barquero te pregunta por ese.
 | The City | 20 gp | `city` | Fargum (`172, 66, piso 7`) |
 | Elfland | 20 gp | `elfland` | Nimral (`111, 61, piso 6`) |
 | Dragon Land | 50 gp | `dragon land` | Nimral (`122, 117, piso 7`) |
-| Hell Quest | 20 gp | `hell` | Nimral (`346, 168, piso 7`) |
-| Alice Maze | 20 gp | `maze` o `laberinto` | Nimral (`413, 102, piso 7`) |
+| Hell Quest | 20 gp | `hell` | Nimral (`348, 210, piso 7`) |
+| Frozen Isle | 20 gp | `frozen isle`, `isla helada` o `hielo` | Nimral (`397, 103, piso 7`) |
 | Gauntlet | 20 gp | `gauntlet` | Nimral (`450, 41, piso 7`) |
 | Epstein Island | 20 gp | `epstein` | Nimral (`85, 210, piso 7`) |
 

@@ -189,7 +189,8 @@ def parse_item_node(reader: OTBMReader, node: int) -> tuple[int, int | None] | N
   item_id = ps.get_ushort()
   if item_id is None:
     return None
-  ps.get_uchar()  # count/subtype for stackables; harmless for lockers
+  # YurOTS (iomapotbm.cpp) solo lee un byte de cantidad en apilables, salpicaduras y
+  # recipientes de líquido; un locker va directo a sus atributos.
   depot_id = None
   while ps.remaining():
     attr = ps.get_uchar()
@@ -245,7 +246,6 @@ def scan_depots(otbm_path: Path) -> list[dict]:
                       break
                     if attr == OTBM_ATTR_ITEM:
                       iid = tps.get_ushort()
-                      tps.get_uchar()
                       if iid in LOCKER_IDS:
                         found.append({"x": x, "y": y, "z": z, "item": iid, "depotid": None})
                     elif attr == OTBM_ATTR_TILE_FLAGS:

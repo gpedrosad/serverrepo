@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!-- Hellhound: perro infernal de Hell Quest (Fauces del Infierno, z8). Caza en jauría: rápido, muerde
+     fuerte y escupe una ola corta de fuego. Entre Dragon y Dragon Lord.
+     Look 238: War Wolf (3) recoloreado, preset hellhound de add_recolor_look.py. Ver docs/gameplay/HELL_QUEST.md. -->
+<monster name="Hellhound" level="45" maglevel="40" experience="1300" pushable="0" armor="28" defense="30" canpushitems="1" staticattack="60" changetarget="220" speed="290">
+	<health now="1500" max="1500"/>
+	<look type="238" head="0" body="0" legs="0" feet="0" corpse="2969"/>
+	<combat targetdistance="1" runonhealth="0"/>
+
+<attacks>
+	<attack type="melee" mindamage="60" maxdamage="210" probability="100"/>
+	<attack type="instant" name="dragon_firewave" exhaustion="500" cycleticks="5000" probability="55"/>
+	<attack type="rune" name="soulfire" exhaustion="500" cycleticks="7000" probability="30"/>
+</attacks>
+
+<defenses>
+	<defense immunity="fire"/>
+	<defense immunity="drunk"/>
+</defenses>
+
+<voices>
+	<voice sentence="GRRRAAAWR!"/>
+	<voice sentence="*sniff* *sniff*"/>
+	<voice sentence="Awoooooo!"/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
+	<item id="2148" countmax="50" chance1="50000" chancemax="0"/>
+	<item id="2666" countmax="3" chance1="30000" chancemax="0"/>
+	<item id="2147" countmax="2" chance1="4000" chancemax="0"/>
+	<item id="2795" countmax="2" chance1="8000" chancemax="0"/>
+	<item id="2392" chance="500"/>
+</loot>
+</monster>

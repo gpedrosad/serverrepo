@@ -2,159 +2,159 @@
 >> near 1002
 >> say 1001 hello there
 >> say 1001 hi
-SAY Hi Player1001! I sail to Elfland (20gp), Epstein Island (20gp), Hell Quest (20gp), Dragon Land (50gp), Alice Maze (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
+SAY Hi Player1001! I sail to Elfland (20gp), Epstein Island (20gp), Hell Quest (20gp), Dragon Land (50gp), Frozen Isle (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
 >> say 1002 hi
 SAY One moment, Player1002!
 >> say 1001 help
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 help
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
 >> say 1001 help
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
 >> say 1001 5 help
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
 >> say 1001 5 help
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
 >> say 1001 help 100
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
 >> say 1001 help 100
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
 >> say 1001 help all
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
 >> say 1001 help all
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
 >> think
 >> say 1001 ayuda
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
 >> say 1001 ayuda
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
 >> say 1001 5 ayuda
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
 >> say 1001 5 ayuda
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
 >> say 1001 ayuda 100
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
 >> say 1001 ayuda 100
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
 >> say 1001 ayuda all
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
 >> say 1001 ayuda all
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
 >> think
 >> say 1001 offer
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
 >> say 1001 offer
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
 >> say 1001 5 offer
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
 >> say 1001 5 offer
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
 >> say 1001 offer 100
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
 >> say 1001 offer 100
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
 >> say 1001 offer all
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
 >> say 1001 offer all
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
 >> think
 >> say 1001 trade
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
 >> say 1001 trade
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
 >> say 1001 5 trade
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
 >> say 1001 5 trade
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
 >> say 1001 trade 100
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
 >> say 1001 trade 100
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
 >> say 1001 trade all
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
 >> say 1001 trade all
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
 >> think
 >> say 1001 list
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
 >> say 1001 list
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
 >> say 1001 5 list
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
 >> say 1001 5 list
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
 >> say 1001 list 100
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
 >> say 1001 list 100
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
 >> say 1001 list all
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
 >> say 1001 list all
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
 >> think
 >> say 1001 info
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
 >> say 1001 info
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
 >> say 1001 5 info
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
 >> say 1001 5 info
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
 >> say 1001 info 100
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
 >> say 1001 info 100
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
 >> say 1001 info all
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
 >> say 1001 info all
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Alice Maze: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
 >> think
 >> say 1001 job
@@ -506,55 +506,72 @@ CALL travelPlayerTo(1001, 111, 60, 6)
 >> say 1001 dragon land all
 >> say 1001 no
 >> think
->> say 1001 alice maze
+>> say 1001 frozen isle
 >> say 1001 yes
->> say 1001 alice maze
+>> say 1001 frozen isle
 >> say 1001 no
->> say 1001 5 alice maze
+>> say 1001 5 frozen isle
 >> say 1001 yes
->> say 1001 5 alice maze
+>> say 1001 5 frozen isle
 >> say 1001 no
->> say 1001 alice maze 100
+>> say 1001 frozen isle 100
 >> say 1001 yes
->> say 1001 alice maze 100
+>> say 1001 frozen isle 100
 >> say 1001 no
->> say 1001 alice maze all
+>> say 1001 frozen isle all
 >> say 1001 yes
->> say 1001 alice maze all
->> say 1001 no
->> think
->> say 1001 maze
->> say 1001 yes
->> say 1001 maze
->> say 1001 no
->> say 1001 5 maze
->> say 1001 yes
->> say 1001 5 maze
->> say 1001 no
->> say 1001 maze 100
->> say 1001 yes
->> say 1001 maze 100
->> say 1001 no
->> say 1001 maze all
->> say 1001 yes
->> say 1001 maze all
+>> say 1001 frozen isle all
 >> say 1001 no
 >> think
->> say 1001 laberinto
+>> say 1001 frozen
 >> say 1001 yes
->> say 1001 laberinto
+>> say 1001 frozen
 >> say 1001 no
->> say 1001 5 laberinto
+>> say 1001 5 frozen
 >> say 1001 yes
->> say 1001 5 laberinto
+>> say 1001 5 frozen
 >> say 1001 no
->> say 1001 laberinto 100
+>> say 1001 frozen 100
 >> say 1001 yes
->> say 1001 laberinto 100
+>> say 1001 frozen 100
 >> say 1001 no
->> say 1001 laberinto all
+>> say 1001 frozen all
 >> say 1001 yes
->> say 1001 laberinto all
+>> say 1001 frozen all
+>> say 1001 no
+>> think
+>> say 1001 isla helada
+>> say 1001 yes
+>> say 1001 isla helada
+>> say 1001 no
+>> say 1001 5 isla helada
+>> say 1001 yes
+>> say 1001 5 isla helada
+>> say 1001 no
+>> say 1001 isla helada 100
+>> say 1001 yes
+>> say 1001 isla helada 100
+>> say 1001 no
+>> say 1001 isla helada all
+>> say 1001 yes
+>> say 1001 isla helada all
+>> say 1001 no
+>> think
+>> say 1001 hielo
+>> say 1001 yes
+>> say 1001 hielo
+>> say 1001 no
+>> say 1001 5 hielo
+>> say 1001 yes
+>> say 1001 5 hielo
+>> say 1001 no
+>> say 1001 hielo 100
+>> say 1001 yes
+>> say 1001 hielo 100
+>> say 1001 no
+>> say 1001 hielo all
+>> say 1001 yes
+>> say 1001 hielo all
 >> say 1001 no
 >> think
 >> say 1001 gauntlet
@@ -623,63 +640,29 @@ CALL travelPlayerTo(1001, 111, 60, 6)
 >> say 1001 gp all
 >> say 1001 yes
 >> say 1001 gp all
->> say 1001 no
->> think
->> say 1001 busy
->> say 1001 yes
->> say 1001 busy
->> say 1001 no
->> say 1001 5 busy
->> say 1001 yes
->> say 1001 5 busy
->> say 1001 no
->> say 1001 busy 100
->> say 1001 yes
->> say 1001 busy 100
->> say 1001 no
->> say 1001 busy all
->> say 1001 yes
->> say 1001 busy all
->> say 1001 no
->> think
->> say 1001 bye
->> say 1001 yes
->> say 1001 bye
->> say 1001 no
->> say 1001 5 bye
->> say 1001 yes
->> say 1001 5 bye
->> say 1001 no
->> say 1001 bye 100
->> say 1001 yes
->> say 1001 bye 100
->> say 1001 no
->> say 1001 bye all
->> say 1001 yes
->> say 1001 bye all
 >> say 1001 no
 >> think
 >> say 1001 bye
 >> say 1001 hi
-SAY Hi Player1001! I sail to Elfland (20gp), Epstein Island (20gp), Hell Quest (20gp), Dragon Land (50gp), Alice Maze (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
+SAY Hi Player1001! I sail to Elfland (20gp), Epstein Island (20gp), Hell Quest (20gp), Dragon Land (50gp), Frozen Isle (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
 >> advance 40
 >> think
 CALL cancelPendingTrade(1001)
 SAY Next please...
 >> say 1001 hi
-SAY Hi Player1001! I sail to Elfland (20gp), Epstein Island (20gp), Hell Quest (20gp), Dragon Land (50gp), Alice Maze (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
+SAY Hi Player1001! I sail to Elfland (20gp), Epstein Island (20gp), Hell Quest (20gp), Dragon Land (50gp), Frozen Isle (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
 >> far 1001
 >> think
 CALL cancelPendingTrade(1001)
 SAY See you later!
 >> near 1001
 >> say 1001 hola
-SAY Hi Player1001! I sail to Elfland (20gp), Epstein Island (20gp), Hell Quest (20gp), Dragon Land (50gp), Alice Maze (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
+SAY Hi Player1001! I sail to Elfland (20gp), Epstein Island (20gp), Hell Quest (20gp), Dragon Land (50gp), Frozen Isle (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
 >> disappear 1001
 CALL cancelPendingTrade(1001)
 SAY See you later!
 >> say 1002 hi
-SAY Hi Player1002! I sail to Elfland (20gp), Epstein Island (20gp), Hell Quest (20gp), Dragon Land (50gp), Alice Maze (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
+SAY Hi Player1002! I sail to Elfland (20gp), Epstein Island (20gp), Hell Quest (20gp), Dragon Land (50gp), Frozen Isle (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
 >> set 1002 money 0
 >> set 1002 slots 0
 >> set 1002 level 1
@@ -738,28 +721,37 @@ CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 CALL pay(1002, 50)
 SAY Sorry, you need 50 gold for that trip.
->> say 1002 alice maze
+>> say 1002 frozen isle
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
-SAY A trip to Alice Maze costs 20gp. Ready to go? (yes or si)
+SAY A trip to Frozen Isle costs 20gp. Ready to go? (yes or si)
 >> say 1002 yes
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 CALL pay(1002, 20)
 SAY Sorry, you need 20 gold for that trip.
->> say 1002 maze
+>> say 1002 frozen
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
-SAY A trip to Alice Maze costs 20gp. Ready to go? (yes or si)
+SAY A trip to Frozen Isle costs 20gp. Ready to go? (yes or si)
 >> say 1002 yes
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 CALL pay(1002, 20)
 SAY Sorry, you need 20 gold for that trip.
->> say 1002 laberinto
+>> say 1002 isla helada
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
-SAY A trip to Alice Maze costs 20gp. Ready to go? (yes or si)
+SAY A trip to Frozen Isle costs 20gp. Ready to go? (yes or si)
+>> say 1002 yes
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
+CALL pay(1002, 20)
+SAY Sorry, you need 20 gold for that trip.
+>> say 1002 hielo
+CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
+SAY A trip to Frozen Isle costs 20gp. Ready to go? (yes or si)
 >> say 1002 yes
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
@@ -794,11 +786,58 @@ CALL pay(1002, 20)
 SAY Sorry, you need 20 gold for that trip.
 >> say 1002 gp
 >> say 1002 yes
->> say 1002 busy
->> say 1002 yes
->> say 1002 bye
+>> say 1002 chau
 CALL cancelPendingTrade(1002)
 SAY Bye, Player1002! Come back anytime.
->> say 1002 yes
->> say 1002 chau
 >> think 3
+>> set 1001 voc 0
+>> say 1001 hi
+SAY Hi Player1001! I sail to Elfland (20gp), Epstein Island (20gp), Hell Quest (20gp), Dragon Land (50gp), Frozen Isle (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
+>> say 1001 city
+CALL isPzLocked(1001)
+CALL getPlayerVocation(1001)
+SAY You cannot leave Epstein Island yet. Talk to the Oracle first.
+>> say 1001 epstein
+CALL isPzLocked(1001)
+CALL getPlayerVocation(1001)
+SAY A trip to Epstein Island costs 20gp. Ready to go? (yes or si)
+>> say 1001 yes
+CALL isPzLocked(1001)
+CALL getPlayerVocation(1001)
+CALL pay(1001, 20)
+CALL cancelPendingTrade(1001)
+SAY All aboard! Enjoy the trip!
+CALL travelPlayerTo(1001, 85, 209, 7)
+>> say 1001 bye
+>> set 1001 voc 1
+>> say 1001 hi
+SAY Hi Player1001! I sail to Elfland (20gp), Epstein Island (20gp), Hell Quest (20gp), Dragon Land (50gp), Frozen Isle (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
+>> say 1001 epstein
+CALL isPzLocked(1001)
+CALL getPlayerVocation(1001)
+SAY Only those without a vocation may sail to Epstein Island.
+>> say 1001 hell
+CALL isPzLocked(1001)
+CALL getPlayerVocation(1001)
+SAY A trip to Hell Quest costs 20gp. Ready to go? (yes or si)
+>> say 1001 frozen isle
+CALL isPzLocked(1001)
+CALL getPlayerVocation(1001)
+SAY A trip to Frozen Isle costs 20gp. Ready to go? (yes or si)
+>> say 1001 yes
+CALL isPzLocked(1001)
+CALL getPlayerVocation(1001)
+CALL pay(1001, 20)
+CALL cancelPendingTrade(1001)
+SAY All aboard! Enjoy the trip!
+CALL travelPlayerTo(1001, 395, 104, 7)
+>> say 1001 hi
+SAY Hi Player1001! I sail to Elfland (20gp), Epstein Island (20gp), Hell Quest (20gp), Dragon Land (50gp), Frozen Isle (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
+>> set 1001 pz 1
+>> say 1001 gauntlet
+CALL isPzLocked(1001)
+SAY You are in a fight! Calm down before you board.
+>> set 1001 pz 0
+>> pos 1001 452 43 7
+>> say 1001 gauntlet
+SAY You are already in Gauntlet.
