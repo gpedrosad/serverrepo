@@ -127,7 +127,7 @@ Importación de items, mapeo por código, items de prueba, sesiones de editor.
 | [`items-and-map/MAPEAR_VALLE_DE_LAS_BESTIAS.md`](items-and-map/MAPEAR_VALLE_DE_LAS_BESTIAS.md) | **Valle de las Bestias** (portal plaza del templo `158,47,7`, reemplazó al hunt maze): valle natural z7 (Minotauros, Cíclopes, Ruinas) + Catacumbas z8 + Abismo z9 hasta Demonios (`generate-beast-valley.py`). |
 | [`gameplay/WAVE_ARENA.md`](gameplay/WAVE_ARENA.md) | Wave Arena: oleadas + ranking semanal, portal plaza del templo `166,47,7`. |
 | [`gameplay/CRUCIBLE.md`](gameplay/CRUCIBLE.md) | El Crisol v2: hub PZ + 3 arenas temáticas (Foso de Arena, Coliseo, Trono de Fuego), entrada en grupo por plataforma, arenas independientes, bosses diarios; portal plaza del templo `164,47,7`. Patrones de paredes y alfombra. |
-| [`gameplay/SAND_CLOCK.md`](gameplay/SAND_CLOCK.md) | **Reloj de Arena:** sala compartida, fases globales 120 s, Chronos + countdown tipo trainers; portal plaza del templo `168,47,7`. |
+| [`gameplay/SAND_CLOCK.md`](gameplay/SAND_CLOCK.md) | **Reloj de Arena:** sala chica (11×9) compartida: descanso de 30 s y 6 oleadas de 60 s que suben de nivel, braseros que marcan la oleada, Chronos; portal plaza del templo `168,47,7`. |
 | [`items-and-map/MAPEAR_TP_GAUNTLET.md`](items-and-map/MAPEAR_TP_GAUNTLET.md) | Gauntlet: 40 salas 3×3 + sala final 3×3 (Wrath + demon armor, 1 TP); barco `gauntlet`. |
 | [`items-and-map/ISLAND_BANDS.md`](items-and-map/ISLAND_BANDS.md) | Cómo componer las bandas agua→shore→dirt→grass para que una isla no se vea con corte duro. Especificación de las 5 bandas y 7 reglas críticas. |
 | [`items-and-map/ZAGAN_TEST_ITEMS.md`](items-and-map/ZAGAN_TEST_ITEMS.md) | Items de prueba del entorno Zagan (dev/test). |

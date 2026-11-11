@@ -69,7 +69,7 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 | Escaleras / escaleras de mano / trampillas con click derecho | `docs/gameplay/STAIRS.md` |
 | El Crisol (puertas diarias + rares Zagan) | `docs/gameplay/CRUCIBLE.md` |
 | Wave Arena (oleadas + ranking) | `docs/gameplay/WAVE_ARENA.md` |
-| Reloj de Arena (sala compartida, fases 120 s) | `docs/gameplay/SAND_CLOCK.md` |
+| Reloj de Arena (sala compartida, descanso + 6 oleadas que suben de nivel) | `docs/gameplay/SAND_CLOCK.md` |
 | Portales del templo (plaza) | `docs/CAMBIAR-MAPA.md` + `scripts/map/temple-portals.py` |
 | Private Trainer Dummy | `docs/gameplay/PRIVATE_TRAINER_DUMMY.md` |
 | Monstruo custom (XML, hechizos propios, looktype nuevo) | `docs/gameplay/CUSTOM_MONSTER_WORKFLOW.md` |

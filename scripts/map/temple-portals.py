@@ -53,7 +53,7 @@ PORTALS = [
      [(70, 70, 195, 105, 0)]),
     ("wave", 166, (177, 394, 7), "WAVE ARENA\nOleadas. Palanca = next.\nRanking semanal",
      [(172, 384, 182, 396, 7)]),
-    ("reloj", 168, (338, 392, 6), "RELOJ DE ARENA\nSala compartida.\nFases cada 120 s",
+    ("reloj", 168, (338, 395, 6), "RELOJ DE ARENA\n6 oleadas que suben de nivel\nEntra en el descanso",
      [(328, 383, 348, 401, 6), (328, 383, 348, 401, 5)]),
 ]
 S_BEGIN, S_END = "<!-- BEGIN TEMPLE_PORTAL_SIGNS -->", "<!-- END TEMPLE_PORTAL_SIGNS -->"

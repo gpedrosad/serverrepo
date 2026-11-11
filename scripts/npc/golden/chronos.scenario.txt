@@ -473,3 +473,25 @@ far 1001
 far 1002
 advance 300
 think 5
+# Ciclo completo: descanso -> oleadas 1..6 -> descanso, con los jugadores dentro
+pos 1001 338 394 6
+pos 1002 337 394 6
+think 1
+advance 60
+think 1
+advance 60
+think 1
+advance 60
+think 1
+advance 60
+think 1
+advance 60
+think 1
+advance 60
+think 1
+advance 60
+think 1
+say 1001 bye
+say 1002 hi
+say 1002 oleada
+say 1002 reglas

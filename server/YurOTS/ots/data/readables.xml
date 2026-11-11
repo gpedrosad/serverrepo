@@ -9,14 +9,12 @@
 	<readable x="90" y="79" z="0" text="PUERTA DE ORO\nTrono de Fuego\nBoss diario + arma rara."/>
 	<readable x="77" y="87" z="0" text="EL CRISOL\nPalanca: bosses de hoy y arenas ocupadas.\nSalida al templo: TP sur."/>
 	<!-- END CRUCIBLE_SIGNS -->
-			<!-- BEGIN SAND_CLOCK_SIGNS -->
-	<!-- END SAND_CLOCK_SIGNS -->
 	<!-- BEGIN TEMPLE_PORTAL_SIGNS -->
 	<readable x="156" y="46" z="7" text="ISLA NATURAL\nCyclops arriba.\nCueva abajo (agujero)."/>
 	<readable x="158" y="46" z="7" text="VALLE DE LAS BESTIAS\nCaza mid-hard en 3 pisos\nDe Minotauros a Demonios"/>
 	<readable x="164" y="46" z="7" text="CRISOL\n3 puertas. Boss diario.\nBronce / Plata / Oro"/>
 	<readable x="166" y="46" z="7" text="WAVE ARENA\nOleadas. Palanca = next.\nRanking semanal"/>
-	<readable x="168" y="46" z="7" text="RELOJ DE ARENA\nSala compartida.\nFases cada 120 s"/>
+	<readable x="168" y="46" z="7" text="RELOJ DE ARENA\n6 oleadas que suben de nivel\nEntra en el descanso"/>
 	<!-- END TEMPLE_PORTAL_SIGNS -->
 	<!-- BEGIN NORTH_PASS_SIGNS -->
 	<readable x="187" y="13" z="7" text="PASO DEL NORTE\nBosque, Tundra Helada y Cuevas del Dragon.\nCuevas: nivel 60+."/>
@@ -45,4 +43,7 @@
 	<readable x="321" y="285" z="7" text="RUINAS ANTIGUAS\nNo todos los muertos descansan."/>
 	<readable x="322" y="254" z="7" text="Portal al templo."/>
 	<!-- END BEAST_VALLEY_SIGNS -->
+	<!-- BEGIN SAND_CLOCK_SIGNS -->
+	<readable x="339" y="396" z="6" text="RELOJ DE ARENA\nDescanso de 30 s y despues 6 oleadas de 60 s,\ncada una mas fuerte. Los braseros marcan la oleada.\nEntra en el descanso para empezar desde la 1.\nSalida: portal al sur."/>
+	<!-- END SAND_CLOCK_SIGNS -->
 </readables>
