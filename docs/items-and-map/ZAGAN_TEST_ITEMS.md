@@ -31,6 +31,33 @@ Cada item hereda slot/atributos del prototipo OTB duplicado (arma, escudo, casco
 - `server/YurOTS/ots/data/items/items-zagan-test.otb`
 - `server/YurOTS/ots/data/items/items-zagan-test.xml`
 
+## Sprites redibujados (nov 2026)
+
+Los sprites originales del pack se perdieron: `~/Downloads/Zagan+Square` no está en ninguna máquina,
+el `.dat` Zagan solo se repartía por el updater del VPS (dado de baja) y el cliente de
+`gpedrosad/clienteretro` nunca los tuvo (su `Tibia.dat` es el base). Se redibujaron de cero **solo
+los 17 items con uso real** (lógica en C++, loot, El Crisol o premium):
+
+| Grupo | Server ids |
+|-------|-----------|
+| Armas raras de El Crisol | 20100, 20110, 20112, 20121, 20122, 20138, 20154 |
+| Efecto propio en C++ | 20105 medusa sword, 20139 sword of silence, 20130 windsting axe, 20114 fury cape, 20123 crimson wand, 20137 nightglass dagger |
+| Premium | 20131 experience recovery rune, 20132 training extension rune |
+| C++ sin forma de conseguirlos | 20113 crimson helmet, 20126 train wand (en el OTB se llama "violet sunstone" y es tipo anillo) |
+
+- Script: `scripts/client-rme/draw_zagan_items.py` (Pillow + numpy; en la Mac mini usar `python3.11`).
+  Dibuja cada pieza a 4x con volumen y luz y la reduce a 32x32.
+- `--preview hoja.png` para mirarlos; `--apply devtools/rme/rme-client-760` los escribe en el
+  `Tibia.dat`/`Tibia.spr` canónico, en el client id que cada item ya tiene en `items-zagan-test.otb`
+  (el OTB no cambia), con los flags del `.dat` de un item vanilla del mismo tipo. Re-aplicar
+  reemplaza los sprites en el lugar (sprites 11259–11275).
+- Los íconos de las runas en la web (`web/assets/wiki/items/2013[12].png`,
+  `web/assets/premium/2013[12]-small*.png`) salen del mismo script.
+- Los otros 40 items Zagan no tienen uso (ni loot, ni NPC, ni lógica) y siguen mostrando el sprite
+  del item vanilla cuyo client id ocupan. Ocho están en la sala de exhibición del mapa
+  (x 142–146, y 47–55, z 6). Pendiente: sacarlos del OTB y del mapa.
+- Para que lo vean los jugadores falta publicar este `Tibia.dat`/`Tibia.spr` en el cliente de descarga.
+
 ## Aurora Blade — nueva (nov 2026)
 
 Espada 1H rápida pensada para el hueco entre la bright sword y las rares del Crisol.
