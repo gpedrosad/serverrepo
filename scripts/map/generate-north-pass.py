@@ -609,8 +609,15 @@ def rebuild_tile_props(tile, ground: int) -> bytearray:
     return out
 
 
+# Items apilables según items-zagan-test.otb: el server exige su byte de cantidad o no carga el mapa
+# (ver scripts/map/check-map-load.py). 2320 = calavera.
+NEEDS_COUNT = {2320}
+
+
 def item_node(iid: int, tele=None):
     props = bytearray(struct.pack("<H", iid))
+    if iid in NEEDS_COUNT:
+        props.append(1)
     if tele:
         props += bytes([ATTR_TELE_DEST]) + struct.pack("<HHB", *tele)
     return [T_ITEM, props, []]

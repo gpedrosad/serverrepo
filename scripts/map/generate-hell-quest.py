@@ -489,6 +489,8 @@ def new_tile(x, y, bx, by, items, uid=None, aid=None, tele=None):
     kids = []
     for i in items[1:]:
         p = bytearray(struct.pack("<H", i))
+        if i in FI.NEEDS_COUNT:                   # el server exige el byte de cantidad
+            p.append(1)
         if i == CHEST and uid is not None:
             p += bytes([FI.ATTR_UNIQUE_ID]) + struct.pack("<H", uid)
         if i == DOOR_H and aid is not None:

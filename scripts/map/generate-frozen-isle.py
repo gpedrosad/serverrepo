@@ -497,8 +497,15 @@ def spawn_xml(spawns) -> str:
 
 # --- OTBM ---------------------------------------------------------------------------------------
 
+# Items apilables según items-zagan-test.otb: el server exige su byte de cantidad o no carga el mapa
+# (ver scripts/map/check-map-load.py). 2320 = calavera.
+NEEDS_COUNT = {2320}
+
+
 def item_node(iid: int, uid=None, tele=None):
     props = bytearray(struct.pack("<H", iid))
+    if iid in NEEDS_COUNT:
+        props.append(1)
     if uid is not None:
         props += bytes([ATTR_UNIQUE_ID]) + struct.pack("<H", uid)
     if tele is not None:

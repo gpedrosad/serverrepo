@@ -48,6 +48,9 @@ TEMPLE_LANDING = (164, 48, 7)           # llegada del portal Crisol en la plaza
 NODE_START, NODE_END = _maze.NODE_START, _maze.NODE_END
 OTBM_TILE_AREA, OTBM_TILE, OTBM_ITEM = _maze.OTBM_TILE_AREA, _maze.OTBM_TILE, _maze.OTBM_ITEM
 ATTR_TILE_FLAGS, ATTR_UID, ATTR_TEXT, ATTR_TELE, ATTR_ITEM = 3, 5, 6, 8, 9
+# Items apilables según items-zagan-test.otb: el server exige su byte de cantidad o no carga el mapa
+# (ver scripts/map/check-map-load.py). 2320 = calavera.
+NEEDS_COUNT = {2320}
 TILE_PZ = 1
 
 TELEPORT, LEVER, SIGN = 1387, 1945, 1429
@@ -327,6 +330,8 @@ def patch_lua(meta: dict, write: bool) -> bool:
 # ---------------------------------------------------------------- OTBM
 def item_node(it: dict) -> bytes:
     props = struct.pack("<H", it["id"])
+    if it["id"] in NEEDS_COUNT:                   # el server exige el byte de cantidad
+        props += b"\x01"
     if it.get("uid"):
         props += struct.pack("<BH", ATTR_UID, it["uid"])
     if it.get("tele"):
