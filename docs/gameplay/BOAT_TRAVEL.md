@@ -66,6 +66,11 @@ Isla del Infierno (nov 2026), ver [`HELL_QUEST.md`](HELL_QUEST.md).
 ## Reglas (nov 2026)
 
 - Sin vocación (Rookgaard) solo se puede viajar a Epstein Island; con vocación, nunca a Epstein.
+- El saludo y `help` muestran solo los destinos que ese jugador puede tomar (un novato ve solo Epstein).
+- **Personal (GM):** los nombres que empiezan con `GM` (la web no deja crear jugadores así, ver
+  `web/data.py`) viajan a cualquier destino y gratis, aunque tengan vocación 0. Antes un GM con
+  vocación 0 quedaba tratado como novato: solo le ofrecía Epstein y le negaba el resto. Las NPC de
+  YurOTS no tienen `getPlayerAccess`, por eso se mira el nombre.
 - No se viaja en combate (`isPzLocked`).
 - "Ya estás aquí" si el destino está a 6 casillas o menos en el mismo piso.
 - Si en la confirmación se nombra otro destino, el barquero vuelve a preguntar por ese.
