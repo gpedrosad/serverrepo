@@ -9,7 +9,7 @@
 <attacks>
 	<attack type="instant" name="blackdragon_darkwave" exhaustion="500" cycleticks="6000" probability="80"/>
 	<attack type="instant" name="necro_lifedrain" exhaustion="500" cycleticks="5000" probability="60"/>
-	<attack type="rune" name="dragonlord_firebomb" exhaustion="500" cycleticks="8000" probability="25"/>
+	<attack type="rune" name="blackdragon_shadowball" exhaustion="500" cycleticks="8000" probability="25"/>
 	<attack type="instant" name="exura" exhaustion="500" cycleticks="6000" probability="60"/>
 	<attack type="melee" mindamage="80" maxdamage="240" probability="100"/>
 </attacks>

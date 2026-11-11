@@ -35,6 +35,8 @@ En el protocolo 7.6 el looktype viaja en **1 byte** (máximo 255). El 230 era un
 | Definición | `server/YurOTS/ots/data/monster/black dragon.xml` |
 | Registro | `server/YurOTS/ots/data/monster/monsters.xml` |
 | Aliento oscuro | `server/YurOTS/ots/data/spells/instant/blackdragon_darkwave.lua` + entrada en `spells.xml` |
+| Bola de sombra | `server/YurOTS/ots/data/spells/runes/blackdragon_shadowball.lua` + entrada en `spells.xml` (rune id 5040) |
+| Efectos | pack "shadow" del cliente ([`CLIENT_EFFECTS.md`](CLIENT_EFFECTS.md)) |
 | RME | `rme-extensions/yurots-creatures.xml` (tileset "YurOTS Custom") y `devtools/rme/rme-client-760/Tibia.{dat,spr}` |
 | Sprite | `scripts/client-rme/add_black_dragon_look.py` |
 
@@ -49,9 +51,9 @@ Comparado con Dragon Lord (1900 de vida, 2100 de experiencia):
 | Velocidad | 210 |
 | Armor / defense | 34 / 36 |
 | Melee | 80–240 |
-| `blackdragon_darkwave` | Abanico (misma forma que el aliento del Dragon Lord), lifedrain 170–290, cada 6 s, probabilidad 80 |
+| `blackdragon_darkwave` | Abanico (misma forma que el aliento del Dragon Lord), lifedrain 170–290, cada 6 s, probabilidad 80. Se ve con `NM_ME_SHADOW_AREA` e impacto `NM_ME_SHADOW_IMPACT` |
 | `necro_lifedrain` | Drenaje alrededor, 45–90 |
-| `dragonlord_firebomb` | Ocasional (probabilidad 25) |
+| `blackdragon_shadowball` | Bola de sombra (`NM_ANI_SHADOWBALL`) que estalla en 3x3 (`NM_ME_SHADOW_EXPLOSION`), lifedrain 60–120, cada 8 s, probabilidad 25. Reemplazó a la firebomb (no deja fuego) |
 | `exura` | Autocura |
 | Inmune a | fire, poison, invisible, drunk |
 | Loot | Similar al Dragon Lord, un poco más de oro y platinum, más small diamonds |

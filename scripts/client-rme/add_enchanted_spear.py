@@ -420,8 +420,8 @@ def main() -> int:
     counts, _fx, missiles = read_sections(dat)
     if counts[3] == MISSILE_ID:                       # 15 base + bola de hielo: falta la lanza
         missile_applied = False
-    elif counts[3] == MISSILE_ID + 1 and item_applied and missiles[MISSILE_ID]["ids"][2] == target["ids"][0]:
-        missile_applied = True                        # su NE comparte el sprite del ítem
+    elif counts[3] >= MISSILE_ID + 1 and item_applied and missiles[MISSILE_ID]["ids"][2] == target["ids"][0]:
+        missile_applied = True                        # su NE comparte el sprite del ítem (puede haber packs después)
     else:
         raise SystemExit(f"El .dat tiene {counts[3]} proyectiles; se esperaban {MISSILE_ID} "
                          "(aplicar antes add_recolor_effects.py --pack ice) o este proyectil ya aplicado.")
@@ -448,7 +448,8 @@ def main() -> int:
     m_entry = (b"\x15" + struct.pack("<HH", MISSILE_LIGHT_LEVEL, st["light"])      # luz en vuelo
                + dat[missiles[0]["start"]:missiles[0]["sprite_pos"]] + struct.pack("<9H", *m_ids))
     if missile_applied:
-        new_dat = dat[:missiles[MISSILE_ID]["start"]] + m_entry
+        # reemplaza solo esta entrada: los proyectiles de packs posteriores (ej. "shadow") quedan detrás
+        new_dat = dat[:missiles[MISSILE_ID]["start"]] + m_entry + dat[missiles[MISSILE_ID]["end"]:]
     else:
         new_dat = dat[:10] + struct.pack("<H", MISSILE_ID + 1) + dat[12:] + m_entry
     entry = entry_bytes(dat, things[SPEAR_CID], st["light"], ids[0])
@@ -458,10 +459,11 @@ def main() -> int:
     c2, fx2, mi2 = read_sections(new_dat)
     assert things2[TARGET_CID]["ids"] == [ids[0]] and is_applied(new_dat, things2[TARGET_CID])
     assert all(things2[c]["ids"] == things[c]["ids"] for c in things if c != TARGET_CID)
-    assert c2[:3] == counts[:3] and c2[3] == MISSILE_ID + 1
+    assert c2[:3] == counts[:3] and c2[3] == max(counts[3], MISSILE_ID + 1)
     assert [t["ids"] for t in fx2] == [t["ids"] for t in _fx]
     assert [t["ids"] for t in mi2[:MISSILE_ID]] == [t["ids"] for t in missiles[:MISSILE_ID]]
     assert mi2[MISSILE_ID]["ids"] == m_ids
+    assert [t["ids"] for t in mi2[MISSILE_ID + 1:]] == [t["ids"] for t in missiles[MISSILE_ID + 1:]]
     _n, off2 = read_spr(new_spr)
     clean = lambda f: [p if p[3] else (0, 0, 0, 0) for p in f]
     for sid, f in zip(ids, own):

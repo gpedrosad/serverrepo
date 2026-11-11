@@ -55,6 +55,11 @@ NM_ME_ICE_AREA = 25
 NM_ME_ICE_HIT = 26
 NM_ME_ICE_EXPLOSION = 27
 NM_ME_ICE_SHATTER = 28
+-- Pack "shadow" (después de ice y de la Enchanted Spear). Los usa el Black Dragon.
+NM_ME_SHADOW_AREA = 29
+NM_ME_SHADOW_HIT = 30
+NM_ME_SHADOW_EXPLOSION = 31
+NM_ME_SHADOW_IMPACT = 32
 
 NM_ANI_BOLT = 1
 NM_ANI_ARROW = 2
@@ -72,6 +77,7 @@ NM_ANI_POWERBOLT = 13
 NM_ANI_FLYPOISONFIELD = 14 -- bola verde voladora (campo de veneno); la usa el Drowned Sailor como algas
 NM_ANI_FROSTBALL = 15 -- nuevo (pack "ice")
 NM_ANI_ENCHANTED_SPEAR = 16 -- nuevo (proyectil de la enchanted spear)
+NM_ANI_SHADOWBALL = 17 -- nuevo (pack "shadow")
 
 -- only for internal use, dont send to client
 NM_ANI_NONE = 0

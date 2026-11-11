@@ -13,12 +13,19 @@ Pack "ice" (constantes Lua en data/spells/lib/spells.lua):
   NM_ME_ICE_SHATTER    28  <- explosión de daño (NM_ME_EXPLOSION_DAMAGE)
   NM_ANI_FROSTBALL     15  <- bola de fuego (NM_ANI_FIRE)
 
+Pack "shadow" (va después de "ice" y de la Enchanted Spear, que es el proyectil 16):
+  NM_ME_SHADOW_AREA       29  <- fuego en área
+  NM_ME_SHADOW_HIT        30  <- llamarada
+  NM_ME_SHADOW_EXPLOSION  31  <- explosión en área
+  NM_ME_SHADOW_IMPACT     32  <- explosión de daño
+  NM_ANI_SHADOWBALL       17  <- bola de fuego
+
 Uso:
   python3 scripts/client-rme/add_recolor_effects.py --pack ice --preview x.png      # solo vista previa
   python3 scripts/client-rme/add_recolor_effects.py --pack ice DIR_THINGS           # aplica
 
 Idempotente: si el .dat ya tiene los contadores del pack aplicado, no cambia nada. Los packs se
-aplican en orden (los números de constante dependen de eso); hoy existe solo "ice".
+aplican en orden (los números de constante dependen de eso): ice -> add_enchanted_spear.py -> shadow.
 Ver docs/gameplay/CLIENT_EFFECTS.md.
 """
 from __future__ import annotations
@@ -36,7 +43,6 @@ sys.path.insert(0, str(HERE))
 from add_black_dragon_look import _read_thing, _skip_attr, decode_sprite, encode_sprite, read_spr, write_spr  # noqa: E402
 
 RME_THINGS = HERE.parents[1] / "devtools/rme/rme-client-760"
-BASE_EFFECTS, BASE_MISSILES = 25, 15
 
 
 def gradient(stops, k):
@@ -63,15 +69,39 @@ def recolor_ice(p):
     return gradient(ICE, lum ** 0.8 * 1.15) + (255,)
 
 
-# (sección, número de cliente de origen, constante nueva, función)
+SHADOW = [(0, (4, 0, 8)), (0.3, (26, 4, 44)), (0.55, (84, 18, 132)), (0.8, (196, 64, 226)), (1, (255, 205, 255))]
+
+
+def recolor_shadow(p):
+    """Fuego -> sombra: rojo oscuro = casi negro violeta, naranja = morado, amarillo = magenta claro."""
+    r, g, b, a = p
+    if a == 0:
+        return p
+    _h, s, _v = colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
+    lum = (0.30 * r + 0.59 * g + 0.11 * b) / 255
+    if s < 0.25:                               # grises (humo, chispas): gris violáceo oscuro
+        return (int(r * 0.45) + 8, int(g * 0.35), min(255, int(b * 0.6) + 18), 255)
+    return gradient(SHADOW, lum ** 1.1 * 1.08) + (255,)
+
+
+# base = (efectos, proyectiles) que tiene que tener el .dat antes del pack.
+# (número de cliente de origen, constante nueva, función) por sección.
 PACKS = {
     "ice": {
+        "base": (25, 15),
         # color de luz (paleta 6x6x6: r*36 + g*6 + b): celeste frío. Los originales de fuego
         # traen luz naranja (206/208); sin esto el hielo "brillaba" naranja.
         "light": 3 * 36 + 4 * 6 + 5,
         "effects": [(7, "NM_ME_ICE_AREA", recolor_ice), (16, "NM_ME_ICE_HIT", recolor_ice),
                     (5, "NM_ME_ICE_EXPLOSION", recolor_ice), (6, "NM_ME_ICE_SHATTER", recolor_ice)],
         "missiles": [(4, "NM_ANI_FROSTBALL", recolor_ice)],
+    },
+    "shadow": {
+        "base": (29, 17),                      # ice (25-28, 15) + Enchanted Spear (16)
+        "light": 3 * 36 + 1 * 6 + 5,           # violeta
+        "effects": [(7, "NM_ME_SHADOW_AREA", recolor_shadow), (16, "NM_ME_SHADOW_HIT", recolor_shadow),
+                    (5, "NM_ME_SHADOW_EXPLOSION", recolor_shadow), (6, "NM_ME_SHADOW_IMPACT", recolor_shadow)],
+        "missiles": [(4, "NM_ANI_SHADOWBALL", recolor_shadow)],
     },
 }
 
@@ -137,7 +167,7 @@ def write_preview(path: Path, pairs: list[tuple[str, list, list]], scale: int = 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("things_dir", type=Path, nargs="?")
-    ap.add_argument("--pack", choices=sorted(PACKS), required=True)
+    ap.add_argument("--pack", choices=list(PACKS), required=True)
     ap.add_argument("--preview", type=Path)
     a = ap.parse_args()
     pack = PACKS[a.pack]
@@ -146,13 +176,15 @@ def main() -> int:
     dat_path, spr_path = src / "Tibia.dat", src / "Tibia.spr"
     dat, spr = dat_path.read_bytes(), spr_path.read_bytes()
     counts, fx, mi = read_sections(dat)
+    BASE_EFFECTS, BASE_MISSILES = pack["base"]
     want_fx, want_mi = BASE_EFFECTS + len(pack["effects"]), BASE_MISSILES + len(pack["missiles"])
     if counts[2] >= want_fx and counts[3] >= want_mi:      # puede haber más después (ej. enchanted spear)
         applied = True
     elif (counts[2], counts[3]) == (BASE_EFFECTS, BASE_MISSILES):
         applied = False
     else:
-        raise SystemExit(f"Contadores inesperados efectos={counts[2]} proyectiles={counts[3]}")
+        raise SystemExit(f"Contadores inesperados efectos={counts[2]} proyectiles={counts[3]}; el pack "
+                         f"'{a.pack}' se aplica sobre {BASE_EFFECTS}/{BASE_MISSILES} (ver el orden arriba)")
     spr_count, offsets = read_spr(spr)
 
     # sprites recoloreados de cada recurso nuevo

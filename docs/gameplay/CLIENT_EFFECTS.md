@@ -36,6 +36,25 @@ hitEffect = NM_ME_ICE_SHATTER
 animationEffect = NM_ANI_FROSTBALL   -- en runas / ataques a distancia
 ```
 
+## Pack "shadow" (nov 2026)
+
+![Pack shadow: original arriba, recoloreado abajo](img/shadow-effects.png)
+
+| Constante Lua | Número | Sale de | Uso |
+|---------------|-------:|---------|-----|
+| `NM_ME_SHADOW_AREA` | 29 | `NM_ME_FIRE_AREA` (6) | Aliento oscuro del [Black Dragon](BLACK_DRAGON.md) |
+| `NM_ME_SHADOW_HIT` | 30 | `NM_ME_HITBY_FIRE` (15) | Llamarada oscura (sin uso todavía) |
+| `NM_ME_SHADOW_EXPLOSION` | 31 | `NM_ME_EXPLOSION_AREA` (4) | Estallido de la bola de sombra |
+| `NM_ME_SHADOW_IMPACT` | 32 | `NM_ME_EXPLOSION_DAMAGE` (5) | Impacto sobre la criatura golpeada |
+| `NM_ANI_SHADOWBALL` | 17 | `NM_ANI_FIRE` (3) | Proyectil: bola de sombra (8 direcciones) |
+
+Paleta: el fuego se mapea por luminosidad a sombra (rojo oscuro → casi negro violeta, naranja → morado,
+amarillo → magenta claro); los grises reciben un tinte violeta oscuro. Luz violeta (color **119**).
+Se eligió frente a una variante morada más clara porque se lee como oscuridad y no se confunde con el hielo
+ni con la energía azul. En suelos muy oscuros los bordes se pierden; el centro magenta se sigue viendo.
+
+Va **después** de "ice" y de la Enchanted Spear (por eso el proyectil es el 17).
+
 ## Otros proyectiles agregados
 
 | Constante | Número | Script | Qué es |
@@ -47,6 +66,8 @@ animationEffect = NM_ANI_FROSTBALL   -- en runas / ataques a distancia
 ```bash
 python3 scripts/client-rme/add_recolor_effects.py --pack ice --preview /tmp/ice.png       # solo vista previa
 python3 scripts/client-rme/add_recolor_effects.py --pack ice devtools/rme/rme-client-760  # aplica (idempotente)
+python3 scripts/client-rme/add_enchanted_spear.py devtools/rme/rme-client-760
+python3 scripts/client-rme/add_recolor_effects.py --pack shadow devtools/rme/rme-client-760
 ```
 
 El script agrega las entradas al final de la sección de efectos y al final del `.dat` (proyectiles), sube
@@ -54,16 +75,18 @@ los contadores del encabezado y agrega los sprites al final del `.spr`. Verifica
 sobre el cliente del RME: contadores 25/15 → 29/16, los 25 efectos y 15 proyectiles viejos idénticos,
 looktypes (incluido el 231) e ítems sin cambios, 400 sprites viejos al azar idénticos, sprites 11058 → 11094.
 
-**Los packs se aplican en orden** (el número de cada constante depende de cuántos efectos había). Para un
-pack nuevo (ej. sagrado, sombra), agregarlo a `PACKS` en el script **después** de "ice" y continuar la
-numeración: efectos desde 29, proyectiles desde **17** (el 16 es la Enchanted Spear).
+**Los packs se aplican en orden** (el número de cada constante depende de cuántos efectos había):
+ice → Enchanted Spear → shadow. Cada pack de `PACKS` declara en `base` los contadores sobre los que se aplica.
+Para uno nuevo (ej. sagrado), agregarlo al final con `base: (33, 18)`: efectos desde **33**, proyectiles desde
+**18**. Volver a correr la Enchanted Spear con packs posteriores ya aplicados conserva sus proyectiles.
 
 ## Antes de usarlos en producción
 
 1. **Probar en los dos clientes** que el efecto nuevo se ve: OTClientV8 (Mac) y el cliente oficial 7.6
    parcheado (Windows). Ambos leen los contadores del `.dat`, pero no se probó todavía en el juego.
-   Prueba rápida con un GM (access 1+): **`/z 25`**, `/z 26`, `/z 27`, `/z 28` muestran cada efecto nuevo sobre
-   el personaje (`Commands::testCommand`). Para el proyectil: `/m Frost Dragon` y dejar que tire la bola de hielo.
+   Prueba rápida con un GM (access 1+): **`/z 25`** … `/z 32` muestran cada efecto nuevo sobre
+   el personaje (`Commands::testCommand`). Para los proyectiles: `/m Frost Dragon` (bola de hielo) y
+   `/m Black Dragon` (bola de sombra).
    Con un cliente **viejo**, probar también `/z 25` para ver qué le pasa a quien no actualizó.
 2. Aplicar el pack a la base del cliente de jugadores y regenerar el pack Zagan
    (`build_zagan_test_assets.py` copia los contadores de efectos y proyectiles de la base).
