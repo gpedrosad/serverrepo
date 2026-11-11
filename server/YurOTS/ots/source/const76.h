@@ -347,6 +347,7 @@ enum bloodsplash_t
 #define STORMCALLER_ATTACK_DELAY_MS 1000
 #define BLOODREAVER_ATTACK_DELAY_MS 1200
 #define AURORA_BLADE_ATTACK_DELAY_MS 1250
+#define AURORA_AXE_ATTACK_DELAY_MS 1250
 #define NIGHTGLASS_FIRST_HIT_FASTER_PERCENT 6   /* solo el primer golpe al apuntar */
 #define SPEAR_HIT_CHANCE 70           /* thrown spear (era 50 genérico) */
 #define CRYSTAL_ARROW_HIT_CHANCE 85   /* crystal arrow: menos miss que spear */

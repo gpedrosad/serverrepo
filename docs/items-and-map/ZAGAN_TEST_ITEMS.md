@@ -46,6 +46,22 @@ Espada 1H rápida pensada para el hueco entre la bright sword y las rares del Cr
 
 **Pendiente:** correr `./scripts/install-zagan-test-env.sh` en la máquina con el pack Zagan para generar el OTB/DAT/SPR y probar in-game. El 32×32 vive en `devtools/zagan-test/custom-sprites/` (esa carpeta está gitignoreada; el PNG se agregó con `git add -f`).
 
+## Aurora Axe — nueva (nov 2026)
+
+Hacha 1H rápida que completa el set Aurora junto a la Blade y el Shield.
+
+| Dato | Valor |
+|------|-------|
+| Prototipo | knight axe `2430` (atk 33 / def 21, 1H) |
+| Velocidad | **1250 ms** por golpe (default `PLAYER_ATTACK_DELAY_MS` = 1333 ms; ~6 % más rápida) |
+| Sprite | `zagan-test/custom-sprites/aurora_axe.png` (32×32, PNG con alpha) |
+| Preview | `docs/items-and-map/img/aurora-axe.png` |
+| Builder | entrada `aurora_axe.png` en `CUSTOM_ITEM_DEFS` |
+| C++ | `AURORA_AXE_ATTACK_DELAY_MS 1250` en `const76.h`; `Player::getAttackDelayMs()` la detecta por nombre. Las gemas ruby siguen reduciendo el delay. |
+| Set | Aurora Blade + Aurora Axe + Aurora Shield |
+
+**Pendiente:** mismo build que la Aurora Blade: correr `./scripts/install-zagan-test-env.sh` en la máquina con el pack Zagan y probar in-game. El 32×32 está en `devtools/zagan-test/custom-sprites/` (gitignoreado; agregado con `git add -f`).
+
 ## Aurora Shield — nueva (nov 2026)
 
 Escudo kite que completa el set visual de la Aurora Blade.

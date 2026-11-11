@@ -238,6 +238,18 @@ ITEM_GAMEPLAY_SPECS: dict[str, dict[str, object]] = {
         "slot": "shield",
         "set": "aurora",
     },
+    "aurora axe": {
+        "attack": 33,
+        "defence": 21,
+        "weaponType": "axe",
+        "weaponPrototype": "knight axe",
+        "slot": "hand",
+        "attackDelayMs": 1250,
+        "defaultAttackDelayMs": 1333,
+        "speedBonusPercent": 6,
+        "rubyImbueStacks": "siguen reduciendo el delay",
+        "set": "aurora",
+    },
 }
 
 # PNG/BMP extras living in zagan-test/custom-sprites/
@@ -271,6 +283,12 @@ CUSTOM_ITEM_DEFS: tuple[tuple[str, str, int, str], ...] = (
         "aurora shield",
         2515,
         "A kite shield with a yellow rim and a deep purple field.",
+    ),
+    (
+        "aurora_axe.png",
+        "aurora axe",
+        2430,
+        "A fast axe with a cold aurora edge.",
     ),
 )
 
