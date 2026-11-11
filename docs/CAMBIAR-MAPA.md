@@ -9,7 +9,7 @@ Relacionado:
 - [docs/items-and-map/MAPEAR_PASO_DEL_NORTE.md](items-and-map/MAPEAR_PASO_DEL_NORTE.md): puerta norte y región nueva (bosque, tundra, cuevas del dragón) con `generate-north-pass.py`
 - [docs/items-and-map/MAPA_DE_MONSTRUOS.md](items-and-map/MAPA_DE_MONSTRUOS.md): mapa interactivo de spawns y NPC (`build-monster-map.py`)
 - [docs/items-and-map/MAPEAR_LABERINTO.md](items-and-map/MAPEAR_LABERINTO.md) — laberinto 2 sqm (camino 406, fondo 100, teleport templo) con `generate-maze.py`
-- [docs/items-and-map/MAPEAR_HUNT_MAZE.md](items-and-map/MAPEAR_HUNT_MAZE.md) — hunt maze **aparte** de Alice; portal `158,47,7` con `generate-hunt-maze.py`
+- [docs/items-and-map/MAPEAR_VALLE_DE_LAS_BESTIAS.md](items-and-map/MAPEAR_VALLE_DE_LAS_BESTIAS.md) — Valle de las Bestias (reemplazó al hunt maze); portal `158,47,7` con `generate-beast-valley.py`
 - [docs/gameplay/WAVE_ARENA.md](gameplay/WAVE_ARENA.md) — Wave Arena oleadas; portal `166,47,7`
 - [docs/gameplay/CRUCIBLE.md](gameplay/CRUCIBLE.md) — El Crisol (3 puertas + bosses diarios); portal `164,47,7` con `scripts/map/generate-crucible.py`
 - [docs/gameplay/SAND_CLOCK.md](gameplay/SAND_CLOCK.md) — Reloj de Arena (fases globales); portal `168,47,7` con `scripts/map/generate-sand-clock.py`
@@ -39,7 +39,7 @@ Los maneja **un solo script**: `python3 scripts/map/temple-portals.py` (idempote
 | Portal | Llegada al volver | Sistema | Doc / generador |
 |--------|-------------------|---------|-----------------|
 | `156,47,7` | `156,48,7` | Isla natural (cyclops + cueva) | `generate-natural-island.py --seed 23 --cave`, `link-island-temple.py`, `spawn-island-cave.py` |
-| `158,47,7` | `158,48,7` | Hunt maze (el gauntlet también vuelve acá) | [`MAPEAR_HUNT_MAZE.md`](items-and-map/MAPEAR_HUNT_MAZE.md) |
+| `158,47,7` | `158,48,7` | Valle de las Bestias (el gauntlet también vuelve acá) | [`MAPEAR_VALLE_DE_LAS_BESTIAS.md`](items-and-map/MAPEAR_VALLE_DE_LAS_BESTIAS.md) |
 | `164,47,7` | `164,48,7` | El Crisol | [`CRUCIBLE.md`](gameplay/CRUCIBLE.md) |
 | `166,47,7` | `166,48,7` | Wave Arena | [`WAVE_ARENA.md`](gameplay/WAVE_ARENA.md) |
 | `168,47,7` | `168,48,7` | Reloj de Arena | [`SAND_CLOCK.md`](gameplay/SAND_CLOCK.md) |

@@ -53,7 +53,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | `spawn-island-cave.py` / `link-island-temple.py` | Spawns de la cueva / vuelta al templo + cyclops de la isla |
 | `generate-sand-clock.py` | Reloj de Arena OTBM (portal en la plaza: `temple-portals.py`) |
 | `generate-wave-arena.py` | Wave Arena |
-| `generate-hunt-maze.py` | Hunt maze |
+| `generate-beast-valley.py` | Valle de las Bestias (portal 158,47,7; reemplazó al hunt maze) |
 | `generate-maze.py` | Laberinto Alice |
 | `generate-tp-gauntlet.py` | Gauntlet |
 | `generate-island.py` | Islas procedurales |

@@ -132,9 +132,11 @@ def main() -> None:
                 for kx1, ky1, kx2, ky2 in box_keys:
                     if {kx1, ky1, kx2, ky2, "z"} <= set(o):
                         x1, y1, x2, y2, z = o[kx1], o[ky1], o[kx2], o[ky2], o["z"]
-                        n = sum(1 for xx in range(x1, x2 + 1) for yy in range(y1, y2 + 1) if (xx, yy, z) in tiles)
+                        floors = z if isinstance(z, list) else [z]     # cajas de varios pisos: z = [7, 8, 9]
+                        n = sum(1 for zz in floors for xx in range(x1, x2 + 1) for yy in range(y1, y2 + 1)
+                                if (xx, yy, zz) in tiles)
                         boxes.append({"path": path or "/", "x1": x1, "y1": y1, "x2": x2, "y2": y2, "z": z,
-                                      "tiles_in_map": n, "tiles_in_box": (x2 - x1 + 1) * (y2 - y1 + 1)})
+                                      "tiles_in_map": n, "tiles_in_box": (x2 - x1 + 1) * (y2 - y1 + 1) * len(floors)})
                         break
                 else:
                     if {"x", "y", "z"} <= set(o) and all(isinstance(o[k], int) for k in "xyz"):

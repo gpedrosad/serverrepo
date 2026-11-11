@@ -61,4 +61,4 @@ Tras cambiar solo el `.lua` / `actions.xml`, basta restart (sin regenerar OTBM).
 # palanca der → ranking
 ```
 
-Relacionado: [`../items-and-map/MAPEAR_HUNT_MAZE.md`](../items-and-map/MAPEAR_HUNT_MAZE.md).
+Relacionado: [`../items-and-map/MAPEAR_VALLE_DE_LAS_BESTIAS.md`](../items-and-map/MAPEAR_VALLE_DE_LAS_BESTIAS.md).

@@ -2,179 +2,60 @@
  "_schema": "zones.v1",
  "zones": [
   {
-   "zone": "crucible",
-   "file": "server/YurOTS/ots/data/world/generated-crucible.json",
-   "generator": "scripts/map/generate-crucible.py",
+   "zone": "beast-valley",
+   "file": "server/YurOTS/ots/data/world/generated-beast-valley.json",
+   "generator": "scripts/map/generate-beast-valley.py",
    "points_missing_in_map": 0,
    "boxes": [
     {
-     "path": "/arenas/bronze",
-     "x1": 110,
-     "y1": 80,
-     "x2": 122,
-     "y2": 92,
-     "z": 0,
-     "tiles_in_map": 169,
-     "tiles_in_box": 169
+     "path": "/box",
+     "x1": 262,
+     "y1": 232,
+     "x2": 361,
+     "y2": 378,
+     "z": [
+      7,
+      8,
+      9
+     ],
+     "tiles_in_map": 44100,
+     "tiles_in_box": 44100
     },
     {
-     "path": "/arenas/silver",
-     "x1": 140,
-     "y1": 80,
-     "x2": 154,
-     "y2": 96,
-     "z": 0,
-     "tiles_in_map": 255,
-     "tiles_in_box": 255
-    },
-    {
-     "path": "/arenas/gold",
-     "x1": 170,
-     "y1": 80,
-     "x2": 188,
-     "y2": 100,
-     "z": 0,
-     "tiles_in_map": 399,
-     "tiles_in_box": 399
-    },
-    {
-     "path": "/clearBoxes/0",
-     "x1": 80,
-     "y1": 80,
-     "x2": 100,
-     "y2": 96,
-     "z": 0,
-     "tiles_in_map": 357,
-     "tiles_in_box": 357
-    },
-    {
-     "path": "/clearBoxes/1",
-     "x1": 110,
-     "y1": 80,
-     "x2": 122,
-     "y2": 92,
-     "z": 0,
-     "tiles_in_map": 169,
-     "tiles_in_box": 169
-    },
-    {
-     "path": "/clearBoxes/2",
-     "x1": 140,
-     "y1": 80,
-     "x2": 154,
-     "y2": 96,
-     "z": 0,
-     "tiles_in_map": 255,
-     "tiles_in_box": 255
-    },
-    {
-     "path": "/clearBoxes/3",
-     "x1": 170,
-     "y1": 80,
-     "x2": 188,
-     "y2": 100,
-     "z": 0,
-     "tiles_in_map": 399,
-     "tiles_in_box": 399
-    },
-    {
-     "path": "/clearBoxes/4",
-     "x1": 157,
-     "y1": 54,
-     "x2": 157,
-     "y2": 54,
+     "path": "/oldMazeCleared",
+     "x1": 280,
+     "y1": 243,
+     "x2": 349,
+     "y2": 400,
      "z": 7,
-     "tiles_in_map": 1,
-     "tiles_in_box": 1
-    },
-    {
-     "path": "/clearBoxes/5",
-     "x1": 156,
-     "y1": 54,
-     "x2": 156,
-     "y2": 54,
-     "z": 7,
-     "tiles_in_map": 1,
-     "tiles_in_box": 1
-    },
-    {
-     "path": "/clearBoxes/6",
-     "x1": 157,
-     "y1": 53,
-     "x2": 157,
-     "y2": 53,
-     "z": 7,
-     "tiles_in_map": 1,
-     "tiles_in_box": 1
-    },
-    {
-     "path": "/clearBoxes/7",
-     "x1": 159,
-     "y1": 53,
-     "x2": 159,
-     "y2": 53,
-     "z": 7,
-     "tiles_in_map": 1,
-     "tiles_in_box": 1
-    },
-    {
-     "path": "/clearBoxes/8",
-     "x1": 160,
-     "y1": 53,
-     "x2": 160,
-     "y2": 53,
-     "z": 7,
-     "tiles_in_map": 1,
-     "tiles_in_box": 1
-    },
-    {
-     "path": "/clearBoxes/9",
-     "x1": 162,
-     "y1": 53,
-     "x2": 162,
-     "y2": 53,
-     "z": 7,
-     "tiles_in_map": 1,
-     "tiles_in_box": 1
+     "tiles_in_map": 9520,
+     "tiles_in_box": 11060
     }
    ],
    "points": [
     {
-     "path": "/hubPortal",
-     "x": 157,
-     "y": 54,
+     "path": "/landing",
+     "x": 312,
+     "y": 360,
      "z": 7,
      "in_map": true,
      "items": [
       {
-       "id": 407,
-       "name": "black marble floor"
+       "id": 4756,
+       "name": "grass"
       }
      ]
     },
     {
-     "path": "/landing",
-     "x": 85,
-     "y": 92,
-     "z": 0,
+     "path": "/portalsBack/0",
+     "x": 312,
+     "y": 365,
+     "z": 7,
      "in_map": true,
      "items": [
       {
-       "id": 406,
-       "name": "white marble floor"
-      }
-     ]
-    },
-    {
-     "path": "/returnTp",
-     "x": 86,
-     "y": 93,
-     "z": 0,
-     "in_map": true,
-     "items": [
-      {
-       "id": 406,
-       "name": "white marble floor"
+       "id": 4756,
+       "name": "grass"
       },
       {
        "id": 1387,
@@ -183,246 +64,217 @@
      ]
     },
     {
-     "path": "/levers/bronze",
-     "x": 83,
-     "y": 88,
-     "z": 0,
-     "in_map": true,
-     "items": [
-      {
-       "id": 406,
-       "name": "white marble floor"
-      },
-      {
-       "id": 1945,
-       "name": "switch"
-      }
-     ]
-    },
-    {
-     "path": "/levers/silver",
-     "x": 85,
-     "y": 88,
-     "z": 0,
-     "in_map": true,
-     "items": [
-      {
-       "id": 406,
-       "name": "white marble floor"
-      },
-      {
-       "id": 1945,
-       "name": "switch"
-      }
-     ]
-    },
-    {
-     "path": "/levers/gold",
-     "x": 87,
-     "y": 88,
-     "z": 0,
-     "in_map": true,
-     "items": [
-      {
-       "id": 406,
-       "name": "white marble floor"
-      },
-      {
-       "id": 1945,
-       "name": "switch"
-      }
-     ]
-    },
-    {
-     "path": "/levers/info",
-     "x": 90,
-     "y": 88,
-     "z": 0,
-     "in_map": true,
-     "items": [
-      {
-       "id": 406,
-       "name": "white marble floor"
-      },
-      {
-       "id": 1945,
-       "name": "switch"
-      }
-     ]
-    },
-    {
-     "path": "/templeSigns/0",
-     "x": 157,
-     "y": 53,
+     "path": "/portalsBack/1",
+     "x": 313,
+     "y": 365,
      "z": 7,
      "in_map": true,
      "items": [
       {
-       "id": 407,
-       "name": "black marble floor"
+       "id": 4756,
+       "name": "grass"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
       }
      ]
     },
     {
-     "path": "/templeSigns/1",
-     "x": 159,
-     "y": 53,
+     "path": "/portalsBack/2",
+     "x": 319,
+     "y": 254,
      "z": 7,
      "in_map": true,
      "items": [
       {
-       "id": 407,
-       "name": "black marble floor"
+       "id": 119,
+       "name": "grass"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
       }
      ]
     },
     {
-     "path": "/templeSigns/2",
-     "x": 160,
-     "y": 53,
+     "path": "/portalsBack/3",
+     "x": 273,
+     "y": 244,
+     "z": 9,
+     "in_map": true,
+     "items": [
+      {
+       "id": 351,
+       "name": "dirt"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/stairs",
+     "x": 312,
+     "y": 252,
      "z": 7,
      "in_map": true,
      "items": [
       {
-       "id": 406,
-       "name": "white marble floor"
+       "id": 432,
+       "name": "stair"
       }
      ]
     },
     {
-     "path": "/templeSigns/3",
-     "x": 162,
-     "y": 53,
-     "z": 7,
+     "path": "/toAbyss",
+     "x": 344,
+     "y": 360,
+     "z": 8,
      "in_map": true,
      "items": [
       {
-       "id": 406,
-       "name": "white marble floor"
-      }
-     ]
-    },
-    {
-     "path": "/hubSigns/0",
-     "x": 83,
-     "y": 87,
-     "z": 0,
-     "in_map": true,
-     "items": [
-      {
-       "id": 406,
-       "name": "white marble floor"
-      },
-      {
-       "id": 1429,
-       "name": "sign"
-      }
-     ]
-    },
-    {
-     "path": "/hubSigns/1",
-     "x": 85,
-     "y": 87,
-     "z": 0,
-     "in_map": true,
-     "items": [
-      {
-       "id": 406,
-       "name": "white marble floor"
-      },
-      {
-       "id": 1429,
-       "name": "sign"
-      }
-     ]
-    },
-    {
-     "path": "/hubSigns/2",
-     "x": 87,
-     "y": 87,
-     "z": 0,
-     "in_map": true,
-     "items": [
-      {
-       "id": 406,
-       "name": "white marble floor"
-      },
-      {
-       "id": 1429,
-       "name": "sign"
-      }
-     ]
-    },
-    {
-     "path": "/hubSigns/3",
-     "x": 90,
-     "y": 87,
-     "z": 0,
-     "in_map": true,
-     "items": [
-      {
-       "id": 406,
-       "name": "white marble floor"
-      },
-      {
-       "id": 1429,
-       "name": "sign"
+       "id": 432,
+       "name": "stair"
       }
      ]
     }
    ]
   },
   {
-   "zone": "hunt-maze",
-   "file": "server/YurOTS/ots/data/world/generated-hunt-maze.json",
-   "generator": "scripts/map/generate-hunt-maze.py",
+   "zone": "crucible",
+   "file": "server/YurOTS/ots/data/world/generated-crucible.json",
+   "generator": "scripts/map/generate-crucible.py",
    "points_missing_in_map": 0,
    "boxes": [
     {
-     "path": "/aliceFootprint",
-     "x1": 380,
-     "y1": 18,
-     "x2": 433,
-     "y2": 103,
-     "z": 7,
-     "tiles_in_map": 4644,
-     "tiles_in_box": 4644
+     "path": "/clearBox",
+     "x1": 70,
+     "y1": 70,
+     "x2": 195,
+     "y2": 105,
+     "z": 0,
+     "tiles_in_map": 1376,
+     "tiles_in_box": 4536
     },
     {
-     "path": "/footprint",
-     "x1": 280,
-     "y1": 243,
-     "x2": 349,
-     "y2": 400,
-     "z": 7,
-     "tiles_in_map": 11060,
-     "tiles_in_box": 11060
+     "path": "/arenas/bronze",
+     "x1": 104,
+     "y1": 80,
+     "x2": 118,
+     "y2": 92,
+     "z": 0,
+     "tiles_in_map": 195,
+     "tiles_in_box": 195
+    },
+    {
+     "path": "/arenas/silver",
+     "x1": 128,
+     "y1": 79,
+     "x2": 144,
+     "y2": 93,
+     "z": 0,
+     "tiles_in_map": 255,
+     "tiles_in_box": 255
+    },
+    {
+     "path": "/arenas/gold",
+     "x1": 154,
+     "y1": 78,
+     "x2": 172,
+     "y2": 94,
+     "z": 0,
+     "tiles_in_map": 323,
+     "tiles_in_box": 323
+    }
+   ],
+   "points": []
+  },
+  {
+   "zone": "frozen-isle",
+   "file": "server/YurOTS/ots/data/world/generated-frozen-isle.json",
+   "generator": "scripts/map/generate-frozen-isle.py",
+   "points_missing_in_map": 0,
+   "boxes": [
+    {
+     "path": "/box",
+     "x1": 356,
+     "y1": 2,
+     "x2": 433,
+     "y2": 117,
+     "z": [
+      7,
+      8,
+      9
+     ],
+     "tiles_in_map": 27144,
+     "tiles_in_box": 27144
     }
    ],
    "points": [
     {
-     "path": "/entryLanding",
-     "x": 280,
-     "y": 399,
+     "path": "/landing",
+     "x": 395,
+     "y": 104,
      "z": 7,
      "in_map": true,
      "items": [
       {
-       "id": 406,
-       "name": "white marble floor"
+       "id": 670,
+       "name": "snow"
       }
      ]
     },
     {
-     "path": "/entryReturn",
-     "x": 281,
-     "y": 400,
+     "path": "/nimral",
+     "x": 397,
+     "y": 103,
      "z": 7,
      "in_map": true,
      "items": [
       {
-       "id": 406,
-       "name": "white marble floor"
+       "id": 670,
+       "name": "snow"
+      }
+     ]
+    },
+    {
+     "path": "/stairs",
+     "x": 392,
+     "y": 15,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 432,
+       "name": "stair"
+      }
+     ]
+    },
+    {
+     "path": "/toLair",
+     "x": 418,
+     "y": 85,
+     "z": 8,
+     "in_map": true,
+     "items": [
+      {
+       "id": 432,
+       "name": "stair"
+      }
+     ]
+    },
+    {
+     "path": "/portal",
+     "x": 403,
+     "y": 48,
+     "z": 9,
+     "in_map": true,
+     "items": [
+      {
+       "id": 671,
+       "name": "ice"
       },
       {
        "id": 1387,
@@ -431,45 +283,244 @@
      ]
     },
     {
-     "path": "/exit",
-     "x": 316,
-     "y": 243,
+     "path": "/chests/0",
+     "x": 365,
+     "y": 97,
      "z": 7,
      "in_map": true,
      "items": [
       {
-       "id": 406,
-       "name": "white marble floor"
+       "id": 670,
+       "name": "snow"
+      },
+      {
+       "id": 1740,
+       "name": "chest"
+      }
+     ]
+    },
+    {
+     "path": "/chests/1",
+     "x": 369,
+     "y": 63,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 670,
+       "name": "snow"
+      },
+      {
+       "id": 1740,
+       "name": "chest"
+      }
+     ]
+    },
+    {
+     "path": "/chests/2",
+     "x": 401,
+     "y": 49,
+     "z": 9,
+     "in_map": true,
+     "items": [
+      {
+       "id": 671,
+       "name": "ice"
+      },
+      {
+       "id": 1740,
+       "name": "chest"
+      }
+     ]
+    },
+    {
+     "path": "/chests/3",
+     "x": 405,
+     "y": 49,
+     "z": 9,
+     "in_map": true,
+     "items": [
+      {
+       "id": 671,
+       "name": "ice"
+      },
+      {
+       "id": 1740,
+       "name": "chest"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "zone": "hell-quest",
+   "file": "server/YurOTS/ots/data/world/generated-hell-quest.json",
+   "generator": "scripts/map/generate-hell-quest.py",
+   "points_missing_in_map": 0,
+   "boxes": [
+    {
+     "path": "/box",
+     "x1": 288,
+     "y1": 124,
+     "x2": 405,
+     "y2": 226,
+     "z": [
+      7,
+      8,
+      9
+     ],
+     "tiles_in_map": 36462,
+     "tiles_in_box": 36462
+    }
+   ],
+   "points": [
+    {
+     "path": "/landing",
+     "x": 345,
+     "y": 211,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 105,
+       "name": "gravel"
+      }
+     ]
+    },
+    {
+     "path": "/nimral",
+     "x": 348,
+     "y": 210,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 105,
+       "name": "gravel"
+      }
+     ]
+    },
+    {
+     "path": "/stairs",
+     "x": 358,
+     "y": 146,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 432,
+       "name": "stair"
+      }
+     ]
+    },
+    {
+     "path": "/toAbyss",
+     "x": 314,
+     "y": 199,
+     "z": 8,
+     "in_map": true,
+     "items": [
+      {
+       "id": 432,
+       "name": "stair"
+      }
+     ]
+    },
+    {
+     "path": "/boss",
+     "x": 347,
+     "y": 156,
+     "z": 9,
+     "in_map": true,
+     "items": [
+      {
+       "id": 105,
+       "name": "gravel"
+      }
+     ]
+    },
+    {
+     "path": "/chests/0",
+     "x": 343,
+     "y": 137,
+     "z": 9,
+     "in_map": true,
+     "items": [
+      {
+       "id": 105,
+       "name": "gravel"
+      },
+      {
+       "id": 1740,
+       "name": "chest"
+      }
+     ]
+    },
+    {
+     "path": "/chests/1",
+     "x": 345,
+     "y": 137,
+     "z": 9,
+     "in_map": true,
+     "items": [
+      {
+       "id": 105,
+       "name": "gravel"
+      },
+      {
+       "id": 1740,
+       "name": "chest"
+      }
+     ]
+    },
+    {
+     "path": "/chests/2",
+     "x": 348,
+     "y": 137,
+     "z": 9,
+     "in_map": true,
+     "items": [
+      {
+       "id": 105,
+       "name": "gravel"
+      },
+      {
+       "id": 1740,
+       "name": "chest"
+      }
+     ]
+    },
+    {
+     "path": "/chests/3",
+     "x": 350,
+     "y": 137,
+     "z": 9,
+     "in_map": true,
+     "items": [
+      {
+       "id": 105,
+       "name": "gravel"
+      },
+      {
+       "id": 1740,
+       "name": "chest"
+      }
+     ]
+    },
+    {
+     "path": "/portal",
+     "x": 347,
+     "y": 139,
+     "z": 9,
+     "in_map": true,
+     "items": [
+      {
+       "id": 105,
+       "name": "gravel"
       },
       {
        "id": 1387,
        "name": "magic forcefield"
-      }
-     ]
-    },
-    {
-     "path": "/hubPortal",
-     "x": 160,
-     "y": 54,
-     "z": 7,
-     "in_map": true,
-     "items": [
-      {
-       "id": 406,
-       "name": "white marble floor"
-      }
-     ]
-    },
-    {
-     "path": "/hubLanding",
-     "x": 161,
-     "y": 54,
-     "z": 7,
-     "in_map": true,
-     "items": [
-      {
-       "id": 406,
-       "name": "white marble floor"
       }
      ]
     }
@@ -1058,6 +1109,245 @@
       {
        "id": 4150,
        "name": "weeds"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "zone": "north-pass",
+   "file": "server/YurOTS/ots/data/world/generated-north-pass.json",
+   "generator": "scripts/map/generate-north-pass.py",
+   "points_missing_in_map": 0,
+   "boxes": [
+    {
+     "path": "/box",
+     "x1": 370,
+     "y1": 236,
+     "x2": 469,
+     "y2": 467,
+     "z": [
+      7,
+      8,
+      9
+     ],
+     "tiles_in_map": 40979,
+     "tiles_in_box": 69600
+    }
+   ],
+   "points": [
+    {
+     "path": "/city/gate/0",
+     "x": 184,
+     "y": 23,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 431,
+       "name": "stone floor"
+      }
+     ]
+    },
+    {
+     "path": "/city/gate/1",
+     "x": 184,
+     "y": 24,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 431,
+       "name": "stone floor"
+      }
+     ]
+    },
+    {
+     "path": "/city/gate/2",
+     "x": 184,
+     "y": 25,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 431,
+       "name": "stone floor"
+      }
+     ]
+    },
+    {
+     "path": "/city/gate/3",
+     "x": 185,
+     "y": 23,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 431,
+       "name": "stone floor"
+      }
+     ]
+    },
+    {
+     "path": "/city/gate/4",
+     "x": 185,
+     "y": 24,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 431,
+       "name": "stone floor"
+      }
+     ]
+    },
+    {
+     "path": "/city/gate/5",
+     "x": 185,
+     "y": 25,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 431,
+       "name": "stone floor"
+      }
+     ]
+    },
+    {
+     "path": "/city/portals/0",
+     "x": 184,
+     "y": 11,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 103,
+       "name": "dirt"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/city/portals/1",
+     "x": 185,
+     "y": 11,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 103,
+       "name": "dirt"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/city/landing",
+     "x": 184,
+     "y": 14,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 103,
+       "name": "dirt"
+      }
+     ]
+    },
+    {
+     "path": "/arrival",
+     "x": 420,
+     "y": 452,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 103,
+       "name": "dirt"
+      }
+     ]
+    },
+    {
+     "path": "/regionPortals/0",
+     "x": 420,
+     "y": 456,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 111,
+       "name": "grass"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/regionPortals/1",
+     "x": 421,
+     "y": 456,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 111,
+       "name": "grass"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
+      }
+     ]
+    },
+    {
+     "path": "/stairsToCaves",
+     "x": 420,
+     "y": 258,
+     "z": 7,
+     "in_map": true,
+     "items": [
+      {
+       "id": 432,
+       "name": "stair"
+      }
+     ]
+    },
+    {
+     "path": "/stairsToNest",
+     "x": 437,
+     "y": 376,
+     "z": 8,
+     "in_map": true,
+     "items": [
+      {
+       "id": 432,
+       "name": "stair"
+      }
+     ]
+    },
+    {
+     "path": "/nestPortal",
+     "x": 416,
+     "y": 397,
+     "z": 9,
+     "in_map": true,
+     "items": [
+      {
+       "id": 355,
+       "name": "muddy floor"
+      },
+      {
+       "id": 1387,
+       "name": "magic forcefield"
       }
      ]
     }

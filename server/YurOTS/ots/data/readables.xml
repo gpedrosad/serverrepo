@@ -13,7 +13,7 @@
 	<!-- END SAND_CLOCK_SIGNS -->
 	<!-- BEGIN TEMPLE_PORTAL_SIGNS -->
 	<readable x="156" y="46" z="7" text="ISLA NATURAL\nCyclops arriba.\nCueva abajo (agujero)."/>
-	<readable x="158" y="46" z="7" text="HUNT MAZE\nLaberinto mid-hard\nDesde Minotauros"/>
+	<readable x="158" y="46" z="7" text="VALLE DE LAS BESTIAS\nCaza mid-hard en 3 pisos\nDe Minotauros a Demonios"/>
 	<readable x="164" y="46" z="7" text="CRISOL\n3 puertas. Boss diario.\nBronce / Plata / Oro"/>
 	<readable x="166" y="46" z="7" text="WAVE ARENA\nOleadas. Palanca = next.\nRanking semanal"/>
 	<readable x="168" y="46" z="7" text="RELOJ DE ARENA\nSala compartida.\nFases cada 120 s"/>
@@ -38,4 +38,11 @@
 	<readable x="350" y="181" z="7" text="EL CRUCE\nOeste: Campos de Ceniza. Este: Rios de Lava.\nNorte: Fortaleza del Culto y el Crater."/>
 	<readable x="362" y="150" z="7" text="LAS FAUCES DEL INFIERNO\nPuerta: nivel 80. Abajo cazan los perros del infierno.\nEn el Abismo, la puerta del Senor de la Ceniza pide nivel 100."/>
 	<!-- END HELL_QUEST_SIGNS -->
+	<!-- BEGIN BEAST_VALLEY_SIGNS -->
+	<readable x="311" y="322" z="7" text="COLINAS DE LOS CICLOPES\nCiclopes y enanos de la cantera."/>
+	<readable x="315" y="357" z="7" text="VALLE DE LAS BESTIAS\nEl camino sube al norte: Campamento Minotauro,\nColinas de los Ciclopes y las Ruinas.\nPortal al sur: templo."/>
+	<readable x="316" y="253" z="7" text="CATACUMBAS\nAbajo: aranas, vampiros y nigromantes.\nMas abajo, el Abismo."/>
+	<readable x="321" y="285" z="7" text="RUINAS ANTIGUAS\nNo todos los muertos descansan."/>
+	<readable x="322" y="254" z="7" text="Portal al templo."/>
+	<!-- END BEAST_VALLEY_SIGNS -->
 </readables>
