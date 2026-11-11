@@ -41,6 +41,10 @@ Los que necesitan blanco (`exori ico`, `exori san`, `exori frigo`) y los que nec
 - **Curaciones:** usan la fórmula del servidor (`exura`, `exura gran`, `exura vita`), no la de TFS, que está
   pensada para la vida de versiones más nuevas.
 
+## Eco
+
+El Eco (`utevo vis`, sorcerer) tiene su propio doc: [`SPELL_ECO.md`](SPELL_ECO.md).
+
 ## `exeta res` (Challenge)
 
 Ya existía y no se cambió: los monstruos de las 8 casillas de alrededor atacan al knight durante 6 s, sin

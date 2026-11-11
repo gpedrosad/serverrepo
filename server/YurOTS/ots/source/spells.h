@@ -97,11 +97,15 @@ public:
 	int64_t getMana(){return mana;};
 	int64_t getMagLv(){
   return magLv;};
+	// echo="1" en spells.xml: el Eco (utevo vis) puede repetir este golpe
+	bool isEchoable() const {return echoable;}
+	void setEchoable(bool e) {echoable = e;}
 
 protected:
 	std::string name;
   int64_t magLv, mana;
   bool loaded;
+	bool echoable;
 	SpellScript* script;
 };
 
@@ -147,6 +151,16 @@ public:
   static int luaActionGetPlayerSkill(lua_State *L);
   static int luaActionGetPlayerWeapon(lua_State *L);
   static int luaActionGetCreatureDirection(lua_State *L);
+  static int luaActionEchoReady(lua_State *L);
+  static int luaActionStartEcho(lua_State *L);
+
+	// Eco (utevo vis): mientras una repetición se lanza, echoCast es true: no cobra maná ni aplica espera,
+	// y doTargetMagic / doAreaMagic multiplican el daño por echoScale. Ver docs/gameplay/SPELL_ECO.md.
+	static bool echoCast;
+	static double echoScale;
+	static void onPlayerSpellCast(Game* game, Player* player, Spell* spell, const std::string& var);
+	static void castEcho(Game* game, unsigned long playerId, std::string words, std::string var,
+		unsigned long targetId, double scale, double pvpScale);
   static int luaActionChangeOutfit(lua_State *L);
   static int luaActionManaShield(lua_State *L);
   static int luaActionChangeSpeed(lua_State *L);

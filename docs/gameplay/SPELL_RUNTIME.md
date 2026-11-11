@@ -111,6 +111,7 @@ Registrados en el constructor de `SpellScript`:
 | `doParalyze` | `luaActionDoParalyze` |
 | `getAttackedCreaturePos` | `luaActionGetAttackedCreaturePos` — pos del target de battle list (usado por `exori hur`, `exori con` y `exori vis hur`) |
 | `getPlayerSkill(cid, skill)` | `luaActionGetPlayerSkill` — nivel de un skill (0 puños, 1 club, 2 sword, 3 axe, 4 distancia, 5 escudo, 6 pesca); -1 si no es jugador (nov 2026, [`SPELL_EXORI_CON.md`](SPELL_EXORI_CON.md)) |
+| `echoReady(cid)` / `startEcho(cid, ventana, espera, escala, escala_pvp)` | Eco (`utevo vis`): espera restante / activar. La repetición la hace `SpellScript::castEcho` (ver [`SPELL_ECO.md`](SPELL_ECO.md)). Atributo nuevo en `spells.xml`: `echo="1"` |
 | `getCreatureDirection(cid)` | `luaActionGetCreatureDirection` — `"n"`/`"e"`/`"s"`/`"w"` hacia donde mira (nov 2026, `exori min`; ver [`SPELLS_NOV2026.md`](SPELLS_NOV2026.md)) |
 | `getPlayerWeapon(cid)` | `luaActionGetPlayerWeapon` — `{type = "sword"/"club"/"axe"/"dist"/"none", attack, id}` del arma en las manos (nov 2026, [`SPELL_EXORI_HUR.md`](SPELL_EXORI_HUR.md)) |
 | `doChallenge` | `luaActionDoChallenge` — taunt 3×3 / lock 6 s (`exeta res`; ver [`SPELL_EXETA_RES.md`](SPELL_EXETA_RES.md)) |
