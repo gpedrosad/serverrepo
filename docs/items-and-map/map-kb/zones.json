@@ -254,8 +254,8 @@
     },
     {
      "path": "/toLair",
-     "x": 418,
-     "y": 85,
+     "x": 412,
+     "y": 53,
      "z": 8,
      "in_map": true,
      "items": [
@@ -267,8 +267,8 @@
     },
     {
      "path": "/portal",
-     "x": 403,
-     "y": 48,
+     "x": 395,
+     "y": 16,
      "z": 9,
      "in_map": true,
      "items": [
@@ -284,14 +284,22 @@
     },
     {
      "path": "/chests/0",
-     "x": 365,
-     "y": 97,
+     "x": 373,
+     "y": 95,
      "z": 7,
      "in_map": true,
      "items": [
       {
        "id": 670,
        "name": "snow"
+      },
+      {
+       "id": 4995,
+       "name": "ice stalagmite"
+      },
+      {
+       "id": 2698,
+       "name": "pine"
       },
       {
        "id": 1740,
@@ -318,8 +326,8 @@
     },
     {
      "path": "/chests/2",
-     "x": 401,
-     "y": 49,
+     "x": 393,
+     "y": 17,
      "z": 9,
      "in_map": true,
      "items": [
@@ -335,8 +343,8 @@
     },
     {
      "path": "/chests/3",
-     "x": 405,
-     "y": 49,
+     "x": 397,
+     "y": 17,
      "z": 9,
      "in_map": true,
      "items": [
@@ -1131,7 +1139,7 @@
       8,
       9
      ],
-     "tiles_in_map": 40979,
+     "tiles_in_map": 40082,
      "tiles_in_box": 69600
     }
    ],
@@ -1264,7 +1272,7 @@
     {
      "path": "/arrival",
      "x": 420,
-     "y": 452,
+     "y": 392,
      "z": 7,
      "in_map": true,
      "items": [
@@ -1277,7 +1285,7 @@
     {
      "path": "/regionPortals/0",
      "x": 420,
-     "y": 456,
+     "y": 396,
      "z": 7,
      "in_map": true,
      "items": [
@@ -1294,7 +1302,7 @@
     {
      "path": "/regionPortals/1",
      "x": 421,
-     "y": 456,
+     "y": 396,
      "z": 7,
      "in_map": true,
      "items": [
@@ -1323,8 +1331,8 @@
     },
     {
      "path": "/stairsToNest",
-     "x": 437,
-     "y": 376,
+     "x": 450,
+     "y": 326,
      "z": 8,
      "in_map": true,
      "items": [
@@ -1336,14 +1344,14 @@
     },
     {
      "path": "/nestPortal",
-     "x": 416,
-     "y": 397,
+     "x": 427,
+     "y": 345,
      "z": 9,
      "in_map": true,
      "items": [
       {
-       "id": 355,
-       "name": "muddy floor"
+       "id": 351,
+       "name": "dirt"
       },
       {
        "id": 1387,

@@ -68,7 +68,9 @@ FOREST_SMALL_TREE = 2768                                          # pino chico 1
 BUSHES = (2767, 2786)
 FLOWERS = (4158, 4150, 2740)
 MUSHROOMS = (4183, 4171, 4181)
-LOGS = (4239, 4187, 4201)
+# Los troncos 4187/4201/4239 son pedazos de un tronco largo (centro y puntas): sueltos se ven cortados.
+# No se usan; el campamento lleva ramas, barril y cajón.
+BARREL, CRATE = 1770, 1739
 SNOW_TREES = (2698, 2698, 2698, 2697)                             # pino nevado y árbol muerto nevado
 DEAD_TREES = (2709, 2717, 2720)
 STONE, RUBBLE_GREY, RUBBLE_BROWN, PEBBLES = 1285, 1309, 1323, 1336
@@ -115,9 +117,14 @@ FIELD_LANTERNS = [(183, 12), (186, 12)]
 FIELD_SIGN = (187, 13)
 
 # --- puntos de la región (coordenadas locales) ------------------------------------------------
-ARRIVAL = (50, 216)
-REGION_PORTALS = [(50, 220), (51, 220)]
-SNOW_LINE = 112                             # ly < SNOW_LINE (con ondulación) = nieve
+# Compactado (nov 2026): la llegada subió de y 216 a 156 y el área jugable es una franja de
+# CORRIDOR casillas a cada lado del camino (antes, todo el ancho de la caja: 15.700 casillas con
+# 101 monstruos). El sur de la caja queda como bosque cerrado.
+ARRIVAL = (50, 156)
+REGION_PORTALS = [(50, 160), (51, 160)]
+SNOW_LINE = 92                              # ly < SNOW_LINE (con ondulación) = nieve
+CORRIDOR = 13                               # media franja jugable alrededor del camino
+LAKE_C = (72, 62)                           # lago congelado de la tundra
 STAIRS = (50, 22)                           # bajada a las cuevas
 
 
@@ -253,7 +260,14 @@ def build_surface(seed: int, bl: Blocking):
     path |= {(ARRIVAL[0] + dx, ARRIVAL[1] + dy) for dx in (-1, 0, 1, 2) for dy in (0, 1, 2, 3)}
     portal_zone = {(x, y) for x in range(REGION_PORTALS[0][0] - 2, REGION_PORTALS[1][0] + 3)
                    for y in range(ARRIVAL[1], REGION_PORTALS[0][1] + 3)}
-    play |= path | portal_zone
+    # franja jugable alrededor del camino, más el lago y su orilla (queda al costado del camino)
+    #     (borde irregular: el ancho varía ±5 con ruido, si no queda una pared recta de árboles)
+    wobble = lambda x, y: 10 * (nz.fbm(x / 6, y / 6, 3, 41) - 0.5)  # noqa: E731
+    corridor = {(x, y) for (x, y) in cells if y in center and abs(x - center[y]) <= CORRIDOR + wobble(x, y)}
+    corridor |= {(x, y) for (x, y) in cells
+                 if ((x - LAKE_C[0]) / 17) ** 2 + ((y - LAKE_C[1]) / 12) ** 2 <= 1 + wobble(x, y) / 12}
+    corridor |= {(STAIRS[0] + dx, STAIRS[1] + dy) for dx in range(-CORRIDOR, CORRIDOR + 1) for dy in range(-10, 1)}
+    play = (play & corridor) | path | portal_zone
 
     # nieve al norte de una línea ondulada
     snow = {(x, y) for (x, y) in cells if y < SNOW_LINE + 6 * (nz.fbm(x / 14, 0, 3, 21) - 0.5) * 2}
@@ -267,7 +281,7 @@ def build_surface(seed: int, bl: Blocking):
     # (el borde de nieve va encima del suelo, el de tierra es el suelo)
 
     # lago congelado en la tundra
-    lake_c = (72, 70)
+    lake_c = LAKE_C
     lake = {(x, y) for (x, y) in cells & play if y < SNOW_LINE - 14
             and ((x - lake_c[0]) / 11) ** 2 + ((y - lake_c[1]) / 8) ** 2 + 0.5 * (nz.fbm(x / 4, y / 4, 2, 31) - 0.5) < 1}
     lake -= path
@@ -315,10 +329,10 @@ def build_surface(seed: int, bl: Blocking):
             tiles[c].append(rng.choice(SNOW_TREES if c in snow else FOREST_TREES))
 
     # 2) campamento de cazadores junto al camino, en el bosque
-    camp_y = 175
+    camp_y = ARRIVAL[1] - 30
     camp = (center[camp_y] + 5, camp_y)
-    camp_items = {camp: CAMPFIRE, (camp[0] - 1, camp[1] + 1): LOGS[1], (camp[0] + 1, camp[1] - 1): LOGS[2],
-                  (camp[0] + 1, camp[1] + 1): BRANCH, (camp[0] - 1, camp[1] - 1): LOGS[0]}
+    camp_items = {camp: CAMPFIRE, (camp[0] - 1, camp[1] + 1): BARREL, (camp[0] + 1, camp[1] - 1): CRATE,
+                  (camp[0] + 1, camp[1] + 1): BRANCH}
     for c, it in camp_items.items():
         if c in play and c not in path:
             put(c, it)
@@ -349,7 +363,7 @@ def build_surface(seed: int, bl: Blocking):
             elif r < 0.075:
                 tiles[c].append(rng.choice(MUSHROOMS))
             elif r < 0.08:
-                tiles[c].append(rng.choice(LOGS))
+                tiles[c].append(BRANCH)
         else:
             north = y < 40  # pie de la montaña: piedras, huesos de dragón
             if north:
@@ -471,7 +485,7 @@ def build_caves(seed: int):
     sx, sy = STAIRS
     # z8: Cuevas del Dragón, debajo de la tundra
     box8 = {(x, y) for x in range(4, W - 4) for y in range(4, 150)}
-    allowed8 = {(x, y) for x in range(6, W - 6) for y in range(6, 148)}
+    allowed8 = {(x, y) for x in range(12, W - 12) for y in range(6, 96)}   # compactado: antes y 6-148, todo el ancho
     core8 = {(sx + dx, sy + dy) for dx in (-1, 0, 1) for dy in (-1, 0, 1, 2)}
     floor8 = carve_cave(seed + 1, allowed8, core8, (sx, sy + 1), 2500)
     t8 = cave_tiles(floor8, box8, seed + 1)
@@ -878,7 +892,7 @@ def main() -> int:
         ("Frost Troll", 6, 3, 150, tundra),
         ("Yeti", 1, 1, 1800, lakeside),
         ("Winter Wolf", 2, 3, 150, foot),
-    ], walk7 - lake, avoid7, 7, rng)
+    ], walk7 - lake, avoid7, 7, rng, min_gap=8)   # 8 (no 9): la franja compactada es angosta
     d8 = caves["d8"]
     far8 = max(d8.values())
     walk8s = {c for c in walk8 if c in d8}

@@ -39,15 +39,16 @@ No hay costo ni turnos.
 
 | # | Nombre | Monstruos |
 |---|--------|-----------|
-| 1 | Escarabajos | Angry Scarab ×3 |
-| 2 | Cazadoras | Angry Amazon ×2, Furious Valkyrie ×1 |
-| 3 | Orcos | Angry Orc Berserker ×2, Angry Orc Shaman ×1, Furious Orc Leader ×1 |
-| 4 | Acero | Angry Hero ×1, Angry Black Knight ×1, Angry Gargoyle ×1 |
-| 5 | Necropolis | Angry Vampire ×2, Furious Necromancer ×1, Angry Lich ×1 |
-| 6 | Abismo | Angry Demon ×1, Fury ×1 |
+| 1 | Escarabajos | Scarab ×3, Ancient Scarab ×1 |
+| 2 | Cazadoras | Amazon ×2, Valkyrie ×2 |
+| 3 | Orcos | Orc Berserker ×2, Orc Shaman ×1, Orc Leader ×1 |
+| 4 | Acero | Hero ×1, Black Knight ×1, Gargoyle ×1 |
+| 5 | Necropolis | Vampire ×2, Necromancer ×1, Lich ×1 |
+| 6 | Abismo | Demon ×1, Fury ×1 |
 
-Menos monstruos que antes porque la sala es más chica. Salieron Furious Ancient Scarab, Bone Beast,
-Angry Hunter, Furious Giant Spider, Furious Warlock y **Wrath** (Wrath sigue al final del Gauntlet).
+**Monstruos normales, sin variantes rage** (Angry / Furious / Enraged): pedido de Gonzalo, nov 2026.
+Menos monstruos que antes porque la sala es más chica. Salieron Bone Beast, Hunter, Giant Spider, Warlock
+y **Wrath** (Wrath sigue al final del Gauntlet).
 
 Estado del ciclo (en `chronos.lua`):
 
@@ -141,8 +142,8 @@ mueve algo, cambiarlo en los dos.
 
 1. Entrar por `168, 47, 7`: llegan las reglas y el estado en rojo.
 2. Ver la línea `Reloj de Arena | …` abajo, cada segundo.
-3. En el descanso, la sala vacía y los braseros apagados; al empezar la oleada 1, 3 Angry Scarab y el
-   primer brasero con fuego.
+3. En el descanso, la sala vacía y los braseros apagados; al empezar la oleada 1, 3 Scarab y 1 Ancient
+   Scarab, y el primer brasero con fuego.
 4. Al cambiar de oleada se van los monstruos viejos y llegan los nuevos; se enciende un brasero más.
 5. Después de la oleada 6, descanso.
 6. Salir por el portal sur → `168, 48, 7`.

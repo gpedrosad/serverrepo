@@ -13,7 +13,7 @@ Generador: `scripts/map/generate-beast-valley.py` (usa las piezas, cuevas y vali
 | Etapa | Piso | Paisaje | Monstruos |
 |-------|------|---------|-----------|
 | Llegada | z7 sur | claro con 2 portales de vuelta enmarcados, cartel | — |
-| Campamento Minotauro | z7 | bosque con flores y hongos, camino de tierra en curva, 4 fogatas con troncos, barriles y cajones | Minotaur, Minotaur Archer, Minotaur Guard, Minotaur Mage |
+| Campamento Minotauro | z7 | bosque con flores y hongos, camino de tierra en curva, 4 fogatas con ramas, piedras, barriles y cajones | Minotaur, Minotaur Archer, Minotaur Guard, Minotaur Mage |
 | Colinas de los Cíclopes | z7 | pasto con rocas agrupadas, piedras sueltas, árboles secos | Cyclops, Dwarf Soldier, Dwarf Guard, Dwarf Geomancer |
 | Ruinas Antiguas | z7 norte | patio de tierra con avenida de columnas, estatuas, braseros, altar y escombros; alrededor, cementerio de lápidas rotas entre árboles secos | Beholder, Demon Skeleton, Ghoul, Dwarf Guard |
 | Catacumbas | z8 | cueva natural | Giant Spider, Vampire → Necromancer, Priestess → Hero, Black Knight |
@@ -22,7 +22,8 @@ Generador: `scripts/map/generate-beast-valley.py` (usa las piezas, cuevas y vali
 En la superficie la dificultad sube de sur a norte. En las cuevas sube con la distancia a la escalera:
 lo más difícil queda al fondo de cada piso. Cada spawn mezcla los monstruos de su etapa.
 
-Total: 402 spawns y 774 monstruos (el laberinto tenía 720). El detalle por monstruo está en el
+Total: 397 spawns y 766 monstruos (el laberinto tenía 720). Sin troncos sueltos (4187/4201/4239 son
+pedazos de un tronco largo y sueltos se ven cortados). El detalle por monstruo está en el
 manifiesto (`monsters`).
 
 ## Coordenadas

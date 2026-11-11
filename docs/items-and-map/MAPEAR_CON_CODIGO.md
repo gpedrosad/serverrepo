@@ -325,6 +325,8 @@ El parser de `sync-houses-with-map.py` y el writer de `generate-island.py` puede
 | Servidor no arranca tras editar OTBM | OTBM corrupto | Restaurar `test.otbm.bak` o `git checkout -- test.otbm` |
 | Spawns no aparecen | `test-spawn.xml` sin actualizar | Exportar desde RME o editar XML |
 | `Could not load map` | Nodo OTBM mal formado | No editar binario a mano; revisar cambios en el script |
+| Troncos cortados en el bosque | 4187 (centro), 4201 y 4239 (puntas) son pedazos de un tronco largo; sueltos se ven cortados | Decorar con piezas de una casilla: rama 4224, flores, hongos, arbustos, barril 1770, cajón 1739, piedra 1285. Antes de usar un ítem de decoración, dibujarlo con `mapdata.Renderer` |
+| Zona enorme y vacía, mucho que caminar | El área jugable ocupa toda la caja | Franja jugable alrededor del camino y cuevas en una caja más chica; medir caminable, casillas por monstruo y recorrido más largo por piso. Ejemplos: `CORRIDOR` en `generate-north-pass.py`, `CAVE_BANDS` en `generate-frozen-isle.py` |
 
 ---
 

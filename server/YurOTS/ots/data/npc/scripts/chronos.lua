@@ -14,14 +14,15 @@ ROOM = {x0 = 333, y0 = 388, x1 = 343, y1 = 396, z = 6}
 REST_SEC = 30
 WAVE_SEC = 60
 
--- Oleadas en orden de dificultad. Pocos monstruos: la sala es chica (11x9).
+-- Oleadas en orden de dificultad. Pocos monstruos: la sala es chica (11x9). Monstruos normales, sin
+-- variantes rage (Angry / Furious / Enraged).
 WAVES = {
-	{name = "Escarabajos", mobs = {{"Angry Scarab", 3}}},
-	{name = "Cazadoras", mobs = {{"Angry Amazon", 2}, {"Furious Valkyrie", 1}}},
-	{name = "Orcos", mobs = {{"Angry Orc Berserker", 2}, {"Angry Orc Shaman", 1}, {"Furious Orc Leader", 1}}},
-	{name = "Acero", mobs = {{"Angry Hero", 1}, {"Angry Black Knight", 1}, {"Angry Gargoyle", 1}}},
-	{name = "Necropolis", mobs = {{"Angry Vampire", 2}, {"Furious Necromancer", 1}, {"Angry Lich", 1}}},
-	{name = "Abismo", mobs = {{"Angry Demon", 1}, {"Fury", 1}}},
+	{name = "Escarabajos", mobs = {{"Scarab", 3}, {"Ancient Scarab", 1}}},
+	{name = "Cazadoras", mobs = {{"Amazon", 2}, {"Valkyrie", 2}}},
+	{name = "Orcos", mobs = {{"Orc Berserker", 2}, {"Orc Shaman", 1}, {"Orc Leader", 1}}},
+	{name = "Acero", mobs = {{"Hero", 1}, {"Black Knight", 1}, {"Gargoyle", 1}}},
+	{name = "Necropolis", mobs = {{"Vampire", 2}, {"Necromancer", 1}, {"Lich", 1}}},
+	{name = "Abismo", mobs = {{"Demon", 1}, {"Fury", 1}}},
 }
 
 -- Braseros del norte: el de la oleada N y los anteriores echan fuego.

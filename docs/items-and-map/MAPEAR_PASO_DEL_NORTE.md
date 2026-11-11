@@ -27,13 +27,13 @@ Correr el mapa entero hacia el sur se descartó: habría cambiado las coordenada
 | Pasillo interior | `x 185, y 26-33` y `y 33, x 182-185` (piedra 431), empalma con el camino de tierra al templo |
 | Campo norte | `x 116-213, y 0-22, 7`: bosque cerrado; claro caminable `x 180-189, y 12-22` |
 | Camino del campo | `184-185, 12-22, 7`, tierra 103 con bordes de pasto 110–121 |
-| Portal de la ciudad | `184-185, 11, 7` entre piedras → llegada `420, 452, 7` |
+| Portal de la ciudad | `184-185, 11, 7` entre piedras → llegada `420, 392, 7` |
 | Faroles / cartel | `183, 12` y `186, 12` / `187, 13` |
 | Vuelta (portales de la región y del Nido) | → `184, 14, 7` |
-| Portales de la región | `420-421, 456, 7` |
+| Portales de la región | `420-421, 396, 7` |
 | Escalera a las cuevas | `420, 258, 7` (432) / `420, 258, 8` (1385, sube al norte) |
-| Bajada al Nido | `437, 376, 8` (432) / `437, 376, 9` (1385) |
-| Portal del Nido | `416, 397, 9` |
+| Bajada al Nido | `450, 326, 8` (432) / `450, 326, 9` (1385) |
+| Portal del Nido | `427, 345, 9` |
 | Manifiesto | `server/YurOTS/ots/data/world/generated-north-pass.json` |
 
 ## El campo norte (nov 2026)
@@ -57,16 +57,43 @@ Validaciones nuevas (si falla una, no se escribe nada):
 
 ![Campo norte: bosque, claro, portal y sala de trainers](img/paso-del-norte/campo_norte.png)
 
+## Compactado (nov 2026)
+
+La región era demasiado grande para lo que tenía: la superficie jugable ocupaba todo el ancho de la caja
+(15.700 casillas para 101 monstruos, un tercio del terreno a más de 10 pasos de cualquier spawn) y las
+Cuevas del Dragón tenían 7.100 casillas. Ahora:
+
+| | Antes | Ahora |
+|---|---:|---:|
+| Superficie caminable (z7) | 15.723 | 4.033 |
+| Cuevas del Dragón (z8) | 7.104 | 3.848 |
+| Nido Negro (z9) | 1.099 | 968 |
+| Llegada | `420, 452, 7` | `420, 392, 7` (60 casillas más cerca de las cuevas) |
+| Recorrido más largo z7 / z8 | 215 / 141 pasos | 151 / 87 pasos |
+
+- **Franja jugable:** `CORRIDOR` = 13 casillas a cada lado del camino (±5 con ruido, así el borde del bosque
+  no queda recto), más el lago y su orilla y el pie de la montaña. Lo demás es bosque o pinos nevados
+  cerrados (bloquean), igual que el borde. Los spawns de superficie van a 8 casillas entre centros (antes 9)
+  para que entren todos en la franja.
+- **Sin troncos sueltos:** 4187/4201/4239 son pedazos de un tronco largo y sueltos se veían cortados. El
+  campamento lleva fogata, barril, cajón y rama.
+- **Recorrido más corto:** la llegada subió de y 216 a y 156 (local) y la línea de nieve de 112 a 92; el
+  campamento queda 30 casillas al norte de la llegada. El sur de la caja es bosque cerrado.
+- **Cuevas:** se excavan en x 12–87, y 6–95 (local) en vez de toda la caja.
+- **Los mismos spawns** (166 monstruos), ahora más juntos.
+
+Las imágenes de esta página son de antes del compactado.
+
 ## Zonas y spawns (seed 31)
 
 | Zona | Ambientación | Spawns |
 |------|--------------|--------|
-| Bosque de pinos | Camino serpenteante, arboledas (pino 4009, firetree 2700, beech 2707, sycamore 2701, poplar 2708), arbustos, flores, hongos y troncos; campamento con fogata 1423 y cartel | Wolf ×21, Bear ×5, War Wolf ×8, Deer ×8, Rabbit ×8 |
+| Bosque de pinos | Camino serpenteante, arboledas (pino 4009, firetree 2700, beech 2707, sycamore 2701, poplar 2708), arbustos, flores, hongos y ramas; campamento con fogata 1423, barril, cajón y cartel | Wolf ×21, Bear ×5, War Wolf ×8, Deer ×8, Rabbit ×8 |
 | Línea de nieve | Bordes de nieve 4737–4748 sobre el pasto | — |
 | Tundra Helada | Nieve 670, pino nevado 2698, árbol muerto 2697/2709/2717/2720, lago de hielo 671 con estalagmitas 4995, faroles 3744 | Winter Wolf ×27, Polar Bear ×5, Frost Troll ×18, Yeti ×1 (1800 s) |
 | Pie de la montaña | Piedras agrupadas 1309/1285, huesos y calaveras de dragón | (Winter Wolf) |
-| Cuevas del Dragón (z8) | ~7100 casillas, paredes 356–367 sobre roca 101, piedras y huesos | Dragon ×50, Dragon Lord ×8 (en la mitad lejana) |
-| Nido Negro (z9) | ~1100 casillas, más barro (355), muchos huesos | Dragon Lord ×6, Demodras ×1 (7200 s); Black Dragon ×3 solo con `--with-black-dragon` |
+| Cuevas del Dragón (z8) | ~3850 casillas, paredes 356–367 sobre roca 101, piedras y huesos | Dragon ×50, Dragon Lord ×8 (en la mitad lejana) |
+| Nido Negro (z9) | ~970 casillas, más barro (355), muchos huesos | Dragon Lord ×6, Demodras ×1 (7200 s); Black Dragon ×3 solo con `--with-black-dragon` |
 
 Bordes de la región: una franja de 8 casillas de bosque o pinos nevados, donde cada casilla lleva un bloqueo 1×1 y, cada dos, un árbol grande encima. Tapa el vacío del borde de la caja.
 
