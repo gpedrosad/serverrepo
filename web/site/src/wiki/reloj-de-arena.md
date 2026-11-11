@@ -1,7 +1,7 @@
 ---
 titulo: Reloj de Arena
 categoria: Lugares y actividades
-resumen: Sala compartida donde cada 2 minutos cambia la fase y aparece un nuevo grupo de monstruos furiosos.
+resumen: Sala chica compartida: un descanso y 6 oleadas de monstruos, cada una más fuerte que la anterior.
 orden: 30
 icono: 2036
 estado: publicado
@@ -11,39 +11,39 @@ estado: publicado
 
 - Se entra por el portal **Reloj de Arena** en la plaza de portales del templo (`168, 47, piso 7`).
 - Es **una sola sala** para todos: todos ven los mismos monstruos y el mismo reloj.
-- Cada **2 minutos** cambia la fase: se van los monstruos que quedan y aparece un grupo nuevo.
-- Hay 6 fases que se repiten. Casi todo son [[monstruos-furiosos]] y la última trae a Fury y Wrath.
+- El ciclo siempre es igual: **30 s de descanso** y después **6 oleadas de 60 s**, cada una más fuerte.
+- Entra durante el descanso para empezar desde la oleada 1.
 - No cuesta nada y no hay que pedir turno.
 
 ## Cómo funciona
 
-1. Entra al portal del Reloj de Arena.
-2. Al llegar ves un mensaje con la fase actual y el tiempo que queda.
-3. Abajo de la pantalla ves cada segundo *Reloj: quedan X s | fase: …*.
-4. Mata lo que puedas antes del cambio de fase.
-5. Para salir, usa el teleport al sur de la sala. Te deja en la plaza.
+1. Entra al portal del Reloj de Arena. Al llegar ves las reglas y en qué parte del ciclo está la sala.
+2. Abajo de la pantalla ves cada segundo la oleada, el tiempo que le queda y cuál viene después, por ejemplo *Oleada 3 de 6: Orcos | quedan 42 s | despues: Acero*.
+3. Mata la oleada antes de que se acabe el tiempo.
+4. Los **6 braseros** del norte echan fuego: uno por cada oleada que ya empezó.
+5. Después de la oleada 6 viene otro descanso y el ciclo vuelve a empezar.
+6. Para salir, usa el portal al sur de la sala. Te deja en la plaza.
 
-**Chronos**, el NPC de la sala, te dice la fase y el tiempo si le dices `hi` y luego `time` o `fase`.
+**Chronos**, el NPC de la sala, te explica las reglas si le dices `hi` y luego `reglas`, y te dice la oleada actual con `oleada`.
 
-## Las fases
+## Las oleadas
 
-| # | Fase | Monstruos |
+| # | Oleada | Monstruos |
 |---|---|---|
-| 1 | Scarab Nest | 3 Angry Scarab, 1 Furious Ancient Scarab, 2 Bone Beast |
-| 2 | Huntress Rage | 3 Angry Amazon, 2 Furious Valkyrie, 1 Angry Hunter |
-| 3 | Orc Legion | 3 Angry Orc Berserker, 2 Angry Orc Shaman, 1 Furious Orc Leader |
-| 4 | Steel & Venom | 2 Angry Hero, 2 Angry Gargoyle, 1 Furious Giant Spider, 1 Angry Black Knight |
-| 5 | Necropolis | 2 Angry Vampire, 1 Furious Necromancer, 1 Angry Lich, 1 Furious Warlock |
-| 6 | Abyssal Peak | 1 Angry Demon, 1 Fury, 1 Wrath |
+| 1 | Escarabajos | 3 Scarab, 1 Ancient Scarab |
+| 2 | Cazadoras | 2 Amazon, 2 Valkyrie |
+| 3 | Orcos | 2 Orc Berserker, 1 Orc Shaman, 1 Orc Leader |
+| 4 | Acero | 1 Hero, 1 Black Knight, 1 Gargoyle |
+| 5 | Necropolis | 2 Vampire, 1 Necromancer, 1 Lich |
+| 6 | Abismo | 1 Demon, 1 Fury |
 
-Después de la fase 6 vuelve la 1. El ciclo completo dura 12 minutos y sigue corriendo aunque no haya nadie.
+El ciclo completo dura 6 min 30 s y sigue corriendo aunque no haya nadie.
 
-> **Ojo:** al cambiar la fase, los monstruos que siguen vivos desaparecen sin dar exp ni botín. Si te queda poco tiempo, no empieces con el más fuerte.
+> **Ojo:** al empezar una oleada, los monstruos que siguen vivos de la anterior desaparecen sin dar exp ni botín.
 
-> **Tip:** si quieres cazar la fase 6, entra un poco antes y mira el reloj. Abyssal Peak es la más peligrosa: no vayas solo si no tienes nivel para un Demon.
+> **Tip:** la oleada 6 trae un Demon y una Fury en una sala chica. Si no tienes nivel para eso, sal antes de que empiece.
 
 ## Relacionado
 
-- [[monstruos-furiosos]]
 - [[el-crisol]]
 - [[wave-arena]]

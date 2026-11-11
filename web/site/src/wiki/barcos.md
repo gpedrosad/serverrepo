@@ -41,6 +41,7 @@ Si en la confirmación nombras otro destino, el barquero te pregunta por ese.
 - Con vocación no puedes volver a Epstein Island.
 - No puedes subir al barco **en combate**. Espera a que se te pase el PZ lock (`!pz`).
 - Si ya estás en el muelle de ese destino, el barquero no te cobra ni te lleva.
+- El barquero solo te ofrece los destinos a los que puedes ir: sin vocación, solo Epstein Island; con vocación, todos menos Epstein.
 
 > **Tip:** el Nimral del Gauntlet está en la primera sala. Desde ahí también puedes volver en barco si no quieres terminar el recorrido.
 
