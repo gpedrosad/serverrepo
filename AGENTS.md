@@ -29,6 +29,7 @@ Antes de proponer **cualquier** cambio, leer en este orden:
 4. `docs/INDEX.md` — índice maestro de toda la documentación.
 5. Según la tarea:
    - Deploy al VPS → `scripts/deploy/README-DEPLOY-VPS.md` (symlink: `scripts/README-DEPLOY-VPS.md`)
+   - Servidor de prueba en la ThinkPad (deploy de datos, cuenta GM, otras sesiones) → `docs/systems/THINKPAD_TEST_SERVER.md`
    - Índice de scripts → `scripts/README.md` (`deploy/`, `ot/`, `map/`, `otb/`, `client-rme/`, `web/`)
    - Clientes / RME / Zagan assets → `devtools/README.md` (symlinks en raíz con nombres históricos)
    - Cambios grandes / arquitectura → `docs/PROYECTO.md`

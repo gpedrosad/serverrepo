@@ -74,4 +74,6 @@ Re-ejecutable y determinista (misma semilla = mismo mapa). Escribe `test.otbm` (
 `test.otbm.bak-beastvalley` la primera vez, no va a git), spawns, carteles y manifiesto. Si `test.otbm`
 cambió en `main`, no mergear el binario: volver a correr el script sobre el mapa nuevo.
 
+**Estado (2026-11-11):** cargado en el servidor de prueba de la ThinkPad ([`THINKPAD_TEST_SERVER.md`](../systems/THINKPAD_TEST_SERVER.md)); el servidor arranca y carga el mapa. Falta recorrerlo en el juego. No está en el VPS.
+
 Antes de deployar un `test.otbm` nuevo, probar depots in-game ([`../gameplay/DEPOTS.md`](../gameplay/DEPOTS.md)).

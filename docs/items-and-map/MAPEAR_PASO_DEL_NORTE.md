@@ -140,7 +140,8 @@ Qué escribe:
 
 ## Pendiente
 
-- Probarlo en un servidor. En la ThinkPad falta acceso a Docker: `sudo usermod -aG docker gonzalo`.
+- Cargado en el servidor de prueba de la ThinkPad (nov 2026, compactado incluido; ver
+  [`../systems/THINKPAD_TEST_SERVER.md`](../systems/THINKPAD_TEST_SERVER.md)). Falta recorrerlo en el juego.
 - En el juego, mirar la esquina de la muralla junto a la puerta (deja una sombra en diagonal) y la densidad de las Cuevas del Dragón (58 monstruos).
 - Cuando el updater reparta el cliente con el look 230: `--with-black-dragon`.
 - Deploy al VPS solo con el OK de Gonzalo.
