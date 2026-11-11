@@ -19,6 +19,10 @@ Presets:
                  fuego de San Telmo que late, con lengua de fuego, resplandor y chispas
   ice-spider     Giant Spider (38) -> 235, hielo: cuerpo azul acero oscuro,
                  patas celeste/blanco y ojos cian
+  sparring-monk  Monk (57) -> 236, Trainer Monk: gambesón de entrenamiento color lino con
+                 costuras en rombo, cinturón negro con puntas rojas
+  novice-monk    Monk (57) -> 237, Mini Trainer Monk: túnica de aprendiz verde bosque, cordón
+                 de cuerda clara y dos parches cosidos
 
 Uso:
   python3 scripts/client-rme/add_recolor_look.py --preset frost-dragon DIR_THINGS [--preview x.png]
@@ -416,6 +420,124 @@ def recolor_ice(pixel):
 
 CARD4 = ((1, 0), (-1, 0), (0, 1), (0, -1))
 
+# ---------------------------------------------------------------- trainers (Monk 57)
+
+def _monk_class(pixel):
+    """Partes del Monk (57): piel (cara y manos), cinturón dorado, contorno o túnica."""
+    r, g, b, a = pixel
+    if a == 0:
+        return None
+    h, s, v = colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
+    if 0.06 <= h <= 0.10 and 0.28 <= s <= 0.47 and v > 0.74:
+        return "skin"
+    if 0.095 <= h <= 0.13 and s > 0.47 and v > 0.76:
+        return "belt"
+    if v < 0.22:
+        return "outline"
+    return "robe"
+
+
+LINEN = [(0, (40, 30, 26)), (0.25, (112, 96, 78)), (0.5, (178, 160, 128)), (0.75, (226, 212, 178)),
+         (1, (252, 246, 224))]
+HOOD_RED = [(0, (40, 6, 10)), (0.3, (104, 16, 22)), (0.6, (170, 36, 36)), (1, (236, 100, 84))]
+BLACK_BELT = [(0, (16, 14, 20)), (0.6, (44, 40, 50)), (1, (98, 92, 108))]
+
+
+def _darker(pixel, k):
+    r, g, b, _a = pixel
+    return (int(r * k), int(g * k), int(b * k), 255)
+
+
+def recolor_sparring_monk(pixel):
+    """Trainer Monk: gambesón de entrenamiento color crudo y cinturón negro (la capucha va aparte)."""
+    part = _monk_class(pixel)
+    if part in (None, "skin"):
+        return pixel
+    if part == "outline":
+        return _darker(pixel, 0.8)
+    lum = _lum(pixel)
+    if part == "belt":
+        return gradient(BLACK_BELT, (lum - 0.55) / 0.4) + (255,)
+    return gradient(LINEN, (lum ** 0.85) * 1.25) + (255,)
+
+
+def _hood(orig):
+    """Píxeles de túnica que forman la capucha: el tramo de arriba a la izquierda de la silueta
+    (la figura va en diagonal), medido sobre x + y."""
+    robe = [i for i, px in enumerate(orig) if _monk_class(px) == "robe"]
+    if not robe:
+        return set()
+    diag = [(i % 64) + (i // 64) for i in robe]
+    lo, hi = min(diag), max(diag)
+    return {i for i, d in zip(robe, diag) if d <= lo + (hi - lo) * 0.3}
+
+
+def sparring_monk_details(original, recolored):
+    """Capucha roja acolchada, costuras en rombo del gambesón y puntas rojas del cinturón."""
+    out = []
+    for orig, new in zip(original, recolored):
+        new = list(new)
+        hood = _hood(orig)
+        for i, px in enumerate(orig):
+            if _monk_class(px) != "robe":
+                continue
+            x, y = i % 64, i // 64
+            if i in hood:
+                new[i] = gradient(HOOD_RED, (_lum(px) ** 0.85) * 1.25) + (255,)
+            elif (x + y) % 6 == 0 or (x - y) % 6 == 0:
+                new[i] = _darker(new[i], 0.8)
+        belt = [i for i, px in enumerate(orig) if _monk_class(px) == "belt"]
+        if belt:
+            for i in sorted(belt, key=lambda i: (i % 64) + (i // 64))[-2:]:   # el extremo que cuelga
+                new[i] = (196, 34, 38, 255)
+        out.append(new)
+    return out
+
+
+FOREST = [(0, (6, 18, 12)), (0.25, (22, 56, 34)), (0.5, (44, 98, 56)), (0.75, (88, 148, 84)),
+          (1, (176, 214, 142))]
+ROPE = [(0, (120, 100, 66)), (1, (244, 234, 204))]
+PATCH = [(0, (90, 62, 34)), (0.5, (160, 118, 70)), (1, (214, 176, 118))]
+
+
+def recolor_novice_monk(pixel):
+    """Mini Trainer Monk: túnica de aprendiz verde bosque con cordón de cuerda clara."""
+    part = _monk_class(pixel)
+    if part in (None, "skin"):
+        return pixel
+    lum = _lum(pixel)
+    if part == "belt":
+        return gradient(ROPE, (lum - 0.55) / 0.4) + (255,)
+    return gradient(FOREST, (lum ** 0.8) * 1.3) + (255,)
+
+
+def novice_monk_details(original, recolored):
+    """Dos parches de tela cosidos en la túnica (posición relativa a la silueta de cada cuadro)."""
+    out = []
+    for orig, new in zip(original, recolored):
+        new = list(new)
+        robe = {(i % 64, i // 64) for i, px in enumerate(orig) if _monk_class(px) == "robe"}
+        if robe:
+            xs = [x for x, _ in robe]
+            ys = [y for _, y in robe]
+            x0, x1, y0, y1 = min(xs), max(xs), min(ys), max(ys)
+            for fx, fy in ((0.4, 0.55), (0.66, 0.8)):
+                cx, cy = int(x0 + (x1 - x0) * fx), int(y0 + (y1 - y0) * fy)
+                cells = [(cx + dx, cy + dy) for dx in range(-2, 2) for dy in range(-2, 2)]
+                if all(c in robe for c in cells):
+                    for x, y in cells:
+                        corner = x in (cx - 2, cx + 1) and y in (cy - 2, cy + 1)
+                        edge = x in (cx - 2, cx + 1) or y in (cy - 2, cy + 1)
+                        lum = _lum(orig[y * 64 + x])
+                        if corner:
+                            col = (70, 46, 26)                          # puntada
+                        else:
+                            col = gradient(PATCH, lum * 1.5 + (0.0 if edge else 0.15))
+                        new[y * 64 + x] = col + (255,)
+        out.append(new)
+    return out
+
+
 
 # Un preset = criatura base (source), looktype vacío de destino (target), paleta por píxel (recolor) y,
 # opcionales, el retoque por cuadro (frames_post) y el clasificador de partes del base (parts), que
@@ -429,6 +551,10 @@ PRESETS = {
     "tide-priest": dict(source=9, target=234, recolor=recolor_tide_priest, name="Tide Priest",
                         frames_post=tide_priest_details, parts=_necro_part),
     "ice-spider": dict(source=38, target=235, recolor=recolor_ice, name="Ice Spider"),
+    "sparring-monk": dict(source=57, target=236, recolor=recolor_sparring_monk, name="Trainer Monk",
+                          frames_post=sparring_monk_details, parts=_monk_class),
+    "novice-monk": dict(source=57, target=237, recolor=recolor_novice_monk, name="Mini Trainer Monk",
+                        frames_post=novice_monk_details, parts=_monk_class),
 }
 
 

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <monster name="Trainer Monk" level="1" maglevel="0" experience="0" skillmul="1" skillrate="1.0" trainer="1" pushable="0" armor="100" defense="100" canpushitems="0" staticattack="8" changetarget="0" speed="220">
 	<health now="50000" max="50000"/>
-	<look type="57" head="20" body="30" legs="40" feet="50" corpse="3128"/>
+	<look type="236" head="0" body="0" legs="0" feet="0" corpse="3128"/>
 	<combat targetdistance="1" runonhealth="0"/>
 
 <attacks>
