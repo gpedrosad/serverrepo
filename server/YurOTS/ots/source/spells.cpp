@@ -368,6 +368,8 @@ int SpellScript::registerFunctions(){
 	lua_register(luaState, "manaShield", SpellScript::luaActionManaShield);
 	lua_register(luaState, "getPosition", SpellScript::luaActionGetPos);
 	lua_register(luaState, "getAttackedCreaturePos", SpellScript::luaActionGetAttackedCreaturePos);
+	lua_register(luaState, "getPlayerSkill", SpellScript::luaActionGetPlayerSkill);
+	lua_register(luaState, "getPlayerWeapon", SpellScript::luaActionGetPlayerWeapon);
 	lua_register(luaState, "getSpeed", SpellScript::luaActionGetSpeed);
 	lua_register(luaState, "changeSpeed", SpellScript::luaActionChangeSpeed);
 	lua_register(luaState, "changeSpeedMonster", SpellScript::luaActionChangeSpeedMonster);
@@ -1727,6 +1729,73 @@ int SpellScript::luaActionGetAttackedCreaturePos(lua_State *L){
 		lua_pushnumber(L, target->pos.z);
 	else
 		lua_pushnil(L);
+	lua_settable(L, -3);
+	return 1;
+}
+
+// getPlayerSkill(cid, skill): nivel de un skill del jugador (0 puños, 1 club, 2 sword, 3 axe,
+// 4 distancia, 5 escudo, 6 pesca). -1 si cid no es un jugador o el skill no existe.
+// Lo usan exori hur y exori con para escalar el daño con el skill, como en las versiones nuevas.
+int SpellScript::luaActionGetPlayerSkill(lua_State *L)
+{
+	int skill = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	unsigned int cid = (unsigned int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	Player* player = spell ? dynamic_cast<Player*>(spell->game->getCreatureByID(cid)) : NULL;
+	if(!player || skill < SKILL_FIST || skill > SKILL_FISH)
+		lua_pushnumber(L, -1);
+	else
+		lua_pushnumber(L, (double)player->getSkill((skills_t)skill, SKILL_LEVEL));
+	return 1;
+}
+
+// getPlayerWeapon(cid): arma en las manos (primero la derecha) como tabla
+// {type = "sword" | "club" | "axe" | "dist" | "none", attack = n, id = n}.
+// Escudos y lo que no es arma se saltean. Sin jugador o sin arma: type "none", attack 0, id 0.
+int SpellScript::luaActionGetPlayerWeapon(lua_State *L)
+{
+	unsigned int cid = (unsigned int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	Player* player = spell ? dynamic_cast<Player*>(spell->game->getCreatureByID(cid)) : NULL;
+	const char* type = "none";
+	int attack = 0;
+	int id = 0;
+	if(player) {
+		for(int slot = SLOT_RIGHT; slot <= SLOT_LEFT; slot++) {
+			Item* item = player->getItem(slot);
+			if(!item)
+				continue;
+			const char* kind = NULL;
+			switch(item->getWeaponType()) {
+				case SWORD: kind = "sword"; break;
+				case CLUB: kind = "club"; break;
+				case AXE: kind = "axe"; break;
+				case DIST: kind = "dist"; break;
+				default: break;
+			}
+			if(!kind)
+				continue;
+			type = kind;
+			id = item->getID();
+			attack = Item::items[id].attack;
+			break;
+		}
+	}
+
+	lua_newtable(L);
+	lua_pushstring(L, "type");
+	lua_pushstring(L, type);
+	lua_settable(L, -3);
+	lua_pushstring(L, "attack");
+	lua_pushnumber(L, attack);
+	lua_settable(L, -3);
+	lua_pushstring(L, "id");
+	lua_pushnumber(L, id);
 	lua_settable(L, -3);
 	return 1;
 }

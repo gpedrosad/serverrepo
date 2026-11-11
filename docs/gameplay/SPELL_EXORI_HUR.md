@@ -1,150 +1,54 @@
-# Spell: `exori hur` (Whirlwind Throw) — target a distancia (jul 2026)
+# Spell: `exori hur` (Whirlwind Throw)
 
-Cambio del strike direccional a **golpe físico al target de la battle list**, rango 5.
+Rehecho de cero en nov 2026 con la idea de las versiones nuevas (8.x en adelante): el knight **lanza su
+arma de melee** contra el blanco marcado y el daño depende del arma y del skill, no del magic level.
 
-Leer también: [`SPELL_RUNTIME.md`](SPELL_RUNTIME.md) (carga Lua / bindings), [`SPELL_EXHAUSTION.md`](SPELL_EXHAUSTION.md) (exhaust ofensivo 2 s).
+Leer también: [`SPELL_RUNTIME.md`](SPELL_RUNTIME.md) (carga Lua / bindings), [`SPELL_EXHAUSTION.md`](SPELL_EXHAUSTION.md)
+(exhaust ofensivo 2 s), [`SPELL_EXORI_CON.md`](SPELL_EXORI_CON.md) (el de paladin, hecho igual).
 
----
-
-## Specs actuales
+## Specs
 
 | Atributo | Valor |
-|----------|--------|
-| words | `exori hur` |
-| XML name | Whirlwind Throw |
+|----------|-------|
+| words / nombre | `exori hur` / Whirlwind Throw |
 | maglv / mana | 3 / 40 |
 | vocación | Knight (`id="4"`, incluye Elite Knight) |
-| attackType | `ATTACK_PHYSICAL` |
-| modo | **target** vía `doTargetMagic` (no área) |
-| target | `creature->attackedCreature` (battle list) |
-| rango | **5** Chebyshev (`max(dx,dy) ≤ 5`), mismo piso |
-| LoS | sí (`creatureThrowRune` / `canThrowObjectTo`) |
-| proyectil | `NM_ANI_LARGEROCK` |
-| hit / damage effect | `NM_ME_DRAW_BLOOD` / `NM_ME_HIT_AREA` |
-| daño min / max | `(level + maglv) * 1.0` / `(level + maglv) * 1.8` |
-| exhaust | ofensivo normal (~2000 ms); **sin** `reduceExhaustion` |
+| daño | físico, al blanco de la battle list (`doTargetMagic`, con línea de vista) |
+| alcance | 5 casillas (`max(dx, dy) ≤ 5`), mismo piso |
+| necesita | espada, hacha o maza en una mano (arcos, escudos o sin arma: no se lanza) |
+| mínimo | `nivel / 5 + (skill + ataque del arma) / 3` |
+| máximo | `nivel / 5 + skill + ataque del arma` |
+| proyectil | espada → cuchillo arrojadizo (8), hacha → estrella arrojadiza (7), maza → roca (11) |
+| exhaust | ofensivo normal (2 s) |
 
-Sin target, fuera de rango, otro piso, o target = self → `onCast` retorna `false` (no gasta mana).
+La fórmula es la de TFS 1.x. El skill es el del arma que tiene en la mano (sword, axe o club).
+Ejemplo a nivel 100: espada de ataque 30 con skill 90 → 60 a 140.
 
-`spells.xml` **no** cambió (sigue maglv/mana/voc iguales).
+Si falla (sin arma de melee, sin blanco, otro piso, fuera de alcance), `onCast` devuelve `false` y no
+gasta maná.
 
----
+En 7.6 no existe el proyectil del arma girando de las versiones nuevas. Para tenerlo habría que agregar
+proyectiles al cliente (como el pack "ice", ver [`CLIENT_EFFECTS.md`](CLIENT_EFFECTS.md)) y repartir el
+cliente.
 
-## Archivos tocados
+## Antes (jul 2026)
+
+Daño `(nivel + magic level) × 1.0–1.8`, siempre con el proyectil de roca y sin mirar el arma.
+
+## Archivos
 
 | Archivo | Qué |
 |---------|-----|
-| `server/YurOTS/ots/data/spells/instant/exori hur.lua` | Rewrite: target + rango 5 |
-| `server/YurOTS/ots/source/spells.h` | Declara `luaActionGetAttackedCreaturePos` |
-| `server/YurOTS/ots/source/spells.cpp` | Registra `getAttackedCreaturePos` + implementación |
+| `server/YurOTS/ots/data/spells/instant/exori hur.lua` | El hechizo |
+| `server/YurOTS/ots/source/spells.cpp` / `spells.h` | `getAttackedCreaturePos`, `getPlayerWeapon`, `getPlayerSkill` |
+| `server/YurOTS/ots/data/spells/spells.xml` | maglv, mana, vocación |
 
-**Rebuild C++ obligatorio** si el binding es nuevo (sin él el Lua falla al castear).
+**Necesita el binario compilado con `getPlayerWeapon` y `getPlayerSkill`** (nov 2026). Con un binario
+viejo el hechizo da error de Lua al lanzarse y no hace nada.
 
----
+## Probar
 
-## Binding nuevo: `getAttackedCreaturePos(cid)`
-
-Devuelve tabla `{x,y,z}` del target actual del caster, o `nil` en cada eje si no hay `attackedCreature` / criatura inválida.
-
-Reutilizable por otros instants que necesiten el target de battle list (monstruos y players). No confundir con `getPosition(name)`, que solo resuelve **players** por nombre (usado por `exura sio`).
-
----
-
-## Cómo revertir
-
-### Opción A — solo el spell (rápido, deja el binding)
-
-Restaurar el Lua viejo. El binding C++ puede quedar (inofensivo si nadie lo llama).
-
-```bash
-git checkout HEAD -- "server/YurOTS/ots/data/spells/instant/exori hur.lua"
-# o pegar el script de la sección "Script anterior" abajo
-```
-
-Reiniciar `yurots` (sin rebuild si solo tocás Lua).
-
-### Opción B — revert completo (Lua + C++)
-
-1. Restaurar `exori hur.lua` (script anterior abajo).
-2. En `spells.h`: quitar `luaActionGetAttackedCreaturePos`.
-3. En `spells.cpp`: quitar el `lua_register(..., "getAttackedCreaturePos", ...)` y toda la función `luaActionGetAttackedCreaturePos`.
-4. Rebuild + restart:
-
-```bash
-docker compose -f docker-compose.prod.yml run --rm yurots bash -c 'cd /app/YuroTS/ots/source && make -j2 yurots'
-docker compose -f docker-compose.prod.yml up -d yurots
-python3 scripts/ot-probe.py 127.0.0.1 7171
-```
-
-Si el cambio ya está en un commit propio:
-
-```bash
-git revert <commit-sha>
-# luego rebuild si el revert toca C++
-```
-
----
-
-## Script anterior (backup para revert)
-
-Strike direccional con `doAreaMagic`. Bug conocido: el `4` (sur) estaba a **5 SQM** al sur; N/O/E a 1 SQM.
-
-```lua
-    area = {
-    				{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    				{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    				{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    				{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    				{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    				{0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-    				{0, 0, 0, 0, 0, 0, 0, 2, 0, 3, 0, 0, 0, 0, 0, 0, 0},
-    				{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    				{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    				{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    				{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-    				{0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0},
-    				{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-    }
-
-    attackType = ATTACK_PHYSICAL
-    needDirection = true
-    areaEffect = NM_ME_HIT_AREA
-    animationEffect = NM_ANI_LARGEROCK
-
-    hitEffect = NM_ME_DRAW_BLOOD
-    damageEffect = NM_ME_HIT_AREA
-    animationColor = RED
-    offensive = true
-    drawblood = true
-
-    ExoriHurObject = MagicDamageObject(attackType, animationEffect, hitEffect, damageEffect, animationColor, offensive, drawblood, 0, 0)
-
-    function onCast(cid, creaturePos, level, maglv, var)
-    centerpos = {x=creaturePos.x, y=creaturePos.y, z=creaturePos.z}
-    ExoriHurObject.minDmg = (level * 1 + maglv * 1) * 1.0
-    ExoriHurObject.maxDmg = (level * 1 + maglv * 1) * 1.8
-
-    return doAreaMagic(cid, centerpos, needDirection, areaEffect, area, ExoriHurObject:ordered())
-    end
-```
-
----
-
-## Checklist de prueba
-
-1. Rebuild binario + `docker compose -f docker-compose.prod.yml up -d yurots`
-2. `python3 scripts/ot-probe.py 127.0.0.1 7171`
-3. Knight con ML ≥ 3, mana ≥ 40, **target en battle list**
-4. Target a 1–5 SQM con LoS → proyectil rock + daño
-5. Sin target / >5 SQM / sin LoS → no castea
-6. Comparar vs `exori con` (sigue siendo strike 1 SQM direccional)
-
----
-
-## Relacionado
-
-| Spell | Rol |
-|-------|-----|
-| `exori con` | Brutal Strike — 1 SQM delante, Paladin/RP (`voc 3`), mana 30 |
-| `exori` / `exori gran` | Área alrededor del caster |
-| `exura sio` | Target por nombre (`getPosition`); solo players |
+1. Knight con espada, hacha y maza: marcar un monstruo a 3–5 casillas y decir `exori hur`. Cambia el
+   proyectil según el arma.
+2. Sin arma, con un arco o sin blanco: no pasa nada y no gasta maná.
+3. A 6 casillas o detrás de una pared: no se lanza.

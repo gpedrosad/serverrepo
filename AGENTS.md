@@ -81,7 +81,8 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 | Magic Wall (duración / decay de fields) | `docs/gameplay/MAGIC_WALL.md` |
 | Wands, rods, Crimson Wand, escalado de ML | `docs/gameplay/WANDS.md` |
 | Spells / runas (carga Lua, safeCast, Soulfire, Paralyze, Anchor) | `docs/gameplay/SPELL_RUNTIME.md` |
-| Whirlwind Throw (`exori hur`) target a distancia | `docs/gameplay/SPELL_EXORI_HUR.md` |
+| Whirlwind Throw (`exori hur`): lanzar el arma según skill y ataque | `docs/gameplay/SPELL_EXORI_HUR.md` |
+| Ethereal Spear (`exori con`): lanza etérea según skill de distancia | `docs/gameplay/SPELL_EXORI_CON.md` |
 | Energy Strike Hur (`exori vis hur`) target a distancia (Sorc/Druid, visual HMM) | `docs/gameplay/SPELL_EXORI_VIS_HUR.md` |
 | Challenge (`exeta res`) taunt Knight lock 6 s | `docs/gameplay/SPELL_EXETA_RES.md` |
 | Exhausted (spells/runas, ofensivo 2s / no-ofensivo 1s, bindings con exhaust) | `docs/gameplay/SPELL_EXHAUSTION.md` |
@@ -133,7 +134,7 @@ Tipos disponibles:
 | `OTB_DIST_THROWINGKNIFE` (`8`) | `DIST_THROWINGKNIFE` | `NM_ANI_THROWINGKNIFE` (`8`) | Throwing knife. |
 | `OTB_DIST_SMALLSTONE` (`9`) | `DIST_SMALLSTONE` | `NM_ANI_SMALLSTONE` (`9`) | Small stone. |
 | `OTB_DIST_SUDDENDEATH` (`10`) | `DIST_SUDDENDEATH` | `NM_ANI_SUDDENDEATH` (`10`) | Sudden death/death missile. |
-| `OTB_DIST_LARGEROCK` (`11`) | `DIST_LARGEROCK` | `NM_ANI_LARGEROCK` (`11`) | Large rock, usado por `exori hur`. |
+| `OTB_DIST_LARGEROCK` (`11`) | `DIST_LARGEROCK` | `NM_ANI_LARGEROCK` (`11`) | Large rock, usado por `exori hur` con maza. |
 | `OTB_DIST_SNOWBALL` (`12`) | `DIST_SNOWBALL` | `NM_ANI_SNOWBALL` (`12`) | Snowball. |
 | `OTB_DIST_POWERBOLT` (`13`) | `DIST_POWERBOLT` | `NM_ANI_POWERBOLT` (`13`) | Power bolt. |
 | `OTB_DIST_SPEAR` (`14`) | `DIST_SPEAR` | `NM_ANI_SPEAR` (`0`, solo C++) | Spear. Caso legacy: el valor C++ es `0`; usar el valor OTB `14` al editar items. |

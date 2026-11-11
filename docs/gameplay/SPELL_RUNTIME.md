@@ -109,7 +109,9 @@ Registrados en el constructor de `SpellScript`:
 | `doConvinceCreature` | `luaActionDoConvinceCreature` |
 | `doChameleon` | `luaActionDoChameleon` |
 | `doParalyze` | `luaActionDoParalyze` |
-| `getAttackedCreaturePos` | `luaActionGetAttackedCreaturePos` — pos del target de battle list (usado por `exori hur`; ver [`SPELL_EXORI_HUR.md`](SPELL_EXORI_HUR.md)) |
+| `getAttackedCreaturePos` | `luaActionGetAttackedCreaturePos` — pos del target de battle list (usado por `exori hur`, `exori con` y `exori vis hur`) |
+| `getPlayerSkill(cid, skill)` | `luaActionGetPlayerSkill` — nivel de un skill (0 puños, 1 club, 2 sword, 3 axe, 4 distancia, 5 escudo, 6 pesca); -1 si no es jugador (nov 2026, [`SPELL_EXORI_CON.md`](SPELL_EXORI_CON.md)) |
+| `getPlayerWeapon(cid)` | `luaActionGetPlayerWeapon` — `{type = "sword"/"club"/"axe"/"dist"/"none", attack, id}` del arma en las manos (nov 2026, [`SPELL_EXORI_HUR.md`](SPELL_EXORI_HUR.md)) |
 | `doChallenge` | `luaActionDoChallenge` — taunt 3×3 / lock 6 s (`exeta res`; ver [`SPELL_EXETA_RES.md`](SPELL_EXETA_RES.md)) |
 
 Patrones comunes: mismo piso, `canThrowObjectTo`, puff en fallo, PZ / immunities donde corresponde.
