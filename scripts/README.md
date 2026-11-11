@@ -74,6 +74,8 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | Script | Uso |
 |--------|-----|
 | `build_zagan_test_assets.py` | Pipeline sprites/OTB/dat Zagan |
+| `sprite_tool.py` | Sprites de criaturas: `bases`, `new`, `inspect`, `check`, `verify` (guía: `docs/gameplay/SPRITE_RECOLOR_GUIDE.md`) |
+| `add_recolor_look.py` + `presets/` + `sprite_kit.py` | Aplica un preset de criatura (un archivo por criatura en `presets/`) a `Tibia.dat`/`.spr` |
 | `play-yurots-client.sh` / `open-rme.sh` | Cliente y RME locales |
 | `patch-tibia760-client.py` | Patcher cliente 7.6 |
 

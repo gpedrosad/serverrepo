@@ -73,7 +73,7 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 | Portales del templo (plaza) | `docs/CAMBIAR-MAPA.md` + `scripts/map/temple-portals.py` |
 | Private Trainer Dummy | `docs/gameplay/PRIVATE_TRAINER_DUMMY.md` |
 | Monstruo custom (XML, hechizos propios, looktype nuevo) | `docs/gameplay/CUSTOM_MONSTER_WORKFLOW.md` |
-| Sprites de criaturas: crear o editar (`add_recolor_look.py`, `sprite_tool.py`) | `docs/gameplay/SPRITE_RECOLOR_GUIDE.md` |
+| Sprites de criaturas: crear o editar (un preset por criatura en `scripts/client-rme/presets/`, `sprite_tool.py`) | `docs/gameplay/SPRITE_RECOLOR_GUIDE.md` (ficha rápida arriba) y `docs/gameplay/SPRITE_BASES.md` (bases) |
 | NPCs (Lua): componentes, `npcDefine`, pruebas sin server | `docs/gameplay/NPC_SYSTEM.md` |
 | PvP, frag list, balance de combate | `docs/PVP_SYSTEM.md` |
 | Trade, items, transacciones | `docs/TRADE_SYSTEM.md` |
@@ -95,6 +95,10 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 | Items custom Zagan (sprites, OTB, gameplay) | `docs/items-and-map/ZAGAN_TEST_ITEMS.md` y `docs/items-and-map/IMPORTAR_ITEM_DESDE_IMAGEN.md` |
 
 Si el subsistema no aparece en la tabla, buscar en `docs/INDEX.md` o preguntar.
+
+**Cerrar el ciclo:** al terminar algo que costó descubrir (un umbral, un truco, un error), anotarlo en el doc
+del subsistema para que la próxima vez no haya que redescubrirlo. Si el doc tiene una sección de
+"errores que ya pasaron" o de "bases/casos ya estudiados", va ahí.
 
 ---
 

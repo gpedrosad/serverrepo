@@ -96,4 +96,4 @@ Lo llama también el [Tide Priest](TIDE_PRIEST.md) (hasta 2 a la vez).
 | Registro | `server/YurOTS/ots/data/monster/monsters.xml` |
 | Ataque | `data/spells/runes/drowned_seaweed.lua` + `spells.xml` (id 5037) + `NM_ANI_FLYPOISONFIELD` en `spells/lib/spells.lua` |
 | RME | `rme-extensions/yurots-creatures.xml` y `devtools/rme/rme-client-760/Tibia.{dat,spr}` |
-| Sprite | `scripts/client-rme/add_recolor_look.py` (preset `drowned-sailor`) |
+| Sprite | `scripts/client-rme/presets/drowned_sailor.py` (preset `drowned-sailor`; se aplica con `add_recolor_look.py`) |

@@ -95,4 +95,4 @@ Hoy no está en ningún spawn.
 | Registro | `server/YurOTS/ots/data/monster/monsters.xml` |
 | Ataques | `data/spells/runes/icemonk_iceshard.lua`, `icemonk_frostburst.lua` + `spells.xml` (ids 5035, 5036) |
 | RME | `rme-extensions/yurots-creatures.xml` y `devtools/rme/rme-client-760/Tibia.{dat,spr}` |
-| Sprite | `scripts/client-rme/add_recolor_look.py` (preset `ice-monk`) |
+| Sprite | `scripts/client-rme/presets/ice_monk.py` (preset `ice-monk`; se aplica con `add_recolor_look.py`) |

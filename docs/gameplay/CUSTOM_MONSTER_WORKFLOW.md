@@ -253,31 +253,18 @@ Se verificó leyendo los archivos resultantes con un parser independiente:
 > Tiene los comandos en orden, una plantilla de preset, los trucos que ya funcionaron y los umbrales de
 > color de cada base. Leerla antes de escribir un preset.
 
-**Script genérico:** `scripts/client-rme/add_recolor_look.py --preset NOMBRE [DIR_THINGS] [--preview x.png]`.
-Cada criatura nueva es un preset (base, looktype destino y función de paleta). Presets: `black-dragon` (230),
-`frost-dragon` (231, ver [`FROST_DRAGON.md`](FROST_DRAGON.md)), `ice-monk` (232, desde el Monk 57, ver
-[`ICE_MONK.md`](ICE_MONK.md)), `drowned-sailor` (233, desde el Crypt Shambler 100, ver
-[`DROWNED_SAILOR.md`](DROWNED_SAILOR.md)), `tide-priest` (234, desde el Necromancer 9, ver
-[`TIDE_PRIEST.md`](TIDE_PRIEST.md)) y `ice-spider` (235, desde el Giant Spider 38, ver
-[`ICE_SPIDER.md`](ICE_SPIDER.md)). Sirve para criaturas 2×2 (48 sprites) y 1×1 (12 sprites).
-Sin `DIR_THINGS` solo genera la vista previa. Con `--replace` rehace un look que ya existe (para editarlo).
-Usados hasta ahora: **230 Black Dragon, 231 Frost Dragon, 232 Ice Monk, 233 Drowned Sailor, 234 Tide Priest, 235 Ice Spider**.
+**Cómo está armado:** cada criatura es un preset, un archivo en `scripts/client-rme/presets/`
+(`tide_priest.py` = preset `tide-priest`) con `PRESET = dict(name, source, target, parts, palettes, detail)`.
+`sprite_tool.py new NOMBRE --base LOOK` lo crea listo para editar; `add_recolor_look.py --preset NOMBRE
+DIR_THINGS` lo aplica (con `--replace` rehace un look que ya existe). Sirve para criaturas 2×2 (48 sprites)
+y 1×1 (12 sprites) con 4 direcciones y 3 cuadros; la estructura del base se copia tal cual.
 
-Un preset nuevo es una entrada del diccionario `PRESETS`:
+Presets y looktypes usados: `python3 scripts/client-rme/sprite_tool.py looks` (lista cada preset, su base,
+su archivo y si está aplicado). Bases posibles: [`SPRITE_BASES.md`](SPRITE_BASES.md).
 
-| Clave | Qué es |
-|-------|--------|
-| `source` | Criatura base (34 Dragon, 39 Dragon Lord, 35 Demon, 55 Behemoth, 52 Winter Wolf…) |
-| `target` | Looktype vacío elegido (6.1) |
-| `recolor` | Paleta nueva, píxel por píxel. Conviene conservar los detalles que identifican (ojos) y mapear el resto por brillo |
-| `frames_post` | Opcional: retoque por cuadro completo (ojos, objetos, prendas) |
-| `parts` | Opcional: clasificador de partes del base, para el mapa de partes de `sprite_tool.py inspect` |
-
-La estructura del base (tamaño, direcciones, cuadros) se copia tal cual. Funciona con cualquier criatura de 1×1 o 2×2 con 4 direcciones y 3 cuadros.
-
-`scripts/client-rme/sprite_tool.py` ahorra los scripts sueltos: `looks` (looktypes libres), `inspect`
-(el sprite en texto), `sheet` (original | nuevo), `scene` (sobre el mapa real) y `verify` (integridad del
-`.dat`/`.spr` contra git).
+`scripts/client-rme/sprite_tool.py` ahorra los scripts sueltos: `bases` (catálogo de bases), `new` (crear
+preset), `inspect` (el sprite en texto), `check` (hoja + escena), `sheet`, `scene` y `verify` (integridad
+del `.dat`/`.spr` contra git).
 
 ### 6.5 ¿Y la IA para sprites? (probado: no)
 

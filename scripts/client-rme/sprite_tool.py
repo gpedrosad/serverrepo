@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
-"""Mirar, comparar y verificar sprites de criaturas del cliente 7.6. Sin dependencias (no usa Pillow).
+"""Mirar, comparar, crear y verificar sprites de criaturas del cliente 7.6. Sin dependencias (no usa Pillow).
 
-  sprite_tool.py looks                        looktypes libres, custom ya usados y quién usa cada look
+  sprite_tool.py looks                        looktypes libres, presets (con su archivo) y quién usa cada look
+  sprite_tool.py bases [--write]              catálogo de criaturas que sirven de base, con sus colores
+  sprite_tool.py new NOMBRE --base LOOK       crea presets/NOMBRE.py listo para editar (partes y paletas)
   sprite_tool.py inspect LOOK|PRESET          estructura, colores (HSV), partes y mapa en texto por cuadro
+  sprite_tool.py check PRESET                 hoja + escena en un paso y cuántos píxeles cambiaron
   sprite_tool.py sheet LOOK|PRESET salida.png hoja 4 direcciones x 3 cuadros; con preset: original | nuevo
   sprite_tool.py scene PRESET salida.png      el sprite sobre un recorte real del mapa, a tamaño de juego
   sprite_tool.py verify                       Tibia.dat/.spr de RME contra git: qué looks cambiaron y que
                                               ítems, efectos y sprites viejos siguen idénticos
 
-Los presets son los de add_recolor_look.py. Nada de esto escribe en Tibia.dat / Tibia.spr.
+Los presets son los archivos de scripts/client-rme/presets/. Nada de esto escribe en Tibia.dat / Tibia.spr.
 Receta completa: docs/gameplay/SPRITE_RECOLOR_GUIDE.md.
 """
 from __future__ import annotations
@@ -17,6 +20,7 @@ import argparse
 import re
 import subprocess
 import sys
+import tempfile
 from collections import Counter
 from pathlib import Path
 
@@ -25,6 +29,7 @@ REPO = HERE.parents[1]
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(REPO / "scripts/map/kb"))
 import add_recolor_look as recolor  # noqa: E402
+import sprite_kit as kit  # noqa: E402
 from add_black_dragon_look import read_outfits, read_spr  # noqa: E402
 
 DATA_DIR = REPO / "server/YurOTS/ots/data"
@@ -100,6 +105,13 @@ class Canvas:
 
 # ---------- looks ----------
 
+def next_free(things: dict, used: dict) -> int | None:
+    """Primer looktype sin sprites ni monstruo/NPC, después del último custom."""
+    last = max(p["target"] for p in recolor.PRESETS.values())
+    return next((n for n, o in enumerate(things["outfits"], 1)
+                 if n > last and not any(o["ids"]) and n not in used), None)
+
+
 def cmd_looks(a) -> int:
     things = load(a.things)
     used = creatures_by_look()
@@ -115,9 +127,8 @@ def cmd_looks(a) -> int:
     for target in sorted(presets):
         name, p = presets[target]
         state = "aplicado" if any(things["outfits"][target - 1]["ids"]) else "SIN aplicar en este dat"
-        print(f"  {target}  {p['name']:<16} preset {name:<15} base {p['source']:<4} {state}")
-    nxt = next((n for n in free_unused if n > max(presets)), None)
-    print(f"\nPróximo libre sugerido: {nxt}")
+        print(f"  {target}  {p['name']:<18} preset {name:<15} base {p['source']:<4} {state}   presets/{p['file'].name}")
+    print(f"\nPróximo libre sugerido: {next_free(things, used)}")
     if a.all:
         print("\nLook  forma  sprites  monstruos y NPC que lo usan")
         for n, o in enumerate(things["outfits"], 1):
@@ -135,7 +146,7 @@ HUE_LEGEND = ("Letras por color: r rojo, n naranja/piel, y amarillo, g verde, c 
 
 
 def hue_char(pixel) -> str:
-    h, s, v = recolor.hsv(pixel)
+    h, s, v = kit.hsv(pixel)
     if v < 0.13:
         return "#"
     if s < 0.18:
@@ -175,6 +186,8 @@ def cmd_inspect(a) -> int:
             raise SystemExit(f"El preset {a.parts} no declara 'parts'")
     elif preset and not a.new:
         parts_of = preset.get("parts")
+    elif not preset:
+        parts_of = kit.BASE_PARTS.get(look)                 # base ya estudiada: mapa por partes
     frames, size = recolor.look_frames(things, look)
     if a.new:
         if preset is None:
@@ -198,14 +211,14 @@ def cmd_inspect(a) -> int:
         print(f"Los {min(a.colors, len(colors))} más usados:")
         print("  r   g   b    píxeles    h     s     v   " + ("parte" if parts_of else "letra"))
     for color, count in colors.most_common(a.colors):
-        h, s, v = recolor.hsv(color)
+        h, s, v = kit.hsv(color)
         tag = parts_of(color + (255,)) if parts_of else hue_char(color + (255,))
         print(f"  {color[0]:>3} {color[1]:>3} {color[2]:>3}  {count:>6}   {h:.2f}  {s:.2f}  {v:.2f}   {tag}")
 
     def summary(tag_of, label):
         groups: dict[str, list] = {}
         for color, count in colors.items():
-            groups.setdefault(tag_of(color + (255,)), []).append((recolor.hsv(color), count))
+            groups.setdefault(tag_of(color + (255,)), []).append((kit.hsv(color), count))
         print(f"\nResumen por {label} (rango de tono h, saturación s y brillo v de sus píxeles):")
         for tag, items in sorted(groups.items(), key=lambda kv: -sum(n for _c, n in kv[1])):
             pixels = sum(n for _c, n in items)
@@ -230,7 +243,7 @@ def cmd_inspect(a) -> int:
         if letters is None:
             return hue_char(pixel)
         letter = letters[parts_of(pixel)]
-        return letter.upper() if recolor.hsv(pixel)[2] >= 0.5 else letter
+        return letter.upper() if kit.hsv(pixel)[2] >= 0.5 else letter
 
     wanted = range(12) if a.frames == "all" else [int(n) for n in a.frames.split(",")]
     for index in wanted:
@@ -239,12 +252,12 @@ def cmd_inspect(a) -> int:
         if parts_of:
             parts = [parts_of(p) for p in frame]
             for name in letters:
-                points = recolor.part_points(parts, name, size)
-                groups = sorted(recolor._clusters(points), key=len, reverse=True)
+                points = kit.part_points(parts, name, size)
+                groups = sorted(kit.clusters(points), key=len, reverse=True)
                 if not groups:
                     continue
                 big = groups[0]
-                cx, cy = recolor.centroid(big)
+                cx, cy = kit.centroid(big)
                 xs, ys = [x for x, _ in big], [y for _, y in big]
                 print(f"  {name}: {len(points)} px en {len(groups)} grupo(s); el mayor tiene {len(big)} px, "
                       f"x {min(xs)}-{max(xs)}, y {min(ys)}-{max(ys)}, centro ({cx:.1f}, {cy:.1f})")
@@ -305,6 +318,188 @@ def cmd_scene(a) -> int:
     canvas.save(a.out, a.scale)
     print(f"{a.out}: zona {x1},{y1} a {x2},{y2} piso {z}, x{a.scale}. Criaturas: {spots}")
     return 0
+
+
+# ---------- new ----------
+
+def part_stats(frames: list[list], parts_of) -> list[tuple[str, int, list]]:
+    """(parte, píxeles, [oscuro, medio, claro]) de cada parte, de la más grande a la más chica."""
+    by_part: dict[str, Counter] = {}
+    for frame in frames:
+        for p in frame:
+            if p[3]:
+                by_part.setdefault(parts_of(p), Counter())[p[:3]] += 1
+    out = []
+    for name, colors in by_part.items():
+        ordered = sorted(colors.elements(), key=lambda c: kit.luma(c + (255,)))
+        picks = [ordered[int((len(ordered) - 1) * q)] for q in (0.05, 0.5, 0.95)]
+        out.append((name, len(ordered), picks))
+    return sorted(out, key=lambda t: -t[1])
+
+
+def family_rules(frames: list[list], min_share: float = 0.02) -> tuple[list[tuple[str, str]], object]:
+    """Reglas por familia de color para un base sin clasificador: las familias con al menos 2 % de los
+    píxeles quedan como parte propia y el resto va a 'rest'. Devuelve (reglas en texto, clasificador)."""
+    counts = Counter(kit.color_family(p) for frame in frames for p in frame if p[3])
+    total = sum(counts.values())
+    kept = [name for name, _rule in kit.FAMILIES if counts[name] >= total * min_share]
+    rules = [(name, rule) for name, rule in kit.FAMILIES if name in kept]
+
+    def part(pixel):
+        if pixel[3] == 0:
+            return None
+        family = kit.color_family(pixel)
+        return family if family in kept else "rest"
+    return rules, part
+
+
+PRESET_TEMPLATE = '''"""{name}: {base_name} ({base}) -> look {target}. QUÉ CAMBIA Y CUÁL ES SU RASGO PROPIO.
+
+Creado con `sprite_tool.py new`. Receta: docs/gameplay/SPRITE_RECOLOR_GUIDE.md.
+Doc del monstruo: docs/gameplay/NOMBRE.md.
+"""
+from sprite_kit import *  # noqa: F401,F403
+
+{parts_block}
+
+# Colores nuevos de cada parte, de oscuro a claro (3 a 5 colores). Una parte comentada queda igual que
+# en el base. `(paleta, 0.8)` aclara y `(paleta, 1.2)` oscurece; un solo color `(r, g, b)` la pinta pareja.
+# Al lado de cada parte: sus colores de hoy (oscuro, medio, claro) y cuánto ocupa del base.
+palettes = {{
+{palette_lines}
+}}
+
+
+def detail(f):
+    """Rasgo propio, cuadro por cuadro. f.anim 0-2 (0 quieto), f.direction 0 norte, 1 este, 2 sur, 3 oeste.
+    f.w = {size}. Pintar sobre f.px con f.set / f.fill / f.orb / f.glow / f.eyes / f.hang (sprite_kit.Frame)."""
+    # Ejemplo: el grupo más grande de una parte es un objeto o la cara.
+    # obj = f.biggest("{first_part}")
+    # if obj:
+    #     cx, cy = centroid(obj)
+    #     f.orb(cx, cy, (2.6, 3.1, 2.8)[f.anim], [(255, 255, 255), (150, 240, 255), (20, 90, 190)])
+    #     f.glow(cx, cy, 3, 3, (60, 190, 240))
+
+
+PRESET = dict(name="{name}", source={base}, target={target}, parts=parts, palettes=palettes, detail=detail)
+'''
+
+
+def cmd_new(a) -> int:
+    things = load(a.things)
+    used = creatures_by_look()
+    if not re.fullmatch(r"[a-z][a-z0-9-]*", a.name):
+        raise SystemExit("El nombre va en minúsculas con guiones, ej. ash-ghoul")
+    path = recolor.PRESET_DIR / (a.name.replace("-", "_") + ".py")
+    if path.exists() or a.name in recolor.PRESETS:
+        raise SystemExit(f"Ya existe {path.relative_to(REPO)}")
+    target = a.target or next_free(things, used)
+    if any(things["outfits"][target - 1]["ids"]) or target in used or target in {p["target"] for p in recolor.PRESETS.values()}:
+        raise SystemExit(f"El look {target} no está libre (ver `sprite_tool.py looks`)")
+    frames, size = recolor.look_frames(things, a.base)
+    if a.base in kit.BASE_PARTS:
+        parts_of = kit.BASE_PARTS[a.base]
+        parts_block = (f"# Partes del base: clasificador ya probado ({parts_of.__name__} en sprite_kit.py).\n"
+                       f"parts = BASE_PARTS[{a.base}]")
+    else:
+        rules, parts_of = family_rules(frames)
+        lines = "\n".join(f'    ("{name}", lambda h, s, v: {rule}),' for name, rule in rules)
+        parts_block = ("# Partes del base, por familia de color (h, s, v de 0 a 1). Gana la primera regla que se cumple.\n"
+                       "# Es un primer corte automático: ajustar o separar partes mirando `sprite_tool.py inspect "
+                       f"{a.name}`.\nparts = parts_by_rules(\n{lines}\n    (\"rest\", None),\n)")
+    stats = part_stats(frames, parts_of)
+    total = sum(n for _name, n, _c in stats)
+    palette_lines = "\n".join(f'    # "{name}": [{", ".join(str(c) for c in picks)}],  # {100 * n / total:.0f} %'
+                              for name, n, picks in stats)
+    base_name = ", ".join(used.get(a.base, [])) or f"look {a.base}"
+    pretty = a.name.replace("-", " ").title()
+    path.write_text(PRESET_TEMPLATE.format(name=pretty, base_name=base_name, base=a.base, target=target, size=size,
+                                           parts_block=parts_block, palette_lines=palette_lines,
+                                           first_part=stats[-1][0] if len(stats) > 1 else stats[0][0]))
+    print(f"Creado {path.relative_to(REPO)}: {pretty}, base {a.base} ({base_name}, "
+          f"{'2x2' if size == 64 else '1x1'}) -> look {target}. Partes: "
+          + ", ".join(f"{name} {100 * n / total:.0f} %" for name, n, _c in stats))
+    print("Ya funciona tal cual (sale igual al base). Siguiente:\n"
+          f"  python3 scripts/client-rme/sprite_tool.py inspect {a.name}     # partes en texto\n"
+          f"  editar palettes y detail en {path.relative_to(REPO)}\n"
+          f"  python3 scripts/client-rme/sprite_tool.py check {a.name}       # hoja + escena")
+    return 0
+
+
+# ---------- check ----------
+
+def cmd_check(a) -> int:
+    things = load(a.things)
+    _look, preset = resolve(a.target)
+    if preset is None:
+        raise SystemExit("check necesita un preset")
+    out = a.dir or Path(tempfile.gettempdir()) / "sprites"
+    sheet, scene = out / f"{a.target}-hoja.png", out / f"{a.target}-escena.png"
+    cmd_sheet(argparse.Namespace(things=a.things, target=a.target, out=sheet, scale=None))
+    cmd_scene(argparse.Namespace(things=a.things, target=a.target, out=scene, area=a.area, at=a.at, scale=2))
+    original, new, size = recolor.build_preset(things, preset)
+    changed = sum(1 for fo, fn in zip(original, new) for po, pn in zip(fo, fn) if po != pn)
+    opaque = sum(1 for frame in original for p in frame if p[3])
+    added = sum(1 for fo, fn in zip(original, new) for po, pn in zip(fo, fn) if not po[3] and pn[3])
+    print(f"Píxeles cambiados: {changed} ({100 * changed / max(1, opaque):.0f} % de la silueta); "
+          f"agregados fuera de la silueta: {added}.")
+    if not changed:
+        print("AVISO: el sprite nuevo es igual al base (¿palettes todavía comentadas?).")
+    print(f"Mirar: {sheet}  y  {scene}")
+    return 0
+
+
+# ---------- bases ----------
+
+def cmd_bases(a) -> int:
+    things = load(a.things)
+    used = creatures_by_look()
+    sources = {}
+    for name, p in recolor.PRESETS.items():
+        sources.setdefault(p["source"], []).append(name)
+    customs = {p["target"] for p in recolor.PRESETS.values()}
+    rows = []
+    for n, outfit in enumerate(things["outfits"], 1):
+        if len(outfit["ids"]) not in (12, 48) or not any(outfit["ids"]) or n in customs:
+            continue
+        frames, size = recolor.look_frames(things, n)
+        counts = Counter(kit.color_family(p) for frame in frames for p in frame if p[3])
+        total = sum(counts.values())
+        colors = ", ".join(f"{name} {100 * c / total:.0f}" for name, c in counts.most_common() if c >= total * 0.05)
+        studied = []
+        if n in kit.BASE_PARTS:
+            studied.append(f"`BASE_PARTS[{n}]`")
+        if n in sources:
+            studied.append(", ".join(f"`{s}`" for s in sources[n]))
+        who = ", ".join(used.get(n, [])) or "—"
+        rows.append(f"| {n} | {'2x2' if size == 64 else '1x1'} | {who} | {colors} | {'; '.join(studied)} |")
+    text = BASES_HEADER + "\n".join(rows) + "\n"
+    if a.write:
+        BASES_DOC.write_text(text)
+        print(f"{BASES_DOC.relative_to(REPO)}: {len(rows)} bases")
+    else:
+        print(text)
+    return 0
+
+
+BASES_DOC = REPO / "docs/gameplay/SPRITE_BASES.md"
+BASES_HEADER = """# Bases para sprites de criaturas
+
+Catálogo de las criaturas del cliente 7.6 que sirven de base para un preset (1x1 o 2x2, 4 direcciones,
+3 cuadros), para elegir una **sin abrir imágenes ni correr `inspect` en muchas**. Buscar por nombre o por
+color con grep. Generado con `python3 scripts/client-rme/sprite_tool.py bases --write`: no editar a mano,
+volver a generarlo después de crear un look o un monstruo nuevo.
+
+- **Colores:** familias con al menos 5 % de los píxeles, en %. `dark` es el contorno y las sombras casi
+  negras; `gray` los grises sin color; `orange` incluye la piel y los marrones.
+- **Estudiada:** ya tiene clasificador de partes probado (`BASE_PARTS[n]` en `sprite_kit.py`) o algún
+  preset que la usa. Conviene empezar por estas.
+
+Receta: [`SPRITE_RECOLOR_GUIDE.md`](SPRITE_RECOLOR_GUIDE.md).
+
+| Look | Forma | Monstruos y NPC que la usan | Colores (%) | Estudiada |
+|-----:|-------|-----------------------------|-------------|-----------|
+"""
 
 
 # ---------- verify ----------
@@ -404,6 +599,23 @@ def main() -> int:
                                 "cual = new (por omisión), orig o un número de looktype")
     s.add_argument("--scale", type=int, default=2)
     s.set_defaults(run=cmd_scene)
+
+    s = sub.add_parser("new", help="crear presets/NOMBRE.py listo para editar, a partir de un base")
+    s.add_argument("name", help="nombre del preset en minúsculas con guiones, ej. ash-ghoul")
+    s.add_argument("--base", type=int, required=True, help="looktype base (elegir con `bases`)")
+    s.add_argument("--target", type=int, help="looktype destino (por omisión, el próximo libre)")
+    s.set_defaults(run=cmd_new)
+
+    s = sub.add_parser("check", help="hoja + escena de un preset en un paso, con cuántos píxeles cambió")
+    s.add_argument("target", help="nombre del preset")
+    s.add_argument("--dir", type=Path, help="carpeta de salida (por omisión, la temporal del sistema /sprites)")
+    s.add_argument("--area", help="como en scene")
+    s.add_argument("--at", help="como en scene")
+    s.set_defaults(run=cmd_check)
+
+    s = sub.add_parser("bases", help="catálogo de criaturas que sirven de base, con sus colores")
+    s.add_argument("--write", action="store_true", help="escribir docs/gameplay/SPRITE_BASES.md")
+    s.set_defaults(run=cmd_bases)
 
     s = sub.add_parser("verify", help="integridad de Tibia.dat/.spr contra git")
     s.add_argument("--base", default="HEAD", help="commit o rama de referencia (por omisión HEAD)")
