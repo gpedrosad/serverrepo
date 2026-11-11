@@ -3,6 +3,9 @@
 > **Estado:** documentado, **no implementado** (julio 2026).  
 > **Repo cliente:** `~/clienteretro` (mac/ + windows/).  
 > **Repo juego/web:** `yurots-principal` (`web/`, `scripts/sync-clienteretro.sh`).
+>
+> **Nota (nov 2026):** el VPS donde iba el backend ya no existe y no hay servidor público. `WEB` en las URLs de
+> abajo es el host que se elija cuando lo haya; hasta entonces el zip de sprites se reparte a mano.
 
 ## Problema
 
@@ -41,7 +44,7 @@ No recomendado por ahora: updater del binario en macOS (Gatekeeper), bajar todo 
 
 ### Migración única (jugadores con cliente viejo)
 
-- **Una vez:** descargar ZIP nuevo desde retro76.cl (incluye updater configurado + sprites Zagan)
+- **Una vez:** descargar ZIP nuevo desde la web (incluye updater configurado + sprites Zagan)
 - **Después:** solo parches automáticos al abrir
 
 ### Botón opcional
@@ -56,7 +59,7 @@ No recomendado por ahora: updater del binario en macOS (Gatekeeper), bajar todo 
 Jugador abre cliente
        │
        ▼
-POST https://retro76.cl/api/updater.php
+POST https://WEB/api/updater.php
   { version, build, os, platform }
        │
        ▼
@@ -76,7 +79,7 @@ g_resources.updateData() → reinicio si hace falta
 
 ```json
 {
-  "url": "https://retro76.cl/updater/files",
+  "url": "https://WEB/updater/files",
   "files": {
     "/data/things/760/Tibia.dat": "checksum_crc32_o_md5",
     "/data/things/760/Tibia.spr": "checksum_crc32_o_md5"
@@ -101,7 +104,7 @@ Referencia OTCv8: [OTCv8/otcv8-tools](https://github.com/OTCv8/otcv8-tools) (pla
 
 ```lua
 Services = {
-  updater = "https://retro76.cl/api/updater.php",
+  updater = "https://WEB/api/updater.php",
   -- resto igual
 }
 
@@ -142,9 +145,9 @@ Aviso en web/Discord: *última descarga manual; después se actualiza solo*.
 
 ---
 
-## Fase 2 — Backend (retro76.cl / yurots-principal/web)
+## Fase 2 — Backend (yurots-principal/web)
 
-### 2.1 Estructura en el VPS
+### 2.1 Estructura en el servidor web
 
 ```
 /var/www/retro76/
@@ -182,8 +185,6 @@ cp zagan-test/client-things/760/* → web/updater-files/data/things/760/
 ./scripts/sync-clienteretro.sh
 ```
 
-Integrar con `scripts/upload-client-downloads.sh` si aplica.
-
 ---
 
 ## Pipeline de release (items Zagan nuevos)
@@ -197,9 +198,8 @@ python3 scripts/build_zagan_test_assets.py
 ./scripts/sync-clienteretro.sh
 cd ~/clienteretro && ./build-zips.sh
 
-# Producción (cuando exista publish-client-patcher.sh)
-./scripts/publish-client-patcher.sh
-./scripts/upload-client-downloads.sh   # zips + parche updater
+# Publicación (cuando haya servidor web)
+./scripts/publish-client-patcher.sh   # arma el parche; subirlo a mano
 ```
 
 Servidor de juego: debe cargar `items-zagan-test.otb` (o equivalente) para que server ids coincidan con el `.dat` del cliente.
@@ -224,7 +224,7 @@ Servidor de juego: debe cargar `items-zagan-test.otb` (o equivalente) para que s
 
 - [ ] Fase 1: cambios `init.lua` + `entergame.lua` en mac y windows (paridad)
 - [ ] Fase 1: publicar ZIP “migración” + aviso en web
-- [ ] Fase 2: `updater.php` en retro76.cl
+- [ ] Fase 2: `updater.php` en el servidor web (hoy no hay)
 - [ ] Fase 2: carpeta `updater/files/data/things/760/`
 - [ ] Fase 2: `scripts/publish-client-patcher.sh`
 - [ ] Probar: cliente viejo (sin parche) → migración manual una vez

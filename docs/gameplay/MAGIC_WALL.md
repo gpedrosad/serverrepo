@@ -2,7 +2,7 @@
 
 Doc de la runa **Magic Wall** (`2293` → field `1498`) y del timer de decay de fields/sólidos mágicos.
 
-**Estado jul 2026:** duración objetivo **15 segundos**. Cambio local; **no deployar al VPS hasta autorización explícita**.
+**Estado jul 2026:** duración objetivo **15 segundos**. Cambio local; **no deployar a la ThinkPad sin autorización explícita**.
 
 ---
 
@@ -82,7 +82,7 @@ Si algo “desaparece raro” tras el rebuild, sospechar primero este interval a
 3. In-game: tirar Magic Wall en sqm libre → cronometrar hasta que desaparezca → debe ser ~15 s (± un tick de 5 s según alineación del scheduler).
 4. Tirar MW, esperar ~5–8 s, tirar otra en el **mismo** tile → el nuevo wall debe vivir ~15 s desde el segundo cast, no el resto del primero.
 
-**No deployar al VPS** hasta que el usuario lo autorice. Deploy: `DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh`.
+**No deployar a la ThinkPad** hasta que el usuario lo autorice. Deploy: ver `docs/systems/THINKPAD_TEST_SERVER.md` (cambio de C++: se compila ahí).
 
 ---
 

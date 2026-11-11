@@ -1,4 +1,4 @@
-# Cambiar el mapa (RME → local → VPS)
+# Cambiar el mapa (RME → local → ThinkPad)
 
 Guía paso a paso para reemplazar `test.otbm` sin romper casas, spawns ni el arranque del servidor.
 
@@ -13,7 +13,7 @@ Relacionado:
 - [docs/gameplay/WAVE_ARENA.md](gameplay/WAVE_ARENA.md) — Wave Arena oleadas; portal `166,47,7`
 - [docs/gameplay/CRUCIBLE.md](gameplay/CRUCIBLE.md) — El Crisol (3 puertas + bosses diarios); portal `164,47,7` con `scripts/map/generate-crucible.py`
 - [docs/gameplay/SAND_CLOCK.md](gameplay/SAND_CLOCK.md) — Reloj de Arena (fases globales); portal `168,47,7` con `scripts/map/generate-sand-clock.py`
-- [scripts/README-DEPLOY-VPS.md](../scripts/README-DEPLOY-VPS.md) — deploy seguro en producción
+- [docs/systems/THINKPAD_TEST_SERVER.md](systems/THINKPAD_TEST_SERVER.md) — deploy seguro al servidor de la ThinkPad (no hay producción por ahora)
 - [docs/PROYECTO.md](PROYECTO.md) — qué data es sagrada y qué va en git
 
 ---
@@ -140,8 +140,8 @@ Si borraste casas en RME (ej. River Street I y II):
 |--------|---------|
 | Mover NPC (Dufi, Guild Master, etc.) | `server/YurOTS/ots/data/world/npc.xml` |
 | Nuevo monstruo en spawn | `test-spawn.xml` + definición en `data/monster/` |
-| Items en casas de jugadores | `houseitems.xml` (runtime VPS, no git) |
-| Dueños y permisos de casas | `data/houses/*.xml` (runtime VPS; ver [`gameplay/HOUSES.md`](gameplay/HOUSES.md)) |
+| Items en casas de jugadores | `houseitems.xml` (runtime del servidor, no git) |
+| Dueños y permisos de casas | `data/houses/*.xml` (runtime del servidor; ver [`gameplay/HOUSES.md`](gameplay/HOUSES.md)) |
 
 Tras mover NPCs, reiniciá el servidor (no hace falta recompilar).
 
@@ -186,35 +186,25 @@ Conectar a `127.0.0.1:7171`.
 **No incluir:**
 
 - `test-rme.otbm`, `*.bak`, `test.otbm.bak` (copias locales)
-- `config.lua` con `ip = "127.0.0.1"` — en el repo debe quedar `ip = "retro76.cl"`; en Mac podés tener `127.0.0.1` solo local sin commitear
+- `config.lua` con otra IP — en el repo queda `ip = "127.0.0.1"`; la ThinkPad usa su IP (`192.168.1.17`) sin commitear
 - `data/accounts/`, `data/players/` reales, logs, binario `source/yurots`
 - `client-local/`
 
 ---
 
-## 8. Subir al VPS (producción)
+## 8. Subir a la ThinkPad
 
-Solo cuando el mapa esté probado en local:
+No hay producción por ahora: el único servidor es el de la ThinkPad. Solo cuando el mapa esté probado en local
+y con el OK de Gonzalo:
 
 1. `git push origin main` desde tu Mac
-2. En el VPS (ver [README-DEPLOY-VPS.md](../scripts/README-DEPLOY-VPS.md)):
+2. Seguir "Deploy de cambios de datos" en [systems/THINKPAD_TEST_SERVER.md](systems/THINKPAD_TEST_SERVER.md):
+   revisar archivos de otras sesiones, respaldar datos de jugadores (incluye `houses` y `houseitems.xml`),
+   `git merge --ff-only origin/main`, `docker restart -t 45 yurots`, revisar el log (`Loaded in …`) y
+   `ot-probe.py 192.168.1.17 7171`.
 
-   ```bash
-   ssh root@64.176.20.238
-   cd ~/yurots-principal
-   DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh
-   ```
-
-El deploy:
-
-- Hace backup de cuentas/personajes
-- `git pull`
-- Restaura data runtime
-- Compila el servidor
-- Valida mapa ↔ casas (`sync-houses-with-map.py --dry-run`)
-- Reinicia Docker y healthcheck en 7171
-
-**En el VPS:** `config.lua` debe tener `ip = "64.176.20.238"` (no commitear esa IP si preferís manejarla solo en el servidor).
+Un mapa nuevo no se recompila. Antes de reiniciar, correr `sync-houses-with-map.py --dry-run` y probar depots
+in-game (ver [`gameplay/DEPOTS.md`](gameplay/DEPOTS.md)).
 
 ---
 
@@ -231,7 +221,7 @@ El deploy:
 [ ] docker compose restart yurots + revisar logs
 [ ] Probar in-game: casas, depots (locker temple con char que tenga items), spawns, puertas
 [ ] git commit + push (solo cuando estés conforme)
-[ ] DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh en el VPS
+[ ] Con OK de Gonzalo: deploy a la ThinkPad (docs/systems/THINKPAD_TEST_SERVER.md)
 ```
 
 ---
@@ -246,7 +236,7 @@ El deploy:
 | Depot vacío al abrir locker 2589 | Locker sin `depotid` en OTBM (export RME inline) | Ver [`gameplay/DEPOTS.md`](gameplay/DEPOTS.md); `resolveMapDepotId()` en `actions.cpp`; probar in-game antes de deploy |
 | Puerta no pide nivel | Falta actionId o itemid sin `leveldoor.lua` | actionId = nivel + 1000 |
 | Spawns no aparecen | `test-spawn.xml` viejo o monstruo sin definición | Reexportar spawns; revisar `data/monster/monsters.xml` |
-| Deploy VPS falla validación | Mismo desajuste mapa/casas | Arreglar en Mac, push, volver a deploy |
+| El servidor no arranca tras el deploy (casas) | Mismo desajuste mapa/casas | Arreglar en Mac, push, volver a deploy |
 
 ---
 

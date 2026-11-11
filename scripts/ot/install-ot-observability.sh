@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Instala logs + cron de diagnóstico en el VPS.
+# Instala logs + cron de diagnóstico en el servidor.
 set -euo pipefail
 
 _BOOT="$(cd "$(dirname "$0")" && pwd)"

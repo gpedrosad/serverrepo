@@ -1,14 +1,14 @@
 # Logs de red OT — guía de diagnóstico
 
-> **Estado (jul 2026):** `YUROTS_SOCKET_DEBUG=1` **activo en producción** (VPS) desde commit `ec9b0dd` para investigar cuelgues recurrentes. Desactivar cuando se identifique la causa raíz (ver § Desactivar).
+> **Estado:** `YUROTS_SOCKET_DEBUG=1` **activo** en `docker-compose.yml` y `docker-compose.prod.yml` desde jul 2026 (commit `ec9b0dd`, entonces en el VPS de producción, que ya no existe) para investigar cuelgues recurrentes. Desactivar cuando se identifique la causa raíz (ver § Desactivar).
 
 Relacionado: [PREVENT_OT_HANGS.md](PREVENT_OT_HANGS.md), [FIX_OT_STABILITY_KICKS_AND_HANG.md](../_archive/FIX_OT_STABILITY_KICKS_AND_HANG.md).
 
 ---
 
-## Incidente en curso (jul 2026)
+## Incidente de jul 2026
 
-Tras el deploy del **mapa once** (2 jul 2026), el OT en **retro76.cl** volvió a colgarse varias veces el mismo día:
+Tras el deploy del **mapa once** (2 jul 2026), el OT de producción de entonces volvió a colgarse varias veces el mismo día:
 
 | Hora UTC (aprox.) | Síntoma | Acción |
 |-------------------|---------|--------|
@@ -23,8 +23,8 @@ Tras el deploy del **mapa once** (2 jul 2026), el OT en **retro76.cl** volvió a
 **Evidencia a capturar en el próximo cuelgue:**
 
 ```bash
-# En el VPS, justo cuando falle el probe:
-cd ~/yurots-principal
+# En el servidor (hoy la ThinkPad), justo cuando falle el probe:
+cd ~/apps/serverrepo
 python3 scripts/ot-probe.py 127.0.0.1 7171
 ./scripts/ot-diagnostics.sh
 tail -80 server/YurOTS/ots/yurots.log | grep -E '\[socket\]|Player recv disconnect|Listen select'
@@ -86,15 +86,15 @@ Prefijo `[socket]` — login, cambios de modo, reintentos:
 
 ---
 
-## Estado actual en producción
+## Estado actual
 
 | Item | Valor |
 |------|--------|
 | Commit que activó debug | `ec9b0dd` |
-| Archivo | `docker-compose.prod.yml` → `environment: YUROTS_SOCKET_DEBUG=1` |
-| Aplicar cambio | `docker compose -f docker-compose.prod.yml up -d yurots` (recrea container; no recompila) |
+| Archivo | `docker-compose.yml` (local y ThinkPad) y `docker-compose.prod.yml` → `environment: YUROTS_SOCKET_DEBUG=1` |
+| Aplicar cambio | `docker compose up -d yurots` (recrea container; no recompila) |
 | Verificar | `docker exec yurots printenv YUROTS_SOCKET_DEBUG` → `1` |
-| Log en disco | `~/yurots-principal/server/YurOTS/ots/yurots.log` |
+| Log en disco | `server/YurOTS/ots/yurots.log` (en la ThinkPad, dentro de `~/apps/serverrepo`) |
 | Log Docker | `docker logs yurots 2>&1 \| grep '\[socket\]'` |
 
 Ejemplo de login **correcto** (sin timeout residual en juego):
@@ -111,17 +111,17 @@ El healthcheck de Docker envía `protId=0xffff` (info) desde `172.18.0.1` — es
 
 ## Cómo activar / desactivar
 
-### Activar (local o VPS)
+### Activar (local o ThinkPad)
 
 ```yaml
-# docker-compose.yml (local) o docker-compose.prod.yml (VPS) — servicio yurots:
+# docker-compose.yml (local y ThinkPad) o docker-compose.prod.yml — servicio yurots:
 environment:
   - YUROTS_SOCKET_DEBUG=1
 ```
 
 ```bash
-docker compose -f docker-compose.prod.yml up -d yurots   # VPS
-docker compose up -d yurots                               # local
+docker compose up -d yurots                               # local / ThinkPad
+docker compose -f docker-compose.prod.yml up -d yurots   # si se usa prod.yml
 docker logs -f yurots 2>&1 | grep -E '\[socket\]|Player recv disconnect'
 ```
 
@@ -129,8 +129,8 @@ La variable se lee **al arrancar** el proceso (caché estática en `socket_debug
 
 ### Desactivar (cuando termine la investigación)
 
-1. Comentar o borrar el bloque `environment` en `docker-compose.prod.yml`.
-2. `git commit` + `git push` + en VPS: `git pull && docker compose -f docker-compose.prod.yml up -d yurots`.
+1. Comentar o borrar `YUROTS_SOCKET_DEBUG` en `docker-compose.yml` y `docker-compose.prod.yml`.
+2. `git commit` + `git push` + en la ThinkPad (con OK de Gonzalo): actualizar según [THINKPAD_TEST_SERVER.md](THINKPAD_TEST_SERVER.md) y `docker compose up -d yurots`.
 3. Confirmar: `docker exec yurots printenv YUROTS_SOCKET_DEBUG` debe fallar o estar vacío.
 
 En producción estable conviene dejarlo **apagado**; las líneas `Player recv disconnect` ya incluyen `rcv_ms` y `errno` sin verbose.
@@ -154,7 +154,7 @@ python3 scripts/ot-probe.py 127.0.0.1 7171
 
 # Watchdog
 tail -f /var/log/retro76/watchdog.log    # si install-ot-observability.sh
-tail -f /var/log/ot-watchdog.log           # cron legado en algunos VPS
+tail -f /var/log/ot-watchdog.log           # cron legado
 ```
 
 ---

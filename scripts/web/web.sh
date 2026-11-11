@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Web local — sin Docker, sin VPS. Lee los XML del server en disco.
+# Web local — sin Docker. Lee los XML del server en disco.
 set -euo pipefail
 _BOOT="$(cd "$(dirname "$0")" && pwd)"
 while [[ ! -f "$_BOOT/resolve-project-root.sh" ]]; do

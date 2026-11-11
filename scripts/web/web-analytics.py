@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Resumen interno de visitas y descargas de retro76.cl (no público)."""
+"""Resumen interno de visitas y descargas de la web (no público)."""
 from __future__ import annotations
 
 import argparse

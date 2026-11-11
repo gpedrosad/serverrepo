@@ -2,7 +2,7 @@
 
 > Estado: investigación documentada y fix defensivo aplicado en repo el 2026-07-02.
 >
-> Alcance: cuelgues del OT en `retro76.cl` donde el proceso sigue vivo, el watchdog termina reiniciando, y no hay `SIGSEGV` ni core dump nuevo.
+> Alcance: cuelgues del OT de producción de jul 2026 (el VPS de entonces, que ya no existe) donde el proceso sigue vivo, el watchdog termina reiniciando, y no hay `SIGSEGV` ni core dump nuevo.
 
 Relacionado:
 - [FIX_OT_STABILITY_KICKS_AND_HANG.md](../_archive/FIX_OT_STABILITY_KICKS_AND_HANG.md)
@@ -147,10 +147,10 @@ Antes del fix, `flushSendBuffers()` recorría `BufferedPlayers` y llamaba:
 
 Ruta:
 
-- [server/YurOTS/ots/source/game.cpp](../server/YurOTS/ots/source/game.cpp)
-- [server/YurOTS/ots/source/player.cpp](../server/YurOTS/ots/source/player.cpp)
-- [server/YurOTS/ots/source/protocol76.cpp](../server/YurOTS/ots/source/protocol76.cpp)
-- [server/YurOTS/ots/source/networkmessage.cpp](../server/YurOTS/ots/source/networkmessage.cpp)
+- [server/YurOTS/ots/source/game.cpp](../../server/YurOTS/ots/source/game.cpp)
+- [server/YurOTS/ots/source/player.cpp](../../server/YurOTS/ots/source/player.cpp)
+- [server/YurOTS/ots/source/protocol76.cpp](../../server/YurOTS/ots/source/protocol76.cpp)
+- [server/YurOTS/ots/source/networkmessage.cpp](../../server/YurOTS/ots/source/networkmessage.cpp)
 
 ### 5.2 `flushSendBuffers()` estaba dentro de caminos críticos del loop
 
@@ -237,7 +237,7 @@ Se aplicaron tres cambios para cortar esta clase de cuelgue.
 ### A) `WriteToSocket()` ahora acota el daño de un cliente lento
 
 Archivo:
-- [server/YurOTS/ots/source/networkmessage.cpp](../server/YurOTS/ots/source/networkmessage.cpp)
+- [server/YurOTS/ots/source/networkmessage.cpp](../../server/YurOTS/ots/source/networkmessage.cpp)
 
 Cambio:
 
@@ -252,7 +252,7 @@ Objetivo:
 ### B) `flushOutputBuffer()` ahora corta la conexión si el envío se estanca
 
 Archivo:
-- [server/YurOTS/ots/source/protocol76.cpp](../server/YurOTS/ots/source/protocol76.cpp)
+- [server/YurOTS/ots/source/protocol76.cpp](../../server/YurOTS/ots/source/protocol76.cpp)
 
 Cambio:
 
@@ -266,7 +266,7 @@ Objetivo:
 ### C) `flushSendBuffers()` dejó de hacer I/O de red bajo `gameLock`
 
 Archivo:
-- [server/YurOTS/ots/source/game.cpp](../server/YurOTS/ots/source/game.cpp)
+- [server/YurOTS/ots/source/game.cpp](../../server/YurOTS/ots/source/game.cpp)
 
 Cambio:
 
@@ -310,13 +310,13 @@ Si eso pasa, la siguiente línea de investigación es:
 
 ---
 
-## 10. Verificación recomendada en producción
+## 10. Verificación recomendada en el servidor
 
-Después de deploy:
+Después de deploy (hoy el servidor es la ThinkPad):
 
 ```bash
-ssh root@64.176.20.238
-cd ~/yurots-principal
+ssh thinkpad
+cd ~/apps/serverrepo
 python3 scripts/ot-probe.py 127.0.0.1 7171
 docker logs yurots --tail 50
 tail -40 /var/log/ot-watchdog.log
@@ -376,14 +376,11 @@ Si no, esta documentación deja listo el siguiente nivel de investigación sin v
 
 ## 13. Deploy y rollback
 
-### Deploy (VPS)
+### Deploy
 
-```bash
-cd ~/yurots-principal
-DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh
-```
-
-El script hace backup de `players/` y `accounts/` antes del pull. El fix **requiere recompilar** (cambios en `.cpp`).
+El fix ya está en `main`. Los deploys van a la ThinkPad, solo con el OK de Gonzalo, siguiendo
+[THINKPAD_TEST_SERVER.md](THINKPAD_TEST_SERVER.md). El fix **requiere recompilar** (cambios en `.cpp`), y se
+compila en la ThinkPad.
 
 ### Rollback rápido
 
@@ -393,13 +390,9 @@ Antes del deploy se etiquetó el estado previo:
 |-----|--------|
 | `pre-ot-send-blocking-fix` | Último commit en `main` **sin** este fix |
 
-```bash
-cd ~/yurots-principal
-git fetch --tags
-DEPLOY_I_READ_README=yes ./scripts/rollback-ot-send-blocking-fix.sh
-```
-
-Eso restaura los tres `.cpp` del tag, recompila y reinicia. No toca mapa ni jugadores.
+Para volver atrás: restaurar los tres `.cpp` desde el tag
+(`git checkout pre-ot-send-blocking-fix -- <archivos>`), commit, push y deploy a la ThinkPad (compilar ahí).
+Antes, comprobar que ninguna otra sesión tenga esos archivos sin commitear en la ThinkPad.
 
 ### Backup extra del binario (opcional, manual)
 
@@ -414,7 +407,7 @@ git checkout main -- \
   server/YurOTS/ots/source/game.cpp \
   server/YurOTS/ots/source/networkmessage.cpp \
   server/YurOTS/ots/source/protocol76.cpp
-DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh
+# commit + push y deploy a la ThinkPad (docs/systems/THINKPAD_TEST_SERVER.md), compilando ahí
 ```
 
 ### Cuándo hacer rollback

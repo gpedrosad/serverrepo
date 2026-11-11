@@ -1,8 +1,8 @@
 # Cómo prevenir cuelgues del OT y tener logs útiles
 
-Guía operativa para **retro76.cl** (VPS). Complementa:
+Guía operativa para el servidor OT (hoy el de prueba en la ThinkPad: [THINKPAD_TEST_SERVER.md](THINKPAD_TEST_SERVER.md); no hay producción por ahora). Complementa:
 - [FIX_OT_STABILITY_KICKS_AND_HANG.md](../_archive/FIX_OT_STABILITY_KICKS_AND_HANG.md) — causas técnicas ya corregidas en código
-- [SOCKET_DEBUG_LOGGING.md](SOCKET_DEBUG_LOGGING.md) — logs de red detallados (**debug activo en prod desde jul 2026**)
+- [SOCKET_DEBUG_LOGGING.md](SOCKET_DEBUG_LOGGING.md) — logs de red detallados (debug activo desde jul 2026)
 
 ---
 
@@ -27,8 +27,8 @@ Guía operativa para **retro76.cl** (VPS). Complementa:
 **Cuando vuelva a pasar** — capturar evidencia **antes** de reiniciar:
 
 ```bash
-ssh root@64.176.20.238
-cd ~/yurots-principal
+ssh thinkpad
+cd ~/apps/serverrepo
 python3 scripts/ot-probe.py 127.0.0.1 7171
 ./scripts/ot-diagnostics.sh | tee /tmp/ot-hang-$(date +%Y%m%d-%H%M%S).txt
 tail -100 server/YurOTS/ots/yurots.log
@@ -38,7 +38,7 @@ docker logs yurots --tail 50
 **Recuperación inmediata:**
 
 ```bash
-docker compose -f docker-compose.prod.yml restart -t 45 yurots
+docker restart -t 45 yurots
 python3 scripts/ot-probe.py 127.0.0.1 7171
 ```
 
@@ -64,7 +64,7 @@ Mantener el servidor en un commit que incluya al menos `4d78ee7`:
 2. **Listen `EINTR`** — no cerrar el puerto 7171 si `select()` es interrumpido.
 3. **Mana** — valores y pulso documentados en [REGEN_FOOD.md](../gameplay/REGEN_FOOD.md).
 
-**No hacer en el VPS:** `git stash -u`, `git clean`, `git pull` a mano sin backup (ver [README-DEPLOY-VPS.md](../../scripts/README-DEPLOY-VPS.md)).
+**No hacer en la ThinkPad:** `git stash -u`, `git clean`, `git reset --hard`, `git pull` a mano sin backup (ver [THINKPAD_TEST_SERVER.md](THINKPAD_TEST_SERVER.md)).
 
 ---
 
@@ -72,10 +72,10 @@ Mantener el servidor en un commit que incluya al menos `4d78ee7`:
 
 El watchdog prueba el protocolo **info** (no solo TCP) cada **2 minutos**. Si falla **2 veces seguidas**, reinicia el container con gracia (`stop -t 45`).
 
-### Instalar o actualizar (en el VPS)
+### Instalar o actualizar (en el servidor)
 
 ```bash
-cd ~/yurots-principal
+cd ~/apps/serverrepo   # ThinkPad
 ./scripts/install-ot-observability.sh
 ```
 
@@ -100,13 +100,13 @@ tail -f /var/log/retro76/watchdog.log
 Con `docker-compose.prod.yml` + `docker-entrypoint.sh`, cada línea del OT se guarda con timestamp en:
 
 ```
-~/yurots-principal/server/YurOTS/ots/yurots.log
+~/apps/serverrepo/server/YurOTS/ots/yurots.log   # ThinkPad
 ```
 
 (persiste en el volumen del host; sobrevive reinicios del container)
 
 ```bash
-tail -f ~/yurots-principal/server/YurOTS/ots/yurots.log
+tail -f server/YurOTS/ots/yurots.log
 grep -E 'Player recv disconnect|Listen select failed' server/YurOTS/ots/yurots.log | tail -30
 ```
 
@@ -125,7 +125,7 @@ tail -f /var/log/retro76/diagnostics.log
 Snapshot manual:
 
 ```bash
-cd ~/yurots-principal && ./scripts/ot-diagnostics.sh
+cd ~/apps/serverrepo && ./scripts/ot-diagnostics.sh
 ```
 
 ### D) Logs de red verbose — **ACTIVO en prod (jul 2026)**
@@ -149,20 +149,20 @@ Orden recomendado:
 
 ```bash
 # 1. ¿Responde ahora?
-python3 ~/yurots-principal/scripts/ot-probe.py 127.0.0.1 7171
+python3 ~/apps/serverrepo/scripts/ot-probe.py 127.0.0.1 7171
 
 # 2. ¿Watchdog reinició?
 tail -30 /var/log/retro76/watchdog.log
 
 # 3. ¿Patrón de socket o listen?
 grep -E 'Player recv disconnect|Listen select failed' \
-  ~/yurots-principal/server/YurOTS/ots/yurots.log | tail -40
+  ~/apps/serverrepo/server/YurOTS/ots/yurots.log | tail -40
 
 # 4. ¿Sockets colgados?
 ss -tan | grep 7171 | head -20
 
 # 5. Snapshot completo
-~/yurots-principal/scripts/ot-diagnostics.sh
+~/apps/serverrepo/scripts/ot-diagnostics.sh
 ```
 
 ### Interpretación rápida
@@ -179,12 +179,12 @@ ss -tan | grep 7171 | head -20
 
 ## Capa 4 — Deploy seguro (no reintroducir bugs)
 
-```bash
-cd ~/yurots-principal
-# Verificar IP pública tras pull (el repo trae 127.0.0.1 / retro76.cl)
-grep '^ip ' server/YurOTS/ots/config.lua   # debe ser 64.176.20.238
+Solo con el OK de Gonzalo, siguiendo [THINKPAD_TEST_SERVER.md](THINKPAD_TEST_SERVER.md) (respaldo,
+`git merge --ff-only origin/main`, `docker restart -t 45 yurots`). La IP en `config.lua` de la ThinkPad es
+`192.168.1.17` (el repo trae `127.0.0.1`):
 
-DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh
+```bash
+grep '^ip ' server/YurOTS/ots/config.lua
 ```
 
 Post-deploy:
@@ -200,7 +200,7 @@ docker logs yurots --tail 5   # "Retro76 Server Running..."
 
 1. **No sondar 7171 desde la web** — ya desactivado (`OT_STATUS_SOURCE=docker`).
 2. **Deploy en horario bajo** si es un cambio grande de binario.
-3. **Backups automáticos** del deploy script en `~/ot-backups/pre-deploy-*`.
+3. **Backups** antes de cada deploy en `~/backups/pre-deploy-*` (ThinkPad).
 4. **Alertas manuales** — revisar `watchdog.log` 1× al día o usar un monitor externo que haga HTTP a la web + probe al OT desde fuera.
 
 ### Monitor externo mínimo (opcional)
@@ -208,8 +208,7 @@ docker logs yurots --tail 5   # "Retro76 Server Running..."
 Cada 5 min desde tu Mac o un cron:
 
 ```bash
-curl -sf https://retro76.cl/api/data >/dev/null && \
-ssh root@64.176.20.238 'python3 ~/yurots-principal/scripts/ot-probe.py 127.0.0.1 7171 --quiet'
+python3 scripts/ot-probe.py 192.168.1.17 7171 --quiet   # ThinkPad, desde la red local
 ```
 
 Si falla → mirar `watchdog.log` y `yurots.log`.

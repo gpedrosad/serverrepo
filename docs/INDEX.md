@@ -12,7 +12,7 @@ Antes de tocar cualquier cosa, leer en este orden:
 | 1 | [`../LEERCODEX.md`](../LEERCODEX.md) | Siempre primero. Punto de entrada rápido para IAs, diagnóstico de cuelgues OT. |
 | 2 | [`PROYECTO.md`](PROYECTO.md) | Para entender la arquitectura general, deploy, data sagrada, decisiones de diseño. |
 | 3 | [`../AGENTS.md`](../AGENTS.md) | Si sos un agente AI: instrucciones operativas, restricciones, convenciones. |
-| 4 | [`../scripts/deploy/README-DEPLOY-VPS.md`](../scripts/deploy/README-DEPLOY-VPS.md) | Antes de cualquier deploy a producción. |
+| 4 | [`systems/THINKPAD_TEST_SERVER.md`](systems/THINKPAD_TEST_SERVER.md) | Antes de cualquier deploy. No hay producción por ahora; el único servidor es el de la ThinkPad. |
 | 5 | [`INDEX.md`](INDEX.md) | Este archivo. Mapa completo de la documentación. |
 
 ---
@@ -31,9 +31,8 @@ Docs operativos planos. Setup, deploy, cliente, smoke tests, migración.
 | [`PVP_SYSTEM.md`](PVP_SYSTEM.md) | Reglas, balance y configuración del sistema PvP. |
 | [`TRADE_SYSTEM.md`](TRADE_SYSTEM.md) | Sistema de trade entre jugadores. |
 | [`CHARACTER_SESSION_REPLACEMENT.md`](CHARACTER_SESSION_REPLACEMENT.md) | Reemplazo de sesión de personaje, recovery de cuentas. |
-| [`SMOKE_TESTS.md`](SMOKE_TESTS.md) | Tests de humo locales y en VPS antes de cada release. |
+| [`SMOKE_TESTS.md`](SMOKE_TESTS.md) | Tests de humo locales antes de cada release. |
 | [`MIGRATION_PLAYBOOK.md`](MIGRATION_PLAYBOOK.md) | Playbook para migraciones grandes (esquema DB, data, deploys críticos). |
-| [`../scripts/deploy/README-DEPLOY-VPS.md`](../scripts/deploy/README-DEPLOY-VPS.md) | Deploy seguro en VPS de producción (checklist, rollback). Ver también [`../scripts/README.md`](../scripts/README.md). |
 | [`_archive/DEPLOY-PENDIENTE-VPS-JUL2026.md`](_archive/DEPLOY-PENDIENTE-VPS-JUL2026.md) | *(archivado)* Snapshot jul 2026: qué faltaba deployar al VPS. |
 | [`_archive/PUSH-MAIN-JUL2026-SPELLS-NPC-NO-VPS.md`](_archive/PUSH-MAIN-JUL2026-SPELLS-NPC-NO-VPS.md) | *(archivado)* Push a main jul 2026 sin VPS (spells/NPC). |
 
@@ -45,7 +44,7 @@ Todo lo relacionado con estabilidad del OT server, cuelgues, sockets, crashes.
 
 | Doc | Cubre / cuándo leerlo |
 |-----|-----------------------|
-| [`systems/THINKPAD_TEST_SERVER.md`](systems/THINKPAD_TEST_SERVER.md) | **Servidor de prueba en la ThinkPad:** acceso, cuenta GM, cómo deployar cambios de datos sin pisar el trabajo sin commitear de otras sesiones, historial de deploys. |
+| [`systems/THINKPAD_TEST_SERVER.md`](systems/THINKPAD_TEST_SERVER.md) | **Servidor de prueba en la ThinkPad** (el único servidor por ahora; no hay producción): acceso, cuenta GM, cómo deployar cambios de datos sin pisar el trabajo sin commitear de otras sesiones, historial de deploys. |
 | [`systems/PREVENT_OT_HANGS.md`](systems/PREVENT_OT_HANGS.md) | Si el server se cuelga o se observa lentitud: checklist preventivo. |
 | [`systems/CRASH_DIAGNOSTICS.md`](systems/CRASH_DIAGNOSTICS.md) | Si el OT crashea: cómo recolectar diagnóstico y encontrar la causa. |
 | [`systems/SOCKET_DEBUG_LOGGING.md`](systems/SOCKET_DEBUG_LOGGING.md) | Si hay kicks masivos, desconexiones o problemas de socket. |
@@ -184,7 +183,7 @@ Catálogo de **migración/portabilidad** (16 fichas congeladas). No es el invent
 | Quiero crear o retocar el sprite de una criatura | [`gameplay/SPRITE_RECOLOR_GUIDE.md`](gameplay/SPRITE_RECOLOR_GUIDE.md) |
 | Voy a tocar gemas o imbuements | [`gameplay/GEMS.md`](gameplay/GEMS.md) → [`features/10-gems-and-imbuements.md`](features/10-gems-and-imbuements.md) |
 | Skill ring + emerald armor + crimson no suman | [`gameplay/GEMS.md`](gameplay/GEMS.md) (Big Emerald / stacking) + `Player::getSkill` en `player.cpp` |
-| Voy a hacer deploy a producción | [`../scripts/deploy/README-DEPLOY-VPS.md`](../scripts/deploy/README-DEPLOY-VPS.md) |
+| Voy a hacer deploy | [`systems/THINKPAD_TEST_SERVER.md`](systems/THINKPAD_TEST_SERVER.md) (solo con OK de Gonzalo) |
 | Necesito migrar DB o data crítica | [`MIGRATION_PLAYBOOK.md`](MIGRATION_PLAYBOOK.md) |
 | Voy a cambiar el mapa del server | [`CAMBIAR-MAPA.md`](CAMBIAR-MAPA.md) → [`gameplay/DEPOTS.md`](gameplay/DEPOTS.md) |
 | Jugadores reportan depot vacío | [`gameplay/DEPOTS.md`](gameplay/DEPOTS.md) |

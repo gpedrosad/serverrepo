@@ -19,7 +19,7 @@ Guía detallada para crear un monstruo nuevo de punta a punta: diseño, XML, hec
 | 6 | Sprite propio (looktype nuevo) | `Tibia.dat` + `Tibia.spr` (cliente y RME) | Solo si ningún look existente sirve |
 | 7 | Arte para la web | `web/assets/monsters/` | Opcional |
 | 8 | Spawn | `data/world/test-spawn.xml` (o RME) | Sí, para que aparezca |
-| 9 | Pruebas y deploy | Docker local / ThinkPad, `ot-probe.py`, `deploy-vps.sh` | Sí |
+| 9 | Pruebas y deploy | Docker local / ThinkPad, `ot-probe.py`, `THINKPAD_TEST_SERVER.md` | Sí |
 
 **El orden importa cuando hay sprite propio:** el cliente de los jugadores se actualiza **antes** de poner el spawn en producción (ver sección 6.6).
 
@@ -344,7 +344,7 @@ En el juego, con un GM (`access` 2 o más):
 
 1. **Spawn:** en `data/world/test-spawn.xml` (a mano o desde RME). Elegir zona y `spawntime` según la dificultad. Ver [`../CAMBIAR-MAPA.md`](../CAMBIAR-MAPA.md) y [`RESPAWN_SYSTEM.md`](RESPAWN_SYSTEM.md).
 2. **Commit y push**, en commits chicos (regla del repo: ~300 líneas máximo).
-3. **Deploy al VPS**, solo con el OK de Gonzalo: `DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh`, y `ot-probe.py` contra el VPS después.
+3. **Deploy a la ThinkPad**, solo con el OK de Gonzalo: seguir [`../systems/THINKPAD_TEST_SERVER.md`](../systems/THINKPAD_TEST_SERVER.md), y `ot-probe.py 192.168.1.17 7171` después.
 
 ---
 
@@ -369,7 +369,7 @@ Web (opcional)
 Pruebas y salida
 [ ] Boot local limpio + ot-probe OK + /m NOMBRE en el juego
 [ ] Spawn en test-spawn.xml
-[ ] Deploy al VPS con OK de Gonzalo
+[ ] Deploy a la ThinkPad con OK de Gonzalo
 ```
 
 ---

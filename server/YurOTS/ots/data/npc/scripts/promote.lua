@@ -34,9 +34,9 @@ local function onMessage(cid, msg)
 			talk_state = 1
 		end
 	elseif msgcontains(msg, 'premium') or msgcontains(msg, 'premmy') then
-		selfSay('Premium donations at https://retro76.cl. Premium boosts regen further. Use !premmy to check your time.')
+		selfSay('Ask a GM about premium. Premium boosts regen further. Use !premmy to check your time.')
 	elseif npcIsHelp(msg) then
-		selfSay('Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster (https://retro76.cl).')
+		selfSay('Promotion: level 20 and 20,000 gp for everyone. Premium accounts regen faster.')
 	end
 end
 

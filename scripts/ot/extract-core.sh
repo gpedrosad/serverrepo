@@ -1,7 +1,7 @@
 #!/bin/bash
 # extract-core.sh — analyze a core dump from the yurots server.
 #
-# Usage (on the VPS):
+# Usage (on the server):
 #   ./scripts/extract-core.sh /path/to/core
 #   ./scripts/extract-core.sh                    # auto-detect newest core
 #

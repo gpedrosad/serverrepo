@@ -12,7 +12,7 @@
 
 **Motivo:** el ML subía demasiado rápido respecto al ritmo del server (spam de curas, conjurar en PZ, hunt). La regen de mana se mantiene igual; solo baja cuánto ML cuenta cada punto de mana gastado.
 
-**Estado:** aplicado en `config.lua` y `OTINFO`. Requiere **restart del OT** (local o VPS) para entrar en vivo.
+**Estado:** aplicado en `config.lua` y `OTINFO`. Requiere **restart del OT** (local o la ThinkPad) para entrar en vivo.
 
 **Contexto exp:** en jul 2026 también se bajaron los tramos altos de exp (71–100 ×2, 101+ ×1). Ver [`EXP_RATE.md`](EXP_RATE.md).
 
@@ -61,8 +61,8 @@ RL Tibia (×1): 0 → ML 30 ≈ 45 min con el mismo método.
 Solo datos; no hace falta rebuild del binario:
 
 ```bash
-# En VPS, tras sync del repo o copiar config.lua
-docker compose -f docker-compose.prod.yml restart yurots
+# En la ThinkPad (con OK de Gonzalo), tras actualizar según docs/systems/THINKPAD_TEST_SERVER.md
+docker restart -t 45 yurots
 ```
 
 Actualizar también la web/OTINFO pública si muestra rates (`OTINFO` ya actualizado en repo).

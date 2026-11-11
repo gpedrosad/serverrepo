@@ -505,7 +505,7 @@ Aunque cambie tu stack, intenta preservar estas practicas:
 ### Referencias en este repo
 
 - `docs/PROYECTO.md`
-- `scripts/README-DEPLOY-VPS.md`
+- `docs/systems/THINKPAD_TEST_SERVER.md`
 
 ---
 

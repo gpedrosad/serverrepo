@@ -134,7 +134,7 @@ mueve algo, cambiarlo en los dos.
 
 - Solo Lua/NPC XML: restart OT.
 - Si tocaste `npc.cpp` / `npc.h`: **rebuild C++** (`make clean && make` si cambió el header de forma que afecte ABI; al menos `make -j2 yurots`) + restart + `python3 scripts/ot-probe.py 127.0.0.1 7171`.
-- Deploy mapa: checklist depots ([`DEPOTS.md`](DEPOTS.md)); preguntar antes de VPS.
+- Deploy mapa: checklist depots ([`DEPOTS.md`](DEPOTS.md)); preguntar antes de deployar a la ThinkPad.
 
 ---
 
@@ -151,6 +151,6 @@ mueve algo, cambiarlo en los dos.
 La prueba de NPC (`scripts/npc/run_npc_tests.py chronos`) recorre el ciclo entero con dos jugadores en la
 sala: mensajes, monstruos, braseros y limpieza.
 
-**Estado (2026-11-11):** cargado en el servidor de prueba de la ThinkPad ([`THINKPAD_TEST_SERVER.md`](../systems/THINKPAD_TEST_SERVER.md)); el servidor arranca y carga el mapa. Falta recorrerlo en el juego. No está en el VPS.
+**Estado (2026-11-11):** cargado en el servidor de prueba de la ThinkPad ([`THINKPAD_TEST_SERVER.md`](../systems/THINKPAD_TEST_SERVER.md)); el servidor arranca y carga el mapa. Falta recorrerlo en el juego.
 
 Relacionado: [`WAVE_ARENA.md`](WAVE_ARENA.md), [`../CAMBIAR-MAPA.md`](../CAMBIAR-MAPA.md).

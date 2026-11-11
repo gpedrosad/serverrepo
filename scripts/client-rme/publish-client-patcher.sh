@@ -67,4 +67,4 @@ rm -rf "$STAGE"
 echo "OK sprites zip → $SPRITES_ZIP ($(wc -c < "$SPRITES_ZIP") bytes)"
 
 echo ""
-echo "Siguiente paso (VPS): ./scripts/upload-client-downloads.sh"
+echo "Hoy no hay servidor público donde subirlo (el VPS ya no existe): repartir el zip a mano."

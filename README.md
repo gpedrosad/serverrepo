@@ -1,12 +1,12 @@
 # Retro76 / YurOTS Principal
 
-Repositorio **principal** del servidor YurOTS 7.6 (Tibia clásico) en Docker — producción en **retro76.cl**.
+Repositorio **principal** del servidor YurOTS 7.6 (Tibia clásico) en Docker. Por ahora no hay servidor de producción: el único servidor es el de prueba en la ThinkPad ([docs/systems/THINKPAD_TEST_SERVER.md](docs/systems/THINKPAD_TEST_SERVER.md)).
 
 > **Guía completa del proyecto, hosting y deploy (leer primero):**
-> **[docs/PROYECTO.md](docs/PROYECTO.md)** — arquitectura Mac/GitHub/VPS, data de jugadores, cómo aplicar cambios sin borrar saves.
+> **[docs/PROYECTO.md](docs/PROYECTO.md)** — arquitectura Mac/GitHub/ThinkPad, data de jugadores, cómo aplicar cambios sin borrar saves.
 >
-> **Deploy en producción (obligatorio antes de tocar el VPS):**
-> **[scripts/README-DEPLOY-VPS.md](scripts/README-DEPLOY-VPS.md)**
+> **Deploy (obligatorio antes de tocar el servidor de la ThinkPad):**
+> **[docs/systems/THINKPAD_TEST_SERVER.md](docs/systems/THINKPAD_TEST_SERVER.md)**
 
 Incluye mapa, spawns, NPCs, monstruos custom, spells y assets de RME para evitar confusiones con copias locales.
 
@@ -41,7 +41,7 @@ Usa la IP de tu Mac/PC en `config.lua` y reinicia Docker. Tus amigos conectan a 
 
 Volver a solo local: `./scripts/share-ot.sh local`
 
-`config.lua` trae **`ip = "127.0.0.1"`** por defecto (Docker local para todos; sin VPS).
+`config.lua` trae **`ip = "127.0.0.1"`** por defecto (Docker local para todos).
 
 ## Web (rankings, status)
 
@@ -49,7 +49,7 @@ Volver a solo local: `./scripts/share-ot.sh local`
 ./scripts/web.sh
 ```
 
-Abre **http://localhost:8080/** — Python directo, sin Docker ni VPS.
+Abre **http://localhost:8080/** — Python directo, sin Docker.
 
 Para que **otros la vean** (link público temporal):
 
@@ -83,10 +83,10 @@ Ver [OTINFO](OTINFO) — rates, PvP, frags y reglas.
 
 ## Documentación técnica
 
-- **[docs/PROYECTO.md](docs/PROYECTO.md)** — Proyecto, VPS, data de jugadores, flujo de cambios
+- **[docs/PROYECTO.md](docs/PROYECTO.md)** — Proyecto, servidor, data de jugadores, flujo de cambios
 - [docs/gameplay/BOAT_TRAVEL.md](docs/gameplay/BOAT_TRAVEL.md) — Viajes de Nimral/Fargum: destinos, Hell Quest y reglas de teleport/temple
 - [docs/gameplay/GOLDEN_ACCESSORIES.md](docs/gameplay/GOLDEN_ACCESSORIES.md) — Golden amulet y golden ring: auto-bank, bonus de oro y cómo se combinan
-- **[scripts/README-DEPLOY-VPS.md](scripts/README-DEPLOY-VPS.md)** — Deploy seguro en producción (**obligatorio**)
+- **[docs/systems/THINKPAD_TEST_SERVER.md](docs/systems/THINKPAD_TEST_SERVER.md)** — Servidor de la ThinkPad y deploy seguro (**obligatorio**)
 
 Para el índice completo de documentación, ver [docs/INDEX.md](docs/INDEX.md).
 
@@ -123,20 +123,18 @@ Los nombres históricos en la raíz (`client-local`, `rme-client-760`, `zagan-te
 cd /app/YurOTS/ots/source && make clean && make
 ```
 
-## Deploy en VPS (producción)
+## Deploy (ThinkPad)
+
+Por ahora no hay producción. Los deploys van a la ThinkPad (`ssh thinkpad`, `~/apps/serverrepo`) y **solo con
+el OK de Gonzalo**. La Mac mini no compila: el C++ se compila en la ThinkPad.
 
 > **Obligatorio leer antes de tocar el servidor:**
-> **[scripts/README-DEPLOY-VPS.md](scripts/README-DEPLOY-VPS.md)**
+> **[docs/systems/THINKPAD_TEST_SERVER.md](docs/systems/THINKPAD_TEST_SERVER.md)**
 
-Un deploy mal hecho puede borrar cuentas y personajes de jugadores. Solo usar:
+Un deploy mal hecho puede borrar cuentas y personajes, o pisar cambios sin commitear de otras sesiones.
 
-```bash
-# En el VPS (64.176.20.238)
-cd ~/yurots-principal
-DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh
-```
-
-**Prohibido en el VPS:** `git stash -u`, `git clean`, `git reset --hard` sin backup, `git pull` a mano.
+**Prohibido en la ThinkPad:** `git stash -u`, `git clean`, `git reset --hard`, `git pull` a mano. Se actualiza
+con `git merge --ff-only origin/main` después del respaldo, como dice el doc.
 
 ## Remoto
 

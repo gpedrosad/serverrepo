@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Compila la web Astro (web/site) en la ThinkPad y trae el resultado a web/dist.
-# En la Mac mini no se compila (CLAUDE.md). web/dist va versionado: el VPS no necesita Node,
+# En la Mac mini no se compila (CLAUDE.md). web/dist va versionado: el servidor no necesita Node,
 # server.py lo sirve tal cual. Ver docs/features/18-web-astro.md.
 #
 #   scripts/web/build-site.sh            # compila y trae web/dist

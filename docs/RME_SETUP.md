@@ -177,4 +177,4 @@ Referencia: [OTLand — custom monsters in RME](https://otland.net/threads/put-c
 
 ## 9. Después de guardar cambios
 
-Para llevar el mapa al servidor (local o VPS): [docs/CAMBIAR-MAPA.md](CAMBIAR-MAPA.md).
+Para llevar el mapa al servidor (local o la ThinkPad): [docs/CAMBIAR-MAPA.md](CAMBIAR-MAPA.md).

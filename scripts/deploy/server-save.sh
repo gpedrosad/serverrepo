@@ -4,7 +4,7 @@
 # Por defecto avisa en rojo a todos y guarda a los 5 minutos
 # (data/.request-server-save → Game::scheduledServerSave).
 #
-# Uso (VPS o local con Docker):
+# Uso (en el servidor, con Docker):
 #   ./scripts/server-save.sh                 # aviso 5 min + save
 #   ./scripts/server-save.sh --now           # save inmediato (sin espera)
 #   ./scripts/server-save.sh --backup        # + backup runtime tras el save

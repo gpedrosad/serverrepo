@@ -17,7 +17,7 @@ Relacionado:
 
 La muralla norte está en y=23–25 y el mapa empieza en y=0. Al norte solo hay unas 20 casillas, y a la izquierda está la sala de entrenamiento (Trainer Monks, x 134–154). El camino sale por una puerta nueva, cruza un claro y termina en un portal entre rocas. La región sigue en la zona vacía del mapa (x 370–469, y 236–467): se llega por su lado sur y se avanza hacia el norte, así que se siente continuo.
 
-Correr el mapa entero hacia el sur se descartó: habría cambiado las coordenadas de casas, spawns, NPC, portales, scripts y personajes guardados en el VPS.
+Correr el mapa entero hacia el sur se descartó: habría cambiado las coordenadas de casas, spawns, NPC, portales, scripts y personajes guardados en el servidor.
 
 ## Coordenadas clave
 
@@ -144,4 +144,3 @@ Qué escribe:
   [`../systems/THINKPAD_TEST_SERVER.md`](../systems/THINKPAD_TEST_SERVER.md)). Falta recorrerlo en el juego.
 - En el juego, mirar la esquina de la muralla junto a la puerta (deja una sombra en diagonal) y la densidad de las Cuevas del Dragón (58 monstruos).
 - Cuando el updater reparta el cliente con el look 230: `--with-black-dragon`.
-- Deploy al VPS solo con el OK de Gonzalo.

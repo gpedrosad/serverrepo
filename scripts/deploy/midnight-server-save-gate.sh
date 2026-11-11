@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Gate del save de medianoche. Cron del VPS está en UTC y CRON_TZ no aplica
+# Gate del save de medianoche. El cron del servidor está en UTC y CRON_TZ no aplica
 # en cron 3.0pl1 de Ubuntu — por eso validamos la hora Chile acá.
 #
 # Crontab (UTC): 55 2,3,4 * * *  → cubre America/Santiago UTC-3/-4/-5

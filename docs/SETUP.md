@@ -86,7 +86,7 @@ El binario queda en `/app/YurOTS/ots/source/yurots`.
 
 - Compila con `-O2 -g` (optimizado y con símbolos para leer crashes). Para depurar paso a paso:
   `make clean && make OPT=-O0`.
-- El binario **no** está en git (`.gitignore`): `deploy-vps.sh` lo compila en cada deploy.
+- El binario **no** está en git (`.gitignore`): se compila en el servidor (hoy la ThinkPad) en cada deploy de C++.
 - No hay opciones `-DYUR_*` / `-DTLM_*`: hasta nov 2026 eran 54 y todas estaban siempre activas;
   se fijaron en el código con `unifdef` y los bloques que nunca se compilaban (anti-AFK, SQL,
   Visual Studio 2005, trash bins...) se borraron. Lo que queda de `#ifdef` es plataforma

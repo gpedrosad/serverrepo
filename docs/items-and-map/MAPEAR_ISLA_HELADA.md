@@ -57,7 +57,7 @@ islote sigue en el paso de hielo. Los cofres conservan su uniqueId.
 - El sendero llega del puerto a la bajada, de z8 a z9, a los 4 cofres y al portal.
 - Árboles y rocas grandes nunca tapan el sendero (se dibujan una casilla hacia arriba-izquierda).
 
-**Estado (2026-11-11):** cargado en el servidor de prueba de la ThinkPad ([`THINKPAD_TEST_SERVER.md`](../systems/THINKPAD_TEST_SERVER.md)); el servidor arranca y carga el mapa. Falta recorrerlo en el juego. No está en el VPS.
+**Estado (2026-11-11):** cargado en el servidor de prueba de la ThinkPad ([`THINKPAD_TEST_SERVER.md`](../systems/THINKPAD_TEST_SERVER.md)); el servidor arranca y carga el mapa. Falta recorrerlo en el juego.
 
 ## Regenerar
 

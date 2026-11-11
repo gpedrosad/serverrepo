@@ -270,7 +270,7 @@ Evitar:
 - Solapar islas ya generadas (el script falla si hay conflicto)
 - Poner islas sobre depots, temples o spawns críticos sin revisar
 
-### Workflow con git y VPS
+### Workflow con git y deploy
 
 Si commiteás el mapa con la isla:
 
@@ -281,7 +281,7 @@ git add server/YurOTS/ots/data/world/generated-island.json   # opcional, metadat
 git add server/YurOTS/ots/data/world/test-spawn.xml
 ```
 
-En VPS: seguir [docs/CAMBIAR-MAPA.md](../CAMBIAR-MAPA.md) y [scripts/README-DEPLOY-VPS.md](../../scripts/README-DEPLOY-VPS.md). **No hace falta** `sync-houses-from-rme.py` si solo agregaste terreno vacío sin casas.
+En la ThinkPad (solo con OK de Gonzalo): seguir [docs/CAMBIAR-MAPA.md](../CAMBIAR-MAPA.md) y [docs/systems/THINKPAD_TEST_SERVER.md](../systems/THINKPAD_TEST_SERVER.md). **No hace falta** `sync-houses-from-rme.py` si solo agregaste terreno vacío sin casas.
 
 ---
 

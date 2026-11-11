@@ -7,7 +7,7 @@ Relacionado:
 
 - [`../../AGENTS.md`](../../AGENTS.md) — reglas para agentes (sección 8, depots)
 - [`../CAMBIAR-MAPA.md`](../CAMBIAR-MAPA.md) — workflow de cambio de mapa
-- [`../../scripts/README-DEPLOY-VPS.md`](../../scripts/README-DEPLOY-VPS.md) — deploy seguro
+- [`../systems/THINKPAD_TEST_SERVER.md`](../systems/THINKPAD_TEST_SERVER.md) — deploy seguro (ThinkPad; no hay producción por ahora)
 - `server/YurOTS/ots/source/actions.cpp` — `resolveMapDepotId()`, `openContainer()`
 - `server/YurOTS/ots/source/iomapotbm.cpp` — carga `OTBM_ATTR_DEPOT_ID`
 - `scripts/scan-map-depots.py` — auditoría de lockers en OTBM
@@ -26,7 +26,7 @@ Al abrir un locker, el motor debe enlazar el tile del mapa con un **`depotid`** 
 
 ### IDs en Retro76 (prod, jul 2026)
 
-| `depotid` en XML | Uso típico | Players en VPS |
+| `depotid` en XML | Uso típico | Players en prod (jul 2026) |
 |------------------|------------|----------------|
 | `1` | Temple / ciudad principal (lockers ~127–133) | 83 |
 | `405` | Depots de casa (sistema house) | 30 |
@@ -50,7 +50,7 @@ Lockers del temple en el mapa actual (11 tiles):
 
 ### Comprobar que el XML del jugador tiene items
 
-En VPS (solo lectura):
+En el servidor (ThinkPad, `~/apps/serverrepo`, solo lectura):
 
 ```bash
 grep -o '<depot depotid="[0-9]*"' server/YurOTS/ots/data/players/TuChar.xml
@@ -121,9 +121,9 @@ Re-correrlo no cambia nada. Sirve también después de editar lockers en RME.
 [ ] Confirmar que se ven los items guardados (no contenedor vacío)
 [ ] bash scripts/test-local-smoke.sh
 [ ] python3 scripts/ot-probe.py 127.0.0.1 7171
-[ ] Backup VPS: BACKUP_LABEL=pre-map ./scripts/backup-runtime-data.sh --vps
-[ ] Deploy: DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh
-[ ] Post-deploy: probar locker in-game en prod
+[ ] Backup ThinkPad: BACKUP_LABEL=pre-map ./scripts/backup-runtime-data.sh --server
+[ ] Deploy (con OK de Gonzalo): docs/systems/THINKPAD_TEST_SERVER.md
+[ ] Post-deploy: probar locker in-game en la ThinkPad
 ```
 
 ---
@@ -150,10 +150,10 @@ No confiar en este script como única solución. El fallback C++ en `actions.cpp
 
 ## Reglas para deploy (data sagrada)
 
-1. **`players/*.xml`** contiene los depots reales — nunca commitear, nunca borrar en VPS.
-2. **`deploy-vps.sh`** hace backup y restaura `players/` con `cp -an` — no pisa depots existentes.
+1. **`players/*.xml`** contiene los depots reales — nunca commitear, nunca borrar en el servidor.
+2. `players/` no está en git: el deploy de la ThinkPad (`git merge --ff-only`) no lo toca, y antes lo respalda.
 3. Cambiar `test.otbm` **no borra** items del XML; solo puede desconectar lockers si se rompe el `depotid`.
-4. **Nunca** `git stash -u` en VPS (incidente cuentas jun 2026).
+4. **Nunca** `git stash -u` en el servidor (incidente de cuentas en el VPS, jun 2026).
 
 ---
 

@@ -174,7 +174,7 @@ Ambos usan el mismo formato que Nightglass en Serpent Spawn (`chance="…"` en l
 ## 8. Pendiente / no hecho
 
 - Quest chest / NPC vendor: no definido.
-- Deploy VPS: **preguntar** antes; requiere rebuild C++ + OTB + monstruos.
+- Deploy a la ThinkPad: **preguntar** antes; requiere rebuild C++ + OTB + monstruos.
 - No se renombró Blue Gem a “White Gem” (no existe ese ítem en OTB 7.6).
 
 ---
