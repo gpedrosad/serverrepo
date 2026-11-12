@@ -86,6 +86,9 @@ python3 scripts/map/check-map-load.py                                           
 
 ## Deploy
 
-Solo datos (mapa, spawns, casas, NPC, cartel): sin compilar y sin cliente nuevo. En la ThinkPad, `data/houses/`
-también lo escribe el servidor: antes de actualizar, comprobar que los archivos que se borran no tienen cambios
-locales.
+Solo datos (mapa, spawns, casas, NPC, cartel): sin compilar y sin cliente nuevo. Deployado el 12 nov 2026.
+
+Ojo al **sacar casas**: el servidor viejo, al apagarse, vuelve a escribir `data/houses/<casa>.xml` de todas las
+casas que tenía cargadas, también las que el `git merge` acababa de borrar. Quedan como archivos sin seguimiento
+(dueño vacío, de `root`). Después del reinicio hay que borrarlos; el servidor nuevo ya no los escribe porque
+esas casas no están en `houses.xml`.
