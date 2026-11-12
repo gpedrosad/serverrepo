@@ -82,7 +82,7 @@ TELEPORT, ATTR_TELE_DEST = 1387, 8
 STAIR_DOWN, STAIRS_UP = 432, 1385                                 # 1385 sube hacia el norte
 CITY_WALL_ITEMS = {1049, 1050, 1051}
 
-# cueva (mismas reglas que generate-natural-island.py)
+# cueva (reglas compartidas con generate-natural-island.py, que las importa de aca)
 ROCK = 101
 CAVE_FLOOR, CAVE_FLOOR_ALT, CAVE_MUD = 351, 352, 355
 CAVE_FLOORS = {CAVE_FLOOR, CAVE_FLOOR_ALT, CAVE_MUD, STAIR_DOWN}
@@ -129,7 +129,7 @@ STAIRS = (50, 22)                           # bajada a las cuevas
 
 
 class Noise:
-    """Value noise 2D con octavas (igual que generate-natural-island.py)."""
+    """Value noise 2D con octavas (la usa tambien generate-natural-island.py)."""
 
     def __init__(self, seed: int):
         self.seed = seed

@@ -1,307 +1,158 @@
 {
   "name": "generated-natural-island",
   "seed": 23,
-  "z": 7,
   "box": {
+    "x1": 131,
+    "y1": 433,
+    "x2": 180,
+    "y2": 476,
+    "z": [
+      7,
+      8
+    ]
+  },
+  "oldBoxCleared": {
     "x1": 124,
     "y1": 426,
     "x2": 187,
     "y2": 483,
-    "z": 7
+    "z": [
+      7,
+      8
+    ]
   },
   "land": {
-    "x1": 133,
-    "y1": 433,
-    "x2": 178,
-    "y2": 476,
+    "x1": 141,
+    "y1": 441,
+    "x2": 170,
+    "y2": 468,
     "z": 7
   },
-  "center": {
-    "x": 156,
-    "y": 455,
+  "landTiles": 566,
+  "caveFloorTiles": 276,
+  "landing": {
+    "x": 147,
+    "y": 462,
     "z": 7
   },
-  "tileCount": 7424,
-  "landTiles": 1475,
-  "cave": {
-    "z": 8,
-    "hole": {
-      "x": 160,
+  "portalsBack": [
+    {
+      "x": 147,
+      "y": 465,
+      "z": 7,
+      "to": [
+        156,
+        48,
+        7
+      ]
+    },
+    {
+      "x": 166,
       "y": 461,
+      "z": 7,
+      "to": [
+        156,
+        48,
+        7
+      ]
+    },
+    {
+      "x": 155,
+      "y": 463,
+      "z": 8,
+      "to": [
+        156,
+        48,
+        7
+      ]
+    }
+  ],
+  "camps": [
+    {
+      "x": 145,
+      "y": 452,
+      "z": 7,
+      "name": "Campamento del oeste"
+    },
+    {
+      "x": 155,
+      "y": 445,
+      "z": 7,
+      "name": "Campamento del norte"
+    },
+    {
+      "x": 166,
+      "y": 452,
+      "z": 7,
+      "name": "Campamento del este"
+    }
+  ],
+  "cave": {
+    "hole": {
+      "x": 163,
+      "y": 463,
       "z": 7
     },
     "ladder": {
-      "x": 160,
-      "y": 461,
+      "x": 163,
+      "y": 463,
       "z": 8
     },
     "ladderExit": {
-      "x": 160,
-      "y": 462,
+      "x": 163,
+      "y": 464,
       "z": 7
     },
-    "floorTiles": 651,
-    "spawns": [
-      {
-        "x": 138,
-        "y": 461,
-        "z": 8,
-        "monster": "Grorlam",
-        "spawntime": 1800
-      },
-      {
-        "x": 166,
-        "y": 454,
-        "z": 8,
-        "monster": "Stalker",
-        "spawntime": 90
-      },
+    "rooms": [
       {
         "x": 164,
-        "y": 469,
-        "z": 8,
-        "monster": "Angry Stone Golem",
-        "spawntime": 90
-      },
-      {
-        "x": 149,
-        "y": 462,
-        "z": 8,
-        "monster": "Angry Stone Golem",
-        "spawntime": 90
-      },
-      {
-        "x": 157,
-        "y": 453,
-        "z": 8,
-        "monster": "Gazer",
-        "spawntime": 90
-      },
-      {
-        "x": 163,
-        "y": 449,
-        "z": 8,
-        "monster": "Gazer",
-        "spawntime": 90
-      },
-      {
-        "x": 152,
-        "y": 459,
-        "z": 8,
-        "monster": "Angry Stone Golem",
-        "spawntime": 90
-      },
-      {
-        "x": 150,
-        "y": 455,
-        "z": 8,
-        "monster": "Gazer",
-        "spawntime": 90
-      },
-      {
-        "x": 163,
-        "y": 446,
-        "z": 8,
-        "monster": "Angry Stone Golem",
-        "spawntime": 90
-      },
-      {
-        "x": 173,
-        "y": 447,
-        "z": 8,
-        "monster": "Gazer",
-        "spawntime": 90
-      },
-      {
-        "x": 157,
-        "y": 473,
-        "z": 8,
-        "monster": "Gazer",
-        "spawntime": 90
-      },
-      {
-        "x": 159,
-        "y": 449,
-        "z": 8,
-        "monster": "Angry Crypt Shambler",
-        "spawntime": 90
-      },
-      {
-        "x": 161,
-        "y": 470,
-        "z": 8,
-        "monster": "Angry Stone Golem",
-        "spawntime": 90
-      },
-      {
-        "x": 148,
-        "y": 451,
-        "z": 8,
-        "monster": "Angry Stone Golem",
-        "spawntime": 90
-      },
-      {
-        "x": 148,
-        "y": 448,
-        "z": 8,
-        "monster": "Angry Stone Golem",
-        "spawntime": 90
-      },
-      {
-        "x": 145,
         "y": 454,
         "z": 8,
-        "monster": "Gazer",
-        "spawntime": 90
+        "name": "Sala de los Golems"
       },
       {
-        "x": 151,
-        "y": 445,
+        "x": 155,
+        "y": 447,
         "z": 8,
-        "monster": "Furious Stone Golem",
-        "spawntime": 90
-      },
-      {
-        "x": 165,
-        "y": 443,
-        "z": 8,
-        "monster": "Furious Stone Golem",
-        "spawntime": 90
-      },
-      {
-        "x": 171,
-        "y": 444,
-        "z": 8,
-        "monster": "Angry Crypt Shambler",
-        "spawntime": 90
+        "name": "Galeria"
       },
       {
         "x": 144,
-        "y": 463,
+        "y": 453,
         "z": 8,
-        "monster": "Furious Stone Golem",
-        "spawntime": 90
+        "name": "Cripta"
+      },
+      {
+        "x": 152,
+        "y": 462,
+        "z": 8,
+        "name": "Guarida del Grorlam"
       }
     ]
   },
-  "portal": {
-    "templeTp": {
-      "x": 155,
-      "y": 54,
-      "z": 7
-    },
-    "templeSign": {
-      "x": 155,
-      "y": 53,
-      "z": 7
-    },
-    "templeLanding": {
-      "x": 156,
-      "y": 54,
-      "z": 7
-    },
-    "islandLanding": {
-      "x": 148,
-      "y": 449,
-      "z": 7
-    },
-    "islandReturnTp": {
-      "x": 148,
-      "y": 450,
-      "z": 7
-    }
-  },
-  "surfaceSpawns": [
-    {
-      "x": 139,
-      "y": 460,
-      "z": 7,
-      "monster": "Cyclops",
-      "spawntime": 90
-    },
-    {
-      "x": 158,
-      "y": 439,
-      "z": 7,
-      "monster": "Cyclops",
-      "spawntime": 90
-    },
-    {
-      "x": 174,
-      "y": 455,
-      "z": 7,
-      "monster": "Cyclops",
-      "spawntime": 90
-    },
-    {
-      "x": 155,
-      "y": 468,
-      "z": 7,
-      "monster": "Cyclops",
-      "spawntime": 90
-    },
-    {
-      "x": 168,
-      "y": 443,
-      "z": 7,
-      "monster": "Cyclops",
-      "spawntime": 90
-    },
+  "signs": [
     {
       "x": 145,
-      "y": 462,
-      "z": 7,
-      "monster": "Cyclops",
-      "spawntime": 90
+      "y": 461,
+      "z": 7
     },
     {
-      "x": 161,
-      "y": 448,
-      "z": 7,
-      "monster": "Cyclops",
-      "spawntime": 90
-    },
-    {
-      "x": 165,
-      "y": 456,
-      "z": 7,
-      "monster": "Cyclops",
-      "spawntime": 90
-    },
-    {
-      "x": 149,
-      "y": 439,
-      "z": 7,
-      "monster": "Cyclops",
-      "spawntime": 90
-    },
-    {
-      "x": 163,
-      "y": 462,
-      "z": 7,
-      "monster": "Cyclops",
-      "spawntime": 90
-    },
-    {
-      "x": 164,
-      "y": 467,
-      "z": 7,
-      "monster": "Cyclops",
-      "spawntime": 90
-    },
-    {
-      "x": 176,
-      "y": 450,
-      "z": 7,
-      "monster": "Cyclops",
-      "spawntime": 90
-    },
-    {
-      "x": 159,
-      "y": 475,
-      "z": 7,
-      "monster": "Cyclops",
-      "spawntime": 90
+      "x": 160,
+      "y": 460,
+      "z": 7
     }
-  ]
+  ],
+  "spawns": {
+    "z7": 3,
+    "z8": 4,
+    "monsters": 28
+  },
+  "monsters": {
+    "Crypt Shambler": 7,
+    "Cyclops": 11,
+    "Gazer": 2,
+    "Grorlam": 1,
+    "Stalker": 2,
+    "Stone Golem": 5
+  }
 }

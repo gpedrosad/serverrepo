@@ -133,7 +133,7 @@ Qué escribe:
 
 ## Cómo funciona
 
-- **Terreno:** ruido con semilla (misma clase `Noise` que `generate-natural-island.py`). Usa `pieces_for` / `fix_until_valid` para los bordes, pero revisando solo el contorno de cada zona, porque recorrer toda la caja en cada vuelta era lento.
+- **Terreno:** ruido con semilla (clase `Noise`, que también importa `generate-natural-island.py`). Usa `pieces_for` / `fix_until_valid` para los bordes, pero revisando solo el contorno de cada zona, porque recorrer toda la caja en cada vuelta era lento.
 - **Cuevas:** autómata celular sobre una **grilla de bloques 2×2** que después se amplía. Todo pasillo y pared mide 2 casillas o más y no hay contactos solo en diagonal, así que cada pared tiene una única pieza válida. El ajuste casilla a casilla de la isla oscilaba sin converger en cuevas de este tamaño.
 - **Decoración que bloquea** (piedras, huesos grandes): se prueba una por una que no corte el paso.
 - **Spawns:** centros separados al menos 7–9 casillas, fuera del camino, la llegada, el campamento y las escaleras. Grupos de hasta 3 monstruos en radio 3.

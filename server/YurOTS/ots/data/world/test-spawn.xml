@@ -1989,109 +1989,6 @@
 		<monster name="Wrath" x="0" y="0" z="7" spawntime="120" direction="2" />
 	</spawn>
 	<!-- END TP_GAUNTLET -->
-	<!-- BEGIN NATURAL_ISLAND_CAVE -->
-	<spawn centerx="165" centery="443" centerz="8" radius="1">
-		<monster name="Furious Stone Golem" x="0" y="0" z="8" spawntime="90" />
-	</spawn>
-	<spawn centerx="171" centery="444" centerz="8" radius="1">
-		<monster name="Angry Crypt Shambler" x="0" y="0" z="8" spawntime="90" />
-	</spawn>
-	<spawn centerx="151" centery="445" centerz="8" radius="1">
-		<monster name="Furious Stone Golem" x="0" y="0" z="8" spawntime="90" />
-	</spawn>
-	<spawn centerx="163" centery="446" centerz="8" radius="1">
-		<monster name="Angry Stone Golem" x="0" y="0" z="8" spawntime="90" />
-	</spawn>
-	<spawn centerx="173" centery="447" centerz="8" radius="1">
-		<monster name="Gazer" x="0" y="0" z="8" spawntime="90" />
-	</spawn>
-	<spawn centerx="148" centery="448" centerz="8" radius="1">
-		<monster name="Angry Stone Golem" x="0" y="0" z="8" spawntime="90" />
-	</spawn>
-	<spawn centerx="159" centery="449" centerz="8" radius="1">
-		<monster name="Angry Crypt Shambler" x="0" y="0" z="8" spawntime="90" />
-	</spawn>
-	<spawn centerx="163" centery="449" centerz="8" radius="1">
-		<monster name="Gazer" x="0" y="0" z="8" spawntime="90" />
-	</spawn>
-	<spawn centerx="148" centery="451" centerz="8" radius="1">
-		<monster name="Angry Stone Golem" x="0" y="0" z="8" spawntime="90" />
-	</spawn>
-	<spawn centerx="157" centery="453" centerz="8" radius="1">
-		<monster name="Gazer" x="0" y="0" z="8" spawntime="90" />
-	</spawn>
-	<spawn centerx="145" centery="454" centerz="8" radius="1">
-		<monster name="Gazer" x="0" y="0" z="8" spawntime="90" />
-	</spawn>
-	<spawn centerx="166" centery="454" centerz="8" radius="1">
-		<monster name="Stalker" x="0" y="0" z="8" spawntime="90" />
-	</spawn>
-	<spawn centerx="150" centery="455" centerz="8" radius="1">
-		<monster name="Gazer" x="0" y="0" z="8" spawntime="90" />
-	</spawn>
-	<spawn centerx="152" centery="459" centerz="8" radius="1">
-		<monster name="Angry Stone Golem" x="0" y="0" z="8" spawntime="90" />
-	</spawn>
-	<spawn centerx="138" centery="461" centerz="8" radius="1">
-		<monster name="Grorlam" x="0" y="0" z="8" spawntime="1800" />
-	</spawn>
-	<spawn centerx="149" centery="462" centerz="8" radius="1">
-		<monster name="Angry Stone Golem" x="0" y="0" z="8" spawntime="90" />
-	</spawn>
-	<spawn centerx="144" centery="463" centerz="8" radius="1">
-		<monster name="Furious Stone Golem" x="0" y="0" z="8" spawntime="90" />
-	</spawn>
-	<spawn centerx="164" centery="469" centerz="8" radius="1">
-		<monster name="Angry Stone Golem" x="0" y="0" z="8" spawntime="90" />
-	</spawn>
-	<spawn centerx="161" centery="470" centerz="8" radius="1">
-		<monster name="Angry Stone Golem" x="0" y="0" z="8" spawntime="90" />
-	</spawn>
-	<spawn centerx="157" centery="473" centerz="8" radius="1">
-		<monster name="Gazer" x="0" y="0" z="8" spawntime="90" />
-	</spawn>
-	<!-- END NATURAL_ISLAND_CAVE -->
-	<!-- BEGIN NATURAL_ISLAND_SURFACE -->
-	<spawn centerx="149" centery="439" centerz="7" radius="2">
-		<monster name="Cyclops" x="0" y="0" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="158" centery="439" centerz="7" radius="2">
-		<monster name="Cyclops" x="0" y="0" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="168" centery="443" centerz="7" radius="2">
-		<monster name="Cyclops" x="0" y="0" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="161" centery="448" centerz="7" radius="2">
-		<monster name="Cyclops" x="0" y="0" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="176" centery="450" centerz="7" radius="2">
-		<monster name="Cyclops" x="0" y="0" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="174" centery="455" centerz="7" radius="2">
-		<monster name="Cyclops" x="0" y="0" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="165" centery="456" centerz="7" radius="2">
-		<monster name="Cyclops" x="0" y="0" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="139" centery="460" centerz="7" radius="2">
-		<monster name="Cyclops" x="0" y="0" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="145" centery="462" centerz="7" radius="2">
-		<monster name="Cyclops" x="0" y="0" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="163" centery="462" centerz="7" radius="2">
-		<monster name="Cyclops" x="0" y="0" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="164" centery="467" centerz="7" radius="2">
-		<monster name="Cyclops" x="0" y="0" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="155" centery="468" centerz="7" radius="2">
-		<monster name="Cyclops" x="0" y="0" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="159" centery="475" centerz="7" radius="2">
-		<monster name="Cyclops" x="0" y="0" z="7" spawntime="90" />
-	</spawn>
-	<!-- END NATURAL_ISLAND_SURFACE -->
 	<!-- BEGIN HELL_QUEST_SPAWNS (scripts/map/generate-hell-quest.py) -->
 	<spawn centerx="318" centery="172" centerz="7" radius="3">
 		<monster name="Fire Elemental" x="-1" y="1" z="7" spawntime="120" />
@@ -4580,4 +4477,48 @@
 		<monster name="Imperial Squire" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<!-- END IMPERIAL_CASTLE_SPAWNS -->
+	<!-- BEGIN NATURAL_ISLAND_SPAWNS (scripts/map/generate-natural-island.py) -->
+	<spawn centerx="145" centery="452" centerz="7" radius="4">
+		<monster name="Cyclops" x="3" y="2" z="7" spawntime="90" />
+		<monster name="Cyclops" x="-2" y="3" z="7" spawntime="90" />
+		<monster name="Cyclops" x="1" y="3" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="155" centery="445" centerz="7" radius="4">
+		<monster name="Cyclops" x="2" y="-2" z="7" spawntime="90" />
+		<monster name="Cyclops" x="-1" y="1" z="7" spawntime="90" />
+		<monster name="Cyclops" x="-3" y="1" z="7" spawntime="90" />
+		<monster name="Cyclops" x="1" y="3" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="166" centery="452" centerz="7" radius="4">
+		<monster name="Cyclops" x="2" y="3" z="7" spawntime="90" />
+		<monster name="Cyclops" x="-1" y="2" z="7" spawntime="90" />
+		<monster name="Cyclops" x="0" y="-2" z="7" spawntime="90" />
+		<monster name="Cyclops" x="-3" y="-3" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="164" centery="454" centerz="8" radius="4">
+		<monster name="Stone Golem" x="0" y="0" z="8" spawntime="90" />
+		<monster name="Stone Golem" x="2" y="0" z="8" spawntime="90" />
+		<monster name="Stone Golem" x="-1" y="-2" z="8" spawntime="90" />
+		<monster name="Gazer" x="2" y="2" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="155" centery="447" centerz="8" radius="4">
+		<monster name="Stone Golem" x="0" y="0" z="8" spawntime="90" />
+		<monster name="Stone Golem" x="-2" y="0" z="8" spawntime="90" />
+		<monster name="Crypt Shambler" x="2" y="1" z="8" spawntime="90" />
+		<monster name="Crypt Shambler" x="-2" y="-2" z="8" spawntime="90" />
+		<monster name="Gazer" x="3" y="-1" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="144" centery="453" centerz="8" radius="4">
+		<monster name="Crypt Shambler" x="0" y="1" z="8" spawntime="100" />
+		<monster name="Crypt Shambler" x="-2" y="1" z="8" spawntime="100" />
+		<monster name="Crypt Shambler" x="-1" y="-2" z="8" spawntime="100" />
+		<monster name="Stalker" x="2" y="1" z="8" spawntime="100" />
+		<monster name="Stalker" x="1" y="-3" z="8" spawntime="100" />
+	</spawn>
+	<spawn centerx="152" centery="462" centerz="8" radius="4">
+		<monster name="Grorlam" x="0" y="-1" z="8" spawntime="1800" />
+		<monster name="Crypt Shambler" x="-1" y="2" z="8" spawntime="120" />
+		<monster name="Crypt Shambler" x="-3" y="1" z="8" spawntime="120" />
+	</spawn>
+	<!-- END NATURAL_ISLAND_SPAWNS -->
 </spawns>

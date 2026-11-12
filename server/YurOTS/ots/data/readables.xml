@@ -10,7 +10,7 @@
 	<readable x="77" y="87" z="0" text="EL CRISOL\nPalanca: bosses de hoy y arenas ocupadas.\nSalida al templo: TP sur."/>
 	<!-- END CRUCIBLE_SIGNS -->
 	<!-- BEGIN TEMPLE_PORTAL_SIGNS -->
-	<readable x="156" y="46" z="7" text="ISLA NATURAL\nCyclops arriba.\nCueva abajo (agujero)."/>
+	<readable x="156" y="46" z="7" text="ISLA NATURAL\nSendero: 3 campamentos Cyclops\nAl final, cueva y Grorlam"/>
 	<readable x="158" y="46" z="7" text="VALLE DE LAS BESTIAS\nCaza mid-hard en 3 pisos\nDe Minotauros a Demonios"/>
 	<readable x="164" y="46" z="7" text="CRISOL\n3 puertas. Boss diario.\nBronce / Plata / Oro"/>
 	<readable x="166" y="46" z="7" text="WAVE ARENA\nOleadas. Palanca = next.\nRanking semanal"/>
@@ -49,4 +49,8 @@
 	<!-- BEGIN IMPERIAL_CASTLE_SIGNS -->
 	<readable x="101" y="38" z="7" text="CASTILLO IMPERIAL\nCada piso es mas duro que el anterior.\nArriba esperan los Imperial Heroes y el tesoro."/>
 	<!-- END IMPERIAL_CASTLE_SIGNS -->
+	<!-- BEGIN NATURAL_ISLAND_SIGNS -->
+	<readable x="145" y="461" z="7" text="ISLA NATURAL\nSigue el sendero: tres\ncampamentos de Cyclops\ny al final la cueva."/>
+	<readable x="160" y="460" z="7" text="CUEVA DE PIEDRA\nGolems y Shamblers.\nAl fondo, el Grorlam\ny un portal al templo."/>
+	<!-- END NATURAL_ISLAND_SIGNS -->
 </readables>

@@ -47,8 +47,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 |--------|-----|
 | `generate-crucible.py` | El Crisol v2: hub PZ + 3 arenas temáticas, carteles y bloque `LAYOUT` de `crucible.lua` (`--dry-run --png` para previsualizar; portal en la plaza: `temple-portals.py`) |
 | `temple-portals.py` | Plaza del templo con todos los portales + reapunta vueltas (correr después de cualquier generador de zona) |
-| `generate-natural-island.py` | Isla irregular con costa/bordes del mapa real; `--cave` agrega cueva z+1 con agujero y escalera |
-| `spawn-island-cave.py` / `link-island-temple.py` | Spawns de la cueva / vuelta al templo + cyclops de la isla |
+| `generate-natural-island.py` | Isla natural: herradura con sendero, 3 campamentos Cyclops y cueva de 4 salas; escribe mapa, spawns, carteles y manifiesto (`--dry-run --preview`) |
 | `generate-sand-clock.py` | Reloj de Arena OTBM (portal en la plaza: `temple-portals.py`) |
 | `generate-wave-arena.py` | Wave Arena |
 | `generate-beast-valley.py` | Valle de las Bestias (portal 158,47,7; reemplazó al hunt maze) |
