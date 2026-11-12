@@ -172,6 +172,7 @@ Los presets de ejemplo están en `scripts/client-rme/presets/`: conviene copiar 
 | Parches cosidos | Cuadrados de 4×4 en posiciones relativas a la silueta, con puntadas en las esquinas | `novice_monk.py` |
 | Cosas que cuelgan | Desde el borde de abajo, hacia abajo sobre transparente | `drowned_sailor.py` (algas, gotas) |
 | Brasas / grietas de magma | Las luces de la parte roja o las heridas a una paleta de fuego | `ashen_lord.py`, `hellhound.py` |
+| Cambiar silueta con ramas y raíces | Trazos enteros con contorno y luz, anclados por dirección/pose; dejar margen en el cuadro y añadir brotes conectados | `root_colossus.py` |
 
 Reglas para que se vea bien a tamaño de juego:
 
@@ -198,6 +199,9 @@ Si el base es uno de estos, reusar lo que ya está. Las de `BASE_PARTS` traen el
 | Giant Spider (38) | 2×2 | Ojos verdes: `0.25 < h < 0.48, s > 0.35`. Articulaciones amarillas: `0.10 < h < 0.20, s > 0.55, v > 0.55`. Rayas rojas: `(h < 0.045 o h > 0.96), s > 0.6`. Cuerpo marrón: `0.03 < h < 0.14, s > 0.35`. Sombras azules: `h > 0.5, s > 0.3` | `ice_spider.py` |
 | War Wolf (3) | 2×2 | Casi todo gris: se pinta por luminosidad. Ojos: `0.1 ≤ h ≤ 0.2, s > 0.3, v > 0.45`. Contorno: luminosidad < 0.12 | `hellhound.py` |
 | Demon (35) | 2×2 | Contorno: `v < 0.16`. Fuego y ojos: `0.11 ≤ h ≤ 0.33, s > 0.3`. Cuernos, alas y garras: `0.04 ≤ h < 0.11, s > 0.2`. Luces de la piel: `(h < 0.04 o h > 0.9), s > 0.45, v > 0.86`. Piel roja: el resto | `ashen_lord.py` |
+| Hydra (121) | 2×2 | `outline`: `v < 0.13`. `eyes`: `h < 0.05, s > 0.7, v > 0.35`. `claws`: `h < 0.21 o s < 0.18`. `scales`: el resto. Los ojos originales son solo 18 píxeles entre todos los cuadros | `BASE_PARTS[121]`; `dark_hydra.py` |
+| Ancient Scarab (79) | 2×2 | `outline`: `v < 0.13`. `eyes`: rojo/amarillo con `s > 0.7`. `legs`: `0.20 ≤ h < 0.45, s ≥ 0.18` (verde oscuro, `v` de 0.14 a 0.25). `shell`: resto, incluidos grises poco saturados | `BASE_PARTS[79]`; `emerald_scarab.py` |
+| Behemoth (55) | 2×2 | `outline`: `v < 0.13`. `eyes`: `0.20 < h < 0.45, s > 0.35` (detalles verdes de toda la cara). `bone`: `s < 0.25, v > 0.35`. `skin`: resto. Para reemplazar la expresión, redibujar la región facial por dirección | `BASE_PARTS[55]`; `root_colossus.py` |
 
 ## 7. Mirar el resultado
 
@@ -291,3 +295,4 @@ rm devtools/rme/rme-client-760/*.bak-*
 | `ice_monk_eyes` usa ancho 64 fijo | Solo sirve para bases 2×2. En código nuevo, `f.w` o `f.eyes` |
 | Se spawnearon looks nuevos sin publicar el cliente | El monstruo sale invisible. El cliente va primero (sección 10) |
 | IA generativa para repintar la hoja (nano banana) | No sirve para sprites animados: cambia la silueta y los detalles entre cuadros. Detalle en [`CUSTOM_MONSTER_WORKFLOW.md`](CUSTOM_MONSTER_WORKFLOW.md) §6.5 |
+| El musgo salió en franjas rectas | En una fórmula módulo 3, un término `x * 3` desaparece y cada fila queda uniforme. Usar volumen por distancia y variación en bloques, anclada a la pose (`root_colossus.py`) |

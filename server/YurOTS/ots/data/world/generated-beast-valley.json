@@ -80,8 +80,8 @@
   "spawns": {
     "z7": 164,
     "z8": 120,
-    "z9": 113,
-    "monsters": 766
+    "z9": 114,
+    "monsters": 767
   },
   "monsters": {
     "Ancient Scarab": 20,
@@ -109,6 +109,7 @@
     "Minotaur Mage": 13,
     "Necromancer": 53,
     "Priestess": 27,
+    "Root Colossus": 1,
     "Serpent Spawn": 7,
     "Vampire": 53,
     "Warlock": 17

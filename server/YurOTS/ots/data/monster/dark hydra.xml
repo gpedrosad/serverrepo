@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<monster name="Dark Hydra" level="25" maglevel="45" experience="3000" pushable="0" speed="215" armor="42" defense="40" canpushitems="0" staticattack="50" changetarget="200">
+	<health now="3200" max="3200"/>
+	<look type="241" corpse="4283"/>
+	<combat targetdistance="1" runonhealth="0"/>
+	<attacks>
+		<attack type="melee" mindamage="90" maxdamage="220" probability="100"/>
+		<attack type="instant" name="darkhydra_darkwave" exhaustion="500" cycleticks="5000" probability="60"/>
+		<attack type="instant" name="hydra_poisonwave" exhaustion="500" cycleticks="6000" probability="60"/>
+		<attack type="instant" name="exura vita" cycleticks="5000" probability="55"/>
+	</attacks>
+	<defenses>
+		<defense immunity="poison"/>
+		<defense immunity="paralyze"/>
+		<defense immunity="drunk"/>
+		<defense immunity="invisible"/>
+	</defenses>
+	<loot>
+		<item id="2148" countmax="300" chance1="100000" chancemax="0"/>
+		<item id="2666" countmax="4" chance1="20000" chancemax="0"/>
+		<item id="2671" countmax="4" chance1="20000" chancemax="0"/>
+		<item id="2152" countmax="5" chance1="10000" chancemax="0"/>
+		<item id="1987" chance="100000">
+			<inside>
+				<item id="2498" chance="800"/>
+				<item id="2475" chance="1000"/>
+				<item id="2536" chance="900"/>
+				<item id="2195" chance="1100"/>
+				<item id="2214" chance="2000"/>
+				<item id="2146" countmax="2" chance1="4000" chancemax="0"/>
+				<item id="2476" chance="1500"/>
+			</inside>
+		</item>
+	</loot>
+	<voices>
+		<voice sentence="SSSHADOWSSS..."/>
+		<voice sentence="THREE MAWS. ONE HUNGER."/>
+		<voice sentence="HISSSSS!"/>
+	</voices>
+</monster>

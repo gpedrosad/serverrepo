@@ -17,12 +17,12 @@ Generador: `scripts/map/generate-beast-valley.py` (usa las piezas, cuevas y vali
 | Colinas de los Cíclopes | z7 | pasto con rocas agrupadas, piedras sueltas, árboles secos | Cyclops, Dwarf Soldier, Dwarf Guard, Dwarf Geomancer |
 | Ruinas Antiguas | z7 norte | patio de tierra con avenida de columnas, estatuas, braseros, altar y escombros; alrededor, cementerio de lápidas rotas entre árboles secos | Beholder, Demon Skeleton, Ghoul, Dwarf Guard |
 | Catacumbas | z8 | cueva natural | Giant Spider, Vampire → Necromancer, Priestess → Hero, Black Knight |
-| Abismo | z9 | cueva natural, más oscura | Dragon, Ancient Scarab → Dragon Lord, Warlock → Hydra, Lich, Green Djinn → Demon, Behemoth, Fury, Serpent Spawn |
+| Abismo | z9 | cueva natural, más oscura | Dragon, Ancient Scarab → Dragon Lord, Warlock → Hydra, Lich, Green Djinn → Root Colossus → Demon, Behemoth, Fury, Serpent Spawn |
 
 En la superficie la dificultad sube de sur a norte. En las cuevas sube con la distancia a la escalera:
 lo más difícil queda al fondo de cada piso. Cada spawn mezcla los monstruos de su etapa.
 
-Total: 397 spawns y 766 monstruos (el laberinto tenía 720). Sin troncos sueltos (4187/4201/4239 son
+Total local: 398 spawns y 767 monstruos (el laberinto tenía 720), incluido un Root Colossus. Sin troncos sueltos (4187/4201/4239 son
 pedazos de un tronco largo y sueltos se ven cortados). El detalle por monstruo está en el
 manifiesto (`monsters`).
 
@@ -36,10 +36,25 @@ manifiesto (`monsters`).
 | Portal de vuelta junto a la bajada | `319, 254, 7` → `158, 48, 7` |
 | Bajada al Abismo | `344, 360, 8` |
 | Portal final (fondo del Abismo) | `273, 244, 9` → `158, 48, 7` |
+| Root Colossus (inicio del tramo final del Abismo) | `310, 254, 9`, respawn 300 s |
 | Caja | x `262–361`, y `232–378`, z7–z9 |
 
 Carteles en `readables.xml`, bloque `BEAST_VALLEY_SIGNS`. Spawns en `test-spawn.xml`, bloque
 `BEAST_VALLEY_SPAWNS`.
+
+### Root Colossus: progresión de dificultad
+
+Un [Root Colossus](../gameplay/ROOT_COLOSSUS.md) de 4800 HP se ubica tras el sector Hydra/Lich,
+en la transición hacia Behemoth/Demon. Para llegar se recorre la superficie y las Catacumbas antes
+de entrar al Abismo. En seed 11 está a **141 pasos cardinales** desde la entrada de z9, en una sala
+de 5×5 y a 6 casillas de los spawns vecinos. Drop raro: rootcleaver (axe 1H 49/31, 0,6%) y heartwood
+maul (club 2H 52/28, 0,5%). Preparado localmente; falta cliente actualizado y prueba in-game.
+
+`root_colossus_spawn()` selecciona una única ubicación al inicio del último cuarto de las casillas
+ordenadas por distancia caminable. Exige espacio libre y separación de al menos 5 casillas de los
+otros monstruos; si no lo encuentra, el generador falla antes de escribir. No agrega más ejemplares
+ni modifica los spawns anteriores. Otra semilla puede cambiar la coordenada conservando la progresión.
+La reubicación se hizo solo en spawns/manifiesto; no requirió cambiar `test.otbm`.
 
 ## Vecinos
 

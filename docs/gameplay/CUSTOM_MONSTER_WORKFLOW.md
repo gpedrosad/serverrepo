@@ -121,7 +121,7 @@ Hay dos sintaxis:
 - `cycleticks`: cada cuánto lo intenta, en milisegundos.
 - `probability`: probabilidad sobre 100 en cada intento.
 - `exhaustion`: pausa después de lanzarlo.
-- `name`: tiene que existir en `data/spells/spells.xml`. Los de monstruos usan `maglv="4000"` para que ningún jugador los aprenda.
+- `name`: en ataques `instant` tiene que coincidir con **`words`** de un spell habilitado en `data/spells/spells.xml` (ej. `exura vita`, no su nombre visible `Ultimate Healing`); el Lua se carga desde `instant/<words>.lua`. En ataques `rune` se busca por el nombre de la runa. Los hechizos exclusivos de monstruos usan `maglv="4000"` para que ningún jugador los aprenda.
 
 **Reutilizar antes que crear.** Hay 64 hechizos registrados. Para buscar: `grep -ho 'name="[^"]*"' data/monster/*.xml | sort | uniq -c`. El Black Dragon reutiliza `necro_lifedrain`, `dragonlord_firebomb` y `exura`, y agrega uno solo propio.
 

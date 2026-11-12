@@ -326,4 +326,47 @@ def ghoul_part(pixel):
     return "body"
 
 
-BASE_PARTS = {9: necromancer_part, 18: ghoul_part, 57: monk_part, 100: crypt_shambler_part}
+def hydra_part(pixel):
+    """Hydra (121, 2x2): contorno, ojos rojos, detalles claros o escamas verdes."""
+    if pixel[3] == 0:
+        return None
+    h, s, v = hsv(pixel)
+    if v < 0.13:
+        return "outline"
+    if h < 0.05 and s > 0.7 and v > 0.35:
+        return "eyes"
+    if h < 0.21 or s < 0.18:
+        return "claws"
+    return "scales"
+
+
+def ancient_scarab_part(pixel):
+    """Ancient Scarab (79, 2x2): contorno, ojos, patas verdes o caparazon violeta/gris/azul."""
+    if pixel[3] == 0:
+        return None
+    h, s, v = hsv(pixel)
+    if v < 0.13:
+        return "outline"
+    if s > 0.7 and (h < 0.04 or 0.14 < h < 0.20):
+        return "eyes"
+    if 0.20 <= h < 0.45 and s >= 0.18:
+        return "legs"
+    return "shell"
+
+
+def behemoth_part(pixel):
+    """Behemoth (55, 2x2): contorno, verdes de la cara, hueso claro o piel marron."""
+    if pixel[3] == 0:
+        return None
+    h, s, v = hsv(pixel)
+    if v < 0.13:
+        return "outline"
+    if 0.20 < h < 0.45 and s > 0.35:
+        return "eyes"
+    if s < 0.25 and v > 0.35:
+        return "bone"
+    return "skin"
+
+
+BASE_PARTS = {9: necromancer_part, 18: ghoul_part, 55: behemoth_part, 57: monk_part, 79: ancient_scarab_part,
+              100: crypt_shambler_part, 121: hydra_part}

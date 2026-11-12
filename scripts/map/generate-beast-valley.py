@@ -10,7 +10,7 @@ Demonios) repartida por etapas:
       estatuas y braseros) -> bajada, con otro portal de vuelta al lado
   z8  Catacumbas: cueva natural; Giant Spider y Vampire -> Necromancer y Priestess -> Hero y Black Knight
   z9  Abismo: cueva natural; Dragon -> Dragon Lord y Warlock -> Hydra, Lich y Green Djinn
-      -> Demon, Behemoth, Fury y Serpent Spawn al fondo, con el portal de vuelta al templo
+      -> Root Colossus -> Demon, Behemoth, Fury y Serpent Spawn al fondo, con el portal de vuelta al templo
 
 Caja: x 262-361, y 232-378, z7-z9. Borra además todo el Hunt Maze viejo (x 280-349, y 243-400, z7).
 No toca la Hell Quest (y <= 226), el Paso del Norte (x >= 370) ni el Reloj de Arena (z5-z6, y >= 383).
@@ -402,6 +402,31 @@ def slices_by(cells, key, n):
     return [set(order[int(i * size):int((i + 1) * size)]) for i in range(n)]
 
 
+def root_colossus_spawn(spawns, walk, distances):
+    """Un guardian al inicio del ultimo cuarto del Abismo, despues de Hydra/Lich.
+
+    La distancia es caminable, no en linea recta. Conserva todos los spawns previos y busca
+    una sala de 5x5 libre, separada de los otros monstruos; falla si no encuentra una.
+    """
+    late = slices_by(walk, lambda c: distances[c], 4)[-1]
+    threshold = min(distances[c] for c in late)
+    target = threshold + 8
+    occupied = [p for _center, _z, mons in spawns for _name, p, _time in mons]
+    candidates = []
+    for x, y in late:
+        if not threshold + 5 <= distances[(x, y)] <= threshold + 20:
+            continue
+        if not all((x + dx, y + dy) in walk for dx in range(-2, 3) for dy in range(-2, 3)):
+            continue
+        separation = min((max(abs(x - mx), abs(y - my)) for mx, my in occupied), default=99)
+        if separation >= 5:
+            candidates.append((abs(distances[(x, y)] - target), -separation, x, y))
+    if not candidates:
+        raise ValueError("Abismo: no hay una sala libre para Root Colossus en el ultimo tramo")
+    _distance, _separation, x, y = min(candidates)
+    return ((x, y), Z9, [("Root Colossus", (x, y), 300)])
+
+
 def spawn_xml(spawns) -> str:
     lines = []
     for (cx, cy), z, mons in spawns:
@@ -534,6 +559,10 @@ def main() -> int:
     reach9 = set(d9)
     spawns9 = place_stages(STAGES9, slices_by(reach9, lambda c: d9[c], len(STAGES9)), reach9,
                            grow({dn}, 4) | grow({portal}, 2), Z9, rng, GAP)
+    try:
+        spawns9.append(root_colossus_spawn(spawns9, reach9, d9))
+    except ValueError as error:
+        errors.append(str(error))
 
     if errors:
         print("\n".join(errors[:40]), file=sys.stderr)

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<monster name="Root Colossus" level="61" maglevel="30" experience="3400" pushable="0" armor="46" defense="44" canpushitems="1" staticattack="50" changetarget="200" speed="220">
+	<health now="4800" max="4800"/>
+	<look type="243" corpse="2931"/>
+	<combat targetdistance="1" runonhealth="0"/>
+	<attacks>
+		<attack type="melee" mindamage="140" maxdamage="360" probability="100"/>
+		<attack type="instant" name="rootcolossus_rootslam" exhaustion="500" cycleticks="5000" probability="50"/>
+		<attack type="instant" name="rootcolossus_spores" exhaustion="500" cycleticks="7000" probability="35"/>
+	</attacks>
+	<defenses>
+		<defense immunity="poison"/>
+		<defense immunity="invisible"/>
+		<defense immunity="paralyze"/>
+	</defenses>
+	<voices>
+		<voice sentence="THE FOREST REMEMBERS."/>
+		<voice sentence="YOUR BONES WILL FEED MY ROOTS!"/>
+		<voice sentence="KRRRAAAK..."/>
+	</voices>
+	<loot>
+		<item id="2148" countmax="160" chance1="100000" chancemax="0"/>
+		<item id="2789" countmax="5" chance1="20000" chancemax="0"/>
+		<item id="2387" chance="4000"/>
+		<item id="2377" chance="2000"/>
+		<item id="2393" chance="700"/>
+		<item id="2152" countmax="6" chance1="10000" chancemax="0"/>
+		<item id="1987" chance="100000">
+			<inside>
+				<item id="20163" chance="600"/>
+				<item id="20164" chance="500"/>
+				<item id="2645" chance="600"/>
+				<item id="2188" chance="1200"/>
+				<item id="2161" chance="3500"/>
+			</inside>
+		</item>
+	</loot>
+</monster>

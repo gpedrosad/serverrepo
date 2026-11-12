@@ -78,6 +78,10 @@
 <spell name="bb exori" words="bb exori" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="hydra_poisonwave" words="hydra_poisonwave" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="hydra_bubblewave" words="hydra_bubblewave" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="darkhydra_darkwave" words="darkhydra_darkwave" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="emeraldscarab_poisonburst" words="emeraldscarab_poisonburst" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="rootcolossus_rootslam" words="rootcolossus_rootslam" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="rootcolossus_spores" words="rootcolossus_spores" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="vamp_lifedrain" words="vamp_lifedrain" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="necro_lifedrain" words="necro_lifedrain" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="ghost_lifedrain" words="ghost_lifedrain" maglv="4000" mana="800" enabled="1"></spell>

@@ -57,7 +57,7 @@ Receta: [`SPRITE_RECOLOR_GUIDE.md`](SPRITE_RECOLOR_GUIDE.md).
 | 52 | 1x1 | Winter Wolf | gray 65, dark 35 |  |
 | 53 | 1x1 | Frost Troll | cyan 80, dark 20 |  |
 | 54 | 2x2 | Witch | dark 60, gray 30, orange 8 |  |
-| 55 | 2x2 | Angry Behemoth, Behemoth, Crucible Ironhide, Enraged Behemoth, Furious Behemoth | orange 83, dark 14 |  |
+| 55 | 2x2 | Angry Behemoth, Behemoth, Crucible Ironhide, Enraged Behemoth, Furious Behemoth | orange 83, dark 14 | `BASE_PARTS[55]`; `root-colossus` |
 | 56 | 1x1 | Cave Rat | gray 68, dark 30 |  |
 | 57 | 2x2 | Elite Trainer Monk, Monk, Private Trainer Dummy, Guild Master (NPC) | orange 79, dark 19 | `BASE_PARTS[57]`; `ice-monk`, `novice-monk`, `sparring-monk` |
 | 58 | 1x1 | Priestess | dark 56, orange 25, red 19 |  |
@@ -74,12 +74,12 @@ Receta: [`SPRITE_RECOLOR_GUIDE.md`](SPRITE_RECOLOR_GUIDE.md).
 | 69 | 1x1 | Angry Dwarf, Dwarf, Enraged Dwarf, Furious Dwarf | dark 42, orange 37, yellow 14 |  |
 | 70 | 1x1 | Angry Dwarf Guard, Dwarf Guard, Enraged Dwarf Guard, Furious Dwarf Guard | dark 46, orange 36, gray 14 |  |
 | 71 | 1x1 | Angry Dwarf Soldier, Dwarf Soldier, Enraged Dwarf Soldier, Furious Dwarf Soldier | dark 43, orange 22, red 13, blue 11, yellow 6 |  |
-| 73 | 1x1 | Angry Hero, Enraged Hero, Furious Hero, Hero | orange 47, red 27, dark 16 |  |
+| 73 | 1x1 | Angry Hero, Enraged Hero, Furious Hero, Hero | orange 47, red 27, dark 16 | `imperial-hero` |
 | 74 | 1x1 | Rabbit | orange 58, red 37 |  |
 | 75 | 1x1 | — | blue 53, orange 21, gray 11, dark 10 |  |
 | 76 | 1x1 | Swamp Troll | green 78, dark 22 |  |
 | 78 | 1x1 | Banshee | dark 47, blue 36, gray 7, orange 6 |  |
-| 79 | 2x2 | Ancient Scarab, Angry Ancient Scarab, Enraged Ancient Scarab, Furious Ancient Scarab | dark 45, green 24, violet 15, gray 8, blue 7 |  |
+| 79 | 2x2 | Ancient Scarab, Angry Ancient Scarab, Enraged Ancient Scarab, Furious Ancient Scarab | dark 45, green 24, violet 15, gray 8, blue 7 | `BASE_PARTS[79]`; `emerald-scarab` |
 | 80 | 2x2 | Blue Djinn, Crucible Stormcaller | gray 50, orange 22, blue 19, dark 7 |  |
 | 81 | 1x1 | Cobra | magenta 37, dark 31, gray 20, green 9 |  |
 | 82 | 1x1 | Larva | green 39, dark 36, yellow 7, violet 6 |  |
@@ -117,7 +117,7 @@ Receta: [`SPRITE_RECOLOR_GUIDE.md`](SPRITE_RECOLOR_GUIDE.md).
 | 118 | 2x2 | Sibang | orange 51, dark 38 |  |
 | 119 | 2x2 | Crocodile | green 70, dark 26 |  |
 | 120 | 2x2 | Carniphila | green 46, dark 44, orange 5 |  |
-| 121 | 2x2 | Angry Hydra, Enraged Hydra, Furious Hydra, Hydra | green 76, dark 24 |  |
+| 121 | 2x2 | Angry Hydra, Enraged Hydra, Furious Hydra, Hydra | green 76, dark 24 | `BASE_PARTS[121]`; `dark-hydra` |
 | 123 | 2x2 | Panda | gray 60, dark 39 |  |
 | 124 | 2x2 | Centipede | dark 55, orange 23, yellow 9, red 6 |  |
 | 125 | 2x2 | Tiger | orange 61, red 20, dark 17 |  |
