@@ -28,6 +28,7 @@
 LuaScript::LuaScript()
 {
   luaState = NULL;
+  FIX_LOOT_CHANCE = FIX_CHANGE_TARGET = FIX_SHIELD_DEFENSE = 0;
 }
 
 
@@ -62,6 +63,9 @@ int LuaScript::OpenFile(const char *filename)
 	EXP_MUL = getGlobalNumber("expmul",1);
 	EXP_MUL_PVP = getGlobalNumber("expmulpvp",1);
 	LOOT_MUL = getGlobalNumber("lootmul",1);
+	FIX_LOOT_CHANCE = getGlobalNumber("fixlootchance",0);
+	FIX_CHANGE_TARGET = getGlobalNumber("fixchangetarget",0);
+	FIX_SHIELD_DEFENSE = getGlobalNumber("fixshielddefense",0);
 	GOLD_LOOT_FLOOR_PERCENT = getGlobalNumber("goldlootfloorpercent",70);
 	SOUL_MAX = getGlobalNumber("soulmax", 100);
 	SOUL_REGEN_TICKS = getGlobalNumber("soulregen", 120) * 1000;

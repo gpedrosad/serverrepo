@@ -2,7 +2,7 @@
 
 > **Estado:** hecho por primera vez el 2026-11-12 en la ThinkPad (arreglos en `main` y deployados ese día). Encontró una caída remota sin login, dos
 > corrupciones de memoria, una carrera en la configuración y tres cuentas de azar que no hacen lo que dicen
-> (§ 5, **pendiente de decisión**).
+> (§ 5: la corrección está en el binario, apagada; se prende desde `config.lua`).
 > **Regla:** los bots y el binario de prueba corren sobre una **copia** de los datos, en otro puerto. Nunca
 > contra el servidor donde se juega (`exercise-server.py` se niega a usar el puerto 7171).
 
@@ -117,7 +117,7 @@ paquetes, 57.000 de ellos rotos a propósito, y 2.900 golpes al puerto) y una so
 | `aac.cpp` | El account creator armaba el número de cuenta con una cuenta que desborda en 32 bits (salían números negativos o de menos de 6 cifras) y el control de "no hay números libres" nunca se cumplía | `random_range(100000, 999999)` y el control antes de guardar el número |
 | `monster.cpp`, `player.cpp` | Tres cuentas con overflow de enteros (abajo) | Misma cuenta, sin overflow. **El juego no cambia** |
 
-### Tres cuentas de azar que no hacen lo que dicen (decisión pendiente)
+### Tres cuentas de azar que no hacen lo que dicen (corrección apagada por defecto)
 
 Las tres tienen un overflow que hace que el resultado sea distinto del que el código pretende. Se midió con
 el compilador del servidor (2 millones de tiradas cada una). Se dejaron **dando el mismo resultado que
@@ -129,14 +129,18 @@ antes**, ahora sin comportamiento indefinido, porque corregirlas cambia el balan
 | **Cambio de blanco** (`Monster::onThink`, `changetarget` del XML): la cuenta da siempre 0 | X % por think | 100 %: todo monstruo con `changetarget > 0` busca otro blanco en cada think | Los monstruos se quedan más con el mismo jugador (más fácil "tanquear" para otros) |
 | **Defensa del jugador** (`Player::getDefense()`): el tope de la tirada da 0 o 1 | entre defensa/4 y defensa (defensa 150: promedio 93,8) | entre 0 y defensa/4 (defensa 150: promedio 18,7) | Escudos y skill de shielding bloquean ~5 veces más: los knights aguantan mucho más |
 
-Cada lugar tiene un comentario `OJO:` que explica la cuenta. Para corregir:
+Cada lugar tiene un comentario `OJO:` que explica la cuenta. La versión corregida de cada una ya está en el
+binario, **apagada**, y se prende con una línea en `server/YurOTS/ots/config.lua` (sin compilar):
 
-- loot: `return (unsigned long)random_range(0, CHANCE_MAX - 1);` en `Monster::getRandom()`;
-- cambio de blanco: `if(mType->changeTargetChance > random_range(0, 9999))`;
-- defensa: `return random_range(int(defense*0.25), defense);`.
+| Línea en `config.lua` | Qué corrige |
+|---|---|
+| `fixlootchance = 1` | Loot y summons con la chance configurada (el doble que hoy) |
+| `fixchangetarget = 1` | Cambio de blanco con el X % del XML (`changetarget` va de 0 a 10000; casi todos los monstruos tienen 200 = 2 % por think) |
+| `fixshielddefense = 1` | Tirada de defensa entre defensa/4 y defensa |
 
-Como hoy el servidor está balanceado (drop rates, monstruos, PvP) sobre los valores reales, cualquiera de las
-tres conviene probarla jugando antes de dejarla.
+Se leen al arrancar y con `/reload config` (GM). Sin la línea, o con `0`, todo sigue como siempre. Como hoy el
+servidor está balanceado (drop rates, monstruos, PvP) sobre los valores reales, conviene prender de a una y
+probarla jugando. Si el loot queda muy alto con `fixlootchance`, `lootmul` lo baja.
 
 ## Relacionado
 

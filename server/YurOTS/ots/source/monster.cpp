@@ -85,6 +85,9 @@ unsigned long Monster::getRandom(){
 	// es un numero enorme: toda chance de loot/summon sale a la MITAD de lo configurado (medido).
 	// Antes era un overflow de int (rand()<<16); ahora es la misma cuenta pero definida. Corregirlo
 	// cambia el juego (el doble de loot): ver docs/systems/SANITIZER_TESTS.md.
+	// Con fixlootchance = 1 en config.lua sale la chance configurada.
+	if(g_config.FIX_LOOT_CHANCE)
+		return (unsigned long)random_range(0, CHANCE_MAX - 1);
 	int32_t r = (int32_t)(((uint32_t)rand() << 16) | (uint32_t)rand());
 	return (unsigned long)(r % CHANCE_MAX);
 }
@@ -1070,7 +1073,8 @@ void Monster::reThink(bool updateOnlyState /* = true*/)
 			// y la cuenta daba siempre 0: todo monstruo con changetarget > 0 busca otro blanco en cada
 			// think, no el X % configurado. Se deja igual pero sin overflow; corregirlo cambia el juego
 			// (ver docs/systems/SANITIZER_TESTS.md).
-			if(mType->changeTargetChance > 0){
+			// Con fixchangetarget = 1 en config.lua se respeta el X % (changetarget va de 0 a 10000).
+			if(g_config.FIX_CHANGE_TARGET ? mType->changeTargetChance > random_range(0, 9999) : mType->changeTargetChance > 0){
 				bool canReach;
 				Creature *newtarget = findTarget(3, canReach);
 				if(newtarget && (canReach || state == STATE_TARGETNOTREACHABLE) && newtarget->getID() != attackedCreature){

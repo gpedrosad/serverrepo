@@ -412,6 +412,9 @@ int Player::getDefense() const
 	// defense/4 (no entre defense/4 y defense, que era la idea). Antes era un overflow; ahora es la
 	// misma cuenta pero definida. Corregirlo cambia el juego (los escudos bloquearian ~5 veces mas):
 	// ver docs/systems/SANITIZER_TESTS.md.
+	// Con fixshielddefense = 1 en config.lua la tirada va de defense/4 a defense.
+	if(g_config.FIX_SHIELD_DEFENSE)
+		return random_range(int(defense*0.25), defense);
 	int wrapped = (int)((unsigned int)defense * (unsigned int)rand());
 	return random_range(int(defense*0.25), int(1+wrapped/(RAND_MAX+1.0)));
   	///////////
