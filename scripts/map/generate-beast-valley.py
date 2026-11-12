@@ -74,7 +74,7 @@ FOREST_TREES, SMALL_TREE, BUSHES = NP.FOREST_TREES, NP.FOREST_SMALL_TREE, NP.BUS
 FLOWERS, MUSHROOMS, DEAD_TREES = NP.FLOWERS, NP.MUSHROOMS, NP.DEAD_TREES   # sin troncos sueltos: ver north-pass
 STONE, RUBBLE, RUBBLE_BROWN, PEBBLES = NP.STONE, NP.RUBBLE_GREY, NP.RUBBLE_BROWN, NP.PEBBLES
 BONES, DRAGON_SKULL, DRAGON_BONES, SKELETON = NP.BONES, NP.DRAGON_SKULL, NP.DRAGON_BONES, NP.HUMAN_SKELETON
-CAMPFIRE, BRANCH, LANTERN, SIGN = NP.CAMPFIRE, NP.BRANCH, NP.LANTERN, NP.SIGN
+CAMPFIRE, LANTERN, SIGN = NP.CAMPFIRE, NP.LANTERN, NP.SIGN
 TELEPORT, ATTR_TELE_DEST = NP.TELEPORT, NP.ATTR_TELE_DEST
 STAIR_DOWN, STAIRS_UP = NP.STAIR_DOWN, NP.STAIRS_UP
 PILLAR, BROKEN_PILLAR, STATUE, ALTAR, COAL_BASIN = 1515, 3767, 1442, 1642, 2602
@@ -209,7 +209,7 @@ def build_surface(seed: int, bl):
     for k, cy in enumerate(CAMPS):
         side = 4 if k % 2 == 0 else -4
         camp = (center[cy] + (side + 1 if side > 0 else side), cy)
-        items = {camp: CAMPFIRE, (camp[0] - 1, camp[1] + 1): BRANCH, (camp[0] + 1, camp[1] - 1): STONE,
+        items = {camp: CAMPFIRE, (camp[0] + 1, camp[1] - 1): STONE,
                  (camp[0] + 1, camp[1] + 1): BARREL, (camp[0] - 1, camp[1] - 1): CRATE}
         for c, it in items.items():
             if c in play and c not in path:
@@ -269,8 +269,6 @@ def build_surface(seed: int, bl):
                 tiles[c].append(rng.choice(FLOWERS))
             elif r < 0.085:
                 tiles[c].append(rng.choice(MUSHROOMS))
-            elif r < 0.092:
-                tiles[c].append(BRANCH)
         elif y >= RUINS_Y:                                  # colinas: rocas agrupadas, poco árbol
             rocky = nz.fbm(x / 5, y / 5, 2, 700)
             if rocky > 0.6 and r < 0.4 and free(c, 1):
@@ -282,7 +280,7 @@ def build_surface(seed: int, bl):
             elif r < 0.03 and free(c, 1):
                 put(c, rng.choice(DEAD_TREES), 2)
             elif r < 0.07:
-                tiles[c].append(rng.choice((PEBBLES, PEBBLES, BRANCH) + BONES[:1]))
+                tiles[c].append(rng.choice((PEBBLES, PEBBLES, PEBBLES) + BONES[:1]))
         else:                                               # alrededor de las ruinas
             if c in court:
                 if r < 0.03:

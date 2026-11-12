@@ -76,7 +76,7 @@ Cuevas del Dragón tenían 7.100 casillas. Ahora:
   cerrados (bloquean), igual que el borde. Los spawns de superficie van a 8 casillas entre centros (antes 9)
   para que entren todos en la franja.
 - **Sin troncos sueltos:** 4187/4201/4239 son pedazos de un tronco largo y sueltos se veían cortados. El
-  campamento lleva fogata, barril, cajón y rama.
+  campamento lleva fogata, barril y cajón.
 - **Recorrido más corto:** la llegada subió de y 216 a y 156 (local) y la línea de nieve de 112 a 92; el
   campamento queda 30 casillas al norte de la llegada. El sur de la caja es bosque cerrado.
 - **Cuevas:** se excavan en x 12–87, y 6–95 (local) en vez de toda la caja.
@@ -88,7 +88,7 @@ Las imágenes de esta página son de antes del compactado.
 
 | Zona | Ambientación | Spawns |
 |------|--------------|--------|
-| Bosque de pinos | Camino serpenteante, arboledas (pino 4009, firetree 2700, beech 2707, sycamore 2701, poplar 2708), arbustos, flores, hongos y ramas; campamento con fogata 1423, barril, cajón y cartel | Wolf ×21, Bear ×5, War Wolf ×8, Deer ×8, Rabbit ×8 |
+| Bosque de pinos | Camino serpenteante, arboledas (pino 4009, firetree 2700, beech 2707, sycamore 2701, poplar 2708), arbustos, flores y hongos; campamento con fogata 1423, barril, cajón y cartel | Wolf ×21, Bear ×5, War Wolf ×8, Deer ×8, Rabbit ×8 |
 | Línea de nieve | Bordes de nieve 4737–4748 sobre el pasto | — |
 | Tundra Helada | Nieve 670, pino nevado 2698, árbol muerto 2697/2709/2717/2720, lago de hielo 671 con estalagmitas 4995, faroles 3744 | Winter Wolf ×27, Polar Bear ×5, Frost Troll ×18, Yeti ×1 (1800 s) |
 | Pie de la montaña | Piedras agrupadas 1309/1285, huesos y calaveras de dragón | (Winter Wolf) |

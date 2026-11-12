@@ -70,7 +70,7 @@ TREES = (2701, 2702, 2703, 2704, 2705, 2706, 2708, 4009)    # 2x2, bloquean su c
 BUSHES = (2767, 2786, 2768)
 SMALL = (4158, 2740, 4179, 4150, 4183)                       # flores, hongos, maleza
 HOLE_ID, LADDER = 469, 1386                                  # la escalera sale a x, y+1, z-1
-TELEPORT, SIGN, CAMPFIRE, BRANCH = NP.TELEPORT, NP.SIGN, NP.CAMPFIRE, NP.BRANCH
+TELEPORT, SIGN, CAMPFIRE = NP.TELEPORT, NP.SIGN, NP.CAMPFIRE
 STONE = NP.STONE
 BONES, SKULL = (3125, 2248), 2247                            # no bloquean
 
@@ -264,7 +264,7 @@ def build_surface(seed: int, bl):
     # 5) campamentos: fogata, piedras para sentarse y huesos
     for cx, cy in camps:
         for (dx, dy), item in (((0, 0), CAMPFIRE), ((-2, -1), STONE), ((2, 1), STONE), ((1, -2), BONES[0]),
-                               ((-1, 2), BONES[1]), ((2, -1), SKULL), ((-2, 1), BRANCH)):
+                               ((-1, 2), BONES[1]), ((2, -1), SKULL)):
             c = (cx + dx, cy + dy)
             if c in dirt and len(tiles[c]) == 1:
                 tiles[c].append(item)

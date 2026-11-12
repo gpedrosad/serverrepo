@@ -77,7 +77,7 @@ STONE, RUBBLE_GREY, RUBBLE_BROWN, PEBBLES = 1285, 1309, 1323, 1336
 ICE_SPIKE = 4995
 BONES = (3125, 2248, 2320, 3121)
 DRAGON_SKULL, DRAGON_BONES, HUMAN_SKELETON = 2247, 3122, 3133
-CAMPFIRE, BRANCH, LANTERN, SIGN = 1423, 4224, 3744, 1429
+CAMPFIRE, LANTERN, SIGN = 1423, 3744, 1429   # sin ramas sueltas (4224): en el juego se ven mal
 TELEPORT, ATTR_TELE_DEST = 1387, 8
 STAIR_DOWN, STAIRS_UP = 432, 1385                                 # 1385 sube hacia el norte
 CITY_WALL_ITEMS = {1049, 1050, 1051}
@@ -331,8 +331,7 @@ def build_surface(seed: int, bl: Blocking):
     # 2) campamento de cazadores junto al camino, en el bosque
     camp_y = ARRIVAL[1] - 30
     camp = (center[camp_y] + 5, camp_y)
-    camp_items = {camp: CAMPFIRE, (camp[0] - 1, camp[1] + 1): BARREL, (camp[0] + 1, camp[1] - 1): CRATE,
-                  (camp[0] + 1, camp[1] + 1): BRANCH}
+    camp_items = {camp: CAMPFIRE, (camp[0] - 1, camp[1] + 1): BARREL, (camp[0] + 1, camp[1] - 1): CRATE}
     for c, it in camp_items.items():
         if c in play and c not in path:
             put(c, it)
@@ -362,8 +361,6 @@ def build_surface(seed: int, bl: Blocking):
                 tiles[c].append(rng.choice(FLOWERS))
             elif r < 0.075:
                 tiles[c].append(rng.choice(MUSHROOMS))
-            elif r < 0.08:
-                tiles[c].append(BRANCH)
         else:
             north = y < 40  # pie de la montaña: piedras, huesos de dragón
             if north:
@@ -385,7 +382,7 @@ def build_surface(seed: int, bl: Blocking):
             elif r < 0.03 and free(c, 1):
                 put(c, rng.choice(DEAD_TREES), 2)
             elif r < 0.04:
-                tiles[c].append(rng.choice(BONES + (PEBBLES, BRANCH)))
+                tiles[c].append(rng.choice(BONES + (PEBBLES, PEBBLES)))
 
     # 4) faroles a lo largo del camino en la tundra (guían en la nieve)
     for y in range(STAIRS[1] + 6, SNOW_LINE, 12):
