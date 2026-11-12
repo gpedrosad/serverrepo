@@ -41,6 +41,10 @@ El **Alice Maze** ya no existe: su lugar en el barco lo ocupa esta isla.
 
 El castillo de la isla al noroeste del templo se rehízo entero: **seis pisos**, cada uno más duro que el anterior. Arriba espera un jefe, **The Fallen Emperor**, con sus **Imperial Heroes** de capa morada, y dos cofres con {item:2488} Crown Legs y {item:2498} Royal Helmet. Afuera hay **Imperial Squires**, caza fácil a un puente de la ciudad. Todo en [[castillo-imperial]].
 
+### Desierto de las Ruinas
+
+La ciudad del desierto, al este, ya no tiene casas ni vendedores: ahora es **zona de caza**. Nueve lugares de nivel 8 a 90 (ruinas, campamento de bandidos, nido de escarabajos, templo de los lagartos, santuario de los djinn y más), dos jefes y dos cofres con {item:2476} Knight Armor y {item:2534} Vampire Shield. Todo en [[desierto-de-las-ruinas]].
+
 ### Crown Armors de botín
 
 Dos versiones nuevas de la Crown Armor: la {item:20161} **Imperial** baja un 10% el daño mágico y la {item:20162} **Sapphire** baja un 10% el daño físico. Salen como botín raro de demonios, warlocks, behemoths, Demodras, Orshabaal y el Ashen Lord. Todo en [[crown-armors]].

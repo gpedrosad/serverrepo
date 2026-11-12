@@ -741,19 +741,6 @@
 		<monster name="tarantula" x="4" y="2" z="7" spawntime="175" />
 		<monster name="tarantula" x="1" y="4" z="7" spawntime="175" />
 	</spawn>
-	<spawn centerx="241" centery="81" centerz="7" radius="9">
-		<monster name="scarab" x="0" y="-5" z="7" spawntime="175" direction="2" />
-		<monster name="scarab" x="-6" y="-4" z="7" spawntime="175" direction="2" />
-		<monster name="scarab" x="4" y="-1" z="7" spawntime="175" direction="2" />
-		<monster name="scarab" x="-5" y="2" z="7" spawntime="175" direction="2" />
-		<monster name="scarab" x="-1" y="6" z="7" spawntime="175" direction="2" />
-		<monster name="scarab" x="6" y="8" z="7" spawntime="175" direction="2" />
-	</spawn>
-	<spawn centerx="227" centery="84" centerz="7" radius="6">
-		<monster name="lion" x="-2" y="-4" z="7" spawntime="175" direction="2" />
-		<monster name="hyaena" x="3" y="-1" z="7" spawntime="175" direction="2" />
-		<monster name="lion" x="-3" y="4" z="7" spawntime="175" direction="2" />
-	</spawn>
 	<spawn centerx="146" centery="86" centerz="7" radius="16">
 		<monster name="troll" x="6" y="-10" z="7" spawntime="175" />
 		<monster name="troll" x="8" y="-10" z="7" spawntime="175" />
@@ -835,16 +822,6 @@
 	<spawn centerx="175" centery="99" centerz="7" radius="1">
 		<monster name="kongra" x="0" y="0" z="7" spawntime="175" />
 	</spawn>
-	<spawn centerx="247" centery="99" centerz="7" radius="10">
-		<monster name="scarab" x="4" y="-6" z="7" spawntime="175" direction="2" />
-		<monster name="scarab" x="-6" y="-4" z="7" spawntime="175" direction="2" />
-		<monster name="scarab" x="-1" y="-1" z="7" spawntime="175" direction="2" />
-		<monster name="scarab" x="-10" y="0" z="7" spawntime="175" direction="2" />
-		<monster name="scarab" x="8" y="1" z="7" spawntime="175" direction="2" />
-		<monster name="scarab" x="-7" y="3" z="7" spawntime="175" direction="2" />
-		<monster name="scarab" x="1" y="7" z="7" spawntime="175" direction="2" />
-		<monster name="scarab" x="-10" y="9" z="7" spawntime="175" direction="2" />
-	</spawn>
 	<spawn centerx="77" centery="101" centerz="7" radius="1">
 		<monster name="hydra" x="0" y="0" z="7" spawntime="235" />
 	</spawn>
@@ -919,17 +896,6 @@
 	</spawn>
 	<spawn centerx="190" centery="110" centerz="7" radius="1">
 		<monster name="kongra" x="0" y="0" z="7" spawntime="175" />
-	</spawn>
-	<spawn centerx="231" centery="113" centerz="7" radius="10">
-		<monster name="scarab" x="0" y="-10" z="7" spawntime="175" direction="2" />
-		<monster name="scarab" x="-4" y="-5" z="7" spawntime="175" direction="2" />
-		<monster name="scarab" x="0" y="-1" z="7" spawntime="175" direction="2" />
-		<monster name="scarab" x="8" y="2" z="7" spawntime="175" direction="2" />
-		<monster name="scarab" x="-6" y="3" z="7" spawntime="175" direction="2" />
-		<monster name="scarab" x="1" y="6" z="7" spawntime="175" direction="2" />
-	</spawn>
-	<spawn centerx="253" centery="114" centerz="7" radius="5">
-		<monster name="ancient scarab" x="3" y="3" z="7" spawntime="235" direction="2" />
 	</spawn>
 	<spawn centerx="30" centery="117" centerz="7" radius="5">
 		<monster name="hydra" x="-1" y="2" z="7" spawntime="235" direction="2" />
@@ -4521,4 +4487,318 @@
 		<monster name="Crypt Shambler" x="-3" y="1" z="8" spawntime="120" />
 	</spawn>
 	<!-- END NATURAL_ISLAND_SPAWNS -->
+	<!-- BEGIN DESERT_HUNTS_SPAWNS (scripts/map/generate-desert-hunts.py) -->
+	<spawn centerx="230" centery="78" centerz="7" radius="3">
+		<monster name="Furious Ancient Scarab" x="0" y="0" z="7" spawntime="1800" />
+	</spawn>
+	<spawn centerx="251" centery="112" centerz="7" radius="3">
+		<monster name="Omruc" x="0" y="0" z="7" spawntime="3600" />
+	</spawn>
+	<spawn centerx="220" centery="78" centerz="7" radius="3">
+		<monster name="Hyaena" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="213" centery="77" centerz="7" radius="3">
+		<monster name="Hyaena" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="215" centery="72" centerz="7" radius="3">
+		<monster name="Hyaena" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="209" centery="70" centerz="7" radius="3">
+		<monster name="Hyaena" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="204" centery="76" centerz="7" radius="3">
+		<monster name="Hyaena" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="206" centery="69" centerz="7" radius="3">
+		<monster name="Lion" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="210" centery="74" centerz="7" radius="3">
+		<monster name="Lion" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="206" centery="73" centerz="7" radius="3">
+		<monster name="Lion" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="216" centery="76" centerz="7" radius="3">
+		<monster name="Lion" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="208" centery="78" centerz="7" radius="3">
+		<monster name="Cobra" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="216" centery="80" centerz="7" radius="3">
+		<monster name="Cobra" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="219" centery="69" centerz="7" radius="3">
+		<monster name="Cobra" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="203" centery="81" centerz="7" radius="3">
+		<monster name="Cobra" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="220" centery="74" centerz="7" radius="3">
+		<monster name="Scorpion" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="213" centery="80" centerz="7" radius="3">
+		<monster name="Scorpion" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="212" centery="70" centerz="7" radius="3">
+		<monster name="Scorpion" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="216" centery="69" centerz="7" radius="3">
+		<monster name="Snake" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="208" centery="81" centerz="7" radius="3">
+		<monster name="Snake" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="220" centery="81" centerz="7" radius="3">
+		<monster name="Snake" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="224" centery="112" centerz="7" radius="3">
+		<monster name="Smuggler" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="223" centery="108" centerz="7" radius="3">
+		<monster name="Smuggler" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="216" centery="111" centerz="7" radius="3">
+		<monster name="Smuggler" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="225" centery="104" centerz="7" radius="3">
+		<monster name="Bandit" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="216" centery="102" centerz="7" radius="3">
+		<monster name="Bandit" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="217" centery="105" centerz="7" radius="3">
+		<monster name="Bandit" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="211" centery="105" centerz="7" radius="3">
+		<monster name="Bandit" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="225" centery="100" centerz="7" radius="3">
+		<monster name="Wild Warrior" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="219" centery="102" centerz="7" radius="3">
+		<monster name="Wild Warrior" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="213" centery="111" centerz="7" radius="3">
+		<monster name="Wild Warrior" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="210" centery="110" centerz="7" radius="3">
+		<monster name="Stalker" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="211" centery="102" centerz="7" radius="3">
+		<monster name="Stalker" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="213" centery="99" centerz="7" radius="3">
+		<monster name="Assassin" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="219" centery="111" centerz="7" radius="3">
+		<monster name="Assassin" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="221" centery="105" centerz="7" radius="3">
+		<monster name="Hunter" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="220" centery="99" centerz="7" radius="3">
+		<monster name="Hunter" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="228" centery="74" centerz="7" radius="3">
+		<monster name="Larva" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="233" centery="76" centerz="7" radius="3">
+		<monster name="Larva" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="223" centery="82" centerz="7" radius="3">
+		<monster name="Larva" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="229" centery="82" centerz="7" radius="3">
+		<monster name="Larva" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="226" centery="77" centerz="7" radius="3">
+		<monster name="Larva" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="236" centery="80" centerz="7" radius="3">
+		<monster name="Larva" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="231" centery="73" centerz="7" radius="3">
+		<monster name="Scarab" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="233" centery="83" centerz="7" radius="3">
+		<monster name="Scarab" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="237" centery="76" centerz="7" radius="3">
+		<monster name="Scarab" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="223" centery="73" centerz="7" radius="3">
+		<monster name="Scarab" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="223" centery="79" centerz="7" radius="3">
+		<monster name="Scarab" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="226" centery="80" centerz="7" radius="3">
+		<monster name="Scarab" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="226" centery="83" centerz="7" radius="3">
+		<monster name="Ancient Scarab" x="0" y="0" z="7" spawntime="240" />
+	</spawn>
+	<spawn centerx="223" centery="76" centerz="7" radius="3">
+		<monster name="Ancient Scarab" x="0" y="0" z="7" spawntime="240" />
+	</spawn>
+	<spawn centerx="243" centery="78" centerz="7" radius="3">
+		<monster name="Lizard Sentinel" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="244" centery="83" centerz="7" radius="3">
+		<monster name="Lizard Sentinel" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="240" centery="86" centerz="7" radius="3">
+		<monster name="Lizard Sentinel" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="246" centery="80" centerz="7" radius="3">
+		<monster name="Lizard Sentinel" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="246" centery="86" centerz="7" radius="3">
+		<monster name="Lizard Templar" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="239" centery="79" centerz="7" radius="3">
+		<monster name="Lizard Templar" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="239" centery="82" centerz="7" radius="3">
+		<monster name="Lizard Templar" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="248" centery="83" centerz="7" radius="3">
+		<monster name="Lizard Snakecharmer" x="0" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="243" centery="86" centerz="7" radius="3">
+		<monster name="Lizard Snakecharmer" x="0" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="224" centery="94" centerz="7" radius="3">
+		<monster name="Crocodile" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="238" centery="92" centerz="7" radius="3">
+		<monster name="Crocodile" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="235" centery="96" centerz="7" radius="3">
+		<monster name="Crocodile" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="227" centery="86" centerz="7" radius="3">
+		<monster name="Crocodile" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="251" centery="106" centerz="7" radius="3">
+		<monster name="Cobra" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="251" centery="99" centerz="7" radius="3">
+		<monster name="Cobra" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="245" centery="93" centerz="7" radius="3">
+		<monster name="Cobra" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="247" centery="101" centerz="7" radius="3">
+		<monster name="Tarantula" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="257" centery="102" centerz="7" radius="3">
+		<monster name="Tarantula" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="242" centery="103" centerz="7" radius="3">
+		<monster name="Scorpion" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="243" centery="106" centerz="7" radius="3">
+		<monster name="Scorpion" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="251" centery="93" centerz="7" radius="3">
+		<monster name="Scorpion" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="249" centery="116" centerz="7" radius="3">
+		<monster name="Ghoul" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="253" centery="116" centerz="7" radius="3">
+		<monster name="Ghoul" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="258" centery="108" centerz="7" radius="3">
+		<monster name="Ghoul" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="248" centery="113" centerz="7" radius="3">
+		<monster name="Mummy" x="0" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="247" centery="110" centerz="7" radius="3">
+		<monster name="Mummy" x="0" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="248" centery="107" centerz="7" radius="3">
+		<monster name="Mummy" x="0" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="242" centery="116" centerz="7" radius="3">
+		<monster name="Mummy" x="0" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="255" centery="107" centerz="7" radius="3">
+		<monster name="Mummy" x="0" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="254" centery="110" centerz="7" radius="3">
+		<monster name="Crypt Shambler" x="0" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="243" centery="111" centerz="7" radius="3">
+		<monster name="Crypt Shambler" x="0" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="258" centery="113" centerz="7" radius="3">
+		<monster name="Crypt Shambler" x="0" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="255" centery="113" centerz="7" radius="3">
+		<monster name="Demon Skeleton" x="0" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="246" centery="116" centerz="7" radius="3">
+		<monster name="Demon Skeleton" x="0" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="256" centery="117" centerz="7" radius="3">
+		<monster name="Demon Skeleton" x="0" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="251" centery="109" centerz="7" radius="3">
+		<monster name="Bone Beast" x="0" y="0" z="7" spawntime="240" />
+	</spawn>
+	<spawn centerx="251" centery="117" centerz="7" radius="3">
+		<monster name="Bone Beast" x="0" y="0" z="7" spawntime="240" />
+	</spawn>
+	<spawn centerx="229" centery="103" centerz="7" radius="3">
+		<monster name="Green Djinn" x="0" y="0" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="237" centery="104" centerz="7" radius="3">
+		<monster name="Green Djinn" x="0" y="0" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="234" centery="108" centerz="7" radius="3">
+		<monster name="Green Djinn" x="0" y="0" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="233" centery="104" centerz="7" radius="3">
+		<monster name="Green Djinn" x="0" y="0" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="227" centery="108" centerz="7" radius="3">
+		<monster name="Green Djinn" x="0" y="0" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="237" centery="108" centerz="7" radius="3">
+		<monster name="Efreet" x="0" y="0" z="7" spawntime="240" />
+	</spawn>
+	<spawn centerx="237" centery="101" centerz="7" radius="3">
+		<monster name="Efreet" x="0" y="0" z="7" spawntime="240" />
+	</spawn>
+	<spawn centerx="229" centery="98" centerz="7" radius="3">
+		<monster name="Efreet" x="0" y="0" z="7" spawntime="240" />
+	</spawn>
+	<spawn centerx="217" centery="115" centerz="7" radius="3">
+		<monster name="Scorpion" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="229" centery="116" centerz="7" radius="3">
+		<monster name="Scorpion" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="223" centery="118" centerz="7" radius="3">
+		<monster name="Scorpion" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="221" centery="114" centerz="7" radius="3">
+		<monster name="Larva" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="233" centery="115" centerz="7" radius="3">
+		<monster name="Larva" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="226" centery="118" centerz="7" radius="3">
+		<monster name="Larva" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="217" centery="118" centerz="7" radius="3">
+		<monster name="Lion" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="233" centery="119" centerz="7" radius="3">
+		<monster name="Lion" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<!-- END DESERT_HUNTS_SPAWNS -->
 </spawns>

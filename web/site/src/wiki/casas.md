@@ -9,7 +9,7 @@ estado: borrador
 
 ## Lo esencial
 
-- Hay **35 casas** en el mapa, en calles como Small Street, Great Street, Desert Street y Bamboo Camp.
+- Hay **28 casas** en el mapa, en calles como Small Street, Great Street, River Street y Bamboo Camp.
 - **No se compran con un comando ni con un NPC**: las asigna el staff. Pregúntale a un GM en el juego.
 - **No hay arriendo**: la casa no se pierde por falta de pago.
 - El dueño decide quién entra y quién abre cada puerta con los hechizos *aleta*.

@@ -1,0 +1,199 @@
+{
+  "name": "generated-desert-hunts",
+  "seed": 11,
+  "box": {
+    "x1": 198,
+    "y1": 68,
+    "x2": 262,
+    "y2": 120,
+    "z": 7
+  },
+  "entrance": {
+    "x": 198,
+    "y": 74,
+    "z": 7
+  },
+  "zones": [
+    {
+      "key": "ruinas",
+      "name": "Ruinas de la ciudad vieja",
+      "level": "8-20",
+      "box": [
+        203,
+        69,
+        221,
+        82
+      ],
+      "monsters": {
+        "Hyaena": 5,
+        "Lion": 4,
+        "Cobra": 4,
+        "Scorpion": 3,
+        "Snake": 3
+      }
+    },
+    {
+      "key": "campamento",
+      "name": "Campamento de bandidos",
+      "level": "20-40",
+      "box": [
+        210,
+        99,
+        225,
+        112
+      ],
+      "monsters": {
+        "Smuggler": 3,
+        "Bandit": 4,
+        "Wild Warrior": 3,
+        "Stalker": 2,
+        "Assassin": 2,
+        "Hunter": 2
+      }
+    },
+    {
+      "key": "nido",
+      "name": "Nido de escarabajos",
+      "level": "30-60",
+      "box": [
+        223,
+        72,
+        237,
+        83
+      ],
+      "monsters": {
+        "Furious Ancient Scarab": 1,
+        "Larva": 6,
+        "Scarab": 6,
+        "Ancient Scarab": 2
+      }
+    },
+    {
+      "key": "templo",
+      "name": "Templo de los lagartos",
+      "level": "40-70",
+      "box": [
+        238,
+        77,
+        248,
+        88
+      ],
+      "monsters": {
+        "Lizard Sentinel": 4,
+        "Lizard Templar": 3,
+        "Lizard Snakecharmer": 2
+      }
+    },
+    {
+      "key": "laguna",
+      "name": "Laguna",
+      "level": "15-30",
+      "box": [
+        223,
+        86,
+        240,
+        97
+      ],
+      "monsters": {
+        "Crocodile": 4
+      }
+    },
+    {
+      "key": "oasis",
+      "name": "Oasis",
+      "level": "15-30",
+      "box": [
+        240,
+        93,
+        260,
+        106
+      ],
+      "monsters": {
+        "Cobra": 3,
+        "Tarantula": 2,
+        "Scorpion": 3
+      }
+    },
+    {
+      "key": "huesos",
+      "name": "Campo de huesos",
+      "level": "45-80",
+      "box": [
+        241,
+        107,
+        258,
+        118
+      ],
+      "monsters": {
+        "Omruc": 1,
+        "Ghoul": 3,
+        "Mummy": 5,
+        "Crypt Shambler": 3,
+        "Demon Skeleton": 3,
+        "Bone Beast": 2
+      }
+    },
+    {
+      "key": "santuario",
+      "name": "Santuario de los djinn",
+      "level": "60-90",
+      "box": [
+        225,
+        98,
+        237,
+        108
+      ],
+      "monsters": {
+        "Green Djinn": 5,
+        "Efreet": 3
+      }
+    },
+    {
+      "key": "dunas",
+      "name": "Dunas del sur",
+      "level": "10-25",
+      "box": [
+        214,
+        113,
+        233,
+        119
+      ],
+      "monsters": {
+        "Scorpion": 3,
+        "Larva": 3,
+        "Lion": 2
+      }
+    }
+  ],
+  "bosses": [
+    {
+      "name": "Furious Ancient Scarab",
+      "x": 230,
+      "y": 78,
+      "z": 7,
+      "spawntime": 1800
+    },
+    {
+      "name": "Omruc",
+      "x": 251,
+      "y": 112,
+      "z": 7,
+      "spawntime": 3600
+    }
+  ],
+  "chests": [
+    {
+      "x": 242,
+      "y": 78,
+      "z": 7,
+      "uid": 2476
+    },
+    {
+      "x": 257,
+      "y": 114,
+      "z": 7,
+      "uid": 2534
+    }
+  ],
+  "total": 104
+}

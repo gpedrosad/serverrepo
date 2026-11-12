@@ -45,7 +45,7 @@ El repo puede tener plantillas vacías o copias viejas; **no son la fuente de ve
 1. Varios jugadores tenían dueños en `data/houses/*.xml` **solo en el VPS** de entonces (cambios nunca commiteados).
 2. El deploy hacía `git pull` pero **no** respaldaba ni restauraba `data/houses/`.
 3. Se ejecutó `git checkout -- data/houses/` antes del deploy → los XML volvieron a las plantillas del repo (`owner name=""`).
-4. Casas como Great Street quedaron sin dueño; otras (ej. Sand Mansion) seguían en git con dueño y no se perdieron.
+4. Casas como Great Street quedaron sin dueño; otras (ej. Sand Mansion) seguían en git con dueño y no se perdieron. (Sand Mansion y Desert Street ya no existen: se sacaron en nov 2026, ver [DESERT_HUNTS.md](DESERT_HUNTS.md).)
 
 **Lección:** tratar `data/houses/` como data sagrada en el servidor, igual que `houseitems.xml`.
 
