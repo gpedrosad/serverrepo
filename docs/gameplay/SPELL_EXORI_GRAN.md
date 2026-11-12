@@ -1,5 +1,11 @@
 # Spell custom: `exori gran` (Berzeker Gran)
 
+> **Nov 2026:** el área bajó de un diamante de 24 casillas a **12** (era demasiado grande) y la explosión
+> naranja se cambió por una animación propia, **`NM_ME_WHIRL_SLASH`** (efecto 35): un tajo en medialuna con
+> filo de acero y estela carmesí que gira en cada casilla, como un remolino de cuchillas. La dibuja
+> `scripts/client-rme/add_drawn_effects.py --pack gran` ([CLIENT_EFFECTS.md](CLIENT_EFFECTS.md)). El código
+> de abajo es el original; vale el de `data/spells/instant/exori gran.lua`.
+
 Spell instantáneo de área físico para **Knight** (vocación 4), creado como
 versión mejorada y visualmente distinta del `exori` (Berzeker) original de
 YurOTS.
@@ -13,11 +19,11 @@ YurOTS.
 | mana              | 100                        | 200                              |
 | vocations         | Knight (4)                 | Knight (4)                       |
 | attackType        | ATTACK_PHYSICAL            | ATTACK_PHYSICAL                  |
-| area              | cuadrado 3×3 sin centro (8 casillas) | **diamante radio 4 sin centro (12 casillas)** |
-| areaEffect        | `NM_ME_HIT_AREA` (polvo blanco) | **`NM_ME_EXPLOSION_AREA` (explosión naranja)** |
+| area              | cuadrado 3×3 sin centro (8 casillas) | **3×3 sin centro + una casilla en cada dirección (12 casillas)** |
+| areaEffect        | `NM_ME_HIT_AREA` (polvo blanco) | **`NM_ME_WHIRL_SLASH` (35, tajo que gira; dibujado de cero)** |
 | hitEffect         | `NM_ME_HIT_AREA`           | **`NM_ME_DRAW_BLOOD` (sangre)**  |
-| damageEffect      | `NM_ME_HIT_AREA`           | **`NM_ME_EXPLOSION_AREA` (explosión)** |
-| animationColor    | `RED` (180)                | **`ORANGE` (193)**               |
+| damageEffect      | `NM_ME_HIT_AREA`           | **`NM_ME_DRAW_BLOOD` (sangre)** |
+| animationColor    | `RED` (180)                | `RED` (180)                      |
 | drawblood         | true                       | true                             |
 | damage min        | `(level*1.5 + maglv*1.5) * 1.2` | **`(level*1.5 + maglv*1.5) * 1.32`** (+10% vs exori) |
 | damage max        | `(level*1.5 + maglv*1.5) * 2.3` | **`(level*1.5 + maglv*1.5) * 2.53`** (+10% vs exori) |

@@ -1,25 +1,26 @@
+-- 12 casillas: el anillo 3x3 del exori (8) más una en cada dirección. Antes era un diamante de 24.
 area = {
     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     {0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
     {0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0},
-    {0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0},
-    {0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0},
-    {0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0},
+    {0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0},
     {0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0},
     {0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
     }
 
     attackType = ATTACK_PHYSICAL
     needDirection = false
-    areaEffect = NM_ME_EXPLOSION_AREA
+    areaEffect = NM_ME_WHIRL_SLASH    -- tajo que gira (pack "gran", efecto 35)
     animationEffect = NM_ANI_NONE
 
     hitEffect = NM_ME_DRAW_BLOOD
-    damageEffect = NM_ME_EXPLOSION_AREA
-    animationColor = ORANGE
+    damageEffect = NM_ME_DRAW_BLOOD
+    animationColor = RED
     offensive = true
     drawblood = true
 

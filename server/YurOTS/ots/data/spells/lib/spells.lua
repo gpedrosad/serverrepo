@@ -63,6 +63,8 @@ NM_ME_SHADOW_IMPACT = 32
 -- Pack "power" (después de shadow). Los manda el server en el power hit (docs/gameplay/POWER_HIT.md).
 NM_ME_POWER_HIT = 33
 NM_ME_MEGA_HIT = 34
+-- Pack "gran" (dibujado de cero, add_drawn_effects.py): tajo en medialuna que gira. Lo usa exori gran.
+NM_ME_WHIRL_SLASH = 35
 
 NM_ANI_BOLT = 1
 NM_ANI_ARROW = 2

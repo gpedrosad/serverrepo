@@ -64,6 +64,17 @@ Va **después** de "ice" y de la Enchanted Spear (por eso el proyectil es el 17)
 
 Sin proyectiles. Luz dorada (color **204**). Va **después** de "shadow": `base: (33, 18)`.
 
+## Pack "gran" (nov 2026): dibujado de cero
+
+![Tajo que gira sobre fondo oscuro, piso claro y pasto](img/whirl-slash.png)
+
+| Constante | Número | Qué es | Uso |
+|-----------|-------:|--------|-----|
+| `NM_ME_WHIRL_SLASH` | 35 | Tajo en medialuna que gira 330° en 8 cuadros: filo de acero blanco, cuerpo de acero, estela carmesí, chispas en la punta y contorno oscuro para pisos claros | `exori gran` |
+
+No sale de recolorear: lo dibuja `scripts/client-rme/add_drawn_effects.py` con numpy (supermuestreo ×8 y
+alfa duro a 32×32). Luz roja suave (intensidad 2, color 187). Va **después** de "power": `base: (35, 18)`.
+
 ## Otros proyectiles agregados
 
 | Constante | Número | Script | Qué es |
@@ -78,6 +89,7 @@ python3 scripts/client-rme/add_recolor_effects.py --pack ice devtools/rme/rme-cl
 python3 scripts/client-rme/add_enchanted_spear.py devtools/rme/rme-client-760
 python3 scripts/client-rme/add_recolor_effects.py --pack shadow devtools/rme/rme-client-760
 python3 scripts/client-rme/add_recolor_effects.py --pack power devtools/rme/rme-client-760
+python3.11 scripts/client-rme/add_drawn_effects.py --pack gran devtools/rme/rme-client-760
 ```
 
 El script agrega las entradas al final de la sección de efectos y al final del `.dat` (proyectiles), sube
@@ -86,8 +98,8 @@ sobre el cliente del RME: contadores 25/15 → 29/16, los 25 efectos y 15 proyec
 looktypes (incluido el 231) e ítems sin cambios, 400 sprites viejos al azar idénticos, sprites 11058 → 11094.
 
 **Los packs se aplican en orden** (el número de cada constante depende de cuántos efectos había):
-ice → Enchanted Spear → shadow → power. Cada pack de `PACKS` declara en `base` los contadores sobre los que se aplica.
-Para uno nuevo (ej. sagrado), agregarlo al final con `base: (35, 18)`: efectos desde **35**, proyectiles desde
+ice → Enchanted Spear → shadow → power → gran. Cada pack de `PACKS` declara en `base` los contadores sobre los que se aplica.
+Para uno nuevo (ej. sagrado), agregarlo al final con `base: (36, 18)`: efectos desde **36**, proyectiles desde
 **18**. Volver a correr la Enchanted Spear con packs posteriores ya aplicados conserva sus proyectiles.
 
 ## Antes de usarlos en producción

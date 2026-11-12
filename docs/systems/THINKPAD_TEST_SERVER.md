@@ -99,3 +99,4 @@ Pasó el 2026-11-11 (`config.lua`, `game.cpp` y páginas de `web/dist`). Sin `st
 | 2026-11-11 | `main` completo: power hit (C++ y config), footer y wiki nuevos, catálogos `/items` y `/items-all` con los sprites actuales. Binario compilado desde `main` en `~/build/deploy-src`; web pasada a contenedor (`retro76-web`). Respaldo en `~/backups/deploy-20261111-223517` | `ddecc7b` |
 | 2026-11-11 | Armas de 8.x (Emerald Sword, Avenger, Arcane Staff, Arbalest): binario nuevo (ataque de la ballesta), otb y cliente. Respaldo en `~/backups/deploy-20261111-225503` | `c0811e1` |
 | 2026-11-11 | Auto-actualización del cliente: `publish_client.py`, `web/updater/files/`, zips de descarga con `data.zip`; `clienteretro` apunta a `192.168.1.17` | ver git log |
+| 2026-11-12 | `exori gran` más chico (12 casillas) con efecto nuevo `NM_ME_WHIRL_SLASH` (35, pack "gran" de `add_drawn_effects.py`): solo Lua + cliente publicado con `publish_client.py` | ver git log |

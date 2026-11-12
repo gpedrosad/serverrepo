@@ -38,7 +38,7 @@ estado: publicado
 
 ## Knight
 
-- **`exori gran`:** versión grande del `exori`. Golpea en un rombo de 3 casillas alrededor tuyo (24 casillas, contra 8 del `exori`) y hace un **10%** más de daño. Se ve como una explosión naranja.
+- **`exori gran`:** versión grande del `exori`. Golpea en **12 casillas** alrededor tuyo (el cuadrado del `exori` más una casilla en cada dirección, contra 8 del `exori`) y hace un **10%** más de daño. Se ve como un remolino de cuchillas: un tajo de acero y sangre que gira en cada casilla.
 - **`exori hur`:** lanzas tu arma a tu objetivo, hasta **5 casillas**. Necesitas una espada, hacha o maza en la mano y un objetivo marcado, en el mismo piso y a la vista. Si no, no se lanza y no gasta maná. El daño sube con tu nivel, tu skill del arma y el ataque del arma: a nivel 100, con skill 90 y una espada de ataque 30, pega entre **60 y 140**.
 - **`exeta res`:** los monstruos pegados a ti (las 8 casillas de alrededor) te atacan solo a ti durante **6 s**. En ese tiempo no cambian de objetivo ni huyen. No afecta a jugadores ni a invocaciones.
 - **`utito tempo`:** **+30** a sword, axe, club y distance durante **10 s**. Al terminar hay que volver a lanzarlo.

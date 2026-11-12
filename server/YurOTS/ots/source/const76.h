@@ -53,6 +53,7 @@ enum MagicEffectClasses {
 	// scripts/client-rme/add_recolor_effects.py, para el power hit (ver docs/gameplay/POWER_HIT.md).
 	NM_ME_POWER_HIT        = 0x21, //33 explosión de energía en dorado
 	NM_ME_MEGA_HIT         = 0x22, //34 explosión de energía en fucsia y dorado
+	// 35: NM_ME_WHIRL_SLASH (pack gran, solo Lua: exori gran)
 };
 
 #define NM_ANI_BOLT              1
