@@ -24,9 +24,9 @@ comportamiento del servidor (`-O2`) está aparte, en la rama `build-o2`, esperan
 
 ### Decisiones
 
-- **Binario fuera de git:** `deploy-vps.sh` hace `git pull` y después `make clean && make` en el
-  contenedor, así que el binario se regenera en cada deploy. En el VPS el `git pull` lo borra justo
-  antes de compilarlo (el server ya está parado en ese momento).
+- **Binario fuera de git:** el binario se compila en el servidor (hoy la ThinkPad) en cada deploy de C++,
+  así que no hace falta versionarlo. El script de deploy del VPS de entonces hacía `git pull` y después
+  `make clean && make`.
 - **Mapas:** `test-original.otbm` era idéntico (md5) a `backups/yurots-original.otbm`; se dejó el
   de `backups/`, que es el que citan los docs. `test-edited-backup.otbm` era un backup viejo.
   Ambos siguen en la historia de git.
@@ -98,11 +98,11 @@ Hoy da 0: ya está aplicado.
 
 | Qué | Estado / por qué |
 |---|---|
-| **`-O2`** (ya en `main`, sin probar) | Antes del próximo deploy: compilar en Docker i386 (ThinkPad con `sudo usermod -aG docker gonzalo`, o compilación de prueba en el VPS), levantar, `ot-probe.py` y un rato de juego. Riesgo: código viejo con comportamiento indefinido que `-O0` escondía. Si da problemas: `OPT ?= -O0` en el `Makefile` |
-| **Guardado automático congela el juego** | `Game::serverSave()` guarda el XML de cada jugador con `gameLock` tomado (cada ~10 min). Primero medir en el log del VPS (`server save... ok (Xs)`, solo lectura, con OK). Si vale la pena: guardar solo los que cambiaron o escribir fuera del lock |
+| **`-O2`** (ya en `main`, sin probar) | Antes del próximo deploy: compilar en Docker i386 (ThinkPad con `sudo usermod -aG docker gonzalo`), levantar, `ot-probe.py` y un rato de juego. Riesgo: código viejo con comportamiento indefinido que `-O0` escondía. Si da problemas: `OPT ?= -O0` en el `Makefile` |
+| **Guardado automático congela el juego** | `Game::serverSave()` guarda el XML de cada jugador con `gameLock` tomado (cada ~10 min). Primero medir en el log del servidor de la ThinkPad (`server save... ok (Xs)`, solo lectura, con OK). Si vale la pena: guardar solo los que cambiaron o escribir fuera del lock |
 | **`bind2nd`/`mem_fun` → lambdas** | 19 usos (sobre todo `game.cpp`); ya no existen en C++17 y atan el build a `gnu++14 -fpermissive`. Necesita compilar |
 | **Hechizos repetidos** | 28 archivos de crear runas casi idénticos y 7 copias del haste de monstruos; se pueden pasar a una tabla en `spells/lib` (confirmar que `spells.xml` acepta un script compartido) |
-| **Web con Python 3.13+** | `web/premium_orders.py` usa el módulo `cgi`, que Python 3.13 eliminó. Si el VPS actualiza Python, se cae la página de pedidos premium |
+| **Web con Python 3.13+** | `web/premium_orders.py` usa el módulo `cgi`, que Python 3.13 eliminó. Si el servidor actualiza Python, se cae la página de pedidos premium |
 | **Test `test_spells`** | Espera que el paladín promovido tenga `utani slow`; o falta el hechizo o el test quedó viejo |
 | **Orden del repo** | `scripts/` (172 archivos, muchos generadores de mapa de un solo uso) y `docs/` (12 MB, notas de sesiones viejas) → `_archive/` |
 | No se toca | La red de un hilo por jugador y partir `game.cpp` (8.000 líneas): mucho riesgo para lo que gana el jugador |

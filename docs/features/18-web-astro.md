@@ -98,8 +98,8 @@ scripts/web/build-site.sh
 Copia `web/site` (y `web/data/gem-drops.json`) a `thinkpad:~/build/retro76-web`, corre
 `npm ci && npm run build` con el Node de nvm y trae `web/dist/` y `package-lock.json`.
 
-- **`web/dist/` va versionado en git** a propósito: así el VPS no necesita Node y el deploy no
-  cambia (`git pull` y `server.py` lo sirve). Después de tocar `web/site`, compilar y commitear
+- **`web/dist/` va versionado en git** a propósito: así el servidor no necesita Node y el deploy no
+  cambia (se actualiza el repo y `server.py` lo sirve). Después de tocar `web/site`, compilar y commitear
   `web/dist` en el mismo commit.
 - **Astro 5 (no 7):** la ThinkPad tiene un i5-3320M (2012, sin AVX2) y Astro 7 trae binarios
   nativos (compilador en Rust y Rolldown) que se caen con "Illegal instruction"; ni sus versiones

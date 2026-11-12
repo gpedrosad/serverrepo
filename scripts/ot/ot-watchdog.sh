@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Watchdog: si el OT no responde, reinicia el container con gracia.
-# Pensado para cron en el VPS cada 2 minutos.
+# Pensado para cron en el servidor cada 2 minutos.
 set -euo pipefail
 
 _BOOT="$(cd "$(dirname "$0")" && pwd)"

@@ -24,6 +24,7 @@
 #include <functional>
 #include <string>
 #include <fstream>
+#include <sstream>
 #include <vector>
 
 #include <libxml/xmlmemory.h>
@@ -40,6 +41,8 @@
 #include "item.h"
 #include "const76.h"
 #include "summons.h"
+
+extern Spells spells;
 
 extern LuaScript g_config;
 
@@ -70,6 +73,20 @@ void sendSpellMagicEffect(Game* game, const Position& pos, int type)
 {
 	game->sendMagicEffect(pos, type);
 }
+
+// ---------- Eco (utevo vis) ----------
+// Estado por jugador (id de criatura): hasta cuándo está activo, desde cuándo se puede volver a lanzar y
+// cuánto pega la repetición. Lo llena startEcho (los números vienen del Lua) y lo consume onPlayerSpellCast.
+struct EchoState {
+	int64_t activeUntil;
+	int64_t readyAt;
+	double scale;
+	double pvpScale;
+	EchoState() : activeUntil(0), readyAt(0), scale(0.5), pvpScale(0.25) {}
+};
+static std::map<unsigned long, EchoState> echoStates;
+static const int64_t ECHO_DELAY_MS = 1000;          // la repetición sale 1 s después del golpe
+static const int ECHO_EFFECT = 22;                   // NM_ME_SOUND_PURPLE
 
 Item* getTopDesintegrateItem(Tile* tile)
 {
@@ -199,6 +216,12 @@ bool Spells::loadFromXml(const std::string &datadir)
 
 					Spell* spell = new InstantSpell(datadir, name, words, maglv, mana, game);
 
+					nodeValue = (char*)xmlGetProp(p, (const xmlChar *)"echo");
+					if(nodeValue) {
+						spell->setEchoable(atoi(nodeValue) > 0);
+						xmlFreeOTSERV(nodeValue);
+					}
+
 					tmp=p->children;
 					while (tmp){
 						if (strcmp((const char*)tmp->name, "vocation") == 0){
@@ -303,6 +326,7 @@ Spell::Spell(std::string iname, int64_t imagLv, int64_t imana, Game* igame)
 :  game(igame), name(iname),magLv(imagLv) , mana(imana)
 {
 	this->loaded=false;
+	this->echoable=false;
 	this->script = NULL;
 }
 
@@ -368,6 +392,11 @@ int SpellScript::registerFunctions(){
 	lua_register(luaState, "manaShield", SpellScript::luaActionManaShield);
 	lua_register(luaState, "getPosition", SpellScript::luaActionGetPos);
 	lua_register(luaState, "getAttackedCreaturePos", SpellScript::luaActionGetAttackedCreaturePos);
+	lua_register(luaState, "getPlayerSkill", SpellScript::luaActionGetPlayerSkill);
+	lua_register(luaState, "getPlayerWeapon", SpellScript::luaActionGetPlayerWeapon);
+	lua_register(luaState, "getCreatureDirection", SpellScript::luaActionGetCreatureDirection);
+	lua_register(luaState, "echoReady", SpellScript::luaActionEchoReady);
+	lua_register(luaState, "startEcho", SpellScript::luaActionStartEcho);
 	lua_register(luaState, "getSpeed", SpellScript::luaActionGetSpeed);
 	lua_register(luaState, "changeSpeed", SpellScript::luaActionChangeSpeed);
 	lua_register(luaState, "changeSpeedMonster", SpellScript::luaActionChangeSpeedMonster);
@@ -1274,6 +1303,11 @@ int SpellScript::luaActionDoTargetSpell(lua_State *L)
 
 	Spell* spell = getSpell(L);
 	magicTarget.manaCost = spell->getMana();
+	if(echoCast) {
+		magicTarget.manaCost = 0;
+		magicTarget.minDamage = (int)(magicTarget.minDamage * echoScale);
+		magicTarget.maxDamage = (int)(magicTarget.maxDamage * echoScale);
+	}
 
 	Creature* creature = spell->game->getCreatureByID((unsigned long)lua_tonumber(L, -1));
   	lua_pop(L,1);
@@ -1357,6 +1391,11 @@ int SpellScript::luaActionDoAreaSpell(lua_State *L)
 
 	Spell* spell = getSpell(L);
   magicArea.manaCost = spell->getMana();
+	if(echoCast) {
+		magicArea.manaCost = 0;
+		magicArea.minDamage = (int)(magicArea.minDamage * echoScale);
+		magicArea.maxDamage = (int)(magicArea.maxDamage * echoScale);
+	}
 
 	Creature* creature = spell->game->getCreatureByID((unsigned long)lua_tonumber(L, -1));
 	lua_pop(L,1);
@@ -1400,6 +1439,11 @@ int SpellScript::luaActionDoAreaAnimation(lua_State *L)
 
 	Spell* spell = getSpell(L);
   magicArea.manaCost = spell->getMana();
+	if(echoCast) {
+		magicArea.manaCost = 0;
+		magicArea.minDamage = (int)(magicArea.minDamage * echoScale);
+		magicArea.maxDamage = (int)(magicArea.maxDamage * echoScale);
+	}
 
 	Creature* creature = spell->game->getCreatureByID((unsigned long)lua_tonumber(L, -1));
 	lua_pop(L,1);
@@ -1731,6 +1775,204 @@ int SpellScript::luaActionGetAttackedCreaturePos(lua_State *L){
 	return 1;
 }
 
+// getPlayerSkill(cid, skill): nivel de un skill del jugador (0 puños, 1 club, 2 sword, 3 axe,
+// 4 distancia, 5 escudo, 6 pesca). -1 si cid no es un jugador o el skill no existe.
+// Lo usan exori hur y exori con para escalar el daño con el skill, como en las versiones nuevas.
+int SpellScript::luaActionGetPlayerSkill(lua_State *L)
+{
+	int skill = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	unsigned int cid = (unsigned int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	Player* player = spell ? dynamic_cast<Player*>(spell->game->getCreatureByID(cid)) : NULL;
+	if(!player || skill < SKILL_FIST || skill > SKILL_FISH)
+		lua_pushnumber(L, -1);
+	else
+		lua_pushnumber(L, (double)player->getSkill((skills_t)skill, SKILL_LEVEL));
+	return 1;
+}
+
+// getPlayerWeapon(cid): arma en las manos (primero la derecha) como tabla
+// {type = "sword" | "club" | "axe" | "dist" | "none", attack = n, id = n}.
+// Escudos y lo que no es arma se saltean. Sin jugador o sin arma: type "none", attack 0, id 0.
+int SpellScript::luaActionGetPlayerWeapon(lua_State *L)
+{
+	unsigned int cid = (unsigned int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	Player* player = spell ? dynamic_cast<Player*>(spell->game->getCreatureByID(cid)) : NULL;
+	const char* type = "none";
+	int attack = 0;
+	int id = 0;
+	if(player) {
+		for(int slot = SLOT_RIGHT; slot <= SLOT_LEFT; slot++) {
+			Item* item = player->getItem(slot);
+			if(!item)
+				continue;
+			const char* kind = NULL;
+			switch(item->getWeaponType()) {
+				case SWORD: kind = "sword"; break;
+				case CLUB: kind = "club"; break;
+				case AXE: kind = "axe"; break;
+				case DIST: kind = "dist"; break;
+				default: break;
+			}
+			if(!kind)
+				continue;
+			type = kind;
+			id = item->getID();
+			attack = Item::items[id].attack;
+			break;
+		}
+	}
+
+	lua_newtable(L);
+	lua_pushstring(L, "type");
+	lua_pushstring(L, type);
+	lua_settable(L, -3);
+	lua_pushstring(L, "attack");
+	lua_pushnumber(L, attack);
+	lua_settable(L, -3);
+	lua_pushstring(L, "id");
+	lua_pushnumber(L, id);
+	lua_settable(L, -3);
+	return 1;
+}
+
+// getCreatureDirection(cid): hacia dónde mira la criatura: "n", "e", "s" o "w" ("" si no existe).
+// Lo usa exori min para armar el barrido de las 3 casillas de adelante: con needDirection el área no puede
+// repetir las esquinas entre dos direcciones.
+int SpellScript::luaActionGetCreatureDirection(lua_State *L)
+{
+	unsigned int cid = (unsigned int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	Creature* creature = spell ? spell->game->getCreatureByID(cid) : NULL;
+	const char* dir = "";
+	if(creature) {
+		switch(creature->getDirection()) {
+			case NORTH: dir = "n"; break;
+			case EAST: dir = "e"; break;
+			case SOUTH: dir = "s"; break;
+			case WEST: dir = "w"; break;
+			default: break;
+		}
+	}
+	lua_pushstring(L, dir);
+	return 1;
+}
+
+bool SpellScript::echoCast = false;
+double SpellScript::echoScale = 1.0;
+
+// echoReady(cid): segundos que faltan para poder lanzar el Eco (0 = listo). Si falta, avisa al jugador.
+int SpellScript::luaActionEchoReady(lua_State *L)
+{
+	unsigned long cid = (unsigned long)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	Player* player = spell ? dynamic_cast<Player*>(spell->game->getCreatureByID(cid)) : NULL;
+	int64_t left = 0;
+	if(player) {
+		std::map<unsigned long, EchoState>::iterator it = echoStates.find(cid);
+		if(it != echoStates.end() && it->second.readyAt > OTSYS_TIME())
+			left = (it->second.readyAt - OTSYS_TIME() + 999) / 1000;
+		if(left > 0) {
+			std::stringstream msg;
+			msg << "Echo is ready in " << left << " s.";
+			player->sendTextMessage(MSG_SMALLINFO, msg.str().c_str(), player->pos, NM_ME_PUFF);
+		}
+	}
+	lua_pushnumber(L, (double)left);
+	return 1;
+}
+
+// startEcho(cid, ventana_s, espera_s, escala, escala_pvp): deja el Eco activo `ventana_s` segundos; la
+// próxima vez se puede lanzar dentro de `espera_s`. La repetición pega `escala` (o `escala_pvp` si el
+// blanco es un jugador) del golpe original.
+int SpellScript::luaActionStartEcho(lua_State *L)
+{
+	double pvpScale = lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	double scale = lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	int64_t cooldown = (int64_t)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	int64_t window = (int64_t)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	unsigned long cid = (unsigned long)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	Player* player = spell ? dynamic_cast<Player*>(spell->game->getCreatureByID(cid)) : NULL;
+	if(!player) {
+		lua_pushboolean(L, false);
+		return 1;
+	}
+	int64_t now = OTSYS_TIME();
+	EchoState& st = echoStates[cid];
+	st.activeUntil = now + window * 1000;
+	st.readyAt = now + cooldown * 1000;
+	st.scale = scale;
+	st.pvpScale = pvpScale;
+	lua_pushboolean(L, true);
+	return 1;
+}
+
+// Después de un hechizo que salió bien: si el jugador tiene el Eco activo y el hechizo admite eco, lo
+// consume y programa la repetición contra el blanco de ahora.
+void SpellScript::onPlayerSpellCast(Game* game, Player* player, Spell* spell, const std::string& var)
+{
+	if(!game || !player || !spell || !spell->isEchoable())
+		return;
+	InstantSpell* instant = dynamic_cast<InstantSpell*>(spell);
+	std::map<unsigned long, EchoState>::iterator it = echoStates.find(player->getID());
+	if(!instant || it == echoStates.end() || it->second.activeUntil == 0)
+		return;
+	bool active = OTSYS_TIME() <= it->second.activeUntil;
+	it->second.activeUntil = 0;
+	if(!active)
+		return;
+
+	game->addEvent(makeTask(ECHO_DELAY_MS, boost::bind(&SpellScript::castEcho, _1, player->getID(),
+		instant->getWords(), var, (unsigned long)player->attackedCreature, it->second.scale, it->second.pvpScale)));
+	sendSpellMagicEffect(game, player->pos, ECHO_EFFECT);
+}
+
+// La repetición: el mismo hechizo, sin maná ni espera, con el daño escalado. Si el jugador cambió de
+// blanco (o ya no existe) el eco se pierde; si el blanco quedó fuera de alcance, el script devuelve false.
+void SpellScript::castEcho(Game* game, unsigned long playerId, std::string words, std::string var,
+	unsigned long targetId, double scale, double pvpScale)
+{
+	OTSYS_THREAD_LOCK_CLASS lockClass(game->gameLock, "SpellScript::castEcho()");
+
+	Player* player = dynamic_cast<Player*>(game->getCreatureByID(playerId));
+	if(!player || player->isRemoved)
+		return;
+	std::map<std::string, Spell*>::iterator sit = spells.getAllSpells()->find(words);
+	if(sit == spells.getAllSpells()->end())
+		return;
+	if(targetId != 0 && (unsigned long)player->attackedCreature != targetId) {
+		player->sendTextMessage(MSG_SMALLINFO, "The echo fades: you changed target.");
+		return;
+	}
+	Creature* target = targetId ? game->getCreatureByID(targetId) : NULL;
+	echoCast = true;
+	echoScale = dynamic_cast<Player*>(target) ? pvpScale : scale;
+	bool ok = safeCast(sit->second, player, player->pos, var);
+	echoCast = false;
+	echoScale = 1.0;
+	if(ok)
+		sendSpellMagicEffect(game, player->pos, ECHO_EFFECT);
+	else
+		player->sendTextMessage(MSG_SMALLINFO, "The echo fades.");
+}
+
 int SpellScript::luaActionMakeRune(lua_State *L){
 	unsigned char charges = (unsigned char)lua_tonumber(L, -1);
 	lua_pop(L,1);
@@ -1996,7 +2238,7 @@ int SpellScript::luaActionReduceExhaustion(lua_State *L)
 	lua_pop(L,1);
 
 	Player* player = creature ? dynamic_cast<Player*>(creature) : NULL;
-	if(player && player->access < g_config.ACCESS_PROTECT){
+	if(player && player->access < g_config.ACCESS_PROTECT && !echoCast){
 		PlayerExhaust::cap(player, g_config.EXHAUSTED / 2);
 	}
 	return 0;

@@ -12,7 +12,7 @@ Hace, en una pasada e idempotente:
   5. Carteles en readables.xml (bloque TEMPLE_PORTAL_SIGNS); borra los carteles viejos
      de la fila que tenían otros bloques.
 
-Si se regenera una zona (generate-crucible / -wave-arena / -hunt-maze / -sand-clock),
+Si se regenera una zona (generate-crucible / -wave-arena / -beast-valley / -sand-clock),
 volver a correr este script: limpia lo que el generador ponga en la fila vieja.
 
 Uso: python3 scripts/map/temple-portals.py [--dry-run]
@@ -47,13 +47,13 @@ ROW_GROUND_FIX = {(160, 53): WHITE, (160, 54): WHITE, (160, 55): WHITE}  # base 
 PORTALS = [
     ("isla", 156, (148, 449, 7), "ISLA NATURAL\nCyclops arriba.\nCueva abajo (agujero).",
      [(124, 426, 187, 483, 7)]),
-    ("hunt-maze", 158, (280, 399, 7), "HUNT MAZE\nLaberinto mid-hard\nDesde Minotauros",
-     [(280, 243, 349, 400, 7), (380, 18, 433, 103, 7), (449, 39, 489, 80, 7)]),
+    ("valle", 158, (312, 360, 7), "VALLE DE LAS BESTIAS\nCaza mid-hard en 3 pisos\nDe Minotauros a Demonios",
+     [(262, 232, 361, 378, 7), (262, 232, 361, 378, 8), (262, 232, 361, 378, 9), (449, 39, 489, 80, 7)]),
     ("crisol", 164, (85, 92, 0), "CRISOL\n3 puertas. Boss diario.\nBronce / Plata / Oro",
      [(70, 70, 195, 105, 0)]),
     ("wave", 166, (177, 394, 7), "WAVE ARENA\nOleadas. Palanca = next.\nRanking semanal",
      [(172, 384, 182, 396, 7)]),
-    ("reloj", 168, (338, 392, 6), "RELOJ DE ARENA\nSala compartida.\nFases cada 120 s",
+    ("reloj", 168, (338, 395, 6), "RELOJ DE ARENA\n6 oleadas que suben de nivel\nEntra en el descanso",
      [(328, 383, 348, 401, 6), (328, 383, 348, 401, 5)]),
 ]
 S_BEGIN, S_END = "<!-- BEGIN TEMPLE_PORTAL_SIGNS -->", "<!-- END TEMPLE_PORTAL_SIGNS -->"

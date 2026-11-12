@@ -2,10 +2,10 @@
 # Instala cron de server save a medianoche hora Chile.
 # Aviso rojo 23:55 Chile → save ~00:00 (delay 5 min en C++).
 #
-# No usa CRON_TZ (roto en cron Ubuntu 3.0pl1 del VPS). Dispara a :55 UTC
+# No usa CRON_TZ (roto en cron Ubuntu 3.0pl1). Dispara a :55 UTC
 # en horas 2/3/4 y el gate confirma que en Chile son las 23:55.
 #
-# Uso (en el VPS):
+# Uso (en el servidor):
 #   ./scripts/install-midnight-server-save.sh
 set -euo pipefail
 

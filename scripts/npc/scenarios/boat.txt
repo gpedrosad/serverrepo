@@ -17,3 +17,14 @@ say 1001 gauntlet
 set 1001 pz 0
 pos 1001 452 43 7
 say 1001 gauntlet
+# GM (nombre que empieza con GM, vocación 0): viaja a cualquier destino, no es novato
+disappear 1001
+set 1002 voc 0
+set 1002 name GMRetro
+pos 1002 101 100 7
+say 1002 hi
+say 1002 hell
+say 1002 yes
+say 1002 hi
+say 1002 epstein
+say 1002 yes

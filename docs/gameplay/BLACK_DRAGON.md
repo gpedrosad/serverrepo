@@ -82,5 +82,5 @@ El script es idempotente (si el 230 ya tiene sprites, no hace nada) y deja una c
 [ ] Publicar Tibia.dat/.spr nuevos en el updater y confirmar que un cliente actualizado ve el look 230
 [ ] Boot local: docker logs sin errores de black dragon.xml ni de blackdragon_darkwave; ot-probe OK
 [ ] Agregar spawn en test-spawn.xml (o desde RME)
-[ ] Deploy al VPS solo con OK de Gonzalo (DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh)
+[ ] Deploy a la ThinkPad solo con OK de Gonzalo (docs/systems/THINKPAD_TEST_SERVER.md)
 ```

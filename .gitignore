@@ -40,7 +40,7 @@ web/private/
 web/.items-admin-token
 web/state/zagan_items_catalog.json
 
-# Runtime OT data — never versionar ni pisar en deploy del VPS
+# Runtime OT data — never versionar ni pisar en un deploy
 server/YurOTS/ots/data/online.xml
 server/YurOTS/ots/data/queue.xml
 server/YurOTS/ots/data/houseitems.xml

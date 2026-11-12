@@ -887,8 +887,8 @@ void GameState::onAttack(Creature* attacker, const Position& pos, const MagicEff
 	}
 
 	if(attackPlayer && attackPlayer->access < g_config.ACCESS_PROTECT) {
-		//Add exhaustion
-		if(me->causeExhaustion(true) /*!areaTargetVec.empty())*/)
+		//Add exhaustion (la repetición del Eco no agrega espera)
+		if(me->causeExhaustion(true) && !SpellScript::echoCast)
 		{
 			// Non-offensive = heal + support (haste, light, food, conjure…), like Nostalrius aggressive=false → 1s.
 			if (!me->offensive)
@@ -4230,7 +4230,7 @@ bool Game::creatureOnPrepareMagicAttack(Creature *creature, Position pos, const 
 
 		Player* player = dynamic_cast<Player*>(creature);
 		if(player) {
-			if(player->access < g_config.ACCESS_PROTECT) {
+			if(player->access < g_config.ACCESS_PROTECT && !SpellScript::echoCast) {   // la repetición del Eco no cobra ni espera
 				if(PlayerExhaust::isExhausted(player) && me->causeExhaustion(true)) {
 					// Do not extend the timer on fail (Nostalrius/Cip-style). exhaustedadd is yell-only.
 					player->sendTextMessage(MSG_SMALLINFO, "You are exhausted.", player->pos, NM_ME_PUFF);
@@ -5108,6 +5108,8 @@ SpellCastResult Game::creatureSaySpell(Creature *creature, const std::string &te
 						ret = SpellScript::safeCast(sit->second, creature, creature->pos, var);
 						if(!ret && didPlayerSpendSpellResources(player, manaBefore, soulBefore))
 							ret = true;
+						if(ret)
+							SpellScript::onPlayerSpellCast(this, player, sit->second, var);
 					}
 				}
 				else {

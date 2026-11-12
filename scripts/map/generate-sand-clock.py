@@ -1,309 +1,204 @@
 #!/usr/bin/env python3
-"""Reloj de Arena — sala compartida con fases globales (Chronos).
+"""Reloj de Arena: sala chica de oleadas que suben de nivel (la maneja el NPC Chronos).
 
-AVISO (nov 2026): los portales del templo viven en la plaza y los maneja
-scripts/map/temple-portals.py. Si corrés este generador, después corré ese script:
-limpia lo que este ponga en la fila vieja (y=53-55) y reapunta la vuelta.
+Sala de arena con paredes de arenisca, 11x9 por dentro (z6), en el mismo lugar que la sala vieja
+(17x15 de piso blanco). La lógica de las oleadas está en data/npc/scripts/chronos.lua; este script
+solo dibuja la sala y escribe su cartel:
 
+  - al norte, Chronos en el centro y 6 braseros que se encienden según la oleada (3 a cada lado);
+  - dos columnas de arenisca de cobertura; antorchas y faroles en las paredes;
+  - al sur, la llegada, el portal de salida al templo entre dos estatuas y el cartel con las reglas.
 
-Templo: TP 166,54,7 → sala z6. Retorno templo 167,54,7.
-Sala simple path 406 + fondo neutro z5 (mismo patrón Wave/Fish/Fosos).
-NPC Chronos se spawnea vía data/world/npc.xml (no en OTBM).
+Alrededor de la sala, tierra (bloquea) hasta media pantalla, y techo de madera en z5 encima: desde
+adentro nunca se ve negro. Coordenadas: chronos.lua (ROOM, BRAZIERS, SPAWN_SPOTS) debe coincidir.
 
-Uso:
+Uso (desde la raíz del repo):
   python3 scripts/map/generate-sand-clock.py --dry-run
-  python3 scripts/map/generate-sand-clock.py --replace
+  python3 scripts/map/generate-sand-clock.py            # escribe mapa, cartel y manifiesto
+  python3 scripts/map/temple-portals.py                 # después: portal y cartel de la plaza
+Doc: docs/gameplay/SAND_CLOCK.md.
 """
 from __future__ import annotations
 
 import argparse
-import importlib.util
 import json
 import re
+import shutil
 import struct
 import sys
-from dataclasses import dataclass, field
 from pathlib import Path
 
-_maze_path = Path(__file__).resolve().parent / "generate-maze.py"
-_spec = importlib.util.spec_from_file_location("generate_maze", _maze_path)
-_maze = importlib.util.module_from_spec(_spec)
-sys.modules["generate_maze"] = _maze
-assert _spec.loader is not None
-_spec.loader.exec_module(_maze)
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE / "kb"))
+from mapdata import MAP, REPO, T_AREA, T_HOUSETILE, T_ITEM, T_TILE, load_otb, parse_tree, serialize_tree  # noqa: E402
 
-GROUND_PATH = 406
-GROUND_BG = 405
-TELEPORT_ITEM = _maze.TELEPORT_ITEM
-NODE_START = _maze.NODE_START
-NODE_END = _maze.NODE_END
-OTBM_TILE_AREA = _maze.OTBM_TILE_AREA
-OTBM_TILE = _maze.OTBM_TILE
-OTBM_ITEM = _maze.OTBM_ITEM
-OTBM_ATTR_TELE_DEST = _maze.OTBM_ATTR_TELE_DEST
-OTBM_ATTR_ITEM = _maze.OTBM_ATTR_ITEM
-OTBM_ATTR_TEXT = 6
-write_props = _maze.write_props
+WORLD = REPO / "server/YurOTS/ots/data/world"
+READABLES = REPO / "server/YurOTS/ots/data/readables.xml"
+MANIFEST = WORLD / "generated-sand-clock.json"
 
-HUB_PORTAL = (166, 54, 7)
-TEMPLE_RETURN = (167, 54, 7)
-HUB_GROUND = 407
-SIGN_ITEM = 1429
+Z_PLAY, Z_ROOF = 6, 5
+ROOM = dict(x0=333, y0=388, x1=343, y1=396)          # piso caminable (11x9)
+CLEAR = (325, 381, 351, 403)                          # z5-z6: sala vieja + media pantalla alrededor
+TEMPLE_LANDING = (168, 48, 7)                         # llegada del portal del Reloj en la plaza
+CX = 338
+CHRONOS = (CX, ROOM["y0"])
+LANDING = (CX, ROOM["y1"] - 1)
+EXIT_TP = (CX, ROOM["y1"])
+BRAZIERS = [(333, 388), (334, 388), (335, 388), (341, 388), (342, 388), (343, 388)]   # oleadas 1-6
+PILLARS = [(335, 392), (341, 392)]
+STATUES = [(CX - 2, ROOM["y1"]), (CX + 2, ROOM["y1"])]
+SIGN_POS = (CX + 1, ROOM["y1"])
+SPAWN_SPOTS = [(334, 390), (338, 390), (342, 390), (336, 391), (340, 391), (334, 393), (342, 393),
+               (337, 392), (339, 392), (336, 393), (340, 393)]
 
-Z_PLAY = 6
-Z_BG = 5
+SAND, EARTH, WOOD = 231, 101, 405
+WALL = dict(post=1062, h=1063, v=1060, se=1066)       # arenisca: poste NO, horizontal, vertical, L SE
+TELEPORT, SIGN = 1387, 1429
+PILLAR, STATUE, BRAZIER = 1549, 1451, 1482
+TORCH_V, LAMP_H = 2061, 2040                          # colgables: pared oeste/este (vertical) y norte
+ATTR_TELE_DEST = 8
 
-ROOM = dict(x0=330, y0=385, x1=346, y1=399)
-LANDING = (338, 392, Z_PLAY)
-RETURN_TP = (338, 398, Z_PLAY)
-# Chronos stand (libre, norte de la sala) — documentado; spawn en npc.xml
-CHRONOS_POS = (338, 387, Z_PLAY)
-
-TEMPLE_SIGN = (
-    166,
-    53,
-    7,
-    "RELOJ DE ARENA\nSala compartida.\nFases cada 120 s",
-)
+SIGN_TEXT = ("RELOJ DE ARENA\nDescanso de 30 s y despues 6 oleadas de 60 s,\ncada una mas fuerte. "
+             "Los braseros marcan la oleada.\nEntra en el descanso para empezar desde la 1.\nSalida: portal al sur.")
 
 
-@dataclass
-class SItem:
-    item_id: int
-    text: str | None = None
+def build() -> dict:
+    t: dict[tuple[int, int, int], list[int]] = {}
+    x0, y0, x1, y1 = ROOM["x0"], ROOM["y0"], ROOM["x1"], ROOM["y1"]
+    for x in range(CLEAR[0], CLEAR[2] + 1):
+        for y in range(CLEAR[1], CLEAR[3] + 1):
+            t[(x, y, Z_ROOF)] = [WOOD]
+            t[(x, y, Z_PLAY)] = [EARTH]
+    for x in range(x0 - 1, x1 + 2):
+        for y in range(y0 - 1, y1 + 2):
+            t[(x, y, Z_PLAY)] = [SAND]
 
+    def add(c, item):
+        t[(c[0], c[1], Z_PLAY)].append(item)
 
-@dataclass
-class STile:
-    ground: int
-    teleport: tuple[int, int, int] | None = None
-    items: list[SItem] = field(default_factory=list)
-
-
-def project_root() -> Path:
-    return next(
-        p
-        for p in [Path(__file__).resolve().parent, *Path(__file__).resolve().parents]
-        if (p / "AGENTS.md").is_file() or (p / ".git").is_dir()
-    )
-
-
-def encode_string(text: str) -> bytes:
-    raw = text.encode("ascii", errors="replace")
-    return struct.pack("<H", len(raw)) + raw
-
-
-def encode_item_node(it: SItem, tele: tuple[int, int, int] | None = None) -> bytes:
-    props = struct.pack("<H", it.item_id)
-    if it.text is not None:
-        props += struct.pack("<B", OTBM_ATTR_TEXT) + encode_string(it.text)
-    if tele is not None:
-        props += struct.pack("<BHHB", OTBM_ATTR_TELE_DEST, tele[0], tele[1], tele[2])
-    buf = bytearray()
-    buf.append(NODE_START)
-    buf.append(OTBM_ITEM)
-    write_props(buf, props)
-    buf.append(NODE_END)
-    return bytes(buf)
-
-
-def encode_tile_node(x_off: int, y_off: int, spec: STile) -> bytes:
-    props = struct.pack("<BB", x_off, y_off)
-    props += struct.pack("<BH", OTBM_ATTR_ITEM, spec.ground)
-    buf = bytearray()
-    buf.append(NODE_START)
-    buf.append(OTBM_TILE)
-    write_props(buf, props)
-    if spec.teleport is not None:
-        buf.extend(encode_item_node(SItem(TELEPORT_ITEM), tele=spec.teleport))
-    for it in spec.items:
-        buf.extend(encode_item_node(it))
-    buf.append(NODE_END)
-    return bytes(buf)
-
-
-def encode_tile_area(base_x: int, base_y: int, base_z: int, rel: list) -> bytes:
-    area_props = struct.pack("<HHB", base_x, base_y, base_z)
-    buf = bytearray()
-    buf.append(NODE_START)
-    buf.append(OTBM_TILE_AREA)
-    write_props(buf, area_props)
-    for ox, oy, spec in sorted(rel, key=lambda t: (t[0], t[1])):
-        buf.extend(encode_tile_node(ox, oy, spec))
-    buf.append(NODE_END)
-    return bytes(buf)
-
-
-def group_tile_areas(tiles: dict[tuple[int, int, int], STile]) -> list[bytes]:
-    from collections import defaultdict
-
-    by_z: dict[int, list] = defaultdict(list)
-    for (x, y, z), spec in tiles.items():
-        by_z[z].append((x, y, spec))
-    chunks: list[bytes] = []
-    for z, entries in sorted(by_z.items()):
-        buckets: dict[tuple[int, int], list] = defaultdict(list)
-        for x, y, spec in entries:
-            bx = (x // 256) * 256
-            by = (y // 256) * 256
-            buckets[(bx, by)].append((x - bx, y - by, spec))
-        for (bx, by), rel in sorted(buckets.items()):
-            chunks.append(encode_tile_area(bx, by, z, rel))
-    return chunks
-
-
-def fill_rect(tiles, x0, y0, x1, y1, z, ground) -> None:
+    for x in range(x0, x1 + 1):
+        add((x, y0 - 1), WALL["h"])
+        add((x, y1 + 1), WALL["h"])
     for y in range(y0, y1 + 1):
-        for x in range(x0, x1 + 1):
-            tiles[(x, y, z)] = STile(ground=ground)
+        add((x0 - 1, y), WALL["v"])
+        add((x1 + 1, y), WALL["v"])
+    add((x0 - 1, y0 - 1), WALL["post"])
+    add((x1 + 1, y0 - 1), WALL["h"])
+    add((x0 - 1, y1 + 1), WALL["v"])
+    add((x1 + 1, y1 + 1), WALL["se"])
+    for y in (y0 + 2, y1 - 2):
+        add((x0 - 1, y), TORCH_V)
+        add((x1 + 1, y), TORCH_V)
+    for x in (CX - 2, CX + 2):
+        add((x, y0 - 1), LAMP_H)
+    for c in BRAZIERS:
+        add(c, BRAZIER)
+    for c in PILLARS:
+        add(c, PILLAR)
+    for c in STATUES:
+        add(c, STATUE)
+    add(SIGN_POS, SIGN)
+    add(EXIT_TP, TELEPORT)
+    return t
 
 
-def build_tiles() -> tuple[dict[tuple[int, int, int], STile], dict]:
-    pad = 2
-    x0, y0 = ROOM["x0"] - pad, ROOM["y0"] - pad
-    x1, y1 = ROOM["x1"] + pad, ROOM["y1"] + pad
-    tiles: dict[tuple[int, int, int], STile] = {}
-
-    fill_rect(tiles, x0, y0, x1, y1, Z_BG, GROUND_BG)
-    fill_rect(tiles, x0, y0, x1, y1, Z_PLAY, GROUND_BG)
-    fill_rect(
-        tiles,
-        ROOM["x0"],
-        ROOM["y0"],
-        ROOM["x1"],
-        ROOM["y1"],
-        Z_PLAY,
-        GROUND_PATH,
-    )
-
-    tiles[LANDING] = STile(ground=GROUND_PATH)
-    tiles[RETURN_TP] = STile(ground=GROUND_PATH, teleport=TEMPLE_RETURN)
-    tiles[CHRONOS_POS] = STile(ground=GROUND_PATH)
-
-    # Temple pad + portal + return + sign
-    for dy in (-1, 0, 1):
-        for dx in (-1, 0, 1):
-            tx, ty = HUB_PORTAL[0] + dx, HUB_PORTAL[1] + dy
-            tiles[(tx, ty, 7)] = STile(ground=HUB_GROUND)
-    tiles[HUB_PORTAL] = STile(ground=HUB_GROUND, teleport=LANDING)
-    tiles[TEMPLE_RETURN] = STile(ground=HUB_GROUND)
-    sx, sy, sz, stext = TEMPLE_SIGN
-    tiles[(sx, sy, sz)] = STile(ground=HUB_GROUND, items=[SItem(SIGN_ITEM)])
-
-    meta = {
-        "hubPortal": {"x": HUB_PORTAL[0], "y": HUB_PORTAL[1], "z": HUB_PORTAL[2]},
-        "templeReturn": {
-            "x": TEMPLE_RETURN[0],
-            "y": TEMPLE_RETURN[1],
-            "z": TEMPLE_RETURN[2],
-        },
-        "landing": {"x": LANDING[0], "y": LANDING[1], "z": LANDING[2]},
-        "returnTp": {"x": RETURN_TP[0], "y": RETURN_TP[1], "z": RETURN_TP[2]},
-        "chronos": {"x": CHRONOS_POS[0], "y": CHRONOS_POS[1], "z": CHRONOS_POS[2]},
-        "room": {**ROOM, "z": Z_PLAY},
-        "zPlay": Z_PLAY,
-        "zBg": Z_BG,
-        "phaseSec": 120,
-        "templeSign": {"x": sx, "y": sy, "z": sz, "text": stext},
-        "clearBoxes": [
-            {"fromX": x0, "toX": x1, "fromY": y0, "toY": y1, "z": Z_PLAY},
-            {"fromX": x0, "toX": x1, "fromY": y0, "toY": y1, "z": Z_BG},
-            {
-                "fromX": HUB_PORTAL[0] - 1,
-                "toX": HUB_PORTAL[0] + 1,
-                "fromY": HUB_PORTAL[1] - 1,
-                "toY": HUB_PORTAL[1] + 1,
-                "z": 7,
-            },
-            {
-                "fromX": TEMPLE_RETURN[0],
-                "toX": TEMPLE_RETURN[0],
-                "fromY": TEMPLE_RETURN[1],
-                "toY": TEMPLE_RETURN[1],
-                "z": 7,
-            },
-            {"fromX": sx, "toX": sx, "fromY": sy, "toY": sy, "z": sz},
-        ],
-    }
-    return tiles, meta
+def validate(t: dict) -> list[str]:
+    otb = load_otb()
+    blocks = lambda c: any("block_solid" in otb.get(i, {}).get("flags", []) for i in t[c][1:])  # noqa: E731
+    walk = {c for c in t if c[2] == Z_PLAY and t[c][0] == SAND and not blocks(c)}
+    errors = []
+    start = (LANDING[0], LANDING[1], Z_PLAY)
+    seen, todo = {start}, [start]
+    while todo:
+        x, y, z = todo.pop()
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            n = (x + dx, y + dy, z)
+            if n in walk and n not in seen:
+                seen.add(n)
+                todo.append(n)
+    for label, c in [("Chronos", CHRONOS), ("salida", EXIT_TP)] + [("spawn", s) for s in SPAWN_SPOTS]:
+        if (c[0], c[1], Z_PLAY) not in seen:
+            errors.append(f"{label} {c}: no se llega desde la llegada")
+    for c in walk:
+        if not (CLEAR[0] + 8 <= c[0] <= CLEAR[2] - 8 and CLEAR[1] + 6 <= c[1] <= CLEAR[3] - 6):
+            errors.append(f"{c}: se ve el borde negro")
+    return errors
 
 
-def patch_readables(project: Path, meta: dict) -> None:
-    path = project / "server/YurOTS/ots/data/readables.xml"
-    begin = "<!-- BEGIN SAND_CLOCK_SIGNS -->"
-    end = "<!-- END SAND_CLOCK_SIGNS -->"
-    s = meta["templeSign"]
-    text = s["text"].replace("\n", "\\n")
-    block = (
-        f"\t{begin}\n"
-        f'\t<readable x="{s["x"]}" y="{s["y"]}" z="{s["z"]}" text="{text}"/>\n'
-        f"\t{end}\n"
-    )
-    raw = path.read_text(encoding="utf-8")
-    pat = re.compile(re.escape(begin) + r".*?" + re.escape(end) + r"\n?", re.DOTALL)
-    if pat.search(raw):
-        raw = pat.sub(block, raw, count=1)
-    else:
-        raw = raw.replace("</readables>", block + "</readables>")
-    path.write_text(raw, encoding="utf-8")
+def item_node(iid: int, tele=None):
+    props = bytearray(struct.pack("<H", iid))
+    if tele is not None:
+        props += bytes([ATTR_TELE_DEST]) + struct.pack("<HHB", *tele)
+    return [T_ITEM, props, []]
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--map", type=Path)
-    parser.add_argument("--manifest", type=Path)
-    parser.add_argument("--replace", action="store_true")
-    parser.add_argument("--dry-run", action="store_true")
-    args = parser.parse_args()
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--dry-run", action="store_true")
+    a = ap.parse_args()
 
-    project = project_root()
-    otbm_path = args.map or (project / "server/YurOTS/ots/data/world/test.otbm")
-    manifest_path = args.manifest or (
-        project / "server/YurOTS/ots/data/world/generated-sand-clock.json"
-    )
-
-    tiles, meta = build_tiles()
-    print("Reloj de Arena / Sand Clock")
-    print(
-        f"Portal ({HUB_PORTAL[0]},{HUB_PORTAL[1]},{HUB_PORTAL[2]}) "
-        f"→ landing ({LANDING[0]},{LANDING[1]},{LANDING[2]})"
-    )
-    print(
-        f"Chronos ({CHRONOS_POS[0]},{CHRONOS_POS[1]},{CHRONOS_POS[2]}) "
-        f"room {ROOM['x0']}-{ROOM['x1']},{ROOM['y0']}-{ROOM['y1']} z{Z_PLAY}"
-    )
-    print(f"tiles={len(tiles)} zPlay={Z_PLAY} zBg={Z_BG}")
-
-    summary = {"name": "generated-sand-clock", "tileCount": len(tiles), **meta}
-    if args.dry_run:
-        print("(dry-run)")
-        return 0
-    if not args.replace:
-        print("ERROR: usa --replace", file=sys.stderr)
+    t = build()
+    errors = validate(t)
+    if errors:
+        print("\n".join(errors[:30]), file=sys.stderr)
+        print(f"ERROR: {len(errors)} problemas; no se escribe nada", file=sys.stderr)
         return 1
+    print(f"Reloj de Arena: sala {ROOM['x0']}-{ROOM['x1']}, {ROOM['y0']}-{ROOM['y1']} z{Z_PLAY} (11x9); "
+          f"llegada {LANDING[0]},{LANDING[1]},{Z_PLAY}; salida {EXIT_TP[0]},{EXIT_TP[1]},{Z_PLAY}; Chronos {CHRONOS}")
+    if a.dry_run:
+        print("dry-run: validación OK, no se escribió nada")
+        return 0
 
-    raw = otbm_path.read_bytes()
-    body = raw[4:]
-    for box in meta["clearBoxes"]:
-        body = _maze.filter_tiles_in_bbox(
-            body, box["fromX"], box["fromY"], box["toX"], box["toY"], box["z"]
-        )
-    insert_at = _maze.find_map_data_insert(body)
-    patch = b"".join(group_tile_areas(tiles))
-    patched = raw[:4] + body[:insert_at] + patch + body[insert_at:]
-
-    backup = otbm_path.with_suffix(".otbm.bak-sand-clock")
+    raw = MAP.read_bytes()
+    root = parse_tree(raw)
+    md = root[2][0]
+    backup = MAP.with_name(MAP.name + ".bak-sand-clock")
     if not backup.exists():
-        backup.write_bytes(raw)
-        print(f"Backup: {backup}")
+        shutil.copy2(MAP, backup)
+    for area in list(md[2]):
+        if area[0] != T_AREA:
+            continue
+        ax, ay, az = struct.unpack_from("<HHB", bytes(area[1]), 0)
+        if az not in (Z_PLAY, Z_ROOF):
+            continue
+        area[2] = [n for n in area[2] if not (n[0] in (T_TILE, T_HOUSETILE)
+                                              and CLEAR[0] <= ax + n[1][0] <= CLEAR[2]
+                                              and CLEAR[1] <= ay + n[1][1] <= CLEAR[3])]
+        if not area[2]:
+            md[2].remove(area)
+    buckets: dict = {}
+    for (x, y, z), items in t.items():
+        buckets.setdefault((x & ~0xFF, y & ~0xFF, z), []).append((x, y, items))
+    for (bx, by, z), lst in sorted(buckets.items()):
+        area = [T_AREA, bytearray(struct.pack("<HHB", bx, by, z)), []]
+        for x, y, items in sorted(lst, key=lambda e: (e[1], e[0])):
+            props = bytearray([x - bx, y - by, 9]) + struct.pack("<H", items[0])
+            kids = [item_node(i, TEMPLE_LANDING if i == TELEPORT else None) for i in items[1:]]
+            area[2].append([T_TILE, props, kids])
+        md[2].append(area)
+    MAP.write_bytes(serialize_tree(root, raw[:4]))
 
-    otbm_path.write_bytes(patched)
-    patch_readables(project, meta)
-    manifest_path.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
-    print(f"OK mapa {otbm_path}")
-    print(f"OK readables + {manifest_path}")
+    rd = READABLES.read_text(encoding="latin-1")
+    rd = re.sub(r"[ \t]*<!-- BEGIN SAND_CLOCK_SIGNS -->.*?<!-- END SAND_CLOCK_SIGNS -->\n?", "", rd, flags=re.S)
+    block = ("\t<!-- BEGIN SAND_CLOCK_SIGNS -->\n"
+             f'\t<readable x="{SIGN_POS[0]}" y="{SIGN_POS[1]}" z="{Z_PLAY}" text="{SIGN_TEXT.replace(chr(10), chr(92) + "n")}"/>\n'
+             "\t<!-- END SAND_CLOCK_SIGNS -->\n")
+    rd = rd.replace("</readables>", block + "</readables>")
+    READABLES.write_text(rd, encoding="latin-1")
+
+    MANIFEST.write_text(json.dumps({
+        "name": "generated-sand-clock",
+        "room": {**ROOM, "z": Z_PLAY},
+        "clearBox": {"x1": CLEAR[0], "y1": CLEAR[1], "x2": CLEAR[2], "y2": CLEAR[3], "z": [Z_ROOF, Z_PLAY]},
+        "landing": {"x": LANDING[0], "y": LANDING[1], "z": Z_PLAY},
+        "returnTp": {"x": EXIT_TP[0], "y": EXIT_TP[1], "z": Z_PLAY, "to": list(TEMPLE_LANDING)},
+        "chronos": {"x": CHRONOS[0], "y": CHRONOS[1], "z": Z_PLAY},
+        "braziers": [{"x": x, "y": y, "z": Z_PLAY} for x, y in BRAZIERS],
+        "spawnSpots": [{"x": x, "y": y, "z": Z_PLAY} for x, y in SPAWN_SPOTS],
+    }, indent=2) + "\n")
+    print(f"OK mapa {MAP}\nOK cartel {READABLES}\nOK {MANIFEST}")
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    sys.exit(main())

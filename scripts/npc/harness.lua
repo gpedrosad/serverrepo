@@ -99,7 +99,7 @@ end
 for _, n in ipairs({'selfMove', 'selfMoveTo', 'selfAttackCreature', 'doPlayerSendTextMessage', 'buy', 'buyFluidBackpack',
 	'buyFluidQty', 'buyRuneQty', 'buyItemQty', 'buyItemBackpack', 'sell', 'sellFluid', 'sellBundle',
 	'travelPlayerTo', 'doSendMagicEffect', 'setPlayerMasterPos', 'doPlayerAddExp', 'learnSpell', 'setPlayerVocation',
-	'setPlayerGuildNick', 'setPlayerGuildTitle', 'doRemoveCreature'}) do
+	'setPlayerGuildNick', 'setPlayerGuildTitle'}) do
 	api(n, nil)
 end
 api('cancelPendingTrade', true)
@@ -119,8 +119,16 @@ api('doPlayerWithdrawMoney', 0)
 api('doPlayerTransferMoneyTo', 0)
 api('doPlayerAddMoney', 1)
 api('getPlayerVocation', function(cid) return P(cid).voc end)
-api('doSummonCreature', function() creatures = creatures + 1; return creatures end)
-api('getTopCreature', 0)
+-- monstruos invocados (Chronos): id -> posición, para que getTopCreature vea quién está en cada casilla
+local summoned = {}
+local function samePos(a, b) return a ~= nil and b ~= nil and a.x == b.x and a.y == b.y and a.z == b.z end
+api('doSummonCreature', function(name, pos) creatures = creatures + 1; summoned[creatures] = pos; return creatures end)
+api('doRemoveCreature', function(cid) summoned[tonumber(cid)] = nil end)
+api('getTopCreature', function(pos)
+	for cid, p in pairs(players) do if samePos(p.pos, pos) then return cid end end
+	for id, sp in pairs(summoned) do if samePos(sp, pos) then return id end end
+	return 0
+end)
 api('isMonster', function(cid) return (tonumber(cid) or 0) >= 5000 end)  -- boolean, como el C++
 api('getPlayerMana', function(cid) return P(cid).mana end)
 api('doPlayerAddMana', 1)

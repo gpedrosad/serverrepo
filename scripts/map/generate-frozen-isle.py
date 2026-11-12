@@ -92,16 +92,20 @@ PRIZES = {"woodcutter": 2160, "islet": 2361, "wand": 20123, "helmet": 20113}
 HARBOR = (40, 102)                          # centro del claro del puerto
 LANDING = (39, 102)                         # destino del barco
 NIMRAL = (41, 101)
-FOREST_PATH = [(40, 99), (40, 96), (17, 96), (17, 90), (58, 90), (58, 84), (22, 84), (22, 78), (46, 78),
-               (46, 74)]
-WOODCUTTER_SPUR = [(17, 96), (11, 96)]      # sigue de largo en la primera curva
+# Compactado (nov 2026): los zigzags cruzaban la isla entera (291 pasos en z7, 461 en las grutas).
+# Ahora son más cortos y hay menos bandas en z8; ver docs/items-and-map/MAPEAR_ISLA_HELADA.md.
+FOREST_PATH = [(40, 99), (40, 94), (30, 94), (30, 86), (50, 86), (50, 78), (46, 78), (46, 74)]
+WOODCUTTER_SPUR = [(30, 94), (21, 94)]      # sigue de largo en la primera curva
+WOODCUTTER = (19, 94)                       # claro del leñador (cofre al oeste)
 CHECK_LAKE = (46, 72)                       # claro antes del lago
-CAUSEWAY = [(46, 71), (46, 66), (29, 66), (29, 59), (51, 59), (51, 52), (39, 52), (39, 46), (39, 40)]
-ISLET_SPUR = [(29, 62), (19, 62)]
+CAUSEWAY = [(46, 71), (46, 66), (34, 66), (34, 59), (46, 59), (46, 52), (39, 52), (39, 46), (39, 40)]
+ISLET_SPUR = [(34, 62), (19, 62)]
 ISLET = (15, 61)
 LAKE = (39, 59, 30, 10.5)                   # centro x, y y radios del lago
 COURTYARD = (32, 30, 46, 41)                # patio del monasterio (x0, y0, x1, y1)
-MOUNTAIN_PATH = [(39, 30), (39, 26), (23, 26), (23, 19), (51, 19), (51, 14), (37, 14)]
+MOUNTAIN_PATH = [(39, 30), (39, 26), (30, 26), (30, 19), (46, 19), (46, 14), (37, 14)]
+CAVE_BANDS = 5                              # bandas de la serpentina de z8 (antes 9)
+CAVE_BX = (9, 29)                           # bloques 2x2 en x de las grutas (antes 5-33)
 STAIRS = (36, 13)
 ROCKY_Y = 28                                # al norte de esta línea el relleno es roca, no bosque
 
@@ -140,7 +144,7 @@ def build_surface(seed: int, bl):
     walk_main |= ellipse(HARBOR[0] + 0.5, HARBOR[1] + 0.5, 6.5, 3.2) | ellipse(CHECK_LAKE[0] + 1, CHECK_LAKE[1] + 1, 4.2, 2.6)
     walk_main |= ellipse(STAIRS[0] + 0.5, STAIRS[1] - 0.5, 2.6, 2.2)
     causeway = brush(CAUSEWAY) | brush(ISLET_SPUR)
-    spurs = brush(WOODCUTTER_SPUR) | ellipse(10.5, 96.5, 2.2, 2.2)
+    spurs = brush(WOODCUTTER_SPUR) | ellipse(WOODCUTTER[0] + 0.5, WOODCUTTER[1] + 0.5, 2.2, 2.2)
     islet_walk = ellipse(ISLET[0] + 0.5, ISLET[1] + 0.5, 3.4, 3.0)
     court = {(x, y) for x in range(COURTYARD[0], COURTYARD[2] + 1) for y in range(COURTYARD[1], COURTYARD[3] + 1)}
 
@@ -267,11 +271,11 @@ def build_surface(seed: int, bl):
         if c in walk and c not in brush(MOUNTAIN_PATH[-2:]):
             put(c, STONE)
     # --- cofres de los desvíos ---
-    chests = {(9, 95): PRIZES["woodcutter"], (ISLET[0] - 2, ISLET[1]): PRIZES["islet"]}
+    chests = {(WOODCUTTER[0] - 2, WOODCUTTER[1] - 1): PRIZES["woodcutter"], (ISLET[0] - 2, ISLET[1]): PRIZES["islet"]}
     for c in chests:
         put(c, CHEST)
     # faroles en el bosque y en el paso de hielo (guían)
-    for c in ((19, 92), (56, 86), (24, 80), (48, 64), (31, 57), (49, 50)):
+    for c in ((32, 92), (52, 84), (44, 80), (48, 64), (36, 57), (44, 50)):
         if c in land and c not in walk and len(tiles[c]) <= 2:
             tiles[c] = [tiles[c][0], LANTERN]
     # huesos y piedritas sueltos en el sendero (no bloquean)
@@ -288,7 +292,7 @@ def build_surface(seed: int, bl):
         (CHECK_LAKE[0] - 3, CHECK_LAKE[1] - 1): "LAGO CONGELADO\nCruza por el paso de hielo. Al oeste, un islote:\ndicen que ahi vive un yeti.",
         (x1 + 1, y1 - 1): "MONASTERIO DE ESCARCHA\nLos monjes de hielo no perdonan a los intrusos.",
         (sx + 3, sy + 1): "GRUTAS DE ESCARCHA\nAranas de hielo y, en lo mas hondo, el dragon.\nNivel 80+.",
-        (12, 93): "Aqui vivia un lenador.\nDejo algo para quien encontrara su escondite.",
+        (WOODCUTTER[0] + 2, WOODCUTTER[1] - 2): "Aqui vivia un lenador.\nDejo algo para quien encontrara su escondite.",
     }
     placed_signs = {}
     for anchor, text in signs.items():
@@ -353,7 +357,7 @@ def cave_floor_tiles(floor: set, box: set, seed: int, patches=0.0) -> dict:
 
 def build_caves(seed: int):
     rng = random.Random(seed + 5)
-    bx_min, bx_max = 5, W // 2 - 6            # bloques: x 10-65 en casillas
+    bx_min, bx_max = CAVE_BX                  # bloques: x 18-59 en casillas (antes 10-65)
     sb = (STAIRS[0] // 2, STAIRS[1] // 2)
     allowed = b_rect(bx_min, 4, bx_max, H // 2 - 5)
 
@@ -364,7 +368,7 @@ def build_caves(seed: int):
     x = sb[0]
     going_east = True
     prev_row = sb[1] + 1
-    for band in range(9):
+    for band in range(CAVE_BANDS):
         row = band_y + 1
         f8 |= b_line((x, prev_row), (x, row))
         end = bx_max - rng.randint(0, 3) if going_east else bx_min + rng.randint(0, 3)

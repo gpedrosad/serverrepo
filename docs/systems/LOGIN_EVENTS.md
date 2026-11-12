@@ -11,7 +11,7 @@ Una línea JSON por evento, un archivo por mes, en `server/YurOTS/ots/data/logs/
 | `logins-AAAA-MM.jsonl` | Servidor C++ (`source/loginlog.cpp`, llamado desde `ConnectionHandler` en `otserv.cpp`) | `charlist_*`, `game_*` |
 | `web-AAAA-MM.jsonl` | Web (`web/access_log.py`, en `_create_account` de `web/server.py`) | `account_created`, `account_create_fail` |
 
-Son **data runtime** (incluyen IPs): están en `.gitignore`, viven en el VPS y no se commitean. Para borrar lo viejo basta con eliminar los archivos de meses anteriores. Se propone conservar 6 meses.
+Son **data runtime** (incluyen IPs): están en `.gitignore`, viven en el servidor (hoy la ThinkPad) y no se commitean. Para borrar lo viejo basta con eliminar los archivos de meses anteriores. Se propone conservar 6 meses.
 
 **Nunca se registra la contraseña**, ni la correcta ni la intentada.
 
@@ -42,7 +42,7 @@ python3 scripts/ot/login-report.py              # últimos 14 días
 python3 scripts/ot/login-report.py --days 30
 ```
 
-En el VPS se ejecuta desde `~/yurots-principal`. Muestra:
+En la ThinkPad se ejecuta desde `~/apps/serverrepo`. Muestra:
 
 - Cuentas nuevas, logins y personajes por día.
 - Embudo de cuentas nuevas: cuántas llegaron a entrar al juego, y cuántas en las primeras 24 h.

@@ -1,71 +1,76 @@
-# Reloj de Arena — sala compartida con fases globales
+# Reloj de Arena — sala de oleadas que suben de nivel
 
-Una sola sala. Todos los que entran viven el **mismo** evento: cada **120 s** cambia la fase y el pack de mobs. El countdown se muestra como en trainers (`quedan X s` / `X min Y s`) vía `MSG_SMALLINFO`.
+Una sala chica (11×9) compartida. Todos los que entran viven el **mismo** ciclo, que corre según la hora
+real aunque no haya nadie:
 
-Portal en la plaza del templo: `168, 47, 7` (cartel `168, 46, 7`).
+**descanso de 30 s → oleada 1 → 2 → … → 6 (60 s cada una, cada una más fuerte) → descanso otra vez.**
 
-Retorno: TP sur de la sala → templo `168, 48, 7`.
+Ciclo completo: 6 min 30 s. Rehecha en nov 2026: antes era una sala de 17×15 de piso blanco que cambiaba
+de "fase" cada 120 s sin orden de dificultad claro, y se entraba en cualquier punto del ciclo sin saber
+qué venía.
+
+Portal en la plaza del templo: `168, 47, 7` (cartel `168, 46, 7`: "6 oleadas que suben de nivel. Entra en el descanso").
+
+Retorno: portal al sur de la sala → templo `168, 48, 7`.
 
 Portales del templo: plaza `155,43–169,52` (z7), tabla completa en [`CAMBIAR-MAPA.md`](../CAMBIAR-MAPA.md#portales-del-templo-plaza-z7--nov-2026). Los maneja `scripts/map/temple-portals.py`.
 
 ---
 
-## Flujo
+## Qué ve el jugador
 
-1. Pisar el TP del templo `168, 47, 7`.
-2. Landing `338, 392, 6`. Chronos (NPC) ya está en la sala.
-3. Mensaje de entrada: fase actual + tiempo restante.
-4. Cada ~1 s (think del NPC): `Reloj: quedan X s | fase: Name` (mismo estilo que training).
-5. Al cambiar la fase: limpia mobs de la sala, spawnea el pack nuevo, anuncia a todos.
-6. Salida: TP `338, 398, 6` → templo `168, 48, 7`.
+1. Al entrar, en rojo: las reglas y en qué momento del ciclo está ("Ahora: Oleada 3 de 6: Orcos…").
+2. Cada segundo, abajo de la pantalla:
+   - `Reloj de Arena | Descanso | la oleada 1 (Escarabajos) empieza en 12 s`
+   - `Reloj de Arena | Oleada 3 de 6: Orcos | quedan 42 s | despues: Acero`
+3. Al empezar cada oleada, en rojo: `Reloj de Arena: oleada 3 de 6: Orcos.`
+4. **Braseros del norte:** 6, tres a cada lado de Chronos. Echan fuego uno por oleada ya empezada (en la
+   oleada 4, los 4 primeros, de izquierda a derecha). En el descanso están apagados.
+5. Cartel en la sala (junto a la salida) y Chronos (`hi`, `reglas`, `oleada`) explican lo mismo.
 
-No hay fee, no hay instancias. El reloj es **global** (`os.time()`): si entrás a mitad de fase, ves el mismo countdown y los mismos mobs que el resto.
+Al empezar una oleada se van los monstruos que quedaron de la anterior, sin exp ni botín. Para empezar
+desde la 1, entrar en el descanso.
 
----
-
-## Layout
-
-| Z | Rol |
-|---|-----|
-| **z6** | Sala de juego (`406` path) |
-| **z5** | Fondo neutro (`405`) |
-| **z7** | Portal templo + pad `407` + cartel |
-
-| Coord | Uso |
-|-------|-----|
-| `330–346, 385–399, 6` | Sala (path) |
-| `338, 392, 6` | Landing |
-| `338, 398, 6` | TP retorno |
-| `338, 387, 6` | Chronos (`npc.xml`) |
-
-Tiles simples a propósito (mismo patrón que el Crisol): un rectángulo de path, sin laberintos ni fosos.
+No hay costo ni turnos.
 
 ---
 
-## Fases (ciclo 120 s)
+## Oleadas
 
-Orden fijo, loop infinito según reloj de pared:
+| # | Nombre | Monstruos |
+|---|--------|-----------|
+| 1 | Escarabajos | Scarab ×3, Ancient Scarab ×1 |
+| 2 | Cazadoras | Amazon ×2, Valkyrie ×2 |
+| 3 | Orcos | Orc Berserker ×2, Orc Shaman ×1, Orc Leader ×1 |
+| 4 | Acero | Hero ×1, Black Knight ×1, Gargoyle ×1 |
+| 5 | Necropolis | Vampire ×2, Necromancer ×1, Lich ×1 |
+| 6 | Abismo | Demon ×1, Fury ×1 |
 
-| # | Nombre | Pack |
-|---|--------|------|
-| 1 | Scarab Nest | Angry Scarab×3, Furious Ancient Scarab×1, Bone Beast×2 |
-| 2 | Huntress Rage | Angry Amazon×3, Furious Valkyrie×2, Angry Hunter×1 |
-| 3 | Orc Legion | Angry Orc Berserker×3, Angry Orc Shaman×2, Furious Orc Leader×1 |
-| 4 | Steel & Venom | Angry Hero×2, Angry Gargoyle×2, Furious Giant Spider×1, Angry Black Knight×1 |
-| 5 | Necropolis | Angry Vampire×2, Furious Necromancer×1, Angry Lich×1, Furious Warlock×1 |
-| 6 | Abyssal Peak | Angry Demon×1, **Fury**×1, **Wrath**×1 (customs raros) |
+**Monstruos normales, sin variantes rage** (Angry / Furious / Enraged): pedido de Gonzalo, nov 2026.
+Menos monstruos que antes porque la sala es más chica. Salieron Bone Beast, Hunter, Giant Spider, Warlock
+y **Wrath** (Wrath sigue al final del Gauntlet).
 
-Packs usan variantes rage (`Angry` / `Furious` / `Enraged`) y, en el climax, los customs **Fury** / **Wrath**. No se spawnean bosses de quest ni Crucible diarios (evita diluir El Crisol).
-
-Cambio de fase: cloud → rings → pop/energy por spawn; puff si falla el summon.
-
-Índice de fase:
+Estado del ciclo (en `chronos.lua`):
 
 ```lua
-math.mod(math.floor(os.time() / 120), 6) + 1
+t = os.time() % (REST_SEC + 6 * WAVE_SEC)   -- 30 + 6*60 = 390
+-- t < 30: descanso; si no, oleada floor((t - 30) / 60) + 1
 ```
 
 ---
+
+## Sala
+
+| Coord | Uso |
+|-------|-----|
+| `333–343, 388–396, 6` | Piso de arena (11×9), paredes de arenisca alrededor |
+| `338, 395, 6` | Llegada |
+| `338, 396, 6` | Portal de salida (entre dos estatuas de arenisca) |
+| `339, 396, 6` | Cartel con las reglas |
+| `338, 388, 6` | Chronos (`npc.xml`) |
+| `333–335` y `341–343, 388, 6` | Braseros de las oleadas 1–6 |
+| `335, 392` y `341, 392, 6` | Columnas de arenisca (cobertura) |
+| `325–351, 381–403`, z6 / z5 | Tierra alrededor (bloquea) y techo de madera: desde adentro no se ve negro |
 
 ## Implementación
 
@@ -93,9 +98,9 @@ Mensajes:
 | Clase | Uso |
 |-------|-----|
 | `MSG_SMALLINFO` (`23` / `0x17`) | Countdown cada think (como trainers) |
-| `MSG_RED_INFO` (`18` / `0x12`) | Entrada / cambio de fase |
+| `MSG_RED_INFO` (`18` / `0x12`) | Entrada (reglas + estado) y cambio de oleada |
 
-Diálogo Chronos: `hi` → `time` / `fase` / `reloj` / `help`.
+Diálogo Chronos: `hi` → `reglas` / `help` (las reglas) y `oleada` / `time` / `fase` / `reloj` (estado actual).
 
 ---
 
@@ -115,26 +120,37 @@ Diálogo Chronos: `hi` → `time` / `fase` / `reloj` / `help`.
 
 ## Regenerar / deploy
 
-Después de regenerar, correr `python3 scripts/map/temple-portals.py`. Validar teleport attrs antes de deploy:
-
 ```bash
-python3 scripts/map/generate-sand-clock.py --dry-run
-python3 scripts/map/generate-sand-clock.py --replace
+python3 scripts/map/generate-sand-clock.py --dry-run     # valida (llegada, salida, Chronos y spawns alcanzables)
+python3 scripts/map/generate-sand-clock.py               # escribe mapa, cartel y manifiesto
+python3 scripts/map/temple-portals.py                    # portal y cartel de la plaza
+python3 scripts/map/check-map-load.py
 python3 scripts/map/validate-tele-dest.py server/YurOTS/ots/data/world/test.otbm
+python3 scripts/npc/run_npc_tests.py chronos             # ciclo completo de oleadas
 ```
+
+Las coordenadas de la sala, los braseros y los spawns están en el generador y en `chronos.lua`: si se
+mueve algo, cambiarlo en los dos.
 
 - Solo Lua/NPC XML: restart OT.
 - Si tocaste `npc.cpp` / `npc.h`: **rebuild C++** (`make clean && make` si cambió el header de forma que afecte ABI; al menos `make -j2 yurots`) + restart + `python3 scripts/ot-probe.py 127.0.0.1 7171`.
-- Deploy mapa: checklist depots ([`DEPOTS.md`](DEPOTS.md)); preguntar antes de VPS.
+- Deploy mapa: checklist depots ([`DEPOTS.md`](DEPOTS.md)); preguntar antes de deployar a la ThinkPad.
 
 ---
 
 ## Probar
 
-1. Entrar por `168, 47, 7`.
-2. Ver mensaje de fase + línea `Reloj: quedan …` cada segundo.
-3. Esperar cambio de fase (~hasta 120 s) o hablar con Chronos (`time`).
-4. Confirmar que al cambiar limpia mobs viejos y spawnea los nuevos.
-5. Salir por el TP sur → `168, 48, 7`.
+1. Entrar por `168, 47, 7`: llegan las reglas y el estado en rojo.
+2. Ver la línea `Reloj de Arena | …` abajo, cada segundo.
+3. En el descanso, la sala vacía y los braseros apagados; al empezar la oleada 1, 3 Scarab y 1 Ancient
+   Scarab, y el primer brasero con fuego.
+4. Al cambiar de oleada se van los monstruos viejos y llegan los nuevos; se enciende un brasero más.
+5. Después de la oleada 6, descanso.
+6. Salir por el portal sur → `168, 48, 7`.
+
+La prueba de NPC (`scripts/npc/run_npc_tests.py chronos`) recorre el ciclo entero con dos jugadores en la
+sala: mensajes, monstruos, braseros y limpieza.
+
+**Estado (2026-11-11):** cargado en el servidor de prueba de la ThinkPad ([`THINKPAD_TEST_SERVER.md`](../systems/THINKPAD_TEST_SERVER.md)); el servidor arranca y carga el mapa. Falta recorrerlo en el juego.
 
 Relacionado: [`WAVE_ARENA.md`](WAVE_ARENA.md), [`../CAMBIAR-MAPA.md`](../CAMBIAR-MAPA.md).

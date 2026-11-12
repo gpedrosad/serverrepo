@@ -1,6 +1,6 @@
 # devtools/ — clientes, RME y assets de desarrollo
 
-Herramientas locales de cliente/mapa. **No son runtime del server** en el VPS.
+Herramientas locales de cliente/mapa. **No son runtime del server**.
 
 En la raíz del repo quedan **symlinks** con los nombres históricos (`client-local`, `rme-client-760`, `zagan-test`, …) para que scripts y docs sigan funcionando sin cambios.
 

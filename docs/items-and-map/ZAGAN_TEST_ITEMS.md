@@ -34,7 +34,7 @@ Cada item hereda slot/atributos del prototipo OTB duplicado (arma, escudo, casco
 ## Sprites redibujados (nov 2026)
 
 Los sprites originales del pack se perdieron: `~/Downloads/Zagan+Square` no está en ninguna máquina,
-el `.dat` Zagan solo se repartía por el updater del VPS (dado de baja) y el cliente de
+el `.dat` Zagan solo se repartía por el updater del VPS (ya no existe) y el cliente de
 `gpedrosad/clienteretro` nunca los tuvo (su `Tibia.dat` es el base). Se redibujaron de cero **solo
 los 17 items con uso real** (lógica en C++, loot, El Crisol o premium):
 
@@ -109,9 +109,9 @@ Escudo kite que completa el set visual de la Aurora Blade.
 
 ---
 
-## Producción (VPS)
+## Producción (histórico)
 
-El OTB/XML Zagan ya está en producción desde el deploy `7312baf8`. La **lógica C++** (crimson helmet/wand, fury cape, medusa sword, sword of silence) y fixes asociados están **pendientes de commit/deploy**.
+El OTB/XML Zagan estuvo en producción (el VPS, que ya no existe) desde el deploy `7312baf8`. Hoy no hay producción; el servidor es el de la ThinkPad.
 
 ## Sword of Silence (`20139`) — local jul 2026
 
@@ -127,7 +127,7 @@ Renombrado desde `dawnbreak falchion`. Ataque **42** / defensa **30**.
 | OTB | `python3 scripts/patch-sword-of-silence-otb.py` |
 | Loot | Fury (`data/monster/fury.xml`): rare drop `chance="400"` (fury cape sigue en `750`) |
 
-**Solo local por ahora** — no deployar al VPS hasta autorización.
+**Solo local por ahora** — pendiente: probar en la ThinkPad (deploy solo con OK de Gonzalo).
 
 ## Windsting Axe (`20130`) — local jul 2026
 
@@ -140,7 +140,7 @@ Renombrado desde `windsting bow` (era DIST 2H). Ahora **axe** 1H: ataque **43** 
 | OTB | `python3 scripts/patch-windsting-axe-otb.py` |
 | Loot | Rare `chance="400"`: Enraged Dwarf Guard, Enraged Orc Berserker, Enraged Behemoth, Enraged Black Knight |
 
-**Solo local por ahora** — no deployar al VPS hasta autorización.
+**Solo local por ahora** — pendiente: probar en la ThinkPad (deploy solo con OK de Gonzalo).
 
 Plan completo, restricciones (no tocar DP ni casas) y checklist:
 

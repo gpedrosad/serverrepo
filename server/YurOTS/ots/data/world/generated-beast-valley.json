@@ -1,0 +1,116 @@
+{
+  "name": "generated-beast-valley",
+  "seed": 11,
+  "replaces": "hunt-maze",
+  "box": {
+    "x1": 262,
+    "y1": 232,
+    "x2": 361,
+    "y2": 378,
+    "z": [
+      7,
+      8,
+      9
+    ]
+  },
+  "oldMazeCleared": {
+    "x1": 280,
+    "y1": 243,
+    "x2": 349,
+    "y2": 400,
+    "z": 7
+  },
+  "landing": {
+    "x": 312,
+    "y": 360,
+    "z": 7
+  },
+  "portalsBack": [
+    {
+      "x": 312,
+      "y": 365,
+      "z": 7,
+      "to": [
+        158,
+        48,
+        7
+      ]
+    },
+    {
+      "x": 313,
+      "y": 365,
+      "z": 7,
+      "to": [
+        158,
+        48,
+        7
+      ]
+    },
+    {
+      "x": 319,
+      "y": 254,
+      "z": 7,
+      "to": [
+        158,
+        48,
+        7
+      ]
+    },
+    {
+      "x": 273,
+      "y": 244,
+      "z": 9,
+      "to": [
+        158,
+        48,
+        7
+      ]
+    }
+  ],
+  "stairs": {
+    "x": 312,
+    "y": 252,
+    "z": 7
+  },
+  "toAbyss": {
+    "x": 344,
+    "y": 360,
+    "z": 8
+  },
+  "spawns": {
+    "z7": 164,
+    "z8": 120,
+    "z9": 113,
+    "monsters": 766
+  },
+  "monsters": {
+    "Ancient Scarab": 20,
+    "Behemoth": 7,
+    "Beholder": 33,
+    "Black Knight": 27,
+    "Cyclops": 37,
+    "Demon": 7,
+    "Demon Skeleton": 59,
+    "Dragon": 38,
+    "Dragon Lord": 18,
+    "Dwarf Geomancer": 18,
+    "Dwarf Guard": 35,
+    "Dwarf Soldier": 18,
+    "Fury": 7,
+    "Ghoul": 17,
+    "Giant Spider": 27,
+    "Green Djinn": 18,
+    "Hero": 48,
+    "Hydra": 19,
+    "Lich": 19,
+    "Minotaur": 41,
+    "Minotaur Archer": 26,
+    "Minotaur Guard": 57,
+    "Minotaur Mage": 13,
+    "Necromancer": 53,
+    "Priestess": 27,
+    "Serpent Spawn": 7,
+    "Vampire": 53,
+    "Warlock": 17
+  }
+}

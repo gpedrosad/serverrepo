@@ -86,5 +86,5 @@ No hace falta tocar `getAttackedCreaturePos` al revertir solo este spell (`exori
 | Spell | Rol |
 |-------|-----|
 | `exori vis` | Energy Strike melee direccional |
-| `exori hur` | Whirlwind Throw físico target rango 5 |
+| `exori hur` | Whirlwind Throw: lanza el arma al target, rango 5, daño por skill y ataque |
 | HMM rune | Misma animación (`NM_ANI_FIRE` + energy hit) |

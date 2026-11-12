@@ -16,14 +16,29 @@ Generador: `scripts/map/generate-frozen-isle.py` (usa las piezas y validaciones 
 | Lago Congelado | paso de hielo en zigzag sobre el agua | desvío al **islote del Yeti**: cofre **frozen starlight** (uid `2361`) | Frost Troll, Yeti (1800 s) |
 | Monasterio de Escarcha | patio de piedra con columnas, altar, estatuas y braseros | — | Ice Monk |
 | Paso de montaña | sendero entre rocas | bajada `392 15 7` | Ice Monk |
-| Grutas de Escarcha (z8) | túneles de hielo en serpentina con salas | bajada a z9 `418 85 8` | Ice Spider |
+| Grutas de Escarcha (z8) | túneles de hielo en serpentina con salas | bajada a z9 `412 53 8` | Ice Spider |
 | Guarida (z9) | sala grande con pilares de roca y, al fondo, la cámara del tesoro | cofres **crimson wand** (uid `20123`) y **crimson helmet** (uid `20113`); portal al templo `130 53 6` | Frost Dragon, Ice Spider |
 
 Los cofres del crimson wand y el crimson helmet son los mismos que había al final del Alice Maze
 (mismo uniqueId): quien ya los sacó no puede repetirlos (`quest.lua` guarda el storage por uid).
 
 Carteles en `readables.xml`, bloque `FROZEN_ISLE_SIGNS`. Spawns en `test-spawn.xml`, bloque
-`FROZEN_ISLE_SPAWNS` (49 spawns, 79 monstruos).
+`FROZEN_ISLE_SPAWNS` (41 spawns, 63 monstruos).
+
+## Compactado (nov 2026)
+
+Los zigzags cruzaban la isla de lado a lado: 291 pasos por el sendero de z7 y 461 por la serpentina de las
+grutas. Ahora los tramos son más cortos y la serpentina tiene 5 bandas en vez de 9, en x 18–59 (antes 10–65):
+
+| | Antes | Ahora |
+|---|---:|---:|
+| Recorrido más largo z7 | 291 pasos | 161 |
+| Recorrido más largo z8 | 461 pasos | 165 |
+| Caminable z7 / z8 | 948 / 1.191 | 699 / 496 |
+| Monstruos | 79 | 63 (menos salas en las grutas: 26 Ice Spider en vez de 42) |
+
+El desvío del leñador sale de la primera curva hacia el oeste (cofre crystal coin en `373 95 7`); el del
+islote sigue en el paso de hielo. Los cofres conservan su uniqueId.
 
 ## Caja y vecinos
 
@@ -41,6 +56,8 @@ Carteles en `readables.xml`, bloque `FROZEN_ISLE_SIGNS`. Spawns en `test-spawn.x
 - Paredes de las cuevas con pieza única (túneles armados en bloques de 2x2).
 - El sendero llega del puerto a la bajada, de z8 a z9, a los 4 cofres y al portal.
 - Árboles y rocas grandes nunca tapan el sendero (se dibujan una casilla hacia arriba-izquierda).
+
+**Estado (2026-11-11):** cargado en el servidor de prueba de la ThinkPad ([`THINKPAD_TEST_SERVER.md`](../systems/THINKPAD_TEST_SERVER.md)); el servidor arranca y carga el mapa. Falta recorrerlo en el juego.
 
 ## Regenerar
 

@@ -94,7 +94,7 @@ reiniciar carga el XML y el spell nuevos.
 | Ataque de ventisca | `server/YurOTS/ots/data/spells/instant/icespider_blizzard.lua` |
 | Registro del spell | `server/YurOTS/ots/data/spells/spells.xml` |
 | RME | `devtools/rme/rme-extensions/yurots-creatures.xml` |
-| Sprite | `scripts/client-rme/add_recolor_look.py` (preset `ice-spider`) |
+| Sprite | `scripts/client-rme/presets/ice_spider.py` (preset `ice-spider`; se aplica con `add_recolor_look.py`) |
 | Assets RME | `devtools/rme/rme-client-760/Tibia.{dat,spr}` (looktype 235) |
 | Preview | `docs/gameplay/img/ice-spider.png` |
 

@@ -1,388 +1,747 @@
 >> near 1001
 >> near 1002
 >> say 1001 hello there
+CALL getPlayerVocation(1001)
 >> say 1001 hi
-SAY Hi Player1001! I sail to Elfland (20gp), Epstein Island (20gp), Hell Quest (20gp), Dragon Land (50gp), Frozen Isle (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
+CALL getPlayerVocation(1001)
+SAY Hi Player1001! I sail to Elfland (20gp), Hell Quest (20gp), Dragon Land (50gp), Frozen Isle (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
 >> say 1002 hi
+CALL getPlayerVocation(1002)
 SAY One moment, Player1002!
 >> say 1001 help
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 help
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 help
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 help
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 help
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 help 100
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 help 100
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 help all
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 help all
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 ayuda
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 ayuda
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 ayuda
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 ayuda
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 ayuda 100
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 ayuda 100
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 ayuda all
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 ayuda all
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 offer
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 offer
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 offer
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 offer
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 offer 100
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 offer 100
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 offer all
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 offer all
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 trade
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 trade
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 trade
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 trade
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 trade 100
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 trade 100
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 trade all
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 trade all
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 list
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 list
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 list
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 list
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 list 100
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 list 100
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 list all
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 list all
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 info
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 info
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 info
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 info
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 info 100
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 info 100
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 info all
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 info all
-SAY Elfland: 20gp. Epstein Island: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
+CALL getPlayerVocation(1001)
+CALL getPlayerVocation(1001)
+SAY Elfland: 20gp. Hell Quest: 20gp. Dragon Land: 50gp. Frozen Isle: 20gp. Gauntlet: 20gp. The City: 20gp. Just say where you want to go!
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 job
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 job
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 job
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 job
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 job 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 job 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 job all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 job all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 name
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 name
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 name
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 name
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 name 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 name 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 name all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 name all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 yes
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 yes
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 yes 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 yes 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 yes all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 yes all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 no
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 no
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 no 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 no 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 no all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 no all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 si
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 si
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 si
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 si
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 si 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 si 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 si all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 si all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 sell
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 sell
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 sell
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 sell
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 sell 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 sell 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 sell all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 sell all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 buy
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 buy
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 buy
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 buy
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 buy 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 buy 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 buy all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 buy all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 all 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 all 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 all all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 all all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 status
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 status
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 status
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 status
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 status 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 status 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 status all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 status all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 deposit 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 deposit 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 deposit 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 deposit 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 deposit 100 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 deposit 100 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 deposit 100 all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 deposit 100 all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 withdraw 50
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 withdraw 50
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 withdraw 50
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 withdraw 50
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 withdraw 50 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 withdraw 50 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 withdraw 50 all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 withdraw 50 all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 balance
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 balance
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 balance
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 balance
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 balance 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 balance 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 balance all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 balance all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 transfer 10 to player1002
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 transfer 10 to player1002
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 transfer 10 to player1002
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 transfer 10 to player1002
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 transfer 10 to player1002 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 transfer 10 to player1002 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 transfer 10 to player1002 all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 transfer 10 to player1002 all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 elfland
+CALL getPlayerVocation(1001)
 CALL isPzLocked(1001)
 CALL getPlayerVocation(1001)
 SAY A trip to Elfland costs 20gp. Ready to go? (yes or si)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 CALL isPzLocked(1001)
 CALL getPlayerVocation(1001)
 CALL pay(1001, 20)
@@ -390,418 +749,699 @@ CALL cancelPendingTrade(1001)
 SAY All aboard! Enjoy the trip!
 CALL travelPlayerTo(1001, 111, 60, 6)
 >> say 1001 elfland
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 elfland
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 elfland
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 elfland 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 elfland 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 elfland all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 elfland all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 elf land
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 elf land
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 elf land
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 elf land
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 elf land 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 elf land 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 elf land all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 elf land all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 epstein island
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 epstein island
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 epstein island
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 epstein island
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 epstein island 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 epstein island 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 epstein island all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 epstein island all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 epstein
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 epstein
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 epstein
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 epstein
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 epstein 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 epstein 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 epstein all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 epstein all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 hell quest
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 hell quest
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 hell quest
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 hell quest
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 hell quest 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 hell quest 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 hell quest all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 hell quest all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 hell
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 hell
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 hell
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 hell
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 hell 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 hell 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 hell all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 hell all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 dragon land
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 dragon land
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 dragon land
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 dragon land
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 dragon land 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 dragon land 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 dragon land all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 dragon land all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 frozen isle
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 frozen isle
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 frozen isle
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 frozen isle
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 frozen isle 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 frozen isle 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 frozen isle all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 frozen isle all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 frozen
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 frozen
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 frozen
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 frozen
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 frozen 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 frozen 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 frozen all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 frozen all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 isla helada
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 isla helada
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 isla helada
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 isla helada
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 isla helada 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 isla helada 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 isla helada all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 isla helada all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 hielo
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 hielo
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 hielo
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 hielo
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 hielo 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 hielo 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 hielo all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 hielo all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 gauntlet
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 gauntlet
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 gauntlet
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 gauntlet
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 gauntlet 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 gauntlet 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 gauntlet all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 gauntlet all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 city
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 city
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 city
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 city
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 city 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 city 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 city all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 city all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 the city
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 the city
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 the city
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 the city
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 the city 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 the city 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 the city all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 the city all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 gp
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 gp
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 5 gp
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 5 gp
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 gp 100
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 gp 100
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> say 1001 gp all
+CALL getPlayerVocation(1001)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 >> say 1001 gp all
+CALL getPlayerVocation(1001)
 >> say 1001 no
+CALL getPlayerVocation(1001)
 >> think
 >> say 1001 bye
+CALL getPlayerVocation(1001)
 >> say 1001 hi
-SAY Hi Player1001! I sail to Elfland (20gp), Epstein Island (20gp), Hell Quest (20gp), Dragon Land (50gp), Frozen Isle (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
+CALL getPlayerVocation(1001)
+SAY Hi Player1001! I sail to Elfland (20gp), Hell Quest (20gp), Dragon Land (50gp), Frozen Isle (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
 >> advance 40
 >> think
 CALL cancelPendingTrade(1001)
 SAY Next please...
 >> say 1001 hi
-SAY Hi Player1001! I sail to Elfland (20gp), Epstein Island (20gp), Hell Quest (20gp), Dragon Land (50gp), Frozen Isle (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
+CALL getPlayerVocation(1001)
+SAY Hi Player1001! I sail to Elfland (20gp), Hell Quest (20gp), Dragon Land (50gp), Frozen Isle (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
 >> far 1001
 >> think
 CALL cancelPendingTrade(1001)
 SAY See you later!
 >> near 1001
 >> say 1001 hola
-SAY Hi Player1001! I sail to Elfland (20gp), Epstein Island (20gp), Hell Quest (20gp), Dragon Land (50gp), Frozen Isle (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
+CALL getPlayerVocation(1001)
+SAY Hi Player1001! I sail to Elfland (20gp), Hell Quest (20gp), Dragon Land (50gp), Frozen Isle (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
 >> disappear 1001
 CALL cancelPendingTrade(1001)
 SAY See you later!
 >> say 1002 hi
-SAY Hi Player1002! I sail to Elfland (20gp), Epstein Island (20gp), Hell Quest (20gp), Dragon Land (50gp), Frozen Isle (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
+CALL getPlayerVocation(1002)
+SAY Hi Player1002! I sail to Elfland (20gp), Hell Quest (20gp), Dragon Land (50gp), Frozen Isle (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
 >> set 1002 money 0
 >> set 1002 slots 0
 >> set 1002 level 1
 >> say 1002 elfland
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 SAY A trip to Elfland costs 20gp. Ready to go? (yes or si)
 >> say 1002 yes
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 CALL pay(1002, 20)
 SAY Sorry, you need 20 gold for that trip.
 >> say 1002 elf land
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 SAY A trip to Elfland costs 20gp. Ready to go? (yes or si)
 >> say 1002 yes
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 CALL pay(1002, 20)
 SAY Sorry, you need 20 gold for that trip.
 >> say 1002 epstein island
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
 CALL getPlayerVocation(1002)
 SAY Only those without a vocation may sail to Epstein Island.
 >> say 1002 yes
+CALL getPlayerVocation(1002)
 >> say 1002 epstein
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
+CALL getPlayerVocation(1002)
 CALL getPlayerVocation(1002)
 SAY Only those without a vocation may sail to Epstein Island.
 >> say 1002 yes
+CALL getPlayerVocation(1002)
 >> say 1002 hell quest
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 SAY A trip to Hell Quest costs 20gp. Ready to go? (yes or si)
 >> say 1002 yes
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 CALL pay(1002, 20)
 SAY Sorry, you need 20 gold for that trip.
 >> say 1002 hell
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 SAY A trip to Hell Quest costs 20gp. Ready to go? (yes or si)
 >> say 1002 yes
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 CALL pay(1002, 20)
 SAY Sorry, you need 20 gold for that trip.
 >> say 1002 dragon land
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 SAY A trip to Dragon Land costs 50gp. Ready to go? (yes or si)
 >> say 1002 yes
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 CALL pay(1002, 50)
 SAY Sorry, you need 50 gold for that trip.
 >> say 1002 frozen isle
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 SAY A trip to Frozen Isle costs 20gp. Ready to go? (yes or si)
 >> say 1002 yes
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 CALL pay(1002, 20)
 SAY Sorry, you need 20 gold for that trip.
 >> say 1002 frozen
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 SAY A trip to Frozen Isle costs 20gp. Ready to go? (yes or si)
 >> say 1002 yes
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 CALL pay(1002, 20)
 SAY Sorry, you need 20 gold for that trip.
 >> say 1002 isla helada
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 SAY A trip to Frozen Isle costs 20gp. Ready to go? (yes or si)
 >> say 1002 yes
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 CALL pay(1002, 20)
 SAY Sorry, you need 20 gold for that trip.
 >> say 1002 hielo
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 SAY A trip to Frozen Isle costs 20gp. Ready to go? (yes or si)
 >> say 1002 yes
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 CALL pay(1002, 20)
 SAY Sorry, you need 20 gold for that trip.
 >> say 1002 gauntlet
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 SAY A trip to Gauntlet costs 20gp. Ready to go? (yes or si)
 >> say 1002 yes
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 CALL pay(1002, 20)
 SAY Sorry, you need 20 gold for that trip.
 >> say 1002 city
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 SAY A trip to The City costs 20gp. Ready to go? (yes or si)
 >> say 1002 yes
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 CALL pay(1002, 20)
 SAY Sorry, you need 20 gold for that trip.
 >> say 1002 the city
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 SAY A trip to The City costs 20gp. Ready to go? (yes or si)
 >> say 1002 yes
+CALL getPlayerVocation(1002)
 CALL isPzLocked(1002)
 CALL getPlayerVocation(1002)
 CALL pay(1002, 20)
 SAY Sorry, you need 20 gold for that trip.
 >> say 1002 gp
+CALL getPlayerVocation(1002)
 >> say 1002 yes
+CALL getPlayerVocation(1002)
 >> say 1002 chau
+CALL getPlayerVocation(1002)
 CALL cancelPendingTrade(1002)
 SAY Bye, Player1002! Come back anytime.
 >> think 3
 >> set 1001 voc 0
 >> say 1001 hi
-SAY Hi Player1001! I sail to Elfland (20gp), Epstein Island (20gp), Hell Quest (20gp), Dragon Land (50gp), Frozen Isle (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
+CALL getPlayerVocation(1001)
+SAY Hi Player1001! I sail to Epstein Island (20gp). Where do you want to go?
 >> say 1001 city
+CALL getPlayerVocation(1001)
 CALL isPzLocked(1001)
+CALL getPlayerVocation(1001)
 CALL getPlayerVocation(1001)
 SAY You cannot leave Epstein Island yet. Talk to the Oracle first.
 >> say 1001 epstein
+CALL getPlayerVocation(1001)
 CALL isPzLocked(1001)
 CALL getPlayerVocation(1001)
 SAY A trip to Epstein Island costs 20gp. Ready to go? (yes or si)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 CALL isPzLocked(1001)
 CALL getPlayerVocation(1001)
 CALL pay(1001, 20)
@@ -809,22 +1449,29 @@ CALL cancelPendingTrade(1001)
 SAY All aboard! Enjoy the trip!
 CALL travelPlayerTo(1001, 85, 209, 7)
 >> say 1001 bye
+CALL getPlayerVocation(1001)
 >> set 1001 voc 1
 >> say 1001 hi
-SAY Hi Player1001! I sail to Elfland (20gp), Epstein Island (20gp), Hell Quest (20gp), Dragon Land (50gp), Frozen Isle (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
+CALL getPlayerVocation(1001)
+SAY Hi Player1001! I sail to Elfland (20gp), Hell Quest (20gp), Dragon Land (50gp), Frozen Isle (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
 >> say 1001 epstein
+CALL getPlayerVocation(1001)
 CALL isPzLocked(1001)
+CALL getPlayerVocation(1001)
 CALL getPlayerVocation(1001)
 SAY Only those without a vocation may sail to Epstein Island.
 >> say 1001 hell
+CALL getPlayerVocation(1001)
 CALL isPzLocked(1001)
 CALL getPlayerVocation(1001)
 SAY A trip to Hell Quest costs 20gp. Ready to go? (yes or si)
 >> say 1001 frozen isle
+CALL getPlayerVocation(1001)
 CALL isPzLocked(1001)
 CALL getPlayerVocation(1001)
 SAY A trip to Frozen Isle costs 20gp. Ready to go? (yes or si)
 >> say 1001 yes
+CALL getPlayerVocation(1001)
 CALL isPzLocked(1001)
 CALL getPlayerVocation(1001)
 CALL pay(1001, 20)
@@ -832,12 +1479,47 @@ CALL cancelPendingTrade(1001)
 SAY All aboard! Enjoy the trip!
 CALL travelPlayerTo(1001, 395, 104, 7)
 >> say 1001 hi
-SAY Hi Player1001! I sail to Elfland (20gp), Epstein Island (20gp), Hell Quest (20gp), Dragon Land (50gp), Frozen Isle (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
+CALL getPlayerVocation(1001)
+SAY Hi Player1001! I sail to Elfland (20gp), Hell Quest (20gp), Dragon Land (50gp), Frozen Isle (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
 >> set 1001 pz 1
 >> say 1001 gauntlet
+CALL getPlayerVocation(1001)
 CALL isPzLocked(1001)
 SAY You are in a fight! Calm down before you board.
 >> set 1001 pz 0
 >> pos 1001 452 43 7
 >> say 1001 gauntlet
+CALL getPlayerVocation(1001)
 SAY You are already in Gauntlet.
+>> disappear 1001
+CALL cancelPendingTrade(1001)
+SAY See you later!
+>> set 1002 voc 0
+>> set 1002 name GMRetro
+>> pos 1002 101 100 7
+>> say 1002 hi
+CALL getPlayerVocation(1002)
+SAY Hi GMRetro! I sail to Elfland (20gp), Epstein Island (20gp), Hell Quest (20gp), Dragon Land (50gp), Frozen Isle (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
+>> say 1002 hell
+CALL getPlayerVocation(1002)
+CALL isPzLocked(1002)
+SAY A trip to Hell Quest costs 20gp. Ready to go? (yes or si)
+>> say 1002 yes
+CALL getPlayerVocation(1002)
+CALL isPzLocked(1002)
+CALL cancelPendingTrade(1002)
+SAY All aboard! Enjoy the trip!
+CALL travelPlayerTo(1002, 345, 211, 7)
+>> say 1002 hi
+CALL getPlayerVocation(1002)
+SAY Hi GMRetro! I sail to Elfland (20gp), Epstein Island (20gp), Hell Quest (20gp), Dragon Land (50gp), Frozen Isle (20gp), Gauntlet (20gp), The City (20gp). Where do you want to go?
+>> say 1002 epstein
+CALL getPlayerVocation(1002)
+CALL isPzLocked(1002)
+SAY A trip to Epstein Island costs 20gp. Ready to go? (yes or si)
+>> say 1002 yes
+CALL getPlayerVocation(1002)
+CALL isPzLocked(1002)
+CALL cancelPendingTrade(1002)
+SAY All aboard! Enjoy the trip!
+CALL travelPlayerTo(1002, 85, 209, 7)

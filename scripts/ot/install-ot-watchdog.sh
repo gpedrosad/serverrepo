@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Instala cron del watchdog OT en el VPS (ejecutar en el servidor).
+# Instala cron del watchdog OT (ejecutar en el servidor).
 set -euo pipefail
 
 _BOOT="$(cd "$(dirname "$0")" && pwd)"

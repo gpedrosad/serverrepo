@@ -58,10 +58,8 @@ Solo datos; no hace falta rebuild del binario:
 # Local
 docker compose -f docker-compose.prod.yml restart yurots
 
-# VPS (tras sync del repo)
-DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh
-# o, si solo cambió config.lua / OTINFO:
-docker compose -f docker-compose.prod.yml restart yurots
+# ThinkPad (con OK de Gonzalo): ver docs/systems/THINKPAD_TEST_SERVER.md
+# (respaldo, git merge --ff-only origin/main, docker restart -t 45 yurots)
 ```
 
 Verificar:
@@ -70,7 +68,7 @@ Verificar:
 python3 scripts/ot-probe.py 127.0.0.1 7171
 ```
 
-La web (`retro76.cl`) lee rates desde `OTINFO` vía `web/server.py` — se actualiza al recargar, sin rebuild web.
+La web lee rates desde `OTINFO` vía `web/server.py` — se actualiza al recargar, sin rebuild web.
 
 ## Archivos
 

@@ -68,4 +68,4 @@ Hoy no está en ningún spawn. Encaja en una zona de nieve o en el Crisol.
 | Registro | `server/YurOTS/ots/data/monster/monsters.xml` |
 | Ataques | `data/spells/instant/frostdragon_icewave.lua`, `frostdragon_blizzard.lua`, `data/spells/runes/frostdragon_iceball.lua` + `spells.xml` |
 | RME | `rme-extensions/yurots-creatures.xml` y `devtools/rme/rme-client-760/Tibia.{dat,spr}` |
-| Sprite | `scripts/client-rme/add_recolor_look.py` (preset `frost-dragon`) |
+| Sprite | `scripts/client-rme/presets/frost_dragon.py` (preset `frost-dragon`; se aplica con `add_recolor_look.py`) |

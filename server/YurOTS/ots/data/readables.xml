@@ -9,33 +9,41 @@
 	<readable x="90" y="79" z="0" text="PUERTA DE ORO\nTrono de Fuego\nBoss diario + arma rara."/>
 	<readable x="77" y="87" z="0" text="EL CRISOL\nPalanca: bosses de hoy y arenas ocupadas.\nSalida al templo: TP sur."/>
 	<!-- END CRUCIBLE_SIGNS -->
-			<!-- BEGIN SAND_CLOCK_SIGNS -->
-	<!-- END SAND_CLOCK_SIGNS -->
 	<!-- BEGIN TEMPLE_PORTAL_SIGNS -->
 	<readable x="156" y="46" z="7" text="ISLA NATURAL\nCyclops arriba.\nCueva abajo (agujero)."/>
-	<readable x="158" y="46" z="7" text="HUNT MAZE\nLaberinto mid-hard\nDesde Minotauros"/>
+	<readable x="158" y="46" z="7" text="VALLE DE LAS BESTIAS\nCaza mid-hard en 3 pisos\nDe Minotauros a Demonios"/>
 	<readable x="164" y="46" z="7" text="CRISOL\n3 puertas. Boss diario.\nBronce / Plata / Oro"/>
 	<readable x="166" y="46" z="7" text="WAVE ARENA\nOleadas. Palanca = next.\nRanking semanal"/>
-	<readable x="168" y="46" z="7" text="RELOJ DE ARENA\nSala compartida.\nFases cada 120 s"/>
+	<readable x="168" y="46" z="7" text="RELOJ DE ARENA\n6 oleadas que suben de nivel\nEntra en el descanso"/>
 	<!-- END TEMPLE_PORTAL_SIGNS -->
-	<!-- BEGIN NORTH_PASS_SIGNS -->
-	<readable x="187" y="13" z="7" text="PASO DEL NORTE\nBosque, Tundra Helada y Cuevas del Dragon.\nCuevas: nivel 60+."/>
-	<readable x="414" y="352" z="7" text="TUNDRA HELADA\nLobos de invierno, osos polares y trolls.\nDicen que un yeti ronda el lago."/>
-	<readable x="422" y="258" z="7" text="CUEVAS DEL DRAGON\nSolo para cazadores experimentados."/>
-	<readable x="422" y="451" z="7" text="PASO DEL NORTE\nNorte: Tundra Helada y Cuevas del Dragon.\nPortal al sur: Retro76."/>
-	<readable x="433" y="409" z="7" text="Campamento de cazadores.\nDescansa junto al fuego."/>
-	<!-- END NORTH_PASS_SIGNS -->
-	<!-- BEGIN FROZEN_ISLE_SIGNS -->
-	<readable x="367" y="96" z="7" text="Aqui vivia un lenador.\nDejo algo para quien encontrara su escondite."/>
-	<readable x="395" y="15" z="7" text="GRUTAS DE ESCARCHA\nAranas de hielo y, en lo mas hondo, el dragon.\nNivel 80+."/>
-	<readable x="398" y="100" z="7" text="ISLA DEL HIELO ETERNO\nEl sendero sube al norte: Bosque Nevado, Lago Congelado,\nMonasterio de Escarcha y las Grutas."/>
-	<readable x="399" y="73" z="7" text="LAGO CONGELADO\nCruza por el paso de hielo. Al oeste, un islote:\ndicen que ahi vive un yeti."/>
-	<readable x="403" y="42" z="7" text="MONASTERIO DE ESCARCHA\nLos monjes de hielo no perdonan a los intrusos."/>
-	<!-- END FROZEN_ISLE_SIGNS -->
 	<!-- BEGIN HELL_QUEST_SIGNS -->
 	<readable x="316" y="158" z="7" text="FORTALEZA DEL CULTO\nLos brujos de fuego ya no rezan a nadie."/>
 	<readable x="349" y="207" z="7" text="ISLA DEL INFIERNO\nAl norte, el Cruce. Oeste: Campos de Ceniza.\nEste: Rios de Lava. Arriba: la Fortaleza y el Crater."/>
 	<readable x="350" y="181" z="7" text="EL CRUCE\nOeste: Campos de Ceniza. Este: Rios de Lava.\nNorte: Fortaleza del Culto y el Crater."/>
 	<readable x="362" y="150" z="7" text="LAS FAUCES DEL INFIERNO\nPuerta: nivel 80. Abajo cazan los perros del infierno.\nEn el Abismo, la puerta del Senor de la Ceniza pide nivel 100."/>
 	<!-- END HELL_QUEST_SIGNS -->
+	<!-- BEGIN SAND_CLOCK_SIGNS -->
+	<readable x="339" y="396" z="6" text="RELOJ DE ARENA\nDescanso de 30 s y despues 6 oleadas de 60 s,\ncada una mas fuerte. Los braseros marcan la oleada.\nEntra en el descanso para empezar desde la 1.\nSalida: portal al sur."/>
+	<!-- END SAND_CLOCK_SIGNS -->
+	<!-- BEGIN FROZEN_ISLE_SIGNS -->
+	<readable x="376" y="94" z="7" text="Aqui vivia un lenador.\nDejo algo para quien encontrara su escondite."/>
+	<readable x="395" y="15" z="7" text="GRUTAS DE ESCARCHA\nAranas de hielo y, en lo mas hondo, el dragon.\nNivel 80+."/>
+	<readable x="398" y="100" z="7" text="ISLA DEL HIELO ETERNO\nEl sendero sube al norte: Bosque Nevado, Lago Congelado,\nMonasterio de Escarcha y las Grutas."/>
+	<readable x="399" y="73" z="7" text="LAGO CONGELADO\nCruza por el paso de hielo. Al oeste, un islote:\ndicen que ahi vive un yeti."/>
+	<readable x="403" y="42" z="7" text="MONASTERIO DE ESCARCHA\nLos monjes de hielo no perdonan a los intrusos."/>
+	<!-- END FROZEN_ISLE_SIGNS -->
+	<!-- BEGIN NORTH_PASS_SIGNS -->
+	<readable x="187" y="13" z="7" text="PASO DEL NORTE\nBosque, Tundra Helada y Cuevas del Dragon.\nCuevas: nivel 60+."/>
+	<readable x="411" y="332" z="7" text="TUNDRA HELADA\nLobos de invierno, osos polares y trolls.\nDicen que un yeti ronda el lago."/>
+	<readable x="422" y="258" z="7" text="CUEVAS DEL DRAGON\nSolo para cazadores experimentados."/>
+	<readable x="422" y="391" z="7" text="PASO DEL NORTE\nNorte: Tundra Helada y Cuevas del Dragon.\nPortal al sur: Retro76."/>
+	<readable x="424" y="360" z="7" text="Campamento de cazadores.\nDescansa junto al fuego."/>
+	<!-- END NORTH_PASS_SIGNS -->
+	<!-- BEGIN BEAST_VALLEY_SIGNS -->
+	<readable x="311" y="322" z="7" text="COLINAS DE LOS CICLOPES\nCiclopes y enanos de la cantera."/>
+	<readable x="315" y="357" z="7" text="VALLE DE LAS BESTIAS\nEl camino sube al norte: Campamento Minotauro,\nColinas de los Ciclopes y las Ruinas.\nPortal al sur: templo."/>
+	<readable x="316" y="253" z="7" text="CATACUMBAS\nAbajo: aranas, vampiros y nigromantes.\nMas abajo, el Abismo."/>
+	<readable x="321" y="285" z="7" text="RUINAS ANTIGUAS\nNo todos los muertos descansan."/>
+	<readable x="322" y="254" z="7" text="Portal al templo."/>
+	<!-- END BEAST_VALLEY_SIGNS -->
 </readables>

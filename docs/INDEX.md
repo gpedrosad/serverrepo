@@ -12,7 +12,7 @@ Antes de tocar cualquier cosa, leer en este orden:
 | 1 | [`../LEERCODEX.md`](../LEERCODEX.md) | Siempre primero. Punto de entrada rápido para IAs, diagnóstico de cuelgues OT. |
 | 2 | [`PROYECTO.md`](PROYECTO.md) | Para entender la arquitectura general, deploy, data sagrada, decisiones de diseño. |
 | 3 | [`../AGENTS.md`](../AGENTS.md) | Si sos un agente AI: instrucciones operativas, restricciones, convenciones. |
-| 4 | [`../scripts/deploy/README-DEPLOY-VPS.md`](../scripts/deploy/README-DEPLOY-VPS.md) | Antes de cualquier deploy a producción. |
+| 4 | [`systems/THINKPAD_TEST_SERVER.md`](systems/THINKPAD_TEST_SERVER.md) | Antes de cualquier deploy. No hay producción por ahora; el único servidor es el de la ThinkPad. |
 | 5 | [`INDEX.md`](INDEX.md) | Este archivo. Mapa completo de la documentación. |
 
 ---
@@ -31,9 +31,8 @@ Docs operativos planos. Setup, deploy, cliente, smoke tests, migración.
 | [`PVP_SYSTEM.md`](PVP_SYSTEM.md) | Reglas, balance y configuración del sistema PvP. |
 | [`TRADE_SYSTEM.md`](TRADE_SYSTEM.md) | Sistema de trade entre jugadores. |
 | [`CHARACTER_SESSION_REPLACEMENT.md`](CHARACTER_SESSION_REPLACEMENT.md) | Reemplazo de sesión de personaje, recovery de cuentas. |
-| [`SMOKE_TESTS.md`](SMOKE_TESTS.md) | Tests de humo locales y en VPS antes de cada release. |
+| [`SMOKE_TESTS.md`](SMOKE_TESTS.md) | Tests de humo locales antes de cada release. |
 | [`MIGRATION_PLAYBOOK.md`](MIGRATION_PLAYBOOK.md) | Playbook para migraciones grandes (esquema DB, data, deploys críticos). |
-| [`../scripts/deploy/README-DEPLOY-VPS.md`](../scripts/deploy/README-DEPLOY-VPS.md) | Deploy seguro en VPS de producción (checklist, rollback). Ver también [`../scripts/README.md`](../scripts/README.md). |
 | [`_archive/DEPLOY-PENDIENTE-VPS-JUL2026.md`](_archive/DEPLOY-PENDIENTE-VPS-JUL2026.md) | *(archivado)* Snapshot jul 2026: qué faltaba deployar al VPS. |
 | [`_archive/PUSH-MAIN-JUL2026-SPELLS-NPC-NO-VPS.md`](_archive/PUSH-MAIN-JUL2026-SPELLS-NPC-NO-VPS.md) | *(archivado)* Push a main jul 2026 sin VPS (spells/NPC). |
 
@@ -45,6 +44,7 @@ Todo lo relacionado con estabilidad del OT server, cuelgues, sockets, crashes.
 
 | Doc | Cubre / cuándo leerlo |
 |-----|-----------------------|
+| [`systems/THINKPAD_TEST_SERVER.md`](systems/THINKPAD_TEST_SERVER.md) | **Servidor de prueba en la ThinkPad** (el único servidor por ahora; no hay producción): acceso, cuenta GM, cómo deployar cambios de datos sin pisar el trabajo sin commitear de otras sesiones, historial de deploys. |
 | [`systems/PREVENT_OT_HANGS.md`](systems/PREVENT_OT_HANGS.md) | Si el server se cuelga o se observa lentitud: checklist preventivo. |
 | [`systems/CRASH_DIAGNOSTICS.md`](systems/CRASH_DIAGNOSTICS.md) | Si el OT crashea: cómo recolectar diagnóstico y encontrar la causa. |
 | [`systems/SOCKET_DEBUG_LOGGING.md`](systems/SOCKET_DEBUG_LOGGING.md) | Si hay kicks masivos, desconexiones o problemas de socket. |
@@ -68,6 +68,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/MONSTER_CREATION.md`](gameplay/MONSTER_CREATION.md) | Flujo completo para crear monstruos nuevos: XML, alta en `monsters.xml`, RME y spawns. |
 | [`gameplay/CUSTOM_MONSTER_WORKFLOW.md`](gameplay/CUSTOM_MONSTER_WORKFLOW.md) | Monstruo custom paso a paso: diseño, hechizos propios, sprite nuevo (looktype), arte web con nano banana, pruebas y deploy. Caso Black Dragon. |
 | [`gameplay/SPRITE_RECOLOR_GUIDE.md`](gameplay/SPRITE_RECOLOR_GUIDE.md) | **Receta para crear o editar el sprite de una criatura:** comandos en orden (`sprite_tool.py`), plantilla de preset, trucos, umbrales de cada base y errores conocidos. |
+| [`gameplay/SPRITE_BASES.md`](gameplay/SPRITE_BASES.md) | Catálogo generado de las criaturas que sirven de base para un sprite: forma, quién la usa, colores y si ya está estudiada (`sprite_tool.py bases --write`). |
 | [`gameplay/BLACK_DRAGON.md`](gameplay/BLACK_DRAGON.md) | Black Dragon: stats, aliento oscuro y sprite propio (looktype 230, requiere actualizar el cliente). |
 | [`gameplay/FROST_DRAGON.md`](gameplay/FROST_DRAGON.md) | Frost Dragon: dragón de hielo sin fuego (aliento helado, bola de nieve, ventisca), look 231 recoloreado del Dragon. |
 | [`gameplay/ICE_MONK.md`](gameplay/ICE_MONK.md) | Ice Monk: monje-mago de hielo a distancia, look 232 (Monk recoloreado), hechizos y sprite. |
@@ -101,7 +102,10 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/ANCHOR_RUNE.md`](gameplay/ANCHOR_RUNE.md) | Anchor Rune (2296): root de 1s (no paralyze) para war/combos. |
 | [`gameplay/SPELL_CAST_VISIBILITY.md`](gameplay/SPELL_CAST_VISIBILITY.md) | Visibilidad del cast de hechizos (efectos visuales). |
 | [`gameplay/SPELL_EXORI_GRAN.md`](gameplay/SPELL_EXORI_GRAN.md) | Hechizo exori gran: balance, área, daño. |
-| [`gameplay/SPELL_EXORI_HUR.md`](gameplay/SPELL_EXORI_HUR.md) | **exori hur** target a distancia (battle list, rango 5) + binding `getAttackedCreaturePos`; incluye script viejo y pasos de revert (jul 2026). |
+| [`gameplay/SPELL_EXORI_HUR.md`](gameplay/SPELL_EXORI_HUR.md) | **exori hur** (Whirlwind Throw, knight): lanza el arma de melee al blanco (rango 5); daño por nivel, skill y ataque del arma (fórmula TFS); proyectil según arma. Bindings `getPlayerWeapon` / `getPlayerSkill`. |
+| [`gameplay/SPELL_EXORI_CON.md`](gameplay/SPELL_EXORI_CON.md) | **exori con** (Ethereal Spear, paladin): lanza etérea al blanco (rango 7×5); daño por nivel y skill de distancia (fórmula TFS); proyectil de la Enchanted Spear. |
+| [`gameplay/SPELLS_NOV2026.md`](gameplay/SPELLS_NOV2026.md) | **8 hechizos de versiones nuevas adaptados a 7.6:** Brutal Strike, Front Sweep, Wound Cleansing (knight); Divine Missile, Divine Healing, Sharpshooter (paladin); Ice Strike, Eternal Winter (druid). Fórmulas, adaptaciones y `exeta res`. |
+| [`gameplay/SPELL_ECO.md`](gameplay/SPELL_ECO.md) | **Eco** (`utevo vis`, sorcerer): el próximo golpe a un blanco se repite 1 s después al 50 % (25 % vs jugadores), sin maná ni espera; espera propia 25 s. Cómo se limitó, cómo ajustarlo y el C++. |
 | [`gameplay/SPELL_EXORI_VIS_HUR.md`](gameplay/SPELL_EXORI_VIS_HUR.md) | **exori vis hur**: Energy Strike a distancia (Sorc/Druid), visual HMM, rango 5; revert solo Lua+XML. |
 | [`gameplay/SPELL_EXETA_RES.md`](gameplay/SPELL_EXETA_RES.md) | **exeta res** (Challenge): taunt Knight 3×3, lock 6 s sin retarget/flee; binding `doChallenge` + rebuild C++. |
 | [`gameplay/TRAINING_BONUS_PARCHMENT.md`](gameplay/TRAINING_BONUS_PARCHMENT.md) | Sistema de pergaminos de bonus de training. |
@@ -124,10 +128,10 @@ Importación de items, mapeo por código, items de prueba, sesiones de editor.
 | [`items-and-map/MAPA_DE_MONSTRUOS.md`](items-and-map/MAPA_DE_MONSTRUOS.md) | Mapa interactivo de todos los pisos con cada spawn, NPC y zona (`build-monster-map.py`). |
 | [`items-and-map/MAPEAR_LABERINTO.md`](items-and-map/MAPEAR_LABERINTO.md) | Laberinto procedural 2 sqm: camino 406, fondo 100 (pared), teleport al templo (`generate-maze.py`). |
 | [`items-and-map/MAPEAR_ISLA_HELADA.md`](items-and-map/MAPEAR_ISLA_HELADA.md) | **Isla del Hielo Eterno** (barco `frozen isle`, reemplaza al Alice Maze): sendero por etapas, grutas z8, guarida z9 con los cofres del crimson wand/helmet (`generate-frozen-isle.py`). |
-| [`items-and-map/MAPEAR_HUNT_MAZE.md`](items-and-map/MAPEAR_HUNT_MAZE.md) | Hunt maze **aparte** de Alice: portal plaza del templo `158,47,7`, retorno al llegar (`generate-hunt-maze.py`). |
+| [`items-and-map/MAPEAR_VALLE_DE_LAS_BESTIAS.md`](items-and-map/MAPEAR_VALLE_DE_LAS_BESTIAS.md) | **Valle de las Bestias** (portal plaza del templo `158,47,7`, reemplazó al hunt maze): valle natural z7 (Minotauros, Cíclopes, Ruinas) + Catacumbas z8 + Abismo z9 hasta Demonios (`generate-beast-valley.py`). |
 | [`gameplay/WAVE_ARENA.md`](gameplay/WAVE_ARENA.md) | Wave Arena: oleadas + ranking semanal, portal plaza del templo `166,47,7`. |
 | [`gameplay/CRUCIBLE.md`](gameplay/CRUCIBLE.md) | El Crisol v2: hub PZ + 3 arenas temáticas (Foso de Arena, Coliseo, Trono de Fuego), entrada en grupo por plataforma, arenas independientes, bosses diarios; portal plaza del templo `164,47,7`. Patrones de paredes y alfombra. |
-| [`gameplay/SAND_CLOCK.md`](gameplay/SAND_CLOCK.md) | **Reloj de Arena:** sala compartida, fases globales 120 s, Chronos + countdown tipo trainers; portal plaza del templo `168,47,7`. |
+| [`gameplay/SAND_CLOCK.md`](gameplay/SAND_CLOCK.md) | **Reloj de Arena:** sala chica (11×9) compartida: descanso de 30 s y 6 oleadas de 60 s que suben de nivel, braseros que marcan la oleada, Chronos; portal plaza del templo `168,47,7`. |
 | [`items-and-map/MAPEAR_TP_GAUNTLET.md`](items-and-map/MAPEAR_TP_GAUNTLET.md) | Gauntlet: 40 salas 3×3 + sala final 3×3 (Wrath + demon armor, 1 TP); barco `gauntlet`. |
 | [`items-and-map/ISLAND_BANDS.md`](items-and-map/ISLAND_BANDS.md) | Cómo componer las bandas agua→shore→dirt→grass para que una isla no se vea con corte duro. Especificación de las 5 bandas y 7 reglas críticas. |
 | [`items-and-map/ZAGAN_TEST_ITEMS.md`](items-and-map/ZAGAN_TEST_ITEMS.md) | Items de prueba del entorno Zagan (dev/test). |
@@ -184,7 +188,7 @@ Catálogo de **migración/portabilidad** (16 fichas congeladas). No es el invent
 | Quiero crear o retocar el sprite de una criatura | [`gameplay/SPRITE_RECOLOR_GUIDE.md`](gameplay/SPRITE_RECOLOR_GUIDE.md) |
 | Voy a tocar gemas o imbuements | [`gameplay/GEMS.md`](gameplay/GEMS.md) → [`features/10-gems-and-imbuements.md`](features/10-gems-and-imbuements.md) |
 | Skill ring + emerald armor + crimson no suman | [`gameplay/GEMS.md`](gameplay/GEMS.md) (Big Emerald / stacking) + `Player::getSkill` en `player.cpp` |
-| Voy a hacer deploy a producción | [`../scripts/deploy/README-DEPLOY-VPS.md`](../scripts/deploy/README-DEPLOY-VPS.md) |
+| Voy a hacer deploy | [`systems/THINKPAD_TEST_SERVER.md`](systems/THINKPAD_TEST_SERVER.md) (solo con OK de Gonzalo) |
 | Necesito migrar DB o data crítica | [`MIGRATION_PLAYBOOK.md`](MIGRATION_PLAYBOOK.md) |
 | Voy a cambiar el mapa del server | [`CAMBIAR-MAPA.md`](CAMBIAR-MAPA.md) → [`gameplay/DEPOTS.md`](gameplay/DEPOTS.md) |
 | Jugadores reportan depot vacío | [`gameplay/DEPOTS.md`](gameplay/DEPOTS.md) |

@@ -5,7 +5,7 @@ Guía de cómo se generó el laberinto de Retro76: caminos de **2 sqm** con suel
 Relacionado:
 
 - [MAPEAR_CON_CODIGO.md](MAPEAR_CON_CODIGO.md) — mismo enfoque OTBM (islas procedurales)
-- [MAPEAR_HUNT_MAZE.md](MAPEAR_HUNT_MAZE.md) — laberinto de caza **aparte** (portal templo viejo); no modifica Alice
+- [MAPEAR_VALLE_DE_LAS_BESTIAS.md](MAPEAR_VALLE_DE_LAS_BESTIAS.md) — el Valle de las Bestias reemplazó al hunt maze (nov 2026)
 - [CAMBIAR-MAPA.md](../CAMBIAR-MAPA.md) — flujo RME → servidor → deploy
 - [RME_SETUP.md](../RME_SETUP.md) — abrir Remere's Map Editor
 - [gameplay/RESPAWN_SYSTEM.md](../gameplay/RESPAWN_SYSTEM.md) — cómo cargan los spawns

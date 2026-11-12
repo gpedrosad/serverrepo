@@ -1,8 +1,8 @@
 # LEERCODEX — Guía para agentes IA (Codex, Cursor, etc.)
 
-> **Leer este archivo primero** si entrás al repo para diagnosticar caídas, cuelgues o problemas del OT en producción.
+> **Leer este archivo primero** si entrás al repo para diagnosticar caídas, cuelgues o problemas del OT.
 >
-> Última actualización: jul 2026. Incidente activo: **cuelgues recurrentes** en retro76.cl (investigación con `YUROTS_SOCKET_DEBUG=1`).
+> Última actualización: nov 2026. Por ahora **no hay servidor de producción**: el único servidor es el de prueba en la ThinkPad. Los cuelgues de jul 2026 se investigaron con `YUROTS_SOCKET_DEBUG=1`.
 
 ---
 
@@ -13,23 +13,23 @@
 | Juego | **Retro76** — OTServ Tibia 7.6 (motor YurOTS) |
 | Repo | `https://github.com/gpedrosad/serverrepo.git` — rama `main` |
 | Local (dev) | `~/Desktop/yurots-principal/` — Docker, `127.0.0.1:7171` |
-| Producción | VPS `64.176.20.238` — dominio **retro76.cl** — puerto **7171** |
-| Data de jugadores | **Solo en el VPS** — nunca en GitHub |
+| Servidor | No hay producción por ahora. ThinkPad: `ssh thinkpad`, `~/apps/serverrepo`, contenedor `yurots`, `192.168.1.17:7171` — [docs/systems/THINKPAD_TEST_SERVER.md](docs/systems/THINKPAD_TEST_SERVER.md) |
+| Data de jugadores | En la ThinkPad (`data/players`, `data/accounts`) — nunca en GitHub |
 
-**Regla de oro:** la data runtime (`accounts/`, `players/` reales, `houseitems.xml`) es sagrada. Ver [scripts/README-DEPLOY-VPS.md](scripts/README-DEPLOY-VPS.md) antes de cualquier `git` en el VPS.
+**Regla de oro:** la data runtime (`accounts/`, `players/` reales, `houseitems.xml`) es sagrada. Ver [docs/systems/THINKPAD_TEST_SERVER.md](docs/systems/THINKPAD_TEST_SERVER.md) antes de cualquier `git` en la ThinkPad.
 
 ---
 
 ## 2. Cómo acceder
 
-### SSH al VPS (producción)
+### SSH a la ThinkPad (servidor de prueba)
 
 ```bash
-ssh root@64.176.20.238
-cd ~/yurots-principal
+ssh thinkpad
+cd ~/apps/serverrepo
 ```
 
-Requiere clave SSH configurada en el entorno del agente. Sin SSH solo podés leer código local y documentación.
+Sin SSH solo podés leer código local y documentación. Ojo: ahí hay cambios sin commitear de otras sesiones.
 
 ### Docker local (Mac)
 
@@ -71,14 +71,14 @@ Para el índice completo y actualizado de toda la documentación, ver **[docs/IN
 | **Server se cayó / cuelgue** | [docs/systems/PREVENT_OT_HANGS.md](docs/systems/PREVENT_OT_HANGS.md) |
 | **Crash real / SIGSEGV** | [docs/systems/CRASH_DIAGNOSTICS.md](docs/systems/CRASH_DIAGNOSTICS.md) |
 | **Sos un agente IA** | [AGENTS.md](AGENTS.md) (raíz) |
-| **Deploy al VPS** | [scripts/README-DEPLOY-VPS.md](scripts/README-DEPLOY-VPS.md) (lectura **OBLIGATORIA**) |
+| **Deploy a la ThinkPad** | [docs/systems/THINKPAD_TEST_SERVER.md](docs/systems/THINKPAD_TEST_SERVER.md) (lectura **OBLIGATORIA**) |
 | **Arquitectura / data sagrada** | [docs/PROYECTO.md](docs/PROYECTO.md) |
 
 ---
 
 ## 5. Scripts de diagnóstico (usar en este orden)
 
-Todos viven en `scripts/`. En el VPS: `cd ~/yurots-principal` primero.
+Todos viven en `scripts/`. En la ThinkPad: `cd ~/apps/serverrepo` primero.
 
 ### 5.1 Probe — ¿responde el juego?
 
@@ -110,11 +110,11 @@ Usado por deploy y watchdog tras restart.
 ### 5.4 Watchdog (auto-recuperación)
 
 - Script: `scripts/ot-watchdog.sh`
-- Cron cada **2 min** en VPS
+- Cron cada **2 min** donde esté instalado (`crontab -l | grep ot-watchdog`)
 - **2 fallos seguidos** del probe → `docker compose restart -t 45 yurots`
 - Logs:
   - `/var/log/retro76/watchdog.log` (si corrió `install-ot-observability.sh`)
-  - `/var/log/ot-watchdog.log` (cron legado en algunos VPS)
+  - `/var/log/ot-watchdog.log` (cron legado)
 
 ```bash
 tail -30 /var/log/retro76/watchdog.log
@@ -122,7 +122,7 @@ tail -30 /var/log/ot-watchdog.log
 crontab -l | grep ot-watchdog
 ```
 
-### 5.5 Instalar / refrescar observabilidad (VPS, una vez)
+### 5.5 Instalar / refrescar observabilidad (una vez por servidor)
 
 ```bash
 ./scripts/install-ot-observability.sh
@@ -132,16 +132,16 @@ crontab -l | grep ot-watchdog
 
 ## 6. Dónde están los logs
 
-| Log | Ruta (VPS) | Contenido |
+| Log | Ruta (relativa al repo) | Contenido |
 |-----|------------|-----------|
-| **OT persistente** | `~/yurots-principal/server/YurOTS/ots/yurots.log` | Todo stdout/stderr con timestamp UTC |
+| **OT persistente** | `server/YurOTS/ots/yurots.log` | Todo stdout/stderr con timestamp UTC |
 | Docker | `docker logs yurots` | Mismo stream, puede rotar |
 | Diagnóstico periódico | `/var/log/retro76/diagnostics.log` | Snapshots cada 5 min |
 | Watchdog | `/var/log/retro76/watchdog.log` o `/var/log/ot-watchdog.log` | Reinicios automáticos |
 | Web | `/var/log/retro76/web.log` | Registro/rankings |
 | Crash handler | `server/YurOTS/ots/data/crash-*.log` | Stack trace si SIGSEGV etc. |
 | Snapshot players | `server/YurOTS/ots/data/snapshot-*.txt` | Quién estaba online al crash |
-| Core dumps | `~/yurots-principal/cores/` | Binarios core para gdb |
+| Core dumps | `cores/` | Binarios core para gdb |
 
 ### Greps útiles (cuelgue / sockets)
 
@@ -166,7 +166,7 @@ ss -tan state close-wait | grep 7171
 
 ---
 
-## 7. Estado actual de producción (jul 2026)
+## 7. Estado de producción en jul 2026 (histórico)
 
 | Config | Valor |
 |--------|--------|
@@ -183,11 +183,11 @@ ss -tan state close-wait | grep 7171
 
 ## 8. Playbook: el servidor “se cayó” (cuelgue)
 
-Ejecutar **en el VPS**, **antes** de reiniciar si querés evidencia para root cause:
+Ejecutar **en el servidor** (hoy la ThinkPad), **antes** de reiniciar si querés evidencia para root cause:
 
 ```bash
-ssh root@64.176.20.238
-cd ~/yurots-principal
+ssh thinkpad
+cd ~/apps/serverrepo
 
 # 1. Confirmar cuelgue
 python3 scripts/ot-probe.py 127.0.0.1 7171
@@ -201,7 +201,7 @@ docker logs yurots --tail 50
 tail -20 /var/log/ot-watchdog.log 2>/dev/null || tail -20 /var/log/retro76/watchdog.log
 
 # 4. Recuperar
-docker compose -f docker-compose.prod.yml restart -t 45 yurots
+docker restart -t 45 yurots
 
 # 5. Verificar
 sleep 8
@@ -226,7 +226,7 @@ El watchdog debería reiniciar solo en ~4 min (2 fallos × cron 2 min). Si el us
 ## 9. Playbook: crash real (SIGSEGV, container reinició)
 
 ```bash
-cd ~/yurots-principal
+cd ~/apps/serverrepo   # en la ThinkPad
 
 docker inspect yurots --format 'restarts={{.RestartCount}} started={{.State.StartedAt}}'
 docker logs yurots 2>&1 | grep -E 'Segmentation|SIGSEGV|Could not load' | tail -20
@@ -243,22 +243,13 @@ Ver [docs/systems/CRASH_DIAGNOSTICS.md](docs/systems/CRASH_DIAGNOSTICS.md).
 
 ---
 
-## 10. Playbook: deploy / cambios en VPS
+## 10. Playbook: deploy / cambios en la ThinkPad
 
-**Nunca** en el VPS: `git stash -u`, `git clean`, `git pull` sin backup.
+Solo con el OK de Gonzalo. **Nunca** en la ThinkPad: `git stash -u`, `git clean`, `git reset --hard`, `git pull` a mano.
 
-```bash
-cd ~/yurots-principal
-DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh
-```
-
-Desde Mac (sin entrar al VPS):
-
-```bash
-ssh root@64.176.20.238 'cd ~/yurots-principal && git fetch origin main && DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh'
-```
-
-Backups automáticos: `~/ot-backups/pre-deploy-FECHA/`
+Seguir [docs/systems/THINKPAD_TEST_SERVER.md](docs/systems/THINKPAD_TEST_SERVER.md): revisar que `main` no
+pise archivos de otras sesiones, respaldar datos de jugadores en `~/backups/pre-deploy-FECHA/`,
+`git merge --ff-only origin/main`, `docker restart -t 45 yurots`, revisar el log y correr `ot-probe.py`.
 
 Cambio de mapa: [docs/CAMBIAR-MAPA.md](docs/CAMBIAR-MAPA.md)
 
@@ -282,14 +273,14 @@ Cambio de mapa: [docs/CAMBIAR-MAPA.md](docs/CAMBIAR-MAPA.md)
 
 ```
 server/YurOTS/ots/
-├── config.lua              # ip VPS: 64.176.20.238 (no commitear IP local)
+├── config.lua              # ip: 127.0.0.1 en git; la ThinkPad usa 192.168.1.17 (no commitear IP local)
 ├── data/
 │   ├── world/test.otbm     # Mapa (en git)
 │   ├── world/npc.xml       # Posiciones NPC (en git)
 │   ├── houses.xml          # Casas (en git)
-│   ├── accounts/*.xml      # SOLO VPS — sagrado
-│   ├── players/*.xml       # SOLO VPS — sagrado (excepto 0–4.xml plantillas)
-│   └── houseitems.xml      # SOLO VPS
+│   ├── accounts/*.xml      # runtime (no en git) — sagrado
+│   ├── players/*.xml       # runtime (no en git) — sagrado (excepto 0–4.xml plantillas)
+│   └── houseitems.xml      # runtime (no en git)
 └── yurots.log              # Log persistente OT
 ```
 
@@ -298,36 +289,37 @@ server/YurOTS/ots/
 ## 13. Comandos de una línea (cheat sheet)
 
 ```bash
+# Desde la raíz del repo (en la ThinkPad: ~/apps/serverrepo)
 # ¿Vivo?
-python3 ~/yurots-principal/scripts/ot-probe.py 127.0.0.1 7171
+python3 scripts/ot-probe.py 127.0.0.1 7171
 
 # Diagnóstico todo-en-uno
-~/yurots-principal/scripts/ot-diagnostics.sh
+./scripts/ot-diagnostics.sh
 
-# Reiniciar OT (prod)
-docker compose -f ~/yurots-principal/docker-compose.prod.yml restart -t 45 yurots
+# Reiniciar OT
+docker restart -t 45 yurots
 
 # Seguir logs en vivo
-tail -f ~/yurots-principal/server/YurOTS/ots/yurots.log
+tail -f server/YurOTS/ots/yurots.log
 
-# Cuentas/personajes en VPS
-ls -1 ~/yurots-principal/server/YurOTS/ots/data/accounts/*.xml | wc -l
-ls -1 ~/yurots-principal/server/YurOTS/ots/data/players/*.xml | wc -l
+# Cuentas/personajes
+ls -1 server/YurOTS/ots/data/accounts/*.xml | wc -l
+ls -1 server/YurOTS/ots/data/players/*.xml | wc -l
 
 # Validar mapa
-python3 ~/yurots-principal/scripts/sync-houses-with-map.py --dry-run
+python3 scripts/sync-houses-with-map.py --dry-run
 ```
 
 ---
 
 ## 14. Qué NO hacer (agentes IA)
 
-1. **No** `git stash -u` / `git clean` en el VPS.
-2. **No** copiar `players/` desde Mac al VPS.
+1. **No** `git stash -u` / `git clean` / `git reset --hard` en la ThinkPad.
+2. **No** copiar `players/` desde la Mac a la ThinkPad.
 3. **No** commitear `accounts/` ni players reales.
 4. **No** asumir que `docker ps = healthy` implica que el juego responde — siempre `ot-probe`.
 5. **No** desactivar el watchdog sin avisar.
-6. **No** hacer deploy a VPS si el usuario solo pidió debug local (preguntar).
+6. **No** hacer deploy a la ThinkPad si el usuario solo pidió debug local (preguntar; deploy solo con OK de Gonzalo).
 
 ---
 
@@ -364,13 +356,7 @@ python3 ~/yurots-principal/scripts/sync-houses-with-map.py --dry-run
 
 ### Rollback del fix send bloqueante
 
-```bash
-cd ~/yurots-principal
-git fetch --tags
-DEPLOY_I_READ_README=yes ./scripts/rollback-ot-send-blocking-fix.sh
-```
-
-Ver [docs/systems/OT_HANG_ROOT_CAUSE_SEND_BLOCKING.md](docs/systems/OT_HANG_ROOT_CAUSE_SEND_BLOCKING.md).
+El tag `pre-ot-send-blocking-fix` marca el estado anterior al fix. Ver [docs/systems/OT_HANG_ROOT_CAUSE_SEND_BLOCKING.md](docs/systems/OT_HANG_ROOT_CAUSE_SEND_BLOCKING.md).
 
 ---
 

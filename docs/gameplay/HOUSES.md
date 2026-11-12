@@ -8,7 +8,7 @@ Relacionado:
 - `server/YurOTS/ots/data/houses.xml` — tiles de cada casa (generado desde mapa)
 - `server/YurOTS/ots/data/houses/*.xml` — **dueños y permisos por casa**
 - `server/YurOTS/ots/data/houseitems.xml` — items dentro de casas
-- `scripts/deploy-vps.sh`, `scripts/backup-runtime-data.sh`
+- `docs/systems/THINKPAD_TEST_SERVER.md` (deploy), `scripts/backup-runtime-data.sh`
 - `docs/CAMBIAR-MAPA.md`
 
 ## Dos capas distintas (no mezclar)
@@ -16,8 +16,8 @@ Relacionado:
 | Archivo / carpeta | Qué es | ¿En git? | ¿Quién lo cambia? |
 |-------------------|--------|----------|-------------------|
 | `data/houses.xml` | Tiles de cada casa en el mapa | Sí | `sync-houses-from-rme.py` al exportar mapa |
-| `data/houses/<nombre>.xml` | Dueño, subowners, guests, doorowners, frontdoor | Sí (plantillas vacías) + **runtime en VPS** | Jugadores al comprar casa; GM con `/owner` |
-| `data/houseitems.xml` | Items colocados en casas | No (runtime VPS) | Motor al guardar |
+| `data/houses/<nombre>.xml` | Dueño, subowners, guests, doorowners, frontdoor | Sí (plantillas vacías) + **runtime en el servidor** | Jugadores al comprar casa; GM con `/owner` |
+| `data/houseitems.xml` | Items colocados en casas | No (runtime del servidor) | Motor al guardar |
 
 Ejemplo de dueño en runtime:
 
@@ -35,46 +35,44 @@ Plantilla sin dueño (normal en repo Mac):
 <owner name=""/>
 ```
 
-En **producción**, los archivos de `data/houses/` con dueño real **solo deben vivir en el VPS**.
+En el **servidor** (hoy la ThinkPad; no hay producción), los archivos de `data/houses/` con dueño real **solo viven ahí**.
 El repo puede tener plantillas vacías o copias viejas; **no son la fuente de verdad de quién es dueño**.
 
 ## Incidente jul 2026 — dueños borrados en deploy
 
 **Qué pasó (10 jul 2026):**
 
-1. Varios jugadores tenían dueños en `data/houses/*.xml` **solo en el VPS** (cambios nunca commiteados).
+1. Varios jugadores tenían dueños en `data/houses/*.xml` **solo en el VPS** de entonces (cambios nunca commiteados).
 2. El deploy hacía `git pull` pero **no** respaldaba ni restauraba `data/houses/`.
 3. Se ejecutó `git checkout -- data/houses/` antes del deploy → los XML volvieron a las plantillas del repo (`owner name=""`).
 4. Casas como Great Street quedaron sin dueño; otras (ej. Sand Mansion) seguían en git con dueño y no se perdieron.
 
-**Lección:** tratar `data/houses/` como data sagrada en VPS, igual que `houseitems.xml`.
+**Lección:** tratar `data/houses/` como data sagrada en el servidor, igual que `houseitems.xml`.
 
-## Qué hace el deploy hoy (desde fix jul 2026)
+## Qué protege el deploy hoy (ThinkPad)
 
-`scripts/deploy-vps.sh`:
+El deploy de la ThinkPad ([`../systems/THINKPAD_TEST_SERVER.md`](../systems/THINKPAD_TEST_SERVER.md)):
 
-1. Cuenta casas con dueño **antes** del pull.
-2. **Backup** de `data/houses/` → `~/ot-backups/pre-deploy-FECHA/houses/`
-3. `git pull`
-4. **Restaura** `data/houses/` desde el backup (`cp -a`, sobrescribe lo que git haya pisado)
-5. Si baja el número de casas con dueño → **aborta** el deploy
+1. Compara los archivos que trae `main` con los cambiados en la ThinkPad (incluye `data/houses/*.xml` con dueño). Si se cruzan, se para y se pregunta.
+2. **Backup** de `houses`, `houseitems.xml`, `players`, `accounts`, `private_trainers.xml`, etc. → `~/backups/pre-deploy-FECHA/`
+3. `git merge --ff-only origin/main`
 
-También respalda/restaura: `players/`, `accounts/`, `houseitems.xml`, `private_trainers.xml`, etc.
+El script de deploy del VPS de entonces (desde el fix de jul 2026) respaldaba `data/houses/` antes del `git pull`, lo restauraba después y abortaba si bajaba el número de casas con dueño.
 
-`scripts/backup-runtime-data.sh` incluye `data/houses/` en backups locales y VPS.
+`scripts/backup-runtime-data.sh` incluye `data/houses/` en sus backups.
 
-## Comandos prohibidos en el VPS
+## Comandos prohibidos en el servidor (ThinkPad)
 
 | Comando | Riesgo |
 |---------|--------|
 | `git checkout -- data/houses/` | Borra dueños locales no commiteados |
 | `git reset --hard` sin backup de `data/houses/` | Igual |
-| Copiar `data/houses/` desde Mac al VPS | Pisa dueños reales con plantillas vacías |
+| Copiar `data/houses/` desde la Mac a la ThinkPad | Pisa dueños reales con plantillas vacías |
 
-## Cómo verificar dueños en el VPS
+## Cómo verificar dueños en la ThinkPad
 
 ```bash
-cd ~/yurots-principal
+cd ~/apps/serverrepo
 # Casas con dueño asignado
 grep -h 'owner name=' server/YurOTS/ots/data/houses/*.xml | grep -v 'owner name=""'
 
@@ -89,19 +87,19 @@ In-game: mirar la puerta de la casa → debe decir quién es el dueño.
 1. Buscar backup reciente:
 
 ```bash
-ls -lt ~/ot-backups/
-grep house_owners ~/ot-backups/pre-deploy-*/BACKUP_INFO.txt 2>/dev/null
+ls -lt ~/backups/ ~/ot-backups/ 2>/dev/null
+grep house_owners ~/ot-backups/*/BACKUP_INFO.txt 2>/dev/null   # backups de backup-runtime-data.sh
 ```
 
 2. Restaurar solo casas:
 
 ```bash
-BACKUP=~/ot-backups/pre-deploy-FECHA   # el que tenga house_owners > 0
+BACKUP=~/backups/pre-deploy-FECHA   # el que tenga los dueños
 cp -a "$BACKUP/houses/." server/YurOTS/ots/data/houses/
-docker compose -f docker-compose.prod.yml restart yurots
+docker restart -t 45 yurots
 ```
 
-3. Si no hay backup con dueños, revisar `git stash list` en el VPS (último recurso) o reasignar con GM `/owner`.
+3. Si no hay backup con dueños, revisar `git stash list` en la ThinkPad (último recurso) o reasignar con GM `/owner`.
 
 ## Cambio de mapa vs dueños
 
@@ -115,17 +113,17 @@ Ver checklist de mapa en `docs/CAMBIAR-MAPA.md` y depots en `docs/gameplay/DEPOT
 
 Síntoma típico: en un SQM se ve un item “fantasma” encima de otro (ej. algo flotando sobre una fire sword), pero al mirar el save no hay un tercer id.
 
-### Diagnóstico rápido (VPS, solo lectura)
+### Diagnóstico rápido (ThinkPad, solo lectura)
 
 ```bash
-ssh retro76
-DATA=~/yurots-principal/server/YurOTS/ots/data
+ssh thinkpad
+cd ~/apps/serverrepo
 # Reemplazar X Y Z
 python3 - <<'PY'
 from pathlib import Path
 import re
 x, y, z = 166, 39, 7
-t = Path("/root/yurots-principal/server/YurOTS/ots/data/houseitems.xml").read_text(encoding="utf-8", errors="replace")
+t = Path("server/YurOTS/ots/data/houseitems.xml").read_text(encoding="utf-8", errors="replace")
 m = re.search(rf'<tile x="{x}" y="{y}" z="{z}">(.*?)</tile>', t, re.S)
 print(m.group(0) if m else "tile no está en houseitems.xml")
 PY
@@ -149,21 +147,21 @@ No había tercer item en disco. El “fantasma” era el **tower shield debajo**
 
 Preferible cuando el server está online y no querés downtime.
 
-### Arreglo por XML en VPS (cuando haga falta)
+### Arreglo por XML en la ThinkPad (cuando haga falta)
 
 `houseitems.xml` se carga al **boot**. Si editás el XML con el OT corriendo y reiniciás, el **stop suele guardar** la memoria otra vez y **pisa** tu edición. Orden obligatorio:
 
 ```bash
-ssh retro76
-cd ~/yurots-principal
+ssh thinkpad
+cd ~/apps/serverrepo
 DATA=server/YurOTS/ots/data
-BACKUP=~/ot-backups/house-ghost-$(date -u +%Y%m%d-%H%M%S)
+BACKUP=~/backups/house-ghost-$(date -u +%Y%m%d-%H%M%S)
 mkdir -p "$BACKUP"
 cp -a "$DATA/houseitems.xml" "$BACKUP/"
 echo "Backup: $BACKUP"
 
 # 1) Parar OT (puede reescribir houseitems al bajar — por eso el backup previo)
-docker compose -f docker-compose.prod.yml stop yurots
+docker stop -t 45 yurots
 
 # 2) Editar DESPUÉS del stop (en el archivo ya guardado por el shutdown)
 python3 - <<'PY'
@@ -180,7 +178,7 @@ print("OK: quitado 2528 en 166,39,7; queda solo fire sword 2392")
 PY
 
 # 3) Subir y verificar protocolo
-docker compose -f docker-compose.prod.yml start yurots
+docker start yurots
 # esperar unos segundos
 python3 scripts/ot-probe.py 127.0.0.1 7171
 ```
@@ -190,15 +188,14 @@ Verificación in-game: en `166, 39, 7` solo debe verse la fire sword (sin fantas
 ### Rollback
 
 ```bash
-BACKUP=~/ot-backups/house-ghost-FECHA   # el del paso anterior
-docker compose -f docker-compose.prod.yml stop yurots
-cp -a "$BACKUP/houseitems.xml" ~/yurots-principal/server/YurOTS/ots/data/houseitems.xml
-docker compose -f docker-compose.prod.yml start yurots
+BACKUP=~/backups/house-ghost-FECHA   # el del paso anterior
+docker stop -t 45 yurots
+cp -a "$BACKUP/houseitems.xml" ~/apps/serverrepo/server/YurOTS/ots/data/houseitems.xml
+docker start yurots
 python3 scripts/ot-probe.py 127.0.0.1 7171
 ```
 
-Nota: el 2026-07-18 quedó un backup parcial en VPS  
-`/root/ot-backups/house-ghost-166-39-7-20260718-025101/` (copia de `houseitems.xml` **antes** de aplicar el fix; el fix XML **no** se llegó a aplicar).
+Nota: el 2026-07-18 este fix XML **no** se llegó a aplicar en el VPS de entonces (solo quedó el backup previo).
 
 ### Para agentes
 
@@ -210,8 +207,8 @@ Nota: el 2026-07-18 quedó un backup parcial en VPS
 
 ## Para agentes IA
 
-- **Nunca** `git checkout` ni `git reset` sobre `data/houses/` en el VPS.
-- Deploy **solo** con `DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh`.
-- Si un jugador reporta “perdí mi casa”, verificar primero `data/houses/<nombre>.xml` en el VPS antes de tocar `players/*.xml`.
-- Los dueños que el admin asigna manualmente en prod **no deben perderse** en el próximo deploy: el script los restaura del backup pre-pull.
+- **Nunca** `git checkout` ni `git reset` sobre `data/houses/` en la ThinkPad.
+- Deploy **solo** con el OK de Gonzalo, siguiendo `docs/systems/THINKPAD_TEST_SERVER.md`.
+- Si un jugador reporta “perdí mi casa”, verificar primero `data/houses/<nombre>.xml` en la ThinkPad antes de tocar `players/*.xml`.
+- Los dueños que el admin asigna a mano **no deben perderse** en el próximo deploy: si `main` trae ese mismo archivo, parar y preguntar; el backup pre-deploy los guarda.
 - Items fantasma / stack raro en casa: sección **Items fantasma en casa** arriba (no asumir pérdida de data).

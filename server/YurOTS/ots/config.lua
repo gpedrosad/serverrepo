@@ -28,7 +28,7 @@ ownername = "Yurez"
 owneremail = ""
 
 -- the url for more server info
-url = "https://retro76.cl"
+url = ""   -- sin web pública por ahora (el VPS de retro76.cl ya no existe)
 
 -- the location of the server
 location = "Chile"

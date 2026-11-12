@@ -2,8 +2,9 @@
 # Backup de data runtime (cuentas, personajes, casas, online).
 # Uso:
 #   ./scripts/backup-runtime-data.sh              # solo local (Mac)
-#   ./scripts/backup-runtime-data.sh --vps        # VPS + copia espejo en Mac
-#   ./scripts/backup-runtime-data.sh --vps-only   # solo en el VPS (sin rsync)
+#   ./scripts/backup-runtime-data.sh --server       # servidor de la ThinkPad + copia espejo en la Mac
+#   ./scripts/backup-runtime-data.sh --server-only  # solo en la ThinkPad (sin rsync)
+# El servidor es el de prueba de la ThinkPad (docs/systems/THINKPAD_TEST_SERVER.md); no hay VPS.
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -22,17 +23,17 @@ DATA="$ROOT/server/YurOTS/ots/data"
 LABEL="${BACKUP_LABEL:-pre-change}"
 STAMP="$(date +%Y%m%d-%H%M%S)"
 LOCAL_BACKUP_ROOT="${BACKUP_ROOT:-$HOME/ot-backups}"
-VPS="${VPS:-root@64.176.20.238}"
-VPS_DATA="${VPS_DATA:-/root/yurots-principal/server/YurOTS/ots/data}"
-DO_VPS=0
-VPS_ONLY=0
+SERVER_HOST="${SERVER_HOST:-thinkpad}"
+SERVER_DATA="${SERVER_DATA:-apps/serverrepo/server/YurOTS/ots/data}"   # relativo al home del servidor
+DO_SERVER=0
+SERVER_ONLY=0
 
 for arg in "$@"; do
   case "$arg" in
-    --vps) DO_VPS=1 ;;
-    --vps-only) DO_VPS=1; VPS_ONLY=1 ;;
+    --server) DO_SERVER=1 ;;
+    --server-only) DO_SERVER=1; SERVER_ONLY=1 ;;
     -h|--help)
-      sed -n '2,6p' "$0"
+      sed -n '2,7p' "$0"
       exit 0
       ;;
     *)
@@ -88,13 +89,14 @@ EOF
   echo "$dest"
 }
 
-run_vps_backup() {
-  local vps_dest="/root/ot-backups/vps-${LABEL}-${STAMP}"
-  echo "==> backup VPS → $vps_dest"
-  ssh "$VPS" bash -s <<REMOTE
+run_server_backup() {
+  local server_dest="backups/server-${LABEL}-${STAMP}"     # relativo al home del servidor
+  echo "==> backup servidor ($SERVER_HOST) → ~/$server_dest"
+  ssh "$SERVER_HOST" bash -s <<REMOTE
 set -euo pipefail
-DATA="$VPS_DATA"
-DEST="$vps_dest"
+cd "\$HOME"
+DATA="$SERVER_DATA"
+DEST="$server_dest"
 mkdir -p "\$DEST"
 cp -a "\$DATA/accounts" "\$DATA/players" "\$DEST/"
 [[ -d "\$DATA/vip" ]] && cp -a "\$DATA/vip" "\$DEST/"
@@ -108,7 +110,7 @@ OWN=\$(grep -h 'owner name=' "\$DATA/houses"/*.xml 2>/dev/null | grep -cv 'owner
 cat > "\$DEST/BACKUP_INFO.txt" <<EOF
 label=$LABEL
 stamp=$STAMP
-source=vps
+source=server
 host=\$(hostname)
 accounts=\$ACC
 players=\$PLR
@@ -119,15 +121,15 @@ echo "    \$ACC cuentas, \$PLR archivos players/, \$OWN casas con dueño"
 echo "\$DEST"
 REMOTE
 
-  if [[ "$VPS_ONLY" == "1" ]]; then
-    echo "$vps_dest"
+  if [[ "$SERVER_ONLY" == "1" ]]; then
+    echo "~/$server_dest"
     return
   fi
 
-  local mirror="$LOCAL_BACKUP_ROOT/vps-${LABEL}-${STAMP}"
-  echo "==> copia espejo VPS → Mac: $mirror"
+  local mirror="$LOCAL_BACKUP_ROOT/server-${LABEL}-${STAMP}"
+  echo "==> copia espejo servidor → Mac: $mirror"
   mkdir -p "$mirror"
-  rsync -az "$VPS:$vps_dest/" "$mirror/"
+  rsync -az "$SERVER_HOST:$server_dest/" "$mirror/"
   write_manifest "$mirror" "$mirror/accounts-state.json"
   echo "$mirror"
 }
@@ -135,14 +137,14 @@ REMOTE
 mkdir -p "$LOCAL_BACKUP_ROOT"
 
 LOCAL_PATH="$(run_local_backup)"
-if [[ "$DO_VPS" == "1" ]]; then
-  VPS_PATH="$(run_vps_backup)"
+if [[ "$DO_SERVER" == "1" ]]; then
+  SERVER_PATH="$(run_server_backup)"
   echo ""
   echo "OK backups:"
-  echo "  local: $LOCAL_PATH"
-  echo "  vps:   $VPS_PATH"
+  echo "  local:    $LOCAL_PATH"
+  echo "  servidor: $SERVER_PATH"
 else
   echo ""
   echo "OK backup local: $LOCAL_PATH"
-  echo "Tip: incluir VPS → ./scripts/backup-runtime-data.sh --vps"
+  echo "Tip: incluir el servidor de la ThinkPad → ./scripts/backup-runtime-data.sh --server"
 fi

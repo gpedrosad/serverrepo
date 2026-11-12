@@ -1,6 +1,6 @@
 # scripts/ — herramientas del repo
 
-Los scripts viven en subcarpetas por dominio. En la raíz de `scripts/` quedan **symlinks de compatibilidad** con los nombres históricos (`deploy-vps.sh`, `ot-probe.py`, etc.) para no romper docs, cron del VPS ni hábitos.
+Los scripts viven en subcarpetas por dominio. En la raíz de `scripts/` quedan **symlinks de compatibilidad** con los nombres históricos (`ot-probe.py`, `ot-diagnostics.sh`, etc.) para no romper docs, cron ni hábitos.
 
 `resolve-project-root.sh` se queda en la raíz de `scripts/` (lo usan casi todos los `.sh`).
 Python en subcarpetas debe resolver el repo con `lib.project_root.project_root()` (no `parents[1]`).
@@ -9,7 +9,7 @@ Python en subcarpetas debe resolver el repo con `lib.project_root.project_root()
 
 | Carpeta | Contenido |
 |---------|-----------|
-| [`deploy/`](deploy/) | Deploy VPS, backup runtime, server-save, docker entrypoint, HTTPS |
+| [`deploy/`](deploy/) | Backup runtime, server-save (y cron de medianoche), docker entrypoint |
 | [`ot/`](ot/) | Probe, diagnostics, watchdog, start-local, smoke tests |
 | [`map/`](map/) | Generadores OTBM, depots, sync de houses |
 | [`otb/`](otb/) | Patches OTB / gems sprites / loot tables |
@@ -22,7 +22,6 @@ Python en subcarpetas debe resolver el repo con `lib.project_root.project_root()
 ## Comandos más usados (rutas históricas = OK)
 
 ```bash
-DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh
 python3 scripts/ot-probe.py 127.0.0.1 7171
 ./scripts/ot-diagnostics.sh
 ./scripts/web.sh
@@ -33,7 +32,6 @@ python3 scripts/ot-probe.py 127.0.0.1 7171
 Equivalente canónico:
 
 ```bash
-./scripts/deploy/deploy-vps.sh
 python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 ./scripts/ot/ot-diagnostics.sh
 ./scripts/web/web.sh
@@ -53,7 +51,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | `spawn-island-cave.py` / `link-island-temple.py` | Spawns de la cueva / vuelta al templo + cyclops de la isla |
 | `generate-sand-clock.py` | Reloj de Arena OTBM (portal en la plaza: `temple-portals.py`) |
 | `generate-wave-arena.py` | Wave Arena |
-| `generate-hunt-maze.py` | Hunt maze |
+| `generate-beast-valley.py` | Valle de las Bestias (portal 158,47,7; reemplazó al hunt maze) |
 | `generate-maze.py` | Laberinto Alice |
 | `generate-tp-gauntlet.py` | Gauntlet |
 | `generate-island.py` | Islas procedurales |
@@ -74,17 +72,19 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | Script | Uso |
 |--------|-----|
 | `build_zagan_test_assets.py` | Pipeline sprites/OTB/dat Zagan |
+| `sprite_tool.py` | Sprites de criaturas: `bases`, `new`, `inspect`, `check`, `verify` (guía: `docs/gameplay/SPRITE_RECOLOR_GUIDE.md`) |
+| `add_recolor_look.py` + `presets/` + `sprite_kit.py` | Aplica un preset de criatura (un archivo por criatura en `presets/`) a `Tibia.dat`/`.spr` |
 | `play-yurots-client.sh` / `open-rme.sh` | Cliente y RME locales |
 | `patch-tibia760-client.py` | Patcher cliente 7.6 |
 
 ### ot / web / deploy
 
-Ver comandos de arriba; deploy: leer **antes** [`deploy/README-DEPLOY-VPS.md`](deploy/README-DEPLOY-VPS.md).
+Ver comandos de arriba; deploy: ver abajo.
 
 ## Deploy
 
-Leer **antes**: [`deploy/README-DEPLOY-VPS.md`](deploy/README-DEPLOY-VPS.md)  
-(también: `scripts/README-DEPLOY-VPS.md` vía symlink).
+No hay script de deploy ni servidor de producción por ahora. Los deploys van a la ThinkPad, solo con el OK de
+Gonzalo, siguiendo [`docs/systems/THINKPAD_TEST_SERVER.md`](../docs/systems/THINKPAD_TEST_SERVER.md).
 
 ## Smoke tests
 

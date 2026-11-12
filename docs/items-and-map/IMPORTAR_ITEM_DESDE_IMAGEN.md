@@ -283,7 +283,7 @@ Para ver todos los items con imagen, ids y comando de spawn sin entrar al juego:
 - No está enlazado desde la web pública.
 - API e imágenes devuelven **404** sin token.
 
-En VPS: `Environment=ITEMS_ADMIN_TOKEN=...` en `scripts/yurots-web.service`.
+En un servidor con systemd: `Environment=ITEMS_ADMIN_TOKEN=...` en `scripts/yurots-web.service`.
 
 ---
 

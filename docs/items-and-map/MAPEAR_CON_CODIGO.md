@@ -270,7 +270,7 @@ Evitar:
 - Solapar islas ya generadas (el script falla si hay conflicto)
 - Poner islas sobre depots, temples o spawns críticos sin revisar
 
-### Workflow con git y VPS
+### Workflow con git y deploy
 
 Si commiteás el mapa con la isla:
 
@@ -281,7 +281,7 @@ git add server/YurOTS/ots/data/world/generated-island.json   # opcional, metadat
 git add server/YurOTS/ots/data/world/test-spawn.xml
 ```
 
-En VPS: seguir [docs/CAMBIAR-MAPA.md](../CAMBIAR-MAPA.md) y [scripts/README-DEPLOY-VPS.md](../../scripts/README-DEPLOY-VPS.md). **No hace falta** `sync-houses-from-rme.py` si solo agregaste terreno vacío sin casas.
+En la ThinkPad (solo con OK de Gonzalo): seguir [docs/CAMBIAR-MAPA.md](../CAMBIAR-MAPA.md) y [docs/systems/THINKPAD_TEST_SERVER.md](../systems/THINKPAD_TEST_SERVER.md). **No hace falta** `sync-houses-from-rme.py` si solo agregaste terreno vacío sin casas.
 
 ---
 
@@ -325,6 +325,8 @@ El parser de `sync-houses-with-map.py` y el writer de `generate-island.py` puede
 | Servidor no arranca tras editar OTBM | OTBM corrupto | Restaurar `test.otbm.bak` o `git checkout -- test.otbm` |
 | Spawns no aparecen | `test-spawn.xml` sin actualizar | Exportar desde RME o editar XML |
 | `Could not load map` | Nodo OTBM mal formado | No editar binario a mano; revisar cambios en el script |
+| Troncos cortados en el bosque | 4187 (centro), 4201 y 4239 (puntas) son pedazos de un tronco largo; sueltos se ven cortados | Decorar con piezas de una casilla: rama 4224, flores, hongos, arbustos, barril 1770, cajón 1739, piedra 1285. Antes de usar un ítem de decoración, dibujarlo con `mapdata.Renderer` |
+| Zona enorme y vacía, mucho que caminar | El área jugable ocupa toda la caja | Franja jugable alrededor del camino y cuevas en una caja más chica; medir caminable, casillas por monstruo y recorrido más largo por piso. Ejemplos: `CORRIDOR` en `generate-north-pass.py`, `CAVE_BANDS` en `generate-frozen-isle.py` |
 
 ---
 

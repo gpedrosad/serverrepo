@@ -67,7 +67,7 @@ El progreso (contrato, kills, streak, ofertas) vive en **`<storage>` del XML del
 |---------|---------------------|
 | Logout | Sí (`savePlayer`) |
 | Autosave (`config.lua` → `autosave`, ~10 min) | Sí (`serverSave`) |
-| Deploy vía `deploy-vps.sh` | Sí — **graceful save+stop** antes del backup (`data/.request-shutdown` + SIGTERM) |
+| Deploy a la ThinkPad (`docker restart -t 45 yurots`) | Sí — el servidor guarda a los conectados al recibir SIGTERM |
 | `docker stop` / kill brusco sin save | **No** — se pierde lo que estaba solo en RAM |
 
 Tras un deploy correcto, al reconectar el jugador debe conservar contrato activo, kills y streak.

@@ -15,14 +15,24 @@
 <spell name="Energy Beam"			words="exevo vis lux"		maglv="10"	mana="100"	enabled="1"><vocation id="1" /></spell>
 <spell name="Fire Wave"				words="exevo flam hur"		maglv="7"	mana="80"	enabled="1"><vocation id="1" /></spell>
 <spell name="Energy Wave"			words="exevo mort hur"		maglv="20"	mana="250"	enabled="1"><vocation id="1" /></spell>
-<spell name="Flame Strike"			words="exori flam"			maglv="3"	mana="20"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
-<spell name="Force Strike"			words="exori mort"			maglv="2"	mana="20"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
-<spell name="Energy Strike"			words="exori vis"			maglv="3"	mana="20"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
-<spell name="Energy Strike Hur"		words="exori vis hur"		maglv="4"	mana="30"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
+<spell name="Flame Strike"			words="exori flam"			maglv="3"	mana="20"	enabled="1" echo="1"><vocation id="1" /><vocation id="2" /></spell>
+<spell name="Force Strike"			words="exori mort"			maglv="2"	mana="20"	enabled="1" echo="1"><vocation id="1" /><vocation id="2" /></spell>
+<spell name="Energy Strike"			words="exori vis"			maglv="3"	mana="20"	enabled="1" echo="1"><vocation id="1" /><vocation id="2" /></spell>
+<spell name="Energy Strike Hur"		words="exori vis hur"		maglv="4"	mana="30"	enabled="1" echo="1"><vocation id="1" /><vocation id="2" /></spell>
 <spell name="Berzeker"				words="exori"				maglv="5"	mana="100"	enabled="1"><vocation id="4" /></spell>
-<spell name="Brutal Strike"			words="exori con"			maglv="4"	mana="30"	enabled="1"><vocation id="3" /></spell>
+<spell name="Ethereal Spear"		words="exori con"			maglv="4"	mana="25"	enabled="1"><vocation id="3" /></spell>
 <spell name="Challenge"				words="exeta res"			maglv="5"	mana="40"	enabled="1"><vocation id="4" /></spell>
 <spell name="Whirlwind Throw"		words="exori hur"			maglv="3"	mana="40"	enabled="1"><vocation id="4" /></spell>
+<!-- Nov 2026: hechizos de versiones nuevas adaptados a 7.6 (docs/gameplay/SPELLS_NOV2026.md) -->
+<spell name="Brutal Strike"			words="exori ico"			maglv="3"	mana="30"	enabled="1"><vocation id="4" /></spell>
+<spell name="Front Sweep"			words="exori min"			maglv="5"	mana="80"	enabled="1"><vocation id="4" /></spell>
+<spell name="Wound Cleansing"		words="exura ico"			maglv="3"	mana="40"	enabled="1"><vocation id="4" /></spell>
+<spell name="Divine Missile"		words="exori san"			maglv="6"	mana="20"	enabled="1" echo="1"><vocation id="3" /></spell>
+<spell name="Divine Healing"		words="exura san"			maglv="6"	mana="50"	enabled="1"><vocation id="3" /></spell>
+<spell name="Sharpshooter"			words="utito tempo san"		maglv="8"	mana="150"	enabled="1"><vocation id="3" /></spell>
+<spell name="Ice Strike"			words="exori frigo"			maglv="3"	mana="20"	enabled="1" echo="1"><vocation id="2" /></spell>
+<spell name="Eternal Winter"		words="exevo gran mas frigo"	maglv="30"	mana="650"	enabled="1"><vocation id="2" /></spell>
+<spell name="Echo"					words="utevo vis"			maglv="20"	mana="120"	enabled="1"><vocation id="1" /></spell>
 <spell name="Berzeker Gran"			words="exori gran"			maglv="9"	mana="200"	enabled="1"><vocation id="4" /></spell>
 <spell name="Skill Buff"			words="utito tempo"			maglv="8"	mana="150"	enabled="1"><vocation id="4" /></spell>
 <spell name="Mass Healing"			words="exura gran mas res"	maglv="19"	mana="150"	enabled="1"><vocation id="2" /></spell>

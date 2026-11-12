@@ -2,7 +2,7 @@
 
 Este documento describe el sistema de captura de crashes del server Retro76: qué artefactos se generan automáticamente, qué información contienen, cómo extraerlos y cómo analizarlos en caso de un crash.
 
-> **Estado:** implementado en Mac, compilado, **NO pusheado al repo ni al VPS**. Cambios en staging local pendientes de commit/deploy.
+> **Estado:** implementado y en `main` (`source/crashhandler.cpp`). El servidor hoy es el de prueba en la ThinkPad ([THINKPAD_TEST_SERVER.md](THINKPAD_TEST_SERVER.md)); no hay producción.
 
 ---
 
@@ -180,7 +180,7 @@ El `:: [crash] ...` es la única línea que se loggea **antes** de la muerte del
 
 ### 4.3. Cómo analizarlos
 
-En el VPS:
+En el servidor (ThinkPad, `~/apps/serverrepo`):
 
 ```bash
 # 1) Ver los cores disponibles
@@ -204,7 +204,7 @@ Si te quedás sin espacio, podés rotar:
 
 ```bash
 # Crontab sugerido (diario, mantiene últimos 5)
-find /home/yurots-principal/cores -name 'core.*' -mtime +7 -delete
+find ~/apps/serverrepo/cores -name 'core.*' -mtime +7 -delete
 ```
 
 ---
@@ -214,22 +214,22 @@ find /home/yurots-principal/cores -name 'core.*' -mtime +7 -delete
 ### Paso 1: confirmar el crash
 
 ```bash
-ssh root@64.176.20.238 'cd ~/yurots-principal && docker ps -a | grep yurots'
+ssh thinkpad 'docker ps -a | grep yurots'
 # Ver "Up X minutes" — si el "X" se resetea, hubo restart
 ```
 
 ### Paso 2: leer el crash log
 
 ```bash
-ssh root@64.176.20.238 'ls -lt ~/yurots-principal/server/YurOTS/ots/data/crash-*.log | head -1'
+ssh thinkpad 'ls -lt ~/apps/serverrepo/server/YurOTS/ots/data/crash-*.log | head -1'
 # Leer el archivo:
-ssh root@64.176.20.238 'cat ~/yurots-principal/server/YurOTS/ots/data/crash-20260701-142345.log'
+ssh thinkpad 'cat ~/apps/serverrepo/server/YurOTS/ots/data/crash-20260701-142345.log'
 ```
 
 ### Paso 3: leer el snapshot de players
 
 ```bash
-ssh root@64.176.20.238 'cat ~/yurots-principal/server/YurOTS/ots/data/snapshot-20260701-142345.txt'
+ssh thinkpad 'cat ~/apps/serverrepo/server/YurOTS/ots/data/snapshot-20260701-142345.txt'
 ```
 
 Esto te dice **quién estaba online y qué hacía** al momento del crash. Si un player específico aparece en TODOS los crashes, es probable que sea el causante (ej. un item corrupto en su inventario, una spell que crashea con su level, etc.).
@@ -237,7 +237,7 @@ Esto te dice **quién estaba online y qué hacía** al momento del crash. Si un 
 ### Paso 4: analizar el core (si está)
 
 ```bash
-ssh root@64.176.20.238 'cd ~/yurots-principal && ./scripts/extract-core.sh'
+ssh thinkpad 'cd ~/apps/serverrepo && ./scripts/extract-core.sh'
 ```
 
 Esto genera `data/gdb-report-<UTC>.txt` con el backtrace de TODOS los threads. En YurOTS hay ~10-15 threads; el que tenga el stack en código de YurOTS (no en libpthread, libxml2, etc.) es el thread que crasheó.
@@ -245,7 +245,7 @@ Esto genera `data/gdb-report-<UTC>.txt` con el backtrace de TODOS los threads. E
 ### Paso 5: leer las últimas líneas del yurots.log
 
 ```bash
-ssh root@64.176.20.238 'tail -200 ~/yurots-principal/server/YurOTS/ots/yurots.log'
+ssh thinkpad 'tail -200 ~/apps/serverrepo/server/YurOTS/ots/yurots.log'
 ```
 
 Con timestamps UTC ya en cada línea, podés correlacionar con la hora del crash.

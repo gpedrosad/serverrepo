@@ -235,17 +235,16 @@ python3 scripts/ot-probe.py 127.0.0.1 7171
 #    Esperado: comportamiento vanilla (daño fijo)
 ```
 
-### En producción (VPS, solo después de OK explícito)
+### En la ThinkPad (solo después de OK explícito)
 
 ```bash
-# 1. Backup de config.lua y de players/accounts antes de deploy
-DEPLOY_I_READ_README=yes ./scripts/deploy-vps.sh
+# 1. Deploy según docs/systems/THINKPAD_TEST_SERVER.md (respaldo de players/accounts, compilar ahí, reiniciar)
 
 # 2. Verificar que el binario tiene el cambio
 docker exec yurots strings /app/YuroTS/ots/source/yurots | grep -i "wandmlfactor" || echo "WARN: binario no actualizado"
 
-# 3. Probe contra el VPS
-python3 scripts/ot-probe.py retro76.cl 7171
+# 3. Probe contra la ThinkPad
+python3 scripts/ot-probe.py 192.168.1.17 7171
 
 # 4. In-game test con GM char: equipar crimson wand, pegar dummy, verificar daño
 ```

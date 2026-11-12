@@ -95,4 +95,4 @@ Hoy no está en ningún spawn ni se probó en el juego. El C++ no cambió: no ha
 | Registro | `server/YurOTS/ots/data/monster/monsters.xml` |
 | Ataques | `data/spells/runes/tidepriest_elmofire.lua` y `tidepriest_manatide.lua` + `spells.xml` (ids 5038 y 5039) |
 | RME | `rme-extensions/yurots-creatures.xml` y `devtools/rme/rme-client-760/Tibia.{dat,spr}` |
-| Sprite | `scripts/client-rme/add_recolor_look.py` (preset `tide-priest`) |
+| Sprite | `scripts/client-rme/presets/tide_priest.py` (preset `tide-priest`; se aplica con `add_recolor_look.py`) |
