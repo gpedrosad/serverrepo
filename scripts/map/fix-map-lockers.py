@@ -2,9 +2,10 @@
 """Acomoda los lockers de depot (2589-2592) de un OTBM: orientación, apoyo y depot id.
 
 Por cada tile con locker:
-  1. Orientación: el frente del locker (el lado de los herrajes) mira hacia donde se para el
-     jugador. 2589 = frente al sur, 2590 = oeste, 2591 = norte, 2592 = este. El lado se elige
-     entre los vecinos caminables (piso sin nada sólido); si hay varios, el opuesto a una pared.
+  1. Orientación: el frente del locker (la cerradura) mira hacia donde se para el jugador. Las dos
+     piezas de metal del borde son las bisagras de la tapa y van del lado de atrás. 2589 = frente al
+     norte (bisagras al sur), 2590 = este, 2591 = sur, 2592 = oeste. El lado se elige entre los vecinos
+     caminables (piso sin nada sólido); si hay varios, el opuesto a una pared.
   2. Apoyo: el locker va sobre un mostrador (counter 1617/1618), como en los depots de Tibia. Si no
      tiene, se lo pone: la misma pieza que el mostrador vecino de la fila; si no hay vecino, 1617 cuando
      el locker mira al este u oeste y 1618 cuando mira al norte o sur. En nov 2026 un arreglo los había
@@ -32,7 +33,7 @@ sys.path.insert(0, str(REPO / "scripts" / "client-rme"))
 import build_zagan_test_assets as B  # noqa: E402
 
 OTB = REPO / "server/YurOTS/ots/data/items/items-zagan-test.otb"
-LOCKERS = {2589: "S", 2590: "W", 2591: "N", 2592: "E"}
+LOCKERS = {2589: "N", 2590: "E", 2591: "S", 2592: "W"}      # id -> hacia dónde mira el frente (la cerradura)
 LOCKER_FOR = {v: k for k, v in LOCKERS.items()}
 COUNTERS = {1617, 1618}
 COUNTER_FOR = {"E": 1617, "W": 1617, "N": 1618, "S": 1618}

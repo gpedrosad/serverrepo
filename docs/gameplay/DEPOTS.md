@@ -91,9 +91,18 @@ El loader (`iomapotbm.cpp`) solo asigna `container->depot` cuando el OTBM trae e
 
 ## Orientación y apoyo de los lockers (nov 2026)
 
-Los ids `2589`–`2592` son el mismo locker en sus 4 orientaciones; el frente es el lado de los
-herrajes: **2589 sur, 2590 oeste, 2591 norte, 2592 este**. El frente va hacia donde se para el
-jugador. El server abre como depot cualquiera de las 4.
+Los ids `2589`–`2592` son el mismo locker en sus 4 orientaciones. El **frente es el lado de la cerradura**;
+las dos piezas de metal del borde son las bisagras de la tapa y quedan atrás:
+
+| Id | Frente (cerradura) | Bisagras |
+|---|---|---|
+| 2589 | norte (no se ve) | borde sur |
+| 2590 | este | borde oeste |
+| 2591 | sur | borde norte |
+| 2592 | oeste (no se ve) | borde este |
+
+El frente va hacia donde se para el jugador. El server abre como depot cualquiera de las 4. Ojo: el 11 nov
+2026 se tomaron las bisagras por el frente y los 11 lockers quedaron dados vuelta; se corrigió el 12 nov.
 
 **El locker va sobre un mostrador** (`counter` 1617/1618), como en los depots de Tibia. El mostrador tiene
 altura 8 en el cliente, así que el locker se dibuja 8 px arriba a la izquierda: es lo esperado. Sin el
