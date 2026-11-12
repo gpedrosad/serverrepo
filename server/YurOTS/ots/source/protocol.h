@@ -164,6 +164,7 @@ protected:
 	Game   *game;
 	Player *player;
 	SOCKET s;
+	SOCKET sendFailSocket;	// ultimo socket con un "Player send disconnect" ya escrito en el log
 	friend OTSYS_THREAD_RETURN ConnectionHandler(void *dat);
 };
 

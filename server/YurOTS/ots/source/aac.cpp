@@ -22,6 +22,7 @@
 #include "ioaccount.h"
 #include "ioplayer.h"
 #include "player.h"
+#include "tools.h"
 #include <fstream>
 #include <sstream>
 #include <boost/regex.hpp>
@@ -56,12 +57,14 @@ std::string AccountCreator::process(std::string request)
 
 		// create account
 	Account account;
-	account.accnumber = uniqueAccountNumber();
+	// accnumber es sin signo: el -1 de "no hay números libres" hay que mirarlo antes de guardarlo.
+	long accnumber = uniqueAccountNumber();
+	if (accnumber < 0)
+		return "Sorry, not enough free account numbers";
+
+	account.accnumber = accnumber;
 	account.password = pass;
 	account.charList.push_back(name);
-
-	if (account.accnumber < 0)
-		return "Sorry, not enough free account numbers";
 
 		// load player template
 	Player* player = new Player(name, NULL);
@@ -92,13 +95,13 @@ std::string AccountCreator::process(std::string request)
 long AccountCreator::uniqueAccountNumber()
 {
 	std::ostringstream filename;
-	static const long ACCNUM_MIN = 100000L, ACCNUM_MAX = 999999L, ACCNUM_RANGE = ACCNUM_MAX-ACCNUM_MIN+1;
+	static const long ACCNUM_MIN = 100000L, ACCNUM_MAX = 999999L;
 	int maxAttempts = 10000;
 
 	while (maxAttempts-- > 0)
 	{
-		long a = rand(), b = rand();
-		long num = (a + b*RAND_MAX) % ACCNUM_RANGE + ACCNUM_MIN;
+		// (antes: (a + b*RAND_MAX) % rango, que desborda en 32 bits y daba números negativos o de menos de 6 cifras)
+		long num = (long)random_range(ACCNUM_MIN, ACCNUM_MAX);
 
 		filename.str("");
 		filename << g_config.DATA_DIR << "accounts/" << num << ".xml" << std::ends;

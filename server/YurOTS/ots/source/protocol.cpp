@@ -37,6 +37,7 @@ Protocol::Protocol()
 	player = NULL;
 	game = NULL;
 	pendingLogout = false;
+	sendFailSocket = 0;
 }
 
 

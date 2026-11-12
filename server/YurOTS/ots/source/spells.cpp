@@ -1418,11 +1418,11 @@ int SpellScript::luaActionDoAreaSpell(lua_State *L)
     RuneSpell* runeSpell = dynamic_cast<RuneSpell*>(spell);
     bool isSuccess;
     if(runeSpell)
-    isSuccess = spell->game->creatureThrowRune(creature, centerpos, magicArea);
+        isSuccess = spell->game->creatureThrowRune(creature, centerpos, magicArea);
     else
-	isSuccess = spell->game->creatureCastSpell(creature, centerpos, magicArea);
-	lua_pushboolean(L, isSuccess);
-	return 1;
+        isSuccess = spell->game->creatureCastSpell(creature, centerpos, magicArea);
+    lua_pushboolean(L, isSuccess);
+    return 1;
 }
 int SpellScript::luaActionDoAreaAnimation(lua_State *L)
 {
@@ -1466,11 +1466,11 @@ int SpellScript::luaActionDoAreaAnimation(lua_State *L)
     RuneSpell* runeSpell = dynamic_cast<RuneSpell*>(spell);
     bool isSuccess;
     if(runeSpell)
-    isSuccess = spell->game->creatureThrowRune(creature, centerpos, magicArea);
+        isSuccess = spell->game->creatureThrowRune(creature, centerpos, magicArea);
     else
-	isSuccess = spell->game->creatureCastSpell(creature, centerpos, magicArea);
-	lua_pushboolean(L, isSuccess);
-	return 1;
+        isSuccess = spell->game->creatureCastSpell(creature, centerpos, magicArea);
+    lua_pushboolean(L, isSuccess);
+    return 1;
 }
 
 int SpellScript::luaActionDoAreaExSpell(lua_State *L)
@@ -1521,12 +1521,12 @@ int SpellScript::luaActionDoAreaExSpell(lua_State *L)
     RuneSpell* runeSpell = dynamic_cast<RuneSpell*>(spell);
     bool isSuccess;
     if(runeSpell)
-    isSuccess = spell->game->creatureThrowRune(creature, centerpos, magicAreaEx);
+        isSuccess = spell->game->creatureThrowRune(creature, centerpos, magicAreaEx);
     else
-	isSuccess = spell->game->creatureCastSpell(creature, centerpos, magicAreaEx);
+        isSuccess = spell->game->creatureCastSpell(creature, centerpos, magicAreaEx);
 
-	lua_pushboolean(L, isSuccess);
-	return 1;
+    lua_pushboolean(L, isSuccess);
+    return 1;
 }
 
 int SpellScript::luaActionDoAreaGroundSpell(lua_State *L)

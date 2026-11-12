@@ -62,6 +62,7 @@ ItemType::ItemType()
 	newTime = 0;
 
 	blockSolid = false;
+	blockPickupable = false;
 	blockProjectile = false;
 	blockPathFind = false;
 

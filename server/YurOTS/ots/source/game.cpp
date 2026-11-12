@@ -4250,10 +4250,10 @@ bool Game::creatureOnPrepareMagicAttack(Creature *creature, Position pos, const 
 					player->sendTextMessage(MSG_SMALLINFO, "You do not have enough mana.",player->pos, NM_ME_PUFF);
 					return false;
 				}
-				else
+				else {
 					player->mana -= (int64_t)me->manaCost;
-
 					player->addManaSpent((int64_t)me->manaCost);
+				}
 			}
 		}
 
@@ -4462,6 +4462,13 @@ void Game::checkPlayerWalk(unsigned long id)
 		if(!player)
 			return;
 
+		// Un camino vacio (paquete 0x64 sin pasos validos) hacia pop_front() sobre una lista vacia:
+		// liberaba memoria que no era del heap (encontrado con AddressSanitizer).
+		if(player->pathlist.empty()){
+			player->eventAutoWalk = 0;
+			return;
+		}
+
 		Position pos = player->pos;
 		Direction dir = player->pathlist.front();
 		player->pathlist.pop_front();
@@ -4597,7 +4604,7 @@ void Game::checkCreature(unsigned long id)
 
 				if(player->inFightTicks < 1000)
 					player->pzLocked = false;
-					player->sendIcons();
+				player->sendIcons();
 			}
 
 			// Exhausted mágico: hora exacta en PlayerExhaust (exhaust.cpp), no se descuenta acá.
@@ -5168,6 +5175,11 @@ void Game::playerAutoWalk(Player* player, std::list<Direction>& path)
 		return;
 
 	player->pathlist = path;
+	if(path.empty()){
+		player->eventAutoWalk = 0;
+		return;
+	}
+
 	int ticks = (int)player->getSleepTicks();
 /*
 #ifdef __DEBUG__

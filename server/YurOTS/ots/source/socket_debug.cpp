@@ -19,9 +19,16 @@ bool socketDebugVerbose()
 	return cached == 1;
 }
 
+static thread_local bool t_quiet = false;
+
+void socketDebugSetQuiet(bool quiet)
+{
+	t_quiet = quiet;
+}
+
 void socketDebugLog(const std::string& message)
 {
-	if(!socketDebugVerbose())
+	if(t_quiet || !socketDebugVerbose())
 		return;
 	std::cout << "[socket] " << message << std::endl;
 }

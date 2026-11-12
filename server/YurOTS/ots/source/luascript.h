@@ -23,6 +23,7 @@
 #define __LUASCRIPT_H__
 
 #include <string>
+#include <mutex>
 #include "definitions.h"
 extern "C"
 {
@@ -44,6 +45,10 @@ public:
 	exp_t EXP_MUL;
 	exp_t EXP_MUL_PVP;
 	int LOOT_MUL;
+	// Cuentas de azar corregidas (0 = como siempre, 1 = corregida). Ver docs/systems/SANITIZER_TESTS.md
+	int FIX_LOOT_CHANCE;
+	int FIX_CHANGE_TARGET;
+	int FIX_SHIELD_DEFENSE;
 	int GOLD_LOOT_FLOOR_PERCENT;
 	int SOUL_MAX;
 	int SOUL_REGEN_TICKS;
@@ -179,6 +184,9 @@ public:
 protected:
 	std::string luaFile;   // the file we represent
 	lua_State*  luaState;  // our lua state
+	// Un lua_State no se puede usar desde dos hilos a la vez, y g_config se lee desde el hilo de cada
+	// conexión: dos logins simultáneos se pisaban la pila de Lua (datadir llegó a valer "15").
+	std::mutex  luaLock;
 };
 
 

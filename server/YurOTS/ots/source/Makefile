@@ -11,7 +11,15 @@ LUA_LIBS   ?= $(shell pkg-config --libs luajit 2>/dev/null || pkg-config --libs 
 # addr2line; -fno-strict-aliasing evita que -O2 rompa código viejo que reinterpreta punteros.
 # Para depurar paso a paso: make OPT=-O0
 OPT     ?= -O2
-CXXFLAGS = -g $(OPT) -fno-strict-aliasing -std=gnu++14 -Wno-deprecated -fpermissive \
+# Avisos del compilador: -Wall menos los que en este código viejo son puro ruido (cientos de
+# comparaciones con signo, variables sin usar, etc.). Los que quedan suelen ser errores de verdad
+# (variables sin inicializar, delete/delete[] cruzados, sangría engañosa): el build tiene que
+# salir sin avisos. Ver docs/systems/SANITIZER_TESTS.md.
+WARN    ?= -Wall -Wno-sign-compare -Wno-write-strings -Wno-reorder -Wno-switch -Wno-parentheses \
+           -Wno-unused-variable -Wno-unused-but-set-variable -Wno-unused-function \
+           -Wno-deprecated -Wno-deprecated-declarations
+# Ya no lleva -fpermissive: el código compila sin esa opción (nov 2026).
+CXXFLAGS = -g $(OPT) -fno-strict-aliasing -std=gnu++14 $(WARN) \
            -include linux_compat.h \
            -I/usr/include/libxml2 -I$(LOCAL_PREFIX)/include $(LUA_CFLAGS) \
            -D_atoi64=atoll \

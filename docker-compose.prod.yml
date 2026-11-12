@@ -13,6 +13,12 @@ services:
       - "7171:7171"
       - "7172:7172"
     restart: unless-stopped
+    #Sin esto el log de Docker (json-file) crece sin límite.
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
     #Required so docker-entrypoint.sh can set core_pattern to /cores.
     #If denied at runtime, the entrypoint silently falls back to the
     #default (cwd = /app/YurOTS/ots) — cores still work, just harder to find.

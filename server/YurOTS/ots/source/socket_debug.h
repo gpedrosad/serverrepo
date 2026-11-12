@@ -15,6 +15,10 @@
 
 bool socketDebugVerbose();
 void socketDebugLog(const std::string& message);
+// Calla socketDebugLog en este hilo (un hilo por conexión). Lo usa ConnectionHandler para las
+// consultas de estado que llegan desde el propio host: el healthcheck de Docker hace una cada
+// 30 s y sus 4 líneas eran el 80 % del log. Las desconexiones y los fallos se siguen viendo.
+void socketDebugSetQuiet(bool quiet);
 int socketGetRecvTimeoutMs(SOCKET sock);
 bool socketIsNonBlocking(SOCKET sock);
 std::string socketDescribeState(SOCKET sock);

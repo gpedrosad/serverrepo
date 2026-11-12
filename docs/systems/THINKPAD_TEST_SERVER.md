@@ -7,7 +7,8 @@ el OK de Gonzalo** (ver `CLAUDE.md` de la carpeta de proyectos). La Mac mini no 
 |------|-------|
 | Acceso | `ssh thinkpad` (usuario `gonzalo`, ya en el grupo `docker`) |
 | Repo | `~/apps/serverrepo`, rama `main` |
-| Contenedor | `yurots` (`docker-compose.yml`), monta `server/YurOTS` → `/app/YurOTS` |
+| Contenedor | `yurots`, creado con **`docker-compose.prod.yml`** (`docker compose -f docker-compose.prod.yml up -d`); monta `server/YurOTS` → `/app/YurOTS` |
+| Log | `server/YurOTS/ots/yurots.log` (rota a `yurots.log.1` al arrancar si pasa de 20 MB) y `docker logs yurots` (tope 3 × 10 MB) |
 | Dirección | `192.168.1.17:7171` (red local; `ip` en `config.lua`) |
 | Binario | `server/YurOTS/ots/source/yurots`, compilado ahí mismo |
 | Personaje GM | **GM Retro** (access 3, vocación 0). La cuenta está en `server/YurOTS/ots/data/accounts/` de la ThinkPad (no va a git); pedírsela a Gonzalo |
@@ -62,12 +63,17 @@ una **copia aparte** del código, así no se mezcla con lo que esté a medio hac
 ```bash
 ssh thinkpad 'rm -rf ~/build/deploy-src && mkdir -p ~/build/deploy-src && \
   rsync -a --exclude "*.o" --exclude yurots ~/apps/serverrepo/server/YurOTS/ots/source/ ~/build/deploy-src/ && \
-  cd ~/build/deploy-src && docker run --rm --entrypoint "" -v "$PWD":/src -w /src serverrepo-yurots:latest make -j4 yurots'
+  cd ~/build/deploy-src && docker run --rm --entrypoint "" -v "$PWD":/src -w /src serverrepo-yurots:latest make -j4 yurots \
+  > build.log 2>&1; tail -1 build.log; grep -c "warning:" build.log'
 ```
+
+Tiene que terminar con la línea del link (`g++ -o yurots ...`) y **0 avisos**: el `Makefile` compila con `-Wall`
+y un aviso nuevo suele ser un error de verdad ([SANITIZER_TESTS.md](SANITIZER_TESTS.md)). Después de cambios
+grandes de C++ conviene repetir ahí las pruebas con sanitizers y bots.
 
 Para cambiar el binario: respaldarlo, `docker stop -t 45 yurots` (guarda a los conectados), copiarlo **con
 un contenedor** (el archivo es de `root`: un `cp` común da "Permiso denegado" y el servidor queda apagado) y
-`docker start yurots`:
+`docker start yurots` (o `docker compose -f docker-compose.prod.yml up -d` si cambió el compose: lo recrea):
 
 ```bash
 docker run --rm --entrypoint "" -v ~/apps/serverrepo/server/YurOTS:/app/YurOTS -v ~/build/deploy-src:/new \
@@ -100,3 +106,6 @@ Pasó el 2026-11-11 (`config.lua`, `game.cpp` y páginas de `web/dist`). Sin `st
 | 2026-11-11 | Armas de 8.x (Emerald Sword, Avenger, Arcane Staff, Arbalest): binario nuevo (ataque de la ballesta), otb y cliente. Respaldo en `~/backups/deploy-20261111-225503` | `c0811e1` |
 | 2026-11-11 | Auto-actualización del cliente: `publish_client.py`, `web/updater/files/`, zips de descarga con `data.zip`; `clienteretro` apunta a `192.168.1.17` | ver git log |
 | 2026-11-12 | `exori gran` más chico (12 casillas) con efecto nuevo `NM_ME_WHIRL_SLASH` (35, pack "gran" de `add_drawn_effects.py`): solo Lua + cliente publicado con `publish_client.py` | ver git log |
+| 2026-11-12 | Binario nuevo con los arreglos de las pruebas con sanitizers ([SANITIZER_TESTS.md](SANITIZER_TESTS.md)): caída remota sin login, auto-walk vacío, carrera en la config. Build con `-Wall` y 0 avisos. Contenedor recreado con `docker-compose.prod.yml` (tope de log de Docker); el healthcheck ya no llena el log. Respaldo en `~/backups/pre-deploy-20261112-sanitizers` | ver git log |
+| 2026-11-12 | Binario con las tres cuentas de azar corregidas como opción de `config.lua` (`fixlootchance`, `fixchangetarget`, `fixshielddefense`), apagadas: el juego no cambia. Respaldo en `~/backups/pre-deploy-20261112-fixflags` | ver git log |
+| 2026-11-12 | `config.lua`: `fixlootchance = 1` y `fixchangetarget = 1` (loot con la chance configurada, monstruos que no cambian de blanco en cada turno); `fixshielddefense` queda en 0. Solo config + reinicio. Respaldo en `~/backups/pre-deploy-20261112-fixon` | ver git log |

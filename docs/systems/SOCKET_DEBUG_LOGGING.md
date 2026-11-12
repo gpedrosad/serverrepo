@@ -105,7 +105,15 @@ Ejemplo de login **correcto** (sin timeout residual en juego):
 [socket] ReceiveLoop start player=Pallo sock=13 rcv_ms=0 nonblock=0
 ```
 
-El healthcheck de Docker envía `protId=0xffff` (info) desde `172.18.0.1` — es normal, no es un jugador.
+El healthcheck de Docker hace una consulta de estado (`protId=0xffff`) cada 30 s desde `127.0.0.1` (corre dentro
+del contenedor). Desde nov 2026 esas conexiones **no escriben líneas `[socket]`** (`socketDebugSetQuiet` en
+`otserv.cpp`): eran el 80 % del log. Una consulta de estado desde otra IP (`ot-probe.py` desde otra máquina)
+sí se registra, y desde `127.0.0.1` también cualquier cosa que no sea una consulta de estado (login, handshake
+fallido).
+
+**Tamaño del log:** `yurots.log` se pasa a `yurots.log.1` al arrancar el contenedor si supera 20 MB (una sola
+copia anterior; `docker-entrypoint.sh`), y el log de Docker queda limitado a 3 archivos de 10 MB
+(`logging:` en `docker-compose.prod.yml`).
 
 ---
 

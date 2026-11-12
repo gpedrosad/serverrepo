@@ -197,6 +197,8 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 	delete sockptr;
 
 	const std::string peerIp = socketPeerIp(s);
+	// Desde el propio host casi todo son consultas de estado (healthcheck): callado hasta saber qué es.
+	socketDebugSetQuiet(peerIp == "127.0.0.1");
 	socketDebugLog("accept " + socketDescribeState(s) + " peer=" + peerIp);
 
 	setSocketHandshakeRecvTimeout(s);
@@ -204,10 +206,13 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 	NetworkMessage msg;
 	if (msg.ReadFromSocket(s))
 	{
+		unsigned short protId = msg.GetU16();
+		if (protId != 0xFFFF)
+			socketDebugSetQuiet(false);
+
 		// Quitar timeout de handshake en cuanto llega el primer paquete.
 		setSocketGameRecvBlocking(s);
 
-		unsigned short protId = msg.GetU16();
 		{
 			std::ostringstream oss;
 			oss << "first packet protId=0x" << std::hex << protId << std::dec
@@ -464,6 +469,7 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 		}
   }
   else{
+		socketDebugSetQuiet(false);
 		socketDebugLog(
 			std::string("handshake read failed peer=") + socketPeerIp(s) +
 			" reason=" + (msg.getLastReadFailReason()[0] ? msg.getLastReadFailReason() : "?") +
