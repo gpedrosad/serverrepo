@@ -1,5 +1,8 @@
 # De PNG (o BMP) a item en juego, RME y cliente
 
+> **Nov 2026:** el builder de esta guía ya no se puede correr (faltan el pack Zagan y `client-local/`).
+> Para agregar ítems hoy: [`IMPORTAR_ITEM_DE_OTRA_VERSION.md`](IMPORTAR_ITEM_DE_OTRA_VERSION.md) (`add_custom_items.py`), que también sirve para un PNG propio de 32×32.
+
 Guía completa del pipeline de YurOTS para convertir una imagen en un **item real**: visible en OTClient 7.6, reconocido por el servidor, equipable (si el prototipo lo es) y colocable en el **map editor (RME)**.
 
 Este documento describe el flujo que hoy usa el entorno **Zagan test** (`items-zagan-test.otb`). Es el camino probado en este repo; no es la única forma posible en Tibia/OT en general, pero es la que está automatizada aquí.

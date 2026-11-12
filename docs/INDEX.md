@@ -123,6 +123,7 @@ Importación de items, mapeo por código, items de prueba, sesiones de editor.
 | Doc | Cubre / cuándo leerlo |
 |-----|-----------------------|
 | [`items-and-map/IMPORTAR_ITEM_DESDE_IMAGEN.md`](items-and-map/IMPORTAR_ITEM_DESDE_IMAGEN.md) | Si un item nuevo no entra o se ve mal: pipeline de import desde imagen. |
+| [`items-and-map/IMPORTAR_ITEM_DE_OTRA_VERSION.md`](items-and-map/IMPORTAR_ITEM_DE_OTRA_VERSION.md) | **Ítems de otras versiones:** sprite sacado de un cliente 8.x píxel a píxel y stats de su `items.xml`. Emerald Sword, Avenger, Arcane Staff y Arbalest (20157–20160); `extract_client_sprites.py` + `add_custom_items.py`. |
 | [`items-and-map/MAPEAR_CON_CODIGO.md`](items-and-map/MAPEAR_CON_CODIGO.md) | Mapear items/pisos por código (no manual) usando scripts. |
 | [`items-and-map/MAPEAR_PASO_DEL_NORTE.md`](items-and-map/MAPEAR_PASO_DEL_NORTE.md) | Paso del Norte: puerta norte, bosque, Tundra Helada, Cuevas del Dragón (z8) y Nido Negro (z9) con `generate-north-pass.py`. |
 | [`items-and-map/MAPA_DE_MONSTRUOS.md`](items-and-map/MAPA_DE_MONSTRUOS.md) | Mapa interactivo de todos los pisos con cada spawn, NPC y zona (`build-monster-map.py`). |

@@ -95,6 +95,7 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 | RME / edición de mapa | `docs/RME_SETUP.md` |
 | Cambios de mapa / OTBM | `docs/CAMBIAR-MAPA.md` |
 | Items custom Zagan (sprites, OTB, gameplay) | `docs/items-and-map/ZAGAN_TEST_ITEMS.md` y `docs/items-and-map/IMPORTAR_ITEM_DESDE_IMAGEN.md` |
+| Traer ítems de otras versiones (Emerald Sword, Avenger, Arcane Staff, Arbalest; `add_custom_items.py`) | `docs/items-and-map/IMPORTAR_ITEM_DE_OTRA_VERSION.md` |
 
 Si el subsistema no aparece en la tabla, buscar en `docs/INDEX.md` o preguntar.
 

@@ -109,6 +109,11 @@ Escudo kite que completa el set visual de la Aurora Blade.
 
 ---
 
+## Armas de 8.x (nov 2026)
+
+Emerald Sword (20157), Avenger (20158), Arcane Staff (20159) y Arbalest (20160), con el sprite exacto de
+Tibia 8.60 y sus stats. Ver [`IMPORTAR_ITEM_DE_OTRA_VERSION.md`](IMPORTAR_ITEM_DE_OTRA_VERSION.md).
+
 ## Producción (histórico)
 
 El OTB/XML Zagan estuvo en producción (el VPS, que ya no existe) desde el deploy `7312baf8`. Hoy no hay producción; el servidor es el de la ThinkPad.

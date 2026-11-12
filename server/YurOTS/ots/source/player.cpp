@@ -309,8 +309,13 @@ int64_t Player::getWeaponDamage() const
 					case DIST:
 						distitem = GetDistWeapon();
 						if(distitem){
+							// El ataque del arco o ballesta de la mano se suma al de la munición, como en las versiones
+							// nuevas. Los de 7.6 tienen ataque 0; la Arbalest (20160) suma +2. Ver IMPORTAR_ITEM_DE_OTRA_VERSION.md.
+							int64_t distAttack = Item::items[distitem->getID()].attack;
+							if(distitem != items[slot])
+								distAttack += Item::items[items[slot]->getID()].attack;
 
-							damagemax = mul*getSkill(SKILL_DIST,SKILL_LEVEL)*Item::items[distitem->getID()].attack/20 + Item::items[distitem->getID()].attack;
+							damagemax = mul*getSkill(SKILL_DIST,SKILL_LEVEL)*distAttack/20 + distAttack;
 
 							//hit or miss
 							int hitchance;
