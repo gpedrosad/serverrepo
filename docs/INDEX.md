@@ -27,7 +27,7 @@ Docs operativos planos. Setup, deploy, cliente, smoke tests, migración.
 | [`RME_SETUP.md`](RME_SETUP.md) | Configurar el editor de mapa (RME) en macOS/Linux. |
 | [`CAMBIAR-MAPA.md`](CAMBIAR-MAPA.md) | Procedimiento para cambiar/actualizar el mapa del servidor. |
 | [`CLIENT.md`](CLIENT.md) | Todo sobre el cliente custom Tibia 7.6. |
-| [`CLIENT_UPDATER_RETRO76.md`](CLIENT_UPDATER_RETRO76.md) | Sistema de updater/autoupdate del cliente Retro76. |
+| [`CLIENT_UPDATER_RETRO76.md`](CLIENT_UPDATER_RETRO76.md) | Auto-actualización del cliente (funcionando): cómo publicar sprites/módulos nuevos con `publish_client.py`. |
 | [`PVP_SYSTEM.md`](PVP_SYSTEM.md) | Reglas, balance y configuración del sistema PvP. |
 | [`TRADE_SYSTEM.md`](TRADE_SYSTEM.md) | Sistema de trade entre jugadores. |
 | [`CHARACTER_SESSION_REPLACEMENT.md`](CHARACTER_SESSION_REPLACEMENT.md) | Reemplazo de sesión de personaje, recovery de cuentas. |

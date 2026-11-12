@@ -1,243 +1,92 @@
-# Auto-actualización del cliente Retro76 (plan pendiente)
+# Auto-actualización del cliente Retro76
 
-> **Estado:** documentado, **no implementado** (julio 2026).  
-> **Repo cliente:** `~/clienteretro` (mac/ + windows/).  
-> **Repo juego/web:** `yurots-principal` (`web/`, `scripts/sync-clienteretro.sh`).
->
-> **Nota (nov 2026):** el VPS donde iba el backend ya no existe y no hay servidor público. `WEB` en las URLs de
-> abajo es el host que se elija cuando lo haya; hasta entonces el zip de sprites se reparte a mano.
+> **Estado:** funcionando desde el 2026-11-11 (probado en macOS: un cliente con el `Tibia.spr` viejo bajó lo
+> que cambió, se reinició solo y quedó con los sprites nuevos).
+> **Repo cliente:** `~/apps/clienteretro` en la ThinkPad (`github.com/gpedrosad/clienteretro`, `mac/` + `windows/`).
+> **Web:** contenedor `retro76-web` en la ThinkPad, http://192.168.1.17:8080.
 
-## Problema
+Los jugadores descargan el cliente **una sola vez**. Cada vez que lo abren, el cliente pregunta a la web qué
+archivos hay, baja solo los que cambiaron (sprites, módulos, `init.lua`, lo que sea) y sigue. Nadie tiene que
+volver a descargar el zip cuando se agregan ítems o looks.
 
-- El cliente publicado corre desde **carpeta descomprimida** (ZIP → carpeta), no desde archive embebido.
-- Los items Zagan viven en `data/things/760/Tibia.dat` + `Tibia.spr`. Si el jugador tiene sprites viejos, ve ítems incorrectos en juego.
-- El módulo `modules/updater/` **ya existe** en OTClientV8, pero hoy está **desactivado**:
-  - `Services.updater = ""` en `init.lua`
-  - El updater solo arranca si `g_resources.isLoadedFromArchive()` → falso con carpeta suelta
-  - `entergame.lua` solo llama al updater si **faltan** archivos, no si el checksum de `.dat`/`.spr` es viejo
-
-## Recomendación
-
-**Updater parcial de sprites**, no cliente completo en cada parche.
-
-| Qué | Por qué |
-|-----|---------|
-| Parchear solo `data/things/760/Tibia.dat` + `Tibia.spr` | Es lo que cambia con items Zagan (~16 MB) |
-| Check automático **al abrir** el cliente | El jugador no tiene que ir a la web |
-| ZIP completo en `web/downloads/` | Solo para instalaciones nuevas |
-| Una **última descarga manual** para quien ya tiene cliente | El cliente viejo no trae URL de updater configurada |
-
-No recomendado por ahora: updater del binario en macOS (Gatekeeper), bajar todo el ZIP en cada parche, depender del opcode `LoginServerUpdateNeeded` del login (YurOTS no lo usa para sprites).
-
----
-
-## Experiencia del jugador (cuando esté hecho)
-
-### Quien ya tiene cliente (después de la migración única)
-
-1. Abre `Iniciar Cliente.bat` / `.command`
-2. Ventana **Updater** → “Checking for updates…”
-3. Si hay parche: barra de progreso, descarga, aplica, reinicia (o sigue si solo cambiaron sprites)
-4. Login normal → items Zagan se ven bien
-
-**Tiempo estimado:** 10–30 s, sin descomprimir ZIP.
-
-### Migración única (jugadores con cliente viejo)
-
-- **Una vez:** descargar ZIP nuevo desde la web (incluye updater configurado + sprites Zagan)
-- **Después:** solo parches automáticos al abrir
-
-### Botón opcional
-
-- “Buscar actualizaciones” en menú → `Updater.check()` manual si falló el check automático
-
----
-
-## Arquitectura técnica
+## Cómo funciona
 
 ```
-Jugador abre cliente
-       │
-       ▼
-POST https://WEB/api/updater.php
-  { version, build, os, platform }
-       │
-       ▼
-JSON manifest (checksums + URL base)
-       │
-       ▼
-Compara con g_resources.filesChecksums() / fileChecksum()
-       │
-       ▼
-Descarga solo archivos distintos desde url + path
-       │
-       ▼
-g_resources.updateData() → reinicio si hace falta
+Jugador abre el cliente (binario + data.zip)
+  └─ init.lua: Services.updater = "http://192.168.1.17:8080/api/updater.php"
+       └─ POST → web/server.py → web/client_updater.py
+            responde {url, files: {"/ruta": crc32}, keepFiles: true} con todo web/updater/files/
+       └─ compara con los CRC de su data.zip; baja los distintos desde url + ruta
+       └─ arma un data.zip nuevo en su carpeta de usuario y lo usa desde ahí
+          (macOS: ~/Library/Application Support/retro_oficial/data.zip)
+       └─ si cambió init.lua / corelib / updater / un .otmod se reinicia solo; si no, recarga los módulos
 ```
 
-### Respuesta JSON esperada (OTCv8)
+- El updater de OTClientV8 **solo funciona si el cliente corre desde un `data.zip`**
+  (`g_resources.isLoadedFromArchive()`). Por eso el zip de descarga trae binario + lanzador + `LEEME.txt` +
+  `data.zip`, y no la carpeta suelta. El repo `clienteretro` sigue con los archivos sueltos (para editarlos);
+  el `data.zip` se arma al publicar.
+- El `data.zip` de la carpeta de usuario tiene prioridad sobre el de la carpeta del cliente (el binario lo busca
+  primero ahí). Si alguien vuelve a descargar el zip, el updater lo pone al día igual.
+- **CRC:** 8 dígitos hex en minúscula, con ceros a la izquierda (`0660c1c3`). Es lo que devuelven
+  `g_resources.filesChecksums()` y `g_crypt.crc32` en el binario 3.2; sin los ceros falla con
+  `Invalid checksum ... Should be 660c1c3, is: 0660c1c3`.
+- `keepFiles: true`: el cliente conserva los archivos que ya no estén publicados (borrar un archivo no lo quita
+  de los clientes; no hace falta).
+- La URL de descarga se arma con el `Host` del pedido (`UPDATER_FILES_URL` vacío). Si algún día la web va detrás
+  de un proxy o dominio, definir `UPDATER_FILES_URL` en el contenedor.
+- Si la web no responde, el cliente muestra "Updater Error"; al aceptar, carga normal y se actualiza la próxima vez.
+- El binario no se actualiza (en macOS rompería la firma/Gatekeeper). Un binario nuevo = descarga nueva.
 
-```json
-{
-  "url": "https://WEB/updater/files",
-  "files": {
-    "/data/things/760/Tibia.dat": "checksum_crc32_o_md5",
-    "/data/things/760/Tibia.spr": "checksum_crc32_o_md5"
-  },
-  "keepFiles": true
-}
-```
+## Publicar un cambio (sprites, módulos, init.lua)
 
-Opcional para releases mayores:
-
-```json
-"binary": { "file": "/otclient_gl.exe", "checksum": "..." }
-```
-
-Referencia OTCv8: [OTCv8/otcv8-tools](https://github.com/OTCv8/otcv8-tools) (plantilla `updater.php`).
-
----
-
-## Fase 1 — Cliente (clienteretro)
-
-### 1.1 `init.lua` (mac + windows)
-
-```lua
-Services = {
-  updater = "https://WEB/api/updater.php",
-  -- resto igual
-}
-
--- Quitar isLoadedFromArchive(): cargar updater también en carpeta descomprimida
-if type(Services.updater) == 'string' and Services.updater:len() > 4
-  and g_modules.getModule("updater") then
-  g_modules.ensureModuleLoaded("updater")
-  return Updater.init(loadModules)
-end
-loadModules()
-```
-
-### 1.2 `modules/client_entergame/entergame.lua`
-
-En `validateThings()`: comparar checksum de `760/Tibia.dat` y `760/Tibia.spr` **siempre** (no solo con `isLoadedFromArchive()`). Si difiere del esperado y existe `Updater`, llamar `Updater.check({ version = G.clientVersion, host = G.host })`.
-
-Hoy el check de checksum se ignora en carpeta suelta (línea ~98); hay que invertir esa lógica para things o leer checksums desde el manifest del servidor.
-
-### 1.3 Opcional: botón en topmenu
-
-```lua
--- modules/client_topmenu/topmenu.lua
-if Updater then
-  -- ítem "Buscar actualizaciones" → Updater.check()
-end
-```
-
-### 1.4 Publicar ZIP con todo lo anterior
+En la ThinkPad, con `serverrepo` ya en el commit nuevo:
 
 ```bash
-cd ~/Desktop/yurots-principal
-./scripts/sync-clienteretro.sh    # sprites Zagan → clienteretro
-cd ~/clienteretro && ./build-zips.sh
-# Subir web/downloads/Retro76-*.zip
+ssh thinkpad 'cd ~/apps/serverrepo && python3 scripts/client-rme/publish_client.py'
+# o, desde el repo del cliente: ~/apps/clienteretro/build-zips.sh
 ```
 
-Aviso en web/Discord: *última descarga manual; después se actualiza solo*.
+El script (`scripts/client-rme/publish_client.py`):
 
----
+1. copia `Tibia.dat` / `Tibia.spr` de `devtools/rme/rme-client-760` a `mac/` y `windows/` del cliente
+   (`--no-sync` para saltearlo);
+2. comprueba que `mac/` y `windows/` tengan los mismos datos (solo cambian binarios, lanzadores y LEEME);
+3. reemplaza `web/updater/files/` con esos datos (no va a git);
+4. arma `web/downloads/Retro76-Mac.zip` y `Retro76-Windows.zip` para quien instala por primera vez.
 
-## Fase 2 — Backend (yurots-principal/web)
+`--dry-run` muestra qué archivos cambiarían. No hace falta reiniciar la web: lee la carpeta en cada pedido.
+Después, commitear en `~/apps/clienteretro` (sprites/`init.lua` cambiados). La ThinkPad no tiene credenciales de
+GitHub: el push se hace desde la Mac trayendo el commit por ssh
+(`git fetch thinkpad:apps/clienteretro main` en un clon y `git push`).
 
-### 2.1 Estructura en el servidor web
+Cambios en Lua del cliente (`modules/`, `init.lua`): editar **igual** en `mac/` y `windows/`, o el script se
+niega a publicar.
 
-```
-/var/www/retro76/
-  api/updater.php          # POST → JSON manifest
-  updater/files/
-    data/things/760/
-      Tibia.dat
-      Tibia.spr
-  downloads/               # ZIPs completos (ya existe)
-    Retro76-Mac.zip
-    Retro76-Windows.zip
-```
+## Probar sin tocar a los jugadores
 
-### 2.2 `updater.php`
+Se probó así (nov 2026): `web/server.py` local en otro puerto (`PORT=8099 python3.11 web/server.py`; necesita
+Python ≤ 3.12 por `cgi`), un cliente de prueba con `APP_NAME` distinto en su `init.lua` (otra carpeta de
+usuario) y `Services.updater` apuntando al puerto local, y un `data.zip` con un `Tibia.spr` viejo. Para ver qué
+hace, agregar `g_logger.info(...)` en `modules/updater/updater.lua` del zip de prueba: sale en la salida del
+binario. Al terminar, borrar `~/Library/Application Support/<APP_NAME de prueba>`.
 
-- Recibe POST JSON del cliente (`version`, `build`, `os`, `platform`)
-- Devuelve `url` + `files` con checksums (CRC32b o MD5 — **mismo algoritmo** que use `HTTP.download` en el cliente)
-- Cachear checksums en disco (regenerar cada N segundos o en deploy)
-- Plantilla base: OTCv8 otcv8-tools
-
-### 2.3 Script de publicación (crear)
-
-Propuesta: `scripts/publish-client-patcher.sh`
-
-```bash
-# 1. Asegurar assets Zagan actuales
-./scripts/install-zagan-test-env.sh
-
-# 2. Copiar a staging del updater
-cp zagan-test/client-things/760/* → web/updater-files/data/things/760/
-
-# 3. Regenerar manifest / checksums para updater.php
-
-# 4. (Opcional) sync clienteretro + build zips completos
-./scripts/sync-clienteretro.sh
-```
-
----
-
-## Pipeline de release (items Zagan nuevos)
-
-```bash
-# Desarrollo
-python3 scripts/build_zagan_test_assets.py
-./scripts/install-zagan-test-env.sh
-
-# Cliente público
-./scripts/sync-clienteretro.sh
-cd ~/clienteretro && ./build-zips.sh
-
-# Publicación (cuando haya servidor web)
-./scripts/publish-client-patcher.sh   # arma el parche; subirlo a mano
-```
-
-Servidor de juego: debe cargar `items-zagan-test.otb` (o equivalente) para que server ids coincidan con el `.dat` del cliente.
-
----
-
-## Archivos clave
+## Archivos
 
 | Archivo | Rol |
 |---------|-----|
-| `~/clienteretro/mac\|windows/init.lua` | `Services.updater`, arranque del módulo |
-| `~/clienteretro/.../modules/updater/updater.lua` | Lógica de descarga (no tocar salvo bugfix) |
-| `~/clienteretro/.../modules/client_entergame/entergame.lua` | Check al conectar |
-| `~/clienteretro/sync-from-yurots.sh` | Copia Tibia.dat/spr desde yurots-principal |
-| `yurots-principal/scripts/sync-clienteretro.sh` | Rebuild Zagan + sync clienteretro |
-| `yurots-principal/zagan-test/client-things/760/` | Fuente de sprites parcheados |
-| `yurots-principal/web/downloads/` | ZIPs para jugadores nuevos |
-
----
-
-## Checklist de implementación
-
-- [ ] Fase 1: cambios `init.lua` + `entergame.lua` en mac y windows (paridad)
-- [ ] Fase 1: publicar ZIP “migración” + aviso en web
-- [ ] Fase 2: `updater.php` en el servidor web (hoy no hay)
-- [ ] Fase 2: carpeta `updater/files/data/things/760/`
-- [ ] Fase 2: `scripts/publish-client-patcher.sh`
-- [ ] Probar: cliente viejo (sin parche) → migración manual una vez
-- [ ] Probar: cliente con updater → cambiar `.spr` en servidor → abrir → parche automático
-- [ ] Probar: Windows + macOS
-- [ ] Documentar en `clienteretro/README.md` sección “Actualizaciones automáticas”
-
----
+| `clienteretro/{mac,windows}/init.lua` | `Services.updater` y servidor `192.168.1.17:7171` |
+| `clienteretro/{mac,windows}/modules/updater/` | Updater de OTClientV8 (sin cambios) |
+| `clienteretro/build-zips.sh` | Atajo a `publish_client.py` |
+| `scripts/client-rme/publish_client.py` | Publica el cliente y arma los zips |
+| `web/client_updater.py` | Manifest con los CRC |
+| `web/server.py` | `/api/updater.php`, `/updater/files/…`, `/downloads/…` |
+| `web/updater/files/` | Cliente publicado (no va a git) |
+| `web/downloads/Retro76-*.zip` | Descarga completa (no va a git) |
 
 ## Relacionado
 
-- [CLIENT.md](./CLIENT.md) — cliente local de desarrollo
-- [ZAGAN_TEST_ITEMS.md](./items-and-map/ZAGAN_TEST_ITEMS.md) — pipeline items custom
-- [IMPORTAR_ITEM_DESDE_IMAGEN.md](./items-and-map/IMPORTAR_ITEM_DESDE_IMAGEN.md) — llevar items a producción
-- `~/clienteretro/Contexto/MEMORY.md` — nota de pack Zagan en cliente publicado
-- `~/clienteretro/README.md` — sync manual actual (`sync-from-yurots.sh`)
+- [CLIENT.md](./CLIENT.md): cliente local de desarrollo
+- [systems/THINKPAD_TEST_SERVER.md](./systems/THINKPAD_TEST_SERVER.md): deploy en la ThinkPad
+- [items-and-map/IMPORTAR_ITEM_DE_OTRA_VERSION.md](./items-and-map/IMPORTAR_ITEM_DE_OTRA_VERSION.md): ítems nuevos
+  (después de cambiar el `.dat`/`.spr`, publicar el cliente)

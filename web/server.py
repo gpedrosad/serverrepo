@@ -45,7 +45,8 @@ ANALYTICS_STATE = Path(os.environ.get("ANALYTICS_STATE", ROOT / "web/state/analy
 CONFIG_FILE = Path(os.environ.get("CONFIG_FILE", ROOT / "server/YurOTS/ots/config.lua"))
 OT_HOST = os.environ.get("OT_HOST", "127.0.0.1")
 OT_PORT = int(os.environ.get("OT_PORT", "7171"))
-UPDATER_FILES_URL = os.environ.get("UPDATER_FILES_URL", "https://retro76.cl/updater/files")
+# Vacío = la URL de los archivos se arma con el Host del pedido (http://192.168.1.17:8080/updater/files).
+UPDATER_FILES_URL = os.environ.get("UPDATER_FILES_URL", "")
 SITE_URL = os.environ.get("SITE_URL", "https://retro76.cl").rstrip("/")
 SERVER_IP = os.environ.get("SERVER_IP") or read_server_ip(CONFIG_FILE)
 PORT = int(os.environ.get("PORT", "8080"))
@@ -596,7 +597,13 @@ class Handler(BaseHTTPRequestHandler):
                 self.rfile.read(length)
             except Exception:
                 pass
-        payload = build_updater_response(UPDATER_FILES_URL)
+        files_url = UPDATER_FILES_URL
+        if not files_url:
+            host = self.headers.get("Host") or "127.0.0.1"
+            if ":" not in host and PORT != 80:  # el cliente OTCv8 puede mandar el Host sin puerto
+                host = f"{host}:{PORT}"
+            files_url = f"http://{host}/updater/files"
+        payload = build_updater_response(files_url)
         if payload.get("error"):
             log.warning("updater manifest incompleto: %s", payload["error"])
         self._json(200, payload)

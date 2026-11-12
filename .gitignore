@@ -29,7 +29,10 @@ server/YurOTS/ots/source/yurots
 # Cliente público — ZIPs de release (no van a git)
 web/downloads/*.zip
 web/downloads/*.dmg
-web/updater/files/data/
+web/updater/files/
+web/updater/files.new/
+web/updater/files.old/
+web/downloads/*.tmp
 web/state/analytics.json
 web/state/daily.json
 web/state/register.json

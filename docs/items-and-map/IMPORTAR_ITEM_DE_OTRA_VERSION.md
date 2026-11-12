@@ -47,8 +47,7 @@ cómo agregar más. El sprite sale del cliente de esa versión, píxel por píxe
 6. **Aplicar** (re-ejecutable; lo que ya está no se toca):
 
    ```bash
-   python3.11 scripts/client-rme/add_custom_items.py --things devtools/rme/rme-client-760 \
-       --things CLIENTE_DE_JUGADORES/data/things/760
+   python3.11 scripts/client-rme/add_custom_items.py --things devtools/rme/rme-client-760
    ```
 
    Escribe el `.dat`/`.spr` de cada `--things` y `server/YurOTS/ots/data/items/items-zagan-test.otb`.
@@ -56,8 +55,10 @@ cómo agregar más. El sprite sale del cliente de esa versión, píxel por píxe
 7. **Comprobar:** `python3 scripts/map/check-map-load.py` (0 errores) y
    `python3 scripts/client-rme/sprite_tool.py verify` (solo debe fallar "ítems idénticos": cambian las entradas
    de los client ids sacrificados; looks y sprites viejos, iguales).
-8. **Cliente de jugadores:** aplicar el paso 6 también a su `data/things/760`. Con un cliente viejo el ítem se
-   ve como el ítem sacrificado.
+8. **Cliente de jugadores:** tras el deploy, en la ThinkPad `python3 scripts/client-rme/publish_client.py`
+   (copia el `.dat`/`.spr` de `devtools/rme/rme-client-760` al cliente y lo publica). Los clientes se
+   actualizan solos al abrirse ([CLIENT_UPDATER_RETRO76.md](../CLIENT_UPDATER_RETRO76.md)). Un cliente que
+   estaba abierto sigue con los sprites viejos (el ítem se ve como el sacrificado) hasta que se reinicia.
 
 Los PNG van a git con `git add -f` (la carpeta `devtools/zagan-test/` está en `.gitignore`).
 

@@ -89,7 +89,7 @@ Si alguna vez hace falta cambiar la forma del cursor base, los assets están en 
 
 ## Cliente público Retro76 (clienteretro)
 
-Distribución para jugadores: repo `~/clienteretro`, ZIPs en `web/downloads/`.
+Distribución para jugadores: repo `~/apps/clienteretro` en la ThinkPad, zips en `web/downloads/`.
 
-- Sync sprites Zagan: `scripts/sync-clienteretro.sh`
-- **Auto-actualización (plan pendiente):** [CLIENT_UPDATER_RETRO76.md](./CLIENT_UPDATER_RETRO76.md)
+- **Auto-actualización:** el cliente se pone al día solo al abrirse. Publicar cambios (sprites, módulos):
+  `python3 scripts/client-rme/publish_client.py` en la ThinkPad. Ver [CLIENT_UPDATER_RETRO76.md](./CLIENT_UPDATER_RETRO76.md)

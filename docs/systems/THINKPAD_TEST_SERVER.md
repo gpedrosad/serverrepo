@@ -12,7 +12,7 @@ el OK de Gonzalo** (ver `CLAUDE.md` de la carpeta de proyectos). La Mac mini no 
 | Binario | `server/YurOTS/ots/source/yurots`, compilado ahí mismo |
 | Personaje GM | **GM Retro** (access 3, vocación 0). La cuenta está en `server/YurOTS/ots/data/accounts/` de la ThinkPad (no va a git); pedírsela a Gonzalo |
 | Web | contenedor `retro76-web` (`python:3.12-slim`, `--restart unless-stopped`, red del host, usuario `gonzalo`) que corre `web/server.py` del repo en el puerto **8080**: http://192.168.1.17:8080. Tras cambiar `web/*.py`: `docker restart retro76-web`; `web/dist` y los datos se leen en cada pedido. Python 3.12 porque `server.py` usa `cgi` (no existe desde 3.13) |
-| Cliente Mac | `~/Desktop/Retro76-Mac` (copia de `~/apps/clienteretro/mac` de la ThinkPad) con el servidor "ThinkPad (prueba)" agregado |
+| Cliente | `~/apps/clienteretro` (mac/ + windows/). Se actualiza solo al abrirse desde la web (`/api/updater.php`); tras cambiar sprites o Lua del cliente: `python3 scripts/client-rme/publish_client.py` ([CLIENT_UPDATER_RETRO76.md](../CLIENT_UPDATER_RETRO76.md)). En la Mac de Gonzalo: `~/Desktop/Retro76-Mac` (binario + `data.zip`, el zip de descarga) |
 
 Los datos de jugadores de la ThinkPad son de prueba, pero igual se respaldan antes de reiniciar.
 
@@ -97,3 +97,5 @@ Pasó el 2026-11-11 (`config.lua`, `game.cpp` y páginas de `web/dist`). Sin `st
 | 2026-11-11 | Valle de las Bestias (reemplaza al Hunt Maze), barco (GM viajan a todo), Reloj de Arena chico con oleadas, Paso del Norte e Isla del Hielo compactados | `9d2ca0d` |
 | 2026-11-11 | Binario nuevo: `exori hur` / `exori con` de cero, 8 hechizos de versiones nuevas, Eco (`utevo vis`); sin VPS en el repo. Se combinó con el power hit sin commitear de otra sesión (respaldo en `~/backups/deploy-20261111-202201`) | `2d1d2b5` |
 | 2026-11-11 | `main` completo: power hit (C++ y config), footer y wiki nuevos, catálogos `/items` y `/items-all` con los sprites actuales. Binario compilado desde `main` en `~/build/deploy-src`; web pasada a contenedor (`retro76-web`). Respaldo en `~/backups/deploy-20261111-223517` | `ddecc7b` |
+| 2026-11-11 | Armas de 8.x (Emerald Sword, Avenger, Arcane Staff, Arbalest): binario nuevo (ataque de la ballesta), otb y cliente. Respaldo en `~/backups/deploy-20261111-225503` | `c0811e1` |
+| 2026-11-11 | Auto-actualización del cliente: `publish_client.py`, `web/updater/files/`, zips de descarga con `data.zip`; `clienteretro` apunta a `192.168.1.17` | ver git log |
