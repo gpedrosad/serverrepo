@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!-- Mago de la corte del Castillo Imperial (biblioteca): proyectiles mágicos y fuego, se cura y huye herido.
+     Ropa de mago (130) en morado: no necesita cliente nuevo. Doc: docs/gameplay/IMPERIAL_CASTLE.md -->
+<monster name="Court Mage" level="40" maglevel="40" experience="520" pushable="0" armor="12" defense="18" canpushitems="1" staticattack="50" changetarget="200" speed="220">
+	<health now="650" max="650"/>
+	<look type="130" head="0" body="90" legs="108" feet="78" corpse="3128"/>
+	<combat targetdistance="4" runonhealth="60"/>
+
+<attacks>
+	<attack type="melee" maxdamage="45"/>
+	<attack type="rune" name="Heavy Magic Missile" mindamage="45" maxdamage="95" cycleticks="2000" probability="65"/>
+	<attack type="rune" name="fd fireball" exhaustion="500" cycleticks="4500" probability="60"/>
+	<attack type="instant" name="exura" exhaustion="500" cycleticks="5000" probability="60"/>
+</attacks>
+
+<defenses>
+	<defense immunity="invisible"/>
+	<defense immunity="fire"/>
+</defenses>
+
+<voices>
+	<voice sentence="The library is closed."/>
+	<voice sentence="Burn, intruder!"/>
+	<voice sentence="For the Emperor!"/>
+</voices>
+<loot>
+	<item id="2148" countmax="80" chance1="90000" chancemax="0"/>
+	<item id="2260" chance="12000"/>
+	<item id="2150" chance="3000"/>
+	<item id="2162" chance="3000"/>
+	<item id="2178" chance="800"/>
+	<item id="2153" chance="300"/>
+</loot>
+</monster>

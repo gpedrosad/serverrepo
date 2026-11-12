@@ -817,6 +817,10 @@ std::string Item::getDescription(bool fullDescription) const
 		s << std::endl << "Sorcerers, master sorcerers, druids and elder druids: trains magic level slowly on training dummies without spending mana.";
 	else if(id == ITEM_FURY_CAPE && fullDescription)
 		s << std::endl << "Sorcerers and druids: +1 magic level while worn.";
+	else if(id == ITEM_IMPERIAL_CROWN_ARMOR && fullDescription)
+		s << std::endl << "-" << CROWN_ARMOR_REDUCTION_PERCENT << "% fire, energy, poison and life drain damage while worn.";
+	else if(id == ITEM_SAPPHIRE_CROWN_ARMOR && fullDescription)
+		s << std::endl << "-" << CROWN_ARMOR_REDUCTION_PERCENT << "% physical damage while worn.";
 	else if(id == ITEM_MEDUSA_SWORD && fullDescription)
 		s << std::endl << "Paralyzes players on every hit in PvP.";
 	else if(id == ITEM_SWORD_OF_SILENCE && fullDescription)

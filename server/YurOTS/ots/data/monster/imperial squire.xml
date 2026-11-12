@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!-- Escudero del Castillo Imperial: caza fácil en la isla, afuera del castillo. Ropa de knight (131) en morado
+     claro: no necesita cliente nuevo. Doc: docs/gameplay/IMPERIAL_CASTLE.md -->
+<monster name="Imperial Squire" level="8" maglevel="0" experience="45" pushable="1" armor="8" defense="12" canpushitems="0" staticattack="50" changetarget="200" speed="180">
+	<health now="95" max="95"/>
+	<look type="131" head="57" body="52" legs="57" feet="95" corpse="3128"/>
+	<combat targetdistance="1" runonhealth="10"/>
+
+<attacks>
+	<attack type="melee" mindamage="5" maxdamage="28" probability="100"/>
+</attacks>
+
+<defenses>
+</defenses>
+
+<voices>
+	<voice sentence="Halt! This is imperial land."/>
+	<voice sentence="I will be a knight one day!"/>
+	<voice sentence="For the Emperor!"/>
+</voices>
+<loot>
+	<item id="2148" countmax="20" chance1="80000" chancemax="0"/>
+	<item id="2671" chance="15000"/>
+	<item id="2376" chance="5000"/>
+	<item id="2467" chance="4000"/>
+	<item id="2526" chance="3000"/>
+	<item id="2050" chance="10000"/>
+</loot>
+</monster>

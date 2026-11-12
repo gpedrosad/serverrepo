@@ -10,7 +10,7 @@ estado: publicado
 ## Lo esencial
 
 - La exp de monstruos es **x5** hasta nivel 40 y baja por tramos hasta **x1** desde nivel 101.
-- Loot **x3**, skills **x4** y magic level **x3**.
+- Loot **x1**, skills **x4** y magic level **x3**.
 - [[premium|Premium]] suma **+10%** de exp y de loot, y duplica skills y magic level.
 - Al morir pierdes **7%** de tu exp, magic level y skills, y **siempre** la mochila.
 - El servidor guarda tu personaje cada **10 min**.
@@ -30,11 +30,11 @@ Cuenta tu nivel en el momento en que muere el monstruo.
 
 | Rate | Free | Premium |
 |---|---|---|
-| Loot | x3 | x3 y +10% de chance |
+| Loot | x1 | x1 y +10% de chance |
 | Skills (melee, distance y shielding) | x4 | x8 |
 | Magic level | x3 | x6 |
 
-- El equipo valioso (armaduras fuertes, armas de ataque alto, Boots of Haste, Demon Armor...) cae a la mitad del loot normal: **x1,5**.
+- El equipo valioso (armaduras fuertes, armas de ataque alto, Boots of Haste, Demon Armor...) cae a la mitad del loot normal: **x0,5**.
 - Cuando un monstruo suelta oro, suelta al menos el **70%** de su máximo.
 
 ## Regeneración

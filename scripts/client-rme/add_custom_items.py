@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Agrega ítems nuevos (sprite PNG de 32x32) al cliente y al servidor, sobre los archivos actuales.
 
-Para ítems traídos de otras versiones (ej. armas de 8.x) sin el builder viejo (build_zagan_test_assets.py,
+Para ítems traídos de otras versiones (ej. armas de 8.x) o dibujados (Root Colossus), sin el builder viejo (build_zagan_test_assets.py,
 que necesita el pack Zagan perdido y client-local). Cada ítem de NEW_ITEMS:
 
   - Cliente (Tibia.dat / Tibia.spr, en cada --things): agrega el sprite al final del .spr y hace que su
@@ -37,6 +37,7 @@ import build_zagan_test_assets as B  # noqa: E402
 
 SPRITES = ROOT / "devtools" / "zagan-test" / "custom-sprites"
 ITEM_ATTR_WEAPON2 = 0x26
+ITEM_ATTR_ARMOR2 = 0x28   # u16 armor, double weight, u16 slot
 ITEM_ATTR_DECAY = 0x1F
 ITEM_ATTR_ROTATETO = 0x1E
 ITEM_ATTR_DECAY2 = 0x25
@@ -44,7 +45,7 @@ FLAG_PICKUPABLE = 1 << 5
 
 # server_id y client_id fijos: no cambiarlos una vez repartido el cliente. Prototipos (server ids de 7.6):
 # 2407 bright sword (espada 1 mano), 2393 giant sword (espada 2 manos), 2391 war hammer (maza 2 manos),
-# 2455 crossbow (ballesta). Stats de Tibia 8.60 (items.xml de RME data/860).
+# 2455 crossbow (ballesta). Los cuatro primeros usan stats de Tibia 8.60 (items.xml de RME data/860).
 NEW_ITEMS = [
     dict(name="emerald sword", server_id=20157, client_id=3348, prototype=2407, png="emerald_sword.png",
          attack=49, defence=33, descr="A sword with a blade of polished emerald."),
@@ -54,6 +55,22 @@ NEW_ITEMS = [
          attack=50, defence=30, descr="It is enchanted with ancient magic that renders a weak staff into a powerful weapon."),
     dict(name="arbalest", server_id=20160, client_id=3575, prototype=2455, png="arbalest.png",
          attack=2, defence=0, descr="It is a bit heavy due to the iron mounting, but very precise. Adds +2 to bolts."),
+    # Armaduras: `armor` en vez de attack/defence (peso y slot, los del prototipo). 2487 crown armor (arm 13).
+    # Sprites: la crown armor del cliente recoloreada con scripts/client-rme/recolor_item.py (comandos en
+    # docs/items-and-map/CROWN_ARMORS.md). Ventaja propia en C++ (GameState::applyAmulets).
+    dict(name="imperial crown armor", server_id=20161, client_id=3570, prototype=2487,
+         png="imperial_crown_armor.png", armor=14,
+         descr="Forged for the emperors of old, its violet plates still shine with royal gold."),
+    dict(name="sapphire crown armor", server_id=20162, client_id=3564, prototype=2487,
+         png="sapphire_crown_armor.png", armor=14,
+         descr="Sapphire plates bound in gold. Blades and claws slide off it."),
+    # Root Colossus: armas fisicas, sin procs ni cambios de C++. Sprites reproducibles con draw_root_weapons.py.
+    dict(name="rootcleaver", server_id=20163, client_id=3573, prototype=2430,
+         png="rootcleaver.png", attack=49, defence=31,
+         descr="A jade-edged axe bound to a living root. Claimed from a Root Colossus."),
+    dict(name="heartwood maul", server_id=20164, client_id=3561, prototype=2391,
+         png="heartwood_maul.png", attack=52, defence=28,
+         descr="Ancient heartwood held together by twisted roots. Claimed from a Root Colossus."),
 ]
 
 
@@ -194,9 +211,16 @@ def apply_otb(path: Path, dry: bool) -> list[str]:
         if proto is None:
             raise SystemExit(f"{path}: no está el prototipo {item['prototype']}")
         flags, blocks = B.parse_item_props(proto.props)
-        weapon = B.get_block_payload(blocks, ITEM_ATTR_WEAPON2)
-        if not weapon or len(weapon) != 5:
-            raise SystemExit(f"prototipo {item['prototype']} sin bloque de arma")
+        if "armor" in item:
+            armor = B.get_block_payload(blocks, ITEM_ATTR_ARMOR2)
+            if not armor or len(armor) != 12:
+                raise SystemExit(f"prototipo {item['prototype']} sin bloque de armadura")
+            blocks = B.upsert_block(blocks, ITEM_ATTR_ARMOR2, struct.pack("<H", item["armor"]) + armor[2:])
+        else:
+            weapon = B.get_block_payload(blocks, ITEM_ATTR_WEAPON2)
+            if not weapon or len(weapon) != 5:
+                raise SystemExit(f"prototipo {item['prototype']} sin bloque de arma")
+            blocks = B.upsert_block(blocks, ITEM_ATTR_WEAPON2, weapon[:3] + bytes([item["attack"], item["defence"]]))
         descr = item["descr"].encode("latin-1")
         if len(descr) >= 128:
             raise SystemExit(f"descripción de {item['name']} demasiado larga ({len(descr)} bytes, máximo 127)")
@@ -204,7 +228,6 @@ def apply_otb(path: Path, dry: bool) -> list[str]:
         blocks = B.upsert_block(blocks, B.ITEM_ATTR_CLIENTID, struct.pack("<H", item["client_id"]))
         blocks = B.upsert_block(blocks, B.ITEM_ATTR_NAME, item["name"].encode("latin-1"))
         blocks = B.upsert_block(blocks, B.ITEM_ATTR_DESCR, descr)
-        blocks = B.upsert_block(blocks, ITEM_ATTR_WEAPON2, weapon[:3] + bytes([item["attack"], item["defence"]]))
         new_node = B.Node(node_type=proto.node_type, props=B.build_item_props(flags, blocks), children=[])
         old = by_sid.get(item["server_id"])
         if old is not None and old.props == new_node.props:
@@ -215,8 +238,9 @@ def apply_otb(path: Path, dry: bool) -> list[str]:
             log.append(f"  {item['name']}: server {item['server_id']} actualizado")
         else:
             root.children.append(new_node)
+            stats = (f"arm {item['armor']}" if "armor" in item else f"atk {item['attack']} def {item['defence']}")
             log.append(f"  {item['name']}: server {item['server_id']} nuevo (client {item['client_id']}, "
-                       f"prototipo {item['prototype']}, atk {item['attack']} def {item['defence']})")
+                       f"prototipo {item['prototype']}, {stats})")
         changed = True
     if changed and not dry:
         backup = path.with_name(path.name + ".bak-custom-items")

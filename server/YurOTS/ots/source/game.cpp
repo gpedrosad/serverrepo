@@ -357,6 +357,16 @@ int GameState::applyAmulets(Player* player, int damage, attacktype_t atype)
 			player->removeItemInventory(SLOT_RING);
 	}
 
+	// Crown armors de loot: sin cargas, mientras se lleven puestas.
+	Item* armor = player->getItem(SLOT_ARMOR);
+	if (armor && damage > 0)
+	{
+		const int elemental = ATTACK_ENERGY | ATTACK_BURST | ATTACK_FIRE | ATTACK_POISON | ATTACK_LIFEDRAIN;
+		if ((armor->getID() == ITEM_IMPERIAL_CROWN_ARMOR && (atype & elemental)) ||
+			(armor->getID() == ITEM_SAPPHIRE_CROWN_ARMOR && (atype & ATTACK_PHYSICAL)))
+			newDamage *= (100 - CROWN_ARMOR_REDUCTION_PERCENT) / 100.0;
+	}
+
 	return (int)newDamage;
 }
 

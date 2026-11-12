@@ -34,6 +34,8 @@
 </voices>
 
 <loot>
+	<item id="20161" chance="800"/>
+	<item id="20162" chance="800"/>
 	<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
 	<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
 	<item id="2152" countmax="20" chance1="100000" chancemax="0"/>

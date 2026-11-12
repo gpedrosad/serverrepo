@@ -76,8 +76,12 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/TIDE_PRIEST.md`](gameplay/TIDE_PRIEST.md) | Tide Priest: sacerdote de la marea del naufragio, look 234 (Necromancer recoloreado con fuego de San Telmo), saca maná y llama Drowned Sailors. |
 | [`gameplay/BLUE_ELF_ARCANIST.md`](gameplay/BLUE_ELF_ARCANIST.md) | Blue Elf Arcanist: variante cosmética azul del Elf Arcanist (looktype 63, paleta 33/106/68/124, sin cliente nuevo). |
 | [`gameplay/ICE_SPIDER.md`](gameplay/ICE_SPIDER.md) | Ice Spider: variante de hielo del Giant Spider, más fuerte (1800 HP, 1400 exp, ice ball + blizzard, looktype 235 recoloreado, requiere cliente nuevo). |
+| [`gameplay/DARK_HYDRA.md`](gameplay/DARK_HYDRA.md) | Dark Hydra: variante de caza de Hydra, 3200 HP / 3000 exp, aliento de drenaje y look 241 carbón/violeta con marcas arcanas. |
+| [`gameplay/EMERALD_SCARAB.md`](gameplay/EMERALD_SCARAB.md) | Emerald Scarab: variante de Ancient Scarab, 1500 HP / 1150 exp, estallido de veneno y look 242 esmeralda/dorado con gema en el lomo. |
+| [`gameplay/ROOT_COLOSSUS.md`](gameplay/ROOT_COLOSSUS.md) | Root Colossus: guardián vegetal (look 243), 4800 HP / 3400 exp, raíces y esporas; spawn local al final de la progresión del Abismo del Valle de las Bestias, con rootcleaver (axe 1H) y heartwood maul (club 2H) de loot raro. |
 | [`gameplay/CLIENT_EFFECTS.md`](gameplay/CLIENT_EFFECTS.md) | Efectos y proyectiles nuevos del cliente por recoloreo (pack "ice": `NM_ME_ICE_*`, `NM_ANI_FROSTBALL`), límites y cómo agregar packs. |
 | [`gameplay/HELL_QUEST.md`](gameplay/HELL_QUEST.md) | **Hell Quest** (Isla del Infierno): caza en 3 pisos, puertas de nivel 80/100, boss **Ashen Lord** y Cámara de la Elección (4 cofres, se elige uno); criatura nueva **Hellhound** (`generate-hell-quest.py`). |
+| [`gameplay/IMPERIAL_CASTLE.md`](gameplay/IMPERIAL_CASTLE.md) | **Castillo Imperial** (isla al noroeste del templo): 6 pisos de dificultad creciente, jefe **The Fallen Emperor** (look 244), **Imperial Hero** (look 240), Imperial Archer, Court Mage e Imperial Squire, y quest de 2 cofres en la tesorería (`generate-imperial-castle.py`). |
 | [`gameplay/POWER_HIT.md`](gameplay/POWER_HIT.md) | **Power hit**: todo ataque de jugador puede salir ×1,5 (8%) o ×2,5 (1%, *mega*) con efecto dorado/fucsia propio (pack `power`); se ajusta en `config.lua`. |
 | [`gameplay/BOAT_TRAVEL.md`](gameplay/BOAT_TRAVEL.md) | Viajes de Nimral/Fargum: destinos (incl. Gauntlet), Hell Quest, confirmación y reglas de temple. |
 | [`gameplay/MOST_WANTED_SYSTEM.md`](gameplay/MOST_WANTED_SYSTEM.md) | Sistema de bounty / most wanted entre jugadores. |
@@ -123,6 +127,8 @@ Importación de items, mapeo por código, items de prueba, sesiones de editor.
 | Doc | Cubre / cuándo leerlo |
 |-----|-----------------------|
 | [`items-and-map/IMPORTAR_ITEM_DESDE_IMAGEN.md`](items-and-map/IMPORTAR_ITEM_DESDE_IMAGEN.md) | Si un item nuevo no entra o se ve mal: pipeline de import desde imagen. |
+| [`items-and-map/PIEZAS_DE_MAPA.md`](items-and-map/PIEZAS_DE_MAPA.md) | **Cómo usar paredes, escaleras y muebles en un generador de mapa:** muebles de dos piezas (ataúdes, bancos), sillas por dirección, mesas enteras, regla de piezas de pared y llegada de escaleras. `render-pieces.py` para mirarlas antes. |
+| [`items-and-map/CROWN_ARMORS.md`](items-and-map/CROWN_ARMORS.md) | **Imperial y Sapphire Crown Armor** (20161–20162): crown armor recoloreada (`recolor_item.py`), −10% de daño elemental o físico (C++), loot raro de demonios, warlocks, behemoths y jefes. |
 | [`items-and-map/IMPORTAR_ITEM_DE_OTRA_VERSION.md`](items-and-map/IMPORTAR_ITEM_DE_OTRA_VERSION.md) | **Ítems de otras versiones:** sprite sacado de un cliente 8.x píxel a píxel y stats de su `items.xml`. Emerald Sword, Avenger, Arcane Staff y Arbalest (20157–20160); `extract_client_sprites.py` + `add_custom_items.py`. |
 | [`items-and-map/MAPEAR_CON_CODIGO.md`](items-and-map/MAPEAR_CON_CODIGO.md) | Mapear items/pisos por código (no manual) usando scripts. |
 | [`items-and-map/MAPEAR_PASO_DEL_NORTE.md`](items-and-map/MAPEAR_PASO_DEL_NORTE.md) | Paso del Norte: puerta norte, bosque, Tundra Helada, Cuevas del Dragón (z8) y Nido Negro (z9) con `generate-north-pass.py`. |

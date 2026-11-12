@@ -9,6 +9,7 @@
 <monster name="Furious Troll" file="furious troll.xml" />
 <monster name="Enraged Troll" file="enraged troll.xml" />
 <monster name="Ancient Scarab" file="ancient scarab.xml" />
+<monster name="Emerald Scarab" file="emerald scarab.xml" />
 <monster name="Angry Ancient Scarab" file="angry ancient scarab.xml" />
 <monster name="Furious Ancient Scarab" file="furious ancient scarab.xml" />
 <monster name="Enraged Ancient Scarab" file="enraged ancient scarab.xml" />
@@ -19,6 +20,7 @@
 <monster name="Bat" file="bat.xml" />
 <monster name="Bear" file="bear.xml" />
 <monster name="Behemoth" file="behemoth.xml" />
+<monster name="Root Colossus" file="root colossus.xml" />
 <monster name="Angry Behemoth" file="angry behemoth.xml" />
 <monster name="Furious Behemoth" file="furious behemoth.xml" />
 <monster name="Enraged Behemoth" file="enraged behemoth.xml" />
@@ -124,12 +126,18 @@
 <monster name="Angry Hero" file="angry hero.xml" />
 <monster name="Furious Hero" file="furious hero.xml" />
 <monster name="Enraged Hero" file="enraged hero.xml" />
+<monster name="Imperial Hero" file="imperial hero.xml" />
+<monster name="Imperial Squire" file="imperial squire.xml" />
+<monster name="Imperial Archer" file="imperial archer.xml" />
+<monster name="Court Mage" file="court mage.xml" />
+<monster name="The Fallen Emperor" file="the fallen emperor.xml" />
 <monster name="Hunter" file="hunter.xml" />
 <monster name="Angry Hunter" file="angry hunter.xml" />
 <monster name="Furious Hunter" file="furious hunter.xml" />
 <monster name="Enraged Hunter" file="enraged hunter.xml" />
 <monster name="Hyaena" file="hyaena.xml" />
 <monster name="Hydra" file="hydra.xml" />
+<monster name="Dark Hydra" file="dark hydra.xml" />
 <monster name="Angry Hydra" file="angry hydra.xml" />
 <monster name="Furious Hydra" file="furious hydra.xml" />
 <monster name="Enraged Hydra" file="enraged hydra.xml" />

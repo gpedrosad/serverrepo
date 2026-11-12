@@ -203,7 +203,7 @@ expmulmax = {"40", "70", "100", "0"}
 expmulrate = {"5", "4", "2", "1"}
 
 -- loot multiplier (drop chance from monsters, 1 = rl tibia)
-lootmul = 3
+lootmul = 1
 
 -- experience multiplier for pvp-enforced (how much faster you got exp from players)
 expmulpvp = 2

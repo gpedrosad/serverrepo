@@ -28,6 +28,7 @@
 		<voice sentence="RAAAARGH!" />
 	</voices>
 	<loot>
+	<item id="20161" chance="350"/>
 		<item id="2148" countmax="100" chance1="100000" chancemax="0" />
 		<item id="2148" countmax="25" chance1="100000" chancemax="0" />
 		<item id="2393" chance="1000" />

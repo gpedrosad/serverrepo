@@ -42,7 +42,7 @@ cómo agregar más. El sprite sale del cliente de esa versión, píxel por píxe
 4. **Elegir un client id para sacrificar:** `python3.11 scripts/client-rme/add_custom_items.py --candidates`.
    Excluye lo que está en el mapa, loot, NPC, acciones, hechizos o scripts, los destinos de una pudrición,
    suelos, cadáveres, alfombras y cuadros, y los ya usados por ítems custom.
-5. **Agregarlo a `NEW_ITEMS`** en `add_custom_items.py`: nombre, server id (el siguiente libre, hoy 20161),
+5. **Agregarlo a `NEW_ITEMS`** en `add_custom_items.py`: nombre, server id (el siguiente libre, hoy 20165),
    client id del paso 4, prototipo 7.6 (mismo tipo y manos), PNG, ataque, defensa y descripción (< 128 bytes).
 6. **Aplicar** (re-ejecutable; lo que ya está no se toca):
 
@@ -63,6 +63,11 @@ cómo agregar más. El sprite sale del cliente de esa versión, píxel por píxe
 Los PNG van a git con `git add -f` (la carpeta `devtools/zagan-test/` está en `.gitignore`).
 
 ## Por qué no con el builder viejo
+
+El mismo importador instala armas dibujadas para Root Colossus: **rootcleaver 20163** (axe 1H, 49/31,
+client 3573) y **heartwood maul 20164** (club 2H, 52/28, client 3561). Los PNG los genera
+`scripts/client-rme/draw_root_weapons.py`; stats y loot propios, no importados de 8.60. Ver
+[`ROOT_COLOSSUS.md`](../gameplay/ROOT_COLOSSUS.md).
 
 `build_zagan_test_assets.py` rehace todos los ítems Zagan desde el pack original (`~/Downloads/Zagan+Square`)
 y una base `client-local/`: ninguno de los dos existe ya. `add_custom_items.py` usa sus funciones

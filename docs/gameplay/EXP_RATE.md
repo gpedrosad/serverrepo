@@ -44,7 +44,7 @@ Ejemplos:
 
 | Rate | Valor |
 |------|-------|
-| Loot | ×3 |
+| Loot | ×1 (`lootmul`, desde el 12 nov 2026; antes ×3) |
 | Skills | ×4 |
 | ML | ×3 (×6 premium) — ver [`ML_RATE.md`](ML_RATE.md) |
 | Regen HP al comer | ×5 |

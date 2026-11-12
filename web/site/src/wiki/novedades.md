@@ -37,6 +37,14 @@ Nuevo destino de barco (`frozen isle`, 20 gp). Es un sendero helado que sube por
 
 El **Alice Maze** ya no existe: su lugar en el barco lo ocupa esta isla.
 
+### Castillo Imperial
+
+El castillo de la isla al noroeste del templo se rehízo entero: **seis pisos**, cada uno más duro que el anterior. Arriba espera un jefe, **The Fallen Emperor**, con sus **Imperial Heroes** de capa morada, y dos cofres con {item:2488} Crown Legs y {item:2498} Royal Helmet. Afuera hay **Imperial Squires**, caza fácil a un puente de la ciudad. Todo en [[castillo-imperial]].
+
+### Crown Armors de botín
+
+Dos versiones nuevas de la Crown Armor: la {item:20161} **Imperial** baja un 10% el daño mágico y la {item:20162} **Sapphire** baja un 10% el daño físico. Salen como botín raro de demonios, warlocks, behemoths, Demodras, Orshabaal y el Ashen Lord. Todo en [[crown-armors]].
+
 ### Ropa nueva para los trainers
 
 Los **Trainer Monks** y los **Mini Trainer Monks** estrenan ropa. Siguen igual: no hacen daño y no mueren. Ver [[training]].

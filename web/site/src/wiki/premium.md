@@ -28,7 +28,7 @@ estado: publicado
 | Beneficio | Free | Premium |
 |---|---|---|
 | Exp de monstruos | normal | +10% |
-| Loot | x3 | x3 y +10% de chance |
+| Loot | x1 | x1 y +10% de chance |
 | Skills | x4 | x8 |
 | Magic level | x3 | x6 |
 | Training al día | 2 h | 6 h |

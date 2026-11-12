@@ -255,6 +255,9 @@ enum item_t {
 	ITEM_BONEPRIEST_REAVER = 20154,
 	ITEM_PRIVATE_TRAINER_DUMMY = 20155,
 	ITEM_ENCHANTED_SPEAR = 20156,
+	/* Crown armors recoloreadas: loot raro de monstruos fuertes (docs/items-and-map/CROWN_ARMORS.md) */
+	ITEM_IMPERIAL_CROWN_ARMOR = 20161,
+	ITEM_SAPPHIRE_CROWN_ARMOR = 20162,
 	ITEM_SPLASH			= 2019,
 	ITEM_POOL			= 2025,
 	ITEM_BOW			= 2456,
@@ -354,6 +357,7 @@ enum bloodsplash_t
 #define AURORA_BLADE_ATTACK_DELAY_MS 1250
 #define AURORA_AXE_ATTACK_DELAY_MS 1250
 #define NIGHTGLASS_FIRST_HIT_FASTER_PERCENT 6   /* solo el primer golpe al apuntar */
+#define CROWN_ARMOR_REDUCTION_PERCENT 10        /* imperial: daño mágico elemental; sapphire: daño físico */
 #define SPEAR_HIT_CHANCE 70           /* thrown spear (era 50 genérico) */
 #define CRYSTAL_ARROW_HIT_CHANCE 85   /* crystal arrow: menos miss que spear */
 #define ENCHANTED_SPEAR_HIT_CHANCE 80 /* enchanted spear: spear mejorada (ataque 36 en el OTB) */

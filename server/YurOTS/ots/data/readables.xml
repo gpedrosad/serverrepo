@@ -46,4 +46,7 @@
 	<readable x="321" y="285" z="7" text="RUINAS ANTIGUAS\nNo todos los muertos descansan."/>
 	<readable x="322" y="254" z="7" text="Portal al templo."/>
 	<!-- END BEAST_VALLEY_SIGNS -->
+	<!-- BEGIN IMPERIAL_CASTLE_SIGNS -->
+	<readable x="101" y="38" z="7" text="CASTILLO IMPERIAL\nCada piso es mas duro que el anterior.\nArriba esperan los Imperial Heroes y el tesoro."/>
+	<!-- END IMPERIAL_CASTLE_SIGNS -->
 </readables>
