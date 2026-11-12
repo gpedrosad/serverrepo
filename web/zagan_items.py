@@ -12,6 +12,9 @@ ZAGAN_MANIFEST = ROOT / "zagan-test" / "manifest.json"
 ZAGAN_OTB = ROOT / "zagan-test" / "server-items" / "items.otb"
 ZAGAN_PREVIEWS = ROOT / "zagan-test" / "previews"
 PRIVATE_IMG_DIR = Path(__file__).resolve().parent / "private" / "zagan-items"
+# Imágenes del catálogo curado (en git): recortadas del atlas del cliente actual por
+# scripts/web/build-items-catalog.py. Se buscan antes que las de private/.
+CATALOG_IMG_DIR = Path(__file__).resolve().parent / "assets" / "items" / "custom"
 # Runtime override (gitignored). Canonical curated catalog for /items:
 CURATED_CATALOG = Path(__file__).resolve().parent / "data" / "items_catalog.json"
 CATALOG_FILE = Path(__file__).resolve().parent / "state" / "zagan_items_catalog.json"
@@ -328,7 +331,8 @@ def load_catalog() -> list[dict]:
 
 def image_path(name: str) -> Path | None:
     safe = _safe_image_name(name)
-    path = (PRIVATE_IMG_DIR / safe).resolve()
-    if not str(path).startswith(str(PRIVATE_IMG_DIR.resolve())):
-        return None
-    return path if path.is_file() else None
+    for base in (CATALOG_IMG_DIR, PRIVATE_IMG_DIR):
+        path = (base / safe).resolve()
+        if str(path).startswith(str(base.resolve())) and path.is_file():
+            return path
+    return None

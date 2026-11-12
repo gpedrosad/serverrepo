@@ -15,7 +15,7 @@ if (missing.length) console.warn(`wiki: ${a.slug} enlaza a artículos que no exi
 
 const siblings = articles().filter((x) => x.category === a.category && x.slug !== a.slug);
 ---
-<Base lang="es" title={`${a.title} — Wiki Retro76`} path={`/wiki/${a.slug}`} langSwitch={false} footer={false} description={a.summary}>
+<Base lang="es" title={`${a.title} — Wiki Retro76`} path={`/wiki/${a.slug}`} langSwitch={false} description={a.summary}>
   <article class="wiki-article">
     <p class="crumbs small"><a href="/wiki">Wiki</a> <span class="faint">/</span> <span class="faint">{a.category}</span></p>
     <h1 class="title">

@@ -1,0 +1,83 @@
+---
+titulo: Hell Quest
+categoria: Lugares y actividades
+resumen: Isla de lava con caza para todos, cuevas desde nivel 80, un boss y 4 premios a elegir uno.
+orden: 15
+icono: 2472
+estado: publicado
+---
+
+![Superficie de la Isla del Infierno](/assets/wiki/hell-quest-mapa.jpg)
+
+## Lo esencial
+
+- Se llega en [[barcos|barco]]: di `hell` a cualquier barquero (**20 gp**).
+- La superficie es libre para cualquier nivel. Las cuevas piden **nivel 80** y la arena del boss **nivel 100**.
+- Abajo vive el **Ashen Lord**, un boss para grupo que reaparece cada **2 h**.
+- Detrás del boss está la **Cámara de la Elección**: 4 cofres y te llevas **uno solo**.
+- Hay dos criaturas nuevas: el **Hellhound** y el **Ashen Lord**.
+
+## Cómo se hace
+
+1. Viaja a Hell Quest. Llegas al puerto, al sur de la isla (`345, 211, piso 7`).
+2. Caza en la superficie y avanza hacia el cráter, al noreste.
+3. En el borde del cráter hay un santuario de ladrillo con la bajada. Párate justo enfrente de la puerta y úsala (**nivel 80**).
+4. Recorre las Fauces del Infierno y baja al Abismo.
+5. Pasa la puerta del Abismo (**nivel 100**) y vence al Ashen Lord.
+6. Elige tu cofre. El portal de la cámara te lleva al templo.
+
+## Zonas
+
+| Zona | Dónde | Monstruos |
+|---|---|---|
+| Campos de Ceniza | superficie, oeste | Fire Elemental, Dragon |
+| Ríos de Lava | superficie, este | Dragon, Dragon Lord |
+| Fortaleza del Culto | superficie, noroeste | Warlock, Necromancer |
+| Cráter | superficie, noreste | Dragon Lord |
+| Fauces del Infierno | piso de abajo (nivel 80) | **Hellhound**, Dragon Lord, Demon Skeleton |
+| Abismo | lo más profundo | Demon, Black Dragon, Hellhound |
+| Arena | detrás de la puerta de nivel 100 | **Ashen Lord** |
+
+Las Fauces son 9 cámaras unidas en circuito: puedes cazar dando vueltas sin volver sobre tus pasos.
+
+## La Cámara de la Elección
+
+| Cofre | Premio |
+|---|---|
+| 1 | {item:2493} Demon Helmet |
+| 2 | {item:2472} Magic Plate Armor |
+| 3 | {item:2195} Boots of Haste |
+| 4 | {item:2520} Demon Shield |
+
+> **Ojo:** cada personaje abre **un solo cofre**. Después los otros tres aparecen vacíos. Piensa bien cuál te sirve.
+
+## Criaturas nuevas
+
+![Hellhound](/assets/monsters/hellhound.png)
+
+**Hellhound.** Perro de carbón y brasas. Anda en jauría, es muy rápido y escupe una ola corta de fuego.
+
+| Vida | Exp base | Golpe | Inmune a | Botín destacado |
+|---|---|---|---|---|
+| 1.500 | 1.300 | 60–210 | fuego | oro, {item:2147} Small Ruby, {item:2392} Fire Sword (muy rara) |
+
+![Ashen Lord](/assets/monsters/ashen-lord.png)
+
+**Ashen Lord.** Demonio de ceniza y magma. Lanza olas y bombas de fuego, te drena el maná, se cura e invoca hasta **2 Hellhounds**. Ven en grupo.
+
+| Vida | Exp base | Golpe | Inmune a |
+|---|---|---|---|
+| 32.000 | 18.000 | 220–560 | fuego, energía, veneno, paralyze, invisibilidad |
+
+Suelta siempre oro y platino. A veces {item:2160} Crystal Coin, y rara vez {item:2432} Fire Axe, {item:2520} Demon Shield, {item:2472} Magic Plate Armor, {item:2493} Demon Helmet o {item:2495} Demon Legs.
+
+> **Tip:** los dos son inmunes al fuego. Lleva Sudden Death, energía o armas físicas.
+
+La exp se multiplica según tus [[rates]]. Necesitas el [cliente actualizado](/cliente) para ver a las criaturas nuevas.
+
+## Relacionado
+
+- [[barcos]]
+- [[black-dragon]]
+- [[isla-del-hielo-eterno]]
+- [[novedades]]

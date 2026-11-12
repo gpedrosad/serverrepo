@@ -1,8 +1,9 @@
 ---
 // Estructura común: <head> con SEO (y versiones por idioma), cabecera con el estado del server,
-// navegación, contenido y el footer en pixel art de Chillán.
+// navegación, contenido y el footer (components/SiteFooter.astro).
 import '../styles/site.css';
 import { dict, localePath } from '../i18n.js';
+import SiteFooter from '../components/SiteFooter.astro';
 
 interface Props {
   lang: 'es' | 'en';
@@ -11,7 +12,7 @@ interface Props {
   path: string;           // ruta sin idioma ('/', '/top'...): marca el link actual y arma el cambio de idioma
   canonical?: boolean;
   langSwitch?: boolean;  // false: página solo en español (wiki), sin botón de idioma ni hreflang
-  footer?: boolean;      // false: sin la escena de Chillán al final (wiki)
+  footer?: boolean;      // false: sin footer
 }
 
 const { lang, title, path, canonical = true, langSwitch = true, footer = true } = Astro.props;
@@ -52,7 +53,7 @@ const navLink = (p: string) => ({ href: p === '/wiki' ? p : localePath(lang, p),
 </head>
 <body>
   <div class="wrap">
-    <header class="site-head">
+    <header class="site-head" id="top">
       <a class="brand" href={localePath(lang, '/')}>
         <img src="/assets/brand/favicon.png" alt="" width="24" height="24">
         Retro76 <small>{T.tagline}</small>
@@ -74,30 +75,21 @@ const navLink = (p: string) => ({ href: p === '/wiki' ? p : localePath(lang, p),
     </main>
   </div>
 
-  {footer && (
-    <Fragment>
-    <footer class="chillan-scene" id="scene" role="img" aria-label={T.sceneLabel}>
-      <img class="still-day" src="/assets/footer/chillan-day.png" alt="" width="415" height="137" loading="lazy">
-      <img class="still-night" src="/assets/footer/chillan-night.png" alt="" width="415" height="137" loading="lazy">
-      <canvas width="415" height="137" aria-hidden="true"></canvas>
-      <canvas width="415" height="137" aria-hidden="true"></canvas>
-      <canvas width="415" height="137" aria-hidden="true"></canvas>
-      <canvas width="415" height="137" aria-hidden="true"></canvas>
-    </footer>
-    <script is:inline src="/assets/footer/chillan-footer.js" defer></script>
-    </Fragment>
-  )}
+  {footer && <SiteFooter lang={lang} />}
   <script type="application/json" id="i18n" set:html={JSON.stringify(T.js)} />
 
   <script>
     import { getData, t } from '../lib/client.js';
-    const dot = document.querySelector('#status .dot');
-    const text = document.getElementById('status-text');
+    // Estado del server en la cabecera y en el footer.
+    const spots = [['#status .dot', 'status-text'], ['.foot-status .dot', 'foot-status-text']]
+      .map(([d, s]) => [document.querySelector(d), document.getElementById(s)]).filter(([d, s]) => d && s);
     getData().then((d) => {
       const s = d.server || {};
-      dot.classList.add(s.online ? 'on' : 'off');
-      text.textContent = s.online ? t('online', { n: s.players_online }) : t('offline');
-    }).catch(() => { text.textContent = t('noConnection'); });
+      for (const [dot, text] of spots) {
+        dot.classList.add(s.online ? 'on' : 'off');
+        text.textContent = s.online ? t('online', { n: s.players_online }) : t('offline');
+      }
+    }).catch(() => { for (const [, text] of spots) text.textContent = t('noConnection'); });
   </script>
 </body>
 </html>

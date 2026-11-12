@@ -77,6 +77,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/ICE_SPIDER.md`](gameplay/ICE_SPIDER.md) | Ice Spider: variante de hielo del Giant Spider, más fuerte (1800 HP, 1400 exp, ice ball + blizzard, looktype 235 recoloreado, requiere cliente nuevo). |
 | [`gameplay/CLIENT_EFFECTS.md`](gameplay/CLIENT_EFFECTS.md) | Efectos y proyectiles nuevos del cliente por recoloreo (pack "ice": `NM_ME_ICE_*`, `NM_ANI_FROSTBALL`), límites y cómo agregar packs. |
 | [`gameplay/HELL_QUEST.md`](gameplay/HELL_QUEST.md) | **Hell Quest** (Isla del Infierno): caza en 3 pisos, puertas de nivel 80/100, boss **Ashen Lord** y Cámara de la Elección (4 cofres, se elige uno); criatura nueva **Hellhound** (`generate-hell-quest.py`). |
+| [`gameplay/POWER_HIT.md`](gameplay/POWER_HIT.md) | **Power hit**: todo ataque de jugador puede salir ×1,5 (8%) o ×2,5 (1%, *mega*) con efecto dorado/fucsia propio (pack `power`); se ajusta en `config.lua`. |
 | [`gameplay/BOAT_TRAVEL.md`](gameplay/BOAT_TRAVEL.md) | Viajes de Nimral/Fargum: destinos (incl. Gauntlet), Hell Quest, confirmación y reglas de temple. |
 | [`gameplay/MOST_WANTED_SYSTEM.md`](gameplay/MOST_WANTED_SYSTEM.md) | Sistema de bounty / most wanted entre jugadores. |
 | [`gameplay/DAILY_TASK.md`](gameplay/DAILY_TASK.md) | **Daily Task (Huntmaster):** 3 contratos/día por rango de level, kills + oro o exp, streak. |
@@ -158,7 +159,8 @@ Catálogo de **migración/portabilidad** (16 fichas congeladas). No es el invent
 | [`features/15-exori-gran.md`](features/15-exori-gran.md) | Hechizo exori gran. |
 | [`features/16-utility-spell-access.md`](features/16-utility-spell-access.md) | Acceso a hechizos utilitarios. |
 | [`features/18-web-astro.md`](features/18-web-astro.md) | Web en Astro: páginas, diseño, cómo compilar (en la ThinkPad) y cómo la sirve `server.py`. Incluye la **wiki** para jugadores (`/wiki`, artículos en `web/site/src/wiki/`). |
-| [`features/17-web-footer-chillan.md`](features/17-web-footer-chillan.md) | Footer de la web: el centro de Chillán en pixel art, animado, de día o de noche según la hora. |
+| [`features/17-web-footer.md`](features/17-web-footer.md) | Footer de la web: franja de ítems en pixel art, dirección del server para copiar, estado en vivo, links y aviso legal. |
+| [`features/19-web-catalogo-items.md`](features/19-web-catalogo-items.md) | Catálogos privados `/items` y `/items-all`: de dónde salen, cómo regenerarlos con el cliente y el OTB actuales. |
 
 ---
 

@@ -1,30 +1,19 @@
-# Web: footer en pixel art del centro de Chillán
+# Web: footer
 
-Al final de cada página de retro76.cl (layout `web/site/src/layouts/Base.astro`) hay una escena pixel-art del centro de
-Chillán: la Catedral, la Cruz Monumental, la Plaza de Armas con el monumento a O'Higgins y la
-cordillera. Reemplaza al footer de texto que se sacó en nov 2026.
+Al final de cada página de retro76.cl, wiki incluida. Componente `web/site/src/components/SiteFooter.astro`,
+estilos en `web/site/src/styles/site.css` (bloque `footer`), textos en `web/site/src/i18n.js` (`footer`, en
+español e inglés).
 
-Viene del proyecto "laboratorio" (`~/proyectos/footer-endless`, fuera de este repo): el arte lo
-genera `tools/gen-chillan.py` allá.
-
-| Archivo | Qué es |
+| Parte | Qué es |
 |---|---|
-| `web/assets/footer/chillan-day.png`, `chillan-night.png` | Arte de día y de noche (415×137, se escala con `image-rendering: pixelated`) |
-| `web/assets/footer/chillan-map.png` | Mapa por píxel: capa de profundidad (R), animación (G) y grupo de luz (B) |
-| `web/assets/footer/chillan-footer.js` | Animación: 4 canvas apilados, parallax al hacer scroll, loop a 8 fps |
-| `web/site/src/layouts/Base.astro`, `web/site/src/styles/site.css` | `<footer class="chillan-scene">` y su CSS |
+| Franja de ítems | 14 sprites del juego en pixel art (Demon Helmet, MPA, Crimson Wand…), apagados; se iluminan con brillo dorado al pasar el mouse. Salen de `web/assets/wiki/items/<id>.png` (lista `RELICS` del componente) |
+| Marca | logo, "Retro76" en dorado, una línea de qué es el server |
+| Estado | en línea / jugadores conectados, con el mismo `/api/data` que la cabecera (script de `Base.astro`) |
+| Columnas | Jugar (Cuenta, Cliente, Premium, Bugs), Comunidad (Live, Top, Power, PK, Muertes), Guía (Novedades, Wiki, Reglas, Info, Spells) |
+| Barra legal | año, aviso de servidor no oficial (Tibia es marca de CipSoft) y "Arriba ↑" |
 
-**Cómo se comporta**
-- **Día o noche según la hora del visitante:** noche de 20:00 a 7:00. Si la página queda abierta,
-  cambia sola al pasar la hora.
-- **De día:** viento en los árboles, gente caminando, un perro, palomas que vuelan cuando alguien
-  pasa y una bandada que cruza el cielo. El cielo del arte es transparente, así que el footer
-  le pone un degradé celeste que nace del fondo oscuro de la página.
-- **De noche:** ventanas que se prenden y apagan, faroles (uno parpadea), estrellas y la cruz
-  encendida.
-- El loop solo corre mientras el footer está en pantalla y la pestaña está visible.
-- Con `prefers-reduced-motion` no hay parallax ni loop: se pinta un solo cuadro.
-- Sin JavaScript queda la imagen fija.
+Sin imágenes grandes ni JavaScript propio. `Base.astro` acepta `footer={false}`
+para una página sin footer.
 
-Para cambiar el arte: regenerarlo en el laboratorio y copiar los tres PNG a `web/assets/footer/`
-(el mapa tiene que corresponder al arte, píxel a píxel).
+**Historia:** hasta nov 2026 el footer era una escena animada del centro de Chillán en pixel art
+(`web/assets/footer/`, venía de `~/proyectos/footer-endless`). Se sacó porque no tenía relación con el juego.

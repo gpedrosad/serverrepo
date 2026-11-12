@@ -36,7 +36,10 @@ const STRINGS = {
       '/spells': 'Spells', '/reglas': 'Reglas', '/info': 'Info', '/wiki': 'Wiki', '/cuenta': 'Cuenta', '/cliente': 'Cliente',
       '/premium': 'Premium', '/bugs': 'Bugs' },
     description: 'Retro76: OT server chileno de Tibia 7.6 (Open Tibia). PvP retro, comunidad latina, baja latencia desde Chile y sistemas custom: gemas, El Crisol, arenas y más. Crea tu cuenta gratis y descarga el cliente.',
-    sceneLabel: "Centro de Chillán, Chile, en pixel art: la Catedral y la Cruz Monumental, la Plaza de Armas con el monumento a Bernardo O'Higgins, árboles, faroles, gente paseando y la cordillera de los Andes.",
+    footer: { tagline: 'Tibia 7.6 clásico, hecho en Chile. PvP de la vieja escuela con sistemas propios.',
+      play: 'Jugar', community: 'Comunidad', guide: 'Guía',
+      news: 'Novedades', up: 'Arriba',
+      legal: 'Servidor no oficial de Open Tibia. Tibia es una marca de CipSoft GmbH, sin relación con Retro76.' },
     loading: 'Cargando…',
     home: {
       title: 'Retro76 — OT Server Chileno Tibia 7.6 | Open Tibia Chile',
@@ -164,7 +167,10 @@ const STRINGS = {
       '/spells': 'Spells', '/reglas': 'Rules', '/info': 'Info', '/wiki': 'Wiki (ES)', '/cuenta': 'Account', '/cliente': 'Client',
       '/premium': 'Premium', '/bugs': 'Bugs' },
     description: 'Retro76: a Chilean Open Tibia 7.6 server. Old-school PvP, a Latin American community, low latency from Chile and custom systems: gems, the Crucible, arenas and more. Create a free account and download the client.',
-    sceneLabel: "Downtown Chillán, Chile, in pixel art: the Cathedral and the Monumental Cross, the main square with the Bernardo O'Higgins monument, trees, street lamps, people walking and the snowy Andes.",
+    footer: { tagline: 'Classic Tibia 7.6, made in Chile. Old-school PvP with custom systems.',
+      play: 'Play', community: 'Community', guide: 'Guide',
+      news: 'What\'s new (ES)', up: 'Top',
+      legal: 'Unofficial Open Tibia server. Tibia is a trademark of CipSoft GmbH, not affiliated with Retro76.' },
     loading: 'Loading…',
     home: {
       title: 'Retro76 — Chilean Tibia 7.6 OT Server | Open Tibia',

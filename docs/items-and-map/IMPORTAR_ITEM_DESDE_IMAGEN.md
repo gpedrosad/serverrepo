@@ -259,7 +259,7 @@ Por eso el pipeline **reutiliza** slots viejos de 1 sprite en lugar de subir `it
 | `scripts/play-zagan-test-client.sh` | Cliente `client-local-zagan-test` |
 | `scripts/open-rme-zagan-test.sh` | Map editor aislado |
 | `scripts/start-local-zagan-test.sh` | Docker + cliente |
-| `scripts/sync-zagan-items-web.py` | Catálogo web privado |
+| `scripts/web/build-items-catalog.py` | Catálogo web privado (ver `docs/features/19-web-catalogo-items.md`; `sync-zagan-items-web.py` dependía del pack perdido) |
 | `zagan-test/manifest.json` | Índice de todos los items |
 | `zagan-test/previews/` | Miniaturas |
 | `zagan-test/custom-sprites/` | PNGs propios |

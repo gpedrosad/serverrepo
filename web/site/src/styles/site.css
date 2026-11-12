@@ -255,24 +255,62 @@ code.say { font-family: var(--mono); font-size: 0.9em; color: var(--fg); backgro
 .callout.tip strong:first-child { color: var(--good); }
 
 .wiki-more { max-width: 40rem; margin-top: 3rem; }
-/* páginas sin la escena de Chillán (wiki): aire al final */
-body:not(:has(.chillan-scene)) .wrap { padding-bottom: 4rem; }
+/* páginas sin footer: aire al final */
+body:not(:has(.site-foot)) .wrap { padding-bottom: 4rem; }
 .wiki-more .small { margin-top: 1rem; }
 
-/* ---------- footer: el centro de Chillán (assets/footer/chillan-footer.js) ---------- */
-.chillan-scene { position: relative; margin-top: 4rem; border-top: 1px solid var(--rule); }
-.chillan-scene:not(.night) { background: linear-gradient(180deg, #0e0e0d 0%, #5f86ad 28%, #a9cbe8 60%, #dcebf7 100%); }
-.chillan-scene img, .chillan-scene canvas { object-fit: cover; object-position: center; image-rendering: crisp-edges; image-rendering: pixelated; }
-.chillan-scene img { display: block; width: 100%; aspect-ratio: 16 / 9; }
-@media (min-width: 640px) { .chillan-scene img { aspect-ratio: auto; height: auto; } }
-.chillan-scene .still-night { display: none; }
-.chillan-scene.night .still-day { display: none; }
-.chillan-scene.night .still-night { display: block; }
-.chillan-scene.is-live img { visibility: hidden; }
-.chillan-scene canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; will-change: transform; }
-.chillan-scene:not(.is-live) canvas { display: none; }
+/* ---------- footer (components/SiteFooter.astro) ---------- */
+.site-foot {
+  position: relative; margin-top: 5rem;
+  background:
+    radial-gradient(60rem 14rem at 50% 0%, rgba(224, 170, 72, 0.07), transparent 70%),
+    linear-gradient(180deg, var(--bg) 0%, #100e0a 100%);
+  border-top: 1px solid var(--rule);
+}
+.site-foot::before {                      /* hilo dorado sobre el borde */
+  content: ""; position: absolute; top: -1px; left: 10%; right: 10%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: 0.55;
+}
+.foot-relics {
+  display: flex; justify-content: center; gap: 0.9rem; padding: 1.6rem 1rem 0.4rem;
+  overflow: hidden; max-width: 50rem; margin: 0 auto;
+}
+.foot-relics img {
+  width: 32px; height: 32px; flex: none; image-rendering: pixelated;
+  opacity: 0.45; filter: saturate(0.6);
+  transition: opacity 0.2s, filter 0.2s, transform 0.2s;
+}
+.foot-relics img:hover {
+  opacity: 1; filter: saturate(1.15) drop-shadow(0 0 6px rgba(224, 170, 72, 0.65)); transform: translateY(-3px);
+}
+.foot-main {
+  max-width: 50rem; margin: 0 auto; padding: 2rem 1rem 2.2rem;
+  display: grid; gap: 2rem 1.5rem; grid-template-columns: 1fr 1fr;
+}
+@media (min-width: 720px) { .foot-main { grid-template-columns: 1.7fr 1fr 1fr 1fr; } }
+.foot-brand { grid-column: 1 / -1; }
+@media (min-width: 720px) { .foot-brand { grid-column: auto; } }
+.foot-logo { display: inline-flex; align-items: center; gap: 0.55rem; text-decoration: none; font-size: 1.25rem; font-weight: 650; letter-spacing: -0.01em; }
+.foot-logo img { image-rendering: pixelated; }
+.foot-logo span {
+  background: linear-gradient(180deg, #f6dfa6 0%, var(--accent) 55%, #b77d27 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.foot-tagline { color: var(--muted); font-size: 13.5px; margin: 0.55rem 0 1rem; max-width: 22rem; }
+.foot-status { text-align: left; margin-top: 0; }
+.foot-col h2 { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--faint); margin-bottom: 0.75rem; }
+.foot-col ul { list-style: none; display: grid; gap: 0.4rem; }
+.foot-col a { color: var(--muted); text-decoration: none; font-size: 14px; }
+.foot-col a:hover { color: var(--accent); }
+.foot-legal {
+  max-width: 50rem; margin: 0 auto; padding: 1rem 1rem 1.6rem; border-top: 1px solid var(--rule);
+  display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; justify-content: space-between; align-items: baseline;
+  font-size: 12px; color: var(--faint);
+}
+.foot-legal p { margin: 0; }
+.foot-up { color: var(--faint); text-decoration: none; }
+.foot-up:hover { color: var(--accent); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
-  .chillan-scene canvas { will-change: auto; transform: none !important; }
 }

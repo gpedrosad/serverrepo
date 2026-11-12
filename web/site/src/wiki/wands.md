@@ -64,7 +64,7 @@ La {item:20123} **Crimson Wand** es una wand propia del servidor:
 - Ataca **el doble de rápido** que cualquier otra wand.
 - Acepta Violet Gems.
 
-Por ahora no la vende ningún NPC ni la suelta ningún monstruo.
+No la vende ningún NPC ni la suelta ningún monstruo: está en un cofre de la cámara del tesoro de la [[isla-del-hielo-eterno]], uno por personaje.
 
 > **Tip:** la Violet Gem cuenta para el daño de la wand y para los requisitos de hechizos. Es la mejora más útil para un mago.
 

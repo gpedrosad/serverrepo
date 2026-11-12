@@ -1,1 +1,0 @@
-import{g as s,t as n}from"./client.PbclRlB1.js";const c=document.querySelector("#status .dot"),e=document.getElementById("status-text");s().then(o=>{const t=o.server||{};c.classList.add(t.online?"on":"off"),e.textContent=t.online?n("online",{n:t.players_online}):n("offline")}).catch(()=>{e.textContent=n("noConnection")});

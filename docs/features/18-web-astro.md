@@ -29,7 +29,7 @@ compilado y JavaScript solo donde hay datos en vivo. Las APIs de `web/server.py`
 Todas existen también en inglés bajo `/en` (ver Idiomas). Las páginas están en `src/pages/[...lang]/`.
 
 Comunes: `layouts/Base.astro` (head con SEO, cabecera con el estado del server, navegación y el
-[footer de Chillán](17-web-footer-chillan.md)), `styles/site.css` (todo el CSS) y
+[footer](17-web-footer.md)), `styles/site.css` (todo el CSS) y
 `lib/client.js` (pedir `/api/data` una vez por página, escapar texto, links a personajes,
 captcha de formularios).
 
