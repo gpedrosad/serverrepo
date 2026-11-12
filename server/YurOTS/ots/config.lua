@@ -205,6 +205,15 @@ expmulrate = {"5", "4", "2", "1"}
 -- loot multiplier (drop chance from monsters, 1 = rl tibia)
 lootmul = 3
 
+-- cuentas de azar corregidas (1 = corregida, 0 = como era antes). Ver docs/systems/SANITIZER_TESTS.md
+-- fixlootchance: el loot cae con la chance configurada (antes caia la mitad)
+fixlootchance = 1
+-- fixchangetarget: los monstruos cambian de blanco segun "changetarget" del XML (antes, en cada turno)
+fixchangetarget = 1
+-- fixshielddefense: tirada de defensa entre defensa/4 y defensa (antes, entre 0 y defensa/4). Cambia mucho
+-- el balance (los escudos bloquean ~5 veces mas): probar con un knight antes de prenderla
+fixshielddefense = 0
+
 -- experience multiplier for pvp-enforced (how much faster you got exp from players)
 expmulpvp = 2
 

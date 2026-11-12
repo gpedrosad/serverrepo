@@ -99,7 +99,7 @@ Hoy da 0: ya está aplicado.
 
 | Qué | Estado / por qué |
 |---|---|
-| **Tres cuentas de azar mal hechas** | Loot a la mitad de lo configurado, monstruos que cambian de blanco siempre y escudos que bloquean ~5 veces menos de lo pensado. Se dejaron como están porque corregirlas cambia el balance: decidir una por una ([SANITIZER_TESTS.md](SANITIZER_TESTS.md) § 5) |
+| **Tres cuentas de azar mal hechas** | Loot a la mitad de lo configurado, monstruos que cambian de blanco siempre y escudos que bloquean ~5 veces menos de lo pensado. Se corrigen desde `config.lua`: loot y cambio de blanco prendidas el 2026-11-12; **falta probar y decidir la de los escudos** (`fixshielddefense`) ([SANITIZER_TESTS.md](SANITIZER_TESTS.md) § 5) |
 | **Guardado automático congela el juego** | `Game::serverSave()` guarda el XML de cada jugador con `gameLock` tomado (cada ~10 min). Primero medir en el log del servidor de la ThinkPad (`server save... ok (Xs)`, solo lectura, con OK). Si vale la pena: guardar solo los que cambiaron o escribir fuera del lock |
 | **`bind2nd`/`mem_fun` → lambdas** | 19 usos (sobre todo `game.cpp`); ya no existen en C++17 y atan el build a `gnu++14`. Solo hace falta para subir de estándar: hoy compilan sin avisos (`-Wno-deprecated`) |
 | **Hechizos repetidos** | 28 archivos de crear runas casi idénticos y 7 copias del haste de monstruos; se pueden pasar a una tabla en `spells/lib` (confirmar que `spells.xml` acepta un script compartido) |
