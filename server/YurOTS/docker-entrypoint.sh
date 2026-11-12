@@ -25,6 +25,10 @@ mkdir -p /cores 2>/dev/null || true
 cd /app/YurOTS/ots
 
 LOGFILE="/app/YurOTS/ots/yurots.log"
+# tee -a no rota: al arrancar, si pasó de 20 MB se guarda una sola copia anterior.
+if [ -f "$LOGFILE" ] && [ "$(stat -c %s "$LOGFILE" 2>/dev/null || echo 0)" -gt 20971520 ]; then
+    mv -f "$LOGFILE" "$LOGFILE.1" 2>/dev/null || true
+fi
 YUROTS_PID=""
 
 forward_stop() {

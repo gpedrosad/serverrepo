@@ -92,6 +92,7 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 | Cliente retro76 / updater | `docs/CLIENT.md` y `docs/CLIENT_UPDATER_RETRO76.md` |
 | Sockets, cuelgues, kicks | `docs/systems/SOCKET_DEBUG_LOGGING.md` y `docs/systems/PREVENT_OT_HANGS.md` |
 | Crash / core dumps | `docs/systems/CRASH_DIAGNOSTICS.md` |
+| Errores de memoria (sanitizers + bots), avisos del compilador | `docs/systems/SANITIZER_TESTS.md` |
 | RME / edición de mapa | `docs/RME_SETUP.md` |
 | Cambios de mapa / OTBM | `docs/CAMBIAR-MAPA.md` |
 | Items custom Zagan (sprites, OTB, gameplay) | `docs/items-and-map/ZAGAN_TEST_ITEMS.md` y `docs/items-and-map/IMPORTAR_ITEM_DESDE_IMAGEN.md` |

@@ -64,6 +64,7 @@ server/YurOTS/ots/data/logs/logins-*.jsonl
 server/YurOTS/ots/data/logs/web-*.jsonl
 server/YurOTS/ots/data/crash-*.log
 server/YurOTS/ots/yurots.log
+server/YurOTS/ots/yurots.log.1
 server/YurOTS/ots/*.log
 server/YurOTS/ots/*.core
 server/YurOTS/ots/qemu_yurots_*.core

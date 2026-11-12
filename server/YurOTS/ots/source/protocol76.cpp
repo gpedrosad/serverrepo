@@ -79,6 +79,7 @@ void Protocol76::reinitializeProtocol()
 	readItem = NULL;
 	OutputBuffer.Reset();
 	knownPlayers.clear();
+	sendFailSocket = 0;
 }
 
 unsigned char Protocol76::getDisplayedSkull(const Player *playa) const
@@ -2793,7 +2794,11 @@ void Protocol76::flushOutputBuffer(){
 		ok = OutputBuffer.WriteToSocket(s);
 	OutputBuffer.Reset();
 	if(!ok && s){
-		if(player){
+		// Una sola linea por socket: mientras el hilo que lee no cierra el socket (puede estar
+		// durmiendo entre pasos de una cola de caminata), cada envio siguiente vuelve a fallar.
+		// Con bots se vieron miles de lineas repetidas por una sola desconexion.
+		if(player && sendFailSocket != s){
+			sendFailSocket = s;
 			std::cout << "Player send disconnect: " << player->getName()
 				<< " (send stalled or error) " << socketDescribeState(s) << std::endl;
 		}

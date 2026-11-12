@@ -40,11 +40,24 @@ LuaScript::~LuaScript()
 
 int LuaScript::OpenFile(const char *filename)
 {
-	luaState = lua_open();
-	luaL_openlibs(luaState);
+	// Se carga en un estado nuevo y recien despues se cambia, con el candado: "/reload config" corre
+	// mientras los hilos de las conexiones leen la config (antes leian un estado a medio cargar, y el
+	// estado viejo quedaba sin liberar). Si el archivo tiene un error queda la config anterior.
+	lua_State* fresh = lua_open();
+	luaL_openlibs(fresh);
 
-	if (lua_dofile(luaState, filename))
+	if (lua_dofile(fresh, filename)){
+		lua_close(fresh);
 		return false;
+	}
+
+	{
+		std::lock_guard<std::mutex> lock(luaLock);
+		lua_State* old = luaState;
+		luaState = fresh;
+		if (old)
+			lua_close(old);
+	}
 
 	EXP_MUL = getGlobalNumber("expmul",1);
 	EXP_MUL_PVP = getGlobalNumber("expmulpvp",1);
@@ -236,10 +249,13 @@ exp_t LuaScript::getExpMulForLevel(int level) const
 
 std::string LuaScript::getGlobalString(std::string var, const std::string &defString)
 {
+	std::lock_guard<std::mutex> lock(luaLock);
 	lua_getglobal(luaState, var.c_str());
 
-  if(!lua_isstring(luaState, -1))
-  	  return defString;
+	if(!lua_isstring(luaState, -1)){
+		lua_pop(luaState, 1);	// antes quedaba en la pila de Lua
+		return defString;
+	}
 
 	int len = (int)lua_strlen(luaState, -1);
 	std::string ret(lua_tostring(luaState, -1), len);
@@ -250,10 +266,13 @@ std::string LuaScript::getGlobalString(std::string var, const std::string &defSt
 
 int LuaScript::getGlobalNumber(std::string var, const int defNum)
 {
+	std::lock_guard<std::mutex> lock(luaLock);
 	lua_getglobal(luaState, var.c_str());
 
-  if(!lua_isnumber(luaState, -1))
-  	  return defNum;
+	if(!lua_isnumber(luaState, -1)){
+		lua_pop(luaState, 1);
+		return defNum;
+	}
 
 	int val = (int)lua_tonumber(luaState, -1);
 	lua_pop(luaState,1);
@@ -268,18 +287,26 @@ int LuaScript::setGlobalString(std::string var, std::string val)
 }
 
 int LuaScript::setGlobalNumber(std::string var, int val){
+	std::lock_guard<std::mutex> lock(luaLock);
 	lua_pushnumber(luaState, val);
 	lua_setglobal(luaState, var.c_str());
 	return true;
 }
 
 std::string LuaScript::getGlobalStringField (std::string var, const int key, const std::string &defString) {
+      std::lock_guard<std::mutex> lock(luaLock);
       lua_getglobal(luaState, var.c_str());
+      if(!lua_istable(luaState, -1)){
+          lua_pop(luaState, 1);
+          return defString;
+      }
 
       lua_pushnumber(luaState, key);
       lua_gettable(luaState, -2);  /* get table[key] */
-      if(!lua_isstring(luaState, -1))
-  	  return defString;
+      if(!lua_isstring(luaState, -1)){
+          lua_pop(luaState, 2);
+          return defString;
+      }
       std::string result = lua_tostring(luaState, -1);
       lua_pop(luaState, 2);  /* remove number and key*/
       return result;

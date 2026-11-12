@@ -408,7 +408,12 @@ int Player::getDefense() const
 
 	defense = int(double(defense) * (fightMode==1? 1.0 : (fightMode==2? 1.5 : 2.0)));
 
-  	return random_range(int(defense*0.25), int(1+(int)(defense*rand())/(RAND_MAX+1.0)));
+	// OJO: defense*rand() desborda el int, asi que el tope da 0 o 1 y la tirada sale entre 0 y
+	// defense/4 (no entre defense/4 y defense, que era la idea). Antes era un overflow; ahora es la
+	// misma cuenta pero definida. Corregirlo cambia el juego (los escudos bloquearian ~5 veces mas):
+	// ver docs/systems/SANITIZER_TESTS.md.
+	int wrapped = (int)((unsigned int)defense * (unsigned int)rand());
+	return random_range(int(defense*0.25), int(1+wrapped/(RAND_MAX+1.0)));
   	///////////
 
 }

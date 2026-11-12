@@ -232,14 +232,30 @@ bool NetworkMessage::WriteToSocket(SOCKET socket)
 /******************************************************************************/
 
 
+// Lecturas con tope. Antes un paquete mas corto de lo que el parser esperaba devolvia bytes viejos
+// del buffer, y GetRaw armaba un string de largo negativo: std::length_error sin atrapar = servidor
+// caido (alcanzaba un paquete vacio, sin login). Ahora lo que falta se lee como 0 / string vacio.
+bool NetworkMessage::canRead(int count)
+{
+  if(count >= 0 && m_ReadPos >= 2 && count <= m_MsgSize - m_ReadPos)
+    return true;
+  if(m_ReadPos < m_MsgSize)
+    m_ReadPos = m_MsgSize;	// el resto del paquete tampoco se lee
+  return false;
+}
+
 unsigned char NetworkMessage::GetByte()
 {
+  if(!canRead(1))
+    return 0;
   return m_MsgBuf[m_ReadPos++];
 }
 
 
 unsigned short NetworkMessage::GetU16()
 {
+  if(!canRead(2))
+    return 0;
   unsigned short v = ((m_MsgBuf[m_ReadPos]) | (m_MsgBuf[m_ReadPos+1] << 8));
   m_ReadPos += 2;
   return v;
@@ -253,6 +269,8 @@ unsigned short NetworkMessage::GetItemId()
 
 unsigned int NetworkMessage::GetU32()
 {
+  if(!canRead(4))
+    return 0;
   unsigned int v = ((m_MsgBuf[m_ReadPos  ]      ) | (m_MsgBuf[m_ReadPos+1] <<  8) |
                     (m_MsgBuf[m_ReadPos+2] << 16) | (m_MsgBuf[m_ReadPos+3] << 24));
   m_ReadPos += 4;
@@ -263,7 +281,7 @@ unsigned int NetworkMessage::GetU32()
 std::string NetworkMessage::GetString()
 {
   int stringlen = GetU16();
-  if (stringlen >= (16384 - m_ReadPos))
+  if (!canRead(stringlen))
 	  return std::string();
 
   char* v = (char*)(m_MsgBuf+m_ReadPos);
@@ -273,7 +291,7 @@ std::string NetworkMessage::GetString()
 
 std::string NetworkMessage::GetRaw(){
   int stringlen = m_MsgSize- m_ReadPos;
-  if (stringlen >= (16384 - m_ReadPos))
+  if (stringlen <= 0 || !canRead(stringlen))
 	  return std::string();
 
   char* v = (char*)(m_MsgBuf+m_ReadPos);
@@ -292,7 +310,8 @@ Position NetworkMessage::GetPosition() {
 
 void NetworkMessage::SkipBytes(int count)
 {
-  m_ReadPos += count;
+  if(canRead(count))
+    m_ReadPos += count;
 }
 
 

@@ -23,6 +23,7 @@
 #define __LUASCRIPT_H__
 
 #include <string>
+#include <mutex>
 #include "definitions.h"
 extern "C"
 {
@@ -179,6 +180,9 @@ public:
 protected:
 	std::string luaFile;   // the file we represent
 	lua_State*  luaState;  // our lua state
+	// Un lua_State no se puede usar desde dos hilos a la vez, y g_config se lee desde el hilo de cada
+	// conexión: dos logins simultáneos se pisaban la pila de Lua (datadir llegó a valer "15").
+	std::mutex  luaLock;
 };
 
 

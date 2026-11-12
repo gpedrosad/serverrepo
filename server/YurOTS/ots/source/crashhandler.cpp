@@ -244,7 +244,7 @@ static void crash_signal_handler(int sig, siginfo_t* info, void* ucontext)
 	n = snprintf(buf, sizeof(buf),
 		":: [crash] signal=%s saved=%s pid=%d\n",
 		signal_name(sig), crash_filename, (int)getpid());
-	if (n > 0) write(STDOUT_FILENO, buf, (size_t)n);
+	if (n > 0 && write(STDOUT_FILENO, buf, (size_t)n) < 0) {}  // nada que hacer si falla: estamos en un crash
 
 	//Flush stdio buffers if any.
 	//(Not all libc's do this safely from a signal handler; best-effort.)

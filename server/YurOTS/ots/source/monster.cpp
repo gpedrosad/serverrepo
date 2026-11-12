@@ -81,7 +81,12 @@ Creature()
 }
 
 unsigned long Monster::getRandom(){
-	return (unsigned long)((rand()<< 16 | rand()) % CHANCE_MAX);
+	// OJO: la mitad de las veces el bit 31 queda prendido, el resto da negativo y al pasarlo a unsigned
+	// es un numero enorme: toda chance de loot/summon sale a la MITAD de lo configurado (medido).
+	// Antes era un overflow de int (rand()<<16); ahora es la misma cuenta pero definida. Corregirlo
+	// cambia el juego (el doble de loot): ver docs/systems/SANITIZER_TESTS.md.
+	int32_t r = (int32_t)(((uint32_t)rand() << 16) | (uint32_t)rand());
+	return (unsigned long)(r % CHANCE_MAX);
 }
 
 Monster::~Monster()
@@ -1061,7 +1066,11 @@ void Monster::reThink(bool updateOnlyState /* = true*/)
 
 		//change target
 		if(state != STATE_IDLE && !isChallengeLocked()) {
-			if(mType->changeTargetChance > rand()*10000/(RAND_MAX+1)){
+			// OJO: antes decia "changeTargetChance > rand()*10000/(RAND_MAX+1)", pero RAND_MAX+1 desborda
+			// y la cuenta daba siempre 0: todo monstruo con changetarget > 0 busca otro blanco en cada
+			// think, no el X % configurado. Se deja igual pero sin overflow; corregirlo cambia el juego
+			// (ver docs/systems/SANITIZER_TESTS.md).
+			if(mType->changeTargetChance > 0){
 				bool canReach;
 				Creature *newtarget = findTarget(3, canReach);
 				if(newtarget && (canReach || state == STATE_TARGETNOTREACHABLE) && newtarget->getID() != attackedCreature){

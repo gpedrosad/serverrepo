@@ -193,7 +193,7 @@ bool IOMapXML::LoadContainer(xmlNodePtr nodeitem,Container* ccontainer)
 		p = tmp->children;
 		while(p){			
 			tmpc = (char*)xmlGetProp(p, (const xmlChar *) "id");
-			unsigned int id;
+			unsigned int id = 0;
 			if(tmpc){
 				id = atoi(tmpc);
 				xmlFreeOTSERV(tmp);

@@ -49,7 +49,8 @@ Todo lo relacionado con estabilidad del OT server, cuelgues, sockets, crashes.
 | [`systems/CRASH_DIAGNOSTICS.md`](systems/CRASH_DIAGNOSTICS.md) | Si el OT crashea: cómo recolectar diagnóstico y encontrar la causa. |
 | [`systems/SOCKET_DEBUG_LOGGING.md`](systems/SOCKET_DEBUG_LOGGING.md) | Si hay kicks masivos, desconexiones o problemas de socket. |
 | [`systems/OT_HANG_ROOT_CAUSE_SEND_BLOCKING.md`](systems/OT_HANG_ROOT_CAUSE_SEND_BLOCKING.md) | Análisis técnico de la causa raíz del cuelgue por send blocking. |
-| [`systems/LIMPIEZA_CODIGO_NOV2026.md`](systems/LIMPIEZA_CODIGO_NOV2026.md) | Limpieza del C++ (opciones de compilación, Windows, código comentado), binarios fuera de git, caché de la web, `-O2` pendiente. Reglas para no volver a ensuciarlo y cómo comprobar sin compilar. |
+| [`systems/LIMPIEZA_CODIGO_NOV2026.md`](systems/LIMPIEZA_CODIGO_NOV2026.md) | Limpieza del C++ (opciones de compilación, Windows, código comentado), binarios fuera de git, caché de la web, pendientes. Reglas para no volver a ensuciarlo y cómo comprobar sin compilar. |
+| [`systems/SANITIZER_TESTS.md`](systems/SANITIZER_TESTS.md) | Buscar errores de memoria del servidor: binario con AddressSanitizer/UBSan sobre una copia de los datos + bots (`exercise-server.py`). Qué encontró en nov 2026 y las tres cuentas de azar pendientes de decisión. |
 | [`systems/LOGIN_EVENTS.md`](systems/LOGIN_EVENTS.md) | Registro de logins y cuentas nuevas: embudo, retención, fallos por motivo, fuerza bruta. |
 
 ---

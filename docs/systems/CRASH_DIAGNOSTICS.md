@@ -312,7 +312,7 @@ Verás:
 
 - ❌ **No hay watchdog externo** que detecte crash loops (server crasheando cada 30s). Eso es el Tier 3 de la lista original — script bash + cron. Pendiente.
 - ❌ **No hay notificación automática** a Discord/email. Crash → log en disco → vos te enterás cuando ssh-eás. Pendiente.
-- ❌ **No hay logger estructurado** con rotación. Los 200+ `std::cout` siguen yendo a stdout + yurots.log. Tier 2 de la lista original. Pendiente.
+- ❌ **No hay logger estructurado.** Los 200+ `std::cout` siguen yendo a stdout + yurots.log. Tier 2 de la lista original. Pendiente. (Desde nov 2026 el log al menos rota: `yurots.log` → `yurots.log.1` al arrancar si pasa de 20 MB, y el log de Docker tiene tope de 3 × 10 MB.)
 - ❌ **No hay healthcheck mejorado** (sigue siendo solo TCP). Tier 3. Pendiente.
 
 Si querés alguna de esas como próxima iteración, decime.

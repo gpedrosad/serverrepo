@@ -6,8 +6,8 @@ las reglas para no volver a ensuciarlo. La revisión de NPCs de la misma semana 
 
 **Resultado:** el C++ pasó de 815 a 121 condicionales `#if` y perdió ~3.800 líneas netas (y 6 archivos)
 **sin cambiar el binario de Linux**. Se sacaron 12 MB de binarios del repo. La web dejó de leer
-todos los jugadores en cada visita. Nada de esto se compiló en la Mac mini; lo único que cambia el
-comportamiento del servidor (`-O2`) está aparte, en la rama `build-o2`, esperando prueba.
+todos los jugadores en cada visita. Nada de esto se compiló en la Mac mini. Después (2026-11-12) se buscaron errores de memoria con
+sanitizers y bots: ver [SANITIZER_TESTS.md](SANITIZER_TESTS.md).
 
 ---
 
@@ -20,7 +20,8 @@ comportamiento del servidor (`-O2`) está aparte, en la rama `build-o2`, esperan
 | `6bcc70c` | Saca el código de Windows (`WIN32`, `__WINDOWS__`, `_MSC_VER`), MySQL (`__USE_MYSQL__`), el asignador de depuración (`__OTSERV_ALLOCATOR*__`) y el exception tracer de Windows. Borra `mdump.*`, `allocator.*`, `exception.*` (quedaron vacíos o sin uso); el `Makefile` compila todos los `.cpp` | No |
 | `28192f3` | Borra 262 bloques de código comentado (`//std::cout...`, `/* case ...: */`), ~730 líneas. Los comentarios que explican se quedan | No |
 | `20dc6c2` | Web: `/api/data` guarda el resultado 30 s (`WEB_PAYLOAD_TTL`) en vez de parsear el XML de todos los jugadores en cada visita; si llegan varias visitas juntas lo arma una sola. Se borran los tests del Most Wanted (sistema sacado en julio) | Solo la web: los datos de la portada pueden tener hasta 30 s de atraso |
-| `a851f34` (merge de `build-o2`) | Compila con `-O2 -g -fno-strict-aliasing` (antes `-O0`, el modo de depurar). `make OPT=-O0` vuelve al anterior | **Sí** (más rápido). En `main` sin probar todavía: ver Pendiente |
+| `a851f34` (merge de `build-o2`) | Compila con `-O2 -g -fno-strict-aliasing` (antes `-O0`, el modo de depurar). `make OPT=-O0` vuelve al anterior | **Sí** (más rápido). En uso en la ThinkPad desde el 2026-11-11 |
+| 2026-11-12 (ver git log) | Pruebas con AddressSanitizer/UBSan y bots ([SANITIZER_TESTS.md](SANITIZER_TESTS.md)): arregla una caída remota sin login, dos corrupciones de memoria y una carrera al leer `config.lua`. El build queda con `-Wall` sin avisos y sin `-fpermissive`. El log deja de llenarse con el healthcheck y rota solo | No (salvo que ya no se cae con esos paquetes) |
 
 ### Decisiones
 
@@ -98,11 +99,12 @@ Hoy da 0: ya está aplicado.
 
 | Qué | Estado / por qué |
 |---|---|
-| **`-O2`** (ya en `main`, sin probar) | Antes del próximo deploy: compilar en Docker i386 (ThinkPad con `sudo usermod -aG docker gonzalo`), levantar, `ot-probe.py` y un rato de juego. Riesgo: código viejo con comportamiento indefinido que `-O0` escondía. Si da problemas: `OPT ?= -O0` en el `Makefile` |
+| **Tres cuentas de azar mal hechas** | Loot a la mitad de lo configurado, monstruos que cambian de blanco siempre y escudos que bloquean ~5 veces menos de lo pensado. Se dejaron como están porque corregirlas cambia el balance: decidir una por una ([SANITIZER_TESTS.md](SANITIZER_TESTS.md) § 5) |
 | **Guardado automático congela el juego** | `Game::serverSave()` guarda el XML de cada jugador con `gameLock` tomado (cada ~10 min). Primero medir en el log del servidor de la ThinkPad (`server save... ok (Xs)`, solo lectura, con OK). Si vale la pena: guardar solo los que cambiaron o escribir fuera del lock |
-| **`bind2nd`/`mem_fun` → lambdas** | 19 usos (sobre todo `game.cpp`); ya no existen en C++17 y atan el build a `gnu++14 -fpermissive`. Necesita compilar |
+| **`bind2nd`/`mem_fun` → lambdas** | 19 usos (sobre todo `game.cpp`); ya no existen en C++17 y atan el build a `gnu++14`. Solo hace falta para subir de estándar: hoy compilan sin avisos (`-Wno-deprecated`) |
 | **Hechizos repetidos** | 28 archivos de crear runas casi idénticos y 7 copias del haste de monstruos; se pueden pasar a una tabla en `spells/lib` (confirmar que `spells.xml` acepta un script compartido) |
 | **Web con Python 3.13+** | `web/premium_orders.py` usa el módulo `cgi`, que Python 3.13 eliminó. Si el servidor actualiza Python, se cae la página de pedidos premium |
 | **Test `test_spells`** | Espera que el paladín promovido tenga `utani slow`; o falta el hechizo o el test quedó viejo |
 | **Orden del repo** | `scripts/` (172 archivos, muchos generadores de mapa de un solo uso) y `docs/` (12 MB, notas de sesiones viejas) → `_archive/` |
+| **Repetir las pruebas con bots** | Después de cambios grandes de C++ (protocolo, movimiento, combate): [SANITIZER_TESTS.md](SANITIZER_TESTS.md). Los bots todavía no comercian con NPC, no usan casas ni el depot |
 | No se toca | La red de un hilo por jugador y partir `game.cpp` (8.000 líneas): mucho riesgo para lo que gana el jugador |
