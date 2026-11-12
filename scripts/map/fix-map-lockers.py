@@ -5,8 +5,10 @@ Por cada tile con locker:
   1. Orientación: el frente del locker (el lado de los herrajes) mira hacia donde se para el
      jugador. 2589 = frente al sur, 2590 = oeste, 2591 = norte, 2592 = este. El lado se elige
      entre los vecinos caminables (piso sin nada sólido); si hay varios, el opuesto a una pared.
-  2. Apoyo: saca el mostrador (counter 1617/1618) que tenga debajo. El cliente dibuja lo que va
-     sobre un mostrador corrido 8 px (altura del mostrador) y el locker queda "flotando".
+  2. Apoyo: el locker va sobre un mostrador (counter 1617/1618), como en los depots de Tibia. Si no
+     tiene, se lo pone: la misma pieza que el mostrador vecino de la fila; si no hay vecino, 1617 cuando
+     el locker mira al este u oeste y 1618 cuando mira al norte o sur. En nov 2026 un arreglo los había
+     sacado y los lockers quedaron sueltos sobre el piso.
   3. Depot id: lo deja como item hijo del tile con OTBM_ATTR_DEPOT_ID = 1 (temple), así el
      server no depende del fallback de resolveMapDepotId() en actions.cpp.
 
@@ -33,6 +35,7 @@ OTB = REPO / "server/YurOTS/ots/data/items/items-zagan-test.otb"
 LOCKERS = {2589: "S", 2590: "W", 2591: "N", 2592: "E"}
 LOCKER_FOR = {v: k for k, v in LOCKERS.items()}
 COUNTERS = {1617, 1618}
+COUNTER_FOR = {"E": 1617, "W": 1617, "N": 1618, "S": 1618}
 DEPOT_ID = 1
 OTBM_TILE_AREA, OTBM_TILE, OTBM_ITEM, OTBM_HOUSETILE = 4, 5, 6, 14
 ATTR_TILE_FLAGS, ATTR_ITEM, ATTR_DEPOT_ID = 3, 9, 10
@@ -112,6 +115,11 @@ def main() -> int:
         ids = tile_items(node, parsed)
         return any(i in ground for i in ids) and not any(i in solid for i in ids)
 
+    def tile_ids(pos) -> list[int]:
+        node = tiles.get(pos)
+        parsed = split_tile_props(node) if node is not None else None
+        return tile_items(node, parsed) if parsed is not None else []
+
     def is_solid(pos) -> bool:
         node = tiles.get(pos)
         if node is None:
@@ -133,7 +141,6 @@ def main() -> int:
             continue
         old = lockers[0]
         x, y, z = pos
-        # los mostradores de abajo todavía cuentan como sólidos en el propio tile, no en los vecinos
         free = [d for d, (dx, dy) in STEP.items() if walkable((x + dx, y + dy, z))]
         if len(free) > 1:
             backed = [d for d in free if is_solid((x + STEP[OPPOSITE[d]][0], y + STEP[OPPOSITE[d]][1], z))]
@@ -145,38 +152,43 @@ def main() -> int:
             new = LOCKER_FOR[free[0]]
 
         head, attrs = parsed
-        already = (new == old and not any(i in COUNTERS for i in ids) and any(
+        under = [i for i in ids if i in COUNTERS]
+        counter = None
+        if not under:
+            near = [i for dx, dy in STEP.values() for i in tile_ids((x + dx, y + dy, z)) if i in COUNTERS]
+            counter = near[0] if near else COUNTER_FOR[LOCKERS[new]]
+        already = (new == old and under and any(
             c.node_type == OTBM_ITEM and c.props[:2] == struct.pack("<H", old) and c.props[2:3] == bytes([ATTR_DEPOT_ID])
             for c in node.children))
         if already:
             continue
-        removed = [struct.unpack("<H", p)[0] for a, p in attrs if a == ATTR_ITEM and struct.unpack("<H", p)[0] in COUNTERS]
-        removed += [struct.unpack("<H", c.props[:2])[0] for c in node.children
-                    if c.node_type == OTBM_ITEM and struct.unpack("<H", c.props[:2])[0] in COUNTERS]
-        # el locker inline (si estaba así) pasa a hijo con depot id; los mostradores se van
+        # el locker inline (si estaba así) pasa a hijo con depot id; el mostrador queda debajo
         attrs = [(a, p) for a, p in attrs
-                 if not (a == ATTR_ITEM and struct.unpack("<H", p)[0] in COUNTERS | set(LOCKERS))]
+                 if not (a == ATTR_ITEM and struct.unpack("<H", p)[0] in LOCKERS)]
         kids = []
         locker_done = False
         for c in node.children:
             cid = struct.unpack("<H", c.props[:2])[0] if c.node_type == OTBM_ITEM else None
-            if cid in COUNTERS:
-                continue
             if cid in LOCKERS:
                 rest = c.props[2:]
                 if not rest:
                     rest = bytes([ATTR_DEPOT_ID]) + struct.pack("<H", DEPOT_ID)
                 elif rest[0] != ATTR_DEPOT_ID:
                     print(f"{pos}: el locker ya trae otros atributos ({rest.hex()}); no le agrego depot id")
+                if counter:
+                    kids.append(B.Node(OTBM_ITEM, struct.pack("<H", counter), []))
                 c = B.Node(OTBM_ITEM, struct.pack("<H", new) + rest, c.children)
                 locker_done = True
             kids.append(c)
         if not locker_done:
+            if counter:
+                kids.append(B.Node(OTBM_ITEM, struct.pack("<H", counter), []))
             kids.append(B.Node(OTBM_ITEM, struct.pack("<H", new) + bytes([ATTR_DEPOT_ID]) + struct.pack("<H", DEPOT_ID), []))
         node.props = head + b"".join(bytes([a]) + p for a, p in attrs)
         node.children = kids
         changes += 1
-        print(f"{pos}: {old} -> {new} (frente {LOCKERS[new]}), saca {removed or 'nada'}, depotid {DEPOT_ID}")
+        print(f"{pos}: {old} -> {new} (frente {LOCKERS[new]}), "
+              f"{'pone mostrador ' + str(counter) if counter else 'mostrador ' + str(under[0])}, depotid {DEPOT_ID}")
 
     if args.write and changes:
         args.map.write_bytes(data[:4] + B.write_node(root))

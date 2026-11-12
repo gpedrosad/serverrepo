@@ -284,18 +284,18 @@ def main():
     a = {(d["x"], d["y"], d["z"]): d for d in scan_depots(Path(sys.argv[1]))}
     b = {(d["x"], d["y"], d["z"]): d for d in scan_depots(Path(sys.argv[2]))}
     only_a = set(a) - set(b)
-  only_b = set(b) - set(a)
-  changed = [pos for pos in set(a) & set(b) if a[pos]["depotid"] != b[pos]["depotid"]]
-  print("\n--- diff ---")
-  print(f"solo en {Path(sys.argv[1]).name}: {len(only_a)}")
-  for pos in sorted(only_a)[:20]:
-    print(f"  {pos} -> {a[pos]}")
-  print(f"solo en {Path(sys.argv[2]).name}: {len(only_b)}")
-  for pos in sorted(only_b)[:20]:
-    print(f"  {pos} -> {b[pos]}")
-  print(f"mismo tile, distinto depotid: {len(changed)}")
-  for pos in sorted(changed)[:20]:
-    print(f"  {pos}: {a[pos]['depotid']} -> {b[pos]['depotid']}")
+    only_b = set(b) - set(a)
+    changed = [pos for pos in set(a) & set(b) if a[pos]["depotid"] != b[pos]["depotid"]]
+    print("\n--- diff ---")
+    print(f"solo en {Path(sys.argv[1]).name}: {len(only_a)}")
+    for pos in sorted(only_a)[:20]:
+      print(f"  {pos} -> {a[pos]}")
+    print(f"solo en {Path(sys.argv[2]).name}: {len(only_b)}")
+    for pos in sorted(only_b)[:20]:
+      print(f"  {pos} -> {b[pos]}")
+    print(f"mismo tile, distinto depotid: {len(changed)}")
+    for pos in sorted(changed)[:20]:
+      print(f"  {pos}: {a[pos]['depotid']} -> {b[pos]['depotid']}")
 
 
 if __name__ == "__main__":

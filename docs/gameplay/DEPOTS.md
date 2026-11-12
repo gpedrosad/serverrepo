@@ -95,19 +95,28 @@ Los ids `2589`–`2592` son el mismo locker en sus 4 orientaciones; el frente es
 herrajes: **2589 sur, 2590 oeste, 2591 norte, 2592 este**. El frente va hacia donde se para el
 jugador. El server abre como depot cualquiera de las 4.
 
-No apoyar el locker sobre un mostrador (`counter` 1617/1618): el mostrador tiene altura 8 en el
-cliente y el locker se dibuja corrido, "flotando". Los mostradores van entre los puestos.
+**El locker va sobre un mostrador** (`counter` 1617/1618), como en los depots de Tibia. El mostrador tiene
+altura 8 en el cliente, así que el locker se dibuja 8 px arriba a la izquierda: es lo esperado. Sin el
+mostrador el locker queda suelto sobre el piso y se ve raro.
 
-El mapa venía con los 11 lockers en `2589` sobre mostradores (de espaldas al jugador). Se corrigió con:
+- `1617` es la pieza para filas verticales (lockers que miran al este u oeste); `1618`, para filas
+  horizontales (norte o sur).
+- En el tile el orden es piso, mostrador, locker.
+
+![Sin mostrador (izquierda) y con mostrador (derecha)](img/depot-mostrador.png)
+
+Historia: el mapa venía con los 11 lockers en `2589` sobre mostradores, de espaldas al jugador. El 11 nov
+2026 se corrigió la orientación pero también se sacaron los mostradores de abajo (`31b677e`); el 12 nov se
+volvieron a poner. El script deja las tres cosas bien:
 
 ```bash
 python3.11 scripts/map/fix-map-lockers.py server/YurOTS/ots/data/world/test.otbm          # ver qué cambia
 python3.11 scripts/map/fix-map-lockers.py server/YurOTS/ots/data/world/test.otbm --write  # aplicar
 ```
 
-Elige la orientación según el lado caminable, saca el mostrador de abajo y deja el locker como
-item hijo con `depotid=1` explícito (ya no depende del fallback de `resolveMapDepotId()`).
-Re-correrlo no cambia nada. Sirve también después de editar lockers en RME.
+Elige la orientación según el lado caminable, pone el mostrador debajo si falta (la misma pieza que el
+mostrador vecino) y deja el locker como item hijo con `depotid=1` explícito (ya no depende del fallback de
+`resolveMapDepotId()`). Re-correrlo no cambia nada. Sirve también después de editar lockers en RME.
 
 `scan-map-depots.py` salteaba un byte de más en cada item y nunca mostraba el depot id; corregido.
 
