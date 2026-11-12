@@ -331,7 +331,7 @@
   },
   {
     "name": "train wand",
-    "description": "Entrena magic level despacio en los trainers sin gastar maná. Sin forma de conseguirla (en el OTB: violet sunstone).",
+    "description": "Entrena magic level despacio en los trainers sin gastar maná. Sin forma de conseguirla.",
     "category": "Wand",
     "serverId": 20126,
     "clientId": 4826,
@@ -339,13 +339,13 @@
     "spriteId": 0,
     "image": "20126.png",
     "spawn": "/i 20126 1",
-    "group": "armor",
+    "group": "none",
     "attack": null,
     "defence": null,
-    "armor": 0,
-    "weight": 0.8,
+    "armor": null,
+    "weight": 19.0,
     "weaponType": null,
-    "slot": "ring",
+    "slot": null,
     "magLevel": null
   },
   {

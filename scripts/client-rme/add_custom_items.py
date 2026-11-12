@@ -71,6 +71,11 @@ NEW_ITEMS = [
     dict(name="heartwood maul", server_id=20164, client_id=3561, prototype=2391,
          png="heartwood_maul.png", attack=52, defence=28,
          descr="Ancient heartwood held together by twisted roots. Claimed from a Root Colossus."),
+    # Aurora Shield: el Ice Monk la soltaba con el id 20160, que terminó siendo la arbalest. Prototipo 2515
+    # guardian shield (def 30). La Aurora Blade y la Aurora Axe siguen sin crearse (no tienen drop).
+    dict(name="aurora shield", server_id=20165, client_id=3473, prototype=2515,
+         png="aurora_shield.png", attack=0, defence=30,
+         descr="Its golden rim holds a field of violet light, like the sky over the frozen north."),
 ]
 
 

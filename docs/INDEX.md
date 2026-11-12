@@ -142,7 +142,7 @@ Importación de items, mapeo por código, items de prueba, sesiones de editor.
 | [`gameplay/SAND_CLOCK.md`](gameplay/SAND_CLOCK.md) | **Reloj de Arena:** sala chica (11×9) compartida: descanso de 30 s y 6 oleadas de 60 s que suben de nivel, braseros que marcan la oleada, Chronos; portal plaza del templo `168,47,7`. |
 | [`items-and-map/MAPEAR_TP_GAUNTLET.md`](items-and-map/MAPEAR_TP_GAUNTLET.md) | Gauntlet: 40 salas 3×3 + sala final 3×3 (Wrath + demon armor, 1 TP); barco `gauntlet`. |
 | [`items-and-map/ISLAND_BANDS.md`](items-and-map/ISLAND_BANDS.md) | Cómo componer las bandas agua→shore→dirt→grass para que una isla no se vea con corte duro. Especificación de las 5 bandas y 7 reglas críticas. |
-| [`items-and-map/ZAGAN_TEST_ITEMS.md`](items-and-map/ZAGAN_TEST_ITEMS.md) | Items de prueba del entorno Zagan (dev/test). |
+| [`items-and-map/ZAGAN_TEST_ITEMS.md`](items-and-map/ZAGAN_TEST_ITEMS.md) | Ítems Zagan (`20100`+): qué es cada uno, sprites redibujados y recoloreados, revisión de nombre/tipo/dibujo de nov 2026. |
 | [`items-and-map/SESION_EDITOR_MAPA_JUL2026.md`](items-and-map/SESION_EDITOR_MAPA_JUL2026.md) | Bitácora de la sesión de editor de mapa de julio 2026. |
 
 ---

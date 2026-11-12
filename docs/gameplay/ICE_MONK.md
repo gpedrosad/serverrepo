@@ -50,7 +50,7 @@ Voces: "Feel the cold of the north!", "Your blood will freeze.", "Silence... lik
 ## Loot
 
 Oro (hasta 45), small sapphire ×2 (8 %), snowball ×6 (20 %), blank rune (8 %), scroll (6 %) y bolsa con
-life ring (1,5 %), tempest rod (0,4 %), ice rapier (0,3 %) y **Aurora Shield** (0,25 %, server id `20160`).
+life ring (1,5 %), tempest rod (0,4 %), ice rapier (0,3 %) y **Aurora Shield** (0,25 %, server id `20165`).
 
 ## Sprite
 

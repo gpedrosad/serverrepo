@@ -1,21 +1,38 @@
 # Zagan Test Items
 
-Pack del directorio `Zagan+Square` más sprites custom en `zagan-test/custom-sprites/`: **54+ items** (desde `20100`; el builder asigna ids nuevos al final).
+Pack del directorio `Zagan+Square`: **55 ítems** (`20100`–`20154`). Desde `20155` son ítems agregados después
+con otros scripts (trainer dummy, enchanted spear, armas de 8.x, crown armors, armas del Root Colossus, Aurora
+Shield).
 
-Los 5 primeros (equipo base):
+Cada ítem hereda slot y atributos del prototipo OTB duplicado (arma, escudo, casco, armor, legs, runa, anillo,
+etc.). Varios se renombraron con el tiempo: `20100` vexon blade → venomqueen fang, `20153` chillan shield →
+frostwarden aegis, `20139` dawnbreak falchion → sword of silence, `20130` windsting bow → windsting axe,
+`20126` violet sunstone → train wand.
 
-- `20100` vexon blade
-- `20101` quarry ward
-- `20102` morlen crest
-- `20103` ashlar plate
-- `20104` basalt greaves
+## Revisión nov 2026: que cada ítem se vea y se comporte como lo que es
 
-Sprites custom adicionales:
+Se revisaron los 66 ítems desde `20100` comparando nombre, tipo, stats y dibujo. Para repetirla, la hoja de
+`/items-all` de la web muestra cada ítem con su sprite actual.
 
-- `20152` fox machina helmet
-- `20153` chillan shield
+| Problema | Ítems | Arreglo |
+|---|---|---|
+| Dibujo de otro ítem (tierra, pasto, una pared, un paquete, un barril) | 38 sin uso: escudos, cascos, armaduras, piernas, botas, amuletos, anillos, 4 armas y 8 runas | `recolor_zagan_items.py`: toman el dibujo de un ítem vanilla del mismo tipo, recoloreado |
+| Nombre y tipo equivocados | `20126` era "violet sunstone", tipo anillo | Ahora "train wand", con los datos de una wand |
+| Slot equivocado | `20148` kilnfire leggings iba en el pecho | Ahora va en las piernas; pesa 45 oz (antes 100) |
+| Descripción genérica en ítems con uso | `20130`, `20131`, `20132`, `20137` | Descripción propia |
+| Loot que apuntaba a otro ítem | Ice Monk soltaba `20160` creyendo que era el Aurora Shield; `20160` es la arbalest | Aurora Shield creado como `20165`; el Ice Monk suelta ese |
 
-Cada item hereda slot/atributos del prototipo OTB duplicado (arma, escudo, casco, armor, legs, runa, anillo, etc.).
+![Los 38 dibujos nuevos: el ítem base (chico) y el resultado](img/zagan-items-recolor.png)
+
+- **Dibujos:** `python3.11 scripts/client-rme/recolor_zagan_items.py --preview hoja.png` para mirar y
+  `--apply devtools/rme/rme-client-760` para escribir. La tabla `ITEMS` del script dice qué ítem vanilla usa
+  cada uno y con qué color. Escribe en el client id que el ítem ya tiene; el OTB no cambia. Ningún ítem vanilla
+  en uso (mapa, loot, NPC) comparte esos client ids.
+- **OTB:** `python3.11 scripts/client-rme/fix_zagan_items_otb.py` (se puede repetir; no cambia nada si ya está).
+- **Sin tocar:** pesos raros de ítems con uso (`20137` nightglass dagger 50 oz, `20105` medusa sword 150 oz,
+  `20100` y `20112` 4 oz). Pueden ser a propósito por balance.
+- Los 38 siguen sin uso (ni loot, ni NPC, ni lógica). Las runas `20133`–`20143` no hacen nada al usarlas.
+- La Aurora Blade y la Aurora Axe siguen sin existir en el OTB (no tienen drop). El C++ las reconoce por nombre.
 
 ## Scripts
 
@@ -44,7 +61,7 @@ los 17 items con uso real** (lógica en C++, loot, El Crisol o premium):
 | Efecto propio en C++ | 20105 medusa sword, 20139 sword of silence, 20130 windsting axe, 20114 fury cape, 20123 crimson wand, 20137 nightglass dagger |
 | Premium | 20131 experience recovery rune, 20132 training extension rune |
 | Cofres de quest | 20113 crimson helmet y 20123 crimson wand: cofres de la guarida de la Isla del Hielo Eterno (antes, final del Alice Maze) |
-| Sin forma de conseguirlo | 20126 train wand (en el OTB se llama "violet sunstone" y es tipo anillo) |
+| Sin forma de conseguirlo | 20126 train wand |
 
 - Script: `scripts/client-rme/draw_zagan_items.py` (Pillow + numpy; en la Mac mini usar `python3.11`).
   Dibuja cada pieza a 4x con volumen y luz y la reduce a 32x32.
@@ -54,10 +71,8 @@ los 17 items con uso real** (lógica en C++, loot, El Crisol o premium):
   reemplaza los sprites en el lugar (sprites 11259–11275).
 - Los íconos de las runas en la web (`web/assets/wiki/items/2013[12].png`,
   `web/assets/premium/2013[12]-small*.png`) salen del mismo script.
-- Los otros 40 items Zagan no tienen uso (ni loot, ni NPC, ni lógica) y siguen mostrando el sprite
-  del item vanilla cuyo client id ocupan. Ocho están en la sala de exhibición del mapa
-  (x 142–146, y 47–55, z 6). Pendiente: sacarlos del OTB y del mapa.
-- Para que lo vean los jugadores falta publicar este `Tibia.dat`/`Tibia.spr` en el cliente de descarga.
+- Los otros 38 ítems Zagan no tienen uso (ni loot, ni NPC, ni lógica). Desde la revisión de nov 2026 tienen
+  dibujo propio (ver arriba). Ocho están en la sala de exhibición del mapa (x 142–146, y 47–55, z 6).
 
 ## Aurora Blade — nueva (nov 2026)
 
@@ -72,7 +87,7 @@ Espada 1H rápida pensada para el hueco entre la bright sword y las rares del Cr
 | Builder | entrada `aurora_blade.png` en `CUSTOM_ITEM_DEFS` |
 | C++ | `AURORA_BLADE_ATTACK_DELAY_MS 1250` en `const76.h`; `Player::getAttackDelayMs()` la detecta por nombre porque el server id lo asigna el builder. Las gemas ruby siguen reduciendo el delay. |
 
-**Pendiente:** correr `./scripts/install-zagan-test-env.sh` en la máquina con el pack Zagan para generar el OTB/DAT/SPR y probar in-game. El 32×32 vive en `devtools/zagan-test/custom-sprites/` (esa carpeta está gitignoreada; el PNG se agregó con `git add -f`).
+**Pendiente:** no existe en el OTB. El pack Zagan original ya no está, así que hay que agregarla a `NEW_ITEMS` de `add_custom_items.py` (como el Aurora Shield) y darle un drop. El 32×32 está en `devtools/zagan-test/custom-sprites/` (gitignoreado; agregado con `git add -f`).
 
 ## Aurora Axe — nueva (nov 2026)
 
@@ -88,7 +103,7 @@ Hacha 1H rápida que completa el set Aurora junto a la Blade y el Shield.
 | C++ | `AURORA_AXE_ATTACK_DELAY_MS 1250` en `const76.h`; `Player::getAttackDelayMs()` la detecta por nombre. Las gemas ruby siguen reduciendo el delay. |
 | Set | Aurora Blade + Aurora Axe + Aurora Shield |
 
-**Pendiente:** mismo build que la Aurora Blade: correr `./scripts/install-zagan-test-env.sh` en la máquina con el pack Zagan y probar in-game. El 32×32 está en `devtools/zagan-test/custom-sprites/` (gitignoreado; agregado con `git add -f`).
+**Pendiente:** no existe en el OTB. El pack Zagan original ya no está, así que hay que agregarla a `NEW_ITEMS` de `add_custom_items.py` (como el Aurora Shield) y darle un drop. El 32×32 está en `devtools/zagan-test/custom-sprites/` (gitignoreado; agregado con `git add -f`).
 
 ## Aurora Shield — nueva (nov 2026)
 
@@ -96,16 +111,15 @@ Escudo kite que completa el set visual de la Aurora Blade.
 
 | Dato | Valor |
 |------|-------|
-| Server id | **`20160`** (fijo en `CUSTOM_ITEM_SERVER_IDS`; el builder ya no lo reasigna) |
+| Server id | **`20165`**, client id 3473 (sacrificado: rolling pin). Entrada en `NEW_ITEMS` de `add_custom_items.py`. Antes se documentó como `20160`, pero ese id terminó siendo la arbalest y el escudo nunca llegó al OTB |
 | Prototipo | guardian shield `2515` (def 30, shield) |
 | C++ | Sin lógica extra: hereda defensa/stats del prototipo |
 | Sprite | `zagan-test/custom-sprites/aurora_shield.png` (32×32, PNG con alpha) |
 | Preview | `docs/items-and-map/img/aurora-shield.png` |
-| Builder | entrada `aurora_shield.png` en `CUSTOM_ITEM_DEFS` |
 | Drop | **Ice Monk**, dentro de la bolsa, `chance="250"` (0,25 %) |
 | Look | Borde amarillo/dorado con degradé y campo morado radial, sin gema central ni el emblema/patrón "G" del guardian shield |
 
-**Pendiente:** mismo build que la Aurora Blade: correr `./scripts/install-zagan-test-env.sh` en la máquina con el pack Zagan y probar in-game. El 32×32 está en `devtools/zagan-test/custom-sprites/` (gitignoreado; agregado con `git add -f`).
+Creado en nov 2026 con `add_custom_items.py` (OTB y cliente). El 32×32 está en `devtools/zagan-test/custom-sprites/` (gitignoreado; agregado con `git add -f`).
 
 ---
 

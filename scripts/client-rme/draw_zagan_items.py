@@ -904,7 +904,11 @@ def otb_index(path: Path) -> dict[int, dict]:
     return out
 
 
-def apply(things: Path) -> None:
+def apply(things: Path, items: dict | None = None, render_fn=None) -> None:
+    """Escribe los sprites en el client id que cada ítem ya tiene. `items` y `render_fn` permiten que otro
+    script (recolor_zagan_items.py) use el mismo mecanismo con su propia tabla {sid: (nombre, _, prototipo)}."""
+    items = ITEMS if items is None else items
+    render_fn = render_fn or render
     dat_path, spr_path = things / "Tibia.dat", things / "Tibia.spr"
     dat_reader = B.DatReader(dat_path.read_bytes())
     entries, tail = dat_reader.read_item_entries()
@@ -915,13 +919,13 @@ def apply(things: Path) -> None:
     records: list[bytes | None] = [None] + [spr.sprite_raw(i) for i in range(1, spr.sprite_count + 1)]
     raws = [e.raw for e in entries]
     original_count = spr.sprite_count
-    for sid, (fname, _, proto_sid) in ITEMS.items():
+    for sid, (fname, _, proto_sid) in items.items():
         cid = zagan[sid]["cid"]
         entry = entries[by_cid[cid]]
         proto = entries[by_cid[base[proto_sid]["cid"]]]
         if len(proto.sprite_ids) != 1:
             raise SystemExit(f"{proto_sid}: el prototipo no es de 1 sprite")
-        record = B.encode_sprite_record(render(sid))
+        record = B.encode_sprite_record(render_fn(sid))
         # reusar el sprite si ya es uno agregado por nosotros (único dueño, flags del prototipo)
         current = entry.sprite_ids[0] if len(entry.sprite_ids) == 1 else 0
         owners = sum(1 for e in entries if current in e.sprite_ids)
