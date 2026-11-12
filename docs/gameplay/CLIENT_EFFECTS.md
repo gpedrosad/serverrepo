@@ -55,6 +55,15 @@ ni con la energía azul. En suelos muy oscuros los bordes se pierden; el centro 
 
 Va **después** de "ice" y de la Enchanted Spear (por eso el proyectil es el 17).
 
+## Pack "power" (nov 2026)
+
+| Constante | Número | Sale de | Uso |
+|-----------|-------:|---------|-----|
+| `NM_ME_POWER_HIT` | 33 | `NM_ME_ENERGY_AREA` (10) | [Power hit](POWER_HIT.md): explosión de energía en dorado |
+| `NM_ME_MEGA_HIT` | 34 | `NM_ME_ENERGY_AREA` (10) | Mega hit: la misma explosión en fucsia con centro dorado |
+
+Sin proyectiles. Luz dorada (color **204**). Va **después** de "shadow": `base: (33, 18)`.
+
 ## Otros proyectiles agregados
 
 | Constante | Número | Script | Qué es |
@@ -68,6 +77,7 @@ python3 scripts/client-rme/add_recolor_effects.py --pack ice --preview /tmp/ice.
 python3 scripts/client-rme/add_recolor_effects.py --pack ice devtools/rme/rme-client-760  # aplica (idempotente)
 python3 scripts/client-rme/add_enchanted_spear.py devtools/rme/rme-client-760
 python3 scripts/client-rme/add_recolor_effects.py --pack shadow devtools/rme/rme-client-760
+python3 scripts/client-rme/add_recolor_effects.py --pack power devtools/rme/rme-client-760
 ```
 
 El script agrega las entradas al final de la sección de efectos y al final del `.dat` (proyectiles), sube
@@ -76,8 +86,8 @@ sobre el cliente del RME: contadores 25/15 → 29/16, los 25 efectos y 15 proyec
 looktypes (incluido el 231) e ítems sin cambios, 400 sprites viejos al azar idénticos, sprites 11058 → 11094.
 
 **Los packs se aplican en orden** (el número de cada constante depende de cuántos efectos había):
-ice → Enchanted Spear → shadow. Cada pack de `PACKS` declara en `base` los contadores sobre los que se aplica.
-Para uno nuevo (ej. sagrado), agregarlo al final con `base: (33, 18)`: efectos desde **33**, proyectiles desde
+ice → Enchanted Spear → shadow → power. Cada pack de `PACKS` declara en `base` los contadores sobre los que se aplica.
+Para uno nuevo (ej. sagrado), agregarlo al final con `base: (35, 18)`: efectos desde **35**, proyectiles desde
 **18**. Volver a correr la Enchanted Spear con packs posteriores ya aplicados conserva sus proyectiles.
 
 ## Antes de usarlos en producción

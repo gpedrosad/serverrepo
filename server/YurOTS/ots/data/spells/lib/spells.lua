@@ -60,6 +60,9 @@ NM_ME_SHADOW_AREA = 29
 NM_ME_SHADOW_HIT = 30
 NM_ME_SHADOW_EXPLOSION = 31
 NM_ME_SHADOW_IMPACT = 32
+-- Pack "power" (después de shadow). Los manda el server en el power hit (docs/gameplay/POWER_HIT.md).
+NM_ME_POWER_HIT = 33
+NM_ME_MEGA_HIT = 34
 
 NM_ANI_BOLT = 1
 NM_ANI_ARROW = 2

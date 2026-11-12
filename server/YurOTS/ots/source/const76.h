@@ -49,6 +49,10 @@ enum MagicEffectClasses {
 	NM_ME_SOUND_PURPLE     = 0x16, //22
 	NM_ME_SOUND_BLUE       = 0x17, //23
 	NM_ME_SOUND_WHITE      = 0x18, //24
+	// 25-32: packs ice y shadow (solo se usan desde Lua). 33-34: pack power de
+	// scripts/client-rme/add_recolor_effects.py, para el power hit (ver docs/gameplay/POWER_HIT.md).
+	NM_ME_POWER_HIT        = 0x21, //33 explosión de energía en dorado
+	NM_ME_MEGA_HIT         = 0x22, //34 explosión de energía en fucsia y dorado
 };
 
 #define NM_ANI_BOLT              1

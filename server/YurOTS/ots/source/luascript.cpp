@@ -136,6 +136,12 @@ int LuaScript::OpenFile(const char *filename)
 
 	SPEAR_LOSE_CHANCE = getGlobalNumber("spearlosechance",50);
 
+	POWERHIT_CHANCE = getGlobalNumber("powerhitchance", 80);
+	POWERHIT_DAMAGE = getGlobalNumber("powerhitdamage", 150);
+	MEGAHIT_CHANCE = getGlobalNumber("megahitchance", 10);
+	MEGAHIT_DAMAGE = getGlobalNumber("megahitdamage", 250);
+	MEGAHIT_PVP = getGlobalString("megahitpvp", "no") == "yes";
+
 	FREE_PREMMY = getGlobalString("freepremmy") == "yes";
 	QUEUE_PREMMY = getGlobalString("queuepremmy") == "yes";
 	PREMMY_EXP_BONUS = getGlobalNumber("premmyexpbonus", 10);

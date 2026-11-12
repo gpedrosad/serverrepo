@@ -20,12 +20,16 @@ Pack "shadow" (va después de "ice" y de la Enchanted Spear, que es el proyectil
   NM_ME_SHADOW_IMPACT     32  <- explosión de daño
   NM_ANI_SHADOWBALL       17  <- bola de fuego
 
+Pack "power" (después de "shadow"; los manda el server en el power hit, docs/gameplay/POWER_HIT.md):
+  NM_ME_POWER_HIT  33  <- explosión de energía (NM_ME_ENERGY_AREA) en dorado
+  NM_ME_MEGA_HIT   34  <- la misma en fucsia con centro dorado
+
 Uso:
   python3 scripts/client-rme/add_recolor_effects.py --pack ice --preview x.png      # solo vista previa
   python3 scripts/client-rme/add_recolor_effects.py --pack ice DIR_THINGS           # aplica
 
 Idempotente: si el .dat ya tiene los contadores del pack aplicado, no cambia nada. Los packs se
-aplican en orden (los números de constante dependen de eso): ice -> add_enchanted_spear.py -> shadow.
+aplican en orden (los números de constante dependen de eso): ice -> add_enchanted_spear.py -> shadow -> power.
 Ver docs/gameplay/CLIENT_EFFECTS.md.
 """
 from __future__ import annotations
@@ -84,6 +88,32 @@ def recolor_shadow(p):
     return gradient(SHADOW, lum ** 1.1 * 1.08) + (255,)
 
 
+GOLD = [(0, (70, 26, 0)), (0.3, (190, 90, 0)), (0.55, (255, 170, 0)), (0.8, (255, 230, 60)), (1, (255, 255, 225))]
+MEGA = [(0, (70, 0, 30)), (0.3, (220, 0, 110)), (0.55, (255, 50, 150)), (0.8, (255, 200, 40)), (1, (255, 255, 230))]
+
+
+def _by_brightness(stops, p):
+    """Energía (azul) -> otra paleta: el azul saturado va al tono medio y el centro blanco queda blanco.
+
+    Se usa el brillo (máximo canal) y no la luminancia: el azul puro tiene luminancia baja y quedaría oscuro.
+    """
+    r, g, b, a = p
+    if a == 0:
+        return p
+    _h, s, v = colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
+    return gradient(stops, v * (0.62 + 0.38 * (1 - s))) + (255,)
+
+
+def recolor_gold(p):
+    """Energía -> oro: ámbar oscuro, dorado, amarillo y centro blanco. Color de premio."""
+    return _by_brightness(GOLD, p)
+
+
+def recolor_mega(p):
+    """Energía -> fucsia eléctrico con borde dorado y centro blanco: el premio grande."""
+    return _by_brightness(MEGA, p)
+
+
 # base = (efectos, proyectiles) que tiene que tener el .dat antes del pack.
 # (número de cliente de origen, constante nueva, función) por sección.
 PACKS = {
@@ -102,6 +132,13 @@ PACKS = {
         "effects": [(7, "NM_ME_SHADOW_AREA", recolor_shadow), (16, "NM_ME_SHADOW_HIT", recolor_shadow),
                     (5, "NM_ME_SHADOW_EXPLOSION", recolor_shadow), (6, "NM_ME_SHADOW_IMPACT", recolor_shadow)],
         "missiles": [(4, "NM_ANI_SHADOWBALL", recolor_shadow)],
+    },
+    "power": {
+        "base": (33, 18),                      # después de shadow
+        "light": 5 * 36 + 4 * 6 + 0,           # dorado
+        # Los dos salen de la explosión de energía (NM_ME_ENERGY_AREA, cliente 11): esfera que estalla en onda.
+        "effects": [(11, "NM_ME_POWER_HIT", recolor_gold), (11, "NM_ME_MEGA_HIT", recolor_mega)],
+        "missiles": [],
     },
 }
 

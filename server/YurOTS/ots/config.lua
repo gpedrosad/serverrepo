@@ -144,6 +144,16 @@ summonsallvoc = "no"
 -- chance of losing a spear when shot (0 - none lost, 100000 - all lost)
 spearlosechance = 100000
 
+-- power hit: cualquier ataque de jugador (melee, distancia, runas, hechizos) puede salir con mas poder.
+-- Probabilidad POR MIL (80 = 8%) y dano en % del golpe normal. El mega es aparte (10 = 1%).
+-- Contra jugadores el mega cuenta como power hit salvo megahitpvp = "yes". 0 desactiva.
+-- Ver docs/gameplay/POWER_HIT.md
+powerhitchance = 80
+powerhitdamage = 150
+megahitchance = 10
+megahitdamage = 250
+megahitpvp = "no"
+
 -- anti-afk - maximum idle time to kick player (1 = 1min)
 kicktime = 15
 

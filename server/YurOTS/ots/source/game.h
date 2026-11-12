@@ -103,9 +103,13 @@ protected:
 
 	bool isPvpArena(Creature* c);
 	int applyAmulets(Player* player, int damage, attacktype_t atype);
+	int64_t applyPowerHit(Creature* attacker, Creature* target, int64_t damage);
 
 	SpectatorVec spectatorlist;
 	CreatureStates creaturestates;
+	// Power hit: -1 = todavía sin tirar, 0 = normal, 1 = power, 2 = mega. Uno por GameState
+	// (un golpe o un lanzamiento: toda el área comparte la tirada).
+	int powerHitTier;
 };
 
 enum enum_world_type{

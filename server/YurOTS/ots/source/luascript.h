@@ -92,6 +92,13 @@ public:
 
 	int SPEAR_LOSE_CHANCE;
 
+	// Power hit (ver docs/gameplay/POWER_HIT.md): probabilidades por mil, daño en %.
+	int POWERHIT_CHANCE;
+	int POWERHIT_DAMAGE;
+	int MEGAHIT_CHANCE;
+	int MEGAHIT_DAMAGE;
+	bool MEGAHIT_PVP;
+
 	bool FREE_PREMMY;
 	bool QUEUE_PREMMY;
 	int PREMMY_EXP_BONUS;

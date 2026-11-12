@@ -251,7 +251,46 @@ extern std::vector< std::pair<unsigned long, unsigned long> > bannedIPs;
 GameState::GameState(Game *game, const Range &range)
 {
 	this->game = game;
+	this->powerHitTier = -1;
 	game->getSpectators(range, spectatorlist);
+}
+
+// Power hit: cualquier ataque de jugador (melee, distancia, runas, hechizos) puede salir con más
+// poder al azar. Probabilidades (por mil) y daño (%) en config.lua. Se tira una sola vez por
+// GameState, así un hechizo de área no saca un power hit casi seguro por tener muchos objetivos.
+// Contra jugadores el mega baja a power salvo megahitpvp = "yes". Ver docs/gameplay/POWER_HIT.md.
+int64_t GameState::applyPowerHit(Creature* attacker, Creature* target, int64_t damage)
+{
+	if(damage <= 0 || !target || !dynamic_cast<Player*>(attacker))
+		return damage;
+
+	if(powerHitTier < 0) {
+		int64_t roll = random_range(1, 1000);
+		if(roll <= g_config.MEGAHIT_CHANCE)
+			powerHitTier = 2;
+		else if(roll <= g_config.MEGAHIT_CHANCE + g_config.POWERHIT_CHANCE)
+			powerHitTier = 1;
+		else
+			powerHitTier = 0;
+	}
+
+	int tier = powerHitTier;
+	if(tier == 2 && dynamic_cast<Player*>(target) && !g_config.MEGAHIT_PVP)
+		tier = 1;
+	if(tier == 0)
+		return damage;
+
+	const bool mega = (tier == 2);
+	damage = damage * (mega ? g_config.MEGAHIT_DAMAGE : g_config.POWERHIT_DAMAGE) / 100;
+
+	game->sendMagicEffect(target->pos, mega ? NM_ME_MEGA_HIT : NM_ME_POWER_HIT);
+	SpectatorVec list;
+	game->getSpectators(Range(target->pos, true), list);
+	for(SpectatorVec::iterator it = list.begin(); it != list.end(); ++it) {
+		if(Player* spectator = dynamic_cast<Player*>(*it))
+			spectator->sendAnimatedText(target->pos, mega ? 190 : 210, mega ? "MEGA!" : "POWER!");   // fucsia / amarillo
+	}
+	return damage;
 }
 
 bool GameState::isPvpArena(Creature* c)
@@ -743,6 +782,9 @@ void GameState::onAttack(Creature* attacker, const Position& pos, const MagicEff
 
 		if (damage != 0)
 		{
+			if (!(me->attackType & ATTACK_MANADRAIN))
+				damage = applyPowerHit(attacker, targetCreature, damage);   // runas y hechizos (las curas son negativas)
+
 			if (me->attackType & ATTACK_MANADRAIN)
 			{
 				manaDamage = std::min(damage, targetCreature->mana);
@@ -914,6 +956,8 @@ void GameState::onAttack(Creature* attacker, const Position& pos, Creature* atta
 
 	if(damage < 0 || attackedCreature->access >= g_config.ACCESS_PROTECT)
 		damage = 0;
+
+	damage = applyPowerHit(attacker, attackedCreature, damage);   // melee y distancia
 
 	Tile* tile = game->map->getTile(pos);
 	bool blood;
