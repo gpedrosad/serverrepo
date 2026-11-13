@@ -4,7 +4,7 @@
      Look 231: sprite propio (recoloreado del Dragon 34), ver docs/gameplay/FROST_DRAGON.md. -->
 <monster name="Frost Dragon" level="55" maglevel="65" experience="2400" pushable="0" armor="33" defense="35" canpushitems="1" staticattack="50" changetarget="200" speed="200">
 	<health now="2200" max="2200"/>
-	<look type="231" head="0" body="0" legs="0" feet="0" corpse="3104"/>
+	<look type="231" head="0" body="0" legs="0" feet="0" corpse="20171"/>
 	<combat targetdistance="1" runonhealth="220"/>
 
 <attacks>

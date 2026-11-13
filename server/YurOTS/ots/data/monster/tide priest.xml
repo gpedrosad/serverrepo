@@ -6,7 +6,7 @@
      Ver docs/gameplay/TIDE_PRIEST.md. -->
 <monster name="Tide Priest" level="40" maglevel="35" experience="620" pushable="0" armor="22" defense="24" canpushitems="1" staticattack="50" changetarget="200" speed="200">
 	<health now="720" max="720"/>
-	<look type="234" head="0" body="0" legs="0" feet="0" corpse="3128"/>
+	<look type="234" head="0" body="0" legs="0" feet="0" corpse="20170"/>
 	<combat targetdistance="4" runonhealth="0"/>
 
 <attacks>

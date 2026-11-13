@@ -5,7 +5,7 @@
      Ver docs/gameplay/DROWNED_SAILOR.md. -->
 <monster name="Drowned Sailor" level="30" maglevel="20" experience="280" pushable="0" armor="20" defense="18" canpushitems="1" staticattack="50" changetarget="200" speed="170">
 	<health now="520" max="520"/>
-	<look type="233" head="0" body="0" legs="0" feet="0" corpse="3128"/>
+	<look type="233" head="0" body="0" legs="0" feet="0" corpse="20169"/>
 	<combat targetdistance="1" runonhealth="0"/>
 	<blood color="86" effect="9" splash="255"/>
 

@@ -6,7 +6,7 @@
 	     usan el pack "ice" del cliente (mismos efectos que el Frost Dragon).
 	     El cliente de los jugadores necesita Tibia.dat/Tibia.spr con el 235 y los
 	     efectos NM_ME_ICE_* antes de spawnearla. Ver docs/gameplay/ICE_SPIDER.md. -->
-	<look type="235" corpse="2857"/>
+	<look type="235" corpse="20167"/>
 	<combat targetdistance="1" runonhealth="0"/>
 	<blood color="30" effect="16" splash="4"/>
 

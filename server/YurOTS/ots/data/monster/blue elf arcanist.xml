@@ -6,7 +6,7 @@
 	     Paleta: head=33 (violeta apagado), body=106 (azul real profundo),
 	     legs=68 (azul acero), feet=124 (azul verdoso oscuro).
 	     Ver docs/gameplay/BLUE_ELF_ARCANIST.md. -->
-	<look type="63" head="33" body="106" legs="68" feet="124" corpse="2979"/>
+	<look type="63" head="33" body="106" legs="68" feet="124" corpse="20166"/>
 	<combat targetdistance="5" runonhealth="50"/>
 
 <attacks>

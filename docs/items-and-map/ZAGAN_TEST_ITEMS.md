@@ -121,6 +121,30 @@ Escudo kite que completa el set visual de la Aurora Blade.
 
 Creado en nov 2026 con `add_custom_items.py` (OTB y cliente). El 32×32 está en `devtools/zagan-test/custom-sprites/` (gitignoreado; agregado con `git add -f`).
 
+## Corpses de monstruos nuevos — nov 2026
+
+Corpses recoloreados de la base de cada familia; los IDs `20166`–`20172` ya están en el OTB y los XML
+de los monstruos apuntan ahí. Los humanoides son 1×1; araña y dragones son 2×2 (4 sprites).
+
+![Corpses de los monstruos nuevos](img/new-monster-corpses.png)
+
+| Monstruo | Server id | Client id (sacrificado) | Prototipo | Formato |
+|----------|----------:|--------------------------|-----------|---------|
+| Blue Elf Arcanist | `20166` | 3741 (troll green) | dead elf arcanist `2979` | 1×1 |
+| Ice Spider | `20167` | 3660 (yellow rose) | dead giant spider `2857` | 2×2 |
+| Ice Monk | `20168` | 3739 (powder herb) | dead human `3128` | 1×1 |
+| Drowned Sailor | `20169` | 3735 (stone herb) | dead human `3128` | 1×1 |
+| Tide Priest | `20170` | 3673 (orange star) | dead human `3128` | 1×1 |
+| Frost Dragon | `20171` | 3659 (blue rose) | dead dragon `3104` | 2×2 |
+| Black Dragon | `20172` | 3605 (wheat) | dead dragon `3104` | 2×2 |
+
+`add_custom_items.py` acepta `tiles=2` para items 2×2: carga un PNG 64×64 y lo parte en los 4 sprites
+en el orden del `.dat` (abajo-derecha, abajo-izquierda, arriba-derecha, arriba-izquierda). Los PNG están
+en `devtools/zagan-test/custom-sprites/` y se agregaron con `git add -f`.
+
+**Pendiente:** el cliente de jugadores y la ThinkPad necesitan el `.dat`/`.spr` y el `items-zagan-test.otb`
+nuevos. Hasta que se publique el cliente, los corpses nuevos se ven como el item sacrificado.
+
 ---
 
 ## Armas de 8.x (nov 2026)

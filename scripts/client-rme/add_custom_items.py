@@ -76,6 +76,29 @@ NEW_ITEMS = [
     dict(name="aurora shield", server_id=20165, client_id=3473, prototype=2515,
          png="aurora_shield.png", attack=0, defence=30,
          descr="Its golden rim holds a field of violet light, like the sky over the frozen north."),
+    # Corpses de monstruos nuevos: contenedores 1x1 o 2x2. El prototipo aporta
+    # flags/capacidad; no se tocan bloques de arma/armadura.
+    dict(name="blue elf arcanist corpse", server_id=20166, client_id=3741, prototype=2979,
+         png="blue_elf_arcanist_corpse.png", corpse=True,
+         descr="The corpse of a blue elf arcanist."),
+    dict(name="ice spider corpse", server_id=20167, client_id=3660, prototype=2857,
+         png="ice_spider_corpse.png", corpse=True, tiles=2,
+         descr="The frozen corpse of an ice spider."),
+    dict(name="ice monk corpse", server_id=20168, client_id=3739, prototype=3128,
+         png="ice_monk_corpse.png", corpse=True,
+         descr="The frozen corpse of an ice monk."),
+    dict(name="drowned sailor corpse", server_id=20169, client_id=3735, prototype=3128,
+         png="drowned_sailor_corpse.png", corpse=True,
+         descr="The corpse of a drowned sailor."),
+    dict(name="tide priest corpse", server_id=20170, client_id=3673, prototype=3128,
+         png="tide_priest_corpse.png", corpse=True,
+         descr="The corpse of a tide priest."),
+    dict(name="frost dragon corpse", server_id=20171, client_id=3659, prototype=3104,
+         png="frost_dragon_corpse.png", corpse=True, tiles=2,
+         descr="The frozen corpse of a frost dragon."),
+    dict(name="black dragon corpse", server_id=20172, client_id=3605, prototype=3104,
+         png="black_dragon_corpse.png", corpse=True, tiles=2,
+         descr="The charred corpse of a black dragon."),
 ]
 
 
@@ -98,14 +121,19 @@ def node_ids(node) -> tuple[int | None, int | None, str]:
             name.decode("latin-1"))
 
 
-def sprite_record(png: Path) -> bytes:
-    """El PNG tal cual, píxel a píxel: tiene que medir 32x32 (no se recorta ni se reescala, porque un sprite
-    sacado de otro cliente se arruina). Lo semitransparente queda opaco y lo transparente, transparente."""
+def sprite_records(png: Path, tiles: int = 1) -> list[bytes]:
+    """Registros de sprite para un item 1x1 (32x32) o 2x2 (64x64).
+    Los 2x2 se parten en el orden del .dat: abajo-derecha, abajo-izquierda,
+    arriba-derecha, arriba-izquierda."""
     image = B.Image.open(png).convert("RGBA")
-    if image.size != (32, 32):
-        raise SystemExit(f"{png.name}: mide {image.size}, tiene que ser 32x32")
+    size = 32 if tiles == 1 else 64
+    if image.size != (size, size):
+        raise SystemExit(f"{png.name}: mide {image.size}, tiene que ser {size}x{size}")
     image.putdata([(0, 0, 0, 0) if p[3] == 0 else (p[0], p[1], p[2], 255) for p in image.getdata()])
-    return B.encode_sprite_record(image)
+    if tiles == 1:
+        return [B.encode_sprite_record(image)]
+    boxes = [(32, 32, 64, 64), (0, 32, 32, 64), (32, 0, 64, 32), (0, 0, 32, 32)]
+    return [B.encode_sprite_record(image.crop(box)) for box in boxes]
 
 
 # ---------- candidatos a sacrificar ----------
@@ -174,24 +202,26 @@ def apply_things(things: Path, otb_root, dry: bool) -> list[str]:
             s2c.setdefault(sid, cid)
     new_entries, log, changed = [e.raw for e in entries], [], False
     for item in NEW_ITEMS:
-        record = sprite_record(SPRITES / item["png"])
+        tiles = int(item.get("tiles", 1))
+        sprite_count = 4 if tiles == 2 else 1
+        new_records = sprite_records(SPRITES / item["png"], tiles)
         idx = by_cid.get(item["client_id"])
         proto_cid = s2c.get(item["prototype"])
         if idx is None or proto_cid not in by_cid:
             raise SystemExit(f"{things}: falta el client id {item['client_id']} o el del prototipo {item['prototype']}")
         proto = entries[by_cid[proto_cid]]
-        if len(proto.sprite_ids) != 1:
-            raise SystemExit(f"prototipo {item['prototype']} no es de 1 sprite")
+        if len(proto.sprite_ids) != sprite_count:
+            raise SystemExit(f"prototipo {item['prototype']} tiene {len(proto.sprite_ids)} sprites, se esperaban {sprite_count}")
         current = entries[idx]
-        if (len(current.sprite_ids) == 1 and current.prefix == proto.prefix
-                and records[current.sprite_ids[0]] == record):
+        if (len(current.sprite_ids) == sprite_count and current.prefix == proto.prefix
+                and all(records[current.sprite_ids[i]] == new_records[i] for i in range(sprite_count))):
             log.append(f"  {item['name']}: ya está (client {item['client_id']}, sprite {current.sprite_ids[0]})")
             continue
-        records.append(record)
-        sprite_id = len(records) - 1
-        new_entries[idx] = B.patch_item_sprite(current, proto.prefix, sprite_id)
+        new_sprite_ids = list(range(len(records), len(records) + sprite_count))
+        records.extend(new_records)
+        new_entries[idx] = proto.prefix + struct.pack(f"<{sprite_count}H", *new_sprite_ids)
         changed = True
-        log.append(f"  {item['name']}: client {item['client_id']} -> sprite nuevo {sprite_id}")
+        log.append(f"  {item['name']}: client {item['client_id']} -> sprites nuevos {new_sprite_ids}")
     if changed and not dry:
         for path in (dat_path, spr_path):
             backup = path.with_name(path.name + ".bak-custom-items")
@@ -216,7 +246,9 @@ def apply_otb(path: Path, dry: bool) -> list[str]:
         if proto is None:
             raise SystemExit(f"{path}: no está el prototipo {item['prototype']}")
         flags, blocks = B.parse_item_props(proto.props)
-        if "armor" in item:
+        if item.get("corpse"):
+            pass  # contenedor: se copian flags/capacidad del prototipo sin tocar stats
+        elif "armor" in item:
             armor = B.get_block_payload(blocks, ITEM_ATTR_ARMOR2)
             if not armor or len(armor) != 12:
                 raise SystemExit(f"prototipo {item['prototype']} sin bloque de armadura")
@@ -243,7 +275,9 @@ def apply_otb(path: Path, dry: bool) -> list[str]:
             log.append(f"  {item['name']}: server {item['server_id']} actualizado")
         else:
             root.children.append(new_node)
-            stats = (f"arm {item['armor']}" if "armor" in item else f"atk {item['attack']} def {item['defence']}")
+            stats = ("corpse" if item.get("corpse") else
+                     f"arm {item['armor']}" if "armor" in item else
+                     f"atk {item['attack']} def {item['defence']}")
             log.append(f"  {item['name']}: server {item['server_id']} nuevo (client {item['client_id']}, "
                        f"prototipo {item['prototype']}, {stats})")
         changed = True
