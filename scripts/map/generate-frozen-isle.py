@@ -50,7 +50,9 @@ _spec.loader.exec_module(NP)
 Noise, neighbors_in, pieces_for, fix_until_valid, reach, Blocking = (
     NP.Noise, NP.neighbors_in, NP.pieces_for, NP.fix_until_valid, NP.reach, NP.Blocking)
 SNOW_SIDE, SNOW_CORNER, SNOW_INNER = NP.SNOW_SIDE, NP.SNOW_CORNER, NP.SNOW_INNER
-WALL_SIDE, WALL_CORNER, WALL_INNER, ROCK = NP.WALL_SIDE, NP.WALL_CORNER, NP.WALL_INNER, NP.ROCK
+WALL_SIDE, WALL_CORNER, WALL_INNER = ({k: v + 15 for k, v in family.items()}
+                                      for family in (NP.WALL_SIDE, NP.WALL_CORNER, NP.WALL_INNER))
+ROCK = 918  # masa de roca gris sólida y paredes de cara gris 371–382
 CARD = NP.CARD
 ALL8 = list(DIRS.values())
 
@@ -68,9 +70,10 @@ SEA = 9                                     # agua alrededor: la pantalla (15x11
 
 # --- piezas -------------------------------------------------------------------------------------
 WATER, SNOW, ICE, STONE_FLOOR = 4608, 670, 671, 431
-COAST_SIDE = {"n": 4644, "e": 4645, "s": 4646, "w": 4647}
-COAST_CORNER = {("n", "w"): 4648, ("n", "e"): 4649, ("s", "w"): 4650, ("s", "e"): 4651}
-COAST_INNER = {"nw": 4652, "ne": 4653, "sw": 4654, "se": 4655}
+# Agua con orilla nevada: son suelos sólidos completos, no overlays de tierra.
+COAST_SIDE = {"n": 659, "e": 660, "s": 658, "w": 661}
+COAST_CORNER = {("n", "w"): 666, ("n", "e"): 667, ("s", "w"): 668, ("s", "e"): 669}
+COAST_INNER = {"nw": 665, "ne": 664, "sw": 663, "se": 662}
 # hielo con borde de nieve (suelo): lado(s) donde está la nieve
 ICE_SIDE = {"n": 684, "s": 685, "w": 686, "e": 687}
 ICE_CORNER = {("n", "w"): 688, ("n", "e"): 689, ("s", "w"): 690, ("s", "e"): 691}
@@ -79,7 +82,8 @@ ICE_INNER = {"se": 692, "sw": 693, "ne": 694, "nw": 695}
 PINE, DEAD_TREES = 2698, (2697, 2709, 2717, 2720)
 STALAGMITE, STONE, RUBBLE, PEBBLES = 4995, 1285, 1309, 1336
 PILLAR, BROKEN_PILLAR, STATUE, ALTAR = 1515, 3767, 1442, 1642
-COAL_BASIN, BARREL, CRATE, BOAT_ITEM = 2602, 1770, 1739, 3591
+COAL_BASIN, BARREL, CRATE = 2602, 1770, 1739
+BOAT_PIECES = tuple(range(3592, 3597))  # bote horizontal completo, de oeste a este
 CAMPFIRE, LANTERN, SIGN, CHEST = 1423, 3744, 1429, 1740
 BONES, DRAGON_SKULL, DRAGON_BONES, HUMAN_SKELETON = (3125, 2248, 2320, 3121), 2247, 3122, 3133
 STAIR_DOWN, STAIRS_UP, TELEPORT = 432, 1385, 1387
@@ -165,7 +169,7 @@ def build_surface(seed: int, bl):
         for y in range(HARBOR[1] + 4, H):
             land.discard((x, y))
     water = cells - land
-    water = fix_until_valid(water, cells - keep_land, COAST_SIDE, COAST_CORNER, COAST_INNER)
+    water = fix_until_valid(water, cells - keep_land, COAST_SIDE, COAST_CORNER, COAST_INNER, single=True)
     land = cells - water
 
     walk = walk_main | causeway | spurs | islet_walk | court
@@ -173,8 +177,8 @@ def build_surface(seed: int, bl):
     snow_mask = land - court
     snow_mask = fix_until_valid(snow_mask, court, SNOW_SIDE, SNOW_CORNER, SNOW_INNER)
     court = land - snow_mask
-    # charcos de hielo en los claros (con borde de nieve, una pieza por casilla)
-    ice = set()
+    # Lago parcialmente helado: hielo en la traza y su margen, sin abrir atajos sobre el agua.
+    ice = (grow(causeway, 1) & land) - court
     for c in ellipse(CHECK_LAKE[0] + 3.5, CHECK_LAKE[1] + 0.5, 2.0, 1.4) | ellipse(HARBOR[0] - 3.5, HARBOR[1] - 0.5, 1.8, 1.2):
         if c in walk:
             ice.add(c)
@@ -196,7 +200,7 @@ def build_surface(seed: int, bl):
             tiles[c] = [SNOW]
         coast = pieces_for(neighbors_in(water, x, y), COAST_SIDE, COAST_CORNER, COAST_INNER)
         if coast:
-            tiles[c] += coast
+            tiles[c] = [coast[0]]
 
     coastal = {c for c in land if neighbors_in(water, *c)}
     walk = {c for c in walk if c in land and c not in coastal}
@@ -231,8 +235,8 @@ def build_surface(seed: int, bl):
         near_big = any((x + dx, y + dy) in big for dx in (-1, 0, 1) for dy in (-1, 0, 1))
         if covers_path(c) or near_big:
             continue
-        if rng.random() < (0.55 if rocky else 0.8):
-            tiles[c].append(RUBBLE if rocky else (PINE if rng.random() < 0.88 else rng.choice(DEAD_TREES)))
+        if rng.random() < (0.22 if rocky else 0.42) * (0.35 + nz.fbm(x / 7, y / 7, 2, 91)):
+            tiles[c] = [tiles[c][0], RUBBLE if rocky else (PINE if rng.random() < 0.88 else rng.choice(DEAD_TREES))]
             big.add(c)
     # costa sin sendero: alguna estalagmita en la orilla (ya es intransitable)
     for c in sorted(coastal):
@@ -246,9 +250,9 @@ def build_surface(seed: int, bl):
     for c, it in deco.items():
         if c in walk:
             put(c, it)
-    boat_c = (hx + 1, hy + 4)
-    if boat_c in water:
-        tiles[boat_c].append(BOAT_ITEM)
+    boat = {(hx - 1 + i, hy + 4): item for i, item in enumerate(BOAT_PIECES)}
+    for c, item in boat.items():
+        tiles[c].append(item)
     # --- monasterio ---
     x0, y0, x1, y1 = COURTYARD
     for x in range(x0 + 1, x1, 3):
@@ -304,7 +308,8 @@ def build_surface(seed: int, bl):
         placed_signs[c] = text
     signs = placed_signs
 
-    return tiles, {"walk": walk, "water": water, "court": court, "chests": chests, "signs": signs,
+    return tiles, {"walk": walk, "water": water, "court": court, "ice": ice, "snow_for_ice": snow_for_ice,
+                   "boat": boat, "chests": chests, "signs": signs,
                    "zones": {"forest": brush(FOREST_PATH) | spurs, "lake": causeway, "islet": islet_walk,
                              "court": court, "mountain": brush(MOUNTAIN_PATH)}}
 
@@ -344,11 +349,15 @@ def b_rect(x0, y0, x1, y1) -> set:
 
 def cave_floor_tiles(floor: set, box: set, seed: int, patches=0.0) -> dict:
     nz = Noise(seed + 77)
+    # Bordes de nieve sobre el hielo: evitar parches cuadrados aislados en las grutas.
+    snow = {c for c in floor if nz.fbm(c[0] / 5, c[1] / 5, 3, 12) < patches}
+    snow = fix_until_valid(snow, floor - snow, ICE_SIDE, ICE_CORNER, ICE_INNER, single=True)
     tiles = {}
     for c in box:
         x, y = c
         if c in floor:
-            tiles[c] = [SNOW if nz.fbm(x / 5, y / 5, 3, 12) < patches else ICE]
+            edge = pieces_for(neighbors_in(snow, x, y), ICE_SIDE, ICE_CORNER, ICE_INNER) if c not in snow else []
+            tiles[c] = [SNOW if c in snow else edge[0] if edge else ICE]
             continue
         wall = pieces_for(neighbors_in(floor, x, y), WALL_SIDE, WALL_CORNER, WALL_INNER)
         tiles[c] = [wall[0]] if wall else [ROCK]
@@ -408,7 +417,7 @@ def build_caves(seed: int):
     hall_x0 = max(bx_min, min(db[0] - 6, bx_max - 12))
     hall_y1 = db[1] - 3
     hall = b_rect(hall_x0, hall_y1 - 7, hall_x0 + 11, hall_y1)
-    f9 = {db, (db[0], db[1] - 1)} | b_line((db[0], db[1] - 1), (db[0], hall_y1)) | hall
+    f9 = {db, (db[0], db[1] - 1), (db[0], db[1] + 1)} | b_line((db[0], db[1] - 1), (db[0], hall_y1)) | hall
     # recortes en la sala para que no sea un rectángulo
     for c in list(hall):
         if (c[0] in (hall_x0, hall_x0 + 11) and c[1] in (hall_y1 - 7, hall_y1)) or rng.random() < 0.05:
@@ -466,7 +475,7 @@ def decorate_cave(tiles, floor, start, keep, seed, rate, bl):
 # --- spawns -------------------------------------------------------------------------------------
 
 def place(groups, walk, avoid, z, rng, min_gap=7):
-    out, centers = [], []
+    out, centers, occupied = [], [], set()
     for name, count, per, spawntime, pool in groups:
         cands = sorted((pool & walk) - avoid)
         rng.shuffle(cands)
@@ -477,11 +486,12 @@ def place(groups, walk, avoid, z, rng, min_gap=7):
             if any(abs(c[0] - o[0]) + abs(c[1] - o[1]) < min_gap for o in centers):
                 continue
             spots = [(c[0] + dx, c[1] + dy) for dx in range(-2, 3) for dy in range(-2, 3)
-                     if (c[0] + dx, c[1] + dy) in walk and (c[0] + dx, c[1] + dy) not in avoid]
+                     if (c[0] + dx, c[1] + dy) in walk and (c[0] + dx, c[1] + dy) not in (avoid | occupied)]
             if len(spots) < per + 2:
                 continue
             rng.shuffle(spots)
             centers.append(c)
+            occupied.update(spots[:per])
             out.append((c, z, [(name, s, spawntime) for s in spots[:per]]))
             placed += 1
         if placed < count:
@@ -571,7 +581,7 @@ def main() -> int:
     sx, sy = STAIRS
     dn = caves["down"]
     decorate_cave(caves["t8"], caves["floor8"], (sx, sy + 1), grow({STAIRS, dn, (sx, sy + 1)}, 2), a.seed + 1, 0.02, bl)
-    decorate_cave(caves["t9"], caves["floor9"], (dn[0], dn[1] - 1),
+    decorate_cave(caves["t9"], caves["floor9"], (dn[0], dn[1] + 1),
                   grow({dn, caves["portal"]} | set(caves["chests9"]), 2) | caves["treasure"], a.seed + 2, 0.06, bl)
 
     errors = []
@@ -591,7 +601,7 @@ def main() -> int:
             elif sorted(want) != sorted(have):
                 errors.append(f"{label} {c}: quiere {want} tiene {have}")
 
-    check(surf, info["water"], COAST_SIDE, COAST_CORNER, COAST_INNER, "costa")
+    check(surf, info["water"], COAST_SIDE, COAST_CORNER, COAST_INNER, "costa", ground=True)
     land = set(surf) - info["water"]
     check(surf, land - info["court"], SNOW_SIDE, SNOW_CORNER, SNOW_INNER, "nieve/patio", region=info["court"])
 
@@ -609,13 +619,18 @@ def main() -> int:
             errors.append(f"z7: cofre {c} sin acceso")
     if NIMRAL not in walk7 or NIMRAL == LANDING:
         errors.append("z7: el lugar de Nimral no es caminable")
-    floor_ok = {ICE, SNOW}
+    floor_ok = {ICE, SNOW} | set(ICE_SIDE.values()) | set(ICE_CORNER.values()) | set(ICE_INNER.values())
     walk8 = {c for c, it in caves["t8"].items() if bl.walkable(it) and it[0] in floor_ok | {STAIR_DOWN}}
-    d8 = reach(walk8, (sx, sy + 1), CARD)
+    if (sx, sy + 1) not in walk8:
+        errors.append("z8: llegada desde superficie bloqueada")
+    d8 = reach(walk8, (sx, sy + 1), CARD) if (sx, sy + 1) in walk8 else {}
     if (dn[0], dn[1] - 1) not in d8 or (dn[0], dn[1] + 1) not in d8:
         errors.append(f"z8: la bajada a z9 {dn} no se alcanza")
     walk9 = {c for c, it in caves["t9"].items() if bl.walkable(it) and it[0] in floor_ok}
-    d9 = reach(walk9, (dn[0], dn[1] - 1), CARD)
+    arrival9 = (dn[0], dn[1] + 1)  # 1385 floorchange_north: al bajar se llega al sur
+    if arrival9 not in walk9:
+        errors.append(f"z9: llegada real {arrival9} bloqueada")
+    d9 = reach(walk9, arrival9, CARD) if arrival9 in walk9 else {}
     for c in list(caves["chests9"]) + [caves["portal"]]:
         if not any((c[0] + dx, c[1] + dy) in d9 for dx, dy in CARD):
             errors.append(f"z9: {c} sin acceso")
@@ -627,6 +642,15 @@ def main() -> int:
             want = pieces_for(neighbors_in(fl, *c), WALL_SIDE, WALL_CORNER, WALL_INNER)
             if want is None or len(want) > 1 or (want and it[0] != want[0]) or (not want and it[0] != ROCK):
                 errors.append(f"pared {label} {c}: quiere {want} tiene {it[0]}")
+    coastal = {c for c in land if neighbors_in(info["water"], *c)}
+    check(surf, info["snow_for_ice"], ICE_SIDE, ICE_CORNER, ICE_INNER, "hielo/nieve",
+          region=info["ice"] - coastal, ground=True)
+    for c, item in info["boat"].items():
+        if c not in info["water"] or surf[c] != [WATER, item]:
+            errors.append(f"bote {c}: falta pieza {item} o no está sobre agua")
+    boat_tiles = {c: i for c, its in surf.items() for i in its if 3587 <= i <= 3596}
+    if boat_tiles != info["boat"]:
+        errors.append("bote: composición incompleta o piezas sueltas")
     # sin negro en pantalla: todo lo caminable a 8 (x) / 6 (y) del borde de la caja
     for label, wk in (("z7", walk7), ("z8", walk8), ("z9", walk9)):
         for (x, y) in wk:
@@ -665,7 +689,7 @@ def main() -> int:
     rng860 = random.Random(a.seed + 860)
 
     def taken(spawns):
-        return grow({c for c, _z, _m in spawns}, 3)
+        return grow({c for c, _z, _m in spawns}, 3) | {p for _c, _z, mons in spawns for _n, p, _st in mons}
 
     spawns7 += place([
         ("Chakoya Tribewarden", 2, 1, 90, z["forest"]),
@@ -686,6 +710,15 @@ def main() -> int:
     spawns9 += place([
         ("Frost Dragon Hatchling", 2, 1, 240, caves["hall"]),
     ], walk9r, avoid9 | taken(spawns9), 9, rng860, min_gap=4)
+
+    occupied = set()
+    for spawns, walkable in ((spawns7, walk7), (spawns8, walk8), (spawns9, walk9)):
+        for _center, zz, mons in spawns:
+            for name, pos, _st in mons:
+                key = (*pos, zz)
+                if key in occupied or pos not in walkable:
+                    errors.append(f"spawn {name} {key}: posición repetida o bloqueada")
+                occupied.add(key)
 
     if errors:
         print("\n".join(errors[:40]), file=sys.stderr)
@@ -742,7 +775,8 @@ def main() -> int:
 
     # --- spawns: fuera los del Alice Maze y los de la caja; adentro el bloque nuevo ---
     sp = SPAWNS.read_text(encoding="latin-1")
-    sp = re.sub(r"\t?<!-- BEGIN FROZEN_ISLE_SPAWNS.*?<!-- END FROZEN_ISLE_SPAWNS -->\n?", "", sp, flags=re.S)
+    sp = re.sub(r"\t?<!-- BEGIN FROZEN_ISLE_SPAWNS.*?<!-- END FROZEN_ISLE_SPAWNS -->\n?",
+                "__FROZEN_ISLE_SPAWNS__\n", sp, flags=re.S)
 
     def in_box(m):
         x, y, zz = int(m.group(1)), int(m.group(2)), int(m.group(3))
@@ -752,17 +786,21 @@ def main() -> int:
                 lambda m: "" if in_box(m) else m.group(0), sp, flags=re.S)
     block = "\t<!-- BEGIN FROZEN_ISLE_SPAWNS (scripts/map/generate-frozen-isle.py) -->\n" + \
         spawn_xml(spawns7 + spawns8 + spawns9) + "\n\t<!-- END FROZEN_ISLE_SPAWNS -->\n"
-    sp = sp.replace("</spawns>", block + "</spawns>")
+    sp = (sp.replace("__FROZEN_ISLE_SPAWNS__\n", block) if "__FROZEN_ISLE_SPAWNS__" in sp
+          else sp.replace("</spawns>", block + "</spawns>"))
     SPAWNS.write_text(sp, encoding="latin-1")
 
     # --- carteles ---
     rd = READABLES.read_text(encoding="latin-1")
-    rd = re.sub(r"\t?<!-- BEGIN FROZEN_ISLE_SIGNS -->.*?<!-- END FROZEN_ISLE_SIGNS -->\n?", "", rd, flags=re.S)
+    rd = re.sub(r"\t?<!-- BEGIN FROZEN_ISLE_SIGNS -->.*?<!-- END FROZEN_ISLE_SIGNS -->\n?",
+                "__FROZEN_ISLE_SIGNS__\n", rd, flags=re.S)
     lines = ["\t<!-- BEGIN FROZEN_ISLE_SIGNS -->"]
     for (x, y), t in sorted(info["signs"].items()):
         lines.append(f'\t<readable x="{X0 + x}" y="{Y0 + y}" z="7" text="{t.replace(chr(10), chr(92) + "n")}"/>')
     lines.append("\t<!-- END FROZEN_ISLE_SIGNS -->\n")
-    rd = rd.replace("</readables>", "\n".join(lines) + "</readables>")
+    block = "\n".join(lines)
+    rd = (rd.replace("__FROZEN_ISLE_SIGNS__\n", block) if "__FROZEN_ISLE_SIGNS__" in rd
+          else rd.replace("</readables>", block + "</readables>"))
     READABLES.write_text(rd, encoding="latin-1")
 
     # --- Nimral del puerto (el que estaba en el Alice Maze) ---

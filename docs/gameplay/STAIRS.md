@@ -40,6 +40,17 @@ Si se agregan escaleras nuevas al `items.otb` (cliente propio), sumarlas a `STAI
 Comprobado simulando cada uso sobre el mapa (`test.otbm`): las 205 escaleras/agujeros dejan en
 una casilla que existe, no está bloqueada y no es otra escalera.
 
+## Frozen Isle: llegada corregida localmente (13 nov 2026)
+
+La bajada `412,53,8` lleva a **`412,54,9`**, al sur de la subida 1385. Allí había pared 357.
+Se extendió el piso en un bloque de 2×2 y se recompusieron las paredes; el generador ahora inicia
+el BFS desde `y+1` y rechaza una llegada bloqueada. Los cuatro destinos de ambas escaleras están
+libres según mapa/OTB, y el `onUse` real confirma las dos bajadas en LuaJIT con bindings sustituidos.
+Las regresiones están en `scripts/map/test-frozen-isle.py`. El 13 nov se probaron ambas escaleras
+caminando en ambos sentidos y usando la bajada a z9 con un cliente de protocolo conectado a una
+copia aislada del servidor en la ThinkPad (7173), cargando el mapa nuevo. Todas las llegadas correctas.
+Ver [revisión y corrección](../items-and-map/REVISION_ESTETICA_HIELO_2026_11_13.md).
+
 ## Pendiente (mapa)
 
 - Escalera de mano que baja en `194, 150, 8`: abajo (`194, 150, 9`) es roca. Usarla o pisarla te

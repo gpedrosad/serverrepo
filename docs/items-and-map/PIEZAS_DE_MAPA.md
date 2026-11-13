@@ -40,6 +40,20 @@ Nunca va una sola. La segunda pieza va en la casilla indicada.
 - Los ataúdes y sarcófagos bloquean el paso. Van contra una pared, con la cabecera hacia ella.
 - Los bancos no bloquean: no poner monstruos encima.
 
+## Botes: cinco piezas, no una punta sola
+
+Caso confirmado en Frozen Isle: `3591` en `397,108,7` dejaba solo la punta sur de un bote.
+Corregido localmente el 13 nov 2026 con `3592–3596` en `395–399,108,7`; el generador exige las cinco piezas sobre agua.
+No es un sprite entero ni un naufragio. Ver [revisión de hielo](REVISION_ESTETICA_HIELO_2026_11_13.md).
+
+| Orientación | Secuencia completa | Dirección de colocación |
+|---|---|---|
+| Vertical | 3587 → 3588 → 3589 → 3590 → 3591 | misma x, y + 1 por pieza |
+| Horizontal | 3592 → 3593 → 3594 → 3595 → 3596 | misma y, x + 1 por pieza |
+
+Comprobar que todas las casillas estén sobre agua y que el casco no corte la costa ni la llegada.
+El generador debe validar la secuencia completa, igual que un mueble de varias piezas.
+
 ## Sillas y tronos: un id por dirección
 
 La silla tiene que mirar a su mesa.

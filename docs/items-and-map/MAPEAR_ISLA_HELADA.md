@@ -7,6 +7,13 @@ cada una más difícil, con desvíos escondidos que premian explorar.
 Generador: `scripts/map/generate-frozen-isle.py` (usa las piezas y validaciones de
 `generate-north-pass.py`). Manifiesto: `server/YurOTS/ots/data/world/generated-frozen-isle.json`.
 
+**Revisión 2026-11-13:** [estética y funcionamiento de las zonas de hielo](REVISION_ESTETICA_HIELO_2026_11_13.md).
+Corregidos localmente: bote horizontal completo (`395–399,108,7`), llegada libre a z9
+(`412,54,9`) y slots únicos de monstruos. El generador valida estos casos antes de escribir.
+Paso de hielo y costa nevada, menos decoración grande y roca gris en cuevas. Antes del deploy se
+probaron las escaleras y el contenido del depot mediante cliente de protocolo en una copia aislada
+de la ThinkPad (7173); resultados en el informe.
+
 ## Recorrido
 
 | Etapa | Dónde | Qué hay | Monstruos |
@@ -23,7 +30,7 @@ Los cofres del crimson wand y el crimson helmet son los mismos que había al fin
 (mismo uniqueId): quien ya los sacó no puede repetirlos (`quest.lua` guarda el storage por uid).
 
 Carteles en `readables.xml`, bloque `FROZEN_ISLE_SIGNS`. Spawns en `test-spawn.xml`, bloque
-`FROZEN_ISLE_SPAWNS` (41 spawns, 63 monstruos).
+`FROZEN_ISLE_SPAWNS` (64 spawns, 86 monstruos, incluidas las criaturas de 8.60).
 
 ## Compactado (nov 2026)
 
@@ -44,7 +51,8 @@ islote sigue en el paso de hielo. Los cofres conservan su uniqueId.
 
 Además de los monstruos de arriba, el generador pone 23 criaturas traídas del cliente 8.60
 ([IMPORTAR_CRIATURA_DE_OTRA_VERSION.md](../gameplay/IMPORTAR_CRIATURA_DE_OTRA_VERSION.md)). Van con un rng aparte
-(`seed + 860`) y lejos de los spawns de antes, así esos quedaron exactamente donde estaban. El mapa no cambió.
+(`seed + 860`) y lejos de los spawns de antes, así se preservó su distribución original. La revisión del 13 nov mantiene cantidades,
+tipos y respawns; separa las posiciones que se superponían y ajusta algunos offsets cercanos.
 
 | Etapa | Criaturas |
 |---|---|
@@ -66,10 +74,12 @@ Total de la isla: 86 monstruos (antes 63).
 
 ## Reglas que valida el script (si algo falla no escribe nada)
 
-- Costa: cada orilla con su pieza (`4644–4655`). La orilla es intransitable (la pieza es agua para el
-  server), por eso el paso de hielo tiene 4 de tierra para dejar 2 caminables.
+- Costa nevada: cada orilla con su suelo direccional único (`658–669`), sólido en el OTB.
+  Conserva exactamente las 699 casillas caminables de superficie; el paso queda con 2 de ancho.
 - Nieve sobre el patio (`4737–4748`) y hielo con borde de nieve (`684–695`, una pieza por casilla).
-- Paredes de las cuevas con pieza única (túneles armados en bloques de 2x2).
+- Paredes de cara gris (`371–382`) con pieza única, masa sólida gris `918`; túneles de bloques 2x2.
+- Bote completo `3592–3596` sobre agua, sin piezas sueltas; spawns absolutos únicos y libres.
+- Llegada efectiva al sur de la subida 1385: inicio caminable antes de buscar acceso a los cofres.
 - El sendero llega del puerto a la bajada, de z8 a z9, a los 4 cofres y al portal.
 - Árboles y rocas grandes nunca tapan el sendero (se dibujan una casilla hacia arriba-izquierda).
 
@@ -85,4 +95,5 @@ python3 scripts/map/generate-frozen-isle.py                                    #
 Re-ejecutable y determinista (misma semilla = mismo mapa). Escribe `test.otbm` (backup
 `test.otbm.bak-frozenisle` la primera vez), spawns, carteles, el Nimral del puerto en `npc.xml` y el
 destino en `boat.lua` (`Frozen Isle`: `frozen isle`, `frozen`, `isla helada`, `hielo`).
-Después: `python3 scripts/npc/run_npc_tests.py` (el barco tiene golden).
+Después: `python3 scripts/map/test-frozen-isle.py` (regresiones) y
+`python3 scripts/npc/run_npc_tests.py` (el barco tiene golden).
