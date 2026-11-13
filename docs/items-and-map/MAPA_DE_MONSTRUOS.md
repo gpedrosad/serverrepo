@@ -65,3 +65,30 @@ launchctl kickstart gui/$(id -u)/com.gonzalo.retro76-docs-maps   # que lo corra 
 ```
 
 Para otro mapa o una rama, correr los scripts a mano a otra carpeta: el sitio muestra siempre `main`.
+
+## Sitio de mapas en la ThinkPad (toda la red)
+
+El sitio de la Mac escucha solo en `127.0.0.1`. En la ThinkPad hay uno que se abre desde cualquier
+equipo de la red: **http://192.168.1.17:8077**. Tiene portada (`scripts/docs-site/thinkpad-index.py`),
+el mapa interactivo, un cuadro por piso y las vistas de zona de `build-floor-map.py`.
+
+Dibuja lo **deployado**: el commit de `main` de `~/apps/serverrepo`, en un worktree propio
+(`~/apps/serverrepo-mapas`), sin los cambios sin commitear de otras sesiones. Así el mapa cambia
+cuando cambia el server, no antes.
+
+| Servicio de usuario (systemd) | Qué hace |
+|---|---|
+| `retro76-mapas.service` | `python3 -m http.server 8077 --bind 0.0.0.0` sobre `~/apps/retro76-mapas` |
+| `retro76-mapas-refresh.timer` | Cada 10 min corre `thinkpad-maps.sh`: si cambió el mapa, spawns, NPC, monstruos, el cliente de RME o `scripts/map`, regenera (~2–3 min) |
+
+`thinkpad-maps.sh` arma todo en `~/apps/retro76-mapas.next` y recién al final lo cambia por el sitio:
+la web nunca queda a medio generar. El instalador copia los scripts a `~/.local/share/retro76-mapas/`
+(el `main` deployado puede no tenerlos todavía).
+
+```bash
+scripts/docs-site/install-thinkpad.sh               # instala o reinstala (copia los scripts y arranca)
+FORCE=1 ~/.local/share/retro76-mapas/thinkpad-maps.sh   # regenerar ya
+journalctl --user -u retro76-mapas-refresh -n 20    # registro
+scripts/docs-site/install-thinkpad.sh --remove      # quitar
+```
+
