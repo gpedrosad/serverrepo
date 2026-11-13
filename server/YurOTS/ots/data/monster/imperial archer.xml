@@ -9,6 +9,7 @@
 <attacks>
 	<attack type="melee" mindamage="10" maxdamage="50" probability="100"/>
 	<attack type="distance" name="bolt" mindamage="50" maxdamage="130" cycleticks="1500" probability="70"/>
+	<attack type="rune" name="k_burst_ball_5" exhaustion="1000" cycleticks="3000" probability="35" kit="1"/>
 </attacks>
 
 <defenses>

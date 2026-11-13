@@ -8,6 +8,7 @@
 <attacks>
 	<attack type="melee" mindamage="20" maxdamage="80" probability="100"/>
 	<attack type="distance" name="spear" mindamage="10" maxdamage="40" cycleticks="2000" probability="35"/>
+	<attack type="rune" name="k_burst_ball_2" exhaustion="1000" cycleticks="4000" probability="25" kit="1"/>
 </attacks>
 
 <defenses>

@@ -8,6 +8,7 @@
 <attacks>
 	<attack type="melee" mindamage="5" maxdamage="30" probability="100"/>
 	<attack type="distance" name="smallstone" mindamage="5" maxdamage="25" cycleticks="2000" probability="40"/>
+	<attack type="rune" name="k_ice_strike_1" exhaustion="1000" cycleticks="4000" probability="25" kit="1"/>
 </attacks>
 
 <defenses>

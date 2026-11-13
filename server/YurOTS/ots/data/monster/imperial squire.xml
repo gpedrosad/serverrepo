@@ -8,6 +8,7 @@
 
 <attacks>
 	<attack type="melee" mindamage="5" maxdamage="28" probability="100"/>
+	<attack type="rune" name="k_earth_touch_1" exhaustion="1000" cycleticks="4000" probability="25" kit="1"/>
 </attacks>
 
 <defenses>

@@ -8,6 +8,7 @@
 <attacks>
 	<attack type="melee" mindamage="40" maxdamage="150" probability="100"/>
 	<attack type="distance" name="throwingknife" mindamage="30" maxdamage="100" cycleticks="2000" probability="40"/>
+	<attack type="rune" name="k_cannon_ball_5" exhaustion="1000" cycleticks="3000" probability="35" kit="1"/>
 </attacks>
 
 <defenses>

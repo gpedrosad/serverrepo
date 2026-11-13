@@ -8,6 +8,7 @@
 <attacks>
 	<attack type="melee" mindamage="15" maxdamage="90" probability="100"/>
 	<attack type="distance" name="largerock" mindamage="10" maxdamage="60" cycleticks="2500" probability="35"/>
+	<attack type="instant" name="k_ice_burst_3" exhaustion="1000" cycleticks="3500" probability="30" kit="1"/>
 </attacks>
 
 <defenses>
