@@ -44,7 +44,7 @@ python3 scripts/ot/ot-probe.py 192.168.1.17 7171
 ssh thinkpad 'set -e; cd ~/apps/serverrepo; D=server/YurOTS/ots/data; B=~/backups/pre-deploy-$(date +%Y%m%d-%H%M%S)
   mkdir -p "$B"; for f in players accounts vip online.xml queue.xml houseitems.xml houses private_trainers.xml; do
   [ -e "$D/$f" ] && cp -a "$D/$f" "$B/"; done
-  git merge --ff-only origin/main && docker restart -t 45 yurots'
+  git merge --ff-only origin/main || { echo "main no avanza solo: ver abajo"; exit 1; }; docker restart -t 45 yurots'
 
 # 3. comprobar: guardó, cargó el mapa y está "healthy"
 ssh thinkpad 'docker logs --since 3m yurots 2>&1 | grep -i "graceful\|Loaded in\|Running\|error"; docker ps | grep yurots'
@@ -82,6 +82,19 @@ docker run --rm --entrypoint "" -v ~/apps/serverrepo/server/YurOTS:/app/YurOTS -
 
 Si al compilar con `rsync` no cambia nada, `make` no recompila: los archivos copiados conservan la fecha. Hacer
 `touch` de los `.cpp` cambiados o compilar en una carpeta nueva.
+
+## Si la ThinkPad tiene commits propios sin pushear
+
+Pasó el 2026-11-13: otra sesión commiteó "El Crisol v3" directo en `~/apps/serverrepo` y no lo pusheó, así que
+`git merge --ff-only origin/main` falla ("Diverging branches"). Ojo: con `set -e`, un `merge ... && docker restart`
+no corta al fallar el merge y reinicia igual con el código viejo; por eso el comando de arriba sale con `exit 1`.
+
+Sin `reset` ni `rebase` (es trabajo de otra sesión):
+
+1. `git log --oneline origin/main..HEAD` para ver qué commits son solo de la ThinkPad.
+2. `git merge --no-edit origin/main` con el autor del último commit (`git -c user.name=... -c user.email=...`).
+3. Si choca solo el historial de este archivo, quedarse con las dos filas.
+4. Reiniciar y comprobar. El merge queda en la ThinkPad; cuando esa sesión pushee, sube con su commit.
 
 ## Si `main` trae archivos que otra sesión tiene sin commitear
 
