@@ -149,6 +149,18 @@ Los ataques salen de los kits de [`MONSTER_KITS.md`](MONSTER_KITS.md); el númer
 | Undead Gladiator | 1000 | 800 | 45 | 40–150 | blade strike 5, throwing star 45–120 |
 | Nightstalker | 700 | 500 | 40 | 30–110 | drain strike 4, death touch 4, prisa |
 
+### Loot: sintaxis que exige el motor
+
+`monsters.cpp` decide por `Item::items[id].stackable`, no por la presencia de `countmax`:
+
+- **Apilable** (oro, gemas, carne, fish, ham, runas, etc.): `<item id="X" countmax="N" chance1="C" chancemax="0"/>`,
+  aunque `N` sea 1.
+- **No apilable** (equipo): `<item id="X" chance="C"/>`.
+
+Si un apilable queda con `chance` (o sin `chance1`/`chancemax`), el motor imprime `missing chance1` y lo tira al
+**100 %**. Con `countmax` ausente pasa lo mismo (`missing countmax`). Vale también para los items dentro de
+`<inside>` de una bolsa.
+
 ### Spawns
 
 Se agregaron 21 spawns al final de `data/world/test-spawn.xml`, en zonas que ya existían:
