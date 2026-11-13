@@ -205,6 +205,34 @@ Nota: el 2026-07-18 este fix XML **no** se llegó a aplicar en el VPS de entonce
 
 ---
 
+## River Street III, IV y V: casas cortas, patios y puente (nov 2026)
+
+`scripts/map/reshape-river-street.py` rehízo las tres casas del río (antes 3x5 cada una, pegadas pared
+con pared hasta la orilla):
+
+| Casa | Pared exterior | Por dentro | Patio | Puerta |
+|------|----------------|------------|-------|--------|
+| River Street III | x 145–149, y 59–63 | 3x3 | x 146–148, y 64–65 menos la esquina 146,65 (orilla); hueco en la pared sur en 147,63 | 148,59 |
+| River Street IV | x 151–155, y 59–63 | 3x3 | — | 153,59 |
+| River Street V | x 157–161, y 59–63 | 3x3 | 3x2 en x 158–160, y 64–65 (hueco en 159,63) | 158,59 |
+
+- Pasillos públicos de 1 casilla en x 150 y x 156, de la calle (y 58) a y 65; debajo de IV se juntan
+  (y 64–65). Pasillos y explanada son **camino de tierra** (`103` y los pisos con borde de pasto
+  `110–121`, elegidos por vecino; contra paredes, puente y calle no lleva borde).
+- **Puente de sogas** de 1 casilla en x 153, y 66–72, copiado del puente del mapa en 181–184, 80–88:
+  piso `405`, a los costados borde de madera `436`/`437` sobre el agua y sogas `3775/3777/3789/3791/3779`
+  (oeste) y `3774/3776/3790/3778` (este), postes `3761`/`3760` en la punta sur. Del otro lado sigue un
+  camino de tierra de 3 de ancho (x 152–154, y 73–77) hasta el arco de piedra de las ruinas de los
+  trolls (`153,78`). Plantas de orilla `2771`/`2777` junto a las puntas.
+- Patios: casillas de casa (PZ), cercados con baranda vertical `1518` del lado del pasillo; al sur los
+  cierra la orilla. Solo se entra desde la casa.
+- **Orilla en los costados:** la pared oeste de III cae sobre casillas de orilla (`145,62–63`) y la
+  esquina 146,65 del patio también: ahí se conserva el piso `4526` con su pieza de borde (`4654`,
+  `4647`) para que el río no quede cortado en seco. Si se mueve una casa sobre la orilla, hacer lo mismo.
+- Las puertas no se movieron, así `data/houses/<casa>.xml` (frontdoor) queda igual: el server viejo
+  reescribe esos archivos al apagarse y no hay nada que pisar.
+- El script se niega a correr si alguna de las tres casas tiene dueño o ítems en `houseitems.xml`.
+
 ## Para agentes IA
 
 - **Nunca** `git checkout` ni `git reset` sobre `data/houses/` en la ThinkPad.
