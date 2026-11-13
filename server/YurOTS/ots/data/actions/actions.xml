@@ -506,9 +506,11 @@
 <action uniqueid="7000" script="annilever.lua" />
 <action uniqueid="7001" script="arenalever.lua" />
 
-<!-- Wave Arena (templo viejo 159,54,7): start/next + ranking semanal -->
+<!-- Wave Arena v2 (Claro de la Selva): 7100 inicio, 7101 ranking (campamento); 7102 siguiente, 7103 retirarse (claro) -->
 <action uniqueid="7100" script="wave_arena.lua" />
 <action uniqueid="7101" script="wave_arena.lua" />
+<action uniqueid="7102" script="wave_arena.lua" />
+<action uniqueid="7103" script="wave_arena.lua" />
 
 <!-- El Crisol (templo 157,54,7): Bronce/Plata/Oro + info bosses diarios -->
 <action uniqueid="7200" script="crucible.lua" />

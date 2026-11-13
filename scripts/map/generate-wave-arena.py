@@ -1,324 +1,217 @@
 #!/usr/bin/env python3
-"""Arena de oleadas — portal desde templo viejo 159,54,7.
+"""Wave Arena v2 — "Claro de la Selva" (z7, nov 2026).
 
-AVISO (nov 2026): los portales del templo viven en la plaza y los maneja
-scripts/map/temple-portals.py. Si corrés este generador, después corré ese script:
-limpia lo que este ponga en la fila vieja (y=53-55) y reapunta la vuelta.
+  Campamento (PZ)  9x5, bambú y piso de barro: plataforma de grupo 3x2, palanca de inicio,
+                   palanca de ranking, fogatas. Llega el portal del templo.
+  Claro            13x11, bambú y pasto: árboles en las esquinas, tocones y arbustos de
+                   cobertura, barro al centro. Monstruos salen del borde de la selva
+                   (norte y costados), el grupo llega al sur.
 
+En el claro, al sur: palanca "siguiente oleada" (solo con la sala limpia) y palanca
+"retirarse" (vuelve al campamento y guarda la marca). No hay TP de salida: así nadie se
+va sin que la marca quede registrada.
 
-Sala 7×7 de caza + vestíbulo con:
-- landing / retorno al templo
-- palanca Start/Next (uniqueid 7100)
-- palanca Ranking semanal (uniqueid 7101)
+La lógica vive en data/actions/scripts/wave_arena.lua; este script reescribe ahí el bloque
+LAYOUT. El portal del templo lo maneja scripts/map/temple-portals.py (destino LANDING).
 
 Uso:
-  python3 scripts/generate-wave-arena.py --dry-run
-  python3 scripts/generate-wave-arena.py --replace
+  python3 scripts/map/generate-wave-arena.py --dry-run [--png salida.png]
+  python3 scripts/map/generate-wave-arena.py --replace
 """
 from __future__ import annotations
 
 import argparse
-import importlib.util
 import json
-import struct
 import sys
-from dataclasses import dataclass, field
 from pathlib import Path
 
-_maze_path = Path(__file__).resolve().parent / "generate-maze.py"
-_spec = importlib.util.spec_from_file_location("generate_maze", _maze_path)
-_maze = importlib.util.module_from_spec(_spec)
-sys.modules["generate_maze"] = _maze
-assert _spec.loader is not None
-_spec.loader.exec_module(_maze)
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from roomkit import (LEVER, REPO, SIGN, TELEPORT, WORLD, Checker, Map, Room,  # noqa: E402
+                     build_room, lua_box, lua_pos, patch_block, patch_readables, render_png, write_map)
 
-GROUND_PATH = _maze.GROUND_PATH
-GROUND_BG = _maze.GROUND_BG
-TELEPORT_ITEM = _maze.TELEPORT_ITEM
-NODE_START = _maze.NODE_START
-NODE_END = _maze.NODE_END
-OTBM_TILE_AREA = _maze.OTBM_TILE_AREA
-OTBM_TILE = _maze.OTBM_TILE
-OTBM_ITEM = _maze.OTBM_ITEM
-OTBM_ATTR_TELE_DEST = _maze.OTBM_ATTR_TELE_DEST
-OTBM_ATTR_ITEM = _maze.OTBM_ATTR_ITEM
-OTBM_ATTR_UNIQUE_ID = 5
-OTBM_ATTR_DESC = 7
-write_props = _maze.write_props
+LUA = REPO / "server/YurOTS/ots/data/actions/scripts/wave_arena.lua"
 
-# Look-text ASCII (cliente 7.6).
-LEVER_START_DESC = "Start / next wave"
-LEVER_RANK_DESC = "Weekly ranking"
+Z = 7
+CLEAR_BOX = (165, 380, 190, 410)        # incluye la arena vieja (172-182, 384-396)
+TEMPLE_LANDING = (166, 48, 7)           # llegada del portal Wave en la plaza
 
-HUB_PORTAL = (159, 54, 7)
-HUB_LANDING = (158, 54, 7)
-HUB_GROUND = 407
+UID_START, UID_RANK, UID_NEXT, UID_RETIRE = 7100, 7101, 7102, 7103
 
-# Arena al SW del floor-hunt / hunt-maze (zona vacía).
-ARENA_Z = 7
-FIGHT_X0, FIGHT_Y0 = 174, 386
-FIGHT_SIZE = 7  # 174–180, 386–392
-VEST_Y0 = 393
-VEST_Y1 = 395
-# Vestíbulo centrado bajo la arena
-LANDING = (177, 394, ARENA_Z)
-RETURN_TP = (178, 395, ARENA_Z)
-LEVER_START = (176, 394, ARENA_Z)
-LEVER_RANK = (179, 394, ARENA_Z)
-LEVER_ITEM = 1945
-UID_START = 7100
-UID_RANK = 7101
+# ---------------------------------------------------------------- piezas
+GRASS, GRASS_VARIANTS = 4526, (4527, 4529, 4532, 4535, 4538)
+MUD, MUD_DARK, CAMP_FLOOR, PAD_FLOOR = 3264, 3265, 355, 405
+JUNGLE_GRASS = 2781                      # mata baja, se pisa
+BUSH, STUMPS = 2767, (4216, 4219)
+TREES = (4026, 4031, 4025, 4030, 4008)
+CAMPFIRE = 1428
+TORCH_N, TORCH_W = 2059, 2061            # pared horizontal (norte) / vertical (oeste)
+
+# ---------------------------------------------------------------- disposición
+ARENA = Room(170, 385, 13, 11, Z)
+CAMP = Room(172, 400, 9, 5, Z)
+LANDING = CAMP.at(4, 3)
+RETURN_TP = CAMP.at(4, 4)
+PAD = dict(dx=3, dy=1, w=3, h=2)         # plataforma de grupo en el campamento
+CAMP_SIGNS = {
+    CAMP.at(3, 0): "WAVE ARENA\nClaro de la Selva. 20 oleadas, jefe cada 5.\n"
+                   "Grupo: pisen la plataforma y tiren la palanca.",
+    CAMP.at(6, 0): "RANKING SEMANAL\nCuenta la ultima oleada LIMPIA.\nPremio la primera vez en la semana: 5/10/15/20.",
+    ARENA.at(6, 10): "Izquierda: siguiente oleada (sala limpia).\nDerecha: retirarse y guardar la marca.",
+}
+# llegada del grupo al sur del claro; el primero es el que tira (tope = plataforma 3x2 + 1)
+ARRIVALS = [(6, 9), (5, 9), (7, 9), (6, 8), (5, 8), (7, 8), (4, 9)]
+# SPAWNS[0] = jefe; el resto se reparte alternando norte / costados
+SPAWNS = [(6, 1), (3, 0), (9, 0), (0, 3), (12, 3), (5, 0), (7, 0), (0, 5), (12, 5),
+          (2, 1), (10, 1), (4, 2), (8, 2), (0, 7), (12, 7), (6, 3)]
 
 
-@dataclass
-class ArenaItem:
-    item_id: int
-    unique_id: int | None = None
-    description: str | None = None
+def variant(x: int, y: int) -> int:
+    """Pasto con algo de textura, determinista (mismo mapa en cada corrida)."""
+    h = (x * 73856093) ^ (y * 19349663)
+    return GRASS_VARIANTS[h % len(GRASS_VARIANTS)] if h % 4 == 0 else GRASS
 
 
-@dataclass
-class ArenaTile:
-    ground: int
-    teleport: tuple[int, int, int] | None = None
-    items: list[ArenaItem] = field(default_factory=list)
+# ---------------------------------------------------------------- construcción
+def build_camp(m: Map):
+    r = CAMP
+    build_room(m, r, CAMP_FLOOR, "bamboo", pz=True)
+    for dy in range(PAD["h"]):
+        for dx in range(PAD["w"]):
+            m.floor(r.at(PAD["dx"] + dx, PAD["dy"] + dy), PAD_FLOOR)
+    for pos in CAMP_SIGNS:
+        if pos[1] >= r.y0:                                  # el tercer cartel va en el claro
+            m.add(pos, SIGN)
+    m.add(r.at(4, 0), LEVER, uid=UID_START, desc="Start a run with your group")
+    m.add(r.at(7, 0), LEVER, uid=UID_RANK, desc="Weekly ranking")
+    for dx in (1, 7):
+        m.add(r.at(dx, 3), CAMPFIRE)
+    for dx in (0, 8):
+        m.add(r.at(dx, 4), BUSH)
+    m.add(r.west_wall(2), TORCH_W)
+    m.add(r.north_wall(1), TORCH_N)
+    m.add(RETURN_TP, TELEPORT, tele=TEMPLE_LANDING)
 
 
-def project_root() -> Path:
-    return next(
-        p
-        for p in [Path(__file__).resolve().parent, *Path(__file__).resolve().parents]
-        if (p / "AGENTS.md").is_file() or (p / ".git").is_dir()
-    )
+def build_arena(m: Map):
+    r = ARENA
+    build_room(m, r, GRASS, "bamboo")
+    for x, y, z in r.cells():
+        m.floor((x, y, z), variant(x, y))
+    for dy in (4, 5, 6):                                    # claro de barro al centro
+        for dx in (5, 6, 7):
+            m.floor(r.at(dx, dy), MUD_DARK if (dx + dy) % 3 == 0 else MUD)
+    corners = (((0, 0), (1, 0), (0, 1)), ((12, 0), (11, 0), (12, 1)),
+               ((0, 10), (1, 10), (0, 9)), ((12, 10), (11, 10), (12, 9)))
+    for i, (tree, side, bush) in enumerate(corners):        # selva cerrando las esquinas
+        m.add(r.at(*tree), TREES[i % len(TREES)])
+        m.add(r.at(*side), TREES[(i + 2) % len(TREES)])
+        m.add(r.at(*bush), BUSH)
+    for (dx, dy), iid in zip(((3, 4), (9, 4)), STUMPS):     # cobertura
+        m.add(r.at(dx, dy), iid)
+    for dx, dy in ((2, 7), (10, 7)):
+        m.add(r.at(dx, dy), BUSH)
+    for dx, dy in ((4, 2), (8, 6), (2, 5), (10, 3), (3, 8), (9, 8)):
+        m.add(r.at(dx, dy), JUNGLE_GRASS)
+    for dy in (3, 7):
+        m.add(r.west_wall(dy), TORCH_W)
+    for dx in (3, 9):
+        m.add(r.north_wall(dx), TORCH_N)
+    m.add(r.at(5, 10), LEVER, uid=UID_NEXT, desc="Next wave")
+    m.add(r.at(6, 10), SIGN)
+    m.add(r.at(7, 10), LEVER, uid=UID_RETIRE, desc="Retire and keep your mark")
 
 
-def encode_otbm_string(text: str) -> bytes:
-    raw = text.encode("ascii", errors="replace")
-    return struct.pack("<H", len(raw)) + raw
+def build() -> Map:
+    m = Map()
+    build_camp(m)
+    build_arena(m)
+    return m
 
 
-def encode_item_node(
-    item_id: int,
-    *,
-    unique_id: int | None = None,
-    tele: tuple[int, int, int] | None = None,
-    description: str | None = None,
-) -> bytes:
-    props = struct.pack("<H", item_id)
-    if unique_id is not None:
-        props += struct.pack("<BH", OTBM_ATTR_UNIQUE_ID, unique_id)
-    if description is not None:
-        props += struct.pack("<B", OTBM_ATTR_DESC) + encode_otbm_string(description)
-    if tele is not None:
-        props += struct.pack("<BHHB", OTBM_ATTR_TELE_DEST, tele[0], tele[1], tele[2])
-    buf = bytearray()
-    buf.append(NODE_START)
-    buf.append(OTBM_ITEM)
-    write_props(buf, props)
-    buf.append(NODE_END)
-    return bytes(buf)
+# ---------------------------------------------------------------- validación
+def validate(c: Checker) -> list[str]:
+    c.tiles()
+    c.rooms([ARENA, CAMP], CLEAR_BOX)
+    camp = c.connected("campamento", CAMP, LANDING)
+    pts = {"TP al templo": RETURN_TP, "palanca inicio": CAMP.at(4, 0), "palanca ranking": CAMP.at(7, 0)}
+    pts.update({f"plataforma +{dx},{dy}": CAMP.at(PAD["dx"] + dx, PAD["dy"] + dy)
+                for dx in range(PAD["w"]) for dy in range(PAD["h"])})
+    c.need("campamento", camp, pts)
+    arena = c.connected("claro", ARENA, ARENA.at(*ARRIVALS[0]))
+    pts = {"palanca siguiente": ARENA.at(5, 10), "palanca retirarse": ARENA.at(7, 10)}
+    pts.update({f"spawn {d}": ARENA.at(*d) for d in SPAWNS})
+    pts.update({f"llegada {d}": ARENA.at(*d) for d in ARRIVALS})
+    c.need("claro", arena, pts)
+    if len(set(SPAWNS) | set(ARRIVALS)) != len(SPAWNS) + len(ARRIVALS):
+        c.errs.append("SPAWNS y ARRIVALS repiten casillas")
+    if len(ARRIVALS) < PAD["w"] * PAD["h"] + 1:
+        c.errs.append("ARRIVALS no alcanza para la plataforma llena + el que tira")
+    return c.errs
 
 
-def encode_tile_node(x_off: int, y_off: int, spec: ArenaTile) -> bytes:
-    props = struct.pack("<BB", x_off, y_off)
-    props += struct.pack("<BH", OTBM_ATTR_ITEM, spec.ground)
-    buf = bytearray()
-    buf.append(NODE_START)
-    buf.append(OTBM_TILE)
-    write_props(buf, props)
-    if spec.teleport is not None:
-        buf.extend(encode_item_node(TELEPORT_ITEM, tele=spec.teleport))
-    for it in spec.items:
-        buf.extend(
-            encode_item_node(
-                it.item_id,
-                unique_id=it.unique_id,
-                description=it.description,
-            )
-        )
-    buf.append(NODE_END)
-    return bytes(buf)
+# ---------------------------------------------------------------- wave_arena.lua
+LUA_BEGIN, LUA_END = "-- BEGIN LAYOUT (generado por scripts/map/generate-wave-arena.py)", "-- END LAYOUT"
 
 
-def encode_tile_area(base_x: int, base_y: int, base_z: int, rel: list) -> bytes:
-    area_props = struct.pack("<HHB", base_x, base_y, base_z)
-    buf = bytearray()
-    buf.append(NODE_START)
-    buf.append(OTBM_TILE_AREA)
-    write_props(buf, area_props)
-    for ox, oy, spec in sorted(rel, key=lambda t: (t[0], t[1])):
-        buf.extend(encode_tile_node(ox, oy, spec))
-    buf.append(NODE_END)
-    return bytes(buf)
-
-
-def group_tile_areas(tiles: dict[tuple[int, int, int], ArenaTile]) -> list[bytes]:
-    from collections import defaultdict
-
-    by_z: dict[int, list] = defaultdict(list)
-    for (x, y, z), spec in tiles.items():
-        by_z[z].append((x, y, spec))
-    chunks: list[bytes] = []
-    for z, entries in sorted(by_z.items()):
-        buckets: dict[tuple[int, int], list] = defaultdict(list)
-        for x, y, spec in entries:
-            bx = (x // 256) * 256
-            by = (y // 256) * 256
-            buckets[(bx, by)].append((x - bx, y - by, spec))
-        for (bx, by), rel in sorted(buckets.items()):
-            chunks.append(encode_tile_area(bx, by, z, rel))
-    return chunks
-
-
-def build_arena_tiles(
-    hub_portal: tuple[int, int, int],
-    hub_landing: tuple[int, int, int],
-) -> tuple[dict[tuple[int, int, int], ArenaTile], dict]:
-    z = ARENA_Z
-    fx0, fy0 = FIGHT_X0, FIGHT_Y0
-    fx1, fy1 = fx0 + FIGHT_SIZE - 1, fy0 + FIGHT_SIZE - 1
-    # Footprint con borde void
-    x0, y0 = fx0 - 2, fy0 - 2
-    x1, y1 = fx1 + 2, VEST_Y1 + 1
-
-    tiles: dict[tuple[int, int, int], ArenaTile] = {}
-    for y in range(y0, y1 + 1):
-        for x in range(x0, x1 + 1):
-            tiles[(x, y, z)] = ArenaTile(ground=GROUND_BG)
-
-    # Piso de pelea
-    for y in range(fy0, fy1 + 1):
-        for x in range(fx0, fx1 + 1):
-            tiles[(x, y, z)] = ArenaTile(ground=GROUND_PATH)
-
-    # Vestíbulo
-    for y in range(VEST_Y0, VEST_Y1 + 1):
-        for x in range(fx0 + 1, fx1):
-            tiles[(x, y, z)] = ArenaTile(ground=GROUND_PATH)
-
-    # Conectar arena ↔ vestíbulo (hueco sur del fight)
-    for x in range(fx0 + 2, fx1 - 1):
-        tiles[(x, fy1, z)] = ArenaTile(ground=GROUND_PATH)
-        tiles[(x, VEST_Y0, z)] = ArenaTile(ground=GROUND_PATH)
-
-    tiles[LANDING] = ArenaTile(ground=GROUND_PATH)
-    tiles[RETURN_TP] = ArenaTile(ground=GROUND_PATH, teleport=hub_landing)
-    tiles[LEVER_START] = ArenaTile(
-        ground=GROUND_PATH,
-        items=[
-            ArenaItem(
-                LEVER_ITEM, unique_id=UID_START, description=LEVER_START_DESC
-            )
-        ],
-    )
-    tiles[LEVER_RANK] = ArenaTile(
-        ground=GROUND_PATH,
-        items=[
-            ArenaItem(
-                LEVER_ITEM, unique_id=UID_RANK, description=LEVER_RANK_DESC
-            )
-        ],
-    )
-    tiles[hub_portal] = ArenaTile(ground=HUB_GROUND, teleport=LANDING)
-
-    meta = {
-        "fight": {"fromX": fx0, "toX": fx1, "fromY": fy0, "toY": fy1, "z": z},
-        "landing": {"x": LANDING[0], "y": LANDING[1], "z": LANDING[2]},
-        "returnTp": {"x": RETURN_TP[0], "y": RETURN_TP[1], "z": RETURN_TP[2]},
-        "leverStart": {"x": LEVER_START[0], "y": LEVER_START[1], "z": LEVER_START[2], "uid": UID_START},
-        "leverRank": {"x": LEVER_RANK[0], "y": LEVER_RANK[1], "z": LEVER_RANK[2], "uid": UID_RANK},
-        "hubPortal": {"x": hub_portal[0], "y": hub_portal[1], "z": hub_portal[2]},
-        "hubLanding": {"x": hub_landing[0], "y": hub_landing[1], "z": hub_landing[2]},
-        "footprint": {"fromX": x0, "toX": x1, "fromY": y0, "toY": y1, "z": z},
-    }
-    return tiles, meta
+def lua_layout() -> str:
+    pad = dict(x0=CAMP.x0 + PAD["dx"], y0=CAMP.y0 + PAD["dy"],
+               x1=CAMP.x0 + PAD["dx"] + PAD["w"] - 1, y1=CAMP.y0 + PAD["dy"] + PAD["h"] - 1)
+    return "\n".join([
+        LUA_BEGIN,
+        f"ARENA = {{{lua_box(ARENA.box(), Z)}}}",
+        f"CAMP = {{{lua_box(CAMP.box(), Z)}}}",
+        f"PAD = {{{lua_box(pad, Z)}}}",
+        f"CAMP_LANDING = {lua_pos(LANDING)}",
+        "-- ARRIVALS[1] = el que tira; la cantidad es el tope del grupo",
+        "ARRIVALS = {" + ", ".join(lua_pos(ARENA.at(*d)) for d in ARRIVALS) + "}",
+        "-- SPAWNS[1] = jefe; el resto en orden de reparto",
+        "SPAWNS = {" + ", ".join(lua_pos(ARENA.at(*d)) for d in SPAWNS) + "}",
+        LUA_END,
+    ]) + "\n"
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--map", type=Path)
-    parser.add_argument("--manifest", type=Path)
-    parser.add_argument("--replace", action="store_true")
-    parser.add_argument("--dry-run", action="store_true")
-    args = parser.parse_args()
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--map", type=Path, default=WORLD / "test.otbm")
+    ap.add_argument("--replace", action="store_true")
+    ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--png", type=Path)
+    a = ap.parse_args()
 
-    project = project_root()
-    otbm_path = args.map or (project / "server/YurOTS/ots/data/world/test.otbm")
-    manifest_path = args.manifest or (
-        project / "server/YurOTS/ots/data/world/generated-wave-arena.json"
-    )
-    if not otbm_path.is_file():
-        print(f"ERROR: no existe {otbm_path}", file=sys.stderr)
+    m = build()
+    c = Checker(m)
+    errs = validate(c)
+    print(f"Wave Arena v2: {len(m.t)} casillas; campamento PZ {sum(1 for t in m.t.values() if t['pz'])}; "
+          f"claro {ARENA.w}x{ARENA.h} {ARENA.box()}; grupo máx {len(ARRIVALS)}; spawns {len(SPAWNS)}")
+    if a.png:
+        render_png(m, a.png, Z)
+        print(f"PNG {a.png}")
+    if errs:
+        print("ERRORES:\n  " + "\n  ".join(errs))
         return 1
-
-    tiles, meta = build_arena_tiles(HUB_PORTAL, HUB_LANDING)
-    fp = meta["footprint"]
-    path_n = sum(1 for s in tiles.values() if s.ground == GROUND_PATH)
-    tele_n = sum(1 for s in tiles.values() if s.teleport)
-    item_n = sum(len(s.items) for s in tiles.values())
-
-    print("Wave arena — oleadas (aparte de Alice / hunt / floor)")
-    print(
-        f"Portal: ({HUB_PORTAL[0]},{HUB_PORTAL[1]},{HUB_PORTAL[2]}) → "
-        f"({LANDING[0]},{LANDING[1]},{LANDING[2]})"
-    )
-    print(
-        f"Retorno: ({RETURN_TP[0]},{RETURN_TP[1]},{RETURN_TP[2]}) → "
-        f"({HUB_LANDING[0]},{HUB_LANDING[1]},{HUB_LANDING[2]})"
-    )
-    print(
-        f"Fight 7×7: X {FIGHT_X0}-{FIGHT_X0+6}, Y {FIGHT_Y0}-{FIGHT_Y0+6}, z{ARENA_Z}"
-    )
-    print(
-        f"Lever start uid={UID_START} @ ({LEVER_START[0]},{LEVER_START[1]}) | "
-        f"rank uid={UID_RANK} @ ({LEVER_RANK[0]},{LEVER_RANK[1]})"
-    )
-    print(f"Tiles path={path_n} teleports={tele_n} items={item_n}")
-    print(f"Footprint X {fp['fromX']}-{fp['toX']} Y {fp['fromY']}-{fp['toY']}")
-
-    summary = {
-        "name": "generated-wave-arena",
-        "leverItemId": LEVER_ITEM,
-        "uidStart": UID_START,
-        "uidRank": UID_RANK,
-        "tileCounts": {"path": path_n, "teleports": tele_n, "items": item_n, "total": len(tiles)},
-        **meta,
-    }
-
-    if args.dry_run:
-        print("\n(dry-run — no se escribió)")
+    block = lua_layout()
+    if a.dry_run or not a.replace:
+        print("wave_arena.lua:", "al día" if patch_block(LUA, LUA_BEGIN, LUA_END, block, write=False)
+              else "se actualizaría el bloque LAYOUT")
+        print("(dry-run)" if a.dry_run else "usá --replace para escribir")
         return 0
-    if not args.replace:
-        print("ERROR: usá --replace", file=sys.stderr)
-        return 1
 
-    raw = otbm_path.read_bytes()
-    body = raw[4:]
-    body = _maze.filter_tiles_in_bbox(
-        body, fp["fromX"], fp["fromY"], fp["toX"], fp["toY"], ARENA_Z
-    )
-    body = _maze.filter_tiles_in_bbox(
-        body,
-        HUB_PORTAL[0],
-        HUB_PORTAL[1],
-        HUB_PORTAL[0],
-        HUB_PORTAL[1],
-        HUB_PORTAL[2],
-    )
-    insert_at = _maze.find_map_data_insert(body)
-    patch = b"".join(group_tile_areas(tiles))
-    patched = raw[:4] + body[:insert_at] + patch + body[insert_at:]
-
-    backup = otbm_path.with_suffix(".otbm.bak-wave-arena")
-    if not backup.exists():
-        backup.write_bytes(raw)
-        print(f"\nBackup: {backup}")
-
-    otbm_path.write_bytes(patched)
-    manifest_path.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
-    print(f"\nOK — mapa: {otbm_path}")
-    print(f"OK — manifiesto: {manifest_path}")
-    print("Reiniciá yout OT para cargar actions Lua.")
+    write_map(a.map, m, CLEAR_BOX, Z, c.stackable)
+    patch_readables("<!-- BEGIN WAVE_ARENA_SIGNS -->", "<!-- END WAVE_ARENA_SIGNS -->",
+                    [dict(x=p[0], y=p[1], z=p[2], text=t) for p, t in CAMP_SIGNS.items()])
+    patch_block(LUA, LUA_BEGIN, LUA_END, block, write=True)
+    meta = {
+        "name": "generated-wave-arena", "version": 2, "tileCount": len(m.t),
+        "clearBox": {"fromX": CLEAR_BOX[0], "fromY": CLEAR_BOX[1], "toX": CLEAR_BOX[2], "toY": CLEAR_BOX[3], "z": Z},
+        "arena": ARENA.box(), "camp": CAMP.box(), "landing": LANDING, "returnTp": RETURN_TP,
+        "templeLanding": TEMPLE_LANDING,
+        "levers": {"start": [CAMP.at(4, 0), UID_START], "rank": [CAMP.at(7, 0), UID_RANK],
+                   "next": [ARENA.at(5, 10), UID_NEXT], "retire": [ARENA.at(7, 10), UID_RETIRE]},
+        "arrivals": [ARENA.at(*d) for d in ARRIVALS], "spawns": [ARENA.at(*d) for d in SPAWNS],
+    }
+    (WORLD / "generated-wave-arena.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
+    print(f"OK {a.map}, readables, wave_arena.lua (LAYOUT) y generated-wave-arena.json")
+    print("Después: python3 scripts/map/temple-portals.py (portal del templo -> LANDING)")
     return 0
 
 

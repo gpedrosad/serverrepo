@@ -13,7 +13,7 @@
 	<readable x="156" y="46" z="7" text="ISLA NATURAL\nSendero: 3 campamentos Cyclops\nAl final, cueva y Grorlam"/>
 	<readable x="158" y="46" z="7" text="VALLE DE LAS BESTIAS\nCaza mid-hard en 3 pisos\nDe Minotauros a Demonios"/>
 	<readable x="164" y="46" z="7" text="CRISOL\n3 puertas. Boss diario.\nBronce / Plata / Oro"/>
-	<readable x="166" y="46" z="7" text="WAVE ARENA\nOleadas. Palanca = next.\nRanking semanal"/>
+	<readable x="166" y="46" z="7" text="WAVE ARENA\nClaro de la Selva: 20 oleadas\nEn grupo. Premio semanal"/>
 	<readable x="168" y="46" z="7" text="RELOJ DE ARENA\n6 oleadas que suben de nivel\nEntra en el descanso"/>
 	<!-- END TEMPLE_PORTAL_SIGNS -->
 	<!-- BEGIN HELL_QUEST_SIGNS -->
@@ -56,4 +56,9 @@
 	<!-- BEGIN DESERT_HUNTS_SIGNS -->
 	<readable x="199" y="73" z="7" text="DESIERTO DE LAS RUINAS\nRuinas (8+), dunas del sur (10+), laguna y oasis (15+),\ncampamento de bandidos (20+), nido de escarabajos (30+),\ntemplo de los lagartos (40+), campo de huesos (45+),\ncienaga (50+), santuario de los djinn (60+).\nSigue el camino de piedra.\nEn el barco del muelle: piratas en cubierta (25+)."/>
 	<!-- END DESERT_HUNTS_SIGNS -->
+	<!-- BEGIN WAVE_ARENA_SIGNS -->
+	<readable x="175" y="400" z="7" text="WAVE ARENA\nClaro de la Selva. 20 oleadas, jefe cada 5.\nGrupo: pisen la plataforma y tiren la palanca."/>
+	<readable x="178" y="400" z="7" text="RANKING SEMANAL\nCuenta la ultima oleada LIMPIA.\nPremio la primera vez en la semana: 5/10/15/20."/>
+	<readable x="176" y="395" z="7" text="Izquierda: siguiente oleada (sala limpia).\nDerecha: retirarse y guardar la marca."/>
+	<!-- END WAVE_ARENA_SIGNS -->
 </readables>

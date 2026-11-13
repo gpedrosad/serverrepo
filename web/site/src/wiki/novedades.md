@@ -16,6 +16,10 @@ estado: publicado
 
 ## Noviembre 2026
 
+### Wave Arena: el Claro de la Selva
+
+La Wave Arena se rehizo: un campamento seguro y un claro de selva cerrado con bambú. Ahora se juega **en grupo** (hasta 7), hay un **jefe cada 5 oleadas**, las oleadas crecen con el grupo y hay **premio semanal** al limpiar la 5, 10, 15 y 20. El ranking cuenta oleadas limpias. Todo en [[wave-arena]].
+
 ### Power hit
 
 Cualquier ataque tuyo puede pegar más: golpes, distancia, wands, runas y hechizos. El power hit sale con una explosión dorada y el texto **POWER!**. El mega hit sale fucsia y dice **MEGA!**. Todo en [[power-hit]].

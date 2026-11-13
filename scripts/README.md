@@ -46,11 +46,12 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 
 | Script | Uso |
 |--------|-----|
-| `generate-crucible.py` | El Crisol v2: hub PZ + 3 arenas temáticas, carteles y bloque `LAYOUT` de `crucible.lua` (`--dry-run --png` para previsualizar; portal en la plaza: `temple-portals.py`) |
+| `roomkit.py` | Piezas comunes de los generadores de salas (Crisol, Wave Arena): `Room`, paredes, validación con flags del `.otb`, escritura del OTBM |
+| `generate-crucible.py` | El Crisol v3: hub PZ + 3 arenas temáticas, carteles y bloque `LAYOUT` de `crucible.lua` (`--dry-run --png` para previsualizar; portal en la plaza: `temple-portals.py`) |
 | `temple-portals.py` | Plaza del templo con todos los portales + reapunta vueltas (correr después de cualquier generador de zona) |
 | `generate-natural-island.py` | Isla natural: herradura con sendero, 3 campamentos Cyclops y cueva de 4 salas; escribe mapa, spawns, carteles y manifiesto (`--dry-run --preview`) |
 | `generate-sand-clock.py` | Reloj de Arena OTBM (portal en la plaza: `temple-portals.py`) |
-| `generate-wave-arena.py` | Wave Arena |
+| `generate-wave-arena.py` | Wave Arena v2 (Claro de la Selva): campamento PZ + claro 13x11, carteles y bloque `LAYOUT` de `wave_arena.lua` (`--dry-run --png`) |
 | `generate-beast-valley.py` | Valle de las Bestias (portal 158,47,7; reemplazó al hunt maze) |
 | `generate-maze.py` | Laberinto Alice |
 | `generate-tp-gauntlet.py` | Gauntlet |

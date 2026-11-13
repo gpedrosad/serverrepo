@@ -29,6 +29,8 @@ filas 5-6 alrededor de `5,6`, TP de salida en `5,8`.
 ### Cómo está hecho el generador
 
 - Todo se escribe en coordenadas **locales** de cada sala (`Room.at(dx, dy)`): mover una sala es cambiar su origen.
+- Las piezas comunes (`Room`, `build_room`, `Checker`, escritura del OTBM) están en `scripts/map/roomkit.py`,
+  compartido con la Wave Arena.
 - Una sola función `build_arena()` con el tema en `ARENAS` (suelo, paredes, columna, guardián, brasero, tapiz);
   solo el estrado/lava de Oro, el círculo de Plata y las calaveras de Bronce son propios de cada una.
 - La validación lee los flags del `.otb` (`block_solid`, `stackable`): nada de listas de ids bloqueantes a mano.
