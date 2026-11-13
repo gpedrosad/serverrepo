@@ -13,6 +13,7 @@ el OK de Gonzalo** (ver `CLAUDE.md` de la carpeta de proyectos). La Mac mini no 
 | Binario | `server/YurOTS/ots/source/yurots`, compilado ahí mismo |
 | Personaje GM | **GM Retro** (access 3, vocación 0). La cuenta está en `server/YurOTS/ots/data/accounts/` de la ThinkPad (no va a git); pedírsela a Gonzalo |
 | Web | contenedor `retro76-web` (`python:3.12-slim`, `--restart unless-stopped`, red del host, usuario `gonzalo`) que corre `web/server.py` del repo en el puerto **8080**: http://192.168.1.17:8080. Tras cambiar `web/*.py`: `docker restart retro76-web`; `web/dist` y los datos se leen en cada pedido. Python 3.12 porque `server.py` usa `cgi` (no existe desde 3.13) |
+| Web 2 (8076) | servicio de usuario systemd `retro76-web.service` (`~/.config/systemd/user/`), corre el mismo `web/server.py` del repo en el puerto **8076**: http://192.168.1.17:8076. Tiene que llevar `SERVER_IP=192.168.1.17` (con `127.0.0.1` la web les decía a los jugadores que se conecten a la propia ThinkPad). Tras cambiarlo: `systemctl --user daemon-reload && systemctl --user restart retro76-web` |
 | Cliente | `~/apps/clienteretro` (mac/ + windows/). Se actualiza solo al abrirse desde la web (`/api/updater.php`); tras cambiar sprites o Lua del cliente: `python3 scripts/client-rme/publish_client.py` ([CLIENT_UPDATER_RETRO76.md](../CLIENT_UPDATER_RETRO76.md)). En la Mac de Gonzalo: `~/Desktop/Retro76-Mac` (binario + `data.zip`, el zip de descarga) |
 
 Los datos de jugadores de la ThinkPad son de prueba, pero igual se respaldan antes de reiniciar.
