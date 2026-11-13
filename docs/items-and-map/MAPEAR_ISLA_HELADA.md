@@ -8,7 +8,7 @@ Generador: `scripts/map/generate-frozen-isle.py` (usa las piezas y validaciones 
 `generate-north-pass.py`). Manifiesto: `server/YurOTS/ots/data/world/generated-frozen-isle.json`.
 
 **Revisión 2026-11-13:** [estética y funcionamiento de las zonas de hielo](REVISION_ESTETICA_HIELO_2026_11_13.md).
-Corregidos localmente: bote horizontal completo (`395–399,108,7`), llegada libre a z9
+Corregidos y desplegados el 13 nov 2026: bote horizontal completo (`395–399,108,7`), llegada libre a z9
 (`412,54,9`) y slots únicos de monstruos. El generador valida estos casos antes de escribir.
 Paso de hielo y costa nevada, menos decoración grande y roca gris en cuevas. Antes del deploy se
 probaron las escaleras y el contenido del depot mediante cliente de protocolo en una copia aislada
@@ -83,7 +83,10 @@ Total de la isla: 86 monstruos (antes 63).
 - El sendero llega del puerto a la bajada, de z8 a z9, a los 4 cofres y al portal.
 - Árboles y rocas grandes nunca tapan el sendero (se dibujan una casilla hacia arriba-izquierda).
 
-**Estado (2026-11-11):** cargado en el servidor de prueba de la ThinkPad ([`THINKPAD_TEST_SERVER.md`](../systems/THINKPAD_TEST_SERVER.md)); el servidor arranca y carga el mapa. Falta recorrerlo en el juego.
+**Estado (2026-11-13):** correcciones desplegadas en la ThinkPad (`a526166`, informe `e80fddb`).
+Probe OK y contenedor healthy. Depot y escaleras probados previamente con cliente de protocolo
+en copia aislada con el mapa nuevo. Falta el recorrido visual completo con cliente gráfico.
+Ver [`THINKPAD_TEST_SERVER.md`](../systems/THINKPAD_TEST_SERVER.md).
 
 ## Regenerar
 

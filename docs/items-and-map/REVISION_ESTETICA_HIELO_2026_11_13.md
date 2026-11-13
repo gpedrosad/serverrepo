@@ -2,19 +2,20 @@
 
 Revisión visual y estática de **Isla del Hielo Eterno / Frozen Isle** (puerto, bosque, lago,
 monasterio, montaña, grutas z8 y guarida z9) y de la **Tundra Helada del Paso del Norte**.
-Se encontraron tres problemas concretos y varias mejoras estéticas. **Correcciones aplicadas en
-la copia local el mismo día. Antes del deploy se verificaron las escaleras y el depot con un
-cliente de protocolo en un servidor aislado; el recorrido visual con cliente gráfico sigue pendiente.** El diagnóstico y las imágenes
+Se encontraron tres problemas concretos y varias mejoras estéticas. **Correcciones desplegadas en
+la ThinkPad el mismo día, con probe posterior OK.** Antes del deploy se verificaron las escaleras
+y el depot con un cliente de protocolo en un servidor aislado; el recorrido visual con cliente
+gráfico sigue pendiente. El diagnóstico y las imágenes
 iniciales se conservan abajo como registro del antes.
 
 Base auditada: commit `2d8d05b`; al comenzar la auditoría, mapa y OTB locales coincidían por
-SHA-256 con la ThinkPad. El mapa corregido sigue solo en local.
+SHA-256 con la ThinkPad. El mapa corregido se desplegó después de las pruebas funcionales.
 Las imágenes son renders de los assets reales, con desplazamiento y elevación de los ítems;
 no son capturas de una sesión de juego ni incluyen criaturas, NPC o iluminación dinámica.
 
 ![Resumen de los sectores revisados](img/revision-hielo-2026-11-13/resumen.png)
 
-## Corrección local aplicada
+## Corrección aplicada
 
 - **Escalera:** llegada `412,54,9` con hielo 671 libre. Se añadió el bloque 2×2 al sur y se
   recompusieron paredes. La guarida pasa de 408 a 412 casillas caminables; z8 conserva 496.
@@ -49,7 +50,7 @@ no son capturas de una sesión de juego ni incluyen criaturas, NPC o iluminació
 | `docs/gameplay/STAIRS.md` | Llegada real y corrección local |
 | `docs/INDEX.md` | Enlace a la revisión |
 
-### Imágenes del resultado local
+### Imágenes del resultado
 
 Renders de los tiles escritos en `test.otbm`, comprobados contra el dump del generador:
 
@@ -103,6 +104,24 @@ copia con `make-test-bots.py`; ningún login de prueba se hizo al servidor de ju
 Esta prueba funcional cumple el chequeo de contenido de depot previo al deploy de
 [DEPOTS.md](../gameplay/DEPOTS.md). El recorrido visual en cliente gráfico sigue pendiente; los
 renders no prueban iluminación ni la sensación de combate.
+
+## Deploy y verificación posterior
+
+Autorizado por Gonzalo el 13 nov 2026. Cambios subidos a `main`: **`a526166`** (corrección) y
+**`e80fddb`** (informe e imágenes). ThinkPad actualizada mediante `git merge --ff-only origin/main`,
+sin solapamientos con cambios de otras sesiones, y `docker restart -t 45 yurots`.
+
+- Respaldo completo de runtime, mapa/spawns previos, configuración y diff local en
+  **`/home/gonzalo/backups/pre-deploy-20261113-165043-frozen`**.
+- Log: `graceful shutdown complete`, mapa cargado en **0,517 s**, `Retro76 Server Running...`.
+- `python3 scripts/ot/ot-probe.py 192.168.1.17 7171`: **OK**, 363 bytes, 11,1 ms;
+  un jugador conectado nuevamente. Contenedor **running / healthy**.
+- Misma lista de archivos antes/después: **1 cuenta, 6 personajes, 31 casas**.
+  `config.lua` local idéntico al respaldo; cambios de otras sesiones preservados.
+- SHA-256 del mapa desplegado igual al mapa probado. Scanner posterior: **11 lockers, depotid=1**.
+- Copia aislada detenida tras las pruebas; directorio conservado con los scripts de comprobación.
+- Pendiente: recorrido visual completo y apertura del depot con el cliente gráfico en el servidor
+  de juego. La prueba funcional de contenido se hizo antes del deploy en la copia aislada.
 
 ## Diagnóstico inicial (antes de corregir)
 
@@ -248,4 +267,4 @@ python3.11 scripts/map/render-pieces.py --sheet /tmp/ice-boat-pieces.png --floor
 
 El diagnóstico se corrigió como se detalla al principio. Las transiciones se probaron con un cliente
 de protocolo sobre el mapa nuevo; falta el recorrido visual y la aparición de todos los slots separados.
-No se reinició ni se desplegó ningún cambio de esta revisión.
+El deploy y su verificación posterior están registrados arriba.
