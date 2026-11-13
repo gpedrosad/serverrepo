@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Agrega ítems nuevos (sprite PNG de 32x32) al cliente y al servidor, sobre los archivos actuales.
+"""Agrega ítems nuevos (PNG 32x32, o 64x64/64x32 para 2x2/2x1) al cliente y al servidor, sobre los archivos actuales.
 
 Para ítems traídos de otras versiones (ej. armas de 8.x) o dibujados (Root Colossus), sin el builder viejo (build_zagan_test_assets.py,
 que necesita el pack Zagan perdido y client-local). Cada ítem de NEW_ITEMS:
@@ -99,6 +99,43 @@ NEW_ITEMS = [
     dict(name="black dragon corpse", server_id=20172, client_id=3605, prototype=3104,
          png="black_dragon_corpse.png", corpse=True, tiles=2,
          descr="The charred corpse of a black dragon."),
+    # Corpses de las criaturas 8.60 importadas (nov 2026).
+    dict(name="dead tortoise", server_id=20173, client_id=3604, prototype=3128,
+         png="dead_tortoise.png", corpse=True, descr="The shell of a dead tortoise."),
+    dict(name="dead thornback tortoise", server_id=20174, client_id=3603, prototype=3128,
+         png="dead_thornback_tortoise.png", corpse=True, descr="The spiked shell of a dead thornback tortoise."),
+    dict(name="dead mammoth", server_id=20175, client_id=3534, prototype=3104,
+         png="dead_mammoth.png", corpse=True, tiles=2, descr="The corpse of a woolly mammoth."),
+    dict(name="dead blood crab", server_id=20176, client_id=3533, prototype=3104,
+         png="dead_blood_crab.png", corpse=True, tiles=2, descr="The broken shell of a blood crab."),
+    dict(name="dead quara constrictor", server_id=20177, client_id=3504, prototype=3104,
+         png="dead_quara_constrictor.png", corpse=True, tiles=2, descr="The corpse of a quara constrictor."),
+    dict(name="dead quara hydromancer", server_id=20178, client_id=3503, prototype=3104,
+         png="dead_quara_hydromancer.png", corpse=True, tiles=2, descr="The corpse of a quara hydromancer."),
+    dict(name="dead quara mantassin", server_id=20179, client_id=3476, prototype=3104,
+         png="dead_quara_mantassin.png", corpse=True, tiles=2, descr="The corpse of a quara mantassin."),
+    dict(name="dead quara pincher", server_id=20180, client_id=3475, prototype=3104,
+         png="dead_quara_pincher.png", corpse=True, tiles=2, descr="The corpse of a quara pincher."),
+    dict(name="dead quara predator", server_id=20181, client_id=3474, prototype=3104,
+         png="dead_quara_predator.png", corpse=True, tiles=2, descr="The corpse of a quara predator."),
+    dict(name="dead cyclops", server_id=20182, client_id=3472, prototype=3104,
+         png="dead_cyclops.png", corpse=True, tiles=2, descr="The corpse of a cyclops."),
+    dict(name="dead wyrm", server_id=20183, client_id=3469, prototype=3104,
+         png="dead_wyrm.png", corpse=True, tiles=2, descr="The corpse of a wyrm."),
+    dict(name="remains of an earth elemental", server_id=20184, client_id=3468, prototype=3104,
+         png="remains_of_an_earth_elemental.png", corpse=True, tiles=2, descr="A pile of earth and stone."),
+    dict(name="remains of a water elemental", server_id=20185, client_id=3467, prototype=3128,
+         png="remains_of_a_water_elemental.png", corpse=True, descr="A puddle of elemental water."),
+    dict(name="slain zombie", server_id=20186, client_id=3466, prototype=3128,
+         png="slain_zombie.png", corpse=True, descr="The corpse of a slain zombie."),
+    dict(name="dead vampire bride", server_id=20187, client_id=3464, prototype=3128,
+         png="dead_vampire_bride.png", corpse=True, descr="The corpse of a vampire bride."),
+    dict(name="dead worker golem", server_id=20188, client_id=3463, prototype=2849,
+         png="dead_worker_golem.png", corpse=True, tiles="2x1", descr="The broken remains of a worker golem."),
+    dict(name="slain undead gladiator", server_id=20189, client_id=3461, prototype=3128,
+         png="slain_undead_gladiator.png", corpse=True, descr="The corpse of an undead gladiator."),
+    dict(name="slain nightstalker", server_id=20190, client_id=3460, prototype=3128,
+         png="slain_nightstalker.png", corpse=True, descr="The corpse of a nightstalker."),
 ]
 
 
@@ -121,18 +158,22 @@ def node_ids(node) -> tuple[int | None, int | None, str]:
             name.decode("latin-1"))
 
 
-def sprite_records(png: Path, tiles: int = 1) -> list[bytes]:
-    """Registros de sprite para un item 1x1 (32x32) o 2x2 (64x64).
-    Los 2x2 se parten en el orden del .dat: abajo-derecha, abajo-izquierda,
-    arriba-derecha, arriba-izquierda."""
+def sprite_records(png: Path, tiles: int | str = 1) -> list[bytes]:
+    """Registros de sprite para un item 1x1 (32x32), 2x2 (64x64) o 2x1 (64x32).
+    Los multi-sprite se parten en el orden del .dat: para 2x2 abajo-derecha,
+    abajo-izquierda, arriba-derecha, arriba-izquierda; para 2x1 derecha, izquierda."""
     image = B.Image.open(png).convert("RGBA")
-    size = 32 if tiles == 1 else 64
-    if image.size != (size, size):
-        raise SystemExit(f"{png.name}: mide {image.size}, tiene que ser {size}x{size}")
+    if tiles == "2x1":
+        size, boxes = (64, 32), [(32, 0, 64, 32), (0, 0, 32, 32)]
+    elif tiles == 2:
+        size, boxes = (64, 64), [(32, 32, 64, 64), (0, 32, 32, 64), (32, 0, 64, 32), (0, 0, 32, 32)]
+    else:
+        size, boxes = (32, 32), None
+    if image.size != size:
+        raise SystemExit(f"{png.name}: mide {image.size}, tiene que ser {size[0]}x{size[1]}")
     image.putdata([(0, 0, 0, 0) if p[3] == 0 else (p[0], p[1], p[2], 255) for p in image.getdata()])
-    if tiles == 1:
+    if boxes is None:
         return [B.encode_sprite_record(image)]
-    boxes = [(32, 32, 64, 64), (0, 32, 32, 64), (32, 0, 64, 32), (0, 0, 32, 32)]
     return [B.encode_sprite_record(image.crop(box)) for box in boxes]
 
 
@@ -202,8 +243,8 @@ def apply_things(things: Path, otb_root, dry: bool) -> list[str]:
             s2c.setdefault(sid, cid)
     new_entries, log, changed = [e.raw for e in entries], [], False
     for item in NEW_ITEMS:
-        tiles = int(item.get("tiles", 1))
-        sprite_count = 4 if tiles == 2 else 1
+        tiles = item.get("tiles", 1)
+        sprite_count = 2 if tiles == "2x1" else 4 if tiles == 2 else 1
         new_records = sprite_records(SPRITES / item["png"], tiles)
         idx = by_cid.get(item["client_id"])
         proto_cid = s2c.get(item["prototype"])

@@ -206,7 +206,7 @@ Opcional: `data/spells/lib/spells.lua` tiene una tabla `outfits` (nombre → loo
 ### 6.1 Límites del protocolo 7.6
 
 - El looktype viaja en **un byte** (`protocol76.cpp`, `msg.AddByte(creature->looktype)`): **máximo 255**.
-- El `Tibia.dat` base define 254 looktypes, pero muchos están **vacíos**: 11, 12, 20, 46, 47, 72, 77, 93, 96–98, 135, 143, 145–159, 161–200, 222–224, 226, 229–254.
+- El `Tibia.dat` base define 254 looktypes, pero muchos están **vacíos**: 11, 12, 135, 143, 145–159, 185–196, 222–224, 226, 229, 252–254. Los importados/usados recientes incluyen 20, 46–47, 72, 77, 93, 96–98, 161–184 y 197–200; confirmar siempre con `python3.11 scripts/client-rme/sprite_tool.py looks`.
 - Los custom del servidor ya usan 211–221 y 225. El Black Dragon tomó el **230**.
 - Antes de elegir, comprobar que ningún XML lo use: `grep -rhoE 'type="[0-9]+"' data/monster data/npc | sort -u`.
 

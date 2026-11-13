@@ -43,9 +43,9 @@ cómo agregar más. El sprite sale del cliente de esa versión, píxel por píxe
 4. **Elegir un client id para sacrificar:** `python3.11 scripts/client-rme/add_custom_items.py --candidates`.
    Excluye lo que está en el mapa, loot, NPC, acciones, hechizos o scripts, los destinos de una pudrición,
    suelos, cadáveres, alfombras y cuadros, y los ya usados por ítems custom.
-5. **Agregarlo a `NEW_ITEMS`** en `add_custom_items.py`: nombre, server id (el siguiente libre, hoy 20173),
+5. **Agregarlo a `NEW_ITEMS`** en `add_custom_items.py`: nombre, server id (el siguiente libre, hoy 20191),
    client id del paso 4, prototipo 7.6 (mismo tipo y manos), PNG, ataque, defensa y descripción (< 128
-   bytes). Para un 2×2 agregar `tiles=2` y usar un PNG de 64×64.
+   bytes). Para un 2×2 agregar `tiles=2` y un PNG 64×64; para un 2×1, `tiles="2x1"` y un PNG 64×32.
 6. **Aplicar** (re-ejecutable; lo que ya está no se toca):
 
    ```bash

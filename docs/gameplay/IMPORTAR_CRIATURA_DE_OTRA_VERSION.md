@@ -1,6 +1,6 @@
 # Traer criaturas de otra versión de Tibia
 
-Cómo sumar monstruos de versiones más nuevas con su dibujo original. Hecho en nov 2026 con 25 criaturas del
+Cómo sumar monstruos de versiones más nuevas con su dibujo original. Hecho en nov 2026 con 25 criaturas + 19 looks del resto del catálogo del
 cliente 8.60. Para ítems, ver [IMPORTAR_ITEM_DE_OTRA_VERSION.md](../items-and-map/IMPORTAR_ITEM_DE_OTRA_VERSION.md).
 
 ![Las 25 criaturas importadas, ya en nuestro cliente](img/criaturas-860.png)
@@ -82,16 +82,72 @@ publicar el cliente (`publish_client.py`) para que los jugadores lo vean.
 - Copia la entrada del `.dat` (flags, tamaño, 4 direcciones, cuadros de animación) y los sprites tal cual. El
   formato de 7.6 y el de 8.60 comparten esos campos y los flags que usan las criaturas (24 = corrimiento,
   27 = animar siempre).
-- Los sprites se agregan al final del `.spr`. Los 25 sumaron 1.049 sprites (11.741 → 12.790).
+- Los sprites se agregan al final del `.spr`. Los 44 sumaron 1.889 sprites (11.741 → 13.646).
 - **No importa** looks con addons o montura (patrón Y o Z distinto de 1): son los trajes de jugador.
 - Dos de los importados tienen 2 cuadros de animación en vez de 3 (Wyvern y Mutated Bat). El cliente los dibuja
   bien, pero `sprite_tool.py sheet` y `add_recolor_look.py` esperan 3 cuadros: no sirven como base para recolorear.
 - Los XML de monstruo van **sin tildes**: el servidor lee el XML como UTF-8 y una tilde en latin-1 no carga.
 
-## Otras criaturas de 8.60 que calzan en niveles medios
+## Resto del catálogo 8.60 importado (nov 2026)
 
-Vistas en el catálogo, sin importar todavía: Tortoise (197), Thornback Tortoise (198), Mammoth (199), Blood
-Crab (200), quaras (20, 46, 47, 72, 77), Cyclops Smith y Drone (277, 280), Wyrm (291), elementales (Earth 301,
-Water 286), Zombie (311), Vampire Bride (312), Worker Golem (304), Undead Gladiator (306), Nightstalker (320).
-Las tortugas, el mammoth, el blood crab y los quaras pueden conservar su número: están libres en 7.6.
-Los números son los del catálogo de 8.60; confirmar con `--catalog` antes de importar.
+Se importaron los **19 looks de criaturas** que faltaban, con sus sprites originales de 8.60. Por ahora son
+solo **looks**: no tienen XML de monstruo, stats, loot ni spawn. Para convertirlos en enemigos, seguir
+[`CUSTOM_MONSTER_WORKFLOW.md`](CUSTOM_MONSTER_WORKFLOW.md).
+
+![Los 19 looks restantes de 8.60](img/criaturas-860-resto.png)
+
+| Criatura | Look 8.60 | Look nuestro |
+|----------|----------:|-------------:|
+| Tortoise | 197 | 197 |
+| Thornback Tortoise | 198 | 198 |
+| Mammoth | 199 | 199 |
+| Blood Crab | 200 | 200 |
+| Quara Constrictor | 20 | 20 |
+| Quara Hydromancer | 46 | 46 |
+| Quara Mantassin | 47 | 47 |
+| Quara Pincher | 72 | 72 |
+| Quara Predator | 77 | 77 |
+| Cyclops Smith | 277 | 175 |
+| Cyclops Drone | 280 | 176 |
+| Wyrm | 291 | 177 |
+| Earth Elemental | 301 | 178 |
+| Water Elemental | 286 | 179 |
+| Zombie | 311 | 180 |
+| Vampire Bride | 312 | 181 |
+| Worker Golem | 304 | 182 |
+| Undead Gladiator | 306 | 183 |
+| Nightstalker | 320 | 184 |
+
+Los que ya existían en 7.6 (tortugas, mammoth, blood crab, quaras) conservan su número. Los demás se
+remaparon a 175–184, que estaban libres. El cliente de jugadores necesita `publish_client.py` para verlos.
+
+## Corpses de las 19 criaturas
+
+Se importaron también los corpses de 8.60, con el color y la forma de cada criatura. Son items del OTB
+(contenedores) listos para cuando se creen los XML de monstruo; todavía no hay monstruo que los use.
+
+![Corpses de las criaturas 8.60](img/criaturas-860-corpses.png)
+
+| Criatura | Corpse | Server id |
+|----------|--------|----------:|
+| Tortoise | dead tortoise | `20173` |
+| Thornback Tortoise | dead thornback tortoise | `20174` |
+| Mammoth | dead mammoth | `20175` |
+| Blood Crab | dead blood crab | `20176` |
+| Quara Constrictor | dead quara constrictor | `20177` |
+| Quara Hydromancer | dead quara hydromancer | `20178` |
+| Quara Mantassin | dead quara mantassin | `20179` |
+| Quara Pincher | dead quara pincher | `20180` |
+| Quara Predator | dead quara predator | `20181` |
+| Cyclops Smith / Drone | dead cyclops (compartido) | `20182` |
+| Wyrm | dead wyrm | `20183` |
+| Earth Elemental | remains of an earth elemental | `20184` |
+| Water Elemental | remains of a water elemental | `20185` |
+| Zombie | slain zombie | `20186` |
+| Vampire Bride | dead vampire bride | `20187` |
+| Worker Golem | dead worker golem (2×1) | `20188` |
+| Undead Gladiator | slain undead gladiator | `20189` |
+| Nightstalker | slain nightstalker | `20190` |
+
+Cuando se cree cada monstruo, poner `corpse="201xx"` en su `<look>`. Los corpses se agregaron con
+`add_custom_items.py` (soporta 1×1, 2×2 y 2×1) y se publican junto con el cliente.

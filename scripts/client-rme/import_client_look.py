@@ -64,6 +64,26 @@ IMPORTS = [
     dict(name="Crystal Spider", source=263, target=172),
     dict(name="Frost Dragon Hatchling", source=283, target=173),
     dict(name="Bog Raider", source=295, target=174),
+    # Resto del catalogo 8.60 (nov 2026): criaturas que faltaban.
+    dict(name="Tortoise", source=197, target=197),
+    dict(name="Thornback Tortoise", source=198, target=198),
+    dict(name="Mammoth", source=199, target=199),
+    dict(name="Blood Crab", source=200, target=200),
+    dict(name="Quara Constrictor", source=20, target=20),
+    dict(name="Quara Hydromancer", source=46, target=46),
+    dict(name="Quara Mantassin", source=47, target=47),
+    dict(name="Quara Pincher", source=72, target=72),
+    dict(name="Quara Predator", source=77, target=77),
+    dict(name="Cyclops Smith", source=277, target=175),
+    dict(name="Cyclops Drone", source=280, target=176),
+    dict(name="Wyrm", source=291, target=177),
+    dict(name="Earth Elemental", source=301, target=178),
+    dict(name="Water Elemental", source=286, target=179),
+    dict(name="Zombie", source=311, target=180),
+    dict(name="Vampire Bride", source=312, target=181),
+    dict(name="Worker Golem", source=304, target=182),
+    dict(name="Undead Gladiator", source=306, target=183),
+    dict(name="Nightstalker", source=320, target=184),
 ]
 
 

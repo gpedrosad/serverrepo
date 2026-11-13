@@ -145,6 +145,10 @@ en `devtools/zagan-test/custom-sprites/` y se agregaron con `git add -f`.
 **Pendiente:** el cliente de jugadores y la ThinkPad necesitan el `.dat`/`.spr` y el `items-zagan-test.otb`
 nuevos. Hasta que se publique el cliente, los corpses nuevos se ven como el item sacrificado.
 
+También están los corpses `20173`–`20190` de las 19 criaturas 8.60 (tortugas, mammoth, blood crab,
+quaras, Cyclops, Wyrm, elementales, Zombie, Vampire Bride, Worker Golem, Undead Gladiator, Nightstalker):
+tabla y preview en [`../gameplay/IMPORTAR_CRIATURA_DE_OTRA_VERSION.md`](../gameplay/IMPORTAR_CRIATURA_DE_OTRA_VERSION.md).
+
 ---
 
 ## Armas de 8.x (nov 2026)
