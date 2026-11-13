@@ -19,7 +19,7 @@ from mapdata import KB_DIR, Renderer, load_tiles, png_bytes  # noqa: E402
 
 # clave, título, caja x0 y0 x1 y1, piso, escala
 DETAILS = [
-    ("crisol", "El Crisol (z0): hub + 3 arenas", (72, 74, 176, 98), 0, 1),
+    ("crisol", "El Crisol (z0): hub + 3 arenas", (74, 76, 137, 92), 0, 2),
     ("templo", "Plaza del templo y portales (z7)", (146, 36, 178, 62), 7, 2),
     ("norte", "Campo norte y puerta al Paso del Norte (z7)", (116, 0, 213, 30), 7, 1),
     ("isla", "Isla natural con Cyclops (z7)", (122, 424, 189, 485), 7, 1),

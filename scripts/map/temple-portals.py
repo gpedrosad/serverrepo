@@ -49,7 +49,7 @@ PORTALS = [
      [(124, 426, 187, 483, 7), (124, 426, 187, 483, 8)]),
     ("valle", 158, (312, 360, 7), "VALLE DE LAS BESTIAS\nCaza mid-hard en 3 pisos\nDe Minotauros a Demonios",
      [(262, 232, 361, 378, 7), (262, 232, 361, 378, 8), (262, 232, 361, 378, 9), (449, 39, 489, 80, 7)]),
-    ("crisol", 164, (85, 92, 0), "CRISOL\n3 puertas. Boss diario.\nBronce / Plata / Oro",
+    ("crisol", 164, (83, 85, 0), "CRISOL\n3 puertas. Boss diario.\nBronce / Plata / Oro",
      [(70, 70, 195, 105, 0)]),
     ("wave", 166, (177, 394, 7), "WAVE ARENA\nOleadas. Palanca = next.\nRanking semanal",
      [(172, 384, 182, 396, 7)]),

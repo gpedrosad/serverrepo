@@ -1,66 +1,60 @@
--- El Crisol v2: palancas 7200 Bronce / 7201 Plata / 7202 Oro / 7203 Info.
+-- El Crisol v3: palancas 7200 Bronce / 7201 Plata / 7202 Oro / 7203 Info.
 -- Ver docs/gameplay/CRUCIBLE.md. Textos ASCII (cliente 7.6).
 --
 -- Cada puerta es independiente (3 grupos pueden correr a la vez):
---   * La arena esta ocupada mientras haya un jugador adentro.
---   * Entran juntos todos los jugadores parados en la plataforma 3x2 de esa puerta
---     mas el que tira la palanca (max 7).
---   * Monstruos en la mitad norte; el grupo llega al sur, junto al TP de salida.
---   * Si quedaron monstruos de una corrida abandonada, se completan hasta el tope
---     (no se apilan infinitos).
-
-UID_BRONZE = 7200
-UID_SILVER = 7201
-UID_GOLD = 7202
-UID_INFO = 7203
+--   * La arena esta ocupada mientras haya un jugador adentro (no se guarda dueno).
+--   * Entran juntos el que tira y los jugadores parados en la plataforma 3x2 de esa
+--     puerta, hasta tantos como puntos de llegada tenga la arena.
+--   * Si quedaron monstruos de una corrida abandonada, se completa hasta el tope
+--     (PACK_COUNT + 1); nunca se apilan mas.
 
 -- BEGIN LAYOUT (generado por scripts/map/generate-crucible.py)
-HUB = {x0 = 76, y0 = 79, x1 = 94, y1 = 95, z = 0}
-HUB_LANDING = {x = 85, y = 92, z = 0}
+HUB = {x0 = 78, y0 = 80, x1 = 88, y1 = 87, z = 0}
 PADS = {
-	bronze = {x0 = 78, y0 = 80, x1 = 80, y1 = 81, z = 0},
-	silver = {x0 = 84, y0 = 80, x1 = 86, y1 = 81, z = 0},
-	gold = {x0 = 90, y0 = 80, x1 = 92, y1 = 81, z = 0},
+	bronze = {x0 = 78, y0 = 81, x1 = 80, y1 = 82, z = 0},
+	silver = {x0 = 82, y0 = 81, x1 = 84, y1 = 82, z = 0},
+	gold = {x0 = 86, y0 = 81, x1 = 88, y1 = 82, z = 0},
 }
 ARENAS = {
 	bronze = {
-		name = "Foso de Arena",
-		x0 = 104, y0 = 80, x1 = 118, y1 = 92, z = 0,
-		entry = {x = 111, y = 90, z = 0},
+		name = "Foso de Arena", x0 = 93, y0 = 80, x1 = 103, y1 = 88, z = 0,
+		-- arrivals[1] = el que tira; la cantidad es el tope del grupo
+		arrivals = {{x = 98, y = 86, z = 0}, {x = 97, y = 86, z = 0}, {x = 99, y = 86, z = 0}, {x = 98, y = 85, z = 0}, {x = 97, y = 85, z = 0}, {x = 99, y = 85, z = 0}, {x = 96, y = 86, z = 0}},
 		-- spawns[1] = elite/boss; el resto, pack
-		spawns = {{x = 111, y = 82, z = 0}, {x = 107, y = 83, z = 0}, {x = 115, y = 83, z = 0}, {x = 109, y = 85, z = 0}, {x = 113, y = 85, z = 0}, {x = 106, y = 86, z = 0}, {x = 116, y = 86, z = 0}},
+		spawns = {{x = 98, y = 81, z = 0}, {x = 96, y = 82, z = 0}, {x = 100, y = 82, z = 0}, {x = 94, y = 81, z = 0}, {x = 102, y = 81, z = 0}, {x = 97, y = 83, z = 0}, {x = 99, y = 83, z = 0}},
 	},
 	silver = {
-		name = "Coliseo de Piedra",
-		x0 = 128, y0 = 79, x1 = 144, y1 = 93, z = 0,
-		entry = {x = 136, y = 91, z = 0},
+		name = "Coliseo de Piedra", x0 = 108, y0 = 80, x1 = 118, y1 = 88, z = 0,
+		-- arrivals[1] = el que tira; la cantidad es el tope del grupo
+		arrivals = {{x = 113, y = 86, z = 0}, {x = 112, y = 86, z = 0}, {x = 114, y = 86, z = 0}, {x = 113, y = 85, z = 0}, {x = 112, y = 85, z = 0}, {x = 114, y = 85, z = 0}, {x = 111, y = 86, z = 0}},
 		-- spawns[1] = elite/boss; el resto, pack
-		spawns = {{x = 136, y = 81, z = 0}, {x = 132, y = 82, z = 0}, {x = 140, y = 82, z = 0}, {x = 134, y = 84, z = 0}, {x = 138, y = 84, z = 0}, {x = 130, y = 85, z = 0}, {x = 142, y = 85, z = 0}},
+		spawns = {{x = 113, y = 81, z = 0}, {x = 111, y = 82, z = 0}, {x = 115, y = 82, z = 0}, {x = 109, y = 81, z = 0}, {x = 117, y = 81, z = 0}, {x = 112, y = 83, z = 0}, {x = 114, y = 83, z = 0}},
 	},
 	gold = {
-		name = "Trono de Fuego",
-		x0 = 154, y0 = 78, x1 = 172, y1 = 94, z = 0,
-		entry = {x = 163, y = 92, z = 0},
+		name = "Trono de Fuego", x0 = 123, y0 = 80, x1 = 133, y1 = 88, z = 0,
+		-- arrivals[1] = el que tira; la cantidad es el tope del grupo
+		arrivals = {{x = 128, y = 86, z = 0}, {x = 127, y = 86, z = 0}, {x = 129, y = 86, z = 0}, {x = 128, y = 85, z = 0}, {x = 127, y = 85, z = 0}, {x = 129, y = 85, z = 0}, {x = 126, y = 86, z = 0}},
 		-- spawns[1] = elite/boss; el resto, pack
-		spawns = {{x = 163, y = 80, z = 0}, {x = 158, y = 81, z = 0}, {x = 168, y = 81, z = 0}, {x = 161, y = 83, z = 0}, {x = 165, y = 83, z = 0}, {x = 156, y = 84, z = 0}, {x = 170, y = 84, z = 0}},
+		spawns = {{x = 128, y = 81, z = 0}, {x = 126, y = 82, z = 0}, {x = 130, y = 82, z = 0}, {x = 124, y = 81, z = 0}, {x = 132, y = 81, z = 0}, {x = 127, y = 83, z = 0}, {x = 129, y = 83, z = 0}},
 	},
 }
 -- END LAYOUT
 
-DOORS = {[UID_BRONZE] = "bronze", [UID_SILVER] = "silver", [UID_GOLD] = "gold"}
+UID_INFO = 7203
+DOORS = {[7200] = "bronze", [7201] = "silver", [7202] = "gold"}
+DOOR_ORDER = {"bronze", "silver", "gold"}
 DOOR_LABEL = {bronze = "Bronce", silver = "Plata", gold = "Oro"}
 
--- Por dia: elite bronce, elite plata, boss oro (custom), rare exclusivo del boss
+-- Rotacion diaria: elite de cada puerta y rare exclusivo del boss de Oro.
 DAILY = {
-	{"Minotaur Guard", "Beholder", "Crucible Ashlord", "ashlord emberblade"},
-	{"Cyclops", "Demon Skeleton", "Crucible Frostwarden", "frostwarden chillblade"},
-	{"Dwarf Guard", "Vampire", "Crucible Bonepriest", "bonepriest reaver"},
-	{"Minotaur Mage", "Hero", "Crucible Ironhide", "ironhide crusher"},
-	{"Beholder", "Dragon", "Crucible Venomqueen", "venomqueen fang"},
-	{"Giant Spider", "Black Knight", "Crucible Stormcaller", "stormcaller maul"},
-	{"Vampire", "Warlock", "Crucible Bloodreaver", "bloodreaver saber"},
+	{bronze = "Minotaur Guard", silver = "Beholder", gold = "Crucible Ashlord", rare = "ashlord emberblade"},
+	{bronze = "Cyclops", silver = "Demon Skeleton", gold = "Crucible Frostwarden", rare = "frostwarden chillblade"},
+	{bronze = "Dwarf Guard", silver = "Vampire", gold = "Crucible Bonepriest", rare = "bonepriest reaver"},
+	{bronze = "Minotaur Mage", silver = "Hero", gold = "Crucible Ironhide", rare = "ironhide crusher"},
+	{bronze = "Beholder", silver = "Dragon", gold = "Crucible Venomqueen", rare = "venomqueen fang"},
+	{bronze = "Giant Spider", silver = "Black Knight", gold = "Crucible Stormcaller", rare = "stormcaller maul"},
+	{bronze = "Vampire", silver = "Warlock", gold = "Crucible Bloodreaver", rare = "bloodreaver saber"},
 }
-ELITE_INDEX = {bronze = 1, silver = 2, gold = 3}
 
 PACKS = {
 	bronze = {"Minotaur", "Minotaur Archer", "Minotaur Guard"},
@@ -69,30 +63,24 @@ PACKS = {
 }
 PACK_COUNT = {bronze = 3, silver = 4, gold = 5}
 
-MSG = 22 -- MSG_INFO (texto blanco/verde en la consola)
-
--- Llegada del grupo: entrada y casillas vecinas (la fila de abajo es la del TP de salida, +2).
-ARRIVAL = {{0, 0}, {-1, 0}, {1, 0}, {0, -1}, {-1, -1}, {1, -1}, {-2, 0}}
+MSG = 22 -- MSG_INFO
+EFFECT_TELEPORT = 11
 
 -------------------------------------------------------------------- utilidades
 
-function crucibleDayIndex()
+local function dayIndex()
 	local day = tonumber(os.date("%j")) or 1
 	return math.fmod(day - 1, table.getn(DAILY)) + 1
 end
 
-function crucibleToday()
-	return DAILY[crucibleDayIndex()]
-end
-
-function crucibleInBox(pos, box)
-	return pos and pos.z == box.z
+local function inBox(pos, box)
+	return pos ~= nil and pos.z == box.z
 		and pos.x >= box.x0 and pos.x <= box.x1
 		and pos.y >= box.y0 and pos.y <= box.y1
 end
 
--- Lista {players = {uid...}, monsters = n} de las criaturas dentro de una caja.
-function crucibleScan(box)
+-- {players = {uid...}, monsters = n}: criaturas dentro de una caja.
+local function scan(box)
 	local out = {players = {}, monsters = 0}
 	for x = box.x0, box.x1 do
 		for y = box.y0, box.y1 do
@@ -109,124 +97,121 @@ function crucibleScan(box)
 	return out
 end
 
--- Jugadores parados en la plataforma de la puerta (incluye al que tira si esta encima).
-function crucibleGroup(cid, door)
-	local group = {cid}
-	local seen = {}
-	seen[getPlayerName(cid)] = true
-	for _, uid in ipairs(crucibleScan(PADS[door]).players) do
+local function names(list)
+	local out = {}
+	for _, uid in ipairs(list) do
+		table.insert(out, getPlayerName(uid) or "?")
+	end
+	return table.concat(out, ", ")
+end
+
+-- El que tira + los de la plataforma (sin repetir), hasta `max`. Devuelve grupo y los que no entran.
+local function padGroup(cid, door, max)
+	local group, left = {cid}, {}
+	local seen = {[getPlayerName(cid)] = true}
+	for _, uid in ipairs(scan(PADS[door]).players) do
 		local name = getPlayerName(uid)
 		if name and not seen[name] then
 			seen[name] = true
-			table.insert(group, uid)
+			if table.getn(group) < max then
+				table.insert(group, uid)
+			else
+				table.insert(left, uid)
+			end
 		end
 	end
-	return group
+	return group, left
 end
 
-function crucibleNames(group)
-	local names = {}
-	for _, uid in ipairs(group) do
-		table.insert(names, getPlayerName(uid))
-	end
-	return table.concat(names, ", ")
-end
-
--------------------------------------------------------------------- puertas
-
-function crucibleSpawn(door, elite, existing)
-	local arena = ARENAS[door]
-	local spots = arena.spawns
-	local target = PACK_COUNT[door] + 1
-	local missing = target - existing
-	if missing <= 0 then
-		return 0
-	end
-	local ok = 0
-	-- el elite/boss siempre arriba al centro; despues el pack en el resto de los puntos
-	if doSummonCreature(elite, spots[1]) ~= 0 then
-		ok = ok + 1
-	end
+-- Invoca elite + pack hasta completar el tope. Devuelve cuantos aparecieron.
+local function spawn(door, elite, existing)
+	local spots = ARENAS[door].spawns
+	local missing = PACK_COUNT[door] + 1 - existing
 	local pack = PACKS[door]
-	local i = 1
-	while ok < missing and i <= table.getn(spots) - 1 do
-		local name = pack[math.fmod(i - 1, table.getn(pack)) + 1]
-		if doSummonCreature(name, spots[i + 1]) ~= 0 then
+	local ok = 0
+	for i = 1, table.getn(spots) do
+		if ok >= missing then
+			break
+		end
+		local name = elite
+		if i > 1 then
+			name = pack[math.fmod(i - 2, table.getn(pack)) + 1]
+		end
+		if doSummonCreature(name, spots[i]) ~= 0 then
 			ok = ok + 1
 		end
-		i = i + 1
 	end
 	return ok
 end
 
-function crucibleStartDoor(cid, door)
-	if not crucibleInBox(getPlayerPosition(cid), HUB) then
+-------------------------------------------------------------------- palancas
+
+local function startDoor(cid, door)
+	if not inBox(getPlayerPosition(cid), HUB) then
 		doPlayerSendCancel(cid, "Usa la palanca desde la Sala del Crisol.")
 		return
 	end
 
 	local arena = ARENAS[door]
-	local inside = crucibleScan(arena)
+	local inside = scan(arena)
 	if table.getn(inside.players) > 0 then
-		doPlayerSendCancel(cid, "Arena ocupada por " .. crucibleNames(inside.players) .. ".")
+		doPlayerSendCancel(cid, "Arena ocupada por " .. names(inside.players) .. ".")
 		return
 	end
 
-	local today = crucibleToday()
-	local elite = today[ELITE_INDEX[door]]
-	local spawned = crucibleSpawn(door, elite, inside.monsters)
-	if spawned == 0 and inside.monsters == 0 then
+	local elite = DAILY[dayIndex()][door]
+	local spawned = spawn(door, elite, inside.monsters)
+	local total = inside.monsters + spawned
+	if total == 0 then
 		doPlayerSendCancel(cid, "No se pudieron invocar monstruos. Avisa a un GM.")
 		return
 	end
 
-	local group = crucibleGroup(cid, door)
-	local total = inside.monsters + spawned
+	local group, left = padGroup(cid, door, table.getn(arena.arrivals))
+	local text = "Crisol " .. DOOR_LABEL[door] .. " (" .. arena.name .. "): " .. total ..
+		" monstruos, elite de hoy " .. elite .. ". Salida: TP al sur."
 	for i, uid in ipairs(group) do
-		local off = ARRIVAL[math.fmod(i - 1, table.getn(ARRIVAL)) + 1]
-		doTeleportThing(uid, {x = arena.entry.x + off[1], y = arena.entry.y + off[2], z = arena.entry.z})
-		doPlayerSendTextMessage(uid, MSG,
-			"Crisol " .. DOOR_LABEL[door] .. " (" .. arena.name .. "): " .. total ..
-			" monstruos, elite de hoy " .. elite .. ". Salida: TP al sur.")
+		doTeleportThing(uid, arena.arrivals[i])
+		doPlayerSendTextMessage(uid, MSG, text)
 	end
-	doSendMagicEffect(arena.entry, 11)
+	doSendMagicEffect(arena.arrivals[1], EFFECT_TELEPORT)
+
 	if inside.monsters > 0 then
-		doPlayerSendTextMessage(cid, MSG,
-			"Quedaban " .. inside.monsters .. " monstruos de una corrida abandonada.")
+		doPlayerSendTextMessage(cid, MSG, "Quedaban " .. inside.monsters .. " monstruos de una corrida abandonada.")
 	end
 	if table.getn(group) > 1 then
-		doPlayerSendTextMessage(cid, MSG, "Grupo: " .. crucibleNames(group) .. ".")
+		doPlayerSendTextMessage(cid, MSG, "Grupo: " .. names(group) .. ".")
+	end
+	for _, uid in ipairs(left) do
+		doPlayerSendCancel(uid, "Grupo lleno (max " .. table.getn(arena.arrivals) .. "). Espera la proxima.")
 	end
 end
 
-function crucibleShowInfo(cid)
-	local today = crucibleToday()
-	doPlayerSendTextMessage(cid, MSG, "El Crisol - dia #" .. crucibleDayIndex() ..
-		". Rare de hoy (solo Oro): " .. today[4] .. ".")
-	for _, door in ipairs({"bronze", "silver", "gold"}) do
-		local s = crucibleScan(ARENAS[door])
-		local state
+local function showInfo(cid)
+	local today = DAILY[dayIndex()]
+	doPlayerSendTextMessage(cid, MSG, "El Crisol - dia #" .. dayIndex() .. ". Rare de hoy (solo Oro): " .. today.rare .. ".")
+	for _, door in ipairs(DOOR_ORDER) do
+		local s = scan(ARENAS[door])
+		local state = "libre"
 		if table.getn(s.players) > 0 then
-			state = "ocupada (" .. crucibleNames(s.players) .. ", " .. s.monsters .. " monstruos)"
+			state = "ocupada (" .. names(s.players) .. ", " .. s.monsters .. " monstruos)"
 		elseif s.monsters > 0 then
 			state = "libre, con " .. s.monsters .. " monstruos sueltos"
-		else
-			state = "libre"
 		end
-		doPlayerSendTextMessage(cid, MSG, DOOR_LABEL[door] .. ": " .. today[ELITE_INDEX[door]] ..
-			" - " .. state .. ".")
+		doPlayerSendTextMessage(cid, MSG, DOOR_LABEL[door] .. ": " .. today[door] .. " - " .. state .. ".")
 	end
-	doPlayerSendTextMessage(cid, MSG, "Para entrar en grupo, paren en la plataforma frente a la palanca.")
+	doPlayerSendTextMessage(cid, MSG, "Para entrar en grupo, paren en la plataforma frente a la palanca (max "
+		.. table.getn(ARENAS.gold.arrivals) .. ").")
 end
 
 function onUse(cid, item, frompos, item2, topos)
 	if item.uid == UID_INFO then
-		crucibleShowInfo(cid)
+		showInfo(cid)
 		return 1
 	end
 	local door = DOORS[item.uid]
 	if door then
-		crucibleStartDoor(cid, door)
+		startDoor(cid, door)
 		return 1
 	end
 	return 0

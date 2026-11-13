@@ -2,7 +2,8 @@
 
 Hub con **3 puertas** (Bronce / Plata / Oro). Cada día rota elite/boss. La puerta Oro dropea un **arma Zagan exclusiva** con efecto C++.
 
-**v2 (nov 2026):** rediseño completo del mapa y la lógica (antes eran 4 cajas de piso de madera sin paredes).
+**v3 (nov 2026):** salas compactas y decoradas (antes: 4 cajas de hasta 19x17 casi vacías, 1376 casillas;
+ahora 559). Las 3 arenas tienen la misma forma 11x9, así comparten llegada, spawns y salida.
 
 Portal en la plaza del templo: `164, 47, 7` (cartel `164, 46, 7`, llegada al volver `164, 48, 7`).
 
@@ -14,14 +15,27 @@ Portales del templo: plaza `155,43–169,52` (z7), tabla completa en [`CAMBIAR-M
 
 | Sala | Caja interior | Estilo | Entrada / salida |
 |------|---------------|--------|------------------|
-| Hub "Sala del Crisol" (**PZ**) | `76,79 – 94,95` | mármol, marco negro, alfombra roja, 4 columnas, ángel, braseros | llegada `85,92`; TP al templo `85,95` |
-| Bronce "Foso de Arena" | `104,80 – 118,92` | arena, paredes de arenisca, 4 columnas, escombros, calaveras, guerreros en la salida | `111,90` / TP `111,92` |
-| Plata "Coliseo de Piedra" | `128,79 – 144,93` | baldosa gris, círculo central, 4 columnas, perros guardianes | `136,91` / TP `136,93` |
-| Oro "Trono de Fuego" | `154,78 – 172,94` | mármol negro, 4 pozos de lava (no pisables), alfombra al estrado dorado del boss, obeliscos, banderas | `163,92` / TP `163,94` |
+| Hub "Sala del Crisol" (**PZ**), 11x8 | `78,80 – 88,87` | mármol con marco negro, alfombra, 2 columnas, ángel, braseros | llegada `83,85`; TP al templo `83,87` |
+| Bronce "Foso de Arena", 11x9 | `93,80 – 103,88` | arena, arenisca, 2 columnas, calaveras y sangre, guerreros en la salida | `98,86` / TP `98,88` |
+| Plata "Coliseo de Piedra", 11x9 | `108,80 – 118,88` | piedra gris, círculo central, 2 columnas, tapices azules, perros en la salida | `113,86` / TP `113,88` |
+| Oro "Trono de Fuego", 11x9 | `123,80 – 133,88` | mármol negro, estrado del boss, alfombra, ríos de lava a los costados, obeliscos, tapices de fuego | `128,86` / TP `128,88` |
 
-En el hub, pared norte: por puerta una **plataforma 3x2** (bronce `78-80`, plata `84-86`, oro `90-92`, filas `y=80-81`)
-con la palanca al norte del centro (`79/85/91, 79`) y el cartel a su izquierda. Palanca INFO `77,88` (cartel `77,87`).
-Antorchas en la pared oeste, faroles en la norte, braseros en las esquinas.
+En el hub, contra la pared norte: por puerta una **plataforma 3x2** (bronce `78-80`, plata `82-84`, oro `86-88`,
+filas `y=81-82`) con cartel y palanca en la fila `y=80` (palancas `79/83/87, 80`). Info: cartel `78,84`, palanca `78,85`.
+
+Arenas (coordenadas locales, iguales en las 3): spawns en las filas 1-3 (boss en `5,1`), llegada del grupo en las
+filas 5-6 alrededor de `5,6`, TP de salida en `5,8`.
+
+### Cómo está hecho el generador
+
+- Todo se escribe en coordenadas **locales** de cada sala (`Room.at(dx, dy)`): mover una sala es cambiar su origen.
+- Una sola función `build_arena()` con el tema en `ARENAS` (suelo, paredes, columna, guardián, brasero, tapiz);
+  solo el estrado/lava de Oro, el círculo de Plata y las calaveras de Bronce son propios de cada una.
+- La validación lee los flags del `.otb` (`block_solid`, `stackable`): nada de listas de ids bloqueantes a mano.
+  Revisa: ids que existen, sin dos piezas sólidas en una casilla, salas sin pisarse y dentro de `CLEAR_BOX`,
+  todo el piso conectado, plataformas/palancas/TP alcanzables, spawns y llegadas pisables y sin repetir.
+- Los ítems apilables (calaveras `2320`, etc.) llevan el byte de cantidad solos (flag `stackable`).
+- `ARRIVALS` y `SPAWNS` se escriben en el bloque `LAYOUT` de `crucible.lua`; el tope del grupo es `#arrivals` (7).
 
 ### Patrones de piezas (medidos en `test.otbm`, reusables en otros generadores)
 
@@ -45,11 +59,12 @@ Alfombra roja (rectángulo de 3 de ancho; **el borde oeste es `4397`, el este `4
 
 ## Flujo
 
-1. TP `164, 47, 7` (plaza del templo) → hub `85, 92, 0`.
+1. TP `164, 47, 7` (plaza del templo) → hub `83, 85, 0`.
 2. Palanca INFO `7203`: bosses y rare del día + **estado de cada arena** (libre / ocupada por quién / monstruos sueltos).
 3. Bronce `7200` / Plata `7201` / Oro `7202`: entran **todos los jugadores parados en la plataforma** de esa puerta
-   más el que tira (máx 7). Llegan al sur de la arena, repartidos alrededor de la entrada.
+   más el que tira (máx 7 = puntos de llegada; los que sobran reciben "Grupo lleno"). Llegan al sur de la arena.
 4. Monstruos en la **mitad norte**: elite/boss arriba al centro (en Oro, sobre el estrado), el pack repartido.
+   Rotación en `DAILY` con campos por puerta (`bronze`, `silver`, `gold`, `rare`).
 5. Salida: TP sur de la arena → hub → TP sur del hub → templo `164, 48, 7`.
 
 ## Reglas (`data/actions/scripts/crucible.lua`)
@@ -61,6 +76,10 @@ Alfombra roja (rectángulo de 3 de ancho; **el borde oeste es `4397`, el este `4
   (`PACK_COUNT + 1`); nunca se acumulan más.
 - El bloque `LAYOUT` de `crucible.lua` (hub, plataformas, arenas, entradas, spawns) **lo escribe el generador**;
   no editarlo a mano.
+- Mapa, `crucible.lua`, `readables.xml` y el portal del templo van **en el mismo commit**. Nunca dejar el Lua
+  nuevo con el mapa viejo en el árbol de la ThinkPad: el próximo reinicio (de cualquier sesión) los carga
+  desincronizados y las palancas mandan a casillas vacías. Para probar sin tocar el árbol en vivo: worktree aparte
+  + contenedor descartable en otro puerto (necesita `queue.xml`, `online.xml` y `houseitems.xml` vacíos).
 
 ---
 
