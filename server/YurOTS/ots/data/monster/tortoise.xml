@@ -20,11 +20,11 @@
 </voices>
 
 <loot>
-	<item id="2148" countmax="30" chance="59000"/>
-	<item id="2510" countmax="1" chance="2850"/>
-	<item id="2667" countmax="1" chance="4600"/>
-	<item id="2695" countmax="2" chance="770"/>
-	<item id="2513" countmax="1" chance="200"/>
-	<item id="2417" countmax="1" chance="730"/>
+	<item id="2148" countmax="30" chance1="59000" chancemax="0"/>
+	<item id="2510" chance="2850"/>
+	<item id="2667" chance="4600"/>
+	<item id="2695" countmax="2" chance1="770" chancemax="0"/>
+	<item id="2513" chance="200"/>
+	<item id="2417" chance="730"/>
 </loot>
 </monster>

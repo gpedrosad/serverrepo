@@ -25,15 +25,15 @@
 </voices>
 
 <loot>
-	<item id="2148" countmax="65" chance="82000"/>
-	<item id="2230" countmax="1" chance="10000"/>
-	<item id="2460" countmax="1" chance="9400"/>
-	<item id="2398" countmax="1" chance="7250"/>
-	<item id="2417" countmax="1" chance="7000"/>
-	<item id="2229" countmax="1" chance="5680"/>
-	<item id="2457" countmax="1" chance="4600"/>
-	<item id="2381" countmax="1" chance="3750"/>
-	<item id="2205" countmax="1" chance="1000"/>
-	<item id="2657" countmax="1" chance="560"/>
+	<item id="2148" countmax="65" chance1="82000" chancemax="0"/>
+	<item id="2230" chance="10000"/>
+	<item id="2460" chance="9400"/>
+	<item id="2398" chance="7250"/>
+	<item id="2417" chance="7000"/>
+	<item id="2229" chance="5680"/>
+	<item id="2457" chance="4600"/>
+	<item id="2381" chance="3750"/>
+	<item id="2205" chance="1000"/>
+	<item id="2657" chance="560"/>
 </loot>
 </monster>
