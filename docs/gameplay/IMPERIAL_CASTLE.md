@@ -61,6 +61,8 @@ anterior.
 | Court Mage | 650 | 520 | z5 | Heavy magic missile 45–95, bola de fuego, `exura`; huye con poca vida | Ropa de mago (130) en morado |
 | The Fallen Emperor | 12000 | 9000 | z3, frente al trono (`100, 32, 3`), respawn 2 h | Melee 200–460, sudden death 150–320, robo de vida, se cura e invoca hasta 2 Imperial Heroes | Look 244: Lich recoloreado (`fallen_emperor.py`) |
 
+- Squire y Archer tienen además un ataque de su kit (golpe de escudo y flecha incendiaria): ver
+  [MONSTER_KITS.md](MONSTER_KITS.md).
 - Squire, Archer y Mage usan ropa de jugador con otros colores: **no necesitan cliente nuevo**. El Emperor y
   el Imperial Hero sí.
 - El Emperor suelta la Imperial Crown Armor con chance 6000 (6%), el set crown (chance 20000 cada pieza; crown

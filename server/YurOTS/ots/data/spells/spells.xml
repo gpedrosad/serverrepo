@@ -211,5 +211,18 @@
 <rune name="Sudden Death"			id="2268"	charges="2"		maglv="15"	mana="0"	enabled="1"></rune>
 <rune name="Paralyze"				id="2278"	charges="1"		maglv="18"	mana="0"	enabled="1"></rune>
 <rune name="Anchor"					id="2296"	charges="3"		maglv="8"	mana="0"	enabled="1"></rune>
+<!-- BEGIN MONSTER_KITS -->
+<spell name="k_ice_burst_3" words="k_ice_burst_3" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="k_roar_burst_2" words="k_roar_burst_2" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="k_roar_burst_4" words="k_roar_burst_4" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="k_roar_burst_7" words="k_roar_burst_7" maglv="4000" mana="800" enabled="1"></spell>
+<rune name="k_blade_strike_4" id="6000" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="k_burst_ball_2" id="6001" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="k_burst_ball_5" id="6002" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="k_cannon_ball_5" id="6003" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="k_earth_touch_1" id="6004" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="k_ice_strike_1" id="6005" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="k_ice_touch_1" id="6006" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<!-- END MONSTER_KITS -->
 <!--\\ End Runes //-->
 </spells>

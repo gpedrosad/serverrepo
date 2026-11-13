@@ -12,6 +12,7 @@ Python en subcarpetas debe resolver el repo con `lib.project_root.project_root()
 | [`deploy/`](deploy/) | Backup runtime, server-save (y cron de medianoche), docker entrypoint |
 | [`ot/`](ot/) | Probe, diagnostics, watchdog, start-local, smoke tests |
 | [`map/`](map/) | Generadores OTBM, depots, sync de houses |
+| [`monsters/`](monsters/) | `apply-monster-kits.py`: ataques de su tema para los monstruos nuevos ([MONSTER_KITS.md](../docs/gameplay/MONSTER_KITS.md)) |
 | [`otb/`](otb/) | Patches OTB / gems sprites / loot tables |
 | [`client-rme/`](client-rme/) | RME, clientes locales, Zagan test assets, patcher |
 | [`web/`](web/) | Web local, analytics, premium funnel, `build-site.sh` (compila la web Astro en la ThinkPad) |

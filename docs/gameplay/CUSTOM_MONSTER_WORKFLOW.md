@@ -4,6 +4,7 @@ Guía detallada para crear un monstruo nuevo de punta a punta: diseño, XML, hec
 
 - Para el flujo corto (XML + `monsters.xml` + RME + spawn), ver [`MONSTER_CREATION.md`](MONSTER_CREATION.md).
 - Para traer el dibujo de una criatura de otra versión de Tibia (8.60), ver [`IMPORTAR_CRIATURA_DE_OTRA_VERSION.md`](IMPORTAR_CRIATURA_DE_OTRA_VERSION.md).
+- Si el monstruo nuevo solo pega cuerpo a cuerpo, sumarle ataques de su tema con [`MONSTER_KITS.md`](MONSTER_KITS.md) (`scripts/monsters/apply-monster-kits.py`).
 - Para la ficha del Black Dragon, ver [`BLACK_DRAGON.md`](BLACK_DRAGON.md).
 
 ---

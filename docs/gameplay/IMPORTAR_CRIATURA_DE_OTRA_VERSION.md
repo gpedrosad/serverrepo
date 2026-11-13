@@ -49,6 +49,9 @@ cliente 8.60. Para ítems, ver [IMPORTAR_ITEM_DE_OTRA_VERSION.md](../items-and-m
   físico con los efectos del pack "ice", como el del Frost Dragon (7.6 no tiene daño de hielo).
 - Siete no tienen spawn todavía: existen en el servidor (se pueden invocar o poner con RME) pero no aparecen
   en el mapa.
+- Los que pegaban solo cuerpo a cuerpo o con un proyectil común tienen además un kit de ataques de su tema
+  (cañonazos de los piratas, hielo de chakoyas y gigantes, grito de los bárbaros...): ver
+  [MONSTER_KITS.md](MONSTER_KITS.md).
 
 ## El cliente de origen
 

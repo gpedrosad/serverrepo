@@ -8,6 +8,8 @@
 <attacks>
 	<attack type="melee" mindamage="80" maxdamage="260" probability="100"/>
 	<attack type="instant" name="exura" exhaustion="500" cycleticks="6000" probability="30"/>
+	<attack type="instant" name="k_roar_burst_7" exhaustion="1000" cycleticks="2500" probability="40" kit="1"/>
+	<attack type="instant" name="orcb_haste" exhaustion="500" cycleticks="6000" probability="15" kit="1"/>
 </attacks>
 
 <defenses>
