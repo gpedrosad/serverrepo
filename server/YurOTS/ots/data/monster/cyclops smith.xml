@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!-- Importado de Tibia 8.60. Ciclope herrero: tira rocas y golpea con su martillo. -->
+<monster name="Cyclops Smith" level="25" maglevel="0" experience="255" pushable="0" armor="25" defense="25" canpushitems="1" staticattack="50" changetarget="200" speed="195">
+	<health now="435" max="435"/>
+	<look type="176" head="0" body="0" legs="0" feet="0" corpse="20182"/>
+	<combat targetdistance="1" runonhealth="0"/>
+
+<attacks>
+	<attack type="melee" mindamage="25" maxdamage="90" probability="100"/>
+	<attack type="distance" name="largerock" mindamage="27" maxdamage="72" cycleticks="3000" probability="35" kit="1"/>
+	<attack type="rune" name="k_earth_touch_3" exhaustion="1000" cycleticks="3500" probability="30" kit="1"/>
+</attacks>
+
+<defenses>
+
+</defenses>
+
+<voices>
+	<voice sentence="Clang!"/>
+	<voice sentence="You break, I fix!"/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="70" chance="82920"/>
+	<item id="2666" countmax="1" chance="49950"/>
+	<item id="2513" countmax="1" chance="6190"/>
+	<item id="2417" countmax="1" chance="5200"/>
+	<item id="2510" countmax="1" chance="2000"/>
+	<item id="2378" countmax="1" chance="5450"/>
+	<item id="2442" countmax="1" chance="2000"/>
+	<item id="2387" countmax="1" chance="880"/>
+	<item id="2490" countmax="1" chance="200"/>
+	<item id="2511" countmax="1" chance="140"/>
+	<item id="2209" countmax="1" chance="90"/>
+	<item id="2391" countmax="1" chance="150"/>
+	<item id="2230" countmax="1" chance="10280"/>
+</loot>
+</monster>

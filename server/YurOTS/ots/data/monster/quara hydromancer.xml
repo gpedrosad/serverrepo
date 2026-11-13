@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!-- Importado de Tibia 8.60. Quara hidromante: ola de hielo, drenaje y se cura. -->
+<monster name="Quara Hydromancer" level="45" maglevel="40" experience="800" pushable="0" armor="15" defense="15" canpushitems="1" staticattack="50" changetarget="200" speed="250">
+	<health now="1100" max="1100"/>
+	<look type="46" head="0" body="0" legs="0" feet="0" corpse="20178"/>
+	<combat targetdistance="1" runonhealth="0"/>
+
+<attacks>
+	<attack type="melee" mindamage="15" maxdamage="80" probability="100"/>
+	<attack type="instant" name="k_ice_wave_3" exhaustion="1000" cycleticks="3500" probability="30" kit="1"/>
+	<attack type="rune" name="k_drain_strike_3" exhaustion="1000" cycleticks="3500" probability="30" kit="1"/>
+	<attack type="instant" name="k_heal_2" exhaustion="1000" cycleticks="6000" probability="20" kit="1"/>
+</attacks>
+
+<defenses>
+	<defense immunity="fire"/>
+	<defense immunity="paralyze"/>
+	<defense immunity="invisible"/>
+
+</defenses>
+
+<voices>
+	<voice sentence="Glub glub glub!"/>
+	<voice sentence="The tide will take you!"/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="110" chance="90000"/>
+	<item id="2143" countmax="1" chance="15000"/>
+	<item id="2143" countmax="1" chance="5300"/>
+	<item id="2149" countmax="1" chance="5000"/>
+	<item id="2670" countmax="5" chance="4600"/>
+	<item id="2144" countmax="1" chance="3000"/>
+	<item id="2667" countmax="1" chance="1210"/>
+	<item id="2214" countmax="1" chance="1100"/>
+	<item id="2189" countmax="1" chance="960"/>
+	<item id="2476" countmax="1" chance="230"/>
+</loot>
+</monster>

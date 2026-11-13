@@ -4909,4 +4909,69 @@
 		<monster name="Pirate Corsair" x="0" y="0" z="7" spawntime="240" />
 	</spawn>
 	<!-- END DESERT_HUNTS_SPAWNS -->
+
+	<!-- Criaturas 8.60: resto del catalogo (nov 2026) -->
+	<spawn centerx="143" centery="449" centerz="7" radius="3">
+		<monster name="Tortoise" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="167" centery="448" centerz="7" radius="3">
+		<monster name="Tortoise" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="146" centery="446" centerz="7" radius="3">
+		<monster name="Thornback Tortoise" x="0" y="0" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="168" centery="445" centerz="7" radius="3">
+		<monster name="Blood Crab" x="0" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="150" centery="438" centerz="7" radius="3">
+		<monster name="Quara Constrictor" x="0" y="0" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="160" centery="438" centerz="7" radius="3">
+		<monster name="Quara Mantassin" x="0" y="0" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="138" centery="448" centerz="7" radius="3">
+		<monster name="Quara Pincher" x="0" y="0" z="7" spawntime="240" />
+	</spawn>
+	<spawn centerx="166" centery="443" centerz="7" radius="3">
+		<monster name="Quara Predator" x="0" y="0" z="7" spawntime="300" />
+	</spawn>
+	<spawn centerx="148" centery="444" centerz="7" radius="3">
+		<monster name="Cyclops Drone" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="164" centery="446" centerz="7" radius="3">
+		<monster name="Cyclops Smith" x="0" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="168" centery="452" centerz="8" radius="3">
+		<monster name="Worker Golem" x="0" y="0" z="8" spawntime="240" />
+	</spawn>
+	<spawn centerx="167" centery="447" centerz="8" radius="3">
+		<monster name="Earth Elemental" x="0" y="0" z="8" spawntime="240" />
+	</spawn>
+	<spawn centerx="146" centery="452" centerz="8" radius="3">
+		<monster name="Nightstalker" x="0" y="0" z="8" spawntime="180" />
+	</spawn>
+	<spawn centerx="386" centery="92" centerz="7" radius="3">
+		<monster name="Mammoth" x="0" y="0" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="394" centery="88" centerz="7" radius="3">
+		<monster name="Mammoth" x="0" y="0" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="377" centery="63" centerz="7" radius="3">
+		<monster name="Water Elemental" x="0" y="0" z="7" spawntime="240" />
+	</spawn>
+	<spawn centerx="406" centery="20" centerz="8" radius="3">
+		<monster name="Quara Hydromancer" x="0" y="0" z="8" spawntime="300" />
+	</spawn>
+	<spawn centerx="273" centery="247" centerz="7" radius="3">
+		<monster name="Zombie" x="0" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="280" centery="249" centerz="7" radius="3">
+		<monster name="Vampire Bride" x="0" y="0" z="7" spawntime="300" />
+	</spawn>
+	<spawn centerx="300" centery="244" centerz="9" radius="3">
+		<monster name="Wyrm" x="0" y="0" z="9" spawntime="300" />
+	</spawn>
+	<spawn centerx="300" centery="242" centerz="9" radius="3">
+		<monster name="Undead Gladiator" x="0" y="0" z="9" spawntime="240" />
+	</spawn>
 </spawns>

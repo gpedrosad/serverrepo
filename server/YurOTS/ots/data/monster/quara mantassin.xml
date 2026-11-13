@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!-- Importado de Tibia 8.60. Quara mantassin: rapido y esquivo, se acelera en pelea. -->
+<monster name="Quara Mantassin" level="35" maglevel="20" experience="400" pushable="0" armor="15" defense="15" canpushitems="1" staticattack="50" changetarget="200" speed="260">
+	<health now="800" max="800"/>
+	<look type="47" head="0" body="0" legs="0" feet="0" corpse="20179"/>
+	<combat targetdistance="1" runonhealth="40"/>
+
+<attacks>
+	<attack type="melee" mindamage="20" maxdamage="120" probability="100"/>
+	<attack type="rune" name="k_ice_strike_4" exhaustion="1000" cycleticks="3500" probability="30" kit="1"/>
+	<attack type="instant" name="orcb_haste" exhaustion="500" cycleticks="6000" probability="15" kit="1"/>
+</attacks>
+
+<defenses>
+	<defense immunity="fire"/>
+
+</defenses>
+
+<voices>
+	<voice sentence="Kssss!"/>
+	<voice sentence="Glub!"/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="129" chance="80000"/>
+	<item id="2670" countmax="1" chance="11600"/>
+	<item id="2667" countmax="5" chance="5000"/>
+	<item id="2381" countmax="1" chance="5000"/>
+	<item id="2654" countmax="1" chance="1050"/>
+	<item id="2377" countmax="1" chance="1050"/>
+	<item id="2146" countmax="1" chance="1000"/>
+	<item id="2165" countmax="1" chance="1000"/>
+	<item id="2667" countmax="1" chance="610"/>
+	<item id="2479" countmax="1" chance="120"/>
+	<item id="2656" countmax="1" chance="50"/>
+</loot>
+</monster>

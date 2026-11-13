@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!-- Importado de Tibia 8.60. Tortuga de playa: lenta, caparazon duro, no persigue lejos. -->
+<monster name="Tortoise" level="10" maglevel="0" experience="90" pushable="1" armor="30" defense="30" canpushitems="1" staticattack="50" changetarget="200" speed="200">
+	<health now="185" max="185"/>
+	<look type="197" head="0" body="0" legs="0" feet="0" corpse="20173"/>
+	<combat targetdistance="1" runonhealth="0"/>
+
+<attacks>
+	<attack type="melee" mindamage="10" maxdamage="40" probability="100"/>
+	<attack type="rune" name="k_earth_touch_1" exhaustion="1000" cycleticks="4000" probability="25" kit="1"/>
+</attacks>
+
+<defenses>
+
+</defenses>
+
+<voices>
+	<voice sentence="Ssssss..."/>
+	<voice sentence="Krrr..."/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="30" chance="59000"/>
+	<item id="2510" countmax="1" chance="2850"/>
+	<item id="2667" countmax="1" chance="4600"/>
+	<item id="2695" countmax="2" chance="770"/>
+	<item id="2513" countmax="1" chance="200"/>
+	<item id="2417" countmax="1" chance="730"/>
+</loot>
+</monster>

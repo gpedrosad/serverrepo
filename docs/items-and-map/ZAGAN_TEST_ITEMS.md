@@ -138,16 +138,18 @@ de los monstruos apuntan ahí. Los humanoides son 1×1; araña y dragones son 2�
 | Frost Dragon | `20171` | 3659 (blue rose) | dead dragon `3104` | 2×2 |
 | Black Dragon | `20172` | 3605 (wheat) | dead dragon `3104` | 2×2 |
 
-`add_custom_items.py` acepta `tiles=2` para items 2×2: carga un PNG 64×64 y lo parte en los 4 sprites
-en el orden del `.dat` (abajo-derecha, abajo-izquierda, arriba-derecha, arriba-izquierda). Los PNG están
-en `devtools/zagan-test/custom-sprites/` y se agregaron con `git add -f`.
+`add_custom_items.py` acepta `tiles=2` para items 2×2 y `tiles="2x1"` para 2×1: carga un PNG 64×64 (o
+64×32) y lo parte en los sprites en el orden del `.dat` (abajo-derecha, abajo-izquierda, arriba-derecha,
+arriba-izquierda; en 2×1, derecha e izquierda). Los PNG están en `devtools/zagan-test/custom-sprites/` y se
+agregaron con `git add -f`.
 
 **Pendiente:** el cliente de jugadores y la ThinkPad necesitan el `.dat`/`.spr` y el `items-zagan-test.otb`
 nuevos. Hasta que se publique el cliente, los corpses nuevos se ven como el item sacrificado.
 
 También están los corpses `20173`–`20190` de las 19 criaturas 8.60 (tortugas, mammoth, blood crab,
 quaras, Cyclops, Wyrm, elementales, Zombie, Vampire Bride, Worker Golem, Undead Gladiator, Nightstalker):
-tabla y preview en [`../gameplay/IMPORTAR_CRIATURA_DE_OTRA_VERSION.md`](../gameplay/IMPORTAR_CRIATURA_DE_OTRA_VERSION.md).
+cada monstruo ya los usa y tienen tabla, stats y spawn en
+[`../gameplay/IMPORTAR_CRIATURA_DE_OTRA_VERSION.md`](../gameplay/IMPORTAR_CRIATURA_DE_OTRA_VERSION.md).
 
 ---
 

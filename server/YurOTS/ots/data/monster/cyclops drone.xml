@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!-- Importado de Tibia 8.60. Ciclope obrero: tira rocas a distancia. -->
+<monster name="Cyclops Drone" level="20" maglevel="0" experience="200" pushable="0" armor="20" defense="20" canpushitems="1" staticattack="50" changetarget="200" speed="205">
+	<health now="325" max="325"/>
+	<look type="175" head="0" body="0" legs="0" feet="0" corpse="20182"/>
+	<combat targetdistance="1" runonhealth="0"/>
+
+<attacks>
+	<attack type="melee" mindamage="15" maxdamage="60" probability="100"/>
+	<attack type="distance" name="largerock" mindamage="18" maxdamage="48" cycleticks="3000" probability="35" kit="1"/>
+</attacks>
+
+<defenses>
+
+</defenses>
+
+<voices>
+	<voice sentence="Hmmm!"/>
+	<voice sentence="Ugh!"/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="30" chance="82000"/>
+	<item id="2666" countmax="2" chance="50430"/>
+	<item id="2406" countmax="1" chance="8000"/>
+	<item id="2510" countmax="1" chance="2000"/>
+	<item id="2513" countmax="1" chance="1600"/>
+	<item id="2381" countmax="1" chance="680"/>
+	<item id="2511" countmax="1" chance="120"/>
+	<item id="2490" countmax="1" chance="190"/>
+	<item id="2209" countmax="1" chance="90"/>
+	<item id="2230" countmax="1" chance="6750"/>
+</loot>
+</monster>

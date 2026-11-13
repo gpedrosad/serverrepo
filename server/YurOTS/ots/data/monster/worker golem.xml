@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!-- Importado de Tibia 8.60. Golem obrero: lento, blindado y con bombas de metal. -->
+<monster name="Worker Golem" level="55" maglevel="0" experience="1250" pushable="0" armor="35" defense="35" canpushitems="1" staticattack="50" changetarget="200" speed="210">
+	<health now="1470" max="1470"/>
+	<look type="182" head="0" body="0" legs="0" feet="0" corpse="20188"/>
+	<combat targetdistance="1" runonhealth="0"/>
+
+<attacks>
+	<attack type="melee" mindamage="50" maxdamage="160" probability="100"/>
+	<attack type="rune" name="k_cannon_ball_5" exhaustion="1000" cycleticks="3000" probability="35" kit="1"/>
+	<attack type="instant" name="k_heal_4" exhaustion="1000" cycleticks="6000" probability="20" kit="1"/>
+</attacks>
+
+<defenses>
+	<defense immunity="paralyze"/>
+	<defense immunity="invisible"/>
+
+</defenses>
+
+<voices>
+	<voice sentence="Clank clank."/>
+	<voice sentence="Intruder detected."/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="100" chance="43000"/>
+	<item id="2148" countmax="40" chance="50000"/>
+	<item id="2145" countmax="2" chance="1000"/>
+	<item id="2422" countmax="5" chance="5000"/>
+	<item id="2146" countmax="1" chance="1001"/>
+	<item id="2455" countmax="1" chance="1007"/>
+	<item id="2214" countmax="1" chance="200"/>
+	<item id="2164" countmax="1" chance="50"/>
+	<item id="2391" countmax="1" chance="1003"/>
+	<item id="2391" countmax="1" chance="920"/>
+	<item id="2177" countmax="1" chance="890"/>
+	<item id="2164" countmax="1" chance="370"/>
+	<item id="2391" countmax="1" chance="130"/>
+	<item id="2145" countmax="1" chance="2270"/>
+	<item id="2150" countmax="1" chance="2270"/>
+</loot>
+</monster>

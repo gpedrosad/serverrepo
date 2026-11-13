@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!-- Importado de Tibia 8.60. Gladiador muerto: tira estrellas y pega fuerte. -->
+<monster name="Undead Gladiator" level="45" maglevel="0" experience="800" pushable="0" armor="45" defense="45" canpushitems="1" staticattack="50" changetarget="200" speed="180">
+	<health now="1000" max="1000"/>
+	<look type="183" head="0" body="0" legs="0" feet="0" corpse="20189"/>
+	<combat targetdistance="1" runonhealth="0"/>
+
+<attacks>
+	<attack type="melee" mindamage="40" maxdamage="150" probability="100"/>
+	<attack type="rune" name="k_blade_strike_5" exhaustion="1000" cycleticks="3000" probability="35" kit="1"/>
+	<attack type="distance" name="throwingstar" mindamage="45" maxdamage="120" cycleticks="3000" probability="35" kit="1"/>
+</attacks>
+
+<defenses>
+	<defense immunity="invisible"/>
+
+</defenses>
+
+<voices>
+	<voice sentence="For the arena!"/>
+	<voice sentence="Fight me, coward!"/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="148" chance="94000"/>
+	<item id="2399" countmax="18" chance="16700"/>
+	<item id="2419" countmax="1" chance="11280"/>
+	<item id="2654" countmax="1" chance="5500"/>
+	<item id="2513" countmax="1" chance="5200"/>
+	<item id="2478" countmax="1" chance="4770"/>
+	<item id="2465" countmax="1" chance="4550"/>
+	<item id="3965" countmax="1" chance="4080"/>
+	<item id="2647" countmax="1" chance="2730"/>
+	<item id="2200" countmax="1" chance="2200"/>
+	<item id="2377" countmax="1" chance="1730"/>
+	<item id="2463" countmax="1" chance="1600"/>
+	<item id="2490" countmax="1" chance="1320"/>
+	<item id="2430" countmax="1" chance="310"/>
+	<item id="2497" countmax="1" chance="90"/>
+	<item id="2165" countmax="1" chance="60"/>
+</loot>
+</monster>

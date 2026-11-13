@@ -90,9 +90,9 @@ publicar el cliente (`publish_client.py`) para que los jugadores lo vean.
 
 ## Resto del catálogo 8.60 importado (nov 2026)
 
-Se importaron los **19 looks de criaturas** que faltaban, con sus sprites originales de 8.60. Por ahora son
-solo **looks**: no tienen XML de monstruo, stats, loot ni spawn. Para convertirlos en enemigos, seguir
-[`CUSTOM_MONSTER_WORKFLOW.md`](CUSTOM_MONSTER_WORKFLOW.md).
+Se importaron los **19 looks de criaturas** que faltaban, con sus sprites originales de 8.60, y se crearon sus
+**monstruos completos**: XML, stats, loot adaptado a 7.6, ataques por kits y spawn. Los corpses también están
+puestos en el `<look>` de cada uno.
 
 ![Los 19 looks restantes de 8.60](img/criaturas-860-resto.png)
 
@@ -121,10 +121,53 @@ solo **looks**: no tienen XML de monstruo, stats, loot ni spawn. Para convertirl
 Los que ya existían en 7.6 (tortugas, mammoth, blood crab, quaras) conservan su número. Los demás se
 remaparon a 175–184, que estaban libres. El cliente de jugadores necesita `publish_client.py` para verlos.
 
+### Stats y ataques
+
+Vida, experiencia y velocidad son las de Tibia 8.60. El loot se adaptó a los ítems que existen en 7.6
+(por ejemplo, `mammoth tusk` → `elephant tusk`, `turtle shell` → `plate shield`, `wyrm scale` → `scale armor`).
+Los ataques salen de los kits de [`MONSTER_KITS.md`](MONSTER_KITS.md); el número es el escalón de daño.
+
+| Criatura | Vida | Exp | Nivel | Melee | Kit |
+|----------|-----:|----:|------:|-------|-----|
+| Tortoise | 185 | 90 | 10 | 10–40 | earth touch 1 |
+| Thornback Tortoise | 300 | 150 | 15 | 15–55 | earth touch 2, earth burst 1 |
+| Mammoth | 320 | 160 | 20 | 20–100 | earth touch 4, prisa |
+| Blood Crab | 290 | 160 | 20 | 15–70 | earth touch 4 |
+| Quara Constrictor | 450 | 250 | 30 | 20–100 | ice strike 4, drain burst 3 |
+| Quara Hydromancer | 1100 | 800 | 45 | 15–80 | ice wave 3, drain strike 3, cura |
+| Quara Mantassin | 800 | 400 | 35 | 20–120 | ice strike 4, prisa |
+| Quara Pincher | 1800 | 1200 | 55 | 30–230 | earth touch 8, ice strike 6 |
+| Quara Predator | 2200 | 1600 | 60 | 40–320 | ice strike 8, prisa |
+| Cyclops Drone | 325 | 200 | 20 | 15–60 | roca 18–48 |
+| Cyclops Smith | 435 | 255 | 25 | 25–90 | roca 27–72, earth touch 3 |
+| Wyrm | 1825 | 1550 | 55 | 40–130 | energy wave 5, energy strike 5, cura |
+| Earth Elemental | 650 | 450 | 35 | 25–80 | earth burst 3, poison strike 3, cura |
+| Water Elemental | 550 | 650 | 40 | 30–100 | ice wave 4, drain strike 4, cura |
+| Zombie | 500 | 280 | 25 | 20–90 | death touch 3, drain strike 2 |
+| Vampire Bride | 1200 | 1050 | 50 | 30–120 | drain strike 4, death strike 4, cura |
+| Worker Golem | 1470 | 1250 | 55 | 50–160 | cannon ball 5, cura |
+| Undead Gladiator | 1000 | 800 | 45 | 40–150 | blade strike 5, throwing star 45–120 |
+| Nightstalker | 700 | 500 | 40 | 30–110 | drain strike 4, death touch 4, prisa |
+
+### Spawns
+
+Se agregaron 21 spawns al final de `data/world/test-spawn.xml`, en zonas que ya existían:
+
+| Zona | Criaturas |
+|------|-----------|
+| Isla natural (z7) | 2 Tortoise, Thornback, Blood Crab, Quara Constrictor, Mantassin, Pincher, Predator, Cyclops Drone, Cyclops Smith |
+| Cueva de la isla (z8) | Worker Golem, Earth Elemental, Nightstalker |
+| Isla del Hielo (z7/z8) | 2 Mammoth, Water Elemental, Quara Hydromancer |
+| Valle de las Bestias (z7/z9) | Zombie, Vampire Bride, Wyrm, Undead Gladiator |
+
+Los quaras quedaron sobre el agua poco profunda de la costa, las tortugas y el cangrejo en la playa, y los
+mamuts en la nieve. Todos los nombres coinciden con `monsters.xml` y las coordenadas se verificaron contra
+los tiles caminables de `test.otbm`.
+
 ## Corpses de las 19 criaturas
 
 Se importaron también los corpses de 8.60, con el color y la forma de cada criatura. Son items del OTB
-(contenedores) listos para cuando se creen los XML de monstruo; todavía no hay monstruo que los use.
+(contenedores) y cada monstruo ya apunta al suyo desde `<look corpse="...">`.
 
 ![Corpses de las criaturas 8.60](img/criaturas-860-corpses.png)
 
@@ -149,5 +192,5 @@ Se importaron también los corpses de 8.60, con el color y la forma de cada cria
 | Undead Gladiator | slain undead gladiator | `20189` |
 | Nightstalker | slain nightstalker | `20190` |
 
-Cuando se cree cada monstruo, poner `corpse="201xx"` en su `<look>`. Los corpses se agregaron con
-`add_custom_items.py` (soporta 1×1, 2×2 y 2×1) y se publican junto con el cliente.
+Los corpses se agregaron con `add_custom_items.py` (soporta 1×1, 2×2 y 2×1) y se publican junto con el
+cliente. El Cyclops Smith y el Cyclops Drone comparten el cadáver `20182`.

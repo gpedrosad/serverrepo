@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!-- Importado de Tibia 8.60. Elemental de tierra: terremoto alrededor y veneno. -->
+<monster name="Earth Elemental" level="35" maglevel="30" experience="450" pushable="0" armor="25" defense="25" canpushitems="1" staticattack="50" changetarget="200" speed="220">
+	<health now="650" max="650"/>
+	<look type="178" head="0" body="0" legs="0" feet="0" corpse="20184"/>
+	<combat targetdistance="1" runonhealth="80"/>
+
+<attacks>
+	<attack type="melee" mindamage="25" maxdamage="80" probability="100"/>
+	<attack type="instant" name="k_earth_burst_3" exhaustion="1000" cycleticks="3500" probability="30" kit="1"/>
+	<attack type="rune" name="k_poison_strike_3" exhaustion="1000" cycleticks="3500" probability="30" kit="1"/>
+	<attack type="instant" name="k_heal_2" exhaustion="1000" cycleticks="6000" probability="20" kit="1"/>
+</attacks>
+
+<defenses>
+	<defense immunity="poison"/>
+	<defense immunity="energy"/>
+	<defense immunity="paralyze"/>
+	<defense immunity="invisible"/>
+
+</defenses>
+
+<voices>
+	<voice sentence="Rumble..."/>
+	<voice sentence="Crrrk crrrk..."/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="100" chance="43000"/>
+	<item id="2148" countmax="30" chance="50000"/>
+	<item id="1294" countmax="30" chance="20460"/>
+	<item id="2546" countmax="30" chance="20160"/>
+	<item id="2260" countmax="1" chance="10000"/>
+	<item id="1294" countmax="10" chance="570"/>
+	<item id="1294" countmax="10" chance="10000"/>
+	<item id="2150" countmax="1" chance="620"/>
+</loot>
+</monster>

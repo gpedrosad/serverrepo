@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!-- Importado de Tibia 8.60. Elemental de agua: ola de hielo y drenaje. -->
+<monster name="Water Elemental" level="40" maglevel="40" experience="650" pushable="0" armor="20" defense="20" canpushitems="1" staticattack="50" changetarget="200" speed="220">
+	<health now="550" max="550"/>
+	<look type="179" head="0" body="0" legs="0" feet="0" corpse="20185"/>
+	<combat targetdistance="1" runonhealth="0"/>
+
+<attacks>
+	<attack type="melee" mindamage="30" maxdamage="100" probability="100"/>
+	<attack type="instant" name="k_ice_wave_4" exhaustion="1000" cycleticks="3500" probability="30" kit="1"/>
+	<attack type="rune" name="k_drain_strike_4" exhaustion="1000" cycleticks="3500" probability="30" kit="1"/>
+	<attack type="instant" name="k_heal_3" exhaustion="1000" cycleticks="6000" probability="20" kit="1"/>
+</attacks>
+
+<defenses>
+	<defense immunity="fire"/>
+	<defense immunity="poison"/>
+	<defense immunity="paralyze"/>
+	<defense immunity="invisible"/>
+
+</defenses>
+
+<voices>
+	<voice sentence="Blub... blub..."/>
+	<voice sentence="Splash!"/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="100" chance="50000"/>
+	<item id="2152" countmax="1" chance="10000"/>
+	<item id="2667" countmax="1" chance="20000"/>
+	<item id="2149" countmax="2" chance="1000"/>
+	<item id="2145" countmax="1" chance="1000"/>
+	<item id="2146" countmax="1" chance="1000"/>
+	<item id="2167" countmax="1" chance="950"/>
+	<item id="2168" countmax="1" chance="930"/>
+	<item id="2669" countmax="1" chance="940"/>
+	<item id="2670" countmax="1" chance="1050"/>
+	<item id="2171" countmax="1" chance="260"/>
+</loot>
+</monster>

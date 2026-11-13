@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!-- Importado de Tibia 8.60. Novia vampiro: drena vida, golpes de muerte y se cura. -->
+<monster name="Vampire Bride" level="50" maglevel="40" experience="1050" pushable="0" armor="20" defense="20" canpushitems="1" staticattack="50" changetarget="200" speed="220">
+	<health now="1200" max="1200"/>
+	<look type="181" head="0" body="0" legs="0" feet="0" corpse="20187"/>
+	<combat targetdistance="1" runonhealth="0"/>
+
+<attacks>
+	<attack type="melee" mindamage="30" maxdamage="120" probability="100"/>
+	<attack type="rune" name="k_drain_strike_4" exhaustion="1000" cycleticks="3500" probability="30" kit="1"/>
+	<attack type="rune" name="k_death_strike_4" exhaustion="1000" cycleticks="3500" probability="30" kit="1"/>
+	<attack type="instant" name="k_heal_3" exhaustion="1000" cycleticks="6000" probability="20" kit="1"/>
+</attacks>
+
+<defenses>
+	<defense immunity="poison"/>
+	<defense immunity="invisible"/>
+
+</defenses>
+
+<voices>
+	<voice sentence="Come to me, darling..."/>
+	<voice sentence="Your blood is mine!"/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="149" chance="90000"/>
+	<item id="2147" countmax="1" chance="10000"/>
+	<item id="2152" countmax="1" chance="9910"/>
+	<item id="2186" countmax="1" chance="5500"/>
+	<item id="2144" countmax="1" chance="4950"/>
+	<item id="2127" countmax="1" chance="1100"/>
+	<item id="2657" countmax="1" chance="1030"/>
+	<item id="2145" countmax="2" chance="1020"/>
+	<item id="2214" countmax="1" chance="1010"/>
+	<item id="2654" countmax="1" chance="970"/>
+	<item id="2195" countmax="1" chance="220"/>
+	<item id="2102" countmax="1" chance="200"/>
+	<item id="2229" countmax="1" chance="170"/>
+	<item id="2147" countmax="1" chance="60"/>
+</loot>
+</monster>

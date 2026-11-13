@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!-- Importado de Tibia 8.60. Mamut: mucha vida y embiste; suelta colmillos y piel. -->
+<monster name="Mammoth" level="20" maglevel="0" experience="160" pushable="0" armor="25" defense="25" canpushitems="1" staticattack="50" changetarget="200" speed="210">
+	<health now="320" max="320"/>
+	<look type="199" head="0" body="0" legs="0" feet="0" corpse="20175"/>
+	<combat targetdistance="1" runonhealth="0"/>
+
+<attacks>
+	<attack type="melee" mindamage="20" maxdamage="100" probability="100"/>
+	<attack type="rune" name="k_earth_touch_4" exhaustion="1000" cycleticks="3500" probability="30" kit="1"/>
+	<attack type="instant" name="orcb_haste" exhaustion="500" cycleticks="6000" probability="15" kit="1"/>
+</attacks>
+
+<defenses>
+
+</defenses>
+
+<voices>
+	<voice sentence="Troooooot!"/>
+	<voice sentence="Prrrrr!"/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="40" chance="90000"/>
+	<item id="2666" countmax="1" chance="39000"/>
+	<item id="2671" countmax="3" chance="30000"/>
+	<item id="3956" countmax="2" chance="7500"/>
+	<item id="2220" countmax="1" chance="7280"/>
+	<item id="2669" countmax="1" chance="2800"/>
+	<item id="3973" countmax="1" chance="500"/>
+	<item id="2422" countmax="1" chance="500"/>
+</loot>
+</monster>

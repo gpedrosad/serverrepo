@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!-- Importado de Tibia 8.60. Wyrm: dragon de energia, onda y rayo a distancia, se cura. -->
+<monster name="Wyrm" level="55" maglevel="50" experience="1550" pushable="0" armor="35" defense="35" canpushitems="1" staticattack="50" changetarget="200" speed="200">
+	<health now="1825" max="1825"/>
+	<look type="177" head="0" body="0" legs="0" feet="0" corpse="20183"/>
+	<combat targetdistance="1" runonhealth="1"/>
+
+<attacks>
+	<attack type="melee" mindamage="40" maxdamage="130" probability="100"/>
+	<attack type="instant" name="k_energy_wave_5" exhaustion="1000" cycleticks="3000" probability="35" kit="1"/>
+	<attack type="rune" name="k_energy_strike_5" exhaustion="1000" cycleticks="3000" probability="35" kit="1"/>
+	<attack type="instant" name="k_heal_4" exhaustion="1000" cycleticks="6000" probability="20" kit="1"/>
+</attacks>
+
+<defenses>
+	<defense immunity="energy"/>
+	<defense immunity="paralyze"/>
+	<defense immunity="invisible"/>
+
+</defenses>
+
+<voices>
+	<voice sentence="SSSSSSSS!"/>
+	<voice sentence="FCHHHHH!"/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="100" chance="30000"/>
+	<item id="2148" countmax="30" chance="30000"/>
+	<item id="2672" countmax="3" chance="34800"/>
+	<item id="2546" countmax="10" chance="7650"/>
+	<item id="2189" countmax="1" chance="990"/>
+	<item id="2145" countmax="3" chance="750"/>
+	<item id="2455" countmax="1" chance="5920"/>
+	<item id="2167" countmax="1" chance="720"/>
+	<item id="2654" countmax="1" chance="1250"/>
+	<item id="2190" countmax="1" chance="420"/>
+	<item id="2657" countmax="1" chance="250"/>
+	<item id="2436" countmax="1" chance="110"/>
+	<item id="2456" countmax="1" chance="90"/>
+	<item id="2483" countmax="1" chance="15360"/>
+	<item id="2171" countmax="1" chance="110"/>
+</loot>
+</monster>

@@ -29,6 +29,25 @@ python3 scripts/monsters/apply-monster-kits.py             # escribe (se puede r
 | Pirate Corsair | 170 | cannon ball 5, prisa |
 | Pirate Cutthroat | 110 | blade strike 4 |
 | Pirate Marauder | 80 | burst ball 2 |
+| Tortoise | 40 | earth touch 1 |
+| Thornback Tortoise | 55 | earth touch 2, earth burst 1 |
+| Mammoth | 100 | earth touch 4, prisa |
+| Blood Crab | 70 | earth touch 4 |
+| Quara Constrictor | 100 | ice strike 4, drain burst 3 |
+| Quara Hydromancer | 80 | ice wave 3, drain strike 3, cura |
+| Quara Mantassin | 120 | ice strike 4, prisa |
+| Quara Pincher | 230 | earth touch 8, ice strike 6 |
+| Quara Predator | 320 | ice strike 8, prisa |
+| Cyclops Drone | 60 | roca 18–48 |
+| Cyclops Smith | 90 | roca 27–72, earth touch 3 |
+| Wyrm | 130 | energy wave 5, energy strike 5, cura |
+| Earth Elemental | 80 | earth burst 3, poison strike 3, cura |
+| Water Elemental | 100 | ice wave 4, drain strike 4, cura |
+| Zombie | 90 | death touch 3, drain strike 2 |
+| Vampire Bride | 120 | drain strike 4, death strike 4, cura |
+| Worker Golem | 160 | cannon ball 5, cura |
+| Undead Gladiator | 150 | blade strike 5, throwing star 45–120 |
+| Nightstalker | 110 | drain strike 4, death touch 4, prisa |
 
 Los nombres del kit son `elemento forma escalón`.
 

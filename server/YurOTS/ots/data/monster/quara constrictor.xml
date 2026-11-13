@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!-- Importado de Tibia 8.60. Quara estrangulador: aprieta y drena vida a corta distancia. -->
+<monster name="Quara Constrictor" level="30" maglevel="20" experience="250" pushable="0" armor="20" defense="20" canpushitems="1" staticattack="50" changetarget="200" speed="230">
+	<health now="450" max="450"/>
+	<look type="20" head="0" body="0" legs="0" feet="0" corpse="20177"/>
+	<combat targetdistance="1" runonhealth="30"/>
+
+<attacks>
+	<attack type="melee" mindamage="20" maxdamage="100" probability="100"/>
+	<attack type="rune" name="k_ice_strike_4" exhaustion="1000" cycleticks="3500" probability="30" kit="1"/>
+	<attack type="instant" name="k_drain_burst_3" exhaustion="1000" cycleticks="3500" probability="30" kit="1"/>
+</attacks>
+
+<defenses>
+	<defense immunity="fire"/>
+	<defense immunity="paralyze"/>
+
+</defenses>
+
+<voices>
+	<voice sentence="Glub glub..."/>
+	<voice sentence="Sssssqueee!"/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="100" chance="87500"/>
+	<item id="2670" countmax="1" chance="14520"/>
+	<item id="2397" countmax="1" chance="7300"/>
+	<item id="2667" countmax="5" chance="5000"/>
+	<item id="2465" countmax="1" chance="5000"/>
+	<item id="2150" countmax="1" chance="2860"/>
+	<item id="2667" countmax="1" chance="440"/>
+</loot>
+</monster>

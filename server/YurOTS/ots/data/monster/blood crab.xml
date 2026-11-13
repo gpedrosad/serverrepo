@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!-- Importado de Tibia 8.60. Cangrejo de sangre: pinzas fuertes en la costa. -->
+<monster name="Blood Crab" level="20" maglevel="0" experience="160" pushable="0" armor="20" defense="20" canpushitems="1" staticattack="50" changetarget="200" speed="220">
+	<health now="290" max="290"/>
+	<look type="200" head="0" body="0" legs="0" feet="0" corpse="20176"/>
+	<combat targetdistance="1" runonhealth="0"/>
+
+<attacks>
+	<attack type="melee" mindamage="15" maxdamage="70" probability="100"/>
+	<attack type="rune" name="k_earth_touch_4" exhaustion="1000" cycleticks="3500" probability="30" kit="1"/>
+</attacks>
+
+<defenses>
+
+</defenses>
+
+<voices>
+	<voice sentence="Click click!"/>
+	<voice sentence="Kssss!"/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="20" chance="90000"/>
+	<item id="2667" countmax="1" chance="13000"/>
+	<item id="2670" countmax="1" chance="6260"/>
+	<item id="2464" countmax="1" chance="5555"/>
+	<item id="2478" countmax="1" chance="2170"/>
+	<item id="2143" countmax="1" chance="480"/>
+</loot>
+</monster>

@@ -79,6 +79,26 @@ KITS = {
     "Frost Giant": ["ice:burst"],
     "Frost Giantess": ["ice:burst"],
     "Mutated Tiger": ["roar:burst", "+haste"],
+    # resto del catalogo 8.60 (nov 2026)
+    "Tortoise": ["earth:touch-1"],
+    "Thornback Tortoise": ["earth:touch", "earth:burst-1"],
+    "Mammoth": ["earth:touch", "+haste"],
+    "Blood Crab": ["earth:touch+1"],
+    "Quara Constrictor": ["ice:strike", "drain:burst-1"],
+    "Quara Hydromancer": ["ice:wave", "drain:strike", "+heal"],
+    "Quara Mantassin": ["ice:strike", "+haste"],
+    "Quara Pincher": ["earth:touch+2", "ice:strike"],
+    "Quara Predator": ["ice:strike", "+haste"],
+    "Cyclops Drone": ["dist:largerock"],
+    "Cyclops Smith": ["dist:largerock", "earth:touch"],
+    "Wyrm": ["energy:wave", "energy:strike", "+heal"],
+    "Earth Elemental": ["earth:burst", "poison:strike", "+heal"],
+    "Water Elemental": ["ice:wave", "drain:strike", "+heal"],
+    "Zombie": ["death:touch", "drain:strike-1"],
+    "Vampire Bride": ["drain:strike", "death:strike", "+heal"],
+    "Worker Golem": ["cannon:ball", "+heal"],
+    "Undead Gladiator": ["blade:strike", "dist:throwingstar"],
+    "Nightstalker": ["drain:strike", "death:touch", "+haste"],
 }
 
 

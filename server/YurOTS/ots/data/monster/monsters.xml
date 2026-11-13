@@ -301,6 +301,27 @@
 
 <monster name="Yeti" file="Yeti.xml" />
 
+<!-- Criaturas 8.60 — resto del catalogo (nov 2026) -->
+<monster name="Tortoise" file="tortoise.xml" />
+<monster name="Thornback Tortoise" file="thornback tortoise.xml" />
+<monster name="Mammoth" file="mammoth.xml" />
+<monster name="Blood Crab" file="blood crab.xml" />
+<monster name="Quara Constrictor" file="quara constrictor.xml" />
+<monster name="Quara Hydromancer" file="quara hydromancer.xml" />
+<monster name="Quara Mantassin" file="quara mantassin.xml" />
+<monster name="Quara Pincher" file="quara pincher.xml" />
+<monster name="Quara Predator" file="quara predator.xml" />
+<monster name="Cyclops Drone" file="cyclops drone.xml" />
+<monster name="Cyclops Smith" file="cyclops smith.xml" />
+<monster name="Wyrm" file="wyrm.xml" />
+<monster name="Earth Elemental" file="earth elemental.xml" />
+<monster name="Water Elemental" file="water elemental.xml" />
+<monster name="Zombie" file="zombie.xml" />
+<monster name="Vampire Bride" file="vampire bride.xml" />
+<monster name="Worker Golem" file="worker golem.xml" />
+<monster name="Undead Gladiator" file="undead gladiator.xml" />
+<monster name="Nightstalker" file="nightstalker.xml" />
+
 <!-- Bosses -->
 <monster name="Demodras" file="demodras.xml" />
 <monster name="Orshabaal" file="orshabaal.xml" />

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!-- Importado de Tibia 8.60. Quara pinzas: lento pero pega muy fuerte de cerca. -->
+<monster name="Quara Pincher" level="55" maglevel="0" experience="1200" pushable="0" armor="50" defense="50" canpushitems="1" staticattack="50" changetarget="200" speed="210">
+	<health now="1800" max="1800"/>
+	<look type="72" head="0" body="0" legs="0" feet="0" corpse="20180"/>
+	<combat targetdistance="1" runonhealth="0"/>
+
+<attacks>
+	<attack type="melee" mindamage="30" maxdamage="230" probability="100"/>
+	<attack type="rune" name="k_earth_touch_8" exhaustion="1000" cycleticks="2500" probability="40" kit="1"/>
+	<attack type="rune" name="k_ice_strike_6" exhaustion="1000" cycleticks="3000" probability="35" kit="1"/>
+</attacks>
+
+<defenses>
+	<defense immunity="fire"/>
+	<defense immunity="invisible"/>
+
+</defenses>
+
+<voices>
+	<voice sentence="CLACK!"/>
+	<voice sentence="Ksssss!"/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="149" chance="100000"/>
+	<item id="2152" countmax="1" chance="40000"/>
+	<item id="2670" countmax="1" chance="14000"/>
+	<item id="2147" countmax="2" chance="7500"/>
+	<item id="2381" countmax="1" chance="7000"/>
+	<item id="2670" countmax="5" chance="5000"/>
+	<item id="2667" countmax="1" chance="1600"/>
+	<item id="2475" countmax="1" chance="1400"/>
+	<item id="2487" countmax="1" chance="340"/>
+	<item id="2654" countmax="1" chance="140"/>
+</loot>
+</monster>
