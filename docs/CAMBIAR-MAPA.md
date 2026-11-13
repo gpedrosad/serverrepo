@@ -10,6 +10,7 @@ Relacionado:
 - [docs/items-and-map/MAPA_DE_MONSTRUOS.md](items-and-map/MAPA_DE_MONSTRUOS.md): mapa interactivo de spawns y NPC (`build-monster-map.py`)
 - [docs/items-and-map/MAPEAR_LABERINTO.md](items-and-map/MAPEAR_LABERINTO.md) — laberinto 2 sqm (camino 406, fondo 100, teleport templo) con `generate-maze.py`
 - [docs/items-and-map/MAPEAR_VALLE_DE_LAS_BESTIAS.md](items-and-map/MAPEAR_VALLE_DE_LAS_BESTIAS.md) — Valle de las Bestias (reemplazó al hunt maze); portal `158,47,7` con `generate-beast-valley.py`
+- [docs/items-and-map/MAPEAR_ISLOTE_MINOTAURO.md](items-and-map/MAPEAR_ISLOTE_MINOTAURO.md) — Islote del Minotauro (canal junto al muelle, z7 + cuevas z10–z12) con `generate-minotaur-isle.py`
 - [docs/gameplay/WAVE_ARENA.md](gameplay/WAVE_ARENA.md) — Wave Arena oleadas; portal `166,47,7`
 - [docs/gameplay/CRUCIBLE.md](gameplay/CRUCIBLE.md) — El Crisol (3 puertas + bosses diarios); portal `164,47,7` con `scripts/map/generate-crucible.py`
 - [docs/gameplay/SAND_CLOCK.md](gameplay/SAND_CLOCK.md) — Reloj de Arena (fases globales); portal `168,47,7` con `scripts/map/generate-sand-clock.py`

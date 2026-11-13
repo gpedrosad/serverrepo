@@ -16,6 +16,10 @@ estado: publicado
 
 ## Noviembre 2026
 
+### Islote del Minotauro
+
+Una caza nueva **en la ciudad**: un islote frente al muelle, con puente de madera, minotauros comunes arriba y tres pisos de cueva abajo con minotauros cada vez más fuertes. Para subir de nivel sin viajar. Todo en [[islote-del-minotauro]].
+
 ### Wave Arena: el Claro de la Selva
 
 La Wave Arena se rehizo: un campamento seguro y un claro de selva cerrado con bambú. Ahora se juega **en grupo** (hasta 7), hay un **jefe cada 5 oleadas**, las oleadas crecen con el grupo y hay **premio semanal** al limpiar la 5, 10, 15 y 20. El ranking cuenta oleadas limpias. Todo en [[wave-arena]].

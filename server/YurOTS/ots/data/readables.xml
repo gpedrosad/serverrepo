@@ -61,4 +61,7 @@
 	<readable x="178" y="400" z="7" text="RANKING SEMANAL\nCuenta la ultima oleada LIMPIA.\nPremio la primera vez en la semana: 5/10/15/20."/>
 	<readable x="176" y="395" z="7" text="Izquierda: siguiente oleada (sala limpia).\nDerecha: retirarse y guardar la marca."/>
 	<!-- END WAVE_ARENA_SIGNS -->
+	<!-- BEGIN MINOTAUR_ISLE_SIGNS -->
+	<readable x="102" y="52" z="7" text="CUEVA DEL MINOTAURO\nAbajo, minotauros mas fuertes en cada piso.\nAl fondo del tercer piso, portal de vuelta."/>
+	<!-- END MINOTAUR_ISLE_SIGNS -->
 </readables>

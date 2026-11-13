@@ -1,0 +1,117 @@
+{
+  "name": "generated-minotaur-isle",
+  "seed": 7,
+  "surface": {
+    "rect": [
+      97,
+      49,
+      120,
+      58
+    ],
+    "z": 7,
+    "bridge": [
+      [
+        113,
+        56
+      ],
+      [
+        113,
+        57
+      ],
+      [
+        113,
+        58
+      ],
+      [
+        114,
+        56
+      ],
+      [
+        114,
+        57
+      ],
+      [
+        114,
+        58
+      ]
+    ],
+    "caveEntry": [
+      100,
+      53,
+      7
+    ],
+    "landing": [
+      102,
+      53,
+      7
+    ]
+  },
+  "caves": {
+    "z10": {
+      "start": [
+        108,
+        53,
+        10
+      ],
+      "exit": [
+        128,
+        41,
+        10
+      ],
+      "tiles": 904
+    },
+    "z11": {
+      "start": [
+        128,
+        42,
+        11
+      ],
+      "exit": [
+        99,
+        38,
+        11
+      ],
+      "tiles": 808
+    },
+    "z12": {
+      "start": [
+        99,
+        39,
+        12
+      ],
+      "exit": [
+        125,
+        64,
+        12
+      ],
+      "tiles": 932
+    }
+  },
+  "caveBox": [
+    80,
+    24,
+    140,
+    80
+  ],
+  "spawns": 82,
+  "monsters": {
+    "z7": {
+      "Minotaur": 8,
+      "Minotaur Archer": 2
+    },
+    "z10": {
+      "Minotaur": 15,
+      "Minotaur Archer": 23,
+      "Minotaur Guard": 14
+    },
+    "z11": {
+      "Minotaur Guard": 24,
+      "Minotaur Archer": 10,
+      "Minotaur Mage": 14
+    },
+    "z12": {
+      "Minotaur Mage": 35,
+      "Minotaur Guard": 36
+    }
+  }
+}
