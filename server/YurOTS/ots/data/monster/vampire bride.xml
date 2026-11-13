@@ -25,10 +25,10 @@
 
 <loot>
 	<item id="2148" countmax="149" chance1="90000" chancemax="0"/>
-	<item id="2147" chance="10000"/>
-	<item id="2152" chance="9910"/>
+	<item id="2147" countmax="1" chance1="10000" chancemax="0"/>
+	<item id="2152" countmax="1" chance1="9910" chancemax="0"/>
 	<item id="2186" chance="5500"/>
-	<item id="2144" chance="4950"/>
+	<item id="2144" countmax="1" chance1="4950" chancemax="0"/>
 	<item id="2127" chance="1100"/>
 	<item id="2657" chance="1030"/>
 	<item id="2145" countmax="2" chance1="1020" chancemax="0"/>
@@ -36,7 +36,7 @@
 	<item id="2654" chance="970"/>
 	<item id="2195" chance="220"/>
 	<item id="2102" chance="200"/>
-	<item id="2229" chance="170"/>
-	<item id="2147" chance="60"/>
+	<item id="2229" countmax="1" chance1="170" chancemax="0"/>
+	<item id="2147" countmax="1" chance1="60" chancemax="0"/>
 </loot>
 </monster>

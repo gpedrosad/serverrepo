@@ -29,7 +29,7 @@
 	<item id="2145" countmax="2" chance1="5200" chancemax="0"/>
 	<item id="2670" countmax="5" chance1="4880" chancemax="0"/>
 	<item id="2387" chance="3160"/>
-	<item id="2667" chance="1930"/>
+	<item id="2667" countmax="1" chance1="1930" chancemax="0"/>
 	<item id="2390" chance="690"/>
 	<item id="2399" countmax="5" chance1="580" chancemax="0"/>
 	<item id="2654" chance="410"/>

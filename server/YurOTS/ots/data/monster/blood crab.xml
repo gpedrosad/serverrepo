@@ -21,10 +21,10 @@
 
 <loot>
 	<item id="2148" countmax="20" chance1="90000" chancemax="0"/>
-	<item id="2667" chance="13000"/>
-	<item id="2670" chance="6260"/>
+	<item id="2667" countmax="1" chance1="13000" chancemax="0"/>
+	<item id="2670" countmax="1" chance1="6260" chancemax="0"/>
 	<item id="2464" chance="5555"/>
 	<item id="2478" chance="2170"/>
-	<item id="2143" chance="480"/>
+	<item id="2143" countmax="1" chance1="480" chancemax="0"/>
 </loot>
 </monster>
