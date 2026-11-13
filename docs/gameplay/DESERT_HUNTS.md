@@ -25,9 +25,15 @@ Caja de la isla: x 198–262, y 68–120, z7. La dificultad sube al alejarse de 
 | Nido de escarabajos | 30–60 | 223 72 237 83 | Larva 6, Scarab 6, Ancient Scarab 2, **Furious Ancient Scarab** (jefe) |
 | Templo de los lagartos | 40–70 | 238 77 248 88 | Lizard Sentinel 4, Lizard Templar 3, Lizard Snakecharmer 2 |
 | Campo de huesos | 45–80 | 241 107 258 118 | Ghoul 3, Mummy 5, Crypt Shambler 3, Demon Skeleton 3, Bone Beast 2, **Omruc** (jefe) |
+| Ciénaga | 50–70 | 242 87 250 92 | Bog Raider 3 (criatura de 8.60) |
 | Santuario de los djinn | 60–90 | 225 98 237 108 | Green Djinn 5, Efreet 3 |
+| Barco del muelle, cubierta (z7) | 25–60 | 229 124 247 129 | Pirate Marauder 4, Pirate Cutthroat 3, Pirate Buccaneer 2, Pirate Corsair 1 |
 
-Total: 104 monstruos. Respawn de 60 a 240 s según la zona.
+Total: 107 monstruos en la isla y 10 piratas en el barco. Respawn de 60 a 240 s según la zona.
+
+Los piratas son criaturas traídas del cliente 8.60 ([IMPORTAR_CRIATURA_DE_OTRA_VERSION.md](IMPORTAR_CRIATURA_DE_OTRA_VERSION.md)).
+La bodega del barco (z8) ya tenía 11 no-muertos (ghosts, skeletons, demon skeletons y un bone beast) y quedó
+como estaba. En el generador el barco está en `SHIP`: no toca el mapa, solo pone monstruos en casillas libres.
 
 ## Jefes
 
@@ -48,7 +54,7 @@ Dos cofres con `quest.lua` (el uniqueId es el id del premio). Uno por personaje 
 ## Qué no se tocó
 
 - El **oasis** con su escalera a las tumbas (`251, 98, 7`) y todo lo de abajo (z8–z11: tumbas, Thalas, Rahemos).
-- Los **pozos de alquitrán** del oeste, la costa y el barco del sur.
+- Los **pozos de alquitrán** del oeste, la costa y el barco del sur (solo se le sumaron piratas en cubierta).
 - Los kongras y demás monstruos de tierra firme, al oeste de la entrada.
 
 ## Qué se sacó

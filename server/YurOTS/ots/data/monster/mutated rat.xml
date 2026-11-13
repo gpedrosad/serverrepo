@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!-- Importado de Tibia 8.60 (import_client_look.py). Rata mutada, nivel 40-60. -->
+<monster name="Mutated Rat" level="40" maglevel="20" experience="450" pushable="0" armor="20" defense="22" canpushitems="1" staticattack="50" changetarget="200" speed="200">
+	<health now="550" max="550"/>
+	<look type="249" head="0" body="0" legs="0" feet="0" corpse="2813"/>
+	<combat targetdistance="1" runonhealth="0"/>
+
+<attacks>
+	<attack type="melee" mindamage="40" maxdamage="155" probability="100"/>
+	<attack type="rune" name="old widow pox" exhaustion="500" cycleticks="3000" probability="30"/>
+	<attack type="instant" name="exura" exhaustion="500" cycleticks="6000" probability="30"/>
+</attacks>
+
+<defenses>
+	<defense immunity="poison"/>
+	<defense immunity="invisible"/>
+</defenses>
+
+<voices>
+	<voice sentence="Grrrrrrrrrrrrrr!"/>
+	<voice sentence="Fcccccchhhhhh"/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="100" chance1="85000" chancemax="0"/>
+	<item id="2148" countmax="30" chance1="30000" chancemax="0"/>
+	<item id="2510" chance="4000"/>
+	<item id="2381" chance="3000"/>
+	<item id="2165" chance="500"/>
+	<item id="2150" countmax="1" chance1="800" chancemax="0"/>
+</loot>
+</monster>

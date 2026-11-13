@@ -128,6 +128,31 @@
 <monster name="Enraged Hero" file="enraged hero.xml" />
 <monster name="Imperial Hero" file="imperial hero.xml" />
 <monster name="Imperial Squire" file="imperial squire.xml" />
+<monster name="Pirate Marauder" file="pirate marauder.xml"/>
+<monster name="Pirate Cutthroat" file="pirate cutthroat.xml"/>
+<monster name="Pirate Buccaneer" file="pirate buccaneer.xml"/>
+<monster name="Pirate Corsair" file="pirate corsair.xml"/>
+<monster name="Wyvern" file="wyvern.xml"/>
+<monster name="Dragon Hatchling" file="dragon hatchling.xml"/>
+<monster name="Dragon Lord Hatchling" file="dragon lord hatchling.xml"/>
+<monster name="Mutated Human" file="mutated human.xml"/>
+<monster name="Mutated Rat" file="mutated rat.xml"/>
+<monster name="Mutated Bat" file="mutated bat.xml"/>
+<monster name="Mutated Tiger" file="mutated tiger.xml"/>
+<monster name="Chakoya Tribewarden" file="chakoya tribewarden.xml"/>
+<monster name="Chakoya Toolshaper" file="chakoya toolshaper.xml"/>
+<monster name="Chakoya Windcaller" file="chakoya windcaller.xml"/>
+<monster name="Husky" file="husky.xml"/>
+<monster name="Barbarian Headsplitter" file="barbarian headsplitter.xml"/>
+<monster name="Barbarian Skullhunter" file="barbarian skullhunter.xml"/>
+<monster name="Barbarian Brutetamer" file="barbarian brutetamer.xml"/>
+<monster name="Barbarian Bloodwalker" file="barbarian bloodwalker.xml"/>
+<monster name="Frost Giant" file="frost giant.xml"/>
+<monster name="Frost Giantess" file="frost giantess.xml"/>
+<monster name="Ice Golem" file="ice golem.xml"/>
+<monster name="Crystal Spider" file="crystal spider.xml"/>
+<monster name="Frost Dragon Hatchling" file="frost dragon hatchling.xml"/>
+<monster name="Bog Raider" file="bog raider.xml"/>
 <monster name="Imperial Archer" file="imperial archer.xml" />
 <monster name="Court Mage" file="court mage.xml" />
 <monster name="The Fallen Emperor" file="the fallen emperor.xml" />

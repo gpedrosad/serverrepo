@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!-- Importado de Tibia 8.60 (import_client_look.py). Domador: llama lobos de guerra, tira hielo y se cura. Nivel 20-35. -->
+<monster name="Barbarian Brutetamer" level="22" maglevel="20" experience="90" pushable="0" armor="10" defense="12" canpushitems="1" staticattack="50" changetarget="200" speed="195">
+	<health now="145" max="145"/>
+	<look type="167" head="78" body="116" legs="95" feet="121" corpse="3128"/>
+	<combat targetdistance="3" runonhealth="30"/>
+
+<attacks>
+	<attack type="melee" mindamage="5" maxdamage="30" probability="100"/>
+	<attack type="rune" name="chakoya_iceball" exhaustion="500" cycleticks="3000" probability="40"/>
+	<attack type="instant" name="exura" exhaustion="500" cycleticks="6000" probability="30"/>
+</attacks>
+
+<defenses>
+
+</defenses>
+
+<summons maxSummons="2">
+	<summon name="War Wolf" chance="1500"/>
+</summons>
+
+<voices>
+	<voice sentence="To me, creatures of the wild!"/>
+	<voice sentence="My instincts tell me about your cowardice."/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="35" chance1="75000" chancemax="0"/>
+	<item id="2667" countmax="1" chance1="30000" chancemax="0"/>
+	<item id="2460" chance="3000"/>
+	<item id="2146" countmax="1" chance1="1000" chancemax="0"/>
+	<item id="2214" chance="300"/>
+</loot>
+</monster>

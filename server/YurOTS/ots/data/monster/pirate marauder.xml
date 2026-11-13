@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!-- Importado de Tibia 8.60 (import_client_look.py). Pirata mas debil: lanza spears. -->
+<monster name="Pirate Marauder" level="20" maglevel="0" experience="125" pushable="0" armor="14" defense="15" canpushitems="1" staticattack="50" changetarget="200" speed="210">
+	<health now="210" max="210"/>
+	<look type="93" head="0" body="0" legs="0" feet="0" corpse="3128"/>
+	<combat targetdistance="1" runonhealth="0"/>
+
+<attacks>
+	<attack type="melee" mindamage="20" maxdamage="80" probability="100"/>
+	<attack type="distance" name="spear" mindamage="10" maxdamage="40" cycleticks="2000" probability="35"/>
+</attacks>
+
+<defenses>
+
+</defenses>
+
+<voices>
+	<voice sentence="Plundeeeeer!"/>
+	<voice sentence="Give up!"/>
+	<voice sentence="Hiyaa!"/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="40" chance1="80000" chancemax="0"/>
+	<item id="2389" countmax="2" chance1="6000" chancemax="0"/>
+	<item id="2050" chance="10000"/>
+	<item id="2464" chance="3000"/>
+	<item id="2510" chance="4000"/>
+	<item id="2385" chance="8000"/>
+	<item id="2120" chance="3000"/>
+</loot>
+</monster>

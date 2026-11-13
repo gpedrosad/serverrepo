@@ -660,6 +660,33 @@ def main() -> int:
         ("Ice Spider", 2, 1, 180, walk9r - caves["hall"]),
     ], walk9r, avoid9, 9, rng, min_gap=5)
 
+    # Criaturas traídas del cliente 8.60 (import_client_look.py, nov 2026). Van con un rng aparte y lejos de
+    # los spawns de arriba, así los de antes quedan exactamente donde estaban.
+    rng860 = random.Random(a.seed + 860)
+
+    def taken(spawns):
+        return grow({c for c, _z, _m in spawns}, 3)
+
+    spawns7 += place([
+        ("Chakoya Tribewarden", 2, 1, 90, z["forest"]),
+        ("Chakoya Toolshaper", 2, 1, 90, z["forest"]),
+        ("Chakoya Windcaller", 2, 1, 90, z["forest"]),
+        ("Husky", 2, 1, 120, z["forest"] | z["lake"]),
+        ("Barbarian Headsplitter", 1, 1, 120, z["lake"]),
+        ("Barbarian Skullhunter", 1, 1, 120, z["lake"]),
+        ("Barbarian Brutetamer", 1, 1, 150, z["mountain"]),
+        ("Barbarian Bloodwalker", 2, 1, 150, z["mountain"]),
+        ("Frost Giant", 2, 1, 150, z["mountain"]),
+        ("Frost Giantess", 1, 1, 150, z["mountain"]),
+    ], walk7, avoid7 | taken(spawns7), 7, rng860, min_gap=4)
+    spawns8 += place([
+        ("Ice Golem", 3, 1, 180, walk8r),
+        ("Crystal Spider", 2, 1, 240, walk8r),
+    ], walk8r, avoid8 | taken(spawns8), 8, rng860, min_gap=5)
+    spawns9 += place([
+        ("Frost Dragon Hatchling", 2, 1, 240, caves["hall"]),
+    ], walk9r, avoid9 | taken(spawns9), 9, rng860, min_gap=4)
+
     if errors:
         print("\n".join(errors[:40]), file=sys.stderr)
         print(f"ERROR: {len(errors)} problemas; no se escribe nada", file=sys.stderr)

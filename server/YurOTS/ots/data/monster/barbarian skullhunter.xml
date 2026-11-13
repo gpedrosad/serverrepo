@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!-- Importado de Tibia 8.60 (import_client_look.py). Barbaro cuerpo a cuerpo, nivel 15-30. -->
+<monster name="Barbarian Skullhunter" level="20" maglevel="0" experience="85" pushable="0" armor="13" defense="14" canpushitems="1" staticattack="50" changetarget="200" speed="205">
+	<health now="135" max="135"/>
+	<look type="166" head="0" body="77" legs="78" feet="114" corpse="3128"/>
+	<combat targetdistance="1" runonhealth="0"/>
+
+<attacks>
+	<attack type="melee" mindamage="15" maxdamage="55" probability="100"/>
+</attacks>
+
+<defenses>
+
+</defenses>
+
+<voices>
+	<voice sentence="You will make a fine trophy!"/>
+	<voice sentence="Your skull will be my next trophy!"/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="30" chance1="75000" chancemax="0"/>
+	<item id="2386" chance="8000"/>
+	<item id="2464" chance="4000"/>
+	<item id="2473" chance="3000"/>
+	<item id="2511" chance="3000"/>
+	<item id="2378" chance="600"/>
+</loot>
+</monster>

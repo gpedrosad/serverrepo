@@ -149,6 +149,20 @@
       }
     },
     {
+      "key": "cienaga",
+      "name": "Ciénaga",
+      "level": "50-70",
+      "box": [
+        242,
+        87,
+        250,
+        92
+      ],
+      "monsters": {
+        "Bog Raider": 3
+      }
+    },
+    {
       "key": "dunas",
       "name": "Dunas del sur",
       "level": "10-25",
@@ -195,5 +209,77 @@
       "uid": 2534
     }
   ],
-  "total": 104
+  "ship": [
+    {
+      "name": "Pirate Marauder",
+      "x": 233,
+      "y": 128,
+      "z": 7,
+      "spawntime": 90
+    },
+    {
+      "name": "Pirate Marauder",
+      "x": 239,
+      "y": 125,
+      "z": 7,
+      "spawntime": 90
+    },
+    {
+      "name": "Pirate Marauder",
+      "x": 242,
+      "y": 125,
+      "z": 7,
+      "spawntime": 90
+    },
+    {
+      "name": "Pirate Marauder",
+      "x": 244,
+      "y": 126,
+      "z": 7,
+      "spawntime": 90
+    },
+    {
+      "name": "Pirate Cutthroat",
+      "x": 234,
+      "y": 124,
+      "z": 7,
+      "spawntime": 120
+    },
+    {
+      "name": "Pirate Cutthroat",
+      "x": 244,
+      "y": 128,
+      "z": 7,
+      "spawntime": 120
+    },
+    {
+      "name": "Pirate Cutthroat",
+      "x": 235,
+      "y": 127,
+      "z": 7,
+      "spawntime": 120
+    },
+    {
+      "name": "Pirate Buccaneer",
+      "x": 238,
+      "y": 128,
+      "z": 7,
+      "spawntime": 150
+    },
+    {
+      "name": "Pirate Buccaneer",
+      "x": 231,
+      "y": 126,
+      "z": 7,
+      "spawntime": 150
+    },
+    {
+      "name": "Pirate Corsair",
+      "x": 233,
+      "y": 126,
+      "z": 7,
+      "spawntime": 240
+    }
+  ],
+  "total": 117
 }

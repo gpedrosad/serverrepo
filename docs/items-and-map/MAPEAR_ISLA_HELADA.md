@@ -40,6 +40,22 @@ grutas. Ahora los tramos son más cortos y la serpentina tiene 5 bandas en vez d
 El desvío del leñador sale de la primera curva hacia el oeste (cofre crystal coin en `373 95 7`); el del
 islote sigue en el paso de hielo. Los cofres conservan su uniqueId.
 
+## Criaturas de 8.60 (nov 2026)
+
+Además de los monstruos de arriba, el generador pone 23 criaturas traídas del cliente 8.60
+([IMPORTAR_CRIATURA_DE_OTRA_VERSION.md](../gameplay/IMPORTAR_CRIATURA_DE_OTRA_VERSION.md)). Van con un rng aparte
+(`seed + 860`) y lejos de los spawns de antes, así esos quedaron exactamente donde estaban. El mapa no cambió.
+
+| Etapa | Criaturas |
+|---|---|
+| Bosque Nevado | Chakoya Tribewarden 2, Toolshaper 2, Windcaller 2, Husky (bosque o lago) 2 |
+| Lago Congelado | Barbarian Headsplitter 1, Skullhunter 1 |
+| Paso de montaña | Barbarian Brutetamer 1, Bloodwalker 2, Frost Giant 2, Frost Giantess 1 |
+| Grutas (z8) | Ice Golem 3, Crystal Spider 2 |
+| Guarida (z9) | Frost Dragon Hatchling 2 |
+
+Total de la isla: 86 monstruos (antes 63).
+
 ## Caja y vecinos
 
 - Caja: **x 356–433, y 2–117, z7–z9** (el Alice Maze ocupaba x 380–433, y 16–103, z7). Alrededor de

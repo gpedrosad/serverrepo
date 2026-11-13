@@ -41,9 +41,13 @@ El **Alice Maze** ya no existe: su lugar en el barco lo ocupa esta isla.
 
 El castillo de la isla al noroeste del templo se rehízo entero: **seis pisos**, cada uno más duro que el anterior. Arriba espera un jefe, **The Fallen Emperor**, con sus **Imperial Heroes** de capa morada, y dos cofres con {item:2488} Crown Legs y {item:2498} Royal Helmet. Afuera hay **Imperial Squires**, caza fácil a un puente de la ciudad. Todo en [[castillo-imperial]].
 
+### Criaturas nuevas del norte
+
+La **Isla del Hielo Eterno** suma chakoyas, huskies, bárbaros, Frost Giants, Ice Golems, Crystal Spiders y crías de Frost Dragon, con dibujo propio. Ahora hay caza para todos los niveles entre el puerto y la guarida. Todo en [[isla-del-hielo-eterno]].
+
 ### Desierto de las Ruinas
 
-La ciudad del desierto, al este, ya no tiene casas ni vendedores: ahora es **zona de caza**. Nueve lugares de nivel 8 a 90 (ruinas, campamento de bandidos, nido de escarabajos, templo de los lagartos, santuario de los djinn y más), dos jefes y dos cofres con {item:2476} Knight Armor y {item:2534} Vampire Shield. Todo en [[desierto-de-las-ruinas]].
+La ciudad del desierto, al este, ya no tiene casas ni vendedores: ahora es **zona de caza**. Nueve lugares de nivel 8 a 90 (ruinas, campamento de bandidos, nido de escarabajos, templo de los lagartos, santuario de los djinn y más), dos jefes y dos cofres con {item:2476} Knight Armor y {item:2534} Vampire Shield. En el barco del muelle hay **piratas**, criaturas nuevas con dibujo propio. Todo en [[desierto-de-las-ruinas]].
 
 ### Crown Armors de botín
 

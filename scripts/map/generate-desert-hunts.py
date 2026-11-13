@@ -82,6 +82,7 @@ LEGEND = {
     "n": (None, [2248]), "N": (None, [2247]), "q": (None, [1417]), "Q": (None, [1418]),
     "h": (MARBLE, [1482]), "r": (MARBLE, [1798]), "R": (None, [1357]), "T": (None, [2725]),
     "A": (PAVE, [CHEST]), "V": (None, [CHEST]), "S": (None, [SIGN]),
+    "u": (3264, []), "U": (3265, []), "z": (3264, [2775]), "Z": (3265, [2774]), "y": (3264, [2709]),   # ciénaga
 }
 CHESTS = {"A": 2476, "V": 2534}               # knight armor (templo), vampire shield (campo de huesos)
 PAIRS = {"q": ("Q", 0, 1)}                    # sarcófago: cabecera y pie
@@ -147,6 +148,14 @@ STAMPS = {
         " n Q  n   N  n   ",
         "   n      o    n ",
     ]),
+    "cienaga": (242, 87, [
+        "  uuUuu  ",
+        " uUzuuUu ",
+        "uuuuUuzuu",
+        "uUuyuuuUu",
+        "uuZuuUuu ",
+        " uuUuy   ",
+    ]),
     "santuario": (226, 99, [
         "P  mmmmm  P",
         "  mmmmmmm  ",
@@ -184,7 +193,16 @@ ZONES = [
      [("Ghoul", 3, 120), ("Mummy", 5, 150), ("Crypt Shambler", 3, 150), ("Demon Skeleton", 3, 150),
       ("Bone Beast", 2, 240)]),
     ("santuario", "Santuario de los djinn", "60-90", (225, 98, 237, 108), [("Green Djinn", 5, 180), ("Efreet", 3, 240)]),
+    ("cienaga", "Ciénaga", "50-70", (242, 87, 250, 92), [("Bog Raider", 3, 180)]),
     ("dunas", "Dunas del sur", "10-25", (214, 113, 233, 119), [("Scorpion", 3, 60), ("Larva", 3, 60), ("Lion", 2, 60)]),
+]
+# barco del muelle del sur (no se toca el mapa, solo se le ponen monstruos): piratas en la cubierta (z7).
+# La bodega (z8) ya tenía fantasmas y esqueletos y queda como estaba.
+# (piso, casilla de llegada, [(monstruo, cantidad, respawn s)]). Los looks vienen del cliente 8.60.
+SHIP_BOX = (229, 124, 247, 129)
+SHIP = [
+    (7, (237, 124), [("Pirate Marauder", 4, 90), ("Pirate Cutthroat", 3, 120), ("Pirate Buccaneer", 2, 150),
+                     ("Pirate Corsair", 1, 240)]),
 ]
 # jefes en la casilla 'O' de su plano
 BOSSES = {"nido": ("Furious Ancient Scarab", 1800), "huesos": ("Omruc", 3600)}
@@ -192,7 +210,8 @@ SIGN_TEXT = ("DESIERTO DE LAS RUINAS\n"
              "Ruinas (8+), dunas del sur (10+), laguna y oasis (15+),\n"
              "campamento de bandidos (20+), nido de escarabajos (30+),\n"
              "templo de los lagartos (40+), campo de huesos (45+),\n"
-             "santuario de los djinn (60+). Sigue el camino de piedra.")
+             "cienaga (50+), santuario de los djinn (60+).\nSigue el camino de piedra.\n"
+             "En el barco del muelle: piratas en cubierta (25+).")
 SCATTER = [2725, 2725, 2726, 2723, 2724, 2728, 2731, 2732, 2735, 1357, 1358, 2784]   # palmas, cactus, piedras, mata seca
 SCATTER_EVERY = 24                            # una decoración cada tantas casillas de arena libre
 CARD = ((1, 0), (-1, 0), (0, 1), (0, -1))
@@ -324,7 +343,7 @@ def main() -> int:
 
     # --- monstruos ---
     registry = (MONSTERS / "monsters.xml").read_text(encoding="latin-1").lower()
-    for n in sorted({m[0] for z in ZONES for m in z[4]} | {b[0] for b in BOSSES.values()}):
+    for n in sorted({m[0] for z in ZONES for m in z[4]} | {b[0] for b in BOSSES.values()} | {m[0] for d in SHIP for m in d[2]}):
         if f'name="{n.lower()}"' not in registry:
             errors.append(f"monstruo sin registrar en monsters.xml: {n}")
     placed = []                                            # (nombre, (x, y), respawn, zona)
@@ -350,6 +369,36 @@ def main() -> int:
                         got += 1
             if got < count:
                 errors.append(f"zona '{key}': solo entran {got} de {count} {mname}")
+
+    # --- barco pirata: casillas libres de cada piso, alcanzables desde donde se llega ---
+    ship = []                                              # (nombre, (x, y, z), respawn)
+    bx1, by1, bx2, by2 = SHIP_BOX
+    for z, start, mons in SHIP:
+        deck = {(x, y): it for (x, y, zz), it in old.items() if zz == z and bx1 <= x <= bx2 and by1 <= y <= by2 and it
+                and "water" not in otb.get(it[0], {}).get("name", "") and not any(solid(i) for i in it)
+                and otb.get(it[0], {}).get("name") != "ladder"}
+        reach, queue = {start} & set(deck), deque([start] if start in deck else [])
+        while queue:
+            cx, cy = queue.popleft()
+            for dx, dy in ALL8:
+                n = (cx + dx, cy + dy)
+                if n in deck and n not in reach:
+                    reach.add(n)
+                    queue.append(n)
+        if not reach:
+            errors.append(f"barco z{z}: la llegada {start} no se puede pisar")
+        spots = sorted(c for c in reach if len(deck[c]) == 1 and max(abs(c[0] - start[0]), abs(c[1] - start[1])) >= 2)
+        rng.shuffle(spots)
+        for mname, count, st in mons:
+            got = 0
+            for c in spots:
+                if got >= count:
+                    break
+                if all(p[1][2] != z or max(abs(c[0] - p[1][0]), abs(c[1] - p[1][1])) >= 2 for p in ship):
+                    ship.append((mname, (c[0], c[1], z), st))
+                    got += 1
+            if got < count:
+                errors.append(f"barco z{z}: solo entran {got} de {count} {mname}")
 
     # --- uids de los cofres libres en el resto del mapa ---
     raw = MAP.read_bytes()
@@ -381,7 +430,7 @@ def main() -> int:
         print(f"ERROR: {len(errors)} problemas; no se escribe nada", file=sys.stderr)
         return 1
     print(f"desierto x{BOX[0]}-{BOX[2]} y{BOX[1]}-{BOX[3]}: {len(new)} casillas rehechas, {len(protected)} protegidas, "
-          f"{len(seen)} caminables, {len(decor)} decoraciones, {len(placed)} monstruos")
+          f"{len(seen)} caminables, {len(decor)} decoraciones, {len(placed)} monstruos + {len(ship)} piratas en el barco")
     if a.dry_run:
         print("dry-run: validación OK, no se escribió nada")
         return 0
@@ -427,6 +476,7 @@ def main() -> int:
             nonlocal removed
             x, y, z = cx + int(mm.group(1)), cy + int(mm.group(2)), int(mm.group(3))
             gone = (z == Z and ((x, y) in new or (x, y) in protected)) or doomed(x, y, z)
+            gone = gone or (z in {d[0] for d in SHIP} and bx1 <= x <= bx2 and by1 <= y <= by2)   # la cubierta del barco
             removed += gone
             return "" if gone else mm.group(0)
 
@@ -438,6 +488,10 @@ def main() -> int:
     for mname, (x, y), st, _key in placed:
         lines.append(f'\t<spawn centerx="{x}" centery="{y}" centerz="{Z}" radius="3">')
         lines.append(f'\t\t<monster name="{mname}" x="0" y="0" z="{Z}" spawntime="{st}" />')
+        lines.append("\t</spawn>")
+    for mname, (x, y, z), st in ship:
+        lines.append(f'\t<spawn centerx="{x}" centery="{y}" centerz="{z}" radius="2">')
+        lines.append(f'\t\t<monster name="{mname}" x="0" y="0" z="{z}" spawntime="{st}" />')
         lines.append("\t</spawn>")
     lines.append("\t<!-- END DESERT_HUNTS_SPAWNS -->\n")
     SPAWNS.write_text(sp.replace("</spawns>", "\n".join(lines) + "</spawns>"), encoding="latin-1")
@@ -475,7 +529,8 @@ def main() -> int:
         "zones": [{"key": k, "name": t, "level": lvl, "box": list(b), "monsters": count.get(k, {})} for k, t, lvl, b, _m in ZONES],
         "bosses": [{"name": n, "x": c[0], "y": c[1], "z": Z, "spawntime": st} for n, c, st, _k in placed if n in {b[0] for b in BOSSES.values()}],
         "chests": [{"x": c[0], "y": c[1], "z": Z, "uid": uid} for c, uid in sorted(chests.items())],
-        "total": len(placed),
+        "ship": [{"name": n, "x": c[0], "y": c[1], "z": c[2], "spawntime": st} for n, c, st in ship],
+        "total": len(placed) + len(ship),
     }, indent=2, ensure_ascii=False) + "\n")
     print(f"OK mapa {MAP}\nOK spawns {SPAWNS} ({removed} monstruos viejos fuera)\nOK casas: {len(gone_files)} archivos fuera"
           f"\nOK cartel {READABLES}\nOK {MANIFEST}")

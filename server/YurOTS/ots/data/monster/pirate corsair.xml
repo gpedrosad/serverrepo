@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!-- Importado de Tibia 8.60 (import_client_look.py). Capitan pirata: estrellas de hasta 140. -->
+<monster name="Pirate Corsair" level="45" maglevel="0" experience="350" pushable="0" armor="28" defense="30" canpushitems="1" staticattack="50" changetarget="200" speed="230">
+	<health now="675" max="675"/>
+	<look type="98" head="0" body="0" legs="0" feet="0" corpse="3128"/>
+	<combat targetdistance="1" runonhealth="0"/>
+
+<attacks>
+	<attack type="melee" mindamage="50" maxdamage="170" probability="100"/>
+	<attack type="distance" name="throwingstar" mindamage="40" maxdamage="140" cycleticks="2000" probability="45"/>
+</attacks>
+
+<defenses>
+
+</defenses>
+
+<voices>
+	<voice sentence="Hiyaa!"/>
+	<voice sentence="Give up!"/>
+	<voice sentence="Plundeeeeer!"/>
+	<voice sentence="Your ship is mine now!"/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="88" chance1="95000" chancemax="0"/>
+	<item id="2385" chance="10000"/>
+	<item id="2399" countmax="12" chance1="8000" chancemax="0"/>
+	<item id="2489" chance="1500"/>
+	<item id="2521" chance="1000"/>
+	<item id="2145" countmax="1" chance1="1500" chancemax="0"/>
+</loot>
+</monster>

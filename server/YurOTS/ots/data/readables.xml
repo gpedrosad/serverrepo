@@ -25,13 +25,6 @@
 	<!-- BEGIN SAND_CLOCK_SIGNS -->
 	<readable x="339" y="396" z="6" text="RELOJ DE ARENA\nDescanso de 30 s y despues 6 oleadas de 60 s,\ncada una mas fuerte. Los braseros marcan la oleada.\nEntra en el descanso para empezar desde la 1.\nSalida: portal al sur."/>
 	<!-- END SAND_CLOCK_SIGNS -->
-	<!-- BEGIN FROZEN_ISLE_SIGNS -->
-	<readable x="376" y="94" z="7" text="Aqui vivia un lenador.\nDejo algo para quien encontrara su escondite."/>
-	<readable x="395" y="15" z="7" text="GRUTAS DE ESCARCHA\nAranas de hielo y, en lo mas hondo, el dragon.\nNivel 80+."/>
-	<readable x="398" y="100" z="7" text="ISLA DEL HIELO ETERNO\nEl sendero sube al norte: Bosque Nevado, Lago Congelado,\nMonasterio de Escarcha y las Grutas."/>
-	<readable x="399" y="73" z="7" text="LAGO CONGELADO\nCruza por el paso de hielo. Al oeste, un islote:\ndicen que ahi vive un yeti."/>
-	<readable x="403" y="42" z="7" text="MONASTERIO DE ESCARCHA\nLos monjes de hielo no perdonan a los intrusos."/>
-	<!-- END FROZEN_ISLE_SIGNS -->
 	<!-- BEGIN NORTH_PASS_SIGNS -->
 	<readable x="187" y="13" z="7" text="PASO DEL NORTE\nBosque, Tundra Helada y Cuevas del Dragon.\nCuevas: nivel 60+."/>
 	<readable x="411" y="332" z="7" text="TUNDRA HELADA\nLobos de invierno, osos polares y trolls.\nDicen que un yeti ronda el lago."/>
@@ -53,7 +46,14 @@
 	<readable x="145" y="461" z="7" text="ISLA NATURAL\nSigue el sendero: tres\ncampamentos de Cyclops\ny al final la cueva."/>
 	<readable x="160" y="460" z="7" text="CUEVA DE PIEDRA\nGolems y Shamblers.\nAl fondo, el Grorlam\ny un portal al templo."/>
 	<!-- END NATURAL_ISLAND_SIGNS -->
+	<!-- BEGIN FROZEN_ISLE_SIGNS -->
+	<readable x="376" y="94" z="7" text="Aqui vivia un lenador.\nDejo algo para quien encontrara su escondite."/>
+	<readable x="395" y="15" z="7" text="GRUTAS DE ESCARCHA\nAranas de hielo y, en lo mas hondo, el dragon.\nNivel 80+."/>
+	<readable x="398" y="100" z="7" text="ISLA DEL HIELO ETERNO\nEl sendero sube al norte: Bosque Nevado, Lago Congelado,\nMonasterio de Escarcha y las Grutas."/>
+	<readable x="399" y="73" z="7" text="LAGO CONGELADO\nCruza por el paso de hielo. Al oeste, un islote:\ndicen que ahi vive un yeti."/>
+	<readable x="403" y="42" z="7" text="MONASTERIO DE ESCARCHA\nLos monjes de hielo no perdonan a los intrusos."/>
+	<!-- END FROZEN_ISLE_SIGNS -->
 	<!-- BEGIN DESERT_HUNTS_SIGNS -->
-	<readable x="199" y="73" z="7" text="DESIERTO DE LAS RUINAS\nRuinas (8+), dunas del sur (10+), laguna y oasis (15+),\ncampamento de bandidos (20+), nido de escarabajos (30+),\ntemplo de los lagartos (40+), campo de huesos (45+),\nsantuario de los djinn (60+). Sigue el camino de piedra."/>
+	<readable x="199" y="73" z="7" text="DESIERTO DE LAS RUINAS\nRuinas (8+), dunas del sur (10+), laguna y oasis (15+),\ncampamento de bandidos (20+), nido de escarabajos (30+),\ntemplo de los lagartos (40+), campo de huesos (45+),\ncienaga (50+), santuario de los djinn (60+).\nSigue el camino de piedra.\nEn el barco del muelle: piratas en cubierta (25+)."/>
 	<!-- END DESERT_HUNTS_SIGNS -->
 </readables>

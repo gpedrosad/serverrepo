@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!-- Importado de Tibia 8.60 (import_client_look.py). Tigre mutado: pega fuerte y rapido, nivel 60-80. -->
+<monster name="Mutated Tiger" level="60" maglevel="25" experience="750" pushable="0" armor="26" defense="30" canpushitems="1" staticattack="50" changetarget="200" speed="260">
+	<health now="1100" max="1100"/>
+	<look type="251" head="0" body="0" legs="0" feet="0" corpse="4292"/>
+	<combat targetdistance="1" runonhealth="0"/>
+
+<attacks>
+	<attack type="melee" mindamage="80" maxdamage="260" probability="100"/>
+	<attack type="instant" name="exura" exhaustion="500" cycleticks="6000" probability="30"/>
+</attacks>
+
+<defenses>
+	<defense immunity="invisible"/>
+</defenses>
+
+<voices>
+	<voice sentence="GRAAARRRRRR"/>
+	<voice sentence="CHHHHHHHHHHH"/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="100" chance1="90000" chancemax="0"/>
+	<item id="2148" countmax="65" chance1="45000" chancemax="0"/>
+	<item id="2666" countmax="2" chance1="30000" chancemax="0"/>
+	<item id="2168" chance="1000"/>
+	<item id="2134" chance="2000"/>
+	<item id="2430" chance="600"/>
+	<item id="2515" chance="400"/>
+</loot>
+</monster>

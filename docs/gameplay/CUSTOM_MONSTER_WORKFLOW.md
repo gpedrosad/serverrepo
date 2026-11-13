@@ -3,6 +3,7 @@
 Guía detallada para crear un monstruo nuevo de punta a punta: diseño, XML, hechizos propios, sprite propio en el cliente, arte para la web, pruebas, spawn y deploy. Usa como ejemplo el **Black Dragon** (rama `black-dragon`, noviembre 2026).
 
 - Para el flujo corto (XML + `monsters.xml` + RME + spawn), ver [`MONSTER_CREATION.md`](MONSTER_CREATION.md).
+- Para traer el dibujo de una criatura de otra versión de Tibia (8.60), ver [`IMPORTAR_CRIATURA_DE_OTRA_VERSION.md`](IMPORTAR_CRIATURA_DE_OTRA_VERSION.md).
 - Para la ficha del Black Dragon, ver [`BLACK_DRAGON.md`](BLACK_DRAGON.md).
 
 ---

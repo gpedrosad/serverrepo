@@ -84,3 +84,6 @@ __pycache__/
 *.pyc
 .agents/
 skills-lock.json
+
+# Cliente 8.60 para importar sprites (no va a git: pesa 43 MB y no es nuestro)
+devtools/tibia-860/

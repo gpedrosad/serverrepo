@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!-- Importado de Tibia 8.60 (import_client_look.py). Bicho de pantano: chupa vida a distancia y se cura. Nivel 50-70. -->
+<monster name="Bog Raider" level="50" maglevel="40" experience="800" pushable="0" armor="24" defense="26" canpushitems="1" staticattack="50" changetarget="200" speed="200">
+	<health now="1300" max="1300"/>
+	<look type="174" head="0" body="0" legs="0" feet="0" corpse="3113"/>
+	<combat targetdistance="1" runonhealth="0"/>
+
+<attacks>
+	<attack type="melee" mindamage="30" maxdamage="110" probability="100"/>
+	<attack type="rune" name="bograider_drown" exhaustion="500" cycleticks="3000" probability="40"/>
+	<attack type="instant" name="exura" exhaustion="500" cycleticks="6000" probability="30"/>
+</attacks>
+
+<defenses>
+	<defense immunity="poison"/>
+	<defense immunity="drunk"/>
+	<defense immunity="invisible"/>
+</defenses>
+
+<voices>
+	<voice sentence="Tchhh!"/>
+	<voice sentence="Slurp!"/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="100" chance1="90000" chancemax="0"/>
+	<item id="2148" countmax="30" chance1="40000" chancemax="0"/>
+	<item id="2647" chance="3000"/>
+	<item id="2214" chance="800"/>
+	<item id="2149" countmax="1" chance1="3000" chancemax="0"/>
+	<item id="2477" chance="400"/>
+</loot>
+</monster>

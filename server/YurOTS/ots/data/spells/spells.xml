@@ -80,6 +80,13 @@
 <spell name="hydra_bubblewave" words="hydra_bubblewave" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="darkhydra_darkwave" words="darkhydra_darkwave" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="emeraldscarab_poisonburst" words="emeraldscarab_poisonburst" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="hatchling_firewave" words="hatchling_firewave" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="dlhatchling_firewave" words="dlhatchling_firewave" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="wyvern_poisonwave" words="wyvern_poisonwave" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="mutatedbat_shriek" words="mutatedbat_shriek" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="frosthatchling_icewave" words="frosthatchling_icewave" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="crystalspider_icewave" words="crystalspider_icewave" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="icegolem_shards" words="icegolem_shards" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="rootcolossus_rootslam" words="rootcolossus_rootslam" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="rootcolossus_spores" words="rootcolossus_spores" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="vamp_lifedrain" words="vamp_lifedrain" maglv="4000" mana="800" enabled="1"></spell>
@@ -131,6 +138,10 @@
 <rune name="tidepriest_elmofire" id="5038" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 <rune name="tidepriest_manatide" id="5039" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 <rune name="blackdragon_shadowball" id="5040" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="hatchling_fireball" id="5041" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="chakoya_iceball" id="5042" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="frosthatchling_iceball" id="5043" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="bograider_drown" id="5044" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 
 <!--// Make arrow and bolt \\-->
 <spell name="Conjure Arrow"	words="exevo con"		maglv="2"	mana="40"	enabled="1"><vocation id="3" /></spell>
