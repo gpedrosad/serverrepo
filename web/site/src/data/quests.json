@@ -28,7 +28,13 @@
       "where": "Sala del Annihilator (194,118,9)",
       "reward": "Demon Armor, Sword of Valor, Stonecutter's Axe o Thunder Hammer (uno por personaje)",
       "note": "Clásica de 4 jugadores; cada uno elige un cofre.",
-      "chests": 4
+      "chests": 4,
+      "reward_ids": [
+        2494,
+        2400,
+        2431,
+        2421
+      ]
     },
     {
       "id": "pharaoh",
@@ -40,7 +46,12 @@
       "where": "Tumbas del desierto (205-209,166,9)",
       "reward": "Dragon Lance, War Hammer o Giant Sword (uno por personaje)",
       "note": "Cada personaje elige un cofre.",
-      "chests": 3
+      "chests": 3,
+      "reward_ids": [
+        2414,
+        2391,
+        2393
+      ]
     },
     {
       "id": "imperial",
@@ -52,7 +63,11 @@
       "where": "Castillo Imperial, tesorería z3 (97/103,28,3)",
       "reward": "Crown Legs y Royal Helmet",
       "note": "6 pisos; el jefe está en z3.",
-      "chests": 2
+      "chests": 2,
+      "reward_ids": [
+        2488,
+        2498
+      ]
     },
     {
       "id": "hell",
@@ -64,7 +79,13 @@
       "where": "Isla del Infierno, Cámara de la Elección z9",
       "reward": "Demon Helmet, Magic Plate Armor, Boots of Haste o Demon Shield (uno por personaje)",
       "note": "Puertas de nivel 80 y 100; boss Ashen Lord.",
-      "chests": 4
+      "chests": 4,
+      "reward_ids": [
+        2493,
+        2472,
+        2195,
+        2520
+      ]
     },
     {
       "id": "gauntlet",
@@ -76,7 +97,11 @@
       "where": "Gauntlet, sala final (450,77/79,7)",
       "reward": "Demon Armor y Fury Cape",
       "note": "40 salas puzzle + Wrath; se llega en barco.",
-      "chests": 2
+      "chests": 2,
+      "reward_ids": [
+        2494,
+        20114
+      ]
     },
     {
       "id": "frozen-lumberjack",
@@ -88,7 +113,10 @@
       "where": "Isla del Hielo, bosque nevado (373,95,7)",
       "reward": "Crystal Coin",
       "note": "Desvío al oeste del sendero.",
-      "chests": 1
+      "chests": 1,
+      "reward_ids": [
+        2160
+      ]
     },
     {
       "id": "frozen-yeti",
@@ -100,7 +128,10 @@
       "where": "Isla del Hielo, islote del Yeti (369,63,7)",
       "reward": "Frozen Starlight",
       "note": "Cofre en el islote, tras el paso de hielo.",
-      "chests": 1
+      "chests": 1,
+      "reward_ids": [
+        2361
+      ]
     },
     {
       "id": "frozen-lair",
@@ -112,7 +143,11 @@
       "where": "Isla del Hielo, guarida z9 (393/397,17,9)",
       "reward": "Crimson Wand y Crimson Helmet",
       "note": "Cámara del tesoro; Frost Dragons e Ice Spiders.",
-      "chests": 2
+      "chests": 2,
+      "reward_ids": [
+        20123,
+        20113
+      ]
     },
     {
       "id": "desert-lizard",
@@ -124,7 +159,10 @@
       "where": "Desierto, Templo de los lagartos (242,78,7)",
       "reward": "Knight Armor",
       "note": "Zona de lizard sentinels/templars.",
-      "chests": 1
+      "chests": 1,
+      "reward_ids": [
+        2476
+      ]
     },
     {
       "id": "desert-bone",
@@ -136,7 +174,10 @@
       "where": "Desierto, Campo de huesos (257,114,7)",
       "reward": "Vampire Shield",
       "note": "Al este del jefe Omruc.",
-      "chests": 1
+      "chests": 1,
+      "reward_ids": [
+        2534
+      ]
     },
     {
       "id": "fire-cave",
@@ -148,7 +189,12 @@
       "where": "Cueva de fuego (106,63-67,4)",
       "reward": "Dragon Hammer, Fire Axe y Fire Sword",
       "note": "Tres cofres; cada uno se abre una vez por personaje.",
-      "chests": 3
+      "chests": 3,
+      "reward_ids": [
+        2434,
+        2432,
+        2392
+      ]
     },
     {
       "id": "boh",
@@ -160,7 +206,11 @@
       "where": "Torre/cueva (128,62,6/7)",
       "reward": "Boots of Haste y Blue Robe",
       "note": "Dos cofres en pisos distintos.",
-      "chests": 2
+      "chests": 2,
+      "reward_ids": [
+        2195,
+        2656
+      ]
     },
     {
       "id": "guardian-halberd",
@@ -172,7 +222,10 @@
       "where": "Campamento orco (139,141,6)",
       "reward": "Guardian Halberd",
       "note": "Zona de orcs.",
-      "chests": 1
+      "chests": 1,
+      "reward_ids": [
+        2427
+      ]
     },
     {
       "id": "crusader-helmet",
@@ -184,7 +237,10 @@
       "where": "Costa/piratas (203,40,7)",
       "reward": "Crusader Helmet",
       "note": "Cerca de piratas.",
-      "chests": 1
+      "chests": 1,
+      "reward_ids": [
+        2497
+      ]
     },
     {
       "id": "lady-helmet",
@@ -196,7 +252,10 @@
       "where": "Zona helada (242,22,8)",
       "reward": "Lady Helmet",
       "note": "Cerca de yetis.",
-      "chests": 1
+      "chests": 1,
+      "reward_ids": [
+        2499
+      ]
     },
     {
       "id": "steel-boots",
@@ -208,7 +267,10 @@
       "where": "Cueva de demonios (217,72,8)",
       "reward": "Steel Boots",
       "note": "Demons y fire elementals.",
-      "chests": 1
+      "chests": 1,
+      "reward_ids": [
+        2645
+      ]
     },
     {
       "id": "knight-legs",
@@ -220,7 +282,10 @@
       "where": "Cripta/dungeon (89,80,8)",
       "reward": "Knight Legs",
       "note": "Demon skeletons y rotworms.",
-      "chests": 1
+      "chests": 1,
+      "reward_ids": [
+        2477
+      ]
     },
     {
       "id": "ancients-a",
@@ -232,7 +297,10 @@
       "where": "Tumba (214,148,8)",
       "reward": "Helmet of the Ancients",
       "note": "Ancient scarabs, lich y marid.",
-      "chests": 1
+      "chests": 1,
+      "reward_ids": [
+        2343
+      ]
     },
     {
       "id": "ancients-b",
@@ -244,7 +312,10 @@
       "where": "Cripta (231,126,9)",
       "reward": "Helmet of the Ancients",
       "note": "Ghosts, lich y vampire.",
-      "chests": 1
+      "chests": 1,
+      "reward_ids": [
+        2342
+      ]
     },
     {
       "id": "shield-honour",
@@ -256,7 +327,10 @@
       "where": "Guarida de hydra (228,198,8)",
       "reward": "Shield of Honour",
       "note": "Hydra.",
-      "chests": 1
+      "chests": 1,
+      "reward_ids": [
+        2517
+      ]
     },
     {
       "id": "dark-shield",
@@ -268,7 +342,11 @@
       "where": "Dungeon de minotauros (156,42/43,9)",
       "reward": "Brass Legs y Dark Shield",
       "note": "Dos cofres.",
-      "chests": 2
+      "chests": 2,
+      "reward_ids": [
+        2478,
+        2521
+      ]
     },
     {
       "id": "giant-sword",
@@ -280,7 +358,10 @@
       "where": "Cueva de behemoths (182,117,9)",
       "reward": "Giant Sword",
       "note": "Behemoth, demon y fire elemental.",
-      "chests": 1
+      "chests": 1,
+      "reward_ids": [
+        2393
+      ]
     },
     {
       "id": "bright-sword",
@@ -292,7 +373,10 @@
       "where": "Cripta (145,136,9)",
       "reward": "Bright Sword",
       "note": "Fire devil, necromancer y priestess.",
-      "chests": 1
+      "chests": 1,
+      "reward_ids": [
+        2407
+      ]
     },
     {
       "id": "golden-armor",
@@ -304,7 +388,10 @@
       "where": "Fortaleza orca (162,152,9)",
       "reward": "Golden Armor",
       "note": "Orc warlord.",
-      "chests": 1
+      "chests": 1,
+      "reward_ids": [
+        2466
+      ]
     },
     {
       "id": "amazon-shield",
@@ -316,7 +403,10 @@
       "where": "Cueva (73,93,10)",
       "reward": "Amazon Shield",
       "note": "Banshee, dwarf geomancer y dwarf guard.",
-      "chests": 1
+      "chests": 1,
+      "reward_ids": [
+        2537
+      ]
     },
     {
       "id": "pvp-arena",
@@ -328,7 +418,8 @@
       "where": "Arena PvP (119,35,9)",
       "reward": "Duelo; sin recompensa fija",
       "note": "Palanca 7001; ambos nivel 25+.",
-      "chests": 0
+      "chests": 0,
+      "reward_ids": []
     },
     {
       "id": "daily-task",
@@ -340,7 +431,10 @@
       "where": "Templo, Huntmaster (138,53,6)",
       "reward": "Oro o exp según bracket; racha hasta +50%",
       "note": "1 contrato por personaje por día.",
-      "chests": 0
+      "chests": 0,
+      "reward_ids": [
+        2148
+      ]
     },
     {
       "id": "wave-arena",
@@ -352,7 +446,11 @@
       "where": "Claro de la Selva (portal templo 166,47,7)",
       "reward": "5/15/30 platinum y 1 crystal al limpiar 5/10/15/20",
       "note": "20 oleadas; premio semanal.",
-      "chests": 0
+      "chests": 0,
+      "reward_ids": [
+        2152,
+        2160
+      ]
     },
     {
       "id": "sand-clock",
@@ -364,7 +462,8 @@
       "where": "Reloj de Arena (portal templo 168,47,7)",
       "reward": "Exp y loot de las oleadas",
       "note": "6 oleadas cada 6:30; entra en el descanso.",
-      "chests": 0
+      "chests": 0,
+      "reward_ids": []
     },
     {
       "id": "crucible",
@@ -376,7 +475,16 @@
       "where": "El Crisol (portal templo 164,47,7)",
       "reward": "Rare de Oro (arma Zagan) y loot del boss",
       "note": "Bronce 50+, Plata 70+, Oro 90+ según el boss del día.",
-      "chests": 0
+      "chests": 0,
+      "reward_ids": [
+        20112,
+        20138,
+        20154,
+        20121,
+        20100,
+        20110,
+        20122
+      ]
     }
   ],
   "proposals": [
@@ -389,7 +497,12 @@
       "where": "Inframundo, bajo el Hell Quest",
       "reward": "Elegís una: Avenger, Arcane Staff o Arbalest + loot de demons",
       "why": "Es la quest que falta para las armas 8.x, que hoy solo salen por GM. Ya está documentada como pendiente.",
-      "order": 1
+      "order": 1,
+      "reward_ids": [
+        20158,
+        20159,
+        20160
+      ]
     },
     {
       "id": "faro-contrabandistas",
@@ -400,7 +513,10 @@
       "where": "Faro y cueva al sur del puerto",
       "reward": "Serpent Sword + 1.000 gp",
       "why": "Cubre el hueco de quests para nivel 20-35 y reusa los piratas que ya están en el mapa.",
-      "order": 2
+      "order": 2,
+      "reward_ids": [
+        2409
+      ]
     },
     {
       "id": "minas-enanos",
@@ -411,7 +527,23 @@
       "where": "Minas bajo la montaña, al norte",
       "reward": "Dwarven Axe o War Axe + 5.000 gp",
       "why": "Da contenido de enanos y una recompensa media que hoy no tiene quest propia.",
-      "order": 3
+      "order": 3,
+      "reward_ids": [
+        2435,
+        2454
+      ]
+    },
+    {
+      "id": "biblioteca-perdida",
+      "name": "La Biblioteca Perdida",
+      "level_label": "35-55",
+      "level_min": 35,
+      "players": "1",
+      "where": "Biblioteca abandonada bajo la ciudad",
+      "reward": "Train Wand + runas",
+      "reward_ids": [],
+      "why": "El train wand no tiene ninguna fuente; una quest de magos le da un lugar y de paso reparte runas.",
+      "order": 4
     },
     {
       "id": "cripta-reyes",
@@ -422,7 +554,11 @@
       "where": "Cripta undead bajo la ciudad",
       "reward": "Crown Armor + Crown Legs",
       "why": "Puente entre Knight Legs y las armaduras de nivel alto; los undead y la cripta ya existen.",
-      "order": 4
+      "order": 5,
+      "reward_ids": [
+        2487,
+        2488
+      ]
     },
     {
       "id": "templo-sumergido",
@@ -433,7 +569,11 @@
       "where": "Templo bajo el agua, junto a la Isla del Hielo",
       "reward": "Magic Plate Armor o Sapphire Crown Armor",
       "why": "Aprovecha las criaturas 8.6 nuevas (quaras, elementales) y da contenido de grupo.",
-      "order": 5
+      "order": 6,
+      "reward_ids": [
+        2472,
+        20162
+      ]
     },
     {
       "id": "forja-titanes",
@@ -444,7 +584,10 @@
       "where": "Forja de fuego, al este del Hell Quest",
       "reward": "Demon Shield + 20.000 gp",
       "why": "Contenido de fuego de alto nivel; hoy el Hell Quest es la única quest de ese palo.",
-      "order": 6
+      "order": 7,
+      "reward_ids": [
+        2520
+      ]
     },
     {
       "id": "expedicion-desierto",
@@ -455,7 +598,11 @@
       "where": "Las 9 zonas del Desierto de las Ruinas",
       "reward": "Gemas + exp; ranking semanal",
       "why": "Contenido repetible para grupos; el desierto ya tiene zonas, jefes y cofres.",
-      "order": 7
+      "order": 8,
+      "reward_ids": [
+        2154,
+        2156
+      ]
     },
     {
       "id": "arena-jefes",
@@ -466,7 +613,61 @@
       "where": "Arena nueva en la plaza del templo",
       "reward": "Rare loot de los jefes + ranking semanal",
       "why": "Da un objetivo de fin de semana y reusa los jefes que ya existen.",
-      "order": 8
+      "order": 9,
+      "reward_ids": [
+        2493,
+        2520
+      ]
+    }
+  ],
+  "pending_items": [
+    {
+      "id": 20157,
+      "name": "emerald sword",
+      "source": "Solo GM",
+      "quest": "Pits of Inferno",
+      "level": "100-130",
+      "note": "Elegís una de las tres armas 8.x."
+    },
+    {
+      "id": 20158,
+      "name": "avenger",
+      "source": "Solo GM",
+      "quest": "Pits of Inferno",
+      "level": "100-130",
+      "note": "Elegís una de las tres armas 8.x."
+    },
+    {
+      "id": 20159,
+      "name": "arcane staff",
+      "source": "Solo GM",
+      "quest": "Pits of Inferno",
+      "level": "100-130",
+      "note": "Elegís una de las tres armas 8.x."
+    },
+    {
+      "id": 20160,
+      "name": "arbalest",
+      "source": "Solo GM",
+      "quest": "Pits of Inferno",
+      "level": "100-130",
+      "note": "Elegís una de las tres armas 8.x."
+    },
+    {
+      "id": 20156,
+      "name": "enchanted spear",
+      "source": "Solo GM",
+      "quest": "El Templo Sumergido",
+      "level": "70-90",
+      "note": "Spear mejorada; encaja como recompensa del templo."
+    },
+    {
+      "id": 20126,
+      "name": "train wand",
+      "source": "Sin forma de conseguirlo",
+      "quest": "La Biblioteca Perdida",
+      "level": "35-55",
+      "note": "Herramienta de training; no debería ser loot común."
     }
   ]
 }

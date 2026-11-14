@@ -98,8 +98,9 @@ ubicación, recompensa y notas. También lista **propuestas** de quests nuevas c
 español, como la wiki y los items nuevos.
 
 - **Datos:** `web/site/src/data/quests.json` (manual). Cada quest tiene `type` (`cofre`, `grupo`,
-  `arena`, `diaria`), `level_label`, `level_min`, `players`, `where`, `reward`, `note` y, si aplica,
-  `chests`. Las propuestas van en `proposals` con `why`.
+  `arena`, `diaria`), `level_label`, `level_min`, `players`, `where`, `reward`, `note`, `reward_ids`
+  (íconos de la recompensa) y, si aplica, `chests`. Las propuestas van en `proposals` con `why`; los
+  items sin drop de monstruo van en `pending_items` con la quest propuesta.
 - **Mantenimiento:** al agregar una quest al mapa, sumarla al JSON y actualizar los contadores de la
   página. Los niveles de las quests clásicas son estimados según monstruos y recompensa; las puertas
   reales de nivel son las de Hell Quest (80/100) y Arena PvP (25).

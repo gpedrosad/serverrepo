@@ -9,7 +9,7 @@ Registro público: **`/quests`** (`web/site/src/pages/quests.astro`). La fuente 
   Reloj de Arena, El Crisol y Arena PvP).
 - **40 cofres de quest** en el mapa: 29 con `quest.lua` (uid 1001–4999 y 20100–20199), 4 del
   Annihilator (`5006`–`5009`), 3 del Pharaoh (`5003`, `5004`, `5017`) y 4 de Hell Quest (`5100`–`5103`).
-- **8 propuestas** para crear, con nivel recomendado.
+- **9 propuestas** para crear, con nivel recomendado.
 
 ## Quests principales
 
@@ -53,10 +53,28 @@ nivel estimado y monstruos de la zona.
 | El Faro de los Contrabandistas | 20–35 | 1 | Serpent Sword + 1.000 gp | Cubre el hueco de nivel 20–35 y reusa piratas |
 | Las Minas de los Enanos | 45–65 | 1–2 | Dwarven Axe o War Axe + 5.000 gp | Contenido de enanos y recompensa media |
 | La Cripta de los Reyes | 55–70 | 1 | Crown Armor + Crown Legs | Puente entre Knight Legs y armaduras altas |
+| La Biblioteca Perdida | 35–55 | 1 | Train Wand + runas | El train wand no tiene ninguna fuente; una quest de magos le da un lugar |
 | El Templo Sumergido | 70–90 | 2–4 | MPA o Sapphire Crown Armor | Aprovecha quaras/elementales 8.6 y da grupo |
 | La Forja de los Titanes | 90–110 | 2–4 | Demon Shield + 20.000 gp | Contenido de fuego de alto nivel |
 | Expedición semanal: Cazadores del Desierto | 60–100 | 1–4 | Gemas + exp; ranking semanal | Contenido repetible en las 9 zonas del desierto |
 | Arena de Jefes | 100–130 | 2–4 | Rare loot + ranking semanal | Objetivo de fin de semana con jefes existentes |
+
+## Items sin drop de monstruo
+
+Estos items no salen de ningún monstruo y todavía no tienen una fuente clara:
+
+| Item | Fuente actual | Quest propuesta | Nivel |
+|---|---|---|---:|
+| emerald sword | Solo GM | Pits of Inferno | 100–130 |
+| avenger | Solo GM | Pits of Inferno | 100–130 |
+| arcane staff | Solo GM | Pits of Inferno | 100–130 |
+| arbalest | Solo GM | Pits of Inferno | 100–130 |
+| enchanted spear | Solo GM | El Templo Sumergido | 70–90 |
+| train wand | Sin forma de conseguirlo | La Biblioteca Perdida | 35–55 |
+
+La página `/quests` muestra el ícono de cada recompensa (desde `web/assets/wiki/items/<id>.png`) y
+esta lista de pendientes. Para regenerar los íconos: `python3 scripts/web/build-wiki-icons.py`
+(también lee `reward_ids` y `pending_items` de `quests.json`).
 
 ## Mantenimiento
 

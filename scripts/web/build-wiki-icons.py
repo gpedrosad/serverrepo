@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Íconos de ítems para la wiki: recorta del atlas de la web los ítems que usan los artículos.
 
-Busca `{item:N}` e `icono: N` en web/site/src/wiki/*.md y deja web/assets/wiki/items/<N>.png,
+Busca `{item:N}` e `icono: N` en web/site/src/wiki/*.md, más los `reward_ids` y `pending_items` de
+web/site/src/data/quests.json, y deja web/assets/wiki/items/<N>.png.
 recortado de web/assets/items/items-atlas.png con la posición de web/data/items_all.json. El atlas
 pone cada sprite abajo a la derecha de una celda de 64 px: los ítems de 32 px quedan en 32x32 y
 los grandes (2x2) en 64x64. Si la web ya tiene una imagen del ítem (assets/premium, assets/gems)
@@ -25,6 +26,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 WIKI = ROOT / "web/site/src/wiki"
+QUESTS = ROOT / "web/site/src/data/quests.json"
 ATLAS = ROOT / "web/assets/items/items-atlas.png"
 CATALOG = ROOT / "web/data/items_all.json"
 OUT = ROOT / "web/assets/wiki/items"
@@ -38,6 +40,11 @@ def used_ids() -> set[int]:
         text = md.read_text(encoding="utf-8")
         ids.update(int(n) for n in re.findall(r"\{item:(\d+)\}", text))
         ids.update(int(n) for n in re.findall(r"^icono:\s*(\d+)\s*$", text, re.M))
+    if QUESTS.is_file():
+        data = json.loads(QUESTS.read_text(encoding="utf-8"))
+        for q in data.get("quests", []) + data.get("proposals", []):
+            ids.update(int(n) for n in q.get("reward_ids", []))
+        ids.update(int(q["id"]) for q in data.get("pending_items", []))
     return ids
 
 

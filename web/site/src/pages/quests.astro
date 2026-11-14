@@ -5,23 +5,25 @@ import data from '../data/quests.json';
 const typeLabel = Object.fromEntries(data.groups.map((g) => [g.key, g.label]));
 const quests = [...data.quests].sort((a, b) => a.level_min - b.level_min || a.name.localeCompare(b.name));
 const proposals = [...data.proposals].sort((a, b) => a.order - b.order || a.name.localeCompare(b.name));
+const pendingItems = data.pending_items || [];
 const totalChests = quests.reduce((n, q) => n + (q.chests || 0), 0);
 const chestQuests = quests.filter((q) => q.type === 'cofre' || q.type === 'grupo').length;
 const systemQuests = quests.length - chestQuests;
 const typeCounts = Object.fromEntries(data.groups.map((g) => [g.key, quests.filter((q) => q.type === g.key).length]));
 const searchText = (q: (typeof quests)[number]) => `${q.name} ${q.where} ${q.reward} ${q.note} ${typeLabel[q.type] || ''}`.toLowerCase();
+const icons = (ids: number[]) => ids.filter((id) => id > 0);
 ---
-<Base lang="es" title="Quests — Retro76" path="/quests" description="Registro de todas las quests de Retro76: nivel recomendado, ubicación, recompensa y las quests que recomendamos crear." langSwitch={false}>
+<Base lang="es" title="Quests — Retro76" path="/quests" description="Registro de todas las quests de Retro76: nivel recomendado, ubicación, recompensa con sus ítems y las quests que recomendamos crear." langSwitch={false}>
   <section>
     <h1 class="title">Quests</h1>
-    <p class="lede">Todas las quests y sistemas con recompensa del servidor: nivel recomendado, dónde se empiezan y qué dan. Al final, una lista de quests nuevas que recomendamos crear.</p>
+    <p class="lede">Todas las quests y sistemas con recompensa del servidor: nivel recomendado, dónde se empiezan, qué items dan y qué falta. Al final, una lista de quests nuevas que recomendamos crear.</p>
     <dl class="figures">
       <div><dt>Existentes</dt><dd>{quests.length}</dd></div>
       <div><dt>Cofres de quest</dt><dd>{totalChests}</dd></div>
       <div><dt>Propuestas</dt><dd>{proposals.length}</dd></div>
     </dl>
     <p class="note" style="margin-top:1rem">Los niveles son <strong>recomendados</strong>, no requisitos. Las únicas exigencias reales son las puertas de <strong>Hell Quest</strong> (nivel 80 y 100) y la <strong>Arena PvP</strong> (nivel 25).</p>
-    <p class="muted small" style="margin-top:.6rem">{chestQuests} quests con cofre/grupo · {systemQuests} sistemas repetibles. Los niveles de las quests clásicas son estimados según los monstruos de la zona y la recompensa.</p>
+    <p class="muted small" style="margin-top:.6rem">{chestQuests} quests con cofre/grupo · {systemQuests} sistemas repetibles · {pendingItems.length} items sin drop de monstruo. Los niveles de las quests clásicas son estimados según los monstruos de la zona y la recompensa.</p>
   </section>
 
   <section>
@@ -54,7 +56,14 @@ const searchText = (q: (typeof quests)[number]) => `${q.name} ${q.where} ${q.rew
               <td><span class={`quest-type ${q.type}`}>{typeLabel[q.type] || q.type}</span></td>
               <td class="n"><strong>{q.level_label}</strong><span class="quest-players">{q.players} jug.</span></td>
               <td class="muted">{q.where}</td>
-              <td class="reward">{q.reward}</td>
+              <td class="reward">
+                {icons(q.reward_ids || []).length > 0 && (
+                  <span class="reward-icons">
+                    {icons(q.reward_ids || []).map((id) => <img src={`/assets/wiki/items/${id}.png`} alt="" width="24" height="24" loading="lazy" />)}
+                  </span>
+                )}
+                {q.reward}
+              </td>
               <td class="muted wide-only">{q.note}</td>
             </tr>
           ))}
@@ -84,8 +93,44 @@ const searchText = (q: (typeof quests)[number]) => `${q.name} ${q.where} ${q.rew
               <td><strong>{q.name}</strong><span class="proposal-tag">Propuesta</span><span class="quest-where">{q.where}</span></td>
               <td class="n"><strong>{q.level_label}</strong></td>
               <td class="muted">{q.players}</td>
-              <td class="reward">{q.reward}</td>
+              <td class="reward">
+                {icons(q.reward_ids || []).length > 0 && (
+                  <span class="reward-icons">
+                    {icons(q.reward_ids || []).map((id) => <img src={`/assets/wiki/items/${id}.png`} alt="" width="24" height="24" loading="lazy" />)}
+                  </span>
+                )}
+                {q.reward}
+              </td>
               <td class="why">{q.why}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="sin-fuente">
+    <h2 class="label">Items sin drop de monstruo <span class="aside">{pendingItems.length} pendientes</span></h2>
+    <p class="muted">Estos items no salen de ningún monstruo. Los que ya tienen una quest están en la tabla de arriba; estos todavía no tienen una fuente clara, así que necesitan una quest o un sistema que los entregue.</p>
+    <div class="table-scroll">
+      <table class="quests-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Fuente actual</th>
+            <th>Quest propuesta</th>
+            <th class="n">Nivel</th>
+            <th class="wide-only">Nota</th>
+          </tr>
+        </thead>
+        <tbody>
+          {pendingItems.map((it) => (
+            <tr>
+              <td><span class="cell-item"><img class="sprite" src={`/assets/wiki/items/${it.id}.png`} alt="" width="32" height="32" loading="lazy" /><strong>{it.name}</strong></span></td>
+              <td class="muted">{it.source}</td>
+              <td>{it.quest}</td>
+              <td class="n"><strong>{it.level}</strong></td>
+              <td class="muted wide-only">{it.note}</td>
             </tr>
           ))}
         </tbody>
