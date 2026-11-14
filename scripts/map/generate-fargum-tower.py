@@ -65,7 +65,7 @@ MONSTERS_BY_FLOOR = {
 }
 SPAWN = (176, 66)                            # interior, lejos de puerta, escaleras y fogata
 CAMPFIRE = (179, 66)
-WOODEN_DOOR = 1215
+WOODEN_DOOR = 1220  # puerta abierta para pared vertical (la 1215 es horizontal y dejaba mal el marco)
 CAMPFIRE_ID = 1423
 STAIR_DOWN, STAIRS_UP = 432, 1385
 TABLE_IDS = {1622, 1623, 1627, 1628, 1629, 1630, 1631, 1637}
