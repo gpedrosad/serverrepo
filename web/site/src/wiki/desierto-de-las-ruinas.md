@@ -91,27 +91,27 @@ Flechas rojas = camino. Fotos del mapa real, paso por paso.
 
 **Paso 1**
 
-![Desierto de las Ruinas: Depot → destino](/assets/wiki/routes/desierto-de-las-ruinas/01-depot-destino.jpg)
+![Desierto de las Ruinas: Depot → destino](/assets/wiki/routes/desierto-de-las-ruinas/01-depot-destino.jpg?v=b960d84cc4)
 
 **Paso 2**
 
-![Desierto de las Ruinas: Depot → destino](/assets/wiki/routes/desierto-de-las-ruinas/02-depot-destino.jpg)
+![Desierto de las Ruinas: Depot → destino](/assets/wiki/routes/desierto-de-las-ruinas/02-depot-destino.jpg?v=b960d84cc4)
 
 **Paso 3**
 
-![Desierto de las Ruinas: Depot → destino](/assets/wiki/routes/desierto-de-las-ruinas/03-depot-destino.jpg)
+![Desierto de las Ruinas: Depot → destino](/assets/wiki/routes/desierto-de-las-ruinas/03-depot-destino.jpg?v=b960d84cc4)
 
 **Paso 4**
 
-![Desierto de las Ruinas: Depot → destino](/assets/wiki/routes/desierto-de-las-ruinas/04-depot-destino.jpg)
+![Desierto de las Ruinas: Depot → destino](/assets/wiki/routes/desierto-de-las-ruinas/04-depot-destino.jpg?v=b960d84cc4)
 
 **Paso 5**
 
-![Desierto de las Ruinas: Depot → destino](/assets/wiki/routes/desierto-de-las-ruinas/05-depot-destino.jpg)
+![Desierto de las Ruinas: Depot → destino](/assets/wiki/routes/desierto-de-las-ruinas/05-depot-destino.jpg?v=b960d84cc4)
 
 **Paso 6**
 
-![Desierto de las Ruinas: Depot → destino](/assets/wiki/routes/desierto-de-las-ruinas/06-depot-destino.jpg)
+![Desierto de las Ruinas: Depot → destino](/assets/wiki/routes/desierto-de-las-ruinas/06-depot-destino.jpg?v=b960d84cc4)
 
 ## Relacionado
 

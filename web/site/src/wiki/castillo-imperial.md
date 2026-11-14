@@ -100,35 +100,35 @@ Flechas rojas = camino. Fotos del mapa real, paso por paso.
 
 **Paso 1**
 
-![Castillo Imperial: Depot → destino](/assets/wiki/routes/castillo-imperial/01-depot-destino.jpg)
+![Castillo Imperial: Depot → destino](/assets/wiki/routes/castillo-imperial/01-depot-destino.jpg?v=b960d84cc4)
 
 **Paso 2**
 
-![Castillo Imperial: Depot → destino](/assets/wiki/routes/castillo-imperial/02-depot-destino.jpg)
+![Castillo Imperial: Depot → destino](/assets/wiki/routes/castillo-imperial/02-depot-destino.jpg?v=b960d84cc4)
 
 **Paso 3**
 
-![Castillo Imperial: Depot → destino](/assets/wiki/routes/castillo-imperial/03-depot-destino.jpg)
+![Castillo Imperial: Depot → destino](/assets/wiki/routes/castillo-imperial/03-depot-destino.jpg?v=b960d84cc4)
 
 **Paso 4**
 
-![Castillo Imperial: Depot → destino](/assets/wiki/routes/castillo-imperial/04-depot-destino.jpg)
+![Castillo Imperial: Depot → destino](/assets/wiki/routes/castillo-imperial/04-depot-destino.jpg?v=b960d84cc4)
 
 **Paso 5**
 
-![Castillo Imperial: Depot → destino](/assets/wiki/routes/castillo-imperial/05-depot-destino.jpg)
+![Castillo Imperial: Depot → destino](/assets/wiki/routes/castillo-imperial/05-depot-destino.jpg?v=b960d84cc4)
 
 **Paso 6**
 
-![Castillo Imperial: Depot → destino](/assets/wiki/routes/castillo-imperial/06-depot-destino.jpg)
+![Castillo Imperial: Depot → destino](/assets/wiki/routes/castillo-imperial/06-depot-destino.jpg?v=b960d84cc4)
 
 **Paso 7**
 
-![Castillo Imperial: Depot → destino](/assets/wiki/routes/castillo-imperial/07-depot-destino.jpg)
+![Castillo Imperial: Depot → destino](/assets/wiki/routes/castillo-imperial/07-depot-destino.jpg?v=b960d84cc4)
 
 **Paso 8**
 
-![Castillo Imperial: Depot → destino](/assets/wiki/routes/castillo-imperial/08-depot-destino.jpg)
+![Castillo Imperial: Depot → destino](/assets/wiki/routes/castillo-imperial/08-depot-destino.jpg?v=b960d84cc4)
 
 ## Relacionado
 

@@ -52,11 +52,11 @@ Flechas rojas = camino. Fotos del mapa real, paso por paso.
 
 **Paso 1**
 
-![Reloj de Arena: Depot → portal](/assets/wiki/routes/reloj-de-arena/01-depot-portal.jpg)
+![Reloj de Arena: Depot → portal](/assets/wiki/routes/reloj-de-arena/01-depot-portal.jpg?v=b960d84cc4)
 
 **Paso 2**
 
-![Reloj de Arena: Depot → portal](/assets/wiki/routes/reloj-de-arena/02-depot-portal.jpg)
+![Reloj de Arena: Depot → portal](/assets/wiki/routes/reloj-de-arena/02-depot-portal.jpg?v=b960d84cc4)
 
 ## Relacionado
 

@@ -46,23 +46,23 @@ Flechas rojas = camino. Fotos del mapa real, paso por paso.
 
 **Paso 1**
 
-![Isla natural: Depot → portal](/assets/wiki/routes/isla-natural/01-depot-portal.jpg)
+![Isla natural: Depot → portal](/assets/wiki/routes/isla-natural/01-depot-portal.jpg?v=b960d84cc4)
 
 **Paso 2**
 
-![Isla natural: Depot → portal](/assets/wiki/routes/isla-natural/02-depot-portal.jpg)
+![Isla natural: Depot → portal](/assets/wiki/routes/isla-natural/02-depot-portal.jpg?v=b960d84cc4)
 
 **Paso 3**
 
-![Isla natural: Llegada → destino](/assets/wiki/routes/isla-natural/03-llegada-destino.jpg)
+![Isla natural: Llegada → destino](/assets/wiki/routes/isla-natural/03-llegada-destino.jpg?v=b960d84cc4)
 
 **Paso 4**
 
-![Isla natural: Llegada → destino](/assets/wiki/routes/isla-natural/04-llegada-destino.jpg)
+![Isla natural: Llegada → destino](/assets/wiki/routes/isla-natural/04-llegada-destino.jpg?v=b960d84cc4)
 
 **Paso 5**
 
-![Isla natural: Llegada → destino](/assets/wiki/routes/isla-natural/05-llegada-destino.jpg)
+![Isla natural: Llegada → destino](/assets/wiki/routes/isla-natural/05-llegada-destino.jpg?v=b960d84cc4)
 
 ## Relacionado
 

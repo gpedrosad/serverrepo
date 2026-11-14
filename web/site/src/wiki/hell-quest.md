@@ -84,27 +84,27 @@ Flechas rojas = camino. Fotos del mapa real, paso por paso.
 
 **Paso 1**
 
-![Hell Quest: Depot → barco](/assets/wiki/routes/hell-quest/01-depot-barco.jpg)
+![Hell Quest: Depot → barco](/assets/wiki/routes/hell-quest/01-depot-barco.jpg?v=b960d84cc4)
 
 **Paso 2**
 
-![Hell Quest: Depot → barco](/assets/wiki/routes/hell-quest/02-depot-barco.jpg)
+![Hell Quest: Depot → barco](/assets/wiki/routes/hell-quest/02-depot-barco.jpg?v=b960d84cc4)
 
 **Paso 3**
 
-![Hell Quest: Llegada → destino](/assets/wiki/routes/hell-quest/03-llegada-destino.jpg)
+![Hell Quest: Llegada → destino](/assets/wiki/routes/hell-quest/03-llegada-destino.jpg?v=b960d84cc4)
 
 **Paso 4**
 
-![Hell Quest: Llegada → destino](/assets/wiki/routes/hell-quest/04-llegada-destino.jpg)
+![Hell Quest: Llegada → destino](/assets/wiki/routes/hell-quest/04-llegada-destino.jpg?v=b960d84cc4)
 
 **Paso 5**
 
-![Hell Quest: Llegada → destino](/assets/wiki/routes/hell-quest/05-llegada-destino.jpg)
+![Hell Quest: Llegada → destino](/assets/wiki/routes/hell-quest/05-llegada-destino.jpg?v=b960d84cc4)
 
 **Paso 6**
 
-![Hell Quest: Llegada → destino](/assets/wiki/routes/hell-quest/06-llegada-destino.jpg)
+![Hell Quest: Llegada → destino](/assets/wiki/routes/hell-quest/06-llegada-destino.jpg?v=b960d84cc4)
 
 ## Relacionado
 

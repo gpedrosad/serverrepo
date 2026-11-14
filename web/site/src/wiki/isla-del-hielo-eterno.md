@@ -78,31 +78,31 @@ Flechas rojas = camino. Fotos del mapa real, paso por paso.
 
 **Paso 1**
 
-![Isla del Hielo: Depot → barco](/assets/wiki/routes/isla-del-hielo/01-depot-barco.jpg)
+![Isla del Hielo: Depot → barco](/assets/wiki/routes/isla-del-hielo/01-depot-barco.jpg?v=b960d84cc4)
 
 **Paso 2**
 
-![Isla del Hielo: Depot → barco](/assets/wiki/routes/isla-del-hielo/02-depot-barco.jpg)
+![Isla del Hielo: Depot → barco](/assets/wiki/routes/isla-del-hielo/02-depot-barco.jpg?v=b960d84cc4)
 
 **Paso 3**
 
-![Isla del Hielo: Llegada → destino](/assets/wiki/routes/isla-del-hielo/03-llegada-destino.jpg)
+![Isla del Hielo: Llegada → destino](/assets/wiki/routes/isla-del-hielo/03-llegada-destino.jpg?v=b960d84cc4)
 
 **Paso 4**
 
-![Isla del Hielo: Llegada → destino](/assets/wiki/routes/isla-del-hielo/04-llegada-destino.jpg)
+![Isla del Hielo: Llegada → destino](/assets/wiki/routes/isla-del-hielo/04-llegada-destino.jpg?v=b960d84cc4)
 
 **Paso 5**
 
-![Isla del Hielo: Llegada → destino](/assets/wiki/routes/isla-del-hielo/05-llegada-destino.jpg)
+![Isla del Hielo: Llegada → destino](/assets/wiki/routes/isla-del-hielo/05-llegada-destino.jpg?v=b960d84cc4)
 
 **Paso 6**
 
-![Isla del Hielo: Llegada → destino](/assets/wiki/routes/isla-del-hielo/06-llegada-destino.jpg)
+![Isla del Hielo: Llegada → destino](/assets/wiki/routes/isla-del-hielo/06-llegada-destino.jpg?v=b960d84cc4)
 
 **Paso 7**
 
-![Isla del Hielo: Llegada → destino](/assets/wiki/routes/isla-del-hielo/07-llegada-destino.jpg)
+![Isla del Hielo: Llegada → destino](/assets/wiki/routes/isla-del-hielo/07-llegada-destino.jpg?v=b960d84cc4)
 
 ## Relacionado
 

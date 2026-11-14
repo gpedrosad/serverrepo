@@ -54,11 +54,11 @@ Flechas rojas = camino. Fotos del mapa real, paso por paso.
 
 **Paso 1**
 
-![Barco: Fargum: Depot → destino](/assets/wiki/routes/barco-fargum/01-depot-destino.jpg)
+![Barco: Fargum: Depot → destino](/assets/wiki/routes/barco-fargum/01-depot-destino.jpg?v=b960d84cc4)
 
 **Paso 2**
 
-![Barco: Fargum: Depot → destino](/assets/wiki/routes/barco-fargum/02-depot-destino.jpg)
+![Barco: Fargum: Depot → destino](/assets/wiki/routes/barco-fargum/02-depot-destino.jpg?v=b960d84cc4)
 
 ## Relacionado
 

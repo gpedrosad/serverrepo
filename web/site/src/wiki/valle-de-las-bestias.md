@@ -44,27 +44,27 @@ Flechas rojas = camino. Fotos del mapa real, paso por paso.
 
 **Paso 1**
 
-![Valle de las Bestias: Depot → portal](/assets/wiki/routes/valle-de-las-bestias/01-depot-portal.jpg)
+![Valle de las Bestias: Depot → portal](/assets/wiki/routes/valle-de-las-bestias/01-depot-portal.jpg?v=b960d84cc4)
 
 **Paso 2**
 
-![Valle de las Bestias: Depot → portal](/assets/wiki/routes/valle-de-las-bestias/02-depot-portal.jpg)
+![Valle de las Bestias: Depot → portal](/assets/wiki/routes/valle-de-las-bestias/02-depot-portal.jpg?v=b960d84cc4)
 
 **Paso 3**
 
-![Valle de las Bestias: Llegada → destino](/assets/wiki/routes/valle-de-las-bestias/03-llegada-destino.jpg)
+![Valle de las Bestias: Llegada → destino](/assets/wiki/routes/valle-de-las-bestias/03-llegada-destino.jpg?v=b960d84cc4)
 
 **Paso 4**
 
-![Valle de las Bestias: Llegada → destino](/assets/wiki/routes/valle-de-las-bestias/04-llegada-destino.jpg)
+![Valle de las Bestias: Llegada → destino](/assets/wiki/routes/valle-de-las-bestias/04-llegada-destino.jpg?v=b960d84cc4)
 
 **Paso 5**
 
-![Valle de las Bestias: Llegada → destino](/assets/wiki/routes/valle-de-las-bestias/05-llegada-destino.jpg)
+![Valle de las Bestias: Llegada → destino](/assets/wiki/routes/valle-de-las-bestias/05-llegada-destino.jpg?v=b960d84cc4)
 
 **Paso 6**
 
-![Valle de las Bestias: Llegada → destino](/assets/wiki/routes/valle-de-las-bestias/06-llegada-destino.jpg)
+![Valle de las Bestias: Llegada → destino](/assets/wiki/routes/valle-de-las-bestias/06-llegada-destino.jpg?v=b960d84cc4)
 
 ## Relacionado
 

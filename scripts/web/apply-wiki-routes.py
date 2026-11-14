@@ -11,6 +11,7 @@ cada artículo. El bloque se inserta antes de `## Relacionado` (o al final).
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 from pathlib import Path
@@ -39,6 +40,7 @@ PAGES = {
 
 def main() -> int:
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    version = hashlib.sha1(MANIFEST.read_bytes()).hexdigest()[:10]
     for page, slug in PAGES.items():
         path = WIKI / f"{page}.md"
         text = path.read_text(encoding="utf-8")
@@ -50,7 +52,7 @@ def main() -> int:
                  "Flechas rojas = camino. Fotos del mapa real, paso por paso.", ""]
         for img in images:
             lines += [f"**Paso {img['step']}**", "",
-                      f"![{img['caption']}](/assets/wiki/routes/{img['file']})", ""]
+                      f"![{img['caption']}](/assets/wiki/routes/{img['file']}?v={version})", ""]
         block = "\n".join(lines).rstrip() + "\n\n"
         # sacar marcadores viejos y la sección anterior (si existe), y volver a insertarla
         text = text.replace("<!-- RUTA_IMAGENES:START -->\n", "").replace("<!-- RUTA_IMAGENES:END -->\n", "")

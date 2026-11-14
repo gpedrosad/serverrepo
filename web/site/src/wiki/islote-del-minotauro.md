@@ -43,11 +43,11 @@ Flechas rojas = camino. Fotos del mapa real, paso por paso.
 
 **Paso 1**
 
-![Islote del Minotauro: Depot → destino](/assets/wiki/routes/islote-del-minotauro/01-depot-destino.jpg)
+![Islote del Minotauro: Depot → destino](/assets/wiki/routes/islote-del-minotauro/01-depot-destino.jpg?v=b960d84cc4)
 
 **Paso 2**
 
-![Islote del Minotauro: Depot → destino](/assets/wiki/routes/islote-del-minotauro/02-depot-destino.jpg)
+![Islote del Minotauro: Depot → destino](/assets/wiki/routes/islote-del-minotauro/02-depot-destino.jpg?v=b960d84cc4)
 
 ## Relacionado
 

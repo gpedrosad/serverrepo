@@ -92,11 +92,11 @@ Flechas rojas = camino. Fotos del mapa real, paso por paso.
 
 **Paso 1**
 
-![El Crisol: Depot → portal](/assets/wiki/routes/el-crisol/01-depot-portal.jpg)
+![El Crisol: Depot → portal](/assets/wiki/routes/el-crisol/01-depot-portal.jpg?v=b960d84cc4)
 
 **Paso 2**
 
-![El Crisol: Depot → portal](/assets/wiki/routes/el-crisol/02-depot-portal.jpg)
+![El Crisol: Depot → portal](/assets/wiki/routes/el-crisol/02-depot-portal.jpg?v=b960d84cc4)
 
 ## Relacionado
 

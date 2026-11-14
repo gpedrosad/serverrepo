@@ -77,11 +77,11 @@ Flechas rojas = camino. Fotos del mapa real, paso por paso.
 
 **Paso 1**
 
-![Wave Arena: Depot → portal](/assets/wiki/routes/wave-arena/01-depot-portal.jpg)
+![Wave Arena: Depot → portal](/assets/wiki/routes/wave-arena/01-depot-portal.jpg?v=b960d84cc4)
 
 **Paso 2**
 
-![Wave Arena: Depot → portal](/assets/wiki/routes/wave-arena/02-depot-portal.jpg)
+![Wave Arena: Depot → portal](/assets/wiki/routes/wave-arena/02-depot-portal.jpg?v=b960d84cc4)
 
 ## Relacionado
 

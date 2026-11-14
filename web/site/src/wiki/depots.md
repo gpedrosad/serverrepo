@@ -45,11 +45,11 @@ Flechas rojas = camino. Fotos del mapa real, paso por paso.
 
 **Paso 1**
 
-![Depot y plaza de portales: Depot → destino](/assets/wiki/routes/templo-plaza/01-depot-destino.jpg)
+![Depot y plaza de portales: Depot → destino](/assets/wiki/routes/templo-plaza/01-depot-destino.jpg?v=b960d84cc4)
 
 **Paso 2**
 
-![Depot y plaza de portales: Depot → destino](/assets/wiki/routes/templo-plaza/02-depot-destino.jpg)
+![Depot y plaza de portales: Depot → destino](/assets/wiki/routes/templo-plaza/02-depot-destino.jpg?v=b960d84cc4)
 
 ## Relacionado
 

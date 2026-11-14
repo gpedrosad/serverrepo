@@ -65,19 +65,19 @@ Flechas rojas = camino. Fotos del mapa real, paso por paso.
 
 **Paso 1**
 
-![Epstein Island: Depot → barco](/assets/wiki/routes/epstein-island/01-depot-barco.jpg)
+![Epstein Island: Depot → barco](/assets/wiki/routes/epstein-island/01-depot-barco.jpg?v=b960d84cc4)
 
 **Paso 2**
 
-![Epstein Island: Depot → barco](/assets/wiki/routes/epstein-island/02-depot-barco.jpg)
+![Epstein Island: Depot → barco](/assets/wiki/routes/epstein-island/02-depot-barco.jpg?v=b960d84cc4)
 
 **Paso 3**
 
-![Epstein Island: Llegada → destino](/assets/wiki/routes/epstein-island/03-llegada-destino.jpg)
+![Epstein Island: Llegada → destino](/assets/wiki/routes/epstein-island/03-llegada-destino.jpg?v=b960d84cc4)
 
 **Paso 4**
 
-![Epstein Island: Llegada → destino](/assets/wiki/routes/epstein-island/04-llegada-destino.jpg)
+![Epstein Island: Llegada → destino](/assets/wiki/routes/epstein-island/04-llegada-destino.jpg?v=b960d84cc4)
 
 ## Relacionado
 
