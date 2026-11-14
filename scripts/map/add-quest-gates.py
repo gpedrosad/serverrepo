@@ -33,12 +33,26 @@ br = __import__("importlib.util").util.module_from_spec(_spec)
 _spec.loader.exec_module(br)
 
 # Quests sin puerta de level en el camino (las que ya tienen se saltean).
-TARGETS = ["imperial", "gauntlet", "frozen-lumberjack", "frozen-yeti", "frozen-lair",
+TARGETS = ["imperial", "frozen-lumberjack", "frozen-yeti", "frozen-lair",
            "desert-lizard", "desert-bone", "crusader-helmet", "guardian-halberd", "dark-shield"]
 
 # Casos donde el camino llega por una escalera y no hay un punto limpio en el mismo piso.
 MANUAL = {
     "guardian-halberd": {"point": (144, 143, 4), "axis": "ns", "walls": [(143, 143, 4)]},
+}
+
+# Estilo de puerta/pared por contexto: dorada en templos/castillo, madera en costa/campamento,
+# piedra en cuevas, arenisca en el desierto.
+STYLE = {
+    "imperial":         {"door_ns": 1247, "door_ew": 1245, "wall": 1050},
+    "frozen-lumberjack": {"door_ns": 1229, "door_ew": 1227, "wall": 1038},
+    "frozen-yeti":      {"door_ns": 1229, "door_ew": 1227, "wall": 1052},
+    "frozen-lair":      {"door_ns": 1229, "door_ew": 1227, "wall": 1052},
+    "desert-lizard":    {"door_ns": 1247, "door_ew": 1245, "wall": 1067},
+    "desert-bone":      {"door_ns": 1247, "door_ew": 1245, "wall": 1067},
+    "crusader-helmet":  {"door_ns": 1229, "door_ew": 1227, "wall": 1038},
+    "guardian-halberd": {"door_ns": 1229, "door_ew": 1227, "wall": 1038},
+    "dark-shield":      {"door_ns": 1229, "door_ew": 1227, "wall": 1052},
 }
 
 DOOR_IDS = {1219, 1220, 1221, 1222, 1223, 1224, 1225, 1226, 1227, 1228, 1229, 1230,
@@ -229,13 +243,43 @@ def main() -> int:
                     return True
             return False
 
+        def gate_sides(p, axis):
+            """Lados inmediatos de la puerta. Si el lado es caminable, hay que taparlo;
+            si el camino sigue más allá, la puerta sería esquiviable y no sirve."""
+            x, y, z = p
+            dirs = [(-1, 0), (1, 0)] if axis == "ns" else [(0, -1), (0, 1)]
+            walls, frame = [], []
+            for dx, dy in dirs:
+                q = (x + dx, y + dy, z)
+                if walk(q):
+                    beyond = (x + 2 * dx, y + 2 * dy, z)
+                    if walk(beyond):
+                        return None
+                    walls.append(q)
+                else:
+                    tile = nodes.get(q)
+                    if tile is None:
+                        continue
+                    if any(it["unique"] is not None or it["tele"] is not None for it in br.tiles[q]["items"]):
+                        return None
+                    if has_special(q):
+                        continue
+                    items = br.tiles[q]["items"]
+                    if any("wall" in item_name(it["id"]) and "block_solid" in br.flags_of(it) for it in items):
+                        continue
+                    ground = [it for it in items if br.group_of(it) == "ground"]
+                    if not ground or any("water" in item_name(it["id"]) for it in ground):
+                        continue
+                    frame.append(q)
+            return walls, frame
+
         candidates = []
         if qid in MANUAL:
             m = MANUAL[qid]
             p = m["point"]
             walls = [w for w in m["walls"] if walk(w) and not has_special(w)]
             if walk(p) and not has_special(p):
-                candidates.append((len(walls) + 1, 5, m["axis"], p, walls))
+                candidates.append((len(walls), 5, m["axis"], p, walls, []))
         for i, p in enumerate(pts if qid not in MANUAL else []):
             if p[2] != chest[2] or p == chest or not walk(p) or has_special(p):
                 continue
@@ -249,15 +293,11 @@ def main() -> int:
             dx = (nxt[0] - prev[0]) if prev and nxt else (nxt[0] - p[0]) if nxt else (p[0] - prev[0])
             dy = (nxt[1] - prev[1]) if prev and nxt else (nxt[1] - p[1]) if nxt else (p[1] - prev[1])
             axis = "ns" if abs(dy) >= abs(dx) else "ew"
-            perp = [(p[0] + k, p[1], p[2]) for k in range(-3, 4)] if axis == "ns" else \
-                   [(p[0], p[1] + k, p[2]) for k in range(-3, 4)]
-            run = [q2 for q2 in perp if walk(q2)]
-            if len(run) > 5:
+            sides = gate_sides(p, axis)
+            if sides is None:
                 continue
-            walls = [q2 for q2 in run if q2 != p]
-            if any(has_special(w) for w in walls):
-                continue
-            candidates.append((len(run), d, axis, p, walls))
+            walls, frame = sides
+            candidates.append((len(frame), d, axis, p, walls, frame))
         if not candidates:
             # fallback: para barco/portal, la entrada (primer punto del último tramo);
             # para caminar, el punto más cercano al cofre (la entrada de la zona).
@@ -270,16 +310,31 @@ def main() -> int:
             for p in ordered:
                 d = abs(p[0] - chest[0]) + abs(p[1] - chest[1])
                 if d >= 3 and walk(p) and not has_special(p):
-                    candidates.append((9, d, "ns", p, []))
+                    dx = pts_last[-1][0] - pts_last[0][0]
+                    dy = pts_last[-1][1] - pts_last[0][1]
+                    axis = "ns" if abs(dy) >= abs(dx) else "ew"
+                    side = [(p[0] - 1, p[1], p[2]), (p[0] + 1, p[1], p[2])] if axis == "ns" else \
+                           [(p[0], p[1] - 1, p[2]), (p[0], p[1] + 1, p[2])]
+                    forced = []
+                    for q in side:
+                        tile = nodes.get(q)
+                        if tile is None or q in SPAWNS:
+                            continue
+                        if any(it["unique"] is not None or it["tele"] is not None or it["action"] is not None
+                               for it in br.tiles[q]["items"]):
+                            continue
+                        forced.append(q)
+                    candidates.append((len(forced), d, axis, p, forced, []))
                     break
             if not candidates:
                 print(f"AVISO: no encontré dónde poner la puerta de {qid}", file=sys.stderr)
                 continue
-        candidates.sort(key=lambda c: (abs(c[1] - 5), c[0], c[1]))
-        run_len, d, axis, p, walls = candidates[0]
-        door_id = 1229 if axis == "ns" else 1227       # puerta horizontal si el camino va N/S
+        candidates.sort(key=lambda c: (c[0], abs(c[1] - 5), c[1]))
+        _frame_n, d, axis, p, walls, frame = candidates[0]
+        style = STYLE.get(qid, {"door_ns": 1229, "door_ew": 1227, "wall": 1052})
+        door_id = style["door_ns"] if axis == "ns" else style["door_ew"]
         action = level + 1000
-        wall_id = wall_item(p, br.tiles)
+        wall_id = style["wall"]
         tile = nodes.get(p)
         if tile is None:
             print(f"AVISO: no existe el tile {p} para {qid}", file=sys.stderr)
@@ -287,7 +342,7 @@ def main() -> int:
         add_item(tile, door_id, action)
         used.add(p)
         wall_positions = []
-        for w in walls:
+        for w in walls + frame:
             wt = nodes.get(w)
             if wt is not None:
                 add_item(wt, wall_id)
