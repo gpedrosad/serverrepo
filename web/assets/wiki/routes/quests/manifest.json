@@ -1,0 +1,807 @@
+{
+  "annihilator": [
+    {
+      "file": "quests/annihilator/01-entrada-del-annihilator.jpg",
+      "caption": "Annihilator: Entrada del Annihilator",
+      "step": 1
+    },
+    {
+      "file": "quests/annihilator/02-entrada-del-annihilator.jpg",
+      "caption": "Annihilator: Entrada del Annihilator",
+      "step": 2
+    },
+    {
+      "file": "quests/annihilator/03-entrada-del-annihilator.jpg",
+      "caption": "Annihilator: Entrada del Annihilator",
+      "step": 3
+    },
+    {
+      "file": "quests/annihilator/04-entrada-del-annihilator.jpg",
+      "caption": "Annihilator: Entrada del Annihilator",
+      "step": 4
+    },
+    {
+      "file": "quests/annihilator/05-entrada-del-annihilator.jpg",
+      "caption": "Annihilator: Entrada del Annihilator",
+      "step": 5
+    },
+    {
+      "file": "quests/annihilator/06-entrada-del-annihilator.jpg",
+      "caption": "Annihilator: Entrada del Annihilator",
+      "step": 6
+    }
+  ],
+  "pharaoh": [
+    {
+      "file": "quests/pharaoh/01-tumbas-del-desierto.jpg",
+      "caption": "Pharaoh Quest: Tumbas del desierto",
+      "step": 1
+    },
+    {
+      "file": "quests/pharaoh/02-tumbas-del-desierto.jpg",
+      "caption": "Pharaoh Quest: Tumbas del desierto",
+      "step": 2
+    },
+    {
+      "file": "quests/pharaoh/03-tumbas-del-desierto.jpg",
+      "caption": "Pharaoh Quest: Tumbas del desierto",
+      "step": 3
+    },
+    {
+      "file": "quests/pharaoh/04-tumbas-del-desierto.jpg",
+      "caption": "Pharaoh Quest: Tumbas del desierto",
+      "step": 4
+    },
+    {
+      "file": "quests/pharaoh/05-tumbas-del-desierto.jpg",
+      "caption": "Pharaoh Quest: Tumbas del desierto",
+      "step": 5
+    },
+    {
+      "file": "quests/pharaoh/06-tumbas-del-desierto.jpg",
+      "caption": "Pharaoh Quest: Tumbas del desierto",
+      "step": 6
+    }
+  ],
+  "imperial": [
+    {
+      "file": "quests/imperial/01-tesorer-a-del-castillo.jpg",
+      "caption": "Castillo Imperial: Tesorería del castillo",
+      "step": 1
+    },
+    {
+      "file": "quests/imperial/02-tesorer-a-del-castillo.jpg",
+      "caption": "Castillo Imperial: Tesorería del castillo",
+      "step": 2
+    },
+    {
+      "file": "quests/imperial/03-tesorer-a-del-castillo.jpg",
+      "caption": "Castillo Imperial: Tesorería del castillo",
+      "step": 3
+    },
+    {
+      "file": "quests/imperial/04-tesorer-a-del-castillo.jpg",
+      "caption": "Castillo Imperial: Tesorería del castillo",
+      "step": 4
+    },
+    {
+      "file": "quests/imperial/05-tesorer-a-del-castillo.jpg",
+      "caption": "Castillo Imperial: Tesorería del castillo",
+      "step": 5
+    },
+    {
+      "file": "quests/imperial/06-tesorer-a-del-castillo.jpg",
+      "caption": "Castillo Imperial: Tesorería del castillo",
+      "step": 6
+    },
+    {
+      "file": "quests/imperial/07-tesorer-a-del-castillo.jpg",
+      "caption": "Castillo Imperial: Tesorería del castillo",
+      "step": 7
+    },
+    {
+      "file": "quests/imperial/08-tesorer-a-del-castillo.jpg",
+      "caption": "Castillo Imperial: Tesorería del castillo",
+      "step": 8
+    }
+  ],
+  "hell": [
+    {
+      "file": "quests/hell/01-c-mara-de-la-elecci-n.jpg",
+      "caption": "Hell Quest: Cámara de la Elección",
+      "step": 1
+    },
+    {
+      "file": "quests/hell/02-c-mara-de-la-elecci-n.jpg",
+      "caption": "Hell Quest: Cámara de la Elección",
+      "step": 2
+    },
+    {
+      "file": "quests/hell/03-c-mara-de-la-elecci-n.jpg",
+      "caption": "Hell Quest: Cámara de la Elección",
+      "step": 3
+    },
+    {
+      "file": "quests/hell/04-c-mara-de-la-elecci-n.jpg",
+      "caption": "Hell Quest: Cámara de la Elección",
+      "step": 4
+    },
+    {
+      "file": "quests/hell/05-c-mara-de-la-elecci-n.jpg",
+      "caption": "Hell Quest: Cámara de la Elección",
+      "step": 5
+    }
+  ],
+  "gauntlet": [
+    {
+      "file": "quests/gauntlet/01-sala-final-del-gauntlet.jpg",
+      "caption": "TP Gauntlet: Sala final del Gauntlet",
+      "step": 1
+    },
+    {
+      "file": "quests/gauntlet/02-sala-final-del-gauntlet.jpg",
+      "caption": "TP Gauntlet: Sala final del Gauntlet",
+      "step": 2
+    },
+    {
+      "file": "quests/gauntlet/03-sala-final-del-gauntlet.jpg",
+      "caption": "TP Gauntlet: Sala final del Gauntlet",
+      "step": 3
+    }
+  ],
+  "frozen-lumberjack": [
+    {
+      "file": "quests/frozen-lumberjack/01-cofre-del-le-ador.jpg",
+      "caption": "Isla del Hielo: cofre del leñador: Cofre del leñador",
+      "step": 1
+    },
+    {
+      "file": "quests/frozen-lumberjack/02-cofre-del-le-ador.jpg",
+      "caption": "Isla del Hielo: cofre del leñador: Cofre del leñador",
+      "step": 2
+    },
+    {
+      "file": "quests/frozen-lumberjack/03-cofre-del-le-ador.jpg",
+      "caption": "Isla del Hielo: cofre del leñador: Cofre del leñador",
+      "step": 3
+    }
+  ],
+  "frozen-yeti": [
+    {
+      "file": "quests/frozen-yeti/01-islote-del-yeti.jpg",
+      "caption": "Isla del Hielo: tesoro del Yeti: Islote del Yeti",
+      "step": 1
+    },
+    {
+      "file": "quests/frozen-yeti/02-islote-del-yeti.jpg",
+      "caption": "Isla del Hielo: tesoro del Yeti: Islote del Yeti",
+      "step": 2
+    },
+    {
+      "file": "quests/frozen-yeti/03-islote-del-yeti.jpg",
+      "caption": "Isla del Hielo: tesoro del Yeti: Islote del Yeti",
+      "step": 3
+    }
+  ],
+  "frozen-lair": [
+    {
+      "file": "quests/frozen-lair/01-guarida-de-la-isla-del-hielo.jpg",
+      "caption": "Isla del Hielo: guarida: Guarida de la Isla del Hielo",
+      "step": 1
+    },
+    {
+      "file": "quests/frozen-lair/02-guarida-de-la-isla-del-hielo.jpg",
+      "caption": "Isla del Hielo: guarida: Guarida de la Isla del Hielo",
+      "step": 2
+    },
+    {
+      "file": "quests/frozen-lair/03-guarida-de-la-isla-del-hielo.jpg",
+      "caption": "Isla del Hielo: guarida: Guarida de la Isla del Hielo",
+      "step": 3
+    },
+    {
+      "file": "quests/frozen-lair/04-guarida-de-la-isla-del-hielo.jpg",
+      "caption": "Isla del Hielo: guarida: Guarida de la Isla del Hielo",
+      "step": 4
+    },
+    {
+      "file": "quests/frozen-lair/05-guarida-de-la-isla-del-hielo.jpg",
+      "caption": "Isla del Hielo: guarida: Guarida de la Isla del Hielo",
+      "step": 5
+    }
+  ],
+  "desert-lizard": [
+    {
+      "file": "quests/desert-lizard/01-templo-de-los-lagartos.jpg",
+      "caption": "Desierto: Templo de los lagartos: Templo de los lagartos",
+      "step": 1
+    },
+    {
+      "file": "quests/desert-lizard/02-templo-de-los-lagartos.jpg",
+      "caption": "Desierto: Templo de los lagartos: Templo de los lagartos",
+      "step": 2
+    },
+    {
+      "file": "quests/desert-lizard/03-templo-de-los-lagartos.jpg",
+      "caption": "Desierto: Templo de los lagartos: Templo de los lagartos",
+      "step": 3
+    },
+    {
+      "file": "quests/desert-lizard/04-templo-de-los-lagartos.jpg",
+      "caption": "Desierto: Templo de los lagartos: Templo de los lagartos",
+      "step": 4
+    }
+  ],
+  "desert-bone": [
+    {
+      "file": "quests/desert-bone/01-campo-de-huesos.jpg",
+      "caption": "Desierto: Campo de huesos: Campo de huesos",
+      "step": 1
+    },
+    {
+      "file": "quests/desert-bone/02-campo-de-huesos.jpg",
+      "caption": "Desierto: Campo de huesos: Campo de huesos",
+      "step": 2
+    },
+    {
+      "file": "quests/desert-bone/03-campo-de-huesos.jpg",
+      "caption": "Desierto: Campo de huesos: Campo de huesos",
+      "step": 3
+    },
+    {
+      "file": "quests/desert-bone/04-campo-de-huesos.jpg",
+      "caption": "Desierto: Campo de huesos: Campo de huesos",
+      "step": 4
+    }
+  ],
+  "fire-cave": [
+    {
+      "file": "quests/fire-cave/01-palanca-de-la-cueva-de-fuego.jpg",
+      "caption": "Cueva de Fuego (3 cofres): Palanca de la Cueva de Fuego",
+      "step": 1
+    },
+    {
+      "file": "quests/fire-cave/02-palanca-de-la-cueva-de-fuego.jpg",
+      "caption": "Cueva de Fuego (3 cofres): Palanca de la Cueva de Fuego",
+      "step": 2
+    },
+    {
+      "file": "quests/fire-cave/03-palanca-de-la-cueva-de-fuego.jpg",
+      "caption": "Cueva de Fuego (3 cofres): Palanca de la Cueva de Fuego",
+      "step": 3
+    },
+    {
+      "file": "quests/fire-cave/04-palanca-de-la-cueva-de-fuego.jpg",
+      "caption": "Cueva de Fuego (3 cofres): Palanca de la Cueva de Fuego",
+      "step": 4
+    },
+    {
+      "file": "quests/fire-cave/05-palanca-de-la-cueva-de-fuego.jpg",
+      "caption": "Cueva de Fuego (3 cofres): Palanca de la Cueva de Fuego",
+      "step": 5
+    },
+    {
+      "file": "quests/fire-cave/06-palanca-de-la-cueva-de-fuego.jpg",
+      "caption": "Cueva de Fuego (3 cofres): Palanca de la Cueva de Fuego",
+      "step": 6
+    },
+    {
+      "file": "quests/fire-cave/07-palanca-de-la-cueva-de-fuego.jpg",
+      "caption": "Cueva de Fuego (3 cofres): Palanca de la Cueva de Fuego",
+      "step": 7
+    }
+  ],
+  "boh": [
+    {
+      "file": "quests/boh/01-torre-de-boots-of-haste.jpg",
+      "caption": "Boots of Haste: Torre de Boots of Haste",
+      "step": 1
+    },
+    {
+      "file": "quests/boh/02-torre-de-boots-of-haste.jpg",
+      "caption": "Boots of Haste: Torre de Boots of Haste",
+      "step": 2
+    },
+    {
+      "file": "quests/boh/03-torre-de-boots-of-haste.jpg",
+      "caption": "Boots of Haste: Torre de Boots of Haste",
+      "step": 3
+    }
+  ],
+  "guardian-halberd": [
+    {
+      "file": "quests/guardian-halberd/01-campamento-orco.jpg",
+      "caption": "Guardian Halberd: Campamento orco",
+      "step": 1
+    },
+    {
+      "file": "quests/guardian-halberd/02-campamento-orco.jpg",
+      "caption": "Guardian Halberd: Campamento orco",
+      "step": 2
+    },
+    {
+      "file": "quests/guardian-halberd/03-campamento-orco.jpg",
+      "caption": "Guardian Halberd: Campamento orco",
+      "step": 3
+    },
+    {
+      "file": "quests/guardian-halberd/04-campamento-orco.jpg",
+      "caption": "Guardian Halberd: Campamento orco",
+      "step": 4
+    },
+    {
+      "file": "quests/guardian-halberd/05-campamento-orco.jpg",
+      "caption": "Guardian Halberd: Campamento orco",
+      "step": 5
+    },
+    {
+      "file": "quests/guardian-halberd/06-campamento-orco.jpg",
+      "caption": "Guardian Halberd: Campamento orco",
+      "step": 6
+    },
+    {
+      "file": "quests/guardian-halberd/07-campamento-orco.jpg",
+      "caption": "Guardian Halberd: Campamento orco",
+      "step": 7
+    },
+    {
+      "file": "quests/guardian-halberd/08-campamento-orco.jpg",
+      "caption": "Guardian Halberd: Campamento orco",
+      "step": 8
+    },
+    {
+      "file": "quests/guardian-halberd/09-campamento-orco.jpg",
+      "caption": "Guardian Halberd: Campamento orco",
+      "step": 9
+    }
+  ],
+  "crusader-helmet": [
+    {
+      "file": "quests/crusader-helmet/01-costa-de-los-piratas.jpg",
+      "caption": "Crusader Helmet: Costa de los piratas",
+      "step": 1
+    },
+    {
+      "file": "quests/crusader-helmet/02-costa-de-los-piratas.jpg",
+      "caption": "Crusader Helmet: Costa de los piratas",
+      "step": 2
+    },
+    {
+      "file": "quests/crusader-helmet/03-costa-de-los-piratas.jpg",
+      "caption": "Crusader Helmet: Costa de los piratas",
+      "step": 3
+    },
+    {
+      "file": "quests/crusader-helmet/04-costa-de-los-piratas.jpg",
+      "caption": "Crusader Helmet: Costa de los piratas",
+      "step": 4
+    }
+  ],
+  "lady-helmet": [
+    {
+      "file": "quests/lady-helmet/01-zona-helada.jpg",
+      "caption": "Lady Helmet: Zona helada",
+      "step": 1
+    },
+    {
+      "file": "quests/lady-helmet/02-zona-helada.jpg",
+      "caption": "Lady Helmet: Zona helada",
+      "step": 2
+    },
+    {
+      "file": "quests/lady-helmet/03-zona-helada.jpg",
+      "caption": "Lady Helmet: Zona helada",
+      "step": 3
+    },
+    {
+      "file": "quests/lady-helmet/04-zona-helada.jpg",
+      "caption": "Lady Helmet: Zona helada",
+      "step": 4
+    },
+    {
+      "file": "quests/lady-helmet/05-zona-helada.jpg",
+      "caption": "Lady Helmet: Zona helada",
+      "step": 5
+    },
+    {
+      "file": "quests/lady-helmet/06-zona-helada.jpg",
+      "caption": "Lady Helmet: Zona helada",
+      "step": 6
+    },
+    {
+      "file": "quests/lady-helmet/07-zona-helada.jpg",
+      "caption": "Lady Helmet: Zona helada",
+      "step": 7
+    }
+  ],
+  "steel-boots": [
+    {
+      "file": "quests/steel-boots/01-cueva-de-demonios.jpg",
+      "caption": "Steel Boots: Cueva de demonios",
+      "step": 1
+    },
+    {
+      "file": "quests/steel-boots/02-cueva-de-demonios.jpg",
+      "caption": "Steel Boots: Cueva de demonios",
+      "step": 2
+    },
+    {
+      "file": "quests/steel-boots/03-cueva-de-demonios.jpg",
+      "caption": "Steel Boots: Cueva de demonios",
+      "step": 3
+    },
+    {
+      "file": "quests/steel-boots/04-cueva-de-demonios.jpg",
+      "caption": "Steel Boots: Cueva de demonios",
+      "step": 4
+    },
+    {
+      "file": "quests/steel-boots/05-cueva-de-demonios.jpg",
+      "caption": "Steel Boots: Cueva de demonios",
+      "step": 5
+    }
+  ],
+  "knight-legs": [
+    {
+      "file": "quests/knight-legs/01-cripta-dungeon.jpg",
+      "caption": "Knight Legs: Cripta/dungeon",
+      "step": 1
+    },
+    {
+      "file": "quests/knight-legs/02-cripta-dungeon.jpg",
+      "caption": "Knight Legs: Cripta/dungeon",
+      "step": 2
+    },
+    {
+      "file": "quests/knight-legs/03-cripta-dungeon.jpg",
+      "caption": "Knight Legs: Cripta/dungeon",
+      "step": 3
+    },
+    {
+      "file": "quests/knight-legs/04-cripta-dungeon.jpg",
+      "caption": "Knight Legs: Cripta/dungeon",
+      "step": 4
+    },
+    {
+      "file": "quests/knight-legs/05-cripta-dungeon.jpg",
+      "caption": "Knight Legs: Cripta/dungeon",
+      "step": 5
+    },
+    {
+      "file": "quests/knight-legs/06-cripta-dungeon.jpg",
+      "caption": "Knight Legs: Cripta/dungeon",
+      "step": 6
+    },
+    {
+      "file": "quests/knight-legs/07-cripta-dungeon.jpg",
+      "caption": "Knight Legs: Cripta/dungeon",
+      "step": 7
+    }
+  ],
+  "ancients-a": [
+    {
+      "file": "quests/ancients-a/01-entrada-de-la-tumba.jpg",
+      "caption": "Helmet of the Ancients (tumba): Entrada de la tumba",
+      "step": 1
+    },
+    {
+      "file": "quests/ancients-a/02-entrada-de-la-tumba.jpg",
+      "caption": "Helmet of the Ancients (tumba): Entrada de la tumba",
+      "step": 2
+    },
+    {
+      "file": "quests/ancients-a/03-entrada-de-la-tumba.jpg",
+      "caption": "Helmet of the Ancients (tumba): Entrada de la tumba",
+      "step": 3
+    },
+    {
+      "file": "quests/ancients-a/04-entrada-de-la-tumba.jpg",
+      "caption": "Helmet of the Ancients (tumba): Entrada de la tumba",
+      "step": 4
+    },
+    {
+      "file": "quests/ancients-a/05-entrada-de-la-tumba.jpg",
+      "caption": "Helmet of the Ancients (tumba): Entrada de la tumba",
+      "step": 5
+    }
+  ],
+  "ancients-b": [
+    {
+      "file": "quests/ancients-b/01-cripta-de-los-ancients.jpg",
+      "caption": "Helmet of the Ancients (cripta): Cripta de los Ancients",
+      "step": 1
+    },
+    {
+      "file": "quests/ancients-b/02-cripta-de-los-ancients.jpg",
+      "caption": "Helmet of the Ancients (cripta): Cripta de los Ancients",
+      "step": 2
+    },
+    {
+      "file": "quests/ancients-b/03-cripta-de-los-ancients.jpg",
+      "caption": "Helmet of the Ancients (cripta): Cripta de los Ancients",
+      "step": 3
+    },
+    {
+      "file": "quests/ancients-b/04-cripta-de-los-ancients.jpg",
+      "caption": "Helmet of the Ancients (cripta): Cripta de los Ancients",
+      "step": 4
+    },
+    {
+      "file": "quests/ancients-b/05-cripta-de-los-ancients.jpg",
+      "caption": "Helmet of the Ancients (cripta): Cripta de los Ancients",
+      "step": 5
+    },
+    {
+      "file": "quests/ancients-b/06-cripta-de-los-ancients.jpg",
+      "caption": "Helmet of the Ancients (cripta): Cripta de los Ancients",
+      "step": 6
+    }
+  ],
+  "shield-honour": [
+    {
+      "file": "quests/shield-honour/01-entrada-de-la-guarida-de-la-hydra.jpg",
+      "caption": "Shield of Honour: Entrada de la guarida de la hydra",
+      "step": 1
+    },
+    {
+      "file": "quests/shield-honour/02-entrada-de-la-guarida-de-la-hydra.jpg",
+      "caption": "Shield of Honour: Entrada de la guarida de la hydra",
+      "step": 2
+    },
+    {
+      "file": "quests/shield-honour/03-entrada-de-la-guarida-de-la-hydra.jpg",
+      "caption": "Shield of Honour: Entrada de la guarida de la hydra",
+      "step": 3
+    },
+    {
+      "file": "quests/shield-honour/04-entrada-de-la-guarida-de-la-hydra.jpg",
+      "caption": "Shield of Honour: Entrada de la guarida de la hydra",
+      "step": 4
+    },
+    {
+      "file": "quests/shield-honour/05-entrada-de-la-guarida-de-la-hydra.jpg",
+      "caption": "Shield of Honour: Entrada de la guarida de la hydra",
+      "step": 5
+    }
+  ],
+  "dark-shield": [
+    {
+      "file": "quests/dark-shield/01-entrada-del-dungeon-de-minotauros.jpg",
+      "caption": "Dark Shield (2 cofres): Entrada del dungeon de minotauros",
+      "step": 1
+    },
+    {
+      "file": "quests/dark-shield/02-entrada-del-dungeon-de-minotauros.jpg",
+      "caption": "Dark Shield (2 cofres): Entrada del dungeon de minotauros",
+      "step": 2
+    },
+    {
+      "file": "quests/dark-shield/03-entrada-del-dungeon-de-minotauros.jpg",
+      "caption": "Dark Shield (2 cofres): Entrada del dungeon de minotauros",
+      "step": 3
+    },
+    {
+      "file": "quests/dark-shield/04-entrada-del-dungeon-de-minotauros.jpg",
+      "caption": "Dark Shield (2 cofres): Entrada del dungeon de minotauros",
+      "step": 4
+    }
+  ],
+  "giant-sword": [
+    {
+      "file": "quests/giant-sword/01-cueva-de-behemoths.jpg",
+      "caption": "Giant Sword: Cueva de behemoths",
+      "step": 1
+    },
+    {
+      "file": "quests/giant-sword/02-cueva-de-behemoths.jpg",
+      "caption": "Giant Sword: Cueva de behemoths",
+      "step": 2
+    },
+    {
+      "file": "quests/giant-sword/03-cueva-de-behemoths.jpg",
+      "caption": "Giant Sword: Cueva de behemoths",
+      "step": 3
+    },
+    {
+      "file": "quests/giant-sword/04-cueva-de-behemoths.jpg",
+      "caption": "Giant Sword: Cueva de behemoths",
+      "step": 4
+    },
+    {
+      "file": "quests/giant-sword/05-cueva-de-behemoths.jpg",
+      "caption": "Giant Sword: Cueva de behemoths",
+      "step": 5
+    },
+    {
+      "file": "quests/giant-sword/06-cueva-de-behemoths.jpg",
+      "caption": "Giant Sword: Cueva de behemoths",
+      "step": 6
+    }
+  ],
+  "bright-sword": [
+    {
+      "file": "quests/bright-sword/01-cripta.jpg",
+      "caption": "Bright Sword: Cripta",
+      "step": 1
+    },
+    {
+      "file": "quests/bright-sword/02-cripta.jpg",
+      "caption": "Bright Sword: Cripta",
+      "step": 2
+    },
+    {
+      "file": "quests/bright-sword/03-cripta.jpg",
+      "caption": "Bright Sword: Cripta",
+      "step": 3
+    },
+    {
+      "file": "quests/bright-sword/04-cripta.jpg",
+      "caption": "Bright Sword: Cripta",
+      "step": 4
+    },
+    {
+      "file": "quests/bright-sword/05-cripta.jpg",
+      "caption": "Bright Sword: Cripta",
+      "step": 5
+    },
+    {
+      "file": "quests/bright-sword/06-cripta.jpg",
+      "caption": "Bright Sword: Cripta",
+      "step": 6
+    }
+  ],
+  "golden-armor": [
+    {
+      "file": "quests/golden-armor/01-fortaleza-orca.jpg",
+      "caption": "Golden Armor: Fortaleza orca",
+      "step": 1
+    },
+    {
+      "file": "quests/golden-armor/02-fortaleza-orca.jpg",
+      "caption": "Golden Armor: Fortaleza orca",
+      "step": 2
+    },
+    {
+      "file": "quests/golden-armor/03-fortaleza-orca.jpg",
+      "caption": "Golden Armor: Fortaleza orca",
+      "step": 3
+    },
+    {
+      "file": "quests/golden-armor/04-fortaleza-orca.jpg",
+      "caption": "Golden Armor: Fortaleza orca",
+      "step": 4
+    },
+    {
+      "file": "quests/golden-armor/05-fortaleza-orca.jpg",
+      "caption": "Golden Armor: Fortaleza orca",
+      "step": 5
+    },
+    {
+      "file": "quests/golden-armor/06-fortaleza-orca.jpg",
+      "caption": "Golden Armor: Fortaleza orca",
+      "step": 6
+    },
+    {
+      "file": "quests/golden-armor/07-fortaleza-orca.jpg",
+      "caption": "Golden Armor: Fortaleza orca",
+      "step": 7
+    },
+    {
+      "file": "quests/golden-armor/08-fortaleza-orca.jpg",
+      "caption": "Golden Armor: Fortaleza orca",
+      "step": 8
+    }
+  ],
+  "amazon-shield": [
+    {
+      "file": "quests/amazon-shield/01-cueva-de-las-amazonas.jpg",
+      "caption": "Amazon Shield: Cueva de las amazonas",
+      "step": 1
+    },
+    {
+      "file": "quests/amazon-shield/02-cueva-de-las-amazonas.jpg",
+      "caption": "Amazon Shield: Cueva de las amazonas",
+      "step": 2
+    },
+    {
+      "file": "quests/amazon-shield/03-cueva-de-las-amazonas.jpg",
+      "caption": "Amazon Shield: Cueva de las amazonas",
+      "step": 3
+    },
+    {
+      "file": "quests/amazon-shield/04-cueva-de-las-amazonas.jpg",
+      "caption": "Amazon Shield: Cueva de las amazonas",
+      "step": 4
+    },
+    {
+      "file": "quests/amazon-shield/05-cueva-de-las-amazonas.jpg",
+      "caption": "Amazon Shield: Cueva de las amazonas",
+      "step": 5
+    },
+    {
+      "file": "quests/amazon-shield/06-cueva-de-las-amazonas.jpg",
+      "caption": "Amazon Shield: Cueva de las amazonas",
+      "step": 6
+    },
+    {
+      "file": "quests/amazon-shield/07-cueva-de-las-amazonas.jpg",
+      "caption": "Amazon Shield: Cueva de las amazonas",
+      "step": 7
+    }
+  ],
+  "pvp-arena": [
+    {
+      "file": "quests/pvp-arena/01-arena-pvp.jpg",
+      "caption": "Arena PvP: Arena PvP",
+      "step": 1
+    },
+    {
+      "file": "quests/pvp-arena/02-arena-pvp.jpg",
+      "caption": "Arena PvP: Arena PvP",
+      "step": 2
+    },
+    {
+      "file": "quests/pvp-arena/03-arena-pvp.jpg",
+      "caption": "Arena PvP: Arena PvP",
+      "step": 3
+    },
+    {
+      "file": "quests/pvp-arena/04-arena-pvp.jpg",
+      "caption": "Arena PvP: Arena PvP",
+      "step": 4
+    }
+  ],
+  "daily-task": [
+    {
+      "file": "quests/daily-task/01-huntmaster.jpg",
+      "caption": "Daily Task (Huntmaster): Huntmaster",
+      "step": 1
+    },
+    {
+      "file": "quests/daily-task/02-huntmaster.jpg",
+      "caption": "Daily Task (Huntmaster): Huntmaster",
+      "step": 2
+    },
+    {
+      "file": "quests/daily-task/03-huntmaster.jpg",
+      "caption": "Daily Task (Huntmaster): Huntmaster",
+      "step": 3
+    }
+  ],
+  "wave-arena": [
+    {
+      "file": "quests/wave-arena/01-campamento-de-la-wave-arena.jpg",
+      "caption": "Wave Arena: Campamento de la Wave Arena",
+      "step": 1
+    },
+    {
+      "file": "quests/wave-arena/02-campamento-de-la-wave-arena.jpg",
+      "caption": "Wave Arena: Campamento de la Wave Arena",
+      "step": 2
+    }
+  ],
+  "sand-clock": [
+    {
+      "file": "quests/sand-clock/01-sala-del-reloj.jpg",
+      "caption": "Reloj de Arena: Sala del Reloj",
+      "step": 1
+    },
+    {
+      "file": "quests/sand-clock/02-sala-del-reloj.jpg",
+      "caption": "Reloj de Arena: Sala del Reloj",
+      "step": 2
+    }
+  ],
+  "crucible": [
+    {
+      "file": "quests/crucible/01-sala-del-crisol.jpg",
+      "caption": "El Crisol: Sala del Crisol",
+      "step": 1
+    },
+    {
+      "file": "quests/crucible/02-sala-del-crisol.jpg",
+      "caption": "El Crisol: Sala del Crisol",
+      "step": 2
+    }
+  ]
+}

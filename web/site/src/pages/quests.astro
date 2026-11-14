@@ -1,6 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
 import data from '../data/quests.json';
+import questRoutesData from '../data/quest_routes.json';
+
+type QuestRoute = { note: string; steps: string[]; images: { src: string; caption: string }[] };
+const questRoutes = questRoutesData as Record<string, QuestRoute>;
 
 const typeLabel = Object.fromEntries(data.groups.map((g) => [g.key, g.label]));
 const quests = [...data.quests].sort((a, b) => a.level_min - b.level_min || a.name.localeCompare(b.name));
@@ -14,6 +18,40 @@ const typeCounts = Object.fromEntries(data.groups.map((g) => [g.key, quests.filt
 const searchText = (q: (typeof quests)[number]) => `${q.name} ${q.where} ${q.reward} ${q.note} ${typeLabel[q.type] || ''}`.toLowerCase();
 const icons = (ids: number[]) => ids.filter((id) => id > 0);
 ---
+
+<style is:global>
+.quest-row { cursor: pointer; }
+.quest-route-toggle {
+  font: 600 12px/1 var(--sans);
+  padding: .35rem .5rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.quest-route-toggle:hover { border-color: var(--accent); }
+.quest-route-row > td { padding: 0; background: var(--bg-raise); }
+.quest-route { padding: 1rem; border-left: 2px solid var(--accent); }
+.quest-route-steps { margin: .5rem 0 0; padding-left: 1.25rem; color: var(--muted); }
+.quest-route-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: .75rem;
+  margin-top: .9rem;
+}
+.quest-route-images figure { margin: 0; }
+.quest-route-images img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+}
+.quest-route-images figcaption { font-size: 12px; color: var(--faint); margin-top: .25rem; }
+</style>
+
 <Base lang="es" title="Quests — Retro76" path="/quests" description="Registro de todas las quests de Retro76: nivel recomendado, ubicación, recompensa con sus ítems y las quests que recomendamos crear." langSwitch={false}>
   <section>
     <h1 class="title">Quests</h1>
@@ -48,26 +86,53 @@ const icons = (ids: number[]) => ids.filter((id) => id > 0);
             <th>Dónde</th>
             <th>Recompensa</th>
             <th class="wide-only">Notas</th>
+            <th>Ruta</th>
           </tr>
         </thead>
         <tbody>
-          {quests.map((q) => (
-            <tr data-type={q.type} data-name={searchText(q)}>
-              <td><strong>{q.name}</strong></td>
-              <td><span class={`quest-type ${q.type}`}>{typeLabel[q.type] || q.type}</span></td>
-              <td class="n"><strong>{q.level_label}</strong><span class="quest-players">{q.players} jug.</span></td>
-              <td class="muted">{q.where}</td>
-              <td class="reward">
-                {icons(q.reward_ids || []).length > 0 && (
-                  <span class="reward-icons">
-                    {icons(q.reward_ids || []).map((id) => <img src={`/assets/wiki/items/${id}.png`} alt="" width="24" height="24" loading="lazy" />)}
-                  </span>
+          {quests.map((q) => {
+            const route = questRoutes[q.id];
+            return (
+              <>
+                <tr data-type={q.type} data-name={searchText(q)} data-quest={q.id} class="quest-row">
+                  <td><strong>{q.name}</strong></td>
+                  <td><span class={`quest-type ${q.type}`}>{typeLabel[q.type] || q.type}</span></td>
+                  <td class="n"><strong>{q.level_label}</strong><span class="quest-players">{q.players} jug.</span></td>
+                  <td class="muted">{q.where}</td>
+                  <td class="reward">
+                    {icons(q.reward_ids || []).length > 0 && (
+                      <span class="reward-icons">
+                        {icons(q.reward_ids || []).map((id) => <img src={`/assets/wiki/items/${id}.png`} alt="" width="24" height="24" loading="lazy" />)}
+                      </span>
+                    )}
+                    {q.reward}
+                  </td>
+                  <td class="muted wide-only">{q.note}</td>
+                  <td><button type="button" class="quest-route-toggle" data-quest={q.id} aria-expanded="false">Cómo llegar</button></td>
+                </tr>
+                {route && (
+                  <tr class="quest-route-row" id={`route-${q.id}`} hidden>
+                    <td colspan="7">
+                      <div class="quest-route">
+                        <p class="muted">{route.note}</p>
+                        <ol class="quest-route-steps">
+                          {route.steps.map((step) => <li>{step}</li>)}
+                        </ol>
+                        <div class="quest-route-images">
+                          {route.images.map((img) => (
+                            <figure>
+                              <img src={img.src} alt={img.caption} loading="lazy" />
+                              <figcaption>{img.caption}</figcaption>
+                            </figure>
+                          ))}
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
                 )}
-                {q.reward}
-              </td>
-              <td class="muted wide-only">{q.note}</td>
-            </tr>
-          ))}
+              </>
+            );
+          })}
         </tbody>
       </table>
     </div>
@@ -186,7 +251,7 @@ const icons = (ids: number[]) => ids.filter((id) => id > 0);
 
 <script>
   const buttons = [...document.querySelectorAll<HTMLButtonElement>('#quest-filters button')];
-  const rows = [...document.querySelectorAll<HTMLTableRowElement>('#quests-table tbody tr')];
+  const rows = [...document.querySelectorAll<HTMLTableRowElement>('#quests-table tbody tr[data-quest]')];
   const search = document.getElementById('quest-search') as HTMLInputElement;
   const empty = document.getElementById('quests-empty') as HTMLParagraphElement;
   let type = 'todos';
@@ -197,6 +262,8 @@ const icons = (ids: number[]) => ids.filter((id) => id > 0);
     for (const row of rows) {
       const ok = (type === 'todos' || row.dataset.type === type) && (!q || (row.dataset.name || '').includes(q));
       row.hidden = !ok;
+      const route = document.getElementById(`route-${row.dataset.quest}`);
+      if (route) route.hidden = true;
       if (ok) shown++;
     }
     empty.classList.toggle('hidden', shown > 0);
@@ -210,6 +277,33 @@ const icons = (ids: number[]) => ids.filter((id) => id > 0);
     });
   }
   search.addEventListener('input', apply);
+
+  const setQuestRoute = (id: string, open: boolean) => {
+    const row = document.getElementById(`route-${id}`);
+    const btn = document.querySelector<HTMLButtonElement>(`.quest-route-toggle[data-quest="${id}"]`);
+    if (!row) return;
+    row.hidden = !open;
+    if (btn) {
+      btn.setAttribute('aria-expanded', String(open));
+      btn.textContent = open ? 'Ocultar ruta' : 'Cómo llegar';
+    }
+  };
+  const toggleQuestRoute = (id: string) => {
+    const row = document.getElementById(`route-${id}`);
+    if (row) setQuestRoute(id, row.hidden);
+  };
+  for (const btn of document.querySelectorAll<HTMLButtonElement>('.quest-route-toggle')) {
+    btn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      if (btn.dataset.quest) toggleQuestRoute(btn.dataset.quest);
+    });
+  }
+  for (const row of rows) {
+    row.addEventListener('click', (event) => {
+      if ((event.target as HTMLElement).closest('a,button')) return;
+      if (row.dataset.quest) toggleQuestRoute(row.dataset.quest);
+    });
+  }
 
   const chestRows = [...document.querySelectorAll<HTMLTableRowElement>('#chests-table tbody tr')];
   const chestSearch = document.getElementById('chest-search') as HTMLInputElement;
