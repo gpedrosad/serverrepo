@@ -222,8 +222,10 @@ con pared hasta la orilla):
 - **Puente de sogas** de 1 casilla en x 153, y 66–72, copiado del puente del mapa en 181–184, 80–88:
   piso `405`, a los costados borde de madera `436`/`437` sobre el agua y sogas `3775/3777/3789/3791/3779`
   (oeste) y `3774/3776/3790/3778` (este), postes `3761`/`3760` en la punta sur. Del otro lado sigue un
-  camino de tierra de 3 de ancho (x 152–154, y 73–77) hasta el arco de piedra de las ruinas de los
-  trolls (`153,78`). Plantas de orilla `2771`/`2777` junto a las puntas.
+  camino de tierra de 2 de ancho (x 152–153, y 73–78) que pasa **bajo el arco** de piedra de las ruinas
+  de los trolls (`152–153,78`, el arco `916/917` queda encima) y se empalma con la tierra de adentro
+  (`152,79`). El camino tiene que ir alineado con el arco: si se corre una casilla, su borde choca
+  contra el muro (`912`). Plantas de orilla `2771`/`2777` junto a las puntas.
 - Patios: casillas de casa (PZ), cercados con baranda vertical `1518` del lado del pasillo; al sur los
   cierra la orilla. Solo se entra desde la casa.
 - **Orilla en los costados:** la pared oeste de III cae sobre casillas de orilla (`145,62–63`) y la

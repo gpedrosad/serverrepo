@@ -10,7 +10,8 @@ Ahora (z7):
   - III y V tienen un patio de 3x2 al sur, cercado, con salida desde la casa (hueco en la pared sur);
   - IV no tiene patio: debajo de ella se juntan los dos pasillos (camino de tierra) y sale un puente
     de sogas de 1 casilla (x 153, mismo kit que el puente de 181-184, 80-88) que cruza el río; del
-    otro lado un camino de tierra lleva al arco de las ruinas de los trolls (153, 78);
+    otro lado un camino de tierra de 2 de ancho pasa bajo el arco de las ruinas de los trolls
+    (152-153, 78) y se empalma con la tierra que hay adentro;
   - donde una pared o el patio caen sobre la orilla se conserva la pieza de borde del agua.
 
 Las puertas quedan donde estaban (148, 153 y 158 en la fila 59), así los data/houses/<casa>.xml
@@ -65,11 +66,11 @@ PATIO_Y = (64, 65)
 LANES = (150, 156)                                      # pasillos de la calle al río
 JOIN_Y = (64, 65)                                       # debajo de IV se juntan los pasillos
 BRIDGE_X, BRIDGE_Y = 153, (66, 72)                      # puente de 1 casilla: orilla norte a orilla sur
-SOUTH_PATH = (152, 154, 73, 77)                         # camino de tierra del puente al arco de los trolls
-ARCH = (153, 78)                                        # arco de piedra de las ruinas de los trolls
+SOUTH_PATH = (152, 153, 73, 78)                         # camino de tierra del puente, por debajo del arco
+ARCH = (153, 78)                                        # arco de piedra de las ruinas (152-153, 78)
 LANTERN_MOVE = ((161, 59), (162, 59))                   # el farol de la esquina pasa 1 al este
 STREET = [(150, 58), (156, 58)]                         # calle frente a cada pasillo
-REGION = (144, 58, 162, 78)                             # solo se tocan casillas acá adentro
+REGION = (144, 58, 162, 80)                             # solo se tocan casillas acá adentro
 
 # --- orilla: pasto con borde sobre agua (4526 + pieza); bajo una pared se conserva la pieza ---------
 SHORE_GROUND, SHORE = 4526, range(4644, 4656)
@@ -80,6 +81,7 @@ DIRT = 103
 DIRT_EDGE = {"n": 110, "s": 111, "w": 112, "e": 113,
              "nw": 114, "ne": 115, "se": 116, "sw": 117}             # pasto de ese lado / esquina externa
 DIRT_INNER = {"nw": 118, "ne": 119, "se": 120, "sw": 121}            # solo la diagonal es pasto
+DIRT_GROUNDS = {DIRT, *DIRT_EDGE.values(), *DIRT_INNER.values()}
 
 # --- puente de sogas: copiado del puente del mapa en 181-184, 80-88 (piso 405 en el medio) -----------
 # Columna oeste (x-1) y este (x+1) del piso: borde de madera 436/437 sobre agua y soga encima.
@@ -158,14 +160,23 @@ def desired(existing: dict) -> tuple[dict, dict, dict]:
     bridge = {(BRIDGE_X, y) for y in range(BRIDGE_Y[0], BRIDGE_Y[1] + 1)}
     # sin borde de pasto contra: paredes y casas, el puente, la calle y el muro/arco de las ruinas
     hard = set(out) | bridge | {(x, WALL_TOP) for x in LANES}
-    hard |= {(x, ARCH[1]) for x in range(sx0 - 1, sx1 + 1)}
+    hard |= {(sx0 - 1, ARCH[1]), (sx1 + 1, ARCH[1])}                     # muro a los lados del arco
     hard -= {c for c, (it, _pz) in out.items() if it[-1] == FENCE_V}  # la baranda está sobre pasto
     hard -= {c for c, (_it, pz) in out.items() if pz and c[1] in PATIO_Y}
+    # la tierra que ya había (adentro de las ruinas) cuenta como camino: se empalma sin borde
+    dirtlike = dirt | {c for c, it in existing.items() if it and it[0] in DIRT_GROUNDS}
     for c in sorted(dirt):
-        out[c] = ([dirt_ground(c, dirt, hard)], False)
         rest = [i for i in existing[c][1:] if i != 4015]                  # planta que tapaba el puente
+        if c[1] == ARCH[1]:
+            out[c] = ([dirt_ground(c, dirtlike, hard)] + rest, False)     # bajo el arco: se queda el arco
+            continue
         if c[1] > JOIN_Y[1] and rest:                                     # al norte eran las casas viejas
             raise SystemExit(f"ERROR: {c} tiene {rest}; el camino no lo pisa")
+        out[c] = ([dirt_ground(c, dirtlike, hard)], False)
+    for c in sorted(dirtlike - dirt):                                     # tierra vieja pegada al camino nuevo
+        x, y = c
+        if any(n in dirt for n in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1))) and c not in out:
+            out[c] = ([dirt_ground(c, dirtlike, hard)] + existing[c][1:], False)
     for x in LANES:                                                       # la calle sin flequillo de pasto
         out[(x, WALL_TOP)] = (existing[(x, WALL_TOP)][:1], False)
 
@@ -188,7 +199,8 @@ def desired(existing: dict) -> tuple[dict, dict, dict]:
                        "knot" if "knot" in kit and (y - y0) % 2 == 0 else "water"
                 out[(x, y)] = ([WATER] + kit[kind], False)
         post = (x, y1 + 1)
-        out[post] = (out[post][0] + [kit["post"]], False)                # postes en la punta sur
+        base = out[post][0] if post in out else list(existing[post])
+        out[post] = (base + [kit["post"]], False)                        # postes en la punta sur
     for c, plant in BANK_PLANTS.items():
         old = existing[c]
         if old[0] != SHORE_GROUND or len(old) != 2:
