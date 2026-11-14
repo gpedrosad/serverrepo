@@ -21,6 +21,10 @@ El techo de madera que tenía el patio en z6 se reemplazó por el piso 2 de la t
 tejas de la casa del norte (`x 172–180, y 55–57, z5`) **no se toca**. El dungeon de la city
 (Smuggler's Den, z8) tampoco se toca.
 
+Las paredes siguen la regla de [`PIEZAS_DE_MAPA.md`](PIEZAS_DE_MAPA.md): la fila norte y la columna
+oeste llevan el suelo de afuera en z7 y **sin ground** en los pisos altos; así la losa de piedra no
+sobresale en las esquinas. La puerta de `174,64,7` conserva el piso de piedra como umbral.
+
 ## Pisos y monstruos
 
 | Piso | Monstruo | Respawn | Escaleras |

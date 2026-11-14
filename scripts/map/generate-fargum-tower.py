@@ -96,6 +96,27 @@ def build_floors():
     return maps
 
 
+def fix_wall_grounds(maps, existing):
+    """La fila norte y la columna oeste de una pared van con el suelo de afuera (z7) o sin
+    ground (pisos altos). Si no, la losa de piedra sobresale en las esquinas."""
+    north = [(x, 61) for x in range(174, 181)]
+    west = [(174, y) for y in range(61, 68)]
+    for x, y in set(north + west):
+        for z, m in maps.items():
+            pos = (x, y, z)
+            if pos not in m.t or pos == DOOR:
+                continue
+            if z == 7:
+                # Copiar el ground de la casilla de afuera (norte o oeste), no el de la torre:
+                # si se regenera, la torre ya tiene piedra en la huella y no queremos copiarla.
+                outside = existing.get((x, y - 1, 7)) if y == 61 else existing.get((x - 1, y, 7))
+                if not outside:
+                    outside = existing.get((x - 1, y, 7)) or existing.get((x, y - 1, 7))
+                m.t[pos]["ground"] = outside[0] if outside else 4756
+            else:
+                m.t[pos]["ground"] = None
+
+
 def build_sign(existing) -> roomkit.Map:
     m = roomkit.Map()
     ids = existing.get(SIGN) or [110]
@@ -212,6 +233,7 @@ def main() -> int:
     existing = load_tiles()
     regenerating = MANIFEST.exists()
     maps = build_floors()
+    fix_wall_grounds(maps, existing)
     errs = validate(existing, maps, regenerating)
     print("torre: 5 pisos z7-z3, huella 7x7, interior 5x5")
     for z in FLOORS:

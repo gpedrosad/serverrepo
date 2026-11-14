@@ -130,7 +130,8 @@ class Checker:
         """ids que existen y nunca dos piezas sólidas (que no sean pared) en la misma casilla."""
         for pos, t in self.m.t.items():
             ids = [i["id"] for i in t["items"]]
-            unknown = [i for i in ids + [t["ground"]] if i not in self.otb]
+            ground = t["ground"]
+            unknown = [i for i in ids + ([ground] if ground is not None else []) if i not in self.otb]
             if unknown:
                 self.errs.append(f"{pos}: ids que no están en el .otb {unknown}")
             if len([i for i in ids if i in self.solid and i not in self.wall_ids]) > 1:
@@ -180,7 +181,9 @@ def tile_node(ox: int, oy: int, t: dict, stackable: set[int]) -> bytes:
     props = struct.pack("<BB", ox, oy)
     if t["pz"]:
         props += struct.pack("<BI", ATTR_TILE_FLAGS, TILE_PZ)
-    props += struct.pack("<BH", ATTR_ITEM, t["ground"])
+    # Paredes de pisos altos: la fila norte y la columna oeste van sin ground.
+    if t["ground"] is not None:
+        props += struct.pack("<BH", ATTR_ITEM, t["ground"])
     buf = bytearray([NODE_START, OTBM_TILE])
     _maze.write_props(buf, props)
     for it in t["items"]:
