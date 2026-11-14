@@ -10,7 +10,7 @@
 	<readable x="78" y="84" z="0" text="EL CRISOL\nPalanca: bosses de hoy y arenas ocupadas.\nSalida al templo: TP sur."/>
 	<!-- END CRUCIBLE_SIGNS -->
 	<!-- BEGIN TEMPLE_PORTAL_SIGNS -->
-	<readable x="156" y="46" z="7" text="ISLA NATURAL\nSendero: 3 campamentos Cyclops\nAl final, cueva y Grorlam"/>
+	<readable x="156" y="46" z="7" text="ISLA NATURAL\n3 campamentos de Cyclops\nCueva de 3 pisos: la Reina"/>
 	<readable x="158" y="46" z="7" text="VALLE DE LAS BESTIAS\nCaza mid-hard en 3 pisos\nDe Minotauros a Demonios"/>
 	<readable x="164" y="46" z="7" text="CRISOL\n3 puertas. Boss diario.\nBronce / Plata / Oro"/>
 	<readable x="166" y="46" z="7" text="WAVE ARENA\nClaro de la Selva: 20 oleadas\nEn grupo. Premio semanal"/>
@@ -42,10 +42,6 @@
 	<!-- BEGIN IMPERIAL_CASTLE_SIGNS -->
 	<readable x="101" y="38" z="7" text="CASTILLO IMPERIAL\nCada piso es mas duro que el anterior.\nArriba esperan los Imperial Heroes y el tesoro."/>
 	<!-- END IMPERIAL_CASTLE_SIGNS -->
-	<!-- BEGIN NATURAL_ISLAND_SIGNS -->
-	<readable x="145" y="461" z="7" text="ISLA NATURAL\nSigue el sendero: tres\ncampamentos de Cyclops\ny al final la cueva."/>
-	<readable x="160" y="460" z="7" text="CUEVA DE PIEDRA\nGolems y Shamblers.\nAl fondo, el Grorlam\ny un portal al templo."/>
-	<!-- END NATURAL_ISLAND_SIGNS -->
 	<!-- BEGIN FROZEN_ISLE_SIGNS -->
 	<readable x="376" y="94" z="7" text="Aqui vivia un lenador.\nDejo algo para quien encontrara su escondite."/>
 	<readable x="395" y="15" z="7" text="GRUTAS DE ESCARCHA\nAranas de hielo y, en lo mas hondo, el dragon.\nNivel 80+."/>
@@ -67,4 +63,8 @@
 	<!-- BEGIN EPSTEIN_PORTAL -->
 	<readable x="85" y="210" z="7" text="Portal to the mainland (temple)"/>
 	<!-- END EPSTEIN_PORTAL -->
-	</readables>
+		<!-- BEGIN NATURAL_ISLAND_SIGNS -->
+	<readable x="145" y="461" z="7" text="ISLA NATURAL\nSigue el sendero: tres\ncampamentos de Cyclops\ny al final la cueva."/>
+	<readable x="160" y="460" z="7" text="CUEVA DE PIEDRA\nGolems, Shamblers y\nun descenso a wyverns.\nAl fondo, la Reina."/>
+	<!-- END NATURAL_ISLAND_SIGNS -->
+</readables>

@@ -45,8 +45,9 @@ ROW_GROUND_FIX = {(160, 53): WHITE, (160, 54): WHITE, (160, 55): WHITE}  # base 
 
 # (clave, x del portal, destino, cartel, zonas cuyas vueltas llegan a este portal)
 PORTALS = [
-    ("isla", 156, (147, 462, 7), "ISLA NATURAL\nSendero: 3 campamentos Cyclops\nAl final, cueva y Grorlam",
-     [(124, 426, 187, 483, 7), (124, 426, 187, 483, 8)]),
+    ("isla", 156, (147, 462, 7), "ISLA NATURAL\n3 campamentos de Cyclops\nCueva de 3 pisos: la Reina",
+     [(124, 426, 187, 483, 7), (124, 426, 187, 483, 8), (124, 426, 187, 483, 9),
+      (124, 426, 187, 483, 10)]),
     ("valle", 158, (312, 360, 7), "VALLE DE LAS BESTIAS\nCaza mid-hard en 3 pisos\nDe Minotauros a Demonios",
      [(262, 232, 361, 378, 7), (262, 232, 361, 378, 8), (262, 232, 361, 378, 9), (449, 39, 489, 80, 7)]),
     ("crisol", 164, (83, 85, 0), "CRISOL\n3 puertas. Boss diario.\nBronce / Plata / Oro",

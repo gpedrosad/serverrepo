@@ -39,7 +39,7 @@ Los maneja **un solo script**: `python3 scripts/map/temple-portals.py` (idempote
 
 | Portal | Llegada al volver | Sistema | Doc / generador |
 |--------|-------------------|---------|-----------------|
-| `156,47,7` | `156,48,7` | Isla natural (herradura: 3 campamentos Cyclops + cueva con Grorlam) | [`MAPEAR_ISLA_NATURAL.md`](items-and-map/MAPEAR_ISLA_NATURAL.md) |
+| `156,47,7` | `156,48,7` | Isla natural (herradura: 3 campamentos Cyclops + cueva z8–z10 con Grorlam, wyverns/mutantes y Old Widow) | [`MAPEAR_ISLA_NATURAL.md`](items-and-map/MAPEAR_ISLA_NATURAL.md) |
 | `158,47,7` | `158,48,7` | Valle de las Bestias (el gauntlet también vuelve acá) | [`MAPEAR_VALLE_DE_LAS_BESTIAS.md`](items-and-map/MAPEAR_VALLE_DE_LAS_BESTIAS.md) |
 | `164,47,7` | `164,48,7` | El Crisol | [`CRUCIBLE.md`](gameplay/CRUCIBLE.md) |
 | `166,47,7` | `166,48,7` | Wave Arena | [`WAVE_ARENA.md`](gameplay/WAVE_ARENA.md) |

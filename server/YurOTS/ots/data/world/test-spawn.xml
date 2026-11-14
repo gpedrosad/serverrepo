@@ -70,10 +70,10 @@
 		<monster name="lizard sentinel" x="0" y="0" z="5" spawntime="175" />
 	</spawn>
 	<spawn centerx="208" centery="56" centerz="5" radius="1">
-		<monster name="dragon lord" x="0" y="0" z="5" spawntime="175" />
+		<monster name="Pirate Cutthroat" x="0" y="0" z="5" spawntime="175" />
 	</spawn>
 	<spawn centerx="204" centery="57" centerz="5" radius="1">
-		<monster name="dragon lord" x="0" y="0" z="5" spawntime="175" />
+		<monster name="Pirate Marauder" x="0" y="0" z="5" spawntime="175" />
 	</spawn>
 	<spawn centerx="108" centery="65" centerz="5" radius="5">
 		<monster name="dragon lord" x="2" y="2" z="5" spawntime="290" />
@@ -250,13 +250,13 @@
 		<monster name="lizard sentinel" x="0" y="0" z="6" spawntime="175" />
 	</spawn>
 	<spawn centerx="204" centery="47" centerz="6" radius="1">
-		<monster name="dragon lord" x="0" y="0" z="6" spawntime="175" />
+		<monster name="Pirate Buccaneer" x="0" y="0" z="6" spawntime="175" />
 	</spawn>
 	<spawn centerx="188" centery="51" centerz="6" radius="1">
 		<monster name="smuggler" x="0" y="0" z="6" spawntime="175" />
 	</spawn>
 	<spawn centerx="200" centery="52" centerz="6" radius="1">
-		<monster name="dragon lord" x="0" y="0" z="6" spawntime="175" />
+		<monster name="Pirate Cutthroat" x="0" y="0" z="6" spawntime="175" />
 	</spawn>
 	<spawn centerx="152" centery="54" centerz="6" radius="1">
 		<monster name="ghoul" x="0" y="0" z="6" spawntime="175" />
@@ -278,10 +278,10 @@
 		<monster name="ghoul" x="0" y="0" z="6" spawntime="175" />
 	</spawn>
 	<spawn centerx="209" centery="55" centerz="6" radius="1">
-		<monster name="dragon lord" x="0" y="0" z="6" spawntime="175" />
+		<monster name="Pirate Cutthroat" x="0" y="0" z="6" spawntime="175" />
 	</spawn>
 	<spawn centerx="203" centery="56" centerz="6" radius="1">
-		<monster name="dragon lord" x="0" y="0" z="6" spawntime="175" />
+		<monster name="Pirate Marauder" x="0" y="0" z="6" spawntime="175" />
 	</spawn>
 	<spawn centerx="61" centery="58" centerz="6" radius="7">
 		<monster name="witch" x="-2" y="0" z="6" spawntime="60" direction="2" />
@@ -649,14 +649,14 @@
 		<monster name="demon skeleton" x="0" y="4" z="7" spawntime="235" direction="2" />
 	</spawn>
 	<spawn centerx="206" centery="43" centerz="7" radius="1">
-		<monster name="dragon lord" x="0" y="0" z="7" spawntime="175" />
-		<monster name="dragon lord" x="0" y="1" z="7" spawntime="175" />
+		<monster name="Pirate Corsair" x="0" y="0" z="7" spawntime="175" />
+		<monster name="Pirate Corsair" x="0" y="1" z="7" spawntime="175" />
 	</spawn>
 	<spawn centerx="155" centery="44" centerz="7" radius="5">
 		<monster name="parrot" x="0" y="-1" z="7" spawntime="175" direction="2" />
 	</spawn>
 	<spawn centerx="206" centery="50" centerz="7" radius="1">
-		<monster name="dragon lord" x="0" y="0" z="7" spawntime="175" />
+		<monster name="Pirate Buccaneer" x="0" y="0" z="7" spawntime="175" />
 	</spawn>
 	<spawn centerx="122" centery="55" centerz="7" radius="1">
 		<monster name="Mini Trainer Monk" x="1" y="0" z="7" spawntime="175" />
@@ -4243,50 +4243,6 @@
 		<monster name="Imperial Squire" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<!-- END IMPERIAL_CASTLE_SPAWNS -->
-	<!-- BEGIN NATURAL_ISLAND_SPAWNS (scripts/map/generate-natural-island.py) -->
-	<spawn centerx="145" centery="452" centerz="7" radius="4">
-		<monster name="Cyclops" x="3" y="2" z="7" spawntime="90" />
-		<monster name="Cyclops" x="-2" y="3" z="7" spawntime="90" />
-		<monster name="Cyclops" x="1" y="3" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="155" centery="445" centerz="7" radius="4">
-		<monster name="Cyclops" x="2" y="-2" z="7" spawntime="90" />
-		<monster name="Cyclops" x="-1" y="1" z="7" spawntime="90" />
-		<monster name="Cyclops" x="-3" y="1" z="7" spawntime="90" />
-		<monster name="Cyclops" x="1" y="3" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="166" centery="452" centerz="7" radius="4">
-		<monster name="Cyclops" x="2" y="3" z="7" spawntime="90" />
-		<monster name="Cyclops" x="-1" y="2" z="7" spawntime="90" />
-		<monster name="Cyclops" x="0" y="-2" z="7" spawntime="90" />
-		<monster name="Cyclops" x="-3" y="-3" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="164" centery="454" centerz="8" radius="4">
-		<monster name="Stone Golem" x="0" y="0" z="8" spawntime="90" />
-		<monster name="Stone Golem" x="2" y="0" z="8" spawntime="90" />
-		<monster name="Stone Golem" x="-1" y="-2" z="8" spawntime="90" />
-		<monster name="Gazer" x="2" y="2" z="8" spawntime="90" />
-	</spawn>
-	<spawn centerx="155" centery="447" centerz="8" radius="4">
-		<monster name="Stone Golem" x="0" y="0" z="8" spawntime="90" />
-		<monster name="Stone Golem" x="-2" y="0" z="8" spawntime="90" />
-		<monster name="Crypt Shambler" x="2" y="1" z="8" spawntime="90" />
-		<monster name="Crypt Shambler" x="-2" y="-2" z="8" spawntime="90" />
-		<monster name="Gazer" x="3" y="-1" z="8" spawntime="90" />
-	</spawn>
-	<spawn centerx="144" centery="453" centerz="8" radius="4">
-		<monster name="Crypt Shambler" x="0" y="1" z="8" spawntime="100" />
-		<monster name="Crypt Shambler" x="-2" y="1" z="8" spawntime="100" />
-		<monster name="Crypt Shambler" x="-1" y="-2" z="8" spawntime="100" />
-		<monster name="Stalker" x="2" y="1" z="8" spawntime="100" />
-		<monster name="Stalker" x="1" y="-3" z="8" spawntime="100" />
-	</spawn>
-	<spawn centerx="152" centery="462" centerz="8" radius="4">
-		<monster name="Grorlam" x="0" y="-1" z="8" spawntime="1800" />
-		<monster name="Crypt Shambler" x="-1" y="2" z="8" spawntime="120" />
-		<monster name="Crypt Shambler" x="-3" y="1" z="8" spawntime="120" />
-	</spawn>
-	<!-- END NATURAL_ISLAND_SPAWNS -->
 	<!-- BEGIN FROZEN_ISLE_SPAWNS (scripts/map/generate-frozen-isle.py) -->
 	<spawn centerx="381" centery="97" centerz="7" radius="3">
 		<monster name="Winter Wolf" x="-1" y="0" z="7" spawntime="120" />
@@ -4858,45 +4814,6 @@
 	<!-- END DESERT_HUNTS_SPAWNS -->
 
 	<!-- Criaturas 8.60: resto del catalogo (nov 2026) -->
-	<spawn centerx="143" centery="449" centerz="7" radius="3">
-		<monster name="Tortoise" x="0" y="0" z="7" spawntime="120" />
-	</spawn>
-	<spawn centerx="167" centery="448" centerz="7" radius="3">
-		<monster name="Tortoise" x="0" y="0" z="7" spawntime="120" />
-	</spawn>
-	<spawn centerx="146" centery="446" centerz="7" radius="3">
-		<monster name="Thornback Tortoise" x="0" y="0" z="7" spawntime="180" />
-	</spawn>
-	<spawn centerx="168" centery="445" centerz="7" radius="3">
-		<monster name="Blood Crab" x="0" y="0" z="7" spawntime="150" />
-	</spawn>
-	<spawn centerx="150" centery="438" centerz="7" radius="3">
-		<monster name="Quara Constrictor" x="0" y="0" z="7" spawntime="180" />
-	</spawn>
-	<spawn centerx="160" centery="438" centerz="7" radius="3">
-		<monster name="Quara Mantassin" x="0" y="0" z="7" spawntime="180" />
-	</spawn>
-	<spawn centerx="138" centery="448" centerz="7" radius="3">
-		<monster name="Quara Pincher" x="0" y="0" z="7" spawntime="240" />
-	</spawn>
-	<spawn centerx="166" centery="443" centerz="7" radius="3">
-		<monster name="Quara Predator" x="0" y="0" z="7" spawntime="300" />
-	</spawn>
-	<spawn centerx="148" centery="444" centerz="7" radius="3">
-		<monster name="Cyclops Drone" x="0" y="0" z="7" spawntime="120" />
-	</spawn>
-	<spawn centerx="164" centery="446" centerz="7" radius="3">
-		<monster name="Cyclops Smith" x="0" y="0" z="7" spawntime="150" />
-	</spawn>
-	<spawn centerx="168" centery="452" centerz="8" radius="3">
-		<monster name="Worker Golem" x="0" y="0" z="8" spawntime="240" />
-	</spawn>
-	<spawn centerx="167" centery="447" centerz="8" radius="3">
-		<monster name="Earth Elemental" x="0" y="0" z="8" spawntime="240" />
-	</spawn>
-	<spawn centerx="146" centery="452" centerz="8" radius="3">
-		<monster name="Nightstalker" x="0" y="0" z="8" spawntime="180" />
-	</spawn>
 	<spawn centerx="386" centery="92" centerz="7" radius="3">
 		<monster name="Mammoth" x="0" y="0" z="7" spawntime="180" />
 	</spawn>
@@ -5513,4 +5430,145 @@
 		<monster name="Dragon Hatchling" x="0" y="0" z="8" spawntime="300" />
 	</spawn>
 	<!-- END EPSTEIN_HUNTS -->
-	</spawns>
+				<!-- BEGIN CITY_DEPTHS_SPAWNS (scripts/map/generate-city-hunts.py) -->
+	<spawn centerx="188" centery="58" centerz="8" radius="1">
+		<monster name="Orc Berserker Pot Thrower" x="0" y="0" z="8" spawntime="300" />
+	</spawn>
+	<spawn centerx="189" centery="49" centerz="8" radius="1">
+		<monster name="Orc Berserker Pot Thrower" x="0" y="0" z="8" spawntime="300" />
+	</spawn>
+	<spawn centerx="186" centery="48" centerz="8" radius="1">
+		<monster name="Orc Berserker Pot Thrower" x="0" y="0" z="8" spawntime="300" />
+	</spawn>
+	<spawn centerx="190" centery="52" centerz="8" radius="1">
+		<monster name="Orc Berserker Pot Thrower" x="0" y="0" z="8" spawntime="300" />
+	</spawn>
+	<spawn centerx="190" centery="55" centerz="8" radius="1">
+		<monster name="Carniphila" x="0" y="0" z="8" spawntime="175" />
+	</spawn>
+	<spawn centerx="185" centery="45" centerz="8" radius="1">
+		<monster name="Carniphila" x="0" y="0" z="8" spawntime="175" />
+	</spawn>
+	<spawn centerx="192" centery="46" centerz="8" radius="1">
+		<monster name="Carniphila" x="0" y="0" z="8" spawntime="175" />
+	</spawn>
+	<spawn centerx="190" centery="42" centerz="9" radius="1">
+		<monster name="Dragon Lord Hatchling" x="0" y="0" z="9" spawntime="300" />
+	</spawn>
+	<spawn centerx="195" centery="53" centerz="9" radius="1">
+		<monster name="Dragon Lord Hatchling" x="0" y="0" z="9" spawntime="300" />
+	</spawn>
+	<spawn centerx="183" centery="42" centerz="9" radius="1">
+		<monster name="Dragon Lord Hatchling" x="0" y="0" z="9" spawntime="300" />
+	</spawn>
+	<spawn centerx="197" centery="58" centerz="9" radius="1">
+		<monster name="Dragon Lord Hatchling" x="0" y="0" z="9" spawntime="300" />
+	</spawn>
+	<spawn centerx="182" centery="47" centerz="9" radius="1">
+		<monster name="Emerald Scarab" x="0" y="0" z="9" spawntime="600" />
+	</spawn>
+	<spawn centerx="185" centery="55" centerz="9" radius="1">
+		<monster name="Emerald Scarab" x="0" y="0" z="9" spawntime="600" />
+	</spawn>
+	<spawn centerx="194" centery="42" centerz="10" radius="1">
+		<monster name="Dark Hydra" x="0" y="0" z="10" spawntime="900" />
+	</spawn>
+	<spawn centerx="189" centery="45" centerz="10" radius="1">
+		<monster name="Dragon Lord Hatchling" x="0" y="0" z="10" spawntime="300" />
+	</spawn>
+	<spawn centerx="191" centery="60" centerz="10" radius="1">
+		<monster name="Dragon Lord Hatchling" x="0" y="0" z="10" spawntime="300" />
+	</spawn>
+	<!-- END CITY_DEPTHS_SPAWNS -->
+		<!-- BEGIN BOAT_STOWAWAY (scripts/map/generate-city-hunts.py) -->
+	<spawn centerx="203" centery="55" centerz="5" radius="1">
+		<monster name="Dragon Lord Hatchling" x="0" y="0" z="5" spawntime="900" />
+	</spawn>
+	<!-- END BOAT_STOWAWAY -->
+	<!-- BEGIN NATURAL_ISLAND_SPAWNS (scripts/map/generate-natural-island.py) -->
+	<spawn centerx="145" centery="452" centerz="7" radius="4">
+		<monster name="Cyclops" x="3" y="2" z="7" spawntime="90" />
+		<monster name="Cyclops" x="-2" y="3" z="7" spawntime="90" />
+		<monster name="Cyclops" x="1" y="3" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="155" centery="445" centerz="7" radius="4">
+		<monster name="Cyclops" x="2" y="-2" z="7" spawntime="90" />
+		<monster name="Cyclops" x="-1" y="1" z="7" spawntime="90" />
+		<monster name="Cyclops" x="-3" y="1" z="7" spawntime="90" />
+		<monster name="Cyclops" x="1" y="3" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="166" centery="452" centerz="7" radius="4">
+		<monster name="Cyclops" x="2" y="3" z="7" spawntime="90" />
+		<monster name="Cyclops" x="-1" y="2" z="7" spawntime="90" />
+		<monster name="Cyclops" x="0" y="-2" z="7" spawntime="90" />
+		<monster name="Cyclops" x="-3" y="-3" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="164" centery="454" centerz="8" radius="4">
+		<monster name="Stone Golem" x="-1" y="-1" z="8" spawntime="90" />
+		<monster name="Stone Golem" x="-1" y="1" z="8" spawntime="90" />
+		<monster name="Stone Golem" x="1" y="-1" z="8" spawntime="90" />
+		<monster name="Gazer" x="1" y="1" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="155" centery="447" centerz="8" radius="4">
+		<monster name="Stone Golem" x="-1" y="-1" z="8" spawntime="90" />
+		<monster name="Stone Golem" x="-1" y="1" z="8" spawntime="90" />
+		<monster name="Crypt Shambler" x="1" y="1" z="8" spawntime="90" />
+		<monster name="Crypt Shambler" x="-2" y="0" z="8" spawntime="90" />
+		<monster name="Gazer" x="1" y="-1" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="144" centery="453" centerz="8" radius="4">
+		<monster name="Crypt Shambler" x="0" y="0" z="8" spawntime="100" />
+		<monster name="Crypt Shambler" x="-1" y="0" z="8" spawntime="100" />
+		<monster name="Crypt Shambler" x="0" y="-1" z="8" spawntime="100" />
+		<monster name="Stalker" x="0" y="1" z="8" spawntime="100" />
+		<monster name="Stalker" x="1" y="0" z="8" spawntime="100" />
+	</spawn>
+	<spawn centerx="152" centery="462" centerz="8" radius="4">
+		<monster name="Grorlam" x="-1" y="-1" z="8" spawntime="1800" />
+		<monster name="Crypt Shambler" x="0" y="1" z="8" spawntime="120" />
+		<monster name="Crypt Shambler" x="-1" y="1" z="8" spawntime="120" />
+	</spawn>
+	<spawn centerx="164" centery="465" centerz="9" radius="4">
+		<monster name="Wyvern" x="-1" y="-1" z="9" spawntime="120" />
+		<monster name="Wyvern" x="-1" y="1" z="9" spawntime="120" />
+		<monster name="Dragon Hatchling" x="1" y="-1" z="9" spawntime="120" />
+	</spawn>
+	<spawn centerx="164" centery="453" centerz="9" radius="4">
+		<monster name="Mutated Bat" x="-1" y="-1" z="9" spawntime="120" />
+		<monster name="Mutated Bat" x="-1" y="1" z="9" spawntime="120" />
+		<monster name="Mutated Bat" x="1" y="-1" z="9" spawntime="120" />
+		<monster name="Mutated Rat" x="1" y="1" z="9" spawntime="120" />
+	</spawn>
+	<spawn centerx="153" centery="446" centerz="9" radius="4">
+		<monster name="Dragon Hatchling" x="-1" y="-1" z="9" spawntime="120" />
+		<monster name="Dragon Hatchling" x="-1" y="1" z="9" spawntime="120" />
+		<monster name="Wyvern" x="1" y="-1" z="9" spawntime="120" />
+	</spawn>
+	<spawn centerx="142" centery="452" centerz="9" radius="4">
+		<monster name="Mutated Rat" x="-1" y="-1" z="9" spawntime="120" />
+		<monster name="Mutated Rat" x="1" y="-1" z="9" spawntime="120" />
+		<monster name="Mutated Bat" x="-1" y="-3" z="9" spawntime="120" />
+	</spawn>
+	<spawn centerx="147" centery="467" centerz="10" radius="4">
+		<monster name="Mutated Rat" x="-1" y="-1" z="10" spawntime="120" />
+		<monster name="Mutated Rat" x="-1" y="1" z="10" spawntime="120" />
+		<monster name="Mutated Rat" x="1" y="-1" z="10" spawntime="120" />
+		<monster name="Mutated Human" x="1" y="1" z="10" spawntime="150" />
+	</spawn>
+	<spawn centerx="163" centery="466" centerz="10" radius="4">
+		<monster name="Emerald Scarab" x="-1" y="-1" z="10" spawntime="600" />
+		<monster name="Mutated Bat" x="-1" y="1" z="10" spawntime="120" />
+		<monster name="Mutated Bat" x="1" y="-1" z="10" spawntime="120" />
+	</spawn>
+	<spawn centerx="166" centery="451" centerz="10" radius="4">
+		<monster name="Dragon Hatchling" x="-1" y="-1" z="10" spawntime="120" />
+		<monster name="Dragon Hatchling" x="-1" y="1" z="10" spawntime="120" />
+		<monster name="Wyvern" x="1" y="-1" z="10" spawntime="120" />
+	</spawn>
+	<spawn centerx="149" centery="446" centerz="10" radius="4">
+		<monster name="Old Widow" x="-1" y="-1" z="10" spawntime="1800" />
+		<monster name="Giant Spider" x="-1" y="1" z="10" spawntime="120" />
+		<monster name="Giant Spider" x="1" y="-1" z="10" spawntime="120" />
+	</spawn>
+	<!-- END NATURAL_ISLAND_SPAWNS -->
+</spawns>

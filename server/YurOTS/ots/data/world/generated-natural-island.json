@@ -8,7 +8,9 @@
     "y2": 476,
     "z": [
       7,
-      8
+      8,
+      9,
+      10
     ]
   },
   "oldBoxCleared": {
@@ -18,7 +20,9 @@
     "y2": 483,
     "z": [
       7,
-      8
+      8,
+      9,
+      10
     ]
   },
   "land": {
@@ -29,7 +33,7 @@
     "z": 7
   },
   "landTiles": 566,
-  "caveFloorTiles": 276,
+  "caveFloorTiles": 888,
   "landing": {
     "x": 147,
     "y": 462,
@@ -57,9 +61,9 @@
       ]
     },
     {
-      "x": 155,
-      "y": 463,
-      "z": 8,
+      "x": 149,
+      "y": 442,
+      "z": 10,
       "to": [
         156,
         48,
@@ -103,30 +107,123 @@
       "y": 464,
       "z": 7
     },
-    "rooms": [
+    "floors": [
       {
-        "x": 164,
-        "y": 454,
         "z": 8,
-        "name": "Sala de los Golems"
+        "start": {
+          "x": 163,
+          "y": 463,
+          "z": 8
+        },
+        "exit": {
+          "x": 155,
+          "y": 463,
+          "z": 8
+        },
+        "rooms": [
+          {
+            "x": 164,
+            "y": 454,
+            "z": 8,
+            "name": "Sala de los Golems"
+          },
+          {
+            "x": 155,
+            "y": 447,
+            "z": 8,
+            "name": "Galeria"
+          },
+          {
+            "x": 144,
+            "y": 453,
+            "z": 8,
+            "name": "Cripta"
+          },
+          {
+            "x": 152,
+            "y": 462,
+            "z": 8,
+            "name": "Guarida del Grorlam"
+          }
+        ]
       },
       {
-        "x": 155,
-        "y": 447,
-        "z": 8,
-        "name": "Galeria"
+        "z": 9,
+        "start": {
+          "x": 155,
+          "y": 463,
+          "z": 9
+        },
+        "exit": {
+          "x": 142,
+          "y": 455,
+          "z": 9
+        },
+        "rooms": [
+          {
+            "x": 164,
+            "y": 465,
+            "z": 9,
+            "name": "Sala de los Wyverns"
+          },
+          {
+            "x": 164,
+            "y": 453,
+            "z": 9,
+            "name": "Galeria de los Murcielagos"
+          },
+          {
+            "x": 153,
+            "y": 446,
+            "z": 9,
+            "name": "Camara de los Hatchlings"
+          },
+          {
+            "x": 142,
+            "y": 452,
+            "z": 9,
+            "name": "Descenso"
+          }
+        ]
       },
       {
-        "x": 144,
-        "y": 453,
-        "z": 8,
-        "name": "Cripta"
-      },
-      {
-        "x": 152,
-        "y": 462,
-        "z": 8,
-        "name": "Guarida del Grorlam"
+        "z": 10,
+        "start": {
+          "x": 142,
+          "y": 455,
+          "z": 10
+        },
+        "exit": {
+          "x": 149,
+          "y": 442,
+          "z": 10
+        },
+        "rooms": [
+          {
+            "x": 147,
+            "y": 467,
+            "z": 10,
+            "name": "Sala de los Mutantes"
+          },
+          {
+            "x": 163,
+            "y": 466,
+            "z": 10,
+            "name": "Galeria de Cristal"
+          },
+          {
+            "x": 166,
+            "y": 451,
+            "z": 10,
+            "name": "Sala de los Hatchlings"
+          },
+          {
+            "x": 149,
+            "y": 446,
+            "z": 10,
+            "name": "Camara de la Reina"
+          }
+        ]
       }
     ]
   },
@@ -145,14 +242,24 @@
   "spawns": {
     "z7": 3,
     "z8": 4,
-    "monsters": 28
+    "z9": 4,
+    "z10": 4,
+    "monsters": 54
   },
   "monsters": {
     "Crypt Shambler": 7,
     "Cyclops": 11,
+    "Dragon Hatchling": 5,
+    "Emerald Scarab": 1,
     "Gazer": 2,
+    "Giant Spider": 2,
     "Grorlam": 1,
+    "Mutated Bat": 6,
+    "Mutated Human": 1,
+    "Mutated Rat": 6,
+    "Old Widow": 1,
     "Stalker": 2,
-    "Stone Golem": 5
+    "Stone Golem": 5,
+    "Wyvern": 4
   }
 }

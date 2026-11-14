@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Isla natural (portal 156,47,7 de la plaza): herradura chica con una sola línea de caza.
+"""Isla natural (portal 156,47,7 de la plaza): herradura con una cueva de tres pisos.
 
 Reemplaza a la isla vieja (un campo abierto de 46x44 con 13 Cyclops repartidos y una cueva ancha
 sin recorrido). La forma de la isla ES el recorrido: una franja de tierra en herradura alrededor
@@ -7,7 +7,9 @@ de una laguna. Se llega a una punta y la cueva está en la otra; no hay otro cam
 
   z7  Llegada (punta oeste, portal de vuelta) -> sendero de tierra -> Campamento 1 (oeste)
       -> Campamento 2 (norte) -> Campamento 3 (este) -> boca de la cueva (punta este, otro portal)
-  z8  Escalera -> Sala de los Golems -> Galería -> Cripta -> Guarida del Grorlam (portal al templo)
+  z8  Escalera -> Golems -> Galería -> Cripta -> Guarida del Grorlam (bajada a z9)
+  z9  Wyverns / murciélagos / hatchlings -> Descenso (bajada a z10)
+  z10 Mutantes / cristal / hatchlings -> Cámara de la Reina (Old Widow + portal al templo)
 
 Reglas (las mismas del resto del mapa, ver docs/items-and-map/map-kb/):
   - costa: pasto 4526 + borde 4644-4655 según dónde está el agua;
@@ -16,7 +18,7 @@ Reglas (las mismas del resto del mapa, ver docs/items-and-map/map-kb/):
   - sin monstruos "rage" (Angry/Furious/Enraged) ni troncos sueltos.
 
 Uso:
-  python3 scripts/map/generate-natural-island.py --dry-run --preview /tmp/isla   # isla-z7.png, isla-z8.png
+  python3 scripts/map/generate-natural-island.py --dry-run --preview /tmp/isla   # isla-z7..z10.png
   python3 scripts/map/generate-natural-island.py                                 # escribe mapa, spawns, carteles
   python3 scripts/map/temple-portals.py                                          # el portal de la plaza
 """
@@ -53,9 +55,9 @@ SPAWNS = WORLD / "test-spawn.xml"
 READABLES = REPO / "server/YurOTS/ots/data/readables.xml"
 MANIFEST = WORLD / "generated-natural-island.json"
 
-OLD_BOX = (124, 426, 187, 483)              # isla vieja (z7 y z8): se borra entera
+OLD_BOX = (124, 426, 187, 483)              # isla vieja (z7-z10): se borra entera
 X0, Y0, W, H = 131, 433, 50, 44             # caja nueva (adentro de la vieja)
-Z7, Z8 = 7, 8
+Z7, Z8, Z9, Z10 = 7, 8, 9, 10
 TEMPLE_BACK = (156, 48, 7)                  # llegada del portal de la plaza (temple-portals.py)
 VIEW = (8, 6)                               # media pantalla del cliente: no se ve el borde de la caja
 
@@ -91,20 +93,41 @@ CAMP_NAMES = ("Campamento del oeste", "Campamento del norte", "Campamento del es
 
 # --- cueva (z8): salas encadenadas desde la escalera ----------------------------------------------
 #        (nombre, centro, radio, [(monstruo, cantidad, spawntime)])
-ROOMS = [
+ROOMS8 = [
     ("Sala de los Golems", (33, 21), 3.6, [("Stone Golem", 3, 90), ("Gazer", 1, 90)]),
     ("Galeria", (24, 14), 3.8, [("Stone Golem", 2, 90), ("Crypt Shambler", 2, 90), ("Gazer", 1, 90)]),
     ("Cripta", (13, 20), 3.8, [("Crypt Shambler", 3, 100), ("Stalker", 2, 100)]),
     ("Guarida del Grorlam", (21, 29), 4.4, [("Grorlam", 1, 1800), ("Crypt Shambler", 2, 120)]),
 ]
-LINKS = [[HOLE, (33, 21)], [(33, 21), (30, 15), (24, 14)], [(24, 14), (16, 15), (13, 20)],
-         [(13, 20), (13, 27), (21, 29)]]
+LINKS8 = [[HOLE, (33, 21)], [(33, 21), (30, 15), (24, 14)], [(24, 14), (16, 15), (13, 20)],
+          [(13, 20), (13, 27), (21, 29)]]
 LADDER_ROOM = 2.2                           # radio del rellano de la escalera
 LINK_HALF = 1.5                             # medio ancho de los pasillos (>= 1.42: sin cortes en la grilla 2x2)
 
+# --- pisos nuevos: z9 y z10 -----------------------------------------------------------------------
+ROOMS9 = [
+    ("Sala de los Wyverns", (33, 32), 4.0, [("Wyvern", 2, 120), ("Dragon Hatchling", 1, 120)]),
+    ("Galeria de los Murcielagos", (33, 20), 3.8, [("Mutated Bat", 3, 120), ("Mutated Rat", 1, 120)]),
+    ("Camara de los Hatchlings", (22, 13), 3.8, [("Dragon Hatchling", 2, 120), ("Wyvern", 1, 120)]),
+    ("Descenso", (11, 19), 4.0, [("Mutated Rat", 2, 120), ("Mutated Bat", 1, 120)]),
+]
+ROOMS10 = [
+    ("Sala de los Mutantes", (16, 34), 4.0, [("Mutated Rat", 3, 120), ("Mutated Human", 1, 150)]),
+    ("Galeria de Cristal", (32, 33), 3.8, [("Emerald Scarab", 1, 600), ("Mutated Bat", 2, 120)]),
+    ("Sala de los Hatchlings", (35, 18), 3.8, [("Dragon Hatchling", 2, 120), ("Wyvern", 1, 120)]),
+    ("Camara de la Reina", (18, 13), 4.8, [("Old Widow", 1, 1800), ("Giant Spider", 2, 120)]),
+]
+
+# huella mínima (casillas) para que el sprite no quede metido en la pared
+SIZE = {
+    "Old Widow": 2, "Giant Spider": 2, "Wyvern": 2, "Dragon Hatchling": 2,
+    "Mutated Bat": 2, "Mutated Rat": 2, "Mutated Human": 2, "Emerald Scarab": 2,
+    "Grorlam": 2, "Stone Golem": 2, "Gazer": 2, "Cyclops": 2,
+}
+
 SIGNS = {
     "arrival": "ISLA NATURAL\\nSigue el sendero: tres\\ncampamentos de Cyclops\\ny al final la cueva.",
-    "cave": "CUEVA DE PIEDRA\\nGolems y Shamblers.\\nAl fondo, el Grorlam\\ny un portal al templo.",
+    "cave": "CUEVA DE PIEDRA\\nGolems, Shamblers y\\nun descenso a wyverns.\\nAl fondo, la Reina.",
 }
 
 
@@ -148,6 +171,35 @@ def pick_spots(cands, n, rng, gap=2) -> list:
         if gap == 1:
             raise RuntimeError(f"no hay {n} casillas libres para los monstruos")
         gap -= 1
+
+
+def place_sized(cands, names, near) -> list:
+    """Coloca cada monstruo con su huella SIZE: primero los grandes y lo más cerca posible del centro.
+
+    La huella completa (SIZE x SIZE desde la casilla del spawn) tiene que caer en `cands` y no
+    pisar la huella de otro monstruo. Devuelve las posiciones en el orden de `names`.
+    """
+    cands = set(cands)
+    occupied = set()
+    out = [None] * len(names)
+    order = sorted(range(len(names)), key=lambda i: (-SIZE.get(names[i][0], 1), i))
+    for i in order:
+        s = SIZE.get(names[i][0], 1)
+        best = None
+        for c in sorted(cands):
+            if c in occupied:
+                continue
+            foot = [(c[0] + dx, c[1] + dy) for dx in range(s) for dy in range(s)]
+            if any(p not in cands or p in occupied for p in foot):
+                continue
+            key = (math.hypot(c[0] + (s - 1) / 2 - near[0], c[1] + (s - 1) / 2 - near[1]), c)
+            if best is None or key < best[0]:
+                best = (key, c, foot)
+        if best is None:
+            raise RuntimeError(f"no hay hueco {s}x{s} para {names[i][0]} cerca de {near}")
+        out[i] = best[1]
+        occupied.update(best[2])
+    return out
 
 
 # --- superficie ---------------------------------------------------------------------------------
@@ -304,17 +356,17 @@ def build_surface(seed: int, bl):
 
 # --- cueva --------------------------------------------------------------------------------------
 
-def build_cave(seed: int, bl):
+def build_floor(seed: int, start, rooms, links, bl, final=False):
     nz = Noise(seed + 77)
-    lx, ly = HOLE
+    lx, ly = start
     ox, oy = lx % 2, ly % 2                                     # grilla de bloques 2x2 alineada a la escalera
-    discs = [(HOLE, LADDER_ROOM)] + [(c, r) for _n, c, r, _m in ROOMS]
-    links = [s for pts in LINKS for s in sample_line(pts)]
+    discs = [(start, LADDER_ROOM)] + [(c, r) for _n, c, r, _m in rooms]
+    link_samples = [s for pts in links for s in sample_line(pts)]
 
     def inside(px, py):
         wob = 0.8 * (nz.fbm(px / 3, py / 3, 2, 5) - 0.5)
         return (any(math.hypot(px - c[0], py - c[1]) <= r + wob for c, r in discs)
-                or any(math.hypot(px - sx, py - sy) <= LINK_HALF for sx, sy in links))
+                or any(math.hypot(px - sx, py - sy) <= LINK_HALF for sx, sy in link_samples))
 
     blocks = {(bx, by) for bx in range(-1, W // 2 + 1) for by in range(-1, H // 2 + 1)
               if inside(ox + 2 * bx + 0.5, oy + 2 * by + 0.5)}
@@ -329,18 +381,21 @@ def build_cave(seed: int, bl):
     floor = {(ox + 2 * bx + i, oy + 2 * by + j) for bx, by in blocks for i in (0, 1) for j in (0, 1)}
     box = {(x, y) for y in range(H) for x in range(W)}
     tiles = NP.cave_tiles(floor, box, seed)
-    d = reach(floor, HOLE, CARD)
+    d = reach(floor, start, CARD)
 
-    # portal de salida: lo más lejos de la escalera, dentro de la última sala y sin pegarse a la pared
-    bc, br = ROOMS[-1][1], ROOMS[-1][2]
+    # salida: lo más lejos de la escalera, dentro de la última sala y sin pegarse a la pared
+    bc, br = rooms[-1][1], rooms[-1][2]
     cands = [c for c in d if math.hypot(c[0] - bc[0], c[1] - bc[1]) <= br
              and all((c[0] + dx, c[1] + dy) in floor for dx, dy in ALL8)]
     exit_tp = max(cands, key=lambda c: (d[c], c))
-    tiles[HOLE].append(LADDER)
-    tiles[exit_tp].append(TELEPORT)
-    keep = grow({HOLE, exit_tp}, 2)
-    NP.decorate_cave(tiles, floor, HOLE, keep, seed, 0.04, bl)
-    return tiles, {"floor": floor, "exit": exit_tp, "keep": keep}
+    tiles[start].append(LADDER)
+    if final:
+        tiles[exit_tp].append(TELEPORT)
+    else:
+        tiles[exit_tp] = [HOLE_ID]                              # agujero al piso siguiente
+    keep = grow({start, exit_tp}, 2)
+    NP.decorate_cave(tiles, floor, start, keep, seed, 0.04, bl)
+    return tiles, {"floor": floor, "exit": exit_tp, "start": start, "keep": keep, "final": final}
 
 
 def spawn_xml(spawns) -> str:
@@ -371,13 +426,20 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--seed", type=int, default=23)
     ap.add_argument("--dry-run", action="store_true")
-    ap.add_argument("--preview", type=Path, help="prefijo: escribe <prefijo>-z7.png y <prefijo>-z8.png")
+    ap.add_argument("--preview", type=Path, help="prefijo: escribe <prefijo>-z7.png ... <prefijo>-z10.png")
     a = ap.parse_args()
 
     bl = Blocking()
     rng = random.Random(a.seed + 99)
     surf, info = build_surface(a.seed, bl)
-    cave, cinfo = build_cave(a.seed, bl)
+    cave8, cinfo8 = build_floor(a.seed + 800, HOLE, ROOMS8, LINKS8, bl, final=False)
+    start9 = cinfo8["exit"]
+    links9 = [[start9, (33, 32)], [(33, 32), (33, 20)], [(33, 20), (22, 13)], [(22, 13), (11, 19)]]
+    cave9, cinfo9 = build_floor(a.seed + 900, start9, ROOMS9, links9, bl, final=False)
+    start10 = cinfo9["exit"]
+    links10 = [[start10, (16, 34)], [(16, 34), (32, 33)], [(32, 33), (35, 18)], [(35, 18), (18, 13)]]
+    cave10, cinfo10 = build_floor(a.seed + 1000, start10, ROOMS10, links10, bl, final=True)
+    floors = [(Z8, cave8, cinfo8, ROOMS8), (Z9, cave9, cinfo9, ROOMS9), (Z10, cave10, cinfo10, ROOMS10)]
     land, sea, dirt, camps = info["land"], info["sea"], info["dirt"], info["camps"]
     hx, hy = HOLE
     errors = []
@@ -408,51 +470,62 @@ def main() -> int:
     if order != sorted(order):
         errors.append(f"z7: los campamentos no quedan en orden de recorrido: {order}")
 
-    floor = cinfo["floor"]
-    walk8 = {c for c, it in cave.items() if it[0] in CAVE_FLOORS and bl.walkable(it)}
-    d8 = reach(walk8 - {cinfo["exit"]}, HOLE, CARD)
-    for c, it in cave.items():
-        if c in floor:
-            continue
-        want = pieces_for(neighbors_in(floor, *c), WALL_SIDE, WALL_CORNER, WALL_INNER)
-        if want is None or len(want) > 1 or (want and it[0] != want[0]) or (not want and it[0] != ROCK):
-            errors.append(f"pared z8 {c}: quiere {want} tiene {it[0]}")
-    if not any((cinfo["exit"][0] + dx, cinfo["exit"][1] + dy) in d8 for dx, dy in CARD):
-        errors.append(f"z8: el portal de salida {cinfo['exit']} sin acceso")
-    room_d = []
-    for name, rc, _r, _m in ROOMS:
-        near = [d8[c] for c in grow({rc}, 1) if c in d8]
-        if not near:
-            errors.append(f"z8: {name} {rc} no se alcanza desde la escalera")
-        room_d.append(min(near, default=-1))
-    if room_d != sorted(room_d):
-        errors.append(f"z8: las salas no quedan en orden de recorrido: {room_d}")
-    for label, cells in (("z7", land), ("z8", floor)):
-        for (x, y) in cells:
+    floor_reach = {}
+    for z, cave, cinfo, rooms in floors:
+        floor = cinfo["floor"]
+        walk = {c for c, it in cave.items() if it[0] in CAVE_FLOORS and bl.walkable(it)}
+        d = reach(walk - {cinfo["exit"]}, cinfo["start"], CARD)
+        floor_reach[z] = d
+        for c, it in cave.items():
+            if c in floor:
+                continue
+            want = pieces_for(neighbors_in(floor, *c), WALL_SIDE, WALL_CORNER, WALL_INNER)
+            if want is None or len(want) > 1 or (want and it[0] != want[0]) or (not want and it[0] != ROCK):
+                errors.append(f"pared z{z} {c}: quiere {want} tiene {it[0]}")
+        if not any((cinfo["exit"][0] + dx, cinfo["exit"][1] + dy) in d for dx, dy in CARD):
+            errors.append(f"z{z}: la salida {cinfo['exit']} sin acceso")
+        room_d = []
+        for name, rc, _r, _m in rooms:
+            near = [d[c] for c in grow({rc}, 1) if c in d]
+            if not near:
+                errors.append(f"z{z}: {name} {rc} no se alcanza desde la escalera")
+            room_d.append(min(near, default=-1))
+        if room_d != sorted(room_d):
+            errors.append(f"z{z}: las salas no quedan en orden de recorrido: {room_d}")
+        for (x, y) in floor:
             if x < VIEW[0] or x > W - 1 - VIEW[0] or y < VIEW[1] or y > H - 1 - VIEW[1]:
-                errors.append(f"{label} {(x, y)}: se ve el borde de la caja")
+                errors.append(f"z{z} {(x, y)}: se ve el borde de la caja")
                 break
+    for (x, y) in land:
+        if x < VIEW[0] or x > W - 1 - VIEW[0] or y < VIEW[1] or y > H - 1 - VIEW[1]:
+            errors.append(f"z7 {(x, y)}: se ve el borde de la caja")
+            break
 
     # --- spawns: un grupo por campamento y uno por sala, nada suelto ---
-    spawns7, spawns8 = [], []
+    spawns7 = []
+    spawns_by_z = {Z8: [], Z9: [], Z10: []}
     try:
         for camp, mons in zip(camps, CAMPS):
             cands = [c for c in d7 if c != camp and max(abs(c[0] - camp[0]), abs(c[1] - camp[1])) <= 3]
             names = [(n, st) for n, k, st in mons for _ in range(k)]
             spots = pick_spots(cands, len(names), rng)
             spawns7.append((camp, Z7, [(n, s, st) for (n, st), s in zip(names, spots)]))
-        for _name, rc, rr, mons in ROOMS:
-            cands = [c for c in d8 if c not in cinfo["keep"] and math.hypot(c[0] - rc[0], c[1] - rc[1]) <= rr - 0.5]
-            names = [(n, st) for n, k, st in mons for _ in range(k)]
-            spots = pick_spots(cands, len(names), rng)
-            spots.sort(key=lambda c: (math.hypot(c[0] - rc[0], c[1] - rc[1]), c))   # el primero (jefe) al centro
-            spawns8.append((rc, Z8, [(n, s, st) for (n, st), s in zip(names, spots)]))
+        for z, cave, cinfo, rooms in floors:
+            d = floor_reach[z]
+            for _name, rc, rr, mons in rooms:
+                cands = {c for c in d if c not in cinfo["keep"]
+                         and math.hypot(c[0] - rc[0], c[1] - rc[1]) <= rr - 0.5}
+                names = [(n, st) for n, k, st in mons for _ in range(k)]
+                spots = place_sized(cands, names, rc)
+                spawns_by_z[z].append((rc, z, [(n, s, st) for (n, st), s in zip(names, spots)]))
     except RuntimeError as error:
         errors.append(str(error))
 
     if a.preview:
-        for p in write_preview(a.preview, [(Z7, {(X0 + x, Y0 + y): it for (x, y), it in surf.items()}),
-                                           (Z8, {(X0 + x, Y0 + y): it for (x, y), it in cave.items()})]):
+        layers = [(Z7, {(X0 + x, Y0 + y): it for (x, y), it in surf.items()})]
+        layers += [(z, {(X0 + x, Y0 + y): it for (x, y), it in cave.items()})
+                   for z, cave, _cinfo, _rooms in floors]
+        for p in write_preview(a.preview, layers):
             print(f"preview: {p}")
     if errors:
         print("\n".join(errors[:40]), file=sys.stderr)
@@ -460,17 +533,18 @@ def main() -> int:
         return 1
 
     counts: dict = {}
-    for _c, _z, mons in spawns7 + spawns8:
+    for _c, _z, mons in spawns7 + [s for z in (Z8, Z9, Z10) for s in spawns_by_z[z]]:
         for name, _p, _t in mons:
             counts[name] = counts.get(name, 0) + 1
     lx = [x for x, _ in land]
     ly = [y for _, y in land]
     g = lambda c, z: {"x": X0 + c[0], "y": Y0 + c[1], "z": z}  # noqa: E731
+    cave_tiles = sum(len(cinfo["floor"]) for _z, _cave, cinfo, _rooms in floors)
     print(f"isla x{X0 + min(lx)}-{X0 + max(lx)} y{Y0 + min(ly)}-{Y0 + max(ly)}: {len(land)} casillas de tierra "
-          f"({len(d7)} caminables), cueva {len(floor)} casillas; recorrido z7 {max(order)} pasos, z8 {max(room_d)} pasos")
+          f"({len(d7)} caminables), cueva {cave_tiles} casillas en z8/z9/z10; recorrido z7 {max(order)} pasos")
     print(f"llegada {X0 + ARRIVAL[0]},{Y0 + ARRIVAL[1]},7; campamentos " +
           ", ".join(f"{X0 + x},{Y0 + y}" for x, y in camps) +
-          f"; cueva {X0 + hx},{Y0 + hy},7; portal final {X0 + cinfo['exit'][0]},{Y0 + cinfo['exit'][1]},8")
+          f"; cueva {X0 + hx},{Y0 + hy},7; portal final {X0 + cinfo10['exit'][0]},{Y0 + cinfo10['exit'][1]},10")
     print("monstruos: " + ", ".join(f"{k} {v}" for k, v in sorted(counts.items(), key=lambda kv: -kv[1])))
     if a.dry_run:
         print("dry-run: validación OK, no se escribió nada")
@@ -485,7 +559,7 @@ def main() -> int:
         shutil.copy2(MAP, backup)
 
     def gone(gx, gy, z):
-        return z in (Z7, Z8) and OLD_BOX[0] <= gx <= OLD_BOX[2] and OLD_BOX[1] <= gy <= OLD_BOX[3]
+        return z in (Z7, Z8, Z9, Z10) and OLD_BOX[0] <= gx <= OLD_BOX[2] and OLD_BOX[1] <= gy <= OLD_BOX[3]
 
     for area in list(md[2]):
         if area[0] != T_AREA:
@@ -495,7 +569,7 @@ def main() -> int:
         if not area[2]:
             md[2].remove(area)
     buckets: dict = {}
-    for zz, t in ((Z7, surf), (Z8, cave)):
+    for zz, t in [(Z7, surf)] + [(z, cave) for z, cave, _cinfo, _rooms in floors]:
         for (x, y), it in t.items():
             buckets.setdefault(((X0 + x) & ~0xFF, (Y0 + y) & ~0xFF, zz), []).append((X0 + x, Y0 + y, it))
     for (bx, by, zz), lst in sorted(buckets.items()):
@@ -512,7 +586,8 @@ def main() -> int:
     sp = re.sub(r'[ \t]*<spawn centerx="(\d+)" centery="(\d+)" centerz="(\d+)"[^>]*>.*?</spawn>\r?\n?',
                 lambda m: "" if gone(int(m.group(1)), int(m.group(2)), int(m.group(3))) else m.group(0), sp, flags=re.S)
     block = "\t<!-- BEGIN NATURAL_ISLAND_SPAWNS (scripts/map/generate-natural-island.py) -->\n" + \
-        spawn_xml(spawns7 + spawns8) + "\n\t<!-- END NATURAL_ISLAND_SPAWNS -->\n"
+        spawn_xml(spawns7 + [s for z in (Z8, Z9, Z10) for s in spawns_by_z[z]]) + \
+        "\n\t<!-- END NATURAL_ISLAND_SPAWNS -->\n"
     sp = sp.replace("</spawns>", block + "</spawns>")
     with open(SPAWNS, "w", encoding="latin-1", newline="") as f:
         f.write(sp)
@@ -531,18 +606,24 @@ def main() -> int:
 
     MANIFEST.write_text(json.dumps({
         "name": "generated-natural-island", "seed": a.seed,
-        "box": {"x1": X0, "y1": Y0, "x2": X0 + W - 1, "y2": Y0 + H - 1, "z": [Z7, Z8]},
-        "oldBoxCleared": {"x1": OLD_BOX[0], "y1": OLD_BOX[1], "x2": OLD_BOX[2], "y2": OLD_BOX[3], "z": [Z7, Z8]},
+        "box": {"x1": X0, "y1": Y0, "x2": X0 + W - 1, "y2": Y0 + H - 1, "z": [Z7, Z8, Z9, Z10]},
+        "oldBoxCleared": {"x1": OLD_BOX[0], "y1": OLD_BOX[1], "x2": OLD_BOX[2], "y2": OLD_BOX[3],
+                          "z": [Z7, Z8, Z9, Z10]},
         "land": {"x1": X0 + min(lx), "y1": Y0 + min(ly), "x2": X0 + max(lx), "y2": Y0 + max(ly), "z": Z7},
-        "landTiles": len(land), "caveFloorTiles": len(floor),
+        "landTiles": len(land), "caveFloorTiles": cave_tiles,
         "landing": g(ARRIVAL, Z7),
         "portalsBack": [dict(g(c, z), to=list(TEMPLE_BACK)) for c, z in
-                        ((PORTAL_BACK, Z7), (info["hole_portal"], Z7), (cinfo["exit"], Z8))],
+                        ((PORTAL_BACK, Z7), (info["hole_portal"], Z7), (cinfo10["exit"], Z10))],
         "camps": [dict(g(c, Z7), name=n) for c, n in zip(camps, CAMP_NAMES)],
         "cave": {"hole": g(HOLE, Z7), "ladder": g(HOLE, Z8), "ladderExit": g((hx, hy + 1), Z7),
-                 "rooms": [dict(g(rc, Z8), name=n) for n, rc, _r, _m in ROOMS]},
+                 "floors": [
+                     {"z": z, "start": g(cinfo["start"], z), "exit": g(cinfo["exit"], z),
+                      "rooms": [dict(g(rc, z), name=n) for n, rc, _r, _m in rooms]}
+                     for z, _cave, cinfo, rooms in floors
+                 ]},
         "signs": [g(c, Z7) for c in sorted(info["signs"])],
-        "spawns": {"z7": len(spawns7), "z8": len(spawns8), "monsters": sum(counts.values())},
+        "spawns": {"z7": len(spawns7), **{f"z{z}": len(spawns_by_z[z]) for z in (Z8, Z9, Z10)},
+                   "monsters": sum(counts.values())},
         "monsters": dict(sorted(counts.items())),
     }, indent=2) + "\n")
     print(f"OK mapa {MAP}\nOK spawns {SPAWNS}\nOK carteles {READABLES}\nOK {MANIFEST}")
