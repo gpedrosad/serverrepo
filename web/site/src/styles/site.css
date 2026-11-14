@@ -340,3 +340,5 @@ body:not(:has(.site-foot)) .wrap { padding-bottom: 4rem; }
 .quest-where { display: block; color: var(--faint); font-size: 12px; margin-top: 0.2rem; min-width: 12rem; }
 .reward-icons { display: inline-flex; flex-wrap: wrap; gap: 0.2rem; margin-right: 0.35rem; vertical-align: middle; }
 .reward-icons img { width: 24px; height: 24px; image-rendering: pixelated; }
+.chests-table td.mono { white-space: nowrap; font-size: 13px; color: var(--muted); }
+.chests-table td:first-child { min-width: 12rem; }

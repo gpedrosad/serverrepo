@@ -5,6 +5,7 @@ import data from '../data/quests.json';
 const typeLabel = Object.fromEntries(data.groups.map((g) => [g.key, g.label]));
 const quests = [...data.quests].sort((a, b) => a.level_min - b.level_min || a.name.localeCompare(b.name));
 const proposals = [...data.proposals].sort((a, b) => a.order - b.order || a.name.localeCompare(b.name));
+const mapChests = [...(data.map_chests || [])].sort((a, b) => a.level_min - b.level_min || a.quest.localeCompare(b.quest) || a.x - b.x || a.y - b.y);
 const pendingItems = data.pending_items || [];
 const totalChests = quests.reduce((n, q) => n + (q.chests || 0), 0);
 const chestQuests = quests.filter((q) => q.type === 'cofre' || q.type === 'grupo').length;
@@ -23,7 +24,7 @@ const icons = (ids: number[]) => ids.filter((id) => id > 0);
       <div><dt>Propuestas</dt><dd>{proposals.length}</dd></div>
     </dl>
     <p class="note" style="margin-top:1rem">Los niveles son <strong>recomendados</strong>, no requisitos. Las únicas exigencias reales son las puertas de <strong>Hell Quest</strong> (nivel 80 y 100) y la <strong>Arena PvP</strong> (nivel 25).</p>
-    <p class="muted small" style="margin-top:.6rem">{chestQuests} quests con cofre/grupo · {systemQuests} sistemas repetibles · {pendingItems.length} items sin drop de monstruo. Los niveles de las quests clásicas son estimados según los monstruos de la zona y la recompensa.</p>
+    <p class="muted small" style="margin-top:.6rem">{chestQuests} quests con cofre/grupo · {systemQuests} sistemas repetibles · {pendingItems.length} items sin drop de monstruo · <a href="#cofres">ver los {mapChests.length} cofres uno por uno</a>. Los niveles de las quests clásicas son estimados según los monstruos de la zona y la recompensa.</p>
   </section>
 
   <section>
@@ -71,6 +72,39 @@ const icons = (ids: number[]) => ids.filter((id) => id > 0);
       </table>
     </div>
     <p class="empty hidden" id="quests-empty">Ninguna quest coincide con el filtro.</p>
+  </section>
+
+  <section id="cofres">
+    <h2 class="label">Todos los cofres del mapa <span class="aside">{mapChests.length} cofres</span></h2>
+    <p class="muted">Cada cofre con su coordenada exacta, el ítem que entrega y la quest a la que pertenece. Son 40 cofres: 29 de <code>quest.lua</code>, 4 del Annihilator, 3 del Pharaoh y 4 del Hell Quest.</p>
+    <div class="field" style="max-width:24rem;margin:.75rem 0">
+      <input type="search" id="chest-search" placeholder="Buscar cofre, quest, premio o coordenada…" autocomplete="off" aria-label="Buscar cofre">
+    </div>
+    <div class="table-scroll">
+      <table class="quests-table chests-table" id="chests-table">
+        <thead>
+          <tr>
+            <th>Quest</th>
+            <th>Coordenadas</th>
+            <th>Premio</th>
+            <th class="n">Nivel</th>
+            <th>Lugar</th>
+          </tr>
+        </thead>
+        <tbody>
+          {mapChests.map((c) => (
+            <tr data-name={`${c.quest} ${c.reward} ${c.place} ${c.x} ${c.y} ${c.z} ${c.uid}`.toLowerCase()}>
+              <td><strong>{c.quest}</strong><span class="quest-where">UID {c.uid}</span></td>
+              <td class="mono">{c.x}, {c.y}, {c.z}</td>
+              <td class="reward"><span class="reward-icons"><img src={`/assets/wiki/items/${c.reward_id}.png`} alt="" width="24" height="24" loading="lazy" /></span>{c.reward}</td>
+              <td class="n"><strong>{c.level}</strong></td>
+              <td class="muted">{c.place}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="empty hidden" id="chests-empty">Ningún cofre coincide con el filtro.</p>
   </section>
 
   <section>
@@ -176,4 +210,18 @@ const icons = (ids: number[]) => ids.filter((id) => id > 0);
     });
   }
   search.addEventListener('input', apply);
+
+  const chestRows = [...document.querySelectorAll<HTMLTableRowElement>('#chests-table tbody tr')];
+  const chestSearch = document.getElementById('chest-search') as HTMLInputElement;
+  const chestEmpty = document.getElementById('chests-empty') as HTMLParagraphElement;
+  chestSearch.addEventListener('input', () => {
+    const q = chestSearch.value.trim().toLowerCase();
+    let shown = 0;
+    for (const row of chestRows) {
+      const ok = !q || (row.dataset.name || '').includes(q);
+      row.hidden = !ok;
+      if (ok) shown++;
+    }
+    chestEmpty.classList.toggle('hidden', shown > 0);
+  });
 </script>

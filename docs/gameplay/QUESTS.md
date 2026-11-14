@@ -59,6 +59,10 @@ nivel estimado y monstruos de la zona.
 | Expedición semanal: Cazadores del Desierto | 60–100 | 1–4 | Gemas + exp; ranking semanal | Contenido repetible en las 9 zonas del desierto |
 | Arena de Jefes | 100–130 | 2–4 | Rare loot + ranking semanal | Objetivo de fin de semana con jefes existentes |
 
+## Todos los cofres del mapa
+
+La página `/quests` lista los **40 cofres uno por uno**, con coordenada exacta (`x, y, z`), UID, premio y quest. Están ordenados por nivel recomendado de menor a mayor. Se pueden buscar por quest, premio o coordenada.
+
 ## Items sin drop de monstruo
 
 Estos items no salen de ningún monstruo y todavía no tienen una fuente clara:
