@@ -14,7 +14,6 @@
 <npc name="Fargum" x="172" y="66" z="7" dir="1"/>
 <npc name="Nimral" x="122" y="117" z="7" dir="3"/>
 <npc name="Nimral" x="348" y="210" z="7" dir="2"/>
-<npc name="Nimral" x="85" y="210" z="7" dir="3"/>
 <npc name="Nimral" x="111" y="61" z="6" dir="3"/>
 <npc name="Nimral" x="397" y="103" z="7" dir="2"/>
 <npc name="Nimral" x="450" y="41" z="7" dir="1"/>
@@ -26,6 +25,5 @@
 <npc name="Chronos" x="338" y="388" z="6" dir="2"/>
 
 <npc name="Orlan" x="127" y="49" z="4" dir="1"/>
-<npc name="The Oracle" x="96" y="207" z="6"/>
-<npc name="Sally" x="74" y="220" z="7" dir="1"/>
+
 </npclist>

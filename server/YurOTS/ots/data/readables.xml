@@ -64,4 +64,7 @@
 	<!-- BEGIN MINOTAUR_ISLE_SIGNS -->
 	<readable x="102" y="52" z="7" text="CUEVA DEL MINOTAURO\nAbajo, minotauros mas fuertes en cada piso.\nAl fondo del tercer piso, portal de vuelta."/>
 	<!-- END MINOTAUR_ISLE_SIGNS -->
-</readables>
+	<!-- BEGIN EPSTEIN_PORTAL -->
+	<readable x="85" y="210" z="7" text="Portal to the mainland (temple)"/>
+	<!-- END EPSTEIN_PORTAL -->
+	</readables>

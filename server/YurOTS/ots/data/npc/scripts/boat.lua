@@ -3,7 +3,7 @@
 talk_state = 0
 pending_travel = nil
 
-EPSTEIN = 'Epstein Island' -- Rookgaard: solo para jugadores sin vocación
+EPSTEIN = 'Epstein Island' -- isla de caza; ya no es Rookgaard ni tiene restricción de vocación
 
 -- dest = sqm exacto de llegada.
 TRAVELS = {
@@ -17,32 +17,17 @@ TRAVELS = {
 }
 
 -- Personal del server: los nombres que empiezan con "GM" (la web no deja crear jugadores así, ver
--- web/data.py). Los GM suelen tener vocación 0, pero no son novatos: viajan a cualquier destino.
+-- web/data.py). Los GM viajan gratis a cualquier destino.
 local function isStaff(cid)
 	local name = creatureGetName(cid) or ''
 	return string.lower(string.sub(name, 1, 2)) == 'gm'
 end
 
-local function isRookie(cid)
-	return getPlayerVocation(cid) == 0 and not isStaff(cid)
-end
-
--- Destinos que este jugador puede tomar: sin vocación solo Epstein, con vocación todos menos Epstein.
-local function allowed(cid, travel)
-	if isStaff(cid) then
-		return true
-	end
-	return isRookie(cid) == (travel.name == EPSTEIN)
-end
-
+-- Destinos: todos los jugadores pueden viajar a cualquier destino, incluida Epstein Island.
 local function summary(cid, sep, withPrice)
-	local staff, rookie = isStaff(cid), getPlayerVocation(cid) == 0
 	local parts = {}
 	for i = 1, table.getn(TRAVELS) do
-		local t = TRAVELS[i]
-		if staff or rookie == (t.name == EPSTEIN) then   -- igual que allowed(), sin repetir la consulta
-			table.insert(parts, withPrice(t))
-		end
+		table.insert(parts, withPrice(TRAVELS[i]))
 	end
 	return table.concat(parts, sep)
 end
@@ -61,12 +46,6 @@ local function travelProblem(cid, travel)
 	end
 	if isPzLocked(cid) then
 		return 'You are in a fight! Calm down before you board.'
-	end
-	if not allowed(cid, travel) then
-		if isRookie(cid) then
-			return 'You cannot leave ' .. EPSTEIN .. ' yet. Talk to the Oracle first.'
-		end
-		return 'Only those without a vocation may sail to ' .. EPSTEIN .. '.'
 	end
 	return nil
 end

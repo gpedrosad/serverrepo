@@ -54,6 +54,10 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | `generate-wave-arena.py` | Wave Arena v2 (Claro de la Selva): campamento PZ + claro 13x11, carteles y bloque `LAYOUT` de `wave_arena.lua` (`--dry-run --png`) |
 | `generate-beast-valley.py` | Valle de las Bestias (portal 158,47,7; reemplazó al hunt maze) |
 | `generate-minotaur-isle.py` | Islote del Minotauro: islote junto al muelle con puente + cuevas z10–z12 (`--dry-run --png`) |
+| `generate-bamboo-depths.py` | Cuevas de Bambú: bajada bajo Bamboo Camp, pozo z8 y cueva z9 con 3 salas y spawns progresivos (`--dry-run --preview`) |
+| `generate-epstein-hunts.py` | Epstein Island (nivel medio/alto, 4 pisos): zonas z7, cuevas z8, z9 y z10 con Mutated Tiger, Tide Priest y Bog Raiders (`--dry-run`) |
+| `generate-epstein-caves.py` | Epstein Island: cuevas largas z8 + z9 + z10, agujeros y escaleras; escribe `generated-epstein-caves.json` (`--dry-run --preview-dir`) |
+| `generate-epstein-cleanup.py` | Epstein Island: saca NPCs/tienda y el Oracle, y agrega el portal de salida al templo |
 | `generate-maze.py` | Laberinto Alice |
 | `generate-tp-gauntlet.py` | Gauntlet |
 | `generate-island.py` | Islas procedurales |

@@ -50,7 +50,7 @@ WAVES = {
 	{pack = {{"Amazon", 2}, {"Valkyrie", 2}}},
 	{boss = "Orc Leader", pack = {{"Orc Berserker", 1}, {"Orc Shaman", 2}}},
 	{pack = {{"Lion", 2}, {"Tiger", 2}}},
-	{pack = {{"Dworc Fleshhunter", 2}, {"Dworc Venomsniper", 2}, {"Dworf Voodoomaster", 1}}},
+	{pack = {{"Dworc Fleshhunter", 2}, {"Dworc Venomsniper", 2}, {"Dworc Voodoomaster", 1}}},
 	{pack = {{"Stalker", 2}, {"Hunter", 2}}},
 	{pack = {{"Terror Bird", 2}, {"Crocodile", 2}}},
 	{boss = "Lizard Templar", pack = {{"Kongra", 2}, {"Sibang", 1}}},

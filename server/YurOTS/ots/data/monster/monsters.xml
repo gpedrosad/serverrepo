@@ -94,7 +94,7 @@
 <monster name="Enraged Dwarf Soldier" file="enraged dwarf soldier.xml" />
 <monster name="Dworc Fleshhunter" file="dworc fleshhunter.xml" />
 <monster name="Dworc Venomsniper" file="dworc venomsniper.xml" />
-<monster name="Dworf Voodoomaster" file="dworc voodoomaster.xml" />
+<monster name="Dworc Voodoomaster" file="dworc voodoomaster.xml" />
 <monster name="Efreet" file="efreet.xml" />
 <monster name="Elder Beholder" file="elder beholder.xml" />
 <monster name="Elephant" file="elephant.xml" />
