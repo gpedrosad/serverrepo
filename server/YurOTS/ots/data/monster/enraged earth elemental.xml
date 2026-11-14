@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Enraged Earth Elemental" level="54" maglevel="49" experience="1530" pushable="0" armor="33" defense="33" canpushitems="1" staticattack="50" changetarget="200" speed="246">
+	<health now="1657" max="1657" />
+	<look type="178" head="0" body="0" legs="0" feet="0" corpse="20184" />
+	<combat targetdistance="1" runonhealth="0" />
+	<attacks>
+		<attack type="melee" mindamage="57" maxdamage="184" probability="100" />
+		<attack type="instant" name="k_earth_burst_3" exhaustion="1000" cycleticks="3500" probability="30" kit="1" />
+		<attack type="rune" name="k_poison_strike_3" exhaustion="1000" cycleticks="3500" probability="30" kit="1" />
+		<attack type="instant" name="k_heal_2" exhaustion="1000" cycleticks="6000" probability="20" kit="1" />
+	</attacks>
+	<defenses>
+		<defense immunity="poison" />
+		<defense immunity="energy" />
+		<defense immunity="paralyze" />
+		<defense immunity="invisible" />
+	</defenses>
+	<voices>
+		<voice sentence="Rumble..." />
+		<voice sentence="Crrrk crrrk..." />
+		<voice sentence="SKREEEAAAH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="100" chance1="43000" chancemax="0" />
+		<item id="2148" countmax="30" chance1="50000" chancemax="0" />
+		<item id="1294" countmax="30" chance1="20460" chancemax="0" />
+		<item id="2546" countmax="30" chance1="20160" chancemax="0" />
+		<item id="2260" chance="10000" />
+		<item id="1294" countmax="10" chance1="570" chancemax="0" />
+		<item id="1294" countmax="10" chance1="10000" chancemax="0" />
+		<item id="2150" countmax="1" chance1="620" chancemax="0" />
+		<item id="2150" countmax="3" chance1="26000" chancemax="0" />
+		<item id="2149" countmax="3" chance1="21000" chancemax="0" />
+		<item id="2147" countmax="2" chance1="16000" chancemax="0" />
+		<item id="2146" countmax="2" chance1="11000" chancemax="0" />
+		<item id="2145" countmax="1" chance1="6000" chancemax="0" />
+	</loot>
+</monster>

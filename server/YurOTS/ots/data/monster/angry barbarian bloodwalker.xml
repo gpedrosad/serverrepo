@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Angry Barbarian Bloodwalker" level="37" maglevel="7" experience="410" pushable="0" armor="22" defense="24" canpushitems="1" staticattack="50" changetarget="200" speed="254">
+	<health now="518" max="518" />
+	<look type="168" head="114" body="132" legs="132" feet="95" corpse="3128" />
+	<combat targetdistance="1" runonhealth="0" />
+	<attacks>
+		<attack type="melee" mindamage="30" maxdamage="165" probability="100" />
+		<attack type="instant" name="orcb_haste" exhaustion="500" cycleticks="6000" probability="25" />
+		<attack type="instant" name="k_roar_burst_4" exhaustion="1000" cycleticks="3500" probability="30" kit="1" />
+	</attacks>
+	<defenses />
+	<voices>
+		<voice sentence="YAAAHEEE!" />
+		<voice sentence="SLAUGHTER!" />
+		<voice sentence="CARNAGE!" />
+		<voice sentence="You can run but you can't hide!" />
+		<voice sentence="GRAAAH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="45" chance1="80000" chancemax="0" />
+		<item id="2378" chance="4000" />
+		<item id="2381" chance="2000" />
+		<item id="2464" chance="5000" />
+		<item id="2473" chance="4000" />
+		<item id="2387" chance="800" />
+		<item id="2150" countmax="1" chance1="3000" chancemax="0" />
+		<item id="2149" countmax="1" chance1="2250" chancemax="0" />
+	</loot>
+</monster>

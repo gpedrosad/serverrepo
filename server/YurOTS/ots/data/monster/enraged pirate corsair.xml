@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Enraged Pirate Corsair" level="64" maglevel="19" experience="1190" pushable="0" armor="36" defense="38" canpushitems="1" staticattack="50" changetarget="200" speed="256">
+	<health now="1721" max="1721" />
+	<look type="98" head="0" body="0" legs="0" feet="0" corpse="3128" />
+	<combat targetdistance="1" runonhealth="0" />
+	<attacks>
+		<attack type="melee" mindamage="115" maxdamage="391" probability="100" />
+		<attack type="distance" name="throwingstar" mindamage="92" maxdamage="322" cycleticks="2000" probability="45" />
+		<attack type="rune" name="k_cannon_ball_5" exhaustion="1000" cycleticks="3000" probability="35" kit="1" />
+		<attack type="instant" name="orcb_haste" exhaustion="500" cycleticks="6000" probability="15" kit="1" />
+	</attacks>
+	<defenses />
+	<voices>
+		<voice sentence="Hiyaa!" />
+		<voice sentence="Give up!" />
+		<voice sentence="Plundeeeeer!" />
+		<voice sentence="Your ship is mine now!" />
+		<voice sentence="SKREEEAAAH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="88" chance1="95000" chancemax="0" />
+		<item id="2385" chance="10000" />
+		<item id="2399" countmax="12" chance1="8000" chancemax="0" />
+		<item id="2489" chance="1500" />
+		<item id="2521" chance="1000" />
+		<item id="2145" countmax="1" chance1="1500" chancemax="0" />
+		<item id="2150" countmax="3" chance1="26000" chancemax="0" />
+		<item id="2149" countmax="3" chance1="21000" chancemax="0" />
+		<item id="2147" countmax="2" chance1="16000" chancemax="0" />
+		<item id="2146" countmax="2" chance1="11000" chancemax="0" />
+		<item id="2145" countmax="1" chance1="6000" chancemax="0" />
+	</loot>
+</monster>

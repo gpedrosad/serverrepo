@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Enraged Ice Golem" level="54" maglevel="39" experience="1003" pushable="0" armor="30" defense="32" canpushitems="1" staticattack="50" changetarget="200" speed="196">
+	<health now="982" max="982" />
+	<look type="171" head="0" body="0" legs="0" feet="0" corpse="3113" />
+	<combat targetdistance="1" runonhealth="0" />
+	<attacks>
+		<attack type="melee" mindamage="46" maxdamage="253" probability="100" />
+		<attack type="instant" name="icegolem_shards" exhaustion="500" cycleticks="5000" probability="35" />
+	</attacks>
+	<defenses>
+		<defense immunity="poison" />
+		<defense immunity="paralyze" />
+		<defense immunity="drunk" />
+		<defense immunity="invisible" />
+	</defenses>
+	<voices>
+		<voice sentence="Chrrr." />
+		<voice sentence="Crrrrk." />
+		<voice sentence="Gnarr." />
+		<voice sentence="SKREEEAAAH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="60" chance1="85000" chancemax="0" />
+		<item id="2146" countmax="2" chance1="4000" chancemax="0" />
+		<item id="2124" chance="600" />
+		<item id="2396" chance="400" />
+		<item id="2510" chance="3000" />
+		<item id="2150" countmax="3" chance1="26000" chancemax="0" />
+		<item id="2149" countmax="3" chance1="21000" chancemax="0" />
+		<item id="2147" countmax="2" chance1="16000" chancemax="0" />
+		<item id="2146" countmax="2" chance1="11000" chancemax="0" />
+		<item id="2145" countmax="1" chance1="6000" chancemax="0" />
+	</loot>
+</monster>

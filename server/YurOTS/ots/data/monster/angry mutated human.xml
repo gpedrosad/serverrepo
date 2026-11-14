@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Angry Mutated Human" level="32" maglevel="22" experience="315" pushable="0" armor="18" defense="19" canpushitems="1" staticattack="50" changetarget="200" speed="194">
+	<health now="408" max="408" />
+	<look type="248" head="0" body="0" legs="0" feet="0" corpse="3113" />
+	<combat targetdistance="1" runonhealth="0" />
+	<attacks>
+		<attack type="melee" mindamage="30" maxdamage="135" probability="100" />
+		<attack type="rune" name="shaman missile" exhaustion="500" cycleticks="3000" probability="30" />
+		<attack type="rune" name="gs poison" exhaustion="500" cycleticks="4000" probability="25" />
+	</attacks>
+	<defenses>
+		<defense immunity="poison" />
+	</defenses>
+	<voices>
+		<voice sentence="Take that creature off my back!! I can feel it!" />
+		<voice sentence="HEEEEEEEELP!" />
+		<voice sentence="You will be the next infected one... GRAAAAAAAAARRR!" />
+		<voice sentence="GRAAAH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="100" chance1="80000" chancemax="0" />
+		<item id="2148" countmax="30" chance1="30000" chancemax="0" />
+		<item id="3976" countmax="2" chance1="30000" chancemax="0" />
+		<item id="2696" chance="8000" />
+		<item id="2376" chance="5000" />
+		<item id="2483" chance="1200" />
+		<item id="2479" chance="400" />
+		<item id="2150" countmax="1" chance1="3000" chancemax="0" />
+		<item id="2149" countmax="1" chance1="2250" chancemax="0" />
+	</loot>
+</monster>

@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Enraged Wyrm" level="79" maglevel="74" experience="5890" pushable="0" armor="45" defense="45" canpushitems="1" staticattack="50" changetarget="200" speed="230">
+	<health now="5110" max="5110" />
+	<look type="177" head="0" body="0" legs="0" feet="0" corpse="20183" />
+	<combat targetdistance="1" runonhealth="0" />
+	<attacks>
+		<attack type="melee" mindamage="100" maxdamage="325" probability="100" />
+		<attack type="instant" name="k_energy_wave_5" exhaustion="1000" cycleticks="3000" probability="35" kit="1" />
+		<attack type="rune" name="k_energy_strike_5" exhaustion="1000" cycleticks="3000" probability="35" kit="1" />
+		<attack type="instant" name="k_heal_4" exhaustion="1000" cycleticks="6000" probability="20" kit="1" />
+	</attacks>
+	<defenses>
+		<defense immunity="energy" />
+		<defense immunity="paralyze" />
+		<defense immunity="invisible" />
+	</defenses>
+	<voices>
+		<voice sentence="SSSSSSSS!" />
+		<voice sentence="FCHHHHH!" />
+		<voice sentence="SKREEEAAAH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="100" chance1="30000" chancemax="0" />
+		<item id="2148" countmax="30" chance1="30000" chancemax="0" />
+		<item id="2672" countmax="3" chance1="34800" chancemax="0" />
+		<item id="2546" countmax="10" chance1="7650" chancemax="0" />
+		<item id="2189" chance="990" />
+		<item id="2145" countmax="3" chance1="750" chancemax="0" />
+		<item id="2455" chance="5920" />
+		<item id="2167" chance="720" />
+		<item id="2654" chance="1250" />
+		<item id="2190" chance="420" />
+		<item id="2657" chance="250" />
+		<item id="2436" chance="110" />
+		<item id="2456" chance="90" />
+		<item id="2483" chance="15360" />
+		<item id="2171" chance="110" />
+		<item id="2150" countmax="4" chance1="36000" chancemax="0" />
+		<item id="2149" countmax="4" chance1="30000" chancemax="0" />
+		<item id="2147" countmax="3" chance1="24000" chancemax="0" />
+		<item id="2146" countmax="3" chance1="18000" chancemax="0" />
+		<item id="2145" countmax="2" chance1="10000" chancemax="0" />
+	</loot>
+</monster>

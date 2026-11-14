@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Furious Drowned Sailor" level="43" maglevel="33" experience="756" pushable="0" armor="26" defense="24" canpushitems="1" staticattack="50" changetarget="200" speed="190">
+	<health now="1092" max="1092" />
+	<look type="233" head="0" body="0" legs="0" feet="0" corpse="20169" />
+	<combat targetdistance="1" runonhealth="0" />
+	<blood color="86" effect="9" splash="255" />
+	<attacks>
+		<attack type="melee" mindamage="48" maxdamage="162" probability="100" />
+		<attack type="rune" name="drowned_seaweed" exhaustion="500" cycleticks="6000" probability="45" />
+	</attacks>
+	<defenses>
+		<defense immunity="poison" />
+		<defense immunity="paralyze" />
+		<defense immunity="drunk" />
+	</defenses>
+	<voices>
+		<voice sentence="Glub... glub..." />
+		<voice sentence="Join the crew... below." />
+		<voice sentence="The sea keeps what it takes." />
+		<voice sentence="Cold... so cold..." />
+		<voice sentence="RAAAARGH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="40" chance1="100000" chancemax="0" />
+		<item id="2667" countmax="3" chance1="30000" chancemax="0" />
+		<item id="2120" chance="5000" />
+		<item id="1987" chance="100000">
+			<inside>
+				<item id="2143" countmax="1" chance1="3000" chancemax="0" />
+				<item id="2144" countmax="1" chance1="1000" chancemax="0" />
+				<item id="2385" chance="4000" />
+				<item id="2649" chance="6000" />
+			</inside>
+		</item>
+		<item id="2150" countmax="3" chance1="26000" chancemax="0" />
+		<item id="2149" countmax="3" chance1="21000" chancemax="0" />
+		<item id="2147" countmax="2" chance1="16000" chancemax="0" />
+		<item id="2146" countmax="2" chance1="11000" chancemax="0" />
+		<item id="2145" countmax="1" chance1="6000" chancemax="0" />
+	</loot>
+</monster>

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Furious Quara Pincher" level="71" maglevel="16" experience="3600" pushable="0" armor="57" defense="57" canpushitems="1" staticattack="50" changetarget="200" speed="232">
+	<health now="4140" max="4140" />
+	<look type="72" head="0" body="0" legs="0" feet="0" corpse="20180" />
+	<combat targetdistance="1" runonhealth="0" />
+	<attacks>
+		<attack type="melee" mindamage="61" maxdamage="471" probability="100" />
+		<attack type="rune" name="k_earth_touch_8" exhaustion="1000" cycleticks="2500" probability="40" kit="1" />
+		<attack type="rune" name="k_ice_strike_6" exhaustion="1000" cycleticks="3000" probability="35" kit="1" />
+	</attacks>
+	<defenses>
+		<defense immunity="fire" />
+		<defense immunity="invisible" />
+	</defenses>
+	<voices>
+		<voice sentence="CLACK!" />
+		<voice sentence="Ksssss!" />
+		<voice sentence="RAAAARGH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="149" chance1="100000" chancemax="0" />
+		<item id="2152" countmax="1" chance1="40000" chancemax="0" />
+		<item id="2670" countmax="1" chance1="14000" chancemax="0" />
+		<item id="2147" countmax="2" chance1="7500" chancemax="0" />
+		<item id="2381" chance="7000" />
+		<item id="2670" countmax="5" chance1="5000" chancemax="0" />
+		<item id="2667" countmax="1" chance1="1600" chancemax="0" />
+		<item id="2475" chance="1400" />
+		<item id="2487" chance="340" />
+		<item id="2654" chance="140" />
+		<item id="2150" countmax="4" chance1="36000" chancemax="0" />
+		<item id="2149" countmax="4" chance1="30000" chancemax="0" />
+		<item id="2147" countmax="3" chance1="24000" chancemax="0" />
+		<item id="2146" countmax="3" chance1="18000" chancemax="0" />
+		<item id="2145" countmax="2" chance1="10000" chancemax="0" />
+		<item id="2157" countmax="1" chance1="1500" chancemax="0" />
+	</loot>
+</monster>

@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Furious Pirate Cutthroat" level="41" maglevel="13" experience="473" pushable="0" armor="24" defense="26" canpushitems="1" staticattack="50" changetarget="200" speed="235">
+	<health now="682" max="682" />
+	<look type="96" head="0" body="0" legs="0" feet="0" corpse="3128" />
+	<combat targetdistance="1" runonhealth="0" />
+	<attacks>
+		<attack type="melee" mindamage="57" maxdamage="209" probability="100" />
+		<attack type="distance" name="throwingknife" mindamage="38" maxdamage="114" cycleticks="2000" probability="35" />
+		<attack type="rune" name="k_blade_strike_4" exhaustion="1000" cycleticks="3500" probability="30" kit="1" />
+	</attacks>
+	<defenses />
+	<voices>
+		<voice sentence="Give up!" />
+		<voice sentence="Hiyaa!" />
+		<voice sentence="Plundeeeeer!" />
+		<voice sentence="RAAAARGH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="50" chance1="85000" chancemax="0" />
+		<item id="2379" chance="8000" />
+		<item id="2385" chance="10000" />
+		<item id="2457" chance="3500" />
+		<item id="2483" chance="2500" />
+		<item id="2410" countmax="3" chance1="6000" chancemax="0" />
+		<item id="2150" countmax="3" chance1="26000" chancemax="0" />
+		<item id="2149" countmax="3" chance1="21000" chancemax="0" />
+		<item id="2147" countmax="2" chance1="16000" chancemax="0" />
+		<item id="2146" countmax="2" chance1="11000" chancemax="0" />
+		<item id="2145" countmax="1" chance1="6000" chancemax="0" />
+	</loot>
+</monster>

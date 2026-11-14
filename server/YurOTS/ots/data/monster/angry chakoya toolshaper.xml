@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Angry Chakoya Toolshaper" level="14" maglevel="4" experience="70" pushable="0" armor="10" defense="11" canpushitems="1" staticattack="50" changetarget="200" speed="195">
+	<health now="116" max="116" />
+	<look type="162" head="0" body="0" legs="0" feet="0" corpse="3113" />
+	<combat targetdistance="1" runonhealth="0" />
+	<attacks>
+		<attack type="melee" mindamage="6" maxdamage="39" probability="100" />
+		<attack type="distance" name="smallstone" mindamage="6" maxdamage="32" cycleticks="2000" probability="40" />
+		<attack type="rune" name="k_ice_strike_1" exhaustion="1000" cycleticks="4000" probability="25" kit="1" />
+	</attacks>
+	<defenses>
+		<defense immunity="drunk" />
+	</defenses>
+	<voices>
+		<voice sentence="Chikuva!" />
+		<voice sentence="Jinuq!" />
+		<voice sentence="Mupi! Si siyoqua jinuq!" />
+		<voice sentence="GRAAAH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="18" chance1="60000" chancemax="0" />
+		<item id="2667" countmax="2" chance1="30000" chancemax="0" />
+		<item id="2386" chance="4000" />
+		<item id="2388" chance="3000" />
+		<item id="2467" chance="5000" />
+		<item id="2150" countmax="1" chance1="1250" chancemax="0" />
+		<item id="2149" countmax="1" chance1="625" chancemax="0" />
+	</loot>
+</monster>

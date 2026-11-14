@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Furious Undead Gladiator" level="61" maglevel="16" experience="2400" pushable="0" armor="52" defense="52" canpushitems="1" staticattack="50" changetarget="200" speed="202">
+	<health now="2300" max="2300" />
+	<look type="183" head="0" body="0" legs="0" feet="0" corpse="20189" />
+	<combat targetdistance="1" runonhealth="0" />
+	<attacks>
+		<attack type="melee" mindamage="82" maxdamage="308" probability="100" />
+		<attack type="rune" name="k_blade_strike_5" exhaustion="1000" cycleticks="3000" probability="35" kit="1" />
+		<attack type="distance" name="throwingstar" mindamage="92" maxdamage="246" cycleticks="3000" probability="35" kit="1" />
+	</attacks>
+	<defenses>
+		<defense immunity="invisible" />
+	</defenses>
+	<voices>
+		<voice sentence="For the arena!" />
+		<voice sentence="Fight me, coward!" />
+		<voice sentence="RAAAARGH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="148" chance1="94000" chancemax="0" />
+		<item id="2399" countmax="18" chance1="16700" chancemax="0" />
+		<item id="2419" chance="11280" />
+		<item id="2654" chance="5500" />
+		<item id="2513" chance="5200" />
+		<item id="2478" chance="4770" />
+		<item id="2465" chance="4550" />
+		<item id="3965" chance="4080" />
+		<item id="2647" chance="2730" />
+		<item id="2200" chance="2200" />
+		<item id="2377" chance="1730" />
+		<item id="2463" chance="1600" />
+		<item id="2490" chance="1320" />
+		<item id="2430" chance="310" />
+		<item id="2497" chance="90" />
+		<item id="2165" chance="60" />
+		<item id="2150" countmax="4" chance1="36000" chancemax="0" />
+		<item id="2149" countmax="4" chance1="30000" chancemax="0" />
+		<item id="2147" countmax="3" chance1="24000" chancemax="0" />
+		<item id="2146" countmax="3" chance1="18000" chancemax="0" />
+		<item id="2145" countmax="2" chance1="10000" chancemax="0" />
+		<item id="2157" countmax="1" chance1="1500" chancemax="0" />
+	</loot>
+</monster>

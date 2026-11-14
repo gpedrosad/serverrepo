@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Furious Ice Spider" level="36" maglevel="76" experience="4200" pushable="0" armor="47" defense="47" canpushitems="1" staticattack="50" changetarget="200" speed="307">
+	<health now="4140" max="4140" />
+	<look type="235" corpse="20167" />
+	<combat targetdistance="1" runonhealth="0" />
+	<blood color="30" effect="16" splash="4" />
+	<attacks>
+		<attack type="melee" mindamage="287" maxdamage="697" probability="100" />
+		<attack type="rune" name="frostdragon_iceball" exhaustion="500" cycleticks="6000" probability="35" />
+		<attack type="instant" name="icespider_blizzard" exhaustion="500" cycleticks="8000" probability="40" />
+		<attack type="instant" name="exura" exhaustion="500" cycleticks="4500" probability="30" />
+		<attack type="instant" name="gs_haste" exhaustion="500" cycleticks="9000" probability="40" />
+	</attacks>
+	<defenses>
+		<defense immunity="poison" />
+		<defense immunity="paralyze" />
+		<defense immunity="invisible" />
+		<defense immunity="drunk" />
+	</defenses>
+	<voices>
+		<voice sentence="RAAAARGH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="50" chance1="100000" chancemax="0" />
+		<item id="2463" chance="4000" />
+		<item id="2171" chance="1533" />
+		<item id="2459" chance="20000" />
+		<item id="2146" countmax="2" chance1="12000" chancemax="0" />
+		<item id="1987" chance="50000">
+			<inside>
+				<item id="2148" countmax="50" chance1="100000" chancemax="0" />
+				<item id="2476" chance="1766" />
+				<item id="2477" chance="1533" />
+				<item id="0000" countmax="2" chance1="20000" chancemax="0" />
+				<item id="2478" chance="10000" />
+				<item id="2169" chance="800" />
+			</inside>
+		</item>
+		<item id="2150" countmax="4" chance1="36000" chancemax="0" />
+		<item id="2149" countmax="4" chance1="30000" chancemax="0" />
+		<item id="2147" countmax="3" chance1="24000" chancemax="0" />
+		<item id="2146" countmax="3" chance1="18000" chancemax="0" />
+		<item id="2145" countmax="2" chance1="10000" chancemax="0" />
+		<item id="2157" countmax="1" chance1="1500" chancemax="0" />
+	</loot>
+</monster>

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Angry Imperial Squire" level="12" maglevel="4" experience="79" pushable="0" armor="10" defense="14" canpushitems="1" staticattack="50" changetarget="200" speed="190">
+	<health now="138" max="138" />
+	<look type="131" head="57" body="52" legs="57" feet="95" corpse="3128" />
+	<combat targetdistance="1" runonhealth="0" />
+	<attacks>
+		<attack type="melee" mindamage="6" maxdamage="36" probability="100" />
+		<attack type="rune" name="k_earth_touch_1" exhaustion="1000" cycleticks="4000" probability="25" kit="1" />
+	</attacks>
+	<defenses />
+	<voices>
+		<voice sentence="Halt! This is imperial land." />
+		<voice sentence="I will be a knight one day!" />
+		<voice sentence="For the Emperor!" />
+		<voice sentence="GRAAAH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="20" chance1="80000" chancemax="0" />
+		<item id="2671" countmax="1" chance1="15000" chancemax="0" />
+		<item id="2376" chance="5000" />
+		<item id="2467" chance="4000" />
+		<item id="2526" chance="3000" />
+		<item id="2050" chance="10000" />
+		<item id="2150" countmax="1" chance1="1250" chancemax="0" />
+		<item id="2149" countmax="1" chance1="625" chancemax="0" />
+	</loot>
+</monster>

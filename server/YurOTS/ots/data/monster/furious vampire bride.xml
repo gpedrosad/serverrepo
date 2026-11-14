@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Furious Vampire Bride" level="66" maglevel="56" experience="3150" pushable="0" armor="27" defense="27" canpushitems="1" staticattack="50" changetarget="200" speed="242">
+	<health now="2760" max="2760" />
+	<look type="181" head="0" body="0" legs="0" feet="0" corpse="20187" />
+	<combat targetdistance="1" runonhealth="0" />
+	<attacks>
+		<attack type="melee" mindamage="61" maxdamage="246" probability="100" />
+		<attack type="rune" name="k_drain_strike_4" exhaustion="1000" cycleticks="3500" probability="30" kit="1" />
+		<attack type="rune" name="k_death_strike_4" exhaustion="1000" cycleticks="3500" probability="30" kit="1" />
+		<attack type="instant" name="k_heal_3" exhaustion="1000" cycleticks="6000" probability="20" kit="1" />
+	</attacks>
+	<defenses>
+		<defense immunity="poison" />
+		<defense immunity="invisible" />
+	</defenses>
+	<voices>
+		<voice sentence="Come to me, darling..." />
+		<voice sentence="Your blood is mine!" />
+		<voice sentence="RAAAARGH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="149" chance1="90000" chancemax="0" />
+		<item id="2147" countmax="1" chance1="10000" chancemax="0" />
+		<item id="2152" countmax="1" chance1="9910" chancemax="0" />
+		<item id="2186" chance="5500" />
+		<item id="2144" countmax="1" chance1="4950" chancemax="0" />
+		<item id="2127" chance="1100" />
+		<item id="2657" chance="1030" />
+		<item id="2145" countmax="2" chance1="1020" chancemax="0" />
+		<item id="2214" chance="1010" />
+		<item id="2654" chance="970" />
+		<item id="2195" chance="220" />
+		<item id="2102" chance="200" />
+		<item id="2229" countmax="1" chance1="170" chancemax="0" />
+		<item id="2147" countmax="1" chance1="60" chancemax="0" />
+		<item id="2150" countmax="4" chance1="36000" chancemax="0" />
+		<item id="2149" countmax="4" chance1="30000" chancemax="0" />
+		<item id="2147" countmax="3" chance1="24000" chancemax="0" />
+		<item id="2146" countmax="3" chance1="18000" chancemax="0" />
+		<item id="2145" countmax="2" chance1="10000" chancemax="0" />
+		<item id="2157" countmax="1" chance1="1500" chancemax="0" />
+	</loot>
+</monster>

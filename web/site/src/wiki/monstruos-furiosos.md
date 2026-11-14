@@ -47,6 +47,8 @@ No pasa en zonas protegidas. El furioso es un monstruo extra: el spawn normal si
 
 Amazon, Ancient Scarab, Behemoth, Black Knight, Crypt Shambler, Cyclops, Dark Monk, Demon, Dragon, Dragon Lord, Dwarf, Dwarf Geomancer, Dwarf Guard, Dwarf Soldier, Gargoyle, Ghoul, Giant Spider, Hero, Hunter, Hydra, Lich, Lizard Templar, Minotaur, Minotaur Archer, Minotaur Guard, Minotaur Mage, Mummy, Necromancer, Orc, Orc Berserker, Orc Leader, Orc Shaman, Orc Warlord, Orc Warrior, Rotworm, Scarab, Skeleton, Stone Golem, Troll, Valkyrie, Vampire y Warlock.
 
+Desde nov 2026 también las criaturas nuevas: Black Dragon, Frost Dragon, Blue Elf Arcanist, Drowned Sailor, Ice Monk, Ice Spider, Tide Priest, Hellhound, Court Mage, Dark Hydra, Emerald Scarab, Root Colossus, los Imperial (Squire, Archer y Hero), Serpent Spawn, Orc Berserker Pot Thrower y las importadas de Tibia 8.60: piratas, bárbaros, chakoyas, frost giants, ice golem, crystal spider, bog raider, tortugas, mamut, blood crab, quara, cyclops drone y smith, wyrm, elementales, zombie, vampire bride, worker golem, undead gladiator, nightstalker, mutados y wyvern. Los jefes, trainers, mascotas y crías no tienen versión furiosa.
+
 ## Botín raro extra
 
 Algunas versiones furiosas sueltan cosas que el monstruo normal no tiene:

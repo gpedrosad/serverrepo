@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Furious Tortoise" level="20" maglevel="10" experience="216" pushable="0" armor="35" defense="35" canpushitems="1" staticattack="50" changetarget="200" speed="218">
+	<health now="361" max="361" />
+	<look type="197" head="0" body="0" legs="0" feet="0" corpse="20173" />
+	<combat targetdistance="1" runonhealth="0" />
+	<attacks>
+		<attack type="melee" mindamage="18" maxdamage="70" probability="100" />
+		<attack type="rune" name="k_earth_touch_1" exhaustion="1000" cycleticks="4000" probability="25" kit="1" />
+	</attacks>
+	<defenses />
+	<voices>
+		<voice sentence="Ssssss..." />
+		<voice sentence="Krrr..." />
+		<voice sentence="RAAAARGH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="30" chance1="59000" chancemax="0" />
+		<item id="2510" chance="2850" />
+		<item id="2667" countmax="1" chance1="4600" chancemax="0" />
+		<item id="2695" countmax="2" chance1="770" chancemax="0" />
+		<item id="2513" chance="200" />
+		<item id="2417" chance="730" />
+		<item id="2150" countmax="1" chance1="18000" chancemax="0" />
+		<item id="2149" countmax="1" chance1="13000" chancemax="0" />
+		<item id="2147" countmax="1" chance1="9000" chancemax="0" />
+		<item id="2146" countmax="1" chance1="6000" chancemax="0" />
+		<item id="2145" countmax="1" chance1="2500" chancemax="0" />
+	</loot>
+</monster>

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Enraged Frost Giantess" level="44" maglevel="19" experience="510" pushable="0" armor="23" defense="25" canpushitems="1" staticattack="50" changetarget="200" speed="206">
+	<health now="701" max="701" />
+	<look type="170" head="0" body="0" legs="0" feet="0" corpse="3113" />
+	<combat targetdistance="1" runonhealth="0" />
+	<attacks>
+		<attack type="melee" mindamage="23" maxdamage="161" probability="100" />
+		<attack type="distance" name="largerock" mindamage="46" maxdamage="207" cycleticks="2500" probability="40" />
+		<attack type="instant" name="k_ice_burst_3" exhaustion="1000" cycleticks="3500" probability="30" kit="1" />
+	</attacks>
+	<defenses />
+	<voices>
+		<voice sentence="Ymirs Mjalle!" />
+		<voice sentence="No run so much, must stay fat!" />
+		<voice sentence="Horre Sjan Flan!" />
+		<voice sentence="SKREEEAAAH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="40" chance1="80000" chancemax="0" />
+		<item id="2671" countmax="2" chance1="30000" chancemax="0" />
+		<item id="2382" chance="5000" />
+		<item id="2531" chance="2500" />
+		<item id="2146" countmax="1" chance1="800" chancemax="0" />
+		<item id="2150" countmax="3" chance1="26000" chancemax="0" />
+		<item id="2149" countmax="3" chance1="21000" chancemax="0" />
+		<item id="2147" countmax="2" chance1="16000" chancemax="0" />
+		<item id="2146" countmax="2" chance1="11000" chancemax="0" />
+		<item id="2145" countmax="1" chance1="6000" chancemax="0" />
+	</loot>
+</monster>

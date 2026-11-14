@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Furious Mammoth" level="33" maglevel="13" experience="432" pushable="0" armor="31" defense="31" canpushitems="1" staticattack="50" changetarget="200" speed="230">
+	<health now="672" max="672" />
+	<look type="199" head="0" body="0" legs="0" feet="0" corpse="20175" />
+	<combat targetdistance="1" runonhealth="0" />
+	<attacks>
+		<attack type="melee" mindamage="38" maxdamage="190" probability="100" />
+		<attack type="rune" name="k_earth_touch_4" exhaustion="1000" cycleticks="3500" probability="30" kit="1" />
+		<attack type="instant" name="orcb_haste" exhaustion="500" cycleticks="6000" probability="15" kit="1" />
+	</attacks>
+	<defenses />
+	<voices>
+		<voice sentence="Troooooot!" />
+		<voice sentence="Prrrrr!" />
+		<voice sentence="RAAAARGH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="40" chance1="90000" chancemax="0" />
+		<item id="2666" countmax="1" chance1="39000" chancemax="0" />
+		<item id="2671" countmax="3" chance1="30000" chancemax="0" />
+		<item id="3956" countmax="2" chance1="7500" chancemax="0" />
+		<item id="2220" chance="7280" />
+		<item id="2669" countmax="1" chance1="2800" chancemax="0" />
+		<item id="3973" chance="500" />
+		<item id="2422" chance="500" />
+		<item id="2150" countmax="3" chance1="26000" chancemax="0" />
+		<item id="2149" countmax="3" chance1="21000" chancemax="0" />
+		<item id="2147" countmax="2" chance1="16000" chancemax="0" />
+		<item id="2146" countmax="2" chance1="11000" chancemax="0" />
+		<item id="2145" countmax="1" chance1="6000" chancemax="0" />
+	</loot>
+</monster>
