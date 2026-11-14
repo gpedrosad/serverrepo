@@ -59,6 +59,7 @@ Siempre en este orden; saltar las secciones que no apliquen:
 - `> **Ojo:** ...`, `> **Tip:** ...`, o `> texto` (nota neutra).
 - Enlace a otro artículo: `[[gemas]]` o `[[gemas|texto del enlace]]`.
 - Enlace normal: `[texto](https://...)` o a una sección de la web: `[página Gemas](/gemas)`.
+- Ruta del mapa interactivo (red local): `[Ver la ruta marcada en el mapa](http://192.168.1.17:8077/monstruos.html#r=<slug>)`. Los slugs están en `scripts/map/routes.json`.
 - Ícono de un ítem dentro del texto: `{item:2154}` (server id). Ponerlo antes del nombre: `{item:2154} Yellow Gem`.
   Después de agregar un id nuevo, correr `python3 scripts/web/build-wiki-icons.py` (si el ítem no tiene imagen, la wiki no muestra ícono).
 - Imagen: `![descripción](/assets/...)`.

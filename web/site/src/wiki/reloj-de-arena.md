@@ -17,12 +17,14 @@ estado: publicado
 
 ## Cómo funciona
 
-1. Entra al portal del Reloj de Arena. Al llegar ves las reglas y en qué parte del ciclo está la sala.
+1. Sal del depot a la plaza y entra al portal del Reloj de Arena. Al llegar ves las reglas y en qué parte del ciclo está la sala.
 2. Abajo de la pantalla ves cada segundo la oleada, el tiempo que le queda y cuál viene después, por ejemplo *Oleada 3 de 6: Orcos | quedan 42 s | despues: Acero*.
 3. Mata la oleada antes de que se acabe el tiempo.
 4. Los **6 braseros** del norte echan fuego: uno por cada oleada que ya empezó.
 5. Después de la oleada 6 viene otro descanso y el ciclo vuelve a empezar.
 6. Para salir, usa el portal al sur de la sala. Te deja en la plaza.
+
+> **Mapa:** [Ver la ruta marcada en el mapa](http://192.168.1.17:8077/monstruos.html#r=reloj-de-arena) (red local).
 
 **Chronos**, el NPC de la sala, te explica las reglas si le dices `hi` y luego `reglas`, y te dice la oleada actual con `oleada`.
 
@@ -42,6 +44,19 @@ El ciclo completo dura 6 min 30 s y sigue corriendo aunque no haya nadie.
 > **Ojo:** al empezar una oleada, los monstruos que siguen vivos de la anterior desaparecen sin dar exp ni botín.
 
 > **Tip:** la oleada 6 trae un Demon y una Fury en una sala chica. Si no tienes nivel para eso, sal antes de que empiece.
+
+
+## Cómo llegar desde el depot
+
+Flechas rojas = camino. Fotos del mapa real, paso por paso.
+
+**Paso 1 · piso z6**
+
+![Reloj de Arena: Depot → portal · piso z6](/assets/wiki/routes/reloj-de-arena/01-depot-portal.jpg)
+
+**Paso 2 · piso z7**
+
+![Reloj de Arena: Depot → portal · piso z7](/assets/wiki/routes/reloj-de-arena/02-depot-portal.jpg)
 
 ## Relacionado
 

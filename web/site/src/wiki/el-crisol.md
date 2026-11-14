@@ -17,12 +17,14 @@ estado: publicado
 
 ## Cómo se hace
 
-1. Entra al portal del Crisol en la plaza del templo.
+1. Sal del depot a la plaza y entra al portal del Crisol.
 2. Usa la palanca de información (pared oeste de la sala). Te dice los monstruos de hoy y qué arenas están libres.
 3. Tu grupo se para en la plataforma de 3×2 frente a la puerta elegida.
 4. Uno tira la palanca de esa puerta. Entran todos juntos: los de la plataforma más quien tira.
 5. Llegan al sur de la arena. Los monstruos esperan en la mitad norte.
 6. Para salir, usa el teleport al sur de la arena y luego el del sur de la sala. Te deja de vuelta en la plaza.
+
+> **Mapa:** [Ver la ruta marcada en el mapa](http://192.168.1.17:8077/monstruos.html#r=el-crisol) (red local).
 
 ## Las arenas
 
@@ -82,6 +84,19 @@ Cada boss suelta solo la suya, cerca de **7%** de las veces (un poco más si ere
 > **Ojo:** estas armas tienen velocidad propia. Un Big Ruby no las acelera (solo sirve en la Bonepriest Reaver) y la gema se pierde igual. Ver [[gemas]].
 
 > **Tip:** los monstruos del Crisol son normales: pueden revivir como [[monstruos-furiosos]]. Cuenta con eso antes de entrar con poca vida.
+
+
+## Cómo llegar desde el depot
+
+Flechas rojas = camino. Fotos del mapa real, paso por paso.
+
+**Paso 1 · piso z6**
+
+![El Crisol: Depot → portal · piso z6](/assets/wiki/routes/el-crisol/01-depot-portal.jpg)
+
+**Paso 2 · piso z7**
+
+![El Crisol: Depot → portal · piso z7](/assets/wiki/routes/el-crisol/02-depot-portal.jpg)
 
 ## Relacionado
 

@@ -19,12 +19,14 @@ estado: publicado
 
 ## Cómo se hace
 
-1. Viaja a Hell Quest. Llegas al puerto, al sur de la isla (`345, 211, piso 7`).
-2. Caza en la superficie y avanza hacia el cráter, al noreste.
+1. Sal del depot a la ciudad, ve al muelle sureste y habla con **Fargum** (`172, 66, piso 7`). Dile `hell quest` (20 gp).
+2. Llegas al puerto, al sur de la isla (`345, 211, piso 7`). Caza en la superficie y avanza hacia el cráter, al noreste.
 3. En el borde del cráter hay un santuario de ladrillo con la bajada. Párate justo enfrente de la puerta y úsala (**nivel 80**).
 4. Recorre las Fauces del Infierno y baja al Abismo.
 5. Pasa la puerta del Abismo (**nivel 100**) y vence al Ashen Lord.
 6. Elige tu cofre. El portal de la cámara te lleva al templo.
+
+> **Mapa:** [Ver la ruta marcada en el mapa](http://192.168.1.17:8077/monstruos.html#r=hell-quest) (red local).
 
 ## Zonas
 
@@ -74,6 +76,35 @@ Suelta siempre oro y platino. A veces {item:2160} Crystal Coin, y rara vez {item
 > **Tip:** los dos son inmunes al fuego. Lleva Sudden Death, energía o armas físicas.
 
 La exp se multiplica según tus [[rates]]. Necesitas el [cliente actualizado](/cliente) para ver a las criaturas nuevas.
+
+
+## Cómo llegar desde el depot
+
+Flechas rojas = camino. Fotos del mapa real, paso por paso.
+
+**Paso 1 · piso z6**
+
+![Hell Quest: Depot → barco · piso z6](/assets/wiki/routes/hell-quest/01-depot-barco.jpg)
+
+**Paso 2 · piso z7**
+
+![Hell Quest: Depot → barco · piso z7](/assets/wiki/routes/hell-quest/02-depot-barco.jpg)
+
+**Paso 3 · piso z7**
+
+![Hell Quest: Llegada → destino · piso z7](/assets/wiki/routes/hell-quest/03-llegada-destino.jpg)
+
+**Paso 4 · piso z7**
+
+![Hell Quest: Llegada → destino · piso z7](/assets/wiki/routes/hell-quest/04-llegada-destino.jpg)
+
+**Paso 5 · piso z7**
+
+![Hell Quest: Llegada → destino · piso z7](/assets/wiki/routes/hell-quest/05-llegada-destino.jpg)
+
+**Paso 6 · piso z7**
+
+![Hell Quest: Llegada → destino · piso z7](/assets/wiki/routes/hell-quest/06-llegada-destino.jpg)
 
 ## Relacionado
 

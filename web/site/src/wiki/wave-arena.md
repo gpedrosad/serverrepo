@@ -17,12 +17,14 @@ estado: publicado
 
 ## Cómo se hace
 
-1. Entra al portal de la Wave Arena. Llegas al campamento.
+1. Sal del depot a la plaza y entra al portal de la Wave Arena. Llegas al campamento.
 2. Tu grupo se para en la **plataforma de madera**. Uno tira la **palanca de inicio** (la de la izquierda).
 3. Entran todos juntos al sur del claro. Los monstruos salen de la selva, al norte y a los costados.
 4. Cuando no quede ninguno, usen la **palanca de la izquierda** del claro: anota la oleada a todos y suelta la siguiente.
 5. Para irte, usa la **palanca de la derecha** del claro. Vuelves al campamento con tu marca guardada.
 6. El teleport del campamento te deja de vuelta en la plaza.
+
+> **Mapa:** [Ver la ruta marcada en el mapa](http://192.168.1.17:8077/monstruos.html#r=wave-arena) (red local).
 
 En el claro no hay teleport de salida: la palanca de retirarse es la que guarda tu marca. Si mueres, no se anota nada de esa corrida.
 
@@ -67,6 +69,19 @@ Cada jugador del grupo recibe el suyo. Los monstruos dan su exp y su botín norm
 El claro es uno solo. Mientras haya alguien adentro, nadie más puede empezar. Si el grupo se retira o muere entero, el claro queda libre.
 
 > **Tip:** Amazon, Valkyrie, Hunter y Mummy pueden revivir como [[monstruos-furiosos]]. Ese monstruo extra también hay que matarlo antes de pedir la siguiente oleada.
+
+
+## Cómo llegar desde el depot
+
+Flechas rojas = camino. Fotos del mapa real, paso por paso.
+
+**Paso 1 · piso z6**
+
+![Wave Arena: Depot → portal · piso z6](/assets/wiki/routes/wave-arena/01-depot-portal.jpg)
+
+**Paso 2 · piso z7**
+
+![Wave Arena: Depot → portal · piso z7](/assets/wiki/routes/wave-arena/02-depot-portal.jpg)
 
 ## Relacionado
 

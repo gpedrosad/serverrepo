@@ -39,6 +39,18 @@ Si el depot está lleno, al intentar guardar algo verás *You can not put more i
 
 > **Ojo:** si alguna vez abres tu depot y lo ves vacío después de una actualización del servidor, no muevas nada y avisa al staff. Tus cosas no se borran: es un problema del locker y se arregla.
 
+## Cómo llegar desde el depot
+
+Flechas rojas = camino. Fotos del mapa real, paso por paso.
+
+**Paso 1 · piso z6**
+
+![Depot y plaza de portales: Depot → destino · piso z6](/assets/wiki/routes/templo-plaza/01-depot-destino.jpg)
+
+**Paso 2 · piso z7**
+
+![Depot y plaza de portales: Depot → destino · piso z7](/assets/wiki/routes/templo-plaza/02-depot-destino.jpg)
+
 ## Relacionado
 
 - [[backpacks-de-runas]]

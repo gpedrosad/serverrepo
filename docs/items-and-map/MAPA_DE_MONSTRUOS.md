@@ -29,7 +29,8 @@ Si `SALIDA` es el sitio local de Retro76 (con `site.css` y `menu.js`), la págin
 - **Zonas:** rectángulos opcionales. Salen de los `generated-*.json` con `box`, más una lista fija en el script (ciudad, plaza de portales, sala de entrenamiento, campo del Paso del Norte).
 - **Panel lateral:** lista de monstruos con vida, experiencia y cantidad en el piso y en total, más un buscador de monstruos y NPC. Al elegir un monstruo se resaltan sus spawns, se indica en qué pisos están y el botón "Ir al siguiente" salta de uno a otro.
 - **Navegación:** rueda para zoom, arrastrar para moverse, doble clic para acercar. Al pasar el mouse se ven la coordenada y el detalle del spawn (monstruos, vida, experiencia, respawn, centro y radio).
-- **Enlaces:** la URL guarda el piso, la vista y el monstruo elegido (`#z=8&x=420&y=320&k=4&m=Dragon`), así que se puede compartir.
+- **Rutas:** capa con los caminos desde el templo a los destinos principales (portales, barcos y caminatas). Se elige una ruta en el panel, se dibuja el camino con flechas y paradas (templo, portal, llegada, escaleras, puertas) y se muestran los pasos. El botón "Ir al inicio" lleva al comienzo y "Ver llegada"/"Ver destino" al otro extremo. La URL guarda la ruta (`#r=isla-natural`) para compartirla; la wiki enlaza con ese hash.
+- **Enlaces:** la URL guarda el piso, la vista, el monstruo elegido y la ruta (`#z=8&x=420&y=320&k=4&m=Dragon&r=isla-natural`), así que se puede compartir.
 
 ## Fuentes
 
@@ -40,6 +41,40 @@ Si `SALIDA` es el sitio local de Retro76 (con `site.css` y `menu.js`), la págin
 | NPC | `server/YurOTS/ots/data/world/npc.xml` (ignora los comentados) |
 | Vida, experiencia, look | `server/YurOTS/ots/data/monster/monsters.xml` y cada XML |
 | Zonas | `server/YurOTS/ots/data/world/generated-*.json` |
+| Rutas | `scripts/map/routes.json`, generado por `scripts/map/build-routes.py` |
+
+## Rutas
+
+`scripts/map/build-routes.py` calcula los caminos sobre el mapa (casillas caminables, escaleras, rampas,
+agujeros, puertas y teleports) y escribe `scripts/map/routes.json`. `build-monster-map.py` lo lee y lo
+mete en `data.json`; si el JSON no existe, el visor funciona igual sin la capa de rutas.
+
+```bash
+python3 scripts/map/build-routes.py                     # usa test.otbm del repo
+python3 scripts/map/build-routes.py --map OTRO.otbm     # otro mapa
+```
+
+Cada ruta tiene `slug`, `name`, `kind` (`portal`, `boat` o `walk`), `steps`, `segments` (puntos por
+piso), `jumps` (portal/barco) y `markers` (depot, portal, llegada, escaleras, puertas, destino). Para
+agregar una ruta nueva, sumarla a la lista de `build-routes.py` y volver a generarla. La wiki enlaza
+cada artículo con `http://192.168.1.17:8077/monstruos.html#r=<slug>`.
+
+### Fotos de ruta para la wiki
+
+`scripts/map/build-route-images.py` dibuja los mismos caminos sobre el **mapa real** (sprites del
+cliente), con flechas rojas y paradas, y parte cada ruta en pasos. Las imágenes van a
+`web/assets/wiki/routes/<slug>/` y el índice a `web/assets/wiki/routes/manifest.json`.
+`scripts/web/apply-wiki-routes.py` inserta las fotos en los artículos entre los marcadores
+`RUTA_IMAGENES`.
+
+```bash
+python3 scripts/map/build-routes.py
+python3 scripts/map/build-route-images.py          # necesita Pillow
+python3 scripts/web/apply-wiki-routes.py
+scripts/web/build-site.sh
+```
+
+Las fotos son del mapa real a 16 px por casilla; el depot es el punto de partida (`127, 57, 6`).
 
 ## Actualización automática (sitio local de docs)
 

@@ -19,10 +19,13 @@ estado: publicado
 
 ## Cómo llegar
 
-1. Sal de la ciudad por el camino de tierra del este.
-2. Al final del camino empieza la arena. Ahí hay un cartel con todas las zonas.
+1. Sal del depot a la ciudad y camina al este.
+2. Pasa el túnel bajo la muralla (rampas en `186–190, y 63–65`).
+3. Llegas a la entrada del desierto (`198, 74, piso 7`); ahí hay un cartel con todas las zonas.
 
 No hay barco: se llega caminando.
+
+> **Mapa:** [Ver la ruta marcada en el mapa](http://192.168.1.17:8077/monstruos.html#r=desierto-de-las-ruinas) (red local).
 
 ## Zonas
 
@@ -80,6 +83,35 @@ Cada personaje puede abrir cada cofre una sola vez.
 ## Las tumbas
 
 La escalera del oasis baja a las tumbas de siempre, con sus momias y faraones. Eso no cambió.
+
+
+## Cómo llegar desde el depot
+
+Flechas rojas = camino. Fotos del mapa real, paso por paso.
+
+**Paso 1 · piso z6**
+
+![Desierto de las Ruinas: Depot → destino · piso z6](/assets/wiki/routes/desierto-de-las-ruinas/01-depot-destino.jpg)
+
+**Paso 2 · piso z7**
+
+![Desierto de las Ruinas: Depot → destino · piso z7](/assets/wiki/routes/desierto-de-las-ruinas/02-depot-destino.jpg)
+
+**Paso 3 · piso z7**
+
+![Desierto de las Ruinas: Depot → destino · piso z7](/assets/wiki/routes/desierto-de-las-ruinas/03-depot-destino.jpg)
+
+**Paso 4 · piso z7**
+
+![Desierto de las Ruinas: Depot → destino · piso z7](/assets/wiki/routes/desierto-de-las-ruinas/04-depot-destino.jpg)
+
+**Paso 5 · piso z6**
+
+![Desierto de las Ruinas: Depot → destino · piso z6](/assets/wiki/routes/desierto-de-las-ruinas/05-depot-destino.jpg)
+
+**Paso 6 · piso z7**
+
+![Desierto de las Ruinas: Depot → destino · piso z7](/assets/wiki/routes/desierto-de-las-ruinas/06-depot-destino.jpg)
 
 ## Relacionado
 

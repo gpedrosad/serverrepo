@@ -29,6 +29,7 @@ from mapdata import MAP, REPO, iter_tiles, load_otb, parse_dat, parse_tree, png_
 DATA = REPO / "server/YurOTS/ots/data"
 WORLD = DATA / "world"
 SIZE = 512
+ROUTES = Path(__file__).resolve().parent / "routes.json"
 
 # Zonas con nombre que no salen de un manifiesto generated-*.json
 ZONES = [
@@ -146,7 +147,8 @@ def main() -> int:
     counts = floor_images(out)
     info = monster_info()
     data = {"size": SIZE, "floors": sorted(counts), "tiles": counts, "spawns": spawns(info), "npcs": npcs(),
-            "zones": zones(), "monsters": {v["name"]: v for v in info.values()}}
+            "zones": zones(), "monsters": {v["name"]: v for v in info.values()},
+            "routes": json.loads(ROUTES.read_text(encoding="utf-8"))["routes"] if ROUTES.is_file() else []}
     if "--minimap" not in sys.argv:
         try:
             import game_render  # noqa: PLC0415 (necesita Pillow)
@@ -176,7 +178,7 @@ def main() -> int:
     (site / "monstruos.html").write_text(PAGE.replace("__BUILD__", str(int(time.time()))), encoding="utf-8")
     nm = sum(len(s["m"]) for s in data["spawns"])
     print(f"OK {site / 'monstruos.html'}: {len(counts)} pisos, {len(data['spawns'])} spawns, {nm} monstruos, "
-          f"{len(data['npcs'])} NPC, {len(data['zones'])} zonas")
+          f"{len(data['npcs'])} NPC, {len(data['zones'])} zonas, {len(data['routes'])} rutas")
     return 0
 
 
@@ -213,6 +215,15 @@ canvas{position:absolute;inset:0;width:100%;height:100%}
 .legend span{display:flex;gap:5px;align-items:center}.legend i{width:10px;height:10px;border-radius:50%;display:block}
 #sel{padding:0 12px 8px;font-size:13px;color:var(--mut);min-height:20px}
 #sel button{background:#1e3a52;border:1px solid #2f5a7a;color:#8fd3ff;border-radius:5px;padding:2px 8px;cursor:pointer;font:inherit;font-size:12px}
+.routes{padding:0 12px 8px;border-bottom:1px solid var(--line)}
+.routes h2{font-size:14px;padding:0 0 6px}
+.routes select{width:100%;margin:0 0 6px;padding:6px 8px;border-radius:6px;border:1px solid var(--line);background:#16161b;color:var(--fg);font:inherit}
+#routesteps{font-size:12px;color:var(--mut);max-height:150px;overflow:auto}
+#routesteps ol{margin:0;padding-left:18px}
+#routesteps li{padding:1px 0}
+#routesteps code{color:var(--fg);background:#16161b;border:1px solid var(--line);border-radius:3px;padding:0 3px;font-size:11px}
+#routesteps .acts{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+#routesteps button{background:#1e3a52;border:1px solid #2f5a7a;color:#8fd3ff;border-radius:5px;padding:2px 8px;cursor:pointer;font:inherit;font-size:12px}
 </style></head><body><script src="menu.js"></script>
 <div class="wrap"><div class="left">
 <div class="bar" id="floors"></div>
@@ -223,10 +234,14 @@ canvas{position:absolute;inset:0;width:100%;height:100%}
 <label><input type="checkbox" id="tSp" checked> Spawns</label>
 <label><input type="checkbox" id="tNpc" checked> NPC</label>
 <label><input type="checkbox" id="tZon"> Zonas</label>
+<label><input type="checkbox" id="tRut" checked> Rutas</label>
 <span class="sep"></span><span id="pos">—</span></div>
 <div id="stage"><canvas id="cv"></canvas><div id="tip"></div></div>
 </div>
-<aside class="side"><h2>Monstruos <span class="mut" id="tot"></span></h2>
+<aside class="side"><div class="routes"><h2>Rutas <span class="mut" id="routetot"></span></h2>
+<select id="route"><option value="">— Elegí un destino —</option></select>
+<div id="routesteps"></div></div>
+<h2>Monstruos <span class="mut" id="tot"></span></h2>
 <input id="q" placeholder="Buscar monstruo o NPC…" autocomplete="off">
 <div id="sel"></div>
 <div id="list"></div>
@@ -235,16 +250,18 @@ canvas{position:absolute;inset:0;width:100%;height:100%}
 <script>
 const BUILD='__BUILD__';
 const $=s=>document.querySelector(s), cv=$('#cv'), ctx=cv.getContext('2d'), stage=$('#stage'), tip=$('#tip');
-let D, imgs={}, floor=7, sel=null, q='', view={x:0,y:0,k:2}, show={sp:1,npc:1,zon:0,game:1};
+let D, imgs={}, floor=7, sel=null, q='', view={x:0,y:0,k:2}, show={sp:1,npc:1,zon:0,game:1,rut:1}, routeSel=null;
 const st=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){}};
 const tier=e=>e<50?'#5bd16a':e<300?'#e6d24a':e<1000?'#f39a3d':e<3000?'#ef5350':'#c06cff';
+const P=(x,y)=>[view.x+(x+.5)*view.k,view.y+(y+.5)*view.k];
 const exp=n=>(D.monsters[n]||{}).exp||0;
 fetch('monstruos/data.json?v='+BUILD).then(r=>r.json()).then(d=>{D=d;
   D.floors.forEach(z=>{const im=new Image();im.src=`monstruos/z${z}.png?v=${BUILD}`;im.onload=draw;imgs[z]=im});
   const h=new URLSearchParams(location.hash.slice(1));
   floor=+(h.get('z')??st('mm-floor')??7); sel=h.get('m')||null;
-  buildFloors(); buildList(); resize();
+  buildFloors(); buildRoutes(); buildList(); resize();
   if(h.get('x')){view.k=+h.get('k')||4;center(+h.get('x'),+h.get('y'))} else fit();
+  if(h.get('r'))selectRoute(h.get('r'),!h.get('x'));
   if(sel)selectMonster(sel,false);
 });
 function spawnsOn(z){return D.spawns.filter(s=>s.z==z)}
@@ -256,6 +273,36 @@ function buildFloors(){
 }
 function mark(){document.querySelectorAll('[data-f]').forEach(b=>b.classList.toggle('on',+b.dataset.f==floor))}
 function setFloor(z){floor=z;st('mm-floor',z);mark();buildList();draw();hash()}
+function buildRoutes(){
+  const rs=D.routes||[], sel=$('#route');
+  $('#routetot').textContent=`(${rs.length})`;
+  if(!rs.length){document.querySelector('.routes').style.display='none';return}
+  const groups={portal:'Portales',boat:'Barcos',walk:'Caminando'};
+  for(const [k,label] of Object.entries(groups)){
+    const items=rs.filter(r=>r.kind===k);
+    if(!items.length)continue;
+    const g=document.createElement('optgroup');g.label=label;
+    items.forEach(r=>{const o=document.createElement('option');o.value=r.slug;o.textContent=r.name;g.appendChild(o)});
+    sel.appendChild(g);
+  }
+  sel.onchange=()=>selectRoute(sel.value,true);
+}
+function routeAt(){return (D.routes||[]).find(r=>r.slug===routeSel)||null}
+function routeColor(kind){return kind==='portal'?'#6cc6ff':kind==='boat'?'#4fd1c5':'#e0b04a'}
+function routeHtml(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])).replace(/`([^`]+)`/g,'<code>$1</code>')}
+function selectRoute(slug,jump){
+  routeSel=slug||null;
+  const sel=$('#route');if(sel)sel.value=routeSel||'';
+  const r=routeAt(),box=$('#routesteps');
+  if(!r){routeSel=null;if(sel)sel.value='';box.innerHTML='';draw();hash();return}
+  const first=r.segments[0],last=r.segments[r.segments.length-1];
+  box.innerHTML=`<ol>${r.steps.map(s=>`<li>${routeHtml(s)}</li>`).join('')}</ol><div class="acts"><button data-go="start">Ir al inicio</button>`+
+    (r.jumps.length?'<button data-go="dest">Ver llegada</button>':'<button data-go="dest">Ver destino</button>')+`</div>`;
+  box.querySelector('[data-go="start"]').onclick=()=>{if(first){if(first.z!=floor)setFloor(first.z);view.k=Math.max(view.k,4);center(first.points[0][0],first.points[0][1])}};
+  box.querySelector('[data-go="dest"]').onclick=()=>{const tgt=(r.markers||[]).find(m=>m.kind==='target');const dest=r.jumps.length?r.jumps[r.jumps.length-1].to:(tgt?[tgt.x,tgt.y,tgt.z]:last.points[last.points.length-1]);if(dest[2]!=floor)setFloor(dest[2]);view.k=Math.max(view.k,4);center(dest[0],dest[1])};
+  if(jump&&first){if(first.z!=floor)setFloor(first.z);view.k=Math.max(view.k,3.5);center(first.points[0][0],first.points[0][1])}
+  else{draw();hash()}
+}
 function buildList(){
   const agg={};D.spawns.forEach(s=>s.m.forEach(m=>{const a=agg[m.n]||(agg[m.n]={n:m.n,all:0,here:0,boss:0});a.all++;if(s.z==floor)a.here++;if(m.t>=1800)a.boss=1}));
   let rows=Object.values(agg);
@@ -288,6 +335,50 @@ function tileImg(z,L,key){const k=z+'/'+L+'/'+key;let im=tcache[k];if(!im){im=tc
 function lookImg(src){let im=lcache[src];if(!im){im=lcache[src]=new Image();im.onload=schedule;im.src='monstruos/'+src+'?v='+BUILD}return im}
 function drawSprite(src,w,h,tx,ty,alpha){const im=lookImg(src);if(!(im.complete&&im.naturalWidth))return false;const k=view.k,W=w*k,H=h*k;
   ctx.globalAlpha=alpha;ctx.drawImage(im,view.x+(tx+1)*k-W-k*.25,view.y+(ty+1)*k-H-k*.25,W,H);ctx.globalAlpha=1;return true}
+function drawRoute(){
+  const r=routeAt();if(!r||!show.rut)return;
+  const col=routeColor(r.kind);
+  ctx.save();ctx.lineJoin='round';ctx.lineCap='round';
+  r.segments.filter(s=>s.z==floor).forEach(s=>{
+    const pts=s.points.map(([x,y])=>P(x,y));
+    if(pts.length>=2){
+      const path=new Path2D();path.moveTo(pts[0][0],pts[0][1]);for(let i=1;i<pts.length;i++)path.lineTo(pts[i][0],pts[i][1]);
+      ctx.strokeStyle='#000b';ctx.lineWidth=Math.max(5,Math.min(12,view.k*.9));ctx.stroke(path);
+      ctx.strokeStyle=col+'cc';ctx.lineWidth=Math.max(2.5,Math.min(7,view.k*.5));ctx.stroke(path);
+      const every=view.k>=6?3:view.k>=3?5:8;
+      for(let i=0;i<pts.length-1;i++){
+        if(i%every)continue;
+        const [x1,y1]=pts[i],[x2,y2]=pts[i+1],dx=x2-x1,dy=y2-y1,len=Math.hypot(dx,dy);
+        if(len<1)continue;
+        const ux=dx/len,uy=dy/len,mx=(x1+x2)/2,my=(y1+y2)/2,a=Math.max(4,Math.min(9,view.k*.7));
+        ctx.beginPath();ctx.moveTo(mx+ux*a,my+uy*a);
+        ctx.lineTo(mx-uy*a*.6-ux*a*.5,my+ux*a*.6-uy*a*.5);
+        ctx.lineTo(mx+uy*a*.6-ux*a*.5,my-ux*a*.6-uy*a*.5);
+        ctx.closePath();ctx.fillStyle=col;ctx.fill();
+      }
+    }
+  });
+  const colors={start:'#5bd16a',target:'#e0b04a',portal:'#6cc6ff',boat:'#4fd1c5',arrival:'#8fd3ff',stairs:'#c06cff',door:'#f39a3d'};
+  r.markers.filter(m=>m.z==floor).forEach(m=>{
+    const [x,y]=P(m.x,m.y),c=colors[m.kind]||col,s=Math.max(4,Math.min(9,view.k*.55));
+    ctx.beginPath();
+    if(m.kind==='stairs'){ctx.moveTo(x,y-s);ctx.lineTo(x+s,y);ctx.lineTo(x,y+s);ctx.lineTo(x-s,y);ctx.closePath()}
+    else if(m.kind==='door'){ctx.rect(x-s,y-s,s*2,s*2)}
+    else{ctx.arc(x,y,s,0,7)}
+    ctx.fillStyle=c;ctx.fill();ctx.lineWidth=1.5;ctx.strokeStyle='#000';ctx.stroke();
+    if(view.k>=2.2||['start','target','portal','boat','arrival'].includes(m.kind)){
+      ctx.font='bold 11px system-ui';ctx.textAlign='left';const tw=ctx.measureText(m.label).width;
+      ctx.fillStyle='#0b0b0edd';ctx.fillRect(x+s+3,y-s-1,tw+6,s*2+2);
+      ctx.fillStyle=c;ctx.fillText(m.label,x+s+6,y+s*.7);
+    }
+  });
+  r.jumps.forEach(j=>{
+    if(j.from[2]==floor){const [x,y]=P(j.from[0],j.from[1]);
+      ctx.setLineDash([4,4]);ctx.beginPath();ctx.arc(x,y,Math.max(10,view.k*.9),0,7);
+      ctx.strokeStyle=col;ctx.lineWidth=2;ctx.stroke();ctx.setLineDash([])}
+  });
+  ctx.restore();
+}
 function draw(){if(!D)return;const r=stage.getBoundingClientRect();ctx.clearRect(0,0,r.width,r.height);
   const im=imgs[floor];ctx.imageSmoothingEnabled=false;if(im&&im.complete)ctx.drawImage(im,view.x,view.y,D.size*view.k,D.size*view.k);
   const G=D.game;
@@ -298,7 +389,6 @@ function draw(){if(!D)return;const r=stage.getBoundingClientRect();ctx.clearRect
     for(let i=i0;i<=i1;i++)for(let j=j0;j<=j1;j++){const key=i+'_'+j;if(!set.has(key))continue;const t=tileImg(floor,L,key);
       if(t.complete&&t.naturalWidth)ctx.drawImage(t,view.x+i*sz,view.y+j*sz,sz+.6,sz+.6)}
     ctx.imageSmoothingEnabled=false}
-  const P=(x,y)=>[view.x+(x+.5)*view.k,view.y+(y+.5)*view.k];
   if(show.zon){ctx.lineWidth=1.5;ctx.font='12px system-ui';D.zones.filter(z=>z.z==floor).forEach(z=>{const [a,b]=P(z.box[0]-.5,z.box[1]-.5),[c,d]=P(z.box[2]+.5,z.box[3]+.5);ctx.strokeStyle='#6cc6ffaa';ctx.strokeRect(a,b,c-a,d-b);ctx.fillStyle='#6cc6ff';ctx.fillText(z.name,a+3,b+13)})}
   const close=view.k>=10;
   if(show.sp){spawnsOn(floor).forEach(s=>{const has=sel?s.m.some(m=>m.n==sel):true;
@@ -312,9 +402,10 @@ function draw(){if(!D)return;const r=stage.getBoundingClientRect();ctx.clearRect
   if(show.npc){D.npcs.filter(n=>n.z==floor).forEach(n=>{const [x,y]=P(n.x,n.y);
     if(close&&n.img&&drawSprite(n.img,n.w,n.h,n.x,n.y,1)){}else{const s=Math.max(4,Math.min(9,view.k*.8));ctx.fillStyle='#fff';ctx.fillRect(x-s/2,y-s/2,s,s);ctx.strokeStyle='#000';ctx.strokeRect(x-s/2,y-s/2,s,s)}
     if(view.k>=14){ctx.font='bold 11px system-ui';ctx.lineWidth=3;ctx.strokeStyle='#000c';const w=ctx.measureText(n.n).width;ctx.strokeText(n.n,x-w/2,y-view.k*.95);ctx.fillStyle='#fff';ctx.fillText(n.n,x-w/2,y-view.k*.95)}})}
+  drawRoute();
 }
 function hash(){const r=stage.getBoundingClientRect(),cx=Math.round((r.width/2-view.x)/view.k),cy=Math.round((r.height/2-view.y)/view.k);
-  history.replaceState(null,'',`#z=${floor}&x=${cx}&y=${cy}&k=${view.k.toFixed(1)}${sel?'&m='+encodeURIComponent(sel):''}`)}
+  history.replaceState(null,'',`#z=${floor}&x=${cx}&y=${cy}&k=${view.k.toFixed(1)}${sel?'&m='+encodeURIComponent(sel):''}${routeSel?'&r='+encodeURIComponent(routeSel):''}`)}
 let drag=null;
 stage.onmousedown=e=>{drag={x:e.clientX,y:e.clientY,vx:view.x,vy:view.y,moved:0};stage.classList.add('drag')};
 addEventListener('mouseup',()=>{if(drag){stage.classList.remove('drag');if(drag.moved)hash()}drag=null});
@@ -334,7 +425,7 @@ stage.ondblclick=e=>{const r=stage.getBoundingClientRect();zoomAt(2,e.clientX-r.
 $('#zin').onclick=()=>{const r=stage.getBoundingClientRect();zoomAt(1.5,r.width/2,r.height/2)};
 $('#zout').onclick=()=>{const r=stage.getBoundingClientRect();zoomAt(1/1.5,r.width/2,r.height/2)};
 $('#fit').onclick=fit;
-$('#tGame').onchange=e=>{show.game=e.target.checked;draw()};$('#tSp').onchange=e=>{show.sp=e.target.checked;draw()};$('#tNpc').onchange=e=>{show.npc=e.target.checked;draw()};$('#tZon').onchange=e=>{show.zon=e.target.checked;draw()};
+$('#tGame').onchange=e=>{show.game=e.target.checked;draw()};$('#tSp').onchange=e=>{show.sp=e.target.checked;draw()};$('#tNpc').onchange=e=>{show.npc=e.target.checked;draw()};$('#tZon').onchange=e=>{show.zon=e.target.checked;draw()};$('#tRut').onchange=e=>{show.rut=e.target.checked;draw()};
 $('#q').oninput=e=>{q=e.target.value.trim().toLowerCase();buildList()};
 </script></body></html>
 """
