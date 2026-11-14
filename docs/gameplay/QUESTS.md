@@ -31,9 +31,33 @@ Steel Boots, Knight Legs, Helmet of the Ancients, Shield of Honour, Dark Shield,
 Sword, Golden Armor, Amazon Shield) están en la tabla completa del JSON, con coordenadas, recompensa,
 nivel estimado y monstruos de la zona.
 
-> **Ojo:** los niveles son recomendados, no requisitos. Las únicas puertas de nivel reales son las
-> de Hell Quest (80 y 100). Los niveles de las quests clásicas se estimaron según los monstruos
-> cercanos y el valor de la recompensa.
+> **Ojo:** los niveles de la tabla son recomendados. Desde nov 2026 el cofre valida el nivel con
+> `CHEST_LEVEL` en `quest.lua` y varias puertas existentes se subieron para que el acceso coincida
+> con ese nivel. Ver "Puertas de level" abajo.
+
+## Puertas de level
+
+El nivel de los cofres se protege en dos capas:
+
+1. **Cofre** — `server/YurOTS/ots/data/actions/scripts/quest.lua` tiene `CHEST_LEVEL` con los 40
+   cofres y su nivel. Si el jugador no llega, el cofre responde *"You need level X to open this
+   chest."* Esto no se puede esquivar por otro camino.
+2. **Puertas** — se subieron 8 puertas de level que ya existían en los caminos (cubren Pharaoh,
+   Ancients A/B, Shield of Honour, Fire Cave, Knight Legs, Lady Helmet, Steel Boots, Bright Sword,
+   Amazon Shield y Boots of Haste). No se agregaron puertas nuevas.
+
+**Intento descartado (nov 2026):** se probó agregar 9 puertas automáticas con
+`scripts/map/add-quest-gates.py` en las quests que no tenían puerta (Castillo Imperial, Isla del
+Hielo, Desierto, Crusader Helmet, Guardian Halberd, Dark Shield). El resultado quedó mal
+ambientado: puertas y paredes sueltas, marcos que no seguían la arquitectura del lugar. Se
+quitaron todas del mapa y `generated-quest-gates.json` quedó vacío. El script ahora exige
+`--force` y está marcado como descartado; no usarlo para agregar puertas sin revisar el lugar en
+RME e in-game.
+
+**Pendiente:** esas quests quedan protegidas solo por el nivel del cofre. Si se quieren puertas
+físicas, colocarlas a mano en RME en un paso natural (puerta existente, arco, entrada de
+cueva/templo), probar in-game y recién ahí deployar el mapa. El Gauntlet queda sin puerta nueva
+a propósito: solo tiene el nivel 80 del cofre.
 
 ## Sistemas repetibles
 

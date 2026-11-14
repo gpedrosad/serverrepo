@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
 """Agrega una puerta de level antes del cofre en las quests que todavía no tienen una.
 
+DESCARTADO (nov 2026): este script agregó 9 puertas automáticas y el resultado quedó mal
+ambientado (puertas y paredes sueltas, marcos que no seguían la arquitectura del lugar). Las
+puertas se quitaron del mapa. No volver a generar puertas con este script sin revisar el lugar
+en RME e in-game. Ver `docs/gameplay/QUESTS.md` → "Puertas de level".
+
 No toca las quests que ya tienen una puerta de level en el camino (esas las maneja
 `protect-quest-chests.py`). Para las que no tienen, busca un punto angosto del camino, pone una
 puerta de level (actionId = nivel + 1000) y tapa los costados con paredes del mismo estilo.
 
 Uso:
-  python3 scripts/map/add-quest-gates.py --dry-run
-  python3 scripts/map/add-quest-gates.py
+  python3 scripts/map/add-quest-gates.py --remove    # quitar las puertas nuevas (mapa limpio)
+  python3 scripts/map/add-quest-gates.py --dry-run   # solo mostrar qué haría
+  python3 scripts/map/add-quest-gates.py --force     # agregar (requiere revisión manual)
 """
 from __future__ import annotations
 
@@ -158,7 +164,15 @@ def main() -> int:
     ap = ArgumentParser(description=__doc__, formatter_class=RawDescriptionHelpFormatter)
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--remove", action="store_true", help="quita las puertas agregadas por este script")
+    ap.add_argument("--force", action="store_true",
+                    help="permite agregar puertas (el modo automático quedó descartado)")
     args = ap.parse_args()
+
+    if not args.remove and not args.dry_run and not args.force:
+        print("Este script quedó descartado: las puertas automáticas se veían mal ambientadas.\n"
+              "Ver docs/gameplay/QUESTS.md. Usá --dry-run para revisar o --force para agregar.",
+              file=sys.stderr)
+        return 2
 
     if args.remove:
         manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
@@ -175,6 +189,8 @@ def main() -> int:
                 if tile:
                     remove_item(tile, w["item"])
         MAP.write_bytes(serialize_tree(root, raw[:4]))
+        MANIFEST.write_text(json.dumps({"gates": []}, ensure_ascii=False, indent=2) + "\n",
+                            encoding="utf-8")
         print(f"OK removidas {len(manifest.get('gates', []))} puertas de quest")
         return 0
 
