@@ -39,7 +39,9 @@ TILE_PZ = 1
 TELEPORT, LEVER, SIGN = 1387, 1945, 1429
 # poste NO, horizontal (N, S y esquina NE), vertical (O, E y esquina SO), L (esquina SE)
 WALLS = {
-    "stone": dict(post=1051, h=1050, v=1049, se=1053),
+    # Piedra: 1052 es la cara norte y 1053 la esquina este. Con 1050 en la fila norte
+    # la esquina noreste quedaba abierta (visible en la Torre del Barquero).
+    "stone": dict(post=1051, h=1050, n=1052, v=1049, se=1053, ne=1053),
     "sand": dict(post=1062, h=1063, v=1060, se=1066),
     "brick": dict(post=1027, h=1028, v=1030, se=1033),
     "bamboo": dict(post=3425, h=3426, v=3423, se=3429),
@@ -91,13 +93,13 @@ def build_room(m: Map, r: Room, floor: int, walls: str, pz=False):
         for x in range(r.x0 - 1, r.x1 + 2):
             m.ground((x, y, z), floor, pz)
     for x in range(r.x0, r.x1 + 1):
-        m.add((x, r.y0 - 1, z), W["h"])
+        m.add((x, r.y0 - 1, z), W.get("n", W["h"]))
         m.add((x, r.y1 + 1, z), W["h"])
     for y in range(r.y0, r.y1 + 1):
         m.add((r.x0 - 1, y, z), W["v"])
         m.add((r.x1 + 1, y, z), W["v"])
     m.add((r.x0 - 1, r.y0 - 1, z), W["post"])
-    m.add((r.x1 + 1, r.y0 - 1, z), W["h"])
+    m.add((r.x1 + 1, r.y0 - 1, z), W.get("ne", W["h"]))
     m.add((r.x0 - 1, r.y1 + 1, z), W["v"])
     m.add((r.x1 + 1, r.y1 + 1, z), W["se"])
 
