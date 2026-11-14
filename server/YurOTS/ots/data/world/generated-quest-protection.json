@@ -1,0 +1,407 @@
+{
+  "chests": [
+    {
+      "quest": "dark-shield",
+      "x": 156,
+      "y": 42,
+      "z": 9,
+      "reward": "Brass Legs",
+      "level": 20
+    },
+    {
+      "quest": "dark-shield",
+      "x": 156,
+      "y": 43,
+      "z": 9,
+      "reward": "Dark Shield",
+      "level": 20
+    },
+    {
+      "quest": "frozen-lumberjack",
+      "x": 373,
+      "y": 95,
+      "z": 7,
+      "reward": "Crystal Coin",
+      "level": 25
+    },
+    {
+      "quest": "crusader-helmet",
+      "x": 203,
+      "y": 40,
+      "z": 7,
+      "reward": "Crusader Helmet",
+      "level": 30
+    },
+    {
+      "quest": "fire-cave",
+      "x": 106,
+      "y": 63,
+      "z": 4,
+      "reward": "Dragon Hammer",
+      "level": 30
+    },
+    {
+      "quest": "fire-cave",
+      "x": 106,
+      "y": 65,
+      "z": 4,
+      "reward": "Fire Axe",
+      "level": 30
+    },
+    {
+      "quest": "fire-cave",
+      "x": 106,
+      "y": 67,
+      "z": 4,
+      "reward": "Fire Sword",
+      "level": 30
+    },
+    {
+      "quest": "guardian-halberd",
+      "x": 139,
+      "y": 141,
+      "z": 6,
+      "reward": "Guardian Halberd",
+      "level": 30
+    },
+    {
+      "quest": "knight-legs",
+      "x": 89,
+      "y": 80,
+      "z": 8,
+      "reward": "Knight Legs",
+      "level": 30
+    },
+    {
+      "quest": "bright-sword",
+      "x": 145,
+      "y": 136,
+      "z": 9,
+      "reward": "Bright Sword",
+      "level": 40
+    },
+    {
+      "quest": "desert-lizard",
+      "x": 242,
+      "y": 78,
+      "z": 7,
+      "reward": "Knight Armor",
+      "level": 40
+    },
+    {
+      "quest": "frozen-yeti",
+      "x": 369,
+      "y": 63,
+      "z": 7,
+      "reward": "Frozen Starlight",
+      "level": 40
+    },
+    {
+      "quest": "lady-helmet",
+      "x": 242,
+      "y": 22,
+      "z": 8,
+      "reward": "Lady Helmet",
+      "level": 40
+    },
+    {
+      "quest": "desert-bone",
+      "x": 257,
+      "y": 114,
+      "z": 7,
+      "reward": "Vampire Shield",
+      "level": 45
+    },
+    {
+      "quest": "amazon-shield",
+      "x": 73,
+      "y": 93,
+      "z": 10,
+      "reward": "Amazon Shield",
+      "level": 50
+    },
+    {
+      "quest": "golden-armor",
+      "x": 162,
+      "y": 152,
+      "z": 9,
+      "reward": "Golden Armor",
+      "level": 50
+    },
+    {
+      "quest": "boh",
+      "x": 128,
+      "y": 62,
+      "z": 6,
+      "reward": "Boots of Haste",
+      "level": 60
+    },
+    {
+      "quest": "boh",
+      "x": 128,
+      "y": 62,
+      "z": 7,
+      "reward": "Blue Robe",
+      "level": 60
+    },
+    {
+      "quest": "imperial",
+      "x": 97,
+      "y": 28,
+      "z": 3,
+      "reward": "Crown Legs",
+      "level": 60
+    },
+    {
+      "quest": "imperial",
+      "x": 103,
+      "y": 28,
+      "z": 3,
+      "reward": "Royal Helmet",
+      "level": 60
+    },
+    {
+      "quest": "ancients-b",
+      "x": 231,
+      "y": 126,
+      "z": 9,
+      "reward": "Helmet of the Ancients",
+      "level": 60
+    },
+    {
+      "quest": "ancients-a",
+      "x": 214,
+      "y": 148,
+      "z": 8,
+      "reward": "Helmet of the Ancients",
+      "level": 60
+    },
+    {
+      "quest": "frozen-lair",
+      "x": 393,
+      "y": 17,
+      "z": 9,
+      "reward": "Crimson Wand",
+      "level": 70
+    },
+    {
+      "quest": "frozen-lair",
+      "x": 397,
+      "y": 17,
+      "z": 9,
+      "reward": "Crimson Helmet",
+      "level": 70
+    },
+    {
+      "quest": "pharaoh",
+      "x": 205,
+      "y": 166,
+      "z": 9,
+      "reward": "Dragon Lance",
+      "level": 80
+    },
+    {
+      "quest": "pharaoh",
+      "x": 207,
+      "y": 166,
+      "z": 9,
+      "reward": "War Hammer",
+      "level": 80
+    },
+    {
+      "quest": "pharaoh",
+      "x": 209,
+      "y": 166,
+      "z": 9,
+      "reward": "Giant Sword",
+      "level": 80
+    },
+    {
+      "quest": "shield-honour",
+      "x": 228,
+      "y": 198,
+      "z": 8,
+      "reward": "Shield of Honour",
+      "level": 80
+    },
+    {
+      "quest": "steel-boots",
+      "x": 217,
+      "y": 72,
+      "z": 8,
+      "reward": "Steel Boots",
+      "level": 80
+    },
+    {
+      "quest": "gauntlet",
+      "x": 450,
+      "y": 77,
+      "z": 7,
+      "reward": "Fury Cape",
+      "level": 80
+    },
+    {
+      "quest": "gauntlet",
+      "x": 450,
+      "y": 79,
+      "z": 7,
+      "reward": "Demon Armor",
+      "level": 80
+    },
+    {
+      "quest": "giant-sword",
+      "x": 182,
+      "y": 117,
+      "z": 9,
+      "reward": "Giant Sword",
+      "level": 90
+    },
+    {
+      "quest": "annihilator",
+      "x": 198,
+      "y": 121,
+      "z": 11,
+      "reward": "Demon Armor",
+      "level": 100
+    },
+    {
+      "quest": "annihilator",
+      "x": 200,
+      "y": 121,
+      "z": 11,
+      "reward": "Sword of Valor",
+      "level": 100
+    },
+    {
+      "quest": "annihilator",
+      "x": 202,
+      "y": 121,
+      "z": 11,
+      "reward": "Stonecutter's Axe",
+      "level": 100
+    },
+    {
+      "quest": "annihilator",
+      "x": 204,
+      "y": 121,
+      "z": 11,
+      "reward": "Thunder Hammer",
+      "level": 100
+    },
+    {
+      "quest": "hell",
+      "x": 343,
+      "y": 137,
+      "z": 9,
+      "reward": "Demon Helmet",
+      "level": 100
+    },
+    {
+      "quest": "hell",
+      "x": 345,
+      "y": 137,
+      "z": 9,
+      "reward": "Magic Plate Armor",
+      "level": 100
+    },
+    {
+      "quest": "hell",
+      "x": 348,
+      "y": 137,
+      "z": 9,
+      "reward": "Boots of Haste",
+      "level": 100
+    },
+    {
+      "quest": "hell",
+      "x": 350,
+      "y": 137,
+      "z": 9,
+      "reward": "Demon Shield",
+      "level": 100
+    }
+  ],
+  "doors": [
+    {
+      "x": 213,
+      "y": 124,
+      "z": 8,
+      "item": 1245,
+      "oldAction": 1050,
+      "newAction": 1060,
+      "level": 60,
+      "changed": true
+    },
+    {
+      "x": 87,
+      "y": 75,
+      "z": 8,
+      "item": 1229,
+      "oldAction": 1020,
+      "newAction": 1030,
+      "level": 30,
+      "changed": true
+    },
+    {
+      "x": 251,
+      "y": 25,
+      "z": 8,
+      "item": 1227,
+      "oldAction": 1020,
+      "newAction": 1040,
+      "level": 40,
+      "changed": true
+    },
+    {
+      "x": 181,
+      "y": 77,
+      "z": 8,
+      "item": 1247,
+      "oldAction": 1060,
+      "newAction": 1080,
+      "level": 80,
+      "changed": true
+    },
+    {
+      "x": 242,
+      "y": 126,
+      "z": 8,
+      "item": 1227,
+      "oldAction": 1040,
+      "newAction": 1060,
+      "level": 60,
+      "changed": true
+    },
+    {
+      "x": 145,
+      "y": 101,
+      "z": 8,
+      "item": 1229,
+      "oldAction": 1020,
+      "newAction": 1040,
+      "level": 40,
+      "changed": true
+    },
+    {
+      "x": 84,
+      "y": 94,
+      "z": 10,
+      "item": 1227,
+      "oldAction": 1020,
+      "newAction": 1050,
+      "level": 50,
+      "changed": true
+    },
+    {
+      "x": 136,
+      "y": 62,
+      "z": 7,
+      "item": 1245,
+      "oldAction": 1035,
+      "newAction": 1060,
+      "level": 60,
+      "changed": true
+    }
+  ],
+  "note": "Cofres con nivel recomendado y puertas de level subidas; ver quest.lua"
+}

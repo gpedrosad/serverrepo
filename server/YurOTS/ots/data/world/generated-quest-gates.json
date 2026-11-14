@@ -1,0 +1,243 @@
+{
+  "gates": [
+    {
+      "quest": "imperial",
+      "level": 60,
+      "door": {
+        "x": 103,
+        "y": 29,
+        "z": 3,
+        "item": 1227,
+        "action": 1060
+      },
+      "walls": [
+        {
+          "x": 103,
+          "y": 32,
+          "z": 3,
+          "item": 1050
+        }
+      ],
+      "axis": "ew"
+    },
+    {
+      "quest": "gauntlet",
+      "level": 80,
+      "door": {
+        "x": 452,
+        "y": 41,
+        "z": 7,
+        "item": 1229,
+        "action": 1080
+      },
+      "walls": [],
+      "axis": "ns"
+    },
+    {
+      "quest": "frozen-lumberjack",
+      "level": 25,
+      "door": {
+        "x": 377,
+        "y": 97,
+        "z": 7,
+        "item": 1227,
+        "action": 1025
+      },
+      "walls": [
+        {
+          "x": 377,
+          "y": 96,
+          "z": 7,
+          "item": 1052
+        }
+      ],
+      "axis": "ew"
+    },
+    {
+      "quest": "frozen-yeti",
+      "level": 40,
+      "door": {
+        "x": 373,
+        "y": 64,
+        "z": 7,
+        "item": 1227,
+        "action": 1040
+      },
+      "walls": [
+        {
+          "x": 373,
+          "y": 61,
+          "z": 7,
+          "item": 1052
+        },
+        {
+          "x": 373,
+          "y": 62,
+          "z": 7,
+          "item": 1052
+        },
+        {
+          "x": 373,
+          "y": 63,
+          "z": 7,
+          "item": 1052
+        },
+        {
+          "x": 373,
+          "y": 65,
+          "z": 7,
+          "item": 1052
+        }
+      ],
+      "axis": "ew"
+    },
+    {
+      "quest": "frozen-lair",
+      "level": 70,
+      "door": {
+        "x": 394,
+        "y": 20,
+        "z": 9,
+        "item": 1229,
+        "action": 1070
+      },
+      "walls": [
+        {
+          "x": 392,
+          "y": 20,
+          "z": 9,
+          "item": 373
+        },
+        {
+          "x": 395,
+          "y": 20,
+          "z": 9,
+          "item": 373
+        },
+        {
+          "x": 396,
+          "y": 20,
+          "z": 9,
+          "item": 373
+        }
+      ],
+      "axis": "ns"
+    },
+    {
+      "quest": "desert-lizard",
+      "level": 40,
+      "door": {
+        "x": 238,
+        "y": 81,
+        "z": 7,
+        "item": 1227,
+        "action": 1040
+      },
+      "walls": [],
+      "axis": "ew"
+    },
+    {
+      "quest": "desert-bone",
+      "level": 45,
+      "door": {
+        "x": 257,
+        "y": 110,
+        "z": 7,
+        "item": 1229,
+        "action": 1045
+      },
+      "walls": [
+        {
+          "x": 254,
+          "y": 110,
+          "z": 7,
+          "item": 1052
+        },
+        {
+          "x": 255,
+          "y": 110,
+          "z": 7,
+          "item": 1052
+        },
+        {
+          "x": 256,
+          "y": 110,
+          "z": 7,
+          "item": 1052
+        },
+        {
+          "x": 259,
+          "y": 110,
+          "z": 7,
+          "item": 1052
+        }
+      ],
+      "axis": "ns"
+    },
+    {
+      "quest": "crusader-helmet",
+      "level": 30,
+      "door": {
+        "x": 196,
+        "y": 40,
+        "z": 7,
+        "item": 1229,
+        "action": 1030
+      },
+      "walls": [
+        {
+          "x": 193,
+          "y": 40,
+          "z": 7,
+          "item": 1038
+        },
+        {
+          "x": 194,
+          "y": 40,
+          "z": 7,
+          "item": 1038
+        },
+        {
+          "x": 195,
+          "y": 40,
+          "z": 7,
+          "item": 1038
+        }
+      ],
+      "axis": "ns"
+    },
+    {
+      "quest": "guardian-halberd",
+      "level": 30,
+      "door": {
+        "x": 144,
+        "y": 143,
+        "z": 4,
+        "item": 1229,
+        "action": 1030
+      },
+      "walls": [
+        {
+          "x": 143,
+          "y": 143,
+          "z": 4,
+          "item": 1034
+        }
+      ],
+      "axis": "ns"
+    },
+    {
+      "quest": "dark-shield",
+      "level": 20,
+      "door": {
+        "x": 135,
+        "y": 38,
+        "z": 9,
+        "item": 1229,
+        "action": 1020
+      },
+      "walls": [],
+      "axis": "ns"
+    }
+  ]
+}
