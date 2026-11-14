@@ -1,0 +1,105 @@
+---
+import Base from '../layouts/Base.astro';
+import data from '../data/new-items.json';
+
+const groups = data.groups;
+const items = data.items;
+const counts = Object.fromEntries(groups.map((g) => [g.key, items.filter((it) => it.group === g.key).length]));
+
+const num = (value: number | null) => (value === null || value === undefined || value === 0 ? '—' : String(value));
+const weight = (value: number | null) => (value === null || value === undefined ? '—' : String(value));
+const searchText = (it: (typeof items)[number]) => `${it.name} ${it.type} ${it.effect} ${it.source}`.toLowerCase();
+---
+<Base lang="es" title="Items nuevos — Retro76" path="/items-nuevos" description="Items custom de Retro76: armas, escudos, armaduras, accesorios y objetos de sistema con sus stats, efectos y dónde se consiguen." langSwitch={false}>
+  <section>
+    <h1 class="title">Items nuevos</h1>
+    <p class="lede">Los ítems custom de Retro76: armas, escudos, armaduras, accesorios y objetos de sistema. Los stats salen del OTB del servidor; los efectos, de C++ y Lua.</p>
+    <p class="note" style="margin-top:1rem">Los ítems marcados como <strong>Solo GM</strong> todavía no tienen drop ni quest. Los nombres son los que muestra el juego.</p>
+    <p class="muted small" style="margin-top:.6rem">{items.length} ítems · Atk = ataque · Def = defensa · Arm = armadura · Peso en oz.</p>
+  </section>
+
+  <section>
+    <h2 class="label">Catálogo <span class="aside">stats del servidor</span></h2>
+    <div class="filters" id="item-filters" role="group" aria-label="Filtrar por categoría">
+      <button type="button" data-cat="todos" aria-pressed="true">Todos <span class="faint">{items.length}</span></button>
+      {groups.map((g) => (
+        <button type="button" data-cat={g.key} aria-pressed="false">{g.label} <span class="faint">{counts[g.key]}</span></button>
+      ))}
+    </div>
+    <div class="field" style="max-width:24rem;margin:.75rem 0">
+      <input type="search" id="item-search" placeholder="Buscar ítem (sword, crisol, rune…)" autocomplete="off" aria-label="Buscar ítem">
+    </div>
+    <div class="table-scroll">
+      <table class="items-table" id="items-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th class="n">Atk</th>
+            <th class="n">Def</th>
+            <th class="n">Arm</th>
+            <th class="n wide-only">Peso (oz)</th>
+            <th>Efecto / dónde se consigue</th>
+          </tr>
+        </thead>
+        <tbody>
+          {items.map((it) => (
+            <tr data-cat={it.group} data-name={searchText(it)}>
+              <td>
+                <span class="cell-item">
+                  <img class="sprite" src={it.image} alt="" width="32" height="32" loading="lazy">
+                  <span class="item-name">
+                    <strong>{it.name}</strong>
+                    <span class="small muted">{it.type}</span>
+                  </span>
+                </span>
+              </td>
+              <td class="n">{num(it.attack)}</td>
+              <td class="n">{num(it.defence)}</td>
+              <td class="n">{num(it.armor)}</td>
+              <td class="n wide-only">{weight(it.weight)}</td>
+              <td class="effect-cell">{it.effect}<span class="source">{it.source}</span></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="empty hidden" id="items-empty">Ningún ítem coincide con el filtro.</p>
+  </section>
+
+  <section>
+    <h2 class="label">Guías relacionadas</h2>
+    <p class="muted">
+      <a href="/wiki/el-crisol">El Crisol</a> · <a href="/wiki/crown-armors">Crown Armors</a> ·
+      <a href="/wiki/accesorios-dorados">Golden Amulet y Gold Ring</a> · <a href="/wiki/runas-zagan">Runas Zagan</a> ·
+      <a href="/wiki/gemas">Gemas e imbue</a> · <a href="/wiki/wands">Wands y rods</a>
+    </p>
+  </section>
+</Base>
+
+<script>
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('#item-filters button')];
+  const rows = [...document.querySelectorAll<HTMLTableRowElement>('#items-table tbody tr')];
+  const search = document.getElementById('item-search') as HTMLInputElement;
+  const empty = document.getElementById('items-empty') as HTMLParagraphElement;
+  let category = 'todos';
+
+  const apply = () => {
+    const q = search.value.trim().toLowerCase();
+    let shown = 0;
+    for (const row of rows) {
+      const ok = (category === 'todos' || row.dataset.cat === category) && (!q || (row.dataset.name || '').includes(q));
+      row.hidden = !ok;
+      if (ok) shown++;
+    }
+    empty.classList.toggle('hidden', shown > 0);
+  };
+
+  for (const button of buttons) {
+    button.addEventListener('click', () => {
+      category = button.dataset.cat || 'todos';
+      for (const b of buttons) b.setAttribute('aria-pressed', String(b === button));
+      apply();
+    });
+  }
+  search.addEventListener('input', apply);
+</script>

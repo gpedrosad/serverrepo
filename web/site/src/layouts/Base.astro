@@ -22,10 +22,10 @@ const other = lang === 'en' ? 'es' : 'en';
 const site = 'https://retro76.cl';
 const url = (l: string) => site + (localePath(l, path) === '/' ? '/' : localePath(l, path));
 
-const NAV_GAME = ['/', '/top', '/power', '/pk', '/muertes', '/gemas', '/spells', '/reglas', '/info', '/wiki'];
+const NAV_GAME = ['/', '/top', '/power', '/pk', '/muertes', '/gemas', '/items-nuevos', '/spells', '/reglas', '/info', '/wiki'];
 const NAV_PLAY = ['/cuenta', '/cliente', '/premium', '/bugs'];
-// La wiki existe solo en español: desde /en también lleva a /wiki.
-const navLink = (p: string) => ({ href: p === '/wiki' ? p : localePath(lang, p), label: T.nav[p as keyof typeof T.nav], current: p === path || (p !== '/' && path.startsWith(p + '/')) });
+// La wiki y los items nuevos existen solo en español: desde /en también llevan a la versión en español.
+const navLink = (p: string) => ({ href: p === '/wiki' || p === '/items-nuevos' ? p : localePath(lang, p), label: T.nav[p as keyof typeof T.nav], current: p === path || (p !== '/' && path.startsWith(p + '/')) });
 ---
 <!doctype html>
 <html lang={T.htmlLang === 'en' ? 'en' : T.htmlLang}>

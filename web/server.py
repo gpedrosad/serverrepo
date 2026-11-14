@@ -54,7 +54,9 @@ PORT = int(os.environ.get("PORT", "8080"))
 DIST_DIR = Path(__file__).resolve().parent / "dist"
 INDEX = DIST_DIR / "index.html"
 CHARACTER_PAGE = DIST_DIR / "character.html"
-SITE_PAGES = ("top", "power", "pk", "muertes", "gemas", "spells", "reglas", "info", "cuenta", "cliente", "premium", "bugs")
+SITE_PAGES = ("top", "power", "pk", "muertes", "gemas", "items-nuevos", "spells", "reglas", "info", "cuenta", "cliente", "premium", "bugs")
+# Páginas que solo existen en español (no hay /en/...).
+ES_ONLY_PAGES = frozenset({"items-nuevos"})
 CHARACTER_PAGE_EN = DIST_DIR / "en" / "character.html"
 WIKI_SLUG = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")  # /wiki/<slug> -> dist/wiki/<slug>.html
 
@@ -68,7 +70,7 @@ def site_page_file(path: str) -> Path | None:
         return DIST_DIR / "en.html"
     if name in SITE_PAGES:
         return DIST_DIR / f"{name}.html"
-    if name.startswith("en/") and name[3:] in SITE_PAGES:
+    if name.startswith("en/") and name[3:] in SITE_PAGES and name[3:] not in ES_ONLY_PAGES:
         return DIST_DIR / "en" / f"{name[3:]}.html"
     if name == "wiki":
         return DIST_DIR / "wiki.html"
@@ -445,7 +447,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def _sitemap_xml(self) -> None:
         urls = [f"{SITE_URL}/"] + [f"{SITE_URL}/{page}" for page in SITE_PAGES]
-        urls += [f"{SITE_URL}/en"] + [f"{SITE_URL}/en/{page}" for page in SITE_PAGES]
+        urls += [f"{SITE_URL}/en"] + [f"{SITE_URL}/en/{page}" for page in SITE_PAGES if page not in ES_ONLY_PAGES]
         urls += [f"{SITE_URL}/wiki"] + [f"{SITE_URL}/wiki/{slug}" for slug in wiki_slugs()]
         if PLAYERS_DIR.is_dir():
             names = sorted(

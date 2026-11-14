@@ -4,6 +4,9 @@ Pack del directorio `Zagan+Square`: **55 ítems** (`20100`–`20154`). Desde `20
 con otros scripts (trainer dummy, enchanted spear, armas de 8.x, crown armors, armas del Root Colossus, Aurora
 Shield).
 
+El catálogo público con stats, efecto y drop está en la web: **`/items-nuevos`**
+(`web/site/src/pages/items-nuevos.astro`, datos en `web/site/src/data/new-items.json`).
+
 Cada ítem hereda slot y atributos del prototipo OTB duplicado (arma, escudo, casco, armor, legs, runa, anillo,
 etc.). Varios se renombraron con el tiempo: `20100` vexon blade → venomqueen fang, `20153` chillan shield →
 frostwarden aegis, `20139` dawnbreak falchion → sword of silence, `20130` windsting bow → windsting axe,

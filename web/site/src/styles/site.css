@@ -314,3 +314,8 @@ body:not(:has(.site-foot)) .wrap { padding-bottom: 4rem; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
+
+/* ---------- items nuevos (pages/items-nuevos.astro) ---------- */
+.items-table td.effect-cell { min-width: 17rem; }
+.items-table .item-name { display: flex; flex-direction: column; min-width: 9rem; }
+.items-table .source { display: block; color: var(--faint); font-size: 12px; margin-top: 0.12rem; }

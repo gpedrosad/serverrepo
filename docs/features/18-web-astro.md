@@ -19,6 +19,7 @@ compilado y JavaScript solo donde hay datos en vivo. Las APIs de `web/server.py`
 | `/` | `pages/index.astro` | `/api/data` (se renueva cada minuto) |
 | `/top`, `/power`, `/pk`, `/muertes` | `pages/*.astro` | `/api/data` |
 | `/gemas` | `pages/gemas.astro` | **Al compilar**, desde `web/data/gem-drops.json` (HTML puro; el buscador es JS chico) |
+| `/items-nuevos` | `pages/items-nuevos.astro` | **Al compilar**, desde `src/data/new-items.json` (generado por `scripts/web/build-new-items.py`; stats del OTB). Solo español |
 | `/spells`, `/reglas`, `/info` | `pages/*.astro` | `/api/data` (spells, OTINFO) |
 | `/cuenta`, `/bugs` | `pages/*.astro` | Formularios a `/api/create-account` y `/api/bug-report` (mismo contrato) |
 | `/premium` | `pages/premium.astro` | `/api/premium-config` y `/api/premium-order` |
@@ -72,6 +73,22 @@ Guías cortas para jugadores: gemas, monstruos furiosos, El Crisol, training, í
 - **Solo en español:** las páginas de la wiki no tienen botón de idioma; desde `/en` el link "Wiki (ES)"
   lleva a la versión en español.
 - `server.py` sirve `/wiki` y `/wiki/<slug>` desde `dist/` y los suma al `sitemap.xml`.
+
+## Items nuevos
+
+`/items-nuevos` es el catálogo público de ítems custom con sus stats (ataque, defensa, armadura,
+peso), efecto y dónde se consigue. Es **solo en español**, como la wiki: desde `/en` el link
+"Items (ES)" lleva a la misma página y no hay `/en/items-nuevos`.
+
+- **Datos:** `web/site/src/data/new-items.json`, generado por `scripts/web/build-new-items.py`.
+  Ese script lee `web/data/items_catalog.json` (la lista curada de `/items`, con stats del OTB)
+  y la ficha de cada ítem (`META`: grupo, tipo, efecto, drop). Si un ítem está en el catálogo
+  pero no en `META`, no se publica y el script avisa.
+- **Imágenes:** `web/assets/items/custom/<serverId>.png`. Para los ítems nuevos, primero
+  `python3.11 scripts/web/build-items-catalog.py` (recorta del atlas y actualiza stats) y después
+  `python3 scripts/web/build-new-items.py`.
+- **Servidor:** `items-nuevos` está en `SITE_PAGES` y en `ES_ONLY_PAGES` de `web/server.py`
+  (el sitemap no genera `/en/items-nuevos`).
 
 ## Diseño
 
