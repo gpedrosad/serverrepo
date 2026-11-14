@@ -5,8 +5,8 @@ Registro público: **`/quests`** (`web/site/src/pages/quests.astro`). La fuente 
 
 ## Qué hay
 
-- **30 entradas existentes**: 25 con cofre o grupo y 5 sistemas repetibles (Daily Task, Wave Arena,
-  Reloj de Arena, El Crisol y Arena PvP).
+- **29 entradas existentes**: 25 con cofre o grupo y 4 sistemas repetibles (Daily Task, Wave Arena,
+  Reloj de Arena y El Crisol). La Arena PvP se retiró en nov 2026 (su zona es ahora El Foso Olvidado).
 - **40 cofres de quest** en el mapa: 29 con `quest.lua` (uid 1001–4999 y 20100–20199), 4 del
   Annihilator (`5006`–`5009`), 3 del Pharaoh (`5003`, `5004`, `5017`) y 4 de Hell Quest (`5100`–`5103`).
 - **9 propuestas** para crear, con nivel recomendado.
@@ -31,9 +31,9 @@ Steel Boots, Knight Legs, Helmet of the Ancients, Shield of Honour, Dark Shield,
 Sword, Golden Armor, Amazon Shield) están en la tabla completa del JSON, con coordenadas, recompensa,
 nivel estimado y monstruos de la zona.
 
-> **Ojo:** los niveles son recomendados, no requisitos. Las únicas puertas de nivel reales son Hell
-> Quest (80 y 100) y Arena PvP (25). Los niveles de las quests clásicas se estimaron según los
-> monstruos cercanos y el valor de la recompensa.
+> **Ojo:** los niveles son recomendados, no requisitos. Las únicas puertas de nivel reales son las
+> de Hell Quest (80 y 100). Los niveles de las quests clásicas se estimaron según los monstruos
+> cercanos y el valor de la recompensa.
 
 ## Sistemas repetibles
 
@@ -43,7 +43,6 @@ nivel estimado y monstruos de la zona.
 | Wave Arena | 40–100 | 20 oleadas, grupo hasta 7; premios semanales al limpiar 5/10/15/20. |
 | Reloj de Arena | 40–100 | 6 oleadas cada 6:30; entra en el descanso. |
 | El Crisol | 50–100 | 3 puertas (Bronce/Plata/Oro); rare de Oro, arma Zagan del día. |
-| Arena PvP | 25+ | Duelo de 2 jugadores con palanca `7001`. |
 
 ## Propuestas para crear
 

@@ -1,0 +1,237 @@
+{
+  "name": "El Foso Olvidado",
+  "seed": 1976,
+  "hall": {
+    "box": [
+      100,
+      20,
+      145,
+      44
+    ],
+    "ladder": [
+      125,
+      30,
+      9
+    ],
+    "stairs": [
+      140,
+      28,
+      9
+    ]
+  },
+  "citySign": [
+    128,
+    33,
+    7
+  ],
+  "floors": {
+    "z10": {
+      "box": [
+        200,
+        0,
+        275,
+        90
+      ],
+      "start": [
+        214,
+        12,
+        10
+      ],
+      "exit": [
+        238,
+        76,
+        10
+      ],
+      "portal": null,
+      "sides": [],
+      "floorTiles": 2386
+    },
+    "z11": {
+      "box": [
+        200,
+        0,
+        275,
+        90
+      ],
+      "start": [
+        238,
+        76,
+        11
+      ],
+      "exit": [
+        214,
+        12,
+        11
+      ],
+      "portal": null,
+      "sides": [
+        [
+          254,
+          20,
+          11
+        ]
+      ],
+      "floorTiles": 2404
+    },
+    "z12": {
+      "box": [
+        200,
+        0,
+        275,
+        90
+      ],
+      "start": [
+        214,
+        12,
+        12
+      ],
+      "exit": [
+        262,
+        76,
+        12
+      ],
+      "portal": [
+        265,
+        79,
+        12
+      ],
+      "sides": [
+        [
+          250,
+          24,
+          12
+        ],
+        [
+          226,
+          68,
+          12
+        ],
+        [
+          254,
+          52,
+          12
+        ],
+        [
+          246,
+          72,
+          12
+        ]
+      ],
+      "floorTiles": 2448
+    }
+  },
+  "corridor": {
+    "box": [
+      130,
+      0,
+      199,
+      32
+    ],
+    "start": [
+      140,
+      28,
+      10
+    ],
+    "end": [
+      198,
+      10,
+      10
+    ]
+  },
+  "bosses": [
+    {
+      "name": "Dipthrah",
+      "pos": [
+        254,
+        20,
+        11
+      ],
+      "respawn": 3600
+    },
+    {
+      "name": "Mahrdis",
+      "pos": [
+        250,
+        24,
+        12
+      ],
+      "respawn": 7200
+    },
+    {
+      "name": "Morguthis",
+      "pos": [
+        226,
+        68,
+        12
+      ],
+      "respawn": 7200
+    },
+    {
+      "name": "Vashresamun",
+      "pos": [
+        254,
+        52,
+        12
+      ],
+      "respawn": 7200
+    },
+    {
+      "name": "Ashmunrah",
+      "pos": [
+        246,
+        72,
+        12
+      ],
+      "respawn": 7200
+    },
+    {
+      "name": "Orshabaal",
+      "pos": [
+        262,
+        76,
+        12
+      ],
+      "respawn": 14400
+    }
+  ],
+  "spawns": 112,
+  "monsters": {
+    "z10": {
+      "Poison Spider": 7,
+      "Centipede": 7,
+      "Tiger": 6,
+      "Tortoise": 7,
+      "Thornback Tortoise": 7,
+      "Dworc Voodoomaster": 6,
+      "Blood Crab": 7,
+      "Cyclops Drone": 7,
+      "Quara Constrictor": 6,
+      "Cyclops Smith": 6,
+      "Quara Mantassin": 5,
+      "Blue Djinn": 5
+    },
+    "z11": {
+      "Earth Elemental": 7,
+      "Nightstalker": 13,
+      "Blue Djinn": 6,
+      "Quara Constrictor": 7,
+      "Quara Mantassin": 7,
+      "Cyclops Smith": 6,
+      "Quara Pincher": 12,
+      "Worker Golem": 12,
+      "Quara Predator": 6,
+      "Dipthrah": 1
+    },
+    "z12": {
+      "Worker Golem": 26,
+      "Quara Predator": 26,
+      "Nightstalker": 16,
+      "Quara Pincher": 10,
+      "Mahrdis": 1,
+      "Morguthis": 1,
+      "Vashresamun": 1,
+      "Ashmunrah": 1,
+      "Orshabaal": 1
+    }
+  }
+}

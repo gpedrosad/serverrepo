@@ -504,7 +504,6 @@
 <action uniqueid="5102" script="hellchest.lua" />
 <action uniqueid="5103" script="hellchest.lua" />
 <action uniqueid="7000" script="annilever.lua" />
-<action uniqueid="7001" script="arenalever.lua" />
 
 <!-- Wave Arena v2 (Claro de la Selva): 7100 inicio, 7101 ranking (campamento); 7102 siguiente, 7103 retirarse (claro) -->
 <action uniqueid="7100" script="wave_arena.lua" />

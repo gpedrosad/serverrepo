@@ -10,6 +10,7 @@ Relacionado:
 - [docs/items-and-map/MAPA_DE_MONSTRUOS.md](items-and-map/MAPA_DE_MONSTRUOS.md): mapa interactivo de spawns y NPC (`build-monster-map.py`)
 - [docs/items-and-map/MAPEAR_LABERINTO.md](items-and-map/MAPEAR_LABERINTO.md) — laberinto 2 sqm (camino 406, fondo 100, teleport templo) con `generate-maze.py`
 - [docs/items-and-map/MAPEAR_VALLE_DE_LAS_BESTIAS.md](items-and-map/MAPEAR_VALLE_DE_LAS_BESTIAS.md) — Valle de las Bestias (reemplazó al hunt maze); portal `158,47,7` con `generate-beast-valley.py`
+- [docs/items-and-map/MAPEAR_FOSO_OLVIDADO.md](items-and-map/MAPEAR_FOSO_OLVIDADO.md) — El Foso Olvidado (reemplaza la Arena PvP de z9): 3 pisos de laberinto progresivo con `generate-forgotten-pit.py`
 - [docs/items-and-map/MAPEAR_ISLOTE_MINOTAURO.md](items-and-map/MAPEAR_ISLOTE_MINOTAURO.md) — Islote del Minotauro (canal junto al muelle, z7 + cuevas z10–z12) con `generate-minotaur-isle.py`
 - [docs/gameplay/WAVE_ARENA.md](gameplay/WAVE_ARENA.md) — Wave Arena oleadas; portal `166,47,7`
 - [docs/gameplay/CRUCIBLE.md](gameplay/CRUCIBLE.md) — El Crisol (3 puertas + bosses diarios); portal `164,47,7` con `scripts/map/generate-crucible.py`
@@ -44,6 +45,10 @@ Los maneja **un solo script**: `python3 scripts/map/temple-portals.py` (idempote
 | `164,47,7` | `164,48,7` | El Crisol | [`CRUCIBLE.md`](gameplay/CRUCIBLE.md) |
 | `166,47,7` | `166,48,7` | Wave Arena | [`WAVE_ARENA.md`](gameplay/WAVE_ARENA.md) |
 | `168,47,7` | `168,48,7` | Reloj de Arena | [`SAND_CLOCK.md`](gameplay/SAND_CLOCK.md) |
+
+La **Arena PvP** de z9 también se retiró en nov 2026: su sala es ahora la entrada de **El Foso Olvidado**,
+que se recorre desde las cloacas de la ciudad (trampilla `127,32,7` → salita z8 → trampilla `125,30,8`).
+No tiene portal en la plaza; ver [`items-and-map/MAPEAR_FOSO_OLVIDADO.md`](items-and-map/MAPEAR_FOSO_OLVIDADO.md).
 
 Sacados en nov 2026: Arena de Fosos, Fish TP (ya no existían en el mapa), Bleed Room y Floor campus.
 

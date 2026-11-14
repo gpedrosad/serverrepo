@@ -67,4 +67,12 @@
 	<readable x="145" y="461" z="7" text="ISLA NATURAL\nSigue el sendero: tres\ncampamentos de Cyclops\ny al final la cueva."/>
 	<readable x="160" y="460" z="7" text="CUEVA DE PIEDRA\nGolems, Shamblers y\nun descenso a wyverns.\nAl fondo, la Reina."/>
 	<!-- END NATURAL_ISLAND_SIGNS -->
+	<!-- BEGIN FORGOTTEN_PIT_SIGNS -->
+	<readable x="128" y="33" z="7" text="EL FOSO OLVIDADO\nBajada a las cuevas (nivel 20+).\nEntra por la trampilla."/>
+	<readable x="122" y="39" z="9" text="EL FOSO OLVIDADO\nAntigua arena PvP. Ahora, cuevas de caza.\nNivel 20+: baja por la escalera del este.\n3 pisos. Al fondo, portal de vuelta.\nSalida a la ciudad: escalera de mano del norte."/>
+	<readable x="143" y="26" z="10" text="GALERIAS HUMEDAS\nNivel 20-45.\nMas abajo: Cavernas Profundas."/>
+	<readable x="240" y="79" z="11" text="CAVERNAS PROFUNDAS\nNivel 45-80.\nCuidado con quaras y golems.\nAbajo: El Corazon."/>
+	<readable x="216" y="15" z="12" text="EL CORAZON\nNivel 70+. Guardianes faraones.\nAl fondo: Orshabaal (nivel 100+)."/>
+	<readable x="258" y="79" z="12" text="ORSHABAAL\nBoss de nivel 100+.\nEntra en grupo. Portal de vuelta al fondo."/>
+	<!-- END FORGOTTEN_PIT_SIGNS -->
 </readables>

@@ -5571,4 +5571,466 @@
 		<monster name="Giant Spider" x="1" y="-1" z="10" spawntime="120" />
 	</spawn>
 	<!-- END NATURAL_ISLAND_SPAWNS -->
+	<!-- BEGIN FORGOTTEN_PIT_SPAWNS (scripts/map/generate-forgotten-pit.py) -->
+	<spawn centerx="221" centery="16" centerz="10" radius="3">
+		<monster name="Poison Spider" x="0" y="0" z="10" spawntime="60" />
+		<monster name="Centipede" x="1" y="0" z="10" spawntime="60" />
+	</spawn>
+	<spawn centerx="233" centery="22" centerz="10" radius="3">
+		<monster name="Tiger" x="0" y="1" z="10" spawntime="60" />
+		<monster name="Poison Spider" x="0" y="-1" z="10" spawntime="60" />
+	</spawn>
+	<spawn centerx="155" centery="18" centerz="10" radius="3">
+		<monster name="Centipede" x="0" y="1" z="10" spawntime="60" />
+		<monster name="Tiger" x="-1" y="0" z="10" spawntime="60" />
+	</spawn>
+	<spawn centerx="214" centery="27" centerz="10" radius="3">
+		<monster name="Poison Spider" x="0" y="0" z="10" spawntime="60" />
+		<monster name="Centipede" x="-1" y="0" z="10" spawntime="60" />
+	</spawn>
+	<spawn centerx="187" centery="11" centerz="10" radius="3">
+		<monster name="Tiger" x="-2" y="2" z="10" spawntime="60" />
+		<monster name="Poison Spider" x="2" y="-1" z="10" spawntime="60" />
+	</spawn>
+	<spawn centerx="199" centery="8" centerz="10" radius="3">
+		<monster name="Centipede" x="-1" y="0" z="10" spawntime="60" />
+		<monster name="Tiger" x="-1" y="1" z="10" spawntime="60" />
+	</spawn>
+	<spawn centerx="177" centery="13" centerz="10" radius="3">
+		<monster name="Poison Spider" x="2" y="-1" z="10" spawntime="60" />
+		<monster name="Centipede" x="-1" y="0" z="10" spawntime="60" />
+	</spawn>
+	<spawn centerx="214" centery="39" centerz="10" radius="3">
+		<monster name="Tiger" x="0" y="-1" z="10" spawntime="60" />
+		<monster name="Poison Spider" x="-1" y="1" z="10" spawntime="60" />
+	</spawn>
+	<spawn centerx="230" centery="13" centerz="10" radius="3">
+		<monster name="Centipede" x="1" y="2" z="10" spawntime="60" />
+		<monster name="Tiger" x="0" y="-1" z="10" spawntime="60" />
+	</spawn>
+	<spawn centerx="221" centery="24" centerz="10" radius="3">
+		<monster name="Poison Spider" x="-2" y="0" z="10" spawntime="60" />
+		<monster name="Centipede" x="0" y="-1" z="10" spawntime="60" />
+	</spawn>
+	<spawn centerx="231" centery="32" centerz="10" radius="3">
+		<monster name="Tortoise" x="-2" y="-1" z="10" spawntime="75" />
+		<monster name="Thornback Tortoise" x="2" y="1" z="10" spawntime="75" />
+	</spawn>
+	<spawn centerx="245" centery="31" centerz="10" radius="3">
+		<monster name="Dworc Voodoomaster" x="0" y="-1" z="10" spawntime="75" />
+		<monster name="Tortoise" x="1" y="0" z="10" spawntime="75" />
+	</spawn>
+	<spawn centerx="240" centery="20" centerz="10" radius="3">
+		<monster name="Thornback Tortoise" x="0" y="-1" z="10" spawntime="75" />
+		<monster name="Dworc Voodoomaster" x="2" y="0" z="10" spawntime="75" />
+	</spawn>
+	<spawn centerx="262" centery="12" centerz="10" radius="3">
+		<monster name="Tortoise" x="0" y="-1" z="10" spawntime="75" />
+		<monster name="Thornback Tortoise" x="-1" y="-2" z="10" spawntime="75" />
+	</spawn>
+	<spawn centerx="213" centery="44" centerz="10" radius="3">
+		<monster name="Dworc Voodoomaster" x="1" y="1" z="10" spawntime="75" />
+		<monster name="Tortoise" x="-1" y="-1" z="10" spawntime="75" />
+	</spawn>
+	<spawn centerx="219" centery="35" centerz="10" radius="3">
+		<monster name="Thornback Tortoise" x="1" y="1" z="10" spawntime="75" />
+		<monster name="Dworc Voodoomaster" x="-2" y="1" z="10" spawntime="75" />
+	</spawn>
+	<spawn centerx="238" centery="37" centerz="10" radius="3">
+		<monster name="Tortoise" x="0" y="-2" z="10" spawntime="75" />
+		<monster name="Thornback Tortoise" x="-1" y="0" z="10" spawntime="75" />
+	</spawn>
+	<spawn centerx="218" centery="52" centerz="10" radius="3">
+		<monster name="Dworc Voodoomaster" x="2" y="-1" z="10" spawntime="75" />
+		<monster name="Tortoise" x="2" y="0" z="10" spawntime="75" />
+	</spawn>
+	<spawn centerx="237" centery="44" centerz="10" radius="3">
+		<monster name="Thornback Tortoise" x="1" y="0" z="10" spawntime="75" />
+		<monster name="Dworc Voodoomaster" x="1" y="-1" z="10" spawntime="75" />
+	</spawn>
+	<spawn centerx="242" centery="11" centerz="10" radius="3">
+		<monster name="Tortoise" x="-1" y="0" z="10" spawntime="75" />
+		<monster name="Thornback Tortoise" x="0" y="2" z="10" spawntime="75" />
+	</spawn>
+	<spawn centerx="258" centery="52" centerz="10" radius="3">
+		<monster name="Blood Crab" x="0" y="-1" z="10" spawntime="90" />
+		<monster name="Cyclops Drone" x="0" y="2" z="10" spawntime="90" />
+	</spawn>
+	<spawn centerx="261" centery="63" centerz="10" radius="3">
+		<monster name="Quara Constrictor" x="0" y="1" z="10" spawntime="90" />
+		<monster name="Blood Crab" x="-1" y="1" z="10" spawntime="90" />
+	</spawn>
+	<spawn centerx="266" centery="13" centerz="10" radius="3">
+		<monster name="Cyclops Drone" x="0" y="0" z="10" spawntime="90" />
+		<monster name="Quara Constrictor" x="-1" y="0" z="10" spawntime="90" />
+	</spawn>
+	<spawn centerx="248" centery="27" centerz="10" radius="3">
+		<monster name="Blood Crab" x="2" y="1" z="10" spawntime="90" />
+		<monster name="Cyclops Drone" x="-1" y="1" z="10" spawntime="90" />
+	</spawn>
+	<spawn centerx="248" centery="67" centerz="10" radius="3">
+		<monster name="Quara Constrictor" x="1" y="1" z="10" spawntime="90" />
+		<monster name="Blood Crab" x="2" y="0" z="10" spawntime="90" />
+	</spawn>
+	<spawn centerx="265" centery="39" centerz="10" radius="3">
+		<monster name="Cyclops Drone" x="-2" y="0" z="10" spawntime="90" />
+		<monster name="Quara Constrictor" x="1" y="2" z="10" spawntime="90" />
+	</spawn>
+	<spawn centerx="234" centery="51" centerz="10" radius="3">
+		<monster name="Blood Crab" x="0" y="2" z="10" spawntime="90" />
+		<monster name="Cyclops Drone" x="0" y="0" z="10" spawntime="90" />
+	</spawn>
+	<spawn centerx="265" centery="48" centerz="10" radius="3">
+		<monster name="Quara Constrictor" x="1" y="1" z="10" spawntime="90" />
+		<monster name="Blood Crab" x="-2" y="0" z="10" spawntime="90" />
+	</spawn>
+	<spawn centerx="264" centery="27" centerz="10" radius="3">
+		<monster name="Cyclops Drone" x="2" y="-1" z="10" spawntime="90" />
+		<monster name="Quara Constrictor" x="1" y="-1" z="10" spawntime="90" />
+	</spawn>
+	<spawn centerx="256" centery="44" centerz="10" radius="3">
+		<monster name="Blood Crab" x="1" y="2" z="10" spawntime="90" />
+		<monster name="Cyclops Drone" x="0" y="0" z="10" spawntime="90" />
+	</spawn>
+	<spawn centerx="229" centery="69" centerz="10" radius="3">
+		<monster name="Cyclops Smith" x="-2" y="2" z="10" spawntime="120" />
+		<monster name="Quara Mantassin" x="1" y="0" z="10" spawntime="120" />
+	</spawn>
+	<spawn centerx="245" centery="76" centerz="10" radius="3">
+		<monster name="Blue Djinn" x="2" y="-1" z="10" spawntime="120" />
+		<monster name="Cyclops Smith" x="0" y="-1" z="10" spawntime="120" />
+	</spawn>
+	<spawn centerx="213" centery="71" centerz="10" radius="3">
+		<monster name="Quara Mantassin" x="2" y="0" z="10" spawntime="120" />
+		<monster name="Blue Djinn" x="1" y="-2" z="10" spawntime="120" />
+	</spawn>
+	<spawn centerx="253" centery="74" centerz="10" radius="3">
+		<monster name="Cyclops Smith" x="1" y="0" z="10" spawntime="120" />
+		<monster name="Quara Mantassin" x="1" y="-2" z="10" spawntime="120" />
+	</spawn>
+	<spawn centerx="229" centery="76" centerz="10" radius="3">
+		<monster name="Blue Djinn" x="1" y="-1" z="10" spawntime="120" />
+		<monster name="Cyclops Smith" x="-2" y="-1" z="10" spawntime="120" />
+	</spawn>
+	<spawn centerx="218" centery="80" centerz="10" radius="3">
+		<monster name="Quara Mantassin" x="-1" y="0" z="10" spawntime="120" />
+		<monster name="Blue Djinn" x="0" y="-1" z="10" spawntime="120" />
+	</spawn>
+	<spawn centerx="229" centery="60" centerz="10" radius="3">
+		<monster name="Cyclops Smith" x="2" y="0" z="10" spawntime="120" />
+		<monster name="Quara Mantassin" x="1" y="2" z="10" spawntime="120" />
+	</spawn>
+	<spawn centerx="216" centery="60" centerz="10" radius="3">
+		<monster name="Blue Djinn" x="0" y="0" z="10" spawntime="120" />
+		<monster name="Cyclops Smith" x="-2" y="-1" z="10" spawntime="120" />
+	</spawn>
+	<spawn centerx="212" centery="80" centerz="11" radius="3">
+		<monster name="Earth Elemental" x="1" y="-1" z="11" spawntime="120" />
+		<monster name="Nightstalker" x="0" y="0" z="11" spawntime="120" />
+	</spawn>
+	<spawn centerx="241" centery="59" centerz="11" radius="3">
+		<monster name="Blue Djinn" x="1" y="0" z="11" spawntime="120" />
+		<monster name="Earth Elemental" x="1" y="2" z="11" spawntime="120" />
+	</spawn>
+	<spawn centerx="214" centery="68" centerz="11" radius="3">
+		<monster name="Nightstalker" x="0" y="2" z="11" spawntime="120" />
+		<monster name="Blue Djinn" x="0" y="0" z="11" spawntime="120" />
+	</spawn>
+	<spawn centerx="218" centery="57" centerz="11" radius="3">
+		<monster name="Earth Elemental" x="-1" y="0" z="11" spawntime="120" />
+		<monster name="Nightstalker" x="0" y="1" z="11" spawntime="120" />
+	</spawn>
+	<spawn centerx="229" centery="68" centerz="11" radius="3">
+		<monster name="Blue Djinn" x="0" y="0" z="11" spawntime="120" />
+		<monster name="Earth Elemental" x="1" y="2" z="11" spawntime="120" />
+	</spawn>
+	<spawn centerx="253" centery="55" centerz="11" radius="3">
+		<monster name="Nightstalker" x="0" y="1" z="11" spawntime="120" />
+		<monster name="Blue Djinn" x="1" y="1" z="11" spawntime="120" />
+	</spawn>
+	<spawn centerx="222" centery="79" centerz="11" radius="3">
+		<monster name="Earth Elemental" x="-1" y="0" z="11" spawntime="120" />
+		<monster name="Nightstalker" x="-1" y="1" z="11" spawntime="120" />
+	</spawn>
+	<spawn centerx="260" centery="56" centerz="11" radius="3">
+		<monster name="Blue Djinn" x="2" y="0" z="11" spawntime="120" />
+		<monster name="Earth Elemental" x="1" y="-1" z="11" spawntime="120" />
+	</spawn>
+	<spawn centerx="246" centery="79" centerz="11" radius="3">
+		<monster name="Nightstalker" x="0" y="-1" z="11" spawntime="120" />
+		<monster name="Blue Djinn" x="0" y="-2" z="11" spawntime="120" />
+	</spawn>
+	<spawn centerx="222" centery="72" centerz="11" radius="3">
+		<monster name="Earth Elemental" x="0" y="1" z="11" spawntime="120" />
+		<monster name="Nightstalker" x="0" y="-1" z="11" spawntime="120" />
+	</spawn>
+	<spawn centerx="261" centery="34" centerz="11" radius="3">
+		<monster name="Quara Constrictor" x="0" y="-2" z="11" spawntime="140" />
+		<monster name="Quara Mantassin" x="0" y="-1" z="11" spawntime="140" />
+	</spawn>
+	<spawn centerx="250" centery="72" centerz="11" radius="3">
+		<monster name="Cyclops Smith" x="-1" y="-1" z="11" spawntime="140" />
+		<monster name="Quara Constrictor" x="0" y="1" z="11" spawntime="140" />
+	</spawn>
+	<spawn centerx="253" centery="48" centerz="11" radius="3">
+		<monster name="Quara Mantassin" x="-2" y="-1" z="11" spawntime="140" />
+		<monster name="Cyclops Smith" x="0" y="1" z="11" spawntime="140" />
+	</spawn>
+	<spawn centerx="246" centery="48" centerz="11" radius="3">
+		<monster name="Quara Constrictor" x="0" y="-1" z="11" spawntime="140" />
+		<monster name="Quara Mantassin" x="0" y="0" z="11" spawntime="140" />
+	</spawn>
+	<spawn centerx="244" centery="39" centerz="11" radius="3">
+		<monster name="Cyclops Smith" x="1" y="0" z="11" spawntime="140" />
+		<monster name="Quara Constrictor" x="2" y="2" z="11" spawntime="140" />
+	</spawn>
+	<spawn centerx="265" centery="70" centerz="11" radius="3">
+		<monster name="Quara Mantassin" x="0" y="2" z="11" spawntime="140" />
+		<monster name="Cyclops Smith" x="0" y="-2" z="11" spawntime="140" />
+	</spawn>
+	<spawn centerx="257" centery="27" centerz="11" radius="3">
+		<monster name="Quara Constrictor" x="-1" y="1" z="11" spawntime="140" />
+		<monster name="Quara Mantassin" x="0" y="1" z="11" spawntime="140" />
+	</spawn>
+	<spawn centerx="209" centery="72" centerz="11" radius="3">
+		<monster name="Cyclops Smith" x="0" y="-1" z="11" spawntime="140" />
+		<monster name="Quara Constrictor" x="1" y="1" z="11" spawntime="140" />
+	</spawn>
+	<spawn centerx="262" centery="63" centerz="11" radius="3">
+		<monster name="Quara Mantassin" x="0" y="1" z="11" spawntime="140" />
+		<monster name="Cyclops Smith" x="0" y="-1" z="11" spawntime="140" />
+	</spawn>
+	<spawn centerx="266" centery="26" centerz="11" radius="3">
+		<monster name="Quara Constrictor" x="0" y="-2" z="11" spawntime="140" />
+		<monster name="Quara Mantassin" x="0" y="2" z="11" spawntime="140" />
+	</spawn>
+	<spawn centerx="265" centery="9" centerz="11" radius="3">
+		<monster name="Quara Pincher" x="-1" y="-2" z="11" spawntime="180" />
+		<monster name="Worker Golem" x="1" y="2" z="11" spawntime="180" />
+	</spawn>
+	<spawn centerx="231" centery="20" centerz="11" radius="3">
+		<monster name="Nightstalker" x="0" y="0" z="11" spawntime="180" />
+		<monster name="Quara Pincher" x="-2" y="-2" z="11" spawntime="180" />
+	</spawn>
+	<spawn centerx="238" centery="23" centerz="11" radius="3">
+		<monster name="Worker Golem" x="0" y="0" z="11" spawntime="180" />
+		<monster name="Nightstalker" x="0" y="1" z="11" spawntime="180" />
+	</spawn>
+	<spawn centerx="235" centery="11" centerz="11" radius="3">
+		<monster name="Quara Pincher" x="2" y="-2" z="11" spawntime="180" />
+		<monster name="Worker Golem" x="-1" y="2" z="11" spawntime="180" />
+	</spawn>
+	<spawn centerx="225" centery="28" centerz="11" radius="3">
+		<monster name="Nightstalker" x="1" y="1" z="11" spawntime="180" />
+		<monster name="Quara Pincher" x="1" y="2" z="11" spawntime="180" />
+	</spawn>
+	<spawn centerx="222" centery="12" centerz="11" radius="3">
+		<monster name="Worker Golem" x="0" y="-1" z="11" spawntime="180" />
+		<monster name="Nightstalker" x="0" y="2" z="11" spawntime="180" />
+	</spawn>
+	<spawn centerx="266" centery="18" centerz="11" radius="3">
+		<monster name="Quara Pincher" x="0" y="-1" z="11" spawntime="180" />
+		<monster name="Worker Golem" x="-1" y="0" z="11" spawntime="180" />
+	</spawn>
+	<spawn centerx="243" centery="8" centerz="11" radius="3">
+		<monster name="Nightstalker" x="1" y="-1" z="11" spawntime="180" />
+		<monster name="Quara Pincher" x="2" y="0" z="11" spawntime="180" />
+	</spawn>
+	<spawn centerx="241" centery="30" centerz="11" radius="3">
+		<monster name="Worker Golem" x="1" y="0" z="11" spawntime="180" />
+		<monster name="Nightstalker" x="1" y="-1" z="11" spawntime="180" />
+	</spawn>
+	<spawn centerx="232" centery="35" centerz="11" radius="3">
+		<monster name="Quara Pincher" x="0" y="1" z="11" spawntime="180" />
+		<monster name="Worker Golem" x="2" y="0" z="11" spawntime="180" />
+	</spawn>
+	<spawn centerx="224" centery="7" centerz="11" radius="3">
+		<monster name="Quara Predator" x="-2" y="0" z="11" spawntime="220" />
+		<monster name="Worker Golem" x="2" y="0" z="11" spawntime="220" />
+	</spawn>
+	<spawn centerx="213" centery="42" centerz="11" radius="3">
+		<monster name="Quara Pincher" x="1" y="2" z="11" spawntime="220" />
+		<monster name="Quara Predator" x="0" y="1" z="11" spawntime="220" />
+	</spawn>
+	<spawn centerx="222" centery="22" centerz="11" radius="3">
+		<monster name="Worker Golem" x="-1" y="1" z="11" spawntime="220" />
+		<monster name="Quara Pincher" x="0" y="-2" z="11" spawntime="220" />
+	</spawn>
+	<spawn centerx="232" centery="36" centerz="11" radius="3">
+		<monster name="Quara Predator" x="-1" y="0" z="11" spawntime="220" />
+		<monster name="Worker Golem" x="0" y="0" z="11" spawntime="220" />
+	</spawn>
+	<spawn centerx="218" centery="51" centerz="11" radius="3">
+		<monster name="Quara Pincher" x="1" y="0" z="11" spawntime="220" />
+		<monster name="Quara Predator" x="-1" y="-1" z="11" spawntime="220" />
+	</spawn>
+	<spawn centerx="214" centery="21" centerz="11" radius="3">
+		<monster name="Worker Golem" x="-1" y="-2" z="11" spawntime="220" />
+		<monster name="Quara Pincher" x="0" y="1" z="11" spawntime="220" />
+	</spawn>
+	<spawn centerx="223" centery="44" centerz="11" radius="3">
+		<monster name="Quara Predator" x="2" y="0" z="11" spawntime="220" />
+		<monster name="Worker Golem" x="0" y="0" z="11" spawntime="220" />
+	</spawn>
+	<spawn centerx="254" centery="31" centerz="11" radius="3">
+		<monster name="Quara Pincher" x="0" y="0" z="11" spawntime="220" />
+		<monster name="Quara Predator" x="-1" y="0" z="11" spawntime="220" />
+	</spawn>
+	<spawn centerx="229" centery="50" centerz="12" radius="3">
+		<monster name="Worker Golem" x="1" y="1" z="12" spawntime="240" />
+		<monster name="Quara Predator" x="0" y="-1" z="12" spawntime="240" />
+	</spawn>
+	<spawn centerx="217" centery="43" centerz="12" radius="3">
+		<monster name="Nightstalker" x="0" y="1" z="12" spawntime="240" />
+		<monster name="Worker Golem" x="1" y="2" z="12" spawntime="240" />
+	</spawn>
+	<spawn centerx="237" centery="35" centerz="12" radius="3">
+		<monster name="Quara Predator" x="1" y="1" z="12" spawntime="240" />
+		<monster name="Nightstalker" x="0" y="1" z="12" spawntime="240" />
+	</spawn>
+	<spawn centerx="226" centery="40" centerz="12" radius="3">
+		<monster name="Worker Golem" x="-1" y="-1" z="12" spawntime="240" />
+		<monster name="Quara Predator" x="0" y="0" z="12" spawntime="240" />
+	</spawn>
+	<spawn centerx="214" centery="52" centerz="12" radius="3">
+		<monster name="Nightstalker" x="0" y="-2" z="12" spawntime="240" />
+		<monster name="Worker Golem" x="-1" y="-1" z="12" spawntime="240" />
+	</spawn>
+	<spawn centerx="213" centery="66" centerz="12" radius="3">
+		<monster name="Quara Predator" x="0" y="0" z="12" spawntime="240" />
+		<monster name="Nightstalker" x="0" y="1" z="12" spawntime="240" />
+	</spawn>
+	<spawn centerx="219" centery="24" centerz="12" radius="3">
+		<monster name="Worker Golem" x="2" y="2" z="12" spawntime="240" />
+		<monster name="Quara Predator" x="1" y="0" z="12" spawntime="240" />
+	</spawn>
+	<spawn centerx="210" centery="40" centerz="12" radius="3">
+		<monster name="Nightstalker" x="-1" y="0" z="12" spawntime="240" />
+		<monster name="Worker Golem" x="-1" y="2" z="12" spawntime="240" />
+	</spawn>
+	<spawn centerx="246" centery="44" centerz="12" radius="3">
+		<monster name="Quara Predator" x="-1" y="1" z="12" spawntime="240" />
+		<monster name="Nightstalker" x="0" y="1" z="12" spawntime="240" />
+	</spawn>
+	<spawn centerx="209" centery="28" centerz="12" radius="3">
+		<monster name="Worker Golem" x="1" y="-1" z="12" spawntime="240" />
+		<monster name="Quara Predator" x="0" y="1" z="12" spawntime="240" />
+	</spawn>
+	<spawn centerx="225" centery="15" centerz="12" radius="3">
+		<monster name="Nightstalker" x="0" y="2" z="12" spawntime="240" />
+		<monster name="Worker Golem" x="-1" y="1" z="12" spawntime="240" />
+	</spawn>
+	<spawn centerx="237" centery="43" centerz="12" radius="3">
+		<monster name="Quara Predator" x="1" y="-2" z="12" spawntime="240" />
+		<monster name="Nightstalker" x="-1" y="1" z="12" spawntime="240" />
+	</spawn>
+	<spawn centerx="238" centery="17" centerz="12" radius="3">
+		<monster name="Quara Pincher" x="0" y="-2" z="12" spawntime="260" />
+		<monster name="Quara Predator" x="-1" y="-1" z="12" spawntime="260" />
+		<monster name="Worker Golem" x="0" y="1" z="12" spawntime="260" />
+	</spawn>
+	<spawn centerx="266" centery="56" centerz="12" radius="3">
+		<monster name="Quara Pincher" x="0" y="1" z="12" spawntime="260" />
+		<monster name="Quara Predator" x="0" y="0" z="12" spawntime="260" />
+		<monster name="Worker Golem" x="-1" y="0" z="12" spawntime="260" />
+	</spawn>
+	<spawn centerx="258" centery="44" centerz="12" radius="3">
+		<monster name="Quara Pincher" x="-1" y="-1" z="12" spawntime="260" />
+		<monster name="Quara Predator" x="-1" y="0" z="12" spawntime="260" />
+		<monster name="Worker Golem" x="0" y="-1" z="12" spawntime="260" />
+	</spawn>
+	<spawn centerx="237" centery="64" centerz="12" radius="3">
+		<monster name="Quara Pincher" x="2" y="0" z="12" spawntime="260" />
+		<monster name="Quara Predator" x="0" y="-1" z="12" spawntime="260" />
+		<monster name="Worker Golem" x="0" y="0" z="12" spawntime="260" />
+	</spawn>
+	<spawn centerx="257" centery="25" centerz="12" radius="3">
+		<monster name="Quara Pincher" x="2" y="-2" z="12" spawntime="260" />
+		<monster name="Quara Predator" x="0" y="-2" z="12" spawntime="260" />
+		<monster name="Worker Golem" x="1" y="0" z="12" spawntime="260" />
+	</spawn>
+	<spawn centerx="241" centery="57" centerz="12" radius="3">
+		<monster name="Quara Pincher" x="0" y="1" z="12" spawntime="260" />
+		<monster name="Quara Predator" x="0" y="2" z="12" spawntime="260" />
+		<monster name="Worker Golem" x="2" y="-2" z="12" spawntime="260" />
+	</spawn>
+	<spawn centerx="234" centery="28" centerz="12" radius="3">
+		<monster name="Quara Pincher" x="-1" y="-2" z="12" spawntime="260" />
+		<monster name="Quara Predator" x="-1" y="2" z="12" spawntime="260" />
+		<monster name="Worker Golem" x="0" y="-1" z="12" spawntime="260" />
+	</spawn>
+	<spawn centerx="250" centery="40" centerz="12" radius="3">
+		<monster name="Quara Pincher" x="-1" y="-1" z="12" spawntime="260" />
+		<monster name="Quara Predator" x="0" y="2" z="12" spawntime="260" />
+		<monster name="Worker Golem" x="-1" y="2" z="12" spawntime="260" />
+	</spawn>
+	<spawn centerx="257" centery="16" centerz="12" radius="3">
+		<monster name="Quara Pincher" x="1" y="-1" z="12" spawntime="260" />
+		<monster name="Quara Predator" x="1" y="0" z="12" spawntime="260" />
+		<monster name="Worker Golem" x="1" y="2" z="12" spawntime="260" />
+	</spawn>
+	<spawn centerx="255" centery="64" centerz="12" radius="3">
+		<monster name="Quara Pincher" x="0" y="0" z="12" spawntime="260" />
+		<monster name="Quara Predator" x="2" y="-2" z="12" spawntime="260" />
+		<monster name="Worker Golem" x="-2" y="-1" z="12" spawntime="260" />
+	</spawn>
+	<spawn centerx="212" centery="79" centerz="12" radius="3">
+		<monster name="Nightstalker" x="2" y="0" z="12" spawntime="300" />
+		<monster name="Quara Predator" x="2" y="1" z="12" spawntime="300" />
+		<monster name="Worker Golem" x="-2" y="-2" z="12" spawntime="300" />
+	</spawn>
+	<spawn centerx="243" centery="80" centerz="12" radius="3">
+		<monster name="Nightstalker" x="-2" y="0" z="12" spawntime="300" />
+		<monster name="Quara Predator" x="-2" y="-1" z="12" spawntime="300" />
+		<monster name="Worker Golem" x="1" y="-1" z="12" spawntime="300" />
+	</spawn>
+	<spawn centerx="266" centery="66" centerz="12" radius="3">
+		<monster name="Nightstalker" x="0" y="-2" z="12" spawntime="300" />
+		<monster name="Quara Predator" x="0" y="1" z="12" spawntime="300" />
+		<monster name="Worker Golem" x="-1" y="1" z="12" spawntime="300" />
+	</spawn>
+	<spawn centerx="220" centery="60" centerz="12" radius="3">
+		<monster name="Nightstalker" x="2" y="-1" z="12" spawntime="300" />
+		<monster name="Quara Predator" x="1" y="-2" z="12" spawntime="300" />
+		<monster name="Worker Golem" x="-1" y="-1" z="12" spawntime="300" />
+	</spawn>
+	<spawn centerx="254" centery="11" centerz="12" radius="3">
+		<monster name="Nightstalker" x="0" y="-2" z="12" spawntime="300" />
+		<monster name="Quara Predator" x="0" y="-1" z="12" spawntime="300" />
+		<monster name="Worker Golem" x="2" y="0" z="12" spawntime="300" />
+	</spawn>
+	<spawn centerx="237" centery="59" centerz="12" radius="3">
+		<monster name="Nightstalker" x="1" y="-2" z="12" spawntime="300" />
+		<monster name="Quara Predator" x="0" y="0" z="12" spawntime="300" />
+		<monster name="Worker Golem" x="1" y="2" z="12" spawntime="300" />
+	</spawn>
+	<spawn centerx="229" centery="15" centerz="12" radius="3">
+		<monster name="Nightstalker" x="1" y="1" z="12" spawntime="300" />
+		<monster name="Quara Predator" x="0" y="1" z="12" spawntime="300" />
+		<monster name="Worker Golem" x="0" y="2" z="12" spawntime="300" />
+	</spawn>
+	<spawn centerx="236" centery="79" centerz="12" radius="3">
+		<monster name="Nightstalker" x="0" y="0" z="12" spawntime="300" />
+		<monster name="Quara Predator" x="2" y="0" z="12" spawntime="300" />
+		<monster name="Worker Golem" x="2" y="1" z="12" spawntime="300" />
+	</spawn>
+	<spawn centerx="254" centery="20" centerz="11" radius="1">
+		<monster name="Dipthrah" x="0" y="0" z="11" spawntime="3600" />
+	</spawn>
+	<spawn centerx="250" centery="24" centerz="12" radius="1">
+		<monster name="Mahrdis" x="0" y="0" z="12" spawntime="7200" />
+	</spawn>
+	<spawn centerx="226" centery="68" centerz="12" radius="1">
+		<monster name="Morguthis" x="0" y="0" z="12" spawntime="7200" />
+	</spawn>
+	<spawn centerx="254" centery="52" centerz="12" radius="1">
+		<monster name="Vashresamun" x="0" y="0" z="12" spawntime="7200" />
+	</spawn>
+	<spawn centerx="246" centery="72" centerz="12" radius="1">
+		<monster name="Ashmunrah" x="0" y="0" z="12" spawntime="7200" />
+	</spawn>
+	<spawn centerx="262" centery="76" centerz="12" radius="1">
+		<monster name="Orshabaal" x="0" y="0" z="12" spawntime="14400" />
+	</spawn>
+	<!-- END FORGOTTEN_PIT_SPAWNS -->
 </spawns>

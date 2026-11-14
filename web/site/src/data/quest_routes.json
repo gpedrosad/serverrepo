@@ -1045,39 +1045,6 @@
       }
     ]
   },
-  "pvp-arena": {
-    "note": "La arena está al final del camino.",
-    "steps": [
-      "Sal del depot y sigue las flechas rojas.",
-      "El camino termina en Arena PvP."
-    ],
-    "images": [
-      {
-        "file": "quests/pvp-arena/01-arena-pvp.jpg",
-        "caption": "Arena PvP: Arena PvP",
-        "step": 1,
-        "src": "/assets/wiki/routes/quests/pvp-arena/01-arena-pvp.jpg?v=9b22512ea5"
-      },
-      {
-        "file": "quests/pvp-arena/02-arena-pvp.jpg",
-        "caption": "Arena PvP: Arena PvP",
-        "step": 2,
-        "src": "/assets/wiki/routes/quests/pvp-arena/02-arena-pvp.jpg?v=9b22512ea5"
-      },
-      {
-        "file": "quests/pvp-arena/03-arena-pvp.jpg",
-        "caption": "Arena PvP: Arena PvP",
-        "step": 3,
-        "src": "/assets/wiki/routes/quests/pvp-arena/03-arena-pvp.jpg?v=9b22512ea5"
-      },
-      {
-        "file": "quests/pvp-arena/04-arena-pvp.jpg",
-        "caption": "Arena PvP: Arena PvP",
-        "step": 4,
-        "src": "/assets/wiki/routes/quests/pvp-arena/04-arena-pvp.jpg?v=9b22512ea5"
-      }
-    ]
-  },
   "daily-task": {
     "note": "El Huntmaster está en el templo.",
     "steps": [

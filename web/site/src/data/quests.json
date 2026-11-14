@@ -409,19 +409,6 @@
       ]
     },
     {
-      "id": "pvp-arena",
-      "name": "Arena PvP",
-      "type": "arena",
-      "level_label": "25+",
-      "level_min": 25,
-      "players": "2",
-      "where": "Arena PvP (119,35,9)",
-      "reward": "Duelo; sin recompensa fija",
-      "note": "Palanca 7001; ambos nivel 25+.",
-      "chests": 0,
-      "reward_ids": []
-    },
-    {
       "id": "daily-task",
       "name": "Daily Task (Huntmaster)",
       "type": "diaria",

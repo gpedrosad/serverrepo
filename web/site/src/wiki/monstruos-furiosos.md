@@ -21,7 +21,7 @@ estado: publicado
 2. A veces revive en el mismo lugar como *Angry Dragon*, *Furious Dragon* o *Enraged Dragon*, con efectos y un grito.
 3. Lo matas y recibes su exp y su botín. Un monstruo furioso no vuelve a revivir.
 
-No pasa en zonas protegidas ni en la arena PvP. El furioso es un monstruo extra: el spawn normal sigue igual.
+No pasa en zonas protegidas. El furioso es un monstruo extra: el spawn normal sigue igual.
 
 | Grito | Nivel |
 |---|---|

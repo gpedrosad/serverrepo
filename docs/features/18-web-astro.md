@@ -103,7 +103,7 @@ español, como la wiki y los items nuevos.
   items sin drop de monstruo van en `pending_items` con la quest propuesta.
 - **Mantenimiento:** al agregar una quest al mapa, sumarla al JSON y actualizar los contadores de la
   página. Los niveles de las quests clásicas son estimados según monstruos y recompensa; las puertas
-  reales de nivel son las de Hell Quest (80/100) y Arena PvP (25).
+  reales de nivel son las de Hell Quest (80/100). La Arena PvP se retiró en nov 2026.
 - **Servidor:** `quests` está en `SITE_PAGES` y `ES_ONLY_PAGES` de `web/server.py`.
 
 ## Diseño

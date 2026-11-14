@@ -729,28 +729,6 @@
       "step": 7
     }
   ],
-  "pvp-arena": [
-    {
-      "file": "quests/pvp-arena/01-arena-pvp.jpg",
-      "caption": "Arena PvP: Arena PvP",
-      "step": 1
-    },
-    {
-      "file": "quests/pvp-arena/02-arena-pvp.jpg",
-      "caption": "Arena PvP: Arena PvP",
-      "step": 2
-    },
-    {
-      "file": "quests/pvp-arena/03-arena-pvp.jpg",
-      "caption": "Arena PvP: Arena PvP",
-      "step": 3
-    },
-    {
-      "file": "quests/pvp-arena/04-arena-pvp.jpg",
-      "caption": "Arena PvP: Arena PvP",
-      "step": 4
-    }
-  ],
   "daily-task": [
     {
       "file": "quests/daily-task/01-huntmaster.jpg",

@@ -68,7 +68,7 @@ Hoy el server bloquea el ataque en estos casos:
 
 Excepciones/restricciones especiales:
 
-- si ambos estan en PvP Arena, el arena puede saltear restricciones de `no-pvp`/training
+- si ambos estan en una arena declarada en `pvparenas.xml`, la arena puede saltear restricciones de `no-pvp`/training (hoy no hay ninguna)
 - si se intenta atacar dentro de training con bloqueo PvP, el player recibe mensaje de cancelacion
 - si dos jugadores estan en la misma party, el sistema de skull/frags directamente no procesa PvP entre ellos
 
@@ -357,14 +357,17 @@ Ver:
 
 - [docs/gameplay/TRAINING_ZONE_NO_PVP.md](gameplay/TRAINING_ZONE_NO_PVP.md)
 
-### PvP Arena
+### PvP Arena (retirada, nov 2026)
 
-Si ambos estan en PvP Arena:
+La Arena PvP de z9 se reemplazo por **El Foso Olvidado**, una zona de caza progresiva
+([doc](../items-and-map/MAPEAR_FOSO_OLVIDADO.md)). `data/pvparenas.xml` quedo vacio y se saco la
+palanca `7001`; hoy ningun tile se carga como PvP Arena.
 
-- el arena puede permitir combate donde otras reglas lo bloquearian
-- el dano letal se enruta con manejo especial de `arenaLosers`
+El C++ sigue soportando arenas declaradas en `pvparenas.xml` (combate permitido, `arenaLosers`,
+teleport de perdedores). Si se quiere una arena nueva, basta con declarar sus tiles en ese XML y
+agregar una palanca como la vieja `arenalever.lua`; no hace falta tocar `game.cpp`.
 
-Referencia:
+Referencia historica:
 
 - [game.cpp](/Users/gonzalo/Desktop/yurots-principal/server/YurOTS/ots/source/game.cpp:560)
 

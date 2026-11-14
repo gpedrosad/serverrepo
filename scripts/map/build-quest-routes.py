@@ -140,8 +140,6 @@ QUESTS = [
      "El cofre está dentro de la fortaleza."),
     ("amazon-shield", "Amazon Shield", "walk", (74, 93, 10), "Cueva de las amazonas",
      "El cofre está dentro de la cueva."),
-    ("pvp-arena", "Arena PvP", "walk", (119, 35, 9), "Arena PvP",
-     "La arena está al final del camino."),
     ("daily-task", "Daily Task (Huntmaster)", "walk", (138, 53, 6), "Huntmaster",
      "El Huntmaster está en el templo."),
     ("wave-arena", "Wave Arena", "portal", (166, 47, 7), (176, 403, 7), None,
