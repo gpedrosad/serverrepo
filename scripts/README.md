@@ -12,7 +12,7 @@ Python en subcarpetas debe resolver el repo con `lib.project_root.project_root()
 | [`deploy/`](deploy/) | Backup runtime, server-save (y cron de medianoche), docker entrypoint |
 | [`ot/`](ot/) | Probe, diagnostics, watchdog, start-local, smoke tests |
 | [`map/`](map/) | Generadores OTBM, depots, sync de houses |
-| [`monsters/`](monsters/) | `apply-monster-kits.py`: ataques de su tema para los monstruos nuevos ([MONSTER_KITS.md](../docs/gameplay/MONSTER_KITS.md)) |
+| [`monsters/`](monsters/) | `apply-monster-kits.py`: ataques de su tema para los monstruos nuevos ([MONSTER_KITS.md](../docs/gameplay/MONSTER_KITS.md)). `rage-variants.py`: audita y genera las variantes Angry/Furious/Enraged de los monstruos nuevos ([RAGE_MONSTERS.md](../docs/gameplay/RAGE_MONSTERS.md)) |
 | [`otb/`](otb/) | Patches OTB / gems sprites / loot tables |
 | [`client-rme/`](client-rme/) | RME, clientes locales, Zagan test assets, patcher |
 | [`web/`](web/) | Web local, analytics, premium funnel, `build-site.sh` (compila la web Astro en la ThinkPad) |
@@ -55,6 +55,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | `generate-beast-valley.py` | Valle de las Bestias (portal 158,47,7; reemplazó al hunt maze) |
 | `generate-minotaur-isle.py` | Islote del Minotauro: islote junto al muelle con puente + cuevas z10–z12 (`--dry-run --png`) |
 | `generate-forgotten-pit.py` | El Foso Olvidado: reemplaza la Arena PvP por entrada z9 + corredor y 3 laberintos z10–z12, con spawns progresivos y jefes (`--dry-run --preview-dir`; retira la arena y vacía `pvparenas.xml`) |
+| `generate-fargum-tower.py` | Torre del Barquero: saca el patio de mesas junto al bote de Fargum y hace una torre de 5 pisos (z7–z3) con un monstruo por piso (`--dry-run --preview-dir`) |
 | `generate-bamboo-depths.py` | Cuevas de Bambú: bajada bajo Bamboo Camp, pozo z8 y cueva z9 con 3 salas y spawns progresivos (`--dry-run --preview`) |
 | `generate-epstein-hunts.py` | Epstein Island (nivel medio/alto, 4 pisos): zonas z7, cuevas z8, z9 y z10 con Mutated Tiger, Tide Priest y Bog Raiders (`--dry-run`) |
 | `generate-epstein-caves.py` | Epstein Island: cuevas largas z8 + z9 + z10, agujeros y escaleras; escribe `generated-epstein-caves.json` (`--dry-run --preview-dir`) |

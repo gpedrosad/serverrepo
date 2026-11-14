@@ -75,4 +75,7 @@
 	<readable x="216" y="15" z="12" text="EL CORAZON\nNivel 70+. Guardianes faraones.\nAl fondo: Orshabaal (nivel 100+)."/>
 	<readable x="258" y="79" z="12" text="ORSHABAAL\nBoss de nivel 100+.\nEntra en grupo. Portal de vuelta al fondo."/>
 	<!-- END FORGOTTEN_PIT_SIGNS -->
+	<!-- BEGIN FARGUM_TOWER_SIGNS -->
+	<readable x="173" y="63" z="7" text="TORRE DEL BARQUERO\n5 pisos, un monstruo por piso.\nTortuga -> Tortuga espinosa -> Cangrejo -> Quara -> Predator."/>
+	<!-- END FARGUM_TOWER_SIGNS -->
 </readables>

@@ -1,0 +1,52 @@
+{
+  "name": "Torre del Barquero",
+  "box": [
+    174,
+    61,
+    180,
+    67
+  ],
+  "floors": [
+    7,
+    6,
+    5,
+    4,
+    3
+  ],
+  "door": [
+    174,
+    64,
+    7
+  ],
+  "sign": [
+    173,
+    63,
+    7
+  ],
+  "spawn": [
+    176,
+    66
+  ],
+  "monsters": {
+    "z7": {
+      "name": "Tortoise",
+      "respawn": 120
+    },
+    "z6": {
+      "name": "Thornback Tortoise",
+      "respawn": 180
+    },
+    "z5": {
+      "name": "Blood Crab",
+      "respawn": 240
+    },
+    "z4": {
+      "name": "Quara Constrictor",
+      "respawn": 300
+    },
+    "z3": {
+      "name": "Quara Predator",
+      "respawn": 600
+    }
+  }
+}

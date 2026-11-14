@@ -46,6 +46,9 @@ Isla del Infierno (nov 2026), ver [`HELL_QUEST.md`](HELL_QUEST.md).
 - El viaje no tiene requisito de level; la bajada a las Fauces pide **nivel 80** y la arena del boss
   **nivel 100** (puertas de nivel en el mapa).
 - El `Fargum` de City está en `172 66 7` y el aterrizaje de City en `172 65 7`.
+- Al lado del bote de Fargum, donde antes estaba el patio de mesas, hay una **torre de 5 pisos**
+  con un monstruo por piso (Tortoise → Thornback → Blood Crab → Quara Constrictor → Quara
+  Predator); ver [`../items-and-map/MAPEAR_TORRE_BARQUERO.md`](../items-and-map/MAPEAR_TORRE_BARQUERO.md).
 
 ## Notas de implementación
 
