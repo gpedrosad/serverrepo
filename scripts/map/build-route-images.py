@@ -130,8 +130,11 @@ def draw_path(img, points, x0, y0):
     if len(pts) >= 2:
         draw.line(pts, fill=WHITE, width=8, joint="curve")
         draw.line(pts, fill=RED, width=5, joint="curve")
-        for i in range(0, len(pts) - 1, 2):
-            arrow(draw, pts[i], pts[i + 1], size=max(7, SCALE * .55))
+        # una sola flecha por imagen, al final del tramo
+        for i in range(len(pts) - 1, 0, -1):
+            if math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]) >= 4:
+                arrow(draw, pts[i - 1], pts[i], size=max(12, SCALE * .8))
+                break
 
 
 def label(draw, xy, text, size=13, fg=WHITE, bg=INK, border=RED):
@@ -180,16 +183,13 @@ def chunks(points, max_points=24):
 
 
 def part_label(route, seg_index, segment, jump_from_idx=None, jump_to_idx=None):
-    z = segment["z"]
     if route["kind"] == "walk":
-        base = "Depot → destino"
-    elif jump_from_idx is not None and seg_index <= jump_from_idx:
-        base = "Depot → portal" if route["kind"] == "portal" else "Depot → barco"
-    elif jump_to_idx is not None and seg_index >= jump_to_idx:
-        base = "Llegada → destino"
-    else:
-        base = "Depot → destino"
-    return f"{base} · piso z{z}"
+        return "Depot → destino"
+    if jump_from_idx is not None and seg_index <= jump_from_idx:
+        return "Depot → portal" if route["kind"] == "portal" else "Depot → barco"
+    if jump_to_idx is not None and seg_index >= jump_to_idx:
+        return "Llegada → destino"
+    return "Depot → destino"
 
 
 def main() -> int:

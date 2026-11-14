@@ -22,14 +22,14 @@ estado: publicado
 
 1. Sal del depot a la ciudad, ve al torreón del noroeste y sube al puente de madera.
 2. Cruza el puente hacia el oeste y baja por la trampilla del final.
-3. Estás en la isla. La puerta del castillo está en su pared sur (`102, 39, piso 7`).
-4. Las escaleras suben por los 6 pisos; el trono está en `96, 34, piso 3`.
+3. Estás en la isla. La puerta del castillo está en su pared sur.
+4. Las escaleras suben por los 6 pisos; el trono está en la sala del trono.
 
 > **Mapa:** [Ver la ruta marcada en el mapa](http://192.168.1.17:8077/monstruos.html#r=castillo-imperial) (red local).
 
 ## Pisos
 
-| Orden | Piso | Monstruos |
+| Orden | Zona | Monstruos |
 |---|---|---|
 | — | Afuera, en la isla | Imperial Squire |
 | 1 | Planta baja: patio de armas | Wild Warrior, Amazon, Valkyrie, Hunter |
@@ -98,37 +98,37 @@ Cada personaje puede abrir cada cofre una sola vez.
 
 Flechas rojas = camino. Fotos del mapa real, paso por paso.
 
-**Paso 1 · piso z6**
+**Paso 1**
 
-![Castillo Imperial: Depot → destino · piso z6](/assets/wiki/routes/castillo-imperial/01-depot-destino.jpg)
+![Castillo Imperial: Depot → destino](/assets/wiki/routes/castillo-imperial/01-depot-destino.jpg)
 
-**Paso 2 · piso z7**
+**Paso 2**
 
-![Castillo Imperial: Depot → destino · piso z7](/assets/wiki/routes/castillo-imperial/02-depot-destino.jpg)
+![Castillo Imperial: Depot → destino](/assets/wiki/routes/castillo-imperial/02-depot-destino.jpg)
 
-**Paso 3 · piso z6**
+**Paso 3**
 
-![Castillo Imperial: Depot → destino · piso z6](/assets/wiki/routes/castillo-imperial/03-depot-destino.jpg)
+![Castillo Imperial: Depot → destino](/assets/wiki/routes/castillo-imperial/03-depot-destino.jpg)
 
-**Paso 4 · piso z7**
+**Paso 4**
 
-![Castillo Imperial: Depot → destino · piso z7](/assets/wiki/routes/castillo-imperial/04-depot-destino.jpg)
+![Castillo Imperial: Depot → destino](/assets/wiki/routes/castillo-imperial/04-depot-destino.jpg)
 
-**Paso 5 · piso z6**
+**Paso 5**
 
-![Castillo Imperial: Depot → destino · piso z6](/assets/wiki/routes/castillo-imperial/05-depot-destino.jpg)
+![Castillo Imperial: Depot → destino](/assets/wiki/routes/castillo-imperial/05-depot-destino.jpg)
 
-**Paso 6 · piso z5**
+**Paso 6**
 
-![Castillo Imperial: Depot → destino · piso z5](/assets/wiki/routes/castillo-imperial/06-depot-destino.jpg)
+![Castillo Imperial: Depot → destino](/assets/wiki/routes/castillo-imperial/06-depot-destino.jpg)
 
-**Paso 7 · piso z4**
+**Paso 7**
 
-![Castillo Imperial: Depot → destino · piso z4](/assets/wiki/routes/castillo-imperial/07-depot-destino.jpg)
+![Castillo Imperial: Depot → destino](/assets/wiki/routes/castillo-imperial/07-depot-destino.jpg)
 
-**Paso 8 · piso z3**
+**Paso 8**
 
-![Castillo Imperial: Depot → destino · piso z3](/assets/wiki/routes/castillo-imperial/08-depot-destino.jpg)
+![Castillo Imperial: Depot → destino](/assets/wiki/routes/castillo-imperial/08-depot-destino.jpg)
 
 ## Relacionado
 

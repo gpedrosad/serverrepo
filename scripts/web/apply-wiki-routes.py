@@ -49,7 +49,7 @@ def main() -> int:
         lines = ["## Cómo llegar desde el depot", "",
                  "Flechas rojas = camino. Fotos del mapa real, paso por paso.", ""]
         for img in images:
-            lines += [f"**Paso {img['step']} · piso z{img['z']}**", "",
+            lines += [f"**Paso {img['step']}**", "",
                       f"![{img['caption']}](/assets/wiki/routes/{img['file']})", ""]
         block = "\n".join(lines).rstrip() + "\n\n"
         # sacar marcadores viejos y la sección anterior (si existe), y volver a insertarla

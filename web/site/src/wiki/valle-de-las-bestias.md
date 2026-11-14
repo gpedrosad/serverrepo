@@ -9,7 +9,7 @@ estado: publicado
 
 ## Lo esencial
 
-- Se entra por el portal **Valle de las Bestias** en la plaza de portales del templo (`158, 47, piso 7`).
+- Se entra por el portal **Valle de las Bestias** en la plaza de portales del templo.
 - Es un valle que se recorre de **sur a norte** y después baja **dos pisos**. Cuanto más avanzas, más fuertes son los monstruos.
 - Hay **portales de vuelta al templo** en la llegada, junto a la bajada a las Catacumbas y al fondo del Abismo.
 - Es gratis y no tiene requisito de nivel: el nivel lo pone cada zona.
@@ -42,29 +42,29 @@ En las cuevas también sube la dificultad: lo más fuerte está lejos de la esca
 
 Flechas rojas = camino. Fotos del mapa real, paso por paso.
 
-**Paso 1 · piso z6**
+**Paso 1**
 
-![Valle de las Bestias: Depot → portal · piso z6](/assets/wiki/routes/valle-de-las-bestias/01-depot-portal.jpg)
+![Valle de las Bestias: Depot → portal](/assets/wiki/routes/valle-de-las-bestias/01-depot-portal.jpg)
 
-**Paso 2 · piso z7**
+**Paso 2**
 
-![Valle de las Bestias: Depot → portal · piso z7](/assets/wiki/routes/valle-de-las-bestias/02-depot-portal.jpg)
+![Valle de las Bestias: Depot → portal](/assets/wiki/routes/valle-de-las-bestias/02-depot-portal.jpg)
 
-**Paso 3 · piso z7**
+**Paso 3**
 
-![Valle de las Bestias: Llegada → destino · piso z7](/assets/wiki/routes/valle-de-las-bestias/03-llegada-destino.jpg)
+![Valle de las Bestias: Llegada → destino](/assets/wiki/routes/valle-de-las-bestias/03-llegada-destino.jpg)
 
-**Paso 4 · piso z7**
+**Paso 4**
 
-![Valle de las Bestias: Llegada → destino · piso z7](/assets/wiki/routes/valle-de-las-bestias/04-llegada-destino.jpg)
+![Valle de las Bestias: Llegada → destino](/assets/wiki/routes/valle-de-las-bestias/04-llegada-destino.jpg)
 
-**Paso 5 · piso z7**
+**Paso 5**
 
-![Valle de las Bestias: Llegada → destino · piso z7](/assets/wiki/routes/valle-de-las-bestias/05-llegada-destino.jpg)
+![Valle de las Bestias: Llegada → destino](/assets/wiki/routes/valle-de-las-bestias/05-llegada-destino.jpg)
 
-**Paso 6 · piso z7**
+**Paso 6**
 
-![Valle de las Bestias: Llegada → destino · piso z7](/assets/wiki/routes/valle-de-las-bestias/06-llegada-destino.jpg)
+![Valle de las Bestias: Llegada → destino](/assets/wiki/routes/valle-de-las-bestias/06-llegada-destino.jpg)
 
 ## Relacionado
 

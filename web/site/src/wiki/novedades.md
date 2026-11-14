@@ -22,7 +22,7 @@ Una caza nueva **en la ciudad**: un islote frente al muelle, con puente de mader
 
 ### Isla natural
 
-El portal de la isla natural (`156, 47, piso 7`) ahora tiene una **cueva de tres pisos**: Golems y Shamblers, wyverns y murciélagos, y al fondo la **Old Widow** con dos Giant Spiders. La superficie sigue con los tres campamentos de Cyclops. Todo en [[isla-natural]].
+El portal de la isla natural ahora tiene una **cueva de tres pisos**: Golems y Shamblers, wyverns y murciélagos, y al fondo la **Old Widow** con dos Giant Spiders. La superficie sigue con los tres campamentos de Cyclops. Todo en [[isla-natural]].
 
 ### Wave Arena: el Claro de la Selva
 

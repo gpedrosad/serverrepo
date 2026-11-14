@@ -29,18 +29,18 @@ Si en la confirmación nombras otro destino, el barquero te pregunta por ese.
 
 | Destino | Precio | Qué decir | Barquero allá |
 |---|---|---|---|
-| The City | 20 gp | `city` | Fargum (`172, 66, piso 7`) |
-| Elfland | 20 gp | `elfland` | Nimral (`111, 61, piso 6`) |
-| Dragon Land | 50 gp | `dragon land` | Nimral (`122, 117, piso 7`) |
-| Hell Quest | 20 gp | `hell` | Nimral (`348, 210, piso 7`) |
-| Frozen Isle | 20 gp | `frozen isle`, `isla helada` o `hielo` | Nimral (`397, 103, piso 7`) |
-| Gauntlet | 20 gp | `gauntlet` | Nimral (`450, 41, piso 7`) |
-| Epstein Island | 20 gp | `epstein` | — (portal al templo en `85, 210, piso 7`) |
+| The City | 20 gp | `city` | Fargum, en el muelle de la ciudad |
+| Elfland | 20 gp | `elfland` | Nimral, en el muelle de Elfland |
+| Dragon Land | 50 gp | `dragon land` | Nimral, en el muelle de Dragon Land |
+| Hell Quest | 20 gp | `hell` | Nimral, en el muelle de Hell Quest |
+| Frozen Isle | 20 gp | `frozen isle`, `isla helada` o `hielo` | Nimral, en el muelle de Frozen Isle |
+| Gauntlet | 20 gp | `gauntlet` | Nimral, en la primera sala del Gauntlet |
+| Epstein Island | 20 gp | `epstein` | — (portal al templo en la llegada) |
 
 ## Reglas
 
 - **Epstein Island** es una isla de caza: cualquier personaje puede viajar, sin restricción de vocación.
-- No hay **Nimral** en Epstein: la vuelta es un **portal al templo** en la llegada (`85, 210, piso 7`).
+- No hay **Nimral** en Epstein: la vuelta es un **portal al templo** en la llegada.
 - No puedes subir al barco **en combate**. Espera a que se te pase el PZ lock (`!pz`).
 - Si ya estás en el muelle de ese destino, el barquero no te cobra ni te lleva.
 - El barquero te ofrece todos los destinos.
@@ -52,13 +52,13 @@ Si en la confirmación nombras otro destino, el barquero te pregunta por ese.
 
 Flechas rojas = camino. Fotos del mapa real, paso por paso.
 
-**Paso 1 · piso z6**
+**Paso 1**
 
-![Barco: Fargum: Depot → destino · piso z6](/assets/wiki/routes/barco-fargum/01-depot-destino.jpg)
+![Barco: Fargum: Depot → destino](/assets/wiki/routes/barco-fargum/01-depot-destino.jpg)
 
-**Paso 2 · piso z7**
+**Paso 2**
 
-![Barco: Fargum: Depot → destino · piso z7](/assets/wiki/routes/barco-fargum/02-depot-destino.jpg)
+![Barco: Fargum: Depot → destino](/assets/wiki/routes/barco-fargum/02-depot-destino.jpg)
 
 ## Relacionado
 

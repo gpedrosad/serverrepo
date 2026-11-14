@@ -9,7 +9,7 @@ estado: publicado
 
 ## Lo esencial
 
-- Se entra por el portal **Wave Arena** en la plaza de portales del templo (`166, 47, piso 7`).
+- Se entra por el portal **Wave Arena** en la plaza de portales del templo.
 - Llegas a un **campamento** seguro. La pelea es en el **Claro de la Selva**, un claro cerrado con bambú.
 - Son **20 oleadas**, con un **jefe cada 5**. Puedes ir solo o con tu grupo, **hasta 7 jugadores**.
 - Las oleadas **crecen con el grupo**: más jugadores, más monstruos (el jefe es siempre uno).
@@ -75,13 +75,13 @@ El claro es uno solo. Mientras haya alguien adentro, nadie más puede empezar. S
 
 Flechas rojas = camino. Fotos del mapa real, paso por paso.
 
-**Paso 1 · piso z6**
+**Paso 1**
 
-![Wave Arena: Depot → portal · piso z6](/assets/wiki/routes/wave-arena/01-depot-portal.jpg)
+![Wave Arena: Depot → portal](/assets/wiki/routes/wave-arena/01-depot-portal.jpg)
 
-**Paso 2 · piso z7**
+**Paso 2**
 
-![Wave Arena: Depot → portal · piso z7](/assets/wiki/routes/wave-arena/02-depot-portal.jpg)
+![Wave Arena: Depot → portal](/assets/wiki/routes/wave-arena/02-depot-portal.jpg)
 
 ## Relacionado
 

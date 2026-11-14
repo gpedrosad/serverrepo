@@ -19,8 +19,8 @@ estado: publicado
 
 ## Cómo se hace
 
-1. Sal del depot a la ciudad, ve al muelle sureste y habla con **Fargum** (`172, 66, piso 7`). Dile `frozen isle` (20 gp).
-2. Llegas al puerto, al sur de la isla (`395, 104, piso 7`). Sigue el sendero hacia el norte: bosque, lago congelado, monasterio y montaña.
+1. Sal del depot a la ciudad, ve al muelle sureste y habla con **Fargum**. Dile `frozen isle` (20 gp).
+2. Llegas al puerto, al sur de la isla. Sigue el sendero hacia el norte: bosque, lago congelado, monasterio y montaña.
 3. En la montaña está la bajada a las grutas. Recórrelas hasta la siguiente bajada.
 4. Llegas a la guarida. Al fondo está la cámara del tesoro con el portal de vuelta.
 
@@ -76,33 +76,33 @@ Ice Monk, Ice Spider y Frost Dragon tienen dibujo propio: necesitas el [cliente 
 
 Flechas rojas = camino. Fotos del mapa real, paso por paso.
 
-**Paso 1 · piso z6**
+**Paso 1**
 
-![Isla del Hielo: Depot → barco · piso z6](/assets/wiki/routes/isla-del-hielo/01-depot-barco.jpg)
+![Isla del Hielo: Depot → barco](/assets/wiki/routes/isla-del-hielo/01-depot-barco.jpg)
 
-**Paso 2 · piso z7**
+**Paso 2**
 
-![Isla del Hielo: Depot → barco · piso z7](/assets/wiki/routes/isla-del-hielo/02-depot-barco.jpg)
+![Isla del Hielo: Depot → barco](/assets/wiki/routes/isla-del-hielo/02-depot-barco.jpg)
 
-**Paso 3 · piso z7**
+**Paso 3**
 
-![Isla del Hielo: Llegada → destino · piso z7](/assets/wiki/routes/isla-del-hielo/03-llegada-destino.jpg)
+![Isla del Hielo: Llegada → destino](/assets/wiki/routes/isla-del-hielo/03-llegada-destino.jpg)
 
-**Paso 4 · piso z7**
+**Paso 4**
 
-![Isla del Hielo: Llegada → destino · piso z7](/assets/wiki/routes/isla-del-hielo/04-llegada-destino.jpg)
+![Isla del Hielo: Llegada → destino](/assets/wiki/routes/isla-del-hielo/04-llegada-destino.jpg)
 
-**Paso 5 · piso z7**
+**Paso 5**
 
-![Isla del Hielo: Llegada → destino · piso z7](/assets/wiki/routes/isla-del-hielo/05-llegada-destino.jpg)
+![Isla del Hielo: Llegada → destino](/assets/wiki/routes/isla-del-hielo/05-llegada-destino.jpg)
 
-**Paso 6 · piso z7**
+**Paso 6**
 
-![Isla del Hielo: Llegada → destino · piso z7](/assets/wiki/routes/isla-del-hielo/06-llegada-destino.jpg)
+![Isla del Hielo: Llegada → destino](/assets/wiki/routes/isla-del-hielo/06-llegada-destino.jpg)
 
-**Paso 7 · piso z7**
+**Paso 7**
 
-![Isla del Hielo: Llegada → destino · piso z7](/assets/wiki/routes/isla-del-hielo/07-llegada-destino.jpg)
+![Isla del Hielo: Llegada → destino](/assets/wiki/routes/isla-del-hielo/07-llegada-destino.jpg)
 
 ## Relacionado
 

@@ -330,7 +330,7 @@ def transition_markers(path):
     out = []
     for a, b in zip(path, path[1:]):
         if a[2] != b[2]:
-            out.append({"x": a[0], "y": a[1], "z": a[2], "label": f"Piso {a[2]} → {b[2]}",
+            out.append({"x": a[0], "y": a[1], "z": a[2], "label": "Escalera",
                         "kind": "stairs"})
     return out
 
@@ -398,79 +398,79 @@ def main() -> int:
 
     routes = [
         route_walk("templo-plaza", "Depot y plaza de portales", (156, 47, 7), [
-            "Sal del depot y sube al templo; la salida a la plaza es la escalera del este (133, 53).",
-            "Llegas a la plaza de portales (156, 47, piso 7).",
-            "Los portales a las hunts están en la fila norte; el barco, al sureste (172, 66).",
+            "Sal del depot y sube al templo; la salida a la plaza es la escalera del este.",
+            "Llegas a la plaza de portales.",
+            "Los portales a las hunts están en la fila norte; el barco, al sureste.",
         ]),
         route_jump("isla-natural", "Isla natural", "portal", (156, 47, 7), (147, 462, 7),
                    (163, 464, 7), [
-                       "Sal del depot a la plaza y entra al portal ISLA NATURAL (156, 47).",
-                       "Llegas a 147, 462; sigue el sendero al este hasta la cueva (163, 463).",
-                       "La cueva baja a z8, z9 y z10; al fondo espera la Old Widow.",
+                       "Sal del depot a la plaza y entra al portal ISLA NATURAL.",
+                       "Llegas a la punta oeste de la isla; sigue el sendero al este hasta la cueva.",
+                       "La cueva baja tres pisos; al fondo espera la Old Widow.",
                    ], "Portal Isla natural", "Llegada a la isla"),
         route_jump("valle-de-las-bestias", "Valle de las Bestias", "portal", (158, 47, 7),
                    (312, 360, 7), (312, 252, 7), [
-                       "Sal del depot a la plaza y entra al portal VALLE DE LAS BESTIAS (158, 47).",
-                       "Llegas al sur del valle (312, 360).",
-                       "Sigue el camino al norte hasta las Ruinas y la escalera a las Catacumbas (312, 252).",
+                       "Sal del depot a la plaza y entra al portal VALLE DE LAS BESTIAS.",
+                       "Llegas al sur del valle.",
+                       "Sigue el camino al norte hasta las Ruinas y la escalera a las Catacumbas.",
                    ], "Portal Valle de las Bestias", "Llegada al valle"),
         route_jump("el-crisol", "El Crisol", "portal", (164, 47, 7), (83, 85, 0), None, [
-            "Sal del depot a la plaza y entra al portal CRISOL (164, 47).",
-            "Llegas a la Sala del Crisol (83, 85, piso 0).",
+            "Sal del depot a la plaza y entra al portal CRISOL.",
+            "Llegas a la Sala del Crisol.",
             "Las tres puertas están al norte: Bronce, Plata y Oro.",
         ], "Portal El Crisol", "Sala del Crisol"),
         route_jump("wave-arena", "Wave Arena", "portal", (166, 47, 7), (176, 403, 7),
                    None, [
-                       "Sal del depot a la plaza y entra al portal WAVE ARENA (166, 47).",
-                       "Llegas al campamento (176, 403).",
-                       "El claro de la arena está al norte (176, 395) y se entra con la palanca.",
+                       "Sal del depot a la plaza y entra al portal WAVE ARENA.",
+                       "Llegas al campamento.",
+                       "El claro de la arena está al norte y se entra con la palanca.",
                    ], "Portal Wave Arena", "Campamento"),
         route_jump("reloj-de-arena", "Reloj de Arena", "portal", (168, 47, 7), (338, 395, 6),
                    None, [
-                       "Sal del depot a la plaza y entra al portal RELOJ DE ARENA (168, 47).",
-                       "Llegas a la sala (338, 395, piso 6).",
+                       "Sal del depot a la plaza y entra al portal RELOJ DE ARENA.",
+                       "Llegas a la sala del Reloj.",
                        "El reloj y las 6 oleadas están en la sala.",
                    ], "Portal Reloj de Arena", "Sala del Reloj"),
         route_walk("barco-fargum", "Barco: Fargum", (172, 66, 7), [
-            "Sal del depot a la ciudad y anda al muelle sureste; Fargum está en 172, 66.",
+            "Sal del depot a la ciudad y anda al muelle sureste; Fargum está en el muelle.",
             "Dile el destino: `elfland`, `epstein island`, `hell quest`, `dragon land`, `frozen isle`, `gauntlet` o `city`.",
             "El viaje cuesta entre 20 y 50 gp.",
         ]),
         route_jump("isla-del-hielo", "Isla del Hielo", "boat", (172, 66, 7), (395, 104, 7),
                    (392, 15, 7), [
-                       "Sal del depot a la ciudad y anda al muelle sureste; habla con Fargum (172, 66).",
+                       "Sal del depot a la ciudad y anda al muelle sureste; habla con Fargum.",
                        "Dile `frozen isle` (20 gp).",
-                       "Llegas al sur de la isla (395, 104).",
-                       "Sigue el sendero al norte hasta la bajada a las grutas (392, 15).",
+                       "Llegas al sur de la isla.",
+                       "Sigue el sendero al norte hasta la bajada a las grutas.",
                    ], "Fargum (barco)", "Muelle de Frozen Isle"),
         route_jump("hell-quest", "Hell Quest", "boat", (172, 66, 7), (345, 211, 7),
                    (358, 146, 7), [
-                       "Sal del depot a la ciudad y anda al muelle sureste; habla con Fargum (172, 66).",
+                       "Sal del depot a la ciudad y anda al muelle sureste; habla con Fargum.",
                        "Dile `hell quest` (20 gp).",
-                       "Llegas a la isla de lava (345, 211).",
-                       "Sigue el camino al norte hasta la bajada (358, 146).",
+                       "Llegas a la isla de lava.",
+                       "Sigue el camino al norte hasta la bajada.",
                    ], "Fargum (barco)", "Muelle de Hell Quest"),
         route_jump("epstein-island", "Epstein Island", "boat", (172, 66, 7), (85, 209, 7),
                    (80, 201, 8), [
-                       "Sal del depot a la ciudad y anda al muelle sureste; habla con Fargum (172, 66).",
+                       "Sal del depot a la ciudad y anda al muelle sureste; habla con Fargum.",
                        "Dile `epstein island` (20 gp).",
-                       "Llegas a 85, 209.",
-                       "Las cuevas y hunts están al norte; la primera bajada es la de 80, 201.",
+                       "Llegas a la isla.",
+                       "Las cuevas y hunts están al norte; la primera bajada es la del norte.",
                    ], "Fargum (barco)", "Muelle de Epstein"),
         route_walk("castillo-imperial", "Castillo Imperial", (96, 34, 3), [
             "Sal del depot a la ciudad y anda al noroeste, al torreón y puente de madera.",
-            "Cruza el puente y baja por la trampilla al patio del castillo (102, 39).",
-            "Las escaleras te llevan por los 6 pisos hasta el trono (96, 34, piso 3).",
+            "Cruza el puente y baja por la trampilla al patio del castillo.",
+            "Las escaleras te llevan por los 6 pisos hasta el trono.",
         ]),
         route_walk("desierto-de-las-ruinas", "Desierto de las Ruinas", (198, 74, 7), [
             "Sal del depot a la ciudad y anda al este.",
-            "Pasa el túnel bajo la muralla (rampas en 186-190, y 63-65).",
-            "Llegas a la entrada del desierto (198, 74); sigue el camino de piedra.",
+            "Pasa el túnel bajo la muralla.",
+            "Llegas a la entrada del desierto; sigue el camino de piedra.",
         ]),
         route_walk("islote-del-minotauro", "Islote del Minotauro", (110, 52, 7), [
             "Sal del depot a la ciudad y anda al oeste, al muelle.",
-            "Cruza el puente de madera (113, 56) al islote.",
-            "Los minotauros están en el islote; la cueva baja en 100, 53 a z10-z12.",
+            "Cruza el puente de madera al islote.",
+            "Los minotauros están en el islote; la cueva baja en la punta oeste.",
         ]),
     ]
 

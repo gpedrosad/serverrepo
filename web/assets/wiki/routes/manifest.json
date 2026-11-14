@@ -2,13 +2,13 @@
   "templo-plaza": [
     {
       "file": "templo-plaza/01-depot-destino.jpg",
-      "caption": "Depot y plaza de portales: Depot → destino · piso z6",
+      "caption": "Depot y plaza de portales: Depot → destino",
       "z": 6,
       "step": 1
     },
     {
       "file": "templo-plaza/02-depot-destino.jpg",
-      "caption": "Depot y plaza de portales: Depot → destino · piso z7",
+      "caption": "Depot y plaza de portales: Depot → destino",
       "z": 7,
       "step": 2
     }
@@ -16,31 +16,31 @@
   "isla-natural": [
     {
       "file": "isla-natural/01-depot-portal.jpg",
-      "caption": "Isla natural: Depot → portal · piso z6",
+      "caption": "Isla natural: Depot → portal",
       "z": 6,
       "step": 1
     },
     {
       "file": "isla-natural/02-depot-portal.jpg",
-      "caption": "Isla natural: Depot → portal · piso z7",
+      "caption": "Isla natural: Depot → portal",
       "z": 7,
       "step": 2
     },
     {
       "file": "isla-natural/03-llegada-destino.jpg",
-      "caption": "Isla natural: Llegada → destino · piso z7",
+      "caption": "Isla natural: Llegada → destino",
       "z": 7,
       "step": 3
     },
     {
       "file": "isla-natural/04-llegada-destino.jpg",
-      "caption": "Isla natural: Llegada → destino · piso z7",
+      "caption": "Isla natural: Llegada → destino",
       "z": 7,
       "step": 4
     },
     {
       "file": "isla-natural/05-llegada-destino.jpg",
-      "caption": "Isla natural: Llegada → destino · piso z7",
+      "caption": "Isla natural: Llegada → destino",
       "z": 7,
       "step": 5
     }
@@ -48,37 +48,37 @@
   "valle-de-las-bestias": [
     {
       "file": "valle-de-las-bestias/01-depot-portal.jpg",
-      "caption": "Valle de las Bestias: Depot → portal · piso z6",
+      "caption": "Valle de las Bestias: Depot → portal",
       "z": 6,
       "step": 1
     },
     {
       "file": "valle-de-las-bestias/02-depot-portal.jpg",
-      "caption": "Valle de las Bestias: Depot → portal · piso z7",
+      "caption": "Valle de las Bestias: Depot → portal",
       "z": 7,
       "step": 2
     },
     {
       "file": "valle-de-las-bestias/03-llegada-destino.jpg",
-      "caption": "Valle de las Bestias: Llegada → destino · piso z7",
+      "caption": "Valle de las Bestias: Llegada → destino",
       "z": 7,
       "step": 3
     },
     {
       "file": "valle-de-las-bestias/04-llegada-destino.jpg",
-      "caption": "Valle de las Bestias: Llegada → destino · piso z7",
+      "caption": "Valle de las Bestias: Llegada → destino",
       "z": 7,
       "step": 4
     },
     {
       "file": "valle-de-las-bestias/05-llegada-destino.jpg",
-      "caption": "Valle de las Bestias: Llegada → destino · piso z7",
+      "caption": "Valle de las Bestias: Llegada → destino",
       "z": 7,
       "step": 5
     },
     {
       "file": "valle-de-las-bestias/06-llegada-destino.jpg",
-      "caption": "Valle de las Bestias: Llegada → destino · piso z7",
+      "caption": "Valle de las Bestias: Llegada → destino",
       "z": 7,
       "step": 6
     }
@@ -86,13 +86,13 @@
   "el-crisol": [
     {
       "file": "el-crisol/01-depot-portal.jpg",
-      "caption": "El Crisol: Depot → portal · piso z6",
+      "caption": "El Crisol: Depot → portal",
       "z": 6,
       "step": 1
     },
     {
       "file": "el-crisol/02-depot-portal.jpg",
-      "caption": "El Crisol: Depot → portal · piso z7",
+      "caption": "El Crisol: Depot → portal",
       "z": 7,
       "step": 2
     }
@@ -100,13 +100,13 @@
   "wave-arena": [
     {
       "file": "wave-arena/01-depot-portal.jpg",
-      "caption": "Wave Arena: Depot → portal · piso z6",
+      "caption": "Wave Arena: Depot → portal",
       "z": 6,
       "step": 1
     },
     {
       "file": "wave-arena/02-depot-portal.jpg",
-      "caption": "Wave Arena: Depot → portal · piso z7",
+      "caption": "Wave Arena: Depot → portal",
       "z": 7,
       "step": 2
     }
@@ -114,13 +114,13 @@
   "reloj-de-arena": [
     {
       "file": "reloj-de-arena/01-depot-portal.jpg",
-      "caption": "Reloj de Arena: Depot → portal · piso z6",
+      "caption": "Reloj de Arena: Depot → portal",
       "z": 6,
       "step": 1
     },
     {
       "file": "reloj-de-arena/02-depot-portal.jpg",
-      "caption": "Reloj de Arena: Depot → portal · piso z7",
+      "caption": "Reloj de Arena: Depot → portal",
       "z": 7,
       "step": 2
     }
@@ -128,13 +128,13 @@
   "barco-fargum": [
     {
       "file": "barco-fargum/01-depot-destino.jpg",
-      "caption": "Barco: Fargum: Depot → destino · piso z6",
+      "caption": "Barco: Fargum: Depot → destino",
       "z": 6,
       "step": 1
     },
     {
       "file": "barco-fargum/02-depot-destino.jpg",
-      "caption": "Barco: Fargum: Depot → destino · piso z7",
+      "caption": "Barco: Fargum: Depot → destino",
       "z": 7,
       "step": 2
     }
@@ -142,43 +142,43 @@
   "isla-del-hielo": [
     {
       "file": "isla-del-hielo/01-depot-barco.jpg",
-      "caption": "Isla del Hielo: Depot → barco · piso z6",
+      "caption": "Isla del Hielo: Depot → barco",
       "z": 6,
       "step": 1
     },
     {
       "file": "isla-del-hielo/02-depot-barco.jpg",
-      "caption": "Isla del Hielo: Depot → barco · piso z7",
+      "caption": "Isla del Hielo: Depot → barco",
       "z": 7,
       "step": 2
     },
     {
       "file": "isla-del-hielo/03-llegada-destino.jpg",
-      "caption": "Isla del Hielo: Llegada → destino · piso z7",
+      "caption": "Isla del Hielo: Llegada → destino",
       "z": 7,
       "step": 3
     },
     {
       "file": "isla-del-hielo/04-llegada-destino.jpg",
-      "caption": "Isla del Hielo: Llegada → destino · piso z7",
+      "caption": "Isla del Hielo: Llegada → destino",
       "z": 7,
       "step": 4
     },
     {
       "file": "isla-del-hielo/05-llegada-destino.jpg",
-      "caption": "Isla del Hielo: Llegada → destino · piso z7",
+      "caption": "Isla del Hielo: Llegada → destino",
       "z": 7,
       "step": 5
     },
     {
       "file": "isla-del-hielo/06-llegada-destino.jpg",
-      "caption": "Isla del Hielo: Llegada → destino · piso z7",
+      "caption": "Isla del Hielo: Llegada → destino",
       "z": 7,
       "step": 6
     },
     {
       "file": "isla-del-hielo/07-llegada-destino.jpg",
-      "caption": "Isla del Hielo: Llegada → destino · piso z7",
+      "caption": "Isla del Hielo: Llegada → destino",
       "z": 7,
       "step": 7
     }
@@ -186,37 +186,37 @@
   "hell-quest": [
     {
       "file": "hell-quest/01-depot-barco.jpg",
-      "caption": "Hell Quest: Depot → barco · piso z6",
+      "caption": "Hell Quest: Depot → barco",
       "z": 6,
       "step": 1
     },
     {
       "file": "hell-quest/02-depot-barco.jpg",
-      "caption": "Hell Quest: Depot → barco · piso z7",
+      "caption": "Hell Quest: Depot → barco",
       "z": 7,
       "step": 2
     },
     {
       "file": "hell-quest/03-llegada-destino.jpg",
-      "caption": "Hell Quest: Llegada → destino · piso z7",
+      "caption": "Hell Quest: Llegada → destino",
       "z": 7,
       "step": 3
     },
     {
       "file": "hell-quest/04-llegada-destino.jpg",
-      "caption": "Hell Quest: Llegada → destino · piso z7",
+      "caption": "Hell Quest: Llegada → destino",
       "z": 7,
       "step": 4
     },
     {
       "file": "hell-quest/05-llegada-destino.jpg",
-      "caption": "Hell Quest: Llegada → destino · piso z7",
+      "caption": "Hell Quest: Llegada → destino",
       "z": 7,
       "step": 5
     },
     {
       "file": "hell-quest/06-llegada-destino.jpg",
-      "caption": "Hell Quest: Llegada → destino · piso z7",
+      "caption": "Hell Quest: Llegada → destino",
       "z": 7,
       "step": 6
     }
@@ -224,25 +224,25 @@
   "epstein-island": [
     {
       "file": "epstein-island/01-depot-barco.jpg",
-      "caption": "Epstein Island: Depot → barco · piso z6",
+      "caption": "Epstein Island: Depot → barco",
       "z": 6,
       "step": 1
     },
     {
       "file": "epstein-island/02-depot-barco.jpg",
-      "caption": "Epstein Island: Depot → barco · piso z7",
+      "caption": "Epstein Island: Depot → barco",
       "z": 7,
       "step": 2
     },
     {
       "file": "epstein-island/03-llegada-destino.jpg",
-      "caption": "Epstein Island: Llegada → destino · piso z7",
+      "caption": "Epstein Island: Llegada → destino",
       "z": 7,
       "step": 3
     },
     {
       "file": "epstein-island/04-llegada-destino.jpg",
-      "caption": "Epstein Island: Llegada → destino · piso z8",
+      "caption": "Epstein Island: Llegada → destino",
       "z": 8,
       "step": 4
     }
@@ -250,49 +250,49 @@
   "castillo-imperial": [
     {
       "file": "castillo-imperial/01-depot-destino.jpg",
-      "caption": "Castillo Imperial: Depot → destino · piso z6",
+      "caption": "Castillo Imperial: Depot → destino",
       "z": 6,
       "step": 1
     },
     {
       "file": "castillo-imperial/02-depot-destino.jpg",
-      "caption": "Castillo Imperial: Depot → destino · piso z7",
+      "caption": "Castillo Imperial: Depot → destino",
       "z": 7,
       "step": 2
     },
     {
       "file": "castillo-imperial/03-depot-destino.jpg",
-      "caption": "Castillo Imperial: Depot → destino · piso z6",
+      "caption": "Castillo Imperial: Depot → destino",
       "z": 6,
       "step": 3
     },
     {
       "file": "castillo-imperial/04-depot-destino.jpg",
-      "caption": "Castillo Imperial: Depot → destino · piso z7",
+      "caption": "Castillo Imperial: Depot → destino",
       "z": 7,
       "step": 4
     },
     {
       "file": "castillo-imperial/05-depot-destino.jpg",
-      "caption": "Castillo Imperial: Depot → destino · piso z6",
+      "caption": "Castillo Imperial: Depot → destino",
       "z": 6,
       "step": 5
     },
     {
       "file": "castillo-imperial/06-depot-destino.jpg",
-      "caption": "Castillo Imperial: Depot → destino · piso z5",
+      "caption": "Castillo Imperial: Depot → destino",
       "z": 5,
       "step": 6
     },
     {
       "file": "castillo-imperial/07-depot-destino.jpg",
-      "caption": "Castillo Imperial: Depot → destino · piso z4",
+      "caption": "Castillo Imperial: Depot → destino",
       "z": 4,
       "step": 7
     },
     {
       "file": "castillo-imperial/08-depot-destino.jpg",
-      "caption": "Castillo Imperial: Depot → destino · piso z3",
+      "caption": "Castillo Imperial: Depot → destino",
       "z": 3,
       "step": 8
     }
@@ -300,37 +300,37 @@
   "desierto-de-las-ruinas": [
     {
       "file": "desierto-de-las-ruinas/01-depot-destino.jpg",
-      "caption": "Desierto de las Ruinas: Depot → destino · piso z6",
+      "caption": "Desierto de las Ruinas: Depot → destino",
       "z": 6,
       "step": 1
     },
     {
       "file": "desierto-de-las-ruinas/02-depot-destino.jpg",
-      "caption": "Desierto de las Ruinas: Depot → destino · piso z7",
+      "caption": "Desierto de las Ruinas: Depot → destino",
       "z": 7,
       "step": 2
     },
     {
       "file": "desierto-de-las-ruinas/03-depot-destino.jpg",
-      "caption": "Desierto de las Ruinas: Depot → destino · piso z7",
+      "caption": "Desierto de las Ruinas: Depot → destino",
       "z": 7,
       "step": 3
     },
     {
       "file": "desierto-de-las-ruinas/04-depot-destino.jpg",
-      "caption": "Desierto de las Ruinas: Depot → destino · piso z7",
+      "caption": "Desierto de las Ruinas: Depot → destino",
       "z": 7,
       "step": 4
     },
     {
       "file": "desierto-de-las-ruinas/05-depot-destino.jpg",
-      "caption": "Desierto de las Ruinas: Depot → destino · piso z6",
+      "caption": "Desierto de las Ruinas: Depot → destino",
       "z": 6,
       "step": 5
     },
     {
       "file": "desierto-de-las-ruinas/06-depot-destino.jpg",
-      "caption": "Desierto de las Ruinas: Depot → destino · piso z7",
+      "caption": "Desierto de las Ruinas: Depot → destino",
       "z": 7,
       "step": 6
     }
@@ -338,13 +338,13 @@
   "islote-del-minotauro": [
     {
       "file": "islote-del-minotauro/01-depot-destino.jpg",
-      "caption": "Islote del Minotauro: Depot → destino · piso z6",
+      "caption": "Islote del Minotauro: Depot → destino",
       "z": 6,
       "step": 1
     },
     {
       "file": "islote-del-minotauro/02-depot-destino.jpg",
-      "caption": "Islote del Minotauro: Depot → destino · piso z7",
+      "caption": "Islote del Minotauro: Depot → destino",
       "z": 7,
       "step": 2
     }

@@ -26,9 +26,9 @@ estado: publicado
 
 ## Cómo se recorre
 
-1. Sal del depot a la ciudad, ve al muelle y cruza el puente de madera (`113, 56`) al islote.
+1. Sal del depot a la ciudad, ve al muelle y cruza el puente de madera al islote.
 2. Caza los minotauros del islote.
-3. Entra al portal de la cueva, en la punta oeste (`100, 53`). Junto a donde llegas hay un portal para volver al islote.
+3. Entra al portal de la cueva, en la punta oeste. Junto a donde llegas hay un portal para volver al islote.
 4. Al fondo de cada cueva hay una escalera que baja al piso siguiente.
 5. Al fondo del último piso, un portal te devuelve al islote.
 
@@ -41,13 +41,13 @@ estado: publicado
 
 Flechas rojas = camino. Fotos del mapa real, paso por paso.
 
-**Paso 1 · piso z6**
+**Paso 1**
 
-![Islote del Minotauro: Depot → destino · piso z6](/assets/wiki/routes/islote-del-minotauro/01-depot-destino.jpg)
+![Islote del Minotauro: Depot → destino](/assets/wiki/routes/islote-del-minotauro/01-depot-destino.jpg)
 
-**Paso 2 · piso z7**
+**Paso 2**
 
-![Islote del Minotauro: Depot → destino · piso z7](/assets/wiki/routes/islote-del-minotauro/02-depot-destino.jpg)
+![Islote del Minotauro: Depot → destino](/assets/wiki/routes/islote-del-minotauro/02-depot-destino.jpg)
 
 ## Relacionado
 

@@ -9,7 +9,7 @@ estado: publicado
 
 ## Lo esencial
 
-- Se entra por el portal **Reloj de Arena** en la plaza de portales del templo (`168, 47, piso 7`).
+- Se entra por el portal **Reloj de Arena** en la plaza de portales del templo.
 - Es **una sola sala** para todos: todos ven los mismos monstruos y el mismo reloj.
 - El ciclo siempre es igual: **30 s de descanso** y después **6 oleadas de 60 s**, cada una más fuerte.
 - Entra durante el descanso para empezar desde la oleada 1.
@@ -50,13 +50,13 @@ El ciclo completo dura 6 min 30 s y sigue corriendo aunque no haya nadie.
 
 Flechas rojas = camino. Fotos del mapa real, paso por paso.
 
-**Paso 1 · piso z6**
+**Paso 1**
 
-![Reloj de Arena: Depot → portal · piso z6](/assets/wiki/routes/reloj-de-arena/01-depot-portal.jpg)
+![Reloj de Arena: Depot → portal](/assets/wiki/routes/reloj-de-arena/01-depot-portal.jpg)
 
-**Paso 2 · piso z7**
+**Paso 2**
 
-![Reloj de Arena: Depot → portal · piso z7](/assets/wiki/routes/reloj-de-arena/02-depot-portal.jpg)
+![Reloj de Arena: Depot → portal](/assets/wiki/routes/reloj-de-arena/02-depot-portal.jpg)
 
 ## Relacionado
 

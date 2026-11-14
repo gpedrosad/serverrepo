@@ -20,8 +20,8 @@ estado: publicado
 ## Cómo llegar
 
 1. Sal del depot a la ciudad y camina al este.
-2. Pasa el túnel bajo la muralla (rampas en `186–190, y 63–65`).
-3. Llegas a la entrada del desierto (`198, 74, piso 7`); ahí hay un cartel con todas las zonas.
+2. Pasa el túnel bajo la muralla.
+3. Llegas a la entrada del desierto; ahí hay un cartel con todas las zonas.
 
 No hay barco: se llega caminando.
 
@@ -89,29 +89,29 @@ La escalera del oasis baja a las tumbas de siempre, con sus momias y faraones. E
 
 Flechas rojas = camino. Fotos del mapa real, paso por paso.
 
-**Paso 1 · piso z6**
+**Paso 1**
 
-![Desierto de las Ruinas: Depot → destino · piso z6](/assets/wiki/routes/desierto-de-las-ruinas/01-depot-destino.jpg)
+![Desierto de las Ruinas: Depot → destino](/assets/wiki/routes/desierto-de-las-ruinas/01-depot-destino.jpg)
 
-**Paso 2 · piso z7**
+**Paso 2**
 
-![Desierto de las Ruinas: Depot → destino · piso z7](/assets/wiki/routes/desierto-de-las-ruinas/02-depot-destino.jpg)
+![Desierto de las Ruinas: Depot → destino](/assets/wiki/routes/desierto-de-las-ruinas/02-depot-destino.jpg)
 
-**Paso 3 · piso z7**
+**Paso 3**
 
-![Desierto de las Ruinas: Depot → destino · piso z7](/assets/wiki/routes/desierto-de-las-ruinas/03-depot-destino.jpg)
+![Desierto de las Ruinas: Depot → destino](/assets/wiki/routes/desierto-de-las-ruinas/03-depot-destino.jpg)
 
-**Paso 4 · piso z7**
+**Paso 4**
 
-![Desierto de las Ruinas: Depot → destino · piso z7](/assets/wiki/routes/desierto-de-las-ruinas/04-depot-destino.jpg)
+![Desierto de las Ruinas: Depot → destino](/assets/wiki/routes/desierto-de-las-ruinas/04-depot-destino.jpg)
 
-**Paso 5 · piso z6**
+**Paso 5**
 
-![Desierto de las Ruinas: Depot → destino · piso z6](/assets/wiki/routes/desierto-de-las-ruinas/05-depot-destino.jpg)
+![Desierto de las Ruinas: Depot → destino](/assets/wiki/routes/desierto-de-las-ruinas/05-depot-destino.jpg)
 
-**Paso 6 · piso z7**
+**Paso 6**
 
-![Desierto de las Ruinas: Depot → destino · piso z7](/assets/wiki/routes/desierto-de-las-ruinas/06-depot-destino.jpg)
+![Desierto de las Ruinas: Depot → destino](/assets/wiki/routes/desierto-de-las-ruinas/06-depot-destino.jpg)
 
 ## Relacionado
 

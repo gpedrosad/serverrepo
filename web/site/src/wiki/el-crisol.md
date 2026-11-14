@@ -9,7 +9,7 @@ estado: publicado
 
 ## Lo esencial
 
-- Se entra por el portal **Crisol** en la plaza de portales del templo (`164, 47, piso 7`).
+- Se entra por el portal **Crisol** en la plaza de portales del templo.
 - Llegas a la **Sala del Crisol**, una zona protegida con 3 puertas: **Bronce**, **Plata** y **Oro**.
 - Cada día cambian los élites de Bronce y Plata y el **boss de Oro**.
 - El boss de Oro es el único que suelta su **arma exclusiva**.
@@ -90,13 +90,13 @@ Cada boss suelta solo la suya, cerca de **7%** de las veces (un poco más si ere
 
 Flechas rojas = camino. Fotos del mapa real, paso por paso.
 
-**Paso 1 · piso z6**
+**Paso 1**
 
-![El Crisol: Depot → portal · piso z6](/assets/wiki/routes/el-crisol/01-depot-portal.jpg)
+![El Crisol: Depot → portal](/assets/wiki/routes/el-crisol/01-depot-portal.jpg)
 
-**Paso 2 · piso z7**
+**Paso 2**
 
-![El Crisol: Depot → portal · piso z7](/assets/wiki/routes/el-crisol/02-depot-portal.jpg)
+![El Crisol: Depot → portal](/assets/wiki/routes/el-crisol/02-depot-portal.jpg)
 
 ## Relacionado
 

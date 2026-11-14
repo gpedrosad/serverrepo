@@ -9,7 +9,7 @@ estado: publicado
 
 ## Lo esencial
 
-- Los depots están en el **templo**: 11 lockers repartidos en 3 pisos.
+- Los depots están en el **templo**: 11 lockers repartidos en 3 plantas.
 - **Todos los lockers abren el mismo depot.** Lo que guardas en uno lo ves en cualquiera.
 - El depot es de cada personaje, no de la cuenta.
 - Lo que está en el depot **no se pierde al morir**.
@@ -23,13 +23,13 @@ estado: publicado
 
 ## Dónde están
 
-| Piso | Lockers | Ubicación |
+| Planta | Lockers | Ubicación |
 |---|---|---|
-| 6 (el del templo) | 4 | al sur de donde apareces, en la fila `127–133, 58` |
-| 5 (arriba) | 4 | misma fila, un piso más arriba |
-| 7 (abajo) | 3 | en `127, 53`, `127, 55` y `127, 57` |
+| La del templo | 4 | al sur de donde apareces, en la fila de lockers |
+| Un piso arriba | 4 | misma fila, un piso más arriba |
+| Un piso abajo | 3 | en la pared oeste, junto a la escalera |
 
-En el piso 6, a pocos pasos, también están el **Banker** y **Dark Rodo** (mochilas de runas).
+En la planta del templo, a pocos pasos, también están el **Banker** y **Dark Rodo** (mochilas de runas).
 
 ## Límite de espacio
 
@@ -43,13 +43,13 @@ Si el depot está lleno, al intentar guardar algo verás *You can not put more i
 
 Flechas rojas = camino. Fotos del mapa real, paso por paso.
 
-**Paso 1 · piso z6**
+**Paso 1**
 
-![Depot y plaza de portales: Depot → destino · piso z6](/assets/wiki/routes/templo-plaza/01-depot-destino.jpg)
+![Depot y plaza de portales: Depot → destino](/assets/wiki/routes/templo-plaza/01-depot-destino.jpg)
 
-**Paso 2 · piso z7**
+**Paso 2**
 
-![Depot y plaza de portales: Depot → destino · piso z7](/assets/wiki/routes/templo-plaza/02-depot-destino.jpg)
+![Depot y plaza de portales: Depot → destino](/assets/wiki/routes/templo-plaza/02-depot-destino.jpg)
 
 ## Relacionado
 
