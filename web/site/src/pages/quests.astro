@@ -1,0 +1,133 @@
+---
+import Base from '../layouts/Base.astro';
+import data from '../data/quests.json';
+
+const typeLabel = Object.fromEntries(data.groups.map((g) => [g.key, g.label]));
+const quests = [...data.quests].sort((a, b) => a.level_min - b.level_min || a.name.localeCompare(b.name));
+const proposals = [...data.proposals].sort((a, b) => a.order - b.order || a.name.localeCompare(b.name));
+const totalChests = quests.reduce((n, q) => n + (q.chests || 0), 0);
+const chestQuests = quests.filter((q) => q.type === 'cofre' || q.type === 'grupo').length;
+const systemQuests = quests.length - chestQuests;
+const typeCounts = Object.fromEntries(data.groups.map((g) => [g.key, quests.filter((q) => q.type === g.key).length]));
+const searchText = (q: (typeof quests)[number]) => `${q.name} ${q.where} ${q.reward} ${q.note} ${typeLabel[q.type] || ''}`.toLowerCase();
+---
+<Base lang="es" title="Quests — Retro76" path="/quests" description="Registro de todas las quests de Retro76: nivel recomendado, ubicación, recompensa y las quests que recomendamos crear." langSwitch={false}>
+  <section>
+    <h1 class="title">Quests</h1>
+    <p class="lede">Todas las quests y sistemas con recompensa del servidor: nivel recomendado, dónde se empiezan y qué dan. Al final, una lista de quests nuevas que recomendamos crear.</p>
+    <dl class="figures">
+      <div><dt>Existentes</dt><dd>{quests.length}</dd></div>
+      <div><dt>Cofres de quest</dt><dd>{totalChests}</dd></div>
+      <div><dt>Propuestas</dt><dd>{proposals.length}</dd></div>
+    </dl>
+    <p class="note" style="margin-top:1rem">Los niveles son <strong>recomendados</strong>, no requisitos. Las únicas exigencias reales son las puertas de <strong>Hell Quest</strong> (nivel 80 y 100) y la <strong>Arena PvP</strong> (nivel 25).</p>
+    <p class="muted small" style="margin-top:.6rem">{chestQuests} quests con cofre/grupo · {systemQuests} sistemas repetibles. Los niveles de las quests clásicas son estimados según los monstruos de la zona y la recompensa.</p>
+  </section>
+
+  <section>
+    <h2 class="label">Quests existentes <span class="aside">{quests.length} en total</span></h2>
+    <div class="filters" id="quest-filters" role="group" aria-label="Filtrar por tipo">
+      <button type="button" data-type="todos" aria-pressed="true">Todas <span class="faint">{quests.length}</span></button>
+      {data.groups.map((g) => (
+        <button type="button" data-type={g.key} aria-pressed="false">{g.label} <span class="faint">{typeCounts[g.key]}</span></button>
+      ))}
+    </div>
+    <div class="field" style="max-width:24rem;margin:.75rem 0">
+      <input type="search" id="quest-search" placeholder="Buscar quest, recompensa o zona…" autocomplete="off" aria-label="Buscar quest">
+    </div>
+    <div class="table-scroll">
+      <table class="quests-table" id="quests-table">
+        <thead>
+          <tr>
+            <th>Quest</th>
+            <th>Tipo</th>
+            <th class="n">Nivel</th>
+            <th>Dónde</th>
+            <th>Recompensa</th>
+            <th class="wide-only">Notas</th>
+          </tr>
+        </thead>
+        <tbody>
+          {quests.map((q) => (
+            <tr data-type={q.type} data-name={searchText(q)}>
+              <td><strong>{q.name}</strong></td>
+              <td><span class={`quest-type ${q.type}`}>{typeLabel[q.type] || q.type}</span></td>
+              <td class="n"><strong>{q.level_label}</strong><span class="quest-players">{q.players} jug.</span></td>
+              <td class="muted">{q.where}</td>
+              <td class="reward">{q.reward}</td>
+              <td class="muted wide-only">{q.note}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="empty hidden" id="quests-empty">Ninguna quest coincide con el filtro.</p>
+  </section>
+
+  <section>
+    <h2 class="label">Recomendadas para crear <span class="aside">{proposals.length} propuestas</span></h2>
+    <p class="muted">Ideas para cubrir huecos de nivel y reusar contenido que ya existe. Son propuestas, no están en el juego.</p>
+    <div class="table-scroll">
+      <table class="quests-table proposals-table">
+        <thead>
+          <tr>
+            <th>Quest</th>
+            <th class="n">Nivel</th>
+            <th>Jugadores</th>
+            <th>Recompensa</th>
+            <th>Por qué</th>
+          </tr>
+        </thead>
+        <tbody>
+          {proposals.map((q) => (
+            <tr>
+              <td><strong>{q.name}</strong><span class="proposal-tag">Propuesta</span><span class="quest-where">{q.where}</span></td>
+              <td class="n"><strong>{q.level_label}</strong></td>
+              <td class="muted">{q.players}</td>
+              <td class="reward">{q.reward}</td>
+              <td class="why">{q.why}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="label">Guías relacionadas</h2>
+    <p class="muted">
+      <a href="/wiki/hell-quest">Hell Quest</a> · <a href="/wiki/castillo-imperial">Castillo Imperial</a> ·
+      <a href="/wiki/desierto-de-las-ruinas">Desierto de las Ruinas</a> · <a href="/wiki/isla-del-hielo-eterno">Isla del Hielo</a> ·
+      <a href="/wiki/wave-arena">Wave Arena</a> · <a href="/wiki/reloj-de-arena">Reloj de Arena</a> ·
+      <a href="/wiki/el-crisol">El Crisol</a> · <a href="/wiki/tarea-diaria">Daily Task</a>
+    </p>
+  </section>
+</Base>
+
+<script>
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('#quest-filters button')];
+  const rows = [...document.querySelectorAll<HTMLTableRowElement>('#quests-table tbody tr')];
+  const search = document.getElementById('quest-search') as HTMLInputElement;
+  const empty = document.getElementById('quests-empty') as HTMLParagraphElement;
+  let type = 'todos';
+
+  const apply = () => {
+    const q = search.value.trim().toLowerCase();
+    let shown = 0;
+    for (const row of rows) {
+      const ok = (type === 'todos' || row.dataset.type === type) && (!q || (row.dataset.name || '').includes(q));
+      row.hidden = !ok;
+      if (ok) shown++;
+    }
+    empty.classList.toggle('hidden', shown > 0);
+  };
+
+  for (const button of buttons) {
+    button.addEventListener('click', () => {
+      type = button.dataset.type || 'todos';
+      for (const b of buttons) b.setAttribute('aria-pressed', String(b === button));
+      apply();
+    });
+  }
+  search.addEventListener('input', apply);
+</script>

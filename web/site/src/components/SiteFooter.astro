@@ -11,12 +11,12 @@ const F = T.footer;
 
 // Ítems con dibujo en web/assets/wiki/items (server id). Los de la punta se ocultan en pantallas chicas.
 const RELICS = [2268, 20113, 2392, 2493, 2472, 2498, 2520, 2495, 2195, 20123, 2432, 2492, 20112, 2154];
-const href = (p: string) => (p.startsWith('/wiki') || p === '/items-nuevos' ? p : localePath(lang, p));
+const href = (p: string) => (p.startsWith('/wiki') || p === '/items-nuevos' || p === '/quests' ? p : localePath(lang, p));
 const COLS = [
   { title: F.play, links: ['/cuenta', '/cliente', '/premium', '/bugs'].map((p) => [href(p), T.nav[p as keyof typeof T.nav]]) },
   { title: F.community, links: ['/', '/top', '/power', '/pk', '/muertes'].map((p) => [href(p), T.nav[p as keyof typeof T.nav]]) },
   { title: F.guide, links: [['/wiki/novedades', F.news], ['/wiki', T.nav['/wiki']], [href('/items-nuevos'), T.nav['/items-nuevos']],
-    [href('/reglas'), T.nav['/reglas']], [href('/info'), T.nav['/info']], [href('/spells'), T.nav['/spells']]] },
+    [href('/quests'), T.nav['/quests']], [href('/reglas'), T.nav['/reglas']], [href('/info'), T.nav['/info']], [href('/spells'), T.nav['/spells']]] },
 ];
 const year = new Date().getFullYear();
 ---

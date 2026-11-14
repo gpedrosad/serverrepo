@@ -1,0 +1,472 @@
+{
+  "groups": [
+    {
+      "key": "cofre",
+      "label": "Cofre"
+    },
+    {
+      "key": "grupo",
+      "label": "Grupo"
+    },
+    {
+      "key": "arena",
+      "label": "Arena"
+    },
+    {
+      "key": "diaria",
+      "label": "Diaria"
+    }
+  ],
+  "quests": [
+    {
+      "id": "annihilator",
+      "name": "Annihilator",
+      "type": "grupo",
+      "level_label": "100-130",
+      "level_min": 100,
+      "players": "4",
+      "where": "Sala del Annihilator (194,118,9)",
+      "reward": "Demon Armor, Sword of Valor, Stonecutter's Axe o Thunder Hammer (uno por personaje)",
+      "note": "Clásica de 4 jugadores; cada uno elige un cofre.",
+      "chests": 4
+    },
+    {
+      "id": "pharaoh",
+      "name": "Pharaoh Quest",
+      "type": "grupo",
+      "level_label": "80-100",
+      "level_min": 80,
+      "players": "2-4",
+      "where": "Tumbas del desierto (205-209,166,9)",
+      "reward": "Dragon Lance, War Hammer o Giant Sword (uno por personaje)",
+      "note": "Cada personaje elige un cofre.",
+      "chests": 3
+    },
+    {
+      "id": "imperial",
+      "name": "Castillo Imperial",
+      "type": "cofre",
+      "level_label": "60-80",
+      "level_min": 60,
+      "players": "1-4",
+      "where": "Castillo Imperial, tesorería z3 (97/103,28,3)",
+      "reward": "Crown Legs y Royal Helmet",
+      "note": "6 pisos; el jefe está en z3.",
+      "chests": 2
+    },
+    {
+      "id": "hell",
+      "name": "Hell Quest",
+      "type": "grupo",
+      "level_label": "100-130",
+      "level_min": 100,
+      "players": "1-7",
+      "where": "Isla del Infierno, Cámara de la Elección z9",
+      "reward": "Demon Helmet, Magic Plate Armor, Boots of Haste o Demon Shield (uno por personaje)",
+      "note": "Puertas de nivel 80 y 100; boss Ashen Lord.",
+      "chests": 4
+    },
+    {
+      "id": "gauntlet",
+      "name": "TP Gauntlet",
+      "type": "grupo",
+      "level_label": "80-100",
+      "level_min": 80,
+      "players": "1-4",
+      "where": "Gauntlet, sala final (450,77/79,7)",
+      "reward": "Demon Armor y Fury Cape",
+      "note": "40 salas puzzle + Wrath; se llega en barco.",
+      "chests": 2
+    },
+    {
+      "id": "frozen-lumberjack",
+      "name": "Isla del Hielo: cofre del leñador",
+      "type": "cofre",
+      "level_label": "25-45",
+      "level_min": 25,
+      "players": "1",
+      "where": "Isla del Hielo, bosque nevado (373,95,7)",
+      "reward": "Crystal Coin",
+      "note": "Desvío al oeste del sendero.",
+      "chests": 1
+    },
+    {
+      "id": "frozen-yeti",
+      "name": "Isla del Hielo: tesoro del Yeti",
+      "type": "cofre",
+      "level_label": "40-60",
+      "level_min": 40,
+      "players": "1",
+      "where": "Isla del Hielo, islote del Yeti (369,63,7)",
+      "reward": "Frozen Starlight",
+      "note": "Cofre en el islote, tras el paso de hielo.",
+      "chests": 1
+    },
+    {
+      "id": "frozen-lair",
+      "name": "Isla del Hielo: guarida",
+      "type": "grupo",
+      "level_label": "70-90",
+      "level_min": 70,
+      "players": "1-4",
+      "where": "Isla del Hielo, guarida z9 (393/397,17,9)",
+      "reward": "Crimson Wand y Crimson Helmet",
+      "note": "Cámara del tesoro; Frost Dragons e Ice Spiders.",
+      "chests": 2
+    },
+    {
+      "id": "desert-lizard",
+      "name": "Desierto: Templo de los lagartos",
+      "type": "cofre",
+      "level_label": "40-70",
+      "level_min": 40,
+      "players": "1-2",
+      "where": "Desierto, Templo de los lagartos (242,78,7)",
+      "reward": "Knight Armor",
+      "note": "Zona de lizard sentinels/templars.",
+      "chests": 1
+    },
+    {
+      "id": "desert-bone",
+      "name": "Desierto: Campo de huesos",
+      "type": "cofre",
+      "level_label": "45-80",
+      "level_min": 45,
+      "players": "1-2",
+      "where": "Desierto, Campo de huesos (257,114,7)",
+      "reward": "Vampire Shield",
+      "note": "Al este del jefe Omruc.",
+      "chests": 1
+    },
+    {
+      "id": "fire-cave",
+      "name": "Cueva de Fuego (3 cofres)",
+      "type": "cofre",
+      "level_label": "30-50",
+      "level_min": 30,
+      "players": "1",
+      "where": "Cueva de fuego (106,63-67,4)",
+      "reward": "Dragon Hammer, Fire Axe y Fire Sword",
+      "note": "Tres cofres; cada uno se abre una vez por personaje.",
+      "chests": 3
+    },
+    {
+      "id": "boh",
+      "name": "Boots of Haste",
+      "type": "cofre",
+      "level_label": "60-80",
+      "level_min": 60,
+      "players": "1",
+      "where": "Torre/cueva (128,62,6/7)",
+      "reward": "Boots of Haste y Blue Robe",
+      "note": "Dos cofres en pisos distintos.",
+      "chests": 2
+    },
+    {
+      "id": "guardian-halberd",
+      "name": "Guardian Halberd",
+      "type": "cofre",
+      "level_label": "30-45",
+      "level_min": 30,
+      "players": "1",
+      "where": "Campamento orco (139,141,6)",
+      "reward": "Guardian Halberd",
+      "note": "Zona de orcs.",
+      "chests": 1
+    },
+    {
+      "id": "crusader-helmet",
+      "name": "Crusader Helmet",
+      "type": "cofre",
+      "level_label": "30-50",
+      "level_min": 30,
+      "players": "1",
+      "where": "Costa/piratas (203,40,7)",
+      "reward": "Crusader Helmet",
+      "note": "Cerca de piratas.",
+      "chests": 1
+    },
+    {
+      "id": "lady-helmet",
+      "name": "Lady Helmet",
+      "type": "cofre",
+      "level_label": "40-60",
+      "level_min": 40,
+      "players": "1",
+      "where": "Zona helada (242,22,8)",
+      "reward": "Lady Helmet",
+      "note": "Cerca de yetis.",
+      "chests": 1
+    },
+    {
+      "id": "steel-boots",
+      "name": "Steel Boots",
+      "type": "cofre",
+      "level_label": "80-100",
+      "level_min": 80,
+      "players": "1-2",
+      "where": "Cueva de demonios (217,72,8)",
+      "reward": "Steel Boots",
+      "note": "Demons y fire elementals.",
+      "chests": 1
+    },
+    {
+      "id": "knight-legs",
+      "name": "Knight Legs",
+      "type": "cofre",
+      "level_label": "30-50",
+      "level_min": 30,
+      "players": "1",
+      "where": "Cripta/dungeon (89,80,8)",
+      "reward": "Knight Legs",
+      "note": "Demon skeletons y rotworms.",
+      "chests": 1
+    },
+    {
+      "id": "ancients-a",
+      "name": "Helmet of the Ancients (tumba)",
+      "type": "cofre",
+      "level_label": "60-80",
+      "level_min": 60,
+      "players": "1-2",
+      "where": "Tumba (214,148,8)",
+      "reward": "Helmet of the Ancients",
+      "note": "Ancient scarabs, lich y marid.",
+      "chests": 1
+    },
+    {
+      "id": "ancients-b",
+      "name": "Helmet of the Ancients (cripta)",
+      "type": "cofre",
+      "level_label": "60-80",
+      "level_min": 60,
+      "players": "1-2",
+      "where": "Cripta (231,126,9)",
+      "reward": "Helmet of the Ancients",
+      "note": "Ghosts, lich y vampire.",
+      "chests": 1
+    },
+    {
+      "id": "shield-honour",
+      "name": "Shield of Honour",
+      "type": "cofre",
+      "level_label": "80-100",
+      "level_min": 80,
+      "players": "1-2",
+      "where": "Guarida de hydra (228,198,8)",
+      "reward": "Shield of Honour",
+      "note": "Hydra.",
+      "chests": 1
+    },
+    {
+      "id": "dark-shield",
+      "name": "Dark Shield (2 cofres)",
+      "type": "cofre",
+      "level_label": "20-35",
+      "level_min": 20,
+      "players": "1",
+      "where": "Dungeon de minotauros (156,42/43,9)",
+      "reward": "Brass Legs y Dark Shield",
+      "note": "Dos cofres.",
+      "chests": 2
+    },
+    {
+      "id": "giant-sword",
+      "name": "Giant Sword",
+      "type": "cofre",
+      "level_label": "90-110",
+      "level_min": 90,
+      "players": "1-3",
+      "where": "Cueva de behemoths (182,117,9)",
+      "reward": "Giant Sword",
+      "note": "Behemoth, demon y fire elemental.",
+      "chests": 1
+    },
+    {
+      "id": "bright-sword",
+      "name": "Bright Sword",
+      "type": "cofre",
+      "level_label": "40-60",
+      "level_min": 40,
+      "players": "1",
+      "where": "Cripta (145,136,9)",
+      "reward": "Bright Sword",
+      "note": "Fire devil, necromancer y priestess.",
+      "chests": 1
+    },
+    {
+      "id": "golden-armor",
+      "name": "Golden Armor",
+      "type": "cofre",
+      "level_label": "50-70",
+      "level_min": 50,
+      "players": "1-2",
+      "where": "Fortaleza orca (162,152,9)",
+      "reward": "Golden Armor",
+      "note": "Orc warlord.",
+      "chests": 1
+    },
+    {
+      "id": "amazon-shield",
+      "name": "Amazon Shield",
+      "type": "cofre",
+      "level_label": "50-70",
+      "level_min": 50,
+      "players": "1",
+      "where": "Cueva (73,93,10)",
+      "reward": "Amazon Shield",
+      "note": "Banshee, dwarf geomancer y dwarf guard.",
+      "chests": 1
+    },
+    {
+      "id": "pvp-arena",
+      "name": "Arena PvP",
+      "type": "arena",
+      "level_label": "25+",
+      "level_min": 25,
+      "players": "2",
+      "where": "Arena PvP (119,35,9)",
+      "reward": "Duelo; sin recompensa fija",
+      "note": "Palanca 7001; ambos nivel 25+.",
+      "chests": 0
+    },
+    {
+      "id": "daily-task",
+      "name": "Daily Task (Huntmaster)",
+      "type": "diaria",
+      "level_label": "8-100+",
+      "level_min": 8,
+      "players": "1",
+      "where": "Templo, Huntmaster (138,53,6)",
+      "reward": "Oro o exp según bracket; racha hasta +50%",
+      "note": "1 contrato por personaje por día.",
+      "chests": 0
+    },
+    {
+      "id": "wave-arena",
+      "name": "Wave Arena",
+      "type": "arena",
+      "level_label": "40-100",
+      "level_min": 40,
+      "players": "1-7",
+      "where": "Claro de la Selva (portal templo 166,47,7)",
+      "reward": "5/15/30 platinum y 1 crystal al limpiar 5/10/15/20",
+      "note": "20 oleadas; premio semanal.",
+      "chests": 0
+    },
+    {
+      "id": "sand-clock",
+      "name": "Reloj de Arena",
+      "type": "arena",
+      "level_label": "40-100",
+      "level_min": 40,
+      "players": "1-7",
+      "where": "Reloj de Arena (portal templo 168,47,7)",
+      "reward": "Exp y loot de las oleadas",
+      "note": "6 oleadas cada 6:30; entra en el descanso.",
+      "chests": 0
+    },
+    {
+      "id": "crucible",
+      "name": "El Crisol",
+      "type": "arena",
+      "level_label": "50-100",
+      "level_min": 50,
+      "players": "1-7",
+      "where": "El Crisol (portal templo 164,47,7)",
+      "reward": "Rare de Oro (arma Zagan) y loot del boss",
+      "note": "Bronce 50+, Plata 70+, Oro 90+ según el boss del día.",
+      "chests": 0
+    }
+  ],
+  "proposals": [
+    {
+      "id": "pits-of-inferno",
+      "name": "Pits of Inferno",
+      "level_label": "100-130",
+      "level_min": 100,
+      "players": "4-6",
+      "where": "Inframundo, bajo el Hell Quest",
+      "reward": "Elegís una: Avenger, Arcane Staff o Arbalest + loot de demons",
+      "why": "Es la quest que falta para las armas 8.x, que hoy solo salen por GM. Ya está documentada como pendiente.",
+      "order": 1
+    },
+    {
+      "id": "faro-contrabandistas",
+      "name": "El Faro de los Contrabandistas",
+      "level_label": "20-35",
+      "level_min": 20,
+      "players": "1",
+      "where": "Faro y cueva al sur del puerto",
+      "reward": "Serpent Sword + 1.000 gp",
+      "why": "Cubre el hueco de quests para nivel 20-35 y reusa los piratas que ya están en el mapa.",
+      "order": 2
+    },
+    {
+      "id": "minas-enanos",
+      "name": "Las Minas de los Enanos",
+      "level_label": "45-65",
+      "level_min": 45,
+      "players": "1-2",
+      "where": "Minas bajo la montaña, al norte",
+      "reward": "Dwarven Axe o War Axe + 5.000 gp",
+      "why": "Da contenido de enanos y una recompensa media que hoy no tiene quest propia.",
+      "order": 3
+    },
+    {
+      "id": "cripta-reyes",
+      "name": "La Cripta de los Reyes",
+      "level_label": "55-70",
+      "level_min": 55,
+      "players": "1",
+      "where": "Cripta undead bajo la ciudad",
+      "reward": "Crown Armor + Crown Legs",
+      "why": "Puente entre Knight Legs y las armaduras de nivel alto; los undead y la cripta ya existen.",
+      "order": 4
+    },
+    {
+      "id": "templo-sumergido",
+      "name": "El Templo Sumergido",
+      "level_label": "70-90",
+      "level_min": 70,
+      "players": "2-4",
+      "where": "Templo bajo el agua, junto a la Isla del Hielo",
+      "reward": "Magic Plate Armor o Sapphire Crown Armor",
+      "why": "Aprovecha las criaturas 8.6 nuevas (quaras, elementales) y da contenido de grupo.",
+      "order": 5
+    },
+    {
+      "id": "forja-titanes",
+      "name": "La Forja de los Titanes",
+      "level_label": "90-110",
+      "level_min": 90,
+      "players": "2-4",
+      "where": "Forja de fuego, al este del Hell Quest",
+      "reward": "Demon Shield + 20.000 gp",
+      "why": "Contenido de fuego de alto nivel; hoy el Hell Quest es la única quest de ese palo.",
+      "order": 6
+    },
+    {
+      "id": "expedicion-desierto",
+      "name": "Expedición semanal: Cazadores del Desierto",
+      "level_label": "60-100",
+      "level_min": 60,
+      "players": "1-4",
+      "where": "Las 9 zonas del Desierto de las Ruinas",
+      "reward": "Gemas + exp; ranking semanal",
+      "why": "Contenido repetible para grupos; el desierto ya tiene zonas, jefes y cofres.",
+      "order": 7
+    },
+    {
+      "id": "arena-jefes",
+      "name": "Arena de Jefes",
+      "level_label": "100-130",
+      "level_min": 100,
+      "players": "2-4",
+      "where": "Arena nueva en la plaza del templo",
+      "reward": "Rare loot de los jefes + ranking semanal",
+      "why": "Da un objetivo de fin de semana y reusa los jefes que ya existen.",
+      "order": 8
+    }
+  ]
+}

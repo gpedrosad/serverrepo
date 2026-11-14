@@ -54,9 +54,9 @@ PORT = int(os.environ.get("PORT", "8080"))
 DIST_DIR = Path(__file__).resolve().parent / "dist"
 INDEX = DIST_DIR / "index.html"
 CHARACTER_PAGE = DIST_DIR / "character.html"
-SITE_PAGES = ("top", "power", "pk", "muertes", "gemas", "items-nuevos", "spells", "reglas", "info", "cuenta", "cliente", "premium", "bugs")
+SITE_PAGES = ("top", "power", "pk", "muertes", "gemas", "items-nuevos", "quests", "spells", "reglas", "info", "cuenta", "cliente", "premium", "bugs")
 # Páginas que solo existen en español (no hay /en/...).
-ES_ONLY_PAGES = frozenset({"items-nuevos"})
+ES_ONLY_PAGES = frozenset({"items-nuevos", "quests"})
 CHARACTER_PAGE_EN = DIST_DIR / "en" / "character.html"
 WIKI_SLUG = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")  # /wiki/<slug> -> dist/wiki/<slug>.html
 

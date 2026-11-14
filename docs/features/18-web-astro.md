@@ -20,6 +20,7 @@ compilado y JavaScript solo donde hay datos en vivo. Las APIs de `web/server.py`
 | `/top`, `/power`, `/pk`, `/muertes` | `pages/*.astro` | `/api/data` |
 | `/gemas` | `pages/gemas.astro` | **Al compilar**, desde `web/data/gem-drops.json` (HTML puro; el buscador es JS chico) |
 | `/items-nuevos` | `pages/items-nuevos.astro` | **Al compilar**, desde `src/data/new-items.json` (generado por `scripts/web/build-new-items.py`; stats del OTB). Solo español |
+| `/quests` | `pages/quests.astro` | **Al compilar**, desde `src/data/quests.json` (registro manual de quests y propuestas). Solo español |
 | `/spells`, `/reglas`, `/info` | `pages/*.astro` | `/api/data` (spells, OTINFO) |
 | `/cuenta`, `/bugs` | `pages/*.astro` | Formularios a `/api/create-account` y `/api/bug-report` (mismo contrato) |
 | `/premium` | `pages/premium.astro` | `/api/premium-config` y `/api/premium-order` |
@@ -89,6 +90,20 @@ peso), efecto y dónde se consigue. Es **solo en español**, como la wiki: desde
   `python3 scripts/web/build-new-items.py`.
 - **Servidor:** `items-nuevos` está en `SITE_PAGES` y en `ES_ONLY_PAGES` de `web/server.py`
   (el sitemap no genera `/en/items-nuevos`).
+
+## Quests
+
+`/quests` es el registro público de todas las quests y sistemas con recompensa, con nivel recomendado,
+ubicación, recompensa y notas. También lista **propuestas** de quests nuevas con su nivel. Es solo en
+español, como la wiki y los items nuevos.
+
+- **Datos:** `web/site/src/data/quests.json` (manual). Cada quest tiene `type` (`cofre`, `grupo`,
+  `arena`, `diaria`), `level_label`, `level_min`, `players`, `where`, `reward`, `note` y, si aplica,
+  `chests`. Las propuestas van en `proposals` con `why`.
+- **Mantenimiento:** al agregar una quest al mapa, sumarla al JSON y actualizar los contadores de la
+  página. Los niveles de las quests clásicas son estimados según monstruos y recompensa; las puertas
+  reales de nivel son las de Hell Quest (80/100) y Arena PvP (25).
+- **Servidor:** `quests` está en `SITE_PAGES` y `ES_ONLY_PAGES` de `web/server.py`.
 
 ## Diseño
 

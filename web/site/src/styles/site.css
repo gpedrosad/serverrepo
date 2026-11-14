@@ -319,3 +319,22 @@ body:not(:has(.site-foot)) .wrap { padding-bottom: 4rem; }
 .items-table td.effect-cell { min-width: 17rem; }
 .items-table .item-name { display: flex; flex-direction: column; min-width: 9rem; }
 .items-table .source { display: block; color: var(--faint); font-size: 12px; margin-top: 0.12rem; }
+
+/* ---------- quests (pages/quests.astro) ---------- */
+.quests-table td { vertical-align: top; }
+.quests-table .quest-type {
+  display: inline-block; font-size: 11px; line-height: 1; padding: 0.25rem 0.35rem;
+  border: 1px solid var(--rule-strong); border-radius: 3px; color: var(--muted); white-space: nowrap;
+}
+.quests-table .quest-type.grupo { border-color: rgba(224, 170, 72, 0.45); color: var(--accent); }
+.quests-table .quest-type.cofre { border-color: rgba(143, 191, 106, 0.4); color: var(--good); }
+.quests-table .quest-type.arena { border-color: rgba(224, 122, 106, 0.4); color: var(--bad); }
+.quests-table .quest-type.diaria { border-color: rgba(156, 152, 143, 0.45); color: var(--fg); }
+.quests-table .quest-players { display: block; color: var(--faint); font-size: 12px; margin-top: 0.1rem; }
+.quests-table .reward { color: var(--muted); min-width: 14rem; }
+.quests-table .why { color: var(--muted); min-width: 18rem; }
+.proposal-tag {
+  display: inline-block; margin-left: 0.45rem; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--accent); border: 1px solid rgba(224, 170, 72, 0.45); border-radius: 3px; padding: 0.15rem 0.3rem;
+}
+.quest-where { display: block; color: var(--faint); font-size: 12px; margin-top: 0.2rem; min-width: 12rem; }
