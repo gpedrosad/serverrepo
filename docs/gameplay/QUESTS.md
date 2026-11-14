@@ -72,6 +72,8 @@ Estos items no salen de ningún monstruo y todavía no tienen una fuente clara:
 | enchanted spear | Solo GM | El Templo Sumergido | 70–90 |
 | train wand | Sin forma de conseguirlo | La Biblioteca Perdida | 35–55 |
 
+No se listan los objetos de sistema que se entregan por tienda o premium (runas consumibles, trainer dummy, scrolls, accesorios dorados) ni los que ya tienen cofre/quest.
+
 La página `/quests` muestra el ícono de cada recompensa (desde `web/assets/wiki/items/<id>.png`) y
 esta lista de pendientes. Para regenerar los íconos: `python3 scripts/web/build-wiki-icons.py`
 (también lee `reward_ids` y `pending_items` de `quests.json`).
