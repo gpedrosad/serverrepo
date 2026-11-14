@@ -71,6 +71,10 @@ Monstruos con prefijo de furia (`angry`, `furious`, `enraged`) tienen multiplica
 | furious | ×2.40 |
 | enraged | ×3.20 |
 
+> **Atención (nov 2026):** el multiplicador está implementado pero **no se aplica**: `getRageGemChancePercent()`
+> compara contra `"furious "`/`"enraged "` en minúsculas y `MonsterType::name` viene del XML en Title Case
+> (`"Furious Dragon"`). Las chances efectivas son las del XML. Ver `docs/gameplay/RAGE_MONSTERS.md`.
+
 Los **rage trolls** (`angry/furious/enraged troll`) tienen además un fallback: si el cadáver no tiene ninguna gema pequeña, se añade una aleatoria.
 
 Las gemas grandes (yellow, violet, big ruby, big emerald, blue gem, etc.) pueden dropear directamente desde el loot XML de ciertos monstruos/jefes; `game.cpp` → `isRareLootItem` solo las resalta en el aviso de loot.
