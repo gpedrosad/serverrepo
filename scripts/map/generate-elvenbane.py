@@ -67,7 +67,9 @@ ROCKS, ROCKS_EDGE_N, ROCKS_EDGE_W = 4566, 906, 903
 DIRT, DIRT_ALT = 351, 352
 ROCK = 101
 WALL_V, WALL_H, WALL_POST, WALL_CORNER = 1049, 1050, 1051, 1053
-STAIRS_UP, STAIR_DOWN = 1385, 432
+# escalera de madera (palo) 1396: mismas flags que 1385 (floorChangeNorth) y ya está en
+# STAIRS_LANDING de teleport.lua, así que el aterrizaje sigue siendo (x, y+1)
+STAIRS_UP, STAIR_DOWN = 1396, 432
 TELEPORT, ATTR_TELE_DEST, SIGN = 1387, 8, 1429
 TREE_BIG, TREE_SMALL = 4009, 2768
 BUSHES = (2767, 2786)
@@ -152,7 +154,7 @@ HUNTS = {
 GAP = 3                                # separación mínima entre centros de spawn
 
 # --- escaleras: (etiqueta, piso de arriba, piso de abajo, (x, y) deseado) -------------------------
-# El hueco 432 va arriba y la escalera 1385 abajo, en la misma casilla. Al subir se llega a
+# El hueco 432 va arriba y la escalera de madera 1396 abajo, en la misma casilla. Al subir se llega a
 # (x, y-1) del piso de arriba; al bajar, a (x, y+1) del de abajo (docs/gameplay/STAIRS.md).
 LINKS = [
     ("entrada", Z7, Z8, STAIR_ENTRY),
