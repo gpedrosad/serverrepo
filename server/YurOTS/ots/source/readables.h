@@ -20,12 +20,18 @@
 
 #ifndef READABLES_H
 #define READABLES_H
+#include <string>
 class Game;
 
 class Readables
 {
 public:
 	static bool Load(Game* game);
+	// Texto que los jugadores escriben en scrolls/cartas/libros del piso del mapa. El mapa se carga
+	// siempre del .otbm, así que ese texto se guarda aparte en data/scrolltexts.xml, por posición.
+	// Lo que está en el inventario o en un container ya persiste con el player (Item::serialize).
+	static bool LoadScrollTexts(Game* game);
+	static bool SaveScrollText(int x, int y, int z, const std::string& text);
 };
 
 #endif //READABLES_H

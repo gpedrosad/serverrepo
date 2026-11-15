@@ -732,6 +732,12 @@ int main(int argc, char *argv[])
 	}
 	std::cout << "[done]" << std::endl;
 
+	std::cout << ":: Loading scrolltexts.xml...       ";
+	if (!Readables::LoadScrollTexts(&g_game))
+		std::cout << "[ignored: bad root]" << std::endl;
+	else
+		std::cout << "[done]" << std::endl;
+
 	if (g_config.getGlobalNumber("autosave") > 0)
 		g_game.addEvent(makeTask(g_config.getGlobalNumber("autosave")*60000, std::mem_fun(&Game::autoServerSave)));
 	else

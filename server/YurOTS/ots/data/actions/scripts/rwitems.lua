@@ -41,17 +41,16 @@ function onUse(cid, item, frompos, item2, topos)
 		return tryClaimTrainingBonus(cid)
 	end
 
-	rw = getItemRWInfo(item.uid)
-	if rw and 1 then
-		if rw and 2 then
-			doShowTextWindow(item.uid, 100, 1)
-		else
-			doShowTextWindow(item.uid, 0, 0)
-		end
-	else
-		if item.itemid == 2598 then
-			doShowTextWindow(item.uid, 0, 0)
-		end
+	-- getItemRWInfo: bit 1 = se puede leer, bit 2 = se puede escribir. (Antes usaba "rw and 1",
+	-- que en Lua siempre es verdadero, y abría como editables hasta los libros de solo lectura.)
+	local rw = getItemRWInfo(item.uid) or 0
+	if rw < 0 then
+		rw = 0
+	end
+	if math.floor(rw / 2) % 2 == 1 then
+		doShowTextWindow(item.uid, 100, 1)
+	elseif rw % 2 == 1 or item.itemid == 2598 then
+		doShowTextWindow(item.uid, 0, 0)
 	end
 
 	return 1

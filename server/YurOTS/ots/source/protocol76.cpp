@@ -45,6 +45,7 @@
 #include "otsystem.h"
 #include "actions.h"
 #include "game.h"
+#include "readables.h"
 #include "ioplayer.h"
 
 extern LuaScript g_config;
@@ -1343,21 +1344,29 @@ void Protocol76::parseTextWindow(NetworkMessage &msg)
 {
 	unsigned long id = msg.GetU32();
 	std::string new_text = msg.GetString();
-	if(readItem && windowTextID == id){
-		sendTextMessage(MSG_SMALLINFO, "Write not working yet.");
-		//move to Game, and use gameLock
-		/*//TODO: check that the item is in
-		//an accesible place for the player
-		unsigned short itemid = readItem->getID();
-		readItem->setText(new_text);
-		if(readItem->getID() != id){
-		//TODO:update the item in the clients.
-		//Can be done when find a method to get
-		// items position its pointer.
-	}*/
-		readItem->releaseThing();
-		readItem = NULL;
+	if(!readItem)
+		return;
+
+	OTSYS_THREAD_LOCK_CLASS lockClass(game->gameLock, "Protocol76::parseTextWindow()");
+	// Solo la ventana abierta más recién y solo ítems escribibles según el items.otb: un cliente
+	// modificado podría mandar texto para un libro de solo lectura.
+	if(windowTextID == id && !readItem->isRemoved && (readItem->getRWInfo() & CAN_BE_WRITTEN)){
+		if(new_text.size() > 255)	// el cliente manda como máximo el maxlen (100); cap defensivo
+			new_text.resize(255);
+		std::string clean;	// XML 1.0: sin caracteres de control salvo el salto de línea
+		for(size_t i = 0; i < new_text.size(); i++){
+			unsigned char c = (unsigned char)new_text[i];
+			if(c >= 0x20 || c == '\n')
+				clean += (char)c;
+		}
+		readItem->setText(clean);
+		// pos.x == 0xFFFF: inventario/container/depot, ya persiste con el player. Si está en el piso,
+		// el mapa se recarga del .otbm al reiniciar: se guarda aparte.
+		if(readItem->pos.x != 0xFFFF)
+			Readables::SaveScrollText(readItem->pos.x, readItem->pos.y, readItem->pos.z, clean);
 	}
+	readItem->releaseThing();
+	readItem = NULL;
 }
 
 void Protocol76::parseRequestTrade(NetworkMessage &msg)
@@ -2463,6 +2472,10 @@ void Protocol76::sendTextWindow(Item* item,const unsigned short maxlen, const bo
 	msg.AddU32(windowTextID);
 
 	msg.AddItemId(item);
+	if(readItem){	// una ventana anterior sin respuesta: soltar su referencia
+		readItem->releaseThing();
+		readItem = NULL;
+	}
 	if(canWrite){
 		msg.AddU16(maxlen);
 		msg.AddString(item->getText());

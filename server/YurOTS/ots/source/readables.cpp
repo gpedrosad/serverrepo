@@ -22,6 +22,8 @@
 #include "luascript.h"
 #include <libxml/xmlmemory.h>
 #include <libxml/parser.h>
+#include <sstream>
+#include <fstream>
 
 extern LuaScript g_config;
 extern xmlMutexPtr xmlmutex;
@@ -88,4 +90,140 @@ bool Readables::Load(Game *game)
 	xmlFreeDoc(doc);
 	xmlMutexUnlock(xmlmutex);
 	return true;
+}
+
+//////////////////////////////////////////////////////////////////////
+// Scrolls escribibles del piso (portado de feat/readables-writeables-build-fix, jul 2026)
+//////////////////////////////////////////////////////////////////////
+
+// libxml avisa por consola si el archivo no está; scrolltexts.xml no existe hasta que alguien escribe.
+static xmlDocPtr parseIfExists(const std::string& file)
+{
+	std::ifstream probe(file.c_str());
+	return probe.good() ? xmlParseFile(file.c_str()) : NULL;
+}
+
+static std::string scrollProp(xmlNodePtr node, const char* name)
+{
+	xmlChar* value = xmlGetProp(node, (const xmlChar*)name);
+	if (!value)
+		return std::string();
+	std::string out = (const char*)value;
+	xmlFree(value);
+	return out;
+}
+
+// En el atributo XML los saltos de línea se guardan como "\\n" (la normalización de atributos los
+// convertiría en espacios).
+static std::string escapeScrollText(const std::string& in)
+{
+	std::string out;
+	for (size_t i = 0; i < in.length(); i++)
+	{
+		if (in[i] == '\n')
+			out += "\\n";
+		else
+			out += in[i];
+	}
+	return out;
+}
+
+static std::string unescapeScrollText(const std::string& in)
+{
+	std::string out;
+	for (size_t i = 0; i < in.length(); i++)
+	{
+		if (in[i] == '\\' && i + 1 < in.length() && in[i+1] == 'n')
+		{
+			out += '\n';
+			i++;
+		}
+		else
+			out += in[i];
+	}
+	return out;
+}
+
+bool Readables::LoadScrollTexts(Game *game)
+{
+	std::string file = g_config.getGlobalString("datadir") + "scrolltexts.xml";
+	xmlMutexLock(xmlmutex);
+	xmlDocPtr doc = parseIfExists(file);
+	if (!doc)	// no existe hasta que alguien escribe algo
+	{
+		xmlMutexUnlock(xmlmutex);
+		return true;
+	}
+
+	xmlNodePtr root = xmlDocGetRootElement(doc);
+	if (!root || xmlStrcmp(root->name, (const xmlChar*)"scrolltexts"))
+	{
+		xmlFreeDoc(doc);
+		xmlMutexUnlock(xmlmutex);
+		return false;
+	}
+
+	for (xmlNodePtr node = root->children; node; node = node->next)
+	{
+		if (strcmp((const char*)node->name, "scroll") != 0)
+			continue;
+		int x = atoi(scrollProp(node, "x").c_str());
+		int y = atoi(scrollProp(node, "y").c_str());
+		int z = atoi(scrollProp(node, "z").c_str());
+		Tile* tile = game->getTile(x, y, z);
+		Thing* thing = tile ? tile->getTopThing() : NULL;
+		Item* item = thing ? dynamic_cast<Item*>(thing) : NULL;
+		// Solo si arriba sigue habiendo algo escribible: si el scroll ya no está, el texto no se le
+		// pega a otro ítem del tile.
+		if (item && (item->getRWInfo() & CAN_BE_WRITTEN))
+			item->setText(unescapeScrollText(scrollProp(node, "text")));
+	}
+
+	xmlFreeDoc(doc);
+	xmlMutexUnlock(xmlmutex);
+	return true;
+}
+
+bool Readables::SaveScrollText(int x, int y, int z, const std::string& text)
+{
+	std::string file = g_config.getGlobalString("datadir") + "scrolltexts.xml";
+	xmlMutexLock(xmlmutex);
+
+	xmlDocPtr doc = parseIfExists(file);
+	xmlNodePtr root = doc ? xmlDocGetRootElement(doc) : NULL;
+	if (doc && (!root || xmlStrcmp(root->name, (const xmlChar*)"scrolltexts")))
+	{
+		xmlFreeDoc(doc);
+		doc = NULL;
+	}
+	if (!doc)
+	{
+		doc = xmlNewDoc((const xmlChar*)"1.0");
+		root = xmlNewDocNode(doc, NULL, (const xmlChar*)"scrolltexts", NULL);
+		xmlDocSetRootElement(doc, root);
+	}
+
+	std::stringstream sx, sy, sz;
+	sx << x; sy << y; sz << z;
+
+	xmlNodePtr found = NULL;
+	for (xmlNodePtr node = root->children; node && !found; node = node->next)
+	{
+		if (strcmp((const char*)node->name, "scroll") == 0 && scrollProp(node, "x") == sx.str() &&
+			scrollProp(node, "y") == sy.str() && scrollProp(node, "z") == sz.str())
+			found = node;
+	}
+	if (!found)
+	{
+		found = xmlNewChild(root, NULL, (const xmlChar*)"scroll", NULL);
+		xmlSetProp(found, (const xmlChar*)"x", (const xmlChar*)sx.str().c_str());
+		xmlSetProp(found, (const xmlChar*)"y", (const xmlChar*)sy.str().c_str());
+		xmlSetProp(found, (const xmlChar*)"z", (const xmlChar*)sz.str().c_str());
+	}
+	xmlSetProp(found, (const xmlChar*)"text", (const xmlChar*)escapeScrollText(text).c_str());
+
+	bool ok = xmlSaveFile(file.c_str(), doc) >= 0;
+	xmlFreeDoc(doc);
+	xmlMutexUnlock(xmlmutex);
+	return ok;
 }

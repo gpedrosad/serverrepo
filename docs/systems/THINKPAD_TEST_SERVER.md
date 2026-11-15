@@ -44,7 +44,7 @@ python3 scripts/ot/ot-probe.py 192.168.1.17 7171
 
 # 2. respaldo, actualizar y reiniciar (el servidor guarda a los conectados al recibir SIGTERM; -t 45 le da tiempo)
 ssh thinkpad 'set -e; cd ~/apps/serverrepo; D=server/YurOTS/ots/data; B=~/backups/pre-deploy-$(date +%Y%m%d-%H%M%S)
-  mkdir -p "$B"; for f in players accounts vip online.xml queue.xml houseitems.xml houses private_trainers.xml; do
+  mkdir -p "$B"; for f in players accounts vip online.xml queue.xml houseitems.xml houses private_trainers.xml scrolltexts.xml; do
   [ -e "$D/$f" ] && cp -a "$D/$f" "$B/"; done
   git merge --ff-only origin/main || { echo "main no avanza solo: ver abajo"; exit 1; }; docker restart -t 45 yurots'
 

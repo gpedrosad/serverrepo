@@ -297,6 +297,15 @@ bool Actions::UseItem(Player* player, const Position &pos,const unsigned char st
 			return true;
 	}
 
+	//cartas, scrolls, papel y libros sin script propio: ventana de texto, editable solo si el
+	//items.otb los marca escribibles (los de solo lectura se abren sin poder escribir)
+	int rw = item->getRWInfo();
+	if(rw & (CAN_BE_READ | CAN_BE_WRITTEN)){
+		bool canWrite = (rw & CAN_BE_WRITTEN) != 0;
+		player->sendTextWindow(item, canWrite ? 100 : 0, canWrite);
+		return true;
+	}
+
   //we dont know what to do with this item
   player->sendCancel("You can not use this object.");
   return false;
