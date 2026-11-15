@@ -33,6 +33,7 @@ Backup test.otbm.bak-elvenbane la primera vez (no va a git). Doc: docs/items-and
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import json
 import random
 import re
@@ -47,6 +48,10 @@ sys.path.insert(0, str(HERE / "kb"))
 from mapdata import (KB_DIR, MAP, REPO, T_AREA, T_HOUSETILE, T_ITEM, T_TILE,  # noqa: E402
                      load_otb, load_tiles, parse_tree, png_bytes, serialize_tree)
 
+_spec = importlib.util.spec_from_file_location("north_pass", HERE / "generate-north-pass.py")
+NP = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(NP)
+
 WORLD = REPO / "server/YurOTS/ots/data/world"
 SPAWNS = WORLD / "test-spawn.xml"
 READABLES = REPO / "server/YurOTS/ots/data/readables.xml"
@@ -55,7 +60,10 @@ REF = REPO / "docs/items-and-map/img/elvenbane-ref"
 ASCII_MD = REF / "elvenbane_ascii.md"
 
 # --- piezas (ids de servidor que ya están en el mapa/kb) -----------------------------------------
-GRASS, WATER, STONE, MOUNTAIN = 4756, 4608, 431, 919
+GRASS, GRASS_COAST, WATER, STONE = 4756, 4526, 4608, 431
+# "montañita" gris: ground 4566 rocks (el mismo que usa el mapa para las mesetas de roca);
+# las paredes de roca 906 (norte) y 903 (oeste) le dan volumen, como en el mapa existente
+ROCKS, ROCKS_EDGE_N, ROCKS_EDGE_W = 4566, 906, 903
 DIRT, DIRT_ALT = 351, 352
 ROCK = 101
 WALL_V, WALL_H, WALL_POST, WALL_CORNER = 1049, 1050, 1051, 1053
@@ -66,9 +74,10 @@ BUSHES = (2767, 2786)
 FLOWERS = (4158, 4150, 2740)
 STONE_ITEM = 1285
 NEEDS_COUNT = {2320}
-SHORE = {("n",): 4644, ("e",): 4645, ("s",): 4646, ("w",): 4647,
-         ("n", "w"): 4648, ("n", "e"): 4649, ("s", "w"): 4650, ("s", "e"): 4651,
-         ("nw",): 4652, ("ne",): 4653, ("sw",): 4654, ("se",): 4655}
+# orilla pasto<->agua: mismo set que generate-natural-island.py (border_sets "grass->water")
+SHORE_SIDE = {"n": 4644, "e": 4645, "s": 4646, "w": 4647}
+SHORE_CORNER = {("n", "w"): 4648, ("n", "e"): 4649, ("s", "w"): 4650, ("s", "e"): 4651}
+SHORE_INNER = {"nw": 4652, "ne": 4653, "sw": 4654, "se": 4655}
 DIRS = {"nw": (-1, -1), "n": (0, -1), "ne": (1, -1), "w": (-1, 0), "e": (1, 0),
         "sw": (-1, 1), "s": (0, 1), "se": (1, 1)}
 CARD = ((1, 0), (-1, 0), (0, 1), (0, -1))
@@ -89,6 +98,11 @@ ENTRANCE_CROP = (26, 24, 50, 48)      # cols/rows del ASCII entrance -> x 27-51,
 PLAN8 = (37, 295)                     # ASCII floor-1: col 3 -> x 40, row 3 -> y 298
 # Celdas de la prisión (floor-3) que el minimapa dibuja cerradas: se les abre la puerta al pasillo
 PRISON_DOORS = tuple((row, col) for row in (4, 11) for col in (2, 5, 8, 11))
+
+# montañitas grises de la tierra firme: (x, y, ancho, alto) sobre el pasto, lejos del camino
+KNOLLS = [(X_CASTLE - 11, Y_CASTLE + CH + 19, 6, 4),
+          (X_CASTLE + 3, Y_CASTLE + CH + 17, 5, 3),
+          (X_CASTLE - 9, Y_CASTLE + CH + 31, 5, 4)]
 
 ARRIVAL = (39, 346)                   # llegada del portal del templo
 PORTALS_BACK = [(41, 347), (42, 347)]  # portales de vuelta al templo
@@ -188,57 +202,59 @@ def tile(g, items=(), tele=None):
     return {"g": g, "it": list(items), "tele": tele}
 
 
-def add_shores(t: dict):
-    """Agua poco profunda 4644-4655 en la casilla de tierra que toca el agua."""
-    for (x, y), cell in t.items():
-        if cell["g"] == WATER or any(4644 <= i <= 4655 for i in cell["it"]):
-            continue
-        water = tuple(d for d, (dx, dy) in DIRS.items()
-                      if t.get((x + dx, y + dy), {}).get("g") == WATER)
-        cards = tuple(sorted(set(water) & {"n", "e", "s", "w"}))
-        piece = SHORE.get(cards) if len(cards) in (1, 2) else None
-        if piece is None and not cards:
-            diag = tuple(sorted(set(water) & {"nw", "ne", "sw", "se"}))
-            piece = SHORE.get(diag) if len(diag) == 1 else None
-        if piece:
-            cell["it"].append(piece)
-
-
 # ---------------------------------------------------------------- superficie (z7)
-def build_surface(plans, seed: int):
-    """z7: agua, isla con el castillo (ASCII ground) y tierra firme al sur (ASCII entrance)."""
-    rng = random.Random(seed)
-    x0, y0, x1, y1 = BOX7
-    t = {(x, y): tile(WATER) for y in range(y0, y1 + 1) for x in range(x0, x1 + 1)}
-    trees = set()
+def neighbors_in(mask, x, y) -> set[str]:
+    return {d for d, (dx, dy) in DIRS.items() if (x + dx, y + dy) in mask}
 
-    # 1) recortes del ASCII: '~' agua, '.' pasto, '_' piedra, '^' montaña, 'T' árbol
-    crops = [("ground", GROUND_CROP, X_CASTLE - (23 - GROUND_CROP[0]), Y_CASTLE - (11 - GROUND_CROP[1])),
-             ("entrance", ENTRANCE_CROP, STAIR_ENTRY[0] - (38 - ENTRANCE_CROP[0]),
-              STAIR_ENTRY[1] - (35 - ENTRANCE_CROP[1]))]
-    for key, (c0, r0, c1, r1), ox, oy in crops:
-        for r, row in enumerate(range(r0, r1 + 1)):
-            for c, col in enumerate(range(c0, c1 + 1)):
-                ch, pos = plans[key][row][col], (ox + c, oy + r)
-                if pos not in t or ch in "# S":
-                    continue
-                if ch == "~":
-                    t[pos] = tile(WATER)
-                elif ch == "_":
-                    t[pos] = tile(STONE)
-                elif ch == "^":
-                    t[pos] = tile(MOUNTAIN)
-                elif ch == ".":
-                    t[pos] = tile(GRASS)
-                elif ch == "T":
-                    t[pos] = tile(GRASS)
-                    trees.add(pos)
 
-    # 2) fuera los islotes chicos (el ASCII deja motas de tierra y árboles sueltos en el agua)
-    land = {p for p, c in t.items() if c["g"] in (GRASS, STONE, MOUNTAIN)}
-    keep = {(ARRIVAL[0], ARRIVAL[1]), STAIR_ENTRY, *PORTALS_BACK}
-    seen = set()
-    for start in sorted(land):
+def pieces_for(other, side, corner, inner):
+    """Piezas de borde para una casilla a partir de dónde está el "otro" terreno."""
+    card = other & {"n", "e", "s", "w"}
+    if {"n", "s"} <= card or {"e", "w"} <= card:
+        return None
+    out = []
+    if len(card) == 2:
+        key = (next(c for c in card if c in "ns"), next(c for c in card if c in "ew"))
+        out.append(corner[key])
+    elif len(card) == 1:
+        out.append(side[next(iter(card))])
+    for diag, (a, b) in {"nw": ("n", "w"), "ne": ("n", "e"),
+                         "sw": ("s", "w"), "se": ("s", "e")}.items():
+        if diag in other and a not in card and b not in card:
+            out.append(inner[diag])
+    return out
+
+
+def fix_coast(sea: set, cells: set, protect: set) -> set:
+    """Agranda el agua hasta que toda casilla de tierra vecina tenga UNA pieza de orilla válida.
+
+    Igual que `fix_until_valid` de generate-north-pass.py con el set de orilla; las casillas de
+    `protect` (camino de la llegada) nunca se convierten en agua.
+    """
+    sea = set(sea)
+    for _ in range(400):
+        changed = False
+        for (x, y) in list(sea):
+            out = {d for d, (dx, dy) in DIRS.items() if (x + dx, y + dy) not in sea}
+            if ({"n", "s"} <= out or {"e", "w"} <= out) and (x, y) not in protect:
+                sea.discard((x, y))
+                changed = True
+        ring = {(x + dx, y + dy) for (x, y) in sea for dx, dy in DIRS.values()} - sea
+        for c in ring:
+            if c not in cells or c in protect:
+                continue
+            pcs = pieces_for(neighbors_in(sea, *c), SHORE_SIDE, SHORE_CORNER, SHORE_INNER)
+            if pcs is None or len(pcs) > 1:
+                sea.add(c)
+                changed = True
+        if not changed:
+            return sea
+    raise RuntimeError("la orilla no converge")
+
+
+def components(mask: set) -> list[set]:
+    out, seen = [], set()
+    for start in sorted(mask):
         if start in seen:
             continue
         comp, q = {start}, deque([start])
@@ -247,72 +263,190 @@ def build_surface(plans, seed: int):
             x, y = q.popleft()
             for dx, dy in CARD:
                 n = (x + dx, y + dy)
-                if n in land and n not in seen:
+                if n in mask and n not in seen:
                     seen.add(n)
                     comp.add(n)
                     q.append(n)
-        if len(comp) < 10 and not (comp & keep):
-            for pos in comp:
-                t[pos] = tile(WATER)
+        out.append(comp)
+    return out
 
-    # 3) el castillo: muro, anillo de piedra, patio de pasto y la torre central
+
+def close_mask(s: set) -> set:
+    big = s | {(x + dx, y + dy) for (x, y) in s for dx, dy in CARD}
+    return {c for c in big if all((c[0] + dx, c[1] + dy) in big for dx, dy in CARD)}
+
+
+def open_mask(s: set) -> set:
+    return {c for c in s if all((c[0] + dx, c[1] + dy) in s for dx, dy in CARD)} | set()
+
+
+def build_surface(plans, seed: int):
+    """z7: isla del castillo (ASCII ground) + tierra firme al sur (ASCII entrance), con orilla."""
+    rng = random.Random(seed)
+    nz = NP.Noise(seed)
+    x0, y0, x1, y1 = BOX7
+    cells = {(x, y) for x in range(x0, x1 + 1) for y in range(y0, y1 + 1)}
+    border = {c for c in cells if c[0] in (x0, x1) or c[1] in (y0, y1)}
+
+    # 1) isla: la muralla con 1 casilla al norte y al oeste (el agua llega a la pared) y 4 de
+    #    bosque al este y al sur; el borde de afuera queda irregular con ruido
+    island = set()
+    for y in range(Y_CASTLE - 1, Y_CASTLE + CH + 5):
+        for x in range(X_CASTLE - 1, X_CASTLE + CW + 5):
+            d = min(x - (X_CASTLE - 1), (X_CASTLE + CW + 4) - x,
+                    y - (Y_CASTLE - 1), (Y_CASTLE + CH + 4) - y)
+            if d == 0 and nz.fbm(x / 3.2, y / 3.2, 2, 11) < 0.45:
+                continue
+            island.add((x, y))
+
+    # 2) tierra firme: máscara del ASCII 'entrance' (pasto, árboles, roca y piedra), suavizada
+    ec0, er0, ec1, er1 = ENTRANCE_CROP
+    ex0 = STAIR_ENTRY[0] - (38 - ec0)
+    ey0 = STAIR_ENTRY[1] - (35 - er0)
+    main = set()
+    for r, row in enumerate(range(er0, er1 + 1)):
+        for c, col in enumerate(range(ec0, ec1 + 1)):
+            if plans["entrance"][row][col] in "._^TS":
+                pos = (ex0 + c, ey0 + r)
+                if pos in cells:
+                    main.add(pos)
+    main = open_mask(close_mask(main))            # sin agujeros de 1 casilla ni puntas sueltas
+    water = cells - main
+    for comp in components(water):                # charcos interiores chicos -> tierra
+        if len(comp) < 12 and not (comp & border):
+            main |= comp
+
+    # 3) lo que no se toca: llegada, portales, bajada, camino y castillo
+    keep = {ARRIVAL, STAIR_ENTRY, *PORTALS_BACK}
+    keep |= {(x, y) for x in range(STAIR_ENTRY[0] - 1, STAIR_ENTRY[0] + 2)
+             for y in range(STAIR_ENTRY[1], ARRIVAL[1] + 2)}
+    gate = [(x, y) for x in (X_CASTLE + 10, X_CASTLE + 11)
+            for y in range(Y_CASTLE + CH, Y_CASTLE + CH + 4)]
+    keep |= set(gate)
+    castle = {(x, y) for x in range(X_CASTLE, X_CASTLE + CW)
+              for y in range(Y_CASTLE, Y_CASTLE + CH)}
+    keep |= castle
+
+    land = island | main | keep
+
+    # 4) fuera los islotes sueltos que deja el recorte
+    for comp in components(land):
+        if len(comp) < 8 and not (comp & keep):
+            land -= comp
+
+    # 5) orilla: el agua se ajusta hasta que cada casilla de tierra tenga una única pieza, y los
+    #    islotes que quedan (rodeados de orilla, sin entrada) pasan a agua
+    sea = cells - land
+    for _ in range(6):
+        sea = fix_coast(sea, cells, keep)
+        land = cells - sea
+        islets = [c for c in components(land) if len(c) < 14 and not (c & keep)]
+        if not islets:
+            break
+        for c in islets:
+            sea |= c
+    land = cells - sea
+
+    # 6) montañitas: meseta de roca (4566) con pared 906 al norte y 903 al oeste
+    mountain = set()
+    for (mx, my, mw, mh) in KNOLLS:
+        cx, cy = mx + (mw - 1) / 2, my + (mh - 1) / 2          # meseta ovalada, no un rectángulo
+        rx, ry = mw / 2, mh / 2
+        blob = {(x, y) for x in range(mx, mx + mw) for y in range(my, my + mh)
+                if ((x - cx) / rx) ** 2 + ((y - cy) / ry) ** 2 <= 1.0}
+        if blob <= land and not any(neighbors_in(sea, x, y) for (x, y) in blob) and not (blob & keep):
+            mountain |= blob
+
+    # 7) castillo: muro, anillo de piedra, patio de pasto y torre central
     walls = {(X_CASTLE + x, Y_CASTLE + y)
              for y, row in enumerate(plans["ground"][11:29])
              for x, ch in enumerate(row[23:44]) if ch == "#"}
     pieces = wall_piece_set(walls)
+    override = {(x, y): tile(STONE) for (x, y) in gate}
     for y, row in enumerate(plans["ground"][11:29]):
         for x, ch in enumerate(row[23:44]):
             pos = (X_CASTLE + x, Y_CASTLE + y)
             if ch == "#":
-                t[pos] = tile(GRASS if (y == 0 or x == 0) else STONE, [pieces[pos]])
+                override[pos] = tile(GRASS if (y == 0 or x == 0) else STONE, [pieces[pos]])
             elif ch in "_S":
-                t[pos] = tile(STONE)
+                override[pos] = tile(STONE)
             elif ch == ".":
-                t[pos] = tile(GRASS)
+                override[pos] = tile(GRASS)
 
-    # 3) camino de piedra de la puerta sur (cols 10-11 de la planta) a la explanada
-    gate = [(x, y) for x in (X_CASTLE + 10, X_CASTLE + 11)
-            for y in range(Y_CASTLE + CH, Y_CASTLE + CH + 4)]
-    for pos in gate:
-        if pos in t:
-            t[pos] = tile(STONE)
+    # 8) suelos (se recalcula si hay que abrir agua en los bolsones sin salida)
+    island_box = {(x, y) for x in range(X_CASTLE - 3, X_CASTLE + CW + 6)
+                  for y in range(Y_CASTLE - 3, Y_CASTLE + CH + 6)}
 
-    # 4) claros: llegada, portales, bajada, el camino entre ellos y la puerta del castillo
-    clear = set(gate)
-    for cx, cy, r in ((ARRIVAL[0], ARRIVAL[1], 2), (PORTALS_BACK[0][0] + 1, PORTALS_BACK[0][1], 2),
-                      (STAIR_ENTRY[0], STAIR_ENTRY[1], 2)):
-        clear |= {(cx + dx, cy + dy) for dx in range(-r, r + 1) for dy in range(-r, r + 1)}
-    for y in range(STAIR_ENTRY[1], ARRIVAL[1] + 2):
-        for x in range(STAIR_ENTRY[0] - 1, STAIR_ENTRY[0] + 2):
-            clear.add((x, y))
-    for pos in clear:
-        if pos in t and t[pos]["g"] not in (WATER, STONE):
-            t[pos] = tile(GRASS)
+    def grounds() -> dict:
+        g = {}
+        for c in cells:
+            if c not in land:
+                g[c] = tile(WATER)
+                continue
+            if c in mountain:
+                edge = []
+                if (c[0], c[1] - 1) not in mountain:
+                    edge.append(ROCKS_EDGE_N)
+                if (c[0] - 1, c[1]) not in mountain:
+                    edge.append(ROCKS_EDGE_W)
+                g[c] = tile(ROCKS, edge)
+                continue
+            if c in override:
+                g[c] = override[c]
+                continue
+            coast = pieces_for(neighbors_in(sea, *c), SHORE_SIDE, SHORE_CORNER, SHORE_INNER) or []
+            g[c] = tile(GRASS_COAST if coast else GRASS, coast)
+        return g
 
-    # 5) bosque: árbol en las casillas 'T' que quedaron sobre tierra; arbustos y flores sueltos
-    castle_box = {(x, y) for x in range(X_CASTLE, X_CASTLE + CW) for y in range(Y_CASTLE, Y_CASTLE + CH)}
-    for pos in sorted(trees):
-        cell = t.get(pos)
-        if cell is None or pos in clear or pos in castle_box or cell["g"] != GRASS:
+    t = grounds()
+    # 9) bolsones: un pedazo de pasto rodeado de orilla (que bloquea) no se puede pisar; se
+    #    convierte en agua y se recalcula la orilla. El castillo y su isla quedan aparte.
+    for _ in range(20):
+        walk = {c for c, cell in t.items() if walk_tile(cell)}
+        comps = components(walk)
+        main_comp = next((c for c in comps if (ARRIVAL[0], ARRIVAL[1]) in c), set())
+        pockets = [c for c in comps if c is not main_comp and not (c & island_box)]
+        if not pockets:
+            break
+        blob = set()
+        for comp in pockets:
+            for (px, py) in comp:
+                blob |= {(px + dx, py + dy) for dx in (-1, 0, 1) for dy in (-1, 0, 1)}
+        blob = (blob & land) - keep
+        if not blob:
+            break
+        land -= blob
+        sea |= blob
+        sea = fix_coast(sea, cells, keep)
+        land = cells - sea
+        t = grounds()
+
+    # 9) claros: llegada, portales, bajada y el camino; el resto es bosque
+    clear = set(keep) | {(ARRIVAL[0] + dx, ARRIVAL[1] + dy) for dx in range(-3, 4) for dy in range(-3, 4)}
+    clear |= {(x + dx, y + dy) for x, y in PORTALS_BACK for dx in range(-2, 3) for dy in range(-2, 3)}
+    clear |= {(STAIR_ENTRY[0] + dx, STAIR_ENTRY[1] + dy) for dx in range(-2, 3) for dy in range(-2, 3)}
+    clear |= {(x, y) for x in range(X_CASTLE + 9, X_CASTLE + 13) for y in range(Y_CASTLE + CH - 1, Y_CASTLE + CH + 1)}
+
+    # 10) bosque denso pero respirable: árboles grandes separados >= 2, y arbustos/pasto entre medio
+    forest = {c for c in t if t[c]["g"] in (GRASS, GRASS_COAST) and c not in clear}
+    blocked = set()                               # 2x2 que ocupa cada árbol grande
+    for pos in sorted(forest, key=lambda c: (c[1], c[0])):
+        x, y = pos
+        if pos in blocked:
             continue
-        cell["it"].append(TREE_BIG if rng.random() < 0.35 else TREE_SMALL)
-    for pos, cell in sorted(t.items(), key=lambda kv: (kv[0][1], kv[0][0])):
-        if cell["g"] != GRASS or pos in clear or pos in trees or pos in castle_box:
-            continue
-        r = rng.random()
-        if r < 0.05:
-            cell["it"].append(rng.choice(BUSHES))
-        elif r < 0.09:
-            cell["it"].append(rng.choice(FLOWERS))
+        near = any((x + dx, y + dy) in blocked for dx in (-2, -1, 0, 1, 2) for dy in (-2, -1, 0, 1, 2))
+        if (not near and rng.random() < 0.55
+                and all((x - a, y - b) in forest for a in (0, 1) for b in (0, 1))):
+            t[pos]["it"].append(TREE_BIG)          # pino 2x2: se ve en 4 casillas
+            blocked |= {(x - a, y - b) for a in (0, 1) for b in (0, 1)}
+        elif rng.random() < 0.14:
+            t[pos]["it"].append(TREE_SMALL)
+        elif rng.random() < 0.14:
+            t[pos]["it"].append(rng.choice(BUSHES))
+        elif rng.random() < 0.25:
+            t[pos]["it"].append(rng.choice(FLOWERS))
 
-    # 6) orilla: el agua poco profunda 4644-4655 es block_solid, así que el camino de la
-    #    llegada queda sin borde para que se pueda caminar por la costa
-    add_shores(t)
-    for pos in clear:
-        if pos in t:
-            t[pos]["it"] = [i for i in t[pos]["it"] if not (4644 <= i <= 4655)]
-
-    # 7) portales de vuelta, enmarcados; bajada a la cueva
+    # 11) portales de vuelta, enmarcados; bajada a la cueva
     for pos in PORTALS_BACK:
         t[pos] = tile(GRASS, [TELEPORT], TEMPLE_BACK)
     px0, px1, py = PORTALS_BACK[0][0], PORTALS_BACK[1][0], PORTALS_BACK[0][1]
@@ -326,7 +460,7 @@ def build_surface(plans, seed: int):
     t[(STAIR_ENTRY[0], STAIR_ENTRY[1] + 1)] = tile(GRASS)
     t[(STAIR_ENTRY[0], STAIR_ENTRY[1] - 1)] = tile(GRASS)
 
-    # 8) carteles
+    # 12) carteles
     sign_1 = (ARRIVAL[0] - 2, ARRIVAL[1] + 1)
     sign_2 = (STAIR_ENTRY[0] + 2, STAIR_ENTRY[1] + 1)
     t[sign_1] = tile(GRASS, [SIGN])
@@ -334,7 +468,8 @@ def build_surface(plans, seed: int):
     signs = {sign_1: "ELVENBANE\nFortaleza elfica en 7 pisos.\nBaja a la cueva: el tunel llega\n"
                      "al sotano del castillo.\nPortal al norte: templo.",
              sign_2: "BAJADA A ELVENBANE\nTunel largo hasta el sotano.\nTrolls, orcos y enanos."}
-    return t, {"signs": signs, "castle_walls": walls}
+    return t, {"signs": signs, "castle_walls": walls, "mountains": mountain, "forest": forest,
+               "no_coast": set(override) | mountain}
 
 
 # ---------------------------------------------------------------- sótanos y pisos altos
@@ -534,42 +669,38 @@ def bfs(layers: dict, start):
 
 
 def open_pockets(t7: dict, layers: dict, start):
-    """Deja z7 sin bolsones inalcanzables: abre un paso de pasto en la montaña o los tapa.
+    """Deja el bosque transitable sacando árboles/arbustos de los bolsones que queden sin salida.
 
-    Primero intenta un paso de pasto entre dos montañas (queda un sendero natural); si el bolsón
-    está rodeado de agua, la casilla pasa a agua (islote) o a roca según lo que tenga al lado.
+    Nunca cambia el terreno ni saca piezas de orilla (4644-4655): sólo tala el árbol o arbusto
+    que encierra una casilla de pasto.
     """
-    opened, filled = [], []
+    opened = []
     reach = bfs(layers, start)
-    for _ in range(400):
+    for _ in range(800):
         reach7 = {(x, y) for x, y, z in reach if z == Z7}
         lost = {p for p, c in t7.items() if walk_tile(c) and c["g"] != STAIR_DOWN
                 and STAIRS_UP not in c["it"]} - reach7
         if not lost:
             break
-        cands = []
-        for pos, cell in t7.items():
-            around = {(pos[0] + dx, pos[1] + dy) for dx, dy in CARD}
-            if not (around & lost) or not (around & reach7):
-                continue
-            if cell["g"] == MOUNTAIN:
-                cands.append(("montaña", pos))
-            elif any(i in OTB_BLOCK for i in cell["it"]):
-                cands.append(("decorado", pos))
-        if cands:
-            kind, pos = cands[0]
-            if kind == "montaña":
-                t7[pos] = tile(GRASS)
-                opened.append(pos)
-            else:                                    # un árbol/arbusto cortaba el paso
-                t7[pos]["it"] = [i for i in t7[pos]["it"] if i not in OTB_BLOCK]
-                opened.append(pos)
-        else:
-            cell = min(lost)
-            t7[cell] = tile(MOUNTAIN)          # roca: no crea orillas nuevas (que bloquean)
-            filled.append(cell)
+        progress = False
+        for pos in sorted(lost):
+            for dx, dy in CARD:
+                n = (pos[0] + dx, pos[1] + dy)
+                cell = t7.get(n)
+                if not cell or cell["g"] in OTB_BLOCK:
+                    continue
+                keep_pieces = [i for i in cell["it"] if i not in OTB_BLOCK or 4644 <= i <= 4655]
+                if len(keep_pieces) != len(cell["it"]):
+                    cell["it"] = keep_pieces
+                    opened.append(n)
+                    progress = True
+                    break
+            if progress:
+                break
+        if not progress:
+            break
         reach = bfs(layers, start)
-    return opened, filled
+    return opened
 
 
 def spawn_xml(spawns) -> str:
@@ -677,7 +808,7 @@ def main() -> int:
 
     # --- validaciones ---
     errors = []
-    opened, filled = open_pockets(layers[Z7], layers, (ARRIVAL[0], ARRIVAL[1], Z7))
+    opened = open_pockets(layers[Z7], layers, (ARRIVAL[0], ARRIVAL[1], Z7))
     walkbyz = {z: {p for p, c in tl.items() if walk_tile(c)} for z, tl in layers.items()}
     reach = bfs(layers, (ARRIVAL[0], ARRIVAL[1], Z7))
     for z in sorted(layers):
@@ -699,6 +830,21 @@ def main() -> int:
         for zz, land in ((zu, (p[0], p[1] - 1)), (zl, (p[0], p[1] + 1))):
             if not walk_tile(layers[zz].get(land)):
                 errors.append(f"escalera {label}: llegada {land},{zz} no caminable")
+    # z7: nada de ground 919 (se dibuja como vacío negro) y orilla exacta en todo el pasto
+    if any(c["g"] == 919 for c in layers[Z7].values()):
+        errors.append("z7: quedaron casillas con ground 919 (se ven negras)")
+    sea7 = {p for p, c in layers[Z7].items() if c["g"] == WATER}
+    bad_coast = 0
+    for p, c in layers[Z7].items():
+        if c["g"] not in (GRASS, GRASS_COAST) or p in info["no_coast"]:
+            continue
+        want = sorted(pieces_for(neighbors_in(sea7, *p), SHORE_SIDE, SHORE_CORNER, SHORE_INNER) or [])
+        have = sorted(i for i in c["it"] if 4644 <= i <= 4655)
+        if want != have:
+            bad_coast += 1
+    if bad_coast:
+        errors.append(f"z7: {bad_coast} casillas de pasto con la orilla mal puesta")
+
     # desde cualquier casilla caminable de z7 no se ve el vacío del borde de la caja
     x0, y0, x1, y1 = BOX7
     for (x, y) in walkbyz[Z7]:
@@ -729,6 +875,10 @@ def main() -> int:
             counts[(z, name)] = counts.get((z, name), 0) + 1
     print(f"Elvenbane: caja z7 x{BOX7[0]}-{BOX7[2]} y{BOX7[1]}-{BOX7[3]}; castillo "
           f"{X_CASTLE},{Y_CASTLE} {CW}x{CH}")
+    forest7 = [p for p, c in layers[Z7].items() if c["g"] in (GRASS, GRASS_COAST)]
+    blk = [p for p in forest7 if any(i in OTB_BLOCK for i in layers[Z7][p]["it"])]
+    print(f"  bosque z7: {len(forest7)} casillas de pasto, {len(blk)} con bloqueo "
+          f"({100 * len(blk) // max(1, len(forest7))} %)")
     for z in sorted(layers):
         tl = layers[z]
         print(f"  z{z}: {len(tl)} casillas, {sum(1 for c in tl.values() if walk_tile(c))} caminables, "
@@ -737,8 +887,8 @@ def main() -> int:
         print(f"  escalera {label}: hueco {p[0]},{p[1]},{zu} / subida {p[0]},{p[1]},{zl}")
     for label, wish, got in moved:
         print(f"  reubicada {label}: {wish} -> {got}")
-    if opened or filled:
-        print(f"  despejados z7: {len(opened)} pasos de montaña, {len(filled)} bolsones tapados")
+    if opened:
+        print(f"  despejados z7: {len(opened)} árboles/arbustos que cortaban el paso")
     print(f"llegada {ARRIVAL[0]},{ARRIVAL[1]},7; portales de vuelta "
           f"{', '.join(f'{x},{y},7' for x, y in PORTALS_BACK)} -> {TEMPLE_BACK}")
     print(f"spawns: {len(spawns)} ({sum(counts.values())} monstruos)")
@@ -793,7 +943,6 @@ def main() -> int:
                    for label, zu, zl, p in stairs],
         "relocated": [{"label": l, "wish": list(w), "got": list(g)} for l, w, g in moved],
         "openedPassages": [list(p) for p in opened],
-        "sealedPockets": [list(p) for p in filled],
         "spawns": {f"z{z}": sum(1 for _c, zz, _m in spawns if zz == z) for z in sorted(layers)},
         "monsters": {f"z{z}/{name}": n for (z, name), n in sorted(counts.items())},
         "counts": {"spawns": len(spawns), "monsters": sum(counts.values())},

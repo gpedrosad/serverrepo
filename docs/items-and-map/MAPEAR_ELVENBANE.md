@@ -19,6 +19,33 @@ Generador: `scripts/map/generate-elvenbane.py` (lee `elvenbane_ascii.md` como m�
 escaleras automáticamente y valida alcanzabilidad multi-piso). Manifiesto:
 `server/YurOTS/ots/data/world/generated-elvenbane.json`.
 
+## Piezas de z7 (de dónde salen los ids)
+
+| Qué | Ids | De dónde |
+|---|---|---|
+| Pasto | `4756`; costa `4526` | los dos grounds de pasto que usa el mapa (el `4526` es el que llevan las islas generadas en la costa) |
+| Agua | `4608` (shallow water ground) | mar del mapa |
+| Orilla pasto↔agua | `4644`–`4655` | set `grass->water` de `map-kb/border_sets.json`, el mismo de `generate-natural-island.py`; se elige con `pieces_for()` (lados, esquinas externas `4648`–`4651` e internas `4652`–`4655`) |
+| Piedra del castillo | piso `431`, paredes `1049`–`1053` | `PIEZAS_DE_MAPA.md` (pies de la torre del castillo) |
+| Montañitas grises | meseta `4566` (rocks ground) + pared de roca `906` al norte y `903` al oeste | medido en `test.otbm`: las mesetas de roca del mapa usan ese ground y esas dos paredes; **no** se usa `919` (ese ground se dibuja con el sprite desplazado y deja huecos negros si no lleva la pared completa) |
+| Árboles | `4009` (pino 2x2), `2768` (arbolito) | `generate-beast-valley.py` / `generate-north-pass.py` |
+| Arbustos y flores | `2767`, `2786`, `4158`, `4150`, `2740` | idem |
+| Escaleras | `432` (hueco, arriba) y `1385` (sube, abajo) | `docs/gameplay/STAIRS.md` |
+
+### Vegetación: densa pero respirable
+
+El bosque cubre toda la tierra firme y la franja este/sur de la isla (no hay claros grandes: sólo
+los de la llegada, los portales y la bajada). La densidad se hace con las copas de los pinos 2x2,
+no apilando árboles:
+
+- pino grande `4009` sólo si no hay otro a menos de 2 casillas (Chebyshev) y si su bloque 2x2 es
+  todo pasto; ocupa 1 casilla para caminar pero se ve en 4;
+- en el resto se alterna arbolito `2768` (14 %), arbusto `2767`/`2786` (14 %) y flores (25 %), y
+  queda pasto a la vista entre medio;
+- ~45 % de las casillas de pasto quedan con algo encima; el resto es transitable, así el bosque se
+  ve lleno pero se puede cruzar. `open_pockets()` sólo tala el árbol/arbusto que deje una casilla
+  de pasto encerrada (en la última pasada: 21, sobre ~680 de bosque).
+
 ## Recorrido
 
 | Etapa | Piso | Paisaje | Monstruos |
@@ -91,17 +118,26 @@ prisión del -3 que el minimapa dibuja cerradas se abren como piso (`PRISON_DOOR
 Elvenbane queda en una zona que estaba vacía en z4–z10. Todo lo que no es agua, castillo o bosque
 se rellena con roca (z8–z10) o agua (z7); desde ninguna casilla caminable se ve el borde de la caja.
 
+Forma de z7: la **isla** es la muralla con 1 casilla al norte y al oeste (el agua llega a la pared,
+como en la referencia) y 4 de bosque al este y al sur, con el borde irregular por ruido; la
+**tierra firme** sale del recorte del ASCII `entrance` pasado por cierre/apertura morfológica (sin
+agujeros de una casilla ni puntas sueltas) y los charcos interiores chicos se rellenan. Entre isla y
+tierra firme hay agua en todo el ancho: el único acceso es el túnel (z8).
+
 ## Reglas que valida el script (si algo falla no escribe nada)
 
 - Caja vacía: se niega a escribir si la caja pisa casillas existentes (verificada vacía en z4–z10).
 - Cada escalera con hueco 432 arriba y 1385 abajo en la misma casilla; las dos llegadas caminables y
   sin otra escalera.
 - Alcanzabilidad multi-piso desde la llegada (BFS que sigue escaleras y huecos): todo lo caminable
-  se alcanza. En z7 el script deja el piso cerrado: abre un paso de pasto en la montaña (9 pasos) o
-  tapa el bolsón con roca / le saca el árbol que cortaba el paso (13 bolsones), y se niega a escribir
-  si queda alguna casilla caminable inalcanzable.
+  se alcanza. El bosque se ajusta (`open_pockets()`) y los pedazos de pasto que quedan rodeados de
+  orilla (que bloquea) pasan a agua antes de escribir.
 - Spawns solo sobre casillas caminables, lejos de llegadas y escaleras.
 - Paredes de cueva con pieza única (`356–367`) y paredes de castillo (`1049–1053`) por vecinas.
+- **Orilla exacta**: cada casilla de pasto vecina al agua tiene exactamente las piezas que pide
+  `pieces_for()` (nada de cortes rectos ni bordes sueltos); las casillas de piedra y las paredes van
+  sin borde.
+- **Nada de `919`**: el script falla si quedó una casilla con ese ground (se ve como vacío negro).
 
 ## Regenerar
 
@@ -119,6 +155,9 @@ cambió en `main`, no mergear el binario: volver a correr el script sobre el map
 `temple-portals.py`.
 
 **Estado (2026-11-15):** generada y validada localmente (`check-map-load.py`: 0 errores,
-`validate-tele-dest.py`: OK, 81 monstruos sobre casillas caminables, alcanzabilidad multi-piso OK).
-Falta deploy y recorrido in-game. Antes de deployar un `test.otbm` nuevo, probar depots in-game
+`validate-tele-dest.py`: OK, 81 monstruos sobre casillas caminables, alcanzabilidad multi-piso OK,
+0 casillas con ground `919`, orilla exacta en toda la costa). La superficie se rehizo para que se
+parezca a la referencia: isla más grande con bosque al este y al sur, tierra firme sin agujeros,
+orilla completa y montañitas de roca (`4566` + `906`/`903`) en vez de los bloques negros. Falta
+deploy y recorrido in-game. Antes de deployar un `test.otbm` nuevo, probar depots in-game
 ([`../gameplay/DEPOTS.md`](../gameplay/DEPOTS.md)).
