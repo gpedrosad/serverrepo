@@ -114,307 +114,307 @@
     },
     {
       "label": "sotano->patio",
-      "kind": "stairs",
+      "kind": "ladder",
       "x": 57,
-      "y": 301,
+      "y": 303,
       "holeZ": 7,
       "upZ": 8,
       "upLanding": {
         "x": 57,
-        "y": 300,
+        "y": 304,
         "z": 7
       },
       "downLanding": {
         "x": 57,
-        "y": 302,
+        "y": 303,
         "z": 8
       }
     },
     {
       "label": "sotano->-2",
-      "kind": "stairs",
+      "kind": "ladder",
       "x": 58,
       "y": 313,
       "holeZ": 8,
       "upZ": 9,
       "upLanding": {
         "x": 58,
-        "y": 312,
+        "y": 314,
         "z": 8
       },
       "downLanding": {
         "x": 58,
-        "y": 314,
+        "y": 313,
         "z": 9
       }
     },
     {
       "label": "-2->-3",
-      "kind": "stairs",
+      "kind": "ladder",
       "x": 42,
       "y": 312,
       "holeZ": 9,
       "upZ": 10,
       "upLanding": {
         "x": 42,
-        "y": 311,
+        "y": 313,
         "z": 9
       },
       "downLanding": {
         "x": 42,
-        "y": 313,
+        "y": 312,
         "z": 10
       }
     },
     {
       "label": "patio->adarve NO",
-      "kind": "stairs",
+      "kind": "ladder",
       "x": 42,
-      "y": 300,
+      "y": 299,
       "holeZ": 6,
       "upZ": 7,
       "upLanding": {
         "x": 42,
-        "y": 299,
+        "y": 300,
         "z": 6
       },
       "downLanding": {
         "x": 42,
-        "y": 301,
+        "y": 299,
         "z": 7
       }
     },
     {
       "label": "patio->adarve NE",
-      "kind": "stairs",
-      "x": 58,
-      "y": 300,
+      "kind": "ladder",
+      "x": 57,
+      "y": 299,
       "holeZ": 6,
       "upZ": 7,
       "upLanding": {
-        "x": 58,
-        "y": 299,
+        "x": 57,
+        "y": 300,
         "z": 6
       },
       "downLanding": {
-        "x": 58,
-        "y": 301,
+        "x": 57,
+        "y": 299,
         "z": 7
       }
     },
     {
       "label": "patio->adarve SO",
-      "kind": "stairs",
+      "kind": "ladder",
       "x": 43,
-      "y": 313,
+      "y": 312,
       "holeZ": 6,
       "upZ": 7,
       "upLanding": {
         "x": 43,
-        "y": 312,
+        "y": 313,
         "z": 6
       },
       "downLanding": {
         "x": 43,
-        "y": 314,
+        "y": 312,
         "z": 7
       }
     },
     {
       "label": "patio->adarve SE",
-      "kind": "stairs",
+      "kind": "ladder",
       "x": 57,
-      "y": 313,
+      "y": 312,
       "holeZ": 6,
       "upZ": 7,
       "upLanding": {
         "x": 57,
-        "y": 312,
+        "y": 313,
         "z": 6
       },
       "downLanding": {
         "x": 57,
-        "y": 314,
+        "y": 312,
         "z": 7
       }
     },
     {
       "label": "torre->adarve",
-      "kind": "stairs",
+      "kind": "ladder",
       "x": 53,
       "y": 304,
       "holeZ": 6,
       "upZ": 7,
       "upLanding": {
         "x": 53,
-        "y": 303,
+        "y": 305,
         "z": 6
       },
       "downLanding": {
         "x": 53,
-        "y": 305,
+        "y": 304,
         "z": 7
       }
     },
     {
       "label": "adarve->torreta NO",
-      "kind": "stairs",
+      "kind": "ladder",
       "x": 43,
-      "y": 300,
+      "y": 299,
       "holeZ": 5,
       "upZ": 6,
       "upLanding": {
         "x": 43,
-        "y": 299,
+        "y": 300,
         "z": 5
       },
       "downLanding": {
         "x": 43,
-        "y": 301,
+        "y": 299,
         "z": 6
       }
     },
     {
       "label": "adarve->torreta NE",
-      "kind": "stairs",
-      "x": 57,
-      "y": 300,
+      "kind": "ladder",
+      "x": 58,
+      "y": 299,
       "holeZ": 5,
       "upZ": 6,
       "upLanding": {
-        "x": 57,
-        "y": 299,
+        "x": 58,
+        "y": 300,
         "z": 5
       },
       "downLanding": {
-        "x": 57,
-        "y": 301,
+        "x": 58,
+        "y": 299,
         "z": 6
       }
     },
     {
       "label": "adarve->torreta SO",
-      "kind": "stairs",
+      "kind": "ladder",
       "x": 42,
       "y": 313,
       "holeZ": 5,
       "upZ": 6,
       "upLanding": {
         "x": 42,
-        "y": 312,
+        "y": 314,
         "z": 5
       },
       "downLanding": {
         "x": 42,
-        "y": 314,
+        "y": 313,
         "z": 6
       }
     },
     {
       "label": "adarve->torreta SE",
-      "kind": "stairs",
+      "kind": "ladder",
       "x": 58,
       "y": 313,
       "holeZ": 5,
       "upZ": 6,
       "upLanding": {
         "x": 58,
-        "y": 312,
+        "y": 314,
         "z": 5
       },
       "downLanding": {
         "x": 58,
-        "y": 314,
+        "y": 313,
         "z": 6
       }
     },
     {
       "label": "torre adarve->2",
-      "kind": "stairs",
+      "kind": "ladder",
       "x": 48,
       "y": 304,
       "holeZ": 5,
       "upZ": 6,
       "upLanding": {
         "x": 48,
-        "y": 303,
+        "y": 305,
         "z": 5
       },
       "downLanding": {
         "x": 48,
-        "y": 305,
+        "y": 304,
         "z": 6
       }
     },
     {
       "label": "torreta NO->3",
-      "kind": "stairs",
+      "kind": "ladder",
       "x": 42,
-      "y": 300,
+      "y": 299,
       "holeZ": 4,
       "upZ": 5,
       "upLanding": {
         "x": 42,
-        "y": 299,
+        "y": 300,
         "z": 4
       },
       "downLanding": {
         "x": 42,
-        "y": 301,
+        "y": 299,
         "z": 5
       }
     },
     {
       "label": "torreta NE->3",
-      "kind": "stairs",
-      "x": 58,
-      "y": 300,
+      "kind": "ladder",
+      "x": 57,
+      "y": 299,
       "holeZ": 4,
       "upZ": 5,
       "upLanding": {
-        "x": 58,
-        "y": 299,
+        "x": 57,
+        "y": 300,
         "z": 4
       },
       "downLanding": {
-        "x": 58,
-        "y": 301,
+        "x": 57,
+        "y": 299,
         "z": 5
       }
     },
     {
       "label": "torreta SO->3",
-      "kind": "stairs",
-      "x": 41,
-      "y": 313,
+      "kind": "ladder",
+      "x": 42,
+      "y": 312,
       "holeZ": 4,
       "upZ": 5,
       "upLanding": {
-        "x": 41,
-        "y": 312,
+        "x": 42,
+        "y": 313,
         "z": 4
       },
       "downLanding": {
-        "x": 41,
-        "y": 314,
+        "x": 42,
+        "y": 312,
         "z": 5
       }
     },
     {
       "label": "torreta SE->3",
-      "kind": "stairs",
-      "x": 57,
-      "y": 313,
+      "kind": "ladder",
+      "x": 58,
+      "y": 312,
       "holeZ": 4,
       "upZ": 5,
       "upLanding": {
-        "x": 57,
-        "y": 312,
+        "x": 58,
+        "y": 313,
         "z": 4
       },
       "downLanding": {
-        "x": 57,
-        "y": 314,
+        "x": 58,
+        "y": 312,
         "z": 5
       }
     },
@@ -446,7 +446,7 @@
       ],
       "got": [
         57,
-        301
+        303
       ]
     },
     {
@@ -461,113 +461,14 @@
       ]
     },
     {
-      "label": "patio->adarve NO",
-      "wish": [
-        42,
-        299
-      ],
-      "got": [
-        42,
-        300
-      ]
-    },
-    {
-      "label": "patio->adarve NE",
-      "wish": [
-        57,
-        299
-      ],
-      "got": [
-        58,
-        300
-      ]
-    },
-    {
-      "label": "patio->adarve SO",
-      "wish": [
-        43,
-        312
-      ],
-      "got": [
-        43,
-        313
-      ]
-    },
-    {
-      "label": "patio->adarve SE",
-      "wish": [
-        57,
-        312
-      ],
-      "got": [
-        57,
-        313
-      ]
-    },
-    {
-      "label": "adarve->torreta NO",
-      "wish": [
-        43,
-        299
-      ],
-      "got": [
-        43,
-        300
-      ]
-    },
-    {
-      "label": "adarve->torreta NE",
-      "wish": [
-        58,
-        299
-      ],
-      "got": [
-        57,
-        300
-      ]
-    },
-    {
-      "label": "torreta NO->3",
-      "wish": [
-        42,
-        299
-      ],
-      "got": [
-        42,
-        300
-      ]
-    },
-    {
       "label": "torreta NE->3",
       "wish": [
         58,
         299
       ],
       "got": [
-        58,
-        300
-      ]
-    },
-    {
-      "label": "torreta SO->3",
-      "wish": [
-        42,
-        312
-      ],
-      "got": [
-        41,
-        313
-      ]
-    },
-    {
-      "label": "torreta SE->3",
-      "wish": [
-        58,
-        312
-      ],
-      "got": [
         57,
-        313
+        299
       ]
     },
     {
@@ -666,10 +567,6 @@
     [
       31,
       350
-    ],
-    [
-      38,
-      340
     ],
     [
       36,

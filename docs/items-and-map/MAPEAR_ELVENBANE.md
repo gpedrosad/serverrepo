@@ -30,9 +30,8 @@ escaleras automáticamente y valida alcanzabilidad multi-piso). Manifiesto:
 | Montañitas grises | meseta `4566` (rocks ground) + pared de roca `906` al norte y `903` al oeste | medido en `test.otbm`: las mesetas de roca del mapa usan ese ground y esas dos paredes; **no** se usa `919` (ese ground se dibuja con el sprite desplazado y deja huecos negros si no lleva la pared completa) |
 | Árboles | `4009` (pino 2x2), `2768` (arbolito) | `generate-beast-valley.py` / `generate-north-pass.py` |
 | Arbustos y flores | `2767`, `2786`, `4158`, `4150`, `2740` | idem |
-| Escaleras (17 links) | `432` (stair down) arriba + `1396` (wooden stairs, `floorChangeNorth`) abajo | `STAIRS.md`; `1396` ya está en `STAIRS_LANDING` de `teleport.lua` (aterriza en `x, y+1`) |
-| Buraco de la entrada | `469` (hole, `floorChangeDown`) arriba + `1386` (ladder) abajo, cercado por 4 piedras `1285` | `shovel.lua` (468→469 con pala; acá queda abierto), `rope.lua`/`teleport.lua` (`LADDERS_UP` 1386 sube a `x, y+1`) |
-| Escalera de mano de la torre | `409` (ladder down) arriba + `1386` abajo | `teleport.lua` (`LADDERS_UP` 1386) y `actions.xml` (409 → `teleport.lua`) |
+| Escaleras (18 links) | `409` (ladder down) arriba + `1386` (escalera de mano) abajo | `teleport.lua` (`LADDERS_UP` 1386 sube a `x, y+1`) y `actions.xml` (409 → `teleport.lua`) |
+| Buraco de la entrada | `469` (hole, `floorChangeDown`) arriba + `1386` abajo, cercado por 4 piedras `1285` | `shovel.lua` (468→469 con pala; acá queda abierto) y `teleport.lua` (`LADDERS_UP` 1386) |
 
 ### Vegetación: densa pero respirable
 
@@ -88,30 +87,41 @@ La dificultad sube de sur a norte (entrada → castillo) y de abajo hacia la tor
 
 ### Escaleras
 
-Tres pares, siempre en la misma casilla (arriba / abajo):
+Todas son del estilo de la entrada: **escalera de mano**. Dos pares, siempre en la misma casilla
+(arriba / abajo):
 
-- **Clásico (17 links):** `432` arriba y `1396` abajo. Al subir se llega a `(x, y-1)`; al bajar, a `(x, y+1)`
-  (`1396` está en `STAIRS_LANDING` → *north* → aterriza al sur).
-- **Buraco de la entrada (`entrada`):** `469` (hole) arriba y `1386` (escalera de mano) abajo, rodeado por
-  4 piedras `1285` y con el sur libre. Al usar la `1386` se sube a `(x, y+1)`; al bajar por el buraco se cae
-  en la misma casilla (la `1386` no mueve: offset 0). En Tibia original es un montículo `468` que se abre
-  con pala (`shovel.lua`); en este OT el `469` no tiene decay configurado, así que queda abierto de entrada.
-- **Escalera de mano de la torre (`torre 2->3`, piso del dragón):** `409` (ladder down) arriba y `1386`
-  abajo, mismos aterrizajes que el buraco.
+- **Escalera de mano (18 links):** `409` (ladder down: hueco con marco de madera y la escalera hacia
+  abajo) arriba y `1386` (ladder) abajo. Al usar la `1386` se sube a `(x, y+1)`; al bajar por el `409` se
+  cae en la misma casilla (la `1386` no mueve: offset 0, no está en `STAIRS_LANDING`).
+- **Buraco de la entrada (`entrada`):** `469` (hole, abrible con pala en el Tibia original) arriba y
+  `1386` abajo, rodeado por 4 piedras `1285` (oeste, este, noroeste, noreste) con el sur libre: es el
+  aterrizaje de la escalera de mano. En este OT el `469` no tiene decay configurado, así que queda
+  abierto de entrada.
 
-| Etiqueta | Tipo | Arriba | Abajo |
-|----------|------|--------|-------|
+No se usan `432`/`1396` (stair down / wooden stairs), ni `1385`, `3685` ni `3687`: en la zona no queda
+ninguna casilla con esos ids.
+
+| Etiqueta | Tipo | Arriba (bajada) | Abajo (escalera de mano) |
+|---|---|---|---|
 | entrada | buraco 469 + 1386 | `39,340,7` | `39,340,8` |
-| sótano→patio | 432 + 1396 | `57,301,7` | `57,301,8` |
-| sótano→-2 | 432 + 1396 | `58,313,8` | `58,313,9` |
-| -2→-3 | 432 + 1396 | `42,312,9` | `42,312,10` |
-| patio→adarve (4 esquinas) | 432 + 1396 | `42,300 / 58,300 / 43,313 / 57,313` (z6) | mismas casillas en z7 |
-| torre→adarve | 432 + 1396 | `53,304,6` | `53,304,7` |
-| adarve→torretas (4) | 432 + 1396 | `43,300 / 57,300 / 42,313 / 58,313` (z5) | mismas casillas en z6 |
-| torre adarve→2 | 432 + 1396 | `48,304,5` | `48,304,6` |
-| torretas→3 (4) | 432 + 1396 | `42,300 / 58,300 / 41,313 / 57,313` (z4) | mismas casillas en z5 |
-| torre 2→3 | escalera de mano 409 + 1386 | `52,303,4` | `52,303,5` |
-
+| sotano->patio | 409 + 1386 | `57,303,7` | `57,303,8` |
+| sotano->-2 | 409 + 1386 | `58,313,8` | `58,313,9` |
+| -2->-3 | 409 + 1386 | `42,312,9` | `42,312,10` |
+| patio->adarve NO | 409 + 1386 | `42,299,6` | `42,299,7` |
+| patio->adarve NE | 409 + 1386 | `57,299,6` | `57,299,7` |
+| patio->adarve SO | 409 + 1386 | `43,312,6` | `43,312,7` |
+| patio->adarve SE | 409 + 1386 | `57,312,6` | `57,312,7` |
+| torre->adarve | 409 + 1386 | `53,304,6` | `53,304,7` |
+| adarve->torreta NO | 409 + 1386 | `43,299,5` | `43,299,6` |
+| adarve->torreta NE | 409 + 1386 | `58,299,5` | `58,299,6` |
+| adarve->torreta SO | 409 + 1386 | `42,313,5` | `42,313,6` |
+| adarve->torreta SE | 409 + 1386 | `58,313,5` | `58,313,6` |
+| torre adarve->2 | 409 + 1386 | `48,304,5` | `48,304,6` |
+| torreta NO->3 | 409 + 1386 | `42,299,4` | `42,299,5` |
+| torreta NE->3 | 409 + 1386 | `57,299,4` | `57,299,5` |
+| torreta SO->3 | 409 + 1386 | `42,312,4` | `42,312,5` |
+| torreta SE->3 | 409 + 1386 | `58,312,4` | `58,312,5` |
+| torre 2->3 | 409 + 1386 | `52,303,4` | `52,303,5` |
 Carteles en `readables.xml`, bloque `ELVENBANE_SIGNS`. Spawns en `test-spawn.xml`, bloque
 `ELVENBANE_SPAWNS`.
 
@@ -119,9 +129,11 @@ Carteles en `readables.xml`, bloque `ELVENBANE_SIGNS`. Spawns en `test-spawn.xml
 
 La planta ASCII marca las escaleras con `S`, pero varias no tienen contraparte lógica válida (las
 llegadas caían en pared o vacío). `resolve_stair()` las reubica a la casilla caminable más cercana
-con llegadas libres; el manifiesto guarda cada reubicación en `relocated`. Las 13 reubicadas están a
-≤ 1 casilla del `S` original (p. ej. `patio→adarve NO` de `42,299` a `42,300`). Las celdas de la
-prisión del -3 que el minimapa dibuja cerradas se abren como piso (`PRISON_DOORS`).
+con llegadas libres; el manifiesto guarda cada reubicación en `relocated`. Con el par de escalera de
+mano quedaron 4 reubicadas, todas a 1 casilla del `S`: `sotano->patio` `57,302→57,303`,
+`sotano->-2` `57,313→58,313`, `torreta NE->3` `58,299→57,299` y `torre 2->3` `53,303→52,303`
+(las demás ya caían donde la llegada al subir, `x, y+1`, es piso). Las celdas de la prisión del -3
+que el minimapa dibuja cerradas se abren como piso (`PRISON_DOORS`).
 
 ## Vecinos
 
@@ -146,7 +158,7 @@ en todo el ancho: el único acceso es el túnel (z8).
 ## Reglas que valida el script (si algo falla no escribe nada)
 
 - Caja vacía: se niega a escribir si la caja pisa casillas existentes (verificada vacía en z4–z10).
-- Cada escalera con su par correcto (432+1396, 469+1386 o 409+1386) en la misma casilla; las dos llegadas caminables y
+- Cada escalera con su par correcto (409+1386, o 469+1386 en la entrada) en la misma casilla; las dos llegadas caminables y
   sin otra escalera.
 - Alcanzabilidad multi-piso desde la llegada (BFS que sigue escaleras y huecos): todo lo caminable
   se alcanza. El bosque se ajusta (`open_pockets()`) y los pedazos de pasto que quedan rodeados de
@@ -178,7 +190,7 @@ cambió en `main`, no mergear el binario: volver a correr el script sobre el map
 0 casillas con ground `919`, orilla exacta en toda la costa, patio del castillo sin vegetación). La
 superficie se rehizo para que se parezca a la referencia: isla más grande con bosque al este y al
 sur, tierra firme sin agujeros, orilla completa y montañitas de roca (`4566` + `906`/`903`) en vez de
-los bloques negros. Las escaleras quedaron con sus tres pares (432+1396, 469+1386 en la entrada y
-409+1386 en el piso del dragón). Falta
+los bloques negros. Las 19 escaleras usan el estilo de la entrada: escalera de mano 409 + 1386 (la
+entrada con buraco 469 + 1386 y sus 4 piedras). Falta
 deploy y recorrido in-game. Antes de deployar un `test.otbm` nuevo, probar depots in-game
 ([`../gameplay/DEPOTS.md`](../gameplay/DEPOTS.md)).

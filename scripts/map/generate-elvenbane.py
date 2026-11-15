@@ -161,27 +161,28 @@ HUNTS = {
 GAP = 3                                # separación mínima entre centros de spawn
 
 # --- escaleras: (etiqueta, piso de arriba, piso de abajo, (x, y) deseado, tipo) -------------------
-# tipo: "stairs" = 432 + 1396; "hole" = 469 + 1386 (buraco de la entrada, con pala en Tibia);
-#        "ladder" = 409 + 1386 (escalera de mano de la torre).
+# tipo: "ladder" = 409 (ladder down) + 1386 (escalera de mano) en las 18 conexiones;
+#        "hole" = 469 + 1386, sólo el buraco de la entrada (cercado por 4 piedras 1285).
+# Al usar 1386 se sube a (x, y+1, z-1); al bajar por 409 se cae en la misma casilla (offset 0).
 LINKS = [
     ("entrada", Z7, Z8, STAIR_ENTRY, "hole"),
-    ("sotano->patio", Z7, Z8, (X_CASTLE + 17, Y_CASTLE + 4), "stairs"),
-    ("sotano->-2", Z8, Z9, (X_CASTLE + 17, Y_CASTLE + 15), "stairs"),
-    ("-2->-3", Z9, Z10, (X_CASTLE + 2, Y_CASTLE + 14), "stairs"),
-    ("patio->adarve NO", Z6, Z7, (X_CASTLE + 2, Y_CASTLE + 1), "stairs"),
-    ("patio->adarve NE", Z6, Z7, (X_CASTLE + 17, Y_CASTLE + 1), "stairs"),
-    ("patio->adarve SO", Z6, Z7, (X_CASTLE + 3, Y_CASTLE + 14), "stairs"),
-    ("patio->adarve SE", Z6, Z7, (X_CASTLE + 17, Y_CASTLE + 14), "stairs"),
-    ("torre->adarve", Z6, Z7, (X_CASTLE + 13, Y_CASTLE + 6), "stairs"),
-    ("adarve->torreta NO", Z5, Z6, (X_CASTLE + 3, Y_CASTLE + 1), "stairs"),
-    ("adarve->torreta NE", Z5, Z6, (X_CASTLE + 18, Y_CASTLE + 1), "stairs"),
-    ("adarve->torreta SO", Z5, Z6, (X_CASTLE + 2, Y_CASTLE + 15), "stairs"),
-    ("adarve->torreta SE", Z5, Z6, (X_CASTLE + 18, Y_CASTLE + 15), "stairs"),
-    ("torre adarve->2", Z5, Z6, (X_CASTLE + 8, Y_CASTLE + 6), "stairs"),
-    ("torreta NO->3", Z4, Z5, (X_CASTLE + 2, Y_CASTLE + 1), "stairs"),
-    ("torreta NE->3", Z4, Z5, (X_CASTLE + 18, Y_CASTLE + 1), "stairs"),
-    ("torreta SO->3", Z4, Z5, (X_CASTLE + 2, Y_CASTLE + 14), "stairs"),
-    ("torreta SE->3", Z4, Z5, (X_CASTLE + 18, Y_CASTLE + 14), "stairs"),
+    ("sotano->patio", Z7, Z8, (X_CASTLE + 17, Y_CASTLE + 4), "ladder"),
+    ("sotano->-2", Z8, Z9, (X_CASTLE + 17, Y_CASTLE + 15), "ladder"),
+    ("-2->-3", Z9, Z10, (X_CASTLE + 2, Y_CASTLE + 14), "ladder"),
+    ("patio->adarve NO", Z6, Z7, (X_CASTLE + 2, Y_CASTLE + 1), "ladder"),
+    ("patio->adarve NE", Z6, Z7, (X_CASTLE + 17, Y_CASTLE + 1), "ladder"),
+    ("patio->adarve SO", Z6, Z7, (X_CASTLE + 3, Y_CASTLE + 14), "ladder"),
+    ("patio->adarve SE", Z6, Z7, (X_CASTLE + 17, Y_CASTLE + 14), "ladder"),
+    ("torre->adarve", Z6, Z7, (X_CASTLE + 13, Y_CASTLE + 6), "ladder"),
+    ("adarve->torreta NO", Z5, Z6, (X_CASTLE + 3, Y_CASTLE + 1), "ladder"),
+    ("adarve->torreta NE", Z5, Z6, (X_CASTLE + 18, Y_CASTLE + 1), "ladder"),
+    ("adarve->torreta SO", Z5, Z6, (X_CASTLE + 2, Y_CASTLE + 15), "ladder"),
+    ("adarve->torreta SE", Z5, Z6, (X_CASTLE + 18, Y_CASTLE + 15), "ladder"),
+    ("torre adarve->2", Z5, Z6, (X_CASTLE + 8, Y_CASTLE + 6), "ladder"),
+    ("torreta NO->3", Z4, Z5, (X_CASTLE + 2, Y_CASTLE + 1), "ladder"),
+    ("torreta NE->3", Z4, Z5, (X_CASTLE + 18, Y_CASTLE + 1), "ladder"),
+    ("torreta SO->3", Z4, Z5, (X_CASTLE + 2, Y_CASTLE + 14), "ladder"),
+    ("torreta SE->3", Z4, Z5, (X_CASTLE + 18, Y_CASTLE + 14), "ladder"),
     ("torre 2->3", Z4, Z5, (X_CASTLE + 13, Y_CASTLE + 5), "ladder"),
 ]
 
@@ -496,8 +497,10 @@ def build_surface(plans, seed: int):
     t[STAIR_ENTRY] = tile(GRASS)          # el hueco lo pone la escalera (LINKS)
     # el buraco de la entrada va cercado por 4 piedras (1285) y el sur queda libre: es el
     # aterrizaje de la escalera de mano (1386 sube a x, y+1)
-    for dx, dy in ((-1, 0), (1, 0), (-1, -1), (1, -1)):
-        t[(STAIR_ENTRY[0] + dx, STAIR_ENTRY[1] + dy)] = tile(GRASS, [STONE_ITEM])
+    stones = {(STAIR_ENTRY[0] + dx, STAIR_ENTRY[1] + dy)
+              for dx, dy in ((-1, 0), (1, 0), (-1, -1), (1, -1))}
+    for pos in stones:
+        t[pos] = tile(GRASS, [STONE_ITEM])
     t[(STAIR_ENTRY[0], STAIR_ENTRY[1] + 1)] = tile(GRASS)
     t[(STAIR_ENTRY[0], STAIR_ENTRY[1] - 1)] = tile(GRASS)
 
@@ -510,7 +513,7 @@ def build_surface(plans, seed: int):
                      "al sotano del castillo.\nPortal al norte: templo.",
              sign_2: "BAJADA A ELVENBANE\nTunel largo hasta el sotano.\nTrolls, orcos y enanos."}
     return t, {"signs": signs, "castle_walls": walls, "mountains": mountain, "forest": forest,
-               "no_coast": set(override) | mountain}
+               "no_coast": set(override) | mountain, "stones": stones}
 
 
 # ---------------------------------------------------------------- sótanos y pisos altos
@@ -732,7 +735,7 @@ def bfs(layers: dict, start):
     return seen
 
 
-def open_pockets(t7: dict, layers: dict, start):
+def open_pockets(t7: dict, layers: dict, start, protect=frozenset()):
     """Deja el bosque transitable sacando árboles/arbustos de los bolsones que queden sin salida.
 
     Nunca cambia el terreno ni saca piezas de orilla (4644-4655): sólo tala el árbol o arbusto
@@ -750,7 +753,7 @@ def open_pockets(t7: dict, layers: dict, start):
             for dx, dy in CARD:
                 n = (pos[0] + dx, pos[1] + dy)
                 cell = t7.get(n)
-                if not cell or cell["g"] in OTB_BLOCK:
+                if not cell or cell["g"] in OTB_BLOCK or n in protect:
                     continue
                 keep_pieces = [i for i in cell["it"] if i not in OTB_BLOCK or 4644 <= i <= 4655]
                 if len(keep_pieces) != len(cell["it"]):
@@ -871,7 +874,7 @@ def main() -> int:
 
     # --- validaciones ---
     errors = []
-    opened = open_pockets(layers[Z7], layers, (ARRIVAL[0], ARRIVAL[1], Z7))
+    opened = open_pockets(layers[Z7], layers, (ARRIVAL[0], ARRIVAL[1], Z7), info["stones"])
     walkbyz = {z: {p for p, c in tl.items() if walk_tile(c)} for z, tl in layers.items()}
     reach = bfs(layers, (ARRIVAL[0], ARRIVAL[1], Z7))
     for z in sorted(layers):

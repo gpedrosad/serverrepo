@@ -5287,84 +5287,84 @@
 		<monster name="Wasp" x="-1" y="1" z="7" spawntime="90" />
 		<monster name="Wasp" x="0" y="0" z="7" spawntime="90" />
 	</spawn>
-	<spawn centerx="42" centery="339" centerz="7" radius="3">
-		<monster name="Wasp" x="1" y="0" z="7" spawntime="90" />
-		<monster name="Wasp" x="-1" y="1" z="7" spawntime="90" />
+	<spawn centerx="42" centery="340" centerz="7" radius="3">
+		<monster name="Wasp" x="1" y="1" z="7" spawntime="90" />
+		<monster name="Wasp" x="-1" y="0" z="7" spawntime="90" />
 	</spawn>
-	<spawn centerx="36" centery="331" centerz="7" radius="3">
+	<spawn centerx="31" centery="344" centerz="7" radius="3">
+		<monster name="Orc" x="-1" y="1" z="7" spawntime="90" />
+		<monster name="Orc" x="0" y="-1" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="38" centery="352" centerz="7" radius="3">
+		<monster name="Orc" x="0" y="-1" z="7" spawntime="90" />
 		<monster name="Orc" x="1" y="-1" z="7" spawntime="90" />
-		<monster name="Orc" x="-1" y="0" z="7" spawntime="90" />
 	</spawn>
-	<spawn centerx="45" centery="344" centerz="7" radius="3">
-		<monster name="Orc" x="-1" y="0" z="7" spawntime="90" />
-		<monster name="Orc" x="1" y="-1" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="28" centery="349" centerz="7" radius="3">
-		<monster name="Orc Spearman" x="0" y="1" z="7" spawntime="90" />
+	<spawn centerx="35" centery="349" centerz="7" radius="3">
+		<monster name="Orc Spearman" x="-1" y="-1" z="7" spawntime="90" />
 		<monster name="Orc Spearman" x="0" y="0" z="7" spawntime="90" />
 	</spawn>
-	<spawn centerx="29" centery="333" centerz="7" radius="3">
-		<monster name="Elf" x="-1" y="0" z="7" spawntime="90" />
-		<monster name="Elf" x="1" y="0" z="7" spawntime="90" />
+	<spawn centerx="30" centery="351" centerz="7" radius="3">
+		<monster name="Elf" x="0" y="-1" z="7" spawntime="90" />
+		<monster name="Elf" x="1" y="1" z="7" spawntime="90" />
 	</spawn>
-	<spawn centerx="31" centery="352" centerz="7" radius="3">
-		<monster name="Elf Scout" x="-1" y="0" z="7" spawntime="120" />
+	<spawn centerx="35" centery="340" centerz="7" radius="3">
+		<monster name="Elf Scout" x="0" y="1" z="7" spawntime="120" />
 	</spawn>
-	<spawn centerx="38" centery="338" centerz="7" radius="3">
+	<spawn centerx="30" centery="332" centerz="7" radius="3">
+		<monster name="Orc Warrior" x="-1" y="1" z="7" spawntime="90" />
 		<monster name="Orc Warrior" x="1" y="0" z="7" spawntime="90" />
-		<monster name="Orc Warrior" x="0" y="0" z="7" spawntime="90" />
 	</spawn>
-	<spawn centerx="42" centery="335" centerz="7" radius="3">
-		<monster name="Orc Warrior" x="-1" y="0" z="7" spawntime="90" />
-		<monster name="Orc Warrior" x="0" y="0" z="7" spawntime="90" />
+	<spawn centerx="32" centery="352" centerz="7" radius="3">
+		<monster name="Orc Warrior" x="-1" y="-1" z="7" spawntime="90" />
+		<monster name="Orc Warrior" x="1" y="-1" z="7" spawntime="90" />
 	</spawn>
-	<spawn centerx="49" centery="305" centerz="7" radius="3">
-		<monster name="Minotaur" x="-1" y="-1" z="7" spawntime="90" />
-		<monster name="Minotaur" x="-1" y="1" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="51" centery="301" centerz="7" radius="3">
-		<monster name="Minotaur" x="-1" y="0" z="7" spawntime="90" />
+	<spawn centerx="58" centery="299" centerz="7" radius="3">
 		<monster name="Minotaur" x="0" y="0" z="7" spawntime="90" />
+		<monster name="Minotaur" x="0" y="1" z="7" spawntime="90" />
 	</spawn>
-	<spawn centerx="53" centery="314" centerz="7" radius="3">
-		<monster name="Orc Warrior" x="1" y="0" z="7" spawntime="90" />
-		<monster name="Orc Warrior" x="0" y="0" z="7" spawntime="90" />
+	<spawn centerx="48" centery="310" centerz="7" radius="3">
+		<monster name="Minotaur" x="-1" y="1" z="7" spawntime="90" />
+		<monster name="Minotaur" x="-1" y="0" z="7" spawntime="90" />
 	</spawn>
-	<spawn centerx="41" centery="304" centerz="7" radius="3">
+	<spawn centerx="51" centery="312" centerz="7" radius="3">
+		<monster name="Orc Warrior" x="0" y="1" z="7" spawntime="90" />
 		<monster name="Orc Warrior" x="0" y="-1" z="7" spawntime="90" />
-		<monster name="Orc Warrior" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="42" centery="300" centerz="7" radius="3">
+		<monster name="Orc Warrior" x="1" y="0" z="7" spawntime="90" />
+		<monster name="Orc Warrior" x="-1" y="1" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="46" centery="314" centerz="7" radius="3">
+		<monster name="Minotaur Guard" x="-1" y="0" z="7" spawntime="120" />
 	</spawn>
 	<spawn centerx="51" centery="306" centerz="7" radius="3">
-		<monster name="Minotaur Guard" x="1" y="-1" z="7" spawntime="120" />
-	</spawn>
-	<spawn centerx="52" centery="310" centerz="7" radius="3">
 		<monster name="Orc Berserker" x="1" y="1" z="7" spawntime="120" />
 	</spawn>
-	<spawn centerx="55" centery="316" centerz="8" radius="3">
-		<monster name="Troll" x="1" y="0" z="8" spawntime="90" />
+	<spawn centerx="45" centery="297" centerz="8" radius="3">
+		<monster name="Troll" x="0" y="-1" z="8" spawntime="90" />
+		<monster name="Troll" x="0" y="1" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="43" centery="311" centerz="8" radius="3">
+		<monster name="Troll" x="-1" y="0" z="8" spawntime="90" />
 		<monster name="Troll" x="0" y="0" z="8" spawntime="90" />
 	</spawn>
-	<spawn centerx="38" centery="338" centerz="8" radius="3">
-		<monster name="Troll" x="1" y="0" z="8" spawntime="90" />
-		<monster name="Troll" x="1" y="-1" z="8" spawntime="90" />
-	</spawn>
-	<spawn centerx="40" centery="339" centerz="8" radius="3">
+	<spawn centerx="46" centery="316" centerz="8" radius="3">
+		<monster name="Orc" x="1" y="0" z="8" spawntime="90" />
 		<monster name="Orc" x="-1" y="0" z="8" spawntime="90" />
-		<monster name="Orc" x="1" y="1" z="8" spawntime="90" />
 	</spawn>
-	<spawn centerx="41" centery="325" centerz="8" radius="3">
-		<monster name="Orc" x="0" y="1" z="8" spawntime="90" />
-		<monster name="Orc" x="1" y="1" z="8" spawntime="90" />
+	<spawn centerx="38" centery="338" centerz="8" radius="3">
+		<monster name="Orc" x="0" y="0" z="8" spawntime="90" />
+		<monster name="Orc" x="-1" y="1" z="8" spawntime="90" />
 	</spawn>
-	<spawn centerx="56" centery="312" centerz="8" radius="3">
-		<monster name="Orc Spearman" x="0" y="1" z="8" spawntime="90" />
+	<spawn centerx="52" centery="314" centerz="8" radius="3">
+		<monster name="Orc Spearman" x="1" y="-1" z="8" spawntime="90" />
 		<monster name="Orc Spearman" x="0" y="-1" z="8" spawntime="90" />
 	</spawn>
-	<spawn centerx="44" centery="299" centerz="8" radius="3">
-		<monster name="Dwarf" x="0" y="0" z="8" spawntime="120" />
+	<spawn centerx="59" centery="307" centerz="8" radius="3">
+		<monster name="Dwarf" x="-1" y="1" z="8" spawntime="120" />
 	</spawn>
-	<spawn centerx="52" centery="307" centerz="8" radius="3">
-		<monster name="Minotaur" x="1" y="1" z="8" spawntime="90" />
+	<spawn centerx="45" centery="301" centerz="8" radius="3">
+		<monster name="Minotaur" x="0" y="0" z="8" spawntime="90" />
 		<monster name="Minotaur" x="0" y="1" z="8" spawntime="90" />
 	</spawn>
 	<spawn centerx="43" centery="308" centerz="8" radius="3">
@@ -5375,94 +5375,94 @@
 		<monster name="Orc Warrior" x="1" y="0" z="8" spawntime="90" />
 		<monster name="Orc Warrior" x="0" y="1" z="8" spawntime="90" />
 	</spawn>
-	<spawn centerx="45" centery="313" centerz="9" radius="3">
+	<spawn centerx="58" centery="309" centerz="9" radius="3">
+		<monster name="Orc" x="0" y="0" z="9" spawntime="90" />
 		<monster name="Orc" x="1" y="1" z="9" spawntime="90" />
-		<monster name="Orc" x="0" y="1" z="9" spawntime="90" />
 	</spawn>
-	<spawn centerx="59" centery="308" centerz="9" radius="3">
-		<monster name="Orc" x="0" y="1" z="9" spawntime="90" />
-		<monster name="Orc" x="-1" y="0" z="9" spawntime="90" />
+	<spawn centerx="53" centery="302" centerz="9" radius="3">
+		<monster name="Orc" x="1" y="1" z="9" spawntime="90" />
+		<monster name="Orc" x="-1" y="1" z="9" spawntime="90" />
 	</spawn>
-	<spawn centerx="58" centery="302" centerz="9" radius="3">
-		<monster name="Minotaur" x="-1" y="1" z="9" spawntime="90" />
+	<spawn centerx="49" centery="299" centerz="9" radius="3">
+		<monster name="Minotaur" x="1" y="0" z="9" spawntime="90" />
 		<monster name="Minotaur" x="1" y="1" z="9" spawntime="90" />
 	</spawn>
-	<spawn centerx="48" centery="313" centerz="9" radius="3">
-		<monster name="Minotaur" x="-1" y="0" z="9" spawntime="90" />
-		<monster name="Minotaur" x="1" y="0" z="9" spawntime="90" />
+	<spawn centerx="44" centery="300" centerz="9" radius="3">
+		<monster name="Minotaur" x="0" y="0" z="9" spawntime="90" />
+		<monster name="Minotaur" x="-1" y="-1" z="9" spawntime="90" />
 	</spawn>
-	<spawn centerx="53" centery="305" centerz="9" radius="3">
-		<monster name="Orc Warrior" x="0" y="0" z="9" spawntime="90" />
+	<spawn centerx="45" centery="309" centerz="9" radius="3">
+		<monster name="Orc Warrior" x="-1" y="0" z="9" spawntime="90" />
+		<monster name="Orc Warrior" x="1" y="1" z="9" spawntime="90" />
+	</spawn>
+	<spawn centerx="52" centery="311" centerz="9" radius="3">
+		<monster name="Orc Warrior" x="0" y="-1" z="9" spawntime="90" />
 		<monster name="Orc Warrior" x="-1" y="0" z="9" spawntime="90" />
 	</spawn>
-	<spawn centerx="51" centery="301" centerz="9" radius="3">
-		<monster name="Orc Warrior" x="1" y="0" z="9" spawntime="90" />
-		<monster name="Orc Warrior" x="1" y="1" z="9" spawntime="90" />
+	<spawn centerx="59" centery="311" centerz="10" radius="3">
+		<monster name="Minotaur" x="-1" y="0" z="10" spawntime="90" />
+		<monster name="Minotaur" x="0" y="0" z="10" spawntime="90" />
 	</spawn>
 	<spawn centerx="45" centery="308" centerz="10" radius="3">
 		<monster name="Minotaur" x="-1" y="0" z="10" spawntime="90" />
 		<monster name="Minotaur" x="0" y="-1" z="10" spawntime="90" />
 	</spawn>
-	<spawn centerx="54" centery="314" centerz="10" radius="3">
-		<monster name="Minotaur" x="0" y="0" z="10" spawntime="90" />
-		<monster name="Minotaur" x="-1" y="0" z="10" spawntime="90" />
+	<spawn centerx="51" centery="310" centerz="10" radius="3">
+		<monster name="Orc Warrior" x="0" y="1" z="10" spawntime="90" />
+		<monster name="Orc Warrior" x="0" y="-1" z="10" spawntime="90" />
 	</spawn>
-	<spawn centerx="51" centery="311" centerz="10" radius="3">
-		<monster name="Orc Warrior" x="1" y="0" z="10" spawntime="90" />
+	<spawn centerx="42" centery="313" centerz="10" radius="3">
 		<monster name="Orc Warrior" x="-1" y="1" z="10" spawntime="90" />
+		<monster name="Orc Warrior" x="-1" y="0" z="10" spawntime="90" />
 	</spawn>
-	<spawn centerx="42" centery="314" centerz="10" radius="3">
-		<monster name="Orc Warrior" x="1" y="0" z="10" spawntime="90" />
-		<monster name="Orc Warrior" x="0" y="0" z="10" spawntime="90" />
+	<spawn centerx="51" centery="302" centerz="10" radius="3">
+		<monster name="Minotaur Guard" x="0" y="0" z="10" spawntime="120" />
 	</spawn>
-	<spawn centerx="44" centery="311" centerz="10" radius="3">
-		<monster name="Minotaur Guard" x="0" y="-1" z="10" spawntime="120" />
-	</spawn>
-	<spawn centerx="53" centery="310" centerz="10" radius="3">
+	<spawn centerx="53" centery="308" centerz="10" radius="3">
 		<monster name="Minotaur Guard" x="1" y="0" z="10" spawntime="120" />
 	</spawn>
-	<spawn centerx="45" centery="299" centerz="6" radius="3">
-		<monster name="Minotaur" x="1" y="0" z="6" spawntime="90" />
-	</spawn>
-	<spawn centerx="49" centery="314" centerz="6" radius="3">
+	<spawn centerx="49" centery="303" centerz="6" radius="3">
 		<monster name="Minotaur" x="0" y="0" z="6" spawntime="90" />
 	</spawn>
-	<spawn centerx="46" centery="314" centerz="6" radius="3">
-		<monster name="Orc Warrior" x="-1" y="0" z="6" spawntime="90" />
+	<spawn centerx="43" centery="301" centerz="6" radius="3">
+		<monster name="Minotaur" x="0" y="0" z="6" spawntime="90" />
 	</spawn>
-	<spawn centerx="52" centery="305" centerz="5" radius="3">
-		<monster name="Elf" x="-1" y="-1" z="5" spawntime="120" />
+	<spawn centerx="41" centery="304" centerz="6" radius="3">
+		<monster name="Orc Warrior" x="0" y="-1" z="6" spawntime="90" />
 	</spawn>
-	<spawn centerx="59" centery="312" centerz="5" radius="3">
-		<monster name="Elf Scout" x="0" y="0" z="5" spawntime="120" />
+	<spawn centerx="53" centery="304" centerz="5" radius="3">
+		<monster name="Elf" x="0" y="0" z="5" spawntime="120" />
 	</spawn>
-	<spawn centerx="42" centery="299" centerz="5" radius="3">
-		<monster name="Orc Warrior" x="-1" y="1" z="5" spawntime="90" />
+	<spawn centerx="52" centery="306" centerz="5" radius="3">
+		<monster name="Elf Scout" x="1" y="-1" z="5" spawntime="120" />
+	</spawn>
+	<spawn centerx="59" centery="301" centerz="5" radius="3">
+		<monster name="Orc Warrior" x="0" y="-1" z="5" spawntime="90" />
 		<monster name="Orc Warrior" x="0" y="0" z="5" spawntime="90" />
 	</spawn>
-	<spawn centerx="49" centery="305" centerz="5" radius="3">
-		<monster name="Orc Shaman" x="-1" y="1" z="5" spawntime="150" />
+	<spawn centerx="49" centery="306" centerz="5" radius="3">
+		<monster name="Orc Shaman" x="-1" y="0" z="5" spawntime="150" />
 	</spawn>
-	<spawn centerx="49" centery="308" centerz="5" radius="3">
-		<monster name="Elf Arcanist" x="1" y="-1" z="5" spawntime="150" />
+	<spawn centerx="50" centery="303" centerz="5" radius="3">
+		<monster name="Elf Arcanist" x="1" y="0" z="5" spawntime="150" />
 	</spawn>
-	<spawn centerx="57" centery="299" centerz="4" radius="3">
-		<monster name="Orc Berserker" x="0" y="0" z="4" spawntime="120" />
+	<spawn centerx="41" centery="301" centerz="4" radius="3">
+		<monster name="Orc Berserker" x="0" y="-1" z="4" spawntime="120" />
 	</spawn>
-	<spawn centerx="58" centery="301" centerz="4" radius="3">
-		<monster name="Hunter" x="1" y="0" z="4" spawntime="120" />
+	<spawn centerx="43" centery="314" centerz="4" radius="3">
+		<monster name="Hunter" x="-1" y="0" z="4" spawntime="120" />
 	</spawn>
-	<spawn centerx="42" centery="312" centerz="4" radius="3">
-		<monster name="Minotaur Archer" x="0" y="0" z="4" spawntime="120" />
+	<spawn centerx="59" centery="301" centerz="4" radius="3">
+		<monster name="Minotaur Archer" x="-1" y="0" z="4" spawntime="120" />
 	</spawn>
-	<spawn centerx="53" centery="306" centerz="4" radius="3">
+	<spawn centerx="53" centery="305" centerz="4" radius="3">
 		<monster name="Minotaur Mage" x="-1" y="0" z="4" spawntime="150" />
 	</spawn>
-	<spawn centerx="49" centery="308" centerz="4" radius="3">
-		<monster name="Demon Skeleton" x="0" y="-1" z="4" spawntime="180" />
+	<spawn centerx="51" centery="308" centerz="4" radius="3">
+		<monster name="Demon Skeleton" x="-1" y="0" z="4" spawntime="180" />
 	</spawn>
-	<spawn centerx="50" centery="305" centerz="4" radius="3">
-		<monster name="Dragon" x="-1" y="-1" z="4" spawntime="300" />
+	<spawn centerx="50" centery="304" centerz="4" radius="3">
+		<monster name="Dragon" x="1" y="-1" z="4" spawntime="300" />
 	</spawn>
 	<!-- END ELVENBANE_SPAWNS -->
 </spawns>
