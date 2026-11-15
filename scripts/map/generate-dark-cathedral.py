@@ -60,10 +60,14 @@ MONSTERS = REPO / "server/YurOTS/ots/data/monster"
 MANIFEST = WORLD / "generated-dark-cathedral.json"
 
 # --- caja --------------------------------------------------------------------------------------
-# Zona vacía en z7-z9 (verificada con load_tiles antes de escribir): al sur del Valle de las
-# Bestias (x 262-361, y 232-378) y al oeste del Paso del Norte (x 370-469), lejos de la jungla de
-# la ciudad (x 20-120, y 60-160) y de la Isla Natural (x 131-180, y 433-476).
-X0, Y0, W, H = 118, 284, 60, 70            # x 118-177, y 284-353
+# Zona vacía de 99x110. Vecinos (no se pisa nada de esto): Elvenbane termina en x84 (box
+# 18-84 x 282-362); la caja oficial de Hydras arranca en x184 (y340-419); al sur, arena en
+# x169-183 desde y384 y la Wave Arena reserva x165-190, y380-410 (dejamos colchón en y374); al
+# noroeste hay una cueva ajena en x85-122 con y<=255 y tiles en z10 en y256-260 (no se escribe
+# y<=263 ni z10). Antes la caja era 60x70 en (118,284); ahora es (85,264) 99x110 y el layout se
+# desplaza (33,20) en local para que las coordenadas ABSOLUTAS no cambien.
+X0, Y0, W, H = 85, 264, 99, 110            # x 85-183, y 264-373
+DX, DY = 33, 20                            # desplazamiento de las locales de diseño
 Z7, Z8, Z9 = 7, 8, 9
 VIEW = (7, 5)                              # media pantalla del cliente 7.6
 BAND = (VIEW[0] + 1, VIEW[1] + 1)          # franja de jungla cerrada en el borde (8 y 6)
@@ -75,11 +79,14 @@ GRASSY = {4756, 4526} | set(range(110, 122))               # pasto y bordes de t
 DIRT_SIDE = {"n": 111, "e": 112, "s": 110, "w": 113}        # pasto con borde de tierra
 DIRT_CORNER = {("n", "w"): 120, ("n", "e"): 121, ("s", "w"): 119, ("s", "e"): 118}
 DIRT_INNER = {"nw": 116, "ne": 117, "sw": 115, "se": 114}
-# río en arco: entra por el oeste, pasa al norte del predio y baja por el este
-RIVER = [(3, 16), (5, 8), (12, 4), (24, 2), (38, 4), (47, 9), (52, 18), (54, 28),
-         (53, 38), (49, 46), (43, 51)]
-RIVER_HALF = 2.2
-ESPLANADE = (6, 17, 51, 63)                                 # claro de la iglesia (tierra)
+# río en arco: entra por el borde oeste, rodea el predio por el norte y el este y se va por el sur.
+# Del otro lado del agua queda jungla ancha hasta el borde de la caja.
+RIVER = [(0, 40), (5, 28), (14, 19), (28, 12), (44, 8), (60, 7), (76, 11), (86, 20),
+         (90, 32), (90, 46), (88, 60), (84, 72), (76, 84), (66, 92), (54, 96), (42, 97),
+         (36, 104), (34, 109)]
+RIVER_HALF = 3.0
+# claro de la iglesia: elipse con borde irregular (no un rectángulo)
+ESP_CENTER, ESP_RADII = (62.0, 58.0), (25.0, 29.0)
 COAST_SIDE = {"n": 4644, "e": 4645, "s": 4646, "w": 4647}
 COAST_CORNER = {("n", "w"): 4648, ("n", "e"): 4649, ("s", "w"): 4650, ("s", "e"): 4651}
 COAST_INNER = {"nw": 4652, "ne": 4653, "sw": 4654, "se": 4655}
@@ -155,15 +162,20 @@ LINKS8 = [("A", "H1A"), ("B", "H1A"), ("J", "H1B"),
           ("M", "H2"), ("N", "H2"), ("O", "H2"), ("P", "H2"),
           ("Q", "H2"), ("R", "H2"), ("S", "H2"), ("U", "H2")]
 L_ROOMS8 = {"R": ((20, 52, 23, 55),)}                        # cola en L de la sala R
-# cueva NE: cámaras irregulares unidas por pasillos (como las salas G-J de la referencia)
-CAVE_ROOMS = (((46, 9), 3.0), ((40, 6), 2.6), ((36, 10), 2.4), ((43, 12), 2.4),
-              ((48, 15), 2.6), ((49, 20), 2.2), ((44, 20), 2.0), ((38, 6), 2.0))
-CAVE_LINKS = (((46, 9), (40, 6)), ((46, 9), (43, 12)), ((43, 12), (36, 10)),
-              ((43, 12), (48, 15)), ((48, 15), (49, 20)), ((48, 15), (44, 20)),
-              ((44, 20), (36, 10)), ((40, 6), (38, 6)), ((38, 6), (36, 10)))
-CAVE_BOX = (33, 3, 50, 24)
-CAVE_DOOR = ((36, 14), (37, 14))                            # entra desde la antecámara J
+# cueva NE: cámaras irregulares unidas por pasillos (como las salas G-J de la referencia).
+# Con la caja nueva hay margen al norte y al este, así que la red crece (no es sólo un desplazamiento).
+CAVE_ROOMS = (((79, 26), 3.4), ((72, 23), 2.8), ((67, 28), 2.2), ((76, 31), 2.6),
+              ((83, 32), 2.6), ((80, 38), 2.4), ((73, 37), 2.0), ((85, 24), 2.2),
+              ((70, 20), 2.0))
+CAVE_LINKS = (((79, 26), (72, 23)), ((79, 26), (76, 31)), ((79, 26), (85, 24)),
+              ((72, 23), (70, 20)), ((72, 23), (67, 28)), ((76, 31), (83, 32)),
+              ((76, 31), (73, 37)), ((83, 32), (80, 38)), ((73, 37), (80, 38)),
+              ((67, 28), (73, 37)))
+CAVE_BOX = (64, 17, 87, 42)
+CAVE_DOOR = ((69, 34), (70, 34))                            # entra desde la antecámara J
 DOWN8 = (30, 33)                                            # agujero z8 -> z9
+
+MIRROR_X = 125                             # 2 * (DX + 29.5): eje de simetría del -2
 
 # --- cripta profunda (-2, z9) ------------------------------------------------------------------
 NORTH9 = (17, 8, 42, 24)                                    # sala de las columnas
@@ -188,6 +200,49 @@ PILLARS9 = [(x, y) for y in (10, 13, 16, 19, 22) for x in (20, 24, 28, 31, 35, 3
 PILLAR_ITEM = 1514                                          # pilar de piedra (ítem): se lee como columna alta
 DEEP_PORTAL = (29, 61)
 
+# --- desplazamiento a la caja nueva ------------------------------------------------------------
+# Todas las coordenadas de arriba están en el espacio de diseño de 60x70. Se desplazan (DX, DY)
+# para que las ABSOLUTAS sigan siendo las mismas (llegada 148,335,7, portal 157,47,7, etc.).
+
+def _c(p):
+    return (p[0] + DX, p[1] + DY)
+
+
+def _b(b):
+    return (b[0] + DX, b[1] + DY, b[2] + DX, b[3] + DY)
+
+
+ARRIVAL, PORTAL_BACK = _c(ARRIVAL), _c(PORTAL_BACK)
+HOLE_NORTH, HOLE_WEST = _c(HOLE_NORTH), _c(HOLE_WEST)
+DOWN8, DEEP_PORTAL = _c(DOWN8), _c(DEEP_PORTAL)
+NAVE, HALL, YARD = _b(NAVE), _b(HALL), _b(YARD)
+PLAZA, PLATFORM = _b(PLAZA), _b(PLATFORM)
+H1A, H1B, H2 = _b(H1A), _b(H1B), _b(H2)
+AXIS_A, AXIS_B, AXIS_C = _b(AXIS_A), _b(AXIS_B), _b(AXIS_C)
+NAVE_PILLARS = [_c(c) for c in NAVE_PILLARS]
+NAVE_DOORS, WEST_DOORS, EAST_DOORS = ([_c(c) for c in x] for x in (NAVE_DOORS, WEST_DOORS, EAST_DOORS))
+HALL_DOORS, YARD_DOORS = [_c(c) for c in HALL_DOORS], [_c(c) for c in YARD_DOORS]
+WEST_ROOMS = [(n, _b(b)) for n, b in WEST_ROOMS]
+EAST_ROOMS = [(n, _b(b)) for n, b in EAST_ROOMS]
+ROOMS8 = [(n, _b(b), g) for n, b, g in ROOMS8]
+L_ROOMS8 = {n: tuple(_b(b) for b in bs) for n, bs in L_ROOMS8.items()}
+# CAVE_ROOMS / CAVE_LINKS / CAVE_BOX / CAVE_DOOR ya están en la caja nueva
+PATHS = [_c(c) for c in PATHS]
+SIGNS = {_c(k): v for k, v in SIGNS.items()}
+NORTH9, NECK9, OCT9 = _b(NORTH9), _b(NECK9), _b(OCT9)
+ARM_W9, ARM_E9 = _b(ARM_W9), _b(ARM_E9)
+W_ROOMS9 = [(n, _b(b)) for n, b in W_ROOMS9]
+E_DIAMS9 = [(n, _b(b)) for n, b in E_DIAMS9]
+E_OVAL9 = _b(E_OVAL9)
+A_W9, A_E9 = _b(A_W9), _b(A_E9)
+H_W9, H_E9 = _b(H_W9), _b(H_E9)
+V_W9, V_E9 = _b(V_W9), _b(V_E9)
+L_W9, L_E9 = _b(L_W9), _b(L_E9)
+MID9, SOUTH9, FINAL9 = _b(MID9), _b(SOUTH9), _b(FINAL9)
+SIDE_W1, SIDE_W2, SIDE_E1, SIDE_E2 = (_b(x) for x in (SIDE_W1, SIDE_W2, SIDE_E1, SIDE_E2))
+PILLARS9 = [_c(c) for c in PILLARS9]
+
+
 # --- spawns ------------------------------------------------------------------------------------
 SPAWNS7 = [
     ("w1", WEST_ROOMS[0][1], [("Bandit", 2, 70), ("Smuggler", 1, 80)]),
@@ -196,29 +251,29 @@ SPAWNS7 = [
     ("e1", EAST_ROOMS[0][1], [("Bandit", 1, 70), ("Wild Warrior", 1, 90)]),
     ("e3", EAST_ROOMS[2][1], [("Hunter", 1, 120), ("Bandit", 1, 70)]),
     ("hall", HALL, [("Smuggler", 2, 80), ("Bandit", 2, 70), ("Hunter", 1, 120)]),
-    ("jungle", (18, 6, 41, 19), [("Wild Warrior", 2, 90), ("Bandit", 2, 70), ("Hunter", 1, 120)]),
+    ("jungle", (51, 26, 74, 39), [("Wild Warrior", 2, 90), ("Bandit", 2, 70), ("Hunter", 1, 120)]),
 ]
+ROOMS8_BOX = {n: b for n, b, _g in ROOMS8}                  # cajas ya desplazadas
 SPAWNS8 = [
-    ("A", (10, 12, 16, 19), [("Bandit", 2, 80), ("Smuggler", 1, 90)]),
-    ("B", (19, 13, 24, 19), [("Wild Warrior", 2, 90), ("Bandit", 1, 80)]),
-    ("H", (33, 16, 38, 22), [("Rotworm", 2, 100), ("Ghoul", 1, 130)]),
-    ("J", (42, 13, 46, 22), [("Bat", 1, 90), ("Centipede", 1, 110)]),
-    ("C", (9, 24, 15, 31), [("Bandit", 2, 80), ("Smuggler", 2, 90)]),
-    ("D", (18, 24, 23, 31), [("Wild Warrior", 2, 90), ("Assassin", 1, 130)]),
-    ("K", (33, 27, 38, 34), [("Slime", 2, 100), ("Poison Spider", 1, 110)]),
-    ("L", (42, 27, 47, 34), [("Bandit", 2, 80), ("Wild Warrior", 1, 90)]),
-    ("M", (9, 33, 15, 40), [("Slime", 1, 100), ("Poison Spider", 2, 110)]),
-    ("N", (18, 33, 23, 40), [("Skeleton", 2, 110), ("Ghoul", 1, 130)]),
-    ("O", (33, 36, 38, 40), [("Bandit", 2, 80), ("Smuggler", 1, 90)]),
-    ("P", (42, 36, 47, 40), [("Assassin", 1, 130), ("Wild Warrior", 2, 90)]),
-    ("Q", (10, 45, 15, 54), [("Bandit", 2, 80), ("Smuggler", 1, 90)]),
-    ("R", (18, 45, 24, 50), [("Centipede", 2, 110), ("Bat", 1, 90)]),
-    ("S", (33, 45, 38, 51), [("Rotworm", 2, 100), ("Skeleton", 1, 110)]),
-    ("U", (42, 45, 47, 51), [("Ghoul", 2, 130), ("Skeleton", 1, 110)]),
+    ("A", ROOMS8_BOX["A"], [("Bandit", 2, 80), ("Smuggler", 1, 90)]),
+    ("B", ROOMS8_BOX["B"], [("Wild Warrior", 2, 90), ("Bandit", 1, 80)]),
+    ("H1B", ROOMS8_BOX["J"], [("Bat", 1, 90), ("Centipede", 1, 110)]),
+    ("C", ROOMS8_BOX["C"], [("Bandit", 2, 80), ("Smuggler", 2, 90)]),
+    ("D", ROOMS8_BOX["D"], [("Wild Warrior", 2, 90), ("Assassin", 1, 130)]),
+    ("K", ROOMS8_BOX["K"], [("Slime", 2, 100), ("Poison Spider", 1, 110)]),
+    ("L", ROOMS8_BOX["L"], [("Bandit", 2, 80), ("Wild Warrior", 1, 90)]),
+    ("M", ROOMS8_BOX["M"], [("Slime", 1, 100), ("Poison Spider", 2, 110)]),
+    ("N", ROOMS8_BOX["N"], [("Skeleton", 2, 110), ("Ghoul", 1, 130)]),
+    ("O", ROOMS8_BOX["O"], [("Bandit", 2, 80), ("Smuggler", 1, 90)]),
+    ("P", ROOMS8_BOX["P"], [("Assassin", 1, 130), ("Wild Warrior", 2, 90)]),
+    ("Q", ROOMS8_BOX["Q"], [("Bandit", 2, 80), ("Smuggler", 1, 90)]),
+    ("R", ROOMS8_BOX["R"], [("Centipede", 2, 110), ("Bat", 1, 90)]),
+    ("S", ROOMS8_BOX["S"], [("Rotworm", 2, 100), ("Skeleton", 1, 110)]),
+    ("U", ROOMS8_BOX["U"], [("Ghoul", 2, 130), ("Skeleton", 1, 110)]),
     ("cave", CAVE_BOX, [("Rotworm", 3, 100), ("Ghoul", 2, 130), ("Skeleton", 2, 110),
                         ("Bat", 1, 90), ("Centipede", 1, 110)]),
-    ("T", (23, 58, 37, 63), [("Assassin", 2, 130), ("Bandit", 3, 80), ("Wild Warrior", 1, 90),
-                             ("Dark Monk", 1, 150)]),
+    ("T", ROOMS8_BOX["T"], [("Assassin", 2, 130), ("Bandit", 3, 80), ("Wild Warrior", 1, 90),
+                            ("Dark Monk", 1, 150)]),
 ]
 SPAWNS9 = [
     ("north", NORTH9, [("Monk", 3, 120), ("Dark Monk", 2, 140), ("Ghost", 1, 160)]),
@@ -431,11 +486,12 @@ def build_surface(seed: int, bl: Blocking):
             if coast:
                 tiles[c] = [GRASS, *coast]
 
-    # 2. explanada de tierra alrededor de la catedral (el claro de la iglesia de la referencia)
+    # 2. explanada de tierra alrededor de la catedral (el claro de la iglesia de la referencia):
+    #    elipse con borde irregular, no un rectángulo alineado a los ejes
     def in_esplanade(x, y):
-        wob = 2.6 * math.sin(x / 3.1) + 2.1 * math.cos(y / 3.9) + 1.2 * math.sin((x + y) / 5.7)
-        return ESPLANADE[0] - wob <= x <= ESPLANADE[2] + wob and \
-            ESPLANADE[1] - wob <= y <= ESPLANADE[3] + wob
+        wob = 0.10 * math.sin(x / 3.7) + 0.08 * math.cos(y / 4.3) + 0.05 * math.sin((x + y) / 6.3)
+        rx, ry = ESP_RADII[0] * (1 + wob), ESP_RADII[1] * (1 + wob)
+        return ((x - ESP_CENTER[0]) / rx) ** 2 + ((y - ESP_CENTER[1]) / ry) ** 2 <= 1.0
 
     dirt = {c for c in cells if in_esplanade(*c)} & land
     dirt = fix_until_valid(dirt, land, DIRT_SIDE, DIRT_CORNER, DIRT_INNER, single=True)
@@ -490,20 +546,20 @@ def build_surface(seed: int, bl: Blocking):
         tiles[c] = [tiles[c][0], SIGN]
 
     # 5. la nave: araña, candelabros, estatuas y dos filas de bancos alineadas
-    nave_decor = [((30, 22), COAL_BASIN), ((31, 22), COAL_BASIN),
-                  ((28, 23), CANDELABRUM), ((33, 23), CANDELABRUM),
-                  ((29, 48), STATUE), ((32, 48), STATUE)]
+    nave_decor = [((30 + DX, 22 + DY), COAL_BASIN), ((31 + DX, 22 + DY), COAL_BASIN),
+                  ((28 + DX, 23 + DY), CANDELABRUM), ((33 + DX, 23 + DY), CANDELABRUM),
+                  ((29 + DX, 48 + DY), STATUE), ((32 + DX, 48 + DY), STATUE)]
     for c, item in nave_decor:
         if tiles.get(c) == [BLACK]:
             tiles[c] = [BLACK, item]
-    for y in (42, 44):                                  # dos filas de bancos enteros
-        for x0 in (29, 31):
+    for y in (42 + DY, 44 + DY):                        # dos filas de bancos enteros
+        for x0 in (29 + DX, 31 + DX):
             for dx, item in ((0, BENCH), (1, BENCH_R)):
                 if tiles.get((x0 + dx, y)) == [BLACK]:
                     tiles[(x0 + dx, y)] = [BLACK, item]
 
     # 6. sala gris: bancos en dos filas (pares 1662 + 1663) y escombros que no bloquean
-    for y in (57, 59):
+    for y in (57 + DY, 59 + DY):
         for x0 in range(HALL[0] + 2, HALL[2] - 1, 2):
             if tiles.get((x0, y)) == [GREY] and tiles.get((x0 + 1, y)) == [GREY]:
                 tiles[(x0, y)] = [GREY, BENCH]
@@ -513,11 +569,15 @@ def build_surface(seed: int, bl: Blocking):
             tiles[(x, y)] = [GREY, rng.choice((PEBBLES, SKULL, HUMAN_SKELETON))]
 
     # 7. escombros, cofres y ataúdes en las ruinas (siempre sobre piso liso)
-    clutter = [((9, 26), CRATE), ((10, 26), BARREL), ((20, 42), COFFIN_HEAD), ((20, 43), COFFIN_FOOT),
-               ((8, 36), TABLE), ((13, 33), BARREL), ((9, 42), CHEST), ((21, 26), SKULL),
-               ((39, 26), CRATE), ((48, 34), BARREL), ((45, 29), TABLE), ((40, 33), SKULL),
-               ((19, 60), COFFIN_HEAD), ((19, 61), COFFIN_FOOT), ((31, 60), CRATE),
-               ((24, 57), HUMAN_SKELETON), ((32, 58), SKULL), ((9, 51), BARREL)]
+    clutter = [((9 + DX, 26 + DY), CRATE), ((10 + DX, 26 + DY), BARREL),
+               ((20 + DX, 42 + DY), COFFIN_HEAD), ((20 + DX, 43 + DY), COFFIN_FOOT),
+               ((8 + DX, 36 + DY), TABLE), ((13 + DX, 33 + DY), BARREL),
+               ((9 + DX, 42 + DY), CHEST), ((21 + DX, 26 + DY), SKULL),
+               ((39 + DX, 26 + DY), CRATE), ((48 + DX, 34 + DY), BARREL),
+               ((45 + DX, 29 + DY), TABLE), ((40 + DX, 33 + DY), SKULL),
+               ((19 + DX, 60 + DY), COFFIN_HEAD), ((19 + DX, 61 + DY), COFFIN_FOOT),
+               ((31 + DX, 60 + DY), CRATE), ((24 + DX, 57 + DY), HUMAN_SKELETON),
+               ((32 + DX, 58 + DY), SKULL), ((9 + DX, 51 + DY), BARREL)]
     for c, item in clutter:
         if c in floor_all and len(tiles.get(c, [])) == 1:
             tiles[c] = [tiles[c][0], item]
@@ -730,9 +790,13 @@ def main() -> int:
     existing = {(x, y, z) for (x, y, z) in load_tiles()
                 if X0 <= x < X0 + W and Y0 <= y < Y0 + H and z in (Z7, Z8, Z9)}
     ours = False
-    if MANIFEST.exists():                                  # re-ejecución: la caja ya es de este script
+    if MANIFEST.exists():                                  # re-ejecución: la caja vieja está adentro
         box = json.loads(MANIFEST.read_text()).get("box", {})
-        ours = (box.get("x1"), box.get("y1")) == (X0, Y0)
+        try:
+            ours = (X0 <= int(box["x1"]) and Y0 <= int(box["y1"])
+                    and int(box["x2"]) <= X0 + W - 1 and int(box["y2"]) <= Y0 + H - 1)
+        except (KeyError, TypeError, ValueError):
+            ours = False
     if existing and not ours:
         print(f"ERROR: la caja x{X0}-{X0 + W - 1} y{Y0}-{Y0 + H - 1} ya tiene {len(existing)} casillas: "
               f"{sorted(existing)[:3]}. Elegí otra zona.", file=sys.stderr)
@@ -910,9 +974,9 @@ def main() -> int:
                 errors.append(f"z7 {c}: banco 1663 sin su mitad izquierda")
 
     # el -2: anillo, U y salas laterales espejadas
-    def mirrored(box):
+    def mirrored(box):                       # espejo sobre el eje del layout (no el de la caja)
         x0, y0, x1, y1 = box
-        return (W - 1 - x1, y0, W - 1 - x0, y1)
+        return (MIRROR_X - x1, y0, MIRROR_X - x0, y1)
     for a_box, b_box in ((A_W9, A_E9), (H_W9, H_E9), (V_W9, V_E9), (L_W9, L_E9),
                          (SIDE_W1, SIDE_E1), (SIDE_W2, SIDE_E2), (MID9, MID9),
                          (SOUTH9, SOUTH9), (FINAL9, FINAL9)):

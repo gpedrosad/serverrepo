@@ -22,13 +22,21 @@ manifiesto tenga la misma caja, para poder re-ejecutarlo).
 
 | Pisos | x (abs) | y (abs) | Local | Qué cubre |
 |-------|---------|---------|-------|-----------|
-| z7 | 118–177 | 284–353 | 0–59 × 0–69 | Jungla cerrada, nave, ruinas oeste/este, salón gris, explanada del portal, río del NE |
-| z8 | 118–177 | 284–353 | 0–59 × 0–69 | Cripta -1: eje N-S, dos pasillos E-O, 16 salas, cueva natural del NE |
-| z9 | 118–177 | 284–353 | 0–59 × 0–69 | Cripta -2: sala de columnas, octógono, brazos, anillo en zigzag, sala sur y final |
+| z7 | 85–183 | 264–373 | 0–98 × 0–109 | Jungla del borde, ríos en arco, explanada de tierra, nave, ruinas oeste/este, salón gris, explanada del portal |
+| z8 | 85–183 | 264–373 | 0–98 × 0–109 | Cripta -1: eje N-S, dos pasillos E-O, 16 salas, cueva natural de 251 casillas al NE |
+| z9 | 85–183 | 264–373 | 0–98 × 0–109 | Cripta -2: sala de columnas, octógono, brazos, anillo en zigzag, sala oval, sala sur y final |
 
-**Vecinos:** Valle de las Bestias (x 262–361, y 232–378, al este); Paso del Norte (x 370–469, al
-este); Isla Natural (x 131–180, y 433–476, muy al sur); jungla de la ciudad / hydras (x 20–120,
-y 60–160, al norte). La caja está aislada en zona vacía: no toca ninguna zona generada.
+**Layout y desplazamiento.** El diseño se dibujó en un espacio de 60×70; con la caja nueva (99×110)
+todo se desplaza `DX, DY = 33, 20` en local para que las coordenadas **absolutas no cambien**
+(`ARRIVAL` local `(30,51)` → `(63,71)`, y en absoluto sigue siendo `148,335,7`). Los bordes se
+eligieron con margen sobre los vecinos:
+
+| Borde | Límite | Vecino que queda afuera |
+|-------|--------|--------------------------|
+| Oeste | x ≥ 85 | Elvenbane (box 18–84, y 282–362) |
+| Este | x ≤ 183 | caja oficial de Hydras (arranca en x 184, y 340–419) |
+| Norte | y ≥ 264 | cueva ajena en x 85–122 con y ≤ 255 y tiles z10 en y 256–260 (no se escribe y ≤ 263 ni z10) |
+| Sur | y ≤ 373 | arena en x 169–183 desde y 384 y Wave Arena (x 165–190, y 380–410); colchón hasta y 374 |
 
 ## Portales y llegada
 
@@ -59,8 +67,8 @@ Coordenadas absolutas (las locales del generador son `abs − (118,284)`).
 | Sala gris del oeste (bajada B) | `126–132 × 333–338` | Losa `431`, braseros `1486`, agujero `432` en `128,336` |
 | Explanada de la llegada | `143–154 × 334–337` | Losa `431`, portal de vuelta y cartel |
 | Rellano de la bajada A | `145–152 × 293–297` | Losa `431`, agujero `432` en `148,295`, braseros, camino de piedra hasta la brecha norte de la nave |
-| Explanada (claro de la iglesia) | `x 120–169`, `y 300–348` (1357 casillas de tierra) | Tierra `103` con borde de pasto `110–121`; piedras sueltas, huesos y matas (`4158`/`4150`/`2740`/`4183`), algún árbol suelto. Sin halo de césped contra los muros |
-| Ríos en arco | norte y este | Agua `4608` con orilla `4644–4655`: entra por el oeste (`x 120`, `y 297`), pasa al norte del predio (`y 284–290`) y baja por el este hasta el sureste (`x 161`, `y 336`). Del otro lado, jungla hasta el borde de la caja: **no** hay marco de mar |
+| Explanada (claro de la iglesia) | `x 118–171`, `y 290–351` (1572 casillas de tierra) | Elipse con borde irregular (no un rectángulo): tierra `103` con borde de pasto `110–121`; piedras, huesos y matas (`4158`/`4150`/`2740`/`4183`), algún árbol suelto. Sin halo de césped contra los muros |
+| Ríos en arco | casi rodean el predio | Agua `4608` (1472 casillas) con orilla `4644–4655`: entra por el oeste (`x 85–90`, `y ~304`), pasa al norte (`y 268–275`), baja por el este (`x 172–175`) y se va por el sur (`x 119–121`, `y 373`). Del otro lado, jungla ancha hasta el borde de la caja: **no** hay marco de mar |
 | Jungla | del otro lado de los ríos y en el borde de la caja | Árboles `2701–2708`/`4009` plantados al azar (nunca dos copas pegadas), arbustos `2767`/`2786`, pinitos `2768`, y tapizado bajo `4158`/`4150`/`2740`/`4183`/`4171`/`4181`; franja de monte cerrado en el borde |
 
 ### z8 — cripta (-1)
@@ -73,7 +81,7 @@ Coordenadas absolutas (las locales del generador son `abs − (118,284)`).
 | Salas | A `128–134 × 296–302` · B `136–141 × 297–302` · C `127–133 × 307–314` · D `135–140 × 307–314` · K `150–155 × 309–315` · L `157–162 × 309–315` · M `127–133 × 316–326` · N `135–140 × 316–326` · O `150–156 × 317–326` · P `158–163 × 317–326` · Q `128–133 × 331–338` · R `135–141 × 331–336` (+ cola en L hasta `y 339`) · S `151–156 × 331–336` · U `158–163 × 331–336` | Losa `431` en pasillos y salas grises, tierra `103` en las otras; puertas de una casilla |
 | Antecámara de la cueva | J `151–157 × 299–304` | Tierra, conecta el pasillo este con la cueva |
 | Sala del fondo | T `141–155 × 343–348` | Losa `431`, cierre del eje |
-| Cueva natural | `152–168 × 287–306` (185 casillas) | Ocho cámaras irregulares unidas por pasillos orgánicos (discos + conectores), piso de cueva `351`/`352`/`355`, paredes de roca `356–367`; boca de dos casillas en `154–155,298` hacia la antecámara J. Deja una casilla de pared contra las salas de ladrillo y lo que queda suelto se vuelve roca |
+| Cueva natural | `150–172 × 282–304` (251 casillas) | Nueve cámaras irregulares unidas por pasillos orgánicos (discos + conectores), piso de cueva `351`/`352`/`355`, paredes de roca `356–367`; boca de dos casillas en `154–155,298` hacia la antecámara J. Deja una casilla de pared contra las salas de ladrillo y lo que queda suelto se vuelve roca |
 
 ### z9 — cripta (-2)
 
@@ -196,17 +204,17 @@ El generador, si algo falla, no escribe el `.otbm`.
 | Chequeo | Cómo | Resultado |
 |---------|------|-----------|
 | Caja vacía | `load_tiles()` sobre x118–177 × y284–353 × z7–z9 (o manifiesto propio) | 0 casillas ajenas |
-| BFS z7 | desde `148,335,7` | 2017 caminables, todas alcanzables |
-| BFS z8 | desde `148,296,8` (llegada de la bajada A) | 1259 caminables, todas alcanzables |
+| BFS z7 | desde `148,335,7` | 4916 caminables, todas alcanzables |
+| BFS z8 | desde `148,296,8` (llegada de la bajada A) | 1388 caminables, todas alcanzables |
 | BFS z9 | desde `148,318,9` (llegada del agujero) | 1413 caminables, todas alcanzables |
 | Escaleras | 3 pares `432`+`1385`; las 6 llegadas son piso libre | 0 errores |
 | Paredes | una sola pieza por casilla; ninguna casilla de piso con pieza de pared | 0 errores |
 | Bancas | cada `1662` con su `1663` a la derecha y viceversa | 16 pares, 0 sueltas |
-| Simetría -2 | zigzag, salas laterales, sala sur y final espejados (`mirror(x) = 59−x`) | OK |
+| Simetría -2 | zigzag, salas laterales, sala sur y final espejados (`mirror(x) = 125−x`, eje del layout) | OK |
 | Ids | todos los ítems existen en `items-zagan-test.otb` | 0 errores |
 | Monstruos | todos registrados en `monsters.xml` | 0 errores |
 | Spawns | cada bloque sobre piso caminable | 0 errores (128) |
-| Clip | casillas dentro de la caja | 0 fuera |
+| Clip | casillas dentro de la caja x85–183 / y264–373 (nada en y374, x84, x184) | 0 fuera |
 | `check-map-load.py` | carga offline del mapa | 0 errores |
 | `validate-tele-dest.py` | destinos de los teleport | OK |
 
@@ -220,11 +228,11 @@ de paredes y columnas):
 
 ```bash
 python3.11 scripts/map/generate-dark-cathedral.py --dry-run \
-  --preview docs/items-and-map/img/dark-cathedral --preview-scale 0.45
+  --preview docs/items-and-map/img/dark-cathedral --preview-scale 0.33
 ```
 
-Quedan `docs/items-and-map/img/dark-cathedral-z7.png`, `-z8.png` y `-z9.png` (van al repo). Sin
-`--preview` el script no toca imágenes. Para revisar de cerca, `--preview /tmp/dc` deja los tres
+Quedan `docs/items-and-map/img/dark-cathedral-z7.png`, `-z8.png` y `-z9.png` (van al repo) a escala
+0.33 (con 99×110 a escala 1 los PNG pasan de 1,5 MB). Sin `--preview` el script no toca imágenes. Para revisar de cerca, `--preview /tmp/dc` deja los tres
 pisos a tamaño real (32 px por casilla).
 
 Referencias usadas para comparar: `img/dark-cathedral-ref/Dark_Cathedral_0.png` (superficie),
@@ -234,13 +242,12 @@ Referencias usadas para comparar: `img/dark-cathedral-ref/Dark_Cathedral_0.png` 
 
 Cerca, no idéntico:
 
-- **Superficie.** Tiene la explanada de tierra y los ríos en arco al norte y al este de la
-  referencia, pero el arco es más angosto y el claro más rectangular: en la referencia el río casi
-  aísla el predio y la jungla del otro lado es más ancha. La caja de 60×70 obliga a un predio más
-  chico que el original.
+- **Superficie.** El río ya casi aísla el predio y la jungla de afuera es ancha, pero el arco no
+  cierra del todo (queda abierto al sudoeste, como en la referencia) y el agua es un cauce de ~6
+  casillas, no un lago. El claro es una elipse irregular, más regular que el patio original.
 - **Piso -1.** La referencia tiene 20 salas etiquetadas A–T repartidas en un plano más ancho; acá hay
   16 salas A–U más la antecámara J y la cueva, en una versión compacta. La cueva natural (G–J en la
-  referencia) llegó a 185 casillas con ocho cámaras y seis conexiones: se lee como red de cuevas,
+  referencia) llegó a 251 casillas con nueve cámaras y diez conexiones: se lee como red de cuevas,
   pero sigue siendo más chica que la original (que ocupa casi todo el noreste del plano).
 - **Piso -2.** La referencia no es simétrica: brazo oeste con 4 salas, brazo este con 2 rombos y una
   sala oval grande, cruz central y anillo sur. Acá se respetó esa idea (el anillo y las salas
