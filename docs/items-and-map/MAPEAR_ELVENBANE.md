@@ -1,5 +1,8 @@
 # Elvenbane — fortaleza élfica de Tibia clásico (portal `157,47,7`)
 
+> Documentación completa (cajas, las 19 escaleras con llegadas, spawns, cómo regenerar y validar, renders y diferencias vs la referencia): [`ELVENBANE.md`](ELVENBANE.md).
+
+
 Recrea **Elvenbane**, la fortaleza élfica del oeste de Ab'Dendriel, en la zona vacía al sur del
 templo. Sale de las plantas ASCII de TibiaWiki (`docs/items-and-map/img/elvenbane-ref/`): el
 castillo sobre una isla al norte, la tierra firme con bosque y montañas al sur, y el túnel del
@@ -76,7 +79,7 @@ La dificultad sube de sur a norte (entrada → castillo) y de abajo hacia la tor
 | Portal (plaza del templo) | `157, 47, 7` → llegada `39, 346, 7` |
 | Portales de vuelta en la llegada | `41, 347, 7` y `42, 347, 7` → `157, 48, 7` |
 | Bajada de la entrada al túnel | `39, 340, 7` → `39, 340, 8` |
-| Sótano -1 → patio del castillo | `57, 301, 8` → `57, 301, 7` |
+| Sótano -1 → patio del castillo | `57, 303, 8` → `57, 303, 7` |
 | Sótano -1 → sótano -2 | `58, 313, 8` → `58, 313, 9` |
 | Sótano -2 → prisión -3 | `42, 312, 9` → `42, 312, 10` |
 | Castillo (muralla) | `40, 298` a `60, 315` (21×18) |

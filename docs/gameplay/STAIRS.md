@@ -55,3 +55,17 @@ Ver [revisión y corrección](../items-and-map/REVISION_ESTETICA_HIELO_2026_11_1
 
 - Escalera de mano que baja en `194, 150, 8`: abajo (`194, 150, 9`) es roca. Usarla o pisarla te
   deja dentro de la roca. Hay que arreglarla en el mapa (sacarla o hacer la cueva de abajo).
+
+## Elvenbane: escalera de mano en todas partes
+
+Pedido de Gonzalo (15-11-2026): *«esa escalera del principio es la que debe estar en todas partes»*.
+En Elvenbane las 19 conexiones entre pisos usan **escalera de mano**, no `1385` (piedra clara),
+`1396`/`432` (madera) ni `3685`/`3687` (rampas).
+
+| Par | Dónde | Al usarla / al bajar |
+|-----|-------|----------------------|
+| `469` arriba + `1386` abajo | Solo la **entrada** (`39,340`, z7↔z8), buraco rodeado de 4 piedras `1285` (O, E, NO, NE), sur libre | `1386` sube a `(x, y+1, z-1)`; bajar por `469` cae en `(x, y, z+1)` (offset 0) |
+| `409` arriba + `1386` abajo | Las **otras 18** (túnel, sótanos, patio, adarve, torretas y torre). Sin piedras | Igual: `1386` → `(x, y+1, z-1)`; `409` → misma casilla abajo |
+
+`409` y `469` ya están en `actions.xml` → `teleport.lua`. `1386` está en `LADDERS_UP`.
+Detalle, coordenadas de cada link y cómo regenerar: [`ELVENBANE.md`](../items-and-map/ELVENBANE.md).
