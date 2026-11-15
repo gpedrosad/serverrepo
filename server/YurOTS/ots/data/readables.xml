@@ -11,6 +11,7 @@
 	<!-- END CRUCIBLE_SIGNS -->
 	<!-- BEGIN TEMPLE_PORTAL_SIGNS -->
 	<readable x="156" y="46" z="7" text="ISLA NATURAL\n3 campamentos de Cyclops\nCueva de 3 pisos: la Reina"/>
+	<readable x="155" y="46" z="7" text="CATEDRAL OSCURA\nRuinas y cripta de 2 pisos\nDe Bandidos a Monjes Oscuros"/>
 	<readable x="157" y="46" z="7" text="ELVENBANE\nFortaleza elfica en 7 pisos.\nDe orcos y elfos al dragon de la torre."/>
 	<readable x="158" y="46" z="7" text="VALLE DE LAS BESTIAS\nCaza mid-hard en 4 pisos\nDe Minotauros a Demonios"/>
 	<readable x="164" y="46" z="7" text="CRISOL\n3 puertas. Boss diario.\nBronce / Plata / Oro"/>
@@ -84,4 +85,10 @@
 	<readable x="37" y="347" z="7" text="ELVENBANE\nFortaleza elfica en 7 pisos.\nBaja a la cueva: el tunel llega\nal sotano del castillo.\nPortal al norte: templo."/>
 	<readable x="41" y="341" z="7" text="BAJADA A ELVENBANE\nTunel largo hasta el sotano.\nTrolls, orcos y enanos."/>
 	<!-- END ELVENBANE_SIGNS -->
+	<!-- BEGIN DARK_CATHEDRAL_SIGNS -->
+	<readable x="136" y="340" z="7" text="SALA DE LOS BANCOS\nBancos viejos y escombros.\nAl oeste, la bajada a la cripta."/>
+	<readable x="146" y="292" z="7" text="ACCESO A LA CRIPTA\nEscalera abajo.\nNo vuelvas solo."/>
+	<readable x="146" y="334" z="7" text="NAVE DE LA CATEDRAL\nSolo monjes y muertos\nrezan aca."/>
+	<readable x="151" y="334" z="7" text="CATEDRAL OSCURA\nAl norte, la nave.\nBajadas a la cripta: en la jungla\ny junto a la sala gris.\nEste portal vuelve al templo."/>
+	<!-- END DARK_CATHEDRAL_SIGNS -->
 </readables>

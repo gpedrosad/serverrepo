@@ -11,6 +11,7 @@ Relacionado:
 - [docs/items-and-map/MAPEAR_LABERINTO.md](items-and-map/MAPEAR_LABERINTO.md) — laberinto 2 sqm (camino 406, fondo 100, teleport templo) con `generate-maze.py`
 - [docs/items-and-map/MAPEAR_VALLE_DE_LAS_BESTIAS.md](items-and-map/MAPEAR_VALLE_DE_LAS_BESTIAS.md) — Valle de las Bestias (reemplazó al hunt maze); portal `158,47,7` con `generate-beast-valley.py`
 - [docs/items-and-map/ELVENBANE.md](items-and-map/ELVENBANE.md) — Elvenbane (fortaleza élfica en 7 pisos, documentación completa); portal `157,47,7` con `generate-elvenbane.py`. Resumen: [MAPEAR_ELVENBANE.md](items-and-map/MAPEAR_ELVENBANE.md)
+- [docs/items-and-map/DARK_CATHEDRAL.md](items-and-map/DARK_CATHEDRAL.md) — Dark Cathedral (ruinas, cripta -1 con cueva y cripta -2); portal `155,47,7` con `generate-dark-cathedral.py`, resumen en `MAPEAR_DARK_CATHEDRAL.md`
 - [docs/items-and-map/MAPEAR_FOSO_OLVIDADO.md](items-and-map/MAPEAR_FOSO_OLVIDADO.md) — El Foso Olvidado (reemplaza la Arena PvP de z9): 3 pisos de laberinto progresivo con `generate-forgotten-pit.py`
 - [docs/items-and-map/MAPEAR_TORRE_BARQUERO.md](items-and-map/MAPEAR_TORRE_BARQUERO.md) — Torre del Barquero: patio de mesas junto al bote de Fargum → torre de 5 pisos con un monstruo por piso (`generate-fargum-tower.py`)
 - [docs/items-and-map/MAPEAR_ISLOTE_MINOTAURO.md](items-and-map/MAPEAR_ISLOTE_MINOTAURO.md) — Islote del Minotauro (canal junto al muelle, z7 + cuevas z10–z12) con `generate-minotaur-isle.py`
@@ -43,6 +44,7 @@ Los maneja **un solo script**: `python3 scripts/map/temple-portals.py` (idempote
 | Portal | Llegada al volver | Sistema | Doc / generador |
 |--------|-------------------|---------|-----------------|
 | `156,47,7` | `156,48,7` | Isla natural (herradura: 3 campamentos Cyclops + cueva z8–z10 con Grorlam, wyverns/mutantes y Old Widow) | [`MAPEAR_ISLA_NATURAL.md`](items-and-map/MAPEAR_ISLA_NATURAL.md) |
+| `155,47,7` | `155,48,7` | Dark Cathedral (ruinas, cripta -1 con cueva natural y cripta -2) | [`DARK_CATHEDRAL.md`](items-and-map/DARK_CATHEDRAL.md) + [`generate-dark-cathedral.py`](../scripts/map/generate-dark-cathedral.py) |
 | `157,47,7` | `157,48,7` | Elvenbane (fortaleza élfica en 7 pisos: isla + túnel + sótanos + adarve y torres, de Orcos a un Dragon; escalera de mano en todas las conexiones) | [`ELVENBANE.md`](items-and-map/ELVENBANE.md) |
 | `158,47,7` | `158,48,7` | Valle de las Bestias (el gauntlet también vuelve acá) | [`MAPEAR_VALLE_DE_LAS_BESTIAS.md`](items-and-map/MAPEAR_VALLE_DE_LAS_BESTIAS.md) |
 | `164,47,7` | `164,48,7` | El Crisol | [`CRUCIBLE.md`](gameplay/CRUCIBLE.md) |

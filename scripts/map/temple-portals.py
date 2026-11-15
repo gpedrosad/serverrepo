@@ -48,6 +48,8 @@ PORTALS = [
     ("isla", 156, (147, 462, 7), "ISLA NATURAL\n3 campamentos de Cyclops\nCueva de 3 pisos: la Reina",
      [(124, 426, 187, 483, 7), (124, 426, 187, 483, 8), (124, 426, 187, 483, 9),
       (124, 426, 187, 483, 10)]),
+    ("catedral", 155, (148, 335, 7), "CATEDRAL OSCURA\nRuinas y cripta de 2 pisos\nDe Bandidos a Monjes Oscuros",
+     [(85, 264, 183, 373, 7), (85, 264, 183, 373, 8), (85, 264, 183, 373, 9)]),
     ("elvenbane", 157, (39, 346, 7), "ELVENBANE\nFortaleza elfica en 7 pisos.\nDe orcos y elfos al dragon de la torre.",
      [(38, 296, 62, 317, 4), (38, 296, 62, 317, 5), (38, 296, 62, 317, 6),
       (18, 286, 72, 360, 7), (30, 288, 67, 349, 8), (33, 291, 67, 322, 9), (33, 291, 67, 322, 10)]),
