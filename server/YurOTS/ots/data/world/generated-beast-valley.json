@@ -2,6 +2,7 @@
   "name": "generated-beast-valley",
   "seed": 11,
   "replaces": "hunt-maze",
+  "version": 3,
   "box": {
     "x1": 262,
     "y1": 232,
@@ -10,7 +11,8 @@
     "z": [
       7,
       8,
-      9
+      9,
+      10
     ]
   },
   "oldMazeCleared": {
@@ -47,19 +49,9 @@
       ]
     },
     {
-      "x": 319,
-      "y": 254,
-      "z": 7,
-      "to": [
-        158,
-        48,
-        7
-      ]
-    },
-    {
-      "x": 273,
-      "y": 244,
-      "z": 9,
+      "x": 323,
+      "y": 345,
+      "z": 10,
       "to": [
         158,
         48,
@@ -67,51 +59,159 @@
       ]
     }
   ],
-  "stairs": {
-    "x": 312,
-    "y": 252,
-    "z": 7
+  "mouths": [
+    {
+      "name": "Catacumbas",
+      "x": 312,
+      "y": 266,
+      "z": 7
+    },
+    {
+      "name": "Cueva de las Quaras",
+      "x": 291,
+      "y": 294,
+      "z": 7
+    },
+    {
+      "name": "Guarida del Dragon",
+      "x": 334,
+      "y": 288,
+      "z": 7
+    }
+  ],
+  "deepMouths": [
+    {
+      "name": "catacumbs",
+      "x": 287,
+      "y": 273,
+      "z": 9
+    },
+    {
+      "name": "quara",
+      "x": 286,
+      "y": 312,
+      "z": 9
+    },
+    {
+      "name": "dragon",
+      "x": 334,
+      "y": 306,
+      "z": 9
+    }
+  ],
+  "downs": [
+    {
+      "name": "catacumbs",
+      "x": 326,
+      "y": 255,
+      "z": 8
+    },
+    {
+      "name": "quara",
+      "x": 301,
+      "y": 287,
+      "z": 8
+    },
+    {
+      "name": "dragon",
+      "x": 344,
+      "y": 298,
+      "z": 8
+    },
+    {
+      "name": "dragonDeep",
+      "x": 346,
+      "y": 289,
+      "z": 9
+    }
+  ],
+  "abyss": {
+    "x": 334,
+    "y": 324,
+    "z": 10
   },
-  "toAbyss": {
-    "x": 344,
-    "y": 360,
-    "z": 8
+  "rootColossus": {
+    "x": 339,
+    "y": 347,
+    "z": 10
+  },
+  "zones": {
+    "camp": {
+      "x": 292,
+      "y": 316,
+      "rx": 10,
+      "ry": 7
+    },
+    "quarry": {
+      "x": 333,
+      "y": 320,
+      "rx": 10,
+      "ry": 7
+    },
+    "cross": {
+      "x": 312,
+      "y": 328,
+      "rx": 9,
+      "ry": 7
+    },
+    "ruins": {
+      "x": 312,
+      "y": 273,
+      "rx": 12,
+      "ry": 9
+    },
+    "quara": {
+      "x": 291,
+      "y": 294,
+      "rx": 8,
+      "ry": 6
+    },
+    "dragon": {
+      "x": 334,
+      "y": 288,
+      "rx": 9,
+      "ry": 7
+    }
   },
   "spawns": {
-    "z7": 164,
-    "z8": 120,
-    "z9": 114,
-    "monsters": 767
+    "z7": 31,
+    "z8": 43,
+    "z9": 68,
+    "z10": 22,
+    "monsters": 498
   },
   "monsters": {
-    "Ancient Scarab": 20,
-    "Behemoth": 7,
-    "Beholder": 33,
-    "Black Knight": 27,
-    "Cyclops": 37,
-    "Demon": 7,
-    "Demon Skeleton": 59,
-    "Dragon": 38,
+    "Behemoth": 12,
+    "Black Dragon": 9,
+    "Cyclops": 8,
+    "Cyclops Drone": 8,
+    "Cyclops Smith": 8,
+    "Dark Hydra": 9,
+    "Demon": 8,
+    "Demon Skeleton": 27,
+    "Dragon": 27,
+    "Dragon Hatchling": 19,
     "Dragon Lord": 18,
-    "Dwarf Geomancer": 18,
-    "Dwarf Guard": 35,
-    "Dwarf Soldier": 18,
-    "Fury": 7,
-    "Ghoul": 17,
-    "Giant Spider": 27,
-    "Green Djinn": 18,
-    "Hero": 48,
-    "Hydra": 19,
-    "Lich": 19,
-    "Minotaur": 41,
-    "Minotaur Archer": 26,
-    "Minotaur Guard": 57,
-    "Minotaur Mage": 13,
-    "Necromancer": 53,
-    "Priestess": 27,
+    "Fury": 8,
+    "Ghoul": 32,
+    "Hydra": 9,
+    "Minotaur": 8,
+    "Minotaur Archer": 8,
+    "Minotaur Guard": 7,
+    "Minotaur Mage": 7,
+    "Mummy": 23,
+    "Necromancer": 15,
+    "Priestess": 15,
+    "Quara Constrictor": 28,
+    "Quara Hydromancer": 22,
+    "Quara Mantassin": 28,
+    "Quara Pincher": 25,
+    "Quara Predator": 27,
     "Root Colossus": 1,
     "Serpent Spawn": 7,
-    "Vampire": 53,
-    "Warlock": 17
+    "Skeleton": 31,
+    "Vampire": 12,
+    "Vampire Bride": 15,
+    "Wyrm": 17
   }
 }

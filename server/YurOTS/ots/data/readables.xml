@@ -11,7 +11,7 @@
 	<!-- END CRUCIBLE_SIGNS -->
 	<!-- BEGIN TEMPLE_PORTAL_SIGNS -->
 	<readable x="156" y="46" z="7" text="ISLA NATURAL\n3 campamentos de Cyclops\nCueva de 3 pisos: la Reina"/>
-	<readable x="158" y="46" z="7" text="VALLE DE LAS BESTIAS\nCaza mid-hard en 3 pisos\nDe Minotauros a Demonios"/>
+	<readable x="158" y="46" z="7" text="VALLE DE LAS BESTIAS\nCaza mid-hard en 4 pisos\nDe Minotauros a Demonios"/>
 	<readable x="164" y="46" z="7" text="CRISOL\n3 puertas. Boss diario.\nBronce / Plata / Oro"/>
 	<readable x="166" y="46" z="7" text="WAVE ARENA\nClaro de la Selva: 20 oleadas\nEn grupo. Premio semanal"/>
 	<readable x="168" y="46" z="7" text="RELOJ DE ARENA\n6 oleadas que suben de nivel\nEntra en el descanso"/>
@@ -32,13 +32,6 @@
 	<readable x="422" y="391" z="7" text="PASO DEL NORTE\nNorte: Tundra Helada y Cuevas del Dragon.\nPortal al sur: Retro76."/>
 	<readable x="424" y="360" z="7" text="Campamento de cazadores.\nDescansa junto al fuego."/>
 	<!-- END NORTH_PASS_SIGNS -->
-	<!-- BEGIN BEAST_VALLEY_SIGNS -->
-	<readable x="311" y="322" z="7" text="COLINAS DE LOS CICLOPES\nCiclopes y enanos de la cantera."/>
-	<readable x="315" y="357" z="7" text="VALLE DE LAS BESTIAS\nEl camino sube al norte: Campamento Minotauro,\nColinas de los Ciclopes y las Ruinas.\nPortal al sur: templo."/>
-	<readable x="316" y="253" z="7" text="CATACUMBAS\nAbajo: aranas, vampiros y nigromantes.\nMas abajo, el Abismo."/>
-	<readable x="321" y="285" z="7" text="RUINAS ANTIGUAS\nNo todos los muertos descansan."/>
-	<readable x="322" y="254" z="7" text="Portal al templo."/>
-	<!-- END BEAST_VALLEY_SIGNS -->
 	<!-- BEGIN IMPERIAL_CASTLE_SIGNS -->
 	<readable x="101" y="38" z="7" text="CASTILLO IMPERIAL\nCada piso es mas duro que el anterior.\nArriba esperan los Imperial Heroes y el tesoro."/>
 	<!-- END IMPERIAL_CASTLE_SIGNS -->
@@ -78,4 +71,12 @@
 	<!-- BEGIN FARGUM_TOWER_SIGNS -->
 	<readable x="173" y="63" z="7" text="TORRE DEL BARQUERO\n5 pisos, un monstruo por piso.\nTortuga -> Tortuga espinosa -> Cangrejo -> Quara -> Predator."/>
 	<!-- END FARGUM_TOWER_SIGNS -->
+	<!-- BEGIN BEAST_VALLEY_SIGNS -->
+	<readable x="294" y="289" z="7" text="CUEVA DE LAS QUARAS\nQuaras constrictor, mantassin, pincher,\nhidromante y predator."/>
+	<readable x="306" y="267" z="7" text="CATACUMBAS\nNo-muertos: ghouls, vampiros, momias\ny nigromantes."/>
+	<readable x="315" y="327" z="7" text="CRUCE DEL VALLE\nOeste: Campamento Minotauro.\nEste: Cantera de Ciclopes.\nNorte: Ruinas Antiguas y cuevas."/>
+	<readable x="315" y="356" z="7" text="VALLE DE LAS BESTIAS\nAl norte: Cruce del Valle.\nCampamento Minotauro (oeste), Cantera de Ciclopes (este),\nRuinas y cuevas (norte). Portal al sur: templo."/>
+	<readable x="316" y="285" z="7" text="RUINAS ANTIGUAS\nNo todos los muertos descansan."/>
+	<readable x="338" y="289" z="7" text="GUARIDA DEL DRAGON\nDragones, wyrms y un dragon negro.\nSolo para veteranos."/>
+	<!-- END BEAST_VALLEY_SIGNS -->
 </readables>

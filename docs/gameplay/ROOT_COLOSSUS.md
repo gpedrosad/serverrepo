@@ -74,30 +74,23 @@ incluir estos dos PNG explícitamente con `git add -f`). Sprites nuevos **11654�
 
 ## Spawn en el mapa local
 
-**Un Root Colossus en `310,254,9`**, radio 3, respawn **300 s**, en el último tramo del **Abismo del
-Valle de las Bestias**. Está después del sector de Hydra/Lich, en la transición a Behemoth y Demon.
-Su dificultad de 4800 HP encaja en esta etapa; no aparece entre lobos y osos del Paso del Norte.
+**Un Root Colossus en `339,347,10`**, radio 3, respawn **300 s**, en el último tramo del **Abismo
+del Valle de las Bestias**. Está después de Demon/Fury, custodiando el portal final. Su dificultad
+de 4800 HP encaja en esta etapa; no aparece entre lobos y osos del Paso del Norte.
 
 Recorrido: portal del templo `158,47,7` → llegada `312,360,7` → superficie con Minotauros, Cíclopes
-y ruinas → Catacumbas por `312,252,7` (Giant Spider/Vampire → Necromancer → Hero/Black Knight) →
-bajada al Abismo en `344,360,8` → Dragon/Ancient Scarab → Dragon Lord/Warlock → Hydra/Lich → Root Colossus.
+y ruinas → una de las tres cuevas de dos pisos → fondo z9 → bajada del Nido del Dragón `346,289,9` →
+Abismo `334,324,10` → Hydra/Dark Hydra → Behemoth/Serpent Spawn → Demon/Fury → Root Colossus junto al
+portal `323,345,10`.
 
-![Ubicación del spawn en el Abismo](img/root-colossus-spawn.png)
-
-Se comprobó una ruta de **141 pasos cardinales** desde la llegada del Abismo (`344,361,9`), una sala
-caminable de 5×5 y separación de 6 casillas respecto de otros spawns. Está en el último cuarto de
-la progresión por distancia (umbral 133 pasos), junto a Hydra/Lich y antes del fondo con Demon/Fury.
-La casilla está libre, sin casa ni PZ. El spawn viejo del bosque fue retirado.
-
-`generate-beast-valley.py` lo coloca mediante `root_colossus_spawn()`: selecciona un único claro
-al inicio del último cuarto por distancia caminable, conserva los demás monstruos y falla si no
-encuentra espacio suficiente. Para seed 11 resulta `310,254,9`. El spawn está dentro de
-`BEAST_VALLEY_SPAWNS`, marcado `ROOT_COLOSSUS_SPAWN` en la edición actual. No se pierde al regenerar;
+`generate-beast-valley.py` lo coloca mediante `root_colossus_spawn()`: busca una sala de 3×3 libre en
+el último tercio del Abismo, separada del portal y de los otros spawns; falla si no la encuentra.
+Para seed 11 resulta `339,347,10`. Está dentro de `BEAST_VALLEY_SPAWNS` y no se pierde al regenerar;
 otra semilla puede cambiar la coordenada manteniendo la etapa de dificultad.
 
-**Solo cambió el XML de spawns y su generador/manifiesto; `test.otbm` quedó idéntico.** Se prepara localmente por pedido
-del usuario; antes de cargarlo en el servidor compartido, publicar y verificar el cliente con look 243
-y ambas armas. Un cliente viejo no puede mostrar correctamente estos assets.
+La v3 del valle (nov 2026) regeneró `test.otbm` (z7–z10), spawns, carteles y manifiesto. La captura
+`img/root-colossus-spawn.png` es de la v1 y quedó desactualizada. Un cliente viejo no puede mostrar
+correctamente el look 243 ni las dos armas: publicar el cliente antes de probar.
 
 ## Sprite y base estudiada
 
