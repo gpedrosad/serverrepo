@@ -5282,4 +5282,182 @@
 		<monster name="Root Colossus" x="0" y="0" z="10" spawntime="300" />
 	</spawn>
 	<!-- END BEAST_VALLEY_SPAWNS -->
+	<!-- BEGIN DARK_CATHEDRAL_SPAWNS (scripts/map/generate-dark-cathedral.py) -->
+	<spawn centerx="215" centery="418" centerz="7" radius="3">
+		<monster name="Bandit" x="0" y="-1" z="7" spawntime="70" />
+		<monster name="Bandit" x="1" y="2" z="7" spawntime="70" />
+	</spawn>
+	<spawn centerx="226" centery="413" centerz="7" radius="3">
+		<monster name="Bandit" x="1" y="1" z="7" spawntime="70" />
+		<monster name="Bandit" x="0" y="1" z="7" spawntime="70" />
+	</spawn>
+	<spawn centerx="226" centery="394" centerz="7" radius="3">
+		<monster name="Smuggler" x="-2" y="1" z="7" spawntime="80" />
+		<monster name="Smuggler" x="2" y="0" z="7" spawntime="80" />
+	</spawn>
+	<spawn centerx="212" centery="407" centerz="7" radius="3">
+		<monster name="Wild Warrior" x="0" y="2" z="7" spawntime="90" />
+		<monster name="Wild Warrior" x="1" y="2" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="258" centery="412" centerz="7" radius="3">
+		<monster name="Bandit" x="0" y="2" z="7" spawntime="70" />
+		<monster name="Bandit" x="0" y="1" z="7" spawntime="70" />
+	</spawn>
+	<spawn centerx="260" centery="394" centerz="7" radius="3">
+		<monster name="Wild Warrior" x="-2" y="2" z="7" spawntime="90" />
+		<monster name="Wild Warrior" x="2" y="-2" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="261" centery="416" centerz="7" radius="3">
+		<monster name="Hunter" x="1" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="235" centery="440" centerz="7" radius="3">
+		<monster name="Smuggler" x="1" y="1" z="7" spawntime="80" />
+		<monster name="Smuggler" x="-2" y="0" z="7" spawntime="80" />
+	</spawn>
+	<spawn centerx="240" centery="436" centerz="7" radius="3">
+		<monster name="Hunter" x="1" y="-1" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="232" centery="435" centerz="7" radius="3">
+		<monster name="Bandit" x="-2" y="0" z="7" spawntime="70" />
+		<monster name="Bandit" x="0" y="-1" z="7" spawntime="70" />
+	</spawn>
+	<spawn centerx="219" centery="402" centerz="8" radius="3">
+		<monster name="Bandit" x="-2" y="-1" z="8" spawntime="80" />
+		<monster name="Bandit" x="-2" y="2" z="8" spawntime="80" />
+	</spawn>
+	<spawn centerx="224" centery="396" centerz="8" radius="3">
+		<monster name="Bandit" x="2" y="-2" z="8" spawntime="80" />
+		<monster name="Bandit" x="-1" y="1" z="8" spawntime="80" />
+	</spawn>
+	<spawn centerx="215" centery="400" centerz="8" radius="3">
+		<monster name="Smuggler" x="2" y="-2" z="8" spawntime="90" />
+		<monster name="Smuggler" x="2" y="-1" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="222" centery="417" centerz="8" radius="3">
+		<monster name="Wild Warrior" x="-1" y="0" z="8" spawntime="90" />
+		<monster name="Wild Warrior" x="-1" y="-2" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="224" centery="412" centerz="8" radius="3">
+		<monster name="Wild Warrior" x="2" y="0" z="8" spawntime="90" />
+		<monster name="Wild Warrior" x="0" y="2" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="217" centery="420" centerz="8" radius="3">
+		<monster name="Bandit" x="1" y="0" z="8" spawntime="80" />
+		<monster name="Bandit" x="1" y="-2" z="8" spawntime="80" />
+	</spawn>
+	<spawn centerx="215" centery="432" centerz="8" radius="3">
+		<monster name="Rotworm" x="-1" y="0" z="8" spawntime="100" />
+		<monster name="Rotworm" x="-1" y="-2" z="8" spawntime="100" />
+	</spawn>
+	<spawn centerx="220" centery="429" centerz="8" radius="3">
+		<monster name="Rotworm" x="-1" y="-1" z="8" spawntime="100" />
+		<monster name="Rotworm" x="-2" y="2" z="8" spawntime="100" />
+	</spawn>
+	<spawn centerx="217" centery="434" centerz="8" radius="3">
+		<monster name="Skeleton" x="1" y="2" z="8" spawntime="110" />
+		<monster name="Skeleton" x="-1" y="1" z="8" spawntime="110" />
+	</spawn>
+	<spawn centerx="221" centery="436" centerz="8" radius="3">
+		<monster name="Ghoul" x="2" y="1" z="8" spawntime="130" />
+	</spawn>
+	<spawn centerx="245" centery="398" centerz="8" radius="3">
+		<monster name="Slime" x="0" y="-2" z="8" spawntime="100" />
+		<monster name="Slime" x="0" y="1" z="8" spawntime="100" />
+	</spawn>
+	<spawn centerx="247" centery="395" centerz="8" radius="3">
+		<monster name="Slime" x="0" y="-2" z="8" spawntime="100" />
+		<monster name="Slime" x="0" y="-1" z="8" spawntime="100" />
+	</spawn>
+	<spawn centerx="248" centery="402" centerz="8" radius="3">
+		<monster name="Poison Spider" x="0" y="0" z="8" spawntime="110" />
+		<monster name="Poison Spider" x="-1" y="-2" z="8" spawntime="110" />
+	</spawn>
+	<spawn centerx="245" centery="410" centerz="8" radius="3">
+		<monster name="Assassin" x="-1" y="-1" z="8" spawntime="130" />
+		<monster name="Assassin" x="1" y="-1" z="8" spawntime="130" />
+	</spawn>
+	<spawn centerx="250" centery="411" centerz="8" radius="3">
+		<monster name="Bandit" x="-2" y="-2" z="8" spawntime="80" />
+		<monster name="Bandit" x="-1" y="-1" z="8" spawntime="80" />
+	</spawn>
+	<spawn centerx="248" centery="416" centerz="8" radius="3">
+		<monster name="Smuggler" x="2" y="2" z="8" spawntime="90" />
+		<monster name="Smuggler" x="-1" y="-1" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="253" centery="430" centerz="8" radius="3">
+		<monster name="Bat" x="1" y="0" z="8" spawntime="90" />
+		<monster name="Bat" x="2" y="-1" z="8" spawntime="90" />
+	</spawn>
+	<spawn centerx="249" centery="427" centerz="8" radius="3">
+		<monster name="Centipede" x="-2" y="-2" z="8" spawntime="110" />
+		<monster name="Centipede" x="-2" y="0" z="8" spawntime="110" />
+	</spawn>
+	<spawn centerx="254" centery="426" centerz="8" radius="3">
+		<monster name="Poison Spider" x="0" y="1" z="8" spawntime="110" />
+		<monster name="Poison Spider" x="-2" y="1" z="8" spawntime="110" />
+	</spawn>
+	<spawn centerx="242" centery="400" centerz="9" radius="3">
+		<monster name="Monk" x="-1" y="-1" z="9" spawntime="120" />
+		<monster name="Monk" x="-2" y="-1" z="9" spawntime="120" />
+	</spawn>
+	<spawn centerx="245" centery="393" centerz="9" radius="3">
+		<monster name="Monk" x="0" y="0" z="9" spawntime="120" />
+		<monster name="Monk" x="-2" y="0" z="9" spawntime="120" />
+	</spawn>
+	<spawn centerx="231" centery="400" centerz="9" radius="3">
+		<monster name="Dark Monk" x="1" y="-1" z="9" spawntime="140" />
+		<monster name="Dark Monk" x="2" y="-2" z="9" spawntime="140" />
+	</spawn>
+	<spawn centerx="228" centery="397" centerz="9" radius="3">
+		<monster name="Ghost" x="2" y="-1" z="9" spawntime="160" />
+	</spawn>
+	<spawn centerx="215" centery="416" centerz="9" radius="3">
+		<monster name="Dark Monk" x="-1" y="2" z="9" spawntime="140" />
+		<monster name="Dark Monk" x="-2" y="-2" z="9" spawntime="140" />
+	</spawn>
+	<spawn centerx="225" centery="413" centerz="9" radius="3">
+		<monster name="Ghost" x="-1" y="1" z="9" spawntime="160" />
+		<monster name="Ghost" x="-2" y="-1" z="9" spawntime="160" />
+	</spawn>
+	<spawn centerx="240" centery="415" centerz="9" radius="3">
+		<monster name="Witch" x="1" y="-1" z="9" spawntime="150" />
+		<monster name="Witch" x="-1" y="0" z="9" spawntime="150" />
+	</spawn>
+	<spawn centerx="254" centery="417" centerz="9" radius="3">
+		<monster name="Hunter" x="-2" y="-2" z="9" spawntime="120" />
+	</spawn>
+	<spawn centerx="249" centery="410" centerz="9" radius="3">
+		<monster name="Dark Monk" x="0" y="-1" z="9" spawntime="140" />
+		<monster name="Dark Monk" x="-2" y="1" z="9" spawntime="140" />
+	</spawn>
+	<spawn centerx="233" centery="428" centerz="9" radius="3">
+		<monster name="Mummy" x="-2" y="0" z="9" spawntime="150" />
+		<monster name="Mummy" x="0" y="0" z="9" spawntime="150" />
+	</spawn>
+	<spawn centerx="244" centery="428" centerz="9" radius="3">
+		<monster name="Witch" x="-1" y="-1" z="9" spawntime="150" />
+	</spawn>
+	<spawn centerx="242" centery="426" centerz="9" radius="3">
+		<monster name="Hunter" x="2" y="-2" z="9" spawntime="120" />
+	</spawn>
+	<spawn centerx="227" centery="429" centerz="9" radius="3">
+		<monster name="Stone Golem" x="0" y="0" z="9" spawntime="160" />
+	</spawn>
+	<spawn centerx="219" centery="428" centerz="9" radius="3">
+		<monster name="Ghost" x="-2" y="-2" z="9" spawntime="160" />
+		<monster name="Ghost" x="-1" y="1" z="9" spawntime="160" />
+	</spawn>
+	<spawn centerx="213" centery="431" centerz="9" radius="3">
+		<monster name="Dark Monk" x="2" y="-1" z="9" spawntime="140" />
+		<monster name="Dark Monk" x="0" y="1" z="9" spawntime="140" />
+	</spawn>
+	<spawn centerx="254" centery="432" centerz="9" radius="3">
+		<monster name="Ghost" x="-2" y="1" z="9" spawntime="160" />
+		<monster name="Ghost" x="2" y="-1" z="9" spawntime="160" />
+	</spawn>
+	<spawn centerx="257" centery="427" centerz="9" radius="3">
+		<monster name="Dark Monk" x="-1" y="-2" z="9" spawntime="140" />
+		<monster name="Dark Monk" x="0" y="-1" z="9" spawntime="140" />
+	</spawn>
+	<!-- END DARK_CATHEDRAL_SPAWNS -->
 </spawns>
