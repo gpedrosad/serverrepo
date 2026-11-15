@@ -102,6 +102,8 @@ def fix_wall_grounds(maps, existing):
     north = [(x, 61) for x in range(174, 181)]
     west = [(174, y) for y in range(61, 68)]
     for x, y in set(north + west):
+        # La fila norte y la columna oeste, incluida la esquina NE, llevan el ground
+        # de afuera en z7 y sin ground en los pisos altos.
         for z, m in maps.items():
             pos = (x, y, z)
             if pos not in m.t or pos == DOOR:

@@ -92,11 +92,13 @@ Las paredes de 7.6 se dibujan en el **borde sur y este** de su casilla. La pieza
 
 | Familia | Vertical | Horizontal | Poste | Esquina | Ventana |
 |---|---|---|---|---|---|
-| Piedra gris (castillo) | 1049 | 1050 (sur) / 1052 (norte) | 1051 | 1053 | 1267 horizontal, 1268 vertical |
+| Piedra gris (castillo) | 1049 | 1050 | 1051 | 1053 | 1267 horizontal, 1268 vertical |
 
-En la piedra gris, **1052 es la cara norte** y **1053 la esquina este** (NE y SE). Si la fila
-norte del cuarto usa 1050, la esquina noreste queda abierta y se ve un escalón; `build_room`
-ya usa `n`/`ne` para la familia `stone`.
+**Suelo de las paredes:** la fila norte y la columna oeste (incluidas las esquinas NO, NE y SO)
+llevan el **suelo de afuera** en planta baja (pasto/dirt) y **sin ground** en pisos altos. La
+esquina **NE** de la Torre del Barquero va **verde** en z7: si se le pone piedra se ve una losa/
+escalón sobre el muro. La esquina SE sí lleva el piso del cuarto. Las piezas de muralla no cambian:
+siguen 1050 en la fila norte y 1053 en la esquina SE.
 
 - La casilla con pared bloquea el paso. El piso útil de un cuarto es lo que queda adentro del marco.
 - **Suelo bajo la pared.** En la fila norte y la columna oeste del edificio la casilla queda afuera de la línea
