@@ -290,7 +290,7 @@ En la ThinkPad (solo con OK de Gonzalo): seguir [docs/CAMBIAR-MAPA.md](../CAMBIA
 1. **Solo suelo** — no coloca paredes, items, teleportes ni NPCs
 2. **No sobrescribe** — si el tile ya existe, aborta (no “pinta encima”)
 3. **Una isla por ejecución** — para varias islas, correr el script varias veces con distintos centros (sin solapar)
-4. **Sin borrado** — no hay `remove-island.py`; restaurar desde `test.otbm.bak` o git
+4. **Borrado puntual** — para regiones chicas hay `remove-depot-stair-tower.py` (ver [MAPEAR_BORRAR_TORRE_DEPOT.md](MAPEAR_BORRAR_TORRE_DEPOT.md)); para islas enteras, restaurar desde `test.otbm.bak` o git
 5. **Bordes crudos** — sin autotiling de RME; la costa puede verse cuadrada hasta pulir en editor
 6. **Solo `test.otbm`** por defecto — si usás `test-rme.otbm` para casas, pasá `--map` explícito
 7. **Spawns no persisten en OTBM** — van en `test-spawn.xml` (convención YurOTS)

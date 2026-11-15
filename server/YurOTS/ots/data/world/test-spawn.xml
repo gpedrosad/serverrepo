@@ -1,24 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
 <spawns>
-	<spawn centerx="138" centery="54" centerz="2" radius="1">
-		<monster name="Angry Ancient Scarab" x="0" y="0" z="2" spawntime="175" />
-	</spawn>
 	<spawn centerx="153" centery="54" centerz="3" radius="1">
 		<monster name="lizard snakecharmer" x="0" y="0" z="3" spawntime="175" />
 	</spawn>
 	<spawn centerx="167" centery="54" centerz="3" radius="1">
 		<monster name="lizard snakecharmer" x="0" y="0" z="3" spawntime="175" />
 	</spawn>
-	<spawn centerx="138" centery="55" centerz="3" radius="1">
-		<monster name="Furious Hunter" x="1" y="-1" z="3" spawntime="175" />
-		<monster name="Furious Hunter" x="0" y="0" z="3" spawntime="175" />
-	</spawn>
 	<spawn centerx="153" centery="46" centerz="4" radius="5">
 		<monster name="dragon" x="0" y="-1" z="4" spawntime="235" direction="2" />
 		<monster name="monk" x="-1" y="1" z="4" spawntime="175" direction="2" />
-	</spawn>
-	<spawn centerx="138" centery="54" centerz="4" radius="1">
-		<monster name="Furious Mummy" x="0" y="0" z="4" spawntime="175" />
 	</spawn>
 	<spawn centerx="152" centery="54" centerz="4" radius="1">
 		<monster name="lizard templar" x="0" y="0" z="4" spawntime="175" />
@@ -54,9 +44,6 @@
 	<spawn centerx="153" centery="46" centerz="5" radius="5">
 		<monster name="monk" x="-1" y="1" z="5" spawntime="175" direction="2" />
 		<monster name="monk" x="0" y="1" z="5" spawntime="175" direction="2" />
-	</spawn>
-	<spawn centerx="138" centery="54" centerz="5" radius="1">
-		<monster name="Furious Scarab" x="0" y="0" z="5" spawntime="175" />
 	</spawn>
 	<spawn centerx="153" centery="54" centerz="5" radius="1">
 		<monster name="lizard sentinel" x="0" y="0" z="5" spawntime="175" />
@@ -266,10 +253,6 @@
 	</spawn>
 	<spawn centerx="188" centery="54" centerz="6" radius="1">
 		<monster name="smuggler" x="0" y="0" z="6" spawntime="175" />
-	</spawn>
-	<spawn centerx="137" centery="55" centerz="6" radius="1">
-		<monster name="Furious Rotworm" x="1" y="-1" z="6" spawntime="175" />
-		<monster name="Furious Rotworm" x="0" y="0" z="6" spawntime="175" />
 	</spawn>
 	<spawn centerx="157" centery="55" centerz="6" radius="1">
 		<monster name="ghoul" x="0" y="0" z="6" spawntime="175" />
