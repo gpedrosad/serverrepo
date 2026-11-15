@@ -38,6 +38,38 @@ Jugador abre el cliente (binario + data.zip)
 - Si la web no responde, el cliente muestra "Updater Error"; al aceptar, carga normal y se actualiza la próxima vez.
 - El binario no se actualiza (en macOS rompería la firma/Gatekeeper). Un binario nuevo = descarga nueva.
 
+## App de Mac (`Retro76.app`)
+
+Desde nov 2026 el zip de Mac trae `Retro76.app` (con ícono propio) en vez de `otclient_mac` +
+`Iniciar Cliente.command` sueltos:
+
+```
+Retro76-Mac/
+├── LEEME.txt
+└── Retro76.app/Contents/
+    ├── Info.plist            ← clienteretro/mac/Retro76.app (va en git)
+    ├── MacOS/Retro76         ← lanzador bash (va en git)
+    └── Resources/
+        ├── Retro76.icns      ← scripts/client-rme/make_mac_icon.py (va en git)
+        ├── otclient_mac      ← lo agrega publish_client.py
+        └── data.zip          ← lo agrega publish_client.py
+```
+
+- El lanzador hace lo mismo que el `.command`: abre XQuartz, busca el `DISPLAY`, quita la cuarentena y corre
+  `otclient_mac` **desde `Contents/Resources`** (el binario busca `data.zip` en la carpeta actual). Si falta
+  XQuartz (`/opt/X11/lib/libX11.6.dylib`, contra la que está enlazado el binario) avisa y abre xquartz.org.
+- **App Translocation:** una app descargada y sin mover la corre macOS desde una copia de solo lectura en
+  `/private/var/.../AppTranslocation/`; desde ahí no se puede quitar la cuarentena. El lanzador lo detecta y
+  pide arrastrar la app a Aplicaciones (moverla con el Finder corta la translocación). El updater no se ve
+  afectado: escribe en `~/Library/Application Support/retro_oficial/`.
+- La app no está firmada: la primera vez hay que abrirla con clic derecho → Abrir (o "Abrir igualmente" en
+  Privacidad y seguridad). Igual que el `.command` de antes.
+- `clienteretro/mac/` conserva `otclient_mac` e `Iniciar Cliente.command` para jugar desde el repo; la
+  `Retro76.app` del repo no tiene binario ni datos (los pone `publish_client.py` en el zip).
+- Ícono: Crown Shield sobre Magic Sword, sacados del propio `Tibia.spr`, en los colores de la web.
+  `make_mac_icon.py --window-icon` escribe el mismo dibujo en 64x64 como `data/images/clienticon.png`, que es
+  el ícono de la ventana del cliente (Mac y Windows; llega a todos por el updater).
+
 ## Publicar un cambio (sprites, módulos, init.lua)
 
 En la ThinkPad, con `serverrepo` ya en el commit nuevo:
@@ -78,6 +110,8 @@ binario. Al terminar, borrar `~/Library/Application Support/<APP_NAME de prueba>
 | `clienteretro/{mac,windows}/init.lua` | `Services.updater` y servidor `192.168.1.17:7171` |
 | `clienteretro/{mac,windows}/modules/updater/` | Updater de OTClientV8 (sin cambios) |
 | `clienteretro/build-zips.sh` | Atajo a `publish_client.py` |
+| `clienteretro/mac/Retro76.app/` | `Info.plist`, lanzador e ícono de la app de Mac |
+| `scripts/client-rme/make_mac_icon.py` | Genera `Retro76.icns` y `clienticon.png` |
 | `scripts/client-rme/publish_client.py` | Publica el cliente y arma los zips |
 | `web/client_updater.py` | Manifest con los CRC |
 | `web/server.py` | `/api/updater.php`, `/updater/files/…`, `/downloads/…` |

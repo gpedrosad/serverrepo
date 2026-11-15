@@ -85,6 +85,8 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | `add_recolor_look.py` + `presets/` + `sprite_kit.py` | Aplica un preset de criatura (un archivo por criatura en `presets/`) a `Tibia.dat`/`.spr` |
 | `play-yurots-client.sh` / `open-rme.sh` | Cliente y RME locales |
 | `patch-tibia760-client.py` | Patcher cliente 7.6 |
+| `publish_client.py` | Publica el cliente Retro76 (updater + zips; el de Mac con `Retro76.app`). Doc: `docs/CLIENT_UPDATER_RETRO76.md` |
+| `make_mac_icon.py` | Ícono de `Retro76.app` (`.icns`) y de la ventana del cliente (`clienticon.png`) |
 
 ### ot / web / deploy
 

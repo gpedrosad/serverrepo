@@ -70,7 +70,7 @@ const STRINGS = {
       description: 'Descarga el cliente de Retro76 (Tibia 7.6) para Windows y macOS.',
       thSystem: 'Sistema', thOpen: 'Abrir', download: 'Descargar ZIP', connect: 'Conectarse',
       connectText: 'El cliente ya viene configurado. Si te lo piden:', noAccount: '¿No tienes cuenta?', createIt: 'Créala acá', free: ', es gratis.',
-      runWin: 'Iniciar Cliente.bat', runMac: 'Iniciar Cliente.command',
+      runWin: 'Iniciar Cliente.bat', runMac: 'Retro76.app',
     },
     account: {
       title: 'Crear cuenta', pageTitle: 'Crear cuenta — Retro76',
@@ -201,7 +201,7 @@ const STRINGS = {
       description: 'Download the Retro76 (Tibia 7.6) client for Windows and macOS.',
       thSystem: 'System', thOpen: 'Open', download: 'Download ZIP', connect: 'Connecting',
       connectText: 'The client comes preconfigured. If asked:', noAccount: 'No account yet?', createIt: 'Create one here', free: ', it\'s free.',
-      runWin: 'Iniciar Cliente.bat', runMac: 'Iniciar Cliente.command',
+      runWin: 'Iniciar Cliente.bat', runMac: 'Retro76.app',
     },
     account: {
       title: 'Create an account', pageTitle: 'Create an account — Retro76',

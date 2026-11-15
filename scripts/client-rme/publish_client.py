@@ -12,8 +12,10 @@ Qué hace:
   2. Comprueba que mac/ y windows/ tengan los mismos archivos de datos (solo cambian binarios y lanzadores).
   3. Copia esos datos (init.lua, data/, modules/, layouts/...) a web/updater/files/. El updater de la web
      (web/client_updater.py) lista esa carpeta con su CRC32; los clientes bajan lo que les cambió al abrirse.
-  4. Arma web/downloads/Retro76-Mac.zip y Retro76-Windows.zip: binario + lanzador + LEEME + data.zip (los datos
-     empaquetados; el updater de OTClientV8 solo funciona cuando el cliente corre desde un data.zip).
+  4. Arma web/downloads/Retro76-Mac.zip y Retro76-Windows.zip con data.zip (los datos empaquetados; el updater
+     de OTClientV8 solo funciona cuando el cliente corre desde un data.zip):
+       Mac:     Retro76.app (Info.plist, lanzador, ícono + otclient_mac y data.zip en Contents/Resources) + LEEME
+       Windows: binarios + lanzador + LEEME + data.zip
 
 Después de publicar no hace falta reiniciar nada: la web lee web/updater/files/ en cada pedido.
 Doc: docs/CLIENT_UPDATER_RETRO76.md.
@@ -41,6 +43,10 @@ PLATFORM_FILES = {
 }
 EXECUTABLE = {"otclient_mac", "Iniciar Cliente.command"}
 ALL_PLATFORM = {name for names in PLATFORM_FILES.values() for name in names}
+# App de Mac: mac/Retro76.app tiene Info.plist, lanzador e ícono; al armar el zip se le agregan el binario y
+# data.zip en Contents/Resources. Los jugadores de Mac bajan solo la app + LEEME.
+MAC_APP = "Retro76.app"
+MAC_ZIP_FILES = ["LEEME.txt"]
 ZIP_NAMES = {"mac": "Retro76-Mac", "windows": "Retro76-Windows"}
 ZIP_DATE = (2026, 1, 1, 0, 0, 0)  # fecha fija: el mismo contenido da el mismo zip
 
@@ -53,7 +59,7 @@ def data_files(platform_dir: Path) -> dict[str, Path]:
         parts = rel.split("/")
         if not path.is_file() or any(p.startswith(".") for p in parts) or rel.endswith(".log"):
             continue
-        if len(parts) == 1 and rel in ALL_PLATFORM:
+        if len(parts) == 1 and rel in ALL_PLATFORM or parts[0] == MAC_APP:
             continue
         out[rel] = path
     return out
@@ -140,9 +146,21 @@ def main() -> int:
         top = ZIP_NAMES[plat]
         out = downloads / f"{top}.zip"
         with zipfile.ZipFile(out.with_suffix(".tmp"), "w") as zf:
-            for name in PLATFORM_FILES[plat]:
-                zip_entry(zf, f"{top}/{name}", (d / name).read_bytes(), executable=name in EXECUTABLE)
-            zip_entry(zf, f"{top}/data.zip", data_zip)
+            if plat == "mac":
+                app = d / MAC_APP
+                for path in sorted(app.rglob("*")):
+                    if path.is_file() and not path.name.startswith("."):
+                        rel = path.relative_to(d).as_posix()
+                        zip_entry(zf, f"{top}/{rel}", path.read_bytes(), executable="/MacOS/" in rel)
+                res = f"{top}/{MAC_APP}/Contents/Resources"
+                zip_entry(zf, f"{res}/otclient_mac", (d / "otclient_mac").read_bytes(), executable=True)
+                zip_entry(zf, f"{res}/data.zip", data_zip)
+                for name in MAC_ZIP_FILES:
+                    zip_entry(zf, f"{top}/{name}", (d / name).read_bytes())
+            else:
+                for name in PLATFORM_FILES[plat]:
+                    zip_entry(zf, f"{top}/{name}", (d / name).read_bytes(), executable=name in EXECUTABLE)
+                zip_entry(zf, f"{top}/data.zip", data_zip)
         out.with_suffix(".tmp").replace(out)
         print(f"descarga: {out} ({out.stat().st_size // 1024} KB)")
 

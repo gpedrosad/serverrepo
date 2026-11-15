@@ -87,6 +87,14 @@ En `Options > Interface`:
 
 Si alguna vez hace falta cambiar la forma del cursor base, los assets están en `client-local/data/cursors/` y el `hot-spot` se define en `cursors.otml`.
 
+## Barras de vida y maná (ventana Health Info)
+
+La ventana "Health Info" del panel derecho (barras de vida y maná) tiene `&save: false` en
+`modules/game_healthinfo/healthinfo.otui`: nunca guarda si estaba abierta. Con `&autoOpen: 0`,
+`UIMiniWindow:setup()` (`corelib/ui/uiminiwindow.lua`) la cerraba en cada login aunque el botón del menú
+quedara prendido, y nadie veía las barras. Desde nov 2026 va `&autoOpen: 2`: se abre siempre, segunda en el
+panel (el número ordena las ventanas: minimapa 1, health 2, inventario 3, botones 4).
+
 ## Cliente público Retro76 (clienteretro)
 
 Distribución para jugadores: repo `~/apps/clienteretro` en la ThinkPad, zips en `web/downloads/`.
