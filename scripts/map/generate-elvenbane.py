@@ -456,8 +456,9 @@ def build_surface(plans, seed: int):
               (px0, py + 1), (px1, py + 1), (px0 - 1, py - 1), (px1 + 1, py - 1)}
     clear |= {(x, y) for x in range(X_CASTLE + 9, X_CASTLE + 13) for y in range(Y_CASTLE + CH - 1, Y_CASTLE + CH + 1)}
 
-    # 10) bosque denso pero respirable: árboles grandes separados >= 2, y arbustos/pasto entre medio
-    forest = {c for c in t if t[c]["g"] in (GRASS, GRASS_COAST) and c not in clear}
+    # 10) bosque denso pero respirable: árboles grandes separados >= 2, y arbustos/pasto entre medio.
+    #     El patio del castillo (todo lo que queda dentro de la muralla) va limpio: sólo pasto y piedra.
+    forest = {c for c in t if t[c]["g"] in (GRASS, GRASS_COAST) and c not in clear and c not in castle}
     blocked = set()                               # 2x2 que ocupa cada árbol grande
     for pos in sorted(forest, key=lambda c: (c[1], c[0])):
         x, y = pos
@@ -904,9 +905,9 @@ def main() -> int:
             counts[(z, name)] = counts.get((z, name), 0) + 1
     print(f"Elvenbane: caja z7 x{BOX7[0]}-{BOX7[2]} y{BOX7[1]}-{BOX7[3]}; castillo "
           f"{X_CASTLE},{Y_CASTLE} {CW}x{CH}")
-    forest7 = [p for p, c in layers[Z7].items() if c["g"] in (GRASS, GRASS_COAST)]
+    forest7 = info["forest"]
     blk = [p for p in forest7 if any(i in OTB_BLOCK for i in layers[Z7][p]["it"])]
-    print(f"  bosque z7: {len(forest7)} casillas de pasto, {len(blk)} con bloqueo "
+    print(f"  bosque z7: {len(forest7)} casillas de bosque, {len(blk)} con bloqueo "
           f"({100 * len(blk) // max(1, len(forest7))} %)")
     for z in sorted(layers):
         tl = layers[z]

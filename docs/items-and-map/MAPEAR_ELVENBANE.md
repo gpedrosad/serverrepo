@@ -36,14 +36,16 @@ escaleras automáticamente y valida alcanzabilidad multi-piso). Manifiesto:
 
 El bosque cubre **toda** la tierra firme y la franja este/sur de la isla. No hay prados: el único
 claro es un corredor de 1–2 casillas que une la bajada `39,340`, la llegada `39,346` y los portales
-`41–42,347`, más el anillo de piedra de los portales; el resto es bosque. La densidad se hace con
+`41–42,347`, más el anillo de piedra de los portales; el resto es bosque. El **patio del castillo**
+(las 21×18 casillas dentro de la muralla, incluido el anillo de pasto) va limpio: sólo pasto y
+piedra, sin árboles, arbustos ni flores — el bosque va afuera de la muralla. La densidad se hace con
 las copas de los pinos 2x2, no apilando árboles:
 
 - pino grande `4009` sólo si no hay otro a menos de 2 casillas (Chebyshev) y si su bloque 2x2 es
   todo pasto; ocupa 1 casilla para caminar pero se ve en 4;
 - en el resto se alterna arbolito `2768` (14 %), arbusto `2767`/`2786` (14 %) y flores (25 %), y
   queda pasto a la vista entre medio;
-- ~48 % de las casillas de pasto quedan con algo encima; el resto es transitable, así el bosque se
+- ~52 % de las casillas de bosque quedan con algo encima; el resto es transitable, así el bosque se
   ve lleno pero se puede cruzar. `open_pockets()` sólo tala el árbol/arbusto que deje una casilla
   de pasto encerrada (en la última pasada: 42, sobre ~860 de pasto con bosque).
 
