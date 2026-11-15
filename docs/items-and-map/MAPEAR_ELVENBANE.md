@@ -66,11 +66,12 @@ las copas de los pinos 2x2, no apilando árboles:
 | Prisión -3 | z10 | celdas 2×3 + sala grande al sur | Minotaur, Orc Warrior, Minotaur Guard |
 | Castillo (isla) | z7 norte | muralla, anillo de pasillo, patio y torre central | Minotaur, Orc Warrior, Minotaur Guard, Orc Berserker |
 | Adarve | z6 | anillo de muralla | Minotaur, Orc Warrior |
-| Torretas + torre | z5 | 4 torretas + torre central | Elf, Elf Scout, Orc Warrior; en la torre Orc Shaman, Elf Arcanist |
-| Cima | z4 | 4 torretas + cima de la torre | Orc Berserker, Hunter, Minotaur Archer; en la torre Minotaur Mage, Demon Skeleton y **1 Dragon** |
+| Torretas + torre | z5 | 4 torretas + torre central | Elf, Elf Scout, Orc Warrior; en la torre **1 Dragon**, Orc Shaman y Elf Arcanist |
+| Cima | z4 | 4 torretas + cima de la torre | Orc Berserker, Hunter, Minotaur Archer; en la torre Minotaur Mage y Demon Skeleton |
 
 La dificultad sube de sur a norte (entrada → castillo) y de abajo hacia la torre: el Dragon es el
-"jefe" en la cima (z4). Total: **50 spawns y 81 monstruos**. Detalle por monstruo en el manifiesto
+"jefe" en la **torre de z5**, el piso inmediatamente arriba de los poison fields de z6 (la cima z4
+queda con Demon Skeleton y Minotaur Mage). Total: **50 spawns y 81 monstruos**. Detalle por monstruo en el manifiesto
 (`monsters`).
 
 ## Coordenadas
@@ -84,7 +85,7 @@ La dificultad sube de sur a norte (entrada → castillo) y de abajo hacia la tor
 | Sótano -1 → sótano -2 | `58, 313, 8` → `58, 313, 9` |
 | Sótano -2 → prisión -3 | `42, 312, 9` → `42, 312, 10` |
 | Castillo (muralla) | `40, 298` a `60, 315` (21×18) |
-| Caja z7 | x `12–82`, y `282–362` |
+| Caja z7 | x `4–84`, y `282–362` |
 | Caja z8 | x `30–67`, y `288–349` |
 | Caja z9 / z10 | x `33–67`, y `291–322` |
 | Caja z4–z6 | x `38–62`, y `296–317` |
@@ -152,8 +153,10 @@ Elvenbane queda en una zona que estaba vacía en z4–z10. Todo lo que no es agu
 se rellena con roca (z8–z10) o agua (z7); desde ninguna casilla caminable se ve el borde de la caja.
 
 Forma de z7: la **isla** sale de la **máscara de tierra del ASCII `ground`** (la del minimapa),
-alineada a la muralla: castillo + lóbulo de bosque al noreste/este + franja sur + restos de la costa
-oeste, y después se comen unas casillas de costa con ruido para que no quede un borde prolijo. La **tierra firme** sale del recorte del ASCII `entrance` con un cierre morfológico suave
+alineada a la muralla y recortada a cols 10–60 / filas 4–33: castillo + lóbulo de bosque al
+noreste/este (hasta x 74) + **costa oeste de varias casillas** (x 27–39) + franja sur. La silueta es
+la del minimapa (sin comer la costa con ruido); sólo se descartan las casillas de tierra aisladas.
+La **tierra firme** usa el recorte cols 10–52 / filas 21–50 del ASCII `entrance` (x 11–53). La **tierra firme** sale del recorte del ASCII `entrance` con un cierre morfológico suave
 (tapa agujeros de una casilla) y conserva la costa irregular; se le suma el **brazo de agua del
 oeste** (`WEST_ARM`: sale del agua de la caja en x 26 y entra hacia el noreste hasta x 35, con punta
 redondeada), que es el `~~~~` del ASCII y corta la costa noroeste. Los charcos interiores chicos se
@@ -175,7 +178,8 @@ en todo el ancho: el único acceso es el túnel (z8).
   sin borde.
 - **Nada de `919`**: el script falla si quedó una casilla con ese ground (se ve como vacío negro).
 - **Poison fields**: el interior de la torre central en z6 (menos las escaleras) lleva `1490`; el
-  adarve y las torretas no.
+  adarve y las torretas no. El **Dragon** va en la torre de z5 (piso justo arriba de los fields),
+  no en la cima.
 
 ## Regenerar
 

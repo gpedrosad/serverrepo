@@ -22,18 +22,19 @@ Elvenbane ocupa una zona que estaba vacía en z4–z10. No se pisa nada fuera de
 
 | Pisos | x | y | Qué cubre |
 |-------|---|---|-----------|
-| z7 | 12–82 | 282–362 | Isla del castillo + agua + tierra firme de la entrada |
+| z7 | 4–84 | 282–362 | Isla del castillo + agua + tierra firme de la entrada |
 | z8 | 30–67 | 288–349 | Túnel N–S + sótano -1 bajo el castillo |
 | z9 y z10 | 33–67 | 291–322 | Sótano -2 y prisión -3 |
 | z4, z5, z6 | 38–62 | 296–317 | Adarve, torretas y torre central |
 
 Castillo (muralla): esquina NO `40,298`, tamaño 21×18, hasta `60,315`.
 
-La caja de z7 se agrandó a x 12–82 / y 282–362 (antes 18–74 / 286–360) para que entre la isla
-completa del minimapa: la silueta llega a x 71 por el lóbulo noreste. La zona nueva estaba vacía
-en z4–z10 (verificado con el parser antes de agrandar).
+La caja de z7 se agrandó a **x 4–84 / y 282–362** (antes 12–82 / 282–362) para que entren el brazo
+noreste de la isla (llega a x 74) y el suroeste de la tierra firme (llega a x 11). Cada ampliación se
+verificó vacía en z4–z10 con el parser antes de escribir; al norte no se pasa de y 282 (en y 260,
+z10, hay tiles de otra zona que no se tocan).
 
-**Vecinos:** Valle de las Bestias (x 262–361, y 232–378, al este; Elvenbane termina en x 82 de caja, tierra hasta x 71);
+**Vecinos:** Valle de las Bestias (x 262–361, y 232–378, al este; Elvenbane termina en x 84 de caja, tierra hasta x 74);
 Reloj de Arena (x 328–348, y 383–401, sureste); templo / plaza de portales (x 146–178, y 36–62,
 noroeste). El portal de la plaza es `157,47,7`. Si se mergean ramas, no mergear el `.otbm`
 binario: correr los generadores en secuencia sobre el mapa de `main` y después `temple-portals.py`.
@@ -59,8 +60,8 @@ Plantas tomadas de los minimapas de TibiaWiki (3 px = 1 sqm), convertidas a ASCI
 
 | Piso | Nombre | Layout |
 |------|--------|--------|
-| z7 sur | Tierra firme / entrada | Bosque denso con montañitas de roca (`4566`+`906`/`903`), brazo de agua al oeste (`WEST_ARM`, x 26→35), llegada del portal, 2 portales de vuelta y el buraco de la entrada `39,340`. Costa con orilla `4644–4655`. |
-| z7 norte | Isla del castillo | **Silueta tomada de la máscara de tierra del ASCII `ground`** (la del minimapa), alineada a la muralla: castillo + lóbulo de bosque largo al **noreste/este** (hasta x 71), franja de bosque al sur, restos de la costa oeste y la explanada de piedra al sur. Costa irregular con entrantes (sin islotes sueltos ni bolsones). Agua continua entre isla y tierra firme: el único acceso es el túnel de z8. |
+| z7 sur | Tierra firme / entrada | Bosque denso con montañitas de roca (`4566`+`906`/`903`), brazo de agua al oeste (`WEST_ARM`, x 26→35) y el suroeste del ASCII `entrance` (recorte cols 10–52 → x 11–53), llegada del portal, 2 portales de vuelta y el buraco de la entrada `39,340`. Costa con orilla `4644–4655`. |
+| z7 norte | Isla del castillo | **Silueta tomada de la máscara de tierra del ASCII `ground`** (la del minimapa), alineada a la muralla: castillo + lóbulo de bosque largo al **noreste/este** (cols 44–60 del ASCII, hasta x 74) + **costa oeste de varias casillas** (cols 10–22, x 27–39) + franja sur y explanada de piedra. No se come la costa con ruido: la silueta es la del minimapa (sin islotes sueltos ni bolsones). Agua continua entre isla y tierra firme (canal y 321–325): el único acceso es el túnel de z8. |
 | z8 | Túnel + sótano -1 | Pasillo largo N–S desde la entrada (sur) hasta el sótano rectangular bajo el castillo (norte). Sube al patio y baja al -2. |
 | z9 | Sótano -2 | Salas bajo el castillo. Sube al -1 y baja a la prisión. |
 | z10 | Prisión -3 | Celdas 2×3 al norte y al centro (las que el minimapa dibuja cerradas se abren como piso, `PRISON_DOORS`) y sala grande al sur. |
@@ -134,12 +135,13 @@ casilla, guardadas en `relocated` del manifiesto): `sotano→patio` 57,302→57,
 | z8 | 9 | Troll 4, Orc 4, Orc Spearman 2, Orc Warrior 4, Dwarf 1, Minotaur 2 |
 | z9 | 6 | Orc 4, Minotaur 4, Orc Warrior 4 |
 | z10 | 6 | Minotaur 4, Orc Warrior 4, Minotaur Guard 2 |
-| z6 | 3 | Minotaur 2, Orc Warrior 1 |
-| z5 | 5 | Elf 1, Elf Scout 1, Orc Warrior 2, Orc Shaman 1, Elf Arcanist 1 |
-| z4 | 6 | Orc Berserker 1, Hunter 1, Minotaur Archer 1, Minotaur Mage 1, Demon Skeleton 1, Dragon 1 |
+| z6 | 3 | Minotaur 2, Orc Warrior 1 (sobre los poison fields) |
+| z5 | 6 | **Dragon 1** (torre central), Elf 1, Elf Scout 1, Orc Warrior 2, Orc Shaman 1, Elf Arcanist 1 |
+| z4 | 5 | Orc Berserker 1, Hunter 1, Minotaur Archer 1 (torretas), Minotaur Mage 1, Demon Skeleton 1 (cima de la torre) |
 
-La dificultad sube de la entrada hacia el castillo y de los sótanos hacia la cima. El Dragon está
-en z4 (cima de la torre).
+La dificultad sube de la entrada hacia el castillo y de los sótanos hacia la cima. El **Dragon está
+en la torre central de z5**, el piso inmediatamente arriba de los poison fields de z6 (como la quest
+clásica); la cima z4 queda con Demon Skeleton y Minotaur Mage.
 
 ## Cómo regenerar
 
@@ -172,12 +174,13 @@ El propio generador, si algo falla, no escribe el `.otbm`.
 |---------|------|-----------|
 | Pares de escalera | 18× `409+1386` y 1× `469+1386`; ambas llegadas caminables | 0 errores |
 | Sin ids viejos | no quedan `432`, `1396`, `3685`, `1385`, `3687` en la caja | 0 |
-| BFS multi-piso | desde `39,346,7`, siguiendo `409`/`469` hacia abajo y `1386` hacia `(x,y+1,z-1)` | 1966 caminables, 1966 alcanzables, 0 perdidas |
+| BFS multi-piso | desde `39,346,7`, siguiendo `409`/`469` hacia abajo y `1386` hacia `(x,y+1,z-1)` | 2312 caminables, 2312 alcanzables, 0 perdidas |
 | Spawns | 81 monstruos sobre piso caminable | 0 errores |
 | Orilla | `pieces_for()` exacto en toda la costa pasto↔agua | OK |
 | Ground `919` | se veía como vacío negro | 0 |
 | Patio del castillo | sin árboles/arbustos/flores dentro de la muralla 21×18 | OK |
 | Poison fields | interior de la torre z6 con `1490` salvo escaleras | 27/27 |
+| Dragon | 1 en la torre central de z5 (`48,306`), 0 en z4 | OK |
 | `check-map-load.py` | carga offline del mapa | 0 errores |
 | `validate-tele-dest.py` | destinos de los teleport | OK |
 | Idempotencia | dos corridas del generador | mismo md5 del `.otbm` |
@@ -232,15 +235,13 @@ Salida (última pasada, 15-11-2026, commit de mapa `834bf52`):
 
 Cerca, no idéntico:
 
-- La isla sale de la máscara del minimapa, pero el lóbulo noreste queda algo más corto que en
-  `Elvenbane_ground.png` (allí sigue unos sqm más al norte) porque la fila 4 del ASCII ya es agua.
-- La costa oeste de la isla queda en una franja de 1–2 casillas (el ASCII la dibuja así); en la
-  referencia se ve un poco más de tierra al oeste del castillo.
-- La tierra firme sigue un recorte del ASCII `entrance` (cols 24–52, filas 21–50): la costa es
-  dentada y tiene el brazo de agua oeste, pero no llega tan al suroeste como el mapa original.
+- La isla sigue la máscara del minimapa; el brazo noreste llega hasta x 74 (el ASCII termina en
+  x 77 con dos islotes sueltos que se descartan para no dejar tierra aislada).
+- La tierra firme usa el recorte cols 10–52 del ASCII `entrance` (x 11–53): falta el extremo más
+  al oeste (cols 0–9, x 1–10) porque el borde del mapa no deja margen para la cámara.
 - En Tibia oficial el buraco de la entrada es un montículo `468` que se abre con pala y se vuelve a
   cerrar; acá el `469` queda abierto (no hay decay configurado para 469).
-- El Dragon está en la cima (z4); en la quest original está a mitad de la torre.
+
 
 ## Estado
 

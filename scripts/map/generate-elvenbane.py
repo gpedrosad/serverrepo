@@ -96,7 +96,7 @@ CARD = ((1, 0), (-1, 0), (0, 1), (0, -1))
 X_CASTLE, Y_CASTLE = 40, 298          # esquina NO de la planta del castillo (21 x 18)
 CW, CH = 21, 18
 Z7, Z6, Z5, Z4, Z8, Z9, Z10 = 7, 6, 5, 4, 8, 9, 10
-BOX7 = (12, 282, 82, 362)             # isla + tierra firme + agua
+BOX7 = (4, 282, 84, 362)              # isla + tierra firme + agua
 BOX8 = (30, 288, 67, 349)             # túnel + sótano -1
 BOX9 = (33, 291, 67, 322)             # sótano -2
 BOX10 = (33, 291, 67, 322)            # prisión -3
@@ -104,7 +104,7 @@ BOXT = (38, 296, 62, 317)             # pisos altos (z4-z6): castillo + 2
 BOXS = {Z4: BOXT, Z5: BOXT, Z6: BOXT, Z7: BOX7, Z8: BOX8, Z9: BOX9, Z10: BOX10}
 
 GROUND_CROP = (20, 8, 46, 33)         # cols/rows del ASCII ground -> x 37-63, y 295-320
-ENTRANCE_CROP = (24, 21, 52, 50)      # cols/rows del ASCII entrance -> x 25-53, y 326-355
+ENTRANCE_CROP = (10, 21, 52, 50)      # cols/rows del ASCII entrance -> x 11-53, y 326-355
 PLAN8 = (37, 295)                     # ASCII floor-1: col 3 -> x 40, row 3 -> y 298
 # Celdas de la prisión (floor-3) que el minimapa dibuja cerradas: se les abre la puerta al pasillo
 PRISON_DOORS = tuple((row, col) for row in (4, 11) for col in (2, 5, 8, 11))
@@ -154,10 +154,11 @@ HUNTS = {
           ("Minotaur Guard", 2, 1, 120, None)],
     Z6: [("Minotaur", 2, 1, 90, None), ("Orc Warrior", 1, 1, 90, None)],
     Z5: [("Elf", 1, 1, 120, None), ("Elf Scout", 1, 1, 120, None), ("Orc Warrior", 1, 2, 90, None),
-         ("Orc Shaman", 1, 1, 150, "torre"), ("Elf Arcanist", 1, 1, 150, "torre")],
+         ("Orc Shaman", 1, 1, 150, "torre"), ("Elf Arcanist", 1, 1, 150, "torre"),
+         ("Dragon", 1, 1, 300, "torre")],
     Z4: [("Orc Berserker", 1, 1, 120, "torreta"), ("Hunter", 1, 1, 120, "torreta"),
          ("Minotaur Archer", 1, 1, 120, "torreta"), ("Minotaur Mage", 1, 1, 150, "torre"),
-         ("Demon Skeleton", 1, 1, 180, "torre"), ("Dragon", 1, 1, 300, "torre")],
+         ("Demon Skeleton", 1, 1, 180, "torre")],
 }
 GAP = 3                                # separación mínima entre centros de spawn
 
@@ -327,19 +328,14 @@ def build_surface(plans, seed: int):
     mask = set()
     for r in range(4, 34):
         row = plans["ground"][r]
-        for c in range(19, 55):
+        for c in range(10, 61):          # incluye la costa oeste (cols 10-22) y el brazo NE
             if c < len(row) and row[c] in "._TS#":
                 mask.add((G_OX + c, G_OY + r))
     island = set(castle)
     for comp in components(mask):
         if comp & castle:
             island |= comp
-    # borde irregular: se comen algunas casillas de la costa con ruido (nunca las del castillo)
-    for pos in sorted(island - castle):
-        x, y = pos
-        inner = sum(1 for dx, dy in CARD if (x + dx, y + dy) in island)
-        if inner <= 1 and nz.fbm(x / 3.0, y / 3.0, 2, 11) < 0.35:
-            island.discard(pos)
+    # la silueta del ASCII ya es irregular: no se come la costa (así el brazo NE llega a su punta)
 
     # 2) tierra firme: máscara del ASCII 'entrance' (pasto, árboles, roca y piedra), suavizada
     ec0, er0, ec1, er1 = ENTRANCE_CROP
@@ -373,13 +369,13 @@ def build_surface(plans, seed: int):
 
     land = island | main | keep
 
-    # 3b) podar las puntas de una casilla que deja la máscara (nunca lo que está en `keep`)
-    for _ in range(4):
-        tend = {p for p in land if p not in keep
-                and sum(1 for dx, dy in CARD if (p[0] + dx, p[1] + dy) in land) <= 1}
-        if not tend:
+    # 3b) fuera las casillas de tierra totalmente aisladas (no se tocan las puntas del brazo)
+    for _ in range(3):
+        lone = {p for p in land if p not in keep
+                and not any((p[0] + dx, p[1] + dy) in land for dx, dy in CARD)}
+        if not lone:
             break
-        land -= tend
+        land -= lone
 
     # 4) fuera los islotes sueltos que deja el recorte
     for comp in components(land):
