@@ -59,8 +59,9 @@ Coordenadas absolutas (las locales del generador son `abs − (118,284)`).
 | Sala gris del oeste (bajada B) | `126–132 × 333–338` | Losa `431`, braseros `1486`, agujero `432` en `128,336` |
 | Explanada de la llegada | `143–154 × 334–337` | Losa `431`, portal de vuelta y cartel |
 | Rellano de la bajada A | `145–152 × 293–297` | Losa `431`, agujero `432` en `148,295`, braseros, camino de piedra hasta la brecha norte de la nave |
-| Río | esquina NE (`x ≥ 156`, `y ≤ 296`) | Agua `4608` con orilla `4644–4655`; **no** hay marco de mar: el borde es jungla |
-| Jungla | resto de la caja | Árboles `2701–2708`/`4009` plantados al azar (nunca dos copas pegadas), arbustos `2767`/`2786`, pinitos `2768`, y tapizado bajo `4158`/`4150`/`2740`/`4183`/`4171`/`4181`; franja de monte cerrado en el borde |
+| Explanada (claro de la iglesia) | `x 120–169`, `y 300–348` (1357 casillas de tierra) | Tierra `103` con borde de pasto `110–121`; piedras sueltas, huesos y matas (`4158`/`4150`/`2740`/`4183`), algún árbol suelto. Sin halo de césped contra los muros |
+| Ríos en arco | norte y este | Agua `4608` con orilla `4644–4655`: entra por el oeste (`x 120`, `y 297`), pasa al norte del predio (`y 284–290`) y baja por el este hasta el sureste (`x 161`, `y 336`). Del otro lado, jungla hasta el borde de la caja: **no** hay marco de mar |
+| Jungla | del otro lado de los ríos y en el borde de la caja | Árboles `2701–2708`/`4009` plantados al azar (nunca dos copas pegadas), arbustos `2767`/`2786`, pinitos `2768`, y tapizado bajo `4158`/`4150`/`2740`/`4183`/`4171`/`4181`; franja de monte cerrado en el borde |
 
 ### z8 — cripta (-1)
 
@@ -72,7 +73,7 @@ Coordenadas absolutas (las locales del generador son `abs − (118,284)`).
 | Salas | A `128–134 × 296–302` · B `136–141 × 297–302` · C `127–133 × 307–314` · D `135–140 × 307–314` · K `150–155 × 309–315` · L `157–162 × 309–315` · M `127–133 × 316–326` · N `135–140 × 316–326` · O `150–156 × 317–326` · P `158–163 × 317–326` · Q `128–133 × 331–338` · R `135–141 × 331–336` (+ cola en L hasta `y 339`) · S `151–156 × 331–336` · U `158–163 × 331–336` | Losa `431` en pasillos y salas grises, tierra `103` en las otras; puertas de una casilla |
 | Antecámara de la cueva | J `151–157 × 299–304` | Tierra, conecta el pasillo este con la cueva |
 | Sala del fondo | T `141–155 × 343–348` | Losa `431`, cierre del eje |
-| Cueva natural | `151–168 × 288–308` (143 casillas) | Seis cámaras irregulares unidas por pasillos (discos + conectores), piso de cueva `351`/`352`/`355`, paredes de roca `356–367`; boca de dos casillas en `154–155,298` hacia la antecámara J. Deja una casilla de pared contra las salas de ladrillo |
+| Cueva natural | `152–168 × 287–306` (185 casillas) | Ocho cámaras irregulares unidas por pasillos orgánicos (discos + conectores), piso de cueva `351`/`352`/`355`, paredes de roca `356–367`; boca de dos casillas en `154–155,298` hacia la antecámara J. Deja una casilla de pared contra las salas de ladrillo y lo que queda suelto se vuelve roca |
 
 ### z9 — cripta (-2)
 
@@ -233,13 +234,14 @@ Referencias usadas para comparar: `img/dark-cathedral-ref/Dark_Cathedral_0.png` 
 
 Cerca, no idéntico:
 
-- **Superficie.** La referencia tiene ríos en arco al norte y al este formando casi una isla; acá el
-  borde es jungla cerrada y sólo queda un río en la esquina noreste. Las ruinas son más compactas
-  (caben en 60×70) y el conjunto se lee como claro de jungla, no como la explanada extensa original.
+- **Superficie.** Tiene la explanada de tierra y los ríos en arco al norte y al este de la
+  referencia, pero el arco es más angosto y el claro más rectangular: en la referencia el río casi
+  aísla el predio y la jungla del otro lado es más ancha. La caja de 60×70 obliga a un predio más
+  chico que el original.
 - **Piso -1.** La referencia tiene 20 salas etiquetadas A–T repartidas en un plano más ancho; acá hay
   16 salas A–U más la antecámara J y la cueva, en una versión compacta. La cueva natural (G–J en la
-  referencia) es una masa de 143 casillas con seis cámaras: se lee como cueva, pero es más chica que
-  la red original.
+  referencia) llegó a 185 casillas con ocho cámaras y seis conexiones: se lee como red de cuevas,
+  pero sigue siendo más chica que la original (que ocupa casi todo el noreste del plano).
 - **Piso -2.** La referencia no es simétrica: brazo oeste con 4 salas, brazo este con 2 rombos y una
   sala oval grande, cruz central y anillo sur. Acá se respetó esa idea (el anillo y las salas
   laterales quedan espejados; los brazos no, como en el original), pero las proporciones son más

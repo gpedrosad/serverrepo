@@ -25,7 +25,7 @@ Referencias del diseño: `img/dark-cathedral-ref/` (`Dark_Cathedral_0.png` super
 | Piso | Contenido |
 |------|-----------|
 | **z7** superficie | Jungla cerrada (bosque denso de árboles espaciados con helechos, flores y hongos entre medio; sin mar alrededor, sólo un río en arco en la esquina noreste). Nave NEGRA de mármol (norte-sur, 8×28) con columnas de piedra, dos filas de bancos, entrada al sur y brecha al norte. Edificio del oeste con 5 salas, ruinas del este con 4 salas chicas, sala gris del sur con dos filas de bancos y sala gris del oeste con la bajada. Dos bajadas: jungla norte y oeste. |
-| **z8** cripta (-1) | Ladrillo sobre roca: eje norte-sur largo y quebrado (tres tramos) desde la bajada de la jungla hasta la sala del fondo (T), dos pasillos este-oeste con 16 salas a los lados (A–U), un recinto en L y una alcoba sobre el eje, y una **cueva natural ramificada** al noreste (varias cámaras irregulares unidas por pasillos, piso de cueva) para rotworms y no-muertos. |
+| **z8** cripta (-1) | Ladrillo sobre roca: eje norte-sur largo y quebrado (tres tramos) desde la bajada de la jungla hasta la sala del fondo (T), dos pasillos este-oeste con 16 salas a los lados (A–U) y una **cueva natural ramificada** de 185 casillas al noreste (ocho cámaras irregulares unidas por pasillos, piso de cueva) para rotworms y no-muertos. |
 | **z9** cripta profunda (-2) | Sala grande al norte con laberinto de columnas de piedra (ítem 1514), octógono central con la escalera, brazo oeste con 4 salas en H, brazo este con 2 salas rombo y la sala oval, **anillo sur en zigzag** (baja, sale, baja y vuelve a entrar) con dos salas a cada lado, pasillo central, sala grande central sur (negra) y sala final con el portal. |
 
 ![Cripta -1](img/dark-cathedral-z8.png)

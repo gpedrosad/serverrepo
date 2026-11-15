@@ -50,7 +50,7 @@ _spec = importlib.util.spec_from_file_location("north_pass", HERE / "generate-no
 NP = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(NP)
 Noise, neighbors_in, reach, Blocking = NP.Noise, NP.neighbors_in, NP.reach, NP.Blocking
-pieces_for = NP.pieces_for
+pieces_for, fix_until_valid = NP.pieces_for, NP.fix_until_valid
 new_tile_node, TELEPORT = NP.new_tile_node, NP.TELEPORT
 
 WORLD = REPO / "server/YurOTS/ots/data/world"
@@ -71,6 +71,15 @@ TEMPLE_BACK = (157, 48, 7)                 # llegada del portal Dark Cathedral e
 
 # --- piezas (ids de servidor, todos en items-zagan-test.otb) ------------------------------------
 GRASS, DIRT, ROCK = 4756, 103, 101
+GRASSY = {4756, 4526} | set(range(110, 122))               # pasto y bordes de tierra (todo camina)
+DIRT_SIDE = {"n": 111, "e": 112, "s": 110, "w": 113}        # pasto con borde de tierra
+DIRT_CORNER = {("n", "w"): 120, ("n", "e"): 121, ("s", "w"): 119, ("s", "e"): 118}
+DIRT_INNER = {"nw": 116, "ne": 117, "sw": 115, "se": 114}
+# río en arco: entra por el oeste, pasa al norte del predio y baja por el este
+RIVER = [(3, 16), (5, 8), (12, 4), (24, 2), (38, 4), (47, 9), (52, 18), (54, 28),
+         (53, 38), (49, 46), (43, 51)]
+RIVER_HALF = 2.2
+ESPLANADE = (6, 17, 51, 63)                                 # claro de la iglesia (tierra)
 COAST_SIDE = {"n": 4644, "e": 4645, "s": 4646, "w": 4647}
 COAST_CORNER = {("n", "w"): 4648, ("n", "e"): 4649, ("s", "w"): 4650, ("s", "e"): 4651}
 COAST_INNER = {"nw": 4652, "ne": 4653, "sw": 4654, "se": 4655}
@@ -147,11 +156,12 @@ LINKS8 = [("A", "H1A"), ("B", "H1A"), ("J", "H1B"),
           ("Q", "H2"), ("R", "H2"), ("S", "H2"), ("U", "H2")]
 L_ROOMS8 = {"R": ((20, 52, 23, 55),)}                        # cola en L de la sala R
 # cueva NE: cámaras irregulares unidas por pasillos (como las salas G-J de la referencia)
-CAVE_ROOMS = (((46, 10), 3.0), ((40, 7), 2.6), ((36, 12), 2.2), ((47, 16), 2.6),
-              ((48, 21), 2.0), ((42, 21), 2.2))
-CAVE_LINKS = (((46, 10), (40, 7)), ((46, 10), (47, 16)), ((47, 16), (48, 21)),
-              ((47, 16), (42, 21)), ((42, 21), (36, 12)), ((46, 10), (36, 12)))
-CAVE_BOX = (33, 4, 50, 24)
+CAVE_ROOMS = (((46, 9), 3.0), ((40, 6), 2.6), ((36, 10), 2.4), ((43, 12), 2.4),
+              ((48, 15), 2.6), ((49, 20), 2.2), ((44, 20), 2.0), ((38, 6), 2.0))
+CAVE_LINKS = (((46, 9), (40, 6)), ((46, 9), (43, 12)), ((43, 12), (36, 10)),
+              ((43, 12), (48, 15)), ((48, 15), (49, 20)), ((48, 15), (44, 20)),
+              ((44, 20), (36, 10)), ((40, 6), (38, 6)), ((38, 6), (36, 10)))
+CAVE_BOX = (33, 3, 50, 24)
 CAVE_DOOR = ((36, 14), (37, 14))                            # entra desde la antecámara J
 DOWN8 = (30, 33)                                            # agujero z8 -> z9
 
@@ -396,21 +406,45 @@ def build_surface(seed: int, bl: Blocking):
     cells = {(x, y) for y in range(H) for x in range(W)}
     tiles: dict = {c: [GRASS] for c in cells}
 
-    # 1. un río en arco por el noreste, como la referencia (nunca un marco alrededor)
-    cx, cy = W + 6, -16
-    def water_at(x, y):
-        r = math.hypot(x - cx, y - cy)
-        edge = 20.0 + 1.8 * math.sin((x + 3 * y) / 6.0)
-        return edge < r < edge + 5.5
-    water = {c for c in cells if water_at(*c)}
-    if water:
-        for c in cells:
-            if c in water:
-                tiles[c] = [WATER]
-            else:
-                coast = pieces_for(neighbors_in(water, *c), COAST_SIDE, COAST_CORNER, COAST_INNER)
-                if coast:
-                    tiles[c] = [GRASS, *coast]
+    # 1. ríos en arco al norte y al este, como la referencia (el predio queda adentro y la
+    #    jungla sigue del otro lado; nunca un marco de agua pegado al borde de la caja)
+    def seg_dist(p, a, b):
+        ax, ay = a
+        bx, by = b
+        dx, dy = bx - ax, by - ay
+        if dx == 0 and dy == 0:
+            return math.hypot(p[0] - ax, p[1] - ay)
+        t = max(0.0, min(1.0, ((p[0] - ax) * dx + (p[1] - ay) * dy) / (dx * dx + dy * dy)))
+        return math.hypot(p[0] - (ax + t * dx), p[1] - (ay + t * dy))
+
+    def river_dist(c):
+        return min(seg_dist(c, a, b) for a, b in zip(RIVER, RIVER[1:]))
+
+    water = {c for c in cells
+             if river_dist(c) <= RIVER_HALF + 0.55 * math.sin((c[0] * 1.7 + c[1]) / 3.0)}
+    land = cells - water
+    for c in cells:
+        if c in water:
+            tiles[c] = [WATER]
+        else:
+            coast = pieces_for(neighbors_in(water, *c), COAST_SIDE, COAST_CORNER, COAST_INNER)
+            if coast:
+                tiles[c] = [GRASS, *coast]
+
+    # 2. explanada de tierra alrededor de la catedral (el claro de la iglesia de la referencia)
+    def in_esplanade(x, y):
+        wob = 2.6 * math.sin(x / 3.1) + 2.1 * math.cos(y / 3.9) + 1.2 * math.sin((x + y) / 5.7)
+        return ESPLANADE[0] - wob <= x <= ESPLANADE[2] + wob and \
+            ESPLANADE[1] - wob <= y <= ESPLANADE[3] + wob
+
+    dirt = {c for c in cells if in_esplanade(*c)} & land
+    dirt = fix_until_valid(dirt, land, DIRT_SIDE, DIRT_CORNER, DIRT_INNER, single=True)
+    for c in land:
+        if c in dirt:
+            tiles[c] = [DIRT]
+            continue
+        edge = pieces_for(neighbors_in(dirt, *c), DIRT_SIDE, DIRT_CORNER, DIRT_INNER)
+        tiles[c] = [edge[0]] if edge else [GRASS]
 
     # 2. explanadas y senderos (piedra)
     for c in PATHS:
@@ -491,10 +525,21 @@ def build_surface(seed: int, bl: Blocking):
         if len(tiles.get(c, [])) == 1 and tiles[c][0] == DIRT and rng.random() < 0.09:
             tiles[c] = [DIRT, rng.choice((PEBBLES, RUBBLE, SKULL, STONE))]
 
-    # 8. jungla: franja cerrada en el borde, árboles cada 3 casillas y vegetación baja en el medio
     keep = (grow({ARRIVAL, PORTAL_BACK, HOLE_NORTH, HOLE_WEST} | set(SIGNS), 2)
             | grow(floor_all | wall_cells, 2) | set(PATHS)
             | grow(rect(*PLAZA), 1) | grow(rect(*PLATFORM), 1))
+
+    # 7b. la explanada no es un plano vacío: piedras, huesos y matas sueltas (todo camina)
+    for c in sorted(cells):
+        if c not in dirt or tiles.get(c) != [DIRT] or c in keep:
+            continue
+        r = rng.random()
+        if r < 0.05:
+            tiles[c] = [DIRT, rng.choice((PEBBLES, SKULL, HUMAN_SKELETON, STONE))]
+        elif r < 0.17:
+            tiles[c] = [DIRT, rng.choice(COVER)]
+
+    # 8. jungla: franja cerrada en el borde, árboles cada 3 casillas y vegetación baja en el medio
     band = {c for c in cells if c[0] < BAND[0] or c[0] > W - 1 - BAND[0]
             or c[1] < BAND[1] or c[1] > H - 1 - BAND[1]}
     occupied: set = set()
@@ -522,6 +567,14 @@ def build_surface(seed: int, bl: Blocking):
             continue
         if rng.random() < 0.22:
             plant(c, rng.choice(TREES), 2)
+    for c in order:                                            # algún árbol suelto en el claro
+        if tiles.get(c) != [DIRT] or c in keep or c in occupied:
+            continue
+        r = rng.random()
+        if r < 0.035:
+            plant(c, rng.choice(TREES), 2)
+        elif r < 0.075:
+            tiles[c] = [DIRT, rng.choice(BUSHES)]
     for c in order:                                            # vegetación baja en todos los huecos
         if tiles.get(c) != [GRASS] or c in occupied:
             continue
