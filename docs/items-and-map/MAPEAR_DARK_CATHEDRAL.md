@@ -1,5 +1,9 @@
 # Dark Cathedral — catedral en ruinas con cripta de dos pisos
 
+> **Documentación completa:** [DARK_CATHEDRAL.md](DARK_CATHEDRAL.md) (cajas, plantas por piso,
+> escaleras con ids y llegadas, portales, spawns, elección de ítems, validaciones y diferencias con
+> la referencia). Este archivo es el resumen operativo para regenerar la zona.
+
 Recreación de la **Dark Cathedral** de Tibia 7.6 en una zona vacía del mapa, accesible por el portal
 de la plaza de portales del templo (`157,47,7`, junto a la Isla Natural). La genera
 `scripts/map/generate-dark-cathedral.py` (patrón idempotente: parchea `test.otbm`, escribe
