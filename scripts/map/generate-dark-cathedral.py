@@ -77,8 +77,8 @@ COAST_INNER = {"nw": 4652, "ne": 4653, "sw": 4654, "se": 4655}
 WATER = 4608
 BLACK, GREY, WHITE = 407, 431, 406                      # mármol negro, losa gris, mármol blanco
 CAVE_A, CAVE_B, CAVE_C = 351, 352, 355                  # pisos de cueva
-BRICK = dict(h=1028, v=1030, post=1027, se=1033)        # ladrillo (ruinas y cripta)
-STONE_WALL = dict(h=1050, v=1049, post=1051, se=1053)   # piedra gris (catedral)
+BRICK = dict(h=1028, v=1030, nw=1027, se=1033)        # ladrillo (ruinas y cripta)
+STONE_WALL = dict(h=1050, v=1049, nw=1051, se=1053)   # piedra gris (catedral)
 STAIRS_UP, STAIR_DOWN, SIGN = 1385, 432, 1429
 BENCH, BENCH_R = 1662, 1663          # banco = dos piezas: 1662 y su mitad derecha 1663
 PILLAR, STATUE, COAL_BASIN, CANDELABRUM = 1515, 1442, 1486, 2041
@@ -87,6 +87,7 @@ SKULL, HUMAN_SKELETON, DRAGON_SKELETON, RABBIT_SKELETON = 2248, 3133, 3125, 3121
 BARREL, CRATE, COFFIN_HEAD, COFFIN_FOOT, TABLE, CHEST = 1770, 1739, 1410, 1411, 1614, 1740
 TREES = (2701, 2702, 2703, 2704, 2705, 2706, 2708, 4009)   # 2x2: el dibujo ocupa la casilla y las de arriba-izquierda
 BUSHES = (2767, 2786)                                      # bloquean: muro de jungla
+SMALL_TREES = (2768, 2709, 2717)                            # pinitos y árboles secos (bloquean)
 COVER = (4158, 4150, 4183, 4171, 4181, 2740)               # vegetación baja: no bloquea
 
 # --- superficie (coordenadas locales: 0-59 en x, 0-69 en y) ------------------------------------
@@ -125,44 +126,51 @@ SIGNS = {
     (28, 8): "ACCESO A LA CRIPTA\nEscalera abajo.\nNo vuelvas solo.",
 }
 
-# --- cripta (-1, z8): eje norte-sur + dos pasillos este-oeste -----------------------------------
-H1, H2 = (9, 21, 47, 22), (9, 42, 47, 43)                     # pasillos este-oeste
-AXIS = (29, 11, 31, 57)                                       # eje norte-sur
+# --- cripta (-1, z8): eje norte-sur en tramos + pasillos este-oeste ------------------------------
+H1A, H1B = (9, 21, 30, 22), (30, 24, 47, 25)                # pasillo norte, en dos tramos
+AXIS_A, AXIS_B, AXIS_C = (29, 11, 31, 24), (28, 24, 30, 40), (29, 40, 31, 57)   # eje con quiebres
+H2 = (14, 42, 47, 43)                                       # pasillo sur
 ROOMS8 = [
-    ("A", (10, 13, 15, 19), GREY), ("B", (18, 13, 23, 19), GREY),
-    ("H", (33, 13, 38, 19), DIRT), ("J", (41, 13, 46, 19), DIRT),
-    ("C", (10, 24, 15, 31), GREY), ("D", (18, 24, 24, 31), DIRT),
-    ("K", (34, 24, 39, 31), DIRT), ("L", (42, 24, 47, 31), GREY),
-    ("M", (10, 33, 15, 40), DIRT), ("N", (18, 33, 24, 40), GREY),
-    ("O", (34, 33, 39, 40), GREY), ("P", (42, 33, 47, 40), DIRT),
-    ("Q", (10, 45, 15, 54), GREY), ("R", (18, 45, 24, 51), DIRT),
-    ("S", (34, 45, 39, 51), DIRT), ("U", (42, 45, 47, 51), GREY),
-    ("T", (23, 58, 37, 63), GREY),                            # sala del fondo
+    ("A", (10, 12, 16, 19), GREY), ("B", (19, 13, 24, 19), GREY),
+    ("H", (33, 16, 38, 22), DIRT), ("J", (42, 13, 46, 22), DIRT),
+    ("C", (9, 24, 15, 31), GREY), ("D", (18, 24, 23, 31), DIRT),
+    ("K", (33, 27, 38, 34), DIRT), ("L", (42, 27, 47, 34), GREY),
+    ("M", (9, 33, 15, 40), DIRT), ("N", (18, 33, 23, 40), GREY),
+    ("O", (33, 36, 38, 40), GREY), ("P", (42, 36, 47, 40), DIRT),
+    ("Q", (10, 45, 15, 54), GREY), ("R", (18, 45, 24, 50), DIRT),
+    ("S", (33, 45, 38, 51), DIRT), ("U", (42, 45, 47, 51), GREY),
+    ("T", (23, 58, 37, 63), GREY),                          # sala del fondo
 ]
-LINKS8 = [("A", "H1"), ("B", "H1"), ("H", "H1"), ("J", "H1"),
-          ("C", "H1"), ("D", "H1"), ("K", "H1"), ("L", "H1"),
+LINKS8 = [("A", "H1A"), ("B", "H1A"), ("H", "H1B"), ("J", "H1B"),
+          ("C", "H1A"), ("D", "H1A"), ("K", "H1B"), ("L", "H1B"),
           ("M", "H2"), ("N", "H2"), ("O", "H2"), ("P", "H2"),
-          ("Q", "H2"), ("R", "H2"), ("S", "H2"), ("U", "H2"),
-          ("AXIS", "H1"), ("AXIS", "H2"), ("AXIS", "T")]
-CAVE_BOX = (35, 5, 49, 13)                  # cueva natural del noreste
-CAVE_DOOR = (42, 13)                        # entrada desde la sala J
-DOWN8 = (30, 33)                            # agujero z8 -> z9 (en el eje y en el octógono del -2)
+          ("Q", "H2"), ("R", "H2"), ("S", "H2"), ("U", "H2")]
+CAVE_DISCS = (((46, 9), 4.0), ((41, 7), 3.2), ((43, 12), 2.6), ((38, 10), 2.2))   # cueva NE
+CAVE_BOX = (34, 6, 49, 13)
+CAVE_DOOR = ((44, 12), (45, 12))                            # entra desde la sala J
+DOWN8 = (30, 33)                                            # agujero z8 -> z9
 
 # --- cripta profunda (-2, z9) ------------------------------------------------------------------
-NORTH9 = (17, 8, 42, 24)
+NORTH9 = (17, 8, 42, 24)                                    # sala de las columnas
 NECK9 = (27, 25, 32, 29)
-OCT9 = (25, 30, 34, 36)
-ARM_W9, ARM_E9 = (8, 32, 25, 34), (34, 32, 45, 34)
-W_ROOMS9 = [("w1", (8, 24, 13, 30)), ("w2", (16, 24, 21, 30)),
-            ("w3", (8, 36, 13, 43)), ("w4", (16, 36, 21, 41))]
-E_DIAMS9 = [("d1", (38, 24, 42, 30)), ("d2", (38, 36, 42, 42))]
-E_OVAL9 = (44, 26, 51, 40)
-U_W9, U_E9 = (24, 35, 25, 44), (34, 35, 35, 44)               # brazos de la U
-RING9 = (8, 45, 51, 46)                                       # anillo sur
-R_W9, R_E9 = ("r1", (8, 48, 13, 53)), ("r2", (46, 48, 51, 53))
-SOUTH9 = (24, 48, 35, 56)                                     # sala grande central sur
-FINAL9 = (26, 58, 33, 62)                                     # sala final
-PILLARS9 = [(x, y) for y in (11, 15, 19) for x in (20, 21, 25, 26, 33, 34, 38, 39)]
+OCT9 = (25, 30, 34, 36)                                     # octógono de la escalera
+ARM_W9, ARM_E9 = (8, 32, 25, 34), (34, 32, 45, 34)          # brazos de la cruz
+W_ROOMS9 = [("w1", (8, 24, 13, 30)), ("w2", (16, 24, 21, 30)),      # 4 salas en H (oeste)
+            ("w3", (8, 36, 13, 41)), ("w4", (16, 36, 21, 41))]
+E_DIAMS9 = [("d1", (38, 24, 42, 30)), ("d2", (38, 36, 42, 42))]     # 2 salas rombo (este)
+E_OVAL9 = (44, 26, 51, 40)                                          # sala oval
+# anillo sur en zigzag: baja, sale, baja y vuelve a entrar
+A_W9, A_E9 = (24, 34, 25, 44), (34, 34, 35, 44)             # primer tramo (baja)
+H_W9, H_E9 = (16, 44, 25, 45), (34, 44, 43, 45)             # codo (sale)
+V_W9, V_E9 = (16, 45, 17, 52), (42, 45, 43, 52)             # segundo tramo (baja)
+L_W9, L_E9 = (16, 52, 25, 53), (34, 52, 43, 53)             # codo (vuelve a entrar)
+MID9 = (27, 37, 32, 45)                                     # pasillo central octógono -> sala sur
+SIDE_W1, SIDE_W2 = (8, 43, 14, 48), (8, 50, 14, 55)        # salas del anillo (oeste)
+SIDE_E1, SIDE_E2 = (45, 43, 51, 48), (45, 50, 51, 55)      # salas del anillo (este)
+SOUTH9 = (24, 46, 35, 57)                                   # sala grande central sur (negra)
+FINAL9 = (26, 59, 33, 63)                                   # sala final
+PILLARS9 = [(x, y) for y in (11, 14, 17, 20, 23) for x in (20, 21, 25, 26, 33, 34, 38, 39)]
+PILLAR_ITEM = 3766                                          # pilar de piedra (ítem, bloquea)
 DEEP_PORTAL = (29, 61)
 
 # --- spawns ------------------------------------------------------------------------------------
@@ -176,23 +184,24 @@ SPAWNS7 = [
     ("jungle", (18, 6, 41, 19), [("Wild Warrior", 2, 90), ("Bandit", 2, 70), ("Hunter", 1, 120)]),
 ]
 SPAWNS8 = [
-    ("A", (10, 13, 15, 19), [("Bandit", 2, 80), ("Smuggler", 1, 90)]),
-    ("B", (18, 13, 23, 19), [("Wild Warrior", 2, 90), ("Bandit", 1, 80)]),
-    ("H", (33, 13, 38, 19), [("Rotworm", 2, 100), ("Ghoul", 1, 130)]),
-    ("J", (41, 13, 46, 19), [("Bat", 1, 90), ("Centipede", 1, 110)]),
-    ("C", (10, 24, 15, 31), [("Bandit", 2, 80), ("Smuggler", 2, 90)]),
-    ("D", (18, 24, 24, 31), [("Wild Warrior", 2, 90), ("Assassin", 1, 130)]),
-    ("K", (34, 24, 39, 31), [("Slime", 2, 100), ("Poison Spider", 1, 110)]),
-    ("L", (42, 24, 47, 31), [("Bandit", 2, 80), ("Wild Warrior", 1, 90)]),
-    ("M", (10, 33, 15, 40), [("Slime", 1, 100), ("Poison Spider", 2, 110)]),
-    ("N", (18, 33, 24, 40), [("Skeleton", 2, 110), ("Ghoul", 1, 130)]),
-    ("O", (34, 33, 39, 40), [("Bandit", 2, 80), ("Smuggler", 1, 90)]),
-    ("P", (42, 33, 47, 40), [("Assassin", 1, 130), ("Wild Warrior", 2, 90)]),
+    ("A", (10, 12, 16, 19), [("Bandit", 2, 80), ("Smuggler", 1, 90)]),
+    ("B", (19, 13, 24, 19), [("Wild Warrior", 2, 90), ("Bandit", 1, 80)]),
+    ("H", (33, 16, 38, 22), [("Rotworm", 2, 100), ("Ghoul", 1, 130)]),
+    ("J", (42, 13, 46, 22), [("Bat", 1, 90), ("Centipede", 1, 110)]),
+    ("C", (9, 24, 15, 31), [("Bandit", 2, 80), ("Smuggler", 2, 90)]),
+    ("D", (18, 24, 23, 31), [("Wild Warrior", 2, 90), ("Assassin", 1, 130)]),
+    ("K", (33, 27, 38, 34), [("Slime", 2, 100), ("Poison Spider", 1, 110)]),
+    ("L", (42, 27, 47, 34), [("Bandit", 2, 80), ("Wild Warrior", 1, 90)]),
+    ("M", (9, 33, 15, 40), [("Slime", 1, 100), ("Poison Spider", 2, 110)]),
+    ("N", (18, 33, 23, 40), [("Skeleton", 2, 110), ("Ghoul", 1, 130)]),
+    ("O", (33, 36, 38, 40), [("Bandit", 2, 80), ("Smuggler", 1, 90)]),
+    ("P", (42, 36, 47, 40), [("Assassin", 1, 130), ("Wild Warrior", 2, 90)]),
     ("Q", (10, 45, 15, 54), [("Bandit", 2, 80), ("Smuggler", 1, 90)]),
-    ("R", (18, 45, 24, 51), [("Centipede", 2, 110), ("Bat", 1, 90)]),
-    ("S", (34, 45, 39, 51), [("Rotworm", 2, 100), ("Skeleton", 1, 110)]),
+    ("R", (18, 45, 24, 50), [("Centipede", 2, 110), ("Bat", 1, 90)]),
+    ("S", (33, 45, 38, 51), [("Rotworm", 2, 100), ("Skeleton", 1, 110)]),
     ("U", (42, 45, 47, 51), [("Ghoul", 2, 130), ("Skeleton", 1, 110)]),
-    ("cave", CAVE_BOX, [("Rotworm", 2, 100), ("Ghoul", 1, 130), ("Skeleton", 1, 110), ("Bat", 1, 90)]),
+    ("cave", CAVE_BOX, [("Rotworm", 3, 100), ("Ghoul", 2, 130), ("Skeleton", 2, 110),
+                        ("Bat", 1, 90), ("Centipede", 1, 110)]),
     ("T", (23, 58, 37, 63), [("Assassin", 2, 130), ("Bandit", 3, 80), ("Wild Warrior", 1, 90),
                              ("Dark Monk", 1, 150)]),
 ]
@@ -205,8 +214,11 @@ SPAWNS9 = [
     ("d1", E_DIAMS9[0][1], [("Dark Monk", 1, 140), ("Monk", 1, 120)]),
     ("d2", E_DIAMS9[1][1], [("Ghost", 1, 160), ("Witch", 1, 150)]),
     ("oval", E_OVAL9, [("Witch", 1, 150), ("Hunter", 1, 120), ("Dark Monk", 1, 140)]),
-    ("r1", R_W9[1], [("Monk", 1, 120), ("Ghost", 1, 160)]),
-    ("r2", R_E9[1], [("Ghost", 1, 160), ("Dark Monk", 1, 140)]),
+    ("s1", SIDE_W1, [("Monk", 1, 120), ("Ghost", 1, 160)]),
+    ("s2", SIDE_W2, [("Dark Monk", 1, 140), ("Witch", 1, 150)]),
+    ("s3", SIDE_E1, [("Hunter", 1, 120), ("Ghost", 1, 160)]),
+    ("s4", SIDE_E2, [("Witch", 1, 150), ("Dark Monk", 1, 140)]),
+    ("mid", MID9, [("Dark Monk", 1, 140), ("Monk", 1, 120)]),
     ("south", SOUTH9, [("Dark Monk", 2, 140), ("Mummy", 1, 150), ("Witch", 1, 150),
                        ("Hunter", 1, 120), ("Stone Golem", 1, 160), ("Demon Skeleton", 1, 300)]),
     ("final", FINAL9, [("Ghost", 2, 160), ("Dark Monk", 1, 140)]),
@@ -253,7 +265,7 @@ def octagon(box, cut=2) -> set:
     return cells
 
 
-def open_door(a: set, b: set, width=2) -> set:
+def open_door(a: set, b: set, width=1) -> set:
     """Casilla (o dos) de pared más centrada entre dos salas separadas por una casilla."""
     cands = []
     for (x, y) in a:
@@ -276,20 +288,38 @@ def open_door(a: set, b: set, width=2) -> set:
     return doors
 
 
+# Tabla sacada del propio test.otbm: para cada combinación de vecinos (oeste, norte, este, sur)
+# que sean pared, qué pieza usa el mapa. Así las paredes del generador se ven como las del resto
+# del mapa, con los extremos y las esquinas bien cerrados.
+PIECE_BY_NEIGHBORS = {
+    (False, False, False, False): "nw",
+    (False, False, False, True): "v",
+    (False, False, True, False): "h",
+    (False, True, False, False): "v",
+    (True, False, False, False): "h",
+    (False, False, True, True): "nw",
+    (False, True, False, True): "v",
+    (False, True, True, False): "v",
+    (True, False, False, True): "h",
+    (True, False, True, False): "h",
+    (True, True, False, False): "se",
+    (False, True, True, True): "v",
+    (True, False, True, True): "h",
+    (True, True, False, True): "se",
+    (True, True, True, False): "se",
+    (True, True, True, True): "se",
+}
+
+
 def wall_piece(mask: set, c, wall: dict) -> int:
-    """7.6 dibuja las paredes en el borde sur y este de la casilla: la pieza sale de oeste/norte."""
-    west, north = (c[0] - 1, c[1]) in mask, (c[0], c[1] - 1) in mask
-    if west and north:
-        return wall["se"]
-    if west:
-        return wall["h"]
-    if north:
-        return wall["v"]
-    return wall["post"]
+    """Pieza de pared 7.6 según los cuatro vecinos (tabla medida en test.otbm)."""
+    x, y = c
+    key = ((x - 1, y) in mask, (x, y - 1) in mask, (x + 1, y) in mask, (x, y + 1) in mask)
+    return wall[PIECE_BY_NEIGHBORS[key]]
 
 
 def build_zone(rooms, links, ext_doors, pillars=(), default_wall=None, outside=GRASS,
-               pillar_wall=None):
+               pillar_item=None, pillar_wall=None):
     """Salas con paredes de una casilla y puertas automáticas.
 
     `rooms` = [(nombre, caja[, piso[, paredes]])]. Las salas tienen que quedar separadas por
@@ -307,8 +337,9 @@ def build_zone(rooms, links, ext_doors, pillars=(), default_wall=None, outside=G
     for name, (cells, _g, wall) in spec.items():
         for c in cells:
             fam_of[c] = wall
+    column_wall = pillar_wall or default_wall or BRICK
     for c in pillars:
-        fam_of[c] = pillar_wall or default_wall or BRICK
+        fam_of[c] = column_wall
 
     interior: dict = {}
     for name, (cells, ground, _wall) in spec.items():
@@ -323,7 +354,7 @@ def build_zone(rooms, links, ext_doors, pillars=(), default_wall=None, outside=G
     for c in pillars:
         if c in interior:
             columns[c] = interior.pop(c)
-    mask = grow(set(interior), 1) - set(interior) | set(columns)
+    mask = grow(set(interior), 1) - set(interior) | (set(columns) if not pillar_item else set())
     for c in doors:
         mask.discard(c)
         if c not in interior:
@@ -336,16 +367,19 @@ def build_zone(rooms, links, ext_doors, pillars=(), default_wall=None, outside=G
     while queue:
         cx, cy = queue.pop()
         for dx, dy in DIRS.values():
-            n = (cx + dx, cy + dy)
-            if n in mask and n not in under:
-                under[n] = under[(cx, cy)]
-                queue.append(n)
+            for n in ((cx + dx, cy + dy), (cx + dx, cy), (cx, cy + dy)):
+                if n in mask and n not in under:
+                    under[n] = under[(cx, cy)]
+                    queue.append(n)
     tiles = {c: [g] for c, g in interior.items()}
     for c in mask:
         west_out = (c[0] - 1, c[1]) not in mask and (c[0] - 1, c[1]) not in interior
         north_out = (c[0], c[1] - 1) not in mask and (c[0], c[1] - 1) not in interior
         ground = outside if (west_out or north_out) else under.get(c, outside)
         tiles[c] = [ground, wall_piece(mask, c, fam_of.get(c, default_wall or BRICK))]
+    for c, ground in columns.items():                 # columnas: ítem de pilar alto, no poste de pared
+        tiles[c] = [under.get(c, ground), pillar_item] if pillar_item else \
+            [under.get(c, ground), wall_piece(mask, c, column_wall or default_wall or BRICK)]
     return tiles, set(interior), mask
 
 
@@ -466,27 +500,30 @@ def build_surface(seed: int, bl: Blocking):
             for dy in range(size):
                 occupied.add((c[0] - dx, c[1] - dy))
 
-    order = sorted(cells, key=lambda c: (c[1], c[0]))
-    for c in order:                                            # muro de jungla del borde
+    order = sorted(cells)
+    rng.shuffle(order)
+    for c in order:                                            # monte cerrado del borde
         if c not in band or tiles.get(c) != [GRASS] or c in keep or c in occupied:
             continue
-        if rng.random() < 0.62:
-            plant(c, rng.choice(TREES + BUSHES), 2 if rng.random() < 0.7 else 1)
+        r = rng.random()
+        if r < 0.52:
+            plant(c, rng.choice(TREES), 2)
+        elif r < 0.78:
+            tiles[c] = [GRASS, rng.choice(BUSHES)]
         else:
-            tiles[c] = [GRASS, rng.choice(COVER)]
-    for c in order:                                            # árboles espaciados (copas sin pegarse)
+            tiles[c] = [GRASS, rng.choice(SMALL_TREES)]
+    for c in order:                                            # árboles al azar, nunca dos copas pegadas
         if tiles.get(c) != [GRASS] or c in keep or c in occupied:
             continue
-        x, y = c
-        if (x + (y // 3) * 2) % 3 == 0 and y % 3 == 0 and rng.random() < 0.88:
+        if rng.random() < 0.22:
             plant(c, rng.choice(TREES), 2)
-    for c in order:                                            # vegetación baja entre los árboles
+    for c in order:                                            # vegetación baja en todos los huecos
         if tiles.get(c) != [GRASS] or c in keep or c in occupied:
             continue
         r = rng.random()
-        if r < 0.62:
+        if r < 0.74:
             tiles[c] = [GRASS, rng.choice(COVER)]
-        elif r < 0.70:
+        elif r < 0.82:
             tiles[c] = [GRASS, rng.choice(BUSHES)]
 
     # 9. la franja del borde queda cerrada: nada caminable dentro de ella
@@ -618,11 +655,24 @@ def main() -> int:
     surf, s_info = build_surface(a.seed, bl)
     surf = clip(surf)
 
-    # --- z8: cripta con cueva natural al noreste ---
+    # --- z8: cripta con cueva natural grande al noreste ---
     rooms8 = ([(n, b, g, BRICK) for n, b, g in ROOMS8]
-              + [("H1", H1, GREY, BRICK), ("H2", H2, GREY, BRICK), ("AXIS", AXIS, GREY, BRICK)])
-    t8, floor8, mask8 = build_zone(rooms8, LINKS8, [], default_wall=BRICK, outside=ROCK)
-    cave = cave_floor(a.seed + 811, CAVE_DOOR, CAVE_BOX, 120) | {CAVE_DOOR}
+              + [("H1A", H1A, GREY, BRICK), ("H1B", H1B, GREY, BRICK), ("H2", H2, GREY, BRICK),
+                 ("AXA", AXIS_A, GREY, BRICK), ("AXB", AXIS_B, GREY, BRICK),
+                 ("AXC", AXIS_C, GREY, BRICK)])
+    links8 = LINKS8 + [("AXA", "H1A"), ("AXB", "AXA"), ("AXB", "H1B"), ("AXB", "H2"),
+                       ("AXC", "AXB"), ("AXC", "H2"), ("AXC", "T")]
+    t8, floor8, mask8 = build_zone(rooms8, links8, [], default_wall=BRICK, outside=ROCK)
+    # cueva: discos unidos (contorno orgánico) que entra desde la sala J
+    cave = {(44, 12), (45, 12)}
+    for (cx, cy), r in CAVE_DISCS:
+        for dx in range(-int(r) - 1, int(r) + 2):
+            for dy in range(-int(r) - 1, int(r) + 2):
+                c = (cx + dx, cy + dy)
+                wob = 0.75 + 0.5 * ((c[0] * 7 + c[1] * 13) % 5) / 4.0
+                if math.hypot(dx, dy) <= r * wob and CAVE_BOX[0] <= c[0] <= CAVE_BOX[2] \
+                        and CAVE_BOX[1] <= c[1] <= CAVE_BOX[3]:
+                    cave.add(c)
     cave_tiles = NP.cave_tiles(cave, grow(cave, 2) | rect(*CAVE_BOX), a.seed + 812)
     for c in grow(floor8 | mask8, 6):
         t8.setdefault(c, [ROCK])
@@ -639,21 +689,27 @@ def main() -> int:
     # --- z9: planta del -2 ---
     rooms9 = ([("north", NORTH9, GREY, BRICK), ("neck", NECK9, WHITE, BRICK),
                ("oct", octagon(OCT9, 2), WHITE, BRICK),
-               ("armw", ARM_W9, GREY, BRICK), ("arme", ARM_E9, GREY, BRICK)]
+               ("armw", ARM_W9, GREY, BRICK), ("arme", ARM_E9, GREY, BRICK),
+               ("mid", MID9, GREY, BRICK)]
               + [(n, b, GREY, BRICK) for n, b in W_ROOMS9]
               + [("d1", chamfer(E_DIAMS9[0][1], 1.45), GREY, BRICK),
                  ("d2", chamfer(E_DIAMS9[1][1], 1.45), GREY, BRICK),
-                 ("oval", ellipse(E_OVAL9), GREY, BRICK)]
-              + [("uw", U_W9, GREY, BRICK), ("ue", U_E9, GREY, BRICK), ("ring", RING9, GREY, BRICK),
-                 ("r1", R_W9[1], GREY, BRICK), ("r2", R_E9[1], GREY, BRICK),
+                 ("oval", octagon(E_OVAL9, 3), GREY, BRICK)]
+              + [("aw", A_W9, GREY, BRICK), ("ae", A_E9, GREY, BRICK),
+                 ("hw", H_W9, GREY, BRICK), ("he", H_E9, GREY, BRICK),
+                 ("vw", V_W9, GREY, BRICK), ("ve", V_E9, GREY, BRICK),
+                 ("lw", L_W9, GREY, BRICK), ("le", L_E9, GREY, BRICK),
+                 ("s1", SIDE_W1, GREY, BRICK), ("s2", SIDE_W2, GREY, BRICK),
+                 ("s3", SIDE_E1, GREY, BRICK), ("s4", SIDE_E2, GREY, BRICK),
                  ("south", SOUTH9, BLACK, BRICK), ("final", FINAL9, BLACK, BRICK)])
     links9 = [("neck", "north"), ("neck", "oct"), ("armw", "oct"), ("arme", "oct"),
               ("w1", "armw"), ("w2", "armw"), ("w3", "armw"), ("w4", "armw"),
               ("d1", "arme"), ("d2", "arme"), ("oval", "arme"),
-              ("uw", "oct"), ("ue", "oct"), ("uw", "ring"), ("ue", "ring"),
-              ("ring", "r1"), ("ring", "r2"), ("ring", "south"), ("south", "final")]
+              ("mid", "oct"), ("mid", "south"),
+              ("vw", "s1"), ("vw", "s2"), ("ve", "s3"), ("ve", "s4"),
+              ("south", "final")]
     t9, floor9, mask9 = build_zone(rooms9, links9, [], pillars=PILLARS9, default_wall=BRICK,
-                                   outside=ROCK, pillar_wall=STONE_WALL)
+                                   outside=ROCK, pillar_item=PILLAR_ITEM)
     for c in grow(floor9 | mask9, 6):
         t9.setdefault(c, [ROCK])
     t9[DOWN8] = [WHITE, STAIRS_UP]
@@ -662,7 +718,7 @@ def main() -> int:
     t8, t9 = clip(t8), clip(t9)
 
     # escombros solo donde no molestan (nunca sobre escaleras, portales ni sus llegadas)
-    octagon_floor = chamfer_set = octagon(OCT9, 2) | rect(*NECK9)
+    octagon_floor = octagon(OCT9, 2) | rect(*NECK9) | rect(*MID9)
     for tiles, floor, seed, stairs, extra in ((t8, floor8, a.seed + 21, (HOLE_NORTH, HOLE_WEST, DOWN8), set()),
                                               (t9, floor9, a.seed + 22, (DOWN8, DEEP_PORTAL), octagon_floor)):
         avoid = grow(set(stairs), 2) | extra
@@ -745,7 +801,9 @@ def main() -> int:
     def mirrored(box):
         x0, y0, x1, y1 = box
         return (W - 1 - x1, y0, W - 1 - x0, y1)
-    for a_box, b_box in ((U_W9, U_E9), (R_W9[1], R_E9[1])):
+    for a_box, b_box in ((A_W9, A_E9), (H_W9, H_E9), (V_W9, V_E9), (L_W9, L_E9),
+                         (SIDE_W1, SIDE_E1), (SIDE_W2, SIDE_E2), (MID9, MID9),
+                         (SOUTH9, SOUTH9), (FINAL9, FINAL9)):
         if mirrored(a_box) != b_box:
             errors.append(f"z9: {a_box} no está espejada con {b_box}")
 
@@ -812,12 +870,22 @@ def main() -> int:
     def in_box(gx, gy, z):
         return z in (Z7, Z8, Z9) and X0 <= gx < X0 + W and Y0 <= gy < Y0 + H
 
+    def leftover_rock(tile, gx, gy, z):
+        """Roca de relleno que se salió una casilla de la caja en una corrida vieja."""
+        p = bytes(tile[1])
+        return (z in (Z8, Z9) and X0 - 1 <= gx <= X0 + W and Y0 - 1 <= gy <= Y0 + H
+                and (gx < X0 or gx >= X0 + W or gy < Y0 or gy >= Y0 + H)
+                and len(p) >= 5 and p[2] == 9 and struct.unpack_from("<H", p, 3)[0] == ROCK
+                and not tile[2])
+
     for area in list(md[2]):
         if area[0] != T_AREA:
             continue
         ax, ay, az = struct.unpack_from("<HHB", bytes(area[1]), 0)
         area[2] = [t for t in area[2]
-                   if not (t[0] in (T_TILE, T_HOUSETILE) and in_box(ax + t[1][0], ay + t[1][1], az))]
+                   if not (t[0] in (T_TILE, T_HOUSETILE)
+                           and (in_box(ax + t[1][0], ay + t[1][1], az)
+                                or leftover_rock(t, ax + t[1][0], ay + t[1][1], az)))]
         if not area[2]:
             md[2].remove(area)
     buckets: dict = {}

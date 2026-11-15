@@ -20,9 +20,9 @@ Referencias del diseño: `img/dark-cathedral-ref/` (`Dark_Cathedral_0.png` super
 
 | Piso | Contenido |
 |------|-----------|
-| **z7** superficie | Jungla cerrada (bosque denso, sin mar alrededor; sólo un río en arco en la esquina noreste). Nave NEGRA de mármol (norte-sur, 8×28) con columnas, entrada al sur y brecha al norte. Edificio de ladrillo del oeste con 5 salas, ruinas chicas del este con 4 salas, sala gris del sur con dos filas de bancos y la sala gris del oeste con la bajada. Dos bajadas: jungla norte y oeste. |
-| **z8** cripta (-1) | Ladrillo sobre roca: eje norte-sur largo desde la bajada de la jungla hasta la sala del fondo (T), dos pasillos este-oeste con 16 salas a los lados (A–U) y la cueva natural de los gusanos al noreste. |
-| **z9** cripta profunda (-2) | Sala grande al norte con laberinto de columnas, octógono central con la escalera, brazo oeste con 4 salas en H, brazo este con 2 salas rombo y la sala oval, anillo sur con dos salas a cada lado, sala grande central sur (guardia de dark monks) y sala final con el portal. |
+| **z7** superficie | Jungla cerrada (bosque denso de árboles espaciados con helechos, flores y hongos entre medio; sin mar alrededor, sólo un río en arco en la esquina noreste). Nave NEGRA de mármol (norte-sur, 8×28) con columnas de piedra, dos filas de bancos, entrada al sur y brecha al norte. Edificio del oeste con 5 salas, ruinas del este con 4 salas chicas, sala gris del sur con dos filas de bancos y sala gris del oeste con la bajada. Dos bajadas: jungla norte y oeste. |
+| **z8** cripta (-1) | Ladrillo sobre roca: eje norte-sur largo y quebrado desde la bajada de la jungla hasta la sala del fondo (T), dos pasillos este-oeste con 16 salas a los lados (A–U) y una **cueva natural grande** al noreste (piso de cueva, contorno irregular) para rotworms y no-muertos. |
+| **z9** cripta profunda (-2) | Sala grande al norte con laberinto de columnas de piedra, octógono central con la escalera, brazo oeste con 4 salas en H, brazo este con 2 salas rombo y la sala oval, **anillo sur en zigzag** (baja, sale, baja y vuelve a entrar) con dos salas a cada lado, pasillo central, sala grande central sur (negra) y sala final con el portal. |
 
 ![Cripta -1](img/dark-cathedral-z8.png)
 ![Cripta -2](img/dark-cathedral-z9.png)
@@ -44,13 +44,16 @@ Referencias del diseño: `img/dark-cathedral-ref/` (`Dark_Cathedral_0.png` super
 | Sala gris del sur | interior `x 135–150`, `y 339–345` |
 | Sala gris del oeste (bajada B) | interior `x 126–132`, `y 333–338` |
 | Explanada de la llegada | `x 143–154`, `y 334–337` |
-| Reclano de la bajada A | `x 145–152`, `y 293–297` |
-| z8: eje y pasillos | eje `x 147–149`, `y 295–341`; pasillos `y 305–306` y `y 326–327`, `x 127–165` |
-| z8: cueva de los gusanos | `x 153–167`, `y 289–297` |
-| z9: sala norte | `x 135–160`, `y 292–308` |
+| Rellano de la bajada A | `x 145–152`, `y 293–297` |
+| z8: eje (3 tramos) | `x 147–149`, `y 295–308` · `x 146–148`, `y 308–324` · `x 147–149`, `y 324–341` |
+| z8: pasillos | `y 305–306`, `x 127–148` · `y 308–309`, `x 148–165` · `y 326–327`, `x 132–165` |
+| z8: cueva de los gusanos | `x 152–167`, `y 290–297` (entra desde la sala J) |
+| z8: sala del fondo (T) | `x 141–155`, `y 342–347` |
+| z9: sala de las columnas | `x 135–160`, `y 292–308` |
 | z9: octógono | `x 143–152`, `y 314–320` |
-| z9: anillo sur | `y 329–330`, `x 126–169` |
-| z9: sala central sur / final | `x 142–153`, `y 332–340` / `x 144–151`, `y 342–346` |
+| z9: anillo en zigzag (oeste) | baja `x 142–143` `y 318–328` · sale `y 328–329` `x 134–143` · baja `x 134–135` `y 329–336` · vuelve `y 336–337` `x 134–143` |
+| z9: salas del anillo | oeste `x 126–132` `y 327–332` y `y 334–339`; este espejado en `x 163–169` |
+| z9: sala central sur / final | `x 142–153`, `y 330–341` / `x 144–151`, `y 343–347` |
 
 Carteles en `readables.xml`, bloque `DARK_CATHEDRAL_SIGNS` (`151,334,7` llegada, `146,334,7` nave,
 `136,340,7` sala de los bancos, `146,292,7` bajada de la jungla).
@@ -71,13 +74,13 @@ El -2 se recorre en anillo, así que se sale por donde se entró; además tiene 
 
 ## Spawns
 
-`test-spawn.xml`, bloque `DARK_CATHEDRAL_SPAWNS`. 118 monstruos, un bloque por monstruo (radio 2):
+`test-spawn.xml`, bloque `DARK_CATHEDRAL_SPAWNS`. 128 monstruos, un bloque por monstruo (radio 2):
 
 | Piso | Zonas | Monstruos |
 |------|-------|-----------|
 | z7 | ruinas oeste, ruinas este, sala de los bancos, jungla | 23: Bandit 9, Smuggler 5, Wild Warrior 5, Hunter 4 |
-| z8 | salas A–U, cueva | 60: Bandit 14, Wild Warrior 8, Rotworm 6, Smuggler 5, Ghoul 5, Skeleton 5, Assassin 4, Bat 3, Centipede 3, Slime 3, Poison Spider 3, Dark Monk 1 |
-| z9 | sala de las columnas, brazos, anillo, sala central sur, sala final | 35: Dark Monk 10, Ghost 8, Monk 7, Witch 4, Hunter 3, Mummy 1, Stone Golem 1, Demon Skeleton 1 |
+| z8 | salas A–U, cueva natural | 64: Bandit 14, Wild Warrior 8, Rotworm 7, Ghoul 6, Skeleton 6, Smuggler 5, Assassin 4, Centipede 4, Bat 3, Slime 3, Poison Spider 3, Dark Monk 1 |
+| z9 | sala de las columnas, brazos, anillo, sala central sur, sala final | 41: Dark Monk 12, Monk 8, Ghost 8, Witch 6, Hunter 4, Mummy 1, Stone Golem 1, Demon Skeleton 1 |
 
 El demon skeleton y los dark monks de la sala central sur hacen de "guardia del -3" (la escalera al
 -3 de la Dark Cathedral original no se replica).
@@ -104,18 +107,24 @@ la misma caja). Es re-ejecutable: borra su caja, reescribe spawns, carteles y ma
 
 ## Cómo está hecho
 
-- **Geometría por salas.** Cada sala es un rectángulo; entre dos salas unidas queda **una** casilla,
-  que es la pared; las puertas se abren solas (1–2 casillas) donde dos salas se tocan a una casilla
-  (`open_door`). El resultado no tiene paredes dobles ni tramos cortados.
-- **Pieza de pared por vecinos.** Con el mapa de paredes (`oeste`/`norte`) se elige vertical 1049,
-  horizontal 1050, esquina NO 1051 y esquina SE 1053 (ladrillo: 1030, 1028, 1027, 1033). Las
-  columnas son casillas de pared aisladas (poste) con el material de piedra, no ítems sueltos.
-- **Suelo bajo la pared:** el de la sala vecina; sólo la fila norte y la columna oeste llevan el
-  suelo de afuera (regla de `PIEZAS_DE_MAPA.md`), así no quedan manchas de pasto adentro.
+- **Geometría por salas.** Cada sala es un rectángulo (o un rectángulo con esquinas cortadas /
+  octógono); entre dos salas unidas queda **una** casilla, que es la pared; las puertas se abren solas
+  (una casilla) donde dos salas se tocan a una casilla (`open_door`). Los pasillos se cruzan por
+  solapamiento, así no quedan paredes dobles ni tramos cortados.
+- **Pieza de pared por vecinos.** `PIECE_BY_NEIGHBORS` es una tabla de las 16 combinaciones de
+  vecinos (oeste, norte, este, sur) medida sobre las paredes de piedra del propio `test.otbm`:
+  vertical 1049, horizontal 1050, esquina NO 1051, esquina SE 1053 (ladrillo: 1030, 1028, 1027,
+  1033). Con eso los extremos de pared quedan cerrados y las esquinas como en el resto del mapa.
+- **Suelo bajo la pared:** el del piso más cercano (BFS desde las salas), así no aparecen manchas de
+  pasto entre las paredes de las ruinas.
+- **Columnas:** son el ítem `3766` (pilar de piedra, bloquea) sobre el piso, no un poste de pared:
+  el laberinto de la sala norte del -2 se ve como columnas altas.
+- **Cueva del -1:** discos unidos con borde irregular sobre `cave_tiles` de `generate-north-pass.py`
+  (piso 351/352/355, paredes de roca 356–367), con una boca de dos casillas a la sala J.
 - **Jungla:** franja de monte cerrado en el borde (nada caminable a menos de 7 casillas del borde de
-  la caja), árboles 2×2 espaciados en grilla de 3 con corrimiento y, entre ellos, vegetación baja que
-  no bloquea (flores, maleza, hongos). Lo que queda encerrado se tapa con monte o agua: no hay
-  casillas caminables aisladas.
+  la caja), árboles plantados al azar (nunca dos copas pegadas) y vegetación baja que no bloquea
+  (flores, maleza, hongos) en todos los huecos. Lo que queda encerrado se tapa con monte o agua: no
+  hay casillas caminables aisladas.
 - **Agua:** un solo río en arco en la esquina noreste (bordes de costa 4644–4655). No hay marco de
   mar: el borde es jungla.
 - **Muebles de dos piezas.** Los bancos son `1662` + su mitad derecha `1663` (siempre el par, en dos

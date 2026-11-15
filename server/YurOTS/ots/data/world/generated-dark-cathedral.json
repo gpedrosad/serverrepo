@@ -142,29 +142,29 @@
   },
   "spawns": {
     "z7": 23,
-    "z8": 60,
-    "z9": 35,
-    "monsters": 118
+    "z8": 64,
+    "z9": 41,
+    "monsters": 128
   },
   "monsters": {
     "Assassin": 4,
     "Bandit": 23,
     "Bat": 3,
-    "Centipede": 3,
-    "Dark Monk": 11,
+    "Centipede": 4,
+    "Dark Monk": 13,
     "Demon Skeleton": 1,
     "Ghost": 8,
-    "Ghoul": 5,
-    "Hunter": 7,
-    "Monk": 7,
+    "Ghoul": 6,
+    "Hunter": 8,
+    "Monk": 8,
     "Mummy": 1,
     "Poison Spider": 3,
-    "Rotworm": 6,
-    "Skeleton": 5,
+    "Rotworm": 7,
+    "Skeleton": 6,
     "Slime": 3,
     "Smuggler": 10,
     "Stone Golem": 1,
     "Wild Warrior": 13,
-    "Witch": 4
+    "Witch": 6
   }
 }
