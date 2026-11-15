@@ -67,9 +67,16 @@ ROCKS, ROCKS_EDGE_N, ROCKS_EDGE_W = 4566, 906, 903
 DIRT, DIRT_ALT = 351, 352
 ROCK = 101
 WALL_V, WALL_H, WALL_POST, WALL_CORNER = 1049, 1050, 1051, 1053
-# escalera de madera vertical 3685: mismas flags que 1385 (floorChangeNorth) y ya está en
-# STAIRS_LANDING de teleport.lua, así que el aterrizaje sigue siendo (x, y+1)
-STAIRS_UP, STAIR_DOWN = 3685, 432
+# Escaleras: dos tipos de par (ver docs/gameplay/STAIRS.md y scripts de actions).
+#   - clásico: 432 (stair down, arriba) + 1396 (wooden stairs, floorChangeNorth, abajo).
+#     Al subir se llega a (x, y-1); al bajar, a (x, y+1).
+#   - escalera de mano / buraco: 469 (hole, floorChangeDown) o 409 (ladder down) arriba +
+#     1386 (ladder, LADDERS_UP) abajo. Al subir por 1386 se llega a (x, y+1); al bajar se cae
+#     en la misma casilla (x, y) porque 1386 no está en STAIRS_LANDING (offset 0).
+STAIRS_UP, STAIR_DOWN = 1396, 432
+LADDER_UP, LADDER_DOWN, STONE_HOLE = 1386, 409, 469
+DOWN_HOLE, DOWN_SAME = {STAIR_DOWN}, {LADDER_DOWN, STONE_HOLE}
+UP_OFFSET = {STAIRS_UP: (0, -1), LADDER_UP: (0, 1)}
 TELEPORT, ATTR_TELE_DEST, SIGN = 1387, 8, 1429
 TREE_BIG, TREE_SMALL = 4009, 2768
 BUSHES = (2767, 2786)
@@ -153,29 +160,29 @@ HUNTS = {
 }
 GAP = 3                                # separación mínima entre centros de spawn
 
-# --- escaleras: (etiqueta, piso de arriba, piso de abajo, (x, y) deseado) -------------------------
-# El hueco 432 va arriba y la escalera de madera 3685 abajo, en la misma casilla. Al subir se llega a
-# (x, y-1) del piso de arriba; al bajar, a (x, y+1) del de abajo (docs/gameplay/STAIRS.md).
+# --- escaleras: (etiqueta, piso de arriba, piso de abajo, (x, y) deseado, tipo) -------------------
+# tipo: "stairs" = 432 + 1396; "hole" = 469 + 1386 (buraco de la entrada, con pala en Tibia);
+#        "ladder" = 409 + 1386 (escalera de mano de la torre).
 LINKS = [
-    ("entrada", Z7, Z8, STAIR_ENTRY),
-    ("sotano->patio", Z7, Z8, (X_CASTLE + 17, Y_CASTLE + 4)),
-    ("sotano->-2", Z8, Z9, (X_CASTLE + 17, Y_CASTLE + 15)),
-    ("-2->-3", Z9, Z10, (X_CASTLE + 2, Y_CASTLE + 14)),
-    ("patio->adarve NO", Z6, Z7, (X_CASTLE + 2, Y_CASTLE + 1)),
-    ("patio->adarve NE", Z6, Z7, (X_CASTLE + 17, Y_CASTLE + 1)),
-    ("patio->adarve SO", Z6, Z7, (X_CASTLE + 3, Y_CASTLE + 14)),
-    ("patio->adarve SE", Z6, Z7, (X_CASTLE + 17, Y_CASTLE + 14)),
-    ("torre->adarve", Z6, Z7, (X_CASTLE + 13, Y_CASTLE + 6)),
-    ("adarve->torreta NO", Z5, Z6, (X_CASTLE + 3, Y_CASTLE + 1)),
-    ("adarve->torreta NE", Z5, Z6, (X_CASTLE + 18, Y_CASTLE + 1)),
-    ("adarve->torreta SO", Z5, Z6, (X_CASTLE + 2, Y_CASTLE + 15)),
-    ("adarve->torreta SE", Z5, Z6, (X_CASTLE + 18, Y_CASTLE + 15)),
-    ("torre adarve->2", Z5, Z6, (X_CASTLE + 8, Y_CASTLE + 6)),
-    ("torreta NO->3", Z4, Z5, (X_CASTLE + 2, Y_CASTLE + 1)),
-    ("torreta NE->3", Z4, Z5, (X_CASTLE + 18, Y_CASTLE + 1)),
-    ("torreta SO->3", Z4, Z5, (X_CASTLE + 2, Y_CASTLE + 14)),
-    ("torreta SE->3", Z4, Z5, (X_CASTLE + 18, Y_CASTLE + 14)),
-    ("torre 2->3", Z4, Z5, (X_CASTLE + 13, Y_CASTLE + 5)),
+    ("entrada", Z7, Z8, STAIR_ENTRY, "hole"),
+    ("sotano->patio", Z7, Z8, (X_CASTLE + 17, Y_CASTLE + 4), "stairs"),
+    ("sotano->-2", Z8, Z9, (X_CASTLE + 17, Y_CASTLE + 15), "stairs"),
+    ("-2->-3", Z9, Z10, (X_CASTLE + 2, Y_CASTLE + 14), "stairs"),
+    ("patio->adarve NO", Z6, Z7, (X_CASTLE + 2, Y_CASTLE + 1), "stairs"),
+    ("patio->adarve NE", Z6, Z7, (X_CASTLE + 17, Y_CASTLE + 1), "stairs"),
+    ("patio->adarve SO", Z6, Z7, (X_CASTLE + 3, Y_CASTLE + 14), "stairs"),
+    ("patio->adarve SE", Z6, Z7, (X_CASTLE + 17, Y_CASTLE + 14), "stairs"),
+    ("torre->adarve", Z6, Z7, (X_CASTLE + 13, Y_CASTLE + 6), "stairs"),
+    ("adarve->torreta NO", Z5, Z6, (X_CASTLE + 3, Y_CASTLE + 1), "stairs"),
+    ("adarve->torreta NE", Z5, Z6, (X_CASTLE + 18, Y_CASTLE + 1), "stairs"),
+    ("adarve->torreta SO", Z5, Z6, (X_CASTLE + 2, Y_CASTLE + 15), "stairs"),
+    ("adarve->torreta SE", Z5, Z6, (X_CASTLE + 18, Y_CASTLE + 15), "stairs"),
+    ("torre adarve->2", Z5, Z6, (X_CASTLE + 8, Y_CASTLE + 6), "stairs"),
+    ("torreta NO->3", Z4, Z5, (X_CASTLE + 2, Y_CASTLE + 1), "stairs"),
+    ("torreta NE->3", Z4, Z5, (X_CASTLE + 18, Y_CASTLE + 1), "stairs"),
+    ("torreta SO->3", Z4, Z5, (X_CASTLE + 2, Y_CASTLE + 14), "stairs"),
+    ("torreta SE->3", Z4, Z5, (X_CASTLE + 18, Y_CASTLE + 14), "stairs"),
+    ("torre 2->3", Z4, Z5, (X_CASTLE + 13, Y_CASTLE + 5), "ladder"),
 ]
 
 
@@ -487,8 +494,10 @@ def build_surface(plans, seed: int):
         base = t[pos]["g"] if pos in t and t[pos]["g"] != WATER else GRASS
         t[pos] = tile(base, [STONE_ITEM])
     t[STAIR_ENTRY] = tile(GRASS)          # el hueco lo pone la escalera (LINKS)
-    t[(STAIR_ENTRY[0] - 1, STAIR_ENTRY[1])] = tile(GRASS, [STONE_ITEM])
-    t[(STAIR_ENTRY[0] + 1, STAIR_ENTRY[1])] = tile(GRASS, [STONE_ITEM])
+    # el buraco de la entrada va cercado por 4 piedras (1285) y el sur queda libre: es el
+    # aterrizaje de la escalera de mano (1386 sube a x, y+1)
+    for dx, dy in ((-1, 0), (1, 0), (-1, -1), (1, -1)):
+        t[(STAIR_ENTRY[0] + dx, STAIR_ENTRY[1] + dy)] = tile(GRASS, [STONE_ITEM])
     t[(STAIR_ENTRY[0], STAIR_ENTRY[1] + 1)] = tile(GRASS)
     t[(STAIR_ENTRY[0], STAIR_ENTRY[1] - 1)] = tile(GRASS)
 
@@ -572,40 +581,51 @@ def walk_tile(cell) -> bool:
 
 
 def is_stair(cell) -> bool:
-    return cell is not None and (cell["g"] == STAIR_DOWN or STAIRS_UP in cell["it"])
+    if cell is None:
+        return False
+    return (cell["g"] in DOWN_HOLE | DOWN_SAME
+            or any(i in (STAIRS_UP, LADDER_UP) for i in cell["it"]))
 
 
-def resolve_stair(upper: dict, lower: dict, zu: int, zl: int, wish, used: dict, label: str):
+def stair_landings(kind: str, p):
+    """(llegada al subir en el piso de arriba, llegada al bajar en el de abajo)."""
+    x, y = p
+    if kind == "stairs":
+        return (x, y - 1), (x, y + 1)
+    return (x, y + 1), (x, y)
+
+
+def resolve_stair(upper: dict, lower: dict, zu: int, zl: int, wish, used: dict, label: str, kind: str):
     """Encuentra la casilla de la escalera entre dos pisos, cerca de donde la pide el ASCII."""
     cands = sorted(lower, key=lambda p: (abs(p[0] - wish[0]) + abs(p[1] - wish[1]),
                                          p[1] - wish[1], p[0] - wish[0]))
     for p in cands:
         if abs(p[0] - wish[0]) + abs(p[1] - wish[1]) > 8:
             break
-        x, y = p
         up, low = upper.get(p), lower.get(p)
         if not walk_tile(up) or not walk_tile(low) or is_stair(up) or is_stair(low):
             continue
-        up_land, low_land = upper.get((x, y - 1)), lower.get((x, y + 1))
-        if not walk_tile(up_land) or not walk_tile(low_land):
+        up_land, low_land = stair_landings(kind, p)
+        up_cell, low_cell = upper.get(up_land), lower.get(low_land)
+        if not walk_tile(up_cell) or not walk_tile(low_cell):
             continue
-        if is_stair(up_land) or is_stair(low_land):
+        if is_stair(up_cell) or is_stair(low_cell):
             continue
-        if (p in used.setdefault(zu, set()) or (x, y - 1) in used[zu]
-                or p in used.setdefault(zl, set()) or (x, y + 1) in used[zl]):
+        if (p in used.setdefault(zu, set()) or up_land in used[zu]
+                or p in used.setdefault(zl, set()) or low_land in used[zl]):
             continue
-        used[zu].update({p, (x, y - 1)})
-        used[zl].update({p, (x, y + 1)})
+        used[zu].update({p, up_land})
+        used[zl].update({p, low_land})
         return p
     raise SystemExit(f"ERROR: no hay casilla para la escalera {label} cerca de {wish}")
 
 
-def place_stair(upper: dict, lower: dict, p):
+def place_stair(upper: dict, lower: dict, p, kind: str):
     up = upper[p]
-    up["g"] = STAIR_DOWN
+    up["g"] = {"stairs": STAIR_DOWN, "hole": STONE_HOLE, "ladder": LADDER_DOWN}[kind]
     up["it"] = []
     up["tele"] = None
-    lower[p]["it"].append(STAIRS_UP)
+    lower[p]["it"].append(LADDER_UP if kind != "stairs" else STAIRS_UP)
 
 
 # ---------------------------------------------------------------- OTBM
@@ -664,35 +684,47 @@ def write_otbm(layers: dict):
 
 
 # ---------------------------------------------------------------- validación
+def descent_target(cell, x, y, z):
+    """A dónde lleva pisar/usar una bajada (hueco o escalera de mano)."""
+    if cell is None:
+        return None
+    if cell["g"] in DOWN_HOLE:                   # 432: se cae al sur
+        return (x, y + 1, z + 1)
+    if cell["g"] in DOWN_SAME:                   # 409 / 469: se cae en la misma casilla
+        return (x, y, z + 1)
+    return None
+
+
 def bfs(layers: dict, start):
-    """Alcanzabilidad multi-piso: casillas caminables + escaleras/huecos."""
+    """Alcanzabilidad multi-piso: casillas caminables + escaleras, huecos y escaleras de mano."""
     seen, q = {start}, deque([start])
     while q:
         x, y, z = q.popleft()
         cell = layers[z].get((x, y))
         if cell is None:
             continue
-        if cell["g"] == STAIR_DOWN:
-            n = (x, y + 1, z + 1)
-            if n[2] in layers and walk_tile(layers[n[2]].get((x, y + 1))) and n not in seen:
-                seen.add(n)
-                q.append(n)
+        down = descent_target(cell, x, y, z)
+        if down is not None:
+            if down[2] in layers and walk_tile(layers[down[2]].get(down[:2])) and down not in seen:
+                seen.add(down)
+                q.append(down)
             continue
-        if STAIRS_UP in cell["it"]:
-            n = (x, y - 1, z - 1)
-            if n[2] in layers and walk_tile(layers[n[2]].get((x, y - 1))) and n not in seen:
-                seen.add(n)
-                q.append(n)
+        for item, (dx, dy) in UP_OFFSET.items():
+            if item in cell["it"]:
+                n = (x + dx, y + dy, z - 1)
+                if n[2] in layers and walk_tile(layers[n[2]].get(n[:2])) and n not in seen:
+                    seen.add(n)
+                    q.append(n)
         for dx, dy in CARD:
             n = (x + dx, y + dy, z)
             nc = layers[z].get((n[0], n[1]))
             if nc is None or not walk_tile(nc):
                 continue
-            if nc["g"] == STAIR_DOWN:            # pisar el hueco: se baja al piso de abajo
-                d = (n[0], n[1] + 1, z + 1)
-                if d[2] in layers and walk_tile(layers[d[2]].get(d[:2])) and d not in seen:
-                    seen.add(d)
-                    q.append(d)
+            down = descent_target(nc, n[0], n[1], z)
+            if down is not None:                 # pisar la bajada: se cae al piso de abajo
+                if down[2] in layers and walk_tile(layers[down[2]].get(down[:2])) and down not in seen:
+                    seen.add(down)
+                    q.append(down)
                 continue
             if n not in seen:
                 seen.add(n)
@@ -710,8 +742,7 @@ def open_pockets(t7: dict, layers: dict, start):
     reach = bfs(layers, start)
     for _ in range(800):
         reach7 = {(x, y) for x, y, z in reach if z == Z7}
-        lost = {p for p, c in t7.items() if walk_tile(c) and c["g"] != STAIR_DOWN
-                and STAIRS_UP not in c["it"]} - reach7
+        lost = {p for p, c in t7.items() if walk_tile(c) and not is_stair(c)} - reach7
         if not lost:
             break
         progress = False
@@ -831,12 +862,12 @@ def main() -> int:
 
     used: dict = {}
     stairs, moved = [], []
-    for label, zu, zl, wish in LINKS:
-        p = resolve_stair(layers[zu], layers[zl], zu, zl, wish, used, label)
+    for label, zu, zl, wish, kind in LINKS:
+        p = resolve_stair(layers[zu], layers[zl], zu, zl, wish, used, label, kind)
         if p != wish:
             moved.append((label, wish, p))
-        place_stair(layers[zu], layers[zl], p)
-        stairs.append((label, zu, zl, p))
+        place_stair(layers[zu], layers[zl], p, kind)
+        stairs.append((label, zu, zl, p, kind))
 
     # --- validaciones ---
     errors = []
@@ -844,7 +875,7 @@ def main() -> int:
     walkbyz = {z: {p for p, c in tl.items() if walk_tile(c)} for z, tl in layers.items()}
     reach = bfs(layers, (ARRIVAL[0], ARRIVAL[1], Z7))
     for z in sorted(layers):
-        walk = {p for p, c in layers[z].items() if walk_tile(c) and c["g"] != STAIR_DOWN}
+        walk = {p for p, c in layers[z].items() if walk_tile(c) and not is_stair(c)}
         lost = walk - {(x, y) for x, y, zz in reach if zz == z}
         if lost:
             errors.append(f"z{z}: {len(lost)} casillas caminables inalcanzables, p.ej. {sorted(lost)[:5]}")
@@ -855,13 +886,22 @@ def main() -> int:
             errors.append(f"portal de vuelta {pos} sin acceso")
     # ninguna escalera comparte casilla con otra y los destinos son válidos
     seen_stairs = set()
-    for label, zu, zl, p in stairs:
+    expected_up = {"stairs": STAIR_DOWN, "hole": STONE_HOLE, "ladder": LADDER_DOWN}
+    expected_low = {"stairs": STAIRS_UP, "hole": LADDER_UP, "ladder": LADDER_UP}
+    for label, zu, zl, p, kind in stairs:
         if (zu, p) in seen_stairs:
             errors.append(f"escalera {label} repite casilla {p} en z{zu}")
         seen_stairs.add((zu, p))
-        for zz, land in ((zu, (p[0], p[1] - 1)), (zl, (p[0], p[1] + 1))):
-            if not walk_tile(layers[zz].get(land)):
-                errors.append(f"escalera {label}: llegada {land},{zz} no caminable")
+        up_cell, low_cell = layers[zu].get(p), layers[zl].get(p)
+        if not up_cell or up_cell["g"] != expected_up[kind]:
+            errors.append(f"escalera {label}: arriba {p},{zu} no es {expected_up[kind]}")
+        if not low_cell or expected_low[kind] not in low_cell["it"]:
+            errors.append(f"escalera {label}: abajo {p},{zl} no tiene {expected_low[kind]}")
+        up_land, low_land = stair_landings(kind, p)
+        if not walk_tile(layers[zu].get(up_land)):
+            errors.append(f"escalera {label}: llegada al subir {up_land},{zu} no caminable")
+        if not walk_tile(layers[zl].get(low_land)):
+            errors.append(f"escalera {label}: llegada al bajar {low_land},{zl} no caminable")
     # z7: nada de ground 919 (se dibuja como vacío negro) y orilla exacta en todo el pasto
     if any(c["g"] == 919 for c in layers[Z7].values()):
         errors.append("z7: quedaron casillas con ground 919 (se ven negras)")
@@ -887,9 +927,10 @@ def main() -> int:
     avoid = {z: set() for z in layers}
     avoid[Z7] |= {(ARRIVAL[0] + dx, ARRIVAL[1] + dy) for dx in range(-3, 4) for dy in range(-3, 4)}
     avoid[Z7] |= {(x + dx, y + dy) for x, y in PORTALS_BACK for dx in range(-2, 3) for dy in range(-2, 3)}
-    for label, zu, zl, p in stairs:
-        avoid[zu] |= {p, (p[0], p[1] - 1)}
-        avoid[zl] |= {p, (p[0], p[1] + 1)}
+    for label, zu, zl, p, kind in stairs:
+        up_land, low_land = stair_landings(kind, p)
+        avoid[zu] |= {p, up_land}
+        avoid[zl] |= {p, low_land}
     spawns = place_hunts(layers, walkbyz, avoid, a.seed)
     for (cx, cy), z, mons in spawns:
         for name, pos, _st in mons:
@@ -915,8 +956,8 @@ def main() -> int:
         tl = layers[z]
         print(f"  z{z}: {len(tl)} casillas, {sum(1 for c in tl.values() if walk_tile(c))} caminables, "
               f"caja x{BOXS[z][0]}-{BOXS[z][2]} y{BOXS[z][1]}-{BOXS[z][3]}")
-    for label, zu, zl, p in stairs:
-        print(f"  escalera {label}: hueco {p[0]},{p[1]},{zu} / subida {p[0]},{p[1]},{zl}")
+    for label, zu, zl, p, kind in stairs:
+        print(f"  escalera {label} [{kind}]: arriba {p[0]},{p[1]},{zu} / abajo {p[0]},{p[1]},{zl}")
     for label, wish, got in moved:
         print(f"  reubicada {label}: {wish} -> {got}")
     if opened:
@@ -969,10 +1010,10 @@ def main() -> int:
         "castle": {"x": X_CASTLE, "y": Y_CASTLE, "w": CW, "h": CH},
         "landing": {"x": ARRIVAL[0], "y": ARRIVAL[1], "z": Z7},
         "portalsBack": [{"x": x, "y": y, "z": Z7, "to": list(TEMPLE_BACK)} for x, y in PORTALS_BACK],
-        "stairs": [{"label": label, "x": p[0], "y": p[1], "holeZ": zu, "upZ": zl,
-                    "upLanding": {"x": p[0], "y": p[1] - 1, "z": zu},
-                    "downLanding": {"x": p[0], "y": p[1] + 1, "z": zl}}
-                   for label, zu, zl, p in stairs],
+        "stairs": [{"label": label, "kind": kind, "x": p[0], "y": p[1], "holeZ": zu, "upZ": zl,
+                    "upLanding": {"x": stair_landings(kind, p)[0][0], "y": stair_landings(kind, p)[0][1], "z": zu},
+                    "downLanding": {"x": stair_landings(kind, p)[1][0], "y": stair_landings(kind, p)[1][1], "z": zl}}
+                   for label, zu, zl, p, kind in stairs],
         "relocated": [{"label": l, "wish": list(w), "got": list(g)} for l, w, g in moved],
         "openedPassages": [list(p) for p in opened],
         "spawns": {f"z{z}": sum(1 for _c, zz, _m in spawns if zz == z) for z in sorted(layers)},

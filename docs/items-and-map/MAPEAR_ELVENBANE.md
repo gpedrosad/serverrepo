@@ -30,7 +30,9 @@ escaleras automáticamente y valida alcanzabilidad multi-piso). Manifiesto:
 | Montañitas grises | meseta `4566` (rocks ground) + pared de roca `906` al norte y `903` al oeste | medido en `test.otbm`: las mesetas de roca del mapa usan ese ground y esas dos paredes; **no** se usa `919` (ese ground se dibuja con el sprite desplazado y deja huecos negros si no lleva la pared completa) |
 | Árboles | `4009` (pino 2x2), `2768` (arbolito) | `generate-beast-valley.py` / `generate-north-pass.py` |
 | Arbustos y flores | `2767`, `2786`, `4158`, `4150`, `2740` | idem |
-| Escaleras | `432` (hueco, arriba) y `3685` (escalera de madera vertical, abajo) | `docs/gameplay/STAIRS.md`; `3685` ya está en `STAIRS_LANDING` de `teleport.lua` (aterriza en `x, y+1`) |
+| Escaleras (17 links) | `432` (stair down) arriba + `1396` (wooden stairs, `floorChangeNorth`) abajo | `STAIRS.md`; `1396` ya está en `STAIRS_LANDING` de `teleport.lua` (aterriza en `x, y+1`) |
+| Buraco de la entrada | `469` (hole, `floorChangeDown`) arriba + `1386` (ladder) abajo, cercado por 4 piedras `1285` | `shovel.lua` (468→469 con pala; acá queda abierto), `rope.lua`/`teleport.lua` (`LADDERS_UP` 1386 sube a `x, y+1`) |
+| Escalera de mano de la torre | `409` (ladder down) arriba + `1386` abajo | `teleport.lua` (`LADDERS_UP` 1386) y `actions.xml` (409 → `teleport.lua`) |
 
 ### Vegetación: densa pero respirable
 
@@ -84,20 +86,31 @@ La dificultad sube de sur a norte (entrada → castillo) y de abajo hacia la tor
 | Caja z9 / z10 | x `33–67`, y `291–322` |
 | Caja z4–z6 | x `38–62`, y `296–317` |
 
-### Escaleras (el hueco 432 va arriba y la escalera de madera vertical 3685 abajo, en la misma casilla)
+### Escaleras
 
-| Etiqueta | Hueco (arriba) | Subida (abajo) |
-|----------|----------------|----------------|
-| entrada | `39,340,7` | `39,340,8` |
-| sótano→patio | `57,301,7` | `57,301,8` |
-| sótano→-2 | `58,313,8` | `58,313,9` |
-| -2→-3 | `42,312,9` | `42,312,10` |
-| patio→adarve (4 esquinas) | `42,300 / 58,300 / 43,313 / 57,313` (z6) | mismas casillas en z7 |
-| torre→adarve | `53,304,6` | `53,304,7` |
-| adarve→torretas (4) | `43,300 / 57,300 / 42,313 / 58,313` (z5) | mismas casillas en z6 |
-| torre adarve→2 | `48,304,5` | `48,304,6` |
-| torretas→3 (4) | `42,300 / 58,300 / 41,313 / 57,313` (z4) | mismas casillas en z5 |
-| torre 2→3 | `53,304,4` | `53,304,5` |
+Tres pares, siempre en la misma casilla (arriba / abajo):
+
+- **Clásico (17 links):** `432` arriba y `1396` abajo. Al subir se llega a `(x, y-1)`; al bajar, a `(x, y+1)`
+  (`1396` está en `STAIRS_LANDING` → *north* → aterriza al sur).
+- **Buraco de la entrada (`entrada`):** `469` (hole) arriba y `1386` (escalera de mano) abajo, rodeado por
+  4 piedras `1285` y con el sur libre. Al usar la `1386` se sube a `(x, y+1)`; al bajar por el buraco se cae
+  en la misma casilla (la `1386` no mueve: offset 0). En Tibia original es un montículo `468` que se abre
+  con pala (`shovel.lua`); en este OT el `469` no tiene decay configurado, así que queda abierto de entrada.
+- **Escalera de mano de la torre (`torre 2->3`, piso del dragón):** `409` (ladder down) arriba y `1386`
+  abajo, mismos aterrizajes que el buraco.
+
+| Etiqueta | Tipo | Arriba | Abajo |
+|----------|------|--------|-------|
+| entrada | buraco 469 + 1386 | `39,340,7` | `39,340,8` |
+| sótano→patio | 432 + 1396 | `57,301,7` | `57,301,8` |
+| sótano→-2 | 432 + 1396 | `58,313,8` | `58,313,9` |
+| -2→-3 | 432 + 1396 | `42,312,9` | `42,312,10` |
+| patio→adarve (4 esquinas) | 432 + 1396 | `42,300 / 58,300 / 43,313 / 57,313` (z6) | mismas casillas en z7 |
+| torre→adarve | 432 + 1396 | `53,304,6` | `53,304,7` |
+| adarve→torretas (4) | 432 + 1396 | `43,300 / 57,300 / 42,313 / 58,313` (z5) | mismas casillas en z6 |
+| torre adarve→2 | 432 + 1396 | `48,304,5` | `48,304,6` |
+| torretas→3 (4) | 432 + 1396 | `42,300 / 58,300 / 41,313 / 57,313` (z4) | mismas casillas en z5 |
+| torre 2→3 | escalera de mano 409 + 1386 | `52,303,4` | `52,303,5` |
 
 Carteles en `readables.xml`, bloque `ELVENBANE_SIGNS`. Spawns en `test-spawn.xml`, bloque
 `ELVENBANE_SPAWNS`.
@@ -114,7 +127,7 @@ prisión del -3 que el minimapa dibuja cerradas se abren como piso (`PRISON_DOOR
 
 | Zona | Dónde | Relación |
 |------|-------|----------|
-| Valle de las Bestias | x 262–361, y 232–378 | Lejos al este; Elvenbane termina en x 72 |
+| Valle de las Bestias | x 262–361, y 232–378 | Lejos al este; Elvenbane termina en x 74 |
 | Reloj de Arena | x 328–348, y 383–401 | Lejos al sureste |
 | Templo / plaza de portales | x 146–178, y 36–62 | Al noroeste (el portal `157,47,7` está en la plaza) |
 
@@ -133,7 +146,7 @@ en todo el ancho: el único acceso es el túnel (z8).
 ## Reglas que valida el script (si algo falla no escribe nada)
 
 - Caja vacía: se niega a escribir si la caja pisa casillas existentes (verificada vacía en z4–z10).
-- Cada escalera con hueco 432 arriba y escalera de madera vertical 3685 abajo en la misma casilla; las dos llegadas caminables y
+- Cada escalera con su par correcto (432+1396, 469+1386 o 409+1386) en la misma casilla; las dos llegadas caminables y
   sin otra escalera.
 - Alcanzabilidad multi-piso desde la llegada (BFS que sigue escaleras y huecos): todo lo caminable
   se alcanza. El bosque se ajusta (`open_pockets()`) y los pedazos de pasto que quedan rodeados de
@@ -162,8 +175,10 @@ cambió en `main`, no mergear el binario: volver a correr el script sobre el map
 
 **Estado (2026-11-15):** generada y validada localmente (`check-map-load.py`: 0 errores,
 `validate-tele-dest.py`: OK, 81 monstruos sobre casillas caminables, alcanzabilidad multi-piso OK,
-0 casillas con ground `919`, orilla exacta en toda la costa). La superficie se rehizo para que se
-parezca a la referencia: isla más grande con bosque al este y al sur, tierra firme sin agujeros,
-orilla completa y montañitas de roca (`4566` + `906`/`903`) en vez de los bloques negros. Falta
+0 casillas con ground `919`, orilla exacta en toda la costa, patio del castillo sin vegetación). La
+superficie se rehizo para que se parezca a la referencia: isla más grande con bosque al este y al
+sur, tierra firme sin agujeros, orilla completa y montañitas de roca (`4566` + `906`/`903`) en vez de
+los bloques negros. Las escaleras quedaron con sus tres pares (432+1396, 469+1386 en la entrada y
+409+1386 en el piso del dragón). Falta
 deploy y recorrido in-game. Antes de deployar un `test.otbm` nuevo, probar depots in-game
 ([`../gameplay/DEPOTS.md`](../gameplay/DEPOTS.md)).

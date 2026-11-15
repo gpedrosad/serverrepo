@@ -96,23 +96,25 @@
   "stairs": [
     {
       "label": "entrada",
+      "kind": "hole",
       "x": 39,
       "y": 340,
       "holeZ": 7,
       "upZ": 8,
       "upLanding": {
         "x": 39,
-        "y": 339,
+        "y": 341,
         "z": 7
       },
       "downLanding": {
         "x": 39,
-        "y": 341,
+        "y": 340,
         "z": 8
       }
     },
     {
       "label": "sotano->patio",
+      "kind": "stairs",
       "x": 57,
       "y": 301,
       "holeZ": 7,
@@ -130,6 +132,7 @@
     },
     {
       "label": "sotano->-2",
+      "kind": "stairs",
       "x": 58,
       "y": 313,
       "holeZ": 8,
@@ -147,6 +150,7 @@
     },
     {
       "label": "-2->-3",
+      "kind": "stairs",
       "x": 42,
       "y": 312,
       "holeZ": 9,
@@ -164,6 +168,7 @@
     },
     {
       "label": "patio->adarve NO",
+      "kind": "stairs",
       "x": 42,
       "y": 300,
       "holeZ": 6,
@@ -181,6 +186,7 @@
     },
     {
       "label": "patio->adarve NE",
+      "kind": "stairs",
       "x": 58,
       "y": 300,
       "holeZ": 6,
@@ -198,6 +204,7 @@
     },
     {
       "label": "patio->adarve SO",
+      "kind": "stairs",
       "x": 43,
       "y": 313,
       "holeZ": 6,
@@ -215,6 +222,7 @@
     },
     {
       "label": "patio->adarve SE",
+      "kind": "stairs",
       "x": 57,
       "y": 313,
       "holeZ": 6,
@@ -232,6 +240,7 @@
     },
     {
       "label": "torre->adarve",
+      "kind": "stairs",
       "x": 53,
       "y": 304,
       "holeZ": 6,
@@ -249,6 +258,7 @@
     },
     {
       "label": "adarve->torreta NO",
+      "kind": "stairs",
       "x": 43,
       "y": 300,
       "holeZ": 5,
@@ -266,6 +276,7 @@
     },
     {
       "label": "adarve->torreta NE",
+      "kind": "stairs",
       "x": 57,
       "y": 300,
       "holeZ": 5,
@@ -283,6 +294,7 @@
     },
     {
       "label": "adarve->torreta SO",
+      "kind": "stairs",
       "x": 42,
       "y": 313,
       "holeZ": 5,
@@ -300,6 +312,7 @@
     },
     {
       "label": "adarve->torreta SE",
+      "kind": "stairs",
       "x": 58,
       "y": 313,
       "holeZ": 5,
@@ -317,6 +330,7 @@
     },
     {
       "label": "torre adarve->2",
+      "kind": "stairs",
       "x": 48,
       "y": 304,
       "holeZ": 5,
@@ -334,6 +348,7 @@
     },
     {
       "label": "torreta NO->3",
+      "kind": "stairs",
       "x": 42,
       "y": 300,
       "holeZ": 4,
@@ -351,6 +366,7 @@
     },
     {
       "label": "torreta NE->3",
+      "kind": "stairs",
       "x": 58,
       "y": 300,
       "holeZ": 4,
@@ -368,6 +384,7 @@
     },
     {
       "label": "torreta SO->3",
+      "kind": "stairs",
       "x": 41,
       "y": 313,
       "holeZ": 4,
@@ -385,6 +402,7 @@
     },
     {
       "label": "torreta SE->3",
+      "kind": "stairs",
       "x": 57,
       "y": 313,
       "holeZ": 4,
@@ -402,18 +420,19 @@
     },
     {
       "label": "torre 2->3",
-      "x": 53,
-      "y": 304,
+      "kind": "ladder",
+      "x": 52,
+      "y": 303,
       "holeZ": 4,
       "upZ": 5,
       "upLanding": {
-        "x": 53,
-        "y": 303,
+        "x": 52,
+        "y": 304,
         "z": 4
       },
       "downLanding": {
-        "x": 53,
-        "y": 305,
+        "x": 52,
+        "y": 303,
         "z": 5
       }
     }
@@ -558,8 +577,8 @@
         303
       ],
       "got": [
-        53,
-        304
+        52,
+        303
       ]
     }
   ],
