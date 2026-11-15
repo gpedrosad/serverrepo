@@ -11,6 +11,7 @@
 	<!-- END CRUCIBLE_SIGNS -->
 	<!-- BEGIN TEMPLE_PORTAL_SIGNS -->
 	<readable x="156" y="46" z="7" text="ISLA NATURAL\n3 campamentos de Cyclops\nCueva de 3 pisos: la Reina"/>
+	<readable x="157" y="46" z="7" text="ELVENBANE\nFortaleza elfica en 7 pisos.\nDe orcos y elfos al dragon de la torre."/>
 	<readable x="158" y="46" z="7" text="VALLE DE LAS BESTIAS\nCaza mid-hard en 4 pisos\nDe Minotauros a Demonios"/>
 	<readable x="164" y="46" z="7" text="CRISOL\n3 puertas. Boss diario.\nBronce / Plata / Oro"/>
 	<readable x="166" y="46" z="7" text="WAVE ARENA\nClaro de la Selva: 20 oleadas\nEn grupo. Premio semanal"/>
@@ -79,4 +80,8 @@
 	<readable x="316" y="285" z="7" text="RUINAS ANTIGUAS\nNo todos los muertos descansan."/>
 	<readable x="338" y="289" z="7" text="GUARIDA DEL DRAGON\nDragones, wyrms y un dragon negro.\nSolo para veteranos."/>
 	<!-- END BEAST_VALLEY_SIGNS -->
+	<!-- BEGIN ELVENBANE_SIGNS -->
+	<readable x="37" y="347" z="7" text="ELVENBANE\nFortaleza elfica en 7 pisos.\nBaja a la cueva: el tunel llega\nal sotano del castillo.\nPortal al norte: templo."/>
+	<readable x="41" y="341" z="7" text="BAJADA A ELVENBANE\nTunel largo hasta el sotano.\nTrolls, orcos y enanos."/>
+	<!-- END ELVENBANE_SIGNS -->
 </readables>

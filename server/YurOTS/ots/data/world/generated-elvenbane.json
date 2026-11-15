@@ -1,0 +1,703 @@
+{
+  "name": "generated-elvenbane",
+  "seed": 76,
+  "box": {
+    "x1": 18,
+    "y1": 286,
+    "x2": 72,
+    "y2": 360,
+    "z": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  "boxes": {
+    "4": {
+      "x1": 38,
+      "y1": 296,
+      "x2": 62,
+      "y2": 317
+    },
+    "5": {
+      "x1": 38,
+      "y1": 296,
+      "x2": 62,
+      "y2": 317
+    },
+    "6": {
+      "x1": 38,
+      "y1": 296,
+      "x2": 62,
+      "y2": 317
+    },
+    "7": {
+      "x1": 18,
+      "y1": 286,
+      "x2": 72,
+      "y2": 360
+    },
+    "8": {
+      "x1": 30,
+      "y1": 288,
+      "x2": 67,
+      "y2": 349
+    },
+    "9": {
+      "x1": 33,
+      "y1": 291,
+      "x2": 67,
+      "y2": 322
+    },
+    "10": {
+      "x1": 33,
+      "y1": 291,
+      "x2": 67,
+      "y2": 322
+    }
+  },
+  "castle": {
+    "x": 40,
+    "y": 298,
+    "w": 21,
+    "h": 18
+  },
+  "landing": {
+    "x": 39,
+    "y": 346,
+    "z": 7
+  },
+  "portalsBack": [
+    {
+      "x": 41,
+      "y": 347,
+      "z": 7,
+      "to": [
+        157,
+        48,
+        7
+      ]
+    },
+    {
+      "x": 42,
+      "y": 347,
+      "z": 7,
+      "to": [
+        157,
+        48,
+        7
+      ]
+    }
+  ],
+  "stairs": [
+    {
+      "label": "entrada",
+      "x": 39,
+      "y": 340,
+      "holeZ": 7,
+      "upZ": 8,
+      "upLanding": {
+        "x": 39,
+        "y": 339,
+        "z": 7
+      },
+      "downLanding": {
+        "x": 39,
+        "y": 341,
+        "z": 8
+      }
+    },
+    {
+      "label": "sotano->patio",
+      "x": 57,
+      "y": 301,
+      "holeZ": 7,
+      "upZ": 8,
+      "upLanding": {
+        "x": 57,
+        "y": 300,
+        "z": 7
+      },
+      "downLanding": {
+        "x": 57,
+        "y": 302,
+        "z": 8
+      }
+    },
+    {
+      "label": "sotano->-2",
+      "x": 58,
+      "y": 313,
+      "holeZ": 8,
+      "upZ": 9,
+      "upLanding": {
+        "x": 58,
+        "y": 312,
+        "z": 8
+      },
+      "downLanding": {
+        "x": 58,
+        "y": 314,
+        "z": 9
+      }
+    },
+    {
+      "label": "-2->-3",
+      "x": 42,
+      "y": 312,
+      "holeZ": 9,
+      "upZ": 10,
+      "upLanding": {
+        "x": 42,
+        "y": 311,
+        "z": 9
+      },
+      "downLanding": {
+        "x": 42,
+        "y": 313,
+        "z": 10
+      }
+    },
+    {
+      "label": "patio->adarve NO",
+      "x": 42,
+      "y": 300,
+      "holeZ": 6,
+      "upZ": 7,
+      "upLanding": {
+        "x": 42,
+        "y": 299,
+        "z": 6
+      },
+      "downLanding": {
+        "x": 42,
+        "y": 301,
+        "z": 7
+      }
+    },
+    {
+      "label": "patio->adarve NE",
+      "x": 58,
+      "y": 300,
+      "holeZ": 6,
+      "upZ": 7,
+      "upLanding": {
+        "x": 58,
+        "y": 299,
+        "z": 6
+      },
+      "downLanding": {
+        "x": 58,
+        "y": 301,
+        "z": 7
+      }
+    },
+    {
+      "label": "patio->adarve SO",
+      "x": 43,
+      "y": 313,
+      "holeZ": 6,
+      "upZ": 7,
+      "upLanding": {
+        "x": 43,
+        "y": 312,
+        "z": 6
+      },
+      "downLanding": {
+        "x": 43,
+        "y": 314,
+        "z": 7
+      }
+    },
+    {
+      "label": "patio->adarve SE",
+      "x": 57,
+      "y": 313,
+      "holeZ": 6,
+      "upZ": 7,
+      "upLanding": {
+        "x": 57,
+        "y": 312,
+        "z": 6
+      },
+      "downLanding": {
+        "x": 57,
+        "y": 314,
+        "z": 7
+      }
+    },
+    {
+      "label": "torre->adarve",
+      "x": 53,
+      "y": 304,
+      "holeZ": 6,
+      "upZ": 7,
+      "upLanding": {
+        "x": 53,
+        "y": 303,
+        "z": 6
+      },
+      "downLanding": {
+        "x": 53,
+        "y": 305,
+        "z": 7
+      }
+    },
+    {
+      "label": "adarve->torreta NO",
+      "x": 43,
+      "y": 300,
+      "holeZ": 5,
+      "upZ": 6,
+      "upLanding": {
+        "x": 43,
+        "y": 299,
+        "z": 5
+      },
+      "downLanding": {
+        "x": 43,
+        "y": 301,
+        "z": 6
+      }
+    },
+    {
+      "label": "adarve->torreta NE",
+      "x": 57,
+      "y": 300,
+      "holeZ": 5,
+      "upZ": 6,
+      "upLanding": {
+        "x": 57,
+        "y": 299,
+        "z": 5
+      },
+      "downLanding": {
+        "x": 57,
+        "y": 301,
+        "z": 6
+      }
+    },
+    {
+      "label": "adarve->torreta SO",
+      "x": 42,
+      "y": 313,
+      "holeZ": 5,
+      "upZ": 6,
+      "upLanding": {
+        "x": 42,
+        "y": 312,
+        "z": 5
+      },
+      "downLanding": {
+        "x": 42,
+        "y": 314,
+        "z": 6
+      }
+    },
+    {
+      "label": "adarve->torreta SE",
+      "x": 58,
+      "y": 313,
+      "holeZ": 5,
+      "upZ": 6,
+      "upLanding": {
+        "x": 58,
+        "y": 312,
+        "z": 5
+      },
+      "downLanding": {
+        "x": 58,
+        "y": 314,
+        "z": 6
+      }
+    },
+    {
+      "label": "torre adarve->2",
+      "x": 48,
+      "y": 304,
+      "holeZ": 5,
+      "upZ": 6,
+      "upLanding": {
+        "x": 48,
+        "y": 303,
+        "z": 5
+      },
+      "downLanding": {
+        "x": 48,
+        "y": 305,
+        "z": 6
+      }
+    },
+    {
+      "label": "torreta NO->3",
+      "x": 42,
+      "y": 300,
+      "holeZ": 4,
+      "upZ": 5,
+      "upLanding": {
+        "x": 42,
+        "y": 299,
+        "z": 4
+      },
+      "downLanding": {
+        "x": 42,
+        "y": 301,
+        "z": 5
+      }
+    },
+    {
+      "label": "torreta NE->3",
+      "x": 58,
+      "y": 300,
+      "holeZ": 4,
+      "upZ": 5,
+      "upLanding": {
+        "x": 58,
+        "y": 299,
+        "z": 4
+      },
+      "downLanding": {
+        "x": 58,
+        "y": 301,
+        "z": 5
+      }
+    },
+    {
+      "label": "torreta SO->3",
+      "x": 41,
+      "y": 313,
+      "holeZ": 4,
+      "upZ": 5,
+      "upLanding": {
+        "x": 41,
+        "y": 312,
+        "z": 4
+      },
+      "downLanding": {
+        "x": 41,
+        "y": 314,
+        "z": 5
+      }
+    },
+    {
+      "label": "torreta SE->3",
+      "x": 57,
+      "y": 313,
+      "holeZ": 4,
+      "upZ": 5,
+      "upLanding": {
+        "x": 57,
+        "y": 312,
+        "z": 4
+      },
+      "downLanding": {
+        "x": 57,
+        "y": 314,
+        "z": 5
+      }
+    },
+    {
+      "label": "torre 2->3",
+      "x": 53,
+      "y": 304,
+      "holeZ": 4,
+      "upZ": 5,
+      "upLanding": {
+        "x": 53,
+        "y": 303,
+        "z": 4
+      },
+      "downLanding": {
+        "x": 53,
+        "y": 305,
+        "z": 5
+      }
+    }
+  ],
+  "relocated": [
+    {
+      "label": "sotano->patio",
+      "wish": [
+        57,
+        302
+      ],
+      "got": [
+        57,
+        301
+      ]
+    },
+    {
+      "label": "sotano->-2",
+      "wish": [
+        57,
+        313
+      ],
+      "got": [
+        58,
+        313
+      ]
+    },
+    {
+      "label": "patio->adarve NO",
+      "wish": [
+        42,
+        299
+      ],
+      "got": [
+        42,
+        300
+      ]
+    },
+    {
+      "label": "patio->adarve NE",
+      "wish": [
+        57,
+        299
+      ],
+      "got": [
+        58,
+        300
+      ]
+    },
+    {
+      "label": "patio->adarve SO",
+      "wish": [
+        43,
+        312
+      ],
+      "got": [
+        43,
+        313
+      ]
+    },
+    {
+      "label": "patio->adarve SE",
+      "wish": [
+        57,
+        312
+      ],
+      "got": [
+        57,
+        313
+      ]
+    },
+    {
+      "label": "adarve->torreta NO",
+      "wish": [
+        43,
+        299
+      ],
+      "got": [
+        43,
+        300
+      ]
+    },
+    {
+      "label": "adarve->torreta NE",
+      "wish": [
+        58,
+        299
+      ],
+      "got": [
+        57,
+        300
+      ]
+    },
+    {
+      "label": "torreta NO->3",
+      "wish": [
+        42,
+        299
+      ],
+      "got": [
+        42,
+        300
+      ]
+    },
+    {
+      "label": "torreta NE->3",
+      "wish": [
+        58,
+        299
+      ],
+      "got": [
+        58,
+        300
+      ]
+    },
+    {
+      "label": "torreta SO->3",
+      "wish": [
+        42,
+        312
+      ],
+      "got": [
+        41,
+        313
+      ]
+    },
+    {
+      "label": "torreta SE->3",
+      "wish": [
+        58,
+        312
+      ],
+      "got": [
+        57,
+        313
+      ]
+    },
+    {
+      "label": "torre 2->3",
+      "wish": [
+        53,
+        303
+      ],
+      "got": [
+        53,
+        304
+      ]
+    }
+  ],
+  "openedPassages": [
+    [
+      35,
+      333
+    ],
+    [
+      38,
+      333
+    ],
+    [
+      42,
+      333
+    ],
+    [
+      44,
+      336
+    ],
+    [
+      45,
+      337
+    ],
+    [
+      46,
+      339
+    ],
+    [
+      46,
+      344
+    ]
+  ],
+  "sealedPockets": [
+    [
+      48,
+      353
+    ],
+    [
+      49,
+      353
+    ],
+    [
+      50,
+      330
+    ],
+    [
+      50,
+      331
+    ],
+    [
+      50,
+      332
+    ],
+    [
+      50,
+      333
+    ],
+    [
+      50,
+      353
+    ],
+    [
+      51,
+      347
+    ],
+    [
+      51,
+      348
+    ],
+    [
+      51,
+      349
+    ],
+    [
+      51,
+      350
+    ],
+    [
+      51,
+      351
+    ],
+    [
+      51,
+      352
+    ],
+    [
+      51,
+      353
+    ]
+  ],
+  "spawns": {
+    "z4": 6,
+    "z5": 5,
+    "z6": 3,
+    "z7": 15,
+    "z8": 9,
+    "z9": 6,
+    "z10": 6
+  },
+  "monsters": {
+    "z4/Demon Skeleton": 1,
+    "z4/Dragon": 1,
+    "z4/Hunter": 1,
+    "z4/Minotaur Archer": 1,
+    "z4/Minotaur Mage": 1,
+    "z4/Orc Berserker": 1,
+    "z5/Elf": 1,
+    "z5/Elf Arcanist": 1,
+    "z5/Elf Scout": 1,
+    "z5/Orc Shaman": 1,
+    "z5/Orc Warrior": 2,
+    "z6/Minotaur": 2,
+    "z6/Orc Warrior": 1,
+    "z7/Elf": 2,
+    "z7/Elf Scout": 1,
+    "z7/Minotaur": 4,
+    "z7/Minotaur Guard": 1,
+    "z7/Orc": 4,
+    "z7/Orc Berserker": 1,
+    "z7/Orc Spearman": 2,
+    "z7/Orc Warrior": 8,
+    "z7/Wasp": 4,
+    "z8/Dwarf": 1,
+    "z8/Minotaur": 2,
+    "z8/Orc": 4,
+    "z8/Orc Spearman": 2,
+    "z8/Orc Warrior": 4,
+    "z8/Troll": 4,
+    "z9/Minotaur": 4,
+    "z9/Orc": 4,
+    "z9/Orc Warrior": 4,
+    "z10/Minotaur": 4,
+    "z10/Minotaur Guard": 2,
+    "z10/Orc Warrior": 4
+  },
+  "counts": {
+    "spawns": 50,
+    "monsters": 81
+  }
+}
