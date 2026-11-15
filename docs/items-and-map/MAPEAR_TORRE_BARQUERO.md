@@ -24,8 +24,9 @@ tejas de la casa del norte (`x 172–180, y 55–57, z5`) **no se toca**. El dun
 Las paredes siguen la regla de [`PIEZAS_DE_MAPA.md`](PIEZAS_DE_MAPA.md): la fila norte y la columna
 oeste llevan el suelo de afuera en z7 y **sin ground** en los pisos altos; así la losa de piedra no
 sobresale en las esquinas. La **esquina NE (`180,61,7`) va verde** (pasto), no piedra; la muralla
-queda con las piezas originales (`1050` en la fila norte, `1053` solo en la esquina SE). La puerta
-de `174,64,7` conserva el piso de piedra como umbral.
+queda con las piezas originales (`1050` en la fila norte, `1053` solo en la esquina SE). La derecha
+**arriba** (NE, `180,61,7`) va verde; la derecha **abajo** (SE, `180,67,7`) queda con piedra. La
+puerta de `174,64,7` conserva el piso de piedra como umbral.
 
 ## Pisos y monstruos
 
