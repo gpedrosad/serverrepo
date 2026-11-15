@@ -17,6 +17,9 @@ de z5 (spear, arrow, bolt, crossbow, bow) se ponen sobre las mesas de y53.
 
 Las casas Small Street (x143-144/x146, y43-45) no se tocan.
 
+El NPC Perac estaba en 144,54,5 (z5), justo en la fila que se recorta; se mueve a
+144,52,5 (terraza, detrás de las mesas) para que no quede sin piso.
+
 Uso:
   python3 scripts/map/shrink-seller-shop.py            # dry-run
   python3 scripts/map/shrink-seller-shop.py --replace  # escribe
@@ -37,6 +40,9 @@ from mapdata import REPO, load_otb, load_tiles  # noqa: E402
 
 WORLD = REPO / "server/YurOTS/ots/data/world"
 MAP = WORLD / "test.otbm"
+NPCS = WORLD / "npc.xml"
+PERAC_OLD = '<npc name="Perac" x="144" y="54" z="5" dir="0"/>'
+PERAC_NEW = '<npc name="Perac" x="144" y="52" z="5" dir="2"/>'
 
 STONE, WOOD, GRASS = 431, 405, 4756
 WALL_SW, WALL_S, WINDOW_S, WALL_SE, TORCH = 1043, 1045, 1263, 1042, 2061
@@ -151,36 +157,53 @@ def main() -> int:
     a = ap.parse_args()
 
     tiles = load_tiles()
-    if shop_is_shrunk(tiles):
-        print("la tienda ya está achicada (y54 es muro, y55-56 vacío)")
-        return 0
-    if not shop_is_original(tiles):
+    map_shrunk = shop_is_shrunk(tiles)
+    map_original = shop_is_original(tiles)
+    if not map_shrunk and not map_original:
         print("ERROR: la tienda no está en el estado esperado; aborto para no romperla", file=sys.stderr)
         return 1
 
-    # Los 11 raros y 10 sapphires tienen que estar antes de moverlos.
-    rares = []
-    sapphires = 0
-    for x in (142, 143, 144, 145, 146):
-        for y in (54, 55):
-            ids = tiles.get((x, y, 6), [])
-            rares += [i for i in ids if i not in (STONE, 1620, 1617, 1618, SAPPHIRE)]
-            sapphires += ids.count(SAPPHIRE)
-    if len(rares) != 11 or sapphires != 10:
-        print(f"ERROR: displays de z6 inesperados (rares={len(rares)}, sapphires={sapphires})", file=sys.stderr)
+    npc_text = NPCS.read_text(encoding="utf-8")
+    if PERAC_NEW in npc_text:
+        npc_state = "moved"
+    elif PERAC_OLD in npc_text:
+        npc_state = "original"
+    else:
+        print("ERROR: no encuentro a Perac en npc.xml (ni en 144,54,5 ni en 144,52,5)", file=sys.stderr)
         return 1
 
-    weapons = [i for y in (55,) for x in range(142, 147) for i in tiles.get((x, y, 5), [])
-               if i not in (WOOD, 1617, 1618)]
-    if sorted(weapons) != sorted([2389, 2544, 2543, 2455, 2456]):
-        print(f"ERROR: armas de z5 inesperadas: {weapons}", file=sys.stderr)
-        return 1
+    if map_shrunk and npc_state == "moved":
+        print("la tienda ya está achicada y Perac ya está en 144,52,5")
+        return 0
+
+    rares: list[int] = []
+    sapphires = 0
+    weapons: list[int] = []
+    if map_original:
+        # Los 11 raros y 10 sapphires tienen que estar antes de moverlos.
+        for x in (142, 143, 144, 145, 146):
+            for y in (54, 55):
+                ids = tiles.get((x, y, 6), [])
+                rares += [i for i in ids if i not in (STONE, 1620, 1617, 1618, SAPPHIRE)]
+                sapphires += ids.count(SAPPHIRE)
+        if len(rares) != 11 or sapphires != 10:
+            print(f"ERROR: displays de z6 inesperados (rares={len(rares)}, sapphires={sapphires})", file=sys.stderr)
+            return 1
+
+        weapons = [i for x in range(142, 147) for i in tiles.get((x, 55, 5), [])
+                   if i not in (WOOD, 1617, 1618)]
+        if sorted(weapons) != sorted([2389, 2544, 2543, 2455, 2456]):
+            print(f"ERROR: armas de z5 inesperadas: {weapons}", file=sys.stderr)
+            return 1
 
     print("tienda Seller x141-147, y46-56 -> y46-54")
-    print(f"  z6: se mueven {len(rares)} raros y {sapphires} sapphires a x142-143,y48-53")
-    print("  z5: se mueven 5 armas a las mesas de y53")
-    print("  z7: y54-55 pasa a pasto 4756")
-    print("  z4: se saca el techo de y55-56")
+    if map_original:
+        print(f"  z6: se mueven {len(rares)} raros y {sapphires} sapphires a x142-143,y48-53")
+        print("  z5: se mueven 5 armas a las mesas de y53")
+        print("  z7: y54-55 pasa a pasto 4756")
+        print("  z4: se saca el techo de y55-56")
+    if npc_state == "original":
+        print("  NPC Perac: 144,54,5 -> 144,52,5 (la fila vieja se recorta)")
 
     if a.dry_run or not a.replace:
         print("(dry-run)" if a.dry_run else "usá --replace para escribir")
@@ -190,22 +213,27 @@ def main() -> int:
         f"shrink-seller-{datetime.now().strftime('%Y%m%d-%H%M%S')}"
     backup.mkdir(parents=True, exist_ok=True)
     shutil.copy2(MAP, backup / "test.otbm")
+    shutil.copy2(NPCS, backup / "npc.xml")
     print(f"backup: {backup}")
 
     stackable = {sid for sid, rec in load_otb().items() if "stackable" in rec["flags"]}
 
-    # z6: muro sur en y54, y55-56 quedan vacíos.
-    roomkit.write_map(MAP, wall_row(6, STONE), (141, 54, 147, 56), 6, stackable)
-    # z6: reubicar los displays en la franja oeste.
-    roomkit.write_map(MAP, west_strip(), (142, 48, 143, 53), 6, stackable)
-    # z5: muro sur en y54, y55-56 quedan vacíos.
-    roomkit.write_map(MAP, wall_row(5, WOOD), (141, 54, 147, 56), 5, stackable)
-    # z5: armas sobre las mesas de y53.
-    roomkit.write_map(MAP, weapon_tables(), (142, 53, 146, 53), 5, stackable)
-    # z7: el fondo sur pasa a pasto.
-    roomkit.write_map(MAP, grass_outside(), (142, 54, 147, 55), 7, stackable)
-    # z4: sacar el techo del fondo recortado.
-    roomkit.write_map(MAP, roomkit.Map(), (141, 55, 147, 56), 4, stackable)
+    if map_original:
+        # z6: muro sur en y54, y55-56 quedan vacíos.
+        roomkit.write_map(MAP, wall_row(6, STONE), (141, 54, 147, 56), 6, stackable)
+        # z6: reubicar los displays en la franja oeste.
+        roomkit.write_map(MAP, west_strip(), (142, 48, 143, 53), 6, stackable)
+        # z5: muro sur en y54, y55-56 quedan vacíos.
+        roomkit.write_map(MAP, wall_row(5, WOOD), (141, 54, 147, 56), 5, stackable)
+        # z5: armas sobre las mesas de y53.
+        roomkit.write_map(MAP, weapon_tables(), (142, 53, 146, 53), 5, stackable)
+        # z7: el fondo sur pasa a pasto.
+        roomkit.write_map(MAP, grass_outside(), (142, 54, 147, 55), 7, stackable)
+        # z4: sacar el techo del fondo recortado.
+        roomkit.write_map(MAP, roomkit.Map(), (141, 55, 147, 56), 4, stackable)
+
+    if npc_state == "original":
+        NPCS.write_text(npc_text.replace(PERAC_OLD, PERAC_NEW, 1), encoding="utf-8")
 
     # Verificación
     after = load_tiles()
@@ -242,7 +270,7 @@ def main() -> int:
         if table not in ids or weapon not in ids:
             errs.append(f"arma/mesa faltante en {x},{y},z5: {ids}")
 
-    # Las casas Small Street y el NPC no se tocan.
+    # Las casas Small Street y los NPC no se tocan.
     for x in (143, 144, 146):
         for y in (43, 44, 45):
             if (x, y, 7) not in after:
@@ -250,11 +278,19 @@ def main() -> int:
     if 431 not in after.get((145, 50, 7), []):
         errs.append("se perdió el piso del NPC Seller en 145,50,7")
 
+    npc_after = NPCS.read_text(encoding="utf-8")
+    if PERAC_OLD in npc_after or PERAC_NEW not in npc_after:
+        errs.append("Perac no quedó movido a 144,52,5 en npc.xml")
+    perac_tile = after.get((144, 52, 5), [])
+    solid = {sid for sid, rec in load_otb().items() if "block_solid" in rec["flags"]}
+    if STONE not in perac_tile or any(i in solid for i in perac_tile):
+        errs.append(f"la casilla de Perac 144,52,5 no es piso libre: {perac_tile}")
+
     if errs:
         print("ERRORES:\n  " + "\n  ".join(errs), file=sys.stderr)
         return 1
 
-    print("OK: tienda achicada, displays reubicados y casas intactas")
+    print("OK: tienda achicada, displays reubicados, Perac movido y casas intactas")
     return 0
 
 

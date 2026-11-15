@@ -50,6 +50,13 @@ Las 5 armas del cuarto de z5 se pusieron sobre las mesas de `y53`:
 | `145,53,5` | 1623 | crossbow |
 | `146,53,5` | 1627 | bow |
 
+## Perac (NPC)
+
+Perac estaba en **`144,54,5`**, justo en la fila que se recorta. Se movió a **`144,52,5`**
+(terraza, detrás de las mesas de `y53`, mirando al sur). Sin este cambio el servidor no
+podría colocarlo al arrancar (`Could not place Perac!`), igual que pasó con el Huntmaster
+al borrar la torre del depot.
+
 ## Qué NO se tocó
 
 - Las casas **Small Street** de `x143–144` y `x146`, `y43–45` (z7, z6 y z5).
@@ -68,6 +75,7 @@ python3 scripts/map/sync-houses-with-map.py --dry-run
 python3 scripts/map/validate-tele-dest.py server/YurOTS/ots/data/world/test.otbm
 ```
 
-El script hace backup de `test.otbm` en
+El script hace backup de `test.otbm` y `npc.xml` en
 `/private/var/folders/.../opencode/shrink-seller-<fecha>/` y es idempotente: si la tienda
-ya está achicada, no vuelve a tocarla. Si encuentra el estado a medias, aborta.
+ya está achicada y Perac ya está movido, no vuelve a tocar nada. Si encuentra el estado a
+medias, aborta.
