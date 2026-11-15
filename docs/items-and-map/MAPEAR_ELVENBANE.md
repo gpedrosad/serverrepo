@@ -34,17 +34,18 @@ escaleras automáticamente y valida alcanzabilidad multi-piso). Manifiesto:
 
 ### Vegetación: densa pero respirable
 
-El bosque cubre toda la tierra firme y la franja este/sur de la isla (no hay claros grandes: sólo
-los de la llegada, los portales y la bajada). La densidad se hace con las copas de los pinos 2x2,
-no apilando árboles:
+El bosque cubre **toda** la tierra firme y la franja este/sur de la isla. No hay prados: el único
+claro es un corredor de 1–2 casillas que une la bajada `39,340`, la llegada `39,346` y los portales
+`41–42,347`, más el anillo de piedra de los portales; el resto es bosque. La densidad se hace con
+las copas de los pinos 2x2, no apilando árboles:
 
 - pino grande `4009` sólo si no hay otro a menos de 2 casillas (Chebyshev) y si su bloque 2x2 es
   todo pasto; ocupa 1 casilla para caminar pero se ve en 4;
 - en el resto se alterna arbolito `2768` (14 %), arbusto `2767`/`2786` (14 %) y flores (25 %), y
   queda pasto a la vista entre medio;
-- ~45 % de las casillas de pasto quedan con algo encima; el resto es transitable, así el bosque se
+- ~48 % de las casillas de pasto quedan con algo encima; el resto es transitable, así el bosque se
   ve lleno pero se puede cruzar. `open_pockets()` sólo tala el árbol/arbusto que deje una casilla
-  de pasto encerrada (en la última pasada: 21, sobre ~680 de bosque).
+  de pasto encerrada (en la última pasada: 42, sobre ~860 de pasto con bosque).
 
 ## Recorrido
 
@@ -76,7 +77,7 @@ La dificultad sube de sur a norte (entrada → castillo) y de abajo hacia la tor
 | Sótano -1 → sótano -2 | `58, 313, 8` → `58, 313, 9` |
 | Sótano -2 → prisión -3 | `42, 312, 9` → `42, 312, 10` |
 | Castillo (muralla) | `40, 298` a `60, 315` (21×18) |
-| Caja z7 | x `18–72`, y `286–360` |
+| Caja z7 | x `18–74`, y `286–360` |
 | Caja z8 | x `30–67`, y `288–349` |
 | Caja z9 / z10 | x `33–67`, y `291–322` |
 | Caja z4–z6 | x `38–62`, y `296–317` |
@@ -118,11 +119,14 @@ prisión del -3 que el minimapa dibuja cerradas se abren como piso (`PRISON_DOOR
 Elvenbane queda en una zona que estaba vacía en z4–z10. Todo lo que no es agua, castillo o bosque
 se rellena con roca (z8–z10) o agua (z7); desde ninguna casilla caminable se ve el borde de la caja.
 
-Forma de z7: la **isla** es la muralla con 1 casilla al norte y al oeste (el agua llega a la pared,
-como en la referencia) y 4 de bosque al este y al sur, con el borde irregular por ruido; la
-**tierra firme** sale del recorte del ASCII `entrance` pasado por cierre/apertura morfológica (sin
-agujeros de una casilla ni puntas sueltas) y los charcos interiores chicos se rellenan. Entre isla y
-tierra firme hay agua en todo el ancho: el único acceso es el túnel (z8).
+Forma de z7: la **isla** es la muralla con 1 casilla de pasto al norte y al oeste (el agua llega a
+la pared, como en la referencia) y **6 de bosque al este y al sur**, borde irregular de dos anillos
+por ruido. La **tierra firme** sale del recorte del ASCII `entrance` con un cierre morfológico suave
+(tapa agujeros de una casilla) y conserva la costa irregular; se le suma el **brazo de agua del
+oeste** (`WEST_ARM`: sale del agua de la caja en x 26 y entra hacia el noreste hasta x 35, con punta
+redondeada), que es el `~~~~` del ASCII y corta la costa noroeste. Los charcos interiores chicos se
+rellenan y los pedazos de pasto rodeados de orilla pasan a agua. Entre isla y tierra firme hay agua
+en todo el ancho: el único acceso es el túnel (z8).
 
 ## Reglas que valida el script (si algo falla no escribe nada)
 

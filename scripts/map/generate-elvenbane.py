@@ -86,7 +86,7 @@ CARD = ((1, 0), (-1, 0), (0, 1), (0, -1))
 X_CASTLE, Y_CASTLE = 40, 298          # esquina NO de la planta del castillo (21 x 18)
 CW, CH = 21, 18
 Z7, Z6, Z5, Z4, Z8, Z9, Z10 = 7, 6, 5, 4, 8, 9, 10
-BOX7 = (18, 286, 72, 360)             # isla + tierra firme + agua
+BOX7 = (18, 286, 74, 360)             # isla + tierra firme + agua
 BOX8 = (30, 288, 67, 349)             # túnel + sótano -1
 BOX9 = (33, 291, 67, 322)             # sótano -2
 BOX10 = (33, 291, 67, 322)            # prisión -3
@@ -100,9 +100,28 @@ PLAN8 = (37, 295)                     # ASCII floor-1: col 3 -> x 40, row 3 -> y
 PRISON_DOORS = tuple((row, col) for row in (4, 11) for col in (2, 5, 8, 11))
 
 # montañitas grises de la tierra firme: (x, y, ancho, alto) sobre el pasto, lejos del camino
-KNOLLS = [(X_CASTLE - 11, Y_CASTLE + CH + 19, 6, 4),
-          (X_CASTLE + 3, Y_CASTLE + CH + 17, 5, 3),
-          (X_CASTLE - 9, Y_CASTLE + CH + 31, 5, 4)]
+KNOLLS = [(X_CASTLE - 9, Y_CASTLE + CH + 15, 4, 3),
+          (X_CASTLE + 2, Y_CASTLE + CH + 20, 4, 3),
+          (X_CASTLE - 9, Y_CASTLE + CH + 33, 5, 3)]
+
+
+def west_arm() -> set:
+    """Brazo de agua que entra desde el oeste, como el '~~~~' del ASCII entrance.
+
+    Sale del agua de la caja (x 26) y se interna hacia el noreste subiendo, con la punta redondeada.
+    """
+    arm = set()
+    for i in range(10):
+        cx = X_CASTLE - 14 + i                  # 26 .. 35
+        cy = Y_CASTLE + CH + 25 - int(round(i * 0.6))   # 341 .. 336
+        for dy in (-1, 0, 1):
+            arm.add((cx, cy + dy))
+    for dx in (-1, 0, 1):                        # punta redondeada
+        arm.add((X_CASTLE - 5 + dx, Y_CASTLE + CH + 20))
+    return arm
+
+
+WEST_ARM = west_arm()
 
 ARRIVAL = (39, 346)                   # llegada del portal del templo
 PORTALS_BACK = [(41, 347), (42, 347)]  # portales de vuelta al templo
@@ -288,14 +307,17 @@ def build_surface(plans, seed: int):
     cells = {(x, y) for x in range(x0, x1 + 1) for y in range(y0, y1 + 1)}
     border = {c for c in cells if c[0] in (x0, x1) or c[1] in (y0, y1)}
 
-    # 1) isla: la muralla con 1 casilla al norte y al oeste (el agua llega a la pared) y 4 de
-    #    bosque al este y al sur; el borde de afuera queda irregular con ruido
+    # 1) isla: la muralla con 1 casilla de pasto al norte y al oeste (el agua llega a la pared) y
+    #    bosque al este y al sur (6 casillas), con borde irregular de dos anillos
+    IX1, IY1 = X_CASTLE - 1, Y_CASTLE - 1
+    IX2, IY2 = X_CASTLE + CW + 5, Y_CASTLE + CH + 5
     island = set()
-    for y in range(Y_CASTLE - 1, Y_CASTLE + CH + 5):
-        for x in range(X_CASTLE - 1, X_CASTLE + CW + 5):
-            d = min(x - (X_CASTLE - 1), (X_CASTLE + CW + 4) - x,
-                    y - (Y_CASTLE - 1), (Y_CASTLE + CH + 4) - y)
-            if d == 0 and nz.fbm(x / 3.2, y / 3.2, 2, 11) < 0.45:
+    for y in range(IY1, IY2 + 1):
+        for x in range(IX1, IX2 + 1):
+            d = min(x - IX1, IX2 - x, y - IY1, IY2 - y)
+            if d == 0 and nz.fbm(x / 3.2, y / 3.2, 2, 11) < 0.42:
+                continue
+            if d == 1 and nz.fbm(x / 2.6, y / 2.6, 2, 23) < 0.20:
                 continue
             island.add((x, y))
 
@@ -310,11 +332,13 @@ def build_surface(plans, seed: int):
                 pos = (ex0 + c, ey0 + r)
                 if pos in cells:
                     main.add(pos)
-    main = open_mask(close_mask(main))            # sin agujeros de 1 casilla ni puntas sueltas
+    main = close_mask(main)                       # tapa los agujeros de 1 casilla del recorte
     water = cells - main
     for comp in components(water):                # charcos interiores chicos -> tierra
         if len(comp) < 12 and not (comp & border):
             main |= comp
+    # 3) brazo de agua del oeste: el '~' que entra en el ASCII entrance corta la costa oeste
+    main -= WEST_ARM
 
     # 3) lo que no se toca: llegada, portales, bajada, camino y castillo
     keep = {ARRIVAL, STAIR_ENTRY, *PORTALS_BACK}
@@ -421,10 +445,15 @@ def build_surface(plans, seed: int):
         land = cells - sea
         t = grounds()
 
-    # 9) claros: llegada, portales, bajada y el camino; el resto es bosque
-    clear = set(keep) | {(ARRIVAL[0] + dx, ARRIVAL[1] + dy) for dx in range(-3, 4) for dy in range(-3, 4)}
-    clear |= {(x + dx, y + dy) for x, y in PORTALS_BACK for dx in range(-2, 3) for dy in range(-2, 3)}
-    clear |= {(STAIR_ENTRY[0] + dx, STAIR_ENTRY[1] + dy) for dx in range(-2, 3) for dy in range(-2, 3)}
+    # 9) claro: SÓLO el corredor que une la bajada con la llegada y los portales, más su anillo de
+    #    piedra. El resto de la tierra firme es bosque (sin prados).
+    clear = {ARRIVAL, STAIR_ENTRY, *PORTALS_BACK}
+    clear |= {(STAIR_ENTRY[0], y) for y in range(STAIR_ENTRY[1], ARRIVAL[1] + 1)}
+    clear |= {(x, y) for x in range(ARRIVAL[0], PORTALS_BACK[1][0] + 1) for y in (346, 347)}
+    clear |= {(STAIR_ENTRY[0] - 1, STAIR_ENTRY[1]), (STAIR_ENTRY[0] + 1, STAIR_ENTRY[1])}
+    px0, px1, py = PORTALS_BACK[0][0], PORTALS_BACK[1][0], PORTALS_BACK[0][1]
+    clear |= {(px1 + 1, py), (px0 - 1, py + 1), (px1 + 1, py + 1),
+              (px0, py + 1), (px1, py + 1), (px0 - 1, py - 1), (px1 + 1, py - 1)}
     clear |= {(x, y) for x in range(X_CASTLE + 9, X_CASTLE + 13) for y in range(Y_CASTLE + CH - 1, Y_CASTLE + CH + 1)}
 
     # 10) bosque denso pero respirable: árboles grandes separados >= 2, y arbustos/pasto entre medio
@@ -450,7 +479,7 @@ def build_surface(plans, seed: int):
     for pos in PORTALS_BACK:
         t[pos] = tile(GRASS, [TELEPORT], TEMPLE_BACK)
     px0, px1, py = PORTALS_BACK[0][0], PORTALS_BACK[1][0], PORTALS_BACK[0][1]
-    for pos in ((px0 - 1, py), (px1 + 1, py), (px0 - 1, py + 1), (px1 + 1, py + 1),
+    for pos in ((px1 + 1, py), (px0 - 1, py + 1), (px1 + 1, py + 1),
                 (px0, py + 1), (px1, py + 1), (px0 - 1, py - 1), (px1 + 1, py - 1)):
         base = t[pos]["g"] if pos in t and t[pos]["g"] != WATER else GRASS
         t[pos] = tile(base, [STONE_ITEM])
