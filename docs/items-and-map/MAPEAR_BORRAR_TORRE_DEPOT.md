@@ -47,6 +47,13 @@ En la calle (`z7`):
 Las casillas vecinas de la calle no se tocaron. La torre estaba en el vacío, así que los pisos
 z2–z6 quedan como **columna vacía**; no hay terreno que rellenar.
 
+## Huntmaster (hotfix 2026-11-15)
+
+El NPC **Huntmaster** estaba en `138,53,6`, parado en el piso z6 de la torre. Al borrar la torre
+quedó sin piso y el servidor no arrancaba (`Could not place Huntmaster!` → `Could not load npc.xml!`,
+en crash loop). Se movió a la sala del depot, en **`131,53,6`** (junto a Banker y Dark Rodo), con
+`server/YurOTS/ots/data/world/npc.xml`. No se volvió a tocar el mapa ni la torre.
+
 ## Qué NO se tocó
 
 - El depot del templo: lockers `2589` en `127/129/131/133,58,6` y la sala roja `x126–134, y47–59, z6`.
