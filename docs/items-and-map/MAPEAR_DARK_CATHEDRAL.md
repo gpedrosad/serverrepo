@@ -21,8 +21,8 @@ Referencias del diseño: `img/dark-cathedral-ref/` (`Dark_Cathedral_0.png` super
 | Piso | Contenido |
 |------|-----------|
 | **z7** superficie | Jungla cerrada (bosque denso de árboles espaciados con helechos, flores y hongos entre medio; sin mar alrededor, sólo un río en arco en la esquina noreste). Nave NEGRA de mármol (norte-sur, 8×28) con columnas de piedra, dos filas de bancos, entrada al sur y brecha al norte. Edificio del oeste con 5 salas, ruinas del este con 4 salas chicas, sala gris del sur con dos filas de bancos y sala gris del oeste con la bajada. Dos bajadas: jungla norte y oeste. |
-| **z8** cripta (-1) | Ladrillo sobre roca: eje norte-sur largo y quebrado desde la bajada de la jungla hasta la sala del fondo (T), dos pasillos este-oeste con 16 salas a los lados (A–U) y una **cueva natural grande** al noreste (piso de cueva, contorno irregular) para rotworms y no-muertos. |
-| **z9** cripta profunda (-2) | Sala grande al norte con laberinto de columnas de piedra, octógono central con la escalera, brazo oeste con 4 salas en H, brazo este con 2 salas rombo y la sala oval, **anillo sur en zigzag** (baja, sale, baja y vuelve a entrar) con dos salas a cada lado, pasillo central, sala grande central sur (negra) y sala final con el portal. |
+| **z8** cripta (-1) | Ladrillo sobre roca: eje norte-sur largo y quebrado (tres tramos) desde la bajada de la jungla hasta la sala del fondo (T), dos pasillos este-oeste con 16 salas a los lados (A–U), un recinto en L y una alcoba sobre el eje, y una **cueva natural ramificada** al noreste (varias cámaras irregulares unidas por pasillos, piso de cueva) para rotworms y no-muertos. |
+| **z9** cripta profunda (-2) | Sala grande al norte con laberinto de columnas de piedra (ítem 1514), octógono central con la escalera, brazo oeste con 4 salas en H, brazo este con 2 salas rombo y la sala oval, **anillo sur en zigzag** (baja, sale, baja y vuelve a entrar) con dos salas a cada lado, pasillo central, sala grande central sur (negra) y sala final con el portal. |
 
 ![Cripta -1](img/dark-cathedral-z8.png)
 ![Cripta -2](img/dark-cathedral-z9.png)
@@ -95,7 +95,7 @@ python3 scripts/map/validate-tele-dest.py server/YurOTS/ots/data/world/test.otbm
 python3 scripts/map/check-map-load.py
 ```
 
-Para rehacer las imágenes del doc:
+Los PNG del doc se generan con el mismo render que el juego (paredes con altura). Para rehacerlos:
 
 ```bash
 python3.11 scripts/map/generate-dark-cathedral.py --dry-run \
@@ -117,10 +117,14 @@ la misma caja). Es re-ejecutable: borra su caja, reescribe spawns, carteles y ma
   1033). Con eso los extremos de pared quedan cerrados y las esquinas como en el resto del mapa.
 - **Suelo bajo la pared:** el del piso más cercano (BFS desde las salas), así no aparecen manchas de
   pasto entre las paredes de las ruinas.
-- **Columnas:** son el ítem `3766` (pilar de piedra, bloquea) sobre el piso, no un poste de pared:
-  el laberinto de la sala norte del -2 se ve como columnas altas.
-- **Cueva del -1:** discos unidos con borde irregular sobre `cave_tiles` de `generate-north-pass.py`
-  (piso 351/352/355, paredes de roca 356–367), con una boca de dos casillas a la sala J.
+- **Columnas:** son el ítem `1514` (pilar de piedra, bloquea) sobre el piso, no un poste de pared:
+  el laberinto de la sala norte del -2 se ve como columnas altas (probado con `render-pieces.py`
+  contra 1515/1549/1551/1560/3766/3767).
+- **Cueva del -1:** varias cámaras (discos con borde irregular) unidas por pasillos sobre
+  `cave_tiles` de `generate-north-pass.py` (piso 351/352/355, paredes de roca 356–367), con una boca
+  de dos casillas a la sala J.
+- **Vista previa = como en el juego.** `write_preview` compone los sprites con `game_render`
+  (altura de paredes/columnas incluida), así los PNG del doc se ven como in-game.
 - **Jungla:** franja de monte cerrado en el borde (nada caminable a menos de 7 casillas del borde de
   la caja), árboles plantados al azar (nunca dos copas pegadas) y vegetación baja que no bloquea
   (flores, maleza, hongos) en todos los huecos. Lo que queda encerrado se tapa con monte o agua: no

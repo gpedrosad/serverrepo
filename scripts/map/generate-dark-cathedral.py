@@ -139,14 +139,17 @@ ROOMS8 = [
     ("O", (33, 36, 38, 40), GREY), ("P", (42, 36, 47, 40), DIRT),
     ("Q", (10, 45, 15, 54), GREY), ("R", (18, 45, 24, 50), DIRT),
     ("S", (33, 45, 38, 51), DIRT), ("U", (42, 45, 47, 51), GREY),
+    ("V", (33, 52, 36, 56), DIRT),                                   # alcoba sobre el eje
     ("T", (23, 58, 37, 63), GREY),                          # sala del fondo
 ]
-LINKS8 = [("A", "H1A"), ("B", "H1A"), ("H", "H1B"), ("J", "H1B"),
+LINKS8 = [("A", "H1A"), ("B", "H1A"), ("H", "H1B"), ("J", "H1B"), ("V", "AXA"),
           ("C", "H1A"), ("D", "H1A"), ("K", "H1B"), ("L", "H1B"),
           ("M", "H2"), ("N", "H2"), ("O", "H2"), ("P", "H2"),
           ("Q", "H2"), ("R", "H2"), ("S", "H2"), ("U", "H2")]
-CAVE_DISCS = (((46, 9), 4.0), ((41, 7), 3.2), ((43, 12), 2.6), ((38, 10), 2.2))   # cueva NE
-CAVE_BOX = (34, 6, 49, 13)
+# cueva NE: cámaras irregulares unidas por pasillos (como las salas G-J de la referencia)
+CAVE_ROOMS = (((46, 8), 3.2), ((40, 7), 2.6), ((43, 12), 2.4), ((37, 11), 2.2), ((47, 13), 2.2))
+CAVE_LINKS = (((46, 8), (40, 7)), ((46, 8), (43, 12)), ((43, 12), (37, 11)), ((43, 12), (47, 13)))
+CAVE_BOX = (34, 5, 49, 13)
 CAVE_DOOR = ((44, 12), (45, 12))                            # entra desde la sala J
 DOWN8 = (30, 33)                                            # agujero z8 -> z9
 
@@ -169,8 +172,8 @@ SIDE_W1, SIDE_W2 = (8, 43, 14, 48), (8, 50, 14, 55)        # salas del anillo (o
 SIDE_E1, SIDE_E2 = (45, 43, 51, 48), (45, 50, 51, 55)      # salas del anillo (este)
 SOUTH9 = (24, 46, 35, 57)                                   # sala grande central sur (negra)
 FINAL9 = (26, 59, 33, 63)                                   # sala final
-PILLARS9 = [(x, y) for y in (11, 14, 17, 20, 23) for x in (20, 21, 25, 26, 33, 34, 38, 39)]
-PILLAR_ITEM = 3766                                          # pilar de piedra (ítem, bloquea)
+PILLARS9 = [(x, y) for y in (10, 13, 16, 19, 22) for x in (20, 24, 28, 31, 35, 39)]
+PILLAR_ITEM = 1514                                          # pilar de piedra (ítem): se lee como columna alta
 DEEP_PORTAL = (29, 61)
 
 # --- spawns ------------------------------------------------------------------------------------
@@ -518,7 +521,10 @@ def build_surface(seed: int, bl: Blocking):
         if rng.random() < 0.22:
             plant(c, rng.choice(TREES), 2)
     for c in order:                                            # vegetación baja en todos los huecos
-        if tiles.get(c) != [GRASS] or c in keep or c in occupied:
+        if tiles.get(c) != [GRASS] or c in occupied:
+            continue
+        if c in keep:
+            tiles[c] = [GRASS, rng.choice(COVER)]              # claros: sólo tapizado, sigue libre
             continue
         r = rng.random()
         if r < 0.74:
@@ -608,22 +614,47 @@ def place_zone(tiles, walk, bl, zone, monsters, avoid, rng, gap=2):
 
 
 def write_preview(base: Path, layers, scale=1.0):
-    """PNG por piso con los sprites del juego. scale < 1 reduce con Pillow (para el doc)."""
-    rd = Renderer()
+    """PNG por piso con los sprites del juego y la altura de las paredes (como se ve in-game)."""
+    from PIL import Image
+    from game_render import LAYER_RANK as RANK, Sprites, compose, layer_of, parse_dat_all
+    otb = load_otb()
+    items, _outfits = parse_dat_all()
+    spr = Sprites()
+    entry = {sid: items.get(e.get("cid")) for sid, e in otb.items() if e.get("cid")}
     out = []
     for z, t in layers:
         used = [c for c, it in t.items() if it[0] != ROCK]
-        x1, x2 = min(x for x, _ in used) - 1, max(x for x, _ in used) + 2
-        y1, y2 = min(y for _, y in used) - 1, max(y for _, y in used) + 2
-        w, h, img = rd.area({(x, y, z): it for (x, y), it in t.items()}, x1, y1, x2, y2, z)
+        x1, x2 = min(x for x, _ in used) - 1, max(x for x, _ in used) + 3
+        y1, y2 = min(y for _, y in used) - 1, max(y for _, y in used) + 3
+        cols, rows = x2 - x1 + 1, y2 - y1 + 1
+        canvas = Image.new("RGBA", (cols * 32, rows * 32), (14, 14, 18, 255))
+        cache = {}
+        for ty in range(y1, y2 + 1):
+            for tx in range(x1, x2 + 1):
+                draw = []
+                for sid in t.get((tx, ty), []):
+                    e = entry.get(sid)
+                    if e is None:
+                        continue
+                    key = (sid, tx % e["px"], ty % e["py"])
+                    im = cache.get(key) or cache.setdefault(key, compose(e, spr, key[1], key[2]))
+                    draw.append((RANK[layer_of(e)], im, e))
+                draw.sort(key=lambda d: d[0])
+                elev = 0
+                for _r, im, e in draw:
+                    dx = dy = 0
+                    if 0x18 in e["flags"]:
+                        dx, dy = struct.unpack("<HH", e["flags"][0x18])
+                    canvas.paste(im, ((tx - x1) * 32 - (e["w"] - 1) * 32 - dx - elev,
+                                      (ty - y1) * 32 - (e["h"] - 1) * 32 - dy - elev), im)
+                    if 0x19 in e["flags"]:
+                        elev = min(24, elev + struct.unpack("<H", e["flags"][0x19])[0])
         p = base.with_name(f"{base.name}-z{z}.png")
-        p.write_bytes(png_bytes(w, h, bytes(img)))
+        im = canvas.convert("RGB")
         if scale != 1:
-            from PIL import Image
-            im = Image.open(p).convert("RGB")
             im = im.resize((int(im.width * scale), int(im.height * scale)), Image.LANCZOS)
             im = im.quantize(colors=256, method=Image.MEDIANCUT, dither=Image.FLOYDSTEINBERG)
-            im.save(p, optimize=True)
+        im.save(p, optimize=True)
         out.append(p)
     return out
 
@@ -656,7 +687,8 @@ def main() -> int:
     surf = clip(surf)
 
     # --- z8: cripta con cueva natural grande al noreste ---
-    rooms8 = ([(n, b, g, BRICK) for n, b, g in ROOMS8]
+    shape8 = {"R": rect(18, 45, 24, 50) | rect(21, 50, 24, 53)}         # recinto en L
+    rooms8 = ([(n, shape8.get(n, b), g, BRICK) for n, b, g in ROOMS8]
               + [("H1A", H1A, GREY, BRICK), ("H1B", H1B, GREY, BRICK), ("H2", H2, GREY, BRICK),
                  ("AXA", AXIS_A, GREY, BRICK), ("AXB", AXIS_B, GREY, BRICK),
                  ("AXC", AXIS_C, GREY, BRICK)])
@@ -664,15 +696,24 @@ def main() -> int:
                        ("AXC", "AXB"), ("AXC", "H2"), ("AXC", "T")]
     t8, floor8, mask8 = build_zone(rooms8, links8, [], default_wall=BRICK, outside=ROCK)
     # cueva: discos unidos (contorno orgánico) que entra desde la sala J
-    cave = {(44, 12), (45, 12)}
-    for (cx, cy), r in CAVE_DISCS:
+    cave = {CAVE_DOOR[0], CAVE_DOOR[1]}
+    for (cx, cy), r in CAVE_ROOMS:
         for dx in range(-int(r) - 1, int(r) + 2):
             for dy in range(-int(r) - 1, int(r) + 2):
                 c = (cx + dx, cy + dy)
-                wob = 0.75 + 0.5 * ((c[0] * 7 + c[1] * 13) % 5) / 4.0
+                wob = 0.72 + 0.55 * ((c[0] * 7 + c[1] * 13) % 5) / 4.0
                 if math.hypot(dx, dy) <= r * wob and CAVE_BOX[0] <= c[0] <= CAVE_BOX[2] \
                         and CAVE_BOX[1] <= c[1] <= CAVE_BOX[3]:
                     cave.add(c)
+    for (ax, ay), (bx, by) in CAVE_LINKS:                     # pasillos entre cámaras
+        n = max(abs(bx - ax), abs(by - ay)) * 2
+        for i in range(n + 1):
+            px, py = ax + (bx - ax) * i / n, ay + (by - ay) * i / n
+            for dx in (-1, 0, 1):
+                for dy in (-1, 0, 1):
+                    c = (round(px) + dx, round(py) + dy)
+                    if CAVE_BOX[0] <= c[0] <= CAVE_BOX[2] and CAVE_BOX[1] <= c[1] <= CAVE_BOX[3]:
+                        cave.add(c)
     cave_tiles = NP.cave_tiles(cave, grow(cave, 2) | rect(*CAVE_BOX), a.seed + 812)
     for c in grow(floor8 | mask8, 6):
         t8.setdefault(c, [ROCK])
@@ -694,7 +735,7 @@ def main() -> int:
               + [(n, b, GREY, BRICK) for n, b in W_ROOMS9]
               + [("d1", chamfer(E_DIAMS9[0][1], 1.45), GREY, BRICK),
                  ("d2", chamfer(E_DIAMS9[1][1], 1.45), GREY, BRICK),
-                 ("oval", octagon(E_OVAL9, 3), GREY, BRICK)]
+                 ("oval", ellipse(E_OVAL9), GREY, BRICK)]
               + [("aw", A_W9, GREY, BRICK), ("ae", A_E9, GREY, BRICK),
                  ("hw", H_W9, GREY, BRICK), ("he", H_E9, GREY, BRICK),
                  ("vw", V_W9, GREY, BRICK), ("ve", V_E9, GREY, BRICK),
