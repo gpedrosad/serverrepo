@@ -45,7 +45,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE / "kb"))
 from mapdata import (KB_DIR, MAP, REPO, T_AREA, T_HOUSETILE, T_ITEM, T_TILE,  # noqa: E402
-                     load_otb, parse_tree, png_bytes, serialize_tree)
+                     load_otb, load_tiles, parse_tree, png_bytes, serialize_tree)
 
 WORLD = REPO / "server/YurOTS/ots/data/world"
 SPAWNS = WORLD / "test-spawn.xml"
@@ -646,6 +646,8 @@ def main() -> int:
     ap.add_argument("--seed", type=int, default=76)
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--preview", type=Path, help="carpeta donde dibujar z4.png .. z10.png")
+    ap.add_argument("--force", action="store_true",
+                    help="escribe aunque haya casillas ajenas en la caja (solo para recuperar)")
     a = ap.parse_args()
 
     global OTB_BLOCK
@@ -747,6 +749,15 @@ def main() -> int:
         for z in sorted(layers):
             render_floor(layers, z, a.preview / f"z{z}.png")
         print(f"preview: {a.preview}")
+
+    # la primera vez la caja tiene que estar vacía: no se pisa terreno de nadie
+    if not a.force and not MANIFEST.exists():
+        clash = [pos for pos in load_tiles()
+                 if pos[2] in BOXS and (lambda b: b[0] <= pos[0] <= b[2] and b[1] <= pos[1] <= b[3])(BOXS[pos[2]])]
+        if clash:
+            print(f"ERROR: {len(clash)} casillas ya existen en la caja (p.ej. {sorted(clash)[:5]}); "
+                  f"no se escribe nada (--force para pisar)", file=sys.stderr)
+            return 1
     if a.dry_run:
         print("dry-run: validación OK, no se escribió nada")
         return 0

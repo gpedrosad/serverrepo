@@ -32,7 +32,7 @@ escaleras automáticamente y valida alcanzabilidad multi-piso). Manifiesto:
 | Castillo (isla) | z7 norte | muralla, anillo de pasillo, patio y torre central | Minotaur, Orc Warrior, Minotaur Guard, Orc Berserker |
 | Adarve | z6 | anillo de muralla | Minotaur, Orc Warrior |
 | Torretas + torre | z5 | 4 torretas + torre central | Elf, Elf Scout, Orc Warrior; en la torre Orc Shaman, Elf Arcanist |
-| Cima | z4 | 4 torretas + cima de la torre | Orc Berserker, Hunter, Minotaur Archer; en la torre Orc Shaman, Minotaur Mage, Demon Skeleton y **1 Dragon** |
+| Cima | z4 | 4 torretas + cima de la torre | Orc Berserker, Hunter, Minotaur Archer; en la torre Minotaur Mage, Demon Skeleton y **1 Dragon** |
 
 La dificultad sube de sur a norte (entrada → castillo) y de abajo hacia la torre: el Dragon es el
 "jefe" en la cima (z4). Total: **50 spawns y 81 monstruos**. Detalle por monstruo en el manifiesto
@@ -97,8 +97,9 @@ se rellena con roca (z8–z10) o agua (z7); desde ninguna casilla caminable se v
 - Cada escalera con hueco 432 arriba y 1385 abajo en la misma casilla; las dos llegadas caminables y
   sin otra escalera.
 - Alcanzabilidad multi-piso desde la llegada (BFS que sigue escaleras y huecos): todo lo caminable
-  se alcanza; los bolsones de z7 (islotes de 1 casilla en el lago) se tapan con agua/roca o se abre
-  un paso.
+  se alcanza. En z7 el script deja el piso cerrado: abre un paso de pasto en la montaña (9 pasos) o
+  tapa el bolsón con roca / le saca el árbol que cortaba el paso (13 bolsones), y se niega a escribir
+  si queda alguna casilla caminable inalcanzable.
 - Spawns solo sobre casillas caminables, lejos de llegadas y escaleras.
 - Paredes de cueva con pieza única (`356–367`) y paredes de castillo (`1049–1053`) por vecinas.
 
