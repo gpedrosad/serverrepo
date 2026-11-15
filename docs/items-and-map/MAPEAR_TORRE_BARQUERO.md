@@ -6,6 +6,10 @@ torre de piedra de **5 pisos**, con **un monstruo por piso**. El bote y Fargum q
 Generador: `scripts/map/generate-fargum-tower.py` (re-ejecutable).
 Manifiesto: `server/YurOTS/ots/data/world/generated-fargum-tower.json`.
 
+![Torre del Barquero junto al bote de Fargum](img/torre-barquero/torre-final.png)
+
+![Esquina NE con pasto y muralla original](img/torre-barquero/torre-ne.png)
+
 ## Dónde está
 
 | Qué | Posición |
