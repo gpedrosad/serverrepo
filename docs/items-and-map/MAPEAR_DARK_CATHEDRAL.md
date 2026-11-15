@@ -5,7 +5,7 @@
 > la referencia). Este archivo es el resumen operativo para regenerar la zona.
 
 Recreación de la **Dark Cathedral** de Tibia 7.6 en una zona vacía del mapa, accesible por el portal
-de la plaza de portales del templo (`157,47,7`, junto a la Isla Natural). La genera
+de la plaza de portales del templo (`155,47,7`, a la izquierda de la Isla Natural). La genera
 `scripts/map/generate-dark-cathedral.py` (patrón idempotente: parchea `test.otbm`, escribe
 `test-spawn.xml`, `readables.xml` y el manifiesto `generated-dark-cathedral.json`).
 
@@ -16,7 +16,7 @@ Referencias del diseño: `img/dark-cathedral-ref/` (`Dark_Cathedral_0.png` super
 
 ## Cómo se llega
 
-1. Plaza del templo → portal **Catedral Oscura** en `157,47,7` (lado izquierdo, con las hunts).
+1. Plaza del templo → portal **Catedral Oscura** en `155,47,7` (lado izquierdo, con las hunts).
 2. Se llega a `148,335,7`, en la explanada frente a la entrada sur de la nave.
 3. Portal de vuelta al templo en `151,335,7` (y otro al fondo de la cripta, `147,345,9`).
 
@@ -37,8 +37,8 @@ Referencias del diseño: `img/dark-cathedral-ref/` (`Dark_Cathedral_0.png` super
 |----------|----------|
 | Caja | `x 118–177`, `y 284–353`, `z 7–9` (60×70) |
 | Llegada (portal de la plaza) | `148,335,7` |
-| Portal de vuelta (superficie) | `151,335,7` → `157,48,7` |
-| Portal de vuelta (fondo del -2) | `147,345,9` → `157,48,7` |
+| Portal de vuelta (superficie) | `151,335,7` → `155,48,7` |
+| Portal de vuelta (fondo del -2) | `147,345,9` → `155,48,7` |
 | Bajada A (jungla norte) | agujero `148,295,7` → escalera `148,295,8`; se sube a `148,294,7` |
 | Bajada B (oeste) | agujero `128,336,7` → escalera `128,336,8`; se sube a `128,335,7` |
 | Bajada al -2 | agujero `148,317,8` → escalera `148,317,9`; se sube a `148,316,8` |

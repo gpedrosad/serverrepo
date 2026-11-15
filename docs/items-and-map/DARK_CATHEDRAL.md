@@ -11,7 +11,7 @@ desde la plaza de portales del templo. Resumen operativo en
 `Resp-2DC.png` piso -2, `REFERENCIA_DARK_CATHEDRAL.md`).
 
 **Reglas fijas (pedido de Gonzalo):** las coordenadas de portales, llegadas y escaleras **no se
-mueven** entre iteraciones: llegada `148,335,7`, portal del templo `157,47,7`, vueltas `151,335,7` y
+mueven** entre iteraciones: llegada `148,335,7`, portal del templo `155,47,7`, vueltas `151,335,7` y
 `147,345,9`, bajadas `148,295,7` y `128,336,7`, agujero al -2 `148,317,8`. Toda pared es de **una
 casilla** (las salas se separan por exactamente una casilla) y nada se escribe fuera de la caja.
 
@@ -42,13 +42,13 @@ eligieron con margen sobre los vecinos:
 
 | Qué | Coordenadas | Ítem |
 |-----|-------------|------|
-| Portal en la plaza del templo | `157,47,7` → llegada `148,335,7` | `1387` (teleport) |
+| Portal en la plaza del templo | `155,47,7` → llegada `148,335,7` | `1387` (teleport) |
 | Llegada (explanada frente a la entrada sur de la nave) | `148,335,7` | — |
-| Portal de vuelta, en la explanada | `151,335,7` → `157,48,7` | `1387` |
-| Portal de vuelta, al fondo del -2 | `147,345,9` → `157,48,7` | `1387` |
+| Portal de vuelta, en la explanada | `151,335,7` → `155,48,7` | `1387` |
+| Portal de vuelta, al fondo del -2 | `147,345,9` → `155,48,7` | `1387` |
 | Carteles | `151,334,7` (llegada), `146,334,7` (nave), `136,340,7` (sala de los bancos), `146,292,7` (bajada de la jungla) | `1429` |
 
-El portal de la plaza lo arma `scripts/map/temple-portals.py` (entrada `("catedral", 157, …)` en su
+El portal de la plaza lo arma `scripts/map/temple-portals.py` (entrada `("catedral", 155, …)` en su
 lista `PORTALS`, con la caja de la zona para reapuntar las vueltas). Los carteles viven en
 `readables.xml`, bloque `DARK_CATHEDRAL_SIGNS`.
 
@@ -186,7 +186,7 @@ python3.11 scripts/map/generate-dark-cathedral.py --dry-run --preview /tmp/dc
 python3.11 scripts/map/generate-dark-cathedral.py
 # escribe test.otbm, test-spawn.xml, readables.xml y el manifiesto
 
-python3 scripts/map/temple-portals.py       # portal 157,47,7 y el cartel de la plaza
+python3 scripts/map/temple-portals.py       # portal 155,47,7 y el cartel de la plaza
 python3 scripts/map/check-map-load.py
 python3 scripts/map/validate-tele-dest.py server/YurOTS/ots/data/world/test.otbm
 ```
@@ -257,8 +257,8 @@ Cerca, no idéntico:
   su lugar, la sala grande del sur tiene la guardia fuerte (2 dark monks + demon skeleton + mummy +
   witch).
 - **Monstruos.** Sólo los 7.6 existentes en este server; no hay Dark Magician, Bonelord ni Rukor Zad.
-- **El portal del templo** comparte el slot `157` con otras ramas: si se mergean, hay que resolverlo
-  en la plaza (el script `temple-portals.py` es el único dueño de esa fila).
+- **El portal del templo** queda en el slot `155,47,7` (Elvenbane conserva `157,47,7`). Lo arma
+  `temple-portals.py`, dueño único de la fila de la plaza.
 
 ## Estado
 

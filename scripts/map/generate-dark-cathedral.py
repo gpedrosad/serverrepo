@@ -71,7 +71,7 @@ DX, DY = 33, 20                            # desplazamiento de las locales de di
 Z7, Z8, Z9 = 7, 8, 9
 VIEW = (7, 5)                              # media pantalla del cliente 7.6
 BAND = (VIEW[0] + 1, VIEW[1] + 1)          # franja de jungla cerrada en el borde (8 y 6)
-TEMPLE_BACK = (157, 48, 7)                 # llegada del portal Dark Cathedral en la plaza
+TEMPLE_BACK = (155, 48, 7)                 # llegada del portal Dark Cathedral en la plaza
 
 # --- piezas (ids de servidor, todos en items-zagan-test.otb) ------------------------------------
 GRASS, DIRT, ROCK = 4756, 103, 101
@@ -202,7 +202,7 @@ DEEP_PORTAL = (29, 61)
 
 # --- desplazamiento a la caja nueva ------------------------------------------------------------
 # Todas las coordenadas de arriba están en el espacio de diseño de 60x70. Se desplazan (DX, DY)
-# para que las ABSOLUTAS sigan siendo las mismas (llegada 148,335,7, portal 157,47,7, etc.).
+# para que las ABSOLUTAS sigan siendo las mismas (llegada 148,335,7, portal 155,47,7, etc.).
 
 def _c(p):
     return (p[0] + DX, p[1] + DY)
