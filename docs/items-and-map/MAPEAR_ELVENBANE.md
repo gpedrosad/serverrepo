@@ -31,6 +31,7 @@ escaleras automáticamente y valida alcanzabilidad multi-piso). Manifiesto:
 | Orilla pasto↔agua | `4644`–`4655` | set `grass->water` de `map-kb/border_sets.json`, el mismo de `generate-natural-island.py`; se elige con `pieces_for()` (lados, esquinas externas `4648`–`4651` e internas `4652`–`4655`) |
 | Piedra del castillo | piso `431`, paredes `1049`–`1053` | `PIEZAS_DE_MAPA.md` (pies de la torre del castillo) |
 | Montañitas grises | meseta `4566` (rocks ground) + pared de roca `906` al norte y `903` al oeste | medido en `test.otbm`: las mesetas de roca del mapa usan ese ground y esas dos paredes; **no** se usa `919` (ese ground se dibuja con el sprite desplazado y deja huecos negros si no lleva la pared completa) |
+| Poison field (torre z6) | `1490` (cid 2121, sólo `block_pathfind`) | `ITEMS_OTB_DUMP.txt`; `destroyfield.lua` ya lo limpia |
 | Árboles | `4009` (pino 2x2), `2768` (arbolito) | `generate-beast-valley.py` / `generate-north-pass.py` |
 | Arbustos y flores | `2767`, `2786`, `4158`, `4150`, `2740` | idem |
 | Escaleras (18 links) | `409` (ladder down) arriba + `1386` (escalera de mano) abajo | `teleport.lua` (`LADDERS_UP` 1386 sube a `x, y+1`) y `actions.xml` (409 → `teleport.lua`) |
@@ -83,10 +84,11 @@ La dificultad sube de sur a norte (entrada → castillo) y de abajo hacia la tor
 | Sótano -1 → sótano -2 | `58, 313, 8` → `58, 313, 9` |
 | Sótano -2 → prisión -3 | `42, 312, 9` → `42, 312, 10` |
 | Castillo (muralla) | `40, 298` a `60, 315` (21×18) |
-| Caja z7 | x `18–74`, y `286–360` |
+| Caja z7 | x `12–82`, y `282–362` |
 | Caja z8 | x `30–67`, y `288–349` |
 | Caja z9 / z10 | x `33–67`, y `291–322` |
 | Caja z4–z6 | x `38–62`, y `296–317` |
+| Poison fields (`1490`) | z6, interior de la torre: x `48–53`, y `303–307` (27 casillas, sin las 2 escaleras) |
 
 ### Escaleras
 
@@ -149,9 +151,9 @@ que el minimapa dibuja cerradas se abren como piso (`PRISON_DOORS`).
 Elvenbane queda en una zona que estaba vacía en z4–z10. Todo lo que no es agua, castillo o bosque
 se rellena con roca (z8–z10) o agua (z7); desde ninguna casilla caminable se ve el borde de la caja.
 
-Forma de z7: la **isla** es la muralla con 1 casilla de pasto al norte y al oeste (el agua llega a
-la pared, como en la referencia) y **6 de bosque al este y al sur**, borde irregular de dos anillos
-por ruido. La **tierra firme** sale del recorte del ASCII `entrance` con un cierre morfológico suave
+Forma de z7: la **isla** sale de la **máscara de tierra del ASCII `ground`** (la del minimapa),
+alineada a la muralla: castillo + lóbulo de bosque al noreste/este + franja sur + restos de la costa
+oeste, y después se comen unas casillas de costa con ruido para que no quede un borde prolijo. La **tierra firme** sale del recorte del ASCII `entrance` con un cierre morfológico suave
 (tapa agujeros de una casilla) y conserva la costa irregular; se le suma el **brazo de agua del
 oeste** (`WEST_ARM`: sale del agua de la caja en x 26 y entra hacia el noreste hasta x 35, con punta
 redondeada), que es el `~~~~` del ASCII y corta la costa noroeste. Los charcos interiores chicos se
@@ -172,6 +174,8 @@ en todo el ancho: el único acceso es el túnel (z8).
   `pieces_for()` (nada de cortes rectos ni bordes sueltos); las casillas de piedra y las paredes van
   sin borde.
 - **Nada de `919`**: el script falla si quedó una casilla con ese ground (se ve como vacío negro).
+- **Poison fields**: el interior de la torre central en z6 (menos las escaleras) lleva `1490`; el
+  adarve y las torretas no.
 
 ## Regenerar
 

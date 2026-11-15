@@ -78,6 +78,7 @@ LADDER_UP, LADDER_DOWN, STONE_HOLE = 1386, 409, 469
 DOWN_HOLE, DOWN_SAME = {STAIR_DOWN}, {LADDER_DOWN, STONE_HOLE}
 UP_OFFSET = {STAIRS_UP: (0, -1), LADDER_UP: (0, 1)}
 TELEPORT, ATTR_TELE_DEST, SIGN = 1387, 8, 1429
+POISON = 1490                      # poison field (OTB: cid 2121, sólo block_pathfind)
 TREE_BIG, TREE_SMALL = 4009, 2768
 BUSHES = (2767, 2786)
 FLOWERS = (4158, 4150, 2740)
@@ -95,7 +96,7 @@ CARD = ((1, 0), (-1, 0), (0, 1), (0, -1))
 X_CASTLE, Y_CASTLE = 40, 298          # esquina NO de la planta del castillo (21 x 18)
 CW, CH = 21, 18
 Z7, Z6, Z5, Z4, Z8, Z9, Z10 = 7, 6, 5, 4, 8, 9, 10
-BOX7 = (18, 286, 74, 360)             # isla + tierra firme + agua
+BOX7 = (12, 282, 82, 362)             # isla + tierra firme + agua
 BOX8 = (30, 288, 67, 349)             # túnel + sótano -1
 BOX9 = (33, 291, 67, 322)             # sótano -2
 BOX10 = (33, 291, 67, 322)            # prisión -3
@@ -103,7 +104,7 @@ BOXT = (38, 296, 62, 317)             # pisos altos (z4-z6): castillo + 2
 BOXS = {Z4: BOXT, Z5: BOXT, Z6: BOXT, Z7: BOX7, Z8: BOX8, Z9: BOX9, Z10: BOX10}
 
 GROUND_CROP = (20, 8, 46, 33)         # cols/rows del ASCII ground -> x 37-63, y 295-320
-ENTRANCE_CROP = (26, 24, 50, 48)      # cols/rows del ASCII entrance -> x 27-51, y 329-353
+ENTRANCE_CROP = (24, 21, 52, 50)      # cols/rows del ASCII entrance -> x 25-53, y 326-355
 PLAN8 = (37, 295)                     # ASCII floor-1: col 3 -> x 40, row 3 -> y 298
 # Celdas de la prisión (floor-3) que el minimapa dibuja cerradas: se les abre la puerta al pasillo
 PRISON_DOORS = tuple((row, col) for row in (4, 11) for col in (2, 5, 8, 11))
@@ -317,19 +318,28 @@ def build_surface(plans, seed: int):
     cells = {(x, y) for x in range(x0, x1 + 1) for y in range(y0, y1 + 1)}
     border = {c for c in cells if c[0] in (x0, x1) or c[1] in (y0, y1)}
 
-    # 1) isla: la muralla con 1 casilla de pasto al norte y al oeste (el agua llega a la pared) y
-    #    bosque al este y al sur (6 casillas), con borde irregular de dos anillos
-    IX1, IY1 = X_CASTLE - 1, Y_CASTLE - 1
-    IX2, IY2 = X_CASTLE + CW + 5, Y_CASTLE + CH + 5
-    island = set()
-    for y in range(IY1, IY2 + 1):
-        for x in range(IX1, IX2 + 1):
-            d = min(x - IX1, IX2 - x, y - IY1, IY2 - y)
-            if d == 0 and nz.fbm(x / 3.2, y / 3.2, 2, 11) < 0.42:
-                continue
-            if d == 1 and nz.fbm(x / 2.6, y / 2.6, 2, 23) < 0.20:
-                continue
-            island.add((x, y))
+    # 1) isla: máscara de tierra del ASCII 'ground' (la misma del minimapa de TibiaWiki),
+    #    alineada al castillo que ya está en 40,298. Se queda sólo la masa que toca el castillo:
+    #    así salen el lóbulo de bosque del noreste/este y la costa con entrantes de la referencia.
+    G_OX, G_OY = X_CASTLE - 23, Y_CASTLE - 11      # (col 0, fila 0) del ASCII ground
+    castle = {(x, y) for x in range(X_CASTLE, X_CASTLE + CW)
+              for y in range(Y_CASTLE, Y_CASTLE + CH)}
+    mask = set()
+    for r in range(4, 34):
+        row = plans["ground"][r]
+        for c in range(19, 55):
+            if c < len(row) and row[c] in "._TS#":
+                mask.add((G_OX + c, G_OY + r))
+    island = set(castle)
+    for comp in components(mask):
+        if comp & castle:
+            island |= comp
+    # borde irregular: se comen algunas casillas de la costa con ruido (nunca las del castillo)
+    for pos in sorted(island - castle):
+        x, y = pos
+        inner = sum(1 for dx, dy in CARD if (x + dx, y + dy) in island)
+        if inner <= 1 and nz.fbm(x / 3.0, y / 3.0, 2, 11) < 0.35:
+            island.discard(pos)
 
     # 2) tierra firme: máscara del ASCII 'entrance' (pasto, árboles, roca y piedra), suavizada
     ec0, er0, ec1, er1 = ENTRANCE_CROP
@@ -362,6 +372,14 @@ def build_surface(plans, seed: int):
     keep |= castle
 
     land = island | main | keep
+
+    # 3b) podar las puntas de una casilla que deja la máscara (nunca lo que está en `keep`)
+    for _ in range(4):
+        tend = {p for p in land if p not in keep
+                and sum(1 for dx, dy in CARD if (p[0] + dx, p[1] + dy) in land) <= 1}
+        if not tend:
+            break
+        land -= tend
 
     # 4) fuera los islotes sueltos que deja el recorte
     for comp in components(land):
@@ -468,22 +486,33 @@ def build_surface(plans, seed: int):
 
     # 10) bosque denso pero respirable: árboles grandes separados >= 2, y arbustos/pasto entre medio.
     #     El patio del castillo (todo lo que queda dentro de la muralla) va limpio: sólo pasto y piedra.
-    forest = {c for c in t if t[c]["g"] in (GRASS, GRASS_COAST) and c not in clear and c not in castle}
-    blocked = set()                               # 2x2 que ocupa cada árbol grande
-    for pos in sorted(forest, key=lambda c: (c[1], c[0])):
+    forest = {c for c in t if t[c]["g"] in (GRASS, GRASS_COAST)
+              and c not in clear and c not in castle}
+    anchors = set()                               # ancla (esquina SE) de cada pino 2x2
+    blockers = set()                              # casillas con algo que bloquea
+    island_zone = island - castle                 # franja de la isla (angosta: ahí no se apelmaza)
+    order = sorted(forest, key=lambda c: (c[1], c[0]))
+    rng.shuffle(order)
+    for pos in order:
         x, y = pos
-        if pos in blocked:
-            continue
-        near = any((x + dx, y + dy) in blocked for dx in (-2, -1, 0, 1, 2) for dy in (-2, -1, 0, 1, 2))
-        if (not near and rng.random() < 0.55
+        # pino 2x2 con separación Chebyshev >= 3 entre anclas: las copas no se tocan
+        # separación Chebyshev >= 2 entre anclas: las copas 2x2 se tocan pero no se superponen
+        near = any((x + dx, y + dy) in anchors for dx in (-1, 0, 1) for dy in (-1, 0, 1))
+        # el resto de la vegetación que bloquea no se pega a otra que bloquee: así el pasto
+        # queda siempre transitable (no se forman bolsones) y el bosque se ve lleno pero respirable
+        glued = any((x + dx, y + dy) in blockers for dx in (-1, 0, 1) for dy in (-1, 0, 1))
+        if (not near and rng.random() < 0.92
                 and all((x - a, y - b) in forest for a in (0, 1) for b in (0, 1))):
-            t[pos]["it"].append(TREE_BIG)          # pino 2x2: se ve en 4 casillas
-            blocked |= {(x - a, y - b) for a in (0, 1) for b in (0, 1)}
-        elif rng.random() < 0.14:
+            t[pos]["it"].append(TREE_BIG)          # se ve en 4 casillas, bloquea 1
+            anchors.add(pos)
+            blockers.add(pos)
+        elif not glued and rng.random() < 0.55:
             t[pos]["it"].append(TREE_SMALL)
-        elif rng.random() < 0.14:
+            blockers.add(pos)
+        elif not glued and rng.random() < 0.45:
             t[pos]["it"].append(rng.choice(BUSHES))
-        elif rng.random() < 0.25:
+            blockers.add(pos)
+        elif rng.random() < 0.40:
             t[pos]["it"].append(rng.choice(FLOWERS))
 
     # 11) portales de vuelta, enmarcados; bajada a la cueva
@@ -572,6 +601,30 @@ def build_adarve(plans, key, floor_id):
             elif ch in "_S":
                 t[pos] = tile(floor_id)
     return t
+
+
+# ---------------------------------------------------------------- poison fields
+def add_poison_fields(plans, layers) -> list:
+    """Poison field 1490 en todo el interior de la torre central en z6 (primer piso de la torre).
+
+    La quest clásica dice que el primer piso de la torre está cubierto de poison fields; van sólo
+    en las casillas caminables del interior de la torre (no en las torretas ni en el anillo del
+    adarve) y nunca encima de una escalera.
+    """
+    plan = plans["floor1"]
+    placed = []
+    for r in range(5, 10):                       # interior de la torre en la planta (filas 5-9)
+        for c in range(8, 14):                   # columnas 8-13
+            if c >= len(plan[r]) or plan[r][c] != "_":
+                continue
+            pos = (X_CASTLE + c, Y_CASTLE + r)
+            cell = layers[Z6].get(pos)
+            if cell is None or not walk_tile(cell) or is_stair(cell):
+                continue
+            if POISON not in cell["it"]:
+                cell["it"].append(POISON)
+                placed.append(pos)
+    return placed
 
 
 # ---------------------------------------------------------------- escaleras
@@ -862,6 +915,8 @@ def main() -> int:
         Z5: build_adarve(plans, "floor2", STONE),
         Z4: build_adarve(plans, "floor3", STONE),
     }
+
+    poison = add_poison_fields(plans, layers)
 
     used: dict = {}
     stairs, moved = [], []
