@@ -127,30 +127,32 @@ SIGNS = {
 }
 
 # --- cripta (-1, z8): eje norte-sur en tramos + pasillos este-oeste ------------------------------
-H1A, H1B = (9, 21, 30, 22), (30, 24, 47, 25)                # pasillo norte, en dos tramos
-AXIS_A, AXIS_B, AXIS_C = (29, 11, 31, 24), (28, 24, 30, 40), (29, 40, 31, 57)   # eje con quiebres
-H2 = (14, 42, 47, 43)                                       # pasillo sur
+H1A, H1B = (9, 20, 30, 21), (31, 22, 47, 23)               # pasillo norte, en dos tramos
+AXIS_A, AXIS_B, AXIS_C = (29, 11, 31, 24), (28, 24, 30, 38), (28, 39, 30, 57)   # eje con quiebre
+H2 = (14, 44, 47, 45)                                       # pasillo sur
 ROOMS8 = [
-    ("A", (10, 12, 16, 19), GREY), ("B", (19, 13, 24, 19), GREY),
-    ("H", (33, 16, 38, 22), DIRT), ("J", (42, 13, 46, 22), DIRT),
-    ("C", (9, 24, 15, 31), GREY), ("D", (18, 24, 23, 31), DIRT),
-    ("K", (33, 27, 38, 34), DIRT), ("L", (42, 27, 47, 34), GREY),
-    ("M", (9, 33, 15, 40), DIRT), ("N", (18, 33, 23, 40), GREY),
-    ("O", (33, 36, 38, 40), GREY), ("P", (42, 36, 47, 40), DIRT),
-    ("Q", (10, 45, 15, 54), GREY), ("R", (18, 45, 24, 50), DIRT),
-    ("S", (33, 45, 38, 51), DIRT), ("U", (42, 45, 47, 51), GREY),
-    ("V", (33, 52, 36, 56), DIRT),                                   # alcoba sobre el eje
-    ("T", (23, 58, 37, 63), GREY),                          # sala del fondo
+    ("A", (10, 12, 16, 18), GREY), ("B", (18, 13, 23, 18), GREY),
+    ("J", (33, 15, 39, 20), DIRT),                          # antecámara de la cueva
+    ("C", (9, 23, 15, 30), GREY), ("D", (17, 23, 22, 30), DIRT),
+    ("K", (32, 25, 37, 31), DIRT), ("L", (39, 25, 44, 31), GREY),
+    ("M", (9, 32, 15, 42), DIRT), ("N", (17, 32, 22, 42), GREY),
+    ("O", (32, 33, 38, 42), GREY), ("P", (40, 33, 45, 42), DIRT),
+    ("Q", (10, 47, 15, 54), GREY), ("R", (17, 47, 23, 52), DIRT),
+    ("S", (33, 47, 38, 52), DIRT), ("U", (40, 47, 45, 52), GREY),
+    ("T", (23, 59, 37, 64), GREY),                          # sala del fondo
 ]
-LINKS8 = [("A", "H1A"), ("B", "H1A"), ("H", "H1B"), ("J", "H1B"), ("V", "AXA"),
+LINKS8 = [("A", "H1A"), ("B", "H1A"), ("J", "H1B"),
           ("C", "H1A"), ("D", "H1A"), ("K", "H1B"), ("L", "H1B"),
           ("M", "H2"), ("N", "H2"), ("O", "H2"), ("P", "H2"),
           ("Q", "H2"), ("R", "H2"), ("S", "H2"), ("U", "H2")]
+L_ROOMS8 = {"R": ((20, 52, 23, 55),)}                        # cola en L de la sala R
 # cueva NE: cámaras irregulares unidas por pasillos (como las salas G-J de la referencia)
-CAVE_ROOMS = (((46, 8), 3.2), ((40, 7), 2.6), ((43, 12), 2.4), ((37, 11), 2.2), ((47, 13), 2.2))
-CAVE_LINKS = (((46, 8), (40, 7)), ((46, 8), (43, 12)), ((43, 12), (37, 11)), ((43, 12), (47, 13)))
-CAVE_BOX = (34, 5, 49, 13)
-CAVE_DOOR = ((44, 12), (45, 12))                            # entra desde la sala J
+CAVE_ROOMS = (((46, 10), 3.0), ((40, 7), 2.6), ((36, 12), 2.2), ((47, 16), 2.6),
+              ((48, 21), 2.0), ((42, 21), 2.2))
+CAVE_LINKS = (((46, 10), (40, 7)), ((46, 10), (47, 16)), ((47, 16), (48, 21)),
+              ((47, 16), (42, 21)), ((42, 21), (36, 12)), ((46, 10), (36, 12)))
+CAVE_BOX = (33, 4, 50, 24)
+CAVE_DOOR = ((36, 14), (37, 14))                            # entra desde la antecámara J
 DOWN8 = (30, 33)                                            # agujero z8 -> z9
 
 # --- cripta profunda (-2, z9) ------------------------------------------------------------------
@@ -687,7 +689,7 @@ def main() -> int:
     surf = clip(surf)
 
     # --- z8: cripta con cueva natural grande al noreste ---
-    shape8 = {"R": rect(18, 45, 24, 50) | rect(21, 50, 24, 53)}         # recinto en L
+    shape8 = {n: rect(*b) | rect(*L_ROOMS8[n][0]) for n, b, _g in ROOMS8 if n in L_ROOMS8}
     rooms8 = ([(n, shape8.get(n, b), g, BRICK) for n, b, g in ROOMS8]
               + [("H1A", H1A, GREY, BRICK), ("H1B", H1B, GREY, BRICK), ("H2", H2, GREY, BRICK),
                  ("AXA", AXIS_A, GREY, BRICK), ("AXB", AXIS_B, GREY, BRICK),
@@ -697,6 +699,7 @@ def main() -> int:
     t8, floor8, mask8 = build_zone(rooms8, links8, [], default_wall=BRICK, outside=ROCK)
     # cueva: discos unidos (contorno orgánico) que entra desde la sala J
     cave = {CAVE_DOOR[0], CAVE_DOOR[1]}
+    print(f"cueva z8: {len(cave)} casillas tras los discos")
     for (cx, cy), r in CAVE_ROOMS:
         for dx in range(-int(r) - 1, int(r) + 2):
             for dy in range(-int(r) - 1, int(r) + 2):
@@ -714,6 +717,10 @@ def main() -> int:
                     c = (round(px) + dx, round(py) + dy)
                     if CAVE_BOX[0] <= c[0] <= CAVE_BOX[2] and CAVE_BOX[1] <= c[1] <= CAVE_BOX[3]:
                         cave.add(c)
+    rooms_floor8 = set(floor8)                                 # salas de ladrillo (sin la cueva)
+    cave -= rooms_floor8 - set(CAVE_DOOR)                      # la cueva no invade el ladrillo
+    cave -= {c for c in cave if any((c[0] + dx, c[1] + dy) in rooms_floor8 for dx, dy in DIRS.values())} \
+        - set(CAVE_DOOR)                                       # deja una casilla de pared contra las salas
     cave_tiles = NP.cave_tiles(cave, grow(cave, 2) | rect(*CAVE_BOX), a.seed + 812)
     for c in grow(floor8 | mask8, 6):
         t8.setdefault(c, [ROCK])
@@ -722,6 +729,15 @@ def main() -> int:
             t8[c] = it
     floor8 = (floor8 - cave) | cave
     mask8 -= cave
+    # lo que quedó suelto se vuelve roca (la cueva es una sola masa conectada a la boca)
+    linked = set(reach(cave, CAVE_DOOR[0]))
+    for c in cave - linked:
+        t8[c] = [ROCK]
+    floor8 -= cave - linked
+    cave = linked
+    mask8 -= {c for c, it in t8.items() if it == [ROCK] and c not in floor8 and c not in cave}
+    print(f"cueva z8: {len(cave)} casillas, x{min(c[0] for c in cave)}-"
+          f"{max(c[0] for c in cave)} y{min(c[1] for c in cave)}-{max(c[1] for c in cave)}")
     t8[HOLE_NORTH] = [GREY, STAIRS_UP]
     t8[HOLE_WEST] = [GREY, STAIRS_UP]
     t8[DOWN8] = [STAIR_DOWN]
@@ -803,6 +819,8 @@ def main() -> int:
     if set(d8) != walk8:
         lost = sorted(walk8 - set(d8))
         errors.append(f"z8: {len(lost)} casillas aisladas, ej. {lost[0]}")
+        for c in lost[:8]:
+            print("   aislada", c, t8.get(c), "en floor8:", c in floor8)
     if (DOWN8[0], DOWN8[1] - 1) not in walk8:
         errors.append("z9: al subir la escalera central se llega a una casilla no libre en z8")
     if (DOWN8[0], DOWN8[1] + 1) not in walk9:
