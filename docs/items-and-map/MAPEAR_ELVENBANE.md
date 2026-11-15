@@ -30,7 +30,7 @@ escaleras automáticamente y valida alcanzabilidad multi-piso). Manifiesto:
 | Montañitas grises | meseta `4566` (rocks ground) + pared de roca `906` al norte y `903` al oeste | medido en `test.otbm`: las mesetas de roca del mapa usan ese ground y esas dos paredes; **no** se usa `919` (ese ground se dibuja con el sprite desplazado y deja huecos negros si no lleva la pared completa) |
 | Árboles | `4009` (pino 2x2), `2768` (arbolito) | `generate-beast-valley.py` / `generate-north-pass.py` |
 | Arbustos y flores | `2767`, `2786`, `4158`, `4150`, `2740` | idem |
-| Escaleras | `432` (hueco, arriba) y `1396` (escalera de madera, abajo) | `docs/gameplay/STAIRS.md`; `1396` ya está en `STAIRS_LANDING` de `teleport.lua` (aterriza en `x, y+1`) |
+| Escaleras | `432` (hueco, arriba) y `3685` (escalera de madera vertical, abajo) | `docs/gameplay/STAIRS.md`; `3685` ya está en `STAIRS_LANDING` de `teleport.lua` (aterriza en `x, y+1`) |
 
 ### Vegetación: densa pero respirable
 
@@ -84,7 +84,7 @@ La dificultad sube de sur a norte (entrada → castillo) y de abajo hacia la tor
 | Caja z9 / z10 | x `33–67`, y `291–322` |
 | Caja z4–z6 | x `38–62`, y `296–317` |
 
-### Escaleras (el hueco 432 va arriba y la escalera de madera 1396 abajo, en la misma casilla)
+### Escaleras (el hueco 432 va arriba y la escalera de madera vertical 3685 abajo, en la misma casilla)
 
 | Etiqueta | Hueco (arriba) | Subida (abajo) |
 |----------|----------------|----------------|
@@ -133,7 +133,7 @@ en todo el ancho: el único acceso es el túnel (z8).
 ## Reglas que valida el script (si algo falla no escribe nada)
 
 - Caja vacía: se niega a escribir si la caja pisa casillas existentes (verificada vacía en z4–z10).
-- Cada escalera con hueco 432 arriba y escalera de madera 1396 abajo en la misma casilla; las dos llegadas caminables y
+- Cada escalera con hueco 432 arriba y escalera de madera vertical 3685 abajo en la misma casilla; las dos llegadas caminables y
   sin otra escalera.
 - Alcanzabilidad multi-piso desde la llegada (BFS que sigue escaleras y huecos): todo lo caminable
   se alcanza. El bosque se ajusta (`open_pockets()`) y los pedazos de pasto que quedan rodeados de
