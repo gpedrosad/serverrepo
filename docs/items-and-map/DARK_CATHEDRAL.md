@@ -33,7 +33,7 @@ eligieron con margen sobre los vecinos:
 
 | Borde | Límite | Vecino que queda afuera |
 |-------|--------|--------------------------|
-| Oeste | x ≥ 85 | Elvenbane (box 18–84, y 282–362) |
+| Oeste | x ≥ 85 | Elvenbane (box 4–84, y 282–362) |
 | Este | x ≤ 183 | caja oficial de Hydras (arranca en x 184, y 340–419) |
 | Norte | y ≥ 264 | cueva ajena en x 85–122 con y ≤ 255 y tiles z10 en y 256–260 (no se escribe y ≤ 263 ni z10) |
 | Sur | y ≤ 373 | arena en x 169–183 desde y 384 y Wave Arena (x 165–190, y 380–410); colchón hasta y 374 |
