@@ -49,8 +49,8 @@
       ]
     },
     {
-      "x": 345,
-      "y": 315,
+      "x": 275,
+      "y": 321,
       "z": 10,
       "to": [
         158,
@@ -82,8 +82,8 @@
   "deepMouths": [
     {
       "name": "catacumbs",
-      "x": 319,
-      "y": 255,
+      "x": 304,
+      "y": 280,
       "z": 9
     },
     {
@@ -94,16 +94,16 @@
     },
     {
       "name": "dragon",
-      "x": 344,
-      "y": 298,
+      "x": 347,
+      "y": 307,
       "z": 9
     }
   ],
   "downs": [
     {
       "name": "catacumbs",
-      "x": 319,
-      "y": 255,
+      "x": 304,
+      "y": 280,
       "z": 8
     },
     {
@@ -114,25 +114,25 @@
     },
     {
       "name": "dragon",
-      "x": 344,
-      "y": 298,
+      "x": 347,
+      "y": 307,
       "z": 8
     },
     {
       "name": "dragonDeep",
-      "x": 323,
-      "y": 294,
+      "x": 316,
+      "y": 278,
       "z": 9
     }
   ],
   "abyss": {
-    "x": 323,
-    "y": 294,
+    "x": 316,
+    "y": 278,
     "z": 10
   },
   "rootColossus": {
-    "x": 336,
-    "y": 317,
+    "x": 340,
+    "y": 307,
     "z": 10
   },
   "zones": {
@@ -174,44 +174,116 @@
     }
   },
   "spawns": {
-    "z7": 31,
-    "z8": 44,
-    "z9": 72,
-    "z10": 22,
-    "monsters": 441
+    "z7": 37,
+    "z8": 45,
+    "z9": 66,
+    "z10": 27,
+    "monsters": 263
   },
   "monsters": {
-    "Behemoth": 13,
-    "Black Dragon": 7,
-    "Cyclops": 8,
-    "Cyclops Drone": 8,
-    "Cyclops Smith": 8,
-    "Dark Hydra": 9,
-    "Demon": 7,
-    "Demon Skeleton": 29,
-    "Dragon": 32,
-    "Dragon Hatchling": 19,
-    "Dragon Lord": 17,
-    "Fury": 7,
-    "Ghoul": 30,
-    "Hydra": 9,
-    "Minotaur": 8,
-    "Minotaur Archer": 8,
-    "Minotaur Guard": 7,
-    "Minotaur Mage": 7,
-    "Mummy": 25,
-    "Necromancer": 13,
-    "Priestess": 13,
+    "Behemoth": 10,
+    "Black Dragon": 11,
+    "Cyclops": 5,
+    "Cyclops Drone": 6,
+    "Cyclops Smith": 4,
+    "Dark Hydra": 7,
+    "Demon": 6,
+    "Demon Skeleton": 13,
+    "Dragon": 11,
+    "Dragon Hatchling": 5,
+    "Dragon Lord": 14,
+    "Fury": 5,
+    "Ghoul": 10,
+    "Hydra": 7,
+    "Minotaur": 5,
+    "Minotaur Archer": 2,
+    "Minotaur Guard": 3,
+    "Minotaur Mage": 3,
+    "Mummy": 13,
+    "Necromancer": 11,
+    "Priestess": 8,
     "Quara Constrictor": 6,
-    "Quara Hydromancer": 19,
-    "Quara Mantassin": 6,
-    "Quara Pincher": 21,
-    "Quara Predator": 12,
+    "Quara Hydromancer": 18,
+    "Quara Mantassin": 5,
+    "Quara Pincher": 18,
+    "Quara Predator": 11,
     "Root Colossus": 1,
-    "Serpent Spawn": 9,
-    "Skeleton": 30,
-    "Vampire": 14,
-    "Vampire Bride": 13,
-    "Wyrm": 26
-  }
+    "Serpent Spawn": 6,
+    "Skeleton": 5,
+    "Vampire": 8,
+    "Vampire Bride": 11,
+    "Wyrm": 15
+  },
+  "density": [
+    {
+      "zone": "camp",
+      "z": 7,
+      "tiles": 157,
+      "spawns": 10,
+      "monsters": 13
+    },
+    {
+      "zone": "quarry",
+      "z": 7,
+      "tiles": 132,
+      "spawns": 11,
+      "monsters": 15
+    },
+    {
+      "zone": "ruins",
+      "z": 7,
+      "tiles": 320,
+      "spawns": 16,
+      "monsters": 21
+    },
+    {
+      "zone": "catacumbs",
+      "z": 8,
+      "tiles": 1067,
+      "spawns": 16,
+      "monsters": 25
+    },
+    {
+      "zone": "quara",
+      "z": 8,
+      "tiles": 1018,
+      "spawns": 15,
+      "monsters": 22
+    },
+    {
+      "zone": "dragon",
+      "z": 8,
+      "tiles": 955,
+      "spawns": 14,
+      "monsters": 22
+    },
+    {
+      "zone": "catacumbs",
+      "z": 9,
+      "tiles": 1159,
+      "spawns": 21,
+      "monsters": 33
+    },
+    {
+      "zone": "quara",
+      "z": 9,
+      "tiles": 1252,
+      "spawns": 24,
+      "monsters": 36
+    },
+    {
+      "zone": "dragon",
+      "z": 9,
+      "tiles": 1205,
+      "spawns": 21,
+      "monsters": 34
+    },
+    {
+      "zone": "abyss",
+      "z": 10,
+      "tiles": 1708,
+      "spawns": 26,
+      "monsters": 41
+    }
+  ]
 }

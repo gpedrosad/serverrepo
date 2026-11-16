@@ -140,8 +140,13 @@ Paredes de tierra `356–367` (`WALL_SIDE`, `WALL_CORNER`, `WALL_INNER` en `gene
 - **No pisar lo ajeno:** el piso necesita sus 8 vecinas propias (la pared es de la cueva).
 - **Decoración que no se mueve ni se levanta.** Barriles y cajas se empujan y traban el paso; los huesos
   agarrables se tiran. Las piedras/musgo de 2x2 se dibujan hacia arriba-izquierda: solo donde tapan pared.
+- **Huesos enteros, no piezas del esqueleto de dragón.** `2247` (cabeza), `3122`–`3127` (garra, costillas,
+  cola, cráneo) son partes de un esqueleto grande de varias casillas: sueltos se ven cortados. Para el
+  suelo: `2248` (calavera con huesos), `2320` (calavera), `3121`, `3133` (esqueleto).
 - Validar pieza por pieza, vacío a la vista, recorrido y escaleras antes de escribir. Ejemplo completo:
   [MAPEAR_DUNGEON_CITY.md](MAPEAR_DUNGEON_CITY.md).
+- **Forma y monstruos de una cueva de caza** (pasillo largo y angosto, cuántos monstruos y dónde):
+  [ZONAS_DE_CAZA.md](ZONAS_DE_CAZA.md).
 
 ## Que el generador lo compruebe
 
@@ -164,4 +169,5 @@ Un generador nuevo con muebles tiene que traer las mismas comprobaciones.
 | Sillas todas mirando al mismo lado | Un id por dirección; validar que miran a una mesa |
 | Tapices flotando sobre la pared | Probar los colgados en una escena con pared antes de usarlos |
 | El mapa no cargaba por una calavera 2320 | Los apilables llevan byte de cantidad (`NEEDS_COUNT`); correr `check-map-load.py` |
+| Valle de las Bestias: cabezas y garras de dragón cortadas en el suelo (2247, 3125, 3122) (nov 2026) | Son piezas del esqueleto grande; usar huesos enteros (ver [Cuevas](#cuevas)) |
 | Dungeon de la city: vacío negro al costado, rocas peladas sin borde, salones cuadrados vacíos y fogata encima de la escalera de mano (nov 2026) | Ver [Cuevas](#cuevas) y [MAPEAR_DUNGEON_CITY.md](MAPEAR_DUNGEON_CITY.md#errores-que-ya-pasaron-arreglados-16-nov-2026) |

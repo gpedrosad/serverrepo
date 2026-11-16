@@ -9,15 +9,15 @@ zonas chicas y bien separadas, y da a cada cueva un segundo piso más largo y co
       Campamento Minotauro (oeste)     Minotaur, Archer, Guard, Mage
       Cantera de los Cíclopes (este)   Cyclops, Cyclops Drone, Cyclops Smith
       Ruinas Antiguas (norte)          Skeleton, Ghoul, Mummy, Demon Skeleton
-  z8  Entrada de cada cueva (corta; la de las quaras es un pasillo largo y angosto)
-      Catacumbas / Cueva de las Quaras / Guarida del Dragón
-  z9  Fondo de cada cueva (largo, 4 tramos, más monstruos)
-      Cripta Profunda (no-muertos), Nido de las Quaras, Nido del Dragón
+  z8  Entrada de cada cueva: Catacumbas / Cueva de las Quaras / Guarida del Dragón
+  z9  Fondo de cada cueva: Cripta Profunda (no-muertos), Nido de las Quaras, Nido del Dragón
   z10 Abismo: Hydra/Dark Hydra -> Behemoth/Serpent Spawn -> Demon/Fury, Root Colossus y portal final
 
 Cada zona y cada cueva tiene su cartel y su decoración (columnas y lápidas en las ruinas, huesos y
 pilares en las catacumbas, hongos y barro en las quaras, huesos de dragón y braseros). El valle es un
 corredor de ~11 casillas rodeado de bosque cerrado: no se ve el borde de la caja ni quedan claros.
+Desde nov 2026 (v4) todas las cuevas son pasillos largos y angostos en zigzag y los monstruos salen
+sueltos al entrar y de a 2 al fondo (receta en docs/items-and-map/ZONAS_DE_CAZA.md).
 
 Caja: x 262-361, y 232-378, z7-z10. Borra además todo el Hunt Maze viejo (x 280-349, y 243-400, z7).
 No toca la Hell Quest (y <= 226), el Paso del Norte (x >= 370), el Reloj de Arena (z5-z6) ni la
@@ -88,6 +88,10 @@ TELEPORT, ATTR_TELE_DEST = NP.TELEPORT, NP.ATTR_TELE_DEST
 STAIR_DOWN, STAIRS_UP = NP.STAIR_DOWN, NP.STAIRS_UP
 PILLAR, BROKEN_PILLAR, STATUE, ALTAR, COAL_BASIN = 1515, 3767, 1442, 1642, 2602
 BARREL, CRATE = 1770, 1739
+# Piezas sueltas del esqueleto grande de dragón (cabeza 2247, cráneo 3125, garra 3122): solas se ven
+# cortadas en el suelo. Las pone decorate_cave (generate-north-pass.py) y BONES; en el valle se cambian
+# por huesos enteros (nov 2026). Ver docs/items-and-map/PIEZAS_DE_MAPA.md.
+CUT_DRAGON_PIECES = {DRAGON_SKULL: 2248, 3125: 2320, DRAGON_BONES: 2248}
 CAVE_FLOOR, CAVE_FLOOR_ALT, CAVE_MUD = NP.CAVE_FLOOR, NP.CAVE_FLOOR_ALT, NP.CAVE_MUD
 
 # --- recorrido de la superficie (coordenadas locales, x 0-99, y 0-146) ----------------------------
@@ -118,20 +122,37 @@ ZONES = {
 }
 
 # --- caza por zona: una familia por zona, dificultad de arriba a abajo ----------------------------
-SURFACE_HUNTS = {
-    "camp": (("Minotaur", "Minotaur Archer", "Minotaur Guard", "Minotaur Mage"), 3, 70),
-    "quarry": (("Cyclops", "Cyclops Drone", "Cyclops Smith"), 3, 80),
-    "ruins": (("Skeleton", "Ghoul", "Mummy", "Demon Skeleton"), 3, 90),
+# --- caza por zona: una familia por zona, dificultad de menos a más ---------------------------------
+# Cada etapa es (nombres, monstruos por spawn, spawntime, separación mínima entre centros de spawn).
+# La zona se parte en tantas franjas como etapas según la distancia caminando desde la entrada y cada
+# etapa llena la suya respetando su separación: así la cantidad la decide el espacio y la separación,
+# no un número fijo. Regla de nov 2026: al entrar, monstruos sueltos (1 por spawn); al fondo, de a 2.
+# Receta y números: docs/items-and-map/ZONAS_DE_CAZA.md.
+SURFACE_STAGES = {   # z7: la distancia se mide desde la llegada
+    "camp": [(("Minotaur",), 1, 70, 6), (("Minotaur", "Minotaur Archer"), 1, 80, 6),
+             (("Minotaur Guard", "Minotaur Mage"), 2, 90, 6)],
+    "quarry": [(("Cyclops",), 1, 80, 6), (("Cyclops", "Cyclops Drone"), 1, 90, 6),
+               (("Cyclops Drone", "Cyclops Smith"), 2, 100, 6)],
+    "ruins": [(("Skeleton", "Ghoul"), 1, 90, 6), (("Ghoul", "Mummy"), 1, 100, 6),
+              (("Mummy", "Demon Skeleton"), 2, 110, 6)],
 }
-SURFACE_HUNTS_N = {"camp": 14, "quarry": 12, "ruins": 13}
-CAVE_HUNTS = {"catacumbs": (("Ghoul", "Skeleton"), ("Vampire", "Mummy", "Demon Skeleton"),
-                            ("Necromancer", "Priestess", "Vampire Bride"))}
-# Quaras (nov 2026, v4): eran manchas redondas (z8 ~340 casillas, z9 ~420) y los grupos quedaban juntos.
-# Ahora cada piso es un pasillo largo y angosto (4-6 de ancho) que sigue un recorrido en zigzag: z8 baja
-# hacia el sur desde la boca y termina en la bajada; z9 sale de debajo de esa bajada y cruza al este.
-# Las filas del zigzag van cada 14 casillas para que quede roca gruesa entre una y otra.
-# Tramos rectos (horizontales o verticales); el ancho y un leve zigzag los pone ribbon(). Las salas son
-# ensanches (centro, radio) donde caben mejor los grupos; la última de z8 es para la bajada (3x5 de piso).
+# --- cuevas: pasillos largos y angostos (nov 2026) ---------------------------------------------------
+# Antes eran manchas redondas (~300-600 casillas) con grupos de 3-4 cada 6 casillas. Ahora todas siguen
+# un recorrido en zigzag (tramos rectos horizontales o verticales; el ancho y el zigzag los pone
+# ribbon()). Tramos paralelos de la misma cueva a 14 casillas como mínimo. Las salas son ensanches
+# (centro, radio): rooms_along() pone una a mitad de cada tramo largo y otra al final, donde cae la
+# bajada (3x5 de piso). Cada piso de abajo empieza donde termina el de arriba.
+#   z8  Catacumbas al norte (filas y 20 / 34 / 48), Quaras al oeste, Dragón al sureste (columnas x 60 y 85)
+#   z9  Cripta al norte (filas 44 / 30 / 16), Nido del Dragón en el medio (filas 74 / 60 / 46),
+#       Nido de las Quaras al sur
+#   z10 Abismo: filas 46 / 60 / 74 / 88
+CAT_PATH8 = [(50, 34), (84, 34), (84, 20), (16, 20), (16, 48), (40, 48)]
+CAT_PATH9 = [(40, 44), (16, 44), (16, 30), (84, 30), (84, 16), (16, 16)]
+DRAGON_PATH8 = [(72, 61), (60, 61), (60, 125), (85, 125), (85, 76)]
+DRAGON_PATH9 = [(85, 74), (16, 74), (16, 60), (84, 60), (84, 46), (56, 46)]
+ABYSS_PATH = [(84, 46), (84, 60), (16, 60), (16, 74), (84, 74), (84, 88), (16, 88)]
+# Quaras (la primera cueva hecha así): z8 baja hacia el sur desde la boca y z9 sale de debajo de esa
+# bajada y cruza al este. Salas a mano.
 QUARA_PATH8 = [(29, 67), (17, 67), (17, 81), (42, 81), (42, 95), (18, 95), (18, 109), (42, 109),
                (42, 123), (24, 123)]
 QUARA_ROOMS8 = [((17, 74), 3), ((30, 81), 3), ((42, 88), 3), ((30, 95), 3), ((18, 102), 3), ((30, 109), 3),
@@ -140,59 +161,68 @@ QUARA_PATH9 = [(24, 130), (46, 130), (46, 116), (66, 116), (66, 130), (84, 130),
                (60, 86), (34, 86), (34, 104), (18, 104)]
 QUARA_ROOMS9 = [((35, 130), 3), ((56, 116), 3), ((75, 130), 3), ((84, 115), 3), ((72, 100), 3), ((47, 86), 3),
                 ((34, 95), 3), ((18, 104), 3)]
-# --- cuevas: z8 entrada (corta), z9 fondo (largo, más monstruos) y z10 Abismo -----------------------
+
+
+def rooms_along(path, min_len=20, r=3):
+    """Una sala a mitad de cada tramo de `min_len` casillas o más y otra al final del recorrido."""
+    rooms = [(((x1 + x2) // 2, (y1 + y2) // 2), r) for (x1, y1), (x2, y2) in zip(path, path[1:])
+             if abs(x2 - x1) + abs(y2 - y1) >= min_len]
+    return rooms + [(path[-1], r)]
+
+
 CAVES = [
-    {"name": "catacumbs", "box": (30, 8, 44, 40), "mouth": STAIRS_CAT, "mud": 0.10, "alt": 0.36,
-     "bones": 0.10, "min": 320, "sign": "CATACUMBAS\nNo-muertos: ghouls, vampiros, momias y nigromantes.\nAbajo: Cripta Profunda."},
+    {"name": "catacumbs", "box": (6, 2, 88, 58), "mouth": STAIRS_CAT, "mud": 0.10, "alt": 0.36,
+     "bones": 0.10, "min": 560, "path": CAT_PATH8, "rooms": rooms_along(CAT_PATH8),
+     "sign": "CATACUMBAS\nNo-muertos: ghouls, vampiros, momias y nigromantes.\nAbajo: Cripta Profunda."},
     {"name": "quara", "box": (6, 44, 50, 98), "mouth": MOUTH_QUARA, "mud": 0.55, "alt": 0.28,
      "bones": 0.05, "min": 560, "path": QUARA_PATH8, "rooms": QUARA_ROOMS8,
      "sign": "CUEVA DE LAS QUARAS\nQuaras constrictor, mantassin, pincher, hidromante y predator.\nAbajo: Nido de las Quaras."},
-    {"name": "dragon", "box": (50, 40, 44, 40), "mouth": MOUTH_DRAGON, "mud": 0.28, "alt": 0.30,
-     "bones": 0.09, "min": 320, "sign": "GUARIDA DEL DRAGON\nDragones, wyrms y un dragon negro.\nAbajo: el Nido y el Abismo."},
+    {"name": "dragon", "box": (50, 40, 44, 96), "mouth": MOUTH_DRAGON, "mud": 0.28, "alt": 0.30,
+     "bones": 0.09, "min": 560, "path": DRAGON_PATH8, "rooms": rooms_along(DRAGON_PATH8),
+     "sign": "GUARIDA DEL DRAGON\nDragones, wyrms y un dragon negro.\nAbajo: el Nido y el Abismo."},
 ]
 # segundo piso de cada cueva: más largo y con más monstruos
 DEEP_CAVES = [
-    # corrida 16 al este (nov 2026) para quedar debajo de la bajada de las Catacumbas (z8, x 44-65)
-    {"name": "catacumbs", "box": (22, 4, 46, 46), "mouth": (41, 41), "mud": 0.12, "alt": 0.34,
-     "bones": 0.12, "min": 420,
-     "spine": [(41, 33), (34, 28), (34, 18), (46, 14), (56, 18), (56, 26)]},
-    {"name": "quara", "box": (6, 84, 90, 58), "mouth": (20, 122), "mud": 0.58, "alt": 0.26,
+    {"name": "catacumbs", "box": (6, 4, 88, 60), "mouth": None, "mud": 0.12, "alt": 0.34,
+     "bones": 0.12, "min": 620, "path": CAT_PATH9, "rooms": rooms_along(CAT_PATH9)},
+    {"name": "quara", "box": (6, 84, 90, 58), "mouth": None, "mud": 0.58, "alt": 0.26,
      "bones": 0.05, "min": 700, "path": QUARA_PATH9, "rooms": QUARA_ROOMS9},
-    {"name": "dragon", "box": (50, 42, 46, 42), "mouth": (72, 74), "mud": 0.30, "alt": 0.28,
-     "bones": 0.10, "min": 420,
-     "spine": [(72, 68), (63, 66), (60, 58), (70, 53), (82, 55), (86, 64)]},
+    {"name": "dragon", "box": (6, 32, 90, 60), "mouth": None, "mud": 0.30, "alt": 0.28,
+     "bones": 0.10, "min": 620, "path": DRAGON_PATH9, "rooms": rooms_along(DRAGON_PATH9)},
 ]
 # La boca de cada piso de abajo (z9 y el Abismo) es la bajada del piso de arriba: build_caves() la elige
-# dentro de la caja del piso de abajo y reemplaza "mouth". Por eso la caja del Abismo pisa (en x, y) la
-# del Nido del Dragón. Hasta nov 2026 cada piso tenía una boca fija y las bajadas caían sobre roca.
-ABYSS = {"name": "abyss", "box": (50, 52, 46, 46), "mouth": (72, 92), "mud": 0.60, "alt": 0.26,
-         "bones": 0.12, "min": 400}
+# dentro de la caja del piso de abajo (mouth_zone) y reemplaza "mouth". El recorrido del piso de arriba
+# tiene que terminar dentro de esa zona. Hasta nov 2026 cada piso tenía una boca fija y las bajadas caían
+# sobre roca.
+ABYSS = {"name": "abyss", "box": (6, 30, 90, 90), "mouth": None, "mud": 0.60, "alt": 0.26,
+         "bones": 0.12, "min": 800, "path": ABYSS_PATH, "rooms": rooms_along(ABYSS_PATH)}
 CAVE_STAGES = {
-    "catacumbs": [(("Ghoul", "Skeleton"), 3, 100), (("Vampire", "Mummy", "Demon Skeleton"), 3, 130),
-                  (("Necromancer", "Priestess", "Vampire Bride"), 3, 160)],
-    # (nombres, por spawn, spawntime, separación mínima entre centros)
+    "catacumbs": [(("Skeleton", "Ghoul"), 1, 100, 13), (("Ghoul", "Mummy"), 1, 120, 11),
+                  (("Vampire", "Mummy", "Demon Skeleton"), 2, 140, 12),
+                  (("Necromancer", "Priestess", "Vampire Bride"), 2, 170, 11)],
     "quara": [(("Quara Constrictor",), 1, 110, 13), (("Quara Constrictor", "Quara Mantassin"), 1, 120, 11),
               (("Quara Mantassin", "Quara Pincher"), 2, 140, 12), (("Quara Pincher", "Quara Hydromancer"), 2, 160, 11)],
-    "dragon": [(("Dragon Hatchling", "Dragon"), 3, 150), (("Dragon", "Wyrm"), 3, 190),
-               (("Dragon Lord", "Black Dragon"), 2, 240)],
+    "dragon": [(("Dragon Hatchling",), 1, 140, 13), (("Dragon Hatchling", "Dragon"), 1, 160, 11),
+               (("Dragon", "Wyrm"), 2, 190, 12), (("Wyrm", "Dragon Lord", "Black Dragon"), 2, 230, 11)],
 }
 DEEP_STAGES = {
-    "catacumbs": [(("Ghoul", "Skeleton"), 4, 120), (("Mummy", "Vampire", "Demon Skeleton"), 4, 140),
-                  (("Necromancer", "Priestess", "Vampire Bride"), 3, 170),
-                  (("Vampire Bride", "Necromancer", "Priestess", "Demon Skeleton"), 3, 200)],
+    "catacumbs": [(("Mummy", "Vampire"), 1, 130, 12), (("Demon Skeleton", "Vampire"), 2, 150, 12),
+                  (("Necromancer", "Priestess"), 1, 170, 11), (("Necromancer", "Vampire Bride"), 2, 190, 11),
+                  (("Vampire Bride", "Priestess", "Demon Skeleton"), 2, 210, 10)],
     "quara": [(("Quara Pincher", "Quara Hydromancer"), 1, 140, 12),
               (("Quara Hydromancer", "Quara Pincher"), 2, 160, 12),
               (("Quara Predator", "Quara Hydromancer"), 1, 180, 11),
               (("Quara Predator", "Quara Pincher"), 2, 200, 11),
               (("Quara Predator", "Quara Hydromancer"), 2, 220, 10)],
-    "dragon": [(("Dragon Hatchling", "Dragon"), 3, 160), (("Dragon", "Wyrm"), 3, 190),
-               (("Wyrm", "Dragon Lord"), 3, 220), (("Dragon Lord", "Black Dragon"), 2, 260)],
+    "dragon": [(("Dragon", "Wyrm"), 1, 180, 12), (("Wyrm", "Dragon"), 2, 200, 12),
+               (("Dragon Lord", "Wyrm"), 1, 230, 11), (("Dragon Lord", "Black Dragon"), 2, 260, 11),
+               (("Black Dragon", "Dragon Lord"), 2, 280, 10)],
 }
-ABYSS_STAGES = [(("Hydra", "Dark Hydra"), 3, 220), (("Behemoth", "Serpent Spawn"), 3, 250),
-                (("Demon", "Fury"), 2, 300), (("Demon", "Behemoth", "Fury"), 2, 330)]
-GAP = 6                                       # distancia mínima entre centros de spawn
-# Quaras: la separación sale de cada etapa (4.º campo de CAVE_STAGES / DEEP_STAGES); el resto usa GAP.
-STAIR_CLEAR = {"quara": 6}                    # sin spawns a esta distancia de las escaleras (el resto: 3)
+ABYSS_STAGES = [(("Hydra", "Dark Hydra"), 1, 220, 13), (("Hydra", "Serpent Spawn"), 2, 240, 12),
+                (("Behemoth", "Serpent Spawn"), 1, 260, 12), (("Behemoth", "Dark Hydra"), 2, 280, 11),
+                (("Demon", "Fury"), 1, 300, 12), (("Demon", "Behemoth", "Fury"), 2, 330, 11)]
+STAIR_CLEAR = 6        # sin spawns a esta distancia de escaleras, portales y la llegada
+CAVE_SEPARATION = 3    # casillas de roca como mínimo entre dos cuevas del mismo piso
 
 
 def ellipse(cx, cy, rx, ry) -> set:
@@ -387,7 +417,7 @@ def build_surface(seed: int, bl: Blocking):
         if r < 0.06 and free(c, 1):
             put(c, rng.choice((RUBBLE, RUBBLE_BROWN)), 2)
         elif r < 0.10:
-            tiles[c].append(DRAGON_SKULL if r < 0.08 else DRAGON_BONES)
+            tiles[c].append(2248 if r < 0.08 else SKELETON)
 
     # 8) flores y hongos en el corredor, lejos del camino
     for c in sorted(play - keep_clear):
@@ -461,26 +491,21 @@ def build_surface(seed: int, bl: Blocking):
 
 # --- cuevas -------------------------------------------------------------------------------------------
 
-def carve_named(seed: int, spec: dict):
-    """Cava una cueva dentro de su caja (x, y, w, h) desde su boca y devuelve piso y tiles."""
+def carve_named(seed: int, spec: dict, forbid=frozenset()):
+    """Cava el pasillo de una cueva dentro de su caja (x, y, w, h) desde su boca y devuelve el piso.
+    `forbid`: casillas que no puede usar (las otras cuevas del piso, con su margen)."""
     bx, by, bw, bh = spec["box"]
     allowed = {(x, y) for x in range(bx + 6, bx + bw - 6) for y in range(by + 6, by + bh - 6)}
     mx, my = spec["mouth"]
     core = {(mx + dx, my + dy) for dx in (-1, 0, 1) for dy in (-1, 0, 1, 2)}
-    if spec.get("path"):  # pasillo largo y angosto: solo se cava en una franja alrededor del recorrido
-        band, ribbon_core = ribbon([(mx, my)] + list(spec["path"]), spec.get("rooms", ()), seed)
-        return carve_cave(seed, allowed & band, core | ribbon_core, (mx, my + 1), spec["min"])
-    spine = spec.get("spine", [])
-    for sx, sy in spine:
-        core |= {(sx + dx, sy + dy) for dx in (-1, 0, 1) for dy in (-1, 0, 1)}
-    if spine:  # pasillo en L de la boca al punto más cercano del recorrido
-        sx, sy = min(spine, key=lambda c: abs(c[0] - mx) + abs(c[1] - my))
-        for x in range(min(mx, sx), max(mx, sx) + 1):
-            core |= {(x, my + d) for d in (-1, 0, 1)}
-        for y in range(min(my, sy), max(my, sy) + 1):
-            core |= {(sx + d, y) for d in (-1, 0, 1)}
-    floor = carve_cave(seed, allowed, core, (mx, my + 1), spec["min"])
-    return floor
+    band, ribbon_core = ribbon([(mx, my)] + list(spec["path"]), spec.get("rooms", ()), seed)
+    area = allowed & band
+    if area & forbid:   # solo si hace falta: otro conjunto cambiaría el sorteo de las cuevas que no se tocan
+        area -= forbid
+    core |= ribbon_core
+    if core & forbid:
+        raise ValueError(f"{spec['name']}: su recorrido pasa a menos de {CAVE_SEPARATION} de otra cueva")
+    return carve_cave(seed, area, core, (mx, my + 1), spec["min"])
 
 
 RIBBON_BAND = 5  # media franja donde puede haber cueva: tramos paralelos a 14 casillas no se tocan
@@ -544,7 +569,8 @@ def build_caves(seed: int):
     # z8: cuevas de entrada (cortas), una bajada al fondo de cada una
     floors8 = {}
     for i, spec in enumerate(CAVES):
-        floors8[spec["name"]] = carve_named(seed + 1 + i, spec)
+        taken = set().union(*floors8.values()) if floors8 else set()
+        floors8[spec["name"]] = carve_named(seed + 1 + i, spec, grow(taken, CAVE_SEPARATION))
     union8 = set().union(*floors8.values())
     t8 = cave_tiles(union8, cells, seed + 1)
     for i, spec in enumerate(CAVES):
@@ -560,7 +586,8 @@ def build_caves(seed: int):
     # z9: fondo largo de cada cueva (misma familia, más monstruos)
     floors9 = {}
     for i, spec in enumerate(DEEP_CAVES):
-        floors9[spec["name"]] = carve_named(seed + 11 + i, spec)
+        taken = set().union(*floors9.values()) if floors9 else set()
+        floors9[spec["name"]] = carve_named(seed + 11 + i, spec, grow(taken, CAVE_SEPARATION))
     union9 = set().union(*floors9.values())
     t9 = cave_tiles(union9, cells, seed + 11)
     for i, spec in enumerate(DEEP_CAVES):
@@ -610,13 +637,12 @@ def place_props(tiles: dict, floor: set, start, props, rate: float, seed: int, k
 
 # --- spawns ---------------------------------------------------------------------------------------------
 
-def place_stages(stages, slices, walk, avoid, z, rng, min_gap):
-    """Un grupo de spawns por etapa, cada uno en su franja (`slices`, en orden de dificultad). Una etapa
-    puede traer su propia separación como 4.º campo; si no, usa `min_gap`."""
+def place_stages(stages, slices, walk, avoid, z, rng):
+    """Spawns de cada etapa (nombres, por spawn, spawntime, separación) en su franja (`slices`, en orden de
+    dificultad): se ponen todos los que entran sin quedar a menos de `separación` (Manhattan) de otro
+    centro, también de las etapas anteriores."""
     out, centers = [], []
-    for stage, pool in zip(stages, slices):
-        names, per, spawntime = stage[:3]
-        gap = stage[3] if len(stage) > 3 else min_gap
+    for (names, per, spawntime, gap), pool in zip(stages, slices):
         cands = sorted((pool & walk) - avoid)
         rng.shuffle(cands)
         k = 0
@@ -750,7 +776,7 @@ def main() -> int:
     CAVE_PROPS = {
         "catacumbs": ((BROKEN_PILLAR, COAL_BASIN, SKELETON, SKELETON), 0.09),
         "quara": (MUSHROOMS + BONES, 0.07),
-        "dragon": ((DRAGON_SKULL, DRAGON_BONES, COAL_BASIN), 0.07),
+        "dragon": ((2248, SKELETON, COAL_BASIN), 0.07),
     }
     for i, spec in enumerate(CAVES):
         place_props(caves["t8"], caves["floors8"][spec["name"]], (spec["mouth"][0], spec["mouth"][1] + 1),
@@ -759,7 +785,11 @@ def main() -> int:
         place_props(caves["t9"], caves["floors9"][spec["name"]], (spec["mouth"][0], spec["mouth"][1] + 1),
                     *CAVE_PROPS[spec["name"]], a.seed + 70 + i, grow({spec["mouth"], dn9}, 2))
     place_props(caves["t10"], caves["floor10"], (ABYSS["mouth"][0], ABYSS["mouth"][1] + 1),
-                (COAL_BASIN, DRAGON_BONES), 0.07, a.seed + 80, grow({ABYSS["mouth"], portal}, 2))
+                (COAL_BASIN, SKELETON), 0.07, a.seed + 80, grow({ABYSS["mouth"], portal}, 2))
+
+    for t in (surf, caves["t8"], caves["t9"], caves["t10"]):
+        for c, it in t.items():
+            t[c] = it[:1] + [CUT_DRAGON_PIECES.get(i, i) for i in it[1:]]
 
     errors = []
     # bordes de tierra: pieza exacta en el suelo
@@ -810,6 +840,7 @@ def main() -> int:
         errors.append(f"dragón fondo: la bajada {dn9} no se alcanza")
     walk10 = cave_walk(caves["t10"], caves["floor10"])
     d10 = reach(walk10, (ABYSS["mouth"][0], ABYSS["mouth"][1] + 1), CARD)
+    walk10 = walk10 & d10.keys()
     if not any((portal[0] + dx, portal[1] + dy) in d10 for dx, dy in CARD):
         errors.append(f"z10: el portal final {portal} sin acceso")
 
@@ -849,36 +880,45 @@ def main() -> int:
                 break
 
     # spawns: una familia por zona; cuevas de un solo tipo con gradiente y fondo más duro
-    rng = random.Random(a.seed + 99)
-    spawns7 = []
-    for name, zone in info["zones"].items():
-        if name not in SURFACE_HUNTS:
-            continue
-        walk = (zone & walk7) - grow(info["camps"], 1) if name == "camp" else zone & walk7
-        pool = walk - grow({ARRIVAL} | set(PORTALS_BACK), 6)
-        placed = place_stages([SURFACE_HUNTS[name]], [pool], pool, set(), Z7, rng, GAP)
-        spawns7.extend(placed[:SURFACE_HUNTS_N[name]])
-
     def cave_rng(name, z):
         return random.Random(f"{a.seed}-{name}-{z}")
+
+    density = []   # (zona, piso, casillas, spawns, monstruos): se imprime y va al manifiesto
+
+    def note(label, z, walk, placed):
+        density.append((label, z, len(walk), len(placed), sum(len(m) for _c, _z, m in placed)))
+        return placed
+
+    spawns7 = []
+    for name, zone in info["zones"].items():
+        if name not in SURFACE_STAGES:
+            continue
+        walk = (zone & walk7) - grow(info["camps"], 1) if name == "camp" else zone & walk7
+        avoid7 = grow({ARRIVAL} | set(PORTALS_BACK), STAIR_CLEAR)
+        stages = SURFACE_STAGES[name]
+        spawns7.extend(note(name, Z7, walk, place_stages(
+            stages, slices_by(walk - avoid7, lambda c: d7.get(c, 0), len(stages)), walk, avoid7, Z7,
+            cave_rng(name, Z7))))
 
     spawns8 = []
     for spec in CAVES:
         name = spec["name"]
-        avoid8 = grow({spec["mouth"], dn8[name]}, STAIR_CLEAR.get(name, 3))
-        walk = cave_walk(caves["t8"], caves["floors8"][name])
+        avoid8 = grow({spec["mouth"], dn8[name]}, STAIR_CLEAR)
+        walk = cave_walk(caves["t8"], caves["floors8"][name]) & d8[name].keys()
         stages = CAVE_STAGES[name]
-        spawns8.extend(place_stages(stages, slices_by(walk - avoid8, lambda c: d8[name][c], len(stages)),
-                                    walk, avoid8, Z8, cave_rng(name, Z8), GAP))
+        spawns8.extend(note(name, Z8, walk, place_stages(
+            stages, slices_by(walk - avoid8, lambda c: d8[name][c], len(stages)), walk, avoid8, Z8,
+            cave_rng(name, Z8))))
 
     spawns9 = []
     for spec in DEEP_CAVES:
         name = spec["name"]
-        avoid9 = grow({spec["mouth"]} | ({dn9} if name == "dragon" else set()), STAIR_CLEAR.get(name, 3))
-        walk = cave_walk(caves["t9"], caves["floors9"][name])
+        avoid9 = grow({spec["mouth"]} | ({dn9} if name == "dragon" else set()), STAIR_CLEAR)
+        walk = cave_walk(caves["t9"], caves["floors9"][name]) & d9[name].keys()
         stages = DEEP_STAGES[name]
-        spawns9.extend(place_stages(stages, slices_by(walk - avoid9, lambda c: d9[name][c], len(stages)),
-                                    walk, avoid9, Z9, cave_rng(name, Z9), GAP))
+        spawns9.extend(note(name, Z9, walk, place_stages(
+            stages, slices_by(walk - avoid9, lambda c: d9[name][c], len(stages)), walk, avoid9, Z9,
+            cave_rng(name, Z9))))
 
     try:
         root_spawn = root_colossus_spawn(walk10, d10, grow({portal}, 3), Z10)
@@ -886,9 +926,10 @@ def main() -> int:
     except ValueError as error:
         errors.append(str(error))
         root_spawn, root_pos = None, None
-    avoid10 = grow({ABYSS["mouth"], portal}, 3) | (grow({root_pos}, 3) if root_pos else set())
-    spawns10 = place_stages(ABYSS_STAGES, slices_by(walk10 - avoid10, lambda c: d10[c], len(ABYSS_STAGES)),
-                            walk10, avoid10, Z10, cave_rng("abyss", Z10), GAP)
+    avoid10 = grow({ABYSS["mouth"], portal}, STAIR_CLEAR) | (grow({root_pos}, 3) if root_pos else set())
+    spawns10 = note("abyss", Z10, walk10, place_stages(
+        ABYSS_STAGES, slices_by(walk10 - avoid10, lambda c: d10[c], len(ABYSS_STAGES)), walk10, avoid10, Z10,
+        cave_rng("abyss", Z10)))
     if root_spawn:
         spawns10.append(root_spawn)
     if errors:
@@ -911,6 +952,9 @@ def main() -> int:
           f"{X0 + MOUTH_DRAGON[0]},{Y0 + MOUTH_DRAGON[1]},7; fondos {X0 + DEEP_CAVES[0]['mouth'][0]},{Y0 + DEEP_CAVES[0]['mouth'][1]},9 / "
           f"{X0 + DEEP_CAVES[1]['mouth'][0]},{Y0 + DEEP_CAVES[1]['mouth'][1]},9 / {X0 + DEEP_CAVES[2]['mouth'][0]},{Y0 + DEEP_CAVES[2]['mouth'][1]},9; "
           f"abismo {X0 + ABYSS['mouth'][0]},{Y0 + ABYSS['mouth'][1]},10; portal {X0 + portal[0]},{Y0 + portal[1]},10")
+    for label, z, tiles, ns, nm in density:
+        print(f"  z{z} {label:<10} {tiles:>5} casillas  {ns:>3} spawns  {nm:>3} monstruos  "
+              f"1 cada {tiles / max(nm, 1):.0f} casillas")
     print("monstruos: " + ", ".join(f"{k} {v}" for k, v in sorted(counts.items(), key=lambda kv: -kv[1])))
     if a.preview:
         write_preview(a.preview, [surf, caves["t8"], caves["t9"], caves["t10"]], bl.otb, bl)
@@ -1002,6 +1046,8 @@ def main() -> int:
         "spawns": {"z7": len(spawns7), "z8": len(spawns8), "z9": len(spawns9), "z10": len(spawns10),
                    "monsters": n_mon},
         "monsters": dict(sorted(counts.items())),
+        "density": [{"zone": label, "z": z, "tiles": tiles, "spawns": ns, "monsters": nm}
+                    for label, z, tiles, ns, nm in density],
     }, indent=2) + "\n")
     print(f"OK mapa {MAP}\nOK spawns {SPAWNS}\nOK carteles {READABLES}\nOK {MANIFEST}")
     return 0
