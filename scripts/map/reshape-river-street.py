@@ -14,6 +14,12 @@ Ahora (z7):
     (152-153, 78) y se empalma con la tierra que hay adentro;
   - donde una pared o el patio caen sobre la orilla se conserva la pieza de borde del agua.
 
+Techo (z6): cada casa lleva su techo de tejas sobre su planta nueva, con la misma regla que tenían las
+casas originales: x de la columna siguiente a la pared oeste hasta la pared este, y de la pared norte a
+una fila más abajo de la pared sur (el piso de arriba se dibuja corrido una casilla arriba-izquierda).
+Pasillos y patios quedan sin techo. Hasta el 16 nov 2026 el techo era el de las casas viejas (x 146-160,
+y 59-66, un bloque continuo) y quedaba corrido sobre pasillos y patios.
+
 Las puertas quedan donde estaban (148, 153 y 158 en la fila 59), así los data/houses/<casa>.xml
 (frontdoor) no cambian: el server viejo los reescribe al apagarse y no hay nada que pisar.
 Solo cambia el mapa en la zona y estas tres casas en data/houses.xml.
@@ -71,6 +77,14 @@ ARCH = (153, 78)                                        # arco de piedra de las 
 LANTERN_MOVE = ((161, 59), (162, 59))                   # el farol de la esquina pasa 1 al este
 STREET = [(150, 58), (156, 58)]                         # calle frente a cada pasillo
 REGION = (144, 58, 162, 80)                             # solo se tocan casillas acá adentro
+
+# --- techo (z6): tejas medidas en el techo original de estas casas -----------------------------------
+ROOF_Z = 6
+ROOF_BOX = (144, 57, 163, 68)                           # techo viejo x146-160, y59-66 (con margen)
+ROOF_LEFT = {"top": 940, "mid": 941, "bottom": 943}     # columna oeste (borde)
+ROOF_REST = {"top": 935, "mid": 936, "bottom": 938}
+ROOF_PIECES = set(ROOF_LEFT.values()) | set(ROOF_REST.values())
+ROOF_AS_GROUND = {936}                                  # el resto va como ítem en una casilla sin piso
 
 # --- orilla: pasto con borde sobre agua (4526 + pieza); bajo una pared se conserva la pieza ---------
 SHORE_GROUND, SHORE = 4526, range(4644, 4656)
@@ -275,6 +289,74 @@ def new_node(x, y, base, items, pz):
     return [T_TILE, props, [[T_ITEM, bytearray(struct.pack("<H", i)), []] for i in items[1:]]]
 
 
+def roof_wanted() -> dict:
+    """{(x, y): pieza} del techo de las tres casas."""
+    out = {}
+    for h in HOUSES.values():
+        for x in range(h["x0"] + 1, h["x1"] + 1):
+            for y in range(WALL_TOP, WALL_BOTTOM + 2):
+                row = "top" if y == WALL_TOP else "bottom" if y == WALL_BOTTOM + 1 else "mid"
+                out[(x, y)] = (ROOF_LEFT if x == h["x0"] + 1 else ROOF_REST)[row]
+    return out
+
+
+def roof_tiles(root) -> tuple[dict, list]:
+    """Casillas de z6 dentro de ROOF_BOX: {(x, y): (nodo, área)} y las áreas de z6."""
+    tiles, areas = {}, []
+    for area in root[2][0][2]:
+        if area[0] != T_AREA:
+            continue
+        ax, ay, az = struct.unpack_from("<HHB", bytes(area[1]), 0)
+        if az != ROOF_Z:
+            continue
+        areas.append(((ax, ay), area))
+        for t in area[2]:
+            if t[0] in (T_TILE, T_HOUSETILE):
+                x, y = ax + t[1][0], ay + t[1][1]
+                if ROOF_BOX[0] <= x <= ROOF_BOX[2] and ROOF_BOX[1] <= y <= ROOF_BOX[3]:
+                    tiles[(x, y)] = (t, area)
+    return tiles, areas
+
+
+def roof_node(x, y, base, piece):
+    props = bytearray([x - base[0], y - base[1]])
+    if piece in ROOF_AS_GROUND:
+        return [T_TILE, props + b"\x09" + struct.pack("<H", piece), []]
+    return [T_TILE, props, [[T_ITEM, bytearray(struct.pack("<H", piece)), []]]]
+
+
+def plan_roof(root) -> tuple[dict, set, list]:
+    """Qué cambia en z6: casillas a poner {(x, y): pieza}, a sacar, y errores."""
+    tiles, _areas = roof_tiles(root)
+    want, errs = roof_wanted(), []
+    have = {c: stack_of(v[0]) for c, v in tiles.items()}
+    for c, st in have.items():
+        if st and not set(st) <= ROOF_PIECES:
+            if c in want:
+                errs.append(f"techo {c}: hay otra cosa en z6 ({st}); no se pisa")
+    put = {c: p for c, p in want.items() if have.get(c) != [p]}
+    remove = {c for c, st in have.items() if st and set(st) <= ROOF_PIECES and c not in want}
+    return put, remove, errs
+
+
+def apply_roof(root, put: dict, remove: set):
+    tiles, areas = roof_tiles(root)
+    for c in remove:
+        node, area = tiles[c]
+        area[2].remove(node)
+    for (x, y), piece in put.items():
+        if (x, y) in tiles:
+            node, area = tiles[(x, y)]
+            base = struct.unpack_from("<HH", bytes(area[1]), 0)
+            area[2][area[2].index(node)] = roof_node(x, y, base, piece)
+            continue
+        base = (x & ~0xFF, y & ~0xFF)
+        area = next((ar for b, ar in areas if b == base), None)
+        if area is None:
+            raise SystemExit(f"ERROR: no hay área de z{ROOF_Z} para {(x, y)}")
+        area[2].append(roof_node(x, y, base, piece))
+
+
 # --- validación -----------------------------------------------------------------------------------
 def bfs(walk: set, start) -> set:
     seen, q = {start}, deque([start])
@@ -352,13 +434,21 @@ def main() -> int:
     root = parse_tree(raw)
     region = read_region(root)
     existing = {c: stack_of(v[0]) for c, v in region.items()}
-    if BRIDGE_WEST["post"] in existing[(BRIDGE_X - 1, BRIDGE_Y[0])]:
-        print("River Street: el mapa ya tiene este cambio (puente de sogas); no hay nada que hacer")
+    roof_put, roof_remove, roof_errs = plan_roof(root)
+    done7 = BRIDGE_WEST["post"] in existing[(BRIDGE_X - 1, BRIDGE_Y[0])]
+    if done7 and not roof_put and not roof_remove:
+        print("River Street: el mapa ya tiene este cambio (puente de sogas y techos); no hay nada que hacer")
         return 0
-    out, house_tiles, _ = desired(existing)
-    errs = validate(region, out, house_tiles, otb)
-    print(f"River Street: {len(out)} casillas cambiadas; " +
-          ", ".join(f"{n.split()[-1]} {len(t)} casillas" for n, t in house_tiles.items()))
+    if done7:   # z7 ya está: solo el techo
+        out, house_tiles, errs = {}, {}, list(roof_errs)
+        print("River Street: z7 ya tiene el cambio; techo z6: "
+              f"{len(roof_put)} casillas a poner, {len(roof_remove)} a sacar")
+    else:
+        out, house_tiles, _ = desired(existing)
+        errs = validate(region, out, house_tiles, otb) + roof_errs
+        print(f"River Street: {len(out)} casillas cambiadas; " +
+              ", ".join(f"{n.split()[-1]} {len(t)} casillas" for n, t in house_tiles.items()) +
+              f"; techo z6: {len(roof_put)} a poner, {len(roof_remove)} a sacar")
     if a.png:
         world = {(x, y, Z): stack_of(v[0]) for (x, y), v in region.items()}
         world.update({(x, y, Z): it for (x, y), (it, _pz) in out.items()})
@@ -375,8 +465,10 @@ def main() -> int:
     for c, (items, pz) in out.items():
         node, area, base = region[c]
         area[2][area[2].index(node)] = new_node(c[0], c[1], base, items, pz)
+    apply_roof(root, roof_put, roof_remove)
     MAP.write_bytes(serialize_tree(root, raw[:4]))
-    write_houses(house_tiles)
+    if house_tiles:
+        write_houses(house_tiles)
     spec = importlib.util.spec_from_file_location("shm", HERE / "sync-houses-with-map.py")
     shm = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(shm)

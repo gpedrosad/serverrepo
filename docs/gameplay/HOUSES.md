@@ -235,6 +235,32 @@ con pared hasta la orilla):
   reescribe esos archivos al apagarse y no hay nada que pisar.
 - El script se niega a correr si alguna de las tres casas tiene dueño o ítems en `houseitems.xml`.
 
+### Techos (z6)
+
+Cada casa tiene su propio techo de tejas sobre su planta. Hasta el 16 nov 2026 quedaba el techo de las
+casas viejas: un bloque continuo `x146–160, y59–66` que tapaba los pasillos y los patios, corrido respecto
+de las casas nuevas.
+
+![Techos de River Street: antes (techo viejo corrido) y después](img/river-street-techos.png)
+
+| Casa | Techo (z6) |
+|------|------------|
+| III | x 146–149, y 59–64 |
+| IV | x 152–155, y 59–64 |
+| V | x 158–161, y 59–64 |
+
+- **Regla** (medida en el techo original de estas casas): x desde la columna siguiente a la pared oeste
+  hasta la pared este; y desde la pared norte hasta una fila más abajo de la pared sur. El cliente dibuja
+  el piso de arriba corrido una casilla arriba-izquierda, así el techo cae dentro de las paredes y se ven
+  la pared este y la sur enmarcándolo, igual que en las casas originales.
+- **Piezas:** columna oeste `940` (arriba) / `941` (medio) / `943` (abajo); el resto `935` / `936` / `938`.
+  `936` va como piso de la casilla; las demás, como ítem en una casilla sin piso (así estaba el original).
+- El script hace z7 y el techo por separado: si z7 ya está, igual arregla el techo. `--dry-run` dice
+  "el mapa ya tiene este cambio (puente de sogas y techos)" cuando están los dos.
+- **Si se cambia la planta de una casa, hay que rehacer su techo:** el mapa no los relaciona y el techo
+  viejo queda flotando. Para mirarlo como en el juego, superponer z6 corrido una casilla arriba-izquierda
+  sobre z7 (`mapdata.Renderer().area` de los dos pisos).
+
 **Error que ya pasó (15 nov 2026):** `0fc2591` (Foso Olvidado, otra sesión) escribió un `test.otbm` generado
 sobre un mapa anterior a este cambio y River Street volvió a las casas largas sin puente, y así se deployó.
 Se volvió a aplicar con `reshape-river-street.py --replace` (la zona estaba igual que antes del primer
