@@ -25,8 +25,8 @@ Generador: `scripts/map/generate-beast-valley.py` (usa las piezas, cuevas y vali
 | Ruinas Antiguas | z7 norte | patio de tierra con avenida de columnas, estatuas, braseros, altar y cementerio de lápidas | Skeleton, Ghoul, Mummy, Demon Skeleton |
 | Catacumbas | z8 | cueva de huesos, pilares y braseros | Ghoul, Skeleton → Vampire, Mummy, Demon Skeleton → Necromancer, Priestess, Vampire Bride |
 | Cripta Profunda | z9 | catacumba larga y oscura | igual familia, 4 tramos y más monstruos |
-| Cueva de las Quaras | z8 | cueva con mucho barro, hongos y huesos | Quara Constrictor, Mantassin → Pincher, Hydromancer → Predator, **de a 2** |
-| Nido de las Quaras | z9 | galería larga y húmeda | igual familia, 4 tramos, de a 2 |
+| Cueva de las Quaras | z8 | pasillo largo y angosto en zigzag hacia el sur, con barro, hongos y huesos | Constrictor **sueltas** → Constrictor/Mantassin sueltas → Mantassin/Pincher de a 2 → Pincher/Hydromancer de a 2 |
+| Nido de las Quaras | z9 | pasillo todavía más largo, cruza al este y vuelve | Pincher/Hydromancer sueltas → de a 2 → Predator sueltos → Predator de a 2 (5 tramos) |
 | Guarida del Dragón | z8 | cueva con huesos de dragón, calaveras y braseros | Dragon Hatchling, Dragon → Wyrm → Dragon Lord, Black Dragon |
 | Nido del Dragón | z9 | galería larga; al fondo baja al Abismo | igual familia, 4 tramos y más monstruos |
 | Abismo | z10 | cueva de barro con braseros | Hydra, Dark Hydra → Behemoth, Serpent Spawn → Demon, Fury → Root Colossus y portal |
@@ -34,12 +34,27 @@ Generador: `scripts/map/generate-beast-valley.py` (usa las piezas, cuevas y vali
 En la superficie la dificultad sube de sur a norte. En cada cueva sube con la distancia a la
 escalera: lo más difícil queda al fondo. Cada zona mezcla **solo su familia**.
 
-Total: **153 spawns y 423 monstruos** (31 en z7, 36 en z8, 65 en z9, 21 en z10). Detalle por monstruo
+Total: **169 spawns y 441 monstruos** (31 en z7, 44 en z8, 72 en z9, 22 en z10). Detalle por monstruo
 en el manifiesto (`monsters`).
 
 **Quaras (nov 2026):** salían 3–4 por spawn, con centros cada 6 casillas y 17 grupos en z8 alrededor de
-la escalera (130 quaras en total). Ahora van de a 2 (`CAVE_STAGES` / `DEEP_STAGES`), con centros cada 7
-casillas en z8 y 6 en z9 (`CAVE_GAP`) y nada a menos de 5 casillas de las escaleras (`STAIR_CLEAR`): 58.
+la escalera (130 quaras en total). Primero pasaron a ir de a 2 (58). Después (v4) las dos cuevas dejaron
+de ser manchas redondas (~340 y ~420 casillas) y pasaron a ser **pasillos largos y angostos** (4–6 de ancho)
+en zigzag: z8 baja hacia el sur desde la boca (~1.000 casillas caminables) y z9 sale de debajo de esa
+bajada y cruza al este (~1.250). Cada etapa trae su propia separación (4.º campo de `CAVE_STAGES` /
+`DEEP_STAGES`, 10–13 casillas) y la cantidad crece por tramos: primero quaras sueltas, al fondo de a 2.
+Nada a menos de 6 casillas de las escaleras (`STAIR_CLEAR`). Son 64 quaras, una cada ~35 casillas
+(antes, una cada ~13).
+
+Cómo se cava un pasillo: `QUARA_PATH8` / `QUARA_PATH9` son tramos rectos y `QUARA_ROOMS*` son ensanches;
+`ribbon()` les da ancho variable y un zigzag de ±1, y `carve_cave` solo cava dentro de una franja de 5
+alrededor del recorrido (`RIBBON_BAND`). Los tramos paralelos van a **14 casillas** como mínimo: con menos
+las franjas se tocan y la cueva hace atajos que rompen la progresión. La última sala de z8 tiene que tener
+3×5 de piso (ahí cae la bajada): en un tramo horizontal de 4 de alto no entra y la bajada cae en una esquina.
+
+Cada cueva y piso sortea sus spawns con su propio generador (`cave_rng`): cambiar una cueva no mueve los
+spawns de las otras. (Cuando se hizo el cambio, nov 2026, las Catacumbas, el Dragón y el Abismo se
+sortearon una vez de nuevo, con las mismas reglas.)
 
 ## Coordenadas
 
@@ -50,8 +65,8 @@ casillas en z8 y 6 en z9 (`CAVE_GAP`) y nada a menos de 5 casillas de las escale
 | Boca de las Catacumbas | `312, 266, 7` |
 | Boca de la Cueva de las Quaras | `291, 294, 7` |
 | Boca de la Guarida del Dragón | `334, 288, 7` |
-| Bajada de cada cueva al fondo (z8) | Catacumbas `319, 255, 8` · Quaras `282, 302, 8` · Dragón `344, 298, 8` |
-| Escalera de subida de cada fondo (z9) | justo debajo de su bajada: `319, 255, 9` · `282, 302, 9` · `344, 298, 9` |
+| Bajada de cada cueva al fondo (z8) | Catacumbas `319, 255, 8` · Quaras `284, 356, 8` · Dragón `344, 298, 8` |
+| Escalera de subida de cada fondo (z9) | justo debajo de su bajada: `319, 255, 9` · `284, 356, 9` · `344, 298, 9` |
 | Bajada del Nido del Dragón al Abismo | `323, 294, 9` (subida en `323, 294, 10`) |
 | Root Colossus | `336, 317, 10`, respawn 300 s |
 | Portal final (fondo del Abismo) | `345, 315, 10` → `158, 48, 7` |
@@ -122,7 +137,8 @@ Re-ejecutable y determinista (misma semilla = mismo mapa). Escribe `test.otbm` (
 `test.otbm.bak-beastvalley` la primera vez, no va a git), spawns, carteles y manifiesto. Si
 `test.otbm` cambió en `main`, no mergear el binario: volver a correr el script sobre el mapa nuevo.
 
-**Estado (2026-11-15):** escaleras arregladas y quaras de a 2 (`check-map-load.py`: 0 errores; bot GM
+**Estado (2026-11-15):** cuevas de quaras en pasillo largo y angosto (z8 y z9 se cavan de nuevo solo en las
+quaras; z7 y z10 iguales; `check-map-load.py`: 0 errores; falta recorrido in-game). Antes: escaleras arregladas y quaras de a 2 (`check-map-load.py`: 0 errores; bot GM
 baja y sube por las 5 escaleras en un server de prueba). La regeneración deja z7 igual y cambia z8 solo en
 las bajadas y su decoración; z9 y z10 se cavan de nuevo. Falta recorrido in-game de los fondos. Antes de deployar un
 `test.otbm` nuevo, probar depots in-game ([`../gameplay/DEPOTS.md`](../gameplay/DEPOTS.md)).

@@ -9,7 +9,7 @@ zonas chicas y bien separadas, y da a cada cueva un segundo piso más largo y co
       Campamento Minotauro (oeste)     Minotaur, Archer, Guard, Mage
       Cantera de los Cíclopes (este)   Cyclops, Cyclops Drone, Cyclops Smith
       Ruinas Antiguas (norte)          Skeleton, Ghoul, Mummy, Demon Skeleton
-  z8  Entrada de cada cueva (corta)
+  z8  Entrada de cada cueva (corta; la de las quaras es un pasillo largo y angosto)
       Catacumbas / Cueva de las Quaras / Guarida del Dragón
   z9  Fondo de cada cueva (largo, 4 tramos, más monstruos)
       Cripta Profunda (no-muertos), Nido de las Quaras, Nido del Dragón
@@ -126,12 +126,26 @@ SURFACE_HUNTS = {
 SURFACE_HUNTS_N = {"camp": 14, "quarry": 12, "ruins": 13}
 CAVE_HUNTS = {"catacumbs": (("Ghoul", "Skeleton"), ("Vampire", "Mummy", "Demon Skeleton"),
                             ("Necromancer", "Priestess", "Vampire Bride"))}
+# Quaras (nov 2026, v4): eran manchas redondas (z8 ~340 casillas, z9 ~420) y los grupos quedaban juntos.
+# Ahora cada piso es un pasillo largo y angosto (4-6 de ancho) que sigue un recorrido en zigzag: z8 baja
+# hacia el sur desde la boca y termina en la bajada; z9 sale de debajo de esa bajada y cruza al este.
+# Las filas del zigzag van cada 14 casillas para que quede roca gruesa entre una y otra.
+# Tramos rectos (horizontales o verticales); el ancho y un leve zigzag los pone ribbon(). Las salas son
+# ensanches (centro, radio) donde caben mejor los grupos; la última de z8 es para la bajada (3x5 de piso).
+QUARA_PATH8 = [(29, 67), (17, 67), (17, 81), (42, 81), (42, 95), (18, 95), (18, 109), (42, 109),
+               (42, 123), (24, 123)]
+QUARA_ROOMS8 = [((17, 74), 3), ((30, 81), 3), ((42, 88), 3), ((30, 95), 3), ((18, 102), 3), ((30, 109), 3),
+                ((42, 116), 3), ((24, 123), 3)]
+QUARA_PATH9 = [(24, 130), (46, 130), (46, 116), (66, 116), (66, 130), (84, 130), (84, 100), (60, 100),
+               (60, 86), (34, 86), (34, 104), (18, 104)]
+QUARA_ROOMS9 = [((35, 130), 3), ((56, 116), 3), ((75, 130), 3), ((84, 115), 3), ((72, 100), 3), ((47, 86), 3),
+                ((34, 95), 3), ((18, 104), 3)]
 # --- cuevas: z8 entrada (corta), z9 fondo (largo, más monstruos) y z10 Abismo -----------------------
 CAVES = [
     {"name": "catacumbs", "box": (30, 8, 44, 40), "mouth": STAIRS_CAT, "mud": 0.10, "alt": 0.36,
      "bones": 0.10, "min": 320, "sign": "CATACUMBAS\nNo-muertos: ghouls, vampiros, momias y nigromantes.\nAbajo: Cripta Profunda."},
-    {"name": "quara", "box": (8, 44, 44, 38), "mouth": MOUTH_QUARA, "mud": 0.55, "alt": 0.28,
-     "bones": 0.05, "min": 340,
+    {"name": "quara", "box": (6, 44, 50, 98), "mouth": MOUTH_QUARA, "mud": 0.55, "alt": 0.28,
+     "bones": 0.05, "min": 560, "path": QUARA_PATH8, "rooms": QUARA_ROOMS8,
      "sign": "CUEVA DE LAS QUARAS\nQuaras constrictor, mantassin, pincher, hidromante y predator.\nAbajo: Nido de las Quaras."},
     {"name": "dragon", "box": (50, 40, 44, 40), "mouth": MOUTH_DRAGON, "mud": 0.28, "alt": 0.30,
      "bones": 0.09, "min": 320, "sign": "GUARIDA DEL DRAGON\nDragones, wyrms y un dragon negro.\nAbajo: el Nido y el Abismo."},
@@ -142,9 +156,8 @@ DEEP_CAVES = [
     {"name": "catacumbs", "box": (22, 4, 46, 46), "mouth": (41, 41), "mud": 0.12, "alt": 0.34,
      "bones": 0.12, "min": 420,
      "spine": [(41, 33), (34, 28), (34, 18), (46, 14), (56, 18), (56, 26)]},
-    {"name": "quara", "box": (6, 50, 46, 40), "mouth": (24, 80), "mud": 0.58, "alt": 0.26,
-     "bones": 0.05, "min": 420,
-     "spine": [(24, 72), (17, 66), (17, 60), (28, 58), (38, 62), (40, 70)]},
+    {"name": "quara", "box": (6, 84, 90, 58), "mouth": (20, 122), "mud": 0.58, "alt": 0.26,
+     "bones": 0.05, "min": 700, "path": QUARA_PATH9, "rooms": QUARA_ROOMS9},
     {"name": "dragon", "box": (50, 42, 46, 42), "mouth": (72, 74), "mud": 0.30, "alt": 0.28,
      "bones": 0.10, "min": 420,
      "spine": [(72, 68), (63, 66), (60, 58), (70, 53), (82, 55), (86, 64)]},
@@ -157,8 +170,9 @@ ABYSS = {"name": "abyss", "box": (50, 52, 46, 46), "mouth": (72, 92), "mud": 0.6
 CAVE_STAGES = {
     "catacumbs": [(("Ghoul", "Skeleton"), 3, 100), (("Vampire", "Mummy", "Demon Skeleton"), 3, 130),
                   (("Necromancer", "Priestess", "Vampire Bride"), 3, 160)],
-    "quara": [(("Quara Constrictor", "Quara Mantassin"), 2, 110), (("Quara Pincher", "Quara Hydromancer"), 2, 140),
-              (("Quara Predator",), 2, 170)],
+    # (nombres, por spawn, spawntime, separación mínima entre centros)
+    "quara": [(("Quara Constrictor",), 1, 110, 13), (("Quara Constrictor", "Quara Mantassin"), 1, 120, 11),
+              (("Quara Mantassin", "Quara Pincher"), 2, 140, 12), (("Quara Pincher", "Quara Hydromancer"), 2, 160, 11)],
     "dragon": [(("Dragon Hatchling", "Dragon"), 3, 150), (("Dragon", "Wyrm"), 3, 190),
                (("Dragon Lord", "Black Dragon"), 2, 240)],
 }
@@ -166,20 +180,19 @@ DEEP_STAGES = {
     "catacumbs": [(("Ghoul", "Skeleton"), 4, 120), (("Mummy", "Vampire", "Demon Skeleton"), 4, 140),
                   (("Necromancer", "Priestess", "Vampire Bride"), 3, 170),
                   (("Vampire Bride", "Necromancer", "Priestess", "Demon Skeleton"), 3, 200)],
-    "quara": [(("Quara Constrictor", "Quara Mantassin"), 2, 120),
-              (("Quara Pincher", "Quara Hydromancer"), 2, 150),
-              (("Quara Predator", "Quara Pincher"), 2, 180),
-              (("Quara Predator", "Quara Hydromancer"), 2, 210)],
+    "quara": [(("Quara Pincher", "Quara Hydromancer"), 1, 140, 12),
+              (("Quara Hydromancer", "Quara Pincher"), 2, 160, 12),
+              (("Quara Predator", "Quara Hydromancer"), 1, 180, 11),
+              (("Quara Predator", "Quara Pincher"), 2, 200, 11),
+              (("Quara Predator", "Quara Hydromancer"), 2, 220, 10)],
     "dragon": [(("Dragon Hatchling", "Dragon"), 3, 160), (("Dragon", "Wyrm"), 3, 190),
                (("Wyrm", "Dragon Lord"), 3, 220), (("Dragon Lord", "Black Dragon"), 2, 260)],
 }
 ABYSS_STAGES = [(("Hydra", "Dark Hydra"), 3, 220), (("Behemoth", "Serpent Spawn"), 3, 250),
                 (("Demon", "Fury"), 2, 300), (("Demon", "Behemoth", "Fury"), 2, 330)]
 GAP = 6                                       # distancia mínima entre centros de spawn
-# Quaras (nov 2026): salían 3-4 por spawn cada 6 casillas y 17 grupos en z8 alrededor de la escalera.
-# Ahora de a 2, más separados en la entrada y sin spawns pegados a las escaleras (~58 en vez de 130).
-CAVE_GAP = {("quara", 8): 7, ("quara", 9): 6}  # (cueva, piso): separación; el resto usa GAP
-STAIR_CLEAR = {"quara": 5}                    # sin spawns a esta distancia de las escaleras (el resto: 3)
+# Quaras: la separación sale de cada etapa (4.º campo de CAVE_STAGES / DEEP_STAGES); el resto usa GAP.
+STAIR_CLEAR = {"quara": 6}                    # sin spawns a esta distancia de las escaleras (el resto: 3)
 
 
 def ellipse(cx, cy, rx, ry) -> set:
@@ -454,6 +467,9 @@ def carve_named(seed: int, spec: dict):
     allowed = {(x, y) for x in range(bx + 6, bx + bw - 6) for y in range(by + 6, by + bh - 6)}
     mx, my = spec["mouth"]
     core = {(mx + dx, my + dy) for dx in (-1, 0, 1) for dy in (-1, 0, 1, 2)}
+    if spec.get("path"):  # pasillo largo y angosto: solo se cava en una franja alrededor del recorrido
+        band, ribbon_core = ribbon([(mx, my)] + list(spec["path"]), spec.get("rooms", ()), seed)
+        return carve_cave(seed, allowed & band, core | ribbon_core, (mx, my + 1), spec["min"])
     spine = spec.get("spine", [])
     for sx, sy in spine:
         core |= {(sx + dx, sy + dy) for dx in (-1, 0, 1) for dy in (-1, 0, 1)}
@@ -465,6 +481,34 @@ def carve_named(seed: int, spec: dict):
             core |= {(sx + d, y) for d in (-1, 0, 1)}
     floor = carve_cave(seed, allowed, core, (mx, my + 1), spec["min"])
     return floor
+
+
+RIBBON_BAND = 5  # media franja donde puede haber cueva: tramos paralelos a 14 casillas no se tocan
+
+
+def ribbon(pts, rooms, seed: int):
+    """Franja y núcleo de un pasillo angosto: 4-6 de ancho según ruido, un zigzag de ±1 lejos de las
+    esquinas y ensanches en las salas. Devuelve (franja permitida, núcleo que se cava sí o sí)."""
+    nz = Noise(seed + 4242)
+    core, i = set(), 0
+    for (x1, y1), (x2, y2) in zip(pts, pts[1:]):
+        if x1 != x2 and y1 != y2:   # tramo diagonal (boca -> recorrido): en L, sin zigzag
+            core |= stamp([(x1, y1), (x2, y1), (x2, y2)], 1)
+            continue
+        n = abs(x2 - x1) + abs(y2 - y1)
+        sx, sy = (x2 > x1) - (x2 < x1), (y2 > y1) - (y2 < y1)
+        for k in range(n + 1):
+            x, y = x1 + sx * k, y1 + sy * k
+            wob = 0 if min(k, n - k) < 4 else round((nz.fbm(i / 7, 1.5, 2, 31) - 0.5) * 4)
+            wob = max(-1, min(1, wob))
+            r = 2 if nz.fbm(i / 6, 7.5, 2, 37) > 0.55 else 1
+            cx, cy = x + sy * wob, y + sx * wob   # el zigzag va perpendicular al tramo
+            core |= {(cx + a, cy + b) for a in range(-r, r + 1) for b in range(-r, r + 1)}
+            i += 1
+    for (rx, ry), rr in rooms:
+        core |= ellipse(rx + 0.5, ry + 0.5, rr + 0.6, rr)
+    band = stamp(pts, RIBBON_BAND) | grow(core, 1)
+    return band, core
 
 
 def mouth_zone(spec: dict) -> set:
@@ -567,14 +611,17 @@ def place_props(tiles: dict, floor: set, start, props, rate: float, seed: int, k
 # --- spawns ---------------------------------------------------------------------------------------------
 
 def place_stages(stages, slices, walk, avoid, z, rng, min_gap):
-    """Un grupo de spawns por etapa, cada uno en su franja (`slices`, en orden de dificultad)."""
+    """Un grupo de spawns por etapa, cada uno en su franja (`slices`, en orden de dificultad). Una etapa
+    puede traer su propia separación como 4.º campo; si no, usa `min_gap`."""
     out, centers = [], []
-    for (names, per, spawntime), pool in zip(stages, slices):
+    for stage, pool in zip(stages, slices):
+        names, per, spawntime = stage[:3]
+        gap = stage[3] if len(stage) > 3 else min_gap
         cands = sorted((pool & walk) - avoid)
         rng.shuffle(cands)
         k = 0
         for c in cands:
-            if any(abs(c[0] - o[0]) + abs(c[1] - o[1]) < min_gap for o in centers):
+            if any(abs(c[0] - o[0]) + abs(c[1] - o[1]) < gap for o in centers):
                 continue
             spots = [(c[0] + dx, c[1] + dy) for dx in range(-2, 3) for dy in range(-2, 3)
                      if (c[0] + dx, c[1] + dy) in walk and (c[0] + dx, c[1] + dy) not in avoid]
@@ -812,6 +859,9 @@ def main() -> int:
         placed = place_stages([SURFACE_HUNTS[name]], [pool], pool, set(), Z7, rng, GAP)
         spawns7.extend(placed[:SURFACE_HUNTS_N[name]])
 
+    def cave_rng(name, z):
+        return random.Random(f"{a.seed}-{name}-{z}")
+
     spawns8 = []
     for spec in CAVES:
         name = spec["name"]
@@ -819,7 +869,7 @@ def main() -> int:
         walk = cave_walk(caves["t8"], caves["floors8"][name])
         stages = CAVE_STAGES[name]
         spawns8.extend(place_stages(stages, slices_by(walk - avoid8, lambda c: d8[name][c], len(stages)),
-                                    walk, avoid8, Z8, rng, CAVE_GAP.get((name, Z8), GAP)))
+                                    walk, avoid8, Z8, cave_rng(name, Z8), GAP))
 
     spawns9 = []
     for spec in DEEP_CAVES:
@@ -828,7 +878,7 @@ def main() -> int:
         walk = cave_walk(caves["t9"], caves["floors9"][name])
         stages = DEEP_STAGES[name]
         spawns9.extend(place_stages(stages, slices_by(walk - avoid9, lambda c: d9[name][c], len(stages)),
-                                    walk, avoid9, Z9, rng, CAVE_GAP.get((name, Z9), GAP)))
+                                    walk, avoid9, Z9, cave_rng(name, Z9), GAP))
 
     try:
         root_spawn = root_colossus_spawn(walk10, d10, grow({portal}, 3), Z10)
@@ -838,7 +888,7 @@ def main() -> int:
         root_spawn, root_pos = None, None
     avoid10 = grow({ABYSS["mouth"], portal}, 3) | (grow({root_pos}, 3) if root_pos else set())
     spawns10 = place_stages(ABYSS_STAGES, slices_by(walk10 - avoid10, lambda c: d10[c], len(ABYSS_STAGES)),
-                            walk10, avoid10, Z10, rng, GAP)
+                            walk10, avoid10, Z10, cave_rng("abyss", Z10), GAP)
     if root_spawn:
         spawns10.append(root_spawn)
     if errors:
