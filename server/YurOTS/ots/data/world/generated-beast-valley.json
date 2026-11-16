@@ -49,8 +49,8 @@
       ]
     },
     {
-      "x": 323,
-      "y": 345,
+      "x": 345,
+      "y": 315,
       "z": 10,
       "to": [
         158,
@@ -82,34 +82,34 @@
   "deepMouths": [
     {
       "name": "catacumbs",
-      "x": 287,
-      "y": 273,
+      "x": 319,
+      "y": 255,
       "z": 9
     },
     {
       "name": "quara",
-      "x": 286,
-      "y": 312,
+      "x": 282,
+      "y": 302,
       "z": 9
     },
     {
       "name": "dragon",
-      "x": 334,
-      "y": 306,
+      "x": 344,
+      "y": 298,
       "z": 9
     }
   ],
   "downs": [
     {
       "name": "catacumbs",
-      "x": 326,
+      "x": 319,
       "y": 255,
       "z": 8
     },
     {
       "name": "quara",
-      "x": 301,
-      "y": 287,
+      "x": 282,
+      "y": 302,
       "z": 8
     },
     {
@@ -120,19 +120,19 @@
     },
     {
       "name": "dragonDeep",
-      "x": 346,
-      "y": 289,
+      "x": 323,
+      "y": 294,
       "z": 9
     }
   ],
   "abyss": {
-    "x": 334,
-    "y": 324,
+    "x": 323,
+    "y": 294,
     "z": 10
   },
   "rootColossus": {
-    "x": 339,
-    "y": 347,
+    "x": 336,
+    "y": 317,
     "z": 10
   },
   "zones": {
@@ -175,43 +175,43 @@
   },
   "spawns": {
     "z7": 31,
-    "z8": 43,
-    "z9": 68,
-    "z10": 22,
-    "monsters": 498
+    "z8": 36,
+    "z9": 65,
+    "z10": 21,
+    "monsters": 423
   },
   "monsters": {
-    "Behemoth": 12,
-    "Black Dragon": 9,
+    "Behemoth": 10,
+    "Black Dragon": 10,
     "Cyclops": 8,
     "Cyclops Drone": 8,
     "Cyclops Smith": 8,
-    "Dark Hydra": 9,
-    "Demon": 8,
-    "Demon Skeleton": 27,
-    "Dragon": 27,
-    "Dragon Hatchling": 19,
-    "Dragon Lord": 18,
-    "Fury": 8,
-    "Ghoul": 32,
-    "Hydra": 9,
+    "Dark Hydra": 10,
+    "Demon": 7,
+    "Demon Skeleton": 25,
+    "Dragon": 28,
+    "Dragon Hatchling": 14,
+    "Dragon Lord": 16,
+    "Fury": 7,
+    "Ghoul": 33,
+    "Hydra": 11,
     "Minotaur": 8,
     "Minotaur Archer": 8,
     "Minotaur Guard": 7,
     "Minotaur Mage": 7,
-    "Mummy": 23,
-    "Necromancer": 15,
-    "Priestess": 15,
-    "Quara Constrictor": 28,
-    "Quara Hydromancer": 22,
-    "Quara Mantassin": 28,
-    "Quara Pincher": 25,
-    "Quara Predator": 27,
+    "Mummy": 24,
+    "Necromancer": 14,
+    "Priestess": 14,
+    "Quara Constrictor": 11,
+    "Quara Hydromancer": 13,
+    "Quara Mantassin": 11,
+    "Quara Pincher": 11,
+    "Quara Predator": 12,
     "Root Colossus": 1,
-    "Serpent Spawn": 7,
-    "Skeleton": 31,
-    "Vampire": 12,
-    "Vampire Bride": 15,
-    "Wyrm": 17
+    "Serpent Spawn": 6,
+    "Skeleton": 33,
+    "Vampire": 13,
+    "Vampire Bride": 14,
+    "Wyrm": 21
   }
 }

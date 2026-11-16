@@ -51,6 +51,14 @@ caminando en ambos sentidos y usando la bajada a z9 con un cliente de protocolo 
 copia aislada del servidor en la ThinkPad (7173), cargando el mapa nuevo. Todas las llegadas correctas. Desplegado en la ThinkPad (`a526166`), con probe posterior OK.
 Ver [revisión y corrección](../items-and-map/REVISION_ESTETICA_HIELO_2026_11_13.md).
 
+## Valle de las Bestias: bajadas sobre roca (15 nov 2026)
+
+Las bajadas `432` de las tres cuevas (z8 → z9) y la del Nido del Dragón (z9 → z10) caían sobre roca: el
+generador cavaba cada piso de abajo desde una boca fija, lejos de la bajada. Ahora la cueva de abajo se
+cava desde debajo de la bajada, con la `1385` en la misma x, y, y el generador valida cada par.
+Probado con un bot GM en una copia aislada (puerto 7275): baja y sube por las 5 escaleras. Detalle en
+[MAPEAR_VALLE_DE_LAS_BESTIAS.md](../items-and-map/MAPEAR_VALLE_DE_LAS_BESTIAS.md#escaleras-entre-pisos).
+
 ## Pendiente (mapa)
 
 - Escalera de mano que baja en `194, 150, 8`: abajo (`194, 150, 9`) es roca. Usarla o pisarla te

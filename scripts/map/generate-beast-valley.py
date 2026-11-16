@@ -138,9 +138,10 @@ CAVES = [
 ]
 # segundo piso de cada cueva: más largo y con más monstruos
 DEEP_CAVES = [
-    {"name": "catacumbs", "box": (6, 4, 46, 46), "mouth": (25, 41), "mud": 0.12, "alt": 0.34,
+    # corrida 16 al este (nov 2026) para quedar debajo de la bajada de las Catacumbas (z8, x 44-65)
+    {"name": "catacumbs", "box": (22, 4, 46, 46), "mouth": (41, 41), "mud": 0.12, "alt": 0.34,
      "bones": 0.12, "min": 420,
-     "spine": [(25, 33), (18, 28), (18, 18), (30, 14), (40, 18), (40, 26)]},
+     "spine": [(41, 33), (34, 28), (34, 18), (46, 14), (56, 18), (56, 26)]},
     {"name": "quara", "box": (6, 50, 46, 40), "mouth": (24, 80), "mud": 0.58, "alt": 0.26,
      "bones": 0.05, "min": 420,
      "spine": [(24, 72), (17, 66), (17, 60), (28, 58), (38, 62), (40, 70)]},
@@ -148,12 +149,15 @@ DEEP_CAVES = [
      "bones": 0.10, "min": 420,
      "spine": [(72, 68), (63, 66), (60, 58), (70, 53), (82, 55), (86, 64)]},
 ]
-ABYSS = {"name": "abyss", "box": (50, 82, 46, 46), "mouth": (72, 92), "mud": 0.60, "alt": 0.26,
+# La boca de cada piso de abajo (z9 y el Abismo) es la bajada del piso de arriba: build_caves() la elige
+# dentro de la caja del piso de abajo y reemplaza "mouth". Por eso la caja del Abismo pisa (en x, y) la
+# del Nido del Dragón. Hasta nov 2026 cada piso tenía una boca fija y las bajadas caían sobre roca.
+ABYSS = {"name": "abyss", "box": (50, 52, 46, 46), "mouth": (72, 92), "mud": 0.60, "alt": 0.26,
          "bones": 0.12, "min": 400}
 CAVE_STAGES = {
     "catacumbs": [(("Ghoul", "Skeleton"), 3, 100), (("Vampire", "Mummy", "Demon Skeleton"), 3, 130),
                   (("Necromancer", "Priestess", "Vampire Bride"), 3, 160)],
-    "quara": [(("Quara Constrictor", "Quara Mantassin"), 4, 110), (("Quara Pincher", "Quara Hydromancer"), 3, 140),
+    "quara": [(("Quara Constrictor", "Quara Mantassin"), 2, 110), (("Quara Pincher", "Quara Hydromancer"), 2, 140),
               (("Quara Predator",), 2, 170)],
     "dragon": [(("Dragon Hatchling", "Dragon"), 3, 150), (("Dragon", "Wyrm"), 3, 190),
                (("Dragon Lord", "Black Dragon"), 2, 240)],
@@ -162,16 +166,20 @@ DEEP_STAGES = {
     "catacumbs": [(("Ghoul", "Skeleton"), 4, 120), (("Mummy", "Vampire", "Demon Skeleton"), 4, 140),
                   (("Necromancer", "Priestess", "Vampire Bride"), 3, 170),
                   (("Vampire Bride", "Necromancer", "Priestess", "Demon Skeleton"), 3, 200)],
-    "quara": [(("Quara Constrictor", "Quara Mantassin"), 4, 120),
-              (("Quara Pincher", "Quara Hydromancer"), 4, 150),
-              (("Quara Predator", "Quara Pincher"), 3, 180),
-              (("Quara Predator", "Quara Hydromancer"), 3, 210)],
+    "quara": [(("Quara Constrictor", "Quara Mantassin"), 2, 120),
+              (("Quara Pincher", "Quara Hydromancer"), 2, 150),
+              (("Quara Predator", "Quara Pincher"), 2, 180),
+              (("Quara Predator", "Quara Hydromancer"), 2, 210)],
     "dragon": [(("Dragon Hatchling", "Dragon"), 3, 160), (("Dragon", "Wyrm"), 3, 190),
                (("Wyrm", "Dragon Lord"), 3, 220), (("Dragon Lord", "Black Dragon"), 2, 260)],
 }
 ABYSS_STAGES = [(("Hydra", "Dark Hydra"), 3, 220), (("Behemoth", "Serpent Spawn"), 3, 250),
                 (("Demon", "Fury"), 2, 300), (("Demon", "Behemoth", "Fury"), 2, 330)]
 GAP = 6                                       # distancia mínima entre centros de spawn
+# Quaras (nov 2026): salían 3-4 por spawn cada 6 casillas y 17 grupos en z8 alrededor de la escalera.
+# Ahora de a 2, más separados en la entrada y sin spawns pegados a las escaleras (~58 en vez de 130).
+CAVE_GAP = {("quara", 8): 7, ("quara", 9): 6}  # (cueva, piso): separación; el resto usa GAP
+STAIR_CLEAR = {"quara": 5}                    # sin spawns a esta distancia de las escaleras (el resto: 3)
 
 
 def ellipse(cx, cy, rx, ry) -> set:
@@ -446,10 +454,36 @@ def carve_named(seed: int, spec: dict):
     allowed = {(x, y) for x in range(bx + 6, bx + bw - 6) for y in range(by + 6, by + bh - 6)}
     mx, my = spec["mouth"]
     core = {(mx + dx, my + dy) for dx in (-1, 0, 1) for dy in (-1, 0, 1, 2)}
-    for sx, sy in spec.get("spine", []):
+    spine = spec.get("spine", [])
+    for sx, sy in spine:
         core |= {(sx + dx, sy + dy) for dx in (-1, 0, 1) for dy in (-1, 0, 1)}
+    if spine:  # pasillo en L de la boca al punto más cercano del recorrido
+        sx, sy = min(spine, key=lambda c: abs(c[0] - mx) + abs(c[1] - my))
+        for x in range(min(mx, sx), max(mx, sx) + 1):
+            core |= {(x, my + d) for d in (-1, 0, 1)}
+        for y in range(min(my, sy), max(my, sy) + 1):
+            core |= {(sx + d, y) for d in (-1, 0, 1)}
     floor = carve_cave(seed, allowed, core, (mx, my + 1), spec["min"])
     return floor
+
+
+def mouth_zone(spec: dict) -> set:
+    """Casillas donde puede ir la boca de una cueva: el núcleo (boca y 2 al sur) y un margen para los
+    bloques de 2x2 de carve_cave tienen que caber en su caja."""
+    bx, by, bw, bh = spec["box"]
+    return {(x, y) for x in range(bx + 6 + 4, bx + bw - 6 - 4) for y in range(by + 6 + 4, by + bh - 6 - 6)}
+
+
+def stair_down(floor: set, start, below: dict):
+    """La bajada: la casilla ancha (3x5 de piso) más lejos de la entrada que además sirve de boca para
+    la cueva de abajo."""
+    d = reach(floor, start, CARD)
+    zone = mouth_zone(below)
+    wide = [c for c in floor if c in zone and c in d and all((c[0] + dx, c[1] + dy) in floor
+                                                             for dx in (-1, 0, 1) for dy in (-2, -1, 0, 1, 2))]
+    if not wide:
+        raise ValueError(f"{below['name']}: no hay dónde poner la bajada encima de su caja")
+    return max(wide, key=lambda c: (d[c], c))
 
 
 def paint_cave(tiles: dict, floor: set, seed: int, mud: float, alt: float):
@@ -473,13 +507,11 @@ def build_caves(seed: int):
         paint_cave(t8, floors8[spec["name"]], seed + i, spec["mud"], spec["alt"])
         t8[spec["mouth"]].append(STAIRS_UP)
     down8 = {}
-    for spec in CAVES:
+    for spec, deep in zip(CAVES, DEEP_CAVES):
         floor = floors8[spec["name"]]
-        d = reach(floor, (spec["mouth"][0], spec["mouth"][1] + 1), CARD)
-        wide = [c for c in floor if all((c[0] + dx, c[1] + dy) in floor
-                                        for dx in (-1, 0, 1) for dy in (-2, -1, 0, 1, 2))]
-        down8[spec["name"]] = max(wide, key=lambda c: d[c])
+        down8[spec["name"]] = stair_down(floor, (spec["mouth"][0], spec["mouth"][1] + 1), deep)
         t8[down8[spec["name"]]] = [STAIR_DOWN]
+        deep["mouth"] = down8[spec["name"]]      # el fondo empieza justo debajo
 
     # z9: fondo largo de cada cueva (misma familia, más monstruos)
     floors9 = {}
@@ -492,10 +524,9 @@ def build_caves(seed: int):
         t9[spec["mouth"]].append(STAIRS_UP)
     # el fondo de los dragones baja al Abismo
     d9 = reach(floors9["dragon"], (DEEP_CAVES[2]["mouth"][0], DEEP_CAVES[2]["mouth"][1] + 1), CARD)
-    wide = [c for c in floors9["dragon"] if all((c[0] + dx, c[1] + dy) in floors9["dragon"]
-                                                for dx in (-1, 0, 1) for dy in (-2, -1, 0, 1, 2))]
-    down9 = max(wide, key=lambda c: d9[c])
+    down9 = stair_down(floors9["dragon"], (DEEP_CAVES[2]["mouth"][0], DEEP_CAVES[2]["mouth"][1] + 1), ABYSS)
     t9[down9] = [STAIR_DOWN]
+    ABYSS["mouth"] = down9
 
     # z10: Abismo (final de la progresión)
     floor10 = carve_named(seed + 41, ABYSS)
@@ -513,13 +544,13 @@ def build_caves(seed: int):
             "t10": t10, "floor10": floor10, "d10": d10, "portal": portal}
 
 
-def place_props(tiles: dict, floor: set, start, props, rate: float, seed: int):
+def place_props(tiles: dict, floor: set, start, props, rate: float, seed: int, keep=frozenset()):
     """Props de tema (pilares, braseros, huesos) en el borde de la cueva, sin cortar el paso."""
     rng = random.Random(seed + 777)
     walk = set(floor)
     base = len(reach(walk, start, CARD))
     for c in sorted(floor, key=lambda c: (c[1], c[0])):
-        if c not in walk or len(tiles[c]) > 1 or tiles[c][0] == STAIR_DOWN:
+        if c not in walk or c in keep or len(tiles[c]) > 1 or tiles[c][0] == STAIR_DOWN:
             continue
         x, y = c
         if 8 - len(neighbors_in(floor, x, y)) < 2 or rng.random() > rate:
@@ -676,12 +707,12 @@ def main() -> int:
     }
     for i, spec in enumerate(CAVES):
         place_props(caves["t8"], caves["floors8"][spec["name"]], (spec["mouth"][0], spec["mouth"][1] + 1),
-                    *CAVE_PROPS[spec["name"]], a.seed + i)
+                    *CAVE_PROPS[spec["name"]], a.seed + i, grow({spec["mouth"], dn8[spec["name"]]}, 2))
     for i, spec in enumerate(DEEP_CAVES):
         place_props(caves["t9"], caves["floors9"][spec["name"]], (spec["mouth"][0], spec["mouth"][1] + 1),
-                    *CAVE_PROPS[spec["name"]], a.seed + 70 + i)
+                    *CAVE_PROPS[spec["name"]], a.seed + 70 + i, grow({spec["mouth"], dn9}, 2))
     place_props(caves["t10"], caves["floor10"], (ABYSS["mouth"][0], ABYSS["mouth"][1] + 1),
-                (COAL_BASIN, DRAGON_BONES), 0.07, a.seed + 80)
+                (COAL_BASIN, DRAGON_BONES), 0.07, a.seed + 80, grow({ABYSS["mouth"], portal}, 2))
 
     errors = []
     # bordes de tierra: pieza exacta en el suelo
@@ -735,6 +766,25 @@ def main() -> int:
     if not any((portal[0] + dx, portal[1] + dy) in d10 for dx, dy in CARD):
         errors.append(f"z10: el portal final {portal} sin acceso")
 
+    # escaleras: bajada (432) en z con escalera de mano (1385) justo debajo, que sube hacia el norte; se
+    # llega caminando a la casilla de abajo (sur) y la de arriba al norte se puede pisar
+    layers = {Z7: surf, Z8: caves["t8"], Z9: caves["t9"], Z10: caves["t10"]}
+    for z, t in layers.items():
+        for (x, y), it in t.items():
+            if STAIR_DOWN in it:
+                below = layers.get(z + 1, {}).get((x, y))
+                if not below or STAIRS_UP not in below or below[0] not in CAVE_FLOORS:
+                    errors.append(f"escalera z{z} {(X0 + x, Y0 + y)}: abajo no hay escalera de mano ({below})")
+                elif not bl.walkable(layers[z + 1].get((x, y + 1), [ROCK])):
+                    errors.append(f"escalera z{z} {(X0 + x, Y0 + y)}: no se puede salir hacia el sur abajo")
+            if STAIRS_UP in it:
+                above = layers.get(z - 1, {}).get((x, y))
+                north = layers.get(z - 1, {}).get((x, y - 1))
+                if not above or STAIR_DOWN not in above:
+                    errors.append(f"escalera de mano z{z} {(X0 + x, Y0 + y)}: arriba no hay bajada ({above})")
+                elif not north or not bl.walkable(north):
+                    errors.append(f"escalera de mano z{z} {(X0 + x, Y0 + y)}: al subir se cae en {north}")
+
     walk8 = {c for c, it in caves["t8"].items() if bl.walkable(it) and it[0] in CAVE_FLOORS}
     walk9 = {c for c, it in caves["t9"].items() if bl.walkable(it) and it[0] in CAVE_FLOORS}
     for t, label in ((caves["t8"], "z8"), (caves["t9"], "z9"), (caves["t10"], "z10")):
@@ -762,21 +812,23 @@ def main() -> int:
         placed = place_stages([SURFACE_HUNTS[name]], [pool], pool, set(), Z7, rng, GAP)
         spawns7.extend(placed[:SURFACE_HUNTS_N[name]])
 
-    avoid8 = grow({spec["mouth"] for spec in CAVES} | set(dn8.values()), 3)
     spawns8 = []
     for spec in CAVES:
-        walk = cave_walk(caves["t8"], caves["floors8"][spec["name"]])
-        stages = CAVE_STAGES[spec["name"]]
-        spawns8.extend(place_stages(stages, slices_by(walk - avoid8, lambda c: d8[spec["name"]][c], len(stages)),
-                                    walk, avoid8, Z8, rng, GAP))
+        name = spec["name"]
+        avoid8 = grow({spec["mouth"], dn8[name]}, STAIR_CLEAR.get(name, 3))
+        walk = cave_walk(caves["t8"], caves["floors8"][name])
+        stages = CAVE_STAGES[name]
+        spawns8.extend(place_stages(stages, slices_by(walk - avoid8, lambda c: d8[name][c], len(stages)),
+                                    walk, avoid8, Z8, rng, CAVE_GAP.get((name, Z8), GAP)))
 
-    avoid9 = grow({spec["mouth"] for spec in DEEP_CAVES} | {dn9}, 3)
     spawns9 = []
     for spec in DEEP_CAVES:
-        walk = cave_walk(caves["t9"], caves["floors9"][spec["name"]])
-        stages = DEEP_STAGES[spec["name"]]
-        spawns9.extend(place_stages(stages, slices_by(walk - avoid9, lambda c: d9[spec["name"]][c], len(stages)),
-                                    walk, avoid9, Z9, rng, GAP))
+        name = spec["name"]
+        avoid9 = grow({spec["mouth"]} | ({dn9} if name == "dragon" else set()), STAIR_CLEAR.get(name, 3))
+        walk = cave_walk(caves["t9"], caves["floors9"][name])
+        stages = DEEP_STAGES[name]
+        spawns9.extend(place_stages(stages, slices_by(walk - avoid9, lambda c: d9[name][c], len(stages)),
+                                    walk, avoid9, Z9, rng, CAVE_GAP.get((name, Z9), GAP)))
 
     try:
         root_spawn = root_colossus_spawn(walk10, d10, grow({portal}, 3), Z10)
@@ -851,22 +903,27 @@ def main() -> int:
     # --- spawns: fuera el bloque del Hunt Maze y todo lo que caiga en las cajas ---
     sp = SPAWNS.read_text(encoding="latin-1")
     sp = re.sub(r"[ \t]*<!-- BEGIN HUNT_MAZE -->.*?<!-- END HUNT_MAZE -->\n?", "", sp, flags=re.S)
-    sp = re.sub(r"[ \t]*<!-- BEGIN BEAST_VALLEY_SPAWNS.*?<!-- END BEAST_VALLEY_SPAWNS -->\n?", "", sp, flags=re.S)
-    sp = re.sub(r'[ \t]*<spawn centerx="(\d+)" centery="(\d+)" centerz="(\d+)"[^>]*>.*?</spawn>\n?',
-                lambda m: "" if gone(int(m.group(1)), int(m.group(2)), int(m.group(3))) else m.group(0), sp, flags=re.S)
     block = "\t<!-- BEGIN BEAST_VALLEY_SPAWNS (scripts/map/generate-beast-valley.py) -->\n" + \
         spawn_xml(spawns7 + spawns8 + spawns9 + spawns10) + "\n\t<!-- END BEAST_VALLEY_SPAWNS -->\n"
-    sp = sp.replace("</spawns>", block + "</spawns>")
+    old = re.search(r"[ \t]*<!-- BEGIN BEAST_VALLEY_SPAWNS.*?<!-- END BEAST_VALLEY_SPAWNS -->\n?", sp, flags=re.S)
+    if old:   # en su lugar: el diff queda chico
+        sp = sp[:old.start()] + "\x00BLOCK\x00" + sp[old.end():]
+    sp = re.sub(r'[ \t]*<spawn centerx="(\d+)" centery="(\d+)" centerz="(\d+)"[^>]*>.*?</spawn>\n?',
+                lambda m: "" if gone(int(m.group(1)), int(m.group(2)), int(m.group(3))) else m.group(0), sp, flags=re.S)
+    sp = sp.replace("\x00BLOCK\x00", block) if old else sp.replace("</spawns>", block + "</spawns>")
     SPAWNS.write_text(sp, encoding="latin-1")
 
     # --- carteles ---
     rd = READABLES.read_text(encoding="latin-1")
-    rd = re.sub(r"\t?<!-- BEGIN BEAST_VALLEY_SIGNS -->.*?<!-- END BEAST_VALLEY_SIGNS -->\n?", "", rd, flags=re.S)
     lines = ["\t<!-- BEGIN BEAST_VALLEY_SIGNS -->"]
     for (x, y), t in sorted(info["signs"].items()):
         lines.append(f'\t<readable x="{X0 + x}" y="{Y0 + y}" z="7" text="{t.replace(chr(10), chr(92) + "n")}"/>')
     lines.append("\t<!-- END BEAST_VALLEY_SIGNS -->\n")
-    rd = rd.replace("</readables>", "\n".join(lines) + "</readables>")
+    old = re.search(r"\t?<!-- BEGIN BEAST_VALLEY_SIGNS -->.*?<!-- END BEAST_VALLEY_SIGNS -->\n?", rd, flags=re.S)
+    if old:
+        rd = rd[:old.start()] + "\n".join(lines) + rd[old.end():]
+    else:
+        rd = rd.replace("</readables>", "\n".join(lines) + "</readables>")
     READABLES.write_text(rd, encoding="latin-1")
 
     if OLD_MANIFEST.exists():

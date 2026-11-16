@@ -4611,674 +4611,577 @@
 		<monster name="Mummy" x="1" y="2" z="7" spawntime="90" />
 	</spawn>
 	<spawn centerx="311" centery="257" centerz="8" radius="3">
-		<monster name="Ghoul" x="2" y="2" z="8" spawntime="100" />
-		<monster name="Skeleton" x="1" y="-1" z="8" spawntime="100" />
-		<monster name="Ghoul" x="1" y="2" z="8" spawntime="100" />
-	</spawn>
-	<spawn centerx="315" centery="261" centerz="8" radius="3">
-		<monster name="Skeleton" x="2" y="0" z="8" spawntime="100" />
 		<monster name="Ghoul" x="-2" y="1" z="8" spawntime="100" />
-		<monster name="Skeleton" x="1" y="1" z="8" spawntime="100" />
-	</spawn>
-	<spawn centerx="320" centery="268" centerz="8" radius="3">
-		<monster name="Ghoul" x="-2" y="-1" z="8" spawntime="100" />
-		<monster name="Skeleton" x="2" y="-2" z="8" spawntime="100" />
-		<monster name="Ghoul" x="0" y="0" z="8" spawntime="100" />
-	</spawn>
-	<spawn centerx="318" centery="264" centerz="8" radius="3">
-		<monster name="Skeleton" x="1" y="1" z="8" spawntime="100" />
-		<monster name="Ghoul" x="1" y="0" z="8" spawntime="100" />
-		<monster name="Skeleton" x="-1" y="2" z="8" spawntime="100" />
-	</spawn>
-	<spawn centerx="309" centery="261" centerz="8" radius="3">
+		<monster name="Skeleton" x="2" y="2" z="8" spawntime="100" />
 		<monster name="Ghoul" x="-1" y="1" z="8" spawntime="100" />
+	</spawn>
+	<spawn centerx="320" centery="266" centerz="8" radius="3">
+		<monster name="Skeleton" x="0" y="1" z="8" spawntime="100" />
+		<monster name="Ghoul" x="-1" y="1" z="8" spawntime="100" />
+		<monster name="Skeleton" x="-1" y="-1" z="8" spawntime="100" />
+	</spawn>
+	<spawn centerx="317" centery="263" centerz="8" radius="3">
+		<monster name="Ghoul" x="2" y="2" z="8" spawntime="100" />
+		<monster name="Skeleton" x="0" y="-1" z="8" spawntime="100" />
+		<monster name="Ghoul" x="2" y="1" z="8" spawntime="100" />
+	</spawn>
+	<spawn centerx="308" centery="260" centerz="8" radius="3">
 		<monster name="Skeleton" x="2" y="1" z="8" spawntime="100" />
-		<monster name="Ghoul" x="2" y="0" z="8" spawntime="100" />
+		<monster name="Ghoul" x="1" y="1" z="8" spawntime="100" />
+		<monster name="Skeleton" x="1" y="2" z="8" spawntime="100" />
+	</spawn>
+	<spawn centerx="316" centery="268" centerz="8" radius="3">
+		<monster name="Ghoul" x="-2" y="2" z="8" spawntime="100" />
+		<monster name="Skeleton" x="2" y="-1" z="8" spawntime="100" />
+		<monster name="Ghoul" x="0" y="-1" z="8" spawntime="100" />
+	</spawn>
+	<spawn centerx="312" centery="262" centerz="8" radius="3">
+		<monster name="Skeleton" x="-1" y="-2" z="8" spawntime="100" />
+		<monster name="Ghoul" x="-2" y="0" z="8" spawntime="100" />
+		<monster name="Skeleton" x="0" y="-2" z="8" spawntime="100" />
 	</spawn>
 	<spawn centerx="322" centery="262" centerz="8" radius="3">
-		<monster name="Vampire" x="0" y="-1" z="8" spawntime="130" />
-		<monster name="Mummy" x="0" y="-2" z="8" spawntime="130" />
-		<monster name="Demon Skeleton" x="2" y="1" z="8" spawntime="130" />
-	</spawn>
-	<spawn centerx="314" centery="254" centerz="8" radius="3">
-		<monster name="Vampire" x="0" y="-2" z="8" spawntime="130" />
-		<monster name="Mummy" x="1" y="0" z="8" spawntime="130" />
+		<monster name="Vampire" x="2" y="-2" z="8" spawntime="130" />
+		<monster name="Mummy" x="-1" y="-1" z="8" spawntime="130" />
 		<monster name="Demon Skeleton" x="-1" y="-2" z="8" spawntime="130" />
 	</spawn>
-	<spawn centerx="317" centery="257" centerz="8" radius="3">
-		<monster name="Vampire" x="-1" y="-2" z="8" spawntime="130" />
+	<spawn centerx="312" centery="251" centerz="8" radius="3">
+		<monster name="Vampire" x="0" y="-1" z="8" spawntime="130" />
+		<monster name="Mummy" x="1" y="1" z="8" spawntime="130" />
+		<monster name="Demon Skeleton" x="2" y="1" z="8" spawntime="130" />
+	</spawn>
+	<spawn centerx="315" centery="255" centerz="8" radius="3">
+		<monster name="Vampire" x="-2" y="0" z="8" spawntime="130" />
 		<monster name="Mummy" x="0" y="2" z="8" spawntime="130" />
-		<monster name="Demon Skeleton" x="0" y="0" z="8" spawntime="130" />
+		<monster name="Demon Skeleton" x="-1" y="-1" z="8" spawntime="130" />
 	</spawn>
-	<spawn centerx="306" centery="255" centerz="8" radius="3">
-		<monster name="Necromancer" x="2" y="-2" z="8" spawntime="160" />
-		<monster name="Priestess" x="2" y="1" z="8" spawntime="160" />
-		<monster name="Vampire Bride" x="2" y="0" z="8" spawntime="160" />
+	<spawn centerx="319" centery="259" centerz="8" radius="3">
+		<monster name="Vampire" x="-1" y="0" z="8" spawntime="130" />
+		<monster name="Mummy" x="0" y="0" z="8" spawntime="130" />
+		<monster name="Demon Skeleton" x="-1" y="2" z="8" spawntime="130" />
 	</spawn>
-	<spawn centerx="320" centery="254" centerz="8" radius="3">
-		<monster name="Necromancer" x="2" y="1" z="8" spawntime="160" />
-		<monster name="Priestess" x="1" y="2" z="8" spawntime="160" />
-		<monster name="Vampire Bride" x="-1" y="1" z="8" spawntime="160" />
+	<spawn centerx="327" centery="257" centerz="8" radius="3">
+		<monster name="Necromancer" x="0" y="1" z="8" spawntime="160" />
+		<monster name="Priestess" x="-1" y="-1" z="8" spawntime="160" />
+		<monster name="Vampire Bride" x="-2" y="0" z="8" spawntime="160" />
 	</spawn>
-	<spawn centerx="325" centery="259" centerz="8" radius="3">
-		<monster name="Necromancer" x="-1" y="0" z="8" spawntime="160" />
-		<monster name="Priestess" x="-2" y="0" z="8" spawntime="160" />
-		<monster name="Vampire Bride" x="0" y="0" z="8" spawntime="160" />
+	<spawn centerx="324" centery="252" centerz="8" radius="3">
+		<monster name="Necromancer" x="-1" y="1" z="8" spawntime="160" />
+		<monster name="Priestess" x="1" y="1" z="8" spawntime="160" />
+		<monster name="Vampire Bride" x="-1" y="2" z="8" spawntime="160" />
 	</spawn>
-	<spawn centerx="309" centery="252" centerz="8" radius="3">
-		<monster name="Necromancer" x="2" y="-2" z="8" spawntime="160" />
-		<monster name="Priestess" x="0" y="0" z="8" spawntime="160" />
-		<monster name="Vampire Bride" x="1" y="2" z="8" spawntime="160" />
+	<spawn centerx="308" centery="253" centerz="8" radius="3">
+		<monster name="Necromancer" x="0" y="-2" z="8" spawntime="160" />
+		<monster name="Priestess" x="1" y="1" z="8" spawntime="160" />
+		<monster name="Vampire Bride" x="2" y="1" z="8" spawntime="160" />
 	</spawn>
-	<spawn centerx="323" centery="251" centerz="8" radius="3">
-		<monster name="Necromancer" x="-1" y="2" z="8" spawntime="160" />
-		<monster name="Priestess" x="-2" y="2" z="8" spawntime="160" />
-		<monster name="Vampire Bride" x="0" y="0" z="8" spawntime="160" />
+	<spawn centerx="297" centery="296" centerz="8" radius="3">
+		<monster name="Quara Constrictor" x="2" y="-1" z="8" spawntime="110" />
+		<monster name="Quara Mantassin" x="2" y="-2" z="8" spawntime="110" />
 	</spawn>
-	<spawn centerx="313" centery="249" centerz="8" radius="3">
-		<monster name="Necromancer" x="0" y="0" z="8" spawntime="160" />
-		<monster name="Priestess" x="0" y="2" z="8" spawntime="160" />
-		<monster name="Vampire Bride" x="-2" y="1" z="8" spawntime="160" />
-	</spawn>
-	<spawn centerx="285" centery="293" centerz="8" radius="3">
-		<monster name="Quara Constrictor" x="0" y="2" z="8" spawntime="110" />
-		<monster name="Quara Mantassin" x="1" y="-2" z="8" spawntime="110" />
-		<monster name="Quara Constrictor" x="-2" y="-1" z="8" spawntime="110" />
+	<spawn centerx="283" centery="294" centerz="8" radius="3">
+		<monster name="Quara Constrictor" x="-2" y="-2" z="8" spawntime="110" />
 		<monster name="Quara Mantassin" x="1" y="-1" z="8" spawntime="110" />
 	</spawn>
-	<spawn centerx="297" centery="293" centerz="8" radius="3">
-		<monster name="Quara Constrictor" x="2" y="1" z="8" spawntime="110" />
-		<monster name="Quara Mantassin" x="2" y="-2" z="8" spawntime="110" />
-		<monster name="Quara Constrictor" x="-1" y="1" z="8" spawntime="110" />
-		<monster name="Quara Mantassin" x="-2" y="1" z="8" spawntime="110" />
+	<spawn centerx="290" centery="287" centerz="8" radius="3">
+		<monster name="Quara Constrictor" x="2" y="0" z="8" spawntime="110" />
+		<monster name="Quara Mantassin" x="-2" y="0" z="8" spawntime="110" />
 	</spawn>
-	<spawn centerx="290" centery="290" centerz="8" radius="3">
+	<spawn centerx="293" centery="300" centerz="8" radius="3">
+		<monster name="Quara Constrictor" x="0" y="2" z="8" spawntime="110" />
+		<monster name="Quara Mantassin" x="-1" y="1" z="8" spawntime="110" />
+	</spawn>
+	<spawn centerx="288" centery="302" centerz="8" radius="3">
 		<monster name="Quara Constrictor" x="0" y="0" z="8" spawntime="110" />
-		<monster name="Quara Mantassin" x="2" y="-1" z="8" spawntime="110" />
-		<monster name="Quara Constrictor" x="-2" y="0" z="8" spawntime="110" />
-		<monster name="Quara Mantassin" x="-1" y="-1" z="8" spawntime="110" />
+		<monster name="Quara Mantassin" x="1" y="-1" z="8" spawntime="110" />
 	</spawn>
-	<spawn centerx="291" centery="301" centerz="8" radius="3">
-		<monster name="Quara Constrictor" x="-2" y="-2" z="8" spawntime="110" />
-		<monster name="Quara Mantassin" x="2" y="-2" z="8" spawntime="110" />
-		<monster name="Quara Constrictor" x="-1" y="1" z="8" spawntime="110" />
-		<monster name="Quara Mantassin" x="1" y="1" z="8" spawntime="110" />
-	</spawn>
-	<spawn centerx="287" centery="298" centerz="8" radius="3">
-		<monster name="Quara Constrictor" x="0" y="0" z="8" spawntime="110" />
-		<monster name="Quara Mantassin" x="2" y="0" z="8" spawntime="110" />
-		<monster name="Quara Constrictor" x="0" y="1" z="8" spawntime="110" />
-		<monster name="Quara Mantassin" x="1" y="1" z="8" spawntime="110" />
-	</spawn>
-	<spawn centerx="295" centery="297" centerz="8" radius="3">
-		<monster name="Quara Constrictor" x="1" y="-2" z="8" spawntime="110" />
-		<monster name="Quara Mantassin" x="1" y="2" z="8" spawntime="110" />
-		<monster name="Quara Constrictor" x="0" y="-1" z="8" spawntime="110" />
-		<monster name="Quara Mantassin" x="0" y="-2" z="8" spawntime="110" />
-	</spawn>
-	<spawn centerx="286" centery="288" centerz="8" radius="3">
-		<monster name="Quara Pincher" x="-2" y="-1" z="8" spawntime="140" />
-		<monster name="Quara Hydromancer" x="1" y="1" z="8" spawntime="140" />
-		<monster name="Quara Pincher" x="2" y="0" z="8" spawntime="140" />
-	</spawn>
-	<spawn centerx="282" centery="296" centerz="8" radius="3">
-		<monster name="Quara Hydromancer" x="2" y="0" z="8" spawntime="140" />
-		<monster name="Quara Pincher" x="0" y="0" z="8" spawntime="140" />
-		<monster name="Quara Hydromancer" x="2" y="-1" z="8" spawntime="140" />
-	</spawn>
-	<spawn centerx="295" centery="289" centerz="8" radius="3">
-		<monster name="Quara Pincher" x="0" y="1" z="8" spawntime="140" />
+	<spawn centerx="302" centery="294" centerz="8" radius="3">
+		<monster name="Quara Pincher" x="0" y="-1" z="8" spawntime="140" />
 		<monster name="Quara Hydromancer" x="2" y="-2" z="8" spawntime="140" />
-		<monster name="Quara Pincher" x="-1" y="-1" z="8" spawntime="140" />
 	</spawn>
-	<spawn centerx="300" centery="296" centerz="8" radius="3">
-		<monster name="Quara Hydromancer" x="2" y="-2" z="8" spawntime="140" />
-		<monster name="Quara Pincher" x="0" y="2" z="8" spawntime="140" />
-		<monster name="Quara Hydromancer" x="1" y="2" z="8" spawntime="140" />
+	<spawn centerx="297" centery="289" centerz="8" radius="3">
+		<monster name="Quara Pincher" x="2" y="1" z="8" spawntime="140" />
+		<monster name="Quara Hydromancer" x="0" y="1" z="8" spawntime="140" />
 	</spawn>
-	<spawn centerx="280" centery="300" centerz="8" radius="3">
+	<spawn centerx="285" centery="289" centerz="8" radius="3">
+		<monster name="Quara Pincher" x="-1" y="2" z="8" spawntime="140" />
+		<monster name="Quara Hydromancer" x="1" y="-1" z="8" spawntime="140" />
+	</spawn>
+	<spawn centerx="303" centery="288" centerz="8" radius="3">
 		<monster name="Quara Predator" x="0" y="2" z="8" spawntime="170" />
+		<monster name="Quara Predator" x="1" y="1" z="8" spawntime="170" />
+	</spawn>
+	<spawn centerx="300" centery="300" centerz="8" radius="3">
 		<monster name="Quara Predator" x="0" y="-2" z="8" spawntime="170" />
+		<monster name="Quara Predator" x="-2" y="-1" z="8" spawntime="170" />
 	</spawn>
-	<spawn centerx="282" centery="304" centerz="8" radius="3">
-		<monster name="Quara Predator" x="1" y="-2" z="8" spawntime="170" />
-		<monster name="Quara Predator" x="-2" y="-2" z="8" spawntime="170" />
-	</spawn>
-	<spawn centerx="303" centery="291" centerz="8" radius="3">
-		<monster name="Quara Predator" x="1" y="0" z="8" spawntime="170" />
-		<monster name="Quara Predator" x="-1" y="2" z="8" spawntime="170" />
-	</spawn>
-	<spawn centerx="297" centery="285" centerz="8" radius="3">
-		<monster name="Quara Predator" x="0" y="0" z="8" spawntime="170" />
-		<monster name="Quara Predator" x="0" y="2" z="8" spawntime="170" />
-	</spawn>
-	<spawn centerx="282" centery="290" centerz="8" radius="3">
-		<monster name="Quara Predator" x="-1" y="-1" z="8" spawntime="170" />
-		<monster name="Quara Predator" x="1" y="2" z="8" spawntime="170" />
-	</spawn>
-	<spawn centerx="296" centery="302" centerz="8" radius="3">
-		<monster name="Quara Predator" x="0" y="0" z="8" spawntime="170" />
-		<monster name="Quara Predator" x="0" y="-1" z="8" spawntime="170" />
-	</spawn>
-	<spawn centerx="283" centery="285" centerz="8" radius="3">
-		<monster name="Quara Predator" x="0" y="2" z="8" spawntime="170" />
-		<monster name="Quara Predator" x="2" y="1" z="8" spawntime="170" />
-	</spawn>
-	<spawn centerx="329" centery="288" centerz="8" radius="3">
-		<monster name="Dragon Hatchling" x="-1" y="-1" z="8" spawntime="150" />
-		<monster name="Dragon" x="0" y="1" z="8" spawntime="150" />
+	<spawn centerx="338" centery="292" centerz="8" radius="3">
+		<monster name="Dragon Hatchling" x="1" y="-1" z="8" spawntime="150" />
+		<monster name="Dragon" x="-1" y="0" z="8" spawntime="150" />
 		<monster name="Dragon Hatchling" x="-2" y="0" z="8" spawntime="150" />
 	</spawn>
-	<spawn centerx="334" centery="298" centerz="8" radius="3">
-		<monster name="Dragon" x="0" y="2" z="8" spawntime="150" />
-		<monster name="Dragon Hatchling" x="-2" y="0" z="8" spawntime="150" />
+	<spawn centerx="334" centery="294" centerz="8" radius="3">
+		<monster name="Dragon" x="-1" y="0" z="8" spawntime="150" />
+		<monster name="Dragon Hatchling" x="-2" y="-1" z="8" spawntime="150" />
 		<monster name="Dragon" x="1" y="-2" z="8" spawntime="150" />
 	</spawn>
-	<spawn centerx="335" centery="292" centerz="8" radius="3">
-		<monster name="Dragon Hatchling" x="-1" y="2" z="8" spawntime="150" />
-		<monster name="Dragon" x="0" y="0" z="8" spawntime="150" />
+	<spawn centerx="328" centery="289" centerz="8" radius="3">
 		<monster name="Dragon Hatchling" x="-1" y="1" z="8" spawntime="150" />
-	</spawn>
-	<spawn centerx="331" centery="294" centerz="8" radius="3">
-		<monster name="Dragon" x="-1" y="1" z="8" spawntime="150" />
-		<monster name="Dragon Hatchling" x="0" y="0" z="8" spawntime="150" />
-		<monster name="Dragon" x="-1" y="-2" z="8" spawntime="150" />
-	</spawn>
-	<spawn centerx="341" centery="290" centerz="8" radius="3">
+		<monster name="Dragon" x="2" y="1" z="8" spawntime="150" />
 		<monster name="Dragon Hatchling" x="1" y="2" z="8" spawntime="150" />
-		<monster name="Dragon" x="0" y="1" z="8" spawntime="150" />
-		<monster name="Dragon Hatchling" x="-2" y="2" z="8" spawntime="150" />
 	</spawn>
-	<spawn centerx="326" centery="292" centerz="8" radius="3">
-		<monster name="Dragon" x="1" y="2" z="8" spawntime="190" />
-		<monster name="Wyrm" x="-2" y="1" z="8" spawntime="190" />
-		<monster name="Dragon" x="-2" y="-2" z="8" spawntime="190" />
+	<spawn centerx="324" centery="291" centerz="8" radius="3">
+		<monster name="Dragon" x="2" y="2" z="8" spawntime="190" />
+		<monster name="Wyrm" x="0" y="-2" z="8" spawntime="190" />
+		<monster name="Dragon" x="0" y="-1" z="8" spawntime="190" />
 	</spawn>
-	<spawn centerx="339" centery="296" centerz="8" radius="3">
-		<monster name="Wyrm" x="-2" y="0" z="8" spawntime="190" />
-		<monster name="Dragon" x="-2" y="2" z="8" spawntime="190" />
-		<monster name="Wyrm" x="0" y="1" z="8" spawntime="190" />
+	<spawn centerx="336" centery="298" centerz="8" radius="3">
+		<monster name="Wyrm" x="0" y="0" z="8" spawntime="190" />
+		<monster name="Dragon" x="1" y="-1" z="8" spawntime="190" />
+		<monster name="Wyrm" x="2" y="-1" z="8" spawntime="190" />
 	</spawn>
-	<spawn centerx="324" centery="287" centerz="8" radius="3">
-		<monster name="Dragon" x="1" y="0" z="8" spawntime="190" />
-		<monster name="Wyrm" x="1" y="-2" z="8" spawntime="190" />
-		<monster name="Dragon" x="1" y="2" z="8" spawntime="190" />
+	<spawn centerx="329" centery="295" centerz="8" radius="3">
+		<monster name="Dragon" x="0" y="1" z="8" spawntime="190" />
+		<monster name="Wyrm" x="2" y="2" z="8" spawntime="190" />
+		<monster name="Dragon" x="1" y="-2" z="8" spawntime="190" />
 	</spawn>
-	<spawn centerx="328" centery="298" centerz="8" radius="3">
-		<monster name="Dragon Lord" x="-1" y="0" z="8" spawntime="240" />
-		<monster name="Black Dragon" x="2" y="-1" z="8" spawntime="240" />
+	<spawn centerx="342" centery="290" centerz="8" radius="3">
+		<monster name="Wyrm" x="-1" y="1" z="8" spawntime="190" />
+		<monster name="Dragon" x="0" y="-1" z="8" spawntime="190" />
+		<monster name="Wyrm" x="-1" y="2" z="8" spawntime="190" />
 	</spawn>
-	<spawn centerx="324" centery="300" centerz="8" radius="3">
+	<spawn centerx="345" centery="293" centerz="8" radius="3">
+		<monster name="Dragon Lord" x="0" y="1" z="8" spawntime="240" />
+		<monster name="Black Dragon" x="0" y="-1" z="8" spawntime="240" />
+	</spawn>
+	<spawn centerx="325" centery="298" centerz="8" radius="3">
 		<monster name="Dragon Lord" x="-2" y="-2" z="8" spawntime="240" />
-		<monster name="Black Dragon" x="2" y="-1" z="8" spawntime="240" />
+		<monster name="Black Dragon" x="-1" y="-1" z="8" spawntime="240" />
 	</spawn>
-	<spawn centerx="323" centery="295" centerz="8" radius="3">
-		<monster name="Dragon Lord" x="2" y="0" z="8" spawntime="240" />
-		<monster name="Black Dragon" x="0" y="2" z="8" spawntime="240" />
+	<spawn centerx="322" centery="295" centerz="8" radius="3">
+		<monster name="Dragon Lord" x="2" y="1" z="8" spawntime="240" />
+		<monster name="Black Dragon" x="1" y="2" z="8" spawntime="240" />
 	</spawn>
-	<spawn centerx="344" centery="293" centerz="8" radius="3">
-		<monster name="Dragon Lord" x="-2" y="1" z="8" spawntime="240" />
-		<monster name="Black Dragon" x="-2" y="0" z="8" spawntime="240" />
+	<spawn centerx="332" centery="300" centerz="8" radius="3">
+		<monster name="Dragon Lord" x="-2" y="-1" z="8" spawntime="240" />
+		<monster name="Black Dragon" x="-1" y="-1" z="8" spawntime="240" />
 	</spawn>
-	<spawn centerx="285" centery="266" centerz="9" radius="3">
-		<monster name="Ghoul" x="2" y="1" z="9" spawntime="120" />
-		<monster name="Skeleton" x="1" y="0" z="9" spawntime="120" />
-		<monster name="Ghoul" x="-2" y="1" z="9" spawntime="120" />
-		<monster name="Skeleton" x="0" y="2" z="9" spawntime="120" />
+	<spawn centerx="324" centery="285" centerz="8" radius="3">
+		<monster name="Dragon Lord" x="0" y="2" z="8" spawntime="240" />
+		<monster name="Black Dragon" x="0" y="1" z="8" spawntime="240" />
 	</spawn>
-	<spawn centerx="279" centery="269" centerz="9" radius="3">
-		<monster name="Ghoul" x="1" y="-1" z="9" spawntime="120" />
-		<monster name="Skeleton" x="2" y="1" z="9" spawntime="120" />
-		<monster name="Ghoul" x="2" y="-1" z="9" spawntime="120" />
-		<monster name="Skeleton" x="2" y="-2" z="9" spawntime="120" />
+	<spawn centerx="340" centery="296" centerz="8" radius="3">
+		<monster name="Dragon Lord" x="1" y="-2" z="8" spawntime="240" />
+		<monster name="Black Dragon" x="-2" y="-1" z="8" spawntime="240" />
 	</spawn>
-	<spawn centerx="287" centery="262" centerz="9" radius="3">
-		<monster name="Ghoul" x="0" y="-2" z="9" spawntime="120" />
-		<monster name="Skeleton" x="1" y="1" z="9" spawntime="120" />
+	<spawn centerx="314" centery="254" centerz="9" radius="3">
+		<monster name="Ghoul" x="-1" y="2" z="9" spawntime="120" />
+		<monster name="Skeleton" x="1" y="-1" z="9" spawntime="120" />
+		<monster name="Ghoul" x="-2" y="-2" z="9" spawntime="120" />
+		<monster name="Skeleton" x="-2" y="1" z="9" spawntime="120" />
+	</spawn>
+	<spawn centerx="318" centery="251" centerz="9" radius="3">
 		<monster name="Ghoul" x="-1" y="0" z="9" spawntime="120" />
-		<monster name="Skeleton" x="-1" y="1" z="9" spawntime="120" />
-	</spawn>
-	<spawn centerx="283" centery="272" centerz="9" radius="3">
-		<monster name="Ghoul" x="0" y="1" z="9" spawntime="120" />
-		<monster name="Skeleton" x="-1" y="0" z="9" spawntime="120" />
-		<monster name="Ghoul" x="0" y="0" z="9" spawntime="120" />
-		<monster name="Skeleton" x="-2" y="-2" z="9" spawntime="120" />
-	</spawn>
-	<spawn centerx="281" centery="263" centerz="9" radius="3">
-		<monster name="Ghoul" x="-1" y="0" z="9" spawntime="120" />
-		<monster name="Skeleton" x="0" y="-1" z="9" spawntime="120" />
-		<monster name="Ghoul" x="1" y="-1" z="9" spawntime="120" />
 		<monster name="Skeleton" x="0" y="-2" z="9" spawntime="120" />
-	</spawn>
-	<spawn centerx="290" centery="267" centerz="9" radius="3">
-		<monster name="Ghoul" x="-2" y="1" z="9" spawntime="120" />
-		<monster name="Skeleton" x="0" y="0" z="9" spawntime="120" />
-		<monster name="Ghoul" x="0" y="-1" z="9" spawntime="120" />
-		<monster name="Skeleton" x="-1" y="-2" z="9" spawntime="120" />
-	</spawn>
-	<spawn centerx="292" centery="263" centerz="9" radius="3">
-		<monster name="Ghoul" x="2" y="-2" z="9" spawntime="120" />
-		<monster name="Skeleton" x="0" y="-1" z="9" spawntime="120" />
 		<monster name="Ghoul" x="-2" y="-1" z="9" spawntime="120" />
+		<monster name="Skeleton" x="-2" y="0" z="9" spawntime="120" />
+	</spawn>
+	<spawn centerx="317" centery="262" centerz="9" radius="3">
+		<monster name="Ghoul" x="1" y="1" z="9" spawntime="120" />
+		<monster name="Skeleton" x="0" y="0" z="9" spawntime="120" />
+		<monster name="Ghoul" x="0" y="-2" z="9" spawntime="120" />
+		<monster name="Skeleton" x="-1" y="-1" z="9" spawntime="120" />
+	</spawn>
+	<spawn centerx="311" centery="260" centerz="9" radius="3">
+		<monster name="Ghoul" x="-2" y="-2" z="9" spawntime="120" />
+		<monster name="Skeleton" x="1" y="-1" z="9" spawntime="120" />
+		<monster name="Ghoul" x="-2" y="2" z="9" spawntime="120" />
+		<monster name="Skeleton" x="1" y="1" z="9" spawntime="120" />
+	</spawn>
+	<spawn centerx="307" centery="256" centerz="9" radius="3">
+		<monster name="Ghoul" x="-1" y="0" z="9" spawntime="120" />
+		<monster name="Skeleton" x="2" y="-1" z="9" spawntime="120" />
+		<monster name="Ghoul" x="1" y="-1" z="9" spawntime="120" />
 		<monster name="Skeleton" x="-2" y="-2" z="9" spawntime="120" />
 	</spawn>
-	<spawn centerx="286" centery="255" centerz="9" radius="3">
-		<monster name="Mummy" x="-2" y="0" z="9" spawntime="140" />
-		<monster name="Vampire" x="0" y="0" z="9" spawntime="140" />
-		<monster name="Demon Skeleton" x="2" y="2" z="9" spawntime="140" />
-		<monster name="Mummy" x="1" y="-1" z="9" spawntime="140" />
+	<spawn centerx="315" centery="248" centerz="9" radius="3">
+		<monster name="Ghoul" x="0" y="-1" z="9" spawntime="120" />
+		<monster name="Skeleton" x="2" y="-2" z="9" spawntime="120" />
+		<monster name="Ghoul" x="-1" y="1" z="9" spawntime="120" />
+		<monster name="Skeleton" x="1" y="-1" z="9" spawntime="120" />
 	</spawn>
-	<spawn centerx="294" centery="258" centerz="9" radius="3">
-		<monster name="Vampire" x="0" y="1" z="9" spawntime="140" />
-		<monster name="Demon Skeleton" x="-2" y="-1" z="9" spawntime="140" />
+	<spawn centerx="320" centery="259" centerz="9" radius="3">
+		<monster name="Ghoul" x="-2" y="1" z="9" spawntime="120" />
+		<monster name="Skeleton" x="-1" y="1" z="9" spawntime="120" />
+		<monster name="Ghoul" x="-1" y="0" z="9" spawntime="120" />
+		<monster name="Skeleton" x="-2" y="2" z="9" spawntime="120" />
+	</spawn>
+	<spawn centerx="308" centery="251" centerz="9" radius="3">
 		<monster name="Mummy" x="0" y="0" z="9" spawntime="140" />
-		<monster name="Vampire" x="0" y="2" z="9" spawntime="140" />
+		<monster name="Vampire" x="0" y="-2" z="9" spawntime="140" />
+		<monster name="Demon Skeleton" x="-1" y="0" z="9" spawntime="140" />
+		<monster name="Mummy" x="0" y="-1" z="9" spawntime="140" />
 	</spawn>
-	<spawn centerx="281" centery="256" centerz="9" radius="3">
-		<monster name="Demon Skeleton" x="-1" y="2" z="9" spawntime="140" />
+	<spawn centerx="303" centery="258" centerz="9" radius="3">
+		<monster name="Vampire" x="-2" y="1" z="9" spawntime="140" />
+		<monster name="Demon Skeleton" x="-2" y="-2" z="9" spawntime="140" />
 		<monster name="Mummy" x="0" y="2" z="9" spawntime="140" />
-		<monster name="Vampire" x="1" y="-1" z="9" spawntime="140" />
-		<monster name="Demon Skeleton" x="0" y="1" z="9" spawntime="140" />
+		<monster name="Vampire" x="-1" y="1" z="9" spawntime="140" />
 	</spawn>
-	<spawn centerx="277" centery="261" centerz="9" radius="3">
-		<monster name="Mummy" x="1" y="-2" z="9" spawntime="140" />
-		<monster name="Vampire" x="2" y="-2" z="9" spawntime="140" />
-		<monster name="Demon Skeleton" x="0" y="-2" z="9" spawntime="140" />
-		<monster name="Mummy" x="0" y="0" z="9" spawntime="140" />
+	<spawn centerx="313" centery="266" centerz="9" radius="3">
+		<monster name="Demon Skeleton" x="2" y="-1" z="9" spawntime="140" />
+		<monster name="Mummy" x="-1" y="-2" z="9" spawntime="140" />
+		<monster name="Vampire" x="-1" y="1" z="9" spawntime="140" />
+		<monster name="Demon Skeleton" x="-2" y="1" z="9" spawntime="140" />
 	</spawn>
-	<spawn centerx="298" centery="262" centerz="9" radius="3">
-		<monster name="Vampire" x="-1" y="-1" z="9" spawntime="140" />
-		<monster name="Demon Skeleton" x="-1" y="2" z="9" spawntime="140" />
-		<monster name="Mummy" x="-2" y="-1" z="9" spawntime="140" />
-		<monster name="Vampire" x="2" y="1" z="9" spawntime="140" />
+	<spawn centerx="306" centery="261" centerz="9" radius="3">
+		<monster name="Mummy" x="-1" y="1" z="9" spawntime="140" />
+		<monster name="Vampire" x="-1" y="-2" z="9" spawntime="140" />
+		<monster name="Demon Skeleton" x="2" y="-1" z="9" spawntime="140" />
+		<monster name="Mummy" x="0" y="2" z="9" spawntime="140" />
 	</spawn>
-	<spawn centerx="284" centery="259" centerz="9" radius="3">
+	<spawn centerx="309" centery="264" centerz="9" radius="3">
+		<monster name="Vampire" x="0" y="2" z="9" spawntime="140" />
+		<monster name="Demon Skeleton" x="-2" y="-2" z="9" spawntime="140" />
+		<monster name="Mummy" x="2" y="-1" z="9" spawntime="140" />
+		<monster name="Vampire" x="2" y="0" z="9" spawntime="140" />
+	</spawn>
+	<spawn centerx="310" centery="247" centerz="9" radius="3">
 		<monster name="Demon Skeleton" x="0" y="2" z="9" spawntime="140" />
 		<monster name="Mummy" x="2" y="-1" z="9" spawntime="140" />
-		<monster name="Vampire" x="0" y="-2" z="9" spawntime="140" />
+		<monster name="Vampire" x="-1" y="0" z="9" spawntime="140" />
+		<monster name="Demon Skeleton" x="-2" y="-1" z="9" spawntime="140" />
+	</spawn>
+	<spawn centerx="304" centery="253" centerz="9" radius="3">
+		<monster name="Mummy" x="-2" y="2" z="9" spawntime="140" />
+		<monster name="Vampire" x="1" y="0" z="9" spawntime="140" />
 		<monster name="Demon Skeleton" x="-1" y="2" z="9" spawntime="140" />
+		<monster name="Mummy" x="0" y="2" z="9" spawntime="140" />
 	</spawn>
-	<spawn centerx="287" centery="250" centerz="9" radius="3">
-		<monster name="Mummy" x="0" y="0" z="9" spawntime="140" />
-		<monster name="Vampire" x="-1" y="-2" z="9" spawntime="140" />
-		<monster name="Demon Skeleton" x="1" y="0" z="9" spawntime="140" />
-		<monster name="Mummy" x="1" y="-2" z="9" spawntime="140" />
+	<spawn centerx="298" centery="259" centerz="9" radius="3">
+		<monster name="Necromancer" x="0" y="2" z="9" spawntime="170" />
+		<monster name="Priestess" x="0" y="-2" z="9" spawntime="170" />
+		<monster name="Vampire Bride" x="2" y="1" z="9" spawntime="170" />
 	</spawn>
-	<spawn centerx="296" centery="254" centerz="9" radius="3">
+	<spawn centerx="297" centery="254" centerz="9" radius="3">
+		<monster name="Necromancer" x="0" y="-1" z="9" spawntime="170" />
+		<monster name="Priestess" x="2" y="0" z="9" spawntime="170" />
+		<monster name="Vampire Bride" x="2" y="1" z="9" spawntime="170" />
+	</spawn>
+	<spawn centerx="302" centery="263" centerz="9" radius="3">
+		<monster name="Necromancer" x="-2" y="-2" z="9" spawntime="170" />
+		<monster name="Priestess" x="1" y="-1" z="9" spawntime="170" />
+		<monster name="Vampire Bride" x="-2" y="1" z="9" spawntime="170" />
+	</spawn>
+	<spawn centerx="300" centery="251" centerz="9" radius="3">
+		<monster name="Necromancer" x="-1" y="0" z="9" spawntime="170" />
+		<monster name="Priestess" x="2" y="1" z="9" spawntime="170" />
+		<monster name="Vampire Bride" x="0" y="-2" z="9" spawntime="170" />
+	</spawn>
+	<spawn centerx="303" centery="248" centerz="9" radius="3">
 		<monster name="Necromancer" x="2" y="-1" z="9" spawntime="170" />
-		<monster name="Priestess" x="1" y="-2" z="9" spawntime="170" />
+		<monster name="Priestess" x="0" y="1" z="9" spawntime="170" />
+		<monster name="Vampire Bride" x="0" y="2" z="9" spawntime="170" />
+	</spawn>
+	<spawn centerx="305" centery="266" centerz="9" radius="3">
+		<monster name="Necromancer" x="2" y="2" z="9" spawntime="170" />
+		<monster name="Priestess" x="-1" y="1" z="9" spawntime="170" />
 		<monster name="Vampire Bride" x="0" y="0" z="9" spawntime="170" />
 	</spawn>
-	<spawn centerx="283" centery="252" centerz="9" radius="3">
-		<monster name="Necromancer" x="-1" y="2" z="9" spawntime="170" />
-		<monster name="Priestess" x="0" y="-1" z="9" spawntime="170" />
-		<monster name="Vampire Bride" x="2" y="2" z="9" spawntime="170" />
+	<spawn centerx="310" centery="270" centerz="9" radius="3">
+		<monster name="Necromancer" x="-2" y="0" z="9" spawntime="170" />
+		<monster name="Priestess" x="-2" y="-2" z="9" spawntime="170" />
+		<monster name="Vampire Bride" x="1" y="-2" z="9" spawntime="170" />
 	</spawn>
-	<spawn centerx="290" centery="253" centerz="9" radius="3">
-		<monster name="Necromancer" x="0" y="-2" z="9" spawntime="170" />
-		<monster name="Priestess" x="-2" y="0" z="9" spawntime="170" />
-		<monster name="Vampire Bride" x="-2" y="-2" z="9" spawntime="170" />
-	</spawn>
-	<spawn centerx="301" centery="251" centerz="9" radius="3">
-		<monster name="Vampire Bride" x="-1" y="1" z="9" spawntime="200" />
-		<monster name="Necromancer" x="-2" y="1" z="9" spawntime="200" />
-		<monster name="Priestess" x="-1" y="0" z="9" spawntime="200" />
-	</spawn>
-	<spawn centerx="280" centery="246" centerz="9" radius="3">
-		<monster name="Demon Skeleton" x="0" y="1" z="9" spawntime="200" />
-		<monster name="Vampire Bride" x="-2" y="2" z="9" spawntime="200" />
-		<monster name="Necromancer" x="-1" y="1" z="9" spawntime="200" />
-	</spawn>
-	<spawn centerx="304" centery="258" centerz="9" radius="3">
-		<monster name="Priestess" x="-1" y="1" z="9" spawntime="200" />
-		<monster name="Demon Skeleton" x="-2" y="2" z="9" spawntime="200" />
-		<monster name="Vampire Bride" x="0" y="1" z="9" spawntime="200" />
-	</spawn>
-	<spawn centerx="291" centery="245" centerz="9" radius="3">
-		<monster name="Necromancer" x="1" y="0" z="9" spawntime="200" />
-		<monster name="Priestess" x="-2" y="2" z="9" spawntime="200" />
-		<monster name="Demon Skeleton" x="2" y="1" z="9" spawntime="200" />
-	</spawn>
-	<spawn centerx="277" centery="250" centerz="9" radius="3">
-		<monster name="Vampire Bride" x="0" y="0" z="9" spawntime="200" />
-		<monster name="Necromancer" x="2" y="1" z="9" spawntime="200" />
-		<monster name="Priestess" x="0" y="-1" z="9" spawntime="200" />
-	</spawn>
-	<spawn centerx="299" centery="257" centerz="9" radius="3">
-		<monster name="Demon Skeleton" x="-2" y="0" z="9" spawntime="200" />
-		<monster name="Vampire Bride" x="-2" y="2" z="9" spawntime="200" />
-		<monster name="Necromancer" x="1" y="0" z="9" spawntime="200" />
-	</spawn>
-	<spawn centerx="300" centery="267" centerz="9" radius="3">
-		<monster name="Priestess" x="2" y="-2" z="9" spawntime="200" />
-		<monster name="Demon Skeleton" x="-1" y="-2" z="9" spawntime="200" />
+	<spawn centerx="296" centery="270" centerz="9" radius="3">
 		<monster name="Vampire Bride" x="-1" y="-1" z="9" spawntime="200" />
+		<monster name="Necromancer" x="1" y="1" z="9" spawntime="200" />
+		<monster name="Priestess" x="1" y="0" z="9" spawntime="200" />
 	</spawn>
-	<spawn centerx="304" centery="248" centerz="9" radius="3">
-		<monster name="Necromancer" x="-2" y="0" z="9" spawntime="200" />
-		<monster name="Priestess" x="-2" y="2" z="9" spawntime="200" />
+	<spawn centerx="302" centery="271" centerz="9" radius="3">
+		<monster name="Demon Skeleton" x="0" y="-2" z="9" spawntime="200" />
+		<monster name="Vampire Bride" x="-1" y="-2" z="9" spawntime="200" />
+		<monster name="Necromancer" x="-1" y="-1" z="9" spawntime="200" />
+	</spawn>
+	<spawn centerx="298" centery="266" centerz="9" radius="3">
+		<monster name="Priestess" x="-1" y="-1" z="9" spawntime="200" />
+		<monster name="Demon Skeleton" x="0" y="0" z="9" spawntime="200" />
+		<monster name="Vampire Bride" x="1" y="0" z="9" spawntime="200" />
+	</spawn>
+	<spawn centerx="295" centery="248" centerz="9" radius="3">
+		<monster name="Necromancer" x="1" y="0" z="9" spawntime="200" />
+		<monster name="Priestess" x="2" y="0" z="9" spawntime="200" />
 		<monster name="Demon Skeleton" x="0" y="1" z="9" spawntime="200" />
 	</spawn>
-	<spawn centerx="291" centery="305" centerz="9" radius="3">
-		<monster name="Quara Constrictor" x="2" y="-2" z="9" spawntime="120" />
-		<monster name="Quara Mantassin" x="0" y="0" z="9" spawntime="120" />
-		<monster name="Quara Constrictor" x="2" y="2" z="9" spawntime="120" />
-		<monster name="Quara Mantassin" x="-1" y="1" z="9" spawntime="120" />
+	<spawn centerx="307" centery="244" centerz="9" radius="3">
+		<monster name="Vampire Bride" x="2" y="2" z="9" spawntime="200" />
+		<monster name="Necromancer" x="1" y="1" z="9" spawntime="200" />
+		<monster name="Priestess" x="-2" y="2" z="9" spawntime="200" />
 	</spawn>
-	<spawn centerx="287" centery="303" centerz="9" radius="3">
-		<monster name="Quara Constrictor" x="-2" y="-1" z="9" spawntime="120" />
-		<monster name="Quara Mantassin" x="0" y="1" z="9" spawntime="120" />
-		<monster name="Quara Constrictor" x="-2" y="2" z="9" spawntime="120" />
-		<monster name="Quara Mantassin" x="1" y="0" z="9" spawntime="120" />
-	</spawn>
-	<spawn centerx="283" centery="305" centerz="9" radius="3">
-		<monster name="Quara Constrictor" x="0" y="-2" z="9" spawntime="120" />
-		<monster name="Quara Mantassin" x="1" y="2" z="9" spawntime="120" />
-		<monster name="Quara Constrictor" x="-1" y="0" z="9" spawntime="120" />
-		<monster name="Quara Mantassin" x="-2" y="-2" z="9" spawntime="120" />
-	</spawn>
-	<spawn centerx="292" centery="310" centerz="9" radius="3">
-		<monster name="Quara Constrictor" x="0" y="-2" z="9" spawntime="120" />
-		<monster name="Quara Mantassin" x="1" y="-2" z="9" spawntime="120" />
-		<monster name="Quara Constrictor" x="-1" y="-2" z="9" spawntime="120" />
-		<monster name="Quara Mantassin" x="1" y="0" z="9" spawntime="120" />
-	</spawn>
-	<spawn centerx="284" centery="300" centerz="9" radius="3">
-		<monster name="Quara Constrictor" x="2" y="-1" z="9" spawntime="120" />
-		<monster name="Quara Mantassin" x="0" y="2" z="9" spawntime="120" />
-		<monster name="Quara Constrictor" x="-1" y="-1" z="9" spawntime="120" />
-		<monster name="Quara Mantassin" x="0" y="-1" z="9" spawntime="120" />
-	</spawn>
-	<spawn centerx="278" centery="306" centerz="9" radius="3">
-		<monster name="Quara Constrictor" x="0" y="0" z="9" spawntime="120" />
-		<monster name="Quara Mantassin" x="2" y="0" z="9" spawntime="120" />
-		<monster name="Quara Constrictor" x="1" y="-2" z="9" spawntime="120" />
+	<spawn centerx="276" centery="298" centerz="9" radius="3">
+		<monster name="Quara Constrictor" x="0" y="2" z="9" spawntime="120" />
 		<monster name="Quara Mantassin" x="0" y="-2" z="9" spawntime="120" />
 	</spawn>
-	<spawn centerx="282" centery="310" centerz="9" radius="3">
-		<monster name="Quara Constrictor" x="-2" y="-2" z="9" spawntime="120" />
-		<monster name="Quara Mantassin" x="-1" y="-2" z="9" spawntime="120" />
-		<monster name="Quara Constrictor" x="2" y="-2" z="9" spawntime="120" />
-		<monster name="Quara Mantassin" x="0" y="-1" z="9" spawntime="120" />
+	<spawn centerx="285" centery="296" centerz="9" radius="3">
+		<monster name="Quara Constrictor" x="-2" y="-1" z="9" spawntime="120" />
+		<monster name="Quara Mantassin" x="0" y="0" z="9" spawntime="120" />
 	</spawn>
-	<spawn centerx="288" centery="308" centerz="9" radius="3">
+	<spawn centerx="290" centery="302" centerz="9" radius="3">
 		<monster name="Quara Constrictor" x="2" y="-1" z="9" spawntime="120" />
-		<monster name="Quara Mantassin" x="1" y="0" z="9" spawntime="120" />
-		<monster name="Quara Constrictor" x="2" y="1" z="9" spawntime="120" />
-		<monster name="Quara Mantassin" x="1" y="-1" z="9" spawntime="120" />
+		<monster name="Quara Mantassin" x="-1" y="2" z="9" spawntime="120" />
 	</spawn>
-	<spawn centerx="287" centery="296" centerz="9" radius="3">
-		<monster name="Quara Pincher" x="-1" y="-1" z="9" spawntime="150" />
-		<monster name="Quara Hydromancer" x="1" y="1" z="9" spawntime="150" />
-		<monster name="Quara Pincher" x="-2" y="1" z="9" spawntime="150" />
-		<monster name="Quara Hydromancer" x="1" y="2" z="9" spawntime="150" />
+	<spawn centerx="288" centery="306" centerz="9" radius="3">
+		<monster name="Quara Constrictor" x="1" y="1" z="9" spawntime="120" />
+		<monster name="Quara Mantassin" x="2" y="2" z="9" spawntime="120" />
 	</spawn>
-	<spawn centerx="294" centery="302" centerz="9" radius="3">
-		<monster name="Quara Pincher" x="-1" y="0" z="9" spawntime="150" />
-		<monster name="Quara Hydromancer" x="-1" y="-2" z="9" spawntime="150" />
-		<monster name="Quara Pincher" x="-1" y="1" z="9" spawntime="150" />
-		<monster name="Quara Hydromancer" x="1" y="1" z="9" spawntime="150" />
+	<spawn centerx="280" centery="294" centerz="9" radius="3">
+		<monster name="Quara Constrictor" x="-2" y="0" z="9" spawntime="120" />
+		<monster name="Quara Mantassin" x="-1" y="1" z="9" spawntime="120" />
 	</spawn>
-	<spawn centerx="291" centery="298" centerz="9" radius="3">
-		<monster name="Quara Pincher" x="2" y="-1" z="9" spawntime="150" />
-		<monster name="Quara Hydromancer" x="-1" y="0" z="9" spawntime="150" />
-		<monster name="Quara Pincher" x="1" y="-1" z="9" spawntime="150" />
-		<monster name="Quara Hydromancer" x="0" y="2" z="9" spawntime="150" />
+	<spawn centerx="283" centery="308" centerz="9" radius="3">
+		<monster name="Quara Constrictor" x="2" y="0" z="9" spawntime="120" />
+		<monster name="Quara Mantassin" x="0" y="0" z="9" spawntime="120" />
 	</spawn>
-	<spawn centerx="297" centery="305" centerz="9" radius="3">
-		<monster name="Quara Pincher" x="2" y="1" z="9" spawntime="150" />
-		<monster name="Quara Hydromancer" x="-1" y="-1" z="9" spawntime="150" />
-		<monster name="Quara Pincher" x="1" y="-1" z="9" spawntime="150" />
-		<monster name="Quara Hydromancer" x="2" y="-2" z="9" spawntime="150" />
-	</spawn>
-	<spawn centerx="279" centery="299" centerz="9" radius="3">
-		<monster name="Quara Pincher" x="0" y="0" z="9" spawntime="150" />
-		<monster name="Quara Hydromancer" x="1" y="1" z="9" spawntime="150" />
-		<monster name="Quara Pincher" x="0" y="2" z="9" spawntime="150" />
-		<monster name="Quara Hydromancer" x="-1" y="-1" z="9" spawntime="150" />
-	</spawn>
-	<spawn centerx="276" centery="302" centerz="9" radius="3">
-		<monster name="Quara Pincher" x="0" y="1" z="9" spawntime="150" />
-		<monster name="Quara Hydromancer" x="0" y="0" z="9" spawntime="150" />
-		<monster name="Quara Pincher" x="2" y="-1" z="9" spawntime="150" />
+	<spawn centerx="287" centery="292" centerz="9" radius="3">
+		<monster name="Quara Pincher" x="0" y="-1" z="9" spawntime="150" />
 		<monster name="Quara Hydromancer" x="1" y="-1" z="9" spawntime="150" />
 	</spawn>
-	<spawn centerx="288" centery="291" centerz="9" radius="3">
-		<monster name="Quara Predator" x="1" y="-2" z="9" spawntime="180" />
-		<monster name="Quara Pincher" x="-1" y="0" z="9" spawntime="180" />
-		<monster name="Quara Predator" x="0" y="-1" z="9" spawntime="180" />
+	<spawn centerx="297" centery="303" centerz="9" radius="3">
+		<monster name="Quara Pincher" x="-1" y="-1" z="9" spawntime="150" />
+		<monster name="Quara Hydromancer" x="2" y="-1" z="9" spawntime="150" />
 	</spawn>
-	<spawn centerx="280" centery="293" centerz="9" radius="3">
-		<monster name="Quara Pincher" x="0" y="2" z="9" spawntime="180" />
-		<monster name="Quara Predator" x="-2" y="-2" z="9" spawntime="180" />
+	<spawn centerx="291" centery="296" centerz="9" radius="3">
+		<monster name="Quara Pincher" x="-2" y="1" z="9" spawntime="150" />
+		<monster name="Quara Hydromancer" x="-2" y="-1" z="9" spawntime="150" />
+	</spawn>
+	<spawn centerx="294" centery="300" centerz="9" radius="3">
+		<monster name="Quara Pincher" x="1" y="-2" z="9" spawntime="150" />
+		<monster name="Quara Hydromancer" x="-2" y="-1" z="9" spawntime="150" />
+	</spawn>
+	<spawn centerx="294" centery="306" centerz="9" radius="3">
+		<monster name="Quara Pincher" x="0" y="1" z="9" spawntime="150" />
+		<monster name="Quara Hydromancer" x="2" y="0" z="9" spawntime="150" />
+	</spawn>
+	<spawn centerx="301" centery="301" centerz="9" radius="3">
+		<monster name="Quara Predator" x="-2" y="2" z="9" spawntime="180" />
+		<monster name="Quara Pincher" x="-2" y="-2" z="9" spawntime="180" />
+	</spawn>
+	<spawn centerx="297" centery="297" centerz="9" radius="3">
+		<monster name="Quara Predator" x="2" y="-1" z="9" spawntime="180" />
+		<monster name="Quara Pincher" x="0" y="1" z="9" spawntime="180" />
+	</spawn>
+	<spawn centerx="300" centery="306" centerz="9" radius="3">
+		<monster name="Quara Predator" x="-1" y="-1" z="9" spawntime="180" />
 		<monster name="Quara Pincher" x="-2" y="0" z="9" spawntime="180" />
 	</spawn>
-	<spawn centerx="300" centery="302" centerz="9" radius="3">
-		<monster name="Quara Predator" x="-2" y="2" z="9" spawntime="180" />
-		<monster name="Quara Pincher" x="2" y="-2" z="9" spawntime="180" />
-		<monster name="Quara Predator" x="-2" y="1" z="9" spawntime="180" />
-	</spawn>
-	<spawn centerx="296" centery="297" centerz="9" radius="3">
-		<monster name="Quara Pincher" x="2" y="-2" z="9" spawntime="180" />
-		<monster name="Quara Predator" x="-1" y="1" z="9" spawntime="180" />
-		<monster name="Quara Pincher" x="-2" y="1" z="9" spawntime="180" />
-	</spawn>
-	<spawn centerx="293" centery="294" centerz="9" radius="3">
-		<monster name="Quara Predator" x="2" y="2" z="9" spawntime="180" />
-		<monster name="Quara Pincher" x="2" y="-1" z="9" spawntime="180" />
-		<monster name="Quara Predator" x="1" y="-1" z="9" spawntime="180" />
-	</spawn>
-	<spawn centerx="299" centery="293" centerz="9" radius="3">
-		<monster name="Quara Predator" x="0" y="-1" z="9" spawntime="210" />
-		<monster name="Quara Hydromancer" x="-1" y="-1" z="9" spawntime="210" />
-		<monster name="Quara Predator" x="-1" y="1" z="9" spawntime="210" />
-	</spawn>
-	<spawn centerx="304" centery="298" centerz="9" radius="3">
-		<monster name="Quara Hydromancer" x="0" y="0" z="9" spawntime="210" />
-		<monster name="Quara Predator" x="0" y="-2" z="9" spawntime="210" />
-		<monster name="Quara Hydromancer" x="1" y="-1" z="9" spawntime="210" />
-	</spawn>
-	<spawn centerx="276" centery="296" centerz="9" radius="3">
+	<spawn centerx="301" centery="291" centerz="9" radius="3">
 		<monster name="Quara Predator" x="1" y="2" z="9" spawntime="210" />
-		<monster name="Quara Hydromancer" x="0" y="0" z="9" spawntime="210" />
-		<monster name="Quara Predator" x="2" y="2" z="9" spawntime="210" />
+		<monster name="Quara Hydromancer" x="-2" y="1" z="9" spawntime="210" />
 	</spawn>
-	<spawn centerx="331" centery="302" centerz="9" radius="3">
-		<monster name="Dragon Hatchling" x="-1" y="0" z="9" spawntime="160" />
+	<spawn centerx="303" centery="295" centerz="9" radius="3">
+		<monster name="Quara Predator" x="0" y="2" z="9" spawntime="210" />
+		<monster name="Quara Hydromancer" x="-2" y="2" z="9" spawntime="210" />
+	</spawn>
+	<spawn centerx="293" centery="292" centerz="9" radius="3">
+		<monster name="Quara Predator" x="0" y="-1" z="9" spawntime="210" />
+		<monster name="Quara Hydromancer" x="-2" y="1" z="9" spawntime="210" />
+	</spawn>
+	<spawn centerx="305" centery="299" centerz="9" radius="3">
+		<monster name="Quara Predator" x="0" y="-2" z="9" spawntime="210" />
+		<monster name="Quara Hydromancer" x="0" y="2" z="9" spawntime="210" />
+	</spawn>
+	<spawn centerx="290" centery="289" centerz="9" radius="3">
+		<monster name="Quara Predator" x="0" y="2" z="9" spawntime="210" />
+		<monster name="Quara Hydromancer" x="-2" y="2" z="9" spawntime="210" />
+	</spawn>
+	<spawn centerx="337" centery="298" centerz="9" radius="3">
+		<monster name="Dragon Hatchling" x="-1" y="-2" z="9" spawntime="160" />
+		<monster name="Dragon" x="-2" y="0" z="9" spawntime="160" />
+		<monster name="Dragon Hatchling" x="1" y="0" z="9" spawntime="160" />
+	</spawn>
+	<spawn centerx="342" centery="305" centerz="9" radius="3">
 		<monster name="Dragon" x="0" y="-1" z="9" spawntime="160" />
-		<monster name="Dragon Hatchling" x="1" y="-2" z="9" spawntime="160" />
-	</spawn>
-	<spawn centerx="339" centery="303" centerz="9" radius="3">
-		<monster name="Dragon" x="1" y="0" z="9" spawntime="160" />
 		<monster name="Dragon Hatchling" x="-1" y="-1" z="9" spawntime="160" />
-		<monster name="Dragon" x="0" y="0" z="9" spawntime="160" />
+		<monster name="Dragon" x="2" y="0" z="9" spawntime="160" />
 	</spawn>
-	<spawn centerx="333" centery="294" centerz="9" radius="3">
-		<monster name="Dragon Hatchling" x="-1" y="2" z="9" spawntime="160" />
-		<monster name="Dragon" x="1" y="2" z="9" spawntime="160" />
-		<monster name="Dragon Hatchling" x="0" y="1" z="9" spawntime="160" />
+	<spawn centerx="342" centery="293" centerz="9" radius="3">
+		<monster name="Dragon Hatchling" x="2" y="0" z="9" spawntime="160" />
+		<monster name="Dragon" x="0" y="1" z="9" spawntime="160" />
+		<monster name="Dragon Hatchling" x="-2" y="0" z="9" spawntime="160" />
 	</spawn>
-	<spawn centerx="336" centery="297" centerz="9" radius="3">
-		<monster name="Dragon" x="-1" y="2" z="9" spawntime="160" />
-		<monster name="Dragon Hatchling" x="1" y="1" z="9" spawntime="160" />
-		<monster name="Dragon" x="2" y="-2" z="9" spawntime="160" />
+	<spawn centerx="349" centery="297" centerz="9" radius="3">
+		<monster name="Dragon" x="-1" y="0" z="9" spawntime="160" />
+		<monster name="Dragon Hatchling" x="-1" y="-2" z="9" spawntime="160" />
+		<monster name="Dragon" x="0" y="2" z="9" spawntime="160" />
 	</spawn>
-	<spawn centerx="326" centery="301" centerz="9" radius="3">
-		<monster name="Dragon Hatchling" x="1" y="-2" z="9" spawntime="160" />
-		<monster name="Dragon" x="2" y="1" z="9" spawntime="160" />
-		<monster name="Dragon Hatchling" x="1" y="1" z="9" spawntime="160" />
-	</spawn>
-	<spawn centerx="329" centery="298" centerz="9" radius="3">
-		<monster name="Dragon" x="-2" y="2" z="9" spawntime="160" />
-		<monster name="Dragon Hatchling" x="1" y="-2" z="9" spawntime="160" />
-		<monster name="Dragon" x="2" y="-1" z="9" spawntime="160" />
-	</spawn>
-	<spawn centerx="344" centery="304" centerz="9" radius="3">
+	<spawn centerx="347" centery="303" centerz="9" radius="3">
+		<monster name="Dragon Hatchling" x="0" y="-1" z="9" spawntime="160" />
+		<monster name="Dragon" x="-2" y="1" z="9" spawntime="160" />
 		<monster name="Dragon Hatchling" x="-1" y="0" z="9" spawntime="160" />
-		<monster name="Dragon" x="-1" y="-2" z="9" spawntime="160" />
-		<monster name="Dragon Hatchling" x="-2" y="-2" z="9" spawntime="160" />
 	</spawn>
-	<spawn centerx="337" centery="291" centerz="9" radius="3">
-		<monster name="Dragon" x="-1" y="1" z="9" spawntime="190" />
-		<monster name="Wyrm" x="2" y="-1" z="9" spawntime="190" />
-		<monster name="Dragon" x="0" y="2" z="9" spawntime="190" />
+	<spawn centerx="340" centery="301" centerz="9" radius="3">
+		<monster name="Dragon" x="0" y="2" z="9" spawntime="160" />
+		<monster name="Dragon Hatchling" x="1" y="2" z="9" spawntime="160" />
+		<monster name="Dragon" x="-2" y="0" z="9" spawntime="160" />
 	</spawn>
-	<spawn centerx="341" centery="299" centerz="9" radius="3">
-		<monster name="Wyrm" x="1" y="-1" z="9" spawntime="190" />
+	<spawn centerx="345" centery="288" centerz="9" radius="3">
+		<monster name="Dragon" x="2" y="-1" z="9" spawntime="190" />
+		<monster name="Wyrm" x="1" y="1" z="9" spawntime="190" />
 		<monster name="Dragon" x="0" y="1" z="9" spawntime="190" />
-		<monster name="Wyrm" x="2" y="1" z="9" spawntime="190" />
 	</spawn>
-	<spawn centerx="334" centery="288" centerz="9" radius="3">
-		<monster name="Dragon" x="2" y="0" z="9" spawntime="190" />
-		<monster name="Wyrm" x="-1" y="1" z="9" spawntime="190" />
-		<monster name="Dragon" x="1" y="2" z="9" spawntime="190" />
+	<spawn centerx="331" centery="298" centerz="9" radius="3">
+		<monster name="Wyrm" x="2" y="0" z="9" spawntime="190" />
+		<monster name="Dragon" x="1" y="0" z="9" spawntime="190" />
+		<monster name="Wyrm" x="0" y="1" z="9" spawntime="190" />
 	</spawn>
-	<spawn centerx="327" centery="291" centerz="9" radius="3">
-		<monster name="Wyrm" x="-2" y="0" z="9" spawntime="220" />
-		<monster name="Dragon Lord" x="-1" y="2" z="9" spawntime="220" />
-		<monster name="Wyrm" x="2" y="2" z="9" spawntime="220" />
+	<spawn centerx="338" centery="291" centerz="9" radius="3">
+		<monster name="Dragon" x="1" y="-1" z="9" spawntime="190" />
+		<monster name="Wyrm" x="-2" y="1" z="9" spawntime="190" />
+		<monster name="Dragon" x="2" y="-1" z="9" spawntime="190" />
 	</spawn>
-	<spawn centerx="322" centery="298" centerz="9" radius="3">
-		<monster name="Dragon Lord" x="0" y="0" z="9" spawntime="220" />
-		<monster name="Wyrm" x="2" y="-1" z="9" spawntime="220" />
-		<monster name="Dragon Lord" x="0" y="-2" z="9" spawntime="220" />
+	<spawn centerx="348" centery="292" centerz="9" radius="3">
+		<monster name="Wyrm" x="-1" y="-2" z="9" spawntime="190" />
+		<monster name="Dragon" x="0" y="-1" z="9" spawntime="190" />
+		<monster name="Wyrm" x="0" y="1" z="9" spawntime="190" />
 	</spawn>
-	<spawn centerx="346" centery="300" centerz="9" radius="3">
-		<monster name="Wyrm" x="-2" y="-1" z="9" spawntime="220" />
-		<monster name="Dragon Lord" x="2" y="-1" z="9" spawntime="220" />
-		<monster name="Wyrm" x="-1" y="0" z="9" spawntime="220" />
+	<spawn centerx="334" centery="295" centerz="9" radius="3">
+		<monster name="Dragon" x="-2" y="2" z="9" spawntime="190" />
+		<monster name="Wyrm" x="1" y="-2" z="9" spawntime="190" />
+		<monster name="Dragon" x="-2" y="0" z="9" spawntime="190" />
 	</spawn>
-	<spawn centerx="344" centery="296" centerz="9" radius="3">
-		<monster name="Dragon Lord" x="0" y="-2" z="9" spawntime="220" />
-		<monster name="Wyrm" x="0" y="0" z="9" spawntime="220" />
+	<spawn centerx="335" centery="302" centerz="9" radius="3">
+		<monster name="Wyrm" x="1" y="-1" z="9" spawntime="190" />
+		<monster name="Dragon" x="-1" y="-1" z="9" spawntime="190" />
+		<monster name="Wyrm" x="2" y="-2" z="9" spawntime="190" />
+	</spawn>
+	<spawn centerx="324" centery="299" centerz="9" radius="3">
+		<monster name="Wyrm" x="0" y="-1" z="9" spawntime="220" />
+		<monster name="Dragon Lord" x="2" y="1" z="9" spawntime="220" />
+		<monster name="Wyrm" x="-1" y="-1" z="9" spawntime="220" />
+	</spawn>
+	<spawn centerx="327" centery="296" centerz="9" radius="3">
+		<monster name="Dragon Lord" x="1" y="0" z="9" spawntime="220" />
+		<monster name="Wyrm" x="-1" y="2" z="9" spawntime="220" />
 		<monster name="Dragon Lord" x="1" y="1" z="9" spawntime="220" />
 	</spawn>
-	<spawn centerx="325" centery="295" centerz="9" radius="3">
-		<monster name="Wyrm" x="-2" y="1" z="9" spawntime="220" />
-		<monster name="Dragon Lord" x="2" y="2" z="9" spawntime="220" />
-		<monster name="Wyrm" x="1" y="1" z="9" spawntime="220" />
+	<spawn centerx="340" centery="286" centerz="9" radius="3">
+		<monster name="Wyrm" x="1" y="0" z="9" spawntime="220" />
+		<monster name="Dragon Lord" x="-2" y="2" z="9" spawntime="220" />
+		<monster name="Wyrm" x="0" y="-1" z="9" spawntime="220" />
 	</spawn>
-	<spawn centerx="340" centery="294" centerz="9" radius="3">
+	<spawn centerx="330" centery="293" centerz="9" radius="3">
+		<monster name="Dragon Lord" x="-1" y="2" z="9" spawntime="220" />
+		<monster name="Wyrm" x="1" y="2" z="9" spawntime="220" />
 		<monster name="Dragon Lord" x="0" y="1" z="9" spawntime="220" />
-		<monster name="Wyrm" x="-2" y="1" z="9" spawntime="220" />
-		<monster name="Dragon Lord" x="-1" y="-1" z="9" spawntime="220" />
 	</spawn>
-	<spawn centerx="348" centery="294" centerz="9" radius="3">
-		<monster name="Dragon Lord" x="-2" y="2" z="9" spawntime="260" />
+	<spawn centerx="320" centery="289" centerz="9" radius="3">
+		<monster name="Dragon Lord" x="0" y="0" z="9" spawntime="260" />
+		<monster name="Black Dragon" x="2" y="1" z="9" spawntime="260" />
+	</spawn>
+	<spawn centerx="332" centery="286" centerz="9" radius="3">
+		<monster name="Dragon Lord" x="1" y="2" z="9" spawntime="260" />
+		<monster name="Black Dragon" x="-1" y="2" z="9" spawntime="260" />
+	</spawn>
+	<spawn centerx="336" centery="283" centerz="9" radius="3">
+		<monster name="Dragon Lord" x="0" y="0" z="9" spawntime="260" />
 		<monster name="Black Dragon" x="0" y="1" z="9" spawntime="260" />
 	</spawn>
-	<spawn centerx="321" centery="291" centerz="9" radius="3">
-		<monster name="Dragon Lord" x="0" y="-2" z="9" spawntime="260" />
-		<monster name="Black Dragon" x="2" y="2" z="9" spawntime="260" />
+	<spawn centerx="327" centery="289" centerz="9" radius="3">
+		<monster name="Dragon Lord" x="0" y="0" z="9" spawntime="260" />
+		<monster name="Black Dragon" x="2" y="0" z="9" spawntime="260" />
 	</spawn>
-	<spawn centerx="342" centery="285" centerz="9" radius="3">
-		<monster name="Dragon Lord" x="0" y="2" z="9" spawntime="260" />
-		<monster name="Black Dragon" x="-2" y="2" z="9" spawntime="260" />
-	</spawn>
-	<spawn centerx="333" centery="283" centerz="9" radius="3">
-		<monster name="Dragon Lord" x="1" y="0" z="9" spawntime="260" />
-		<monster name="Black Dragon" x="-2" y="2" z="9" spawntime="260" />
-	</spawn>
-	<spawn centerx="330" centery="286" centerz="9" radius="3">
-		<monster name="Dragon Lord" x="2" y="-1" z="9" spawntime="260" />
-		<monster name="Black Dragon" x="2" y="-2" z="9" spawntime="260" />
-	</spawn>
-	<spawn centerx="326" centery="323" centerz="10" radius="3">
-		<monster name="Hydra" x="0" y="0" z="10" spawntime="220" />
-		<monster name="Dark Hydra" x="2" y="2" z="10" spawntime="220" />
-		<monster name="Hydra" x="-1" y="2" z="10" spawntime="220" />
-	</spawn>
-	<spawn centerx="341" centery="327" centerz="10" radius="3">
-		<monster name="Dark Hydra" x="2" y="-1" z="10" spawntime="220" />
-		<monster name="Hydra" x="0" y="0" z="10" spawntime="220" />
-		<monster name="Dark Hydra" x="2" y="0" z="10" spawntime="220" />
-	</spawn>
-	<spawn centerx="328" centery="330" centerz="10" radius="3">
-		<monster name="Hydra" x="-1" y="0" z="10" spawntime="220" />
-		<monster name="Dark Hydra" x="1" y="2" z="10" spawntime="220" />
-		<monster name="Hydra" x="-2" y="2" z="10" spawntime="220" />
-	</spawn>
-	<spawn centerx="330" centery="326" centerz="10" radius="3">
-		<monster name="Dark Hydra" x="0" y="2" z="10" spawntime="220" />
-		<monster name="Hydra" x="-1" y="2" z="10" spawntime="220" />
-		<monster name="Dark Hydra" x="1" y="2" z="10" spawntime="220" />
-	</spawn>
-	<spawn centerx="336" centery="329" centerz="10" radius="3">
-		<monster name="Hydra" x="-2" y="2" z="10" spawntime="220" />
-		<monster name="Dark Hydra" x="-2" y="0" z="10" spawntime="220" />
-		<monster name="Hydra" x="-1" y="2" z="10" spawntime="220" />
-	</spawn>
-	<spawn centerx="333" centery="333" centerz="10" radius="3">
+	<spawn centerx="329" centery="308" centerz="10" radius="3">
+		<monster name="Hydra" x="1" y="0" z="10" spawntime="220" />
 		<monster name="Dark Hydra" x="1" y="1" z="10" spawntime="220" />
-		<monster name="Hydra" x="-2" y="1" z="10" spawntime="220" />
-		<monster name="Dark Hydra" x="-1" y="2" z="10" spawntime="220" />
+		<monster name="Hydra" x="2" y="-2" z="10" spawntime="220" />
 	</spawn>
-	<spawn centerx="329" centery="335" centerz="10" radius="3">
-		<monster name="Behemoth" x="1" y="-2" z="10" spawntime="250" />
-		<monster name="Serpent Spawn" x="0" y="-1" z="10" spawntime="250" />
-		<monster name="Behemoth" x="1" y="-1" z="10" spawntime="250" />
+	<spawn centerx="333" centery="302" centerz="10" radius="3">
+		<monster name="Dark Hydra" x="2" y="-1" z="10" spawntime="220" />
+		<monster name="Hydra" x="0" y="2" z="10" spawntime="220" />
+		<monster name="Dark Hydra" x="0" y="0" z="10" spawntime="220" />
 	</spawn>
-	<spawn centerx="336" centery="337" centerz="10" radius="3">
-		<monster name="Serpent Spawn" x="2" y="-1" z="10" spawntime="250" />
-		<monster name="Behemoth" x="-1" y="2" z="10" spawntime="250" />
-		<monster name="Serpent Spawn" x="1" y="2" z="10" spawntime="250" />
+	<spawn centerx="337" centery="297" centerz="10" radius="3">
+		<monster name="Hydra" x="0" y="1" z="10" spawntime="220" />
+		<monster name="Dark Hydra" x="0" y="0" z="10" spawntime="220" />
+		<monster name="Hydra" x="-2" y="-1" z="10" spawntime="220" />
 	</spawn>
-	<spawn centerx="324" centery="328" centerz="10" radius="3">
-		<monster name="Behemoth" x="0" y="-2" z="10" spawntime="250" />
+	<spawn centerx="328" centery="303" centerz="10" radius="3">
+		<monster name="Dark Hydra" x="2" y="2" z="10" spawntime="220" />
+		<monster name="Hydra" x="0" y="1" z="10" spawntime="220" />
+		<monster name="Dark Hydra" x="1" y="0" z="10" spawntime="220" />
+	</spawn>
+	<spawn centerx="327" centery="298" centerz="10" radius="3">
+		<monster name="Hydra" x="2" y="0" z="10" spawntime="220" />
+		<monster name="Dark Hydra" x="1" y="0" z="10" spawntime="220" />
+		<monster name="Hydra" x="1" y="2" z="10" spawntime="220" />
+	</spawn>
+	<spawn centerx="333" centery="295" centerz="10" radius="3">
+		<monster name="Dark Hydra" x="0" y="1" z="10" spawntime="220" />
+		<monster name="Hydra" x="-2" y="2" z="10" spawntime="220" />
+		<monster name="Dark Hydra" x="2" y="1" z="10" spawntime="220" />
+	</spawn>
+	<spawn centerx="325" centery="306" centerz="10" radius="3">
+		<monster name="Hydra" x="0" y="2" z="10" spawntime="220" />
+		<monster name="Dark Hydra" x="1" y="0" z="10" spawntime="220" />
+		<monster name="Hydra" x="2" y="-1" z="10" spawntime="220" />
+	</spawn>
+	<spawn centerx="326" centery="311" centerz="10" radius="3">
+		<monster name="Behemoth" x="-1" y="1" z="10" spawntime="250" />
 		<monster name="Serpent Spawn" x="2" y="-2" z="10" spawntime="250" />
-		<monster name="Behemoth" x="0" y="1" z="10" spawntime="250" />
+		<monster name="Behemoth" x="0" y="2" z="10" spawntime="250" />
 	</spawn>
-	<spawn centerx="339" centery="332" centerz="10" radius="3">
+	<spawn centerx="339" centery="302" centerz="10" radius="3">
 		<monster name="Serpent Spawn" x="1" y="-1" z="10" spawntime="250" />
-		<monster name="Behemoth" x="2" y="2" z="10" spawntime="250" />
-		<monster name="Serpent Spawn" x="2" y="-2" z="10" spawntime="250" />
+		<monster name="Behemoth" x="2" y="1" z="10" spawntime="250" />
+		<monster name="Serpent Spawn" x="-2" y="-1" z="10" spawntime="250" />
 	</spawn>
-	<spawn centerx="345" centery="329" centerz="10" radius="3">
+	<spawn centerx="343" centery="298" centerz="10" radius="3">
+		<monster name="Behemoth" x="0" y="-1" z="10" spawntime="250" />
+		<monster name="Serpent Spawn" x="2" y="2" z="10" spawntime="250" />
 		<monster name="Behemoth" x="0" y="0" z="10" spawntime="250" />
-		<monster name="Serpent Spawn" x="0" y="-1" z="10" spawntime="250" />
-		<monster name="Behemoth" x="-2" y="2" z="10" spawntime="250" />
 	</spawn>
-	<spawn centerx="324" centery="334" centerz="10" radius="3">
+	<spawn centerx="334" centery="307" centerz="10" radius="3">
+		<monster name="Serpent Spawn" x="-2" y="-1" z="10" spawntime="250" />
+		<monster name="Behemoth" x="-2" y="1" z="10" spawntime="250" />
+		<monster name="Serpent Spawn" x="1" y="-2" z="10" spawntime="250" />
+	</spawn>
+	<spawn centerx="330" centery="316" centerz="10" radius="3">
 		<monster name="Demon" x="1" y="1" z="10" spawntime="300" />
-		<monster name="Fury" x="1" y="2" z="10" spawntime="300" />
+		<monster name="Fury" x="-2" y="1" z="10" spawntime="300" />
 	</spawn>
-	<spawn centerx="332" centery="342" centerz="10" radius="3">
-		<monster name="Demon" x="-2" y="2" z="10" spawntime="300" />
-		<monster name="Fury" x="-2" y="-1" z="10" spawntime="300" />
+	<spawn centerx="333" centery="312" centerz="10" radius="3">
+		<monster name="Demon" x="1" y="-2" z="10" spawntime="300" />
+		<monster name="Fury" x="-2" y="2" z="10" spawntime="300" />
 	</spawn>
-	<spawn centerx="343" centery="335" centerz="10" radius="3">
-		<monster name="Demon" x="-1" y="0" z="10" spawntime="300" />
-		<monster name="Fury" x="-1" y="-2" z="10" spawntime="300" />
+	<spawn centerx="340" centery="293" centerz="10" radius="3">
+		<monster name="Demon" x="-2" y="0" z="10" spawntime="300" />
+		<monster name="Fury" x="-1" y="2" z="10" spawntime="300" />
 	</spawn>
-	<spawn centerx="338" centery="341" centerz="10" radius="3">
-		<monster name="Demon" x="2" y="1" z="10" spawntime="300" />
-		<monster name="Fury" x="-2" y="0" z="10" spawntime="300" />
+	<spawn centerx="340" centery="313" centerz="10" radius="3">
+		<monster name="Demon" x="1" y="2" z="10" spawntime="330" />
+		<monster name="Behemoth" x="0" y="1" z="10" spawntime="330" />
 	</spawn>
-	<spawn centerx="326" centery="339" centerz="10" radius="3">
-		<monster name="Demon" x="2" y="1" z="10" spawntime="330" />
-		<monster name="Behemoth" x="1" y="-1" z="10" spawntime="330" />
+	<spawn centerx="342" centery="306" centerz="10" radius="3">
+		<monster name="Fury" x="2" y="0" z="10" spawntime="330" />
+		<monster name="Demon" x="-2" y="2" z="10" spawntime="330" />
 	</spawn>
-	<spawn centerx="329" centery="345" centerz="10" radius="3">
-		<monster name="Fury" x="-1" y="-2" z="10" spawntime="330" />
+	<spawn centerx="344" centery="311" centerz="10" radius="3">
+		<monster name="Behemoth" x="-1" y="-2" z="10" spawntime="330" />
+		<monster name="Fury" x="1" y="0" z="10" spawntime="330" />
+	</spawn>
+	<spawn centerx="338" centery="309" centerz="10" radius="3">
+		<monster name="Demon" x="-2" y="-2" z="10" spawntime="330" />
+		<monster name="Behemoth" x="-1" y="-1" z="10" spawntime="330" />
+	</spawn>
+	<spawn centerx="325" centery="317" centerz="10" radius="3">
+		<monster name="Fury" x="0" y="1" z="10" spawntime="330" />
 		<monster name="Demon" x="0" y="-2" z="10" spawntime="330" />
 	</spawn>
-	<spawn centerx="335" centery="345" centerz="10" radius="3">
-		<monster name="Behemoth" x="0" y="0" z="10" spawntime="330" />
-		<monster name="Fury" x="-1" y="1" z="10" spawntime="330" />
+	<spawn centerx="346" centery="302" centerz="10" radius="3">
+		<monster name="Behemoth" x="0" y="-2" z="10" spawntime="330" />
+		<monster name="Fury" x="-2" y="1" z="10" spawntime="330" />
 	</spawn>
-	<spawn centerx="347" centery="333" centerz="10" radius="3">
-		<monster name="Demon" x="0" y="1" z="10" spawntime="330" />
-		<monster name="Behemoth" x="-2" y="-2" z="10" spawntime="330" />
-	</spawn>
-	<spawn centerx="343" centery="343" centerz="10" radius="3">
-		<monster name="Fury" x="0" y="2" z="10" spawntime="330" />
-		<monster name="Demon" x="-1" y="-1" z="10" spawntime="330" />
-	</spawn>
-	<spawn centerx="322" centery="341" centerz="10" radius="3">
-		<monster name="Behemoth" x="1" y="-2" z="10" spawntime="330" />
-		<monster name="Fury" x="2" y="0" z="10" spawntime="330" />
-	</spawn>
-	<spawn centerx="339" centery="347" centerz="10" radius="3">
+	<spawn centerx="336" centery="317" centerz="10" radius="3">
 		<monster name="Root Colossus" x="0" y="0" z="10" spawntime="300" />
 	</spawn>
 	<!-- END BEAST_VALLEY_SPAWNS -->
