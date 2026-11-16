@@ -3487,54 +3487,40 @@
 		<monster name="Dragon Hatchling" x="0" y="0" z="8" spawntime="300" />
 	</spawn>
 	<!-- END EPSTEIN_HUNTS -->
-				<!-- BEGIN CITY_DEPTHS_SPAWNS (scripts/map/generate-city-hunts.py) -->
-	<spawn centerx="188" centery="58" centerz="8" radius="1">
-		<monster name="Orc Berserker Pot Thrower" x="0" y="0" z="8" spawntime="300" />
+				<!-- BEGIN CITY_DEPTHS_SPAWNS (scripts/map/generate-city-depths.py) -->
+	<spawn centerx="190" centery="52" centerz="8" radius="3">
+		<monster name="Orc Berserker Pot Thrower" x="2" y="-3" z="8" spawntime="300" />
+		<monster name="Orc Berserker Pot Thrower" x="2" y="1" z="8" spawntime="300" />
 	</spawn>
-	<spawn centerx="189" centery="49" centerz="8" radius="1">
-		<monster name="Orc Berserker Pot Thrower" x="0" y="0" z="8" spawntime="300" />
+	<spawn centerx="201" centery="55" centerz="8" radius="3">
+		<monster name="Orc Berserker Pot Thrower" x="0" y="1" z="8" spawntime="300" />
 	</spawn>
-	<spawn centerx="186" centery="48" centerz="8" radius="1">
-		<monster name="Orc Berserker Pot Thrower" x="0" y="0" z="8" spawntime="300" />
+	<spawn centerx="203" centery="44" centerz="8" radius="3">
+		<monster name="Carniphila" x="-1" y="0" z="8" spawntime="175" />
+		<monster name="Carniphila" x="2" y="0" z="8" spawntime="175" />
+		<monster name="Carniphila" x="1" y="3" z="8" spawntime="175" />
 	</spawn>
-	<spawn centerx="190" centery="52" centerz="8" radius="1">
-		<monster name="Orc Berserker Pot Thrower" x="0" y="0" z="8" spawntime="300" />
+	<spawn centerx="183" centery="41" centerz="8" radius="3">
+		<monster name="Orc Berserker Pot Thrower" x="2" y="0" z="8" spawntime="300" />
 	</spawn>
-	<spawn centerx="190" centery="55" centerz="8" radius="1">
-		<monster name="Carniphila" x="0" y="0" z="8" spawntime="175" />
+	<spawn centerx="193" centery="47" centerz="9" radius="3">
+		<monster name="Dragon Lord Hatchling" x="3" y="2" z="9" spawntime="300" />
+		<monster name="Dragon Lord Hatchling" x="2" y="-1" z="9" spawntime="300" />
 	</spawn>
-	<spawn centerx="185" centery="45" centerz="8" radius="1">
-		<monster name="Carniphila" x="0" y="0" z="8" spawntime="175" />
+	<spawn centerx="206" centery="39" centerz="9" radius="3">
+		<monster name="Emerald Scarab" x="1" y="-2" z="9" spawntime="600" />
+		<monster name="Emerald Scarab" x="3" y="1" z="9" spawntime="600" />
 	</spawn>
-	<spawn centerx="192" centery="46" centerz="8" radius="1">
-		<monster name="Carniphila" x="0" y="0" z="8" spawntime="175" />
+	<spawn centerx="207" centery="58" centerz="9" radius="3">
+		<monster name="Dragon Lord Hatchling" x="3" y="-1" z="9" spawntime="300" />
+		<monster name="Dragon Lord Hatchling" x="0" y="-1" z="9" spawntime="300" />
 	</spawn>
-	<spawn centerx="190" centery="42" centerz="9" radius="1">
-		<monster name="Dragon Lord Hatchling" x="0" y="0" z="9" spawntime="300" />
+	<spawn centerx="185" centery="55" centerz="10" radius="3">
+		<monster name="Dragon Lord Hatchling" x="2" y="2" z="10" spawntime="300" />
+		<monster name="Dragon Lord Hatchling" x="-1" y="0" z="10" spawntime="300" />
 	</spawn>
-	<spawn centerx="195" centery="53" centerz="9" radius="1">
-		<monster name="Dragon Lord Hatchling" x="0" y="0" z="9" spawntime="300" />
-	</spawn>
-	<spawn centerx="183" centery="42" centerz="9" radius="1">
-		<monster name="Dragon Lord Hatchling" x="0" y="0" z="9" spawntime="300" />
-	</spawn>
-	<spawn centerx="197" centery="58" centerz="9" radius="1">
-		<monster name="Dragon Lord Hatchling" x="0" y="0" z="9" spawntime="300" />
-	</spawn>
-	<spawn centerx="182" centery="47" centerz="9" radius="1">
-		<monster name="Emerald Scarab" x="0" y="0" z="9" spawntime="600" />
-	</spawn>
-	<spawn centerx="185" centery="55" centerz="9" radius="1">
-		<monster name="Emerald Scarab" x="0" y="0" z="9" spawntime="600" />
-	</spawn>
-	<spawn centerx="194" centery="42" centerz="10" radius="1">
-		<monster name="Dark Hydra" x="0" y="0" z="10" spawntime="900" />
-	</spawn>
-	<spawn centerx="189" centery="45" centerz="10" radius="1">
-		<monster name="Dragon Lord Hatchling" x="0" y="0" z="10" spawntime="300" />
-	</spawn>
-	<spawn centerx="191" centery="60" centerz="10" radius="1">
-		<monster name="Dragon Lord Hatchling" x="0" y="0" z="10" spawntime="300" />
+	<spawn centerx="188" centery="41" centerz="10" radius="3">
+		<monster name="Dark Hydra" x="2" y="0" z="10" spawntime="900" />
 	</spawn>
 	<!-- END CITY_DEPTHS_SPAWNS -->
 		<!-- BEGIN BOAT_STOWAWAY (scripts/map/generate-city-hunts.py) -->
