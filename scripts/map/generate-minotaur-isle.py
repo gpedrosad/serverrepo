@@ -77,16 +77,20 @@ BUSHES, SMALL_TREE, FLOWERS, BONES, PEBBLES = NP.BUSHES, NP.FOREST_SMALL_TREE, N
 CARD = NP.CARD
 
 # --- caza: (monstruos, por spawn, spawntime), en orden de dificultad ------------------------------
+# Nov 2026: menos de golpe y más gradual. Antes el islote tenía 5 spawns de 2 a 4 casillas uno de otro
+# al lado de los Mini Trainer Monk, y z12 llegaba a 3 por spawn. Ahora: de a 1 al lado del puente y de a 2
+# más lejos, cada tipo nuevo aparece de a poco, y los spawns quedan más separados en todos los pisos.
 STAGES = {
-    Z7: [(("Minotaur",), 2, 60), (("Minotaur", "Minotaur Archer"), 2, 60)],
-    Z10: [(("Minotaur", "Minotaur Archer"), 2, 60), (("Minotaur Archer", "Minotaur", "Minotaur Guard"), 2, 60),
-          (("Minotaur Guard", "Minotaur Archer"), 2, 70)],
-    Z11: [(("Minotaur Guard", "Minotaur Archer"), 2, 70), (("Minotaur Guard", "Minotaur Mage"), 2, 80),
-          (("Minotaur Mage", "Minotaur Guard"), 2, 80)],
-    Z12: [(("Minotaur Mage", "Minotaur Guard"), 2, 80), (("Minotaur Guard", "Minotaur Mage"), 3, 90),
-          (("Minotaur Mage", "Minotaur Guard"), 3, 90)],
+    Z7: [(("Minotaur",), 1, 60), (("Minotaur",), 2, 60), (("Minotaur", "Minotaur Archer"), 2, 60)],
+    Z10: [(("Minotaur",), 2, 60), (("Minotaur", "Minotaur Archer"), 2, 60),
+          (("Minotaur Archer", "Minotaur Guard"), 2, 70)],
+    Z11: [(("Minotaur Guard", "Minotaur Archer"), 2, 70),
+          (("Minotaur Guard", "Minotaur Archer", "Minotaur Mage"), 2, 80),
+          (("Minotaur Guard", "Minotaur Mage"), 2, 80)],
+    Z12: [(("Minotaur Guard", "Minotaur Mage"), 2, 80), (("Minotaur Mage", "Minotaur Guard"), 2, 90),
+          (("Minotaur Guard", "Minotaur Mage"), 2, 90)],
 }
-GAP = {Z7: 4, Z10: 7, Z11: 7, Z12: 7}
+GAP = {Z7: 5, Z10: 9, Z11: 9, Z12: 8}
 
 
 def grow(cells, r: int) -> set:
@@ -319,6 +323,8 @@ def main() -> int:
     ap.add_argument("--seed", type=int, default=7)
     ap.add_argument("--map", type=Path, default=WORLD / "test.otbm")
     ap.add_argument("--replace", action="store_true")
+    ap.add_argument("--spawns-only", action="store_true",
+                    help="reescribe solo los spawns (y su conteo en el manifiesto); no toca el mapa ni carteles")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--png", type=Path)
     a = ap.parse_args()
@@ -335,7 +341,7 @@ def main() -> int:
     # spawns: islote lejos del puente y de la cueva; cuevas por distancia a la entrada
     rng = random.Random(a.seed + 99)
     isle_walk = {c for c in info["land"] if bl.walkable(surf[c])}
-    avoid7 = grow({info["entry"], info["landing"], info["start"]}, 2) | grow({info["camp"]}, 1)
+    avoid7 = grow({info["entry"], info["landing"], info["start"]}, 3) | grow({info["camp"]}, 1)
     spawns = place_stages(STAGES[Z7], isle_walk, {c: -c[0] for c in isle_walk}, avoid7, Z7, rng, GAP[Z7])
     for z, cv in caves.items():
         t = cv["tiles"]
@@ -383,8 +389,25 @@ def main() -> int:
     if errs:
         print("ERRORES:\n  " + "\n  ".join(errs[:40]))
         return 1
-    if a.dry_run or not a.replace:
-        print("(dry-run)" if a.dry_run else "usá --replace para escribir")
+    if a.dry_run or not (a.replace or a.spawns_only):
+        print("(dry-run)" if a.dry_run else "usá --replace o --spawns-only para escribir")
+        return 0
+
+    block = "\t<!-- BEGIN MINOTAUR_ISLE_SPAWNS (scripts/map/generate-minotaur-isle.py) -->\n" + \
+        spawn_xml(spawns) + "\n\t<!-- END MINOTAUR_ISLE_SPAWNS -->\n"
+    if a.spawns_only:
+        # Sin tocar el mapa: desde nov 2026 otra zona tiene paredes y una escalera de mano en el borde
+        # este de la caja de las cuevas (x 139-140, y 25-30, z10) y --replace las borraría.
+        sp = SPAWNS_XML.read_text(encoding="latin-1")
+        old = re.search(r"[ \t]*<!-- BEGIN MINOTAUR_ISLE_SPAWNS.*?<!-- END MINOTAUR_ISLE_SPAWNS -->\n?", sp, flags=re.S)
+        if not old:
+            print("ERROR: no está el bloque MINOTAUR_ISLE_SPAWNS en test-spawn.xml")
+            return 1
+        SPAWNS_XML.write_text(sp[:old.start()] + block + sp[old.end():], encoding="latin-1")
+        man = json.loads(MANIFEST.read_text())
+        man["spawns"], man["monsters"] = len(spawns), {f"z{z}": c for z, c in sorted(counts.items())}
+        MANIFEST.write_text(json.dumps(man, indent=2) + "\n")
+        print(f"OK test-spawn.xml (MINOTAUR_ISLE_SPAWNS) y {MANIFEST.name}; mapa sin tocar")
         return 0
 
     # --- mapa ---
@@ -407,8 +430,6 @@ def main() -> int:
     # --- spawns ---
     sp = SPAWNS_XML.read_text(encoding="latin-1")
     sp = re.sub(r"[ \t]*<!-- BEGIN MINOTAUR_ISLE_SPAWNS.*?<!-- END MINOTAUR_ISLE_SPAWNS -->\n?", "", sp, flags=re.S)
-    block = "\t<!-- BEGIN MINOTAUR_ISLE_SPAWNS (scripts/map/generate-minotaur-isle.py) -->\n" + \
-        spawn_xml(spawns) + "\n\t<!-- END MINOTAUR_ISLE_SPAWNS -->\n"
     SPAWNS_XML.write_text(sp.replace("</spawns>", block + "</spawns>"), encoding="latin-1")
 
     # --- carteles y manifiesto ---

@@ -93,25 +93,24 @@
     140,
     80
   ],
-  "spawns": 82,
+  "spawns": 60,
   "monsters": {
     "z7": {
-      "Minotaur": 8,
-      "Minotaur Archer": 2
+      "Minotaur": 5
     },
     "z10": {
-      "Minotaur": 15,
-      "Minotaur Archer": 23,
-      "Minotaur Guard": 14
+      "Minotaur": 18,
+      "Minotaur Archer": 12,
+      "Minotaur Guard": 8
     },
     "z11": {
-      "Minotaur Guard": 24,
+      "Minotaur Guard": 15,
       "Minotaur Archer": 10,
-      "Minotaur Mage": 14
+      "Minotaur Mage": 9
     },
     "z12": {
-      "Minotaur Mage": 35,
-      "Minotaur Guard": 36
+      "Minotaur Guard": 21,
+      "Minotaur Mage": 21
     }
   }
 }

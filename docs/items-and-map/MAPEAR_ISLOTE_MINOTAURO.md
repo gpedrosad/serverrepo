@@ -12,13 +12,18 @@ Generador: `scripts/map/generate-minotaur-isle.py` (usa las cuevas, bordes y val
 
 | Piso | Zona | Monstruos (local) | Nivel orientativo |
 |------|------|-------------------|-------------------|
-| z7 | Islote: pasto con costa, campamento con fogata, barril y cajón | 8 Minotaur, 2 Minotaur Archer | 8–20 |
-| z10 | Cueva del Minotauro | Minotaur y Archer cerca de la entrada → Guard al fondo (52) | 20–30 |
-| z11 | Galerías | Guard y Archer → Guard y Mage (48) | 30–45 |
-| z12 | Cámara del Rey | Guard y Mage, 2 y después 3 por spawn (71) | 45+ |
+| z7 | Islote: pasto con costa, campamento con fogata, barril y cajón | 5 Minotaur: 1 junto al puente, después de a 2 | 8–20 |
+| z10 | Cueva del Minotauro | Minotaur → Minotaur y Archer → Archer y Guard al fondo (38) | 20–30 |
+| z11 | Galerías | Guard y Archer → Guard, Archer y Mage → Guard y Mage (34) | 30–45 |
+| z12 | Cámara del Rey | Guard y Mage de a 2 (42) | 45+ |
 
 En cada cueva la dificultad sube con la distancia a la entrada; cada piso arranca más fuerte que el
 anterior. Los spawns de cueva respawnean entre 60 y 90 s.
+
+**Nov 2026, más espaciado y gradual:** antes el islote tenía 10 minotauros en 5 spawns a 4 casillas uno
+de otro, al lado de los Mini Trainer Monk (`122–125, 55–57`), y z12 llegaba a 3 por spawn (194 en total).
+Ahora son 119: máximo 2 por spawn, centros cada 5 casillas en el islote y 8–9 en las cuevas (`GAP`), nada
+a menos de 3 casillas del puente, y cada tipo nuevo entra mezclado con el anterior (`STAGES`).
 
 ## Coordenadas
 
@@ -61,11 +66,16 @@ Cartel en `readables.xml` (bloque `MINOTAUR_ISLE_SIGNS`); spawns en `test-spawn.
 
 ```bash
 python3 scripts/map/generate-minotaur-isle.py --dry-run --png /tmp/islote.png   # valida y dibuja (y _z10/_z11/_z12)
-python3 scripts/map/generate-minotaur-isle.py --replace                          # escribe
+python3 scripts/map/generate-minotaur-isle.py --spawns-only                      # solo spawns (no toca el mapa)
+python3 scripts/map/generate-minotaur-isle.py --replace                          # escribe todo
 python3 scripts/map/check-map-load.py                                            # que el server cargue el mapa
 ```
 
 Determinista (`--seed`, por defecto 7) y re-ejecutable: reemplaza el rectángulo del islote, la caja de
 las cuevas y los bloques de spawns y carteles.
+
+**Ojo con `--replace` (nov 2026):** otra zona tiene paredes y una escalera de mano (`1385` en `140,28,10`)
+en el borde este de la caja de las cuevas (x 139–140, y 25–30, z10); `--replace` las convierte en roca.
+Para cambiar monstruos usar `--spawns-only`. Antes de un `--replace`, comparar el mapa antes y después.
 
 Antes de deployar un `test.otbm` nuevo, probar depots in-game ([`../gameplay/DEPOTS.md`](../gameplay/DEPOTS.md)).
