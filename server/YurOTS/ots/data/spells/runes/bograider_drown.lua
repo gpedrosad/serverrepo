@@ -27,8 +27,8 @@ BogRaiderDrownObject = MagicDamageObject(attackType, animationEffect, hitEffect,
 function onCast(cid, creaturePos, level, maglv, var)
 centerpos = {x=creaturePos.x, y=creaturePos.y, z=creaturePos.z}
 
-BogRaiderDrownObject.minDmg = 50
-BogRaiderDrownObject.maxDmg = 110
+BogRaiderDrownObject.minDmg = 70
+BogRaiderDrownObject.maxDmg = 130
 
 return doTargetMagic(cid, centerpos, BogRaiderDrownObject:ordered())
 end

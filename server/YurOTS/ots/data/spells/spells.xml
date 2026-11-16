@@ -90,6 +90,8 @@
 <spell name="frosthatchling_icewave" words="frosthatchling_icewave" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="crystalspider_icewave" words="crystalspider_icewave" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="icegolem_shards" words="icegolem_shards" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="bograider_mudsplash" words="bograider_mudsplash" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="bograider_heal" words="bograider_heal" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="rootcolossus_rootslam" words="rootcolossus_rootslam" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="rootcolossus_spores" words="rootcolossus_spores" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="vamp_lifedrain" words="vamp_lifedrain" maglv="4000" mana="800" enabled="1"></spell>

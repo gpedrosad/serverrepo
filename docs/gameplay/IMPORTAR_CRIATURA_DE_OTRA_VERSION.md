@@ -33,7 +33,7 @@ cliente 8.60. Para ítems, ver [IMPORTAR_ITEM_DE_OTRA_VERSION.md](../items-and-m
 | Ice Golem | 171 | 385 | 295 | 30–50 | melee 20–110, esquirlas 25–60 alrededor | Isla del Hielo, grutas (z8) |
 | Crystal Spider | 172 | 1250 | 900 | 55–75 | melee 50–200, onda de hielo 80–150, se acelera | Isla del Hielo, grutas (z8) |
 | Frost Dragon Hatchling | 173 | 800 | 745 | 45–65 | melee 20–90, aliento 60–110, bola 40–80 | Isla del Hielo, guarida (z9) |
-| Bog Raider | 174 | 1300 | 800 | 50–70 | melee 30–110, chorro que roba vida 50–110, se cura | Desierto de las Ruinas, ciénaga |
+| Bog Raider | 174 | 1300 | 800 | 50–70 | melee 30–110, chorro que roba vida 70–130 a distancia, salpicón de barro 40–100 alrededor, se cura 65–95 | Desierto de las Ruinas, ciénaga |
 
 - Vida y experiencia son las de Tibia 8.60. Los ataques están adaptados a lo que tiene este servidor y el loot
   usa ítems de 7.6 (los de 8.x no existen acá).
@@ -45,7 +45,8 @@ cliente 8.60. Para ítems, ver [IMPORTAR_ITEM_DE_OTRA_VERSION.md](../items-and-m
   ghoul, cave rat, bat, tiger).
 - Hechizos nuevos: `hatchling_firewave`, `dlhatchling_firewave`, `wyvern_poisonwave`, `mutatedbat_shriek`,
   `frosthatchling_icewave`, `crystalspider_icewave`, `icegolem_shards` (instant) y las runas `hatchling_fireball`
-  (5041), `chakoya_iceball` (5042), `frosthatchling_iceball` (5043) y `bograider_drown` (5044). El hielo es daño
+  (5041), `chakoya_iceball` (5042), `frosthatchling_iceball` (5043) y `bograider_drown` (5044). El Bog Raider
+  tiene además `bograider_mudsplash` y `bograider_heal` (instant). El hielo es daño
   físico con los efectos del pack "ice", como el del Frost Dragon (7.6 no tiene daño de hielo).
 - Siete no tienen spawn todavía: existen en el servidor (se pueden invocar o poner con RME) pero no aparecen
   en el mapa.
@@ -60,6 +61,13 @@ cliente 8.60. Para ítems, ver [IMPORTAR_ITEM_DE_OTRA_VERSION.md](../items-and-m
   Se corrigió con `replaces=295` en `IMPORTS`: el importador pisa el look de destino solo si todavía tiene
   los sprites de ese look equivocado, y reescribe los 48 sprites en su lugar (el `.spr` no crece). Antes de
   importar, mirar la hoja (`--sheet`) y comparar con la criatura real; el número de look no alcanza.
+
+- **Bog Raider con los ataques a medias (nov 2026):** solo tenía melee, el chorro y un `exura` que con su nivel
+  curaba 17–72. Ahora tiene los ataques del de 8.60: chorro que roba vida 70–130, salpicón de barro físico
+  alrededor (`bograider_mudsplash`, 40–100, burbujas verdes) y cura propia 65–95 (`bograider_heal`). Las
+  variantes Angry/Furious/Enraged se regeneran con `scripts/monsters/rage-variants.py --write --only "Bog Raider"`
+  (escalan solo el melee; los hechizos pegan igual). La lentitud del de 8.60 **no** se puso: `doParalyze` está
+  fijo en C++ a velocidad 40 durante 60 s (el de la runa), demasiado para un monstruo.
 
 ## El cliente de origen
 
