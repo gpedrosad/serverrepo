@@ -32,6 +32,9 @@
 <spell name="Sharpshooter"			words="utito tempo san"		maglv="8"	mana="150"	enabled="1"><vocation id="3" /></spell>
 <spell name="Ice Strike"			words="exori frigo"			maglv="3"	mana="20"	enabled="1" echo="1"><vocation id="2" /></spell>
 <spell name="Eternal Winter"		words="exevo gran mas frigo"	maglv="30"	mana="650"	enabled="1"><vocation id="2" /></spell>
+<!-- Nov 2026: ataques mas rapidos unos segundos (docs/gameplay/SPELL_ATTACK_SPEED.md) -->
+<spell name="Frenzy"				words="utito hur"			maglv="5"	mana="100"	enabled="1"><vocation id="4" /></spell>
+<spell name="Rapid Fire"			words="utito san hur"		maglv="8"	mana="120"	enabled="1"><vocation id="3" /></spell>
 <spell name="Echo"					words="utevo vis"			maglv="20"	mana="120"	enabled="1"><vocation id="1" /></spell>
 <spell name="Berzeker Gran"			words="exori gran"			maglv="9"	mana="200"	enabled="1"><vocation id="4" /></spell>
 <spell name="Skill Buff"			words="utito tempo"			maglv="8"	mana="150"	enabled="1"><vocation id="4" /></spell>

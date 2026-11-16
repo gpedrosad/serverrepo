@@ -364,7 +364,15 @@ public:
 	void refreshHeadSkillBonus(slots_t fromSlot, slots_t toSlot = (slots_t)0);
 	int64_t getEffectiveMagLevel() const;
 	int getAttackDelayMs() const;
+	// Frenzy (utito hur, knight) / Rapid Fire (utito san hur, paladin): ataques más rápidos unos segundos.
+	// Se arranca desde Lua con startAttackSpeed(); ver docs/gameplay/SPELL_ATTACK_SPEED.md.
+	int64_t attackSpeedUntil;    // OTSYS_TIME() en que termina (0 = sin buff)
+	int attackSpeedPercent;      // cuánto baja la espera entre golpes (%)
+	int64_t attackSpeedReadyAt;  // desde cuándo se puede volver a lanzar
+	int attackSpeedEffect;       // efecto que se dibuja sobre el jugador cada segundo (-1 = ninguno)
+	bool hasAttackSpeedBuff() const;
 	int getInitialAttackDelayMs() const;
+	int getBaseAttackDelayMs() const;
 	bool wieldsNightglassDagger() const;
 	unsigned short getCrucibleWeaponId() const;
 	Item* getActiveWeapon() const;

@@ -397,6 +397,8 @@ int SpellScript::registerFunctions(){
 	lua_register(luaState, "getCreatureDirection", SpellScript::luaActionGetCreatureDirection);
 	lua_register(luaState, "echoReady", SpellScript::luaActionEchoReady);
 	lua_register(luaState, "startEcho", SpellScript::luaActionStartEcho);
+	lua_register(luaState, "attackSpeedReady", SpellScript::luaActionAttackSpeedReady);
+	lua_register(luaState, "startAttackSpeed", SpellScript::luaActionStartAttackSpeed);
 	lua_register(luaState, "getSpeed", SpellScript::luaActionGetSpeed);
 	lua_register(luaState, "changeSpeed", SpellScript::luaActionChangeSpeed);
 	lua_register(luaState, "changeSpeedMonster", SpellScript::luaActionChangeSpeedMonster);
@@ -1920,6 +1922,61 @@ int SpellScript::luaActionStartEcho(lua_State *L)
 	st.readyAt = now + cooldown * 1000;
 	st.scale = scale;
 	st.pvpScale = pvpScale;
+	lua_pushboolean(L, true);
+	return 1;
+}
+
+// attackSpeedReady(cid): segundos que faltan para volver a lanzar Frenzy / Rapid Fire (0 = listo). Si
+// falta, se lo dice al jugador. Ver docs/gameplay/SPELL_ATTACK_SPEED.md.
+int SpellScript::luaActionAttackSpeedReady(lua_State *L)
+{
+	unsigned long cid = (unsigned long)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	Spell* spell = getSpell(L);
+	Player* player = spell ? dynamic_cast<Player*>(spell->game->getCreatureByID(cid)) : NULL;
+	int64_t left = 0;
+	if(player && player->attackSpeedReadyAt > OTSYS_TIME()) {
+		left = (player->attackSpeedReadyAt - OTSYS_TIME() + 999) / 1000;
+		std::stringstream msg;
+		msg << "You can use it again in " << left << " s.";
+		player->sendTextMessage(MSG_SMALLINFO, msg.str().c_str(), player->pos, NM_ME_PUFF);
+	}
+	lua_pushnumber(L, (double)left);
+	return 1;
+}
+
+// startAttackSpeed(cid, duracion_s, porcentaje, espera_s, efecto): durante `duracion_s` la espera entre
+// golpes baja `porcentaje` % (nunca menos de ATTACK_SPEED_BUFF_MIN_DELAY_MS) y cada segundo sale `efecto`
+// (NM_ME_*, NM_ME_NONE = ninguno) sobre el jugador; se puede volver a lanzar a los `espera_s` segundos.
+// Vale para melee y distancia (checkCreatureAttacking usa getAttackDelayMs). El mensaje "Your attacks speed
+// up for N s." lo lee el cliente (game_healthinfo) para prender el ícono con la cuenta regresiva.
+int SpellScript::luaActionStartAttackSpeed(lua_State *L)
+{
+	int effect = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	int64_t cooldown = (int64_t)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	int percent = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	int64_t duration = (int64_t)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	unsigned long cid = (unsigned long)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	Player* player = spell ? dynamic_cast<Player*>(spell->game->getCreatureByID(cid)) : NULL;
+	if(!player || percent <= 0 || percent >= 100 || duration <= 0) {
+		lua_pushboolean(L, false);
+		return 1;
+	}
+	int64_t now = OTSYS_TIME();
+	player->attackSpeedUntil = now + duration * 1000;
+	player->attackSpeedPercent = percent;
+	player->attackSpeedReadyAt = now + (cooldown > duration ? cooldown : duration) * 1000;
+	player->attackSpeedEffect = (effect >= 0 && effect < 255) ? effect : -1;
+	std::stringstream msg;
+	msg << "Your attacks speed up for " << duration << " s.";
+	player->sendTextMessage(MSG_SMALLINFO, msg.str().c_str());
 	lua_pushboolean(L, true);
 	return 1;
 }

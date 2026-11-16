@@ -98,6 +98,10 @@ Creature()
 	looktype   = PLAYER_MALE_1;
 	vocation   = VOCATION_NONE;
 	capacity = 300.00;
+	attackSpeedUntil = 0;
+	attackSpeedPercent = 0;
+	attackSpeedReadyAt = 0;
+	attackSpeedEffect = -1;
 	mana       = 0;
 	manamax    = 0;
 	manaspent  = 0;
@@ -3276,7 +3280,23 @@ int64_t Player::getEffectiveMagLevel() const
 	return maglevel + imbueWandMl + imbueHelmMl + imbueArmorMl;
 }
 
+bool Player::hasAttackSpeedBuff() const
+{
+	return attackSpeedUntil > 0 && attackSpeedPercent > 0 && OTSYS_TIME() < attackSpeedUntil;
+}
+
 int Player::getAttackDelayMs() const
+{
+	int delay = getBaseAttackDelayMs();
+	if(hasAttackSpeedBuff()){
+		delay = delay * (100 - attackSpeedPercent) / 100;
+		if(delay < ATTACK_SPEED_BUFF_MIN_DELAY_MS)
+			delay = ATTACK_SPEED_BUFF_MIN_DELAY_MS;
+	}
+	return delay;
+}
+
+int Player::getBaseAttackDelayMs() const
 {
 	if(getWandId() == ITEM_CRIMSON_WAND)
 		return 667;

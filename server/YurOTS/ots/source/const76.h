@@ -348,6 +348,7 @@ enum bloodsplash_t
 #define SOFT_BOOTS_DURATION_MS (240 * 60 * 1000)
 #define SOFT_BOOTS_EQUIP_PENALTY_MS 3000
 #define PLAYER_ATTACK_DELAY_MS (2000 * 100 / 150)  /* Tibia clásico 2000ms, x1.5 */
+#define ATTACK_SPEED_BUFF_MIN_DELAY_MS 500     /* Frenzy / Rapid Fire nunca bajan de acá */
 #define ASHLORD_ATTACK_DELAY_MS 1100
 #define FROSTWARDEN_ATTACK_DELAY_MS 1200
 #define IRONHIDE_ATTACK_DELAY_MS 1700

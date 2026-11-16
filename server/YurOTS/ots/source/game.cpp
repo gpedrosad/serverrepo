@@ -4658,6 +4658,17 @@ void Game::checkCreature(unsigned long id)
 				player->hasteTicks -= thinkTicks;
 			}
 
+			if(player->attackSpeedUntil > 0 && OTSYS_TIME() >= player->attackSpeedUntil){
+				player->attackSpeedUntil = 0;
+				player->attackSpeedPercent = 0;
+				player->attackSpeedEffect = -1;
+				player->sendTextMessage(MSG_SMALLINFO, "Your attacks slow down.");
+			}
+			else if(player->hasAttackSpeedBuff() && player->attackSpeedEffect >= 0){
+				// efecto constante mientras dura (lo ven todos los que tienen al jugador en pantalla)
+				sendMagicEffect(player->pos, (unsigned char)player->attackSpeedEffect);
+			}
+
 			if(player->tempoBuffTicks > 0){
 				player->tempoBuffTicks -= thinkTicks;
 				if(player->tempoBuffTicks <= 0){

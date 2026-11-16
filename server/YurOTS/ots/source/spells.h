@@ -153,6 +153,8 @@ public:
   static int luaActionGetCreatureDirection(lua_State *L);
   static int luaActionEchoReady(lua_State *L);
   static int luaActionStartEcho(lua_State *L);
+  static int luaActionAttackSpeedReady(lua_State *L);
+  static int luaActionStartAttackSpeed(lua_State *L);
 
 	// Eco (utevo vis): mientras una repetición se lanza, echoCast es true: no cobra maná ni aplica espera,
 	// y doTargetMagic / doAreaMagic multiplican el daño por echoScale. Ver docs/gameplay/SPELL_ECO.md.

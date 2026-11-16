@@ -86,6 +86,7 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 | Whirlwind Throw (`exori hur`): lanzar el arma según skill y ataque | `docs/gameplay/SPELL_EXORI_HUR.md` |
 | Ethereal Spear (`exori con`): lanza etérea según skill de distancia | `docs/gameplay/SPELL_EXORI_CON.md` |
 | Eco (`utevo vis`): repite el próximo golpe al 50 %; `echo="1"` en `spells.xml` | `docs/gameplay/SPELL_ECO.md` |
+| Frenzy (`utito hur`) / Rapid Fire (`utito san hur`): ataques más rápidos unos segundos, efecto constante e ícono en el cliente | `docs/gameplay/SPELL_ATTACK_SPEED.md` |
 | Hechizos nuevos nov 2026 (`exori ico`, `exori min`, `exura ico`, `exori san`, `exura san`, `utito tempo san`, `exori frigo`, `exevo gran mas frigo`) | `docs/gameplay/SPELLS_NOV2026.md` |
 | Energy Strike Hur (`exori vis hur`) target a distancia (Sorc/Druid, visual HMM) | `docs/gameplay/SPELL_EXORI_VIS_HUR.md` |
 | Challenge (`exeta res`) taunt Knight lock 6 s | `docs/gameplay/SPELL_EXETA_RES.md` |
