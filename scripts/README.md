@@ -61,7 +61,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | `generate-epstein-caves.py` | Epstein Island: cuevas largas z8 + z9 + z10, agujeros y escaleras; escribe `generated-epstein-caves.json` (`--dry-run --preview-dir`) |
 | `generate-epstein-cleanup.py` | Epstein Island: saca NPCs/tienda y el Oracle, y agrega el portal de salida al templo |
 | `reshape-river-street.py` | River Street III–V: casas más cortas, patios, pasillos de tierra y puente de sogas de 1 casilla hasta el arco de los trolls (`--dry-run --png`; ver `docs/gameplay/HOUSES.md`) |
-| `arrange-mad-shop.py` | Tienda de Mad (z6 del Seller): saca los small sapphires y pone los 25 raros sobre mesas, agrupados (`--replace`; ver `docs/items-and-map/MAPEAR_TIENDA_SELLER.md`) |
+| `arrange-mad-shop.py` | Tienda de Mad (z6 del Seller): 13 raros en el piso de Mad y el mostrador, fuera del alcance de los jugadores; valida con flood fill (`--replace`; ver `docs/items-and-map/MAPEAR_TIENDA_SELLER.md`) |
 | `generate-maze.py` | Laberinto Alice |
 | `generate-tp-gauntlet.py` | Gauntlet |
 | `generate-island.py` | Islas procedurales |

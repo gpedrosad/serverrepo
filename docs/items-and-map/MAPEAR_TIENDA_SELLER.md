@@ -57,22 +57,47 @@ Perac estaba en **`144,54,5`**, justo en la fila que se recorta. Se movió a **`
 podría colocarlo al arrancar (`Could not place Perac!`), igual que pasó con el Huntmaster
 al borrar la torre del depot.
 
-## Tienda de Mad (z6), ordenada (15 nov 2026)
+## Tienda de Mad (z6): los raros fuera del alcance de los jugadores (16 nov 2026)
 
-El piso de displays de z6 es la tienda de **Mad** (`145,51,6`). Tenía un small sapphire debajo de cada
-raro y 9 ítems sueltos en el piso, varios en la columna de Mad. Script: `scripts/map/arrange-mad-shop.py`
-(dry-run por defecto, `--replace` para escribir; idempotente).
+El piso de displays de z6 es la tienda de **Mad** (`145,51,6`; compra loot, no vende estos ítems: son
+de adorno). Script: `scripts/map/arrange-mad-shop.py` (dry-run por defecto, `--replace` para escribir;
+idempotente).
 
 ![Antes y después de la tienda de Mad (z6)](img/tienda-seller/mad-antes-despues.png)
 
-- Fuera los **24 small sapphires** (2146); no queda ninguno en el edificio.
-- Los **25 ítems** quedan sobre mesas o mostradores, ninguno en el piso ni fuera del salón
-  (`x142–146, y47–53`). Se agregaron 9 mesitas `1619` en `x142` (49, 50, 52) y `x145` (todo menos 51).
-- Agrupados: armadura en la mesa larga `x144` (de la cabeza a los pies), mazas/reaver/runa/reliquia en
-  las mesitas `x145`, espadas y hachas en el mostrador `x146`, escudos y morlen crest al oeste.
-- Libres a propósito: `142,48` (llega la escalera de mano de `142,47,7`), el pasillo `x143, y48–52` y
-  `142,51` (para leer el pizarrón). Mad queda rodeado de mesas en `145,51` y se lo atiende desde el
-  pasillo (`x143`, a 2 casillas; los NPC atienden a menos de 4).
+**Regla:** un jugador solo puede mover o agarrar un ítem del piso si está a 1 casilla (también en
+diagonal; `Game::onPrepareMoveThing`, "Too far away..."). Por eso ningún ítem de exhibición puede
+quedar al lado de una casilla que se pise. Los clientes caminan por `x142–143` (`y47–52`); la mesa
+larga `x144` (`y47–53`) cierra el lado de Mad. Las únicas casillas fuera de alcance son el piso de Mad
+(`x145`) y el mostrador (`x146`): 13 lugares, un ítem en cada uno.
+
+| y | `x145` (piso de Mad) | `x146` (mostrador) |
+|---|---|---|
+| 47 | obsidian regalia | bloodreaver saber |
+| 48 | basalt greaves | ashlord emberblade |
+| 49 | mosaic shield | venomqueen fang |
+| 50 | quarry ward | sword of silence |
+| 51 | **Mad** | stormcaller maul |
+| 52 | rift hammer | ironhide crusher |
+| 53 | windsting axe | bonepriest reaver |
+
+- Fuera los **24 small sapphires** (2146) que había debajo de cada raro.
+- Fuera **12 ítems** que no entraban: los 8 comunes que Mad compra (crown armor, blue robe, knight legs,
+  boots of haste, vampire shield, dragon shield, bright sword, fire axe) y 4 raros que no da ningún
+  monstruo ni quest (flamecoil rune, relic of ulm, wayfarer boots, morlen crest).
+- Sin muebles agregados: solo quedan la mesa larga, las mesas del sur y el mostrador del mapa original,
+  todos vacíos del lado de los clientes.
+- El script valida con un flood fill desde la llegada de la escalera (`142,48`) que ningún raro quede a
+  1 casilla de algo pisable y que nadie pueda pisar la casilla de Mad. Mad se atiende desde `x143`
+  (a 2 casillas; los NPC atienden a menos de 4).
+
+### Error que ya pasó: raros al alcance y mesitas de más (15 nov 2026)
+
+La primera versión (`943689b`) puso los 25 ítems sobre mesas y agregó 9 mesitas `1619` en `x142` y
+`x145`. Quedaron armaduras, escudos y armas en la mesa larga `x144`, en las mesitas de `x142` y en las
+mesas del sur, todas pegadas al pasillo: cualquiera los podía agarrar. Además, la mesita `1619` es
+`moveable` (se puede empujar). Que un ítem esté "sobre una mesa" no lo protege: lo que cuenta es que no
+haya casilla pisable a 1 de distancia.
 
 ## Qué NO se tocó
 
