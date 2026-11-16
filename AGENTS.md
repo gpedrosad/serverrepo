@@ -66,6 +66,7 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 | Soft Boots (regen HP/MP cada 3 s + desgaste → worn) | `docs/gameplay/SOFT_BOOTS.md` |
 | Daily Task / Huntmaster (contratos diarios) | `docs/gameplay/DAILY_TASK.md` |
 | Escaleras / escaleras de mano / trampillas con click derecho | `docs/gameplay/STAIRS.md` |
+| Cuevas generadas (paredes de tierra 356–367, vacío a la vista, agujero + escalera de mano) y dungeon de la city | `docs/items-and-map/PIEZAS_DE_MAPA.md#cuevas` y `docs/items-and-map/MAPEAR_DUNGEON_CITY.md` |
 | El Crisol (puertas diarias + rares Zagan) | `docs/gameplay/CRUCIBLE.md` |
 | Wave Arena (oleadas + ranking) | `docs/gameplay/WAVE_ARENA.md` |
 | Reloj de Arena (sala compartida, descanso + 6 oleadas que suben de nivel) | `docs/gameplay/SAND_CLOCK.md` |

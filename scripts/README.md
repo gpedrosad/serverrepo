@@ -58,6 +58,8 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | `generate-fargum-tower.py` | Torre del Barquero: saca el patio de mesas junto al bote de Fargum y hace una torre de 5 pisos (z7–z3) con un monstruo por piso (`--dry-run --preview-dir`) |
 | `generate-bamboo-depths.py` | Cuevas de Bambú: bajada bajo Bamboo Camp, pozo z8 y cueva z9 con 3 salas y spawns progresivos (`--dry-run --preview`) |
 | `generate-epstein-hunts.py` | Epstein Island (nivel medio/alto, 4 pisos): zonas z7, cuevas z8, z9 y z10 con Mutated Tiger, Tide Priest y Bog Raiders (`--dry-run`) |
+| `generate-city-depths.py` | Dungeon de la city (agujero `185,58,7`): cueva z8–z10 en bloques 2x2, salas con decoración fija, agujeros + escaleras de mano y spawns por sala; valida paredes, vacío a la vista y recorrido (`--dry-run --preview`; ver `docs/items-and-map/MAPEAR_DUNGEON_CITY.md`) |
+| `generate-city-hunts.py` | Tripulación pirata del barco del este y polizón (solo `test-spawn.xml`) |
 | `generate-epstein-caves.py` | Epstein Island: cuevas largas z8 + z9 + z10, agujeros y escaleras; escribe `generated-epstein-caves.json` (`--dry-run --preview-dir`) |
 | `generate-epstein-cleanup.py` | Epstein Island: saca NPCs/tienda y el Oracle, y agrega el portal de salida al templo |
 | `reshape-river-street.py` | River Street III–V: casas más cortas, patios, pasillos de tierra y puente de sogas de 1 casilla hasta el arco de los trolls (`--dry-run --png`; ver `docs/gameplay/HOUSES.md`) |

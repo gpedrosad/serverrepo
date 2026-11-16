@@ -122,6 +122,27 @@ siguen 1050 en la fila norte y 1053 en la esquina SE. En la Torre del Barquero: 
 - Las dos casillas de llegada tienen que ser piso libre. Sale de `game.cpp` (`floorChange(NORTH)`).
 - No poner monstruos a menos de 3 casillas de una llegada.
 
+**Agujero y escalera de mano** (cuevas): agujero `479` arriba y escalera de mano `1386` en la misma
+x, y del piso de abajo. Se cae sobre la escalera; usarla deja en **(x, y + 1)** del piso de arriba, que
+tiene que ser piso libre. La escalera va **sola** en su casilla (nada de fogatas encima).
+
+## Cuevas
+
+Paredes de tierra `356–367` (`WALL_SIDE`, `WALL_CORNER`, `WALL_INNER` en `generate-north-pass.py`) y roca
+`101` alrededor. La pieza sale de dónde está el piso vecino (`pieces_for`).
+
+- **Cavar en bloques 2x2** (`carve_cave` de `generate-north-pass.py`, `build_floor` de
+  `generate-natural-island.py`, `carve` de `generate-city-depths.py`). Con pasillos y paredes de 2 de
+  ancho cada pared tiene **una sola** pieza válida. Una roca de 1 casilla entre pisos no tiene pieza:
+  queda un bloque de roca pelada sin borde.
+- **Nada de vacío a la vista:** desde cualquier piso caminable, media pantalla (8×6 casillas) tiene que
+  ser roca o mapa, nunca casillas sin tile (se ven negras).
+- **No pisar lo ajeno:** el piso necesita sus 8 vecinas propias (la pared es de la cueva).
+- **Decoración que no se mueve ni se levanta.** Barriles y cajas se empujan y traban el paso; los huesos
+  agarrables se tiran. Las piedras/musgo de 2x2 se dibujan hacia arriba-izquierda: solo donde tapan pared.
+- Validar pieza por pieza, vacío a la vista, recorrido y escaleras antes de escribir. Ejemplo completo:
+  [MAPEAR_DUNGEON_CITY.md](MAPEAR_DUNGEON_CITY.md).
+
 ## Que el generador lo compruebe
 
 `generate-imperial-castle.py` valida antes de escribir, y si algo falla no escribe nada:
@@ -143,3 +164,4 @@ Un generador nuevo con muebles tiene que traer las mismas comprobaciones.
 | Sillas todas mirando al mismo lado | Un id por dirección; validar que miran a una mesa |
 | Tapices flotando sobre la pared | Probar los colgados en una escena con pared antes de usarlos |
 | El mapa no cargaba por una calavera 2320 | Los apilables llevan byte de cantidad (`NEEDS_COUNT`); correr `check-map-load.py` |
+| Dungeon de la city: vacío negro al costado, rocas peladas sin borde, salones cuadrados vacíos y fogata encima de la escalera de mano (nov 2026) | Ver [Cuevas](#cuevas) y [MAPEAR_DUNGEON_CITY.md](MAPEAR_DUNGEON_CITY.md#errores-que-ya-pasaron-arreglados-16-nov-2026) |

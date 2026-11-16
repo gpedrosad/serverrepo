@@ -23,7 +23,7 @@ Manifiesto: `server/YurOTS/ots/data/world/generated-fargum-tower.json`.
 
 El techo de madera que tenía el patio en z6 se reemplazó por el piso 2 de la torre. El techo de
 tejas de la casa del norte (`x 172–180, y 55–57, z5`) **no se toca**. El dungeon de la city
-(Smuggler's Den, z8) tampoco se toca.
+([Guarida de los Orcos](MAPEAR_DUNGEON_CITY.md), z8) tampoco se toca.
 
 Las paredes siguen la regla de [`PIEZAS_DE_MAPA.md`](PIEZAS_DE_MAPA.md): la fila norte y la columna
 oeste llevan el suelo de afuera en z7 y **sin ground** en los pisos altos; así la losa de piedra no
@@ -44,8 +44,8 @@ puerta de `174,64,7` conserva el piso de piedra como umbral.
 
 En cada conexión la **subida `1385` va en el piso de abajo** y la **bajada `432` (el hueco) en el de
 arriba**, en la misma x,y. Pisar la `1385` lleva a `x, y-1` del piso de arriba; pisar la `432` baja y
-deja al sur de la `1385` (`x, y+1`). La planta baja (z7) no tiene ninguna bajada: debajo está el
-Smuggler's Den (z8).
+deja al sur de la `1385` (`x, y+1`). La planta baja (z7) no tiene ninguna bajada: debajo está la
+roca del [dungeon de la city](MAPEAR_DUNGEON_CITY.md) (z8).
 
 Cada piso tiene una fogata en `179,66` para iluminar. El spawn de cada monstruo está en
 `176,66` del piso correspondiente (bloque `FARGUM_TOWER_SPAWNS` en `test-spawn.xml`).
@@ -85,7 +85,7 @@ monstruos existan en `monsters.xml`. Si algo falla, no escribe nada.
 El generador ponía la `432` en el piso de abajo y la `1385` en el de arriba. Resultado en el juego:
 
 - En la planta baja, `178,63,7` era una **bajada**: llevaba a `178,63,8`, un hueco cerrado de tierra y
-  lava del Smuggler's Den (`x 173–178, y 58–66, z8`), sin salida. Ahí quedaba uno encerrado.
+  lava al oeste del dungeon de la city (`x 173–178, y 58–66, z8`), sin salida. Ahí quedaba uno encerrado.
 - Ningún piso subía: cada `1385` estaba en el piso de arriba de su conexión, y la de z3 (`175,63`)
   no llevaba a ningún lado.
 
