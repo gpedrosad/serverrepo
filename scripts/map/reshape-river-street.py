@@ -15,10 +15,13 @@ Ahora (z7):
   - donde una pared o el patio caen sobre la orilla se conserva la pieza de borde del agua.
 
 Techo (z6): cada casa lleva su techo de tejas sobre su planta nueva, con la misma regla que tenían las
-casas originales: x de la columna siguiente a la pared oeste hasta la pared este, y de la pared norte a
-una fila más abajo de la pared sur (el piso de arriba se dibuja corrido una casilla arriba-izquierda).
-Pasillos y patios quedan sin techo. Hasta el 16 nov 2026 el techo era el de las casas viejas (x 146-160,
-y 59-66, un bloque continuo) y quedaba corrido sobre pasillos y patios.
+casas originales (casa vieja III: paredes x 146-150, techo x 146-150): x de la pared oeste a la pared
+este, con la pieza de borde 940/941/943 sobre la pared oeste, y de la pared norte a una fila más abajo
+de la pared sur. El piso de arriba se dibuja corrido una casilla arriba-izquierda, así el borde tapa la
+pared oeste y quedan a la vista la pared este y la sur, como en las casas originales.
+Pasillos y patios quedan sin techo. Historia: hasta el 16 nov 2026 el techo era el de las casas viejas
+(x 146-160, y 59-66, un bloque continuo) y quedaba sobre pasillos y patios; el arreglo 4850cf2 lo puso
+una columna corrida al este (x0+1 .. x1) y se veía la pared oeste con las antorchas al costado del techo.
 
 Las puertas quedan donde estaban (148, 153 y 158 en la fila 59), así los data/houses/<casa>.xml
 (frontdoor) no cambian: el server viejo los reescribe al apagarse y no hay nada que pisar.
@@ -293,10 +296,10 @@ def roof_wanted() -> dict:
     """{(x, y): pieza} del techo de las tres casas."""
     out = {}
     for h in HOUSES.values():
-        for x in range(h["x0"] + 1, h["x1"] + 1):
+        for x in range(h["x0"], h["x1"] + 1):
             for y in range(WALL_TOP, WALL_BOTTOM + 2):
                 row = "top" if y == WALL_TOP else "bottom" if y == WALL_BOTTOM + 1 else "mid"
-                out[(x, y)] = (ROOF_LEFT if x == h["x0"] + 1 else ROOF_REST)[row]
+                out[(x, y)] = (ROOF_LEFT if x == h["x0"] else ROOF_REST)[row]
     return out
 
 
@@ -449,10 +452,13 @@ def main() -> int:
         print(f"River Street: {len(out)} casillas cambiadas; " +
               ", ".join(f"{n.split()[-1]} {len(t)} casillas" for n, t in house_tiles.items()) +
               f"; techo z6: {len(roof_put)} a poner, {len(roof_remove)} a sacar")
-    if a.png:
+    if a.png:   # como lo ve el cliente desde la calle: z7 y el techo encima, corrido (-1, -1)
         world = {(x, y, Z): stack_of(v[0]) for (x, y), v in region.items()}
         world.update({(x, y, Z): it for (x, y), (it, _pz) in out.items()})
-        w, h, rgba = Renderer().area(world, REGION[0], REGION[1], REGION[2] + 1, REGION[3] + 1, Z)
+        roof = {c: stack_of(v[0]) for c, v in roof_tiles(root)[0].items() if c not in roof_remove}
+        roof.update({c: [p] for c, p in roof_put.items()})
+        world.update({(x, y, ROOF_Z): it for (x, y), it in roof.items()})
+        w, h, rgba = Renderer().client_view(world, REGION[0], REGION[1], REGION[2] + 1, REGION[3] + 1, Z)
         a.png.write_bytes(png_bytes(w, h, rgba))
         print(f"PNG {a.png}")
     if errs:

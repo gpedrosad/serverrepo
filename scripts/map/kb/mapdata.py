@@ -275,11 +275,10 @@ class Renderer:
         self._blit(img, W, H, e, 0, 0, (e["w"] - 1) * 32, (e["h"] - 1) * 32)
         return W, H, img
 
-    def area(self, tiles, x1, y1, x2, y2, z, highlight=None):
-        W, H = (x2 - x1 + 1) * 32, (y2 - y1 + 1) * 32
-        img = bytearray(b"\x1c\x1c\x20\xff" * (W * H))
-        for ty in range(y1, y2 + 3):
-            for tx in range(x1, x2 + 3):
+    def _floor(self, img, W, H, tiles, x1, y1, x2, y2, z, shift=0):
+        """Dibuja el piso z; `shift` casillas arriba-izquierda (pisos de arriba vistos desde abajo)."""
+        for ty in range(y1, y2 + 3 + shift):
+            for tx in range(x1, x2 + 3 + shift):
                 items = tiles.get((tx, ty, z))
                 if not items:
                     continue
@@ -290,7 +289,22 @@ class Renderer:
                         draw.append((LAYER_RANK[layer_of(e)], e))
                 draw.sort(key=lambda t: t[0])
                 for _r, e in draw:
-                    self._blit(img, W, H, e, tx, ty, (tx - x1) * 32, (ty - y1) * 32)
+                    self._blit(img, W, H, e, tx, ty, (tx - x1 - shift) * 32, (ty - y1 - shift) * 32)
+
+    def client_view(self, tiles, x1, y1, x2, y2, z, above=1):
+        """Como lo ve el cliente parado en z: z y encima hasta `above` pisos de arriba, cada piso
+        corrido una casilla arriba-izquierda (así se ven los techos). `area()` dibuja un piso solo y
+        no sirve para revisar si un techo calza con las paredes."""
+        W, H = (x2 - x1 + 1) * 32, (y2 - y1 + 1) * 32
+        img = bytearray(b"\x1c\x1c\x20\xff" * (W * H))
+        for k in range(above + 1):
+            self._floor(img, W, H, tiles, x1, y1, x2, y2, z - k, k)
+        return W, H, img
+
+    def area(self, tiles, x1, y1, x2, y2, z, highlight=None):
+        W, H = (x2 - x1 + 1) * 32, (y2 - y1 + 1) * 32
+        img = bytearray(b"\x1c\x1c\x20\xff" * (W * H))
+        self._floor(img, W, H, tiles, x1, y1, x2, y2, z)
         if highlight:
             hx, hy = (highlight[0] - x1) * 32, (highlight[1] - y1) * 32
             for i in range(32):

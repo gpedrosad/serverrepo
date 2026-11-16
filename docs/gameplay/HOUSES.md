@@ -237,29 +237,42 @@ con pared hasta la orilla):
 
 ### Techos (z6)
 
-Cada casa tiene su propio techo de tejas sobre su planta. Hasta el 16 nov 2026 quedaba el techo de las
-casas viejas: un bloque continuo `x146–160, y59–66` que tapaba los pasillos y los patios, corrido respecto
-de las casas nuevas.
+Cada casa tiene su propio techo de tejas sobre su planta, igual que las casas originales: el borde del
+techo tapa la pared oeste y la norte, y quedan a la vista la pared este y la sur.
 
-![Techos de River Street: antes (techo viejo corrido) y después](img/river-street-techos.png)
+![Techos de River Street como los ve el cliente: antes (4850cf2, corrido una columna) y después](img/river-street-techos.png)
 
-| Casa | Techo (z6) |
-|------|------------|
-| III | x 146–149, y 59–64 |
-| IV | x 152–155, y 59–64 |
-| V | x 158–161, y 59–64 |
+| Casa | Paredes (z7) | Techo (z6) |
+|------|--------------|------------|
+| III | x 145–149, y 59–63 | x 145–149, y 59–64 |
+| IV | x 151–155, y 59–63 | x 151–155, y 59–64 |
+| V | x 157–161, y 59–63 | x 157–161, y 59–64 |
 
-- **Regla** (medida en el techo original de estas casas): x desde la columna siguiente a la pared oeste
-  hasta la pared este; y desde la pared norte hasta una fila más abajo de la pared sur. El cliente dibuja
-  el piso de arriba corrido una casilla arriba-izquierda, así el techo cae dentro de las paredes y se ven
-  la pared este y la sur enmarcándolo, igual que en las casas originales.
+- **Regla** (medida en el techo original de estas casas: la III vieja tenía paredes `x 146–150` y techo
+  `x 146–150`): x de la pared oeste a la pared este, con la pieza de borde sobre la pared oeste; y de la
+  pared norte a una fila más abajo de la pared sur.
+- **Por qué:** el cliente dibuja el piso de arriba corrido una casilla arriba-izquierda. El techo de
+  `x0` se ve sobre `x0-1`, y la mitad izquierda de la pieza de borde (`940/941/943`) es transparente:
+  así el borde cae justo sobre la pared oeste. Si el techo empieza en `x0+1`, la pared oeste (con sus
+  antorchas) asoma al costado del techo.
 - **Piezas:** columna oeste `940` (arriba) / `941` (medio) / `943` (abajo); el resto `935` / `936` / `938`.
   `936` va como piso de la casilla; las demás, como ítem en una casilla sin piso (así estaba el original).
 - El script hace z7 y el techo por separado: si z7 ya está, igual arregla el techo. `--dry-run` dice
   "el mapa ya tiene este cambio (puente de sogas y techos)" cuando están los dos.
 - **Si se cambia la planta de una casa, hay que rehacer su techo:** el mapa no los relaciona y el techo
-  viejo queda flotando. Para mirarlo como en el juego, superponer z6 corrido una casilla arriba-izquierda
-  sobre z7 (`mapdata.Renderer().area` de los dos pisos).
+  viejo queda flotando.
+- **Para revisar un techo, mirarlo como el cliente:** `Renderer().client_view(tiles, x1, y1, x2, y2, 7)`
+  (`scripts/map/kb/mapdata.py`) dibuja z7 y encima z6 corrido. `reshape-river-street.py --dry-run --png
+  /tmp/river.png` ya lo usa. `Renderer().area()` dibuja un solo piso y no sirve para esto.
+
+**Errores que ya pasaron con el techo:**
+
+- Hasta el 16 nov 2026 quedó el techo de las casas viejas: un bloque continuo `x 146–160, y 59–66` que
+  tapaba pasillos y patios.
+- El primer arreglo (`4850cf2`, deployado el 16 nov) puso cada techo una columna corrido al este
+  (`x0+1 … x1`): se veía la pared oeste con las antorchas al costado del techo. Se había revisado con
+  una imagen de un solo piso, que no muestra cómo calza el techo. Corregido el mismo día: `x0 … x1`,
+  revisado con `client_view`.
 
 **Error que ya pasó (15 nov 2026):** `0fc2591` (Foso Olvidado, otra sesión) escribió un `test.otbm` generado
 sobre un mapa anterior a este cambio y River Street volvió a las casas largas sin puente, y así se deployó.
