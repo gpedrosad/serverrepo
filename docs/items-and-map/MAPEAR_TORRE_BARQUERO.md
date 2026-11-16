@@ -42,6 +42,11 @@ puerta de `174,64,7` conserva el piso de piedra como umbral.
 | z4 | Quara Constrictor | 300 s | baja en `178,63`; sube en `175,63` |
 | z3 | Quara Predator | 600 s | baja en `175,63`; sin subida |
 
+En cada conexión la **subida `1385` va en el piso de abajo** y la **bajada `432` (el hueco) en el de
+arriba**, en la misma x,y. Pisar la `1385` lleva a `x, y-1` del piso de arriba; pisar la `432` baja y
+deja al sur de la `1385` (`x, y+1`). La planta baja (z7) no tiene ninguna bajada: debajo está el
+Smuggler's Den (z8).
+
 Cada piso tiene una fogata en `179,66` para iluminar. El spawn de cada monstruo está en
 `176,66` del piso correspondiente (bloque `FARGUM_TOWER_SPAWNS` en `test-spawn.xml`).
 
@@ -75,8 +80,26 @@ esperado, que la puerta abra a una casilla caminable, que el interior de cada pi
 que las escaleras y sus llegadas sean caminables, que los spawns caigan en piso y que los
 monstruos existan en `monsters.xml`. Si algo falla, no escribe nada.
 
+## Error que ya pasó: escaleras al revés (arreglado 16 nov 2026)
+
+El generador ponía la `432` en el piso de abajo y la `1385` en el de arriba. Resultado en el juego:
+
+- En la planta baja, `178,63,7` era una **bajada**: llevaba a `178,63,8`, un hueco cerrado de tierra y
+  lava del Smuggler's Den (`x 173–178, y 58–66, z8`), sin salida. Ahí quedaba uno encerrado.
+- Ningún piso subía: cada `1385` estaba en el piso de arriba de su conexión, y la de z3 (`175,63`)
+  no llevaba a ningún lado.
+
+Arreglo: `build_floors()` pone `1385` abajo y `432` arriba (8 casillas del mapa, nada más). El
+validador ahora exige la `1385` en el piso de abajo, la `432` arriba, las dos llegadas libres
+(`x, y+1` abajo, `x, y-1` arriba) y que ninguna `432` quede sin subida debajo; con el orden viejo da
+12 errores. Probado con el bot GM en un server aparte (puerto 7275): sube y baja las 4 conexiones y
+baja desde z3.
+
+**Si alguien quedó encerrado en el hueco de z8:** el arreglo no lo saca. Un GM lo lleva afuera con
+`/goto` o lo manda al templo.
+
 ## Pendiente
 
-- **Prueba in-game:** subir los 5 pisos, comprobar que cada escalera aterriza bien, que hay un
-  solo monstruo por piso y que la Quara Predator no se sale de la torre.
-- No se deployó. No requiere compilar C++ ni actualizar el cliente: los monstruos ya existen.
+- **Prueba in-game:** subir los 5 pisos, comprobar que hay un solo monstruo por piso y que la Quara
+  Predator no se sale de la torre.
+- No requiere compilar C++ ni actualizar el cliente: los monstruos ya existen.

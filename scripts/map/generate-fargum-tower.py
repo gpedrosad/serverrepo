@@ -17,6 +17,11 @@ La torre ocupa la misma huella 7x7, con interior 5x5 y paredes de piedra. Tiene 
   z4  Quara Constrictor
   z3  Quara Predator
 
+Escaleras: en cada conexión la subida 1385 va en el piso de abajo y la bajada 432 (el hueco) en el
+de arriba, en la misma x,y. Pisar la 1385 lleva a x,y-1 del piso de arriba; pisar la 432 lleva al
+piso de abajo y deja al sur de la 1385. Hasta el 16 nov 2026 estaban al revés: la planta baja tenía
+una bajada a la cueva de z8 (178,63), donde uno quedaba encerrado, y ningún piso subía.
+
 El bote (171,62-66) y Fargum (172,66) quedan afuera. La torre no toca el dungeon de la city
 (z8, Smuggler's Den) ni el techo de la casa del norte.
 
@@ -30,6 +35,7 @@ import argparse
 import json
 import re
 import shutil
+import tempfile
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -55,7 +61,7 @@ ROOM = (175, 62, 5, 5)
 DOOR = (174, 64, 7)
 SIGN = (173, 63, 7)
 FLOORS = (7, 6, 5, 4, 3)
-STAIRS = {7: (178, 63), 6: (175, 63), 5: (178, 63), 4: (175, 63)}  # piso -> escalera al siguiente
+STAIRS = {7: (178, 63), 6: (175, 63), 5: (178, 63), 4: (175, 63)}  # piso -> su subida al de arriba
 MONSTERS_BY_FLOOR = {
     7: ("Tortoise", 120),
     6: ("Thornback Tortoise", 180),
@@ -87,12 +93,12 @@ def floor_map(z: int) -> roomkit.Map:
 
 def build_floors():
     maps = {z: floor_map(z) for z in FLOORS}
-    # Cada conexión: 432 en el piso de abajo, 1385 en el de arriba (misma x,y).
+    # Cada conexión: subida 1385 en el piso de abajo, bajada 432 (hueco) en el de arriba, misma x,y.
     for lower_z, pos in STAIRS.items():
         upper_z = lower_z - 1
         x, y = pos
-        maps[lower_z].ground((x, y, lower_z), STAIR_DOWN)
-        maps[upper_z].add((x, y, upper_z), STAIRS_UP)
+        maps[lower_z].add((x, y, lower_z), STAIRS_UP)
+        maps[upper_z].ground((x, y, upper_z), STAIR_DOWN)
     return maps
 
 
@@ -200,16 +206,23 @@ def validate(existing, maps, regenerating: bool) -> list:
         if z in STAIRS:
             sx, sy = STAIRS[z]
             upper = z - 1
-            if (sx, sy, z) not in walk:
-                errs.append(f"z{z}: escalera de bajada {sx},{sy} no caminable")
+            if not any(it["id"] == STAIRS_UP for it in m.t[(sx, sy, z)]["items"]):
+                errs.append(f"z{z}: falta la subida 1385 en {sx},{sy}")
+            if (sx, sy + 1, z) not in walk:      # al bajar se aterriza al sur de la 1385
+                errs.append(f"z{z}: llegada al bajar {sx},{sy+1} no caminable")
+            if maps[upper].t[(sx, sy, upper)]["ground"] != STAIR_DOWN:
+                errs.append(f"z{upper}: falta la bajada 432 en {sx},{sy}")
             up_chk = roomkit.Checker(maps[upper])
             up_walk = {p for p in maps[upper].t if up_chk.walkable(p)}
-            if (sx, sy + 1, upper) not in up_walk:
-                errs.append(f"z{upper}: llegada {sx},{sy+1} no caminable")
-            if not any(it["id"] == STAIRS_UP for it in maps[upper].t[(sx, sy, upper)]["items"]):
-                errs.append(f"z{upper}: falta la escalera de subida en {sx},{sy}")
+            if (sx, sy - 1, upper) not in up_walk:  # al subir se aparece al norte
+                errs.append(f"z{upper}: llegada al subir {sx},{sy-1} no caminable")
         if (SPAWN[0], SPAWN[1], z) not in walk:
             errs.append(f"z{z}: spawn {SPAWN} no caminable")
+    # Ningún piso puede tener una bajada que no esté sobre una subida (la planta baja daba a z8).
+    for z, m in maps.items():
+        for (x, y, _z), tile in m.t.items():
+            if tile.get("ground") == STAIR_DOWN and STAIRS.get(z + 1) != (x, y):
+                errs.append(f"z{z}: bajada 432 en {x},{y} sin subida debajo")
     # 5. Nombres de monstruos.
     known = set(re.findall(r'<monster name="([^"]+)"', MONSTERS.read_text(encoding="latin-1")))
     for z, (name, _st) in MONSTERS_BY_FLOOR.items():
@@ -253,8 +266,7 @@ def main() -> int:
         print("(dry-run)" if a.dry_run else "usá --replace para escribir")
         return 0
 
-    backup = Path("/private/var/folders/c8/k2dtzwbx3ml4l81234tng6vc0000gn/T/opencode") / \
-        f"fargum-tower-{datetime.now().strftime('%Y%m%d-%H%M%S')}"
+    backup = Path(tempfile.gettempdir()) / f"fargum-tower-{datetime.now().strftime('%Y%m%d-%H%M%S')}"
     backup.mkdir(parents=True, exist_ok=True)
     shutil.copy2(a.map, backup / "test.otbm")
     shutil.copy2(SPAWNS, backup / "test-spawn.xml")
@@ -268,10 +280,14 @@ def main() -> int:
 
     # Spawns
     sp = SPAWNS.read_text(encoding="latin-1")
-    sp = re.sub(r"[ \t]*<!-- BEGIN FARGUM_TOWER_SPAWNS.*?<!-- END FARGUM_TOWER_SPAWNS -->\n?", "", sp, flags=re.S)
     block = "\t<!-- BEGIN FARGUM_TOWER_SPAWNS (scripts/map/generate-fargum-tower.py) -->\n" + \
         spawn_xml() + "\n\t<!-- END FARGUM_TOWER_SPAWNS -->\n"
-    SPAWNS.write_text(sp.replace("</spawns>", block + "</spawns>"), encoding="latin-1")
+    old_block = re.compile(r"[ \t]*<!-- BEGIN FARGUM_TOWER_SPAWNS.*?<!-- END FARGUM_TOWER_SPAWNS -->\n?", re.S)
+    if old_block.search(sp):    # en su lugar, así regenerar no mueve el bloque al final del archivo
+        sp = old_block.sub(lambda _m: block, sp, count=1)
+    else:
+        sp = sp.replace("</spawns>", block + "</spawns>")
+    SPAWNS.write_text(sp, encoding="latin-1")
 
     # Cartel
     roomkit.patch_readables("<!-- BEGIN FARGUM_TOWER_SIGNS -->", "<!-- END FARGUM_TOWER_SIGNS -->", [

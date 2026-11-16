@@ -59,6 +59,14 @@ cava desde debajo de la bajada, con la `1385` en la misma x, y, y el generador v
 Probado con un bot GM en una copia aislada (puerto 7275): baja y sube por las 5 escaleras. Detalle en
 [MAPEAR_VALLE_DE_LAS_BESTIAS.md](../items-and-map/MAPEAR_VALLE_DE_LAS_BESTIAS.md#escaleras-entre-pisos).
 
+## Torre del Barquero: escaleras al revés (16 nov 2026)
+
+La torre junto al bote de Fargum (`x 174–180, y 61–67`, z7–z3) tenía en cada conexión la bajada `432`
+abajo y la subida `1385` arriba. La planta baja no subía y su `432` (`178,63,7`) llevaba a un hueco
+cerrado de z8, donde uno quedaba encerrado. Regla para cualquier generador: **`1385` en el piso de
+abajo, `432` en el de arriba, misma x,y**. Detalle en
+[MAPEAR_TORRE_BARQUERO.md](../items-and-map/MAPEAR_TORRE_BARQUERO.md#error-que-ya-pasó-escaleras-al-revés-arreglado-16-nov-2026).
+
 ## Pendiente (mapa)
 
 - Escalera de mano que baja en `194, 150, 8`: abajo (`194, 150, 9`) es roca. Usarla o pisarla te
