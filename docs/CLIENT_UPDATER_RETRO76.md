@@ -88,9 +88,10 @@ El script (`scripts/client-rme/publish_client.py`):
 4. arma `web/downloads/Retro76-Mac.zip` y `Retro76-Windows.zip` para quien instala por primera vez.
 
 `--dry-run` muestra qué archivos cambiarían. No hace falta reiniciar la web: lee la carpeta en cada pedido.
-Después, commitear en `~/apps/clienteretro` (sprites/`init.lua` cambiados). La ThinkPad no tiene credenciales de
-GitHub: el push se hace desde la Mac trayendo el commit por ssh
-(`git fetch thinkpad:apps/clienteretro main` en un clon y `git push`).
+Después, commitear en `~/apps/clienteretro` (sprites/`init.lua` cambiados) y `git push origin main` desde la
+ThinkPad: desde nov 2026 el repo pushea por SSH con su propio deploy key (`~/.ssh/github_clienteretro`, con
+escritura; `core.sshCommand` y `pushurl` en la config local del repo). Cada deploy key sirve para un solo
+repo: `ssh -i ~/.ssh/github_clienteretro -T git@github.com` tiene que decir `Hi gpedrosad/clienteretro!`.
 
 Cambios en Lua del cliente (`modules/`, `init.lua`): editar **igual** en `mac/` y `windows/`, o el script se
 niega a publicar.
