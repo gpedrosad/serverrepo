@@ -57,6 +57,23 @@ Perac estaba en **`144,54,5`**, justo en la fila que se recorta. Se movió a **`
 podría colocarlo al arrancar (`Could not place Perac!`), igual que pasó con el Huntmaster
 al borrar la torre del depot.
 
+## Tienda de Mad (z6), ordenada (15 nov 2026)
+
+El piso de displays de z6 es la tienda de **Mad** (`145,51,6`). Tenía un small sapphire debajo de cada
+raro y 9 ítems sueltos en el piso, varios en la columna de Mad. Script: `scripts/map/arrange-mad-shop.py`
+(dry-run por defecto, `--replace` para escribir; idempotente).
+
+![Antes y después de la tienda de Mad (z6)](img/tienda-seller/mad-antes-despues.png)
+
+- Fuera los **24 small sapphires** (2146); no queda ninguno en el edificio.
+- Los **25 ítems** quedan sobre mesas o mostradores, ninguno en el piso ni fuera del salón
+  (`x142–146, y47–53`). Se agregaron 9 mesitas `1619` en `x142` (49, 50, 52) y `x145` (todo menos 51).
+- Agrupados: armadura en la mesa larga `x144` (de la cabeza a los pies), mazas/reaver/runa/reliquia en
+  las mesitas `x145`, espadas y hachas en el mostrador `x146`, escudos y morlen crest al oeste.
+- Libres a propósito: `142,48` (llega la escalera de mano de `142,47,7`), el pasillo `x143, y48–52` y
+  `142,51` (para leer el pizarrón). Mad queda rodeado de mesas en `145,51` y se lo atiende desde el
+  pasillo (`x143`, a 2 casillas; los NPC atienden a menos de 4).
+
 ## Qué NO se tocó
 
 - Las casas **Small Street** de `x143–144` y `x146`, `y43–45` (z7, z6 y z5).
