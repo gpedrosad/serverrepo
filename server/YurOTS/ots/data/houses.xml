@@ -417,54 +417,49 @@
 <tile x="178" y="55" z="7" />
 </house>
 <house name="River Street III">
+<tile x="146" y="60" z="7" />
+<tile x="146" y="61" z="7" />
+<tile x="146" y="62" z="7" />
+<tile x="146" y="64" z="7" />
 <tile x="147" y="60" z="7" />
 <tile x="147" y="61" z="7" />
 <tile x="147" y="62" z="7" />
 <tile x="147" y="63" z="7" />
 <tile x="147" y="64" z="7" />
+<tile x="147" y="65" z="7" />
 <tile x="148" y="60" z="7" />
 <tile x="148" y="61" z="7" />
 <tile x="148" y="62" z="7" />
-<tile x="148" y="63" z="7" />
 <tile x="148" y="64" z="7" />
-<tile x="149" y="60" z="7" />
-<tile x="149" y="61" z="7" />
-<tile x="149" y="62" z="7" />
-<tile x="149" y="63" z="7" />
-<tile x="149" y="64" z="7" />
+<tile x="148" y="65" z="7" />
 </house>
 <house name="River Street IV">
 <tile x="152" y="60" z="7" />
 <tile x="152" y="61" z="7" />
 <tile x="152" y="62" z="7" />
-<tile x="152" y="63" z="7" />
-<tile x="152" y="64" z="7" />
 <tile x="153" y="60" z="7" />
 <tile x="153" y="61" z="7" />
 <tile x="153" y="62" z="7" />
-<tile x="153" y="63" z="7" />
-<tile x="153" y="64" z="7" />
 <tile x="154" y="60" z="7" />
 <tile x="154" y="61" z="7" />
 <tile x="154" y="62" z="7" />
-<tile x="154" y="63" z="7" />
-<tile x="154" y="64" z="7" />
 </house>
 <house name="River Street V">
-<tile x="157" y="60" z="7" />
-<tile x="157" y="61" z="7" />
-<tile x="157" y="62" z="7" />
-<tile x="157" y="63" z="7" />
-<tile x="157" y="64" z="7" />
 <tile x="158" y="60" z="7" />
 <tile x="158" y="61" z="7" />
 <tile x="158" y="62" z="7" />
-<tile x="158" y="63" z="7" />
 <tile x="158" y="64" z="7" />
+<tile x="158" y="65" z="7" />
 <tile x="159" y="60" z="7" />
 <tile x="159" y="61" z="7" />
 <tile x="159" y="62" z="7" />
 <tile x="159" y="63" z="7" />
 <tile x="159" y="64" z="7" />
+<tile x="159" y="65" z="7" />
+<tile x="160" y="60" z="7" />
+<tile x="160" y="61" z="7" />
+<tile x="160" y="62" z="7" />
+<tile x="160" y="64" z="7" />
+<tile x="160" y="65" z="7" />
 </house>
 </houses>

@@ -235,6 +235,12 @@ con pared hasta la orilla):
   reescribe esos archivos al apagarse y no hay nada que pisar.
 - El script se niega a correr si alguna de las tres casas tiene dueño o ítems en `houseitems.xml`.
 
+**Error que ya pasó (15 nov 2026):** `0fc2591` (Foso Olvidado, otra sesión) escribió un `test.otbm` generado
+sobre un mapa anterior a este cambio y River Street volvió a las casas largas sin puente, y así se deployó.
+Se volvió a aplicar con `reshape-river-street.py --replace` (la zona estaba igual que antes del primer
+cambio; el resultado es idéntico a `f737b58`). Para saber si está: `--dry-run` tiene que decir "el mapa ya
+tiene este cambio". Un generador que reescribe `test.otbm` tiene que partir del `main` del momento.
+
 ## Para agentes IA
 
 - **Nunca** `git checkout` ni `git reset` sobre `data/houses/` en la ThinkPad.
