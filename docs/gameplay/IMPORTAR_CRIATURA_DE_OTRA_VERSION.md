@@ -53,11 +53,20 @@ cliente 8.60. Para ítems, ver [IMPORTAR_ITEM_DE_OTRA_VERSION.md](../items-and-m
   (cañonazos de los piratas, hielo de chakoyas y gigantes, grito de los bárbaros...): ver
   [MONSTER_KITS.md](MONSTER_KITS.md).
 
+## Errores que ya pasaron
+
+- **Bog Raider con el sprite de la Rotworm Queen (nov 2026):** se importó desde el look **295** de 8.60, que
+  es la Rotworm Queen (gusano rojo con boca dentada). El Bog Raider es el **299** (criatura verde de pantano).
+  Se corrigió con `replaces=295` en `IMPORTS`: el importador pisa el look de destino solo si todavía tiene
+  los sprites de ese look equivocado, y reescribe los 48 sprites en su lugar (el `.spr` no crece). Antes de
+  importar, mirar la hoja (`--sheet`) y comparar con la criatura real; el número de look no alcanza.
+
 ## El cliente de origen
 
 `devtools/tibia-860/` con `Tibia.dat` y `Tibia.spr` de 8.60. **No va a git** (pesa 43 MB y no es nuestro): está
-en `.gitignore`. Se copió de la Papelera de la Mac de Gonzalo el 13 nov 2026; si falta, hay que volver a
-conseguirlo. Nunca se ejecuta nada del cliente, solo se leen esos dos archivos. Trae 367 looks.
+en `.gitignore`. Se copió de la Papelera de la Mac de Gonzalo el 13 nov 2026. Hay copia en la Mac
+(`~/proyectos/serverrepo/devtools/tibia-860`) y, desde el 15 nov, en la ThinkPad
+(`~/apps/serverrepo/devtools/tibia-860`). Nunca se ejecuta nada del cliente, solo se leen esos dos archivos. Trae 367 looks.
 
 ## Paso a paso
 

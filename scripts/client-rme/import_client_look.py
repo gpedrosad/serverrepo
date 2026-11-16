@@ -31,7 +31,7 @@ HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[1]
 sys.path.insert(0, str(HERE))
 from add_black_dragon_look import _skip_attr, decode_sprite, read_outfits, read_spr, write_spr  # noqa: E402
-from add_recolor_look import sprite_record  # noqa: E402
+from add_recolor_look import replace_sprites, sprite_record  # noqa: E402
 
 CLIENT = REPO / "devtools/tibia-860"
 THINGS = REPO / "devtools/rme/rme-client-760"
@@ -63,7 +63,9 @@ IMPORTS = [
     dict(name="Ice Golem", source=261, target=171),
     dict(name="Crystal Spider", source=263, target=172),
     dict(name="Frost Dragon Hatchling", source=283, target=173),
-    dict(name="Bog Raider", source=295, target=174),
+    # Nov 2026: era source=295 (la Rotworm Queen de 8.60). El Bog Raider es el 299; `replaces` deja pisar el
+    # look 174 solo si todavía tiene los sprites del 295.
+    dict(name="Bog Raider", source=299, target=174, replaces=295),
     # Resto del catalogo 8.60 (nov 2026): criaturas que faltaban.
     dict(name="Tortoise", source=197, target=197),
     dict(name="Thornback Tortoise", source=198, target=198),
@@ -158,7 +160,7 @@ def sheet(things: dict, looks: list[tuple[str, int]], out: Path) -> None:
 def apply(client: dict, ours: dict, dry: bool) -> int:
     dat, spr, offsets = ours["dat"], ours["spr"], ours["offsets"]
     count = len(offsets)
-    records, patches, log = [], [], []
+    records, patches, log, swaps = [], [], [], {}
     for item in IMPORTS:
         src_look, dst_look, name = item["source"], item["target"], item["name"]
         if dst_look > 255:
@@ -170,18 +172,29 @@ def apply(client: dict, ours: dict, dry: bool) -> int:
         if py != 1 or pz != 1 or px != 4:
             raise SystemExit(f"{name}: look {src_look} con addons o montura (patrones {px}x{py}x{pz}); no se importa")
         pixels = [decode_sprite(client["spr"], client["offsets"], sid) for sid in src["ids"]]
+        reuse = []
         if any(dst["ids"]):
-            same = len(dst["ids"]) == len(pixels) and all(
-                decode_sprite(spr, offsets, sid) == pixels[i] for i, sid in enumerate(dst["ids"]))
-            if not same:
+            def matches(look_pixels):
+                return len(dst["ids"]) == len(look_pixels) and all(
+                    decode_sprite(spr, offsets, sid) == look_pixels[i] for i, sid in enumerate(dst["ids"]))
+            if matches(pixels):
+                log.append(f"  {name}: ya está en el look {dst_look}")
+                continue
+            old = item.get("replaces")
+            if not old or not matches([decode_sprite(client["spr"], client["offsets"], sid)
+                                       for sid in client["outfits"][old - 1]["ids"]]):
                 raise SystemExit(f"{name}: el look {dst_look} ya tiene otros sprites; elegir otro destino")
-            log.append(f"  {name}: ya está en el look {dst_look}")
-            continue
+            reuse = list(dst["ids"])          # se reescriben en su lugar los sprites del look equivocado
+            log.append(f"  {name}: reemplaza el look {old} del otro cliente que estaba en {dst_look}")
         new_ids = []
-        for sid in src["ids"]:
+        for i, sid in enumerate(src["ids"]):
             rec = sprite_record(client["spr"], client["offsets"], sid)
             if not rec:
                 new_ids.append(0)
+                continue
+            if i < len(reuse) and reuse[i] and reuse[i] not in swaps:
+                swaps[reuse[i]] = rec
+                new_ids.append(reuse[i])
                 continue
             records.append(rec)
             new_ids.append(count + len(records))
@@ -195,6 +208,9 @@ def apply(client: dict, ours: dict, dry: bool) -> int:
     new_dat = dat
     for start, end, entry, *_rest in sorted(patches, reverse=True):
         new_dat = new_dat[:start] + entry + new_dat[end:]
+    if swaps:
+        spr = replace_sprites(spr, offsets, swaps)
+        _n, offsets = read_spr(spr)
     new_spr = write_spr(struct.unpack_from("<I", spr, 0)[0], offsets, spr, records)
     check, counts = read_outfits(new_dat)                       # se lee entero y cada look quedó como se pidió
     _n, new_offsets = read_spr(new_spr)
