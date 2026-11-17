@@ -53,6 +53,7 @@ using namespace std;
 
 #include "spells.h"
 #include "exhaust.h"
+#include "playerstates.h"
 #include "actions.h"
 #include "ioplayer.h"
 #include "chat.h"
@@ -299,6 +300,44 @@ bool GameState::isPvpArena(Creature* c)
 		return false;
 	Tile *tile = game->map->getTile(c->pos);
 	return tile && tile->isPvpArena();
+}
+
+int applyCounterStance(Game* game, Player* defender, Creature* attacker,
+	int damage, attacktype_t atype)
+{
+	if(damage <= 0 || !defender || !attacker || atype == ATTACK_NONE)
+		return damage;
+
+	std::map<unsigned long, CounterStanceState>::iterator it =
+		g_counterStance.find(defender->getID());
+	if(it == g_counterStance.end() || it->second.hits <= 0)
+		return damage;
+
+	int reduction = it->second.reduction;
+	if(reduction < 0)
+		reduction = 0;
+	if(reduction > 100)
+		reduction = 100;
+
+	int absorbed = damage * reduction / 100;
+	int reduced = damage - absorbed;
+
+	if(--it->second.hits <= 0)
+		g_counterStance.erase(it);
+
+	// El contraataque solo funciona contra monstruos, para no complicar PvP.
+	Monster* monster = dynamic_cast<Monster*>(attacker);
+	if(monster && absorbed > 0) {
+		int64_t counter = absorbed;
+		if(counter > attacker->health)
+			counter = attacker->health;
+		if(counter > 0) {
+			attacker->health -= counter;
+			game->sendMagicEffect(attacker->pos, NM_ME_HIT_AREA);
+		}
+	}
+
+	return reduced;
 }
 
 int GameState::applyAmulets(Player* player, int damage, attacktype_t atype)
@@ -767,6 +806,7 @@ void GameState::onAttack(Creature* attacker, const Position& pos, const MagicEff
 		int64_t manaDamage = 0;
 
 		damage = applyAmulets(targetPlayer, damage, me->attackType);
+		damage = applyCounterStance(game, targetPlayer, attacker, damage, me->attackType);
 
 		if (damage > 0) {
 			if(attackPlayer && attackPlayer->access < g_config.ACCESS_PROTECT && !trainingNoPvp) {
@@ -979,6 +1019,7 @@ void GameState::onAttack(Creature* attacker, const Position& pos, Creature* atta
 					attackPlayer->removeItemInventory(slot);
 
 		damage = applyAmulets(attackedPlayer, damage, ATTACK_PHYSICAL);
+		damage = applyCounterStance(game, attackedPlayer, creature, damage, ATTACK_PHYSICAL);
 
 		game->creatureApplyDamage(attackedCreature, damage, damage, manaDamage
 			, (pvpArena? &arenaLosers : NULL)

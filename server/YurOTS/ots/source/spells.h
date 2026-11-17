@@ -183,6 +183,19 @@ public:
 	static int luaActionDoParalyze(lua_State *L);
 	static int luaActionDoChallenge(lua_State *L);
 
+	// Cooldowns propios por hechizo (PlayerSpellCooldown).
+	static int luaActionSpellCooldownReady(lua_State *L);
+	static int luaActionSetSpellCooldown(lua_State *L);
+
+	// Nuevos spells (nov 2026).
+	static int luaActionDoRescue(lua_State *L);
+	static int luaActionDoCleanse(lua_State *L);
+	static int luaActionDoChainLightning(lua_State *L);
+	static int luaActionDoDelayedHeal(lua_State *L);
+	static int luaActionDoDetonateFields(lua_State *L);
+	static int luaActionDoCounterStance(lua_State *L);
+	static int luaActionDoBloodRitual(lua_State *L);
+
 		static int luaSetPlayerLightLevel(lua_State *L);
 	static int luaActionInvisible(lua_State *L);
 
