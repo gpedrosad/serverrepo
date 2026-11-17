@@ -33,6 +33,14 @@
 <spell name="Ice Strike"			words="exori frigo"			maglv="3"	mana="20"	enabled="1" echo="1"><vocation id="2" /></spell>
 <spell name="Eternal Winter"		words="exevo gran mas frigo"	maglv="30"	mana="650"	enabled="1"><vocation id="2" /></spell>
 <spell name="Echo"					words="utevo vis"			maglv="20"	mana="120"	enabled="1"><vocation id="1" /></spell>
+<spell name="Piercing Volley"		words="exori con gran"		maglv="10"	mana="110"	enabled="1"><vocation id="3" /></spell>
+<spell name="Rescue"				words="exeta sio"				maglv="8"	mana="80"		enabled="1"><vocation id="4" /></spell>
+<spell name="Cleanse"				words="exana res"				maglv="12"	mana="70"		enabled="1"><vocation id="2" /></spell>
+<spell name="Chain Lightning"		words="exori vis con"		maglv="14"	mana="90"		enabled="1"><vocation id="1" /></spell>
+<spell name="Seed of Life"			words="exura tera"				maglv="10"	mana="60"		enabled="1"><vocation id="2" /></spell>
+<spell name="Field Detonation"		words="exevo vis tera"			maglv="22"	mana="220"	enabled="1"><vocation id="1" /></spell>
+<spell name="Counter Stance"		words="utito tera"				maglv="10"	mana="80"		enabled="1"><vocation id="4" /></spell>
+<spell name="Blood Ritual"			words="utamo mort"				maglv="18"	mana="120"	enabled="1"><vocation id="1" /></spell>
 <spell name="Berzeker Gran"			words="exori gran"			maglv="9"	mana="200"	enabled="1"><vocation id="4" /></spell>
 <spell name="Skill Buff"			words="utito tempo"			maglv="8"	mana="150"	enabled="1"><vocation id="4" /></spell>
 <spell name="Mass Healing"			words="exura gran mas res"	maglv="19"	mana="150"	enabled="1"><vocation id="2" /></spell>
@@ -56,6 +64,7 @@
 <spell name="dragon_firewave" words="dragon_firewave" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="dragonlord_firewave" words="dragonlord_firewave" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="blackdragon_darkwave" words="blackdragon_darkwave" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="darkmage_shadownova" words="darkmage_shadownova" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="frostdragon_icewave" words="frostdragon_icewave" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="frostdragon_blizzard" words="frostdragon_blizzard" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="icespider_blizzard" words="icespider_blizzard" maglv="4000" mana="800" enabled="1"></spell>
@@ -142,6 +151,11 @@
 <rune name="chakoya_iceball" id="5042" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 <rune name="frosthatchling_iceball" id="5043" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 <rune name="bograider_drown" id="5044" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="darkmage_shadowbolt" id="5045" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="darkmage_frostshard" id="5046" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="darkmage_sparkbolt" id="5047" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="darkmage_venombolt" id="5048" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="darkmage_manaburn" id="5049" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 
 <!--// Make arrow and bolt \\-->
 <spell name="Conjure Arrow"	words="exevo con"		maglv="2"	mana="40"	enabled="1"><vocation id="3" /></spell>

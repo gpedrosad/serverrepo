@@ -26,6 +26,8 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <set>
+#include <map>
 
 #include <libxml/xmlmemory.h>
 #include <libxml/parser.h>
@@ -35,7 +37,10 @@
 
 #include "spells.h"
 #include "exhaust.h"
+#include "spellcooldown.h"
+#include "playerstates.h"
 #include "monster.h"
+#include "player.h"
 #include "tile.h"
 #include "items.h"
 #include "item.h"
@@ -45,6 +50,9 @@
 extern Spells spells;
 
 extern LuaScript g_config;
+
+// Estados de combate consultados desde game.cpp (ver playerstates.h).
+std::map<unsigned long, CounterStanceState> g_counterStance;
 
 namespace {
 
@@ -414,6 +422,19 @@ int SpellScript::registerFunctions(){
 	lua_register(luaState, "doChameleon", SpellScript::luaActionDoChameleon);
 	lua_register(luaState, "doParalyze", SpellScript::luaActionDoParalyze);
 	lua_register(luaState, "doChallenge", SpellScript::luaActionDoChallenge);
+
+	// Cooldowns propios por hechizo.
+	lua_register(luaState, "spellCooldownReady", SpellScript::luaActionSpellCooldownReady);
+	lua_register(luaState, "setSpellCooldown", SpellScript::luaActionSetSpellCooldown);
+
+	// Nuevos spells (nov 2026).
+	lua_register(luaState, "doRescue", SpellScript::luaActionDoRescue);
+	lua_register(luaState, "doCleanse", SpellScript::luaActionDoCleanse);
+	lua_register(luaState, "doChainLightning", SpellScript::luaActionDoChainLightning);
+	lua_register(luaState, "doDelayedHeal", SpellScript::luaActionDoDelayedHeal);
+	lua_register(luaState, "doDetonateFields", SpellScript::luaActionDoDetonateFields);
+	lua_register(luaState, "doCounterStance", SpellScript::luaActionDoCounterStance);
+	lua_register(luaState, "doBloodRitual", SpellScript::luaActionDoBloodRitual);
 
 	lua_register(luaState, "setPlayerLightLevel", SpellScript::luaSetPlayerLightLevel);
 	lua_register(luaState, "invisible", SpellScript::luaActionInvisible);
@@ -1164,6 +1185,675 @@ int SpellScript::luaActionDoChallenge(lua_State *L)
 	sendSpellMagicEffect(spell->game, caster->pos, NM_ME_SOUND_BLUE);
 	(void)affected;
 	lua_pushnumber(L, 1); // success even with no monsters nearby (mana already spent via doTargetMagic)
+	return 1;
+}
+
+// ---------- Cooldowns propios por hechizo ----------
+
+int SpellScript::luaActionSpellCooldownReady(lua_State *L)
+{
+	const char* name = lua_tostring(L, -1);
+	unsigned int cid = (unsigned int)lua_tonumber(L, -2);
+	lua_pop(L, 2);
+
+	if(!name)
+	{
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Spell* spell = getSpell(L);
+	if(!spell) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Creature* creature = spell->game->getCreatureByID(cid);
+	if(!creature) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	lua_pushnumber(L, PlayerSpellCooldown::remaining(creature->getID(), std::string(name)));
+	return 1;
+}
+
+int SpellScript::luaActionSetSpellCooldown(lua_State *L)
+{
+	int ms = (int)lua_tonumber(L, -1);
+	const char* name = lua_tostring(L, -2);
+	unsigned int cid = (unsigned int)lua_tonumber(L, -3);
+	lua_pop(L, 3);
+
+	if(!name)
+		return 0;
+
+	Spell* spell = getSpell(L);
+	if(!spell)
+		return 0;
+
+	Creature* creature = spell->game->getCreatureByID(cid);
+	if(!creature)
+		return 0;
+
+	PlayerSpellCooldown::set(creature->getID(), std::string(name), ms);
+	return 0;
+}
+
+// ---------- Nuevos spells ----------
+
+// Helper: lee un nombre de criatura del stack y lo busca.
+static Creature* readNamedCreature(lua_State* L, Spell* spell, std::string& outName)
+{
+	const char* s = lua_tostring(L, -1);
+	if(!s)
+		return NULL;
+	outName = std::string(s);
+	lua_pop(L, 1);
+	return spell->game->getCreatureByName(outName);
+}
+
+int SpellScript::luaActionDoRescue(lua_State *L)
+{
+	long durationMs = (long)lua_tonumber(L, -1) * 1000;
+	lua_pop(L, 1);
+	int radius = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	std::string targetName;
+	Creature* named = readNamedCreature(L, getSpell(L), targetName);
+	unsigned int cid = (unsigned int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	if(!spell) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Creature* caster = spell->game->getCreatureByID(cid);
+	Player* casterPlayer = dynamic_cast<Player*>(caster);
+	if(!caster || !casterPlayer) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Player* ally = dynamic_cast<Player*>(named);
+	if(!ally || ally == casterPlayer) {
+		caster->sendCancel("You cannot rescue that target.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(caster->pos.z != ally->pos.z) {
+		caster->sendCancel("You need to be on the same floor.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	int affected = 0;
+	for(int dy = -radius; dy <= radius; ++dy) {
+		for(int dx = -radius; dx <= radius; ++dx) {
+			Position p(ally->pos.x + dx, ally->pos.y + dy, ally->pos.z);
+			Tile* tile = spell->game->getTile(p);
+			if(!tile)
+				continue;
+
+			std::vector<unsigned long> ids;
+			for(CreatureVector::const_iterator it = tile->creatures.begin();
+				it != tile->creatures.end(); ++it) {
+				if(*it)
+					ids.push_back((*it)->getID());
+			}
+
+			for(std::vector<unsigned long>::const_iterator idIt = ids.begin();
+				idIt != ids.end(); ++idIt) {
+				Creature* c = spell->game->getCreatureByID(*idIt);
+				if(!c || c == caster || c == ally)
+					continue;
+
+				Monster* monster = dynamic_cast<Monster*>(c);
+				if(!monster || monster->isSummon())
+					continue;
+
+				// Solo los que realmente atacan al aliado.
+				if(monster->attackedCreature != ally->getID())
+					continue;
+
+				monster->applyChallenge(caster, durationMs);
+				sendSpellMagicEffect(spell->game, monster->pos, NM_ME_SOUND_BLUE);
+				++affected;
+			}
+		}
+	}
+
+	if(affected > 0)
+		sendSpellMagicEffect(spell->game, ally->pos, NM_ME_MAGIC_ENERGIE);
+
+	lua_pushnumber(L, affected);
+	return 1;
+}
+
+int SpellScript::luaActionDoCleanse(lua_State *L)
+{
+	std::string targetName;
+	Creature* named = readNamedCreature(L, getSpell(L), targetName);
+	unsigned int cid = (unsigned int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	if(!spell) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Creature* caster = spell->game->getCreatureByID(cid);
+	if(!caster) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Player* target = dynamic_cast<Player*>(named);
+	if(!target) {
+		caster->sendCancel("You cannot cleanse that target.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(caster->pos.z != target->pos.z) {
+		caster->sendCancel("You need to be on the same floor.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	bool hadPoison = target->getConditions().hasCondition(ATTACK_POISON);
+	bool hadParalyze = target->getConditions().hasCondition(ATTACK_PARALYZE);
+
+	if(!hadPoison && !hadParalyze) {
+		caster->sendCancel("The target has no ailments to cleanse.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(hadPoison)
+		target->getConditions()[ATTACK_POISON].clear();
+
+	if(hadParalyze) {
+		target->getConditions()[ATTACK_PARALYZE].clear();
+		target->hasteTicks = 0;
+		spell->game->changeSpeed(target->getID(), target->getNormalSpeed());
+	}
+
+	target->sendIcons();
+	target->sendStats();
+	sendSpellMagicEffect(spell->game, target->pos, NM_ME_SOUND_GREEN);
+	lua_pushnumber(L, 1);
+	return 1;
+}
+
+int SpellScript::luaActionDoChainLightning(lua_State *L)
+{
+	int maxDmg = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	int minDmg = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	int falloff = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	int range = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	int jumps = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	Position targetPos;
+	internalGetPosition(L, targetPos);
+	unsigned int cid = (unsigned int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	if(!spell) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Creature* caster = spell->game->getCreatureByID(cid);
+	Player* casterPlayer = dynamic_cast<Player*>(caster);
+	if(!caster || !casterPlayer) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(caster->pos.z != targetPos.z) {
+		caster->sendCancel("You need to be on the same floor.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(spell->game->canThrowObjectTo(caster->pos, targetPos, BLOCK_PROJECTILE) != RET_NOERROR) {
+		caster->sendCancel("You cannot throw there.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Tile* startTile = spell->game->getTile(targetPos);
+	if(!startTile) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Creature* start = startTile->getTopCreature();
+	Monster* first = dynamic_cast<Monster*>(start);
+	if(!first) {
+		caster->sendCancel("You can only chain lightning through monsters.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	std::set<unsigned long> visited;
+	std::vector<Creature*> chain;
+	chain.push_back(first);
+	visited.insert(first->getID());
+
+	Creature* current = first;
+	for(int i = 0; i < jumps && current; ++i) {
+		Creature* next = NULL;
+		int bestDist = range + 1;
+		for(int dy = -range; dy <= range; ++dy) {
+			for(int dx = -range; dx <= range; ++dx) {
+				Position p(current->pos.x + dx, current->pos.y + dy, current->pos.z);
+				Tile* tile = spell->game->getTile(p);
+				if(!tile)
+					continue;
+				Creature* c = tile->getTopCreature();
+				if(!c || c == caster)
+					continue;
+				if(visited.find(c->getID()) != visited.end())
+					continue;
+				Monster* m = dynamic_cast<Monster*>(c);
+				if(!m)
+					continue;
+				int dist = std::max(std::abs(dx), std::abs(dy));
+				if(dist < bestDist && spell->game->canThrowObjectTo(current->pos, p, BLOCK_PROJECTILE) == RET_NOERROR) {
+					bestDist = dist;
+					next = c;
+				}
+			}
+		}
+		if(!next)
+			break;
+		current = next;
+		chain.push_back(current);
+		visited.insert(current->getID());
+	}
+
+	int applied = 0;
+	int factor = 100;
+	for(size_t i = 0; i < chain.size(); ++i) {
+		Creature* target = chain[i];
+		if((target->getImmunities() & ATTACK_ENERGY) == ATTACK_ENERGY)
+			continue;
+
+		int dmgMin = minDmg * factor / 100;
+		int dmgMax = maxDmg * factor / 100;
+		if(dmgMax < 1)
+			dmgMax = 1;
+		if(dmgMin > dmgMax)
+			dmgMin = dmgMax;
+
+		int64_t dmg = dmgMin;
+		if(dmgMax > dmgMin)
+			dmg += rand() % (dmgMax - dmgMin + 1);
+
+		int64_t outDamage = 0, outMana = 0;
+		spell->game->creatureApplyDamage(target, dmg, outDamage, outMana, NULL);
+		if(outDamage > 0) {
+			sendSpellMagicEffect(spell->game, target->pos, NM_ME_ENERGY_DAMAGE);
+			if(Player* p = dynamic_cast<Player*>(target))
+				p->sendStats();
+			++applied;
+		}
+		factor = factor * falloff / 100;
+	}
+
+	if(applied > 0)
+		casterPlayer->pzLocked = true;
+
+	lua_pushnumber(L, applied);
+	return 1;
+}
+
+namespace {
+
+struct DelayedHealJob {
+	unsigned long casterId;
+	unsigned long targetId;
+	int minHeal;
+	int maxHeal;
+	int range;
+};
+
+void runDelayedHeal(Game* game, const DelayedHealJob& job)
+{
+	Creature* target = game->getCreatureByID(job.targetId);
+	Creature* caster = game->getCreatureByID(job.casterId);
+	if(!target || !caster)
+		return;
+	if(target->pos.z != caster->pos.z)
+		return;
+	if(std::max(std::abs((int)target->pos.x - (int)caster->pos.x),
+	            std::abs((int)target->pos.y - (int)caster->pos.y)) > job.range)
+		return;
+
+	int64_t heal = job.minHeal;
+	if(job.maxHeal > job.minHeal)
+		heal += rand() % (job.maxHeal - job.minHeal + 1);
+
+	int64_t newHealth = target->health + heal;
+	if(newHealth > target->healthmax)
+		newHealth = target->healthmax;
+	target->health = newHealth;
+
+	sendSpellMagicEffect(game, target->pos, NM_ME_MAGIC_ENERGIE);
+	if(Player* p = dynamic_cast<Player*>(target))
+		p->sendStats();
+}
+
+} // namespace
+
+int SpellScript::luaActionDoDelayedHeal(lua_State *L)
+{
+	int range = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	int delayedMax = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	int delayedMin = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	long delayMs = (long)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	int immediateMax = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	int immediateMin = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	std::string targetName;
+	Creature* named = readNamedCreature(L, getSpell(L), targetName);
+	unsigned int cid = (unsigned int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	if(!spell) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Creature* caster = spell->game->getCreatureByID(cid);
+	if(!caster) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Player* target = dynamic_cast<Player*>(named);
+	if(!target) {
+		caster->sendCancel("You can only heal players.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(caster->pos.z != target->pos.z) {
+		caster->sendCancel("You need to be on the same floor.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	// Curación inmediata.
+	int64_t immediate = immediateMin;
+	if(immediateMax > immediateMin)
+		immediate += rand() % (immediateMax - immediateMin + 1);
+	int64_t newHealth = target->health + immediate;
+	if(newHealth > target->healthmax)
+		newHealth = target->healthmax;
+	target->health = newHealth;
+	target->sendStats();
+	sendSpellMagicEffect(spell->game, target->pos, NM_ME_MAGIC_ENERGIE);
+
+	// Curación diferida.
+	DelayedHealJob job;
+	job.casterId = caster->getID();
+	job.targetId = target->getID();
+	job.minHeal = delayedMin;
+	job.maxHeal = delayedMax;
+	job.range = range;
+
+	spell->game->addEvent(makeTask(delayMs,
+		boost::bind(&runDelayedHeal, spell->game, job)));
+
+	lua_pushnumber(L, 1);
+	return 1;
+}
+
+int SpellScript::luaActionDoDetonateFields(lua_State *L)
+{
+	int maxDmg = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	int minDmg = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	int maxFields = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	int radius = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	Position center;
+	internalGetPosition(L, center);
+	unsigned int cid = (unsigned int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	if(!spell) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Creature* caster = spell->game->getCreatureByID(cid);
+	Player* casterPlayer = dynamic_cast<Player*>(caster);
+	if(!caster || !casterPlayer) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(caster->pos.z != center.z) {
+		caster->sendCancel("You need to be on the same floor.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(spell->game->canThrowObjectTo(caster->pos, center, BLOCK_PROJECTILE) != RET_NOERROR) {
+		caster->sendCancel("You cannot throw there.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	int detonated = 0;
+	for(int dy = -radius; detonated < maxFields && dy <= radius; ++dy) {
+		for(int dx = -radius; detonated < maxFields && dx <= radius; ++dx) {
+			Position p(center.x + dx, center.y + dy, center.z);
+			Tile* tile = spell->game->getTile(p);
+			if(!tile)
+				continue;
+
+			MagicEffectItem* field = tile->getFieldItem();
+			if(!field)
+				continue;
+
+			// Solo fuego, energía o veneno; no magic wall ni wild growth.
+			attacktype_t fieldType = field->attackType;
+			if(fieldType != ATTACK_FIRE && fieldType != ATTACK_ENERGY && fieldType != ATTACK_POISON)
+				continue;
+
+			if(!removeTileItem(spell->game, caster, field))
+				continue;
+
+			++detonated;
+
+			unsigned char effect = NM_ME_FIRE_AREA;
+			if(fieldType == ATTACK_ENERGY)
+				effect = NM_ME_ENERGY_AREA;
+			else if(fieldType == ATTACK_POISON)
+				effect = NM_ME_POISONCLOUD;
+			sendSpellMagicEffect(spell->game, p, effect);
+
+			Creature* victim = tile->getTopCreature();
+			if(!victim || (victim->getImmunities() & fieldType) == fieldType)
+				continue;
+
+			int64_t dmg = minDmg;
+			if(maxDmg > minDmg)
+				dmg += rand() % (maxDmg - minDmg + 1);
+
+			int64_t outDamage = 0, outMana = 0;
+			spell->game->creatureApplyDamage(victim, dmg, outDamage, outMana, NULL);
+			if(outDamage > 0 && Player* p = dynamic_cast<Player*>(victim))
+				p->sendStats();
+		}
+	}
+
+	if(detonated > 0)
+		casterPlayer->pzLocked = true;
+
+	lua_pushnumber(L, detonated);
+	return 1;
+}
+
+int SpellScript::luaActionDoCounterStance(lua_State *L)
+{
+	int reduction = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	int hits = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	long durationMs = (long)lua_tonumber(L, -1) * 1000;
+	lua_pop(L, 1);
+	unsigned int cid = (unsigned int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	if(!spell) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Creature* caster = spell->game->getCreatureByID(cid);
+	Player* player = dynamic_cast<Player*>(caster);
+	if(!player) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	CounterStanceState state;
+	state.hits = hits;
+	state.reduction = reduction;
+	g_counterStance[player->getID()] = state;
+
+	sendSpellMagicEffect(spell->game, player->pos, NM_ME_SOUND_YELLOW);
+	lua_pushnumber(L, 1);
+	return 1;
+}
+
+namespace {
+
+struct BloodRitualState {
+	unsigned long playerId;
+	int ticksLeft;
+	int tickMs;
+	int hpPerTick;
+	int manaPerTick;
+	int minHpPercent;
+};
+
+void runBloodRitualTick(Game* game, BloodRitualState state)
+{
+	Creature* creature = game->getCreatureByID(state.playerId);
+	if(!creature)
+		return;
+	Player* player = dynamic_cast<Player*>(creature);
+	if(!player)
+		return;
+
+	Tile* tile = game->getTile(player->pos);
+	if(tile && tile->isPz())
+		return;
+
+	int64_t minHp = player->healthmax * state.minHpPercent / 100;
+	if(player->health <= minHp)
+		return;
+
+	int64_t drain = state.hpPerTick;
+	if(player->health - drain < minHp)
+		drain = player->health - minHp;
+	if(drain <= 0)
+		return;
+
+	player->health -= drain;
+	player->mana = std::min(player->manamax, player->mana + (int64_t)state.manaPerTick);
+	player->sendStats();
+	sendSpellMagicEffect(game, player->pos, NM_ME_MAGIC_BLOOD);
+
+	if(--state.ticksLeft > 0) {
+		game->addEvent(makeTask(state.tickMs,
+			boost::bind(&runBloodRitualTick, game, state)));
+	}
+}
+
+} // namespace
+
+int SpellScript::luaActionDoBloodRitual(lua_State *L)
+{
+	int minHpPercent = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	int manaPerTick = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	int hpPerTick = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	int tickMs = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	int totalTicks = (int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	unsigned int cid = (unsigned int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	if(!spell) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Creature* caster = spell->game->getCreatureByID(cid);
+	Player* player = dynamic_cast<Player*>(caster);
+	if(!player) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Tile* tile = spell->game->getTile(player->pos);
+	if(tile && tile->isPz()) {
+		player->sendTextMessage(MSG_SMALLINFO, "You cannot use this spell in a protection zone.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	int64_t minHp = player->healthmax * minHpPercent / 100;
+	if(player->health <= minHp) {
+		player->sendTextMessage(MSG_SMALLINFO, "Your health is too low.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	BloodRitualState state;
+	state.playerId = player->getID();
+	state.ticksLeft = totalTicks;
+	state.tickMs = tickMs;
+	state.hpPerTick = hpPerTick;
+	state.manaPerTick = manaPerTick;
+	state.minHpPercent = minHpPercent;
+
+	spell->game->addEvent(makeTask(tickMs,
+		boost::bind(&runBloodRitualTick, spell->game, state)));
+
+	sendSpellMagicEffect(spell->game, player->pos, NM_ME_MAGIC_BLOOD);
+	lua_pushnumber(L, 1);
 	return 1;
 }
 
