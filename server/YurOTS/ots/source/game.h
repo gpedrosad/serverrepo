@@ -494,6 +494,7 @@ protected:
 	friend class SpawnManager;
 	friend class ActionScript;
 	friend class Actions;
+	friend class SpellScript;
 };
 
 template<class ArgType>

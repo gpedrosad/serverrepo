@@ -1507,7 +1507,8 @@ int SpellScript::luaActionDoChainLightning(lua_State *L)
 		spell->game->creatureApplyDamage(target, dmg, outDamage, outMana, NULL);
 		if(outDamage > 0) {
 			sendSpellMagicEffect(spell->game, target->pos, NM_ME_ENERGY_DAMAGE);
-			if(Player* p = dynamic_cast<Player*>(target))
+			Player* p = dynamic_cast<Player*>(target);
+			if(p)
 				p->sendStats();
 			++applied;
 		}
@@ -1695,7 +1696,7 @@ int SpellScript::luaActionDoDetonateFields(lua_State *L)
 			if(fieldType == ATTACK_ENERGY)
 				effect = NM_ME_ENERGY_AREA;
 			else if(fieldType == ATTACK_POISON)
-				effect = NM_ME_POISONCLOUD;
+				effect = NM_ME_POISEN;
 			sendSpellMagicEffect(spell->game, p, effect);
 
 			Creature* victim = tile->getTopCreature();
@@ -1708,8 +1709,11 @@ int SpellScript::luaActionDoDetonateFields(lua_State *L)
 
 			int64_t outDamage = 0, outMana = 0;
 			spell->game->creatureApplyDamage(victim, dmg, outDamage, outMana, NULL);
-			if(outDamage > 0 && Player* p = dynamic_cast<Player*>(victim))
-				p->sendStats();
+			if(outDamage > 0) {
+				Player* p = dynamic_cast<Player*>(victim);
+				if(p)
+					p->sendStats();
+			}
 		}
 	}
 
