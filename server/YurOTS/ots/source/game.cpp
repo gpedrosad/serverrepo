@@ -1019,7 +1019,7 @@ void GameState::onAttack(Creature* attacker, const Position& pos, Creature* atta
 					attackPlayer->removeItemInventory(slot);
 
 		damage = applyAmulets(attackedPlayer, damage, ATTACK_PHYSICAL);
-		damage = applyCounterStance(game, attackedPlayer, creature, damage, ATTACK_PHYSICAL);
+		damage = applyCounterStance(game, attackedPlayer, attacker, damage, ATTACK_PHYSICAL);
 
 		game->creatureApplyDamage(attackedCreature, damage, damage, manaDamage
 			, (pvpArena? &arenaLosers : NULL)
