@@ -62,6 +62,13 @@ Cartel en `readables.xml` (bloque `MINOTAUR_ISLE_SIGNS`); spawns en `test-spawn.
   de z10–z12 estaba vacía.
 - Todos los monstruos existen en `monsters.xml`.
 
+## Techo (16 nov 2026)
+
+La Cueva del Minotauro (z10) queda debajo de la vieja Arena PvP y z9 estaba vacío en parte: desde ~220
+casillas se veían encima las cuevas de z8. Se puso roca en z9 donde no había nada con
+`scripts/map/check-upper-view.py --fix` (este generador no escribe z9, así que el techo no se pierde al
+regenerar). Ver [PIEZAS_DE_MAPA.md#techo](PIEZAS_DE_MAPA.md#techo).
+
 ## Regenerar
 
 ```bash

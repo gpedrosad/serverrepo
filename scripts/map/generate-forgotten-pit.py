@@ -77,6 +77,11 @@ MAIN_START_CELL = (1, 1)
 MIN_PATH_CELLS = 80                         # recorrido mínimo entrada -> salida (celdas)
 LOOPS = 0.07                                # conexiones extra: menos callejones ciegos
 VIEW = (8, 6)                               # media pantalla del cliente 7.6 + margen
+# Techo (nov 2026): z9 estaba vacío encima del corredor y del laberinto de z10. Sin nada justo arriba, el
+# cliente dibuja los pisos de arriba (las cuevas de z8 de x 195-280) encima del laberinto: desde 675
+# casillas de z10 se veía "lo de arriba". Se pone roca en z9 donde no hay nada, con 2 de margen (el
+# cliente mira la casilla de arriba y la de arriba en diagonal, x+1 y+1).
+CEILING_MARGIN = 2
 
 STAGE_DEFS = {
     Z10: [
@@ -329,6 +334,17 @@ def build_corridor(seed: int, bl):
     t[(143, 26)].append(SIGN)
     t[(197, 9)].append(CAMPFIRE)
     return t, floor
+
+
+def ceiling_tiles(existing) -> roomkit.Map:
+    """Roca en z9 sobre el corredor y el laberinto, solo en casillas sin tile (no pisa otras zonas)."""
+    m = roomkit.Map()
+    for x0, y0, x1, y1 in (CORRIDOR_BOX, MAIN_BOX):
+        for x in range(x0 - CEILING_MARGIN, x1 + CEILING_MARGIN + 1):
+            for y in range(max(0, y0 - CEILING_MARGIN), y1 + CEILING_MARGIN + 1):
+                if (x, y, Z9) not in existing:
+                    m.ground((x, y, Z9), NP.ROCK)
+    return m
 
 
 def build_city_sign() -> roomkit.Map:
@@ -635,6 +651,10 @@ def main() -> int:
                 if item["id"] == TELEPORT and "tele" not in item:
                     item["tele"] = (128, 31, Z9)
         roomkit.write_map(a.map, m, MAIN_BOX, z, stackable)
+    ceiling = ceiling_tiles(existing)
+    if ceiling.t:   # caja vacía (1, 1, 0, 0): no borra nada, solo agrega roca donde no había tile
+        roomkit.write_map(a.map, ceiling, (1, 1, 0, 0), Z9, stackable)
+    print(f"techo z9: {len(ceiling.t)} casillas de roca nuevas")
 
     # Spawns
     sp = SPAWNS.read_text(encoding="latin-1")

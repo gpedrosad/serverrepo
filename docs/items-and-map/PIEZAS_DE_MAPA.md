@@ -145,8 +145,24 @@ Paredes de tierra `356–367` (`WALL_SIDE`, `WALL_CORNER`, `WALL_INNER` en `gene
   suelo: `2248` (calavera con huesos), `2320` (calavera), `3121`, `3133` (esqueleto).
 - Validar pieza por pieza, vacío a la vista, recorrido y escaleras antes de escribir. Ejemplo completo:
   [MAPEAR_DUNGEON_CITY.md](MAPEAR_DUNGEON_CITY.md).
+- **Techo:** encima de toda cueva tiene que haber algo con suelo (roca `101` alcanza). Ver [Techo](#techo).
 - **Forma y monstruos de una cueva de caza** (pasillo largo y angosto, cuántos monstruos y dónde):
   [ZONAS_DE_CAZA.md](ZONAS_DE_CAZA.md).
+
+## Techo
+
+Bajo tierra el cliente (OTClient, `calcFirstVisibleFloor`) dibuja también los **2 pisos de arriba**, salvo
+que la casilla justo arriba del jugador (o la de arriba en diagonal, x+1 y+1), o la de alguna de sus 4
+vecinas, tenga suelo. Si el piso de arriba está **vacío** (sin tile), se ven encima de la cueva las cuevas,
+casas o paredes de los pisos de arriba, corridas en diagonal: "se ve lo de arriba".
+
+- Al generar una cueva en un piso cuyo piso de arriba está vacío, **poner roca arriba** donde no hay nada
+  (solo en casillas vacías: no pisar lo ajeno). Ejemplo: `ceiling_tiles()` de `generate-forgotten-pit.py`.
+- Comprobar con `scripts/map/check-upper-view.py` (todo el mapa en ~1 s; `--box X0 Y0 X1 Y1 --z ...` para una
+  zona). `--fix` pone el techo de roca y repite hasta que no quede nada a la vista; no pone roca pegada a
+  un piso caminable de arriba (quedaría roca pelada) y esas las informa.
+- **Después de regenerar cualquier zona bajo tierra**, volver a correr `check-upper-view.py`: si el
+  generador borra su caja en el piso de arriba, se lleva el techo.
 
 ## Que el generador lo compruebe
 
@@ -169,5 +185,6 @@ Un generador nuevo con muebles tiene que traer las mismas comprobaciones.
 | Sillas todas mirando al mismo lado | Un id por dirección; validar que miran a una mesa |
 | Tapices flotando sobre la pared | Probar los colgados en una escena con pared antes de usarlos |
 | El mapa no cargaba por una calavera 2320 | Los apilables llevan byte de cantidad (`NEEDS_COUNT`); correr `check-map-load.py` |
+| El Foso Olvidado y la Cueva del Minotauro (debajo de la vieja Arena PvP): desde z10 se veían las cuevas de z8 encima (16 nov 2026) | El piso de arriba (z9) estaba vacío. Ver [Techo](#techo) |
 | Valle de las Bestias: cabezas y garras de dragón cortadas en el suelo (2247, 3125, 3122) (nov 2026) | Son piezas del esqueleto grande; usar huesos enteros (ver [Cuevas](#cuevas)) |
 | Dungeon de la city: vacío negro al costado, rocas peladas sin borde, salones cuadrados vacíos y fogata encima de la escalera de mano (nov 2026) | Ver [Cuevas](#cuevas) y [MAPEAR_DUNGEON_CITY.md](MAPEAR_DUNGEON_CITY.md#errores-que-ya-pasaron-arreglados-16-nov-2026) |

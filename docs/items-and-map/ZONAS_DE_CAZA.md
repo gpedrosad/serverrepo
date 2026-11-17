@@ -144,7 +144,10 @@ Ejemplo: agregar una cueva de un piso en z8 del valle. Para un generador nuevo, 
 7. **Mirar y medir.** `--dry-run --preview /tmp/x.png`: la forma tiene que verse como un pasillo sin atajos
    entre filas, y la tabla de densidad tiene que dar 33–50 casillas por monstruo. Si falla algo, el script
    dice qué y no escribe.
-8. **Escribir y probar.** Correr sin `--dry-run`, `check-map-load.py` (0 errores) y, antes de deployar, bajar
+8. **Techo.** Si el piso de arriba está vacío encima de la cueva, poner roca ahí (si no, desde la cueva se
+   ven los pisos de arriba). Comprobar con `scripts/map/check-upper-view.py`
+   ([PIEZAS_DE_MAPA.md#techo](PIEZAS_DE_MAPA.md#techo)).
+9. **Escribir y probar.** Correr sin `--dry-run`, `check-map-load.py` (0 errores) y, antes de deployar, bajar
    y subir por cada escalera y abrir el depot del templo in-game.
 
 ### Errores que ya pasaron

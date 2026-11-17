@@ -90,6 +90,14 @@ Bloque `FORGOTTEN_PIT_SIGNS` de `readables.xml`:
 | `216,15,12` | El Corazón |
 | `258,79,12` | Aviso de Orshabaal |
 
+## Techo (16 nov 2026)
+
+z9 estaba vacío encima del corredor y del primer piso del laberinto (z10). El cliente dibujaba encima las
+cuevas de z8 (x 195–280): desde 675 casillas de z10 "se veía lo de arriba". Ahora el generador pone roca
+en z9 sobre `CORRIDOR_BOX` y `MAIN_BOX` (con 2 de margen) solo donde no hay tile (`ceiling_tiles`, 8.155
+casillas). z11 y z12 ya tenían techo: el piso de arriba del laberinto está entero. Ver
+[PIEZAS_DE_MAPA.md#techo](PIEZAS_DE_MAPA.md#techo).
+
 ## Regenerar
 
 ```bash
@@ -98,7 +106,11 @@ python3 scripts/map/generate-forgotten-pit.py --replace
 python3 scripts/map/check-map-load.py
 python3 scripts/map/sync-houses-with-map.py --dry-run
 python3 scripts/map/scan-map-depots.py server/YurOTS/ots/data/world/test.otbm
+python3 scripts/map/check-upper-view.py                 # que desde ninguna cueva se vea el piso de arriba
 ```
+
+`--replace` vuelve a escribir el bloque `FORGOTTEN_PIT_SPAWNS` al final de `test-spawn.xml`: si los spawns no
+cambiaron, conviene dejar el archivo como estaba (`git checkout`) para no ensuciar el diff.
 
 `--replace` escribe:
 
