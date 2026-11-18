@@ -57,6 +57,13 @@ No tiene portal en la plaza; ver [`items-and-map/MAPEAR_FOSO_OLVIDADO.md`](items
 
 Sacados en nov 2026: Arena de Fosos, Fish TP (ya no existían en el mapa), Bleed Room y Floor campus.
 
+**Distrito de eventos (nov 2026):** El Crisol, Wave Arena y Reloj de Arena se generaron primero
+dentro del recuadro del mapa principal (z0 sobre la ciudad, z7/z6 sobre el sur) y se veían
+superpuestos en RME. Ahora viven lejos del mapa, cada uno con su piso original: Crisol z0
+(hub `600,100`), Wave Arena z7 (claro `600,205`) y Reloj de Arena z6/z5 (sala `600,320`). Las
+casillas viejas las borró `scripts/map/remove-old-event-areas.py`; moverlos de nuevo es cambiar
+el origen de cada generador y correrlo + `temple-portals.py`.
+
 ---
 
 ## 1. Editar en Remere's Map Editor

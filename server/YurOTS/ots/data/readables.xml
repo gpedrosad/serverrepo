@@ -4,10 +4,10 @@
 <readable x="131" y="53" z="7" text="depots are upstairs"/>
 <readable x="141" y="51" z="6" text="some\nmulti\nline\ntext"/>
 	<!-- BEGIN CRUCIBLE_SIGNS -->
-	<readable x="78" y="80" z="0" text="PUERTA DE BRONCE\nFoso de Arena\nRiesgo bajo. Grupo: pisen la plataforma."/>
-	<readable x="82" y="80" z="0" text="PUERTA DE PLATA\nColiseo de Piedra\nRiesgo medio. Grupo: pisen la plataforma."/>
-	<readable x="86" y="80" z="0" text="PUERTA DE ORO\nTrono de Fuego\nBoss diario + arma rara."/>
-	<readable x="78" y="84" z="0" text="EL CRISOL\nPalanca: bosses de hoy y arenas ocupadas.\nSalida al templo: TP sur."/>
+	<readable x="600" y="100" z="0" text="PUERTA DE BRONCE\nFoso de Arena\nRiesgo bajo. Grupo: pisen la plataforma."/>
+	<readable x="604" y="100" z="0" text="PUERTA DE PLATA\nColiseo de Piedra\nRiesgo medio. Grupo: pisen la plataforma."/>
+	<readable x="608" y="100" z="0" text="PUERTA DE ORO\nTrono de Fuego\nBoss diario + arma rara."/>
+	<readable x="600" y="104" z="0" text="EL CRISOL\nPalanca: bosses de hoy y arenas ocupadas.\nSalida al templo: TP sur."/>
 	<!-- END CRUCIBLE_SIGNS -->
 	<!-- BEGIN TEMPLE_PORTAL_SIGNS -->
 	<readable x="156" y="46" z="7" text="ISLA NATURAL\n3 campamentos de Cyclops\nCueva de 3 pisos: la Reina"/>
@@ -24,9 +24,6 @@
 	<readable x="350" y="181" z="7" text="EL CRUCE\nOeste: Campos de Ceniza. Este: Rios de Lava.\nNorte: Fortaleza del Culto y el Crater."/>
 	<readable x="362" y="150" z="7" text="LAS FAUCES DEL INFIERNO\nPuerta: nivel 80. Abajo cazan los perros del infierno.\nEn el Abismo, la puerta del Senor de la Ceniza pide nivel 100."/>
 	<!-- END HELL_QUEST_SIGNS -->
-	<!-- BEGIN SAND_CLOCK_SIGNS -->
-	<readable x="339" y="396" z="6" text="RELOJ DE ARENA\nDescanso de 30 s y despues 6 oleadas de 60 s,\ncada una mas fuerte. Los braseros marcan la oleada.\nEntra en el descanso para empezar desde la 1.\nSalida: portal al sur."/>
-	<!-- END SAND_CLOCK_SIGNS -->
 	<!-- BEGIN NORTH_PASS_SIGNS -->
 	<readable x="187" y="13" z="7" text="PASO DEL NORTE\nBosque, Tundra Helada y Cuevas del Dragon.\nCuevas: nivel 60+."/>
 	<readable x="411" y="332" z="7" text="TUNDRA HELADA\nLobos de invierno, osos polares y trolls.\nDicen que un yeti ronda el lago."/>
@@ -48,9 +45,9 @@
 	<readable x="199" y="73" z="7" text="DESIERTO DE LAS RUINAS\nRuinas (8+), dunas del sur (10+), laguna y oasis (15+),\ncampamento de bandidos (20+), nido de escarabajos (30+),\ntemplo de los lagartos (40+), campo de huesos (45+),\ncienaga (50+), santuario de los djinn (60+).\nSigue el camino de piedra.\nEn el barco del muelle: piratas en cubierta (25+)."/>
 	<!-- END DESERT_HUNTS_SIGNS -->
 	<!-- BEGIN WAVE_ARENA_SIGNS -->
-	<readable x="175" y="400" z="7" text="WAVE ARENA\nClaro de la Selva. 20 oleadas, jefe cada 5.\nGrupo: pisen la plataforma y tiren la palanca."/>
-	<readable x="178" y="400" z="7" text="RANKING SEMANAL\nCuenta la ultima oleada LIMPIA.\nPremio la primera vez en la semana: 5/10/15/20."/>
-	<readable x="176" y="395" z="7" text="Izquierda: siguiente oleada (sala limpia).\nDerecha: retirarse y guardar la marca."/>
+	<readable x="605" y="220" z="7" text="WAVE ARENA\nClaro de la Selva. 20 oleadas, jefe cada 5.\nGrupo: pisen la plataforma y tiren la palanca."/>
+	<readable x="608" y="220" z="7" text="RANKING SEMANAL\nCuenta la ultima oleada LIMPIA.\nPremio la primera vez en la semana: 5/10/15/20."/>
+	<readable x="606" y="215" z="7" text="Izquierda: siguiente oleada (sala limpia).\nDerecha: retirarse y guardar la marca."/>
 	<!-- END WAVE_ARENA_SIGNS -->
 	<!-- BEGIN MINOTAUR_ISLE_SIGNS -->
 	<readable x="102" y="52" z="7" text="CUEVA DEL MINOTAURO\nAbajo, minotauros mas fuertes en cada piso.\nAl fondo del tercer piso, portal de vuelta."/>
@@ -94,4 +91,7 @@
 	<!-- BEGIN TROLL_DEN_SIGNS -->
 	<readable x="166" y="108" z="7" text="GUARIDA DE LOS TROLLS\nAgujero abajo: river trolls cerca de la escalera\ny stone trolls al fondo, entre las piedras."/>
 	<!-- END TROLL_DEN_SIGNS -->
+	<!-- BEGIN SAND_CLOCK_SIGNS -->
+	<readable x="606" y="328" z="6" text="RELOJ DE ARENA\nDescanso de 30 s y despues 6 oleadas de 60 s,\ncada una mas fuerte. Los braseros marcan la oleada.\nEntra en el descanso para empezar desde la 1.\nSalida: portal al sur."/>
+	<!-- END SAND_CLOCK_SIGNS -->
 </readables>

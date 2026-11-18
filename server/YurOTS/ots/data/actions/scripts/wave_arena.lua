@@ -14,14 +14,14 @@
 --   * Premio la primera vez en la semana que un jugador limpia la oleada 5 / 10 / 15 / 20.
 
 -- BEGIN LAYOUT (generado por scripts/map/generate-wave-arena.py)
-ARENA = {x0 = 170, y0 = 385, x1 = 182, y1 = 395, z = 7}
-CAMP = {x0 = 172, y0 = 400, x1 = 180, y1 = 404, z = 7}
-PAD = {x0 = 175, y0 = 401, x1 = 177, y1 = 402, z = 7}
-CAMP_LANDING = {x = 176, y = 403, z = 7}
+ARENA = {x0 = 600, y0 = 205, x1 = 612, y1 = 215, z = 7}
+CAMP = {x0 = 602, y0 = 220, x1 = 610, y1 = 224, z = 7}
+PAD = {x0 = 605, y0 = 221, x1 = 607, y1 = 222, z = 7}
+CAMP_LANDING = {x = 606, y = 223, z = 7}
 -- ARRIVALS[1] = el que tira; la cantidad es el tope del grupo
-ARRIVALS = {{x = 176, y = 394, z = 7}, {x = 175, y = 394, z = 7}, {x = 177, y = 394, z = 7}, {x = 176, y = 393, z = 7}, {x = 175, y = 393, z = 7}, {x = 177, y = 393, z = 7}, {x = 174, y = 394, z = 7}}
+ARRIVALS = {{x = 606, y = 214, z = 7}, {x = 605, y = 214, z = 7}, {x = 607, y = 214, z = 7}, {x = 606, y = 213, z = 7}, {x = 605, y = 213, z = 7}, {x = 607, y = 213, z = 7}, {x = 604, y = 214, z = 7}}
 -- SPAWNS[1] = jefe; el resto en orden de reparto
-SPAWNS = {{x = 176, y = 386, z = 7}, {x = 173, y = 385, z = 7}, {x = 179, y = 385, z = 7}, {x = 170, y = 388, z = 7}, {x = 182, y = 388, z = 7}, {x = 175, y = 385, z = 7}, {x = 177, y = 385, z = 7}, {x = 170, y = 390, z = 7}, {x = 182, y = 390, z = 7}, {x = 172, y = 386, z = 7}, {x = 180, y = 386, z = 7}, {x = 174, y = 387, z = 7}, {x = 178, y = 387, z = 7}, {x = 170, y = 392, z = 7}, {x = 182, y = 392, z = 7}, {x = 176, y = 388, z = 7}}
+SPAWNS = {{x = 606, y = 206, z = 7}, {x = 603, y = 205, z = 7}, {x = 609, y = 205, z = 7}, {x = 600, y = 208, z = 7}, {x = 612, y = 208, z = 7}, {x = 605, y = 205, z = 7}, {x = 607, y = 205, z = 7}, {x = 600, y = 210, z = 7}, {x = 612, y = 210, z = 7}, {x = 602, y = 206, z = 7}, {x = 610, y = 206, z = 7}, {x = 604, y = 207, z = 7}, {x = 608, y = 207, z = 7}, {x = 600, y = 212, z = 7}, {x = 612, y = 212, z = 7}, {x = 606, y = 208, z = 7}}
 -- END LAYOUT
 
 UID_START, UID_RANK, UID_NEXT, UID_RETIRE = 7100, 7101, 7102, 7103

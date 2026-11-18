@@ -9,33 +9,33 @@
 --     (PACK_COUNT + 1); nunca se apilan mas.
 
 -- BEGIN LAYOUT (generado por scripts/map/generate-crucible.py)
-HUB = {x0 = 78, y0 = 80, x1 = 88, y1 = 87, z = 0}
+HUB = {x0 = 600, y0 = 100, x1 = 610, y1 = 107, z = 0}
 PADS = {
-	bronze = {x0 = 78, y0 = 81, x1 = 80, y1 = 82, z = 0},
-	silver = {x0 = 82, y0 = 81, x1 = 84, y1 = 82, z = 0},
-	gold = {x0 = 86, y0 = 81, x1 = 88, y1 = 82, z = 0},
+	bronze = {x0 = 600, y0 = 101, x1 = 602, y1 = 102, z = 0},
+	silver = {x0 = 604, y0 = 101, x1 = 606, y1 = 102, z = 0},
+	gold = {x0 = 608, y0 = 101, x1 = 610, y1 = 102, z = 0},
 }
 ARENAS = {
 	bronze = {
-		name = "Foso de Arena", x0 = 93, y0 = 80, x1 = 103, y1 = 88, z = 0,
+		name = "Foso de Arena", x0 = 615, y0 = 100, x1 = 625, y1 = 108, z = 0,
 		-- arrivals[1] = el que tira; la cantidad es el tope del grupo
-		arrivals = {{x = 98, y = 86, z = 0}, {x = 97, y = 86, z = 0}, {x = 99, y = 86, z = 0}, {x = 98, y = 85, z = 0}, {x = 97, y = 85, z = 0}, {x = 99, y = 85, z = 0}, {x = 96, y = 86, z = 0}},
+		arrivals = {{x = 620, y = 106, z = 0}, {x = 619, y = 106, z = 0}, {x = 621, y = 106, z = 0}, {x = 620, y = 105, z = 0}, {x = 619, y = 105, z = 0}, {x = 621, y = 105, z = 0}, {x = 618, y = 106, z = 0}},
 		-- spawns[1] = elite/boss; el resto, pack
-		spawns = {{x = 98, y = 81, z = 0}, {x = 96, y = 82, z = 0}, {x = 100, y = 82, z = 0}, {x = 94, y = 81, z = 0}, {x = 102, y = 81, z = 0}, {x = 97, y = 83, z = 0}, {x = 99, y = 83, z = 0}},
+		spawns = {{x = 620, y = 101, z = 0}, {x = 618, y = 102, z = 0}, {x = 622, y = 102, z = 0}, {x = 616, y = 101, z = 0}, {x = 624, y = 101, z = 0}, {x = 619, y = 103, z = 0}, {x = 621, y = 103, z = 0}},
 	},
 	silver = {
-		name = "Coliseo de Piedra", x0 = 108, y0 = 80, x1 = 118, y1 = 88, z = 0,
+		name = "Coliseo de Piedra", x0 = 630, y0 = 100, x1 = 640, y1 = 108, z = 0,
 		-- arrivals[1] = el que tira; la cantidad es el tope del grupo
-		arrivals = {{x = 113, y = 86, z = 0}, {x = 112, y = 86, z = 0}, {x = 114, y = 86, z = 0}, {x = 113, y = 85, z = 0}, {x = 112, y = 85, z = 0}, {x = 114, y = 85, z = 0}, {x = 111, y = 86, z = 0}},
+		arrivals = {{x = 635, y = 106, z = 0}, {x = 634, y = 106, z = 0}, {x = 636, y = 106, z = 0}, {x = 635, y = 105, z = 0}, {x = 634, y = 105, z = 0}, {x = 636, y = 105, z = 0}, {x = 633, y = 106, z = 0}},
 		-- spawns[1] = elite/boss; el resto, pack
-		spawns = {{x = 113, y = 81, z = 0}, {x = 111, y = 82, z = 0}, {x = 115, y = 82, z = 0}, {x = 109, y = 81, z = 0}, {x = 117, y = 81, z = 0}, {x = 112, y = 83, z = 0}, {x = 114, y = 83, z = 0}},
+		spawns = {{x = 635, y = 101, z = 0}, {x = 633, y = 102, z = 0}, {x = 637, y = 102, z = 0}, {x = 631, y = 101, z = 0}, {x = 639, y = 101, z = 0}, {x = 634, y = 103, z = 0}, {x = 636, y = 103, z = 0}},
 	},
 	gold = {
-		name = "Trono de Fuego", x0 = 123, y0 = 80, x1 = 133, y1 = 88, z = 0,
+		name = "Trono de Fuego", x0 = 645, y0 = 100, x1 = 655, y1 = 108, z = 0,
 		-- arrivals[1] = el que tira; la cantidad es el tope del grupo
-		arrivals = {{x = 128, y = 86, z = 0}, {x = 127, y = 86, z = 0}, {x = 129, y = 86, z = 0}, {x = 128, y = 85, z = 0}, {x = 127, y = 85, z = 0}, {x = 129, y = 85, z = 0}, {x = 126, y = 86, z = 0}},
+		arrivals = {{x = 650, y = 106, z = 0}, {x = 649, y = 106, z = 0}, {x = 651, y = 106, z = 0}, {x = 650, y = 105, z = 0}, {x = 649, y = 105, z = 0}, {x = 651, y = 105, z = 0}, {x = 648, y = 106, z = 0}},
 		-- spawns[1] = elite/boss; el resto, pack
-		spawns = {{x = 128, y = 81, z = 0}, {x = 126, y = 82, z = 0}, {x = 130, y = 82, z = 0}, {x = 124, y = 81, z = 0}, {x = 132, y = 81, z = 0}, {x = 127, y = 83, z = 0}, {x = 129, y = 83, z = 0}},
+		spawns = {{x = 650, y = 101, z = 0}, {x = 648, y = 102, z = 0}, {x = 652, y = 102, z = 0}, {x = 646, y = 101, z = 0}, {x = 654, y = 101, z = 0}, {x = 649, y = 103, z = 0}, {x = 651, y = 103, z = 0}},
 	},
 }
 -- END LAYOUT

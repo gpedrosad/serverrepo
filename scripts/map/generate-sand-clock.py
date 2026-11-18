@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Reloj de Arena: sala chica de oleadas que suben de nivel (la maneja el NPC Chronos).
 
-Sala de arena con paredes de arenisca, 11x9 por dentro (z6), en el mismo lugar que la sala vieja
-(17x15 de piso blanco). La lógica de las oleadas está en data/npc/scripts/chronos.lua; este script
+Sala de arena con paredes de arenisca, 11x9 por dentro (z6), en el distrito de eventos
+(x>=560, lejos del mapa principal: antes flotaba sobre el Valle de las Bestias y se
+veía superpuesta en RME). La lógica de las oleadas está en data/npc/scripts/chronos.lua; este script
 solo dibuja la sala y escribe su cartel:
 
   - al norte, Chronos en el centro y 6 braseros que se encienden según la oleada (3 a cada lado);
@@ -37,19 +38,24 @@ READABLES = REPO / "server/YurOTS/ots/data/readables.xml"
 MANIFEST = WORLD / "generated-sand-clock.json"
 
 Z_PLAY, Z_ROOF = 6, 5
-ROOM = dict(x0=333, y0=388, x1=343, y1=396)          # piso caminable (11x9)
-CLEAR = (325, 381, 351, 403)                          # z5-z6: sala vieja + media pantalla alrededor
+# Distrito de eventos: mover la sala es cambiar (X0, Y0); todo lo demás es relativo.
+# La caja vieja sobre el valle (325,381-351,403) se borró con scripts/map/remove-old-event-areas.py.
+X0, Y0 = 600, 320                                     # esquina NO del piso caminable
+ROOM = dict(x0=X0, y0=Y0, x1=X0 + 10, y1=Y0 + 8)      # piso caminable (11x9)
+CLEAR = (X0 - 8, Y0 - 7, X0 + 18, Y0 + 15)            # z5-z6: sala + media pantalla alrededor
 TEMPLE_LANDING = (168, 48, 7)                         # llegada del portal del Reloj en la plaza
-CX = 338
+CX = X0 + 5
 CHRONOS = (CX, ROOM["y0"])
 LANDING = (CX, ROOM["y1"] - 1)
 EXIT_TP = (CX, ROOM["y1"])
-BRAZIERS = [(333, 388), (334, 388), (335, 388), (341, 388), (342, 388), (343, 388)]   # oleadas 1-6
-PILLARS = [(335, 392), (341, 392)]
+BRAZIERS = [(X0, Y0), (X0 + 1, Y0), (X0 + 2, Y0),
+            (X0 + 8, Y0), (X0 + 9, Y0), (X0 + 10, Y0)]                     # oleadas 1-6
+PILLARS = [(X0 + 2, Y0 + 4), (X0 + 8, Y0 + 4)]
 STATUES = [(CX - 2, ROOM["y1"]), (CX + 2, ROOM["y1"])]
 SIGN_POS = (CX + 1, ROOM["y1"])
-SPAWN_SPOTS = [(334, 390), (338, 390), (342, 390), (336, 391), (340, 391), (334, 393), (342, 393),
-               (337, 392), (339, 392), (336, 393), (340, 393)]
+SPAWN_SPOTS = [(X0 + 1, Y0 + 2), (X0 + 5, Y0 + 2), (X0 + 9, Y0 + 2),
+               (X0 + 3, Y0 + 3), (X0 + 7, Y0 + 3), (X0 + 1, Y0 + 5), (X0 + 9, Y0 + 5),
+               (X0 + 4, Y0 + 4), (X0 + 6, Y0 + 4), (X0 + 3, Y0 + 5), (X0 + 7, Y0 + 5)]
 
 SAND, EARTH, WOOD = 231, 101, 405
 WALL = dict(post=1062, h=1063, v=1060, se=1066)       # arenisca: poste NO, horizontal, vertical, L SE

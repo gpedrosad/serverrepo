@@ -56,12 +56,12 @@ PORTALS = [
     ("valle", 158, (312, 360, 7), "VALLE DE LAS BESTIAS\nCaza mid-hard en 4 pisos\nDe Minotauros a Demonios",
      [(262, 232, 361, 378, 7), (262, 232, 361, 378, 8), (262, 232, 361, 378, 9), (262, 232, 361, 378, 10),
       (449, 39, 489, 80, 7)]),
-    ("crisol", 164, (83, 85, 0), "CRISOL\n3 puertas. Boss diario.\nBronce / Plata / Oro",
-     [(70, 70, 195, 105, 0)]),
-    ("wave", 166, (176, 403, 7), "WAVE ARENA\nClaro de la Selva: 20 oleadas\nEn grupo. Premio semanal",
-     [(165, 380, 190, 410, 7)]),
-    ("reloj", 168, (338, 395, 6), "RELOJ DE ARENA\n6 oleadas que suben de nivel\nEntra en el descanso",
-     [(328, 383, 348, 401, 6), (328, 383, 348, 401, 5)]),
+    ("crisol", 164, (605, 105, 0), "CRISOL\n3 puertas. Boss diario.\nBronce / Plata / Oro",
+     [(592, 90, 717, 125, 0)]),
+    ("wave", 166, (606, 223, 7), "WAVE ARENA\nClaro de la Selva: 20 oleadas\nEn grupo. Premio semanal",
+     [(595, 200, 620, 230, 7)]),
+    ("reloj", 168, (605, 327, 6), "RELOJ DE ARENA\n6 oleadas que suben de nivel\nEntra en el descanso",
+     [(595, 315, 615, 333, 6), (595, 315, 615, 333, 5)]),
 ]
 S_BEGIN, S_END = "<!-- BEGIN TEMPLE_PORTAL_SIGNS -->", "<!-- END TEMPLE_PORTAL_SIGNS -->"
 

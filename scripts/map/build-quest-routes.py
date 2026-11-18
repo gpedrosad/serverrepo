@@ -142,11 +142,11 @@ QUESTS = [
      "El cofre está dentro de la cueva."),
     ("daily-task", "Daily Task (Huntmaster)", "walk", (138, 53, 6), "Huntmaster",
      "El Huntmaster está en el templo."),
-    ("wave-arena", "Wave Arena", "portal", (166, 47, 7), (176, 403, 7), None,
+    ("wave-arena", "Wave Arena", "portal", (166, 47, 7), (606, 223, 7), None,
      "Campamento de la Wave Arena", "El portal te deja en el campamento."),
-    ("sand-clock", "Reloj de Arena", "portal", (168, 47, 7), (338, 395, 6), None,
+    ("sand-clock", "Reloj de Arena", "portal", (168, 47, 7), (605, 327, 6), None,
      "Sala del Reloj", "El portal te deja en la sala."),
-    ("crucible", "El Crisol", "portal", (164, 47, 7), (83, 85, 0), None,
+    ("crucible", "El Crisol", "portal", (164, 47, 7), (605, 105, 0), None,
      "Sala del Crisol", "El portal te deja en la sala de las tres puertas."),
 ]
 

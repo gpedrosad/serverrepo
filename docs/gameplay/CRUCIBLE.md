@@ -13,15 +13,19 @@ Portales del templo: plaza `155,43–169,52` (z7), tabla completa en [`CAMBIAR-M
 
 ## Mapa (z0, todo generado)
 
+Las salas viven en el **distrito de eventos** (x≥560, lejos del mapa principal): así no se ven
+superpuestas en RME ni como fantasmas desde la ciudad. Se movieron ahí en nov 2026 (antes flotaban
+en z0 sobre la ciudad); las casillas viejas se borraron con `scripts/map/remove-old-event-areas.py`.
+
 | Sala | Caja interior | Estilo | Entrada / salida |
 |------|---------------|--------|------------------|
-| Hub "Sala del Crisol" (**PZ**), 11x8 | `78,80 – 88,87` | mármol con marco negro, alfombra, 2 columnas, ángel, braseros | llegada `83,85`; TP al templo `83,87` |
-| Bronce "Foso de Arena", 11x9 | `93,80 – 103,88` | arena, arenisca, 2 columnas, calaveras y sangre, guerreros en la salida | `98,86` / TP `98,88` |
-| Plata "Coliseo de Piedra", 11x9 | `108,80 – 118,88` | piedra gris, círculo central, 2 columnas, tapices azules, perros en la salida | `113,86` / TP `113,88` |
-| Oro "Trono de Fuego", 11x9 | `123,80 – 133,88` | mármol negro, estrado del boss, alfombra, ríos de lava a los costados, obeliscos, tapices de fuego | `128,86` / TP `128,88` |
+| Hub "Sala del Crisol" (**PZ**), 11x8 | `600,100 – 610,107` | mármol con marco negro, alfombra, 2 columnas, ángel, braseros | llegada `605,105`; TP al templo `605,107` |
+| Bronce "Foso de Arena", 11x9 | `615,100 – 625,108` | arena, arenisca, 2 columnas, calaveras y sangre, guerreros en la salida | `620,106` / TP `620,108` |
+| Plata "Coliseo de Piedra", 11x9 | `630,100 – 640,108` | piedra gris, círculo central, 2 columnas, tapices azules, perros en la salida | `635,106` / TP `635,108` |
+| Oro "Trono de Fuego", 11x9 | `645,100 – 655,108` | mármol negro, estrado del boss, alfombra, ríos de lava a los costados, obeliscos, tapices de fuego | `650,106` / TP `650,108` |
 
-En el hub, contra la pared norte: por puerta una **plataforma 3x2** (bronce `78-80`, plata `82-84`, oro `86-88`,
-filas `y=81-82`) con cartel y palanca en la fila `y=80` (palancas `79/83/87, 80`). Info: cartel `78,84`, palanca `78,85`.
+En el hub, contra la pared norte: por puerta una **plataforma 3x2** (bronce `600-602`, plata `604-606`, oro `608-610`,
+filas `y=101-102`) con cartel y palanca en la fila `y=100` (palancas `601/605/609, 100`). Info: cartel `600,104`, palanca `600,105`.
 
 Arenas (coordenadas locales, iguales en las 3): spawns en las filas 1-3 (boss en `5,1`), llegada del grupo en las
 filas 5-6 alrededor de `5,6`, TP de salida en `5,8`.
@@ -61,7 +65,7 @@ Alfombra roja (rectángulo de 3 de ancho; **el borde oeste es `4397`, el este `4
 
 ## Flujo
 
-1. TP `164, 47, 7` (plaza del templo) → hub `83, 85, 0`.
+1. TP `164, 47, 7` (plaza del templo) → hub `605, 105, 0`.
 2. Palanca INFO `7203`: bosses y rare del día + **estado de cada arena** (libre / ocupada por quién / monstruos sueltos).
 3. Bronce `7200` / Plata `7201` / Oro `7202`: entran **todos los jugadores parados en la plataforma** de esa puerta
    más el que tira (máx 7 = puntos de llegada; los que sobran reciben "Grupo lleno"). Llegan al sur de la arena.

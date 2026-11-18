@@ -414,18 +414,18 @@ def main() -> int:
                        "Llegas al sur del valle.",
                        "Sigue el camino al norte hasta las Ruinas y la escalera a las Catacumbas.",
                    ], "Portal Valle de las Bestias", "Llegada al valle"),
-        route_jump("el-crisol", "El Crisol", "portal", (164, 47, 7), (83, 85, 0), None, [
+        route_jump("el-crisol", "El Crisol", "portal", (164, 47, 7), (605, 105, 0), None, [
             "Sal del depot a la plaza y entra al portal CRISOL.",
             "Llegas a la Sala del Crisol.",
             "Las tres puertas están al norte: Bronce, Plata y Oro.",
         ], "Portal El Crisol", "Sala del Crisol"),
-        route_jump("wave-arena", "Wave Arena", "portal", (166, 47, 7), (176, 403, 7),
+        route_jump("wave-arena", "Wave Arena", "portal", (166, 47, 7), (606, 223, 7),
                    None, [
                        "Sal del depot a la plaza y entra al portal WAVE ARENA.",
                        "Llegas al campamento.",
                        "El claro de la arena está al norte y se entra con la palanca.",
                    ], "Portal Wave Arena", "Campamento"),
-        route_jump("reloj-de-arena", "Reloj de Arena", "portal", (168, 47, 7), (338, 395, 6),
+        route_jump("reloj-de-arena", "Reloj de Arena", "portal", (168, 47, 7), (605, 327, 6),
                    None, [
                        "Sal del depot a la plaza y entra al portal RELOJ DE ARENA.",
                        "Llegas a la sala del Reloj.",

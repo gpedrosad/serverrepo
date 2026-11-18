@@ -10,7 +10,7 @@
 -- getTopCreature, isMonster.
 
 -- Sala (debe coincidir con scripts/map/generate-sand-clock.py)
-ROOM = {x0 = 333, y0 = 388, x1 = 343, y1 = 396, z = 6}
+ROOM = {x0 = 600, y0 = 320, x1 = 610, y1 = 328, z = 6}
 REST_SEC = 30
 WAVE_SEC = 60
 
@@ -27,15 +27,15 @@ WAVES = {
 
 -- Braseros del norte: el de la oleada N y los anteriores echan fuego.
 BRAZIERS = {
-	{x = 333, y = 388, z = 6}, {x = 334, y = 388, z = 6}, {x = 335, y = 388, z = 6},
-	{x = 341, y = 388, z = 6}, {x = 342, y = 388, z = 6}, {x = 343, y = 388, z = 6},
+	{x = 600, y = 320, z = 6}, {x = 601, y = 320, z = 6}, {x = 602, y = 320, z = 6},
+	{x = 608, y = 320, z = 6}, {x = 609, y = 320, z = 6}, {x = 610, y = 320, z = 6},
 }
 
 SPAWN_SPOTS = {
-	{x = 334, y = 390, z = 6}, {x = 338, y = 390, z = 6}, {x = 342, y = 390, z = 6},
-	{x = 336, y = 391, z = 6}, {x = 340, y = 391, z = 6}, {x = 334, y = 393, z = 6},
-	{x = 342, y = 393, z = 6}, {x = 337, y = 392, z = 6}, {x = 339, y = 392, z = 6},
-	{x = 336, y = 393, z = 6}, {x = 340, y = 393, z = 6},
+	{x = 601, y = 322, z = 6}, {x = 605, y = 322, z = 6}, {x = 609, y = 322, z = 6},
+	{x = 603, y = 323, z = 6}, {x = 607, y = 323, z = 6}, {x = 601, y = 325, z = 6},
+	{x = 609, y = 325, z = 6}, {x = 604, y = 324, z = 6}, {x = 606, y = 324, z = 6},
+	{x = 603, y = 325, z = 6}, {x = 607, y = 325, z = 6},
 }
 
 -- Efectos 7.6

@@ -61,16 +61,20 @@ t = os.time() % (REST_SEC + 6 * WAVE_SEC)   -- 30 + 6*60 = 390
 
 ## Sala
 
+Sala en el **distrito de eventos** (x≥560, lejos del mapa principal): antes flotaba en z6 sobre el
+Valle de las Bestias y se veía superpuesta en RME. Se movió en nov 2026; las casillas viejas se
+borraron con `scripts/map/remove-old-event-areas.py`.
+
 | Coord | Uso |
 |-------|-----|
-| `333–343, 388–396, 6` | Piso de arena (11×9), paredes de arenisca alrededor |
-| `338, 395, 6` | Llegada |
-| `338, 396, 6` | Portal de salida (entre dos estatuas de arenisca) |
-| `339, 396, 6` | Cartel con las reglas |
-| `338, 388, 6` | Chronos (`npc.xml`) |
-| `333–335` y `341–343, 388, 6` | Braseros de las oleadas 1–6 |
-| `335, 392` y `341, 392, 6` | Columnas de arenisca (cobertura) |
-| `325–351, 381–403`, z6 / z5 | Tierra alrededor (bloquea) y techo de madera: desde adentro no se ve negro |
+| `600–610, 320–328, 6` | Piso de arena (11×9), paredes de arenisca alrededor |
+| `605, 327, 6` | Llegada |
+| `605, 328, 6` | Portal de salida (entre dos estatuas de arenisca) |
+| `606, 328, 6` | Cartel con las reglas |
+| `605, 320, 6` | Chronos (`npc.xml`) |
+| `600–602` y `608–610, 320, 6` | Braseros de las oleadas 1–6 |
+| `602, 324` y `608, 324, 6` | Columnas de arenisca (cobertura) |
+| `592–618, 313–335`, z6 / z5 | Tierra alrededor (bloquea) y techo de madera: desde adentro no se ve negro |
 
 ## Implementación
 
@@ -80,7 +84,7 @@ YurOTS actions **no** tienen `addEvent`. El tick global lo lleva el NPC **Chrono
 |------|---------|
 | Mapa | `scripts/map/generate-sand-clock.py` |
 | NPC | `data/npc/chronos.xml` + `data/npc/scripts/chronos.lua` |
-| Spawn | `data/world/npc.xml` → Chronos `338,387,6` |
+| Spawn | `data/world/npc.xml` → Chronos `605,320,6` |
 | C++ | `npc.cpp` / `npc.h` bajo `YUR_NPC_EXT`: `doSummonCreature`, `doRemoveCreature`, `doSendMagicEffect`, `getTopCreature`, `isMonster` |
 
 Bindings nuevos (solo monstruos en remove; nunca player/NPC):

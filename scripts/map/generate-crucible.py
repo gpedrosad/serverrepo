@@ -34,7 +34,10 @@ from roomkit import (LEVER, REPO, SIGN, TELEPORT, WORLD, Checker, Map, Room,  # 
 LUA = REPO / "server/YurOTS/ots/data/actions/scripts/crucible.lua"
 
 Z = 0
-CLEAR_BOX = (70, 70, 195, 105)          # se borra entero (incluye la v2, más grande)
+# Distrito de eventos (x>=560, lejos del mapa principal): las salas no se ven
+# superpuestas en RME ni en el cliente desde la ciudad. Las cajas viejas sobre el
+# mapa (70,70-195,105) se borraron con scripts/map/remove-old-event-areas.py.
+CLEAR_BOX = (592, 90, 717, 125)
 TEMPLE_LANDING = (164, 48, 7)           # llegada del portal Crisol en la plaza
 
 # ---------------------------------------------------------------- piezas
@@ -45,7 +48,7 @@ SKULLS, BLOOD = (5016, 5018), (1903, 1905)
 CARPET = ((4394, 4395, 4396), (4397, 4398, 4399), (4400, 4401, 4402))
 
 # ---------------------------------------------------------------- disposición
-HUB = Room(78, 80, 11, 8, Z)
+HUB = Room(600, 100, 11, 8, Z)
 HUB_STYLE = dict(floor=406, frame=407, walls="stone")
 LANDING = HUB.at(5, 5)
 RETURN_TP = HUB.at(5, 7)
@@ -58,18 +61,18 @@ PADS = {   # columna izquierda de la plataforma 3x2 (filas 1-2); cartel y palanc
 }
 
 ARENA_W, ARENA_H = 11, 9
-ARENA_Y0 = 80
+ARENA_Y0 = 100
 EXIT = (5, 8)
 # llegada del grupo (el primero es el que tira); define el tamaño máximo del grupo
 ARRIVALS = [(5, 6), (4, 6), (6, 6), (5, 5), (4, 5), (6, 5), (3, 6)]   # = plataforma 3x2 + el que tira
 # SPAWNS[0] = elite/boss sobre el estrado; el resto, el pack en la mitad norte
 SPAWNS = [(5, 1), (3, 2), (7, 2), (1, 1), (9, 1), (4, 3), (6, 3)]
 ARENAS = {
-    "bronze": dict(room=Room(93, ARENA_Y0, ARENA_W, ARENA_H, Z), name="Foso de Arena",
+    "bronze": dict(room=Room(615, ARENA_Y0, ARENA_W, ARENA_H, Z), name="Foso de Arena",
                    floor=231, walls="sand", pillar=1549, guard=1451, brazier=1482, banner=None),
-    "silver": dict(room=Room(108, ARENA_Y0, ARENA_W, ARENA_H, Z), name="Coliseo de Piedra",
+    "silver": dict(room=Room(630, ARENA_Y0, ARENA_W, ARENA_H, Z), name="Coliseo de Piedra",
                    floor=424, walls="stone", pillar=1515, guard=1450, brazier=1482, banner=1870),
-    "gold": dict(room=Room(123, ARENA_Y0, ARENA_W, ARENA_H, Z), name="Trono de Fuego",
+    "gold": dict(room=Room(645, ARENA_Y0, ARENA_W, ARENA_H, Z), name="Trono de Fuego",
                  floor=407, walls="brick", pillar=None, guard=1551, brazier=1486, banner=1812),
 }
 

@@ -16,20 +16,24 @@ monstruos no miraba el vestíbulo, donde estaban las palancas.
 
 ## Mapa (z7, todo generado)
 
+Campamento y claro viven en el **distrito de eventos** (x≥560, lejos del mapa principal): no se ven
+superpuestos en RME sobre las hunts del sur. Se movieron en nov 2026 (antes estaban junto al valle);
+las casillas viejas se borraron con `scripts/map/remove-old-event-areas.py`.
+
 | Sala | Caja interior | Estilo |
 |------|---------------|--------|
-| Campamento (**PZ**), 9x5 | `172,400 – 180,404` | bambú, piso de barro, plataforma de madera 3x2, fogatas, arbustos |
-| Claro, 13x11 | `170,385 – 182,395` | bambú, pasto con textura, barro al centro, selva cerrando las 4 esquinas, tocones y arbustos de cobertura |
+| Campamento (**PZ**), 9x5 | `602,220 – 610,224` | bambú, piso de barro, plataforma de madera 3x2, fogatas, arbustos |
+| Claro, 13x11 | `600,205 – 612,215` | bambú, pasto con textura, barro al centro, selva cerrando las 4 esquinas, tocones y arbustos de cobertura |
 
 | Qué | Dónde |
 |-----|-------|
-| Llegada desde el templo | `176,403` (campamento) |
-| TP al templo | `176,404` |
-| Plataforma de grupo | `175–177, 401–402` |
-| Palanca inicio `7100` / ranking `7101` | `176,400` / `179,400` (carteles a su izquierda) |
-| Llegada del grupo al claro | filas `393–394` alrededor de `176,394` |
-| Palanca siguiente `7102` / retirarse `7103` | `175,395` / `177,395` (cartel `176,395`) |
-| Spawns | borde norte y costados del claro (16 puntos; el 1º, `176,386`, es el del jefe) |
+| Llegada desde el templo | `606,223` (campamento) |
+| TP al templo | `606,224` |
+| Plataforma de grupo | `605–607, 221–222` |
+| Palanca inicio `7100` / ranking `7101` | `606,220` / `609,220` (carteles a su izquierda) |
+| Llegada del grupo al claro | filas `213–214` alrededor de `606,214` |
+| Palanca siguiente `7102` / retirarse `7103` | `605,215` / `607,215` (cartel `606,215`) |
+| Spawns | borde norte y costados del claro (16 puntos; el 1º, `606,206`, es el del jefe) |
 
 Bambú (medido en el mapa): poste `3425`, horizontal `3426`, vertical `3423`, esquina SE `3429`.
 

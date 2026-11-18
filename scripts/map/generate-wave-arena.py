@@ -32,7 +32,10 @@ from roomkit import (LEVER, REPO, SIGN, TELEPORT, WORLD, Checker, Map, Room,  # 
 LUA = REPO / "server/YurOTS/ots/data/actions/scripts/wave_arena.lua"
 
 Z = 7
-CLEAR_BOX = (165, 380, 190, 410)        # incluye la arena vieja (172-182, 384-396)
+# Distrito de eventos (x>=560, lejos del mapa principal): el claro no aparece
+# superpuesto en RME sobre las hunts del sur. La caja vieja junto al valle
+# (165,380-190,410) se borró con scripts/map/remove-old-event-areas.py.
+CLEAR_BOX = (595, 200, 620, 230)
 TEMPLE_LANDING = (166, 48, 7)           # llegada del portal Wave en la plaza
 
 UID_START, UID_RANK, UID_NEXT, UID_RETIRE = 7100, 7101, 7102, 7103
@@ -47,8 +50,8 @@ CAMPFIRE = 1428
 TORCH_N, TORCH_W = 2059, 2061            # pared horizontal (norte) / vertical (oeste)
 
 # ---------------------------------------------------------------- disposición
-ARENA = Room(170, 385, 13, 11, Z)
-CAMP = Room(172, 400, 9, 5, Z)
+ARENA = Room(600, 205, 13, 11, Z)
+CAMP = Room(602, 220, 9, 5, Z)
 LANDING = CAMP.at(4, 3)
 RETURN_TP = CAMP.at(4, 4)
 PAD = dict(dx=3, dy=1, w=3, h=2)         # plataforma de grupo en el campamento

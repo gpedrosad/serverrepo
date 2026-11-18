@@ -51,6 +51,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | `temple-portals.py` | Plaza del templo con todos los portales + reapunta vueltas (correr después de cualquier generador de zona) |
 | `generate-natural-island.py` | Isla natural: herradura con sendero, 3 campamentos Cyclops y cueva de 4 salas; escribe mapa, spawns, carteles y manifiesto (`--dry-run --preview`) |
 | `generate-sand-clock.py` | Reloj de Arena OTBM (portal en la plaza: `temple-portals.py`) |
+| `remove-old-event-areas.py` | Borra las casillas viejas del Crisol / Wave Arena / Reloj de Arena (previas al distrito de eventos x>=560; eran vacío en el mapa original) |
 | `generate-wave-arena.py` | Wave Arena v2 (Claro de la Selva): campamento PZ + claro 13x11, carteles y bloque `LAYOUT` de `wave_arena.lua` (`--dry-run --png`) |
 | `generate-beast-valley.py` | Valle de las Bestias (portal 158,47,7; reemplazó al hunt maze) |
 | `generate-minotaur-isle.py` | Islote del Minotauro: islote junto al muelle con puente + cuevas z10–z12 (`--dry-run --png`) |
