@@ -14,6 +14,7 @@ estado: publicado
 - La **entrada de la cueva** (portal en la punta oeste del islote) lleva a tres pisos de cueva.
 - Cada piso es **más fuerte** que el anterior, y dentro de cada piso los más fuertes están al fondo.
 - No cuesta nada. Los monstruos dan su exp y su botín normal.
+- Desde la orilla norte del islote, un **puente nuevo** cruza a la isla del Castillo Imperial y, desde ahí, a la [[torre-del-puente]].
 
 ## Los pisos
 
@@ -51,5 +52,7 @@ Flechas rojas = camino. Fotos del mapa real, paso por paso.
 
 ## Relacionado
 
+- [[torre-del-puente]]
+- [[castillo-imperial]]
 - [[valle-de-las-bestias]]
 - [[monstruos-furiosos]]

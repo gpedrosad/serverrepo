@@ -25,6 +25,8 @@ estado: publicado
 3. Estás en la isla. La puerta del castillo está en su pared sur.
 4. Las escaleras suben por los 6 pisos; el trono está en la sala del trono.
 
+También puedes llegar caminando: desde el [[islote-del-minotauro]] cruza el puente de madera de su orilla norte. Desde la orilla este de la isla sale otro puente a la [[torre-del-puente]].
+
 > **Mapa:** [Ver la ruta marcada en el mapa](http://192.168.1.17:8077/monstruos.html#r=castillo-imperial) (red local).
 
 ## Pisos

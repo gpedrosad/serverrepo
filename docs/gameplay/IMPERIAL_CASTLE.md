@@ -10,6 +10,10 @@ pisos con monstruos sueltos. Ahora son seis pisos de dificultad creciente, cinco
 Desde el torreón del noroeste de la ciudad sale un puente en el piso 6. Al final hay una trampilla que baja a la
 isla (`115, 39, 7`). La puerta del castillo está en su pared sur (`102–103, 39, 7`).
 
+Desde nov 2026 también se llega a pie desde el Islote del Minotauro por un puente de madera (`103–104,
+48–50, 7`), y desde la orilla este de la isla sale otro puente a la Torre del Puente
+([MAPEAR_TORRE_PUENTE.md](../items-and-map/MAPEAR_TORRE_PUENTE.md)).
+
 ## Pisos
 
 Caja: x 88–112, y 25–39 (25×15). Los pisos 4 y 3 son más chicos. Cada escalera queda en la punta opuesta a la

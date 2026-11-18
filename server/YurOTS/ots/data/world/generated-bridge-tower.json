@@ -1,0 +1,226 @@
+{
+  "name": "Torre del Puente",
+  "box": [
+    117,
+    42,
+    124,
+    48
+  ],
+  "floors": [
+    7,
+    6,
+    5,
+    4,
+    3,
+    2
+  ],
+  "gates": [
+    [
+      117,
+      46
+    ],
+    [
+      117,
+      47
+    ]
+  ],
+  "sign": [
+    112,
+    45,
+    7
+  ],
+  "stairs": {
+    "z7": [
+      122,
+      44
+    ],
+    "z6": [
+      119,
+      44
+    ],
+    "z5": [
+      122,
+      44
+    ],
+    "z4": [
+      119,
+      44
+    ],
+    "z3": [
+      122,
+      44
+    ]
+  },
+  "bridges": {
+    "puente del rio": [
+      113,
+      46,
+      116,
+      47
+    ],
+    "castillo-islote": [
+      103,
+      48,
+      104,
+      50
+    ]
+  },
+  "monsters": {
+    "z7": [
+      {
+        "name": "Pirate Marauder",
+        "pos": [
+          123,
+          47,
+          7
+        ],
+        "respawn": 120
+      },
+      {
+        "name": "Pirate Marauder",
+        "pos": [
+          120,
+          43,
+          7
+        ],
+        "respawn": 120
+      },
+      {
+        "name": "Blood Crab",
+        "pos": [
+          121,
+          47,
+          7
+        ],
+        "respawn": 120
+      }
+    ],
+    "z6": [
+      {
+        "name": "Pirate Cutthroat",
+        "pos": [
+          118,
+          47,
+          6
+        ],
+        "respawn": 150
+      },
+      {
+        "name": "Pirate Buccaneer",
+        "pos": [
+          123,
+          47,
+          6
+        ],
+        "respawn": 150
+      },
+      {
+        "name": "Quara Constrictor",
+        "pos": [
+          120,
+          45,
+          6
+        ],
+        "respawn": 150
+      }
+    ],
+    "z5": [
+      {
+        "name": "Drowned Sailor",
+        "pos": [
+          118,
+          47,
+          5
+        ],
+        "respawn": 200
+      },
+      {
+        "name": "Drowned Sailor",
+        "pos": [
+          123,
+          47,
+          5
+        ],
+        "respawn": 200
+      },
+      {
+        "name": "Pirate Corsair",
+        "pos": [
+          120,
+          45,
+          5
+        ],
+        "respawn": 200
+      }
+    ],
+    "z4": [
+      {
+        "name": "Quara Mantassin",
+        "pos": [
+          118,
+          47,
+          4
+        ],
+        "respawn": 300
+      },
+      {
+        "name": "Water Elemental",
+        "pos": [
+          123,
+          47,
+          4
+        ],
+        "respawn": 300
+      },
+      {
+        "name": "Tide Priest",
+        "pos": [
+          120,
+          45,
+          4
+        ],
+        "respawn": 300
+      }
+    ],
+    "z3": [
+      {
+        "name": "Quara Hydromancer",
+        "pos": [
+          118,
+          47,
+          3
+        ],
+        "respawn": 400
+      },
+      {
+        "name": "Bog Raider",
+        "pos": [
+          123,
+          47,
+          3
+        ],
+        "respawn": 400
+      }
+    ],
+    "z2": [
+      {
+        "name": "Quara Pincher",
+        "pos": [
+          118,
+          47,
+          2
+        ],
+        "respawn": 450
+      },
+      {
+        "name": "Quara Predator",
+        "pos": [
+          121,
+          45,
+          2
+        ],
+        "respawn": 900
+      }
+    ]
+  }
+}

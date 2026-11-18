@@ -106,4 +106,7 @@
 	<readable x="146" y="334" z="7" text="NAVE DE LA CATEDRAL\nSolo monjes y muertos\nrezan aca."/>
 	<readable x="151" y="334" z="7" text="CATEDRAL OSCURA\nAl norte, la nave.\nBajadas a la cripta: en la jungla\ny junto a la sala gris.\nEste portal vuelve al templo."/>
 	<!-- END DARK_CATHEDRAL_SIGNS -->
+	<!-- BEGIN BRIDGE_TOWER_SIGNS -->
+	<readable x="112" y="45" z="7" text="TORRE DEL PUENTE\n6 pisos en medio del rio.\nPiratas abajo, quaras y ahogados arriba,\ncada piso mas fuerte."/>
+	<!-- END BRIDGE_TOWER_SIGNS -->
 </readables>

@@ -30,6 +30,7 @@ a menos de 3 casillas del puente, y cada tipo nuevo entra mezclado con el anteri
 | Qué | Pos |
 |-----|-----|
 | Puente (piso de madera 405) | `113–114, 56–58, 7`, sale del muelle (fila 59) |
+| Puente al Castillo (nov 2026) | `103–104, 48–50, 7`, a la isla del Castillo Imperial; lo arma `generate-bridge-tower.py` ([MAPEAR_TORRE_PUENTE.md](MAPEAR_TORRE_PUENTE.md)) |
 | Entrada de la cueva (portal) | `100, 53, 7` → `108, 53, 10` |
 | Vuelta (al lado de la llegada en z10) | `109, 53, 10` → `102, 53, 7` |
 | Escalera z10 → z11 | `128, 41` |
