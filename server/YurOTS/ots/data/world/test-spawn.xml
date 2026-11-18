@@ -781,9 +781,6 @@
 	<spawn centerx="87" centery="93" centerz="7" radius="1">
 		<monster name="hydra" x="0" y="0" z="7" spawntime="235" />
 	</spawn>
-	<spawn centerx="93" centery="93" centerz="7" radius="5">
-		<monster name="giant spider" x="3" y="1" z="7" spawntime="235" direction="2" />
-	</spawn>
 	<spawn centerx="190" centery="94" centerz="7" radius="1">
 		<monster name="kongra" x="0" y="0" z="7" spawntime="175" />
 	</spawn>
@@ -5846,4 +5843,20 @@
 		<monster name="Black Dragon" x="0" y="0" z="7" spawntime="300" />
 	</spawn>
 	<!-- END DRAGON_SPOT_SPAWNS -->
+	<!-- BEGIN IMPERIAL_CRYPT_SPAWNS (scripts/map/generate-imperial-crypt.py) -->
+	<spawn centerx="92" centery="100" centerz="8" radius="3">
+		<monster name="Imperial Squire" x="2" y="0" z="8" spawntime="100" />
+	</spawn>
+	<spawn centerx="101" centery="95" centerz="8" radius="3">
+		<monster name="Imperial Archer" x="1" y="-1" z="8" spawntime="100" />
+	</spawn>
+	<spawn centerx="96" centery="107" centerz="8" radius="3">
+		<monster name="Court Mage" x="-2" y="1" z="8" spawntime="170" />
+		<monster name="Imperial Hero" x="-2" y="-1" z="8" spawntime="170" />
+	</spawn>
+	<spawn centerx="109" centery="92" centerz="8" radius="3">
+		<monster name="Court Mage" x="2" y="1" z="8" spawntime="170" />
+		<monster name="Imperial Hero" x="1" y="1" z="8" spawntime="170" />
+	</spawn>
+	<!-- END IMPERIAL_CRYPT_SPAWNS -->
 </spawns>

@@ -112,4 +112,7 @@
 	<!-- BEGIN DRAGON_SPOT_SIGNS -->
 	<readable x="103" y="84" z="7" text="SPOT DEL DRAGON NEGRO\nBaja por el agujero y sigue el tunel.\nSi te aprieta, pisa la trampilla y vuelve a subir."/>
 	<!-- END DRAGON_SPOT_SIGNS -->
+	<!-- BEGIN IMPERIAL_CRYPT_SIGNS -->
+	<readable x="95" y="91" z="7" text="CRIPTA IMPERIAL\nSquires y arqueros custodian la entrada.\nHeroes imperiales al fondo."/>
+	<!-- END IMPERIAL_CRYPT_SIGNS -->
 </readables>

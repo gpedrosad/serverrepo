@@ -1,0 +1,73 @@
+{
+  "name": "generated-imperial-crypt",
+  "seed": 7,
+  "version": 1,
+  "box": {
+    "x1": 90,
+    "y1": 91,
+    "x2": 113,
+    "y2": 112,
+    "z": [
+      8
+    ]
+  },
+  "mouth": {
+    "x": 94,
+    "y": 92,
+    "z": 7,
+    "platform": [
+      415
+    ],
+    "sign": [
+      1429
+    ]
+  },
+  "walkable": 228,
+  "spawns": 4,
+  "monsters": 6,
+  "monstersByKind": {
+    "Court Mage": 2,
+    "Imperial Archer": 1,
+    "Imperial Hero": 2,
+    "Imperial Squire": 1
+  },
+  "densityTilesPerMonster": 38,
+  "rockFilled": 156,
+  "stages": [
+    {
+      "names": [
+        "Imperial Squire",
+        "Imperial Archer"
+      ],
+      "per": 1,
+      "spawntime": 100,
+      "gap": 12
+    },
+    {
+      "names": [
+        "Imperial Archer",
+        "Court Mage"
+      ],
+      "per": 1,
+      "spawntime": 120,
+      "gap": 12
+    },
+    {
+      "names": [
+        "Court Mage",
+        "Imperial Hero"
+      ],
+      "per": 2,
+      "spawntime": 170,
+      "gap": 11
+    },
+    {
+      "names": [
+        "Imperial Hero"
+      ],
+      "per": 2,
+      "spawntime": 235,
+      "gap": 11
+    }
+  ]
+}
