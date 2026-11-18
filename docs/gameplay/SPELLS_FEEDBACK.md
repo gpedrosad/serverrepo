@@ -49,6 +49,11 @@ Frenzy / Rapid Fire ([SPELL_ATTACK_SPEED.md](SPELL_ATTACK_SPEED.md)).
 | Cliente `clienteretro`: `modules/game_inventory/inventory.lua` | Tabla `TimedIcons`: nombres del hechizo (para "ready again"), patrón del mensaje de inicio (con los segundos), mensajes de fin, imagen y tooltip. Por ícono guarda `active` (efecto) y `ready` (espera); los segundos se ven sobre el ícono |
 | Cliente: `data/images/game/states/` | `counter_stance`, `blood_ritual`, `seed_of_life`, `rescue`, `piercing_volley`, `cleanse`, `chain_lightning`, `field_detonation`, `skill_buff` (tajo del `exori gran`), `echo` (nota violeta del Eco) (`.png` 18×18, hechos con un cuadro de cada efecto). Frenzy / Rapid Fire usan `strengthened` |
 
+**Cómo escucha el cliente:** con `registerMessageMode(modo, callback)` para todos los `MessageModes`. En este
+cliente `g_game.onTextMessage` es la función de `gamelib/textmessages.lua` que reparte por tipo de mensaje;
+con `connect(g_game, { onTextMessage = ... })` el ícono nunca recibía nada (pasó con Frenzy y con la primera
+versión de estos íconos, 18 nov 2026: en el banco de Lua andaba y en el cliente real no).
+
 **No cambiar los textos que prenden o apagan un ícono sin cambiar `TimedIcons` en el cliente.** Un cliente sin
 actualizar ve los avisos y los efectos, pero no los íconos.
 
