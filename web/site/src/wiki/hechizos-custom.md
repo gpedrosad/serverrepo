@@ -87,7 +87,7 @@ estado: publicado
 
 ## Espera, ícono y polvo
 
-- Los hechizos con **espera propia** (Frenzy, Rapid Fire, Rescue, Counter Stance, Piercing Volley, Seed of Life, Cleanse, Chain Lightning, Blood Ritual y Field Detonation) dejan un **ícono** en tu barra de estado.
+- Los hechizos con **espera o duración propia** (Frenzy, Rapid Fire, Skill Buff, Sharpshooter, Eco, Rescue, Counter Stance, Piercing Volley, Seed of Life, Cleanse, Chain Lightning, Blood Ritual y Field Detonation) dejan un **ícono** en tu barra de estado, donde sale el escudo de `utamo vita`. Pasa el mouse por encima para ver qué es.
 - Mientras dura el efecto, el ícono está **encendido** con los segundos que quedan. Después queda **apagado**, con los segundos que faltan para volver a usarlo.
 - Si lo intentas antes de tiempo, sale **polvo** sobre tu personaje y el mensaje "You can use it again in N s.". También sale polvo cuando el hechizo no tiene sobre qué actuar (sin monstruos que rescatar, nada que limpiar, sin campos).
 

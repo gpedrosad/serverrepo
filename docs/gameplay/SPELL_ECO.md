@@ -11,7 +11,9 @@ solo**, más débil. Nov 2026.
    agrega espera.
 3. Si cambiaste de blanco o quedó fuera de alcance o detrás de una pared, el eco se pierde
    ("The echo fades").
-4. El Eco se puede volver a lanzar a los **25 s**. Antes avisa "Echo is ready in N s" y no cobra.
+4. El Eco se puede volver a lanzar a los **25 s**. Antes avisa "You can use it again in N s." con polvo y no cobra.
+   Al lanzarlo el cliente muestra el ícono `echo` (encendido mientras espera el golpe, apagado hasta poder
+   relanzarlo; ver [SPELLS_FEEDBACK.md](SPELLS_FEEDBACK.md)).
 
 | | |
 |---|---|

@@ -4729,6 +4729,7 @@ void Game::checkCreature(unsigned long id)
 					player->tempoBuffBonus = 0;
 					// Drop the +skills from the client UI so the next cast is obvious.
 					player->sendSkills();
+					player->sendTextMessage(MSG_SMALLINFO, "Your skills return to normal.");
 				}
 			}
 		}

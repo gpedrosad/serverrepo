@@ -2712,8 +2712,8 @@ int SpellScript::luaActionEchoReady(lua_State *L)
 			left = (it->second.readyAt - OTSYS_TIME() + 999) / 1000;
 		if(left > 0) {
 			std::stringstream msg;
-			msg << "Echo is ready in " << left << " s.";
-			player->sendTextMessage(MSG_SMALLINFO, msg.str().c_str(), player->pos, NM_ME_PUFF);
+			msg << "You can use it again in " << left << " s.";
+			spellFail(spell->game, player, msg.str());
 		}
 	}
 	lua_pushnumber(L, (double)left);
@@ -2748,6 +2748,13 @@ int SpellScript::luaActionStartEcho(lua_State *L)
 	st.readyAt = now + cooldown * 1000;
 	st.scale = scale;
 	st.pvpScale = pvpScale;
+	// Ícono del cliente: encendido mientras espera el golpe, apagado hasta poder relanzarlo.
+	std::stringstream ready;
+	ready << spellTitle(spell->getName()) << ": ready again in " << cooldown << " s.";
+	player->sendTextMessage(MSG_SMALLINFO, ready.str().c_str());
+	std::stringstream msg;
+	msg << "Your next strike will echo for " << window << " s.";
+	player->sendTextMessage(MSG_INFO, msg.str().c_str());
 	lua_pushboolean(L, true);
 	return 1;
 }
@@ -2828,6 +2835,7 @@ void SpellScript::onPlayerSpellCast(Game* game, Player* player, Spell* spell, co
 	game->addEvent(makeTask(ECHO_DELAY_MS, boost::bind(&SpellScript::castEcho, _1, player->getID(),
 		instant->getWords(), var, (unsigned long)player->attackedCreature, it->second.scale, it->second.pvpScale)));
 	sendSpellMagicEffect(game, player->pos, ECHO_EFFECT);
+	player->sendTextMessage(MSG_SMALLINFO, "Your strike echoes.");   // el cliente apaga el ícono del Eco
 }
 
 // La repetición: el mismo hechizo, sin maná ni espera, con el daño escalado. Si el jugador cambió de
@@ -3170,6 +3178,10 @@ int SpellScript::luaActionSkillBuff(lua_State *L)
 		player->tempoBuffTicks = time;
 		player->tempoBuffBonus = bonus;
 		player->sendSkills();
+		// el cliente prende el ícono con este texto y lo apaga con "Your skills return to normal." (game.cpp)
+		std::stringstream msg;
+		msg << "Your skills rise by " << bonus << " for " << spellSeconds(time) << " s.";
+		player->sendTextMessage(MSG_INFO, msg.str().c_str());
 	}
 	return 0;
 }

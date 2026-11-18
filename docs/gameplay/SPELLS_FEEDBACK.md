@@ -29,6 +29,13 @@ Frenzy / Rapid Fire ([SPELL_ATTACK_SPEED.md](SPELL_ATTACK_SPEED.md)).
   jugador, que lo ven todos (antes sólo lo veía él, en Frenzy). El mismo polvo sale cuando el hechizo no
   hace nada: sin monstruos que rescatar, nada que limpiar, sin campos, blanco que no sirve, otro piso, PZ o
   poca vida en Blood Ritual (`spellFail` en `spells.cpp`).
+- **Dónde se ve:** en los tres paneles de condiciones del cliente, igual que el escudo de `utamo vita`: la
+  barra de arriba (`game_topbar`), la ventana Health Info (`game_healthinfo`) y el inventario. Antes (18 nov,
+  primera versión) sólo iba al del inventario, que en el layout `retro` no se ve.
+- **También `utito tempo` / `utito tempo san` y el Eco (`utevo vis`):** "Your skills rise by 30 for 10 s." →
+  "Your skills return to normal." (ícono `skill_buff`); "Your next strike will echo for 6 s." → "Your strike
+  echoes." / "The echo fades." (ícono `echo`) y "Echo: ready again in 25 s.". El reintento del Eco ahora dice
+  "You can use it again in N s." con polvo, como los demás.
 - El server guarda los nombres en minúscula; el aviso los pasa a mayúscula (`spellTitle`) y el cliente
   compara sin distinguir.
 
@@ -40,7 +47,7 @@ Frenzy / Rapid Fire ([SPELL_ATTACK_SPEED.md](SPELL_ATTACK_SPEED.md)).
 | `source/playerstates.h` / `game.cpp` (`applyCounterStance`) | Counter Stance ahora vence a los `DURATION_S` (antes el Lua lo pasaba pero nadie lo usaba: duraba hasta recibir los 2 golpes) |
 | `source/magic.cpp` (`getMagicEffect`) | Arreglo del efecto, ver abajo |
 | Cliente `clienteretro`: `modules/game_inventory/inventory.lua` | Tabla `TimedIcons`: nombres del hechizo (para "ready again"), patrón del mensaje de inicio (con los segundos), mensajes de fin, imagen y tooltip. Por ícono guarda `active` (efecto) y `ready` (espera); los segundos se ven sobre el ícono |
-| Cliente: `data/images/game/states/` | `counter_stance`, `blood_ritual`, `seed_of_life`, `rescue`, `piercing_volley`, `cleanse`, `chain_lightning`, `field_detonation` (`.png` 18×18, hechos con un cuadro de cada efecto). Frenzy / Rapid Fire usan `strengthened` |
+| Cliente: `data/images/game/states/` | `counter_stance`, `blood_ritual`, `seed_of_life`, `rescue`, `piercing_volley`, `cleanse`, `chain_lightning`, `field_detonation`, `skill_buff` (tajo del `exori gran`), `echo` (nota violeta del Eco) (`.png` 18×18, hechos con un cuadro de cada efecto). Frenzy / Rapid Fire usan `strengthened` |
 
 **No cambiar los textos que prenden o apagan un ícono sin cambiar `TimedIcons` en el cliente.** Un cliente sin
 actualizar ve los avisos y los efectos, pero no los íconos.
