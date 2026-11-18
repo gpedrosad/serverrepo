@@ -146,7 +146,9 @@ Paredes de tierra `356–367` (`WALL_SIDE`, `WALL_CORNER`, `WALL_INNER` en `gene
   agarrables se tiran. Las piedras/musgo de 2x2 se dibujan hacia arriba-izquierda: solo donde tapan pared.
 - **Huesos enteros, no piezas del esqueleto de dragón.** `2247` (cabeza), `3122`–`3127` (garra, costillas,
   cola, cráneo) son partes de un esqueleto grande de varias casillas: sueltos se ven cortados. Para el
-  suelo: `2248` (calavera con huesos), `2320` (calavera), `3121`, `3133` (esqueleto).
+  suelo: `2248` (calavera con huesos), `2320` (calavera), `3121`, `3133` (esqueleto). El `3125`
+  (dragon skeleton) **no se usa más**: las 124 que había sueltas en todo el mapa se sacaron el 18 nov 2026
+  con `scripts/map/remove-dragon-skeletons.py` y ningún generador la coloca.
 - Validar pieza por pieza, vacío a la vista, recorrido y escaleras antes de escribir. Ejemplo completo:
   [MAPEAR_DUNGEON_CITY.md](MAPEAR_DUNGEON_CITY.md).
 - **Techo:** encima de toda cueva tiene que haber algo con suelo (roca `101` alcanza). Ver [Techo](#techo).
@@ -191,6 +193,7 @@ Un generador nuevo con muebles tiene que traer las mismas comprobaciones.
 | El mapa no cargaba por una calavera 2320 | Los apilables llevan byte de cantidad (`NEEDS_COUNT`); correr `check-map-load.py` |
 | El Foso Olvidado y la Cueva del Minotauro (debajo de la vieja Arena PvP): desde z10 se veían las cuevas de z8 encima (16 nov 2026) | El piso de arriba (z9) estaba vacío. Ver [Techo](#techo) |
 | Valle de las Bestias: cabezas y garras de dragón cortadas en el suelo (2247, 3125, 3122) (nov 2026) | Son piezas del esqueleto grande; usar huesos enteros (ver [Cuevas](#cuevas)) |
+| Dragon skeleton (3125) suelto en TODO el mapa: 124 casillas, de las cuevas del norte a la Yerma (18 nov 2026) | Misma regla: pieza cortada, no hueso entero. Sacadas con `scripts/map/remove-dragon-skeletons.py`; los generadores ya no la colocan (ver [Cuevas](#cuevas)) |
 | Dungeon de la city: vacío negro al costado, rocas peladas sin borde, salones cuadrados vacíos y fogata encima de la escalera de mano (nov 2026) | Ver [Cuevas](#cuevas) y [MAPEAR_DUNGEON_CITY.md](MAPEAR_DUNGEON_CITY.md#errores-que-ya-pasaron-arreglados-16-nov-2026) |
 | Dark Cathedral: piedra aleatoria en mitad del pasillo H2 (`145,328,8`) dejó el ala oeste de la cripta (274 casillas, con la bajada B) colgando de UNA casilla (18 nov 2026) | Los escombros bloqueantes se validan al colocar (patrón `decorate_cave`): nunca en mitad de un paso (vecinos pisables en ambos ejes) ni donde corten el único acceso |
 | Dark Cathedral: la antecámara J del -1 era un cuadrado de tierra sin paredes pegado a la roca lisa, y los pasillos de al lado también perdieron la pared (18 nov 2026) | La cueva tapaba con roca las paredes de ladrillo de su caja. J pasó a ser cámara de la cueva; validar que ningún piso toque un `101` solo. Ver [DARK_CATHEDRAL.md](DARK_CATHEDRAL.md#patrón-descartado-sala-cuadrada-de-tierra-pegada-a-la-cueva-18-nov-2026) |

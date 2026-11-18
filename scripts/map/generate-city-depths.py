@@ -65,7 +65,7 @@ LANDING_R = 2.2                             # radio del rellano de cada escalera
 
 # decoración fija: nada se mueve ni se levanta (se podría empujar para trabar el paso o tirar)
 SKULLS = (2247, 2248, 5016, 5018)           # calaveras sueltas (no bloquean)
-BONES = (3125,)                             # esqueleto de dragón chico (no bloquea)
+BONES = (2248,)                             # huesos enteros (no bloquean); 3125 ya no se usa (nov 2026)
 BIG_BONES = 3122                            # esqueleto de dragón grande (bloquea)
 PEBBLES = 1336                              # piedritas (no bloquean)
 STONES = (1285, 1309, 1323)                 # piedras (bloquean)

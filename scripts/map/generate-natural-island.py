@@ -74,7 +74,7 @@ SMALL = (4158, 2740, 4179, 4150, 4183)                       # flores, hongos, m
 HOLE_ID, LADDER = 469, 1386                                  # la escalera sale a x, y+1, z-1
 TELEPORT, SIGN, CAMPFIRE = NP.TELEPORT, NP.SIGN, NP.CAMPFIRE
 STONE = NP.STONE
-BONES, SKULL = (3125, 2248), 2247                            # no bloquean
+BONES, SKULL = (2248, 2320), 2247                            # no bloquean; 3125 ya no se usa (nov 2026)
 
 # --- recorrido de la superficie (coordenadas locales) ---------------------------------------------
 CENTER = (24.5, 21.0)                       # centro de la herradura (la laguna)
