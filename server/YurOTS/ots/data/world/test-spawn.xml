@@ -270,17 +270,15 @@
 		<monster name="witch" x="-2" y="0" z="6" spawntime="60" direction="2" />
 		<monster name="vampire" x="-3" y="5" z="6" spawntime="235" direction="2" />
 	</spawn>
+	<!-- Quest Boots of Haste (128-135, 62-65), z6: Imperial Hero -> Black Dragon -> Dark Hydra (cofre final). docs/gameplay/QUEST_BOOTS_OF_HASTE.md -->
 	<spawn centerx="129" centery="63" centerz="6" radius="1">
-		<monster name="Enraged Hydra" x="-1" y="0" z="6" spawntime="175" />
-		<monster name="Enraged Hydra" x="0" y="0" z="6" spawntime="175" />
+		<monster name="Dark Hydra" x="-1" y="0" z="6" spawntime="300" />
 	</spawn>
 	<spawn centerx="131" centery="63" centerz="6" radius="1">
-		<monster name="Enraged Vampire" x="0" y="0" z="6" spawntime="175" />
-		<monster name="Enraged Vampire" x="1" y="0" z="6" spawntime="175" />
+		<monster name="Black Dragon" x="0" y="0" z="6" spawntime="300" />
 	</spawn>
 	<spawn centerx="134" centery="63" centerz="6" radius="1">
-		<monster name="Angry Giant Spider" x="0" y="0" z="6" spawntime="175" />
-		<monster name="Angry Giant Spider" x="0" y="1" z="6" spawntime="175" />
+		<monster name="Imperial Hero" x="0" y="0" z="6" spawntime="300" />
 	</spawn>
 	<spawn centerx="108" centery="65" centerz="6" radius="5">
 		<monster name="elf" x="-1" y="-1" z="6" spawntime="175" direction="2" />
@@ -670,18 +668,17 @@
 		<monster name="elf" x="0" y="5" z="7" spawntime="175" />
 		<monster name="elf" x="5" y="5" z="7" spawntime="175" />
 	</spawn>
+	<!-- Quest Boots of Haste, z7: Mutated Tiger -> Emerald Scarab -> Ice Spider -> 2 Hellhound (cofre). docs/gameplay/QUEST_BOOTS_OF_HASTE.md -->
 	<spawn centerx="128" centery="63" centerz="7" radius="1">
-		<monster name="Angry Orc Berserker" x="0" y="0" z="7" spawntime="175" />
-		<monster name="Angry Orc Berserker" x="1" y="0" z="7" spawntime="175" />
-		<monster name="Angry Orc Berserker" x="0" y="1" z="7" spawntime="175" />
-		<monster name="Angry Orc Berserker" x="1" y="1" z="7" spawntime="175" />
+		<monster name="Hellhound" x="0" y="0" z="7" spawntime="200" />
+		<monster name="Hellhound" x="0" y="1" z="7" spawntime="200" />
 	</spawn>
 	<spawn centerx="130" centery="63" centerz="7" radius="1">
-		<monster name="Furious Cyclops" x="1" y="1" z="7" spawntime="175" />
+		<monster name="Ice Spider" x="1" y="1" z="7" spawntime="200" />
 	</spawn>
 	<spawn centerx="134" centery="63" centerz="7" radius="1">
-		<monster name="Angry Minotaur Guard" x="-1" y="0" z="7" spawntime="175" />
-		<monster name="Angry Troll" x="1" y="0" z="7" spawntime="175" />
+		<monster name="Emerald Scarab" x="-1" y="0" z="7" spawntime="200" />
+		<monster name="Mutated Tiger" x="1" y="0" z="7" spawntime="200" />
 	</spawn>
 	<spawn centerx="64" centery="68" centerz="7" radius="12">
 		<monster name="demon skeleton" x="-3" y="-9" z="7" spawntime="235" direction="2" />
