@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<monster name="Stone Troll" level="45" maglevel="40" experience="90" pushable="0" armor="32" defense="34" canpushitems="1" staticattack="50" changetarget="200" speed="112">
+	<health now="160" max="160"/>
+	<look type="253" head="20" body="30" legs="40" feet="50" corpse="2806"/>
+	<combat targetdistance="1" runonhealth="0"/>
+
+<attacks>
+	<attack type="melee" mindamage="20" maxdamage="55" probability="100"/>
+	<attack type="distance" name="smallstone" mindamage="12" maxdamage="30" cycleticks="2500" probability="30"/>
+</attacks>
+
+<defenses>
+	<defense immunity="drunk"/>
+</defenses>
+
+<voices>
+	<voice sentence="Hmmm, rocks"/>
+	<voice sentence="GRANIT!"/>
+	<voice sentence="Unbreakable!"/>
+</voices>
+
+
+<loot>
+ 	<item id="2148" countmax="35" chance1="100000" chancemax="0"/>
+ 	<item id="1294" countmax="3" chance1="40000" chancemax="0"/>
+ 	<item id="2643" chance="15000"/>
+
+ 	<item id="1987" chance="100000">
+ 	<inside>
+ 	<item id="2380" chance="8000"/>
+	<item id="2530" chance="5000"/>
+	<item id="2394" chance="800"/>
+ 	</inside>
+ 	</item>
+</loot>
+</monster>

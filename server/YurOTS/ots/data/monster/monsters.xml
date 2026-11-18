@@ -389,6 +389,14 @@
 <monster name="Furious Stone Golem" file="furious stone golem.xml" />
 <monster name="Enraged Stone Golem" file="enraged stone golem.xml" />
 <monster name="Swamp Troll" file="swamp troll.xml" />
+<monster name="River Troll" file="river troll.xml" />
+<monster name="Angry River Troll" file="angry river troll.xml" />
+<monster name="Furious River Troll" file="furious river troll.xml" />
+<monster name="Enraged River Troll" file="enraged river troll.xml" />
+<monster name="Stone Troll" file="stone troll.xml" />
+<monster name="Angry Stone Troll" file="angry stone troll.xml" />
+<monster name="Furious Stone Troll" file="furious stone troll.xml" />
+<monster name="Enraged Stone Troll" file="enraged stone troll.xml" />
 <monster name="Tarantula" file="tarantula.xml" />
 <monster name="Terror Bird" file="terror bird.xml" />
 <monster name="Tiger" file="tiger.xml" />

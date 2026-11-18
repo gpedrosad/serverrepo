@@ -122,6 +122,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/TRAINING_BONUS_PARCHMENT.md`](gameplay/TRAINING_BONUS_PARCHMENT.md) | Sistema de pergaminos de bonus de training. |
 | [`gameplay/PRIVATE_TRAINER_DUMMY.md`](gameplay/PRIVATE_TRAINER_DUMMY.md) | Private Trainer Dummy: item **`20155`** (clientId kit sofá `2776`), look monstruo trainer monk (`57`). |
 | [`gameplay/PINK_SKULL.md`](gameplay/PINK_SKULL.md) | **Pink Skull**: skull punitiva para bots. Diseño, comando GM, drop total y cambios en el cliente. |
+| [`gameplay/RIVER_STONE_TROLLS.md`](gameplay/RIVER_STONE_TROLLS.md) | **River Troll (252) y Stone Troll (253)**: los dos trolls nuevos del río y las ruinas, con sprites dibujados, spawns y variantes rage. |
 | [`gameplay/ZAGAN_CONSUMABLE_RUNES.md`](gameplay/ZAGAN_CONSUMABLE_RUNES.md) | Runas consumibles Zagan: experience recovery (20131) y training extension (20132). |
 | [`gameplay/TRAINING_ZONE_NO_PVP.md`](gameplay/TRAINING_ZONE_NO_PVP.md) | Zonas de training con flag de no-PvP. |
 | [`gameplay/WANDS.md`](gameplay/WANDS.md) | Wands/rods (11 items), flujo de `useWand()`, escalado de daño por ML, Crimson Wand (20123), tuning `wandmlfactor`. |
