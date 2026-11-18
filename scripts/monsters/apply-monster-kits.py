@@ -99,6 +99,8 @@ KITS = {
     "Worker Golem": ["cannon:ball", "+heal"],
     "Undead Gladiator": ["blade:strike", "dist:throwingstar"],
     "Nightstalker": ["drain:strike", "death:touch", "+haste"],
+    # monstruos custom Retro76
+    "Red Kongra": ["roar:burst", "+haste"],
 }
 
 

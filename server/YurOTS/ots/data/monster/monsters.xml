@@ -273,6 +273,7 @@
 <monster name="Furious Ice Spider" file="furious ice spider.xml" />
 <monster name="Enraged Ice Spider" file="enraged ice spider.xml" />
 <monster name="Kongra" file="kongra.xml" />
+<monster name="Red Kongra" file="red kongra.xml" />
 <monster name="Larva" file="larva.xml" />
 <monster name="Lich" file="lich.xml" />
 <monster name="Angry Lich" file="angry lich.xml" />
