@@ -1,0 +1,283 @@
+{
+  "name": "Torres del Kongra",
+  "towers": [
+    {
+      "key": "claro",
+      "label": "Torre del Kongra",
+      "box": [
+        170,
+        103,
+        7,
+        7
+      ],
+      "floors": [
+        7,
+        6,
+        5
+      ],
+      "door": [
+        170,
+        106,
+        7
+      ],
+      "sign": [
+        169,
+        105,
+        7
+      ],
+      "stairs": {
+        "7": [
+          174,
+          105
+        ],
+        "6": [
+          171,
+          105
+        ]
+      },
+      "monsters": {
+        "7": [
+          {
+            "name": "Kongra",
+            "respawn": 140,
+            "offset": [
+              -2,
+              0
+            ]
+          },
+          {
+            "name": "Kongra",
+            "respawn": 140,
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "6": [
+          {
+            "name": "Red Kongra",
+            "respawn": 180,
+            "offset": [
+              -2,
+              0
+            ]
+          },
+          {
+            "name": "Red Kongra",
+            "respawn": 180,
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "5": [
+          {
+            "name": "Red Kongra",
+            "respawn": 240,
+            "offset": [
+              -2,
+              0
+            ]
+          },
+          {
+            "name": "Red Kongra",
+            "respawn": 240,
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Red Kongra",
+            "respawn": 240,
+            "offset": [
+              2,
+              0
+            ]
+          }
+        ]
+      },
+      "remove_spawns": [
+        [
+          175,
+          103,
+          7
+        ],
+        [
+          172,
+          105,
+          7
+        ]
+      ]
+    },
+    {
+      "key": "sur",
+      "label": "Torre Sur del Kongra",
+      "box": [
+        161,
+        126,
+        7,
+        7
+      ],
+      "floors": [
+        7,
+        6,
+        5
+      ],
+      "door": [
+        167,
+        129,
+        7
+      ],
+      "sign": [
+        168,
+        128,
+        7
+      ],
+      "stairs": {
+        "7": [
+          165,
+          128
+        ],
+        "6": [
+          162,
+          128
+        ]
+      },
+      "monsters": {
+        "7": [
+          {
+            "name": "Kongra",
+            "respawn": 140,
+            "offset": [
+              -2,
+              0
+            ]
+          },
+          {
+            "name": "Kongra",
+            "respawn": 140,
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "6": [
+          {
+            "name": "Red Kongra",
+            "respawn": 200,
+            "offset": [
+              -2,
+              0
+            ]
+          },
+          {
+            "name": "Red Kongra",
+            "respawn": 200,
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "5": [
+          {
+            "name": "Red Kongra",
+            "respawn": 260,
+            "offset": [
+              -2,
+              0
+            ]
+          },
+          {
+            "name": "Red Kongra",
+            "respawn": 260,
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Red Kongra",
+            "respawn": 260,
+            "offset": [
+              2,
+              0
+            ]
+          }
+        ]
+      },
+      "remove_spawns": [
+        [
+          164,
+          132,
+          7
+        ]
+      ]
+    },
+    {
+      "key": "norte",
+      "label": "Atalaya del Kongra",
+      "box": [
+        186,
+        74,
+        5,
+        5
+      ],
+      "floors": [
+        7,
+        6
+      ],
+      "door": [
+        186,
+        76,
+        7
+      ],
+      "sign": [
+        185,
+        75,
+        7
+      ],
+      "stairs": {
+        "7": [
+          189,
+          76
+        ]
+      },
+      "monsters": {
+        "7": [
+          {
+            "name": "Kongra",
+            "respawn": 120,
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "6": [
+          {
+            "name": "Red Kongra",
+            "respawn": 160,
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "name": "Red Kongra",
+            "respawn": 160,
+            "offset": [
+              -1,
+              1
+            ]
+          }
+        ]
+      },
+      "remove_spawns": []
+    }
+  ]
+}

@@ -831,13 +831,7 @@
 	<spawn centerx="70" centery="103" centerz="7" radius="1">
 		<monster name="hydra" x="0" y="0" z="7" spawntime="235" />
 	</spawn>
-	<spawn centerx="175" centery="103" centerz="7" radius="1">
-		<monster name="kongra" x="0" y="0" z="7" spawntime="175" />
-	</spawn>
 	<spawn centerx="192" centery="103" centerz="7" radius="1">
-		<monster name="kongra" x="0" y="0" z="7" spawntime="175" />
-	</spawn>
-	<spawn centerx="172" centery="105" centerz="7" radius="1">
 		<monster name="kongra" x="0" y="0" z="7" spawntime="175" />
 	</spawn>
 	<spawn centerx="166" centery="106" centerz="7" radius="1">
@@ -949,9 +943,6 @@
 		<monster name="kongra" x="0" y="0" z="7" spawntime="175" />
 	</spawn>
 	<spawn centerx="155" centery="132" centerz="7" radius="1">
-		<monster name="kongra" x="0" y="0" z="7" spawntime="175" />
-	</spawn>
-	<spawn centerx="164" centery="132" centerz="7" radius="1">
 		<monster name="kongra" x="0" y="0" z="7" spawntime="175" />
 	</spawn>
 	<spawn centerx="63" centery="133" centerz="7" radius="5">
@@ -5859,4 +5850,39 @@
 		<monster name="Imperial Hero" x="1" y="1" z="8" spawntime="170" />
 	</spawn>
 	<!-- END IMPERIAL_CRYPT_SPAWNS -->
+	<!-- BEGIN KONGRA_TOWERS_SPAWNS (scripts/map/generate-kongra-towers.py) -->
+	<spawn centerx="173" centery="107" centerz="7" radius="2">
+		<monster name="Kongra" x="-2" y="0" z="7" spawntime="140" />
+		<monster name="Kongra" x="0" y="0" z="7" spawntime="140" />
+	</spawn>
+	<spawn centerx="173" centery="107" centerz="6" radius="2">
+		<monster name="Red Kongra" x="-2" y="0" z="6" spawntime="180" />
+		<monster name="Red Kongra" x="0" y="0" z="6" spawntime="180" />
+	</spawn>
+	<spawn centerx="173" centery="107" centerz="5" radius="2">
+		<monster name="Red Kongra" x="-2" y="0" z="5" spawntime="240" />
+		<monster name="Red Kongra" x="0" y="0" z="5" spawntime="240" />
+		<monster name="Red Kongra" x="2" y="0" z="5" spawntime="240" />
+	</spawn>
+	<spawn centerx="164" centery="130" centerz="7" radius="2">
+		<monster name="Kongra" x="-2" y="0" z="7" spawntime="140" />
+		<monster name="Kongra" x="0" y="0" z="7" spawntime="140" />
+	</spawn>
+	<spawn centerx="164" centery="130" centerz="6" radius="2">
+		<monster name="Red Kongra" x="-2" y="0" z="6" spawntime="200" />
+		<monster name="Red Kongra" x="0" y="0" z="6" spawntime="200" />
+	</spawn>
+	<spawn centerx="164" centery="130" centerz="5" radius="2">
+		<monster name="Red Kongra" x="-2" y="0" z="5" spawntime="260" />
+		<monster name="Red Kongra" x="0" y="0" z="5" spawntime="260" />
+		<monster name="Red Kongra" x="2" y="0" z="5" spawntime="260" />
+	</spawn>
+	<spawn centerx="188" centery="77" centerz="7" radius="1">
+		<monster name="Kongra" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="188" centery="75" centerz="6" radius="1">
+		<monster name="Red Kongra" x="0" y="0" z="6" spawntime="160" />
+		<monster name="Red Kongra" x="-1" y="1" z="6" spawntime="160" />
+	</spawn>
+	<!-- END KONGRA_TOWERS_SPAWNS -->
 </spawns>

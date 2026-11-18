@@ -25,6 +25,7 @@ python3 scripts/monsters/apply-monster-kits.py             # escribe (se puede r
 | Imperial Archer | 130 | burst ball 5 |
 | Imperial Squire | 28 | earth touch 1 |
 | Mutated Tiger | 260 | roar burst 7, prisa |
+| Red Kongra | 115 | roar burst 4, prisa |
 | Pirate Buccaneer | 150 | cannon ball 5 |
 | Pirate Corsair | 170 | cannon ball 5, prisa |
 | Pirate Cutthroat | 110 | blade strike 4 |
