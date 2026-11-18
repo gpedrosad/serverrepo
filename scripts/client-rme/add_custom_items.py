@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Agrega ítems nuevos (PNG 32x32, o 64x64/64x32 para 2x2/2x1) al cliente y al servidor, sobre los archivos actuales.
+"""Agrega ítems nuevos (PNG 32x32, o 64x64/64x32 para 2x2/2x1; para un 2x2 animado,
+64x(64*cuadros) apilados verticalmente con frames=N) al cliente y al servidor, sobre los archivos actuales.
 
 Para ítems traídos de otras versiones (ej. armas de 8.x) o dibujados (Root Colossus), sin el builder viejo (build_zagan_test_assets.py,
 que necesita el pack Zagan perdido y client-local). Cada ítem de NEW_ITEMS:
@@ -9,6 +10,10 @@ que necesita el pack Zagan perdido y client-local). Cada ítem de NEW_ITEMS:
     con el sprite nuevo. El client id es fijo, así es el mismo en el cliente de RME y en el de jugadores.
   - Servidor (items-zagan-test.otb, en cada --otb): nodo nuevo con su server id fijo, copiado del
     prototipo (slot, peso, tipo de arma) con nombre, descripción, ataque y defensa propios.
+
+Extras: `decor=True` copia los bloques del prototipo sin stats (decoración de mapa); `light=(nivel,
+color)` reescribe la luz — flag .dat 0x15 y attr OTB 0x2A (ITEM_ATTR_LIGHT2) — para ítems con luz
+propia (magic tree rojo). `frames=2` con `tiles=2` instala los dos cuadros de animación del PNG.
 
 Re-ejecutable: si el ítem ya está (mismo sprite en el .dat, nodo con ese server id), no cambia nada.
 Elegir client ids nuevos: `--candidates` lista los que se pueden sacrificar sin riesgo (ni en el mapa,
@@ -41,7 +46,33 @@ ITEM_ATTR_ARMOR2 = 0x28   # u16 armor, double weight, u16 slot
 ITEM_ATTR_DECAY = 0x1F
 ITEM_ATTR_ROTATETO = 0x1E
 ITEM_ATTR_DECAY2 = 0x25
+ITEM_ATTR_LIGHT2 = 0x2A    # u16 nivel, u16 color (ITEM_ATTR_LIGHT2 de source/itemloader.h)
 FLAG_PICKUPABLE = 1 << 5
+
+# Tamaño en bytes del argumento de cada flag del prefijo .dat (7.55–7.72). Tabla canónica:
+# scripts/map/kb/mapdata.py (DAT_ARGS). El 23 se remapea a 252 (sin argumento) desde 7.55.
+DAT_ARGS = {0x00: 2, 0x08: 2, 0x09: 2, 0x15: 4, 0x18: 4, 0x19: 2, 0x1C: 2, 0x1D: 2}
+
+
+def with_light(prefix: bytes, level: int, color: int) -> bytes:
+    """Prefijo .dat con la luz (flag 0x15) reescrita: nivel u16 + color u16.
+    Copia intacto el argumento de cada flag y todo lo que sigue al 0xFF (el 0xFF
+    no es el final del prefijo: detrás vienen width/height/layers/pattern/frames)."""
+    out, pos = bytearray(), 0
+    while pos < len(prefix):
+        attr = prefix[pos]
+        out.append(attr)
+        pos += 1
+        if attr == 0xFF:
+            out += prefix[pos:]
+            break
+        n = DAT_ARGS.get(252 if attr == 23 else attr, 0)
+        if attr == 0x15:
+            out += struct.pack("<HH", level, color)
+        else:
+            out += prefix[pos:pos + n]
+        pos += n
+    return bytes(out)
 
 # server_id y client_id fijos: no cambiarlos una vez repartido el cliente. Prototipos (server ids de 7.6):
 # 2407 bright sword (espada 1 mano), 2393 giant sword (espada 2 manos), 2391 war hammer (maza 2 manos),
@@ -136,6 +167,14 @@ NEW_ITEMS = [
          png="slain_undead_gladiator.png", corpse=True, descr="The corpse of an undead gladiator."),
     dict(name="slain nightstalker", server_id=20190, client_id=3460, prototype=3128,
          png="slain_nightstalker.png", corpse=True, descr="The corpse of a nightstalker."),
+    # Magic tree rojo (nov 2026): decoración de mapa 2x2 animada en 2 cuadros, como la azul del
+    # templo (server 2699, client 3613). Prototipo: el magic tree mismo (bloques OTB copiados,
+    # sin stats). Los sparkles pasan de azul-lavanda a rojo intercambiando canales rojo/azul
+    # (recolor_magic_tree.py) y la luz (flag .dat 0x15 + attr OTB 0x2A) de azul (143) a rojo
+    # (187, el mismo color de luz del NM_ME_WHIRL_SLASH). Client 3455: "hacket" sacrificado.
+    dict(name="red magic tree", server_id=20191, client_id=3455, prototype=2699,
+         png="red_magic_tree.png", decor=True, tiles=2, frames=2, light=(6, 187),
+         descr="A tree shimmering with red magic."),
 ]
 
 
@@ -158,15 +197,20 @@ def node_ids(node) -> tuple[int | None, int | None, str]:
             name.decode("latin-1"))
 
 
-def sprite_records(png: Path, tiles: int | str = 1) -> list[bytes]:
-    """Registros de sprite para un item 1x1 (32x32), 2x2 (64x64) o 2x1 (64x32).
+def sprite_records(png: Path, tiles: int | str = 1, frames: int = 1) -> list[bytes]:
+    """Registros de sprite para un item 1x1 (32x32), 2x2 (64x64) o 2x1 (64x32). Con
+    frames>1 (solo 2x2) el PNG apila los cuadros verticalmente: 64x(64*frames).
     Los multi-sprite se parten en el orden del .dat: para 2x2 abajo-derecha,
     abajo-izquierda, arriba-derecha, arriba-izquierda; para 2x1 derecha, izquierda."""
+    if frames > 1 and tiles != 2:
+        raise SystemExit(f"{png.name}: frames>1 solo está soportado para ítems 2x2")
     image = B.Image.open(png).convert("RGBA")
     if tiles == "2x1":
         size, boxes = (64, 32), [(32, 0, 64, 32), (0, 0, 32, 32)]
     elif tiles == 2:
-        size, boxes = (64, 64), [(32, 32, 64, 64), (0, 32, 32, 64), (32, 0, 64, 32), (0, 0, 32, 32)]
+        base = [(32, 32, 64, 64), (0, 32, 32, 64), (32, 0, 64, 32), (0, 0, 32, 32)]
+        size = (64, 64 * frames)
+        boxes = [(x0, y0 + 64 * f, x1, y1 + 64 * f) for f in range(frames) for x0, y0, x1, y1 in base]
     else:
         size, boxes = (32, 32), None
     if image.size != size:
@@ -244,8 +288,10 @@ def apply_things(things: Path, otb_root, dry: bool) -> list[str]:
     new_entries, log, changed = [e.raw for e in entries], [], False
     for item in NEW_ITEMS:
         tiles = item.get("tiles", 1)
-        sprite_count = 2 if tiles == "2x1" else 4 if tiles == 2 else 1
-        new_records = sprite_records(SPRITES / item["png"], tiles)
+        frames = item.get("frames", 1)
+        per_frame = 2 if tiles == "2x1" else 4 if tiles == 2 else 1
+        sprite_count = per_frame * frames
+        new_records = sprite_records(SPRITES / item["png"], tiles, frames)
         idx = by_cid.get(item["client_id"])
         proto_cid = s2c.get(item["prototype"])
         if idx is None or proto_cid not in by_cid:
@@ -253,23 +299,35 @@ def apply_things(things: Path, otb_root, dry: bool) -> list[str]:
         proto = entries[by_cid[proto_cid]]
         if len(proto.sprite_ids) != sprite_count:
             raise SystemExit(f"prototipo {item['prototype']} tiene {len(proto.sprite_ids)} sprites, se esperaban {sprite_count}")
+        new_prefix = with_light(proto.prefix, *item["light"]) if "light" in item else proto.prefix
         current = entries[idx]
-        if (len(current.sprite_ids) == sprite_count and current.prefix == proto.prefix
+        if (len(current.sprite_ids) == sprite_count and current.prefix == new_prefix
                 and all(records[current.sprite_ids[i]] == new_records[i] for i in range(sprite_count))):
             log.append(f"  {item['name']}: ya está (client {item['client_id']}, sprite {current.sprite_ids[0]})")
             continue
         new_sprite_ids = list(range(len(records), len(records) + sprite_count))
         records.extend(new_records)
-        new_entries[idx] = proto.prefix + struct.pack(f"<{sprite_count}H", *new_sprite_ids)
+        new_entries[idx] = new_prefix + struct.pack(f"<{sprite_count}H", *new_sprite_ids)
         changed = True
         log.append(f"  {item['name']}: client {item['client_id']} -> sprites nuevos {new_sprite_ids}")
     if changed and not dry:
+        new_dat = B.write_dat(reader.signature, reader.item_count, reader.outfit_count, reader.effect_count,
+                              reader.missile_count, new_entries, tail)
+        # validar antes de tocar los archivos: que el .dat nuevo parsea entero, con las
+        # mismas entradas byte a byte y el mismo tail (outfits/efectos/proyectiles
+        # intactos). Un prefijo mal armado (p. ej. sin las dimensiones tras el 0xFF)
+        # desincroniza todo el .dat.
+        try:
+            re_entries, re_tail = B.DatReader(new_dat).read_item_entries()
+        except (struct.error, IndexError) as ex:
+            raise SystemExit(f"{things}: el .dat reescrito no parsea ({ex}); no se escribe nada") from ex
+        if [e.raw for e in re_entries] != new_entries or re_tail != tail:
+            raise SystemExit(f"{things}: el .dat reescrito no parsea igual que el original; no se escribe nada")
         for path in (dat_path, spr_path):
             backup = path.with_name(path.name + ".bak-custom-items")
             if not backup.exists():
                 shutil.copy2(path, backup)
-        dat_path.write_bytes(B.write_dat(reader.signature, reader.item_count, reader.outfit_count, reader.effect_count,
-                                         reader.missile_count, new_entries, tail))
+        dat_path.write_bytes(new_dat)
         spr_path.write_bytes(B.write_spr(spr_reader.signature, records))
     return log
 
@@ -287,8 +345,8 @@ def apply_otb(path: Path, dry: bool) -> list[str]:
         if proto is None:
             raise SystemExit(f"{path}: no está el prototipo {item['prototype']}")
         flags, blocks = B.parse_item_props(proto.props)
-        if item.get("corpse"):
-            pass  # contenedor: se copian flags/capacidad del prototipo sin tocar stats
+        if item.get("corpse") or item.get("decor"):
+            pass  # contenedor/decoración: se copian flags/capacidad del prototipo sin tocar stats
         elif "armor" in item:
             armor = B.get_block_payload(blocks, ITEM_ATTR_ARMOR2)
             if not armor or len(armor) != 12:
@@ -299,6 +357,9 @@ def apply_otb(path: Path, dry: bool) -> list[str]:
             if not weapon or len(weapon) != 5:
                 raise SystemExit(f"prototipo {item['prototype']} sin bloque de arma")
             blocks = B.upsert_block(blocks, ITEM_ATTR_WEAPON2, weapon[:3] + bytes([item["attack"], item["defence"]]))
+        if "light" in item:
+            # la luz vive en el OTB como ITEM_ATTR_LIGHT2 (0x2A): u16 nivel + u16 color
+            blocks = B.upsert_block(blocks, ITEM_ATTR_LIGHT2, struct.pack("<HH", *item["light"]))
         descr = item["descr"].encode("latin-1")
         if len(descr) >= 128:
             raise SystemExit(f"descripción de {item['name']} demasiado larga ({len(descr)} bytes, máximo 127)")
@@ -317,6 +378,7 @@ def apply_otb(path: Path, dry: bool) -> list[str]:
         else:
             root.children.append(new_node)
             stats = ("corpse" if item.get("corpse") else
+                     "decoración" if item.get("decor") else
                      f"arm {item['armor']}" if "armor" in item else
                      f"atk {item['attack']} def {item['defence']}")
             log.append(f"  {item['name']}: server {item['server_id']} nuevo (client {item['client_id']}, "

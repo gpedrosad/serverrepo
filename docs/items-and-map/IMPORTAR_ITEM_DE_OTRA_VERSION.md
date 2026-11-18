@@ -44,9 +44,12 @@ cómo agregar más. El sprite sale del cliente de esa versión, píxel por píxe
 4. **Elegir un client id para sacrificar:** `python3.11 scripts/client-rme/add_custom_items.py --candidates`.
    Excluye lo que está en el mapa, loot, NPC, acciones, hechizos o scripts, los destinos de una pudrición,
    suelos, cadáveres, alfombras y cuadros, y los ya usados por ítems custom.
-5. **Agregarlo a `NEW_ITEMS`** en `add_custom_items.py`: nombre, server id (el siguiente libre, hoy 20191),
+5. **Agregarlo a `NEW_ITEMS`** en `add_custom_items.py`: nombre, server id (el siguiente libre, hoy 20192),
    client id del paso 4, prototipo 7.6 (mismo tipo y manos), PNG, ataque, defensa y descripción (< 128
    bytes). Para un 2×2 agregar `tiles=2` y un PNG 64×64; para un 2×1, `tiles="2x1"` y un PNG 64×32.
+   Decoración sin stats: `decor=True`; 2×2 animado: `frames=N` con PNG apilados verticalmente; luz
+   propia: `light=(nivel, color)` (flag `.dat` 0x15 y attr OTB 0x2A). Ejemplo completo: el red magic
+   tree `20191` en [`ZAGAN_TEST_ITEMS.md`](ZAGAN_TEST_ITEMS.md).
 6. **Aplicar** (re-ejecutable; lo que ya está no se toca):
 
    ```bash

@@ -2,7 +2,7 @@
 
 Pack del directorio `Zagan+Square`: **55 ítems** (`20100`–`20154`). Desde `20155` son ítems agregados después
 con otros scripts (trainer dummy, enchanted spear, armas de 8.x, crown armors, armas del Root Colossus, Aurora
-Shield).
+Shield) y desde nov 2026 también el red magic tree (`20191`).
 
 El catálogo público con stats, efecto y drop está en la web: **`/items-nuevos`**
 (`web/site/src/pages/items-nuevos.astro`, datos en `web/site/src/data/new-items.json`).
@@ -153,6 +153,50 @@ También están los corpses `20173`–`20190` de las 19 criaturas 8.60 (tortugas
 quaras, Cyclops, Wyrm, elementales, Zombie, Vampire Bride, Worker Golem, Undead Gladiator, Nightstalker):
 cada monstruo ya los usa y tienen tabla, stats y spawn en
 [`../gameplay/IMPORTAR_CRIATURA_DE_OTRA_VERSION.md`](../gameplay/IMPORTAR_CRIATURA_DE_OTRA_VERSION.md).
+
+## Magic tree rojo (`20191`) — nueva (nov 2026)
+
+Decoración de mapa: el magic tree azul (server `2699`, client `3613`, 2×2 con 2 cuadros de animación y
+luz propia, el del templo) con el **efecto en rojo**.
+
+![Magic tree azul (izquierda) y rojo (derecha)](img/red-magic-tree.png)
+
+| Dato | Valor |
+|------|-------|
+| Server id | **`20191`**, client id 3455 (sacrificado: hacket). Entrada en `NEW_ITEMS` de `add_custom_items.py` |
+| Prototipo | el magic tree mismo `2699`: nodo OTB espejo (group none, `block_solid` + `always_on_top`, minimap 12, frames 2), sin stats (`decor=True`) |
+| Efecto | los sparkles azul-lavanda (480 píxeles, todos tono 240, r=g) pasan a rojo **intercambiando los canales rojo/azul**: `(121,121,255) → (255,121,121)`, misma saturación y brillo; los centros casi blancos quedan igual. El árbol no se toca |
+| Luz | nivel 6 (la misma), color 143 (azul) → **187 (rojo)**, el mismo color de luz del `NM_ME_WHIRL_SLASH`. Parcheada en el flag `.dat` `0x15` y en el attr OTB `0x2A` (`ITEM_ATTR_LIGHT2` de `source/itemloader.h`) |
+| Sprite | `devtools/zagan-test/custom-sprites/red_magic_tree.png` (64×128: los 2 cuadros apilados) |
+| Cómo se hizo | `python3.11 scripts/client-rme/recolor_magic_tree.py --preview /tmp/red_tree.png` extrae los 8 sprites del cliente y escribe el PNG; `add_custom_items.py` con `tiles=2, frames=2, light=(6, 187), decor=True` lo instala (8 sprites: 4 cuadrantes × 2 cuadros) |
+
+Qué ganó `add_custom_items.py` para este caso:
+
+- `frames=N` con `tiles=2`: ítem 2×2 animado; el PNG apila los cuadros verticalmente (64×(64·N)) y el
+  importador lo parte en el orden del `.dat` (abajo-derecha, abajo-izquierda, arriba-derecha,
+  arriba-izquierda por cuadro).
+- `light=(nivel, color)`: reescribe la luz en el flag `.dat` `0x15` y el attr OTB `0x2A`.
+- `decor=True`: copia los bloques del prototipo sin stats (como los corpses).
+
+**Colocación (nov 2026):** `scripts/map/add-red-magic-trees.py` (idempotente) los puso junto a los
+azules del bosque al sur de la ciudad: **(79, 98, 7)** en el claro de árboles mágicos (entre los
+azules de (76, 98) y (81, 101)) y **(71, 123, 7)** al lado del azul aislado de (69, 123). El ancla es
+la casilla abajo-derecha del 2×2: el cliente dibuja sobre (x-1..x, y-1..y) y solo esa casilla bloquea;
+el script exige pasto limpio en las 4 casillas antes de escribir. Intransitable e inamovible como el
+azul; los sparkles y la luz son del cliente (el server no manda nada). El RME principal no lo dibuja:
+su `items.otb` no tiene los ítems `20100+` (igual que con las armas 8.x y los corpses nuevos).
+
+**Errores que ya pasaron:** la primera versión de `with_light()` cortaba el prefijo en el `0xFF` y
+perdía los bytes de dimensiones que van detrás, y el importador escribió un `Tibia.dat` corrupto (se
+restauró del `.bak-custom-items` y se re-aplicó). Ahora el importador **re-parsea el `.dat` completo en
+memoria y compara las entradas byte a byte antes de tocar los archivos**: un prefijo mal armado no
+puede volver a escribirse.
+
+**Pendiente:** publicar el cliente (`publish_client.py` en la ThinkPad, con OK de Gonzalo) — hasta
+entonces el rojo se ve como el ítem sacrificado (hacket) en clientes sin actualizar. Los árboles ya
+están en el `test.otbm` local; viajan con el próximo commit/export del mapa (el archivo también lleva
+trabajo sin commitear de otras sesiones). El catálogo `/items-all` de la web se regenera con
+`export-items-catalog-web.py` cuando eso llegue.
 
 ---
 
