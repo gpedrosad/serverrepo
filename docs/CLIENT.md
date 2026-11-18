@@ -102,6 +102,21 @@ Distribución para jugadores: repo `~/apps/clienteretro` en la ThinkPad, zips en
 - **Auto-actualización:** el cliente se pone al día solo al abrirse. Publicar cambios (sprites, módulos):
   `python3 scripts/client-rme/publish_client.py` en la ThinkPad. Ver [CLIENT_UPDATER_RETRO76.md](./CLIENT_UPDATER_RETRO76.md)
 
+### Condiciones e íconos de hechizos
+
+La revisión de nov 2026, publicada el 18 de noviembre, incorpora varias filas de condiciones y recargas en la barra superior,
+Health Info y el inventario cuando no caben los íconos; Health Info conserva visible su panel de condiciones.
+Los contadores usan el tiempo transcurrido, para que una pausa del cliente no alargue la cuenta.
+
+Invisibilidad tiene un indicador basado en el outfit recibido del servidor. Seed of Life separa la
+semilla que recibís de la recarga de tu propio hechizo. Detalle, fuentes y pruebas:
+[SPELLS_FEEDBACK.md](gameplay/SPELLS_FEEDBACK.md#revisión-de-la-barra-de-estados-18-nov-2026).
+
+El código de estos cambios pertenece al repo separado `clienteretro` (`5d6568a`, pruebas `a962755`), con paridad Mac/Windows. La copia
+local de revisión está en `devtools/clients/cliente-oficial-retro/` (enlace `cliente-oficial-retro`);
+ese directorio está ignorado por `serverrepo`. Publicarlo requiere llevar los cambios al repo del cliente
+en la ThinkPad y ejecutar su publicación; editar la copia local no actualiza a los jugadores.
+
 ## Minimapa completo (nov 2026)
 
 El minimapa viene entero desde el principio, en todos los pisos: no hay que descubrirlo caminando.

@@ -57,6 +57,38 @@ versión de estos íconos, 18 nov 2026: en el banco de Lua andaba y en el client
 **No cambiar los textos que prenden o apagan un ícono sin cambiar `TimedIcons` en el cliente.** Un cliente sin
 actualizar ve los avisos y los efectos, pero no los íconos.
 
+## Revisión de la barra de estados (18 nov 2026)
+
+Cambios publicados en el repo `clienteretro` (`5d6568a`, pruebas `a962755`), en ambas plataformas (`mac/` y `windows/`):
+
+- **Invisibilidad:** nuevo indicador `condition_invisible`, usando el ícono `invisible` de la hoja de
+  hechizos existente. Se actualiza con `LocalPlayer.onOutfitChange` y `player:isInvisible()`, también al
+  entrar al juego. Lo activa el estado recibido del servidor (hechizo o anillo), sin asignarle una duración
+  supuesta. Chameleon usa un outfit de item y no debe activar este indicador.
+- **Seed of Life:** `condition_seed_of_life` representa la curación pendiente en quien la recibe;
+  `condition_seed_of_life_cooldown` representa la recarga de quien la lanzó. Antes una semilla de otro druida
+  encendía el ícono de tu propia recarga. Ahora son independientes, y florecer una semilla deja visible otra
+  que todavía esté pendiente.
+- **Contadores:** guardan plazos con `g_clock.millis()` y calculan los segundos restantes en cada dibujo.
+  Descontar exactamente uno por callback prolongaba las cuentas cuando se frenaba el event loop.
+- **Espacio:** las condiciones se distribuyen en grillas en los tres paneles. La barra superior conserva
+  espacio para vida/maná y agrega filas; Health Info mantiene visible su fila de condiciones. Inventario
+  y Health Info ajustan su altura cuando cambia la cantidad de filas.
+
+Los estados clásicos (veneno, fuego, energía, borrachera, mana shield, parálisis, haste y combate) siguen
+el paquete `0xA2`. Los buffs nuevos y sus recargas siguen los avisos del servidor. Las curaciones y ataques
+instantáneos sin recarga propia no representan un estado persistente del jugador. Challenge afecta el
+target de los monstruos; las luces y las transformaciones se reflejan en la iluminación y el outfit.
+
+El binding de invisibilidad está en el
+[código de OTClient](https://github.com/edubart/otclient/blob/master/src/client/luafunctions.cpp), y se comprobó
+que el binario distribuido también lo expone. El servidor manda el outfit invisible desde
+`Protocol76::sendSetOutfit` / `AddCreature`.
+
+Pruebas reproducibles del cliente: `tests/status_icons.lua` (LuaJIT, sin servidor) y
+`tests/status_icons_ui.lua` (motor real, copia de QA sin conexión). Instrucciones en
+`clienteretro/Contexto/Documentacion/status-icons.md`. Esta revisión no requiere cambios de C++.
+
 ## El efecto que salía como sangre (arreglado nov 2026)
 
 `exeta sio`, `exori vis con`, `exevo vis tera` y `exeta res` son `offensive = true` con `ATTACK_NONE`. En
