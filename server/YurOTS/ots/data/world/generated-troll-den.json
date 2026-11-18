@@ -1,0 +1,72 @@
+{
+  "name": "generated-troll-den",
+  "seed": 5,
+  "box": {
+    "x1": 155,
+    "y1": 103,
+    "x2": 176,
+    "y2": 114,
+    "z": [
+      8
+    ]
+  },
+  "replaces": "lava pocket z8 (campo de lava del mapa original, como el dungeon de la city)",
+  "entrance": {
+    "hole": {
+      "x": 164,
+      "y": 108,
+      "z": 7
+    },
+    "ladder": {
+      "x": 164,
+      "y": 108,
+      "z": 8
+    },
+    "arrival": {
+      "x": 164,
+      "y": 109,
+      "z": 7
+    }
+  },
+  "sign": {
+    "x": 166,
+    "y": 108,
+    "z": 7
+  },
+  "stages": [
+    [
+      [
+        "River Troll"
+      ],
+      1,
+      175,
+      12
+    ],
+    [
+      [
+        "River Troll",
+        "Stone Troll"
+      ],
+      1,
+      200,
+      12
+    ],
+    [
+      [
+        "Stone Troll"
+      ],
+      2,
+      235,
+      10
+    ]
+  ],
+  "spawns": 3,
+  "monsters": {
+    "River Troll": 2,
+    "Stone Troll": 2
+  },
+  "density": {
+    "tiles": 176,
+    "monsters": 4
+  }
+}

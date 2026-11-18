@@ -31,7 +31,7 @@
  	<item id="2580" chance="4000"/>
 	<item id="2643" chance="25000"/>
  	<item id="2379" chance="20000"/>
-	<item id="2050" countmax="2" chance1="20000" chancemax="0"/>
+	<item id="2050" chance="20000"/>
  	</inside>
  	</item>
 </loot>

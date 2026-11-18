@@ -5518,4 +5518,16 @@
 		<monster name="Minotaur Mage" x="2" y="-2" z="12" spawntime="90" />
 	</spawn>
 	<!-- END MINOTAUR_ISLE_SPAWNS -->
+	<!-- BEGIN TROLL_DEN_SPAWNS (scripts/map/generate-troll-den.py) -->
+	<spawn centerx="156" centery="110" centerz="8" radius="3">
+		<monster name="River Troll" x="0" y="-1" z="8" spawntime="175" />
+	</spawn>
+	<spawn centerx="171" centery="111" centerz="8" radius="3">
+		<monster name="River Troll" x="0" y="-2" z="8" spawntime="175" />
+	</spawn>
+	<spawn centerx="175" centery="104" centerz="8" radius="3">
+		<monster name="Stone Troll" x="-2" y="1" z="8" spawntime="235" />
+		<monster name="Stone Troll" x="-2" y="2" z="8" spawntime="235" />
+	</spawn>
+	<!-- END TROLL_DEN_SPAWNS -->
 </spawns>

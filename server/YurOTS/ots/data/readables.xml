@@ -91,4 +91,7 @@
 	<readable x="146" y="334" z="7" text="NAVE DE LA CATEDRAL\nSolo monjes y muertos\nrezan aca."/>
 	<readable x="151" y="334" z="7" text="CATEDRAL OSCURA\nAl norte, la nave.\nBajadas a la cripta: en la jungla\ny junto a la sala gris.\nEste portal vuelve al templo."/>
 	<!-- END DARK_CATHEDRAL_SIGNS -->
+	<!-- BEGIN TROLL_DEN_SIGNS -->
+	<readable x="166" y="108" z="7" text="GUARIDA DE LOS TROLLS\nAgujero abajo: river trolls cerca de la escalera\ny stone trolls al fondo, entre las piedras."/>
+	<!-- END TROLL_DEN_SIGNS -->
 </readables>
