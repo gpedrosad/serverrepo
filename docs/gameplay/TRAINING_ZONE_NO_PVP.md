@@ -27,12 +27,12 @@ Actualmente:
 ### Entrada y vuelta (nov 2026)
 
 - Se entra por el TP del depot `127,53,6` → llegada a la alfombra roja `146,12,7`.
-- El TP de vuelta está **junto a la llegada**: `145,12,7` → `128,53,6` (hall del depot). Antes estaba
+- El TP de vuelta está **junto a la llegada**: `145,12,7` → `128,53,6` (hall del depot), sobre su
+  **base de alfombra roja** (2 piezas de `4398`, como el resto del cuadrado de llegada). Antes estaba
   en el rincón este de la fila de monks (`158,16,7`), a 12+ casillas de la llegada y ~20 del extremo
-  oeste; lo movió `scripts/map/move-trainer-exit-tp.py` (18 nov 2026). La casilla quedó sin la
-  alfombra que tenía debajo: **pasto + magic forcefield, igual que se veía el TP viejo**, y fuera de
-  los caminos rectos llegada→monk norte y llegada→fila (ambos por x146), para que nadie pise el TP
-  sin querer al ir a entrenar.
+  oeste; lo movió `scripts/map/move-trainer-exit-tp.py` (18 nov 2026). Fuera de los caminos rectos
+  llegada→monk norte y llegada→fila (ambos por x146), para que nadie pise el TP sin querer al ir a
+  entrenar.
 
 ## Implementacion
 
