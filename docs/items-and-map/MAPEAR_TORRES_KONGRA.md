@@ -81,6 +81,7 @@ que ningún monstruo de otro spawn caiga dentro.
 ## Pendiente
 
 - Recorrer las torres in-game (subir y bajar cada escalera, que el Red Kongra no se salga).
-- Publicar el cliente con el look 254 (`publish_client.py` desde la ThinkPad): hasta que cada
-  jugador actualice, el Red Kongra se ve invisible.
 - Abrir el locker del templo con un char que tenga items (regla de depots antes de deploy de mapa).
+
+Cliente publicado (18:31): `publish_client.py` desde la ThinkPad subió el `Tibia.dat`/.spr
+con el look 254 y el minimapa nuevo; cada jugador que abra el cliente se actualiza solo.
