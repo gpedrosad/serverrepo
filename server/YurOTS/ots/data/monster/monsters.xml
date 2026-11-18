@@ -406,6 +406,7 @@
 <monster name="Angry Warlock" file="angry warlock.xml" />
 <monster name="Furious Warlock" file="furious warlock.xml" />
 <monster name="Enraged Warlock" file="enraged warlock.xml" />
+<monster name="Dark Mage" file="dark mage.xml" />
 <monster name="Wasp" file="wasp.xml" />
 <monster name="Wild Warrior" file="wild warrior.xml" />
 <monster name="Winter Wolf" file="winter wolf.xml" />
