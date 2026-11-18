@@ -8,7 +8,8 @@ Se corre en la ThinkPad, donde están el repo del cliente (~/apps/clienteretro) 
 
 Qué hace:
   1. Copia Tibia.dat / Tibia.spr de devtools/rme/rme-client-760 (la fuente de verdad) a mac/ y windows/ del
-     cliente (data/things/760/). Con --no-sync se publica el cliente tal cual.
+     cliente (data/things/760/) y arma el minimapa completo (data/minimap.otmm) desde el test.otbm del repo
+     (build_minimap.py). Con --no-sync se publica el cliente tal cual.
   2. Comprueba que mac/ y windows/ tengan los mismos archivos de datos (solo cambian binarios y lanzadores).
   3. Copia esos datos (init.lua, data/, modules/, layouts/...) a web/updater/files/. El updater de la web
      (web/client_updater.py) lista esa carpeta con su CRC32; los clientes bajan lo que les cambió al abrirse.
@@ -107,6 +108,23 @@ def main() -> int:
                     print(f"  sprites: {src.relative_to(ROOT)} -> {dst}")
                     if not a.dry_run:
                         shutil.copyfile(src, dst)
+
+    # 1b. minimapa completo (data/minimap.otmm) desde el test.otbm del repo: el cliente lo carga antes que
+    # el que va descubriendo cada jugador, así el mapa se ve entero (build_minimap.py).
+    if not a.no_sync:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("build_minimap", Path(__file__).with_name("build_minimap.py"))
+        bm = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(bm)
+        import tempfile
+        tmp = Path(tempfile.gettempdir()) / "retro76-minimap.otmm"
+        bm.write(bm.build(bm.mapdata.load_tiles()), tmp)
+        for plat, d in dirs.items():
+            dst = d / "data" / "minimap.otmm"
+            if not dst.is_file() or not filecmp.cmp(tmp, dst, shallow=False):
+                print(f"  minimapa: test.otbm -> {dst}")
+                if not a.dry_run:
+                    shutil.copyfile(tmp, dst)
 
     # 2. mac y windows con los mismos datos
     files = {plat: data_files(d) for plat, d in dirs.items()}

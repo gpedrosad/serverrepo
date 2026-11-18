@@ -101,3 +101,20 @@ Distribución para jugadores: repo `~/apps/clienteretro` en la ThinkPad, zips en
 
 - **Auto-actualización:** el cliente se pone al día solo al abrirse. Publicar cambios (sprites, módulos):
   `python3 scripts/client-rme/publish_client.py` en la ThinkPad. Ver [CLIENT_UPDATER_RETRO76.md](./CLIENT_UPDATER_RETRO76.md)
+
+## Minimapa completo (nov 2026)
+
+El minimapa viene entero desde el principio, en todos los pisos: no hay que descubrirlo caminando.
+
+- `game_minimap/minimap.lua` carga primero **`data/minimap.otmm`** si existe en el cliente; recién si no,
+  el `minimap760.otmm` que cada jugador va guardando en su carpeta.
+- Ese archivo lo arma `scripts/client-rme/build_minimap.py` desde `test.otbm` y lo copia
+  `publish_client.py` a `mac/data/` y `windows/data/` **cada vez que se publica el cliente**: si cambia el
+  mapa, alcanza con volver a publicar.
+- Formato `.otmm` de OTClientV8: cabecera `OTMM`, bloques de 64×64 casillas comprimidos con **zlib** (no LZ4
+  como en otclient), 3 bytes por casilla: marcas (1 vista, 2 no pasable, 4 no caminable), color del
+  minimapa (atributo `0x1C` del `.dat`, el último entre suelo, bordes y ítems de abajo/arriba) y velocidad del
+  suelo / 10 (100 sin suelo). Detalle en el encabezado de `build_minimap.py`.
+- `build_minimap.py --compare <minimap760.otmm de un jugador>` compara con lo que vio un cliente real: con el
+  de la Mac de Gonzalo (18 nov 2026) dio 93 % de casillas idénticas; el resto son zonas que cambiaron desde
+  que se exploraron.
