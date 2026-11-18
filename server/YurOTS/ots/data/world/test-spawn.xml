@@ -5841,4 +5841,9 @@
 		<monster name="Quara Predator" x="1" y="0" z="2" spawntime="900" />
 	</spawn>
 	<!-- END BRIDGE_TOWER_SPAWNS -->
+	<!-- BEGIN DRAGON_SPOT_SPAWNS (scripts/map/generate-dragon-spot.py) -->
+	<spawn centerx="87" centery="86" centerz="7" radius="1">
+		<monster name="Black Dragon" x="0" y="0" z="7" spawntime="300" />
+	</spawn>
+	<!-- END DRAGON_SPOT_SPAWNS -->
 </spawns>

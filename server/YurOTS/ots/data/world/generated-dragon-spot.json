@@ -1,0 +1,56 @@
+{
+  "name": "Spot del Drag\u00f3n Negro",
+  "box": [
+    86,
+    85,
+    95,
+    87
+  ],
+  "hunter": [
+    93,
+    85,
+    95,
+    87
+  ],
+  "bridge": [
+    89,
+    86,
+    92,
+    86
+  ],
+  "dragon": [
+    86,
+    85,
+    88,
+    87
+  ],
+  "trapdoor": [
+    95,
+    85
+  ],
+  "bank_hole": [
+    102,
+    85
+  ],
+  "z8_box": [
+    93,
+    83,
+    104,
+    88
+  ],
+  "rock_fill": 58,
+  "sign": [
+    103,
+    84,
+    7
+  ],
+  "monster": {
+    "name": "Black Dragon",
+    "pos": [
+      87,
+      86,
+      7
+    ],
+    "respawn": 300
+  }
+}
