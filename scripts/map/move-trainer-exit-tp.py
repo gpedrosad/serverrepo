@@ -3,10 +3,13 @@
 
 Se entra al training por el TP del depot (127,53,6) y se aparece en la alfombra roja (146,12,7).
 El TP de vuelta estaba en el rincón este de la fila de Trainer Monks (158,16,7): a 12+ casillas de
-la llegada y ~20 del extremo oeste de la fila. Ahora queda en (145,12,7), la casilla de alfombra
-al oeste de la llegada — fuera de los caminos rectos llegada→monk norte (x146) y llegada→fila de
-monks (x146), para que nadie pise el TP sin querer al ir a entrenar. El destino no cambia: el TP
-de la entrada del depot (128,53,6), junto a los lockers.
+la llegada y ~20 del extremo oeste de la fila. Ahora queda en (145,12,7), la casilla al oeste de
+la llegada — fuera de los caminos rectos llegada→monk norte (x146) y llegada→fila de monks (x146),
+para que nadie pise el TP sin querer al ir a entrenar. El destino no cambia: el TP de la entrada
+del depot (128,53,6), junto a los lockers.
+
+La casilla del TP se limpia de la alfombra roja que tenía debajo: queda pasto + magic forcefield,
+igual que se veía el TP viejo en (158,16,7).
 
   python3 scripts/map/move-trainer-exit-tp.py            # dry-run: muestra lo que haría
   python3 scripts/map/move-trainer-exit-tp.py --replace  # escribe test.otbm
@@ -89,14 +92,15 @@ def main() -> int:
     old_k, old_dest = find_tp(tiles[OLD]) if OLD in tiles else (None, None)
     new_k, new_dest = find_tp(tiles[NEW]) if NEW in tiles else (None, None)
 
-    if new_k and old_k is None:
-        print(f"Ya movido: el TP está en {NEW} -> {new_dest}. Nada que hacer.")
-        return 0 if new_dest == DEST else 1
-    if old_k is None:
-        print(f"ERROR: no hay TP en {OLD} y tampoco en {NEW}; no se de dónde moverlo.")
+    if old_k is None and new_k is None:
+        print(f"ERROR: no hay TP en {OLD} ni en {NEW}; no sé de dónde moverlo.")
         return 1
-    if old_dest != DEST:
+    if old_k and new_k:
+        errors.append(f"hay TP en los dos lados ({OLD} y {NEW})")
+    if old_k and old_dest != DEST:
         errors.append(f"{OLD}: destino inesperado {old_dest} (se esperaba {DEST})")
+    if new_k and new_dest != DEST:
+        errors.append(f"{NEW}: destino inesperado {new_dest} (se esperaba {DEST})")
 
     # la casilla nueva: piso pisable, sin nada que bloquee, y sin TP en los caminos
     floor = [i for i in load_tiles().get(NEW, ())]
@@ -114,10 +118,29 @@ def main() -> int:
         print("ERROR:\n  " + "\n  ".join(errors))
         return 1
 
-    print(f"saco  el TP de {OLD} -> {old_dest}")
-    tiles[OLD][2].remove(old_k)
-    print(f"pongo el TP en {NEW} -> {DEST} (alfombra, al oeste de la llegada {ARRIVAL})")
-    tiles[NEW][2].append(item_node(TELEPORT, DEST))
+    if old_k:
+        print(f"saco  el TP de {OLD} -> {old_dest}")
+        tiles[OLD][2].remove(old_k)
+        print(f"pongo el TP en {NEW} -> {DEST} (al oeste de la llegada {ARRIVAL})")
+        tiles[NEW][2].append(item_node(TELEPORT, DEST))
+
+    # la casilla del TP queda como la del viejo: pasto + forcefield, sin la alfombra encima
+    keep, extra = [], []
+    for k in tiles[NEW][2]:
+        is_tp = k[0] == T_ITEM and len(k[1]) >= 2 \
+            and struct.unpack_from("<H", bytes(k[1]), 0)[0] == TELEPORT
+        (keep if is_tp else extra).append(k)
+    if extra:
+        names = []
+        for k in extra:
+            iid = struct.unpack_from("<H", bytes(k[1]), 0)[0] if k[0] == T_ITEM and len(k[1]) >= 2 else k[0]
+            names.append(f"{iid} {otb.get(iid, {}).get('name', '')}".strip())
+        print(f"limpio {NEW}: saco {', '.join(names)} (el TP se ve sobre pasto, como el viejo)")
+        tiles[NEW][2] = keep
+
+    if not extra and not old_k:
+        print(f"Ya listo: TP en {NEW} -> {new_dest}, casilla limpia. Nada que hacer.")
+        return 0
 
     if not a.replace:
         print("dry-run: usá --replace para escribir")
