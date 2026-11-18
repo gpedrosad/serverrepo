@@ -121,7 +121,10 @@ void MagicEffectClass::getMagicEffect(Player* spectator, const Creature* attacke
 					target->access < g_config.ACCESS_PROTECT &&
 					(!attacker || attacker->access < g_config.ACCESS_PROTECT));
 				if(!offensive || !blockedPlayerPvpEffect || target->access != 0) {
-						if(offensive && (target->getImmunities() & attackType) == attackType) {
+						// ATTACK_NONE (0) "coincide" con cualquier inmunidad: sin este chequeo los hechizos
+						// ofensivos sin daño (exeta sio, exori vis con, exevo vis tera, exeta res) mostraban
+						// sangre en vez de su efecto.
+						if(offensive && attackType != ATTACK_NONE && (target->getImmunities() & attackType) == attackType) {
 							spectator->sendMagicEffect(pos, target->bloodeffect);
 						}
 						else {

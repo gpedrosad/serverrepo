@@ -82,6 +82,38 @@ void sendSpellMagicEffect(Game* game, const Position& pos, int type)
 	game->sendMagicEffect(pos, type);
 }
 
+// Avisos de los hechizos de nov 2026 (exeta sio, exana res, exori vis con, exura tera, exevo vis tera,
+// utito tera, utamo mort). Los que dicen "for N s." / "in N s." y los de fin los lee el cliente para el
+// ícono con la cuenta regresiva (modules/game_inventory/inventory.lua de clienteretro): no cambiar esos
+// textos sin cambiar el cliente. Doc: docs/gameplay/SPELLS_FEEDBACK.md.
+void sendSpellText(Creature* creature, MessageClasses mclass, const std::string& text)
+{
+	Player* player = dynamic_cast<Player*>(creature);
+	if(player)
+		player->sendTextMessage(mclass, text.c_str());
+}
+
+long spellSeconds(long ms)
+{
+	return ms <= 0 ? 0 : (ms + 999) / 1000;
+}
+
+// Evento: manda `text` a la criatura `id` si sigue en el juego.
+void sendSpellTextLater(Game* game, unsigned long id, std::string text)
+{
+	sendSpellText(game->getCreatureByID(id), MSG_SMALLINFO, text);
+}
+
+// Evento: termina la postura de contraataque si sigue siendo la misma (no la de un cast posterior).
+void endCounterStance(Game* game, unsigned long id, int64_t until)
+{
+	std::map<unsigned long, CounterStanceState>::iterator it = g_counterStance.find(id);
+	if(it == g_counterStance.end() || it->second.until != until)
+		return;
+	g_counterStance.erase(it);
+	sendSpellText(game->getCreatureByID(id), MSG_SMALLINFO, "Your counter stance ends.");
+}
+
 // ---------- Eco (utevo vis) ----------
 // Estado por jugador (id de criatura): hasta cuándo está activo, desde cuándo se puede volver a lanzar y
 // cuánto pega la repetición. Lo llena startEcho (los números vienen del Lua) y lo consume onPlayerSpellCast.
@@ -1216,7 +1248,16 @@ int SpellScript::luaActionSpellCooldownReady(lua_State *L)
 		return 1;
 	}
 
-	lua_pushnumber(L, PlayerSpellCooldown::remaining(creature->getID(), std::string(name)));
+	int left = PlayerSpellCooldown::remaining(creature->getID(), std::string(name));
+	if(left > 0) {
+		Player* player = dynamic_cast<Player*>(creature);
+		if(player) {
+			std::stringstream msg;
+			msg << "You can use it again in " << spellSeconds(left) << " s.";
+			player->sendTextMessage(MSG_SMALLINFO, msg.str().c_str(), player->pos, NM_ME_PUFF);
+		}
+	}
+	lua_pushnumber(L, left);
 	return 1;
 }
 
@@ -1328,8 +1369,19 @@ int SpellScript::luaActionDoRescue(lua_State *L)
 		}
 	}
 
-	if(affected > 0)
+	if(affected > 0) {
 		sendSpellMagicEffect(spell->game, ally->pos, NM_ME_RALLY_RING);
+		std::stringstream msg;
+		msg << "You draw " << affected << (affected == 1 ? " monster" : " monsters") << " away from "
+			<< ally->getName() << " for " << spellSeconds(durationMs) << " s.";
+		sendSpellText(caster, MSG_INFO, msg.str());
+		sendSpellText(ally, MSG_INFO, caster->getName() + " draws the monsters away from you.");
+		spell->game->addEvent(makeTask(durationMs,
+			boost::bind(&sendSpellTextLater, spell->game, caster->getID(), std::string("Your rescue ends."))));
+	}
+	else {
+		caster->sendCancel(("No monsters are attacking " + ally->getName() + ".").c_str());
+	}
 
 	lua_pushnumber(L, affected);
 	return 1;
@@ -1388,6 +1440,15 @@ int SpellScript::luaActionDoCleanse(lua_State *L)
 	target->sendIcons();
 	target->sendStats();
 	sendSpellMagicEffect(spell->game, target->pos, NM_ME_CLEANSE_SWIRL);
+
+	std::string removed = hadPoison && hadParalyze ? "poison and paralysis" : (hadPoison ? "poison" : "paralysis");
+	if(target == caster) {
+		sendSpellText(caster, MSG_INFO, "You cleanse yourself: " + removed + " removed.");
+	}
+	else {
+		sendSpellText(caster, MSG_INFO, "You cleanse " + target->getName() + ": " + removed + " removed.");
+		sendSpellText(target, MSG_INFO, caster->getName() + " cleanses you: " + removed + " removed.");
+	}
 	lua_pushnumber(L, 1);
 	return 1;
 }
@@ -1515,8 +1576,18 @@ int SpellScript::luaActionDoChainLightning(lua_State *L)
 		factor = factor * falloff / 100;
 	}
 
-	if(applied > 0)
+	if(applied > 0) {
 		casterPlayer->pzLocked = true;
+		std::stringstream msg;
+		if(applied == 1)
+			msg << "Your lightning strikes 1 monster.";
+		else
+			msg << "Your lightning chains through " << applied << " monsters.";
+		sendSpellText(caster, MSG_INFO, msg.str());
+	}
+	else {
+		caster->sendCancel("The lightning has no effect.");
+	}
 
 	lua_pushnumber(L, applied);
 	return 1;
@@ -1536,13 +1607,15 @@ void runDelayedHeal(Game* game, const DelayedHealJob& job)
 {
 	Creature* target = game->getCreatureByID(job.targetId);
 	Creature* caster = game->getCreatureByID(job.casterId);
-	if(!target || !caster)
+	if(!target)
 		return;
-	if(target->pos.z != caster->pos.z)
+	// El cliente apaga el ícono de la semilla con cualquiera de los dos textos.
+	if(!caster || target->pos.z != caster->pos.z ||
+	   std::max(std::abs((int)target->pos.x - (int)caster->pos.x),
+	            std::abs((int)target->pos.y - (int)caster->pos.y)) > job.range) {
+		sendSpellText(target, MSG_SMALLINFO, "The seed of life withers.");
 		return;
-	if(std::max(std::abs((int)target->pos.x - (int)caster->pos.x),
-	            std::abs((int)target->pos.y - (int)caster->pos.y)) > job.range)
-		return;
+	}
 
 	int64_t heal = job.minHeal;
 	if(job.maxHeal > job.minHeal)
@@ -1556,6 +1629,7 @@ void runDelayedHeal(Game* game, const DelayedHealJob& job)
 	sendSpellMagicEffect(game, target->pos, NM_ME_SEED_BURST);
 	if(Player* p = dynamic_cast<Player*>(target))
 		p->sendStats();
+	sendSpellText(target, MSG_SMALLINFO, "The seed of life blooms.");
 }
 
 } // namespace
@@ -1625,6 +1699,12 @@ int SpellScript::luaActionDoDelayedHeal(lua_State *L)
 
 	spell->game->addEvent(makeTask(delayMs,
 		boost::bind(&runDelayedHeal, spell->game, job)));
+
+	std::stringstream msg;
+	msg << "A seed of life will bloom on you in " << spellSeconds(delayMs) << " s.";
+	sendSpellText(target, MSG_INFO, msg.str());
+	if(target != caster)
+		sendSpellText(caster, MSG_INFO, "You plant a seed of life on " + target->getName() + ".");
 
 	lua_pushnumber(L, 1);
 	return 1;
@@ -1717,8 +1797,15 @@ int SpellScript::luaActionDoDetonateFields(lua_State *L)
 		}
 	}
 
-	if(detonated > 0)
+	if(detonated > 0) {
 		casterPlayer->pzLocked = true;
+		std::stringstream msg;
+		msg << "You detonate " << detonated << (detonated == 1 ? " field." : " fields.");
+		sendSpellText(caster, MSG_INFO, msg.str());
+	}
+	else {
+		caster->sendCancel("There are no fire, energy or poison fields around you.");
+	}
 
 	lua_pushnumber(L, detonated);
 	return 1;
@@ -1751,9 +1838,16 @@ int SpellScript::luaActionDoCounterStance(lua_State *L)
 	CounterStanceState state;
 	state.hits = hits;
 	state.reduction = reduction;
+	state.until = OTSYS_TIME() + durationMs;
 	g_counterStance[player->getID()] = state;
+	spell->game->addEvent(makeTask(durationMs,
+		boost::bind(&endCounterStance, spell->game, player->getID(), state.until)));
 
 	sendSpellMagicEffect(spell->game, player->pos, NM_ME_STANCE_GUARD);
+	std::stringstream msg;
+	msg << "You take a counter stance for " << spellSeconds(durationMs) << " s: the next " << hits
+		<< (hits == 1 ? " hit deals " : " hits deal ") << reduction << "% less damage.";
+	sendSpellText(player, MSG_INFO, msg.str());
 	lua_pushnumber(L, 1);
 	return 1;
 }
@@ -1778,19 +1872,21 @@ void runBloodRitualTick(Game* game, BloodRitualState state)
 	if(!player)
 		return;
 
+	// El cliente apaga el ícono con "Your blood ritual ends."
 	Tile* tile = game->getTile(player->pos);
-	if(tile && tile->isPz())
+	if(tile && tile->isPz()) {
+		player->sendTextMessage(MSG_SMALLINFO, "Your blood ritual ends.");
 		return;
+	}
 
 	int64_t minHp = player->healthmax * state.minHpPercent / 100;
-	if(player->health <= minHp)
-		return;
-
 	int64_t drain = state.hpPerTick;
 	if(player->health - drain < minHp)
 		drain = player->health - minHp;
-	if(drain <= 0)
+	if(drain <= 0) {
+		player->sendTextMessage(MSG_SMALLINFO, "Your blood ritual ends.");
 		return;
+	}
 
 	player->health -= drain;
 	player->mana = std::min(player->manamax, player->mana + (int64_t)state.manaPerTick);
@@ -1800,6 +1896,9 @@ void runBloodRitualTick(Game* game, BloodRitualState state)
 	if(--state.ticksLeft > 0) {
 		game->addEvent(makeTask(state.tickMs,
 			boost::bind(&runBloodRitualTick, game, state)));
+	}
+	else {
+		player->sendTextMessage(MSG_SMALLINFO, "Your blood ritual ends.");
 	}
 }
 
@@ -1859,6 +1958,10 @@ int SpellScript::luaActionDoBloodRitual(lua_State *L)
 		boost::bind(&runBloodRitualTick, spell->game, state)));
 
 	sendSpellMagicEffect(spell->game, player->pos, NM_ME_BLOOD_SPIRAL);
+	std::stringstream msg;
+	msg << "Your blood turns into mana for " << spellSeconds((long)totalTicks * tickMs) << " s: "
+		<< hpPerTick << " health into " << manaPerTick << " mana every " << spellSeconds(tickMs) << " s.";
+	player->sendTextMessage(MSG_INFO, msg.str().c_str());
 	lua_pushnumber(L, 1);
 	return 1;
 }

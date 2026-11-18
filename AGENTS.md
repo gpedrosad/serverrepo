@@ -89,6 +89,7 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 | Eco (`utevo vis`): repite el próximo golpe al 50 %; `echo="1"` en `spells.xml` | `docs/gameplay/SPELL_ECO.md` |
 | Frenzy (`utito hur`) / Rapid Fire (`utito san hur`): ataques más rápidos unos segundos, efecto constante e ícono en el cliente | `docs/gameplay/SPELL_ATTACK_SPEED.md` |
 | Hechizos nuevos nov 2026 (`exori ico`, `exori min`, `exura ico`, `exori san`, `exura san`, `utito tempo san`, `exori frigo`, `exevo gran mas frigo`) | `docs/gameplay/SPELLS_NOV2026.md` |
+| Hechizos nuevos nov 2026, 2ª tanda (`exori con gran`, `exeta sio`, `exana res`, `exori vis con`, `exura tera`, `exevo vis tera`, `utito tera`, `utamo mort`): avisos, íconos con cuenta regresiva en el cliente | `docs/gameplay/SPELLS_FEEDBACK.md` |
 | Energy Strike Hur (`exori vis hur`) target a distancia (Sorc/Druid, visual HMM) | `docs/gameplay/SPELL_EXORI_VIS_HUR.md` |
 | Challenge (`exeta res`) taunt Knight lock 6 s | `docs/gameplay/SPELL_EXETA_RES.md` |
 | Exhausted (spells/runas, ofensivo 2s / no-ofensivo 1s, bindings con exhaust) | `docs/gameplay/SPELL_EXHAUSTION.md` |

@@ -310,8 +310,13 @@ int applyCounterStance(Game* game, Player* defender, Creature* attacker,
 
 	std::map<unsigned long, CounterStanceState>::iterator it =
 		g_counterStance.find(defender->getID());
-	if(it == g_counterStance.end() || it->second.hits <= 0)
+	if(it == g_counterStance.end())
 		return damage;
+	if(it->second.hits <= 0 || OTSYS_TIME() >= it->second.until) {
+		// Se venció (el aviso de fin lo manda el evento de spells.cpp).
+		g_counterStance.erase(it);
+		return damage;
+	}
 
 	int reduction = it->second.reduction;
 	if(reduction < 0)
@@ -322,8 +327,15 @@ int applyCounterStance(Game* game, Player* defender, Creature* attacker,
 	int absorbed = damage * reduction / 100;
 	int reduced = damage - absorbed;
 
-	if(--it->second.hits <= 0)
+	game->sendMagicEffect(defender->pos, NM_ME_STANCE_GUARD);
+	std::stringstream msg;
+	msg << "Your counter stance absorbs " << absorbed << " damage.";
+	defender->sendTextMessage(MSG_SMALLINFO, msg.str().c_str());
+	if(--it->second.hits <= 0) {
 		g_counterStance.erase(it);
+		// El cliente apaga el ícono con este texto exacto (inventory.lua de clienteretro).
+		defender->sendTextMessage(MSG_SMALLINFO, "Your counter stance ends.");
+	}
 
 	// El contraataque solo funciona contra monstruos, para no complicar PvP.
 	Monster* monster = dynamic_cast<Monster*>(attacker);

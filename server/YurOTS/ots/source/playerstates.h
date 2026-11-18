@@ -20,6 +20,7 @@ struct CounterStanceState
 {
 	int hits;            // golpes restantes que absorbe
 	int reduction;       // porcentaje de reducción (0-100)
+	int64_t until;       // OTSYS_TIME() en que se termina aunque queden golpes
 };
 
 extern std::map<unsigned long, CounterStanceState> g_counterStance;

@@ -40,7 +40,7 @@ ML y maná, en `spells.xml` (bloque "ataques mas rapidos"). Se toman al reinicia
 | `source/spells.cpp` | Bindings Lua `attackSpeedReady(cid)` (segundos que faltan, avisa al jugador) y `startAttackSpeed(cid, duración, %, espera, efecto)` |
 | `source/game.cpp` | Tick de 1 s del jugador (`checkCreature`): dibuja el efecto mientras dura y al terminar manda "Your attacks slow down." |
 | `data/spells/instant/utito hur.lua`, `utito san hur.lua` | Los números de arriba |
-| Cliente `clienteretro` (`mac/` y `windows/`): `modules/game_inventory/inventory.lua` | Ícono `strengthened` en el panel de condiciones con los segundos que quedan en el tooltip |
+| Cliente `clienteretro` (`mac/` y `windows/`): `modules/game_inventory/inventory.lua` | Ícono `strengthened` en el panel de condiciones con los segundos que quedan escritos encima (desde nov 2026 es una fila de la tabla `TimedIcons`, compartida con los hechizos de [SPELLS_FEEDBACK.md](SPELLS_FEEDBACK.md)) |
 | Cliente: `modules/gamelib/spells.lua`, perfil `Retro76` | Las palabras, para el texto naranja de los hechizos |
 
 **Por qué el ícono lo prende un mensaje y no el byte de estados:** en 7.6 los íconos viajan en un byte
