@@ -79,19 +79,46 @@ alfa duro a 32×32). Luz roja suave (intensidad 2, color 187). Va **después** d
 
 ![Los 8 efectos sobre fondo oscuro, piso claro y pasto](img/spells-effects.png)
 
-Ocho animaciones dibujadas de cero (mismo método que "gran"), una por cada hechizo nuevo de nov 2026.
-Cada entrada lleva su **propia luz** en el `.dat` (tercer elemento de la tupla en `PACKS["spells"]`):
+Ocho animaciones dibujadas de cero, una por cada hechizo nuevo de nov 2026. Cada entrada lleva su **propia
+luz** en el `.dat` (tercer elemento de la tupla en `PACKS["spells"]`):
 
 | Constante | Número | Qué es | Luz | Uso |
 |-----------|-------:|--------|-----|-----|
-| `NM_ME_ARROW_VOLLEY` | 36 | Tres flechas (astil dorado, plumas carmesí, punta de acero) que cruzan la casilla de oeste a este en 7 cuadros, con estela | Dorado (198) | `exori con gran` (areaEffect, se repite en cada casilla de la línea) |
-| `NM_ME_RALLY_RING` | 37 | Anillo dorado que se expande con 4 chevrones que apuntan al centro y eco interior | Ámbar (192) | `exeta sio` (en el aliado rescatado; los monstruos siguen con `NM_ME_SOUND_BLUE`) |
-| `NM_ME_CLEANSE_SWIRL` | 38 | Burbujas menta con destello blanco que suben en zigzag, anillo suave en los pies y chispas al final | Menta (105) | `exana res` |
-| `NM_ME_CHAIN_ARC` | 39 | Rayo quebrado de esquina a esquina (núcleo blanco, halo azul) que salta al lado opuesto y deja un arco corto centrado | Eléctrico (59) | `exori vis con` (en cada monstruo de la cadena) |
-| `NM_ME_SEED_BURST` | 40 | Semilla dorada que germina: brote que sube, dos hojas con vena clara y motas de vida | Vida (97) | `exura tera` (curación inmediata y diferida) |
-| `NM_ME_DETONATION_RING` | 41 | Destello blanco-violeta que se vuelve onda expansiva (borde magenta, eco, esquirlas) | Violeta (119) | `exevo vis tera` (en el caster; cada campo detona con su efecto elemental) |
-| `NM_ME_STANCE_GUARD` | 42 | Tres arcos de acero que orbitan, crecen y cierran un anillo con destellos y chispas doradas | Acero (215, intensidad 1) | `utito tera` |
-| `NM_ME_BLOOD_SPIRAL` | 43 | Círculo de ritual carmesí con 4 runas; gotas de sangre con cola que espiralan hacia adentro y se vuelven violetas al acercarse a la estrella de maná central | Carmesí (182) | `utamo mort` (cast y cada tick) |
+| `NM_ME_ARROW_VOLLEY` | 36 | Tres flechas (astil de madera, punta de acero, plumas verdes) **caen desde arriba**, se clavan y levantan nubecitas de polvo | Polvo cálido (206, intensidad 1) | `exori con gran` (areaEffect, en cada casilla de la línea: cae vertical, así sirve para cualquier dirección) |
+| `NM_ME_RALLY_RING` | 37 | Tres galones dorados que suben desde los pies y chispas doradas que se juntan sobre el aliado | Dorado (204) | `exeta sio` (en el aliado rescatado; los monstruos siguen con `NM_ME_SOUND_BLUE`) |
+| `NM_ME_CLEANSE_SWIRL` | 38 | Manchas de veneno (violeta y verde) que revientan en un destello de agua, gotas que salen hacia afuera y chispas celestes que suben | Agua (71) | `exana res` |
+| `NM_ME_CHAIN_ARC` | 39 | Rayo grueso que cae sobre el monstruo, bola de energía celeste con borde violeta y ramas que chisporrotean | Celeste (95) | `exori vis con` (en cada monstruo de la cadena) |
+| `NM_ME_SEED_BURST` | 40 | Semilla dorada que brota, crece una planta con 4 hojas, florece en rosa y se deshace en las chispas verdes de curación | Verde (103) | `exura tera` (curación inmediata y diferida) |
+| `NM_ME_DETONATION_RING` | 41 | Estallido amarillo verdoso manchado que crece, se parte en 5 pedazos y tira piedras | Lima (174) | `exevo vis tera` (en el caster; cada campo detona con su efecto elemental) |
+| `NM_ME_STANCE_GUARD` | 42 | Escudo de caballero de acero con borde y clavo dorados; le cruza un brillo y se deshace en chispas doradas | Acero y oro (213, intensidad 1) | `utito tera` |
+| `NM_ME_BLOOD_SPIRAL` | 43 | Gotas de sangre que suben en espiral y forman un orbe de maná azul, que estalla en chispas azules | Maná (53) | `utamo mort` (cast y cada tick) |
+
+### Estilo: que parezca de 7.6 (v2, 17 nov 2026)
+
+La primera versión eran líneas finas de 1 px, degradés suaves y anillos perfectos: se veían como de otro juego.
+La v2 copia lo que hacen los efectos originales (explosiones, `NM_ME_MAGIC_*`, `NM_ME_ENERGY_AREA`) y los
+packs recoloreados. Reglas para cualquier efecto dibujado nuevo (`Frame`, `blob`, `capsule`, `sparkle` en
+`add_drawn_effects.py`):
+
+| Regla | Cómo |
+|-------|------|
+| Figuras **llenas**, nada de líneas de 1 px | `blob` (bola con borde irregular), `capsule` (trazo de 2–3 px) |
+| **4–5 tonos fijos** por color, sin degradé | Rampas de oscuro a claro (`GOLD`, `AQUA`, `VOLT`…); el sombreado elige un tono |
+| Luz arriba a la izquierda | `blob` corre el brillo hacia arriba-izquierda |
+| **Contorno oscuro** del mismo color | Cada rampa tiene su `OL_*`; se lee en piso claro, oscuro y pasto |
+| Chispas **en cruz** con centro blanco | `sparkle(x, y, tamaño, rampa)`, como las de `NM_ME_MAGIC_BLUE/RED/GREEN` |
+| Nada de círculos perfectos | Bordes con ruido (`amp`), interiores manchados (`tex`) en explosiones y humo |
+| Terminar rompiéndose | Las explosiones se parten en pedazos (`NM_ME_EXPLOSION_AREA`), lo demás en chispas |
+| Si el efecto se repite en una línea o área | Que no tenga dirección (las flechas caen verticales) |
+| Distinto de los demás | Silueta y color propios; no repetir "anillo que crece" |
+
+Para comparar con los originales: `scripts/client-rme/add_drawn_effects.py --pack spells --preview x.png`
+(cada efecto sobre fondo oscuro, piso claro y pasto).
+
+**Redibujar un pack ya aplicado:** `--replace` reemplaza sus sprites en el lugar (mismos números de efecto;
+si un efecto tiene más cuadros, los agrega al final del `.spr`, y los que sobran quedan transparentes). Los
+packs que vinieron después, como los sprites de los trolls, no se mueven. La v2 se aplicó así: 63 sprites
+reemplazados y 2 agregados (13782 → 13784), con el resto del `.spr` y del `.dat` comparado igual.
 
 Va **después** de "gran": `base: (36, 18)` → efectos 36–43, sin proyectiles nuevos.
 
@@ -111,6 +138,7 @@ python3 scripts/client-rme/add_recolor_effects.py --pack shadow devtools/rme/rme
 python3 scripts/client-rme/add_recolor_effects.py --pack power devtools/rme/rme-client-760
 python3.11 scripts/client-rme/add_drawn_effects.py --pack gran devtools/rme/rme-client-760
 python3.11 scripts/client-rme/add_drawn_effects.py --pack spells devtools/rme/rme-client-760
+python3.11 scripts/client-rme/add_drawn_effects.py --pack spells --replace devtools/rme/rme-client-760  # redibujar
 ```
 
 El script agrega las entradas al final de la sección de efectos y al final del `.dat` (proyectiles), sube
