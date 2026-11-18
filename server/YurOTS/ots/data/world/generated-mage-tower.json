@@ -1,0 +1,198 @@
+{
+  "name": "Torre del Mago Oscuro",
+  "box": [
+    120,
+    124,
+    128,
+    132
+  ],
+  "floors": [
+    7,
+    6,
+    5,
+    4,
+    3,
+    2
+  ],
+  "door": [
+    128,
+    128,
+    7
+  ],
+  "sign": [
+    129,
+    127,
+    7
+  ],
+  "stairs": {
+    "z7": [
+      126,
+      126
+    ],
+    "z6": [
+      122,
+      126
+    ],
+    "z5": [
+      126,
+      126
+    ],
+    "z4": [
+      122,
+      126
+    ],
+    "z3": [
+      126,
+      126
+    ]
+  },
+  "monsters": {
+    "z7": [
+      {
+        "name": "Elf Arcanist",
+        "pos": [
+          122,
+          129,
+          7
+        ],
+        "respawn": 120
+      },
+      {
+        "name": "Elf Arcanist",
+        "pos": [
+          126,
+          130,
+          7
+        ],
+        "respawn": 120
+      },
+      {
+        "name": "Dark Monk",
+        "pos": [
+          124,
+          128,
+          7
+        ],
+        "respawn": 120
+      }
+    ],
+    "z6": [
+      {
+        "name": "Witch",
+        "pos": [
+          122,
+          129,
+          6
+        ],
+        "respawn": 150
+      },
+      {
+        "name": "Witch",
+        "pos": [
+          126,
+          130,
+          6
+        ],
+        "respawn": 150
+      },
+      {
+        "name": "Minotaur Mage",
+        "pos": [
+          124,
+          128,
+          6
+        ],
+        "respawn": 150
+      }
+    ],
+    "z5": [
+      {
+        "name": "Ice Monk",
+        "pos": [
+          122,
+          129,
+          5
+        ],
+        "respawn": 240
+      },
+      {
+        "name": "Ice Monk",
+        "pos": [
+          126,
+          130,
+          5
+        ],
+        "respawn": 240
+      },
+      {
+        "name": "Court Mage",
+        "pos": [
+          124,
+          128,
+          5
+        ],
+        "respawn": 240
+      }
+    ],
+    "z4": [
+      {
+        "name": "Necromancer",
+        "pos": [
+          122,
+          129,
+          4
+        ],
+        "respawn": 300
+      },
+      {
+        "name": "Necromancer",
+        "pos": [
+          126,
+          130,
+          4
+        ],
+        "respawn": 300
+      },
+      {
+        "name": "Priestess",
+        "pos": [
+          124,
+          128,
+          4
+        ],
+        "respawn": 300
+      }
+    ],
+    "z3": [
+      {
+        "name": "Warlock",
+        "pos": [
+          124,
+          129,
+          3
+        ],
+        "respawn": 600
+      },
+      {
+        "name": "Necromancer",
+        "pos": [
+          126,
+          130,
+          3
+        ],
+        "respawn": 300
+      }
+    ],
+    "z2": [
+      {
+        "name": "Dark Mage",
+        "pos": [
+          124,
+          129,
+          2
+        ],
+        "respawn": 900
+      }
+    ]
+  }
+}

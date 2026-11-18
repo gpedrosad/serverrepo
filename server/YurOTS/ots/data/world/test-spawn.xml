@@ -5530,4 +5530,33 @@
 		<monster name="Stone Troll" x="-2" y="2" z="8" spawntime="235" />
 	</spawn>
 	<!-- END TROLL_DEN_SPAWNS -->
+	<!-- BEGIN MAGE_TOWER_SPAWNS (scripts/map/generate-mage-tower.py) -->
+	<spawn centerx="124" centery="129" centerz="7" radius="3">
+		<monster name="Elf Arcanist" x="-2" y="0" z="7" spawntime="120" />
+		<monster name="Elf Arcanist" x="2" y="1" z="7" spawntime="120" />
+		<monster name="Dark Monk" x="0" y="-1" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="124" centery="129" centerz="6" radius="3">
+		<monster name="Witch" x="-2" y="0" z="6" spawntime="150" />
+		<monster name="Witch" x="2" y="1" z="6" spawntime="150" />
+		<monster name="Minotaur Mage" x="0" y="-1" z="6" spawntime="150" />
+	</spawn>
+	<spawn centerx="124" centery="129" centerz="5" radius="3">
+		<monster name="Ice Monk" x="-2" y="0" z="5" spawntime="240" />
+		<monster name="Ice Monk" x="2" y="1" z="5" spawntime="240" />
+		<monster name="Court Mage" x="0" y="-1" z="5" spawntime="240" />
+	</spawn>
+	<spawn centerx="124" centery="129" centerz="4" radius="3">
+		<monster name="Necromancer" x="-2" y="0" z="4" spawntime="300" />
+		<monster name="Necromancer" x="2" y="1" z="4" spawntime="300" />
+		<monster name="Priestess" x="0" y="-1" z="4" spawntime="300" />
+	</spawn>
+	<spawn centerx="124" centery="129" centerz="3" radius="3">
+		<monster name="Warlock" x="0" y="0" z="3" spawntime="600" />
+		<monster name="Necromancer" x="2" y="1" z="3" spawntime="300" />
+	</spawn>
+	<spawn centerx="124" centery="129" centerz="2" radius="3">
+		<monster name="Dark Mage" x="0" y="0" z="2" spawntime="900" />
+	</spawn>
+	<!-- END MAGE_TOWER_SPAWNS -->
 </spawns>

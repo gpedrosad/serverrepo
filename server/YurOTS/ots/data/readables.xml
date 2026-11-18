@@ -94,4 +94,7 @@
 	<!-- BEGIN SAND_CLOCK_SIGNS -->
 	<readable x="606" y="328" z="6" text="RELOJ DE ARENA\nDescanso de 30 s y despues 6 oleadas de 60 s,\ncada una mas fuerte. Los braseros marcan la oleada.\nEntra en el descanso para empezar desde la 1.\nSalida: portal al sur."/>
 	<!-- END SAND_CLOCK_SIGNS -->
+	<!-- BEGIN MAGE_TOWER_SIGNS -->
+	<readable x="129" y="127" z="7" text="TORRE DEL MAGO OSCURO\n6 pisos de magos, cada uno mas fuerte.\nArriba de todo espera el Dark Mage."/>
+	<!-- END MAGE_TOWER_SIGNS -->
 </readables>
