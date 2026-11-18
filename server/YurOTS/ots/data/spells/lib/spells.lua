@@ -65,6 +65,15 @@ NM_ME_POWER_HIT = 33
 NM_ME_MEGA_HIT = 34
 -- Pack "gran" (dibujado de cero, add_drawn_effects.py): tajo en medialuna que gira. Lo usa exori gran.
 NM_ME_WHIRL_SLASH = 35
+-- Pack "spells" (dibujado de cero): un efecto por hechizo nuevo de nov 2026.
+NM_ME_ARROW_VOLLEY = 36 -- exori con gran
+NM_ME_RALLY_RING = 37 -- exeta sio
+NM_ME_CLEANSE_SWIRL = 38 -- exana res
+NM_ME_CHAIN_ARC = 39 -- exori vis con
+NM_ME_SEED_BURST = 40 -- exura tera
+NM_ME_DETONATION_RING = 41 -- exevo vis tera
+NM_ME_STANCE_GUARD = 42 -- utito tera
+NM_ME_BLOOD_SPIRAL = 43 -- utamo mort
 
 NM_ANI_BOLT = 1
 NM_ANI_ARROW = 2

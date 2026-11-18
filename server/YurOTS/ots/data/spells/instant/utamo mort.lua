@@ -4,7 +4,7 @@
 attackType = ATTACK_NONE
 animationEffect = NM_ANI_NONE
 hitEffect = NM_ME_NONE
-damageEffect = NM_ME_MAGIC_BLOOD
+damageEffect = NM_ME_BLOOD_SPIRAL
 animationColor = PURPLE
 offensive = false
 drawblood = false

@@ -3,7 +3,7 @@
 
 attackType = ATTACK_PHYSICAL
 needDirection = false
-areaEffect = NM_ME_HIT_AREA
+areaEffect = NM_ME_ARROW_VOLLEY
 animationEffect = NM_ANI_NONE
 hitEffect = NM_ME_DRAW_BLOOD
 damageEffect = NM_ME_HIT_AREA

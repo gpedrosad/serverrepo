@@ -1329,7 +1329,7 @@ int SpellScript::luaActionDoRescue(lua_State *L)
 	}
 
 	if(affected > 0)
-		sendSpellMagicEffect(spell->game, ally->pos, NM_ME_MAGIC_ENERGIE);
+		sendSpellMagicEffect(spell->game, ally->pos, NM_ME_RALLY_RING);
 
 	lua_pushnumber(L, affected);
 	return 1;
@@ -1387,7 +1387,7 @@ int SpellScript::luaActionDoCleanse(lua_State *L)
 
 	target->sendIcons();
 	target->sendStats();
-	sendSpellMagicEffect(spell->game, target->pos, NM_ME_SOUND_GREEN);
+	sendSpellMagicEffect(spell->game, target->pos, NM_ME_CLEANSE_SWIRL);
 	lua_pushnumber(L, 1);
 	return 1;
 }
@@ -1506,7 +1506,7 @@ int SpellScript::luaActionDoChainLightning(lua_State *L)
 		int64_t outDamage = 0, outMana = 0;
 		spell->game->creatureApplyDamage(target, dmg, outDamage, outMana, NULL);
 		if(outDamage > 0) {
-			sendSpellMagicEffect(spell->game, target->pos, NM_ME_ENERGY_DAMAGE);
+			sendSpellMagicEffect(spell->game, target->pos, NM_ME_CHAIN_ARC);
 			Player* p = dynamic_cast<Player*>(target);
 			if(p)
 				p->sendStats();
@@ -1553,7 +1553,7 @@ void runDelayedHeal(Game* game, const DelayedHealJob& job)
 		newHealth = target->healthmax;
 	target->health = newHealth;
 
-	sendSpellMagicEffect(game, target->pos, NM_ME_MAGIC_ENERGIE);
+	sendSpellMagicEffect(game, target->pos, NM_ME_SEED_BURST);
 	if(Player* p = dynamic_cast<Player*>(target))
 		p->sendStats();
 }
@@ -1613,7 +1613,7 @@ int SpellScript::luaActionDoDelayedHeal(lua_State *L)
 		newHealth = target->healthmax;
 	target->health = newHealth;
 	target->sendStats();
-	sendSpellMagicEffect(spell->game, target->pos, NM_ME_MAGIC_ENERGIE);
+	sendSpellMagicEffect(spell->game, target->pos, NM_ME_SEED_BURST);
 
 	// Curación diferida.
 	DelayedHealJob job;
@@ -1753,7 +1753,7 @@ int SpellScript::luaActionDoCounterStance(lua_State *L)
 	state.reduction = reduction;
 	g_counterStance[player->getID()] = state;
 
-	sendSpellMagicEffect(spell->game, player->pos, NM_ME_SOUND_YELLOW);
+	sendSpellMagicEffect(spell->game, player->pos, NM_ME_STANCE_GUARD);
 	lua_pushnumber(L, 1);
 	return 1;
 }
@@ -1795,7 +1795,7 @@ void runBloodRitualTick(Game* game, BloodRitualState state)
 	player->health -= drain;
 	player->mana = std::min(player->manamax, player->mana + (int64_t)state.manaPerTick);
 	player->sendStats();
-	sendSpellMagicEffect(game, player->pos, NM_ME_MAGIC_BLOOD);
+	sendSpellMagicEffect(game, player->pos, NM_ME_BLOOD_SPIRAL);
 
 	if(--state.ticksLeft > 0) {
 		game->addEvent(makeTask(state.tickMs,
@@ -1858,7 +1858,7 @@ int SpellScript::luaActionDoBloodRitual(lua_State *L)
 	spell->game->addEvent(makeTask(tickMs,
 		boost::bind(&runBloodRitualTick, spell->game, state)));
 
-	sendSpellMagicEffect(spell->game, player->pos, NM_ME_MAGIC_BLOOD);
+	sendSpellMagicEffect(spell->game, player->pos, NM_ME_BLOOD_SPIRAL);
 	lua_pushnumber(L, 1);
 	return 1;
 }

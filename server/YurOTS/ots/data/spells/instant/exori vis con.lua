@@ -4,7 +4,7 @@
 attackType = ATTACK_NONE
 animationEffect = NM_ANI_NONE
 hitEffect = NM_ME_NONE
-damageEffect = NM_ME_ENERGY_DAMAGE
+damageEffect = NM_ME_CHAIN_ARC
 animationColor = ENERGY
 offensive = true
 drawblood = false

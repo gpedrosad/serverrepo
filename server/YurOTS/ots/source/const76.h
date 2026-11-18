@@ -54,6 +54,16 @@ enum MagicEffectClasses {
 	NM_ME_POWER_HIT        = 0x21, //33 explosión de energía en dorado
 	NM_ME_MEGA_HIT         = 0x22, //34 explosión de energía en fucsia y dorado
 	// 35: NM_ME_WHIRL_SLASH (pack gran, solo Lua: exori gran)
+	// 36-43: pack "spells" de scripts/client-rme/add_drawn_effects.py, un efecto
+	// dibujado por hechizo nuevo (ver docs/gameplay/CLIENT_EFFECTS.md).
+	NM_ME_ARROW_VOLLEY     = 0x24, //36 exori con gran: tres flechas doradas que cruzan la casilla
+	NM_ME_RALLY_RING       = 0x25, //37 exeta sio: anillo dorado con chevrones que llaman al centro
+	NM_ME_CLEANSE_SWIRL    = 0x26, //38 exana res: burbujas menta que suben y revientan
+	NM_ME_CHAIN_ARC        = 0x27, //39 exori vis con: arcos eléctricos entrecortados
+	NM_ME_SEED_BURST       = 0x28, //40 exura tera: semilla que germina en un brote con dos hojas
+	NM_ME_DETONATION_RING  = 0x29, //41 exevo vis tera: destello violeta que se vuelve onda expansiva
+	NM_ME_STANCE_GUARD     = 0x2A, //42 utito tera: arcos de acero que cierran un anillo
+	NM_ME_BLOOD_SPIRAL     = 0x2B, //43 utamo mort: gotas carmesí que espiralan a una estrella de maná
 };
 
 #define NM_ANI_BOLT              1

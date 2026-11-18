@@ -4,7 +4,7 @@
 attackType = ATTACK_NONE
 animationEffect = NM_ANI_NONE
 hitEffect = NM_ME_NONE
-damageEffect = NM_ME_SOUND_YELLOW
+damageEffect = NM_ME_STANCE_GUARD
 animationColor = YELLOW
 offensive = false
 drawblood = false

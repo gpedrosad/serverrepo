@@ -75,6 +75,26 @@ Sin proyectiles. Luz dorada (color **204**). Va **después** de "shadow": `base:
 No sale de recolorear: lo dibuja `scripts/client-rme/add_drawn_effects.py` con numpy (supermuestreo ×8 y
 alfa duro a 32×32). Luz roja suave (intensidad 2, color 187). Va **después** de "power": `base: (35, 18)`.
 
+## Pack "spells" (nov 2026): un efecto dibujado por hechizo nuevo
+
+![Los 8 efectos sobre fondo oscuro, piso claro y pasto](img/spells-effects.png)
+
+Ocho animaciones dibujadas de cero (mismo método que "gran"), una por cada hechizo nuevo de nov 2026.
+Cada entrada lleva su **propia luz** en el `.dat` (tercer elemento de la tupla en `PACKS["spells"]`):
+
+| Constante | Número | Qué es | Luz | Uso |
+|-----------|-------:|--------|-----|-----|
+| `NM_ME_ARROW_VOLLEY` | 36 | Tres flechas (astil dorado, plumas carmesí, punta de acero) que cruzan la casilla de oeste a este en 7 cuadros, con estela | Dorado (198) | `exori con gran` (areaEffect, se repite en cada casilla de la línea) |
+| `NM_ME_RALLY_RING` | 37 | Anillo dorado que se expande con 4 chevrones que apuntan al centro y eco interior | Ámbar (192) | `exeta sio` (en el aliado rescatado; los monstruos siguen con `NM_ME_SOUND_BLUE`) |
+| `NM_ME_CLEANSE_SWIRL` | 38 | Burbujas menta con destello blanco que suben en zigzag, anillo suave en los pies y chispas al final | Menta (105) | `exana res` |
+| `NM_ME_CHAIN_ARC` | 39 | Rayo quebrado de esquina a esquina (núcleo blanco, halo azul) que salta al lado opuesto y deja un arco corto centrado | Eléctrico (59) | `exori vis con` (en cada monstruo de la cadena) |
+| `NM_ME_SEED_BURST` | 40 | Semilla dorada que germina: brote que sube, dos hojas con vena clara y motas de vida | Vida (97) | `exura tera` (curación inmediata y diferida) |
+| `NM_ME_DETONATION_RING` | 41 | Destello blanco-violeta que se vuelve onda expansiva (borde magenta, eco, esquirlas) | Violeta (119) | `exevo vis tera` (en el caster; cada campo detona con su efecto elemental) |
+| `NM_ME_STANCE_GUARD` | 42 | Tres arcos de acero que orbitan, crecen y cierran un anillo con destellos y chispas doradas | Acero (215, intensidad 1) | `utito tera` |
+| `NM_ME_BLOOD_SPIRAL` | 43 | Círculo de ritual carmesí con 4 runas; gotas de sangre con cola que espiralan hacia adentro y se vuelven violetas al acercarse a la estrella de maná central | Carmesí (182) | `utamo mort` (cast y cada tick) |
+
+Va **después** de "gran": `base: (36, 18)` → efectos 36–43, sin proyectiles nuevos.
+
 ## Otros proyectiles agregados
 
 | Constante | Número | Script | Qué es |
@@ -90,6 +110,7 @@ python3 scripts/client-rme/add_enchanted_spear.py devtools/rme/rme-client-760
 python3 scripts/client-rme/add_recolor_effects.py --pack shadow devtools/rme/rme-client-760
 python3 scripts/client-rme/add_recolor_effects.py --pack power devtools/rme/rme-client-760
 python3.11 scripts/client-rme/add_drawn_effects.py --pack gran devtools/rme/rme-client-760
+python3.11 scripts/client-rme/add_drawn_effects.py --pack spells devtools/rme/rme-client-760
 ```
 
 El script agrega las entradas al final de la sección de efectos y al final del `.dat` (proyectiles), sube
@@ -98,15 +119,15 @@ sobre el cliente del RME: contadores 25/15 → 29/16, los 25 efectos y 15 proyec
 looktypes (incluido el 231) e ítems sin cambios, 400 sprites viejos al azar idénticos, sprites 11058 → 11094.
 
 **Los packs se aplican en orden** (el número de cada constante depende de cuántos efectos había):
-ice → Enchanted Spear → shadow → power → gran. Cada pack de `PACKS` declara en `base` los contadores sobre los que se aplica.
-Para uno nuevo (ej. sagrado), agregarlo al final con `base: (36, 18)`: efectos desde **36**, proyectiles desde
+ice → Enchanted Spear → shadow → power → gran → spells. Cada pack de `PACKS` declara en `base` los contadores sobre los que se aplica.
+Para uno nuevo, agregarlo al final con `base: (44, 18)`: efectos desde **44**, proyectiles desde
 **18**. Volver a correr la Enchanted Spear con packs posteriores ya aplicados conserva sus proyectiles.
 
 ## Antes de usarlos en producción
 
 1. **Probar en los dos clientes** que el efecto nuevo se ve: OTClientV8 (Mac) y el cliente oficial 7.6
    parcheado (Windows). Ambos leen los contadores del `.dat`, pero no se probó todavía en el juego.
-   Prueba rápida con un GM (access 1+): **`/z 25`** … `/z 32` muestran cada efecto nuevo sobre
+   Prueba rápida con un GM (access 1+): **`/z 25`** … `/z 43` muestran cada efecto nuevo sobre
    el personaje (`Commands::testCommand`). Para los proyectiles: `/m Frost Dragon` (bola de hielo) y
    `/m Black Dragon` (bola de sombra).
    Con un cliente **viejo**, probar también `/z 25` para ver qué le pasa a quien no actualizó.

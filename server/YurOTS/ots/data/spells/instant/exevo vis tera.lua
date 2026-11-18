@@ -4,7 +4,7 @@
 attackType = ATTACK_NONE
 animationEffect = NM_ANI_NONE
 hitEffect = NM_ME_NONE
-damageEffect = NM_ME_EXPLOSION_DAMAGE
+damageEffect = NM_ME_DETONATION_RING
 animationColor = ENERGY
 offensive = true
 drawblood = false

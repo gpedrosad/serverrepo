@@ -4,7 +4,7 @@
 attackType = ATTACK_NONE
 animationEffect = NM_ANI_NONE
 hitEffect = NM_ME_NONE
-damageEffect = NM_ME_MAGIC_ENERGIE
+damageEffect = NM_ME_CLEANSE_SWIRL
 animationColor = GREEN
 offensive = false
 drawblood = false
