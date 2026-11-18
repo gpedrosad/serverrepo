@@ -409,10 +409,10 @@ def main() -> int:
                        "La cueva baja tres pisos; al fondo espera la Old Widow.",
                    ], "Portal Isla natural", "Llegada a la isla"),
         route_jump("valle-de-las-bestias", "Valle de las Bestias", "portal", (158, 47, 7),
-                   (312, 360, 7), (312, 252, 7), [
+                   (312, 360, 7), (312, 267, 7), [
                        "Sal del depot a la plaza y entra al portal VALLE DE LAS BESTIAS.",
                        "Llegas al sur del valle.",
-                       "Sigue el camino al norte hasta las Ruinas y la escalera a las Catacumbas.",
+                       "Sigue el camino al norte, pasa las Ruinas y llega a la boca de las Catacumbas.",
                    ], "Portal Valle de las Bestias", "Llegada al valle"),
         route_jump("el-crisol", "El Crisol", "portal", (164, 47, 7), (605, 105, 0), None, [
             "Sal del depot a la plaza y entra al portal CRISOL.",
