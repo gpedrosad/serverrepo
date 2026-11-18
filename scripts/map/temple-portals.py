@@ -56,6 +56,8 @@ PORTALS = [
     ("valle", 158, (312, 360, 7), "VALLE DE LAS BESTIAS\nCaza mid-hard en 4 pisos\nDe Minotauros a Demonios",
      [(262, 232, 361, 378, 7), (262, 232, 361, 378, 8), (262, 232, 361, 378, 9), (262, 232, 361, 378, 10),
       (449, 39, 489, 80, 7)]),
+    ("inferno", 159, (540, 440, 7), "POZOS DEL INFIERNO\nCueva de fuego en 4 pisos\nDe elementales a Furias",
+     [(490, 240, 589, 460, 7), (490, 240, 589, 460, 8), (490, 240, 589, 460, 9), (490, 240, 589, 460, 10)]),
     ("crisol", 164, (605, 105, 0), "CRISOL\n3 puertas. Boss diario.\nBronce / Plata / Oro",
      [(592, 90, 717, 125, 0)]),
     ("wave", 166, (606, 223, 7), "WAVE ARENA\nClaro de la Selva: 20 oleadas\nEn grupo. Premio semanal",

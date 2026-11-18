@@ -5,11 +5,12 @@ Registro público: **`/quests`** (`web/site/src/pages/quests.astro`). La fuente 
 
 ## Qué hay
 
-- **29 entradas existentes**: 25 con cofre o grupo y 4 sistemas repetibles (Daily Task, Wave Arena,
+- **30 entradas existentes**: 26 con cofre o grupo y 4 sistemas repetibles (Daily Task, Wave Arena,
   Reloj de Arena y El Crisol). La Arena PvP se retiró en nov 2026 (su zona es ahora El Foso Olvidado).
-- **40 cofres de quest** en el mapa: 29 con `quest.lua` (uid 1001–4999 y 20100–20199), 4 del
-  Annihilator (`5006`–`5009`), 3 del Pharaoh (`5003`, `5004`, `5017`) y 4 de Hell Quest (`5100`–`5103`).
-- **9 propuestas** para crear, con nivel recomendado.
+- **44 cofres de quest** en el mapa: 29 con `quest.lua` (uid 1001–4999 y 20100–20199), 4 del
+  Annihilator (`5006`–`5009`), 3 del Pharaoh (`5003`, `5004`, `5017`), 4 de Hell Quest (`5100`–`5103`)
+  y 4 de los Pozos del Infierno (`5104`–`5107`).
+- **8 propuestas** para crear, con nivel recomendado.
 
 ## Quests principales
 
@@ -19,6 +20,7 @@ Registro público: **`/quests`** (`web/site/src/pages/quests.astro`). La fuente 
 | Pharaoh Quest | 80–100 | 2–4 | Tumbas del desierto `205-209,166,9` | Dragon Lance, War Hammer o Giant Sword |
 | Castillo Imperial | 60–80 | 1–4 | Tesorería z3 `97/103,28,3` | Crown Legs y Royal Helmet |
 | Hell Quest | 100–130 | 1–7 | Cámara de la Elección z9 | Demon Helmet, MPA, Boots of Haste o Demon Shield |
+| Pozos del Infierno | 100–130 | 4–6 | Cámara de las Armas z10 `540,380,10` (tras la puerta 100 y el Arena de las Furias) | Elegir una: Emerald Sword, Avenger, Arcane Staff o Arbalest |
 | TP Gauntlet | 80–100 | 1–4 | Sala final `450,77/79,7` | Demon Armor y Fury Cape |
 | Isla del Hielo: leñador | 25–45 | 1 | `373,95,7` | Crystal Coin |
 | Isla del Hielo: Yeti | 40–60 | 1 | `369,63,7` | Frozen Starlight |
@@ -72,7 +74,6 @@ a propósito: solo tiene el nivel 80 del cofre.
 
 | Quest | Nivel | Jugadores | Recompensa | Por qué |
 |---|---:|---|---|---|
-| Pits of Inferno | 100–130 | 4–6 | Elegir Avenger, Arcane Staff o Arbalest + loot de demons | Es la fuente que falta para las armas 8.x, hoy solo por GM |
 | El Faro de los Contrabandistas | 20–35 | 1 | Serpent Sword + 1.000 gp | Cubre el hueco de nivel 20–35 y reusa piratas |
 | Las Minas de los Enanos | 45–65 | 1–2 | Dwarven Axe o War Axe + 5.000 gp | Contenido de enanos y recompensa media |
 | La Cripta de los Reyes | 55–70 | 1 | Crown Armor + Crown Legs | Puente entre Knight Legs y armaduras altas |
@@ -92,12 +93,11 @@ Estos items no salen de ningún monstruo y todavía no tienen una fuente clara:
 
 | Item | Fuente actual | Quest propuesta | Nivel |
 |---|---|---|---:|
-| emerald sword | Solo GM | Pits of Inferno | 100–130 |
-| avenger | Solo GM | Pits of Inferno | 100–130 |
-| arcane staff | Solo GM | Pits of Inferno | 100–130 |
-| arbalest | Solo GM | Pits of Inferno | 100–130 |
 | enchanted spear | Solo GM | El Templo Sumergido | 70–90 |
 | train wand | Sin forma de conseguirlo | La Biblioteca Perdida | 35–55 |
+
+La Emerald Sword, la Avenger, la Arcane Staff y la Arbalest ya tienen fuente desde nov 2026: la
+Cámara de las Armas de los Pozos del Infierno (uid 5104–5107).
 
 No se listan los objetos de sistema que se entregan por tienda o premium (runas consumibles, trainer dummy, scrolls, accesorios dorados) ni los que ya tienen cofre/quest.
 

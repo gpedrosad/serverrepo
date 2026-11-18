@@ -14,6 +14,7 @@
 	<readable x="155" y="46" z="7" text="CATEDRAL OSCURA\nRuinas y cripta de 2 pisos\nDe Bandidos a Monjes Oscuros"/>
 	<readable x="157" y="46" z="7" text="ELVENBANE\nFortaleza elfica en 7 pisos.\nDe orcos y elfos al dragon de la torre."/>
 	<readable x="158" y="46" z="7" text="VALLE DE LAS BESTIAS\nCaza mid-hard en 4 pisos\nDe Minotauros a Demonios"/>
+	<readable x="159" y="46" z="7" text="POZOS DEL INFIERNO\nCueva de fuego en 4 pisos\nDe elementales a Furias"/>
 	<readable x="164" y="46" z="7" text="CRISOL\n3 puertas. Boss diario.\nBronce / Plata / Oro"/>
 	<readable x="166" y="46" z="7" text="WAVE ARENA\nClaro de la Selva: 20 oleadas\nEn grupo. Premio semanal"/>
 	<readable x="168" y="46" z="7" text="RELOJ DE ARENA\n6 oleadas que suben de nivel\nEntra en el descanso"/>
@@ -97,4 +98,12 @@
 	<!-- BEGIN MAGE_TOWER_SIGNS -->
 	<readable x="129" y="127" z="7" text="TORRE DEL MAGO OSCURO\n6 pisos de magos, cada uno mas fuerte.\nArriba de todo espera el Dark Mage."/>
 	<!-- END MAGE_TOWER_SIGNS -->
+	<!-- BEGIN INFERNO_PITS_SIGNS -->
+	<readable x="526" y="404" z="7" text="CAMPO DE BRASAS\nDiablos de fuego y elementales."/>
+	<readable x="542" y="293" z="7" text="LA BOCA DEL POZO\nPuerta: nivel 90. Abajo, los Pozos de Ceniza.\nAl fondo, el Corazon pide nivel 100."/>
+	<readable x="542" y="417" z="7" text="EL VADO\nOeste: Campo de Brasas.\nNorte: La Jauria y la Boca."/>
+	<readable x="543" y="436" z="7" text="POZOS DEL INFIERNO\nYerma de ceniza sobre los pozos.\nAl norte: la Boca. Portal al sur: templo."/>
+	<readable x="554" y="359" z="7" text="LA JAURIA\nPerros del infierno entre las rocas."/>
+	<readable x="544" y="381" z="10" text="CAMARA DE LAS ARMAS\nCuatro cofres: cada heroe toma uno.\nPuerta: nivel 100."/>
+	<!-- END INFERNO_PITS_SIGNS -->
 </readables>

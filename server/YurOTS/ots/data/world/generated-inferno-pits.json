@@ -1,0 +1,206 @@
+{
+  "name": "generated-inferno-pits",
+  "seed": 23,
+  "version": 1,
+  "box": {
+    "x1": 490,
+    "y1": 240,
+    "x2": 589,
+    "y2": 460,
+    "z": [
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  "landing": {
+    "x": 540,
+    "y": 440,
+    "z": 7
+  },
+  "portalsBack": [
+    {
+      "x": 540,
+      "y": 445,
+      "z": 7,
+      "to": [
+        159,
+        48,
+        7
+      ]
+    },
+    {
+      "x": 541,
+      "y": 445,
+      "z": 7,
+      "to": [
+        159,
+        48,
+        7
+      ]
+    },
+    {
+      "x": 540,
+      "y": 384,
+      "z": 10,
+      "to": [
+        159,
+        48,
+        7
+      ]
+    }
+  ],
+  "mouths": [
+    {
+      "name": "La Boca del Pozo",
+      "x": 540,
+      "y": 285,
+      "z": 7
+    }
+  ],
+  "downs": [
+    {
+      "name": "Pozos de Ceniza -> Garganta de Magma",
+      "x": 542,
+      "y": 325,
+      "z": 8
+    },
+    {
+      "name": "Garganta -> Corazon",
+      "x": 570,
+      "y": 292,
+      "z": 9
+    }
+  ],
+  "floors": {
+    "z8": "Pozos de Ceniza",
+    "z9": "Garganta de Magma",
+    "z10": "Corazon del Infierno"
+  },
+  "doors": [
+    {
+      "level": 90,
+      "x": 540,
+      "y": 287,
+      "z": 7
+    },
+    {
+      "level": 100,
+      "x": 539,
+      "y": 356,
+      "z": 10
+    }
+  ],
+  "chests": [
+    {
+      "uid": 5104,
+      "item": 20157,
+      "x": 536,
+      "y": 380,
+      "z": 10
+    },
+    {
+      "uid": 5105,
+      "item": 20158,
+      "x": 538,
+      "y": 380,
+      "z": 10
+    },
+    {
+      "uid": 5106,
+      "item": 20159,
+      "x": 541,
+      "y": 380,
+      "z": 10
+    },
+    {
+      "uid": 5107,
+      "item": 20160,
+      "x": 543,
+      "y": 380,
+      "z": 10
+    }
+  ],
+  "arena": {
+    "x": 540,
+    "y": 369,
+    "z": 10,
+    "guardians": [
+      "Fury",
+      "Demon x2"
+    ]
+  },
+  "zones": {
+    "ember": {
+      "x": 522,
+      "y": 398,
+      "rx": 10,
+      "ry": 7
+    },
+    "hounds": {
+      "x": 558,
+      "y": 352,
+      "rx": 10,
+      "ry": 7
+    },
+    "cross": {
+      "x": 540,
+      "y": 418,
+      "rx": 8,
+      "ry": 6
+    }
+  },
+  "spawns": {
+    "z7": 19,
+    "z8": 17,
+    "z9": 15,
+    "z10": 20,
+    "guardians": 3,
+    "monsters": 105
+  },
+  "monsters": {
+    "Demon": 28,
+    "Fire Devil": 6,
+    "Fire Elemental": 23,
+    "Fury": 10,
+    "Hellhound": 38
+  },
+  "density": [
+    {
+      "zone": "ember",
+      "z": 7,
+      "tiles": 201,
+      "spawns": 10,
+      "monsters": 13
+    },
+    {
+      "zone": "hounds",
+      "z": 7,
+      "tiles": 205,
+      "spawns": 9,
+      "monsters": 12
+    },
+    {
+      "zone": "cenizas",
+      "z": 8,
+      "tiles": 1035,
+      "spawns": 17,
+      "monsters": 22
+    },
+    {
+      "zone": "magma",
+      "z": 9,
+      "tiles": 1022,
+      "spawns": 15,
+      "monsters": 24
+    },
+    {
+      "zone": "corazon",
+      "z": 10,
+      "tiles": 1311,
+      "spawns": 20,
+      "monsters": 31
+    }
+  ]
+}

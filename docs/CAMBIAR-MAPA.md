@@ -10,6 +10,7 @@ Relacionado:
 - [docs/items-and-map/MAPA_DE_MONSTRUOS.md](items-and-map/MAPA_DE_MONSTRUOS.md): mapa interactivo de spawns y NPC (`build-monster-map.py`)
 - [docs/items-and-map/MAPEAR_LABERINTO.md](items-and-map/MAPEAR_LABERINTO.md) — laberinto 2 sqm (camino 406, fondo 100, teleport templo) con `generate-maze.py`
 - [docs/items-and-map/MAPEAR_VALLE_DE_LAS_BESTIAS.md](items-and-map/MAPEAR_VALLE_DE_LAS_BESTIAS.md) — Valle de las Bestias (reemplazó al hunt maze); portal `158,47,7` con `generate-beast-valley.py`
+- [docs/items-and-map/MAPEAR_POZOS_DEL_INFIERNO.md](items-and-map/MAPEAR_POZOS_DEL_INFIERNO.md) — Pozos del Infierno (cueva de fuego z7–z10, puerta 90/100 y Cámara de las Armas: las 4 armas 8.x); portal `159,47,7` con `generate-inferno-pits.py`
 - [docs/items-and-map/ELVENBANE.md](items-and-map/ELVENBANE.md) — Elvenbane (fortaleza élfica en 7 pisos, documentación completa); portal `157,47,7` con `generate-elvenbane.py`. Resumen: [MAPEAR_ELVENBANE.md](items-and-map/MAPEAR_ELVENBANE.md)
 - [docs/items-and-map/DARK_CATHEDRAL.md](items-and-map/DARK_CATHEDRAL.md) — Dark Cathedral (ruinas, cripta -1 con cueva y cripta -2); portal `155,47,7` con `generate-dark-cathedral.py`, resumen en `MAPEAR_DARK_CATHEDRAL.md`
 - [docs/items-and-map/MAPEAR_FOSO_OLVIDADO.md](items-and-map/MAPEAR_FOSO_OLVIDADO.md) — El Foso Olvidado (reemplaza la Arena PvP de z9): 3 pisos de laberinto progresivo con `generate-forgotten-pit.py`
@@ -47,6 +48,7 @@ Los maneja **un solo script**: `python3 scripts/map/temple-portals.py` (idempote
 | `155,47,7` | `155,48,7` | Dark Cathedral (ruinas, cripta -1 con cueva natural y cripta -2) | [`DARK_CATHEDRAL.md`](items-and-map/DARK_CATHEDRAL.md) + [`generate-dark-cathedral.py`](../scripts/map/generate-dark-cathedral.py) |
 | `157,47,7` | `157,48,7` | Elvenbane (fortaleza élfica en 7 pisos: isla + túnel + sótanos + adarve y torres, de Orcos a un Dragon; escalera de mano en todas las conexiones) | [`ELVENBANE.md`](items-and-map/ELVENBANE.md) |
 | `158,47,7` | `158,48,7` | Valle de las Bestias (el gauntlet también vuelve acá) | [`MAPEAR_VALLE_DE_LAS_BESTIAS.md`](items-and-map/MAPEAR_VALLE_DE_LAS_BESTIAS.md) |
+| `159,47,7` | `159,48,7` | Pozos del Infierno (cueva de fuego z7–z10, armas 8.x en la Cámara) | [`MAPEAR_POZOS_DEL_INFIERNO.md`](items-and-map/MAPEAR_POZOS_DEL_INFIERNO.md) |
 | `164,47,7` | `164,48,7` | El Crisol | [`CRUCIBLE.md`](gameplay/CRUCIBLE.md) |
 | `166,47,7` | `166,48,7` | Wave Arena | [`WAVE_ARENA.md`](gameplay/WAVE_ARENA.md) |
 | `168,47,7` | `168,48,7` | Reloj de Arena | [`SAND_CLOCK.md`](gameplay/SAND_CLOCK.md) |

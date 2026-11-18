@@ -88,6 +88,24 @@
       ]
     },
     {
+      "id": "pozos-infierno",
+      "name": "Pozos del Infierno",
+      "type": "grupo",
+      "level_label": "100-130",
+      "level_min": 100,
+      "players": "4-6",
+      "where": "Pozos del Infierno, Cámara de las Armas z10",
+      "reward": "Elegís una: Emerald Sword, Avenger, Arcane Staff o Arbalest (una por personaje)",
+      "note": "Portal del templo 159,47. Puertas de nivel 90 y 100; Arena de las Furias (1 Fury + 2 Demon).",
+      "chests": 4,
+      "reward_ids": [
+        20157,
+        20158,
+        20159,
+        20160
+      ]
+    },
+    {
       "id": "gauntlet",
       "name": "TP Gauntlet",
       "type": "grupo",
@@ -476,22 +494,6 @@
   ],
   "proposals": [
     {
-      "id": "pits-of-inferno",
-      "name": "Pits of Inferno",
-      "level_label": "100-130",
-      "level_min": 100,
-      "players": "4-6",
-      "where": "Inframundo, bajo el Hell Quest",
-      "reward": "Elegís una: Avenger, Arcane Staff o Arbalest + loot de demons",
-      "why": "Es la quest que falta para las armas 8.x, que hoy solo salen por GM. Ya está documentada como pendiente.",
-      "order": 1,
-      "reward_ids": [
-        20158,
-        20159,
-        20160
-      ]
-    },
-    {
       "id": "faro-contrabandistas",
       "name": "El Faro de los Contrabandistas",
       "level_label": "20-35",
@@ -500,7 +502,7 @@
       "where": "Faro y cueva al sur del puerto",
       "reward": "Serpent Sword + 1.000 gp",
       "why": "Cubre el hueco de quests para nivel 20-35 y reusa los piratas que ya están en el mapa.",
-      "order": 2,
+      "order": 1,
       "reward_ids": [
         2409
       ]
@@ -514,7 +516,7 @@
       "where": "Minas bajo la montaña, al norte",
       "reward": "Dwarven Axe o War Axe + 5.000 gp",
       "why": "Da contenido de enanos y una recompensa media que hoy no tiene quest propia.",
-      "order": 3,
+      "order": 2,
       "reward_ids": [
         2435,
         2454
@@ -530,7 +532,7 @@
       "reward": "Train Wand + runas",
       "reward_ids": [],
       "why": "El train wand no tiene ninguna fuente; una quest de magos le da un lugar y de paso reparte runas.",
-      "order": 4
+      "order": 3
     },
     {
       "id": "cripta-reyes",
@@ -541,7 +543,7 @@
       "where": "Cripta undead bajo la ciudad",
       "reward": "Crown Armor + Crown Legs",
       "why": "Puente entre Knight Legs y las armaduras de nivel alto; los undead y la cripta ya existen.",
-      "order": 5,
+      "order": 4,
       "reward_ids": [
         2487,
         2488
@@ -556,7 +558,7 @@
       "where": "Templo bajo el agua, junto a la Isla del Hielo",
       "reward": "Magic Plate Armor o Sapphire Crown Armor",
       "why": "Aprovecha las criaturas 8.6 nuevas (quaras, elementales) y da contenido de grupo.",
-      "order": 6,
+      "order": 5,
       "reward_ids": [
         2472,
         20162
@@ -571,7 +573,7 @@
       "where": "Forja de fuego, al este del Hell Quest",
       "reward": "Demon Shield + 20.000 gp",
       "why": "Contenido de fuego de alto nivel; hoy el Hell Quest es la única quest de ese palo.",
-      "order": 7,
+      "order": 6,
       "reward_ids": [
         2520
       ]
@@ -585,7 +587,7 @@
       "where": "Las 9 zonas del Desierto de las Ruinas",
       "reward": "Gemas + exp; ranking semanal",
       "why": "Contenido repetible para grupos; el desierto ya tiene zonas, jefes y cofres.",
-      "order": 8,
+      "order": 7,
       "reward_ids": [
         2154,
         2156
@@ -600,7 +602,7 @@
       "where": "Arena nueva en la plaza del templo",
       "reward": "Rare loot de los jefes + ranking semanal",
       "why": "Da un objetivo de fin de semana y reusa los jefes que ya existen.",
-      "order": 9,
+      "order": 8,
       "reward_ids": [
         2493,
         2520
@@ -608,38 +610,6 @@
     }
   ],
   "pending_items": [
-    {
-      "id": 20157,
-      "name": "emerald sword",
-      "source": "Solo GM",
-      "quest": "Pits of Inferno",
-      "level": "100-130",
-      "note": "Elegís una de las tres armas 8.x."
-    },
-    {
-      "id": 20158,
-      "name": "avenger",
-      "source": "Solo GM",
-      "quest": "Pits of Inferno",
-      "level": "100-130",
-      "note": "Elegís una de las tres armas 8.x."
-    },
-    {
-      "id": 20159,
-      "name": "arcane staff",
-      "source": "Solo GM",
-      "quest": "Pits of Inferno",
-      "level": "100-130",
-      "note": "Elegís una de las tres armas 8.x."
-    },
-    {
-      "id": 20160,
-      "name": "arbalest",
-      "source": "Solo GM",
-      "quest": "Pits of Inferno",
-      "level": "100-130",
-      "note": "Elegís una de las tres armas 8.x."
-    },
     {
       "id": 20156,
       "name": "enchanted spear",
@@ -1175,6 +1145,58 @@
       "reward_id": 2520,
       "reward": "Demon Shield",
       "place": "Cámara de la Elección, z9",
+      "level": "100-130",
+      "level_min": 100
+    },
+    {
+      "quest_id": "pozos-infierno",
+      "quest": "Pozos del Infierno",
+      "x": 536,
+      "y": 380,
+      "z": 10,
+      "uid": 5104,
+      "reward_id": 20157,
+      "reward": "Emerald Sword",
+      "place": "Cámara de las Armas, tras la puerta de nivel 100",
+      "level": "100-130",
+      "level_min": 100
+    },
+    {
+      "quest_id": "pozos-infierno",
+      "quest": "Pozos del Infierno",
+      "x": 538,
+      "y": 380,
+      "z": 10,
+      "uid": 5105,
+      "reward_id": 20158,
+      "reward": "Avenger",
+      "place": "Cámara de las Armas, tras la puerta de nivel 100",
+      "level": "100-130",
+      "level_min": 100
+    },
+    {
+      "quest_id": "pozos-infierno",
+      "quest": "Pozos del Infierno",
+      "x": 541,
+      "y": 380,
+      "z": 10,
+      "uid": 5106,
+      "reward_id": 20159,
+      "reward": "Arcane Staff",
+      "place": "Cámara de las Armas, tras la puerta de nivel 100",
+      "level": "100-130",
+      "level_min": 100
+    },
+    {
+      "quest_id": "pozos-infierno",
+      "quest": "Pozos del Infierno",
+      "x": 543,
+      "y": 380,
+      "z": 10,
+      "uid": 5107,
+      "reward_id": 20160,
+      "reward": "Arbalest",
+      "place": "Cámara de las Armas, tras la puerta de nivel 100",
       "level": "100-130",
       "level_min": 100
     }

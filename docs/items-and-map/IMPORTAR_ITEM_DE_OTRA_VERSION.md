@@ -19,8 +19,9 @@ cómo agregar más. El sprite sale del cliente de esa versión, píxel por píxe
 - **Arbalest:** en 7.6 el daño a distancia salía solo de la munición (los arcos y ballestas tienen
   ataque 0). Ahora `Player::getWeaponDamage()` suma el ataque del lanzador al de la munición, como en las
   versiones nuevas; la Arbalest es la primera con ataque (+2). Necesita el binario compilado.
-- **Cómo se consiguen:** por ahora solo con GM (`/i 20157 1`). Para la quest de la Pits of Inferno
-  (Avenger, Arcane Staff y Arbalest a elegir) falta armar la quest.
+- **Cómo se consiguen:** desde nov 2026, en la **Cámara de las Armas** de los Pozos del Infierno
+  (uid 5104–5107, `pitschest.lua`): cada personaje elige UNA — Emerald Sword, Avenger, Arcane Staff
+  o Arbalest. Ver [`MAPEAR_POZOS_DEL_INFIERNO.md`](MAPEAR_POZOS_DEL_INFIERNO.md).
 - Los ítems viejos sacrificados (banana staff, ripper lance, templar scytheblade, cowl) no los da nada
   del servidor: no están en el mapa, ni en loot, NPC, acciones o scripts.
 
