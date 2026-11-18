@@ -15,6 +15,7 @@ Relacionado:
 - [docs/items-and-map/DARK_CATHEDRAL.md](items-and-map/DARK_CATHEDRAL.md) — Dark Cathedral (ruinas, cripta -1 con cueva y cripta -2); portal `155,47,7` con `generate-dark-cathedral.py`, resumen en `MAPEAR_DARK_CATHEDRAL.md`
 - [docs/items-and-map/MAPEAR_FOSO_OLVIDADO.md](items-and-map/MAPEAR_FOSO_OLVIDADO.md) — El Foso Olvidado (reemplaza la Arena PvP de z9): 3 pisos de laberinto progresivo con `generate-forgotten-pit.py`
 - [docs/items-and-map/MAPEAR_TORRE_BARQUERO.md](items-and-map/MAPEAR_TORRE_BARQUERO.md) — Torre del Barquero: patio de mesas junto al bote de Fargum → torre de 5 pisos con un monstruo por piso (`generate-fargum-tower.py`)
+- [docs/items-and-map/MAPEAR_TORRES_KONGRA.md](items-and-map/MAPEAR_TORRES_KONGRA.md) — Torres del Kongra: tres torres medias en la selva del Bamboo Camp (Kongra abajo, Red Kongra arriba) con `generate-kongra-towers.py`
 - [docs/items-and-map/MAPEAR_ISLOTE_MINOTAURO.md](items-and-map/MAPEAR_ISLOTE_MINOTAURO.md) — Islote del Minotauro (canal junto al muelle, z7 + cuevas z10–z12) con `generate-minotaur-isle.py`
 - [docs/items-and-map/MAPEAR_CATACUMBA_IMPERIAL.md](items-and-map/MAPEAR_CATACUMBA_IMPERIAL.md): Cripta Imperial — boca en la orilla sur del pantano `94,92,7`, túnel z8 con la guarnición imperial con `generate-imperial-crypt.py`
 - [docs/gameplay/WAVE_ARENA.md](gameplay/WAVE_ARENA.md) — Wave Arena oleadas; portal `166,47,7`

@@ -115,4 +115,9 @@
 	<!-- BEGIN IMPERIAL_CRYPT_SIGNS -->
 	<readable x="95" y="91" z="7" text="CRIPTA IMPERIAL\nSquires y arqueros custodian la entrada.\nHeroes imperiales al fondo."/>
 	<!-- END IMPERIAL_CRYPT_SIGNS -->
+	<!-- BEGIN KONGRA_TOWERS_SIGNS -->
+	<readable x="169" y="105" z="7" text="TORRE DEL KONGRA\n3 pisos. Kongra abajo;\nlos rojos rugen arriba."/>
+	<readable x="168" y="128" z="7" text="TORRE SUR DEL KONGRA\n3 pisos; los rojos más duros viven arriba."/>
+	<readable x="185" y="75" z="7" text="ATALAYA DEL KONGRA\n2 pisos. Los rojos miran desde arriba."/>
+	<!-- END KONGRA_TOWERS_SIGNS -->
 </readables>
