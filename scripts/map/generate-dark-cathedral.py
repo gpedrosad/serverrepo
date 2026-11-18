@@ -99,7 +99,8 @@ STAIRS_UP, STAIR_DOWN, SIGN = 1385, 432, 1429
 BENCH, BENCH_R = 1662, 1663          # banco = dos piezas: 1662 y su mitad derecha 1663
 PILLAR, STATUE, COAL_BASIN, CANDELABRUM = 1515, 1442, 1486, 2041
 STONE, RUBBLE, PEBBLES = 1285, 1309, 1336
-SKULL, HUMAN_SKELETON, DRAGON_SKELETON, RABBIT_SKELETON = 2248, 3133, 3125, 3121
+SKULL, HUMAN_SKELETON, RABBIT_SKELETON = 2248, 3133, 3121      # huesos ENTEROS (3122-3127 son
+# partes del esqueleto grande: sueltas se ven cortadas, PIEZAS_DE_MAPA.md#cuevas)
 BARREL, CRATE, COFFIN_HEAD, COFFIN_FOOT, TABLE, CHEST = 1770, 1739, 1410, 1411, 1614, 1740
 TREES = (2701, 2702, 2703, 2704, 2705, 2706, 2708, 4009)   # 2x2: el dibujo ocupa la casilla y las de arriba-izquierda
 BUSHES = (2767, 2786)                                      # bloquean: muro de jungla
@@ -568,6 +569,23 @@ def build_surface(seed: int, bl: Blocking):
         if tiles.get((x, y)) == [GREY] and rng.random() < 0.10:
             tiles[(x, y)] = [GREY, rng.choice((PEBBLES, SKULL, HUMAN_SKELETON))]
 
+    # decoración que bloquea (piedras): nunca en el medio de un paso (vecinos pisables en ambos
+    # ejes) ni donde cortar el único acceso — el escombro de (145,328) dejó el ala oeste de la
+    # cripta colgando de una casilla (nov 2026). Patrón: decorate_cave de generate-north-pass.
+    swalk = {c for c, it in tiles.items() if bl.walkable(it)}
+    sbase = len(reach(swalk, ARRIVAL))
+
+    def rubble_ok(c):
+        nonlocal sbase
+        if ((c[0], c[1] - 1) in swalk and (c[0], c[1] + 1) in swalk) \
+                or ((c[0] - 1, c[1]) in swalk and (c[0] + 1, c[1]) in swalk):
+            return False                                    # en mitad de un paso N-S o E-O
+        if len(reach(swalk - {c}, ARRIVAL)) < sbase - 1:
+            return False                                    # dejaría piso sin acceso
+        swalk.discard(c)
+        sbase -= 1
+        return True
+
     # 7. escombros, cofres y ataúdes en las ruinas (siempre sobre piso liso)
     clutter = [((9 + DX, 26 + DY), CRATE), ((10 + DX, 26 + DY), BARREL),
                ((20 + DX, 42 + DY), COFFIN_HEAD), ((20 + DX, 43 + DY), COFFIN_FOOT),
@@ -583,19 +601,25 @@ def build_surface(seed: int, bl: Blocking):
             tiles[c] = [tiles[c][0], item]
     for c in sorted(floor_all):                                # escombros sueltos en las ruinas
         if len(tiles.get(c, [])) == 1 and tiles[c][0] == DIRT and rng.random() < 0.09:
-            tiles[c] = [DIRT, rng.choice((PEBBLES, RUBBLE, SKULL, STONE))]
+            item = rng.choice((PEBBLES, RUBBLE, SKULL, STONE))
+            if item in (RUBBLE, STONE) and not rubble_ok(c):
+                continue
+            tiles[c] = [DIRT, item]
 
     keep = (grow({ARRIVAL, PORTAL_BACK, HOLE_NORTH, HOLE_WEST} | set(SIGNS), 2)
             | grow(floor_all | wall_cells, 2) | set(PATHS)
             | grow(rect(*PLAZA), 1) | grow(rect(*PLATFORM), 1))
 
-    # 7b. la explanada no es un plano vacío: piedras, huesos y matas sueltas (todo camina)
+    # 7b. la explanada no es un plano vacío: huesos y matas sueltas; las piedras solo al borde
     for c in sorted(cells):
         if c not in dirt or tiles.get(c) != [DIRT] or c in keep:
             continue
         r = rng.random()
         if r < 0.05:
-            tiles[c] = [DIRT, rng.choice((PEBBLES, SKULL, HUMAN_SKELETON, STONE))]
+            item = rng.choice((PEBBLES, SKULL, HUMAN_SKELETON, STONE))
+            if item == STONE and not rubble_ok(c):
+                continue
+            tiles[c] = [DIRT, item]
         elif r < 0.17:
             tiles[c] = [DIRT, rng.choice(COVER)]
 
@@ -834,17 +858,26 @@ def main() -> int:
                     c = (round(px) + dx, round(py) + dy)
                     if CAVE_BOX[0] <= c[0] <= CAVE_BOX[2] and CAVE_BOX[1] <= c[1] <= CAVE_BOX[3]:
                         cave.add(c)
+    # rocas de 1 casilla entre dos pisos de cueva: no tienen pieza (quedan peladas,
+    # PIEZAS_DE_MAPA.md#cuevas). Se cavan antes de vestir la cueva.
+    for _ in range(8):
+        slivers = {(x, y) for (x, y) in grow(cave, 1) - cave
+                   if ((x, y - 1) in cave and (x, y + 1) in cave)
+                   or ((x - 1, y) in cave and (x + 1, y) in cave)}
+        if not slivers:
+            break
+        cave |= slivers
     rooms_floor8 = set(floor8)                                 # salas de ladrillo (sin la cueva)
     cave -= rooms_floor8 - set(CAVE_DOOR)                      # la cueva no invade el ladrillo
     cave -= {c for c in cave if any((c[0] + dx, c[1] + dy) in rooms_floor8 for dx, dy in DIRS.values())} \
         - set(CAVE_DOOR)                                       # deja una casilla de pared contra las salas
     cave_tiles = NP.cave_tiles(cave, grow(cave, 2) | rect(*CAVE_BOX), a.seed + 812)
-    for c in grow(floor8 | mask8, 6):
-        t8.setdefault(c, [ROCK])
+    floor8 = (floor8 - cave) | cave                            # la cueva es piso: el relleno la rodea
+    for c in grow(floor8 | mask8, 9):                          # 9 = media pantalla (8x6) + colchón:
+        t8.setdefault(c, [ROCK])                               # sin esto se ve vacío negro al costado
     for c, it in cave_tiles.items():
-        if c not in floor8:                                    # no pisa las salas de ladrillo
+        if c not in rooms_floor8:                              # no pisa las salas de ladrillo
             t8[c] = it
-    floor8 = (floor8 - cave) | cave
     mask8 -= cave
     # lo que quedó suelto se vuelve roca (la cueva es una sola masa conectada a la boca)
     linked = set(reach(cave, CAVE_DOOR[0]))
@@ -884,19 +917,25 @@ def main() -> int:
               ("south", "final")]
     t9, floor9, mask9 = build_zone(rooms9, links9, [], pillars=PILLARS9, default_wall=BRICK,
                                    outside=ROCK, pillar_item=PILLAR_ITEM)
-    for c in grow(floor9 | mask9, 6):
+    for c in grow(floor9 | mask9, 9):                          # media pantalla + colchón (ídem z8)
         t9.setdefault(c, [ROCK])
     t9[DOWN8] = [WHITE, STAIRS_UP]
     t9[DEEP_PORTAL] = [BLACK, TELEPORT]
     floor9 |= {DOWN8, DEEP_PORTAL}
     t8, t9 = clip(t8), clip(t9)
 
-    # escombros solo donde no molestan (nunca sobre escaleras, portales ni sus llegadas)
+    # escombros solo donde no molestan (nunca sobre escaleras, portales ni sus llegadas; nunca
+    # en mitad de un paso ni donde corten el único acceso de un ala — caso (145,328) nov 2026)
     octagon_floor = octagon(OCT9, 2) | rect(*NECK9) | rect(*MID9)
-    for tiles, floor, seed, stairs, extra in ((t8, floor8, a.seed + 21, (HOLE_NORTH, HOLE_WEST, DOWN8), set()),
-                                              (t9, floor9, a.seed + 22, (DOWN8, DEEP_PORTAL), octagon_floor)):
+    for tiles, floor, seed, stairs, extra, start in (
+            (t8, floor8, a.seed + 21, (HOLE_NORTH, HOLE_WEST, DOWN8), set(),
+             (HOLE_NORTH[0], HOLE_NORTH[1] + 1)),
+            (t9, floor9, a.seed + 22, (DOWN8, DEEP_PORTAL), octagon_floor,
+             (DOWN8[0], DOWN8[1] + 1))):
         avoid = grow(set(stairs), 2) | extra
         rng = random.Random(seed)
+        walkf = {c for c in floor if bl.walkable(tiles.get(c, [ROCK]))}
+        basef = len(reach(walkf, start))
         for c in sorted(floor - avoid):
             it = tiles.get(c)
             if not it or len(it) != 1 or it[0] not in (GREY, DIRT, BLACK, WHITE, CAVE_A, CAVE_B, CAVE_C):
@@ -905,7 +944,15 @@ def main() -> int:
             if r < 0.03:
                 tiles[c] = [it[0], rng.choice((PEBBLES, SKULL, HUMAN_SKELETON, RABBIT_SKELETON))]
             elif r < 0.045:
-                tiles[c] = [it[0], rng.choice((RUBBLE, STONE, DRAGON_SKELETON))]
+                item = rng.choice((RUBBLE, STONE))           # huesos enteros; 3125 era una parte
+                if ((c[0], c[1] - 1) in walkf and (c[0], c[1] + 1) in walkf) \
+                        or ((c[0] - 1, c[1]) in walkf and (c[0] + 1, c[1]) in walkf):
+                    continue                                 # en mitad de un paso N-S o E-O
+                if len(reach(walkf - {c}, start)) < basef - 1:
+                    continue                                 # dejaría piso sin acceso
+                tiles[c] = [it[0], item]
+                walkf.discard(c)
+                basef -= 1
 
     walk7 = {c for c, it in surf.items() if bl.walkable(it)}
     d7 = reach(walk7, ARRIVAL)
@@ -988,6 +1035,30 @@ def main() -> int:
         if x < BAND[0] or x > W - 1 - BAND[0] or y < BAND[1] or y > H - 1 - BAND[1]:
             errors.append(f"z7 {(x, y)}: piso caminable dentro de la franja del borde")
             break
+
+    # cueva: ninguna roca de 1 casilla entre dos pisos (sin pieza posible: roca pelada)
+    cave_f = {(x, y) for (x, y), it in t8.items() if it and it[0] in (CAVE_A, CAVE_B, CAVE_C)}
+    for (x, y), it in t8.items():
+        if it != [ROCK]:
+            continue
+        if ((x, y - 1) in cave_f and (x, y + 1) in cave_f) \
+                or ((x - 1, y) in cave_f and (x + 1, y) in cave_f):
+            errors.append(f"z8 {(x, y)}: roca de 1 casilla entre dos pisos de cueva (pelada)")
+
+    # vacío a la vista en el MISMO piso: la media pantalla (8x6) de cada pisable tiene que tener
+    # tile dentro de la caja (check-upper-view sólo mira el piso de arriba; esto se ve negro)
+    for label, t, fl in (("z8", t8, walk8), ("z9", t9, walk9)):
+        void_seen = 0
+        for (x, y) in fl:
+            for dx in range(-8, 9):
+                for dy in range(-6, 7):
+                    c = (x + dx, y + dy)
+                    if 0 <= c[0] < W and 0 <= c[1] < H and c not in t:
+                        void_seen += 1
+                        if void_seen <= 3:
+                            errors.append(f"{label} {c}: sin tile, visible desde {(x, y)}")
+        if void_seen > 3:
+            errors.append(f"{label}: {void_seen - 3} casillas más sin tile a la vista")
 
     # spawns
     rng = random.Random(a.seed + 99)

@@ -23,7 +23,7 @@ manifiesto tenga la misma caja, para poder re-ejecutarlo).
 | Pisos | x (abs) | y (abs) | Local | Qué cubre |
 |-------|---------|---------|-------|-----------|
 | z7 | 85–183 | 264–373 | 0–98 × 0–109 | Jungla del borde, ríos en arco, explanada de tierra, nave, ruinas oeste/este, salón gris, explanada del portal |
-| z8 | 85–183 | 264–373 | 0–98 × 0–109 | Cripta -1: eje N-S, dos pasillos E-O, 16 salas, cueva natural de 251 casillas al NE |
+| z8 | 85–183 | 264–373 | 0–98 × 0–109 | Cripta -1: eje N-S, dos pasillos E-O, 16 salas, cueva natural de 270 casillas al NE |
 | z9 | 85–183 | 264–373 | 0–98 × 0–109 | Cripta -2: sala de columnas, octógono, brazos, anillo en zigzag, sala oval, sala sur y final |
 
 **Layout y desplazamiento.** El diseño se dibujó en un espacio de 60×70; con la caja nueva (99×110)
@@ -81,7 +81,7 @@ Coordenadas absolutas (las locales del generador son `abs − (118,284)`).
 | Salas | A `128–134 × 296–302` · B `136–141 × 297–302` · C `127–133 × 307–314` · D `135–140 × 307–314` · K `150–155 × 309–315` · L `157–162 × 309–315` · M `127–133 × 316–326` · N `135–140 × 316–326` · O `150–156 × 317–326` · P `158–163 × 317–326` · Q `128–133 × 331–338` · R `135–141 × 331–336` (+ cola en L hasta `y 339`) · S `151–156 × 331–336` · U `158–163 × 331–336` | Losa `431` en pasillos y salas grises, tierra `103` en las otras; puertas de una casilla |
 | Antecámara de la cueva | J `151–157 × 299–304` | Tierra, conecta el pasillo este con la cueva |
 | Sala del fondo | T `141–155 × 343–348` | Losa `431`, cierre del eje |
-| Cueva natural | `150–172 × 282–304` (251 casillas) | Nueve cámaras irregulares unidas por pasillos orgánicos (discos + conectores), piso de cueva `351`/`352`/`355`, paredes de roca `356–367`; boca de dos casillas en `154–155,298` hacia la antecámara J. Deja una casilla de pared contra las salas de ladrillo y lo que queda suelto se vuelve roca |
+| Cueva natural | `150–172 × 282–304` (270 casillas) | Nueve cámaras irregulares unidas por pasillos orgánicos (discos + conectores), piso de cueva `351`/`352`/`355`, paredes de roca `356–367`; boca de dos casillas en `154–155,298` hacia la antecámara J. Deja una casilla de pared contra las salas de ladrillo y lo que queda suelto se vuelve roca. Las rocas de 1 casilla entre dos pisos de cueva se cavan antes de vestir (sin pieza: quedarían peladas) |
 
 ### z9 — cripta (-2)
 
@@ -121,14 +121,14 @@ recorre en anillo: se sale por donde se entró o por el portal del fondo.
 
 ## Spawns
 
-Bloque `DARK_CATHEDRAL_SPAWNS` en `test-spawn.xml`. 128 bloques de un monstruo cada uno (radio 2),
+Bloque `DARK_CATHEDRAL_SPAWNS` en `test-spawn.xml`. 125 bloques de un monstruo cada uno (radio 2),
 todos sobre piso caminable y lejos de escaleras, llegadas y portales. Sólo monstruos 7.6 existentes
 en `data/monster`.
 
 | Piso | Bloques | Monstruos (cantidad) |
 |------|---------|----------------------|
 | z7 | 23 | Bandit 9, Smuggler 5, Wild Warrior 5, Hunter 4 |
-| z8 | 64 | Bandit 14, Wild Warrior 8, Rotworm 7, Ghoul 6, Skeleton 6, Smuggler 5, Assassin 4, Centipede 4, Bat 3, Poison Spider 3, Slime 3, Dark Monk 1 |
+| z8 | 61 | Bandit 14, Wild Warrior 8, Skeleton 6, Smuggler 5, Ghoul 5, Rotworm 5, Centipede 4, Assassin 4, Bat 3, Slime 3, Poison Spider 3, Dark Monk 1 |
 | z9 | 41 | Dark Monk 12, Monk 8, Ghost 8, Witch 6, Hunter 4, Mummy 1, Stone Golem 1, Demon Skeleton 1 |
 
 La dificultad sube con el piso: bandidos y contrabandistas arriba; slimes, arañas y no-muertos en la
@@ -170,7 +170,7 @@ de la cripta, explanada, rellanos, salón), `406` mármol blanco (cuello y octó
 jungla no tiene borde de pasto contra tierra porque no hay tierra suelta al aire: los suelos de
 tierra están dentro de las paredes.
 
-**Clip de la caja.** `clip()` descarta cualquier casilla fuera de `0–59 × 0–69` locales, y el
+**Clip de la caja.** `clip()` descarta cualquier casilla fuera de `0–98 × 0–109` locales, y el
 generador purga además la roca de relleno que se hubiera escapado una casilla en corridas viejas:
 0 casillas fuera de la caja.
 
@@ -197,23 +197,26 @@ git). Archivos que toca: `server/YurOTS/ots/data/world/test.otbm`, `test-spawn.x
 del doc. Si `test.otbm` cambió en `main`, no mergear el binario: correr el generador sobre el mapa
 nuevo y después `temple-portals.py`.
 
-## Validaciones (última corrida, 2026-11-15)
+## Validaciones (última corrida, 2026-11-18)
 
 El generador, si algo falla, no escribe el `.otbm`.
 
 | Chequeo | Cómo | Resultado |
 |---------|------|-----------|
-| Caja vacía | `load_tiles()` sobre x118–177 × y284–353 × z7–z9 (o manifiesto propio) | 0 casillas ajenas |
-| BFS z7 | desde `148,335,7` | 4916 caminables, todas alcanzables |
-| BFS z8 | desde `148,296,8` (llegada de la bajada A) | 1388 caminables, todas alcanzables |
-| BFS z9 | desde `148,318,9` (llegada del agujero) | 1413 caminables, todas alcanzables |
+| Caja vacía | `load_tiles()` sobre x85–183 × y264–373 × z7–z9 (o manifiesto propio) | 0 casillas ajenas |
+| BFS z7 | desde `148,335,7` | 4911 caminables, todas alcanzables |
+| BFS z8 | desde `148,296,8` (llegada de la bajada A) | 1414 caminables, todas alcanzables |
+| BFS z9 | desde `148,318,9` (llegada del agujero) | 1428 caminables, todas alcanzables |
 | Escaleras | 3 pares `432`+`1385`; las 6 llegadas son piso libre | 0 errores |
 | Paredes | una sola pieza por casilla; ninguna casilla de piso con pieza de pared | 0 errores |
 | Bancas | cada `1662` con su `1663` a la derecha y viceversa | 16 pares, 0 sueltas |
 | Simetría -2 | zigzag, salas laterales, sala sur y final espejados (`mirror(x) = 125−x`, eje del layout) | OK |
 | Ids | todos los ítems existen en `items-zagan-test.otb` | 0 errores |
 | Monstruos | todos registrados en `monsters.xml` | 0 errores |
-| Spawns | cada bloque sobre piso caminable | 0 errores (128) |
+| Spawns | cada bloque sobre piso caminable | 0 errores (125) |
+| Rocas de 1 casilla | ninguna roca `101` con piso de cueva en dos cardinales opuestos (quedaría pelada) | 0 |
+| Vacío mismo piso | la media pantalla (8×6) de cada pisable de z8/z9 tiene tile dentro de la caja | 0 |
+| Escombros | `RUBBLE`/`STONE` nunca en mitad de un paso ni donde corten el único acceso | validado al colocar |
 | Clip | casillas dentro de la caja x85–183 / y264–373 (nada en y374, x84, x184) | 0 fuera |
 | `check-map-load.py` | carga offline del mapa | 0 errores |
 | `validate-tele-dest.py` | destinos de los teleport | OK |
@@ -247,7 +250,7 @@ Cerca, no idéntico:
   casillas, no un lago. El claro es una elipse irregular, más regular que el patio original.
 - **Piso -1.** La referencia tiene 20 salas etiquetadas A–T repartidas en un plano más ancho; acá hay
   16 salas A–U más la antecámara J y la cueva, en una versión compacta. La cueva natural (G–J en la
-  referencia) llegó a 251 casillas con nueve cámaras y diez conexiones: se lee como red de cuevas,
+  referencia) llegó a 270 casillas con nueve cámaras y diez conexiones: se lee como red de cuevas,
   pero sigue siendo más chica que la original (que ocupa casi todo el noreste del plano).
 - **Piso -2.** La referencia no es simétrica: brazo oeste con 4 salas, brazo este con 2 rombos y una
   sala oval grande, cruz central y anillo sur. Acá se respetó esa idea (el anillo y las salas
@@ -260,6 +263,33 @@ Cerca, no idéntico:
 - **El portal del templo** queda en el slot `155,47,7` (Elvenbane conserva `157,47,7`). Lo arma
   `temple-portals.py`, dueño único de la fila de la plaza.
 
+## Revisión de patrones y pasos trabados (18 nov 2026)
+
+Auditoría del `test.otbm` real (no del modelo) con `scripts/map/audit-dark-cathedral.py` (BFS
+multi-piso, cuellos de botella, piezas de pared y ventanas de vacío). Lo que se encontró y ya está
+corregido en el generador:
+
+- **Piedra aleatoria en mitad del pasillo H2** (`1285` en `145,328,8`): estrangulaba a una casilla la
+  única entrada del ala suroeste de la cripta (salas M, N, Q con la bajada B, R: 274 casillas colgando
+  de `145,329`). Los pases de escombros ahora validan como `decorate_cave()`: nada en mitad de un paso
+  (vecinos pisables en ambos ejes) y nada que deje piso sin acceso (`reach` antes de colocar).
+- **17 rocas de 1 casilla entre dos pisos de cueva** (sin pieza posible, "roca pelada",
+  [PIEZAS_DE_MAPA.md#cuevas](PIEZAS_DE_MAPA.md#cuevas)): se cavan antes de vestir la cueva; el
+  generador aborta si reaparece alguna.
+- **Vacío negro a la vista en el mismo piso**: 200 pisables de z8 y 91 de z9 veían casillas sin tile
+  en su media pantalla (peor: el borde norte de la cueva, ~94 casillas desde `155,282`). El relleno
+  de roca pasa de `grow(...,6)` a `grow(...,9)` (media pantalla 8×6 + colchón) y el generador valida
+  la ventana de cada pisable. Ojo: `check-upper-view.py` sólo mira el piso de arriba, este vacío se
+  ve en el mismo piso.
+- **Huesos de dragón cortados**: la constante `DRAGON_SKELETON=3125` era una parte del esqueleto
+  grande (rango 3122–3127); el pase de escombros ahora usa sólo huesos enteros.
+- **Puertas de 1 casilla por diseño** (no son bugs, quedan así a propósito): la boca de la cueva
+  (`155,305`, única vía a sala J + cueva), la puerta del patio de la bajada B (`133,336`) y las
+  puertas de las salas del anillo del -2. El marco de piedra de los agujeros deja bolsillos muertos
+  de 1–2 casillas en el patio B (`127,333`, `128,337`): cosmético, nadie queda atrapado.
+
 ## Estado
 
-En `main` (2026-11-15): portal de la plaza en `155,47,7` (Elvenbane conserva `157,47,7`). Mapa regenerado sobre el de `main` con `generate-dark-cathedral.py` y `temple-portals.py` (no se mergeó el OTBM).
+En `main` (2026-11-18): portal de la plaza en `155,47,7` (Elvenbane conserva `157,47,7`). Mapa
+regenerado sobre el de `main` con `generate-dark-cathedral.py` y `temple-portals.py` (no se mergeó el
+OTBM). Revisión de nov 2026 aplicada: escombros validados, cueva sin rocas peladas ni vacío a la vista.

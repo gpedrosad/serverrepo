@@ -25,7 +25,7 @@ Referencias del diseño: `img/dark-cathedral-ref/` (`Dark_Cathedral_0.png` super
 | Piso | Contenido |
 |------|-----------|
 | **z7** superficie | Jungla densa en el borde, ríos en arco que casi rodean el predio y una explanada de tierra con el claro de la iglesia (sin halo de césped). Nave NEGRA de mármol (norte-sur, 8×28) con columnas de piedra, dos filas de bancos, entrada al sur y brecha al norte. Edificio del oeste con 5 salas, ruinas del este con 4 salas chicas, sala gris del sur con dos filas de bancos y sala gris del oeste con la bajada. Dos bajadas: jungla norte y oeste. |
-| **z8** cripta (-1) | Ladrillo sobre roca: eje norte-sur largo y quebrado (tres tramos) desde la bajada de la jungla hasta la sala del fondo (T), dos pasillos este-oeste con 16 salas a los lados (A–U) y una **cueva natural ramificada** de 251 casillas al noreste (nueve cámaras irregulares unidas por pasillos, piso de cueva) para rotworms y no-muertos. |
+| **z8** cripta (-1) | Ladrillo sobre roca: eje norte-sur largo y quebrado (tres tramos) desde la bajada de la jungla hasta la sala del fondo (T), dos pasillos este-oeste con 16 salas a los lados (A–U) y una **cueva natural ramificada** de 270 casillas al noreste (nueve cámaras irregulares unidas por pasillos, piso de cueva) para rotworms y no-muertos. |
 | **z9** cripta profunda (-2) | Sala grande al norte con laberinto de columnas de piedra (ítem 1514), octógono central con la escalera, brazo oeste con 4 salas en H, brazo este con 2 salas rombo y la sala oval, **anillo sur en zigzag** (baja, sale, baja y vuelve a entrar) con dos salas a cada lado, pasillo central, sala grande central sur (negra) y sala final con el portal. |
 
 ![Cripta -1](img/dark-cathedral-z8.png)
@@ -51,7 +51,7 @@ Referencias del diseño: `img/dark-cathedral-ref/` (`Dark_Cathedral_0.png` super
 | Rellano de la bajada A | `x 145–152`, `y 293–297` |
 | z8: eje (3 tramos) | `x 147–149`, `y 295–308` · `x 146–148`, `y 308–324` · `x 147–149`, `y 324–341` |
 | z8: pasillos | `y 305–306`, `x 127–148` · `y 308–309`, `x 148–165` · `y 326–327`, `x 132–165` |
-| z8: cueva de los gusanos | `x 152–167`, `y 290–297` (entra desde la sala J) |
+| z8: cueva de los gusanos | `x 150–172`, `y 282–304` (270 casillas; entra desde la sala J) |
 | z8: sala del fondo (T) | `x 141–155`, `y 342–347` |
 | z9: sala de las columnas | `x 135–160`, `y 292–308` |
 | z9: octógono | `x 143–152`, `y 314–320` |
@@ -78,12 +78,12 @@ El -2 se recorre en anillo, así que se sale por donde se entró; además tiene 
 
 ## Spawns
 
-`test-spawn.xml`, bloque `DARK_CATHEDRAL_SPAWNS`. 128 monstruos, un bloque por monstruo (radio 2):
+`test-spawn.xml`, bloque `DARK_CATHEDRAL_SPAWNS`. 125 monstruos, un bloque por monstruo (radio 2):
 
 | Piso | Zonas | Monstruos |
 |------|-------|-----------|
 | z7 | ruinas oeste, ruinas este, sala de los bancos, jungla | 23: Bandit 9, Smuggler 5, Wild Warrior 5, Hunter 4 |
-| z8 | salas A–U, cueva natural | 64: Bandit 14, Wild Warrior 8, Rotworm 7, Ghoul 6, Skeleton 6, Smuggler 5, Assassin 4, Centipede 4, Bat 3, Slime 3, Poison Spider 3, Dark Monk 1 |
+| z8 | salas A–U, cueva natural | 61: Bandit 14, Wild Warrior 8, Skeleton 6, Smuggler 5, Ghoul 5, Rotworm 5, Centipede 4, Assassin 4, Bat 3, Slime 3, Poison Spider 3, Dark Monk 1 |
 | z9 | sala de las columnas, brazos, anillo, sala central sur, sala final | 41: Dark Monk 12, Monk 8, Ghost 8, Witch 6, Hunter 4, Mummy 1, Stone Golem 1, Demon Skeleton 1 |
 
 El demon skeleton y los dark monks de la sala central sur hacen de "guardia del -3" (la escalera al
@@ -97,6 +97,7 @@ python3.11 scripts/map/generate-dark-cathedral.py                              #
 python3 scripts/map/temple-portals.py                                          # portal de la plaza y vueltas
 python3 scripts/map/validate-tele-dest.py server/YurOTS/ots/data/world/test.otbm
 python3 scripts/map/check-map-load.py
+python3 scripts/map/audit-dark-cathedral.py                                    # auditoría del mapa real
 ```
 
 Los PNG del doc se generan con el mismo render que el juego (paredes con altura). Para rehacerlos:
@@ -126,7 +127,8 @@ la misma caja). Es re-ejecutable: borra su caja, reescribe spawns, carteles y ma
   contra 1515/1549/1551/1560/3766/3767).
 - **Cueva del -1:** varias cámaras (discos con borde irregular) unidas por pasillos sobre
   `cave_tiles` de `generate-north-pass.py` (piso 351/352/355, paredes de roca 356–367), con una boca
-  de dos casillas a la sala J.
+  de dos casillas a la sala J. Las rocas de 1 casilla entre dos pisos se cavan antes de vestir
+  (quedarían peladas, sin pieza).
 - **Vista previa = como en el juego.** `write_preview` compone los sprites con `game_render`
   (altura de paredes/columnas incluida), así los PNG del doc se ven como in-game.
 - **Jungla:** franja de monte cerrado en el borde (nada caminable a menos de 7 casillas del borde de
@@ -139,4 +141,7 @@ la misma caja). Es re-ejecutable: borra su caja, reescribe spawns, carteles y ma
   filas alineadas en la nave y en la sala de los bancos); el generador falla si aparece una mitad
   sola. Ataúdes `1410`+`1411` y demás pares, igual que en `PIEZAS_DE_MAPA.md`.
 - **Escaleras y portales** se validan antes de escribir: llegadas libres, todo el piso alcanzable
-  desde la llegada, paredes con una sola pieza, ids del `.otb` y monstruos registrados.
+  desde la llegada, paredes con una sola pieza, ids del `.otb` y monstruos registrados. Además (nov
+  2026): escombros nunca en mitad de un paso ni donde corten el único acceso, ninguna roca de 1
+  casilla entre dos pisos de cueva y ninguna casilla sin tile a la vista en z8/z9 (media pantalla
+  8×6 de cada pisable, relleno de roca a 9).

@@ -83,12 +83,6 @@
 	<readable x="37" y="347" z="7" text="ELVENBANE\nFortaleza elfica en 7 pisos.\nBaja a la cueva: el tunel llega\nal sotano del castillo.\nPortal al norte: templo."/>
 	<readable x="41" y="341" z="7" text="BAJADA A ELVENBANE\nTunel largo hasta el sotano.\nTrolls, orcos y enanos."/>
 	<!-- END ELVENBANE_SIGNS -->
-	<!-- BEGIN DARK_CATHEDRAL_SIGNS -->
-	<readable x="136" y="340" z="7" text="SALA DE LOS BANCOS\nBancos viejos y escombros.\nAl oeste, la bajada a la cripta."/>
-	<readable x="146" y="292" z="7" text="ACCESO A LA CRIPTA\nEscalera abajo.\nNo vuelvas solo."/>
-	<readable x="146" y="334" z="7" text="NAVE DE LA CATEDRAL\nSolo monjes y muertos\nrezan aca."/>
-	<readable x="151" y="334" z="7" text="CATEDRAL OSCURA\nAl norte, la nave.\nBajadas a la cripta: en la jungla\ny junto a la sala gris.\nEste portal vuelve al templo."/>
-	<!-- END DARK_CATHEDRAL_SIGNS -->
 	<!-- BEGIN TROLL_DEN_SIGNS -->
 	<readable x="166" y="108" z="7" text="GUARIDA DE LOS TROLLS\nAgujero abajo: river trolls cerca de la escalera\ny stone trolls al fondo, entre las piedras."/>
 	<!-- END TROLL_DEN_SIGNS -->
@@ -106,4 +100,10 @@
 	<readable x="554" y="359" z="7" text="LA JAURIA\nPerros del infierno entre las rocas."/>
 	<readable x="544" y="381" z="10" text="CAMARA DE LAS ARMAS\nCuatro cofres: cada heroe toma uno.\nPuerta: nivel 100."/>
 	<!-- END INFERNO_PITS_SIGNS -->
+	<!-- BEGIN DARK_CATHEDRAL_SIGNS -->
+	<readable x="136" y="340" z="7" text="SALA DE LOS BANCOS\nBancos viejos y escombros.\nAl oeste, la bajada a la cripta."/>
+	<readable x="146" y="292" z="7" text="ACCESO A LA CRIPTA\nEscalera abajo.\nNo vuelvas solo."/>
+	<readable x="146" y="334" z="7" text="NAVE DE LA CATEDRAL\nSolo monjes y muertos\nrezan aca."/>
+	<readable x="151" y="334" z="7" text="CATEDRAL OSCURA\nAl norte, la nave.\nBajadas a la cripta: en la jungla\ny junto a la sala gris.\nEste portal vuelve al templo."/>
+	<!-- END DARK_CATHEDRAL_SIGNS -->
 </readables>
