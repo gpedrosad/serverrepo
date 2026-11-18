@@ -171,6 +171,7 @@ Los presets de ejemplo están en `scripts/client-rme/presets/`: conviene copiar 
 | Prenda sobre la cabeza | Pintar la mitad de arriba de la cabeza; de espaldas, más | `drowned_sailor.py` (pañuelo) |
 | Parches cosidos | Cuadrados de 4×4 en posiciones relativas a la silueta, con puntadas en las esquinas | `novice_monk.py` |
 | Cosas que cuelgan | Desde el borde de abajo, hacia abajo sobre transparente | `drowned_sailor.py` (algas, gotas) |
+| Ojos del base que son pelaje, no `rest` | De frente, las manchas claras del pelaje arriba de la cara oscura (banda `y_top+2`, las dos más grandes); de perfil, el brillo `rest` más alto (este) o más a la izquierda (oeste); nada de espaldas | `red_kongra.py` |
 | Brasas / grietas de magma | Las luces de la parte roja o las heridas a una paleta de fuego | `ashen_lord.py`, `hellhound.py` |
 | Cambiar silueta con ramas y raíces | Trazos enteros con contorno y luz, anclados por dirección/pose; dejar margen en el cuadro y añadir brotes conectados | `root_colossus.py` |
 
@@ -294,5 +295,6 @@ rm devtools/rme/rme-client-760/*.bak-*
 | Una criatura de la escena quedó sobre una pared | Elegir casillas caminables en `--at` |
 | `ice_monk_eyes` usa ancho 64 fijo | Solo sirve para bases 2×2. En código nuevo, `f.w` o `f.eyes` |
 | Se spawnearon looks nuevos sin publicar el cliente | El monstruo sale invisible. El cliente va primero (sección 10) |
+| Los "ojos" cayeron en el brazo: el grupo oscuro interior más grande de la mitad de arriba era la sombra del brazo, no la cara | No buscar "la cara" a lo genérico: anclar los ojos a su posición real (en el Kongra, manchas claras arriba de la cara de frente; brillo `rest` más alto/al extremo de perfil) | `red_kongra.py` |
 | IA generativa para repintar la hoja (nano banana) | No sirve para sprites animados: cambia la silueta y los detalles entre cuadros. Detalle en [`CUSTOM_MONSTER_WORKFLOW.md`](CUSTOM_MONSTER_WORKFLOW.md) §6.5 |
 | El musgo salió en franjas rectas | En una fórmula módulo 3, un término `x * 3` desaparece y cada fila queda uniforme. Usar volumen por distancia y variación en bloques, anclada a la pose (`root_colossus.py`) |
