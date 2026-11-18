@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Agrega ítems nuevos (PNG 32x32, o 64x64/64x32 para 2x2/2x1; para un 2x2 animado,
-64x(64*cuadros) apilados verticalmente con frames=N) al cliente y al servidor, sobre los archivos actuales.
+"""Agrega ítems nuevos (PNG 32x32, o 64x64/64x32 para 2x2/2x1; para ítems animados,
+32x(32*cuadros) en 1x1 o 64x(64*cuadros) en 2x2, apilados verticalmente con frames=N)
+al cliente y al servidor, sobre los archivos actuales.
 
 Para ítems traídos de otras versiones (ej. armas de 8.x) o dibujados (Root Colossus), sin el builder viejo (build_zagan_test_assets.py,
 que necesita el pack Zagan perdido y client-local). Cada ítem de NEW_ITEMS:
@@ -13,7 +14,8 @@ que necesita el pack Zagan perdido y client-local). Cada ítem de NEW_ITEMS:
 
 Extras: `decor=True` copia los bloques del prototipo sin stats (decoración de mapa); `light=(nivel,
 color)` reescribe la luz — flag .dat 0x15 y attr OTB 0x2A (ITEM_ATTR_LIGHT2) — para ítems con luz
-propia (magic tree rojo). `frames=2` con `tiles=2` instala los dos cuadros de animación del PNG.
+propia (magic tree rojo, blue bassin). `frames=N` instala los N cuadros de animación del PNG
+(1x1 y 2x2).
 
 Re-ejecutable: si el ítem ya está (mismo sprite en el .dat, nodo con ese server id), no cambia nada.
 Elegir client ids nuevos: `--candidates` lista los que se pueden sacrificar sin riesgo (ni en el mapa,
@@ -175,6 +177,17 @@ NEW_ITEMS = [
     dict(name="red magic tree", server_id=20191, client_id=3455, prototype=2699,
          png="red_magic_tree.png", decor=True, tiles=2, frames=2, light=(6, 187),
          descr="A tree shimmering with red magic."),
+    # Blue bassin (nov 2026): decoración de mapa. El coal bassin de 7.6 (server 1483,
+    # client 2112) con la llama en azul: 1x1 animado en 2 cuadros y luz propia. El
+    # fuego pasa a azul frío intercambiando canales rojo/azul (recolor_basin.py):
+    # rojos -> azul profundo, naranjas -> celeste, amarillos -> cian; el hierro y la
+    # mata de la base no se tocan. La luz (flag .dat 0x15 + attr OTB 0x2A) baja de
+    # cálida (color 206) a azul 143 (la del magic tree del templo), mismo nivel 8.
+    # frames=2 con tiles 1x1: el PNG apila los 2 cuadros verticalmente (32x64).
+    # Client 3454: "broom" sacrificado.
+    dict(name="blue bassin", server_id=20192, client_id=3454, prototype=1483,
+         png="blue_basin.png", decor=True, frames=2, light=(8, 143),
+         descr="It burns with cold blue flames."),
 ]
 
 
@@ -199,14 +212,18 @@ def node_ids(node) -> tuple[int | None, int | None, str]:
 
 def sprite_records(png: Path, tiles: int | str = 1, frames: int = 1) -> list[bytes]:
     """Registros de sprite para un item 1x1 (32x32), 2x2 (64x64) o 2x1 (64x32). Con
-    frames>1 (solo 2x2) el PNG apila los cuadros verticalmente: 64x(64*frames).
+    frames>1 (1x1 o 2x2) el PNG apila los cuadros verticalmente: 32x(32*frames)
+    para 1x1 y 64x(64*frames) para 2x2.
     Los multi-sprite se parten en el orden del .dat: para 2x2 abajo-derecha,
     abajo-izquierda, arriba-derecha, arriba-izquierda; para 2x1 derecha, izquierda."""
-    if frames > 1 and tiles != 2:
-        raise SystemExit(f"{png.name}: frames>1 solo está soportado para ítems 2x2")
+    if frames > 1 and tiles not in (1, 2):
+        raise SystemExit(f"{png.name}: frames>1 solo está soportado para ítems 1x1 o 2x2")
     image = B.Image.open(png).convert("RGBA")
     if tiles == "2x1":
         size, boxes = (64, 32), [(32, 0, 64, 32), (0, 0, 32, 32)]
+    elif frames > 1 and tiles == 1:
+        size = (32, 32 * frames)
+        boxes = [(0, 32 * f, 32, 32 * (f + 1)) for f in range(frames)]
     elif tiles == 2:
         base = [(32, 32, 64, 64), (0, 32, 32, 64), (32, 0, 64, 32), (0, 0, 32, 32)]
         size = (64, 64 * frames)

@@ -2,7 +2,7 @@
 
 Pack del directorio `Zagan+Square`: **55 ítems** (`20100`–`20154`). Desde `20155` son ítems agregados después
 con otros scripts (trainer dummy, enchanted spear, armas de 8.x, crown armors, armas del Root Colossus, Aurora
-Shield) y desde nov 2026 también el red magic tree (`20191`).
+Shield) y desde nov 2026 también el red magic tree (`20191`) y el blue bassin (`20192`).
 
 El catálogo público con stats, efecto y drop está en la web: **`/items-nuevos`**
 (`web/site/src/pages/items-nuevos.astro`, datos en `web/site/src/data/new-items.json`).
@@ -197,6 +197,45 @@ entonces el rojo se ve como el ítem sacrificado (hacket) en clientes sin actual
 están en el `test.otbm` local; viajan con el próximo commit/export del mapa (el archivo también lleva
 trabajo sin commitear de otras sesiones). El catálogo `/items-all` de la web se regenera con
 `export-items-catalog-web.py` cuando eso llegue.
+
+---
+
+## Blue bassin (`20192`) — nueva (nov 2026)
+
+Decoración de mapa: el coal bassin de 7.6 (server `1483`, client `2112`, el de las braseros del depot)
+con la **llama en azul**.
+
+![Coal bassin (2 cuadros a la izquierda) y blue bassin (derecha)](img/blue-bassin.png)
+
+| Dato | Valor |
+|------|-------|
+| Server id | **`20192`**, client id 3454 (sacrificado: broom). Entrada en `NEW_ITEMS` de `add_custom_items.py` |
+| Prototipo | el coal bassin mismo `1483`: nodo OTB espejo (group none, `block_solid` + `always_on_top`) sin stats (`decor=True`) |
+| Efecto | los ~510 px de fuego por cuadro (tonos 0–60 y 325–360, saturación > 0.5, brillo > 0.15) pasan a azul frío **intercambiando los canales rojo/azul**, la misma saturación y brillo: `(207,4,4) → (4,4,207)` azul profundo, `(255,108,0) → (0,108,255)` celeste, `(255,203,0) → (0,203,255)` cian. El hierro, el contorno y la mata verde de la base no se tocan |
+| Animación | 1×1 con **2 cuadros** (los mismos del coal bassin): PNG 32×64, cuadros apilados verticalmente |
+| Luz | nivel 8 (la misma), color 206 (cálida) → **143 (azul, la del magic tree del templo)**, en el flag `.dat` `0x15` y el attr OTB `0x2A` |
+| Sprite | `devtools/zagan-test/custom-sprites/blue_basin.png` (gitignoreado; `git add -f`) |
+| Cómo se hizo | `python3.11 scripts/client-rme/recolor_basin.py --preview docs/items-and-map/img/blue-bassin.png` escribe el PNG; `add_custom_items.py` con `decor=True, frames=2, light=(8, 143)` lo instala (2 sprites) |
+
+Qué ganó `add_custom_items.py` para este caso:
+
+- `frames=N` con `tiles=1`: ítem **1×1 animado**; el PNG apila los cuadros verticalmente
+  (32×(32·N)) y el importador los parte en orden de cuadro. Antes `frames` solo estaba
+  soportado para 2×2.
+
+**Colocación (nov 2026):** `scripts/map/blue-depot-basins.py` (idempotente) reemplazó los
+**18 coal bassins del edificio del depot** (4 por piso en z4–z6 en x 128 y 132, y 6 en z7 en
+x 128–129): los braseros del depot ahora arden en azul. No toca lockers ni ningún otro ítem
+(`scan-map-depots.py` da igual: 11 lockers, depotid 1).
+
+**Nota:** los sprites del blue bassin viajaron al `Tibia.dat`/`.spr` commiteados (y al cliente ya
+publicado) dentro del commit del look 254 del Red Kongra (`b7928a5`), que los arrastró al commitear.
+
+**Pendiente:** el OTB (`items-zagan-test.otb` con el nodo 20192) y el mapa nuevo tienen que llegar a
+la ThinkPad **juntos** (`git merge --ff-only` + restart, con OK de Gonzalo): un mapa con 20192 y un
+OTB sin el nodo rompe la carga. Tras el deploy, probar in-game el locker del depot
+([`AGENTS.md`](../../AGENTS.md) §2.10) y que las braseros se vean azules. Re-publicar el cliente no
+hace falta: los sprites ya están publicados.
 
 ---
 
