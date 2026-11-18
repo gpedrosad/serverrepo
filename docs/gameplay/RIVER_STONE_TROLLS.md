@@ -58,9 +58,9 @@ Escaneando `test.otbm` con un parser del formato de `iomapotbm.cpp` (aguas = gro
 "shallow water" en este mapa, no los 490–503):
 
 - **River Trolls (4):** orillas del puente de sogas (`x153, y66–72`), en el bloque
-  `centerx="153" centery="69" centerz="7" radius="8"`. Casillas `147,65` y `158,65` (banco norte,
-  miran al agua) y `150,73` / `156,73` (banco sur, a los costados del camino al arco). Todas
-  ground `4756` (grass) sin ítems encima.
+  `centerx="153" centery="69" centerz="7" radius="8"`. Casillas `150,65` y `156,65` (pasillos
+  públicos del banco norte, miran al agua) y `150,73` / `156,73` (banco sur, a los costados del
+  camino al arco). Sin ítems bloqueantes encima.
 - **Stone Trolls (3):** dentro del bloque existente de las ruinas (`150,86,6` r16), en offsets
   `-4,-4` (146,82), `-3,4` (147,90) y `12,0` (162,86) — ground `4757` (rocks). Los offsets con
   muro `912` encima (155,89 / 158,83) y las casillas sin tile se descartaron con el escaneo.
@@ -116,9 +116,26 @@ python3 scripts/map/check-upper-view.py && python3 scripts/map/check-map-load.py
   presets reproducibles, sin `.bak-*`).
 - XMLs válidos; `monsters.xml` y `test-spawn.xml` parsean.
 - Las casillas de spawn elegidas tienen ground caminable y ningún ítem bloqueante encima.
+- **Slots cruzados contra `data/houses.xml` y el flag PZ del OTBM: ninguno cae en casilla de casa
+  ni en PZ** (agregado 18 nov 2026, tras el fix de los patios — ver abajo).
 - Las variantes rage se generaron con `rage-variants.py --write --only "River Troll" "Stone Troll"`
   (tramos 1 y 2: Angry/Furious/Enraged con las fórmulas de siempre, ya registradas en `monsters.xml`).
 - La Guarida: validación del generador + `check-upper-view.py` OK + `check-map-load.py` 0 errores.
+
+## Errores que ya pasaron
+
+- **River Trolls en los patios de las casas (nov 2026):** los dos slots del "banco norte" se
+  pusieron en `147,65,7` y `158,65,7`, que resultaron ser los **patios de River Street III y V**
+  (casillas de casa, PZ, listadas en `data/houses.xml`). La verificación original solo miró
+  "ground caminable y sin ítems bloqueantes", no las casas. En el motor, `Map::placeCreature`
+  deja spawnear un monstruo en PZ (el check de casas de `map.cpp` es solo para jugadores), pero
+  `Monster::canMoveTo` no deja caminar por PZ y el combate en PZ está bloqueado en ambos sentidos:
+  troll **encerrado e invulnerable** en el patio, reapareciendo ahí cada 175 s, slot muerto.
+  Fix 18 nov 2026: slots movidos a los pasillos públicos `150,65,7` y `156,65,7`.
+  **Regla para elegir casillas de spawn:** además de ground caminable y sin ítems bloqueantes,
+  cruzar contra `data/houses.xml` (o el flag `TILE_PZ` / tipo HOUSETILE del OTBM). El "banco
+  norte" del puente de sogas es casi todo patio de las casas III/V; lo público son solo los
+  pasillos `x150` y `x156`.
 
 ## Pendiente
 
