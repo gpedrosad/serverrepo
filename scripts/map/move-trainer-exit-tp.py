@@ -8,8 +8,11 @@ la llegada — fuera de los caminos rectos llegada→monk norte (x146) y llegada
 para que nadie pise el TP sin querer al ir a entrenar. El destino no cambia: el TP de la entrada
 del depot (128,53,6), junto a los lockers.
 
-La casilla del TP es parte del cuadrado de alfombra de llegada: lleva su base de alfombra roja
-(2 piezas de 4398) debajo del magic forcefield, como el resto del cuadrado.
+La casilla del TP es parte del cuadrado de alfombra de llegada, pero OJO con las capas: el
+teleport (1387) es `on_bottom` y la alfombra común (4398) es capa común, así que el cliente
+dibuja la alfombra ENCIMA y lo tapa. La base es la pieza gemela **1798** (mismo sprite, flag
+`ground_border`): se dibuja a nivel de piso, debajo del teleport — alfombra roja visible Y el
+teleport encima.
 
   python3 scripts/map/move-trainer-exit-tp.py            # dry-run: muestra lo que haría
   python3 scripts/map/move-trainer-exit-tp.py --replace  # escribe test.otbm
@@ -126,25 +129,29 @@ def main() -> int:
         print(f"pongo el TP en {NEW} -> {DEST} (al oeste de la llegada {ARRIVAL})")
         tiles[NEW][2].append(item_node(TELEPORT, DEST))
 
-    # la casilla del TP es parte del cuadrado de alfombra: base de alfombra roja (2 x 4398)
-    # debajo del TP, como el resto del cuadrado de llegada; nada más encima
+    # la casilla del TP es parte del cuadrado de alfombra de llegada: la base es la pieza gemela
+    # con flag ground_border (1798, mismo sprite que la 4398 común), que se dibuja a nivel de
+    # piso, DEBAJO del teleport (1387 es on_bottom). La 4398 común (o cualquier otra capa común
+    # o superior) taparía el teleport; nada más va en la casilla.
     def is_item(k, iid):
         return k[0] == T_ITEM and len(k[1]) >= 2 and struct.unpack_from("<H", bytes(k[1]), 0)[0] == iid
 
-    CARPET = 4398
+    CARPET_BASE = 1798
     tp = next(k for k in tiles[NEW][2] if is_item(k, TELEPORT))
-    carpets = [k for k in tiles[NEW][2] if is_item(k, CARPET)][:2]
-    extra = [k for k in tiles[NEW][2] if not is_item(k, TELEPORT) and not is_item(k, CARPET)]
+    base = next((k for k in tiles[NEW][2] if is_item(k, CARPET_BASE)), None)
+    extra = [k for k in tiles[NEW][2] if not is_item(k, TELEPORT) and not is_item(k, CARPET_BASE)]
     if extra:
-        names = [f"{struct.unpack_from('<H', bytes(k[1]), 0)[0]}" for k in extra if k[0] == T_ITEM]
-        print(f"limpio {NEW}: saco {', '.join(names)}")
-    if len(carpets) < 2:
-        print(f"alfombra: {'repongo' if not carpets else 'completo a'} 2 piezas rojas ({CARPET}) "
-              f"debajo del TP ({len(carpets)} de 2)")
-    tiles[NEW][2] = carpets + [item_node(CARPET) for _ in range(2 - len(carpets))] + [tp]
+        names = [str(struct.unpack_from("<H", bytes(k[1]), 0)[0]) for k in extra
+                 if k[0] == T_ITEM and len(k[1]) >= 2]
+        print(f"limpio {NEW}: saco {', '.join(names)} (tapan el teleport o sobran)")
+    if base is None:
+        print(f"base: pongo la alfombra roja {CARPET_BASE} (ground_border, mismo sprite que la "
+              f"4398, se dibuja debajo del TP)")
+    tiles[NEW][2] = [base or item_node(CARPET_BASE)] + [tp]
 
-    if not extra and not old_k and len(carpets) == 2:
-        print(f"Ya listo: TP en {NEW} -> {new_dest} sobre su base de alfombra. Nada que hacer.")
+    if not extra and not old_k and base is not None:
+        print(f"Ya listo: TP en {NEW} -> {new_dest} sobre su base de alfombra {CARPET_BASE}. "
+              f"Nada que hacer.")
         return 0
 
     if not a.replace:

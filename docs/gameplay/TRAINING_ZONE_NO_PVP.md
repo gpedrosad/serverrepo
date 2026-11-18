@@ -28,11 +28,15 @@ Actualmente:
 
 - Se entra por el TP del depot `127,53,6` → llegada a la alfombra roja `146,12,7`.
 - El TP de vuelta está **junto a la llegada**: `145,12,7` → `128,53,6` (hall del depot), sobre su
-  **base de alfombra roja** (2 piezas de `4398`, como el resto del cuadrado de llegada). Antes estaba
-  en el rincón este de la fila de monks (`158,16,7`), a 12+ casillas de la llegada y ~20 del extremo
-  oeste; lo movió `scripts/map/move-trainer-exit-tp.py` (18 nov 2026). Fuera de los caminos rectos
-  llegada→monk norte y llegada→fila (ambos por x146), para que nadie pise el TP sin querer al ir a
-  entrenar.
+  **base de alfombra roja**. Antes estaba en el rincón este de la fila de monks (`158,16,7`), a 12+
+  casillas de la llegada y ~20 del extremo oeste; lo movió `scripts/map/move-trainer-exit-tp.py`
+  (18 nov 2026). Fuera de los caminos rectos llegada→monk norte y llegada→fila (ambos por x146),
+  para que nadie pise el TP sin querer al ir a entrenar.
+- **Ojo con la capa de la base:** el teleport (`1387`) es `on_bottom`; una alfombra común (`4398`)
+  es capa común y el cliente la dibuja ENCIMA → el TP queda invisible. La base del TP es la pieza
+  gemela `1798` (mismo sprite que la `4398`, flag `ground_border`): se dibuja a nivel de piso,
+  debajo del teleport. Ver "Errores que ya pasaron" en
+  [PIEZAS_DE_MAPA.md](../items-and-map/PIEZAS_DE_MAPA.md).
 
 ## Implementacion
 
