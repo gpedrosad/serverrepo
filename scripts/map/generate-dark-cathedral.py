@@ -149,7 +149,6 @@ AXIS_A, AXIS_B, AXIS_C = (29, 11, 31, 24), (28, 24, 30, 38), (28, 39, 30, 57)   
 H2 = (14, 44, 47, 45)                                       # pasillo sur
 ROOMS8 = [
     ("A", (10, 12, 16, 18), GREY), ("B", (18, 13, 23, 18), GREY),
-    ("J", (33, 15, 39, 20), DIRT),                          # antecámara de la cueva
     ("C", (9, 23, 15, 30), GREY), ("D", (17, 23, 22, 30), DIRT),
     ("K", (32, 25, 37, 31), DIRT), ("L", (39, 25, 44, 31), GREY),
     ("M", (9, 32, 15, 42), DIRT), ("N", (17, 32, 22, 42), GREY),
@@ -158,22 +157,26 @@ ROOMS8 = [
     ("S", (33, 47, 38, 52), DIRT), ("U", (40, 47, 45, 52), GREY),
     ("T", (23, 59, 37, 64), GREY),                          # sala del fondo
 ]
-LINKS8 = [("A", "H1A"), ("B", "H1A"), ("J", "H1B"),
+LINKS8 = [("A", "H1A"), ("B", "H1A"),
           ("C", "H1A"), ("D", "H1A"), ("K", "H1B"), ("L", "H1B"),
           ("M", "H2"), ("N", "H2"), ("O", "H2"), ("P", "H2"),
           ("Q", "H2"), ("R", "H2"), ("S", "H2"), ("U", "H2")]
 L_ROOMS8 = {"R": ((20, 52, 23, 55),)}                        # cola en L de la sala R
 # cueva NE: cámaras irregulares unidas por pasillos (como las salas G-J de la referencia).
 # Con la caja nueva hay margen al norte y al este, así que la red crece (no es sólo un desplazamiento).
+# La antecámara J de la referencia es una cámara más de la cueva, abierta al pasillo H1B. Antes era una
+# sala cuadrada de tierra y la cueva le pisaba las paredes: quedaba un recorte de tierra pegado a la roca
+# lisa, sin paredes (nov 2026, ver DARK_CATHEDRAL.md "Patrón descartado"). No volver a hacerla sala.
 CAVE_ROOMS = (((79, 26), 3.4), ((72, 23), 2.8), ((67, 28), 2.2), ((76, 31), 2.6),
               ((83, 32), 2.6), ((80, 38), 2.4), ((73, 37), 2.0), ((85, 24), 2.2),
-              ((70, 20), 2.0))
+              ((70, 20), 2.0), ((69, 37), 2.6))                # la última: antecámara J
 CAVE_LINKS = (((79, 26), (72, 23)), ((79, 26), (76, 31)), ((79, 26), (85, 24)),
               ((72, 23), (70, 20)), ((72, 23), (67, 28)), ((76, 31), (83, 32)),
               ((76, 31), (73, 37)), ((83, 32), (80, 38)), ((73, 37), (80, 38)),
-              ((67, 28), (73, 37)))
+              ((67, 28), (73, 37)), ((69, 37), (73, 37)), ((69, 37), (69, 40)))
 CAVE_BOX = (64, 17, 87, 42)
-CAVE_DOOR = ((69, 34), (70, 34))                            # entra desde la antecámara J
+CAVE_DOOR = ((69, 41), (70, 41))                            # boca: pared norte del pasillo H1B
+J_BOX8 = (66, 35, 72, 40)                                   # antecámara J (cámara de la cueva), para el spawn
 DOWN8 = (30, 33)                                            # agujero z8 -> z9
 
 MIRROR_X = 125                             # 2 * (DX + 29.5): eje de simetría del -2
@@ -258,7 +261,7 @@ ROOMS8_BOX = {n: b for n, b, _g in ROOMS8}                  # cajas ya desplazad
 SPAWNS8 = [
     ("A", ROOMS8_BOX["A"], [("Bandit", 2, 80), ("Smuggler", 1, 90)]),
     ("B", ROOMS8_BOX["B"], [("Wild Warrior", 2, 90), ("Bandit", 1, 80)]),
-    ("H1B", ROOMS8_BOX["J"], [("Bat", 1, 90), ("Centipede", 1, 110)]),
+    ("H1B", J_BOX8, [("Bat", 1, 90), ("Centipede", 1, 110)]),
     ("C", ROOMS8_BOX["C"], [("Bandit", 2, 80), ("Smuggler", 2, 90)]),
     ("D", ROOMS8_BOX["D"], [("Wild Warrior", 2, 90), ("Assassin", 1, 130)]),
     ("K", ROOMS8_BOX["K"], [("Slime", 2, 100), ("Poison Spider", 1, 110)]),
@@ -839,7 +842,7 @@ def main() -> int:
                        ("AXC", "AXB"), ("AXC", "H2"), ("AXC", "T")]
     t8, floor8, mask8 = build_zone(rooms8, links8, [], default_wall=BRICK, outside=ROCK)
     # cueva: discos unidos (contorno orgánico) que entra desde la sala J
-    cave = {CAVE_DOOR[0], CAVE_DOOR[1]}
+    cave = set(CAVE_DOOR)
     print(f"cueva z8: {len(cave)} casillas tras los discos")
     for (cx, cy), r in CAVE_ROOMS:
         for dx in range(-int(r) - 1, int(r) + 2):
@@ -875,10 +878,15 @@ def main() -> int:
     floor8 = (floor8 - cave) | cave                            # la cueva es piso: el relleno la rodea
     for c in grow(floor8 | mask8, 9):                          # 9 = media pantalla (8x6) + colchón:
         t8.setdefault(c, [ROCK])                               # sin esto se ve vacío negro al costado
+    walls8 = set(mask8)
     for c, it in cave_tiles.items():
-        if c not in rooms_floor8:                              # no pisa las salas de ladrillo
+        # no pisa las salas ni sus paredes de ladrillo (salvo la boca): si la cueva tapa la pared,
+        # el piso de la sala queda pegado a la roca lisa (era la antecámara J, nov 2026)
+        if c not in rooms_floor8 and (c not in walls8 or c in cave):
             t8[c] = it
     mask8 -= cave
+    for c in grow(set(CAVE_DOOR), 1) & mask8:                 # los extremos de pared junto a la boca
+        t8[c] = [t8[c][0], wall_piece(mask8, c, BRICK)]
     # lo que quedó suelto se vuelve roca (la cueva es una sola masa conectada a la boca)
     linked = set(reach(cave, CAVE_DOOR[0]))
     for c in cave - linked:
@@ -1035,6 +1043,16 @@ def main() -> int:
         if x < BAND[0] or x > W - 1 - BAND[0] or y < BAND[1] or y > H - 1 - BAND[1]:
             errors.append(f"z7 {(x, y)}: piso caminable dentro de la franja del borde")
             break
+
+    # ningún piso pegado a la roca lisa (101 sola): entre piso y relleno va pared de ladrillo o de cueva.
+    # Si no, se ve un recorte de tierra sin paredes (la antecámara J del -1, nov 2026).
+    for label, t, fl in (("z8", t8, walk8), ("z9", t9, walk9)):
+        for (x, y) in sorted(fl):
+            near = [(x + dx, y + dy) for dx in (-1, 0, 1) for dy in (-1, 0, 1)
+                    if t.get((x + dx, y + dy)) == [ROCK]]
+            if near:
+                errors.append(f"{label} {(x, y)}: piso pegado a roca lisa en {near[0]} (falta pared)")
+                break
 
     # cueva: ninguna roca de 1 casilla entre dos pisos (sin pieza posible: roca pelada)
     cave_f = {(x, y) for (x, y), it in t8.items() if it and it[0] in (CAVE_A, CAVE_B, CAVE_C)}

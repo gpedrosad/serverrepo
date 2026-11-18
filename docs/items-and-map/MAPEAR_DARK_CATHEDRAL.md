@@ -25,7 +25,7 @@ Referencias del diseño: `img/dark-cathedral-ref/` (`Dark_Cathedral_0.png` super
 | Piso | Contenido |
 |------|-----------|
 | **z7** superficie | Jungla densa en el borde, ríos en arco que casi rodean el predio y una explanada de tierra con el claro de la iglesia (sin halo de césped). Nave NEGRA de mármol (norte-sur, 8×28) con columnas de piedra, dos filas de bancos, entrada al sur y brecha al norte. Edificio del oeste con 5 salas, ruinas del este con 4 salas chicas, sala gris del sur con dos filas de bancos y sala gris del oeste con la bajada. Dos bajadas: jungla norte y oeste. |
-| **z8** cripta (-1) | Ladrillo sobre roca: eje norte-sur largo y quebrado (tres tramos) desde la bajada de la jungla hasta la sala del fondo (T), dos pasillos este-oeste con 16 salas a los lados (A–U) y una **cueva natural ramificada** de 270 casillas al noreste (nueve cámaras irregulares unidas por pasillos, piso de cueva) para rotworms y no-muertos. |
+| **z8** cripta (-1) | Ladrillo sobre roca: eje norte-sur largo y quebrado (tres tramos) desde la bajada de la jungla hasta la sala del fondo (T), dos pasillos este-oeste con 16 salas a los lados (A–U) y una **cueva natural ramificada** de 313 casillas al noreste (diez cámaras irregulares unidas por pasillos, piso de cueva; la antecámara J es una de ellas y se entra desde el pasillo este) para rotworms y no-muertos. |
 | **z9** cripta profunda (-2) | Sala grande al norte con laberinto de columnas de piedra (ítem 1514), octógono central con la escalera, brazo oeste con 4 salas en H, brazo este con 2 salas rombo y la sala oval, **anillo sur en zigzag** (baja, sale, baja y vuelve a entrar) con dos salas a cada lado, pasillo central, sala grande central sur (negra) y sala final con el portal. |
 
 ![Cripta -1](img/dark-cathedral-z8.png)
@@ -51,7 +51,7 @@ Referencias del diseño: `img/dark-cathedral-ref/` (`Dark_Cathedral_0.png` super
 | Rellano de la bajada A | `x 145–152`, `y 293–297` |
 | z8: eje (3 tramos) | `x 147–149`, `y 295–308` · `x 146–148`, `y 308–324` · `x 147–149`, `y 324–341` |
 | z8: pasillos | `y 305–306`, `x 127–148` · `y 308–309`, `x 148–165` · `y 326–327`, `x 132–165` |
-| z8: cueva de los gusanos | `x 150–172`, `y 282–304` (270 casillas; entra desde la sala J) |
+| z8: cueva de los gusanos | `x 150–172`, `y 282–305` (313 casillas; boca `154–155,305` en el pasillo este) |
 | z8: sala del fondo (T) | `x 141–155`, `y 342–347` |
 | z9: sala de las columnas | `x 135–160`, `y 292–308` |
 | z9: octógono | `x 143–152`, `y 314–320` |
@@ -127,7 +127,9 @@ la misma caja). Es re-ejecutable: borra su caja, reescribe spawns, carteles y ma
   contra 1515/1549/1551/1560/3766/3767).
 - **Cueva del -1:** varias cámaras (discos con borde irregular) unidas por pasillos sobre
   `cave_tiles` de `generate-north-pass.py` (piso 351/352/355, paredes de roca 356–367), con una boca
-  de dos casillas a la sala J. Las rocas de 1 casilla entre dos pisos se cavan antes de vestir
+  de dos casillas en la pared del pasillo este. La cueva **no pisa las paredes de ladrillo** (antes
+  tapaba las de la antecámara J y quedaba un cuadrado de tierra pegado a la roca lisa: ver
+  [DARK_CATHEDRAL.md](DARK_CATHEDRAL.md#patrón-descartado-sala-cuadrada-de-tierra-pegada-a-la-cueva-18-nov-2026)). Las rocas de 1 casilla entre dos pisos se cavan antes de vestir
   (quedarían peladas, sin pieza).
 - **Vista previa = como en el juego.** `write_preview` compone los sprites con `game_render`
   (altura de paredes/columnas incluida), así los PNG del doc se ven como in-game.
@@ -143,5 +145,5 @@ la misma caja). Es re-ejecutable: borra su caja, reescribe spawns, carteles y ma
 - **Escaleras y portales** se validan antes de escribir: llegadas libres, todo el piso alcanzable
   desde la llegada, paredes con una sola pieza, ids del `.otb` y monstruos registrados. Además (nov
   2026): escombros nunca en mitad de un paso ni donde corten el único acceso, ninguna roca de 1
-  casilla entre dos pisos de cueva y ninguna casilla sin tile a la vista en z8/z9 (media pantalla
+  casilla entre dos pisos de cueva, ningún piso pegado a la roca lisa `101` (falta de pared) y ninguna casilla sin tile a la vista en z8/z9 (media pantalla
   8×6 de cada pisable, relleno de roca a 9).

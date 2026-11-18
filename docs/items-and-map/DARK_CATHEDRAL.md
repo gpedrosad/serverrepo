@@ -23,7 +23,7 @@ manifiesto tenga la misma caja, para poder re-ejecutarlo).
 | Pisos | x (abs) | y (abs) | Local | Qué cubre |
 |-------|---------|---------|-------|-----------|
 | z7 | 85–183 | 264–373 | 0–98 × 0–109 | Jungla del borde, ríos en arco, explanada de tierra, nave, ruinas oeste/este, salón gris, explanada del portal |
-| z8 | 85–183 | 264–373 | 0–98 × 0–109 | Cripta -1: eje N-S, dos pasillos E-O, 16 salas, cueva natural de 270 casillas al NE |
+| z8 | 85–183 | 264–373 | 0–98 × 0–109 | Cripta -1: eje N-S, dos pasillos E-O, 16 salas, cueva natural de 313 casillas al NE |
 | z9 | 85–183 | 264–373 | 0–98 × 0–109 | Cripta -2: sala de columnas, octógono, brazos, anillo en zigzag, sala oval, sala sur y final |
 
 **Layout y desplazamiento.** El diseño se dibujó en un espacio de 60×70; con la caja nueva (99×110)
@@ -79,9 +79,9 @@ Coordenadas absolutas (las locales del generador son `abs − (118,284)`).
 | Pasillo norte | `127–148 × 304–305` (oeste) y `149–165 × 306–307` (este) | En dos tramos, a distinta altura |
 | Pasillo sur | `132–165 × 328–329` | Cruza el eje |
 | Salas | A `128–134 × 296–302` · B `136–141 × 297–302` · C `127–133 × 307–314` · D `135–140 × 307–314` · K `150–155 × 309–315` · L `157–162 × 309–315` · M `127–133 × 316–326` · N `135–140 × 316–326` · O `150–156 × 317–326` · P `158–163 × 317–326` · Q `128–133 × 331–338` · R `135–141 × 331–336` (+ cola en L hasta `y 339`) · S `151–156 × 331–336` · U `158–163 × 331–336` | Losa `431` en pasillos y salas grises, tierra `103` en las otras; puertas de una casilla |
-| Antecámara de la cueva | J `151–157 × 299–304` | Tierra, conecta el pasillo este con la cueva |
+| Antecámara J | `151–157 × 299–304` | Ya no es una sala: es una cámara más de la cueva, abierta al pasillo este (ver [Patrón descartado](#patrón-descartado-sala-cuadrada-de-tierra-pegada-a-la-cueva-18-nov-2026)) |
 | Sala del fondo | T `141–155 × 343–348` | Losa `431`, cierre del eje |
-| Cueva natural | `150–172 × 282–304` (270 casillas) | Nueve cámaras irregulares unidas por pasillos orgánicos (discos + conectores), piso de cueva `351`/`352`/`355`, paredes de roca `356–367`; boca de dos casillas en `154–155,298` hacia la antecámara J. Deja una casilla de pared contra las salas de ladrillo y lo que queda suelto se vuelve roca. Las rocas de 1 casilla entre dos pisos de cueva se cavan antes de vestir (sin pieza: quedarían peladas) |
+| Cueva natural | `150–172 × 282–305` (313 casillas) | Diez cámaras irregulares unidas por pasillos orgánicos (discos + conectores; la décima es la antecámara J), piso de cueva `351`/`352`/`355`, paredes de roca `356–367`; boca de dos casillas en `154–155,305`, en la pared norte del pasillo este. Deja una casilla de pared contra las salas de ladrillo, **no pisa las paredes de ladrillo** (salvo la boca) y lo que queda suelto se vuelve roca. Las rocas de 1 casilla entre dos pisos de cueva se cavan antes de vestir (sin pieza: quedarían peladas) |
 
 ### z9 — cripta (-2)
 
@@ -214,6 +214,7 @@ El generador, si algo falla, no escribe el `.otbm`.
 | Ids | todos los ítems existen en `items-zagan-test.otb` | 0 errores |
 | Monstruos | todos registrados en `monsters.xml` | 0 errores |
 | Spawns | cada bloque sobre piso caminable | 0 errores (125) |
+| Piso pegado a roca lisa | ninguna casilla pisable de z8/z9 con un `101` solo entre sus 8 vecinas (faltaría la pared) | 0 |
 | Rocas de 1 casilla | ninguna roca `101` con piso de cueva en dos cardinales opuestos (quedaría pelada) | 0 |
 | Vacío mismo piso | la media pantalla (8×6) de cada pisable de z8/z9 tiene tile dentro de la caja | 0 |
 | Escombros | `RUBBLE`/`STONE` nunca en mitad de un paso ni donde corten el único acceso | validado al colocar |
@@ -249,8 +250,8 @@ Cerca, no idéntico:
   cierra del todo (queda abierto al sudoeste, como en la referencia) y el agua es un cauce de ~6
   casillas, no un lago. El claro es una elipse irregular, más regular que el patio original.
 - **Piso -1.** La referencia tiene 20 salas etiquetadas A–T repartidas en un plano más ancho; acá hay
-  16 salas A–U más la antecámara J y la cueva, en una versión compacta. La cueva natural (G–J en la
-  referencia) llegó a 270 casillas con nueve cámaras y diez conexiones: se lee como red de cuevas,
+  16 salas A–U y la cueva, en una versión compacta. La cueva natural (G–J en la referencia, la J
+  incluida como cámara) llegó a 313 casillas con diez cámaras y doce conexiones: se lee como red de cuevas,
   pero sigue siendo más chica que la original (que ocupa casi todo el noreste del plano).
 - **Piso -2.** La referencia no es simétrica: brazo oeste con 4 salas, brazo este con 2 rombos y una
   sala oval grande, cruz central y anillo sur. Acá se respetó esa idea (el anillo y las salas
@@ -284,9 +285,36 @@ corregido en el generador:
 - **Huesos de dragón cortados**: la constante `DRAGON_SKELETON=3125` era una parte del esqueleto
   grande (rango 3122–3127); el pase de escombros ahora usa sólo huesos enteros.
 - **Puertas de 1 casilla por diseño** (no son bugs, quedan así a propósito): la boca de la cueva
-  (`155,305`, única vía a sala J + cueva), la puerta del patio de la bajada B (`133,336`) y las
+  (`154–155,305`, dos casillas, única vía a la cueva), la puerta del patio de la bajada B (`133,336`) y las
   puertas de las salas del anillo del -2. El marco de piedra de los agujeros deja bolsillos muertos
   de 1–2 casillas en el patio B (`127,333`, `128,337`): cosmético, nadie queda atrapado.
+
+## Patrón descartado: sala cuadrada de tierra pegada a la cueva (18 nov 2026)
+
+**Qué se veía** (captura in-game, z8 `151–157 × 299–304`): la antecámara J era un rectángulo de
+tierra `103` sin paredes, pegado directo a la roca lisa `101`, con los pasillos de losa al lado también
+sin pared (44 casillas pisables tocaban la roca lisa, `147–161 × 295–306`). Se leía como un recorte
+cuadrado hecho en la roca, no como sala ni como cueva.
+
+**Por qué:** J era una sala de ladrillo dentro de `CAVE_BOX`. `cave_tiles()` viste toda la caja de la
+cueva (piso, paredes `356–367` y roca `101` donde no toca piso) y el generador sólo protegía el **piso**
+de las salas, no sus paredes. La cueva tapó con roca lisa las paredes de J y las de los pasillos H1B y
+del eje que caían en la caja.
+
+**Cómo quedó:**
+
+- J dejó de ser sala: es una cámara más de la cueva (`CAVE_ROOMS`, `((69, 37), 2.6)` en la caja local),
+  unida a la cámara `(73, 37)` y con boca de dos casillas en la pared norte del pasillo H1B
+  (`CAVE_DOOR`, `154–155,305`). El spawn de murciélago + ciempiés sigue en esa zona (`J_BOX8`).
+- La cueva no pisa paredes de ladrillo (`walls8`); los extremos de pared junto a la boca se vuelven a
+  calcular con `wall_piece`.
+- Validación nueva en el generador y en `audit-dark-cathedral.py` (chequeo 7b): **ningún piso pisable
+  pegado a un `101` solo** en sus 8 vecinas. Si vuelve a pasar, el generador no escribe el mapa.
+
+**No volver a usar:** salas rectangulares de tierra como entrada a una cueva, ni ninguna sala sin pared
+contra la roca. Entre piso y relleno siempre va pared: de ladrillo/piedra en las salas, `356–367` en la
+cueva. La entrada a una cueva desde una construcción es una boca en la pared de ladrillo que da
+directo al piso de cueva.
 
 ## Estado
 

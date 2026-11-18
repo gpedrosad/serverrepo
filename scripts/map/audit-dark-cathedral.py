@@ -14,6 +14,8 @@ Qué comprueba (error = sale con código 1):
   5. Spawns de test-spawn.xml dentro de la caja sobre piso pisable.
   6. Pilas raras: casillas sin ground, con 2+ grounds o con más de 2 ítems.
   7. Huesos de dragón cortados (3122-3127, 2247): partes del esqueleto grande, sueltas se ven mal.
+  7b. Piso pegado a la roca de relleno 101 sin pared en medio (se ve como un recorte de tierra sin
+      paredes; pasó con la antecámara J del -1).
 
 Informativo (no falla): decoración bloqueante en mitad de un paso (vecinos pisables en ambos
 ejes — los marcos de piedra de los agujeros van a aparecer, es a propósito) y, con --cuellos,
@@ -221,6 +223,20 @@ def main() -> int:
         if ((x, y - 1) in w and (x, y + 1) in w) or ((x - 1, y) in w and (x + 1, y) in w):
             if any(bl.blocks(i) for i in it[1:]):
                 notes.append(f"z{z} {x},{y}: {it} con paso pisable en ambos ejes")
+
+    # --- 7b. piso pegado a roca lisa (sin pared) ----------------------------------------------------
+    # Un piso al lado de la roca de relleno (101 sola) se ve como un recorte de tierra sin paredes:
+    # pasó en la antecámara J del -1 (nov 2026), cuando la cueva pisaba las paredes de ladrillo.
+    # Entre piso y relleno siempre tiene que haber pared (ladrillo / piedra) o pared de cueva 356-367.
+    print("\n=== 7b. piso pegado a roca lisa 101 (sin pared) ===")
+    bare = 0
+    for z in zs:
+        for (x, y) in sorted(walks[z]):
+            near = [(x + dx, y + dy) for dx, dy in ALL8 if it_at(x + dx, y + dy, z) == [ROCK]]
+            if near:
+                bare += 1
+                errors.append(f"z{z} {x},{y}: piso pegado a roca lisa en {near[0]}, items={it_at(x, y, z)}")
+    print(f"pisos pegados a roca lisa: {bare}")
 
     # --- 8. cuellos de botella (opcional, lento) ---------------------------------------------------
     if a.cuellos:

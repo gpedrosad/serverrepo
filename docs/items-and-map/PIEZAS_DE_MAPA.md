@@ -138,6 +138,10 @@ Paredes de tierra `356–367` (`WALL_SIDE`, `WALL_CORNER`, `WALL_INNER` en `gene
 - **Nada de vacío a la vista:** desde cualquier piso caminable, media pantalla (8×6 casillas) tiene que
   ser roca o mapa, nunca casillas sin tile (se ven negras).
 - **No pisar lo ajeno:** el piso necesita sus 8 vecinas propias (la pared es de la cueva).
+- **Nunca piso pegado a la roca lisa `101`.** Entre el piso y el relleno va pared: `356–367` en la cueva,
+  ladrillo/piedra en las salas. Si una cueva se viste al lado de una construcción, no le tapa las paredes;
+  la entrada es una boca en la pared que da al piso de cueva, no una sala cuadrada de tierra (se ve como un
+  recorte sin paredes). Lo valida `audit-dark-cathedral.py` (chequeo 7b).
 - **Decoración que no se mueve ni se levanta.** Barriles y cajas se empujan y traban el paso; los huesos
   agarrables se tiran. Las piedras/musgo de 2x2 se dibujan hacia arriba-izquierda: solo donde tapan pared.
 - **Huesos enteros, no piezas del esqueleto de dragón.** `2247` (cabeza), `3122`–`3127` (garra, costillas,
@@ -189,4 +193,5 @@ Un generador nuevo con muebles tiene que traer las mismas comprobaciones.
 | Valle de las Bestias: cabezas y garras de dragón cortadas en el suelo (2247, 3125, 3122) (nov 2026) | Son piezas del esqueleto grande; usar huesos enteros (ver [Cuevas](#cuevas)) |
 | Dungeon de la city: vacío negro al costado, rocas peladas sin borde, salones cuadrados vacíos y fogata encima de la escalera de mano (nov 2026) | Ver [Cuevas](#cuevas) y [MAPEAR_DUNGEON_CITY.md](MAPEAR_DUNGEON_CITY.md#errores-que-ya-pasaron-arreglados-16-nov-2026) |
 | Dark Cathedral: piedra aleatoria en mitad del pasillo H2 (`145,328,8`) dejó el ala oeste de la cripta (274 casillas, con la bajada B) colgando de UNA casilla (18 nov 2026) | Los escombros bloqueantes se validan al colocar (patrón `decorate_cave`): nunca en mitad de un paso (vecinos pisables en ambos ejes) ni donde corten el único acceso |
+| Dark Cathedral: la antecámara J del -1 era un cuadrado de tierra sin paredes pegado a la roca lisa, y los pasillos de al lado también perdieron la pared (18 nov 2026) | La cueva tapaba con roca las paredes de ladrillo de su caja. J pasó a ser cámara de la cueva; validar que ningún piso toque un `101` solo. Ver [DARK_CATHEDRAL.md](DARK_CATHEDRAL.md#patrón-descartado-sala-cuadrada-de-tierra-pegada-a-la-cueva-18-nov-2026) |
 | Dark Cathedral: vacío negro en el MISMO piso de la cripta (200 pisables de z8 lo veían desde el borde de la cueva) y 17 rocas de 1 casilla entre dos pisos (18 nov 2026) | Relleno de roca a `grow(...,9)` (media pantalla 8×6 + colchón) y cavar las rocas de 1 casilla; `check-upper-view.py` no cubre el vacío del mismo piso — validar la ventana de cada pisable |
