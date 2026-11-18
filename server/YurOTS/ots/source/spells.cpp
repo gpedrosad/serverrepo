@@ -98,6 +98,28 @@ long spellSeconds(long ms)
 	return ms <= 0 ? 0 : (ms + 999) / 1000;
 }
 
+// El hechizo no hizo nada (en espera, sin blanco, sin monstruos...): polvo sobre el jugador, que lo ven
+// todos, como cuando falla un hechizo en 7.6, y el motivo abajo.
+void spellFail(Game* game, Creature* creature, const std::string& text)
+{
+	if(!creature)
+		return;
+	game->sendMagicEffect(creature->pos, NM_ME_PUFF);
+	sendSpellText(creature, MSG_SMALLINFO, text);
+}
+
+// Nombre del hechizo para mostrar: el server los guarda en minúscula ("counter stance" -> "Counter Stance").
+std::string spellTitle(std::string name)
+{
+	bool start = true;
+	for(size_t i = 0; i < name.size(); ++i) {
+		if(start && name[i] >= 'a' && name[i] <= 'z')
+			name[i] = name[i] - 'a' + 'A';
+		start = (name[i] == ' ');
+	}
+	return name;
+}
+
 // Evento: manda `text` a la criatura `id` si sigue en el juego.
 void sendSpellTextLater(Game* game, unsigned long id, std::string text)
 {
@@ -1254,7 +1276,7 @@ int SpellScript::luaActionSpellCooldownReady(lua_State *L)
 		if(player) {
 			std::stringstream msg;
 			msg << "You can use it again in " << spellSeconds(left) << " s.";
-			player->sendTextMessage(MSG_SMALLINFO, msg.str().c_str(), player->pos, NM_ME_PUFF);
+			spellFail(spell->game, player, msg.str());
 		}
 	}
 	lua_pushnumber(L, left);
@@ -1280,6 +1302,13 @@ int SpellScript::luaActionSetSpellCooldown(lua_State *L)
 		return 0;
 
 	PlayerSpellCooldown::set(creature->getID(), std::string(name), ms);
+	// El cliente deja el ícono del hechizo (apagado, con la cuenta) hasta que se pueda volver a usar.
+	// Texto exacto en TimedIcons de clienteretro: "<nombre del hechizo>: ready again in N s."
+	if(ms > 0) {
+		std::stringstream msg;
+		msg << spellTitle(spell->getName()) << ": ready again in " << spellSeconds(ms) << " s.";
+		sendSpellText(creature, MSG_SMALLINFO, msg.str());
+	}
 	return 0;
 }
 
@@ -1322,13 +1351,13 @@ int SpellScript::luaActionDoRescue(lua_State *L)
 
 	Player* ally = dynamic_cast<Player*>(named);
 	if(!ally || ally == casterPlayer) {
-		caster->sendCancel("You cannot rescue that target.");
+		spellFail(spell->game, caster, "You cannot rescue that target.");
 		lua_pushnumber(L, 0);
 		return 1;
 	}
 
 	if(caster->pos.z != ally->pos.z) {
-		caster->sendCancel("You need to be on the same floor.");
+		spellFail(spell->game, caster, "You need to be on the same floor.");
 		lua_pushnumber(L, 0);
 		return 1;
 	}
@@ -1380,7 +1409,7 @@ int SpellScript::luaActionDoRescue(lua_State *L)
 			boost::bind(&sendSpellTextLater, spell->game, caster->getID(), std::string("Your rescue ends."))));
 	}
 	else {
-		caster->sendCancel(("No monsters are attacking " + ally->getName() + ".").c_str());
+		spellFail(spell->game, caster, ("No monsters are attacking " + ally->getName() + ".").c_str());
 	}
 
 	lua_pushnumber(L, affected);
@@ -1408,13 +1437,13 @@ int SpellScript::luaActionDoCleanse(lua_State *L)
 
 	Player* target = dynamic_cast<Player*>(named);
 	if(!target) {
-		caster->sendCancel("You cannot cleanse that target.");
+		spellFail(spell->game, caster, "You cannot cleanse that target.");
 		lua_pushnumber(L, 0);
 		return 1;
 	}
 
 	if(caster->pos.z != target->pos.z) {
-		caster->sendCancel("You need to be on the same floor.");
+		spellFail(spell->game, caster, "You need to be on the same floor.");
 		lua_pushnumber(L, 0);
 		return 1;
 	}
@@ -1423,7 +1452,7 @@ int SpellScript::luaActionDoCleanse(lua_State *L)
 	bool hadParalyze = target->getConditions().hasCondition(ATTACK_PARALYZE);
 
 	if(!hadPoison && !hadParalyze) {
-		caster->sendCancel("The target has no ailments to cleanse.");
+		spellFail(spell->game, caster, "The target has no ailments to cleanse.");
 		lua_pushnumber(L, 0);
 		return 1;
 	}
@@ -1484,13 +1513,13 @@ int SpellScript::luaActionDoChainLightning(lua_State *L)
 	}
 
 	if(caster->pos.z != targetPos.z) {
-		caster->sendCancel("You need to be on the same floor.");
+		spellFail(spell->game, caster, "You need to be on the same floor.");
 		lua_pushnumber(L, 0);
 		return 1;
 	}
 
 	if(spell->game->canThrowObjectTo(caster->pos, targetPos, BLOCK_PROJECTILE) != RET_NOERROR) {
-		caster->sendCancel("You cannot throw there.");
+		spellFail(spell->game, caster, "You cannot throw there.");
 		lua_pushnumber(L, 0);
 		return 1;
 	}
@@ -1504,7 +1533,7 @@ int SpellScript::luaActionDoChainLightning(lua_State *L)
 	Creature* start = startTile->getTopCreature();
 	Monster* first = dynamic_cast<Monster*>(start);
 	if(!first) {
-		caster->sendCancel("You can only chain lightning through monsters.");
+		spellFail(spell->game, caster, "You can only chain lightning through monsters.");
 		lua_pushnumber(L, 0);
 		return 1;
 	}
@@ -1586,7 +1615,7 @@ int SpellScript::luaActionDoChainLightning(lua_State *L)
 		sendSpellText(caster, MSG_INFO, msg.str());
 	}
 	else {
-		caster->sendCancel("The lightning has no effect.");
+		spellFail(spell->game, caster, "The lightning has no effect.");
 	}
 
 	lua_pushnumber(L, applied);
@@ -1667,13 +1696,13 @@ int SpellScript::luaActionDoDelayedHeal(lua_State *L)
 
 	Player* target = dynamic_cast<Player*>(named);
 	if(!target) {
-		caster->sendCancel("You can only heal players.");
+		spellFail(spell->game, caster, "You can only heal players.");
 		lua_pushnumber(L, 0);
 		return 1;
 	}
 
 	if(caster->pos.z != target->pos.z) {
-		caster->sendCancel("You need to be on the same floor.");
+		spellFail(spell->game, caster, "You need to be on the same floor.");
 		lua_pushnumber(L, 0);
 		return 1;
 	}
@@ -1739,13 +1768,13 @@ int SpellScript::luaActionDoDetonateFields(lua_State *L)
 	}
 
 	if(caster->pos.z != center.z) {
-		caster->sendCancel("You need to be on the same floor.");
+		spellFail(spell->game, caster, "You need to be on the same floor.");
 		lua_pushnumber(L, 0);
 		return 1;
 	}
 
 	if(spell->game->canThrowObjectTo(caster->pos, center, BLOCK_PROJECTILE) != RET_NOERROR) {
-		caster->sendCancel("You cannot throw there.");
+		spellFail(spell->game, caster, "You cannot throw there.");
 		lua_pushnumber(L, 0);
 		return 1;
 	}
@@ -1804,7 +1833,7 @@ int SpellScript::luaActionDoDetonateFields(lua_State *L)
 		sendSpellText(caster, MSG_INFO, msg.str());
 	}
 	else {
-		caster->sendCancel("There are no fire, energy or poison fields around you.");
+		spellFail(spell->game, caster, "There are no fire, energy or poison fields around you.");
 	}
 
 	lua_pushnumber(L, detonated);
@@ -1934,14 +1963,14 @@ int SpellScript::luaActionDoBloodRitual(lua_State *L)
 
 	Tile* tile = spell->game->getTile(player->pos);
 	if(tile && tile->isPz()) {
-		player->sendTextMessage(MSG_SMALLINFO, "You cannot use this spell in a protection zone.");
+		spellFail(spell->game, player, "You cannot use this spell in a protection zone.");
 		lua_pushnumber(L, 0);
 		return 1;
 	}
 
 	int64_t minHp = player->healthmax * minHpPercent / 100;
 	if(player->health <= minHp) {
-		player->sendTextMessage(MSG_SMALLINFO, "Your health is too low.");
+		spellFail(spell->game, player, "Your health is too low.");
 		lua_pushnumber(L, 0);
 		return 1;
 	}
@@ -2736,7 +2765,7 @@ int SpellScript::luaActionAttackSpeedReady(lua_State *L)
 		left = (player->attackSpeedReadyAt - OTSYS_TIME() + 999) / 1000;
 		std::stringstream msg;
 		msg << "You can use it again in " << left << " s.";
-		player->sendTextMessage(MSG_SMALLINFO, msg.str().c_str(), player->pos, NM_ME_PUFF);
+		spellFail(spell->game, player, msg.str());
 	}
 	lua_pushnumber(L, (double)left);
 	return 1;
@@ -2771,6 +2800,9 @@ int SpellScript::luaActionStartAttackSpeed(lua_State *L)
 	player->attackSpeedPercent = percent;
 	player->attackSpeedReadyAt = now + (cooldown > duration ? cooldown : duration) * 1000;
 	player->attackSpeedEffect = (effect >= 0 && effect < 255) ? effect : -1;
+	std::stringstream ready;                 // el cliente deja el ícono apagado hasta que se pueda relanzar
+	ready << spellTitle(spell->getName()) << ": ready again in " << (cooldown > duration ? cooldown : duration) << " s.";
+	player->sendTextMessage(MSG_SMALLINFO, ready.str().c_str());
 	std::stringstream msg;
 	msg << "Your attacks speed up for " << duration << " s.";
 	player->sendTextMessage(MSG_SMALLINFO, msg.str().c_str());

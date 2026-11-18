@@ -17,7 +17,20 @@ Frenzy / Rapid Fire ([SPELL_ATTACK_SPEED.md](SPELL_ATTACK_SPEED.md)).
 | Counter Stance | `utito tera` | Knight | 10 / 80 | 5 s: los 2 próximos golpes hacen 25 % menos y el daño absorbido vuelve al monstruo | "You take a counter stance for 5 s: the next 2 hits deal 25% less damage." · cada golpe: "Your counter stance absorbs N damage." (+ escudo) · fin: "Your counter stance ends." | `counter_stance` |
 | Blood Ritual | `utamo mort` | Sorcerer | 18 / 120 | 4 veces cada 2 s: −30 vida, +60 maná (nunca baja del 25 % de vida, no en PZ) | "Your blood turns into mana for 8 s: 30 health into 60 mana every 2 s." · fin (o al cortarse): "Your blood ritual ends." | `blood_ritual` |
 
-Si se lo dice antes de tiempo: "You can use it again in N s." (sale de `spellCooldownReady`, igual que Frenzy).
+## El ícono queda hasta poder relanzarlo, y el polvo al reintentar
+
+- **Al lanzarlo bien**, el server manda abajo "`<Hechizo>`: ready again in N s." (`setSpellCooldown`; Frenzy y
+  Rapid Fire desde `startAttackSpeed`). El cliente deja el ícono del hechizo en el panel de condiciones
+  hasta que se pueda volver a usar: **encendido** con los segundos del efecto mientras dura (los que tienen
+  duración), y después **apagado** (50 % de opacidad, número gris) con los segundos que faltan para
+  relanzarlo. Los 8 hechizos y Frenzy / Rapid Fire tienen ícono; los que no duran (`exori con gran`,
+  `exana res`, `exori vis con`, `exevo vis tera`) sólo muestran la espera.
+- **Al reintentarlo antes de tiempo:** "You can use it again in N s." y **polvo** (`NM_ME_PUFF`) sobre el
+  jugador, que lo ven todos (antes sólo lo veía él, en Frenzy). El mismo polvo sale cuando el hechizo no
+  hace nada: sin monstruos que rescatar, nada que limpiar, sin campos, blanco que no sirve, otro piso, PZ o
+  poca vida en Blood Ritual (`spellFail` en `spells.cpp`).
+- El server guarda los nombres en minúscula; el aviso los pasa a mayúscula (`spellTitle`) y el cliente
+  compara sin distinguir.
 
 ## Cómo está hecho
 
@@ -26,8 +39,8 @@ Si se lo dice antes de tiempo: "You can use it again in N s." (sale de `spellCoo
 | `source/spells.cpp` | Los avisos, en cada `luaActionDo*` (helpers `sendSpellText`, `sendSpellTextLater`, `endCounterStance` arriba del archivo). Los avisos de fin van con `addEvent(makeTask(…))` |
 | `source/playerstates.h` / `game.cpp` (`applyCounterStance`) | Counter Stance ahora vence a los `DURATION_S` (antes el Lua lo pasaba pero nadie lo usaba: duraba hasta recibir los 2 golpes) |
 | `source/magic.cpp` (`getMagicEffect`) | Arreglo del efecto, ver abajo |
-| Cliente `clienteretro`: `modules/game_inventory/inventory.lua` | Tabla `TimedIcons`: patrón del mensaje de inicio (con los segundos), mensajes de fin, imagen y tooltip. Los segundos se ven sobre el ícono |
-| Cliente: `data/images/game/states/` | `counter_stance.png`, `blood_ritual.png`, `seed_of_life.png`, `rescue.png` (18×18, hechos con un cuadro de cada efecto) |
+| Cliente `clienteretro`: `modules/game_inventory/inventory.lua` | Tabla `TimedIcons`: nombres del hechizo (para "ready again"), patrón del mensaje de inicio (con los segundos), mensajes de fin, imagen y tooltip. Por ícono guarda `active` (efecto) y `ready` (espera); los segundos se ven sobre el ícono |
+| Cliente: `data/images/game/states/` | `counter_stance`, `blood_ritual`, `seed_of_life`, `rescue`, `piercing_volley`, `cleanse`, `chain_lightning`, `field_detonation` (`.png` 18×18, hechos con un cuadro de cada efecto). Frenzy / Rapid Fire usan `strengthened` |
 
 **No cambiar los textos que prenden o apagan un ícono sin cambiar `TimedIcons` en el cliente.** Un cliente sin
 actualizar ve los avisos y los efectos, pero no los íconos.
@@ -58,6 +71,10 @@ copia de los datos y los bots de `make-test-bots.py` (al Bot Knight hubo que sub
 - `utamo mort`: aviso, 4 ticks, "Your blood ritual ends." a los 8 s.
 - `exevo vis tera` sin campos y `exana res` sin nada que sacar: el aviso de que no hizo nada.
 - `exori vis con` sobre el orco: "Your lightning strikes 1 monster."
+
+Segunda vuelta (íconos de espera y polvo, mismo día, server aparte en 7276): "Counter Stance: ready again in
+30 s." y "Frenzy: ready again in 20 s." al lanzar; al repetirlos, "You can use it again in N s." y polvo que
+ven el knight y el druid; polvo también en `exeta sio` sin monstruos y `exana res` sin nada que limpiar.
 
 Los íconos del cliente se probaron con un banco en Lua (widgets y `scheduleEvent` falsos) pasándole esos
 mensajes: cada uno aparece con sus segundos, baja de a 1 y se va con su mensaje de fin o al llegar a 0. Falta
