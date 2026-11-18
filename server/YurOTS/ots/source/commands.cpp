@@ -35,6 +35,7 @@
 #include "status.h"
 #include "monsters.h"
 #include "spells.h"
+#include "ioplayer.h"
 #include <libxml/xmlmemory.h>
 #include <libxml/parser.h>
 
@@ -66,6 +67,8 @@ s_defcommands Commands::defined_commands[] = {
 	{"/ips",&Commands::onlineIpList},
 	{"/a",&Commands::teleportNTiles},
 	{"/kick",&Commands::kickPlayer},
+	{"/pink",&Commands::pinkSkull},
+	{"/unpink",&Commands::unpinkSkull},
 	{"/ban",&Commands::banCharacter},
 	{"/up",&Commands::goUp},
 	{"/down",&Commands::goDown},
@@ -746,6 +749,91 @@ bool Commands::kickPlayer(Creature* c, const std::string &cmd, const std::string
 		return true;
 	}
 	return false;
+}
+
+// ---------- Pink Skull (docs/gameplay/PINK_SKULL.md) ----------
+// /pink Nombre            -> rosa hasta /unpink
+// /pink "Nombre", horas   -> rosa por esas horas (1 a 500: skullTicks es int en ms)
+// Solo jugadores conectados. Un GM no puede ponérsela a otro de su access o más, salvo a sí mismo
+// (para probarla). Se guarda el personaje al momento, así sobrevive a un reinicio.
+static std::string pinkTrim(std::string s)
+{
+	while(!s.empty() && (s[0] == ' ' || s[0] == '"'))
+		s.erase(0, 1);
+	while(!s.empty() && (s[s.size() - 1] == ' ' || s[s.size() - 1] == '"'))
+		s.erase(s.size() - 1);
+	return s;
+}
+
+static Player* pinkTarget(Game* game, Creature* c, const std::string& name, const char* verb)
+{
+	Player* gm = dynamic_cast<Player*>(c);
+	Player* target = game->getPlayerByName(name);
+	if(!target) {
+		if(gm)
+			gm->sendTextMessage(MSG_BLUE_TEXT, (std::string("Player ") + name + " is not online.").c_str());
+		return NULL;
+	}
+	if(gm && target != gm && gm->access <= target->access) {
+		gm->sendTextMessage(MSG_BLUE_TEXT, (std::string("You cannot ") + verb + " this player.").c_str());
+		return NULL;
+	}
+	return target;
+}
+
+bool Commands::pinkSkull(Creature* c, const std::string &cmd, const std::string &param)
+{
+	std::string name = param;
+	int hours = 0;
+	size_t comma = param.rfind(',');
+	if(comma != std::string::npos) {
+		name = param.substr(0, comma);
+		hours = atoi(param.substr(comma + 1).c_str());
+		if(hours < 1 || hours > 500) {
+			c->sendCancel("Use /pink \"Name\", hours (1-500), or /pink Name to keep it until /unpink.");
+			return true;
+		}
+	}
+	name = pinkTrim(name);
+	Player* target = pinkTarget(game, c, name, "mark");
+	if(!target)
+		return true;
+
+	target->skullType = SKULL_PINK;
+	target->skullTicks = hours * 3600 * 1000;      // 0 = hasta /unpink (checkSkull solo descuenta si > 0)
+	game->Skull(target);
+	IOPlayer::instance()->savePlayer(target);
+
+	std::stringstream msg;
+	msg << target->getName() << " now has a pink skull";
+	if(hours > 0)
+		msg << " for " << hours << (hours == 1 ? " hour." : " hours.");
+	else
+		msg << " until /unpink.";
+	if(Player* gm = dynamic_cast<Player*>(c))
+		gm->sendTextMessage(MSG_BLUE_TEXT, msg.str().c_str());
+	target->sendTextMessage(MSG_RED_INFO, "You have been marked with a pink skull: if you die, you lose all your equipment.");
+	return true;
+}
+
+bool Commands::unpinkSkull(Creature* c, const std::string &cmd, const std::string &param)
+{
+	std::string name = pinkTrim(param);
+	Player* target = pinkTarget(game, c, name, "unmark");
+	if(!target)
+		return true;
+	if(target->skullType != SKULL_PINK) {
+		c->sendCancel("That player has no pink skull.");
+		return true;
+	}
+	target->skullType = SKULL_NONE;
+	target->skullTicks = 0;
+	game->Skull(target);
+	IOPlayer::instance()->savePlayer(target);
+	if(Player* gm = dynamic_cast<Player*>(c))
+		gm->sendTextMessage(MSG_BLUE_TEXT, (target->getName() + " no longer has a pink skull.").c_str());
+	target->sendTextMessage(MSG_INFO, "Your pink skull has been removed.");
+	return true;
 }
 
 bool Commands::goUp(Creature* c, const std::string &cmd, const std::string &param)

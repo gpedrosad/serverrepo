@@ -1318,7 +1318,8 @@ int Player::getLookCorpse(){
 
 void Player::dropLoot(Container *corpse, Player* /*killer*/)
 {
-	if (skullType == SKULL_RED)
+	// Red y Pink (castigo de GM, docs/gameplay/PINK_SKULL.md): cae todo, también la mochila y el AOL.
+	if (skullType == SKULL_RED || skullType == SKULL_PINK)
 	{
 		for (int slot = 0; slot < 11; slot++)
 		{

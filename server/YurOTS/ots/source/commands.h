@@ -67,6 +67,8 @@ protected:
 	bool onlineIpList(Creature* c, const std::string &cmd, const std::string &param);
 	bool teleportNTiles(Creature* c, const std::string &cmd, const std::string &param);
 	bool kickPlayer(Creature* c, const std::string &cmd, const std::string &param);
+	bool pinkSkull(Creature* c, const std::string &cmd, const std::string &param);
+	bool unpinkSkull(Creature* c, const std::string &cmd, const std::string &param);
 
 	bool gmInvisible(Creature* c, const std::string &cmd, const std::string &param);
 

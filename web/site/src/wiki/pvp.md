@@ -23,8 +23,10 @@ estado: publicado
 | White | Matas a alguien sin skull (te suma frag) | 15 min |
 | Red | Llegas a 3 frags | 6 h |
 | Yellow | Solo lo ves tú, sobre alguien que te atacó | 1 min |
+| Pink | La pone un GM como castigo (por ejemplo, a un bot) | Lo que decida el GM |
 
-- Matar a alguien con white o red skull **no** suma frag.
+- Matar a alguien con white, red o pink skull **no** suma frag.
+- **Pink skull:** quien la tiene, si muere, **pierde todo el equipo y la mochila**, como con la red. Solo un GM la pone y la saca.
 - **Yellow skull:** si alguien te pega, lo ves con yellow skull durante 1 min. Si lo matas en ese minuto, no te suma frag. Sirve para defenderte.
 - Entre miembros de la misma **party** no hay skulls ni frags.
 - Los tiempos de skull y de frags solo corren mientras estás conectado.

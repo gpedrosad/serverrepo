@@ -91,7 +91,8 @@ unsigned char Protocol76::getDisplayedSkull(const Player *playa) const
 	if(playa == player)
 		return playa->skullType;
 
-	if(player && player->hasYellowSkull(playa) && playa->skullType != SKULL_RED)
+	// la amarilla de retaliación no tapa a la roja ni a la rosa
+	if(player && player->hasYellowSkull(playa) && playa->skullType != SKULL_RED && playa->skullType != SKULL_PINK)
 		return SKULL_YELLOW;
 
 	return playa->skullType;

@@ -21,6 +21,8 @@
 <command cmd="/ips"			access="2" />
 <command cmd="/summon"		access="3" />
 <command cmd="/kick"		access="2" />
+<command cmd="/pink"		access="3" />
+<command cmd="/unpink"	access="3" />
 
 <command cmd="/up"			access="3" />
 <command cmd="/down"		access="3" />

@@ -7131,6 +7131,10 @@ void Game::onPvP(Creature* creature, Creature* attacked, bool murder)
 			{
 				player->banned = true;
 			}
+			else if (player->skullType == SKULL_PINK)
+			{
+				// la Pink la pone y la saca un GM: una muerte injusta suma el frag pero no la cambia
+			}
 			else if (player->skullKills >= g_config.RED_UNJUST)
 			{
 				player->skullType = SKULL_RED;

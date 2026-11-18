@@ -321,7 +321,8 @@ enum skull_t {
 	SKULL_NONE = 0,
 	SKULL_YELLOW = 1,
 	SKULL_WHITE = 3,
-	SKULL_RED = 4
+	SKULL_RED = 4,
+	SKULL_PINK = 7		// castigo de GM (/pink): al morir cae todo; el cliente Retro76 la dibuja rosa
 };
 
 enum bloodcolor_t // for dmg string

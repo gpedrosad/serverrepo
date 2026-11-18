@@ -123,7 +123,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/SPELL_EXETA_RES.md`](gameplay/SPELL_EXETA_RES.md) | **exeta res** (Challenge): taunt Knight 3×3, lock 6 s sin retarget/flee; binding `doChallenge` + rebuild C++. |
 | [`gameplay/TRAINING_BONUS_PARCHMENT.md`](gameplay/TRAINING_BONUS_PARCHMENT.md) | Sistema de pergaminos de bonus de training. |
 | [`gameplay/PRIVATE_TRAINER_DUMMY.md`](gameplay/PRIVATE_TRAINER_DUMMY.md) | Private Trainer Dummy: item **`20155`** (clientId kit sofá `2776`), look monstruo trainer monk (`57`). |
-| [`gameplay/PINK_SKULL.md`](gameplay/PINK_SKULL.md) | **Pink Skull**: skull punitiva para bots. Diseño, comando GM, drop total y cambios en el cliente. |
+| [`gameplay/PINK_SKULL.md`](gameplay/PINK_SKULL.md) | **Pink Skull** (implementada nov 2026): calavera rosa de castigo que pone un GM con `/pink`; al morir se pierde todo. Comandos, código y cliente. |
 | [`gameplay/RIVER_STONE_TROLLS.md`](gameplay/RIVER_STONE_TROLLS.md) | **River Troll (252) y Stone Troll (253)**: los dos trolls nuevos del río y las ruinas, con sprites dibujados, spawns, la **Guarida** (cueva z8, `generate-troll-den.py`) y variantes rage. |
 | [`gameplay/ZAGAN_CONSUMABLE_RUNES.md`](gameplay/ZAGAN_CONSUMABLE_RUNES.md) | Runas consumibles Zagan: experience recovery (20131) y training extension (20132). |
 | [`gameplay/TRAINING_ZONE_NO_PVP.md`](gameplay/TRAINING_ZONE_NO_PVP.md) | Zonas de training con flag de no-PvP. |

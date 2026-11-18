@@ -1,6 +1,8 @@
 # Pink Skull — skull punitiva para bots
 
-> **Estado:** diseño técnico listo para implementar. **No hay código activo todavía.**
+> **Estado:** implementada (18 nov 2026). Servidor: `/pink` y `/unpink`, drop total al morir, la amarilla no la
+> tapa y una muerte injusta no la cambia. Cliente Retro76: `SkullPink = 7` con su calavera rosa. Ver
+> [Cómo quedó](#cómo-quedó-nov-2026) al final.
 >
 > Esta ficha describe la Pink Skull: qué hace, cómo se asigna, cómo se ve y qué hay que tocar en el servidor y en el cliente. Fue solicitada como castigo para bots: un GM la asigna a un personaje y, mientras dure, **al morir deja caer todo el equipo**.
 
@@ -177,3 +179,29 @@ La **Yellow Skull** existe hoy como derecho de retaliación PvP ([docs/PVP_SYSTE
 - Yellow es efímera y automática (1 minuto tras ser agredido).
 - Pink es manual, dura horas y es un castigo administrativo.
 - En el protocolo usan IDs distintos (`1` vs `7`), por lo que no se confunden.
+
+---
+
+## Cómo quedó (nov 2026)
+
+Respuestas a las preguntas abiertas y lo que cambió respecto del diseño:
+
+| Tema | Cómo quedó |
+|------|-----------|
+| Comando | `/pink Nombre` = rosa **hasta `/unpink`**; `/pink "Nombre", horas` = por esas horas (1–500: `skullTicks` es `int` en ms, 500 h ≈ 21 días). Las comillas son opcionales. `/unpink Nombre`. `access="3"` en `commands.xml` |
+| A quién | Solo jugadores **conectados**. No se le puede poner a un GM de igual o mayor `access`, **salvo a uno mismo** (para probarla) |
+| Persistencia | Se guarda el personaje al momento (`IOPlayer::savePlayer`); `skullType=7` y `skullTicks` van en `<skull>` del XML. Con `ticks="0"` no vence (`Player::checkSkull` solo descuenta si es > 0) |
+| Muerte | `Player::dropLoot`: `SKULL_RED \|\| SKULL_PINK` → caen los 11 slots al cadáver, mochila y AOL incluidos |
+| Si el marcado mata injusto | Suma el frag (`skullKills`) pero **no** le cambia la rosa por white/red (`Game::onPvP`) |
+| Si matan al marcado | No suma frag (la víctima no es `SKULL_NONE`) y el atacante no gana white |
+| Vista | `Protocol76::getDisplayedSkull`: la amarilla de retaliación no tapa ni a la roja ni a la rosa |
+| Cliente | `modules/gamelib/const.lua` y `creature.lua`: `SkullPink = 7` → `/images/game/skulls/skull_pink.png` (11×11, la roja recoloreada a rosa con el mismo brillo). La usan la cabeza del personaje y la battle list (`getSkullImagePath`). Un cliente sin actualizar no dibuja nada, pero el castigo es del servidor |
+
+Auditoría: no hay archivo de log aparte; el GM recibe la confirmación y el marcado un aviso en rojo.
+
+### Pruebas (18 nov 2026, server aparte en 7276 con bots)
+
+- `/pink "Bot Knight", 2`: el Bot Sorc recibe la calavera `7` del knight; el knight, el aviso.
+- `/pink Bot GM` (a sí mismo) y `/unpink Bot GM`: la calavera pasa a `7` y vuelve a `0`.
+- Dos Demon matan al knight: "You are dead"; su XML queda con **0 ítems** (tenía 28) y `<skull type="7" ticks="7193000">`.
+- Falta verla dibujada en el cliente real.
