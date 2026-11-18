@@ -21,7 +21,8 @@ compilado y JavaScript solo donde hay datos en vivo. Las APIs de `web/server.py`
 | `/gemas` | `pages/gemas.astro` | **Al compilar**, desde `web/data/gem-drops.json` (HTML puro; el buscador es JS chico) |
 | `/items-nuevos` | `pages/items-nuevos.astro` | **Al compilar**, desde `src/data/new-items.json` (generado por `scripts/web/build-new-items.py`; stats del OTB). Solo español |
 | `/quests` | `pages/quests.astro` | **Al compilar**, desde `src/data/quests.json` (registro manual de quests y propuestas). Solo español |
-| `/spells`, `/reglas`, `/info` | `pages/*.astro` | `/api/data` (spells, OTINFO) |
+| `/spells` | `pages/[...lang]/spells.astro` | Lista, maná y ML en vivo de `/api/data` (`spells.xml`); la **explicación de cada hechizo** (es/en) sale **al compilar** de `src/data/spells.json`, por palabras. Hechizo nuevo o cambiado → actualizar su texto ahí |
+| `/reglas`, `/info` | `pages/*.astro` | `/api/data` (OTINFO) |
 | `/cuenta`, `/bugs` | `pages/*.astro` | Formularios a `/api/create-account` y `/api/bug-report` (mismo contrato) |
 | `/premium` | `pages/premium.astro` | `/api/premium-config` y `/api/premium-order` |
 | `/cliente` | `pages/cliente.astro` | Estático |

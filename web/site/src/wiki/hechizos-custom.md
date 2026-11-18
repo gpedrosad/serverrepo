@@ -20,6 +20,9 @@ estado: publicado
 | Whirlwind Throw | `exori hur` | Knight | ML 3 | 40 |
 | Challenge | `exeta res` | Knight | ML 5 | 40 |
 | Skill Buff | `utito tempo` | Knight | ML 8 | 150 |
+| Frenzy | `utito hur` | Knight | ML 5 | 100 |
+| Rescue | `exeta sio "Nombre` | Knight | ML 8 | 80 |
+| Counter Stance | `utito tera` | Knight | ML 10 | 80 |
 | Brutal Strike | `exori ico` | Knight | ML 3 | 30 |
 | Front Sweep | `exori min` | Knight | ML 5 | 80 |
 | Wound Cleansing | `exura ico` | Knight | ML 3 | 40 |
@@ -27,11 +30,18 @@ estado: publicado
 | Divine Missile | `exori san` | Paladin | ML 6 | 20 |
 | Divine Healing | `exura san` | Paladin | ML 6 | 50 |
 | Sharpshooter | `utito tempo san` | Paladin | ML 8 | 150 |
+| Rapid Fire | `utito san hur` | Paladin | ML 8 | 120 |
+| Piercing Volley | `exori con gran` | Paladin | ML 10 | 110 |
 | Ice Strike | `exori frigo` | Druid | ML 3 | 20 |
 | Eternal Winter | `exevo gran mas frigo` | Druid | ML 30 | 650 |
+| Seed of Life | `exura tera "Nombre` | Druid | ML 10 | 60 |
+| Cleanse | `exana res "Nombre` | Druid | ML 12 | 70 |
 | Energy Strike Hur | `exori vis hur` | Sorcerer, Druid | ML 4 | 30 |
 | Energy Beam | `exevo vis lux` | Sorcerer | ML 10 | 100 |
 | Eco | `utevo vis` | Sorcerer | ML 20 | 120 |
+| Chain Lightning | `exori vis con` | Sorcerer | ML 14 | 90 |
+| Blood Ritual | `utamo mort` | Sorcerer | ML 18 | 120 |
+| Field Detonation | `exevo vis tera` | Sorcerer | ML 22 | 220 |
 | Create Food | `exevo pan` | Todas | ML 0 | 30 |
 | Magic Wall (runa) | `adevo grav tera` | Todas | ML 14 | 250 |
 | Levitar | `exani hur "up"` / `exani hur "down"` | Todas | sin ML | 50 |
@@ -45,6 +55,9 @@ estado: publicado
 - **`exori ico`:** golpe fuerte con tu arma al objetivo marcado, que tiene que estar pegado a ti. Necesitas espada, hacha o maza. A nivel 100, con skill 90 y una espada de ataque 30, pega entre **80 y 200**.
 - **`exori min`:** barrido con tu arma a las **3 casillas de adelante** (la del frente y sus dos costados), hacia donde miras. Necesitas espada, hacha o maza.
 - **`exura ico`:** te curas a ti mismo, más que con `exura`.
+- **`utito hur`** (Frenzy): durante **6 s** tus golpes salen un **40 %** más rápido (cada 0,8 s en vez de 1,33 s). Se suma a las armas y gemas rápidas. Lo puedes volver a usar cada **20 s**.
+- **`exeta sio "Nombre`** (Rescue): los monstruos que atacan a ese aliado (hasta 4 casillas de él) pasan a atacarte a ti durante **4 s**. Solo monstruos. Espera: **20 s**.
+- **`utito tera`** (Counter Stance): durante **5 s**, los **2** próximos golpes que recibes hacen un **25 %** menos de daño, y lo que absorbes se lo devuelves al monstruo que te pegó. Espera: **30 s**.
 
 ## Paladin
 
@@ -53,17 +66,30 @@ estado: publicado
 - **`exori san`:** proyectil dorado a tu objetivo marcado, hasta **4 casillas**. El daño sube con tu nivel y tu magic level.
 - **`exura san`:** te curas a ti mismo. Cura menos que `exura vita`, pero cuesta menos maná.
 - **`utito tempo san`:** **+30** a tus skills durante **10 s**, como el `utito tempo` del knight.
+- **`utito san hur`** (Rapid Fire): durante **6 s** atacas un **35 %** más rápido (cada 0,87 s en vez de 1,33 s). Lo puedes volver a usar cada **20 s**.
+- **`exori con gran`** (Piercing Volley): una lluvia de flechas en línea recta de **5 casillas** hacia donde miras. El daño sube con tu nivel y tu skill de distancia. Espera: **8 s**.
 
 ## Druid
 
 - **`exori frigo`:** bola de hielo a tu objetivo marcado, hasta **3 casillas**. Pega como `exori flam` y tiene la misma espera corta.
 - **`exevo gran mas frigo`:** tormenta de hielo alrededor tuyo, en el mismo rombo que `exevo gran mas pox`. Golpe de una vez, sin veneno que siga.
+- **`exura tera "Nombre`** (Seed of Life): curas a un jugador (o a ti) un poco ahora y, **3 s** después, una semilla florece y lo cura más, si sigue a **6 casillas** o menos de ti. Espera: **20 s**.
+- **`exana res "Nombre`** (Cleanse): le sacas el **veneno** y la **parálisis** a un jugador (o a ti). No saca el Anchor. Espera: **25 s**.
 
 ## Sorcerer y Druid
 
 - **`exori vis hur`:** el mismo daño de energía que `exori vis`, pero a tu objetivo marcado, hasta **5 casillas**. Mismas reglas que `exori hur`. Su espera es de solo **1 s**.
 - **`utevo vis`** (solo Sorcerer): **Eco**. Durante **6 s**, tu próximo golpe a un objetivo (`exori flam`, `exori vis`, `exori mort`, `exori vis hur`) se repite solo **1 s después**, con la **mitad** del daño (un cuarto contra jugadores) y sin gastar maná. Si cambias de objetivo, el eco se pierde. No repite áreas ni runas. Lo puedes volver a usar cada **25 s**.
 - **`exevo vis lux`** (solo Sorcerer): rayo de energía de **4 casillas** hacia donde miras. Es la versión chica del `exevo gran vis lux`, que llega a 6.
+- **`exori vis con`** (solo Sorcerer, Chain Lightning): un rayo al monstruo que tienes marcado que salta a **2** monstruos más cercanos (hasta 3 casillas), y en cada salto pega un poco más de la mitad que en el anterior. Solo monstruos. Espera: **10 s**.
+- **`utamo mort`** (solo Sorcerer, Blood Ritual): cambias vida por maná: **4 veces**, cada **2 s**, pierdes 30 de vida y ganas 60 de maná. Nunca te baja de un cuarto de tu vida y no funciona en zona protegida. Espera: **60 s**.
+- **`exevo vis tera`** (solo Sorcerer, Field Detonation): hace explotar hasta **3** campos de fuego, energía o veneno en las casillas de alrededor tuyo; cada uno daña a quien esté parado encima. Espera: **15 s**.
+
+## Espera, ícono y polvo
+
+- Los hechizos con **espera propia** (Frenzy, Rapid Fire, Rescue, Counter Stance, Piercing Volley, Seed of Life, Cleanse, Chain Lightning, Blood Ritual y Field Detonation) dejan un **ícono** en tu barra de estado.
+- Mientras dura el efecto, el ícono está **encendido** con los segundos que quedan. Después queda **apagado**, con los segundos que faltan para volver a usarlo.
+- Si lo intentas antes de tiempo, sale **polvo** sobre tu personaje y el mensaje "You can use it again in N s.". También sale polvo cuando el hechizo no tiene sobre qué actuar (sin monstruos que rescatar, nada que limpiar, sin campos).
 
 ## Para todas las vocaciones
 

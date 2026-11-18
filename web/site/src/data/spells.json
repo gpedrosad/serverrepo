@@ -1,0 +1,326 @@
+{
+ "utevo lux": {
+  "es": "Te rodea una luz suave (intensidad 7) para ver en cuevas y de noche.",
+  "en": "Surrounds you with a soft light (intensity 7) so you can see in caves and at night."
+ },
+ "utevo gran lux": {
+  "es": "Te rodea una luz más fuerte que la de utevo lux (intensidad 9).",
+  "en": "Surrounds you with a stronger light than utevo lux (intensity 9)."
+ },
+ "utevo vis lux": {
+  "es": "La luz más fuerte (intensidad 11): ilumina bastante más que utevo gran lux.",
+  "en": "The strongest light (intensity 11), much brighter than utevo gran lux."
+ },
+ "exevo gran mas pox": {
+  "es": "Tormenta de veneno en un rombo de 72 casillas a tu alrededor (5 en cada dirección). Golpea al instante y deja veneno: 85 de daño más, de a poco cada 2 s. Sube con tu nivel y magic level.",
+  "en": "Poison storm in a 72-square diamond around you (5 in each direction). It hits at once and leaves poison: 85 more damage, bit by bit every 2 s. Scales with your level and magic level."
+ },
+ "exevo gran mas vis": {
+  "es": "Gran explosión física en un rombo de 72 casillas a tu alrededor (5 en cada dirección). Es el ataque en área más fuerte del sorcerer; sube con tu nivel y magic level.",
+  "en": "Huge physical explosion in a 72-square diamond around you (5 in each direction). The sorcerer's strongest area attack; scales with your level and magic level."
+ },
+ "exevo gran vis lux": {
+  "es": "Rayo de energía de 6 casillas en línea recta hacia donde miras. Pega más que exevo vis lux; sube con tu nivel y magic level.",
+  "en": "Energy beam 6 squares long in a straight line where you face. Hits harder than exevo vis lux; scales with your level and magic level."
+ },
+ "exevo vis lux": {
+  "es": "Rayo de energía de 4 casillas en línea recta hacia donde miras. Es la versión chica de exevo gran vis lux; sube con tu nivel y magic level.",
+  "en": "Energy beam 4 squares long in a straight line where you face. The small version of exevo gran vis lux; scales with your level and magic level."
+ },
+ "exevo flam hur": {
+  "es": "Ola de fuego de 5 casillas hacia donde miras: 2 casillas angostas y luego 3 filas de 3 de ancho. Sube con tu nivel y magic level.",
+  "en": "Fire wave 5 squares long where you face: 2 narrow squares, then 3 rows 3 squares wide. Scales with your level and magic level."
+ },
+ "exevo mort hur": {
+  "es": "Ola de energía con la forma y el daño de exevo flam hur (5 casillas hacia donde miras, abriéndose a 3 de ancho). Después esperas solo 1,5 s en vez de 2 s.",
+  "en": "Energy wave with the shape and damage of exevo flam hur (5 squares where you face, widening to 3). Afterwards you wait only 1.5 s instead of 2 s."
+ },
+ "exori flam": {
+  "es": "Golpe de fuego a la casilla de adelante, hacia donde miras. El daño sale de tu nivel más tu magic level. Espera corta: 1 s.",
+  "en": "Fire strike on the square in front of you, where you face. Damage comes from your level plus your magic level. Short wait: 1 s."
+ },
+ "exori mort": {
+  "es": "Golpe de fuerza (daño físico) a la casilla de adelante, hacia donde miras. El daño sale de tu nivel más tu magic level. Espera corta: 1 s.",
+  "en": "Force strike (physical damage) on the square in front of you, where you face. Damage comes from your level plus your magic level. Short wait: 1 s."
+ },
+ "exori vis": {
+  "es": "Golpe de energía a la casilla de adelante, hacia donde miras. El daño sale de tu nivel más tu magic level. Espera corta: 1 s.",
+  "en": "Energy strike on the square in front of you, where you face. Damage comes from your level plus your magic level. Short wait: 1 s."
+ },
+ "exori vis hur": {
+  "es": "Golpe de energía a tu objetivo marcado, hasta 5 casillas, a la vista y en tu piso. Mismo daño que exori vis y espera de 1 s. Sin objetivo o fuera de alcance no gasta maná.",
+  "en": "Energy strike on your marked target, up to 5 squares away, in sight and on your floor. Same damage as exori vis and a 1 s wait. No target or out of range: no mana spent."
+ },
+ "exori": {
+  "es": "Golpe físico a las 8 casillas que te rodean. El daño sube con tu nivel y tu magic level; no depende del arma.",
+  "en": "Physical blow to the 8 squares around you. Damage scales with your level and magic level; your weapon doesn't matter."
+ },
+ "exori con": {
+  "es": "Lanzas una lanza etérea a tu objetivo, hasta 7 casillas a los lados y 5 arriba o abajo. No gasta munición. Sube con tu nivel y distancia: a nivel 100 y distancia 90, 83 a 115.",
+  "en": "Throws an ethereal spear at your target, up to 7 squares sideways and 5 up or down. Uses no ammo. Scales with level and distance: at level 100 and distance 90, 83 to 115."
+ },
+ "exeta res": {
+  "es": "Los monstruos de las 8 casillas a tu alrededor te atacan solo a ti durante 6 s, sin cambiar de objetivo ni huir. No afecta a jugadores ni a invocaciones.",
+  "en": "Monsters on the 8 squares around you attack only you for 6 s, without switching targets or fleeing. It doesn't affect players or summons."
+ },
+ "exori hur": {
+  "es": "Lanzas tu espada, hacha o maza a tu objetivo, hasta 5 casillas. Sube con tu nivel, skill y ataque del arma: a nivel 100, skill 90 y ataque 30, 60 a 140. Sin arma u objetivo no gasta maná.",
+  "en": "Throws your sword, axe or club at your target, up to 5 squares. Scales with level, skill and weapon attack: at level 100, skill 90 and attack 30, 60 to 140. No weapon or target: no mana spent."
+ },
+ "exori ico": {
+  "es": "Golpe fuerte con tu espada, hacha o maza al objetivo pegado a ti. A nivel 100, skill 90 y ataque 30 pega entre 80 y 200. Sin arma u objetivo al lado no gasta maná.",
+  "en": "Powerful blow with your sword, axe or club on the target next to you. At level 100, skill 90 and attack 30 it hits 80 to 200. No weapon or adjacent target: no mana spent."
+ },
+ "exori min": {
+  "es": "Barrido con tu arma a las 3 casillas de adelante (el frente y sus dos costados). Necesitas espada, hacha o maza. A nivel 100, skill 90 y ataque 30: 80 a 152.",
+  "en": "Sweeps your weapon across the 3 squares in front of you (front and both sides). Needs a sword, axe or club. At level 100, skill 90 and attack 30: 80 to 152."
+ },
+ "exura ico": {
+  "es": "Te curas a ti mismo, más que con exura gran. La cura sube con tu nivel y tu magic level.",
+  "en": "Heals yourself, more than exura gran. Healing scales with your level and magic level."
+ },
+ "exori san": {
+  "es": "Proyectil dorado a tu objetivo marcado, hasta 4 casillas. Daño de energía que sube con tu nivel y magic level: a nivel 100 y ML 20, 67 a 98. Sin objetivo no gasta maná.",
+  "en": "Golden missile at your marked target, up to 4 squares. Energy damage that scales with level and magic level: at level 100 and ML 20, 67 to 98. No target: no mana spent."
+ },
+ "exura san": {
+  "es": "Te curas a ti mismo: más que exura gran y menos que exura vita, por menos maná. A nivel 100 y ML 20 cura entre 234 y 364.",
+  "en": "Heals yourself: more than exura gran and less than exura vita, for less mana. At level 100 and ML 20 it heals 234 to 364."
+ },
+ "utito tempo san": {
+  "es": "+30 a sword, axe, club y distance durante 10 s, como el utito tempo del knight. Al terminar hay que volver a lanzarlo.",
+  "en": "+30 to sword, axe, club and distance for 10 s, like the knight's utito tempo. Cast it again when it ends."
+ },
+ "exori frigo": {
+  "es": "Bola de hielo a tu objetivo marcado, hasta 3 casillas. Pega como exori flam (sube con tu nivel y magic level) y esperas solo 1 s. Sin objetivo no gasta maná.",
+  "en": "Ice ball at your marked target, up to 3 squares. Hits like exori flam (scales with level and magic level) and you wait only 1 s. No target: no mana spent."
+ },
+ "exevo gran mas frigo": {
+  "es": "Tormenta de hielo en un rombo de 72 casillas a tu alrededor (5 en cada dirección). Un solo golpe fuerte, sin veneno después; sube con tu nivel y magic level.",
+  "en": "Ice storm in a 72-square diamond around you (5 in each direction). One strong hit with no lingering poison; scales with your level and magic level."
+ },
+ "utito hur": {
+  "es": "Durante 6 s atacas con tu arma un 40 % más rápido (de 1,33 s a 0,8 s entre golpes). Se suma a armas y gemas rápidas. Lo puedes volver a usar cada 20 s.",
+  "en": "For 6 s you attack with your weapon 40% faster (from 1.33 s to 0.8 s between hits). Stacks with fast weapons and gems. You can use it again every 20 s."
+ },
+ "utito san hur": {
+  "es": "Durante 6 s atacas un 35 % más rápido, a distancia y cuerpo a cuerpo (de 1,33 s a 0,87 s entre golpes). Se suma a armas y gemas rápidas. Cada 20 s.",
+  "en": "For 6 s you attack 35% faster, ranged and melee (from 1.33 s to 0.87 s between hits). Stacks with fast weapons and gems. Every 20 s."
+ },
+ "utevo vis": {
+  "es": "Eco: durante 6 s, tu próximo exori flam, vis, mort o vis hur se repite 1 s después al 50 % del daño (25 % contra jugadores), sin maná. Cada 25 s.",
+  "en": "Echo: for 6 s, your next exori flam, vis, mort or vis hur repeats 1 s later at 50% damage (25% against players), with no mana. Every 25 s."
+ },
+ "exori con gran": {
+  "es": "Ráfaga de flechas en línea recta de 5 casillas hacia donde miras. Daño físico que sube con tu nivel y tu skill de distancia. No gasta munición. Cada 8 s.",
+  "en": "Volley of arrows in a straight line 5 squares long where you face. Physical damage that scales with your level and distance skill. Uses no ammo. Every 8 s."
+ },
+ "exeta sio": {
+  "es": "Di exeta sio \"Nombre: los monstruos que atacan a ese jugador, hasta 4 casillas de él, pasan a atacarte a ti durante 4 s. Solo monstruos. Cada 20 s.",
+  "en": "Say exeta sio \"Name: monsters attacking that player, up to 4 squares from them, switch to attacking you for 4 s. Monsters only. Every 20 s."
+ },
+ "exana res": {
+  "es": "Di exana res \"Nombre para quitarle veneno y parálisis a un jugador de tu piso, o a ti mismo. No quita el root de la runa Anchor. Cada 25 s.",
+  "en": "Say exana res \"Name to remove poison and paralysis from a player on your floor, or from yourself. It doesn't remove the Anchor rune's root. Every 25 s."
+ },
+ "exori vis con": {
+  "es": "Rayo a tu objetivo, que debe ser un monstruo, y salta a 2 monstruos más (hasta 3 casillas por salto) con el 55 % del daño en cada salto. Sube con nivel y magic level. Cada 10 s.",
+  "en": "Lightning on your target, which must be a monster, then jumps to 2 more monsters (up to 3 squares per jump) at 55% damage each jump. Scales with level and magic level. Every 10 s."
+ },
+ "exura tera": {
+  "es": "Di exura tera \"Nombre: curas un poco ya a ese jugador (o a ti) y a los 3 s llega una cura mayor si sigue a 6 casillas o menos de ti. Cada 20 s.",
+  "en": "Say exura tera \"Name: you heal that player (or yourself) a little now, and a bigger heal arrives 3 s later if they're still within 6 squares of you. Every 20 s."
+ },
+ "exevo vis tera": {
+  "es": "Hace explotar hasta 3 campos de fuego, energía o veneno en las 9 casillas a tu alrededor. Cada uno daña a quien esté encima según tu nivel y magic level. Cada 15 s.",
+  "en": "Detonates up to 3 fire, energy or poison fields on the 9 squares around you. Each one damages whoever stands on it, based on your level and magic level. Every 15 s."
+ },
+ "utito tera": {
+  "es": "Durante 5 s, los próximos 2 golpes que recibes hacen un 25 % menos de daño. Si te pega un monstruo, le devuelves lo que absorbiste. Cada 30 s.",
+  "en": "For 5 s, the next 2 hits you take deal 25% less damage. If a monster hits you, it takes back the damage you absorbed. Every 30 s."
+ },
+ "utamo mort": {
+  "es": "Durante 8 s cambias vida por maná: cada 2 s pierdes 30 de vida y ganas 60 de maná. Nunca te baja del 25 % de vida y no funciona en zona protegida. Cada 60 s.",
+  "en": "For 8 s you turn health into mana: every 2 s you lose 30 health and gain 60 mana. It never takes you below 25% health and doesn't work in protection zones. Every 60 s."
+ },
+ "exori gran": {
+  "es": "Versión grande del exori: golpe físico en 12 casillas a tu alrededor (las 8 del exori y una más en cada dirección) con un 10 % más de daño. Sube con tu nivel y magic level.",
+  "en": "Big version of exori: physical blow on 12 squares around you (exori's 8 plus one more in each direction) with 10% more damage. Scales with your level and magic level."
+ },
+ "utito tempo": {
+  "es": "+30 a sword, axe, club y distance durante 10 s. Al terminar hay que volver a lanzarlo.",
+  "en": "+30 to sword, axe, club and distance for 10 s. Cast it again when it ends."
+ },
+ "exura gran mas res": {
+  "es": "Curas a todos los que estén en un rombo de 5 casillas a tu alrededor, incluido tú. La cura sube con tu nivel y tu magic level.",
+  "en": "Heals everyone in a diamond reaching 5 squares around you, yourself included. Healing scales with your level and magic level."
+ },
+ "exura sio": {
+  "es": "Curas a otro jugador: exura sio \"Nombre. Tiene que estar a la vista y en tu piso. Cura más que exura vita y sube con tu nivel y magic level.",
+  "en": "Heals another player: exura sio \"Name. They must be in sight and on your floor. Heals more than exura vita and scales with your level and magic level."
+ },
+ "exura vita": {
+  "es": "Te curas mucho a ti mismo, nunca menos de 250 de vida. La cura sube con tu nivel y tu magic level.",
+  "en": "Heals yourself a lot, never less than 250 health. Healing scales with your level and magic level."
+ },
+ "exura gran": {
+  "es": "Te curas a ti mismo, más que con exura. La cura sube con tu nivel y tu magic level.",
+  "en": "Heals yourself, more than exura. Healing scales with your level and magic level."
+ },
+ "exura": {
+  "es": "Cura pequeña sobre ti mismo. Sube con tu nivel y tu magic level.",
+  "en": "Small heal on yourself. Scales with your level and magic level."
+ },
+ "exevo pan": {
+  "es": "Creas una comida al azar: meat, ham, grapes, apple, bread, cheese o roll. Si no tienes espacio, cae al suelo.",
+  "en": "Creates a random food: meat, ham, grapes, apple, bread, cheese or roll. If you have no room, it drops to the floor."
+ },
+ "utamo vita": {
+  "es": "Escudo de maná durante 30 s: el daño que recibes se descuenta de tu maná en vez de tu vida, mientras te quede maná.",
+  "en": "Mana shield for 30 s: damage you take comes off your mana instead of your health, as long as you have mana left."
+ },
+ "utani gran hur": {
+  "es": "Corres mucho más rápido durante 20 s: casi un 70 % más.",
+  "en": "You run much faster for 20 s: almost 70% faster."
+ },
+ "utani hur": {
+  "es": "Corres más rápido durante 60 s: casi un 30 % más.",
+  "en": "You run faster for 60 s: almost 30% faster."
+ },
+ "utevo res ina": {
+  "es": "Tomas la apariencia de una criatura durante 20 s, por ejemplo utevo res ina \"Rat. Solo criaturas clásicas, con el nombre en inglés como aparece en el juego.",
+  "en": "You take a creature's look for 20 s, for example utevo res ina \"Rat. Classic creatures only, with the English name as shown in the game."
+ },
+ "utana vid": {
+  "es": "Te vuelves invisible durante 3 min 20 s.",
+  "en": "You become invisible for 3 min 20 s."
+ },
+ "exevo con": {
+  "es": "Crea 15 flechas (arrows) para usar con arco. Cada una tiene ataque 20 y se gasta al dispararla.",
+  "en": "Creates 15 arrows for bows. Each one has 20 attack and is used up when fired."
+ },
+ "exevo con mort": {
+  "es": "Crea 15 bolts para usar con ballesta (crossbow). Cada uno tiene ataque 30 y se gasta al dispararlo.",
+  "en": "Creates 15 bolts for crossbows. Each one has 30 attack and is used up when fired."
+ },
+ "exevo con pox": {
+  "es": "Crea 5 poison arrows para arco. Tienen ataque 10 y vuelan con efecto verde, pero en este servidor no envenenan al objetivo.",
+  "en": "Creates 5 poison arrows for bows. They have 10 attack and fly with a green effect, but on this server they don't poison the target."
+ },
+ "exevo con flam": {
+  "es": "Crea 5 burst arrows. Con un bow, cada disparo explota en 3x3 alrededor del objetivo: daño físico (nivel + 5×ML) × 0,24–0,55, la mitad si eres sorcerer o druid.",
+  "en": "Creates 5 burst arrows. With a bow, each shot explodes in a 3x3 area around the target: physical damage (level + 5×ML) × 0.24–0.55, halved for sorcerers and druids."
+ },
+ "exevo con vis": {
+  "es": "Crea 1 power bolt para ballesta. Tiene ataque 50, el más alto de los bolts, y se gasta al dispararlo.",
+  "en": "Creates 1 power bolt for crossbows. It has 50 attack, the highest of all bolts, and is used up when fired."
+ },
+ "adori": {
+  "es": "Crea una Light Magic Missile de 10 cargas sin necesitar blank rune (ML 0 para usarla): misil de energía a un objetivo, daño (2×nivel + 2×ML) × 0,1–0,2.",
+  "en": "Creates a 10-charge Light Magic Missile without needing a blank rune (ML 0 to use it): energy missile at one target, damage (2×level + 2×ML) × 0.1–0.2."
+ },
+ "adevo grav pox": {
+  "es": "Crea una runa de 6 cargas (ML 0 para usarla): campo de veneno en 1 casilla por 50 s. Quien lo pisa recibe 10 de daño y queda envenenado (5 cada 5 s, 5 veces).",
+  "en": "Creates a 6-charge rune (ML 0 to use it): poison field on 1 tile for 50 s. Whoever steps on it takes 10 damage and gets poisoned (5 every 5 s, 5 times)."
+ },
+ "adori gran": {
+  "es": "Crea una runa de 11 cargas (ML 1 para usarla): misil de energía a un objetivo, daño (1,5×nivel + 1,9×ML) × 0,35–0,75.",
+  "en": "Creates an 11-charge rune (ML 1 to use it): energy missile at one target, damage (1.5×level + 1.9×ML) × 0.35–0.75."
+ },
+ "adevo grav flam": {
+  "es": "Crea una runa de 6 cargas (ML 1 para usarla): fuego en 1 casilla. Quien lo pisa recibe 20 de daño y se quema (10 cada 5 s). El fuego se achica y se apaga en unos 2,5 min.",
+  "en": "Creates a 6-charge rune (ML 1 to use it): fire on 1 tile. Whoever steps on it takes 20 damage and burns (10 every 5 s). The fire shrinks and dies out in about 2.5 min."
+ },
+ "adura gran": {
+  "es": "Crea una runa de 4 cargas (ML 1 para usarla): cura a quien apuntes, a ti o a otro, (2×nivel + 3×ML) × 1,4–2,0 de vida, mínimo 100.",
+  "en": "Creates a 4-charge rune (ML 1 to use it): heals whoever you aim at, yourself or someone else, for (2×level + 3×ML) × 1.4–2.0 health, at least 100."
+ },
+ "adori flam": {
+  "es": "Crea una runa de 6 cargas (ML 2 para usarla): bola de fuego en un área redonda de 5x5 (21 casillas) donde apuntes, daño (2×nivel + 2×ML) × 0,15–0,35.",
+  "en": "Creates a 6-charge rune (ML 2 to use it): fireball on a round 5x5 area (21 tiles) where you aim, damage (2×level + 2×ML) × 0.15–0.35."
+ },
+ "adevo grav vis": {
+  "es": "Crea una runa de 6 cargas (ML 3 para usarla): campo de energía en 1 casilla por 50 s. Quien lo pisa recibe 30 de daño y 25 más a los 5 s.",
+  "en": "Creates a 6-charge rune (ML 3 to use it): energy field on 1 tile for 50 s. Whoever steps on it takes 30 damage and 25 more 5 s later."
+ },
+ "adana pox": {
+  "es": "Crea una runa de 4 cargas (ML 0 para usarla): quita el veneno a quien apuntes; si no hay nadie en la casilla, te lo quita a ti. Si nadie está envenenado, no gasta carga.",
+  "en": "Creates a 4-charge rune (ML 0 to use it): cures poison on whoever you aim at; if the tile is empty, it cures you. If no one is poisoned, it doesn't use a charge."
+ },
+ "adito grav": {
+  "es": "Crea una runa de 6 cargas (ML 3 para usarla): borra un campo de fuego, energía o veneno de una casilla. No borra Magic Wall.",
+  "en": "Creates a 6-charge rune (ML 3 to use it): removes a fire, energy or poison field from one tile. It doesn't remove Magic Wall."
+ },
+ "adana mort": {
+  "es": "Crea una runa de 5 cargas (ML 4 para usarla): úsala sobre un cadáver para levantar un esqueleto que pelea a tu lado como invocación. No funciona en zona protegida.",
+  "en": "Creates a 5-charge rune (ML 4 to use it): use it on a corpse to raise a skeleton that fights by your side as a summon. Doesn't work in protection zones."
+ },
+ "adevo res pox": {
+  "es": "Crea una runa de 8 cargas (ML 4 para usarla): golpe de veneno a un objetivo, daño (2×nivel + 3×ML) × 0,2–0,4.",
+  "en": "Creates an 8-charge rune (ML 4 to use it): poison hit on one target, damage (2×level + 3×ML) × 0.2–0.4."
+ },
+ "adito tera": {
+  "es": "Crea una runa de 6 cargas (ML 4 para usarla): borra al instante una Magic Wall o un mueble (silla, mesa, caja…) de una casilla. Si no hay nada que borrar, no gasta carga.",
+  "en": "Creates a 6-charge rune (ML 4 to use it): instantly removes a Magic Wall or a piece of furniture (chair, table, box…) from a tile. If there's nothing to remove, it doesn't use a charge."
+ },
+ "adevo max pox": {
+  "es": "Crea una runa de 9 cargas (ML 4 para usarla): llena de veneno un área de 3x3 por 60 s. Quien la pisa recibe 6 de daño y 6 más a los 5 s.",
+  "en": "Creates a 9-charge rune (ML 4 to use it): fills a 3x3 area with poison for 60 s. Whoever steps on it takes 6 damage and 6 more 5 s later."
+ },
+ "adori gran flam": {
+  "es": "Crea una runa de 6 cargas (ML 4 para usarla): gran bola de fuego en un área redonda de 7x7 (37 casillas) donde apuntes, daño (2×nivel + 3×ML) × 0,4–0,75.",
+  "en": "Creates a 6-charge rune (ML 4 to use it): great fireball on a round 7x7 area (37 tiles) where you aim, damage (2×level + 3×ML) × 0.4–0.75."
+ },
+ "adevo mas flam": {
+  "es": "Crea una runa de 9 cargas (ML 5 para usarla): llena de fuego un área de 3x3. Quien la pisa recibe 20 de daño y se quema (10 cada 5 s). El fuego se apaga en unos 2,5 min.",
+  "en": "Creates a 9-charge rune (ML 5 to use it): fills a 3x3 area with fire. Whoever steps on it takes 20 damage and burns (10 every 5 s). The fire dies out in about 2.5 min."
+ },
+ "adeta sio": {
+  "es": "Crea una runa de 4 cargas (ML 5 para usarla): convierte a un monstruo en tu invocación. Gasta maná extra según el monstruo. No sirve en zona protegida ni sobre invocaciones.",
+  "en": "Creates a 4-charge rune (ML 5 to use it): turns a monster into your summon. It costs extra mana depending on the monster. Doesn't work in protection zones or on summons."
+ },
+ "adevo mas grav pox": {
+  "es": "Crea una runa de 7 cargas (ML 5 para usarla): línea de veneno de 5 casillas, siempre de norte a sur, por 60 s. Quien la pisa recibe 6 de daño y 6 más a los 5 s.",
+  "en": "Creates a 7-charge rune (ML 5 to use it): 5-tile poison line, always north to south, for 60 s. Whoever steps on it takes 6 damage and 6 more 5 s later."
+ },
+ "adevo ina": {
+  "es": "Crea una runa de 4 cargas (ML 4 para usarla): úsala sobre una criatura para copiar su apariencia durante 200 s (3 min 20 s).",
+  "en": "Creates a 4-charge rune (ML 4 to use it): use it on a creature to copy its look for 200 s (3 min 20 s)."
+ },
+ "adura vita": {
+  "es": "Crea una runa de 8 cargas (ML 4 para usarla): cura a quien apuntes, a ti o a otro, (2×nivel + 3×ML) × 2,2–3,0 de vida, mínimo 250.",
+  "en": "Creates an 8-charge rune (ML 4 to use it): heals whoever you aim at, yourself or someone else, for (2×level + 3×ML) × 2.2–3.0 health, at least 250."
+ },
+ "adevo mas hur": {
+  "es": "Crea una runa de 9 cargas (ML 6 para usarla): explosión física en cruz (5 casillas) donde apuntes, daño (2×nivel + 3×ML) × 0,5–1,1.",
+  "en": "Creates a 9-charge rune (ML 6 to use it): physical explosion in a cross shape (5 tiles) where you aim, damage (2×level + 3×ML) × 0.5–1.1."
+ },
+ "adevo res flam": {
+  "es": "Crea una runa de 5 cargas (ML 7 para usarla): prende fuego a un objetivo: 10 de daño al instante y 10 más cada 2 s, 10 veces (110 en total).",
+  "en": "Creates a 5-charge rune (ML 7 to use it): sets one target on fire: 10 damage right away and 10 more every 2 s, 10 times (110 in total)."
+ },
+ "adevo mas grav flam": {
+  "es": "Crea una runa de 7 cargas (ML 13 para usarla): línea de fuego de 5 casillas, siempre de norte a sur. Quien la pisa recibe 20 de daño y se quema. El fuego se apaga en unos 2,5 min.",
+  "en": "Creates a 7-charge rune (ML 13 to use it): 5-tile fire line, always north to south. Whoever steps on it takes 20 damage and burns. The fire dies out in about 2.5 min."
+ },
+ "adevo grav tera": {
+  "es": "Crea una runa de 7 cargas (ML 9 para usarla): muro en 1 casilla por 15 s que nadie puede cruzar. No se pone en zona protegida; otra Magic Wall encima lo renueva.",
+  "en": "Creates a 7-charge rune (ML 9 to use it): wall on 1 tile for 15 s that nobody can cross. Can't be placed in protection zones; another Magic Wall on top renews it."
+ },
+ "adevo mas vis": {
+  "es": "Crea una runa de 9 cargas (ML 10 para usarla): llena de energía un área de 3x3 por 105 s. Quien la pisa recibe 30 de daño y 25 más a los 5 s.",
+  "en": "Creates a 9-charge rune (ML 10 to use it): fills a 3x3 area with energy for 105 s. Whoever steps on it takes 30 damage and 25 more 5 s later."
+ },
+ "adevo mas grav vis": {
+  "es": "Crea una runa de 7 cargas (ML 9 para usarla): línea de energía de 5 casillas, siempre de norte a sur, por 105 s. Quien la pisa recibe 30 de daño y 25 más a los 5 s.",
+  "en": "Creates a 7-charge rune (ML 9 to use it): 5-tile energy line, always north to south, for 105 s. Whoever steps on it takes 30 damage and 25 more 5 s later."
+ },
+ "adori vita vis": {
+  "es": "Crea una runa de 5 cargas (ML 15 para usarla): golpe mortal a un objetivo, daño entre (2×nivel + 3×ML) × 1,2 − 30 y (2×nivel + 3×ML) × 1,6.",
+  "en": "Creates a 5-charge rune (ML 15 to use it): deadly hit on one target, damage between (2×level + 3×ML) × 1.2 − 30 and (2×level + 3×ML) × 1.6."
+ },
+ "adori blank": {
+  "es": "Crea 1 blank rune en tu mochila sin necesitar nada. Es la runa vacía que los demás hechizos de este grupo convierten en runas.",
+  "en": "Creates 1 blank rune in your backpack, no materials needed. It's the empty rune the other spells in this group turn into runes."
+ }
+}

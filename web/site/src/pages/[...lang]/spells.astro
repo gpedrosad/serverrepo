@@ -1,34 +1,49 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { dict, langOf, langPaths, localePath } from '../../i18n.js';
+// Explicación de cada hechizo, por palabras ("exura vita"), en los dos idiomas. Se edita a mano junto con
+// los scripts de data/spells (ver docs/features/18-web-astro.md). La lista, maná y ML vienen en vivo de
+// /api/data (spells.xml); si un hechizo no tiene explicación, sale sin ella.
+import spellInfo from '../../data/spells.json';
 export function getStaticPaths() { return langPaths(); }
 const lang = langOf(Astro.params.lang);
 const T = dict(lang);
+const info = Object.fromEntries(Object.entries(spellInfo).map(([w, v]) => [w, v[lang] || v.es]));
 ---
 <Base lang={lang} title={`${T.spells.title} — Retro76`} path="/spells" description={T.spells.description}>
   <section>
     <h1 class="title">{T.spells.title}</h1>
     <p class="lede">{T.spells.lede}</p>
+    <ul class="spell-notes small muted">
+      {T.spells.notes.map((n) => <li set:html={n} />)}
+    </ul>
   </section>
   <section id="spells"><p class="empty">{T.loading}</p></section>
+  <script type="application/json" id="spell-info" set:html={JSON.stringify(info)} />
 </Base>
 
 <script>
   import { getData, esc, t, $ } from '../../lib/client.js';
+  const info = JSON.parse(document.getElementById('spell-info')?.textContent || '{}');
   getData().then((d) => {
     const sections = d.spells?.sections || [];
     if (!sections.length) { $('spells').innerHTML = `<p class="empty">${esc(t('noSpells'))}</p>`; return; }
     const [cName, cWords, cMana, cMl, cType] = t('spellCols');
     const kinds = t('kinds');
+    const row = (s) => {
+      const desc = info[s.words];
+      return `
+              <tr class="${desc ? 'spell-row' : ''}"><td><strong>${esc(s.name)}</strong></td><td class="mono muted">${esc(s.words)}</td><td class="n key">${s.mana}</td>
+              <td class="n">${s.maglv}</td><td class="faint wide-only">${esc(kinds[s.kind] || s.kind)}</td></tr>` +
+        (desc ? `<tr class="spell-desc"><td colspan="5">${esc(desc)}</td></tr>` : '');
+    };
     $('spells').innerHTML = sections.map((sec, i) => `
       <details class="fold"${i === 0 ? ' open' : ''}>
         <summary><strong>${esc(sec.label)}</strong> <span class="faint small">${esc(t('spellsCount', { n: sec.count }))}</span></summary>
         <div class="fold-body table-scroll">
-          <table>
+          <table class="spells-table">
             <thead><tr><th>${cName}</th><th>${cWords}</th><th class="n">${cMana}</th><th class="n">${cMl}</th><th class="wide-only">${cType}</th></tr></thead>
-            <tbody>${(sec.spells || []).map((s) => `
-              <tr><td>${esc(s.name)}</td><td class="mono muted">${esc(s.words)}</td><td class="n key">${s.mana}</td>
-              <td class="n">${s.maglv}</td><td class="faint wide-only">${esc(kinds[s.kind] || s.kind)}</td></tr>`).join('')}</tbody>
+            <tbody>${(sec.spells || []).map(row).join('')}</tbody>
           </table>
         </div>
       </details>`).join('');
