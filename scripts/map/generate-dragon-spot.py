@@ -57,7 +57,7 @@ MANIFEST = WORLD / "generated-dragon-spot.json"
 HUNTER_ISLE = ((94.5, 85.5), 3.2, 2.9)      # la del cazador, sobre 94,86 (y83-88: hacia el norte hay agua)
 DRAGON_ISLE = ((85.0, 87.5), 3.0, 2.2)      # la del dragón; empieza en y86 (y85 queda agua: la lava estaba en y84)
 BRIDGE_Y = 87                               # el puente cruza por esta fila (1 de ancho, 4 de largo)
-Z7_BOX = (82, 84, 98, 89)                   # se reescribe entera: islas, puente y el resto agua
+Z7_BOX = (82, 82, 98, 89)                   # se reescribe entera: islas completas, puente y el resto agua
 HOLE = (96, 85)                             # bajada en la isla (agujero 469); al subir se llega a 96,86
 BANK_HOLE = (102, 85)                       # bajada en la orilla de los elfos (469); al subir, 102,86
 TUNNEL = {(x, 85) for x in range(96, 103)}                    # z8, 1 de ancho, recto de escalera a escalera
@@ -65,6 +65,7 @@ Z8_BOX = (93, 83, 104, 88)                  # se reescribe entera (incluye el t�
 SIGN = (103, 84, 7)
 MONSTER = ("Black Dragon", 85, 88, 7, 300)  # nombre, x, y, z, respawn
 WOOD, WATER, GRASS, SHORE = 405, 4608, 4756, 4526
+WATERS = set(range(4608, 4626)) | {4664, 4665, 4666}
 HOLE_ID, LADDER = 469, 1386
 ROCK = 101
 LAVA = {598, 599, 600, 601}
@@ -88,10 +89,14 @@ def window(cells):
     return {(x + dx, y + dy) for (x, y) in cells for dx in range(-VIEW[0], VIEW[0] + 1) for dy in range(-VIEW[1], VIEW[1] + 1)}
 
 
-def build_z7():
+def build_z7(existing):
     hunter, dragon = ellipse(HUNTER_ISLE), ellipse(DRAGON_ISLE)
     land = hunter | dragon
-    water0 = rect(Z7_BOX) - land
+    # El agua de alrededor sale del mapa real: con solo la de la caja, los lados de las islas pegados al borde
+    # de la caja quedaban sin pieza de orilla (pasto cortado contra el agua, v2 del 18 nov 2026).
+    around = {(x + dx, y + dy) for (x, y) in land for dx in (-1, 0, 1) for dy in (-1, 0, 1)} - rect(Z7_BOX)
+    outside_water = {c for c in around if (existing.get((c[0], c[1], 7)) or [0])[0] in WATERS}
+    water0 = (rect(Z7_BOX) - land) | outside_water
     ring = {c for c in land if NP.pieces_for(NP.neighbors_in(water0, *c), COAST_SIDE, COAST_CORNER, COAST_INNER)}
     inner = land - ring
     # el puente va del último pasto del dragón al primero del cazador en BRIDGE_Y: sobre el agua son los 4
@@ -101,7 +106,7 @@ def build_z7():
     span = {(x, BRIDGE_Y) for x in range(east + 1, west)}
     bridge = span - land
     entries = span & land
-    water = rect(Z7_BOX) - land - bridge
+    water = (rect(Z7_BOX) - land - bridge) | outside_water
     m, walk, bad = roomkit.Map(), set(), []
     for c in rect(Z7_BOX):
         pos = (c[0], c[1], 7)
@@ -161,6 +166,17 @@ def validate(existing, z7, walk7, bridge, entries, hunter, dragon, bad, z8, z7_l
     solid = chk.solid
     if bad:
         errs.append(f"isla con casillas de 1 de ancho (sin pieza de costa): {bad[:5]}")
+    if not (hunter | dragon) <= rect(Z7_BOX):
+        errs.append(f"las islas se salen de la caja: {sorted((hunter | dragon) - rect(Z7_BOX))[:5]}")
+    for c in hunter | dragon:            # todo pasto que toca agua lleva su pieza de orilla
+        pos = (c[0], c[1], 7)
+        t = z7.t.get(pos)
+        if not t or t["ground"] in (WOOD, HOLE_ID):
+            continue
+        wet = [d for d, (dx, dy) in NP.DIRS.items() if (c[0] + dx, c[1] + dy) not in hunter | dragon
+               and (c[0] + dx, c[1] + dy) not in bridge | entries]
+        if wet and not t["items"]:
+            errs.append(f"{c}: pasto contra el agua sin pieza de orilla ({wet})")
     if len(bridge) != 4:
         errs.append(f"el puente mide {len(bridge)}, no 4")
     if not regenerating:
@@ -284,7 +300,7 @@ def main() -> int:
     mapdata.MAP = a.map
     existing = load_tiles()
     regenerating = MANIFEST.exists()
-    z7, hole, walk7, bridge, entries, hunter, dragon, bad = build_z7()
+    z7, hole, walk7, bridge, entries, hunter, dragon, bad = build_z7(existing)
     z8 = build_z8()
     z7_lava, z8_lava, z8_void, z8_kept = lava_and_void(existing, walk7)
     errs = validate(existing, z7, walk7, bridge, entries, hunter, dragon, bad, z8, z7_lava, z8_kept, regenerating)

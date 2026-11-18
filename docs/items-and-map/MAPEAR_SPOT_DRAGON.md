@@ -32,6 +32,12 @@ del noroeste que se veía (±9, ±7) desde las islas y el puente pasó a agua (7
 los fuegos que tenía encima), y la de z8 que se veía desde el túnel, a roca `101` (51; el pozo de lava junto a la
 sala de ladrillo de z8 queda 2 columnas más angosto). Casillas vacías de z8 a la vista del túnel: roca.
 
+**Bordes cortados (arreglado el mismo día):** en la v2 el lado norte de la isla del cazador y el sur de la del dragón
+quedaban como un corte recto del pasto contra el agua, sin pieza de orilla, y la fila de arriba de la isla del
+cazador no se escribía. La caja de z7 iba de `y 84` a `89` y para elegir las piezas solo contaba como agua la de
+adentro de la caja. Ahora la caja es `82–98 × 82–89` (las islas enteras adentro), el agua de alrededor se lee del
+mapa real y el generador falla si queda un pasto pegado al agua sin pieza.
+
 **v1 (descartada el mismo día):** plataformas cuadradas de madera, túnel de 2 de ancho, trampilla `427` (se veía
 como un cuadrado negro) y agujero `479` en la orilla (cuadrado de piedra gris). Para bajar sobre pasto: `469`.
 
