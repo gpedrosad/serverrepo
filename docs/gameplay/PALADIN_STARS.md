@@ -129,3 +129,9 @@ La integración conservó los mapas, jefes, black fire sword y calavera negra pu
 por otras sesiones. Auditoría final sobre los assets ya publicados: **13.986 sprites previos
 idénticos**, 51 nuevos; final 14.037. Todas las apariencias anteriores quedan intactas.
 Se recompiló también la actualización de comandos de GM ya desplegada, incluido `/comandos`.
+
+El verificador de combate usa paquetes enmarcados y posiciones reales de aparición: el
+fallback del mapa puede desplazar un personaje una casilla si la anterior sigue ocupada.
+Los monstruos del fixture pueden moverse; para inmunidad/trainer se identifica el proyectil
+por origen y tipo. Al buscar efectos en bytes con regex hay que escapar el ID: `46 = 0x2E`
+es un punto de regex, no un literal. El fallo inicial era del verificador, no un proc real.

@@ -94,15 +94,21 @@ def main():
                 while target_name not in actor.ids and time.monotonic()<deadline:
                     pump([actor],.2)
                 assert target_name in actor.ids,(name,actor.ids)
-                shot=b'\x85'+actor.position+pos(2004,y)+bytes([missile])
+                shot=re.compile(re.escape(b'\x85'+actor.position)+b'.{5}'+bytes([missile]),re.S)
+                def shots():
+                    return sum(len(shot.findall(data)) for _,data in actor.packets)
+                def effects(effect):
+                    return sum(1 for _,data in actor.packets for m in re.finditer(b'\x83(.{5})'+re.escape(bytes([effect])),data,re.S)
+                               if 1990<=struct.unpack('<HHB',m[1])[0]<=2020 and 1990<=struct.unpack('<HHB',m[1])[1]<=2020 and m[1][-1]==7)
+                actor.packets.clear()
                 actor.send(b'\xa1'+struct.pack('<I',actor.ids[target_name]))
                 deadline=time.monotonic()+25
-                while actor.count(shot)<12 and time.monotonic()<deadline:
+                while shots()<12 and time.monotonic()<deadline:
                     pump([actor],.1)
                 actor.send(b'\xa1'+struct.pack('<I',0))
-                assert actor.count(shot)>=12,(target_name,actor.count(shot))
-                assert actor.count(b'\x83'+pos(2004,y)+bytes([46 if missile==20 else 47]))==0
-                assert actor.count(b'\x83'+pos(2004,y)+b'\x11')==0
+                assert shots()>=12,(target_name,shots())
+                assert effects(46 if missile==20 else 47)==0
+                assert effects(17)==0
                 print(f'PASS: {name} vs {target_name}, 12 tiros sin proc elemental',flush=True)
                 actor.sock.close()
                 time.sleep(.5)
