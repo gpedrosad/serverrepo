@@ -1,0 +1,18 @@
+{
+  "tool": "image_gen.imagegen (built-in)",
+  "variants": {
+    "gale": {
+      "prompt": "Use case: stylized-concept. Asset type: production inventory item sprite for a classic Tibia 7.6 game. A four-bladed curved throwing star for a paladin called Gale Star. Sleek hooked silver blades, turquoise cyan inlays and a tiny polished teal central jewel. Light aerodynamic pinwheel silhouette with four sharp blades, angled diagonally; weapon, not a spell symbol. One item only, centered on genuinely transparent background. Exact chunky 32 by 32 logical pixel art, shown enlarged with nearest-neighbor squares. Item occupies 27 by 27 logical pixels with transparent padding. Tibia 7.6 inventory style: top-left lit, dark colored contour, 4-5 hard palette shades per material, strong compact silhouette readable at 32x32. Oblique overhead view, no shadow outside object. No ground, no text, no labels, no decorative frame, no glow halo, no antialiasing, no gradients, no photorealism. Every logical pixel should remain a crisp square; don't over-detail. Ready to downsample to 32x32.",
+      "source": "/Users/gonzalo/.codex/generated_images/01a1f073-b9af-7453-928e-1540498fcc7a/exec-7591f513-7840-4838-94d9-0993a5356653.png"
+    },
+    "venom": {
+      "prompt": "Use case: stylized-concept. Asset type: production inventory item sprite for a classic Tibia 7.6 game. A six-bladed throwing star for a paladin called Venom Star. Jagged dark steel blades, vivid emerald-green poisonous edges and tiny brass details around a green gem center. Broad spiky menacing shuriken silhouette; weapon, not a plant or spell symbol. One item only, centered on genuinely transparent background. Exact chunky 32 by 32 logical pixel art, shown enlarged with nearest-neighbor squares. Item occupies 27 by 27 logical pixels with transparent padding. Tibia 7.6 inventory style: top-left lit, dark colored contour, 4-5 hard palette shades per material, strong compact silhouette readable at 32x32. Oblique overhead view, no shadow outside object. No ground, no text, no labels, no decorative frame, no glow halo, no antialiasing, no gradients, no photorealism. Every logical pixel should remain a crisp square; don't over-detail. Ready to downsample to 32x32.",
+      "source": "/Users/gonzalo/.codex/generated_images/01a1f073-b9af-7453-928e-1540498fcc7a/exec-f19d0d1f-b554-4ea8-b65a-6f5c3410427d.png"
+    },
+    "storm": {
+      "prompt": "Use case: stylized-concept. Asset type: production inventory item sprite for a classic Tibia 7.6 game. An eight-point throwing star for a paladin called Storm Star. Cobalt blue steel outer blades, gold fittings and a bright violet lightning crystal center. Four longer spear-like tips and four shorter tips, powerful ornate silhouette; weapon, not a spell symbol. One item only, centered on genuinely transparent background. Exact chunky 32 by 32 logical pixel art, shown enlarged with nearest-neighbor squares. Item occupies 27 by 27 logical pixels with transparent padding. Tibia 7.6 inventory style: top-left lit, dark colored contour, 4-5 hard palette shades per material, strong compact silhouette readable at 32x32. Oblique overhead view, no shadow outside object. No ground, no text, no labels, no decorative frame, no glow halo, no antialiasing, no gradients, no photorealism. Every logical pixel should remain a crisp square; don't over-detail. Ready to downsample to 32x32.",
+      "source": "/Users/gonzalo/.codex/generated_images/01a1f073-b9af-7453-928e-1540498fcc7a/exec-5aefe5a6-9b54-4894-984e-4aaa18cd4870.png"
+    }
+  },
+  "preparation": "paladin_star_art.py: crop alpha>=128, pad square, nearest-neighbor 28x28 on 32x32; native code-generated missile trails and impact frames."
+}
