@@ -40,6 +40,7 @@ CAT_PATH8 = [(50, 34), (84, 34), (84, 20), (16, 20), (16, 48), (40, 48)]
 | Tramos paralelos de **la misma** cueva | **14 casillas** o más entre ejes | Las franjas se tocan, la cueva hace un atajo y se saltea la progresión |
 | Dos cuevas del mismo piso | **3 casillas** de roca como mínimo (`CAVE_SEPARATION`) | Se cavan con esa distancia; si sus recorridos están más cerca, el script falla |
 | Recorrido lejos del borde de la caja | 4 casillas dentro de la zona permitida (caja menos 6) | El borde de la cueva queda fuera de la caja o se ve el vacío |
+| Núcleo del pasillo (`ribbon_core`) | Recortado a la zona cavable menos 2 | `carve_cave` cava el núcleo sí o sí: si se sale, el piso llega al borde y queda pegado a la roca lisa sin pared (Cripta Imperial v1, nov 2026) |
 | Tamaño de un piso | ~1.000–1.250 casillas caminables (~170–200 casillas de recorrido) | — |
 | Abismo / último piso | ~1.700 casillas | — |
 

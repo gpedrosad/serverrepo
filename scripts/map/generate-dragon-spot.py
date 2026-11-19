@@ -8,6 +8,8 @@ subiendo y bajando.
       agujero 479 en la orilla de los elfos (102,85)
   z8  túnel de cueva (piso 351/352/355, paredes 356-367) bajo el agua, de 95,85 a 102,86, con escalera
       de mano 1386 debajo de la trampilla (95,85) y debajo del agujero (102,85)
+      (v2: islas de pasto, túnel y85 x96-102, bajadas 469 en 96,85 y 102,85; ver el doc)
+      ramal x99, y86-88 al sur: sigue en la Cripta Imperial (generate-imperial-crypt.py), 19 nov 2026
 
 Nada toca una orilla: el dragón no sale de las plataformas y el puente. El cazador baja por el agujero de
 la orilla, camina el túnel y sube por la escalera a su plataforma (llega a 95,86); si lo aprietan, pisa la
@@ -61,6 +63,8 @@ Z7_BOX = (82, 82, 98, 89)                   # se reescribe entera: islas complet
 HOLE = (96, 85)                             # bajada en la isla (agujero 469); al subir se llega a 96,86
 BANK_HOLE = (102, 85)                       # bajada en la orilla de los elfos (469); al subir, 102,86
 TUNNEL = {(x, 85) for x in range(96, 103)}                    # z8, 1 de ancho, recto de escalera a escalera
+# ramal de 1 de ancho al sur, a la Cripta Imperial (generate-imperial-crypt.py sigue el ramal desde y89)
+BRANCH = {(99, y) for y in range(86, 89)}
 Z8_BOX = (93, 83, 104, 88)                  # se reescribe entera (incluye el túnel ancho de la v1)
 SIGN = (103, 84, 7)
 MONSTER = ("Black Dragon", 85, 88, 7, 300)  # nombre, x, y, z, respawn
@@ -131,9 +135,15 @@ def build_z7(existing):
     return m, hole, walk, bridge, entries, hunter, dragon, bad
 
 
-def build_z8():
+def outside_floor(existing):
+    """Piso de cueva de afuera pegado a la caja de z8 (el pasillo de la cripta): cuenta para las piezas."""
+    ring = {(x + dx, y + dy) for (x, y) in rect(Z8_BOX) for dx in (-1, 0, 1) for dy in (-1, 0, 1)} - rect(Z8_BOX)
+    return {c for c in ring if (existing.get((c[0], c[1], 8)) or [0])[0] in NP.CAVE_FLOORS}
+
+
+def build_z8(existing):
     box = rect(Z8_BOX)
-    tiles = NP.cave_tiles(TUNNEL, box, 7676)
+    tiles = NP.cave_tiles(TUNNEL | BRANCH | outside_floor(existing), box, 7676)
     for x, y in (HOLE, BANK_HOLE):
         tiles[(x, y)] = [tiles[(x, y)][0], LADDER]
     m = roomkit.Map()
@@ -151,7 +161,7 @@ def lava_and_void(existing, walk7):
     z7_lava = {c for c in window(walk7) - rect(Z7_BOX)
                if (existing.get((c[0], c[1], 7)) or [0])[0] in LAVA}
     z8_lava, z8_void = set(), set()
-    for c in window(TUNNEL) - rect(Z8_BOX):
+    for c in window(TUNNEL | BRANCH) - rect(Z8_BOX):
         ids = existing.get((c[0], c[1], 8))
         if not ids:
             z8_void.add(c)
@@ -220,8 +230,16 @@ def validate(existing, z7, walk7, bridge, entries, hunter, dragon, bad, z8, z7_l
         errs.append("el dragón puede salir de las islas")
     chk8 = roomkit.Checker(z8)
     walk8 = {(x, y) for (x, y, _z) in z8.t if chk8.walkable((x, y, 8))}
-    if walk8 != TUNNEL:
-        errs.append(f"el túnel no es de 1 de ancho / sobra piso: {sorted(walk8 ^ TUNNEL)[:5]}")
+    if walk8 != TUNNEL | BRANCH:
+        errs.append(f"el túnel no es de 1 de ancho / sobra piso: {sorted(walk8 ^ (TUNNEL | BRANCH))[:5]}")
+    fl8 = TUNNEL | BRANCH | outside_floor(existing)
+    for (x, y) in rect(Z8_BOX) - fl8:          # paredes: una sola pieza, nunca roca lisa pegada al piso
+        want = NP.pieces_for(NP.neighbors_in(fl8, x, y), NP.WALL_SIDE, NP.WALL_CORNER, NP.WALL_INNER)
+        if want is None or len(want) > 1:
+            errs.append(f"pared z8 {(x, y)}: piezas {want}")
+    low = (max(BRANCH, key=lambda c: c[1])[0], Z8_BOX[3] + 1)
+    if regenerating and (existing.get((low[0], low[1], 8)) or [0])[0] not in NP.CAVE_FLOORS:
+        print(f"aviso: el ramal sigue en {low} y ahí no hay piso de la cripta: correr generate-imperial-crypt.py")
     seen, todo = {BANK_HOLE}, deque([BANK_HOLE])
     while todo:
         x, y = todo.popleft()
@@ -301,7 +319,7 @@ def main() -> int:
     existing = load_tiles()
     regenerating = MANIFEST.exists()
     z7, hole, walk7, bridge, entries, hunter, dragon, bad = build_z7(existing)
-    z8 = build_z8()
+    z8 = build_z8(existing)
     z7_lava, z8_lava, z8_void, z8_kept = lava_and_void(existing, walk7)
     errs = validate(existing, z7, walk7, bridge, entries, hunter, dragon, bad, z8, z7_lava, z8_kept, regenerating)
     print(f"Spot del Dragón Negro: isla del cazador {len(hunter)} casillas, del dragón {len(dragon)}, puente "
@@ -357,7 +375,7 @@ def main() -> int:
     MANIFEST.write_text(json.dumps({
         "name": "Spot del Dragón Negro", "box": list(Z7_BOX), "hunter_isle": HUNTER_ISLE, "dragon_isle": DRAGON_ISLE,
         "bridge": [min(bridge)[0], BRIDGE_Y, max(bridge)[0], BRIDGE_Y], "hole": HOLE, "bank_hole": BANK_HOLE,
-        "tunnel": sorted(TUNNEL), "z8_box": list(Z8_BOX), "lava_to_water_z7": len(z7_lava),
+        "tunnel": sorted(TUNNEL), "branch_to_crypt": sorted(BRANCH), "z8_box": list(Z8_BOX), "lava_to_water_z7": len(z7_lava),
         "lava_to_rock_z8": len(z8_lava), "void_to_rock_z8": len(z8_void), "sign": list(SIGN),
         "monster": dict(name=name, pos=[x, y, z], respawn=st),
     }, indent=2) + "\n")

@@ -5835,19 +5835,39 @@
 	</spawn>
 	<!-- END DRAGON_SPOT_SPAWNS -->
 	<!-- BEGIN IMPERIAL_CRYPT_SPAWNS (scripts/map/generate-imperial-crypt.py) -->
-	<spawn centerx="92" centery="100" centerz="8" radius="3">
-		<monster name="Imperial Squire" x="2" y="0" z="8" spawntime="100" />
+	<spawn centerx="84" centery="91" centerz="8" radius="3">
+		<monster name="Imperial Squire" x="1" y="0" z="8" spawntime="100" />
 	</spawn>
-	<spawn centerx="101" centery="95" centerz="8" radius="3">
-		<monster name="Imperial Archer" x="1" y="-1" z="8" spawntime="100" />
+	<spawn centerx="74" centery="93" centerz="8" radius="3">
+		<monster name="Imperial Archer" x="2" y="0" z="8" spawntime="100" />
 	</spawn>
-	<spawn centerx="96" centery="107" centerz="8" radius="3">
-		<monster name="Court Mage" x="-2" y="1" z="8" spawntime="170" />
-		<monster name="Imperial Hero" x="-2" y="-1" z="8" spawntime="170" />
+	<spawn centerx="101" centery="97" centerz="8" radius="3">
+		<monster name="Imperial Squire" x="0" y="0" z="8" spawntime="100" />
 	</spawn>
-	<spawn centerx="109" centery="92" centerz="8" radius="3">
-		<monster name="Court Mage" x="2" y="1" z="8" spawntime="170" />
-		<monster name="Imperial Hero" x="1" y="1" z="8" spawntime="170" />
+	<spawn centerx="107" centery="91" centerz="8" radius="3">
+		<monster name="Imperial Archer" x="-1" y="2" z="8" spawntime="100" />
+	</spawn>
+	<spawn centerx="65" centery="97" centerz="8" radius="3">
+		<monster name="Imperial Archer" x="0" y="-1" z="8" spawntime="120" />
+	</spawn>
+	<spawn centerx="70" centery="106" centerz="8" radius="3">
+		<monster name="Court Mage" x="0" y="-1" z="8" spawntime="140" />
+	</spawn>
+	<spawn centerx="88" centery="105" centerz="8" radius="3">
+		<monster name="Court Mage" x="0" y="-1" z="8" spawntime="170" />
+		<monster name="Imperial Hero" x="-2" y="2" z="8" spawntime="170" />
+	</spawn>
+	<spawn centerx="79" centery="108" centerz="8" radius="3">
+		<monster name="Court Mage" x="1" y="-1" z="8" spawntime="170" />
+		<monster name="Imperial Hero" x="2" y="-2" z="8" spawntime="170" />
+	</spawn>
+	<spawn centerx="98" centery="106" centerz="8" radius="3">
+		<monster name="Imperial Hero" x="2" y="0" z="8" spawntime="235" />
+		<monster name="Imperial Hero" x="-2" y="2" z="8" spawntime="235" />
+	</spawn>
+	<spawn centerx="107" centery="108" centerz="8" radius="3">
+		<monster name="Imperial Hero" x="-1" y="0" z="8" spawntime="235" />
+		<monster name="Imperial Hero" x="2" y="0" z="8" spawntime="235" />
 	</spawn>
 	<!-- END IMPERIAL_CRYPT_SPAWNS -->
 	<!-- BEGIN KONGRA_TOWERS_SPAWNS (scripts/map/generate-kongra-towers.py) -->

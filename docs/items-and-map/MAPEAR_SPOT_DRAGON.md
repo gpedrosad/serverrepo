@@ -8,7 +8,11 @@ Generador: `scripts/map/generate-dragon-spot.py` (re-ejecutable). Manifiesto:
 `server/YurOTS/ots/data/world/generated-dragon-spot.json`.
 
 ![z7: plataformas y puente](img/spot-dragon/z7.png)
-![z8: túnel bajo el agua](img/spot-dragon/z8.png)
+![z8: túnel bajo el agua y ramal a la Cripta Imperial](img/spot-dragon/z8.png)
+
+> **19 nov 2026:** el túnel tiene un ramal al sur que lo une con la
+> [Cripta Imperial](MAPEAR_CATACUMBA_IMPERIAL.md) (pasillo de caza de la guarnición imperial). Ver
+> "Unión con la Cripta Imperial" abajo.
 
 ## Cómo es (v2, 18 nov 2026)
 
@@ -20,6 +24,7 @@ Generador: `scripts/map/generate-dragon-spot.py` (re-ejecutable). Manifiesto:
 | Isla del dragón | elipse centro `85,87.5` (radios 3.0 × 2.2): pasto `x 84–86, y 87–89` | igual que la otra; **Black Dragon** en `85,88` (radio 1, 300 s) |
 | Bajada en la orilla | `102,85,7`, orilla de los elfos (se sube a `102,86`) | agujero `469`; abajo, escalera de mano `1386` en `102,85,8` |
 | Túnel | `96–102, 85, 8`: **1 de ancho, recto** de escalera a escalera | piso de cueva `351/352/355`, paredes `356–367` |
+| Ramal a la cripta | `99, 86–88, 8` (`BRANCH`), 1 de ancho; sigue en `99, 89–91` (de la cripta) | igual que el túnel |
 | Cartel | `103,84,7` | bloque `DRAGON_SPOT_SIGNS` de `readables.xml` |
 
 **Recorrido:** templo → orilla de los elfos (~111 pasos) → agujero → túnel al oeste → escalera de mano (sube a
@@ -41,6 +46,22 @@ mapa real y el generador falla si queda un pasto pegado al agua sin pieza.
 **v1 (descartada el mismo día):** plataformas cuadradas de madera, túnel de 2 de ancho, trampilla `427` (se veía
 como un cuadrado negro) y agujero `479` en la orilla (cuadrado de piedra gris). Para bajar sobre pasto: `469`.
 
+## Unión con la Cripta Imperial (19 nov 2026)
+
+Del medio del túnel (`99,85,8`) sale un ramal de 1 de ancho al sur que baja hasta la fila norte de la
+[Cripta Imperial](MAPEAR_CATACUMBA_IMPERIAL.md). Desde la escalera de la orilla son 6 pasos a la escalera de
+la isla y 16 a la boca de la cripta, así que el mismo agujero sirve para las dos cazas.
+
+- **Quién escribe qué:** este generador escribe el ramal hasta `y 88` (su caja de z8 llega a `y 88`) y la
+  cripta lo sigue desde `y 89`. Para elegir las piezas de pared, cada uno cuenta el piso del otro que toca su
+  caja (`outside_floor` acá, `ext_floor` en la cripta). Por eso el orden para regenerar es dragón, cripta,
+  dragón; ver [MAPEAR_CATACUMBA_IMPERIAL.md](MAPEAR_CATACUMBA_IMPERIAL.md#cómo-se-regenera-orden-dragón-cripta-dragón).
+- **Validación nueva:** el piso de z8 tiene que ser exactamente túnel + ramal, y toda pared de la caja tiene
+  una sola pieza (nunca roca lisa pegada al piso).
+- **El refugio de abajo ya no es del todo seguro:** los monstruos de la cripta pueden subir por el ramal hasta
+  el túnel. Los que están cerca son los fáciles (Squire/Archer, a 6+ casillas del ramal); el dragón sigue sin
+  poder bajar.
+
 ## Por qué el dragón no sale
 
 Las dos islas y el puente están rodeados de agua y no tocan ninguna orilla; el anillo de costa no se pisa. El
@@ -56,9 +77,11 @@ python3 scripts/map/check-map-load.py
 python3.11 scripts/map/check-upper-view.py
 ```
 
+Si se toca el ramal, regenerar en el orden dragón → cripta → dragón (ver arriba).
+
 Valida antes de escribir: islas sin casillas de 1 de ancho (cada borde con su pieza de costa), puente de 4 sobre
 el agua, nada de tierra caminable ajena pegada a las islas, llegadas de las escaleras libres, dragón aislado, túnel
-de 1 de ancho conectado de punta a punta, cartel en suelo libre y el monstruo existe (la primera vez, además, que
+de 1 de ancho (más el ramal) conectado de punta a punta, paredes de z8 con una sola pieza, cartel en suelo libre y el monstruo existe (la primera vez, además, que
 la caja de z7 sea solo agua o lava).
 
 ## Pruebas (18 nov 2026, v2)
