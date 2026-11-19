@@ -19,6 +19,7 @@
 //////////////////////////////////////////////////////////////////////
 
 #include "definitions.h"
+#include "paladin_stars.h"
 
 #include <string>
 #include <sstream>
@@ -325,6 +326,9 @@ int64_t Player::getWeaponDamage() const
 							int hitchance;
 							if(distitem->getWeaponType() == AMO){//projectile
 								hitchance = 90;
+							}
+							else if(isPaladinStar(distitem->getID())){
+								hitchance = PALADIN_STAR_HIT_CHANCE;
 							}
 							else if(distitem->getID() == ITEM_CRYSTAL_ARROW){
 								hitchance = CRYSTAL_ARROW_HIT_CHANCE;
@@ -3136,7 +3140,7 @@ static bool isRubyImbueWeaponItem(const Item* item)
 {
 	return item && item->isWeapon() && item->getWeaponType() != SHIELD &&
 		!isWandItem(item->getID()) && !isNightglassDaggerItem(item) &&
-		!isCrystalArrowItem(item) &&
+		!isCrystalArrowItem(item) && !isPaladinStar(item->getID()) &&
 		rubyStacksFromAid(item->getActionId()) > 0;
 }
 
@@ -3176,6 +3180,13 @@ Item* Player::getActiveWeapon() const
 	}
 
 	return NULL;
+}
+
+unsigned short Player::getPaladinStarId() const
+{
+	Item* weapon = getActiveWeapon();
+	return vocation == VOCATION_PALADIN && weapon && isPaladinStar(weapon->getID())
+		? weapon->getID() : 0;
 }
 
 void Player::refreshHeadSkillBonus(slots_t fromSlot, slots_t toSlot)
@@ -3301,6 +3312,12 @@ int Player::getBaseAttackDelayMs() const
 {
 	if(getWandId() == ITEM_CRIMSON_WAND)
 		return 667;
+	switch(getPaladinStarId()){
+		case ITEM_GALE_STAR: return GALE_STAR_DELAY_MS;
+		case ITEM_VENOM_STAR: return VENOM_STAR_DELAY_MS;
+		case ITEM_STORM_STAR: return STORM_STAR_DELAY_MS;
+		default: break;
+	}
 	switch(getCrucibleWeaponId()){
 		case ITEM_VENOMQUEEN_FANG: return VENOMQUEEN_ATTACK_DELAY_MS;
 		case ITEM_STORMCALLER_MAUL: return STORMCALLER_ATTACK_DELAY_MS;

@@ -19,6 +19,7 @@
 //////////////////////////////////////////////////////////////////////
 
 #include "definitions.h"
+#include "paladin_stars.h"
 
 #include <string>
 #include <sstream>
@@ -787,6 +788,36 @@ void applyCrucibleWeaponProcs(Game* game, Player* attackPlayer, Creature* attack
 			break;
 	}
 }
+bool paladinStarProcAllowed(Game* game, Creature* target, bool trainingNoPvp)
+{
+	if(trainingNoPvp || target->access >= g_config.ACCESS_PROTECT || target->health <= 0)
+		return false;
+	const Monster* monster = dynamic_cast<const Monster*>(target);
+	if(monster && monster->getMonsterType() && monster->getMonsterType()->trainer)
+		return false;
+	return game->getWorldType() != WORLD_TYPE_NO_PVP ||
+		(!dynamic_cast<Player*>(target) && !target->isPlayersSummon());
+}
+
+void applyVenomStar(Game* game, Player* attacker, Creature* target)
+{
+	if((target->getImmunities() & ATTACK_POISON) || (rand() % 100) >= VENOM_STAR_CHANCE)
+		return;
+	MagicEffectTargetCreatureCondition poison(attacker->getID());
+	poison.attackType = ATTACK_POISON;
+	poison.minDamage = VENOM_STAR_MIN_DAMAGE;
+	poison.maxDamage = VENOM_STAR_MAX_DAMAGE;
+	poison.offensive = true;
+	poison.drawblood = false;
+	poison.damageEffect = NM_ME_POISEN;
+	poison.hitEffect = NM_ME_VENOM_STAR_HIT;
+	poison.animationColor = 96;
+	CreatureCondition condition(VENOM_STAR_INTERVAL_MS, VENOM_STAR_TICKS, poison);
+	target->addCondition(condition, true);
+	game->sendMagicEffect(target->pos, NM_ME_VENOM_STAR_HIT);
+	if(Player* player = dynamic_cast<Player*>(target))
+		player->sendIcons();
+}
 } // namespace
 
 void GameState::onAttack(Creature* attacker, const Position& pos, const MagicEffectClass* me)
@@ -1033,9 +1064,29 @@ void GameState::onAttack(Creature* attacker, const Position& pos, Creature* atta
 		damage = applyAmulets(attackedPlayer, damage, ATTACK_PHYSICAL);
 		damage = applyCounterStance(game, attackedPlayer, attacker, damage, ATTACK_PHYSICAL);
 
+		const unsigned short star = attackPlayer ? attackPlayer->getPaladinStarId() : 0;
+		const bool starProcAllowed = star && damage > 0 &&
+			paladinStarProcAllowed(game, attackedCreature, trainingNoPvp);
+		bool stormBurst = false;
+		if(starProcAllowed && star == ITEM_STORM_STAR &&
+			!(attackedCreature->getImmunities() & ATTACK_ENERGY) && (rand() % 100) < STORM_STAR_CHANCE){
+			int extra = random_range(STORM_STAR_MIN_DAMAGE, STORM_STAR_MAX_DAMAGE);
+			if(attackedPlayer)
+				extra /= 2;
+			extra = applyAmulets(attackedPlayer, extra, ATTACK_ENERGY);
+			damage += extra;
+			stormBurst = extra > 0;
+		}
 		game->creatureApplyDamage(attackedCreature, damage, damage, manaDamage
 			, (pvpArena? &arenaLosers : NULL)
 			);
+
+		if(stormBurst)
+			game->sendMagicEffect(pos, NM_ME_STORM_STAR_HIT);
+		if(star == ITEM_GALE_STAR && damage > 0)
+			game->sendMagicEffect(pos, NM_ME_GALE_STAR_HIT);
+		if(starProcAllowed && star == ITEM_VENOM_STAR && damage > 0 && attackedCreature->health > 0)
+			applyVenomStar(game, attackPlayer, attackedCreature);
 
 		if(attackPlayer && attackedPlayer && !trainingNoPvp && wieldsMedusaSword(attackPlayer))
 			applyMedusaParalyze(game, attackPlayer, attackedPlayer);
@@ -1123,6 +1174,9 @@ static bool isRareEquipmentLootItem(unsigned short itemId)
 	case 2492: // dragon scale mail
 	case 2494: // demon armor
 	case ITEM_CRYSTAL_ARROW:
+	case ITEM_GALE_STAR:
+	case ITEM_VENOM_STAR:
+	case ITEM_STORM_STAR:
 		return true;
 	default:
 		break;
@@ -4325,6 +4379,13 @@ void Game::creatureMakeDamage(Creature *creature, Creature *attackedCreature, fi
 
 	Player* player = dynamic_cast<Player*>(creature);
 	Player* attackedPlayer = dynamic_cast<Player*>(attackedCreature);
+
+	Item* activeWeapon = player ? player->getActiveWeapon() : NULL;
+	if(activeWeapon && isPaladinStar(activeWeapon->getID()) && player->getVocation() != VOCATION_PALADIN){
+		player->sendCancel("Only paladins and royal paladins can use these stars.");
+		playerSetAttackedCreature(player, 0);
+		return;
+	}
 
 	Tile* targettile = map->getTile(attackedCreature->pos);
 

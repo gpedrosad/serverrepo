@@ -376,6 +376,7 @@ public:
 	bool wieldsNightglassDagger() const;
 	unsigned short getCrucibleWeaponId() const;
 	Item* getActiveWeapon() const;
+	unsigned short getPaladinStarId() const;
 
 	void checkSoftBoots(int thinkTicks);
 	void onSoftBootsEquipped(Item* boots);

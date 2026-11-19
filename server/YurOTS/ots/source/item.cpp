@@ -21,6 +21,7 @@
 // include header file
 
 #include "definitions.h"
+#include "paladin_stars.h"
 #include "container.h"
 #include "magic.h"
 #include "player.h"
@@ -474,6 +475,12 @@ subfight_t Item::getSubfightType() const {
 	// Proyectil propio (no esta en el enum del OTB): el OTB guarda el de la spear.
 	if(id == ITEM_ENCHANTED_SPEAR)
 		return DIST_ENCHANTED_SPEAR;
+	switch(id){
+		case ITEM_GALE_STAR: return DIST_GALE_STAR;
+		case ITEM_VENOM_STAR: return DIST_VENOM_STAR;
+		case ITEM_STORM_STAR: return DIST_STORM_STAR;
+		default: break;
+	}
 	return items[id].shootType;
 }
 
@@ -857,6 +864,17 @@ std::string Item::getDescription(bool fullDescription) const
 		if(caStacks > 0)
 			s << std::endl << "Imbued: +" << crystalArrowSpeedPercentFromStacks(caStacks) << "% attack speed ("
 			  << crystalArrowAttackDelayFromStacks(caStacks) << "ms per hit, " << caStacks << "/5).";
+	}
+	else if(isPaladinStar(id) && fullDescription) {
+		s << std::endl << "Paladins and royal paladins only. Reusable, one-handed, "
+		  << PALADIN_STAR_HIT_CHANCE << "% hit chance.";
+		if(id == ITEM_GALE_STAR)
+			s << " Attacks every " << GALE_STAR_DELAY_MS << "ms; leaves a cyan wind trail.";
+		else if(id == ITEM_VENOM_STAR)
+			s << " Attacks every " << VENOM_STAR_DELAY_MS << "ms; 25% poison: 4 ticks of 8-12 every 2s. Does not stack.";
+		else
+			s << " Attacks every " << STORM_STAR_DELAY_MS << "ms; 20% energy burst: 18-30 damage. No area damage.";
+		s << " Elemental damage is halved against players.";
 	}
 	else if(id == ITEM_SPEAR && fullDescription) {
 		s << std::endl << "A throwable spear (" << SPEAR_HIT_CHANCE << "% hit chance).";

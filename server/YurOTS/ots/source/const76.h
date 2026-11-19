@@ -64,6 +64,9 @@ enum MagicEffectClasses {
 	NM_ME_DETONATION_RING  = 0x29, //41 exevo vis tera: destello violeta que se vuelve onda expansiva
 	NM_ME_STANCE_GUARD     = 0x2A, //42 utito tera: arcos de acero que cierran un anillo
 	NM_ME_BLOOD_SPIRAL     = 0x2B, //43 utamo mort: gotas carmesí que espiralan a una estrella de maná
+	NM_ME_GALE_STAR_HIT    = 44,
+	NM_ME_VENOM_STAR_HIT   = 45,
+	NM_ME_STORM_STAR_HIT   = 46,
 };
 
 #define NM_ANI_BOLT              1
@@ -83,6 +86,9 @@ enum MagicEffectClasses {
 #define NM_ANI_FLYPOISONFIELD    14
 // Proyectiles agregados al cliente (scripts/client-rme): 15 = bola de hielo (pack ice)
 #define NM_ANI_ENCHANTED_SPEAR   16
+#define NM_ANI_GALE_STAR         18
+#define NM_ANI_VENOM_STAR        19
+#define NM_ANI_STORM_STAR        20
 
 enum SpeakClasses {
 	SPEAK_SAY	  		= 0x01, 
@@ -192,6 +198,9 @@ enum subfight_t {
 	DIST_POWERBOLT = NM_ANI_POWERBOLT,
 	DIST_SPEAR = NM_ANI_SPEAR,
 	DIST_POISONFIELD = NM_ANI_FLYPOISONFIELD,
+	DIST_GALE_STAR = NM_ANI_GALE_STAR,
+	DIST_VENOM_STAR = NM_ANI_VENOM_STAR,
+	DIST_STORM_STAR = NM_ANI_STORM_STAR,
 	DIST_ENCHANTED_SPEAR = NM_ANI_ENCHANTED_SPEAR
 };
 
@@ -265,6 +274,9 @@ enum item_t {
 	ITEM_BONEPRIEST_REAVER = 20154,
 	ITEM_PRIVATE_TRAINER_DUMMY = 20155,
 	ITEM_ENCHANTED_SPEAR = 20156,
+	ITEM_GALE_STAR = 20211,
+	ITEM_VENOM_STAR = 20212,
+	ITEM_STORM_STAR = 20213,
 	/* Crown armors recoloreadas: loot raro de monstruos fuertes (docs/items-and-map/CROWN_ARMORS.md) */
 	ITEM_IMPERIAL_CROWN_ARMOR = 20161,
 	ITEM_SAPPHIRE_CROWN_ARMOR = 20162,

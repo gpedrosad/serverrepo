@@ -23,6 +23,7 @@
 </defenses>
 
 <loot>
+	<item id="20212" chance="400"/>
 	<item id="2148" countmax="180" chance1="100000" chancemax="0"/>
 	<item id="2152" countmax="6" chance1="12000" chancemax="0"/>
 	<item id="2671" countmax="3" chance1="15000" chancemax="0"/>
