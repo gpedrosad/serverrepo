@@ -112,6 +112,7 @@ protected:
 	bool gmLootTest(Creature* c, const std::string &cmd, const std::string &param);
 	bool gmKillMonsters(Creature* c, const std::string &cmd, const std::string &param);
 	bool gmSpeed(Creature* c, const std::string &cmd, const std::string &param);
+	bool gmHelp(Creature* c, const std::string &cmd, const std::string &param);
 
 	//table of commands
 	static s_defcommands defined_commands[];
@@ -119,6 +120,10 @@ protected:
 	typedef std::map<std::string,Command*> CommandMap;
 	CommandMap commandMap;
 };
+
+class Player;
+// Resumen de comandos de GM (al entrar y con /comandos)
+void sendGmCommandsHelp(Player* player);
 
 typedef  bool (Commands::*CommandFunc)(Creature*,const std::string&,const std::string&);
 

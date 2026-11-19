@@ -3,6 +3,11 @@
 Todos son `access="3"` en `data/commands.xml` y están en `source/commands.cpp` (al final, `gm*`). Los mensajes
 salen en azul en la consola. Para el GM invisible ver [GM_INVISIBLE.md](GM_INVISIBLE.md).
 
+**Resumen al entrar:** un GM (`access >= accessprotect`) recibe en la consola, al conectarse, la lista de todos
+los comandos de GM (viejos y nuevos) en 5 mensajes: moverse, probar contenido, jugadores y servidor.
+`/comandos` la vuelve a mostrar. El texto está en `GM_HELP_SECTIONS` (`commands.cpp`): **si se agrega un
+comando, sumarlo ahí**. Se manda desde `Protocol76` al terminar el login (`sendGmCommandsHelp`).
+
 | Comando | Qué hace |
 |---------|----------|
 | `/god` | Prende/apaga la protección del GM. **Apagada**: los monstruos lo atacan, recibe daño real (la vida no baja de 1, nunca muere), pega sin el `+1337` y camina a la velocidad de su nivel. **Prendida** (lo normal): vuelve con vida y maná llenos. No se guarda: al relogear vuelve a estar protegido. |
@@ -13,6 +18,7 @@ salen en azul en la consola. Para el GM invisible ver [GM_INVISIBLE.md](GM_INVIS
 | `/ml` | `/ml 60 [Nombre]`. 0–200. |
 | `/loot` | `/loot frost dragon 500`: simula 500 muertes con la misma función del juego (`MonsterType::createLoot`, con `lootmul`, rares a la mitad y oro→platino) y lista cuántas veces cayó cada ítem, el % y el oro por muerte. Sin bonus premium ni Golden Ring. 100 por defecto, hasta 10000. No crea nada en el mapa. |
 | `/matar` | Saca todos los monstruos a la vista (mismo piso), sin cuerpo ni loot. Los invocados se van con su dueño; los spawns los vuelven a poner. |
+| `/comandos` | Muestra otra vez el resumen de comandos de GM. |
 | `/speed` | `/speed 300` fija la velocidad del GM (50–1500); `/speed` solo vuelve a la normal (1000 con la protección prendida). |
 
 **Look de GM** (`accesslook`): al mirar un ítem muestra el id de servidor (antes salía el del cliente), action id

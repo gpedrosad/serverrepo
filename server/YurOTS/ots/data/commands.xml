@@ -46,6 +46,7 @@
 <command cmd="/loot"		access="3" />
 <command cmd="/matar"		access="3" />
 <command cmd="/speed"		access="3" />
+<command cmd="/comandos"	access="3" />
 
 <command cmd="!exp"			access="0" />
 <command cmd="!mana"		access="0" />
