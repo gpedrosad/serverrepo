@@ -87,6 +87,8 @@ access(0)
 
 	boh = false;
 	hasteEnchantStacks = 0;
+	gmMortal = false;
+	gmSpeed = 0;
 	imbueWandMl = 0;
 	imbueRubyWeapon = 0;
 	imbueEmeraldArmor = 0;
@@ -121,6 +123,12 @@ Creature::~Creature()
 
 void Creature::drainHealth(int64_t damage, CreatureVector* arenaLosers)
 {
+	if (access >= g_config.ACCESS_PROTECT && damage >= health)
+	{
+		health = 1;   // GM con /god apagado: recibe danio pero no muere
+		return;
+	}
+
 	if (arenaLosers && damage >= health)
 	{
 		health = healthmax;

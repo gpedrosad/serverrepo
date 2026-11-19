@@ -103,6 +103,16 @@ protected:
 	bool premmy(Creature* c, const std::string &cmd, const std::string &param);
 	bool showPremmy(Creature* c, const std::string &cmd, const std::string &param);
 
+	// GM para probar contenido (docs/gameplay/GM_COMANDOS.md)
+	bool gmGod(Creature* c, const std::string &cmd, const std::string &param);
+	bool gmGoPlace(Creature* c, const std::string &cmd, const std::string &param);
+	bool gmSetLevel(Creature* c, const std::string &cmd, const std::string &param);
+	bool gmSetSkill(Creature* c, const std::string &cmd, const std::string &param);
+	bool gmSetMagicLevel(Creature* c, const std::string &cmd, const std::string &param);
+	bool gmLootTest(Creature* c, const std::string &cmd, const std::string &param);
+	bool gmKillMonsters(Creature* c, const std::string &cmd, const std::string &param);
+	bool gmSpeed(Creature* c, const std::string &cmd, const std::string &param);
+
 	//table of commands
 	static s_defcommands defined_commands[];
 

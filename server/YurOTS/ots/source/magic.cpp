@@ -66,7 +66,7 @@ int64_t MagicEffectClass::getDamage(Creature *target, const Creature *attacker /
 	if((attackType != ATTACK_NONE) && (target->getImmunities() & attackType) == attackType)
 		return 0;
 
-	if((!offensive || (target != attacker)) && target->access < g_config.ACCESS_PROTECT) {
+	if((!offensive || (target != attacker)) && !target->isGmProtected()) {
 		int64_t damage = (int64_t)random_range(minDamage, maxDamage);
 
 		if(!offensive)
@@ -217,7 +217,7 @@ int64_t MagicEffectTargetExClass::getDamage(Creature *target, const Creature *at
 	if((attackType != ATTACK_NONE) && (target->getImmunities() & attackType) == attackType)
 		return 0;
 
-	if((!offensive || (target != attacker)) && target->access < g_config.ACCESS_PROTECT) {
+	if((!offensive || (target != attacker)) && !target->isGmProtected()) {
 
 		bool refresh = true;
 		for(ConditionVec::const_iterator condIt = condition.begin(); condIt != condition.end(); ++condIt) {
@@ -254,7 +254,7 @@ int64_t MagicEffectTargetCreatureCondition::getDamage(Creature *target, const Cr
 	if((attackType != ATTACK_NONE) && (target->getImmunities() & attackType) == attackType)
 		return 0;
 
-	if(target->access < g_config.ACCESS_PROTECT) {
+	if(!target->isGmProtected()) {
 		int64_t damage = random_range(minDamage, maxDamage);
 
 		if(!offensive)
@@ -411,7 +411,7 @@ int64_t MagicEffectAreaExClass::getDamage(Creature *target, const Creature *atta
 	if((attackType != ATTACK_NONE) && (target->getImmunities() & attackType) == attackType)
 		return 0;
 
-	if(target->access < g_config.ACCESS_PROTECT) {
+	if(!target->isGmProtected()) {
 
 		bool refresh = true;
 		for(ConditionVec::const_iterator condIt = condition.begin(); condIt != condition.end(); ++condIt) {
@@ -455,7 +455,7 @@ int64_t MagicEffectAreaGroundClass::getDamage(Creature *target, const Creature *
 	if((attackType != ATTACK_NONE) && (target->getImmunities() & attackType) == attackType)
 		return 0;
 
-	if(target->access < g_config.ACCESS_PROTECT) {
+	if(!target->isGmProtected()) {
 		if(magicItem) {
 			return magicItem->getDamage(target, attacker);
 		}
@@ -546,7 +546,7 @@ void MagicEffectItem::buildCondition()
 int64_t MagicEffectItem::getDamage(Creature *target, const Creature *attacker /*= NULL*/) const
 {
 
-	if(target->access < g_config.ACCESS_PROTECT) {
+	if(!target->isGmProtected()) {
 
 		bool refresh = true;
 		for(ConditionVec::const_iterator condIt = condition.begin(); condIt != condition.end(); ++condIt) {

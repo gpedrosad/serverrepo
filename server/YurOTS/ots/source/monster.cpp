@@ -197,7 +197,7 @@ void Monster::tryTrainerWander()
 
 bool Monster::isCreatureAttackable(const Creature* creature)
 {
-	if(!creature || creature->access >= g_config.ACCESS_PROTECT)
+	if(!creature || creature->isGmProtected())
 		return false;
 
 	if(!dynamic_cast<const Player*>(creature) && !(const_cast<Creature*>(creature))->getMaster())
@@ -208,7 +208,7 @@ bool Monster::isCreatureAttackable(const Creature* creature)
 		topMaster = const_cast<Creature*>(topMaster->getMaster());
 	}
 
-	if(topMaster && (!dynamic_cast<const Player*>(topMaster) || topMaster->access >= g_config.ACCESS_PROTECT))
+	if(topMaster && (!dynamic_cast<const Player*>(topMaster) || topMaster->isGmProtected()))
 		return false;
 
 	return true;
@@ -269,7 +269,7 @@ Creature* Monster::findTarget(long range, bool &canReach, const Creature *ignore
 	std::vector<Creature*> unreachablelist;
 
 	for(SpectatorVec::const_iterator cit = tmplist.begin(); cit != tmplist.end(); ++cit) {
-		if(ignoreCreature == *cit || (*cit)->access >= g_config.ACCESS_PROTECT)
+		if(ignoreCreature == *cit || (*cit)->isGmProtected())
 			continue;
 
 		if(!isCreatureAttackable(*cit))

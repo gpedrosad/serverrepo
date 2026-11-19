@@ -1013,10 +1013,10 @@ void GameState::onAttack(Creature* attacker, const Position& pos, Creature* atta
 		damage = 0;
 	}
 
-	if (attacker->access >= g_config.ACCESS_PROTECT)
+	if (attacker->isGmProtected())
 		damage += 1337;
 
-	if(damage < 0 || attackedCreature->access >= g_config.ACCESS_PROTECT)
+	if(damage < 0 || attackedCreature->isGmProtected())
 		damage = 0;
 
 	damage = applyPowerHit(attacker, attackedCreature, damage);   // melee y distancia
@@ -5709,7 +5709,7 @@ void Game::playerSetAttackedCreature(Player* player, unsigned long creatureid)
 
 	attackedIsSummon = (attackedCreature && attackedCreature->isPlayersSummon() && attackedCreature->getMaster() != player);
 
-	if(!attackedCreature || (attackedCreature->access >= g_config.ACCESS_PROTECT || ((getWorldType() == WORLD_TYPE_NO_PVP || rook || trainingNoPvp) &&
+	if(!attackedCreature || (attackedCreature->isGmProtected() || ((getWorldType() == WORLD_TYPE_NO_PVP || rook || trainingNoPvp) &&
 		!pvpArena && player->access < g_config.ACCESS_PROTECT && (dynamic_cast<Player*>(attackedCreature) || attackedIsSummon)))) {
 	if(attackedCreature) {
 		  if(trainingNoPvp)

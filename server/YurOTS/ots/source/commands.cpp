@@ -47,6 +47,104 @@ extern Spells spells;
 
 extern bool readXMLInteger(xmlNodePtr p, const char *tag, int &value);
 
+// Ayudas de los comandos de GM (docs/gameplay/GM_COMANDOS.md)
+namespace {
+
+std::string gmTrim(const std::string& s)
+{
+	std::string::size_type a = s.find_first_not_of(" \t");
+	if(a == std::string::npos)
+		return "";
+	std::string::size_type b = s.find_last_not_of(" \t");
+	return s.substr(a, b - a + 1);
+}
+
+bool gmIsNumber(const std::string& s)
+{
+	if(s.empty())
+		return false;
+	for(std::string::size_type i = 0; i < s.size(); ++i)
+		if(s[i] < '0' || s[i] > '9')
+			return false;
+	return true;
+}
+
+// "texto 25" -> text="texto", number=25. Sin numero al final: number = defaultNumber.
+void gmSplitTrailingNumber(const std::string& param, std::string& text, long& number, long defaultNumber)
+{
+	std::string p = gmTrim(param);
+	number = defaultNumber;
+	std::string::size_type sp = p.find_last_of(' ');
+	if(sp != std::string::npos && gmIsNumber(p.substr(sp + 1))) {
+		number = atol(p.substr(sp + 1).c_str());
+		text = gmTrim(p.substr(0, sp));
+	}
+	else
+		text = p;
+}
+
+// "25 nombre del jugador" -> number=25, rest="nombre del jugador". false si no empieza con numero.
+bool gmSplitLeadingNumber(const std::string& param, long& number, std::string& rest)
+{
+	std::string p = gmTrim(param);
+	std::string::size_type sp = p.find(' ');
+	std::string first = (sp == std::string::npos) ? p : p.substr(0, sp);
+	if(!gmIsNumber(first))
+		return false;
+	number = atol(first.c_str());
+	rest = (sp == std::string::npos) ? "" : gmTrim(p.substr(sp + 1));
+	return true;
+}
+
+std::string gmLower(std::string s)
+{
+	std::transform(s.begin(), s.end(), s.begin(), tolower);
+	return s;
+}
+
+long gmClamp(long v, long lo, long hi)
+{
+	return v < lo ? lo : (v > hi ? hi : v);
+}
+
+void gmInfo(Player* player, const std::string& msg)
+{
+	if(player)
+		player->sendTextMessage(MSG_BLUE_TEXT, msg.c_str());
+}
+
+bool gmFreeTile(Tile* tile)
+{
+	return tile && tile->isBlocking(BLOCK_SOLID, true) == RET_NOERROR;
+}
+
+struct GmLootCount {
+	long drops;
+	long total;
+	GmLootCount() : drops(0), total(0) {}
+};
+
+void gmCountLoot(Container* container, std::map<unsigned short, GmLootCount>& counts)
+{
+	for(ContainerList::const_iterator it = container->getItems(); it != container->getEnd(); ++it) {
+		Item* item = *it;
+		if(!item)
+			continue;
+		GmLootCount& c = counts[item->getID()];
+		c.drops++;
+		c.total += item->isStackable() ? item->getItemCountOrSubtype() : 1;
+		if(Container* sub = dynamic_cast<Container*>(item))
+			gmCountLoot(sub, counts);
+	}
+}
+
+bool gmLootSort(const std::pair<unsigned short, GmLootCount>& a, const std::pair<unsigned short, GmLootCount>& b)
+{
+	return a.second.drops > b.second.drops;
+}
+
+} // namespace
+
 //table of commands
 s_defcommands Commands::defined_commands[] = {
 	{"/s",&Commands::placeNpc},
@@ -94,6 +192,14 @@ s_defcommands Commands::defined_commands[] = {
 	{"/clean",&Commands::cleanMap},
 	{"/promote",&Commands::promote},
 	{"!premmy",&Commands::showPremmy},
+	{"/god",&Commands::gmGod},
+	{"/ir",&Commands::gmGoPlace},
+	{"/nivel",&Commands::gmSetLevel},
+	{"/skill",&Commands::gmSetSkill},
+	{"/ml",&Commands::gmSetMagicLevel},
+	{"/loot",&Commands::gmLootTest},
+	{"/matar",&Commands::gmKillMonsters},
+	{"/speed",&Commands::gmSpeed},
 };
 
 Commands::Commands(Game* igame):
@@ -429,19 +535,30 @@ bool Commands::teleportHere(Creature* c, const std::string &cmd, const std::stri
 
 bool Commands::createItems(Creature* c, const std::string &cmd, const std::string &param){
 
-	std::string tmp = param;
+	// /i 2160 5, /i 2160, /i black fire sword, /i platinum coin 50 (docs/gameplay/GM_COMANDOS.md)
+	Player* self = dynamic_cast<Player*>(c);
+	std::string what;
+	long count;
+	gmSplitTrailingNumber(param, what, count, -1);
 
-	std::string::size_type pos = tmp.find(' ', 0);
-	if(pos == std::string::npos)
+	int type = gmIsNumber(what) ? atoi(what.c_str()) : Item::items.getIdByName(what);
+	if(type <= 0 || Item::items[type].id == 0) {
+		gmInfo(self, "No existe el item: " + what + ".");
 		return true;
+	}
+	if(count < 0)   // sin cantidad: 1 si se apila, 10 cargas si es runa, si no nada
+		count = Item::items[type].stackable ? 1 : (Item::items[type].runeMagLevel != -1 ? 10 : 0);
+	count = std::min(count, 100L);
 
-	int type = atoi(tmp.substr(0, pos).c_str());
-	tmp.erase(0, pos+1);
-	int count = std::min(atoi(tmp.c_str()), 100);
-
-	Item *newItem = Item::CreateItem(type, count);
+	Item *newItem = Item::CreateItem(type, (unsigned short)count);
 	if(!newItem)
 		return true;
+
+	std::stringstream created;
+	created << "Creado: " << Item::items[type].name << " (" << type << ")";
+	if(Item::items[type].stackable || Item::items[type].runeMagLevel != -1)
+		created << " x" << count;
+	gmInfo(self, created.str() + ".");
 
 	Tile *t = game->map->getTile(c->pos);
 	if(!t)
@@ -1396,5 +1513,350 @@ bool Commands::promote(Creature* c, const std::string &cmd, const std::string &p
 		target->promote();
 	}
 
+	return true;
+}
+
+//////////////////////////////////////////////////////////////////////
+// Comandos de GM para probar contenido (nov 2026). Doc: docs/gameplay/GM_COMANDOS.md
+//////////////////////////////////////////////////////////////////////
+
+
+// Resuelve el jugador objetivo: el nombre dado (online) o el mismo GM.
+static Player* gmTarget(Game* game, Creature* c, const std::string& name)
+{
+	if(name.empty())
+		return dynamic_cast<Player*>(c);
+	return game->getPlayerByName(name);
+}
+
+bool Commands::gmGod(Creature* c, const std::string &cmd, const std::string &param)
+{
+	Player* player = dynamic_cast<Player*>(c);
+	if(!player)
+		return true;
+
+	player->gmMortal = !player->gmMortal;
+	if(player->gmMortal) {
+		gmInfo(player, "God OFF: los monstruos te atacan, recibes danio real (no bajas de 1 de vida) y sin el +1337.");
+	}
+	else {
+		player->health = player->healthmax;
+		player->mana = player->manamax;
+		gmInfo(player, "God ON: protegido otra vez (vida y mana llenos).");
+	}
+	player->hasteTicks = 0;
+	game->changeSpeed(player->getID(), player->getNormalSpeed());
+	player->sendStats();
+	return true;
+}
+
+bool Commands::gmGoPlace(Creature* c, const std::string &cmd, const std::string &param)
+{
+	Player* player = dynamic_cast<Player*>(c);
+	if(!player)
+		return true;
+
+	std::string filename = datadir + "gmplaces.xml";
+	xmlDocPtr doc = xmlParseFile(filename.c_str());
+	if(!doc) {
+		gmInfo(player, "No se pudo leer " + filename + ".");
+		return true;
+	}
+
+	const std::string wanted = gmLower(gmTrim(param));
+	std::string names, foundName;
+	Position found;
+	bool exact = false, haveMatch = false;
+
+	xmlNodePtr root = xmlDocGetRootElement(doc);
+	for(xmlNodePtr p = root ? root->children : NULL; p; p = p->next) {
+		if(xmlStrcmp(p->name, (const xmlChar*)"place") != 0)
+			continue;
+		char* nameAttr = (char*)xmlGetProp(p, (const xmlChar*)"name");
+		if(!nameAttr)
+			continue;
+		std::string name = nameAttr;
+		xmlFreeOTSERV(nameAttr);
+
+		int x = 0, y = 0, z = 0;
+		readXMLInteger(p, "x", x);
+		readXMLInteger(p, "y", y);
+		readXMLInteger(p, "z", z);
+
+		names += (names.empty() ? "" : ", ") + name;
+		const std::string lname = gmLower(name);
+		if(wanted.empty() || exact)
+			continue;
+		if(lname == wanted || (!haveMatch && lname.compare(0, wanted.size(), wanted) == 0)) {
+			exact = (lname == wanted);
+			haveMatch = true;
+			foundName = name;
+			found = Position(x, y, z);
+		}
+	}
+	xmlFreeDoc(doc);
+
+	if(wanted.empty() || !haveMatch) {
+		if(!wanted.empty())
+			gmInfo(player, "No conozco el lugar \"" + param + "\".");
+		gmInfo(player, "Lugares: " + names + ".");
+		return true;
+	}
+
+	// Si la casilla esta ocupada, la libre mas cercana (hasta 3 de distancia).
+	Position dest = found;
+	if(!gmFreeTile(game->getTile(dest.x, dest.y, dest.z))) {
+		bool ok = false;
+		for(int d = 1; d <= 3 && !ok; ++d)
+			for(int dx = -d; dx <= d && !ok; ++dx)
+				for(int dy = -d; dy <= d && !ok; ++dy)
+					if(gmFreeTile(game->getTile(found.x + dx, found.y + dy, found.z))) {
+						dest = Position(found.x + dx, found.y + dy, found.z);
+						ok = true;
+					}
+		if(!ok) {
+			gmInfo(player, "El lugar " + foundName + " no tiene casilla libre.");
+			return true;
+		}
+	}
+
+	game->teleport(player, dest);
+	game->sendMagicEffect(dest, NM_ME_ENERGY_AREA);
+	return true;
+}
+
+bool Commands::gmSetLevel(Creature* c, const std::string &cmd, const std::string &param)
+{
+	Player* self = dynamic_cast<Player*>(c);
+	long newLevel;
+	std::string name;
+	if(!gmSplitLeadingNumber(param, newLevel, name)) {
+		gmInfo(self, "Uso: /nivel 100  o  /nivel 100 Nombre");
+		return true;
+	}
+	Player* target = gmTarget(game, c, name);
+	if(!target) {
+		gmInfo(self, "No esta online: " + name + ".");
+		return true;
+	}
+	newLevel = gmClamp(newLevel, 1, 1000);
+
+	const int oldLevel = target->level;
+	const int voc = (int)target->vocation;
+	if(newLevel > oldLevel) {
+		target->addExp(target->getExpForLv(newLevel) - target->experience);
+	}
+	else if(newLevel < oldLevel) {
+		while(target->level > newLevel) {
+			target->level--;
+			target->healthmax = std::max<int64_t>(1, target->healthmax - g_config.HP_GAIN[voc]);
+			target->manamax = std::max<int64_t>(0, target->manamax - g_config.MANA_GAIN[voc]);
+			target->capacity = std::max(0.0, target->capacity - g_config.CAP_GAIN[voc]);
+		}
+		target->experience = target->getExpForLv(newLevel);
+		target->health = std::min(target->health, target->healthmax);
+		target->mana = std::min(target->mana, target->manamax);
+		target->setNormalSpeed();
+		game->changeSpeed(target->getID(), target->getSpeed());
+		std::stringstream msg;
+		msg << "You were downgraded from level " << oldLevel << " to level " << newLevel << ".";
+		target->sendTextMessage(MSG_ADVANCE, msg.str().c_str());
+	}
+	else {
+		// mismo nivel: deja la experiencia justo al inicio del nivel
+		target->experience = target->getExpForLv(newLevel);
+	}
+	target->reconcileCapacity();
+	target->sendStats();
+
+	std::stringstream info;
+	info << target->getName() << ": nivel " << oldLevel << " -> " << newLevel << ".";
+	gmInfo(self, info.str());
+	return true;
+}
+
+bool Commands::gmSetSkill(Creature* c, const std::string &cmd, const std::string &param)
+{
+	Player* self = dynamic_cast<Player*>(c);
+	std::string p = gmTrim(param);
+	std::string::size_type sp = p.find(' ');
+	const std::string skillName = gmLower(sp == std::string::npos ? p : p.substr(0, sp));
+	long value;
+	std::string name;
+	if(sp == std::string::npos || !gmSplitLeadingNumber(p.substr(sp + 1), value, name)) {
+		gmInfo(self, "Uso: /skill sword 90 [Nombre]. Skills: fist, club, sword, axe, distance, shielding, fishing.");
+		return true;
+	}
+
+	int skill = -1;
+	if(skillName == "fist" || skillName == "puno") skill = SKILL_FIST;
+	else if(skillName == "club" || skillName == "maza") skill = SKILL_CLUB;
+	else if(skillName == "sword" || skillName == "espada") skill = SKILL_SWORD;
+	else if(skillName == "axe" || skillName == "hacha") skill = SKILL_AXE;
+	else if(skillName == "distance" || skillName == "dist" || skillName == "distancia") skill = SKILL_DIST;
+	else if(skillName == "shielding" || skillName == "shield" || skillName == "escudo") skill = SKILL_SHIELD;
+	else if(skillName == "fishing" || skillName == "fish" || skillName == "pesca") skill = SKILL_FISH;
+	if(skill < 0) {
+		gmInfo(self, "Skill desconocido: " + skillName + ". Skills: fist, club, sword, axe, distance, shielding, fishing.");
+		return true;
+	}
+
+	Player* target = gmTarget(game, c, name);
+	if(!target) {
+		gmInfo(self, "No esta online: " + name + ".");
+		return true;
+	}
+	value = gmClamp(value, 10, 300);
+	target->skills[skill][SKILL_LEVEL] = value;
+	target->skills[skill][SKILL_TRIES] = 0;
+	target->skills[skill][SKILL_PERCENT] = 0;
+	target->sendSkills();
+
+	std::stringstream info;
+	info << target->getName() << ": " << skillName << " " << value << ".";
+	gmInfo(self, info.str());
+	return true;
+}
+
+bool Commands::gmSetMagicLevel(Creature* c, const std::string &cmd, const std::string &param)
+{
+	Player* self = dynamic_cast<Player*>(c);
+	long value;
+	std::string name;
+	if(!gmSplitLeadingNumber(param, value, name)) {
+		gmInfo(self, "Uso: /ml 60  o  /ml 60 Nombre");
+		return true;
+	}
+	Player* target = gmTarget(game, c, name);
+	if(!target) {
+		gmInfo(self, "No esta online: " + name + ".");
+		return true;
+	}
+	value = gmClamp(value, 0, 200);
+	target->maglevel = value;
+	target->manaspent = 0;
+	target->sendStats();
+
+	std::stringstream info;
+	info << target->getName() << ": magic level " << value << ".";
+	gmInfo(self, info.str());
+	return true;
+}
+
+bool Commands::gmLootTest(Creature* c, const std::string &cmd, const std::string &param)
+{
+	Player* self = dynamic_cast<Player*>(c);
+	std::string monsterName;
+	long kills;
+	gmSplitTrailingNumber(param, monsterName, kills, 100);
+	kills = gmClamp(kills, 1, 10000);
+
+	MonsterType* mType = g_monsters.getMonsterType(g_monsters.getIdByName(monsterName));
+	if(!mType) {
+		gmInfo(self, "Uso: /loot frost dragon 500. Monstruo desconocido: " + monsterName + ".");
+		return true;
+	}
+
+	std::map<unsigned short, GmLootCount> counts;
+	for(long i = 0; i < kills; ++i) {
+		Item* corpseItem = Item::CreateItem(mType->lookcorpse);
+		Container* corpse = dynamic_cast<Container*>(corpseItem);
+		if(!corpse) {
+			if(corpseItem)
+				corpseItem->releaseThing();
+			corpseItem = Item::CreateItem(1988);   // backpack
+			corpse = dynamic_cast<Container*>(corpseItem);
+			if(!corpse) {
+				if(corpseItem)
+					corpseItem->releaseThing();
+				gmInfo(self, "No se pudo crear el cadaver para simular.");
+				return true;
+			}
+		}
+		mType->createLoot(corpse, NULL);
+		gmCountLoot(corpse, counts);
+		corpse->releaseThing();
+	}
+
+	std::vector< std::pair<unsigned short, GmLootCount> > rows(counts.begin(), counts.end());
+	std::sort(rows.begin(), rows.end(), gmLootSort);
+
+	unsigned long gold = 0;
+	for(size_t i = 0; i < rows.size(); ++i) {
+		if(rows[i].first == ITEM_COINS_GOLD) gold += rows[i].second.total;
+		else if(rows[i].first == ITEM_COINS_PLATINUM) gold += rows[i].second.total * 100;
+		else if(rows[i].first == ITEM_COINS_CRYSTAL) gold += rows[i].second.total * 10000;
+	}
+
+	std::stringstream head;
+	head << "Loot de " << mType->name << " en " << kills << " muertes (sin bonus premium): "
+		<< rows.size() << " items distintos, " << gold << " gp en monedas (" << (gold / kills) << " por muerte).";
+	gmInfo(self, head.str());
+
+	const size_t maxRows = 40;
+	for(size_t i = 0; i < rows.size() && i < maxRows; ++i) {
+		const GmLootCount& lc = rows[i].second;
+		std::stringstream line;
+		line << "  " << Item::items[rows[i].first].name << " (" << rows[i].first << "): "
+			<< lc.drops << " veces (" << (lc.drops * 1000 / kills) / 10.0 << "%)";
+		if(lc.total != lc.drops)
+			line << ", " << lc.total << " en total";
+		gmInfo(self, line.str());
+	}
+	if(rows.size() > maxRows) {
+		std::stringstream more;
+		more << "  ... y " << (rows.size() - maxRows) << " items mas.";
+		gmInfo(self, more.str());
+	}
+	return true;
+}
+
+bool Commands::gmKillMonsters(Creature* c, const std::string &cmd, const std::string &param)
+{
+	Player* self = dynamic_cast<Player*>(c);
+	SpectatorVec list;
+	game->getSpectators(Range(c->pos, false), list);
+
+	std::vector<Monster*> victims;
+	for(SpectatorVec::iterator it = list.begin(); it != list.end(); ++it) {
+		Monster* monster = dynamic_cast<Monster*>(*it);
+		// los invocados se van con su duenio (removeCreature saca los summons)
+		if(monster && !monster->isRemoved && !monster->getMaster())
+			victims.push_back(monster);
+	}
+
+	long removed = 0;
+	for(size_t i = 0; i < victims.size(); ++i) {
+		const Position pos = victims[i]->pos;
+		if(game->removeCreature(victims[i])) {
+			game->sendMagicEffect(pos, NM_ME_PUFF);
+			removed++;
+		}
+	}
+
+	std::stringstream info;
+	info << "Monstruos eliminados: " << removed << " (los spawns los vuelven a poner).";
+	gmInfo(self, info.str());
+	return true;
+}
+
+bool Commands::gmSpeed(Creature* c, const std::string &cmd, const std::string &param)
+{
+	Player* self = dynamic_cast<Player*>(c);
+	std::string p = gmTrim(param);
+	if(p.empty() || !gmIsNumber(p))
+		c->gmSpeed = 0;
+	else
+		c->gmSpeed = gmClamp(atol(p.c_str()), 50, 1500);
+
+	c->hasteTicks = 0;
+	game->changeSpeed(c->getID(), c->getNormalSpeed());
+
+	std::stringstream info;
+	if(c->gmSpeed > 0)
+		info << "Velocidad fija: " << c->gmSpeed << ". /speed sin numero la vuelve a la normal.";
+	else
+		info << "Velocidad normal: " << c->getNormalSpeed() << ".";
+	gmInfo(self, info.str());
 	return true;
 }
