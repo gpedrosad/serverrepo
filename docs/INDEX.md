@@ -98,7 +98,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/CRYSTAL_ARROW.md`](gameplay/CRYSTAL_ARROW.md) | **Crystal Arrow (2352):** throwable tipo spear, Blue Gem speed ×5, hit 85%; spears 70% hit. |
 | [`gameplay/ENCHANTED_SPEAR.md`](gameplay/ENCHANTED_SPEAR.md) | **Enchanted Spear (20156):** spear mejorada (ataque 36, 80% hit, no se apila), sprite de cristal y luz de color propia; 4 estilos; proyectil propio `NM_ANI_ENCHANTED_SPEAR` (16) con luz en vuelo. |
 | [`gameplay/DEPOTS.md`](gameplay/DEPOTS.md) | **Depots:** lockers 2589, XML vs mapa, incidente jul 2026, checklist pre-deploy de mapa. |
-| [`items-and-map/DEPOT_ELECTRICO.md`](items-and-map/DEPOT_ELECTRICO.md) | **Depot eléctrico y calavera cian:** once piezas propias, 104 paredes solo en la sala de lockers, IDs 20200–20210, fuentes del arte y prueba con cliente real. |
+| [`items-and-map/DEPOT_ELECTRICO.md`](items-and-map/DEPOT_ELECTRICO.md) | **Depot eléctrico** (y la calavera cian, reemplazada por la negra el 19 nov: ver `gameplay/PINK_SKULL.md`): once piezas propias, 104 paredes solo en la sala de lockers, IDs 20200–20210, fuentes del arte y prueba con cliente real. |
 | [`gameplay/HOUSES.md`](gameplay/HOUSES.md) | **Casas:** dueños en `data/houses/*.xml`, deploy, backup/recuperación, **items fantasma** (caso Maximus `166,39,7` jul 2026). |
 | [`gameplay/GOLDEN_ACCESSORIES.md`](gameplay/GOLDEN_ACCESSORIES.md) | Golden amulet y golden ring: auto-bank, bonus de oro e interacción entre ambos. |
 | [`gameplay/SOFT_BOOTS.md`](gameplay/SOFT_BOOTS.md) | **Soft Boots (3549):** +3 HP / +12 MP cada 3 s, 4 h de uso → worn (3550); C++ `YUR_SOFT_BOOTS`. |

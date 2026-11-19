@@ -49,6 +49,9 @@ Solo cambian las once apariencias correspondientes a los slots reutilizados; el 
 
 ## Calavera cian
 
+> **19 nov 2026, más tarde:** la cian se reemplazó por la **calavera negra** nativa porque no se distinguía de la
+> blanca. Ver [PINK_SKULL.md](../gameplay/PINK_SKULL.md#calavera-negra-19-nov-2026-reemplaza-a-la-cian). Lo de abajo queda como historia.
+
 ![Familia nativa: blanca, roja, amarilla, verde y cian](img/depot-electric/skulls-native-comparison.png)
 
 **Corrección visual:** la versión frontal generada difería del resto. La final recolorea
