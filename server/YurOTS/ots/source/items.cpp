@@ -29,6 +29,7 @@ extern LuaScript g_config;
 #include <libxml/parser.h>
 
 #include <iostream>
+#include <algorithm>
 
 extern Spells spells;
 
@@ -680,6 +681,34 @@ bool Items::loadXMLInfos(std::string file)
 
 	xmlFreeDoc(doc);
 	return true;
+}
+
+static std::string lowerName(std::string s)
+{
+	std::transform(s.begin(), s.end(), s.begin(), tolower);
+	return s;
+}
+
+unsigned short Items::getIdByName(const std::string& name)
+{
+	const std::string wanted = lowerName(name);
+	if(wanted.empty())
+		return 0;
+
+	unsigned short exact = 0, partial = 0;
+	for(ItemMap::iterator it = items.begin(); it != items.end(); ++it) {
+		if(!it->second || it->second->name.empty())
+			continue;
+
+		const std::string itemName = lowerName(it->second->name);
+		if(itemName == wanted || itemName == "a " + wanted || itemName == "an " + wanted) {
+			if(exact == 0 || it->first < exact)
+				exact = it->first;
+		}
+		else if(itemName.find(wanted) != std::string::npos && (partial == 0 || it->first < partial))
+			partial = it->first;
+	}
+	return exact ? exact : partial;
 }
 
 const ItemType& Items::operator[](int id)

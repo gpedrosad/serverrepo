@@ -1268,9 +1268,33 @@ void Protocol76::parseLookAt(NetworkMessage &msg){
 			std::stringstream ss;
 			ss << "You see " << item->getDescription(fullDescription);
 
-			if (player->access >= g_config.ACCESS_LOOK)
-				ss << "\nId: " << Item::items.reverseLookUp(ItemNum)
-				<< ". Pos: " << LookPos.x << ' ' << LookPos.y << ' ' << LookPos.z << '.';
+			if (player->access >= g_config.ACCESS_LOOK) {
+				// GM: id de servidor, posicion, actionid/uniqueid y lo que hay debajo (docs/gameplay/GM_COMANDOS.md)
+				ss << "\nId: " << item->getID();
+				if(item->getActionId() != 0)
+					ss << ". Action id: " << item->getActionId();
+				if(item->getUniqueId() != 0)
+					ss << ". Unique id: " << item->getUniqueId();
+				if(LookPos.x != 0xFFFF) {
+					ss << ". Pos: " << LookPos.x << ' ' << LookPos.y << ' ' << LookPos.z << '.';
+					Tile* lookTile = game->getTile(LookPos.x, LookPos.y, LookPos.z);
+					if(lookTile) {
+						ss << "\nTile:";
+						if(lookTile->ground)
+							ss << ' ' << lookTile->ground->getID();
+						for(ItemVector::const_iterator iit = lookTile->topItems.begin(); iit != lookTile->topItems.end(); ++iit)
+							ss << ' ' << (*iit)->getID();
+						for(ItemVector::const_iterator iit = lookTile->downItems.begin(); iit != lookTile->downItems.end(); ++iit)
+							ss << ' ' << (*iit)->getID();
+						if(lookTile->isPz())
+							ss << " (PZ)";
+						if(lookTile->getHouse())
+							ss << " (house)";
+					}
+				}
+				else
+					ss << '.';
+			}
 
 			AddTextMessage(newmsg,MSG_INFO, ss.str().c_str());
 		}
@@ -1284,6 +1308,10 @@ void Protocol76::parseLookAt(NetworkMessage &msg){
 		else {
 			std::stringstream ss;
 			ss << "You see " << creature->getDescription().c_str();
+			if (player->access >= g_config.ACCESS_LOOK)
+				ss << "\nHealth: " << creature->health << '/' << creature->healthmax
+				<< ". Speed: " << creature->getSpeed()
+				<< ". Pos: " << creature->pos.x << ' ' << creature->pos.y << ' ' << creature->pos.z << '.';
 			AddTextMessage(newmsg,MSG_INFO, ss.str().c_str());
 		}
 	}

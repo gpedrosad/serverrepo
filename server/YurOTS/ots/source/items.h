@@ -147,6 +147,9 @@ public:
 	bool loadXMLInfos(std::string);
 
 	const ItemType& operator[](int id);
+
+	// /i por nombre (GM): id exacto sin importar mayusculas; si no hay, el id mas bajo cuyo nombre contiene el texto. 0 = ninguno.
+	unsigned short getIdByName(const std::string& name);
 	
 	static unsigned long reverseLookUp(unsigned long id);
 	

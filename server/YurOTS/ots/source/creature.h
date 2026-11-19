@@ -215,16 +215,14 @@ public:
 
 	void setNormalSpeed()
 	{
-		if(access >= g_config.ACCESS_PROTECT){
-			speed = 1000;
-			return;
-		}
 		speed = getNormalSpeed();
 	}
 
 	int getNormalSpeed()
 	{
-		if(access >= g_config.ACCESS_PROTECT){
+		if(access >= g_config.ACCESS_PROTECT && gmSpeed > 0)
+			return gmSpeed;   // /speed N
+		if(isGmProtected()){
 			return 1000;
 		}
 		int s;
@@ -235,6 +233,10 @@ public:
 	}
 
 	int access;		//access level
+	// GM (docs/gameplay/GM_COMANDOS.md): /god apaga la proteccion (gmMortal) y /speed fija la velocidad (gmSpeed, 0 = normal).
+	bool gmMortal;
+	int gmSpeed;
+	bool isGmProtected() const { return access >= g_config.ACCESS_PROTECT && !gmMortal; }
 	int64_t maglevel;	// magic level
 	int level;		// level
 	int speed;
