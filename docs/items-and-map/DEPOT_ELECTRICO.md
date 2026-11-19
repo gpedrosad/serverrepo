@@ -1,6 +1,6 @@
 # Depot eléctrico y calavera cian — 19 nov 2026
 
-Estado: **publicado y desplegado el 19 nov 2026**, con autorización de Gonzalo. Mapa/OTB: `51ca529`; calavera del cliente: `31b718c`.
+Estado: **publicado y desplegado el 19 nov 2026**, con autorización de Gonzalo. Mapa/OTB: `51ca529`; calavera del cliente: `31b718c`; sprites publicados en `clienteretro` `81435b3`.
 No requiere recompilar C++. Se probó el mapa nuevo con el binario actual en una instancia aislada.
 
 ## Aspecto y alcance
