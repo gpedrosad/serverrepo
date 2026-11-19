@@ -120,4 +120,7 @@
 	<readable x="168" y="128" z="7" text="TORRE SUR DEL KONGRA\n3 pisos; los rojos más duros viven arriba."/>
 	<readable x="185" y="75" z="7" text="ATALAYA DEL KONGRA\n2 pisos. Los rojos miran desde arriba."/>
 	<!-- END KONGRA_TOWERS_SIGNS -->
+	<!-- BEGIN DARK_HYDRA_ISLE_SIGNS -->
+	<readable x="49" y="137" z="7" text="ISLA DE LAS DARK HYDRAS\nBaja por el agujero y sigue el tunel hasta el islote.\nSi te aprietan, baja por el agujero del islote y vuelve a subir."/>
+	<!-- END DARK_HYDRA_ISLE_SIGNS -->
 </readables>

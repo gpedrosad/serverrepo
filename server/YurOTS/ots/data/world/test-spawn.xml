@@ -5905,4 +5905,24 @@
 		<monster name="Red Kongra" x="-1" y="1" z="6" spawntime="160" />
 	</spawn>
 	<!-- END KONGRA_TOWERS_SPAWNS -->
+	<!-- BEGIN DARK_HYDRA_ISLE_SPAWNS (scripts/map/generate-dark-hydra-isle.py) -->
+	<spawn centerx="33" centery="157" centerz="7" radius="1">
+		<monster name="Dark Hydra" x="0" y="0" z="7" spawntime="240" />
+	</spawn>
+	<spawn centerx="39" centery="156" centerz="7" radius="1">
+		<monster name="Dark Hydra" x="0" y="0" z="7" spawntime="240" />
+	</spawn>
+	<spawn centerx="44" centery="158" centerz="7" radius="1">
+		<monster name="Dark Hydra" x="0" y="0" z="7" spawntime="240" />
+	</spawn>
+	<spawn centerx="53" centery="158" centerz="7" radius="1">
+		<monster name="Dark Hydra" x="0" y="0" z="7" spawntime="240" />
+	</spawn>
+	<spawn centerx="57" centery="155" centerz="7" radius="1">
+		<monster name="Dark Hydra" x="0" y="0" z="7" spawntime="240" />
+	</spawn>
+	<spawn centerx="61" centery="158" centerz="7" radius="1">
+		<monster name="Dark Hydra" x="0" y="0" z="7" spawntime="240" />
+	</spawn>
+	<!-- END DARK_HYDRA_ISLE_SPAWNS -->
 </spawns>
