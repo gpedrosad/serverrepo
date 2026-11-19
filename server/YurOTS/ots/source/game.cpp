@@ -790,7 +790,7 @@ void applyCrucibleWeaponProcs(Game* game, Player* attackPlayer, Creature* attack
 }
 bool paladinStarProcAllowed(Game* game, Creature* target, bool trainingNoPvp)
 {
-	if(trainingNoPvp || target->access >= g_config.ACCESS_PROTECT || target->health <= 0)
+	if(trainingNoPvp || target->isGmProtected() || target->health <= 0)
 		return false;
 	const Monster* monster = dynamic_cast<const Monster*>(target);
 	if(monster && monster->getMonsterType() && monster->getMonsterType()->trainer)
