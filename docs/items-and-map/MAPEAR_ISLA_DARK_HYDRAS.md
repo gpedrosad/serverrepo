@@ -31,6 +31,9 @@ Generador: `scripts/map/generate-dark-hydra-isle.py` (re-ejecutable). Manifiesto
 **Recorrido desde el templo** (`127,57,6`), todo caminando: orilla 183 pasos, islote 191, punta del puente 199,
 hydras 214–219.
 
+**Loot propio:** las Dark Hydras (y sus variantes rage) sueltan la **black fire sword** (`20193`, espada 1H 35/22,
+fuego negro) con 0,6 % — ver [ZAGAN_TEST_ITEMS.md](ZAGAN_TEST_ITEMS.md#black-fire-sword-20193--nueva-19-nov-2026).
+
 **Subir y bajar:** pisar el agujero del islote deja sobre la escalera de mano en z8, donde las hydras no llegan.
 Al usarla se vuelve a `50,146,7`.
 
