@@ -1,6 +1,6 @@
 # Depot eléctrico y calavera cian — 19 nov 2026
 
-Estado: **publicado y desplegado el 19 nov 2026**, con autorización de Gonzalo. Mapa/OTB: `51ca529`; calavera del cliente: `31b718c`; sprites publicados en `clienteretro` `81435b3`.
+Estado: **publicado y desplegado el 19 nov 2026**, con autorización de Gonzalo. Mapa/OTB: `51ca529`; calavera del cliente: `31b718c`; sprites publicados en `clienteretro` `81435b3`. Corrección del dibujo de la calavera: cliente `33a1201`, fuente `07ea90d`.
 No requiere recompilar C++. Se probó el mapa nuevo con el binario actual en una instancia aislada.
 
 ## Aspecto y alcance
@@ -159,3 +159,16 @@ se reprodujo exactamente en un checkout temporal de `origin/main` anterior a est
 No se cambiaron NPCs ni se regrabó el golden. La revisión visual manual en Windows y abrir un
 locker en la sesión de juego habitual quedan como comprobación del jugador; la prueba con objetos
 guardados se hizo con el cliente real en el servidor aislado.
+
+### Corrección de la calavera nativa (19 nov 2026)
+
+Publicado cliente `33a1201`, fuente/reproducción `07ea90d`. PNG 11×11 recoloreado de la roja
+original, sin alterar máscara, contorno, ojos ni grises; paridad de los 774 archivos Mac/Windows
+comprobada. `publish_client.py --no-sync`: **1 archivo cambiado, 0 borrados**, solo
+`data/images/game/skulls/skull_cyan.png` (CRC `5a3c1cc5`). ZIPs cotejados contra la fuente;
+manifest, PNG y descargas HTTP OK en 8080/8076. Dry-run posterior: 0 cambios.
+
+Respaldo: `~/backups/pre-publish-20261119-121809-native-cyan-skull` (updater, ZIPs, PNGs previos,
+config hash y diff de trabajo). Se preservaron los cambios ajenos de la ThinkPad. Publicación de
+cliente sin reinicio del OT; probe OK, healthy. La nueva imagen llega al reabrir el cliente.
+La comparación ampliada del apartado «Calavera cian» muestra las originales junto a la corregida.
