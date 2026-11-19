@@ -1,53 +1,82 @@
 # Cuevas de Bambú (bajo Bamboo Camp)
 
 Bajada opcional desde el claro de **Bamboo Camp** (isla de los Kongras/Dworcs) a una cueva de tres
-salas con monstruos que suben de dificultad. Reemplaza el hueco vacío que quedó al sacar las casas
-de bambú (nov 2026).
+cámaras con monstruos que suben de dificultad.
+
+**v2 (19 nov 2026).** La v1 eran rectángulos: el pozo de z8, un cuadrado de paredes metido en el lago
+de lava, y la cueva de z9, tres salas rectangulares unidas por pasillos. Desde adentro de la cueva se veía
+el vacío negro al norte y al este, y la lava al sur y al oeste. Ahora:
+
+- **Pozo:** una cámara chica de cueva sobre un islote de roca en la lava.
+- **Cueva:** natural (`carve_cave` + `ribbon`, como las [zonas de caza](ZONAS_DE_CAZA.md)).
+- **Lo que se ve desde el piso de z9** y era vacío o lava pasó a roca: 241 casillas.
+
+![z8: el pozo, un islote de roca en la lava de los behemoths](img/cuevas-bambu/z8.png)
+![z9: la cueva de tres cámaras](img/cuevas-bambu/z9.png)
 
 ## Recorrido
 
 | Piso | Qué hay |
 |---|---|
-| z7 | Escalera de bajada en `172,99,7`, en el pasto del claro. |
-| z8 | Pozo de 5×5 en `170-174,97-101`: escalera de subida `1385` en `172,99` y bajada `432` en `172,101`. La llegada real desde z7 es `172,100,8`; desde z8 a z9, `172,102,9`. |
-| z9 | Cueva de tres salas: sala 1 (entrada), pasillo, sala 2, pasillo y sala 3 (jefe). |
+| z7 | Bajada `432` en `172,99,7`, en el pasto del claro. |
+| z8 | Pozo: cámara de 17 casillas (`170-174, 97-101`) sobre un islote de roca (elipse de 58 casillas) en el lago de lava. Escalera de subida `1385` en `172,99` (se llega a `172,100`) y bajada `432` en `172,101`. |
+| z9 | Cueva natural: cámara 1 junto a la llegada (`172,102`), cámara 2 al este y cámara 3 (jefe) al fondo. 313 casillas caminables. |
 
-Las escaleras usan el mismo criterio que `docs/gameplay/STAIRS.md`: la subida `1385` tiene
-`floorchange_north`, así que al bajar se aterriza una casilla al sur. Las dos llegadas están
-validadas como caminables.
+Las escaleras siguen `docs/gameplay/STAIRS.md`. Al bajar se aterriza una casilla al sur. Desde el claro: pozo
+en 2 pasos, cueva en 4 y Orc Warlord en 46. La vuelta al claro también se camina.
 
-## Salas y monstruos
+## Cámaras y monstruos (los mismos 17 de la v1)
 
-| Sala | Coordenadas (z9) | Monstruos | Dificultad |
+| Cámara | Centro (z9) | Monstruos | Dificultad |
 |---|---|---|---|
-| 1 | `170-180, 93-102` | Dworc Venomsniper ×2, Dworc Fleshhunter ×2, Orc Warrior ×2 | Suave |
-| 2 | `184-194, 92-100` | Kongra ×2, Sibang ×2, Orc Berserker ×2 | Media |
-| 3 | `198-208, 86-96` | Orc Warlord ×1, Orc Leader ×1, Orc Shaman ×1, Orc Berserker ×2 | Jefe |
+| 1 | `176,96` | Dworc Venomsniper ×2, Dworc Fleshhunter ×2, Orc Warrior ×2 | Suave |
+| 2 | `189,93` | Kongra ×2, Sibang ×2, Orc Berserker ×2 | Media |
+| 3 | `203,89` | Orc Warlord (900 s), Orc Leader (600 s), Orc Shaman (300 s), Orc Berserker ×2 | Jefe |
 
-Los pasillos son `181-183,97-99` y `195-197,94-96`. Hay seis fogatas (item `1423`) repartidas para
-iluminar; no bloquean el paso.
+Los grupos van a 3 casillas (Manhattan) como mínimo entre sí y a más de 4 de la llegada. Hay una fogata
+(`1423`, no bloquea) en cada cámara.
+
+## Qué no se toca
+
+- **El lago de lava de z8 alrededor del pozo:** es el hunt de los behemoths (`182,99,8`), fire elementals y
+  demons, con su pasillo de piedra negra. El pozo queda adentro como islote; solo cambian las 58 casillas del
+  islote y la caja vieja del pozo (lo que quedó afuera del islote volvió a ser lava).
+- **La sala de los troles de z8** (`155-176, 103-114`): el islote termina en `y102`.
+- **La lava de z9 al oeste** (heroes y vampires): solo pasa a roca la franja que se ve desde la cueva
+  (`x161-168`). Roca `101` y lava `598` bloquean igual, así que no cambia por dónde se camina.
 
 ## Generador
 
-`scripts/map/generate-bamboo-depths.py` construye el pozo z8 y la cueva z9 sobre el hueco debajo del
-campamento, sin tocar el pasillo de mármol negro ni la zona de lava/demonios del este/sur.
+`scripts/map/generate-bamboo-depths.py` (re-ejecutable; dos pasadas dejan las mismas casillas):
 
 ```bash
-python3 scripts/map/generate-bamboo-depths.py --dry-run --preview /tmp/cuevas-bambu.png
-python3 scripts/map/generate-bamboo-depths.py
+python3.11 scripts/map/generate-bamboo-depths.py --dry-run --preview /tmp/cuevas-bambu
+python3.11 scripts/map/generate-bamboo-depths.py
 ```
 
-El generador:
-- borra las cajas z8 (`169-175,96-102`) y z9 (`169-209,85-103`) antes de reinsertar;
-- reemplaza el bloque `BAMBOO_DEPTHS_SPAWNS` de `test-spawn.xml`;
-- valida llegadas, conectividad de las tres salas y que ningún spawn caiga en una casilla bloqueada.
+Escribe la bajada de z7, el islote de z8, la caja de z9 (`166-213, 80-106`), la roca de afuera a la vista, el
+bloque `BAMBOO_DEPTHS_SPAWNS` y el manifiesto `generated-bamboo-depths.json`.
 
-## Verificación
+Antes de escribir, valida:
 
-```bash
-python3 scripts/map/check-map-load.py
-python3 scripts/map/validate-tele-dest.py server/YurOTS/ots/data/world/test.otbm
-python3 scripts/sync-houses-with-map.py --dry-run
-```
+- **Paredes:** cada pared tiene una sola pieza y ningún piso queda pegado a la roca lisa.
+- **Pozo:** el islote alcanza para las paredes y solo pisa lava o el pozo viejo.
+- **Caja de z9:** solo pisa roca, lava, vacío o la cueva vieja.
+- **Escaleras:** las llegadas están libres.
+- **Piso:** todo se alcanza desde la llegada.
+- **Spawns:** caen en casillas a las que se llega caminando.
 
-Pendiente: prueba in-game de las dos escaleras y de la aparición de los 17 monstruos (17 slots).
+## Verificación (19 nov 2026)
+
+- Mapa: `check-map-load` 0 errores, `check-upper-view` OK, `validate-tele-dest` OK.
+- Depots y casas: 11 lockers del templo con `depotid=1`; `houses.xml` coincide con el mapa.
+- Cambios: 1131 casillas (35 en z8, 1096 en z9).
+
+Pendiente: probar las dos escaleras in-game.
+
+## Techos flotantes del claro (sacados el 19 nov 2026)
+
+Sobre el claro había **297 techos de madera en z6** sin ninguna casa debajo: sobraron de sacar las casas de
+bambú. Se veían flotando y uno tapaba la bajada. Los sacó `scripts/map/remove-floating-roofs.py`, junto con un
+techo de tejas de 72 casillas en `71-79, 217-224` que estaba en la misma situación. Ver
+[PIEZAS_DE_MAPA.md](PIEZAS_DE_MAPA.md).

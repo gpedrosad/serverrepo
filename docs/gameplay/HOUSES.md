@@ -38,6 +38,35 @@ Plantilla sin dueño (normal en repo Mac):
 En el **servidor** (hoy la ThinkPad; no hay producción), los archivos de `data/houses/` con dueño real **solo viven ahí**.
 El repo puede tener plantillas vacías o copias viejas; **no son la fuente de verdad de quién es dueño**.
 
+## Comprar y dejar casa (jugadores)
+
+Desde nov 2026 los jugadores compran casa solos, sin GM (`source/commands.cpp`: `buyHouse`, `leaveHouse`).
+
+| Comando | Qué hace |
+|---------|----------|
+| `!buyhouse` | Mirando la **puerta principal** desde afuera (o parado dentro de la casa) la compra si no tiene dueño. |
+| `!leavehouse` | Deja la casa propia, esté donde esté el jugador. **No devuelve el dinero.** |
+| `!house` | (ya existía) recarga los permisos de casa del jugador. |
+
+Reglas de `!buyhouse`:
+
+- Precio = **casillas de la casa × `housepricepertile`** (`config.lua`, por defecto **1000 gp**; la puerta no cuenta).
+  Se paga con las monedas que lleva y, si no alcanzan, con el saldo del banco (`removeCoinsWithBank`).
+- Nivel mínimo **`houseminlevel`** (`config.lua`, por defecto **8**).
+- **Una casa por jugador** (`Houses::GetHouseByOwner`, sin distinguir mayúsculas).
+- Al comprar se borran subowners, guests y doorowners viejos, y `data/houses/<casa>.xml` se guarda en el
+  momento (no espera al save del server). El log del server anota `:: house bought: ...` / `:: house left: ...`.
+
+`!leavehouse` se niega si quedan **objetos movibles** en las casillas de la casa (dice cuántos), para que el
+siguiente comprador no herede cosas ajenas. Al dejarla también se borran los permisos.
+
+Precios con 1000 gp por casilla (nov 2026): Small Street 3–6k, River Street III–V 9–16k, Upper Street 12–45k,
+Green Street 18–20k, Great Street 20–42k, Pirate Street 48k.
+
+Probado con bot en un server aparte (puerto 7275): sin dinero suficiente (muestra el precio), compra (descuenta
+6000 gp de 15000), segunda compra ("ya tiene dueño"), dejarla, dejarla sin casa, y dejarla con monedas tiradas
+adentro (se niega).
+
 ## Incidente jul 2026 — dueños borrados en deploy
 
 **Qué pasó (10 jul 2026):**

@@ -113,11 +113,17 @@
 	<readable x="103" y="84" z="7" text="SPOT DEL DRAGON NEGRO\nBaja por el agujero y sigue el tunel.\nSi te aprieta, baja por el agujero de la isla y vuelve a subir."/>
 	<!-- END DRAGON_SPOT_SIGNS -->
 	<!-- BEGIN IMPERIAL_CRYPT_SIGNS -->
-	<readable x="95" y="91" z="7" text="CRIPTA IMPERIAL\nSquires y arqueros custodian la entrada.\nHeroes imperiales al fondo."/>
+	<readable x="95" y="91" z="7" text="CRIPTA IMPERIAL\nSquires y arqueros custodian la entrada.\nHeroes imperiales al fondo.\nUn tunel la une con el Spot del Dragon Negro."/>
 	<!-- END IMPERIAL_CRYPT_SIGNS -->
 	<!-- BEGIN KONGRA_TOWERS_SIGNS -->
 	<readable x="169" y="105" z="7" text="TORRE DEL KONGRA\n3 pisos. Kongra abajo;\nlos rojos rugen arriba."/>
 	<readable x="168" y="128" z="7" text="TORRE SUR DEL KONGRA\n3 pisos; los rojos más duros viven arriba."/>
 	<readable x="185" y="75" z="7" text="ATALAYA DEL KONGRA\n2 pisos. Los rojos miran desde arriba."/>
 	<!-- END KONGRA_TOWERS_SIGNS -->
+	<!-- BEGIN DARK_HYDRA_ISLE_SIGNS -->
+	<readable x="49" y="137" z="7" text="ISLA DE LAS DARK HYDRAS\nBaja por el agujero y sigue el tunel hasta el islote.\nSi te aprietan, baja por el agujero del islote y vuelve a subir."/>
+	<!-- END DARK_HYDRA_ISLE_SIGNS -->
+	<!-- BEGIN GLACIER_REACH_SIGNS -->
+	<readable x="266" y="37" z="7" text="GLACIAR DEL ESTE\nEl sendero sigue al este, cada vez mas frio.\nAl final, dragones y aranas de hielo.\nNivel 60+."/>
+	<!-- END GLACIER_REACH_SIGNS -->
 </readables>

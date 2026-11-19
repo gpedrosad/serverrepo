@@ -9,6 +9,9 @@ Los jugadores descargan el cliente **una sola vez**. Cada vez que lo abren, el c
 archivos hay, baja solo los que cambiaron (sprites, módulos, `init.lua`, lo que sea) y sigue. Nadie tiene que
 volver a descargar el zip cuando se agregan ítems o looks.
 
+Desde el 19 nov 2026 también pregunta **al apretar Login**, así no hay que cerrar el cliente para tener lo último
+(ver [Al apretar Login](#al-apretar-login)).
+
 ## Cómo funciona
 
 ```
@@ -37,6 +40,33 @@ Jugador abre el cliente (binario + data.zip)
   de un proxy o dominio, definir `UPDATER_FILES_URL` en el contenedor.
 - Si la web no responde, el cliente muestra "Updater Error"; al aceptar, carga normal y se actualiza la próxima vez.
 - El binario no se actualiza (en macOS rompería la firma/Gatekeeper). Un binario nuevo = descarga nueva.
+
+## Al apretar Login
+
+`EnterGame.doLogin` (`modules/client_entergame/entergame.lua`) llama a `Updater.checkBeforeLogin` antes de
+conectar (`modules/updater/updater.lua`); los dos con un comentario `Retro76`:
+
+| La web dice | Qué hace el cliente |
+|-------------|---------------------|
+| Nada cambió | Sigue el login enseguida (en la LAN tarda milisegundos; se ve "Checking for updates..." un instante) |
+| Cambiaron sprites (`data/things/`) o el minimapa (`data/minimap.otmm`) | Abre la ventana del updater, los baja, rearma el `data.zip`, recarga los sprites (`modules.game_things.load()`) y **sigue el login solo**, con la misma cuenta. No se reinicia |
+| Cambió código del cliente (módulos, `init.lua`, imágenes, lo demás) | Los baja y **se reinicia solo** (no se puede recargar con el juego cargado); al volver muestra "Client updated ... Press Login again" (setting `updated-at-login`) |
+| No responde en 5 s (`Updater.loginTimeout`) o da error | Entra sin actualizar y lo anota en el log |
+
+- "Cancel" en el cartel de "Checking for updates..." vuelve a la pantalla de login.
+- Si se aprieta Login (o Enter) de nuevo mientras revisa o baja, ese segundo intento se ignora.
+- Si falla una descarga, el "Updater Error" deja entrar con los archivos que tenía.
+- Lo normal (ítems, looks, mapa) es lo primero: sprites y minimapa sin reiniciar.
+- **La primera vez** cada cliente tiene que tomar este cambio al abrirse (como cualquier cambio del updater, se
+  reinicia una vez solo). Desde ahí ya actualiza en el login.
+
+Probado el 19 nov 2026 con el cliente de Mac real, una carpeta de usuario aparte y una web de prueba en
+`127.0.0.1:8099`:
+- Sin cambios: conecta directo.
+- Cambiaron `Tibia.dat`, `Tibia.spr` y `minimap.otmm` con el cliente abierto: al apretar Login bajó los 3, los
+  sprites pasaron de 13984 a 13888 (los servidos) sin reiniciar y siguió conectando solo.
+- **Sin probar:** el reinicio cuando cambia un módulo. Es el mismo reinicio de siempre al abrir el cliente; lo
+  nuevo es solo el aviso.
 
 ## App de Mac (`Retro76.app`)
 
@@ -99,17 +129,28 @@ niega a publicar.
 ## Probar sin tocar a los jugadores
 
 Se probó así (nov 2026): `web/server.py` local en otro puerto (`PORT=8099 python3.11 web/server.py`; necesita
-Python ≤ 3.12 por `cgi`), un cliente de prueba con `APP_NAME` distinto en su `init.lua` (otra carpeta de
+Python ≤ 3.12 por `cgi`; alcanza también un servidor chico que use `build_updater_response(url, root)` de
+`web/client_updater.py` con otra carpeta), un cliente de prueba con `APP_NAME` distinto en su `init.lua` (otra carpeta de
 usuario) y `Services.updater` apuntando al puerto local, y un `data.zip` con un `Tibia.spr` viejo. Para ver qué
 hace, agregar `g_logger.info(...)` en `modules/updater/updater.lua` del zip de prueba: sale en la salida del
 binario. Al terminar, borrar `~/Library/Application Support/<APP_NAME de prueba>`.
+
+Para probar el login sin tocar nada: en el `init.lua` de prueba, al final de `loadModules()`, programar
+`EnterGame.doLogin("test", "test")` con `scheduleEvent` contra un servidor que no existe (`127.0.0.1:7999`) y
+loguear `g_sprites.getSpritesCount()`. Ojo:
+- **La ventana de prueba le roba el foco al cliente con el que se está jugando** (los Enter van a la de prueba).
+  Avisar antes.
+- No abrir XQuartz desde el script (`open -a XQuartz`) si ya está abierto: el cliente de prueba se cerró solo.
+- `Xvfb` de XQuartz no sirve para correrlo sin ventana: no tiene GLX (`Couldn't choose RGBA, double buffered
+  fbconfig`).
 
 ## Archivos
 
 | Archivo | Rol |
 |---------|-----|
 | `clienteretro/{mac,windows}/init.lua` | `Services.updater` y servidor `192.168.1.17:7171` |
-| `clienteretro/{mac,windows}/modules/updater/` | Updater de OTClientV8 (sin cambios) |
+| `clienteretro/{mac,windows}/modules/updater/` | Updater de OTClientV8 + `Updater.checkBeforeLogin` (revisar al apretar Login) |
+| `clienteretro/{mac,windows}/modules/client_entergame/entergame.lua` | `doLogin` pasa por `checkBeforeLogin` antes de conectar |
 | `clienteretro/build-zips.sh` | Atajo a `publish_client.py` |
 | `clienteretro/mac/Retro76.app/` | `Info.plist`, lanzador e ícono de la app de Mac |
 | `scripts/client-rme/make_mac_icon.py` | Genera `Retro76.icns` y `clienticon.png` |

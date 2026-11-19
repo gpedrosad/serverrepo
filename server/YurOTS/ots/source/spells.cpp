@@ -2895,7 +2895,8 @@ int SpellScript::luaActionMakeRune(lua_State *L){
 		unsigned short spentSoul = 0;
 		unsigned short availableSoul = player->getSoul();
 		Tile* tile = spell->game->getTile(player->pos);
-		const bool requireSoul = (tile && tile->isPz());
+		const bool gm = player->access >= g_config.ACCESS_PROTECT;   // GM: sin mana ni soul
+		const bool requireSoul = !gm && (tile && tile->isPz());
 
 		//try to create rune 1
 		a = internalMakeRune(player, SLOT_RIGHT, spell, type, charges, requireSoul, availableSoul);
@@ -2911,7 +2912,7 @@ int SpellScript::luaActionMakeRune(lua_State *L){
 		}
 
 		//check if we got enough mana for the left hand
-		if(player->getMana() - magicTarget.manaCost >= magicTarget.manaCost) {
+		if(gm || player->getMana() - magicTarget.manaCost >= magicTarget.manaCost) {
 			//try to create rune 2
 			b = internalMakeRune(player, SLOT_LEFT, spell, type, charges, requireSoul, availableSoul);
 			if(b == 1) {
@@ -2958,8 +2959,8 @@ int SpellScript::luaActionMakeRune(lua_State *L){
 //create new runes and delete blank ones
 int SpellScript::internalMakeRune(Player *p, unsigned short sl_id, Spell *S, unsigned short id,
 	unsigned char charges, bool requireSoul, unsigned short availableSoul){
-	//check mana
-	if(p->mana < S->getMana() || PlayerExhaust::isExhausted(p))
+	//check mana (el GM no paga mana ni espera, como en creatureMakeMagic)
+	if(p->access < g_config.ACCESS_PROTECT && (p->mana < S->getMana() || PlayerExhaust::isExhausted(p)))
 		return -1;
 	Item *item = p->getItem(sl_id);
 	if(item){
@@ -3006,9 +3007,10 @@ int SpellScript::luaActionMakeArrows(lua_State *L){
  		magicTarget.animationColor = 19; //GREEN
 
 		Tile* tile = spell->game->getTile(player->pos);
-		const bool requireSoul = (tile && tile->isPz());
+		const bool gm = player->access >= g_config.ACCESS_PROTECT;   // GM: sin mana ni soul
+		const bool requireSoul = !gm && (tile && tile->isPz());
 
-		if(player->mana < spell->getMana()){
+		if(!gm && player->mana < spell->getMana()){
 			magicTarget.damageEffect = 2; //NM_ME_PUFF
   			magicTarget.manaCost = player->getPlayerInfo(PLAYERINFO_MAXMANA) + 1; //force not enough mana
 		}

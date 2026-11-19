@@ -75,6 +75,7 @@ struct PendingTransaction {
 	int cost;
 	bool isSell;
 	bool isBulkSell;
+	bool bulkBackpackOnly;
 	bool hasSubtype;
 	int subtype;
 	bool isFluidBackpackBuy;
@@ -99,6 +100,7 @@ struct PendingTransaction {
 		cost(0),
 		isSell(false),
 		isBulkSell(false),
+		bulkBackpackOnly(false),
 		hasSubtype(false),
 		subtype(0),
 		isFluidBackpackBuy(false),
@@ -230,12 +232,43 @@ static int getPlayerSellableItemCount(Player* player, int itemid)
 	return (int)counter;
 }
 
-static bool removePlayerSellableItems(Player* player, int itemid, int count)
+// Lo que va dentro de contenedores (mochila, bolsas): lo equipado no cuenta, ni la mochila puesta.
+// Lo usa "sell all" (sellBackpackBundle), para no vender lo que el jugador tiene en uso.
+static int getPlayerBackpackSellableCount(Player* player, int itemid)
+{
+	if(!player)
+		return 0;
+
+	unsigned long counter = 0;
+	std::list<const Container*> stack;
+	for(int i = 0; i < 11; i++){
+		if(Container* tmpcontainer = dynamic_cast<Container*>(player->getItem(i)))
+			stack.push_back(tmpcontainer);
+	}
+
+	while(!stack.empty()){
+		const Container* container = stack.front();
+		stack.pop_front();
+		for(ContainerList::const_iterator cit = container->getItems(); cit != container->getEnd(); ++cit){
+			Item* item = *cit;
+			if(!item)
+				continue;
+			if(item->getID() == itemid && isNpcSellableItem(item))
+				counter += item->isStackable() ? item->getItemCountOrSubtype() : 1;
+			if(Container* sub = dynamic_cast<Container*>(item))
+				stack.push_back(sub);
+		}
+	}
+
+	return (int)counter;
+}
+
+static bool removePlayerSellableItems(Player* player, int itemid, int count, bool backpackOnly = false)
 {
 	if(!player || count <= 0)
 		return false;
 
-	if(getPlayerSellableItemCount(player, itemid) < count)
+	if((backpackOnly ? getPlayerBackpackSellableCount(player, itemid) : getPlayerSellableItemCount(player, itemid)) < count)
 		return false;
 
 	std::list<Container*> stack;
@@ -284,7 +317,7 @@ static bool removePlayerSellableItems(Player* player, int itemid, int count)
 		}
 	}
 
-	for(int i = 0; i < 11 && count > 0; i++){
+	for(int i = 0; i < 11 && count > 0 && !backpackOnly; i++){
 		Item* invItem = player->getItem(i);
 		if(!invItem)
 			continue;
@@ -688,7 +721,9 @@ void Npc::onCreatureSay(const Creature *creature, SpeakClasses type, const std::
 						bool blockedByImbue = false;
 						for(size_t i = 0; i < pt.bulkItems.size(); i++){
 							const int need = pt.bulkItems[i].second;
-							const int sellable = getPlayerSellableItemCount(player, pt.bulkItems[i].first);
+							const int sellable = pt.bulkBackpackOnly
+								? getPlayerBackpackSellableCount(player, pt.bulkItems[i].first)
+								: getPlayerSellableItemCount(player, pt.bulkItems[i].first);
 							if(sellable < need){
 								hasAll = false;
 								if(playerHasOnlyImbuedCopies(player, pt.bulkItems[i].first, need))
@@ -697,7 +732,7 @@ void Npc::onCreatureSay(const Creature *creature, SpeakClasses type, const std::
 						}
 						if(hasAll){
 							for(size_t i = 0; i < pt.bulkItems.size(); i++){
-								removePlayerSellableItems(player, pt.bulkItems[i].first, pt.bulkItems[i].second);
+								removePlayerSellableItems(player, pt.bulkItems[i].first, pt.bulkItems[i].second, pt.bulkBackpackOnly);
 							}
 							player->payBack(pt.cost);
 							doSay("Thanks! Here is your gold.");
@@ -993,6 +1028,8 @@ int NpcScript::registerFunctions()
 	lua_register(luaState, "sell", NpcScript::luaSellItem);
 	lua_register(luaState, "sellFluid", NpcScript::luaSellFluidItem);
 	lua_register(luaState, "sellBundle", NpcScript::luaSellBundle);
+	lua_register(luaState, "sellBackpackBundle", NpcScript::luaSellBackpackBundle);
+	lua_register(luaState, "getPlayerBackpackItemCount", NpcScript::luaGetPlayerBackpackItemCount);
 	lua_register(luaState, "cancelPendingTrade", NpcScript::luaCancelPendingTrade);
 	lua_register(luaState, "pay", NpcScript::luaPayMoney);
 
@@ -1465,6 +1502,30 @@ int NpcScript::luaSellFluidItem(lua_State *L)
 
 int NpcScript::luaSellBundle(lua_State *L)
 {
+	return sellBundleCommon(L, false);
+}
+
+// "sell all": como sellBundle, pero al confirmar solo cuenta y saca lo que está dentro de la mochila.
+int NpcScript::luaSellBackpackBundle(lua_State *L)
+{
+	return sellBundleCommon(L, true);
+}
+
+int NpcScript::luaGetPlayerBackpackItemCount(lua_State* L)
+{
+	int itemid = (int)lua_tonumber(L, -1);
+	int cid = (int)lua_tonumber(L, -2);
+	lua_pop(L, 2);
+
+	Npc* mynpc = getNpc(L);
+	Creature* creature = mynpc->game->getCreatureByID(cid);
+	Player* player = creature? dynamic_cast<Player*>(creature) : NULL;
+	lua_pushnumber(L, player ? getPlayerBackpackSellableCount(player, itemid) : 0);
+	return 1;
+}
+
+int NpcScript::sellBundleCommon(lua_State *L, bool backpackOnly)
+{
 	if(!lua_istable(L, -1))
 		return 0;
 
@@ -1508,6 +1569,7 @@ int NpcScript::luaSellBundle(lua_State *L)
 		pt.cost = cost;
 		pt.isSell = true;
 		pt.isBulkSell = true;
+		pt.bulkBackpackOnly = backpackOnly;
 		pt.bulkItems = bulkItems;
 		pt.bulkLabel = label? label : "";
 

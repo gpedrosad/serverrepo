@@ -1,7 +1,7 @@
 # Pink Skull — skull punitiva para bots
 
 > **Estado:** implementada (18 nov 2026). Servidor: `/pink` y `/unpink`, drop total al morir, la amarilla no la
-> tapa y una muerte injusta no la cambia. Cliente Retro76: `SkullPink = 7`; revisión local del 19 nov: calavera cian eléctrica, ver abajo. Ver
+> tapa y una muerte injusta no la cambia. Cliente Retro76: `SkullPink = 7`; desde el 19 nov se dibuja con la **calavera negra** nativa (la cian no se distinguía), ver abajo. Ver
 > [Cómo quedó](#cómo-quedó-nov-2026) al final.
 >
 > Esta ficha describe la Pink Skull: qué hace, cómo se asigna, cómo se ve y qué hay que tocar en el servidor y en el cliente. Fue solicitada como castigo para bots: un GM la asigna a un personaje y, mientras dure, **al morir deja caer todo el equipo**.
@@ -224,3 +224,27 @@ Publicado en ambas plataformas el 19 nov 2026; el updater y ambos ZIPs ya entreg
 Corrección visual del 19 nov: se descartó la primera versión frontal generada porque no
 coincidía con la familia nativa. `recolor_cyan_skull.py` transforma únicamente la paleta
 roja a cian (#00E5FF), con paridad exacta Mac/Windows.
+
+## Calavera negra (19 nov 2026, reemplaza a la cian)
+
+La cian **no se distinguía**: es tan clara como la blanca y en el tamaño real (11×11) se confundían; sobre
+nieve y agua casi desaparecía. Se compararon blanca, amarilla, verde, roja, cian, negra, violeta, magenta y
+naranja sobre pasto, cueva, nieve, arena y agua:
+
+![Calaveras sobre fondos del juego](img/pink-skull-colores.png)
+
+Quedó la **negra nativa** de OTClientV8 (`skull_black.png`, la de Tibia 8.x: cuerpo negro con borde rojo):
+
+- Es la única oscura de la familia (las otras cuatro son claras) y el borde rojo la hace resaltar en todos los
+  fondos, también en cueva.
+- En Tibia la negra es el peor castigo PvP: se entiende sola como castigo (acá: pierde todo al morir).
+- El servidor 7.6 nunca manda la negra de verdad (ID 5), así que no se confunde con otra cosa.
+- Ya estaba en el cliente (Mac y Windows, idénticas): no hubo que dibujar nada.
+
+Segunda opción descartada: magenta (tono que no usa ninguna, fuerte en todos los fondos). Naranja se confunde
+con roja/amarilla y violeta se pierde en cueva y agua.
+
+Cambio solo del cliente (`clienteretro` `f3515c7`): en `modules/gamelib/creature.lua`, `getSkullImagePath`
+devuelve `skull_black` para `SkullPink`; comentarios de `const.lua`/`creature.lua` actualizados, Mac y Windows
+iguales. Publicado con `publish_client.py --no-sync` (2 archivos). El servidor no cambia (sigue mandando 7) y no
+se reinició. `skull_cyan.png` y `skull_pink.png` quedan en el cliente sin usar.

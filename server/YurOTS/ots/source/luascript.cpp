@@ -133,6 +133,8 @@ int LuaScript::OpenFile(const char *filename)
 
 	ACCESS_HOUSE = getGlobalNumber("accesshouse",3);
 	MAX_HOUSE_TILE_ITEMS = getGlobalNumber("maxhousetileitems",10);
+	HOUSE_PRICE_PER_TILE = getGlobalNumber("housepricepertile",1000);
+	HOUSE_MIN_LEVEL = getGlobalNumber("houseminlevel",8);
 
 	SUMMONS_ALL_VOC = getGlobalString("summonsallvoc") == "yes";
 	MAX_SUMMONS = (size_t)getGlobalNumber("maxsummons",2);

@@ -1,10 +1,10 @@
 {
   "name": "generated-imperial-crypt",
   "seed": 7,
-  "version": 1,
+  "version": 2,
   "box": {
-    "x1": 90,
-    "y1": 91,
+    "x1": 56,
+    "y1": 89,
     "x2": 113,
     "y2": 112,
     "z": [
@@ -22,17 +22,28 @@
       1429
     ]
   },
-  "walkable": 228,
-  "spawns": 4,
-  "monsters": 6,
+  "walkable": 548,
+  "spawns": 10,
+  "monsters": 14,
   "monstersByKind": {
-    "Court Mage": 2,
-    "Imperial Archer": 1,
-    "Imperial Hero": 2,
-    "Imperial Squire": 1
+    "Court Mage": 3,
+    "Imperial Archer": 3,
+    "Imperial Hero": 6,
+    "Imperial Squire": 2
   },
-  "densityTilesPerMonster": 38,
-  "rockFilled": 156,
+  "densityTilesPerMonster": 39,
+  "rockFilled": 0,
+  "lavaToRock": 0,
+  "strayWallsToRock": 0,
+  "link": {
+    "x": 99,
+    "y": [
+      89,
+      90
+    ],
+    "z": 8,
+    "to": "t\u00fanel del Spot del Drag\u00f3n Negro (generate-dragon-spot.py, BRANCH)"
+  },
   "stages": [
     {
       "names": [
@@ -51,6 +62,15 @@
       "per": 1,
       "spawntime": 120,
       "gap": 12
+    },
+    {
+      "names": [
+        "Court Mage",
+        "Imperial Squire"
+      ],
+      "per": 1,
+      "spawntime": 140,
+      "gap": 11
     },
     {
       "names": [

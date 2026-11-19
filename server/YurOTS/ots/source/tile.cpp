@@ -32,6 +32,21 @@
 #include "luascript.h"
 extern LuaScript g_config;
 
+// Un GM con /invisible no ocupa la casilla: nadie lo ve, asi que no le tapa el paso a nadie (nov 2026).
+static bool isInvisibleGM(const Creature* c)
+{
+	const Player* p = dynamic_cast<const Player*>(c);
+	return p && p->gmInvisible;
+}
+
+bool Tile::hasBlockingCreature() const
+{
+	for(CreatureVector::const_iterator it = creatures.begin(); it != creatures.end(); ++it)
+		if(!isInvisibleGM(*it))
+			return true;
+	return false;
+}
+
 ReturnValue Tile::isBlocking(int objectstate, bool ignoreCreature /* = false*/, bool ignoreMoveableBlocking /*=false*/) const
 {
 	if(isPz() && ((objectstate & BLOCK_PZ) == BLOCK_PZ)) {
@@ -61,7 +76,7 @@ ReturnValue Tile::isBlocking(int objectstate, bool ignoreCreature /* = false*/, 
 		return RET_NOTILE;
 	}
 
-	if(!ignoreCreature && !creatures.empty() && ((objectstate & BLOCK_SOLID) == BLOCK_SOLID))
+	if(!ignoreCreature && hasBlockingCreature() && ((objectstate & BLOCK_SOLID) == BLOCK_SOLID))
 		return RET_CREATUREBLOCK;
 
 	ItemVector::const_iterator iit;
@@ -502,7 +517,12 @@ Item* Tile::getMoveableBlockingItem()
 void Tile::addThing(Thing *thing) {
 	Creature* creature = dynamic_cast<Creature*>(thing);
 	if (creature) {
-    	creatures.insert(creatures.begin(), creature);
+		// El GM invisible va siempre debajo de las demas criaturas: asi el stackpos de las que se ven es el
+		// mismo para los clientes que no lo ven (el protocolo no lo manda) y para el servidor.
+		if (isInvisibleGM(creature))
+			creatures.push_back(creature);
+		else
+			creatures.insert(creatures.begin(), creature);
   }
   else
   {

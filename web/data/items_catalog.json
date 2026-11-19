@@ -604,6 +604,26 @@
     "magLevel": null
   },
   {
+    "name": "black fire sword",
+    "description": "Fire sword de fuego negro: espada 1H 35/22, sin efectos. Rara de las Dark Hydras (0,6 %).",
+    "category": "Arma",
+    "serverId": 20193,
+    "clientId": 3237,
+    "prototypeServerId": 2392,
+    "spriteId": 0,
+    "price": null,
+    "image": "20193.png",
+    "spawn": "/i 20193 1",
+    "group": "weapon",
+    "attack": 35,
+    "defence": 22,
+    "armor": null,
+    "weight": 23.0,
+    "weaponType": "sword",
+    "slot": "hand",
+    "magLevel": null
+  },
+  {
     "name": "aurora shield",
     "description": "Escudo def 30, borde dorado y campo violeta. Botin raro del Ice Monk.",
     "category": "Escudo",

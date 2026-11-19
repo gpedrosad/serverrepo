@@ -118,6 +118,27 @@ Registrados en el constructor de `SpellScript`:
 
 Patrones comunes: mismo piso, `canThrowObjectTo`, puff en fallo, PZ / immunities donde corresponde.
 
+## GM: todos los hechizos y todas las armas (19 nov 2026)
+
+Un GM (`access` ≥ `accessprotect` de `config.lua`, hoy 2; GM Retro tiene 3) es vocación 0, así que
+cualquier chequeo de vocación lo deja afuera. Desde el 19 nov 2026, para el GM no cuentan **ni la
+vocación, ni el nivel, ni el maná ni el soul**:
+
+| Qué | Antes | Dónde |
+|-----|-------|-------|
+| Hechizos de `spells.xml` y runas | ya estaba: busca en todos los hechizos, sin nivel mágico, maná ni exhausted | `game.cpp` `creatureSaySpell`, `playerUseItemEx`, `creatureMakeMagic` |
+| Las 12 wands y rods (y Crimson / Train Wand) | pedían sorcerer o druid, nivel y maná: **con el GM la wand no disparaba** | `game.cpp` `useWand` (`gm`, `druid`, `sorcerer`, `mage`); el GM no gasta maná |
+| `utevo res "..."` | solo druid o sorcerer, con maná | `game.cpp` `checkSpell` |
+| `exani hur`, `exani tera`, `exiva` | pedían maná (y `exiva` cobraba) | `game.cpp` |
+| Conjurar runas y flechas | pedían maná y soul (en PZ) | `spells.cpp` `luaActionMakeRune`, `internalMakeRune`, `luaActionMakeArrows` |
+
+El daño sigue saliendo de su nivel y nivel mágico, así que un GM nivel 1 pega poco con los hechizos que
+escalan; las wands pegan su daño base. Los bonus de ítems por vocación (Crimson Helmet, Fury Cape) siguen
+siendo por vocación: no son armas.
+
+`utevo res` sigue pidiendo que el monstruo esté en la lista de invocables (`Summons`): un monstruo que no
+está ahí da "You cannot summon this creature." también al GM. Para invocar cualquier cosa, el GM tiene `/m`.
+
 ## Checklist al tocar spells
 
 1. Nombre del `.lua` = `tolower(name)` (runas) o `words` exactos (instants).

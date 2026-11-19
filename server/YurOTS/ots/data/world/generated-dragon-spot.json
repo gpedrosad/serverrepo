@@ -2,7 +2,7 @@
   "name": "Spot del Drag\u00f3n Negro",
   "box": [
     82,
-    84,
+    82,
     98,
     89
   ],
@@ -66,14 +66,28 @@
       85
     ]
   ],
+  "branch_to_crypt": [
+    [
+      99,
+      86
+    ],
+    [
+      99,
+      87
+    ],
+    [
+      99,
+      88
+    ]
+  ],
   "z8_box": [
     93,
     83,
     104,
     88
   ],
-  "lava_to_water_z7": 76,
-  "lava_to_rock_z8": 51,
+  "lava_to_water_z7": 0,
+  "lava_to_rock_z8": 0,
   "void_to_rock_z8": 0,
   "sign": [
     103,

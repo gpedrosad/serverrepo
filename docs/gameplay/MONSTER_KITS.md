@@ -49,6 +49,11 @@ python3 scripts/monsters/apply-monster-kits.py             # escribe (se puede r
 | Worker Golem | 160 | cannon ball 5, cura |
 | Undead Gladiator | 150 | blade strike 5, throwing star 45–120 |
 | Nightstalker | 110 | drain strike 4, death touch 4, prisa |
+| Elvenbane Ranger | 140 | venom strike 5, burst ball 5, prisa |
+| Elven Archmage | 150 | energy strike 6, energy wave 6, ice ball 6, cura |
+| Orc Warchief | 330 | roar burst 8, earth touch 7, prisa |
+| Thornwarden | 220 | poison wave 7, venom strike 6, earth burst 6, cura |
+| Lord of Elvenbane | 400 | drain burst 8, energy wave 9, death strike 8, cura, prisa |
 
 Los nombres del kit son `elemento forma escalón`.
 

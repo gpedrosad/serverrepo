@@ -2,7 +2,7 @@
 
 Pack del directorio `Zagan+Square`: **55 ítems** (`20100`–`20154`). Desde `20155` son ítems agregados después
 con otros scripts (trainer dummy, enchanted spear, armas de 8.x, crown armors, armas del Root Colossus, Aurora
-Shield) y desde nov 2026 también el red magic tree (`20191`) y el blue bassin (`20192`).
+Shield) y desde nov 2026 también el red magic tree (`20191`), el blue bassin (`20192`) y la black fire sword (`20193`).
 
 El catálogo público con stats, efecto y drop está en la web: **`/items-nuevos`**
 (`web/site/src/pages/items-nuevos.astro`, datos en `web/site/src/data/new-items.json`).
@@ -236,6 +236,33 @@ la ThinkPad **juntos** (`git merge --ff-only` + restart, con OK de Gonzalo): un 
 OTB sin el nodo rompe la carga. Tras el deploy, probar in-game el locker del depot
 ([`AGENTS.md`](../../AGENTS.md) §2.10) y que las braseros se vean azules. Re-publicar el cliente no
 hace falta: los sprites ya están publicados.
+
+---
+
+## Black fire sword (`20193`) — nueva (19 nov 2026)
+
+La fire sword de 7.6 (server `2392`, client `3280`) con **fuego negro**: una espada de 1 mano mejorada,
+sin efectos, que sueltan las Dark Hydras.
+
+![Fire sword (2 cuadros a la izquierda) y black fire sword (derecha), sobre fondo oscuro y sobre pasto](img/black-fire-sword.png)
+
+| Dato | Valor |
+|------|-------|
+| Server id | **`20193`**, client id 3237 (sacrificado: broken hilt). Entrada en `NEW_ITEMS` de `add_custom_items.py` |
+| Prototipo | la fire sword `2392`: espada de 1 mano, mismo peso (23 oz) y slot |
+| Stats | **atk 35 / def 22** (la fire sword es 24 / 20). Sin procs ni C++: el ataque y la defensa salen del bloque de arma del OTB |
+| Efecto visual | la llama invierte el brillo y toma tono violeta: el corazón amarillo (pegado al filo) queda violeta oscuro y las puntas rojo oscuro quedan violeta-magenta brillante. El filo plateado no cambia; la empuñadura roja pasa a violeta oscuro. **v2 (19 nov 2026):** la v1 llevaba el corazón casi a negro y la empuñadura a hierro casi negro, y en el cliente no se distinguía del suelo; ahora la llama no baja de brillo 0.30 (sprites `13985–13986`; los de la v1 quedan sin usar en el `.spr`) |
+| Animación | 1×1 con **2 cuadros**, los mismos de la fire sword: PNG 32×64 apilado |
+| Luz | nivel 3 (el mismo), color 199 (naranja) → **113 (violeta, r3 g0 b5)**, en el flag `.dat` `0x15` y el attr OTB `0x2A` |
+| Sprite | `devtools/zagan-test/custom-sprites/black_fire_sword.png` (gitignoreado; `git add -f`) |
+| Cómo se hizo | `python3.11 scripts/client-rme/recolor_black_fire_sword.py --preview /tmp/bfs.png` escribe el PNG; `add_custom_items.py --things devtools/rme/rme-client-760` lo instala con `frames=2, light=(3, 113), attack=35, defence=22` |
+| Loot | **Dark Hydra** y sus variantes Angry / Furious / Enraged: dentro de la bolsa (`1987`), `chance="600"` (0,6 %), junto a los raros de la hydra. Las 6 de la [Isla de las Dark Hydras](MAPEAR_ISLA_DARK_HYDRAS.md) |
+| Web | `/items` (catálogo curado, categoría Arma) y `/items-all`: regenerados con `export-items-catalog-web.py` + `scripts/web/build-items-catalog.py` |
+
+Para que se vea en el juego hay que publicar el cliente (`publish_client.py` en la ThinkPad, después del
+deploy). Hasta entonces, un cliente sin actualizar la muestra como el ítem sacrificado (broken hilt). El OTB
+con el nodo `20193` y los XML de las hydras llegan juntos con el deploy: un monstruo que suelta `20193` con un
+OTB viejo daría un ítem inexistente.
 
 ---
 

@@ -101,6 +101,12 @@ KITS = {
     "Nightstalker": ["drain:strike", "death:touch", "+haste"],
     # monstruos custom Retro76
     "Red Kongra": ["roar:burst", "+haste"],
+    # jefes de las cimas de Elvenbane (nov 2026)
+    "Elvenbane Ranger": ["venom:strike", "burst:ball", "+haste"],
+    "Elven Archmage": ["energy:strike+1", "energy:wave+1", "ice:ball+1", "+heal"],
+    "Orc Warchief": ["roar:burst", "earth:touch-1", "+haste"],
+    "Thornwarden": ["poison:wave+1", "venom:strike", "earth:burst", "+heal"],
+    "Lord of Elvenbane": ["drain:burst", "energy:wave+1", "death:strike", "+heal", "+haste"],
 }
 
 

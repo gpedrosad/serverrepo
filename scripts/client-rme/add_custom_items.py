@@ -188,6 +188,15 @@ NEW_ITEMS = [
     dict(name="blue bassin", server_id=20192, client_id=3454, prototype=1483,
          png="blue_basin.png", decor=True, frames=2, light=(8, 143),
          descr="It burns with cold blue flames."),
+    # Black fire sword (nov 2026): la fire sword de 7.6 (server 2392, client 3280, 1x1 animada en 2
+    # cuadros, luz 3 naranja 199) con fuego negro: recolor_black_fire_sword.py invierte el brillo de la
+    # llama y le da tono violeta (corazón casi negro, puntas violetas) y pasa la empuñadura a hierro
+    # oscuro. Espada de 1 mano mejorada sin efectos (atk 35 / def 22; la fire sword es 24 / 20). Luz
+    # violeta tenue (nivel 3, color 113 = r3 g0 b5). Loot raro de las Dark Hydras. Client 3237:
+    # "broken hilt" sacrificado.
+    dict(name="black fire sword", server_id=20193, client_id=3237, prototype=2392,
+         png="black_fire_sword.png", frames=2, light=(3, 113), attack=35, defence=22,
+         descr="The blade is a black flame."),
 ]
 
 

@@ -88,6 +88,8 @@ protected:
 
 	bool reloadRights(Creature* c, const std::string &cmd, const std::string &param);
 	bool setHouseOwner(Creature* c, const std::string &cmd, const std::string &param);
+	bool buyHouse(Creature* c, const std::string &cmd, const std::string &param);
+	bool leaveHouse(Creature* c, const std::string &cmd, const std::string &param);
 
 	bool showFrags(Creature* c, const std::string &cmd, const std::string &param);
 

@@ -53,7 +53,11 @@ Los bloques `(160,123,6)`, `(160,122,7)` (goblins/dworcs, radio 7) y `(146,137,5
 radio 15) **tocan la huella sur con su radio** pero ningún monstruo cae dentro: están en
 `x≤160` y `x137-149`. El generador valida posiciones reales (centro + offset), no el radio.
 
-## Los techos huérfanos del claro (pendiente, aparte)
+## Los techos huérfanos del claro (sacados el 19 nov 2026)
+
+**Resuelto:** `scripts/map/remove-floating-roofs.py --apply` sacó los 297 techos flotantes del claro (y 72 de
+una casa de tejas en `71-79,217-224`). Ver [MAPEAR_CUEVAS_BAMBU.md](MAPEAR_CUEVAS_BAMBU.md#techos-flotantes-del-claro-sacados-el-19-nov-2026). Lo de abajo queda como historia.
+
 
 El claro tiene **~299 tiles de techo de madera en z6 sin ninguna pared debajo** (sobraron de
 sacar las casas de bambú, nov 2026). Flotan sobre pasto y agua. Las torres solo limpian los que

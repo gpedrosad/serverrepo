@@ -78,7 +78,7 @@ LOOT_TOPICS = {
 	{keys = {'amulets'}, reply = 'I buy platinum amulets (2.5k) and scarfs (600gp).'}
 }
 
-LOOT_HELP = 'Say helmets, boots, armors, legs, shields, swords, axes, clubs or amulets to see what I buy.'
+LOOT_HELP = 'Say helmets, boots, armors, legs, shields, swords, axes, clubs or amulets to see what I buy. Say "sell all" to sell everything I buy that is in your backpack (not what you are wearing).'
 
 npcDefine{
 	greet = function(cid)

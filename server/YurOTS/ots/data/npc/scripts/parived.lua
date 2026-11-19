@@ -104,7 +104,7 @@ function sellAllGems(cid)
 
 	for i = 1, table.getn(GEMS) do
 		local gem = GEMS[i]
-		local cnt = getPlayerItemCount(cid, gem.id)
+		local cnt = getPlayerBackpackItemCount(cid, gem.id)   -- solo la mochila, no lo equipado
 		if cnt > 0 then
 			n = n + 1
 			bundle[n] = {gem.id, cnt}
@@ -114,11 +114,11 @@ function sellAllGems(cid)
 	end
 
 	if total < 1 then
-		selfSay('You have no gems to sell.')
+		selfSay('You have no gems in your backpack to sell.')
 		return
 	end
 
-	sellBundle(cid, total, table.concat(parts, ', '), bundle)
+	sellBackpackBundle(cid, total, npcSellAllLabel(parts, n), bundle)
 end
 
 local function onMessage(cid, msg)
@@ -127,7 +127,7 @@ local function onMessage(cid, msg)
 	elseif msgcontains(msg, 'gems') or msgcontains(msg, 'list') or msgcontains(msg, 'lista')
 		or msgcontains(msg, 'prices') or msgcontains(msg, 'precios') then
 		showTradeList()
-	elseif msgcontains(msg, 'sell all') or msgcontains(msg, 'vender todo') or msgcontains(msg, 'all gems') then
+	elseif npcIsSellAll(msg) or msgcontains(msg, 'all gems') then
 		sellAllGems(cid)
 	elseif msgcontains(msg, 'sell') or msgcontains(msg, 'vender') then
 		local gem = matchGem(msg)

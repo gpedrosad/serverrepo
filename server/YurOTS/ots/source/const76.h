@@ -23,6 +23,9 @@
 
 #define NETWORKMESSAGE_MAXSIZE 16768
 
+// Outfit con el que se ve a si mismo un GM con /invisible (el del monstruo Ghost; ver docs/gameplay/GM_INVISIBLE.md)
+#define GM_GHOST_LOOKTYPE 48
+
 enum MagicEffectClasses {
 	NM_ME_DRAW_BLOOD  	= 0x00,
 	NM_ME_LOOSE_ENERGY	= 0x01, //fishing?

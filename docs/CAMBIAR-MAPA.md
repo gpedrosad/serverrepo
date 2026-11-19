@@ -17,7 +17,9 @@ Relacionado:
 - [docs/items-and-map/MAPEAR_TORRE_BARQUERO.md](items-and-map/MAPEAR_TORRE_BARQUERO.md) — Torre del Barquero: patio de mesas junto al bote de Fargum → torre de 5 pisos con un monstruo por piso (`generate-fargum-tower.py`)
 - [docs/items-and-map/MAPEAR_TORRES_KONGRA.md](items-and-map/MAPEAR_TORRES_KONGRA.md) — Torres del Kongra: tres torres medias en la selva del Bamboo Camp (Kongra abajo, Red Kongra arriba) con `generate-kongra-towers.py`
 - [docs/items-and-map/MAPEAR_ISLOTE_MINOTAURO.md](items-and-map/MAPEAR_ISLOTE_MINOTAURO.md) — Islote del Minotauro (canal junto al muelle, z7 + cuevas z10–z12) con `generate-minotaur-isle.py`
-- [docs/items-and-map/MAPEAR_CATACUMBA_IMPERIAL.md](items-and-map/MAPEAR_CATACUMBA_IMPERIAL.md): Cripta Imperial — boca en la orilla sur del pantano `94,92,7`, túnel z8 con la guarnición imperial con `generate-imperial-crypt.py`
+- [docs/items-and-map/MAPEAR_CATACUMBA_IMPERIAL.md](items-and-map/MAPEAR_CATACUMBA_IMPERIAL.md): Cripta Imperial — boca en la orilla sur del pantano `94,92,7`, pasillo de caza en U en z8 con la guarnición imperial, unido al túnel del Spot del Dragón Negro (`generate-imperial-crypt.py`; regenerar dragón → cripta → dragón)
+- [docs/items-and-map/MAPEAR_ISLA_DARK_HYDRAS.md](items-and-map/MAPEAR_ISLA_DARK_HYDRAS.md): Isla de las Dark Hydras — bajada en la orilla `50,138,7`, túnel z8, islote y puente 1×4 a una isla larga con 6 Dark Hydras (`generate-dark-hydra-isle.py`)
+- [docs/items-and-map/MAPEAR_GLACIAR_DEL_ESTE.md](items-and-map/MAPEAR_GLACIAR_DEL_ESTE.md): Glaciar del Este — la isla de hielo vieja se alarga al este (`x 263–354`) con un sendero de hunt de monstruos de hielo y Frost Dragons + Ice Spiders al final (`generate-glacier-reach.py`)
 - [docs/gameplay/WAVE_ARENA.md](gameplay/WAVE_ARENA.md) — Wave Arena oleadas; portal `166,47,7`
 - [docs/gameplay/CRUCIBLE.md](gameplay/CRUCIBLE.md) — El Crisol (3 puertas + bosses diarios); portal `164,47,7` con `scripts/map/generate-crucible.py`
 - [docs/gameplay/SAND_CLOCK.md](gameplay/SAND_CLOCK.md) — Reloj de Arena (fases globales); portal `168,47,7` con `scripts/map/generate-sand-clock.py`

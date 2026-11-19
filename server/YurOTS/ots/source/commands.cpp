@@ -26,6 +26,7 @@
 #include <algorithm>
 
 #include "commands.h"
+#include "houses.h"
 #include "monster.h"
 #include "player.h"
 #include "npc.h"
@@ -84,6 +85,8 @@ s_defcommands Commands::defined_commands[] = {
 	{"!pz",&Commands::showPz},
 	{"/owner",&Commands::setHouseOwner},
 	{"!house",&Commands::reloadRights},
+	{"!buyhouse",&Commands::buyHouse},
+	{"!leavehouse",&Commands::leaveHouse},
 	{"/invisible",&Commands::gmInvisible},
 	{"!frags",&Commands::showFrags},
 	{"/save",&Commands::forceServerSave},
@@ -1101,6 +1104,141 @@ bool Commands::setHouseOwner(Creature* c, const std::string &cmd, const std::str
 	return true;
 }
 
+// Casa a la que apunta el jugador: la casilla que mira (la puerta, desde afuera) o la que pisa.
+static House* houseInFrontOf(Game* game, Player* player)
+{
+	Position front = player->pos;
+	switch (player->getDirection())
+	{
+		case NORTH: front.y--; break;
+		case SOUTH: front.y++; break;
+		case EAST:  front.x++; break;
+		case WEST:  front.x--; break;
+		default: break;
+	}
+	Tile* tile = game->getTile(front);
+	if (tile && tile->getHouse())
+		return tile->getHouse();
+	tile = game->getTile(player->pos);
+	return tile ? tile->getHouse() : NULL;
+}
+
+static unsigned long housePrice(const House* house)
+{
+	return (unsigned long)house->getTileCount() * (unsigned long)g_config.HOUSE_PRICE_PER_TILE;
+}
+
+// Movibles que quedan en la casa (en el suelo o colgados). Cuentan para !leavehouse.
+static int movableItemsInHouse(Game* game, const House* house)
+{
+	int count = 0;
+	for (size_t i = 0; i < house->tiles.size(); i++)
+	{
+		Tile* tile = game->getTile(house->tiles[i]);
+		if (!tile)
+			continue;
+		for (ItemVector::const_iterator it = tile->downItems.begin(); it != tile->downItems.end(); ++it)
+			if (!(*it)->isNotMoveable())
+				count++;
+		for (ItemVector::const_iterator it = tile->topItems.begin(); it != tile->topItems.end(); ++it)
+			if (!(*it)->isNotMoveable())
+				count++;
+	}
+	return count;
+}
+
+bool Commands::buyHouse(Creature* c, const std::string &cmd, const std::string &param)
+{
+	Player* player = dynamic_cast<Player*>(c);
+	if (!player)
+		return true;
+
+	House* house = houseInFrontOf(game, player);
+	if (!house)
+	{
+		player->sendCancel("Mira la puerta de la casa que quieres comprar y escribe !buyhouse.");
+		return true;
+	}
+
+	unsigned long price = housePrice(house);
+	std::ostringstream info;
+
+	if (!house->getOwner().empty())
+	{
+		info << "La casa '" << house->getName() << "' ya tiene dueño: " << house->getOwner() << ".";
+		player->sendCancel(info.str().c_str());
+		return true;
+	}
+
+	House* owned = Houses::GetHouseByOwner(player->getName());
+	if (owned)
+	{
+		info << "Ya tienes la casa '" << owned->getName() << "'. Escribe !leavehouse para dejarla antes de comprar otra.";
+		player->sendCancel(info.str().c_str());
+		return true;
+	}
+
+	if (player->getLevel() < g_config.HOUSE_MIN_LEVEL)
+	{
+		info << "Necesitas nivel " << g_config.HOUSE_MIN_LEVEL << " para comprar una casa.";
+		player->sendCancel(info.str().c_str());
+		return true;
+	}
+
+	if (!player->canPayWithBank(price) || !player->removeCoinsWithBank(price))
+	{
+		info << "La casa '" << house->getName() << "' cuesta " << price << " gp (" << house->getTileCount()
+		     << " casillas x " << g_config.HOUSE_PRICE_PER_TILE << "). No te alcanza entre lo que llevas y el banco.";
+		player->sendCancel(info.str().c_str());
+		return true;
+	}
+
+	house->clearRights();
+	house->setOwner(player->getName());
+	house->save();
+	player->houseRightsChanged = true;
+
+	info << "Compraste la casa '" << house->getName() << "' por " << price << " gp. Ya es tuya.";
+	player->sendTextMessage(MSG_ADVANCE, info.str().c_str());
+	std::cout << ":: house bought: " << house->getName() << " by " << player->getName()
+	          << " for " << price << " gp" << std::endl;
+	return true;
+}
+
+bool Commands::leaveHouse(Creature* c, const std::string &cmd, const std::string &param)
+{
+	Player* player = dynamic_cast<Player*>(c);
+	if (!player)
+		return true;
+
+	House* house = Houses::GetHouseByOwner(player->getName());
+	if (!house)
+	{
+		player->sendCancel("No tienes ninguna casa.");
+		return true;
+	}
+
+	std::ostringstream info;
+	int left = movableItemsInHouse(game, house);
+	if (left > 0)
+	{
+		info << "Todavía hay " << left << (left == 1 ? " objeto" : " objetos")
+		     << " en la casa '" << house->getName() << "'. " << (left == 1 ? "Sácalo" : "Sácalos")
+		     << " antes de dejarla.";
+		player->sendCancel(info.str().c_str());
+		return true;
+	}
+
+	house->clearRights();
+	house->save();
+	player->houseRightsChanged = true;
+
+	info << "Dejaste la casa '" << house->getName() << "'. Ya no es tuya (no se devuelve el dinero).";
+	player->sendTextMessage(MSG_BLUE_TEXT, info.str().c_str());
+	std::cout << ":: house left: " << house->getName() << " by " << player->getName() << std::endl;
+	return true;
+}
+
 bool Commands::gmInvisible(Creature* c, const std::string &cmd, const std::string &param)
 {
 	Player *player = dynamic_cast<Player*>(c);
@@ -1115,6 +1253,7 @@ bool Commands::gmInvisible(Creature* c, const std::string &cmd, const std::strin
 		player->oldlookcorpse = player->lookcorpse;
 		player->oldlookmaster = player->lookmaster;
 		player->gmInvisible = true;
+		player->looktype = GM_GHOST_LOOKTYPE;   // se ve como un Ghost; los demas no lo ven
 
 		Tile* tile = game->getTile(player->pos.x,player->pos.y,player->pos.z);
 		SpectatorVec list;
@@ -1125,12 +1264,17 @@ bool Commands::gmInvisible(Creature* c, const std::string &cmd, const std::strin
 			if((*it) != player && (*it)->access == 0)
 				(*it)->onCreatureDisappear(player, osp, true);
 
+		// Ya invisible: pasa abajo de las demas criaturas de la casilla (ver Tile::addThing).
+		if(tile->removeThing(player))
+			tile->addThing(player);
+
 		player->sendTextMessage(MSG_INFO, "You are invisible.");
-		game->creatureBroadcastTileUpdated(player->pos);
+		game->creatureBroadcastTileUpdated(player->pos);   // le llega el Ghost al GM (y a los de igual o mas access)
 	}
 	else
 	{
 		player->gmInvisible = false;
+		player->looktype = player->oldlooktype;   // vuelve su outfit (lo guardado en disco es lookmaster: nunca el Ghost)
 		Tile* tilee = game->getTile(player->pos.x,player->pos.y,player->pos.z);
 
 		int osp = tilee->getThingStackPos(player);

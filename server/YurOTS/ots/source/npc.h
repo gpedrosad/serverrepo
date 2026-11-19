@@ -68,6 +68,9 @@ public:
 	static int luaSellItem(lua_State *L);
 	static int luaSellFluidItem(lua_State *L);
 	static int luaSellBundle(lua_State *L);
+	static int luaSellBackpackBundle(lua_State *L);
+	static int luaGetPlayerBackpackItemCount(lua_State *L);
+	static int sellBundleCommon(lua_State *L, bool backpackOnly);
 	static int luaCancelPendingTrade(lua_State *L);
 	static int luaPayMoney(lua_State *L);
 
