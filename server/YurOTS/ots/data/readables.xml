@@ -123,4 +123,7 @@
 	<!-- BEGIN DARK_HYDRA_ISLE_SIGNS -->
 	<readable x="49" y="137" z="7" text="ISLA DE LAS DARK HYDRAS\nBaja por el agujero y sigue el tunel hasta el islote.\nSi te aprietan, baja por el agujero del islote y vuelve a subir."/>
 	<!-- END DARK_HYDRA_ISLE_SIGNS -->
+	<!-- BEGIN GLACIER_REACH_SIGNS -->
+	<readable x="266" y="37" z="7" text="GLACIAR DEL ESTE\nEl sendero sigue al este, cada vez mas frio.\nAl final, dragones y aranas de hielo.\nNivel 60+."/>
+	<!-- END GLACIER_REACH_SIGNS -->
 </readables>

@@ -1,0 +1,139 @@
+{
+  "name": "Glaciar del Este",
+  "seed": 4242,
+  "box": [
+    263,
+    6,
+    354,
+    72
+  ],
+  "entry": [
+    263,
+    39
+  ],
+  "path": [
+    [
+      263,
+      39
+    ],
+    [
+      276,
+      39
+    ],
+    [
+      276,
+      25
+    ],
+    [
+      338,
+      25
+    ],
+    [
+      338,
+      39
+    ],
+    [
+      292,
+      39
+    ],
+    [
+      292,
+      53
+    ],
+    [
+      334,
+      53
+    ]
+  ],
+  "openedRock": [
+    [
+      258,
+      43
+    ],
+    [
+      258,
+      44
+    ],
+    [
+      259,
+      43
+    ],
+    [
+      259,
+      44
+    ]
+  ],
+  "land": 2741,
+  "walkable": 781,
+  "longestWalk": 208,
+  "sign": [
+    266,
+    37
+  ],
+  "spawns": 19,
+  "monsters": 27,
+  "monstersByKind": {
+    "Chakoya Toolshaper": 1,
+    "Chakoya Tribewarden": 2,
+    "Chakoya Windcaller": 1,
+    "Crystal Spider": 3,
+    "Frost Dragon": 5,
+    "Frost Dragon Hatchling": 3,
+    "Frost Giant": 1,
+    "Frost Giantess": 1,
+    "Ice Golem": 2,
+    "Ice Monk": 2,
+    "Ice Spider": 5,
+    "Mammoth": 1
+  },
+  "densityTilesPerMonster": 29,
+  "stages": [
+    {
+      "names": [
+        "Chakoya Tribewarden",
+        "Chakoya Windcaller",
+        "Chakoya Toolshaper"
+      ],
+      "per": 1,
+      "spawntime": 100,
+      "gap": 11
+    },
+    {
+      "names": [
+        "Frost Giant",
+        "Frost Giantess",
+        "Mammoth"
+      ],
+      "per": 1,
+      "spawntime": 120,
+      "gap": 11
+    },
+    {
+      "names": [
+        "Ice Golem",
+        "Ice Monk"
+      ],
+      "per": 1,
+      "spawntime": 150,
+      "gap": 11
+    },
+    {
+      "names": [
+        "Frost Dragon Hatchling",
+        "Crystal Spider"
+      ],
+      "per": 2,
+      "spawntime": 180,
+      "gap": 11
+    },
+    {
+      "names": [
+        "Frost Dragon",
+        "Ice Spider"
+      ],
+      "per": 2,
+      "spawntime": 240,
+      "gap": 10
+    }
+  ]
+}
