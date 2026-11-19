@@ -148,18 +148,21 @@ Skeleton, y la torreta SE quedaba vacía).
 ## Jefes de las cimas
 
 Cinco monstruos propios de Elvenbane (`data/monster/*.xml`), uno por cima. Los ataques elementales salen de
-[`apply-monster-kits.py`](../gameplay/MONSTER_KITS.md) (tabla `KITS`, líneas con `kit="1"`); sin sprites nuevos:
-usan looks existentes (los outfits humanos, recoloreados).
+[`apply-monster-kits.py`](../gameplay/MONSTER_KITS.md) (tabla `KITS`, líneas con `kit="1"`). Cada uno tiene
+su sprite propio, recoloreado con un preset de [`SPRITE_RECOLOR_GUIDE.md`](../gameplay/SPRITE_RECOLOR_GUIDE.md)
+(`scripts/client-rme/presets/elvenbane_ranger.py`, `elven_archmage.py`, `orc_warchief.py`, `thornwarden.py`,
+`lord_of_elvenbane.py`). **El cliente se publica antes del spawn** (`publish_client.py`): con un cliente viejo
+se ven invisibles. En el Ranger y el Lord la piel va en su propia parte (`skin`) para que la cara no tome el
+color de la ropa.
 
 | Cima | Jefe | Vida / exp | Look | Estilo y ataques | Rare |
 |------|------|-----------:|------|------------------|------|
-| NO | **Elvenbane Ranger** | 5000 / 4500 | outfit Hunter 129, verde y marrón | A distancia (4), flechas 40–140 cada segundo, flecha venenosa (venom strike 5), bola de fuego 3x3 (burst ball 5), prisa; llama Elf Scouts | Crystal Arrow 3 % |
-| NE | **Elven Archmage** | 4200 / 5000 | outfit Mage 138, blanco y celeste | A distancia (4), heavy magic missile, energy strike 6, energy wave 6, ice ball 6, cura 35–80; llama Elf Arcanists; inmune a energía | Blue Gem 2 % |
-| SO | **Orc Warchief** | 7000 / 5500 | Orc Warlord (2) | Cuerpo a cuerpo 120–330, rugido alrededor (roar burst 8), golpe de roca (earth touch 7), prisa; llama Orc Berserkers | Fire Axe 2,5 % |
-| SE | **Thornwarden** | 6500 / 5500 | Earth Elemental (178) | Cuerpo a cuerpo 80–220, ola de veneno (poison wave 7), dardo venenoso (venom strike 6), estallido de tierra (earth burst 6), cura 50–110; inmune a veneno | Big Emerald 1,5 % |
-| Centro | **Lord of Elvenbane** | 12000 / 15000 | outfit Warrior 134, dorado y verde oscuro | Cuerpo a cuerpo 150–400, drena vida alrededor (drain burst 8), ola de energía (energy wave 9), rayo de muerte (death strike 8), cura 100–200, prisa; llama Elf Arcanists y Scouts | Magic Plate Armor 1 % |
+| NO | **Elvenbane Ranger** | 5000 / 4500 | **222** (Elf Scout recoloreado: capa verde bosque, pelo plateado, hojas) | A distancia (4), flechas 40–140 cada segundo, flecha venenosa (venom strike 5), bola de fuego 3x3 (burst ball 5), prisa; llama Elf Scouts | Crystal Arrow 3 % |
+| NE | **Elven Archmage** | 4200 / 5000 | **223** (Elf Arcanist: túnica azul real, ribete plateado, orbe de energía) | A distancia (4), heavy magic missile, energy strike 6, energy wave 6, ice ball 6, cura 35–80; llama Elf Arcanists; inmune a energía | Blue Gem 2 % |
+| SO | **Orc Warchief** | 7000 / 5500 | **224** (Orc Warlord: hierro oscuro, pintura de guerra, ojos rojos) | Cuerpo a cuerpo 120–330, rugido alrededor (roar burst 8), golpe de roca (earth touch 7), prisa; llama Orc Berserkers | Fire Axe 2,5 % |
+| SE | **Thornwarden** | 6500 / 5500 | **226** (Carniphila 2×2: morada con espinas rojas) | Cuerpo a cuerpo 80–220, ola de veneno (poison wave 7), dardo venenoso (venom strike 6), estallido de tierra (earth burst 6), cura 50–110; inmune a veneno | Big Emerald 1,5 % |
+| Centro | **Lord of Elvenbane** | 12000 / 15000 | **185** (Hero: armadura dorada, capa esmeralda, corona) | Cuerpo a cuerpo 150–400, drena vida alrededor (drain burst 8), ola de energía (energy wave 9), rayo de muerte (death strike 8), cura 100–200, prisa; llama Elf Arcanists y Scouts | Magic Plate Armor 1 % |
 
-Los colores de los outfits se eligieron sin verlos en el juego: si no quedan bien, cambiar `head/body/legs/feet`.
 
 
 ## Cómo regenerar
