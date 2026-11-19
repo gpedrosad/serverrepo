@@ -1,7 +1,7 @@
 # Tres estrellas para paladín
 
-Estado: implementación local y assets instalados; pendiente compilar y probar combate
-en instancia aislada. No publicar el OTB en el servidor activo antes del cliente y del binario.
+Estado: compilado y probado en instancia aislada; publicación y deploy en curso,
+con autorización de Gonzalo. No publicar el OTB en el servidor activo antes del cliente y del binario.
 
 ![Ítems, ocho direcciones de vuelo e impactos](img/paladin-stars.png)
 
@@ -114,5 +114,18 @@ Seguir `docs/systems/THINKPAD_TEST_SERVER.md`; smoke tests siguen desactivados.
   tres items no apilables, tres efectos y tres proyectiles, y se renderizan los items
   en widgets reales. Script: `scripts/ot/test-paladin-stars-client.lua`.
 - El probe local a 127.0.0.1:7171 devuelve ConnectionRefused: no hay OT local y Docker
-  no está instalado en esta Mac. Combate y compilación siguen pendientes de autorización
-  para una copia aislada de la ThinkPad. No se reinició ni se publicó en el servidor activo.
+  no está instalado en esta Mac. Por eso se autorizó y usó una instancia aislada de la ThinkPad en el puerto 7279.
+
+### Combate en instancia aislada (19 nov 2026)
+
+Fixture en `~/build/paladin-stars-qa-20261119`, puerto 7279, cuentas sintéticas. Script
+`scripts/ot/test-paladin-stars-combat.py` (se niega a usar 7171). Build en copia separada,
+sin avisos. Mediciones de paquetes del servidor: Gale 900 ms, Royal Paladin 900 ms,
+Venom 1333 ms y Storm 1500 ms. Veneno completa 4 ticks tras cancelar el ataque;
+la descarga con maná shield reduce maná y conserva HP. Knight es rechazado sin proyectil.
+El cliente Mac real abrió el locker del mapa final y mostró las 7 crystal coins guardadas.
+
+La integración conservó los mapas, jefes, black fire sword y calavera negra publicados
+por otras sesiones. Auditoría final sobre los assets ya publicados: **13.986 sprites previos
+idénticos**, 51 nuevos; final 14.037. Todas las apariencias anteriores quedan intactas.
+Se recompiló también la actualización de comandos de GM ya desplegada, incluido `/comandos`.
