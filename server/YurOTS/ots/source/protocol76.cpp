@@ -927,6 +927,10 @@ void Protocol76::parseSetOutfit(NetworkMessage &msg)
 	{
 		player->looktype= temp;
 		player->lookmaster = player->looktype;
+		if (player->gmInvisible) {          // GM invisible: el outfit nuevo queda para cuando vuelva a ser visible
+			player->oldlooktype = temp;
+			player->looktype = GM_GHOST_LOOKTYPE;
+		}
 		player->lookhead=msg.GetByte();
 		player->lookbody=msg.GetByte();
 		player->looklegs=msg.GetByte();

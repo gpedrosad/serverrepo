@@ -3461,6 +3461,10 @@ void Game::thingMoveInternal(Creature *creature, unsigned short from_x, unsigned
 					}
 				}
 			}
+			// Si entro a una casilla con otras criaturas, el servidor lo deja debajo de ellas (Tile::addThing) y su
+			// cliente lo puso arriba: se le manda la casilla entera para que los dos tengan el mismo orden.
+			if(toTile->creatures.size() > 1)
+				playerMoving->onTileUpdated(Position(to_x, to_y, to_z));
 		}
 		else if(playerMoving && !playerMoving->gmInvisible)
 		{

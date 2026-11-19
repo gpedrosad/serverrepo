@@ -282,7 +282,10 @@ std::vector<long> Creature::getInflicatedDamageCreatureList()
 bool Creature::canMovedTo(const Tile *tile) const
 {
 	if(tile) {
-		return (tile->isBlocking(BLOCK_SOLID) == RET_NOERROR);
+		// Un GM con /invisible pasa por encima de jugadores y monstruos (nov 2026).
+		const Player* player = dynamic_cast<const Player*>(this);
+		const bool ghost = player && player->gmInvisible;
+		return (tile->isBlocking(BLOCK_SOLID, ghost) == RET_NOERROR);
 	}
 
 	return false;

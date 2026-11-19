@@ -1253,6 +1253,7 @@ bool Commands::gmInvisible(Creature* c, const std::string &cmd, const std::strin
 		player->oldlookcorpse = player->lookcorpse;
 		player->oldlookmaster = player->lookmaster;
 		player->gmInvisible = true;
+		player->looktype = GM_GHOST_LOOKTYPE;   // se ve como un Ghost; los demas no lo ven
 
 		Tile* tile = game->getTile(player->pos.x,player->pos.y,player->pos.z);
 		SpectatorVec list;
@@ -1268,11 +1269,12 @@ bool Commands::gmInvisible(Creature* c, const std::string &cmd, const std::strin
 			tile->addThing(player);
 
 		player->sendTextMessage(MSG_INFO, "You are invisible.");
-		game->creatureBroadcastTileUpdated(player->pos);
+		game->creatureBroadcastTileUpdated(player->pos);   // le llega el Ghost al GM (y a los de igual o mas access)
 	}
 	else
 	{
 		player->gmInvisible = false;
+		player->looktype = player->oldlooktype;   // vuelve su outfit (lo guardado en disco es lookmaster: nunca el Ghost)
 		Tile* tilee = game->getTile(player->pos.x,player->pos.y,player->pos.z);
 
 		int osp = tilee->getThingStackPos(player);
