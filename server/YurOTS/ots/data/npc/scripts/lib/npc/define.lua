@@ -105,6 +105,11 @@ function npcCatalogHandler(shop)
 		if shop.buys ~= nil and npcTryCatalogBuyQuantity(cid, msg, shop.buys, shop.maxQty) then
 			return true
 		end
+		-- "sell all" sin nombrar ítem: todo lo de la mochila que este NPC compra.
+		if shop.sells ~= nil and npcIsSellAll(msg) and npcFindCatalogEntry(msg, shop.sells) == nil then
+			npcSellAllEntries(cid, shop.sells)
+			return true
+		end
 		-- Venta y temas compiten por la mejor coincidencia: "swords" muestra precios,
 		-- "steel boots" vende aunque "boots" sea un tema. Con "sell" manda la venta.
 		local entry = nil

@@ -86,9 +86,20 @@ function sellerMentionsVial(msg)
 	return npcMatchesAny(msg, {'vial', 'vials', 'flask', 'flasks', 'frasco', 'frascos'})
 end
 
+function sellerSellAllVials(cid)
+	local emptyVials = getPlayerFluidCount(cid, 2006, 0)
+	if emptyVials > 0 then
+		sellFluid(cid, 2006, 0, emptyVials, emptyVials * 10)
+	else
+		selfSay('You do not have any empty vials to sell.')
+	end
+end
+
 local function onMessage(cid, msg)
 	if npcIsHelp(msg) then
 		selfSay(SELLER_HELP)
+	elseif npcIsSellAll(msg) and not sellerMentionsVial(msg) then
+		sellerSellAllVials(cid)   -- lo único que compra el Seller son vials vacíos
 	elseif (msgcontains(msg, 'sell') or msgcontains(msg, 'vender')) and not sellerMentionsVial(msg) then
 		selfSay('I only buy empty vials. Mad buys weapons and armor.') -- antes "sell X" ofrecÃ­a comprar X
 	elseif sellerTryBuy(cid, msg) then
@@ -100,12 +111,7 @@ local function onMessage(cid, msg)
 	elseif msgcontains(msg, 'set') or msgcontains(msg, 'sets') or msgcontains(msg, 'knight set') then
 		selfSay(SELLER_SETS)
 	elseif msgcontains(msg, 'sell all vials') or msgcontains(msg, 'sell all flasks') or msgcontains(msg, 'sell all frascos') then
-		local emptyVials = getPlayerFluidCount(cid, 2006, 0)
-		if emptyVials > 0 then
-			sellFluid(cid, 2006, 0, emptyVials, emptyVials * 10)
-		else
-			selfSay('You do not have any empty vials to sell.')
-		end
+		sellerSellAllVials(cid)
 	elseif sellerMentionsVial(msg) then
 		sellFluid(cid, 2006, 0, 1, 10)
 	elseif msgcontains(msg, 'life') then

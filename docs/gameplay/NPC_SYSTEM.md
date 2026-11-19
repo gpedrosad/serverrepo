@@ -89,6 +89,14 @@ Cada script termina con un `npcDefine`. Campos:
 
 **Venta con cantidad:** "sell 3 swords" vende 3; "sell all maces" / "todo" vende todos los que tenga (`getPlayerItemCount`). El precio es por unidad.
 
+**"Sell all" (todo lo de la mochila):** "sell all", "vender todo" o "sell everything" **sin nombrar un ítem** vende de
+una vez todo lo que el NPC compra y el jugador lleva **dentro de la mochila** (y bolsas dentro de ella). Lo equipado
+no se vende, ni la mochila puesta. Lo arma `npcSellAllEntries(cid, entradas)` (`npc/catalog.lua`), que cuenta con
+`getPlayerBackpackItemCount` y ofrece todo junto con `sellBackpackBundle`. Al confirmar, el C++ vuelve a contar y
+saca **solo de la mochila** (`bulkBackpackOnly`), así no se vende algo que el jugador se equipó después de la oferta.
+Los ítems con imbue de gema siguen sin comprarse. La lista dice los 4 primeros y "and N more". Lo tienen Mad (vía
+`npcCatalogHandler`, cualquier tienda con `sells`), Parived (todas las gemas) y el Seller (todos los vials vacíos).
+
 Si dos claves coinciden gana la que aparece primero en el mensaje y, a igual posición, la más larga ("strong mana" antes que "mana", "round blue pillow" antes que "blue pillow"); vale para compras, ventas y temas. Antes de mostrar una compra se revisa que haya al menos una casilla libre; si después no entra todo, el C++ entrega lo que cabe y devuelve el oro del resto.
 
 ---
@@ -145,9 +153,9 @@ Registrada en `source/npc.cpp` (`NpcScript`). Ojo con el tipo de argumento y de 
 | Recibe **nombre** del jugador (no cid) | `getPlayerLevel`, `getPlayerGuildStatus`, `getPlayerGuildName`, `setPlayerGuild*`, `clearPlayerGuild` |
 |---|---|
 | Devuelven **booleano** | `pay`, `isPremium`, `isPromoted`, `isMonster`, `isPzLocked`, `cancelPendingTrade` |
-| Devuelven número | `getPlayerMoney`, `getPlayerBankBalance`, `getPlayerStorageValue` (-1 si no existe), `getPlayerItemCount`, `getPlayerFreeSlots`, `doSummonCreature` (0 si falla), `getTopCreature` (0 si no hay) |
+| Devuelven número | `getPlayerMoney`, `getPlayerBankBalance`, `getPlayerStorageValue` (-1 si no existe), `getPlayerItemCount`, `getPlayerBackpackItemCount` (solo dentro de contenedores), `getPlayerFreeSlots`, `doSummonCreature` (0 si falla), `getTopCreature` (0 si no hay) |
 
-Compra/venta (`buy`, `buyFluidQty`, `buyRuneQty`, `buyItemQty`, `buyItemBackpack`, `buyFluidBackpack`, `sell`, `sellFluid`, `sellBundle`) dejan la operación pendiente y el C++ pide la confirmación (ver `NPC_CONFIRMATION.md`). `creatureGetName2(nombre)` devuelve el cid de un jugador online (sin distinguir mayúsculas; 0 si no está). Para entregar oro (`doPlayerAddMoney`, vuelto, banco) e ítems de `doPlayerAddItem`, si el jugador no tiene lugar quedan **a sus pies** con un aviso; en las compras el ítem que no entra no se entrega y se devuelve su precio. Otras: `selfSay`, `creatureGetName`, `creatureGetPosition`, `travelPlayerTo`, `setPlayerMasterPos`, `setPlayerVocation`, `doPlayerAddItem`, `doPlayerRemoveItem`, `doPlayerDeposit/Withdraw/TransferMoney`, `doSendMagicEffect`, `doRemoveCreature`, `doPlayerAddMana`, `learnSpell`, `foundNewGuild`.
+Compra/venta (`buy`, `buyFluidQty`, `buyRuneQty`, `buyItemQty`, `buyItemBackpack`, `buyFluidBackpack`, `sell`, `sellFluid`, `sellBundle`, `sellBackpackBundle`) dejan la operación pendiente y el C++ pide la confirmación (ver `NPC_CONFIRMATION.md`). `creatureGetName2(nombre)` devuelve el cid de un jugador online (sin distinguir mayúsculas; 0 si no está). Para entregar oro (`doPlayerAddMoney`, vuelto, banco) e ítems de `doPlayerAddItem`, si el jugador no tiene lugar quedan **a sus pies** con un aviso; en las compras el ítem que no entra no se entrega y se devuelve su precio. Otras: `selfSay`, `creatureGetName`, `creatureGetPosition`, `travelPlayerTo`, `setPlayerMasterPos`, `setPlayerVocation`, `doPlayerAddItem`, `doPlayerRemoveItem`, `doPlayerDeposit/Withdraw/TransferMoney`, `doSendMagicEffect`, `doRemoveCreature`, `doPlayerAddMana`, `learnSpell`, `foundNewGuild`.
 
 ---
 

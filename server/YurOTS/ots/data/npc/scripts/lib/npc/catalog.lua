@@ -175,3 +175,45 @@ function npcTryCatalogSell(cid, msg, entries)
 
 	return false
 end
+
+
+-- "sell all" / "vender todo" sin nombrar un ítem: vende de una vez todo lo que el NPC compra y el
+-- jugador lleva DENTRO de la mochila (lo equipado no se toca). Al confirmar, el C++ vuelve a contar
+-- solo la mochila (sellBackpackBundle), así no se vende algo que se equipó después de la oferta.
+function npcIsSellAll(msg)
+	return npcMatchesAny(msg, {'sell', 'vender', 'vendo'})
+		and npcMatchesAny(msg, {'all', 'everything', 'todo', 'todos'})
+end
+
+function npcSellAllLabel(parts, n)
+	if n <= 4 then
+		return table.concat(parts, ', ')
+	end
+	return table.concat(parts, ', ', 1, 4) .. ' and ' .. (n - 4) .. ' more'
+end
+
+-- entries: {itemid, price, keys} (las de catálogo; las que no tienen itemid/price se ignoran).
+-- getName(entry) da el nombre para la lista (por defecto la primera clave).
+function npcSellAllEntries(cid, entries, emptyText, getName)
+	local total, n, parts, bundle, seen = 0, 0, {}, {}, {}
+	for i = 1, table.getn(entries) do
+		local e = entries[i]
+		local price = e.price or 0
+		if e.itemid ~= nil and price > 0 and e.fluidSubtype == nil and not seen[e.itemid] then
+			seen[e.itemid] = true
+			local cnt = getPlayerBackpackItemCount(cid, e.itemid)
+			if cnt > 0 then
+				n = n + 1
+				bundle[n] = {e.itemid, cnt}
+				total = total + cnt * price
+				parts[n] = cnt .. 'x ' .. (getName and getName(e) or (e.keys or e.shortKeys)[1])
+			end
+		end
+	end
+	if n == 0 then
+		selfSay(emptyText or 'You have nothing in your backpack that I buy.')
+		return false
+	end
+	sellBackpackBundle(cid, total, npcSellAllLabel(parts, n), bundle)
+	return true
+end

@@ -97,7 +97,7 @@ creatureGetName2 = function(name)  -- como getCreatureByName: sin distinguir may
 	return 0
 end
 for _, n in ipairs({'selfMove', 'selfMoveTo', 'selfAttackCreature', 'doPlayerSendTextMessage', 'buy', 'buyFluidBackpack',
-	'buyFluidQty', 'buyRuneQty', 'buyItemQty', 'buyItemBackpack', 'sell', 'sellFluid', 'sellBundle',
+	'buyFluidQty', 'buyRuneQty', 'buyItemQty', 'buyItemBackpack', 'sell', 'sellFluid', 'sellBundle', 'sellBackpackBundle',
 	'travelPlayerTo', 'doSendMagicEffect', 'setPlayerMasterPos', 'doPlayerAddExp', 'learnSpell', 'setPlayerVocation',
 	'setPlayerGuildNick', 'setPlayerGuildTitle'}) do
 	api(n, nil)
@@ -110,6 +110,7 @@ api('doPlayerRemoveItem', 1)
 api('doPlayerAddItem', 1)
 api('getPlayerLevel', function(name) return byAny(name).level end)
 api('getPlayerItemCount', function(cid) return P(cid).items end)
+api('getPlayerBackpackItemCount', function(cid) return P(cid).items end)
 api('getPlayerFreeSlots', function(cid) return P(cid).slots end)
 api('getPlayerFluidCount', function(cid) return P(cid).items end)
 api('getPlayerMoney', function(cid) return P(cid).money end)

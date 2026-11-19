@@ -261,10 +261,12 @@ SAY I only buy empty vials. Mad buys weapons and armor.
 SAY I only buy empty vials. Mad buys weapons and armor.
 >> say 1001 no
 >> say 1001 sell all
-SAY I only buy empty vials. Mad buys weapons and armor.
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
 >> say 1001 yes
 >> say 1001 sell all
-SAY I only buy empty vials. Mad buys weapons and armor.
+CALL getPlayerFluidCount(1001, 2006, 0)
+CALL sellFluid(1001, 2006, 0, 10, 100)
 >> say 1001 no
 >> think
 >> say 1001 buy
