@@ -161,6 +161,7 @@ Legacy: AID `9041` en armadura cuenta como 3 stacks de emerald (compatibilidad c
 - **Armadura + Big Emerald**: bloqueada si AID está entre 9020–9042 (excepto legacy 9041).
 - **Yellow en botas**, **Violet en wand**, **Blue en crystal arrow** no comparten slot/ítem; no hay conflicto directo.
 - **Crystal Arrow** no acepta Big Ruby (excluida en Lua/C++); solo Blue Gem.
+- **Paladin Stars 20211–20213** tienen encantamiento fijo: rechazan Big Ruby en Lua sin consumirla, y C++ excluye sus AIDs de Ruby.
 
 Tras imbuir, se llama `doPlayerCheckFeetSpeed(cid)` → `Player::checkBoh()` para refrescar velocidad, ML efectivo, attack delay y skills.
 

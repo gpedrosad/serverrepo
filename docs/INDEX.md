@@ -96,6 +96,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/STAIRS.md`](gameplay/STAIRS.md) | Escaleras, escaleras de mano, trampillas y agujeros al usarlos con click derecho; dónde se aterriza. |
 | [`gameplay/GEMS.md`](gameplay/GEMS.md) | Sistema de gemas: drop, uso, imbuements. Antes de tocar gemas, leer esto. |
 | [`gameplay/CRYSTAL_ARROW.md`](gameplay/CRYSTAL_ARROW.md) | **Crystal Arrow (2352):** throwable tipo spear, Blue Gem speed ×5, hit 85%; spears 70% hit. |
+| [`gameplay/PALADIN_STARS.md`](gameplay/PALADIN_STARS.md) | Gale, Venom y Storm Star: tres arrojadizas reutilizables para paladín, velocidad/veneno/energía y proyectiles propios. |
 | [`gameplay/ENCHANTED_SPEAR.md`](gameplay/ENCHANTED_SPEAR.md) | **Enchanted Spear (20156):** spear mejorada (ataque 36, 80% hit, no se apila), sprite de cristal y luz de color propia; 4 estilos; proyectil propio `NM_ANI_ENCHANTED_SPEAR` (16) con luz en vuelo. |
 | [`gameplay/DEPOTS.md`](gameplay/DEPOTS.md) | **Depots:** lockers 2589, XML vs mapa, incidente jul 2026, checklist pre-deploy de mapa. |
 | [`items-and-map/DEPOT_ELECTRICO.md`](items-and-map/DEPOT_ELECTRICO.md) | **Depot eléctrico y calavera cian:** once piezas propias, 104 paredes solo en la sala de lockers, IDs 20200–20210, fuentes del arte y prueba con cliente real. |

@@ -148,8 +148,8 @@ looktypes (incluido el 231) e ítems sin cambios, 400 sprites viejos al azar id�
 
 **Los packs se aplican en orden** (el número de cada constante depende de cuántos efectos había):
 ice → Enchanted Spear → shadow → power → gran → spells. Cada pack de `PACKS` declara en `base` los contadores sobre los que se aplica.
-Para uno nuevo, agregarlo al final con `base: (44, 18)`: efectos desde **44**, proyectiles desde
-**18**. Volver a correr la Enchanted Spear con packs posteriores ya aplicados conserva sus proyectiles.
+Después de spells se instala el pack [Paladin Stars](PALADIN_STARS.md): impactos **44–46** y
+proyectiles **18–20** (`add_paladin_stars.py`). Para un pack posterior usar `base: (47, 21)`. Volver a correr la Enchanted Spear con packs posteriores ya aplicados conserva sus proyectiles.
 
 ## Antes de usarlos en producción
 
@@ -165,3 +165,9 @@ Para uno nuevo, agregarlo al final con `base: (44, 18)`: efectos desde **44**, p
    esos números y el efecto no se ve (o, en el peor caso, el cliente falla).
 
 Los efectos se pueden ver animados en la página de recursos del cliente (pestaña "Efectos mágicos").
+
+## Paladin Stars
+
+`add_paladin_stars.py` agrega tres proyectiles de ocho direcciones con luz propia y tres impactos
+de ocho cuadros: viento cian, veneno verde y descarga violeta. Conserva todas las entradas y sprites
+previos. Ver [PALADIN_STARS.md](PALADIN_STARS.md) para IDs, reproducción, preview y estado de pruebas.
