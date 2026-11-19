@@ -240,7 +240,7 @@ def sprite_records(png: Path, tiles: int | str = 1, frames: int = 1) -> list[byt
 
 # ---------- candidatos a sacrificar ----------
 
-def candidates(things: Path, otb: Path) -> list[tuple[int, list[int], str]]:
+def candidates(things: Path, otb: Path, exclude_paths=()) -> list[tuple[int, list[int], str]]:
     entries, _tail = B.DatReader((things / "Tibia.dat").read_bytes()).read_item_entries()
     item_count = B.DatReader((things / "Tibia.dat").read_bytes()).item_count
     _data, root = load_otb(otb)
@@ -266,8 +266,9 @@ def candidates(things: Path, otb: Path) -> list[tuple[int, list[int], str]]:
     files = (list(data.glob("monster/*.xml")) + list(data.glob("npc/**/*.lua")) + list(data.glob("actions/**/*.lua"))
              + list(data.glob("actions/*.xml")) + list(data.glob("spells/**/*.lua")) + list((ROOT / "scripts").rglob("*.py"))
              + [data / "items/items.xml", data / "items/items-zagan-test.xml"])
+    excluded = {Path(p).resolve() for p in exclude_paths}
     for f in files:
-        if f.is_file():
+        if f.is_file() and f.resolve() not in excluded:
             refs |= {int(x) for x in re.findall(r"\b(\d{3,5})\b", f.read_text(errors="replace")) if 100 <= int(x) <= 20000}
     bad_name = re.compile(r"dead|skeleton|corpse|remains|body|blood|pool|fire|burning|slime|puddle|trail|ash|bones|carcass")
     taken = set(B.CORE_RESERVED_CLIENT_IDS) | set(B.EXTERNAL_CLIENT_IDS) | used_custom | {i["client_id"] for i in NEW_ITEMS}
