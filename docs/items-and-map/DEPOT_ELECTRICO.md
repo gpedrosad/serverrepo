@@ -49,7 +49,11 @@ Solo cambian las once apariencias correspondientes a los slots reutilizados; el 
 
 ## Calavera cian
 
-![Calavera cian ampliada](img/depot-electric/cyan-skull-preview.png)
+![Familia nativa: blanca, roja, amarilla, verde y cian](img/depot-electric/skulls-native-comparison.png)
+
+**Corrección visual:** la versión frontal generada difería del resto. La final recolorea
+`skull_red.png` nativa: conserva píxel por píxel la silueta, ojos, contorno negro, grises
+y alpha. El rojo puro pasa a **#00E5FF** y sus tonos conservan el sombreado original.
 
 Se aplica al estado punitivo existente, **ID 7** (`SkullPink` / `SKULL_PINK`): nuevo
 `data/images/game/skulls/skull_cyan.png`, 11×11 RGBA con alpha 0/255, y mapeo desde
@@ -59,21 +63,26 @@ El PNG rosa anterior se conserva para compatibilidad; el cliente actualizado dib
 
 ## Fuentes del arte y reproducción
 
-Arte creado con la herramienta **ImageGen integrada** (`image_gen.imagegen`), usando las piezas del
-cliente como referencia de geometría para las paredes. Los prompts exactos y ambos originales generados
-se guardan en `devtools/zagan-test/custom-sprites/depot-electric/`:
+Las paredes se crearon con la herramienta **ImageGen integrada** (`image_gen.imagegen`), usando las
+piezas del cliente como referencia de geometría. La calavera final es un recolor de la roja nativa.
+Las fuentes y los prompts se guardan en `devtools/zagan-test/custom-sprites/depot-electric/`:
 
 - `prompts.json`: prompts completos y herramienta.
 - `walls-template.png`: atlas original, 4 columnas × 3 filas; última celda vacía.
-- `walls-generated.png` y `skull-generated.png`: salidas originales de ImageGen.
+- `walls-generated.png`: atlas de paredes de ImageGen.
+- `skull-generated.png`: primera calavera generada, histórica; ya no se usa para exportar.
+- `skull-template-red.png`: calavera roja nativa, fuente de la versión final.
 - `wall-<prototipo>.png`: once piezas finales 64×64.
 - `skull_cyan.png`: export final 11×11.
 
 `depot_electric_assets.py --prepare` adapta el tamaño con nearest-neighbor y recorta cada pieza con
 la **máscara original exacta**: elimina halos externos y asegura uniones, huecos y transparencias.
-La exportación de la calavera recorta el alpha y lo normaliza a 0/255, sin semitransparencias.
+La calavera usa `recolor_cyan_skull.py`: `(r,g,b)` → `(g, g+round((r-g)*229/255), r)`
+en píxeles opacos; los transparentes quedan intactos. No redibuja ni escala el dibujo.
+`--prepare` también usa esta plantilla para evitar restaurar la versión frontal descartada.
 
 ```sh
+python3.11 scripts/client-rme/recolor_cyan_skull.py --client RUTA_CLIENTERETRO
 python3.11 scripts/client-rme/depot_electric_assets.py --prepare
 python3.11 scripts/client-rme/depot_electric_assets.py --dry-run
 python3.11 scripts/client-rme/depot_electric_assets.py

@@ -88,6 +88,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 |--------|-----|
 | `build_zagan_test_assets.py` | Pipeline sprites/OTB/dat Zagan |
 | `sprite_tool.py` | Sprites de criaturas: `bases`, `new`, `inspect`, `check`, `verify` (guía: `docs/gameplay/SPRITE_RECOLOR_GUIDE.md`) |
+| `recolor_cyan_skull.py` | Recolorea la calavera roja nativa a cian conservando dibujo y alpha; `--client RUTA_CLIENTERETRO` |
 | `depot_electric_assets.py` | Prepara e instala las once piezas eléctricas del depot (20200–20210); `--prepare`, `--dry-run` |
 | `add_recolor_look.py` + `presets/` + `sprite_kit.py` | Aplica un preset de criatura (un archivo por criatura en `presets/`) a `Tibia.dat`/`.spr` |
 | `play-yurots-client.sh` / `open-rme.sh` | Cliente y RME locales |

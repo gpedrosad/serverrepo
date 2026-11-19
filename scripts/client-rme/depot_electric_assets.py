@@ -6,7 +6,7 @@
 
 --prepare adapta el atlas de ImageGen a 64x64 y aplica la máscara exacta de cada
 prototipo: la ventana, los remates y las uniones conservan su geometría 7.6.
-La calavera cian se exporta a 11x11 con alpha binario. Ver DEPOT_ELECTRICO.md.
+La calavera cian recolorea la roja nativa a 11x11, con su alpha exacto. Ver DEPOT_ELECTRICO.md.
 """
 from __future__ import annotations
 
@@ -50,17 +50,8 @@ def prepare(things: Path) -> None:
         # El motor solo admite alpha 0/255; conservar la silueta original sin halo.
         image.putalpha(original.getchannel('A'))
         image.save(ART / f'wall-{proto}.png')
-    skull = Image.open(ART / 'skull-generated.png').convert('RGBA')
-    mask = skull.getchannel('A').point(lambda a: 255 if a >= 128 else 0)
-    bounds = mask.getbbox()
-    if bounds is None:
-        raise SystemExit('La calavera generada está vacía')
-    skull = skull.crop(bounds)
-    side = max(skull.size)
-    square = Image.new('RGBA', (side, side))
-    square.alpha_composite(skull, ((side - skull.width) // 2, (side - skull.height) // 2))
-    skull = square.resize((11, 11), Image.Resampling.NEAREST)
-    skull.putalpha(skull.getchannel('A').point(lambda a: 255 if a >= 128 else 0))
+    from recolor_cyan_skull import recolor
+    skull = recolor(Image.open(ART / 'skull-template-red.png'))
     skull.save(ART / 'skull_cyan.png')
     print(f'Arte preparado: 11 piezas 64x64 y calavera 11x11 en {ART}')
 

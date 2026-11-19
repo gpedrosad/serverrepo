@@ -209,13 +209,18 @@ Auditoría: no hay archivo de log aparte; el GM recibe la confirmación y el mar
 ## Apariencia cian eléctrica (19 nov 2026)
 
 A pedido de Gonzalo, el estado punitivo ID 7 pasa a dibujarse en **cian eléctrico**, con
-brillos claros, sombras azules y contorno azul marino. Arte nuevo 11×11 RGBA en
+el dibujo exacto de las otras calaveras: roja nativa recoloreada, contorno negro,
+ojos, sombras y alpha originales. PNG 11×11 RGBA en
 `clienteretro/{mac,windows}/data/images/game/skulls/skull_cyan.png`; el mapeo en
 `modules/gamelib/creature.lua` usa esa imagen para la cabeza y la battle list.
 
 Se conserva el ID técnico `SkullPink` / `SKULL_PINK`, los comandos `/pink` y `/unpink`,
 la persistencia XML y el drop total. No requiere C++, editar jugadores ni reasignar la
 marca a quienes ya la tienen. El PNG rosa previo se conserva por compatibilidad.
-Fuentes, prompts de ImageGen y detalles de reproducción en
+Plantilla roja nativa, comparación visual y script de recolor en
 [DEPOT_ELECTRICO.md](../items-and-map/DEPOT_ELECTRICO.md#calavera-cian).
 Publicado en ambas plataformas el 19 nov 2026; el updater y ambos ZIPs ya entregan la calavera cian.
+
+Corrección visual del 19 nov: se descartó la primera versión frontal generada porque no
+coincidía con la familia nativa. `recolor_cyan_skull.py` transforma únicamente la paleta
+roja a cian (#00E5FF), con paridad exacta Mac/Windows.
