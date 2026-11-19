@@ -1263,6 +1263,10 @@ bool Commands::gmInvisible(Creature* c, const std::string &cmd, const std::strin
 			if((*it) != player && (*it)->access == 0)
 				(*it)->onCreatureDisappear(player, osp, true);
 
+		// Ya invisible: pasa abajo de las demas criaturas de la casilla (ver Tile::addThing).
+		if(tile->removeThing(player))
+			tile->addThing(player);
+
 		player->sendTextMessage(MSG_INFO, "You are invisible.");
 		game->creatureBroadcastTileUpdated(player->pos);
 	}

@@ -99,6 +99,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/ENCHANTED_SPEAR.md`](gameplay/ENCHANTED_SPEAR.md) | **Enchanted Spear (20156):** spear mejorada (ataque 36, 80% hit, no se apila), sprite de cristal y luz de color propia; 4 estilos; proyectil propio `NM_ANI_ENCHANTED_SPEAR` (16) con luz en vuelo. |
 | [`gameplay/DEPOTS.md`](gameplay/DEPOTS.md) | **Depots:** lockers 2589, XML vs mapa, incidente jul 2026, checklist pre-deploy de mapa. |
 | [`items-and-map/DEPOT_ELECTRICO.md`](items-and-map/DEPOT_ELECTRICO.md) | **Depot eléctrico** (y la calavera cian, reemplazada por la negra el 19 nov: ver `gameplay/PINK_SKULL.md`): once piezas propias, 104 paredes solo en la sala de lockers, IDs 20200–20210, fuentes del arte y prueba con cliente real. |
+| [`gameplay/GM_INVISIBLE.md`](gameplay/GM_INVISIBLE.md) | **`/invisible` del GM** (nov 2026): no le tapa el paso a nadie (va debajo de las criaturas de su casilla) y en su cliente se ve semitransparente (shader `outfit_ghost`). |
 | [`gameplay/HOUSES.md`](gameplay/HOUSES.md) | **Casas:** dueños en `data/houses/*.xml`, deploy, backup/recuperación, **items fantasma** (caso Maximus `166,39,7` jul 2026). |
 | [`gameplay/GOLDEN_ACCESSORIES.md`](gameplay/GOLDEN_ACCESSORIES.md) | Golden amulet y golden ring: auto-bank, bonus de oro e interacción entre ambos. |
 | [`gameplay/SOFT_BOOTS.md`](gameplay/SOFT_BOOTS.md) | **Soft Boots (3549):** +3 HP / +12 MP cada 3 s, 4 h de uso → worn (3550); C++ `YUR_SOFT_BOOTS`. |

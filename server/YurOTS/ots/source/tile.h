@@ -101,6 +101,7 @@ public:
 	Thing* getThingByStackPos(int pos);
 
 	ReturnValue isBlocking(int objectstate, bool ignoreCreature = false, bool ignoreMoveableBlocking = false) const;
+	bool hasBlockingCreature() const;   // alguna criatura que tape el paso (un GM invisible no)
 
   bool isPz() const;
   void setPz();
