@@ -55,7 +55,9 @@ public:
 	bool load();	
 	bool save();
 
+	std::string getName() const;
 	std::string getOwner() const;
+	size_t getTileCount() const;
 	std::string getSubOwners() const;
 	std::string getDoorOwners(const Position& pos) const;
 	std::string getGuests() const;
@@ -68,6 +70,7 @@ public:
 	void setSubOwners(std::string members);
 	void setDoorOwners(std::string members, const Position& pos);
 	void setGuests(std::string members);
+	void clearRights();
 };
 
 class Houses
@@ -84,6 +87,7 @@ private:
 public:
 	static bool Load(Game* game);
 	static bool Save(Game* game);
+	static House* GetHouseByOwner(const std::string& name);
 };
 
 #endif //HOUSES_H

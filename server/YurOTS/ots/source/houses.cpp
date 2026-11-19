@@ -148,9 +148,19 @@ bool House::save()
 	return true;
 }
 
+std::string House::getName() const
+{
+	return name;
+}
+
 std::string House::getOwner() const
 {
 	return owner;
+}
+
+size_t House::getTileCount() const
+{
+	return tiles.size();
 }
 
 std::string House::getGuests() const
@@ -265,6 +275,29 @@ void House::setGuests(std::string members)
 	boost::tokenizer<> tokens(members, boost::char_delimiters_separator<char>(false, NULL, "\n"));
 	for (boost::tokenizer<>::iterator tok = tokens.begin(); tok != tokens.end(); ++tok)
 		guests.push_back(*tok);
+}
+
+void House::clearRights()
+{
+	owner.clear();
+	subOwners.clear();
+	guests.clear();
+	doorOwners.clear();
+}
+
+static std::string lowerName(std::string s)
+{
+	std::transform(s.begin(), s.end(), s.begin(), ::tolower);
+	return s;
+}
+
+House* Houses::GetHouseByOwner(const std::string& name)
+{
+	std::string wanted = lowerName(name);
+	for (size_t i = 0; i < houses.size(); i++)
+		if (!houses[i]->getOwner().empty() && lowerName(houses[i]->getOwner()) == wanted)
+			return houses[i];
+	return NULL;
 }
 
 bool Houses::Load(Game* game)

@@ -77,6 +77,8 @@ public:
 
 	int ACCESS_HOUSE;
 	int MAX_HOUSE_TILE_ITEMS;
+	int HOUSE_PRICE_PER_TILE;
+	int HOUSE_MIN_LEVEL;
 
 	bool  SUMMONS_ALL_VOC;
 	size_t MAX_SUMMONS;
