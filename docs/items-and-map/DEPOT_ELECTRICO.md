@@ -1,6 +1,6 @@
 # Depot eléctrico y calavera cian — 19 nov 2026
 
-Estado: **aplicado en los archivos locales**, pendiente de push/publicación y deploy autorizado.
+Estado: **publicado y desplegado el 19 nov 2026**, con autorización de Gonzalo. Mapa/OTB: `51ca529`; calavera del cliente: `31b718c`.
 No requiere recompilar C++. Se probó el mapa nuevo con el binario actual en una instancia aislada.
 
 ## Aspecto y alcance
@@ -128,3 +128,25 @@ El probe del servidor aislado dio **OK**. No se ejecutaron los smoke tests desac
    y abrirlo para recibir las apariencias nuevas.
 
 La prueba aislada permite revisar el cambio antes de reiniciar el servidor de juego.
+
+### Resultado del deploy (19 nov 2026)
+
+Se integró el Dragon Spot v2 ya desplegado (`f3760a8`): al reaplicar las 104 sustituciones sobre ese
+mapa, la inversión recupera exactamente esa versión reciente. El cambio sigue limitado al depot.
+Se repitió la prueba con el cliente real contra el mapa final en 7278: calavera cian y monedas del
+locker, ambos OK.
+
+Respaldo completo: `~/backups/pre-deploy-20261119-120309-electric-depot` (runtime, mapa, OTB,
+cliente anterior, updater y ZIPs). Los ff-merges no se cruzaron con cambios de otras sesiones.
+El cliente publicó 5 archivos, 0 borrados: PNG cian, `const.lua`, `creature.lua`, DAT y SPR.
+Los dos ZIPs contienen los mismos 774 archivos verificados; manifest y descargas HTTP OK en 8080/8076.
+
+Tras `docker restart -t 45 yurots`: graceful shutdown completo, mapa cargado en 0.967 s, servidor
+healthy y probe OK. Se preservaron 1 cuenta, 8 personajes y 31 casas; dueños, contenido de depots,
+config y binario coinciden con el snapshot previo. No hubo rebuild de C++.
+
+El banco de NPCs pasó 16 casos y detectó un golden antiguo de `boat` (1903 líneas de diferencia):
+se reprodujo exactamente en un checkout temporal de `origin/main` anterior a este cambio.
+No se cambiaron NPCs ni se regrabó el golden. La revisión visual manual en Windows y abrir un
+locker en la sesión de juego habitual quedan como comprobación del jugador; la prueba con objetos
+guardados se hizo con el cliente real en el servidor aislado.

@@ -203,4 +203,4 @@ x126–134, y52–59, z4–z7. Las otras construcciones usan sus paredes origina
 La inversión de esos IDs recupera el mapa anterior byte por byte: los 11 lockers, sus
 `depotid=1`, los mostradores y los accesos se conservan. Se probó con el cliente Mac real
 en un servidor aislado (7278): el locker mostró las siete crystal coins guardadas del
-personaje sintético. Pendiente de publicación/deploy autorizado.
+personaje sintético. Publicado y desplegado el 19 nov 2026; probe posterior OK y contenido de depots preservado.

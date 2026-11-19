@@ -218,4 +218,4 @@ la persistencia XML y el drop total. No requiere C++, editar jugadores ni reasig
 marca a quienes ya la tienen. El PNG rosa previo se conserva por compatibilidad.
 Fuentes, prompts de ImageGen y detalles de reproducción en
 [DEPOT_ELECTRICO.md](../items-and-map/DEPOT_ELECTRICO.md#calavera-cian).
-Cambio aplicado en la copia local de ambas plataformas; publicación pendiente.
+Publicado en ambas plataformas el 19 nov 2026; el updater y ambos ZIPs ya entregan la calavera cian.
