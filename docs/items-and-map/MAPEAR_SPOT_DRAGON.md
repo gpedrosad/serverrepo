@@ -10,28 +10,36 @@ Generador: `scripts/map/generate-dragon-spot.py` (re-ejecutable). Manifiesto:
 ![z7: plataformas y puente](img/spot-dragon/z7.png)
 ![z8: túnel bajo el agua](img/spot-dragon/z8.png)
 
-## Cómo es
+## Cómo es (v2, 18 nov 2026)
 
 | Qué | Dónde | Piezas |
 |-----|-------|--------|
-| Plataforma del cazador | `93–95, 85–87, 7` (centrada en `94,86`) | madera `405` sobre el agua |
-| Trampilla | `95,85,7` | `427`; abajo, escalera de mano `1386` en `95,85,8` |
-| Puente | `89–92, 86, 7` (1 de ancho, 4 de largo) | madera `405` |
-| Plataforma del dragón | `86–88, 85–87, 7` | madera `405`; **Black Dragon** en `87,86` (radio 1, 300 s) |
-| Agujero de entrada | `102,85,7`, en la orilla de los elfos | `479`; abajo, escalera de mano `1386` en `102,85,8` |
-| Túnel | `95–102, 85–86, 8` (2 de ancho, bajo el agua) | piso de cueva `351/352/355`, paredes `356–367` |
+| Isla del cazador | elipse centro `94.5,85.5` (radios 3.2 × 2.9): pasto `x 93–96, y 84–87` con tu casilla `94,86` | pasto `4756`; el anillo que toca el agua, orilla `4526` + borde de costa `4644–4655` (no se pisa) |
+| Bajada en la isla | `96,85,7` (se sube a `96,86`) | agujero `469` (borde de piedras); abajo, escalera de mano `1386` en `96,85,8` |
+| Puente | `88–91, 87, 7` (1 de ancho, **4 sobre el agua**); entra por la orilla en `87,87` y `92–93,87` | madera `405` |
+| Isla del dragón | elipse centro `85,87.5` (radios 3.0 × 2.2): pasto `x 84–86, y 87–89` | igual que la otra; **Black Dragon** en `85,88` (radio 1, 300 s) |
+| Bajada en la orilla | `102,85,7`, orilla de los elfos (se sube a `102,86`) | agujero `469`; abajo, escalera de mano `1386` en `102,85,8` |
+| Túnel | `96–102, 85, 8`: **1 de ancho, recto** de escalera a escalera | piso de cueva `351/352/355`, paredes `356–367` |
 | Cartel | `103,84,7` | bloque `DRAGON_SPOT_SIGNS` de `readables.xml` |
 
-**Recorrido:** templo → orilla de los elfos (~111 pasos) → agujero → túnel hacia el oeste → escalera de mano
-(sube a `95,86,7`) → plataforma del cazador → puente → dragón.
+**Recorrido:** templo → orilla de los elfos (~111 pasos) → agujero → túnel al oeste → escalera de mano (sube a
+`96,86,7`) → isla del cazador (`94,86`, ~121) → puente → dragón (~130).
 
-**Subir y bajar:** pisar la trampilla deja sobre la escalera de mano en z8; usarla devuelve a `95,86,7`.
+**Subir y bajar:** pisar el agujero de la isla deja sobre la escalera de mano en z8; usarla devuelve a `96,86,7`.
+
+**Sin lava a la vista** (regla del [Islote del Minotauro](MAPEAR_ISLOTE_MINOTAURO.md)): la lava del campo viejo
+del noroeste que se veía (±9, ±7) desde las islas y el puente pasó a agua (76 casillas, el lago se agranda y se van
+los fuegos que tenía encima), y la de z8 que se veía desde el túnel, a roca `101` (51; el pozo de lava junto a la
+sala de ladrillo de z8 queda 2 columnas más angosto). Casillas vacías de z8 a la vista del túnel: roca.
+
+**v1 (descartada el mismo día):** plataformas cuadradas de madera, túnel de 2 de ancho, trampilla `427` (se veía
+como un cuadrado negro) y agujero `479` en la orilla (cuadrado de piedra gris). Para bajar sobre pasto: `469`.
 
 ## Por qué el dragón no sale
 
-Las dos plataformas y el puente están rodeados de agua y no tocan ninguna orilla; el generador lo comprueba
-(recorrido desde el dragón por z7: no llega a tierra). Los monstruos no pisan agujeros ni trampillas
-(`block_pathfind`), así que tampoco baja al túnel.
+Las dos islas y el puente están rodeados de agua y no tocan ninguna orilla; el anillo de costa no se pisa. El
+generador lo comprueba (recorrido del dragón por z7 sin pisar agujeros: 29 casillas, todas en las islas y el
+puente). Los monstruos no pisan agujeros (`block_pathfind`), así que tampoco baja al túnel.
 
 ## Regenerar
 
@@ -42,13 +50,14 @@ python3 scripts/map/check-map-load.py
 python3.11 scripts/map/check-upper-view.py
 ```
 
-Valida antes de escribir (la primera vez): z7 de las plataformas solo agua, z8 del túnel solo roca/lava, la
-orilla pasto libre, llegadas de las escaleras libres, dragón aislado, túnel conectado de punta a punta, cartel
-en suelo libre y el monstruo existe. Rellena con roca `101` las casillas vacías de z8 a la vista del túnel (58).
+Valida antes de escribir: islas sin casillas de 1 de ancho (cada borde con su pieza de costa), puente de 4 sobre
+el agua, nada de tierra caminable ajena pegada a las islas, llegadas de las escaleras libres, dragón aislado, túnel
+de 1 de ancho conectado de punta a punta, cartel en suelo libre y el monstruo existe (la primera vez, además, que
+la caja de z7 sea solo agua o lava).
 
-## Pruebas (18 nov 2026)
+## Pruebas (18 nov 2026, v2)
 
-`check-map-load` 0 errores, `check-upper-view` OK, `validate-tele-dest` OK; recorrido desde el templo con
-rampas, agujeros y escaleras: orilla 111, plataforma del cazador 120, dragón 128. 128 casillas cambiadas
-(z7 y z8, `x 86–110, y 84–92`). Lockers del templo con `depotid=1` y `houses.xml` coincide. Falta probarlo
-in-game (subir, bajar y que el dragón no cruce a la orilla).
+`check-map-load` 0 errores, `check-upper-view` OK, `validate-tele-dest` OK; recorrido desde el templo con rampas,
+agujeros y escaleras: orilla 111, isla del cazador 119–121, dragón 130; el dragón alcanza 29 casillas, ninguna
+fuera de las islas. 219 casillas cambiadas respecto de la v1 (z7 y z8, `x 75–111, y 77–92`, con la lava). Lockers
+del templo con `depotid=1` y `houses.xml` coincide. Falta probarlo in-game.
