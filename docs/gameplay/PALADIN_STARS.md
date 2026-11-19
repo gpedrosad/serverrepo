@@ -135,3 +135,9 @@ fallback del mapa puede desplazar un personaje una casilla si la anterior sigue 
 Los monstruos del fixture pueden moverse; para inmunidad/trainer se identifica el proyectil
 por origen y tipo. Al buscar efectos en bytes con regex hay que escapar el ID: `46 = 0x2E`
 es un punto de regex, no un literal. El fallo inicial era del verificador, no un proc real.
+
+Con el binario final, las cuatro combinaciones Venom/Storm contra un monstruo inmune
+y contra un trainer completan 12 tiros cada una sin proc elemental. Repetición final
+`--quick`: Gale y Royal 901 ms, rechazo de knight OK. Los cuatro personajes conservan
+su estrella equipada en el XML tras combatir. El fuente compilado coincide por checksum
+con el árbol local; build completo y enlaces finales sin avisos ni errores.

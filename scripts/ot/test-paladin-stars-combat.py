@@ -83,6 +83,7 @@ def main():
     ap.add_argument('--host', default='192.168.1.17')
     ap.add_argument('--port', type=int, default=7279)
     ap.add_argument('--guards-only', action='store_true')
+    ap.add_argument('--quick', action='store_true', help='solo Gale, Royal y rechazo de knight')
     args = ap.parse_args()
     if args.port == 7171:
         ap.error('Prohibido usar el servidor donde se juega')
@@ -118,6 +119,8 @@ def main():
     for name, missile, interval, effect in [('Star Gale',19,.9,45),('Star Royal',19,.9,45),
                                            ('Star Venom',20,1.333,46),('Star Storm',21,1.5,47),
                                            ('Star Forbidden',19,.9,None)]:
+        if args.quick and name in ('Star Venom','Star Storm'):
+            continue
         actor = Client(args.host, args.port, name)
         clients = [actor,target]
         login_deadline=time.monotonic()+10
