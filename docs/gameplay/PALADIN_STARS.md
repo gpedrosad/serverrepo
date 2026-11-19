@@ -1,7 +1,7 @@
 # Tres estrellas para paladín
 
-Estado: compilado y probado en instancia aislada; publicación y deploy en curso,
-con autorización de Gonzalo. No publicar el OTB en el servidor activo antes del cliente y del binario.
+Estado: **publicado y desplegado el 19 nov 2026**, con autorización de Gonzalo.
+Binario/datos: `1fe3070`; cliente publicado: `c064d46`. No publicar el OTB en el servidor activo antes del cliente y del binario.
 
 ![Ítems, ocho direcciones de vuelo e impactos](img/paladin-stars.png)
 
@@ -141,3 +141,30 @@ y contra un trainer completan 12 tiros cada una sin proc elemental. Repetición 
 `--quick`: Gale y Royal 901 ms, rechazo de knight OK. Los cuatro personajes conservan
 su estrella equipada en el XML tras combatir. El fuente compilado coincide por checksum
 con el árbol local; build completo y enlaces finales sin avisos ni errores.
+
+## Resultado del deploy
+
+Push a `main` en ambos repositorios. Cliente publicado primero con `publish_client.py --no-sync`:
+**2 archivos cambiados, 0 borrados** (DAT/SPR), conservando minimapa, updater, calavera negra,
+black fire sword y todos los sprites de otras sesiones. CRC DAT `82a0c2f1`, SPR `72eb537e`.
+Los 774 archivos comunes de los ZIPs Mac/Windows coinciden con la fuente; manifest y descargas
+DAT/SPR verificadas por contenido en 8080/8076. Dry-run posterior: 0 cambios.
+
+Respaldo: `~/backups/pre-deploy-20261119-203154-paladin-stars`, con runtime, binario anterior,
+mapa/OTB, updater y ZIPs. `before-stop/` refresca los datos justo antes de apagar y `after-save/`
+contiene los saves tras el shutdown. ff-merge sin solapamientos; el mapa de esta actualización
+**no cambió** respecto de lo que ya corría.
+
+Se instaló el binario probado con el servidor apagado (`docker stop -t 45`, copia mediante
+contenedor, `docker start`). Log: graceful shutdown completo, mapa cargado en **0.812 s**.
+Probe OK, healthy, 0 reinicios automáticos; el jugador pudo reconectar. Se conservaron
+**1 cuenta, 8 personajes y 31 casas**; nombres de archivos, depots, dueños y config verificados.
+El SHA del binario instalado coincide con el de la copia compilada. Instancia QA detenida.
+
+La compilación incremental necesitó `touch commands.cpp protocol76.cpp` tras integrar la ayuda
+GM: el Makefile no sigue headers y podía omitir un archivo por su timestamp. El enlace final
+se repitió con esos objetos y el ajuste de `isGmProtected()`, con 0 avisos/errores; los fuentes
+compilados se cotejaron por checksum antes de instalar el binario.
+
+Pendiente: revisión visual manual del jugador en Windows y en su sesión habitual. Las pruebas
+nativas se hicieron en Mac y el combate con cuentas sintéticas; no se usaron credenciales reales.
