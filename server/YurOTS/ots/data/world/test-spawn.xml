@@ -4869,20 +4869,20 @@
 	<spawn centerx="48" centery="307" centerz="5" radius="3">
 		<monster name="Dragon" x="0" y="-1" z="5" spawntime="300" />
 	</spawn>
-	<spawn centerx="59" centery="300" centerz="4" radius="3">
-		<monster name="Orc Berserker" x="-1" y="0" z="4" spawntime="120" />
+	<spawn centerx="43" centery="301" centerz="4" radius="1">
+		<monster name="Black Knight" x="0" y="0" z="4" spawntime="900" />
 	</spawn>
-	<spawn centerx="41" centery="314" centerz="4" radius="3">
-		<monster name="Hunter" x="1" y="0" z="4" spawntime="120" />
+	<spawn centerx="59" centery="301" centerz="4" radius="1">
+		<monster name="Dragon Lord" x="0" y="0" z="4" spawntime="900" />
 	</spawn>
-	<spawn centerx="43" centery="299" centerz="4" radius="3">
-		<monster name="Minotaur Archer" x="0" y="0" z="4" spawntime="120" />
+	<spawn centerx="43" centery="314" centerz="4" radius="1">
+		<monster name="Hydra" x="0" y="0" z="4" spawntime="900" />
 	</spawn>
-	<spawn centerx="51" centery="303" centerz="4" radius="3">
-		<monster name="Minotaur Mage" x="-1" y="0" z="4" spawntime="150" />
+	<spawn centerx="57" centery="314" centerz="4" radius="1">
+		<monster name="Behemoth" x="0" y="0" z="4" spawntime="900" />
 	</spawn>
-	<spawn centerx="52" centery="308" centerz="4" radius="3">
-		<monster name="Demon Skeleton" x="0" y="0" z="4" spawntime="180" />
+	<spawn centerx="49" centery="308" centerz="4" radius="1">
+		<monster name="Demon" x="0" y="0" z="4" spawntime="1800" />
 	</spawn>
 	<!-- END ELVENBANE_SPAWNS -->
 	<!-- BEGIN MINOTAUR_ISLE_SPAWNS (scripts/map/generate-minotaur-isle.py) -->

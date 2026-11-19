@@ -137,11 +137,13 @@ casilla, guardadas en `relocated` del manifiesto): `sotano→patio` 57,302→57,
 | z10 | 6 | Minotaur 4, Orc Warrior 4, Minotaur Guard 2 |
 | z6 | 3 | Minotaur 2, Orc Warrior 1 (sobre los poison fields) |
 | z5 | 6 | **Dragon 1** (torre central), Elf 1, Elf Scout 1, Orc Warrior 2, Orc Shaman 1, Elf Arcanist 1 |
-| z4 | 5 | Orc Berserker 1, Hunter 1, Minotaur Archer 1 (torretas), Minotaur Mage 1, Demon Skeleton 1 (cima de la torre) |
+| z4 | 5 | **Uno fuerte y distinto por cima** (fijos, `TOWER_TOPS`): Black Knight (torreta NO, `43,301`), Dragon Lord (NE, `59,301`), Hydra (SO, `43,314`), Behemoth (SE, `57,314`) con respawn 15 min, y **Demon** en la cima de la torre central (`49,308`, 30 min) |
 
 La dificultad sube de la entrada hacia el castillo y de los sótanos hacia la cima. El **Dragon está
 en la torre central de z5**, el piso inmediatamente arriba de los poison fields de z6 (como la quest
-clásica); la cima z4 queda con Demon Skeleton y Minotaur Mage.
+clásica). Desde nov 2026 las cimas de z4 no se sortean: cada torre tiene su monstruo fuerte fijo, en la
+casilla más lejos de su escalera (antes había Orc Berserker, Hunter, Minotaur Archer, Minotaur Mage y Demon
+Skeleton, y la torreta SE quedaba vacía).
 
 ## Cómo regenerar
 

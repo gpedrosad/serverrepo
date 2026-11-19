@@ -156,10 +156,16 @@ HUNTS = {
     Z5: [("Elf", 1, 1, 120, None), ("Elf Scout", 1, 1, 120, None), ("Orc Warrior", 1, 2, 90, None),
          ("Orc Shaman", 1, 1, 150, "torre"), ("Elf Arcanist", 1, 1, 150, "torre"),
          ("Dragon", 1, 1, 300, "torre")],
-    Z4: [("Orc Berserker", 1, 1, 120, "torreta"), ("Hunter", 1, 1, 120, "torreta"),
-         ("Minotaur Archer", 1, 1, 120, "torreta"), ("Minotaur Mage", 1, 1, 150, "torre"),
-         ("Demon Skeleton", 1, 1, 180, "torre")],
 }
+# Cimas (z4): un monstruo fuerte y distinto en cada torre, en la casilla más lejos de su escalera.
+# Fijos (no sorteados), así cada torre tiene siempre el suyo. (nombre, (x, y), respawn)
+TOWER_TOPS = [
+    ("Black Knight", (43, 301), 900),   # torreta NO
+    ("Dragon Lord", (59, 301), 900),    # torreta NE
+    ("Hydra", (43, 314), 900),          # torreta SO
+    ("Behemoth", (57, 314), 900),       # torreta SE
+    ("Demon", (49, 308), 1800),         # cima de la torre central
+]
 GAP = 3                                # separación mínima entre centros de spawn
 
 # --- escaleras: (etiqueta, piso de arriba, piso de abajo, (x, y) deseado, tipo) -------------------
@@ -862,6 +868,8 @@ def place_hunts(layers: dict, walkbyz: dict, avoid: dict, seed: int):
                 placed += 1
             if placed < nspawn:
                 print(f"aviso: {name} z{z}: {placed}/{nspawn} spawns", file=sys.stderr)
+    for name, (x, y), spawntime in TOWER_TOPS:
+        out.append(((x, y), Z4, [(name, (x, y), spawntime)]))
     return out
 
 
