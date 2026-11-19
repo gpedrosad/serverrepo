@@ -3236,41 +3236,41 @@
 	<spawn centerx="406" centery="20" centerz="8" radius="3">
 		<monster name="Quara Hydromancer" x="0" y="0" z="8" spawntime="300" />
 	</spawn>
-		<!-- BEGIN BAMBOO_DEPTHS_SPAWNS (scripts/map/generate-bamboo-depths.py) -->
-	<spawn centerx="174" centery="95" centerz="9" radius="3">
+	<!-- BEGIN BAMBOO_DEPTHS_SPAWNS (scripts/map/generate-bamboo-depths.py) -->
+	<spawn centerx="176" centery="96" centerz="9" radius="3">
 		<monster name="Dworc Venomsniper" x="0" y="0" z="9" spawntime="175" />
 		<monster name="Dworc Venomsniper" x="1" y="0" z="9" spawntime="175" />
 	</spawn>
-	<spawn centerx="177" centery="99" centerz="9" radius="3">
+	<spawn centerx="174" centery="95" centerz="9" radius="3">
 		<monster name="Dworc Fleshhunter" x="0" y="0" z="9" spawntime="175" />
 		<monster name="Dworc Fleshhunter" x="1" y="0" z="9" spawntime="175" />
 	</spawn>
-	<spawn centerx="172" centery="97" centerz="9" radius="3">
+	<spawn centerx="177" centery="94" centerz="9" radius="3">
 		<monster name="Orc Warrior" x="0" y="0" z="9" spawntime="175" />
-		<monster name="Orc Warrior" x="0" y="1" z="9" spawntime="175" />
+		<monster name="Orc Warrior" x="1" y="0" z="9" spawntime="175" />
 	</spawn>
-	<spawn centerx="188" centery="95" centerz="9" radius="3">
+	<spawn centerx="189" centery="93" centerz="9" radius="3">
 		<monster name="Kongra" x="0" y="0" z="9" spawntime="175" />
 		<monster name="Kongra" x="1" y="0" z="9" spawntime="175" />
 	</spawn>
-	<spawn centerx="191" centery="97" centerz="9" radius="3">
+	<spawn centerx="190" centery="91" centerz="9" radius="3">
 		<monster name="Sibang" x="0" y="0" z="9" spawntime="175" />
-		<monster name="Sibang" x="0" y="1" z="9" spawntime="175" />
+		<monster name="Sibang" x="1" y="0" z="9" spawntime="175" />
 	</spawn>
-	<spawn centerx="186" centery="93" centerz="9" radius="3">
+	<spawn centerx="191" centery="94" centerz="9" radius="3">
 		<monster name="Orc Berserker" x="0" y="0" z="9" spawntime="175" />
 		<monster name="Orc Berserker" x="1" y="0" z="9" spawntime="175" />
 	</spawn>
-	<spawn centerx="203" centery="91" centerz="9" radius="3">
+	<spawn centerx="203" centery="89" centerz="9" radius="3">
 		<monster name="Orc Warlord" x="0" y="0" z="9" spawntime="900" />
 	</spawn>
-	<spawn centerx="200" centery="94" centerz="9" radius="3">
+	<spawn centerx="201" centery="90" centerz="9" radius="3">
 		<monster name="Orc Leader" x="0" y="0" z="9" spawntime="600" />
 	</spawn>
-	<spawn centerx="205" centery="94" centerz="9" radius="3">
+	<spawn centerx="203" centery="86" centerz="9" radius="3">
 		<monster name="Orc Shaman" x="0" y="0" z="9" spawntime="300" />
 	</spawn>
-	<spawn centerx="202" centery="88" centerz="9" radius="3">
+	<spawn centerx="203" centery="92" centerz="9" radius="3">
 		<monster name="Orc Berserker" x="0" y="0" z="9" spawntime="175" />
 		<monster name="Orc Berserker" x="1" y="0" z="9" spawntime="175" />
 	</spawn>
