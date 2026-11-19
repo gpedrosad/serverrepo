@@ -5,9 +5,12 @@ La fire sword de 7.6 (server id 2392, client id 3280) es un ítem 1x1 animado en
 llamas (rojos, naranjas y amarillos) con un filo plateado y una empuñadura roja abajo a la derecha.
 
 Fuego negro = se invierte el brillo de la llama y se le da un tono violeta: lo que era amarillo brillante (el
-corazón de la llama, pegado al filo) queda casi negro, y lo que era rojo oscuro (las puntas de afuera) queda
-violeta, como un halo. Así la hoja se ve negra pero se distingue sobre fondos oscuros. El filo plateado (grises
-claros) queda igual; la empuñadura (los rojos de abajo a la derecha) pasa a hierro oscuro con un poco de violeta.
+corazón de la llama, pegado al filo) queda violeta oscuro, y lo que era rojo oscuro (las puntas de afuera) queda
+violeta-magenta brillante. El filo plateado (grises claros) queda igual; la empuñadura (los rojos de abajo a la
+derecha) pasa a violeta oscuro.
+
+v2 (19 nov 2026): la v1 llevaba el corazón casi a negro (brillo 0.06) y la empuñadura a hierro casi negro, y en el
+cliente la espada no se distinguía del suelo. Ahora el brillo mínimo de la llama es 0.30 y las puntas llegan a 1.0.
 La luz (flag .dat 0x15 + attr OTB 0x2A) la pone add_custom_items.py: violeta tenue en vez de naranja.
 
   python3.11 scripts/client-rme/recolor_black_fire_sword.py --preview /tmp/black_fire_sword.png
@@ -32,8 +35,8 @@ from add_black_dragon_look import decode_sprite, read_spr  # noqa: E402
 
 CLIENT_ID = 3280          # fire sword (server 2392)
 OUT = ROOT / "devtools/zagan-test/custom-sprites/black_fire_sword.png"
-FLAME_HUE = 275           # violeta del halo
-HILT_HUE = 270
+FLAME_HUE = 300           # magenta de las puntas; el corazón baja 30° hacia el violeta
+HILT_HUE = 275
 
 
 def is_hilt(x: int, y: int) -> bool:
@@ -48,13 +51,13 @@ def recolor(x: int, y: int, r: int, g: int, b: int) -> tuple[int, int, int]:
     warm = (hd <= 65 or hd >= 330) and s > 0.45
     if not warm:                                   # contorno negro y filo plateado: igual
         return r, g, b
-    if is_hilt(x, y):                              # empuñadura: hierro oscuro con un poco de violeta
-        nh, ns, nv = HILT_HUE / 360, 0.30, 0.09 + 0.30 * v
-    else:                                          # llama: brillo invertido, tono violeta
+    if is_hilt(x, y):                              # empuñadura: violeta oscuro
+        nh, ns, nv = HILT_HUE / 360, 0.45, 0.16 + 0.50 * v
+    else:                                          # llama: brillo invertido, de violeta oscuro a magenta
         heat = min(1.0, v * (0.55 + 0.45 * min(1.0, hd / 50)))   # amarillo = más caliente, rojo oscuro = menos
-        nv = 0.06 + 0.66 * (1.0 - heat) ** 1.2
-        ns = 0.35 + 0.55 * (1.0 - heat)
-        nh = (FLAME_HUE + 15 * (1.0 - heat)) / 360
+        nv = 0.30 + 0.70 * (1.0 - heat) ** 0.6
+        ns = 0.50 + 0.45 * (1.0 - heat)
+        nh = (FLAME_HUE - 30 * (1.0 - heat)) / 360
     rr, gg, bb = colorsys.hsv_to_rgb(nh, ns, nv)
     return int(rr * 255), int(gg * 255), int(bb * 255)
 

@@ -251,7 +251,7 @@ sin efectos, que sueltan las Dark Hydras.
 | Server id | **`20193`**, client id 3237 (sacrificado: broken hilt). Entrada en `NEW_ITEMS` de `add_custom_items.py` |
 | Prototipo | la fire sword `2392`: espada de 1 mano, mismo peso (23 oz) y slot |
 | Stats | **atk 35 / def 22** (la fire sword es 24 / 20). Sin procs ni C++: el ataque y la defensa salen del bloque de arma del OTB |
-| Efecto visual | la llama invierte el brillo y toma tono violeta: el corazón amarillo (pegado al filo) queda casi negro y las puntas rojo oscuro quedan violetas, como un halo. Así se ve negra pero se distingue sobre fondos oscuros. El filo plateado no cambia; la empuñadura roja pasa a hierro oscuro con un toque violeta |
+| Efecto visual | la llama invierte el brillo y toma tono violeta: el corazón amarillo (pegado al filo) queda violeta oscuro y las puntas rojo oscuro quedan violeta-magenta brillante. El filo plateado no cambia; la empuñadura roja pasa a violeta oscuro. **v2 (19 nov 2026):** la v1 llevaba el corazón casi a negro y la empuñadura a hierro casi negro, y en el cliente no se distinguía del suelo; ahora la llama no baja de brillo 0.30 (sprites `13985–13986`; los de la v1 quedan sin usar en el `.spr`) |
 | Animación | 1×1 con **2 cuadros**, los mismos de la fire sword: PNG 32×64 apilado |
 | Luz | nivel 3 (el mismo), color 199 (naranja) → **113 (violeta, r3 g0 b5)**, en el flag `.dat` `0x15` y el attr OTB `0x2A` |
 | Sprite | `devtools/zagan-test/custom-sprites/black_fire_sword.png` (gitignoreado; `git add -f`) |
