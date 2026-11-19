@@ -47,6 +47,7 @@
 #include "game.h"
 #include "readables.h"
 #include "ioplayer.h"
+#include "commands.h"
 
 extern LuaScript g_config;
 extern Actions actions;
@@ -2335,6 +2336,9 @@ void Protocol76::sendThingAppear(const Thing *thing){
 				AddTextMessage(msg,MSG_EVENT, tempstring.c_str());
 
 			WriteBuffer(msg);
+
+			if(player->access >= g_config.ACCESS_PROTECT)
+				sendGmCommandsHelp(player);   // GM: resumen de comandos (docs/gameplay/GM_COMANDOS.md)
 
 			for(int i = 0; i < MAX_VIPS; i++)
 			{

@@ -200,6 +200,7 @@ s_defcommands Commands::defined_commands[] = {
 	{"/loot",&Commands::gmLootTest},
 	{"/matar",&Commands::gmKillMonsters},
 	{"/speed",&Commands::gmSpeed},
+	{"/comandos",&Commands::gmHelp},
 };
 
 Commands::Commands(Game* igame):
@@ -1858,5 +1859,71 @@ bool Commands::gmSpeed(Creature* c, const std::string &cmd, const std::string &p
 	else
 		info << "Velocidad normal: " << c->getNormalSpeed() << ".";
 	gmInfo(self, info.str());
+	return true;
+}
+
+// Resumen de comandos que ve el GM al entrar y con /comandos (docs/gameplay/GM_COMANDOS.md).
+// Si se agrega un comando de GM, sumarlo aca.
+static const char* GM_HELP_SECTIONS[] = {
+	"Comandos de GM (/comandos los muestra de nuevo)",
+
+	"MOVERSE\n"
+	"/ir [lugar] - viajar a un lugar (sin nombre: lista)\n"
+	"/goto Nombre  o  /goto x y z - ir a un jugador o a coordenadas\n"
+	"/a N - avanzar N casillas hacia donde miras\n"
+	"/up, /down - subir o bajar un piso\n"
+	"/t - ir a tu templo\n"
+	"/c Nombre - traer a un jugador o criatura\n"
+	"/send Nombre, x y z - mandar a un jugador a coordenadas\n"
+	"/pos - tu posicion\n"
+	"/invisible - nadie te ve, te ves como Ghost y pasas por encima de todos\n"
+	"/speed [N] - velocidad fija (sin numero: la normal)",
+
+	"PROBAR CONTENIDO\n"
+	"/god - apaga/prende la proteccion (apagada: te atacan, no bajas de 1 de vida)\n"
+	"/i nombre o id [cantidad] - crear item (ej: /i black fire sword)\n"
+	"/m monstruo - poner un monstruo adelante\n"
+	"/summon monstruo - invocar un monstruo tuyo\n"
+	"/s npc - poner un NPC adelante\n"
+	"/matar - sacar los monstruos a la vista\n"
+	"/loot monstruo [N] - simular el loot de N muertes (ej: /loot frost dragon 500)\n"
+	"/nivel N [Nombre] - cambiar nivel\n"
+	"/skill sword 90 [Nombre] - fist club sword axe distance shielding fishing\n"
+	"/ml N [Nombre] - cambiar magic level\n"
+	"/promote Nombre - promocionar\n"
+	"/z N - ver el efecto magico N\n"
+	"/q [N] - ver tu dinero o descontar N\n"
+	"Look: ids, action/unique id, items de la casilla; criaturas con vida y pos",
+
+	"JUGADORES\n"
+	"/info Nombre - datos del jugador\n"
+	"/getonline, /ips - quien esta online y sus IP\n"
+	"/kick Nombre - sacarlo del juego\n"
+	"/b Nombre - ban de IP  |  /ban Nombre - ban del personaje\n"
+	"/pink Nombre[, horas]  |  /unpink Nombre - calavera rosa\n"
+	"/owner Nombre - duenio de la casa donde estas parado\n"
+	"/B texto - mensaje a todo el servidor",
+
+	"SERVIDOR\n"
+	"/save - guardar ahora\n"
+	"/clean - limpiar los items del piso\n"
+	"/reload actions|commands|monsters|spells|config\n"
+	"/closeserver, /openserver - cerrar o abrir a los jugadores\n"
+	"/max N - maximo de jugadores\n"
+	"/pvp 0|1|2 - no-pvp, pvp, pvp-enforced\n"
+	"/shutdown N - apagar en N minutos",
+};
+
+void sendGmCommandsHelp(Player* player)
+{
+	if(!player)
+		return;
+	for(size_t i = 0; i < sizeof(GM_HELP_SECTIONS) / sizeof(GM_HELP_SECTIONS[0]); ++i)
+		player->sendTextMessage(MSG_BLUE_TEXT, GM_HELP_SECTIONS[i]);
+}
+
+bool Commands::gmHelp(Creature* c, const std::string &cmd, const std::string &param)
+{
+	sendGmCommandsHelp(dynamic_cast<Player*>(c));
 	return true;
 }
