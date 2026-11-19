@@ -277,6 +277,7 @@ Ver `docs/items-and-map/ZAGAN_TEST_ITEMS.md` para el pipeline completo (assets +
 - **No confundir `getEffectiveMagLevel()` con `maglevel` raw.** En el protocolo76 se muestra el primero. En el XML del player se persiste el segundo. El bonus usa el primero.
 - **Wands/rods no consumen charges** (no son `wand` con `charges` en el OTB). Cuestan mana por hit. El violet gem imbue es **persistente en el actionid** del item (`AID 9030-9033`).
 - **Crimson Wand NO usa el rango ni la mana de `g_config.MANA_INFERNO`/`RANGE_INFERNO`.** Tiene valores hardcoded (`mana = 13`, `dist = 5`) en el branch de `useWand()`. Esto es deliberado (item custom), pero si se cambia la config de inferno, crimson no se ve afectada.
+- **GM:** desde el 19 nov 2026 un GM usa todas las wands y rods sin vocación, nivel ni maná (no gasta maná). Ver [SPELL_RUNTIME.md](SPELL_RUNTIME.md#gm-todos-los-hechizos-y-todas-las-armas-19-nov-2026).
 - **Train Wand en house PZ:** melee ya tenía `canAttackPrivateTrainerInHouse`, pero el path de wands (`creatureThrowRune` → `creatureMakeMagic`) no pasaba el target a `creatureOnPrepareAttack` y el filtro PZ descartaba el tile. Sin esa excepción mágica, la Train Wand cancelaba en casa aunque el dummy sea `trainer=1`.
 
 ---

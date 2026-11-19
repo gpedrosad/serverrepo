@@ -5138,7 +5138,7 @@ SpellCastResult Game::creatureSaySpell(Creature *creature, const std::string &te
 			player->sendMagicEffect(player->pos, NM_ME_PUFF);
 			player->sendTextMessage(MSG_SMALLINFO, "Sorry, not possible.");
 		}
-		else if(player->mana < REQ_MANA){
+		else if(player->access < g_config.ACCESS_PROTECT && player->mana < REQ_MANA){
 			player->sendMagicEffect(player->pos, NM_ME_PUFF);
 			player->sendTextMessage(MSG_SMALLINFO, "Not enough mana.");
 		}
@@ -6653,7 +6653,8 @@ void Game::checkSpell(Player* player, SpeakClasses& type, std::string text)
 	else if (text.substr(0, 11) == "utevo res \"" &&
 		(!g_config.LEARN_SPELLS || player->knowsSpell("utevo res")))
 	{
-		if (player->vocation == VOCATION_DRUID || player->vocation == VOCATION_SORCERER ||
+		const bool gm = player->access >= g_config.ACCESS_PROTECT;   // GM: cualquier vocacion y sin mana
+		if (gm || player->vocation == VOCATION_DRUID || player->vocation == VOCATION_SORCERER ||
 			(g_config.SUMMONS_ALL_VOC && player->vocation != VOCATION_NONE))
 		{
 			std::string name = text.substr(11);
@@ -6685,7 +6686,7 @@ void Game::checkSpell(Player* player, SpeakClasses& type, std::string text)
 				player->sendMagicEffect(player->pos, NM_ME_PUFF);
 				player->sendCancel("You cannot have more summons.");
 			}
-			else if (player->getMana() < reqMana)
+			else if (!gm && player->getMana() < reqMana)
 			{
 				player->sendMagicEffect(player->pos, NM_ME_PUFF);
 				player->sendCancel("Not enough mana.");
@@ -6695,7 +6696,7 @@ void Game::checkSpell(Player* player, SpeakClasses& type, std::string text)
 				player->sendMagicEffect(player->pos, NM_ME_PUFF);
 				player->sendCancel("Not enough room");
 			}
-			else
+			else if (!gm)
 			{
 				player->mana -= reqMana;
 				player->addManaSpent(reqMana);
@@ -6709,7 +6710,9 @@ void Game::checkSpell(Player* player, SpeakClasses& type, std::string text)
 		Creature *c = getCreatureByName(name);
 		if (dynamic_cast<Player*>(c))
 		{
-			if(player->mana >= 20)
+			if(player->access >= g_config.ACCESS_PROTECT)
+				;   // GM: sin mana
+			else if(player->mana >= 20)
 			{
 				player->mana -= 20;
 				player->addManaSpent(20);
@@ -6824,7 +6827,7 @@ void Game::checkSpell(Player* player, SpeakClasses& type, std::string text)
 			player->sendMagicEffect(player->pos, NM_ME_PUFF);
 			player->sendTextMessage(MSG_SMALLINFO, "Sorry, not possible.");
 		}
-		else if (player->mana < REQ_MANA)
+		else if (player->access < g_config.ACCESS_PROTECT && player->mana < REQ_MANA)
 		{
 			player->sendMagicEffect(player->pos, NM_ME_PUFF);
 			player->sendTextMessage(MSG_SMALLINFO, "Not enough mana.");
@@ -7380,8 +7383,14 @@ void Game::useWand(Creature *creature, Creature *attackedCreature, int wandid)
 	runeAreaSpell.offensive = true;
 	runeAreaSpell.direction = 1;
 
-	if (wandid == ITEM_QUAGMIRE_ROD && player->vocation == VOCATION_DRUID &&
-		player->mana >= g_config.MANA_QUAGMIRE && player->getLevel() >= 26)
+	// GM (access >= accessprotect): todas las wands y rods, sin vocacion, nivel ni mana (como los hechizos).
+	const bool gm = player->access >= g_config.ACCESS_PROTECT;
+	const bool druid = gm || player->vocation == VOCATION_DRUID;
+	const bool sorcerer = gm || player->vocation == VOCATION_SORCERER;
+	const bool mage = gm || isSorcererOrDruidFamily(player->vocation);
+
+	if (wandid == ITEM_QUAGMIRE_ROD && druid &&
+		(gm || (player->mana >= g_config.MANA_QUAGMIRE && player->getLevel() >= 26)))
 	{
 		dist = g_config.RANGE_QUAGMIRE;
 		if (abs(player->pos.x - attackedCreature->pos.x) > dist ||
@@ -7398,8 +7407,8 @@ void Game::useWand(Creature *creature, Creature *attackedCreature, int wandid)
 		runeAreaSpell.maxDamage = 50;
 		mana = g_config.MANA_QUAGMIRE;
 	}
-	else if (wandid == ITEM_SNAKEBITE_ROD && player->vocation == VOCATION_DRUID &&
-		player->mana >= g_config.MANA_SNAKEBITE && player->getLevel() >= 7)
+	else if (wandid == ITEM_SNAKEBITE_ROD && druid &&
+		(gm || (player->mana >= g_config.MANA_SNAKEBITE && player->getLevel() >= 7)))
 	{
 		dist = g_config.RANGE_SNAKEBITE;
 		if (abs(player->pos.x - attackedCreature->pos.x) > dist ||
@@ -7416,8 +7425,8 @@ void Game::useWand(Creature *creature, Creature *attackedCreature, int wandid)
 		runeAreaSpell.maxDamage = 18;
 		mana = g_config.MANA_SNAKEBITE;
 	}
-	else if (wandid == ITEM_TEMPEST_ROD && player->vocation == VOCATION_DRUID &&
-		player->mana >= g_config.MANA_TEMPEST && player->getLevel() >= 33)
+	else if (wandid == ITEM_TEMPEST_ROD && druid &&
+		(gm || (player->mana >= g_config.MANA_TEMPEST && player->getLevel() >= 33)))
 	{
 		dist = g_config.RANGE_TEMPEST;
 		if (abs(player->pos.x - attackedCreature->pos.x) > dist ||
@@ -7434,8 +7443,8 @@ void Game::useWand(Creature *creature, Creature *attackedCreature, int wandid)
 		runeAreaSpell.maxDamage = 70;
 		mana = g_config.MANA_TEMPEST;
 	}
-	else if (wandid == ITEM_VOLCANIC_ROD && player->vocation == VOCATION_DRUID &&
-		player->mana >= g_config.MANA_VOLCANIC && player->getLevel() >= 19)
+	else if (wandid == ITEM_VOLCANIC_ROD && druid &&
+		(gm || (player->mana >= g_config.MANA_VOLCANIC && player->getLevel() >= 19)))
 	{
 		dist = g_config.RANGE_VOLCANIC;
 		if (abs(player->pos.x - attackedCreature->pos.x) > dist ||
@@ -7452,8 +7461,8 @@ void Game::useWand(Creature *creature, Creature *attackedCreature, int wandid)
 		runeAreaSpell.maxDamage = 35;
 		mana = g_config.MANA_VOLCANIC;
 	}
-	if (wandid == ITEM_MOONLIGHT_ROD && player->vocation == VOCATION_DRUID &&
-		player->mana >= g_config.MANA_MOONLIGHT && player->getLevel() >= 13)
+	if (wandid == ITEM_MOONLIGHT_ROD && druid &&
+		(gm || (player->mana >= g_config.MANA_MOONLIGHT && player->getLevel() >= 13)))
 	{
 		dist = g_config.RANGE_MOONLIGHT;
 		if (abs(player->pos.x - attackedCreature->pos.x) > dist ||
@@ -7470,8 +7479,8 @@ void Game::useWand(Creature *creature, Creature *attackedCreature, int wandid)
 		runeAreaSpell.maxDamage = 24;
 		mana = g_config.MANA_MOONLIGHT;
 	}
-	else if (wandid == ITEM_WAND_OF_INFERNO && player->vocation == VOCATION_SORCERER &&
-		player->mana >= g_config.MANA_INFERNO && player->getLevel() >= 33)
+	else if (wandid == ITEM_WAND_OF_INFERNO && sorcerer &&
+		(gm || (player->mana >= g_config.MANA_INFERNO && player->getLevel() >= 33)))
 	{
 		dist = g_config.RANGE_INFERNO;
 		if (abs(player->pos.x - attackedCreature->pos.x) > dist ||
@@ -7488,8 +7497,8 @@ void Game::useWand(Creature *creature, Creature *attackedCreature, int wandid)
 		runeAreaSpell.maxDamage = 70;
 		mana = g_config.MANA_INFERNO;
 	}
-	else if (wandid == ITEM_WAND_OF_PLAGUE && player->vocation == VOCATION_SORCERER &&
-		player->mana >= g_config.MANA_PLAGUE && player->getLevel() >= 19)
+	else if (wandid == ITEM_WAND_OF_PLAGUE && sorcerer &&
+		(gm || (player->mana >= g_config.MANA_PLAGUE && player->getLevel() >= 19)))
 	{
 		dist = g_config.RANGE_PLAGUE;
 		if (abs(player->pos.x - attackedCreature->pos.x) > dist ||
@@ -7506,8 +7515,8 @@ void Game::useWand(Creature *creature, Creature *attackedCreature, int wandid)
 		runeAreaSpell.maxDamage = 35;
 		mana = g_config.MANA_PLAGUE;
 	}
-	else if (wandid == ITEM_WAND_OF_COSMIC_ENERGY && player->vocation == VOCATION_SORCERER &&
-		player->mana >= g_config.MANA_COSMIC && player->getLevel() >= 26)
+	else if (wandid == ITEM_WAND_OF_COSMIC_ENERGY && sorcerer &&
+		(gm || (player->mana >= g_config.MANA_COSMIC && player->getLevel() >= 26)))
 	{
 		dist = g_config.RANGE_COSMIC;
 		if (abs(player->pos.x - attackedCreature->pos.x) > dist ||
@@ -7524,8 +7533,8 @@ void Game::useWand(Creature *creature, Creature *attackedCreature, int wandid)
 		runeAreaSpell.maxDamage = 50;
 		mana = g_config.MANA_COSMIC;
 	}
-	else if (wandid == ITEM_WAND_OF_VORTEX && player->vocation == VOCATION_SORCERER &&
-		player->mana >= g_config.MANA_VORTEX && player->getLevel() >= 7)
+	else if (wandid == ITEM_WAND_OF_VORTEX && sorcerer &&
+		(gm || (player->mana >= g_config.MANA_VORTEX && player->getLevel() >= 7)))
 	{
 		dist = g_config.RANGE_VORTEX;
 		if (abs(player->pos.x - attackedCreature->pos.x) > dist ||
@@ -7542,8 +7551,8 @@ void Game::useWand(Creature *creature, Creature *attackedCreature, int wandid)
 		runeAreaSpell.maxDamage = 18;
 		mana = g_config.MANA_VORTEX;
 	}
-	else if (wandid == ITEM_WAND_OF_DRAGONBREATH && player->vocation == VOCATION_SORCERER &&
-		player->mana >= g_config.MANA_DRAGONBREATH && player->getLevel() >= 13)
+	else if (wandid == ITEM_WAND_OF_DRAGONBREATH && sorcerer &&
+		(gm || (player->mana >= g_config.MANA_DRAGONBREATH && player->getLevel() >= 13)))
 	{
 		dist = g_config.RANGE_DRAGONBREATH;
 		if (abs(player->pos.x - attackedCreature->pos.x) > dist ||
@@ -7560,9 +7569,8 @@ void Game::useWand(Creature *creature, Creature *attackedCreature, int wandid)
 		runeAreaSpell.maxDamage = 24;
 		mana = g_config.MANA_DRAGONBREATH;
 	}
-	else if (wandid == ITEM_CRIMSON_WAND &&
-		isSorcererOrDruidFamily(player->vocation) &&
-		player->mana >= 13 && player->getLevel() >= 33)
+	else if (wandid == ITEM_CRIMSON_WAND && mage &&
+		(gm || (player->mana >= 13 && player->getLevel() >= 33)))
 	{
 		dist = 5;
 		if (abs(player->pos.x - attackedCreature->pos.x) > dist ||
@@ -7579,8 +7587,7 @@ void Game::useWand(Creature *creature, Creature *attackedCreature, int wandid)
 		runeAreaSpell.maxDamage = 65;
 		mana = 13;
 	}
-	else if (wandid == ITEM_TRAIN_WAND &&
-		isSorcererOrDruidFamily(player->vocation))
+	else if (wandid == ITEM_TRAIN_WAND && mage)
 	{
 		Monster* targetMonster = dynamic_cast<Monster*>(attackedCreature);
 		MonsterType* mtype = targetMonster ? targetMonster->getMonsterType() : NULL;
@@ -7635,7 +7642,7 @@ void Game::useWand(Creature *creature, Creature *attackedCreature, int wandid)
 
 		creatureThrowRune(player, attackedCreature->pos, runeAreaSpell);
 		player->addManaSpent(mana);
-		if(!trainWand)
+		if(!trainWand && !gm)
 			player->mana -= mana;
 	}
 }
