@@ -157,14 +157,14 @@ HUNTS = {
          ("Orc Shaman", 1, 1, 150, "torre"), ("Elf Arcanist", 1, 1, 150, "torre"),
          ("Dragon", 1, 1, 300, "torre")],
 }
-# Cimas (z4): un monstruo fuerte y distinto en cada torre, en la casilla más lejos de su escalera.
+# Cimas (z4): un jefe propio en cada torre (data/monster/*.xml, ataques de apply-monster-kits.py), en la casilla más lejos de su escalera.
 # Fijos (no sorteados), así cada torre tiene siempre el suyo. (nombre, (x, y), respawn)
 TOWER_TOPS = [
-    ("Black Knight", (43, 301), 900),   # torreta NO
-    ("Dragon Lord", (59, 301), 900),    # torreta NE
-    ("Hydra", (43, 314), 900),          # torreta SO
-    ("Behemoth", (57, 314), 900),       # torreta SE
-    ("Demon", (49, 308), 1800),         # cima de la torre central
+    ("Elvenbane Ranger", (43, 301), 900),   # torreta NO: arquero
+    ("Elven Archmage", (59, 301), 900),     # torreta NE: maga de energía y hielo
+    ("Orc Warchief", (43, 314), 900),       # torreta SO: jefe orco
+    ("Thornwarden", (57, 314), 900),        # torreta SE: guardián de espinas
+    ("Lord of Elvenbane", (49, 308), 1800), # cima de la torre central: jefe final
 ]
 GAP = 3                                # separación mínima entre centros de spawn
 

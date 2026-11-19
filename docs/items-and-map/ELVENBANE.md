@@ -137,13 +137,30 @@ casilla, guardadas en `relocated` del manifiesto): `sotano→patio` 57,302→57,
 | z10 | 6 | Minotaur 4, Orc Warrior 4, Minotaur Guard 2 |
 | z6 | 3 | Minotaur 2, Orc Warrior 1 (sobre los poison fields) |
 | z5 | 6 | **Dragon 1** (torre central), Elf 1, Elf Scout 1, Orc Warrior 2, Orc Shaman 1, Elf Arcanist 1 |
-| z4 | 5 | **Uno fuerte y distinto por cima** (fijos, `TOWER_TOPS`): Black Knight (torreta NO, `43,301`), Dragon Lord (NE, `59,301`), Hydra (SO, `43,314`), Behemoth (SE, `57,314`) con respawn 15 min, y **Demon** en la cima de la torre central (`49,308`, 30 min) |
+| z4 | 5 | **Un jefe propio por cima** (fijos, `TOWER_TOPS`, ver [Jefes de las cimas](#jefes-de-las-cimas)): Elvenbane Ranger (torreta NO, `43,301`), Elven Archmage (NE, `59,301`), Orc Warchief (SO, `43,314`), Thornwarden (SE, `57,314`) con respawn 15 min, y **Lord of Elvenbane** en la cima de la torre central (`49,308`, 30 min) |
 
 La dificultad sube de la entrada hacia el castillo y de los sótanos hacia la cima. El **Dragon está
 en la torre central de z5**, el piso inmediatamente arriba de los poison fields de z6 (como la quest
 clásica). Desde nov 2026 las cimas de z4 no se sortean: cada torre tiene su monstruo fuerte fijo, en la
 casilla más lejos de su escalera (antes había Orc Berserker, Hunter, Minotaur Archer, Minotaur Mage y Demon
 Skeleton, y la torreta SE quedaba vacía).
+
+## Jefes de las cimas
+
+Cinco monstruos propios de Elvenbane (`data/monster/*.xml`), uno por cima. Los ataques elementales salen de
+[`apply-monster-kits.py`](../gameplay/MONSTER_KITS.md) (tabla `KITS`, líneas con `kit="1"`); sin sprites nuevos:
+usan looks existentes (los outfits humanos, recoloreados).
+
+| Cima | Jefe | Vida / exp | Look | Estilo y ataques | Rare |
+|------|------|-----------:|------|------------------|------|
+| NO | **Elvenbane Ranger** | 5000 / 4500 | outfit Hunter 129, verde y marrón | A distancia (4), flechas 40–140 cada segundo, flecha venenosa (venom strike 5), bola de fuego 3x3 (burst ball 5), prisa; llama Elf Scouts | Crystal Arrow 3 % |
+| NE | **Elven Archmage** | 4200 / 5000 | outfit Mage 138, blanco y celeste | A distancia (4), heavy magic missile, energy strike 6, energy wave 6, ice ball 6, cura 35–80; llama Elf Arcanists; inmune a energía | Blue Gem 2 % |
+| SO | **Orc Warchief** | 7000 / 5500 | Orc Warlord (2) | Cuerpo a cuerpo 120–330, rugido alrededor (roar burst 8), golpe de roca (earth touch 7), prisa; llama Orc Berserkers | Fire Axe 2,5 % |
+| SE | **Thornwarden** | 6500 / 5500 | Earth Elemental (178) | Cuerpo a cuerpo 80–220, ola de veneno (poison wave 7), dardo venenoso (venom strike 6), estallido de tierra (earth burst 6), cura 50–110; inmune a veneno | Big Emerald 1,5 % |
+| Centro | **Lord of Elvenbane** | 12000 / 15000 | outfit Warrior 134, dorado y verde oscuro | Cuerpo a cuerpo 150–400, drena vida alrededor (drain burst 8), ola de energía (energy wave 9), rayo de muerte (death strike 8), cura 100–200, prisa; llama Elf Arcanists y Scouts | Magic Plate Armor 1 % |
+
+Los colores de los outfits se eligieron sin verlos en el juego: si no quedan bien, cambiar `head/body/legs/feet`.
+
 
 ## Cómo regenerar
 

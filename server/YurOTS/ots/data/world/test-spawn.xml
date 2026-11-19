@@ -4870,19 +4870,19 @@
 		<monster name="Dragon" x="0" y="-1" z="5" spawntime="300" />
 	</spawn>
 	<spawn centerx="43" centery="301" centerz="4" radius="1">
-		<monster name="Black Knight" x="0" y="0" z="4" spawntime="900" />
+		<monster name="Elvenbane Ranger" x="0" y="0" z="4" spawntime="900" />
 	</spawn>
 	<spawn centerx="59" centery="301" centerz="4" radius="1">
-		<monster name="Dragon Lord" x="0" y="0" z="4" spawntime="900" />
+		<monster name="Elven Archmage" x="0" y="0" z="4" spawntime="900" />
 	</spawn>
 	<spawn centerx="43" centery="314" centerz="4" radius="1">
-		<monster name="Hydra" x="0" y="0" z="4" spawntime="900" />
+		<monster name="Orc Warchief" x="0" y="0" z="4" spawntime="900" />
 	</spawn>
 	<spawn centerx="57" centery="314" centerz="4" radius="1">
-		<monster name="Behemoth" x="0" y="0" z="4" spawntime="900" />
+		<monster name="Thornwarden" x="0" y="0" z="4" spawntime="900" />
 	</spawn>
 	<spawn centerx="49" centery="308" centerz="4" radius="1">
-		<monster name="Demon" x="0" y="0" z="4" spawntime="1800" />
+		<monster name="Lord of Elvenbane" x="0" y="0" z="4" spawntime="1800" />
 	</spawn>
 	<!-- END ELVENBANE_SPAWNS -->
 	<!-- BEGIN MINOTAUR_ISLE_SPAWNS (scripts/map/generate-minotaur-isle.py) -->
