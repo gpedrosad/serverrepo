@@ -1,7 +1,7 @@
 # Pink Skull — skull punitiva para bots
 
 > **Estado:** implementada (18 nov 2026). Servidor: `/pink` y `/unpink`, drop total al morir, la amarilla no la
-> tapa y una muerte injusta no la cambia. Cliente Retro76: `SkullPink = 7` con su calavera rosa. Ver
+> tapa y una muerte injusta no la cambia. Cliente Retro76: `SkullPink = 7`; revisión local del 19 nov: calavera cian eléctrica, ver abajo. Ver
 > [Cómo quedó](#cómo-quedó-nov-2026) al final.
 >
 > Esta ficha describe la Pink Skull: qué hace, cómo se asigna, cómo se ve y qué hay que tocar en el servidor y en el cliente. Fue solicitada como castigo para bots: un GM la asigna a un personaje y, mientras dure, **al morir deja caer todo el equipo**.
@@ -205,3 +205,17 @@ Auditoría: no hay archivo de log aparte; el GM recibe la confirmación y el mar
 - `/pink Bot GM` (a sí mismo) y `/unpink Bot GM`: la calavera pasa a `7` y vuelve a `0`.
 - Dos Demon matan al knight: "You are dead"; su XML queda con **0 ítems** (tenía 28) y `<skull type="7" ticks="7193000">`.
 - Falta verla dibujada en el cliente real.
+
+## Apariencia cian eléctrica (19 nov 2026)
+
+A pedido de Gonzalo, el estado punitivo ID 7 pasa a dibujarse en **cian eléctrico**, con
+brillos claros, sombras azules y contorno azul marino. Arte nuevo 11×11 RGBA en
+`clienteretro/{mac,windows}/data/images/game/skulls/skull_cyan.png`; el mapeo en
+`modules/gamelib/creature.lua` usa esa imagen para la cabeza y la battle list.
+
+Se conserva el ID técnico `SkullPink` / `SKULL_PINK`, los comandos `/pink` y `/unpink`,
+la persistencia XML y el drop total. No requiere C++, editar jugadores ni reasignar la
+marca a quienes ya la tienen. El PNG rosa previo se conserva por compatibilidad.
+Fuentes, prompts de ImageGen y detalles de reproducción en
+[DEPOT_ELECTRICO.md](../items-and-map/DEPOT_ELECTRICO.md#calavera-cian).
+Cambio aplicado en la copia local de ambas plataformas; publicación pendiente.

@@ -194,3 +194,13 @@ No confiar en este script como única solución. El fallback C++ en `actions.cpp
 | Confiar solo en `patch-map-depot-ids.py` | No parchea formato RME inline |
 | Mover lockers sin mantener `depotid=1` en temple | Misma ciudad, distinto enlace |
 | No rebuild C++ tras tocar `actions.cpp` | Fix no activo en prod |
+
+## Murallas eléctricas del depot (19 nov 2026)
+
+Revisión visual documentada en [DEPOT_ELECTRICO.md](../items-and-map/DEPOT_ELECTRICO.md):
+104 piezas de ladrillo sustituidas por variantes cian propias (20200–20210) dentro de
+x126–134, y52–59, z4–z7. Las otras construcciones usan sus paredes originales.
+La inversión de esos IDs recupera el mapa anterior byte por byte: los 11 lockers, sus
+`depotid=1`, los mostradores y los accesos se conservan. Se probó con el cliente Mac real
+en un servidor aislado (7278): el locker mostró las siete crystal coins guardadas del
+personaje sintético. Pendiente de publicación/deploy autorizado.

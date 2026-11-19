@@ -46,6 +46,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 
 | Script | Uso |
 |--------|-----|
+| `electric-depot-walls.py` | Aplica variantes cian solo a las murallas de la sala de lockers; `--apply`, inversión exacta con `--before` ([DEPOT_ELECTRICO.md](../docs/items-and-map/DEPOT_ELECTRICO.md)) |
 | `roomkit.py` | Piezas comunes de los generadores de salas (Crisol, Wave Arena): `Room`, paredes, validación con flags del `.otb`, escritura del OTBM |
 | `generate-crucible.py` | El Crisol v3: hub PZ + 3 arenas temáticas, carteles y bloque `LAYOUT` de `crucible.lua` (`--dry-run --png` para previsualizar; portal en la plaza: `temple-portals.py`) |
 | `temple-portals.py` | Plaza del templo con todos los portales + reapunta vueltas (correr después de cualquier generador de zona) |
@@ -87,6 +88,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 |--------|-----|
 | `build_zagan_test_assets.py` | Pipeline sprites/OTB/dat Zagan |
 | `sprite_tool.py` | Sprites de criaturas: `bases`, `new`, `inspect`, `check`, `verify` (guía: `docs/gameplay/SPRITE_RECOLOR_GUIDE.md`) |
+| `depot_electric_assets.py` | Prepara e instala las once piezas eléctricas del depot (20200–20210); `--prepare`, `--dry-run` |
 | `add_recolor_look.py` + `presets/` + `sprite_kit.py` | Aplica un preset de criatura (un archivo por criatura en `presets/`) a `Tibia.dat`/`.spr` |
 | `play-yurots-client.sh` / `open-rme.sh` | Cliente y RME locales |
 | `patch-tibia760-client.py` | Patcher cliente 7.6 |
