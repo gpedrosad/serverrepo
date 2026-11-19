@@ -1223,7 +1223,8 @@ bool Commands::leaveHouse(Creature* c, const std::string &cmd, const std::string
 	if (left > 0)
 	{
 		info << "Todavía hay " << left << (left == 1 ? " objeto" : " objetos")
-		     << " en la casa '" << house->getName() << "'. Sácalos antes de dejarla.";
+		     << " en la casa '" << house->getName() << "'. " << (left == 1 ? "Sácalo" : "Sácalos")
+		     << " antes de dejarla.";
 		player->sendCancel(info.str().c_str());
 		return true;
 	}
