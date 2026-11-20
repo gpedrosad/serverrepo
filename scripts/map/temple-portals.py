@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Templo: plaza de mármol con todos los portales (dueño único de los portales del templo).
+"""Templo: plaza arcana con todos los portales (dueño único de los portales del templo).
 
 Hace, en una pasada e idempotente:
-  1. Plaza 155,43 - 169,52 z7: mármol 406, marco y camino 407 (puerta norte x159-162 ->
-     fila vieja), braseros en las esquinas. Conserva rejas 1543/1544/1545 y faroles 1480.
+  1. Plaza 155,43 - 169,52 z7 y dos torres desde y42: basalto/cian, anillos de llegada,
+     cristales y obeliscos propios. Torres hasta z4; layout en portal_citadel_layout.py.
+     Conserva rejas/faroles fuera de las huellas y la galería original del templo.
   2. Portales en la plaza (y=47), cartel al norte (y=46), llegada al sur (y=48).
      Izquierda = hunts, derecha = eventos.
   3. Fila vieja 155-169, 53-55: saca portales 1387 y carteles 1429 (queda de pasillo).
@@ -31,15 +32,14 @@ from mapdata import (MAP, REPO, T_AREA, T_HOUSETILE, T_ITEM, T_TILE,  # noqa: E4
                      parse_tree, serialize_tree)
 
 READABLES = REPO / "server/YurOTS/ots/data/readables.xml"
+from portal_citadel_layout import plaza_plan, install_upper, tile_flags, TOWER_BASE
 Z = 7
 X1, Y1, X2, Y2 = 155, 43, 169, 52            # plaza
 ROW = (155, 53, 169, 55)                      # fila vieja de portales
 TEMPLE_AREA = (150, 40, 172, 60)              # un TP que apunte acá es "vuelta al templo"
-PATH_X = range(159, 163)
 WHITE, BLACK = 406, 407
-TELEPORT, SIGN, BRAZIER = 1387, 1429, 1486
+TELEPORT, SIGN = 1387, 1429
 KEEP = {1543, 1544, 1545, 1480}
-BRAZIERS = [(157, 44), (168, 44), (157, 51), (168, 51)]
 PORTAL_Y = 47
 ROW_GROUND_FIX = {(160, 53): WHITE, (160, 54): WHITE, (160, 55): WHITE}  # base del portal viejo del maze
 
@@ -102,18 +102,7 @@ def tele_offset(props: bytes) -> int | None:
 
 def plan_tiles() -> dict[tuple[int, int], list]:
     """Casillas de la plaza: (ground, [ítems], destino_tp)."""
-    spec = {}
-    for x in range(X1, X2 + 1):
-        for y in range(Y1, Y2 + 1):
-            edge = x in (X1, X2) or y == Y1
-            spec[(x, y)] = [BLACK if edge or x in PATH_X else WHITE, [], None]
-    for x, y in BRAZIERS:
-        spec[(x, y)][1].append(BRAZIER)
-    for _k, px, dest, _t, _z in PORTALS:
-        spec[(px, PORTAL_Y)] = [BLACK, [], dest]
-        spec[(px, PORTAL_Y - 1)] = [BLACK, [SIGN], None]
-        spec[(px, PORTAL_Y + 1)] = [WHITE, [], None]
-    return spec
+    return plaza_plan(PORTALS)
 
 
 def main() -> int:
@@ -143,8 +132,10 @@ def main() -> int:
                     raise SystemExit(f"ERROR: {x},{y} es casilla de casa, no la piso")
                 kept = [ch for ch in tile[2] if ch[0] == T_ITEM
                         and struct.unpack_from("<H", bytes(ch[1]), 0)[0] in KEEP]
+                if (x,y) in TOWER_BASE:
+                    kept = []
                 ground, items, tele = spec[(x, y)]
-                props = bytearray(p[:2]) + struct.pack("<BH", 9, ground)
+                props = bytearray(p[:2]) + tile_flags(p) + struct.pack("<BH", 9, ground)
                 children = kept + [item_node(i) for i in items]
                 if tele:
                     children.insert(0, item_node(TELEPORT, tele))
@@ -181,15 +172,16 @@ def main() -> int:
 
     if plaza_done != len(spec):
         raise SystemExit(f"ERROR: la plaza tiene {plaza_done}/{len(spec)} casillas en el mapa")
-    # control: no se pierde ni se agrega ninguna casilla
+    tower_added = install_upper(root,item_node)
+    # Solo se agregan casillas en las huellas de las dos torres.
     def count_tiles(r):
         return sum(1 for ar in r[2][0][2] if ar[0] == T_AREA
                    for t in ar[2] if t[0] in (T_TILE, T_HOUSETILE))
     before, after = count_tiles(parse_tree(raw)), count_tiles(root)
-    if before != after:
+    if before + tower_added != after:
         raise SystemExit(f"ERROR interno: {before} casillas antes y {after} después; no escribo nada")
 
-    print(f"plaza: {plaza_done} casillas; fila vieja: {row_fixed} portales/carteles sacados")
+    print(f"plaza: {plaza_done} casillas; torres: {tower_added} casillas nuevas; fila vieja: {row_fixed} portales/carteles sacados")
     for k, px, dest, _t, _z in PORTALS:
         print(f"  {k:10s} portal {px},{PORTAL_Y},{Z} -> {dest}; llegada {landing[k]}")
     for src, old, new, k in retargeted:
