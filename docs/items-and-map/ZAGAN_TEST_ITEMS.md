@@ -307,3 +307,11 @@ Renombrado desde `windsting bow` (era DIST 2H). Ahora **axe** 1H: ataque **43** 
 Plan completo, restricciones (no tocar DP ni casas) y checklist:
 
 → [`../_archive/DEPLOY-PENDIENTE-VPS-JUL2026.md`](../_archive/DEPLOY-PENDIENTE-VPS-JUL2026.md)
+
+## Melee Relics (`20225`–`20227`) — 19 nov 2026
+
+Riftblade (sword 1H, combo de tres golpes), Aethercleaver (axe 1H, recupera maná según
+vida dañada) y Graviton Maul (club 2H, crush según armadura), con sprites ImageGen propios
+e impactos nuevos 47–49. Implementación en C++, OTB y cliente; ver
+[MELEE_RELICS.md](../gameplay/MELEE_RELICS.md) para números, loot, validación y estado.
+No usar el builder histórico para regenerarlos: `add_melee_relics.py` trabaja sobre los assets actuales.
