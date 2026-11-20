@@ -1,0 +1,6 @@
+{
+  "prompt": "Use case: precise-object-edit. Production Tibia 7.6 sprite for a vertical closed level gate at the entrance to a forest crypt. Reference is the exact geometry template: preserve the narrow diagonally descending gate on the right, the support post on the left, the same bottom-right anchor, same Tibia oblique projection, same 64x64 canvas and silhouette. Replace yellow timber post with ancient grey-green carved stone, moss in seams, thick brown roots tightly hugging the post. Replace golden bars with aged dark bronze/iron bars and one very small amber jewel at the top of the support. Fine details must be chunky pixel art and readable at64x64; dark clear outlines. Do not add an arch or a wall spanning the transparent area; keep the original gate open geometry and empty gaps between bars. Actual transparent background. No floor, glow outside silhouette, characters, text, shadows outside the object, cyan or neon.",
+  "tool": "Built-in image_gen",
+  "source": "gate-generated.png",
+  "template": "template-1245.png"
+}

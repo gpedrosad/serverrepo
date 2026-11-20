@@ -1,0 +1,19 @@
+{
+  "wall": "Use case: stylized-concept. Asset type: production pixel-art architectural sprite atlas for a Tibia 7.6 map. Edit the reference atlas: replace ONLY the beige timber/plaster material with ancient cold grey-green crypt stone, thick intertwined dark brown roots, restrained moss, tiny amber fungal flecks. Keep EXACTLY the same atlas structure: 3 columns by 2 rows, six separate cells, all same square dimensions. Top row: a wall starting post, horizontal wall, vertical wall. Bottom row: southeast L corner, horizontal small barred window wall, vertical small barred window wall. Reference is a geometry template, preserve each piece's alignment, base edges, orthographic Tibia oblique projection and outer silhouette exactly. Windows must be dark small apertures within stone, no timber. Texture should be chunky, high contrast, clean pixel art readable when the entire atlas is reduced to 192x128, each cell64x64. Green moss on joints, roots follow stone surfaces and do not extend outside the geometry. No cyan, no neon, no glowing lines, no characters, floor, captions, labels, gridlines, or shadows outside the object. Actual transparent background, isolated sprites, no contact sheet padding between cells. The top and bottom of each cell must align to the reference.",
+  "other": [
+    [
+      "floor",
+      "Use case: stylized-concept. Production Tibia 7.6 single seamless 32x32 pixel-art top-down ground tile, shown enlarged as one square image, opaque full square with NO border or margins. Ancient grey-green irregular cracked flagstones, earth in narrow cracks, subdued moss at corners, scattered tiny warm brown roots. Orthographic top-down, flat even illumination, chunky crisp pixels readable at32x32, restrained values with an open mid-grey center so creatures and blue teleport orbs remain legible. NO objects, walls, grass clumps, bones, mushrooms, glowing symbols, cyan, text, vignette, perspective, bevel, or floor shadow. Seamlessly tileable on all four edges."
+    ],
+    [
+      "threshold",
+      "Use case: stylized-concept. Production Tibia 7.6 single seamless 32x32 pixel-art top-down ground tile, shown enlarged as one square image, opaque full square with NO border or margins. Ancient warm charcoal-grey sandstone slabs, thin moss seams, a very subtle carved circular amber sigil set INTO the paving, the sigil must not resemble an object or portal and must remain dim so a blue magic portal placed over it is clearly visible. Match a ruined forest crypt with roots and stone, restrained moss/bone/amber palette. Orthographic top-down, flat even lighting, crisp chunky pixels, simple shapes readable at32x32. No objects, walls, bright glow, cyan, text, perspective, bevel, outer drop shadow or vignette."
+    ],
+    [
+      "lamp",
+      "Use case: stylized-concept. Production sprite for a Tibia 7.6 wall-mounted lamp, one isolated item on actual transparent background. A small antique dark bronze cage lantern fixed to a short crooked root-and-iron wall bracket, warm AMBER glow behind a diamond lattice, roots curled around its neck, tiny moss patches. Three-quarter Tibia orthographic sprite view, top-left light, crisp pixel-art clusters and dark one-pixel outline, compact silhouette with bracket at top and lantern hanging downward. Designed to reduce cleanly to32x48 pixels. Object fully inside image, no ground, pedestal, floor, wall behind it, rays, mist, halo or shadows outside its silhouette. No cyan, text, labels or extra items."
+    ]
+  ],
+  "tool": "Built-in image_gen",
+  "sources": "Generated images copied into this folder; templates taken from current canonical Tibia.dat/Tibia.spr."
+}

@@ -70,6 +70,14 @@ cómo agregar más. El sprite sale del cliente de esa versión, píxel por píxe
 
 Los PNG van a git con `git add -f` (la carpeta `devtools/zagan-test/` está en `.gitignore`).
 
+## Prototipos con capas nativas
+
+Las puertas 7.6 (por ejemplo 1245) tienen dos capas, no dos cuadros de animación.
+Declarar `layers=2`, conservar `frames=1` y apilar las capas verticalmente dentro de
+cada cuadro. Ejemplo: reja 2×2 de Cripta de Raíces, PNG 64×128, arte completo en la
+primera capa y segunda transparente. El importador conserva el prefijo nativo del
+prototipo y comprueba que la cantidad total de sprites coincida antes de escribir.
+
 ## Por qué no con el builder viejo
 
 El mismo importador instala armas dibujadas para Root Colossus: **rootcleaver 20163** (axe 1H, 49/31,

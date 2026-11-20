@@ -406,9 +406,12 @@ def apply_things(things: Path, otb_root, dry: bool) -> list[str]:
     for item in NEW_ITEMS:
         tiles = item.get("tiles", 1)
         frames = item.get("frames", 1)
+        layers = item.get("layers", 1)
         per_frame = 2 if tiles in ("2x1", "1x2") else 4 if tiles == 2 else 1
-        sprite_count = per_frame * frames
-        new_records = sprite_records(SPRITES / item["png"], tiles, frames)
+        sprite_count = per_frame * frames * layers
+        # Capas nativas (puertas): dentro de cada cuadro, apiladas verticalmente.
+        # El prefijo del prototipo conserva la cantidad real de capas/cuadros.
+        new_records = sprite_records(SPRITES / item["png"], tiles, frames * layers)
         idx = by_cid.get(item["client_id"])
         proto_cid = s2c.get(item["prototype"])
         if idx is None or proto_cid not in by_cid:
