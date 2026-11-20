@@ -42,6 +42,8 @@ El servidor carga `test.otbm` desde `config.lua` (`map = "data/world/test.otbm"`
 
 ### Portales del templo (plaza, z7) — nov 2026
 
+La plaza ahora usa el diseño de [Plaza Arcana](items-and-map/PLAZA_ARCANA.md): basalto/cian y dos torres nuevas desde y42 hasta z4.
+
 Todos los portales están en la plaza `155,43 – 169,52`, sobre la fila vieja. Portal en `y=47`, cartel en `y=46`, llegada al volver en `y=48`. La fila vieja (`y=53–55`) quedó como pasillo, sin portales.
 
 Los maneja **un solo script**: `python3 scripts/map/temple-portals.py` (idempotente). Arma la plaza, pone portales y carteles (`readables.xml`, bloque `TEMPLE_PORTAL_SIGNS`) y reapunta todo teleport de vuelta al templo hacia la llegada del portal de su zona. Si regenerás una zona con su generador, volvé a correrlo. Para agregar un portal: sumarlo a `PORTALS` en ese script.
