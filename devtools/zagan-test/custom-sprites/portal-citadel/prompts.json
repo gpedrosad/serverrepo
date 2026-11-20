@@ -1,0 +1,29 @@
+{
+  "tool": "image_gen.imagegen (built-in)",
+  "variants": {
+    "walls": {
+      "prompt": "Use case: precise-object-edit. Asset type: Tibia 7.6 modular tower masonry atlas, EDIT TARGET is the supplied atlas. Keep EXACT 3 columns by 2 rows, six 64x64 logical pixel cells, each piece placement, perspective, silhouette and window openings. Change material to midnight blue basalt bricks, vivid electric cyan thin mortar seams, cobalt shaded sides and pale ice highlights on top edges. A medieval arcane citadel, not sci-fi. Dark dominant stone with small intense turquoise runic corner cuts. Preserve each window gap and no added free-standing bits. No letters/text, no borders between cells. Crisp chunky 7.6 pixel art, no gradients, no soft glow outside silhouettes. Transparent background. Geometry will be masked to exact original silhouettes.",
+      "source": "/Users/gonzalo/.codex/generated_images/01a1f073-b9af-7453-928e-1540498fcc7a/exec-6157403b-b747-40d4-9ff8-30ecfb6fedca.png"
+    },
+    "basalt": {
+      "prompt": "Use case: stylized-concept. Asset type: ONE seamless 32x32 logical pixel-art ground tile for Tibia 7.6. Entire square is flat top-down midnight blue basalt paving: three or four irregular large tightly fitted dark slate stones, deep navy cracks, restrained cobalt bevels, tiny turquoise mineral flecks. Medium-dark readable natural stone texture, upper-left highlights, 5 hard shades, no shadows outside tile. Fill the WHOLE square edge to edge, NO margins or transparency, no perspective, no isometric diamond. Edges should tile seamlessly in a medieval fantasy plaza. Display enlarged in exact nearest-neighbor chunky logical pixels. No text, no grid sheet, no border, no decoration objects, no smooth painting.",
+      "source": "/Users/gonzalo/.codex/generated_images/01a1f073-b9af-7453-928e-1540498fcc7a/exec-a9e7be57-ed55-47bc-ab1d-cab3bf5f6cae.png"
+    },
+    "conduit": {
+      "prompt": "Use case: stylized-concept. Asset type: ONE seamless 32x32 logical pixel-art ground tile for classic Tibia 7.6 arcane plaza. Whole square edge-to-edge flat top-down paving, dark cobalt-blue polished stone slabs with a narrow electric turquoise angular interlocking diamond inlay in the center; four tiny silver corner studs, hard chunky highlights, crisp dark outlines. The bright inlay covers no more than 15 percent of the tile, mostly rich blue stone. Restrained medieval rune geometry, not electronic circuit board. Five fixed palette shades, no blur or glow halo. No margins, no transparency, no isometric diamond, no raised platform, no text, no sheet; single square game tile shown enlarged with nearest-neighbor pixel look.",
+      "source": "/Users/gonzalo/.codex/generated_images/01a1f073-b9af-7453-928e-1540498fcc7a/exec-24161994-9f0c-4432-a39a-f7b1104ee730.png"
+    },
+    "dais": {
+      "prompt": "Use case: stylized-concept. Asset type: ONE 32x32 logical pixel-art top-down ground tile for Tibia 7.6. A flat portal foundation inset in deep midnight basalt paving: a low circular segmented silver-and-turquoise ring, bright cyan runic notches, EMPTY DARK CENTER for an existing blue teleport orb to be rendered on top. Ring occupies 24x24 pixels inside the square. All stone fills the entire square edge to edge with the same dark blue basalt material; no margins, no transparency. Flat floor, not a raised pedestal. Classic chunky 7.6 game pixels, fixed 5-shade palette, hard outlines, no words, no Latin letters, no big glow, no object above the floor. One square sprite enlarged in nearest-neighbor pixel style.",
+      "source": "/Users/gonzalo/.codex/generated_images/01a1f073-b9af-7453-928e-1540498fcc7a/exec-cbb8062f-6365-4b23-917a-ce02c14e5087.png"
+    },
+    "beacon": {
+      "prompt": "Use case: stylized-concept. Asset type: production 64x64 pixel-art decorative item sprite for Tibia 7.6. One arcane beacon: a tall faceted electric-cyan crystal in a midnight-blue basalt and silver three-pronged cradle, on a squat octagonal stone base. Compact stout medieval fantasy architecture, subtle cobalt shading and thin turquoise rune cuts. Seen from above at Tibia's oblique top-down perspective, upper-left light. Entire object fits inside a square with 3 logical pixels padding. Exact chunky logical 64 by 64 pixel style, shown enlarged as crisp nearest-neighbor pixels, 4-5 shades per material, dark colored contour. Crystal has bright icy-white facets but no soft glow outside the silhouette. Genuinely transparent background. No ground, no text, no labels, no UI border, no modern machinery. ONE complete object, not a sheet.",
+      "source": "/Users/gonzalo/.codex/generated_images/01a1f073-b9af-7453-928e-1540498fcc7a/exec-d1948619-9aa5-4a53-800f-d322edb3f7e1.png"
+    },
+    "obelisk": {
+      "prompt": "Use case: stylized-concept. Asset type: production 64x64 logical pixel-art decorative item sprite for Tibia 7.6. ONE slim arcane obelisk, a tapering dark navy basalt column on a wide stepped square stone base, cyan angular rune inlays on the visible front and right faces, bright turquoise crystal inset in its pointed cap, tiny silver bevels. Midnight blue, cobalt shadows, vivid electric cyan details. Classic medieval fantasy, oblique top-down Tibia 7.6 perspective with upper-left lighting, crisp blocky pixels and dark contour, hard limited palette. Tall pillar fills 54 logical pixels of the 64 square and its base only 30 logical pixels wide, centered with transparent padding. Show enlarged nearest-neighbor pixel art. Transparent background, no ground, no glow halo, no labels, no text or actual letters, no border, no sheet, one complete object.",
+      "source": "/Users/gonzalo/.codex/generated_images/01a1f073-b9af-7453-928e-1540498fcc7a/exec-0223015a-e23a-4563-bf2a-901817f7ae23.png"
+    }
+  }
+}

@@ -60,16 +60,19 @@ def with_light(prefix: bytes, level: int, color: int) -> bytes:
     """Prefijo .dat con la luz (flag 0x15) reescrita: nivel u16 + color u16.
     Copia intacto el argumento de cada flag y todo lo que sigue al 0xFF (el 0xFF
     no es el final del prefijo: detrás vienen width/height/layers/pattern/frames)."""
-    out, pos = bytearray(), 0
+    out, pos, found = bytearray(), 0, False
     while pos < len(prefix):
         attr = prefix[pos]
         out.append(attr)
         pos += 1
         if attr == 0xFF:
+            if not found:
+                out[-1:] = b'\x15' + struct.pack('<HH', level, color) + b'\xff'
             out += prefix[pos:]
             break
         n = DAT_ARGS.get(252 if attr == 23 else attr, 0)
         if attr == 0x15:
+            found = True
             out += struct.pack("<HH", level, color)
         else:
             out += prefix[pos:pos + n]
