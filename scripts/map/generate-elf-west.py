@@ -40,6 +40,14 @@ GROUPS = [((95, 65), [("Elf Scout", (95, 65), 150)]),
                       ("Elf Arcanist", (90, 51), 220)])]
 
 
+def house_reservations():
+    """Las casas comprables conservan su planta y techo al regenerar el hunt."""
+    path = WORLD / "generated-curious-houses.json"
+    if not path.exists():
+        return set()
+    return {tuple(map(int, p.split(","))) for p in json.loads(path.read_text())["cells"]}
+
+
 def index(root, otb):
     nodes, values = {}, {}
     for area in root[2][0][2]:
@@ -149,6 +157,8 @@ def plan(values, otb):
             if len(values[p]) != 1:
                 continue  # conservar bordes/decoración del hunt fuera de la vista
             cells[p] = [4608]
+    for p in house_reservations():
+        cells.pop(p, None)
     return cells, land
 
 
@@ -156,8 +166,11 @@ def validate(values, cells, land, otb):
     assert LIGHT in otb and not ({"moveable", "pickupable"} & set(otb[LIGHT]["flags"]))
     merged = values | cells
     previous = json.loads(MANIFEST.read_text()).get("cells", {}) if MANIFEST.exists() else {}
+    private = house_reservations()
     for x, y in land | BRIDGE:
         p = x, y, 7
+        if p in private:
+            continue
         old = values.get(p, [])
         owned = previous.get(",".join(map(str, p))) == old
         allowed = COAST.WATERS | ({4526, 4756} if (x, y) in BRIDGE else set())
@@ -173,7 +186,7 @@ def validate(values, cells, land, otb):
         seen.add(p)
         x, y, z = p
         todo.extend((x + dx, y + dy, z) for dx, dy in COAST.NP.CARD)
-    expected = {(*p, 7) for p in land | BRIDGE if free(merged.get((*p, 7), []), otb)}
+    expected = {(*p, 7) for p in land | BRIDGE if (*p, 7) not in private and free(merged.get((*p, 7), []), otb)}
     if not expected <= seen:
         raise ValueError(f"Isla desconectada: {sorted(expected - seen)[:8]}")
     for center, monsters in GROUPS:
@@ -267,7 +280,7 @@ def main():
     header = json.dumps(dict(name="Ruinas del Sauce", entry=ENTRY, land=len(land),
         walkable=walk, groups=GROUPS, light=LIGHT, sign=SIGN))[:-1]
     owned = {(*p, 7) for p in land | BRIDGE}
-    rows = [json.dumps(",".join(map(str, p))) + ": " + json.dumps(cells[p]) for p in sorted(owned)]
+    rows = [json.dumps(",".join(map(str, p))) + ": " + json.dumps(cells.get(p, values[p])) for p in sorted(owned)]
     MANIFEST.write_text(header + ', "cells": {\n' + ",\n".join(rows) + "\n}}\n")
     print(f"Aplicado. Respaldo: {backup}")
 
