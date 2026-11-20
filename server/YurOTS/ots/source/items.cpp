@@ -730,6 +730,16 @@ const ItemType& Items::operator[](int id)
 	return dummyItemType;
 }
 
+bool Items::sameClientItem(unsigned short serverId, unsigned short requested)
+{
+	if (serverId == requested)
+		return true;
+	if (requested == 0)
+		return false;
+	unsigned short clientId = (*this)[serverId].clientId;
+	return clientId != 0 && clientId == (*this)[requested].clientId;
+}
+
 unsigned long Items::reverseLookUp(unsigned long id)
 {
 	ReverseItemMap::iterator it = revItems.find(id);

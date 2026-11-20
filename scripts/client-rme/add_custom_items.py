@@ -317,7 +317,7 @@ NEW_ITEMS = [
     dict(name="royal banner", server_id=20281, client_id=3103, prototype=1857,
          png="royal_banner.png", decor=True, tiles=2, frames=3,
          descr="A royal banner with a golden crown. Hang it on a wall."),
-    # Las mismas 7, fijas (server 20320-20326; ojo: 20282-20296 son del muelle, dock_bridge_art.py) (fixed=True: sin moveable/pickupable en el OTB) y con el mismo client id: se cuelgan
+    # Las mismas 7, fijas (server 20320-20326; ojo: 20282-20296 son del muelle, dock_bridge_art.py) (fixed=True: sin moveable/pickupable en el OTB) y con el mismo client id (el server compara por client id: Items::sameClientItem, docs/gameplay/HANGABLES.md): se cuelgan
     # en el mapa como exhibición (local de Obi) sin que nadie se las lleve. No agregan sprites al cliente.
     dict(name="brazil tapestry", server_id=20320, client_id=3123, prototype=1857,
          png="brazil_tapestry.png", decor=True, tiles=2, frames=3, fixed=True,

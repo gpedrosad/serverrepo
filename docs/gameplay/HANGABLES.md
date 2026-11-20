@@ -124,3 +124,16 @@ todo el vidrio, como un farol), luz nivel 6 del color de la llama y **sin pudric
 | `Tile::hasHook*`, `hasHangable` | `tile.cpp` |
 | Se puede mover a la pared | `Item::canMovedTo` (`item.cpp`) y `Game::onPrepareMoveThing` (camino libre con `canThrowObjectTo(..., 0)`) |
 | Paredes de la casa | `Houses::Load` y `SaveHouseItems` (`houses.cpp`) |
+| Ítem que pide el cliente = ítem en la casilla | `Items::sameClientItem` (`items.cpp`): en los movimientos y el trade de `game.cpp` |
+
+## Errores que ya pasaron
+
+- **Las banderas no se descolgaban (20 nov 2026).** Después de la exhibición de Obi, las 7 banderas que se venden
+  (20275–20281) no se movían de ningún lado (pared, suelo, mochila), y el servidor no daba ningún aviso. El cliente solo
+  manda el client id, y `reverseLookUp` guarda un único server id por client id: el último del OTB, que era la
+  copia fija (20320–20326). Así, `fromItem->getID() != itemid` descartaba el movimiento. Ahora los movimientos y el
+  trade comparan con `Items::sameClientItem` (mismo client id = mismo ítem para el cliente). Lo que hace la copia fija
+  sigue igual: no se mueve porque no es `moveable`. **Cualquier ítem nuevo que comparta client id con otro (como las
+  copias `fixed=True`) depende de esto**: si aparece otro lugar que compara `getID()` con un id que mandó el cliente,
+  usar `sameClientItem`. Prueba con bots en un servidor aparte: el dueño de Pirate Street descolgó una bandera a
+  la mano y al suelo y la volvió a colgar; un jugador sin permiso, desde la calle, recibe el aviso de la casa.

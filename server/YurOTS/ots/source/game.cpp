@@ -2067,7 +2067,7 @@ void Game::thingMove(Creature *creature, unsigned short from_x, unsigned short f
 
 	Item* item = dynamic_cast<Item*>(thing);
 
-	if(item && (item->getID() != itemid || item != fromTile->getTopDownItem()))
+	if(item && (!Item::items.sameClientItem(item->getID(), itemid) || item != fromTile->getTopDownItem()))
 		return;
 
 	thingMoveInternal(creature, from_x, from_y, from_z, stackPos, itemid, to_x, to_y, to_z, count);
@@ -2626,7 +2626,7 @@ void Game::thingMoveInternal(Player *player,
 		}
 	}
 
-	if(!fromItem || (toItem == fromItem) || (fromItem->isStackable() && count > fromItem->getItemCountOrSubtype()) || fromItem->getID() != itemid)
+	if(!fromItem || (toItem == fromItem) || (fromItem->isStackable() && count > fromItem->getItemCountOrSubtype()) || !Item::items.sameClientItem(fromItem->getID(), itemid))
 		return;
 
 	//Container to container
@@ -3016,7 +3016,7 @@ void Game::thingMoveInternal(Player *player,
 		Item *fromItem = dynamic_cast<Item*>(fromContainer->getItem(from_slotid));
 		Item* toItem = dynamic_cast<Item*>(toTile->getTopDownItem());
 
-		if(!fromItem || (toItem == fromItem) || (fromItem->isStackable() && count > fromItem->getItemCountOrSubtype()) || fromItem->getID() != itemid)
+		if(!fromItem || (toItem == fromItem) || (fromItem->isStackable() && count > fromItem->getItemCountOrSubtype()) || !Item::items.sameClientItem(fromItem->getID(), itemid))
 			return;
 
 		if(onPrepareMoveThing(player, fromItem, fromPos, toPos, count) && onPrepareMoveThing(player, fromItem, NULL, toTile, count)) {
@@ -3110,7 +3110,7 @@ void Game::thingMoveInternal(Player *player,
 	}
 	else /*inventory to ground*/{
 		Item *fromItem = player->getItem(from_cid);
-		if(!fromItem || (fromItem->isStackable() && count > fromItem->getItemCountOrSubtype()) || fromItem->getID() != itemid)
+		if(!fromItem || (fromItem->isStackable() && count > fromItem->getItemCountOrSubtype()) || !Item::items.sameClientItem(fromItem->getID(), itemid))
 			return;
 
 		if(onPrepareMoveThing(player, fromItem, player->pos, toPos, count) && onPrepareMoveThing(player, fromItem, NULL, toTile, count)) {
@@ -3217,7 +3217,7 @@ void Game::thingMoveInternal(Player *player, const Position& fromPos, unsigned c
 	Item* fromItem = dynamic_cast<Item*>(fromTile->getTopDownItem());
 	Item *toItem = NULL;
 
-	if(!fromItem || (fromItem->getID() != itemid) || (fromItem != fromTile->getTopDownItem()))
+	if(!fromItem || !Item::items.sameClientItem(fromItem->getID(), itemid) || (fromItem != fromTile->getTopDownItem()))
 		return;
 
 	if(toInventory) {
@@ -5609,7 +5609,7 @@ void Game::playerRequestTrade(Player* player, const Position& pos,
 	}
 
 	Item *tradeItem = dynamic_cast<Item*>(getThing(pos, stackpos, player));
-	if(!tradeItem || tradeItem->getID() != itemid || !tradeItem->isPickupable()) {
+	if(!tradeItem || !Item::items.sameClientItem(tradeItem->getID(), itemid) || !tradeItem->isPickupable()) {
 		player->sendCancel("Sorry, not possible.");
 		return;
 	}

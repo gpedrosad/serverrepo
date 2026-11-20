@@ -155,6 +155,9 @@ public:
 	unsigned short getIdByName(const std::string& name);
 	
 	static unsigned long reverseLookUp(unsigned long id);
+	// El cliente manda client ids y reverseLookUp da un solo server id por client id (el ultimo del OTB).
+	// Dos items con el mismo dibujo (ej. la bandera que se vende y su copia fija de Obi) son el mismo para el cliente.
+	bool sameClientItem(unsigned short serverId, unsigned short requested);
 	
 	static long dwMajorVersion;
 	static long dwMinorVersion;
