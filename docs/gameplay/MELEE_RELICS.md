@@ -1,7 +1,7 @@
 # Riftblade, Aethercleaver y Graviton Maul
 
-Estado: **implementado y compilado, con validación parcial en instancia aislada**. Push solicitado
-por Gonzalo; cliente sin publicar y servidor de juego sin deploy. No requiere cambios de mapa.
+Estado: **en el servidor de prueba desde el 20 nov 2026** (cliente publicado, binario nuevo). La validación
+in-game quedó parcial (ver al final): falta Graviton contra monstruo blindado y la revisión visual del combate.
 
 ![Ítems y ocho cuadros de cada animación](img/melee-relics.png)
 
