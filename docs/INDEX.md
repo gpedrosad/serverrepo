@@ -78,6 +78,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/BLUE_ELF_ARCANIST.md`](gameplay/BLUE_ELF_ARCANIST.md) | Blue Elf Arcanist: variante cosmética azul del Elf Arcanist (looktype 63, paleta 33/106/68/124, sin cliente nuevo). |
 | [`gameplay/ICE_SPIDER.md`](gameplay/ICE_SPIDER.md) | Ice Spider: variante de hielo del Giant Spider, más fuerte (1800 HP, 1400 exp, ice ball + blizzard, looktype 235 recoloreado, requiere cliente nuevo). |
 | [`gameplay/DARK_HYDRA.md`](gameplay/DARK_HYDRA.md) | Dark Hydra: variante de caza de Hydra, 3200 HP / 3000 exp, aliento de drenaje y look 241 carbón/violeta con marcas arcanas. |
+| [`gameplay/METAL_MONSTERS.md`](gameplay/METAL_MONSTERS.md) | Metal Dragon, Metal Hydra y Metal Demon: monstruos cyborg (acero negro + neón), looks 186–188, láser/ácido/plasma/descarga, variantes rage. Sin spawn todavía. |
 | [`gameplay/EMERALD_SCARAB.md`](gameplay/EMERALD_SCARAB.md) | Emerald Scarab: variante de Ancient Scarab, 1500 HP / 1150 exp, estallido de veneno y look 242 esmeralda/dorado con gema en el lomo. |
 | [`gameplay/RED_KONGRA.md`](gameplay/RED_KONGRA.md) | Red Kongra: variante carmesí del Kongra, 600 HP / 230 exp, rugido + prisa (kit) y look 254 con ojos ámbar encendidos (requiere actualizar el cliente). |
 | [`gameplay/ROOT_COLOSSUS.md`](gameplay/ROOT_COLOSSUS.md) | Root Colossus: guardián vegetal (look 243), 4800 HP / 3400 exp, raíces y esporas; spawn local al final de la progresión del Abismo del Valle de las Bestias, con rootcleaver (axe 1H) y heartwood maul (club 2H) de loot raro. |
