@@ -1,6 +1,7 @@
 # Plaza arcana de los teleports
 
 Estado: **publicada y desplegada en la ThinkPad el 19 nov 2026**, validada con cliente Mac en instancia aislada.
+**Ampliación del 20 nov:** galería y torres antiguas remodeladas en el mapa del repo; pendiente deploy.
 Rediseño pedido por Gonzalo: nuevas torres, suelo y sprites con basalto azul y cian eléctrico.
 No requiere recompilar C++.
 
@@ -14,7 +15,8 @@ No requiere recompilar C++.
   en 157,51 y 168,51 y dos obeliscos en 155,50 y 169,50 (z7).
 - Pasillo delante de los carteles en y45 y acceso central sur–norte libres.
 - Se conservan los ocho portales en y47, carteles y46, llegadas y48 y todos sus destinos.
-  La galería, las torres antiguas del templo y los edificios vecinos no se remodelan.
+  En esta primera etapa no se remodeló la galería ni las torres antiguas; la ampliación
+  del 20 nov se describe al final. Los edificios vecinos conservan su diseño.
 - **210 casillas** afectadas dentro de las huellas declaradas: 156 en planta baja y
   **54 nuevas** arriba. Todo tile fuera de esas huellas queda idéntico, incluidos depots y casas.
 
@@ -123,3 +125,36 @@ Probe `192.168.1.17:7171` OK, contenedor healthy y 0 reinicios automáticos.
 binario idénticos al snapshot previo. La comparación normaliza tuplas/listas al serializar JSON.
 La instancia QA quedó detenida. Los smoke tests siguen desactivados.
 Pendiente revisión visual manual del jugador en Windows; abrir el cliente toma la actualización.
+
+## Ampliación: resto del templo — 20 nov 2026
+
+Pedido de Gonzalo: continuar el mismo estilo en el resto del templo de los teleports.
+**Aplicado al mapa del repo; sin deploy ni nuevas pruebas**, por su pedido
+expreso de detenerlas. El servidor de juego no se reinició en esta ampliación.
+
+![Templo completo: vista previa con pisos superiores](img/portal-temple/after-client.png)
+
+La galería sur, el ala oeste y las tres torres originales toman el basalto oscuro y las
+murallas cian de la plaza. Un eje luminoso recorre cada ala; patios altos y terrazas pierden
+la madera marrón. Se reutilizan las apariencias **20214–20222** ya publicadas, sin sprites,
+client IDs ni nodos OTB nuevos. Las piezas 20200–20210 siguen siendo exclusivas del depot.
+
+Ámbito exacto: **x151–170, y43–56, z2–7**, solo casillas existentes. **640 sustituciones de
+ítems** en la primera aplicación; no se agregan ni mueven tiles. `portal_temple_style.py`
+se llama desde el generador canónico `temple-portals.py`, después de reconstruir la plaza.
+Así el generador incluye la ampliación en futuras regeneraciones.
+
+- Pisos antiguos de mármol, piedra y techos planos → basalto o sendero cian.
+- Paredes de mármol/ladrillo → piezas de torre; ventanas → ventanas de la familia arcana.
+- Bordes sólidos de techos → parapetos visibles. Estos parapetos también bloquean proyectiles;
+  las caras de las paredes usan las propiedades de las piezas arcanas (no copias de cada pared vieja).
+- El pórtico central claro, puertas, escaleras y escaleras de mano conservan sus ítems y ubicación.
+  Mesa de libros, sillas, lámparas, campos de energía, rejas y muebles se conservan.
+- Se editan solo los u16 de IDs elegidos: atributos de tile, flags, destinos de teleport y
+  datos de los otros ítems siguen en el árbol original. No se editan casas, NPCs ni lockers.
+
+Backup previo: `backups/map/portal-temple-before/test.otbm`. Vistas previas estáticas, **no capturas
+de una sesión in-game**, en `img/portal-temple/`: antes/después y pisos z2–z7. El comando ejecutado
+fue `python3 scripts/map/temple-portals.py`; el resto fue render de imágenes. No se ejecutaron
+suites, probes, builds ni pruebas de depot para esta ampliación. Para deploy de este mapa sigue
+aplicando el contrato de DEPOTS.md; todavía no se realizó ese deploy.

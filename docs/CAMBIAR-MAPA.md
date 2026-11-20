@@ -43,6 +43,9 @@ El servidor carga `test.otbm` desde `config.lua` (`map = "data/world/test.otbm"`
 ### Portales del templo (plaza, z7) — nov 2026
 
 La plaza ahora usa el diseño de [Plaza Arcana](items-and-map/PLAZA_ARCANA.md): basalto/cian y dos torres nuevas desde y42 hasta z4.
+La ampliación del 20 nov extiende ese acabado a la galería y las torres antiguas
+(x151–170, y43–56, z2–7), mediante `portal_temple_style.py`, llamado por el mismo generador.
+El mapa ampliado está preparado en el repo, pendiente deploy.
 
 Todos los portales están en la plaza `155,43 – 169,52`, sobre la fila vieja. Portal en `y=47`, cartel en `y=46`, llegada al volver en `y=48`. La fila vieja (`y=53–55`) quedó como pasillo, sin portales.
 

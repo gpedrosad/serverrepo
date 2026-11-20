@@ -4,7 +4,8 @@
 Hace, en una pasada e idempotente:
   1. Plaza 155,43 - 169,52 z7 y dos torres desde y42: basalto/cian, anillos de llegada,
      cristales y obeliscos propios. Torres hasta z4; layout en portal_citadel_layout.py.
-     Conserva rejas/faroles fuera de las huellas y la galería original del templo.
+     Extiende el acabado a la galería y las torres originales (portal_temple_style.py).
+     Conserva rejas/faroles fuera de las huellas.
   2. Portales en la plaza (y=47), cartel al norte (y=46), llegada al sur (y=48).
      Izquierda = hunts, derecha = eventos.
   3. Fila vieja 155-169, 53-55: saca portales 1387 y carteles 1429 (queda de pasillo).
@@ -33,6 +34,7 @@ from mapdata import (MAP, REPO, T_AREA, T_HOUSETILE, T_ITEM, T_TILE,  # noqa: E4
 
 READABLES = REPO / "server/YurOTS/ots/data/readables.xml"
 from portal_citadel_layout import plaza_plan, install_upper, tile_flags, TOWER_BASE
+from portal_temple_style import apply_style
 Z = 7
 X1, Y1, X2, Y2 = 155, 43, 169, 52            # plaza
 ROW = (155, 53, 169, 55)                      # fila vieja de portales
@@ -110,6 +112,7 @@ def main() -> int:
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
 
+    from mapdata import load_otb
     raw = MAP.read_bytes()
     root = parse_tree(raw)
     spec = plan_tiles()
@@ -180,6 +183,8 @@ def main() -> int:
     before, after = count_tiles(parse_tree(raw)), count_tiles(root)
     if before + tower_added != after:
         raise SystemExit(f"ERROR interno: {before} casillas antes y {after} después; no escribo nada")
+    styled = apply_style(root, load_otb())
+    print(f"templo: {sum(styled.values())} piezas de galería/torres pasadas a basalto y cian")
 
     print(f"plaza: {plaza_done} casillas; torres: {tower_added} casillas nuevas; fila vieja: {row_fixed} portales/carteles sacados")
     for k, px, dest, _t, _z in PORTALS:

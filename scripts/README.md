@@ -46,7 +46,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 
 | Script | Uso |
 |--------|-----|
-| `temple-portals.py` + `portal_citadel_layout.py` | Dueño único de la plaza arcana y sus ocho portales; `--dry-run` |
+| `temple-portals.py` + `portal_citadel_layout.py` + `portal_temple_style.py` | Plaza arcana, ocho portales y acabado de la galería/torres originales; `--dry-run` |
 | `validate-portal-citadel.py` | Audita mapa/assets contra `--before`; rutas, teleports y ámbito exacto |
 | `electric-depot-walls.py` | Aplica variantes cian solo a las murallas de la sala de lockers; `--apply`, inversión exacta con `--before` ([DEPOT_ELECTRICO.md](../docs/items-and-map/DEPOT_ELECTRICO.md)) |
 | `roomkit.py` | Piezas comunes de los generadores de salas (Crisol, Wave Arena): `Room`, paredes, validación con flags del `.otb`, escritura del OTBM |
