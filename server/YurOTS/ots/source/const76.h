@@ -70,6 +70,9 @@ enum MagicEffectClasses {
 	NM_ME_GALE_STAR_HIT    = 44,
 	NM_ME_VENOM_STAR_HIT   = 45,
 	NM_ME_STORM_STAR_HIT   = 46,
+	NM_ME_RIFT_CUT         = 47,
+	NM_ME_AETHER_RETURN    = 48,
+	NM_ME_GRAVITON_CRUSH   = 49,
 };
 
 #define NM_ANI_BOLT              1
@@ -280,6 +283,9 @@ enum item_t {
 	ITEM_GALE_STAR = 20211,
 	ITEM_VENOM_STAR = 20212,
 	ITEM_STORM_STAR = 20213,
+	ITEM_RIFTBLADE = 20225,
+	ITEM_AETHERCLEAVER = 20226,
+	ITEM_GRAVITON_MAUL = 20227,
 	/* Crown armors recoloreadas: loot raro de monstruos fuertes (docs/items-and-map/CROWN_ARMORS.md) */
 	ITEM_IMPERIAL_CROWN_ARMOR = 20161,
 	ITEM_SAPPHIRE_CROWN_ARMOR = 20162,

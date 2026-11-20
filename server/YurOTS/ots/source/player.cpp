@@ -3140,7 +3140,7 @@ static bool isRubyImbueWeaponItem(const Item* item)
 {
 	return item && item->isWeapon() && item->getWeaponType() != SHIELD &&
 		!isWandItem(item->getID()) && !isNightglassDaggerItem(item) &&
-		!isCrystalArrowItem(item) && !isPaladinStar(item->getID()) &&
+		!isCrystalArrowItem(item) && !isPaladinStar(item->getID()) && !isMeleeRelic(item->getID()) &&
 		rubyStacksFromAid(item->getActionId()) > 0;
 }
 
@@ -3215,6 +3215,8 @@ void Player::checkBoh()
 	int nightglassNow = 0;
 	int crystalArrowNow = 0;
 	Item* activeWeapon = getActiveWeapon();
+	if(!activeWeapon || activeWeapon->getID() != ITEM_RIFTBLADE)
+		riftCombo.reset();
 	if(activeWeapon){
 		if(isRubyImbueWeaponItem(activeWeapon))
 			rubyNow = rubyStacksFromAid(activeWeapon->getActionId());
@@ -3310,6 +3312,15 @@ int Player::getAttackDelayMs() const
 
 int Player::getBaseAttackDelayMs() const
 {
+	Item* relic = getActiveWeapon();
+	if(relic){
+		switch(relic->getID()){
+			case ITEM_RIFTBLADE: return RIFTBLADE_DELAY_MS;
+			case ITEM_AETHERCLEAVER: return AETHERCLEAVER_DELAY_MS;
+			case ITEM_GRAVITON_MAUL: return GRAVITON_DELAY_MS;
+			default: break;
+		}
+	}
 	if(getWandId() == ITEM_CRIMSON_WAND)
 		return 667;
 	switch(getPaladinStarId()){
