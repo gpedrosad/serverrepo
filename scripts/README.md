@@ -68,6 +68,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | `generate-city-hunts.py` | Tripulación pirata del barco del este y polizón (solo `test-spawn.xml`) |
 | `generate-epstein-caves.py` | Epstein Island: cuevas largas z8 + z9 + z10, agujeros y escaleras; escribe `generated-epstein-caves.json` (`--dry-run --preview-dir`) |
 | `epstein_cave_repair.py` | Repara contornos, relleno visible y fogatas sobre escaleras sin regenerar recorridos/spawns; `--dry-run` |
+| `generate-epstein-road.py` | Epstein Island: Camino de los Caídos, franja de tierra nueva en el mar (puente desde la punta sur) con Zombies y Undead Gladiators; bloque `EPSTEIN_ROAD` (`--dry-run --preview`) |
 | `generate-epstein-cleanup.py` | Epstein Island: saca NPCs/tienda y el Oracle, y agrega el portal de salida al templo |
 | `curious-houses.py` | Cuatro casas comprables pequeñas (Kongras, ruinas élficas, ribera), registro/PZ/plantillas vacías; `--dry-run`, conserva pasos públicos y dueños previos |
 | `reshape-river-street.py` | River Street III–V: casas más cortas, patios, pasillos de tierra y puente de sogas de 1 casilla hasta el arco de los trolls (`--dry-run --png`; ver `docs/gameplay/HOUSES.md`) |

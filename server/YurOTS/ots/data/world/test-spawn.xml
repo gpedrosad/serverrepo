@@ -6004,4 +6004,80 @@
 		<monster name="Elf Arcanist" x="1" y="0" z="7" spawntime="220" />
 	</spawn>
 	<!-- END ELF_WEST_SPAWNS -->
+	<!-- BEGIN EPSTEIN_ROAD (scripts/map/generate-epstein-road.py) -->
+	<spawn centerx="104" centery="238" centerz="7" radius="3">
+		<monster name="Zombie" x="1" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="81" centery="244" centerz="7" radius="3">
+		<monster name="Zombie" x="2" y="-2" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="95" centery="241" centerz="7" radius="3">
+		<monster name="Zombie" x="2" y="1" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="122" centery="238" centerz="7" radius="3">
+		<monster name="Zombie" x="0" y="1" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="114" centery="242" centerz="7" radius="3">
+		<monster name="Zombie" x="-1" y="-1" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="87" centery="238" centerz="7" radius="3">
+		<monster name="Zombie" x="0" y="2" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="139" centery="241" centerz="7" radius="3">
+		<monster name="Zombie" x="2" y="1" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="152" centery="238" centerz="7" radius="3">
+		<monster name="Undead Gladiator" x="-1" y="1" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="146" centery="227" centerz="7" radius="3">
+		<monster name="Zombie" x="2" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="128" centery="243" centerz="7" radius="3">
+		<monster name="Undead Gladiator" x="1" y="1" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="148" centery="196" centerz="7" radius="3">
+		<monster name="Zombie" x="2" y="2" z="7" spawntime="180" />
+		<monster name="Undead Gladiator" x="-1" y="1" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="133" centery="200" centerz="7" radius="3">
+		<monster name="Zombie" x="-1" y="1" z="7" spawntime="180" />
+		<monster name="Undead Gladiator" x="1" y="0" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="150" centery="218" centerz="7" radius="3">
+		<monster name="Zombie" x="-2" y="0" z="7" spawntime="180" />
+		<monster name="Undead Gladiator" x="-1" y="0" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="142" centery="202" centerz="7" radius="3">
+		<monster name="Zombie" x="0" y="-2" z="7" spawntime="180" />
+		<monster name="Undead Gladiator" x="0" y="-1" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="154" centery="205" centerz="7" radius="3">
+		<monster name="Zombie" x="-1" y="-1" z="7" spawntime="180" />
+		<monster name="Undead Gladiator" x="-2" y="-1" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="147" centery="210" centerz="7" radius="3">
+		<monster name="Zombie" x="1" y="0" z="7" spawntime="180" />
+		<monster name="Undead Gladiator" x="1" y="2" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="115" centery="215" centerz="7" radius="3">
+		<monster name="Undead Gladiator" x="0" y="-2" z="7" spawntime="210" />
+		<monster name="Undead Gladiator" x="2" y="-2" z="7" spawntime="210" />
+	</spawn>
+	<spawn centerx="118" centery="197" centerz="7" radius="3">
+		<monster name="Zombie" x="0" y="-2" z="7" spawntime="210" />
+		<monster name="Undead Gladiator" x="-1" y="1" z="7" spawntime="210" />
+	</spawn>
+	<spawn centerx="117" centery="207" centerz="7" radius="3">
+		<monster name="Undead Gladiator" x="-1" y="2" z="7" spawntime="210" />
+		<monster name="Zombie" x="1" y="2" z="7" spawntime="210" />
+	</spawn>
+	<spawn centerx="118" centery="224" centerz="7" radius="3">
+		<monster name="Undead Gladiator" x="-1" y="0" z="7" spawntime="210" />
+		<monster name="Undead Gladiator" x="-2" y="0" z="7" spawntime="210" />
+	</spawn>
+	<spawn centerx="128" centery="195" centerz="7" radius="3">
+		<monster name="Zombie" x="1" y="1" z="7" spawntime="210" />
+		<monster name="Undead Gladiator" x="0" y="1" z="7" spawntime="210" />
+	</spawn>
+	<!-- END EPSTEIN_ROAD -->
 </spawns>

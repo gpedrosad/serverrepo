@@ -13,6 +13,44 @@ viajar a `85,209,7`.
 | **Terror Bird Nest** | pasto norte, `x75-85, y187-198` | Terror Bird ×3, Dragon Hatchling ×1 |
 | **Dragon Roost** | arena oeste, `x63-75, y191-204` | Dragon Hatchling ×2, Wyvern ×1 |
 
+### Camino de los Caídos (nov 2026)
+
+Franja de tierra nueva en el mar, al sur y al este de la isla: la forma de la tierra **es** el camino (como la
+Isla Natural). Es el único lugar con **Zombies** y **Undead Gladiators**, que estaban creados (sprite, cadáver
+propio y variantes rage) pero sin spawn.
+
+![Camino de los Caídos](img/epstein-road/camino.png)
+
+| Qué | Dónde |
+|---|---|
+| Entrada | Puente de madera de 2 de ancho desde la punta sur de la isla (`75-76, 228-236`); cartel en la llegada `76,237` |
+| Recorrido | Al este por y 240 hasta x 150, al norte hasta y 198, al oeste hasta x 118 y al sur hasta el **Patio de las Tumbas** (`118,224`, ataúdes de piedra y lápidas). 178 pasos |
+| Tamaño | 1708 casillas de tierra, 1151 caminables |
+| Monstruos | 21 spawns, 32 monstruos (17 Zombie, 15 Undead Gladiator): uno cada 36 casillas. Por etapas según la distancia desde la llegada: Zombie suelto → Zombie o Gladiator suelto → de a 2 mezclados → de a 2 casi todos Gladiators en el fondo. Spawntime de 120 a 210 s |
+
+Decoración de cementerio solo en el pasto entre el camino y la costa (árboles muertos, lápidas, ataúdes enterrados,
+cráneos); el camino de tierra nunca queda tapado.
+
+![Puente y llegada](img/epstein-road/puente.png)
+
+**Ojo: la costa bloquea.** Las piezas de borde de agua (4644–4655) tienen `block_solid`: ninguna casilla con borde se
+puede pisar. Por eso el puente pisa también la costa de las dos puntas (las dos casillas de costa de la isla en
+`75-76,228` pasaron a ser madera) y llega hasta la primera fila de pasto sin agua alrededor. Para los bordes la
+madera cuenta como tierra. El generador también convierte en agua los bolsones de pasto que la costa deja
+encerrados, y solo saca decoración (nunca costa) para abrir rincones tapados.
+
+```bash
+python3 scripts/map/generate-epstein-road.py --dry-run --preview /tmp/camino.png
+python3 scripts/map/generate-epstein-road.py      # mapa + bloque EPSTEIN_ROAD + cartel + manifiesto
+```
+
+Re-ejecutable (mismo mapa byte a byte): el manifiesto `generated-epstein-road.json` guarda qué casillas escribió.
+Solo toca z7, agua y vacío (más las 2 casillas de costa del puente). Valida: costa y bordes de tierra exactos,
+todo lo caminable alcanzable desde la llegada, tramos en orden, que no se vea el vacío y que la costa de la isla
+junto al puente siga bien. `generate-epstein-hunts.py` conserva el bloque `EPSTEIN_ROAD` al regenerar los demás
+spawns. Probado con bots en un servidor aparte: un personaje cruzó caminando de la isla al camino y se ven Zombies al
+principio y Gladiators en el patio.
+
 ## Cuevas z8
 
 | Cueva | Entrada | Monstruos |
@@ -70,8 +108,8 @@ python3 scripts/map/generate-epstein-hunts.py --dry-run
 python3 scripts/map/generate-epstein-hunts.py
 ```
 
-Orden: cleanup → caves → hunts. El generador de hunts borra todos los spawns de la caja de
-Epstein (z6-z10) y vuelve a colocar las zonas.
+Orden: cleanup → caves → hunts (el camino, `generate-epstein-road.py`, es independiente). El generador de hunts borra todos los spawns de la caja de
+Epstein (z6-z10), salvo el bloque `EPSTEIN_ROAD` del camino, y vuelve a colocar las zonas.
 
 ## Verificación
 
