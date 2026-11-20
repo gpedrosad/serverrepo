@@ -268,3 +268,29 @@ Once tiles completos de locker idénticos al mapa anterior.
 sin errores ni warnings; probe OK / healthy, 0 reinicios automáticos.
 1 cuenta, 8 personajes, 31 casas, depots, dueños, config y binario preservados.
 Sin suites ni recorrido/depot in-game por pedido de Gonzalo.
+
+## Accesos despejados y murallas rematadas — 20 nov 2026
+
+La captura posterior mostró la escalera izquierda dibujada sobre el muro y junto a la
+puerta de madera. Causa: se había reservado solo el ancla y no el sprite completo 2×2.
+
+![Torre: acceso libre, escaleras separadas y murallas continuas](img/portal-clear-access/tower.png)
+
+![Entrada con faroles separados de los pilares](img/portal-clear-access/entrance.png)
+
+- Huella de la torre: **165–170,52–56,z2–7**, 180 tiles. Una columna más al este;
+  25 tiles superiores nuevos y cinco casillas de la vieja reja integradas en la base.
+- Escaleras en **169,54** (z7→6, z5→4, z3→2) y **167,54** (z6→5, z4→3).
+  Sus dibujos 2×2 quedan enteramente dentro del cuarto, separados entre sí y de los muros.
+- Acceso oeste en **165,55** para z5/z6/z7; retirada únicamente la puerta 1210 sin atributos
+  de `165,54,5`. Corredor sur **166–169,55** despejado en todos los pisos; luces sobre muro.
+- Encuentros con la galería calculados según el muro vecino en `164,52`/`164,56`:
+  continuidad horizontal al norte y esquina/vertical correctas al sudoeste.
+- Faroles delanteros en **158,57,7** y **164,57,7**, separados de los pilares del pórtico;
+  los dos pasos centrales y el pavimento del umbral quedan libres.
+
+`temple-portals.py` rechaza huellas 2×2, rellanos o recorridos bloqueados antes de escribir.
+Aplicación del generador y revisión de renders estáticos: 117 tiles modificados, 25 nuevos;
+226 teleports y 11 tiles completos de locker intactos, sin duplicados nuevos.
+Backup local: `backups/map/portal-clear-access-before/`. Sin suites ni recorrido in-game,
+por pedido de Gonzalo. No hay nuevos sprites, cambios de OTB/Lua ni recompilación.

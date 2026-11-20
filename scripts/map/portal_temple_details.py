@@ -8,8 +8,9 @@ LANTERN, RAIL_V, RAIL_H, RAIL_CORNER, WALL_LIGHT = range(20255, 20260)
 KEEP_DETAILS = {LANTERN, RAIL_V, RAIL_H, RAIL_CORNER}
 REPLACEMENTS = {1120: ENTRANCE_LEFT, 1121: ENTRANCE_RIGHT, 1480: LANTERN,
                 1543: RAIL_V, 1544: RAIL_H, 1545: RAIL_CORNER, 2038: WALL_LIGHT}
-ENTRY_PAD = {(x,y,7) for x in (160,161) for y in (56,57,58)} | {(159,56,7),(162,56,7)}
-FRONT_LIGHTS = {(159,57,7), (162,57,7)}
+ENTRY_PAD = {(x,y,7) for x in range(159,163) for y in (56,57,58)}
+FRONT_LIGHTS = {(158,57,7), (164,57,7)}
+OLD_FRONT_LIGHTS = {(159,57,7), (162,57,7)}
 ARCH = {(160,57,7):ENTRANCE_LEFT, (162,57,7):ENTRANCE_RIGHT}
 
 
@@ -27,7 +28,7 @@ def apply_details(root,otb):
             if tile[0] not in (5,14):
                 continue
             pos = (ax+tile[1][0],ay+tile[1][1],z)
-            if not inside(*pos) and pos not in ENTRY_PAD|FRONT_LIGHTS|set(ARCH):
+            if not inside(*pos) and pos not in ENTRY_PAD|FRONT_LIGHTS|OLD_FRONT_LIGHTS|set(ARCH):
                 continue
             if tile[0] == 14:
                 raise ValueError(f'El detalle del templo invade una casa: {pos}')
@@ -39,10 +40,13 @@ def apply_details(root,otb):
                 if replacement is not None and sid != replacement:
                     struct.pack_into('<H',props,offset,replacement)
                     counts[sid,replacement] += 1
-            if pos in ENTRY_PAD:
+            if pos in ENTRY_PAD|FRONT_LIGHTS:
                 # El borde de pasto del pavimento anterior taparía el umbral rúnico.
                 tile[2] = [ch for ch in tile[2] if not (ch[0] == 6 and
                            struct.unpack_from('<H',ch[1])[0] == 4542)]
+            if pos in OLD_FRONT_LIGHTS:
+                tile[2]=[ch for ch in tile[2] if not (ch[0]==6 and
+                         struct.unpack_from('<H',ch[1])[0]==LANTERN)]
             if pos in FRONT_LIGHTS and not any(ch[0] == 6 and
                     struct.unpack_from('<H',ch[1])[0] == LANTERN for ch in tile[2]):
                 tile[2].append([6,bytearray(struct.pack('<H',LANTERN)),[]])

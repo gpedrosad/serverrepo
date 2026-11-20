@@ -70,15 +70,15 @@ abajo, `432` en el de arriba, misma x,y**. Detalle en
 ## Torre sureste del templo — 20 nov 2026
 
 La bajada 432 de 168,54,6 no tenía subida en la planta baja. La torre se reconstruye
-en `portal_temple_architecture.py` (165–169,52–56,z2–7) con cinco pares de escalera:
+en `portal_temple_architecture.py` (165–170,52–56,z2–7) con cinco pares de escalera:
 
 | Piso inferior → superior | x,y |
 |---|---|
-| 7 → 6 | 168,54 |
-| 6 → 5 | 166,54 |
-| 5 → 4 | 168,54 |
-| 4 → 3 | 166,54 |
-| 3 → 2 | 168,54 |
+| 7 → 6 | 169,54 |
+| 6 → 5 | 167,54 |
+| 5 → 4 | 169,54 |
+| 4 → 3 | 167,54 |
+| 3 → 2 | 169,54 |
 
 Subida propia **20260** (client 3217, clon 1385, floorchange north) y bajada **20261**
 (client 3214, clon 432, floorchange down). Mismo x,y en cada par; al subir se llega a
@@ -89,6 +89,14 @@ La subida usa el movimiento nativo. No hay cambios de C++.
 Aplicación/render sin suites ni recorrido in-game, por pedido de Gonzalo.
 Activado el 20 nov 2026 (`a3325f4`): cliente publicado antes del reinicio ordenado;
 probe OK / healthy. Detalle y respaldo en PLAZA_ARCANA.md.
+
+Corrección posterior a la captura del jugador: el sprite de subida ocupa 2×2 hacia
+norte/oeste. Validar solo la casilla ancla había dejado media escalera sobre el muro y
+la puerta 1210. La torre gana una columna al este; el acceso oeste pasa a `165,55`
+en z5–z7, sin puerta, y la fila y55 queda libre de muro, hueco, escalera y decoración.
+`validate_access()` se ejecuta antes de escribir el mapa: revisa la huella completa,
+ambos rellanos y la salida desde cada llegada al corredor sin cruzar otra escalera.
+No requiere cambiar assets, bindings ni C++.
 
 ## Pendiente (mapa)
 
