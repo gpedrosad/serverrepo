@@ -82,3 +82,46 @@ python3 scripts/sync-houses-with-map.py --dry-run
 ```
 
 Pendiente: prueba in-game del portal, de las escaleras/agujeros y del balance de z8/z9/z10.
+
+## Reparación de cuevas — 20 nov 2026
+
+Preparada en el mapa local, pendiente deploy. La revisión encontró fogatas sobre las
+nueve escaleras de mano de las cuevas largas, roca de relleno pegada al piso sin pared,
+contornos con más de una pieza posible y vacío negro visible en el mismo piso.
+
+![Entrada antes: fogata sobre la escalera y vacío fuera de la caja](img/epstein-caves-repair/before-entrada.png)
+
+![Entrada reparada: escalera sola, antorcha en pared y relleno](img/epstein-caves-repair/after-entrada.png)
+
+`scripts/map/epstein_cave_repair.py` repara el mapa existente sin regenerar recorridos:
+
+- Cava 367 casillas de roca estrecha/ambigua y recompone el contorno para que cada
+  pared tenga una pieza 356–367 válida. Conserva los pisos originales del recorrido.
+- Retrae 33 casillas de bordes compartidos: 21 en la fila sur de Mutant Burrow y
+  12 en Tiger/Tide. Así dos cuevas vecinas no comparten una pared de una sola cara.
+  Ninguna entrada, salida, monstruo, agujero o escalera ocupa esas casillas.
+- Sustituye las nueve fogatas sobre escaleras por nueve antorchas en paredes próximas.
+  Las diez escaleras de entrada, incluida Mutant Burrow, quedan solas y con salida libre.
+- Agrega 5163 tiles de roca/pared en vacío para cubrir la ventana del cliente.
+  No sobrescribe casillas existentes ajenas. Conserva las paredes nativas 371–382
+  de la parte original de Mutant Burrow.
+
+Resultado: **5689 posiciones** cambiadas dentro de x32–131, y183–266, z8–z10;
+5163 nuevas y 526 existentes. Superficie, depot, casas y resto del mapa intactos.
+`test-spawn.xml` y `generated-epstein-caves.json` idénticos al backup: mismos monstruos,
+respawns, coordenadas de las entradas y conexiones. Cofres, contenedores, teleports e
+items con atributos se cotejaron byte por byte; los once lockers también son idénticos.
+
+```sh
+python3 scripts/map/epstein_cave_repair.py --dry-run
+python3 scripts/map/epstein_cave_repair.py
+python3 scripts/map/check-upper-view.py --box 40 175 122 260 --z 8 9 10
+```
+
+El script valida antes de escribir: contornos, conectividad, ventana sin vacío,
+escaleras/agujeros y spawns pisables. Segunda aplicación: cero cambios. La revisión
+de vista superior sigue dando OK. El generador base llama a esta reparación al
+terminar y ya no crea fogatas sobre escaleras; su backup usa `backups/map/`.
+Backup de esta revisión: `backups/map/epstein-caves-before/`.
+Se corrieron reparación, validaciones estructurales y render de sprites; sin suites,
+pruebas in-game, compilación ni reinicio, por pedido de Gonzalo.

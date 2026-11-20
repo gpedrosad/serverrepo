@@ -46,7 +46,6 @@ MANIFEST = WORLD / "generated-epstein-caves.json"
 Z7, Z8, Z9, Z10 = 7, 8, 9, 10
 HOLE = 479
 LADDER = 1386
-CAMPFIRE = 1423
 
 Z8_ZONES = {
     "drowned": dict(box=(40, 198, 70, 250), start=(66, 200), seed=101, steps=140, room_every=14, floor=CAVE_FLOOR_ALT),
@@ -151,12 +150,7 @@ def build_zone(spec, start: tuple[int, int], z: int):
             tiles2[c] = [CAVE_FLOOR if (c[0] + c[1]) % 3 else CAVE_FLOOR_ALT]
     out = {(x, y, z): ids for (x, y), ids in tiles2.items()}
     out[(start[0], start[1], z)] = [CAVE_FLOOR, LADDER]
-    # una fogata en la primera sala, para que no esté todo a oscuras
-    if rooms:
-        cx, cy = rooms[0]
-        p = (cx, cy, z)
-        if p in out and (cx, cy) in floor:
-            out[p].append(CAMPFIRE)
+    # La iluminación va en las paredes durante la reparación final; la escalera queda sola.
     return out, floor, hole
 
 
@@ -259,7 +253,7 @@ def main() -> int:
     MANIFEST.write_text(json.dumps({"zones": meta}, indent=2) + "\n", encoding="utf-8")
     print(f"manifiesto: {MANIFEST}")
 
-    backup = Path("/private/var/folders/c8/k2dtzwbx3ml4l81234tng6vc0000gn/T/opencode") / \
+    backup = REPO / "backups/map" / \
         f"epstein-long-{datetime.now().strftime('%Y%m%d-%H%M%S')}"
     backup.mkdir(parents=True, exist_ok=True)
     shutil.copy2(MAP, backup / "test.otbm")
@@ -278,6 +272,8 @@ def main() -> int:
         m7 = roomkit.Map()
         m7.ground((x, y, Z7), HOLE)
         roomkit.write_map(MAP, m7, (x, y, x, y), Z7, stackable)
+    from epstein_cave_repair import run as repair_caves
+    repair_caves()
     print(f"escrito: {MAP}")
     return 0
 

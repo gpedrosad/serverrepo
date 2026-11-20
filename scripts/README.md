@@ -67,6 +67,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | `generate-city-depths.py` | Dungeon de la city (agujero `185,58,7`): cueva z8–z10 en bloques 2x2, salas con decoración fija, agujeros + escaleras de mano y spawns por sala; valida paredes, vacío a la vista y recorrido (`--dry-run --preview`; ver `docs/items-and-map/MAPEAR_DUNGEON_CITY.md`) |
 | `generate-city-hunts.py` | Tripulación pirata del barco del este y polizón (solo `test-spawn.xml`) |
 | `generate-epstein-caves.py` | Epstein Island: cuevas largas z8 + z9 + z10, agujeros y escaleras; escribe `generated-epstein-caves.json` (`--dry-run --preview-dir`) |
+| `epstein_cave_repair.py` | Repara contornos, relleno visible y fogatas sobre escaleras sin regenerar recorridos/spawns; `--dry-run` |
 | `generate-epstein-cleanup.py` | Epstein Island: saca NPCs/tienda y el Oracle, y agrega el portal de salida al templo |
 | `reshape-river-street.py` | River Street III–V: casas más cortas, patios, pasillos de tierra y puente de sogas de 1 casilla hasta el arco de los trolls (`--dry-run --png`; ver `docs/gameplay/HOUSES.md`) |
 | `arrange-mad-shop.py` | Tienda de Mad (z6 del Seller): 13 raros en el piso de Mad y el mostrador, fuera del alcance de los jugadores; valida con flood fill (`--replace`; ver `docs/items-and-map/MAPEAR_TIENDA_SELLER.md`) |
