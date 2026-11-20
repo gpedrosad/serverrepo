@@ -1,0 +1,21 @@
+{
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "assets": [
+    {
+      "name": "riftblade",
+      "prompt": "Use case: stylized-concept. Asset type: inventory sprite for a classic Tibia 7.6 pixel-art game, to be reduced to 32x32. One unique Riftblade sword, a dark obsidian one-handed longsword with a split silver blade containing a vivid violet-magenta dimensional fissure, small violet crystal in the crossguard and wrapped dark leather grip. A legible compact silhouette. Blade tip toward upper right, handle toward lower left. Style: authentic old-school hand-placed pixel art, crisp chunky visible square pixels as if drawn on a 32 by 32 logical grid then nearest-neighbor enlarged. Restrained 16-color palette, dark outline, upper-left highlights, sharp edges, no antialiasing, no blur. Single isolated weapon fills 85% of square canvas. Genuine transparent background. No text, no labels, no frame, no shadow, no pedestal, no particles outside the weapon, no glow haze, no extra items.",
+      "source": "/Users/gonzalo/.codex/generated_images/01a1f073-b9af-7453-928e-1540498fcc7a/exec-9506a813-0411-4260-a592-0a62e2f9cb16.png"
+    },
+    {
+      "name": "aethercleaver",
+      "prompt": "Use case: stylized-concept. Asset type: inventory sprite for a classic Tibia 7.6 pixel-art game, to be reduced to 32x32. One unique Aethercleaver axe, a one-handed crescent battle axe with polished silver cutting edge, turquoise-teal crystal core enclosed in brass-gold fittings, dark leather handle, a few small turquoise inset runes. Distinct asymmetric single crescent head at upper right and handle at lower left. Legible compact silhouette. Style: authentic old-school hand-placed pixel art, crisp chunky visible square pixels as if drawn on a 32 by 32 logical grid then nearest-neighbor enlarged. Restrained 16-color palette, dark outline, upper-left highlights, sharp edges, no antialiasing, no blur. Single isolated weapon fills 85% of square canvas. Genuine transparent background. No text, no labels, no frame, no shadow, no pedestal, no particles outside the weapon, no glow haze, no extra items.",
+      "source": "/Users/gonzalo/.codex/generated_images/01a1f073-b9af-7453-928e-1540498fcc7a/exec-1f2759a9-2afe-465f-b722-2a8552116972.png"
+    },
+    {
+      "name": "graviton",
+      "prompt": "Use case: stylized-concept. Asset type: inventory sprite for a classic Tibia 7.6 pixel-art game, to be reduced to 32x32. One unique Graviton Maul, a heavy two-handed war hammer with a chunky dark iron octagonal head enclosing a bright amber-orange gravity core, brass reinforced corners and black handle. Head at upper right, handle at lower left. Heavy readable compact silhouette. Style: authentic old-school hand-placed pixel art, crisp chunky visible square pixels as if drawn on a 32 by 32 logical grid then nearest-neighbor enlarged. Restrained 16-color palette, dark outline, upper-left highlights, sharp edges, no antialiasing, no blur. Single isolated weapon fills 85% of square canvas. Genuine transparent background. No text, no labels, no frame, no shadow, no pedestal, no particles outside the weapon, no glow haze, no extra items.",
+      "source": "/Users/gonzalo/.codex/generated_images/01a1f073-b9af-7453-928e-1540498fcc7a/exec-62d46708-bf43-4d36-bdfa-3733a2f6477e.png"
+    }
+  ]
+}
