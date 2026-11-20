@@ -1,5 +1,9 @@
 # Zagan Test Items
 
+Entrada, faroles y rejas del templo (`20253`–`20259`): piezas propias con geometría nativa,
+animación/luz cian y aplicación local al mapa. Fuentes, IDs y estado en
+[PLAZA_ARCANA.md](PLAZA_ARCANA.md#entrada-faroles-y-rejas--20-nov-2026).
+
 Pack del directorio `Zagan+Square`: **55 ítems** (`20100`–`20154`). Desde `20155` son ítems agregados después
 con otros scripts (trainer dummy, enchanted spear, armas de 8.x, crown armors, armas del Root Colossus, Aurora
 Shield) y desde nov 2026 también el red magic tree (`20191`), el blue bassin (`20192`) y la black fire sword (`20193`).

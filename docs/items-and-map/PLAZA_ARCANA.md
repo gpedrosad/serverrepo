@@ -2,6 +2,7 @@
 
 Estado: **publicada y desplegada en la ThinkPad el 19 nov 2026**, validada con cliente Mac en instancia aislada.
 **Ampliación del 20 nov:** galería y torres antiguas remodeladas en el mapa del repo; pendiente deploy.
+Entrada, faroles y rejas propios añadidos después; sus assets de cliente y OTB están preparados en el repo.
 Rediseño pedido por Gonzalo: nuevas torres, suelo y sprites con basalto azul y cian eléctrico.
 No requiere recompilar C++.
 
@@ -158,3 +159,57 @@ de una sesión in-game**, en `img/portal-temple/`: antes/después y pisos z2–z
 fue `python3 scripts/map/temple-portals.py`; el resto fue render de imágenes. No se ejecutaron
 suites, probes, builds ni pruebas de depot para esta ampliación. Para deploy de este mapa sigue
 aplicando el contrato de DEPOTS.md; todavía no se realizó ese deploy.
+
+## Entrada, faroles y rejas — 20 nov 2026
+
+Pedido siguiente de Gonzalo: adaptar también la entrada, crear otros faroles y rejas.
+**Aplicado al mapa y assets del repo, pendiente publicación del cliente y deploy.**
+Sin pruebas de juego, probes ni build, respetando el pedido de no seguir con pruebas.
+
+![Entrada y faroles nuevos: render estático](img/portal-details/entrance.png)
+
+![Cerramiento adaptado al templo](img/portal-details/after-client.png)
+
+| Server ID | Client ID | Prototipo | Pieza | Cuadros / tamaño |
+|---:|---:|---:|---|---|
+| 20253 | 3229 | 1120 | Mitad izquierda del arco abierto | 1 / 64×64 |
+| 20254 | 3228 | 1121 | Mitad derecha del arco abierto | 1 / 64×64 |
+| 20255 | 3227 | 1480 | Farol de cristal cian, luz 7/71 | 2 / 64×64 |
+| 20256 | 3226 | 1543 | Reja vertical | 1 / 64×64 |
+| 20257 | 3225 | 1544 | Reja horizontal | 1 / 64×64 |
+| 20258 | 3224 | 1545 | Esquina de reja | 1 / 64×64 |
+| 20259 | 3223 | 2038 | Aplique de cristal cian, luz 5/71 | 2 / 32×64 |
+
+El arco conserva los prototipos pasables de 160–161,56,7 y emite luz 3/71.
+El umbral ocupa 160–161,56–58,7 con anillos y sendero cian; el basalto cubre además
+159/162,56,7 bajo los laterales. Dos faroles nuevos flanquean el acceso en 159/162,57,7,
+dejando las dos casillas centrales libres. Los faroles y rejas anteriores se sustituyen
+en sus ubicaciones; los apliques altos conservan anclaje y orientación. Las rejas clonan
+su bloqueo nativo: sólidas al caminar y permiten proyectiles.
+
+Ámbito: x151–170, y42–56, z2–7, más el umbral y los dos faroles delanteros.
+Se retiran los dos bordes de pasto 4542 que tapaban el umbral. `portal_temple_details.py`
+se aplica después de muros/pisos, y `KEEP` conserva los faroles/rejas nuevos al reconstruir
+la plaza. Ningún locker, depot, casa, NPC ni teleport cambia de ubicación o destino.
+
+Arte de ImageGen integrado: seis fuentes (arco doble, farol animado, tres rejas y aplique
+animado). Fuentes, plantillas, prompts exactos (`prompts.json`) y siete PNG finales en
+`devtools/zagan-test/custom-sprites/portal-details/`. Cada celda se adapta al bounding box
+y ancla de su prototipo con nearest-neighbor y alpha 0/255.
+Se añaden 32 sprites (14311 → 14343); el importador conserva criaturas, efectos y proyectiles.
+Los DAT/SPR canónicos se copian a Mac y Windows.
+
+`add_custom_items.py` incorpora `tiles="1x2"` y cuadros apilados para 1×2/2×1: el aplique
+conserva abajo/arriba por cada cuadro. Sin cambios de C++. Comandos de aplicación:
+
+```sh
+python3.11 scripts/client-rme/portal_detail_assets.py --prepare --apply
+python3 scripts/map/temple-portals.py
+```
+
+Los siete slots no tenían usos en mapa/scripts; se consultaron en solo lectura los IDs
+antiguos 2342–2336 en jugadores/houseitems/casas de la ThinkPad y ninguno estaba presente.
+Backup anterior: `backups/map/portal-details-before/` (mapa, DAT/SPR y OTB).
+Las imágenes son renders estáticos, no capturas in-game. Se ejecutaron importadores,
+generador, adaptación de los dos laterales y render; no suites, probes ni compilaciones.
+Para activar este mapa se debe publicar el cliente y actualizar OTB/mapa juntos.
