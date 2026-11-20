@@ -17,6 +17,7 @@
 </defenses>
 
 <loot>
+		<item id="20348" chance="500"/> <!-- trofeo colgable (rare 0,5 %) -->
  	<item id="2148" countmax="35" chance1="100000" chancemax="0"/>
  	<item id="2678" countmax="5" chance1="5000" chancemax="0"/>
  	<item id="2483" chance="14000"/>

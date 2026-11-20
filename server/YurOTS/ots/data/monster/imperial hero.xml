@@ -28,6 +28,7 @@
 	<voice sentence="The crown is not yours to take!"/>
 </voices>
 <loot>
+		<item id="20347" chance="500"/> <!-- trofeo colgable (rare 0,5 %) -->
 	<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
 	<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
 	<item id="2152" countmax="3" chance1="12000" chancemax="0"/>

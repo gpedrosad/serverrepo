@@ -25,6 +25,7 @@
 	<voice sentence="Kneel before the Lord of Elvenbane!"/>
 </voices>
 <loot>
+		<item id="20335" chance="5000"/> <!-- trofeo colgable (rare 5 %, docs/gameplay/HANGABLES.md) -->
 	<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
 	<item id="2152" countmax="20" chance1="60000" chancemax="0"/>
 	<item id="2160" countmax="2" chance1="10000" chancemax="0"/>

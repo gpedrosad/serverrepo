@@ -1,5 +1,8 @@
 #!/usr/bin/env python3.11
-"""Tapestries con banderas y estandartes de guerra, a partir del purple tapestry (1857).
+"""Tapestries con banderas, estandartes de guerra y trofeos de jefes, a partir del purple tapestry (1857).
+
+Trofeos: terciopelo oscuro con borde dorado y el jefe de frente (cuadro quieto mirando al sur de su looktype,
+recortado y centrado). Los sueltan los jefes como rare (docs/gameplay/HANGABLES.md).
 
 El tapestry de 7.6 es 2x2 con 3 patrones: 0 enrollado (en el suelo), 1 colgado en pared horizontal (la tela
 es un paralelogramo: cada fila se corre a la derecha) y 2 colgado en pared vertical (cada columna se corre
@@ -107,6 +110,54 @@ def royal(u, v):
     return (70, 20, 110)
 
 
+def trophy(look: int, velvet):
+    """Diseño: el jefe (looktype, mirando al sur, quieto) centrado sobre terciopelo, con borde dorado."""
+    sys.path.insert(0, str(HERE))
+    import add_recolor_look as L
+    things = L.load_things(ROOT / "devtools/rme/rme-client-760")
+    frames, size = L.look_frames(things, look)
+    frame = frames[2]                                    # anim 0, dirección 2 (sur)
+    pts = [(i % size, i // size) for i, p in enumerate(frame) if p[3]]
+    x0, x1 = min(x for x, _ in pts), max(x for x, _ in pts)
+    y0, y1 = min(y for _, y in pts), max(y for _, y in pts)
+    w, h = x1 - x0 + 1, y1 - y0 + 1
+    side = max(w, h)
+    ox, oy = x0 - (side - w) / 2, y0 - (side - h) / 2   # cuadrado centrado sobre la figura
+
+    def design(u, v):
+        if u < 0.07 or u > 0.93 or v < 0.05 or v > 0.95:
+            return (220, 170, 40)
+        iu, iv = (u - 0.1) / 0.8, (v - 0.12) / 0.8
+        if 0 <= iu < 1 and 0 <= iv < 1:
+            x, y = int(ox + iu * side), int(oy + iv * side)
+            if 0 <= x < size and 0 <= y < size and frame[y * size + x][3]:
+                return frame[y * size + x][:3]
+        return velvet
+    return design
+
+
+TROPHIES = {   # nombre del PNG -> (looktype del jefe, color del terciopelo: que contraste con el jefe)
+    "demodras_trophy": (39, (22, 28, 52)),            # dragón rojo sobre azul pizarra
+    "orshabaal_trophy": (35, (18, 22, 44)),           # demonio rojo sobre azul noche
+    "old_widow_trophy": (38, (40, 18, 48)),           # araña naranja sobre violeta oscuro
+    "ashen_lord_trophy": (239, (12, 38, 44)),         # ceniza y brasas sobre verde azulado
+    "fallen_emperor_trophy": (244, (16, 38, 22)),     # violeta sobre verde oscuro
+    "lord_of_elvenbane_trophy": (185, (18, 22, 52)),  # dorado y esmeralda sobre azul real
+    # monstruos nuevos (rare 0,5 %, también sus variantes rage) y jefes de las torres de Elvenbane (5 %)
+    "black_dragon_trophy": (230, (70, 18, 18)),
+    "dark_hydra_trophy": (241, (44, 48, 20)),
+    "root_colossus_trophy": (243, (16, 22, 48)),
+    "emerald_scarab_trophy": (242, (52, 16, 24)),
+    "frost_dragon_trophy": (231, (36, 16, 44)),
+    "hellhound_trophy": (238, (78, 72, 60)),
+    "imperial_hero_trophy": (240, (16, 40, 24)),
+    "red_kongra_trophy": (254, (12, 40, 44)),
+    "elvenbane_ranger_trophy": (222, (50, 16, 20)),
+    "elven_archmage_trophy": (223, (40, 36, 14)),
+    "orc_warchief_trophy": (224, (14, 40, 40)),
+    "thornwarden_trophy": (226, (16, 40, 20)),
+}
+
 DESIGNS = {
     "brazil_tapestry": brazil,
     "chile_tapestry": chile,
@@ -163,7 +214,9 @@ def main() -> int:
     base = base_stack()
     OUT.mkdir(parents=True, exist_ok=True)
     sheets = []
-    for name, design in DESIGNS.items():
+    designs = dict(DESIGNS)
+    designs.update({name: trophy(look, velvet) for name, (look, velvet) in TROPHIES.items()})
+    for name, design in designs.items():
         img = paint(base, design)
         img.save(OUT / f"{name}.png")
         sheets.append(img)

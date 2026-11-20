@@ -50,6 +50,7 @@ ITEM_ATTR_ROTATETO = 0x1E
 ITEM_ATTR_DECAY2 = 0x25
 ITEM_ATTR_LIGHT2 = 0x2A    # u16 nivel, u16 color (ITEM_ATTR_LIGHT2 de source/itemloader.h)
 FLAG_PICKUPABLE = 1 << 5
+FLAG_MOVEABLE = 1 << 6
 
 # Tamaño en bytes del argumento de cada flag del prefijo .dat (7.55–7.72). Tabla canónica:
 # scripts/map/kb/mapdata.py (DAT_ARGS). El 23 se remapea a 252 (sin argumento) desde 7.55.
@@ -316,6 +317,104 @@ NEW_ITEMS = [
     dict(name="royal banner", server_id=20281, client_id=3103, prototype=1857,
          png="royal_banner.png", decor=True, tiles=2, frames=3,
          descr="A royal banner with a golden crown. Hang it on a wall."),
+    # Las mismas 7, fijas (server 20320-20326; ojo: 20282-20296 son del muelle, dock_bridge_art.py) (fixed=True: sin moveable/pickupable en el OTB) y con el mismo client id: se cuelgan
+    # en el mapa como exhibición (local de Obi) sin que nadie se las lleve. No agregan sprites al cliente.
+    dict(name="brazil tapestry", server_id=20320, client_id=3123, prototype=1857,
+         png="brazil_tapestry.png", decor=True, tiles=2, frames=3, fixed=True,
+         descr="On display. Obi sells them: say flags."),
+    dict(name="chile tapestry", server_id=20321, client_id=3118, prototype=1857,
+         png="chile_tapestry.png", decor=True, tiles=2, frames=3, fixed=True,
+         descr="On display. Obi sells them: say flags."),
+    dict(name="usa tapestry", server_id=20322, client_id=3117, prototype=1857,
+         png="usa_tapestry.png", decor=True, tiles=2, frames=3, fixed=True,
+         descr="On display. Obi sells them: say flags."),
+    dict(name="argentina tapestry", server_id=20323, client_id=3112, prototype=1857,
+         png="argentina_tapestry.png", decor=True, tiles=2, frames=3, fixed=True,
+         descr="On display. Obi sells them: say flags."),
+    dict(name="pirate banner", server_id=20324, client_id=3111, prototype=1857,
+         png="pirate_banner.png", decor=True, tiles=2, frames=3, fixed=True,
+         descr="On display. Obi sells them: say flags."),
+    dict(name="war banner", server_id=20325, client_id=3106, prototype=1857,
+         png="war_banner.png", decor=True, tiles=2, frames=3, fixed=True,
+         descr="On display. Obi sells them: say flags."),
+    dict(name="royal banner", server_id=20326, client_id=3103, prototype=1857,
+         png="royal_banner.png", decor=True, tiles=2, frames=3, fixed=True,
+         descr="On display. Obi sells them: say flags."),
+    # Trofeos de jefes (nov 2026): tapestries con el jefe de frente sobre terciopelo y borde dorado
+    # (make_flag_tapestries.py, TROPHIES). Rare de cada jefe. Clients sacrificados: libros sin uso; los 4 primeros
+    # usaban 2845/2844/2840/2836, que se quedó el muelle (dock_bridge_art.py, 20297-20300): ahora 3021/3014/1780/2872.
+    dict(name="demodras trophy", server_id=20330, client_id=3021, prototype=1857,
+         png="demodras_trophy.png", decor=True, tiles=2, frames=3,
+         descr="A trophy of Demodras, the dragon of the dungeon. Hang it on a wall."),
+    dict(name="orshabaal trophy", server_id=20331, client_id=3014, prototype=1857,
+         png="orshabaal_trophy.png", decor=True, tiles=2, frames=3,
+         descr="A trophy of Orshabaal, the demon lord. Hang it on a wall."),
+    dict(name="old widow trophy", server_id=20332, client_id=1780, prototype=1857,
+         png="old_widow_trophy.png", decor=True, tiles=2, frames=3,
+         descr="A trophy of the Old Widow, queen of the spiders. Hang it on a wall."),
+    dict(name="ashen lord trophy", server_id=20333, client_id=2872, prototype=1857,
+         png="ashen_lord_trophy.png", decor=True, tiles=2, frames=3,
+         descr="A trophy of the Ashen Lord, still smouldering. Hang it on a wall."),
+    dict(name="fallen emperor trophy", server_id=20334, client_id=2832, prototype=1857,
+         png="fallen_emperor_trophy.png", decor=True, tiles=2, frames=3,
+         descr="A trophy of The Fallen Emperor. Hang it on a wall."),
+    dict(name="elvenbane trophy", server_id=20335, client_id=2831, prototype=1857,
+         png="lord_of_elvenbane_trophy.png", decor=True, tiles=2, frames=3,
+         descr="A trophy of the Lord of Elvenbane. Hang it on a wall."),
+    # Trofeos de los monstruos nuevos (rare 0,5 %) y de los jefes de las torres de Elvenbane (5 %).
+    dict(name="black dragon trophy", server_id=20341, client_id=2965, prototype=1857,
+         png="black_dragon_trophy.png", decor=True, tiles=2, frames=3,
+         descr="A trophy of a Black Dragon. Hang it on a wall."),
+    dict(name="dark hydra trophy", server_id=20342, client_id=2951, prototype=1857,
+         png="dark_hydra_trophy.png", decor=True, tiles=2, frames=3,
+         descr="A trophy of a Dark Hydra. Hang it on a wall."),
+    dict(name="root colossus trophy", server_id=20343, client_id=2906, prototype=1857,
+         png="root_colossus_trophy.png", decor=True, tiles=2, frames=3,
+         descr="A trophy of a Root Colossus. Hang it on a wall."),
+    dict(name="emerald scarab trophy", server_id=20344, client_id=2852, prototype=1857,
+         png="emerald_scarab_trophy.png", decor=True, tiles=2, frames=3,
+         descr="A trophy of an Emerald Scarab. Hang it on a wall."),
+    dict(name="frost dragon trophy", server_id=20345, client_id=2851, prototype=1857,
+         png="frost_dragon_trophy.png", decor=True, tiles=2, frames=3,
+         descr="A trophy of a Frost Dragon. Hang it on a wall."),
+    dict(name="hellhound trophy", server_id=20346, client_id=3020, prototype=1857,
+         png="hellhound_trophy.png", decor=True, tiles=2, frames=3,
+         descr="A trophy of a Hellhound. Hang it on a wall."),
+    dict(name="imperial hero trophy", server_id=20347, client_id=3002, prototype=1857,
+         png="imperial_hero_trophy.png", decor=True, tiles=2, frames=3,
+         descr="A trophy of an Imperial Hero. Hang it on a wall."),
+    dict(name="red kongra trophy", server_id=20348, client_id=2984, prototype=1857,
+         png="red_kongra_trophy.png", decor=True, tiles=2, frames=3,
+         descr="A trophy of a Red Kongra. Hang it on a wall."),
+    dict(name="elvenbane ranger trophy", server_id=20349, client_id=2971, prototype=1857,
+         png="elvenbane_ranger_trophy.png", decor=True, tiles=2, frames=3,
+         descr="A trophy of the Elvenbane Ranger. Hang it on a wall."),
+    dict(name="elven archmage trophy", server_id=20350, client_id=2970, prototype=1857,
+         png="elven_archmage_trophy.png", decor=True, tiles=2, frames=3,
+         descr="A trophy of the Elven Archmage. Hang it on a wall."),
+    dict(name="orc warchief trophy", server_id=20351, client_id=3077, prototype=1857,
+         png="orc_warchief_trophy.png", decor=True, tiles=2, frames=3,
+         descr="A trophy of the Orc Warchief. Hang it on a wall."),
+    dict(name="thornwarden trophy", server_id=20352, client_id=3011, prototype=1857,
+         png="thornwarden_trophy.png", decor=True, tiles=2, frames=3,
+         descr="A trophy of the Thornwarden. Hang it on a wall."),
+    # Luces de colores (nov 2026): candelabro 2042 / lámpara 2045 encendidos con la llama recoloreada
+    # (make_color_lights.py), luz de color propia y sin pudrición (no se apagan). Los vende Obi.
+    dict(name="blue candelabrum", server_id=20336, client_id=2825, prototype=2042,
+         png="blue_candelabrum.png", decor=True, frames=2, light=(6, 17), nodecay=True,
+         descr="A candelabrum burning with a blue flame."),
+    dict(name="green candelabrum", server_id=20337, client_id=2821, prototype=2042,
+         png="green_candelabrum.png", decor=True, frames=2, light=(6, 31), nodecay=True,
+         descr="A candelabrum burning with a green flame."),
+    dict(name="violet candelabrum", server_id=20338, client_id=2818, prototype=2042,
+         png="violet_candelabrum.png", decor=True, frames=2, light=(6, 113), nodecay=True,
+         descr="A candelabrum burning with a violet flame."),
+    dict(name="magenta lamp", server_id=20339, client_id=2814, prototype=2045,
+         png="magenta_lamp.png", decor=True, frames=2, light=(6, 184), nodecay=True,
+         descr="A lamp that glows magenta."),
+    dict(name="cyan lamp", server_id=20340, client_id=2966, prototype=2045,
+         png="cyan_lamp.png", decor=True, frames=2, light=(6, 29), nodecay=True,
+         descr="A lamp that glows cyan."),
 
 ]
 # Muelle del depot y puentes (nov 2026): barandas, faroles y rampa de madera dibujados por dock_bridge_art.py
@@ -505,6 +604,10 @@ def apply_otb(path: Path, dry: bool) -> list[str]:
         if proto is None:
             raise SystemExit(f"{path}: no está el prototipo {item['prototype']}")
         flags, blocks = B.parse_item_props(proto.props)
+        if item.get("fixed"):
+            # Versión de exhibición: mismo dibujo, pero el server no deja moverla ni levantarla.
+            f = struct.unpack("<I", flags)[0] & ~(FLAG_MOVEABLE | FLAG_PICKUPABLE)
+            flags = struct.pack("<I", f)
         if item.get("corpse") or item.get("decor"):
             pass  # contenedor/decoración: se copian flags/capacidad del prototipo sin tocar stats
         elif "armor" in item:
@@ -517,6 +620,9 @@ def apply_otb(path: Path, dry: bool) -> list[str]:
             if not weapon or len(weapon) != 5:
                 raise SystemExit(f"prototipo {item['prototype']} sin bloque de arma")
             blocks = B.upsert_block(blocks, ITEM_ATTR_WEAPON2, weapon[:3] + bytes([item["attack"], item["defence"]]))
+        if item.get("nodecay"):
+            # Siempre igual: sin pudrición (las luces de color no se apagan solas como el candelabro base).
+            blocks = [(a, p) for a, p in blocks if a not in (ITEM_ATTR_DECAY, ITEM_ATTR_DECAY2)]
         if "light" in item:
             # la luz vive en el OTB como ITEM_ATTR_LIGHT2 (0x2A): u16 nivel + u16 color
             blocks = B.upsert_block(blocks, ITEM_ATTR_LIGHT2, struct.pack("<HH", *item["light"]))

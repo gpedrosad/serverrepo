@@ -20,6 +20,7 @@
 	<voice sentence="Your skull will decorate my tower!"/>
 </voices>
 <loot>
+		<item id="20351" chance="5000"/> <!-- trofeo colgable (rare 5 %) -->
 	<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
 	<item id="2152" countmax="10" chance1="40000" chancemax="0"/>
 	<item id="2432" chance="2500"/>

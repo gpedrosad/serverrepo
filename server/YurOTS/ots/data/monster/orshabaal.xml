@@ -30,6 +30,7 @@
 </voices>
 
 <loot>
+		<item id="20331" chance="5000"/> <!-- trofeo colgable (rare 5 %, docs/gameplay/HANGABLES.md) -->
 	<item id="20161" chance="800"/>
  	<item id="2152" countmax="7" chance1="50000" chancemax="0"/>
  	<item id="2393" chance="1000"/>

@@ -16,6 +16,7 @@
 		<defense immunity="invisible"/>
 	</defenses>
 	<loot>
+		<item id="20342" chance="500"/> <!-- trofeo colgable (rare 0,5 %) -->
 		<item id="2148" countmax="300" chance1="100000" chancemax="0"/>
 		<item id="2666" countmax="4" chance1="20000" chancemax="0"/>
 		<item id="2671" countmax="4" chance1="20000" chancemax="0"/>

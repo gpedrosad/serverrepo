@@ -1,6 +1,7 @@
 -- Obi (muebles para casas, todo a 500gp salvo banderas y estandartes; acepta cantidad).
 FURNITURE_PRICE = 500
 FLAG_PRICE = 1500   -- banderas y estandartes (docs/gameplay/HANGABLES.md)
+LIGHT_PRICE = 2500  -- luces de colores, siempre encendidas
 
 FURNITURE_OFFERS = {
 	{keys = {'wooden chair'}, itemid = 3901},
@@ -47,6 +48,12 @@ FURNITURE_OFFERS = {
 	{keys = {'pirate banner', 'pirate flag', 'bandera pirata'}, itemid = 20279, price = FLAG_PRICE},
 	{keys = {'war banner', 'estandarte de guerra'}, itemid = 20280, price = FLAG_PRICE},
 	{keys = {'royal banner', 'estandarte real'}, itemid = 20281, price = FLAG_PRICE},
+	-- Luces de colores (nov 2026): no se apagan; luz azul, verde, violeta, magenta o celeste.
+	{keys = {'blue candelabrum', 'candelabro azul'}, itemid = 20336, price = LIGHT_PRICE},
+	{keys = {'green candelabrum', 'candelabro verde'}, itemid = 20337, price = LIGHT_PRICE},
+	{keys = {'violet candelabrum', 'purple candelabrum', 'candelabro violeta'}, itemid = 20338, price = LIGHT_PRICE},
+	{keys = {'magenta lamp', 'pink lamp', 'lampara magenta', 'lampara rosa'}, itemid = 20339, price = LIGHT_PRICE},
+	{keys = {'cyan lamp', 'lampara celeste', 'lampara cyan'}, itemid = 20340, price = LIGHT_PRICE},
 	{keys = {'small purple pillow'}, itemid = 1678},
 	{keys = {'small green pillow'}, itemid = 1679},
 	{keys = {'small red pillow'}, itemid = 1680},
@@ -72,6 +79,7 @@ FURNITURE_TOPICS = {
 	{keys = {'containers'}, reply = 'I sell large trunks, boxes, drawers, dressers, lockers and troughs.'},
 	{keys = {'more'}, reply = 'I sell coal basins, birdcages, harps, pianos, globes, clocks and lamps.'},
 	{keys = {'tapestry', 'tapestries'}, reply = 'I sell blue, green, orange, purple, red, white and yellow tapestry (500gp). For flags and banners say "flags".'},
+	{keys = {'lights', 'luces', 'colored lights', 'luces de colores'}, reply = 'Colored lights that never go out, 2500gp each: blue, green and violet candelabrum, magenta and cyan lamp.'},
 	{keys = {'flags', 'banners', 'banderas', 'estandartes'}, reply = 'Flags and banners, 1500gp each: brazil, chile, usa and argentina tapestry, pirate banner, war banner and royal banner. Hang them on a wall!'},
 	{keys = {'small'}, reply = 'I sell small purple, small green, small red, small blue, small orange, small turquiose and small white pillows.'},
 	{keys = {'round'}, reply = 'I sell round blue, round red, round purple and round turquiose pillows.'},
@@ -86,7 +94,7 @@ end
 
 local function onMessage(cid, msg)
 	if npcIsHelp(msg) then
-		selfSay('Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!')
+		selfSay('Try chairs, tables, plants, containers, tapestries, flags, lights, pillows, small or round. Or say the exact item name!')
 		return
 	end
 
@@ -102,6 +110,6 @@ local function onMessage(cid, msg)
 end
 
 npcDefine{
-	greet = function(cid) return 'Hi ' .. creatureGetName(cid) .. '! I sell furniture for your house — almost everything is 500gp; flags and banners 1500gp. Say "2 wooden chair" or any amount. Say "chairs", "tables", "pillows", "flags" or an item name.' end,
+	greet = function(cid) return 'Hi ' .. creatureGetName(cid) .. '! I sell furniture for your house — almost everything is 500gp; flags and banners 1500gp. Say "2 wooden chair" or any amount. Say "chairs", "tables", "pillows", "flags", "lights" or an item name.' end,
 	onMessage = onMessage,
 }

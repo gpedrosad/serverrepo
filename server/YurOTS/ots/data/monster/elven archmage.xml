@@ -23,6 +23,7 @@
 	<voice sentence="Feel the storm!"/>
 </voices>
 <loot>
+		<item id="20350" chance="5000"/> <!-- trofeo colgable (rare 5 %) -->
 	<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
 	<item id="2152" countmax="8" chance1="40000" chancemax="0"/>
 	<item id="2158" chance="2000"/>

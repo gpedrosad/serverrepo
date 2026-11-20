@@ -33,6 +33,15 @@ vara pasa a madera. Para agregar otro diseño: una función `design(u, v) -> (r,
 | war banner | 20280 / 3106 (old twig) | rojo sangre, espadas cruzadas, borde dorado |
 | royal banner | 20281 / 3103 (horn 3957) | violeta, corona dorada con joya, borde dorado |
 
+**Exhibición en el local de Obi (173,46,7):** versiones **fijas** de las 7 (server **20320–20326**, mismo client id
+y dibujo; `fixed=True` en `add_custom_items.py` les saca `moveable`/`pickupable` del OTB, así que no hace falta
+publicar el cliente). Colgadas por `scripts/map/obi-banners.py` (re-ejecutable, agrega el ítem al nodo de la casilla
+sin tocar el resto): Brasil, Chile y USA en la pared norte por dentro (173/174/177,43; en 176,43 hay una antorcha),
+Argentina en la pared oeste (172,44) y los 3 estandartes en la pared sur mirando a la calle (173/174/176,49). Hacen
+falta fijas porque esas paredes están al alcance desde la calle: una bandera común se la llevaría cualquiera.
+Ojo: **20282–20296 son las piezas del muelle** (`dock_bridge_art.py`, no están en `NEW_ITEMS`): mirar el OTB antes
+de elegir server ids nuevos.
+
 Los vende **Obi** (muebles) a **1500 gp** ("flags", "banners", "banderas"; "brazil tapestry", "bandera de chile"...);
 el resto de sus muebles sigue a 500. Para verlos hay que publicar el cliente (`publish_client.py`): un cliente sin
 actualizar los muestra como el ítem sacrificado. `sprite_tool.py verify` marca "ítems idénticos" en FALLA: es
@@ -45,6 +54,55 @@ esperado (solo cambiaron esos 7 client ids).
   según el gancho de la pared. El server no transforma el ítem: sigue siendo el mismo y se puede volver a levantar.
 - **Una cosa colgada por pared.**
 - Las versiones fijas del mapa (1855/1856, 1858/1859...) son decoración `unmoveable` y no cambian.
+
+### Trofeos de jefes (nov 2026)
+
+Tapestries con el jefe de frente (cuadro quieto mirando al sur de su looktype, recortado y centrado) sobre terciopelo
+de un color que contraste, con borde dorado. Mismo generador que las banderas (`TROPHIES` en
+`make_flag_tapestries.py`) y mismos flags (colgable, levantable). **Rare del 5 %** de su jefe (`<item id="..."
+chance="5000"/>` al principio del `<loot>`). Los de **monstruos de caza** (Black Dragon, Dark Hydra...) van al **0,5 %**,
+también en sus variantes rage; si se regeneran con `rage-variants.py`, la línea del base se copia sola. No se resaltan como rare en el mensaje de loot (eso es C++:
+`isRareLootItem` en `game.cpp`).
+
+| Trofeo | Server / client id (sacrificado) | Lo suelta |
+|--------|------|-----------|
+| demodras trophy | 20330 / 3021 (starlight) | Demodras |
+| orshabaal trophy | 20331 / 3014 (star amulet) | Orshabaal |
+| old widow trophy | 20332 / 1780 (stone) | Old Widow |
+| ashen lord trophy | 20333 / 2872 (backpack) | Ashen Lord |
+| fallen emperor trophy | 20334 / 2832 (book) | The Fallen Emperor |
+| elvenbane trophy | 20335 / 2831 (book) | Lord of Elvenbane |
+| black dragon trophy | 20341 / 2965 | Black Dragon y sus variantes Angry/Furious/Enraged (0,5 %) |
+| dark hydra trophy | 20342 / 2951 | Dark Hydra y sus variantes Angry/Furious/Enraged (0,5 %) |
+| root colossus trophy | 20343 / 2906 | Root Colossus y sus variantes Angry/Furious/Enraged (0,5 %) |
+| emerald scarab trophy | 20344 / 2852 | Emerald Scarab y sus variantes Angry/Furious/Enraged (0,5 %) |
+| frost dragon trophy | 20345 / 2851 | Frost Dragon y sus variantes Angry/Furious/Enraged (0,5 %) |
+| hellhound trophy | 20346 / 3020 | Hellhound y sus variantes Angry/Furious/Enraged (0,5 %) |
+| imperial hero trophy | 20347 / 3002 | Imperial Hero y sus variantes Angry/Furious/Enraged (0,5 %) |
+| red kongra trophy | 20348 / 2984 | Red Kongra (0,5 %) |
+| elvenbane ranger trophy | 20349 / 2971 | Elvenbane Ranger (5 %) |
+| elven archmage trophy | 20350 / 2970 | Elven Archmage (5 %) |
+| orc warchief trophy | 20351 / 3077 | Orc Warchief (5 %) |
+| thornwarden trophy | 20352 / 3011 | Thornwarden (5 %) |
+
+**Client ids sacrificables casi agotados:** después de estos trofeos quedan ~5 en `--candidates`. Para más ítems
+nuevos habría que agregar client ids al final del `.dat` (OTClientV8 lo soporta) en vez de reciclar ítems viejos.
+
+## Luces de colores (nov 2026)
+
+No se cuelgan: se apoyan en el suelo o en una mesa. Copias del candelabro (2042) y la lámpara (2045) **encendidos**,
+con la llama recoloreada por `scripts/client-rme/make_color_lights.py` (candelabro: solo la llama animada; lámpara:
+todo el vidrio, como un farol), luz nivel 6 del color de la llama y **sin pudrición** (`nodecay=True` en
+`add_custom_items.py` saca los attrs de decay: las bases se apagan solas a los 180 s, estas nunca). Los vende Obi a
+**2500 gp** ("lights", "luces").
+
+| Luz | Server / client id (sacrificado) | Color de luz (r·36+g·6+b) |
+|-----|------|------|
+| blue candelabrum | 20336 / 2825 (book) | 17 (azul) |
+| green candelabrum | 20337 / 2821 (book) | 31 (verde) |
+| violet candelabrum | 20338 / 2818 (document) | 113 (violeta) |
+| magenta lamp | 20339 / 2814 (parchment) | 184 (magenta) |
+| cyan lamp | 20340 / 2966 (drum) | 29 (celeste) |
 
 ## Casas
 

@@ -28,6 +28,7 @@
 </voices>
 
 <loot>
+		<item id="20341" chance="500"/> <!-- trofeo colgable (rare 0,5 %) -->
 	<item id="20213" chance="400"/>
 	<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
 	<item id="2148" countmax="80" chance1="60000" chancemax="0"/>
