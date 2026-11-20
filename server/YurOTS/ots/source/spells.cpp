@@ -738,22 +738,6 @@ namespace {
 // DECAY_INTERVAL (5 s) y 3 s se redondearía a 5; cada pared tiene su propio evento del scheduler.
 const long CRIMSON_CAGE_MS = 3000;
 
-void notifyTileThingAppear(Game* game, const Position& pos, Thing* thing)
-{
-	SpectatorVec list;
-	SpectatorVec::iterator it;
-	game->getSpectators(Range(pos, true), list);
-
-	for(it = list.begin(); it != list.end(); ++it) {
-		if(dynamic_cast<Player*>(*it))
-			(*it)->onThingAppear(thing);
-	}
-	for(it = list.begin(); it != list.end(); ++it) {
-		if(!dynamic_cast<Player*>(*it))
-			(*it)->onThingAppear(thing);
-	}
-}
-
 // El evento tiene su propia referencia a la pared (useThing), así que si ya no está en el tile
 // (la sacó otra cosa) solo suelta esa referencia.
 void removeCrimsonCageWall(Game* game, Item* wall)
@@ -786,10 +770,8 @@ bool placeCrimsonCageWall(Game* game, const Position& pos)
 	transformMap[ITEM_CRIMSON_CAGE_WALL] = TransformItem(0, ConditionVec());
 	MagicEffectItem* wall = new MagicEffectItem(transformMap);
 	wall->useThing();	// referencia del mapa
-	wall->pos = pos;
-	tile->addThing(wall);
+	game->addThing(NULL, pos, wall);	// la pone en el tile y avisa a los que miran
 	wall->isRemoved = false;
-	notifyTileThingAppear(game, pos, wall);
 
 	wall->useThing();	// referencia del evento que la saca
 	game->addEvent(makeTask(CRIMSON_CAGE_MS, boost::bind(&removeCrimsonCageWall, game, (Item*)wall)));
