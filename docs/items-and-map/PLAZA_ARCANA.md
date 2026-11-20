@@ -1,6 +1,6 @@
 # Plaza arcana de los teleports
 
-Estado: **aplicada localmente y validada en instancia aislada**, pendiente publicación/deploy.
+Estado: **publicada y desplegada en la ThinkPad el 19 nov 2026**, validada con cliente Mac en instancia aislada.
 Rediseño pedido por Gonzalo: nuevas torres, suelo y sprites con basalto azul y cian eléctrico.
 No requiere recompilar C++.
 
@@ -106,6 +106,20 @@ Nota para repetir QA: este binario usa `Application Support/otclientv8` como wri
 (`/portal_citadel_qa_config.otml`) y en su minimapa usar otro nombre de archivo de guardado.
 El updater debe quedar vacío en ese init de QA para que no reemplace los assets de prueba.
 
-Antes de publicar: nuevo cliente (DAT/SPR y minimapa), luego **mapa y OTB juntos**, con respaldo
-runtime, autorización y reinicio según THINKPAD_TEST_SERVER.md. Probar locker in-game y probe.
-Los smoke tests siguen desactivados. Revisión visual manual de Windows pendiente.
+### Publicación y deploy
+
+Autorizado por Gonzalo. Fuente del servidor `b6b86a4`, assets del cliente `55d5342`.
+ff-merges sin solapamientos con otras sesiones; cliente publicado primero mediante
+`publish_client.py`: **3 archivos cambiados** (DAT, SPR y minimapa), 0 borrados.
+Los 774 archivos comunes coinciden en Mac, Windows, updater y ambos ZIPs; manifest CRC,
+contenido de los tres assets y descargas HTTP 200 verificados en 8080 y 8076.
+CRC DAT `dc61b99b`, SPR `8da89f7a`.
+
+Respaldo `~/backups/pre-deploy-20261119-211809-portal-citadel`, refrescado antes del reinicio
+y después del guardado. Mapa y OTB aplicados juntos, `docker restart -t 45 yurots` sin rebuild:
+graceful shutdown completo, mapa cargado en **0,801 s**, sin errores ni warnings.
+Probe `192.168.1.17:7171` OK, contenedor healthy y 0 reinicios automáticos.
+**1 cuenta, 8 personajes y 31 casas** preservados; contenido de depots, dueños, config y
+binario idénticos al snapshot previo. La comparación normaliza tuplas/listas al serializar JSON.
+La instancia QA quedó detenida. Los smoke tests siguen desactivados.
+Pendiente revisión visual manual del jugador en Windows; abrir el cliente toma la actualización.
