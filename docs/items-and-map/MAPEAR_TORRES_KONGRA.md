@@ -123,4 +123,8 @@ Spawns XML idénticos: mismos 5 Kongra, 12 Red Kongra, posiciones y respawns.
 ![Escalera de la torre sur corregida](img/kongra-repair/after-sur.png)
 
 Respaldo local: `backups/map/kongra-repair-before/`. Sin compilación ni recorrido
-in-game por pedido del usuario. **Pendiente de deploy** junto con las cuevas de Epstein.
+in-game por pedido del usuario. **Activado el 20 nov 2026** junto con las cuevas de Epstein (`daffd7f`).
+Respaldo ThinkPad `~/backups/pre-deploy-20261120-185009-epstein-kongras`;
+minimapa publicado primero (CRC `4f1256b2`, cliente `aa13b3d`), restart -t45,
+guardado completo, Loaded in 0.838 s, probe OK / healthy y 0 reinicios automáticos.
+1 cuenta, 8 personajes, 31 casas, depots, dueños, config y binario preservados.

@@ -100,7 +100,9 @@ llegadas y huella 2×2 de la escalera profunda.
 `generate-bamboo-depths.py --dry-run`: OK; sin roca o lava nueva que rellenar.
 Auditoría del mapa: paredes de z9 coinciden con sus vecinos, ambas conexiones
 libres, spawns XML y 11 lockers completos idénticos al respaldo.
-Sin recorrido in-game por pedido del usuario. **Pendiente de deploy**.
+Sin recorrido in-game por pedido del usuario. **Activado el 20 nov 2026** (`daffd7f`), junto con Epstein y las torres.
+Minimapa publicado primero, restart -t45, guardado completo y probe OK / healthy.
+Ver respaldo y comprobaciones en [Torres Kongra](MAPEAR_TORRES_KONGRA.md#corrección-de-escaleras-y-remates--20-nov-2026).
 
 ![Entrada natural](img/kongra-repair/after-entrada.png)
 ![Pozo con escalera de mano y luces](img/kongra-repair/after-pozo.png)

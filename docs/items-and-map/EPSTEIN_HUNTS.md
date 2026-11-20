@@ -85,7 +85,7 @@ Pendiente: prueba in-game del portal, de las escaleras/agujeros y del balance de
 
 ## Reparación de cuevas — 20 nov 2026
 
-Preparada en el mapa local, pendiente deploy. La revisión encontró fogatas sobre las
+Activada el 20 nov 2026 junto con las torres de Kongras (`daffd7f`). La revisión encontró fogatas sobre las
 nueve escaleras de mano de las cuevas largas, roca de relleno pegada al piso sin pared,
 contornos con más de una pieza posible y vacío negro visible en el mismo piso.
 
@@ -125,3 +125,11 @@ terminar y ya no crea fogatas sobre escaleras; su backup usa `backups/map/`.
 Backup de esta revisión: `backups/map/epstein-caves-before/`.
 Se corrieron reparación, validaciones estructurales y render de sprites; sin suites,
 pruebas in-game, compilación ni reinicio, por pedido de Gonzalo.
+
+Deploy 20 nov: respaldo ThinkPad `~/backups/pre-deploy-20261120-185009-epstein-kongras`,
+refrescado antes del reinicio. Cliente publicado primero (solo minimapa, CRC `4f1256b2`,
+HTTP 8080/8076 y ZIPs Mac/Windows coincidentes; cliente `aa13b3d`).
+`docker restart -t 45 yurots`: guardado completo, Loaded in 0.838 s, probe OK / healthy,
+0 reinicios automáticos. El primer probe coincidió con el arranque y rechazó TCP; el
+siguiente confirmó protocolo OK. 1 cuenta, 8 personajes, 31 casas, depots, dueños,
+config y binario idénticos; 11 lockers completos sin cambios. Sin pruebas in-game.
