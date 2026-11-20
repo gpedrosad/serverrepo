@@ -132,7 +132,7 @@ comportamiento indefinido) porque corregirlas cambia el balance del juego:
 Cada lugar tiene un comentario `OJO:` que explica la cuenta. La versión corregida de cada una está en el
 binario y se elige con una línea en `server/YurOTS/ots/config.lua` (sin compilar):
 
-| Línea en `config.lua` | Qué corrige | Estado (2026-11-12) |
+| Línea en `config.lua` | Qué corrige | Estado |
 |---|---|---|
 | `fixlootchance` | Loot y summons con la chance configurada (el doble que antes). Con esto `lootmul = 3` da de verdad 3 veces la chance del XML; antes daba 1,5 | **Prendida** (`= 1`) |
 | `fixchangetarget` | Cambio de blanco con el X % del XML (`changetarget` va de 0 a 10000; casi todos los monstruos tienen 200 = 2 % por think) | **Prendida** (`= 1`) |
