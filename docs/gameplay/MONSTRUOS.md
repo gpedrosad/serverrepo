@@ -24,9 +24,9 @@
 
 | Monstruo | Agregado | Vida | Exp | Sprite | Cadáver | En el mapa | Rage | Doc |
 |---|---|---|---|---|---|---|---|---|
-| **Ashen Lord** | 2026-11-11 | 32000 | 18000 | propio, look 239 (`ashen_lord.py`) | `20241` propio | 1: Hell Quest 1 | no | [HELL_QUEST](HELL_QUEST.md) |
+| **Ashen Lord** | 2026-11-11 | 32000 | 18000 | propio, look 239 (`ashen_lord.py`) | `20241` propio | 1: Hell Quest 1 | no | [HANGABLES](HANGABLES.md) |
 | **Black Dragon** | 2026-11-09 | 2600 | 2900 | propio, look 230 (`black_dragon.py`) | `20172` propio | 16: Beast Valley 10, Hell Quest 4, mapa base 1, Dragon Spot 1 | sí | [BLACK_DRAGON](BLACK_DRAGON.md) |
-| **Blue Elf Arcanist** | 2026-11-10 | 220 | 174 | look 63 | `20166` propio | 4: Epstein Hunts 4 | sí | [BLUE_ELF_ARCANIST](BLUE_ELF_ARCANIST.md) |
+| **Blue Elf Arcanist** | 2026-11-10 | 220 | 174 | look 63 | `20166` propio | 5: Epstein Hunts 4, Elf West 1 | sí | [BLUE_ELF_ARCANIST](BLUE_ELF_ARCANIST.md) |
 | **Court Mage** | 2026-11-12 | 650 | 520 | look 130 | `3128` de 7.6 | 7: Imperial Castle 3, Imperial Crypt 3, Mage Tower 1 | sí | [IMPERIAL_CASTLE](IMPERIAL_CASTLE.md) |
 | **Crucible Ashlord** | 2026-07-23 | 7200 | 6200 | look 39 | `2881` de 7.6 | sin spawn | no | [CRUCIBLE](CRUCIBLE.md) |
 | **Crucible Bloodreaver** | 2026-07-23 | 9800 | 8500 | look 35 | `2916` de 7.6 | sin spawn | no | [CRUCIBLE](CRUCIBLE.md) |
@@ -38,32 +38,32 @@
 | **Dark Hydra** | 2026-11-12 | 3200 | 3000 | propio, look 241 (`dark_hydra.py`) | `20229` propio | 13: Dark Hydra Isle 6, Beast Valley 5, mapa base 1, City Depths 1 | sí | [DARK_HYDRA](DARK_HYDRA.md) |
 | **Dark Mage** | 2026-11-17 | 5200 | 8000 | look 133 | `3128` de 7.6 | 1: Mage Tower 1 | no | [MAPEAR_TORRE_MAGO](../items-and-map/MAPEAR_TORRE_MAGO.md) |
 | **Drowned Sailor** | 2026-11-10 | 520 | 280 | propio, look 233 (`drowned_sailor.py`) | `20169` propio | 12: Epstein Hunts 10, Bridge Tower 2 | sí | [DROWNED_SAILOR](DROWNED_SAILOR.md) |
-| **Elven Archmage** | 2026-11-19 | 4200 | 5000 | propio, look 223 (`elven_archmage.py`) | `20238` propio | 1: Elvenbane 1 | no | [ELVENBANE](../items-and-map/ELVENBANE.md) |
+| **Elven Archmage** | 2026-11-19 | 4200 | 5000 | propio, look 223 (`elven_archmage.py`) | `20238` propio | 1: Elvenbane 1 | no | [HANGABLES](HANGABLES.md) |
 | **Elvenbane Ranger** | 2026-11-19 | 5000 | 4500 | propio, look 222 (`elvenbane_ranger.py`) | `20237` propio | 1: Elvenbane 1 | no | [ARMAS](ARMAS.md) |
 | **Emerald Scarab** | 2026-11-12 | 1500 | 1150 | propio, look 242 (`emerald_scarab.py`) | `20230` propio | 4: City Depths 2, mapa base 1, Natural Island 1 | sí | [EMERALD_SCARAB](EMERALD_SCARAB.md) |
 | **Frost Dragon** | 2026-11-09 | 2200 | 2400 | propio, look 231 (`frost_dragon.py`) | `20171` propio (compartido) | 10: Frozen Isle 5, Glacier Reach 5 | sí | [FROST_DRAGON](FROST_DRAGON.md) |
 | **Fury** | 2026-07-07 | 9200 | 7800 | look 137 | `3065` de 7.6 | 13: Inferno Pits 8, Beast Valley 4, Tp Gauntlet 1 | no | [ARMAS](ARMAS.md) |
-| **Hellhound** | 2026-11-11 | 1500 | 1300 | propio, look 238 (`hellhound.py`) | `20228` propio | 71: Inferno Pits 38, Hell Quest 31, mapa base 2 | sí | [HELL_QUEST](HELL_QUEST.md) |
+| **Hellhound** | 2026-11-11 | 1500 | 1300 | propio, look 238 (`hellhound.py`) | `20228` propio | 71: Inferno Pits 38, Hell Quest 31, mapa base 2 | sí | [HANGABLES](HANGABLES.md) |
 | **Ice Monk** | 2026-11-10 | 650 | 520 | propio, look 232 (`ice_monk.py`) | `20168` propio | 15: Frozen Isle 11, Mage Tower 2, Glacier Reach 2 | sí | [ICE_MONK](ICE_MONK.md) |
 | **Ice Spider** | 2026-11-10 | 1800 | 1400 | propio, look 235 (`ice_spider.py`) | `20167` propio | 34: Frozen Isle 28, Glacier Reach 5, mapa base 1 | sí | [ICE_SPIDER](ICE_SPIDER.md) |
 | **Imperial Archer** | 2026-11-12 | 450 | 300 | look 129 | `3128` de 7.6 | 7: Imperial Castle 4, Imperial Crypt 3 | sí | [IMPERIAL_CASTLE](IMPERIAL_CASTLE.md) |
-| **Imperial Hero** | 2026-11-12 | 3000 | 2600 | propio, look 240 (`imperial_hero.py`) | `20239` propio | 10: Imperial Crypt 6, Imperial Castle 3, mapa base 1 | sí | [IMPERIAL_CASTLE](IMPERIAL_CASTLE.md) |
+| **Imperial Hero** | 2026-11-12 | 3000 | 2600 | propio, look 240 (`imperial_hero.py`) | `20239` propio | 10: Imperial Crypt 6, Imperial Castle 3, mapa base 1 | sí | [HANGABLES](HANGABLES.md) |
 | **Imperial Squire** | 2026-11-12 | 95 | 45 | look 131 | `3128` de 7.6 | 10: Imperial Castle 8, Imperial Crypt 2 | sí | [IMPERIAL_CASTLE](IMPERIAL_CASTLE.md) |
-| **Lord of Elvenbane** | 2026-11-19 | 12000 | 15000 | propio, look 185 (`lord_of_elvenbane.py`) | `20240` propio | 1: Elvenbane 1 | no | [ELVENBANE](../items-and-map/ELVENBANE.md) |
+| **Lord of Elvenbane** | 2026-11-19 | 12000 | 15000 | propio, look 185 (`lord_of_elvenbane.py`) | `20240` propio | 1: Elvenbane 1 | no | [HANGABLES](HANGABLES.md) |
 | **Metal Demon** | 2026-11-19 | 9500 | 7200 | propio, look 188 (`metal_demon.py`) | `20227` propio | 6: Inferno Pits 4, Beast Valley 2 | sí | [METAL_MONSTERS](METAL_MONSTERS.md) |
 | **Metal Dragon** | 2026-11-19 | 2900 | 3200 | propio, look 186 (`metal_dragon.py`) | `20225` propio | 3: Beast Valley 3 | sí | [METAL_MONSTERS](METAL_MONSTERS.md) |
 | **Metal Hydra** | 2026-11-19 | 3400 | 3300 | propio, look 187 (`metal_hydra.py`) | `20226` propio | 3: Beast Valley 3 | sí | [METAL_MONSTERS](METAL_MONSTERS.md) |
 | **Mini Trainer Monk** | 2026-06-30 | 50000 | 0 | propio, look 237 (`novice_monk.py`) | `3128` de 7.6 | 4: mapa base 4 | no | [CAMBIAR-MAPA](.././CAMBIAR-MAPA.md) |
 | **Orc Berserker Pot Thrower** | 2026-07-28 | 1500 | 550 | look 8 | `2864` de 7.6 | 4: City Depths 4 | sí | [MAPEAR_DUNGEON_CITY](../items-and-map/MAPEAR_DUNGEON_CITY.md) |
-| **Orc Warchief** | 2026-11-19 | 7000 | 5500 | propio, look 224 (`orc_warchief.py`) | `20236` propio | 1: Elvenbane 1 | no | [ELVENBANE](../items-and-map/ELVENBANE.md) |
+| **Orc Warchief** | 2026-11-19 | 7000 | 5500 | propio, look 224 (`orc_warchief.py`) | `20236` propio | 1: Elvenbane 1 | no | [HANGABLES](HANGABLES.md) |
 | **Private Trainer Dummy** | 2026-07-07 | 500000 | 0 | look 57 | `3128` de 7.6 | sin spawn | no | [PRIVATE_TRAINER_DUMMY](PRIVATE_TRAINER_DUMMY.md) |
 | **Red Kongra** | 2026-11-18 | 600 | 230 | propio, look 254 (`red_kongra.py`) | `20232` propio | 12: Kongra Towers 12 | no | [RED_KONGRA](RED_KONGRA.md) |
 | **River Troll** | 2026-11-17 | 85 | 42 | propio, look 252 (`river_troll.py`) | `20233` propio | 6: mapa base 4, Troll Den 2 | sí | [RIVER_STONE_TROLLS](RIVER_STONE_TROLLS.md) |
 | **Root Colossus** | 2026-11-12 | 4800 | 3400 | propio, look 243 (`root_colossus.py`) | `20231` propio | 1: Beast Valley 1 | sí | [ROOT_COLOSSUS](ROOT_COLOSSUS.md) |
 | **Serpent Spawn** | 2026-07-05 | 5000 | 3600 | look 220 | `4323` de 7.6 | 11: Beast Valley 6, mapa base 4, Tp Gauntlet 1 | sí | [ARMAS](ARMAS.md) |
 | **Stone Troll** | 2026-11-17 | 160 | 90 | propio, look 253 (`stone_troll.py`) | `20234` propio | 5: mapa base 3, Troll Den 2 | sí | [RIVER_STONE_TROLLS](RIVER_STONE_TROLLS.md) |
-| **The Fallen Emperor** | 2026-11-12 | 12000 | 9000 | propio, look 244 (`fallen_emperor.py`) | `20242` propio | 1: Imperial Castle 1 | no | [IMPERIAL_CASTLE](IMPERIAL_CASTLE.md) |
-| **Thornwarden** | 2026-11-19 | 6500 | 5500 | propio, look 226 (`thornwarden.py`) | `20235` propio | 1: Elvenbane 1 | no | [ELVENBANE](../items-and-map/ELVENBANE.md) |
+| **The Fallen Emperor** | 2026-11-12 | 12000 | 9000 | propio, look 244 (`fallen_emperor.py`) | `20242` propio | 1: Imperial Castle 1 | no | [HANGABLES](HANGABLES.md) |
+| **Thornwarden** | 2026-11-19 | 6500 | 5500 | propio, look 226 (`thornwarden.py`) | `20235` propio | 1: Elvenbane 1 | no | [HANGABLES](HANGABLES.md) |
 | **Tide Priest** | 2026-11-10 | 720 | 620 | propio, look 234 (`tide_priest.py`) | `20170` propio | 6: Epstein Hunts 5, Bridge Tower 1 | sí | [TIDE_PRIEST](TIDE_PRIEST.md) |
 | **Wrath** | 2026-07-17 | 15000 | 12500 | look 137 | `3065` de 7.6 | 1: Tp Gauntlet 1 | no | [ARMAS](ARMAS.md) |
 
@@ -108,18 +108,18 @@
 | **Quara Predator** | 2026-11-13 | 2200 | 1600 | look 77 (8.60) | `20181` propio | 45: Forgotten Pit 32, Beast Valley 11, Fargum Tower 1, Bridge Tower 1 | sí | [IMPORTAR_CRIATURA_DE_OTRA_VERSION](IMPORTAR_CRIATURA_DE_OTRA_VERSION.md) |
 | **Thornback Tortoise** | 2026-11-13 | 300 | 150 | look 198 (8.60) | `20174` propio | 8: Forgotten Pit 7, Fargum Tower 1 | sí | [IMPORTAR_CRIATURA_DE_OTRA_VERSION](IMPORTAR_CRIATURA_DE_OTRA_VERSION.md) |
 | **Tortoise** | 2026-11-13 | 185 | 90 | look 197 (8.60) | `20173` propio | 8: Forgotten Pit 7, Fargum Tower 1 | sí | [IMPORTAR_CRIATURA_DE_OTRA_VERSION](IMPORTAR_CRIATURA_DE_OTRA_VERSION.md) |
-| **Undead Gladiator** | 2026-11-13 | 1000 | 800 | look 183 (8.60) | `20189` propio | sin spawn | sí | [IMPORTAR_CRIATURA_DE_OTRA_VERSION](IMPORTAR_CRIATURA_DE_OTRA_VERSION.md) |
+| **Undead Gladiator** | 2026-11-13 | 1000 | 800 | look 183 (8.60) | `20189` propio | 15: Epstein Road 15 | sí | [IMPORTAR_CRIATURA_DE_OTRA_VERSION](IMPORTAR_CRIATURA_DE_OTRA_VERSION.md) |
 | **Vampire Bride** | 2026-11-13 | 1200 | 1050 | look 181 (8.60) | `20187` propio | 11: Beast Valley 11 | sí | [IMPORTAR_CRIATURA_DE_OTRA_VERSION](IMPORTAR_CRIATURA_DE_OTRA_VERSION.md) |
 | **Water Elemental** | 2026-11-13 | 550 | 650 | look 179 (8.60) | `20185` propio | 2: mapa base 1, Bridge Tower 1 | sí | [IMPORTAR_CRIATURA_DE_OTRA_VERSION](IMPORTAR_CRIATURA_DE_OTRA_VERSION.md) |
 | **Worker Golem** | 2026-11-13 | 1470 | 1250 | look 182 (8.60) | `20188` propio | 38: Forgotten Pit 38 | sí | [IMPORTAR_CRIATURA_DE_OTRA_VERSION](IMPORTAR_CRIATURA_DE_OTRA_VERSION.md) |
 | **Wyrm** | 2026-11-13 | 1825 | 1550 | look 177 (8.60) | `20183` propio | 15: Beast Valley 15 | sí | [IMPORTAR_CRIATURA_DE_OTRA_VERSION](IMPORTAR_CRIATURA_DE_OTRA_VERSION.md) |
 | **Wyvern** | 2026-11-13 | 795 | 515 | look 245 (8.60) | `20248` propio | 9: Epstein Hunts 5, Natural Island 4 | sí | [IMPORTAR_CRIATURA_DE_OTRA_VERSION](IMPORTAR_CRIATURA_DE_OTRA_VERSION.md) |
-| **Zombie** | 2026-11-13 | 500 | 280 | look 180 (8.60) | `20186` propio | sin spawn | sí | [IMPORTAR_CRIATURA_DE_OTRA_VERSION](IMPORTAR_CRIATURA_DE_OTRA_VERSION.md) |
+| **Zombie** | 2026-11-13 | 500 | 280 | look 180 (8.60) | `20186` propio | 17: Epstein Road 17 | sí | [IMPORTAR_CRIATURA_DE_OTRA_VERSION](IMPORTAR_CRIATURA_DE_OTRA_VERSION.md) |
 
 ## Sin spawn
 
 Monstruos agregados que hoy no aparecen en el mapa (jefes de evento, invocaciones, trainers o pendientes):
-Crucible Ashlord, Crucible Bloodreaver, Crucible Bonepriest, Crucible Frostwarden, Crucible Ironhide, Crucible Stormcaller, Crucible Venomqueen, Private Trainer Dummy, Undead Gladiator, Zombie.
+Crucible Ashlord, Crucible Bloodreaver, Crucible Bonepriest, Crucible Frostwarden, Crucible Ironhide, Crucible Stormcaller, Crucible Venomqueen, Private Trainer Dummy.
 
 ## Cadáveres
 
@@ -200,8 +200,8 @@ tiene el GM pasó a verse como el cadáver; se movió al 3216 y el 3236 volvió 
 | Elder Beholder | 1100 | 290 | 108 | 2 | no |
 | Elephant | 320 | 160 | 211 | 13 | no |
 | Elf | 100 | 42 | 62 | 26 | no |
-| Elf Arcanist | 220 | 174 | 63 | 9 | no |
-| Elf Scout | 160 | 75 | 64 | 8 | no |
+| Elf Arcanist | 220 | 174 | 63 | 11 | no |
+| Elf Scout | 160 | 75 | 64 | 9 | no |
 | Elite Trainer Monk | 50000 | 0 | 57 | sin spawn | no |
 | Fire Devil | 200 | 110 | 40 | 19 | no |
 | Fire Elemental | 280 | 220 | 49 | 65 | no |

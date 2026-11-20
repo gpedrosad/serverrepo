@@ -129,4 +129,7 @@
 	<!-- BEGIN ELF_WEST_SIGNS -->
 	<readable x="101" y="72" z="7" text="RUINAS DEL SAUCE\nAl oeste: exploradores y arcanistas.\nEl santuario azul queda al fondo."/>
 	<!-- END ELF_WEST_SIGNS -->
+	<!-- BEGIN EPSTEIN_ROAD_SIGNS -->
+	<readable x="79" y="238" z="7" text="CAMINO DE LOS CAIDOS\nZombies al principio,\nUndead Gladiators\nal fondo."/>
+	<!-- END EPSTEIN_ROAD_SIGNS -->
 </readables>

@@ -9,6 +9,7 @@ alto originales y los monstruos débiles de la primera versión, y arma:
   z9  Mutated Tiger Den / Tide Priest Sanctum / Bog Raider Bog (largas)
   z10 Deep Mutant Lab / Abyssal Grotto / Bog Raider Queen (largas)
 
+Conserva el bloque EPSTEIN_ROAD de generate-epstein-road.py (Camino de los Caídos, z7 al sur y al este).
 Las cuevas largas se leen de `generated-epstein-caves.json` (caja/inicio de cada zona), que
 escribe generate-epstein-caves.py. Solo toca `test-spawn.xml`; no cambia el mapa. Validación:
 cada spawn queda en una casilla caminable, fuera de PZ, lejos de NPCs/escaleras, sin duplicados y
@@ -198,6 +199,11 @@ def main() -> int:
     # XML: sacar el bloque anterior y todos los spawns viejos de la isla
     text = SPAWNS.read_text(encoding="latin-1")
     text = re.sub(r"\t?<!-- BEGIN EPSTEIN_HUNTS.*?<!-- END EPSTEIN_HUNTS -->\n?", "", text, flags=re.S)
+    # el Camino de los Caídos (generate-epstein-road.py) tiene su propio bloque: se aparta y se vuelve a poner
+    road = re.search(r"[ \t]*<!-- BEGIN EPSTEIN_ROAD.*?<!-- END EPSTEIN_ROAD -->\r?\n?", text, flags=re.S)
+    road_block = road.group(0) if road else ""
+    if road:
+        text = text.replace(road_block, "")
     spawn_re = re.compile(
         r'\t<spawn centerx="(\d+)" centery="(\d+)" centerz="(\d+)"[^>]*>.*?</spawn>\n?', re.S)
 
@@ -215,7 +221,7 @@ def main() -> int:
         lines.append("\t</spawn>")
     lines.append("\t<!-- END EPSTEIN_HUNTS -->\n")
     block = "\n".join(lines)
-    text = text.replace("</spawns>", block + "\t</spawns>")
+    text = text.replace("</spawns>", block + road_block + "\t</spawns>")
 
     # que no quede ningún monstruo de nivel alto en la caja
     left = []
