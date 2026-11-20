@@ -18,8 +18,9 @@ propia (magic tree rojo, blue bassin). `frames=N` instala los N cuadros de anima
 (1x1, 2x2, 2x1 y 1x2).
 
 Re-ejecutable: si el ítem ya está (mismo sprite en el .dat, nodo con ese server id), no cambia nada.
-Elegir client ids nuevos: `--candidates` lista los que se pueden sacrificar sin riesgo (ni en el mapa,
-ni en loot, NPC, acciones o scripts, ni destino de una pudrición, ni suelos, cadáveres o decoración).
+Elegir client ids: `--candidates` lista primero los nuevos libres (5090-6089, entradas vacías al final del
+.dat, ver LAST_CLIENT_ID) y después los viejos que se pueden sacrificar sin riesgo (ni en el mapa, ni en
+loot, NPC, acciones o scripts, ni destino de una pudrición, ni suelos, cadáveres o decoración).
 
   python3.11 scripts/client-rme/add_custom_items.py --candidates
   python3.11 scripts/client-rme/add_custom_items.py --things devtools/rme/rme-client-760 \\
@@ -51,6 +52,16 @@ ITEM_ATTR_DECAY2 = 0x25
 ITEM_ATTR_LIGHT2 = 0x2A    # u16 nivel, u16 color (ITEM_ATTR_LIGHT2 de source/itemloader.h)
 FLAG_PICKUPABLE = 1 << 5
 FLAG_MOVEABLE = 1 << 6
+
+# Client ids nuevos (nov 2026): el .dat de 7.6 terminaba en el 5089 y cada ítem nuevo tenía que sacrificar uno
+# viejo. Ahora el .dat lleva entradas vacías hasta LAST_CLIENT_ID (sin dibujo, sprite 0, sin flags: el cliente
+# no dibuja nada y el servidor nunca las manda). Un ítem nuevo usa una de ellas como client_id y apply_things la
+# reemplaza por el prototipo con sus sprites. --candidates las lista primero. Para más: subir LAST_CLIENT_ID y
+# correr el instalador (agrega las que falten al final de los ítems, antes de los outfits).
+FIRST_NEW_CLIENT_ID = 5090
+LAST_CLIENT_ID = 6089
+# flags: ninguno (0xFF); 1x1, 1 capa, patrón 1x1x1, 1 cuadro; sprite 0
+BLANK_DAT_ENTRY = b"\xff" + bytes([1, 1, 1, 1, 1, 1, 1]) + b"\x00\x00"
 
 # Tamaño en bytes del argumento de cada flag del prefijo .dat (7.55–7.72). Tabla canónica:
 # scripts/map/kb/mapdata.py (DAT_ARGS). El 23 se remapea a 252 (sin argumento) desde 7.55.
@@ -515,9 +526,12 @@ def candidates(things: Path, otb: Path, exclude_paths=()) -> list[tuple[int, lis
     bad_name = re.compile(r"dead|skeleton|corpse|remains|body|blood|pool|fire|burning|slime|puddle|trail|ash|bones|carcass")
     taken = set(B.CORE_RESERVED_CLIENT_IDS) | set(B.EXTERNAL_CLIENT_IDS) | used_custom | {i["client_id"] for i in NEW_ITEMS}
     out = []
+    free_new = [(e.client_id, [], "(libre, nuevo)") for e in entries
+                if e.client_id >= FIRST_NEW_CLIENT_ID and e.raw == BLANK_DAT_ENTRY
+                and e.client_id not in taken and e.client_id not in c2s]
     for e in entries:
         c = e.client_id
-        if c > item_count or c in taken or c in protected or len(e.sprite_ids) != 1:
+        if c > item_count or c >= FIRST_NEW_CLIENT_ID or c in taken or c in protected or len(e.sprite_ids) != 1:
             continue
         if not c2flags.get(c, 0) & FLAG_PICKUPABLE:
             continue
@@ -527,7 +541,7 @@ def candidates(things: Path, otb: Path, exclude_paths=()) -> list[tuple[int, lis
         if any(s in refs or s in map_ids or s in targets for s in sids):
             continue
         out.append((c, sorted(sids), name))
-    return sorted(out, reverse=True)
+    return free_new + sorted(out, reverse=True)
 
 
 # ---------- aplicar ----------
@@ -546,6 +560,17 @@ def apply_things(things: Path, otb_root, dry: bool) -> list[str]:
         if sid is not None and cid is not None:
             s2c.setdefault(sid, cid)
     new_entries, log, changed = [e.raw for e in entries], [], False
+    item_count = reader.item_count
+    if item_count < LAST_CLIENT_ID:
+        added = list(range(item_count + 1, LAST_CLIENT_ID + 1))
+        new_entries += [BLANK_DAT_ENTRY] * len(added)
+        for cid in added:
+            by_cid[cid] = len(entries)
+            entries.append(B.DatItemEntry(client_id=cid, prefix=BLANK_DAT_ENTRY[:-2], sprite_ids=[0],
+                                          raw=BLANK_DAT_ENTRY))
+        item_count = LAST_CLIENT_ID
+        changed = True
+        log.append(f"  client ids nuevos {added[0]}-{added[-1]}: {len(added)} entradas vacías al final de los ítems")
     for item in NEW_ITEMS:
         tiles = item.get("tiles", 1)
         frames = item.get("frames", 1)
@@ -574,7 +599,7 @@ def apply_things(things: Path, otb_root, dry: bool) -> list[str]:
         changed = True
         log.append(f"  {item['name']}: client {item['client_id']} -> sprites nuevos {new_sprite_ids}")
     if changed and not dry:
-        new_dat = B.write_dat(reader.signature, reader.item_count, reader.outfit_count, reader.effect_count,
+        new_dat = B.write_dat(reader.signature, item_count, reader.outfit_count, reader.effect_count,
                               reader.missile_count, new_entries, tail)
         # validar antes de tocar los archivos: que el .dat nuevo parsea entero, con las
         # mismas entradas byte a byte y el mismo tail (outfits/efectos/proyectiles
@@ -672,8 +697,15 @@ def main() -> int:
     otbs = a.otb or [ROOT / "server/YurOTS/ots/data/items/items-zagan-test.otb"]
     if a.candidates:
         rows = candidates(ROOT / "devtools/rme/rme-client-760", otbs[0])
-        print(f"{len(rows)} client ids se pueden sacrificar (client, server ids, nombre):")
-        for row in rows[:40]:
+        free = [r for r in rows if not r[1]]
+        print(f"{len(free)} client ids nuevos libres"
+              + (f" ({free[0][0]}-{free[-1][0]}); usar estos primero" if free else
+                 ": no hay (correr el instalador con --things para agregarlos)"))
+        for row in free[:10]:
+            print(" ", *row)
+        sac = rows[len(free):]
+        print(f"{len(sac)} client ids viejos se pueden sacrificar (client, server ids, nombre):")
+        for row in sac[:20]:
             print(" ", *row)
         return 0
     _data, otb_root = load_otb(otbs[0])

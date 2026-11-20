@@ -444,7 +444,9 @@ class DatReader:
 
     def read_item_entries(self) -> tuple[list[DatItemEntry], bytes]:
         entries: list[DatItemEntry] = []
-        for client_id in range(100, 100 + self.item_count):
+        # Ítems 100..item_count inclusive (el encabezado guarda el último id). Antes leía item_count entradas: las
+        # 99 de más eran los primeros outfits, vistos como ítems 5090-5188 (iban en el tail igual al reescribir).
+        for client_id in range(100, self.item_count + 1):
             start = self.pos
             done = False
             while not done:

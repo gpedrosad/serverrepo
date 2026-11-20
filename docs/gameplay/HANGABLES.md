@@ -85,8 +85,9 @@ también en sus variantes rage; si se regeneran con `rage-variants.py`, la líne
 | orc warchief trophy | 20351 / 3077 | Orc Warchief (5 %) |
 | thornwarden trophy | 20352 / 3011 | Thornwarden (5 %) |
 
-**Client ids sacrificables casi agotados:** después de estos trofeos quedan ~5 en `--candidates`. Para más ítems
-nuevos habría que agregar client ids al final del `.dat` (OTClientV8 lo soporta) en vez de reciclar ítems viejos.
+**Client ids para más ítems:** después de estos trofeos quedaban ~5 sacrificables. Desde el 20 nov 2026 el `.dat`
+tiene 1000 client ids nuevos vacíos (5090–6089) que `--candidates` lista primero: ver
+[IMPORTAR_ITEM_DE_OTRA_VERSION.md](../items-and-map/IMPORTAR_ITEM_DE_OTRA_VERSION.md) (paso 4).
 
 ## Luces de colores (nov 2026)
 

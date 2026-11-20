@@ -41,9 +41,15 @@ cómo agregar más. El sprite sale del cliente de esa versión, píxel por píxe
    Imprime client id, server id y atributos (ataque, defensa, tipo, slot) y guarda `<nombre>.png` (32×32).
    Solo ítems de 1×1: muchos de 8.x ocupan 2 casillas y se avisan. Para un ítem 2×2 (corpses de
    araña/dragón) usar un PNG 64×64 y `tiles=2`; el importer lo parte en los 4 sprites del `.dat`.
-4. **Elegir un client id para sacrificar:** `python3.11 scripts/client-rme/add_custom_items.py --candidates`.
-   Excluye lo que está en el mapa, loot, NPC, acciones, hechizos o scripts, los destinos de una pudrición,
-   suelos, cadáveres, alfombras y cuadros, y los ya usados por ítems custom.
+4. **Elegir un client id:** `python3.11 scripts/client-rme/add_custom_items.py --candidates` (antes, `git fetch`
+   y trabajar sobre `main`: otras sesiones toman ids al mismo tiempo). Lista primero los **client ids nuevos
+   libres** (5090–6089, desde el 20 nov 2026): entradas vacías al final de los ítems del `.dat`, sin dibujo, que
+   el instalador reemplaza por el prototipo con los sprites nuevos. Usar esos. Un cliente sin actualizar no ve
+   nada en ese lugar (antes veía el ítem sacrificado). Si se acaban, subir `LAST_CLIENT_ID` en
+   `add_custom_items.py` y correr el instalador (agrega las entradas que falten antes de los outfits).
+   Después lista los ítems viejos que se pueden sacrificar (quedan ~5): excluye lo que está en el mapa, loot,
+   NPC, acciones, hechizos o scripts, los destinos de una pudrición, suelos, cadáveres, alfombras y cuadros, y
+   los ya usados por ítems custom.
 5. **Agregarlo a `NEW_ITEMS`** en `add_custom_items.py`: nombre, server id libre (consultar el OTB actual y las reservas de otros scripts),
    client id del paso 4, prototipo 7.6 (mismo tipo y manos), PNG, ataque, defensa y descripción (< 128
    bytes). Para un 2×2 agregar `tiles=2` y un PNG 64×64; para un 2×1, `tiles="2x1"` y un PNG 64×32;
@@ -97,3 +103,5 @@ Errores que ya pasaron:
 | Ids de 8.x tomados de memoria daban muebles y alfombras | En 8.x el client id no es el server id: usar el `items.otb` de esa versión |
 | El sprite salía borroso y con puntos de colores | No recortar ni reescalar: el PNG ya es 32×32 y se copia píxel a píxel |
 | Wikis y otservlist rechazan descargas automáticas | No disfrazar la consulta. Bajar el cliente desde el navegador |
+| `DatReader` (`build_zagan_test_assets.py`) leía 99 entradas de más: tomaba los primeros outfits como ítems 5090–5188. Con los client ids nuevos, un ítem en el 5090 habría pisado el outfit 1 | Corregido el 20 nov 2026: lee los ítems 100..`item_count` (el encabezado del `.dat` guarda el último id, no la cantidad) |
+| Dos ítems con el mismo client id (la bandera y su copia fija de Obi): el server no dejaba mover la que se vende | El server compara por client id (`Items::sameClientItem`, ver [HANGABLES.md](../gameplay/HANGABLES.md#errores-que-ya-pasaron)) |
