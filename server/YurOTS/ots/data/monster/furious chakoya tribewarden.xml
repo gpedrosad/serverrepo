@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <monster name="Furious Chakoya Tribewarden" level="18" maglevel="8" experience="88" pushable="0" armor="12" defense="13" canpushitems="1" staticattack="50" changetarget="200" speed="206">
 	<health now="122" max="122" />
-	<look type="161" head="0" body="0" legs="0" feet="0" corpse="3113" />
+	<look type="161" head="0" body="0" legs="0" feet="0" corpse="20243" />
 	<combat targetdistance="1" runonhealth="0" />
 	<attacks>
 		<attack type="melee" mindamage="8" maxdamage="56" probability="100" />

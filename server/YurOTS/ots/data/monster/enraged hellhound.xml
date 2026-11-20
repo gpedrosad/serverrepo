@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <monster name="Enraged Hellhound" level="69" maglevel="64" experience="4940" pushable="0" armor="38" defense="40" canpushitems="1" staticattack="60" changetarget="220" speed="320">
 	<health now="4200" max="4200" />
-	<look type="238" head="0" body="0" legs="0" feet="0" corpse="2969" />
+	<look type="238" head="0" body="0" legs="0" feet="0" corpse="20228" />
 	<combat targetdistance="1" runonhealth="0" />
 	<attacks>
 		<attack type="melee" mindamage="150" maxdamage="525" probability="100" />

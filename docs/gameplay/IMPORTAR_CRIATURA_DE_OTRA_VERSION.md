@@ -41,8 +41,11 @@ cliente 8.60. Para ítems, ver [IMPORTAR_ITEM_DE_OTRA_VERSION.md](../items-and-m
   en 245–251 y 161–174 (libres en 7.6 y vacíos también en 8.60).
 - Los cuatro bárbaros traen máscara de colores (dos capas, como los trajes de jugador): sus colores van en
   `head`/`body`/`legs`/`feet` del XML.
-- Cadáveres: no hay cadáver propio. Usan el de una criatura parecida de 7.6 (humano, dragón, dragon lord,
-  ghoul, cave rat, bat, tiger).
+- Cadáveres: el 8.60 de estas no se importó (no hay `items.otb` de 8.60 para encontrarlos). Desde el 19 nov
+  2026 los que no combinaban tienen uno propio: un cadáver de 7.6 de forma parecida con la gama de colores
+  del look (chakoyas, gigantes de hielo, Ice Golem, Crystal Spider, Bog Raider, Wyvern, Husky; el Frost
+  Dragon Hatchling usa el del Frost Dragon). Barbarians y piratas siguen con el humano; las crías y los
+  mutados con el de su pariente de 7.6, que ya tiene sus colores. Ver [MONSTRUOS.md#cadáveres](MONSTRUOS.md#cadáveres).
 - Hechizos nuevos: `hatchling_firewave`, `dlhatchling_firewave`, `wyvern_poisonwave`, `mutatedbat_shriek`,
   `frosthatchling_icewave`, `crystalspider_icewave`, `icegolem_shards` (instant) y las runas `hatchling_fireball`
   (5041), `chakoya_iceball` (5042), `frosthatchling_iceball` (5043) y `bograider_drown` (5044). El Bog Raider

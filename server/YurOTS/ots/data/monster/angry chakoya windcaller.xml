@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <monster name="Angry Chakoya Windcaller" level="16" maglevel="14" experience="84" pushable="0" armor="9" defense="10" canpushitems="1" staticattack="50" changetarget="200" speed="190">
 	<health now="122" max="122" />
-	<look type="163" head="0" body="0" legs="0" feet="0" corpse="3113" />
+	<look type="163" head="0" body="0" legs="0" feet="0" corpse="20243" />
 	<combat targetdistance="3" runonhealth="0" />
 	<attacks>
 		<attack type="melee" mindamage="0" maxdamage="26" probability="100" />

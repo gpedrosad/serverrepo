@@ -2,7 +2,7 @@
 <!-- Jefe final de Elvenbane, en la cima de la torre central: drena vida, energía y muerte; se cura y llama elfos. -->
 <monster name="Lord of Elvenbane" level="80" maglevel="80" experience="15000" pushable="0" armor="45" defense="45" canpushitems="1" staticattack="70" changetarget="200" speed="300">
 	<health now="12000" max="12000"/>
-	<look type="185" corpse="3128"/>
+	<look type="185" corpse="20240"/>
 	<combat targetdistance="1" runonhealth="0"/>
 <attacks>
 	<attack type="melee" mindamage="150" maxdamage="400"/>

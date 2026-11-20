@@ -35,7 +35,7 @@ int main()
 	assert(aetherManaGain(10000, 100, false) == 10);
 	assert(aetherManaGain(10000, 100, true) == 5);
 	assert(aetherManaGain(10000, 2, false) == 2);
-	assert(isMeleeRelic(20225) && isMeleeRelic(20226) && isMeleeRelic(20227));
+	assert(isMeleeRelic(20250) && isMeleeRelic(20251) && isMeleeRelic(20252));
 	assert(!isMeleeRelic(20211) && !isMeleeRelic(2407));
 	std::cout << "PASS: combo/target/timeout/reset, armor caps, PvP and actual-health mana gain\n";
 }

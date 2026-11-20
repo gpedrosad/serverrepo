@@ -216,11 +216,11 @@ DEEP_STAGES = {
               (("Quara Predator", "Quara Hydromancer"), 2, 220, 10)],
     "dragon": [(("Dragon", "Wyrm"), 1, 180, 12), (("Wyrm", "Dragon"), 2, 200, 12),
                (("Dragon Lord", "Wyrm"), 1, 230, 11), (("Dragon Lord", "Black Dragon"), 2, 260, 11),
-               (("Black Dragon", "Dragon Lord"), 2, 280, 10)],
+               (("Black Dragon", "Dragon Lord", "Metal Dragon"), 2, 280, 10)],
 }
 ABYSS_STAGES = [(("Hydra", "Dark Hydra"), 1, 220, 13), (("Hydra", "Serpent Spawn"), 2, 240, 12),
-                (("Behemoth", "Serpent Spawn"), 1, 260, 12), (("Behemoth", "Dark Hydra"), 2, 280, 11),
-                (("Demon", "Fury"), 1, 300, 12), (("Demon", "Behemoth", "Fury"), 2, 330, 11)]
+                (("Behemoth", "Serpent Spawn"), 1, 260, 12), (("Behemoth", "Dark Hydra", "Metal Hydra"), 2, 280, 11),
+                (("Demon", "Fury"), 1, 300, 12), (("Demon", "Behemoth", "Fury", "Metal Demon"), 2, 330, 11)]
 STAIR_CLEAR = 6        # sin spawns a esta distancia de escaleras, portales y la llegada
 CAVE_SEPARATION = 3    # casillas de roca como mínimo entre dos cuevas del mismo piso
 

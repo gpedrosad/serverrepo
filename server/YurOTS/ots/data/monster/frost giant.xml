@@ -2,7 +2,7 @@
 <!-- Importado de Tibia 8.60 (import_client_look.py). Gigante de hielo: tira rocas. Nivel 25-40. -->
 <monster name="Frost Giant" level="25" maglevel="0" experience="150" pushable="0" armor="16" defense="18" canpushitems="1" staticattack="50" changetarget="200" speed="180">
 	<health now="270" max="270"/>
-	<look type="169" head="0" body="0" legs="0" feet="0" corpse="3113"/>
+	<look type="169" head="0" body="0" legs="0" feet="0" corpse="20244"/>
 	<combat targetdistance="1" runonhealth="0"/>
 
 <attacks>

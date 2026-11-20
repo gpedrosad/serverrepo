@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <monster name="Enraged Frost Giantess" level="44" maglevel="19" experience="510" pushable="0" armor="23" defense="25" canpushitems="1" staticattack="50" changetarget="200" speed="206">
 	<health now="701" max="701" />
-	<look type="170" head="0" body="0" legs="0" feet="0" corpse="3113" />
+	<look type="170" head="0" body="0" legs="0" feet="0" corpse="20244" />
 	<combat targetdistance="1" runonhealth="0" />
 	<attacks>
 		<attack type="melee" mindamage="23" maxdamage="161" probability="100" />

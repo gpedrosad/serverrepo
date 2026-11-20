@@ -14,20 +14,21 @@ Receta: [`SPRITE_RECOLOR_GUIDE.md`](SPRITE_RECOLOR_GUIDE.md).
 
 | Look | Forma | Monstruos y NPC que la usan | Colores (%) | Estudiada |
 |-----:|-------|-----------------------------|-------------|-----------|
-| 2 | 1x1 | Angry Orc Warlord, Enraged Orc Warlord, Furious Orc Warlord, Orc Warlord | dark 48, gray 34, green 8, yellow 5 |  |
+| 2 | 1x1 | Angry Orc Warlord, Enraged Orc Warlord, Furious Orc Warlord, Orc Warlord | dark 48, gray 34, green 8, yellow 5 | `orc-warchief` |
 | 3 | 2x2 | War Wolf | gray 80, dark 19 | `hellhound` |
 | 4 | 2x2 | Orc Rider | gray 51, dark 36, green 10 |  |
 | 5 | 1x1 | Angry Orc, Enraged Orc, Furious Orc, Orc | dark 43, green 31, orange 16, gray 10 |  |
 | 6 | 1x1 | Angry Orc Shaman, Enraged Orc Shaman, Furious Orc Shaman, Orc Shaman | dark 44, violet 24, green 12, orange 9, gray 8 |  |
 | 7 | 1x1 | Angry Orc Warrior, Enraged Orc Warrior, Furious Orc Warrior, Orc Warrior | dark 44, gray 26, orange 16, green 9 |  |
-| 8 | 1x1 | Angry Orc Berserker, Enraged Orc Berserker, Furious Orc Berserker, Orc Berserker Pot Thrower, Orc Berserker | dark 40, green 21, gray 19, red 13 |  |
+| 8 | 1x1 | Angry Orc Berserker Pot Thrower, Angry Orc Berserker, Enraged Orc Berserker Pot Thrower, Enraged Orc Berserker, Furious Orc Berserker Pot Thrower, Furious Orc Berserker, Orc Berserker Pot Thrower, Orc Berserker | dark 40, green 21, gray 19, red 13 |  |
 | 9 | 1x1 | Angry Necromancer, Crucible Bonepriest, Enraged Necromancer, Furious Necromancer, Necromancer | dark 64, gray 22, orange 6, magenta 5 | `BASE_PARTS[9]`; `tide-priest` |
 | 13 | 1x1 | Black Sheep | gray 64, dark 28, orange 6 |  |
 | 14 | 1x1 | Sheep | gray 66, dark 27, orange 5 |  |
-| 15 | 1x1 | Angry Troll, Enraged Troll, Furious Troll, Troll | orange 72, dark 22, red 6 |  |
+| 15 | 1x1 | Angry Troll, Enraged Troll, Furious Troll, Troll | orange 72, dark 22, red 6 | `river-troll`, `stone-troll` |
 | 16 | 2x2 | Bear | orange 84, dark 16 |  |
 | 17 | 2x2 | Beholder | yellow 73, dark 21 |  |
 | 18 | 1x1 | Angry Ghoul, Enraged Ghoul, Furious Ghoul, Ghoul | orange 47, dark 27, yellow 17, red 6 | `BASE_PARTS[18]` |
+| 20 | 2x2 | Angry Quara Constrictor, Enraged Quara Constrictor, Furious Quara Constrictor, Quara Constrictor | blue 43, dark 35, gray 14, violet 5 |  |
 | 21 | 1x1 | Rat | orange 65, red 21, dark 13 |  |
 | 22 | 2x2 | Angry Cyclops, Cyclops, Enraged Cyclops, Furious Cyclops | orange 86, dark 12 |  |
 | 23 | 1x1 | Angry Minotaur Mage, Enraged Minotaur Mage, Furious Minotaur Mage, Minotaur Mage | dark 32, gray 22, violet 17, red 11, blue 9, orange 8 |  |
@@ -40,8 +41,8 @@ Receta: [`SPRITE_RECOLOR_GUIDE.md`](SPRITE_RECOLOR_GUIDE.md).
 | 31 | 1x1 | Deer | orange 41, dark 40, red 15 |  |
 | 32 | 1x1 | Dog | orange 66, red 27, dark 7 |  |
 | 33 | 1x1 | Angry Skeleton, Enraged Skeleton, Furious Skeleton, Skeleton | dark 37, yellow 27, gray 19, orange 15 |  |
-| 34 | 2x2 | Angry Dragon, Dragon, Enraged Dragon, Furious Dragon | green 71, dark 24 | `black-dragon`, `frost-dragon` |
-| 35 | 2x2 | Angry Demon, Crucible Bloodreaver, Demon, Enraged Demon, Furious Demon, Orshabaal | red 67, dark 15, orange 13 | `ashen-lord` |
+| 34 | 2x2 | Angry Dragon, Dragon, Enraged Dragon, Furious Dragon | green 71, dark 24 | `black-dragon`, `frost-dragon`, `metal-dragon` |
+| 35 | 2x2 | Angry Demon, Crucible Bloodreaver, Demon, Enraged Demon, Furious Demon, Orshabaal | red 67, dark 15, orange 13 | `ashen-lord`, `metal-demon` |
 | 36 | 1x1 | Poison Spider | dark 41, orange 26, red 21, yellow 5 |  |
 | 37 | 1x1 | Demon Skeleton | red 63, dark 34 |  |
 | 38 | 2x2 | Angry Giant Spider, Crucible Venomqueen, Enraged Giant Spider, Furious Giant Spider, Giant Spider, Old Widow | dark 37, orange 27, red 26, yellow 8 | `ice-spider` |
@@ -51,6 +52,8 @@ Receta: [`SPRITE_RECOLOR_GUIDE.md`](SPRITE_RECOLOR_GUIDE.md).
 | 42 | 2x2 | Polar Bear | gray 76, dark 13, orange 8 |  |
 | 43 | 1x1 | Scorpion | orange 49, dark 45 |  |
 | 45 | 1x1 | Bug | dark 51, orange 21, gray 13, red 9 |  |
+| 46 | 2x2 | Angry Quara Hydromancer, Enraged Quara Hydromancer, Furious Quara Hydromancer, Quara Hydromancer | dark 41, magenta 41, gray 7, red 7 |  |
+| 47 | 2x2 | Angry Quara Mantassin, Enraged Quara Mantassin, Furious Quara Mantassin, Quara Mantassin | dark 39, green 32, orange 15, gray 9 |  |
 | 48 | 1x1 | Ghost | blue 67, gray 18, dark 15 |  |
 | 50 | 1x1 | Orc Spearman | dark 43, green 23, blue 18, gray 12 |  |
 | 51 | 2x2 | Green Djinn | green 41, orange 27, cyan 9, red 8, gray 7, dark 6 |  |
@@ -65,8 +68,8 @@ Receta: [`SPRITE_RECOLOR_GUIDE.md`](SPRITE_RECOLOR_GUIDE.md).
 | 60 | 1x1 | Pig | orange 75, dark 24 |  |
 | 61 | 1x1 | Goblin | orange 37, green 31, dark 28 |  |
 | 62 | 1x1 | Elf | dark 42, orange 25, green 25 |  |
-| 63 | 1x1 | Blue Elf Arcanist, Elf Arcanist | dark 41, red 28, gray 15, yellow 8, orange 6 |  |
-| 64 | 1x1 | Elf Scout | dark 47, orange 38, yellow 6, red 5 |  |
+| 63 | 1x1 | Angry Blue Elf Arcanist, Blue Elf Arcanist, Elf Arcanist, Enraged Blue Elf Arcanist, Furious Blue Elf Arcanist | dark 41, red 28, gray 15, yellow 8, orange 6 | `elven-archmage` |
+| 64 | 1x1 | Elf Scout | dark 47, orange 38, yellow 6, red 5 | `elvenbane-ranger` |
 | 65 | 1x1 | Angry Mummy, Enraged Mummy, Furious Mummy, Mummy | orange 50, yellow 27, dark 22 |  |
 | 66 | 1x1 | Angry Dwarf Geomancer, Dwarf Geomancer, Enraged Dwarf Geomancer, Furious Dwarf Geomancer | dark 42, red 37, orange 10, gray 6 |  |
 | 67 | 2x2 | Angry Stone Golem, Crucible Frostwarden, Enraged Stone Golem, Furious Stone Golem, Grorlam, Stone Golem | gray 81, dark 16 |  |
@@ -74,10 +77,12 @@ Receta: [`SPRITE_RECOLOR_GUIDE.md`](SPRITE_RECOLOR_GUIDE.md).
 | 69 | 1x1 | Angry Dwarf, Dwarf, Enraged Dwarf, Furious Dwarf | dark 42, orange 37, yellow 14 |  |
 | 70 | 1x1 | Angry Dwarf Guard, Dwarf Guard, Enraged Dwarf Guard, Furious Dwarf Guard | dark 46, orange 36, gray 14 |  |
 | 71 | 1x1 | Angry Dwarf Soldier, Dwarf Soldier, Enraged Dwarf Soldier, Furious Dwarf Soldier | dark 43, orange 22, red 13, blue 11, yellow 6 |  |
-| 73 | 1x1 | Angry Hero, Enraged Hero, Furious Hero, Hero | orange 47, red 27, dark 16 | `imperial-hero` |
+| 72 | 2x2 | Angry Quara Pincher, Enraged Quara Pincher, Furious Quara Pincher, Quara Pincher | blue 43, dark 28, cyan 16, gray 12 |  |
+| 73 | 1x1 | Angry Hero, Enraged Hero, Furious Hero, Hero | orange 47, red 27, dark 16 | `imperial-hero`, `lord-of-elvenbane` |
 | 74 | 1x1 | Rabbit | orange 58, red 37 |  |
 | 75 | 1x1 | — | blue 53, orange 21, gray 11, dark 10 |  |
 | 76 | 1x1 | Swamp Troll | green 78, dark 22 |  |
+| 77 | 2x2 | Angry Quara Predator, Enraged Quara Predator, Furious Quara Predator, Quara Predator | dark 42, gray 26, orange 13, yellow 9, red 7 |  |
 | 78 | 1x1 | Banshee | dark 47, blue 36, gray 7, orange 6 |  |
 | 79 | 2x2 | Ancient Scarab, Angry Ancient Scarab, Enraged Ancient Scarab, Furious Ancient Scarab | dark 45, green 24, violet 15, gray 8, blue 7 | `BASE_PARTS[79]`; `emerald-scarab` |
 | 80 | 2x2 | Blue Djinn, Crucible Stormcaller | gray 50, orange 22, blue 19, dark 7 |  |
@@ -93,9 +98,13 @@ Receta: [`SPRITE_RECOLOR_GUIDE.md`](SPRITE_RECOLOR_GUIDE.md).
 | 90 | 2x2 | Vashresamun | dark 34, red 24, yellow 21, orange 14, magenta 6 |  |
 | 91 | 2x2 | Rahemos | dark 42, blue 15, red 13, orange 12, cyan 9, yellow 6 |  |
 | 92 | 1x1 | — | orange 80, dark 13, gray 6 |  |
+| 93 | 2x2 | Angry Pirate Marauder, Enraged Pirate Marauder, Furious Pirate Marauder, Pirate Marauder | dark 48, orange 24, gray 11, red 9, cyan 7 |  |
 | 94 | 2x2 | Hyaena | orange 73, dark 22 |  |
 | 95 | 2x2 | Angry Gargoyle, Enraged Gargoyle, Furious Gargoyle, Gargoyle | gray 71, dark 27 |  |
-| 99 | 2x2 | Angry Lich, Enraged Lich, Furious Lich, Lich | dark 51, gray 23, orange 12, green 8 |  |
+| 96 | 1x1 | Angry Pirate Cutthroat, Enraged Pirate Cutthroat, Furious Pirate Cutthroat, Pirate Cutthroat | dark 52, orange 36, gray 9 |  |
+| 97 | 2x2 | Angry Pirate Buccaneer, Enraged Pirate Buccaneer, Furious Pirate Buccaneer, Pirate Buccaneer | dark 50, orange 20, gray 10, red 9, green 7 |  |
+| 98 | 2x2 | Angry Pirate Corsair, Enraged Pirate Corsair, Furious Pirate Corsair, Pirate Corsair | dark 50, gray 24, yellow 9, orange 5 |  |
+| 99 | 2x2 | Angry Lich, Enraged Lich, Furious Lich, Lich | dark 51, gray 23, orange 12, green 8 | `fallen-emperor` |
 | 100 | 1x1 | Angry Crypt Shambler, Crypt Shambler, Enraged Crypt Shambler, Furious Crypt Shambler | dark 38, orange 32, red 16, green 5 | `BASE_PARTS[100]`; `drowned-sailor` |
 | 101 | 2x2 | Bone Beast | dark 49, gray 38, orange 11 |  |
 | 102 | 1x1 | Deathslicer | dark 29, red 24, gray 20, orange 19, yellow 8 |  |
@@ -112,15 +121,39 @@ Receta: [`SPRITE_RECOLOR_GUIDE.md`](SPRITE_RECOLOR_GUIDE.md).
 | 113 | 2x2 | Angry Lizard Templar, Enraged Lizard Templar, Furious Lizard Templar, Lizard Templar | green 36, dark 34, orange 17, gray 7 |  |
 | 114 | 2x2 | Lizard Sentinel | green 39, dark 33, orange 17, yellow 6 |  |
 | 115 | 2x2 | Lizard Snakecharmer | dark 37, green 26, violet 13, blue 7, yellow 7 |  |
-| 116 | 2x2 | Kongra | orange 60, dark 38 |  |
+| 116 | 2x2 | Kongra | orange 60, dark 38 | `red-kongra` |
 | 117 | 2x2 | Merlkin | dark 45, orange 42, yellow 5 |  |
 | 118 | 2x2 | Sibang | orange 51, dark 38 |  |
 | 119 | 2x2 | Crocodile | green 70, dark 26 |  |
-| 120 | 2x2 | Carniphila | green 46, dark 44, orange 5 |  |
-| 121 | 2x2 | Angry Hydra, Enraged Hydra, Furious Hydra, Hydra | green 76, dark 24 | `BASE_PARTS[121]`; `dark-hydra` |
+| 120 | 2x2 | Carniphila | green 46, dark 44, orange 5 | `thornwarden` |
+| 121 | 2x2 | Angry Hydra, Enraged Hydra, Furious Hydra, Hydra | green 76, dark 24 | `BASE_PARTS[121]`; `dark-hydra`, `metal-hydra` |
 | 123 | 2x2 | Panda | gray 60, dark 39 |  |
 | 124 | 2x2 | Centipede | dark 55, orange 23, yellow 9, red 6 |  |
 | 125 | 2x2 | Tiger | orange 61, red 20, dark 17 |  |
+| 161 | 2x2 | Angry Chakoya Tribewarden, Chakoya Tribewarden, Enraged Chakoya Tribewarden, Furious Chakoya Tribewarden | gray 37, dark 25, cyan 15, green 12, blue 8 |  |
+| 162 | 2x2 | Angry Chakoya Toolshaper, Chakoya Toolshaper, Enraged Chakoya Toolshaper, Furious Chakoya Toolshaper | gray 36, dark 25, cyan 14, orange 10, blue 10 |  |
+| 163 | 2x2 | Angry Chakoya Windcaller, Chakoya Windcaller, Enraged Chakoya Windcaller, Furious Chakoya Windcaller | gray 39, dark 25, cyan 19, blue 15 |  |
+| 164 | 2x2 | Husky | gray 55, dark 45 |  |
+| 169 | 2x2 | Angry Frost Giant, Enraged Frost Giant, Frost Giant, Furious Frost Giant | orange 48, blue 20, dark 18, cyan 6, gray 5 |  |
+| 170 | 2x2 | Angry Frost Giantess, Enraged Frost Giantess, Frost Giantess, Furious Frost Giantess | orange 25, dark 22, red 21, blue 19, gray 7, cyan 5 |  |
+| 171 | 2x2 | Angry Ice Golem, Enraged Ice Golem, Furious Ice Golem, Ice Golem | cyan 96 |  |
+| 172 | 2x2 | Angry Crystal Spider, Crystal Spider, Enraged Crystal Spider, Furious Crystal Spider | blue 47, cyan 36, gray 10, dark 6 |  |
+| 173 | 2x2 | Frost Dragon Hatchling | cyan 69, dark 28 |  |
+| 174 | 2x2 | Angry Bog Raider, Bog Raider, Enraged Bog Raider, Furious Bog Raider | green 100 |  |
+| 175 | 2x2 | Angry Cyclops Drone, Cyclops Drone, Enraged Cyclops Drone, Furious Cyclops Drone | orange 50, gray 22, dark 14, red 6 |  |
+| 176 | 2x2 | Angry Cyclops Smith, Cyclops Smith, Enraged Cyclops Smith, Furious Cyclops Smith | orange 77, dark 13 |  |
+| 177 | 2x2 | Angry Wyrm, Enraged Wyrm, Furious Wyrm, Wyrm | magenta 99 |  |
+| 178 | 2x2 | Angry Earth Elemental, Earth Elemental, Enraged Earth Elemental, Furious Earth Elemental | red 56, gray 20, dark 12, orange 7, green 5 |  |
+| 179 | 1x1 | Angry Water Elemental, Enraged Water Elemental, Furious Water Elemental, Water Elemental | blue 65, cyan 34 |  |
+| 180 | 2x2 | Angry Zombie, Enraged Zombie, Furious Zombie, Zombie | red 47, orange 20, yellow 16, green 8, dark 7 |  |
+| 181 | 2x2 | Angry Vampire Bride, Enraged Vampire Bride, Furious Vampire Bride, Vampire Bride | red 49, dark 20, cyan 14, green 7, gray 7 |  |
+| 182 | 2x2 | Angry Worker Golem, Enraged Worker Golem, Furious Worker Golem, Worker Golem | orange 49, cyan 17, gray 9, blue 9, dark 6, yellow 6 |  |
+| 183 | 2x2 | Angry Undead Gladiator, Enraged Undead Gladiator, Furious Undead Gladiator, Undead Gladiator | orange 48, red 23, yellow 15, dark 11 |  |
+| 184 | 2x2 | Angry Nightstalker, Enraged Nightstalker, Furious Nightstalker, Nightstalker | blue 94, violet 6 |  |
+| 197 | 1x1 | Angry Tortoise, Enraged Tortoise, Furious Tortoise, Tortoise | green 46, dark 44, orange 8 |  |
+| 198 | 2x2 | Angry Thornback Tortoise, Enraged Thornback Tortoise, Furious Thornback Tortoise, Thornback Tortoise | orange 67, dark 30 |  |
+| 199 | 2x2 | Angry Mammoth, Enraged Mammoth, Furious Mammoth, Mammoth | orange 59, dark 24, red 13 |  |
+| 200 | 2x2 | Angry Blood Crab, Blood Crab, Enraged Blood Crab, Furious Blood Crab | dark 44, orange 38, red 14 |  |
 | 201 | 2x2 | — | red 67, dark 15, orange 13 |  |
 | 202 | 1x1 | — | dark 39, orange 26, red 13, blue 13, gray 9 |  |
 | 203 | 1x1 | — | dark 41, red 28, gray 15, yellow 8, orange 6 |  |
@@ -138,5 +171,10 @@ Receta: [`SPRITE_RECOLOR_GUIDE.md`](SPRITE_RECOLOR_GUIDE.md).
 | 216 | 1x1 | Dworc Venomsniper | dark 48, green 36, orange 10 |  |
 | 218 | 2x2 | Terror Bird | dark 36, orange 34, red 17, yellow 12 |  |
 | 219 | 2x2 | Tarantula | dark 54, orange 38 |  |
-| 220 | 2x2 | Serpent Spawn | dark 38, orange 23, green 18, yellow 15, red 7 |  |
+| 220 | 2x2 | Angry Serpent Spawn, Enraged Serpent Spawn, Furious Serpent Spawn, Serpent Spawn | dark 38, orange 23, green 18, yellow 15, red 7 |  |
 | 225 | 2x2 | Angry Dark Monk, Dark Monk, Enraged Dark Monk, Furious Dark Monk | orange 79, dark 19 |  |
+| 246 | 2x2 | Dragon Hatchling | green 67, dark 32 |  |
+| 247 | 2x2 | Dragon Lord Hatchling | red 64, dark 33 |  |
+| 248 | 2x2 | Angry Mutated Human, Enraged Mutated Human, Furious Mutated Human, Mutated Human | orange 60, red 30, gray 7 |  |
+| 249 | 2x2 | Angry Mutated Rat, Enraged Mutated Rat, Furious Mutated Rat, Mutated Rat | red 44, orange 24, gray 13, magenta 12, dark 7 |  |
+| 251 | 2x2 | Angry Mutated Tiger, Enraged Mutated Tiger, Furious Mutated Tiger, Mutated Tiger | orange 88, red 10 |  |

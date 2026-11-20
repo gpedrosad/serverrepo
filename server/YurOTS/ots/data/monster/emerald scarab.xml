@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <monster name="Emerald Scarab" level="5" maglevel="35" experience="1150" pushable="0" armor="38" defense="38" canpushitems="1" staticattack="50" changetarget="200" speed="225">
 	<health now="1500" max="1500"/>
-	<look type="242" corpse="3004"/>
+	<look type="242" corpse="20230"/>
 	<combat targetdistance="1" runonhealth="0"/>
 	<blood color="30" effect="16" splash="4"/>
 	<attacks>

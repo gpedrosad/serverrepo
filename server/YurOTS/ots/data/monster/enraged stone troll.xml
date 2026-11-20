@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <monster name="Enraged Stone Troll" level="60" maglevel="55" experience="274" pushable="0" armor="39" defense="41" canpushitems="1" staticattack="50" changetarget="200" speed="136">
 	<health now="376" max="376" />
-	<look type="253" head="20" body="30" legs="40" feet="50" corpse="2806" />
+	<look type="253" head="20" body="30" legs="40" feet="50" corpse="20234" />
 	<combat targetdistance="1" runonhealth="0" />
 	<attacks>
 		<attack type="melee" mindamage="42" maxdamage="116" probability="100" />

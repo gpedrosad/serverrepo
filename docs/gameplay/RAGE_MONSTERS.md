@@ -48,6 +48,7 @@ tramo de experiencia que las históricas:
 - Custom / zonas: Black Dragon, Frost Dragon, Blue Elf Arcanist, Drowned Sailor, Ice Monk,
   Ice Spider, Tide Priest, Hellhound, Court Mage, Dark Hydra, Emerald Scarab, Root Colossus,
   Imperial Squire, Imperial Archer, Imperial Hero, Serpent Spawn, Orc Berserker Pot Thrower.
+- Cyborgs (19 nov 2026): Metal Dragon, Metal Hydra y Metal Demon ([METAL_MONSTERS.md](METAL_MONSTERS.md)).
 - Tibia 8.60: piratas ×4, bárbaros ×4, chakoyas ×3, Frost Giant/Giantess, Ice Golem,
   Crystal Spider, Bog Raider, Tortoise, Thornback Tortoise, Mammoth, Blood Crab, quara ×5,
   Cyclops Drone/Smith, Wyrm, elementales de tierra/agua, Zombie, Vampire Bride, Worker Golem,

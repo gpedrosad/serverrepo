@@ -91,6 +91,10 @@
 <monster name="Angry Black Dragon" file="angry black dragon.xml" />
 <monster name="Furious Black Dragon" file="furious black dragon.xml" />
 <monster name="Enraged Black Dragon" file="enraged black dragon.xml" />
+<monster name="Metal Dragon" file="metal dragon.xml" />
+<monster name="Angry Metal Dragon" file="angry metal dragon.xml" />
+<monster name="Furious Metal Dragon" file="furious metal dragon.xml" />
+<monster name="Enraged Metal Dragon" file="enraged metal dragon.xml" />
 <monster name="Hellhound" file="hellhound.xml" />
 <monster name="Angry Hellhound" file="angry hellhound.xml" />
 <monster name="Furious Hellhound" file="furious hellhound.xml" />
@@ -265,6 +269,14 @@
 <monster name="Angry Dark Hydra" file="angry dark hydra.xml" />
 <monster name="Furious Dark Hydra" file="furious dark hydra.xml" />
 <monster name="Enraged Dark Hydra" file="enraged dark hydra.xml" />
+<monster name="Metal Hydra" file="metal hydra.xml" />
+<monster name="Angry Metal Hydra" file="angry metal hydra.xml" />
+<monster name="Furious Metal Hydra" file="furious metal hydra.xml" />
+<monster name="Enraged Metal Hydra" file="enraged metal hydra.xml" />
+<monster name="Metal Demon" file="metal demon.xml" />
+<monster name="Angry Metal Demon" file="angry metal demon.xml" />
+<monster name="Furious Metal Demon" file="furious metal demon.xml" />
+<monster name="Enraged Metal Demon" file="enraged metal demon.xml" />
 <monster name="Angry Hydra" file="angry hydra.xml" />
 <monster name="Furious Hydra" file="furious hydra.xml" />
 <monster name="Enraged Hydra" file="enraged hydra.xml" />

@@ -2,7 +2,7 @@
 <!-- Importado de Tibia 8.60 (import_client_look.py). Chakoya que tira piedras, nivel 10-20. -->
 <monster name="Chakoya Toolshaper" level="10" maglevel="0" experience="40" pushable="0" armor="8" defense="9" canpushitems="1" staticattack="50" changetarget="200" speed="185">
 	<health now="80" max="80"/>
-	<look type="162" head="0" body="0" legs="0" feet="0" corpse="3113"/>
+	<look type="162" head="0" body="0" legs="0" feet="0" corpse="20243"/>
 	<combat targetdistance="1" runonhealth="0"/>
 
 <attacks>

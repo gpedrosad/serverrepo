@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <monster name="Furious Root Colossus" level="81" maglevel="50" experience="11220" pushable="0" armor="54" defense="52" canpushitems="1" staticattack="50" changetarget="200" speed="244">
 	<health now="12000" max="12000" />
-	<look type="243" corpse="2931" />
+	<look type="243" corpse="20231" />
 	<combat targetdistance="1" runonhealth="0" />
 	<attacks>
 		<attack type="melee" mindamage="308" maxdamage="792" probability="100" />

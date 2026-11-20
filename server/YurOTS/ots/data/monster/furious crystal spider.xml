@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <monster name="Furious Crystal Spider" level="71" maglevel="56" experience="2700" pushable="0" armor="37" defense="39" canpushitems="1" staticattack="50" changetarget="200" speed="252">
 	<health now="2875" max="2875" />
-	<look type="172" head="0" body="0" legs="0" feet="0" corpse="4290" />
+	<look type="172" head="0" body="0" legs="0" feet="0" corpse="20246" />
 	<combat targetdistance="1" runonhealth="0" />
 	<attacks>
 		<attack type="melee" mindamage="102" maxdamage="410" probability="100" />

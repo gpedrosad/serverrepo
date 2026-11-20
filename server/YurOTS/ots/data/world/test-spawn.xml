@@ -4590,20 +4590,20 @@
 		<monster name="Dragon Lord" x="0" y="1" z="9" spawntime="280" />
 	</spawn>
 	<spawn centerx="330" centery="280" centerz="9" radius="3">
-		<monster name="Black Dragon" x="-1" y="0" z="9" spawntime="280" />
-		<monster name="Dragon Lord" x="1" y="-2" z="9" spawntime="280" />
+		<monster name="Metal Dragon" x="-1" y="0" z="9" spawntime="280" />
+		<monster name="Black Dragon" x="1" y="-2" z="9" spawntime="280" />
 	</spawn>
 	<spawn centerx="336" centery="276" centerz="9" radius="3">
-		<monster name="Black Dragon" x="1" y="1" z="9" spawntime="280" />
-		<monster name="Dragon Lord" x="-2" y="1" z="9" spawntime="280" />
+		<monster name="Dragon Lord" x="1" y="1" z="9" spawntime="280" />
+		<monster name="Metal Dragon" x="-2" y="1" z="9" spawntime="280" />
 	</spawn>
 	<spawn centerx="323" centery="276" centerz="9" radius="3">
 		<monster name="Black Dragon" x="2" y="0" z="9" spawntime="280" />
 		<monster name="Dragon Lord" x="0" y="0" z="9" spawntime="280" />
 	</spawn>
 	<spawn centerx="348" centery="276" centerz="9" radius="3">
-		<monster name="Black Dragon" x="-1" y="2" z="9" spawntime="280" />
-		<monster name="Dragon Lord" x="-1" y="1" z="9" spawntime="280" />
+		<monster name="Metal Dragon" x="-1" y="2" z="9" spawntime="280" />
+		<monster name="Black Dragon" x="-1" y="1" z="9" spawntime="280" />
 	</spawn>
 	<spawn centerx="345" centery="291" centerz="10" radius="3">
 		<monster name="Hydra" x="2" y="-1" z="10" spawntime="220" />
@@ -4651,20 +4651,20 @@
 		<monster name="Dark Hydra" x="-1" y="1" z="10" spawntime="280" />
 	</spawn>
 	<spawn centerx="311" centery="310" centerz="10" radius="3">
-		<monster name="Behemoth" x="2" y="-2" z="10" spawntime="280" />
-		<monster name="Dark Hydra" x="-1" y="0" z="10" spawntime="280" />
+		<monster name="Metal Hydra" x="2" y="-2" z="10" spawntime="280" />
+		<monster name="Behemoth" x="-1" y="0" z="10" spawntime="280" />
 	</spawn>
 	<spawn centerx="322" centery="308" centerz="10" radius="3">
-		<monster name="Behemoth" x="-1" y="0" z="10" spawntime="280" />
-		<monster name="Dark Hydra" x="-1" y="-2" z="10" spawntime="280" />
+		<monster name="Dark Hydra" x="-1" y="0" z="10" spawntime="280" />
+		<monster name="Metal Hydra" x="-1" y="-2" z="10" spawntime="280" />
 	</spawn>
 	<spawn centerx="330" centery="304" centerz="10" radius="3">
 		<monster name="Behemoth" x="-1" y="2" z="10" spawntime="280" />
 		<monster name="Dark Hydra" x="0" y="0" z="10" spawntime="280" />
 	</spawn>
 	<spawn centerx="306" centery="304" centerz="10" radius="3">
-		<monster name="Behemoth" x="-2" y="0" z="10" spawntime="280" />
-		<monster name="Dark Hydra" x="0" y="2" z="10" spawntime="280" />
+		<monster name="Metal Hydra" x="-2" y="0" z="10" spawntime="280" />
+		<monster name="Behemoth" x="0" y="2" z="10" spawntime="280" />
 	</spawn>
 	<spawn centerx="347" centery="303" centerz="10" radius="3">
 		<monster name="Demon" x="-2" y="1" z="10" spawntime="300" />
@@ -4684,19 +4684,19 @@
 	</spawn>
 	<spawn centerx="298" centery="321" centerz="10" radius="3">
 		<monster name="Fury" x="2" y="0" z="10" spawntime="330" />
-		<monster name="Demon" x="2" y="-2" z="10" spawntime="330" />
+		<monster name="Metal Demon" x="2" y="-2" z="10" spawntime="330" />
 	</spawn>
 	<spawn centerx="319" centery="322" centerz="10" radius="3">
-		<monster name="Behemoth" x="0" y="0" z="10" spawntime="330" />
-		<monster name="Fury" x="2" y="-1" z="10" spawntime="330" />
+		<monster name="Demon" x="0" y="0" z="10" spawntime="330" />
+		<monster name="Behemoth" x="2" y="-1" z="10" spawntime="330" />
 	</spawn>
 	<spawn centerx="282" centery="319" centerz="10" radius="3">
-		<monster name="Demon" x="0" y="1" z="10" spawntime="330" />
-		<monster name="Behemoth" x="1" y="1" z="10" spawntime="330" />
+		<monster name="Fury" x="0" y="1" z="10" spawntime="330" />
+		<monster name="Metal Demon" x="1" y="1" z="10" spawntime="330" />
 	</spawn>
 	<spawn centerx="291" centery="317" centerz="10" radius="3">
-		<monster name="Fury" x="1" y="0" z="10" spawntime="330" />
-		<monster name="Demon" x="0" y="0" z="10" spawntime="330" />
+		<monster name="Demon" x="1" y="0" z="10" spawntime="330" />
+		<monster name="Behemoth" x="0" y="0" z="10" spawntime="330" />
 	</spawn>
 	<spawn centerx="340" centery="307" centerz="10" radius="3">
 		<monster name="Root Colossus" x="0" y="0" z="10" spawntime="300" />
@@ -5389,24 +5389,24 @@
 		<monster name="Demon" x="1" y="2" z="10" spawntime="330" />
 	</spawn>
 	<spawn centerx="564" centery="322" centerz="10" radius="3">
-		<monster name="Fury" x="1" y="1" z="10" spawntime="330" />
-		<monster name="Demon" x="2" y="-1" z="10" spawntime="330" />
+		<monster name="Metal Demon" x="1" y="1" z="10" spawntime="330" />
+		<monster name="Fury" x="2" y="-1" z="10" spawntime="330" />
 	</spawn>
 	<spawn centerx="553" centery="333" centerz="10" radius="3">
-		<monster name="Fury" x="1" y="2" z="10" spawntime="330" />
-		<monster name="Demon" x="0" y="0" z="10" spawntime="330" />
+		<monster name="Demon" x="1" y="2" z="10" spawntime="330" />
+		<monster name="Metal Demon" x="0" y="0" z="10" spawntime="330" />
 	</spawn>
 	<spawn centerx="543" centery="372" centerz="10" radius="3">
 		<monster name="Fury" x="-2" y="1" z="10" spawntime="330" />
 		<monster name="Demon" x="-1" y="0" z="10" spawntime="330" />
 	</spawn>
 	<spawn centerx="539" centery="347" centerz="10" radius="3">
-		<monster name="Fury" x="1" y="-2" z="10" spawntime="330" />
-		<monster name="Demon" x="1" y="-1" z="10" spawntime="330" />
+		<monster name="Metal Demon" x="1" y="-2" z="10" spawntime="330" />
+		<monster name="Fury" x="1" y="-1" z="10" spawntime="330" />
 	</spawn>
 	<spawn centerx="571" centery="326" centerz="10" radius="3">
-		<monster name="Fury" x="-1" y="0" z="10" spawntime="330" />
-		<monster name="Demon" x="0" y="0" z="10" spawntime="330" />
+		<monster name="Demon" x="-1" y="0" z="10" spawntime="330" />
+		<monster name="Metal Demon" x="0" y="0" z="10" spawntime="330" />
 	</spawn>
 	<spawn centerx="533" centery="373" centerz="10" radius="3">
 		<monster name="Fury" x="0" y="0" z="10" spawntime="330" />

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <monster name="Angry Chakoya Toolshaper" level="14" maglevel="4" experience="70" pushable="0" armor="10" defense="11" canpushitems="1" staticattack="50" changetarget="200" speed="195">
 	<health now="116" max="116" />
-	<look type="162" head="0" body="0" legs="0" feet="0" corpse="3113" />
+	<look type="162" head="0" body="0" legs="0" feet="0" corpse="20243" />
 	<combat targetdistance="1" runonhealth="0" />
 	<attacks>
 		<attack type="melee" mindamage="6" maxdamage="39" probability="100" />

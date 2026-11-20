@@ -149,6 +149,10 @@ agregaron con `git add -f`.
 **Pendiente:** el cliente de jugadores y la ThinkPad necesitan el `.dat`/`.spr` y el `items-zagan-test.otb`
 nuevos. Hasta que se publique el cliente, los corpses nuevos se ven como el item sacrificado.
 
+Desde el 19 nov 2026 hay además **`20225`–`20249`**: los cadáveres de los Metal y de los monstruos nuevos que
+usaban el de otra criatura, hechos con `scripts/client-rme/creature_corpses.py` (tabla y método en
+[`../gameplay/MONSTRUOS.md#cadáveres`](../gameplay/MONSTRUOS.md#cadáveres)).
+
 También están los corpses `20173`–`20190` de las 19 criaturas 8.60 (tortugas, mammoth, blood crab,
 quaras, Cyclops, Wyrm, elementales, Zombie, Vampire Bride, Worker Golem, Undead Gladiator, Nightstalker):
 cada monstruo ya los usa y tienen tabla, stats y spawn en
@@ -308,7 +312,7 @@ Plan completo, restricciones (no tocar DP ni casas) y checklist:
 
 → [`../_archive/DEPLOY-PENDIENTE-VPS-JUL2026.md`](../_archive/DEPLOY-PENDIENTE-VPS-JUL2026.md)
 
-## Melee Relics (`20225`–`20227`) — 19 nov 2026
+## Melee Relics (`20250`–`20252`) — 19 nov 2026
 
 Riftblade (sword 1H, combo de tres golpes), Aethercleaver (axe 1H, recupera maná según
 vida dañada) y Graviton Maul (club 2H, crush según armadura), con sprites ImageGen propios

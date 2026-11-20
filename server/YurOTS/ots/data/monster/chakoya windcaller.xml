@@ -2,7 +2,7 @@
 <!-- Importado de Tibia 8.60 (import_client_look.py). Chakoya maga: bolas de hielo, se mantiene a distancia. -->
 <monster name="Chakoya Windcaller" level="12" maglevel="10" experience="48" pushable="0" armor="7" defense="8" canpushitems="1" staticattack="50" changetarget="200" speed="180">
 	<health now="84" max="84"/>
-	<look type="163" head="0" body="0" legs="0" feet="0" corpse="3113"/>
+	<look type="163" head="0" body="0" legs="0" feet="0" corpse="20243"/>
 	<combat targetdistance="3" runonhealth="20"/>
 
 <attacks>

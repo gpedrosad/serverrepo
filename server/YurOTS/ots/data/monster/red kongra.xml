@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <monster name="Red Kongra" level="30" maglevel="10" experience="230" pushable="0" armor="8" speed="250" defense="11" canpushitems="0" staticattack="50" changetarget="184">
 	<health now="600" max="600"/>
-	<look type="254" corpse="4268"/>
+	<look type="254" corpse="20232"/>
 	<combat targetdistance="1" runonhealth="0"/>
 <attacks>
 	<attack type="melee" maxdamage="115" cycleticks="2000" probability="100"/>

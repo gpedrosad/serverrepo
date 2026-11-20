@@ -11,7 +11,7 @@ from add_recolor_effects import read_sections
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--before',type=Path,default=ROOT/'backups/map/melee-relics-before')
+    ap.add_argument('--before',type=Path,default=ROOT/'backups/map/melee-relics-main-before')
     args=ap.parse_args(); things=ROOT/'devtools/rme/rme-client-760'
     old_dat=(args.before/'Tibia.dat').read_bytes();new_dat=(things/'Tibia.dat').read_bytes()
     old=A.B.DatReader(old_dat);new=A.B.DatReader(new_dat)

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <monster name="Angry River Troll" level="32" maglevel="34" experience="74" pushable="0" armor="18" defense="22" canpushitems="1" staticattack="50" changetarget="200" speed="150">
 	<health now="123" max="123" />
-	<look type="252" head="20" body="30" legs="40" feet="50" corpse="2806" />
+	<look type="252" head="20" body="30" legs="40" feet="50" corpse="20233" />
 	<combat targetdistance="1" runonhealth="0" />
 	<attacks>
 		<attack type="melee" mindamage="10" maxdamage="42" probability="100" />

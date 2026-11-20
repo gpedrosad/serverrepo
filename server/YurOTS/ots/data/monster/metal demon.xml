@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!-- Metal Demon: demonio cyborg, un escalón sobre el Demon. Rayo de plasma, bolas de plasma, descargas y drenaje de maná.
+     Look 188: sprite propio (recoloreado del Demon 35), ver docs/gameplay/METAL_MONSTERS.md. -->
+<monster name="Metal Demon" level="25" maglevel="25" experience="7200" pushable="0" armor="56" defense="54" canpushitems="1" staticattack="200" changetarget="200" speed="250">
+	<health now="9500" max="9500"/>
+	<look type="188" corpse="20227"/>
+	<combat targetdistance="1" runonhealth="0"/>
+
+<attacks>
+	<attack type="melee" mindamage="210" maxdamage="540" cycleticks="1000" probability="90"/>
+	<attack type="instant" name="exura" cycleticks="5000" probability="50"/>
+	<attack type="instant" name="metaldemon_plasmabeam" exhaustion="500" cycleticks="6500" probability="60"/>
+	<attack type="instant" name="metal_discharge" exhaustion="500" cycleticks="5000" probability="40"/>
+	<attack type="instant" name="demon_manadrain" exhaustion="100" cycleticks="3250" probability="30"/>
+	<attack type="rune" name="metal_plasmabolt" exhaustion="250" cycleticks="2500" probability="60"/>
+</attacks>
+
+<defenses>
+	<defense immunity="energy"/>
+	<defense immunity="fire"/>
+	<defense immunity="poison"/>
+	<defense immunity="paralyze"/>
+	<defense immunity="invisible"/>
+	<defense immunity="drunk"/>
+</defenses>
+
+<voices>
+	<voice sentence="YOUR SOUL WILL BE UPLOADED!"/>
+	<voice sentence="REACTOR CRITICAL. YOU FIRST."/>
+	<voice sentence="I HAVE NO HEART TO PITY YOU!"/>
+	<voice sentence="MWA HA HA... ERROR... HA HA!"/>
+</voices>
+
+<loot>
+	<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
+	<item id="2148" countmax="40" chance1="100000" chancemax="0"/>
+	<item id="2152" countmax="6" chance1="10000" chancemax="0"/>
+	<item id="2393" chance="1100"/>
+	<item id="2514" chance="550"/>
+	<item id="2432" chance="1600"/>
+	<item id="2472" chance="450"/>
+	<item id="2462" chance="1200"/>
+
+	<item id="1987" chance="33333">
+	<inside>
+	<item id="2678" countmax="3" chance1="10000" chancemax="0"/>
+	<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
+	<item id="2152" countmax="10" chance1="15000" chancemax="0"/>
+	<item id="2149" countmax="3" chance1="1500" chancemax="0"/>
+	<item id="2171" chance="1400"/>
+	<item id="2387" chance="6666"/>
+	<item id="2470" chance="650"/>
+	<item id="2520" chance="900"/>
+	<item id="2418" chance="1100"/>
+	<item id="2377" chance="3333"/>
+	</inside>
+	</item>
+</loot>
+</monster>

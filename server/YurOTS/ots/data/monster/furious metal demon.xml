@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Furious Metal Demon" level="45" maglevel="45" experience="23760" pushable="0" armor="64" defense="62" canpushitems="1" staticattack="200" changetarget="200" speed="274">
+	<health now="23750" max="23750" />
+	<look type="188" corpse="20227" />
+	<combat targetdistance="1" runonhealth="0" />
+	<attacks>
+		<attack type="melee" mindamage="462" maxdamage="1188" cycleticks="1000" probability="90" />
+		<attack type="instant" name="exura" cycleticks="5000" probability="50" />
+		<attack type="instant" name="metaldemon_plasmabeam" exhaustion="500" cycleticks="6500" probability="60" />
+		<attack type="instant" name="metal_discharge" exhaustion="500" cycleticks="5000" probability="40" />
+		<attack type="instant" name="demon_manadrain" exhaustion="100" cycleticks="3250" probability="30" />
+		<attack type="rune" name="metal_plasmabolt" exhaustion="250" cycleticks="2500" probability="60" />
+	</attacks>
+	<defenses>
+		<defense immunity="energy" />
+		<defense immunity="fire" />
+		<defense immunity="poison" />
+		<defense immunity="paralyze" />
+		<defense immunity="invisible" />
+		<defense immunity="drunk" />
+	</defenses>
+	<voices>
+		<voice sentence="YOUR SOUL WILL BE UPLOADED!" />
+		<voice sentence="REACTOR CRITICAL. YOU FIRST." />
+		<voice sentence="I HAVE NO HEART TO PITY YOU!" />
+		<voice sentence="MWA HA HA... ERROR... HA HA!" />
+		<voice sentence="RAAAARGH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="100" chance1="100000" chancemax="0" />
+		<item id="2148" countmax="40" chance1="100000" chancemax="0" />
+		<item id="2152" countmax="6" chance1="10000" chancemax="0" />
+		<item id="2393" chance="1100" />
+		<item id="2514" chance="550" />
+		<item id="2432" chance="1600" />
+		<item id="2472" chance="450" />
+		<item id="2462" chance="1200" />
+		<item id="1987" chance="33333">
+			<inside>
+				<item id="2678" countmax="3" chance1="10000" chancemax="0" />
+				<item id="2148" countmax="100" chance1="100000" chancemax="0" />
+				<item id="2152" countmax="10" chance1="15000" chancemax="0" />
+				<item id="2149" countmax="3" chance1="1500" chancemax="0" />
+				<item id="2171" chance="1400" />
+				<item id="2387" chance="6666" />
+				<item id="2470" chance="650" />
+				<item id="2520" chance="900" />
+				<item id="2418" chance="1100" />
+				<item id="2377" chance="3333" />
+			</inside>
+		</item>
+		<item id="2150" countmax="5" chance1="46000" chancemax="0" />
+		<item id="2149" countmax="5" chance1="40000" chancemax="0" />
+		<item id="2147" countmax="4" chance1="32000" chancemax="0" />
+		<item id="2146" countmax="4" chance1="25000" chancemax="0" />
+		<item id="2145" countmax="3" chance1="14000" chancemax="0" />
+		<item id="2157" countmax="1" chance1="3000" chancemax="0" />
+	</loot>
+</monster>

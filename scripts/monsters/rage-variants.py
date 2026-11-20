@@ -84,6 +84,7 @@ CURATED = (
     "Black Dragon", "Frost Dragon", "Blue Elf Arcanist", "Drowned Sailor", "Ice Monk", "Ice Spider",
     "Tide Priest", "Hellhound", "Court Mage", "Dark Hydra", "Emerald Scarab", "Root Colossus",
     "Imperial Squire", "Imperial Archer", "Imperial Hero", "Serpent Spawn",
+    "Metal Dragon", "Metal Hydra", "Metal Demon",
     # 8.60: piratas, isla helada, valle, etc.
     "Pirate Marauder", "Pirate Cutthroat", "Pirate Buccaneer", "Pirate Corsair",
     "Barbarian Headsplitter", "Barbarian Skullhunter", "Barbarian Brutetamer", "Barbarian Bloodwalker",
