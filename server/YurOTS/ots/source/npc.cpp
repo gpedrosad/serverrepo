@@ -751,7 +751,9 @@ void Npc::onCreatureSay(const Creature *creature, SpeakClasses type, const std::
 					else
 						doSay("Sorry, you do not have that item.");
 				}else{
-					if(player->canPayWithBank(pt.cost)){
+					if(pt.itemid == ITEM_AOL && player->hasAolRestrictedRare()){
+						doSay("You carry a rare weapon. You cannot have an amulet of loss with it.");
+					}else if(player->canPayWithBank(pt.cost)){
 						if(player->removeCoinsWithBank(pt.cost)){
 							if(pt.isFluidBackpackBuy){
 								if(addFluidBackpackToPlayer(player, pt.backpackItemId, pt.backpackContentItemId, pt.backpackContentCountOrSubtype, pt.backpackContentItemCount))

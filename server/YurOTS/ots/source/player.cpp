@@ -1320,6 +1320,74 @@ int Player::getLookCorpse(){
 		return ITEM_FEMALE_CORPSE;
 }
 
+// Armas rare que no se pueden llevar junto con un Amulet of Loss (docs/gameplay/AOL_RARES.md): las del Crisol,
+// las de 8.x, las del Root Colossus, los rares Zagan, la black fire sword y la crimson wand.
+bool Player::isAolRestrictedRare(unsigned short id)
+{
+	switch (id)
+	{
+	case ITEM_VENOMQUEEN_FANG: case ITEM_STORMCALLER_MAUL: case ITEM_ASHLORD_EMBERBLADE:
+	case ITEM_IRONHIDE_CRUSHER: case ITEM_BLOODREAVER_SABER: case ITEM_FROSTWARDEN_CHILLBLADE:
+	case ITEM_BONEPRIEST_REAVER:                                        // Crisol
+	case 20157: case 20158: case 20159: case 20160:                     // emerald sword, avenger, arcane staff, arbalest
+	case 20163: case 20164:                                             // rootcleaver, heartwood maul
+	case ITEM_MEDUSA_SWORD: case ITEM_SWORD_OF_SILENCE: case ITEM_WINDSTING_AXE:
+	case ITEM_NIGHTGLASS_DAGGER:                                        // rares Zagan
+	case 20193:                                                         // black fire sword
+	case ITEM_CRIMSON_WAND:
+		return true;
+	default:
+		return false;
+	}
+}
+
+static void scanAolRare(const Item* item, bool& aol, bool& rare)
+{
+	if (!item)
+		return;
+	if (item->getID() == ITEM_AOL)
+		aol = true;
+	else if (Player::isAolRestrictedRare(item->getID()))
+		rare = true;
+	if (const Container* c = dynamic_cast<const Container*>(item))
+		for (ContainerList::const_iterator it = c->getItems(); it != c->getEnd(); ++it)
+			scanAolRare(*it, aol, rare);
+}
+
+bool Player::hasAolItem() const
+{
+	bool aol = false, rare = false;
+	for (int slot = 0; slot < 11; slot++)
+		scanAolRare(items[slot], aol, rare);
+	return aol;
+}
+
+bool Player::hasAolRestrictedRare() const
+{
+	bool aol = false, rare = false;
+	for (int slot = 0; slot < 11; slot++)
+		scanAolRare(items[slot], aol, rare);
+	return rare;
+}
+
+bool Player::aolRareConflict(const Item* incoming)
+{
+	bool inAol = false, inRare = false;
+	scanAolRare(incoming, inAol, inRare);
+	if (!inAol && !inRare)
+		return false;
+	bool hasAol = false, hasRare = false;
+	for (int slot = 0; slot < 11; slot++)
+		scanAolRare(items[slot], hasAol, hasRare);
+	if ((inAol || hasAol) && (inRare || hasRare))
+	{
+		sendCancel(inAol ? "No puedes llevar un Amulet of Loss si tienes un arma rare."
+		                 : "No puedes llevar un arma rare si tienes un Amulet of Loss.");
+		return true;
+	}
+	return false;
+}
+
 void Player::dropLoot(Container *corpse, Player* /*killer*/)
 {
 	// Red y Pink (castigo de GM, docs/gameplay/PINK_SKULL.md): cae todo, tambiÃ©n la mochila y el AOL.
@@ -1336,7 +1404,8 @@ void Player::dropLoot(Container *corpse, Player* /*killer*/)
 		return;
 	}
 
-	if (items[SLOT_NECKLACE] && items[SLOT_NECKLACE]->getID() == ITEM_AOL)
+	// Con un arma rare encima el AOL no protege (no deberían poder llevarse juntos; red por si llegó por trade).
+	if (items[SLOT_NECKLACE] && items[SLOT_NECKLACE]->getID() == ITEM_AOL && !hasAolRestrictedRare())
 	{
 		removeItemInventory(SLOT_NECKLACE);
 		return;

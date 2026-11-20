@@ -2324,6 +2324,9 @@ bool Game::onPrepareMoveThing(Player* player,
 	}
 	else if(!fromContainer && !canUseHouseWall(player, getTile(fromPos), fromItem))
 		return false;
+	else if((!fromContainer || !player->isHoldingContainer(fromContainer)) && player->isHoldingContainer(toContainer)
+		&& player->aolRareConflict(fromItem))           // de afuera a una mochila propia
+		return false;
 	else {
 		if((!fromItem->isStackable() || !toItem || fromItem->getID() != toItem->getID() || toItem->getItemCountOrSubtype() >= 100) && toContainer->size() + 1 > toContainer->capacity()) {
 			player->sendCancel("Sorry, not enough room.");
@@ -2445,6 +2448,8 @@ bool Game::onPrepareMoveThing(Player *player, const Position& fromPos, const Ite
 	}
 	else if(!canUseHouseWall(player, getTile(fromPos), item))
 		return false;
+	else if(player->aolRareConflict(item))              // del suelo al inventario
+		return false;
 
 	double itemWeight = (item->isStackable() ? Item::items[item->getID()].weight * std::max(1, count) : item->getWeight());
 	if(player->access < g_config.ACCESS_PROTECT && player->getFreeCapacity() < itemWeight) {
@@ -2475,6 +2480,9 @@ bool Game::onPrepareMoveThing(Player *player, const Container *fromContainer, co
 		player->sendCancel("Sorry, not enough room.");
 		return false;
 	}
+
+	if(!player->isHoldingContainer(fromContainer) && player->aolRareConflict(fromItem))   // de un contenedor ajeno a un slot
+		return false;
 
 	double itemWeight = (fromItem->isStackable() ? Item::items[fromItem->getID()].weight * std::max(1, count) : fromItem->getWeight());
 	if(player->access < g_config.ACCESS_PROTECT && !player->isHoldingContainer(fromContainer) &&

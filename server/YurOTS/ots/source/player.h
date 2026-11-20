@@ -150,6 +150,11 @@ public:
 	Container* getContainer(unsigned char containerid);
 	unsigned char getContainerID(const Container* container) const;
 	bool isHoldingContainer(const Container* container) const;
+	// AOL y armas rare no se llevan juntos (docs/gameplay/AOL_RARES.md)
+	static bool isAolRestrictedRare(unsigned short id);
+	bool hasAolItem() const;
+	bool hasAolRestrictedRare() const;
+	bool aolRareConflict(const Item* incoming);   // true (y avisa) si recibir incoming deja AOL + rare juntos
 	void addContainer(unsigned char containerid, Container *container);
 
 	containerLayout::const_iterator closeContainer(unsigned char containerid);
