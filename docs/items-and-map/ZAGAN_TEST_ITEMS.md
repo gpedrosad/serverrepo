@@ -323,3 +323,11 @@ vida dañada) y Graviton Maul (club 2H, crush según armadura), con sprites Imag
 e impactos nuevos 47–49. Implementación en C++, OTB y cliente; ver
 [MELEE_RELICS.md](../gameplay/MELEE_RELICS.md) para números, loot, validación y estado.
 No usar el builder histórico para regenerarlos: `add_melee_relics.py` trabaja sobre los assets actuales.
+
+## Luz fija de las ruinas élficas — 20 nov 2026
+
+`20353` **elven sanctuary light** es la copia fija del green candelabrum `20337`: mismo
+client id `2821`, dos cuadros, luz 6/color 31, sin decay, moveable ni pickupable.
+Se declara en `add_custom_items.py` y se instala en `items-zagan-test.otb`;
+no modifica DAT/SPR ni necesita C++. La comparación por client id del motor permite
+que conviva con la versión portátil de Obi. Uso y mapa: [Ruinas del Sauce](ELF_WEST.md).

@@ -406,6 +406,10 @@ NEW_ITEMS = [
     dict(name="green candelabrum", server_id=20337, client_id=2821, prototype=2042,
          png="green_candelabrum.png", decor=True, frames=2, light=(6, 31), nodecay=True,
          descr="A candelabrum burning with a green flame."),
+    # Luz fija de las ruinas élficas: mismo dibujo publicado que 20337.
+    dict(name="elven sanctuary light", server_id=20353, client_id=2821, prototype=20337,
+         png="green_candelabrum.png", decor=True, fixed=True, frames=2, light=(6, 31), nodecay=True,
+         descr="An emerald flame bound to the elven ruins."),
     dict(name="violet candelabrum", server_id=20338, client_id=2818, prototype=2042,
          png="violet_candelabrum.png", decor=True, frames=2, light=(6, 113), nodecay=True,
          descr="A candelabrum burning with a violet flame."),
