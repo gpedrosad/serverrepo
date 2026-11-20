@@ -2,8 +2,25 @@
 
 Tres monstruos cyborg con estética oscura y futurista: blindaje de acero negro con brillo metálico, juntas de
 placas y luces de neón. Cada uno es un escalón sobre su original y tiene sprite propio (recoloreado por
-algoritmo, ver [`SPRITE_RECOLOR_GUIDE.md`](SPRITE_RECOLOR_GUIDE.md)). **Todavía no tienen spawn**: se crean
-con `/m Metal Dragon` (GM). Guía general: [`CUSTOM_MONSTER_WORKFLOW.md`](CUSTOM_MONSTER_WORKFLOW.md).
+algoritmo, ver [`SPRITE_RECOLOR_GUIDE.md`](SPRITE_RECOLOR_GUIDE.md)). Guía general:
+[`CUSTOM_MONSTER_WORKFLOW.md`](CUSTOM_MONSTER_WORKFLOW.md). Catálogo: [`MONSTRUOS.md`](MONSTRUOS.md).
+
+## Dónde salen
+
+En la etapa más difícil de su familia, mezclados con ella (se cambiaron nombres de spawns que ya estaban, no
+se agregaron casillas):
+
+| Zona | Piso | Etapa (generador) | Metal |
+|------|-----:|-------------------|-------|
+| Valle de las Bestias, cueva del dragón | z9 | Black Dragon / Dragon Lord, 280 s | 3 Metal Dragon |
+| Valle de las Bestias, Abismo | z10 | Behemoth / Dark Hydra, 280 s | 3 Metal Hydra |
+| Valle de las Bestias, Abismo (fondo) | z10 | Demon / Behemoth / Fury, 330 s | 2 Metal Demon |
+| Inferno, Corazón del Infierno (fondo) | z10 | Fury / Demon, 330 s | 4 Metal Demon |
+
+El nombre se agregó a la tupla de la etapa en `generate-beast-valley.py` (`DEEP_STAGES["dragon"]`,
+`ABYSS_STAGES`) y `generate-inferno-pits.py` (`STAGES10`), y en `test-spawn.xml` se renombraron los monstruos
+de esas etapas con el mismo reparto en ciclo que hace el generador (se comprobó que el orden de antes
+coincidía), así que regenerar la zona da lo mismo.
 
 | Monstruo | Base (look) | Look | Vida | Exp | Armor/Def | Speed | Melee | Neón |
 |----------|-------------|-----:|-----:|----:|----------:|------:|------:|------|
@@ -36,8 +53,12 @@ Los Lua están en `data/spells/instant/` y `data/spells/runes/` y se registran e
 entra fuego). Demon: igual que el Demon (energía, fuego, veneno, paralyze). Todos: invisible y drunk.
 
 **Loot.** Parecido al del original, con algo de acero en el Dragon y la Hydra (steel shield 2509, steel helmet
-2457, plate armor 2463 en el Dragon). Sin rares custom. Cadáver: el del original (3104, 4283, 2916); no hay
-cadáver metálico propio.
+2457, plate armor 2463 en el Dragon). Sin rares custom.
+
+**Cadáveres** propios: `20225` metal dragon corpse, `20226` metal hydra corpse, `20227` metal demon corpse. Son
+el cadáver del original con la receta del preset, y la sangre pasa a "refrigerante" del color de su neón
+(celeste, verde ácido; el demonio, juntas rojas). Los hace `scripts/client-rme/creature_corpses.py`, ver
+[`MONSTRUOS.md#cadáveres`](MONSTRUOS.md#cadáveres).
 
 **Rage.** Tienen Angry/Furious/Enraged (`rage-variants.py --write --only ...`, tramo ≥ 2000), ver
 [`RAGE_MONSTERS.md`](RAGE_MONSTERS.md).
@@ -60,5 +81,5 @@ Presets `scripts/client-rme/presets/metal_{dragon,hydra,demon}.py`, aplicados a
 
 ## Pendiente
 
-- Probarlos in-game (lo hace Gonzalo): `/m Metal Dragon`, `/m Metal Hydra`, `/m Metal Demon`, y `/loot`.
-- Elegir zona y spawn (el cliente ya está publicado, así que se pueden spawnear).
+- Probarlos in-game (lo hace Gonzalo): `/m Metal Dragon`, `/m Metal Hydra`, `/m Metal Demon`, `/loot` y el
+  cadáver al morir.

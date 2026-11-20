@@ -365,12 +365,14 @@ Sprite propio (si aplica)
 [ ] Preset aplicado al RME (git) con hoja y escena revisadas (sprite_tool.py sheet / scene)
 [ ] sprite_tool.py verify --expect LOOK en "TODO BIEN" y sin .bak-*
 [ ] Script aplicado a client-local + build_zagan_test_assets.py
+[ ] Cadáver propio: fila en CORPSES de creature_corpses.py + NEW_ITEMS de add_custom_items.py (MONSTRUOS.md#cadáveres)
 [ ] Tibia.dat/.spr publicados en el updater y verificados con un cliente actualizado
 Web (opcional)
 [ ] Retrato y banner con generate-monster-art.py → web/assets/monsters/*.jpg
 Pruebas y salida
 [ ] Boot local limpio + ot-probe OK + /m NOMBRE en el juego
-[ ] Spawn en test-spawn.xml
+[ ] Spawn en test-spawn.xml (y en las etapas del generador de la zona, si la zona es generada)
+[ ] python3 scripts/monsters/monster-catalog.py --write (catálogo MONSTRUOS.md)
 [ ] Deploy a la ThinkPad con OK de Gonzalo
 ```
 
