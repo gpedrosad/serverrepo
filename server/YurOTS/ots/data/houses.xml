@@ -462,4 +462,45 @@
 <tile x="160" y="64" z="7" />
 <tile x="160" y="65" z="7" />
 </house>
+<house name="Bamboo Pocket">
+<tile x="179" y="101" z="7" />
+<tile x="179" y="102" z="7" />
+<tile x="179" y="103" z="7" />
+<tile x="180" y="101" z="7" />
+<tile x="180" y="102" z="7" />
+<tile x="180" y="103" z="7" />
+<tile x="181" y="101" z="7" />
+<tile x="181" y="102" z="7" />
+<tile x="181" y="103" z="7" />
+</house>
+<house name="Kongra Hideout">
+<tile x="185" y="108" z="7" />
+<tile x="185" y="109" z="7" />
+<tile x="185" y="110" z="7" />
+<tile x="186" y="108" z="7" />
+<tile x="186" y="109" z="7" />
+<tile x="186" y="110" z="7" />
+<tile x="187" y="108" z="7" />
+<tile x="187" y="109" z="7" />
+<tile x="187" y="110" z="7" />
+</house>
+<house name="Willow Nook">
+<tile x="92" y="58" z="7" />
+<tile x="92" y="59" z="7" />
+<tile x="92" y="60" z="7" />
+<tile x="93" y="58" z="7" />
+<tile x="93" y="59" z="7" />
+<tile x="93" y="60" z="7" />
+</house>
+<house name="River Nook">
+<tile x="168" y="72" z="7" />
+<tile x="168" y="73" z="7" />
+<tile x="168" y="74" z="7" />
+<tile x="169" y="72" z="7" />
+<tile x="169" y="73" z="7" />
+<tile x="169" y="74" z="7" />
+<tile x="170" y="72" z="7" />
+<tile x="170" y="73" z="7" />
+<tile x="170" y="74" z="7" />
+</house>
 </houses>

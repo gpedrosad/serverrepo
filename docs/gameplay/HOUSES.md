@@ -316,3 +316,18 @@ tiene este cambio". Un generador que reescribe `test.otbm` tiene que partir del 
 - Si un jugador reporta “perdí mi casa”, verificar primero `data/houses/<nombre>.xml` en la ThinkPad antes de tocar `players/*.xml`.
 - Los dueños que el admin asigna a mano **no deben perderse** en el próximo deploy: si `main` trae ese mismo archivo, parar y preguntar; el backup pre-deploy los guarda.
 - Items fantasma / stack raro en casa: sección **Items fantasma en casa** arriba (no asumir pérdida de data).
+
+
+## Casas pequeñas de Kongras, ruinas élficas y río — 20 nov 2026
+
+[Casitas curiosas comprables](../items-and-map/CURIOUS_HOUSES.md): Bamboo Pocket,
+Kongra Hideout y River Nook (9 sqm), Willow Nook (6 sqm). Generador
+`map/curious-houses.py`; 33 casillas interiores nuevas y cuatro plantillas vacías.
+Se agregan sin alterar los 22 registros anteriores ni XML de dueños existentes.
+Precio según `housepricepertile` (base 9000/6000 gp), compra normal con `!buyhouse`.
+Preparadas en el repo; pendientes de deploy y compra in-game.
+
+En el deploy solo se crean los cuatro nombres nuevos. Si alguno ya existe en la
+ThinkPad con dueño o permisos, detenerse y preservar ese XML. Nunca copiar toda
+la carpeta `data/houses/` desde la Mac. Respaldar también casas y houseitems antes
+del reinicio, como en el resto de los cambios de mapa.

@@ -93,3 +93,11 @@ minimapa `ef2bbb5b`; HTTP 8080/8076 y ZIPs Mac/Windows coinciden.
 healthy, 0 reinicios automáticos y arranque sin errores/warnings. 1 cuenta,
 8 personajes, 31 casas, depots, dueños, houseitems y binario conservados; los once
 lockers completos también son idénticos. Sin suites ni recorrido in-game.
+
+## Casita en las ruinas — preparada el 20 nov 2026
+
+Willow Nook ocupa `91–94,57–61,z7`, con 6 sqm comprables y puerta al este.
+El sendero público queda libre. `generate-elf-west.py` respeta planta y techo
+del manifiesto de [casitas curiosas](CURIOUS_HOUSES.md) y valida la conexión
+al santuario; 97 casillas públicas transitables, sin contar el interior privado.
+La casa está preparada en el repo, pendiente de deploy.
