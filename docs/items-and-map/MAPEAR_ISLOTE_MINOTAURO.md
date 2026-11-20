@@ -86,4 +86,8 @@ las cuevas y los bloques de spawns y carteles.
 en el borde este de la caja de las cuevas (x 139–140, y 25–30, z10); `--replace` las convierte en roca.
 Para cambiar monstruos usar `--spawns-only`. Antes de un `--replace`, comparar el mapa antes y después.
 
+Remates visuales del 20 nov: la cabeza y el muelle usan piedra/barandas nativas, sin mover
+el puente ni sus dos carriles ([TRANSICIONES_DEPOT.md](TRANSICIONES_DEPOT.md)). Si se regenera
+el islote, reaplicar `python3 scripts/map/city-bridge-transitions.py` después.
+
 Antes de deployar un `test.otbm` nuevo, probar depots in-game ([`../gameplay/DEPOTS.md`](../gameplay/DEPOTS.md)).
