@@ -1252,10 +1252,15 @@ void Monster::setMaster(Creature* creature)
 			state = STATE_IDLESUMMON;
 			startThink();
 		}
-		// summon de jugador: nace con la velocidad del dueño (todavía no está en el mapa, no hace falta avisar)
+		// summon de jugador: toma la velocidad del dueño. utevo res lo pone en el mapa antes de darle dueño, así
+		// que hay que avisar a los clientes (changeSpeed); si todavía no está registrado, alcanza con el valor.
 		Player* owner = dynamic_cast<Player*>(creature);
-		if(owner && owner->getSpeed() > 0)
-			speed = owner->getSpeed();
+		if(owner && owner->getSpeed() > 0) {
+			if(game->getCreatureByID(getID()) == this)
+				game->changeSpeed(getID(), owner->getSpeed());
+			else
+				speed = owner->getSpeed();
+		}
 	}
 	else
 		state = STATE_IDLE;
