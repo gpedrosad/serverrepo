@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <monster name="Enraged Metal Hydra" level="55" maglevel="75" experience="13860" pushable="0" speed="239" armor="58" defense="52" canpushitems="1" staticattack="50" changetarget="200">
 	<health now="10370" max="10370" />
-	<look type="187" corpse="4283" />
+	<look type="187" corpse="20226" />
 	<combat targetdistance="1" runonhealth="0" />
 	<attacks>
 		<attack type="melee" mindamage="243" maxdamage="621" probability="100" />

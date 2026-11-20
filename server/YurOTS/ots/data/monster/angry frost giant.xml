@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <monster name="Angry Frost Giant" level="32" maglevel="7" experience="315" pushable="0" armor="20" defense="22" canpushitems="1" staticattack="50" changetarget="200" speed="194">
 	<health now="459" max="459" />
-	<look type="169" head="0" body="0" legs="0" feet="0" corpse="3113" />
+	<look type="169" head="0" body="0" legs="0" feet="0" corpse="20244" />
 	<combat targetdistance="1" runonhealth="0" />
 	<attacks>
 		<attack type="melee" mindamage="22" maxdamage="135" probability="100" />

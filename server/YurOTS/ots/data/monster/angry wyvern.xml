@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <monster name="Angry Wyvern" level="42" maglevel="27" experience="1082" pushable="0" armor="24" defense="26" canpushitems="1" staticattack="50" changetarget="200" speed="214">
 	<health now="1352" max="1352" />
-	<look type="245" head="0" body="0" legs="0" feet="0" corpse="3104" />
+	<look type="245" head="0" body="0" legs="0" feet="0" corpse="20248" />
 	<combat targetdistance="1" runonhealth="0" />
 	<attacks>
 		<attack type="melee" mindamage="45" maxdamage="180" probability="100" />

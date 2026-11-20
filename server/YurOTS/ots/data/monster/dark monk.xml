@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <monster name="Dark Monk" level="11" maglevel="20" experience="145" pushable="0" armor="28" defense="29" canpushitems="1" staticattack="15" changetarget="200" speed="230">
 	<health now="225" max="225"/>
-	<look type="225" head="20" body="30" legs="40" feet="50" corpse="2916"/>
+	<look type="225" head="20" body="30" legs="40" feet="50" corpse="3128"/>
 	<combat targetdistance="1" runonhealth="0"/>
 <attacks>
 	<attack type="melee" mindamage="36" maxdamage="120" probability="100"/>

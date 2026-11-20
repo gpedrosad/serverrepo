@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <monster name="Enraged Emerald Scarab" level="29" maglevel="59" experience="4370" pushable="0" armor="48" defense="48" canpushitems="1" staticattack="50" changetarget="200" speed="255">
 	<health now="4200" max="4200" />
-	<look type="242" corpse="3004" />
+	<look type="242" corpse="20230" />
 	<combat targetdistance="1" runonhealth="0" />
 	<blood color="30" effect="16" splash="4" />
 	<attacks>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <monster name="Root Colossus" level="61" maglevel="30" experience="3400" pushable="0" armor="46" defense="44" canpushitems="1" staticattack="50" changetarget="200" speed="220">
 	<health now="4800" max="4800"/>
-	<look type="243" corpse="2931"/>
+	<look type="243" corpse="20231"/>
 	<combat targetdistance="1" runonhealth="0"/>
 	<attacks>
 		<attack type="melee" mindamage="140" maxdamage="360" probability="100"/>

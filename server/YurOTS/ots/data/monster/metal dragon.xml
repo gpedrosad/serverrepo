@@ -3,7 +3,7 @@
      Look 186: sprite propio (recoloreado del Dragon 34), ver docs/gameplay/METAL_MONSTERS.md. -->
 <monster name="Metal Dragon" level="60" maglevel="70" experience="3200" pushable="0" armor="42" defense="40" canpushitems="1" staticattack="50" changetarget="200" speed="210">
 	<health now="2900" max="2900"/>
-	<look type="186" head="0" body="0" legs="0" feet="0" corpse="3104"/>
+	<look type="186" head="0" body="0" legs="0" feet="0" corpse="20225"/>
 	<combat targetdistance="1" runonhealth="290"/>
 
 <attacks>

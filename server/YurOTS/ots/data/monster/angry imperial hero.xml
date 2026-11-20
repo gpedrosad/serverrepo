@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <monster name="Angry Imperial Hero" level="72" maglevel="62" experience="6500" pushable="0" armor="56" defense="61" canpushitems="1" staticattack="50" changetarget="200" speed="318">
 	<health now="6000" max="6000" />
-	<look type="240" head="20" body="30" legs="40" feet="50" corpse="3128" />
+	<look type="240" head="20" body="30" legs="40" feet="50" corpse="20239" />
 	<combat targetdistance="1" runonhealth="0" />
 	<attacks>
 		<attack type="melee" mindamage="255" maxdamage="646" probability="100" />

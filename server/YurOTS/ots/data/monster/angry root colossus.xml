@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <monster name="Angry Root Colossus" level="73" maglevel="42" experience="8500" pushable="0" armor="52" defense="50" canpushitems="1" staticattack="50" changetarget="200" speed="238">
 	<health now="9600" max="9600" />
-	<look type="243" corpse="2931" />
+	<look type="243" corpse="20231" />
 	<combat targetdistance="1" runonhealth="0" />
 	<attacks>
 		<attack type="melee" mindamage="238" maxdamage="612" probability="100" />

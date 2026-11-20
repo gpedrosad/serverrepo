@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <monster name="Angry Metal Dragon" level="72" maglevel="82" experience="8000" pushable="0" armor="48" defense="46" canpushitems="1" staticattack="50" changetarget="200" speed="228">
 	<health now="5800" max="5800" />
-	<look type="186" head="0" body="0" legs="0" feet="0" corpse="3104" />
+	<look type="186" head="0" body="0" legs="0" feet="0" corpse="20225" />
 	<combat targetdistance="1" runonhealth="0" />
 	<attacks>
 		<attack type="instant" name="metaldragon_laserwave" exhaustion="500" cycleticks="6000" probability="80" />

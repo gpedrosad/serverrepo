@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <monster name="Enraged Dark Monk" level="26" maglevel="35" experience="442" pushable="0" armor="35" defense="36" canpushitems="1" staticattack="15" changetarget="200" speed="254">
 	<health now="529" max="529" />
-	<look type="225" head="20" body="30" legs="40" feet="50" corpse="2916" />
+	<look type="225" head="20" body="30" legs="40" feet="50" corpse="3128" />
 	<combat targetdistance="1" runonhealth="0" />
 	<attacks>
 		<attack type="melee" mindamage="76" maxdamage="252" probability="100" />

@@ -2,7 +2,7 @@
 <!-- Jefe de la torreta SO de Elvenbane: jefe orco cuerpo a cuerpo, ruge alrededor y llama berserkers. -->
 <monster name="Orc Warchief" level="60" maglevel="10" experience="5500" pushable="0" armor="40" defense="38" canpushitems="1" staticattack="80" changetarget="150" speed="270">
 	<health now="7000" max="7000"/>
-	<look type="224" corpse="2967"/>
+	<look type="224" corpse="20236"/>
 	<combat targetdistance="1" runonhealth="0"/>
 <attacks>
 	<attack type="melee" mindamage="120" maxdamage="330"/>

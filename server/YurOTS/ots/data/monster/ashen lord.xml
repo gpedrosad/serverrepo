@@ -5,7 +5,7 @@
      ashen-lord de add_recolor_look.py. Ver docs/gameplay/HELL_QUEST.md. -->
 <monster name="Ashen Lord" level="80" maglevel="80" experience="18000" pushable="0" armor="55" defense="58" canpushitems="1" staticattack="200" changetarget="300" speed="280">
 	<health now="32000" max="32000"/>
-	<look type="239" head="0" body="0" legs="0" feet="0" corpse="2916"/>
+	<look type="239" head="0" body="0" legs="0" feet="0" corpse="20241"/>
 	<combat targetdistance="1" runonhealth="0"/>
 	<blood color="199" effect="0" splash="255"/>
 

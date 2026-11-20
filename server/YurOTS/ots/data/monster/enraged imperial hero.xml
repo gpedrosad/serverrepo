@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <monster name="Enraged Imperial Hero" level="90" maglevel="80" experience="10920" pushable="0" armor="62" defense="67" canpushitems="1" staticattack="50" changetarget="200" speed="334">
 	<health now="9150" max="9150" />
-	<look type="240" head="20" body="30" legs="40" feet="50" corpse="3128" />
+	<look type="240" head="20" body="30" legs="40" feet="50" corpse="20239" />
 	<combat targetdistance="1" runonhealth="0" />
 	<attacks>
 		<attack type="melee" mindamage="405" maxdamage="1026" probability="100" />

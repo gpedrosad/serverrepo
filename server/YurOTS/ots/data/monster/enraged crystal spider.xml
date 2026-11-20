@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <monster name="Enraged Crystal Spider" level="79" maglevel="64" experience="3420" pushable="0" armor="40" defense="42" canpushitems="1" staticattack="50" changetarget="200" speed="260">
 	<health now="3500" max="3500" />
-	<look type="172" head="0" body="0" legs="0" feet="0" corpse="4290" />
+	<look type="172" head="0" body="0" legs="0" feet="0" corpse="20246" />
 	<combat targetdistance="1" runonhealth="0" />
 	<attacks>
 		<attack type="melee" mindamage="125" maxdamage="500" probability="100" />

@@ -3,7 +3,7 @@
      Look 187: sprite propio (recoloreado de la Hydra 121), ver docs/gameplay/METAL_MONSTERS.md. -->
 <monster name="Metal Hydra" level="25" maglevel="45" experience="3300" pushable="0" speed="205" armor="46" defense="40" canpushitems="0" staticattack="50" changetarget="200">
 	<health now="3400" max="3400"/>
-	<look type="187" corpse="4283"/>
+	<look type="187" corpse="20226"/>
 	<combat targetdistance="1" runonhealth="0"/>
 <attacks>
 	<attack type="melee" mindamage="90" maxdamage="230" probability="100"/>

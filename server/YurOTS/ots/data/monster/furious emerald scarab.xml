@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <monster name="Furious Emerald Scarab" level="21" maglevel="51" experience="3450" pushable="0" armor="45" defense="45" canpushitems="1" staticattack="50" changetarget="200" speed="247">
 	<health now="3450" max="3450" />
-	<look type="242" corpse="3004" />
+	<look type="242" corpse="20230" />
 	<combat targetdistance="1" runonhealth="0" />
 	<blood color="30" effect="16" splash="4" />
 	<attacks>

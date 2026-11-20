@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <monster name="Furious Stone Troll" level="55" maglevel="50" experience="216" pushable="0" armor="37" defense="39" canpushitems="1" staticattack="50" changetarget="200" speed="130">
 	<health now="312" max="312" />
-	<look type="253" head="20" body="30" legs="40" feet="50" corpse="2806" />
+	<look type="253" head="20" body="30" legs="40" feet="50" corpse="20234" />
 	<combat targetdistance="1" runonhealth="0" />
 	<attacks>
 		<attack type="melee" mindamage="35" maxdamage="96" probability="100" />

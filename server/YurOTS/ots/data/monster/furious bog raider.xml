@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <monster name="Furious Bog Raider" level="66" maglevel="56" experience="2400" pushable="0" armor="31" defense="33" canpushitems="1" staticattack="50" changetarget="200" speed="222">
 	<health now="2990" max="2990" />
-	<look type="174" head="0" body="0" legs="0" feet="0" corpse="3113" />
+	<look type="174" head="0" body="0" legs="0" feet="0" corpse="20247" />
 	<combat targetdistance="1" runonhealth="0" />
 	<attacks>
 		<attack type="melee" mindamage="61" maxdamage="225" probability="100" />

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <monster name="Furious Wyvern" level="48" maglevel="33" experience="1390" pushable="0" armor="26" defense="28" canpushitems="1" staticattack="50" changetarget="200" speed="220">
 	<health now="1670" max="1670" />
-	<look type="245" head="0" body="0" legs="0" feet="0" corpse="3104" />
+	<look type="245" head="0" body="0" legs="0" feet="0" corpse="20248" />
 	<combat targetdistance="1" runonhealth="0" />
 	<attacks>
 		<attack type="melee" mindamage="57" maxdamage="228" probability="100" />

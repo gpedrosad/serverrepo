@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <monster name="Furious Ice Golem" level="48" maglevel="33" experience="796" pushable="0" armor="28" defense="30" canpushitems="1" staticattack="50" changetarget="200" speed="190">
 	<health now="808" max="808" />
-	<look type="171" head="0" body="0" legs="0" feet="0" corpse="3113" />
+	<look type="171" head="0" body="0" legs="0" feet="0" corpse="20245" />
 	<combat targetdistance="1" runonhealth="0" />
 	<attacks>
 		<attack type="melee" mindamage="38" maxdamage="209" probability="100" />

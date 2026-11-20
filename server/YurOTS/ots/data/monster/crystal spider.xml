@@ -2,7 +2,7 @@
 <!-- Importado de Tibia 8.60 (import_client_look.py). Arana de cristal: onda de hielo y se acelera. Nivel 55-75. -->
 <monster name="Crystal Spider" level="55" maglevel="40" experience="900" pushable="0" armor="30" defense="32" canpushitems="1" staticattack="50" changetarget="200" speed="230">
 	<health now="1250" max="1250"/>
-	<look type="172" head="0" body="0" legs="0" feet="0" corpse="4290"/>
+	<look type="172" head="0" body="0" legs="0" feet="0" corpse="20246"/>
 	<combat targetdistance="1" runonhealth="0"/>
 
 <attacks>

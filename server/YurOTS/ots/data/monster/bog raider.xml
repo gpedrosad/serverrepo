@@ -2,7 +2,7 @@
 <!-- Importado de Tibia 8.60 (import_client_look.py). Bicho de pantano: roba vida a distancia, salpica barro alrededor y se cura (ataques de 8.60, ver MONSTER_KITS.md). Nivel 50-70. -->
 <monster name="Bog Raider" level="50" maglevel="40" experience="800" pushable="0" armor="24" defense="26" canpushitems="1" staticattack="50" changetarget="200" speed="200">
 	<health now="1300" max="1300"/>
-	<look type="174" head="0" body="0" legs="0" feet="0" corpse="3113"/>
+	<look type="174" head="0" body="0" legs="0" feet="0" corpse="20247"/>
 	<combat targetdistance="1" runonhealth="0"/>
 
 <attacks>

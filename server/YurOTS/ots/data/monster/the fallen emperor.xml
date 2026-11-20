@@ -4,7 +4,7 @@
      Doc: docs/gameplay/IMPERIAL_CASTLE.md -->
 <monster name="The Fallen Emperor" level="120" maglevel="80" experience="9000" pushable="0" armor="55" defense="60" canpushitems="1" staticattack="50" changetarget="200" speed="300">
 	<health now="12000" max="12000"/>
-	<look type="244" head="0" body="0" legs="0" feet="0" corpse="3025"/>
+	<look type="244" head="0" body="0" legs="0" feet="0" corpse="20242"/>
 	<combat targetdistance="1" runonhealth="0"/>
 
 <attacks>
