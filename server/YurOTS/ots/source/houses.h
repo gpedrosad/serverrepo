@@ -51,6 +51,7 @@ private:
 
 public:
 	std::vector<Position> tiles;
+	std::vector<Position> wallTiles;   // paredes con gancho hacia adentro: se guardan sus ítems colgados
 	House(std::string name);
 	bool load();	
 	bool save();

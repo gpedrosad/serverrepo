@@ -1250,9 +1250,11 @@ static unsigned long housePrice(const House* house)
 static int movableItemsInHouse(Game* game, const House* house)
 {
 	int count = 0;
-	for (size_t i = 0; i < house->tiles.size(); i++)
+	std::vector<Position> all = house->tiles;
+	all.insert(all.end(), house->wallTiles.begin(), house->wallTiles.end());   // lo colgado en las paredes
+	for (size_t i = 0; i < all.size(); i++)
 	{
-		Tile* tile = game->getTile(house->tiles[i]);
+		Tile* tile = game->getTile(all[i]);
 		if (!tile)
 			continue;
 		for (ItemVector::const_iterator it = tile->downItems.begin(); it != tile->downItems.end(); ++it)

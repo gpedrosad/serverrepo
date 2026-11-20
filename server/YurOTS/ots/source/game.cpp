@@ -2106,6 +2106,19 @@ void Game::thingMove(Player *player,
 }
 
 /*ground -> ground*/
+// Colgar o descolgar algo (tapestry) en una pared de casa: solo quien tiene permiso en esa casa o un GM.
+// Las paredes con gancho hacia adentro son de la casa (Houses::Load); así nadie lo saca desde afuera.
+static bool canUseHouseWall(Creature* c, const Tile* tile, const Item* item)
+{
+	if (!c || !tile || !item || !Item::items[item->getID()].hangable || !tile->hasHook() || !tile->isHouse())
+		return true;
+	Player* p = dynamic_cast<Player*>(c);
+	if (!p || p->access >= g_config.ACCESS_HOUSE || tile->getHouse()->getPlayerRights(p->getName()) != HOUSE_NONE)
+		return true;
+	c->sendCancel("Solo el dueño de la casa y sus invitados pueden colgar o descolgar cosas en estas paredes.");
+	return false;
+}
+
 bool Game::onPrepareMoveThing(Creature* player, const Thing* thing,
 	const Position& fromPos, const Position& toPos, int count)
 {
@@ -2125,6 +2138,23 @@ bool Game::onPrepareMoveThing(Creature* player, const Thing* thing,
 	else {
 		const Item* item = dynamic_cast<const Item*>(thing);
 		if(item) {
+			if(!canUseHouseWall(player, getTile(fromPos), item) || !canUseHouseWall(player, getTile(toPos), item))
+				return false;
+
+			// Tapestry sobre una pared con gancho: la pared no lo bloquea; solo hace falta camino libre.
+			const Tile* hangTile = Item::items[item->getID()].hangable ? getTile(toPos) : NULL;
+			if(hangTile && hangTile->hasHook()) {
+				if(hangTile->hasHangable()) {
+					player->sendCancel("There is already something hanging there.");
+					return false;
+				}
+				if(map->canThrowObjectTo(fromPos, toPos, 0) != RET_NOERROR) {
+					player->sendCancel("You cannot throw there.");
+					return false;
+				}
+				return true;
+			}
+
 			int blockstate = 0;
 			if(item->isBlocking())
 				blockstate |= BLOCK_SOLID;
@@ -2292,6 +2322,8 @@ bool Game::onPrepareMoveThing(Player* player,
 		player->sendCancel("You cannot move this object.");
 		return false;
 	}
+	else if(!fromContainer && !canUseHouseWall(player, getTile(fromPos), fromItem))
+		return false;
 	else {
 		if((!fromItem->isStackable() || !toItem || fromItem->getID() != toItem->getID() || toItem->getItemCountOrSubtype() >= 100) && toContainer->size() + 1 > toContainer->capacity()) {
 			player->sendCancel("Sorry, not enough room.");
@@ -2411,6 +2443,8 @@ bool Game::onPrepareMoveThing(Player *player, const Position& fromPos, const Ite
 		player->sendCancel("You cannot move this object.");
 		return false;
 	}
+	else if(!canUseHouseWall(player, getTile(fromPos), item))
+		return false;
 
 	double itemWeight = (item->isStackable() ? Item::items[item->getID()].weight * std::max(1, count) : item->getWeight());
 	if(player->access < g_config.ACCESS_PROTECT && player->getFreeCapacity() < itemWeight) {

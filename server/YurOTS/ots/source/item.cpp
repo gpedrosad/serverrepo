@@ -280,6 +280,10 @@ Item::~Item()
 bool Item::canMovedTo(const Tile *tile) const
 {
 	if(tile) {
+		// Lo que se cuelga (tapestries) va sobre una pared con gancho, una cosa por pared.
+		if(Item::items[getID()].hangable && tile->hasHook())
+			return tile->ground != NULL && !tile->hasHangable();
+
 		int objectstate = 0;
 
 		if(isPickupable() || !isNotMoveable()) {

@@ -107,6 +107,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/GM_INVISIBLE.md`](gameplay/GM_INVISIBLE.md) | **`/invisible` del GM** (nov 2026): pasa por encima de jugadores y monstruos, nadie choca con él y se ve a sí mismo como un Ghost (looktype 48). |
 | [`gameplay/GM_COMANDOS.md`](gameplay/GM_COMANDOS.md) | **Comandos de GM para probar contenido** (nov 2026): `/god` (apagar la protección), `/ir` (lugares de `data/gmplaces.xml`), `/i` por nombre, `/nivel`, `/skill`, `/ml`, `/loot` (simula N muertes), `/matar`, `/speed` y el look de GM con ids, action/unique id y la casilla. |
 | [`gameplay/HOUSES.md`](gameplay/HOUSES.md) | **Casas:** dueños en `data/houses/*.xml`, deploy, backup/recuperación, **items fantasma** (caso Maximus `166,39,7` jul 2026). |
+| [`gameplay/HANGABLES.md`](gameplay/HANGABLES.md) | **Tapestries en las paredes**: los ítems `hangable` se cuelgan en paredes con gancho; en las casas se guardan y solo los mueven dueño e invitados. |
 | [`gameplay/GOLDEN_ACCESSORIES.md`](gameplay/GOLDEN_ACCESSORIES.md) | Golden amulet y golden ring: auto-bank, bonus de oro e interacción entre ambos. |
 | [`gameplay/SOFT_BOOTS.md`](gameplay/SOFT_BOOTS.md) | **Soft Boots (3549):** +3 HP / +12 MP cada 3 s, 4 h de uso → worn (3550); C++ `YUR_SOFT_BOOTS`. |
 | [`gameplay/NPC_SYSTEM.md`](gameplay/NPC_SYSTEM.md) | **NPCs:** cómo se cargan, componentes de `lib/npc/`, `npcDefine`, recetas, API C++, lista de NPCs y pruebas sin servidor (`scripts/npc/run_npc_tests.py`). |

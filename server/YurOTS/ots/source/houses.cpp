@@ -375,6 +375,25 @@ bool Houses::Load(Game* game)
 					tileNode = tileNode->next;
 				}
 
+				// Paredes con gancho hacia adentro de la casa (la de arriba con gancho al sur, la de la
+				// izquierda con gancho al este): lo que se cuelga ahí es de la casa y se guarda en houseitems.xml.
+				for (size_t t = 0; t < house->tiles.size(); t++)
+				{
+					const Position& hp = house->tiles[t];
+					Position cand[2] = { Position(hp.x, hp.y - 1, hp.z), Position(hp.x - 1, hp.y, hp.z) };
+					for (int c = 0; c < 2; c++)
+					{
+						Tile* wall = game->getTile(cand[c]);
+						if (!wall || wall->isHouse())
+							continue;
+						if ((c == 0 && wall->hasHookSouth()) || (c == 1 && wall->hasHookEast()))
+						{
+							wall->setHouse(house);
+							house->wallTiles.push_back(cand[c]);
+						}
+					}
+				}
+
 				Tile* doorTile = game->getTile(house->getFrontDoor());		// include front door
 				if (doorTile && !doorTile->isHouse())
 					doorTile->setHouse(house);
@@ -521,9 +540,11 @@ bool Houses::SaveHouseItems(Game* game)
 
 	for (size_t i = 0; i < houses.size(); i++)
 	{
-		for (size_t j = 0; j < houses[i]->tiles.size(); j++)
+		std::vector<Position> saveTiles = houses[i]->tiles;
+		saveTiles.insert(saveTiles.end(), houses[i]->wallTiles.begin(), houses[i]->wallTiles.end());
+		for (size_t j = 0; j < saveTiles.size(); j++)
 		{
-			Position& pos = houses[i]->tiles[j];
+			Position& pos = saveTiles[j];
 			Tile *housetile = game->getTile(pos.x, pos.y, pos.z);
 			bool firstItem = true;
 					

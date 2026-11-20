@@ -49,6 +49,9 @@ ItemType::ItemType()
 	alwaysOnTop     = false;
 	pickupable      = false;
 	rotable         = false;
+	hangable        = false;
+	hookSouth       = false;
+	hookEast        = false;
 	rotateTo		= 0;
 	hasHeight       = false;
 
@@ -303,6 +306,9 @@ int Items::loadFromOtb(std::string file)
 								iType->RWInfo |= CAN_BE_READ;
 
 							iType->rotable = ((flags & FLAG_ROTABLE) == FLAG_ROTABLE);
+							iType->hangable = ((flags & FLAG_HANGABLE) == FLAG_HANGABLE);
+							iType->hookSouth = ((flags & FLAG_HORIZONTAL) == FLAG_HORIZONTAL);
+							iType->hookEast = ((flags & FLAG_VERTICAL) == FLAG_VERTICAL);
 
 							if(p >= data + len) //no attributes
 								break;

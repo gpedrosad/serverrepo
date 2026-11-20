@@ -94,6 +94,9 @@ public:
 	int             runeMagLevel;
 	bool            pickupable;
 	bool            rotable;
+	bool            hangable;     // tapestries, cuckoo clock: se cuelgan en paredes con gancho
+	bool            hookSouth;    // pared horizontal (FLAG_HORIZONTAL): lo colgado mira al sur
+	bool            hookEast;     // pared vertical (FLAG_VERTICAL): lo colgado mira al este
 	int 			rotateTo;
 
 	bool isDoor;

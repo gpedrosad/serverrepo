@@ -565,6 +565,38 @@ void Tile::setPz()
   pz = true;
 }
 
+static bool tileHasFlag(const Tile* t, bool ItemType::*flag)
+{
+	if (t->ground && Item::items[t->ground->getID()].*flag)
+		return true;
+	for (ItemVector::const_iterator it = t->topItems.begin(); it != t->topItems.end(); ++it)
+		if (Item::items[(*it)->getID()].*flag)
+			return true;
+	for (ItemVector::const_iterator it = t->downItems.begin(); it != t->downItems.end(); ++it)
+		if (Item::items[(*it)->getID()].*flag)
+			return true;
+	return false;
+}
+
+// Pared con gancho (horizontal: se cuelga mirando al sur; vertical: al este). Ver docs/gameplay/HANGABLES.md
+bool Tile::hasHookSouth() const
+{
+	return tileHasFlag(this, &ItemType::hookSouth);
+}
+
+bool Tile::hasHookEast() const
+{
+	return tileHasFlag(this, &ItemType::hookEast);
+}
+
+bool Tile::hasHangable() const
+{
+	for (ItemVector::const_iterator it = downItems.begin(); it != downItems.end(); ++it)
+		if (Item::items[(*it)->getID()].hangable)
+			return true;
+	return false;
+}
+
 bool Tile::isHouse() const
 {
 	return house != NULL;

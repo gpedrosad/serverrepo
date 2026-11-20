@@ -66,6 +66,10 @@ public:
   ItemVector     downItems;
 
 	bool isHouse() const;
+	bool hasHookSouth() const;
+	bool hasHookEast() const;
+	bool hasHook() const { return hasHookSouth() || hasHookEast(); }
+	bool hasHangable() const;
 	House* getHouse() const;
 	bool setHouse(House* newHouse);
 
