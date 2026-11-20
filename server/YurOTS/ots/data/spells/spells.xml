@@ -91,6 +91,10 @@
 <spell name="hydra_poisonwave" words="hydra_poisonwave" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="hydra_bubblewave" words="hydra_bubblewave" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="darkhydra_darkwave" words="darkhydra_darkwave" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="metaldragon_laserwave" words="metaldragon_laserwave" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="metalhydra_acidwave" words="metalhydra_acidwave" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="metal_discharge" words="metal_discharge" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="metaldemon_plasmabeam" words="metaldemon_plasmabeam" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="emeraldscarab_poisonburst" words="emeraldscarab_poisonburst" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="hatchling_firewave" words="hatchling_firewave" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="dlhatchling_firewave" words="dlhatchling_firewave" maglv="4000" mana="800" enabled="1"></spell>
@@ -161,6 +165,7 @@
 <rune name="darkmage_sparkbolt" id="5047" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 <rune name="darkmage_venombolt" id="5048" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 <rune name="darkmage_manaburn" id="5049" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="metal_plasmabolt" id="5050" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 
 <!--// Make arrow and bolt \\-->
 <spell name="Conjure Arrow"	words="exevo con"		maglv="2"	mana="40"	enabled="1"><vocation id="3" /></spell>
