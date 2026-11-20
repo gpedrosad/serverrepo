@@ -318,8 +318,8 @@ NEW_ITEMS = [
          descr="A royal banner with a golden crown. Hang it on a wall."),
 
 ]
-# Muelle del depot (nov 2026): barandas, faroles y rampa de madera dibujados por dock_bridge_art.py
-# (server 20282-20296, clients sacrificados anotados ahí). Doc: docs/items-and-map/TRANSICIONES_DEPOT.md.
+# Muelle del depot y puentes (nov 2026): barandas, faroles y rampa de madera dibujados por dock_bridge_art.py
+# (server 20282-20300, clients sacrificados anotados ahí). Doc: docs/items-and-map/TRANSICIONES_DEPOT.md.
 from dock_bridge_art import dock_items  # noqa: E402
 NEW_ITEMS += dock_items()
 

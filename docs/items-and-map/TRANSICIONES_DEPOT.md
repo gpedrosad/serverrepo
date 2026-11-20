@@ -1,4 +1,4 @@
-# Muelle junto al depot — pasos a los elfos y al islote del minotauro
+# Muelle junto al depot y puentes de madera
 
 El muelle de madera al oeste del depot (x113–124, y56–62, z7): el tramo largo con el banco, el brazo norte
 al islote del minotauro y la rampa que sube al rellano de los elfos (z6).
@@ -37,9 +37,51 @@ Ahora todo es madera y está dibujado para este muelle (`scripts/client-rme/dock
 Las barandas y los faroles van en casillas de agua u orilla que ya bloqueaban: no cambia el paso. El
 script lo comprueba casilla por casilla (huella, colisión y cambio de piso iguales).
 
+## Los demás puentes (20 nov 2026)
+
+Mismas barandas en 8 puentes de madera de la ciudad y alrededores, con farol en las cuatro puntas.
+Están en `BRIDGES` de `dock_bridge_art.py`.
+
+![Los 8 puentes con barandas](img/city-bridge-transitions/v2-puentes.png)
+
+| Nombre | Tablero | Barandas |
+|--------|---------|----------|
+| `camino_norte_134` | x134–136, y109–116 | oeste y este, 8 casillas |
+| `rio_182` | x182–183, y80–87 | oeste y este, 8 (antes de cuerda) |
+| `arroyo_146` | x146–147, y104–107 | oeste y este, 4 |
+| `islote_50` | x50, y148–154 | oeste 7, este 6 |
+| `rio_153` | x153, y66–72 | oeste y este, 7 (antes de cuerda) |
+| `rio_103` | x103–104, y48–50 | oeste y este, 3 |
+| `islotes_87` | x87–93, y87 (oeste-este) | norte 6, sur 7 |
+| `arroyo_89` | x89–92, y104–105 (oeste-este) | norte y sur, 4 |
+
+- Piezas genéricas por lado: inicio con farol, tramo y fin con farol. Los tramos y las puntas
+  norte/este son las mismas del muelle; las puntas que faltaban son nuevas:
+  - `rail_n_start` 20297;
+  - `rail_s_west` 20298;
+  - `rail_w_bot` 20299;
+  - `rail_e_bot` 20300.
+- Las barandas van en las casillas de agua u orilla bloqueadas junto al tablero. Donde la orilla es pasto
+  libre, la baranda termina antes (por eso `islote_50` e `islotes_87` tienen un lado más corto).
+- Se sacaron las cuerdas nativas (3758–3791) de los puentes de cuerda: 58 entre cuerdas y wild growth.
+  Los postes de cuerda en tierra liberan su casilla.
+- También se sacó el wild growth (1499), que tapaba el tablero y las orillas, y eso abre casillas del paso.
+- Los puentes oeste-este llevan borde de madera 434/435 bajo las barandas, como el muelle. Sin él, la del
+  norte queda flotando sobre el agua.
+- Los barcos (x201–210 y45–60, x184–197 y145–152, x232–245 y121–128) y la torre de x113–123, y43–47 no se
+  tocan. Para buscar más puentes: madera transitable junto al agua (`scripts/map/find-wood-bridges.py`).
+
+Para agregar un puente:
+
+1. Sumarlo a `BRIDGES`. `w`/`e` son las filas, y `n`/`s` las columnas, de casillas bloqueadas junto al tablero.
+2. Correr `dock_bridge_art.py`. Verifica que cada pieza dé el mismo sprite en todos lados.
+3. Correr `city-bridge-transitions.py`.
+
+Si un lado tiene una sola casilla, hace falta una pieza nueva (con los dos postes).
+
 ## Cómo están dibujadas
 
-Toda la estructura se modela en 3D y se proyecta como en Tibia: un punto a altura h se ve h px más arriba
+Cada estructura se modela en 3D y se proyecta como en Tibia: un punto a altura h se ve h px más arriba
 y h px más a la izquierda. Después se corta en una pieza 2x2 por casilla "ancla", que es la parte de la
 estructura cuya base cae en la región de esa casilla. Por eso las barandas empalman sin costuras. Las
 casillas repetidas del tramo dan el mismo sprite: el script lo verifica.

@@ -49,7 +49,8 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | `temple-portals.py` + `portal_citadel_layout.py` + `portal_temple_style.py` + `portal_temple_details.py` + `portal_temple_architecture.py` | Plaza, ocho portales, galería, pórtico y torre sureste con escaleras; `--dry-run` |
 | `validate-portal-citadel.py` | Audita mapa/assets contra `--before`; rutas, teleports y ámbito exacto |
 | `root-crypt.py` | Visual propia de la quest BoH al sur del depot; `--dry-run`, conserva huella/colisión/cofres/teleports |
-| `city-bridge-transitions.py` | Muelle junto al depot (elfos/minotauros): barandas, faroles y rampa de madera de `client-rme/dock_bridge_art.py`; `--dry-run`, conserva huella, paso y escaleras |
+| `city-bridge-transitions.py` | Muelle junto al depot y puentes de madera (`BRIDGES`): barandas, faroles y rampa de `client-rme/dock_bridge_art.py`; saca cuerdas y wild growth; `--dry-run`, conserva huella y escaleras |
+| `find-wood-bridges.py` | Lista madera transitable junto al agua (puentes, muelles, barcos) para elegir dónde poner barandas; `--z` |
 | `electric-depot-walls.py` | Aplica variantes cian solo a las murallas de la sala de lockers; `--apply`, inversión exacta con `--before` ([DEPOT_ELECTRICO.md](../docs/items-and-map/DEPOT_ELECTRICO.md)) |
 | `roomkit.py` | Piezas comunes de los generadores de salas (Crisol, Wave Arena): `Room`, paredes, validación con flags del `.otb`, escritura del OTBM |
 | `generate-crucible.py` | El Crisol v3: hub PZ + 3 arenas temáticas, carteles y bloque `LAYOUT` de `crucible.lua` (`--dry-run --png` para previsualizar; portal en la plaza: `temple-portals.py`) |

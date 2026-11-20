@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Muelle junto al depot (pasos a los elfos y al islote del minotauro): barandas, faroles y rampa de madera.
+"""Puentes de madera: muelle junto al depot (elfos / islote del minotauro) y los puentes de la ciudad.
 
 Versión 2 (20 nov 2026). La primera usaba piezas nativas que en el juego se veían rotas: barandas 1516-1519
 finitas que se salían del muelle, faroles 3744 que parecían calaveras tiradas, losas de piedra 431 como
@@ -9,7 +9,9 @@ parches y una rampa de piedra gris pegada a la madera. Ahora:
   20282-20296), puestos en las casillas de agua/orilla que ya bloqueaban;
 - rampa de escalones de madera (mismo comportamiento que 1390/1391: sube al oeste);
 - los suelos vuelven a madera 405 (y pasto 4756 donde había pasto); el rellano de arriba (z6) también es de madera;
-- se conserva la limpieza de bordes duplicados y wild growth de la versión 1.
+- se conserva la limpieza de bordes duplicados y wild growth de la versión 1;
+- los puentes de BRIDGES (dock_bridge_art.py) llevan las mismas barandas con faroles en las puntas; se sacan
+  sus cuerdas nativas (3758-3791) y el wild growth (1499) que tapaba el tablero y las orillas.
 
 Idempotente y con validación: misma huella, mismo paso/colisión/cambio de piso en cada casilla, nada fuera del
 ámbito. Doc: docs/items-and-map/TRANSICIONES_DEPOT.md.
@@ -27,7 +29,7 @@ HERE = Path(__file__).resolve().parent
 sys.path[:0] = [str(HERE), str(HERE / 'kb'), str(HERE.parent / 'client-rme')]
 import mapdata as M  # noqa: E402
 from portal_temple_style import item_offsets  # noqa: E402
-from dock_bridge_art import PIECES  # noqa: E402
+from dock_bridge_art import PIECES, BRIDGES, placements  # noqa: E402
 
 WOOD, GRASS = 405, 4756
 GROUNDS = ({(113, 56, 7): WOOD, (114, 56, 7): WOOD}
@@ -37,16 +39,38 @@ GROUNDS = ({(113, 56, 7): WOOD, (114, 56, 7): WOOD}
            | {(112, 60, 6): WOOD, (111, 61, 6): WOOD, (112, 61, 6): WOOD})
 OLD_GROUNDS = {WOOD, GRASS, 424, 431}
 NATIVE = {1516, 1517, 1518, 1519, 3744}          # barandas y faroles nativos de la versión 1
-PLACE = {(x, y, 7): sid for key, sid, _c, _p, anchors, _l in PIECES if key.startswith('rail')
-         for x, y in anchors}
-RAMP = {(x, y, 7): sid for key, sid, _c, _p, anchors, _l in PIECES if key.startswith('ramp')
-        for x, y in anchors}
+SID = {key: sid for key, sid, *_r in PIECES}
+PLACE = {pos: SID[key] for pos, key in placements().items() if key.startswith('rail')}
+RAMP = {pos: SID[key] for pos, key in placements().items() if key.startswith('ramp')}
 RAMP_OLD = {113: 1390, 114: 1391}
 OURS = {sid for _k, sid, *_r in PIECES}
 CLEAN_BORDER = {(119, 58, 7): 434, (121, 58, 7): 434, (114, 62, 7): 435, (116, 62, 7): 435,
                 (117, 62, 7): 435, (123, 62, 7): 435}
 CLEAN_ONLY = {(124, 62, 7)}                      # tenía una baranda nativa: se saca y no va nada
-SCOPE = set(GROUNDS) | set(PLACE) | set(RAMP) | set(CLEAN_BORDER) | CLEAN_ONLY | {(121, 58, 7), (112, 56, 7)}
+CLEAR = {1499} | set(range(3758, 3762)) | set(range(3768, 3792))   # wild growth y cuerdas del puente
+
+
+def bridge_area(spec):
+    """Tablero, casillas de baranda y una fila más en cada punta (postes de cuerda en tierra)."""
+    if spec['kind'] == 'v':
+        x0, x1 = spec['deck']
+        ya, yb = min(spec['w'][0], spec['e'][0]) - 1, max(spec['w'][1], spec['e'][1]) + 1
+        return {(x, y, 7) for x in range(x0 - 1, x1 + 2) for y in range(ya, yb + 1)}
+    y0, y1 = spec['deck']
+    xa, xb = min(spec['n'][0], spec['s'][0]) - 1, max(spec['n'][1], spec['s'][1]) + 1
+    return {(x, y, 7) for x in range(xa, xb + 1) for y in range(y0 - 1, y1 + 2)}
+
+
+BRIDGE_AREA = set().union(*(bridge_area(s) for s in BRIDGES.values()))
+# Puentes oeste-este: el borde de madera (434 al norte, 435 al sur) da el canto del tablero donde se apoya la
+# baranda, como en el muelle. Sin él, la del norte queda flotando sobre el agua.
+LIPS = {}
+for _spec in BRIDGES.values():
+    if _spec['kind'] == 'h':
+        LIPS.update({(x, _spec['deck'][0] - 1, 7): 434 for x in range(_spec['n'][0], _spec['n'][1] + 1)})
+        LIPS.update({(x, _spec['deck'][1] + 1, 7): 435 for x in range(_spec['s'][0], _spec['s'][1] + 1)})
+SCOPE = (set(GROUNDS) | set(PLACE) | set(RAMP) | set(CLEAN_BORDER) | CLEAN_ONLY | {(121, 58, 7), (112, 56, 7)}
+         | BRIDGE_AREA)
 
 
 def sid_of(child):
@@ -82,9 +106,16 @@ def apply(root, otb):
     index, counts = tiles(root), Counter()
     for pos in sorted(SCOPE):
         found = index.get(pos, [])
+        if not found and pos in BRIDGE_AREA and pos not in PLACE:
+            continue
         if len(found) != 1 or found[0][0] != 5:
             raise ValueError(f'Tile inexistente, duplicado o de casa: {pos}')
         tile = found[0]
+        blocked_before = 'block_solid' in profile(tile, otb)[1]
+        if pos in BRIDGE_AREA:
+            before = len(tile[2])
+            tile[2] = [c for c in tile[2] if not (plain(c) and sid_of(c) in CLEAR)]
+            counts['cuerdas y wild growth'] += before - len(tile[2])
         if pos in GROUNDS:
             for props, offset in item_offsets(tile, otb):
                 old = struct.unpack_from('<H', props, offset)[0]
@@ -127,8 +158,14 @@ def apply(root, otb):
             if sid_of(ramps[0]) != new:
                 ramps[0][1][:] = struct.pack('<H', new)
                 counts['rampa'] += 1
+        if pos in LIPS and not any(sid_of(c) in (434, 435) for c in tile[2]):
+            if not blocked_before:
+                raise ValueError(f'Borde de madera en paso libre: {pos}')
+            mine = [c for c in tile[2] if sid_of(c) in OURS]
+            tile[2] = [c for c in tile[2] if sid_of(c) not in OURS] + [[6, bytearray(struct.pack('<H', LIPS[pos])), []]] + mine
+            counts['bordes del tablero'] += 1
         if want:
-            if 'block_solid' not in profile(tile, otb)[1]:
+            if not blocked_before and not any(sid_of(c) == want for c in tile[2]):
                 raise ValueError(f'Baranda en paso libre: {pos}')
             if not any(sid_of(c) == want for c in tile[2]):
                 tile[2].append([6, bytearray(struct.pack('<H', want)), []])
@@ -148,7 +185,12 @@ def validate(before, after, otb):
             raise ValueError(f'Cambio ajeno: {pos}')
         if len(old) != 1 or len(b[pos]) != 1:
             raise ValueError(f'Tile duplicado: {pos}')
-        if profile(old[0], otb) != profile(b[pos][0], otb):
+        pa, pb = profile(old[0], otb), profile(b[pos][0], otb)
+        if pos in BRIDGE_AREA and pos not in PLACE:
+            # sacar wild growth o un poste de cuerda puede liberar la casilla; nada más
+            pa = (pa[0], pa[1] - {'block_solid', 'block_pathfind', 'block_projectile'})
+            pb = (pb[0], pb[1] - {'block_solid', 'block_pathfind', 'block_projectile'})
+        if pa != pb:
             raise ValueError(f'Cambió el paso/colisión/cambio de piso: {pos}')
         keep = lambda t: [M.serialize_tree(c, b'') for c in t[2] if not plain(c)]
         if keep(old[0]) != keep(b[pos][0]):
