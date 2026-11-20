@@ -48,6 +48,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 |--------|-----|
 | `temple-portals.py` + `portal_citadel_layout.py` + `portal_temple_style.py` + `portal_temple_details.py` + `portal_temple_architecture.py` | Plaza, ocho portales, galería, pórtico y torre sureste con escaleras; `--dry-run` |
 | `validate-portal-citadel.py` | Audita mapa/assets contra `--before`; rutas, teleports y ámbito exacto |
+| `root-crypt.py` | Visual propia de la quest BoH al sur del depot; `--dry-run`, conserva huella/colisión/cofres/teleports |
 | `electric-depot-walls.py` | Aplica variantes cian solo a las murallas de la sala de lockers; `--apply`, inversión exacta con `--before` ([DEPOT_ELECTRICO.md](../docs/items-and-map/DEPOT_ELECTRICO.md)) |
 | `roomkit.py` | Piezas comunes de los generadores de salas (Crisol, Wave Arena): `Room`, paredes, validación con flags del `.otb`, escritura del OTBM |
 | `generate-crucible.py` | El Crisol v3: hub PZ + 3 arenas temáticas, carteles y bloque `LAYOUT` de `crucible.lua` (`--dry-run --png` para previsualizar; portal en la plaza: `temple-portals.py`) |
@@ -94,6 +95,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | `validate_paladin_stars.py` | Compara el pack con `--before` y exige sprites/looks/OTB anteriores intactos |
 | `portal_citadel_assets.py` | Once piezas nuevas de la plaza arcana; `--prepare`, `--apply` |
 | `portal_detail_assets.py` | Arco abierto, faroles y rejas exclusivos del templo; `--prepare`, `--apply` |
+| `root_crypt_assets.py` | Once piezas de piedra, raíces y luz ámbar de la quest BoH; `--prepare`, `--apply` |
 | `recolor_cyan_skull.py` | Recolorea la calavera roja nativa a cian conservando dibujo y alpha; `--client RUTA_CLIENTERETRO` |
 | `depot_electric_assets.py` | Prepara e instala las once piezas eléctricas del depot (20200–20210); `--prepare`, `--dry-run` |
 | `add_recolor_look.py` + `presets/` + `sprite_kit.py` | Aplica un preset de criatura (un archivo por criatura en `presets/`) a `Tibia.dat`/`.spr` |

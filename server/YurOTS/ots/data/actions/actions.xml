@@ -273,6 +273,7 @@
 <action itemid="1243" script="door.lua" />
 <action itemid="1244" script="door.lua" />
 <action itemid="1245" script="leveldoor.lua" />
+<action itemid="20272" script="leveldoor.lua" />
 <action itemid="1246" script="door.lua" />
 <action itemid="1248" script="door.lua" />
 <action itemid="1250" script="door.lua" />
