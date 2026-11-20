@@ -75,6 +75,11 @@ public:
 
 	virtual void setMaster(Creature* creature);
 	bool isSummon() {return (getMaster() != NULL);}
+	// Summons de jugadores (docs/gameplay/SUMMONS.md): caminan a la velocidad del dueño, lo siguen a un paso
+	// (a la casilla que deja) y aparecen a su lado cuando cambia de piso o se teletransporta.
+	void syncMasterSpeed();
+	void followMasterStep(const Position& masterOldPos);
+	bool followMasterTeleport();
 	virtual void onAttack();
 	static unsigned long getRandom();
 	/** Force target to caster and lock retarget/flee for durationMs (Challenge). */

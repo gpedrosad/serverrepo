@@ -3755,6 +3755,17 @@ void Game::thingMoveInternal(Creature *creature, unsigned short from_x, unsigned
 				}
 			}
 		}
+
+		// Summons del jugador: dan el paso detras de el (docs/gameplay/SUMMONS.md). Si cambio de piso, ya los
+		// llevo teleport().
+		if(playerMoving && playerMoving->pos.z == oldPos.z && !playerMoving->summons.empty()) {
+			std::list<Creature*> summonsCopy = playerMoving->summons;
+			for(std::list<Creature*>::iterator sit = summonsCopy.begin(); sit != summonsCopy.end(); ++sit) {
+				Monster* summon = dynamic_cast<Monster*>(*sit);
+				if(summon && !summon->isRemoved)
+					summon->followMasterStep(oldPos);
+			}
+		}
 	}
 }
 
@@ -3960,6 +3971,18 @@ void Game::teleport(Thing *thing, const Position& newPos) {
 			{
 				if(!dynamic_cast<Player*>(*it)) {
 					(*it)->onTeleport(creature, &oldPos, osp);
+				}
+			}
+
+			// Summons del jugador: si cambio de piso o salto lejos (escaleras, escalera de mano, agujero,
+			// teleport), aparecen a su lado (docs/gameplay/SUMMONS.md).
+			if(player && !player->summons.empty() &&
+				(newPos.z != oldPos.z || std::abs(newPos.x - oldPos.x) > 1 || std::abs(newPos.y - oldPos.y) > 1)) {
+				std::list<Creature*> summonsCopy = player->summons;
+				for(std::list<Creature*>::iterator sit = summonsCopy.begin(); sit != summonsCopy.end(); ++sit) {
+					Monster* summon = dynamic_cast<Monster*>(*sit);
+					if(summon && !summon->isRemoved)
+						summon->followMasterTeleport();
 				}
 			}
 		}

@@ -507,7 +507,12 @@ bool Monster::calcMovePosition()
 	bool foundDistPath = false;
 	Position newMovePos = moveToPos;
 	if(state == STATE_IDLESUMMON && isSummon()) {
-		getCloseCombatPosition(getMaster()->pos, newMovePos);
+		// ya está al lado del dueño: se queda (antes elegía otra casilla al azar y "temblaba")
+		const Position& mpos = getMaster()->pos;
+		if(mpos.z == pos.z && mpos != pos && getCurrentDistanceToTarget(mpos) <= 1)
+			newMovePos = this->pos;
+		else
+			getCloseCombatPosition(mpos, newMovePos);
 	}
 	else {
 		if(state == STATE_FLEEING) {
@@ -1247,9 +1252,115 @@ void Monster::setMaster(Creature* creature)
 			state = STATE_IDLESUMMON;
 			startThink();
 		}
+		// summon de jugador: nace con la velocidad del dueño (todavía no está en el mapa, no hace falta avisar)
+		Player* owner = dynamic_cast<Player*>(creature);
+		if(owner && owner->getSpeed() > 0)
+			speed = owner->getSpeed();
 	}
 	else
 		state = STATE_IDLE;
+}
+
+// ---- Summons de jugadores: seguir al dueño (docs/gameplay/SUMMONS.md) ------------------------------------
+
+void Monster::syncMasterSpeed()
+{
+	Player* owner = dynamic_cast<Player*>(getMaster());
+	if(owner && owner->getSpeed() > 0 && speed != owner->getSpeed())
+		game->changeSpeed(getID(), owner->getSpeed());
+}
+
+// El dueño acaba de dar un paso desde masterOldPos (mismo piso). Si el summon lo está siguiendo y quedó a
+// más de un paso, ocupa la casilla que el dueño dejó (o, si no puede, otra libre al lado del dueño a la que
+// llegue en un paso). Se mueve en el mismo tick que el dueño y a su velocidad: va siempre detrás.
+void Monster::followMasterStep(const Position& masterOldPos)
+{
+	Player* owner = dynamic_cast<Player*>(getMaster());
+	if(!owner)
+		return;
+
+	syncMasterSpeed();
+
+	if(state != STATE_IDLESUMMON || hasLostMaster || pos.z != owner->pos.z)
+		return;		// peleando o perdido: su IA de siempre
+	if(pos != owner->pos && getCurrentDistanceToTarget(owner->pos) <= 1)
+		return;		// ya está al lado
+
+	Position dest = pos;
+	bool found = false;
+	if(masterOldPos.z == pos.z && getCurrentDistanceToTarget(masterOldPos) <= 1 && masterOldPos != pos &&
+		canMoveTo(masterOldPos.x, masterOldPos.y, pos.z)) {
+		dest = masterOldPos;
+		found = true;
+	}
+	else {
+		int best = 1000;
+		for(int y = owner->pos.y - 1; y <= owner->pos.y + 1; ++y) {
+			for(int x = owner->pos.x - 1; x <= owner->pos.x + 1; ++x) {
+				Position p(x, y, pos.z);
+				if(p == owner->pos || p == pos || getCurrentDistanceToTarget(p) > 1 || !canMoveTo(x, y, pos.z))
+					continue;
+				int score = std::abs(x - masterOldPos.x) + std::abs(y - masterOldPos.y);
+				if(score < best) {
+					best = score;
+					dest = p;
+					found = true;
+				}
+			}
+		}
+	}
+
+	if(!found)
+		return;		// encerrado: lo resuelve onThink con un camino
+	route.clear();
+	doMoveTo(dest.x - pos.x, dest.y - pos.y);
+	updateMovePos = false;
+	moveToPos = pos;
+}
+
+// El dueño cambió de piso o se teletransportó: el summon aparece en una casilla libre a su lado (con suelo, sin
+// PZ, escaleras ni teleports), primero la de atrás según hacia dónde mira el dueño. Si no hay lugar, se queda.
+bool Monster::followMasterTeleport()
+{
+	Player* owner = dynamic_cast<Player*>(getMaster());
+	if(!owner)
+		return false;
+	if(pos.z == owner->pos.z && pos != owner->pos && getCurrentDistanceToTarget(owner->pos) <= 1)
+		return false;
+
+	int bx = 0, by = 0;
+	switch(owner->getDirection()) {
+		case NORTH: by = 1; break;
+		case SOUTH: by = -1; break;
+		case EAST: bx = -1; break;
+		default: bx = 1; break;
+	}
+	Position dest;
+	int best = 1000;
+	for(int y = owner->pos.y - 1; y <= owner->pos.y + 1; ++y) {
+		for(int x = owner->pos.x - 1; x <= owner->pos.x + 1; ++x) {
+			if(x == owner->pos.x && y == owner->pos.y)
+				continue;
+			Tile* t = game->getTile(x, y, owner->pos.z);
+			if(!t || !t->ground || t->floorChange() || t->getTeleportItem() ||
+				t->isBlocking(BLOCK_SOLID | BLOCK_PATHFIND | BLOCK_PZ, false, mType->canPushItems) != RET_NOERROR)
+				continue;
+			int score = std::abs(x - (owner->pos.x + bx)) + std::abs(y - (owner->pos.y + by));
+			if(score < best) {
+				best = score;
+				dest = Position(x, y, owner->pos.z);
+			}
+		}
+	}
+	if(best == 1000)
+		return false;
+
+	stopThink();			// suelta el blanco del piso de antes y vuelve a seguir al dueño
+	game->teleport(this, dest);
+	game->sendMagicEffect(dest, NM_ME_ENERGY_AREA);
+	hasLostMaster = false;
+	startThink();
+	return true;
 }
 
 void Monster::setAttackedCreature(const Creature* creature)
