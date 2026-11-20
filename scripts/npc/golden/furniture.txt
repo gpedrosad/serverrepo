@@ -2,159 +2,159 @@
 >> near 1002
 >> say 1001 hello there
 >> say 1001 hi
-SAY Hi Player1001! I sell furniture for your house — everything is 500gp each. Say "2 wooden chair" or any amount. Say "chairs", "tables", "pillows" or an item name.
+SAY Hi Player1001! I sell furniture for your house — almost everything is 500gp; flags and banners 1500gp. Say "2 wooden chair" or any amount. Say "chairs", "tables", "pillows", "flags" or an item name.
 >> say 1002 hi
 SAY One moment, Player1002! I am helping someone else.
 >> say 1001 help
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 help
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 yes
 >> say 1001 help
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 no
 >> say 1001 5 help
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 yes
 >> say 1001 5 help
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 no
 >> say 1001 help 100
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 yes
 >> say 1001 help 100
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 no
 >> say 1001 help all
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 yes
 >> say 1001 help all
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 no
 >> think
 >> say 1001 ayuda
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 yes
 >> say 1001 ayuda
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 no
 >> say 1001 5 ayuda
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 yes
 >> say 1001 5 ayuda
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 no
 >> say 1001 ayuda 100
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 yes
 >> say 1001 ayuda 100
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 no
 >> say 1001 ayuda all
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 yes
 >> say 1001 ayuda all
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 no
 >> think
 >> say 1001 offer
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 yes
 >> say 1001 offer
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 no
 >> say 1001 5 offer
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 yes
 >> say 1001 5 offer
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 no
 >> say 1001 offer 100
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 yes
 >> say 1001 offer 100
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 no
 >> say 1001 offer all
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 yes
 >> say 1001 offer all
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 no
 >> think
 >> say 1001 trade
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 yes
 >> say 1001 trade
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 no
 >> say 1001 5 trade
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 yes
 >> say 1001 5 trade
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 no
 >> say 1001 trade 100
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 yes
 >> say 1001 trade 100
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 no
 >> say 1001 trade all
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 yes
 >> say 1001 trade all
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 no
 >> think
 >> say 1001 list
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 yes
 >> say 1001 list
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 no
 >> say 1001 5 list
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 yes
 >> say 1001 5 list
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 no
 >> say 1001 list 100
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 yes
 >> say 1001 list 100
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 no
 >> say 1001 list all
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 yes
 >> say 1001 list all
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 no
 >> think
 >> say 1001 info
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 yes
 >> say 1001 info
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 no
 >> say 1001 5 info
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 yes
 >> say 1001 5 info
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 no
 >> say 1001 info 100
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 yes
 >> say 1001 info 100
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 no
 >> say 1001 info all
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 yes
 >> say 1001 info all
-SAY Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!
+SAY Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!
 >> say 1001 no
 >> think
 >> say 1001 job
@@ -1804,53 +1804,53 @@ SAY I sell coal basins, birdcages, harps, pianos, globes, clocks and lamps.
 >> say 1001 no
 >> think
 >> say 1001 tapestry
-SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry (500gp). For flags and banners say "flags".
 >> say 1001 yes
 >> say 1001 tapestry
-SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry (500gp). For flags and banners say "flags".
 >> say 1001 no
 >> say 1001 5 tapestry
-SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry (500gp). For flags and banners say "flags".
 >> say 1001 yes
 >> say 1001 5 tapestry
-SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry (500gp). For flags and banners say "flags".
 >> say 1001 no
 >> say 1001 tapestry 100
-SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry (500gp). For flags and banners say "flags".
 >> say 1001 yes
 >> say 1001 tapestry 100
-SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry (500gp). For flags and banners say "flags".
 >> say 1001 no
 >> say 1001 tapestry all
-SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry (500gp). For flags and banners say "flags".
 >> say 1001 yes
 >> say 1001 tapestry all
-SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry (500gp). For flags and banners say "flags".
 >> say 1001 no
 >> think
 >> say 1001 tapestries
-SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry (500gp). For flags and banners say "flags".
 >> say 1001 yes
 >> say 1001 tapestries
-SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry (500gp). For flags and banners say "flags".
 >> say 1001 no
 >> say 1001 5 tapestries
-SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry (500gp). For flags and banners say "flags".
 >> say 1001 yes
 >> say 1001 5 tapestries
-SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry (500gp). For flags and banners say "flags".
 >> say 1001 no
 >> say 1001 tapestries 100
-SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry (500gp). For flags and banners say "flags".
 >> say 1001 yes
 >> say 1001 tapestries 100
-SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry (500gp). For flags and banners say "flags".
 >> say 1001 no
 >> say 1001 tapestries all
-SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry (500gp). For flags and banners say "flags".
 >> say 1001 yes
 >> say 1001 tapestries all
-SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry (500gp). For flags and banners say "flags".
 >> say 1001 no
 >> think
 >> say 1001 small
@@ -1974,25 +1974,25 @@ SAY I sell heart, small, square and round pillows.
 CALL cancelPendingTrade(1001)
 SAY Bye, Player1001! Come back anytime.
 >> say 1001 hi
-SAY Hi Player1001! I sell furniture for your house — everything is 500gp each. Say "2 wooden chair" or any amount. Say "chairs", "tables", "pillows" or an item name.
+SAY Hi Player1001! I sell furniture for your house — almost everything is 500gp; flags and banners 1500gp. Say "2 wooden chair" or any amount. Say "chairs", "tables", "pillows", "flags" or an item name.
 >> advance 40
 >> think
 CALL cancelPendingTrade(1001)
 SAY Next please...
 >> say 1001 hi
-SAY Hi Player1001! I sell furniture for your house — everything is 500gp each. Say "2 wooden chair" or any amount. Say "chairs", "tables", "pillows" or an item name.
+SAY Hi Player1001! I sell furniture for your house — almost everything is 500gp; flags and banners 1500gp. Say "2 wooden chair" or any amount. Say "chairs", "tables", "pillows", "flags" or an item name.
 >> far 1001
 >> think
 CALL cancelPendingTrade(1001)
 SAY See you later!
 >> near 1001
 >> say 1001 hola
-SAY Hi Player1001! I sell furniture for your house — everything is 500gp each. Say "2 wooden chair" or any amount. Say "chairs", "tables", "pillows" or an item name.
+SAY Hi Player1001! I sell furniture for your house — almost everything is 500gp; flags and banners 1500gp. Say "2 wooden chair" or any amount. Say "chairs", "tables", "pillows", "flags" or an item name.
 >> disappear 1001
 CALL cancelPendingTrade(1001)
 SAY See you later!
 >> say 1002 hi
-SAY Hi Player1002! I sell furniture for your house — everything is 500gp each. Say "2 wooden chair" or any amount. Say "chairs", "tables", "pillows" or an item name.
+SAY Hi Player1002! I sell furniture for your house — almost everything is 500gp; flags and banners 1500gp. Say "2 wooden chair" or any amount. Say "chairs", "tables", "pillows", "flags" or an item name.
 >> set 1002 money 0
 >> set 1002 slots 0
 >> set 1002 level 1
@@ -2168,10 +2168,10 @@ SAY I sell large trunks, boxes, drawers, dressers, lockers and troughs.
 SAY I sell coal basins, birdcages, harps, pianos, globes, clocks and lamps.
 >> say 1002 yes
 >> say 1002 tapestry
-SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry (500gp). For flags and banners say "flags".
 >> say 1002 yes
 >> say 1002 tapestries
-SAY I sell blue, green, orange, purple, red, white and yellow tapestry.
+SAY I sell blue, green, orange, purple, red, white and yellow tapestry (500gp). For flags and banners say "flags".
 >> say 1002 yes
 >> say 1002 small
 SAY I sell small purple, small green, small red, small blue, small orange, small turquiose and small white pillows.

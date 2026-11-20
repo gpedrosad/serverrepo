@@ -1,5 +1,6 @@
--- Obi (muebles para casas, todo a 500gp; acepta cantidad).
+-- Obi (muebles para casas, todo a 500gp salvo banderas y estandartes; acepta cantidad).
 FURNITURE_PRICE = 500
+FLAG_PRICE = 1500   -- banderas y estandartes (docs/gameplay/HANGABLES.md)
 
 FURNITURE_OFFERS = {
 	{keys = {'wooden chair'}, itemid = 3901},
@@ -38,6 +39,14 @@ FURNITURE_OFFERS = {
 	{keys = {'red tapestry'}, itemid = 1869},
 	{keys = {'white tapestry'}, itemid = 1880},
 	{keys = {'yellow tapestry'}, itemid = 1863},
+	-- Banderas y estandartes de guerra (nov 2026): se cuelgan en las paredes.
+	{keys = {'brazil tapestry', 'brasil tapestry', 'brazil flag', 'bandera de brasil', 'bandera brasil'}, itemid = 20275, price = FLAG_PRICE},
+	{keys = {'chile tapestry', 'chile flag', 'bandera de chile', 'bandera chile'}, itemid = 20276, price = FLAG_PRICE},
+	{keys = {'usa tapestry', 'usa flag', 'us flag', 'american flag', 'bandera de usa', 'bandera usa', 'bandera de estados unidos'}, itemid = 20277, price = FLAG_PRICE},
+	{keys = {'argentina tapestry', 'argentina flag', 'bandera de argentina', 'bandera argentina'}, itemid = 20278, price = FLAG_PRICE},
+	{keys = {'pirate banner', 'pirate flag', 'bandera pirata'}, itemid = 20279, price = FLAG_PRICE},
+	{keys = {'war banner', 'estandarte de guerra'}, itemid = 20280, price = FLAG_PRICE},
+	{keys = {'royal banner', 'estandarte real'}, itemid = 20281, price = FLAG_PRICE},
 	{keys = {'small purple pillow'}, itemid = 1678},
 	{keys = {'small green pillow'}, itemid = 1679},
 	{keys = {'small red pillow'}, itemid = 1680},
@@ -62,7 +71,8 @@ FURNITURE_TOPICS = {
 	{keys = {'plants'}, reply = 'I sell pink and green flowers, also christmas trees.'},
 	{keys = {'containers'}, reply = 'I sell large trunks, boxes, drawers, dressers, lockers and troughs.'},
 	{keys = {'more'}, reply = 'I sell coal basins, birdcages, harps, pianos, globes, clocks and lamps.'},
-	{keys = {'tapestry', 'tapestries'}, reply = 'I sell blue, green, orange, purple, red, white and yellow tapestry.'},
+	{keys = {'tapestry', 'tapestries'}, reply = 'I sell blue, green, orange, purple, red, white and yellow tapestry (500gp). For flags and banners say "flags".'},
+	{keys = {'flags', 'banners', 'banderas', 'estandartes'}, reply = 'Flags and banners, 1500gp each: brazil, chile, usa and argentina tapestry, pirate banner, war banner and royal banner. Hang them on a wall!'},
 	{keys = {'small'}, reply = 'I sell small purple, small green, small red, small blue, small orange, small turquiose and small white pillows.'},
 	{keys = {'round'}, reply = 'I sell round blue, round red, round purple and round turquiose pillows.'},
 	{keys = {'square'}, reply = 'I sell blue, red, green and yellow pillows.'},
@@ -71,12 +81,12 @@ FURNITURE_TOPICS = {
 
 function buyFurniture(cid, entry, msg)
 	local qty = npcParseBuyQuantity(msg or '', 20)
-	buy(cid, entry.itemid, qty, FURNITURE_PRICE * qty)
+	buy(cid, entry.itemid, qty, (entry.price or FURNITURE_PRICE) * qty)
 end
 
 local function onMessage(cid, msg)
 	if npcIsHelp(msg) then
-		selfSay('Try chairs, tables, plants, containers, tapestries, pillows, small or round. Or say the exact item name!')
+		selfSay('Try chairs, tables, plants, containers, tapestries, flags, pillows, small or round. Or say the exact item name!')
 		return
 	end
 
@@ -92,6 +102,6 @@ local function onMessage(cid, msg)
 end
 
 npcDefine{
-	greet = function(cid) return 'Hi ' .. creatureGetName(cid) .. '! I sell furniture for your house — everything is 500gp each. Say "2 wooden chair" or any amount. Say "chairs", "tables", "pillows" or an item name.' end,
+	greet = function(cid) return 'Hi ' .. creatureGetName(cid) .. '! I sell furniture for your house — almost everything is 500gp; flags and banners 1500gp. Say "2 wooden chair" or any amount. Say "chairs", "tables", "pillows", "flags" or an item name.' end,
 	onMessage = onMessage,
 }

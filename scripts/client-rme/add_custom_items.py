@@ -290,6 +290,32 @@ NEW_ITEMS = [
     dict(name="crimson wall", server_id=20274, client_id=2878, prototype=1498,
          png="crimson_cage_wall.png", decor=True, tiles=2, frames=3, light=(3, 180),
          descr="A cage of crimson magic. It fades within seconds."),
+    # Tapestries con banderas y estandartes de guerra (nov 2026): copias del purple tapestry (1857: 2x2,
+    # 3 patrones = enrollado / pared horizontal / pared vertical, hangable) con los dibujos de
+    # make_flag_tapestries.py. frames=3 instala los 12 sprites; la cabecera (3 patrones) es la del prototipo.
+    # Clients sacrificados: broken boots, broken glas x2, rotten meat, fishbone, old twig, horn (3957).
+    # Se cuelgan en paredes con gancho (docs/gameplay/HANGABLES.md); los vende la NPC de muebles.
+    dict(name="brazil tapestry", server_id=20275, client_id=3123, prototype=1857,
+         png="brazil_tapestry.png", decor=True, tiles=2, frames=3,
+         descr="A tapestry with the flag of Brazil. Hang it on a wall."),
+    dict(name="chile tapestry", server_id=20276, client_id=3118, prototype=1857,
+         png="chile_tapestry.png", decor=True, tiles=2, frames=3,
+         descr="A tapestry with the flag of Chile. Hang it on a wall."),
+    dict(name="usa tapestry", server_id=20277, client_id=3117, prototype=1857,
+         png="usa_tapestry.png", decor=True, tiles=2, frames=3,
+         descr="A tapestry with the flag of the United States. Hang it on a wall."),
+    dict(name="argentina tapestry", server_id=20278, client_id=3112, prototype=1857,
+         png="argentina_tapestry.png", decor=True, tiles=2, frames=3,
+         descr="A tapestry with the flag of Argentina. Hang it on a wall."),
+    dict(name="pirate banner", server_id=20279, client_id=3111, prototype=1857,
+         png="pirate_banner.png", decor=True, tiles=2, frames=3,
+         descr="A black banner with a skull and crossbones. Hang it on a wall."),
+    dict(name="war banner", server_id=20280, client_id=3106, prototype=1857,
+         png="war_banner.png", decor=True, tiles=2, frames=3,
+         descr="A blood red war banner with crossed swords. Hang it on a wall."),
+    dict(name="royal banner", server_id=20281, client_id=3103, prototype=1857,
+         png="royal_banner.png", decor=True, tiles=2, frames=3,
+         descr="A royal banner with a golden crown. Hang it on a wall."),
 
 ]
 

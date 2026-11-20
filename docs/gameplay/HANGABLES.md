@@ -10,6 +10,33 @@ del `.otb` y la pared bloqueaba todo ("There is not enough room").
 |------|----|
 | purple / green / yellow / orange / red / blue / white tapestry | 1857 / 1860 / 1863 / 1866 / 1869 / 1872 / 1880 |
 | cuckoo clock | 1881 |
+| **brazil / chile / usa / argentina tapestry** (nov 2026) | 20275 / 20276 / 20277 / 20278 |
+| **pirate banner / war banner / royal banner** (nov 2026) | 20279 / 20280 / 20281 |
+
+### Banderas y estandartes (nov 2026)
+
+Copias del purple tapestry (1857, mismos flags: `hangable`, levantable) con dibujo propio en sus 3 patrones
+(enrollado, pared horizontal, pared vertical). Los dibuja `scripts/client-rme/make_flag_tapestries.py`: para cada
+píxel de tela calcula `(u, v)` dentro de la bandera siguiendo la inclinación de cada patrón (en la pared horizontal
+cada fila se corre a la derecha; en la vertical, cada columna hacia abajo) y le aplica la sombra del original; la
+vara pasa a madera. Para agregar otro diseño: una función `design(u, v) -> (r, g, b)` en `DESIGNS`, una entrada en
+`NEW_ITEMS` de `add_custom_items.py` (`prototype=1857, tiles=2, frames=3, decor=True`) con un client id de
+`--candidates`, y la venta en Obi.
+
+| Ítem | Server / client id (sacrificado) | Dibujo |
+|------|------|--------|
+| brazil tapestry | 20275 / 3123 (broken boots) | verde, rombo amarillo, círculo azul |
+| chile tapestry | 20276 / 3118 (broken green glas) | blanco y rojo, cuadro azul con estrella |
+| usa tapestry | 20277 / 3117 (broken brown glas) | franjas rojas y blancas, cantón azul con estrellas |
+| argentina tapestry | 20278 / 3112 (rotten meat) | celeste, blanco y celeste, sol |
+| pirate banner | 20279 / 3111 (fishbone) | negro con calavera y huesos |
+| war banner | 20280 / 3106 (old twig) | rojo sangre, espadas cruzadas, borde dorado |
+| royal banner | 20281 / 3103 (horn 3957) | violeta, corona dorada con joya, borde dorado |
+
+Los vende **Obi** (muebles) a **1500 gp** ("flags", "banners", "banderas"; "brazil tapestry", "bandera de chile"...);
+el resto de sus muebles sigue a 500. Para verlos hay que publicar el cliente (`publish_client.py`): un cliente sin
+actualizar los muestra como el ítem sacrificado. `sprite_tool.py verify` marca "ítems idénticos" en FALLA: es
+esperado (solo cambiaron esos 7 client ids).
 
 - **Pared con gancho:** flag `horizontal` del `.otb` (`hookSouth`: lo colgado mira al sur) o `vertical` (`hookEast`:
   mira al este). Por ejemplo `stone wall` 1050 (horizontal) y 1049 (vertical), `brick wall` 1026. Las esquinas y los
