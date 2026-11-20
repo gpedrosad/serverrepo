@@ -294,3 +294,11 @@ Aplicación del generador y revisión de renders estáticos: 117 tiles modificad
 226 teleports y 11 tiles completos de locker intactos, sin duplicados nuevos.
 Backup local: `backups/map/portal-clear-access-before/`. Sin suites ni recorrido in-game,
 por pedido de Gonzalo. No hay nuevos sprites, cambios de OTB/Lua ni recompilación.
+
+Activado en la ThinkPad: servidor `d747052`; respaldo
+`~/backups/pre-deploy-20261120-113712-clear-temple-access`, refrescado antes del reinicio.
+Cliente publicado primero con `publish_client.py`: 1 archivo (minimapa CRC `2dee4a3c`),
+0 borrados, HTTP 8080/8076 OK; DAT/SPR conservados. `docker restart -t 45 yurots`:
+guardado completo, Loaded in **0,804 s**, sin errores/warnings, probe OK / healthy,
+0 reinicios automáticos. 1 cuenta, 8 personajes, 31 casas, contenido de depots, dueños,
+config y binario iguales al snapshot previo. Once tiles completos de locker idénticos.

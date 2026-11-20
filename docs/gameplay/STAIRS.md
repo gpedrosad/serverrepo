@@ -96,7 +96,8 @@ la puerta 1210. La torre gana una columna al este; el acceso oeste pasa a `165,5
 en z5–z7, sin puerta, y la fila y55 queda libre de muro, hueco, escalera y decoración.
 `validate_access()` se ejecuta antes de escribir el mapa: revisa la huella completa,
 ambos rellanos y la salida desde cada llegada al corredor sin cruzar otra escalera.
-No requiere cambiar assets, bindings ni C++.
+No requiere cambiar assets, bindings ni C++. Activado con `d747052`: reinicio ordenado,
+probe OK / healthy; sin recorrido in-game por pedido de Gonzalo.
 
 ## Pendiente (mapa)
 
