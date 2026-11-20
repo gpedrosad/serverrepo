@@ -37,7 +37,7 @@ uno en las salas fuertes, y la quest figura para **nivel 80–100**.
 
 ## Cripta de Raíces — visual del 20 nov 2026
 
-Preparada y aplicada en el mapa local; pendiente publicación/deploy.
+Publicada y activada en la ThinkPad el 20 nov 2026 (servidor `cd841f6`, cliente `521249f`).
 Piedra gris verdosa, raíces y musgo, suelo de losas y lámparas ámbar; distinta del
 basalto/cian del templo y de las piezas exclusivas del depot. Solo esta casa cambia.
 
@@ -89,3 +89,18 @@ Los IDs antiguos de los once slots no aparecían en jugadores, casas ni houseite
 la ThinkPad (consulta de solo lectura). DAT/SPR locales idénticos para Mac/Windows.
 Backup local: `backups/map/root-crypt-before/`. Se corrieron importador, generador,
 auditoría de ámbito/assets y render; sin suites, pruebas in-game, compilación ni reinicio.
+
+### Deploy — 20 nov 2026
+
+Autorizado por Gonzalo. ff-merges sin solapamientos; config local y `.server-save-ok`
+preservados. Respaldo `~/backups/pre-deploy-20261120-121746-root-crypt`, refrescado
+antes del reinicio y con copia posterior al guardado. Cliente publicado primero
+con `publish_client.py`: 774 archivos, 3 cambiados (DAT/SPR/minimapa), 0 borrados;
+ZIPs Mac/Windows y manifest/contenido HTTP en 8080/8076 coinciden.
+CRC DAT `61142f45`, SPR `2d5b06c9`, minimapa `c6ec995a`.
+Se cotejaron los 120 tiles de la quest contra el mapa remoto anterior; huella,
+colisión, cofres, puerta y teleports conservados. Once tiles completos de locker idénticos.
+`docker restart -t 45 yurots`: guardado ordenado completo, Loaded in **1,409 s**,
+sin errores ni warnings; probe `192.168.1.17:7171` OK / healthy, 0 reinicios automáticos.
+1 cuenta, 8 personajes, 31 casas, contenido de depots, dueños, config y binario iguales
+al snapshot previo. Sin suites, recorrido/depot in-game ni rebuild, por pedido de Gonzalo.
