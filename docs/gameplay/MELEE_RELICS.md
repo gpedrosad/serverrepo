@@ -1,9 +1,11 @@
 # Riftblade, Aethercleaver y Graviton Maul
 
-Estado: **implementado y compilado, con validación parcial en instancia aislada**. Push solicitado
-por Gonzalo; cliente sin publicar y servidor de juego sin deploy. No requiere cambios de mapa.
+Estado: **en el servidor de prueba desde el 20 nov 2026** (cliente publicado, binario nuevo). La validación
+in-game quedó parcial (ver al final): falta Graviton contra monstruo blindado y la revisión visual del combate.
 
 ![Ítems y ocho cuadros de cada animación](img/melee-relics.png)
+
+Están con el resto de las armas propias en [ARMAS.md](ARMAS.md).
 
 | Arma | Server / client ID | Skill / manos | Ataque / defensa | Intervalo base | Efecto |
 |---|---|---|---|---|---|
@@ -58,12 +60,12 @@ los impactos con las primitivas pixel-art del cliente. No se modifica arte previ
 - Efectos protocolo base cero: **47 Rift Cut, 48 Aether Return, 49 Graviton Crush**.
   DAT: 48, 49, 50; ocho cuadros cada uno. Luz de efectos 3/161, 3/71, 3/187;
   luz de los ítems 2/161, 2/71, 2/187.
-- **27 sprites añadidos**: 3 ítems y 24 cuadros de impacto. 14284 → 14311.
+- **27 sprites añadidos**: 3 ítems y 24 cuadros de impacto. 14284 → 14311 (reinstalado sobre los cadáveres de los Metal; la primera versión iba de 14072 a 14099).
 - DAT conserva item count 5089, outfits 254 y proyectiles 21; efectos 47 → 50.
 - Prototipos: bright sword 2407, knight axe 2430 y war hammer 2391, con flags y manos nativos.
-  Slots reutilizados: tear of daraman 2346, cobrafang dagger 2351 y ancient rune 2348.
+  Slots reutilizados: tear of daraman 2346 (client 3233), cobrafang dagger 2351 (3238) y ancient rune 2348 (3235). La primera versión usaba 20225–20227 y el client 3242 (rabbit present), que quedaron para los cadáveres de los Metal: se renumeró a 20250–20252 y 3233.
 - El primer candidato del maul, music piece 2349/client 3236, **se descartó**: existe en el
-  personaje GM de la ThinkPad. No reutilizamos ese slot; otra sesión lo reservó después para el cadáver Metal Hydra. Verificar runtime en solo lectura
+  personaje GM de la ThinkPad. El slot 3236 queda idéntico. Verificar runtime en solo lectura
   además del buscador de candidatos; ningún archivo del jugador se modifica.
 - Mac y Windows tienen DAT/SPR idénticos al canónico de RME. Cliente y servidor deben
   publicarse juntos: cliente primero, luego OTB y binario nuevo. No publicar solo el OTB.
@@ -76,7 +78,7 @@ clang++ -std=c++14 -Wall -Wextra -Werror scripts/ot/test-melee-relics.cpp -o /tm
 python3 scripts/map/check-map-load.py
 ```
 
-Backup local de instalación: `backups/map/melee-relics-main-before/`. El instalador es idempotente
+Backup local de instalación: `backups/map/melee-relics-before/`. El instalador es idempotente
 y comprueba que los IDs de ítems/efectos no estén ocupados. Auditoría: todos los sprites,
 outfits, efectos/proyectiles y nodos OTB anteriores intactos, solo tres entradas de ítem
 cambian; manos, stats, loot y paridad Mac/Windows verificados. Las pruebas C++ comprueban
@@ -85,7 +87,7 @@ combo, cambio de blanco, timeout exacto, límites de armadura/maná, maná lleno
 ## Validación realizada y cierre
 
 Build limpio autorizado por Gonzalo y terminado en `~/build/melee-relics-src-20261119`:
-**0 errores y 0 warnings**, antes de la reasignación final de IDs. Las seis fuentes de ese build se cotejaron por SHA256.
+**0 errores y 0 warnings**, con las seis fuentes finales cotejadas por SHA256.
 Es obligatorio un build limpio por el nuevo miembro de Player: no usar objetos con el layout viejo.
 
 Instancia sintética `~/build/melee-relics-qa-20261119`, puerto **7281**, cuenta ficticia.
@@ -110,10 +112,3 @@ comandos GM recientes. `speed=0` cae al movimiento normal 220 y `staticattack=0`
 para blancos de prueba se usó speed 1, staticattack alto y pisos separados. `pzlocked=0` evita
 que una desconexión sintética deje ocupado el lugar del siguiente actor. Estas opciones son solo QA.
 
-
-Al integrar `origin/main` para el push, otra sesión ya había ocupado los server IDs 20225–20249
-y client 3242 con cadáveres. Se preservaron sus DAT/SPR/OTB y looks Metal y se reaplicaron las
-armas como **20250–20252**, con Riftblade en client **3233**. Los 27 sprites se añaden sobre
-14284 existentes (final 14311). Los efectos siguen en 47–49 y los otros dos clients no cambian.
-No se recompiló ni se repitieron pruebas tras esta reasignación, respetando el pedido de Gonzalo.
-El binario aislado previo es solo evidencia de las mecánicas, no un binario listo para deploy final.

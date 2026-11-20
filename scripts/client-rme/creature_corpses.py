@@ -42,7 +42,7 @@ NEON_GREEN = [(16, 90, 10), (70, 230, 40), (200, 255, 150)]
 CORPSES = [
     # --- recoloreados con preset ---
     ("metal dragon corpse", 20225, 3242, 3104, ("preset", "metal-dragon"), ["Metal Dragon"], {"eyes": NEON_CYAN}),
-    ("metal hydra corpse", 20226, 3236, 4283, ("preset", "metal-hydra"), ["Metal Hydra"], {"eyes": NEON_GREEN}),
+    ("metal hydra corpse", 20226, 3216, 4283, ("preset", "metal-hydra"), ["Metal Hydra"], {"eyes": NEON_GREEN}),
     ("metal demon corpse", 20227, 3234, 2916, ("preset", "metal-demon"), ["Metal Demon"],
      {"seams": [(140, 0, 10), (255, 40, 40)]}),
     ("dead hellhound", 20228, 3202, 2969, ("preset", "hellhound"), ["Hellhound"], {}),

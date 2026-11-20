@@ -39,10 +39,10 @@
 | **Dark Mage** | 2026-11-17 | 5200 | 8000 | look 133 | `3128` de 7.6 | 1: Mage Tower 1 | no | [MAPEAR_TORRE_MAGO](../items-and-map/MAPEAR_TORRE_MAGO.md) |
 | **Drowned Sailor** | 2026-11-10 | 520 | 280 | propio, look 233 (`drowned_sailor.py`) | `20169` propio | 12: Epstein Hunts 10, Bridge Tower 2 | sí | [DROWNED_SAILOR](DROWNED_SAILOR.md) |
 | **Elven Archmage** | 2026-11-19 | 4200 | 5000 | propio, look 223 (`elven_archmage.py`) | `20238` propio | 1: Elvenbane 1 | no | [ELVENBANE](../items-and-map/ELVENBANE.md) |
-| **Elvenbane Ranger** | 2026-11-19 | 5000 | 4500 | propio, look 222 (`elvenbane_ranger.py`) | `20237` propio | 1: Elvenbane 1 | no | [ELVENBANE](../items-and-map/ELVENBANE.md) |
+| **Elvenbane Ranger** | 2026-11-19 | 5000 | 4500 | propio, look 222 (`elvenbane_ranger.py`) | `20237` propio | 1: Elvenbane 1 | no | [ARMAS](ARMAS.md) |
 | **Emerald Scarab** | 2026-11-12 | 1500 | 1150 | propio, look 242 (`emerald_scarab.py`) | `20230` propio | 4: City Depths 2, mapa base 1, Natural Island 1 | sí | [EMERALD_SCARAB](EMERALD_SCARAB.md) |
 | **Frost Dragon** | 2026-11-09 | 2200 | 2400 | propio, look 231 (`frost_dragon.py`) | `20171` propio (compartido) | 10: Frozen Isle 5, Glacier Reach 5 | sí | [FROST_DRAGON](FROST_DRAGON.md) |
-| **Fury** | 2026-07-07 | 9200 | 7800 | look 137 | `3065` de 7.6 | 13: Inferno Pits 8, Beast Valley 4, Tp Gauntlet 1 | no | [CUSTOM_MONSTER_WORKFLOW](CUSTOM_MONSTER_WORKFLOW.md) |
+| **Fury** | 2026-07-07 | 9200 | 7800 | look 137 | `3065` de 7.6 | 13: Inferno Pits 8, Beast Valley 4, Tp Gauntlet 1 | no | [ARMAS](ARMAS.md) |
 | **Hellhound** | 2026-11-11 | 1500 | 1300 | propio, look 238 (`hellhound.py`) | `20228` propio | 71: Inferno Pits 38, Hell Quest 31, mapa base 2 | sí | [HELL_QUEST](HELL_QUEST.md) |
 | **Ice Monk** | 2026-11-10 | 650 | 520 | propio, look 232 (`ice_monk.py`) | `20168` propio | 15: Frozen Isle 11, Mage Tower 2, Glacier Reach 2 | sí | [ICE_MONK](ICE_MONK.md) |
 | **Ice Spider** | 2026-11-10 | 1800 | 1400 | propio, look 235 (`ice_spider.py`) | `20167` propio | 34: Frozen Isle 28, Glacier Reach 5, mapa base 1 | sí | [ICE_SPIDER](ICE_SPIDER.md) |
@@ -60,12 +60,12 @@
 | **Red Kongra** | 2026-11-18 | 600 | 230 | propio, look 254 (`red_kongra.py`) | `20232` propio | 12: Kongra Towers 12 | no | [RED_KONGRA](RED_KONGRA.md) |
 | **River Troll** | 2026-11-17 | 85 | 42 | propio, look 252 (`river_troll.py`) | `20233` propio | 6: mapa base 4, Troll Den 2 | sí | [RIVER_STONE_TROLLS](RIVER_STONE_TROLLS.md) |
 | **Root Colossus** | 2026-11-12 | 4800 | 3400 | propio, look 243 (`root_colossus.py`) | `20231` propio | 1: Beast Valley 1 | sí | [ROOT_COLOSSUS](ROOT_COLOSSUS.md) |
-| **Serpent Spawn** | 2026-07-05 | 5000 | 3600 | look 220 | `4323` de 7.6 | 11: Beast Valley 6, mapa base 4, Tp Gauntlet 1 | sí | [CRYSTAL_ARROW](CRYSTAL_ARROW.md) |
+| **Serpent Spawn** | 2026-07-05 | 5000 | 3600 | look 220 | `4323` de 7.6 | 11: Beast Valley 6, mapa base 4, Tp Gauntlet 1 | sí | [ARMAS](ARMAS.md) |
 | **Stone Troll** | 2026-11-17 | 160 | 90 | propio, look 253 (`stone_troll.py`) | `20234` propio | 5: mapa base 3, Troll Den 2 | sí | [RIVER_STONE_TROLLS](RIVER_STONE_TROLLS.md) |
 | **The Fallen Emperor** | 2026-11-12 | 12000 | 9000 | propio, look 244 (`fallen_emperor.py`) | `20242` propio | 1: Imperial Castle 1 | no | [IMPERIAL_CASTLE](IMPERIAL_CASTLE.md) |
 | **Thornwarden** | 2026-11-19 | 6500 | 5500 | propio, look 226 (`thornwarden.py`) | `20235` propio | 1: Elvenbane 1 | no | [ELVENBANE](../items-and-map/ELVENBANE.md) |
 | **Tide Priest** | 2026-11-10 | 720 | 620 | propio, look 234 (`tide_priest.py`) | `20170` propio | 6: Epstein Hunts 5, Bridge Tower 1 | sí | [TIDE_PRIEST](TIDE_PRIEST.md) |
-| **Wrath** | 2026-07-17 | 15000 | 12500 | look 137 | `3065` de 7.6 | 1: Tp Gauntlet 1 | no | [BOAT_TRAVEL](BOAT_TRAVEL.md) |
+| **Wrath** | 2026-07-17 | 15000 | 12500 | look 137 | `3065` de 7.6 | 1: Tp Gauntlet 1 | no | [ARMAS](ARMAS.md) |
 
 ## Traídos de 8.60 (44)
 
@@ -141,6 +141,11 @@ Script: `python3.11 scripts/client-rme/creature_corpses.py --preview /tmp/cadave
 (`devtools/zagan-test/custom-sprites/`); `--entries` imprime las líneas para `NEW_ITEMS` de
 `add_custom_items.py`, que los instala en el `.dat`/`.spr` y en `items-zagan-test.otb`. Ids: server
 `20225`–`20249`, client ids sacrificados (runas sin uso y adornos sueltos, de `--candidates`).
+
+**Ojo con los client ids:** `--candidates` revisa mapa, loot, NPC y scripts, pero **no los personajes**. Antes
+de sacrificar uno, buscar su server id en `players/*.xml` y `houseitems.xml` de la ThinkPad (solo lectura).
+Pasó el 19 nov 2026: el cadáver de la Metal Hydra se puso en el client 3236 y la "music piece" (2349) que
+tiene el GM pasó a verse como el cadáver; se movió al 3216 y el 3236 volvió a ser el original.
 
 ![Cadáveres: arriba el base, abajo el nuevo](img/cadaveres-nuevos.png)
 

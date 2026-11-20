@@ -201,11 +201,11 @@ NEW_ITEMS = [
          png="black_fire_sword.png", frames=2, light=(3, 113), attack=35, defence=22,
          descr="The blade is a black flame."),
     # Cadáveres de los Metal (nov 2026): el cadáver del original recoloreado con las paletas del preset
-    # (creature_corpses.py escribe los PNG). Clients sacrificados: rabbit present, music piece, cookbook.
+    # (creature_corpses.py escribe los PNG). Clients sacrificados: rabbit present, document (antes music piece 3236: la tiene el GM), cookbook.
     dict(name="metal dragon corpse", server_id=20225, client_id=3242, prototype=3104,
          png="metal_dragon_corpse.png", corpse=True, tiles=2,
          descr="The wrecked frame of a metal dragon. Coolant still glows in its veins."),
-    dict(name="metal hydra corpse", server_id=20226, client_id=3236, prototype=4283,
+    dict(name="metal hydra corpse", server_id=20226, client_id=3216, prototype=4283,
          png="metal_hydra_corpse.png", corpse=True, tiles=2,
          descr="The wrecked frame of a metal hydra, leaking acid."),
     dict(name="metal demon corpse", server_id=20227, client_id=3234, prototype=2916,

@@ -215,6 +215,11 @@ Script: `python3.11 scripts/client-rme/creature_corpses.py --preview /tmp/cadave
 `add_custom_items.py`, que los instala en el `.dat`/`.spr` y en `items-zagan-test.otb`. Ids: server
 `20225`–`20249`, client ids sacrificados (runas sin uso y adornos sueltos, de `--candidates`).
 
+**Ojo con los client ids:** `--candidates` revisa mapa, loot, NPC y scripts, pero **no los personajes**. Antes
+de sacrificar uno, buscar su server id en `players/*.xml` y `houseitems.xml` de la ThinkPad (solo lectura).
+Pasó el 19 nov 2026: el cadáver de la Metal Hydra se puso en el client 3236 y la "music piece" (2349) que
+tiene el GM pasó a verse como el cadáver; se movió al 3216 y el 3236 volvió a ser el original.
+
 ![Cadáveres: arriba el base, abajo el nuevo](img/cadaveres-nuevos.png)
 
 ## Originales de YurOTS ({len(groups['original'])})

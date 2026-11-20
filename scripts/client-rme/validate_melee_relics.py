@@ -11,7 +11,7 @@ from add_recolor_effects import read_sections
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--before',type=Path,default=ROOT/'backups/map/melee-relics-main-before')
+    ap.add_argument('--before',type=Path,default=ROOT/'backups/map/melee-relics-before')
     args=ap.parse_args(); things=ROOT/'devtools/rme/rme-client-760'
     old_dat=(args.before/'Tibia.dat').read_bytes();new_dat=(things/'Tibia.dat').read_bytes()
     old=A.B.DatReader(old_dat);new=A.B.DatReader(new_dat)
@@ -41,7 +41,7 @@ def main():
         assert A.B.get_block_payload(blocks,A.ITEM_ATTR_WEAPON2)==bytes([weapon_type,0,0,item['attack'],item['defence']])
         slot_bytes=A.B.get_block_payload(blocks,0x15)
         assert struct.unpack('<H',slot_bytes)[0]==slot,(item['name'],slot_bytes)
-    for monster,item,chance in [('warlock',20225,300),('root colossus',20226,350),('worker golem',20227,400)]:
+    for monster,item,chance in [('warlock',20250,300),('root colossus',20251,350),('worker golem',20252,400)]:
         entries=ET.parse(ROOT/'server/YurOTS/ots/data/monster'/f'{monster}.xml').findall(f'./loot/item[@id="{item}"]')
         assert len(entries)==1 and entries[0].get('chance')==str(chance)
     effects(things,True)
