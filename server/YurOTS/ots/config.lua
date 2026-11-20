@@ -211,8 +211,8 @@ fixlootchance = 1
 -- fixchangetarget: los monstruos cambian de blanco segun "changetarget" del XML (antes, en cada turno)
 fixchangetarget = 1
 -- fixshielddefense: tirada de defensa entre defensa/4 y defensa (antes, entre 0 y defensa/4). Cambia mucho
--- el balance (los escudos bloquean ~5 veces mas): probar con un knight antes de prenderla
-fixshielddefense = 0
+-- el balance (los escudos bloquean ~5 veces mas). Prendida el 2026-11-20
+fixshielddefense = 1
 
 -- experience multiplier for pvp-enforced (how much faster you got exp from players)
 expmulpvp = 2

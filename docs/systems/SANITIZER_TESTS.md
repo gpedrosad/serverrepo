@@ -136,7 +136,7 @@ binario y se elige con una línea en `server/YurOTS/ots/config.lua` (sin compila
 |---|---|---|
 | `fixlootchance` | Loot y summons con la chance configurada (el doble que antes). Con esto `lootmul = 3` da de verdad 3 veces la chance del XML; antes daba 1,5 | **Prendida** (`= 1`) |
 | `fixchangetarget` | Cambio de blanco con el X % del XML (`changetarget` va de 0 a 10000; casi todos los monstruos tienen 200 = 2 % por think) | **Prendida** (`= 1`) |
-| `fixshielddefense` | Tirada de defensa entre defensa/4 y defensa | **Apagada** (`= 0`): es el cambio más grande (un knight con defensa 150 pasa de bloquear ~19 a ~94 por golpe); probar con un knight antes |
+| `fixshielddefense` | Tirada de defensa entre defensa/4 y defensa | **Prendida** (`= 1`) desde el 2026-11-20: un knight con defensa 150 pasa de bloquear ~19 a ~94 por golpe. Si los knights quedan demasiado fuertes, volver a `0` (sin compilar) |
 
 Se leen al arrancar y con `/reload config` (GM). Sin la línea, o con `0`, esa cuenta sigue como antes. Si el
 loot queda muy alto, bajar `lootmul`. Ninguna de las tres se probó todavía jugando un rato largo.
