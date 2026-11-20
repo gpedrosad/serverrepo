@@ -72,28 +72,44 @@ def unpack_pos(b):
 NAME = rb"\x6A(.....)\x61\x00....(....)..(?:Wolf|Rat|Skeleton|Orc|Troll|Bear|Ghoul|Demon Skeleton|Fire Elemental)"
 
 
+def near(p, ref, r=12):
+    return ref is None or (abs(p[0] - ref[0]) <= r and abs(p[1] - ref[1]) <= r and p[2] <= 15)
+
+
 def track(buf, rat_id, rat_pos, me_id, me_pos):
-    """Recorre los paquetes en orden: altas (0x6A), movidas (0x6D) y velocidades (0x8F)."""
+    """Recorre los paquetes en orden: alta del summon (0x6A con su nombre), su aparición en una casilla (0x6A o
+    0x69 con su id: así avisa Game::teleport cuando se teletransporta un monstruo), movidas (0x6D) y velocidades
+    (0x8F)."""
+    events = []
+    for m in re.finditer(NAME, buf, re.S):
+        events.append((m.start(), "new", unpack_pos(m.group(1)), struct.unpack("<I", m.group(2))[0]))
+    rid = rat_id or next((e[3] for e in events), None)
+    if rid is not None:
+        for m in re.finditer(re.escape(b"\x62\x00" + struct.pack("<I", rid)), buf):
+            window = buf[max(0, m.start() - 24):m.start()]
+            for k in range(len(window) - 6, -1, -1):        # la casilla (0x69/0x6A + posición) más cercana antes
+                if window[k] in (0x69, 0x6A):
+                    p = unpack_pos(window[k + 1:k + 6])
+                    if near(p, me_pos):
+                        events.append((m.start(), "at", p, None))
+                        break
+    for m in re.finditer(rb"\x6D(.....)(.)(.....)", buf, re.S):
+        frm, to = unpack_pos(m.group(1)), unpack_pos(m.group(3))
+        if cheb(frm, to) <= 1 and near(frm, me_pos):
+            events.append((m.start(), "move", frm, to))
     speeds = {}
-    # 0x69 (casilla actualizada): así avisa Game::teleport cuando se teletransporta un monstruo
-    for m in re.finditer(NAME + rb"|[\x6A\x69](.....)(?:..){0,4}?\x62\x00(....)|\x6D(.....)(.)(.....)"
-                         rb"|\x8F(....)(..)", buf, re.S):
-        if m.group(1):
-            rat_id, rat_pos = struct.unpack("<I", m.group(2))[0], unpack_pos(m.group(1))
-        elif m.group(3):
-            cid = struct.unpack("<I", m.group(4))[0]
-            if cid == rat_id:
-                rat_pos = unpack_pos(m.group(3))
-            elif cid == me_id:
-                me_pos = unpack_pos(m.group(3))
-        elif m.group(5):
-            frm, to = unpack_pos(m.group(5)), unpack_pos(m.group(7))
-            if frm == me_pos:           # primero el dueño: al cambiar de lugar comparten casilla un instante
-                me_pos = to
-            elif frm == rat_pos:
-                rat_pos = to
-        else:
-            speeds[struct.unpack("<I", m.group(8))[0]] = struct.unpack("<H", m.group(9))[0]
+    for m in re.finditer(rb"\x8F(....)(..)", buf, re.S):
+        speeds[struct.unpack("<I", m.group(1))[0]] = struct.unpack("<H", m.group(2))[0]
+    for _off, kind, a, b in sorted(events, key=lambda e: e[0]):
+        if kind == "new" and rat_id is None:
+            rat_id, rat_pos = b, a
+        elif kind == "at":
+            rat_pos = a
+        elif kind == "move":
+            if a == me_pos:             # primero el dueño: al cambiar de lugar comparten casilla un instante
+                me_pos = b
+            elif a == rat_pos:
+                rat_pos = b
     return rat_id, rat_pos, me_pos, speeds
 
 
@@ -134,15 +150,17 @@ def main() -> int:
     gm.say("/c Bot Druid")
     druid.read(1.5)
     druid.pos = tuple(a.start)
+    gm.say(f"/goto {a.dest[0]} {a.dest[1]} {a.dest[2]}")      # el GM se aparta: si no, tapa la vuelta
+    gm.read(0.5)
     print(f"druida {druid.id} en {druid.pos}")
     mark = len(druid.buf)
     druid.say(f'utevo res "{a.monster.lower()}')   # el cliente manda sin comilla de cierre
     druid.read(1.5)
     rat_id, rat_pos, me, speeds = track(druid.buf[mark:], None, None, druid.id, druid.pos)
     if not rat_id:
-        print("FALLA: no apareció la rata")
+        print("FALLA: no apareció el summon")
         return 1
-    print(f"rata {rat_id} en {rat_pos}")
+    print(f"summon {rat_id} en {rat_pos}")
 
     fails = behind = steps = back = 0
     for opcode in [0x66] * 5 + [0x68] * 5 + [0x66] * 3:   # este, oeste, este
@@ -160,25 +178,23 @@ def main() -> int:
         behind += rat_pos == before
         if d > 1:
             fails += 1
-        print(f"  druida {me}  rata {rat_pos}  distancia {d}{'  (en la casilla que dejó)' if rat_pos == before else ''}")
+        print(f"  druida {me}  summon {rat_pos}  distancia {d}{'  (en la casilla que dejó)' if rat_pos == before else ''}")
     added = creature_speeds(druid.buf)
     my_speed = speeds.get(druid.id, added.get(druid.id))
     rat_speed = speeds.get(rat_id, added.get(rat_id))
-    print(f"velocidad: rata {rat_speed}, druida {my_speed}")
+    print(f"velocidad: summon {rat_speed}, druida {my_speed}")
 
-    gm.say(f"/goto {a.dest[0]} {a.dest[1]} {a.dest[2]}")
-    gm.read(1.0)
     mark = len(druid.buf)
     gm.say("/c Bot Druid")
     druid.read(2.0)
     me = tuple(a.dest)
     rat_id, rat_pos, _me, speeds = track(druid.buf[mark:], rat_id, rat_pos, druid.id, me)
     tp_ok = cheb(rat_pos, me) <= 1 and rat_pos[2] == me[2]
-    print(f"después de /c: druida {me}  rata {rat_pos}  {'OK' if tp_ok else 'FALLA'}")
+    print(f"después de /c: druida {me}  summon {rat_pos}  {'OK' if tp_ok else 'FALLA'}")
 
     ok = rat_id and steps >= 10 and back >= 4 and fails == 0 and tp_ok and rat_speed == my_speed
-    print(f"{'OK' if ok else 'FALLA'}: {steps} pasos ({back} de vuelta, cambiando de lugar con la rata), "
-          f"{fails} con la rata lejos, {behind} en la casilla que dejó")
+    print(f"{'OK' if ok else 'FALLA'}: {steps} pasos ({back} de vuelta, cambiando de lugar con el summon), "
+          f"{fails} con el summon lejos, {behind} en la casilla que dejó")
     return 0 if ok else 1
 
 

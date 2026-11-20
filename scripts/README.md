@@ -110,6 +110,11 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 
 Ver comandos de arriba; deploy: ver abajo.
 
+| Script | Uso |
+|--------|-----|
+| `ot/exercise-server.py` | Bots que usan y maltratan un servidor de prueba ([SANITIZER_TESTS.md](../docs/systems/SANITIZER_TESTS.md)) |
+| `ot/test-summon-follow.py` | Prueba con bots en un servidor aparte: el summon sigue al dueño a un paso, con su velocidad y al cambiar de piso ([SUMMONS.md](../docs/gameplay/SUMMONS.md)) |
+
 ## Deploy
 
 No hay script de deploy ni servidor de producción por ahora. Los deploys van a la ThinkPad, solo con el OK de
