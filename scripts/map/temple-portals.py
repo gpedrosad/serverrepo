@@ -36,6 +36,7 @@ READABLES = REPO / "server/YurOTS/ots/data/readables.xml"
 from portal_citadel_layout import plaza_plan, install_upper, tile_flags, TOWER_BASE
 from portal_temple_style import apply_style
 from portal_temple_details import apply_details, KEEP_DETAILS
+from portal_temple_architecture import rebuild_tower
 Z = 7
 X1, Y1, X2, Y2 = 155, 43, 169, 52            # plaza
 ROW = (155, 53, 169, 55)                      # fila vieja de portales
@@ -188,6 +189,7 @@ def main() -> int:
     print(f"templo: {sum(styled.values())} piezas de galería/torres pasadas a basalto y cian")
     details = apply_details(root, load_otb())
     print(f"entrada, faroles y rejas: {sum(details.values())} sustituciones/adiciones")
+    print(f"torre sureste: base y escaleras reconstruidas; {rebuild_tower(root)} casillas nuevas")
 
     print(f"plaza: {plaza_done} casillas; torres: {tower_added} casillas nuevas; fila vieja: {row_fixed} portales/carteles sacados")
     for k, px, dest, _t, _z in PORTALS:

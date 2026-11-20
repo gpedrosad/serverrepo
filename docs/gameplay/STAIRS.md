@@ -67,6 +67,27 @@ cerrado de z8, donde uno quedaba encerrado. Regla para cualquier generador: **`1
 abajo, `432` en el de arriba, misma x,y**. Detalle en
 [MAPEAR_TORRE_BARQUERO.md](../items-and-map/MAPEAR_TORRE_BARQUERO.md#error-que-ya-pasó-escaleras-al-revés-arreglado-16-nov-2026).
 
+## Torre sureste del templo — 20 nov 2026
+
+La bajada 432 de 168,54,6 no tenía subida en la planta baja. La torre se reconstruye
+en `portal_temple_architecture.py` (165–169,52–56,z2–7) con cinco pares de escalera:
+
+| Piso inferior → superior | x,y |
+|---|---|
+| 7 → 6 | 168,54 |
+| 6 → 5 | 166,54 |
+| 5 → 4 | 168,54 |
+| 4 → 3 | 166,54 |
+| 3 → 2 | 168,54 |
+
+Subida propia **20260** (client 3217, clon 1385, floorchange north) y bajada **20261**
+(client 3214, clon 432, floorchange down). Mismo x,y en cada par; al subir se llega a
+y−1 arriba y al bajar a y+1 abajo. Los rellanos quedan dentro de la torre.
+20261 se registra en `actions.xml`; 20260 se añade a `STAIRS_LANDING` de `teleport.lua`
+para que el click derecho de bajada use el mismo desplazamiento que caminar.
+La subida usa el movimiento nativo. No hay cambios de C++.
+Aplicación/render sin suites ni recorrido in-game, por pedido de Gonzalo.
+
 ## Pendiente (mapa)
 
 - Escalera de mano que baja en `194, 150, 8`: abajo (`194, 150, 9`) es roca. Usarla o pisarla te

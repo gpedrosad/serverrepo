@@ -181,6 +181,7 @@ respetando el pedido de Gonzalo; verificación de estado durante el deploy.
 | 20259 | 3223 | 2038 | Aplique de cristal cian, luz 5/71 | 2 / 32×64 |
 
 El arco conserva los prototipos pasables de 160–161,56,7 y emite luz 3/71.
+Esa es la ubicación de la primera versión; el pórtico completo se adelanta en la corrección de abajo.
 El umbral ocupa 160–161,56–58,7 con anillos y sendero cian; el basalto cubre además
 159/162,56,7 bajo los laterales. Dos faroles nuevos flanquean el acceso en 159/162,57,7,
 dejando las dos casillas centrales libres. Los faroles y rejas anteriores se sustituyen
@@ -227,3 +228,34 @@ por HTTP en 8080/8076. Once tiles de locker idénticos byte por byte al mapa pre
 ni warnings. Probe `192.168.1.17:7171` OK, healthy, 0 reinicios automáticos.
 1 cuenta, 8 personajes y 31 casas preservados; depots, dueños, config y binario iguales
 al snapshot previo. No se ejecutaron suites ni prueba de depot in-game por pedido de Gonzalo.
+
+## Corrección: pórtico completo y torre sureste — 20 nov 2026
+
+Reporte de Gonzalo tras el deploy: entrada incompleta y torre inferior derecha sin escalera/estructura.
+El arco anterior se había adaptado a las pequeñas mitades del mármol y quedaba oculto por el techo.
+La torre tenía una bajada en z6 sin la subida correspondiente en z7.
+
+![Pórtico completo adelantado a la fachada](img/portal-architecture/entrance.png)
+
+![Plantas de la torre, con escaleras alternadas y terraza](img/portal-architecture/tower-floors.png)
+
+- El pórtico usa el dibujo completo de 128×64, dividido en dos piezas 64×64, con pilares y
+  dintel continuos. Anclas **160,57,7** y **162,57,7**: cuatro casillas de ancho, dos centrales
+  libres. Mantiene 20253/20254 y clients 3229/3228, con prototipos pasables. Los faroles
+  laterales conservan sus posiciones; se retira el arco de la fila 56.
+- La torre de **165–169,52–56,z2–7** tiene base con acceso oeste, muros/ventanas coherentes
+  entre pisos y terraza con rejas y cristal. Se reemplaza el remate de juncos/campos eléctricos
+  sin IDs de acción/quest; se conserva la puerta original de la biblioteca en z5.
+- Cinco pares de escalera alternan x168/x166 en y54, desde z7 hasta z2. Subida **20260/client3217**
+  (clon 1385) y bajada **20261/client3214** (clon 432); misma x,y en cada par. Ver STAIRS.md.
+  Hay nueve tiles nuevos en el borde del remate de z2; el resto ocupa casillas existentes.
+- `portal_temple_architecture.py`, llamado por `temple-portals.py`, es el dueño de esos 150 tiles.
+  Conserva flags de tile y mobiliario ajeno a la estructura; no cambia depots ni teleports.
+
+Fuentes de ImageGen integradas añadidas a `portal-details/prompts.json`:
+`entrance-complete-generated.png`, `stairs-up-generated.png`, `stairs-down-generated.png`.
+El arte anterior se conserva como fuente histórica. Se añaden 13 sprites (14343 → **14356**):
+ocho del arco y cinco de escaleras. DAT/SPR preparados idénticos para Mac/Windows.
+Backup de esta corrección: `backups/map/portal-entrance-tower-before/`.
+Se ejecutaron el importador, el generador y el render de imágenes; sin suites ni pruebas de juego.
+Pendiente activación de esta corrección en el servidor.

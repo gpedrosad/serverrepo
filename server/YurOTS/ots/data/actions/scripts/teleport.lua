@@ -15,7 +15,7 @@ local function landing(ids, dx, dy)
 		STAIRS_LANDING[ids[i]] = {dx, dy}
 	end
 end
-landing({1385, 1394, 1396, 1404, 3685, 3687}, 0, 1)	-- north
+landing({1385, 1394, 1396, 1404, 3685, 3687, 20260}, 0, 1)	-- north
 landing({1392, 1402, 3683}, 0, -1)			-- south
 landing({1388, 1398, 3679}, -1, 0)			-- east
 landing({1390, 1400, 3681, 3688}, 1, 0)			-- west

@@ -10,6 +10,7 @@ REPLACEMENTS = {1120: ENTRANCE_LEFT, 1121: ENTRANCE_RIGHT, 1480: LANTERN,
                 1543: RAIL_V, 1544: RAIL_H, 1545: RAIL_CORNER, 2038: WALL_LIGHT}
 ENTRY_PAD = {(x,y,7) for x in (160,161) for y in (56,57,58)} | {(159,56,7),(162,56,7)}
 FRONT_LIGHTS = {(159,57,7), (162,57,7)}
+ARCH = {(160,57,7):ENTRANCE_LEFT, (162,57,7):ENTRANCE_RIGHT}
 
 
 def inside(x,y,z):
@@ -26,7 +27,7 @@ def apply_details(root,otb):
             if tile[0] not in (5,14):
                 continue
             pos = (ax+tile[1][0],ay+tile[1][1],z)
-            if not inside(*pos) and pos not in ENTRY_PAD|FRONT_LIGHTS:
+            if not inside(*pos) and pos not in ENTRY_PAD|FRONT_LIGHTS|set(ARCH):
                 continue
             if tile[0] == 14:
                 raise ValueError(f'El detalle del templo invade una casa: {pos}')
@@ -46,4 +47,10 @@ def apply_details(root,otb):
                     struct.unpack_from('<H',ch[1])[0] == LANTERN for ch in tile[2]):
                 tile[2].append([6,bytearray(struct.pack('<H',LANTERN)),[]])
                 counts[0,LANTERN] += 1
+            # El arco anterior se perdía bajo el techo: trasladar las dos mitades
+            # al frente, separadas 64 px para formar un pórtico completo de 4 tiles.
+            tile[2]=[c for c in tile[2] if not (c[0]==6 and
+                     struct.unpack_from('<H',c[1])[0] in (ENTRANCE_LEFT,ENTRANCE_RIGHT))]
+            if pos in ARCH:
+                tile[2].append([6,bytearray(struct.pack('<H',ARCH[pos])),[]])
     return counts
