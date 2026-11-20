@@ -5992,4 +5992,16 @@
 		<monster name="Ice Spider" x="0" y="-2" z="7" spawntime="240" />
 	</spawn>
 	<!-- END GLACIER_REACH_SPAWNS -->
+	<!-- BEGIN ELF_WEST_SPAWNS -->
+	<spawn centerx="95" centery="65" centerz="7" radius="2">
+		<monster name="Elf Scout" x="0" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="94" centery="56" centerz="7" radius="2">
+		<monster name="Elf Arcanist" x="0" y="0" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="89" centery="51" centerz="7" radius="2">
+		<monster name="Blue Elf Arcanist" x="0" y="0" z="7" spawntime="220" />
+		<monster name="Elf Arcanist" x="1" y="0" z="7" spawntime="220" />
+	</spawn>
+	<!-- END ELF_WEST_SPAWNS -->
 </spawns>

@@ -69,7 +69,7 @@ python3 scripts/client-rme/render_outfit_colors.py \
 
 ## Pendiente
 
-- **Spawn:** no está en `test-spawn.xml` ni en el mapa. Agregarlo cuando se decida la zona.
+- **Spawn:** agregado al santuario de [Ruinas del Sauce](../items-and-map/ELF_WEST.md), `89,51,7`, respawn 220 s; preparado el 20 nov 2026.
 - **Prueba in-game:** falta verlo con el cliente real; el preview es una aproximación de la
   colorización. Si el cliente aplica la paleta con otro mapeo de sombras, ajustar los índices.
 - **Deploy:** no necesita rebuild ni actualización de cliente; alcanza con reiniciar el server

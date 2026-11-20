@@ -126,4 +126,7 @@
 	<!-- BEGIN GLACIER_REACH_SIGNS -->
 	<readable x="266" y="37" z="7" text="GLACIAR DEL ESTE\nEl sendero sigue al este, cada vez mas frio.\nAl final, dragones y aranas de hielo.\nNivel 60+."/>
 	<!-- END GLACIER_REACH_SIGNS -->
+	<!-- BEGIN ELF_WEST_SIGNS -->
+	<readable x="101" y="72" z="7" text="RUINAS DEL SAUCE\nAl oeste: exploradores y arcanistas.\nEl santuario azul queda al fondo."/>
+	<!-- END ELF_WEST_SIGNS -->
 </readables>

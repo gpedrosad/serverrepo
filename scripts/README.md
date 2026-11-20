@@ -141,3 +141,5 @@ Desactivados temporalmente — ver `AGENTS.md` §2.7.
 | `code/linux-build-flags.h` | Configuración del build de Linux para `unifdef -f` |
 
 Ver `docs/systems/LIMPIEZA_CODIGO_NOV2026.md`.
+
+- `map/generate-elf-west.py` — Elfland y Ruinas del Sauce al oeste; `--dry-run`, guardas de costa, spawns y patrimonio. Doc: `docs/items-and-map/ELF_WEST.md`.
