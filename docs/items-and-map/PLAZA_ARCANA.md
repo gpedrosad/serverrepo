@@ -258,4 +258,13 @@ El arte anterior se conserva como fuente histórica. Se añaden 13 sprites (1434
 ocho del arco y cinco de escaleras. DAT/SPR preparados idénticos para Mac/Windows.
 Backup de esta corrección: `backups/map/portal-entrance-tower-before/`.
 Se ejecutaron el importador, el generador y el render de imágenes; sin suites ni pruebas de juego.
-Pendiente activación de esta corrección en el servidor.
+Activada en la ThinkPad el 20 nov 2026: servidor `a3325f4`, cliente `71ae582`.
+Respaldo `~/backups/pre-deploy-20261120-112515-complete-portico-tower`, refrescado antes
+del reinicio y con copia posterior al guardado. Publicación previa del cliente:
+DAT/SPR/minimapa, 774 archivos; CRC DAT `c5508297`, SPR `f23b91d0`, minimapa `309f31ee`.
+Los tres assets coinciden por HTTP en 8080/8076 y dentro de los ZIPs Mac/Windows.
+Once tiles completos de locker idénticos al mapa anterior.
+`docker restart -t 45 yurots`: graceful shutdown completo, Loaded in **0,862 s**,
+sin errores ni warnings; probe OK / healthy, 0 reinicios automáticos.
+1 cuenta, 8 personajes, 31 casas, depots, dueños, config y binario preservados.
+Sin suites ni recorrido/depot in-game por pedido de Gonzalo.

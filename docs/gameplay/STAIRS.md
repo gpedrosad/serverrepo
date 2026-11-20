@@ -87,6 +87,8 @@ y−1 arriba y al bajar a y+1 abajo. Los rellanos quedan dentro de la torre.
 para que el click derecho de bajada use el mismo desplazamiento que caminar.
 La subida usa el movimiento nativo. No hay cambios de C++.
 Aplicación/render sin suites ni recorrido in-game, por pedido de Gonzalo.
+Activado el 20 nov 2026 (`a3325f4`): cliente publicado antes del reinicio ordenado;
+probe OK / healthy. Detalle y respaldo en PLAZA_ARCANA.md.
 
 ## Pendiente (mapa)
 
