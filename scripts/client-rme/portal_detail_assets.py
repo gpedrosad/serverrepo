@@ -27,6 +27,10 @@ ITEMS = [
          png='rail-corner.png', tiles=2),
     dict(name='arcane crystal wall light', server_id=20259, client_id=3223, prototype=2038,
          png='wall-lamp.png', tiles='1x2', frames=2, light=(5,71)),
+    dict(name='arcane tower stairs', server_id=20260, client_id=3217, prototype=1385,
+         png='stairs-up.png', tiles=2, light=(2,71)),
+    dict(name='arcane tower stairwell', server_id=20261, client_id=3214, prototype=432,
+         png='stairs-down.png', light=(2,71)),
 ]
 for item in ITEMS:
     item.update(decor=True, descr='Dark metal, basalt and cyan crystal made for the teleport temple.')
@@ -53,12 +57,19 @@ def prepare():
             cell = cell.crop(bounds).resize((anchor[2]-anchor[0],anchor[3]-anchor[1]),Image.Resampling.NEAREST)
             result.alpha_composite(cell,(anchor[0],frame*frame_height+anchor[1]))
         result.save(ART/target)
+    # El pórtico v2 ocupa cuatro casillas: dos mitades de 64 px sin solaparse.
+    # Se conserva la pieza completa, sin encogerla al fragmento de mármol anterior.
+    arch = Image.open(ART/'entrance-complete-generated.png').convert('RGBA')
+    arch.putalpha(arch.getchannel('A').point(lambda a: 255 if a >= 128 else 0))
+    arch = arch.crop(arch.getbbox()).resize((128,64),Image.Resampling.NEAREST)
     for col,side in enumerate(('left','right')):
-        adapt('entrance-generated.png',f'entrance-{side}.png',f'template-{1120+col}.png',columns=2,column=col)
+        arch.crop((col*64,0,(col+1)*64,64)).save(ART/f'entrance-{side}.png')
     adapt('streetlamp-generated.png','streetlamp.png','template-1480.png',rows=2)
     for name,proto in [('rail-vertical',1543),('rail-horizontal',1544),('rail-corner',1545)]:
         adapt(f'{name}-generated.png',f'{name}.png',f'template-{proto}.png')
     adapt('wall-lamp-generated.png','wall-lamp.png','template-2038.png',rows=2)
+    adapt('stairs-up-generated.png','stairs-up.png','template-1385.png')
+    Image.open(ART/'stairs-down-generated.png').convert('RGB').resize((32,32),Image.Resampling.NEAREST).convert('RGBA').save(ART/'stairs-down.png')
 
 
 def main():
@@ -77,7 +88,7 @@ def main():
         if not node and item['client_id'] not in free:
             raise SystemExit(f'Client ID ocupado: {item["client_id"]}')
     if args.apply:
-        backup=ROOT/'backups/map/portal-details-before';backup.mkdir(parents=True,exist_ok=True)
+        backup=ROOT/'backups/map/portal-entrance-tower-before';backup.mkdir(parents=True,exist_ok=True)
         for p in [things/'Tibia.dat',things/'Tibia.spr',otb,ROOT/'server/YurOTS/ots/data/world/test.otbm']:
             if not (backup/p.name).exists():shutil.copy2(p,backup/p.name)
     A.NEW_ITEMS=ITEMS

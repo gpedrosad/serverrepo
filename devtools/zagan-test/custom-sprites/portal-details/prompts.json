@@ -43,6 +43,27 @@
       "reference": "/Users/gonzalo/orca/workspaces/serverrepo/bream/devtools/zagan-test/custom-sprites/portal-details/template-2038.png",
       "style": "/Users/gonzalo/orca/workspaces/serverrepo/bream/devtools/zagan-test/custom-sprites/portal-citadel/wall-1028.png",
       "source": "/Users/gonzalo/.codex/generated_images/01a1f073-b9af-7453-928e-1540498fcc7a/exec-a3198f52-cac3-49e5-a9af-a3240ed87a6b.png"
+    },
+    {
+      "name": "entrance-complete",
+      "reference": "/Users/gonzalo/orca/workspaces/serverrepo/bream/devtools/zagan-test/custom-sprites/portal-details/entrance-complete-template.png",
+      "prompt": "Create a COMPLETE freestanding open entrance arch for a Tibia 7.6 pixel-art temple. Image 1 is the exact geometry: a 128x64 logical-pixel arch with two strong pillars at the OUTER ends, a continuous top lintel across the entire width, stone feet, and an open transparent middle. Image 2 is the material reference: dark navy basalt, silver beveled edges, electric cyan circuit runes. Keep the first reference's complete silhouette and alignment EXACTLY; fill its frame with rich stone/metal texture, place one cyan diamond centered on the top beam. Two 64x64 halves must join seamlessly at the center, no gap, no floating separated pieces. Draw on the native coarse pixel grid, nearest-neighbor enlarged, crisp pixels, no blur or antialiasing. Genuine transparent background and opening. No doors, floor, people, extra objects, text, labels, shadows or haze. Entire arch fills the canvas edge to edge in the same 2:1 aspect as the first reference. This corrects an incomplete arch; both pillars and the continuous beam must be fully present.",
+      "style": "/Users/gonzalo/orca/workspaces/serverrepo/bream/devtools/zagan-test/custom-sprites/portal-citadel/wall-1028.png",
+      "source": "/Users/gonzalo/.codex/generated_images/01a1f073-b9af-7453-928e-1540498fcc7a/exec-b1d4ea0c-8c27-4604-bf90-2478d286e69f.png"
+    },
+    {
+      "name": "stairs-up",
+      "reference": "/Users/gonzalo/orca/workspaces/serverrepo/bream/devtools/zagan-test/custom-sprites/portal-details/template-1385.png",
+      "prompt": "Use case: stylized-concept. Create a functional-looking ascending staircase map sprite for classic Tibia 7.6. Image 1 is the exact 64x64 logical-pixel geometry and perspective of the native stairs; keep every step position, the bottom-left start, top-right end, exact footprint and silhouette. Image 2 is the material style. Replace ivory stone with dark navy basalt steps, restrained silver-blue riser highlights, thin electric cyan light strips at the step edges and angular side trim. Crisp old-school native pixel art, visibly stepped square pixels on a 64x64 logical grid then nearest-neighbor enlarged, no antialiasing or blur. Transparent background outside the native silhouette, no floor, railing, characters, text, labels or extra props. Keep the orientation EXACTLY; do not rotate or mirror.",
+      "style": "/Users/gonzalo/orca/workspaces/serverrepo/bream/devtools/zagan-test/custom-sprites/portal-citadel/wall-1028.png",
+      "source": "/Users/gonzalo/.codex/generated_images/01a1f073-b9af-7453-928e-1540498fcc7a/exec-c757fd31-173a-48c3-8f8f-be6917c149fb.png"
+    },
+    {
+      "name": "stairs-down",
+      "reference": "/Users/gonzalo/orca/workspaces/serverrepo/bream/devtools/zagan-test/custom-sprites/portal-details/template-432.png",
+      "prompt": "Use case: stylized-concept. Create the matching top landing and downward staircase opening for classic Tibia 7.6, 32x32 logical pixels. Image 1 supplies the exact top-down native stair orientation and footprint, image 2 the dark basalt/electric cyan material. One fully opaque square map ground tile, with basalt border, a clearly dark recessed stairwell and three silver-blue step lips receding into darkness. Cyan highlights restrained at the rim. Keep the native perspective and orientation EXACTLY; do not rotate or mirror. Authentic coarse native pixel art, hard pixels, no blur or antialiasing. Tile fills the entire square with no transparency within it, no extra platform, no people, no icons, no text, no labels.",
+      "style": "/Users/gonzalo/orca/workspaces/serverrepo/bream/devtools/zagan-test/custom-sprites/portal-citadel/wall-1028.png",
+      "source": "/Users/gonzalo/.codex/generated_images/01a1f073-b9af-7453-928e-1540498fcc7a/exec-79c6b926-4814-4114-8279-a6b3dc29de7f.png"
     }
   ]
 }
