@@ -1,51 +1,97 @@
-# Pasarelas junto al depot — elfos y minotauros
+# Muelle junto al depot — pasos a los elfos y al islote del minotauro
 
-Mejora visual discreta del 20 nov 2026, preparada en el mapa; pendiente deploy.
-Conserva las rutas, anchos, alturas, banco y escaleras del muelle al oeste del depot.
-Solo piezas nativas: sin nuevos sprites, OTB, Lua ni C++.
+El muelle de madera al oeste del depot (x113–124, y56–62, z7): el tramo largo con el banco, el brazo norte
+al islote del minotauro y la rampa que sube al rellano de los elfos (z6).
 
-![Muelle antes](img/city-bridge-transitions/before-muelle.png)
+![Muelle actual: barandas, faroles y rampa de madera](img/city-bridge-transitions/v2-muelle.png)
 
-![Muelle con remates y barandas](img/city-bridge-transitions/after-muelle.png)
+## Versión 2 (20 nov 2026): piezas propias de madera
 
-## Qué cambia
+La versión 1 (de la misma mañana) usaba piezas nativas y en el juego se veía rota:
 
-- Remate de piedra `431` en la llegada a la calle: x123–125, y59–61, z7. Las tres
-  casillas de pasto de x125 pasan a pavimento; siguen siendo transitables.
-- Cabeza de piedra al islote: x113–114,y56,z7, con el puente de madera de dos de ancho.
-- Base de piedra bajo la rampa a los elfos: x113–114,y60–61,z7; tres losas del rellano
-  superior (`112,60` y `111–112,61`,z6) usan el mismo acabado.
-- 22 barandas de madera en el borde ya bloqueado del muelle y del puente, ninguna
-  sobre casillas de paso. Norte `1516`, sur `1517`, oeste `1518`, este `1519`.
-- Cuatro faroles nativos encendidos `3744`: `112,56`, `115,58`, `121,58`, `123,62`, z7.
-  Apoyan sobre los bordes, sin ocupar carriles ni llegadas de escalera.
-- Limpieza de bordes duplicados y wild growth en cinco uniones del muelle y detrás
-  del banco (`121,58`). El banco `1662/1663`, trampillas, escaleras y orillas se conservan.
+- las barandas 1516–1519 son palitos finos que se salían del muelle sobre el agua;
+- los faroles 3744 parecían calaveras tiradas;
+- las losas de piedra 431 quedaban como parches cuadrados;
+- la rampa de piedra gris estaba pegada a la madera.
 
-La mejora está junto al [Islote del Minotauro](MAPEAR_ISLOTE_MINOTAURO.md), no cambia
-sus spawns ni los de los elfos. El depot (x126 en adelante), lockers y casas quedan intactos.
+![Versión 1, con piezas nativas](img/city-bridge-transitions/after-muelle.png)
 
-## Aplicación
+Ahora todo es madera y está dibujado para este muelle (`scripts/client-rme/dock_bridge_art.py`):
+
+| Pieza | Server | Dónde |
+|-------|--------|-------|
+| Barandas del tramo norte (esquina, tramo, fin con farol) | 20282, 20283, 20284 | y58, x115–122 (agua y orilla) |
+| Barandas del tramo sur (inicio, tramo, fin con farol) | 20285, 20286, 20287 | y62, x115–122 (agua) |
+| Brazo norte, lado este (cabeza con farol, tramo) | 20288, 20289 | x115, y56–57 |
+| Brazo norte, lado oeste (cabeza con farol, tramo, fin) | 20290, 20291, 20292 | x112, y56–58 |
+| Rampa de escalones (sube al oeste) | 20293–20296 | x113–114, y60–61 (donde estaba la 1390/1391) |
+
+- Barandas: zócalo, postes cada 16 px, travesaño y pasamanos. En las puntas van postes más gruesos.
+  Hay 4 faroles con luz (nivel 4, cálida): en la cabeza del brazo y donde el tramo llega a la orilla.
+- La rampa son 8 escalones de tablas de 8 px de huella y 4 de alto. Copia la 1390/1391 (OTB y `.dat`),
+  así que sube igual que la de piedra. El servidor no usa los ids de rampa en el C++.
+- Los suelos vuelven a madera 405. Pasto 4756 en x125, como antes de la versión 1. El rellano de arriba
+  (`112,60` y `111–112,61`, z6) también es de madera; la trampilla 427 queda.
+- Se conserva la limpieza de la versión 1: los bordes duplicados y el wild growth en las uniones.
+
+Las barandas y los faroles van en casillas de agua u orilla que ya bloqueaban: no cambia el paso. El
+script lo comprueba casilla por casilla (huella, colisión y cambio de piso iguales).
+
+## Cómo están dibujadas
+
+Toda la estructura se modela en 3D y se proyecta como en Tibia: un punto a altura h se ve h px más arriba
+y h px más a la izquierda. Después se corta en una pieza 2x2 por casilla "ancla", que es la parte de la
+estructura cuya base cae en la región de esa casilla. Por eso las barandas empalman sin costuras. Las
+casillas repetidas del tramo dan el mismo sprite: el script lo verifica.
+
+El ancla de cada baranda es la casilla de agua del borde, no el muelle. Así se dibujan en el orden
+correcto respecto de los jugadores:
+
+- la del sur tapa los pies del que camina por y61;
+- la del norte queda detrás del que camina por y59.
+
+El contorno oscuro se calcula sobre la estructura entera, así no aparecen líneas en los cortes entre
+casillas. El vidrio de los faroles va sin contorno.
+
+Límite: un 2x2 alcanza para 32 px de alto hacia arriba/izquierda desde la casilla. Los postes con farol
+miden 27 px. El script corta si algo se sale del 2x2.
+
+## Aplicar o retocar
 
 ```sh
+python3.11 scripts/client-rme/dock_bridge_art.py --preview /tmp/muelle.png   # sprites (PNG 64x64)
+python3.11 scripts/client-rme/add_custom_items.py --things devtools/rme/rme-client-760
 python3 scripts/map/city-bridge-transitions.py --dry-run
 python3 scripts/map/city-bridge-transitions.py
 ```
 
-Reaplicar después de regenerar el islote si se restauraron sus piezas de muelle.
-El script es idempotente y valida antes de escribir: misma huella, transitabilidad,
-flags de colisión/cambio de piso, ambas mitades `1390/1391` de la rampa y atributos
-de items. Rechaza casillas de casa, duplicados o cualquier modificación fuera del ámbito.
+El script del mapa es idempotente: la segunda pasada da 0 cambios. Rechaza:
 
-Resultado contra `backups/map/city-transitions-before/test.otbm`: **41 tiles**, sin
-casillas nuevas; **18 suelos**, 22 barandas y cuatro faroles, con capas de borde sobrantes
-retiradas. Segunda aplicación: 0 cambios. Resto del mapa idéntico, incluidos los 11 lockers,
-teleports y cofres. Banco y escalera conservados. Sin suites ni recorrido in-game por
-pedido de Gonzalo; las imágenes son renders estáticos de los sprites del mapa.
+- casillas de casa o duplicadas;
+- suelos ajenos;
+- una rampa que no sea 1390/1391 o la nueva;
+- cualquier cambio fuera del ámbito.
 
-## Piezas: error que evitar
+Si se regenera el islote del minotauro ([MAPEAR_ISLOTE_MINOTAURO.md](MAPEAR_ISLOTE_MINOTAURO.md)),
+reaplicarlo después.
 
-Las barandas opuestas tienen distinta geometría. `1516` (norte) mide 2×1 y `1518`
-(oeste) 1×2; `1517` (sur) y `1519` (este) son 2×2. Usar la del lado contrario desplaza
-el dibujo una casilla y la deja flotando sobre el agua. No resolverlo poniendo la
-baranda en el carril caminable: se perdería ancho de paso. Ver el render de conjunto.
+Para cambiar el dibujo:
+
+1. Tocar `dock_bridge_art.py`.
+2. Volver a correr los dos primeros comandos. `add_custom_items` reemplaza los sprites del mismo client id.
+3. Publicar el cliente.
+
+Clients sacrificados: 2863, 2859, 2858, 2855, 2847, 2846, 3101, 2996, 2988, 2974, 2884, 2883, 3058, 3024 y
+3023 (bolsas, libros, tazas y adornos sin uso; ninguno en jugadores ni casas al 20 nov). Los tapices de la
+otra sesión tomaron 20275–20281 al mismo tiempo: antes de elegir ids, `git fetch` y `--candidates` sobre `main`.
+
+## Piezas nativas: por qué no
+
+| Piezas | Problema |
+|--------|----------|
+| `1516`–`1519` (wooden railing) | Palitos de 1 px con geometría distinta por lado (2×1, 1×2, 2×2). Usar la del lado contrario la deja flotando sobre el agua. |
+| `3756`–`3791` (bridge) | Cuerdas finas de puente colgante. |
+| `4919`–`4941` (ship railing) | Bordas de barco, demasiado pesadas para un muelle. |
+| `3681`/`3682` | Rampa de cuerdas con huecos. |
+
+Ver [PIEZAS_DE_MAPA.md](PIEZAS_DE_MAPA.md) para mirar piezas antes de usarlas (`render-pieces.py`).
