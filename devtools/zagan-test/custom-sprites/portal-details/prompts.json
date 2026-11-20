@@ -1,0 +1,48 @@
+{
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "assets": [
+    {
+      "name": "entrance",
+      "prompt": "Use case: stylized-concept. Asset type: pixel-art Tibia 7.6 map sprite, production asset. The first image is an exact geometry and placement reference; the second image supplies the electric cyan/navy basalt material style. Rebuild the first reference in that material. Work at the exact logical pixel grid of the reference (then nearest-neighbor enlarged), hard clean pixels, dark navy outline, stepped perspective, silver-cyan highlights, restrained cobalt and electric cyan palette. Keep the orientation and alignment of every part and the transparent gaps. Genuinely transparent background, no ground, no captions, no labels, no extra objects, no painted checkerboard. Create one paired entrance-arch atlas: two 64x64 logical-pixel cells side by side, total logical size 128x64. Left half in left cell, right half in right cell, positioned exactly like the reference. An open angular basalt arch with inset cyan circuit runes, one small glowing cyan diamond over its center, silver beveled edges. The opening must stay transparent and completely unobstructed. No door leaves, no portcullis. Do not join or overlap the two atlas cells.",
+      "reference": "/Users/gonzalo/orca/workspaces/serverrepo/bream/devtools/zagan-test/custom-sprites/portal-details/entrance-template.png",
+      "style": "/Users/gonzalo/orca/workspaces/serverrepo/bream/devtools/zagan-test/custom-sprites/portal-citadel/wall-1028.png",
+      "source": "/Users/gonzalo/.codex/generated_images/01a1f073-b9af-7453-928e-1540498fcc7a/exec-9204e1d1-96cc-4680-ae59-834f45324039.png"
+    },
+    {
+      "name": "streetlamp",
+      "prompt": "Use case: stylized-concept. Asset type: pixel-art Tibia 7.6 map sprite, production asset. The first image is an exact geometry and placement reference; the second image supplies the electric cyan/navy basalt material style. Rebuild the first reference in that material. Work at the exact logical pixel grid of the reference (then nearest-neighbor enlarged), hard clean pixels, dark navy outline, stepped perspective, silver-cyan highlights, restrained cobalt and electric cyan palette. Keep the orientation and alignment of every part and the transparent gaps. Genuinely transparent background, no ground, no captions, no labels, no extra objects, no painted checkerboard. Create a 2-frame vertical atlas, logical size 64x128, two 64x64 cells. In BOTH cells the exact same tall perspective streetlamp as the reference: slender dark angular metal bracket, compact hexagonal cyan crystal lantern at the upper-left, dark stone foot at the lower-right. Replace the purple/yellow light with vivid turquoise crystal. Frame 1 cyan, frame 2 slightly brighter icy cyan, pole and base identical. Keep lamp head and foot at the exact reference positions. No flame.",
+      "reference": "/Users/gonzalo/orca/workspaces/serverrepo/bream/devtools/zagan-test/custom-sprites/portal-details/template-1480.png",
+      "style": "/Users/gonzalo/orca/workspaces/serverrepo/bream/devtools/zagan-test/custom-sprites/portal-citadel/wall-1028.png",
+      "source": "/Users/gonzalo/.codex/generated_images/01a1f073-b9af-7453-928e-1540498fcc7a/exec-d4cea949-5933-4e3a-a4d2-10ab3e2953cf.png"
+    },
+    {
+      "name": "rail-vertical",
+      "prompt": "Use case: stylized-concept. Asset type: pixel-art Tibia 7.6 map sprite, production asset. The first image is an exact geometry and placement reference; the second image supplies the electric cyan/navy basalt material style. Rebuild the first reference in that material. Work at the exact logical pixel grid of the reference (then nearest-neighbor enlarged), hard clean pixels, dark navy outline, stepped perspective, silver-cyan highlights, restrained cobalt and electric cyan palette. Keep the orientation and alignment of every part and the transparent gaps. Genuinely transparent background, no ground, no captions, no labels, no extra objects, no painted checkerboard. Create one 64x64 logical-pixel vertical-perspective railing module following the exact diagonal DOWN-RIGHT direction and endpoint positions of the reference. Dark blue steel uprights, two cyan-edged rails and small diamond crystal caps; delicate angular circuit joints. Keep clear large transparent gaps between bars and make it seamlessly join identical neighbors. No solid panels, no stone wall.",
+      "reference": "/Users/gonzalo/orca/workspaces/serverrepo/bream/devtools/zagan-test/custom-sprites/portal-details/template-1543.png",
+      "style": "/Users/gonzalo/orca/workspaces/serverrepo/bream/devtools/zagan-test/custom-sprites/portal-citadel/wall-1028.png",
+      "source": "/Users/gonzalo/.codex/generated_images/01a1f073-b9af-7453-928e-1540498fcc7a/exec-65aeceb9-d95f-4f23-84e6-fb249e8d1e1e.png"
+    },
+    {
+      "name": "rail-horizontal",
+      "prompt": "Use case: stylized-concept. Asset type: pixel-art Tibia 7.6 map sprite, production asset. The first image is an exact geometry and placement reference; the second image supplies the electric cyan/navy basalt material style. Rebuild the first reference in that material. Work at the exact logical pixel grid of the reference (then nearest-neighbor enlarged), hard clean pixels, dark navy outline, stepped perspective, silver-cyan highlights, restrained cobalt and electric cyan palette. Keep the orientation and alignment of every part and the transparent gaps. Genuinely transparent background, no ground, no captions, no labels, no extra objects, no painted checkerboard. Create one 64x64 logical-pixel horizontal-perspective railing module following the exact shallow down-right perspective angle and endpoint positions of the reference. Dark blue steel uprights, two cyan-edged rails and small diamond crystal caps; delicate angular circuit joints. Keep clear large transparent gaps between bars and make it seamlessly join identical neighbors. No solid panels, no stone wall.",
+      "reference": "/Users/gonzalo/orca/workspaces/serverrepo/bream/devtools/zagan-test/custom-sprites/portal-details/template-1544.png",
+      "style": "/Users/gonzalo/orca/workspaces/serverrepo/bream/devtools/zagan-test/custom-sprites/portal-citadel/wall-1028.png",
+      "source": "/Users/gonzalo/.codex/generated_images/01a1f073-b9af-7453-928e-1540498fcc7a/exec-dc70d387-de88-4c07-b1e2-92c68e96ac61.png"
+    },
+    {
+      "name": "rail-corner",
+      "prompt": "Use case: stylized-concept. Asset type: pixel-art Tibia 7.6 map sprite, production asset. The first image is an exact geometry and placement reference; the second image supplies the electric cyan/navy basalt material style. Rebuild the first reference in that material. Work at the exact logical pixel grid of the reference (then nearest-neighbor enlarged), hard clean pixels, dark navy outline, stepped perspective, silver-cyan highlights, restrained cobalt and electric cyan palette. Keep the orientation and alignment of every part and the transparent gaps. Genuinely transparent background, no ground, no captions, no labels, no extra objects, no painted checkerboard. Create one 64x64 logical-pixel railing CORNER module, with BOTH perpendicular branches meeting in the exact reference corner geometry and endpoint positions. Dark blue steel uprights, two cyan-edged rails and small diamond crystal caps; delicate angular circuit joints. Keep clear large transparent gaps between bars and make it seamlessly join the horizontal and vertical modules. No solid panels, no stone wall.",
+      "reference": "/Users/gonzalo/orca/workspaces/serverrepo/bream/devtools/zagan-test/custom-sprites/portal-details/template-1545.png",
+      "style": "/Users/gonzalo/orca/workspaces/serverrepo/bream/devtools/zagan-test/custom-sprites/portal-citadel/wall-1028.png",
+      "source": "/Users/gonzalo/.codex/generated_images/01a1f073-b9af-7453-928e-1540498fcc7a/exec-f2910d0b-5006-430a-9875-a310e1ac55ac.png"
+    },
+    {
+      "name": "wall-lamp",
+      "prompt": "Use case: stylized-concept. Asset type: pixel-art Tibia 7.6 map sprite, production asset. The first image is an exact geometry and placement reference; the second image supplies the electric cyan/navy basalt material style. Rebuild the first reference in that material. Work at the exact logical pixel grid of the reference (then nearest-neighbor enlarged), hard clean pixels, dark navy outline, stepped perspective, silver-cyan highlights, restrained cobalt and electric cyan palette. Keep the orientation and alignment of every part and the transparent gaps. Genuinely transparent background, no ground, no captions, no labels, no extra objects, no painted checkerboard. Create a 2-frame vertical atlas, logical size 32x128, two 32x64 cells. In both cells the exact same tiny wall-mounted lamp and wall anchor placement as the reference, but replace its flame with a faceted electric cyan crystal in a dark navy geometric sconce. Keep the source composition: narrow width, luminous head in the upper portion and small wall anchor lower right; much empty transparent space. Frame 1 cyan and frame 2 brighter ice-cyan, identical bracket. No orange flame.",
+      "reference": "/Users/gonzalo/orca/workspaces/serverrepo/bream/devtools/zagan-test/custom-sprites/portal-details/template-2038.png",
+      "style": "/Users/gonzalo/orca/workspaces/serverrepo/bream/devtools/zagan-test/custom-sprites/portal-citadel/wall-1028.png",
+      "source": "/Users/gonzalo/.codex/generated_images/01a1f073-b9af-7453-928e-1540498fcc7a/exec-a3198f52-cac3-49e5-a9af-a3240ed87a6b.png"
+    }
+  ]
+}

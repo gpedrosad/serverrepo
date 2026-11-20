@@ -15,7 +15,7 @@ que necesita el pack Zagan perdido y client-local). Cada ítem de NEW_ITEMS:
 Extras: `decor=True` copia los bloques del prototipo sin stats (decoración de mapa); `light=(nivel,
 color)` reescribe la luz — flag .dat 0x15 y attr OTB 0x2A (ITEM_ATTR_LIGHT2) — para ítems con luz
 propia (magic tree rojo, blue bassin). `frames=N` instala los N cuadros de animación del PNG
-(1x1 y 2x2).
+(1x1, 2x2, 2x1 y 1x2).
 
 Re-ejecutable: si el ítem ya está (mismo sprite en el .dat, nodo con ese server id), no cambia nada.
 Elegir client ids nuevos: `--candidates` lista los que se pueden sacrificar sin riesgo (ni en el mapa,
@@ -304,16 +304,22 @@ def node_ids(node) -> tuple[int | None, int | None, str]:
 
 
 def sprite_records(png: Path, tiles: int | str = 1, frames: int = 1) -> list[bytes]:
-    """Registros de sprite para un item 1x1 (32x32), 2x2 (64x64) o 2x1 (64x32). Con
-    frames>1 (1x1 o 2x2) el PNG apila los cuadros verticalmente: 32x(32*frames)
-    para 1x1 y 64x(64*frames) para 2x2.
+    """Registros de sprite para un item 1x1, 2x2, 2x1 o 1x2. Con frames>1 el PNG
+    apila los cuadros verticalmente, según la altura de cada cuadro.
     Los multi-sprite se parten en el orden del .dat: para 2x2 abajo-derecha,
-    abajo-izquierda, arriba-derecha, arriba-izquierda; para 2x1 derecha, izquierda."""
-    if frames > 1 and tiles not in (1, 2):
-        raise SystemExit(f"{png.name}: frames>1 solo está soportado para ítems 1x1 o 2x2")
+    abajo-izquierda, arriba-derecha, arriba-izquierda; para 2x1 derecha, izquierda;
+    para 1x2 abajo, arriba."""
+    if frames > 1 and tiles not in (1, 2, "2x1", "1x2"):
+        raise SystemExit(f"{png.name}: formato de animación no soportado: {tiles}")
     image = B.Image.open(png).convert("RGBA")
     if tiles == "2x1":
-        size, boxes = (64, 32), [(32, 0, 64, 32), (0, 0, 32, 32)]
+        size = (64, 32 * frames)
+        boxes = [(x0, 32*f, x1, 32*(f+1)) for f in range(frames)
+                 for x0, x1 in ((32, 64), (0, 32))]
+    elif tiles == "1x2":
+        size = (32, 64 * frames)
+        boxes = [(0, y0+64*f, 32, y1+64*f) for f in range(frames)
+                 for y0, y1 in ((32, 64), (0, 32))]
     elif frames > 1 and tiles == 1:
         size = (32, 32 * frames)
         boxes = [(0, 32 * f, 32, 32 * (f + 1)) for f in range(frames)]
@@ -400,7 +406,7 @@ def apply_things(things: Path, otb_root, dry: bool) -> list[str]:
     for item in NEW_ITEMS:
         tiles = item.get("tiles", 1)
         frames = item.get("frames", 1)
-        per_frame = 2 if tiles == "2x1" else 4 if tiles == 2 else 1
+        per_frame = 2 if tiles in ("2x1", "1x2") else 4 if tiles == 2 else 1
         sprite_count = per_frame * frames
         new_records = sprite_records(SPRITES / item["png"], tiles, frames)
         idx = by_cid.get(item["client_id"])
