@@ -34,5 +34,6 @@
 				<item id="2161" chance="3500"/>
 			</inside>
 		</item>
+		<item id="20226" chance="350"/>
 	</loot>
 </monster>

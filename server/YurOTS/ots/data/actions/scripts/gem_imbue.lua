@@ -236,6 +236,11 @@ function onUse(cid, item, frompos, item2, topos)
 			return 1
 		end
 
+		if weapon.itemid == 20225 or weapon.itemid == 20226 or weapon.itemid == 20227 then
+			doPlayerSendCancel(cid, "These relics already have a fixed enchantment and cannot be imbued.")
+			return 1
+		end
+
 		if weapon.itemid == NIGHTGLASS_DAGGER then
 			local stacks = 0
 			if weapon.actionid >= NIGHTGLASS_SPEED_AID and weapon.actionid <= NIGHTGLASS_SPEED_AID + NIGHTGLASS_MAX_STACKS - 1 then

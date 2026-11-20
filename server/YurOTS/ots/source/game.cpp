@@ -1054,6 +1054,12 @@ void GameState::onAttack(Creature* attacker, const Position& pos, Creature* atta
 
 	Tile* tile = game->map->getTile(pos);
 	bool blood;
+	Item* relicWeapon = attackPlayer ? attackPlayer->getActiveWeapon() : NULL;
+	const unsigned short relic = relicWeapon && isMeleeRelic(relicWeapon->getID()) ? relicWeapon->getID() : 0;
+	const bool relicAllowed = relic && paladinStarProcAllowed(game, attackedCreature, trainingNoPvp) &&
+		!attackedCreature->isPlayersSummon();
+	if(attackPlayer && (relic != ITEM_RIFTBLADE || !relicAllowed || damage <= 0))
+		attackPlayer->riftCombo.reset();
 	if(damage != 0)
 	{
 		if (attackPlayer)
@@ -1061,8 +1067,28 @@ void GameState::onAttack(Creature* attacker, const Position& pos, Creature* atta
 				if(attackPlayer->getItem(slot) && attackPlayer->getItem(slot)->getID() == ITEM_ICE_RAPIER)
 					attackPlayer->removeItemInventory(slot);
 
+		bool gravityCrush = false;
+		if(relicAllowed && relic == ITEM_GRAVITON_MAUL && damage > 0 &&
+			!(attackedCreature->getImmunities() & ATTACK_PHYSICAL) && (rand() % 100) < GRAVITON_CHANCE){
+			damage += gravitonDamage(armor, attackedPlayer != NULL);
+			gravityCrush = true;
+		}
 		damage = applyAmulets(attackedPlayer, damage, ATTACK_PHYSICAL);
 		damage = applyCounterStance(game, attackedPlayer, attacker, damage, ATTACK_PHYSICAL);
+		bool riftCut = false;
+		if(relicAllowed && relic == ITEM_RIFTBLADE){
+			if(damage <= 0)
+				attackPlayer->riftCombo.reset();
+			else if(attackPlayer->riftCombo.advance(attackedCreature->getID(), OTSYS_TIME()) &&
+				!(attackedCreature->getImmunities() & ATTACK_ENERGY)){
+				int extra = random_range(RIFT_MIN_DAMAGE, RIFT_MAX_DAMAGE);
+				if(attackedPlayer)
+					extra /= 2;
+				extra = applyAmulets(attackedPlayer, extra, ATTACK_ENERGY);
+				damage += extra;
+				riftCut = extra > 0;
+			}
+		}
 
 		const unsigned short star = attackPlayer ? attackPlayer->getPaladinStarId() : 0;
 		const bool starProcAllowed = star && damage > 0 &&
@@ -1077,9 +1103,27 @@ void GameState::onAttack(Creature* attacker, const Position& pos, Creature* atta
 			damage += extra;
 			stormBurst = extra > 0;
 		}
+		const int64_t healthBeforeRelicHit = attackedCreature->health;
 		game->creatureApplyDamage(attackedCreature, damage, damage, manaDamage
 			, (pvpArena? &arenaLosers : NULL)
 			);
+
+		if((damage > 0 || manaDamage > 0) && riftCut)
+			game->sendMagicEffect(pos, NM_ME_RIFT_CUT);
+		if((damage > 0 || manaDamage > 0) && gravityCrush)
+			game->sendMagicEffect(pos, NM_ME_GRAVITON_CRUSH);
+		if(relicAllowed && relic == ITEM_AETHERCLEAVER){
+			const int64_t actualHealthDamage = std::min(damage, healthBeforeRelicHit - attackedCreature->health);
+			const int gain = aetherManaGain(actualHealthDamage, attackPlayer->manamax - attackPlayer->mana,
+				attackedPlayer != NULL);
+			if(gain > 0){
+				attackPlayer->mana += gain;
+				attackPlayer->sendStats();
+				game->sendMagicEffect(attackPlayer->pos, NM_ME_AETHER_RETURN);
+			}
+		}
+		if(attackPlayer && attackedCreature->health <= 0)
+			attackPlayer->riftCombo.reset();
 
 		if(stormBurst)
 			game->sendMagicEffect(pos, NM_ME_STORM_STAR_HIT);
@@ -1177,6 +1221,9 @@ static bool isRareEquipmentLootItem(unsigned short itemId)
 	case ITEM_GALE_STAR:
 	case ITEM_VENOM_STAR:
 	case ITEM_STORM_STAR:
+	case ITEM_RIFTBLADE:
+	case ITEM_AETHERCLEAVER:
+	case ITEM_GRAVITON_MAUL:
 		return true;
 	default:
 		break;
@@ -5741,6 +5788,9 @@ void Game::playerSetAttackedCreature(Player* player, unsigned long creatureid)
 
 	if(player->isRemoved)
 		return;
+
+	if(player->attackedCreature != creatureid)
+		player->riftCombo.reset();
 
 	if(player->attackedCreature != 0 && creatureid == 0) {
 		player->sendCancelAttacking();

@@ -23,6 +23,7 @@
 
 #include "definitions.h"
 #include "creature.h"
+#include "melee_relics.h"
 #include "container.h"
 
 #include <vector>
@@ -377,6 +378,7 @@ public:
 	unsigned short getCrucibleWeaponId() const;
 	Item* getActiveWeapon() const;
 	unsigned short getPaladinStarId() const;
+	RiftCombo riftCombo;
 
 	void checkSoftBoots(int thinkTicks);
 	void onSoftBootsEquipped(Item* boots);

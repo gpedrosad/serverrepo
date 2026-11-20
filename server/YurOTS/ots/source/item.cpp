@@ -876,6 +876,15 @@ std::string Item::getDescription(bool fullDescription) const
 			s << " Attacks every " << STORM_STAR_DELAY_MS << "ms; 20% energy burst: 18-30 damage. No area damage.";
 		s << " Elemental damage is halved against players.";
 	}
+	else if(isMeleeRelic(id) && fullDescription) {
+		if(id == ITEM_RIFTBLADE)
+			s << std::endl << "1200ms per hit. Every third damaging hit on the same target adds 22-34 energy damage (half in PvP). Combo resets on a miss, unequip, target change or 6s idle.";
+		else if(id == ITEM_AETHERCLEAVER)
+			s << std::endl << "1333ms per hit. Restores 12% of actual health damage as mana, up to 10 per hit (5 in PvP). Mana shield damage gives no mana.";
+		else
+			s << std::endl << "1600ms per hit. 25% gravity crush: +12 to +42 physical damage based on the target's armor, halved in PvP. Two-handed.";
+		s << " Fixed enchantment. No special effects against trainers or player summons.";
+	}
 	else if(id == ITEM_SPEAR && fullDescription) {
 		s << std::endl << "A throwable spear (" << SPEAR_HIT_CHANCE << "% hit chance).";
 	}
