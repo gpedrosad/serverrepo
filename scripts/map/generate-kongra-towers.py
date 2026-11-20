@@ -30,7 +30,6 @@ import json
 import re
 import shutil
 import sys
-import tempfile
 from datetime import datetime
 from pathlib import Path
 
@@ -60,7 +59,7 @@ TOWERS = [
         key="claro", label="Torre del Kongra",
         box=(170, 103, 7, 7), floors=(7, 6, 5),
         door=(170, 106, 7, "w"), sign=(169, 105, 7),
-        stairs={7: (174, 105), 6: (171, 105)},
+        stairs={7: (174, 105), 6: (172, 105)},
         campfire=(175, 108), radius=2, center={7: (173, 107), 6: (173, 107), 5: (173, 107)},
         monsters={
             7: [("Kongra", 140, (-2, 0)), ("Kongra", 140, (0, 0))],
@@ -73,7 +72,7 @@ TOWERS = [
         key="sur", label="Torre Sur del Kongra",
         box=(161, 126, 7, 7), floors=(7, 6, 5),
         door=(167, 129, 7, "e"), sign=(168, 128, 7),
-        stairs={7: (165, 128), 6: (162, 128)},
+        stairs={7: (165, 128), 6: (163, 128)},
         campfire=(166, 131), radius=2, center={7: (164, 130), 6: (164, 130), 5: (164, 130)},
         monsters={
             7: [("Kongra", 140, (-2, 0)), ("Kongra", 140, (0, 0))],
@@ -125,7 +124,8 @@ def floor_map(tw, z):
     roomkit.build_room(m, room, STONE_FLOOR, "stone")
     # Puerta en la pared que mira al lado del approach.
     dx, dy, dz, lado = tw["door"]
-    m.t[(dx, dy, dz)] = {"ground": STONE_FLOOR, "items": [{"id": WOODEN_DOOR, "uid": None}], "pz": False}
+    if z == dz:
+        m.t[(dx, dy, dz)] = {"ground": STONE_FLOOR, "items": [{"id": WOODEN_DOOR, "uid": None}], "pz": False}
     # Fogata en la esquina sureste del interior, para iluminar el piso.
     m.add((tw["campfire"][0], tw["campfire"][1], z), CAMPFIRE_ID)
     return m
@@ -142,21 +142,23 @@ def build_floors(tw):
 
 
 def fix_wall_grounds(tw, maps, existing):
-    """La fila norte y la columna de la puerta llevan el suelo de afuera en z7 (así la losa
-    no sobresale) y sin ground en los pisos altos. La puerta conserva la piedra como umbral."""
+    """Norte/oeste llevan terreno exterior en z7 y ningún suelo arriba.
+
+    La orientación de la puerta no cambia la perspectiva de los sprites.
+    """
     bx, by, w, h = tw["box"]
-    dx, dy, dz, lado = tw["door"]
-    col = bx if lado == "w" else bx + w - 1
-    sides = set((x, by) for x in range(bx, bx + w)) | set((col, y) for y in range(by, by + h))
+    door = tuple(tw["door"][:3])
+    sides = {(x, by) for x in range(bx, bx + w)} | {(bx, y) for y in range(by, by + h)}
+    otb = load_otb()
     for x, y in sides:
         for z, m in maps.items():
             pos = (x, y, z)
-            if pos not in m.t or (x, y) == (dx, dy):
+            if pos not in m.t or pos == door:
                 continue
             if z == 7:
-                outside = (existing.get((x, y - 1, 7)) or existing.get((x - 1, y, 7))
-                           or existing.get((x + 1, y, 7)) or existing.get((x, y + 1, 7)))
-                m.t[pos]["ground"] = outside[0] if outside else 4756
+                neighbor = (x, by - 1, 7) if y == by else (bx - 1, y, 7)
+                outside = existing.get(neighbor, [])
+                m.t[pos]["ground"] = next((i for i in outside if otb.get(i, {}).get("group") == "ground"), 4756)
             else:
                 m.t[pos]["ground"] = None
 
@@ -164,6 +166,22 @@ def fix_wall_grounds(tw, maps, existing):
 def entry_point(tw, z):
     dx, dy, _dz, lado = tw["door"]
     return (dx + 1, dy, z) if lado == "w" else (dx - 1, dy, z)
+
+
+def landing_reaches_entry(tw, m, start):
+    """El rellano debe salir al pasillo sin pisar otra escalera/hueco."""
+    chk = roomkit.Checker(m)
+    walk = {p for p, t in m.t.items() if chk.walkable(p) and t["ground"] != STAIR_DOWN
+            and not any(i["id"] == STAIRS_UP for i in t["items"])}
+    seen, todo = set(), [start]
+    while todo:
+        p = todo.pop()
+        if p in seen or p not in walk:
+            continue
+        seen.add(p)
+        x, y, z = p
+        todo.extend((x + dx, y + dy, z) for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+    return entry_point(tw, start[2]) in seen
 
 
 def spawn_positions(tw, z):
@@ -260,6 +278,13 @@ def validate(existing, all_maps, regenerating, spawn_blocks):
             if z in tw["stairs"]:
                 sx, sy = tw["stairs"][z]
                 upper = z - 1
+                # 1385 ocupa 2x2 hacia NO; el ancla libre no basta.
+                for px in (sx - 1, sx):
+                    for py in (sy - 1, sy):
+                        cell = m.t.get((px, py, z), {})
+                        if (px, py, z) not in walk or cell.get("ground") == STAIR_DOWN or any(
+                                it["id"] != STAIRS_UP for it in cell.get("items", [])):
+                            errs.append(f"{tag} z{z}: huella de escalera obstruida en {px},{py}")
                 if not any(it["id"] == STAIRS_UP for it in m.t[(sx, sy, z)]["items"]):
                     errs.append(f"{tag} z{z}: falta la subida {STAIRS_UP} en {sx},{sy}")
                 if (sx, sy + 1, z) not in walk:
@@ -270,6 +295,9 @@ def validate(existing, all_maps, regenerating, spawn_blocks):
                 up_walk = {p for p in maps[upper].t if up_chk.walkable(p)}
                 if (sx, sy - 1, upper) not in up_walk:
                     errs.append(f"{tag} z{upper}: llegada al subir {sx},{sy-1} no caminable")
+                for floor, landing in ((z, (sx, sy + 1, z)), (upper, (sx, sy - 1, upper))):
+                    if not landing_reaches_entry(tw, maps[floor], landing):
+                        errs.append(f"{tag} z{floor}: rellano {landing} sin salida libre")
             for p in spawn_positions(tw, z):
                 if p not in walk:
                     errs.append(f"{tag} z{z}: spawn {p} no caminable")
@@ -359,7 +387,7 @@ def main() -> int:
         print("(dry-run)" if a.dry_run else "usá --replace para escribir")
         return 0
 
-    backup = Path(tempfile.gettempdir()) / f"kongra-towers-{datetime.now().strftime('%Y%m%d-%H%M%S')}"
+    backup = REPO / "backups/map" / f"kongra-towers-{datetime.now().strftime('%Y%m%d-%H%M%S')}"
     backup.mkdir(parents=True, exist_ok=True)
     for f in (a.map, SPAWNS, READABLES):
         shutil.copy2(f, backup / f.name)
@@ -375,6 +403,8 @@ def main() -> int:
     for tw in TOWERS:
         for (cx, cy, cz) in tw["remove_spawns"]:
             pat = re.compile(rf'\t<spawn centerx="{cx}" centery="{cy}" centerz="{cz}"[^>]*>\n(?:\t\t[^\n]*\n)*?\t</spawn>\n')
+            if not pat.search(sp) and regenerating:
+                continue
             if not pat.search(sp):
                 print(f"ERROR: no encontré el spawn {cx},{cy},{cz} para quitar", file=sys.stderr)
                 return 1

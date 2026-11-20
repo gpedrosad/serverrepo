@@ -89,3 +89,38 @@ que ningún monstruo de otro spawn caiga dentro.
 
 Cliente publicado (18:31): `publish_client.py` desde la ThinkPad subió el `Tibia.dat`/.spr
 con el look 254 y el minimapa nuevo; cada jugador que abra el cliente se actualiza solo.
+
+
+## Corrección de escaleras y remates — 20 nov 2026
+
+La subida 1385 ocupa **2×2 hacia norte/oeste**. Las subidas del piso intermedio
+estaban pegadas al muro oeste: media escalera tapaba la pared. Se desplazan una
+casilla al este, junto con su hueco del piso superior:
+
+| Torre | Subida z6 y bajada z5 antes | Ahora |
+|---|---|---|
+| Claro | `171,105` | `172,105` |
+| Sur | `162,128` | `163,128` |
+
+Las paredes necesitan terreno exterior en la fila norte y columna **oeste**,
+independientemente del lado de la puerta; en pisos altos esas dos caras van sin
+suelo. Antes la torre sur aplicaba la regla a la columna este, dejando losas por
+fuera al oeste y quitando el apoyo del muro este. También se elimina el suelo
+bajo la posición de la puerta en pisos superiores: allí hay pared, no umbral.
+La Atalaya conserva su escalera y recibe el mismo remate correcto del muro oeste.
+
+El generador valida la huella completa de cada subida y que ambos rellanos
+lleguen al pasillo sin cruzar otra escalera o hueco. Solo coloca la puerta en z7
+y permite regenerar cuando los antiguos spawns sueltos ya fueron retirados.
+
+Aplicación: **53 casillas** de las tres torres; otros cuatro cambios corresponden
+al [acceso de las Cuevas de Bambú](MAPEAR_CUEVAS_BAMBU.md#entrada-rematada--20-nov-2026).
+Spawns XML idénticos: mismos 5 Kongra, 12 Red Kongra, posiciones y respawns.
+`generate-kongra-towers.py --dry-run` y comparación estructural del mapa: OK;
+11 lockers completos sin cambios. Capturas renderizadas con los sprites reales:
+
+![Escalera del claro corregida](img/kongra-repair/after-claro.png)
+![Escalera de la torre sur corregida](img/kongra-repair/after-sur.png)
+
+Respaldo local: `backups/map/kongra-repair-before/`. Sin compilación ni recorrido
+in-game por pedido del usuario. **Pendiente de deploy** junto con las cuevas de Epstein.

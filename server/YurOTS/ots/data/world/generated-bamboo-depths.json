@@ -1,6 +1,6 @@
 {
   "name": "Cuevas de Bamb\u00fa",
-  "version": 2,
+  "version": 3,
   "seed": 42,
   "entrance": [
     172,
@@ -150,5 +150,9 @@
     "z8": 0
   },
   "spawns": 10,
-  "monsters": 17
+  "monsters": 17,
+  "access": {
+    "hole": 469,
+    "ladder": 1386
+  }
 }

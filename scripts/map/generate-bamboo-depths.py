@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Cuevas de Bambú: bajada desde el claro de Bamboo Camp a una cueva de tres cámaras de dificultad creciente.
 
-  z7  claro de Bamboo Camp: bajada 432 en 172,99.
+  z7  claro de Bamboo Camp: boca natural 469 en 172,99.
   z8  pozo: cámara chica de cueva (172,97-101) sobre un islote de roca en el lago de lava de los behemoths,
-      con la escalera de subida 1385 en 172,99 (se llega a 172,100) y la bajada 432 en 172,101.
+      con escalera de mano 1386 en 172,99 (se llega a su ancla) y la bajada 432 en 172,101.
   z9  cueva natural (carve_cave + ribbon, como las zonas de caza): cámara 1 junto a la llegada (172,102),
       cámara 2 al este y cámara 3 (jefe) al fondo. Mismos 17 monstruos que la v1.
 
@@ -55,6 +55,8 @@ WALL_SIDE, WALL_CORNER, WALL_INNER = NP.WALL_SIDE, NP.WALL_CORNER, NP.WALL_INNER
 WALLS = set(WALL_SIDE.values()) | set(WALL_CORNER.values()) | set(WALL_INNER.values())
 ROCK = NP.ROCK
 STAIR_DOWN, STAIRS_UP = NP.STAIR_DOWN, NP.STAIRS_UP
+ENTRANCE_HOLE, SHAFT_LADDER = 469, 1386
+SHAFT_LIGHTS = {(172, 96): 2059, (175, 99): 2061}
 LAVA = {598, 599, 600, 601}
 
 WORLD = REPO / "server/YurOTS/ots/data/world"
@@ -65,7 +67,7 @@ MANIFEST = WORLD / "generated-bamboo-depths.json"
 Z7, Z8, Z9 = 7, 8, 9
 ENTRANCE = (172, 99)             # bajada en z7
 SHAFT_UP = (172, 99)             # escalera de subida en z8 (misma x,y)
-SHAFT_LAND = (172, 100)          # llegada real al bajar desde z7
+SHAFT_LAND = (172, 99)           # la escalera de mano no desplaza la bajada desde z7
 SHAFT_DOWN = (172, 101)          # bajada de z8 a z9
 DEPTHS_UP = (172, 101)           # escalera de subida en z9 (misma x,y)
 DEPTHS_LAND = (172, 102)         # llegada real desde z8
@@ -139,9 +141,11 @@ def build_z8(existing) -> tuple[dict, list]:
     tiles = NP.cave_tiles(FLOOR8, island, SEED + 1)
     for c in FLOOR8:
         tiles[c] = [CAVE_FLOOR]
-    tiles[SHAFT_UP] = [CAVE_FLOOR, STAIRS_UP]
+    tiles[SHAFT_UP] = [CAVE_FLOOR, SHAFT_LADDER]
     tiles[SHAFT_DOWN] = [STAIR_DOWN]
     errs += wall_errors({c: t for c, t in tiles.items() if c not in (SHAFT_DOWN,)}, FLOOR8, "z8")
+    for pos, torch in SHAFT_LIGHTS.items():
+        tiles[pos].append(torch)
     # lo que pisa el islote: solo lava o el pozo viejo
     for c in island:
         it = existing.get((c[0], c[1], Z8))
@@ -273,7 +277,17 @@ def main() -> int:
         for name, p, _st in mons:
             if p not in dist:
                 errs.append(f"spawn {name} {p}: no se llega")
-    # llegadas
+    # La escalera de mano no tiene floorchange: la bajada llega a su ancla.
+    surface_exit = existing.get((ENTRANCE[0], ENTRANCE[1] + 1, Z7), [])
+    if not surface_exit or not bl.walkable(surface_exit):
+        errs.append("salida de escalera de mano bloqueada en superficie")
+    if not bl.walkable(t8[SHAFT_UP]) or t8[SHAFT_UP] != [CAVE_FLOOR, SHAFT_LADDER]:
+        errs.append("escalera de mano del pozo inválida")
+    # La escalera de piedra profunda ocupa 2x2 hacia NO.
+    for x in (DEPTHS_UP[0] - 1, DEPTHS_UP[0]):
+        for y in (DEPTHS_UP[1] - 1, DEPTHS_UP[1]):
+            if not bl.walkable(t9.get((x, y), [])):
+                errs.append(f"huella de escalera profunda obstruida: {x},{y}")
     if not bl.walkable(t8[SHAFT_LAND]) or not bl.walkable(t9[DEPTHS_LAND]):
         errs.append("llegada de escalera no caminable")
     # vista: fuera de las cajas, vacío o lava -> roca (z9); vacío -> roca (z8, la lava del hunt se queda)
@@ -311,7 +325,7 @@ def main() -> int:
     m9 = to_map(t9, Z9)
     stackable = roomkit.Checker(m9).stackable
     m7 = roomkit.Map()
-    m7.ground((ENTRANCE[0], ENTRANCE[1], Z7), STAIR_DOWN)
+    m7.ground((ENTRANCE[0], ENTRANCE[1], Z7), ENTRANCE_HOLE)
     roomkit.write_map(MAP, m7, (ENTRANCE[0], ENTRANCE[1], ENTRANCE[0], ENTRANCE[1]), Z7, stackable)
     write_cells(MAP, t8, Z8, stackable)            # solo el islote (y la caja vieja): la lava de alrededor queda
     roomkit.write_map(MAP, m9, BOX9, Z9, stackable)
@@ -326,7 +340,8 @@ def main() -> int:
     raw = pat.sub(lambda _m: block, raw, count=1) if pat.search(raw) else raw.replace("</spawns>", block + "</spawns>")
     SPAWNS.write_text(raw, encoding="latin-1")
     MANIFEST.write_text(json.dumps({
-        "name": "Cuevas de Bambú", "version": 2, "seed": SEED, "entrance": [*ENTRANCE, Z7],
+        "name": "Cuevas de Bambú", "version": 3, "seed": SEED, "entrance": [*ENTRANCE, Z7],
+        "access": {"hole": ENTRANCE_HOLE, "ladder": SHAFT_LADDER},
         "z8": {"floor": sorted(FLOOR8), "island": [*ISLAND8[0], ISLAND8[1], ISLAND8[2]], "box": list(BOX8)},
         "z9": {"box": list(BOX9), "walkable": len(walk9), "path": PATH9, "chambers": CHAMBERS},
         "rockFilled": {"z9": len(fill9), "z8": len(fill8)},

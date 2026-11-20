@@ -18,12 +18,13 @@ el vacío negro al norte y al este, y la lava al sur y al oeste. Ahora:
 
 | Piso | Qué hay |
 |---|---|
-| z7 | Bajada `432` en `172,99,7`, en el pasto del claro. |
-| z8 | Pozo: cámara de 17 casillas (`170-174, 97-101`) sobre un islote de roca (elipse de 58 casillas) en el lago de lava. Escalera de subida `1385` en `172,99` (se llega a `172,100`) y bajada `432` en `172,101`. |
+| z7 | Boca natural `469` en `172,99,7`, en el pasto del claro. |
+| z8 | Pozo: cámara de 17 casillas (`170-174, 97-101`) sobre un islote de roca (elipse de 58 casillas) en el lago de lava. Escalera de mano `1386` en `172,99` (la bajada llega al ancla; subir con click derecho sale a `172,100,7`) y bajada `432` en `172,101`. |
 | z9 | Cueva natural: cámara 1 junto a la llegada (`172,102`), cámara 2 al este y cámara 3 (jefe) al fondo. 313 casillas caminables. |
 
-Las escaleras siguen `docs/gameplay/STAIRS.md`. Al bajar se aterriza una casilla al sur. Desde el claro: pozo
-en 2 pasos, cueva en 4 y Orc Warlord en 46. La vuelta al claro también se camina.
+Las escaleras siguen `docs/gameplay/STAIRS.md`. La boca de superficie baja al ancla de la escalera de
+mano; la conexión profunda de piedra conserva la llegada una casilla al sur. La vuelta a superficie
+se hace con click derecho sobre la escalera de mano.
 
 ## Cámaras y monstruos (los mismos 17 de la v1)
 
@@ -80,3 +81,26 @@ Sobre el claro había **297 techos de madera en z6** sin ninguna casa debajo: so
 bambú. Se veían flotando y uno tapaba la bajada. Los sacó `scripts/map/remove-floating-roofs.py`, junto con un
 techo de tejas de 72 casillas en `71-79, 217-224` que estaba en la misma situación. Ver
 [PIEZAS_DE_MAPA.md](PIEZAS_DE_MAPA.md).
+
+
+## Entrada rematada — 20 nov 2026
+
+El cuadrado de escalera de piedra aislado en el pasto se cambia por una boca
+natural **469**, con escalera de mano **1386** debajo en `172,99,8`.
+Al bajar se llega a `172,99,8`; al usar la escalera de mano se sale a
+`172,100,7`. Ambos destinos están libres. La conexión profunda 432/1385 conserva
+sus coordenadas y llegadas originales. Dos antorchas nativas iluminan las
+paredes del pozo: `172,96,8` (2059) y `175,99,8` (2061).
+
+Solo cambian cuatro casillas. Se conservan la geometría de las cámaras, las
+paredes existentes, los 17 monstruos y el lago de lava del hunt vecino.
+Manifiesto v3 y generador actualizados con el acceso, las luces y guardas de
+llegadas y huella 2×2 de la escalera profunda.
+
+`generate-bamboo-depths.py --dry-run`: OK; sin roca o lava nueva que rellenar.
+Auditoría del mapa: paredes de z9 coinciden con sus vecinos, ambas conexiones
+libres, spawns XML y 11 lockers completos idénticos al respaldo.
+Sin recorrido in-game por pedido del usuario. **Pendiente de deploy**.
+
+![Entrada natural](img/kongra-repair/after-entrada.png)
+![Pozo con escalera de mano y luces](img/kongra-repair/after-pozo.png)
