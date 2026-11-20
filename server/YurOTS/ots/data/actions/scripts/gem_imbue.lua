@@ -236,7 +236,7 @@ function onUse(cid, item, frompos, item2, topos)
 			return 1
 		end
 
-		if weapon.itemid == 20225 or weapon.itemid == 20226 or weapon.itemid == 20227 then
+		if weapon.itemid == 20250 or weapon.itemid == 20251 or weapon.itemid == 20252 then
 			doPlayerSendCancel(cid, "These relics already have a fixed enchantment and cannot be imbued.")
 			return 1
 		end

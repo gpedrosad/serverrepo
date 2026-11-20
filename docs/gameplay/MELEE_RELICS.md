@@ -5,11 +5,13 @@ por Gonzalo; cliente sin publicar y servidor de juego sin deploy. No requiere ca
 
 ![Ítems y ocho cuadros de cada animación](img/melee-relics.png)
 
+Están con el resto de las armas propias en [ARMAS.md](ARMAS.md).
+
 | Arma | Server / client ID | Skill / manos | Ataque / defensa | Intervalo base | Efecto |
 |---|---|---|---|---|---|
-| Riftblade | 20225 / 3242 | sword / 1 | 46 / 28 | 1200 ms | Cada tercer golpe que causa daño al mismo blanco añade 22–34 de energía, 11–17 contra jugadores. Grieta violeta en el blanco. |
-| Aethercleaver | 20226 / 3238 | axe / 1 | 48 / 26 | 1333 ms | Recupera 12% del daño real a vida como maná, mínimo 1 y máximo 10 por golpe (5 en PvP), limitado al maná faltante. Espirales turquesa convergen sobre el atacante. |
-| Graviton Maul | 20227 / 3235 | club / 2 | 55 / 22 | 1600 ms | 25% al golpear: añade `12 + min(max(armor,0),60)/2` de daño físico (12–42, mitad en PvP). Anillo ámbar que colapsa y expulsa fragmentos. |
+| Riftblade | 20250 / 3233 | sword / 1 | 46 / 28 | 1200 ms | Cada tercer golpe que causa daño al mismo blanco añade 22–34 de energía, 11–17 contra jugadores. Grieta violeta en el blanco. |
+| Aethercleaver | 20251 / 3238 | axe / 1 | 48 / 26 | 1333 ms | Recupera 12% del daño real a vida como maná, mínimo 1 y máximo 10 por golpe (5 en PvP), limitado al maná faltante. Espirales turquesa convergen sobre el atacante. |
+| Graviton Maul | 20252 / 3235 | club / 2 | 55 / 22 | 1600 ms | 25% al golpear: añade `12 + min(max(armor,0),60)/2` de daño físico (12–42, mitad en PvP). Anillo ámbar que colapsa y expulsa fragmentos. |
 
 Los intervalos usan el reloj real del motor, no una velocidad de animación. Frenzy/Rapid Fire
 siguen aplicando su multiplicador, con el mínimo normal de 500 ms. Sin requisito adicional
@@ -45,7 +47,7 @@ Loot directo de las variantes base, no condicionado a una mochila ni agregado a 
 | Root Colossus | Aethercleaver | 350 / 100000 (0,35%) |
 | Worker Golem | Graviton Maul | 400 / 100000 (0,40%) |
 
-GM: `/i 20225 1`, `/i 20226 1`, `/i 20227 1`. Los tres cuentan como equipo raro.
+GM: `/i 20250 1`, `/i 20251 1`, `/i 20252 1`. Los tres cuentan como equipo raro.
 
 ## Assets y reproducción
 
@@ -58,10 +60,10 @@ los impactos con las primitivas pixel-art del cliente. No se modifica arte previ
 - Efectos protocolo base cero: **47 Rift Cut, 48 Aether Return, 49 Graviton Crush**.
   DAT: 48, 49, 50; ocho cuadros cada uno. Luz de efectos 3/161, 3/71, 3/187;
   luz de los ítems 2/161, 2/71, 2/187.
-- **27 sprites añadidos**: 3 ítems y 24 cuadros de impacto. 14072 → 14099.
+- **27 sprites añadidos**: 3 ítems y 24 cuadros de impacto. 14284 → 14311 (reinstalado sobre los cadáveres de los Metal; la primera versión iba de 14072 a 14099).
 - DAT conserva item count 5089, outfits 254 y proyectiles 21; efectos 47 → 50.
 - Prototipos: bright sword 2407, knight axe 2430 y war hammer 2391, con flags y manos nativos.
-  Slots reutilizados: rabbit present 2355, cobrafang dagger 2351 y ancient rune 2348.
+  Slots reutilizados: tear of daraman 2346 (client 3233), cobrafang dagger 2351 (3238) y ancient rune 2348 (3235). La primera versión usaba 20225–20227 y el client 3242 (rabbit present), que quedaron para los cadáveres de los Metal: se renumeró a 20250–20252 y 3233.
 - El primer candidato del maul, music piece 2349/client 3236, **se descartó**: existe en el
   personaje GM de la ThinkPad. El slot 3236 queda idéntico. Verificar runtime en solo lectura
   además del buscador de candidatos; ningún archivo del jugador se modifica.

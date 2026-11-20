@@ -12,13 +12,13 @@ from melee_relic_art import LIGHT, impacts, prepare, preview
 
 ART = ROOT/'devtools/zagan-test/custom-sprites/melee-relics'
 ITEMS = [
-    dict(name='riftblade', server_id=20225, client_id=3242, prototype=2407,
+    dict(name='riftblade', server_id=20250, client_id=3233, prototype=2407,
          png='melee-relics/riftblade.png', attack=46, defence=28, light=(2,161),
          descr='An obsidian blade that tears a violet rift on every third strike.'),
-    dict(name='aethercleaver', server_id=20226, client_id=3238, prototype=2430,
+    dict(name='aethercleaver', server_id=20251, client_id=3238, prototype=2430,
          png='melee-relics/aethercleaver.png', attack=48, defence=26, light=(2,71),
          descr='Its turquoise core converts a fraction of wounds into mana.'),
-    dict(name='graviton maul', server_id=20227, client_id=3235, prototype=2391,
+    dict(name='graviton maul', server_id=20252, client_id=3235, prototype=2391,
          png='melee-relics/graviton.png', attack=55, defence=22, light=(2,187),
          descr='A heavy gravity core turns the enemy armor against its wearer.'),
 ]

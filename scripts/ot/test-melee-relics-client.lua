@@ -7,7 +7,7 @@ local function run()
   panel:setSize({width=440,height=180})
   panel:setPosition({x=80,y=80})
   panel:setBackgroundColor('#252831')
-  for i,id in ipairs({3242,3238,3235}) do
+  for i,id in ipairs({3233,3238,3235}) do
     local item=Item.create(id)
     assert(item:getId()==id and not item:isStackable(), 'item invalido/apilable')
     local widget=g_ui.createWidget('UIItem',panel)

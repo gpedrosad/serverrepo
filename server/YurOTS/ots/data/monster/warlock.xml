@@ -43,7 +43,7 @@
  	<item id="2123" chance="1200"/>
  	</inside>
  	</item>
-	<item id="20225" chance="300"/>
+	<item id="20250" chance="300"/>
 </loot>
 
 <summons maxSummons="3">

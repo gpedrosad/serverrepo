@@ -312,7 +312,7 @@ Plan completo, restricciones (no tocar DP ni casas) y checklist:
 
 → [`../_archive/DEPLOY-PENDIENTE-VPS-JUL2026.md`](../_archive/DEPLOY-PENDIENTE-VPS-JUL2026.md)
 
-## Melee Relics (`20225`–`20227`) — 19 nov 2026
+## Melee Relics (`20250`–`20252`) — 19 nov 2026
 
 Riftblade (sword 1H, combo de tres golpes), Aethercleaver (axe 1H, recupera maná según
 vida dañada) y Graviton Maul (club 2H, crush según armadura), con sprites ImageGen propios
