@@ -1,8 +1,8 @@
 # Plaza arcana de los teleports
 
 Estado: **publicada y desplegada en la ThinkPad el 19 nov 2026**, validada con cliente Mac en instancia aislada.
-**Ampliación del 20 nov:** galería y torres antiguas remodeladas en el mapa del repo; pendiente deploy.
-Entrada, faroles y rejas propios añadidos después; sus assets de cliente y OTB están preparados en el repo.
+**Ampliación del 20 nov:** galería, torres antiguas, entrada, faroles y rejas publicados y desplegados en la ThinkPad.
+Cliente y OTB actualizados; se conserva el binario anterior (sin cambios de C++).
 Rediseño pedido por Gonzalo: nuevas torres, suelo y sprites con basalto azul y cian eléctrico.
 No requiere recompilar C++.
 
@@ -130,8 +130,8 @@ Pendiente revisión visual manual del jugador en Windows; abrir el cliente toma 
 ## Ampliación: resto del templo — 20 nov 2026
 
 Pedido de Gonzalo: continuar el mismo estilo en el resto del templo de los teleports.
-**Aplicado al mapa del repo; sin deploy ni nuevas pruebas**, por su pedido
-expreso de detenerlas. El servidor de juego no se reinició en esta ampliación.
+**Desplegado el 20 nov 2026**, junto con la entrada/faroles/rejas. La preparación no incluyó
+pruebas de juego por pedido de Gonzalo; ver registro de activación al final.
 
 ![Templo completo: vista previa con pisos superiores](img/portal-temple/after-client.png)
 
@@ -157,14 +157,14 @@ Así el generador incluye la ampliación en futuras regeneraciones.
 Backup previo: `backups/map/portal-temple-before/test.otbm`. Vistas previas estáticas, **no capturas
 de una sesión in-game**, en `img/portal-temple/`: antes/después y pisos z2–z7. El comando ejecutado
 fue `python3 scripts/map/temple-portals.py`; el resto fue render de imágenes. No se ejecutaron
-suites, probes, builds ni pruebas de depot para esta ampliación. Para deploy de este mapa sigue
-aplicando el contrato de DEPOTS.md; todavía no se realizó ese deploy.
+suites, builds ni pruebas de depot durante la preparación. En el deploy se comprobaron
+los lockers del mapa, el guardado, logs y probe; ver registro al final.
 
 ## Entrada, faroles y rejas — 20 nov 2026
 
 Pedido siguiente de Gonzalo: adaptar también la entrada, crear otros faroles y rejas.
-**Aplicado al mapa y assets del repo, pendiente publicación del cliente y deploy.**
-Sin pruebas de juego, probes ni build, respetando el pedido de no seguir con pruebas.
+**Publicado y desplegado el 20 nov 2026.** Sin suites, pruebas de juego ni build,
+respetando el pedido de Gonzalo; verificación de estado durante el deploy.
 
 ![Entrada y faroles nuevos: render estático](img/portal-details/entrance.png)
 
@@ -213,3 +213,17 @@ Backup anterior: `backups/map/portal-details-before/` (mapa, DAT/SPR y OTB).
 Las imágenes son renders estáticos, no capturas in-game. Se ejecutaron importadores,
 generador, adaptación de los dos laterales y render; no suites, probes ni compilaciones.
 Para activar este mapa se debe publicar el cliente y actualizar OTB/mapa juntos.
+
+### Deploy de galería, entrada, faroles y rejas — 20 nov 2026
+
+Autorizado por Gonzalo. Servidor `b347fff`, cliente `8fb4b2a`; ff-merges sin solapamientos
+con la config de otra sesión. Sin cambios de C++, binario conservado.
+Respaldo `~/backups/pre-deploy-20261120-110552-temple-details`, con refresco antes del reinicio
+y copia después del guardado. Cliente publicado primero mediante `publish_client.py`:
+774 archivos comunes, 3 cambiados (DAT/SPR/minimapa), 0 borrados; ZIPs Mac/Windows regenerados.
+CRC DAT `c79d1bcc`, SPR `10c7d5dd`; manifest y contenido de los tres archivos cotejados
+por HTTP en 8080/8076. Once tiles de locker idénticos byte por byte al mapa previo.
+`docker restart -t 45 yurots`: graceful shutdown completo, Loaded in **0,808 s**, sin errores
+ni warnings. Probe `192.168.1.17:7171` OK, healthy, 0 reinicios automáticos.
+1 cuenta, 8 personajes y 31 casas preservados; depots, dueños, config y binario iguales
+al snapshot previo. No se ejecutaron suites ni prueba de depot in-game por pedido de Gonzalo.
