@@ -33,6 +33,7 @@ LIGHT = 20353
 SIGN = (101, 72, 7)
 BRIDGE = {(x, y) for x in range(95, 101) for y in (72, 73)}
 ENTRY = (100, 73, 7)
+LAVA_SCREEN_RADIUS = (11, 9)  # ventana 9x7 del cliente + dos casillas de margen
 GROUPS = [((95, 65), [("Elf Scout", (95, 65), 150)]),
           ((94, 56), [("Elf Arcanist", (94, 56), 180)]),
           ((89, 51), [("Blue Elf Arcanist", (89, 51), 220),
@@ -139,6 +140,15 @@ def plan(values, otb):
     cells[SIGN] = list(values.get(SIGN, []))
     if 1429 not in cells[SIGN]:
         cells[SIGN].append(1429)
+    # Ampliar el lago: lava y agua bloquean igual. No tocar el piso del hunt vecino.
+    rx, ry = LAVA_SCREEN_RADIUS
+    screen = {(x + dx, y + dy, 7) for x, y in land | BRIDGE
+              for dx in range(-rx, rx + 1) for dy in range(-ry, ry + 1)}
+    for p in screen:
+        if values.get(p, [None])[0] in COAST.LAVA:
+            if len(values[p]) != 1:
+                continue  # conservar bordes/decoración del hunt fuera de la vista
+            cells[p] = [4608]
     return cells, land
 
 
@@ -186,8 +196,16 @@ def validate(values, cells, land, otb):
         old = values.get(p, [])
         if p[2] < 7 and free(old, otb) != free(new, otb):
             raise ValueError(f"Colisión de terraza alterada: {p}")
-        if not (85 <= p[0] <= 114 and 49 <= p[1] <= 76 and 4 <= p[2] <= 7):
+        water_screen = (p[2] == 7 and 75 <= p[0] <= 111 and 40 <= p[1] <= 85
+                        and len(old) == 1 and old[0] in COAST.LAVA and new == [4608]
+                        and not free(old, otb) and not free(new, otb))
+        if not water_screen and not (85 <= p[0] <= 114 and 49 <= p[1] <= 76 and 4 <= p[2] <= 7):
             raise ValueError(f"Fuera de ámbito: {p}")
+    for x, y, _z in expected:
+        for dx in range(-9, 10):
+            for dy in range(-7, 8):
+                if merged.get((x + dx, y + dy, 7), [None])[0] in COAST.LAVA:
+                    raise ValueError(f"Lava visible desde las ruinas: {x},{y}")
     return len(expected)
 
 

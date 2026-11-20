@@ -32,8 +32,9 @@ los elfos en `100,73,7`, junto al cartel `101,72,7`, y cruza el puente hacia el 
 Son tres grupos separados 10 casillas Manhattan entre centros, lejos del acceso.
 El Blue Elf Arcanist es la variante cosmética ya definida: **no tiene stats más
 altos**. Los spawns anteriores del mundo permanecen byte por byte; se agrega el
-bloque `ELF_WEST_SPAWNS`. El hunt de fuego, el dragón negro, el islote de minotauros,
-la rampa al depot, las casas y los lockers no se modifican.
+bloque `ELF_WEST_SPAWNS`. Se conservan el piso caminable y los spawns del hunt de
+fuego; su franja de lava a la vista pasa a lago (ver abajo). El dragón negro, el
+islote de minotauros, la rampa al depot, las casas y los lockers no se modifican.
 
 ## Archivos y regeneración
 
@@ -57,3 +58,19 @@ cada terraza z4/z5/z6). Once lockers completos, todos los ítems con atributos,
 cofres, puertas, escaleras y spawns antiguos intactos. `check-upper-view` OK;
 `sync-houses-with-map.py --dry-run`: houses.xml coincide. Sin suites, cliente ni
 recorrido in-game por pedido del usuario. **Preparado, pendiente de activación**.
+
+
+## Lava fuera de la vista — 20 nov 2026
+
+Por pedido de Gonzalo, la franja de lava junto a las ruinas pasa a agua: **296
+casillas bloqueadas**. El lago cubre la ventana del cliente (9×7 desde cada
+casilla transitable de la isla/puente), con dos casillas adicionales de margen.
+Se conservan los bordes y objetos del hunt vecino fuera de esa vista.
+
+El generador incorpora el relleno y rechaza cualquier lava que aún sea visible
+desde una casilla transitable. Agua 4608 y lava 598–601 tienen exactamente los
+mismos flags OTB (`ground`, `block_solid`): no se abre ningún camino. Solo cambian
+esos suelos, sin tocar spawns, ítems con atributos, casas, depots ni geometría élfica.
+Segunda pasada: 0 tiles modificados. Imágenes actualizadas con los sprites reales.
+Respaldo: `backups/map/elf-no-lava-before/`. Pendiente de activación junto con la
+ampliación élfica; sin pruebas in-game.
