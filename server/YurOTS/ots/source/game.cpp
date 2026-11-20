@@ -3521,6 +3521,15 @@ void Game::thingMoveInternal(Creature *creature, unsigned short from_x, unsigned
 	if(!toTile)
 		return;
 
+	// Summons del jugador (docs/gameplay/SUMMONS.md): van siempre a un paso detras, asi que al darse vuelta el
+	// dueno se chocaria con el suyo. Si camina hacia la casilla de su propio summon, cambian de lugar (fuera de PZ).
+	if(playerMoving && playerMoving == creature && toTile->creatures.size() == 1 && to_z == oldPos.z &&
+		std::abs(to_x - oldPos.x) <= 1 && std::abs(to_y - oldPos.y) <= 1 && !fromTile->isPz()) {
+		Monster* own = dynamic_cast<Monster*>(toTile->creatures.front());
+		if(own && own->getMaster() == playerMoving)
+			teleport(own, oldPos);
+	}
+
 	if(!onPrepareMoveThing(creature, thing, oldPos, Position(to_x, to_y, to_z), count))
 		return;
 

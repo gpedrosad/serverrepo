@@ -75,7 +75,8 @@ NAME = rb"\x6A(.....)\x61\x00....(....)..(?:Wolf|Rat|Skeleton|Orc|Troll|Bear|Gho
 def track(buf, rat_id, rat_pos, me_id, me_pos):
     """Recorre los paquetes en orden: altas (0x6A), movidas (0x6D) y velocidades (0x8F)."""
     speeds = {}
-    for m in re.finditer(NAME + rb"|\x6A(.....)\x62\x00(....)|\x6D(.....)(.)(.....)"
+    # 0x69 (casilla actualizada): así avisa Game::teleport cuando se teletransporta un monstruo
+    for m in re.finditer(NAME + rb"|[\x6A\x69](.....)(?:..){0,4}?\x62\x00(....)|\x6D(.....)(.)(.....)"
                          rb"|\x8F(....)(..)", buf, re.S):
         if m.group(1):
             rat_id, rat_pos = struct.unpack("<I", m.group(2))[0], unpack_pos(m.group(1))
@@ -144,7 +145,7 @@ def main() -> int:
     print(f"rata {rat_id} en {rat_pos}")
 
     fails = behind = steps = 0
-    for opcode in [0x66] * 5 + [0x67] * 4 + [0x68] * 5 + [0x65] * 4:   # este, sur, oeste, norte
+    for opcode in [0x66] * 5 + [0x68] * 5 + [0x66] * 3:   # este, oeste, este
         before = me
         mark = len(druid.buf)
         druid.step(opcode)
