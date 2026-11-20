@@ -280,6 +280,16 @@ NEW_ITEMS = [
     dict(name="dead husky", server_id=20249, client_id=3209, prototype=2839,
          png="dead_husky.png", corpse=True, tiles=1,
          descr="The corpse of a husky."),
+    # Crimson Cage Rune (nov 2026): runa y pared roja de 3 s. Copias de la runa de magic wall (2293) y de la
+    # magic wall (1498: 2x2, 3 cuadros, bloquea paso y proyectiles) con los sprites de recolor_crimson_cage.py.
+    # Clients sacrificados: dos broken bottle (server 2022 y 2010), ninguno en jugadores ni casas.
+    # Gameplay en C++ (doCrimsonCage, spells.cpp). Doc: docs/gameplay/CRIMSON_CAGE_RUNE.md.
+    dict(name="crimson cage rune", server_id=20273, client_id=2892, prototype=2293,
+         png="crimson_cage_rune.png", decor=True,
+         descr="Throw it at a creature to lock it inside crimson walls for 3 seconds."),
+    dict(name="crimson wall", server_id=20274, client_id=2878, prototype=1498,
+         png="crimson_cage_wall.png", decor=True, tiles=2, frames=3, light=(3, 180),
+         descr="A cage of crimson magic. It fades within seconds."),
 
 ]
 

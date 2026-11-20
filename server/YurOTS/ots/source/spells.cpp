@@ -472,6 +472,7 @@ int SpellScript::registerFunctions(){
 	lua_register(luaState, "skillBuff", SpellScript::luaActionSkillBuff);
 	lua_register(luaState, "doDesintegrate", SpellScript::luaActionDoDesintegrate);
 	lua_register(luaState, "doAnchorRoot", SpellScript::luaActionDoAnchorRoot);
+	lua_register(luaState, "doCrimsonCage", SpellScript::luaActionDoCrimsonCage);
 	lua_register(luaState, "doCurePoison", SpellScript::luaActionDoCurePoison);
 	lua_register(luaState, "doAnimateDead", SpellScript::luaActionDoAnimateDead);
 	lua_register(luaState, "doConvinceCreature", SpellScript::luaActionDoConvinceCreature);
@@ -715,6 +716,185 @@ int SpellScript::luaActionDoAnchorRoot(lua_State *L)
 		targetPlayer->sendTextMessage(MSG_SMALLINFO, "You are rooted.");
 		targetPlayer->sendCancelWalk();
 	}
+
+	if(caster && targetPlayer && caster->access < g_config.ACCESS_PROTECT &&
+		spell->game->getWorldType() != WORLD_TYPE_NO_PVP)
+	{
+		caster->pzLocked = true;
+		caster->inFightTicks = std::max(g_config.PZ_LOCKED, caster->inFightTicks);
+		targetPlayer->inFightTicks = std::max(g_config.PZ_LOCKED, targetPlayer->inFightTicks);
+		caster->sendIcons();
+		targetPlayer->sendIcons();
+	}
+
+	applyPlayerSpellExhaust(caster, false);
+	lua_pushnumber(L, 1);
+	return 1;
+}
+
+namespace {
+
+// Crimson Cage Rune: las paredes duran 3 s exactos. No usan startDecay porque el decay avanza de a
+// DECAY_INTERVAL (5 s) y 3 s se redondearía a 5; cada pared tiene su propio evento del scheduler.
+const long CRIMSON_CAGE_MS = 3000;
+
+void notifyTileThingAppear(Game* game, const Position& pos, Thing* thing)
+{
+	SpectatorVec list;
+	SpectatorVec::iterator it;
+	game->getSpectators(Range(pos, true), list);
+
+	for(it = list.begin(); it != list.end(); ++it) {
+		if(dynamic_cast<Player*>(*it))
+			(*it)->onThingAppear(thing);
+	}
+	for(it = list.begin(); it != list.end(); ++it) {
+		if(!dynamic_cast<Player*>(*it))
+			(*it)->onThingAppear(thing);
+	}
+}
+
+// El evento tiene su propia referencia a la pared (useThing), así que si ya no está en el tile
+// (la sacó otra cosa) solo suelta esa referencia.
+void removeCrimsonCageWall(Game* game, Item* wall)
+{
+	OTSYS_THREAD_LOCK_CLASS lockClass(game->gameLock, "removeCrimsonCageWall()");
+
+	if(!wall->isRemoved && game->removeThing(NULL, wall->pos, wall))
+		game->FreeThing(wall);	// referencia del mapa
+	game->FreeThing(wall);		// referencia del evento
+}
+
+// Pone una pared en pos. No va en PZ, casas (se guardarían con la casa), tiles con criatura ni
+// tiles que ya bloquean (paredes, magic walls, muebles). Un field de fuego/energía/veneno se pisa.
+bool placeCrimsonCageWall(Game* game, const Position& pos)
+{
+	Tile* tile = game->getTile(pos);
+	if(!tile || tile->isPz() || tile->isHouse() || tile->getTopCreature())
+		return false;
+	if(tile->isBlocking(BLOCK_SOLID, true) != RET_NOERROR)
+		return false;
+
+	MagicEffectItem* oldField = tile->getFieldItem();
+	if(oldField) {
+		if(!game->removeThing(NULL, pos, oldField))
+			return false;
+		game->FreeThing(oldField);
+	}
+
+	TransformMap transformMap;
+	transformMap[ITEM_CRIMSON_CAGE_WALL] = TransformItem(0, ConditionVec());
+	MagicEffectItem* wall = new MagicEffectItem(transformMap);
+	wall->useThing();	// referencia del mapa
+	wall->pos = pos;
+	tile->addThing(wall);
+	wall->isRemoved = false;
+	notifyTileThingAppear(game, pos, wall);
+
+	wall->useThing();	// referencia del evento que la saca
+	game->addEvent(makeTask(CRIMSON_CAGE_MS, boost::bind(&removeCrimsonCageWall, game, (Item*)wall)));
+	return true;
+}
+
+}
+
+// doCrimsonCage(cid, pos) — Crimson Cage Rune (20273): paredes rojas en las 8 casillas alrededor del
+// blanco durante 3 s. Mismas reglas de blanco que Anchor. Doc: docs/gameplay/CRIMSON_CAGE_RUNE.md.
+int SpellScript::luaActionDoCrimsonCage(lua_State *L)
+{
+	Position pos;
+	internalGetPosition(L, pos);
+	unsigned int cid = (unsigned int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	if(!spell) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Creature* creature = spell->game->getCreatureByID(cid);
+	if(!creature) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Player* caster = dynamic_cast<Player*>(creature);
+	if(playerSpellExhaustBlocked(caster)) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(creature->pos.z != pos.z) {
+		creature->sendCancel("You need to be on the same floor.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(spell->game->canThrowObjectTo(creature->pos, pos, BLOCK_PROJECTILE) != RET_NOERROR) {
+		creature->sendCancel("You cannot throw there.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Tile* tile = spell->game->getTile(pos);
+	Creature* target = tile ? tile->getTopCreature() : NULL;
+	if(!target || target == creature || target->access >= g_config.ACCESS_PROTECT) {
+		if(caster)
+			caster->sendCancel("You can only use this rune on creatures.");
+		sendSpellMagicEffect(spell->game, creature->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Player* targetPlayer = dynamic_cast<Player*>(target);
+	Tile* fromTile = spell->game->getTile(creature->pos);
+
+	if(caster && caster->access < g_config.ACCESS_PROTECT) {
+		if(fromTile && fromTile->isPz()) {
+			caster->sendTextMessage(MSG_SMALLINFO, "You may not attack a person while you are in a protection zone.");
+			lua_pushnumber(L, 0);
+			return 1;
+		}
+		if(tile->isPz()) {
+			caster->sendTextMessage(MSG_SMALLINFO, "You may not attack a person in a protection zone.");
+			lua_pushnumber(L, 0);
+			return 1;
+		}
+	}
+
+	int placed = 0;
+	for(int dy = -1; dy <= 1; ++dy) {
+		for(int dx = -1; dx <= 1; ++dx) {
+			if(dx == 0 && dy == 0)
+				continue;
+			Position p(target->pos.x + dx, target->pos.y + dy, target->pos.z);
+			if(placeCrimsonCageWall(spell->game, p)) {
+				sendSpellMagicEffect(spell->game, p, NM_ME_MAGIC_BLOOD);
+				++placed;
+			}
+		}
+	}
+
+	if(placed == 0) {
+		if(caster)
+			caster->sendCancel("There is no room for a cage there.");
+		sendSpellMagicEffect(spell->game, creature->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	SpectatorVec list;
+	spell->game->getSpectators(Range(creature->pos, target->pos), list);
+	for(SpectatorVec::iterator it = list.begin(); it != list.end(); ++it) {
+		Player* spectator = dynamic_cast<Player*>(*it);
+		if(spectator)
+			spectator->sendDistanceShoot(creature->pos, target->pos, NM_ANI_FIRE);
+	}
+	sendSpellMagicEffect(spell->game, target->pos, NM_ME_SOUND_RED);
+
+	if(targetPlayer)
+		targetPlayer->sendTextMessage(MSG_SMALLINFO, "You are trapped in a crimson cage.");
 
 	if(caster && targetPlayer && caster->access < g_config.ACCESS_PROTECT &&
 		spell->game->getWorldType() != WORLD_TYPE_NO_PVP)

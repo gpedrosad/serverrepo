@@ -286,6 +286,9 @@ enum item_t {
 	ITEM_RIFTBLADE = 20250,
 	ITEM_AETHERCLEAVER = 20251,
 	ITEM_GRAVITON_MAUL = 20252,
+	/* Crimson Cage Rune: encierra al blanco en paredes rojas 3 s (docs/gameplay/CRIMSON_CAGE_RUNE.md) */
+	ITEM_CRIMSON_CAGE_RUNE = 20273,
+	ITEM_CRIMSON_CAGE_WALL = 20274,
 	/* Crown armors recoloreadas: loot raro de monstruos fuertes (docs/items-and-map/CROWN_ARMORS.md) */
 	ITEM_IMPERIAL_CROWN_ARMOR = 20161,
 	ITEM_SAPPHIRE_CROWN_ARMOR = 20162,

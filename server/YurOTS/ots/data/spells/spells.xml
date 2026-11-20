@@ -199,6 +199,7 @@
 <spell name="Soulfire" 				words="adevo res flam"		maglv="13"	mana="150"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
 <spell name="Fire Wall"				words="adevo mas grav flam"	maglv="13"	mana="200"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
 <spell name="Magic Wall" 			words="adevo grav tera"		maglv="14"	mana="250"	enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /><vocation id="4" /></spell>
+<spell name="Crimson Cage"			words="adevo grav res"		maglv="16"	mana="350"	enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /></spell>
 <spell name="Energy Bomb" 			words="adevo mas vis"		maglv="18"	mana="220"	enabled="1"><vocation id="1" /></spell>
 <spell name="Energy Wall" 			words="adevo mas grav vis"	maglv="18"	mana="250"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
 <spell name="Sudden Death" 			words="adori vita vis"		maglv="25"	mana="220"	enabled="1"><vocation id="1" /></spell>
@@ -235,6 +236,7 @@
 <rune name="Sudden Death"			id="2268"	charges="2"		maglv="15"	mana="0"	enabled="1"></rune>
 <rune name="Paralyze"				id="2278"	charges="1"		maglv="18"	mana="0"	enabled="1"></rune>
 <rune name="Anchor"					id="2296"	charges="3"		maglv="8"	mana="0"	enabled="1"></rune>
+<rune name="Crimson Cage"			id="20273"	charges="2"		maglv="10"	mana="0"	enabled="1"></rune>
 <!-- BEGIN MONSTER_KITS -->
 <spell name="k_drain_burst_3" words="k_drain_burst_3" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="k_drain_burst_8" words="k_drain_burst_8" maglv="4000" mana="800" enabled="1"></spell>

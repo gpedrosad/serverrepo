@@ -176,6 +176,7 @@ public:
 	static int luaActionSkillBuff(lua_State *L);
 	static int luaActionDoDesintegrate(lua_State *L);
 	static int luaActionDoAnchorRoot(lua_State *L);
+	static int luaActionDoCrimsonCage(lua_State *L);
 	static int luaActionDoCurePoison(lua_State *L);
 	static int luaActionDoAnimateDead(lua_State *L);
 	static int luaActionDoConvinceCreature(lua_State *L);
