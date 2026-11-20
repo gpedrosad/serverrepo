@@ -88,10 +88,10 @@ def track(buf, rat_id, rat_pos, me_id, me_pos):
                 me_pos = unpack_pos(m.group(3))
         elif m.group(5):
             frm, to = unpack_pos(m.group(5)), unpack_pos(m.group(7))
-            if frm == rat_pos:
-                rat_pos = to
-            elif frm == me_pos:
+            if frm == me_pos:           # primero el dueño: al cambiar de lugar comparten casilla un instante
                 me_pos = to
+            elif frm == rat_pos:
+                rat_pos = to
         else:
             speeds[struct.unpack("<I", m.group(8))[0]] = struct.unpack("<H", m.group(9))[0]
     return rat_id, rat_pos, me_pos, speeds
@@ -144,7 +144,7 @@ def main() -> int:
         return 1
     print(f"rata {rat_id} en {rat_pos}")
 
-    fails = behind = steps = 0
+    fails = behind = steps = back = 0
     for opcode in [0x66] * 5 + [0x68] * 5 + [0x66] * 3:   # este, oeste, este
         before = me
         mark = len(druid.buf)
@@ -155,6 +155,7 @@ def main() -> int:
         if me == before:
             continue            # paso bloqueado
         steps += 1
+        back += opcode == 0x68
         d = cheb(rat_pos, me)
         behind += rat_pos == before
         if d > 1:
@@ -175,8 +176,9 @@ def main() -> int:
     tp_ok = cheb(rat_pos, me) <= 1 and rat_pos[2] == me[2]
     print(f"después de /c: druida {me}  rata {rat_pos}  {'OK' if tp_ok else 'FALLA'}")
 
-    ok = rat_id and steps >= 10 and fails == 0 and tp_ok and rat_speed == my_speed
-    print(f"{'OK' if ok else 'FALLA'}: {steps} pasos, {fails} con la rata lejos, {behind} en la casilla que dejó")
+    ok = rat_id and steps >= 10 and back >= 4 and fails == 0 and tp_ok and rat_speed == my_speed
+    print(f"{'OK' if ok else 'FALLA'}: {steps} pasos ({back} de vuelta, cambiando de lugar con la rata), "
+          f"{fails} con la rata lejos, {behind} en la casilla que dejó")
     return 0 if ok else 1
 
 

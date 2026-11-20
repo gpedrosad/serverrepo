@@ -80,6 +80,7 @@ public:
 	void syncMasterSpeed();
 	void followMasterStep(const Position& masterOldPos);
 	bool followMasterTeleport();
+	void resumeFollowing();		// tras un teleport (cambio de lugar con el dueño): vuelve a pensar
 	virtual void onAttack();
 	static unsigned long getRandom();
 	/** Force target to caster and lock retarget/flee for durationMs (Challenge). */

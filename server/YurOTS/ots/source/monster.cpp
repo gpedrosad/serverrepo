@@ -834,7 +834,10 @@ void Monster::onTeleport(const Creature	*creature, const Position* oldPos, unsig
 {
 	if(creature == this) {
 		Creature* attackedCreature = game->getCreatureByID(this->attackedCreature);
-		if(!attackedCreature || !isCreatureReachable(attackedCreature)) {
+		if(isSummon() && !attackedCreature) {
+			state = STATE_IDLESUMMON;		// summon sin blanco: sigue al dueño (docs/gameplay/SUMMONS.md)
+		}
+		else if(!attackedCreature || !isCreatureReachable(attackedCreature)) {
 			state = STATE_TARGETNOTREACHABLE;
 		}
 
@@ -1360,12 +1363,20 @@ bool Monster::followMasterTeleport()
 	if(best == 1000)
 		return false;
 
-	stopThink();			// suelta el blanco del piso de antes y vuelve a seguir al dueño
 	game->teleport(this, dest);
 	game->sendMagicEffect(dest, NM_ME_ENERGY_AREA);
+	stopThink();			// suelta el blanco del piso de antes y vuelve a seguir al dueño
+	hasLostMaster = false;
+	startThink();			// el teleport le cortó el ciclo de pensar (onCreatureDisappear de sí mismo)
+	return true;
+}
+
+void Monster::resumeFollowing()
+{
+	if(!game->getCreatureByID(attackedCreature))
+		state = STATE_IDLESUMMON;
 	hasLostMaster = false;
 	startThink();
-	return true;
 }
 
 void Monster::setAttackedCreature(const Creature* creature)

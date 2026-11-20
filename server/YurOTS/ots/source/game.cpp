@@ -3526,8 +3526,10 @@ void Game::thingMoveInternal(Creature *creature, unsigned short from_x, unsigned
 	if(playerMoving && playerMoving == creature && toTile->creatures.size() == 1 && to_z == oldPos.z &&
 		std::abs(to_x - oldPos.x) <= 1 && std::abs(to_y - oldPos.y) <= 1 && !fromTile->isPz()) {
 		Monster* own = dynamic_cast<Monster*>(toTile->creatures.front());
-		if(own && own->getMaster() == playerMoving)
+		if(own && own->getMaster() == playerMoving) {
 			teleport(own, oldPos);
+			own->resumeFollowing();
+		}
 	}
 
 	if(!onPrepareMoveThing(creature, thing, oldPos, Position(to_x, to_y, to_z), count))
