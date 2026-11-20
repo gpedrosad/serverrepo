@@ -105,3 +105,9 @@ Errores que ya pasaron:
 | Wikis y otservlist rechazan descargas automáticas | No disfrazar la consulta. Bajar el cliente desde el navegador |
 | `DatReader` (`build_zagan_test_assets.py`) leía 99 entradas de más: tomaba los primeros outfits como ítems 5090–5188. Con los client ids nuevos, un ítem en el 5090 habría pisado el outfit 1 | Corregido el 20 nov 2026: lee los ítems 100..`item_count` (el encabezado del `.dat` guarda el último id, no la cantidad) |
 | Dos ítems con el mismo client id (la bandera y su copia fija de Obi): el server no dejaba mover la que se vende | El server compara por client id (`Items::sameClientItem`, ver [HANGABLES.md](../gameplay/HANGABLES.md#errores-que-ya-pasaron)) |
+
+Publicado el 20 nov 2026 en el cliente `df02ede` y desplegado con `bad92cb`: los
+1000 IDs 5090–6089 son entradas vacías; los ítems anteriores y el tail completo
+(creatures/efectos/proyectiles) coinciden byte por byte con el DAT anterior.
+DAT publicado `a80fb1ff`; HTTP 8080/8076 y ambos ZIPs verificados. Sin cliente
+in-game por pedido del usuario. Respaldo y despliegue en [ELF_WEST.md](ELF_WEST.md#despliegue--20-nov-2026).

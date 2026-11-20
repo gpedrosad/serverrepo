@@ -57,7 +57,7 @@ Revisión estructural: **300 tiles** respecto del respaldo inicial (228 z7 y 24 
 cada terraza z4/z5/z6). Once lockers completos, todos los ítems con atributos,
 cofres, puertas, escaleras y spawns antiguos intactos. `check-upper-view` OK;
 `sync-houses-with-map.py --dry-run`: houses.xml coincide. Sin suites, cliente ni
-recorrido in-game por pedido del usuario. **Preparado, pendiente de activación**.
+recorrido in-game por pedido del usuario. **Activado el 20 nov 2026**, ver despliegue abajo.
 
 
 ## Lava fuera de la vista — 20 nov 2026
@@ -72,5 +72,24 @@ desde una casilla transitable. Agua 4608 y lava 598–601 tienen exactamente los
 mismos flags OTB (`ground`, `block_solid`): no se abre ningún camino. Solo cambian
 esos suelos, sin tocar spawns, ítems con atributos, casas, depots ni geometría élfica.
 Segunda pasada: 0 tiles modificados. Imágenes actualizadas con los sprites reales.
-Respaldo: `backups/map/elf-no-lava-before/`. Pendiente de activación junto con la
+Respaldo local: `backups/map/elf-no-lava-before/`. Activado junto con la
 ampliación élfica; sin pruebas in-game.
+
+
+## Despliegue — 20 nov 2026
+
+Gonzalo autorizó **todo main**: `bad92cb`, con el mapa de `289cc8f`, la ampliación
+DAT a client ids 5090–6089 y `fixshielddefense=1`. Sin cambios de C++ ni rebuild.
+La IP LAN local se respaldó y se reaplicó con `git apply --3way` tras el ff-merge;
+el único diff de config sigue siendo `127.0.0.1` → `192.168.1.17`.
+
+Respaldo ThinkPad `~/backups/pre-deploy-20261120-194313-elf-west-lake`, refrescado
+inmediatamente antes del reinicio y con copia del guardado posterior. Cliente
+completo pusheado como `df02ede` (incluye los assets de decoración 73f4ec9 que ya
+estaban publicados). Publicado antes del reinicio: DAT `a80fb1ff`, SPR `6ae0f055`,
+minimapa `ef2bbb5b`; HTTP 8080/8076 y ZIPs Mac/Windows coinciden.
+
+`docker restart -t 45 yurots`: guardado completo, Loaded in 0.974 s, protocolo OK,
+healthy, 0 reinicios automáticos y arranque sin errores/warnings. 1 cuenta,
+8 personajes, 31 casas, depots, dueños, houseitems y binario conservados; los once
+lockers completos también son idénticos. Sin suites ni recorrido in-game.
