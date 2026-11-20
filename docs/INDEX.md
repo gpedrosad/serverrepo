@@ -120,6 +120,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/READABLES.md`](gameplay/READABLES.md) | **Cartas, scrolls y libros:** leer/escribir según el `items.otb`, `scrolltexts.xml` del piso, ids. |
 | [`gameplay/MAGIC_WALL.md`](gameplay/MAGIC_WALL.md) | **Magic Wall:** duración 15s, `DECAY_INTERVAL`, bug de relanzar sin reiniciar timer (jul 2026). |
 | [`gameplay/ANCHOR_RUNE.md`](gameplay/ANCHOR_RUNE.md) | Anchor Rune (2296): root de 1s (no paralyze) para war/combos. |
+| [`gameplay/CRIMSON_CAGE_RUNE.md`](gameplay/CRIMSON_CAGE_RUNE.md) | Crimson Cage Rune (20273, `adevo grav res`): encierra al blanco en 8 paredes rojas por 3 s (evento propio, no el decay de 5 s). |
 | [`gameplay/SPELL_CAST_VISIBILITY.md`](gameplay/SPELL_CAST_VISIBILITY.md) | Visibilidad del cast de hechizos (efectos visuales). |
 | [`gameplay/SPELL_EXORI_GRAN.md`](gameplay/SPELL_EXORI_GRAN.md) | Hechizo exori gran: balance, área, daño. |
 | [`gameplay/SPELL_EXORI_HUR.md`](gameplay/SPELL_EXORI_HUR.md) | **exori hur** (Whirlwind Throw, knight): lanza el arma de melee al blanco (rango 5); daño por nivel, skill y ataque del arma (fórmula TFS); proyectil según arma. Bindings `getPlayerWeapon` / `getPlayerSkill`. |

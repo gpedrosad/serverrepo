@@ -84,6 +84,7 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 | Magic Wall (duración / decay de fields) | `docs/gameplay/MAGIC_WALL.md` |
 | Wands, rods, Crimson Wand, escalado de ML | `docs/gameplay/WANDS.md` |
 | Spells / runas (carga Lua, safeCast, Soulfire, Paralyze, Anchor) | `docs/gameplay/SPELL_RUNTIME.md` |
+| Crimson Cage Rune (`adevo grav res`, 20273): encierra al blanco en paredes rojas 3 s | `docs/gameplay/CRIMSON_CAGE_RUNE.md` |
 | Whirlwind Throw (`exori hur`): lanzar el arma según skill y ataque | `docs/gameplay/SPELL_EXORI_HUR.md` |
 | Ethereal Spear (`exori con`): lanza etérea según skill de distancia | `docs/gameplay/SPELL_EXORI_CON.md` |
 | Eco (`utevo vis`): repite el próximo golpe al 50 %; `echo="1"` en `spells.xml` | `docs/gameplay/SPELL_ECO.md` |

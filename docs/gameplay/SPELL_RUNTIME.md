@@ -81,6 +81,7 @@ SpellScript::safeCast(spell, creature, pos, var);
 | Convince Creature | `2290` | `runes/convince creature.lua` | `doConvinceCreature` |
 | Chameleon | `2291` | `runes/chameleon.lua` | `doChameleon` — ~200s |
 | Anchor | `2296` | `runes/anchor.lua` | `doAnchorRoot` — root 1s (`rootTicks`) |
+| Crimson Cage | `20273` | `runes/crimson cage.lua` | `doCrimsonCage` — 8 paredes rojas 3 s ([CRIMSON_CAGE_RUNE.md](CRIMSON_CAGE_RUNE.md)) |
 | o fire field | `5017` (monster) | `runes/o fire field.lua` | área ground fire |
 | old widow pox | `5032` (monster) | `runes/old widow pox.lua` | (ya existía; pasó de instant a rune) |
 
@@ -104,6 +105,7 @@ Registrados en el constructor de `SpellScript`:
 | Lua | C++ |
 |-----|-----|
 | `doAnchorRoot` | `luaActionDoAnchorRoot` |
+| `doCrimsonCage` | `luaActionDoCrimsonCage` |
 | `doCurePoison` | `luaActionDoCurePoison` |
 | `doAnimateDead` | `luaActionDoAnimateDead` |
 | `doConvinceCreature` | `luaActionDoConvinceCreature` |
