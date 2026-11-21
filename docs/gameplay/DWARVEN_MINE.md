@@ -1,8 +1,9 @@
 # Mina Enana — Vetas de Cobre
 
 Hunt de nivel orientativo **20–50**, con entrada en **195,59,7**, en el desvío norte
-del camino oriental hacia el desierto. Puesto de acceso con vagoneta, apoyo de madera,
-cartel y un tramo de riel sobre tablones. El camino principal permanece transitable.
+del camino oriental hacia el desierto. Acceso discreto con agujero al pie de la roca
+y cartel lateral. Se conserva el pasto original; el camino principal permanece libre.
+Los rieles, vagonetas y apoyos de madera se usan exclusivamente bajo tierra.
 
 ![Entrada, estaciones y forja](../items-and-map/img/dwarven-mine/mina.png)
 

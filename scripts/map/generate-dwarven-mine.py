@@ -98,7 +98,7 @@ def main():
     MAP.write_bytes(serialize_tree(root, raw[:4]))
     SPAWNS.write_text(spawn_text, encoding="latin-1")
     READABLES.write_text(sign_text, encoding="latin-1")
-    MANIFEST.write_text(json.dumps(dict(name="dwarven-mine", version=1, entry=[*MOUTH, 7],
+    MANIFEST.write_text(json.dumps(dict(name="dwarven-mine", version=2, entry=[*MOUTH, 7],
         shaft=[*SHAFT, 8], down=[*DOWN, 9], boss=[*BOSS, 10], report=report,
         cells={",".join(map(str, p)): ids for p, ids in sorted(cells.items())},
         original={",".join(map(str, p)): baseline.get(p) for p in sorted(cells)}), separators=(",", ":")) + "\n")

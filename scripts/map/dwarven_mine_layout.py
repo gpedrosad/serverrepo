@@ -174,8 +174,9 @@ def build(values, otb):
         p = x, y, 8
         if p not in cells and (p not in values or (values[p] == [598] and bl.blocks(598))):
             cells[p] = [101]
-    surface = {(*MOUTH, 7): [469], (195, 60, 7): [405, 20360], (195, 61, 7): [405, 20360],
-               (194, 58, 7): [113, 20367], (197, 60, 7): [4756, 20366],
+    # Exterior discreto: pasto original, sin vias, tablones ni piezas sueltas sobre el camino.
+    surface = {(*MOUTH, 7): [469], (195, 60, 7): [4756], (195, 61, 7): [4756],
+               (194, 58, 7): [113], (197, 60, 7): [4756],
                (194, 60, 7): [113, 1429]}
     cells.update(surface)
     merged = values | cells
