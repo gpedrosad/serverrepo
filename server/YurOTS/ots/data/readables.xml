@@ -147,4 +147,18 @@
 	<!-- BEGIN BEHOLDER_CRYPT_SIGNS (scripts/map/generate-beholder-crypt.py) -->
 	<readable x="77" y="34" z="7" text="CRYPT OF EYES\nLevel 30-65.\nGazers and Beholders at the entrance; Vampires, Vampire Brides and Banshees deeper inside."/>
 	<!-- END BEHOLDER_CRYPT_SIGNS -->
+	<!-- BEGIN RIVER_GROTTO_SIGNS (scripts/map/generate-river-grotto.py) -->
+	<readable x="177" y="58" z="7" text="SUBMERGED RIVER GROTTO\nLevel 45-75.\nBlood Crabs and Quara Constrictors at the entrance; Water Elementals, Quara Hydromancers and Bog Raiders below."/>
+	<!-- END RIVER_GROTTO_SIGNS -->
+	<!-- BEGIN DEMONA_LOCAL_SIGNS (scripts/map/generate-demona-local.py) -->
+	<readable x="118" y="128" z="7" text="DEEP HALLS OF DEMONA\nLevel 75-120+.\nTwo wings below: Stone Wing (Behemoths &amp; Wyrms) and Arcane Wing (Warlocks)."/>
+	<readable x="118" y="136" z="12" text="WEST: STONE WING\nCyclops Smith, Stone Golems, Wyrms and Behemoths."/>
+	<readable x="123" y="136" z="12" text="EAST: ARCANE WING\nPriestesses, Necromancers and Warlocks. Watch your line of sight."/>
+	<!-- END DEMONA_LOCAL_SIGNS -->
+	<!-- BEGIN AMAZON_CAMP_SIGNS (scripts/map/generate-amazon-camp.py) -->
+	<readable x="74" y="34" z="7" text="AMAZON CAMP\nLevel 15-30.\nAmazons, Valkyries and Assassins across the northern bridge."/>
+	<!-- END AMAZON_CAMP_SIGNS -->
+	<!-- BEGIN BARBARIAN_CAMP_SIGNS (scripts/map/generate-barbarian-camp.py) -->
+	<readable x="224" y="25" z="7" text="BARBARIAN CAMP\nLevel 15-40.\nBarbarian raiders and Frost Giants across the northern snowfields."/>
+	<!-- END BARBARIAN_CAMP_SIGNS -->
 </readables>

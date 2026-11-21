@@ -1,46 +1,49 @@
 <?xml version="1.0"?>
-<!-- Jefe final de Elvenbane, en la cima de la torre central: drena vida, energía y muerte; se cura y llama elfos. -->
 <monster name="Lord of Elvenbane" level="80" maglevel="80" experience="15000" pushable="0" armor="45" defense="45" canpushitems="1" staticattack="70" changetarget="200" speed="300">
-	<health now="12000" max="12000"/>
-	<look type="185" corpse="20240"/>
-	<combat targetdistance="1" runonhealth="0"/>
-<attacks>
-	<attack type="melee" mindamage="150" maxdamage="400"/>
-	<attack type="instant" name="k_drain_burst_8" exhaustion="1000" cycleticks="2500" probability="40" kit="1"/>
-	<attack type="instant" name="k_energy_wave_9" exhaustion="1000" cycleticks="2500" probability="40" kit="1"/>
-	<attack type="rune" name="k_death_strike_8" exhaustion="1000" cycleticks="2500" probability="40" kit="1"/>
-	<attack type="instant" name="k_heal_7" exhaustion="1000" cycleticks="6000" probability="20" kit="1"/>
-	<attack type="instant" name="orcb_haste" exhaustion="500" cycleticks="6000" probability="15" kit="1"/>
-</attacks>
-<defenses>
-	<defense immunity="energy"/>
-	<defense immunity="poison"/>
-	<defense immunity="paralyze"/>
-	<defense immunity="drunk"/>
-	<defense immunity="invisible"/>
-</defenses>
-<voices>
-	<voice sentence="ELVENBANE IS MINE!"/>
-	<voice sentence="You climbed all this way just to die."/>
-	<voice sentence="Kneel before the Lord of Elvenbane!"/>
-</voices>
-<loot>
-		<item id="20335" chance="5000"/> <!-- trofeo colgable (rare 5 %, docs/gameplay/HANGABLES.md) -->
-	<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
-	<item id="2152" countmax="20" chance1="60000" chancemax="0"/>
-	<item id="2160" countmax="2" chance1="10000" chancemax="0"/>
-	<item id="2472" chance="1000"/>
-	<item id="1987" chance="100000">
-	<inside>
-	<item id="2148" countmax="100" chance1="80000" chancemax="0"/>
-	<item id="2156" chance="3000"/>
-	<item id="2155" chance="3000"/>
-	<item id="2466" chance="3000"/>
-	</inside>
-	</item>
-</loot>
-<summons maxSummons="2">
-	<summon name="Elf Arcanist" chance="1200"/>
-	<summon name="Elf Scout" chance="1200"/>
-</summons>
+	<health now="12000" max="12000" />
+	<look type="185" corpse="20240" />
+	<combat targetdistance="1" runonhealth="0" />
+	<attacks>
+		<attack type="melee" mindamage="150" maxdamage="400" />
+		<attack type="instant" name="k_drain_burst_8" exhaustion="1000" cycleticks="2500" probability="40" kit="1" />
+		<attack type="instant" name="k_energy_wave_9" exhaustion="1000" cycleticks="2500" probability="40" kit="1" />
+		<attack type="rune" name="k_death_strike_8" exhaustion="1000" cycleticks="2500" probability="40" kit="1" />
+		<attack type="instant" name="k_heal_7" exhaustion="1000" cycleticks="6000" probability="20" kit="1" />
+		<attack type="instant" name="orcb_haste" exhaustion="500" cycleticks="6000" probability="15" kit="1" />
+	</attacks>
+	<defenses>
+		<defense immunity="energy" />
+		<defense immunity="poison" />
+		<defense immunity="paralyze" />
+		<defense immunity="drunk" />
+		<defense immunity="invisible" />
+	</defenses>
+	<voices>
+		<voice sentence="ELVENBANE IS MINE!" />
+		<voice sentence="You climbed all this way just to die." />
+		<voice sentence="Kneel before the Lord of Elvenbane!" />
+	</voices>
+	<loot>
+		<item id="20335" chance="5000" />
+		<item id="2148" countmax="100" chance1="100000" chancemax="0" />
+		<item id="2152" countmax="20" chance1="60000" chancemax="0" />
+		<item id="2160" countmax="2" chance1="10000" chancemax="0" />
+		<item id="2472" chance="1000" />
+		<item id="1987" chance="100000">
+			<inside>
+				<item id="2148" countmax="100" chance1="80000" chancemax="0" />
+				<item id="2156" chance="3000" />
+				<item id="2155" chance="3000" />
+				<item id="2466" chance="3000" />
+				<item id="20125" chance="2000" />
+				<item id="2352" chance="1500" />
+				<item id="20124" chance="1200" />
+			</inside>
+		</item>
+	</loot>
+	<summons maxSummons="2">
+		<summon name="Elf Arcanist" chance="1200" />
+		<summon name="Elf Scout" chance="1200" />
+	</summons>
 </monster>
+

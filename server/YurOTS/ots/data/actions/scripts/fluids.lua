@@ -1,6 +1,10 @@
 -- fluids by atolon --
 -- fluids fixed by Shampo --
 
+local MSG_EVENT = 20
+local COLOR_HEAL = 30 -- green (#00FF00)
+local COLOR_MANA = 23 -- mana blue (#0099FF)
+
    function onUse(cid, item, frompos, item2, topos)
    	-- itemid means that is a creature
 if frompos.x == 65535 then
@@ -36,18 +40,37 @@ if frompos.x == 65535 then
    				elseif item.type == 6 then
    					doPlayerSay(cid,"oh!, yummy milk!",16)
    				elseif item.type == 10 then
+   					local hpBefore = getPlayerHealth(cid)
    					doPlayerAddHealth(cid,100)
-                                           doSendMagicEffect(topos,12)
+   					local healed = getPlayerHealth(cid) - hpBefore
+   					doSendMagicEffect(topos,12)
+   					if healed > 0 then
+   						doSendAnimatedText(getPlayerPosition(cid), "+" .. healed, COLOR_HEAL)
+   						local unit = (healed == 1) and "hitpoint." or "hitpoints."
+   						doPlayerSendTextMessage(cid, MSG_EVENT, "You healed yourself for " .. healed .. " " .. unit)
+   					end
    				elseif item.type == 13 then
    					doPlayerSay(cid,"Eww.. urine!",16)
    				elseif item.type == 7 then
+   					local manaBefore = getPlayerMana(cid)
    					doPlayerAddMana(cid,100)
-                                           doSendMagicEffect(topos,12)
+   					local recovered = getPlayerMana(cid) - manaBefore
+   					doSendMagicEffect(topos,12)
    					doPlayerSay(cid,"Aaaaah...",1)
+   					if recovered > 0 then
+   						doSendAnimatedText(getPlayerPosition(cid), "+" .. recovered, COLOR_MANA)
+   						doPlayerSendTextMessage(cid, MSG_EVENT, "You recovered " .. recovered .. " mana.")
+   					end
    				elseif item.type == 14 then
+   					local manaBefore = getPlayerMana(cid)
    					doPlayerAddMana(cid,250)
+   					local recovered = getPlayerMana(cid) - manaBefore
    					doSendMagicEffect(topos,23)
    					doPlayerSay(cid,"Aaaaah...",1)
+   					if recovered > 0 then
+   						doSendAnimatedText(getPlayerPosition(cid), "+" .. recovered, COLOR_MANA)
+   						doPlayerSendTextMessage(cid, MSG_EVENT, "You recovered " .. recovered .. " mana.")
+   					end
    				elseif item.type == 19 then
    					doPlayerSay(cid,"Arrgh its mud!",16)
    				elseif item.type == 26 then

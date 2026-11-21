@@ -135,13 +135,15 @@ def build(values, otb):
     cells = {}
     for z, tmap in ((8, t8), (9, t9), (10, t10), (11, t11)):
         for (x, y), ids in tmap.items():
+            if ids == [101] and values.get((x, y, z)) not in (None, [101]):
+                continue
             cells[x, y, z] = ids
 
     # Relleno de pantalla (sin vacio negro) SOLO donde no existe tile
     for z, fl in ((8, fl8), (9, fl9), (10, fl10), (11, floor11)):
         for x, y in C.grow(fl, 9):
             p = x, y, z
-            if p not in cells and (p not in values or previous.get(",".join(map(str, p))) == [101]):
+            if p not in cells and (p not in values or (values[p] == [101] and previous.get(",".join(map(str, p))) == [101])):
                 cells[p] = [101]
 
     # Techo en z10 sobre floor11 (y en z8/z9 sobre los rellanos si hubiera vacio)
@@ -155,7 +157,7 @@ def build(values, otb):
             p = x, y, z_up
             if p in cells:
                 continue
-            if p in values and previous.get(",".join(map(str, p))) != [101]:
+            if p in values and (values[p] != [101] or previous.get(",".join(map(str, p))) != [101]):
                 continue
             if any(walkable_existing((x + dx, y + dy, z_up)) for dx in (-1, 0, 1) for dy in (-1, 0, 1)):
                 continue

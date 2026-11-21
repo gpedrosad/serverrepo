@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Furious Dragon Hatchling" level="31" maglevel="28" experience="621" pushable="0" armor="22" defense="24" canpushitems="1" staticattack="50" changetarget="200" speed="190">
+	<health now="798" max="798" />
+	<look type="246" head="0" body="0" legs="0" feet="0" corpse="3104" />
+	<combat targetdistance="1" runonhealth="0" />
+	<attacks>
+		<attack type="melee" mindamage="28" maxdamage="104" probability="100" />
+		<attack type="instant" name="hatchling_firewave" exhaustion="500" cycleticks="6000" probability="30" />
+		<attack type="rune" name="hatchling_fireball" exhaustion="500" cycleticks="3000" probability="35" />
+		<attack type="instant" name="exura" exhaustion="500" cycleticks="6000" probability="25" />
+	</attacks>
+	<defenses>
+		<defense immunity="fire" />
+		<defense immunity="poison" />
+		<defense immunity="invisible" />
+	</defenses>
+	<voices>
+		<voice sentence="Fchu?" />
+		<voice sentence="Rooawwrr" />
+		<voice sentence="RAAAARGH!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="55" chance1="80000" chancemax="0" />
+		<item id="2672" countmax="1" chance1="60000" chancemax="0" />
+		<item id="2150" countmax="3" chance1="26000" chancemax="0" />
+		<item id="2149" countmax="3" chance1="21000" chancemax="0" />
+		<item id="2147" countmax="2" chance1="16000" chancemax="0" />
+		<item id="2146" countmax="2" chance1="11000" chancemax="0" />
+		<item id="2145" countmax="1" chance1="6000" chancemax="0" />
+	</loot>
+</monster>

@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0"?>
 <monster name="Furious Giant Spider" level="30" maglevel="76" experience="2700" pushable="0" armor="42" defense="44" canpushitems="1" staticattack="50" changetarget="200" speed="292">
 	<health now="2990" max="2990" />
 	<look type="38" corpse="2857" />
@@ -29,7 +29,6 @@
 				<item id="2148" countmax="50" chance1="100000" chancemax="0" />
 				<item id="2476" chance="2472" />
 				<item id="2477" chance="2146" />
-				<item id="0000" countmax="2" chance1="20000" chancemax="0" />
 				<item id="2478" chance="10000" />
 				<item id="2169" chance="1120" />
 			</inside>
@@ -45,3 +44,4 @@
 		<summon name="Poison Spider" chance="1666" />
 	</summons>
 </monster>
+

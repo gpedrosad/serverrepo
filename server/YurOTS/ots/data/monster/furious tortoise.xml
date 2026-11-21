@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<monster name="Furious Tortoise" level="20" maglevel="10" experience="216" pushable="0" armor="35" defense="35" canpushitems="1" staticattack="50" changetarget="200" speed="218">
+<monster name="Furious Tortoise" level="20" maglevel="10" experience="216" pushable="0" armor="21" defense="23" canpushitems="1" staticattack="50" changetarget="200" speed="218">
 	<health now="361" max="361" />
 	<look type="197" head="0" body="0" legs="0" feet="0" corpse="20173" />
 	<combat targetdistance="1" runonhealth="0" />

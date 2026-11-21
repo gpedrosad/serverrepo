@@ -20,9 +20,9 @@
 		<voice sentence="GRAAAH!" />
 	</voices>
 	<loot>
-		<item id="2148" countmax="110" chance1="90000" chancemax="0" />
+		<item id="2148" countmax="100" chance1="90000" chancemax="0" />
+		<item id="2148" countmax="10" chance1="90000" chancemax="0" />
 		<item id="2143" countmax="1" chance1="15000" chancemax="0" />
-		<item id="2143" countmax="1" chance1="5300" chancemax="0" />
 		<item id="2149" countmax="1" chance1="5000" chancemax="0" />
 		<item id="2670" countmax="5" chance1="4600" chancemax="0" />
 		<item id="2144" countmax="1" chance1="3000" chancemax="0" />
@@ -30,6 +30,10 @@
 		<item id="2214" chance="1100" />
 		<item id="2189" chance="960" />
 		<item id="2476" chance="230" />
+		<item id="2271" chance="3500" />
+		<item id="2315" chance="3500" />
+		<item id="2183" chance="600" />
+		<item id="20149" chance="300" />
 		<item id="2150" countmax="2" chance1="9000" chancemax="0" />
 		<item id="2149" countmax="2" chance1="7000" chancemax="0" />
 		<item id="2147" countmax="1" chance1="5000" chancemax="0" />

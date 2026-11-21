@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<monster name="Enraged Ice Spider" level="44" maglevel="84" experience="5320" pushable="0" armor="50" defense="50" canpushitems="1" staticattack="50" changetarget="200" speed="315">
+<monster name="Enraged Ice Spider" level="44" maglevel="84" experience="5890" pushable="0" armor="42" defense="44" canpushitems="1" staticattack="50" changetarget="200" speed="315">
 	<health now="5040" max="5040" />
 	<look type="235" corpse="20167" />
 	<combat targetdistance="1" runonhealth="0" />
 	<blood color="30" effect="16" splash="4" />
 	<attacks>
-		<attack type="melee" mindamage="350" maxdamage="850" probability="100" />
+		<attack type="melee" mindamage="250" maxdamage="650" probability="100" />
 		<attack type="rune" name="frostdragon_iceball" exhaustion="500" cycleticks="6000" probability="35" />
 		<attack type="instant" name="icespider_blizzard" exhaustion="500" cycleticks="8000" probability="40" />
 		<attack type="instant" name="exura" exhaustion="500" cycleticks="4500" probability="30" />
@@ -31,11 +31,13 @@
 				<item id="2148" countmax="50" chance1="100000" chancemax="0" />
 				<item id="2476" chance="1766" />
 				<item id="2477" chance="1533" />
-				<item id="0000" countmax="2" chance1="20000" chancemax="0" />
 				<item id="2478" chance="10000" />
 				<item id="2169" chance="800" />
+				<item id="2274" chance="3500" />
+				<item id="20372" chance="350" />
 			</inside>
 		</item>
+		<item id="2271" chance="4000" />
 		<item id="2150" countmax="4" chance1="36000" chancemax="0" />
 		<item id="2149" countmax="4" chance1="30000" chancemax="0" />
 		<item id="2147" countmax="3" chance1="24000" chancemax="0" />

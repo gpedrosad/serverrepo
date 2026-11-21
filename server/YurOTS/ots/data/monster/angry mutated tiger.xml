@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<monster name="Angry Mutated Tiger" level="69" maglevel="34" experience="1725" pushable="0" armor="31" defense="35" canpushitems="1" staticattack="50" changetarget="200" speed="276">
+<monster name="Angry Mutated Tiger" level="69" maglevel="34" experience="1955" pushable="0" armor="31" defense="35" canpushitems="1" staticattack="50" changetarget="200" speed="276">
 	<health now="2035" max="2035" />
 	<look type="251" head="0" body="0" legs="0" feet="0" corpse="4292" />
 	<combat targetdistance="1" runonhealth="0" />
 	<attacks>
-		<attack type="melee" mindamage="128" maxdamage="416" probability="100" />
+		<attack type="melee" mindamage="104" maxdamage="352" probability="100" />
 		<attack type="instant" name="exura" exhaustion="500" cycleticks="6000" probability="30" />
 		<attack type="instant" name="k_roar_burst_7" exhaustion="1000" cycleticks="2500" probability="40" kit="1" />
 		<attack type="instant" name="orcb_haste" exhaustion="500" cycleticks="6000" probability="15" kit="1" />

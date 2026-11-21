@@ -801,6 +801,8 @@ int Player::addItemInventory(Item* item, int pos, bool internal /*= false*/) {
 
 		if(pos == SLOT_HEAD)
 			refreshHeadSkillBonus(SLOT_HEAD);
+		else if(pos == SLOT_FEET || pos == SLOT_ARMOR || pos == SLOT_LEGS)
+			checkBoh();
 		if(!internal) {
 			client->sendStats();
 			client->sendInventory(pos);
@@ -971,6 +973,8 @@ int Player::removeItemInventory(int pos, bool internal /*= false*/)
 
 		if(pos == SLOT_HEAD)
 			refreshHeadSkillBonus(SLOT_HEAD);
+		else if(pos == SLOT_FEET || pos == SLOT_ARMOR || pos == SLOT_LEGS)
+			checkBoh();
 		if(!internal) {
 			client->sendStats();
 			client->sendInventory(pos);
@@ -1800,7 +1804,7 @@ void Player::onThingMove(const Creature *creature, slots_t fromSlot, const Item*
 	}
 	client->sendThingMove(creature, fromSlot, fromItem, oldFromCount, toContainer, to_slotid, toItem, oldToCount, count);
 	refreshHeadSkillBonus(fromSlot);
-	if (fromSlot == SLOT_FEET || fromSlot == SLOT_ARMOR ||
+	if (fromSlot == SLOT_FEET || fromSlot == SLOT_ARMOR || fromSlot == SLOT_LEGS ||
 		fromSlot == SLOT_LEFT || fromSlot == SLOT_RIGHT)
 		checkBoh();
 	if (fromSlot == SLOT_FEET)
@@ -1829,6 +1833,7 @@ void Player::onThingMove(const Creature *creature, slots_t fromSlot, const Item*
 	refreshHeadSkillBonus(fromSlot, toSlot);
 	if (fromSlot == SLOT_FEET || toSlot == SLOT_FEET ||
 		fromSlot == SLOT_ARMOR || toSlot == SLOT_ARMOR ||
+		fromSlot == SLOT_LEGS || toSlot == SLOT_LEGS ||
 		fromSlot == SLOT_LEFT || toSlot == SLOT_LEFT ||
 		fromSlot == SLOT_RIGHT || toSlot == SLOT_RIGHT)
 		checkBoh();
@@ -1851,7 +1856,7 @@ void Player::onThingMove(const Creature *creature, const Container *fromContaine
 	}
 	client->sendThingMove(creature, fromContainer, from_slotid, fromItem, oldFromCount, toSlot, toItem, oldToCount, count);
 	refreshHeadSkillBonus(toSlot);
-	if (toSlot == SLOT_FEET || toSlot == SLOT_ARMOR ||
+	if (toSlot == SLOT_FEET || toSlot == SLOT_ARMOR || toSlot == SLOT_LEGS ||
 		toSlot == SLOT_LEFT || toSlot == SLOT_RIGHT)
 		checkBoh();
 	if (toSlot == SLOT_FEET && fromItem && fromItem->getID() == ITEM_SOFT_BOOTS)
@@ -1878,7 +1883,7 @@ void Player::onThingMove(const Creature *creature, slots_t fromSlot,
 	}
 	client->sendThingMove(creature, fromSlot, fromItem, oldFromCount, toPos, toItem, oldToCount, count);
 	refreshHeadSkillBonus(fromSlot);
-	if (fromSlot == SLOT_FEET || fromSlot == SLOT_ARMOR ||
+	if (fromSlot == SLOT_FEET || fromSlot == SLOT_ARMOR || fromSlot == SLOT_LEGS ||
 		fromSlot == SLOT_LEFT || fromSlot == SLOT_RIGHT)
 		checkBoh();
 	if (fromSlot == SLOT_FEET)
@@ -1905,7 +1910,7 @@ void Player::onThingMove(const Creature *creature, const Position &fromPos, int 
 	}
 	client->sendThingMove(creature, fromPos, stackpos, fromItem, oldFromCount, toSlot, toItem, oldToCount, count);
 	refreshHeadSkillBonus(toSlot);
-	if (toSlot == SLOT_FEET || toSlot == SLOT_ARMOR ||
+	if (toSlot == SLOT_FEET || toSlot == SLOT_ARMOR || toSlot == SLOT_LEGS ||
 		toSlot == SLOT_LEFT || toSlot == SLOT_RIGHT)
 		checkBoh();
 	if (toSlot == SLOT_FEET && fromItem && fromItem->getID() == ITEM_SOFT_BOOTS)
@@ -3341,6 +3346,8 @@ void Player::checkBoh()
 {
 	bool bohNow = (items[SLOT_FEET] && items[SLOT_FEET]->getID() == ITEM_BOH);
 	int hasteNow = items[SLOT_FEET] ? hasteStacksFromAid(items[SLOT_FEET]->getActionId()) : 0;
+	if(items[SLOT_FEET] && items[SLOT_FEET]->getID() == ITEM_WAYFARER_BOOTS)
+		hasteNow += 2;
 
 	int wandMlNow = 0;
 	for(int slot = SLOT_RIGHT; slot <= SLOT_LEFT; slot++){
@@ -3365,10 +3372,13 @@ void Player::checkBoh()
 			crystalArrowNow = crystalArrowStacksFromAid(activeWeapon->getActionId());
 	}
 
-	int helmMlNow = (items[SLOT_HEAD] && items[SLOT_HEAD]->getID() == ITEM_MAGIC_TURBAN) ? 1 : 0;
+	const bool isMageVoc = (vocation == VOCATION_SORCERER || vocation == VOCATION_DRUID);
+	int helmMlNow = (items[SLOT_HEAD] && (items[SLOT_HEAD]->getID() == ITEM_MAGIC_TURBAN ||
+		(items[SLOT_HEAD]->getID() == ITEM_STARBINDER_HOOD && isMageVoc))) ? 1 : 0;
 
-	int armorMlNow = (items[SLOT_ARMOR] && items[SLOT_ARMOR]->getID() == ITEM_FURY_CAPE &&
-		(vocation == VOCATION_SORCERER || vocation == VOCATION_DRUID)) ? 1 : 0;
+	int armorMlNow = (items[SLOT_ARMOR] && items[SLOT_ARMOR]->getID() == ITEM_FURY_CAPE && isMageVoc) ? 1 : 0;
+	if(items[SLOT_LEGS] && items[SLOT_LEGS]->getID() == ITEM_KILNFIRE_LEGGINGS && isMageVoc)
+		armorMlNow += 1;
 
 	int emeraldNow = items[SLOT_ARMOR] ? emeraldStacksFromAid(items[SLOT_ARMOR]->getActionId(), items[SLOT_ARMOR]) : 0;
 

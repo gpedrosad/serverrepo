@@ -12,7 +12,7 @@ WANDS = {
 
 BOOTS = {
 	[2195] = true, [2642] = true, [2643] = true, [2644] = true, [2645] = true,
-	[2646] = true, [3982] = true,
+	[2646] = true, [3982] = true, [20129] = true,
 }
 
 -- Items that are not weapons but can sit in hand slots.

@@ -111,6 +111,56 @@ void sendSpellText(Creature* creature, MessageClasses mclass, const std::string&
 		player->sendTextMessage(mclass, text.c_str());
 }
 
+const unsigned char COLOR_SPELL_HEAL = 30; // green (#00FF00)
+const unsigned char COLOR_SPELL_MANA = 23; // mana blue (#0099FF)
+
+void sendSpellAnimatedText(Game* game, const Position& pos, unsigned char color, const std::string& text)
+{
+	if(!game || text.empty())
+		return;
+	SpectatorVec list;
+	game->getSpectators(Range(pos, true), list);
+	for(SpectatorVec::iterator it = list.begin(); it != list.end(); ++it) {
+		Player* p = dynamic_cast<Player*>(*it);
+		if(p && p->CanSee(pos.x, pos.y, pos.z))
+			p->sendAnimatedText(pos, color, text);
+	}
+}
+
+void sendSpellHealFeedback(Game* game, Creature* caster, Creature* target, int64_t healed)
+{
+	if(!game || !target || healed <= 0)
+		return;
+
+	std::stringstream anim;
+	anim << "+" << healed;
+	sendSpellAnimatedText(game, target->pos, COLOR_SPELL_HEAL, anim.str());
+
+	SpectatorVec list;
+	game->getSpectators(Range(target->pos, true), list);
+	for(SpectatorVec::iterator it = list.begin(); it != list.end(); ++it) {
+		Player* p = dynamic_cast<Player*>(*it);
+		if(p && p->CanSee(target->pos.x, target->pos.y, target->pos.z))
+			p->sendCreatureHealth(target);
+	}
+
+	const char* unit = (healed == 1) ? "hitpoint." : "hitpoints.";
+	if(caster && caster != target) {
+		std::stringstream targetMsg;
+		targetMsg << "You were healed by " << caster->getName() << " for " << healed << " " << unit;
+		sendSpellText(target, MSG_EVENT, targetMsg.str());
+
+		std::stringstream casterMsg;
+		casterMsg << "You healed " << target->getName() << " for " << healed << " " << unit;
+		sendSpellText(caster, MSG_EVENT, casterMsg.str());
+	}
+	else {
+		std::stringstream selfMsg;
+		selfMsg << "You healed yourself for " << healed << " " << unit;
+		sendSpellText(target, MSG_EVENT, selfMsg.str());
+	}
+}
+
 long spellSeconds(long ms)
 {
 	return ms <= 0 ? 0 : (ms + 999) / 1000;
@@ -2016,14 +2066,17 @@ void runDelayedHeal(Game* game, const DelayedHealJob& job)
 	if(job.maxHeal > job.minHeal)
 		heal += rand() % (job.maxHeal - job.minHeal + 1);
 
-	int64_t newHealth = target->health + heal;
+	int64_t oldHealth = target->health;
+	int64_t newHealth = oldHealth + heal;
 	if(newHealth > target->healthmax)
 		newHealth = target->healthmax;
 	target->health = newHealth;
+	int64_t realHealed = (newHealth > oldHealth) ? (newHealth - oldHealth) : 0;
 
 	sendSpellMagicEffect(game, target->pos, NM_ME_SEED_BURST);
 	if(Player* p = dynamic_cast<Player*>(target))
 		p->sendStats();
+	sendSpellHealFeedback(game, caster, target, realHealed);
 	sendSpellText(target, MSG_SMALLINFO, "The seed of life blooms.");
 }
 
@@ -2077,12 +2130,15 @@ int SpellScript::luaActionDoDelayedHeal(lua_State *L)
 	int64_t immediate = immediateMin;
 	if(immediateMax > immediateMin)
 		immediate += rand() % (immediateMax - immediateMin + 1);
-	int64_t newHealth = target->health + immediate;
+	int64_t oldHealth = target->health;
+	int64_t newHealth = oldHealth + immediate;
 	if(newHealth > target->healthmax)
 		newHealth = target->healthmax;
 	target->health = newHealth;
+	int64_t realHealed = (newHealth > oldHealth) ? (newHealth - oldHealth) : 0;
 	target->sendStats();
 	sendSpellMagicEffect(spell->game, target->pos, NM_ME_SEED_BURST);
+	sendSpellHealFeedback(spell->game, caster, target, realHealed);
 
 	// Curación diferida.
 	DelayedHealJob job;
@@ -2283,10 +2339,20 @@ void runBloodRitualTick(Game* game, BloodRitualState state)
 		return;
 	}
 
+	int64_t oldMana = player->mana;
 	player->health -= drain;
 	player->mana = std::min(player->manamax, player->mana + (int64_t)state.manaPerTick);
+	int64_t manaRecovered = (player->mana > oldMana) ? (player->mana - oldMana) : 0;
 	player->sendStats();
 	sendSpellMagicEffect(game, player->pos, NM_ME_BLOOD_SPIRAL);
+	if(manaRecovered > 0) {
+		std::stringstream anim;
+		anim << "+" << manaRecovered;
+		sendSpellAnimatedText(game, player->pos, COLOR_SPELL_MANA, anim.str());
+		std::stringstream manaMsg;
+		manaMsg << "You recovered " << manaRecovered << " mana.";
+		player->sendTextMessage(MSG_EVENT, manaMsg.str().c_str());
+	}
 
 	if(--state.ticksLeft > 0) {
 		game->addEvent(makeTask(state.tickMs,

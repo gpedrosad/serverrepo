@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0"?>
 <monster name="Furious Minotaur Guard" level="33" maglevel="43" experience="432" pushable="0" armor="21" defense="28" canpushitems="1" staticattack="50" changetarget="200" speed="210">
 	<health now="388" max="388" />
 	<look type="29" head="20" body="30" legs="40" feet="50" corpse="2876" />
@@ -20,7 +20,6 @@
 		<item id="1987" chance="100000">
 			<inside>
 				<item id="2386" chance="6666" />
-				<item id="0000" countmax="2" chance1="20000" chancemax="0" />
 				<item id="2580" chance="7000" />
 				<item id="2648" chance="7000" />
 				<item id="2458" chance="10000" />
@@ -33,6 +32,6 @@
 		<item id="2147" countmax="2" chance1="16000" chancemax="0" />
 		<item id="2146" countmax="2" chance1="11000" chancemax="0" />
 		<item id="2145" countmax="1" chance1="6000" chancemax="0" />
-	
 	</loot>
 </monster>
+

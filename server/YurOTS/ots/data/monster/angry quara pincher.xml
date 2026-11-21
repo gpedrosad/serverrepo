@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<monster name="Angry Quara Pincher" level="64" maglevel="9" experience="2760" pushable="0" armor="55" defense="55" canpushitems="1" staticattack="50" changetarget="200" speed="226">
+<monster name="Angry Quara Pincher" level="64" maglevel="9" experience="3105" pushable="0" armor="43" defense="43" canpushitems="1" staticattack="50" changetarget="200" speed="226">
 	<health now="3330" max="3330" />
 	<look type="72" head="0" body="0" legs="0" feet="0" corpse="20180" />
 	<combat targetdistance="1" runonhealth="0" />
@@ -18,16 +18,18 @@
 		<voice sentence="GRAAAH!" />
 	</voices>
 	<loot>
-		<item id="2148" countmax="149" chance1="100000" chancemax="0" />
+		<item id="2148" countmax="100" chance1="100000" chancemax="0" />
+		<item id="2148" countmax="49" chance1="100000" chancemax="0" />
 		<item id="2152" countmax="1" chance1="40000" chancemax="0" />
 		<item id="2670" countmax="1" chance1="14000" chancemax="0" />
 		<item id="2147" countmax="2" chance1="7500" chancemax="0" />
 		<item id="2381" chance="7000" />
-		<item id="2670" countmax="5" chance1="5000" chancemax="0" />
 		<item id="2667" countmax="1" chance1="1600" chancemax="0" />
 		<item id="2475" chance="1400" />
 		<item id="2487" chance="340" />
 		<item id="2654" chance="140" />
+		<item id="2274" chance="2500" />
+		<item id="20153" chance="250" />
 		<item id="2150" countmax="2" chance1="9000" chancemax="0" />
 		<item id="2149" countmax="2" chance1="7000" chancemax="0" />
 		<item id="2147" countmax="1" chance1="5000" chancemax="0" />

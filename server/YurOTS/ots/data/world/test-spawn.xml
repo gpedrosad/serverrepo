@@ -6517,4 +6517,246 @@
 		<monster name="Banshee" x="-1" y="0" z="10" spawntime="250" />
 	</spawn>
 	<!-- END BEHOLDER_CRYPT_SPAWNS -->
+	<!-- BEGIN RIVER_GROTTO_SPAWNS (scripts/map/generate-river-grotto.py) -->
+	<spawn centerx="165" centery="67" centerz="12" radius="3">
+		<monster name="Blood Crab" x="-1" y="1" z="12" spawntime="120" />
+	</spawn>
+	<spawn centerx="154" centery="64" centerz="12" radius="3">
+		<monster name="Quara Constrictor" x="0" y="1" z="12" spawntime="120" />
+	</spawn>
+	<spawn centerx="155" centery="53" centerz="12" radius="3">
+		<monster name="Blood Crab" x="-1" y="1" z="12" spawntime="120" />
+	</spawn>
+	<spawn centerx="181" centery="54" centerz="12" radius="3">
+		<monster name="Water Elemental" x="2" y="2" z="12" spawntime="145" />
+	</spawn>
+	<spawn centerx="170" centery="53" centerz="12" radius="3">
+		<monster name="Water Elemental" x="-1" y="-1" z="12" spawntime="145" />
+	</spawn>
+	<spawn centerx="172" centery="43" centerz="12" radius="3">
+		<monster name="Water Elemental" x="2" y="-2" z="12" spawntime="165" />
+		<monster name="Water Elemental" x="-1" y="-2" z="12" spawntime="165" />
+	</spawn>
+	<spawn centerx="183" centery="40" centerz="12" radius="3">
+		<monster name="Water Elemental" x="0" y="-1" z="12" spawntime="165" />
+		<monster name="Water Elemental" x="2" y="0" z="12" spawntime="165" />
+	</spawn>
+	<spawn centerx="189" centery="49" centerz="12" radius="3">
+		<monster name="Water Elemental" x="-1" y="-1" z="12" spawntime="165" />
+		<monster name="Water Elemental" x="-2" y="2" z="12" spawntime="165" />
+	</spawn>
+	<spawn centerx="152" centery="41" centerz="12" radius="3">
+		<monster name="Water Elemental" x="0" y="-2" z="12" spawntime="195" />
+		<monster name="Quara Hydromancer" x="2" y="-1" z="12" spawntime="195" />
+	</spawn>
+	<spawn centerx="155" centery="25" centerz="12" radius="3">
+		<monster name="Water Elemental" x="-2" y="1" z="12" spawntime="195" />
+		<monster name="Quara Hydromancer" x="2" y="-1" z="12" spawntime="195" />
+	</spawn>
+	<spawn centerx="164" centery="38" centerz="12" radius="3">
+		<monster name="Water Elemental" x="-2" y="0" z="12" spawntime="195" />
+		<monster name="Quara Hydromancer" x="-1" y="1" z="12" spawntime="195" />
+	</spawn>
+	<spawn centerx="179" centery="26" centerz="12" radius="3">
+		<monster name="Quara Hydromancer" x="1" y="2" z="12" spawntime="220" />
+		<monster name="Bog Raider" x="1" y="-1" z="12" spawntime="220" />
+	</spawn>
+	<spawn centerx="167" centery="25" centerz="12" radius="3">
+		<monster name="Quara Hydromancer" x="1" y="-1" z="12" spawntime="220" />
+		<monster name="Bog Raider" x="0" y="-1" z="12" spawntime="220" />
+	</spawn>
+	<spawn centerx="188" centery="23" centerz="12" radius="3">
+		<monster name="Quara Hydromancer" x="-1" y="1" z="12" spawntime="220" />
+		<monster name="Bog Raider" x="-2" y="1" z="12" spawntime="220" />
+	</spawn>
+	<!-- END RIVER_GROTTO_SPAWNS -->
+	<!-- BEGIN DEMONA_LOCAL_SPAWNS (scripts/map/generate-demona-local.py) -->
+	<spawn centerx="101" centery="130" centerz="12" radius="3">
+		<monster name="Cyclops Smith" x="1" y="1" z="12" spawntime="130" />
+	</spawn>
+	<spawn centerx="110" centery="144" centerz="12" radius="3">
+		<monster name="Stone Golem" x="2" y="0" z="12" spawntime="130" />
+	</spawn>
+	<spawn centerx="113" centery="124" centerz="12" radius="3">
+		<monster name="Cyclops Smith" x="-1" y="1" z="12" spawntime="130" />
+	</spawn>
+	<spawn centerx="100" centery="141" centerz="12" radius="3">
+		<monster name="Stone Golem" x="-1" y="-2" z="12" spawntime="130" />
+	</spawn>
+	<spawn centerx="115" centery="113" centerz="12" radius="3">
+		<monster name="Behemoth" x="-1" y="-1" z="12" spawntime="210" />
+	</spawn>
+	<spawn centerx="89" centery="131" centerz="12" radius="3">
+		<monster name="Behemoth" x="-2" y="-1" z="12" spawntime="210" />
+	</spawn>
+	<spawn centerx="101" centery="116" centerz="12" radius="3">
+		<monster name="Behemoth" x="2" y="1" z="12" spawntime="210" />
+	</spawn>
+	<spawn centerx="94" centery="124" centerz="12" radius="3">
+		<monster name="Behemoth" x="1" y="2" z="12" spawntime="210" />
+	</spawn>
+	<spawn centerx="90" centery="143" centerz="12" radius="3">
+		<monster name="Behemoth" x="2" y="2" z="12" spawntime="210" />
+	</spawn>
+	<spawn centerx="76" centery="128" centerz="12" radius="3">
+		<monster name="Behemoth" x="0" y="0" z="12" spawntime="230" />
+		<monster name="Wyrm" x="2" y="1" z="12" spawntime="230" />
+	</spawn>
+	<spawn centerx="80" centery="141" centerz="12" radius="3">
+		<monster name="Behemoth" x="2" y="0" z="12" spawntime="230" />
+		<monster name="Wyrm" x="0" y="-2" z="12" spawntime="230" />
+	</spawn>
+	<spawn centerx="92" centery="113" centerz="12" radius="3">
+		<monster name="Behemoth" x="-1" y="-1" z="12" spawntime="230" />
+		<monster name="Wyrm" x="2" y="2" z="12" spawntime="230" />
+	</spawn>
+	<spawn centerx="79" centery="113" centerz="12" radius="3">
+		<monster name="Behemoth" x="2" y="1" z="12" spawntime="245" />
+		<monster name="Wyrm" x="-1" y="-1" z="12" spawntime="245" />
+	</spawn>
+	<spawn centerx="81" centery="103" centerz="12" radius="3">
+		<monster name="Behemoth" x="2" y="-1" z="12" spawntime="245" />
+		<monster name="Wyrm" x="0" y="2" z="12" spawntime="245" />
+	</spawn>
+	<spawn centerx="94" centery="96" centerz="12" radius="3">
+		<monster name="Behemoth" x="1" y="2" z="12" spawntime="260" />
+		<monster name="Behemoth" x="1" y="1" z="12" spawntime="260" />
+	</spawn>
+	<spawn centerx="114" centery="101" centerz="12" radius="3">
+		<monster name="Behemoth" x="0" y="0" z="12" spawntime="260" />
+		<monster name="Behemoth" x="-2" y="2" z="12" spawntime="260" />
+	</spawn>
+	<spawn centerx="102" centery="100" centerz="12" radius="3">
+		<monster name="Behemoth" x="1" y="2" z="12" spawntime="260" />
+		<monster name="Behemoth" x="-2" y="-2" z="12" spawntime="260" />
+	</spawn>
+	<spawn centerx="157" centery="128" centerz="12" radius="3">
+		<monster name="Priestess" x="-2" y="2" z="12" spawntime="140" />
+	</spawn>
+	<spawn centerx="151" centery="141" centerz="12" radius="3">
+		<monster name="Necromancer" x="1" y="1" z="12" spawntime="140" />
+	</spawn>
+	<spawn centerx="140" centery="115" centerz="12" radius="3">
+		<monster name="Priestess" x="-1" y="2" z="12" spawntime="140" />
+	</spawn>
+	<spawn centerx="140" centery="128" centerz="12" radius="3">
+		<monster name="Necromancer" x="0" y="-2" z="12" spawntime="140" />
+	</spawn>
+	<spawn centerx="140" centery="144" centerz="12" radius="3">
+		<monster name="Priestess" x="1" y="1" z="12" spawntime="140" />
+	</spawn>
+	<spawn centerx="170" centery="129" centerz="12" radius="3">
+		<monster name="Warlock" x="1" y="2" z="12" spawntime="240" />
+	</spawn>
+	<spawn centerx="166" centery="144" centerz="12" radius="3">
+		<monster name="Warlock" x="0" y="-1" z="12" spawntime="240" />
+	</spawn>
+	<spawn centerx="151" centery="112" centerz="12" radius="3">
+		<monster name="Warlock" x="-1" y="0" z="12" spawntime="240" />
+	</spawn>
+	<spawn centerx="161" centery="117" centerz="12" radius="3">
+		<monster name="Warlock" x="2" y="-1" z="12" spawntime="240" />
+	</spawn>
+	<spawn centerx="176" centery="138" centerz="12" radius="3">
+		<monster name="Warlock" x="0" y="-1" z="12" spawntime="255" />
+	</spawn>
+	<spawn centerx="176" centery="112" centerz="12" radius="3">
+		<monster name="Warlock" x="-2" y="1" z="12" spawntime="255" />
+	</spawn>
+	<spawn centerx="180" centery="126" centerz="12" radius="3">
+		<monster name="Warlock" x="0" y="2" z="12" spawntime="255" />
+	</spawn>
+	<spawn centerx="180" centery="102" centerz="12" radius="3">
+		<monster name="Warlock" x="0" y="-2" z="12" spawntime="270" />
+	</spawn>
+	<spawn centerx="150" centery="97" centerz="12" radius="3">
+		<monster name="Warlock" x="1" y="1" z="12" spawntime="270" />
+	</spawn>
+	<spawn centerx="138" centery="98" centerz="12" radius="3">
+		<monster name="Warlock" x="1" y="0" z="12" spawntime="270" />
+	</spawn>
+	<spawn centerx="163" centery="101" centerz="12" radius="3">
+		<monster name="Warlock" x="1" y="0" z="12" spawntime="270" />
+	</spawn>
+	<!-- END DEMONA_LOCAL_SPAWNS -->
+	<!-- BEGIN AMAZON_CAMP_SPAWNS (scripts/map/generate-amazon-camp.py) -->
+	<spawn centerx="85" centery="13" centerz="7" radius="3">
+		<monster name="Amazon" x="-1" y="-1" z="7" spawntime="90" />
+		<monster name="Amazon" x="-1" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="78" centery="14" centerz="7" radius="3">
+		<monster name="Amazon" x="-1" y="0" z="7" spawntime="90" />
+		<monster name="Amazon" x="-1" y="-1" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="88" centery="17" centerz="7" radius="3">
+		<monster name="Amazon" x="-1" y="-2" z="7" spawntime="90" />
+		<monster name="Amazon" x="1" y="1" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="82" centery="18" centerz="7" radius="3">
+		<monster name="Amazon" x="2" y="0" z="7" spawntime="90" />
+		<monster name="Amazon" x="2" y="-1" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="96" centery="18" centerz="7" radius="3">
+		<monster name="Amazon" x="1" y="-1" z="7" spawntime="105" />
+		<monster name="Valkyrie" x="1" y="0" z="7" spawntime="105" />
+	</spawn>
+	<spawn centerx="92" centery="14" centerz="7" radius="3">
+		<monster name="Amazon" x="-2" y="2" z="7" spawntime="105" />
+		<monster name="Valkyrie" x="1" y="0" z="7" spawntime="105" />
+	</spawn>
+	<spawn centerx="89" centery="10" centerz="7" radius="3">
+		<monster name="Amazon" x="0" y="0" z="7" spawntime="105" />
+		<monster name="Valkyrie" x="-1" y="1" z="7" spawntime="105" />
+	</spawn>
+	<spawn centerx="104" centery="14" centerz="7" radius="3">
+		<monster name="Valkyrie" x="-2" y="-2" z="7" spawntime="120" />
+		<monster name="Assassin" x="0" y="2" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="100" centery="11" centerz="7" radius="3">
+		<monster name="Valkyrie" x="1" y="2" z="7" spawntime="120" />
+		<monster name="Assassin" x="-1" y="1" z="7" spawntime="120" />
+	</spawn>
+	<!-- END AMAZON_CAMP_SPAWNS -->
+	<!-- BEGIN BARBARIAN_CAMP_SPAWNS (scripts/map/generate-barbarian-camp.py) -->
+	<spawn centerx="232" centery="18" centerz="7" radius="3">
+		<monster name="Barbarian Headsplitter" x="2" y="-1" z="7" spawntime="95" />
+		<monster name="Barbarian Skullhunter" x="-1" y="0" z="7" spawntime="95" />
+	</spawn>
+	<spawn centerx="221" centery="13" centerz="7" radius="3">
+		<monster name="Barbarian Headsplitter" x="-1" y="2" z="7" spawntime="95" />
+		<monster name="Barbarian Skullhunter" x="0" y="2" z="7" spawntime="95" />
+	</spawn>
+	<spawn centerx="224" centery="18" centerz="7" radius="3">
+		<monster name="Barbarian Headsplitter" x="0" y="-1" z="7" spawntime="95" />
+		<monster name="Barbarian Skullhunter" x="1" y="-1" z="7" spawntime="95" />
+	</spawn>
+	<spawn centerx="228" centery="14" centerz="7" radius="3">
+		<monster name="Barbarian Headsplitter" x="-2" y="-1" z="7" spawntime="95" />
+		<monster name="Barbarian Skullhunter" x="2" y="-2" z="7" spawntime="95" />
+	</spawn>
+	<spawn centerx="238" centery="16" centerz="7" radius="3">
+		<monster name="Barbarian Skullhunter" x="0" y="0" z="7" spawntime="110" />
+		<monster name="Barbarian Brutetamer" x="-2" y="-1" z="7" spawntime="110" />
+	</spawn>
+	<spawn centerx="233" centery="10" centerz="7" radius="3">
+		<monster name="Barbarian Skullhunter" x="2" y="1" z="7" spawntime="110" />
+		<monster name="Barbarian Brutetamer" x="2" y="2" z="7" spawntime="110" />
+	</spawn>
+	<spawn centerx="244" centery="14" centerz="7" radius="3">
+		<monster name="Barbarian Bloodwalker" x="0" y="2" z="7" spawntime="130" />
+		<monster name="Barbarian Brutetamer" x="-2" y="0" z="7" spawntime="130" />
+	</spawn>
+	<spawn centerx="248" centery="18" centerz="7" radius="3">
+		<monster name="Barbarian Bloodwalker" x="1" y="-1" z="7" spawntime="130" />
+		<monster name="Barbarian Brutetamer" x="2" y="-1" z="7" spawntime="130" />
+	</spawn>
+	<spawn centerx="240" centery="9" centerz="7" radius="3">
+		<monster name="Barbarian Bloodwalker" x="-1" y="1" z="7" spawntime="130" />
+		<monster name="Barbarian Brutetamer" x="-2" y="1" z="7" spawntime="130" />
+	</spawn>
+	<spawn centerx="252" centery="13" centerz="7" radius="3">
+		<monster name="Barbarian Bloodwalker" x="2" y="0" z="7" spawntime="145" />
+		<monster name="Frost Giant" x="2" y="1" z="7" spawntime="145" />
+	</spawn>
+	<!-- END BARBARIAN_CAMP_SPAWNS -->
 </spawns>

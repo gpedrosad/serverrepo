@@ -1,52 +1,49 @@
 <?xml version="1.0"?>
-<!-- Dark Mage: reemplaza al Angry Warlock en la Torre del Mago Oscuro.
-     Estilo: no tiene un golpe fuerte; encadena hechizos chicos de 4 elementos (sombra, hielo,
-     energía, veneno) casi cada medio segundo, quema maná y castiga el cuerpo a cuerpo con un anillo
-     de sombra. Rare: Violet Gem. -->
 <monster name="Dark Mage" level="50" maglevel="20" experience="8000" pushable="0" armor="30" defense="32" canpushitems="1" staticattack="50" changetarget="150" speed="260">
-	<health now="5200" max="5200"/>
-	<look type="133" head="114" body="89" legs="114" feet="95" corpse="3128"/>
-	<combat targetdistance="4" runonhealth="0"/>
-
-<attacks>
-	<attack type="melee" mindamage="15" maxdamage="45"/>
-	<attack type="rune" name="darkmage_shadowbolt" exhaustion="500" cycleticks="1000" probability="75"/>
-	<attack type="rune" name="darkmage_frostshard" exhaustion="500" cycleticks="1500" probability="65"/>
-	<attack type="rune" name="darkmage_sparkbolt" exhaustion="500" cycleticks="1500" probability="65"/>
-	<attack type="rune" name="darkmage_venombolt" exhaustion="500" cycleticks="2000" probability="55"/>
-	<attack type="rune" name="darkmage_manaburn" exhaustion="500" cycleticks="3000" probability="40"/>
-	<attack type="instant" name="darkmage_shadownova" exhaustion="500" cycleticks="4000" probability="60"/>
-</attacks>
-
-<defenses>
-	<defense immunity="energy"/>
-	<defense immunity="poison"/>
-	<defense immunity="paralyze"/>
-	<defense immunity="drunk"/>
-	<defense immunity="invisible"/>
-</defenses>
-
-<voices>
-	<voice sentence="Too slow!"/>
-	<voice sentence="Shadow, frost, spark... choose your death!"/>
-	<voice sentence="Your mana is mine."/>
-</voices>
-
-<loot>
-	<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
-	<item id="2152" countmax="6" chance1="15000" chancemax="0"/>
-	<item id="2150" countmax="3" chance1="10000" chancemax="0"/>
-	<item id="2189" chance="2000"/>
-	<item id="2153" chance="1000"/>
-
-	<item id="1987" chance="100000">
-	<inside>
-	<item id="2148" countmax="60" chance1="80000" chancemax="0"/>
-	<item id="2656" chance="1500"/>
-	<item id="2663" chance="1200"/>
-	<item id="2175" chance="4000"/>
-	</inside>
-	</item>
-</loot>
-
+	<health now="5200" max="5200" />
+	<look type="133" head="114" body="89" legs="114" feet="95" corpse="3128" />
+	<combat targetdistance="4" runonhealth="0" />
+	<attacks>
+		<attack type="melee" mindamage="15" maxdamage="45" />
+		<attack type="rune" name="darkmage_shadowbolt" exhaustion="500" cycleticks="1000" probability="75" />
+		<attack type="rune" name="darkmage_frostshard" exhaustion="500" cycleticks="1500" probability="65" />
+		<attack type="rune" name="darkmage_sparkbolt" exhaustion="500" cycleticks="1500" probability="65" />
+		<attack type="rune" name="darkmage_venombolt" exhaustion="500" cycleticks="2000" probability="55" />
+		<attack type="rune" name="darkmage_manaburn" exhaustion="500" cycleticks="3000" probability="40" />
+		<attack type="instant" name="darkmage_shadownova" exhaustion="500" cycleticks="4000" probability="60" />
+	</attacks>
+	<defenses>
+		<defense immunity="energy" />
+		<defense immunity="poison" />
+		<defense immunity="paralyze" />
+		<defense immunity="drunk" />
+		<defense immunity="invisible" />
+	</defenses>
+	<voices>
+		<voice sentence="Too slow!" />
+		<voice sentence="Shadow, frost, spark... choose your death!" />
+		<voice sentence="Your mana is mine." />
+	</voices>
+	<loot>
+		<item id="2148" countmax="100" chance1="100000" chancemax="0" />
+		<item id="2152" countmax="6" chance1="15000" chancemax="0" />
+		<item id="2150" countmax="3" chance1="10000" chancemax="0" />
+		<item id="2189" chance="2000" />
+		<item id="2153" chance="1000" />
+		<item id="1987" chance="100000">
+			<inside>
+				<item id="2148" countmax="60" chance1="80000" chancemax="0" />
+				<item id="2656" chance="1500" />
+				<item id="2663" chance="1200" />
+				<item id="2175" chance="4000" />
+				<item id="2293" chance="2000" />
+				<item id="2296" chance="1800" />
+				<item id="20273" chance="1200" />
+				<item id="2323" chance="1200" />
+				<item id="2197" chance="1000" />
+				<item id="20118" chance="450" />
+			</inside>
+		</item>
+	</loot>
 </monster>
+

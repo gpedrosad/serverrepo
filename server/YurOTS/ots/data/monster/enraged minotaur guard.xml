@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0"?>
 <monster name="Enraged Minotaur Guard" level="39" maglevel="49" experience="544" pushable="0" armor="23" defense="30" canpushitems="1" staticattack="50" changetarget="200" speed="216">
 	<health now="472" max="472" />
 	<look type="29" head="20" body="30" legs="40" feet="50" corpse="2876" />
@@ -20,7 +20,6 @@
 		<item id="1987" chance="100000">
 			<inside>
 				<item id="2386" chance="6666" />
-				<item id="0000" countmax="2" chance1="20000" chancemax="0" />
 				<item id="2580" chance="5000" />
 				<item id="2648" chance="5000" />
 				<item id="2458" chance="10000" />
@@ -35,3 +34,4 @@
 		<item id="2145" countmax="1" chance1="6000" chancemax="0" />
 	</loot>
 </monster>
+

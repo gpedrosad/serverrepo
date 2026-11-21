@@ -832,6 +832,22 @@ std::string Item::getDescription(bool fullDescription) const
 		s << std::endl << "-" << CROWN_ARMOR_REDUCTION_PERCENT << "% fire, energy, poison and life drain damage while worn.";
 	else if(id == ITEM_SAPPHIRE_CROWN_ARMOR && fullDescription)
 		s << std::endl << "-" << CROWN_ARMOR_REDUCTION_PERCENT << "% physical damage while worn.";
+	else if(id == ITEM_STARBINDER_HOOD && fullDescription)
+		s << std::endl << "Sorcerers and druids: +1 magic level and -5% elemental damage while worn.";
+	else if(id == ITEM_KILNFIRE_LEGGINGS && fullDescription)
+		s << std::endl << "Sorcerers and druids: +1 magic level and -5% elemental damage while worn.";
+	else if(id == ITEM_WAYFARER_BOOTS && fullDescription)
+		s << std::endl << "+20 speed and -5% elemental damage while worn.";
+	else if(id == ITEM_MOSAIC_SHIELD && fullDescription)
+		s << std::endl << "-6% elemental damage while equipped.";
+	else if(id == ITEM_FOX_MACHINA_HELMET && fullDescription)
+		s << std::endl << "-6% elemental damage while worn.";
+	else if(id == ITEM_BASALT_GREAVES && fullDescription)
+		s << std::endl << "-5% physical damage while worn.";
+	else if(id == ITEM_OBSIDIAN_REGALIA && fullDescription)
+		s << std::endl << "-6% elemental damage while worn.";
+	else if(id == ITEM_SUNFORGE_SHIELD && fullDescription)
+		s << std::endl << "-5% elemental damage while equipped.";
 	else if(id == ITEM_MEDUSA_SWORD && fullDescription)
 		s << std::endl << "Paralyzes players on every hit in PvP.";
 	else if(id == ITEM_SWORD_OF_SILENCE && fullDescription)

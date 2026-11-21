@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<monster name="Enraged Tortoise" level="25" maglevel="15" experience="274" pushable="0" armor="37" defense="37" canpushitems="1" staticattack="50" changetarget="200" speed="224">
+<monster name="Enraged Tortoise" level="25" maglevel="15" experience="274" pushable="0" armor="23" defense="25" canpushitems="1" staticattack="50" changetarget="200" speed="224">
 	<health now="435" max="435" />
 	<look type="197" head="0" body="0" legs="0" feet="0" corpse="20173" />
 	<combat targetdistance="1" runonhealth="0" />

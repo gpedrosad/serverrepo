@@ -23,12 +23,13 @@
 	<loot>
 		<item id="2148" countmax="100" chance1="43000" chancemax="0" />
 		<item id="2148" countmax="30" chance1="50000" chancemax="0" />
-		<item id="1294" countmax="30" chance1="20460" chancemax="0" />
-		<item id="2546" countmax="30" chance1="20160" chancemax="0" />
+		<item id="1294" countmax="12" chance1="22000" chancemax="0" />
 		<item id="2260" chance="10000" />
-		<item id="1294" countmax="10" chance1="570" chancemax="0" />
-		<item id="1294" countmax="10" chance1="10000" chancemax="0" />
 		<item id="2150" countmax="1" chance1="620" chancemax="0" />
+		<item id="2288" chance="2500" />
+		<item id="2149" countmax="1" chance1="2000" chancemax="0" />
+		<item id="2483" chance="2500" />
+		<item id="2510" chance="2500" />
 		<item id="2150" countmax="3" chance1="26000" chancemax="0" />
 		<item id="2149" countmax="3" chance1="21000" chancemax="0" />
 		<item id="2147" countmax="2" chance1="16000" chancemax="0" />

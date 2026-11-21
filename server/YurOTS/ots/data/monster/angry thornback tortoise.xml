@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<monster name="Angry Thornback Tortoise" level="22" maglevel="7" experience="315" pushable="0" armor="44" defense="44" canpushitems="1" staticattack="50" changetarget="200" speed="214">
+<monster name="Angry Thornback Tortoise" level="22" maglevel="7" experience="315" pushable="0" armor="26" defense="28" canpushitems="1" staticattack="50" changetarget="200" speed="214">
 	<health now="510" max="510" />
 	<look type="198" head="0" body="0" legs="0" feet="0" corpse="20174" />
 	<combat targetdistance="1" runonhealth="0" />
@@ -20,10 +20,10 @@
 		<item id="2667" countmax="2" chance1="10800" chancemax="0" />
 		<item id="2789" countmax="1" chance1="1600" chancemax="0" />
 		<item id="2787" countmax="1" chance1="700" chancemax="0" />
-		<item id="2391" chance="260" />
-		<item id="2391" chance="15980" />
 		<item id="2143" countmax="1" chance1="1600" chancemax="0" />
 		<item id="2144" countmax="1" chance1="800" chancemax="0" />
+		<item id="2510" chance="3500" />
+		<item id="2513" chance="900" />
 		<item id="2150" countmax="1" chance1="3000" chancemax="0" />
 		<item id="2149" countmax="1" chance1="2250" chancemax="0" />
 	</loot>

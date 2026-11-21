@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<monster name="Furious Quara Mantassin" level="48" maglevel="33" experience="1080" pushable="0" armor="21" defense="21" canpushitems="1" staticattack="50" changetarget="200" speed="280">
+<monster name="Furious Quara Mantassin" level="48" maglevel="33" experience="1350" pushable="0" armor="24" defense="24" canpushitems="1" staticattack="50" changetarget="200" speed="280">
 	<health now="1680" max="1680" />
 	<look type="47" head="0" body="0" legs="0" feet="0" corpse="20179" />
 	<combat targetdistance="1" runonhealth="0" />
@@ -17,7 +17,8 @@
 		<voice sentence="RAAAARGH!" />
 	</voices>
 	<loot>
-		<item id="2148" countmax="129" chance1="80000" chancemax="0" />
+		<item id="2148" countmax="100" chance1="80000" chancemax="0" />
+		<item id="2148" countmax="29" chance1="80000" chancemax="0" />
 		<item id="2670" countmax="1" chance1="11600" chancemax="0" />
 		<item id="2667" countmax="5" chance1="5000" chancemax="0" />
 		<item id="2381" chance="5000" />
@@ -25,7 +26,6 @@
 		<item id="2377" chance="1050" />
 		<item id="2146" countmax="1" chance1="1000" chancemax="0" />
 		<item id="2165" chance="1000" />
-		<item id="2667" countmax="1" chance1="610" chancemax="0" />
 		<item id="2479" chance="120" />
 		<item id="2656" chance="50" />
 		<item id="2150" countmax="3" chance1="26000" chancemax="0" />

@@ -409,14 +409,57 @@ int GameState::applyAmulets(Player* player, int damage, attacktype_t atype)
 			player->removeItemInventory(SLOT_RING);
 	}
 
-	// Crown armors de loot: sin cargas, mientras se lleven puestas.
-	Item* armor = player->getItem(SLOT_ARMOR);
-	if (armor && damage > 0)
+	// Armaduras y sets endgame de loot: sin cargas, mientras se lleven puestos.
+	if (damage > 0)
 	{
 		const int elemental = ATTACK_ENERGY | ATTACK_BURST | ATTACK_FIRE | ATTACK_POISON | ATTACK_LIFEDRAIN;
-		if ((armor->getID() == ITEM_IMPERIAL_CROWN_ARMOR && (atype & elemental)) ||
-			(armor->getID() == ITEM_SAPPHIRE_CROWN_ARMOR && (atype & ATTACK_PHYSICAL)))
-			newDamage *= (100 - CROWN_ARMOR_REDUCTION_PERCENT) / 100.0;
+		Item* armor = player->getItem(SLOT_ARMOR);
+		if (armor)
+		{
+			if ((armor->getID() == ITEM_IMPERIAL_CROWN_ARMOR && (atype & elemental)) ||
+				(armor->getID() == ITEM_SAPPHIRE_CROWN_ARMOR && (atype & ATTACK_PHYSICAL)))
+				newDamage *= (100 - CROWN_ARMOR_REDUCTION_PERCENT) / 100.0;
+			else if (armor->getID() == ITEM_OBSIDIAN_REGALIA && (atype & elemental))
+				newDamage *= 0.94;
+		}
+		Item* head = player->getItem(SLOT_HEAD);
+		if (head && (atype & elemental))
+		{
+			if (head->getID() == ITEM_STARBINDER_HOOD)
+				newDamage *= 0.95;
+			else if (head->getID() == ITEM_FOX_MACHINA_HELMET)
+				newDamage *= 0.94;
+		}
+		Item* legs = player->getItem(SLOT_LEGS);
+		if (legs)
+		{
+			if (legs->getID() == ITEM_KILNFIRE_LEGGINGS && (atype & elemental))
+				newDamage *= 0.95;
+			else if (legs->getID() == ITEM_BASALT_GREAVES && (atype & ATTACK_PHYSICAL))
+				newDamage *= 0.95;
+		}
+		Item* feet = player->getItem(SLOT_FEET);
+		if (feet && feet->getID() == ITEM_WAYFARER_BOOTS && (atype & elemental))
+			newDamage *= 0.95;
+		if (atype & elemental)
+		{
+			for (int slot = SLOT_RIGHT; slot <= SLOT_LEFT; ++slot)
+			{
+				Item* hand = player->getItem((slots_t)slot);
+				if (!hand)
+					continue;
+				if (hand->getID() == ITEM_MOSAIC_SHIELD)
+				{
+					newDamage *= 0.94;
+					break;
+				}
+				if (hand->getID() == ITEM_SUNFORGE_SHIELD)
+				{
+					newDamage *= 0.95;
+					break;
+				}
+			}
+		}
 	}
 
 	return (int)newDamage;
@@ -4456,13 +4499,18 @@ bool Game::creatureMakeMagic(Creature *creature, const Position& centerpos, cons
 
 						if(spectator->CanSee(target->pos.x, target->pos.y, target->pos.z))
 						{
-							if(creatureState.damage != 0) {
+							if(creatureState.damage > 0) {
 								std::stringstream dmg;
-								dmg << std::abs(creatureState.damage);
+								dmg << creatureState.damage;
 								if (me->attackType & ATTACK_PHYSICAL)
 								    spectator->sendAnimatedText(target->pos, target->bloodcolor, dmg.str());
 								else
 									spectator->sendAnimatedText(target->pos, me->animationColor, dmg.str());
+							}
+							else if(creatureState.damage < 0 && (dynamic_cast<Player*>(target) || dynamic_cast<Player*>(creature))) {
+								std::stringstream heal;
+								heal << "+" << (-creatureState.damage);
+								spectator->sendAnimatedText(target->pos, me->animationColor, heal.str());
 							}
 
 							if(creatureState.manaDamage > 0){
@@ -4488,6 +4536,29 @@ bool Game::creatureMakeMagic(Creature *creature, const Position& centerpos, cons
 			me->FailedToCast(spectator, creature, isBlocking, hasTarget);
 		}
 
+	}
+
+	if(bSuccess) {
+		Player* casterPlayer = dynamic_cast<Player*>(creature);
+		if(casterPlayer) {
+			for(std::vector<Position>::const_iterator tlIt = poslist.begin(); tlIt != poslist.end(); ++tlIt) {
+				Tile *tile = map->getTile(*tlIt);
+				if(!tile)
+					continue;
+				const CreatureStateVec& creatureStateVec = gamestate.getCreatureStateList(tile);
+				for(CreatureStateVec::const_iterator csIt = creatureStateVec.begin(); csIt != creatureStateVec.end(); ++csIt) {
+					Creature *target = csIt->first;
+					const CreatureState& creatureState = csIt->second;
+					if(target && target != casterPlayer && creatureState.damage < 0) {
+						int64_t healed = -creatureState.damage;
+						std::stringstream healmsg;
+						healmsg << "You healed " << target->getName() << " for " << healed
+						        << (healed == 1 ? " hitpoint." : " hitpoints.");
+						casterPlayer->sendTextMessage(MSG_EVENT, healmsg.str().c_str());
+					}
+				}
+			}
+		}
 	}
 
 	return bSuccess;
@@ -4528,7 +4599,8 @@ void Game::creatureApplyDamage(Creature *creature, int64_t damage, int64_t &outD
 			creature->drainMana(outDamage);
 	}
 	else {
-		int newhealth = creature->health - damage;
+		int64_t oldhealth = creature->health;
+		int64_t newhealth = oldhealth - damage;
 		if(newhealth > creature->healthmax)
 			newhealth = creature->healthmax;
 
@@ -4538,7 +4610,8 @@ void Game::creatureApplyDamage(Creature *creature, int64_t damage, int64_t &outD
 			clearParalyzeCondition(this, creature);
 		}
 
-		outDamage = creature->health - newhealth;
+		int64_t healed = (newhealth > oldhealth) ? (newhealth - oldhealth) : 0;
+		outDamage = -healed;
 		outManaDamage = 0;
 	}
 }
@@ -5400,6 +5473,19 @@ void Game::CreateDamageUpdate(Creature* creature, Creature* attackCreature, int6
 
 		player->sendTextMessage(MSG_EVENT, dmgmesg.str().c_str());
 
+	}
+	else if (damage < 0) {
+		int64_t healed = -damage;
+		std::stringstream healmesg;
+		if(attackCreature && attackCreature != creature) {
+			healmesg << "You were healed by " << attackCreature->getName() << " for " << healed
+			         << (healed == 1 ? " hitpoint." : " hitpoints.");
+		}
+		else {
+			healmesg << "You healed yourself for " << healed
+			         << (healed == 1 ? " hitpoint." : " hitpoints.");
+		}
+		player->sendTextMessage(MSG_EVENT, healmesg.str().c_str());
 	}
 	if (player->isRemoved == true){
 		player->sendTextMessage(MSG_ADVANCE, "You are dead.");

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<monster name="Enraged Quara Mantassin" level="54" maglevel="39" experience="1360" pushable="0" armor="23" defense="23" canpushitems="1" staticattack="50" changetarget="200" speed="286">
+<monster name="Enraged Quara Mantassin" level="54" maglevel="39" experience="1700" pushable="0" armor="26" defense="26" canpushitems="1" staticattack="50" changetarget="200" speed="286">
 	<health now="2040" max="2040" />
 	<look type="47" head="0" body="0" legs="0" feet="0" corpse="20179" />
 	<combat targetdistance="1" runonhealth="0" />
@@ -17,7 +17,8 @@
 		<voice sentence="SKREEEAAAH!" />
 	</voices>
 	<loot>
-		<item id="2148" countmax="129" chance1="80000" chancemax="0" />
+		<item id="2148" countmax="100" chance1="80000" chancemax="0" />
+		<item id="2148" countmax="29" chance1="80000" chancemax="0" />
 		<item id="2670" countmax="1" chance1="11600" chancemax="0" />
 		<item id="2667" countmax="5" chance1="5000" chancemax="0" />
 		<item id="2381" chance="5000" />
@@ -25,7 +26,6 @@
 		<item id="2377" chance="1050" />
 		<item id="2146" countmax="1" chance1="1000" chancemax="0" />
 		<item id="2165" chance="1000" />
-		<item id="2667" countmax="1" chance1="610" chancemax="0" />
 		<item id="2479" chance="120" />
 		<item id="2656" chance="50" />
 		<item id="2150" countmax="3" chance1="26000" chancemax="0" />

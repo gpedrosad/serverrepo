@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<monster name="Angry Pirate Corsair" level="52" maglevel="7" experience="735" pushable="0" armor="32" defense="34" canpushitems="1" staticattack="50" changetarget="200" speed="244">
+<monster name="Angry Pirate Corsair" level="52" maglevel="7" experience="945" pushable="0" armor="32" defense="34" canpushitems="1" staticattack="50" changetarget="200" speed="244">
 	<health now="1148" max="1148" />
 	<look type="98" head="0" body="0" legs="0" feet="0" corpse="3128" />
 	<combat targetdistance="1" runonhealth="0" />

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<monster name="Furious Undead Gladiator" level="61" maglevel="16" experience="2400" pushable="0" armor="52" defense="52" canpushitems="1" staticattack="50" changetarget="200" speed="202">
+<monster name="Furious Undead Gladiator" level="61" maglevel="16" experience="2400" pushable="0" armor="39" defense="41" canpushitems="1" staticattack="50" changetarget="200" speed="202">
 	<health now="2300" max="2300" />
 	<look type="183" head="0" body="0" legs="0" feet="0" corpse="20189" />
 	<combat targetdistance="1" runonhealth="0" />
@@ -17,7 +17,8 @@
 		<voice sentence="RAAAARGH!" />
 	</voices>
 	<loot>
-		<item id="2148" countmax="148" chance1="94000" chancemax="0" />
+		<item id="2148" countmax="100" chance1="94000" chancemax="0" />
+		<item id="2148" countmax="48" chance1="94000" chancemax="0" />
 		<item id="2399" countmax="18" chance1="16700" chancemax="0" />
 		<item id="2419" chance="11280" />
 		<item id="2654" chance="5500" />

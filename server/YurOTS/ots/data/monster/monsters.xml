@@ -183,6 +183,9 @@
 <monster name="Furious Wyvern" file="furious wyvern.xml" />
 <monster name="Enraged Wyvern" file="enraged wyvern.xml" />
 <monster name="Dragon Hatchling" file="dragon hatchling.xml"/>
+<monster name="Angry Dragon Hatchling" file="angry dragon hatchling.xml" />
+<monster name="Furious Dragon Hatchling" file="furious dragon hatchling.xml" />
+<monster name="Enraged Dragon Hatchling" file="enraged dragon hatchling.xml" />
 <monster name="Dragon Lord Hatchling" file="dragon lord hatchling.xml"/>
 <monster name="Mutated Human" file="mutated human.xml"/>
 <monster name="Angry Mutated Human" file="angry mutated human.xml" />
@@ -286,6 +289,9 @@
 <monster name="Enraged Ice Spider" file="enraged ice spider.xml" />
 <monster name="Kongra" file="kongra.xml" />
 <monster name="Red Kongra" file="red kongra.xml" />
+<monster name="Angry Red Kongra" file="angry red kongra.xml" />
+<monster name="Furious Red Kongra" file="furious red kongra.xml" />
+<monster name="Enraged Red Kongra" file="enraged red kongra.xml" />
 <monster name="Larva" file="larva.xml" />
 <monster name="Lich" file="lich.xml" />
 <monster name="Angry Lich" file="angry lich.xml" />

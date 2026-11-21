@@ -293,6 +293,15 @@ enum item_t {
 	/* Crown armors recoloreadas: loot raro de monstruos fuertes (docs/items-and-map/CROWN_ARMORS.md) */
 	ITEM_IMPERIAL_CROWN_ARMOR = 20161,
 	ITEM_SAPPHIRE_CROWN_ARMOR = 20162,
+	/* Sets endgame de Mago (Starbinder) y Metal (Machina), reutilizando sprites Zagan */
+	ITEM_STARBINDER_HOOD = 20118,
+	ITEM_KILNFIRE_LEGGINGS = 20148,
+	ITEM_WAYFARER_BOOTS = 20129,
+	ITEM_MOSAIC_SHIELD = 20149,
+	ITEM_FOX_MACHINA_HELMET = 20152,
+	ITEM_BASALT_GREAVES = 20104,
+	ITEM_OBSIDIAN_REGALIA = 20147,
+	ITEM_SUNFORGE_SHIELD = 20151,
 	ITEM_SPLASH			= 2019,
 	ITEM_POOL			= 2025,
 	ITEM_BOW			= 2456,
