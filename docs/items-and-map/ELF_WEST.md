@@ -94,10 +94,16 @@ healthy, 0 reinicios automáticos y arranque sin errores/warnings. 1 cuenta,
 8 personajes, 31 casas, depots, dueños, houseitems y binario conservados; los once
 lockers completos también son idénticos. Sin suites ni recorrido in-game.
 
-## Casita en las ruinas — preparada el 20 nov 2026
+## Casa flotante élfica — preparada el 20 nov 2026
 
-Willow Nook ocupa `91–94,57–61,z7`, con 6 sqm comprables y puerta al este.
-El sendero público queda libre. `generate-elf-west.py` respeta planta y techo
-del manifiesto de [casitas curiosas](CURIOUS_HOUSES.md) y valida la conexión
-al santuario; 97 casillas públicas transitables, sin contar el interior privado.
-La casa está preparada en el repo, pendiente de deploy.
+Willow Nook se traslada al agua en `85–89,57–61,z7`, con 9 sqm comprables,
+cubierta de tejas, plataforma 7×7 y puerta al este (`89,59`). Pasarela corta hasta
+`92,59`; los senderos sobre la isla recuperan su forma anterior. El árbol de
+`92,60` se mueve a `92,64` para despejar el acceso, sin cambiar la colisión de costa.
+La ventana del cliente desde la plataforma queda sin lava.
+
+`generate-elf-west.py` respeta las [casas flotantes](CURIOUS_HOUSES.md) y sus
+pasarelas, y calcula la costa usando el agua bajo las plataformas. No retira
+bordes al ver madera flotante junto a la isla. El reporte excluye el ancla
+reservada de la pasarela (109 casillas), sin cortar el recorrido público.
+La casa está aplicada en el repo, pendiente de deploy.

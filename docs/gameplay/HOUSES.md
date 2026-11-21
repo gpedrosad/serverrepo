@@ -318,16 +318,19 @@ tiene este cambio". Un generador que reescribe `test.otbm` tiene que partir del 
 - Items fantasma / stack raro en casa: sección **Items fantasma en casa** arriba (no asumir pérdida de data).
 
 
-## Casas pequeñas de Kongras, ruinas élficas y río — 20 nov 2026
+## Casas flotantes de Kongras, elfos y río — 20 nov 2026
 
-[Casitas curiosas comprables](../items-and-map/CURIOUS_HOUSES.md): Bamboo Pocket,
-Kongra Hideout y River Nook (9 sqm), Willow Nook (6 sqm). Generador
-`map/curious-houses.py`; 33 casillas interiores nuevas y cuatro plantillas vacías.
-Se agregan sin alterar los 22 registros anteriores ni XML de dueños existentes.
-Precio según `housepricepertile` (base 9000/6000 gp), compra normal con `!buyhouse`.
-Preparadas en el repo; pendientes de deploy y compra in-game.
+[Casas flotantes comprables](../items-and-map/CURIOUS_HOUSES.md): **una por zona**,
+Bamboo Pocket, Willow Nook y River Nook, todas con interior 3×3. Se retiró la
+propuesta anterior sobre tierra sin deployar ni tocar dueños. Kongra Hideout
+queda como plantilla vacía inactiva, fuera del registro.
 
-En el deploy solo se crean los cuatro nombres nuevos. Si alguno ya existe en la
+Generador `map/curious-houses.py`: plataformas sobre agua y pasarelas públicas,
+27 casillas interiores y tres umbrales PZ. Se suman sin alterar los 22 registros
+anteriores ni sus XML de dueño. Precio según `housepricepertile` (base 9000 gp),
+compra normal con `!buyhouse`. Pendientes de deploy y compra in-game.
+
+En el deploy se registran los tres nombres activos. Si alguno ya existe en la
 ThinkPad con dueño o permisos, detenerse y preservar ese XML. Nunca copiar toda
-la carpeta `data/houses/` desde la Mac. Respaldar también casas y houseitems antes
-del reinicio, como en el resto de los cambios de mapa.
+la carpeta `data/houses/` desde la Mac. Respaldar casas y houseitems antes del
+reinicio como en el resto de los cambios de mapa.

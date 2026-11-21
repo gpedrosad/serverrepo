@@ -70,7 +70,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | `epstein_cave_repair.py` | Repara contornos, relleno visible y fogatas sobre escaleras sin regenerar recorridos/spawns; `--dry-run` |
 | `generate-epstein-road.py` | Epstein Island: Camino de los Caídos, franja de tierra nueva en el mar (puente desde la punta sur) con Zombies y Undead Gladiators; bloque `EPSTEIN_ROAD` (`--dry-run --preview`) |
 | `generate-epstein-cleanup.py` | Epstein Island: saca NPCs/tienda y el Oracle, y agrega el portal de salida al templo |
-| `curious-houses.py` | Cuatro casas comprables pequeñas (Kongras, ruinas élficas, ribera), registro/PZ/plantillas vacías; `--dry-run`, conserva pasos públicos y dueños previos |
+| `curious-houses.py` | Tres casas flotantes comprables (Kongras, elfos, río), plataformas/pasarelas y registro/PZ; `--dry-run`, exige agua y conserva todos los pasos públicos y dueños previos |
 | `reshape-river-street.py` | River Street III–V: casas más cortas, patios, pasillos de tierra y puente de sogas de 1 casilla hasta el arco de los trolls (`--dry-run --png`; ver `docs/gameplay/HOUSES.md`) |
 | `arrange-mad-shop.py` | Tienda de Mad (z6 del Seller): 13 raros en el piso de Mad y el mostrador, fuera del alcance de los jugadores; valida con flood fill (`--replace`; ver `docs/items-and-map/MAPEAR_TIENDA_SELLER.md`) |
 | `generate-maze.py` | Laberinto Alice |

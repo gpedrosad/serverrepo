@@ -1,69 +1,71 @@
-# Casitas curiosas comprables — 20 nov 2026
+# Casas flotantes comprables — 20 nov 2026
 
-Cuatro viviendas pequeñas pedidas por Gonzalo: dos en los Kongras, una en las
-Ruinas del Sauce y otra junto al río. Son **casas comprables**, con puerta principal,
-registro en `houses.xml`, plantilla sin dueño y PZ. Sin muebles movibles de regalo;
-el comprador puede decorarlas. No requieren assets nuevos ni C++.
+**Una casa por zona**, todas sobre plataformas en el agua: Kongras, ruinas
+élficas y río. Sustituye la propuesta anterior de cuatro viviendas sobre tierra.
+No ocupa caminos ni espacios de caza existentes. Siguen siendo comprables,
+con puerta principal, plantilla sin dueño y PZ; sin C++ ni sprites nuevos.
 
-![Casas vistas con sus techos, como las muestra el cliente](img/curious-houses/casas.png)
+![Tres casas flotantes vistas con sus techos](img/floating-houses/casas.png)
 
-| Casa | Ubicación (z7) | Puerta | Interior | Precio base* |
-|---|---|---|---:|---:|
-| Bamboo Pocket | `178–182,100–104`, dentro del camino del claro de Kongras | `182,103` (este) | 3×3 = 9 sqm | 9000 gp |
-| Kongra Hideout | `184–188,107–111`, junto a la orilla del claro | `188,109` (este) | 3×3 = 9 sqm | 9000 gp |
-| Willow Nook | `91–94,57–61`, costado oeste del sendero élfico | `94,59` (este) | 2×3 = 6 sqm | 6000 gp |
-| River Nook | `167–171,71–75`, rincón de la ribera al oeste del puente | `169,75` (sur) | 3×3 = 9 sqm | 9000 gp |
+| Casa / zona | Planta (z7) | Puerta | Desembarco en tierra | Interior |
+|---|---|---|---|---:|
+| Bamboo Pocket / Kongras | `179–183,115–119` | `183,117`, este | `184,111` | 3×3 = 9 sqm |
+| Willow Nook / elfos | `85–89,57–61` | `89,59`, este | `92,59` | 3×3 = 9 sqm |
+| River Nook / ribera | `165–169,65–69` | `167,69`, sur | `167,72` | 3×3 = 9 sqm |
 
-*Con el valor predeterminado de 1000 gp por casilla. El motor aplica
-`housepricepertile`; exige nivel 8 por defecto y una sola casa por personaje.
-Para comprar: mirar la puerta desde la casilla exterior y usar `!buyhouse`.
-Las paredes interiores con gancho se asocian automáticamente a la casa y permiten
-colgar decoración; no aumentan el precio. Ver [HOUSES.md](../gameplay/HOUSES.md).
+Cada casa tiene una plataforma de **7×7**, originalmente toda de agua, y una
+pasarela pública corta. El interior privado son 9 sqm: **9000 gp** con el valor
+predeterminado de 1000 gp por casilla. El motor aplica `housepricepertile`,
+nivel mínimo 8 por defecto y una sola casa por personaje. Comprar con `!buyhouse`
+mirando la puerta desde el exterior. Los muelles públicos no se cobran al dueño.
 
-## Diseño y medidas
+## Cambios respecto de la primera propuesta
 
-- Bamboo Pocket: bambú, cubierta de tablones y entrada visible al este.
-- Kongra Hideout: entramado blanco/madera, ventana y tejas, pegada al lago.
-- Willow Nook: mármol claro y pequeño jardín sobre la cubierta plana. El sendero
-  público sigue por el este: la casa no cierra el paso hacia los arcanistas.
-- River Nook: entramado y tejas, con ventana al río. Se desplazó una casilla al
-  este porque la primera ubicación aislaba una casilla de la ribera.
+- Se restauraron las plantas sobre tierra y se retiraron sus **114 tiles de
+  techo**. Se conservan todos los pasos públicos y las casillas de caza originales.
+- Kongras queda con **una sola casa**, Bamboo Pocket. Kongra Hideout sale del
+  registro; su plantilla vacía se conserva como archivo inactivo, sin borrar nada.
+- La élfica se rehízo como casa completa: 3×3, muros de mármol unidos, cubierta
+  de tejas y puerta visible. El árbol que tapaba su pasarela pasó de `92,60` a
+  `92,64`, ambos en costa bloqueada. La vista desde su plataforma no muestra lava.
+- Las plataformas tienen canto de madera y las barandas/faroles ya publicados
+  del muelle (`20283` y familia), dejando libres las entradas de las pasarelas.
 
-Solo **209 tiles** cambian: 95 de planta y 114 de techo. Se añaden 33 casillas de
-casa y cuatro umbrales PZ; los 22 registros de casas anteriores quedan idénticos
-(26 casas en el registro tras el cambio). No se modifica ningún XML de dueño
-preexistente, `houseitems.xml`, spawns, NPCs, escaleras, cofres ni lockers.
+El registro conserva los 22 nombres anteriores y suma **tres** activos (25 en
+total). Son 27 casillas interiores y tres umbrales PZ. No se cambian spawns,
+NPCs, escaleras, cofres, lockers ni XML de dueños anteriores.
 
-## Archivos y aplicación
+## Archivos y regeneración
 
-- `scripts/map/curious-houses.py`: modelos, guardas y aplicación idempotente.
-- `data/world/test.otbm`, `data/world/generated-curious-houses.json`.
-- `data/houses.xml` y cuatro **plantillas nuevas sin dueño** en `data/houses/`.
-- `generate-elf-west.py` respeta la planta y el techo de estas casas al regenerar
-  las ruinas; el recorrido público conserva 97 casillas transitables.
+- `scripts/map/curious-houses.py`: plantas, plataformas, pasarelas, guardas y registro.
+- `data/world/test.otbm`, `data/world/generated-curious-houses.json` (versión 2).
+- `data/houses.xml` y las tres plantillas activas en `data/houses/`.
+- `generate-elf-west.py` reserva casas y pasarelas y cuenta como agua lo que hay
+  bajo los muelles al elegir las piezas de costa; no deshace las orillas.
 
 ```sh
 python3 scripts/map/curious-houses.py --dry-run
 python3 scripts/map/curious-houses.py
 ```
 
-El script respalda mapa/registro en `backups/map/curious-houses-FECHA/`, rechaza
-casas existentes con dueño, datos atribuidos, spawns/NPCs pisados, techos ocupados,
-entradas bloqueadas y cortes en los pasos públicos. Nunca se debe ejecutarlo para
-reubicar una casa comprada; `data/houses/*.xml` en la ThinkPad es runtime.
+El cambio de ubicación se hizo **antes del deploy**: la ThinkPad seguía en
+`f7cc8e9` y ninguno de los cuatro nombres anteriores existía allí. Respaldo
+local: `backups/map/floating-houses-before/`. Se restauraron solo los 209 tiles
+de la propuesta anterior, desde ese mismo mapa base, y luego se aplicó el diseño
+flotante. No hay pérdida de contenido ni cambios en data runtime.
 
-## Cubiertas y comprobaciones
+El generador respalda mapa/registro, rechaza dueños existentes, datos atribuidos,
+techos ocupados y entidades pisadas. Exige plataforma enteramente sobre agua,
+acceso conectado a tierra, interior transitable con la puerta abierta, vista
+sin lava y **ninguna casilla pública anterior bloqueada**.
 
-Las cubiertas se revisan con `Renderer.client_view(..., z=7)`, que superpone z6
-corrido una casilla arriba/izquierda. Las imágenes `*-inside.png` son cortes sin
-techo; `*-roof.png` muestran el exterior. No son capturas in-game.
+## Revisión
 
-No sumar 10 a todos los IDs de un tejado para cambiar de material: las familias
-925/935/945 no comparten exactamente los remates. Se usan tejas 935/936/938 y
-940/941/943; madera 945/947/949 y 950/951/954, vistos con los sprites reales.
-
-Guardas del generador: OK; segunda pasada, **0 cambios**. Regenerador élfico en
-`--dry-run`: 0 cambios. `sync-houses-with-map.py --dry-run`: coincide. Auditoría:
-37 tiles PZ, pasos públicos conservados y 11 lockers completos/ítems atribuidos
-idénticos. Sin suites, arranque ni compra in-game por pedido del usuario.
-**Preparado en el repo; pendiente de deploy y compra real.**
+Respecto del mapa sin casas: **337 tiles**, 247 en z7 y 90 de techo en z6.
+La revisión cotejó las 147 casillas de plataformas con el agua original; todos
+los pasos públicos anteriores, las 22 casas, los 11 lockers completos, los
+objetos atribuidos y el XML de spawns quedan conservados. 30 tiles PZ nuevos.
+Generador de casas y regenerador élfico: segunda pasada **0 cambios**;
+`sync-houses-with-map.py --dry-run`: coincide. Los renders superponen z6 corrido
+como el cliente. Sin suites, arranque ni compra in-game por pedido del usuario.
+**Preparado y aplicado en el repo; pendiente de deploy y compra real.**
