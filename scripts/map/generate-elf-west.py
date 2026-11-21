@@ -41,11 +41,20 @@ GROUPS = [((95, 65), [("Elf Scout", (95, 65), 150)]),
 
 
 def house_reservations():
-    """Las casas comprables conservan su planta y techo al regenerar el hunt."""
+    """Conservar casas, cubiertas, plataformas y pasarelas al regenerar el hunt."""
     path = WORLD / "generated-curious-houses.json"
     if not path.exists():
         return set()
     return {tuple(map(int, p.split(","))) for p in json.loads(path.read_text())["cells"]}
+
+
+def floating_water():
+    path = WORLD / "generated-curious-houses.json"
+    if not path.exists():
+        return set()
+    return {(x, y) for h in json.loads(path.read_text())["houses"] if "landing" in h
+            for x in range(h["box"][0] - 1, h["box"][2] + 2)
+            for y in range(h["box"][1] - 1, h["box"][3] + 2)}
 
 
 def index(root, otb):
@@ -75,7 +84,8 @@ def plan(values, otb):
             | {(x, y) for x in range(91, 97) for y in range(54, 61)})
     land -= {(91, 65), (98, 65)}  # puntas de una casilla, sin remate de costa válido
     water = {(x + dx, y + dy) for x, y in land for dx in (-1, 0, 1) for dy in (-1, 0, 1)} - land - BRIDGE
-    water = {p for p in water if values.get((*p, 7), [0])[0] in COAST.WATERS}
+    below_decks = floating_water()
+    water = {p for p in water if values.get((*p, 7), [0])[0] in COAST.WATERS or p in below_decks}
     cells = {}
     for x, y in sorted(land | BRIDGE):
         if (x, y) in BRIDGE:
