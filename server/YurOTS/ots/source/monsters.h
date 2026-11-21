@@ -177,6 +177,8 @@ public:
 	void createLoot(Container* corpse, Player* killer = NULL);
 	void createLootContainer(Container* parent, const LootBlock& lootblock, bool premiumLoot = false);
 	Item* createLootItem(const LootBlock& lootblock, bool premiumLoot = false);
+	// Chance base (de 100000) más baja con la que este monstruo suelta el ítem; 0 si no está en su loot.
+	unsigned long getLootChance(unsigned short itemId) const;
 };
 
 class Monsters{

@@ -495,4 +495,11 @@
 <action itemid="2158" script="gem_imbue.lua" />
 <action itemid="20131" script="experience_recovery_rune.lua" />
 <action itemid="20132" script="training_extension_rune.lua" />
+<!-- Regalos de nivel (docs/gameplay/LEVEL_UP_REWARDS.md) -->
+<action itemid="20354" script="level_gift.lua" />
+<action itemid="20355" script="level_gift.lua" />
+<action itemid="20356" script="level_gift.lua" />
+<action itemid="20357" script="level_gift.lua" />
+<action itemid="20358" script="level_gift.lua" />
+<action itemid="20359" script="level_gift.lua" />
 </actions>

@@ -711,6 +711,7 @@ int ActionScript::registerFunctions()
 	lua_register(luaState, "doPlayerAddItem", ActionScript::luaActionDoPlayerAddItem);
 	//doPlayerSendTextMessage(uid,MessageClasses,message)
 	lua_register(luaState, "doPlayerSendTextMessage", ActionScript::luaActionDoPlayerSendTextMessage);
+	lua_register(luaState, "doBroadcastMessage", ActionScript::luaActionDoBroadcastMessage);
 	//doPlayerRemoveMoney(uid,money)
 	lua_register(luaState, "doPlayerRemoveMoney", ActionScript::luaActionDoPlayerRemoveMoney);
 	//doShowTextWindow(uid,maxlen,canWrite)
@@ -1396,6 +1397,19 @@ int ActionScript::luaActionDoPlayerSendTextMessage(lua_State *L)
 		lua_pushnumber(L, -1);
 		std::cout << "luaSendTextMessage: player not found" << std::endl;
 		return 1;
+	}
+	lua_pushnumber(L, 0);
+	return 1;
+}
+
+int ActionScript::luaActionDoBroadcastMessage(lua_State *L)
+{
+	//doBroadcastMessage(MessageClasses,message): a todos los jugadores conectados (regalos de nivel)
+	const char * text = internalGetString(L);
+	unsigned char messageClass = (unsigned char)internalGetNumber(L);
+	for(AutoList<Player>::listiterator it = Player::listPlayer.list.begin(); it != Player::listPlayer.list.end(); ++it) {
+		if(it->second)
+			it->second->sendTextMessage((MessageClasses)messageClass, text);
 	}
 	lua_pushnumber(L, 0);
 	return 1;

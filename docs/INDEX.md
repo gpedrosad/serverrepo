@@ -122,6 +122,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/SPELL_EXHAUSTION.md`](gameplay/SPELL_EXHAUSTION.md) | **Exhausted:** ofensivo 2 s / no-ofensivo 1 s, sin `exhaustedadd` en casts, bindings Paralyze/Anchor/etc. con exhaust compartido, visibilidad say. |
 | [`gameplay/READABLES.md`](gameplay/READABLES.md) | **Cartas, scrolls y libros:** leer/escribir según el `items.otb`, `scrolltexts.xml` del piso, ids. |
 | [`gameplay/MAGIC_WALL.md`](gameplay/MAGIC_WALL.md) | **Magic Wall:** duración 15s, `DECAY_INTERVAL`, bug de relanzar sin reiniciar timer (jul 2026). |
+| [`gameplay/LEVEL_UP_REWARDS.md`](gameplay/LEVEL_UP_REWARDS.md) | Subir de nivel: efecto 50 y "LEVEL UP" que ven todos, una caja de regalo por nivel (6 rangos, oro / ítem / raro) y aviso a todo el server de los raros (cajas y monstruos). Prueba con bots `test-level-gifts.py`. |
 | [`gameplay/SUMMONS.md`](gameplay/SUMMONS.md) | Summons de jugadores: velocidad del dueño, siempre un paso detrás, cambian de lugar al darse vuelta y aparecen a su lado al cambiar de piso. Prueba con bots `test-summon-follow.py`. |
 | [`gameplay/ANCHOR_RUNE.md`](gameplay/ANCHOR_RUNE.md) | Anchor Rune (2296): root de 1s (no paralyze) para war/combos. |
 | [`gameplay/CRIMSON_CAGE_RUNE.md`](gameplay/CRIMSON_CAGE_RUNE.md) | Crimson Cage Rune (20273, `adevo grav res`): encierra al blanco en 8 paredes rojas por 3 s (evento propio, no el decay de 5 s). |

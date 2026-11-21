@@ -93,6 +93,7 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 | Hechizos nuevos nov 2026, 2ª tanda (`exori con gran`, `exeta sio`, `exana res`, `exori vis con`, `exura tera`, `exevo vis tera`, `utito tera`, `utamo mort`): avisos, íconos con cuenta regresiva en el cliente | `docs/gameplay/SPELLS_FEEDBACK.md` |
 | Energy Strike Hur (`exori vis hur`) target a distancia (Sorc/Druid, visual HMM) | `docs/gameplay/SPELL_EXORI_VIS_HUR.md` |
 | Challenge (`exeta res`) taunt Knight lock 6 s | `docs/gameplay/SPELL_EXETA_RES.md` |
+| Subir de nivel: efecto, cajas de regalo por rango, aviso global de raros (`rarelootbroadcastchance`) | `docs/gameplay/LEVEL_UP_REWARDS.md` |
 | Summons de jugadores: velocidad del dueño, a un paso detrás, cambio de lugar y cambio de piso | `docs/gameplay/SUMMONS.md` |
 | Exhausted (spells/runas, ofensivo 2s / no-ofensivo 1s, bindings con exhaust) | `docs/gameplay/SPELL_EXHAUSTION.md` |
 | Cambiar / exportar mapa OTBM | `docs/CAMBIAR-MAPA.md` |

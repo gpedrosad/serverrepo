@@ -101,6 +101,8 @@ public:
 
 	// Power hit (ver docs/gameplay/POWER_HIT.md): probabilidades por mil, daño en %.
 	int POWERHIT_CHANCE;
+	// Aviso a todo el server de un raro (docs/gameplay/LEVEL_UP_REWARDS.md): chance base máxima (de 100000).
+	int RARE_LOOT_BROADCAST_CHANCE;
 	int POWERHIT_DAMAGE;
 	int MEGAHIT_CHANCE;
 	int MEGAHIT_DAMAGE;
