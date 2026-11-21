@@ -897,9 +897,9 @@ std::string Item::getDescription(bool fullDescription) const
 	}
 
 	if(fullDescription && id == ITEM_GOLDEN_AMULET)
-		s << std::endl << "Equipado: el oro de monstruos que mates se deposita en tu banco al instante (sin abrir el cuerpo).";
+		s << std::endl << "While equipped, gold from monsters you kill is deposited directly into your bank without opening the corpse.";
 	if(fullDescription && id == ITEM_GOLDEN_RING)
-		s << std::endl << "Equipado en el slot de ring: ganas 20% mas oro de monstruos que mates.";
+		s << std::endl << "While equipped in the ring slot, you earn 20% more gold from monsters you kill.";
 
 	str = s.str();
 	return str;

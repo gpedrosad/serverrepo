@@ -1,5 +1,8 @@
 # Padrinazgo
 
+> Idioma visible: **inglés**. Ver [política y corrección de textos](SERVER_LANGUAGE.md).
+> Comando principal: `!sponsor Name` / `!sponsor accept Name`; `!padrino` sigue como alias.
+
 Desde el 20 nov 2026: un jugador nuevo elige padrino a un jugador con más nivel. Cuando el nuevo (el ahijado)
 llega a ciertos niveles, **los dos** reciben oro y una caja de regalo, y se avisa a todo el server. La idea:
 que los veteranos traigan gente y la acompañen, y que el nuevo tenga metas cercanas.

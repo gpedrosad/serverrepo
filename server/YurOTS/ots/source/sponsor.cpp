@@ -185,7 +185,7 @@ namespace {
 		for (AutoList<Player>::listiterator it = Player::listPlayer.list.begin(); it != Player::listPlayer.list.end(); ++it)
 			if (it->second)
 				it->second->sendTextMessage(MSG_ADVANCE, text.c_str());
-		std::cout << "[padrino] " << text << std::endl;
+		std::cout << "[sponsor] " << text << std::endl;
 	}
 
 	// Premios del padrino que quedaron pendientes (estaba desconectado cuando el ahijado llegó al hito).
@@ -203,8 +203,8 @@ namespace {
 				giveGold(sponsor, SPONSOR_GOLD[m]);
 				giveItem(sponsor, gift, 1);
 				std::ostringstream msg;
-				msg << "Padrinazgo: tu ahijado " << link.child << " llego a nivel " << MILESTONES[m]
-					<< ". Recibes " << SPONSOR_GOLD[m] << " gp y " << article(Item::items[gift].name) << ".";
+				msg << "Sponsorship: your recruit " << link.child << " reached level " << MILESTONES[m]
+					<< ". You receive " << SPONSOR_GOLD[m] << " gp and " << article(Item::items[gift].name) << ".";
 				sponsor->sendTextMessage(MSG_ADVANCE, msg.str().c_str());
 			}
 			link.pending = 0;
@@ -220,12 +220,12 @@ namespace {
 		Link* mine = findChild(player->getName());
 		if (mine) {
 			const int next = nextMilestone(mine->done);
-			msg << "Tu padrino es " << mine->sponsor << ".";
+			msg << "Your sponsor is " << mine->sponsor << ".";
 			if (next >= 0)
-				msg << " Proximo premio para los dos al llegar a nivel " << MILESTONES[next]
-					<< " (tu: " << CHILD_GOLD[next] << " gp y una caja).";
+				msg << " Your next shared reward is at level " << MILESTONES[next]
+					<< " (you: " << CHILD_GOLD[next] << " gp and a gift box).";
 			else
-				msg << " Ya cobraron todos los premios.";
+				msg << " You have already claimed all milestone rewards.";
 			player->sendTextMessage(MSG_INFO, msg.str().c_str());
 		}
 
@@ -235,60 +235,60 @@ namespace {
 			const Link& link = links[i];
 			if (!sameName(link.sponsor, player->getName()))
 				continue;
-			kids << (n ? ", " : "") << link.child << " (nivel " << link.childLevel;
+			kids << (n ? ", " : "") << link.child << " (level " << link.childLevel;
 			const int next = nextMilestone(link.done);
 			if (next >= 0)
-				kids << ", premio en " << MILESTONES[next];
+				kids << ", next reward at " << MILESTONES[next];
 			kids << ")";
 			++n;
 		}
 		if (n) {
 			std::ostringstream line;
-			line << "Tus ahijados (" << n << "/" << MAX_CHILDREN << "): " << kids.str() << ".";
+			line << "Your recruits (" << n << "/" << MAX_CHILDREN << "): " << kids.str() << ".";
 			player->sendTextMessage(MSG_INFO, line.str().c_str());
 		}
 
 		if (!mine && !n) {
 			player->sendTextMessage(MSG_INFO,
-				"Padrinazgo: hasta nivel 15, escribe !padrino Nombre para pedirle a un jugador de nivel 30 o mas que "
-				"sea tu padrino; acepta con !padrino aceptar TuNombre. Cuando llegues a 20, 35, 50, 80 y 100, los dos "
-				"reciben oro y una caja de regalo.");
+				"Sponsorship: up to level 15, type !sponsor Name to ask a player of level 30 or higher to "
+				"sponsor you; they accept with !sponsor accept YourName. When you reach levels 20, 35, 50, 80 and 100, you both "
+				"receive gold and a gift box.");
 		}
 	}
 
 	void ask(Game* game, Player* child, const std::string& sponsorName)
 	{
 		if (child->access > 0) {
-			child->sendCancel("Los GMs no tienen padrino.");
+			child->sendCancel("GMs cannot have a sponsor.");
 			return;
 		}
 		if (Link* mine = findChild(child->getName())) {
-			child->sendCancel(("Ya tienes padrino: " + mine->sponsor + ".").c_str());
+			child->sendCancel(("You already have a sponsor: " + mine->sponsor + ".").c_str());
 			return;
 		}
 		if (child->level > CHILD_MAX_LEVEL) {
-			child->sendCancel("Solo se puede elegir padrino hasta nivel 15.");
+			child->sendCancel("You can only choose a sponsor up to level 15.");
 			return;
 		}
 		Player* sponsor = game->getPlayerByName(sponsorName);
 		if (!sponsor) {
-			child->sendCancel((sponsorName + " no esta conectado: tiene que estar online para aceptar.").c_str());
+			child->sendCancel((sponsorName + " is offline: they must be online to accept.").c_str());
 			return;
 		}
 		if (sponsor == child || sponsor->getAccount() == child->getAccount()) {
-			child->sendCancel("No puedes ser tu propio padrino.");
+			child->sendCancel("You cannot sponsor yourself or another character on your account.");
 			return;
 		}
 		if (sponsor->access > 0) {
-			child->sendCancel("Un GM no puede ser padrino.");
+			child->sendCancel("A GM cannot be a sponsor.");
 			return;
 		}
 		if (sponsor->level < SPONSOR_MIN_LEVEL) {
-			child->sendCancel("El padrino tiene que ser nivel 30 o mas.");
+			child->sendCancel("Your sponsor must be level 30 or higher.");
 			return;
 		}
 		if (childCount(sponsor->getName()) >= MAX_CHILDREN) {
-			child->sendCancel((sponsor->getName() + " ya tiene 10 ahijados.").c_str());
+			child->sendCancel((sponsor->getName() + " already has 10 recruits.").c_str());
 			return;
 		}
 
@@ -305,11 +305,11 @@ namespace {
 		requests.push_back(req);
 
 		std::ostringstream toSponsor;
-		toSponsor << child->getName() << " (nivel " << child->level << ") quiere que seas su padrino. "
-			<< "Escribe !padrino aceptar " << child->getName() << " en los proximos 5 minutos.";
+		toSponsor << child->getName() << " (level " << child->level << ") wants you to be their sponsor. "
+			<< "Type !sponsor accept " << child->getName() << " within the next 5 minutes.";
 		sponsor->sendTextMessage(MSG_ADVANCE, toSponsor.str().c_str());
-		child->sendTextMessage(MSG_INFO, ("Le pediste a " + sponsor->getName() +
-			" que sea tu padrino. Tiene 5 minutos para aceptar.").c_str());
+		child->sendTextMessage(MSG_INFO, ("You asked " + sponsor->getName() +
+			" to be your sponsor. They have 5 minutes to accept.").c_str());
 	}
 
 	void accept(Game* game, Player* sponsor, const std::string& childName)
@@ -324,22 +324,22 @@ namespace {
 			}
 		}
 		if (found < 0) {
-			sponsor->sendCancel(("No hay un pedido de " + childName + " (o pasaron mas de 5 minutos).").c_str());
+			sponsor->sendCancel(("There is no request from " + childName + " (or it expired after 5 minutes).").c_str());
 			return;
 		}
 		requests.erase(requests.begin() + found);
 
 		Player* child = game->getPlayerByName(childName);
 		if (!child) {
-			sponsor->sendCancel((childName + " ya no esta conectado.").c_str());
+			sponsor->sendCancel((childName + " is no longer online.").c_str());
 			return;
 		}
 		if (findChild(child->getName())) {
-			sponsor->sendCancel((child->getName() + " ya tiene padrino.").c_str());
+			sponsor->sendCancel((child->getName() + " already has a sponsor.").c_str());
 			return;
 		}
 		if (childCount(sponsor->getName()) >= MAX_CHILDREN) {
-			sponsor->sendCancel("Ya tienes 10 ahijados.");
+			sponsor->sendCancel("You already have 10 recruits.");
 			return;
 		}
 
@@ -354,10 +354,10 @@ namespace {
 		save();
 
 		giveItem(child, WELCOME_GIFT, 1);
-		child->sendTextMessage(MSG_ADVANCE, (sponsor->getName() + " es tu padrino. Te regala una novice gift. "
-			"Al llegar a nivel 20 los dos reciben premio.").c_str());
-		sponsor->sendTextMessage(MSG_ADVANCE, ("Ahora eres padrino de " + child->getName() +
-			". Cuando llegue a 20, 35, 50, 80 y 100 recibes oro y una caja.").c_str());
+		child->sendTextMessage(MSG_ADVANCE, (sponsor->getName() + " is your sponsor. You receive a novice gift. "
+			"You both receive a reward when you reach level 20.").c_str());
+		sponsor->sendTextMessage(MSG_ADVANCE, ("You are now the sponsor of " + child->getName() +
+			". When they reach levels 20, 35, 50, 80 and 100, you receive gold and a gift box.").c_str());
 	}
 }
 
@@ -438,13 +438,13 @@ void Sponsors::onLevel(Player* player)
 		giveGold(player, CHILD_GOLD[m]);
 		giveItem(player, gift, 1);
 		std::ostringstream msg;
-		msg << "Padrinazgo: llegaste a nivel " << MILESTONES[m] << ". Recibes " << CHILD_GOLD[m]
-			<< " gp y " << article(Item::items[gift].name) << "; tu padrino " << link->sponsor << " tambien gana.";
+		msg << "Sponsorship: you reached level " << MILESTONES[m] << ". You receive " << CHILD_GOLD[m]
+			<< " gp and " << article(Item::items[gift].name) << "; your sponsor " << link->sponsor << " earns a reward too.";
 		player->sendTextMessage(MSG_ADVANCE, msg.str().c_str());
 
 		std::ostringstream all;
-		all << player->getName() << ", ahijado de " << link->sponsor << ", llego a nivel " << MILESTONES[m]
-			<< ": premio para los dos!";
+		all << player->getName() << ", sponsored by " << link->sponsor << ", reached level " << MILESTONES[m]
+			<< ": rewards for both!";
 		broadcast(all.str());
 	}
 
@@ -460,6 +460,6 @@ void Sponsors::onLogin(Player* player)
 		return;
 	deliverSponsor(player);
 	if (player->level <= CHILD_MAX_LEVEL && !findChild(player->getName()))
-		player->sendTextMessage(MSG_EVENT, "Si un amigo te invito, escribe !padrino Nombre (nivel 30 o mas): "
-			"cuando subas de nivel, los dos ganan premios.");
+		player->sendTextMessage(MSG_EVENT, "If a friend invited you, type !sponsor Name (level 30 or higher): "
+			"you both earn rewards when you reach level milestones.");
 }

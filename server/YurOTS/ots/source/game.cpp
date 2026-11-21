@@ -2161,7 +2161,7 @@ static bool canUseHouseWall(Creature* c, const Tile* tile, const Item* item)
 	Player* p = dynamic_cast<Player*>(c);
 	if (!p || p->access >= g_config.ACCESS_HOUSE || tile->getHouse()->getPlayerRights(p->getName()) != HOUSE_NONE)
 		return true;
-	c->sendCancel("Solo el dueño de la casa y sus invitados pueden colgar o descolgar cosas en estas paredes.");
+	c->sendCancel("Only the house owner and their guests may hang or remove items on these walls.");
 	return false;
 }
 
@@ -6631,7 +6631,7 @@ void Game::autoServerSave()
 {
 	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::autoServerSave()");
 
-	broadcastServerSaveRed("Server save en progreso.");
+	broadcastServerSaveRed("Server save in progress.");
 
 	serverSave();
 	addEvent(makeTask(g_config.getGlobalNumber("autosave", 1)*60000, std::mem_fun(&Game::autoServerSave)));
@@ -6640,7 +6640,7 @@ void Game::autoServerSave()
 void Game::scheduledServerSave()
 {
 	g_delayedServerSavePending = false;
-	broadcastServerSaveRed("Server save en progreso.");
+	broadcastServerSaveRed("Server save in progress.");
 	std::cout << ":: scheduled server save (after 5 min warning)" << std::endl;
 	serverSave();
 	writeServerSaveOk("ok\n");
@@ -6669,7 +6669,7 @@ void Game::checkSaveRequest()
 	if(sn) {
 		fclose(sn);
 		unlink(requestSaveNow.c_str());
-		broadcastServerSaveRed("Server save en progreso.");
+		broadcastServerSaveRed("Server save in progress.");
 		serverSave();
 		writeServerSaveOk("ok\n");
 	}
@@ -6681,7 +6681,7 @@ void Game::checkSaveRequest()
 		unlink(requestSave.c_str());
 		if(!g_delayedServerSavePending) {
 			g_delayedServerSavePending = true;
-			broadcastServerSaveRed("Server save en 5 minutos. Terminen lo que estan haciendo!");
+			broadcastServerSaveRed("Server save in 5 minutes. Please finish what you are doing!");
 			std::cout << ":: server save announced; running in 5 minutes" << std::endl;
 			addEvent(makeTask(5 * 60 * 1000, std::mem_fun(&Game::scheduledServerSave)));
 		}

@@ -1383,8 +1383,8 @@ bool Player::aolRareConflict(const Item* incoming)
 		scanAolRare(items[slot], hasAol, hasRare);
 	if ((inAol || hasAol) && (inRare || hasRare))
 	{
-		sendCancel(inAol ? "No puedes llevar un Amulet of Loss si tienes un arma rare."
-		                 : "No puedes llevar un arma rare si tienes un Amulet of Loss.");
+		sendCancel(inAol ? "You cannot equip an Amulet of Loss while carrying a rare weapon."
+		                 : "You cannot equip a rare weapon while wearing an Amulet of Loss.");
 		return true;
 	}
 	return false;
@@ -3645,13 +3645,13 @@ static void sendTrainingEnterMessage(Player* player, long usedMs, long limitMs)
 	const long remaining = limitMs - usedMs;
 	const long limitMinutes = limitMs / (60L * 1000L);
 	std::stringstream ss;
-	ss << "Sala de entrenamiento: cada personaje tiene "
+	ss << "Training room: each character has "
 	   << limitMinutes
-	   << " min por dia. Llevas "
+	   << " minutes per day. You have used "
 	   << formatTrainingTime(usedMs)
-	   << " usados y te quedan "
+	   << " and have "
 	   << formatTrainingTime(remaining)
-	   << ". Al agotar el tiempo seras enviado al templo. El limite se reinicia cada dia.";
+	   << " left. When your time runs out, you will be sent to the temple. The limit resets daily.";
 	player->sendTextMessage(MSG_RED_INFO, ss.str().c_str());
 }
 
@@ -3659,9 +3659,9 @@ static void sendTrainingProgressLine(Player* player, long usedMs, long limitMs)
 {
 	const long remaining = limitMs - usedMs;
 	std::stringstream ss;
-	ss << "Entrenamiento: quedan "
+	ss << "Training: remaining "
 	   << formatTrainingTime(remaining)
-	   << " hoy | usado: "
+	   << " today | used: "
 	   << formatTrainingTime(usedMs);
 	player->sendTextMessage(MSG_SMALLINFO, ss.str().c_str());
 }
@@ -3670,9 +3670,9 @@ static void sendTrainingWarningMessage(Player* player, long usedMs, long limitMs
 {
 	const long remaining = limitMs - usedMs;
 	std::stringstream ss;
-	ss << "Aviso: te quedan menos de 5 minutos de entrenamiento hoy ("
+	ss << "Warning: you have less than 5 minutes of training left today ("
 	   << formatTrainingTime(remaining)
-	   << " restantes). Preparate para salir al templo.";
+	   << " remaining). Prepare to return to the temple.";
 	player->sendTextMessage(MSG_RED_INFO, ss.str().c_str());
 }
 
@@ -3709,7 +3709,7 @@ void Player::checkTraining(int thinkTicks, Tile* tile)
 	if (usedMs >= limitMs)
 	{
 		g_game.teleport(this, exitPos);
-		sendTextMessage(MSG_RED_INFO, "Se acabo tu tiempo de entrenamiento de hoy. Teletransporte al templo. Vuelve manana.");
+		sendTextMessage(MSG_RED_INFO, "Your training time for today has run out. You have been sent to the temple. Come back tomorrow.");
 		trainingWarned = false;
 		trainingInArea = false;
 		return;
@@ -3736,7 +3736,7 @@ void Player::checkTraining(int thinkTicks, Tile* tile)
 	if (usedMs >= limitMs)
 	{
 		g_game.teleport(this, exitPos);
-		sendTextMessage(MSG_RED_INFO, "Se acabo tu tiempo de entrenamiento de hoy. Teletransporte al templo. Vuelve manana.");
+		sendTextMessage(MSG_RED_INFO, "Your training time for today has run out. You have been sent to the temple. Come back tomorrow.");
 		trainingWarned = false;
 		trainingInArea = false;
 	}
@@ -4065,7 +4065,7 @@ void Player::checkPremium(int thinkTics)
 			setBasicOutfit(this);
 			g_game.teleport(this, masterPos);
 			g_game.creatureChangeOutfit(this);
-			sendTextMessage(MSG_RED_INFO, "Se te acabo el premium. Fuiste enviado al templo con la ropa basica.");
+			sendTextMessage(MSG_RED_INFO, "Your premium time has expired. You have been sent to the temple with a basic outfit.");
 		}
 	}
 }

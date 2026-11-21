@@ -1238,9 +1238,9 @@ int NpcScript::luaBuyItem(lua_State *L)
 
 		std::stringstream ss;
 		if(Item::items[itemid].isFluidContainer() && count != 0) {
-			ss << "Buy 1 " << Item::getFluidTypeName(count) << " for " << cost << " gp? (yes or si)";
+			ss << "Buy 1 " << Item::getFluidTypeName(count) << " for " << cost << " gp? (yes/no)";
 		} else {
-			ss << "Buy " << count << "x " << Item::items[itemid].name << " for " << cost << " gp? (yes or si)";
+			ss << "Buy " << count << "x " << Item::items[itemid].name << " for " << cost << " gp? (yes/no)";
 		}
 		mynpc->doSay(ss.str());
 	}
@@ -1277,7 +1277,7 @@ int NpcScript::luaBuyFluidBackpack(lua_State *L)
 		pt.backpackContentItemCount = fluidCount;
 
 		std::stringstream ss;
-		ss << "Buy a backpack of " << Item::getFluidTypeName(fluidSubtype) << " for " << cost << " gp? (yes or si)";
+		ss << "Buy a backpack of " << Item::getFluidTypeName(fluidSubtype) << " for " << cost << " gp? (yes/no)";
 		mynpc->doSay(ss.str());
 	}
 
@@ -1314,7 +1314,7 @@ int NpcScript::luaBuyFluidQty(lua_State *L)
 		pt.isFluidQuantityBuy = true;
 
 		std::stringstream ss;
-		ss << "Buy " << qty << " " << Item::getFluidTypeName(fluidSubtype) << " for " << cost << " gp? (yes or si)";
+		ss << "Buy " << qty << " " << Item::getFluidTypeName(fluidSubtype) << " for " << cost << " gp? (yes/no)";
 		mynpc->doSay(ss.str());
 	}
 
@@ -1353,7 +1353,7 @@ int NpcScript::luaBuyRuneQty(lua_State *L)
 		pt.isRuneQuantityBuy = true;
 
 		std::stringstream ss;
-		ss << "Buy " << qty << "x " << Item::items[itemid].name << " for " << cost << " gp? (yes or si)";
+		ss << "Buy " << qty << "x " << Item::items[itemid].name << " for " << cost << " gp? (yes/no)";
 		mynpc->doSay(ss.str());
 	}
 
@@ -1388,7 +1388,7 @@ int NpcScript::luaBuyItemQty(lua_State *L)
 		pt.isItemQuantityBuy = true;
 
 		std::stringstream ss;
-		ss << "Buy " << qty << "x " << Item::items[itemid].name << " for " << cost << " gp? (yes or si)";
+		ss << "Buy " << qty << "x " << Item::items[itemid].name << " for " << cost << " gp? (yes/no)";
 		mynpc->doSay(ss.str());
 	}
 
@@ -1424,7 +1424,7 @@ int NpcScript::luaBuyItemBackpack(lua_State *L)
 		pt.backpackContentItemCount = contentItemCount;
 
 		std::stringstream ss;
-		ss << "Buy a backpack of " << Item::items[contentItemId].name << " for " << cost << " gp? (yes or si)";
+		ss << "Buy a backpack of " << Item::items[contentItemId].name << " for " << cost << " gp? (yes/no)";
 		mynpc->doSay(ss.str());
 	}
 
@@ -1458,7 +1458,7 @@ int NpcScript::luaSellItem(lua_State *L)
 		pt.isSell = true;
 
 		std::stringstream ss;
-		ss << "Sell " << count << "x " << Item::items[itemid].name << " for " << cost << " gp? (yes or si)";
+		ss << "Sell " << count << "x " << Item::items[itemid].name << " for " << cost << " gp? (yes/no)";
 		mynpc->doSay(ss.str());
 	}
 
@@ -1495,7 +1495,7 @@ int NpcScript::luaSellFluidItem(lua_State *L)
 			ss << " (empty)";
 		else if(Item::items[itemid].isFluidContainer())
 			ss << " (" << Item::getFluidTypeName(subtype) << ")";
-		ss << " for " << cost << " gp? (yes or si)";
+		ss << " for " << cost << " gp? (yes/no)";
 		mynpc->doSay(ss.str());
 	}
 
@@ -1576,7 +1576,7 @@ int NpcScript::sellBundleCommon(lua_State *L, bool backpackOnly)
 		pt.bulkLabel = label? label : "";
 
 		std::stringstream ss;
-		ss << "Sell " << pt.bulkLabel << " for " << cost << " gp? (yes or si)";
+		ss << "Sell " << pt.bulkLabel << " for " << cost << " gp? (yes/no)";
 		mynpc->doSay(ss.str());
 	}
 

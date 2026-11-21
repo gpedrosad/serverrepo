@@ -121,6 +121,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/DESINTEGRATE_RUNE.md`](gameplay/DESINTEGRATE_RUNE.md) | Implementación real de la rune Desintegrate: magic wall, wild growth y objetos destruibles. |
 | [`gameplay/SPELL_RUNTIME.md`](gameplay/SPELL_RUNTIME.md) | **Spells/runas:** carga XML→Lua, `safeCast` anti-crash, restauración Soulfire/Paralyze/etc. (jul 2026). Leer antes de tocar `spells.xml` / `spells.cpp`. |
 | [`gameplay/SPELL_EXHAUSTION.md`](gameplay/SPELL_EXHAUSTION.md) | **Exhausted:** ofensivo 2 s / no-ofensivo 1 s, sin `exhaustedadd` en casts, bindings Paralyze/Anchor/etc. con exhaust compartido, visibilidad say. |
+| [`gameplay/SERVER_LANGUAGE.md`](gameplay/SERVER_LANGUAGE.md) | Idioma visible del juego: inglés; 77 carteles, NPCs, arenas, mensajes C++ y ayuda GM. Comandos `!sponsor`, `/go`, `/level`, `/killmonsters`, `/help`; alias anteriores compatibles. |
 | [`gameplay/READABLES.md`](gameplay/READABLES.md) | **Cartas, scrolls y libros:** leer/escribir según el `items.otb`, `scrolltexts.xml` del piso, ids. |
 | [`gameplay/MAGIC_WALL.md`](gameplay/MAGIC_WALL.md) | **Magic Wall:** duración 15s, `DECAY_INTERVAL`, bug de relanzar sin reiniciar timer (jul 2026). |
 | [`gameplay/LEVEL_UP_REWARDS.md`](gameplay/LEVEL_UP_REWARDS.md) | Subir de nivel: efecto 50 y "LEVEL UP" que ven todos, una caja de regalo por nivel (6 rangos, oro / ítem / raro) y aviso a todo el server de los raros (cajas y monstruos). Prueba con bots `test-level-gifts.py`. |
