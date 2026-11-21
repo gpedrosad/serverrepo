@@ -104,4 +104,18 @@
 		</raw>
 	</tileset>
 
+
+	<tileset name="Dwarven Mine">
+		<raw>
+			<item id="20354"/>
+			<item id="20355"/>
+			<item id="20356"/>
+			<item id="20357"/>
+			<item id="20358"/>
+			<item id="20359"/>
+			<item id="20360"/>
+			<item id="20361"/>
+		</raw>
+	</tileset>
+
 </materialsextension>

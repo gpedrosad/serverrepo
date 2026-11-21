@@ -111,3 +111,12 @@ Publicado el 20 nov 2026 en el cliente `df02ede` y desplegado con `bad92cb`: los
 (creatures/efectos/proyectiles) coinciden byte por byte con el DAT anterior.
 DAT publicado `a80fb1ff`; HTTP 8080/8076 y ambos ZIPs verificados. Sin cliente
 in-game por pedido del usuario. Respaldo y despliegue en [ELF_WEST.md](ELF_WEST.md#despliegue--20-nov-2026).
+
+### Instalar un grupo nuevo sin reconstruir los assets anteriores
+
+Desde Mina Enana, `add_custom_items.py --only ID [ID ...] --things DIR` valida los IDs
+y procesa exclusivamente ese subconjunto de `NEW_ITEMS`. Es útil cuando los PNG de
+otros ítems no están instalados. No cambia el resto de entradas DAT ni nodos OTB.
+Los rieles usan prototipo 1794: 3312 tiene dos patrones y no sirve para un PNG único.
+El apoyo 2x2 usa prototipo 1515; un prototipo 1x1 tampoco sirve para sus cuatro sprites.
+Ver [Mina Enana](../gameplay/DWARVEN_MINE.md).

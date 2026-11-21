@@ -431,6 +431,31 @@ NEW_ITEMS = [
          png="cyan_lamp.png", decor=True, frames=2, light=(6, 29), nodecay=True,
          descr="A lamp that glows cyan."),
 
+    # Mina enana: decoracion 8.60, sin stats ni movimiento.
+    dict(name="mine rail north-south", server_id=20354, client_id=5090, prototype=1794,
+         png="mine_rail_ns.png", decor=True, fixed=True,
+         descr="Iron and timber from the dwarven copper mine."),
+    dict(name="mine rail east-west", server_id=20355, client_id=5091, prototype=1794,
+         png="mine_rail_ew.png", decor=True, fixed=True,
+         descr="Iron and timber from the dwarven copper mine."),
+    dict(name="mine rail south-east", server_id=20356, client_id=5092, prototype=1794,
+         png="mine_rail_se.png", decor=True, fixed=True,
+         descr="Iron and timber from the dwarven copper mine."),
+    dict(name="mine rail south-west", server_id=20357, client_id=5093, prototype=1794,
+         png="mine_rail_sw.png", decor=True, fixed=True,
+         descr="Iron and timber from the dwarven copper mine."),
+    dict(name="mine rail north-east", server_id=20358, client_id=5094, prototype=1794,
+         png="mine_rail_ne.png", decor=True, fixed=True,
+         descr="Iron and timber from the dwarven copper mine."),
+    dict(name="mine rail north-west", server_id=20359, client_id=5095, prototype=1794,
+         png="mine_rail_nw.png", decor=True, fixed=True,
+         descr="Iron and timber from the dwarven copper mine."),
+    dict(name="mine ore wagon", server_id=20360, client_id=5096, prototype=1285,
+         png="mine_ore_wagon.png", decor=True, fixed=True,
+         descr="Iron and timber from the dwarven copper mine."),
+    dict(name="mine timber support", server_id=20361, client_id=5097, prototype=1515,
+         png="mine_timber_support.png", decor=True, fixed=True, tiles=2,
+         descr="Iron and timber from the dwarven copper mine."),
 ]
 # Muelle del depot y puentes (nov 2026): barandas, faroles y rampa de madera dibujados por dock_bridge_art.py
 # (server 20282-20300, clients sacrificados anotados ahí). Doc: docs/items-and-map/TRANSICIONES_DEPOT.md.
@@ -688,12 +713,20 @@ def apply_otb(path: Path, dry: bool) -> list[str]:
 
 
 def main() -> int:
+    global NEW_ITEMS
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--things", type=Path, action="append", default=[], help="carpeta con Tibia.dat y Tibia.spr (repetible)")
     ap.add_argument("--otb", type=Path, action="append", default=[], help="items.otb del servidor (repetible)")
     ap.add_argument("--candidates", action="store_true", help="listar client ids que se pueden sacrificar")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--only", type=int, nargs="+", help="instalar solo estos server ids (sin reconstruir otros assets)")
     a = ap.parse_args()
+    if a.only:
+        selected = set(a.only)
+        unknown = selected - {i["server_id"] for i in NEW_ITEMS}
+        if unknown:
+            raise SystemExit(f"server ids desconocidos: {sorted(unknown)}")
+        NEW_ITEMS = [i for i in NEW_ITEMS if i["server_id"] in selected]
     otbs = a.otb or [ROOT / "server/YurOTS/ots/data/items/items-zagan-test.otb"]
     if a.candidates:
         rows = candidates(ROOT / "devtools/rme/rme-client-760", otbs[0])

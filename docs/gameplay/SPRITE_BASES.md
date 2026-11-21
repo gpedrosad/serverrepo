@@ -75,7 +75,7 @@ Receta: [`SPRITE_RECOLOR_GUIDE.md`](SPRITE_RECOLOR_GUIDE.md).
 | 67 | 2x2 | Angry Stone Golem, Crucible Frostwarden, Enraged Stone Golem, Furious Stone Golem, Grorlam, Stone Golem | gray 81, dark 16 | `lake-custodian` |
 | 68 | 1x1 | Angry Vampire, Enraged Vampire, Furious Vampire, Vampire | dark 71, gray 17, orange 6 |  |
 | 69 | 1x1 | Angry Dwarf, Dwarf, Enraged Dwarf, Furious Dwarf | dark 42, orange 37, yellow 14 |  |
-| 70 | 1x1 | Angry Dwarf Guard, Dwarf Guard, Enraged Dwarf Guard, Furious Dwarf Guard | dark 46, orange 36, gray 14 |  |
+| 70 | 1x1 | Angry Dwarf Guard, Dwarf Guard, Enraged Dwarf Guard, Furious Dwarf Guard | dark 46, orange 36, gray 14 | `iron-foreman` |
 | 71 | 1x1 | Angry Dwarf Soldier, Dwarf Soldier, Enraged Dwarf Soldier, Furious Dwarf Soldier | dark 43, orange 22, red 13, blue 11, yellow 6 |  |
 | 72 | 2x2 | Angry Quara Pincher, Enraged Quara Pincher, Furious Quara Pincher, Quara Pincher | blue 43, dark 28, cyan 16, gray 12 |  |
 | 73 | 1x1 | Angry Hero, Enraged Hero, Furious Hero, Hero | orange 47, red 27, dark 16 | `imperial-hero`, `lord-of-elvenbane` |

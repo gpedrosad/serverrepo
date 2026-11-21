@@ -109,6 +109,8 @@
 <spell name="rootcolossus_spores" words="rootcolossus_spores" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="lakecustodian_pulse" words="lakecustodian_pulse" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="lakecustodian_shards" words="lakecustodian_shards" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="ironforeman_hammer" words="ironforeman_hammer" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="ironforeman_sparks" words="ironforeman_sparks" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="vamp_lifedrain" words="vamp_lifedrain" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="necro_lifedrain" words="necro_lifedrain" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="ghost_lifedrain" words="ghost_lifedrain" maglv="4000" mana="800" enabled="1"></spell>
