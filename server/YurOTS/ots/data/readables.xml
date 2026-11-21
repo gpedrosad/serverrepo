@@ -138,4 +138,13 @@
 	<!-- BEGIN DWARVEN_MINE_SIGNS (scripts/map/generate-dwarven-mine.py) -->
 	<readable x="194" y="60" z="7" text="MINA ENANA\nDwarfs y soldados arriba.\nGuardias, geomancers y el Capataz de Hierro al fondo."/>
 	<!-- END DWARVEN_MINE_SIGNS -->
+	<!-- BEGIN MUTATED_SEWERS_SIGNS (scripts/map/generate-mutated-sewers.py) -->
+	<readable x="169" y="53" z="8" text="ALCANTARILLA PROFUNDA\nNivel 8-20: ratas y slimes abajo.\nAl fondo: Alcantarilla Mutada (nivel 25-45)."/>
+	<!-- END MUTATED_SEWERS_SIGNS -->
+	<!-- BEGIN SPIDER_NEST_SIGNS (scripts/map/generate-spider-nest.py) -->
+	<readable x="103" y="79" z="7" text="NIDO DE SEDA NEGRA\nNivel 40-65.\nTarantulas al entrar; Giant Spiders y Wyverns al fondo."/>
+	<!-- END SPIDER_NEST_SIGNS -->
+	<!-- BEGIN BEHOLDER_CRYPT_SIGNS (scripts/map/generate-beholder-crypt.py) -->
+	<readable x="77" y="34" z="7" text="CRIPTA DE LOS OJOS\nNivel 30-65.\nGazers y Beholders al entrar; Vampires, Vampire Brides y Banshees al fondo."/>
+	<!-- END BEHOLDER_CRYPT_SIGNS -->
 </readables>
