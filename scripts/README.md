@@ -72,6 +72,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | `generate-epstein-cleanup.py` | Epstein Island: saca NPCs/tienda y el Oracle, y agrega el portal de salida al templo |
 | `curious-houses.py` | Tres casas flotantes comprables (Kongras, elfos, río), plataformas/pasarelas y registro/PZ; `--dry-run`, exige agua y conserva todos los pasos públicos y dueños previos |
 | `generate-petrified-sanctuary.py` / `render-petrified-sanctuary.py` | Santuario z9 bajo el lago élfico, accesos z7/z8, etapas de monstruos, guardas de conservación y vistas con sprites reales; `--dry-run` en el generador ([doc](../docs/gameplay/PETRIFIED_SANCTUARY.md)) |
+| `generate-dwarven-mine.py` / `dwarven_mine_layout.py` / `render-dwarven-mine.py` | Mina Enana z9/z10, túnel de acceso, estaciones, etapas de monstruos y forja; `--dry-run` y guardas de conservación ([doc](../docs/gameplay/DWARVEN_MINE.md)) |
 | `reshape-river-street.py` | River Street III–V: casas más cortas, patios, pasillos de tierra y puente de sogas de 1 casilla hasta el arco de los trolls (`--dry-run --png`; ver `docs/gameplay/HOUSES.md`) |
 | `arrange-mad-shop.py` | Tienda de Mad (z6 del Seller): 13 raros en el piso de Mad y el mostrador, fuera del alcance de los jugadores; valida con flood fill (`--replace`; ver `docs/items-and-map/MAPEAR_TIENDA_SELLER.md`) |
 | `generate-maze.py` | Laberinto Alice |

@@ -4,7 +4,7 @@
 > después de crear, borrar o spawnear un monstruo. Lee `monsters.xml`, los XML, `test-spawn.xml`, los presets
 > de sprites y la historia de git.
 
-224 monstruos (sin contar variantes rage): 137 originales de YurOTS, 44 traídos de 8.60 y 43 creados acá; además 312 variantes rage de 104 familias.
+225 monstruos (sin contar variantes rage): 137 originales de YurOTS, 44 traídos de 8.60 y 44 creados acá; además 312 variantes rage de 104 familias.
 
 - **Originales**: los 137 del `monsters.xml` del primer commit (`2491c60`, YurOTS 7.6).
 - **Traídos de 8.60**: sprite original de Tibia 8.60 (looks 20, 46–47, 72, 77, 93, 96–98, 161–184, 197–200,
@@ -20,13 +20,14 @@
   `mapa base` = fuera de esos bloques). No cuenta las variantes rage puestas a mano.
 - Para crear uno: [CUSTOM_MONSTER_WORKFLOW.md](CUSTOM_MONSTER_WORKFLOW.md).
 
-## Creados acá (43)
+## Creados acá (44)
 
 | Monstruo | Agregado | Vida | Exp | Sprite | Cadáver | En el mapa | Rage | Doc |
 |---|---|---|---|---|---|---|---|---|
 | **Ashen Lord** | 2026-11-11 | 32000 | 18000 | propio, look 239 (`ashen_lord.py`) | `20241` propio | 1: Hell Quest 1 | no | [HANGABLES](HANGABLES.md) |
 | **Black Dragon** | 2026-11-09 | 2600 | 2900 | propio, look 230 (`black_dragon.py`) | `20172` propio | 16: Beast Valley 10, Hell Quest 4, mapa base 1, Dragon Spot 1 | sí | [BLACK_DRAGON](BLACK_DRAGON.md) |
 | **Blue Elf Arcanist** | 2026-11-10 | 220 | 174 | look 63 | `20166` propio | 5: Epstein Hunts 4, Elf West 1 | sí | [BLUE_ELF_ARCANIST](BLUE_ELF_ARCANIST.md) |
+| **Capataz de Hierro** | 2026-11-20 | 1800 | 1250 | propio, look 189 (`iron_foreman.py`) | `2983` de 7.6 | 1: Dwarven Mine 1 | no | [DWARVEN_MINE](DWARVEN_MINE.md) |
 | **Court Mage** | 2026-11-12 | 650 | 520 | look 130 | `3128` de 7.6 | 7: Imperial Castle 3, Imperial Crypt 3, Mage Tower 1 | sí | [IMPERIAL_CASTLE](IMPERIAL_CASTLE.md) |
 | **Crucible Ashlord** | 2026-07-23 | 7200 | 6200 | look 39 | `2881` de 7.6 | sin spawn | no | [CRUCIBLE](CRUCIBLE.md) |
 | **Crucible Bloodreaver** | 2026-07-23 | 9800 | 8500 | look 35 | `2916` de 7.6 | sin spawn | no | [CRUCIBLE](CRUCIBLE.md) |
@@ -190,10 +191,10 @@ tiene el GM pasó a verse como el cadáver; se movió al 3216 y el 3236 volvió 
 | Dog | 20 | 0 | 32 | sin spawn | no |
 | Dragon | 1000 | 700 | 34 | 93 | sí |
 | Dragon Lord | 1900 | 2100 | 39 | 60 | sí |
-| Dwarf | 90 | 45 | 69 | 11 | sí |
-| Dwarf Geomancer | 380 | 245 | 66 | 2 | sí |
-| Dwarf Guard | 245 | 185 | 70 | 31 | sí |
-| Dwarf Soldier | 135 | 70 | 71 | 6 | sí |
+| Dwarf | 90 | 45 | 69 | 23 | sí |
+| Dwarf Geomancer | 380 | 245 | 66 | 13 | sí |
+| Dwarf Guard | 245 | 185 | 70 | 48 | sí |
+| Dwarf Soldier | 135 | 70 | 71 | 20 | sí |
 | Dworc Fleshhunter | 80 | 35 | 215 | 4 | no |
 | Dworc Venomsniper | 80 | 30 | 216 | 21 | no |
 | Dworc Voodoomaster | 250 | 100 | 214 | 6 | no |
