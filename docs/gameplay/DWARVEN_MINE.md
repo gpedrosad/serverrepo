@@ -94,5 +94,21 @@ nodos OTB anteriores idénticos. Sintaxis Python/Lua y registros del jefe revisa
 
 Por indicación del usuario no se levantaron clientes, instancias ni suites de pruebas.
 Las imágenes son renders nativos con los spawns del mapa, **no capturas in-game**.
-**Deploy pendiente:** publicar DAT/SPR y minimapa antes de activar mapa/monstruo siguiendo
-`THINKPAD_TEST_SERVER.md`. Este cambio no se desplegó en la ThinkPad; combate y depot in-game pendientes.
+
+## Deploy — 20 nov 2026
+
+Desplegado con **`ffddbe8`**: mina completa y exterior restaurado a pasto, sin rieles,
+tablones, vagoneta ni apoyo suelto en superficie. Cliente **`619b808`**, publicado y
+pusheado antes del reinicio: DAT `0072e657`, SPR `06373f1c`, minimapa `cee65316`.
+774 entradas; los tres archivos coinciden en HTTP 8080/8076 y ambos ZIP de descarga.
+
+Respaldo `~/backups/pre-deploy-20261120-223916-dwarven-mine`, con copia fresca tras
+server-save y antes del restart -t45. ff-merge sin solapar cambios locales de config
+ni plantillas de casas. Sin rebuild: binario y configuración idénticos al respaldo.
+Guardado ordenado, mapa cargado en **0,858 s**, arranque sin errores/warnings,
+probe OK, healthy y cero reinicios automáticos. **1 cuenta, 8 personajes y 35 archivos
+de casas** preservados; depots, dueños, houseitems y padrinazgos cotejados contra el save.
+Las comparaciones de snapshots XML se normalizan a JSON en ambos lados (listas/tuplas).
+Sin suites ni cliente in-game por pedido previo del usuario; balance y apertura visual
+de depot pendientes. Reabrir el cliente para cargar los assets nuevos.
+
