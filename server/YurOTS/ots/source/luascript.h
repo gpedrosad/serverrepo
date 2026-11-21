@@ -103,6 +103,12 @@ public:
 	int POWERHIT_CHANCE;
 	// Aviso a todo el server de un raro (docs/gameplay/LEVEL_UP_REWARDS.md): chance base máxima (de 100000).
 	int RARE_LOOT_BROADCAST_CHANCE;
+	// Exp compartida y bonus en party (docs/gameplay/PARTY_EXP.md).
+	int PARTY_EXP_RANGE;
+	int PARTY_EXP_FLOOR_DIFF;
+	int PARTY_EXP_BONUS_2;
+	int PARTY_EXP_BONUS_3;
+	int PARTY_EXP_BONUS_4;
 	int POWERHIT_DAMAGE;
 	int MEGAHIT_CHANCE;
 	int MEGAHIT_DAMAGE;

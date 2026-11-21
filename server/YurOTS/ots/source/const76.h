@@ -358,6 +358,7 @@ enum bloodcolor_t // for dmg string
 	COLOR_BLUE = 2,
 	COLOR_RED = 180,
 	COLOR_GREEN = 50,
+	COLOR_PARTY_EXP = 35,
 };
 
 enum bloodeffect_t //like draw_blood, or hit_area etc

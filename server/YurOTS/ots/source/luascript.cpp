@@ -157,6 +157,11 @@ int LuaScript::OpenFile(const char *filename)
 
 	POWERHIT_CHANCE = getGlobalNumber("powerhitchance", 80);
 	RARE_LOOT_BROADCAST_CHANCE = getGlobalNumber("rarelootbroadcastchance", 500);
+	PARTY_EXP_RANGE = getGlobalNumber("partyexprange", 30);
+	PARTY_EXP_FLOOR_DIFF = getGlobalNumber("partyexpfloordiff", 1);
+	PARTY_EXP_BONUS_2 = getGlobalNumber("partyexpbonus2", 25);
+	PARTY_EXP_BONUS_3 = getGlobalNumber("partyexpbonus3", 50);
+	PARTY_EXP_BONUS_4 = getGlobalNumber("partyexpbonus4", 75);
 	POWERHIT_DAMAGE = getGlobalNumber("powerhitdamage", 150);
 	MEGAHIT_CHANCE = getGlobalNumber("megahitchance", 10);
 	MEGAHIT_DAMAGE = getGlobalNumber("megahitdamage", 250);

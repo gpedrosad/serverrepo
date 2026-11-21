@@ -1398,6 +1398,74 @@ static std::string formatLootItemName(unsigned short itemId, const std::string& 
 	return styledName;
 }
 
+// Exp compartida y bonus en party cuando hay >= 2 miembros vivos cerca del monstruo (docs/gameplay/PARTY_EXP.md).
+static exp_t applyMonsterExpRates(const Player* player, exp_t rawExp)
+{
+	if(rawExp <= 0)
+		return 0;
+	exp_t result = rawExp * g_config.EXP_MUL;
+	if(player) {
+		result = rawExp * g_config.getExpMulForLevel(player->level);
+		if(player->isPremium() && g_config.PREMMY_EXP_BONUS > 0)
+			result = result * (100 + g_config.PREMMY_EXP_BONUS) / 100;
+	}
+	return result;
+}
+
+static int getPartyExpBonusPercent(int nearbyCount)
+{
+	if(nearbyCount >= 4) return g_config.PARTY_EXP_BONUS_4;
+	if(nearbyCount == 3) return g_config.PARTY_EXP_BONUS_3;
+	if(nearbyCount == 2) return g_config.PARTY_EXP_BONUS_2;
+	return 0;
+}
+
+static std::vector<Player*> getNearbyPartyMembers(unsigned long partyId, const Position& center)
+{
+	std::vector<Player*> members;
+	if(partyId == 0)
+		return members;
+	for(AutoList<Player>::listiterator it = Player::listPlayer.list.begin(); it != Player::listPlayer.list.end(); ++it) {
+		Player* p = it->second;
+		if(!p || p->isRemoved || p->health <= 0 || p->party != partyId)
+			continue;
+		if(std::abs(p->pos.x - center.x) <= g_config.PARTY_EXP_RANGE &&
+		   std::abs(p->pos.y - center.y) <= g_config.PARTY_EXP_RANGE &&
+		   std::abs(p->pos.z - center.z) <= g_config.PARTY_EXP_FLOOR_DIFF) {
+			members.push_back(p);
+		}
+	}
+	return members;
+}
+
+static void recordExpAward(Game* game, Creature* recipient, exp_t baseExp, exp_t partyBonusExp,
+                           Monster* slainMonster, SpectatorVec& spectatorlist, CreatureState* attackedCreatureState)
+{
+	if(!recipient || (baseExp <= 0 && partyBonusExp <= 0))
+		return;
+	Player* gainExpPlayer = dynamic_cast<Player*>(recipient);
+	if(gainExpPlayer) {
+		gainExpPlayer->addExp(baseExp + partyBonusExp);
+		if(slainMonster) {
+			MonsterType* slainType = slainMonster->getMonsterType();
+			if(slainType && !slainType->trainer)
+				gainExpPlayer->tryProgressDailyTask(slainMonster->getName());
+		}
+	}
+	SpectatorVec nearSpec;
+	game->getSpectators(Range(recipient->pos, true), nearSpec);
+	for(SpectatorVec::const_iterator cit = nearSpec.begin(); cit != nearSpec.end(); ++cit) {
+		if(std::find(spectatorlist.begin(), spectatorlist.end(), *cit) == spectatorlist.end()) {
+			spectatorlist.push_back(*cit);
+		}
+	}
+	ExpGainDisplay disp;
+	disp.creature = recipient;
+	disp.baseExp = baseExp;
+	disp.partyBonusExp = partyBonusExp;
+	attackedCreatureState->expGains.push_back(disp);
+}
+
 void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* attackedCreature, int64_t damage, bool drawBlood)
 {
 	Player *attackedplayer = dynamic_cast<Player*>(attackedCreature);
@@ -1595,37 +1663,58 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 		}
 
 		if(attackedCreatureState) { //should never be NULL..
-			//Add experience
+			//Add experience (con exp compartida + bonus para parties con >= 2 miembros cerca)
+			const int totalDamage = attackedCreature->getTotalInflictedDamage();
+			const exp_t lostExp = attackedCreature->getLostExperience();
+			std::map<unsigned long, int> partyDamage;
+			std::map<unsigned long, std::vector<Player*> > partyAttackers;
 			for(std::vector<long>::const_iterator iit = creaturelist.begin(); iit != creaturelist.end(); ++iit) {
 				Creature* gainExpCreature = game->getCreatureByID(*iit);
-				if(gainExpCreature) {
-					exp_t gainedExperience = attackedCreature->getGainedExperience(gainExpCreature);
-					if(gainedExperience <= 0)
+				if(!gainExpCreature)
+					continue;
+				Player* gainExpPlayer = dynamic_cast<Player*>(gainExpCreature);
+				if(slainMonster && totalDamage > 0 && lostExp > 0 && gainExpPlayer && gainExpPlayer->party != 0) {
+					int dmg = attackedCreature->getInflicatedDamage(gainExpCreature);
+					if(dmg > 0) {
+						partyDamage[gainExpPlayer->party] += dmg;
+						partyAttackers[gainExpPlayer->party].push_back(gainExpPlayer);
+					}
+					continue;
+				}
+				exp_t gainedExperience = attackedCreature->getGainedExperience(gainExpCreature);
+				if(gainedExperience <= 0)
+					continue;
+				recordExpAward(game, gainExpCreature, gainedExperience, 0, slainMonster, spectatorlist, attackedCreatureState);
+			}
+			for(std::map<unsigned long, int>::const_iterator pit = partyDamage.begin(); pit != partyDamage.end(); ++pit) {
+				unsigned long partyId = pit->first;
+				int pDmg = pit->second;
+				std::vector<Player*> nearby = getNearbyPartyMembers(partyId, CreaturePos);
+				if(nearby.size() >= 2) {
+					exp_t partyRawPool = (exp_t)pDmg * lostExp / totalDamage;
+					if(partyRawPool <= 0)
 						continue;
-
-					Player *gainExpPlayer = dynamic_cast<Player*>(gainExpCreature);
-
-					if(gainExpPlayer) {
-						gainExpPlayer->addExp(gainedExperience);
-						if(slainMonster) {
-							MonsterType* slainType = slainMonster->getMonsterType();
-							if(slainType && !slainType->trainer)
-								gainExpPlayer->tryProgressDailyTask(slainMonster->getName());
-						}
+					exp_t rawShare = partyRawPool / (exp_t)nearby.size();
+					if(rawShare <= 0)
+						rawShare = 1;
+					int bonusPct = getPartyExpBonusPercent((int)nearby.size());
+					for(std::vector<Player*>::const_iterator mit = nearby.begin(); mit != nearby.end(); ++mit) {
+						Player* member = *mit;
+						exp_t baseExp = applyMonsterExpRates(member, rawShare);
+						exp_t bonusExp = (bonusPct > 0 && baseExp > 0) ? (baseExp * bonusPct) / 100 : 0;
+						if(bonusPct > 0 && baseExp > 0 && bonusExp == 0)
+							bonusExp = 1;
+						recordExpAward(game, member, baseExp, bonusExp, slainMonster, spectatorlist, attackedCreatureState);
 					}
-
-					//Need to add this creature and all that can see it to spectators, unless they already added
-					SpectatorVec creaturelist;
-					game->getSpectators(Range(gainExpCreature->pos, true), creaturelist);
-
-					for(SpectatorVec::const_iterator cit = creaturelist.begin(); cit != creaturelist.end(); ++cit) {
-						if(std::find(spectatorlist.begin(), spectatorlist.end(), *cit) == spectatorlist.end()) {
-							spectatorlist.push_back(*cit);
-						}
+				}
+				else {
+					const std::vector<Player*>& attackers = partyAttackers[partyId];
+					for(std::vector<Player*>::const_iterator ait = attackers.begin(); ait != attackers.end(); ++ait) {
+						Player* member = *ait;
+						exp_t baseExp = attackedCreature->getGainedExperience(member);
+						if(baseExp > 0)
+							recordExpAward(game, member, baseExp, 0, slainMonster, spectatorlist, attackedCreatureState);
 					}
-
-					//Add creature to attackerlist
-					attackedCreatureState->attackerlist.push_back(gainExpCreature);
 				}
 			}
 		}
@@ -4350,15 +4439,16 @@ bool Game::creatureMakeMagic(Creature *creature, const Position& centerpos, cons
 						//could be death due to a magic damage with no owner (fire/poison/energy)
 						if(creature && target->isRemoved == true) {
 
-							for(std::vector<Creature*>::const_iterator cit = creatureState.attackerlist.begin(); cit != creatureState.attackerlist.end(); ++cit) {
-								Creature* gainExpCreature = *cit;
+							for(std::vector<ExpGainDisplay>::const_iterator cit = creatureState.expGains.begin(); cit != creatureState.expGains.end(); ++cit) {
+								Creature* gainExpCreature = cit->creature;
 								if(dynamic_cast<Player*>(gainExpCreature))
 									dynamic_cast<Player*>(gainExpCreature)->sendStats();
 
 								if(spectator->CanSee(gainExpCreature->pos.x, gainExpCreature->pos.y, gainExpCreature->pos.z)) {
-									std::stringstream exp;
-									exp << target->getGainedExperience(gainExpCreature);
-									spectator->sendAnimatedText(gainExpCreature->pos, 0xD7, exp.str());
+									if(cit->baseExp > 0)
+										spectator->sendAnimatedText(gainExpCreature->pos, 0xD7, str(cit->baseExp));
+									if(cit->partyBonusExp > 0)
+										spectator->sendAnimatedText(gainExpCreature->pos, COLOR_PARTY_EXP, "+" + str(cit->partyBonusExp));
 								}
 							}
 
@@ -4674,14 +4764,16 @@ void Game::creatureMakeDamage(Creature *creature, Creature *attackedCreature, fi
 				spectator->sendMagicEffect(attackedCreature->pos, NM_ME_BLOCKHIT);
 		}
 		else {
-			for(std::vector<Creature*>::const_iterator cit = creatureState.attackerlist.begin(); cit != creatureState.attackerlist.end(); ++cit) {
-				Creature* gainexpCreature = *cit;
+			for(std::vector<ExpGainDisplay>::const_iterator cit = creatureState.expGains.begin(); cit != creatureState.expGains.end(); ++cit) {
+				Creature* gainexpCreature = cit->creature;
 				if(dynamic_cast<Player*>(gainexpCreature))
 					dynamic_cast<Player*>(gainexpCreature)->sendStats();
 
 				if(spectator->CanSee(gainexpCreature->pos.x, gainexpCreature->pos.y, gainexpCreature->pos.z)) {
-					spectator->sendAnimatedText(gainexpCreature->pos, 0xD7,
-						str(attackedCreature->getGainedExperience(gainexpCreature)));
+					if(cit->baseExp > 0)
+						spectator->sendAnimatedText(gainexpCreature->pos, 0xD7, str(cit->baseExp));
+					if(cit->partyBonusExp > 0)
+						spectator->sendAnimatedText(gainexpCreature->pos, COLOR_PARTY_EXP, "+" + str(cit->partyBonusExp));
 				}
 			}
 

@@ -60,6 +60,12 @@ enum eLightState{
   * Keeps track of all the changes to be able to send to the client
 	*/
 
+struct ExpGainDisplay {
+	Creature* creature;
+	exp_t baseExp;
+	exp_t partyBonusExp;
+};
+
 class CreatureState {
 public:
 	CreatureState() {};
@@ -68,7 +74,7 @@ public:
 	int64_t damage;
 	int64_t manaDamage;
 	bool drawBlood;
-	std::vector<Creature*> attackerlist;
+	std::vector<ExpGainDisplay> expGains;
 };
 
 typedef std::vector< std::pair<Creature*, CreatureState> > CreatureStateVec;

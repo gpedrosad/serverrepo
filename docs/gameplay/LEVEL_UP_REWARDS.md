@@ -4,6 +4,7 @@ Desde el 20 nov 2026, para que subir de nivel y encontrar un raro se note y den 
 
 | Qué | Cómo |
 |-----|------|
+| Vida y maná al máximo | Al subir de nivel (si el personaje está vivo) se rellenan `health` y `mana` a `healthmax` y `manamax`, y se actualiza la barra de vida para los que están cerca. |
 | Efecto al subir | Columna de luz dorada que sube desde los pies, estrella y confeti de colores (`NM_ME_LEVEL_UP`, efecto **50**), y el texto **LEVEL UP** en amarillo. Lo ven todos los que están cerca. |
 | Regalo por nivel | Una caja por cada nivel nuevo, del rango del nivel alcanzado. Se abre con "Use": da oro, un ítem o, con suerte, un raro. |
 | Aviso de raro de un regalo | "Fulano opened a veteran gift and found boots of haste!" a todo el server, en el centro de la pantalla. |
@@ -71,7 +72,7 @@ Si quien mata es un GM, no se avisa: los GMs prueban loot.
 
 | Dónde | Qué |
 |-------|-----|
-| `player.cpp` `Player::addExp` → `onLevelAdvance` | Efecto 50 y "LEVEL UP" a los que ven la casilla; cajas por nivel nuevo (storage 9400, tope 20). |
+| `player.cpp` `Player::addExp` → `onLevelAdvance` | Relleno de HP y maná al máximo (si `health > 0`), `sendCreatureHealth` a espectadores, efecto 50 y "LEVEL UP" a los que ven la casilla; cajas por nivel nuevo (storage 9400, tope 20). |
 | `const76.h` | `NM_ME_LEVEL_UP = 50`. En Lua: `NM_ME_LEVEL_UP` en `data/spells/lib/spells.lua`. |
 | `game.cpp` `isBroadcastRareLoot` / `broadcastRareLoot` | Aviso de raro al morir el monstruo (también queda en `server.log` con `[rare]`). |
 | `monsters.cpp` `MonsterType::getLootChance` | Chance base más baja con la que el monstruo suelta el ítem (también dentro de bolsas del loot). |

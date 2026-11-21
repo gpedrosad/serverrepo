@@ -2005,16 +2005,24 @@ void Player::addExp(exp_t exp)
 {
 	this->experience += exp;
 	int lastLv = this->level;
+	const bool alive = (this->health > 0);
 	while (this->experience >= this->getExpForLv(this->level+1)) {
 		this->level++;
 		this->healthmax += g_config.HP_GAIN[(int)vocation];
-		this->health += g_config.HP_GAIN[(int)vocation];
+		if(alive)
+			this->health += g_config.HP_GAIN[(int)vocation];
 		this->manamax += g_config.MANA_GAIN[(int)vocation];
 		this->mana += g_config.MANA_GAIN[(int)vocation];
 		this->capacity += g_config.CAP_GAIN[(int)vocation];
 	}
 	if(lastLv != this->level)
 	{
+		if(this->level > lastLv && alive) {
+			if(this->health < this->healthmax)
+				this->health = this->healthmax;
+			if(this->mana < this->manamax)
+				this->mana = this->manamax;
+		}
 		this->setNormalSpeed();
 		g_game.changeSpeed(this->getID(), this->getSpeed());
 		std::stringstream lvMsg;
@@ -2050,8 +2058,10 @@ void Player::onLevelAdvance(int fromLevel)
 	g_game.sendMagicEffect(pos, NM_ME_LEVEL_UP);
 	for(AutoList<Player>::listiterator it = Player::listPlayer.list.begin(); it != Player::listPlayer.list.end(); ++it) {
 		Player* spectator = it->second;
-		if(spectator && spectator->CanSee(pos.x, pos.y, pos.z))
+		if(spectator && spectator->CanSee(pos.x, pos.y, pos.z)) {
+			spectator->sendCreatureHealth(this);
 			spectator->sendAnimatedText(pos, 210, "LEVEL UP");
+		}
 	}
 
 	if(access > 0)
