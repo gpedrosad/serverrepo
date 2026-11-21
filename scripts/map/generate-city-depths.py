@@ -141,6 +141,7 @@ def runs_of(cells) -> list:
 
 
 PREVIOUS: dict = {}
+RESERVED: set = set()  # accesos/techo de la Mina Enana, escritos por otro generador
 
 
 def ownership(z: int, world: dict):
@@ -154,6 +155,10 @@ def ownership(z: int, world: dict):
         for y in range(y1 - VIEW[1] - 2, y2 + VIEW[1] + 3):
             in_old = (o[0] <= x <= o[2] and o[1] <= y <= o[3]) or (x, y) in prev
             has = (x, y, z) in world
+            if (x, y, z) in RESERVED:
+                if has:
+                    foreign.add((x, y))
+                continue
             if x1 <= x <= x2 and y1 <= y <= y2 and (in_old or not has):
                 own.add((x, y))
             elif has:
@@ -363,7 +368,8 @@ def build(world: dict, bl: Blocking, rng: random.Random, errors: list):
         o = FLOORS[z]["old"]
         near = {(x + dx, y + dy) for (x, y) in floor for dx in range(-VIEW[0] - 1, VIEW[0] + 2)
                 for dy in range(-VIEW[1] - 1, VIEW[1] + 2)}
-        write = (near & own) | {(x, y) for x in range(o[0], o[2] + 1) for y in range(o[1], o[3] + 1)}
+        write = ((near & own) | {(x, y) for x in range(o[0], o[2] + 1) for y in range(o[1], o[3] + 1)}) - {
+            (x, y) for x, y, rz in RESERVED if rz == z}
         tiles = {c: [ground_for(c, floor, nz, FLOORS[z]["mud"])] for c in write}
         tiles[start].append(LADDER)
         if hole:
@@ -496,6 +502,9 @@ def main() -> int:
     root = parse_tree(raw)
     world = {(x, y, z): items for x, y, z, items in iter_tiles(root)}
     PREVIOUS.update(written_before())
+    mine = MAP.parent / "generated-dwarven-mine.json"
+    if mine.exists():
+        RESERVED.update(tuple(map(int, p.split(","))) for p in json.loads(mine.read_text())["cells"])
     rng = random.Random(4711)
     errors: list[str] = []
     floors = build(world, bl, rng, errors)
