@@ -288,6 +288,8 @@ public:
 	  Position getThingMapPos(Player *player, const Position &pos);
 	  ReturnValue canThrowObjectTo(const Position& from, const Position& to, int objectstate = BLOCK_PROJECTILE);
 	  void sendMagicEffect(const Position& pos, unsigned char type);
+	  // Acceso publico a getSpectators para funciones libres (feedback de curacion en spells.cpp)
+	  void getSpectatorsInRange(const Range& range, SpectatorVec& list) { getSpectators(range, list); }
 
 	  void sendAddThing(Player* player,const Position &pos,const Thing* thing);
 	  void sendRemoveThing(Player* player,const Position &pos,const Thing* thing,const unsigned char stackpos = 1,const bool autoclose = false);

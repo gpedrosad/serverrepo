@@ -120,7 +120,7 @@ void sendSpellAnimatedText(Game* game, const Position& pos, unsigned char color,
 	if(!game || text.empty())
 		return;
 	SpectatorVec list;
-	game->getSpectators(Range(pos, true), list);
+	game->getSpectatorsInRange(Range(pos, true), list);
 	for(SpectatorVec::iterator it = list.begin(); it != list.end(); ++it) {
 		Player* p = dynamic_cast<Player*>(*it);
 		if(p && p->CanSee(pos.x, pos.y, pos.z))
@@ -138,7 +138,7 @@ void sendSpellHealFeedback(Game* game, Creature* caster, Creature* target, int64
 	sendSpellAnimatedText(game, target->pos, COLOR_SPELL_HEAL, anim.str());
 
 	SpectatorVec list;
-	game->getSpectators(Range(target->pos, true), list);
+	game->getSpectatorsInRange(Range(target->pos, true), list);
 	for(SpectatorVec::iterator it = list.begin(); it != list.end(); ++it) {
 		Player* p = dynamic_cast<Player*>(*it);
 		if(p && p->CanSee(target->pos.x, target->pos.y, target->pos.z))
