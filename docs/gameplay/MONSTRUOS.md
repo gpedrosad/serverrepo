@@ -4,7 +4,7 @@
 > después de crear, borrar o spawnear un monstruo. Lee `monsters.xml`, los XML, `test-spawn.xml`, los presets
 > de sprites y la historia de git.
 
-223 monstruos (sin contar variantes rage): 137 originales de YurOTS, 44 traídos de 8.60 y 42 creados acá; además 312 variantes rage de 104 familias.
+224 monstruos (sin contar variantes rage): 137 originales de YurOTS, 44 traídos de 8.60 y 43 creados acá; además 312 variantes rage de 104 familias.
 
 - **Originales**: los 137 del `monsters.xml` del primer commit (`2491c60`, YurOTS 7.6).
 - **Traídos de 8.60**: sprite original de Tibia 8.60 (looks 20, 46–47, 72, 77, 93, 96–98, 161–184, 197–200,
@@ -20,7 +20,7 @@
   `mapa base` = fuera de esos bloques). No cuenta las variantes rage puestas a mano.
 - Para crear uno: [CUSTOM_MONSTER_WORKFLOW.md](CUSTOM_MONSTER_WORKFLOW.md).
 
-## Creados acá (42)
+## Creados acá (43)
 
 | Monstruo | Agregado | Vida | Exp | Sprite | Cadáver | En el mapa | Rage | Doc |
 |---|---|---|---|---|---|---|---|---|
@@ -35,6 +35,7 @@
 | **Crucible Ironhide** | 2026-07-23 | 9000 | 7200 | look 55 | `2931` de 7.6 | sin spawn | no | [CRUCIBLE](CRUCIBLE.md) |
 | **Crucible Stormcaller** | 2026-07-23 | 7600 | 7400 | look 80 | `3001` de 7.6 | sin spawn | no | [CRUCIBLE](CRUCIBLE.md) |
 | **Crucible Venomqueen** | 2026-07-23 | 7800 | 7000 | look 38 | `2857` de 7.6 | sin spawn | no | [CRUCIBLE](CRUCIBLE.md) |
+| **Custodio del Lago** | 2026-11-20 | 3300 | 2400 | propio, look 229 (`lake_custodian.py`) | `2952` de 7.6 | 1: Petrified Sanctuary 1 | no | [PETRIFIED_SANCTUARY](PETRIFIED_SANCTUARY.md) |
 | **Dark Hydra** | 2026-11-12 | 3200 | 3000 | propio, look 241 (`dark_hydra.py`) | `20229` propio | 13: Dark Hydra Isle 6, Beast Valley 5, mapa base 1, City Depths 1 | sí | [DARK_HYDRA](DARK_HYDRA.md) |
 | **Dark Mage** | 2026-11-17 | 5200 | 8000 | look 133 | `3128` de 7.6 | 1: Mage Tower 1 | no | [MAPEAR_TORRE_MAGO](../items-and-map/MAPEAR_TORRE_MAGO.md) |
 | **Drowned Sailor** | 2026-11-10 | 520 | 280 | propio, look 233 (`drowned_sailor.py`) | `20169` propio | 12: Epstein Hunts 10, Bridge Tower 2 | sí | [DROWNED_SAILOR](DROWNED_SAILOR.md) |
@@ -80,7 +81,7 @@
 | **Chakoya Toolshaper** | 2026-11-13 | 80 | 40 | look 162 (8.60) | `20243` propio (compartido) | 3: Frozen Isle 2, Glacier Reach 1 | sí | [IMPORTAR_CRIATURA_DE_OTRA_VERSION](IMPORTAR_CRIATURA_DE_OTRA_VERSION.md) |
 | **Chakoya Tribewarden** | 2026-11-13 | 68 | 40 | look 161 (8.60) | `20243` propio (compartido) | 4: Frozen Isle 2, Glacier Reach 2 | sí | [IMPORTAR_CRIATURA_DE_OTRA_VERSION](IMPORTAR_CRIATURA_DE_OTRA_VERSION.md) |
 | **Chakoya Windcaller** | 2026-11-13 | 84 | 48 | look 163 (8.60) | `20243` propio (compartido) | 3: Frozen Isle 2, Glacier Reach 1 | sí | [IMPORTAR_CRIATURA_DE_OTRA_VERSION](IMPORTAR_CRIATURA_DE_OTRA_VERSION.md) |
-| **Crystal Spider** | 2026-11-13 | 1250 | 900 | look 172 (8.60) | `20246` propio | 5: Glacier Reach 3, Frozen Isle 2 | sí | [IMPORTAR_CRIATURA_DE_OTRA_VERSION](IMPORTAR_CRIATURA_DE_OTRA_VERSION.md) |
+| **Crystal Spider** | 2026-11-13 | 1250 | 900 | look 172 (8.60) | `20246` propio | 15: Petrified Sanctuary 10, Glacier Reach 3, Frozen Isle 2 | sí | [IMPORTAR_CRIATURA_DE_OTRA_VERSION](IMPORTAR_CRIATURA_DE_OTRA_VERSION.md) |
 | **Cyclops Drone** | 2026-11-13 | 325 | 200 | look 175 (8.60) | `20182` propio (compartido) | 13: Forgotten Pit 7, Beast Valley 6 | sí | [IMPORTAR_CRIATURA_DE_OTRA_VERSION](IMPORTAR_CRIATURA_DE_OTRA_VERSION.md) |
 | **Cyclops Smith** | 2026-11-13 | 435 | 255 | look 176 (8.60) | `20182` propio (compartido) | 16: Forgotten Pit 12, Beast Valley 4 | sí | [IMPORTAR_CRIATURA_DE_OTRA_VERSION](IMPORTAR_CRIATURA_DE_OTRA_VERSION.md) |
 | **Dragon Hatchling** | 2026-11-13 | 380 | 185 | look 246 (8.60) | `3104` de 7.6 | 15: Epstein Hunts 5, Natural Island 5, Beast Valley 5 | no | [IMPORTAR_CRIATURA_DE_OTRA_VERSION](IMPORTAR_CRIATURA_DE_OTRA_VERSION.md) |
@@ -207,7 +208,7 @@ tiene el GM pasó a verse como el cadáver; se movió al 3216 y el 3236 volvió 
 | Fire Elemental | 280 | 220 | 49 | 65 | no |
 | Flamingo | 25 | 0 | 212 | 1 | no |
 | Frost Troll | 55 | 23 | 53 | 40 | no |
-| Gargoyle | 250 | 150 | 95 | 6 | sí |
+| Gargoyle | 250 | 150 | 95 | 12 | sí |
 | Gazer | 250 | 120 | 109 | 2 | no |
 | Ghost | 150 | 120 | 48 | 16 | no |
 | Ghoul | 100 | 85 | 18 | 36 | sí |
@@ -271,7 +272,7 @@ tiene el GM pasó a verse como el cadáver; se movió al 3216 y el 3236 volvió 
 | Spider | 20 | 12 | 30 | 11 | no |
 | Spit Nettle | 150 | 25 | 221 | 2 | no |
 | Stalker | 150 | 90 | 128 | 4 | no |
-| Stone Golem | 270 | 160 | 67 | 9 | sí |
+| Stone Golem | 270 | 160 | 67 | 20 | sí |
 | Swamp Troll | 55 | 25 | 76 | 3 | no |
 | Tarantula | 225 | 120 | 219 | 30 | no |
 | Terror Bird | 300 | 150 | 218 | 3 | no |

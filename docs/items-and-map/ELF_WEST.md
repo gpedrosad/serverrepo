@@ -107,3 +107,10 @@ pasarelas, y calcula la costa usando el agua bajo las plataformas. No retira
 bordes al ver madera flotante junto a la isla. El reporte excluye el ancla
 reservada de la pasarela (109 casillas), sin cortar el recorrido público.
 La casa está aplicada en el repo, pendiente de deploy.
+
+## Santuario bajo el lago — 20 nov 2026
+
+La orilla sur tiene una entrada en `94,74,7` al
+[Santuario Petrificado](../gameplay/PETRIFIED_SANCTUARY.md), con antesala z8 y galerías z9.
+El generador reserva sus cinco tiles de superficie para conservar boca, llegada y cartel.
+No usa la casa flotante ni cambia los cuatro spawns élficos.

@@ -6080,4 +6080,74 @@
 		<monster name="Undead Gladiator" x="0" y="1" z="7" spawntime="210" />
 	</spawn>
 	<!-- END EPSTEIN_ROAD -->
+	<!-- BEGIN PETRIFIED_SANCTUARY_SPAWNS (scripts/map/generate-petrified-sanctuary.py) -->
+	<spawn centerx="55" centery="79" centerz="9" radius="3">
+		<monster name="Gargoyle" x="-1" y="-2" z="9" spawntime="120" />
+	</spawn>
+	<spawn centerx="81" centery="76" centerz="9" radius="3">
+		<monster name="Gargoyle" x="0" y="-1" z="9" spawntime="120" />
+	</spawn>
+	<spawn centerx="42" centery="77" centerz="9" radius="3">
+		<monster name="Gargoyle" x="1" y="-2" z="9" spawntime="120" />
+	</spawn>
+	<spawn centerx="68" centery="80" centerz="9" radius="3">
+		<monster name="Gargoyle" x="2" y="0" z="9" spawntime="120" />
+	</spawn>
+	<spawn centerx="24" centery="75" centerz="9" radius="3">
+		<monster name="Gargoyle" x="2" y="2" z="9" spawntime="145" />
+	</spawn>
+	<spawn centerx="29" centery="61" centerz="9" radius="3">
+		<monster name="Stone Golem" x="-2" y="-1" z="9" spawntime="145" />
+	</spawn>
+	<spawn centerx="32" centery="80" centerz="9" radius="3">
+		<monster name="Gargoyle" x="1" y="-1" z="9" spawntime="145" />
+	</spawn>
+	<spawn centerx="67" centery="57" centerz="9" radius="3">
+		<monster name="Stone Golem" x="0" y="1" z="9" spawntime="170" />
+		<monster name="Stone Golem" x="0" y="0" z="9" spawntime="170" />
+	</spawn>
+	<spawn centerx="47" centery="61" centerz="9" radius="3">
+		<monster name="Stone Golem" x="-1" y="1" z="9" spawntime="170" />
+		<monster name="Stone Golem" x="2" y="1" z="9" spawntime="170" />
+	</spawn>
+	<spawn centerx="58" centery="60" centerz="9" radius="3">
+		<monster name="Stone Golem" x="-1" y="-2" z="9" spawntime="170" />
+		<monster name="Stone Golem" x="-1" y="-1" z="9" spawntime="170" />
+	</spawn>
+	<spawn centerx="37" centery="57" centerz="9" radius="3">
+		<monster name="Stone Golem" x="1" y="2" z="9" spawntime="170" />
+		<monster name="Stone Golem" x="-2" y="0" z="9" spawntime="170" />
+	</spawn>
+	<spawn centerx="85" centery="56" centerz="9" radius="3">
+		<monster name="Stone Golem" x="1" y="1" z="9" spawntime="200" />
+	</spawn>
+	<spawn centerx="79" centery="43" centerz="9" radius="3">
+		<monster name="Crystal Spider" x="2" y="1" z="9" spawntime="200" />
+	</spawn>
+	<spawn centerx="89" centery="40" centerz="9" radius="3">
+		<monster name="Stone Golem" x="-2" y="-1" z="9" spawntime="200" />
+	</spawn>
+	<spawn centerx="74" centery="62" centerz="9" radius="3">
+		<monster name="Crystal Spider" x="-1" y="-1" z="9" spawntime="200" />
+	</spawn>
+	<spawn centerx="66" centery="39" centerz="9" radius="3">
+		<monster name="Crystal Spider" x="2" y="1" z="9" spawntime="240" />
+		<monster name="Crystal Spider" x="0" y="1" z="9" spawntime="240" />
+	</spawn>
+	<spawn centerx="36" centery="39" centerz="9" radius="3">
+		<monster name="Crystal Spider" x="2" y="0" z="9" spawntime="240" />
+		<monster name="Crystal Spider" x="1" y="2" z="9" spawntime="240" />
+	</spawn>
+	<spawn centerx="47" centery="44" centerz="9" radius="3">
+		<monster name="Crystal Spider" x="2" y="-1" z="9" spawntime="240" />
+		<monster name="Crystal Spider" x="-1" y="-2" z="9" spawntime="240" />
+	</spawn>
+	<spawn centerx="56" centery="41" centerz="9" radius="3">
+		<monster name="Crystal Spider" x="-2" y="-1" z="9" spawntime="240" />
+		<monster name="Crystal Spider" x="-2" y="0" z="9" spawntime="240" />
+	</spawn>
+	<spawn centerx="24" centery="41" centerz="9" radius="3">
+		<monster name="Custodio del Lago" x="0" y="0" z="9" spawntime="900" />
+	</spawn>
+	<!-- END PETRIFIED_SANCTUARY_SPAWNS -->
 </spawns>
