@@ -4,147 +4,147 @@
 <readable x="131" y="53" z="7" text="depots are upstairs"/>
 <readable x="141" y="51" z="6" text="some\nmulti\nline\ntext"/>
 	<!-- BEGIN CRUCIBLE_SIGNS -->
-	<readable x="600" y="100" z="0" text="PUERTA DE BRONCE\nFoso de Arena\nRiesgo bajo. Grupo: pisen la plataforma."/>
-	<readable x="604" y="100" z="0" text="PUERTA DE PLATA\nColiseo de Piedra\nRiesgo medio. Grupo: pisen la plataforma."/>
-	<readable x="608" y="100" z="0" text="PUERTA DE ORO\nTrono de Fuego\nBoss diario + arma rara."/>
-	<readable x="600" y="104" z="0" text="EL CRISOL\nPalanca: bosses de hoy y arenas ocupadas.\nSalida al templo: TP sur."/>
+	<readable x="600" y="100" z="0" text="BRONZE GATE\nSand Pit\nLow risk. Groups: stand on the platform."/>
+	<readable x="604" y="100" z="0" text="SILVER GATE\nStone Coliseum\nMedium risk. Groups: stand on the platform."/>
+	<readable x="608" y="100" z="0" text="GOLD GATE\nThrone of Fire\nDaily boss + rare weapon."/>
+	<readable x="600" y="104" z="0" text="THE CRUCIBLE\nLever: today's bosses and occupied arenas.\nReturn to the temple: southern portal."/>
 	<!-- END CRUCIBLE_SIGNS -->
 	<!-- BEGIN TEMPLE_PORTAL_SIGNS -->
-	<readable x="156" y="46" z="7" text="ISLA NATURAL\n3 campamentos de Cyclops\nCueva de 3 pisos: la Reina"/>
-	<readable x="155" y="46" z="7" text="CATEDRAL OSCURA\nRuinas y cripta de 2 pisos\nDe Bandidos a Monjes Oscuros"/>
-	<readable x="157" y="46" z="7" text="ELVENBANE\nFortaleza elfica en 7 pisos.\nDe orcos y elfos al dragon de la torre."/>
-	<readable x="158" y="46" z="7" text="VALLE DE LAS BESTIAS\nCaza mid-hard en 4 pisos\nDe Minotauros a Demonios"/>
-	<readable x="159" y="46" z="7" text="POZOS DEL INFIERNO\nCueva de fuego en 4 pisos\nDe elementales a Furias"/>
-	<readable x="164" y="46" z="7" text="CRISOL\n3 puertas. Boss diario.\nBronce / Plata / Oro"/>
-	<readable x="166" y="46" z="7" text="WAVE ARENA\nClaro de la Selva: 20 oleadas\nEn grupo. Premio semanal"/>
-	<readable x="168" y="46" z="7" text="RELOJ DE ARENA\n6 oleadas que suben de nivel\nEntra en el descanso"/>
+	<readable x="156" y="46" z="7" text="NATURAL ISLAND\n3 Cyclops camps\nThree-floor cave: the Queen"/>
+	<readable x="155" y="46" z="7" text="DARK CATHEDRAL\nRuins and a two-floor crypt\nFrom Bandits to Dark Monks"/>
+	<readable x="157" y="46" z="7" text="ELVENBANE\nA seven-floor elven fortress.\nFrom orcs and elves to the tower dragon."/>
+	<readable x="158" y="46" z="7" text="BEAST VALLEY\nFour floors of challenging hunts\nFrom Minotaurs to Demons"/>
+	<readable x="159" y="46" z="7" text="INFERNO PITS\nFour floors of fiery caves\nFrom elementals to Furies"/>
+	<readable x="164" y="46" z="7" text="THE CRUCIBLE\n3 gates. Daily boss.\nBronze / Silver / Gold"/>
+	<readable x="166" y="46" z="7" text="WAVE ARENA\nJungle Clearing: 20 waves\nGroup challenge. Weekly rewards"/>
+	<readable x="168" y="46" z="7" text="SAND CLOCK\n6 increasingly difficult waves\nEnter during the rest phase"/>
 	<!-- END TEMPLE_PORTAL_SIGNS -->
 	<!-- BEGIN HELL_QUEST_SIGNS -->
-	<readable x="316" y="158" z="7" text="FORTALEZA DEL CULTO\nLos brujos de fuego ya no rezan a nadie."/>
-	<readable x="349" y="207" z="7" text="ISLA DEL INFIERNO\nAl norte, el Cruce. Oeste: Campos de Ceniza.\nEste: Rios de Lava. Arriba: la Fortaleza y el Crater."/>
-	<readable x="350" y="181" z="7" text="EL CRUCE\nOeste: Campos de Ceniza. Este: Rios de Lava.\nNorte: Fortaleza del Culto y el Crater."/>
-	<readable x="362" y="150" z="7" text="LAS FAUCES DEL INFIERNO\nPuerta: nivel 80. Abajo cazan los perros del infierno.\nEn el Abismo, la puerta del Senor de la Ceniza pide nivel 100."/>
+	<readable x="316" y="158" z="7" text="CULT FORTRESS\nThe fire warlocks no longer pray to anyone."/>
+	<readable x="349" y="207" z="7" text="HELL ISLAND\nNorth: the Crossroads. West: Ash Fields.\nEast: Lava Rivers. Beyond: the Fortress and the Crater."/>
+	<readable x="350" y="181" z="7" text="THE CROSSROADS\nWest: Ash Fields. East: Lava Rivers.\nNorth: Cult Fortress and the Crater."/>
+	<readable x="362" y="150" z="7" text="THE MAW OF HELL\nGate: level 80. Hellhounds hunt below.\nIn the Abyss, the Ashlord's gate requires level 100."/>
 	<!-- END HELL_QUEST_SIGNS -->
 	<!-- BEGIN NORTH_PASS_SIGNS -->
-	<readable x="187" y="13" z="7" text="PASO DEL NORTE\nBosque, Tundra Helada y Cuevas del Dragon.\nCuevas: nivel 60+."/>
-	<readable x="411" y="332" z="7" text="TUNDRA HELADA\nLobos de invierno, osos polares y trolls.\nDicen que un yeti ronda el lago."/>
-	<readable x="422" y="258" z="7" text="CUEVAS DEL DRAGON\nSolo para cazadores experimentados."/>
-	<readable x="422" y="391" z="7" text="PASO DEL NORTE\nNorte: Tundra Helada y Cuevas del Dragon.\nPortal al sur: Retro76."/>
-	<readable x="424" y="360" z="7" text="Campamento de cazadores.\nDescansa junto al fuego."/>
+	<readable x="187" y="13" z="7" text="NORTH PASS\nForest, Frozen Tundra and Dragon Caves.\nCaves: level 60+."/>
+	<readable x="411" y="332" z="7" text="FROZEN TUNDRA\nWinter Wolves, Polar Bears and Trolls.\nA yeti is said to roam the lake."/>
+	<readable x="422" y="258" z="7" text="DRAGON CAVES\nExperienced hunters only."/>
+	<readable x="422" y="391" z="7" text="NORTH PASS\nNorth: Frozen Tundra and Dragon Caves.\nSouthern portal: Retro76."/>
+	<readable x="424" y="360" z="7" text="Hunters' camp.\nRest by the fire."/>
 	<!-- END NORTH_PASS_SIGNS -->
 	<!-- BEGIN IMPERIAL_CASTLE_SIGNS -->
-	<readable x="101" y="38" z="7" text="CASTILLO IMPERIAL\nCada piso es mas duro que el anterior.\nArriba esperan los Imperial Heroes y el tesoro."/>
+	<readable x="101" y="38" z="7" text="IMPERIAL CASTLE\nEach floor is harder than the last.\nImperial Heroes and treasure await at the top."/>
 	<!-- END IMPERIAL_CASTLE_SIGNS -->
 	<!-- BEGIN FROZEN_ISLE_SIGNS -->
-	<readable x="376" y="94" z="7" text="Aqui vivia un lenador.\nDejo algo para quien encontrara su escondite."/>
-	<readable x="395" y="15" z="7" text="GRUTAS DE ESCARCHA\nAranas de hielo y, en lo mas hondo, el dragon.\nNivel 80+."/>
-	<readable x="398" y="100" z="7" text="ISLA DEL HIELO ETERNO\nEl sendero sube al norte: Bosque Nevado, Lago Congelado,\nMonasterio de Escarcha y las Grutas."/>
-	<readable x="399" y="73" z="7" text="LAGO CONGELADO\nCruza por el paso de hielo. Al oeste, un islote:\ndicen que ahi vive un yeti."/>
-	<readable x="403" y="42" z="7" text="MONASTERIO DE ESCARCHA\nLos monjes de hielo no perdonan a los intrusos."/>
+	<readable x="376" y="94" z="7" text="A lumberjack once lived here.\nHe left something for whoever found his hideout."/>
+	<readable x="395" y="15" z="7" text="FROST GROTTOES\nIce Spiders and, in the depths, a dragon.\nLevel 80+."/>
+	<readable x="398" y="100" z="7" text="ISLE OF ETERNAL ICE\nThe trail heads north: Snowy Forest, Frozen Lake,\nFrost Monastery and the Grottoes."/>
+	<readable x="399" y="73" z="7" text="FROZEN LAKE\nCross the ice passage. An islet lies to the west:\na yeti is said to live there."/>
+	<readable x="403" y="42" z="7" text="FROST MONASTERY\nThe ice monks show no mercy to intruders."/>
 	<!-- END FROZEN_ISLE_SIGNS -->
 	<!-- BEGIN DESERT_HUNTS_SIGNS -->
-	<readable x="199" y="73" z="7" text="DESIERTO DE LAS RUINAS\nRuinas (8+), dunas del sur (10+), laguna y oasis (15+),\ncampamento de bandidos (20+), nido de escarabajos (30+),\ntemplo de los lagartos (40+), campo de huesos (45+),\ncienaga (50+), santuario de los djinn (60+).\nSigue el camino de piedra.\nEn el barco del muelle: piratas en cubierta (25+)."/>
+	<readable x="199" y="73" z="7" text="DESERT RUINS\nRuins (8+), southern dunes (10+), lagoon and oasis (15+),\nbandit camp (20+), scarab nest (30+),\nlizard temple (40+), bone field (45+),\nswamp (50+), djinn sanctuary (60+).\nFollow the stone path.\nShip at the dock: pirates on deck (25+)."/>
 	<!-- END DESERT_HUNTS_SIGNS -->
 	<!-- BEGIN WAVE_ARENA_SIGNS -->
-	<readable x="605" y="220" z="7" text="WAVE ARENA\nClaro de la Selva. 20 oleadas, jefe cada 5.\nGrupo: pisen la plataforma y tiren la palanca."/>
-	<readable x="608" y="220" z="7" text="RANKING SEMANAL\nCuenta la ultima oleada LIMPIA.\nPremio la primera vez en la semana: 5/10/15/20."/>
-	<readable x="606" y="215" z="7" text="Izquierda: siguiente oleada (sala limpia).\nDerecha: retirarse y guardar la marca."/>
+	<readable x="605" y="220" z="7" text="WAVE ARENA\nJungle Clearing. 20 waves, a boss every 5.\nGroups: stand on the platform and pull the lever."/>
+	<readable x="608" y="220" z="7" text="WEEKLY RANKING\nYour last CLEARED wave counts.\nFirst weekly clear rewards: 5/10/15/20."/>
+	<readable x="606" y="215" z="7" text="Left: next wave (clear the room first).\nRight: retire and save your score."/>
 	<!-- END WAVE_ARENA_SIGNS -->
 	<!-- BEGIN MINOTAUR_ISLE_SIGNS -->
-	<readable x="102" y="52" z="7" text="CUEVA DEL MINOTAURO\nAbajo, minotauros mas fuertes en cada piso.\nAl fondo del tercer piso, portal de vuelta."/>
+	<readable x="102" y="52" z="7" text="MINOTAUR CAVE\nStronger minotaurs await on each floor below.\nReturn portal at the end of the third floor."/>
 	<!-- END MINOTAUR_ISLE_SIGNS -->
 	<!-- BEGIN EPSTEIN_PORTAL -->
 	<readable x="85" y="210" z="7" text="Portal to the mainland (temple)"/>
 	<!-- END EPSTEIN_PORTAL -->
 		<!-- BEGIN NATURAL_ISLAND_SIGNS -->
-	<readable x="145" y="461" z="7" text="ISLA NATURAL\nSigue el sendero: tres\ncampamentos de Cyclops\ny al final la cueva."/>
-	<readable x="160" y="460" z="7" text="CUEVA DE PIEDRA\nGolems, Shamblers y\nun descenso a wyverns.\nAl fondo, la Reina."/>
+	<readable x="145" y="461" z="7" text="NATURAL ISLAND\nFollow the trail past three\nCyclops camps\nto the cave at the end."/>
+	<readable x="160" y="460" z="7" text="STONE CAVE\nGolems, Shamblers and\na descent to Wyverns.\nThe Queen awaits in the depths."/>
 	<!-- END NATURAL_ISLAND_SIGNS -->
 	<!-- BEGIN FORGOTTEN_PIT_SIGNS -->
-	<readable x="128" y="33" z="7" text="EL FOSO OLVIDADO\nBajada a las cuevas (nivel 20+).\nEntra por la trampilla."/>
-	<readable x="122" y="39" z="9" text="EL FOSO OLVIDADO\nAntigua arena PvP. Ahora, cuevas de caza.\nNivel 20+: baja por la escalera del este.\n3 pisos. Al fondo, portal de vuelta.\nSalida a la ciudad: escalera de mano del norte."/>
-	<readable x="143" y="26" z="10" text="GALERIAS HUMEDAS\nNivel 20-45.\nMas abajo: Cavernas Profundas."/>
-	<readable x="240" y="79" z="11" text="CAVERNAS PROFUNDAS\nNivel 45-80.\nCuidado con quaras y golems.\nAbajo: El Corazon."/>
-	<readable x="216" y="15" z="12" text="EL CORAZON\nNivel 70+. Guardianes faraones.\nAl fondo: Orshabaal (nivel 100+)."/>
-	<readable x="258" y="79" z="12" text="ORSHABAAL\nBoss de nivel 100+.\nEntra en grupo. Portal de vuelta al fondo."/>
+	<readable x="128" y="33" z="7" text="THE FORGOTTEN PIT\nCave entrance (level 20+).\nEnter through the trapdoor."/>
+	<readable x="122" y="39" z="9" text="THE FORGOTTEN PIT\nA former PvP arena, now hunting caves.\nLevel 20+: take the eastern stairs down.\n3 floors. Return portal at the end.\nExit to the city: northern ladder."/>
+	<readable x="143" y="26" z="10" text="DAMP GALLERIES\nLevel 20-45.\nBelow: Deep Caverns."/>
+	<readable x="240" y="79" z="11" text="DEEP CAVERNS\nLevel 45-80.\nBeware of Quaras and Golems.\nBelow: the Heart."/>
+	<readable x="216" y="15" z="12" text="THE HEART\nLevel 70+. Pharaoh guardians.\nIn the depths: Orshabaal (level 100+)."/>
+	<readable x="258" y="79" z="12" text="ORSHABAAL\nLevel 100+ boss.\nBring a group. Return portal at the far end."/>
 	<!-- END FORGOTTEN_PIT_SIGNS -->
 	<!-- BEGIN FARGUM_TOWER_SIGNS -->
-	<readable x="173" y="63" z="7" text="TORRE DEL BARQUERO\n5 pisos, un monstruo por piso.\nTortuga -> Tortuga espinosa -> Cangrejo -> Quara -> Predator."/>
+	<readable x="173" y="63" z="7" text="FERRYMAN'S TOWER\n5 floors, one monster per floor.\nTortoise -> Thornback Tortoise -> Crab -> Quara -> Predator."/>
 	<!-- END FARGUM_TOWER_SIGNS -->
 	<!-- BEGIN BEAST_VALLEY_SIGNS -->
-	<readable x="294" y="289" z="7" text="CUEVA DE LAS QUARAS\nQuaras constrictor, mantassin, pincher,\nhidromante y predator."/>
-	<readable x="306" y="267" z="7" text="CATACUMBAS\nNo-muertos: ghouls, vampiros, momias\ny nigromantes."/>
-	<readable x="315" y="327" z="7" text="CRUCE DEL VALLE\nOeste: Campamento Minotauro.\nEste: Cantera de Ciclopes.\nNorte: Ruinas Antiguas y cuevas."/>
-	<readable x="315" y="356" z="7" text="VALLE DE LAS BESTIAS\nAl norte: Cruce del Valle.\nCampamento Minotauro (oeste), Cantera de Ciclopes (este),\nRuinas y cuevas (norte). Portal al sur: templo."/>
-	<readable x="316" y="285" z="7" text="RUINAS ANTIGUAS\nNo todos los muertos descansan."/>
-	<readable x="338" y="289" z="7" text="GUARIDA DEL DRAGON\nDragones, wyrms y un dragon negro.\nSolo para veteranos."/>
+	<readable x="294" y="289" z="7" text="QUARA CAVE\nQuara Constrictors, Mantassins, Pinchers,\nHydromancers and Predators."/>
+	<readable x="306" y="267" z="7" text="CATACOMBS\nUndead: Ghouls, Vampires, Mummies\nand Necromancers."/>
+	<readable x="315" y="327" z="7" text="VALLEY CROSSROADS\nWest: Minotaur Camp.\nEast: Cyclops Quarry.\nNorth: Ancient Ruins and caves."/>
+	<readable x="315" y="356" z="7" text="BEAST VALLEY\nNorth: Valley Crossroads.\nMinotaur Camp (west), Cyclops Quarry (east),\nruins and caves (north). Southern portal: temple."/>
+	<readable x="316" y="285" z="7" text="ANCIENT RUINS\nNot all the dead rest in peace."/>
+	<readable x="338" y="289" z="7" text="DRAGON LAIR\nDragons, Wyrms and a Black Dragon.\nVeterans only."/>
 	<!-- END BEAST_VALLEY_SIGNS -->
 	<!-- BEGIN ELVENBANE_SIGNS -->
-	<readable x="37" y="347" z="7" text="ELVENBANE\nFortaleza elfica en 7 pisos.\nBaja a la cueva: el tunel llega\nal sotano del castillo.\nPortal al norte: templo."/>
-	<readable x="41" y="341" z="7" text="BAJADA A ELVENBANE\nTunel largo hasta el sotano.\nTrolls, orcos y enanos."/>
+	<readable x="37" y="347" z="7" text="ELVENBANE\nA seven-floor elven fortress.\nEnter the cave: the tunnel leads\nto the castle basement.\nNorthern portal: temple."/>
+	<readable x="41" y="341" z="7" text="DESCENT TO ELVENBANE\nA long tunnel to the basement.\nTrolls, Orcs and Dwarfs."/>
 	<!-- END ELVENBANE_SIGNS -->
 	<!-- BEGIN TROLL_DEN_SIGNS -->
-	<readable x="166" y="108" z="7" text="GUARIDA DE LOS TROLLS\nAgujero abajo: river trolls cerca de la escalera\ny stone trolls al fondo, entre las piedras."/>
+	<readable x="166" y="108" z="7" text="TROLL DEN\nEnter the hole: River Trolls near the ladder\nand Stone Trolls among the rocks at the far end."/>
 	<!-- END TROLL_DEN_SIGNS -->
 	<!-- BEGIN SAND_CLOCK_SIGNS -->
-	<readable x="606" y="328" z="6" text="RELOJ DE ARENA\nDescanso de 30 s y despues 6 oleadas de 60 s,\ncada una mas fuerte. Los braseros marcan la oleada.\nEntra en el descanso para empezar desde la 1.\nSalida: portal al sur."/>
+	<readable x="606" y="328" z="6" text="SAND CLOCK\n30 s of rest, then six 60 s waves,\neach stronger than the last. Braziers mark the wave.\nEnter during rest to start at wave 1.\nExit: southern portal."/>
 	<!-- END SAND_CLOCK_SIGNS -->
 	<!-- BEGIN MAGE_TOWER_SIGNS -->
-	<readable x="129" y="127" z="7" text="TORRE DEL MAGO OSCURO\n6 pisos de magos, cada uno mas fuerte.\nArriba de todo espera el Dark Mage."/>
+	<readable x="129" y="127" z="7" text="DARK MAGE TOWER\n6 floors of increasingly powerful mages.\nThe Dark Mage awaits at the top."/>
 	<!-- END MAGE_TOWER_SIGNS -->
 	<!-- BEGIN INFERNO_PITS_SIGNS -->
-	<readable x="526" y="404" z="7" text="CAMPO DE BRASAS\nDiablos de fuego y elementales."/>
-	<readable x="542" y="293" z="7" text="LA BOCA DEL POZO\nPuerta: nivel 90. Abajo, los Pozos de Ceniza.\nAl fondo, el Corazon pide nivel 100."/>
-	<readable x="542" y="417" z="7" text="EL VADO\nOeste: Campo de Brasas.\nNorte: La Jauria y la Boca."/>
-	<readable x="543" y="436" z="7" text="POZOS DEL INFIERNO\nYerma de ceniza sobre los pozos.\nAl norte: la Boca. Portal al sur: templo."/>
-	<readable x="554" y="359" z="7" text="LA JAURIA\nPerros del infierno entre las rocas."/>
-	<readable x="544" y="381" z="10" text="CAMARA DE LAS ARMAS\nCuatro cofres: cada heroe toma uno.\nPuerta: nivel 100."/>
+	<readable x="526" y="404" z="7" text="EMBER FIELD\nFire Devils and Fire Elementals."/>
+	<readable x="542" y="293" z="7" text="THE PIT MOUTH\nGate: level 90. Ash Pits below.\nThe Heart at the far end requires level 100."/>
+	<readable x="542" y="417" z="7" text="THE FORD\nWest: Ember Field.\nNorth: the Pack and the Pit Mouth."/>
+	<readable x="543" y="436" z="7" text="INFERNO PITS\nAshen wasteland above the pits.\nNorth: the Pit Mouth. Southern portal: temple."/>
+	<readable x="554" y="359" z="7" text="THE PACK\nHellhounds among the rocks."/>
+	<readable x="544" y="381" z="10" text="WEAPONS CHAMBER\nFour chests: each hero chooses one.\nGate: level 100."/>
 	<!-- END INFERNO_PITS_SIGNS -->
 	<!-- BEGIN DARK_CATHEDRAL_SIGNS -->
-	<readable x="136" y="340" z="7" text="SALA DE LOS BANCOS\nBancos viejos y escombros.\nAl oeste, la bajada a la cripta."/>
-	<readable x="146" y="292" z="7" text="ACCESO A LA CRIPTA\nEscalera abajo.\nNo vuelvas solo."/>
-	<readable x="146" y="334" z="7" text="NAVE DE LA CATEDRAL\nSolo monjes y muertos\nrezan aca."/>
-	<readable x="151" y="334" z="7" text="CATEDRAL OSCURA\nAl norte, la nave.\nBajadas a la cripta: en la jungla\ny junto a la sala gris.\nEste portal vuelve al templo."/>
+	<readable x="136" y="340" z="7" text="PEW HALL\nOld pews and rubble.\nWest: the descent to the crypt."/>
+	<readable x="146" y="292" z="7" text="CRYPT ENTRANCE\nTake the stairs down.\nDo not return alone."/>
+	<readable x="146" y="334" z="7" text="CATHEDRAL NAVE\nOnly monks and the dead\npray here."/>
+	<readable x="151" y="334" z="7" text="DARK CATHEDRAL\nNorth: the nave.\nCrypt entrances: in the jungle\nand beside the grey hall.\nThis portal returns to the temple."/>
 	<!-- END DARK_CATHEDRAL_SIGNS -->
 	<!-- BEGIN BRIDGE_TOWER_SIGNS -->
-	<readable x="112" y="45" z="7" text="TORRE DEL PUENTE\n6 pisos en medio del rio.\nPiratas abajo, quaras y ahogados arriba,\ncada piso mas fuerte."/>
+	<readable x="112" y="45" z="7" text="BRIDGE TOWER\n6 floors in the middle of the river.\nPirates below, Quaras and Drowned creatures above,\neach floor stronger than the last."/>
 	<!-- END BRIDGE_TOWER_SIGNS -->
 	<!-- BEGIN DRAGON_SPOT_SIGNS -->
-	<readable x="103" y="84" z="7" text="SPOT DEL DRAGON NEGRO\nBaja por el agujero y sigue el tunel.\nSi te aprieta, baja por el agujero de la isla y vuelve a subir."/>
+	<readable x="103" y="84" z="7" text="BLACK DRAGON HUNT\nEnter the hole and follow the tunnel.\nIf cornered, use the island's hole and climb back up."/>
 	<!-- END DRAGON_SPOT_SIGNS -->
 	<!-- BEGIN IMPERIAL_CRYPT_SIGNS -->
-	<readable x="95" y="91" z="7" text="CRIPTA IMPERIAL\nSquires y arqueros custodian la entrada.\nHeroes imperiales al fondo.\nUn tunel la une con el Spot del Dragon Negro."/>
+	<readable x="95" y="91" z="7" text="IMPERIAL CRYPT\nSquires and archers guard the entrance.\nImperial Heroes await at the far end.\nA tunnel connects to the Black Dragon Hunt."/>
 	<!-- END IMPERIAL_CRYPT_SIGNS -->
 	<!-- BEGIN KONGRA_TOWERS_SIGNS -->
-	<readable x="169" y="105" z="7" text="TORRE DEL KONGRA\n3 pisos. Kongra abajo;\nlos rojos rugen arriba."/>
-	<readable x="168" y="128" z="7" text="TORRE SUR DEL KONGRA\n3 pisos; los rojos más duros viven arriba."/>
-	<readable x="185" y="75" z="7" text="ATALAYA DEL KONGRA\n2 pisos. Los rojos miran desde arriba."/>
+	<readable x="169" y="105" z="7" text="KONGRA TOWER\n3 floors. Kongras below;\nRed Kongras roar above."/>
+	<readable x="168" y="128" z="7" text="SOUTH KONGRA TOWER\n3 floors; the strongest Red Kongras live above."/>
+	<readable x="185" y="75" z="7" text="KONGRA WATCHTOWER\n2 floors. Red Kongras watch from above."/>
 	<!-- END KONGRA_TOWERS_SIGNS -->
 	<!-- BEGIN DARK_HYDRA_ISLE_SIGNS -->
-	<readable x="49" y="137" z="7" text="ISLA DE LAS DARK HYDRAS\nBaja por el agujero y sigue el tunel hasta el islote.\nSi te aprietan, baja por el agujero del islote y vuelve a subir."/>
+	<readable x="49" y="137" z="7" text="DARK HYDRA ISLE\nEnter the hole and follow the tunnel to the islet.\nIf cornered, use the islet's hole and climb back up."/>
 	<!-- END DARK_HYDRA_ISLE_SIGNS -->
 	<!-- BEGIN GLACIER_REACH_SIGNS -->
-	<readable x="266" y="37" z="7" text="GLACIAR DEL ESTE\nEl sendero sigue al este, cada vez mas frio.\nAl final, dragones y aranas de hielo.\nNivel 60+."/>
+	<readable x="266" y="37" z="7" text="EASTERN GLACIER\nThe trail heads east, growing ever colder.\nIce Dragons and Ice Spiders await at the end.\nLevel 60+."/>
 	<!-- END GLACIER_REACH_SIGNS -->
 	<!-- BEGIN ELF_WEST_SIGNS -->
-	<readable x="101" y="72" z="7" text="RUINAS DEL SAUCE\nAl oeste: exploradores y arcanistas.\nEl santuario azul queda al fondo."/>
+	<readable x="101" y="72" z="7" text="WILLOW RUINS\nWest: scouts and arcanists.\nThe blue sanctuary lies at the far end."/>
 	<!-- END ELF_WEST_SIGNS -->
 	<!-- BEGIN EPSTEIN_ROAD_SIGNS -->
-	<readable x="79" y="238" z="7" text="CAMINO DE LOS CAIDOS\nZombies al principio,\nUndead Gladiators\nal fondo."/>
+	<readable x="79" y="238" z="7" text="PATH OF THE FALLEN\nZombies at the entrance,\nUndead Gladiators\nat the far end."/>
 	<!-- END EPSTEIN_ROAD_SIGNS -->
 	<!-- BEGIN PETRIFIED_SANCTUARY_SIGNS (scripts/map/generate-petrified-sanctuary.py) -->
-	<readable x="95" y="75" z="7" text="SANTUARIO PETRIFICADO\nGargolas y golems en la entrada.\nCristales y el Custodio del Lago al fondo."/>
+	<readable x="95" y="75" z="7" text="PETRIFIED SANCTUARY\nGargoyles and Golems at the entrance.\nCrystals and the Lake Custodian in the depths."/>
 	<!-- END PETRIFIED_SANCTUARY_SIGNS -->
 	<!-- BEGIN DWARVEN_MINE_SIGNS (scripts/map/generate-dwarven-mine.py) -->
-	<readable x="194" y="60" z="7" text="MINA ENANA\nDwarfs y soldados arriba.\nGuardias, geomancers y el Capataz de Hierro al fondo."/>
+	<readable x="194" y="60" z="7" text="DWARVEN MINE\nDwarfs and Soldiers above.\nGuards, Geomancers and the Iron Foreman in the depths."/>
 	<!-- END DWARVEN_MINE_SIGNS -->
 	<!-- BEGIN MUTATED_SEWERS_SIGNS (scripts/map/generate-mutated-sewers.py) -->
-	<readable x="169" y="53" z="8" text="ALCANTARILLA PROFUNDA\nNivel 8-20: ratas y slimes abajo.\nAl fondo: Alcantarilla Mutada (nivel 25-45)."/>
+	<readable x="169" y="53" z="8" text="DEEP SEWERS\nLevel 8-20: Rats and Slimes below.\nBeyond: Mutated Sewers (level 25-45)."/>
 	<!-- END MUTATED_SEWERS_SIGNS -->
 	<!-- BEGIN SPIDER_NEST_SIGNS (scripts/map/generate-spider-nest.py) -->
-	<readable x="103" y="79" z="7" text="NIDO DE SEDA NEGRA\nNivel 40-65.\nTarantulas al entrar; Giant Spiders y Wyverns al fondo."/>
+	<readable x="103" y="79" z="7" text="BLACK SILK NEST\nLevel 40-65.\nTarantulas at the entrance; Giant Spiders and Wyverns deeper inside."/>
 	<!-- END SPIDER_NEST_SIGNS -->
 	<!-- BEGIN BEHOLDER_CRYPT_SIGNS (scripts/map/generate-beholder-crypt.py) -->
-	<readable x="77" y="34" z="7" text="CRIPTA DE LOS OJOS\nNivel 30-65.\nGazers y Beholders al entrar; Vampires, Vampire Brides y Banshees al fondo."/>
+	<readable x="77" y="34" z="7" text="CRYPT OF EYES\nLevel 30-65.\nGazers and Beholders at the entrance; Vampires, Vampire Brides and Banshees deeper inside."/>
 	<!-- END BEHOLDER_CRYPT_SIGNS -->
 </readables>

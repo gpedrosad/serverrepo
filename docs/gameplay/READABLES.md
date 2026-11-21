@@ -1,5 +1,7 @@
 # Cartas, scrolls y libros (leer y escribir)
 
+> Idioma visible: **inglés**. Ver [política y corrección de textos](SERVER_LANGUAGE.md).
+
 > Portado en nov 2026 de la rama `feat/readables-writeables-build-fix` (basrodriguezr, jul 2026), que nunca
 > se había mergeado. Antes de eso, escribir respondía "Write not working yet.".
 
