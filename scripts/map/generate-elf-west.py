@@ -41,11 +41,13 @@ GROUPS = [((95, 65), [("Elf Scout", (95, 65), 150)]),
 
 
 def house_reservations():
-    """Conservar casas, cubiertas, plataformas y pasarelas al regenerar el hunt."""
+    """Conservar casas, plataformas y boca del santuario al regenerar el hunt."""
     path = WORLD / "generated-curious-houses.json"
-    if not path.exists():
-        return set()
-    return {tuple(map(int, p.split(","))) for p in json.loads(path.read_text())["cells"]}
+    reserved = {tuple(map(int, p.split(","))) for p in json.loads(path.read_text())["cells"]} if path.exists() else set()
+    sanctuary = WORLD / "generated-petrified-sanctuary.json"
+    if sanctuary.exists():
+        reserved.update(tuple(p) for p in json.loads(sanctuary.read_text())["surface"])
+    return reserved
 
 
 def floating_water():
