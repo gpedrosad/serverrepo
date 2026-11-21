@@ -367,8 +367,7 @@ def main() -> int:
     SPAWNS.write_text(sp, encoding="latin-1")
     roomkit.patch_readables("<!-- BEGIN DARK_HYDRA_ISLE_SIGNS -->", "<!-- END DARK_HYDRA_ISLE_SIGNS -->", [
         dict(x=SIGN[0], y=SIGN[1], z=SIGN[2],
-             text="ISLA DE LAS DARK HYDRAS\nBaja por el agujero y sigue el tunel hasta el islote.\n"
-                  "Si te aprietan, baja por el agujero del islote y vuelve a subir."),
+             text="DARK HYDRA ISLE\nEnter the hole and follow the tunnel to the islet.\nIf cornered, use the islet's hole and climb back up."),
     ])
     MANIFEST.write_text(json.dumps({
         "name": "Isla de las Dark Hydras", "box": list(Z7_BOX), "islet": ISLET, "isle": ISLE,

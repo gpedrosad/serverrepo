@@ -64,8 +64,7 @@ PILLAR, STATUE, BRAZIER = 1549, 1451, 1482
 TORCH_V, LAMP_H = 2061, 2040                          # colgables: pared oeste/este (vertical) y norte
 ATTR_TELE_DEST = 8
 
-SIGN_TEXT = ("RELOJ DE ARENA\nDescanso de 30 s y despues 6 oleadas de 60 s,\ncada una mas fuerte. "
-             "Los braseros marcan la oleada.\nEntra en el descanso para empezar desde la 1.\nSalida: portal al sur.")
+SIGN_TEXT = ('SAND CLOCK\n30 s of rest, then six 60 s waves,\neach stronger than the last. Braziers mark the wave.\nEnter during rest to start at wave 1.\nExit: southern portal.')
 
 
 def build() -> dict:

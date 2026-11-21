@@ -258,8 +258,7 @@ def main() -> int:
 
     roomkit.patch_readables("<!-- BEGIN MAGE_TOWER_SIGNS -->", "<!-- END MAGE_TOWER_SIGNS -->", [
         dict(x=SIGN[0], y=SIGN[1], z=SIGN[2],
-             text="TORRE DEL MAGO OSCURO\n6 pisos de magos, cada uno mas fuerte.\n"
-                  "Arriba de todo espera el Dark Mage."),
+             text='DARK MAGE TOWER\n6 floors of increasingly powerful mages.\nThe Dark Mage awaits at the top.'),
     ])
 
     MANIFEST.write_text(json.dumps({

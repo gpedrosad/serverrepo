@@ -291,12 +291,11 @@ def build_surface(seed: int, bl):
             tiles[c].append(rng.choice((PEBBLES,) + BONES[:2]))
 
     signs = {
-        (hx + 2, hy - 2): "ISLA DEL HIELO ETERNO\nEl sendero sube al norte: Bosque Nevado, Lago Congelado,\n"
-                          "Monasterio de Escarcha y las Grutas.",
-        (CHECK_LAKE[0] - 3, CHECK_LAKE[1] - 1): "LAGO CONGELADO\nCruza por el paso de hielo. Al oeste, un islote:\ndicen que ahi vive un yeti.",
-        (x1 + 1, y1 - 1): "MONASTERIO DE ESCARCHA\nLos monjes de hielo no perdonan a los intrusos.",
-        (sx + 3, sy + 1): "GRUTAS DE ESCARCHA\nAranas de hielo y, en lo mas hondo, el dragon.\nNivel 80+.",
-        (WOODCUTTER[0] + 2, WOODCUTTER[1] - 2): "Aqui vivia un lenador.\nDejo algo para quien encontrara su escondite.",
+        (hx + 2, hy - 2): 'ISLE OF ETERNAL ICE\nThe trail heads north: Snowy Forest, Frozen Lake,\nFrost Monastery and the Grottoes.',
+        (CHECK_LAKE[0] - 3, CHECK_LAKE[1] - 1): "FROZEN LAKE\nCross the ice passage. An islet lies to the west:\na yeti is said to live there.",
+        (x1 + 1, y1 - 1): "FROST MONASTERY\nThe ice monks show no mercy to intruders.",
+        (sx + 3, sy + 1): "FROST GROTTOES\nIce Spiders and, in the depths, a dragon.\nLevel 80+.",
+        (WOODCUTTER[0] + 2, WOODCUTTER[1] - 2): "A lumberjack once lived here.\nHe left something for whoever found his hideout.",
     }
     placed_signs = {}
     for anchor, text in signs.items():

@@ -83,8 +83,7 @@ STAGES = (
     (("Frost Dragon", "Ice Spider"), 2, 240, 10),
 )
 ENTRY_CLEAR = 9
-SIGN_TEXT = ("GLACIAR DEL ESTE\nEl sendero sigue al este, cada vez mas frio.\n"
-             "Al final, dragones y aranas de hielo.\nNivel 60+.")
+SIGN_TEXT = ('EASTERN GLACIER\nThe trail heads east, growing ever colder.\nIce Dragons and Ice Spiders await at the end.\nLevel 60+.')
 
 
 def rect(b):

@@ -251,7 +251,7 @@ def main():
     signs = READABLES.read_text(encoding="latin-1")
     sign_text = block(
         signs, "SPIDER_NEST_SIGNS",
-        '\t<readable x="103" y="79" z="7" text="NIDO DE SEDA NEGRA\\nNivel 40-65.\\nTarantulas al entrar; Giant Spiders y Wyverns al fondo."/>',
+        '\t<readable x="103" y="79" z="7" text="BLACK SILK NEST\\nLevel 40-65.\\nTarantulas at the entrance; Giant Spiders and Wyverns deeper inside."/>',
         "</readables>",
     )
     changed = sum(values.get(p) != ids for p, ids in cells.items())

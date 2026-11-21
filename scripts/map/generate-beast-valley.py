@@ -173,13 +173,13 @@ def rooms_along(path, min_len=20, r=3):
 CAVES = [
     {"name": "catacumbs", "box": (6, 2, 88, 58), "mouth": STAIRS_CAT, "mud": 0.10, "alt": 0.36,
      "bones": 0.10, "min": 560, "path": CAT_PATH8, "rooms": rooms_along(CAT_PATH8),
-     "sign": "CATACUMBAS\nNo-muertos: ghouls, vampiros, momias y nigromantes.\nAbajo: Cripta Profunda."},
+     "sign": "CATACOMBS\nUndead: Ghouls, Vampires, Mummies and Necromancers.\nBelow: Deep Crypt."},
     {"name": "quara", "box": (6, 44, 50, 98), "mouth": MOUTH_QUARA, "mud": 0.55, "alt": 0.28,
      "bones": 0.05, "min": 560, "path": QUARA_PATH8, "rooms": QUARA_ROOMS8,
-     "sign": "CUEVA DE LAS QUARAS\nQuaras constrictor, mantassin, pincher, hidromante y predator.\nAbajo: Nido de las Quaras."},
+     "sign": "QUARA CAVE\nQuara Constrictors, Mantassins, Pinchers, Hydromancers and Predators.\nBelow: Quara Nest."},
     {"name": "dragon", "box": (50, 40, 44, 96), "mouth": MOUTH_DRAGON, "mud": 0.28, "alt": 0.30,
      "bones": 0.09, "min": 560, "path": DRAGON_PATH8, "rooms": rooms_along(DRAGON_PATH8),
-     "sign": "GUARIDA DEL DRAGON\nDragones, wyrms y un dragon negro.\nAbajo: el Nido y el Abismo."},
+     "sign": "DRAGON LAIR\nDragons, Wyrms and a Black Dragon.\nBelow: the Nest and the Abyss."},
 ]
 # segundo piso de cada cueva: más largo y con más monstruos
 DEEP_CAVES = [
@@ -462,18 +462,12 @@ def build_surface(seed: int, bl: Blocking):
 
     hy = ARRIVAL[1] - 2
     signs = {
-        (ARRIVAL[0] + 3, ARRIVAL[1] - 1): "VALLE DE LAS BESTIAS\nAl norte: Cruce del Valle.\n"
-                                          "Campamento Minotauro (oeste), Cantera de Ciclopes (este),\n"
-                                          "Ruinas y cuevas (norte). Portal al sur: templo.",
-        (CROSS[0] + 3, CROSS[1] - 1): "CRUCE DEL VALLE\nOeste: Campamento Minotauro.\n"
-                                      "Este: Cantera de Ciclopes.\nNorte: Ruinas Antiguas y cuevas.",
-        (STAIRS_CAT[0] - 3, STAIRS_CAT[1] + 1): "CATACUMBAS\nNo-muertos: ghouls, vampiros, momias\n"
-                                                "y nigromantes.",
-        (MOUTH_QUARA[0] + 3, MOUTH_QUARA[1] + 1): "CUEVA DE LAS QUARAS\nQuaras constrictor, mantassin, pincher,\n"
-                                                  "hidromante y predator.",
-        (MOUTH_DRAGON[0] + 3, MOUTH_DRAGON[1] + 1): "GUARIDA DEL DRAGON\nDragones, wyrms y un dragon negro.\n"
-                                                    "Solo para veteranos.",
-        (RUINS[0] + 3, RUINS[1] + 8): "RUINAS ANTIGUAS\nNo todos los muertos descansan.",
+        (ARRIVAL[0] + 3, ARRIVAL[1] - 1): 'BEAST VALLEY\nNorth: Valley Crossroads.\nMinotaur Camp (west), Cyclops Quarry (east),\nruins and caves (north). Southern portal: temple.',
+        (CROSS[0] + 3, CROSS[1] - 1): 'VALLEY CROSSROADS\nWest: Minotaur Camp.\nEast: Cyclops Quarry.\nNorth: Ancient Ruins and caves.',
+        (STAIRS_CAT[0] - 3, STAIRS_CAT[1] + 1): 'CATACOMBS\nUndead: Ghouls, Vampires, Mummies\nand Necromancers.',
+        (MOUTH_QUARA[0] + 3, MOUTH_QUARA[1] + 1): 'QUARA CAVE\nQuara Constrictors, Mantassins, Pinchers,\nHydromancers and Predators.',
+        (MOUTH_DRAGON[0] + 3, MOUTH_DRAGON[1] + 1): 'DRAGON LAIR\nDragons, Wyrms and a Black Dragon.\nVeterans only.',
+        (RUINS[0] + 3, RUINS[1] + 8): "ANCIENT RUINS\nNot all the dead rest in peace.",
     }
     placed = {}
     for anchor, text in signs.items():

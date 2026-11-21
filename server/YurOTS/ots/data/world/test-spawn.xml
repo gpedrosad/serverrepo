@@ -6147,7 +6147,7 @@
 		<monster name="Crystal Spider" x="-2" y="0" z="9" spawntime="240" />
 	</spawn>
 	<spawn centerx="24" centery="41" centerz="9" radius="3">
-		<monster name="Custodio del Lago" x="0" y="0" z="9" spawntime="900" />
+		<monster name="Lake Custodian" x="0" y="0" z="9" spawntime="900" />
 	</spawn>
 	<!-- END PETRIFIED_SANCTUARY_SPAWNS -->
 	<!-- BEGIN DWARVEN_MINE_SPAWNS (scripts/map/generate-dwarven-mine.py) -->
@@ -6288,7 +6288,7 @@
 		<monster name="Dwarf Geomancer" x="-2" y="2" z="10" spawntime="220" />
 	</spawn>
 	<spawn centerx="334" centery="134" centerz="10" radius="3">
-		<monster name="Capataz de Hierro" x="0" y="0" z="10" spawntime="900" />
+		<monster name="Iron Foreman" x="0" y="0" z="10" spawntime="900" />
 	</spawn>
 	<!-- END DWARVEN_MINE_SPAWNS -->
 	<!-- BEGIN MUTATED_SEWERS_SPAWNS (scripts/map/generate-mutated-sewers.py) -->

@@ -264,7 +264,7 @@ def main():
     signs = READABLES.read_text(encoding="latin-1")
     sign_text = block(
         signs, "BEHOLDER_CRYPT_SIGNS",
-        '\t<readable x="77" y="34" z="7" text="CRIPTA DE LOS OJOS\\nNivel 30-65.\\nGazers y Beholders al entrar; Vampires, Vampire Brides y Banshees al fondo."/>',
+        '\t<readable x="77" y="34" z="7" text="CRYPT OF EYES\\nLevel 30-65.\\nGazers and Beholders at the entrance; Vampires, Vampire Brides and Banshees deeper inside."/>',
         "</readables>",
     )
     changed = sum(values.get(p) != ids for p, ids in cells.items())

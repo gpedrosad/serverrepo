@@ -25,7 +25,7 @@ def main():
     looks = {}
     for m in registry:
         name = m.get("name")
-        if name not in ("Dwarf", "Dwarf Soldier", "Dwarf Guard", "Dwarf Geomancer", "Capataz de Hierro"):
+        if name not in ("Dwarf", "Dwarf Soldier", "Dwarf Guard", "Dwarf Geomancer", "Iron Foreman"):
             continue
         look = ET.parse(DATA / "monster" / m.get("file")).getroot().find("look")
         looks[name] = {k: int(v) for k, v in look.attrib.items() if k != "corpse"}
@@ -52,7 +52,7 @@ def main():
         ("entrada", "Desvio junto al camino del desierto", (186, 53, 204, 63), 7),
         ("estacion", "Estacion y galeria de los soldados", (267, 92, 285, 102), 9),
         ("guardias", "Depositos de los guardias", (326, 109, 344, 119), 10),
-        ("capataz", "Forja del Capataz de Hierro", (325, 129, 343, 139), 10),
+        ("capataz", "Forja del Iron Foreman", (325, 129, 343, 139), 10),
     ]
     font = ImageFont.truetype("/System/Library/Fonts/Supplemental/Arial.ttf", 22)
     small = ImageFont.truetype("/System/Library/Fonts/Supplemental/Arial.ttf", 16)

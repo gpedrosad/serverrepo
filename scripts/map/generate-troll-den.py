@@ -92,9 +92,7 @@ STAGES = [
     (("Stone Troll",), 2, 235, 10),
 ]
 
-SIGN_TEXT = ("GUARIDA DE LOS TROLLS\n"
-             "Agujero abajo: river trolls cerca de la escalera\n"
-             "y stone trolls al fondo, entre las piedras.")
+SIGN_TEXT = ('TROLL DEN\nEnter the hole: River Trolls near the ladder\nand Stone Trolls among the rocks at the far end.')
 
 
 # ----------------------------------------------------------------------------------------------------------------------

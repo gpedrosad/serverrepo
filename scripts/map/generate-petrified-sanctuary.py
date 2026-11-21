@@ -142,7 +142,7 @@ def build(values, otb):
     avoid = C.grow({DOWN}, 6) | C.grow({BOSS}, 8)
     spawns = C.place_stages(STAGES, C.slices_by(walk - avoid, distances.__getitem__, len(STAGES)),
                             walk, avoid, 9, random.Random("petrified-sanctuary-76"))
-    spawns.append((BOSS, 9, [("Custodio del Lago", BOSS, 900)]))
+    spawns.append((BOSS, 9, [("Lake Custodian", BOSS, 900)]))
     positions = [p for _, _, ms in spawns for _, p, _ in ms]
     assert len(positions) == len(set(positions)) and all(p in walk for p in positions)
     density = len(walk) / len(positions)
@@ -190,7 +190,7 @@ def main():
     spawn_text = block(sp, "PETRIFIED_SANCTUARY_SPAWNS", C.spawn_xml(spawns), "</spawns>")
     signs = READABLES.read_text(encoding="latin-1")
     sign_text = block(signs, "PETRIFIED_SANCTUARY_SIGNS",
-        '\t<readable x="95" y="75" z="7" text="SANTUARIO PETRIFICADO\\nGargolas y golems en la entrada.\\nCristales y el Custodio del Lago al fondo."/>', "</readables>")
+        '\t<readable x="95" y="75" z="7" text="PETRIFIED SANCTUARY\\nGargoyles and Golems at the entrance.\\nCrystals and the Lake Custodian in the depths."/>', "</readables>")
     changed = sum(values.get(p) != ids for p, ids in cells.items())
     counts = Counter(n for _, _, ms in spawns for n, _, _ in ms)
     print(json.dumps(report | dict(changed=changed, monsters=dict(counts)), ensure_ascii=False))

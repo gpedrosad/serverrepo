@@ -90,8 +90,7 @@ WORLD = REPO / "server/YurOTS/ots/data/world"
 SPAWNS = WORLD / "test-spawn.xml"
 READABLES = REPO / "server/YurOTS/ots/data/readables.xml"
 MANIFEST = WORLD / "generated-imperial-crypt.json"
-SIGN_TEXT = ("CRIPTA IMPERIAL\nSquires y arqueros custodian la entrada.\nHeroes imperiales al fondo.\n"
-             "Un tunel la une con el Spot del Dragon Negro.")
+SIGN_TEXT = ('IMPERIAL CRYPT\nSquires and archers guard the entrance.\nImperial Heroes await at the far end.\nA tunnel connects to the Black Dragon Hunt.')
 
 
 def allowed_zone() -> set:

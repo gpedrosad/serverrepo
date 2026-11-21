@@ -666,19 +666,17 @@ def main() -> int:
     # Carteles
     signs = [
         dict(x=CITY_SIGN[0], y=CITY_SIGN[1], z=CITY_SIGN[2],
-             text="EL FOSO OLVIDADO\nBajada a las cuevas (nivel 20+).\nEntra por la trampilla."),
-        dict(x=122, y=39, z=Z9, text="EL FOSO OLVIDADO\nAntigua arena PvP. Ahora, cuevas de caza.\n"
-                                    "Nivel 20+: baja por la escalera del este.\n3 pisos. Al fondo, portal de vuelta.\n"
-                                    "Salida a la ciudad: escalera de mano del norte."),
-        dict(x=143, y=26, z=Z10, text="GALERIAS HUMEDAS\nNivel 20-45.\nMas abajo: Cavernas Profundas."),
+             text="THE FORGOTTEN PIT\nCave entrance (level 20+).\nEnter through the trapdoor."),
+        dict(x=122, y=39, z=Z9, text='THE FORGOTTEN PIT\nA former PvP arena, now hunting caves.\nLevel 20+: take the eastern stairs down.\n3 floors. Return portal at the end.\nExit to the city: northern ladder.'),
+        dict(x=143, y=26, z=Z10, text="DAMP GALLERIES\nLevel 20-45.\nBelow: Deep Caverns."),
         dict(x=cell_center(floors[Z11][2])[0] + 2, y=cell_center(floors[Z11][2])[1] + 3, z=Z11,
-             text="CAVERNAS PROFUNDAS\nNivel 45-80.\nCuidado con quaras y golems.\nAbajo: El Corazon."),
+             text="DEEP CAVERNS\nLevel 45-80.\nBeware of Quaras and Golems.\nBelow: the Heart."),
         dict(x=cell_center(floors[Z12][2])[0] + 2, y=cell_center(floors[Z12][2])[1] + 3, z=Z12,
-             text="EL CORAZON\nNivel 70+. Guardianes faraones.\nAl fondo: Orshabaal (nivel 100+)."),
+             text="THE HEART\nLevel 70+. Pharaoh guardians.\nIn the depths: Orshabaal (level 100+)."),
     ]
     if floors[Z12][6]:
         signs.append(dict(x=floors[Z12][6][0], y=floors[Z12][6][1], z=Z12,
-                          text="ORSHABAAL\nBoss de nivel 100+.\nEntra en grupo. Portal de vuelta al fondo."))
+                          text="ORSHABAAL\nLevel 100+ boss.\nBring a group. Return portal at the far end."))
     roomkit.patch_readables("<!-- BEGIN FORGOTTEN_PIT_SIGNS -->", "<!-- END FORGOTTEN_PIT_SIGNS -->", signs)
 
     # pvparenas.xml vacío: la arena PvP queda retirada.

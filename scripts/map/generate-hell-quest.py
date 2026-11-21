@@ -308,10 +308,10 @@ def build_surface(seed: int, bl):
     doors[(sx, sy + 2)] = LEVEL_FAUCES + 1000
 
     signs = {
-        (hx + 3, hy - 3): "ISLA DEL INFIERNO\nAl norte, el Cruce. Oeste: Campos de Ceniza.\nEste: Rios de Lava. Arriba: la Fortaleza y el Crater.",
-        (HUB[0] + 4, HUB[1] - 3): "EL CRUCE\nOeste: Campos de Ceniza. Este: Rios de Lava.\nNorte: Fortaleza del Culto y el Crater.",
-        (29, fy1 + 2): "FORTALEZA DEL CULTO\nLos brujos de fuego ya no rezan a nadie.",
-        (sx + 4, sy + 4): "LAS FAUCES DEL INFIERNO\nPuerta: nivel 80. Abajo cazan los perros del infierno.\nEn el Abismo, la puerta del Senor de la Ceniza pide nivel 100.",
+        (hx + 3, hy - 3): "HELL ISLAND\nNorth: the Crossroads. West: Ash Fields.\nEast: Lava Rivers. Beyond: the Fortress and the Crater.",
+        (HUB[0] + 4, HUB[1] - 3): "THE CROSSROADS\nWest: Ash Fields. East: Lava Rivers.\nNorth: Cult Fortress and the Crater.",
+        (29, fy1 + 2): "CULT FORTRESS\nThe fire warlocks no longer pray to anyone.",
+        (sx + 4, sy + 4): "THE MAW OF HELL\nGate: level 80. Hellhounds hunt below.\nIn the Abyss, the Ashlord's gate requires level 100.",
     }
     placed = {}
     for anchor, text in signs.items():

@@ -1,4 +1,4 @@
-"""Capataz de Hierro: Dwarf Guard 70 -> 189, hierro, cobre y casco con lampara.
+"""Iron Foreman: Dwarf Guard 70 -> 189, hierro, cobre y casco con lampara.
 Doc: docs/gameplay/DWARVEN_MINE.md. Detalles animados en las cuatro direcciones.
 """
 from sprite_kit import *  # noqa: F401,F403
@@ -41,5 +41,5 @@ def detail(f):
             f.set(cx + dx, cy, (171, 107, 53))
 
 
-PRESET = dict(name="Capataz de Hierro", source=70, target=189,
+PRESET = dict(name="Iron Foreman", source=70, target=189,
               parts=parts, palettes=palettes, detail=detail)

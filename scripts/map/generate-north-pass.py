@@ -405,10 +405,10 @@ def build_surface(seed: int, bl: Blocking):
     for c in ((px0 - 2, py - 1), (px1 + 2, py - 1)):
         tiles[c] = [tiles[c][0], LANTERN]
     signs = {
-        (ARRIVAL[0] + 2, ARRIVAL[1] - 1): "PASO DEL NORTE\nNorte: Tundra Helada y Cuevas del Dragon.\nPortal al sur: Retro76.",
-        (center[SNOW_LINE + 4] + 3, SNOW_LINE + 4): "TUNDRA HELADA\nLobos de invierno, osos polares y trolls.\nDicen que un yeti ronda el lago.",
-        (STAIRS[0] + 2, STAIRS[1]): "CUEVAS DEL DRAGON\nSolo para cazadores experimentados.",
-        (camp[0] + 2, camp[1] - 2): "Campamento de cazadores.\nDescansa junto al fuego.",
+        (ARRIVAL[0] + 2, ARRIVAL[1] - 1): "NORTH PASS\nNorth: Frozen Tundra and Dragon Caves.\nSouthern portal: Retro76.",
+        (center[SNOW_LINE + 4] + 3, SNOW_LINE + 4): "FROZEN TUNDRA\nWinter Wolves, Polar Bears and Trolls.\nA yeti is said to roam the lake.",
+        (STAIRS[0] + 2, STAIRS[1]): "DRAGON CAVES\nExperienced hunters only.",
+        (camp[0] + 2, camp[1] - 2): "Hunters' camp.\nRest by the fire.",
     }
     for c, _t in signs.items():
         tiles[c] = [tiles[c][0], SIGN]
@@ -987,7 +987,7 @@ def main() -> int:
 
     # --- carteles ---
     signs = {(X0 + c[0], Y0 + c[1], 7): t for c, t in info["signs"].items()}
-    signs[(FIELD_SIGN[0], FIELD_SIGN[1], 7)] = "PASO DEL NORTE\nBosque, Tundra Helada y Cuevas del Dragon.\nCuevas: nivel 60+."
+    signs[(FIELD_SIGN[0], FIELD_SIGN[1], 7)] = "NORTH PASS\nForest, Frozen Tundra and Dragon Caves.\nCaves: level 60+."
     rd = READABLES.read_text(encoding="latin-1")
     rd = re.sub(r"\t?<!-- BEGIN NORTH_PASS_SIGNS -->.*?<!-- END NORTH_PASS_SIGNS -->\n?", "", rd, flags=re.S)
     lines = ["\t<!-- BEGIN NORTH_PASS_SIGNS -->"]

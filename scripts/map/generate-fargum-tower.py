@@ -292,8 +292,7 @@ def main() -> int:
     # Cartel
     roomkit.patch_readables("<!-- BEGIN FARGUM_TOWER_SIGNS -->", "<!-- END FARGUM_TOWER_SIGNS -->", [
         dict(x=SIGN[0], y=SIGN[1], z=SIGN[2],
-             text="TORRE DEL BARQUERO\n5 pisos, un monstruo por piso.\n"
-                  "Tortuga -> Tortuga espinosa -> Cangrejo -> Quara -> Predator."),
+             text="FERRYMAN'S TOWER\n5 floors, one monster per floor.\nTortoise -> Thornback Tortoise -> Crab -> Quara -> Predator."),
     ])
 
     MANIFEST.write_text(json.dumps({

@@ -1,4 +1,4 @@
-"""Custodio del Lago: Stone Golem (67) -> 229; piedra azul, nucleo y grietas de luz.
+"""Lake Custodian: Stone Golem (67) -> 229; piedra azul, nucleo y grietas de luz.
 Doc: docs/gameplay/PETRIFIED_SANCTUARY.md. Los doce cuadros conservan la silueta de piedra.
 """
 from sprite_kit import *  # noqa: F401,F403
@@ -46,5 +46,5 @@ def detail(f):
                 f.set(cx + dx, cy + dy, (220, 255, 250) if d < 1.7 else (59, 216, 233))
 
 
-PRESET = dict(name="Custodio del Lago", source=67, target=229,
+PRESET = dict(name="Lake Custodian", source=67, target=229,
               parts=parts, palettes=palettes, detail=detail)

@@ -282,7 +282,7 @@ def main():
     signs = READABLES.read_text(encoding="latin-1")
     sign_text = block(
         signs, "MUTATED_SEWERS_SIGNS",
-        '\t<readable x="169" y="53" z="8" text="ALCANTARILLA PROFUNDA\\nNivel 8-20: ratas y slimes abajo.\\nAl fondo: Alcantarilla Mutada (nivel 25-45)."/>',
+        '\t<readable x="169" y="53" z="8" text="DEEP SEWERS\\nLevel 8-20: Rats and Slimes below.\\nBeyond: Mutated Sewers (level 25-45)."/>',
         "</readables>",
     )
     changed = sum(values.get(p) != ids for p, ids in cells.items())

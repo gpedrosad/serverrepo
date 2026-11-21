@@ -49,24 +49,24 @@ ROW_GROUND_FIX = {(160, 53): WHITE, (160, 54): WHITE, (160, 55): WHITE}  # base 
 
 # (clave, x del portal, destino, cartel, zonas cuyas vueltas llegan a este portal)
 PORTALS = [
-    ("isla", 156, (147, 462, 7), "ISLA NATURAL\n3 campamentos de Cyclops\nCueva de 3 pisos: la Reina",
+    ("isla", 156, (147, 462, 7), "NATURAL ISLAND\n3 Cyclops camps\nThree-floor cave: the Queen",
      [(124, 426, 187, 483, 7), (124, 426, 187, 483, 8), (124, 426, 187, 483, 9),
       (124, 426, 187, 483, 10)]),
-    ("catedral", 155, (148, 335, 7), "CATEDRAL OSCURA\nRuinas y cripta de 2 pisos\nDe Bandidos a Monjes Oscuros",
+    ("catedral", 155, (148, 335, 7), "DARK CATHEDRAL\nRuins and a two-floor crypt\nFrom Bandits to Dark Monks",
      [(85, 264, 183, 373, 7), (85, 264, 183, 373, 8), (85, 264, 183, 373, 9)]),
-    ("elvenbane", 157, (39, 346, 7), "ELVENBANE\nFortaleza elfica en 7 pisos.\nDe orcos y elfos al dragon de la torre.",
+    ("elvenbane", 157, (39, 346, 7), "ELVENBANE\nA seven-floor elven fortress.\nFrom orcs and elves to the tower dragon.",
      [(38, 296, 62, 317, 4), (38, 296, 62, 317, 5), (38, 296, 62, 317, 6),
       (18, 286, 72, 360, 7), (30, 288, 67, 349, 8), (33, 291, 67, 322, 9), (33, 291, 67, 322, 10)]),
-    ("valle", 158, (312, 360, 7), "VALLE DE LAS BESTIAS\nCaza mid-hard en 4 pisos\nDe Minotauros a Demonios",
+    ("valle", 158, (312, 360, 7), "BEAST VALLEY\nFour floors of challenging hunts\nFrom Minotaurs to Demons",
      [(262, 232, 361, 378, 7), (262, 232, 361, 378, 8), (262, 232, 361, 378, 9), (262, 232, 361, 378, 10),
       (449, 39, 489, 80, 7)]),
-    ("inferno", 159, (540, 440, 7), "POZOS DEL INFIERNO\nCueva de fuego en 4 pisos\nDe elementales a Furias",
+    ("inferno", 159, (540, 440, 7), "INFERNO PITS\nFour floors of fiery caves\nFrom elementals to Furies",
      [(490, 240, 589, 460, 7), (490, 240, 589, 460, 8), (490, 240, 589, 460, 9), (490, 240, 589, 460, 10)]),
-    ("crisol", 164, (605, 105, 0), "CRISOL\n3 puertas. Boss diario.\nBronce / Plata / Oro",
+    ("crisol", 164, (605, 105, 0), "THE CRUCIBLE\n3 gates. Daily boss.\nBronze / Silver / Gold",
      [(592, 90, 717, 125, 0)]),
-    ("wave", 166, (606, 223, 7), "WAVE ARENA\nClaro de la Selva: 20 oleadas\nEn grupo. Premio semanal",
+    ("wave", 166, (606, 223, 7), "WAVE ARENA\nJungle Clearing: 20 waves\nGroup challenge. Weekly rewards",
      [(595, 200, 620, 230, 7)]),
-    ("reloj", 168, (605, 327, 6), "RELOJ DE ARENA\n6 oleadas que suben de nivel\nEntra en el descanso",
+    ("reloj", 168, (605, 327, 6), "SAND CLOCK\n6 increasingly difficult waves\nEnter during the rest phase",
      [(595, 315, 615, 333, 6), (595, 315, 615, 333, 5)]),
 ]
 S_BEGIN, S_END = "<!-- BEGIN TEMPLE_PORTAL_SIGNS -->", "<!-- END TEMPLE_PORTAL_SIGNS -->"

@@ -2,9 +2,9 @@
 """El Crisol v3 — hub (PZ) + 3 arenas compactas en z0 (nov 2026).
 
   Hub "Sala del Crisol"   11x8, mármol, 3 plataformas de grupo contra la pared norte
-  Bronce "Foso de Arena"  11x9, arena y arenisca, calaveras y sangre
+  Bronce "Sand Pit"  11x9, arena y arenisca, calaveras y sangre
   Plata "Coliseo"         11x9, piedra gris, círculo central, perros guardianes
-  Oro "Trono de Fuego"    11x9, mármol negro, estrado del boss, alfombra, ríos de lava
+  Oro "Throne of Fire"    11x9, mármol negro, estrado del boss, alfombra, ríos de lava
 
 Las tres arenas comparten forma (ARENA_W x ARENA_H): mismos puntos de llegada, spawns y
 salida; solo cambia el tema. Todo se escribe en coordenadas locales de cada sala, así
@@ -53,11 +53,11 @@ HUB_STYLE = dict(floor=406, frame=407, walls="stone")
 LANDING = HUB.at(5, 5)
 RETURN_TP = HUB.at(5, 7)
 INFO_SIGN, INFO_LEVER, INFO_UID = HUB.at(0, 4), HUB.at(0, 5), 7203
-INFO_TEXT = "EL CRISOL\nPalanca: bosses de hoy y arenas ocupadas.\nSalida al templo: TP sur."
+INFO_TEXT = "THE CRUCIBLE\nLever: today's bosses and occupied arenas.\nReturn to the temple: southern portal."
 PADS = {   # columna izquierda de la plataforma 3x2 (filas 1-2); cartel y palanca en la fila 0
-    "bronze": dict(dx=0, floor=467, uid=7200, sign="PUERTA DE BRONCE\nFoso de Arena\nRiesgo bajo. Grupo: pisen la plataforma."),
-    "silver": dict(dx=4, floor=425, uid=7201, sign="PUERTA DE PLATA\nColiseo de Piedra\nRiesgo medio. Grupo: pisen la plataforma."),
-    "gold": dict(dx=8, floor=415, uid=7202, sign="PUERTA DE ORO\nTrono de Fuego\nBoss diario + arma rara."),
+    "bronze": dict(dx=0, floor=467, uid=7200, sign="BRONZE GATE\nSand Pit\nLow risk. Groups: stand on the platform."),
+    "silver": dict(dx=4, floor=425, uid=7201, sign="SILVER GATE\nStone Coliseum\nMedium risk. Groups: stand on the platform."),
+    "gold": dict(dx=8, floor=415, uid=7202, sign="GOLD GATE\nThrone of Fire\nDaily boss + rare weapon."),
 }
 
 ARENA_W, ARENA_H = 11, 9
@@ -68,11 +68,11 @@ ARRIVALS = [(5, 6), (4, 6), (6, 6), (5, 5), (4, 5), (6, 5), (3, 6)]   # = plataf
 # SPAWNS[0] = elite/boss sobre el estrado; el resto, el pack en la mitad norte
 SPAWNS = [(5, 1), (3, 2), (7, 2), (1, 1), (9, 1), (4, 3), (6, 3)]
 ARENAS = {
-    "bronze": dict(room=Room(615, ARENA_Y0, ARENA_W, ARENA_H, Z), name="Foso de Arena",
+    "bronze": dict(room=Room(615, ARENA_Y0, ARENA_W, ARENA_H, Z), name="Sand Pit",
                    floor=231, walls="sand", pillar=1549, guard=1451, brazier=1482, banner=None),
-    "silver": dict(room=Room(630, ARENA_Y0, ARENA_W, ARENA_H, Z), name="Coliseo de Piedra",
+    "silver": dict(room=Room(630, ARENA_Y0, ARENA_W, ARENA_H, Z), name="Stone Coliseum",
                    floor=424, walls="stone", pillar=1515, guard=1450, brazier=1482, banner=1870),
-    "gold": dict(room=Room(645, ARENA_Y0, ARENA_W, ARENA_H, Z), name="Trono de Fuego",
+    "gold": dict(room=Room(645, ARENA_Y0, ARENA_W, ARENA_H, Z), name="Throne of Fire",
                  floor=407, walls="brick", pillar=None, guard=1551, brazier=1486, banner=1812),
 }
 

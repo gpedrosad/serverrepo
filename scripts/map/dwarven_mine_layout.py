@@ -154,7 +154,7 @@ def build(values, otb):
             if p not in values and p not in cells:
                 cells[p] = [101]
         report[str(z)] = dict(walkable=len(walk), distanceToEnd=distances[path[-1]])
-    spawns.append((BOSS, 10, [("Capataz de Hierro", BOSS, 900)]))
+    spawns.append((BOSS, 10, [("Iron Foreman", BOSS, 900)]))
     # Antesala z8: dos bajadas, sin monstruos y con ambos retornos libres.
     shaft_floor = {(x, y) for x in range(195, 198) for y in range(58, 61)}
     shaft_tiles = C.cave_tiles(shaft_floor, C.grow(shaft_floor, 1), 250)

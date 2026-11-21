@@ -547,7 +547,7 @@
 <monster name="Thornwarden" file="thornwarden.xml" />
 <monster name="Lord of Elvenbane" file="lord of elvenbane.xml" />
 <!-- Santuario Petrificado -->
-<monster name="Custodio del Lago" file="custodio del lago.xml" />
+<monster name="Lake Custodian" file="custodio del lago.xml" />
 <!-- Mina Enana -->
-<monster name="Capataz de Hierro" file="capataz de hierro.xml" />
+<monster name="Iron Foreman" file="capataz de hierro.xml" />
 </monsters>

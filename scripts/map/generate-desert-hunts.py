@@ -206,12 +206,7 @@ SHIP = [
 ]
 # jefes en la casilla 'O' de su plano
 BOSSES = {"nido": ("Furious Ancient Scarab", 1800), "huesos": ("Omruc", 3600)}
-SIGN_TEXT = ("DESIERTO DE LAS RUINAS\n"
-             "Ruinas (8+), dunas del sur (10+), laguna y oasis (15+),\n"
-             "campamento de bandidos (20+), nido de escarabajos (30+),\n"
-             "templo de los lagartos (40+), campo de huesos (45+),\n"
-             "cienaga (50+), santuario de los djinn (60+).\nSigue el camino de piedra.\n"
-             "En el barco del muelle: piratas en cubierta (25+).")
+SIGN_TEXT = ('DESERT RUINS\nRuins (8+), southern dunes (10+), lagoon and oasis (15+),\nbandit camp (20+), scarab nest (30+),\nlizard temple (40+), bone field (45+),\nswamp (50+), djinn sanctuary (60+).\nFollow the stone path.\nShip at the dock: pirates on deck (25+).')
 SCATTER = [2725, 2725, 2726, 2723, 2724, 2728, 2731, 2732, 2735, 1357, 1358, 2784]   # palmas, cactus, piedras, mata seca
 SCATTER_EVERY = 24                            # una decoración cada tantas casillas de arena libre
 CARD = ((1, 0), (-1, 0), (0, 1), (0, -1))

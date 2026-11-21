@@ -182,8 +182,7 @@ def build_surface(seed: int, existing: dict, bl) -> tuple[dict, dict]:
     cands = [c for c in land if len(tiles[c]) == 1 and c not in (entry, access, landing)
              and abs(c[0] - access[0]) == 1 and abs(c[1] - access[1]) == 1]
     spot = min(cands, key=lambda c: (c[1] > access[1], c[0], c))
-    signs = {spot: "CUEVA DEL MINOTAURO\nAbajo, minotauros mas fuertes en cada piso.\n"
-                   "Al fondo del tercer piso, portal de vuelta."}
+    signs = {spot: 'MINOTAUR CAVE\nStronger minotaurs await on each floor below.\nReturn portal at the end of the third floor.'}
     tiles[spot].append(SIGN)
     return tiles, {"land": land, "bridge": bridge, "entry": entry, "landing": landing, "camp": camp,
                    "signs": signs, "start": start}

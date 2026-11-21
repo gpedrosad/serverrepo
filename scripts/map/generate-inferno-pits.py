@@ -318,13 +318,11 @@ def build_surface(seed: int, bl: Blocking):
             tiles[c] = [tiles[c][0], LANTERN]
 
     signs = {
-        (ARRIVAL[0] + 3, ARRIVAL[1] - 1): "POZOS DEL INFIERNO\nYerma de ceniza sobre los pozos.\n"
-                                          "Al norte: la Boca. Portal al sur: templo.",
-        (CROSS[0] + 3, CROSS[1] - 1): "EL VADO\nOeste: Campo de Brasas.\nNorte: La Jauria y la Boca.",
-        (EMBER[0] + 3, EMBER[1] + 6): "CAMPO DE BRASAS\nDiablos de fuego y elementales.",
-        (HOUNDS[0] + 3, HOUNDS[1] + 6): "LA JAURIA\nPerros del infierno entre las rocas.",
-        (sx + 4, sy + 5): "LA BOCA DEL POZO\nPuerta: nivel 90. Abajo, los Pozos de Ceniza.\n"
-                          "Al fondo, el Corazon pide nivel 100.",
+        (ARRIVAL[0] + 3, ARRIVAL[1] - 1): 'INFERNO PITS\nAshen wasteland above the pits.\nNorth: the Pit Mouth. Southern portal: temple.',
+        (CROSS[0] + 3, CROSS[1] - 1): "THE FORD\nWest: Ember Field.\nNorth: the Pack and the Pit Mouth.",
+        (EMBER[0] + 3, EMBER[1] + 6): "EMBER FIELD\nFire Devils and Fire Elementals.",
+        (HOUNDS[0] + 3, HOUNDS[1] + 6): "THE PACK\nHellhounds among the rocks.",
+        (sx + 4, sy + 5): 'THE PIT MOUTH\nGate: level 90. Ash Pits below.\nThe Heart at the far end requires level 100.',
     }
     placed = {}
     for anchor, text in signs.items():
@@ -811,8 +809,8 @@ def main() -> int:
     for (x, y), t in sorted(info["signs"].items()):
         lines.append(f'\t<readable x="{X0 + x}" y="{Y0 + y}" z="7" text="{t.replace(chr(10), chr(92) + "n")}"/>')
     lines.append(f'\t<readable x="{X0 + caves["sign10"][0]}" y="{Y0 + caves["sign10"][1]}" z="10" '
-                 f'text="CAMARA DE LAS ARMAS\\nCuatro cofres: cada heroe toma uno.\\n'
-                 f'Puerta: nivel {LEVEL_HEART}."/>')
+                 f'text="WEAPONS CHAMBER\\nFour chests: each hero chooses one.\\n'
+                 f'Gate: level {LEVEL_HEART}."/>')
     lines.append("\t<!-- END INFERNO_PITS_SIGNS -->\n")
     old = re.search(r"\t?<!-- BEGIN INFERNO_PITS_SIGNS -->.*?<!-- END INFERNO_PITS_SIGNS -->\n?", rd, flags=re.S)
     if old:

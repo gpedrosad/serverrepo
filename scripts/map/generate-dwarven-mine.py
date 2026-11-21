@@ -73,7 +73,7 @@ def main():
                                   "DWARVEN_MINE_SPAWNS (scripts/map/generate-petrified-sanctuary.py)",
                                   "DWARVEN_MINE_SPAWNS (scripts/map/generate-dwarven-mine.py)")
     sign_text = markers.block(READABLES.read_text(encoding="latin-1"), "DWARVEN_MINE_SIGNS",
-        '\t<readable x="194" y="60" z="7" text="MINA ENANA\\nDwarfs y soldados arriba.\\nGuardias, geomancers y el Capataz de Hierro al fondo."/>',
+        '\t<readable x="194" y="60" z="7" text="DWARVEN MINE\\nDwarfs and Soldiers above.\\nGuards, Geomancers and the Iron Foreman in the depths."/>',
         "</readables>").replace("DWARVEN_MINE_SIGNS (scripts/map/generate-petrified-sanctuary.py)",
                                 "DWARVEN_MINE_SIGNS (scripts/map/generate-dwarven-mine.py)")
     if args.dry_run:

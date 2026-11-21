@@ -83,7 +83,7 @@ STAGES = [(("Zombie",), 1, 120, 11),
           (("Undead Gladiator", "Undead Gladiator", "Zombie"), 2, 210, 10)]
 STAIR_CLEAR = 6                                 # nada a 6 del puente ni de la llegada
 
-SIGN_TEXT = "CAMINO DE LOS CAIDOS\\nZombies al principio,\\nUndead Gladiators\\nal fondo."
+SIGN_TEXT = "PATH OF THE FALLEN\\nZombies at the entrance,\\nUndead Gladiators\\nat the far end."
 
 
 def grow(cells, r: int) -> set:

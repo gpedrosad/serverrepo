@@ -288,7 +288,7 @@ def main():
     SPAWNS.write_text(text, encoding="latin-1")
     import roomkit
     roomkit.patch_readables("<!-- BEGIN ELF_WEST_SIGNS -->", "<!-- END ELF_WEST_SIGNS -->",
-        [dict(x=SIGN[0], y=SIGN[1], z=SIGN[2], text="RUINAS DEL SAUCE\nAl oeste: exploradores y arcanistas.\nEl santuario azul queda al fondo.")])
+        [dict(x=SIGN[0], y=SIGN[1], z=SIGN[2], text="WILLOW RUINS\nWest: scouts and arcanists.\nThe blue sanctuary lies at the far end.")])
     header = json.dumps(dict(name="Ruinas del Sauce", entry=ENTRY, land=len(land),
         walkable=walk, groups=GROUPS, light=LIGHT, sign=SIGN))[:-1]
     owned = {(*p, 7) for p in land | BRIDGE}

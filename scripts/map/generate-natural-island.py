@@ -126,8 +126,8 @@ SIZE = {
 }
 
 SIGNS = {
-    "arrival": "ISLA NATURAL\\nSigue el sendero: tres\\ncampamentos de Cyclops\\ny al final la cueva.",
-    "cave": "CUEVA DE PIEDRA\\nGolems, Shamblers y\\nun descenso a wyverns.\\nAl fondo, la Reina.",
+    "arrival": "NATURAL ISLAND\\nFollow the trail past three\\nCyclops camps\\nto the cave at the end.",
+    "cave": "STONE CAVE\\nGolems, Shamblers and\\na descent to Wyverns.\\nThe Queen awaits in the depths.",
 }
 
 

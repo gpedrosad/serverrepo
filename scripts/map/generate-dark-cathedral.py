@@ -136,11 +136,10 @@ HOLE_WEST = (10, 52)                        # bajada B: oeste, junto a la sala g
 PATHS = ([(x, 52) for x in range(15, 25)]                     # explanada -> sala gris del oeste
          + [(x, y) for x in (30, 31) for y in range(14, 20)])  # rellano -> brecha norte de la nave
 SIGNS = {
-    (33, 50): "CATEDRAL OSCURA\nAl norte, la nave.\nBajadas a la cripta: en la jungla\ny junto a la "
-              "sala gris.\nEste portal vuelve al templo.",
-    (28, 50): "NAVE DE LA CATEDRAL\nSolo monjes y muertos\nrezan aca.",
-    (18, 56): "SALA DE LOS BANCOS\nBancos viejos y escombros.\nAl oeste, la bajada a la cripta.",
-    (28, 8): "ACCESO A LA CRIPTA\nEscalera abajo.\nNo vuelvas solo.",
+    (33, 50): 'DARK CATHEDRAL\nNorth: the nave.\nCrypt entrances: in the jungle\nand beside the grey hall.\nThis portal returns to the temple.',
+    (28, 50): "CATHEDRAL NAVE\nOnly monks and the dead\npray here.",
+    (18, 56): "PEW HALL\nOld pews and rubble.\nWest: the descent to the crypt.",
+    (28, 8): "CRYPT ENTRANCE\nTake the stairs down.\nDo not return alone.",
 }
 
 # --- cripta (-1, z8): eje norte-sur en tramos + pasillos este-oeste ------------------------------

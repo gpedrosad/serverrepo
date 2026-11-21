@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<monster name="Custodio del Lago" level="60" maglevel="40" experience="2400" pushable="0" armor="36" defense="38" canpushitems="1" staticattack="50" changetarget="200" speed="190">
+<monster name="Lake Custodian" level="60" maglevel="40" experience="2400" pushable="0" armor="36" defense="38" canpushitems="1" staticattack="50" changetarget="200" speed="190">
     <health now="3300" max="3300"/>
     <look type="229" corpse="2952"/>
     <combat targetdistance="1" runonhealth="0"/>
@@ -14,8 +14,8 @@
         <defense immunity="invisible"/>
     </defenses>
     <voices>
-        <voice sentence="EL LAGO RECUERDA."/>
-        <voice sentence="LA PIEDRA NO DUERME."/>
+        <voice sentence="THE LAKE REMEMBERS."/>
+        <voice sentence="STONE NEVER SLEEPS."/>
         <voice sentence="KRRRAAAK..."/>
     </voices>
     <loot>

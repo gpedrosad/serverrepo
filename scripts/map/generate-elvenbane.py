@@ -540,9 +540,8 @@ def build_surface(plans, seed: int):
     sign_2 = (STAIR_ENTRY[0] + 2, STAIR_ENTRY[1] + 1)
     t[sign_1] = tile(GRASS, [SIGN])
     t[sign_2] = tile(GRASS, [SIGN])
-    signs = {sign_1: "ELVENBANE\nFortaleza elfica en 7 pisos.\nBaja a la cueva: el tunel llega\n"
-                     "al sotano del castillo.\nPortal al norte: templo.",
-             sign_2: "BAJADA A ELVENBANE\nTunel largo hasta el sotano.\nTrolls, orcos y enanos."}
+    signs = {sign_1: 'ELVENBANE\nA seven-floor elven fortress.\nEnter the cave: the tunnel leads\nto the castle basement.\nNorthern portal: temple.',
+             sign_2: "DESCENT TO ELVENBANE\nA long tunnel to the basement.\nTrolls, Orcs and Dwarfs."}
     return t, {"signs": signs, "castle_walls": walls, "mountains": mountain, "forest": forest,
                "no_coast": set(override) | mountain, "stones": stones}
 

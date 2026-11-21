@@ -83,7 +83,7 @@
       "x1": 625,
       "y1": 108,
       "z": 0,
-      "name": "Foso de Arena",
+      "name": "Sand Pit",
       "exit": [
         620,
         108,
@@ -170,7 +170,7 @@
       "x1": 640,
       "y1": 108,
       "z": 0,
-      "name": "Coliseo de Piedra",
+      "name": "Stone Coliseum",
       "exit": [
         635,
         108,
@@ -257,7 +257,7 @@
       "x1": 655,
       "y1": 108,
       "z": 0,
-      "name": "Trono de Fuego",
+      "name": "Throne of Fire",
       "exit": [
         650,
         108,
@@ -343,17 +343,17 @@
     {
       "x": 600,
       "y": 100,
-      "text": "PUERTA DE BRONCE\nFoso de Arena\nRiesgo bajo. Grupo: pisen la plataforma."
+      "text": "PUERTA DE BRONCE\nSand Pit\nRiesgo bajo. Grupo: pisen la plataforma."
     },
     {
       "x": 604,
       "y": 100,
-      "text": "PUERTA DE PLATA\nColiseo de Piedra\nRiesgo medio. Grupo: pisen la plataforma."
+      "text": "PUERTA DE PLATA\nStone Coliseum\nRiesgo medio. Grupo: pisen la plataforma."
     },
     {
       "x": 608,
       "y": 100,
-      "text": "PUERTA DE ORO\nTrono de Fuego\nBoss diario + arma rara."
+      "text": "PUERTA DE ORO\nThrone of Fire\nBoss diario + arma rara."
     },
     {
       "x": 600,

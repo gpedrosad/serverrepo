@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<monster name="Capataz de Hierro" level="45" maglevel="35" experience="1250" pushable="0" armor="30" defense="29" canpushitems="1" staticattack="50" changetarget="200" speed="180">
+<monster name="Iron Foreman" level="45" maglevel="35" experience="1250" pushable="0" armor="30" defense="29" canpushitems="1" staticattack="50" changetarget="200" speed="180">
     <health now="1800" max="1800"/>
     <look type="189" corpse="2983"/>
     <combat targetdistance="1" runonhealth="0"/>
@@ -13,9 +13,9 @@
         <defense immunity="invisible"/>
     </defenses>
     <voices>
-        <voice sentence="VUELVE AL TRABAJO!"/>
-        <voice sentence="ESTA VETA ES MIA!"/>
-        <voice sentence="EL HIERRO NO PERDONA."/>
+        <voice sentence="BACK TO WORK!"/>
+        <voice sentence="THIS VEIN IS MINE!"/>
+        <voice sentence="IRON SHOWS NO MERCY."/>
     </voices>
     <loot>
         <item id="2148" countmax="120" chance1="100000" chancemax="0"/>

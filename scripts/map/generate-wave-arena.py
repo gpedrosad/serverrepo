@@ -56,10 +56,9 @@ LANDING = CAMP.at(4, 3)
 RETURN_TP = CAMP.at(4, 4)
 PAD = dict(dx=3, dy=1, w=3, h=2)         # plataforma de grupo en el campamento
 CAMP_SIGNS = {
-    CAMP.at(3, 0): "WAVE ARENA\nClaro de la Selva. 20 oleadas, jefe cada 5.\n"
-                   "Grupo: pisen la plataforma y tiren la palanca.",
-    CAMP.at(6, 0): "RANKING SEMANAL\nCuenta la ultima oleada LIMPIA.\nPremio la primera vez en la semana: 5/10/15/20.",
-    ARENA.at(6, 10): "Izquierda: siguiente oleada (sala limpia).\nDerecha: retirarse y guardar la marca.",
+    CAMP.at(3, 0): 'WAVE ARENA\nJungle Clearing. 20 waves, a boss every 5.\nGroups: stand on the platform and pull the lever.',
+    CAMP.at(6, 0): "WEEKLY RANKING\nYour last CLEARED wave counts.\nFirst weekly clear rewards: 5/10/15/20.",
+    ARENA.at(6, 10): "Left: next wave (clear the room first).\nRight: retire and save your score.",
 }
 # llegada del grupo al sur del claro; el primero es el que tira (tope = plataforma 3x2 + 1)
 ARRIVALS = [(6, 9), (5, 9), (7, 9), (6, 8), (5, 8), (7, 8), (4, 9)]

@@ -1,5 +1,7 @@
 # Mina Enana — Vetas de Cobre
 
+> Nombres y carteles in-game en inglés: [SERVER_LANGUAGE.md](SERVER_LANGUAGE.md).
+
 Hunt de nivel orientativo **20–50**, con entrada en **195,59,7**, en el desvío norte
 del camino oriental hacia el desierto. Acceso discreto con agujero al pie de la roca
 y cartel lateral. Se conserva el pasto original; el camino principal permanece libre.
@@ -29,7 +31,7 @@ braseros y antorchas ámbar. La forja tiene losas y un yunque con dos braseros.
 La mina solo ocupa roca/vacío. En la pantalla de la antesala se cubren **150 tiles
 de lava desnuda impasable** con roca, conservando todos los pisos y spawns vecinos.
 
-## Capataz de Hierro
+## Iron Foreman
 
 Look propio **189**, basado en Dwarf Guard 70, con hierro oscuro, detalles de cobre
 y lámpara animada en el casco. Doce cuadros; cuatro direcciones. Cadáver 2983 del guardia.

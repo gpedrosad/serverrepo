@@ -1,4 +1,6 @@
-# Santuario Petrificado — Custodio del Lago
+# Santuario Petrificado — Lake Custodian
+
+> Nombres y carteles in-game en inglés: [SERVER_LANGUAGE.md](SERVER_LANGUAGE.md).
 
 Zona de caza bajo el lago de las [Ruinas del Sauce](../items-and-map/ELF_WEST.md).
 Entrada en **94,74,7**, al extremo occidental del puente. No usa la casa Willow Nook.
@@ -22,7 +24,7 @@ El relleno 101 es tierra sólida, sin lava. Se completan pantalla y techo solo e
 | Galería central | Stone Golem, parejas | 170 s | 12 |
 | Transición | Stone Golem / Crystal Spider, sueltos | 200 s | 12 |
 | Fondo | Crystal Spider, parejas | 240 s | 12 |
-| Altar 24,41,9 | Custodio del Lago | 900 s | sala reservada |
+| Altar 24,41,9 | Lake Custodian | 900 s | sala reservada |
 
 Total: **6 Gargoyles, 11 Stone Golems, 10 Crystal Spiders y un jefe**.
 Densidad: una criatura por 48,2 casillas. Las etapas se calculan por distancia caminando,
@@ -30,7 +32,7 @@ no por proximidad en el plano; sin spawns a seis casillas de la escalera.
 Nivel orientativo: entrada 25–40, cristales 55–75 y jefe 60+ con equipo o grupo.
 Estos rangos y el balance están pendientes de juego real.
 
-## Custodio del Lago
+## Lake Custodian
 
 Estatua agrietada con núcleo turquesa que late y grietas luminosas.
 Look **229**, basado en Stone Golem **67**: doce cuadros, cuatro direcciones.

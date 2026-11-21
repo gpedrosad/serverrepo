@@ -96,9 +96,9 @@ TOWERS = [
 ]
 
 SIGNS = {
-    "claro": "TORRE DEL KONGRA\n3 pisos. Kongra abajo;\nlos rojos rugen arriba.",
-    "sur": "TORRE SUR DEL KONGRA\n3 pisos; los rojos más duros viven arriba.",
-    "norte": "ATALAYA DEL KONGRA\n2 pisos. Los rojos miran desde arriba.",
+    "claro": "KONGRA TOWER\n3 floors. Kongras below;\nRed Kongras roar above.",
+    "sur": "SOUTH KONGRA TOWER\n3 floors; the strongest Red Kongras live above.",
+    "norte": "KONGRA WATCHTOWER\n2 floors. Red Kongras watch from above.",
 }
 
 

@@ -369,8 +369,7 @@ def main() -> int:
     SPAWNS.write_text(sp, encoding="latin-1")
     roomkit.patch_readables("<!-- BEGIN DRAGON_SPOT_SIGNS -->", "<!-- END DRAGON_SPOT_SIGNS -->", [
         dict(x=SIGN[0], y=SIGN[1], z=SIGN[2],
-             text="SPOT DEL DRAGON NEGRO\nBaja por el agujero y sigue el tunel.\n"
-                  "Si te aprieta, baja por el agujero de la isla y vuelve a subir."),
+             text="BLACK DRAGON HUNT\nEnter the hole and follow the tunnel.\nIf cornered, use the island's hole and climb back up."),
     ])
     MANIFEST.write_text(json.dumps({
         "name": "Spot del Dragón Negro", "box": list(Z7_BOX), "hunter_isle": HUNTER_ISLE, "dragon_isle": DRAGON_ISLE,

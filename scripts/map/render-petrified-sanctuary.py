@@ -25,7 +25,7 @@ def main():
     looks = {}
     for m in registry:
         name = m.get("name")
-        if name not in ("Gargoyle", "Stone Golem", "Crystal Spider", "Custodio del Lago"):
+        if name not in ("Gargoyle", "Stone Golem", "Crystal Spider", "Lake Custodian"):
             continue
         look = ET.parse(DATA / "monster" / m.get("file")).getroot().find("look")
         looks[name] = {k: int(v) for k, v in look.attrib.items() if k != "corpse"}
@@ -52,7 +52,7 @@ def main():
         ("entrada", "Entrada en la orilla del lago", (85, 67, 103, 77), 7),
         ("galeria", "Galeria de las gargolas", (46, 72, 64, 82), 9),
         ("cristales", "Camaras de cristal", (45, 35, 63, 45), 9),
-        ("custodio", "Custodio del Lago", (16, 35, 34, 45), 9),
+        ("custodio", "Lake Custodian", (16, 35, 34, 45), 9),
     ]
     font = ImageFont.truetype("/System/Library/Fonts/Supplemental/Arial.ttf", 22)
     small = ImageFont.truetype("/System/Library/Fonts/Supplemental/Arial.ttf", 16)

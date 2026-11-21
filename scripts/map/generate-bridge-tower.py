@@ -346,8 +346,7 @@ def main() -> int:
 
     roomkit.patch_readables("<!-- BEGIN BRIDGE_TOWER_SIGNS -->", "<!-- END BRIDGE_TOWER_SIGNS -->", [
         dict(x=SIGN[0], y=SIGN[1], z=SIGN[2],
-             text="TORRE DEL PUENTE\n6 pisos en medio del rio.\n"
-                  "Piratas abajo, quaras y ahogados arriba,\ncada piso mas fuerte."),
+             text='BRIDGE TOWER\n6 floors in the middle of the river.\nPirates below, Quaras and Drowned creatures above,\neach floor stronger than the last.'),
     ])
 
     MANIFEST.write_text(json.dumps({
