@@ -1,5 +1,6 @@
 -- Dark Rodo (runas, backpacks de runas, fluidos, wands y rods).
 RUNE_BUYS = {
+	{keys = {'frost mine rune', 'frost mine'}, itemid = 20369, unitPrice = 1000, runeCharges = 1},
 	{keys = {'sudden death', 'sd'}, itemid = 2268, unitPrice = 250, runeCharges = 1},
 	{keys = {'ultimate healing', 'uh'}, itemid = 2273, unitPrice = 200, runeCharges = 2},
 	{keys = {'great fireball', 'gfb'}, itemid = 2304, unitPrice = 45, runeCharges = 3},
@@ -43,7 +44,7 @@ local function backpackSummary()
 end
 
 RUNES_BACKPACKS = 'Rune backpacks (' .. BP_RUNES .. ' runes + backpack): ' .. backpackSummary() .. '.'
-RUNES_HELP = 'Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". '
+RUNES_HELP = 'Runes: HMM 15gp, UH 200gp, GFB 45gp, explosion 35gp, SD 250gp, Frost Mine 1,000gp (1 charge, PvP only), blank 10gp. Say any amount, e.g. "3 sd" or "10 uh". '
 	.. RUNES_BACKPACKS .. ' Mana fluid 100gp, strong mana potion (SMP) 250gp. Say "wands" or "rods" for magic weapons.'
 
 local function summarizeCatalog(entries, groupName)

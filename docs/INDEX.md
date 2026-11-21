@@ -129,6 +129,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/PADRINAZGO.md`](gameplay/PADRINAZGO.md) | Padrinazgo (`!padrino`): un nuevo (nivel ≤ 15) elige padrino (nivel ≥ 30); al llegar a 20/35/50/80/100 los dos ganan oro y caja, aviso a todos. `data/sponsors.xml` runtime. Prueba con bots `test-sponsor.py`. |
 | [`gameplay/SUMMONS.md`](gameplay/SUMMONS.md) | Summons de jugadores: velocidad del dueño, siempre un paso detrás, cambian de lugar al darse vuelta y aparecen a su lado al cambiar de piso. Prueba con bots `test-summon-follow.py`. |
 | [`gameplay/ANCHOR_RUNE.md`](gameplay/ANCHOR_RUNE.md) | Anchor Rune (2296): root de 1s (no paralyze) para war/combos. |
+| [`gameplay/FROST_MINE.md`](gameplay/FROST_MINE.md) | Frost Mine Rune (20369): comprable en Dark Rodo, fuego azul 20370, una detonación al pisar otro jugador; solo PvP, 1 s de armado, 30 s y límite de 3. |
 | [`gameplay/CRIMSON_CAGE_RUNE.md`](gameplay/CRIMSON_CAGE_RUNE.md) | Crimson Cage Rune (20273, `adevo grav res`): encierra al blanco en 8 paredes rojas por 3 s (evento propio, no el decay de 5 s). |
 | [`gameplay/SPELL_CAST_VISIBILITY.md`](gameplay/SPELL_CAST_VISIBILITY.md) | Visibilidad del cast de hechizos (efectos visuales). |
 | [`gameplay/SPELL_EXORI_GRAN.md`](gameplay/SPELL_EXORI_GRAN.md) | Hechizo exori gran: balance, área, daño. |

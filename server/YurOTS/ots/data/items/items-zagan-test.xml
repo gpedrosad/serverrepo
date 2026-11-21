@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <items>
+<item id="20369" weight="2.1"/> <!-- Frost Mine: one charge, shop only -->
 <!-- rune weight = oz per charge (Tibia 7.6 standard) -->
 <item id="2260" weight="1.2"/>		-- blank rune
 <item id="2261" weight="1.2"/>		-- destroy field
