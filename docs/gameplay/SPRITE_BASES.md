@@ -72,7 +72,7 @@ Receta: [`SPRITE_RECOLOR_GUIDE.md`](SPRITE_RECOLOR_GUIDE.md).
 | 64 | 1x1 | Elf Scout | dark 47, orange 38, yellow 6, red 5 | `elvenbane-ranger` |
 | 65 | 1x1 | Angry Mummy, Enraged Mummy, Furious Mummy, Mummy | orange 50, yellow 27, dark 22 |  |
 | 66 | 1x1 | Angry Dwarf Geomancer, Dwarf Geomancer, Enraged Dwarf Geomancer, Furious Dwarf Geomancer | dark 42, red 37, orange 10, gray 6 |  |
-| 67 | 2x2 | Angry Stone Golem, Crucible Frostwarden, Enraged Stone Golem, Furious Stone Golem, Grorlam, Stone Golem | gray 81, dark 16 |  |
+| 67 | 2x2 | Angry Stone Golem, Crucible Frostwarden, Enraged Stone Golem, Furious Stone Golem, Grorlam, Stone Golem | gray 81, dark 16 | `lake-custodian` |
 | 68 | 1x1 | Angry Vampire, Enraged Vampire, Furious Vampire, Vampire | dark 71, gray 17, orange 6 |  |
 | 69 | 1x1 | Angry Dwarf, Dwarf, Enraged Dwarf, Furious Dwarf | dark 42, orange 37, yellow 14 |  |
 | 70 | 1x1 | Angry Dwarf Guard, Dwarf Guard, Enraged Dwarf Guard, Furious Dwarf Guard | dark 46, orange 36, gray 14 |  |

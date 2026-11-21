@@ -546,4 +546,6 @@
 <monster name="Orc Warchief" file="orc warchief.xml" />
 <monster name="Thornwarden" file="thornwarden.xml" />
 <monster name="Lord of Elvenbane" file="lord of elvenbane.xml" />
+<!-- Santuario Petrificado -->
+<monster name="Custodio del Lago" file="custodio del lago.xml" />
 </monsters>
