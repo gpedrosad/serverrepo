@@ -76,7 +76,27 @@ idéntico y los 14.896 sprites anteriores intactos; tres sprites nuevos. Los dos
 conservan todos sus nodos previos y agregan únicamente 20369/20370. Lua/XML/Python
 parsean correctamente. No se modifica mapa ni runtime de jugadores.
 
-**Pendiente:** recompilación C++ y aplicación en la ThinkPad, autorizadas por Gonzalo;
-no se han ejecutado builds, suites, bots ni pruebas in-game de esta runa.
-Publicar DAT/SPR antes de habilitarla. Ver [SPELL_RUNTIME.md](SPELL_RUNTIME.md),
-[PVP_SYSTEM.md](../PVP_SYSTEM.md) y [deploy](../systems/THINKPAD_TEST_SERVER.md).
+## Despliegue — 21 nov 2026
+
+Aplicada con autorización de Gonzalo. Código **`6e35830`**, incluyendo la corrección
+por API pública. Compilación en carpeta aparte `~/build/deploy-frost-mine-20261121-184421`;
+primera pasada detectó la llamada protegida, corregida antes de publicar. Build final:
+**54,3 s, 0 errores y 0 advertencias**. Los logs de ambas pasadas quedan en el respaldo.
+SHA-256 del binario instalado: `2a925a6050f8e76bae1b4e78692447bcece728b1fb1c4600ced6aaebf45ecc94`.
+
+Cliente publicado primero, commit **`a52de82`**: DAT `aef013a3`, SPR `bd9c5e88`;
+minimapa sin cambios (`bef2f1ef`). Los 774 archivos coinciden entre Mac/Windows,
+ambos ZIPs y manifests del updater en HTTP 8080/8076. Solo cambiaron DAT/SPR.
+
+Respaldo `~/backups/pre-deploy-20261121-184421-frost-mine`, renovado tras save y cierre.
+Se hizo ff-merge sin solapamientos, save inmediato, `docker stop -t 45`, copia del
+binario mediante contenedor y `docker start`. Cierre ordenado; carga en **1,002 s**,
+probe OK (**9,5 ms**), healthy y 0 reinicios automáticos; arranque sin errores/avisos.
+Conservados: 1 cuenta, 8 archivos de personajes con sus inventarios/depots, 35 archivos
+de casas, dueños/permisos, houseitems, sponsors y config local. Los cambios previos
+sin commitear del servidor permanecen intactos.
+
+No se ejecutaron suites, bots ni pruebas in-game, según la indicación previa del usuario.
+Queda pendiente la comprobación manual de compra, armado, detonación y restricciones PvP.
+Ver [SPELL_RUNTIME.md](SPELL_RUNTIME.md), [PVP_SYSTEM.md](../PVP_SYSTEM.md)
+y [deploy](../systems/THINKPAD_TEST_SERVER.md).
