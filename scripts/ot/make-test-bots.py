@@ -20,6 +20,8 @@ CHARS = [("Bot Sorc", 1, 60, 500, 2500, 70, 2268), ("Bot Druid", 2, 60, 500, 250
          ("Bot Pally", 3, 60, 800, 1200, 25, 2313), ("Bot Knight", 4, 60, 1200, 600, 9, 2304),
          ("Bot Mage", 1, 20, 185, 500, 30, 2273), ("Bot Tank", 4, 120, 2500, 900, 10, 2305)]
 ACCOUNT, GM_ACCOUNT = 111111, 111112
+# Otra cuenta, para lo que no deja mezclar personajes de la misma (padrinazgo: PADRINAZGO.md)
+NEWBIE_ACCOUNT, NEWBIE = 111113, ("Bot Novato", 4, 8, 185, 35, 0, 2544)
 
 
 def player(name, account, voc, access, level, hp, mana, mlvl, ammo, pos, spells):
@@ -70,6 +72,9 @@ def main() -> int:
     for name, voc, level, hp, mana, mlvl, ammo in CHARS:
         (data / "players" / f"{name.lower()}.xml").write_text(
             player(name, ACCOUNT, voc, 0, level, hp, mana, mlvl, ammo, pos, spells), encoding="latin-1")
+    name, voc, level, hp, mana, mlvl, ammo = NEWBIE
+    (data / "players" / f"{name.lower()}.xml").write_text(
+        player(name, NEWBIE_ACCOUNT, voc, 0, level, hp, mana, mlvl, ammo, pos, spells), encoding="latin-1")
     (data / "players" / "bot gm.xml").write_text(
         player("Bot GM", GM_ACCOUNT, 0, 3, 100, 5000, 5000, 50, 2268, pos, spells), encoding="latin-1")
 
@@ -79,7 +84,9 @@ def main() -> int:
         account.format(args.password, "".join(f'\t\t<character name="{c[0]}" />\n' for c in CHARS)))
     (data / "accounts" / f"{GM_ACCOUNT}.xml").write_text(
         account.format(args.password, '\t\t<character name="Bot GM" />\n'))
-    print(f"ok: {len(CHARS) + 1} personajes en {data} (cuentas {ACCOUNT} y {GM_ACCOUNT})")
+    (data / "accounts" / f"{NEWBIE_ACCOUNT}.xml").write_text(
+        account.format(args.password, f'\t\t<character name="{NEWBIE[0]}" />\n'))
+    print(f"ok: {len(CHARS) + 2} personajes en {data} (cuentas {ACCOUNT}, {GM_ACCOUNT} y {NEWBIE_ACCOUNT})")
     return 0
 
 

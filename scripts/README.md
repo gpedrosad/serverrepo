@@ -109,6 +109,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | `play-yurots-client.sh` / `open-rme.sh` | Cliente y RME locales |
 | `patch-tibia760-client.py` | Patcher cliente 7.6 |
 | `publish_client.py` | Publica el cliente Retro76 (updater + zips; el de Mac con `Retro76.app`). Doc: `docs/CLIENT_UPDATER_RETRO76.md` |
+| `make_level_gifts.py` | Dibuja las 6 cajas de regalo de nivel recoloreando el present de 7.6; `--preview` ([LEVEL_UP_REWARDS.md](../docs/gameplay/LEVEL_UP_REWARDS.md)) |
 | `make_mac_icon.py` | Ícono de `Retro76.app` (`.icns`) y de la ventana del cliente (`clienticon.png`) |
 
 ### ot / web / deploy
@@ -118,6 +119,8 @@ Ver comandos de arriba; deploy: ver abajo.
 | Script | Uso |
 |--------|-----|
 | `ot/exercise-server.py` | Bots que usan y maltratan un servidor de prueba ([SANITIZER_TESTS.md](../docs/systems/SANITIZER_TESTS.md)) |
+| `ot/test-level-gifts.py` | Prueba con bots en un servidor aparte: cajas por nivel, abrirlas, no repetir y aviso de raros ([LEVEL_UP_REWARDS.md](../docs/gameplay/LEVEL_UP_REWARDS.md)) |
+| `ot/test-sponsor.py` | Prueba con bots del padrinazgo: reglas, aceptar, hitos con el padrino conectado y desconectado, sin repetir ([PADRINAZGO.md](../docs/gameplay/PADRINAZGO.md)) |
 | `ot/test-summon-follow.py` | Prueba con bots en un servidor aparte: el summon sigue al dueño a un paso, con su velocidad y al cambiar de piso ([SUMMONS.md](../docs/gameplay/SUMMONS.md)) |
 
 ## Deploy

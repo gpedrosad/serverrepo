@@ -168,6 +168,7 @@ public:
 	static int luaActionDoPlayerAddMana(lua_State *L);
 	static int luaActionDoPlayerAddItem(lua_State *L);
 	static int luaActionDoPlayerSendTextMessage(lua_State *L);
+	static int luaActionDoBroadcastMessage(lua_State *L);
 	static int luaActionDoShowTextWindow(lua_State *L);
 	static int luaActionDoDecayItem(lua_State *L);
 	static int luaActionDoCreateItem(lua_State *L);

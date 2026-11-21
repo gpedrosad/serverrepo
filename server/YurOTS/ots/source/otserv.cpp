@@ -55,6 +55,7 @@
 #include "trainingarea.h"
 #include "readables.h"
 #include "private_trainers.h"
+#include "sponsor.h"
 #include "aac.h"
 
 	#include <fcntl.h>
@@ -704,6 +705,14 @@ int main(int argc, char *argv[])
 	if (!PrivateTrainers::Load(&g_game))
 	{
 		ErrorMessage("Could not load private_trainers.xml!");
+		return -1;
+	}
+	std::cout << "[done]" << std::endl;
+
+	std::cout << ":: Loading sponsors.xml...          ";
+	if (!Sponsors::Load())
+	{
+		ErrorMessage("Could not load sponsors.xml!");
 		return -1;
 	}
 	std::cout << "[done]" << std::endl;

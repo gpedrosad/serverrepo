@@ -50,14 +50,18 @@ oro hasta 120 (100 %), platino hasta 3 (20 %), esmeraldas hasta 2 (10 %), dwarve
 ## Assets y reproducción
 
 Ocho decoraciones importadas **píxel por píxel de Tibia 8.60**, sin reescalar.
-Server **20354–20361**, client **5090–5097** (entradas nuevas antes vacías):
+Server **20360–20367**, client **5096–5103** (entradas nuevas antes vacías):
 seis rieles, vagoneta y apoyo de madera 2x2. Rieles transitables, decoración sin
 pickup/move. Prototipos 1794 (alfombra), 1285 (carro fijo) y 1515 (apoyo 2x2).
 Los sprites origen son client IDs 7121–7126, 7131 y 7135 de 8.60.
 
+Al integrar main se reasignaron los IDs de la mina: **20354–20359 / 5090–5095**
+ya son regalos de nivel publicados. Se conservan esos regalos y el efecto 50 intactos.
+Verificar las reservas otra vez antes del push si hay otras sesiones trabajando.
+
 ```sh
 python3.11 scripts/client-rme/import_dwarven_mine_sprites.py --client DIR_860
-python3.11 scripts/client-rme/add_custom_items.py --things devtools/rme/rme-client-760 --only 20354 20355 20356 20357 20358 20359 20360 20361
+python3.11 scripts/client-rme/add_custom_items.py --things devtools/rme/rme-client-760 --only 20360 20361 20362 20363 20364 20365 20366 20367
 python3.11 scripts/client-rme/sprite_tool.py check iron-foreman
 python3.11 scripts/map/generate-dwarven-mine.py --dry-run
 python3.11 scripts/map/generate-dwarven-mine.py
@@ -84,10 +88,10 @@ otras sesiones y los rechaza. Segunda pasada: **0 cambios**. Respalda en `backup
 
 Auditorías: carga OTBM **0 errores**, techo sin vistas superiores, casas sincronizadas,
 **11 lockers con depotid=1**, 156 casillas del paso público conectadas y spawns previos
-idénticos. DAT solo cambia ocho entradas y look 189; 14.855 sprites previos y todos los
+idénticos. DAT solo cambia ocho entradas y look 189; 14.871 sprites previos y todos los
 nodos OTB anteriores idénticos. Sintaxis Python/Lua y registros del jefe revisados.
 
 Por indicación del usuario no se levantaron clientes, instancias ni suites de pruebas.
 Las imágenes son renders nativos con los spawns del mapa, **no capturas in-game**.
 **Deploy pendiente:** publicar DAT/SPR y minimapa antes de activar mapa/monstruo siguiendo
-`THINKPAD_TEST_SERVER.md`. No se reinició la ThinkPad; combate y depot in-game pendientes.
+`THINKPAD_TEST_SERVER.md`. Este cambio no se desplegó en la ThinkPad; combate y depot in-game pendientes.

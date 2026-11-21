@@ -19,6 +19,9 @@ los efectos de 7.6 (figuras llenas, 4–5 tonos, contorno oscuro, chispas en cru
   NM_ME_STANCE_GUARD      42  utito tera: escudo de acero y oro con un brillo que lo cruza
   NM_ME_BLOOD_SPIRAL      43  utamo mort: gotas de sangre que forman un orbe de maná y estalla
 
+Pack "levelup" (va después de Melee Relics, 47-49):
+  NM_ME_LEVEL_UP          50  subir de nivel: columna dorada, estrella y confeti que cae
+
 Uso:
   python3.11 scripts/client-rme/add_drawn_effects.py --pack spells --preview /tmp/spells.png  # vista previa
   python3.11 scripts/client-rme/add_drawn_effects.py --pack spells devtools/rme/rme-client-760
@@ -646,6 +649,48 @@ def blood_spiral_frames():
     return frames
 
 
+# --- 50: subir de nivel (pack "levelup") ---------------------------------------------------------------
+
+def level_up_frames():
+    """NM_ME_LEVEL_UP: columna de luz dorada que sube desde los pies, estrella arriba y confeti de colores
+    que estalla y cae. Lo ven todos los que están cerca (Player::onLevelAdvance)."""
+    confetti = [PETAL, AQUA, LEAF, GOLD, MANA, BLOOD]
+    outlines = [OL_PETAL, OL_AQUA, OL_LEAF, OL_GOLD, OL_MANA, OL_BLOOD]
+    rng = np.random.default_rng(50)
+    bits = []
+    for i in range(13):                                   # (ángulo, velocidad, color, salida)
+        a = math.radians(i * 360 / 13 + rng.uniform(-12, 12))
+        bits.append((a, rng.uniform(4.0, 8.5), (i * 5) % len(confetti), rng.uniform(-1.5, 1.5)))
+    # (alto de la columna: y de arriba, ancho)
+    beam = {0: (22, 4.0), 1: (12, 6.0), 2: (2, 8.0), 3: (0, 9.0), 4: (0, 7.0), 5: (2, 4.0)}
+    frames = []
+    for k in range(10):
+        fr = Frame()
+        if k <= 4:                                        # resplandor en los pies
+            blob(fr, 16, 27.5, (3.0, 4.0, 4.6, 4.6, 3.6)[k], GOLD, OL_GOLD, seed=500 + k, amp=0.12, light=0.1)
+        if k in beam:
+            top, w = beam[k]
+            capsule(fr, [(16, 28), (16, top + w / 2)], w, GOLD, OL_GOLD)
+            if w >= 6:                                    # centro blanco
+                capsule(fr, [(16, 27), (16, top + w / 2 + 1)], w * 0.38, GOLD[2:] + [WHITE], None, shade=0.99)
+        if 1 <= k <= 5:                                   # chispas que suben dentro de la luz
+            for i in range(3):
+                y = 26 - ((k * 6 + i * 9) % 24)
+                fr.sparkle(16 + (-3, 0, 3)[i], y, 1, GOLD)
+        if 3 <= k <= 7:                                   # estrella arriba
+            fr.sparkle(16, 5, (3, 3, 2, 2, 1)[k - 3], GOLD)
+        if k >= 4:                                        # confeti: sale de arriba de la luz y cae
+            t = (k - 3) / 6
+            for a, v, c, off in bits:
+                x = 16 + off + math.cos(a) * v * t * 1.7
+                y = 10 + off * 0.6 + math.sin(a) * v * t * 1.4 + 16 * t * t
+                if 0 <= x < 32 and 0 <= y < 32:
+                    blob(fr, x, y, 1.15 if k < 8 else 0.9, confetti[c], outlines[c], seed=520 + c, amp=0.0,
+                         light=0.2)
+        frames.append(fr.pixels())
+    return frames
+
+
 # base = (efectos, proyectiles) del .dat antes del pack. light = (intensidad, color 6x6x6) o None.
 # Cada efecto puede llevar su propia luz como tercer elemento de la tupla; si no, va la del pack.
 PACKS = {
@@ -663,6 +708,9 @@ PACKS = {
                    ("NM_ME_STANCE_GUARD", stance_guard_frames, (1, 5 * 36 + 5 * 6 + 3)),      # 42 acero y oro
                    ("NM_ME_BLOOD_SPIRAL", blood_spiral_frames, (2, 1 * 36 + 2 * 6 + 5)),      # 43 maná
                ]},
+    # Subir de nivel (nov 2026). Va después de Paladin Stars (44-46) y Melee Relics (47-49).
+    "levelup": {"base": (50, 21), "light": (3, 5 * 36 + 4 * 6 + 0),
+                "effects": [("NM_ME_LEVEL_UP", level_up_frames)]},
 }
 
 

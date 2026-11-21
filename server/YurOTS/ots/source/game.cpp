@@ -1351,6 +1351,43 @@ static void notifyPlayerKill(Player* victim, Player* killer)
 	}
 }
 
+// Aviso a todo el server cuando sale un raro (docs/gameplay/LEVEL_UP_REWARDS.md): un ítem marcado como raro
+// (isHighlightedLootItem) que este monstruo suelta con chance base <= rarelootbroadcastchance (de 100000).
+static bool isBroadcastRareLoot(Monster* monster, unsigned short itemId)
+{
+	if(g_config.RARE_LOOT_BROADCAST_CHANCE <= 0 || !isHighlightedLootItem(itemId))
+		return false;
+	MonsterType* type = monster->getMonsterType();
+	if(!type)
+		return false;
+	const unsigned long chance = type->getLootChance(itemId);
+	return chance > 0 && chance <= (unsigned long)g_config.RARE_LOOT_BROADCAST_CHANCE;
+}
+
+static void broadcastRareLoot(Player* finder, Monster* monster, unsigned short itemId)
+{
+	std::string monsterName = monster->getName();
+	std::transform(monsterName.begin(), monsterName.end(), monsterName.begin(), (int(*)(int))tolower);
+	std::ostringstream msg;
+	const std::string& itemName = Item::items[itemId].name;
+	const bool plural = itemName.compare(0, 5, "boots") == 0 ||
+		(itemName.size() >= 5 && itemName.compare(itemName.size() - 5, 5, "boots") == 0) ||
+		(itemName.size() >= 4 && itemName.compare(itemName.size() - 4, 4, "legs") == 0);
+	msg << finder->getName() << " found " << (plural ? itemName : article(itemName)) << " on "
+		<< article(monsterName) << "!";
+	const std::string text = msg.str();
+
+	std::cout << "\033[1;35m[rare] " << text << "\033[0m" << std::endl;
+	std::ofstream serverLog("server.log", std::ios::app);
+	if(serverLog.is_open())
+		serverLog << "[rare] " << text << std::endl;
+
+	for(AutoList<Player>::listiterator it = Player::listPlayer.list.begin(); it != Player::listPlayer.list.end(); ++it) {
+		if(it->second)
+			it->second->sendTextMessage(MSG_ADVANCE, text.c_str());
+	}
+}
+
 static std::string formatLootItemName(unsigned short itemId, const std::string& itemName)
 {
 	if(!isHighlightedLootItem(itemId))
@@ -1414,6 +1451,7 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 		if(lootMonster) {
 			std::string lootText = "nothing";
 			bool hasHighlightedLoot = false;
+			std::vector<unsigned short> broadcastRares;
 			if(lootcontainer && lootcontainer->size() > 0) {
 				std::stringstream lootStr;
 				bool first = true;
@@ -1427,6 +1465,8 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 					if(itemName.empty()) itemName = "item";
 					if(isHighlightedLootItem(iid))
 						hasHighlightedLoot = true;
+					if(isBroadcastRareLoot(lootMonster, iid))
+						broadcastRares.push_back(iid);
 					itemName = formatLootItemName(iid, itemName);
 					if(Item::items[iid].stackable && lootItem->getItemCountOrSubtype() > 1) {
 						lootStr << (int)lootItem->getItemCountOrSubtype() << " " << itemName;
@@ -1447,6 +1487,8 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 							if(subName.empty()) subName = "item";
 							if(isHighlightedLootItem(sid))
 								hasHighlightedLoot = true;
+							if(isBroadcastRareLoot(lootMonster, sid))
+								broadcastRares.push_back(sid);
 							subName = formatLootItemName(sid, subName);
 							if(Item::items[sid].stackable && subItem->getItemCountOrSubtype() > 1) {
 								lootStr << (int)subItem->getItemCountOrSubtype() << " " << subName;
@@ -1480,6 +1522,10 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 				notifyMonsterLoot(game, attackedCreature, attacker, attackerMaster, lootMonster, lootText, hasHighlightedLoot, killerPlayer, bankedGold, goldenRingBonus);
 			else
 				notifyMonsterLoot(game, attackedCreature, attacker, attackerMaster, lootMonster, lootText, hasHighlightedLoot);
+			if(killerPlayer && killerPlayer->access == 0) {   // los GMs prueban loot sin avisar a todos
+				for(size_t r = 0; r < broadcastRares.size(); ++r)
+					broadcastRareLoot(killerPlayer, lootMonster, broadcastRares[r]);
+			}
 		}
 
 		if(attackedplayer) {

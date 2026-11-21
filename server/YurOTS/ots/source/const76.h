@@ -73,6 +73,7 @@ enum MagicEffectClasses {
 	NM_ME_RIFT_CUT         = 47,
 	NM_ME_AETHER_RETURN    = 48,
 	NM_ME_GRAVITON_CRUSH   = 49,
+	NM_ME_LEVEL_UP         = 50, // subir de nivel: columna dorada con confeti (pack "levelup", docs/gameplay/LEVEL_UP_REWARDS.md)
 };
 
 #define NM_ANI_BOLT              1

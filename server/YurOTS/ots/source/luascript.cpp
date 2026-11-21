@@ -156,6 +156,7 @@ int LuaScript::OpenFile(const char *filename)
 	SPEAR_LOSE_CHANCE = getGlobalNumber("spearlosechance",50);
 
 	POWERHIT_CHANCE = getGlobalNumber("powerhitchance", 80);
+	RARE_LOOT_BROADCAST_CHANCE = getGlobalNumber("rarelootbroadcastchance", 500);
 	POWERHIT_DAMAGE = getGlobalNumber("powerhitdamage", 150);
 	MEGAHIT_CHANCE = getGlobalNumber("megahitchance", 10);
 	MEGAHIT_DAMAGE = getGlobalNumber("megahitdamage", 250);

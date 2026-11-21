@@ -314,6 +314,24 @@ void MonsterType::createLoot(Container* corpse, Player* killer)
 	}
 }
 
+static unsigned long lowestLootChance(const LootItems& items, unsigned short itemId)
+{
+	unsigned long best = 0;
+	for(LootItems::const_iterator it = items.begin(); it != items.end(); ++it){
+		if(it->id == itemId && (best == 0 || it->chance1 < best))
+			best = it->chance1;
+		const unsigned long child = lowestLootChance(it->childLoot, itemId);
+		if(child > 0 && (best == 0 || child < best))
+			best = child;
+	}
+	return best;
+}
+
+unsigned long MonsterType::getLootChance(unsigned short itemId) const
+{
+	return lowestLootChance(lootItems, itemId);
+}
+
 Item* MonsterType::createLootItem(const LootBlock& lootBlock, bool premiumLoot)
 {
 	if(lootBlock.id == ITEM_GOLDEN_RING)

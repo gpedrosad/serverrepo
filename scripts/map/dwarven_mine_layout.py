@@ -19,8 +19,8 @@ STAGES = {9: ((("Dwarf",), 1, 100, 13), (("Dwarf", "Dwarf Soldier"), 1, 120, 12)
               (("Dwarf Soldier",), 2, 145, 12)),
           10: ((("Dwarf Guard",), 1, 165, 13), (("Dwarf Guard", "Dwarf Geomancer"), 1, 190, 12),
                (("Dwarf Guard", "Dwarf Geomancer"), 2, 220, 12))}
-RAILS = {frozenset("ns"): 20354, frozenset("ew"): 20355, frozenset("se"): 20356,
-         frozenset("sw"): 20357, frozenset("ne"): 20358, frozenset("nw"): 20359}
+RAILS = {frozenset("ns"): 20360, frozenset("ew"): 20361, frozenset("se"): 20362,
+         frozenset("sw"): 20363, frozenset("ne"): 20364, frozenset("nw"): 20365}
 DIR = {(0, -1): "n", (0, 1): "s", (1, 0): "e", (-1, 0): "w"}
 
 
@@ -75,7 +75,7 @@ def add_rails(tiles, path, skip):
         sid = RAILS.get(frozenset(dirs))
         if sid is None:
             assert len(dirs) == 1, (p, dirs)
-            sid = 20354 if dirs <= {"n", "s"} else 20355
+            sid = 20360 if dirs <= {"n", "s"} else 20361
         assert p in tiles, p
         tiles[p].append(sid)
 
@@ -109,7 +109,7 @@ def build(values, otb):
         rails = (rail_access[:-1] if z == 9 else []) + line(path)
         rail_set = set(rails)
         keep = rail_set | C.grow({path[0], path[-1]}, 4) | (tunnel if z == 9 else set())
-        C.place_props(t, floor, path[0], (1285, 20360, 1483), 0.17, 410 + z, keep)
+        C.place_props(t, floor, path[0], (1285, 20366, 1483), 0.17, 410 + z, keep)
         if z == 10:
             for dx, dy, sid in ((0, -2, 2555), (-2, -2, 1483), (2, -2, 1483)):
                 p = BOSS[0] + dx, BOSS[1] + dy
@@ -119,7 +119,7 @@ def build(values, otb):
         for x, y in sorted(floor):
             if (x, y) not in keep and len(t[x, y]) == 1 and (x + y) % 3 == 0 and all(
                     (x + dx, y + dy) not in floor for dx, dy in ((-1, 0), (0, -1), (-1, -1))):
-                t[x, y].append(20361)
+                t[x, y].append(20367)
         add_rails(t, rails, {path[-1]} if z == 9 else {DOWN})
         for p, ids in t.items():
             if p in floor:
@@ -174,8 +174,8 @@ def build(values, otb):
         p = x, y, 8
         if p not in cells and (p not in values or (values[p] == [598] and bl.blocks(598))):
             cells[p] = [101]
-    surface = {(*MOUTH, 7): [469], (195, 60, 7): [405, 20354], (195, 61, 7): [405, 20354],
-               (194, 58, 7): [113, 20361], (197, 60, 7): [4756, 20360],
+    surface = {(*MOUTH, 7): [469], (195, 60, 7): [405, 20360], (195, 61, 7): [405, 20360],
+               (194, 58, 7): [113, 20367], (197, 60, 7): [4756, 20366],
                (194, 60, 7): [113, 1429]}
     cells.update(surface)
     merged = values | cells

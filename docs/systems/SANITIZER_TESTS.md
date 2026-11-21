@@ -63,7 +63,8 @@ docker run -d --name yurots-asan --security-opt seccomp=unconfined -p 127.0.0.1:
 ```
 
 - `150 86 6` es una casilla libre cerca del templo; los bots aparecen ahí. Con otro mapa, elegir otra.
-- `make-test-bots.py` crea las cuentas 111111 (6 personajes) y 111112 (Bot GM) con una contraseña de prueba.
+- `make-test-bots.py` crea las cuentas 111111 (6 personajes), 111112 (Bot GM) y 111113 (Bot Novato, nivel 8,
+  para lo que pide otra cuenta, como el [padrinazgo](../gameplay/PADRINAZGO.md)) con una contraseña de prueba.
   Se niega a escribir dentro de un repo git, para que nunca caigan en los datos reales.
 - `seccomp=unconfined`: ASan lo necesita en esta imagen i386.
 - Tarda ~1 min en cargar el mapa (`Retro76 Server Running...` en `asan-server.log`).

@@ -41,6 +41,8 @@ using namespace std;
 #include "ioaccount.h"
 #include "ioplayer.h"
 #include "const76.h"
+#include "tools.h"
+#include "sponsor.h"
 #include "chat.h"
 
 static const unsigned long STORAGE_LAST_DEATH_LOST_EXP = 9110;
@@ -2019,7 +2021,65 @@ void Player::addExp(exp_t exp)
 		lvMsg << "You advanced from level " << lastLv << " to level " << level << ".";
 		this->sendTextMessage(MSG_ADVANCE,lvMsg.str().c_str());
 		this->sendStats();
+		if(this->level > lastLv) {
+			onLevelAdvance(lastLv);
+			Sponsors::onLevel(this);   // padrinazgo: hitos del ahijado (PADRINAZGO.md)
+		}
 	}
+}
+
+// Regalos al subir de nivel (docs/gameplay/LEVEL_UP_REWARDS.md). Una caja por nivel nuevo, del rango
+// del nivel alcanzado; se abre con "Use" (data/actions/scripts/level_gift.lua). El storage guarda el
+// nivel más alto que ya dio regalo: morir y volver a subir no da otra caja.
+static const unsigned long LEVEL_GIFT_STORAGE = 9400;
+static const int LEVEL_GIFT_MAX_PER_ADVANCE = 20;
+
+unsigned short levelGiftItemId(int lv)
+{
+	if(lv >= 100) return 20359;   // legendary gift
+	if(lv >= 80)  return 20358;   // heroic gift
+	if(lv >= 50)  return 20357;   // champion gift
+	if(lv >= 35)  return 20356;   // veteran gift
+	if(lv >= 20)  return 20355;   // adventurer gift
+	return 20354;                 // novice gift
+}
+
+void Player::onLevelAdvance(int fromLevel)
+{
+	// Lo ven todos los que están cerca: efecto dorado y texto que sube.
+	g_game.sendMagicEffect(pos, NM_ME_LEVEL_UP);
+	for(AutoList<Player>::listiterator it = Player::listPlayer.list.begin(); it != Player::listPlayer.list.end(); ++it) {
+		Player* spectator = it->second;
+		if(spectator && spectator->CanSee(pos.x, pos.y, pos.z))
+			spectator->sendAnimatedText(pos, 210, "LEVEL UP");
+	}
+
+	if(access > 0)
+		return;   // GMs: sin regalos (pueden darse exp con comandos)
+
+	long gifted = 0;
+	getStorageValue(LEVEL_GIFT_STORAGE, gifted);
+	int from = (int)std::max<long>(fromLevel, gifted) + 1;
+	if(from > level)
+		return;
+	if(level - from + 1 > LEVEL_GIFT_MAX_PER_ADVANCE)
+		from = level - LEVEL_GIFT_MAX_PER_ADVANCE + 1;
+
+	for(int lv = from; lv <= level; ++lv) {
+		const unsigned short giftId = levelGiftItemId(lv);
+		Item* gift = Item::CreateItem(giftId, 1);
+		if(!gift)
+			continue;
+		const bool inBag = addItem(gift);
+		if(!inBag)
+			g_game.addThing(NULL, pos, gift);
+		std::stringstream msg;
+		msg << "You received " << article(Item::items[giftId].name) << " for reaching level " << lv << "! Use it to open it.";
+		if(!inBag)
+			msg << " It is on the ground: you have no room.";
+		sendTextMessage(MSG_EVENT, msg.str().c_str());
+	}
+	addStorageValue(LEVEL_GIFT_STORAGE, level);
 }
 
 // Keep in sync with data/npc/scripts/lib/daily_task.lua DAILY_MONSTERS
