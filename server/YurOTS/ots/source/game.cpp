@@ -2422,7 +2422,7 @@ bool Game::onPrepareMoveCreature(Creature *creature, const Creature* creatureMov
 	const Player* playerMoving = dynamic_cast<const Player*>(creatureMoving);
 	Player* player = dynamic_cast<Player*>(creature);
 
-	if(creatureMoving && creatureMoving->rootTicks >= 1000 &&
+	if(creatureMoving && (isCreatureRooted(creatureMoving) || creatureMoving->rootTicks >= 1000) &&
 		creatureMoving->access < g_config.ACCESS_PROTECT)
 	{
 		if(creature == creatureMoving && player) {
@@ -3808,15 +3808,17 @@ void Game::thingMoveInternal(Creature *creature, unsigned short from_x, unsigned
 					}
 				}
 
-				if(!rageVariantImmune && !(getWorldType() == WORLD_TYPE_NO_PVP && playerMoving && magicTargetCondition && magicTargetCondition->getOwnerID() != 0)) {
+				const bool fieldBlocked = rageVariantImmune ||
+					(getWorldType() == WORLD_TYPE_NO_PVP && playerMoving && magicTargetCondition && magicTargetCondition->getOwnerID() != 0);
+				if(!fieldBlocked) {
 					fieldItem->getDamage(creatureMoving);
-				}
 
-				if(magicTargetCondition && ((magicTargetCondition->attackType == ATTACK_FIRE) ||
-						(magicTargetCondition->attackType == ATTACK_POISON) ||
-						(magicTargetCondition->attackType == ATTACK_ENERGY))) {
-					Creature *c = getCreatureByID(magicTargetCondition->getOwnerID());
-					creatureMakeMagic(c, thing->pos, magicTargetCondition);
+					if(magicTargetCondition && ((magicTargetCondition->attackType == ATTACK_FIRE) ||
+							(magicTargetCondition->attackType == ATTACK_POISON) ||
+							(magicTargetCondition->attackType == ATTACK_ENERGY))) {
+						Creature *c = getCreatureByID(magicTargetCondition->getOwnerID());
+						creatureMakeMagic(c, thing->pos, magicTargetCondition);
+					}
 				}
 			}
 		}
@@ -4441,6 +4443,10 @@ void Game::creatureApplyDamage(Creature *creature, int64_t damage, int64_t &outD
 			newhealth = creature->healthmax;
 
 		creature->health = newhealth;
+
+		if(damage < 0 && creature->getConditions().hasCondition(ATTACK_PARALYZE)) {
+			clearParalyzeCondition(this, creature);
+		}
 
 		outDamage = creature->health - newhealth;
 		outManaDamage = 0;

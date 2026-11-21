@@ -30,4 +30,9 @@ extern std::map<unsigned long, CounterStanceState> g_counterStance;
 int applyCounterStance(Game* game, Player* defender, Creature* attacker,
 	int damage, attacktype_t atype);
 
+// Estado de root exacto en ms (Anchor Rune) y limpieza compartida de Paralyze
+// (curaciones, haste, Cleanse y expiración). En mapas aparte para no tocar Creature/Player.
+bool isCreatureRooted(const Creature* creature);
+void clearParalyzeCondition(Game* game, Creature* creature);
+
 #endif

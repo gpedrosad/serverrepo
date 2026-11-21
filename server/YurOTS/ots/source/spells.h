@@ -147,6 +147,7 @@ public:
 	static int luaActionDoAreaGroundSpell(lua_State *L);
 
   static int luaActionGetPos(lua_State *L);
+  static int luaActionGetCreaturePos(lua_State *L);
   static int luaActionGetAttackedCreaturePos(lua_State *L);
   static int luaActionGetPlayerSkill(lua_State *L);
   static int luaActionGetPlayerWeapon(lua_State *L);
@@ -175,6 +176,7 @@ public:
 	static int luaActionReduceExhaustionByPercent(lua_State *L);
 	static int luaActionSkillBuff(lua_State *L);
 	static int luaActionDoDesintegrate(lua_State *L);
+	static int luaActionDoDestroyField(lua_State *L);
 	static int luaActionDoAnchorRoot(lua_State *L);
 	static int luaActionDoCrimsonCage(lua_State *L);
 	static int luaActionDoCurePoison(lua_State *L);

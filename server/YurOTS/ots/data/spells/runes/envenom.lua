@@ -1,33 +1,23 @@
---doTargetMagic
- -- attackType: Type of attack.
- -- cid: creature id.
- -- Targetpos: Target position.
- -- animationEffect: Projectile animation.
- -- damageEffect: Effect to show when spell damage a creature.
- -- hitEffect: Effect to show when spell hits a creature.
- -- animationColor: Color of the text that is shown above the player when hit.
- -- offensive: Indicates if the spell is a healing/attack spell.
- -- drawblood: Determines if the spell causes blood splash.
- -- minDmg: Minimal damage.
- -- maxDmg: Maximum damage.
- -- returns true if the spell was casted.
- 
- attackType = ATTACK_POISON
- animationEffect = NM_ME_MAGIC_POISEN
- 
- hitEffect = NM_ME_POISEN_RINGS
- damageEffect = 20
- animationColor = GREEN
- offensive = true
- drawblood = true
- 
- HeavyMagicMissileObject = MagicDamageObject(attackType, animationEffect, hitEffect, damageEffect, animationColor, offensive, drawblood, 0, 0)
- 
- function onCast(cid, creaturePos, level, maglv, var)
- centerpos = {x=creaturePos.x, y=creaturePos.y, z=creaturePos.z}
- 
- HeavyMagicMissileObject.minDmg = (level * 2 + maglv *3) * 0.2
- HeavyMagicMissileObject.maxDmg = (level * 2 + maglv *3) * 0.4
- 
- return doTargetMagic(cid, centerpos, HeavyMagicMissileObject:ordered())
- end
+-- Envenom Rune (2292) — applies poison damage-over-time (classic 7.6 DoT, poison counterpart to Soulfire).
+
+attackType = ATTACK_POISON
+animationEffect = NM_ANI_FLYPOISONFIELD
+
+hitEffect = NM_ME_POISEN_RINGS
+damageEffect = NM_ME_POISEN
+animationColor = GREEN
+offensive = true
+drawblood = false
+minDmg = 6
+maxDmg = 10
+subDelayTick = 2000
+subDamageCount = 10
+
+EnvenomObject = MagicDamageObject(attackType, animationEffect, hitEffect, damageEffect, animationColor, offensive, drawblood, minDmg, maxDmg)
+SubEnvenomObject = MagicDamageObject(attackType, NM_ANI_NONE, NM_ME_NONE, damageEffect, animationColor, offensive, drawblood, minDmg, maxDmg)
+
+function onCast(cid, creaturePos, level, maglv, var)
+	centerpos = {x=creaturePos.x, y=creaturePos.y, z=creaturePos.z}
+	return doTargetExMagic(cid, centerpos, EnvenomObject:ordered(),
+		subDelayTick, subDamageCount, SubEnvenomObject:ordered())
+end

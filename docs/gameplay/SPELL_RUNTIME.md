@@ -112,6 +112,8 @@ Registrados en el constructor de `SpellScript`:
 | `doChameleon` | `luaActionDoChameleon` |
 | `doParalyze` | `luaActionDoParalyze` |
 | `getAttackedCreaturePos` | `luaActionGetAttackedCreaturePos` — pos del target de battle list (usado por `exori hur`, `exori con` y `exori vis hur`) |
+| `getCreaturePos(cid)` | `luaActionGetCreaturePos` — posición actual `{x, y, z}` de la criatura (usado por `makeWallArea` en walls) |
+| `doDestroyField(cid, pos)` | `luaActionDoDestroyField` — borra fire/energy/poison fields con exhaust compartido (`1 s`) y LOS; excluye MW (`1497`/`1498`), Wild Growth (`1499`) y Crimson Cage |
 | `getPlayerSkill(cid, skill)` | `luaActionGetPlayerSkill` — nivel de un skill (0 puños, 1 club, 2 sword, 3 axe, 4 distancia, 5 escudo, 6 pesca); -1 si no es jugador (nov 2026, [`SPELL_EXORI_CON.md`](SPELL_EXORI_CON.md)) |
 | `echoReady(cid)` / `startEcho(cid, ventana, espera, escala, escala_pvp)` | Eco (`utevo vis`): espera restante / activar. La repetición la hace `SpellScript::castEcho` (ver [`SPELL_ECO.md`](SPELL_ECO.md)). Atributo nuevo en `spells.xml`: `echo="1"` |
 | `getCreatureDirection(cid)` | `luaActionGetCreatureDirection` — `"n"`/`"e"`/`"s"`/`"w"` hacia donde mira (nov 2026, `exori min`; ver [`SPELLS_NOV2026.md`](SPELLS_NOV2026.md)) |

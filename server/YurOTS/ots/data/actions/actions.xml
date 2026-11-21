@@ -445,7 +445,7 @@
 <action itemid="2452" script="destroy.lua" />
 <action itemid="2453" script="destroy.lua" />
 
-<action itemid="2261" script="destroyfield.lua" allowfaruse="1" />
+<!-- Destroy Field (2261) migrated to spells.xml + doDestroyField (shared exhaust & LOS) -->
 
 <!-- simple quests -->
 <action itemid="1740" script="quest.lua" />

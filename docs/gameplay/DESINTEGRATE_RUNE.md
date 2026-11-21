@@ -12,14 +12,14 @@
 
 `Desintegrate` ahora intenta destruir, a distancia valida y con linea de tiro:
 
-- `magic wall` (`1498`)
-- `wild growth` (`1497`)
-- objetos del set legacy de destruccion del server, el mismo set que ya usaba `destroy.lua` para items destruibles de mapa
+- `magic wall` (`1497` / `1498`)
+- `wild growth` (`1499`, runa `2269`)
+- objetos del set legacy de destruccion del server, el mismo set que ya usaba `destroy.lua` para items destruibles de mapa (bloqueado en PZ y casas para jugadores normales)
 
 Eso deja la separacion asi:
 
-- `Destroy Field` quita fire/energy/poison fields, pero sigue excluyendo `1497` y `1498`
-- `Desintegrate` cubre justamente esos solidos (`magic wall` / `wild growth`) y tambien basura/objetos destruibles del suelo
+- `Destroy Field` (`2261`, migrada a `spells.xml` + `doDestroyField` con exhaust compartido de 1 s) quita fire/energy/poison fields, excluyendo `1497`, `1498`, `1499` y Crimson Cage
+- `Desintegrate` cubre justamente esos solidos (`magic wall` / `wild growth`) y tambien basura/objetos destruibles del suelo fuera de PZ/casas
 
 Duracion y decay de Magic Wall (15s, `DECAY_INTERVAL`): ver [`MAGIC_WALL.md`](MAGIC_WALL.md).
 

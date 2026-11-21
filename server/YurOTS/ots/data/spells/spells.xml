@@ -180,7 +180,7 @@
 <!--\\ End Make arrow and bolt //-->
 
 <!--// Make Runes \\-->
-<spell name="Light Magic Missle"	words="adori"				maglv="1"	mana="40"	enabled="1"><vocation id="1"/><vocation id="2"/><vocation id="3"/></spell>
+<spell name="Light Magic Missile"	words="adori"				maglv="1"	mana="40"	enabled="1"><vocation id="1"/><vocation id="2"/><vocation id="3"/></spell>
 <spell name="Poison Field"			words="adevo grav pox"		maglv="1"	mana="50"	enabled="1"><vocation id="1"/><vocation id="2"/></spell>
 <spell name="Heavy Magic Missile" 	words="adori gran"			maglv="3"	mana="70"	enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /></spell>
 <spell name="Fire Field"			words="adevo grav flam"		maglv="3"	mana="60"	enabled="1"><vocation id="1"/><vocation id="2"/></spell>
@@ -188,24 +188,32 @@
 <spell name="Fireball"				words="adori flam"			maglv="5"	mana="60"	enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /></spell>
 <spell name="Energy Field"			words="adevo grav vis"		maglv="5"	mana="80"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
 <spell name="Antidote"				words="adana pox"			maglv="5"	mana="50"	enabled="1"><vocation id="2" /><vocation id="3" /></spell>
+<spell name="Icicle"				words="adori frigo"			maglv="5"	mana="90"	enabled="1"><vocation id="2" /></spell>
 <spell name="Destroy Field"			words="adito grav"			maglv="6"	mana="60"	enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /></spell>
 <spell name="Animate Dead"			words="adana mort"			maglv="7"	mana="300"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
 <spell name="Envenom"				words="adevo res pox"		maglv="7"	mana="100"	enabled="1"><vocation id="2" /></spell>
+<spell name="Holy Missile"			words="adori san"			maglv="7"	mana="100"	enabled="1"><vocation id="3" /></spell>
 <spell name="Desintegrate"			words="adito tera"			maglv="8"	mana="100"	enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /></spell>
-<spell name="Poisonbomb"			words="adevo max pox"		maglv="8"	mana="130"	enabled="1"><vocation id="2" /></spell>
+<spell name="Poisonbomb"			words="adevo mas pox"		maglv="8"	mana="130"	enabled="1"><vocation id="2" /></spell>
 <spell name="Great Fireball"		words="adori gran flam"		maglv="9"	mana="120"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
+<spell name="Avalanche"				words="adori mas frigo"		maglv="9"	mana="140"	enabled="1"><vocation id="2" /></spell>
+<spell name="Thunderstorm"			words="adori mas vis"		maglv="9"	mana="140"	enabled="1"><vocation id="1" /></spell>
+<spell name="Stone Shower"			words="adori mas tera"		maglv="9"	mana="140"	enabled="1"><vocation id="2" /></spell>
 <spell name="Firebomb" 				words="adevo mas flam"		maglv="9"	mana="150"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
 <spell name="Convince Creature"		words="adeta sio"			maglv="10"	mana="100"	enabled="1"><vocation id="2" /></spell>
 <spell name="Poison Wall" 			words="adevo mas grav pox"	maglv="11"	mana="160"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
 <spell name="Chameleon"				words="adevo ina"			maglv="11"	mana="150"	enabled="1"><vocation id="2" /></spell>
 <spell name="Ultimate Healing"		words="adura vita"			maglv="11"	mana="100"	enabled="1"><vocation id="2" /></spell>
 <spell name="Explosion" 			words="adevo mas hur"		maglv="12"	mana="180"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
+<spell name="Anchor"				words="adevo grav mort"		maglv="12"	mana="180"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
 <spell name="Soulfire" 				words="adevo res flam"		maglv="13"	mana="150"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
 <spell name="Fire Wall"				words="adevo mas grav flam"	maglv="13"	mana="200"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
+<spell name="Wild Growth"			words="adevo grav vita"		maglv="13"	mana="200"	enabled="1"><vocation id="2" /></spell>
 <spell name="Magic Wall" 			words="adevo grav tera"		maglv="14"	mana="250"	enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /><vocation id="4" /></spell>
 <spell name="Crimson Cage"			words="adevo grav res"		maglv="16"	mana="350"	enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /></spell>
 <spell name="Energy Bomb" 			words="adevo mas vis"		maglv="18"	mana="220"	enabled="1"><vocation id="1" /></spell>
 <spell name="Energy Wall" 			words="adevo mas grav vis"	maglv="18"	mana="250"	enabled="1"><vocation id="1" /><vocation id="2" /></spell>
+<spell name="Paralyze"				words="adana ani"			maglv="18"	mana="900"	enabled="1"><vocation id="2" /></spell>
 <spell name="Sudden Death" 			words="adori vita vis"		maglv="25"	mana="220"	enabled="1"><vocation id="1" /></spell>
 
 <spell name="Blank" 				words="adori blank"			maglv="3"	mana="60"	enabled="1"><vocation id="1" /><vocation id="2" /><vocation id="3" /></spell>
@@ -220,25 +228,32 @@
 <rune name="Intense Healing"		id="2265"	charges="1"		maglv="1"	mana="0"	enabled="1"></rune>
 <rune name="Fireball"				id="2302"	charges="3"		maglv="2"	mana="0"	enabled="1"></rune>
 <rune name="Energy Field"			id="2277"	charges="3"		maglv="3"	mana="0"	enabled="1"></rune>
+<rune name="Destroy Field"			id="2261"	charges="3"		maglv="3"	mana="0"	enabled="1"></rune>
 <rune name="Antidote"				id="2266"	charges="1"		maglv="0"	mana="0"	enabled="1"></rune>
 <rune name="Animate Dead"			id="2316"	charges="2"		maglv="4"	mana="0"	enabled="1"></rune>
 <rune name="Envenom"				id="2292"	charges="3"		maglv="4"	mana="0"	enabled="1"></rune>
 <rune name="Desintegrate"			id="2310"	charges="3"		maglv="4"	mana="0"	enabled="1"></rune>
 <rune name="Poisonbomb"				id="2286"	charges="6"		maglv="4"	mana="0"	enabled="1"></rune>
-<rune name="Great Fireball"			id="2304"	charges="2"		maglv="4"	mana="0"	enabled="1"></rune>
+<rune name="Great Fireball"			id="2304"	charges="3"		maglv="4"	mana="0"	enabled="1"></rune>
+<rune name="Icicle"					id="2271"	charges="5"		maglv="4"	mana="0"	enabled="1"></rune>
+<rune name="Avalanche"				id="2274"	charges="4"		maglv="4"	mana="0"	enabled="1"></rune>
+<rune name="Stone Shower"			id="2288"	charges="4"		maglv="4"	mana="0"	enabled="1"></rune>
+<rune name="Holy Missile"			id="2295"	charges="5"		maglv="4"	mana="0"	enabled="1"></rune>
+<rune name="Thunderstorm"			id="2315"	charges="4"		maglv="4"	mana="0"	enabled="1"></rune>
 <rune name="Firebomb"				id="2305"	charges="6"		maglv="5"	mana="0"	enabled="1"></rune>
 <rune name="Convince Creature"		id="2290"	charges="1"		maglv="5"	mana="0"	enabled="1"></rune>
 <rune name="Poison Wall"			id="2289"	charges="4"		maglv="5"	mana="0"	enabled="1"></rune>
 <rune name="Chameleon"				id="2291"	charges="1"		maglv="4"	mana="0"	enabled="1"></rune>
 <rune name="Ultimate Healing"		id="2273"	charges="5"		maglv="4"	mana="0"	enabled="1"></rune>
 <rune name="Explosion"				id="2313"	charges="6"		maglv="6"	mana="0"	enabled="1"></rune>
+<rune name="Fire Wall"				id="2303"	charges="4"		maglv="6"	mana="0"	enabled="1"></rune>
 <rune name="Soulfire"				id="2308"	charges="2"		maglv="7"	mana="0"	enabled="1"></rune>
-<rune name="Fire Wall"				id="2303"	charges="4"		maglv="13"	mana="0"	enabled="1"></rune>
+<rune name="Wild Growth"			id="2269"	charges="2"		maglv="8"	mana="0"	enabled="1"></rune>
 <rune name="Magic Wall"				id="2293"	charges="4"		maglv="9"	mana="0"	enabled="1"></rune>
 <rune name="Energy Bomb"			id="2262"	charges="6"		maglv="10"	mana="0"	enabled="1"></rune>
 <rune name="Energy Wall"			id="2279"	charges="4"		maglv="9"	mana="0"	enabled="1"></rune>
 <rune name="Sudden Death"			id="2268"	charges="2"		maglv="15"	mana="0"	enabled="1"></rune>
-<rune name="Paralyze"				id="2278"	charges="1"		maglv="18"	mana="0"	enabled="1"></rune>
+<rune name="Paralyze"				id="2278"	charges="1"		maglv="18"	mana="900"	enabled="1"></rune>
 <rune name="Anchor"					id="2296"	charges="3"		maglv="8"	mana="0"	enabled="1"></rune>
 <rune name="Crimson Cage"			id="20273"	charges="2"		maglv="10"	mana="0"	enabled="1"></rune>
 <!-- BEGIN MONSTER_KITS -->

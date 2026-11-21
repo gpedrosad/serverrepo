@@ -44,6 +44,7 @@
 #include "tile.h"
 #include "items.h"
 #include "item.h"
+#include "container.h"
 #include "const76.h"
 #include "summons.h"
 
@@ -56,10 +57,27 @@ std::map<unsigned long, CounterStanceState> g_counterStance;
 
 namespace {
 
+std::map<unsigned long, int64_t> g_rootUntil;
+std::map<unsigned long, uint64_t> g_paralyzeGen;
+std::map<unsigned long, uint64_t> g_chameleonGen;
+
+bool isPvpBlockedTilePair(Game* game, const Creature* attacker, const Creature* target)
+{
+	if(!game || !attacker || !target)
+		return false;
+	if(attacker->access >= g_config.ACCESS_PROTECT)
+		return false;
+	if(game->getWorldType() == WORLD_TYPE_NO_PVP)
+		return true;
+	Tile* fromTile = game->getTile(attacker->pos);
+	Tile* toTile = game->getTile(target->pos);
+	return fromTile && toTile && fromTile->isTrainingArea() && toTile->isTrainingArea();
+}
+
 bool isLegacyDesintegrateTarget(unsigned short itemid)
 {
 	return
-		(itemid == 1497 || itemid == 1498) ||
+		(itemid == 1497 || itemid == 1498 || itemid == 1499) ||
 		(itemid >= 3805 && itemid <= 3810) ||
 		(itemid >= 1646 && itemid <= 1661) ||
 		(itemid >= 1666 && itemid <= 1677) ||
@@ -235,6 +253,8 @@ bool Spells::loadFromXml(const std::string &datadir)
 		for(int i =0; i<=this->maxVoc; i++){
 			std::map<std::string, Spell*> voc;
 			vocationSpells.push_back(voc);
+			std::map<unsigned short, Spell*> vocRune;
+			vocationRuneSpells.push_back(vocRune);
 		}
 
 		p = root->children;
@@ -453,6 +473,7 @@ int SpellScript::registerFunctions(){
 	lua_register(luaState, "changeOutfit", SpellScript::luaActionChangeOutfit);
 	lua_register(luaState, "manaShield", SpellScript::luaActionManaShield);
 	lua_register(luaState, "getPosition", SpellScript::luaActionGetPos);
+	lua_register(luaState, "getCreaturePos", SpellScript::luaActionGetCreaturePos);
 	lua_register(luaState, "getAttackedCreaturePos", SpellScript::luaActionGetAttackedCreaturePos);
 	lua_register(luaState, "getPlayerSkill", SpellScript::luaActionGetPlayerSkill);
 	lua_register(luaState, "getPlayerWeapon", SpellScript::luaActionGetPlayerWeapon);
@@ -471,6 +492,7 @@ int SpellScript::registerFunctions(){
 	lua_register(luaState, "reduceExhaustionByPercent", SpellScript::luaActionReduceExhaustionByPercent);
 	lua_register(luaState, "skillBuff", SpellScript::luaActionSkillBuff);
 	lua_register(luaState, "doDesintegrate", SpellScript::luaActionDoDesintegrate);
+	lua_register(luaState, "doDestroyField", SpellScript::luaActionDoDestroyField);
 	lua_register(luaState, "doAnchorRoot", SpellScript::luaActionDoAnchorRoot);
 	lua_register(luaState, "doCrimsonCage", SpellScript::luaActionDoCrimsonCage);
 	lua_register(luaState, "doCurePoison", SpellScript::luaActionDoCurePoison);
@@ -600,13 +622,22 @@ int SpellScript::luaActionDoDesintegrate(lua_State *L)
 	}
 
 	MagicEffectItem* fieldItem = tile->getFieldItem();
-	if(fieldItem && (fieldItem->getID() == 1497 || fieldItem->getID() == 1498)) {
+	if(fieldItem && (fieldItem->getID() == 1497 || fieldItem->getID() == 1498 || fieldItem->getID() == 1499)) {
 		bool removed = removeTileItem(spell->game, creature, fieldItem);
 		if(removed) {
 			sendSpellMagicEffect(spell->game, pos, NM_ME_PUFF);
 			applyPlayerSpellExhaust(casterPlayer, true);
 		}
 		lua_pushnumber(L, removed ? 1 : 0);
+		return 1;
+	}
+
+	if(casterPlayer && casterPlayer->access < g_config.ACCESS_PROTECT &&
+		(tile->isPz() || tile->isHouse()))
+	{
+		casterPlayer->sendCancel("You cannot use this rune here.");
+		sendSpellMagicEffect(spell->game, creature->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
 		return 1;
 	}
 
@@ -624,6 +655,94 @@ int SpellScript::luaActionDoDesintegrate(lua_State *L)
 	sendSpellMagicEffect(spell->game, creature->pos, NM_ME_PUFF);
 	lua_pushnumber(L, 0);
 	return 1;
+}
+
+int SpellScript::luaActionDoDestroyField(lua_State *L)
+{
+	Position pos;
+	internalGetPosition(L, pos);
+	unsigned int cid = (unsigned int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+
+	Spell* spell = getSpell(L);
+	if(!spell) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Creature* creature = spell->game->getCreatureByID(cid);
+	if(!creature) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Player* casterPlayer = dynamic_cast<Player*>(creature);
+	if(playerSpellExhaustBlocked(casterPlayer)) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(creature->pos.z != pos.z) {
+		creature->sendCancel("You need to be on the same floor.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	if(spell->game->canThrowObjectTo(creature->pos, pos, BLOCK_PROJECTILE) != RET_NOERROR) {
+		creature->sendCancel("You cannot throw there.");
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	Tile* tile = spell->game->getTile(pos);
+	if(!tile) {
+		sendSpellMagicEffect(spell->game, creature->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
+	MagicEffectItem* fieldItem = tile->getFieldItem();
+	if(fieldItem && fieldItem->getID() != 1497 && fieldItem->getID() != 1498 &&
+		fieldItem->getID() != 1499 && fieldItem->getID() != ITEM_CRIMSON_CAGE_WALL) {
+		bool removed = removeTileItem(spell->game, creature, fieldItem);
+		if(removed) {
+			sendSpellMagicEffect(spell->game, pos, NM_ME_PUFF);
+			applyPlayerSpellExhaust(casterPlayer, true);
+		}
+		lua_pushnumber(L, removed ? 1 : 0);
+		return 1;
+	}
+
+	sendSpellMagicEffect(spell->game, creature->pos, NM_ME_PUFF);
+	lua_pushnumber(L, 0);
+	return 1;
+}
+
+bool isCreatureRooted(const Creature* creature)
+{
+	if(!creature)
+		return false;
+	std::map<unsigned long, int64_t>::iterator it = g_rootUntil.find(creature->getID());
+	if(it == g_rootUntil.end())
+		return false;
+	if(it->second <= OTSYS_TIME()) {
+		g_rootUntil.erase(it);
+		return false;
+	}
+	return true;
+}
+
+void clearParalyzeCondition(Game* game, Creature* creature)
+{
+	if(!game || !creature)
+		return;
+	g_paralyzeGen.erase(creature->getID());
+	creature->getConditions()[ATTACK_PARALYZE].clear();
+	creature->hasteTicks = 0;
+	game->changeSpeed(creature->getID(), creature->getNormalSpeed());
+	Player* player = dynamic_cast<Player*>(creature);
+	if(player)
+		player->sendIcons();
 }
 
 int SpellScript::luaActionDoAnchorRoot(lua_State *L)
@@ -705,12 +824,19 @@ int SpellScript::luaActionDoAnchorRoot(lua_State *L)
 			lua_pushnumber(L, 0);
 			return 1;
 		}
+		if(targetPlayer && isPvpBlockedTilePair(spell->game, caster, targetPlayer)) {
+			caster->sendCancel("You may not attack this player.");
+			sendSpellMagicEffect(spell->game, caster->pos, NM_ME_PUFF);
+			lua_pushnumber(L, 0);
+			return 1;
+		}
 	}
 
 	// Visual: magic energy hit (not paralyze icon / condition).
 	sendSpellMagicEffect(spell->game, target->pos, NM_ME_MAGIC_ENERGIE);
 
-	target->rootTicks = ANCHOR_ROOT_MS;
+	// Exact ms timestamp (immune to 1000 ms think-tick phase truncation).
+	g_rootUntil[target->getID()] = OTSYS_TIME() + ANCHOR_ROOT_MS;
 
 	if(targetPlayer) {
 		targetPlayer->sendTextMessage(MSG_SMALLINFO, "You are rooted.");
@@ -720,6 +846,8 @@ int SpellScript::luaActionDoAnchorRoot(lua_State *L)
 	if(caster && targetPlayer && caster->access < g_config.ACCESS_PROTECT &&
 		spell->game->getWorldType() != WORLD_TYPE_NO_PVP)
 	{
+		if(spell->game->getWorldType() == WORLD_TYPE_PVP)
+			spell->game->onPvP(caster, targetPlayer, false);
 		caster->pzLocked = true;
 		caster->inFightTicks = std::max(g_config.PZ_LOCKED, caster->inFightTicks);
 		targetPlayer->inFightTicks = std::max(g_config.PZ_LOCKED, targetPlayer->inFightTicks);
@@ -907,8 +1035,13 @@ Item* findCorpseOnTile(Tile* tile)
 			continue;
 
 		const unsigned short itemId = item->getID();
-		if(itemId == ITEM_MALE_CORPSE || itemId == ITEM_FEMALE_CORPSE || itemId == ITEM_HUMAN_CORPSE)
+		if(itemId == ITEM_MALE_CORPSE || itemId == ITEM_FEMALE_CORPSE || itemId == ITEM_HUMAN_CORPSE) {
+			// Protect non-empty player corpses so Animate Dead cannot wipe dropped gear.
+			Container* corpseContainer = dynamic_cast<Container*>(item);
+			if(corpseContainer && corpseContainer->size() > 0)
+				continue;
 			return item;
+		}
 
 		if(Item::items[itemId].isContainer() && itemId >= 2800 && itemId <= 3110)
 			return item;
@@ -917,22 +1050,41 @@ Item* findCorpseOnTile(Tile* tile)
 	return NULL;
 }
 
-void restoreFromParalyzeRune(Game* game, unsigned long creatureId)
+void restoreFromParalyzeRune(Game* game, unsigned long creatureId, uint64_t gen)
 {
 	if(!game)
 		return;
 
-	Creature* creature = game->getCreatureByID(creatureId);
-	if(!creature)
+	OTSYS_THREAD_LOCK_CLASS lockClass(game->gameLock, "restoreFromParalyzeRune()");
+	std::map<unsigned long, uint64_t>::iterator it = g_paralyzeGen.find(creatureId);
+	if(it == g_paralyzeGen.end() || it->second != gen)
 		return;
 
-	creature->hasteTicks = 0;
-	game->changeSpeed(creatureId, creature->getNormalSpeed());
-	creature->getConditions()[ATTACK_PARALYZE].clear();
+	Creature* creature = game->getCreatureByID(creatureId);
+	if(!creature) {
+		g_paralyzeGen.erase(it);
+		return;
+	}
 
-	Player* player = dynamic_cast<Player*>(creature);
-	if(player)
-		player->sendIcons();
+	clearParalyzeCondition(game, creature);
+}
+
+void restoreChameleonOutfit(Game* game, unsigned long playerId, int savedLookMaster, uint64_t gen)
+{
+	if(!game)
+		return;
+
+	OTSYS_THREAD_LOCK_CLASS lockClass(game->gameLock, "restoreChameleonOutfit()");
+	std::map<unsigned long, uint64_t>::iterator it = g_chameleonGen.find(playerId);
+	if(it == g_chameleonGen.end() || it->second != gen)
+		return;
+	g_chameleonGen.erase(it);
+
+	Creature* creature = game->getCreatureByID(playerId);
+	if(creature) {
+		creature->looktype = savedLookMaster;
+		game->creatureChangeOutfit(creature);
+	}
 }
 
 }
@@ -1038,6 +1190,14 @@ int SpellScript::luaActionDoAnimateDead(lua_State *L)
 		return 1;
 	}
 
+	Tile* fromTile = spell->game->getTile(player->pos);
+	if(player->access < g_config.ACCESS_PROTECT && fromTile && fromTile->isPz()) {
+		player->sendTextMessage(MSG_SMALLINFO, "You may not use this rune in a protection zone.");
+		sendSpellMagicEffect(spell->game, player->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
 	Tile* tile = spell->game->getTile(pos);
 	if(!tile || tile->isPz()) {
 		sendSpellMagicEffect(spell->game, player->pos, NM_ME_PUFF);
@@ -1124,6 +1284,14 @@ int SpellScript::luaActionDoConvinceCreature(lua_State *L)
 		return 1;
 	}
 
+	Tile* fromTile = spell->game->getTile(player->pos);
+	if(player->access < g_config.ACCESS_PROTECT && fromTile && fromTile->isPz()) {
+		player->sendTextMessage(MSG_SMALLINFO, "You may not use this rune in a protection zone.");
+		sendSpellMagicEffect(spell->game, player->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+
 	Tile* tile = spell->game->getTile(pos);
 	if(!tile || tile->isPz()) {
 		sendSpellMagicEffect(spell->game, player->pos, NM_ME_PUFF);
@@ -1145,10 +1313,14 @@ int SpellScript::luaActionDoConvinceCreature(lua_State *L)
 		return 1;
 	}
 
-	int64_t reqMana = (monster->healthmax + monster->manamax) / 4;
 	const int64_t summonMana = Summons::getRequiredMana(monster->getName());
-	if(summonMana >= 0)
-		reqMana = summonMana;
+	if(summonMana < 0) {
+		player->sendCancel("You cannot convince this creature.");
+		sendSpellMagicEffect(spell->game, player->pos, NM_ME_PUFF);
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+	int64_t reqMana = summonMana;
 
 	if(player->access < g_config.ACCESS_PROTECT && player->mana < reqMana) {
 		player->sendCancel("Not enough mana.");
@@ -1214,21 +1386,34 @@ int SpellScript::luaActionDoChameleon(lua_State *L)
 		return 1;
 	}
 
-	Creature* target = tile->getTopCreature();
-	if(!target) {
+	// Classic 7.6 Chameleon: disguise as a moveable item on the target tile (looktype > 1000).
+	// Never touch lookhead/lookbody/looklegs/lookfeet so outfit colors are preserved when it ends.
+	Item* targetItem = NULL;
+	const int thingCount = tile->getThingCount();
+	for(int stackpos = 1; stackpos < thingCount; ++stackpos) {
+		Item* candidate = dynamic_cast<Item*>(tile->getThingByStackPos(stackpos));
+		if(!candidate)
+			continue;
+		unsigned short itemId = candidate->getID();
+		if(itemId > 1000 && Item::items[itemId].pickupable) {
+			targetItem = candidate;
+			break;
+		}
+	}
+
+	if(!targetItem) {
+		player->sendCancel("You can only use this rune on moveable items.");
 		sendSpellMagicEffect(spell->game, player->pos, NM_ME_PUFF);
 		lua_pushnumber(L, 0);
 		return 1;
 	}
 
 	const int savedLookMaster = player->lookmaster;
-	player->looktype = target->looktype;
-	player->lookhead = target->lookhead;
-	player->lookbody = target->lookbody;
-	player->looklegs = target->looklegs;
-	player->lookfeet = target->lookfeet;
+	const uint64_t gen = ++g_chameleonGen[player->getID()];
+	player->looktype = targetItem->getID();
 	spell->game->creatureChangeOutfit(player);
-	spell->game->changeOutfitAfter(player->getID(), savedLookMaster, CHAMELEON_MS);
+	spell->game->addEvent(makeTask(CHAMELEON_MS,
+		boost::bind(&restoreChameleonOutfit, spell->game, player->getID(), savedLookMaster, gen)));
 	sendSpellMagicEffect(spell->game, player->pos, NM_ME_MAGIC_ENERGIE);
 	applyPlayerSpellExhaust(player, true);
 	lua_pushnumber(L, 1);
@@ -1314,6 +1499,24 @@ int SpellScript::luaActionDoParalyze(lua_State *L)
 			lua_pushnumber(L, 0);
 			return 1;
 		}
+		if(targetPlayer && isPvpBlockedTilePair(spell->game, casterPlayer, targetPlayer)) {
+			casterPlayer->sendCancel("You may not attack this player.");
+			sendSpellMagicEffect(spell->game, caster->pos, NM_ME_PUFF);
+			lua_pushnumber(L, 0);
+			return 1;
+		}
+		const int64_t reqMana = spell->getMana();
+		if(reqMana > 0 && casterPlayer->mana < reqMana) {
+			casterPlayer->sendTextMessage(MSG_SMALLINFO, "You do not have enough mana.", casterPlayer->pos, NM_ME_PUFF);
+			lua_pushnumber(L, 0);
+			return 1;
+		}
+	}
+
+	if(casterPlayer && casterPlayer->access < g_config.ACCESS_PROTECT && spell->getMana() > 0) {
+		casterPlayer->mana -= spell->getMana();
+		casterPlayer->addManaSpent(spell->getMana());
+		casterPlayer->sendStats();
 	}
 
 	target->hasteTicks = 0;
@@ -1331,6 +1534,8 @@ int SpellScript::luaActionDoParalyze(lua_State *L)
 	if(casterPlayer && targetPlayer && casterPlayer->access < g_config.ACCESS_PROTECT &&
 		spell->game->getWorldType() != WORLD_TYPE_NO_PVP)
 	{
+		if(spell->game->getWorldType() == WORLD_TYPE_PVP)
+			spell->game->onPvP(casterPlayer, targetPlayer, false);
 		casterPlayer->pzLocked = true;
 		casterPlayer->inFightTicks = std::max(g_config.PZ_LOCKED, casterPlayer->inFightTicks);
 		targetPlayer->inFightTicks = std::max(g_config.PZ_LOCKED, targetPlayer->inFightTicks);
@@ -1338,8 +1543,9 @@ int SpellScript::luaActionDoParalyze(lua_State *L)
 	}
 
 	sendSpellMagicEffect(spell->game, target->pos, NM_ME_MAGIC_ENERGIE);
+	const uint64_t gen = ++g_paralyzeGen[target->getID()];
 	spell->game->addEvent(makeTask(PARALYZE_RUNE_MS,
-		boost::bind(&restoreFromParalyzeRune, spell->game, target->getID())));
+		boost::bind(&restoreFromParalyzeRune, spell->game, target->getID(), gen)));
 
 	applyPlayerSpellExhaust(casterPlayer, false);
 	lua_pushnumber(L, 1);
@@ -1623,9 +1829,7 @@ int SpellScript::luaActionDoCleanse(lua_State *L)
 		target->getConditions()[ATTACK_POISON].clear();
 
 	if(hadParalyze) {
-		target->getConditions()[ATTACK_PARALYZE].clear();
-		target->hasteTicks = 0;
-		spell->game->changeSpeed(target->getID(), target->getNormalSpeed());
+		clearParalyzeCondition(spell->game, target);
 	}
 
 	target->sendIcons();
@@ -2357,6 +2561,7 @@ int SpellScript::luaActionDoTargetGroundSpell(lua_State *L)
  	magicGround.manaCost = spell->getMana();
 
 	Creature* creature = spell->game->getCreatureByID((unsigned long)lua_tonumber(L, -1));
+	lua_pop(L, 1);
 	if(!creature){
 		lua_pushboolean(L, false);
 		return 1;
@@ -2656,6 +2861,16 @@ int SpellScript::luaActionChangeSpeed(lua_State *L){
 	Creature* creature = spell->game->getCreatureByID((unsigned long)lua_tonumber(L, -1));
 	lua_pop(L,1);
 
+	if(!creature)
+		return 0;
+
+	// Haste breaks Paralyze (classic 7.6): clear condition and reset hasteTicks so changeSpeed applies.
+	if(creature->getConditions().hasCondition(ATTACK_PARALYZE)) {
+		g_paralyzeGen.erase(creature->getID());
+		creature->getConditions()[ATTACK_PARALYZE].clear();
+		creature->hasteTicks = 0;
+	}
+
 	spell->game->addEvent(makeTask(time, boost::bind(&Game::changeSpeed, spell->game,creature->getID(), creature->getNormalSpeed()) ) );
 	Player* p = dynamic_cast<Player*>(creature);
 	if(p){
@@ -2728,6 +2943,27 @@ int SpellScript::luaActionGetPos(lua_State *L){
       lua_pushnumber(L, c->pos.z);
       lua_settable(L, -3);
 	}
+	return 1;
+}
+
+// getCreaturePos(cid) — current map position {x, y, z} of creature by id (used by wall runes).
+int SpellScript::luaActionGetCreaturePos(lua_State *L){
+	Spell* spell = getSpell(L);
+	Creature* c = spell ? spell->game->getCreatureByID((unsigned long)lua_tonumber(L, -1)) : NULL;
+	lua_pop(L, 1);
+
+	lua_newtable(L);
+	lua_pushstring(L, "x");
+	if(c) lua_pushnumber(L, c->pos.x); else lua_pushnil(L);
+	lua_settable(L, -3);
+
+	lua_pushstring(L, "y");
+	if(c) lua_pushnumber(L, c->pos.y); else lua_pushnil(L);
+	lua_settable(L, -3);
+
+	lua_pushstring(L, "z");
+	if(c) lua_pushnumber(L, c->pos.z); else lua_pushnil(L);
+	lua_settable(L, -3);
 	return 1;
 }
 
@@ -3060,6 +3296,11 @@ int SpellScript::luaActionMakeRune(lua_State *L){
 		const bool gm = player->access >= g_config.ACCESS_PROTECT;   // GM: sin mana ni soul
 		const bool requireSoul = !gm && (tile && tile->isPz());
 
+		if(playerSpellExhaustBlocked(player)) {
+			lua_pushnumber(L, 0);
+			return 1;
+		}
+
 		//try to create rune 1
 		a = internalMakeRune(player, SLOT_RIGHT, spell, type, charges, requireSoul, availableSoul);
 		if(a == 1) {
@@ -3074,7 +3315,7 @@ int SpellScript::luaActionMakeRune(lua_State *L){
 		}
 
 		//check if we got enough mana for the left hand
-		if(gm || player->getMana() - magicTarget.manaCost >= magicTarget.manaCost) {
+		if(gm || player->getMana() - magicTarget.manaCost >= spell->getMana()) {
 			//try to create rune 2
 			b = internalMakeRune(player, SLOT_LEFT, spell, type, charges, requireSoul, availableSoul);
 			if(b == 1) {
@@ -3090,28 +3331,30 @@ int SpellScript::luaActionMakeRune(lua_State *L){
 		}
 
 		if(a == -1 && b == -1){ //not enough mana
-			magicTarget.damageEffect = 2; //NM_ME_PUFF
-			magicTarget.manaCost = player->getPlayerInfo(PLAYERINFO_MAXMANA) + 1; //force not enough mana
+			player->sendTextMessage(MSG_SMALLINFO, "You do not have enough mana.", player->pos, NM_ME_PUFF);
+			lua_pushnumber(L, 0);
+			return 1;
 		}
 		else if(missingSoul && a != 1 && b != 1) {
-			magicTarget.damageEffect = 2; //NM_ME_PUFF
-			magicTarget.manaCost = 0;
+			sendSpellMagicEffect(spell->game, player->pos, NM_ME_PUFF);
 			player->sendCancel("You do not have enough soul.");
+			lua_pushnumber(L, 0);
+			return 1;
 		}
-		else if( a == 0 && b == 0){ //not create any rune
-			magicTarget.damageEffect = 2; //NM_ME_PUFF
-			magicTarget.manaCost = 0;
-		}
-		else if(a == 1 || b == 1) {
-			magicTarget.damageEffect = 12; //NM_ME_MAGIC_ENERGIE = 12
+		else if(a != 1 && b != 1){ //no blank rune in hand
+			sendSpellMagicEffect(spell->game, player->pos, NM_ME_PUFF);
+			player->sendCancel("You need a blank rune in your hand.");
+			lua_pushnumber(L, 0);
+			return 1;
 		}
 
+		magicTarget.damageEffect = 12; //NM_ME_MAGIC_ENERGIE = 12
 		bool isSuccess = spell->game->creatureThrowRune(player, player->pos, magicTarget);
 		if(isSuccess && spentSoul > 0) {
 			player->spendSoul(spentSoul);
 		}
 
-		lua_pushnumber(L, 1);
+		lua_pushnumber(L, isSuccess ? 1 : 0);
 		return 1;
 	}
 	lua_pushnumber(L, 0);
@@ -3159,6 +3402,11 @@ int SpellScript::luaActionMakeArrows(lua_State *L){
 
 	Player* player = dynamic_cast<Player*>(creature);
 	if(player){
+		if(playerSpellExhaustBlocked(player)) {
+			lua_pushnumber(L, 0);
+			return 1;
+		}
+
  		MagicEffectTargetClass magicTarget;
 
 		magicTarget.offensive = false;
@@ -3173,18 +3421,19 @@ int SpellScript::luaActionMakeArrows(lua_State *L){
 		const bool requireSoul = !gm && (tile && tile->isPz());
 
 		if(!gm && player->mana < spell->getMana()){
-			magicTarget.damageEffect = 2; //NM_ME_PUFF
-  			magicTarget.manaCost = player->getPlayerInfo(PLAYERINFO_MAXMANA) + 1; //force not enough mana
+			player->sendTextMessage(MSG_SMALLINFO, "You do not have enough mana.", player->pos, NM_ME_PUFF);
+			lua_pushnumber(L, 0);
+			return 1;
 		}
 		else if(requireSoul && player->getSoul() == 0) {
-			magicTarget.damageEffect = 2; //NM_ME_PUFF
-			magicTarget.manaCost = 0;
+			sendSpellMagicEffect(spell->game, player->pos, NM_ME_PUFF);
 			player->sendCancel("You do not have enough soul.");
+			lua_pushnumber(L, 0);
+			return 1;
 		}
-		else{
-			magicTarget.manaCost = spell->getMana();
-			magicTarget.damageEffect = 12; //NM_ME_MAGIC_ENERGIE = 12
- 		}
+
+		magicTarget.manaCost = spell->getMana();
+		magicTarget.damageEffect = 12; //NM_ME_MAGIC_ENERGIE = 12
 
 		bool isSuccess = spell->game->creatureThrowRune(player, player->pos, magicTarget);
 
@@ -3197,7 +3446,7 @@ int SpellScript::luaActionMakeArrows(lua_State *L){
 				player->spendSoul(1);
 		}
 
- 		lua_pushnumber(L, 1);
+ 		lua_pushnumber(L, isSuccess ? 1 : 0);
  		return 1;
 	}
 	lua_pushnumber(L, 0);

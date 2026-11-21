@@ -121,6 +121,56 @@ ATTACK_DRUNKNESS = 7
 ATTACK_LIFEDRAIN = 8
 ATTACK_MANADRAIN = 9
 
+-- Wall rune orientation (perpendicular to caster -> target vector, classic 7.6 style).
+function makeWallArea(casterPos, targetPos)
+  if casterPos == nil or casterPos.x == nil or targetPos == nil or targetPos.x == nil then
+    return {
+      {0, 0, 1, 0, 0},
+      {0, 0, 1, 0, 0},
+      {0, 0, 1, 0, 0},
+      {0, 0, 1, 0, 0},
+      {0, 0, 1, 0, 0},
+    }
+  end
+  local dx = targetPos.x - casterPos.x
+  local dy = targetPos.y - casterPos.y
+  local adx = math.abs(dx)
+  local ady = math.abs(dy)
+  if adx > ady * 2 then
+    return {
+      {0, 0, 1, 0, 0},
+      {0, 0, 1, 0, 0},
+      {0, 0, 1, 0, 0},
+      {0, 0, 1, 0, 0},
+      {0, 0, 1, 0, 0},
+    }
+  elseif ady > adx * 2 then
+    return {
+      {0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0},
+      {1, 1, 1, 1, 1},
+      {0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0},
+    }
+  elseif (dx > 0 and dy > 0) or (dx < 0 and dy < 0) then
+    return {
+      {0, 0, 0, 1, 1},
+      {0, 0, 1, 1, 0},
+      {0, 1, 1, 1, 0},
+      {0, 1, 1, 0, 0},
+      {1, 1, 0, 0, 0},
+    }
+  else
+    return {
+      {1, 1, 0, 0, 0},
+      {0, 1, 1, 0, 0},
+      {0, 1, 1, 1, 0},
+      {0, 0, 1, 1, 0},
+      {0, 0, 0, 1, 1},
+    }
+  end
+end
+
 outfits = {["Orc Warlord"] = 2, ["War Wolf"] = 3, ["Orc Ridder"] = 4, ["Orc"] = 5, ["Orc Shaman"] =6, ["Orc Warrior"] = 7, ["Orc Berserker"] = 8, ["Necromancer"] = 9, ["Black Sheep"] = 13, ["Sheep"] = 14, ["Troll"] = 15, ["Bear"] = 16, ["Beholder"] = 17, ["Ghoul"] = 18, ["Slime"] = 19, ["Rat"]= 21, ["Cyclops"] = 22, ["Minotaur Mage"] = 23, ["Minotaur Archer"] = 24, ["Minotaur"] = 25, ["Rotworm"] = 26, ["Wolf"] = 27, ["Snake"] = 28, ["Minotaur Guard"] =29, ["Spider"] = 30, ["Deer"] = 31, ["Dog"] = 32, ["Skeleton"] = 33, ["Dragon"] = 34, ["Poison Spider"] = 36, ["Demon Skeleton"] = 37, ["Giant Spider"] = 38, ["Dragon Lord"] = 39, ["Fire Devil"] = 40, ["Lion"] = 41, ["Polar Bear"] = 42, ["Scorpion"] = 43, ["Wasp"]= 44, ["Bug"] = 45, ["Ghost"] = 48, ["Fire Elemental"] = 49, ["Orc Spearman"] = 50, ["Djinn"] =51, ["Winter Wolf"] = 52, ["Frost Troll"]=53, ["Witch"] = 54, ["Behemoth"] =55, ["Cave Rat"] = 56, ["Monk"] = 57, ["Priestess"] = 58, ["Orc Leader"] = 59, ["Pig"] = 60, ["Goblin"] = 61, ["Elf"] = 62, ["Elf Arcanist"] = 63,  ["Elf Scout"] = 64, ["Mummy"] = 65, ["Dwarf Geomancer"] = 66, ["Stone Golem"] = 67, ["Vampire"] = 68,  ["Dwarf"] = 69, ["Dwarf Guard"] = 70, ["Dwarf Soldier"] = 71, ["Rabbit"] = 74, ["Swamp Troll"] = 76}
 
 -- Paladin stars: custom client pack (PALADIN_STARS.md).

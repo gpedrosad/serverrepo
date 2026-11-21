@@ -2,21 +2,27 @@
 <items>
 <!-- rune weight = oz per charge (Tibia 7.6 standard) -->
 <item id="2260" weight="1.2"/>		-- blank rune
+<item id="2261" weight="1.2"/>		-- destroy field
 <item id="2265" weight="2.1"/>		-- intense healing
 <item id="2266" weight="1.2"/>		-- antidote
 <item id="2268" weight="2.1"/>		-- sudden death
+<item id="2269" weight="2.1"/>		-- wild growth
+<item id="2271" weight="1.2"/>		-- icicle
 <item id="2273" weight="2.1"/>		-- ultimate healing
+<item id="2274" weight="2.1"/>		-- avalanche
 <item id="2277" weight="1.2"/>		-- energy field
 <item id="2278" weight="2.1"/>		-- paralyze
 <item id="2279" weight="8.0"/>		-- energy wall
 <item id="2285" weight="1.2"/>		-- poison field
 <item id="2286" weight="4.5"/>		-- poison bomb
 <item id="2287" weight="1.2"/>		-- light magic missile
+<item id="2288" weight="2.1"/>		-- stone shower
 <item id="2289" weight="8.0"/>		-- poison wall
 <item id="2290" weight="2.1"/>		-- convince creature
 <item id="2291" weight="2.1"/>		-- chameleon
 <item id="2292" weight="2.1"/>		-- envenom
 <item id="2293" weight="8.0"/>		-- magic wall
+<item id="2295" weight="1.2"/>		-- holy missile
 <item id="2296" weight="2.1"/>		-- anchor
 <item id="2301" weight="1.2"/>		-- fire field
 <item id="2302" weight="2.1"/>		-- fireball
@@ -27,6 +33,7 @@
 <item id="2310" weight="2.1"/>		-- desintegrate
 <item id="2311" weight="1.2"/>		-- heavy magic missile
 <item id="2313" weight="2.1"/>		-- explosion
+<item id="2315" weight="2.1"/>		-- thunderstorm
 <item id="2316" weight="2.1"/>		-- animate dead
 <item id="2262" weight="4.5"/>		-- energy bomb
 <item id="2547" weight="0.8"/>		-- power bolt
