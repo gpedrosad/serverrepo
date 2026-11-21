@@ -1438,8 +1438,8 @@ static std::vector<Player*> getNearbyPartyMembers(unsigned long partyId, const P
 	return members;
 }
 
-static void recordExpAward(Game* game, Creature* recipient, exp_t baseExp, exp_t partyBonusExp,
-                           Monster* slainMonster, SpectatorVec& spectatorlist, CreatureState* attackedCreatureState)
+void GameState::recordExpAward(Creature* recipient, exp_t baseExp, exp_t partyBonusExp,
+                               Monster* slainMonster, CreatureState* attackedCreatureState)
 {
 	if(!recipient || (baseExp <= 0 && partyBonusExp <= 0))
 		return;
@@ -1684,7 +1684,7 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 				exp_t gainedExperience = attackedCreature->getGainedExperience(gainExpCreature);
 				if(gainedExperience <= 0)
 					continue;
-				recordExpAward(game, gainExpCreature, gainedExperience, 0, slainMonster, spectatorlist, attackedCreatureState);
+				recordExpAward(gainExpCreature, gainedExperience, 0, slainMonster, attackedCreatureState);
 			}
 			for(std::map<unsigned long, int>::const_iterator pit = partyDamage.begin(); pit != partyDamage.end(); ++pit) {
 				unsigned long partyId = pit->first;
@@ -1704,7 +1704,7 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 						exp_t bonusExp = (bonusPct > 0 && baseExp > 0) ? (baseExp * bonusPct) / 100 : 0;
 						if(bonusPct > 0 && baseExp > 0 && bonusExp == 0)
 							bonusExp = 1;
-						recordExpAward(game, member, baseExp, bonusExp, slainMonster, spectatorlist, attackedCreatureState);
+						recordExpAward(member, baseExp, bonusExp, slainMonster, attackedCreatureState);
 					}
 				}
 				else {
@@ -1713,7 +1713,7 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 						Player* member = *ait;
 						exp_t baseExp = attackedCreature->getGainedExperience(member);
 						if(baseExp > 0)
-							recordExpAward(game, member, baseExp, 0, slainMonster, spectatorlist, attackedCreatureState);
+							recordExpAward(member, baseExp, 0, slainMonster, attackedCreatureState);
 					}
 				}
 			}

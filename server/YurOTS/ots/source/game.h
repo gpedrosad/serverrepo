@@ -105,6 +105,7 @@ public:
 protected:
 	void addCreatureState(Tile* tile, Creature* attackedCreature, int64_t damage, int64_t manaDamage, bool drawBlood);
 	void onAttackedCreature(Tile* tile, Creature* attacker, Creature* attackedCreature, int64_t damage, bool drawBlood);
+	void recordExpAward(Creature* recipient, exp_t baseExp, exp_t partyBonusExp, Monster* slainMonster, CreatureState* attackedCreatureState);
 	Game *game;
 
 	bool isPvpArena(Creature* c);
