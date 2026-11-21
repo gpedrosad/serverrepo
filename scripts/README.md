@@ -79,6 +79,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | `generate-tp-gauntlet.py` | Gauntlet |
 | `generate-island.py` | Islas procedurales |
 | `scan-map-depots.py` / `patch-map-depot-ids.py` | Auditoría/parche depots |
+| `style-hole-entrances.py` / `render-hole-entrances.py` | Revisa todos los hoyos, selecciona variantes nativas por suelo y valida llegadas; `--apply` actualiza mapa y manifiestos, con respaldo ([doc](../docs/items-and-map/HOLE_ENTRANCES.md)) |
 | `check-upper-view.py` | Casillas bajo tierra desde donde el cliente ve el piso de arriba (arriba vacío); `--fix` pone techo de roca solo en casillas vacías (ver `docs/items-and-map/PIEZAS_DE_MAPA.md#techo`) |
 | `sync-houses-*.py` | Houses ↔ mapa / RME |
 

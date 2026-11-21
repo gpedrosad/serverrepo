@@ -117,3 +117,11 @@ En Elvenbane las 19 conexiones entre pisos usan **escalera de mano**, no `1385` 
 
 `409` y `469` ya están en `actions.xml` → `teleport.lua`. `1386` está en `LADDERS_UP`.
 Detalle, coordenadas de cada link y cómo regenerar: [`ELVENBANE.md`](../items-and-map/ELVENBANE.md).
+
+## Apariencia de hoyos según el suelo — 21 nov 2026
+
+[Revisión de entradas](../items-and-map/HOLE_ENTRANCES.md): 48 enlaces revisados,
+45 apariencias corregidas. Pasto 470, tierra 383, piedra 479, madera 409, hielo 485
+y nieve 20368. Coordenadas, destinos y retornos sin cambios. Las seis clases tienen
+los mismos flags de bajada; la nueva de nieve tiene alias de cuerda y click derecho.
+Después de exportar RME o regenerar un mapa, correr `scripts/map/style-hole-entrances.py --apply`.

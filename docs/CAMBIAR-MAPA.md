@@ -28,6 +28,13 @@ Relacionado:
 
 ---
 
+## Apariencia de entradas después de exportar o generar
+
+Antes de publicar un mapa, ejecutar `python3.11 scripts/map/style-hole-entrances.py --apply`.
+Adapta los hoyos a pasto, tierra, piedra, madera, nieve o hielo y valida sus bajadas y
+retornos; también actualiza los manifiestos de propiedad. Ver
+[HOLE_ENTRANCES.md](items-and-map/HOLE_ENTRANCES.md). Una segunda pasada debe dar 0 cambios.
+
 ## Archivos que forman el mapa
 
 | Archivo en repo | Origen (RME) | Qué define |
