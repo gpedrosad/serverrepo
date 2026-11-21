@@ -1,5 +1,8 @@
 # Comandos de GM para probar contenido (19 nov 2026)
 
+> Idioma visible: **inglés**. Ver [política y corrección de textos](SERVER_LANGUAGE.md).
+> Comandos principales: `/go`, `/level`, `/killmonsters`, `/help`; los antiguos siguen como alias. Los lugares se listan en inglés con `/go`.
+
 Todos son `access="3"` en `data/commands.xml` y están en `source/commands.cpp` (al final, `gm*`). Los mensajes
 salen en azul en la consola. Para el GM invisible ver [GM_INVISIBLE.md](GM_INVISIBLE.md).
 

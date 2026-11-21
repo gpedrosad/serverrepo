@@ -2,38 +2,38 @@
 <!-- Lugares de /ir (GM). /ir sin nombre los lista; alcanza con el principio del nombre.
      Si la casilla esta ocupada, el GM cae en la libre mas cercana. Doc: docs/gameplay/GM_COMANDOS.md -->
 <places>
-	<place name="templo" x="162" y="50" z="7"/>
+	<place name="temple" x="162" y="50" z="7"/>
 	<!-- portales de la plaza -->
-	<place name="isla" x="147" y="462" z="7"/>
-	<place name="catedral" x="148" y="335" z="7"/>
+	<place name="island" x="147" y="462" z="7"/>
+	<place name="cathedral" x="148" y="335" z="7"/>
 	<place name="elvenbane" x="39" y="346" z="7"/>
-	<place name="valle" x="312" y="360" z="7"/>
+	<place name="valley" x="312" y="360" z="7"/>
 	<place name="inferno" x="540" y="440" z="7"/>
-	<place name="crisol" x="605" y="105" z="0"/>
+	<place name="crucible" x="605" y="105" z="0"/>
 	<place name="wave" x="606" y="223" z="7"/>
-	<place name="reloj" x="605" y="327" z="6"/>
+	<place name="clock" x="605" y="327" z="6"/>
 	<!-- hunts -->
-	<place name="glaciar" x="263" y="39" z="7"/>
-	<place name="guarida" x="335" y="53" z="7"/>
+	<place name="glacier" x="263" y="39" z="7"/>
+	<place name="lair" x="335" y="53" z="7"/>
 	<place name="bamboo" x="171" y="98" z="7"/>
 	<place name="kongra" x="169" y="106" z="7"/>
 	<place name="dungeon" x="184" y="57" z="7"/>
-	<place name="desierto" x="198" y="74" z="7"/>
+	<place name="desert" x="198" y="74" z="7"/>
 	<place name="frozen" x="395" y="104" z="7"/>
 	<place name="hell" x="345" y="211" z="7"/>
-	<place name="castillo" x="102" y="40" z="7"/>
-	<place name="cripta" x="93" y="91" z="7"/>
+	<place name="castle" x="102" y="40" z="7"/>
+	<place name="crypt" x="93" y="91" z="7"/>
 	<place name="mage" x="127" y="128" z="7"/>
 	<place name="fargum" x="173" y="64" z="7"/>
 	<place name="pit" x="128" y="34" z="7"/>
-	<place name="norte" x="420" y="392" z="7"/>
+	<place name="north" x="420" y="392" z="7"/>
 	<place name="gauntlet" x="435" y="101" z="7"/>
 	<place name="trolls" x="164" y="109" z="7"/>
 	<place name="hydra" x="49" y="138" z="7"/>
-	<place name="dragones" x="103" y="85" z="7"/>
-	<place name="puente" x="112" y="46" z="7"/>
-	<place name="minotauros" x="105" y="53" z="7"/>
-	<place name="cloacas" x="168" y="54" z="8"/>
-	<place name="seda" x="105" y="81" z="7"/>
-	<place name="ojos" x="78" y="35" z="7"/>
+	<place name="dragons" x="103" y="85" z="7"/>
+	<place name="bridge" x="112" y="46" z="7"/>
+	<place name="minotaurs" x="105" y="53" z="7"/>
+	<place name="sewers" x="168" y="54" z="8"/>
+	<place name="silk" x="105" y="81" z="7"/>
+	<place name="eyes" x="78" y="35" z="7"/>
 </places>

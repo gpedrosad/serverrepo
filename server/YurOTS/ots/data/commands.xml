@@ -40,13 +40,17 @@
 <!-- GM para probar contenido: docs/gameplay/GM_COMANDOS.md -->
 <command cmd="/god"			access="3" />
 <command cmd="/ir"			access="3" />
+<command cmd="/go"	access="3" />
 <command cmd="/nivel"		access="3" />
+<command cmd="/level"	access="3" />
 <command cmd="/skill"		access="3" />
 <command cmd="/ml"			access="3" />
 <command cmd="/loot"		access="3" />
 <command cmd="/matar"		access="3" />
+<command cmd="/killmonsters"	access="3" />
 <command cmd="/speed"		access="3" />
 <command cmd="/comandos"	access="3" />
+<command cmd="/help"	access="3" />
 
 <command cmd="!exp"			access="0" />
 <command cmd="!mana"		access="0" />
@@ -56,6 +60,7 @@
 <command cmd="!buyhouse"	access="0" />
 <command cmd="!leavehouse"	access="0" />
 <command cmd="!padrino"	access="0" />
+<command cmd="!sponsor"	access="0" />
 <command cmd="!frags"		access="0" />
 <command cmd="!pz"			access="0" />
 <command cmd="!uptime"		access="0" />

@@ -187,6 +187,7 @@ s_defcommands Commands::defined_commands[] = {
 	{"!buyhouse",&Commands::buyHouse},
 	{"!leavehouse",&Commands::leaveHouse},
 	{"!padrino",&Commands::sponsor},
+	{"!sponsor",&Commands::sponsor},
 	{"/invisible",&Commands::gmInvisible},
 	{"!frags",&Commands::showFrags},
 	{"/save",&Commands::forceServerSave},
@@ -196,13 +197,17 @@ s_defcommands Commands::defined_commands[] = {
 	{"!premmy",&Commands::showPremmy},
 	{"/god",&Commands::gmGod},
 	{"/ir",&Commands::gmGoPlace},
+	{"/go",&Commands::gmGoPlace},
 	{"/nivel",&Commands::gmSetLevel},
+	{"/level",&Commands::gmSetLevel},
 	{"/skill",&Commands::gmSetSkill},
 	{"/ml",&Commands::gmSetMagicLevel},
 	{"/loot",&Commands::gmLootTest},
 	{"/matar",&Commands::gmKillMonsters},
+	{"/killmonsters",&Commands::gmKillMonsters},
 	{"/speed",&Commands::gmSpeed},
 	{"/comandos",&Commands::gmHelp},
+	{"/help",&Commands::gmHelp},
 };
 
 Commands::Commands(Game* igame):
@@ -546,7 +551,7 @@ bool Commands::createItems(Creature* c, const std::string &cmd, const std::strin
 
 	int type = gmIsNumber(what) ? atoi(what.c_str()) : Item::items.getIdByName(what);
 	if(type <= 0 || Item::items[type].id == 0) {
-		gmInfo(self, "No existe el item: " + what + ".");
+		gmInfo(self, "Unknown item: " + what + ".");
 		return true;
 	}
 	if(count < 0)   // sin cantidad: 1 si se apila, 10 cargas si es runa, si no nada
@@ -1153,16 +1158,16 @@ bool Commands::showPz(Creature* c, const std::string &cmd, const std::string &pa
 	{
 		std::ostringstream info;
 		if (player->inFightTicks < 1000 && !player->pzLocked)
-			info << "No tienes PZ lock." << std::ends;
+			info << "You do not have a PZ lock." << std::ends;
 		else
 		{
 			long ms = player->inFightTicks >= 1000 ? player->inFightTicks : 0;
 			if (ms >= 60000)
-				info << "La PZ se quita en " << tickstr(ms) << "." << std::ends;
+				info << "Your PZ lock expires in " << tickstr(ms) << "." << std::ends;
 			else
 			{
 				int sec = (int)((ms + 999) / 1000);
-				info << "La PZ se quita en " << sec << (sec == 1 ? " segundo." : " segundos.") << std::ends;
+				info << "Your PZ lock expires in " << sec << (sec == 1 ? " second." : " seconds.") << std::ends;
 			}
 		}
 		player->sendTextMessage(MSG_BLUE_TEXT, info.str().c_str());
@@ -1285,7 +1290,7 @@ bool Commands::buyHouse(Creature* c, const std::string &cmd, const std::string &
 	House* house = houseInFrontOf(game, player);
 	if (!house)
 	{
-		player->sendCancel("Mira la puerta de la casa que quieres comprar y escribe !buyhouse.");
+		player->sendCancel("Face the front door of the house you want to buy and type !buyhouse.");
 		return true;
 	}
 
@@ -1294,7 +1299,7 @@ bool Commands::buyHouse(Creature* c, const std::string &cmd, const std::string &
 
 	if (!house->getOwner().empty())
 	{
-		info << "La casa '" << house->getName() << "' ya tiene dueño: " << house->getOwner() << ".";
+		info << "The house '" << house->getName() << "' is already owned by: " << house->getOwner() << ".";
 		player->sendCancel(info.str().c_str());
 		return true;
 	}
@@ -1302,22 +1307,22 @@ bool Commands::buyHouse(Creature* c, const std::string &cmd, const std::string &
 	House* owned = Houses::GetHouseByOwner(player->getName());
 	if (owned)
 	{
-		info << "Ya tienes la casa '" << owned->getName() << "'. Escribe !leavehouse para dejarla antes de comprar otra.";
+		info << "You already own the house '" << owned->getName() << "'. Type !leavehouse to leave it before buying another.";
 		player->sendCancel(info.str().c_str());
 		return true;
 	}
 
 	if (player->getLevel() < g_config.HOUSE_MIN_LEVEL)
 	{
-		info << "Necesitas nivel " << g_config.HOUSE_MIN_LEVEL << " para comprar una casa.";
+		info << "You need level " << g_config.HOUSE_MIN_LEVEL << " to buy a house.";
 		player->sendCancel(info.str().c_str());
 		return true;
 	}
 
 	if (!player->canPayWithBank(price) || !player->removeCoinsWithBank(price))
 	{
-		info << "La casa '" << house->getName() << "' cuesta " << price << " gp (" << house->getTileCount()
-		     << " casillas x " << g_config.HOUSE_PRICE_PER_TILE << "). No te alcanza entre lo que llevas y el banco.";
+		info << "The house '" << house->getName() << "' costs " << price << " gp (" << house->getTileCount()
+		     << " tiles x " << g_config.HOUSE_PRICE_PER_TILE << "). You do not have enough gold in your inventory and bank combined.";
 		player->sendCancel(info.str().c_str());
 		return true;
 	}
@@ -1327,7 +1332,7 @@ bool Commands::buyHouse(Creature* c, const std::string &cmd, const std::string &
 	house->save();
 	player->houseRightsChanged = true;
 
-	info << "Compraste la casa '" << house->getName() << "' por " << price << " gp. Ya es tuya.";
+	info << "You bought the house '" << house->getName() << "' for " << price << " gp. It is now yours.";
 	player->sendTextMessage(MSG_ADVANCE, info.str().c_str());
 	std::cout << ":: house bought: " << house->getName() << " by " << player->getName()
 	          << " for " << price << " gp" << std::endl;
@@ -1343,7 +1348,7 @@ bool Commands::leaveHouse(Creature* c, const std::string &cmd, const std::string
 	House* house = Houses::GetHouseByOwner(player->getName());
 	if (!house)
 	{
-		player->sendCancel("No tienes ninguna casa.");
+		player->sendCancel("You do not own a house.");
 		return true;
 	}
 
@@ -1351,9 +1356,9 @@ bool Commands::leaveHouse(Creature* c, const std::string &cmd, const std::string
 	int left = movableItemsInHouse(game, house);
 	if (left > 0)
 	{
-		info << "Todavía hay " << left << (left == 1 ? " objeto" : " objetos")
-		     << " en la casa '" << house->getName() << "'. " << (left == 1 ? "Sácalo" : "Sácalos")
-		     << " antes de dejarla.";
+		info << "You still have " << left << (left == 1 ? " item" : " items")
+		     << " in the house '" << house->getName() << "'. " << (left == 1 ? "Remove it" : "Remove them")
+		     << " before leaving it.";
 		player->sendCancel(info.str().c_str());
 		return true;
 	}
@@ -1362,7 +1367,7 @@ bool Commands::leaveHouse(Creature* c, const std::string &cmd, const std::string
 	house->save();
 	player->houseRightsChanged = true;
 
-	info << "Dejaste la casa '" << house->getName() << "'. Ya no es tuya (no se devuelve el dinero).";
+	info << "You left the house '" << house->getName() << "'. You no longer own it (no refund is given).";
 	player->sendTextMessage(MSG_BLUE_TEXT, info.str().c_str());
 	std::cout << ":: house left: " << house->getName() << " by " << player->getName() << std::endl;
 	return true;
@@ -1549,12 +1554,12 @@ bool Commands::gmGod(Creature* c, const std::string &cmd, const std::string &par
 
 	player->gmMortal = !player->gmMortal;
 	if(player->gmMortal) {
-		gmInfo(player, "God OFF: los monstruos te atacan, recibes danio real (no bajas de 1 de vida) y sin el +1337.");
+		gmInfo(player, "God OFF: monsters attack you, you take real damage (minimum 1 HP), and the +1337 bonus is disabled.");
 	}
 	else {
 		player->health = player->healthmax;
 		player->mana = player->manamax;
-		gmInfo(player, "God ON: protegido otra vez (vida y mana llenos).");
+		gmInfo(player, "God ON: protection restored (health and mana refilled).");
 	}
 	player->hasteTicks = 0;
 	game->changeSpeed(player->getID(), player->getNormalSpeed());
@@ -1571,7 +1576,7 @@ bool Commands::gmGoPlace(Creature* c, const std::string &cmd, const std::string 
 	std::string filename = datadir + "gmplaces.xml";
 	xmlDocPtr doc = xmlParseFile(filename.c_str());
 	if(!doc) {
-		gmInfo(player, "No se pudo leer " + filename + ".");
+		gmInfo(player, "Could not read " + filename + ".");
 		return true;
 	}
 
@@ -1610,8 +1615,8 @@ bool Commands::gmGoPlace(Creature* c, const std::string &cmd, const std::string 
 
 	if(wanted.empty() || !haveMatch) {
 		if(!wanted.empty())
-			gmInfo(player, "No conozco el lugar \"" + param + "\".");
-		gmInfo(player, "Lugares: " + names + ".");
+			gmInfo(player, "Unknown place \"" + param + "\".");
+		gmInfo(player, "Places: " + names + ".");
 		return true;
 	}
 
@@ -1627,7 +1632,7 @@ bool Commands::gmGoPlace(Creature* c, const std::string &cmd, const std::string 
 						ok = true;
 					}
 		if(!ok) {
-			gmInfo(player, "El lugar " + foundName + " no tiene casilla libre.");
+			gmInfo(player, "Place " + foundName + " has no free tile.");
 			return true;
 		}
 	}
@@ -1643,12 +1648,12 @@ bool Commands::gmSetLevel(Creature* c, const std::string &cmd, const std::string
 	long newLevel;
 	std::string name;
 	if(!gmSplitLeadingNumber(param, newLevel, name)) {
-		gmInfo(self, "Uso: /nivel 100  o  /nivel 100 Nombre");
+		gmInfo(self, "Usage: /level 100  or  /level 100 Name");
 		return true;
 	}
 	Player* target = gmTarget(game, c, name);
 	if(!target) {
-		gmInfo(self, "No esta online: " + name + ".");
+		gmInfo(self, "Player is offline: " + name + ".");
 		return true;
 	}
 	newLevel = gmClamp(newLevel, 1, 1000);
@@ -1682,7 +1687,7 @@ bool Commands::gmSetLevel(Creature* c, const std::string &cmd, const std::string
 	target->sendStats();
 
 	std::stringstream info;
-	info << target->getName() << ": nivel " << oldLevel << " -> " << newLevel << ".";
+	info << target->getName() << ": level " << oldLevel << " -> " << newLevel << ".";
 	gmInfo(self, info.str());
 	return true;
 }
@@ -1696,7 +1701,7 @@ bool Commands::gmSetSkill(Creature* c, const std::string &cmd, const std::string
 	long value;
 	std::string name;
 	if(sp == std::string::npos || !gmSplitLeadingNumber(p.substr(sp + 1), value, name)) {
-		gmInfo(self, "Uso: /skill sword 90 [Nombre]. Skills: fist, club, sword, axe, distance, shielding, fishing.");
+		gmInfo(self, "Usage: /skill sword 90 [Name]. Skills: fist, club, sword, axe, distance, shielding, fishing.");
 		return true;
 	}
 
@@ -1709,13 +1714,13 @@ bool Commands::gmSetSkill(Creature* c, const std::string &cmd, const std::string
 	else if(skillName == "shielding" || skillName == "shield" || skillName == "escudo") skill = SKILL_SHIELD;
 	else if(skillName == "fishing" || skillName == "fish" || skillName == "pesca") skill = SKILL_FISH;
 	if(skill < 0) {
-		gmInfo(self, "Skill desconocido: " + skillName + ". Skills: fist, club, sword, axe, distance, shielding, fishing.");
+		gmInfo(self, "Unknown skill: " + skillName + ". Skills: fist, club, sword, axe, distance, shielding, fishing.");
 		return true;
 	}
 
 	Player* target = gmTarget(game, c, name);
 	if(!target) {
-		gmInfo(self, "No esta online: " + name + ".");
+		gmInfo(self, "Player is offline: " + name + ".");
 		return true;
 	}
 	value = gmClamp(value, 10, 300);
@@ -1736,12 +1741,12 @@ bool Commands::gmSetMagicLevel(Creature* c, const std::string &cmd, const std::s
 	long value;
 	std::string name;
 	if(!gmSplitLeadingNumber(param, value, name)) {
-		gmInfo(self, "Uso: /ml 60  o  /ml 60 Nombre");
+		gmInfo(self, "Usage: /ml 60  or  /ml 60 Name");
 		return true;
 	}
 	Player* target = gmTarget(game, c, name);
 	if(!target) {
-		gmInfo(self, "No esta online: " + name + ".");
+		gmInfo(self, "Player is offline: " + name + ".");
 		return true;
 	}
 	value = gmClamp(value, 0, 200);
@@ -1765,7 +1770,7 @@ bool Commands::gmLootTest(Creature* c, const std::string &cmd, const std::string
 
 	MonsterType* mType = g_monsters.getMonsterType(g_monsters.getIdByName(monsterName));
 	if(!mType) {
-		gmInfo(self, "Uso: /loot frost dragon 500. Monstruo desconocido: " + monsterName + ".");
+		gmInfo(self, "Usage: /loot frost dragon 500. Unknown monster: " + monsterName + ".");
 		return true;
 	}
 
@@ -1781,7 +1786,7 @@ bool Commands::gmLootTest(Creature* c, const std::string &cmd, const std::string
 			if(!corpse) {
 				if(corpseItem)
 					corpseItem->releaseThing();
-				gmInfo(self, "No se pudo crear el cadaver para simular.");
+				gmInfo(self, "Could not create a corpse for the simulation.");
 				return true;
 			}
 		}
@@ -1801,8 +1806,8 @@ bool Commands::gmLootTest(Creature* c, const std::string &cmd, const std::string
 	}
 
 	std::stringstream head;
-	head << "Loot de " << mType->name << " en " << kills << " muertes (sin bonus premium): "
-		<< rows.size() << " items distintos, " << gold << " gp en monedas (" << (gold / kills) << " por muerte).";
+	head << "Loot from " << mType->name << " in " << kills << " kills (no premium bonus): "
+		<< rows.size() << " distinct items, " << gold << " gp in coins (" << (gold / kills) << " per kill).";
 	gmInfo(self, head.str());
 
 	const size_t maxRows = 40;
@@ -1810,14 +1815,14 @@ bool Commands::gmLootTest(Creature* c, const std::string &cmd, const std::string
 		const GmLootCount& lc = rows[i].second;
 		std::stringstream line;
 		line << "  " << Item::items[rows[i].first].name << " (" << rows[i].first << "): "
-			<< lc.drops << " veces (" << (lc.drops * 1000 / kills) / 10.0 << "%)";
+			<< lc.drops << " drops (" << (lc.drops * 1000 / kills) / 10.0 << "%)";
 		if(lc.total != lc.drops)
-			line << ", " << lc.total << " en total";
+			line << ", " << lc.total << " total";
 		gmInfo(self, line.str());
 	}
 	if(rows.size() > maxRows) {
 		std::stringstream more;
-		more << "  ... y " << (rows.size() - maxRows) << " items mas.";
+		more << "  ... and " << (rows.size() - maxRows) << " more items.";
 		gmInfo(self, more.str());
 	}
 	return true;
@@ -1847,7 +1852,7 @@ bool Commands::gmKillMonsters(Creature* c, const std::string &cmd, const std::st
 	}
 
 	std::stringstream info;
-	info << "Monstruos eliminados: " << removed << " (los spawns los vuelven a poner).";
+	info << "Monsters removed: " << removed << " (they will respawn).";
 	gmInfo(self, info.str());
 	return true;
 }
@@ -1866,9 +1871,9 @@ bool Commands::gmSpeed(Creature* c, const std::string &cmd, const std::string &p
 
 	std::stringstream info;
 	if(c->gmSpeed > 0)
-		info << "Velocidad fija: " << c->gmSpeed << ". /speed sin numero la vuelve a la normal.";
+		info << "Fixed speed: " << c->gmSpeed << ". Use /speed without a number to restore normal speed.";
 	else
-		info << "Velocidad normal: " << c->getNormalSpeed() << ".";
+		info << "Normal speed: " << c->getNormalSpeed() << ".";
 	gmInfo(self, info.str());
 	return true;
 }
@@ -1876,53 +1881,53 @@ bool Commands::gmSpeed(Creature* c, const std::string &cmd, const std::string &p
 // Resumen de comandos que ve el GM al entrar y con /comandos (docs/gameplay/GM_COMANDOS.md).
 // Si se agrega un comando de GM, sumarlo aca.
 static const char* GM_HELP_SECTIONS[] = {
-	"Comandos de GM (/comandos los muestra de nuevo)",
+	"GM commands (use /help to show this list again)",
 
-	"MOVERSE\n"
-	"/ir [lugar] - viajar a un lugar (sin nombre: lista)\n"
-	"/goto Nombre  o  /goto x y z - ir a un jugador o a coordenadas\n"
-	"/a N - avanzar N casillas hacia donde miras\n"
-	"/up, /down - subir o bajar un piso\n"
-	"/t - ir a tu templo\n"
-	"/c Nombre - traer a un jugador o criatura\n"
-	"/send Nombre, x y z - mandar a un jugador a coordenadas\n"
-	"/pos - tu posicion\n"
-	"/invisible - nadie te ve, te ves como Ghost y pasas por encima de todos\n"
-	"/speed [N] - velocidad fija (sin numero: la normal)",
+	"MOVEMENT\n"
+	"/go [place] - travel to a place (no name: list places)\n"
+	"/goto Name  or  /goto x y z - go to a player or coordinates\n"
+	"/a N - move N tiles forward\n"
+	"/up, /down - go up or down one floor\n"
+	"/t - go to your temple\n"
+	"/c Name - bring a player or creature\n"
+	"/send Name, x y z - send a player to coordinates\n"
+	"/pos - your position\n"
+	"/invisible - become invisible, look like a Ghost, walk through creatures\n"
+	"/speed [N] - fixed speed (no number: normal speed)",
 
-	"PROBAR CONTENIDO\n"
-	"/god - apaga/prende la proteccion (apagada: te atacan, no bajas de 1 de vida)\n"
-	"/i nombre o id [cantidad] - crear item (ej: /i black fire sword)\n"
-	"/m monstruo - poner un monstruo adelante\n"
-	"/summon monstruo - invocar un monstruo tuyo\n"
-	"/s npc - poner un NPC adelante\n"
-	"/matar - sacar los monstruos a la vista\n"
-	"/loot monstruo [N] - simular el loot de N muertes (ej: /loot frost dragon 500)\n"
-	"/nivel N [Nombre] - cambiar nivel\n"
-	"/skill sword 90 [Nombre] - fist club sword axe distance shielding fishing\n"
-	"/ml N [Nombre] - cambiar magic level\n"
-	"/promote Nombre - promocionar\n"
-	"/z N - ver el efecto magico N\n"
-	"/q [N] - ver tu dinero o descontar N\n"
-	"Look: ids, action/unique id, items de la casilla; criaturas con vida y pos",
+	"CONTENT TOOLS\n"
+	"/god - toggle protection (off: monsters attack, minimum 1 HP)\n"
+	"/i name or id [count] - create an item (e.g. /i black fire sword)\n"
+	"/m monster - place a monster in front of you\n"
+	"/summon monster - summon a creature\n"
+	"/s npc - place an NPC in front of you\n"
+	"/killmonsters - remove visible monsters\n"
+	"/loot monster [N] - simulate loot from N kills (e.g. /loot frost dragon 500)\n"
+	"/level N [Name] - change level\n"
+	"/skill sword 90 [Name] - fist club sword axe distance shielding fishing\n"
+	"/ml N [Name] - change magic level\n"
+	"/promote Name - promote a player\n"
+	"/z N - display magic effect N\n"
+	"/q [N] - check your money or subtract N\n"
+	"Look: item IDs, action/unique IDs, tile contents; creature health and position",
 
-	"JUGADORES\n"
-	"/info Nombre - datos del jugador\n"
-	"/getonline, /ips - quien esta online y sus IP\n"
-	"/kick Nombre - sacarlo del juego\n"
-	"/b Nombre - ban de IP  |  /ban Nombre - ban del personaje\n"
-	"/pink Nombre[, horas]  |  /unpink Nombre - calavera rosa\n"
-	"/owner Nombre - duenio de la casa donde estas parado\n"
-	"/B texto - mensaje a todo el servidor",
+	"PLAYERS\n"
+	"/info Name - player information\n"
+	"/getonline, /ips - online players and their IPs\n"
+	"/kick Name - disconnect a player\n"
+	"/b Name - IP ban  |  /ban Name - character ban\n"
+	"/pink Name[, hours]  |  /unpink Name - pink skull status\n"
+	"/owner Name - set the owner of the house you are standing in\n"
+	"/B text - broadcast a message",
 
-	"SERVIDOR\n"
-	"/save - guardar ahora\n"
-	"/clean - limpiar los items del piso\n"
+	"SERVER\n"
+	"/save - save now\n"
+	"/clean - clean items from the ground\n"
 	"/reload actions|commands|monsters|spells|config\n"
-	"/closeserver, /openserver - cerrar o abrir a los jugadores\n"
-	"/max N - maximo de jugadores\n"
+	"/closeserver, /openserver - close or open the server to players\n"
+	"/max N - maximum number of players\n"
 	"/pvp 0|1|2 - no-pvp, pvp, pvp-enforced\n"
-	"/shutdown N - apagar en N minutos",
+	"/shutdown N - shut down in N minutes",
 };
 
 void sendGmCommandsHelp(Player* player)
