@@ -37,6 +37,21 @@ resolución de los dos jefes en registro/spawns y comparación de tokens C++: so
 literales y las cinco entradas nuevas de comandos. No se ejecutaron pruebas in-game ni bots.
 La traducción no modifica `test.otbm`, stats, loot, cuentas, personajes ni dueños de casas.
 
-**Activación pendiente:** los mensajes C++ requieren recompilar e instalar el binario;
-la publicación de código por sí sola no los activa. Consultar al usuario según `AGENTS.md §5`.
-El despliegue debe seguir [THINKPAD_TEST_SERVER.md](../systems/THINKPAD_TEST_SERVER.md).
+## Despliegue — 21 nov 2026
+
+Aplicado en la ThinkPad con autorización de Gonzalo. Código `f9ec655`; compilación limpia
+en carpeta nueva `~/build/deploy-english-holes-20261121-120538`: **97,1 s, 0 errores, 0 avisos**.
+Binario instalado con contenedor tras save inmediato y `docker stop -t 45`; arranque normal
+con `docker start`. SHA-256: `40d85b7656d3662c7440870b6e739e28a914cd3d5200e5c161ddc0a9a8e6d3bd`.
+
+Se aplicaron también las [entradas de cuevas](../items-and-map/HOLE_ENTRANCES.md).
+Cliente publicado primero: `clienteretro` **`4121503`**; updater y ZIPs de Mac/Windows
+con los mismos 774 archivos. CRC: DAT `48dcdfc7`, SPR `306d68e5`, minimapa `bef2f1ef`.
+Verificados los manifests y los tres archivos servidos por HTTP en 8080 y 8076.
+
+Respaldo: `~/backups/pre-deploy-20261121-120538-english-holes`, con copias inicial,
+antes del reinicio y tras el guardado de cierre. Cierre ordenado confirmado; carga del mapa
+**0,887 s**, probe OK y contenedor healthy, 0 reinicios automáticos, sin errores en el arranque.
+Preservados: 1 cuenta, 8 archivos de personajes, 35 archivos de casas, depots, dueños/permisos,
+`houseitems.xml`, `sponsors.xml` y config local. Sin suites, bots ni recorrido in-game,
+según la indicación del usuario. Procedimiento: [THINKPAD_TEST_SERVER.md](../systems/THINKPAD_TEST_SERVER.md).

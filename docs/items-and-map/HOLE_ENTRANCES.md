@@ -66,4 +66,12 @@ solo 45 IDs cambiados y todos los enlaces transitables. Vistas de todas las entr
 en [all-entrances.png](img/hole-entrances/all-entrances.png). Sin clientes, instancias
 ni suites de pruebas por la indicación previa del usuario.
 
-Cliente y mapa pendientes de publicación; publicar DAT/SPR antes de activar 20368.
+## Despliegue — 21 nov 2026
+
+Publicado y aplicado junto con la [traducción al inglés](../gameplay/SERVER_LANGUAGE.md#despliegue--21-nov-2026):
+servidor `f9ec655`, cliente `4121503`. DAT/SPR y minimapa publicados antes de activar el mapa;
+HTTP 8080/8076 y ZIPs Mac/Windows coinciden. Backup
+`~/backups/pre-deploy-20261121-120538-english-holes`, renovado antes del reinicio y tras el cierre.
+Arranque sin errores, carga en 0,887 s, probe OK, healthy y 0 reinicios automáticos.
+Cuentas, archivos de personajes, casas, depots y sus datos preservados. Sin prueba in-game;
+se mantienen las auditorías de enlaces y de los 11 lockers con `depotid=1`.
