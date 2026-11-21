@@ -480,6 +480,12 @@ NEW_ITEMS = [
     dict(name="snowy cave entrance", server_id=20368, client_id=5104, prototype=485,
          png="snow_cave_entrance.png", decor=True, fixed=True, layers=2,
          descr="An icy opening surrounded by snow."),
+    dict(name="frost mine rune", server_id=20369, client_id=5105, prototype=2301,
+         png="frost_mine_rune.png", decor=True,
+         descr="Shop-only PvP trap. Blue fire detonates when another player steps on it."),
+    dict(name="frost mine", server_id=20370, client_id=5106, prototype=1492,
+         png="frost_mine_fire.png", decor=True, fixed=True, nodecay=True, frames=2, light=(4, 137),
+         descr="Blue fire. It arms after 1 second and fades after 30 seconds."),
 
 ]
 # Muelle del depot y puentes (nov 2026): barandas, faroles y rampa de madera dibujados por dock_bridge_art.py

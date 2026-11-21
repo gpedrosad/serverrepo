@@ -97,6 +97,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | Script | Uso |
 |--------|-----|
 | `build_zagan_test_assets.py` | Pipeline sprites/OTB/dat Zagan |
+| `build_frost_mine.py` | Recolorea fuego/runa nativos para Frost Mine; instalar solo 20369/20370 con `add_custom_items.py` ([doc](../docs/gameplay/FROST_MINE.md)) |
 | `sprite_tool.py` | Sprites de criaturas: `bases`, `new`, `inspect`, `check`, `verify` (guía: `docs/gameplay/SPRITE_RECOLOR_GUIDE.md`) |
 | `add_paladin_stars.py` + `paladin_star_art.py` | Tres stars de paladín con proyectiles e impactos propios; `--prepare`, `--preview`, `--apply` |
 | `add_melee_relics.py` / `melee_relic_art.py` / `validate_melee_relics.py` | Tres armas melee e impactos 47–49; generación, instalación idempotente y auditoría ([MELEE_RELICS.md](../docs/gameplay/MELEE_RELICS.md)) |

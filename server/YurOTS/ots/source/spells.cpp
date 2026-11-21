@@ -38,6 +38,7 @@
 #include "spells.h"
 #include "exhaust.h"
 #include "spellcooldown.h"
+#include "frost_mine.h"
 #include "playerstates.h"
 #include "monster.h"
 #include "player.h"
@@ -545,6 +546,7 @@ int SpellScript::registerFunctions(){
 	lua_register(luaState, "doDestroyField", SpellScript::luaActionDoDestroyField);
 	lua_register(luaState, "doAnchorRoot", SpellScript::luaActionDoAnchorRoot);
 	lua_register(luaState, "doCrimsonCage", SpellScript::luaActionDoCrimsonCage);
+	lua_register(luaState, "doFrostMine", SpellScript::luaActionDoFrostMine);
 	lua_register(luaState, "doCurePoison", SpellScript::luaActionDoCurePoison);
 	lua_register(luaState, "doAnimateDead", SpellScript::luaActionDoAnimateDead);
 	lua_register(luaState, "doConvinceCreature", SpellScript::luaActionDoConvinceCreature);
@@ -793,6 +795,25 @@ void clearParalyzeCondition(Game* game, Creature* creature)
 	Player* player = dynamic_cast<Player*>(creature);
 	if(player)
 		player->sendIcons();
+}
+
+int SpellScript::luaActionDoFrostMine(lua_State *L)
+{
+	Position pos;
+	internalGetPosition(L, pos);
+	unsigned int cid = (unsigned int)lua_tonumber(L, -1);
+	lua_pop(L, 1);
+	Spell* spell = getSpell(L);
+	Player* player = spell ? spell->game->getPlayerByID(cid) : NULL;
+	if(!player || playerSpellExhaustBlocked(player)) {
+		lua_pushnumber(L, 0);
+		return 1;
+	}
+	bool placed = placeFrostMine(spell->game, player, pos);
+	if(placed)
+		applyPlayerSpellExhaust(player, false);
+	lua_pushnumber(L, placed ? 1 : 0);
+	return 1;
 }
 
 int SpellScript::luaActionDoAnchorRoot(lua_State *L)

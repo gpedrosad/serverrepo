@@ -20,6 +20,7 @@
 
 #include "definitions.h"
 #include "paladin_stars.h"
+#include "frost_mine.h"
 
 #include <string>
 #include <sstream>
@@ -3955,6 +3956,8 @@ void Game::thingMoveInternal(Creature *creature, unsigned short from_x, unsigned
 			}
 		}
 
+		triggerFrostMine(this, creatureMoving);
+
 		// Summons del jugador: dan el paso detras de el (docs/gameplay/SUMMONS.md). Si cambio de piso, ya los
 		// llevo teleport().
 		if(playerMoving && playerMoving->pos.z == oldPos.z && !playerMoving->summons.empty()) {
@@ -4172,6 +4175,8 @@ void Game::teleport(Thing *thing, const Position& newPos) {
 					(*it)->onTeleport(creature, &oldPos, osp);
 				}
 			}
+
+			triggerFrostMine(this, creature);
 
 			// Summons del jugador: si cambio de piso o salto lejos (escaleras, escalera de mano, agujero,
 			// teleport), aparecen a su lado (docs/gameplay/SUMMONS.md).

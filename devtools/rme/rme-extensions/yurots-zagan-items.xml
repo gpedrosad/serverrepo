@@ -66,6 +66,8 @@
 
 	<tileset name="Zagan Runes">
 		<raw>
+			<item id="20369"/>
+			<item id="20370"/>
 			<item id="20131"/>
 			<item id="20132"/>
 			<item id="20133"/>
