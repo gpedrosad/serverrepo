@@ -120,7 +120,7 @@ local function joinGuild(me)
 	elseif status > INVITED then
 		selfSay('Sorry, you are a member of a guild.')
 	else
-		askYesNo('Do you want to join ' .. guildOf(me) .. '? (yes or si)', function()
+		askYesNo('Do you want to join ' .. guildOf(me) .. '? (yes/no)', function()
 			if statusOf(me) == INVITED then
 				setPlayerGuildStatus(me, MEMBER)
 				selfSay('Welcome! You are now a guild member.')
@@ -131,12 +131,12 @@ end
 
 local function leaveGuild(me)
 	local status = statusOf(me)
-	local question = 'Do you want to leave ' .. guildOf(me) .. '? (yes or si)'
+	local question = 'Do you want to leave ' .. guildOf(me) .. '? (yes/no)'
 	if status == NONE or status == INVITED then
 		selfSay('You are not in a guild.')
 		return
 	elseif status == LEADER then
-		question = 'You are the guild leader. If you leave, no one can invite new players. Are you sure? (yes or si)'
+		question = 'You are the guild leader. If you leave, no one can invite new players. Are you sure? (yes/no)'
 	end
 	askYesNo(question, function()
 		if statusOf(me) > INVITED then

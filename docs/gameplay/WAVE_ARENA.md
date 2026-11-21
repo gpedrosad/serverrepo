@@ -1,5 +1,7 @@
 # Wave Arena — Claro de la Selva
 
+> Idioma visible: **inglés**. Ver [política y corrección de textos](SERVER_LANGUAGE.md).
+
 Arena PvE de 20 oleadas para grupos (v2, nov 2026). Campamento seguro + claro de selva cerrado con bambú.
 Un jefe cada 5 oleadas, las oleadas escalan con el grupo, ranking semanal por oleadas **limpias** y premio
 la primera vez en la semana que se limpia la 5 / 10 / 15 / 20.

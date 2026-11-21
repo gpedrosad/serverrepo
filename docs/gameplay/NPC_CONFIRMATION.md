@@ -1,5 +1,7 @@
 # NPC: Confirmación de compra/venta
 
+> Idioma visible: **inglés**. Ver [política y corrección de textos](SERVER_LANGUAGE.md).
+
 Se modificó el sistema de NPCs para que, antes de concretar cualquier transacción de compra o venta, el NPC le pida confirmación al jugador con un mensaje del estilo:
 
 > **NPC**: Do you want to buy 1x rope for 50 gold? (yes/no)

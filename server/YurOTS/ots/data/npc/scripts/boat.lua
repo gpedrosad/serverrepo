@@ -58,7 +58,7 @@ local function offerTravel(cid, travel)
 	end
 	pending_travel = travel
 	talk_state = 1
-	selfSay('A trip to ' .. travel.name .. ' costs ' .. travel.price .. 'gp. Ready to go? (yes or si)')
+	selfSay('A trip to ' .. travel.name .. ' costs ' .. travel.price .. 'gp. Ready to go? (yes/no)')
 end
 
 local function doTravel(cid, travel)

@@ -84,17 +84,17 @@ function sandClockStatus()
 	local wave, remain = sandClockState()
 	local n = table.getn(WAVES)
 	if wave == 0 then
-		return 'Descanso | la oleada 1 (' .. WAVES[1].name .. ') empieza en ' .. sandClockFormat(remain)
+		return 'Rest | wave 1 (' .. WAVES[1].name .. ') starts in ' .. sandClockFormat(remain)
 	end
-	local text = 'Oleada ' .. wave .. ' de ' .. n .. ': ' .. WAVES[wave].name .. ' | quedan ' .. sandClockFormat(remain)
+	local text = 'Wave ' .. wave .. ' of ' .. n .. ': ' .. WAVES[wave].name .. ' | remaining ' .. sandClockFormat(remain)
 	if wave < n then
-		return text .. ' | despues: ' .. WAVES[wave + 1].name
+		return text .. ' | next: ' .. WAVES[wave + 1].name
 	end
-	return text .. ' | despues: descanso'
+	return text .. ' | next: rest'
 end
 
-RULES = 'Reloj de Arena: descanso de ' .. REST_SEC .. ' s y despues ' .. table.getn(WAVES) .. ' oleadas de '
-	.. WAVE_SEC .. ' s, cada una mas fuerte. Los braseros marcan la oleada. Entra en el descanso para empezar desde la 1.'
+RULES = 'Sand Clock: ' .. REST_SEC .. ' s of rest followed by ' .. table.getn(WAVES) .. ' waves of '
+	.. WAVE_SEC .. ' s, each stronger than the last. Braziers mark the wave. Enter during rest to start at wave 1.'
 
 function sandClockIsPlayerCid(cid)
 	if cid == nil or cid == 0 or isMonster(cid) then
@@ -188,16 +188,16 @@ function sandClockApply(wave, announce)
 	current_wave = wave
 	if wave == 0 then
 		if announce then
-			selfSay('Descanso. La arena vuelve a empezar.')
-			sandClockBroadcast(MSG_RED_INFO, 'Reloj de Arena: ronda terminada. Descanso de ' .. REST_SEC
-				.. ' s; despues vuelve la oleada 1.')
+			selfSay('Rest. The arena cycle starts again.')
+			sandClockBroadcast(MSG_RED_INFO, 'Sand Clock: round complete. Rest for ' .. REST_SEC
+				.. ' s; then wave 1 starts again.')
 		end
 		return
 	end
 	sandClockSpawnWave(WAVES[wave])
 	if announce then
-		selfSay('Oleada ' .. wave .. ': ' .. WAVES[wave].name .. '!')
-		sandClockBroadcast(MSG_RED_INFO, 'Reloj de Arena: oleada ' .. wave .. ' de ' .. table.getn(WAVES) .. ': '
+		selfSay('Wave ' .. wave .. ': ' .. WAVES[wave].name .. '!')
+		sandClockBroadcast(MSG_RED_INFO, 'Sand Clock: wave ' .. wave .. ' of ' .. table.getn(WAVES) .. ': '
 			.. WAVES[wave].name .. '.')
 	end
 end
@@ -242,17 +242,17 @@ end
 local function chronosThink()
 	sandClockScanRoomPlayers()
 	sandClockEnsure()
-	sandClockBroadcast(MSG_SMALLINFO, 'Reloj de Arena | ' .. sandClockStatus())
+	sandClockBroadcast(MSG_SMALLINFO, 'Sand Clock | ' .. sandClockStatus())
 	sandClockShowProgress()
 	npcOnThink(45, '...')
 end
 
 npcDefine{
 	greet = function(cid)
-		return 'Hola ' .. creatureGetName(cid) .. '! Cuido el reloj. ' .. sandClockStatus()
-			.. '. Di "reglas" u "oleada".'
+		return 'Hello ' .. creatureGetName(cid) .. '! I keep the clock. ' .. sandClockStatus()
+			.. '. Say "rules" or "wave".'
 	end,
-	busy = 'Un momento...',
+	busy = 'One moment...',
 	onMessage = onMessage,
 	onAppear = sandClockTrackPlayer,
 	onDisappear = chronosDisappear,

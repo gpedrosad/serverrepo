@@ -16,9 +16,9 @@
 	<voice sentence="Piola... sigue, no mas." cycleticks="28000" probability="28"/>
 	<voice sentence="Esa si conto, crack." cycleticks="30000" probability="26"/>
 	<voice sentence="Respira, no te apures." cycleticks="32000" probability="25"/>
-	<voice sentence="Keep going, estas en buen ritmo." cycleticks="30000" probability="26"/>
+	<voice sentence="Keep going, you are doing well." cycleticks="30000" probability="26"/>
 	<voice sentence="Exura... ya, de nuevo." cycleticks="28000" probability="24"/>
-	<voice sentence="El que persiste, aprende." cycleticks="35000" probability="22"/>
+	<voice sentence="Those who persevere will learn." cycleticks="35000" probability="22"/>
 	<voice sentence="Mas firme, caleta menos." cycleticks="32000" probability="24"/>
 </voices>
 </monster>

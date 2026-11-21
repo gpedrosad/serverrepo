@@ -30,7 +30,7 @@ local function onMessage(cid, msg)
 		elseif getPlayerLevel(creatureGetName(cid)) < 20 then
 			selfSay('You need level 20 for promotion.')
 		else
-			selfSay('Promotion costs 20,000 gp. Do you want to buy it? (yes or si)')
+			selfSay('Promotion costs 20,000 gp. Do you want to buy it? (yes/no)')
 			talk_state = 1
 		end
 	elseif msgcontains(msg, 'premium') or msgcontains(msg, 'premmy') then

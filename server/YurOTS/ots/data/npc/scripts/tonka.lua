@@ -75,7 +75,7 @@ function offerExchange(cid, ex)
 
 	pending_exchange = ex
 	talk_state = 1
-	selfSay('Trade ' .. NEED .. ' ' .. ex.smallName .. ' for 1 ' .. ex.bigName .. '? (yes or si)')
+	selfSay('Trade ' .. NEED .. ' ' .. ex.smallName .. ' for 1 ' .. ex.bigName .. '? (yes/no)')
 end
 
 local function onMessage(cid, msg)

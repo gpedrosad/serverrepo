@@ -17,21 +17,21 @@ PADS = {
 }
 ARENAS = {
 	bronze = {
-		name = "Foso de Arena", x0 = 615, y0 = 100, x1 = 625, y1 = 108, z = 0,
+		name = "Sand Pit", x0 = 615, y0 = 100, x1 = 625, y1 = 108, z = 0,
 		-- arrivals[1] = el que tira; la cantidad es el tope del grupo
 		arrivals = {{x = 620, y = 106, z = 0}, {x = 619, y = 106, z = 0}, {x = 621, y = 106, z = 0}, {x = 620, y = 105, z = 0}, {x = 619, y = 105, z = 0}, {x = 621, y = 105, z = 0}, {x = 618, y = 106, z = 0}},
 		-- spawns[1] = elite/boss; el resto, pack
 		spawns = {{x = 620, y = 101, z = 0}, {x = 618, y = 102, z = 0}, {x = 622, y = 102, z = 0}, {x = 616, y = 101, z = 0}, {x = 624, y = 101, z = 0}, {x = 619, y = 103, z = 0}, {x = 621, y = 103, z = 0}},
 	},
 	silver = {
-		name = "Coliseo de Piedra", x0 = 630, y0 = 100, x1 = 640, y1 = 108, z = 0,
+		name = "Stone Coliseum", x0 = 630, y0 = 100, x1 = 640, y1 = 108, z = 0,
 		-- arrivals[1] = el que tira; la cantidad es el tope del grupo
 		arrivals = {{x = 635, y = 106, z = 0}, {x = 634, y = 106, z = 0}, {x = 636, y = 106, z = 0}, {x = 635, y = 105, z = 0}, {x = 634, y = 105, z = 0}, {x = 636, y = 105, z = 0}, {x = 633, y = 106, z = 0}},
 		-- spawns[1] = elite/boss; el resto, pack
 		spawns = {{x = 635, y = 101, z = 0}, {x = 633, y = 102, z = 0}, {x = 637, y = 102, z = 0}, {x = 631, y = 101, z = 0}, {x = 639, y = 101, z = 0}, {x = 634, y = 103, z = 0}, {x = 636, y = 103, z = 0}},
 	},
 	gold = {
-		name = "Trono de Fuego", x0 = 645, y0 = 100, x1 = 655, y1 = 108, z = 0,
+		name = "Throne of Fire", x0 = 645, y0 = 100, x1 = 655, y1 = 108, z = 0,
 		-- arrivals[1] = el que tira; la cantidad es el tope del grupo
 		arrivals = {{x = 650, y = 106, z = 0}, {x = 649, y = 106, z = 0}, {x = 651, y = 106, z = 0}, {x = 650, y = 105, z = 0}, {x = 649, y = 105, z = 0}, {x = 651, y = 105, z = 0}, {x = 648, y = 106, z = 0}},
 		-- spawns[1] = elite/boss; el resto, pack
@@ -43,7 +43,7 @@ ARENAS = {
 UID_INFO = 7203
 DOORS = {[7200] = "bronze", [7201] = "silver", [7202] = "gold"}
 DOOR_ORDER = {"bronze", "silver", "gold"}
-DOOR_LABEL = {bronze = "Bronce", silver = "Plata", gold = "Oro"}
+DOOR_LABEL = {bronze = "Bronze", silver = "Silver", gold = "Gold"}
 
 -- Rotacion diaria: elite de cada puerta y rare exclusivo del boss de Oro.
 DAILY = {
@@ -148,14 +148,14 @@ end
 
 local function startDoor(cid, door)
 	if not inBox(getPlayerPosition(cid), HUB) then
-		doPlayerSendCancel(cid, "Usa la palanca desde la Sala del Crisol.")
+		doPlayerSendCancel(cid, "Use the lever from the Crucible Hall.")
 		return
 	end
 
 	local arena = ARENAS[door]
 	local inside = scan(arena)
 	if table.getn(inside.players) > 0 then
-		doPlayerSendCancel(cid, "Arena ocupada por " .. names(inside.players) .. ".")
+		doPlayerSendCancel(cid, "Arena occupied by " .. names(inside.players) .. ".")
 		return
 	end
 
@@ -163,13 +163,13 @@ local function startDoor(cid, door)
 	local spawned = spawn(door, elite, inside.monsters)
 	local total = inside.monsters + spawned
 	if total == 0 then
-		doPlayerSendCancel(cid, "No se pudieron invocar monstruos. Avisa a un GM.")
+		doPlayerSendCancel(cid, "Could not summon monsters. Please contact a GM.")
 		return
 	end
 
 	local group, left = padGroup(cid, door, table.getn(arena.arrivals))
-	local text = "Crisol " .. DOOR_LABEL[door] .. " (" .. arena.name .. "): " .. total ..
-		" monstruos, elite de hoy " .. elite .. ". Salida: TP al sur."
+	local text = "Crucible " .. DOOR_LABEL[door] .. " (" .. arena.name .. "): " .. total ..
+		" monsters, today's elite: " .. elite .. ". Exit: southern portal."
 	for i, uid in ipairs(group) do
 		doTeleportThing(uid, arena.arrivals[i])
 		doPlayerSendTextMessage(uid, MSG, text)
@@ -177,30 +177,30 @@ local function startDoor(cid, door)
 	doSendMagicEffect(arena.arrivals[1], EFFECT_TELEPORT)
 
 	if inside.monsters > 0 then
-		doPlayerSendTextMessage(cid, MSG, "Quedaban " .. inside.monsters .. " monstruos de una corrida abandonada.")
+		doPlayerSendTextMessage(cid, MSG, "There were " .. inside.monsters .. " monsters left from an abandoned run.")
 	end
 	if table.getn(group) > 1 then
-		doPlayerSendTextMessage(cid, MSG, "Grupo: " .. names(group) .. ".")
+		doPlayerSendTextMessage(cid, MSG, "Group: " .. names(group) .. ".")
 	end
 	for _, uid in ipairs(left) do
-		doPlayerSendCancel(uid, "Grupo lleno (max " .. table.getn(arena.arrivals) .. "). Espera la proxima.")
+		doPlayerSendCancel(uid, "Group full (max " .. table.getn(arena.arrivals) .. "). Wait for the next run.")
 	end
 end
 
 local function showInfo(cid)
 	local today = DAILY[dayIndex()]
-	doPlayerSendTextMessage(cid, MSG, "El Crisol - dia #" .. dayIndex() .. ". Rare de hoy (solo Oro): " .. today.rare .. ".")
+	doPlayerSendTextMessage(cid, MSG, "The Crucible - day #" .. dayIndex() .. ". Today's rare (Gold only): " .. today.rare .. ".")
 	for _, door in ipairs(DOOR_ORDER) do
 		local s = scan(ARENAS[door])
-		local state = "libre"
+		local state = "free"
 		if table.getn(s.players) > 0 then
-			state = "ocupada (" .. names(s.players) .. ", " .. s.monsters .. " monstruos)"
+			state = "occupied (" .. names(s.players) .. ", " .. s.monsters .. " monsters)"
 		elseif s.monsters > 0 then
-			state = "libre, con " .. s.monsters .. " monstruos sueltos"
+			state = "free, with " .. s.monsters .. " roaming monsters"
 		end
 		doPlayerSendTextMessage(cid, MSG, DOOR_LABEL[door] .. ": " .. today[door] .. " - " .. state .. ".")
 	end
-	doPlayerSendTextMessage(cid, MSG, "Para entrar en grupo, paren en la plataforma frente a la palanca (max "
+	doPlayerSendTextMessage(cid, MSG, "To enter as a group, stand on the platform in front of the lever (max "
 		.. table.getn(ARENAS.gold.arrivals) .. ").")
 end
 

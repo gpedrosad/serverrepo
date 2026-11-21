@@ -174,9 +174,9 @@ function beginClaim(cid, chooseExp)
 	pending_reward = { chooseExp = chooseExp }
 	talk_state = 1
 	if chooseExp then
-		selfSay('Claim ' .. fmtAmount(exp) .. ' experience? (yes or si)')
+		selfSay('Claim ' .. fmtAmount(exp) .. ' experience? (yes/no)')
 	else
-		selfSay('Claim ' .. fmtAmount(gold) .. ' gold? (yes or si)')
+		selfSay('Claim ' .. fmtAmount(gold) .. ' gold? (yes/no)')
 	end
 end
 

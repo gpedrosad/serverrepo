@@ -22,6 +22,6 @@ function onUse(cid, item, frompos, item2, topos)
 	doSendMagicEffect(pos, EFFECT_PREMIUM)
 	doSendAnimatedText(pos, "Premium!", TEXTCOLOR_RED)
 	doPlayerSendTextMessage(cid, MSG_RED_TEXT,
-		"Felicitaciones! Premium activado: " .. cfg.label .. ". Usa !premmy para ver el tiempo restante.")
+		"Felicitaciones! Premium activado: " .. cfg.label .. ". Use !premmy to check your remaining time.")
 	return 1
 end

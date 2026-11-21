@@ -1,5 +1,7 @@
 # Reloj de Arena — sala de oleadas que suben de nivel
 
+> Idioma visible: **inglés**. Ver [política y corrección de textos](SERVER_LANGUAGE.md).
+
 Una sala chica (11×9) compartida. Todos los que entran viven el **mismo** ciclo, que corre según la hora
 real aunque no haya nadie:
 

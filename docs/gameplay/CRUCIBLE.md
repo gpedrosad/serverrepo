@@ -1,5 +1,7 @@
 # El Crisol — bosses diarios + armas exclusivas
 
+> Idioma visible: **inglés**. Ver [política y corrección de textos](SERVER_LANGUAGE.md).
+
 Hub con **3 puertas** (Bronce / Plata / Oro). Cada día rota elite/boss. La puerta Oro dropea un **arma Zagan exclusiva** con efecto C++.
 
 **v3 (nov 2026):** salas compactas y decoradas (antes: 4 cajas de hasta 19x17 casi vacías, 1376 casillas;

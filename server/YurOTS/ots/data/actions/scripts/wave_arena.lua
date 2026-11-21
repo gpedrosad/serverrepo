@@ -227,7 +227,7 @@ local function record(uid, cleared)
 		if cleared >= r[1] and storage(uid, STORAGE_REWARD + i - 1) ~= weekId() then
 			setPlayerStorageValue(uid, STORAGE_REWARD + i - 1, weekId())
 			doPlayerAddItem(uid, r[2], r[3])
-			doPlayerSendTextMessage(uid, MSG, "Premio semanal por limpiar la oleada " .. r[1] .. ": " .. r[4] .. ".")
+			doPlayerSendTextMessage(uid, MSG, "Weekly reward for clearing wave " .. r[1] .. ": " .. r[4] .. ".")
 		end
 	end
 end
@@ -242,12 +242,12 @@ local function describe(n, players)
 	local w = WAVES[n]
 	local parts = {}
 	if w.boss then
-		table.insert(parts, "JEFE " .. w.boss)
+		table.insert(parts, "BOSS " .. w.boss)
 	end
 	for _, p in ipairs(w.pack) do
 		table.insert(parts, scaled(p[2], players) .. " " .. p[1])
 	end
-	return "Oleada " .. n .. "/" .. table.getn(WAVES) .. ": " .. table.concat(parts, " + ")
+	return "Wave " .. n .. "/" .. table.getn(WAVES) .. ": " .. table.concat(parts, " + ")
 end
 
 -- Invoca la oleada n para `players` jugadores. Devuelve cuantos aparecieron.
@@ -291,7 +291,7 @@ end
 local function launch(n, players)
 	local got = spawnWave(n, table.getn(players))
 	setWave(n, players)
-	tellAll(players, describe(n, table.getn(players)) .. " (" .. got .. " invocados).")
+	tellAll(players, describe(n, table.getn(players)) .. " (" .. got .. " summoned).")
 	return got
 end
 
@@ -299,13 +299,13 @@ end
 
 local function start(cid)
 	if not inBox(getPlayerPosition(cid), CAMP) then
-		doPlayerSendCancel(cid, "Usa la palanca desde el campamento.")
+		doPlayerSendCancel(cid, "Use the lever from the camp.")
 		return
 	end
 	local inside = scan(ARENA)
 	if table.getn(inside.players) > 0 then
-		doPlayerSendCancel(cid, "Corrida en curso de " .. names(inside.players) ..
-			" (oleada " .. currentWave(inside.players) .. ").")
+		doPlayerSendCancel(cid, "Run in progress for " .. names(inside.players) ..
+			" (wave " .. currentWave(inside.players) .. ").")
 		return
 	end
 
@@ -315,16 +315,16 @@ local function start(cid)
 	end
 	doSendMagicEffect(ARRIVALS[1], EFFECT_TELEPORT)
 	if inside.monsters > 0 then
-		tellAll(group, "Quedaban " .. inside.monsters .. " monstruos de una corrida anterior: cuentan para la oleada 1.")
+		tellAll(group, "There were " .. inside.monsters .. " monsters left from an earlier run: they count toward wave 1.")
 	end
 	if launch(1, group) == 0 and inside.monsters == 0 then
-		tellAll(group, "No se pudieron invocar monstruos. Avisa a un GM.")
+		tellAll(group, "Could not summon monsters. Please contact a GM.")
 	end
 	if table.getn(group) > 1 then
-		doPlayerSendTextMessage(cid, MSG, "Grupo: " .. names(group) .. ". Las oleadas escalan con el grupo.")
+		doPlayerSendTextMessage(cid, MSG, "Group: " .. names(group) .. ". Waves scale with your group.")
 	end
 	for _, uid in ipairs(left) do
-		doPlayerSendCancel(uid, "Grupo lleno (max " .. table.getn(ARRIVALS) .. ").")
+		doPlayerSendCancel(uid, "Group full (max " .. table.getn(ARRIVALS) .. ").")
 	end
 end
 
@@ -334,19 +334,19 @@ local function nextWave(cid)
 	end
 	local s = scan(ARENA)
 	if s.monsters > 0 then
-		doPlayerSendCancel(cid, "Quedan " .. s.monsters .. " monstruo(s). Limpien el claro primero.")
+		doPlayerSendCancel(cid, "There are " .. s.monsters .. " monster(s) remaining. Clear the area first.")
 		return
 	end
 	local cleared = currentWave(s.players)
 	if cleared > 0 and cleared < table.getn(WAVES) then
-		tellAll(s.players, "Oleada " .. cleared .. " limpia.")
+		tellAll(s.players, "Wave " .. cleared .. " cleared.")
 	end
 	for _, uid in ipairs(s.players) do
 		record(uid, cleared)
 	end
 
 	if cleared >= table.getn(WAVES) then
-		tellAll(s.players, "Completaron las " .. table.getn(WAVES) .. " oleadas del Claro de la Selva!")
+		tellAll(s.players, "You cleared all " .. table.getn(WAVES) .. " waves of the Jungle Clearing!")
 		for _, uid in ipairs(s.players) do
 			setPlayerStorageValue(uid, STORAGE_RUN_WAVE, 0)
 			doTeleportThing(uid, CAMP_LANDING)
@@ -373,7 +373,7 @@ local function retire(cid)
 	setPlayerStorageValue(cid, STORAGE_RUN_WAVE, 0)
 	doTeleportThing(cid, CAMP_LANDING)
 	doSendMagicEffect(CAMP_LANDING, EFFECT_TELEPORT)
-	doPlayerSendTextMessage(cid, MSG, "Te retiraste con " .. math.max(cleared, 0) .. " oleada(s) limpias.")
+	doPlayerSendTextMessage(cid, MSG, "You retired with " .. math.max(cleared, 0) .. " cleared wave(s).")
 	if table.getn(s.players) <= 1 then
 		WaveRun.wave = 0
 	end
@@ -382,21 +382,21 @@ end
 local function showRank(cid)
 	ensureWeek(cid)
 	local data = rankLoad()
-	doPlayerSendTextMessage(cid, MSG, "Wave Arena - ranking semana " .. data.week ..
-		". Tu marca: " .. storage(cid, STORAGE_BEST_WEEK) .. " (semana) / " ..
-		storage(cid, STORAGE_BEST_ALL) .. " (historica).")
+	doPlayerSendTextMessage(cid, MSG, "Wave Arena - ranking for week " .. data.week ..
+		". Your best: " .. storage(cid, STORAGE_BEST_WEEK) .. " (weekly) / " ..
+		storage(cid, STORAGE_BEST_ALL) .. " (all-time).")
 	local list = rankSorted(data)
 	if table.getn(list) == 0 then
-		doPlayerSendTextMessage(cid, MSG, "Sin marcas esta semana. Se el primero!")
+		doPlayerSendTextMessage(cid, MSG, "No scores this week. Be the first!")
 	end
 	for i = 1, math.min(5, table.getn(list)) do
-		doPlayerSendTextMessage(cid, MSG, i .. ") " .. list[i].name .. " - oleada " .. list[i].score)
+		doPlayerSendTextMessage(cid, MSG, i .. ") " .. list[i].name .. " - wave " .. list[i].score)
 	end
 	local s = scan(ARENA)
 	if table.getn(s.players) > 0 then
-		doPlayerSendTextMessage(cid, MSG, "En el claro: " .. names(s.players) .. " (oleada " .. currentWave(s.players) .. ").")
+		doPlayerSendTextMessage(cid, MSG, "In the clearing: " .. names(s.players) .. " (wave " .. currentWave(s.players) .. ").")
 	else
-		doPlayerSendTextMessage(cid, MSG, "El claro esta libre.")
+		doPlayerSendTextMessage(cid, MSG, "The clearing is free.")
 	end
 end
 

@@ -1,5 +1,7 @@
 # Sistema de NPCs (Lua)
 
+> Idioma visible: **inglés**. Ver [política y corrección de textos](SERVER_LANGUAGE.md).
+
 Cómo están armados los NPCs del servidor, qué hace cada componente compartido, cómo crear uno nuevo y cómo probar cambios sin levantar el servidor.
 
 Relacionado: [`NPC_CONFIRMATION.md`](NPC_CONFIRMATION.md) (confirmación de compra/venta del lado C++), [`SELLER_FLUIDS.md`](SELLER_FLUIDS.md), [`DAILY_TASK.md`](DAILY_TASK.md), [`SAND_CLOCK.md`](SAND_CLOCK.md).

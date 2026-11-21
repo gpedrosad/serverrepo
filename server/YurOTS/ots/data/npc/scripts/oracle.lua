@@ -38,7 +38,7 @@ local function onMessage(cid, msg)
 			if msgcontains(msg, v.key) then
 				vocation = v.id
 				talk_state = 2
-				selfSay(v.text .. ' Are you sure? (yes or si)')
+				selfSay(v.text .. ' Are you sure? (yes/no)')
 				return
 			end
 		end
@@ -70,7 +70,7 @@ npcDefine{
 		if hasVocation(cid) then
 			return 'Hello ' .. creatureGetName(cid) .. '. You already chose your path.'
 		end
-		return 'Hi ' .. creatureGetName(cid) .. '! Are you ready to leave Rookgaard and choose your vocation? (yes or si)'
+		return 'Hi ' .. creatureGetName(cid) .. '! Are you ready to leave Rookgaard and choose your vocation? (yes/no)'
 	end,
 	state = {talk_state = 0, vocation = 0},
 	idleTimeout = 45,
