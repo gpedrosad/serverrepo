@@ -29,6 +29,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path[:0] = [str(HERE), str(HERE / "kb")]
 from mapdata import MAP, REPO, Renderer, load_otb, load_tiles, parse_tree, png_bytes, serialize_tree
+from hole_entrance_style import style_cells
 from epstein_cave_repair import index
 from portal_citadel_layout import tile_flags
 
@@ -229,6 +230,7 @@ def build(values, otb):
         entry=[*ENTRY8, 8],
         entry_cells=[list(p) for p in entry_cells],
     )
+    style_cells(cells, values, otb)
     return cells, spawns, report
 
 

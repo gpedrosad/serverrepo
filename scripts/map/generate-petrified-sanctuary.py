@@ -21,6 +21,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path[:0] = [str(HERE), str(HERE / "kb")]
 from mapdata import MAP, REPO, load_otb, parse_tree, serialize_tree
+from hole_entrance_style import style_cells
 from epstein_cave_repair import index
 from portal_citadel_layout import tile_flags
 
@@ -146,6 +147,7 @@ def build(values, otb):
     assert len(positions) == len(set(positions)) and all(p in walk for p in positions)
     density = len(walk) / len(positions)
     assert 25 < density < 65, f"Densidad fuera de rango: {density}"
+    style_cells(cells, values, otb)
     return cells, spawns, dict(walkable=len(walk), density=round(density, 1),
                               bossDistance=distances[BOSS], surface=[list(p) for p in surface])
 

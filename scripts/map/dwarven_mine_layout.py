@@ -1,5 +1,6 @@
 """Geometria y decoracion de Mina Enana. Solo cava roca/vacio; sin tocar otras cuevas."""
 from collections import Counter
+from hole_entrance_style import style_cells
 import heapq
 import importlib.util
 from pathlib import Path
@@ -193,4 +194,5 @@ def build(values, otb):
         assert 30 <= density <= 65, f"Densidad fuera de rango en z{z}: {density}"
         report[str(z)]["densityTilesPerMonster"] = round(density, 1)
     report.update(monsters=dict(counts), surface=[list(p) for p in surface], aditSteps=len(rail_access) - 1)
+    style_cells(cells, values, otb)
     return cells, spawns, report

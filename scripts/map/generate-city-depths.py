@@ -525,6 +525,9 @@ def main() -> int:
                 counts[name] = counts.get(name, 0) + 1
         print(f"z{z}: {len(f['floor'])} casillas de piso ({len(f['walk'])} caminables), escalera {f['start']}, "
               f"agujero {f['hole']}, fogata {f['fire']}; " + ", ".join(f"{k} x{v}" for k, v in counts.items()))
+    from hole_entrance_style import style_cells
+    planned = {(x, y, z): ids for z, f in floors.items() for (x, y), ids in f["tiles"].items()}
+    style_cells(planned, world, bl.otb)
     if a.dry_run:
         print("dry-run: validación OK, no se escribió nada")
         return 0
