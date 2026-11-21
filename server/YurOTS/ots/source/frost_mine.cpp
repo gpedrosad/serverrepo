@@ -142,5 +142,5 @@ void triggerFrostMine(Game* game, Creature* creature)
 	if(!removeMine(game, mine))
 		return;
 	MineHit hit(victim->getID());
-	game->creatureMakeMagic(owner, victim->pos, &hit);
+	game->creatureCastSpell(owner, victim->pos, hit);
 }

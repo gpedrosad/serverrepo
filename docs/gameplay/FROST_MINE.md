@@ -27,6 +27,11 @@ registro de muerte/skull/frag siguen vigentes. Los 90–120 son el daño base de
 jugador normal antes de protecciones y posibles críticos; un GM conserva su
 comportamiento habitual de combate. La detonación no consume un segundo exhaust.
 
+Entrada C++: `creatureCastSpell(owner, pos, hit)` es pública y conserva ese pipeline.
+`creatureMakeMagic` es protegida; no llamarla desde el módulo externo ni cambiar su
+visibilidad. No usar `creatureThrowRune` para detonar: volvería a exigir línea de
+tiro desde el dueño a una trampa que ya está puesta.
+
 ## Reglas
 
 - Colocación y detonación deshabilitadas en mundos no-PvP, PZ, casas y training.
