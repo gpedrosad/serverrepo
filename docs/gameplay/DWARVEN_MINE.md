@@ -108,7 +108,5 @@ ni plantillas de casas. Sin rebuild: binario y configuración idénticos al resp
 Guardado ordenado, mapa cargado en **0,858 s**, arranque sin errores/warnings,
 probe OK, healthy y cero reinicios automáticos. **1 cuenta, 8 personajes y 35 archivos
 de casas** preservados; depots, dueños, houseitems y padrinazgos cotejados contra el save.
-Las comparaciones de snapshots XML se normalizan a JSON en ambos lados (listas/tuplas).
 Sin suites ni cliente in-game por pedido previo del usuario; balance y apertura visual
 de depot pendientes. Reabrir el cliente para cargar los assets nuevos.
-
