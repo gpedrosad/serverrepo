@@ -149,7 +149,9 @@ looktypes (incluido el 231) e ítems sin cambios, 400 sprites viejos al azar id�
 **Los packs se aplican en orden** (el número de cada constante depende de cuántos efectos había):
 ice → Enchanted Spear → shadow → power → gran → spells. Cada pack de `PACKS` declara en `base` los contadores sobre los que se aplica.
 Después de spells se instala el pack [Paladin Stars](PALADIN_STARS.md): impactos **44–46** y
-proyectiles **18–20** (`add_paladin_stars.py`). Para un pack posterior usar `base: (47, 21)`. Volver a correr la Enchanted Spear con packs posteriores ya aplicados conserva sus proyectiles.
+proyectiles **18–20** (`add_paladin_stars.py`). Después, Melee Relics (47–49) y el pack "levelup" (50,
+`NM_ME_LEVEL_UP`, columna dorada con confeti al subir de nivel, [LEVEL_UP_REWARDS.md](LEVEL_UP_REWARDS.md)):
+`add_drawn_effects.py --pack levelup`, `base: (50, 21)`. Para un pack posterior usar `base: (51, 21)`. Volver a correr la Enchanted Spear con packs posteriores ya aplicados conserva sus proyectiles.
 
 ## Antes de usarlos en producción
 

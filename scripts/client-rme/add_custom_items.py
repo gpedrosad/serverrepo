@@ -430,6 +430,27 @@ NEW_ITEMS = [
     dict(name="cyan lamp", server_id=20340, client_id=2966, prototype=2045,
          png="cyan_lamp.png", decor=True, frames=2, light=(6, 29), nodecay=True,
          descr="A lamp that glows cyan."),
+    # Regalos de nivel (nov 2026): una caja por nivel nuevo, por rango (Player::onLevelAdvance; se abren con
+    # data/actions/scripts/level_gift.lua). El present 7.6 recoloreado (make_level_gifts.py) sobre el
+    # teddy bear 2112: ítem suelto, no contenedor (no se puede llenar). Doc: docs/gameplay/LEVEL_UP_REWARDS.md.
+    dict(name="novice gift", server_id=20354, client_id=5090, prototype=2112,
+         png="level_gift_novice.png", decor=True,
+         descr="A gift for reaching level 2-19. Use it to open it."),
+    dict(name="adventurer gift", server_id=20355, client_id=5091, prototype=2112,
+         png="level_gift_adventurer.png", decor=True,
+         descr="A gift for reaching level 20-34. Use it to open it."),
+    dict(name="veteran gift", server_id=20356, client_id=5092, prototype=2112,
+         png="level_gift_veteran.png", decor=True,
+         descr="A gift for reaching level 35-49. Use it to open it."),
+    dict(name="champion gift", server_id=20357, client_id=5093, prototype=2112,
+         png="level_gift_champion.png", decor=True,
+         descr="A gift for reaching level 50-79. Use it to open it."),
+    dict(name="heroic gift", server_id=20358, client_id=5094, prototype=2112,
+         png="level_gift_heroic.png", decor=True, light=(2, 204),
+         descr="A gift for reaching level 80-99. Use it to open it."),
+    dict(name="legendary gift", server_id=20359, client_id=5095, prototype=2112,
+         png="level_gift_legendary.png", decor=True, light=(3, 204),
+         descr="A gift for reaching level 100+. Use it to open it."),
 
 ]
 # Muelle del depot y puentes (nov 2026): barandas, faroles y rampa de madera dibujados por dock_bridge_art.py
