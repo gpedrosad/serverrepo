@@ -118,4 +118,8 @@
 		</raw>
 	</tileset>
 
+	<tileset name="Terrain Entrances">
+		<raw><item id="20368"/></raw>
+	</tileset>
+
 </materialsextension>

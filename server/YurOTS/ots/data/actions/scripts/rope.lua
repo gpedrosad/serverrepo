@@ -1,6 +1,7 @@
 --rope sistem--
    
    function onUse(cid, item, frompos, item2, topos)
+   if item2.itemid == 20368 then item2.itemid = 485 end -- same native ice-hole behavior
    npos = {x=topos.x, y=topos.y, z=topos.z}
    if item2.itemid == 28 then
     return 0

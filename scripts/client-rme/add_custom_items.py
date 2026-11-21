@@ -477,6 +477,10 @@ NEW_ITEMS = [
     dict(name="mine timber support", server_id=20367, client_id=5103, prototype=1515,
          png="mine_timber_support.png", decor=True, fixed=True, tiles=2,
          descr="Iron and timber from the dwarven copper mine."),
+    dict(name="snowy cave entrance", server_id=20368, client_id=5104, prototype=485,
+         png="snow_cave_entrance.png", decor=True, fixed=True, layers=2,
+         descr="An icy opening surrounded by snow."),
+
 ]
 # Muelle del depot y puentes (nov 2026): barandas, faroles y rampa de madera dibujados por dock_bridge_art.py
 # (server 20282-20300, clients sacrificados anotados ahí). Doc: docs/items-and-map/TRANSICIONES_DEPOT.md.
