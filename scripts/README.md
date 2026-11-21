@@ -119,6 +119,7 @@ Ver comandos de arriba; deploy: ver abajo.
 |--------|-----|
 | `ot/exercise-server.py` | Bots que usan y maltratan un servidor de prueba ([SANITIZER_TESTS.md](../docs/systems/SANITIZER_TESTS.md)) |
 | `ot/test-level-gifts.py` | Prueba con bots en un servidor aparte: cajas por nivel, abrirlas, no repetir y aviso de raros ([LEVEL_UP_REWARDS.md](../docs/gameplay/LEVEL_UP_REWARDS.md)) |
+| `ot/test-sponsor.py` | Prueba con bots del padrinazgo: reglas, aceptar, hitos con el padrino conectado y desconectado, sin repetir ([PADRINAZGO.md](../docs/gameplay/PADRINAZGO.md)) |
 | `ot/test-summon-follow.py` | Prueba con bots en un servidor aparte: el summon sigue al dueño a un paso, con su velocidad y al cambiar de piso ([SUMMONS.md](../docs/gameplay/SUMMONS.md)) |
 
 ## Deploy

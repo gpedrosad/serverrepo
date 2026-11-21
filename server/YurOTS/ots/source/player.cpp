@@ -42,6 +42,7 @@ using namespace std;
 #include "ioplayer.h"
 #include "const76.h"
 #include "tools.h"
+#include "sponsor.h"
 #include "chat.h"
 
 static const unsigned long STORAGE_LAST_DEATH_LOST_EXP = 9110;
@@ -2020,8 +2021,10 @@ void Player::addExp(exp_t exp)
 		lvMsg << "You advanced from level " << lastLv << " to level " << level << ".";
 		this->sendTextMessage(MSG_ADVANCE,lvMsg.str().c_str());
 		this->sendStats();
-		if(this->level > lastLv)
+		if(this->level > lastLv) {
 			onLevelAdvance(lastLv);
+			Sponsors::onLevel(this);   // padrinazgo: hitos del ahijado (PADRINAZGO.md)
+		}
 	}
 }
 
@@ -2031,7 +2034,7 @@ void Player::addExp(exp_t exp)
 static const unsigned long LEVEL_GIFT_STORAGE = 9400;
 static const int LEVEL_GIFT_MAX_PER_ADVANCE = 20;
 
-static unsigned short levelGiftItemId(int lv)
+unsigned short levelGiftItemId(int lv)
 {
 	if(lv >= 100) return 20359;   // legendary gift
 	if(lv >= 80)  return 20358;   // heroic gift

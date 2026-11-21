@@ -48,6 +48,7 @@
 #include "readables.h"
 #include "ioplayer.h"
 #include "commands.h"
+#include "sponsor.h"
 
 extern LuaScript g_config;
 extern Actions actions;
@@ -2339,6 +2340,7 @@ void Protocol76::sendThingAppear(const Thing *thing){
 
 			if(player->access >= g_config.ACCESS_PROTECT)
 				sendGmCommandsHelp(player);   // GM: resumen de comandos (docs/gameplay/GM_COMANDOS.md)
+			Sponsors::onLogin(player);        // padrinazgo: premios pendientes y aviso a los nuevos
 
 			for(int i = 0; i < MAX_VIPS; i++)
 			{

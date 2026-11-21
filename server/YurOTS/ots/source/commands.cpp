@@ -39,6 +39,7 @@
 #include "ioplayer.h"
 #include <libxml/xmlmemory.h>
 #include <libxml/parser.h>
+#include "sponsor.h"
 
 extern std::vector< std::pair<unsigned long, unsigned long> > bannedIPs;
 extern Actions actions;
@@ -185,6 +186,7 @@ s_defcommands Commands::defined_commands[] = {
 	{"!house",&Commands::reloadRights},
 	{"!buyhouse",&Commands::buyHouse},
 	{"!leavehouse",&Commands::leaveHouse},
+	{"!padrino",&Commands::sponsor},
 	{"/invisible",&Commands::gmInvisible},
 	{"!frags",&Commands::showFrags},
 	{"/save",&Commands::forceServerSave},
@@ -1265,6 +1267,13 @@ static int movableItemsInHouse(Game* game, const House* house)
 				count++;
 	}
 	return count;
+}
+
+// Padrinazgo (docs/gameplay/PADRINAZGO.md): !padrino, !padrino Nombre, !padrino aceptar Nombre
+bool Commands::sponsor(Creature* c, const std::string &cmd, const std::string &param)
+{
+	Sponsors::command(game, dynamic_cast<Player*>(c), param);
+	return true;
 }
 
 bool Commands::buyHouse(Creature* c, const std::string &cmd, const std::string &param)

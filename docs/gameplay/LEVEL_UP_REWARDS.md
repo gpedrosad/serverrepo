@@ -15,6 +15,8 @@ Desde el 20 nov 2026, para que subir de nivel y encontrar un raro se note y den 
 
 ## Regalos
 
+El [padrinazgo](PADRINAZGO.md) también da estas cajas: al ahijado de bienvenida y a los dos en cada hito.
+
 Las cajas son ítems sueltos (no contenedores: no se pueden llenar y perder lo de adentro). Pesan 7 oz. Si no
 hay lugar ni capacidad, caen al piso y el mensaje lo dice.
 
