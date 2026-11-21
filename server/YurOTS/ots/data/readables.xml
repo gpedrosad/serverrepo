@@ -135,4 +135,7 @@
 	<!-- BEGIN PETRIFIED_SANCTUARY_SIGNS (scripts/map/generate-petrified-sanctuary.py) -->
 	<readable x="95" y="75" z="7" text="SANTUARIO PETRIFICADO\nGargolas y golems en la entrada.\nCristales y el Custodio del Lago al fondo."/>
 	<!-- END PETRIFIED_SANCTUARY_SIGNS -->
+	<!-- BEGIN DWARVEN_MINE_SIGNS (scripts/map/generate-dwarven-mine.py) -->
+	<readable x="194" y="60" z="7" text="MINA ENANA\nDwarfs y soldados arriba.\nGuardias, geomancers y el Capataz de Hierro al fondo."/>
+	<!-- END DWARVEN_MINE_SIGNS -->
 </readables>

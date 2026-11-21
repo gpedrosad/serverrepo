@@ -6150,4 +6150,145 @@
 		<monster name="Custodio del Lago" x="0" y="0" z="9" spawntime="900" />
 	</spawn>
 	<!-- END PETRIFIED_SANCTUARY_SPAWNS -->
+	<!-- BEGIN DWARVEN_MINE_SPAWNS (scripts/map/generate-dwarven-mine.py) -->
+	<spawn centerx="273" centery="79" centerz="9" radius="3">
+		<monster name="Dwarf" x="-2" y="0" z="9" spawntime="100" />
+	</spawn>
+	<spawn centerx="247" centery="80" centerz="9" radius="3">
+		<monster name="Dwarf" x="-2" y="1" z="9" spawntime="100" />
+	</spawn>
+	<spawn centerx="203" centery="80" centerz="9" radius="3">
+		<monster name="Dwarf" x="2" y="0" z="9" spawntime="100" />
+	</spawn>
+	<spawn centerx="270" centery="92" centerz="9" radius="3">
+		<monster name="Dwarf" x="-2" y="0" z="9" spawntime="100" />
+	</spawn>
+	<spawn centerx="182" centery="78" centerz="9" radius="3">
+		<monster name="Dwarf" x="0" y="-1" z="9" spawntime="100" />
+	</spawn>
+	<spawn centerx="189" centery="58" centerz="9" radius="3">
+		<monster name="Dwarf" x="-1" y="0" z="9" spawntime="100" />
+	</spawn>
+	<spawn centerx="216" centery="81" centerz="9" radius="3">
+		<monster name="Dwarf" x="0" y="-1" z="9" spawntime="100" />
+	</spawn>
+	<spawn centerx="230" centery="80" centerz="9" radius="3">
+		<monster name="Dwarf" x="0" y="0" z="9" spawntime="100" />
+	</spawn>
+	<spawn centerx="183" centery="66" centerz="9" radius="3">
+		<monster name="Dwarf" x="0" y="1" z="9" spawntime="100" />
+	</spawn>
+	<spawn centerx="260" centery="81" centerz="9" radius="3">
+		<monster name="Dwarf" x="2" y="-1" z="9" spawntime="100" />
+	</spawn>
+	<spawn centerx="294" centery="98" centerz="9" radius="3">
+		<monster name="Dwarf" x="2" y="0" z="9" spawntime="120" />
+	</spawn>
+	<spawn centerx="323" centery="97" centerz="9" radius="3">
+		<monster name="Dwarf Soldier" x="-1" y="1" z="9" spawntime="120" />
+	</spawn>
+	<spawn centerx="305" centery="100" centerz="9" radius="3">
+		<monster name="Dwarf" x="0" y="-2" z="9" spawntime="120" />
+	</spawn>
+	<spawn centerx="284" centery="101" centerz="9" radius="3">
+		<monster name="Dwarf Soldier" x="1" y="-2" z="9" spawntime="120" />
+	</spawn>
+	<spawn centerx="333" centery="87" centerz="9" radius="3">
+		<monster name="Dwarf Soldier" x="0" y="-2" z="9" spawntime="145" />
+		<monster name="Dwarf Soldier" x="-1" y="2" z="9" spawntime="145" />
+	</spawn>
+	<spawn centerx="314" centery="80" centerz="9" radius="3">
+		<monster name="Dwarf Soldier" x="-2" y="-1" z="9" spawntime="145" />
+		<monster name="Dwarf Soldier" x="-2" y="0" z="9" spawntime="145" />
+	</spawn>
+	<spawn centerx="298" centery="76" centerz="9" radius="3">
+		<monster name="Dwarf Soldier" x="1" y="1" z="9" spawntime="145" />
+		<monster name="Dwarf Soldier" x="2" y="2" z="9" spawntime="145" />
+	</spawn>
+	<spawn centerx="325" centery="78" centerz="9" radius="3">
+		<monster name="Dwarf Soldier" x="-1" y="2" z="9" spawntime="145" />
+		<monster name="Dwarf Soldier" x="0" y="1" z="9" spawntime="145" />
+	</spawn>
+	<spawn centerx="331" centery="101" centerz="9" radius="3">
+		<monster name="Dwarf Soldier" x="0" y="0" z="9" spawntime="145" />
+		<monster name="Dwarf Soldier" x="2" y="-2" z="9" spawntime="145" />
+	</spawn>
+	<spawn centerx="304" centery="83" centerz="9" radius="3">
+		<monster name="Dwarf Soldier" x="-2" y="-2" z="9" spawntime="145" />
+		<monster name="Dwarf Soldier" x="1" y="-1" z="9" spawntime="145" />
+	</spawn>
+	<spawn centerx="301" centery="101" centerz="10" radius="3">
+		<monster name="Dwarf Guard" x="2" y="-1" z="10" spawntime="165" />
+	</spawn>
+	<spawn centerx="287" centery="87" centerz="10" radius="3">
+		<monster name="Dwarf Guard" x="1" y="0" z="10" spawntime="165" />
+	</spawn>
+	<spawn centerx="326" centery="98" centerz="10" radius="3">
+		<monster name="Dwarf Guard" x="1" y="-1" z="10" spawntime="165" />
+	</spawn>
+	<spawn centerx="310" centery="97" centerz="10" radius="3">
+		<monster name="Dwarf Guard" x="2" y="2" z="10" spawntime="165" />
+	</spawn>
+	<spawn centerx="342" centery="96" centerz="10" radius="3">
+		<monster name="Dwarf Guard" x="2" y="2" z="10" spawntime="165" />
+	</spawn>
+	<spawn centerx="289" centery="98" centerz="10" radius="3">
+		<monster name="Dwarf Guard" x="1" y="-2" z="10" spawntime="165" />
+	</spawn>
+	<spawn centerx="303" centery="117" centerz="10" radius="3">
+		<monster name="Dwarf Guard" x="-1" y="2" z="10" spawntime="190" />
+	</spawn>
+	<spawn centerx="340" centery="115" centerz="10" radius="3">
+		<monster name="Dwarf Geomancer" x="1" y="2" z="10" spawntime="190" />
+	</spawn>
+	<spawn centerx="321" centery="118" centerz="10" radius="3">
+		<monster name="Dwarf Guard" x="1" y="-1" z="10" spawntime="190" />
+	</spawn>
+	<spawn centerx="289" centery="118" centerz="10" radius="3">
+		<monster name="Dwarf Geomancer" x="0" y="0" z="10" spawntime="190" />
+	</spawn>
+	<spawn centerx="348" centery="106" centerz="10" radius="3">
+		<monster name="Dwarf Guard" x="1" y="2" z="10" spawntime="190" />
+	</spawn>
+	<spawn centerx="312" centery="113" centerz="10" radius="3">
+		<monster name="Dwarf Geomancer" x="0" y="2" z="10" spawntime="190" />
+	</spawn>
+	<spawn centerx="329" centery="114" centerz="10" radius="3">
+		<monster name="Dwarf Guard" x="0" y="2" z="10" spawntime="190" />
+	</spawn>
+	<spawn centerx="348" centery="119" centerz="10" radius="3">
+		<monster name="Dwarf Geomancer" x="-1" y="0" z="10" spawntime="190" />
+	</spawn>
+	<spawn centerx="317" centery="137" centerz="10" radius="3">
+		<monster name="Dwarf Guard" x="-2" y="-1" z="10" spawntime="220" />
+		<monster name="Dwarf Geomancer" x="-1" y="-2" z="10" spawntime="220" />
+	</spawn>
+	<spawn centerx="305" centery="133" centerz="10" radius="3">
+		<monster name="Dwarf Guard" x="-1" y="-1" z="10" spawntime="220" />
+		<monster name="Dwarf Geomancer" x="1" y="0" z="10" spawntime="220" />
+	</spawn>
+	<spawn centerx="277" centery="124" centerz="10" radius="3">
+		<monster name="Dwarf Guard" x="-1" y="0" z="10" spawntime="220" />
+		<monster name="Dwarf Geomancer" x="1" y="0" z="10" spawntime="220" />
+	</spawn>
+	<spawn centerx="280" centery="136" centerz="10" radius="3">
+		<monster name="Dwarf Guard" x="-2" y="-2" z="10" spawntime="220" />
+		<monster name="Dwarf Geomancer" x="0" y="0" z="10" spawntime="220" />
+	</spawn>
+	<spawn centerx="290" centery="134" centerz="10" radius="3">
+		<monster name="Dwarf Guard" x="-1" y="-2" z="10" spawntime="220" />
+		<monster name="Dwarf Geomancer" x="2" y="-2" z="10" spawntime="220" />
+	</spawn>
+	<spawn centerx="324" centery="132" centerz="10" radius="3">
+		<monster name="Dwarf Guard" x="-2" y="2" z="10" spawntime="220" />
+		<monster name="Dwarf Geomancer" x="1" y="0" z="10" spawntime="220" />
+	</spawn>
+	<spawn centerx="280" centery="115" centerz="10" radius="3">
+		<monster name="Dwarf Guard" x="2" y="-1" z="10" spawntime="220" />
+		<monster name="Dwarf Geomancer" x="-2" y="2" z="10" spawntime="220" />
+	</spawn>
+	<spawn centerx="334" centery="134" centerz="10" radius="3">
+		<monster name="Capataz de Hierro" x="0" y="0" z="10" spawntime="900" />
+	</spawn>
+	<!-- END DWARVEN_MINE_SPAWNS -->
 </spawns>
