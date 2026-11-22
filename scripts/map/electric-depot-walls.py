@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Aplica las paredes eléctricas solo a la sala de lockers del depot (z4-z7).
+"""Unifica las paredes eléctricas del depot, ala norte y acceso (z4-z7).
 
 Dry-run por defecto; --apply escribe; --before MAPA valida contra un mapa anterior.
 No reconstruye tiles: sustituye solo los u16 de las piezas de ladrillo y conserva
@@ -19,7 +19,7 @@ sys.path[:0] = [str(HERE / 'kb'), str(ROOT / 'scripts/client-rme')]
 from mapdata import MAP, T_AREA, T_TILE, T_HOUSETILE, T_ITEM, load_otb, parse_tree, serialize_tree
 from depot_electric_assets import WALL_ITEMS, WALL_MAP
 
-BOX = (126, 52, 134, 59)
+BOX = (126, 41, 134, 59)
 FLOORS = (4, 5, 6, 7)
 REVERSE = {new: old for old, new in WALL_MAP.items()}
 

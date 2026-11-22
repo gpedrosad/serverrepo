@@ -51,7 +51,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | `root-crypt.py` | Visual propia de la quest BoH al sur del depot; `--dry-run`, conserva huella/colisión/cofres/teleports |
 | `city-bridge-transitions.py` | Muelle junto al depot y puentes de madera (`BRIDGES`): barandas, faroles y rampa de `client-rme/dock_bridge_art.py`; saca cuerdas y wild growth; `--dry-run`, conserva huella y escaleras |
 | `find-wood-bridges.py` | Lista madera transitable junto al agua (puentes, muelles, barcos) para elegir dónde poner barandas; `--z` |
-| `electric-depot-walls.py` | Aplica variantes cian solo a las murallas de la sala de lockers; `--apply`, inversión exacta con `--before` ([DEPOT_ELECTRICO.md](../docs/items-and-map/DEPOT_ELECTRICO.md)) |
+| `electric-depot-walls.py` / `render-electric-depot.py` | Unifica variantes cian en lockers, ala norte y vestíbulo del depot; `--apply`, inversión exacta con `--before` ([DEPOT_ELECTRICO.md](../docs/items-and-map/DEPOT_ELECTRICO.md)) |
 | `roomkit.py` | Piezas comunes de los generadores de salas (Crisol, Wave Arena): `Room`, paredes, validación con flags del `.otb`, escritura del OTBM |
 | `generate-crucible.py` | El Crisol v3: hub PZ + 3 arenas temáticas, carteles y bloque `LAYOUT` de `crucible.lua` (`--dry-run --png` para previsualizar; portal en la plaza: `temple-portals.py`) |
 | `generate-natural-island.py` | Isla natural: herradura con sendero, 3 campamentos Cyclops y cueva de 4 salas; escribe mapa, spawns, carteles y manifiesto (`--dry-run --preview`) |
@@ -107,7 +107,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | `portal_detail_assets.py` | Arco abierto, faroles y rejas exclusivos del templo; `--prepare`, `--apply` |
 | `root_crypt_assets.py` | Once piezas de piedra, raíces y luz ámbar de la quest BoH; `--prepare`, `--apply` |
 | `recolor_cyan_skull.py` | Recolorea la calavera roja nativa a cian conservando dibujo y alpha; `--client RUTA_CLIENTERETRO` |
-| `depot_electric_assets.py` | Prepara e instala las once piezas eléctricas del depot (20200–20210); `--prepare`, `--dry-run` |
+| `depot_electric_assets.py` | Prepara e instala las 30 piezas eléctricas del depot (20200–20210 + 20420–20438); `--complete-only`, `--prepare-completion`, `--dry-run` |
 | `add_recolor_look.py` + `presets/` + `sprite_kit.py` | Aplica un preset de criatura (un archivo por criatura en `presets/`) a `Tibia.dat`/`.spr` |
 | `play-yurots-client.sh` / `open-rme.sh` | Cliente y RME locales |
 | `patch-tibia760-client.py` | Patcher cliente 7.6 |

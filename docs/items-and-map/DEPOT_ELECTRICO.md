@@ -14,7 +14,8 @@ Once piezas propias cubren los paños, esquinas, remates de entrada y ventana ex
 
 Se sustituyeron **104 piezas en 104 tiles** del ala de lockers:
 **x126–134, y52–59, z4–z7**. Los otros edificios siguen usando las paredes originales.
-El ala norte de entramado conserva su aspecto. La sustitución conserva el orden de los items,
+En la versión inicial el ala norte conservó su entramado; la revisión del 22 nov
+completa esa parte y el vestíbulo norte (ver al final). La sustitución conserva el orden de los items,
 los flags de tile, puertas, escaleras, pisos, mostradores, braseros azules, NPCs y lockers.
 
 **Los 11 lockers conservan su posición y `depotid=1`.** No se edita data de jugadores del servidor.
@@ -175,3 +176,79 @@ Respaldo: `~/backups/pre-publish-20261119-121809-native-cyan-skull` (updater, ZI
 config hash y diff de trabajo). Se preservaron los cambios ajenos de la ThinkPad. Publicación de
 cliente sin reinicio del OT; probe OK, healthy. La nueva imagen llega al reabrir el cliente.
 La comparación ampliada del apartado «Calavera cian» muestra las originales junto a la corregida.
+
+## Unificación del edificio completo — 22 nov 2026
+
+Revisión completada por pedido de Gonzalo; publicación del cliente y deploy pendientes de autorización.
+La primera intervención cubría solo lockers (y52–59). El ala norte y el vestíbulo
+seguían en entramado beige y piedra gris. Ahora se aplica la misma mampostería cian
+al edificio completo **x126–134, y41–59, z4–z7**, sin tocar el edificio vecino de
+piedra al oeste (x124), ni extender la estética fuera del depot.
+
+![Los cuatro pisos completos](img/depot-electric/complete-floors.png)
+
+Se sustituyen **125 paredes/ventanas/remates adicionales** (229 piezas en total). Se
+conservan el trazado, pisos, puertas, escaleras, mostradores, colgables y los
+11 lockers completos. Ventanas conservan paso de proyectiles y paredes conservan
+sus hooks horizontal/vertical. No se edita runtime de jugadores ni C++.
+
+| Server ID | Prototipo original | Apariencia cian de ladrillo | Client ID | Uso |
+|---:|---:|---:|---:|---:|
+| 20420 | 1037 | 1034 | 5127 | 9 |
+| 20421 | 1038 | 1027 (poste nuevo) | 5128 | 4 |
+| 20422 | 1039 | 1034 | 5129 | 15 |
+| 20423 | 1041 | 1030 | 5130 | 23 |
+| 20424 | 1043 | 1030 | 5131 | 14 |
+| 20425 | 1044 | 1033 | 5132 | 4 |
+| 20426 | 1045 | 1034 | 5133 | 11 |
+| 20427 | 1049 | 1030 | 5134 | 11 |
+| 20428 | 1050 | 1034 | 5135 | 16 |
+| 20429 | 1051 | 1027 (poste nuevo) | 5136 | 2 |
+| 20430 | 1053 | 1033 | 5137 | 2 |
+| 20431 | 1263 | 1265 (ventana horizontal nueva) | 5138 | 1 |
+| 20432 | 1264 | 1266 | 5139 | 6 |
+| 20433 | 1268 | 1266 | 5140 | 2 |
+| 20434 | 1524 | remate nativo recoloreado | 5141 | 1 |
+| 20435 | 1526 | remate nativo recoloreado | 5142 | 1 |
+| 20436 | 1527 | remate nativo recoloreado | 5143 | 1 |
+| 20437 | 1530 | remate nativo recoloreado | 5144 | 1 |
+| 20438 | 1531 | remate nativo recoloreado | 5145 | 1 |
+
+Cada variante copia exactamente los atributos OTB y el prefijo DAT de su prototipo
+original; solo cambia el dibujo. 1049, 1050 y 1268 tienen **8 sprites (dos patrones)**,
+no cuatro: se repite la textura cian en ambos patrones conservando su estructura.
+Los remates 1524 y 1526 son 2×1/1×2 con dos patrones, y 1527 es 2×2 con dos patrones.
+Se conservan también las cinco barandas de azotea, ahora cian, sin cerrar huecos
+ni cambiar su colisión/paso de proyectiles. Se añaden 92 sprites (15161–15252), sin
+alterar ningún registro previo, outfits, efectos ni proyectiles.
+
+El poste y la ventana horizontal se completaron con **image_gen.imagegen** sobre
+el atlas nativo y referencias de las paredes cian existentes. Arte, prompt exacto
+y referencia en `devtools/zagan-test/custom-sprites/depot-electric/`:
+`walls-completion-generated.png`, `walls-completion-reference.png`,
+`completion-prompts.json`, `wall-1027.png`, `wall-1265.png` y los tres
+`wall-*-patterns2.png`. Exportación con máscara nativa exacta y sin halos; las
+once piezas originales permanecen intactas. Los remates usan `roof-completion-generated.png`,
+`roof-completion-reference.png` y cinco `roof-<id>.png`, con el prompt exacto en
+`completion-prompts.json`. Las otras variantes reutilizan sus
+PNG existentes sin redibujarlas.
+
+```bash
+python3.11 scripts/client-rme/depot_electric_assets.py --prepare-completion
+python3.11 scripts/client-rme/depot_electric_assets.py --complete-only
+python3.11 scripts/client-rme/depot_electric_assets.py --complete-only --otb server/YurOTS/ots/data/items/items.otb
+python3.11 scripts/map/electric-depot-walls.py --apply
+python3.11 scripts/map/render-electric-depot.py
+```
+
+Validaciones: inversión byte por byte de las 125 sustituciones, todas dentro de la
+caja; colisión, hooks, ventanas y 11 lockers intactos. DAT: solo 19 entradas nuevas,
+todos los registros SPR/OTB anteriores y la cola DAT idénticos. Segunda pasada del
+mapa: 0 cambios; `check-map-load.py`: 0 errores; `scan-map-depots.py`: 11 depotid 1;
+`sync-houses-with-map.py --dry-run`: coincide. Renders de los cuatro pisos y vista
+con piso superior revisados; no se ejecutaron suites ni pruebas in-game, según la
+preferencia del usuario. Backup local `backups/map/depot-unify/`.
+
+Antes del deploy se deben publicar DAT/SPR y minimapa con `publish_client.py` y
+seguir el respaldo/reinicio del servidor de ThinkPad. El servidor de juego aún
+conserva la versión anterior hasta autorizar esta publicación.
