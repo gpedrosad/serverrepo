@@ -104,6 +104,7 @@ Errores que ya pasaron:
 | El sprite salía borroso y con puntos de colores | No recortar ni reescalar: el PNG ya es 32×32 y se copia píxel a píxel |
 | Wikis y otservlist rechazan descargas automáticas | No disfrazar la consulta. Bajar el cliente desde el navegador |
 | `DatReader` (`build_zagan_test_assets.py`) leía 99 entradas de más: tomaba los primeros outfits como ítems 5090–5188. Con los client ids nuevos, un ítem en el 5090 habría pisado el outfit 1 | Corregido el 20 nov 2026: lee los ítems 100..`item_count` (el encabezado del `.dat` guarda el último id, no la cantidad) |
+| `descr=""` escrito como último atributo OTB causó `Could not load items.otb!` el 22 nov 2026 en cinco runas (2269/2271/2274/2288/2315). `Items::loadFromOtb` rechaza que el cursor termine al leer la longitud, incluso si el payload mide 0 | El importador omite el atributo DESCR cuando está vacío; eliminar el atributo, no agregar espacios ni cambiar C++. Los píxeles y client IDs de las runas se conservan |
 | Dos ítems con el mismo client id (la bandera y su copia fija de Obi): el server no dejaba mover la que se vende | El server compara por client id (`Items::sameClientItem`, ver [HANGABLES.md](../gameplay/HANGABLES.md#errores-que-ya-pasaron)) |
 
 Publicado el 20 nov 2026 en el cliente `df02ede` y desplegado con `bad92cb`: los

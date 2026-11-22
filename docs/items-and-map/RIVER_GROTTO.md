@@ -74,3 +74,9 @@ Al integrar main aparecieron cinco runas recién publicadas en los client IDs
 5107–5111. Los materiales de la gruta se reasignaron a 5112–5126 y se reinstalaron
 sobre los DAT/SPR/OTB de main, conservando las runas y el MultiUse de Azure Sunstone.
 La publicación de DAT/SPR y minimapa debe preceder al reinicio. No requiere C++.
+
+Antes del deploy, el probe falló: el servidor ya estaba reiniciándose en `f395ea3`
+por `Could not load items.otb!`. La causa era el atributo DESCR vacío al final de
+las cinco runas nuevas. Se quitó únicamente ese atributo de ambos OTB y se corrigió
+el importador para omitir descripciones vacías; ver
+[importación de ítems](IMPORTAR_ITEM_DE_OTRA_VERSION.md#por-qué-no-con-el-builder-viejo).

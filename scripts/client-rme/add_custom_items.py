@@ -755,7 +755,11 @@ def apply_otb(path: Path, dry: bool) -> list[str]:
         blocks = B.upsert_block(blocks, B.ITEM_ATTR_SERVERID, struct.pack("<H", item["server_id"]))
         blocks = B.upsert_block(blocks, B.ITEM_ATTR_CLIENTID, struct.pack("<H", item["client_id"]))
         blocks = B.upsert_block(blocks, B.ITEM_ATTR_NAME, item["name"].encode("latin-1"))
-        blocks = B.upsert_block(blocks, B.ITEM_ATTR_DESCR, descr)
+        # Legacy Items::loadFromOtb rejects a zero-byte final attribute.
+        if descr:
+            blocks = B.upsert_block(blocks, B.ITEM_ATTR_DESCR, descr)
+        else:
+            blocks = [(a, p) for a, p in blocks if a != B.ITEM_ATTR_DESCR]
         new_node = B.Node(node_type=proto.node_type, props=B.build_item_props(flags, blocks), children=[])
         old = by_sid.get(item["server_id"])
         if old is not None and old.props == new_node.props:
