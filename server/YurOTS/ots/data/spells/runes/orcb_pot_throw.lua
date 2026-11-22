@@ -1,5 +1,6 @@
--- Orc Berserker Pot Thrower: tira pots (trough 1775) alrededor del objetivo.
--- El pot es blockSolid: no deja pasar por encima mientras dura.
+-- Orc Berserker Pot Thrower: tira ollas (pot 2562) alrededor del objetivo.
+-- La olla es blockSolid: no deja pasar mientras dura. No se puede mover ni levantar (Item::isPickupable
+-- descarta los MagicEffectItem). Antes era el 1775, que es un bebedero de madera (trough).
 -- Tiles con criatura o bloqueados se saltean solos (misma regla que magic wall),
 -- por eso el area 3x3 nunca crea el item bajo el jugador.
 area = {
@@ -23,7 +24,7 @@ PotObject = MagicDamageObject(attackType, animationEffect, hitEffect, damageEffe
 
 -- 10s real: DECAY_INTERVAL es 5000ms; valores no multiplo de ese interval se redondean.
 durationTicks = 10000
-itemid = 1775
+itemid = 2562
 
 function onCast(cid, creaturePos, level, maglv, var)
 centerpos = {x=creaturePos.x, y=creaturePos.y, z=creaturePos.z}

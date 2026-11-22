@@ -423,8 +423,10 @@ bool Item::isAlwaysOnTop() const {
 	return items[id].alwaysOnTop;
 }
 
+// Lo que crea un hechizo (MagicEffectItem: fields, las ollas del Orc Berserker Pot Thrower) no se mueve ni se
+// levanta: en una mochila no desapareceria nunca (checkDecay solo quita items del piso).
 bool Item::isNotMoveable() const {
-	return !items[id].moveable;
+	return !items[id].moveable || dynamic_cast<const MagicEffectItem*>(this) != NULL;
 }
 
 bool Item::isGroundTile() const {
@@ -436,7 +438,7 @@ bool Item::isSplash() const{
 }
 
 bool Item::isPickupable() const {
-	return items[id].pickupable;
+	return items[id].pickupable && dynamic_cast<const MagicEffectItem*>(this) == NULL;
 }
 
 bool Item::isUseable() const{
