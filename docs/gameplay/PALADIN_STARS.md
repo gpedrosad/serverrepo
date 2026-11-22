@@ -184,4 +184,7 @@ Tibia 7.6 (`draw_storm_star()` en `paladin_star_art.py`: shuriken diagonal en X 
   reemplazaron en el lugar los 9 sprites propios de Storm Star (`13989` del ítem `3393` y
   `14030`–`14037` del proyectil 20).
 - Re-ejecución de `add_paladin_stars.py --apply`: 100% idempotente.
-- **Pendiente:** push/merge a `main` y publicar cliente (`publish_client.py`) con autorización de Gonzalo.
+- **Publicado (22 nov 2026):** `serverrepo` `029f1b6`, cliente publicado con `publish_client.py`
+  (`clienteretro` `da510a1`, 1 archivo cambiado: `data/things/760/Tibia.spr`, CRC `4a313895`,
+  DAT `f1ad3633` sin cambios; HTTP 8080/8076 y ZIPs Mac/Windows verificados; respaldo
+  `~/backups/pre-publish-20261122-181122-storm-star`; sin reinicio del OT).
