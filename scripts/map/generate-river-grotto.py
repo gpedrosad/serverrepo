@@ -12,7 +12,7 @@ Entrada junto al camino del muelle/rio al norte de la Torre del Barquero (176,58
 
 Solo ocupa vacio o roca [101] (salvo los 2 tiles de entrada en z7); preserva lo ajeno y es idempotente.
 Uso:
-  python3.11 scripts/map/generate-river-grotto.py --dry-run [--preview /tmp/grotto]
+  python3.11 scripts/map/generate-river-grotto.py --dry-run
   python3.11 scripts/map/generate-river-grotto.py
 """
 from __future__ import annotations
@@ -32,7 +32,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path[:0] = [str(HERE), str(HERE / "kb")]
 from mapdata import MAP, REPO, Renderer, load_otb, load_tiles, parse_tree, png_bytes, serialize_tree
-from hole_entrance_style import style_cells
+from river_grotto_style import apply_river_style
 from epstein_cave_repair import index
 from portal_citadel_layout import tile_flags
 
@@ -227,7 +227,7 @@ def build(values, otb):
         entry=[*MOUTH, 7],
         surface=[list(p) for p in surface],
     )
-    style_cells(cells, values, otb)
+    report.update(apply_river_style(cells, values, otb, floor12, C.NP, positions))
     return cells, spawns, report
 
 

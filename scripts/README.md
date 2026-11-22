@@ -71,6 +71,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | `generate-epstein-road.py` | Epstein Island: Camino de los Caídos, franja de tierra nueva en el mar (puente desde la punta sur) con Zombies y Undead Gladiators; bloque `EPSTEIN_ROAD` (`--dry-run --preview`) |
 | `generate-epstein-cleanup.py` | Epstein Island: saca NPCs/tienda y el Oracle, y agrega el portal de salida al templo |
 | `curious-houses.py` | Tres casas flotantes comprables (Kongras, elfos, río), plataformas/pasarelas y registro/PZ; `--dry-run`, exige agua y conserva todos los pasos públicos y dueños previos |
+| `generate-river-grotto.py` / `river_grotto_style.py` / `render-river-grotto.py` | Gruta del río y accesos: bancos de arena, agua animada y corales, conservando rutas y spawns; `--dry-run` ([doc](../docs/items-and-map/RIVER_GROTTO.md)) |
 | `generate-petrified-sanctuary.py` / `render-petrified-sanctuary.py` | Santuario z9 bajo el lago élfico, accesos z7/z8, etapas de monstruos, guardas de conservación y vistas con sprites reales; `--dry-run` en el generador ([doc](../docs/gameplay/PETRIFIED_SANCTUARY.md)) |
 | `generate-dwarven-mine.py` / `dwarven_mine_layout.py` / `render-dwarven-mine.py` | Mina Enana z9/z10, túnel de acceso, estaciones, etapas de monstruos y forja; `--dry-run` y guardas de conservación ([doc](../docs/gameplay/DWARVEN_MINE.md)) |
 | `reshape-river-street.py` | River Street III–V: casas más cortas, patios, pasillos de tierra y puente de sogas de 1 casilla hasta el arco de los trolls (`--dry-run --png`; ver `docs/gameplay/HOUSES.md`) |

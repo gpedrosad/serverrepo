@@ -109,6 +109,8 @@ Los spots 1, 2 y 3 (Alcantarilla Mutada, Nido de Seda Negra y Cripta de los Ojos
 | 6a | **Campamento de Amazonas** | `75,33,7` (puente norte al oeste del Castillo Imperial, cartel `74,34,7`) | `/ir amazons` | z7 (isla nueva) | 15–30 | 233 | 18 mobs (dens. 12,9): Amazon ×11, Valkyrie ×5, Assassin ×2 | `scripts/map/generate-amazon-camp.py` |
 | 6b | **Campamento Bárbaro** | `222,24,7` (costa nevada NE, cartel `224,25,7`) | `/ir barbarians` | z7 (cabo nevado) | 15–40 | 342 | 20 mobs (dens. 17,1): Barbarian Headsplitter ×4, Skullhunter ×6, Brutetamer ×5, Bloodwalker ×4, Frost Giant ×1 | `scripts/map/generate-barbarian-camp.py` |
 
+Revisión visual de la gruta (22 nov): [arena, agua animada y corales](../items-and-map/RIVER_GROTTO.md), conservando recorrido y spawns.
+
 *(También se corrigió el relleno de roca `[101]` en `generate-mutated-sewers.py` y `generate-spider-nest.py` para que los 7 generadores vecinos convivan con `changed: 0` en `--dry-run`.)*
 
 ---
