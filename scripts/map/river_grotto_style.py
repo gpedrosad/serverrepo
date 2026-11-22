@@ -22,13 +22,53 @@ def collision(ids, otb):
                       if f.startswith(("block_", "floorchange_"))))
 
 
+def clean_shallows(water, floor, helpers):
+    """Shrink shores into valid single pieces; never grow into a dry reserve."""
+    water = set(water)
+    while water:
+        thin = {p for p in water if any(
+            all((p[0] + dx, p[1] + dy) not in water for dx, dy in axis)
+            for axis in (((1, 0), (-1, 0)), ((0, 1), (0, -1))))}
+        water -= thin
+        bad = {p for p in floor - water if (pieces := helpers.pieces_for(
+            helpers.neighbors_in(water, *p), SHORE_SIDE, SHORE_CORNER, SHORE_INNER)) is None
+            or len(pieces) > 1}
+        remove = {(x + dx, y + dy) for x, y in bad for dx, dy in helpers.ALL8} & water
+        if not thin and not remove:
+            break
+        water -= remove
+    # Tiny isolated pools read as broken terrain rather than a river.
+    pending = set(water)
+    while pending:
+        component, todo = set(), [min(pending)]
+        while todo:
+            p = todo.pop()
+            if p not in pending:
+                continue
+            pending.remove(p)
+            component.add(p)
+            todo.extend((p[0] + dx, p[1] + dy) for dx, dy in helpers.CARD)
+        if len(component) < 12:
+            water -= component
+    return water
+
+
 def apply_river_style(cells, reference, otb, floor, helpers, spawn_positions):
     before = {p: list(ids) for p, ids in cells.items()}
     reserve = {(x, y) for (x, y, z), ids in cells.items() if z == 12 and 1386 in ids}
     reserve = {(x + dx, y + dy) for x, y in reserve
                for dx in range(-3, 4) for dy in range(-3, 4)}
+    # The complete arrival corridor stays dry; oversized rocks also need room
+    # for their NW sprite footprint and an uninterrupted shoreline around it.
+    reserve |= {p for p in floor if p[1] >= 60}
     plant_reserve = reserve | set(spawn_positions)
-    eligible = {p for p in floor - reserve
+    rocks = {(x, y) for (x, y, z), ids in before.items() if z == 12
+             and any("block_solid" in otb[i]["flags"] for i in ids[1:])}
+    rock_reserve = {(x + dx, y + dy) for x, y in rocks
+                    for dx in range(-2, 3) for dy in range(-2, 3)}
+    dry_margin = {(x + dx, y + dy) for x, y in reserve
+                  for dx in range(-1, 2) for dy in range(-1, 2)}
+    eligible = {p for p in floor - dry_margin - rock_reserve
                 if all((p[0] + dx, p[1] + dy) in floor for dx, dy in helpers.ALL8)}
     water = set()
     for x in range(146, 197, 2):
@@ -37,7 +77,7 @@ def apply_river_style(cells, reference, otb, floor, helpers, spawn_positions):
             if block <= eligible and any(((x + .5 - cx) / rx) ** 2 + ((y + .5 - cy) / ry) ** 2 < 1
                                          for cx, cy, rx, ry in POOLS):
                 water |= block
-    water = helpers.fix_until_valid(water, eligible, SHORE_SIDE, SHORE_CORNER, SHORE_INNER, single=True)
+    water = clean_shallows(water, floor, helpers)
     shores = {}
     for p in floor - water:
         pieces = helpers.pieces_for(helpers.neighbors_in(water, *p),
@@ -55,8 +95,6 @@ def apply_river_style(cells, reference, otb, floor, helpers, spawn_positions):
             ids[0] = WATER if (x, y) in water else shores.get((x, y), SAND)
         else:
             ids[0] = GRAVEL
-            if z == 10 and y in range(60, 68):
-                ids[0] = WATER if x == 175 else 4633
         coral = None
         for i, sid in enumerate(ids[1:], 1):
             if sid == 1423:
@@ -68,22 +106,26 @@ def apply_river_style(cells, reference, otb, floor, helpers, spawn_positions):
                 ids[i] = (1285, 1309, 1353, 2772)[(x * 3 + y) % 4]
             elif sid == 2248:
                 ids[i] = 1336
-        if z == 12 and (x, y) not in water and len(ids) > 1 and any(
-                "block_solid" in otb[i]["flags"] for i in ids[1:]):
-            ids[0] = SAND
-        if coral:
+        if coral and z == 12 and (x, y) not in plant_reserve:
             ids.append(coral)
 
+    wet = water | set(shores)
+    wet_buffer = {(x + dx, y + dy) for x, y in wet
+                  for dx in range(-1, 2) for dy in range(-1, 2)}
+    for x, y in wet:
+        ids = cells[x, y, 12]
+        assert not any("block_solid" in otb[i]["flags"] for i in ids[1:]), (x, y, ids)
+        # Old nonblocking bones/mushrooms must not show through the water either.
+        ids[1:] = []
     plants = []
-    for p in sorted(floor - plant_reserve, key=lambda p: (p[1], p[0])):
+    for p in sorted(floor - plant_reserve - wet_buffer, key=lambda p: (p[1], p[0])):
         x, y = p
         ids = cells[x, y, 12]
         if len(ids) != 1 or (x * 17 + y * 23) % 11 or any(
                 abs(x - px) + abs(y - py) < 4 for px, py in plants):
             continue
-        if p in water or p in shores:
-            ids.append((4138, 4139)[(x + y) % 2])
-            plants.append(p)
+        ids.append((4138, 4139)[(x + y) % 2])
+        plants.append(p)
 
     # The entry is in a dirt road. Neighboring legacy grass-edge names mislead the vote.
     style_cells(cells, reference, otb)
@@ -94,5 +136,8 @@ def apply_river_style(cells, reference, otb, floor, helpers, spawn_positions):
             cells[p][0] = ids[0]
             cells[p].insert(1, skin)
         assert collision(ids, otb) == collision(cells[p], otb), ("Collision changed", p, ids, cells[p])
-    return {"style": "river-shallows-v2", "shallowWater": len(water),
+    assert not (water & reserve) and not (set(shores) & reserve)
+    assert all(cells[x, y, 12][1:] == [SKINS[WATER if (x, y) in water else shores[x, y]]]
+               for x, y in wet), "Decoration on the water or shoreline"
+    return {"style": "river-shallows-v3-dry-arrival", "shallowWater": len(water),
             "shoreTiles": len(shores), "reefPlants": len(plants)}

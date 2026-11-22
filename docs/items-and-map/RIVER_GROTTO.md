@@ -6,7 +6,7 @@ Ver [creación y balance originales](../gameplay/CAMBIOS_SI_A_TODO.md).
 La gruta pasa del pavimento/mármol negro, columnas rotas y braseros a bancos de
 arena, agua azul animada, corales azules/naranjas, rocas con musgo y luces azules.
 El hoyo superficial usa tierra (`383`), acorde al camino. El cartel conserva su
-casilla, suelo y texto en inglés. Los corredores de acceso usan grava y un canal.
+casilla, suelo y texto en inglés. Los corredores de acceso usan grava seca; la llegada y el primer tramo no tienen agua.
 
 ![Vista previa con sprites nativos](img/river-grotto/grotto.png)
 
@@ -107,3 +107,23 @@ con los publicados. Comparación de snapshots sin diferencias: 1 cuenta, 8 archi
 de personajes, inventarios, depots, 35 archivos de casas, permisos, houseitems,
 sponsors, config y binario. Lockers: 11 con depotid 1; casas coinciden con el mapa.
 No se ejecutaron suites/bots ni recorrido in-game por indicación del usuario.
+
+## Corrección de orillas y llegada — 22 nov 2026
+
+El usuario reportó cortes visuales por objetos sobre el agua y pidió quitarla de
+la entrada. Se eliminó el canal de z10 y se dejó seca toda la llegada de z12 y su
+primer corredor (y >= 60). No se cambia el terreno superficial del acceso.
+
+La versión anterior calculaba las orillas y después forzaba arena bajo algunas
+rocas: eso borraba piezas de costa y dejaba cortes. Ahora se reserva desde el
+principio un margen de dos casillas alrededor de obstáculos, cubriendo también
+los sprites grandes que sobresalen al noroeste. La costa se calcula una sola vez
+y no se sobreescribe. El ajuste de bordes solo reduce agua: no invade reservas.
+Se eliminan charcos de menos de 12 casillas.
+
+No hay decoración en agua ni orillas: se retiran los restos cosméticos que quedaban
+allí y los corales nuevos se colocan únicamente en suelo seco separado de la costa.
+Hay guardas explícitas de costa de una sola pieza, llegada seca y agua sin objetos.
+El resultado conserva las colisiones, los suelos base/velocidad, las escaleras y
+los mismos monstruos y posiciones. Solo mapa, generador, renders y documentación;
+no requiere nuevos sprites ni C++.

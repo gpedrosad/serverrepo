@@ -50,8 +50,8 @@ def main():
 
     panels = [
         ("entrance", "Road entrance · 176,58,7", (167, 53, 185, 63), 7),
-        ("arrival", "Arrival · sandbanks and blue light", (160, 62, 178, 72), 12),
-        ("riverbend", "River bend · corals and mossy rocks", (148, 49, 166, 59), 12),
+        ("arrival", "Dry arrival · clear access", (160, 62, 178, 72), 12),
+        ("riverbend", "Dry banks · corals away from water", (148, 49, 166, 59), 12),
         ("depths", "Deep water · Quara Hydromancers", (177, 22, 195, 32), 12),
     ]
     font = ImageFont.truetype("/System/Library/Fonts/Supplemental/Arial.ttf", 22)
