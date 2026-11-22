@@ -127,3 +127,19 @@ Hay guardas explícitas de costa de una sola pieza, llegada seca y agua sin obje
 El resultado conserva las colisiones, los suelos base/velocidad, las escaleras y
 los mismos monstruos y posiciones. Solo mapa, generador, renders y documentación;
 no requiere nuevos sprites ni C++.
+
+Corrección publicada y aplicada: servidor **`12c44d6`**, cliente **`d2a3b22`**.
+Auditoría de 510 casillas modificadas, todas propias: 112 de agua + 140 de costa,
+ninguna con decoración ni invadida por sprites vecinos; 22 corales en seco.
+Entrada z8–z11 y primer corredor z12 sin agua. Colisiones, velocidad, casas,
+11 lockers y spawns idénticos; generador idempotente (0 cambios), map-load 0 errores.
+
+Respaldo `~/backups/pre-deploy-20261122-181445-river-grotto-shore`, renovado tras
+`server-save.sh --now` antes de `docker restart -t 45 yurots`. Cierre ordenado,
+Loaded in **0.949 s**, healthy, 0 reinicios automáticos, sin errores de arranque.
+Probe LAN **OK 10,6 ms**. Snapshots sin diferencias en cuentas (1), personajes (8),
+inventarios, depots, casas/permisos (35 archivos), houseitems, sponsors, config y
+binario. Updater/ambos ZIPs/HTTP 8080–8076: 775 archivos iguales, solo minimapa
+cambiado (CRC `8e64ceb5`). DAT/SPR se conservaron, incluida Storm Star de otra sesión.
+No hubo pruebas in-game ni suites; se revisaron los renders completos y las huellas
+de los objetos, además de las guardas estáticas y el probe real del servidor.
