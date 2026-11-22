@@ -15,7 +15,9 @@ que necesita el pack Zagan perdido y client-local). Cada ítem de NEW_ITEMS:
 Extras: `decor=True` copia los bloques del prototipo sin stats (decoración de mapa); `light=(nivel,
 color)` reescribe la luz — flag .dat 0x15 y attr OTB 0x2A (ITEM_ATTR_LIGHT2) — para ítems con luz
 propia (magic tree rojo, blue bassin). `frames=N` instala los N cuadros de animación del PNG
-(1x1, 2x2, 2x1 y 1x2).
+(1x1, 2x2, 2x1 y 1x2). `appearance=server_id` permite usar otro prototipo visual;
+`ground_overlay=True` convierte ese terreno en borde decorativo sin cambiar el suelo
+ni su velocidad (exclusivo y opt-in; ver RIVER_GROTTO.md).
 
 Re-ejecutable: si el ítem ya está (mismo sprite en el .dat, nodo con ese server id), no cambia nada.
 Elegir client ids: `--candidates` lista primero los nuevos libres (5090-6089, entradas vacías al final del
@@ -66,6 +68,22 @@ BLANK_DAT_ENTRY = b"\xff" + bytes([1, 1, 1, 1, 1, 1, 1]) + b"\x00\x00"
 # Tamaño en bytes del argumento de cada flag del prefijo .dat (7.55–7.72). Tabla canónica:
 # scripts/map/kb/mapdata.py (DAT_ARGS). El 23 se remapea a 252 (sin argumento) desde 7.55.
 DAT_ARGS = {0x00: 2, 0x08: 2, 0x09: 2, 0x15: 4, 0x18: 4, 0x19: 2, 0x1C: 2, 0x1D: 2}
+
+
+def ground_overlay(prefix: bytes) -> bytes:
+    """Keep native terrain patterns/animation as a walkable ground-border skin."""
+    out, pos = bytearray(b'\x01'), 0
+    while pos < len(prefix):
+        attr = prefix[pos]
+        pos += 1
+        if attr == 0xFF:
+            return bytes(out) + b'\xff' + prefix[pos:]
+        size = DAT_ARGS.get(252 if attr == 23 else attr, 0)
+        if attr not in (0x00, 0x01, 0x0C, 0x0F):
+            out.append(attr)
+            out += prefix[pos:pos + size]
+        pos += size
+    raise ValueError("Terrain appearance without DAT terminator")
 
 
 def with_light(prefix: bytes, level: int, color: int) -> bytes:
@@ -492,6 +510,8 @@ NEW_ITEMS = [
 # (server 20282-20300, clients sacrificados anotados ahí). Doc: docs/items-and-map/TRANSICIONES_DEPOT.md.
 from dock_bridge_art import dock_items  # noqa: E402
 NEW_ITEMS += dock_items()
+from river_grotto_assets import river_items  # noqa: E402
+NEW_ITEMS += river_items()
 
 
 def u16(payload: bytes | None) -> int | None:
@@ -637,13 +657,15 @@ def apply_things(things: Path, otb_root, dry: bool) -> list[str]:
         # El prefijo del prototipo conserva la cantidad real de capas/cuadros.
         new_records = sprite_records(SPRITES / item["png"], tiles, frames * layers)
         idx = by_cid.get(item["client_id"])
-        proto_cid = s2c.get(item["prototype"])
+        proto_cid = s2c.get(item.get("appearance", item["prototype"]))
         if idx is None or proto_cid not in by_cid:
             raise SystemExit(f"{things}: falta el client id {item['client_id']} o el del prototipo {item['prototype']}")
         proto = entries[by_cid[proto_cid]]
         if len(proto.sprite_ids) != sprite_count:
             raise SystemExit(f"prototipo {item['prototype']} tiene {len(proto.sprite_ids)} sprites, se esperaban {sprite_count}")
-        new_prefix = with_light(proto.prefix, *item["light"]) if "light" in item else proto.prefix
+        new_prefix = ground_overlay(proto.prefix) if item.get("ground_overlay") else proto.prefix
+        if "light" in item:
+            new_prefix = with_light(new_prefix, *item["light"])
         current = entries[idx]
         if (len(current.sprite_ids) == sprite_count and current.prefix == new_prefix
                 and all(records[current.sprite_ids[i]] == new_records[i] for i in range(sprite_count))):
