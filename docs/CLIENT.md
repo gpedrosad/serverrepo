@@ -95,6 +95,17 @@ La ventana "Health Info" del panel derecho (barras de vida y maná) tiene `&save
 quedara prendido, y nadie veía las barras. Desde nov 2026 va `&autoOpen: 2`: se abre siempre, segunda en el
 panel (el número ordena las ventanas: minimapa 1, health 2, inventario 3, botones 4).
 
+## Ventana Battle simple (nov 2026)
+
+`modules/game_battle` (en `clienteretro`, igual en `mac/` y `windows/`): desde el 22 nov 2026 la ventana Battle
+es solo la lista, como en el 7.6. Sin los 5 botones de filtro (jugadores, NPCs, monstruos, calaveras, party),
+sin los menús de orden y sin la flecha que los mostraba. Muestra todo lo visible en el piso, en el orden en que
+apareció (el primero arriba): la lista no salta cuando los monstruos se mueven. Click izquierdo ataca, derecho
+abre el menú, Shift+click mira; `battlePanel` sigue igual para los atajos de `game_hotkeys` y `game_interface`.
+
+Error que ya pasó: al salir criaturas de la pantalla, la ventana apagaba el botón Battle del menú de arriba
+(usaba la variable global `battleButton` en vez del botón de la lista).
+
 ## Cliente público Retro76 (clienteretro)
 
 Distribución para jugadores: repo `~/apps/clienteretro` en la ThinkPad, zips en `web/downloads/`.
