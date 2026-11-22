@@ -46,7 +46,7 @@ Todos los ítems reutilizan `client_id` ya existentes en el cliente 7.6 / Zagan 
 | `20120` | **boltworker crossbow** | Crossbow 2H, **+1 attack** a bolts (activo ya en `player.cpp`, puente entre Crossbow y Arbalest) | Imperial Hero (0,45 %), Wyrm (0,35 %), Worker Golem (0,35 %) |
 | `20153` | **frostwarden aegis** | Escudo Def 32, 42 oz | Frost Dragon (0,55 %), Crystal Spider (0,35 %), Quara Pincher (0,25 %) |
 | `20102` | **morlen crest** | Casco Arm 9, 38 oz | Root Colossus (0,60 %), Quara Predator (0,45 %), Wyrm (0,40 %) |
-| `20124` | **azure sunstone** | Consumible Lua ([`soft_boots_recharge.lua`](../../server/YurOTS/ots/data/actions/scripts/soft_boots_recharge.lua)): recarga **worn soft boots (`3550`) → soft boots (`3549`)** (4 h) | Ashen Lord, Orshabaal, The Fallen Emperor, Lord of Elvenbane, Demodras, Wrath |
+| `20124` | **azure sunstone** | Consumible Lua ([`soft_boots_recharge.lua`](../../server/YurOTS/ots/data/actions/scripts/soft_boots_recharge.lua)): recarga **worn soft boots (`2641`) → soft boots (`2640`)** (4 h) | Ashen Lord, Orshabaal, The Fallen Emperor, Lord of Elvenbane, Demodras, Wrath |
 | `20125` | **verdant sunstone** | Consumible Lua ([`verdant_sunstone.lua`](../../server/YurOTS/ots/data/actions/scripts/verdant_sunstone.lua)): restaura HP y maná al máximo (cooldown 60 s) | Ashen Lord, Orshabaal, The Fallen Emperor, Lord of Elvenbane, Demodras, Custodio del Lago, Capataz de Hierro |
 
 **Hooks C++ editados (sin compilar):**

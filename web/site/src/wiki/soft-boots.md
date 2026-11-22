@@ -1,36 +1,38 @@
 ---
 titulo: Soft Boots
 categoria: Items especiales
-resumen: Botas que regeneran vida y maná mientras las llevas puestas, durante 4 horas de uso.
+resumen: Botas que regeneran vida y maná durante 4 horas de uso y se recargan con Azure Sunstone.
 orden: 10
-estado: borrador
+icono: 2640
+estado: publicado
 ---
 
 ## Lo esencial
 
-- Con las **Soft Boots** puestas recuperas **+3 de vida** y **+12 de maná** cada **3 s**.
-- Eso da unos **60 de vida** y **240 de maná** por minuto, además de la regeneración normal.
-- Duran **4 h** de uso. El tiempo solo corre mientras las tienes puestas.
-- Al gastarse se convierten en **Worn Soft Boots**, que ya no regeneran.
+- Con las **Soft Boots** puestas recuperas **+3 de vida** y **+12 de maná** cada **3 s** (~60 HP y ~240 MP por minuto, además de la comida).
+- Duran **4 h** de uso. El tiempo solo corre mientras las llevas puestas.
+- Al agotarse pasan a **Worn Soft Boots**, que ya no regeneran.
+- Se recargan a **4 h** usando una **Azure Sunstone** (botín de jefes).
 - No dan velocidad y no aceptan Yellow Gem.
 
-## Cómo funciona
+## Cómo funcionan
 
-1. Ponte las Soft Boots en el espacio de los pies.
-2. Cada 3 s recibes +3 de vida y +12 de maná, hasta llegar a tu máximo.
-3. Si te las sacas, el tiempo se detiene y queda guardado en las botas.
-4. Al mirarlas ves cuántos minutos les quedan.
-5. Cuando llegan a 0 se transforman en Worn Soft Boots.
+1. Equipa las **Soft Boots** en el espacio de los pies.
+2. Cada 3 s suman vida y maná hasta tu máximo (también en zonas protegidas y sin comida).
+3. Al quitártelas el tiempo se detiene y queda guardado. Al mirarlas ves cuántos minutos les quedan.
+4. Cuando llegan a 0 se convierten en **Worn Soft Boots**.
 
-Funcionan en cualquier lugar, también dentro de zonas protegidas y sin haber comido. Guardadas en la mochila o en el depot no hacen nada.
+> **Ojo:** cada vez que te las pones consumen **3 s** de duración.
 
-> **Ojo:** cada vez que te las pones gastan **3 s** de duración. No las pongas y saques sin necesidad.
+## Cómo recargarlas
 
-## Recargar
+Usa una **Azure Sunstone** directamente sobre las **Worn Soft Boots** (o haz clic derecho teniéndolas en la mochila) para devolverles las **4 h** completas.
 
-Por ahora **no se pueden recargar ni reparar**. Ningún NPC las compra, vende ni arregla. Una vez gastadas, ya no vuelven a regenerar.
+La **Azure Sunstone** cae de jefes: *Ashen Lord*, *Orshabaal*, *The Fallen Emperor*, *Lord of Elvenbane*, *Demodras* y *Wrath*.
 
 ## Relacionado
 
 - [[comida]]
 - [[gemas]]
+- [[hell-quest]]
+- [[castillo-imperial]]

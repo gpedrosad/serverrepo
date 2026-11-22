@@ -838,6 +838,10 @@ std::string Item::getDescription(bool fullDescription) const
 		s << std::endl << "Sorcerers and druids: +1 magic level and -5% elemental damage while worn.";
 	else if(id == ITEM_KILNFIRE_LEGGINGS && fullDescription)
 		s << std::endl << "Sorcerers and druids: +1 magic level and -5% elemental damage while worn.";
+	else if(id == ITEM_SOFT_BOOTS && fullDescription)
+		s << std::endl << "Faster regeneration (+3 HP and +12 MP every 3 s while worn).";
+	else if(id == ITEM_WORN_SOFT_BOOTS && fullDescription)
+		s << std::endl << "Worn out. Use an azure sunstone to recharge (4 hours).";
 	else if(id == ITEM_WAYFARER_BOOTS && fullDescription)
 		s << std::endl << "+20 speed and -5% elemental damage while worn.";
 	else if(id == ITEM_MOSAIC_SHIELD && fullDescription)
