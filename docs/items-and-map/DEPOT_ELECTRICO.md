@@ -179,7 +179,7 @@ La comparación ampliada del apartado «Calavera cian» muestra las originales j
 
 ## Unificación del edificio completo — 22 nov 2026
 
-Revisión completada por pedido de Gonzalo; publicación del cliente y deploy pendientes de autorización.
+Publicado y desplegado el 22 nov 2026, con autorización de Gonzalo. Servidor `4996acc`; cliente `c810e0c`.
 La primera intervención cubría solo lockers (y52–59). El ala norte y el vestíbulo
 seguían en entramado beige y piedra gris. Ahora se aplica la misma mampostería cian
 al edificio completo **x126–134, y41–59, z4–z7**, sin tocar el edificio vecino de
@@ -249,6 +249,29 @@ mapa: 0 cambios; `check-map-load.py`: 0 errores; `scan-map-depots.py`: 11 depoti
 con piso superior revisados; no se ejecutaron suites ni pruebas in-game, según la
 preferencia del usuario. Backup local `backups/map/depot-unify/`.
 
-Antes del deploy se deben publicar DAT/SPR y minimapa con `publish_client.py` y
-seguir el respaldo/reinicio del servidor de ThinkPad. El servidor de juego aún
-conserva la versión anterior hasta autorizar esta publicación.
+Los recursos se publicaron con `publish_client.py` antes de reiniciar la ThinkPad,
+siguiendo el flujo de respaldo y reinicio del servidor.
+
+### Resultado de la unificación — 22 nov 2026
+
+- Servidor **`4996acc`**, assets **`6433f59`**; cliente **`c810e0c`**, todos en main.
+- Respaldo completo `~/backups/pre-deploy-20261122-202609-depot-unify`, renovado
+  tras `server-save.sh --now` antes del reinicio. Incluye runtime, configuración,
+  binario, mapa, ambos OTB y assets de ambas plataformas.
+- ff-merge sin solapamientos con cambios ajenos. La documentación sin commitear de
+  otra sesión (`THINKPAD_TEST_SERVER.md`, puertos de qBittorrent) quedó idéntica;
+  por eso el registro de este deploy se guarda aquí, sin modificar aquel archivo.
+- Cliente publicado primero: **775 archivos** iguales en Mac/Windows, updater y
+  ambos ZIPs (`data.zip` incluido). HTTP 8080 y 8076 verificados. Solo cambiaron
+  DAT y SPR: CRC **`88b99039`** / **`f9023b7e`**. Minimapa sin cambios (`8e64ceb5`).
+- `docker restart -t 45 yurots`: graceful shutdown completo, mapa cargado en
+  **1.052 s**, `Retro76 Server Running`, healthy y **0 reinicios automáticos**.
+  Logs sin errores ni warnings desde el arranque; probe LAN **OK, 10,6 ms**.
+- Snapshots idénticos después del reinicio: **1 cuenta, 8 archivos de personajes**,
+  inventarios, depots, **35 archivos de casas**, permisos, houseitems, sponsors,
+  configuración y binario. Hashes del mapa, OTB y assets coinciden con el commit.
+- `scan-map-depots.py`: **11 lockers, depotid 1**; casas coinciden con el mapa.
+  Sin C++ nuevo, suites, bots ni recorrido in-game por preferencia del usuario.
+
+Las apariencias nuevas llegan al abrir el cliente o pulsar Login. La revisión
+visual en la sesión habitual queda a cargo del jugador.
