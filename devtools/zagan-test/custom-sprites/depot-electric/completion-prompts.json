@@ -1,0 +1,12 @@
+{
+  "tool": "image_gen.imagegen",
+  "intent": "style-transfer",
+  "target": "first two cells of a 4x2 atlas",
+  "prompt": "Edit this Tibia 7.6 pixel-art sprite atlas. This is a precisely aligned 4-column x 2-row grid, each cell 256x256, containing 64x64 logical pixel sprites enlarged exactly 4x nearest neighbor. Change ONLY the reddish brick pillar in row 1 column 1 and the reddish horizontal brick window wall in row 1 column 2: recolor their masonry to match exactly the electric cyan/turquoise masonry, navy mortar, cobalt blue shaded side faces, dark blue outlines and bright aqua edge highlights of the five already-cyan reference pieces in the other cells. Preserve the shapes, diagonal lower edges, silhouette, pillar width, camera projection and any window opening of those first two pieces exactly. Keep all other five cyan pieces pixel-for-pixel unchanged, and the last empty cell empty. No additional objects, no perspective change, no glow outside the sprite, no background, no labels, no grid lines, no text. Transparent background. Preserve the original atlas framing and grid layout; crisp 4x block pixels, no antialiasing. This is a small extension to the existing in-game electric depot wall tileset, not a redesigned tileset.",
+  "generated": "walls-completion-generated.png",
+  "reference": "walls-completion-reference.png",
+  "export": "depot_electric_assets.py --prepare-completion; native alpha masks",
+  "roof_prompt": "Edit this precisely aligned 3-column x 2-row Tibia 7.6 pixel-art atlas. Each cell is 256x256, sprites are 64x64 logical pixels enlarged 4x nearest neighbor. Recolor ONLY the five gray stone railing pieces (row 1 all three cells, row 2 first two cells) to the electric cyan/turquoise, cobalt shadow faces, dark navy mortar and bright aqua edge highlights of the already-cyan brick reference in row 2 column 3. Preserve each railing's exact position within its cell, native silhouette, size, rounded masonry block shapes, gaps, end caps and camera projection; this is a material recolor to match the depot, not new architecture. Keep the reference cell unchanged. The first railing is only in the top half of its cell; the second only in the left half. Keep all unused space transparent. Crisp old-school pixel art, no antialiasing, no extra posts, no floor, no glow outside the stone, no labels, no text. Return the same full 3x2 atlas framing on a truly transparent background.",
+  "roof_generated": "roof-completion-generated.png",
+  "roof_reference": "roof-completion-reference.png"
+}
