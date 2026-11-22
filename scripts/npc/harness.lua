@@ -56,6 +56,7 @@ local function byAny(x)  -- algunas funciones del C++ reciben el nombre, no el c
 	return P(x)
 end
 local creatures = 5000
+local summoned = {}
 
 local function fmt(v)
 	local t = type(v)
@@ -91,7 +92,11 @@ creatureGetPosition = function(cid)
 	if not p then return nil end
 	return p.pos.x, p.pos.y, p.pos.z
 end
-creatureGetName = function(cid) return P(cid).name end
+creatureGetName = function(cid)
+	local m = summoned and summoned[tonumber(cid)]
+	if m then return m.name end
+	return P(cid).name
+end
 creatureGetName2 = function(name)  -- como getCreatureByName: sin distinguir mayúsculas
 	for cid, p in pairs(players) do if string.lower(p.name) == string.lower(name) then return cid end end
 	return 0
@@ -120,14 +125,13 @@ api('doPlayerWithdrawMoney', 0)
 api('doPlayerTransferMoneyTo', 0)
 api('doPlayerAddMoney', 1)
 api('getPlayerVocation', function(cid) return P(cid).voc end)
--- monstruos invocados (Chronos): id -> posición, para que getTopCreature vea quién está en cada casilla
-local summoned = {}
+-- monstruos invocados (Chronos/Kaelen): id -> {pos, name}, para que getTopCreature vea quién está en cada casilla
 local function samePos(a, b) return a ~= nil and b ~= nil and a.x == b.x and a.y == b.y and a.z == b.z end
-api('doSummonCreature', function(name, pos) creatures = creatures + 1; summoned[creatures] = pos; return creatures end)
+api('doSummonCreature', function(name, pos) creatures = creatures + 1; summoned[creatures] = {pos = pos, name = name}; return creatures end)
 api('doRemoveCreature', function(cid) summoned[tonumber(cid)] = nil end)
 api('getTopCreature', function(pos)
 	for cid, p in pairs(players) do if samePos(p.pos, pos) then return cid end end
-	for id, sp in pairs(summoned) do if samePos(sp, pos) then return id end end
+	for id, m in pairs(summoned) do if samePos(m.pos, pos) then return id end end
 	return 0
 end)
 api('isMonster', function(cid) return (tonumber(cid) or 0) >= 5000 end)  -- boolean, como el C++
@@ -185,6 +189,18 @@ for line in io.lines(scenario) do
 			P(cid).storage[tonumber(key)] = tonumber(val)
 		elseif cmd == 'disappear' then
 			if onCreatureDisappear then run('onCreatureDisappear', onCreatureDisappear, tonumber(rest), P(rest).pos) end
+		elseif cmd == 'spawn' then
+			local x, y, z, name = rest:match('^(%d+)%s+(%d+)%s+(%d+)%s+(.+)$')
+			creatures = creatures + 1
+			summoned[creatures] = {pos = {x = tonumber(x), y = tonumber(y), z = tonumber(z)}, name = name}
+		elseif cmd == 'killmobs' then
+			if rest == '' then
+				summoned = {}
+			else
+				for id, m in pairs(summoned) do
+					if m.name ~= rest then summoned[id] = nil end
+				end
+			end
 		end
 	end
 end

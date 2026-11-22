@@ -328,6 +328,397 @@ say 1001 yes
 say 1001 transfer 10 to player1002 all
 say 1001 no
 think
+say 1001 small diamonds
+say 1001 yes
+say 1001 small diamonds
+say 1001 no
+say 1001 5 small diamonds
+say 1001 yes
+say 1001 5 small diamonds
+say 1001 no
+say 1001 small diamonds 100
+say 1001 yes
+say 1001 small diamonds 100
+say 1001 no
+say 1001 small diamonds all
+say 1001 yes
+say 1001 small diamonds all
+say 1001 no
+think
+say 1001 small sapphires
+say 1001 yes
+say 1001 small sapphires
+say 1001 no
+say 1001 5 small sapphires
+say 1001 yes
+say 1001 5 small sapphires
+say 1001 no
+say 1001 small sapphires 100
+say 1001 yes
+say 1001 small sapphires 100
+say 1001 no
+say 1001 small sapphires all
+say 1001 yes
+say 1001 small sapphires all
+say 1001 no
+think
+say 1001 small rubies
+say 1001 yes
+say 1001 small rubies
+say 1001 no
+say 1001 5 small rubies
+say 1001 yes
+say 1001 5 small rubies
+say 1001 no
+say 1001 small rubies 100
+say 1001 yes
+say 1001 small rubies 100
+say 1001 no
+say 1001 small rubies all
+say 1001 yes
+say 1001 small rubies all
+say 1001 no
+think
+say 1001 small emeralds
+say 1001 yes
+say 1001 small emeralds
+say 1001 no
+say 1001 5 small emeralds
+say 1001 yes
+say 1001 5 small emeralds
+say 1001 no
+say 1001 small emeralds 100
+say 1001 yes
+say 1001 small emeralds 100
+say 1001 no
+say 1001 small emeralds all
+say 1001 yes
+say 1001 small emeralds all
+say 1001 no
+think
+say 1001 small amethysts
+say 1001 yes
+say 1001 small amethysts
+say 1001 no
+say 1001 5 small amethysts
+say 1001 yes
+say 1001 5 small amethysts
+say 1001 no
+say 1001 small amethysts 100
+say 1001 yes
+say 1001 small amethysts 100
+say 1001 no
+say 1001 small amethysts all
+say 1001 yes
+say 1001 small amethysts all
+say 1001 no
+think
+say 1001 win
+say 1001 yes
+say 1001 win
+say 1001 no
+say 1001 5 win
+say 1001 yes
+say 1001 5 win
+say 1001 no
+say 1001 win 100
+say 1001 yes
+say 1001 win 100
+say 1001 no
+say 1001 win all
+say 1001 yes
+say 1001 win all
+say 1001 no
+think
+say 1001 fail
+say 1001 yes
+say 1001 fail
+say 1001 no
+say 1001 5 fail
+say 1001 yes
+say 1001 5 fail
+say 1001 no
+say 1001 fail 100
+say 1001 yes
+say 1001 fail 100
+say 1001 no
+say 1001 fail all
+say 1001 yes
+say 1001 fail all
+say 1001 no
+think
+say 1001 no clear yet
+say 1001 yes
+say 1001 no clear yet
+say 1001 no
+say 1001 5 no clear yet
+say 1001 yes
+say 1001 5 no clear yet
+say 1001 no
+say 1001 no clear yet 100
+say 1001 yes
+say 1001 no clear yet 100
+say 1001 no
+say 1001 no clear yet all
+say 1001 yes
+say 1001 no clear yet all
+say 1001 no
+think
+say 1001 available today
+say 1001 yes
+say 1001 available today
+say 1001 no
+say 1001 5 available today
+say 1001 yes
+say 1001 5 available today
+say 1001 no
+say 1001 available today 100
+say 1001 yes
+say 1001 available today 100
+say 1001 no
+say 1001 available today all
+say 1001 yes
+say 1001 available today all
+say 1001 no
+think
+say 1001 already claimed today
+say 1001 yes
+say 1001 already claimed today
+say 1001 no
+say 1001 5 already claimed today
+say 1001 yes
+say 1001 5 already claimed today
+say 1001 no
+say 1001 already claimed today 100
+say 1001 yes
+say 1001 already claimed today 100
+say 1001 no
+say 1001 already claimed today all
+say 1001 yes
+say 1001 already claimed today all
+say 1001 no
+think
+say 1001 reglas
+say 1001 yes
+say 1001 reglas
+say 1001 no
+say 1001 5 reglas
+say 1001 yes
+say 1001 5 reglas
+say 1001 no
+say 1001 reglas 100
+say 1001 yes
+say 1001 reglas 100
+say 1001 no
+say 1001 reglas all
+say 1001 yes
+say 1001 reglas all
+say 1001 no
+think
+say 1001 rules
+say 1001 yes
+say 1001 rules
+say 1001 no
+say 1001 5 rules
+say 1001 yes
+say 1001 5 rules
+say 1001 no
+say 1001 rules 100
+say 1001 yes
+say 1001 rules 100
+say 1001 no
+say 1001 rules all
+say 1001 yes
+say 1001 rules all
+say 1001 no
+think
+say 1001 premio
+say 1001 yes
+say 1001 premio
+say 1001 no
+say 1001 5 premio
+say 1001 yes
+say 1001 5 premio
+say 1001 no
+say 1001 premio 100
+say 1001 yes
+say 1001 premio 100
+say 1001 no
+say 1001 premio all
+say 1001 yes
+say 1001 premio all
+say 1001 no
+think
+say 1001 premios
+say 1001 yes
+say 1001 premios
+say 1001 no
+say 1001 5 premios
+say 1001 yes
+say 1001 5 premios
+say 1001 no
+say 1001 premios 100
+say 1001 yes
+say 1001 premios 100
+say 1001 no
+say 1001 premios all
+say 1001 yes
+say 1001 premios all
+say 1001 no
+think
+say 1001 reward
+say 1001 yes
+say 1001 reward
+say 1001 no
+say 1001 5 reward
+say 1001 yes
+say 1001 5 reward
+say 1001 no
+say 1001 reward 100
+say 1001 yes
+say 1001 reward 100
+say 1001 no
+say 1001 reward all
+say 1001 yes
+say 1001 reward all
+say 1001 no
+think
+say 1001 rewards
+say 1001 yes
+say 1001 rewards
+say 1001 no
+say 1001 5 rewards
+say 1001 yes
+say 1001 5 rewards
+say 1001 no
+say 1001 rewards 100
+say 1001 yes
+say 1001 rewards 100
+say 1001 no
+say 1001 rewards all
+say 1001 yes
+say 1001 rewards all
+say 1001 no
+think
+say 1001 recompensa
+say 1001 yes
+say 1001 recompensa
+say 1001 no
+say 1001 5 recompensa
+say 1001 yes
+say 1001 5 recompensa
+say 1001 no
+say 1001 recompensa 100
+say 1001 yes
+say 1001 recompensa 100
+say 1001 no
+say 1001 recompensa all
+say 1001 yes
+say 1001 recompensa all
+say 1001 no
+think
+say 1001 recompensas
+say 1001 yes
+say 1001 recompensas
+say 1001 no
+say 1001 5 recompensas
+say 1001 yes
+say 1001 5 recompensas
+say 1001 no
+say 1001 recompensas 100
+say 1001 yes
+say 1001 recompensas 100
+say 1001 no
+say 1001 recompensas all
+say 1001 yes
+say 1001 recompensas all
+say 1001 no
+think
+say 1001 record
+say 1001 yes
+say 1001 record
+say 1001 no
+say 1001 5 record
+say 1001 yes
+say 1001 5 record
+say 1001 no
+say 1001 record 100
+say 1001 yes
+say 1001 record 100
+say 1001 no
+say 1001 record all
+say 1001 yes
+say 1001 record all
+say 1001 no
+think
+say 1001 records
+say 1001 yes
+say 1001 records
+say 1001 no
+say 1001 5 records
+say 1001 yes
+say 1001 5 records
+say 1001 no
+say 1001 records 100
+say 1001 yes
+say 1001 records 100
+say 1001 no
+say 1001 records all
+say 1001 yes
+say 1001 records all
+say 1001 no
+think
+say 1001 marca
+say 1001 yes
+say 1001 marca
+say 1001 no
+say 1001 5 marca
+say 1001 yes
+say 1001 5 marca
+say 1001 no
+say 1001 marca 100
+say 1001 yes
+say 1001 marca 100
+say 1001 no
+say 1001 marca all
+say 1001 yes
+say 1001 marca all
+say 1001 no
+think
+say 1001 marcas
+say 1001 yes
+say 1001 marcas
+say 1001 no
+say 1001 5 marcas
+say 1001 yes
+say 1001 5 marcas
+say 1001 no
+say 1001 marcas 100
+say 1001 yes
+say 1001 marcas 100
+say 1001 no
+say 1001 marcas all
+say 1001 yes
+say 1001 marcas all
+say 1001 no
+think
+say 1001 best
+say 1001 yes
+say 1001 best
+say 1001 no
+say 1001 5 best
+say 1001 yes
+say 1001 5 best
+say 1001 no
+say 1001 best 100
+say 1001 yes
+say 1001 best 100
+say 1001 no
+say 1001 best all
+say 1001 yes
+say 1001 best all
+say 1001 no
+think
 say 1001 time
 say 1001 yes
 say 1001 time
@@ -343,40 +734,6 @@ say 1001 no
 say 1001 time all
 say 1001 yes
 say 1001 time all
-say 1001 no
-think
-say 1001 fase
-say 1001 yes
-say 1001 fase
-say 1001 no
-say 1001 5 fase
-say 1001 yes
-say 1001 5 fase
-say 1001 no
-say 1001 fase 100
-say 1001 yes
-say 1001 fase 100
-say 1001 no
-say 1001 fase all
-say 1001 yes
-say 1001 fase all
-say 1001 no
-think
-say 1001 focused
-say 1001 yes
-say 1001 focused
-say 1001 no
-say 1001 5 focused
-say 1001 yes
-say 1001 5 focused
-say 1001 no
-say 1001 focused 100
-say 1001 yes
-say 1001 focused 100
-say 1001 no
-say 1001 focused all
-say 1001 yes
-say 1001 focused all
 say 1001 no
 think
 say 1001 tiempo
@@ -396,6 +753,23 @@ say 1001 yes
 say 1001 tiempo all
 say 1001 no
 think
+say 1001 fase
+say 1001 yes
+say 1001 fase
+say 1001 no
+say 1001 5 fase
+say 1001 yes
+say 1001 5 fase
+say 1001 no
+say 1001 fase 100
+say 1001 yes
+say 1001 fase 100
+say 1001 no
+say 1001 fase all
+say 1001 yes
+say 1001 fase all
+say 1001 no
+think
 say 1001 phase
 say 1001 yes
 say 1001 phase
@@ -413,6 +787,74 @@ say 1001 yes
 say 1001 phase all
 say 1001 no
 think
+say 1001 oleada
+say 1001 yes
+say 1001 oleada
+say 1001 no
+say 1001 5 oleada
+say 1001 yes
+say 1001 5 oleada
+say 1001 no
+say 1001 oleada 100
+say 1001 yes
+say 1001 oleada 100
+say 1001 no
+say 1001 oleada all
+say 1001 yes
+say 1001 oleada all
+say 1001 no
+think
+say 1001 oleadas
+say 1001 yes
+say 1001 oleadas
+say 1001 no
+say 1001 5 oleadas
+say 1001 yes
+say 1001 5 oleadas
+say 1001 no
+say 1001 oleadas 100
+say 1001 yes
+say 1001 oleadas 100
+say 1001 no
+say 1001 oleadas all
+say 1001 yes
+say 1001 oleadas all
+say 1001 no
+think
+say 1001 wave
+say 1001 yes
+say 1001 wave
+say 1001 no
+say 1001 5 wave
+say 1001 yes
+say 1001 5 wave
+say 1001 no
+say 1001 wave 100
+say 1001 yes
+say 1001 wave 100
+say 1001 no
+say 1001 wave all
+say 1001 yes
+say 1001 wave all
+say 1001 no
+think
+say 1001 waves
+say 1001 yes
+say 1001 waves
+say 1001 no
+say 1001 5 waves
+say 1001 yes
+say 1001 5 waves
+say 1001 no
+say 1001 waves 100
+say 1001 yes
+say 1001 waves 100
+say 1001 no
+say 1001 waves all
+say 1001 yes
+say 1001 waves all
+say 1001 no
+think
 say 1001 reloj
 say 1001 yes
 say 1001 reloj
@@ -428,6 +870,40 @@ say 1001 no
 say 1001 reloj all
 say 1001 yes
 say 1001 reloj all
+say 1001 no
+think
+say 1001 estado
+say 1001 yes
+say 1001 estado
+say 1001 no
+say 1001 5 estado
+say 1001 yes
+say 1001 5 estado
+say 1001 no
+say 1001 estado 100
+say 1001 yes
+say 1001 estado 100
+say 1001 no
+say 1001 estado all
+say 1001 yes
+say 1001 estado all
+say 1001 no
+think
+say 1001 status
+say 1001 yes
+say 1001 status
+say 1001 no
+say 1001 5 status
+say 1001 yes
+say 1001 5 status
+say 1001 no
+say 1001 status 100
+say 1001 yes
+say 1001 status 100
+say 1001 no
+say 1001 status all
+say 1001 yes
+say 1001 status all
 say 1001 no
 think
 say 1001 bye
@@ -444,54 +920,132 @@ say 1002 hi
 set 1002 money 0
 set 1002 slots 0
 set 1002 level 1
+say 1002 small diamonds
+say 1002 yes
+say 1002 small sapphires
+say 1002 yes
+say 1002 small rubies
+say 1002 yes
+say 1002 small emeralds
+say 1002 yes
+say 1002 small amethysts
+say 1002 yes
+say 1002 win
+say 1002 yes
+say 1002 fail
+say 1002 yes
+say 1002 no clear yet
+say 1002 yes
+say 1002 available today
+say 1002 yes
+say 1002 already claimed today
+say 1002 yes
+say 1002 reglas
+say 1002 yes
+say 1002 rules
+say 1002 yes
+say 1002 premio
+say 1002 yes
+say 1002 premios
+say 1002 yes
+say 1002 reward
+say 1002 yes
+say 1002 rewards
+say 1002 yes
+say 1002 recompensa
+say 1002 yes
+say 1002 recompensas
+say 1002 yes
+say 1002 record
+say 1002 yes
+say 1002 records
+say 1002 yes
+say 1002 marca
+say 1002 yes
+say 1002 marcas
+say 1002 yes
+say 1002 best
+say 1002 yes
 say 1002 time
-say 1002 yes
-say 1002 fase
-say 1002 yes
-say 1002 focused
 say 1002 yes
 say 1002 tiempo
 say 1002 yes
+say 1002 fase
+say 1002 yes
 say 1002 phase
+say 1002 yes
+say 1002 oleada
+say 1002 yes
+say 1002 oleadas
+say 1002 yes
+say 1002 wave
+say 1002 yes
+say 1002 waves
 say 1002 yes
 say 1002 reloj
 say 1002 yes
+say 1002 estado
+say 1002 yes
+say 1002 status
+say 1002 yes
 say 1002 chau
 think 3
-# Chronos: jugadores dentro de la sala, cambio de fase y sala vacía
-pos 1001 338 390 6
-pos 1002 340 392 6
-think 5
-advance 115
-think 10
-advance 120
-think 3
-say 1001 hi
-say 1001 time
-say 1001 fase
+# Chronos v2: contrarreloj dinamico en la sala real (600-610, 320-328, z=6)
+# 1) Sala vacia (IDLE): no spawnea nada
 far 1001
 far 1002
-advance 300
+think 3
+# 2) Entra 1001 con un summon propio (Demon Skeleton) -> arranca PREP (15 s)
+spawn 604 326 6 Demon Skeleton
+pos 1001 605 327 6
+think 1
+# 3) Cuenta regresiva de PREP hasta oleada 1 (Dunas)
+think 15
+# 4) Combate oleada 1 (3 s) y limpia manteniendo el Demon Skeleton del jugador
+think 3
+killmobs Demon Skeleton
+think 1
+# 5) Pausa BETWEEN (5 s) -> oleada 2 (Horda) -> limpia en 2 s
 think 5
-# Ciclo completo: descanso -> oleadas 1..6 -> descanso, con los jugadores dentro
-pos 1001 338 394 6
-pos 1002 337 394 6
+think 2
+killmobs Demon Skeleton
 think 1
-advance 60
+# 6) Oleada 3 (Escarabajos) -> limpia en 2 s
+think 5
+think 2
+killmobs Demon Skeleton
 think 1
-advance 60
+# 7) Oleada 4 (Necropolis) -> limpia en 2 s
+think 5
+think 2
+killmobs Demon Skeleton
 think 1
-advance 60
+# 8) Entra 1002 tarde en oleada 5 (solo presenciara 2/3 oleadas minimas)
+pos 1002 606 327 6
+think 5
+think 2
+killmobs Demon Skeleton
 think 1
-advance 60
+# 9) Oleada 6 (Guardian del Tiempo: Demon) -> VICTORIA! 1001 cobra premio diario, 1002 no
+think 5
+think 3
+killmobs Demon Skeleton
 think 1
-advance 60
-think 1
-advance 60
-think 1
-advance 60
-think 1
+# 10) Dialogo con Chronos tras ganar (cerca del NPC en el harness)
+near 1001
+say 1001 hi
+say 1001 record
+say 1001 premios
+say 1001 estado
 say 1001 bye
-say 1002 hi
-say 1002 oleada
-say 1002 reglas
+# 11) Salen ambos -> vuelve a IDLE y limpia la sala
+far 1001
+far 1002
+think 2
+# 12) Nueva ronda y timeout (se acaba la arena de 90 s sin matar la oleada 1)
+pos 1001 605 327 6
+think 16
+think 90
+# 13) Sale durante cooldown -> vuelve a IDLE
+far 1001
+think 2

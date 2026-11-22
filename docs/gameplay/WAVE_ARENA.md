@@ -1,26 +1,23 @@
 # Wave Arena — Claro de la Selva
 
-> Idioma visible: **inglés**. Ver [política y corrección de textos](SERVER_LANGUAGE.md).
-
-Arena PvE de 20 oleadas para grupos (v2, nov 2026). Campamento seguro + claro de selva cerrado con bambú.
-Un jefe cada 5 oleadas, las oleadas escalan con el grupo, ranking semanal por oleadas **limpias** y premio
-la primera vez en la semana que se limpia la 5 / 10 / 15 / 20.
+Arena PvE de 20 oleadas progresivas (lvl 25 → 100+) para solo o grupos (v3, nov 2026). Campamento seguro + claro de selva cerrado con bambú.
+Un jefe cada 5 oleadas, las oleadas escalan con el grupo sin saturar los spawns, ranking semanal por oleadas **limpias** (desempata por menor tiempo de corrida), premio semanal (oro + gemas pequeñas) al limpiar la 5 / 10 / 15 / 20, y NPC vigía **Kaelen** en el campamento que limpia monstruos huérfanos y muestra el HUD en vivo.
 
 Portal en la plaza del templo: `166, 47, 7` (cartel `166, 46, 7`, llegada al volver `166, 48, 7`).
-Portales del templo: tabla en [`CAMBIAR-MAPA.md`](../CAMBIAR-MAPA.md#portales-del-templo-plaza-z7--nov-2026),
-los maneja `scripts/map/temple-portals.py`.
+Portales del templo: tabla en [`CAMBIAR-MAPA.md`](../CAMBIAR-MAPA.md#portales-del-templo-plaza-z7--nov-2026), los maneja `scripts/map/temple-portals.py`.
 
-**v1 → v2:** la v1 era una sala de 7x7 con un vestíbulo abierto, para un jugador, con una sola especie por oleada.
-Tenía dos fallas: el ranking anotaba la oleada **al empezarla** (con abrir la 20 quedabas primero) y el conteo de
-monstruos no miraba el vestíbulo, donde estaban las palancas.
+**v2 → v3 (nov 2026):**
+- Se rehízo la curva de 20 oleadas para que escale de forma estrictamente monótona (lvl 25 → 100+): salieron los Rats/Snakes iniciales, las caídas de dificultad (Lions/Tigers tras Orc Leader, Mummies tras Lizard Templar) y `Carniphila` (tenía `HP=022`).
+- Se sumó **Kaelen** (`603, 220, 7`) para limpiar automáticamente monstruos huérfanos (~2 s tras quedar vacío el claro) y mostrar el HUD de monstruos restantes / aviso en rojo de oleada limpia, sin recompilar C++.
+- Ranking semanal ahora guarda `{wave, time}` y desempata por menor tiempo (antes desempataba alfabéticamente); semana monótona desde lunes UTC (no se corta en Año Nuevo).
+- Escalado de grupo ajustado (`+30%` por jugador extra, tope `14` en pack) para no saturar los 15 spawns.
+- Premios semanales mejorados con oro + gemas pequeñas.
 
 ---
 
 ## Mapa (z7, todo generado)
 
-Campamento y claro viven en el **distrito de eventos** (x≥560, lejos del mapa principal): no se ven
-superpuestos en RME sobre las hunts del sur. Se movieron en nov 2026 (antes estaban junto al valle);
-las casillas viejas se borraron con `scripts/map/remove-old-event-areas.py`.
+Campamento y claro viven en el **distrito de eventos** (x≥560, lejos del mapa principal).
 
 | Sala | Caja interior | Estilo |
 |------|---------------|--------|
@@ -31,6 +28,7 @@ las casillas viejas se borraron con `scripts/map/remove-old-event-areas.py`.
 |-----|-------|
 | Llegada desde el templo | `606,223` (campamento) |
 | TP al templo | `606,224` |
+| NPC vigía **Kaelen** | `603,220` (campamento PZ) |
 | Plataforma de grupo | `605–607, 221–222` |
 | Palanca inicio `7100` / ranking `7101` | `606,220` / `609,220` (carteles a su izquierda) |
 | Llegada del grupo al claro | filas `213–214` alrededor de `606,214` |
@@ -43,60 +41,63 @@ Bambú (medido en el mapa): poste `3425`, horizontal `3426`, vertical `3423`, es
 
 1. Portal del templo → campamento.
 2. El grupo se para en la plataforma de madera; uno tira la palanca de inicio. Entran todos (máx 7) y sale la oleada 1.
-3. Con el claro limpio, la palanca **siguiente** anota la oleada limpia a todos los del claro y suelta la próxima.
-4. La palanca **retirarse** lleva al campamento y anota la última oleada limpia (la actual si ya está limpia).
-   No hay TP de salida en el claro: así nadie se va sin que la marca quede guardada. Morir no anota nada.
-5. Al limpiar la 20 el grupo vuelve al campamento.
+3. Mientras pelean, **Kaelen** muestra abajo `Wave Arena | Oleada X/20 | quedan N monstruo(s)` y avisa en rojo en cuanto la oleada queda limpia.
+4. Con el claro limpio, la palanca **siguiente** anota la oleada limpia + tiempo a todos los del claro (y entrega premio si corresponde) y suelta la próxima.
+5. La palanca **retirarse** lleva al campamento y guarda la última oleada limpia (la actual si ya está limpia). Cada oleada previa ya quedó guardada al pasarla, incluso si después morís en una oleada más alta.
+6. Al limpiar la 20 el grupo vuelve al campamento. Si el claro queda vacío con monstruos vivos (muerte o retiro), Kaelen los retira en ~2 s y `start()` bloquea el ingreso hasta que quede limpio.
 
-## Reglas (`data/actions/scripts/wave_arena.lua`)
+## Reglas (`data/actions/scripts/wave_arena.lua` + `data/npc/scripts/kaelen.lua`)
 
-- Una corrida a la vez. El claro está ocupado mientras haya un jugador adentro (se escanea la caja; no hay dueño
-  guardado que pueda quedar colgado). Si el grupo muere o se retira entero, otro grupo puede entrar.
-- Monstruos sobrantes de una corrida anterior cuentan para la oleada 1 del grupo nuevo.
-- Escala: cada entrada del pack es `base + floor(base * (jugadores - 1) / 2)`; el jefe no escala.
-- La oleada en curso vive en `WaveRun.wave` y se copia en el storage `9303` de cada jugador del claro: si se
-  recarga el script a mitad de corrida, se recupera de ahí.
-- Premios en `REWARDS` (5 / 15 / 30 platinum, 1 crystal), una vez por semana por jugador y por escalón.
+- Una corrida a la vez. El claro está ocupado mientras haya un jugador adentro; si quedaron monstruos huérfanos, Kaelen los limpia en ~2 s y la palanca de inicio pide esperar 2 segundos.
+- Escala: cada entrada del pack es `round(base * (1 + 0.30 * (jugadores - 1)))`, con tope `MAX_PACK_MOBS = 14`; el jefe no escala.
+- La oleada en curso (`9303`) y el timestamp de inicio (`9305`) se copian en cada jugador del claro: si se recarga el script a mitad de corrida, se recuperan ambos.
+- Premios semanales (`REWARDS`), una vez por semana por jugador y por escalón:
+  - Oleada 5: `10 platinum coins` + `1 Small Emerald` (`2149`)
+  - Oleada 10: `30 platinum coins` + `2 Small Sapphire` (`2146`)
+  - Oleada 15: `1 crystal coin` + `3 Small Ruby` (`2147`)
+  - Oleada 20: `3 crystal coins` + `5 Small Diamond` (`2145`)
 - El bloque `LAYOUT` de `wave_arena.lua` (cajas, plataforma, llegadas, spawns) **lo escribe el generador**.
 
 | Storage | Qué |
 |---------|-----|
-| `9300` | semana de las marcas |
+| `9300` | semana monótona (lunes UTC) de las marcas |
 | `9301` | mejor oleada limpia de la semana |
 | `9302` | mejor oleada limpia histórica |
-| `9303` | oleada en curso (respaldo) |
+| `9303` | oleada en curso (respaldo + leído por Kaelen para el HUD) |
+| `9304` | mejor tiempo (segundos) de `9301` |
+| `9305` | `os.time()` de inicio de corrida (respaldo) |
 | `9310–9313` | semana en que cobró el premio de la 5 / 10 / 15 / 20 |
 
-Ranking: `data/logs/wave_arena_rank.json` (runtime, top 10 de la semana).
+Ranking: `data/logs/wave_arena_rank.json` (runtime, top 10 de la semana, formato `{"wave": N, "time": S}`, retrocompatible con el formato entero v2).
 
-## Oleadas
+## Oleadas (base, 1 jugador, sin variantes rage)
 
-| # | Monstruos (base, 1 jugador) | # | Monstruos |
+| # | Monstruos | # | Monstruos |
 |---|---|---|---|
-| 1 | 3 Rat, 2 Cave Rat | 11 | 2 Lion, 2 Tiger |
-| 2 | 3 Wolf, 2 Snake | 12 | 2 Dworc Fleshhunter, 2 Dworc Venomsniper, 1 Dworf Voodoomaster |
-| 3 | 2 Hyaena, 2 Poison Spider | 13 | 2 Stalker, 2 Hunter |
-| 4 | 2 Centipede, 2 Larva, 1 Scorpion | 14 | 2 Terror Bird, 2 Crocodile |
-| 5 | **Jefe Tarantula**, 3 Poison Spider | 15 | **Jefe Lizard Templar**, 2 Kongra, 1 Sibang |
-| 6 | 2 Orc Spearman, 2 Orc Warrior | 16 | 2 Mummy, 2 Ghoul |
-| 7 | 2 Bandit, 2 Smuggler | 17 | 2 Carniphila, 2 Lizard Sentinel |
-| 8 | 3 War Wolf, 1 Bear | 18 | 2 Gazer, 1 Lizard Snakecharmer, 2 Assassin |
-| 9 | 2 Amazon, 2 Valkyrie | 19 | 2 Blue Djinn, 1 Lizard Templar |
-| 10 | **Jefe Orc Leader**, 1 Orc Berserker, 2 Orc Shaman | 20 | **Jefe Giant Spider**, 2 Tarantula |
+| 1 | 2 Orc Warrior, 2 Orc Spearman, 1 Minotaur | 11 | 1 Hero, 1 Black Knight, 1 Undead Gladiator |
+| 2 | 2 Minotaur Guard, 2 Minotaur Archer, 1 Minotaur Mage | 12 | 2 Bog Raider, 2 Mutated Tiger |
+| 3 | 3 Tarantula, 2 Terror Bird | 13 | 2 Dragon Lord, 1 Dragon |
+| 4 | 2 Cyclops, 2 Dwarf Guard, 1 Cyclops Drone | 14 | 2 Hydra, 1 Emerald Scarab |
+| 5 | **Jefe Red Kongra**, 2 Kongra, 2 Sibang | 15 | **Jefe Behemoth**, 2 Dragon Lord |
+| 6 | 2 Lizard Templar, 2 Lizard Sentinel, 1 Lizard Snakecharmer | 16 | 2 Frost Dragon, 1 Ice Spider, 1 Ice Monk |
+| 7 | 2 Vampire, 2 Demon Skeleton, 1 Necromancer | 17 | 2 Black Dragon, 2 Hellhound |
+| 8 | 2 Ancient Scarab, 2 Scarab | 18 | 2 Warlock, 1 Lich, 1 Banshee |
+| 9 | 2 Dragon, 1 Wyvern | 19 | 2 Dark Hydra, 1 Behemoth |
+| 10 | **Jefe Giant Spider**, 1 Crystal Spider, 2 Tarantula | 20 | **Jefe Old Widow**, 1 Dark Hydra, 1 Hydra |
 
 ## Archivos
 
 | Archivo | Rol |
 |---------|-----|
-| `scripts/map/generate-wave-arena.py` | Mapa (campamento + claro), carteles, bloque `LAYOUT` de `wave_arena.lua`, `generated-wave-arena.json`. `--dry-run --png x.png` para ver; `--replace` escribe. Después, `scripts/map/temple-portals.py` |
-| `scripts/map/roomkit.py` | Piezas comunes con El Crisol: salas, paredes, validación con flags del `.otb`, escritura del OTBM |
-| `data/actions/scripts/wave_arena.lua` | Palancas, oleadas, marcas, premios, ranking |
+| `scripts/map/generate-wave-arena.py` | Mapa (campamento + claro), carteles, bloque `LAYOUT` de `wave_arena.lua`, `generated-wave-arena.json` |
+| `scripts/map/roomkit.py` | Piezas comunes con El Crisol: salas, paredes, validación `.otb`, escritura OTBM |
+| `data/actions/scripts/wave_arena.lua` | Palancas, 20 oleadas, escalado, ranking por tiempo, premios semanales |
+| `data/npc/kaelen.xml` + `data/npc/scripts/kaelen.lua` | NPC vigía del campamento: limpieza automática de huérfanos, HUD en vivo, diálogo |
+| `data/world/npc.xml` | Spawn de Kaelen en `603, 220, 7` |
 | `data/actions/actions.xml` | `uniqueid` 7100–7103 |
-
-Mapa, Lua, carteles y portal van en el **mismo commit** (ver la regla en [`CRUCIBLE.md`](CRUCIBLE.md)).
+| `scripts/npc/scenarios/kaelen.txt` | Prueba automatizada de Kaelen (`python3 scripts/npc/run_npc_tests.py kaelen`) |
 
 ## Probar sin server
 
-La lógica se probó con Lua 5.1 (la librería del server, `liblua5.1` en la imagen `serverrepo-yurots`) y un
-simulador del motor: grupo, sala ocupada, siguiente con vivos, retirarse, recarga del script, las 20 oleadas y
-premios que no se repiten en la semana. Nombres de monstruos chequeados contra `monster/monsters.xml`.
+- Kaelen: `python3 scripts/npc/run_npc_tests.py kaelen` (limpieza de huérfanos, HUD, aviso de oleada limpia y diálogo).
+- `wave_arena.lua`: probado con LuaJIT simulando el motor (bloqueo por huérfanos, 20 oleadas, desempate por tiempo en ranking, premios semanales no repetidos, escalado hasta 7 jugadores sin saturar spawns y recuperación tras recarga del script). Todas las especies validadas contra `monster/monsters.xml`.

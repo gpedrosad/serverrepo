@@ -64,9 +64,9 @@ PORTALS = [
      [(490, 240, 589, 460, 7), (490, 240, 589, 460, 8), (490, 240, 589, 460, 9), (490, 240, 589, 460, 10)]),
     ("crisol", 164, (605, 105, 0), "THE CRUCIBLE\n3 gates. Daily boss.\nBronze / Silver / Gold",
      [(592, 90, 717, 125, 0)]),
-    ("wave", 166, (606, 223, 7), "WAVE ARENA\nJungle Clearing: 20 waves\nGroup challenge. Weekly rewards",
+    ("wave", 166, (606, 223, 7), "WAVE ARENA\nJungle Clearing: 20 waves (lvl 25-100+)\nGroup challenge. Time ranking & weekly rewards",
      [(595, 200, 620, 230, 7)]),
-    ("reloj", 168, (605, 327, 6), "SAND CLOCK\n6 increasingly difficult waves\nEnter during the rest phase",
+    ("reloj", 168, (605, 327, 6), "SAND CLOCK\n6-wave time attack\nClear waves for extra time & daily reward",
      [(595, 315, 615, 333, 6), (595, 315, 615, 333, 5)]),
 ]
 S_BEGIN, S_END = "<!-- BEGIN TEMPLE_PORTAL_SIGNS -->", "<!-- END TEMPLE_PORTAL_SIGNS -->"

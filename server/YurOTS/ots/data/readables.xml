@@ -16,8 +16,8 @@
 	<readable x="158" y="46" z="7" text="BEAST VALLEY\nFour floors of challenging hunts\nFrom Minotaurs to Demons"/>
 	<readable x="159" y="46" z="7" text="INFERNO PITS\nFour floors of fiery caves\nFrom elementals to Furies"/>
 	<readable x="164" y="46" z="7" text="THE CRUCIBLE\n3 gates. Daily boss.\nBronze / Silver / Gold"/>
-	<readable x="166" y="46" z="7" text="WAVE ARENA\nJungle Clearing: 20 waves\nGroup challenge. Weekly rewards"/>
-	<readable x="168" y="46" z="7" text="SAND CLOCK\n6 increasingly difficult waves\nEnter during the rest phase"/>
+	<readable x="166" y="46" z="7" text="WAVE ARENA\nJungle Clearing: 20 waves (lvl 25-100+)\nGroup challenge. Time ranking &amp; weekly rewards"/>
+	<readable x="168" y="46" z="7" text="SAND CLOCK\n6-wave time attack\nClear waves for extra time &amp; daily reward"/>
 	<!-- END TEMPLE_PORTAL_SIGNS -->
 	<!-- BEGIN HELL_QUEST_SIGNS -->
 	<readable x="316" y="158" z="7" text="CULT FORTRESS\nThe fire warlocks no longer pray to anyone."/>
@@ -46,9 +46,9 @@
 	<readable x="199" y="73" z="7" text="DESERT RUINS\nRuins (8+), southern dunes (10+), lagoon and oasis (15+),\nbandit camp (20+), scarab nest (30+),\nlizard temple (40+), bone field (45+),\nswamp (50+), djinn sanctuary (60+).\nFollow the stone path.\nShip at the dock: pirates on deck (25+)."/>
 	<!-- END DESERT_HUNTS_SIGNS -->
 	<!-- BEGIN WAVE_ARENA_SIGNS -->
-	<readable x="605" y="220" z="7" text="WAVE ARENA\nJungle Clearing. 20 waves, a boss every 5.\nGroups: stand on the platform and pull the lever."/>
-	<readable x="608" y="220" z="7" text="WEEKLY RANKING\nYour last CLEARED wave counts.\nFirst weekly clear rewards: 5/10/15/20."/>
-	<readable x="606" y="215" z="7" text="Left: next wave (clear the room first).\nRight: retire and save your score."/>
+	<readable x="605" y="220" z="7" text="WAVE ARENA\nJungle Clearing: 20 waves (lvl 25-100+), boss every 5.\nGroups: stand on the platform and pull the lever."/>
+	<readable x="608" y="220" z="7" text="WEEKLY RANKING\nCleared waves count; fastest time breaks ties.\nWeekly rewards (coins + gems): 5 / 10 / 15 / 20."/>
+	<readable x="606" y="215" z="7" text="Left: next wave (clear the room first).\nRight: retire to camp and save your score."/>
 	<!-- END WAVE_ARENA_SIGNS -->
 	<!-- BEGIN MINOTAUR_ISLE_SIGNS -->
 	<readable x="102" y="52" z="7" text="MINOTAUR CAVE\nStronger minotaurs await on each floor below.\nReturn portal at the end of the third floor."/>
@@ -87,7 +87,7 @@
 	<readable x="166" y="108" z="7" text="TROLL DEN\nEnter the hole: River Trolls near the ladder\nand Stone Trolls among the rocks at the far end."/>
 	<!-- END TROLL_DEN_SIGNS -->
 	<!-- BEGIN SAND_CLOCK_SIGNS -->
-	<readable x="606" y="328" z="6" text="SAND CLOCK\n30 s of rest, then six 60 s waves,\neach stronger than the last. Braziers mark the wave.\nEnter during rest to start at wave 1.\nExit: southern portal."/>
+	<readable x="606" y="328" z="6" text="SAND CLOCK\n6-wave time attack (90 s starting sand).\nEach cleared wave adds bonus time and advances in 5 s.\nClear all 6 waves for Chronos daily reward.\nExit: southern portal."/>
 	<!-- END SAND_CLOCK_SIGNS -->
 	<!-- BEGIN MAGE_TOWER_SIGNS -->
 	<readable x="129" y="127" z="7" text="DARK MAGE TOWER\n6 floors of increasingly powerful mages.\nThe Dark Mage awaits at the top."/>

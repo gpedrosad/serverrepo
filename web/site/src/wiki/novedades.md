@@ -24,9 +24,10 @@ Una caza nueva **en la ciudad**: un islote frente al muelle, con puente de mader
 
 El portal de la isla natural ahora tiene una **cueva de tres pisos**: Golems y Shamblers, wyverns y murciélagos, y al fondo la **Old Widow** con dos Giant Spiders. La superficie sigue con los tres campamentos de Cyclops. Todo en [[isla-natural]].
 
-### Wave Arena: el Claro de la Selva
+### Wave Arena y Reloj de Arena renovados
 
-La Wave Arena se rehizo: un campamento seguro y un claro de selva cerrado con bambú. Ahora se juega **en grupo** (hasta 7), hay un **jefe cada 5 oleadas**, las oleadas crecen con el grupo y hay **premio semanal** al limpiar la 5, 10, 15 y 20. El ranking cuenta oleadas limpias. Todo en [[wave-arena]].
+- **[[wave-arena|Wave Arena]]**: 20 oleadas progresivas (nivel 25 a 100+) en grupo de hasta 7, jefe cada 5, **Kaelen** limpia monstruos sobrantes y muestra el conteo en vivo, ranking semanal que desempata por **mejor tiempo** y premios semanales con oro y gemas.
+- **[[reloj-de-arena|Reloj de Arena]]**: ahora es un **contrarreloj dinámico** de 6 oleadas crecientes (90 s iniciales + tiempo extra por oleada limpia, sin esperas muertas) con **premio diario** de Chronos y récord de tiempo.
 
 ### Power hit
 

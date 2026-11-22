@@ -181,7 +181,8 @@ Compra/venta (`buy`, `buyFluidQty`, `buyRuneQty`, `buyItemQty`, `buyItemBackpack
 | Guild Master | `guild.lua` | `129,51,5` | Guilds: fundar, invitar, rangos, nicks | Diálogo por etapas |
 | Huntmaster | `huntmaster.lua` | `138,53,6` | Contratos diarios (`lib/daily_task.lua`) | Sí/no |
 | Fargum, Nimral ×6 | `boat.lua` | `172,66,7` y 6 muelles | Viajes en barco | `onSay` propio |
-| Chronos | `chronos.lua` | `338,387,6` | Reloj de Arena: fases y spawns de la sala | `onThink` propio |
+| Chronos | `chronos.lua` | `605,320,6` | Reloj de Arena: contrarreloj dinámico de 6 oleadas y premio diario | `onThink` propio |
+| Kaelen | `kaelen.lua` | `603,220,7` | Wave Arena: limpia monstruos huérfanos, HUD en vivo y reglas | `onThink` propio |
 
 **Bounty Master (borrado, nov 2026):** su C++ se sacó en el commit `35373e0` ("remove unused bounty C++ module") y el NPC quedó sin funciones ni ubicación. Se borraron `bounty_master.lua` y `bounty master.xml`. Para recuperarlo: el diseño está en [`MOST_WANTED_SYSTEM.md`](MOST_WANTED_SYSTEM.md) y el código en la historia de git (`git show 35373e0^:server/YurOTS/ots/data/npc/scripts/bounty_master.lua`).
 

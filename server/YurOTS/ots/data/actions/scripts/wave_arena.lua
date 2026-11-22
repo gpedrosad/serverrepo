@@ -1,17 +1,17 @@
--- Wave Arena v2 "Claro de la Selva". Ver docs/gameplay/WAVE_ARENA.md. Textos ASCII (cliente 7.6).
+-- Wave Arena v3 "Jungle Clearing". See docs/gameplay/WAVE_ARENA.md. Pure ASCII (7.6 client).
 --
--- Palancas:
---   7100 campamento: entra el grupo (el que tira + los de la plataforma 3x2) y arranca la oleada 1.
---   7101 campamento: ranking semanal + tu marca + estado del claro.
---   7102 claro: siguiente oleada. Solo con la sala limpia; anota la oleada limpia a todos los del claro.
---   7103 claro: retirarse al campamento guardando la ultima oleada limpia.
+-- Levers:
+--   7100 camp: teleport group (puller + 3x2 pad players) and start wave 1.
+--   7101 camp: weekly ranking (cleared wave + fastest time) + personal best + clearing status.
+--   7102 clearing: next wave. Requires cleared room; records cleared wave + time for all inside.
+--   7103 clearing: retire to camp keeping the last cleared wave.
 --
--- Reglas:
---   * Una corrida a la vez; el claro esta ocupado mientras haya un jugador adentro (no hay dueno
---     guardado que pueda quedar colgado). Si el grupo muere o se retira entero, otro puede entrar.
---   * La marca cuenta oleadas LIMPIAS, no empezadas.
---   * Cada oleada escala con los jugadores en el claro; los jefes no se multiplican.
---   * Premio la primera vez en la semana que un jugador limpia la oleada 5 / 10 / 15 / 20.
+-- Rules:
+--   * One run at a time; occupied while any player is inside.
+--   * Orphan monsters left behind are cleared in ~2 s by Kaelen (camp NPC); start() waits for clean room.
+--   * Score tracks CLEARED waves; weekly ranking breaks ties by fastest run time.
+--   * 20 progressive waves (lvl 25 to 100+), boss every 5; group scaling capped to fit spawns.
+--   * Weekly rewards (coins + small gems) on first weekly clear of waves 5 / 10 / 15 / 20.
 
 -- BEGIN LAYOUT (generado por scripts/map/generate-wave-arena.py)
 ARENA = {x0 = 600, y0 = 205, x1 = 612, y1 = 215, z = 7}
@@ -26,58 +26,78 @@ SPAWNS = {{x = 606, y = 206, z = 7}, {x = 603, y = 205, z = 7}, {x = 609, y = 20
 
 UID_START, UID_RANK, UID_NEXT, UID_RETIRE = 7100, 7101, 7102, 7103
 
-STORAGE_WEEK = 9300       -- semana de las marcas guardadas
-STORAGE_BEST_WEEK = 9301  -- mejor oleada limpia de la semana
-STORAGE_BEST_ALL = 9302   -- mejor oleada limpia historica
-STORAGE_RUN_WAVE = 9303   -- oleada en curso de la corrida (respaldo si se recarga el script)
-STORAGE_REWARD = 9310     -- 9310 + i: semana en que cobro el premio REWARDS[i]
+STORAGE_WEEK = 9300            -- monotonic Monday-UTC week id
+STORAGE_BEST_WEEK = 9301       -- best cleared wave this week
+STORAGE_BEST_ALL = 9302        -- all-time best cleared wave
+STORAGE_RUN_WAVE = 9303        -- active wave (reload fallback + read by Kaelen for HUD)
+STORAGE_BEST_WEEK_TIME = 9304  -- fastest time (seconds) for STORAGE_BEST_WEEK
+STORAGE_RUN_START = 9305       -- os.time() when current run started (reload fallback)
+STORAGE_REWARD = 9310          -- 9310 + i - 1: week id when REWARDS[i] was claimed
 
 RANK_FILE = "data/logs/wave_arena_rank.json"
 MAX_RANK = 10
-MSG = 22 -- MSG_INFO
+MAX_PACK_MOBS = 14             -- never exceed the 15 pack spots in SPAWNS[2..16]
+MSG = 22                       -- MSG_INFO
 EFFECT_TELEPORT, EFFECT_WAVE = 11, 12
 
--- {boss = jefe (no escala), pack = {{nombre, cantidad base}, ...}}
+-- Strictly escalating 20-wave lineup (1-player base, no rage variants):
+--   1-5:   Jungle & Frontier (lvl 25-40)  | Boss 5:  Red Kongra
+--   6-10:  Ruins & Swamp (lvl 40-65)      | Boss 10: Giant Spider
+--   11-15: Beasts & Dragons (lvl 65-85)   | Boss 15: Behemoth
+--   16-20: Abyss & Deep Jungle (85-110+)  | Boss 20: Old Widow
 WAVES = {
-	{pack = {{"Rat", 3}, {"Cave Rat", 2}}},
-	{pack = {{"Wolf", 3}, {"Snake", 2}}},
-	{pack = {{"Hyaena", 2}, {"Poison Spider", 2}}},
-	{pack = {{"Centipede", 2}, {"Larva", 2}, {"Scorpion", 1}}},
-	{boss = "Tarantula", pack = {{"Poison Spider", 3}}},
-	{pack = {{"Orc Spearman", 2}, {"Orc Warrior", 2}}},
-	{pack = {{"Bandit", 2}, {"Smuggler", 2}}},
-	{pack = {{"War Wolf", 3}, {"Bear", 1}}},
-	{pack = {{"Amazon", 2}, {"Valkyrie", 2}}},
-	{boss = "Orc Leader", pack = {{"Orc Berserker", 1}, {"Orc Shaman", 2}}},
-	{pack = {{"Lion", 2}, {"Tiger", 2}}},
-	{pack = {{"Dworc Fleshhunter", 2}, {"Dworc Venomsniper", 2}, {"Dworc Voodoomaster", 1}}},
-	{pack = {{"Stalker", 2}, {"Hunter", 2}}},
-	{pack = {{"Terror Bird", 2}, {"Crocodile", 2}}},
-	{boss = "Lizard Templar", pack = {{"Kongra", 2}, {"Sibang", 1}}},
-	{pack = {{"Mummy", 2}, {"Ghoul", 2}}},
-	{pack = {{"Carniphila", 2}, {"Lizard Sentinel", 2}}},
-	{pack = {{"Gazer", 2}, {"Lizard Snakecharmer", 1}, {"Assassin", 2}}},
-	{pack = {{"Blue Djinn", 2}, {"Lizard Templar", 1}}},
-	{boss = "Giant Spider", pack = {{"Tarantula", 2}}},
+	{pack = {{"Orc Warrior", 2}, {"Orc Spearman", 2}, {"Minotaur", 1}}},
+	{pack = {{"Minotaur Guard", 2}, {"Minotaur Archer", 2}, {"Minotaur Mage", 1}}},
+	{pack = {{"Tarantula", 3}, {"Terror Bird", 2}}},
+	{pack = {{"Cyclops", 2}, {"Dwarf Guard", 2}, {"Cyclops Drone", 1}}},
+	{boss = "Red Kongra", pack = {{"Kongra", 2}, {"Sibang", 2}}},
+	{pack = {{"Lizard Templar", 2}, {"Lizard Sentinel", 2}, {"Lizard Snakecharmer", 1}}},
+	{pack = {{"Vampire", 2}, {"Demon Skeleton", 2}, {"Necromancer", 1}}},
+	{pack = {{"Ancient Scarab", 2}, {"Scarab", 2}}},
+	{pack = {{"Dragon", 2}, {"Wyvern", 1}}},
+	{boss = "Giant Spider", pack = {{"Crystal Spider", 1}, {"Tarantula", 2}}},
+	{pack = {{"Hero", 1}, {"Black Knight", 1}, {"Undead Gladiator", 1}}},
+	{pack = {{"Bog Raider", 2}, {"Mutated Tiger", 2}}},
+	{pack = {{"Dragon Lord", 2}, {"Dragon", 1}}},
+	{pack = {{"Hydra", 2}, {"Emerald Scarab", 1}}},
+	{boss = "Behemoth", pack = {{"Dragon Lord", 2}}},
+	{pack = {{"Frost Dragon", 2}, {"Ice Spider", 1}, {"Ice Monk", 1}}},
+	{pack = {{"Black Dragon", 2}, {"Hellhound", 2}}},
+	{pack = {{"Warlock", 2}, {"Lich", 1}, {"Banshee", 1}}},
+	{pack = {{"Dark Hydra", 2}, {"Behemoth", 1}}},
+	{boss = "Old Widow", pack = {{"Dark Hydra", 1}, {"Hydra", 1}}},
 }
 
--- Premio por oleada limpia, una vez por semana por jugador: {oleada, itemid, cantidad, texto}
+-- Weekly milestone rewards (once per week per player): coins + small gems.
 REWARDS = {
-	{5, 2152, 5, "5 platinum coins"},
-	{10, 2152, 15, "15 platinum coins"},
-	{15, 2152, 30, "30 platinum coins"},
-	{20, 2160, 1, "1 crystal coin"},
+	{wave = 5,  items = {{2152, 10}, {2149, 1}}, text = "10 platinum coins and 1 small emerald"},
+	{wave = 10, items = {{2152, 30}, {2146, 2}}, text = "30 platinum coins and 2 small sapphires"},
+	{wave = 15, items = {{2160, 1},  {2147, 3}}, text = "1 crystal coin and 3 small rubies"},
+	{wave = 20, items = {{2160, 3},  {2145, 5}}, text = "3 crystal coins and 5 small diamonds"},
 }
 
--- Oleada en curso (0 = sin corrida). Se pierde al recargar: se recupera de STORAGE_RUN_WAVE.
+-- In-memory run state (mirrored in STORAGE_RUN_WAVE / STORAGE_RUN_START).
 if not WaveRun then
-	WaveRun = {wave = 0}
+	WaveRun = {wave = 0, startedAt = 0}
 end
 
--------------------------------------------------------------------- utilidades
+-------------------------------------------------------------------- helpers
 
+-- Monotonic week starting Monday 00:00 UTC (never splits mid-week on Jan 1).
 local function weekId()
-	return tonumber(os.date("%Y%W"))
+	return math.floor((os.time() - 345600) / 604800)
+end
+
+local function formatDuration(sec)
+	if not sec or sec <= 0 then
+		return "--"
+	end
+	local m = math.floor(sec / 60)
+	local s = math.fmod(sec, 60)
+	if m > 0 then
+		return m .. "m " .. s .. "s"
+	end
+	return s .. "s"
 end
 
 local function inBox(pos, box)
@@ -86,7 +106,6 @@ local function inBox(pos, box)
 		and pos.y >= box.y0 and pos.y <= box.y1
 end
 
--- {players = {uid...}, monsters = n}: criaturas dentro de una caja.
 local function scan(box)
 	local out = {players = {}, monsters = 0}
 	for x = box.x0, box.x1 do
@@ -126,7 +145,6 @@ local function storage(uid, key)
 	return v
 end
 
--- El que tira + los de la plataforma (sin repetir), hasta `max`. Devuelve grupo y los que no entran.
 local function padGroup(cid, max)
 	local group, left = {cid}, {}
 	local seen = {[getPlayerName(cid)] = true}
@@ -144,7 +162,20 @@ local function padGroup(cid, max)
 	return group, left
 end
 
--------------------------------------------------------------------- ranking (archivo JSON simple)
+-------------------------------------------------------------------- ranking
+
+local function isBetterScore(wave, secs, prevWave, prevSecs)
+	if wave ~= prevWave then
+		return wave > prevWave
+	end
+	if secs <= 0 then
+		return false
+	end
+	if prevSecs <= 0 then
+		return true
+	end
+	return secs < prevSecs
+end
 
 local function rankLoad()
 	local data = {week = weekId(), scores = {}}
@@ -157,10 +188,17 @@ local function rankLoad()
 	if tonumber(string.match(raw, '"week"%s*:%s*(%d+)')) ~= data.week then
 		return data
 	end
-	local block = string.match(raw, '"scores"%s*:%s*%{(.-)%}')
-	if block then
-		for name, score in string.gmatch(block, '"([^"]+)"%s*:%s*(%d+)') do
-			data.scores[name] = tonumber(score)
+	local hasV3 = false
+	for name, w, t in string.gmatch(raw, '"([^"]+)"%s*:%s*%{%s*"wave"%s*:%s*(%d+)%s*,%s*"time"%s*:%s*(%d+)%s*%}') do
+		data.scores[name] = {wave = tonumber(w), time = tonumber(t)}
+		hasV3 = true
+	end
+	if not hasV3 then
+		local block = string.match(raw, '"scores"%s*:%s*%{(.-)%}')
+		if block then
+			for name, score in string.gmatch(block, '"([^"]+)"%s*:%s*(%d+)') do
+				data.scores[name] = {wave = tonumber(score), time = 0}
+			end
 		end
 	end
 	return data
@@ -169,30 +207,37 @@ end
 local function rankSorted(data)
 	local list = {}
 	for n, s in pairs(data.scores) do
-		table.insert(list, {name = n, score = s})
+		table.insert(list, {name = n, wave = s.wave, time = s.time or 0})
 	end
 	table.sort(list, function(a, b)
-		if a.score == b.score then
-			return a.name < b.name
+		if a.wave ~= b.wave then
+			return a.wave > b.wave
 		end
-		return a.score > b.score
+		if a.time ~= b.time then
+			if a.time <= 0 then return false end
+			if b.time <= 0 then return true end
+			return a.time < b.time
+		end
+		return a.name < b.name
 	end)
 	return list
 end
 
-local function rankSave(name, score)
-	if not name or score < 1 then
+local function rankSave(name, wave, elapsed)
+	if not name or wave < 1 then
 		return
 	end
 	local data = rankLoad()
-	if score <= (data.scores[name] or 0) then
+	local prev = data.scores[name]
+	if prev and not isBetterScore(wave, elapsed, prev.wave, prev.time or 0) then
 		return
 	end
-	data.scores[name] = score
+	data.scores[name] = {wave = wave, time = elapsed}
 	local list = rankSorted(data)
 	local parts = {}
 	for i = 1, math.min(MAX_RANK, table.getn(list)) do
-		table.insert(parts, '    "' .. list[i].name .. '": ' .. list[i].score)
+		local e = list[i]
+		table.insert(parts, '    "' .. e.name .. '": {"wave": ' .. e.wave .. ', "time": ' .. e.time .. '}')
 	end
 	local f = io.open(RANK_FILE, "w")
 	if f then
@@ -201,64 +246,93 @@ local function rankSave(name, score)
 	end
 end
 
--------------------------------------------------------------------- marcas y premios
+-------------------------------------------------------------------- records & rewards
 
 local function ensureWeek(uid)
 	if storage(uid, STORAGE_WEEK) ~= weekId() then
 		setPlayerStorageValue(uid, STORAGE_WEEK, weekId())
 		setPlayerStorageValue(uid, STORAGE_BEST_WEEK, 0)
+		setPlayerStorageValue(uid, STORAGE_BEST_WEEK_TIME, 0)
 	end
 end
 
--- Anota `cleared` oleadas limpias para uid: marca semanal/historica, ranking y premios.
-local function record(uid, cleared)
+local function record(uid, cleared, elapsed)
 	if cleared < 1 then
 		return
 	end
 	ensureWeek(uid)
-	if cleared > storage(uid, STORAGE_BEST_WEEK) then
+	local prevWave = storage(uid, STORAGE_BEST_WEEK)
+	local prevTime = storage(uid, STORAGE_BEST_WEEK_TIME)
+	if isBetterScore(cleared, elapsed, prevWave, prevTime) then
 		setPlayerStorageValue(uid, STORAGE_BEST_WEEK, cleared)
-		rankSave(getPlayerName(uid), cleared)
+		setPlayerStorageValue(uid, STORAGE_BEST_WEEK_TIME, elapsed)
+		rankSave(getPlayerName(uid), cleared, elapsed)
 	end
 	if cleared > storage(uid, STORAGE_BEST_ALL) then
 		setPlayerStorageValue(uid, STORAGE_BEST_ALL, cleared)
 	end
 	for i, r in ipairs(REWARDS) do
-		if cleared >= r[1] and storage(uid, STORAGE_REWARD + i - 1) ~= weekId() then
+		if cleared >= r.wave and storage(uid, STORAGE_REWARD + i - 1) ~= weekId() then
 			setPlayerStorageValue(uid, STORAGE_REWARD + i - 1, weekId())
-			doPlayerAddItem(uid, r[2], r[3])
-			doPlayerSendTextMessage(uid, MSG, "Weekly reward for clearing wave " .. r[1] .. ": " .. r[4] .. ".")
+			for _, it in ipairs(r.items) do
+				doPlayerAddItem(uid, it[1], it[2])
+			end
+			doPlayerSendTextMessage(uid, MSG, "Weekly reward for clearing wave " .. r.wave .. ": " .. r.text .. ".")
 		end
 	end
 end
 
--------------------------------------------------------------------- oleadas
+-------------------------------------------------------------------- waves
 
-local function scaled(count, players)
-	return count + math.floor(count * (players - 1) / 2)
+-- Group scaling: +30% per extra player, capped at MAX_PACK_MOBS to fit spawn spots.
+local function scaledPack(w, players)
+	local mult = 1 + 0.30 * math.max(0, players - 1)
+	local counts = {}
+	local total = 0
+	for i, p in ipairs(w.pack) do
+		local c = math.max(1, math.floor(p[2] * mult + 0.5))
+		counts[i] = c
+		total = total + c
+	end
+	while total > MAX_PACK_MOBS do
+		local bestIdx, bestVal = 0, 1
+		for i, c in ipairs(counts) do
+			if c > bestVal then
+				bestVal = c
+				bestIdx = i
+			end
+		end
+		if bestIdx == 0 then
+			break
+		end
+		counts[bestIdx] = counts[bestIdx] - 1
+		total = total - 1
+	end
+	return counts
 end
 
 local function describe(n, players)
 	local w = WAVES[n]
+	local counts = scaledPack(w, players)
 	local parts = {}
 	if w.boss then
 		table.insert(parts, "BOSS " .. w.boss)
 	end
-	for _, p in ipairs(w.pack) do
-		table.insert(parts, scaled(p[2], players) .. " " .. p[1])
+	for i, p in ipairs(w.pack) do
+		table.insert(parts, counts[i] .. " " .. p[1])
 	end
 	return "Wave " .. n .. "/" .. table.getn(WAVES) .. ": " .. table.concat(parts, " + ")
 end
 
--- Invoca la oleada n para `players` jugadores. Devuelve cuantos aparecieron.
 local function spawnWave(n, players)
 	local w = WAVES[n]
+	local counts = scaledPack(w, players)
 	local ok, spot = 0, 2
 	if w.boss and doSummonCreature(w.boss, SPAWNS[1]) ~= 0 then
 		ok = ok + 1
 	end
-	for _, p in ipairs(w.pack) do
-		for _ = 1, scaled(p[2], players) do
+	for i, p in ipairs(w.pack) do
+		for _ = 1, counts[i] do
 			if doSummonCreature(p[1], SPAWNS[spot]) ~= 0 then
 				ok = ok + 1
 			end
@@ -271,31 +345,44 @@ local function spawnWave(n, players)
 	return ok
 end
 
-local function setWave(n, players)
+local function setRunState(n, startedAt, players)
 	WaveRun.wave = n
+	WaveRun.startedAt = startedAt
 	for _, uid in ipairs(players) do
 		setPlayerStorageValue(uid, STORAGE_RUN_WAVE, n)
+		setPlayerStorageValue(uid, STORAGE_RUN_START, startedAt)
 	end
 end
 
--- Oleada en curso; si el script se recargo, se recupera de los jugadores del claro.
-local function currentWave(players)
+local function currentRun(players)
 	if WaveRun.wave == 0 then
 		for _, uid in ipairs(players) do
 			WaveRun.wave = math.max(WaveRun.wave, storage(uid, STORAGE_RUN_WAVE))
 		end
 	end
-	return WaveRun.wave
+	if WaveRun.startedAt == 0 then
+		for _, uid in ipairs(players) do
+			local st = storage(uid, STORAGE_RUN_START)
+			if st > 0 and (WaveRun.startedAt == 0 or st < WaveRun.startedAt) then
+				WaveRun.startedAt = st
+			end
+		end
+	end
+	local elapsed = 0
+	if WaveRun.startedAt > 0 then
+		elapsed = math.max(1, os.time() - WaveRun.startedAt)
+	end
+	return WaveRun.wave, elapsed
 end
 
-local function launch(n, players)
+local function launch(n, startedAt, players)
 	local got = spawnWave(n, table.getn(players))
-	setWave(n, players)
+	setRunState(n, startedAt, players)
 	tellAll(players, describe(n, table.getn(players)) .. " (" .. got .. " summoned).")
 	return got
 end
 
--------------------------------------------------------------------- palancas
+-------------------------------------------------------------------- levers
 
 local function start(cid)
 	if not inBox(getPlayerPosition(cid), CAMP) then
@@ -304,8 +391,13 @@ local function start(cid)
 	end
 	local inside = scan(ARENA)
 	if table.getn(inside.players) > 0 then
-		doPlayerSendCancel(cid, "Run in progress for " .. names(inside.players) ..
-			" (wave " .. currentWave(inside.players) .. ").")
+		local w = currentRun(inside.players)
+		doPlayerSendCancel(cid, "Run in progress by " .. names(inside.players) ..
+			" (wave " .. w .. "/" .. table.getn(WAVES) .. ").")
+		return
+	end
+	if inside.monsters > 0 then
+		doPlayerSendCancel(cid, "The clearing is resetting from the previous run. Try again in 2 seconds.")
 		return
 	end
 
@@ -314,14 +406,12 @@ local function start(cid)
 		doTeleportThing(uid, ARRIVALS[i])
 	end
 	doSendMagicEffect(ARRIVALS[1], EFFECT_TELEPORT)
-	if inside.monsters > 0 then
-		tellAll(group, "There were " .. inside.monsters .. " monsters left from an earlier run: they count toward wave 1.")
-	end
-	if launch(1, group) == 0 and inside.monsters == 0 then
-		tellAll(group, "Could not summon monsters. Please contact a GM.")
+	local now = os.time()
+	if launch(1, now, group) == 0 then
+		tellAll(group, "Could not summon monsters. Please notify a GM.")
 	end
 	if table.getn(group) > 1 then
-		doPlayerSendTextMessage(cid, MSG, "Group: " .. names(group) .. ". Waves scale with your group.")
+		doPlayerSendTextMessage(cid, MSG, "Group: " .. names(group) .. ". Waves scale with group size.")
 	end
 	for _, uid in ipairs(left) do
 		doPlayerSendCancel(uid, "Group full (max " .. table.getn(ARRIVALS) .. ").")
@@ -334,28 +424,35 @@ local function nextWave(cid)
 	end
 	local s = scan(ARENA)
 	if s.monsters > 0 then
-		doPlayerSendCancel(cid, "There are " .. s.monsters .. " monster(s) remaining. Clear the area first.")
+		doPlayerSendCancel(cid, s.monsters .. " monster(s) remaining. Clear the arena first.")
 		return
 	end
-	local cleared = currentWave(s.players)
+	local cleared, elapsed = currentRun(s.players)
+	local startedAt = WaveRun.startedAt
+	if startedAt <= 0 then
+		startedAt = os.time()
+	end
 	if cleared > 0 and cleared < table.getn(WAVES) then
-		tellAll(s.players, "Wave " .. cleared .. " cleared.")
+		tellAll(s.players, "Wave " .. cleared .. " cleared (" .. formatDuration(elapsed) .. ").")
 	end
 	for _, uid in ipairs(s.players) do
-		record(uid, cleared)
+		record(uid, cleared, elapsed)
 	end
 
 	if cleared >= table.getn(WAVES) then
-		tellAll(s.players, "You cleared all " .. table.getn(WAVES) .. " waves of the Jungle Clearing!")
+		tellAll(s.players, "You completed all " .. table.getn(WAVES) ..
+			" waves of the Jungle Clearing in " .. formatDuration(elapsed) .. "!")
 		for _, uid in ipairs(s.players) do
 			setPlayerStorageValue(uid, STORAGE_RUN_WAVE, 0)
+			setPlayerStorageValue(uid, STORAGE_RUN_START, 0)
 			doTeleportThing(uid, CAMP_LANDING)
 		end
 		doSendMagicEffect(CAMP_LANDING, EFFECT_TELEPORT)
 		WaveRun.wave = 0
+		WaveRun.startedAt = 0
 		return
 	end
-	launch(cleared + 1, s.players)
+	launch(cleared + 1, startedAt, s.players)
 	doSendMagicEffect(getPlayerPosition(cid), EFFECT_WAVE)
 end
 
@@ -364,37 +461,54 @@ local function retire(cid)
 		return
 	end
 	local s = scan(ARENA)
-	local wave = currentWave(s.players)
+	local wave, elapsed = currentRun(s.players)
 	local cleared = wave
 	if s.monsters > 0 then
 		cleared = wave - 1
 	end
-	record(cid, cleared)
+	record(cid, cleared, elapsed)
 	setPlayerStorageValue(cid, STORAGE_RUN_WAVE, 0)
+	setPlayerStorageValue(cid, STORAGE_RUN_START, 0)
 	doTeleportThing(cid, CAMP_LANDING)
 	doSendMagicEffect(CAMP_LANDING, EFFECT_TELEPORT)
-	doPlayerSendTextMessage(cid, MSG, "You retired with " .. math.max(cleared, 0) .. " cleared wave(s).")
+	doPlayerSendTextMessage(cid, MSG, "You retired with " .. math.max(cleared, 0) ..
+		" cleared wave(s) (" .. formatDuration(elapsed) .. ").")
 	if table.getn(s.players) <= 1 then
 		WaveRun.wave = 0
+		WaveRun.startedAt = 0
 	end
 end
 
 local function showRank(cid)
 	ensureWeek(cid)
 	local data = rankLoad()
-	doPlayerSendTextMessage(cid, MSG, "Wave Arena - ranking for week " .. data.week ..
-		". Your best: " .. storage(cid, STORAGE_BEST_WEEK) .. " (weekly) / " ..
-		storage(cid, STORAGE_BEST_ALL) .. " (all-time).")
+	local bestWeek = storage(cid, STORAGE_BEST_WEEK)
+	local bestTime = storage(cid, STORAGE_BEST_WEEK_TIME)
+	local bestStr = tostring(bestWeek)
+	if bestWeek > 0 and bestTime > 0 then
+		bestStr = bestStr .. " (" .. formatDuration(bestTime) .. ")"
+	end
+	doPlayerSendTextMessage(cid, MSG, "Wave Arena - weekly ranking. Your best: " .. bestStr ..
+		" (weekly) / " .. storage(cid, STORAGE_BEST_ALL) .. " (all-time).")
 	local list = rankSorted(data)
 	if table.getn(list) == 0 then
 		doPlayerSendTextMessage(cid, MSG, "No scores this week. Be the first!")
 	end
 	for i = 1, math.min(5, table.getn(list)) do
-		doPlayerSendTextMessage(cid, MSG, i .. ") " .. list[i].name .. " - wave " .. list[i].score)
+		local e = list[i]
+		local line = i .. ") " .. e.name .. " - wave " .. e.wave
+		if e.time > 0 then
+			line = line .. " (" .. formatDuration(e.time) .. ")"
+		end
+		doPlayerSendTextMessage(cid, MSG, line)
 	end
 	local s = scan(ARENA)
 	if table.getn(s.players) > 0 then
-		doPlayerSendTextMessage(cid, MSG, "In the clearing: " .. names(s.players) .. " (wave " .. currentWave(s.players) .. ").")
+		local w = currentRun(s.players)
+		doPlayerSendTextMessage(cid, MSG, "In the clearing: " .. names(s.players) ..
+			" (wave " .. w .. "/" .. table.getn(WAVES) .. ", " .. s.monsters .. " alive).")
+	elseif s.monsters > 0 then
+		doPlayerSendTextMessage(cid, MSG, "The clearing is resetting (" .. s.monsters .. " monster(s)). Free shortly.")
 	else
 		doPlayerSendTextMessage(cid, MSG, "The clearing is free.")
 	end

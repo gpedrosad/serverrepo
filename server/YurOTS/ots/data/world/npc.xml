@@ -21,7 +21,9 @@
 <npc name="Parived" x="133" y="58" z="7" dir="2"/>
 <npc name="Tonka" x="140" y="50" z="7" dir="2"/>
 <npc name="Huntmaster" x="131" y="53" z="6" dir="2"/>
-<!-- Reloj de Arena: Chronos maneja el descanso y las 6 oleadas (docs/gameplay/SAND_CLOCK.md) -->
+<!-- Wave Arena: Kaelen watches the clearing, cleans orphan monsters, and shows live HUD (docs/gameplay/WAVE_ARENA.md) -->
+<npc name="Kaelen" x="603" y="220" z="7" dir="2"/>
+<!-- Sand Clock: Chronos runs the 6-wave dynamic time attack (docs/gameplay/SAND_CLOCK.md) -->
 <npc name="Chronos" x="605" y="320" z="6" dir="2"/>
 
 <npc name="Orlan" x="127" y="49" z="4" dir="1"/>

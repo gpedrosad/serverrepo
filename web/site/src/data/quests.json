@@ -445,30 +445,34 @@
       "id": "wave-arena",
       "name": "Wave Arena",
       "type": "arena",
-      "level_label": "40-100",
-      "level_min": 40,
+      "level_label": "25-100+",
+      "level_min": 25,
       "players": "1-7",
       "where": "Claro de la Selva (portal templo 166,47,7)",
-      "reward": "5/15/30 platinum y 1 crystal al limpiar 5/10/15/20",
-      "note": "20 oleadas; premio semanal.",
+      "reward": "Oro y gemas pequeñas al limpiar 5/10/15/20",
+      "note": "20 oleadas progresivas; ranking semanal por oleada y tiempo.",
       "chests": 0,
       "reward_ids": [
         2152,
-        2160
+        2160,
+        2145
       ]
     },
     {
       "id": "sand-clock",
       "name": "Reloj de Arena",
       "type": "arena",
-      "level_label": "40-100",
-      "level_min": 40,
+      "level_label": "45-90+",
+      "level_min": 45,
       "players": "1-7",
       "where": "Reloj de Arena (portal templo 168,47,7)",
-      "reward": "Exp y loot de las oleadas",
-      "note": "6 oleadas cada 6:30; entra en el descanso.",
+      "reward": "10.000 gp, 40.000 exp y 2 gemas pequeñas (diario)",
+      "note": "6 oleadas contrarreloj; cada oleada limpia suma arena y pasa en 5 s.",
       "chests": 0,
-      "reward_ids": []
+      "reward_ids": [
+        2160,
+        2145
+      ]
     },
     {
       "id": "crucible",

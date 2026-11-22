@@ -1,37 +1,59 @@
-# Chronos: jugadores dentro de la sala, cambio de fase y sala vacía
-pos 1001 338 390 6
-pos 1002 340 392 6
-think 5
-advance 115
-think 10
-advance 120
-think 3
-say 1001 hi
-say 1001 time
-say 1001 fase
+# Chronos v2: contrarreloj dinamico en la sala real (600-610, 320-328, z=6)
+# 1) Sala vacia (IDLE): no spawnea nada
 far 1001
 far 1002
-advance 300
+think 3
+# 2) Entra 1001 con un summon propio (Demon Skeleton) -> arranca PREP (15 s)
+spawn 604 326 6 Demon Skeleton
+pos 1001 605 327 6
+think 1
+# 3) Cuenta regresiva de PREP hasta oleada 1 (Dunas)
+think 15
+# 4) Combate oleada 1 (3 s) y limpia manteniendo el Demon Skeleton del jugador
+think 3
+killmobs Demon Skeleton
+think 1
+# 5) Pausa BETWEEN (5 s) -> oleada 2 (Horda) -> limpia en 2 s
 think 5
-# Ciclo completo: descanso -> oleadas 1..6 -> descanso, con los jugadores dentro
-pos 1001 338 394 6
-pos 1002 337 394 6
+think 2
+killmobs Demon Skeleton
 think 1
-advance 60
+# 6) Oleada 3 (Escarabajos) -> limpia en 2 s
+think 5
+think 2
+killmobs Demon Skeleton
 think 1
-advance 60
+# 7) Oleada 4 (Necropolis) -> limpia en 2 s
+think 5
+think 2
+killmobs Demon Skeleton
 think 1
-advance 60
+# 8) Entra 1002 tarde en oleada 5 (solo presenciara 2/3 oleadas minimas)
+pos 1002 606 327 6
+think 5
+think 2
+killmobs Demon Skeleton
 think 1
-advance 60
+# 9) Oleada 6 (Guardian del Tiempo: Demon) -> VICTORIA! 1001 cobra premio diario, 1002 no
+think 5
+think 3
+killmobs Demon Skeleton
 think 1
-advance 60
-think 1
-advance 60
-think 1
-advance 60
-think 1
+# 10) Dialogo con Chronos tras ganar (cerca del NPC en el harness)
+near 1001
+say 1001 hi
+say 1001 record
+say 1001 premios
+say 1001 estado
 say 1001 bye
-say 1002 hi
-say 1002 oleada
-say 1002 reglas
+# 11) Salen ambos -> vuelve a IDLE y limpia la sala
+far 1001
+far 1002
+think 2
+# 12) Nueva ronda y timeout (se acaba la arena de 90 s sin matar la oleada 1)
+pos 1001 605 327 6
+think 16
+think 90
+# 13) Sale durante cooldown -> vuelve a IDLE
+far 1001
+think 2

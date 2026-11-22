@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<npc name="Kaelen" script="data/npc/scripts/kaelen.lua" access="3">
+	<look type="129" head="78" body="82" legs="114" feet="76"/>
+</npc>

@@ -1,0 +1,34 @@
+# Kaelen: vigia del Claro de la Selva (600-612, 205-215, z=7)
+# 1) Monstruos huerfanos sin jugadores -> Kaelen limpia tras 2 ticks
+far 1001
+far 1002
+spawn 606 206 7 Dragon Lord
+spawn 603 205 7 Dragon
+think 1
+think 1
+# 2) Jugador entra al claro en oleada 5 con 2 monstruos -> HUD muestra 2 restantes
+storage 1001 9303 5
+pos 1001 606 214 7
+spawn 606 206 7 Red Kongra
+spawn 603 205 7 Kongra
+think 2
+# 3) Mata los monstruos -> HUD limpia + aviso rojo unico
+killmobs
+think 2
+# 4) Pasa a oleada 20 y la limpia -> aviso especial de victoria
+storage 1001 9303 20
+spawn 606 206 7 Old Widow
+think 1
+killmobs
+think 2
+# 5) Sale/muere dejando 1 monstruo huerfano -> Kaelen limpia tras 2 ticks
+far 1001
+spawn 606 206 7 Hydra
+think 2
+# 6) Dialogo en campamento
+near 1001
+say 1001 hi
+say 1001 reglas
+say 1001 premios
+say 1001 estado
+say 1001 bye

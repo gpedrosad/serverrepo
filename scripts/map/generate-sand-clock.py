@@ -64,7 +64,7 @@ PILLAR, STATUE, BRAZIER = 1549, 1451, 1482
 TORCH_V, LAMP_H = 2061, 2040                          # colgables: pared oeste/este (vertical) y norte
 ATTR_TELE_DEST = 8
 
-SIGN_TEXT = ('SAND CLOCK\n30 s of rest, then six 60 s waves,\neach stronger than the last. Braziers mark the wave.\nEnter during rest to start at wave 1.\nExit: southern portal.')
+SIGN_TEXT = ('SAND CLOCK\n6-wave time attack (90 s starting sand).\nEach cleared wave adds bonus time and advances in 5 s.\nClear all 6 waves for Chronos daily reward.\nExit: southern portal.')
 
 
 def build() -> dict:
