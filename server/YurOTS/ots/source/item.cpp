@@ -423,8 +423,10 @@ bool Item::isAlwaysOnTop() const {
 	return items[id].alwaysOnTop;
 }
 
+// Lo que crea un hechizo (MagicEffectItem: fields, las ollas del Orc Berserker Pot Thrower) no se mueve ni se
+// levanta: en una mochila no desapareceria nunca (checkDecay solo quita items del piso).
 bool Item::isNotMoveable() const {
-	return !items[id].moveable;
+	return !items[id].moveable || dynamic_cast<const MagicEffectItem*>(this) != NULL;
 }
 
 bool Item::isGroundTile() const {
@@ -436,7 +438,7 @@ bool Item::isSplash() const{
 }
 
 bool Item::isPickupable() const {
-	return items[id].pickupable;
+	return items[id].pickupable && dynamic_cast<const MagicEffectItem*>(this) == NULL;
 }
 
 bool Item::isUseable() const{
@@ -836,6 +838,10 @@ std::string Item::getDescription(bool fullDescription) const
 		s << std::endl << "Sorcerers and druids: +1 magic level and -5% elemental damage while worn.";
 	else if(id == ITEM_KILNFIRE_LEGGINGS && fullDescription)
 		s << std::endl << "Sorcerers and druids: +1 magic level and -5% elemental damage while worn.";
+	else if(id == ITEM_SOFT_BOOTS && fullDescription)
+		s << std::endl << "Faster regeneration (+3 HP and +12 MP every 3 s while worn).";
+	else if(id == ITEM_WORN_SOFT_BOOTS && fullDescription)
+		s << std::endl << "Worn out. Use an azure sunstone to recharge (4 hours).";
 	else if(id == ITEM_WAYFARER_BOOTS && fullDescription)
 		s << std::endl << "+20 speed and -5% elemental damage while worn.";
 	else if(id == ITEM_MOSAIC_SHIELD && fullDescription)

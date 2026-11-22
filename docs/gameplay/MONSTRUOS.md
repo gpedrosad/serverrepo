@@ -69,6 +69,11 @@
 | **Tide Priest** | 2026-11-10 | 720 | 620 | propio, look 234 (`tide_priest.py`) | `20170` propio | 6: Epstein Hunts 5, Bridge Tower 1 | sí | [TIDE_PRIEST](TIDE_PRIEST.md) |
 | **Wrath** | 2026-07-17 | 15000 | 12500 | look 137 | `3065` de 7.6 | 1: Tp Gauntlet 1 | no | [ARMAS](ARMAS.md) |
 
+**Orc Berserker Pot Thrower** (y sus versiones angry/enraged/furious): el hechizo `orcb_pot_throw.lua` pone
+ollas (`pot`, server id **2562**) en 3x3 alrededor del objetivo por 10 s. Hasta el 22 nov 2026 ponía el 1775,
+que es un bebedero de madera (`trough`). Lo que crea un hechizo (`MagicEffectItem`) no se puede mover ni
+levantar (`Item::isNotMoveable` / `isPickupable`): una olla en la mochila no desaparecería nunca.
+
 ## Traídos de 8.60 (44)
 
 | Monstruo | Agregado | Vida | Exp | Sprite | Cadáver | En el mapa | Rage | Doc |

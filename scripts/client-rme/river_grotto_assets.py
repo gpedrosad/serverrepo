@@ -15,7 +15,7 @@ SKINS = {source: 20400 + i for i, source in enumerate(SOURCES)}
 
 
 def river_items():
-    return [dict(name="river " + name, server_id=SKINS[source], client_id=5107 + i,
+    return [dict(name="river " + name, server_id=SKINS[source], client_id=5112 + i,
                  prototype=1794, appearance=source, ground_overlay=True,
                  png=f"river_grotto_{source}.png", decor=True, fixed=True,
                  frames=128 if source == 3258 else 16 if source in (231, 104) else 8,

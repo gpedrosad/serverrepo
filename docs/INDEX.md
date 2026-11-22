@@ -113,7 +113,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/HANGABLES.md`](gameplay/HANGABLES.md) | **Tapestries en las paredes**: los ítems `hangable` se cuelgan en paredes con gancho; en las casas se guardan y solo los mueven dueño e invitados. |
 | [`gameplay/AOL_RARES.md`](gameplay/AOL_RARES.md) | **AOL y armas rare no se llevan juntos**: bloqueo al mover y al comprar el AOL; al morir con los dos, el AOL no protege. |
 | [`gameplay/GOLDEN_ACCESSORIES.md`](gameplay/GOLDEN_ACCESSORIES.md) | Golden amulet y golden ring: auto-bank, bonus de oro e interacción entre ambos. |
-| [`gameplay/SOFT_BOOTS.md`](gameplay/SOFT_BOOTS.md) | **Soft Boots (3549):** +3 HP / +12 MP cada 3 s, 4 h de uso → worn (3550); C++ `YUR_SOFT_BOOTS`. |
+| [`gameplay/SOFT_BOOTS.md`](gameplay/SOFT_BOOTS.md) | **Soft Boots (2640):** +3 HP / +12 MP cada 3 s, 4 h de uso → worn (2641), recarga con Azure Sunstone (`20124`). |
 | [`gameplay/NPC_SYSTEM.md`](gameplay/NPC_SYSTEM.md) | **NPCs:** cómo se cargan, componentes de `lib/npc/`, `npcDefine`, recetas, API C++, lista de NPCs y pruebas sin servidor (`scripts/npc/run_npc_tests.py`). |
 | [`gameplay/NPC_CONFIRMATION.md`](gameplay/NPC_CONFIRMATION.md) | Confirmación de transacciones con NPC (anti-misflow). |
 | [`gameplay/SELLER_FLUIDS.md`](gameplay/SELLER_FLUIDS.md) | Sistema de vendedores de fluids/potions. |

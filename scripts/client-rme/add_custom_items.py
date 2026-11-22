@@ -504,6 +504,22 @@ NEW_ITEMS = [
     dict(name="frost mine", server_id=20370, client_id=5106, prototype=1492,
          png="frost_mine_fire.png", decor=True, fixed=True, nodecay=True, frames=2, light=(4, 137),
          descr="Blue fire. It arms after 1 second and fades after 30 seconds."),
+    # Runas clásicas/modernas cuyos client ids originales (3156/3158/3161/3175/3202) se reutilizaron en mapa/cadáveres.
+    dict(name="adevo grav vita", server_id=2269, client_id=5107, prototype=2285,
+         png="wild_growth_rune.png", decor=True,
+         descr=""),
+    dict(name="adori frigo", server_id=2271, client_id=5108, prototype=2311,
+         png="icicle_rune.png", decor=True,
+         descr=""),
+    dict(name="adori mas frigo", server_id=2274, client_id=5109, prototype=2304,
+         png="avalanche_rune.png", decor=True,
+         descr=""),
+    dict(name="adori mas tera", server_id=2288, client_id=5110, prototype=2304,
+         png="stone_shower_rune.png", decor=True,
+         descr=""),
+    dict(name="adori mas vis", server_id=2315, client_id=5111, prototype=2262,
+         png="thunderstorm_rune.png", decor=True,
+         descr=""),
 
 ]
 # Muelle del depot y puentes (nov 2026): barandas, faroles y rampa de madera dibujados por dock_bridge_art.py

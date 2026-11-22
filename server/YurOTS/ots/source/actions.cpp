@@ -1113,6 +1113,10 @@ int ActionScript::luaActionDoTransformItem(lua_State *L)
 	}
 
 	tmpitem->setID(toid);
+	if(toid == ITEM_SOFT_BOOTS)
+		tmpitem->restoreDuration(Item::items[ITEM_SOFT_BOOTS].newTime);
+	else if(toid == ITEM_WORN_SOFT_BOOTS)
+		tmpitem->clearDuration();
 
 	action->game->sendUpdateThing(action->_player,(Position&)tmppos,tmpitem,tmppos.stackpos);
 

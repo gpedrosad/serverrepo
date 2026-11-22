@@ -1,9 +1,9 @@
--- Azure Sunstone (20124): recharges worn soft boots (3550 -> 3549, 4h duration).
+-- Azure Sunstone (20124): recharges worn soft boots (2641 -> 2640, 4h duration).
 -- Boss-only drop; does not overlap with premium runes (20131/20132).
 
 local AZURE_SUNSTONE = 20124
-local WORN_SOFT_BOOTS = 3550
-local SOFT_BOOTS = 3549
+local WORN_SOFT_BOOTS = 2641
+local SOFT_BOOTS = 2640
 
 function onUse(cid, item, frompos, item2, topos)
 	if item.itemid ~= AZURE_SUNSTONE then

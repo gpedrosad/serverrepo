@@ -18,7 +18,7 @@ capturas de una sesión ni simulan la iluminación nocturna del cliente.
 - `scripts/map/generate-river-grotto.py`: geometría y spawns originales; aplica
   `river_grotto_style.py` al final, después de calcular los monstruos.
 - `scripts/client-rme/river_grotto_assets.py`: 15 apariencias nativas, server IDs
-  **20400–20414**, client IDs **5107–5121**, sprites **14900–15155**.
+  **20400–20414**, client IDs **5112–5126**, sprites **14905–15160**.
 - `devtools/zagan-test/custom-sprites/river_grotto_*.png`: copias exactas de los
   píxeles nativos, conservando patrones y todos los cuadros animados.
 - `Tibia.dat`, `Tibia.spr`, ambos OTB y `generated-river-grotto.json`: instalación
@@ -51,7 +51,7 @@ agua completa y dejan esquinas cuadradas. Usar los sprites correctos, no el nomb
 La luz 1397 es decoración azul con el mismo bloqueo de pathfinding que la fogata
 1423; no es un field que cause daño. Corales 4138/4139 no bloquean el paso.
 
-## Comprobaciones y publicación pendiente
+## Comprobaciones
 
 Auditoría estática contra el mapa anterior (`backups/map/river-grotto-before/`):
 1.113 casillas modificadas de 539.253; todas dentro de las 3.956 casillas propias.
@@ -69,7 +69,8 @@ in-game ni se reinició el servidor, respetando la preferencia del usuario.
 Los PNG viven en una carpeta ignorada: al preparar el commit, añadir únicamente
 los 15 `river_grotto_*.png` con `git add -f`, junto con el mapa y assets canónicos.
 
-El cambio está aplicado localmente. Antes de reiniciar la ThinkPad con este mapa
-hay que publicar DAT/SPR y minimapa mediante el flujo oficial del cliente, además
-del backup/deploy habitual. No requiere recompilar C++. Falta autorización de este
-deploy, que es un cambio distinto del deploy previo de Frost Mine.
+El usuario autorizó push, publicación del cliente y deploy el 22 nov 2026.
+Al integrar main aparecieron cinco runas recién publicadas en los client IDs
+5107–5111. Los materiales de la gruta se reasignaron a 5112–5126 y se reinstalaron
+sobre los DAT/SPR/OTB de main, conservando las runas y el MultiUse de Azure Sunstone.
+La publicación de DAT/SPR y minimapa debe preceder al reinicio. No requiere C++.
