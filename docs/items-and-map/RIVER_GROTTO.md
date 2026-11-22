@@ -59,7 +59,8 @@ Se conservaron colisiones, velocidad, paredes, techos, escaleras, retornos, casa
 los 11 lockers. `test-spawn.xml` y `readables.xml` son idénticos byte por byte:
 23 monstruos, 14 grupos, 1.037 casillas transitables y distancia máxima 165.
 Las 15 entradas DAT nuevas no alteran outfits, efectos ni proyectiles; los sprites
-y nodos OTB anteriores siguen idénticos y los píxeles nuevos coinciden con sus bases.
+anteriores siguen idénticos y los píxeles nuevos coinciden con sus bases. Los nodos
+OTB previos se conservan salvo el atributo vacío inválido de cinco runas, explicado abajo.
 
 `generate-river-grotto.py --dry-run` después de aplicar: **0 cambios**.
 `check-map-load.py`: **0 errores**; `scan-map-depots.py`: **11 lockers, depotid 1**;
@@ -80,3 +81,29 @@ por `Could not load items.otb!`. La causa era el atributo DESCR vacío al final 
 las cinco runas nuevas. Se quitó únicamente ese atributo de ambos OTB y se corrigió
 el importador para omitir descripciones vacías; ver
 [importación de ítems](IMPORTAR_ITEM_DE_OTRA_VERSION.md#por-qué-no-con-el-builder-viejo).
+
+## Deploy confirmado — 22 nov 2026
+
+Servidor `bf6c5a4` (mapa `5ac6e30`, assets integrados `566e3bf`), cliente
+[`c682da1`](https://github.com/gpedrosad/clienteretro/commit/c682da19ba20ef164fe15972ac49e9f3c418a8db), ambos pusheados a main.
+Respaldo completo `~/backups/pre-deploy-20261122-180626-river-grotto`, con runtime,
+config, binario, mapa, OTB y assets previos de ambas plataformas.
+
+No hubo solapamientos con cambios locales de otras sesiones; ff-merge limpio.
+Se detuvo el ciclo de reinicios antes de actualizar y se publicó el cliente con
+`publish_client.py`. Durante la verificación se observó un arranque concurrente a
+las 18:07:09 ART: cargó correctamente el commit nuevo y había un jugador conectado.
+La guarda de activación detectó que ya estaba iniciado y no ejecutó otro restart.
+No se recompiló C++ ni se sustituyó el binario.
+
+Publicación: **775 archivos** iguales en Mac/Windows, updater HTTP 8080/8076 y ambos
+ZIPs de descarga (incluido `data.zip` interno). CRC DAT `f1ad3633`, SPR `665939ae`,
+minimapa `63befd4b`. El updater entrega los tres cambios al abrir o pulsar Login.
+
+`Loaded in 1.034 s`, `Retro76 Server Running`, healthy y 0 reinicios automáticos
+desde el arranque correcto; logs sin errores ni warnings desde ese arranque.
+Probe LAN **OK, 11,7 ms** (1 jugador). Hashes del mapa, ambos OTB y DAT/SPR coinciden
+con los publicados. Comparación de snapshots sin diferencias: 1 cuenta, 8 archivos
+de personajes, inventarios, depots, 35 archivos de casas, permisos, houseitems,
+sponsors, config y binario. Lockers: 11 con depotid 1; casas coinciden con el mapa.
+No se ejecutaron suites/bots ni recorrido in-game por indicación del usuario.
