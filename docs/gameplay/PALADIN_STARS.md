@@ -47,8 +47,10 @@ equipo raro. GM: `/i 20211 1`, `/i 20212 1`, `/i 20213 1`.
 
 ## Assets y reproducción
 
-Arte de inventario creado con **ImageGen integrado**, una generación por estrella.
-Fuentes, prompts completos y PNG finales en `devtools/zagan-test/custom-sprites/paladin-stars/`:
+Arte de inventario: **Gale** y **Venom** creadas con **ImageGen integrado**; **Storm Star** redibujada
+en pixel art minimalista estilo Tibia 7.6 (`draw_storm_star()` en `paladin_star_art.py`: shuriken
+diagonal en X de 22×22, 10 colores, contorno oscuro de 1 px, acero cobalto biselado arriba-izquierda y
+núcleo violeta). Fuentes, prompts y PNG finales en `devtools/zagan-test/custom-sprites/paladin-stars/`:
 `prompts.json`, `{gale,venom,storm}-generated.png` y `{gale,venom,storm}.png` (32×32).
 `paladin_star_art.py` compone las estelas y los ocho cuadros de cada impacto con las
 primitivas `Frame/blob/capsule` usadas en los efectos actuales, con alpha 0/255.
@@ -72,6 +74,8 @@ con el buscador canónico de candidatos (sin usos en mapa, loot, scripts o trans
 python3.11 scripts/client-rme/add_paladin_stars.py --prepare --preview docs/gameplay/img/paladin-stars.png
 python3.11 scripts/client-rme/add_paladin_stars.py --apply
 python3.11 scripts/client-rme/add_paladin_stars.py --apply  # verifica idempotencia
+# Para actualizar sprites ya instalados en el lugar sin tocar Tibia.dat ni OTB:
+python3.11 scripts/client-rme/add_paladin_stars.py --prepare --preview docs/gameplay/img/paladin-stars.png --apply --update-sprites
 ```
 
 El importador trabaja solo sobre esta familia, sin requerir el pack Zagan perdido. Respaldo
@@ -168,3 +172,16 @@ compilados se cotejaron por checksum antes de instalar el binario.
 
 Pendiente: revisión visual manual del jugador en Windows y en su sesión habitual. Las pruebas
 nativas se hicieron en Mac y el combate con cuentas sintéticas; no se usaron credenciales reales.
+
+### Actualización visual de Storm Star (22 nov 2026)
+
+Se reemplazó la Storm Star original (8 puntas, 236 colores) por el diseño minimalista estilo
+Tibia 7.6 (`draw_storm_star()` en `paladin_star_art.py`: shuriken diagonal en X de 22×22,
+10 colores). Aplicado en el lugar con `add_paladin_stars.py --prepare --apply --update-sprites`:
+
+- `Tibia.dat` y `items-zagan-test.otb`: **idénticos byte por byte** (sin cambios de IDs ni C++).
+- `Tibia.spr`: mantiene los 15.160 sprites; **15.151 sprites previos idénticos**, solo se
+  reemplazaron en el lugar los 9 sprites propios de Storm Star (`13989` del ítem `3393` y
+  `14030`–`14037` del proyectil 20).
+- Re-ejecución de `add_paladin_stars.py --apply`: 100% idempotente.
+- **Pendiente:** push/merge a `main` y publicar cliente (`publish_client.py`) con autorización de Gonzalo.

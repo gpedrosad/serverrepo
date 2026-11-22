@@ -22,8 +22,93 @@ LIGHT = {'gale': 71, 'venom': 103, 'storm': 161}
 DIRECTIONS = [(x, y) for y in (-1, 0, 1) for x in (-1, 0, 1)]
 
 
+def draw_storm_star() -> Image.Image:
+    """Storm Star minimalista estilo Tibia 7.6: shuriken diagonal en X (22x22, 10 colores).
+
+    Contorno oscuro de 1 px, cuatro cuchillas biseladas con luz arriba-izquierda en acero
+    cobalto y núcleo romboidal violeta eléctrico; sin ruido de downsampling.
+    """
+    outline = (10, 10, 18, 255)
+    cobalt = {
+        '1': (30, 48, 108, 255),
+        '2': (54, 84, 158, 255),
+        '3': (98, 138, 212, 255),
+        '4': (166, 200, 244, 255),
+        '5': (232, 244, 255, 255),
+    }
+    violet = {
+        'd': (58, 32, 126, 255),
+        'v': (132, 82, 234, 255),
+        'l': (198, 170, 255, 255),
+        'w': (248, 244, 255, 255),
+    }
+    img = Image.new('RGBA', (32, 32), (0, 0, 0, 0))
+    pix = img.load()
+    cx, cy = 15.5, 15.5
+    inv = 1.0 / math.sqrt(2)
+    inside: set[tuple[int, int]] = set()
+    for y in range(4, 28):
+        for x in range(4, 28):
+            dx, dy = x - cx, y - cy
+            u = (dx + dy) * inv
+            v = (-dx + dy) * inv
+            au, av = abs(u), abs(v)
+            on_u = au <= 13.6 and av <= max(0.0, (13.6 - au) * 0.34)
+            on_v = av <= 13.6 and au <= max(0.0, (13.6 - av) * 0.34)
+            hub = (au + av) <= 4.5
+            if on_u or on_v or hub:
+                inside.add((x, y))
+
+    for x, y in inside:
+        dx, dy = x - cx, y - cy
+        u = (dx + dy) * inv
+        v = (-dx + dy) * inv
+        au, av = abs(u), abs(v)
+        if abs(dx) + abs(dy) <= 2.4:
+            if dx < 0 and dy < 0:
+                col = violet['w']
+            elif dx + dy <= 0:
+                col = violet['l']
+            else:
+                col = violet['v']
+        elif abs(dx) + abs(dy) <= 3.6:
+            col = violet['d']
+        elif au >= av:
+            if u < 0:
+                if abs(v) < 0.55 and au < 7.5:
+                    col = violet['l'] if au < 5.3 else violet['v']
+                elif v > 0:
+                    col = cobalt['5'] if au > 5.0 else cobalt['4']
+                else:
+                    col = cobalt['4'] if au > 6.5 else cobalt['3']
+            else:
+                if abs(v) < 0.55 and au < 6.5:
+                    col = violet['d']
+                elif v > 0:
+                    col = cobalt['3'] if au > 7.5 else cobalt['2']
+                else:
+                    col = cobalt['2'] if au > 9.5 else cobalt['1']
+        else:
+            if abs(u) < 0.55 and av < 6.8:
+                col = violet['v'] if av < 5.0 else violet['d']
+            elif u < 0:
+                col = cobalt['5'] if av > 6.5 else cobalt['4']
+            else:
+                col = cobalt['2'] if av > 7.5 else cobalt['1']
+        pix[x, y] = col
+
+    for x, y in inside:
+        for nx, ny in ((x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)):
+            if (nx, ny) not in inside and 0 <= nx < 32 and 0 <= ny < 32:
+                pix[nx, ny] = outline
+    return img
+
+
 def prepare(art: Path) -> None:
     for name in PALETTES:
+        if name == 'storm':
+            draw_storm_star().save(art / 'storm.png')
+            continue
         source = Image.open(art / f'{name}-generated.png').convert('RGBA')
         alpha = source.getchannel('A').point(lambda a: 255 if a >= 128 else 0)
         bounds = alpha.getbbox()

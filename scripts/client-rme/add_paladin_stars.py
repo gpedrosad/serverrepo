@@ -20,7 +20,7 @@ sys.path[:0] = [str(HERE), str(HERE.parent)]
 from lib.project_root import project_root
 import add_custom_items as A
 from add_recolor_effects import read_sections
-from add_black_dragon_look import encode_sprite, read_spr, write_spr
+from add_black_dragon_look import _read_thing, encode_sprite, read_spr, write_spr
 from paladin_star_art import LIGHT, impacts, missiles, prepare, preview
 
 ROOT = project_root(HERE)
@@ -44,7 +44,73 @@ def entry(ids: list[int], *, missile=False, light=71) -> bytes:
     return b'\x15' + struct.pack('<HH', 3, light) + bytes([255, *dimensions]) + struct.pack(f'<{len(ids)}H', *ids)
 
 
-def install_effects(things: Path, dry: bool) -> None:
+def _sprite_refs(dat: bytes) -> dict[int, set[str]]:
+    """Mapa sprite_id -> conjunto de entradas DAT que lo referencian."""
+    reader = A.B.DatReader(dat)
+    entries, tail = reader.read_item_entries()
+    counts, fx, mi = read_sections(dat)
+    refs: dict[int, set[str]] = {}
+    for e in entries:
+        for sid in e.sprite_ids:
+            if sid:
+                refs.setdefault(sid, set()).add(f'item:{e.client_id}')
+    pos = len(dat) - len(tail)
+    for oid in range(1, counts[1] + 1):
+        t = _read_thing(dat, pos)
+        pos = t['end']
+        for sid in t['ids']:
+            if sid:
+                refs.setdefault(sid, set()).add(f'outfit:{oid}')
+    assert pos == fx[0]['start']
+    for idx, t in enumerate(fx):
+        for sid in t['ids']:
+            if sid:
+                refs.setdefault(sid, set()).add(f'fx:{idx}')
+    for idx, t in enumerate(mi):
+        for sid in t['ids']:
+            if sid:
+                refs.setdefault(sid, set()).add(f'missile:{idx}')
+    return refs
+
+
+def _replace_spr_records(spr_path: Path, updates: dict[int, bytes], dry: bool) -> None:
+    spr = spr_path.read_bytes()
+    spr_reader = A.B.SprReader(spr)
+    records = [None] + [spr_reader.sprite_raw(i) for i in range(1, spr_reader.sprite_count + 1)]
+    for sid, rec in updates.items():
+        records[sid] = rec
+    if not dry:
+        spr_path.write_bytes(A.B.write_spr(spr_reader.signature, records))
+
+
+def update_item_sprites_in_place(things: Path, dry: bool) -> None:
+    """Reemplaza en el lugar los sprites de los ítems ya instalados sin tocar Tibia.dat."""
+    dat_path, spr_path = things / 'Tibia.dat', things / 'Tibia.spr'
+    dat, spr = dat_path.read_bytes(), spr_path.read_bytes()
+    entries, _ = A.B.DatReader(dat).read_item_entries()
+    by_cid = {e.client_id: e for e in entries}
+    spr_reader = A.B.SprReader(spr)
+    refs = _sprite_refs(dat)
+    updates: dict[int, bytes] = {}
+    for item in ITEMS:
+        cid = item['client_id']
+        cur = by_cid.get(cid)
+        if cur is None or len(cur.sprite_ids) != 1 or cur.sprite_ids[0] == 0:
+            continue
+        sid = cur.sprite_ids[0]
+        rec = A.sprite_records(A.SPRITES / item['png'], 1, 1)[0]
+        if spr_reader.sprite_raw(sid) == rec:
+            continue
+        owners = refs.get(sid, set())
+        if owners != {f'item:{cid}'}:
+            raise SystemExit(f'Sprite {sid} compartido por {sorted(owners)}; no se actualiza en el lugar')
+        updates[sid] = rec
+    if updates:
+        print(f'Ítems actualizados en el lugar en Tibia.spr: {sorted(updates)}')
+        _replace_spr_records(spr_path, updates, dry)
+
+
+def install_effects(things: Path, dry: bool, *, update_sprites: bool = False) -> None:
     dat_path, spr_path = things / 'Tibia.dat', things / 'Tibia.spr'
     dat, spr = dat_path.read_bytes(), spr_path.read_bytes()
     counts, fx, mi = read_sections(dat)
@@ -52,8 +118,13 @@ def install_effects(things: Path, dry: bool) -> None:
     generated = [(name, impacts(name), missiles(name, ART)) for name in LIGHT]
     if counts[2] >= BASE_FX + 3 and counts[3] >= BASE_MISSILES + 3:
         # No basta con contar: evitar confundir otro pack con éste.
+        updates: dict[int, bytes] = {}
+        expected_owner: dict[int, str] = {}
         for i, (name, hits, shots) in enumerate(generated):
-            for t, images, missile in ((fx[BASE_FX+i], hits, False), (mi[BASE_MISSILES+i], shots, True)):
+            for owner, t, images, missile in (
+                (f'fx:{BASE_FX + i}', fx[BASE_FX + i], hits, False),
+                (f'missile:{BASE_MISSILES + i}', mi[BASE_MISSILES + i], shots, True),
+            ):
                 expected = entry(t['ids'], missile=missile, light=LIGHT[name])
                 if dat[t['start']:t['end']] != expected:
                     raise SystemExit(f'El slot {name} está ocupado por otra apariencia')
@@ -63,8 +134,21 @@ def install_effects(things: Path, dry: bool) -> None:
                     else:
                         off = offsets[sid - 1]
                         rec = spr[off:off+5+struct.unpack_from('<H', spr, off+3)[0]]
-                        if rec != encode_sprite(list(image.getdata())):
-                            raise SystemExit(f'El sprite {name}/{sid} difiere de la fuente')
+                        want = encode_sprite(list(image.getdata()))
+                        if rec != want:
+                            if not update_sprites:
+                                raise SystemExit(f'El sprite {name}/{sid} difiere de la fuente')
+                            updates[sid] = want
+                            expected_owner[sid] = owner
+        if updates:
+            refs = _sprite_refs(dat)
+            for sid, owner in expected_owner.items():
+                owners = refs.get(sid, set())
+                if owners != {owner}:
+                    raise SystemExit(f'Sprite {sid} compartido por {sorted(owners)}; no se actualiza en el lugar')
+            print(f'Efectos/proyectiles actualizados en el lugar en Tibia.spr: {sorted(updates)}')
+            _replace_spr_records(spr_path, updates, dry)
+            return
         print('Impactos 44-46 y proyectiles 18-20: ya instalados y verificados')
         return
     if counts[2:] != (BASE_FX, BASE_MISSILES):
@@ -121,6 +205,8 @@ def main() -> int:
     ap.add_argument('--prepare', action='store_true')
     ap.add_argument('--preview', type=Path)
     ap.add_argument('--apply', action='store_true')
+    ap.add_argument('--update-sprites', action='store_true',
+                    help='reemplaza en el lugar sprites ya instalados que difieran de la fuente')
     args = ap.parse_args()
     if args.prepare:
         prepare(ART)
@@ -143,6 +229,8 @@ def main() -> int:
             if not dest.exists():
                 shutil.copy2(path, dest)
     A.NEW_ITEMS = ITEMS
+    if args.update_sprites:
+        update_item_sprites_in_place(args.things, not args.apply)
     print('\n'.join(A.apply_things(args.things, root, not args.apply)))
     # El importador no acepta un árbol ya cargado: usar un archivo temporal,
     # luego comparar bytes, para que el OTB real sea idempotente.
@@ -154,7 +242,7 @@ def main() -> int:
         patch_weapon_shoot(target)
         if args.apply and target.read_bytes() != args.otb.read_bytes():
             args.otb.write_bytes(target.read_bytes())
-    install_effects(args.things, not args.apply)
+    install_effects(args.things, not args.apply, update_sprites=args.update_sprites)
     return 0
 
 
