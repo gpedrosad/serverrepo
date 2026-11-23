@@ -126,6 +126,20 @@ El script hace backup de `test.otbm` y `npc.xml` en
 ya está achicada y Perac ya está movido, no vuelve a tocar nada. Si encuentra el estado a
 medias, aborta.
 
+## Restauración del sector original — 23 nov 2026
+
+Mapa, NPC, ambos OTB y DAT/SPR idénticos a `72abb52`, antes del rediseño.
+Restauración `84d7876` y cliente Mac y Windows `8074eb8` en `main`.
+`publish_client.py` restauró DAT (`9f7f0dbf`), SPR (`c303b4f2`) y minimapa
+(`68175f56`). Los 775 archivos comunes coinciden entre la descarga y el
+actualizador de ambas plataformas.
+
+Respaldo `/home/gonzalo/backups/pre-deploy-20261123-140235-small-street-original`,
+refrescado tras `server-save.sh --now`. Carga de mapa con cero errores, 11 lockers
+en depot 1 y casas alineadas con `houses.xml`. Reinicio ordenado a las 17:03:10 UTC
+y probe OK en 11,3 ms. Se conservaron los datos de jugadores, inventarios y depots.
+Validación estática y de arranque.
+
 ## Historial de versiones retiradas de Small Street
 
 ## Mesones originales y nuevo local de Tonka — 23 nov 2026
