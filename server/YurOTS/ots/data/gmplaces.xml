@@ -40,4 +40,5 @@
 	<place name="demona" x="119" y="130" z="7"/>
 	<place name="amazons" x="75" y="34" z="7"/>
 	<place name="barbarians" x="222" y="25" z="7"/>
+	<place name="depths" x="146" y="94" z="10"/>
 </places>
