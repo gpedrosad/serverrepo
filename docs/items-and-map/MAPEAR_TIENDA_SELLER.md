@@ -41,6 +41,21 @@ El script conserva los atributos de los tiles de casa y comprueba acceso cardina
 desde el camino sur a los dos mostradores. Para aplicar en la ThinkPad se publican
 primero DAT, SPR y minimapa con el actualizador de cliente.
 
+## Publicación del acabado clásico — 23 nov 2026
+
+Arte `331d7a3`, remates y mapa `ee8d36e`, cliente Mac y Windows `69d962f`, todos en
+`main`. `publish_client.py` actualizó DAT (`ce72b6a4`) y SPR (`50d2caa5`). El
+minimapa conserva el CRC `2a54c284`. Los 775 archivos comunes coinciden entre
+las descargas y el actualizador de los puertos 8080 y 8076.
+
+Respaldo `/home/gonzalo/backups/pre-deploy-20261123-133938-seller-market-classic`,
+con copia fresca después del guardado. El avance a `main` integró el registro del
+intercambio de equipo y conservó las notas locales sobre los puertos. El mapa
+validó sin errores, con 11 lockers en depot 1 y las casas alineadas con `houses.xml`.
+El reinicio ordenado activó el acabado a las 16:40:20 UTC. El probe respondió en
+13,5 ms y se conservaron una cuenta, ocho personajes, 35 casas, inventarios y depots.
+Validación estática y de arranque, sin recorrido in-game.
+
 ## Publicación inicial — 23 nov 2026
 
 Arte `5575dd0`, mapa y NPC `80f328f`, cliente Mac y Windows `3add786`, todos en
