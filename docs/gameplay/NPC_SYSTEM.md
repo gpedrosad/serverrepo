@@ -174,7 +174,7 @@ Compra/venta (`buy`, `buyFluidQty`, `buyRuneQty`, `buyItemQty`, `buyItemBackpack
 | Dark Rodo | `runes.lua` | `129,50,6` (la copia de `207,71,7` está comentada en `npc.xml`) | Runas, bp de runas, fluidos, wands/rods | Tienda |
 | Seller ×2 | `seller.lua` | `145,50,7`, `208,80,7` | Suministros, bp de fluidos, armas, equipo knight; compra vials | Tienda |
 | Parived | `parived.lua` | `133,58,7` | Compra gemas y diamantes | Tienda de venta |
-| Tonka | `tonka.lua` | `148,55,7` en Small Street | Canje 20 gemas chicas → 1 grande | Sí/no |
+| Tonka | `tonka.lua` | `140,50,7` | Canje 20 gemas chicas → 1 grande | Sí/no |
 | Orlan | `promote.lua` | `127,49,4` | Promoción (nivel 20, 20k) | Sí/no |
 | The Oracle | `oracle.lua` | `96,207,6` | Vocación y salida de Rookgaard | Diálogo por etapas |
 | Banker | `banker.lua` | `128,55,6` | Balance, depósito, retiro, transferencia | Sí/no |

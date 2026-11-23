@@ -538,8 +538,6 @@ from city_bridge_z6_art import cbz6_items  # noqa: E402
 NEW_ITEMS += cbz6_items()
 from ironbound_bridge_deck import items as ironbound_items  # noqa: E402
 NEW_ITEMS += ironbound_items()
-from seller_market_art import items as seller_market_items  # noqa: E402
-NEW_ITEMS += seller_market_items()
 
 
 def u16(payload: bytes | None) -> int | None:

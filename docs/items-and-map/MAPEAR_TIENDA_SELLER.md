@@ -1,106 +1,8 @@
-# Tienda de Seller y Small Street
+# Tienda del Seller — recorte del fondo sur
 
-El rediseño convierte el edificio y sus seis casas en un conjunto de piedra
-caliza, cerámica jade y cobre. Las casas Small Street I–VI quedan con pisos cálidos
-y ventanas verdes. Seller tiene un mosaico claro, Mad uno verde grisáceo y Perac una
-terraza clara con barandas de cobre. El remate superior usa cerámica verde.
-
-![Small Street y las tiendas de Seller y Tonka por piso](img/tienda-seller/small-street-market.png)
-
-- **Mesones originales.** Seller (`145,50,7`), Mad y Perac recuperan sus mesones
-  nativos con la disposición y exhibiciones anteriores al rediseño. La planta de
-  Seller vuelve a tener el mostrador largo y su remate en L.
-- **Tonka** (`148,55,7`). El local abre al camino sur por la franja `146–149,57,7`.
-  Atiende hacia el sur desde un mostrador de dos casillas (`147–148,56,7`), con
-  balanza, libro y gemas integrados al dibujo. Dos faroles enmarcan el frente y
-  el emblema identifica el local. Conserva su intercambio de gemas.
-- **Small Street I–VI.** Las 27 casillas de casas mantienen sus coordenadas,
-  puertas y atributos. Las piezas nuevas son fijas. Se conservan las escaleras y
-  los displays de Mad y Perac.
-
-El pack exclusivo ocupa **20600–20644** (cliente **6000–6044**). Los pisos usan
-una capa decorativa sobre los suelos existentes para conservar sus velocidades.
-Los alias conservan colisión, proyectiles, orientación y altura de cada prototipo.
-El nuevo local convierte pasto en piso de tienda. El camino tiene una sección
-marcada en la entrada y conserva los flags de protección preexistentes.
-
-```bash
-python3.11 scripts/client-rme/seller_market_art.py
-python3.11 scripts/client-rme/add_custom_items.py \
-  --things devtools/rme/rme-client-760 \
-  --otb server/YurOTS/ots/data/items/items-zagan-test.otb \
-  --otb server/YurOTS/ots/data/items/items.otb --only {20600..20644}
-python3.11 scripts/map/style-seller-market.py
-python3.11 scripts/map/style-seller-market.py --apply
-python3.11 scripts/map/render-seller-market.py
-```
-
-El script conserva los atributos de los tiles de casa y comprueba acceso cardinal
-desde el camino sur a los dos mostradores. Para aplicar en la ThinkPad se publican
-primero DAT, SPR y minimapa con el actualizador de cliente.
-
-## Mesones originales y nuevo local de Tonka — 23 nov 2026
-
-Mapa y NPC `4ed7c9c`, cliente Mac y Windows `de07264` en `main`. Se cotejaron
-33 tramos de mesón con el mapa anterior al rediseño y se comprobó el acceso al
-mostrador de Tonka en `147–148,56,7`. `publish_client.py` actualizó DAT
-(`879c76c7`), SPR (`3da83435`) y minimapa (`47e055c5`). Los 775 archivos comunes
-coinciden entre las descargas y el actualizador.
-
-Respaldo `/home/gonzalo/backups/pre-deploy-20261123-135903-seller-market-tonka`,
-con copia fresca tras `server-save.sh --now`. Se verificó que ningún personaje
-quedara sobre una casilla que recibe mobiliario. Carga sin errores, 11 lockers
-en depot 1 y casas alineadas con `houses.xml`. Reinicio ordenado a las 16:59:51 UTC
-y probe OK en 10,1 ms. Se conservaron una cuenta, ocho personajes, 35 casas,
-inventarios y depots. Validación estática y de arranque.
-
-## Acabado de jade restaurado — 23 nov 2026
-
-Se restauró la versión anterior al acabado clásico a petición de Gonzalo. Mapa
-y gráficos idénticos a la primera publicación del sector. Tonka sigue en `149,55,7`.
-Mapa `e4f6a65` y cliente Mac y Windows `4c8d7d6` en `main`. El actualizador y las
-descargas sirven los CRC originales de DAT (`b67595c8`) y SPR (`0069fd95`). El
-minimapa conserva el CRC `2a54c284`.
-
-Respaldo `/home/gonzalo/backups/pre-deploy-20261123-134820-seller-market-restore`,
-con copia fresca tras `server-save.sh --now`. Validación de mapa sin errores,
-11 lockers en depot 1 y casas alineadas con `houses.xml`. Reinicio ordenado a
-las 16:49:00 UTC y probe OK en 11,6 ms. Se conservaron cuentas, personajes,
-inventarios, casas y depots. Validación estática y de arranque.
-
-## Publicación inicial — 23 nov 2026
-
-Arte `5575dd0`, mapa y NPC `80f328f`, cliente Mac y Windows `3add786`, todos en
-`main`. `publish_client.py` actualizó DAT (`b67595c8`), SPR (`0069fd95`) y minimapa
-(`2a54c284`). Los 775 archivos comunes coinciden en ambas descargas y en el
-actualizador de los puertos 8080 y 8076.
-
-Respaldo `/home/gonzalo/backups/pre-deploy-20261123-132710-seller-market`, con copia
-fresca tras `server-save.sh --now`. El test de carga de mapa dio cero errores,
-los 11 lockers conservan el depot 1 y las casas del mapa coinciden con `houses.xml`.
-`git merge --ff-only` conservó los cambios de otras sesiones. `docker restart -t 45`
-activó el mapa a las 16:28:08 UTC, con cierre ordenado y arranque sin avisos de NPC.
-El probe respondió en 14,6 ms. Se conservaron una cuenta, ocho personajes, 35 casas,
-inventarios, depots y configuración. Validación estática y de arranque, sin pruebas
-in-game.
-
-## Publicación del acabado clásico — 23 nov 2026
-
-Arte `331d7a3`, remates y mapa `ee8d36e`, cliente Mac y Windows `69d962f`, todos en
-`main`. `publish_client.py` actualizó DAT (`ce72b6a4`) y SPR (`50d2caa5`). El
-minimapa conserva el CRC `2a54c284`. Los 775 archivos comunes coinciden entre
-las descargas y el actualizador de los puertos 8080 y 8076.
-
-Respaldo `/home/gonzalo/backups/pre-deploy-20261123-133938-seller-market-classic`,
-con copia fresca después del guardado. El avance a `main` integró el registro del
-intercambio de equipo y conservó las notas locales sobre los puertos. El mapa
-validó sin errores, con 11 lockers en depot 1 y las casas alineadas con `houses.xml`.
-El reinicio ordenado activó el acabado a las 16:40:20 UTC. El probe respondió en
-13,5 ms y se conservaron una cuenta, ocho personajes, 35 casas, inventarios y depots.
-Validación estática y de arranque, sin recorrido in-game.
-
-## Historial del recorte del fondo sur
-
+El mapa actual recupera el edificio y el mobiliario originales anteriores al
+rediseño de Small Street. Tonka volvió a su posición en `140,50,7`. Los cambios
+temporales del sector quedan registrados al final como historial.
 
 La tienda del NPC **Seller** (`145,50,7`) está a la derecha del depot del templo. Se achicó
 recortando las **2 filas del fondo sur** en todos los pisos: pasa de `y46–56` a `y46–54`.
@@ -223,3 +125,65 @@ El script hace backup de `test.otbm` y `npc.xml` en
 `/private/var/folders/.../opencode/shrink-seller-<fecha>/` y es idempotente: si la tienda
 ya está achicada y Perac ya está movido, no vuelve a tocar nada. Si encuentra el estado a
 medias, aborta.
+
+## Historial de versiones retiradas de Small Street
+
+## Mesones originales y nuevo local de Tonka — 23 nov 2026
+
+Mapa y NPC `4ed7c9c`, cliente Mac y Windows `de07264` en `main`. Se cotejaron
+33 tramos de mesón con el mapa anterior al rediseño y se comprobó el acceso al
+mostrador de Tonka en `147–148,56,7`. `publish_client.py` actualizó DAT
+(`879c76c7`), SPR (`3da83435`) y minimapa (`47e055c5`). Los 775 archivos comunes
+coinciden entre las descargas y el actualizador.
+
+Respaldo `/home/gonzalo/backups/pre-deploy-20261123-135903-seller-market-tonka`,
+con copia fresca tras `server-save.sh --now`. Se verificó que ningún personaje
+quedara sobre una casilla que recibe mobiliario. Carga sin errores, 11 lockers
+en depot 1 y casas alineadas con `houses.xml`. Reinicio ordenado a las 16:59:51 UTC
+y probe OK en 10,1 ms. Se conservaron una cuenta, ocho personajes, 35 casas,
+inventarios y depots. Validación estática y de arranque.
+
+## Acabado de jade restaurado — 23 nov 2026
+
+Se restauró la versión anterior al acabado clásico a petición de Gonzalo. Mapa
+y gráficos idénticos a la primera publicación del sector. Tonka sigue en `149,55,7`.
+Mapa `e4f6a65` y cliente Mac y Windows `4c8d7d6` en `main`. El actualizador y las
+descargas sirven los CRC originales de DAT (`b67595c8`) y SPR (`0069fd95`). El
+minimapa conserva el CRC `2a54c284`.
+
+Respaldo `/home/gonzalo/backups/pre-deploy-20261123-134820-seller-market-restore`,
+con copia fresca tras `server-save.sh --now`. Validación de mapa sin errores,
+11 lockers en depot 1 y casas alineadas con `houses.xml`. Reinicio ordenado a
+las 16:49:00 UTC y probe OK en 11,6 ms. Se conservaron cuentas, personajes,
+inventarios, casas y depots. Validación estática y de arranque.
+
+## Publicación inicial — 23 nov 2026
+
+Arte `5575dd0`, mapa y NPC `80f328f`, cliente Mac y Windows `3add786`, todos en
+`main`. `publish_client.py` actualizó DAT (`b67595c8`), SPR (`0069fd95`) y minimapa
+(`2a54c284`). Los 775 archivos comunes coinciden en ambas descargas y en el
+actualizador de los puertos 8080 y 8076.
+
+Respaldo `/home/gonzalo/backups/pre-deploy-20261123-132710-seller-market`, con copia
+fresca tras `server-save.sh --now`. El test de carga de mapa dio cero errores,
+los 11 lockers conservan el depot 1 y las casas del mapa coinciden con `houses.xml`.
+`git merge --ff-only` conservó los cambios de otras sesiones. `docker restart -t 45`
+activó el mapa a las 16:28:08 UTC, con cierre ordenado y arranque sin avisos de NPC.
+El probe respondió en 14,6 ms. Se conservaron una cuenta, ocho personajes, 35 casas,
+inventarios, depots y configuración. Validación estática y de arranque, sin pruebas
+in-game.
+
+## Publicación del acabado clásico — 23 nov 2026
+
+Arte `331d7a3`, remates y mapa `ee8d36e`, cliente Mac y Windows `69d962f`, todos en
+`main`. `publish_client.py` actualizó DAT (`ce72b6a4`) y SPR (`50d2caa5`). El
+minimapa conserva el CRC `2a54c284`. Los 775 archivos comunes coinciden entre
+las descargas y el actualizador de los puertos 8080 y 8076.
+
+Respaldo `/home/gonzalo/backups/pre-deploy-20261123-133938-seller-market-classic`,
+con copia fresca después del guardado. El avance a `main` integró el registro del
+intercambio de equipo y conservó las notas locales sobre los puertos. El mapa
+validó sin errores, con 11 lockers en depot 1 y las casas alineadas con `houses.xml`.
+El reinicio ordenado activó el acabado a las 16:40:20 UTC. El probe respondió en
+13,5 ms y se conservaron una cuenta, ocho personajes, 35 casas, inventarios y depots.
+Validación estática y de arranque, sin recorrido in-game.
