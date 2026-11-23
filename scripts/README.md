@@ -49,6 +49,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | `temple-portals.py` + `portal_citadel_layout.py` + `portal_temple_style.py` + `portal_temple_details.py` + `portal_temple_architecture.py` | Plaza, ocho portales, galería, pórtico y torre sureste con escaleras; `--dry-run` |
 | `validate-portal-citadel.py` | Audita mapa/assets contra `--before`; rutas, teleports y ámbito exacto |
 | `root-crypt.py` | Visual propia de la quest BoH al sur del depot; `--dry-run`, conserva huella/colisión/cofres/teleports |
+| `bridge_rotworm_bank.py` / `render-bridge-rotworms.py` | Ribera con cuatro rotworms bajo el puente principal, entrada suroeste y guardas contra atajos entre orillas; `--dry-run` ([doc](../docs/items-and-map/MAIN_BRIDGE.md)) |
 | `bridge-trap-steps.py` / `render-main-bridge.py` | Puente principal Ironbound en z6: acabado de basalto/bronce y comparación visual, con trazado PvP intacto ([doc](../docs/items-and-map/MAIN_BRIDGE.md)) |
 | `city-bridge-transitions.py` | Muelle junto al depot y puentes de madera (`BRIDGES`): barandas, faroles y rampa de `client-rme/dock_bridge_art.py`; saca cuerdas y wild growth; `--dry-run`, conserva huella y escaleras |
 | `find-wood-bridges.py` | Lista madera transitable junto al agua (puentes, muelles, barcos) para elegir dónde poner barandas; `--z` |

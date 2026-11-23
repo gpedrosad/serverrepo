@@ -159,7 +159,7 @@ Importación de items, mapeo por código, items de prueba, sesiones de editor.
 |-----|-----------------------|
 | [`items-and-map/IMPORTAR_ITEM_DESDE_IMAGEN.md`](items-and-map/IMPORTAR_ITEM_DESDE_IMAGEN.md) | Si un item nuevo no entra o se ve mal: pipeline de import desde imagen. |
 | [`items-and-map/PLAZA_ARCANA.md`](items-and-map/PLAZA_ARCANA.md) | Plaza, galería y torres de basalto/cian; entrada, faroles y rejas propios, fuentes y vistas previas. |
-| [`items-and-map/MAIN_BRIDGE.md`](items-and-map/MAIN_BRIDGE.md) | Puente principal Ironbound (141,65,6): basalto, hierro/bronce, pasos PvP de 1 sqm preservados, sprites propios y comparación visual. |
+| [`items-and-map/MAIN_BRIDGE.md`](items-and-map/MAIN_BRIDGE.md) | Puente principal Ironbound (141,65,6): basalto, hierro/bronce, pasos PvP de 1 sqm preservados, sprites propios y ribera de cuatro rotworms con entrada suroeste. |
 | [`items-and-map/TRANSICIONES_DEPOT.md`](items-and-map/TRANSICIONES_DEPOT.md) | Muelle junto al depot y 8 puentes de madera: barandas, faroles y rampa dibujados (20282–20300, `dock_bridge_art.py`), conservando trazado y paso. |
 | [`items-and-map/PIEZAS_DE_MAPA.md`](items-and-map/PIEZAS_DE_MAPA.md) | **Cómo usar paredes, escaleras y muebles en un generador de mapa:** muebles de dos piezas (ataúdes, bancos), sillas por dirección, mesas enteras, regla de piezas de pared y llegada de escaleras. `render-pieces.py` para mirarlas antes. **Puente principal de la ciudad (z6, `141,65,6`)**: puente de referencia documentado (barandas 3D, faroles, pasos de 1 sqm). |
 | [`items-and-map/RIVER_GROTTO.md`](items-and-map/RIVER_GROTTO.md) | Submerged River Grotto: agua animada, arena y corales; apariencias exclusivas que conservan colisiones/velocidad y vistas previas. |

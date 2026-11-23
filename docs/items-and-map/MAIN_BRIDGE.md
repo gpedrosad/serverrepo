@@ -85,3 +85,45 @@ Implementado en el repositorio, pendiente de publicar el cliente y deploy. No se
 hicieron suites, bots o pruebas in-game, respetando la preferencia del usuario.
 Antes del deploy: publicar el cliente, respaldo runtime y reinicio ordenado según
 [ThinkPad](../systems/THINKPAD_TEST_SERVER.md), con autorización del usuario.
+
+## Ribera de rotworms bajo el puente — 23 nov 2026
+
+Gonzalo autorizó push/deploy y pidió rotworms en el agua bajo el puente, con entrada
+por el lado izquierdo sur. Se añadió una pequeña ribera de tierra en **z7**, con
+acceso desde **135,73,7**. Cuatro **Rotworms** normales, respawn **90 s**, radio 2;
+sus posiciones son 136,69 / 140,67 / 143,69 / 142,65.
+
+![Ribera y puente con sus sprites reales](img/main-bridge/rotworm-overview.png)
+
+La ribera ocupa 76 casillas, con **36 transitables**, 37 de costa y tres pilares
+existentes. Se conservan los ocho pilares y sus posiciones; el paso rodea los
+cimientos. Hay manchas de tierra con bordes nativos y agua alrededor. La única
+conexión con suelo existente es la boca suroeste: no se une a la ciudad por el
+norte ni crea un atajo para evitar los dos segmentos PvP del puente.
+
+`bridge_rotworm_bank.py` valida que todos los suelos libres se alcancen desde la
+entrada, que el contacto con otras orillas quede exclusivamente en x133–137,y73,
+y que los monstruos estén separados y lejos de la boca. La costa usa 4526 con
+4644–4655, como las orillas vecinas. **4526 solo no bloquea**: lo hace el borde
+costero; por eso se verifica la colisión completa, no solo el nombre del suelo.
+No hay objetos decorativos en el agua ni en las piezas de costa nuevas.
+
+- `scripts/map/bridge_rotworm_bank.py`: terreno y bloque `IRONBOUND_ROTWORMS` de
+  `test-spawn.xml`; guarda propiedad/originales en `generated-bridge-rotworms.json`.
+- `scripts/map/render-bridge-rotworms.py`: vista a nivel de la ribera y con el puente
+  superior, usando el look nativo 26 de los rotworms.
+- `test.otbm`: 76 casillas adicionales, solo en la ribera; **ningún tile z6 cambia**.
+- `test-spawn.xml`: cuatro spawns nuevos; el texto previo se recupera exactamente
+  al quitar el bloque propio. No se cambian monstruos, NPCs, escaleras ni casas.
+
+```bash
+python3.11 scripts/map/bridge_rotworm_bank.py --dry-run
+python3.11 scripts/map/bridge_rotworm_bank.py
+python3.11 scripts/map/render-bridge-rotworms.py
+```
+
+Segunda pasada: 0 cambios de mapa/spawns. Auditoría de frontera y conectividad OK;
+todos los tiles del puente, sus cuatro trampillas, 50 anclas, casas y 11 lockers
+idénticos a la versión Ironbound preparada. La obstrucción de proyectiles de todo
+el mapa sigue idéntica. El terreno previamente transitable no se bloquea: solo se
+habilita el bolsillo de ribera. No requiere assets adicionales ni recompilar C++.
