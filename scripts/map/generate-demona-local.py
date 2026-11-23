@@ -3,6 +3,8 @@
 
 Entrada junto al lado oeste de la Torre del Mago Oscuro (119,129,7):
   z7   agujero 469 en 119,129,7 (salida sur 119,130,7 libre) + cartel 1429 en 118,128,7
+       + puerta 1220 en la pared oeste de la torre (120,130,7): la franja de pasto de la entrada queda
+       encerrada entre el río y la torre, así que se llega cruzando la torre (puerta este 128,128,7)
   z8   corredor de piedra (119,129 -> 119,134) sorteando la lava de z9 (y <= 130)
   z9   antesala 2x2 (119,134 -> 120,134)
   z10  antesala 2x2 (120,134 -> 119,134)
@@ -11,7 +13,7 @@ Entrada junto al lado oeste de la Torre del Mago Oscuro (119,129,7):
        - Ala de Piedra (oeste): Cyclops Smith / Stone Golem -> Behemoths + Wyrms
        - Ala Arcana (este): Priestess / Necromancer -> Warlocks sueltos (separacion 12-13)
 
-Solo ocupa vacio o roca [101] (salvo los 2 tiles de entrada en z7); preserva lo ajeno y es idempotente.
+Solo ocupa vacio o roca [101] (salvo los 3 tiles de entrada en z7: agujero, cartel y puerta); preserva lo ajeno y es idempotente.
 Uso:
   python3.11 scripts/map/generate-demona-local.py --dry-run
   python3.11 scripts/map/generate-demona-local.py
@@ -48,6 +50,7 @@ READABLES = REPO / "server/YurOTS/ots/data/readables.xml"
 
 MOUTH = (119, 129)
 SIGN = (118, 128)
+DOOR = (120, 130)              # acceso: pared oeste de la Torre del Mago Oscuro (1049 -> puerta abierta 1220)
 DOWN8 = (119, 134)
 DOWN9 = (120, 134)
 DOWN10 = (119, 134)
@@ -254,6 +257,7 @@ def build(values, otb):
     surface = {
         (*MOUTH, 7): [469],
         (*SIGN, 7): [4756, 1429],
+        (*DOOR, 7): [4756, 1220],
     }
     cells.update(surface)
 
@@ -306,7 +310,7 @@ def main():
 
     previous = json.loads(MANIFEST.read_text())["cells"] if MANIFEST.exists() else {}
     surf_set = {tuple(p) for p in report["surface"]}
-    orig_surf = {(*MOUTH, 7): [4756], (*SIGN, 7): [4756]}
+    orig_surf = {(*MOUTH, 7): [4756], (*SIGN, 7): [4756], (*DOOR, 7): [4756, 1049]}
     for p, ids in cells.items():
         old = values.get(p)
         owned = previous.get(",".join(map(str, p))) == old
