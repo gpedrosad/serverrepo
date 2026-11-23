@@ -38,6 +38,20 @@ El script conserva los atributos de los tiles de casa y comprueba acceso cardina
 desde el camino sur a los dos mostradores. Para aplicar en la ThinkPad se publican
 primero DAT, SPR y minimapa con el actualizador de cliente.
 
+## Acabado de jade restaurado — 23 nov 2026
+
+Se restauró la versión anterior al acabado clásico a petición de Gonzalo. Mapa
+y gráficos idénticos a la primera publicación del sector. Tonka sigue en `149,55,7`.
+Mapa `e4f6a65` y cliente Mac y Windows `4c8d7d6` en `main`. El actualizador y las
+descargas sirven los CRC originales de DAT (`b67595c8`) y SPR (`0069fd95`). El
+minimapa conserva el CRC `2a54c284`.
+
+Respaldo `/home/gonzalo/backups/pre-deploy-20261123-134820-seller-market-restore`,
+con copia fresca tras `server-save.sh --now`. Validación de mapa sin errores,
+11 lockers en depot 1 y casas alineadas con `houses.xml`. Reinicio ordenado a
+las 16:49:00 UTC y probe OK en 11,6 ms. Se conservaron cuentas, personajes,
+inventarios, casas y depots. Validación estática y de arranque.
+
 ## Publicación inicial — 23 nov 2026
 
 Arte `5575dd0`, mapa y NPC `80f328f`, cliente Mac y Windows `3add786`, todos en
