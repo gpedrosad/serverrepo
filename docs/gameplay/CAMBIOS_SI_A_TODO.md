@@ -106,8 +106,28 @@ Los spots 1, 2 y 3 (Alcantarilla Mutada, Nido de Seda Negra y Cripta de los Ojos
 |---|---|---|---|---|---:|---:|---|---|
 | 4 | **Gruta Submarina del Río** | `176,58,7` (camino del muelle, cartel `177,58,7`) | `/ir grotto` | z8–z11 acceso · z12 | 45–75 | 1.037 | 23 mobs (dens. 45,1): Blood Crab ×2, Quara Constrictor ×1, Water Elemental ×11, Quara Hydromancer ×6, Bog Raider ×3 | `scripts/map/generate-river-grotto.py` |
 | 5 | **Demona Local (Warlocks y Behemoths)** | `119,129,7` (oeste de Torre del Mago Oscuro, cartel `118,128,7`) | `/ir demona` | z8–z11 acceso · z12 (2 alas) | 75–120+ | 1.157 / 1.226 | 41 mobs: **Ala de Piedra** (Cyclops Smith ×2, Stone Golem ×2, Behemoth ×16, Wyrm ×5) · **Ala Arcana** (Priestess ×3, Necromancer ×2, Warlock ×11 sueltos a sep. 13) | `scripts/map/generate-demona-local.py` |
-| 6a | **Campamento de Amazonas** | `75,33,7` (puente norte al oeste del Castillo Imperial, cartel `74,34,7`) | `/ir amazons` | z7 (isla nueva) | 15–30 | 233 | 18 mobs (dens. 12,9): Amazon ×11, Valkyrie ×5, Assassin ×2 | `scripts/map/generate-amazon-camp.py` |
+| 6a | **Campamento de Amazonas** | `75,33,7` (puente de sogas al oeste del Castillo Imperial, cartel `74,34,7`) | `/ir amazons` | z7 (isla nueva) | 15–30 | 200 | 16 mobs (dens. 12,5): Amazon ×8, Valkyrie ×5, Assassin ×3 | `scripts/map/generate-amazon-camp.py` |
 | 6b | **Campamento Bárbaro** | `222,24,7` (costa nevada NE, cartel `224,25,7`) | `/ir barbarians` | z7 (cabo nevado) | 15–40 | 342 | 20 mobs (dens. 17,1): Barbarian Headsplitter ×4, Skullhunter ×6, Brutetamer ×5, Bloodwalker ×4, Frost Giant ×1 | `scripts/map/generate-barbarian-camp.py` |
+
+Revisión visual del campamento de amazonas (22 nov, `generate-amazon-camp.py` v2):
+
+- **Sin vacío negro:** el mar llega hasta x=54 al oeste y hasta y=0. Entre el mar y el bosque del este,
+  en x=114–115, hay una franja de bosque con su costa.
+- **Isla:** es más alta (y=6–21) y de selva (amazonian tree, palmeras, bambú, hojas gigantes).
+- **Sendero:** de tierra, con sus bordes (110–121).
+- **Puente:** de sogas, de 1 de ancho (3756/3757).
+- **Campamento:**
+  - empalizada en punta de x=84–98, y=9–17, con portones al oeste y al este;
+  - tres tiendas abiertas (paredes de tela roja, de piel y a rayas) con heno;
+  - fogata con troncos, leña, barril y caja;
+  - calaveras en estaca en el portón;
+  - un puesto con fogata al este.
+
+Las piezas de costa (4644–4655) **bloquean el paso**: el puente apoya en una punta de 3 de ancho (y=21), así la
+casilla de llegada no lleva costa. Los rincones entre la empalizada y la orilla a los que no se llega se
+llenan de selva.
+
+![Campamento de amazonas v2](../items-and-map/img/amazon-camp.jpg)
 
 Revisión visual de la gruta (22 nov): [arena, agua animada y corales](../items-and-map/RIVER_GROTTO.md), conservando recorrido y spawns.
 

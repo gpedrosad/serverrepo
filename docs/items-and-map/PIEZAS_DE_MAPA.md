@@ -93,6 +93,7 @@ Las paredes de 7.6 se dibujan en el **borde sur y este** de su casilla. La pieza
 | Familia | Vertical | Horizontal | Poste | Esquina | Ventana |
 |---|---|---|---|---|---|
 | Piedra gris (castillo) | 1049 | 1050 | 1051 | 1053 | 1267 horizontal, 1268 vertical |
+| Empalizada en punta (campamento de amazonas) | 3520 | 3512 | 3532 | 3531 | — |
 
 **Suelo de las paredes:** la fila norte y la columna oeste (incluidas las esquinas NO, NE y SO)
 llevan el **suelo de afuera** en planta baja (pasto/dirt) y **sin ground** en pisos altos. La
@@ -205,3 +206,4 @@ Un generador nuevo con muebles tiene que traer las mismas comprobaciones.
 | Spot del Dragón Negro: islas con un lado sin orilla, pasto cortado recto contra el agua (18 nov 2026) | Al elegir la pieza de costa, contar como agua también la de **afuera** de la caja que se escribe (leerla del mapa real), y validar que todo pasto pegado al agua tenga su pieza. Ver [MAPEAR_SPOT_DRAGON.md](MAPEAR_SPOT_DRAGON.md) |
 | Dark Cathedral: la antecámara J del -1 era un cuadrado de tierra sin paredes pegado a la roca lisa, y los pasillos de al lado también perdieron la pared (18 nov 2026) | La cueva tapaba con roca las paredes de ladrillo de su caja. J pasó a ser cámara de la cueva; validar que ningún piso toque un `101` solo. Ver [DARK_CATHEDRAL.md](DARK_CATHEDRAL.md#patrón-descartado-sala-cuadrada-de-tierra-pegada-a-la-cueva-18-nov-2026) |
 | Dark Cathedral: vacío negro en el MISMO piso de la cripta (200 pisables de z8 lo veían desde el borde de la cueva) y 17 rocas de 1 casilla entre dos pisos (18 nov 2026) | Relleno de roca a `grow(...,9)` (media pantalla 8×6 + colchón) y cavar las rocas de 1 casilla; `check-upper-view.py` no cubre el vacío del mismo piso — validar la ventana de cada pisable |
+| Campamento de amazonas v2: el puente no conectaba con la isla (22 nov 2026) | Las piezas de costa 4644–4655 ("shallow water") **bloquean el paso**. La casilla donde llega un puente no puede llevar costa: darle tierra a los dos lados (punta de 3 de ancho) y no contar el puente como agua |

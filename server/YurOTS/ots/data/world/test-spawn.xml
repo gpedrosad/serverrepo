@@ -6680,41 +6680,37 @@
 	</spawn>
 	<!-- END DEMONA_LOCAL_SPAWNS -->
 	<!-- BEGIN AMAZON_CAMP_SPAWNS (scripts/map/generate-amazon-camp.py) -->
-	<spawn centerx="85" centery="13" centerz="7" radius="3">
-		<monster name="Amazon" x="-1" y="-1" z="7" spawntime="90" />
-		<monster name="Amazon" x="-1" y="0" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="78" centery="14" centerz="7" radius="3">
-		<monster name="Amazon" x="-1" y="0" z="7" spawntime="90" />
-		<monster name="Amazon" x="-1" y="-1" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="88" centery="17" centerz="7" radius="3">
-		<monster name="Amazon" x="-1" y="-2" z="7" spawntime="90" />
-		<monster name="Amazon" x="1" y="1" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="82" centery="18" centerz="7" radius="3">
+	<spawn centerx="74" centery="12" centerz="7" radius="3">
+		<monster name="Amazon" x="1" y="-1" z="7" spawntime="90" />
 		<monster name="Amazon" x="2" y="0" z="7" spawntime="90" />
-		<monster name="Amazon" x="2" y="-1" z="7" spawntime="90" />
 	</spawn>
-	<spawn centerx="96" centery="18" centerz="7" radius="3">
-		<monster name="Amazon" x="1" y="-1" z="7" spawntime="105" />
+	<spawn centerx="82" centery="13" centerz="7" radius="3">
+		<monster name="Amazon" x="2" y="1" z="7" spawntime="90" />
+		<monster name="Amazon" x="-1" y="-1" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="79" centery="9" centerz="7" radius="3">
+		<monster name="Amazon" x="2" y="2" z="7" spawntime="90" />
+		<monster name="Amazon" x="-1" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="94" centery="13" centerz="7" radius="3">
+		<monster name="Amazon" x="2" y="1" z="7" spawntime="105" />
+		<monster name="Valkyrie" x="-1" y="-2" z="7" spawntime="105" />
+	</spawn>
+	<spawn centerx="88" centery="16" centerz="7" radius="3">
+		<monster name="Amazon" x="-1" y="-1" z="7" spawntime="105" />
 		<monster name="Valkyrie" x="1" y="0" z="7" spawntime="105" />
 	</spawn>
-	<spawn centerx="92" centery="14" centerz="7" radius="3">
-		<monster name="Amazon" x="-2" y="2" z="7" spawntime="105" />
-		<monster name="Valkyrie" x="1" y="0" z="7" spawntime="105" />
+	<spawn centerx="106" centery="12" centerz="7" radius="3">
+		<monster name="Valkyrie" x="-2" y="2" z="7" spawntime="120" />
+		<monster name="Assassin" x="-1" y="1" z="7" spawntime="120" />
 	</spawn>
-	<spawn centerx="89" centery="10" centerz="7" radius="3">
-		<monster name="Amazon" x="0" y="0" z="7" spawntime="105" />
-		<monster name="Valkyrie" x="-1" y="1" z="7" spawntime="105" />
-	</spawn>
-	<spawn centerx="104" centery="14" centerz="7" radius="3">
-		<monster name="Valkyrie" x="-2" y="-2" z="7" spawntime="120" />
-		<monster name="Assassin" x="0" y="2" z="7" spawntime="120" />
+	<spawn centerx="99" centery="17" centerz="7" radius="3">
+		<monster name="Valkyrie" x="2" y="0" z="7" spawntime="120" />
+		<monster name="Assassin" x="1" y="-2" z="7" spawntime="120" />
 	</spawn>
 	<spawn centerx="100" centery="11" centerz="7" radius="3">
-		<monster name="Valkyrie" x="1" y="2" z="7" spawntime="120" />
-		<monster name="Assassin" x="-1" y="1" z="7" spawntime="120" />
+		<monster name="Valkyrie" x="0" y="0" z="7" spawntime="120" />
+		<monster name="Assassin" x="2" y="0" z="7" spawntime="120" />
 	</spawn>
 	<!-- END AMAZON_CAMP_SPAWNS -->
 	<!-- BEGIN BARBARIAN_CAMP_SPAWNS (scripts/map/generate-barbarian-camp.py) -->
