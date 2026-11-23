@@ -81,10 +81,10 @@ actual fija las 50 anclas existentes y falla si una pieza no cabe en su 2×2.
 El material se carga de forma privada para no recolorear los demás puentes al
 importar el instalador general. Las apariencias se generan antes de instalarlas.
 
-Implementado en el repositorio, pendiente de publicar el cliente y deploy. No se recompiló C++, no se modificaron jugadores ni se
-hicieron suites, bots o pruebas in-game, respetando la preferencia del usuario.
-Antes del deploy: publicar el cliente, respaldo runtime y reinicio ordenado según
-[ThinkPad](../systems/THINKPAD_TEST_SERVER.md), con autorización del usuario.
+Publicado y aplicado en la ThinkPad el 23 nov, junto con la ribera descrita abajo.
+No se recompiló C++ ni se hicieron suites, bots o pruebas in-game, respetando la
+preferencia del usuario. El respaldo, la publicación y el reinicio ordenado siguieron
+el procedimiento de [ThinkPad](../systems/THINKPAD_TEST_SERVER.md).
 
 ## Ribera de rotworms bajo el puente — 23 nov 2026
 
@@ -127,3 +127,29 @@ todos los tiles del puente, sus cuatro trampillas, 50 anclas, casas y 11 lockers
 idénticos a la versión Ironbound preparada. La obstrucción de proyectiles de todo
 el mapa sigue idéntica. El terreno previamente transitable no se bloquea: solo se
 habilita el bolsillo de ribera. No requiere assets adicionales ni recompilar C++.
+
+## Publicación y deploy — 23 nov 2026
+
+Push a `main`: assets `05f181f`, puente `0a0eac0`, ribera y cuatro spawns `710e4b6`.
+Cliente publicado con `scripts/client-rme/publish_client.py` y push a `clienteretro`
+`main`: **`3a42c7e`**. Los 775 archivos comunes coinciden entre updater, Mac,
+Windows y el `data.zip` de ambas descargas. Las APIs y descargas HTTP de 8080/8076
+entregan los mismos bytes. CRC32: DAT `9f7f0dbf`, SPR `c303b4f2`, minimapa `8d9f0da3`.
+
+Respaldo en la ThinkPad:
+`/home/gonzalo/backups/pre-deploy-20261123-011512-ironbound-rotworms`.
+Incluye runtime y assets anteriores, más una copia fresca `before-restart/` después
+de `scripts/deploy/server-save.sh --now`. El avance de `c58c190` a `710e4b6` fue
+`git merge --ff-only origin/main`, con cero archivos entrantes superpuestos a los
+cambios locales de otras sesiones; esos cambios se conservaron.
+
+Activación: `docker restart -t 45 yurots`, cierre ordenado confirmado y arranque
+**2026-11-23 04:18:48 UTC**. Contenedor healthy, sin errores ni avisos en el arranque.
+`scripts/ot/ot-probe.py 192.168.1.17 7171`: **OK, 10,4 ms**. Hashes del mapa,
+spawns, ambos OTB y DAT/SPR coinciden con la versión preparada.
+
+Comparación del runtime antes/después: **1 cuenta, 8 archivos de personajes y
+35 casas**, con cuentas, inventarios, depots, propietarios/permisos, houseitems,
+sponsors, configuración y binario conservados. `scan-map-depots.py`: **11 lockers,
+todos depotid 1**. `sync-houses-with-map.py --dry-run`: coincide. No se verificó
+apertura de lockers dentro del juego.
