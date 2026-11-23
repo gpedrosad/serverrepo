@@ -137,6 +137,14 @@ tiene que ser piso libre. La escalera va **sola** en su casilla (nada de fogatas
 > intentos descartados de abajo. Los otros 8 puentes de la ciudad usan las mismas barandas en versión de
 > tramos fijos (ver [TRANSICIONES_DEPOT.md](TRANSICIONES_DEPOT.md#los-demás-puentes-20-nov-2026)).
 
+**Acabado actual preparado (23 nov): [Ironbound — basalto, hierro y bronce](MAIN_BRIDGE.md).**
+Conserva exactamente el trazado PvP documentado: 41 casillas, dos segmentos de
+1 sqm, cuatro trampillas y 50 anclas de baranda. Bordes claros y umbrales de bronce
+marcan los pasos angostos. El renderizador usa un material privado para no cambiar
+los demás puentes. La publicación y el deploy de esta estética están pendientes.
+
+### Versión de madera del 22 nov (base de geometría)
+
 El puente sobre el río de la ciudad (x 139–144, y 57–76, z6) se rehízo el 22 nov 2026.
 
 - **Tablero:** solo existen las tablas que se pisan, `405` (y las trampillas `429` que ya estaban). Tiene

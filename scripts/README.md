@@ -49,6 +49,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | `temple-portals.py` + `portal_citadel_layout.py` + `portal_temple_style.py` + `portal_temple_details.py` + `portal_temple_architecture.py` | Plaza, ocho portales, galería, pórtico y torre sureste con escaleras; `--dry-run` |
 | `validate-portal-citadel.py` | Audita mapa/assets contra `--before`; rutas, teleports y ámbito exacto |
 | `root-crypt.py` | Visual propia de la quest BoH al sur del depot; `--dry-run`, conserva huella/colisión/cofres/teleports |
+| `bridge-trap-steps.py` / `render-main-bridge.py` | Puente principal Ironbound en z6: acabado de basalto/bronce y comparación visual, con trazado PvP intacto ([doc](../docs/items-and-map/MAIN_BRIDGE.md)) |
 | `city-bridge-transitions.py` | Muelle junto al depot y puentes de madera (`BRIDGES`): barandas, faroles y rampa de `client-rme/dock_bridge_art.py`; saca cuerdas y wild growth; `--dry-run`, conserva huella y escaleras |
 | `find-wood-bridges.py` | Lista madera transitable junto al agua (puentes, muelles, barcos) para elegir dónde poner barandas; `--z` |
 | `electric-depot-walls.py` / `render-electric-depot.py` | Unifica variantes cian en lockers, ala norte y vestíbulo del depot; `--apply`, inversión exacta con `--before` ([DEPOT_ELECTRICO.md](../docs/items-and-map/DEPOT_ELECTRICO.md)) |
@@ -107,6 +108,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | `portal_detail_assets.py` | Arco abierto, faroles y rejas exclusivos del templo; `--prepare`, `--apply` |
 | `root_crypt_assets.py` | Once piezas de piedra, raíces y luz ámbar de la quest BoH; `--prepare`, `--apply` |
 | `recolor_cyan_skull.py` | Recolorea la calavera roja nativa a cian conservando dibujo y alpha; `--client RUTA_CLIENTERETRO` |
+| `city_bridge_z6_art.py` / `ironbound_bridge_material.py` / `ironbound_bridge_deck.py` | Barandas 3D, pavimento y pilares del puente principal; material privado y anclas fijas para conservar el PvP |
 | `depot_electric_assets.py` | Prepara e instala las 30 piezas eléctricas del depot (20200–20210 + 20420–20438); `--complete-only`, `--prepare-completion`, `--dry-run` |
 | `add_recolor_look.py` + `presets/` + `sprite_kit.py` | Aplica un preset de criatura (un archivo por criatura en `presets/`) a `Tibia.dat`/`.spr` |
 | `play-yurots-client.sh` / `open-rme.sh` | Cliente y RME locales |
