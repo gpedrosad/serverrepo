@@ -127,6 +127,22 @@ siguen 1050 en la fila norte y 1053 en la esquina SE. En la Torre del Barquero: 
 x, y del piso de abajo. Se cae sobre la escalera; usarla deja en **(x, y + 1)** del piso de arriba, que
 tiene que ser piso libre. La escalera va **sola** en su casilla (nada de fogatas encima).
 
+## Puente de madera elevado (z6)
+
+El puente sobre el río de la ciudad (x 139–144, y 57–76, z6) se arma por columnas. La baranda `1518` se dibuja
+en el borde **oeste** de su casilla y la bloquea, así que el paso es lo que queda entre las barandas:
+
+| Tramo | 139 | 140 | 141 | 142 | 143 | 144 |
+|---|---|---|---|---|---|---|
+| Ancho (3) | `436`+`1518` | `405` | `405` | `405` | `405`+`1518` | `437` |
+| Angosto (1 sqm) | — | `436`+`1518` | `405` | `405`+`1518` | `437` | — |
+| Primera / última fila del angosto | `445` / `442` | igual | igual | igual | igual | `444` / `443` |
+
+Para angostar se corren los bordes del puente, no se agregan barandas sueltas en el medio: con una baranda
+suelta el paso a la vista no coincide con el caminable. A los costados del tramo angosto queda la casilla sin
+tile y se ve el río de abajo. Lo hace `scripts/map/bridge-trap-steps.py`, con dos tramos de 1 sqm para
+trapear (y 62–65 y 68–71).
+
 ## Cuevas
 
 Paredes de tierra `356–367` (`WALL_SIDE`, `WALL_CORNER`, `WALL_INNER` en `generate-north-pass.py`) y roca
