@@ -22,167 +22,262 @@ TONKA_DIVIDER = TONKA_COUNTER + 1
 TONKA_CREST = TONKA_COUNTER + 2
 SELLER_DISPLAY = TONKA_COUNTER + 3
 TONKA_SIDE = SELLER_DISPLAY + 4
+COUNTER_NORTH = TONKA_SIDE + 1
+COUNTER_SOUTH = COUNTER_NORTH + 1
 
-LIMESTONE = '#c2b49b'
-PALE = '#ece0c2'
-JOINT = '#a39785'
-COPPER = '#b47852'
-COPPER_LIGHT = '#e7af7b'
-JADE = '#39796c'
-JADE_LIGHT = '#75b8a0'
-DARK = '#253c38'
+STONE = '#92816a'
+PALE = '#c7b390'
+JOINT = '#544739'
+COPPER = '#806047'
+COPPER_LIGHT = '#d8aa70'
+CLOTH = '#633c45'
+DARK = '#38291f'
+OAK = ('#71452a', '#976537', '#b58248', '#c99655', '#dfae69')
+
+
+def grain(x, y, seed=0):
+    """Stable texture for hand-cut stone and timber, with no random seed state."""
+    return (x * 47 + y * 83 + x * y * 17 + seed * 109) % 31
 
 
 def floor(key):
-    palette = {
-        'arcade': ('#948c7b', '#b7ab91', '#e1d3b7'),
-        'seller': ('#9e9d87', '#d5ccb2', '#f0e3c6'),
-        'house': ('#9b7759', '#bf9c73', '#e3c49a'),
-        'gallery': ('#515a51', '#899386', '#b2b9a1'),
-        'terrace': ('#758176', '#b6beaa', '#dbe0c7'),
-        'roof': ('#22483e', JADE, '#6ba08a'),
-        'tonka': ('#355e54', '#558b7a', '#8cbaa0'),
-        'threshold': ('#6b756b', '#a0ada0', '#cfdbca'),
+    colors = {
+        'arcade': ('#4a493d', '#6e6b5a', '#898472', '#a79e83'),
+        'seller': ('#61584b', '#8a8070', '#a1957e', '#b4a891'),
+        'house': ('#634025', '#895530', '#a67140', '#c68e51'),
+        'gallery': ('#4d4944', '#716b63', '#898276', '#a39a8b'),
+        'terrace': ('#59574c', '#7c7969', '#938e78', '#b4ab8f'),
+        'roof': ('#542b20', '#86412c', '#a75838', '#c2774b'),
+        'tonka': ('#634025', '#926037', '#aa7546', '#c49157'),
+        'threshold': ('#554c3f', '#7e7159', '#998a70', '#b49e76'),
     }
-    mortar, body, highlight = palette[key]
-    im = Image.new('RGBA', (32, 32), mortar)
-    d = ImageDraw.Draw(im)
+    shadow, body, mid, light = colors[key]
+    image = Image.new('RGBA', (32, 32), shadow)
+    d = ImageDraw.Draw(image)
+    if key in ('house', 'tonka'):
+        for y in range(0, 32, 8):
+            seam = (9 + y * 3) % 27
+            fill = body if y in (0, 24) else mid
+            d.rectangle((0, y, 31, y+6), fill=fill)
+            d.line((0, y, 31, y), fill=light)
+            d.line((seam, y+1, seam, y+6), fill=shadow)
+            for x in range(2, 29, 5):
+                yy = y + 2 + grain(x,y) % 4
+                if abs(x-seam) > 2:
+                    d.line((x, yy, x+2, yy), fill=body if fill == mid else mid)
+            for x in (seam-2, seam+2):
+                if 0 <= x < 32:
+                    d.point((x, y+3), fill=shadow)
+        return image
     if key == 'roof':
         for y in range(0, 32, 8):
-            for x in range(-8 if y % 16 else 0, 32, 16):
-                d.rectangle((x+1, y, x+15, y+6), fill=body)
-                d.line((x+1, y, x+15, y), fill=highlight)
-                d.line((x+4, y+3, x+12, y+3), fill='#4e8a77')
-        return im
-    for y in (0, 16):
-        for x in (0, 16):
-            d.rectangle((x+1, y+1, x+15, y+15), fill=body)
-            d.line((x+2, y+1, x+14, y+1), fill=highlight)
-            for n in range(4):
-                d.point((x+3+(n*7+y)%11, y+4+(n*3+x)%9), fill=highlight)
-    if key == 'house':
-        for y in (3, 19):
-            d.line((2,y+7,9,y,14,y+5), fill='#aa855f')
-            d.line((18,y+7,25,y,30,y+5), fill='#aa855f')
-            for x in (14,30):
-                d.point((x,y+10), fill='#f4dbc0')
-    if key in ('seller', 'tonka', 'threshold', 'gallery'):
-        for x, y in ((0, 0), (16, 16)):
-            d.polygon(((x+8,y+4),(x+12,y+8),(x+8,y+12),(x+4,y+8)), fill=JADE if key != 'tonka' else DARK)
-            d.line((x+7,y+6,x+9,y+6), fill=JADE_LIGHT)
-    if key == 'threshold':
-        d.line((0, 0, 31, 0), fill=COPPER_LIGHT, width=2)
-        d.line((0, 30, 31, 30), fill=COPPER, width=2)
-    return im
+            for x in range(-8 if y % 16 else 0, 32, 8):
+                d.polygon(((x+1,y),(x+5,y),(x+7,y+2),(x+7,y+6),(x+1,y+6),(x,y+5)), fill=body)
+                d.line((x+1,y+1,x+5,y+1), fill=light)
+                d.line((x+2,y+2,x+2,y+5), fill=mid)
+        return image
+    for row, y in enumerate((0, 8, 16, 24)):
+        x = -6 if row in (1, 3) else 0
+        while x < 32:
+            width = (11, 15, 13)[grain(x, y) % 3]
+            d.polygon(((x+1,y+1),(x+width-2,y+1),(x+width-1,y+2),(x+width-1,y+5),
+                       (x+width-3,y+7),(x+2,y+7),(x,y+5),(x,y+3)), fill=body)
+            d.line((x+2,y+1,x+width-3,y+1), fill=light)
+            d.line((x+2,y+2,x+width-4,y+2), fill=mid)
+            for u in range(x+2, x+width-2):
+                if grain(u,y) % 3 == 0:
+                    d.point((u, y+3+grain(u,y+4)%3), fill=mid)
+            d.line((x+3,y+6,x+width-4,y+6), fill=shadow)
+            x += width + 1
+    return image
 
 
 def wall(kind):
-    im = Image.new('RGBA', (64, 64))
-    d = ImageDraw.Draw(im)
+    image = Image.new('RGBA', (64, 64))
+    d = ImageDraw.Draw(image)
+    tones = ('#6e5e4d', '#887765', '#a39177', '#af9b80', '#c0ad8c')
     if 'h' in kind:
-        d.polygon([(0,24),(32,24),(63,55),(63,63),(31,63),(0,32)], fill=LIMESTONE)
-        d.line((0,24,32,24,63,55), fill=PALE, width=2)
-        d.line((0,31,31,62,63,62), fill=JOINT, width=2)
-        for k in (8, 24):
-            d.line((k,26,k+29,55), fill=JOINT)
-        d.line((3,30,31,58,63,58), fill=COPPER)
+        for depth in range(32):
+            for u in range(32):
+                x, y = u+depth, 24+depth
+                brick = (u + 6*(depth//8 % 2)) % 12
+                window = 'w' in kind and 9 < u < 22 and 7 < depth < 23
+                if window:
+                    fill = ('#b69a6c' if u in (10,21) or depth in (8,22) else
+                            '#5a685e' if u in (15,16) or depth == 16 else '#293a39')
+                elif depth % 8 == 7 or brick == 0:
+                    fill = JOINT
+                else:
+                    fill = tones[2 + (grain(u//3,depth)%3 if depth%8 < 2 else grain(u,depth)%2)]
+                if x < 64:
+                    d.point((x,y), fill=fill)
+        d.line((0,24,31,24,63,56), fill=PALE)
+        d.line((0,32,31,63,63,63), fill=DARK)
     if 'v' in kind:
-        d.polygon([(24,0),(32,0),(63,31),(63,63),(55,63),(24,32)], fill=LIMESTONE)
-        d.line((24,0,32,0,63,31), fill=PALE, width=2)
-        for y in (8, 22, 31):
-            d.line((25,y,55,y+30), fill=JOINT)
-        d.line((32,4,62,34,62,62), fill=COPPER, width=2)
+        for u in range(32):
+            x = 32+u
+            for height in range(32):
+                y = u+height
+                brick = (u + 6*(height//8 % 2)) % 13
+                window = 'w' in kind and 6 <= u <= 23 and 5 <= height <= 24
+                if window:
+                    fill = ('#bb9e70' if u in (6,23) or height in (5,24) else
+                            '#65736b' if u in (14,15) or height == 14 else '#283633')
+                elif height % 8 == 7 or brick == 0:
+                    fill = JOINT
+                else:
+                    fill = tones[1 + (grain(u,height//2)%3 if height%8 < 3 else grain(u,height)%2)]
+                d.point((x,y), fill=fill)
+            for j in range(8):
+                d.point((x-j,u), fill=tones[3+(j%3==0)])
+        d.line((24,0,32,0,63,31), fill=PALE)
+        d.line((32,31,63,62), fill=DARK)
     if kind == 'post':
-        d.polygon([(24,24),(32,24),(63,55),(63,63),(55,63),(24,32)], fill=COPPER)
-        d.line((24,24,32,24,63,55), fill=COPPER_LIGHT, width=2)
+        d.polygon([(24,24),(32,24),(63,55),(63,63),(55,63),(24,32)], fill=tones[1])
+        d.line((24,24,32,24,63,55), fill=PALE, width=2)
         d.line((25,31,56,62,63,62), fill=DARK)
-    if kind == 'hw':
-        d.polygon([(12,29),(24,29),(42,47),(29,47)], fill=DARK)
-        d.polygon([(15,31),(23,31),(38,46),(30,46)], fill=JADE)
-        d.line((21,32,34,45), fill=JADE_LIGHT)
-    if kind == 'vw':
-        d.polygon([(28,10),(51,33),(51,50),(28,27)], fill=DARK)
-        d.polygon([(30,14),(49,33),(49,46),(30,27)], fill=JADE)
-        d.line((31,19,48,36), fill=JADE_LIGHT, width=2)
-    return im
+        for k in (8, 17, 26):
+            d.line((24+k,27+k,31+k,27+k), fill=JOINT)
+    return image
+
+
+def counter_run(end=None):
+    """Oak rail with aligned edges and two capped ends for Seller's counter."""
+    image = Image.new('RGBA', (32, 32))
+    d = ImageDraw.Draw(image)
+    y0, y1 = (3 if end == 'north' else 0), (28 if end == 'south' else 31)
+    d.rectangle((3, y0, 30, y1), fill=DARK)
+    d.rectangle((4, y0, 24, y1), fill=OAK[2])
+    d.line((4, y0, 4, y1), fill=OAK[4])
+    d.line((24, y0, 24, y1), fill=OAK[4])
+    d.rectangle((25, y0+1, 28, y1-1), fill=OAK[0])
+    d.line((29, y0, 29, y1), fill=OAK[1])
+    for x in range(5, 24):
+        for y in range(y0, y1+1):
+            g = grain(x,y//3)
+            fill = OAK[1] if x in (10,17,23) or g < 3 else OAK[3] if g > 25 else OAK[2]
+            d.point((x,y), fill=fill)
+    for y in (y0+3, y1-3):
+        d.rectangle((26, y, 28, y+2), fill=COPPER)
+        d.point((27, y), fill=COPPER_LIGHT)
+    if end == 'north':
+        d.line((5,y0,25,y0), fill=OAK[4], width=2)
+    elif end == 'south':
+        d.line((4,y1-5,24,y1-5), fill=OAK[4])
+        d.rectangle((5,y1-4,28,y1-1), fill=OAK[0])
+        d.point((7,y1-2), fill=COPPER_LIGHT)
+        d.point((26,y1-2), fill=COPPER_LIGHT)
+    return image
 
 
 def fixture(size, sid, gems=False):
-    w, h = {1: (32, 32), 2: (64, 64), '1x2': (32, 64)}[size]
-    im = Image.new('RGBA', (w, h))
-    d = ImageDraw.Draw(im)
-    x, y = (w-32 if w == 32 else 25), h-32
-    if size == '1x2':
-        y -= 5
-    x1, y1 = min(w-1, x+30), min(h-1, y+30)
-    d.rounded_rectangle((x+1,y+1,x1,y1), radius=3, fill=DARK)
-    d.rectangle((x+2,y+2,x1-3,y1-8), fill=JADE)
-    d.line((x+3,y+3,x1-4,y+3), fill=JADE_LIGHT)
-    d.rectangle((x+3,y1-7,x1-1,y1-3), fill=COPPER)
-    d.line((x+3,y1-7,x1-2,y1-7), fill=COPPER_LIGHT)
+    """Oak worktops, visible front panels and shaded legs in the original footprint."""
+    if sid == 1622 and not gems:
+        return counter_run()
+    w, h = {1: (32,32), 2: (64,64), '1x2': (32,64)}[size]
+    image = Image.new('RGBA', (w,h))
+    d = ImageDraw.Draw(image)
+    # The long side runs north–south for the shop row and east–west at the display ends.
+    vertical = sid in (1620,1621,1622,1624,1628)
+    x0 = 25 if size == 2 else 2
+    y0 = 27 if size != 1 else 1
+    x1 = min(w-2, x0+29)
+    y1 = h-1
+    if size == 1 and not vertical:
+        x0, x1, y0, y1 = 0, 31, 6, 30
     if gems:
-        for u, color in zip((8, 15, 22), ('#83e5bd', '#f0a782', '#c5a1f2')):
-            d.polygon(((u,y+5),(u+3,y+9),(u,y+14),(u-3,y+9)), fill=color)
-            d.point((u-1,y+8), fill=PALE)
-    else:
-        d.rectangle((x+7,y+7,x1-7,y1-12), outline=JADE_LIGHT)
-        for u in (x+6, x1-5):
-            d.point((u,y1-5), fill=PALE)
-        if sid in (1621, 1624, 1626):
-            d.line((x+3,y+6,x+3,y1-8), fill=COPPER_LIGHT)
-    return im
+        y0, y1 = 4, 29
+    depth = 6
+    top = y1-depth
+    d.polygon(((x0,y0),(x1-4,y0),(x1,y0+4),(x1,top),(x1-2,y1),
+               (x0+3,y1),(x0,top)), fill=DARK)
+    d.polygon(((x0+1,y0+1),(x1-4,y0+1),(x1-1,y0+4),(x1-1,top-1),
+               (x0+1,top-1)), fill=OAK[2])
+    for y in range(y0+2,top-1):
+        for x in range(x0+2,x1-1):
+            if y < y0+5 and x >= x1-4+y-y0:
+                continue
+            strip = x-x0 if vertical else y-y0
+            xgrain = y if vertical else x
+            g = grain(strip,xgrain//3,sid)
+            color = (OAK[0] if strip % 7 == 0 and x >= x0+3 else OAK[3] if strip % 7 == 1
+                     else OAK[2+(g>24)] if g>4 else OAK[1])
+            d.point((x,y), fill=color)
+    d.line((x0+2,y0+1,x1-5,y0+1), fill=OAK[4])
+    d.line((x0+1,top,x1-1,top), fill=OAK[4])
+    d.rectangle((x0+2,top+1,x1-2,y1-1), fill=OAK[0])
+    for u in (x0+4, x1-4):
+        d.rectangle((u-1,top+1,u+1,y1), fill=OAK[1])
+        d.point((u,top+2), fill=COPPER_LIGHT)
+    if gems:
+        d.polygon(((5,8),(23,8),(27,19),(7,20)), fill=CLOTH, outline='#4d2836')
+        d.line((6,9,22,9), fill='#986373')
+        for x, y, base, glint in ((10,13,'#58977b','#bce8b7'), (16,12,'#ae504e','#ffb989'),
+                                   (22,15,'#7663a9','#cdb0ed')):
+            d.polygon(((x,y-3),(x+3,y),(x,y+3),(x-3,y)), fill=DARK)
+            d.polygon(((x,y-2),(x+2,y),(x,y+2),(x-2,y)), fill=base)
+            d.point((x-1,y-1), fill=glint)
+    return image
 
 
 def trim(size, kind):
     w, h = {1: (32,32), '1x2': (32,64), '2x1': (64,32)}[size]
-    im = Image.new('RGBA', (w, h))
-    d = ImageDraw.Draw(im)
+    image = Image.new('RGBA', (w,h))
+    d = ImageDraw.Draw(image)
     if 'h' in kind:
-        d.rectangle((max(0,w-35), h-8, w-1, h-1), fill=DARK)
-        d.line((max(0,w-35),h-8,w-1,h-8), fill=COPPER_LIGHT, width=2)
+        x = max(0,w-35)
+        d.rectangle((x,h-8,w-1,h-1), fill=DARK)
+        d.line((x,h-7,w-1,h-7), fill=COPPER_LIGHT)
+        d.line((x,h-6,w-1,h-6), fill=OAK[1])
+        for xx in range(x+3,w,11):
+            d.line((xx,h-5,xx,h-1), fill=OAK[0], width=2)
     if 'v' in kind:
         d.polygon([(w-19,h-37),(w-14,h-38),(w-1,h-9),(w-1,h-1),(w-6,h-1),(w-19,h-31)], fill=DARK)
-        d.line((w-18,h-34,w-3,h-3), fill=COPPER_LIGHT, width=2)
-    return im
+        d.line((w-18,h-34,w-3,h-3), fill=OAK[1], width=2)
+        d.line((w-18,h-36,w-3,h-5), fill=COPPER_LIGHT)
+    return image
 
 
 def stall_piece(kind):
-    image = Image.new('RGBA', (32, 32))
+    image = Image.new('RGBA', (32,32))
     d = ImageDraw.Draw(image)
     if kind == 'side':
         d.rectangle((19,0,30,31), fill=DARK)
-        d.rectangle((19,0,27,31), fill=JADE)
-        d.line((19,0,19,31), fill=COPPER_LIGHT, width=2)
-        for y in (4,19):
-            d.rectangle((22,y,25,y+6), fill=JADE_LIGHT)
+        d.rectangle((20,0,27,31), fill=OAK[1])
+        d.line((20,0,20,31), fill=OAK[3], width=2)
+        for y in (3,17):
+            d.rectangle((22,y,27,y+3), fill='#504747')
+            d.point((24,y+1), fill=COPPER_LIGHT)
         return image
-    d.rectangle((0,14,31,28), fill=DARK)
-    d.rectangle((0,14,31,24), fill=LIMESTONE)
-    d.line((0,14,31,14), fill=PALE, width=2)
-    d.line((0,25,31,25), fill=COPPER)
-    for x in (8,24):
-        d.line((x,16,x,23), fill=JOINT)
+    d.rectangle((0,13,31,28), fill=JOINT)
+    for row,y in enumerate((14,21)):
+        for x in range(-5 if row else 0,32,10):
+            d.rectangle((x,y,x+8,y+5), fill=STONE)
+            d.line((x,y,x+7,y), fill=PALE)
+            d.point((x+4,y+2), fill='#a48e74')
+    d.line((0,27,31,27), fill=DARK)
     if kind == 'emblem':
-        d.rounded_rectangle((3,0,28,24), radius=4, fill=DARK, outline=COPPER_LIGHT, width=2)
-        d.polygon(((15,4),(23,11),(15,20),(8,11)), fill='#7ee2b5')
-        d.polygon(((15,4),(16,11),(8,11)), fill='#c4fce0')
-        d.polygon(((16,11),(23,11),(15,20)), fill=JADE)
+        d.polygon(((4,0),(26,0),(29,6),(27,21),(16,26),(4,20),(2,6)), fill=DARK)
+        d.polygon(((6,1),(24,1),(27,7),(25,20),(16,23),(6,19),(4,7)), fill=CLOTH, outline=COPPER_LIGHT)
+        d.polygon(((15,5),(22,11),(15,19),(8,11)), fill='#619b72')
+        d.polygon(((15,5),(16,11),(8,11)), fill='#c4ecc5')
+        d.polygon(((16,11),(22,11),(15,19)), fill='#426c5a')
     return image
 
 
 def definitions():
-    out = [(sid, 1794, 1, f'market {key} paving', floor(key)) for key, sid in FLOOR_IDS.items()]
+    out = [(sid, 1794, 1, f'market {key} flooring', floor(key)) for key, sid in FLOOR_IDS.items()]
     for proto, sid in REPLACEMENTS.items():
         if proto in WALLS:
-            out.append((sid, proto, 2, 'limestone arcade masonry', wall(WALLS[proto])))
+            out.append((sid, proto, 2, 'market fieldstone masonry', wall(WALLS[proto])))
         elif proto in FURNITURE:
             size = FURNITURE[proto]
-            out.append((sid, proto, size, 'jade and copper display', fixture(size, proto)))
+            out.append((sid, proto, size, 'oak shop counter', fixture(size, proto)))
         elif proto in ROOF_EDGES:
-            out.append((sid, proto, 1, 'copper roof flashing', trim(1, ROOF_EDGES[proto])))
+            out.append((sid, proto, 1, 'timber roof flashing', trim(1, ROOF_EDGES[proto])))
         else:
             size = RAILS[proto]
-            out.append((sid, proto, size, 'copper terrace guard', trim(size, 'h' if proto == 1600 else 'v')))
+            out.append((sid, proto, size, 'bound oak railing', trim(size, 'h' if proto == 1600 else 'v')))
     out += [
         (TONKA_COUNTER, 1622, 1, 'gem exchange counter', fixture(1, 1622, gems=True)),
         (TONKA_DIVIDER, 1623, 1, 'gem shop partition', stall_piece('wall')),
@@ -204,7 +299,11 @@ def definitions():
             else:
                 d.line((21,32,24,40,22,42), fill=PALE)
         out.append((SELLER_DISPLAY+i, proto, '1x2', 'seller equipment display', image))
-    return out + [(TONKA_SIDE, 1623, 1, 'gem shop screen', stall_piece('side'))]
+    return out + [
+        (TONKA_SIDE, 1623, 1, 'gem shop screen', stall_piece('side')),
+        (COUNTER_NORTH, 1622, 1, 'oak shop counter', counter_run('north')),
+        (COUNTER_SOUTH, 1622, 1, 'oak shop counter', counter_run('south')),
+    ]
 
 
 def items():
