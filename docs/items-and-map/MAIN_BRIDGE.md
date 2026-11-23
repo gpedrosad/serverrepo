@@ -167,5 +167,17 @@ avisa que debe usarse `render-main-bridge.py` para el estado actual.
 
 Mapa y spawns quedan **idénticos byte a byte a `0a0eac0`**, la versión Ironbound
 anterior a los rotworms: puente, ocho pilares, escaleras, casas, lockers y demás
-monstruos conservados. Segunda retirada: cero cambios. Publicación/deploy de esta
-retirada en curso; ver registro de cierre al completarse.
+monstruos conservados. Segunda retirada: cero cambios. `check-map-load.py`: cero
+errores; auditoría de 11 lockers depotid 1 y casas coincidentes. Sin suites ni
+pruebas in-game.
+
+Retirada pusheada a `main` en **`10beb7c`** y aplicada en la ThinkPad. Cliente
+**`a7e8cbf`**: solo cambió `data/minimap.otmm` (CRC `68175f56`); 775 archivos
+cotejados entre ambas plataformas, updater, ZIPs y HTTP 8080/8076. DAT/SPR sin cambios.
+Respaldo: `/home/gonzalo/backups/pre-deploy-20261123-104118-remove-bridge-rotworms`,
+incluyendo copia fresca tras el save. Cero superposiciones con trabajo ajeno.
+Antes de reiniciar se comprobó que ningún personaje guardado estaba en la ribera.
+`server-save.sh --now` OK, `docker restart -t 45 yurots`, cierre ordenado confirmado,
+arranque **2026-11-23 13:42:01 UTC** sin errores/avisos y contenedor healthy.
+Probe **OK, 14,5 ms**. Una cuenta, ocho personajes y 35 casas conservados, junto
+con inventarios, depots, houseitems, propietarios/permisos, sponsors, config y binario.
