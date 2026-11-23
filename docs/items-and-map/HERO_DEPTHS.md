@@ -21,9 +21,15 @@ Cada bajada es un hueco `432` arriba y la escalera `1385` en la misma casilla de
 |------|--------|-----------|---------------------|-----------------:|
 | z10 | Antesala | `146,94` | `134,86` | 183 |
 | z11 | Galería | `134,87` | `158,83` | 339 |
-| z12 | Puente | `158,84` | `127,82` | 192 |
+| z12 | Puente (con 3 pasos de 1 sqm) | `158,84` | `127,82` | 180 |
 | z13 | Salón de los Caballeros (3 salones) | `127,83` | `164,80` | 943 |
 | z14 | Fondo | `164,81` | — | 738 |
+
+## El puente de z12: pasos de 1 sqm
+
+El puente alterna tramos de 3 de ancho con **tres pasos de 1 sqm** (2 casillas de largo), en x=137–138,
+143–144 y 149–150, sobre y=83. Sirven para trapear. Las columnas de ladrillo que los marcan salen solas de la
+regla de paredes y el resto se ve igual (tapices y antorchas). Se cambia en `PLAN[12]`.
 
 ## Monstruo: Black Knight
 

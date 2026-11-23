@@ -71,7 +71,10 @@ HOLES = [TOP, (134, 86, 10), (158, 83, 11), (127, 82, 12), (164, 80, 13)]
 PLAN = {
     10: [(145, 93, 147, 96), (140, 94, 144, 96), (128, 84, 139, 96)],
     11: [(128, 84, 140, 92), (141, 88, 148, 90), (149, 82, 166, 92)],
-    12: [(153, 80, 163, 85), (133, 82, 152, 84), (122, 80, 132, 85)],
+    # z12: el puente alterna tramos de 3 de ancho con pasos de 1 sqm (2 de largo) para trapear
+    12: [(153, 80, 163, 85), (122, 80, 132, 85)]
+        + [(x0, 82, x1, 84) for x0, x1 in ((133, 136), (139, 142), (145, 148), (151, 152))]
+        + [(x0, 83, x0 + 1, 83) for x0 in (137, 143, 149)],
     13: [(122, 80, 134, 90), (127, 91, 129, 100), (119, 101, 141, 111), (142, 104, 156, 106),
          (157, 95, 172, 114), (163, 84, 165, 94), (156, 77, 172, 83)],
     14: [(157, 79, 171, 91), (163, 92, 165, 96), (139, 97, 171, 112)],
@@ -220,7 +223,7 @@ def build(values, otb):
             if p not in cells and p not in values and p not in protected:
                 cells[p] = [ROCK]
 
-    positions = [p for _, _, ms in spawns for _, p, _ in ms]
+    positions = [(*p, z) for _, z, ms in spawns for _, p, _ in ms]
     assert len(positions) == len(set(positions))
     report = dict(floors={z: len(f) for z, f in floors.items()}, spawns=len(spawns),
                   monsters=len(positions), entry=list(TOP))
