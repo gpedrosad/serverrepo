@@ -31,6 +31,7 @@ RAGE = ("angry ", "furious ", "enraged ")
 
 # server id -> (grupo, qué hace, de dónde sale además del loot, doc)
 NOTES = {
+    20660: ("Otras", "Cortes cada 650 ms", "GM: `/i 20660 1`", "QUICKSILVER_KATANA.md"),
     20250: ("Melee Relics", "1200 ms. Cada 3er golpe al mismo blanco suma 22–34 de energía (mitad en PvP); grieta violeta", "", "MELEE_RELICS.md"),
     20251: ("Melee Relics", "1333 ms. Devuelve 12% del daño a vida como maná (máx. 10 por golpe, 5 en PvP); espirales turquesa", "", "MELEE_RELICS.md"),
     20252: ("Melee Relics", "2 manos, 1600 ms. 25%: suma 12 + armadura/2 (máx. 42) de daño físico; anillo ámbar", "", "MELEE_RELICS.md"),
@@ -52,14 +53,14 @@ NOTES = {
     20158: ("Armas de 8.x", "Sprite de 8.x", "Cámara de las Armas (Pozos del Infierno, elegir una)", "../items-and-map/IMPORTAR_ITEM_DE_OTRA_VERSION.md"),
     20159: ("Armas de 8.x", "Sprite de 8.x, 2 manos", "Cámara de las Armas (Pozos del Infierno, elegir una)", "../items-and-map/IMPORTAR_ITEM_DE_OTRA_VERSION.md"),
     20160: ("Armas de 8.x", "Ballesta; el ataque lo da el bolt", "Cámara de las Armas (Pozos del Infierno, elegir una)", "../items-and-map/IMPORTAR_ITEM_DE_OTRA_VERSION.md"),
-    20156: ("Otras", "Lanza que vuelve; proyectil propio", "Hoy no se consigue (solo `/i`)", "ENCHANTED_SPEAR.md"),
+    20156: ("Otras", "Lanza que vuelve; proyectil propio", "", "ENCHANTED_SPEAR.md"),
     20163: ("Otras", "Sin efecto", "", "ROOT_COLOSSUS.md"),
     20164: ("Otras", "2 manos, sin efecto", "", "ROOT_COLOSSUS.md"),
     20193: ("Otras", "Fire sword de fuego negro, sin efecto; luz violeta", "", "../items-and-map/ZAGAN_TEST_ITEMS.md"),
     20111: ("Sin fuente", "Sin efecto", "Hoy no se consigue (solo `/i`)", "../items-and-map/ZAGAN_TEST_ITEMS.md"),
     20115: ("Sin fuente", "Sin efecto", "Hoy no se consigue (solo `/i`)", "../items-and-map/ZAGAN_TEST_ITEMS.md"),
     20119: ("Sin fuente", "Sin efecto", "Hoy no se consigue (solo `/i`)", "../items-and-map/ZAGAN_TEST_ITEMS.md"),
-    20120: ("Sin fuente", "Sin efecto", "Hoy no se consigue (solo `/i`)", "../items-and-map/ZAGAN_TEST_ITEMS.md"),
+    20120: ("Otras", "Sin efecto", "", "../items-and-map/ZAGAN_TEST_ITEMS.md"),
 }
 # Armas sin bloque de arma en el OTB o que no son 20000+
 EXTRA = [

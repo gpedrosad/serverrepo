@@ -104,6 +104,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/CRYSTAL_ARROW.md`](gameplay/CRYSTAL_ARROW.md) | **Crystal Arrow (2352):** throwable tipo spear, Blue Gem speed ×5, hit 85%; spears 70% hit. |
 | [`gameplay/PALADIN_STARS.md`](gameplay/PALADIN_STARS.md) | Gale, Venom y Storm Star: tres arrojadizas reutilizables para paladín, velocidad/veneno/energía y proyectiles propios. |
 | [`gameplay/MELEE_RELICS.md`](gameplay/MELEE_RELICS.md) | Riftblade (combo de tres golpes), Aethercleaver (maná por daño real) y Graviton Maul (crush según armadura); sprites e impactos propios. |
+| [`gameplay/QUICKSILVER_KATANA.md`](gameplay/QUICKSILVER_KATANA.md) | Katana de una mano (20660), ataque 32, defensa 16 y golpes cada 650 ms. |
 | [`gameplay/ENCHANTED_SPEAR.md`](gameplay/ENCHANTED_SPEAR.md) | **Enchanted Spear (20156):** spear mejorada (ataque 36, 80% hit, no se apila), sprite de cristal y luz de color propia; 4 estilos; proyectil propio `NM_ANI_ENCHANTED_SPEAR` (16) con luz en vuelo. |
 | [`gameplay/DEPOTS.md`](gameplay/DEPOTS.md) | **Depots:** lockers 2589, XML vs mapa, incidente jul 2026, checklist pre-deploy de mapa. |
 | [`items-and-map/DEPOT_ELECTRICO.md`](items-and-map/DEPOT_ELECTRICO.md) | **Depot eléctrico** (y la calavera cian, reemplazada por la negra el 19 nov: ver `gameplay/PINK_SKULL.md`): 30 piezas propias para paredes, ventanas y remates del depot completo (229 piezas en mapa), IDs 20200–20210 y 20420–20438; fuentes del arte, renders y conservación de lockers. |

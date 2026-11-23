@@ -5,7 +5,7 @@
 > defensa salen del OTB (`items-zagan-test.otb`); el loot, de los XML de monstruos (sin variantes rage, que
 > suelen tener la misma chance o más).
 
-32 armas propias (sin contar escudos ni las armas comunes de 7.6). GM: `/i ID 1` o `/i nombre`.
+36 armas propias (sin contar escudos ni las armas comunes de 7.6). GM: `/i ID 1` o `/i nombre`.
 Para crear una: [IMPORTAR_ITEM_DESDE_IMAGEN.md](../items-and-map/IMPORTAR_ITEM_DESDE_IMAGEN.md),
 [IMPORTAR_ITEM_DE_OTRA_VERSION.md](../items-and-map/IMPORTAR_ITEM_DE_OTRA_VERSION.md); gameplay en C++: `AGENTS.md` §8.
 
@@ -68,11 +68,16 @@ Para crear una: [IMPORTAR_ITEM_DESDE_IMAGEN.md](../items-and-map/IMPORTAR_ITEM_D
 
 | Arma | ID | Tipo | Atq / def | Qué hace | Dónde sale | Doc |
 |---|---:|---|---|---|---|---|
-| **crystal arrow** | `2352` | distancia | 35 | Se tira como una spear, 85% hit, no se gasta; Blue Gem: hasta +25% de velocidad | Elvenbane Ranger 3%, Enraged Hero 0.45%, Furious Amazon 0.3% | [CRYSTAL_ARROW](CRYSTAL_ARROW.md) |
-| **enchanted spear** | `20156` | distancia | 36 | Lanza que vuelve; proyectil propio | Hoy no se consigue (solo `/i`) | [ENCHANTED_SPEAR](ENCHANTED_SPEAR.md) |
+| **crystal arrow** | `2352` | distancia | 35 | Se tira como una spear, 85% hit, no se gasta; Blue Gem: hasta +25% de velocidad | Elven Archmage 0.8%, Elvenbane Ranger 3%, Lord of Elvenbane 1.5%, Orc Warlord 0.35%, Enraged Hero 0.45%, Furious Amazon 0.3% | [CRYSTAL_ARROW](CRYSTAL_ARROW.md) |
+| **boltworker crossbow** | `20120` | distancia | 1 | Sin efecto | Imperial Hero 0.45%, Worker Golem 0.35%, Wyrm 0.35% | [ZAGAN_TEST_ITEMS](../items-and-map/ZAGAN_TEST_ITEMS.md) |
+| **enchanted spear** | `20156` | distancia | 36 | Lanza que vuelve; proyectil propio | Imperial Hero 0.55%, Serpent Spawn 0.5%, Wyrm 0.5% | [ENCHANTED_SPEAR](ENCHANTED_SPEAR.md) |
 | **rootcleaver** | `20163` | hacha | 49 / 31 | Sin efecto | Root Colossus 0.6% | [ROOT_COLOSSUS](ROOT_COLOSSUS.md) |
 | **heartwood maul** | `20164` | maza | 52 / 28 | 2 manos, sin efecto | Root Colossus 0.5% | [ROOT_COLOSSUS](ROOT_COLOSSUS.md) |
 | **black fire sword** | `20193` | espada | 35 / 22 | Fire sword de fuego negro, sin efecto; luz violeta | Dark Hydra 0.6% | [ZAGAN_TEST_ITEMS](../items-and-map/ZAGAN_TEST_ITEMS.md) |
+| **aurora blade** | `20372` | espada | 36 / 30 | — | Frost Dragon 0.45%, Ice Spider 0.35% | — |
+| **aurora axe** | `20373` | hacha | 34 / 22 | — | Crystal Spider 0.25%, Frost Dragon 0.45%, Ice Monk 0.3% | — |
+| **frostbound bow** | `20374` | distancia | 1 | — | Crystal Spider 0.25%, Elvenbane Ranger 0.8%, Frost Dragon 0.4% | — |
+| **quicksilver katana** | `20660` | espada | 32 / 16 | Cortes cada 650 ms | GM: `/i 20660 1` | [QUICKSILVER_KATANA](QUICKSILVER_KATANA.md) |
 
 ## Sin fuente
 
@@ -81,4 +86,3 @@ Para crear una: [IMPORTAR_ITEM_DESDE_IMAGEN.md](../items-and-map/IMPORTAR_ITEM_D
 | **rift hammer** | `20111` | maza | 45 / 10 | Sin efecto | Hoy no se consigue (solo `/i`) | [ZAGAN_TEST_ITEMS](../items-and-map/ZAGAN_TEST_ITEMS.md) |
 | **granite mace** | `20115` | maza | 16 / 11 | Sin efecto | Hoy no se consigue (solo `/i`) | [ZAGAN_TEST_ITEMS](../items-and-map/ZAGAN_TEST_ITEMS.md) |
 | **reachbrand lance** | `20119` | hacha | 47 / 16 | Sin efecto | Hoy no se consigue (solo `/i`) | [ZAGAN_TEST_ITEMS](../items-and-map/ZAGAN_TEST_ITEMS.md) |
-| **boltworker crossbow** | `20120` | distancia | 0 | Sin efecto | Hoy no se consigue (solo `/i`) | [ZAGAN_TEST_ITEMS](../items-and-map/ZAGAN_TEST_ITEMS.md) |

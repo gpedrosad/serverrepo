@@ -3285,6 +3285,7 @@ static bool isRubyImbueWeaponItem(const Item* item)
 	return item && item->isWeapon() && item->getWeaponType() != SHIELD &&
 		!isWandItem(item->getID()) && !isNightglassDaggerItem(item) &&
 		!isCrystalArrowItem(item) && !isPaladinStar(item->getID()) && !isMeleeRelic(item->getID()) &&
+		item->getID() != ITEM_QUICKSILVER_KATANA &&
 		rubyStacksFromAid(item->getActionId()) > 0;
 }
 
@@ -3462,9 +3463,10 @@ int Player::getAttackDelayMs() const
 
 int Player::getBaseAttackDelayMs() const
 {
-	Item* relic = getActiveWeapon();
-	if(relic){
-		switch(relic->getID()){
+	Item* weapon = getActiveWeapon();
+	if(weapon){
+		switch(weapon->getID()){
+			case ITEM_QUICKSILVER_KATANA: return QUICKSILVER_KATANA_ATTACK_DELAY_MS;
 			case ITEM_RIFTBLADE: return RIFTBLADE_DELAY_MS;
 			case ITEM_AETHERCLEAVER: return AETHERCLEAVER_DELAY_MS;
 			case ITEM_GRAVITON_MAUL: return GRAVITON_DELAY_MS;
@@ -3491,7 +3493,6 @@ int Player::getBaseAttackDelayMs() const
 	// Aurora Blade/Axe (Zagan custom): base mas rapida que un arma normal; las
 	// gemas ruby siguen reduciendo el delay. Se detectan por nombre porque el
 	// server id lo asigna build_zagan_test_assets.py al reconstruir el pack.
-	Item* weapon = getActiveWeapon();
 	const bool auroraBlade = weapon && Item::items[weapon->getID()].name == "aurora blade";
 	const bool auroraAxe = weapon && Item::items[weapon->getID()].name == "aurora axe";
 	if(auroraBlade || auroraAxe){

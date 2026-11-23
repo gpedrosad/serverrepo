@@ -860,6 +860,9 @@ std::string Item::getDescription(bool fullDescription) const
 		s << std::endl << "10% chance to silence a player for 2-3s in PvP (spoken spells only; 12s cooldown per target).";
 	else if(id == ITEM_WINDSTING_AXE && fullDescription)
 		s << std::endl << "20% chance to make a player drunk for 6s in PvP.";
+	else if(id == ITEM_QUICKSILVER_KATANA && fullDescription)
+		s << std::endl << "Attacks every " << QUICKSILVER_KATANA_ATTACK_DELAY_MS
+		  << "ms. Fixed enchantment; cannot be imbued with a big ruby.";
 	else if(id == ITEM_ASHLORD_EMBERBLADE && fullDescription)
 		s << std::endl << "Crucible rare. Faster swings, fire trail, 20% chance to burn (DoT).";
 	else if(id == ITEM_FROSTWARDEN_CHILLBLADE && fullDescription)

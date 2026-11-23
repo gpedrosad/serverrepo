@@ -113,6 +113,9 @@ def with_light(prefix: bytes, level: int, color: int) -> bytes:
 # 2407 bright sword (espada 1 mano), 2393 giant sword (espada 2 manos), 2391 war hammer (maza 2 manos),
 # 2455 crossbow (ballesta). Los cuatro primeros usan stats de Tibia 8.60 (items.xml de RME data/860).
 NEW_ITEMS = [
+    dict(server_id=20660, client_id=6060, prototype=2412, attack=32, defence=16,
+         name="quicksilver katana", png="quicksilver_katana.png",
+         descr="A narrow curved blade forged for rapid cuts."),
     dict(name="emerald sword", server_id=20157, client_id=3348, prototype=2407, png="emerald_sword.png",
          attack=49, defence=33, descr="A sword with a blade of polished emerald."),
     dict(name="avenger", server_id=20158, client_id=3346, prototype=2393, png="the_avenger.png",

@@ -292,6 +292,7 @@ enum item_t {
 	ITEM_CRIMSON_CAGE_WALL = 20274,
 	ITEM_FROST_MINE_RUNE = 20369,
 	ITEM_FROST_MINE_FIRE = 20370,
+	ITEM_QUICKSILVER_KATANA = 20660,
 	/* Crown armors recoloreadas: loot raro de monstruos fuertes (docs/items-and-map/CROWN_ARMORS.md) */
 	ITEM_IMPERIAL_CROWN_ARMOR = 20161,
 	ITEM_SAPPHIRE_CROWN_ARMOR = 20162,
@@ -396,6 +397,7 @@ enum bloodsplash_t
 #define SOFT_BOOTS_DURATION_MS (240 * 60 * 1000)
 #define SOFT_BOOTS_EQUIP_PENALTY_MS 3000
 #define PLAYER_ATTACK_DELAY_MS (2000 * 100 / 150)  /* Tibia clásico 2000ms, x1.5 */
+#define QUICKSILVER_KATANA_ATTACK_DELAY_MS 650
 #define ATTACK_SPEED_BUFF_MIN_DELAY_MS 500     /* Frenzy / Rapid Fire nunca bajan de acá */
 #define ASHLORD_ATTACK_DELAY_MS 1100
 #define FROSTWARDEN_ATTACK_DELAY_MS 1200
