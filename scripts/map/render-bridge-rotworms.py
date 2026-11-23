@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Native previews of the small riverbank and the main bridge above it."""
 from pathlib import Path
+import json
 import sys
 from PIL import Image, ImageDraw, ImageFont
 
@@ -8,12 +9,14 @@ HERE = Path(__file__).resolve().parent
 sys.path[:0] = [str(HERE), str(HERE / 'kb')]
 from mapdata import REPO, Renderer, load_tiles
 from game_render import parse_dat_all, Sprites, creature_image
-from bridge_rotworm_bank import MONSTERS
+from bridge_rotworm_bank import MANIFEST, MONSTERS
 
 OUT = REPO / 'docs/items-and-map/img/main-bridge'
 
 
 def main():
+    if json.loads(MANIFEST.read_text()).get('removed'):
+        raise SystemExit('Riverbank removed; use render-main-bridge.py for the current bridge.')
     OUT.mkdir(parents=True, exist_ok=True)
     renderer, tiles = Renderer(), load_tiles()
     box = (129, 60, 149, 77)

@@ -116,12 +116,45 @@ def plan(values, otb):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--dry-run', action='store_true')
+    ap.add_argument('--remove', action='store_true', help='Restore the recorded river tiles and remove only our four spawns')
     args = ap.parse_args()
     raw = MAP.read_bytes()
     root, otb = parse_tree(raw), load_otb()
     nodes, values, _ = index(root, otb)
-    cells, report = plan(values, otb)
     previous = json.loads(MANIFEST.read_text()) if MANIFEST.exists() else {}
+    if args.remove:
+        assert previous.get('original') and previous.get('cells'), 'Missing restoration manifest'
+        cells = {tuple(map(int, key.split(','))): ids for key, ids in previous['original'].items()}
+        for p, ids in cells.items():
+            key = ','.join(map(str, p))
+            assert values.get(p) in (ids, previous['cells'][key]), ('Foreign tile modification', p)
+            assert len(nodes.get(p, [])) == 1 and nodes[p][0][0] == 5
+            tile = nodes[p][0]
+            assert len(tile[1]) == 5 and tile[1][2] == 9, ('Protected tile', p)
+            assert all(c[0] == 6 and len(c[1]) == 2 and not c[2] for c in tile[2]), ('Attributed object', p)
+        text = SPAWNS.read_text(encoding='latin-1')
+        updated = re.sub(rf'[ \t]*<!-- BEGIN {MARKER} -->.*?<!-- END {MARKER} -->\n?', '', text, flags=re.S)
+        ET.fromstring(updated)
+        changed = sum(values[p] != ids for p, ids in cells.items())
+        print(json.dumps(dict(removed=True, restoredTiles=changed, spawnFileChanged=text != updated)))
+        if args.dry_run or (not changed and text == updated):
+            return
+        backup = REPO / 'backups/map' / ('remove-bridge-rotworms-' + datetime.now().strftime('%Y%m%d-%H%M%S'))
+        backup.mkdir(parents=True)
+        for path in (MAP, SPAWNS, MANIFEST):
+            shutil.copy2(path, backup / path.name)
+        for (x, y, z), ids in cells.items():
+            tile = nodes[x, y, z][0]
+            tile[1] = bytearray((x % 256, y % 256)) + struct.pack('<BH', 9, ids[0])
+            tile[2] = [[6, bytearray(struct.pack('<H', sid)), []] for sid in ids[1:]]
+        MAP.write_bytes(serialize_tree(root, raw[:4]))
+        SPAWNS.write_text(updated, encoding='latin-1')
+        MANIFEST.write_text(json.dumps(previous | dict(removed=True), separators=(',', ':')) + '\n')
+        return
+    if previous.get('removed'):
+        print(json.dumps(dict(removed=True, changed=0, reason='Riverbank removed by user; generation disabled')))
+        return
+    cells, report = plan(values, otb)
     original = previous.get('original', {})
     for p, ids in cells.items():
         key = ','.join(map(str, p))

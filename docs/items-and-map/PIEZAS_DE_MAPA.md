@@ -141,8 +141,8 @@ tiene que ser piso libre. La escalera va **sola** en su casilla (nada de fogatas
 Conserva exactamente el trazado PvP documentado: 41 casillas, dos segmentos de
 1 sqm, cuatro trampillas y 50 anclas de baranda. Bordes claros y umbrales de bronce
 marcan los pasos angostos. El renderizador usa un material privado para no cambiar
-los demás puentes. Cliente publicado y mapa aplicado en la ThinkPad; debajo hay
-una ribera con cuatro rotworms y entrada suroeste en **135,73,7**.
+los demás puentes. Cliente publicado y mapa aplicado en la ThinkPad. La ribera de
+rotworms añadida debajo fue retirada a petición del usuario: vuelve el agua original.
 
 ### Versión de madera del 22 nov (base de geometría)
 

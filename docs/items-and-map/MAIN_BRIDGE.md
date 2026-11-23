@@ -81,12 +81,15 @@ actual fija las 50 anclas existentes y falla si una pieza no cabe en su 2×2.
 El material se carga de forma privada para no recolorear los demás puentes al
 importar el instalador general. Las apariencias se generan antes de instalarlas.
 
-Publicado y aplicado en la ThinkPad el 23 nov, junto con la ribera descrita abajo.
+Publicado y aplicado en la ThinkPad el 23 nov; la ribera posterior fue retirada.
 No se recompiló C++ ni se hicieron suites, bots o pruebas in-game, respetando la
 preferencia del usuario. El respaldo, la publicación y el reinicio ordenado siguieron
 el procedimiento de [ThinkPad](../systems/THINKPAD_TEST_SERVER.md).
 
-## Ribera de rotworms bajo el puente — 23 nov 2026
+## Ribera de rotworms bajo el puente — historial, retirada
+
+**Retirada a petición del usuario después de ver la imagen.** Lo que sigue describe
+la versión descartada; el agua original queda restaurada y no hay esos cuatro spawns.
 
 Gonzalo autorizó push/deploy y pidió rotworms en el agua bajo el puente, con entrada
 por el lado izquierdo sur. Se añadió una pequeña ribera de tierra en **z7**, con
@@ -153,3 +156,16 @@ Comparación del runtime antes/después: **1 cuenta, 8 archivos de personajes y
 sponsors, configuración y binario conservados. `scan-map-depots.py`: **11 lockers,
 todos depotid 1**. `sync-houses-with-map.py --dry-run`: coincide. No se verificó
 apertura de lockers dentro del juego.
+
+## Retirada de rotworms y ribera — 23 nov 2026
+
+`python3.11 scripts/map/bridge_rotworm_bank.py --remove` restaura únicamente las
+76 casillas registradas en el manifiesto y elimina el bloque `IRONBOUND_ROTWORMS`.
+Se rechazan cambios ajenos y objetos con atributos. El manifiesto queda marcado
+`removed`; el generador ya no reconstruye la zona por accidente y su render histórico
+avisa que debe usarse `render-main-bridge.py` para el estado actual.
+
+Mapa y spawns quedan **idénticos byte a byte a `0a0eac0`**, la versión Ironbound
+anterior a los rotworms: puente, ocho pilares, escaleras, casas, lockers y demás
+monstruos conservados. Segunda retirada: cero cambios. Publicación/deploy de esta
+retirada en curso; ver registro de cierre al completarse.
