@@ -12,7 +12,13 @@ diagonal ocupa los píxeles 2 a 29 en cada eje del cuadro de 32×32. El proyecti
 cardinal deja margen en los extremos y se centra en su eje de vuelo. Las ocho
 direcciones conservan el perfil de la lanza. La luz sigue siendo celeste, nivel 3
 para el ítem y nivel 4 en vuelo. Se reemplazaron ocho sprites en sus IDs actuales,
-con el DAT idéntico byte a byte. El acabado está pendiente de publicar al cliente.
+con el DAT idéntico byte a byte.
+
+Publicado el 23 nov 2026. Fuente `427a15c` y cliente Mac y Windows `82ce4d7` en
+`main`. `publish_client.py` actualizó `Tibia.spr` (CRC `1e65b865`). Se cotejaron
+los ZIPs y el actualizador de ambas webs (8080 y 8076). Respaldo en la ThinkPad
+`/home/gonzalo/backups/pre-publish-20261123-143429-enchanted-spear-classic`.
+Se verificó la continuidad del proceso de juego y el probe respondió en 11,7 ms.
 
 ## Estado de la primera integración
 
