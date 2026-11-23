@@ -1,6 +1,6 @@
 # Tienda de Seller y Small Street
 
-El rediseño local convierte el edificio y sus seis casas en un conjunto de piedra
+El rediseño convierte el edificio y sus seis casas en un conjunto de piedra
 caliza, cerámica jade y cobre. Las casas Small Street I–VI quedan con pisos cálidos
 y ventanas verdes. Seller tiene un mosaico claro, Mad uno verde grisáceo y Perac una
 terraza clara con barandas de cobre. El remate superior usa cerámica verde.
@@ -37,6 +37,22 @@ python3.11 scripts/map/render-seller-market.py
 El script conserva los atributos de los tiles de casa y comprueba acceso cardinal
 desde el camino sur a los dos mostradores. Para aplicar en la ThinkPad se publican
 primero DAT, SPR y minimapa con el actualizador de cliente.
+
+## Aplicado en la ThinkPad — 23 nov 2026
+
+Arte `5575dd0`, mapa y NPC `80f328f`, cliente Mac y Windows `3add786`, todos en
+`main`. `publish_client.py` actualizó DAT (`b67595c8`), SPR (`0069fd95`) y minimapa
+(`2a54c284`). Los 775 archivos comunes coinciden en ambas descargas y en el
+actualizador de los puertos 8080 y 8076.
+
+Respaldo `/home/gonzalo/backups/pre-deploy-20261123-132710-seller-market`, con copia
+fresca tras `server-save.sh --now`. El test de carga de mapa dio cero errores,
+los 11 lockers conservan el depot 1 y las casas del mapa coinciden con `houses.xml`.
+`git merge --ff-only` conservó los cambios de otras sesiones. `docker restart -t 45`
+activó el mapa a las 16:28:08 UTC, con cierre ordenado y arranque sin avisos de NPC.
+El probe respondió en 14,6 ms. Se conservaron una cuenta, ocho personajes, 35 casas,
+inventarios, depots y configuración. Validación estática y de arranque, sin pruebas
+in-game.
 
 ## Historial del recorte del fondo sur
 
