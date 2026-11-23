@@ -6519,55 +6519,60 @@
 	<!-- END BEHOLDER_CRYPT_SPAWNS -->
 	<!-- BEGIN RIVER_GROTTO_SPAWNS (scripts/map/generate-river-grotto.py) -->
 	<spawn centerx="165" centery="67" centerz="12" radius="3">
-		<monster name="Blood Crab" x="-1" y="1" z="12" spawntime="120" />
+		<monster name="Crab" x="-1" y="1" z="12" spawntime="90" />
+		<monster name="Tortoise" x="1" y="2" z="12" spawntime="90" />
 	</spawn>
 	<spawn centerx="154" centery="64" centerz="12" radius="3">
-		<monster name="Quara Constrictor" x="0" y="1" z="12" spawntime="120" />
+		<monster name="Crab" x="0" y="1" z="12" spawntime="90" />
+		<monster name="Tortoise" x="-2" y="-1" z="12" spawntime="90" />
 	</spawn>
 	<spawn centerx="155" centery="53" centerz="12" radius="3">
-		<monster name="Blood Crab" x="-1" y="1" z="12" spawntime="120" />
+		<monster name="Crab" x="-1" y="1" z="12" spawntime="90" />
+		<monster name="Tortoise" x="0" y="-1" z="12" spawntime="90" />
 	</spawn>
 	<spawn centerx="181" centery="54" centerz="12" radius="3">
-		<monster name="Water Elemental" x="2" y="2" z="12" spawntime="145" />
+		<monster name="Tortoise" x="2" y="2" z="12" spawntime="100" />
+		<monster name="Thornback Tortoise" x="0" y="-2" z="12" spawntime="100" />
 	</spawn>
 	<spawn centerx="170" centery="53" centerz="12" radius="3">
-		<monster name="Water Elemental" x="-1" y="-1" z="12" spawntime="145" />
+		<monster name="Tortoise" x="-1" y="-1" z="12" spawntime="100" />
+		<monster name="Thornback Tortoise" x="1" y="1" z="12" spawntime="100" />
 	</spawn>
 	<spawn centerx="172" centery="43" centerz="12" radius="3">
-		<monster name="Water Elemental" x="2" y="-2" z="12" spawntime="165" />
-		<monster name="Water Elemental" x="-1" y="-2" z="12" spawntime="165" />
+		<monster name="Thornback Tortoise" x="2" y="-2" z="12" spawntime="120" />
+		<monster name="Blood Crab" x="-1" y="-2" z="12" spawntime="120" />
 	</spawn>
 	<spawn centerx="183" centery="40" centerz="12" radius="3">
-		<monster name="Water Elemental" x="0" y="-1" z="12" spawntime="165" />
-		<monster name="Water Elemental" x="2" y="0" z="12" spawntime="165" />
+		<monster name="Thornback Tortoise" x="0" y="-1" z="12" spawntime="120" />
+		<monster name="Blood Crab" x="2" y="0" z="12" spawntime="120" />
 	</spawn>
 	<spawn centerx="189" centery="49" centerz="12" radius="3">
-		<monster name="Water Elemental" x="-1" y="-1" z="12" spawntime="165" />
-		<monster name="Water Elemental" x="-2" y="2" z="12" spawntime="165" />
+		<monster name="Thornback Tortoise" x="-1" y="-1" z="12" spawntime="120" />
+		<monster name="Blood Crab" x="-2" y="2" z="12" spawntime="120" />
 	</spawn>
 	<spawn centerx="152" centery="41" centerz="12" radius="3">
-		<monster name="Water Elemental" x="0" y="-2" z="12" spawntime="195" />
-		<monster name="Quara Hydromancer" x="2" y="-1" z="12" spawntime="195" />
+		<monster name="Blood Crab" x="0" y="-2" z="12" spawntime="130" />
+		<monster name="Thornback Tortoise" x="2" y="-1" z="12" spawntime="130" />
 	</spawn>
 	<spawn centerx="155" centery="25" centerz="12" radius="3">
-		<monster name="Water Elemental" x="-2" y="1" z="12" spawntime="195" />
-		<monster name="Quara Hydromancer" x="2" y="-1" z="12" spawntime="195" />
+		<monster name="Blood Crab" x="-2" y="1" z="12" spawntime="130" />
+		<monster name="Thornback Tortoise" x="2" y="-1" z="12" spawntime="130" />
 	</spawn>
 	<spawn centerx="164" centery="38" centerz="12" radius="3">
-		<monster name="Water Elemental" x="-2" y="0" z="12" spawntime="195" />
-		<monster name="Quara Hydromancer" x="-1" y="1" z="12" spawntime="195" />
+		<monster name="Blood Crab" x="-2" y="0" z="12" spawntime="130" />
+		<monster name="Thornback Tortoise" x="-1" y="1" z="12" spawntime="130" />
 	</spawn>
 	<spawn centerx="179" centery="26" centerz="12" radius="3">
-		<monster name="Quara Hydromancer" x="1" y="2" z="12" spawntime="220" />
-		<monster name="Bog Raider" x="1" y="-1" z="12" spawntime="220" />
+		<monster name="Blood Crab" x="1" y="2" z="12" spawntime="150" />
+		<monster name="Quara Constrictor" x="1" y="-1" z="12" spawntime="150" />
 	</spawn>
 	<spawn centerx="167" centery="25" centerz="12" radius="3">
-		<monster name="Quara Hydromancer" x="1" y="-1" z="12" spawntime="220" />
-		<monster name="Bog Raider" x="0" y="-1" z="12" spawntime="220" />
+		<monster name="Blood Crab" x="1" y="-1" z="12" spawntime="150" />
+		<monster name="Quara Constrictor" x="0" y="-1" z="12" spawntime="150" />
 	</spawn>
 	<spawn centerx="188" centery="23" centerz="12" radius="3">
-		<monster name="Quara Hydromancer" x="-1" y="1" z="12" spawntime="220" />
-		<monster name="Bog Raider" x="-2" y="1" z="12" spawntime="220" />
+		<monster name="Blood Crab" x="-1" y="1" z="12" spawntime="150" />
+		<monster name="Quara Constrictor" x="-2" y="1" z="12" spawntime="150" />
 	</spawn>
 	<!-- END RIVER_GROTTO_SPAWNS -->
 	<!-- BEGIN DEMONA_LOCAL_SPAWNS (scripts/map/generate-demona-local.py) -->

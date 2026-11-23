@@ -56,12 +56,14 @@ DOWN11 = (177, 68)
 BOX12 = (146, 20, 196, 76)
 # Serpentina con filas separadas 14 casillas: y68, y54, y40, y26
 PATH12 = [DOWN11, (154, 68), (154, 54), (188, 54), (188, 40), (154, 40), (154, 26), (188, 26)]
+# 23 nov 2026: bajada de nivel (antes Water Elemental, Quara Hydromancer y Bog Raider, 45-75): la entrada
+# está en medio de la ciudad, así que ahora es una caza de 15-35 con bichos de agua.
 STAGES12 = (
-    (("Blood Crab", "Quara Constrictor"), 1, 120, 12),
-    (("Water Elemental",), 1, 145, 12),
-    (("Water Elemental",), 2, 165, 12),
-    (("Water Elemental", "Quara Hydromancer"), 2, 195, 12),
-    (("Quara Hydromancer", "Bog Raider"), 2, 220, 12),
+    (("Crab", "Tortoise"), 2, 90, 12),
+    (("Tortoise", "Thornback Tortoise"), 2, 100, 12),
+    (("Thornback Tortoise", "Blood Crab"), 2, 120, 12),
+    (("Blood Crab", "Thornback Tortoise"), 2, 130, 12),
+    (("Blood Crab", "Quara Constrictor"), 2, 150, 12),
 )
 
 STONE_FLOOR, WET_FLOOR, MUD_FLOOR = 431, 966, 355
@@ -268,7 +270,7 @@ def main():
     signs = READABLES.read_text(encoding="latin-1")
     sign_text = block(
         signs, "RIVER_GROTTO_SIGNS",
-        '\t<readable x="177" y="58" z="7" text="SUBMERGED RIVER GROTTO\\nLevel 45-75.\\nBlood Crabs and Quara Constrictors at the entrance; Water Elementals, Quara Hydromancers and Bog Raiders below."/>',
+        '\t<readable x="177" y="58" z="7" text="SUBMERGED RIVER GROTTO\\nLevel 15-35.\\nCrabs and Tortoises at the entrance; Thornback Tortoises, Blood Crabs and Quara Constrictors below."/>',
         "</readables>",
     )
     changed = sum(values.get(p) != ids for p, ids in cells.items())

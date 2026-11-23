@@ -3,6 +3,13 @@
 Entrada `176,58,7`, cartel `177,58,7` (item 1429), acceso z8–z11 y hunt z12.
 Ver [creación y balance originales](../gameplay/CAMBIOS_SI_A_TODO.md).
 
+**Nivel 15–35 desde el 23 nov 2026.** La entrada está en medio de la ciudad y la caza original (Water
+Elemental, Quara Hydromancer y Bog Raider, nivel 45–75) era demasiado fuerte para ese lugar. Mismo recorrido y
+mismos 14 grupos, ahora con 28 monstruos de agua más débiles, de la entrada al fondo: Crab y Tortoise,
+Thornback Tortoise, Blood Crab y, al final, Quara Constrictor (`STAGES12` en `generate-river-grotto.py`). El
+cartel `177,58,7` dice el nivel nuevo. El mapa no cambió (`changed: 0`); solo `test-spawn.xml` y
+`readables.xml`.
+
 La gruta pasa del pavimento/mármol negro, columnas rotas y braseros a bancos de
 arena, agua azul animada, corales azules/naranjas, rocas con musgo y luces azules.
 El hoyo superficial usa tierra (`383`), acorde al camino. El cartel conserva su
