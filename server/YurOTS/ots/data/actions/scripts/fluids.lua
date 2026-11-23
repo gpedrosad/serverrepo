@@ -13,7 +13,7 @@ if frompos.x == 65535 then
    			doPlayerSendCancel(cid,"It is empty.")
    		else
    			if item2.uid == cid then
-   				if item.type == 14 then
+   				if item.type == 14 and getPlayerAccess(cid) < 2 then   -- el GM (accessprotect 2) usa todo
    					if getPlayerLevel(cid) < 50 then
    						doPlayerSendCancel(cid,"You need level 50 to use strong mana potions.")
    						return 1

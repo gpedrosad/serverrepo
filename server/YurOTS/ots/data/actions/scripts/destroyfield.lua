@@ -3,7 +3,7 @@ function onUse(cid, item, frompos, item2, topos)
  	fieldpos.stackpos = 254
  	fielditem = getThingfromPos(fieldpos)
  
- 	if getPlayerMagLevel(cid) >= 3 then
+ 	if getPlayerMagLevel(cid) >= 3 or getPlayerAccess(cid) >= 2 then   -- el GM usa todo
  		if fielditem.itemid > 0 and fielditem.itemid ~= 1497 and fielditem.itemid ~= 1498 then
  			doSendMagicEffect(topos,2)
  			doRemoveItem(fielditem.uid,1)

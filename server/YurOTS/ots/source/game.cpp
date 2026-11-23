@@ -2655,9 +2655,21 @@ bool Game::onPrepareMoveThing(Player *player, slots_t fromSlot, const Item *from
 bool Game::onPrepareMoveThing(Player *player, const Container *fromContainer, const Item *fromItem,
 	slots_t toSlot, const Item *toItem, int count)
 {
+	// Slot ocupado: se intercambian (lo que estaba puesto vuelve al lugar del ítem en la mochila; lo hace
+	// thingMoveInternal con fromContainer->addItem(toItem)). No si lo puesto es esa mochila o la contiene.
 	if(toItem && (!toItem->isStackable() || toItem->getID() != fromItem->getID())) {
-		player->sendCancel("Sorry, not enough room.");
-		return false;
+		const Container* toContainer = dynamic_cast<const Container*>(toItem);
+		if(toContainer && (toContainer == fromContainer || toContainer->isHoldingItem(fromContainer))) {
+			player->sendCancel("Sorry, not enough room.");
+			return false;
+		}
+		// Parte de un stack: el resto se queda en la mochila, así que lo que estaba puesto necesita un lugar más.
+		// Container::addItem no lo agrega si está llena y el ítem se perdería.
+		if(fromItem->isStackable() && count < fromItem->getItemCountOrSubtype() &&
+			fromContainer->size() >= fromContainer->capacity()) {
+			player->sendCancel("Sorry, not enough room.");
+			return false;
+		}
 	}
 
 	if(!player->isHoldingContainer(fromContainer) && player->aolRareConflict(fromItem))   // de un contenedor ajeno a un slot
@@ -4728,7 +4740,8 @@ void Game::creatureMakeDamage(Creature *creature, Creature *attackedCreature, fi
 	Player* attackedPlayer = dynamic_cast<Player*>(attackedCreature);
 
 	Item* activeWeapon = player ? player->getActiveWeapon() : NULL;
-	if(activeWeapon && isPaladinStar(activeWeapon->getID()) && player->getVocation() != VOCATION_PALADIN){
+	if(activeWeapon && isPaladinStar(activeWeapon->getID()) && player->getVocation() != VOCATION_PALADIN &&
+		player->access < g_config.ACCESS_PROTECT){   // el GM usa todo
 		player->sendCancel("Only paladins and royal paladins can use these stars.");
 		playerSetAttackedCreature(player, 0);
 		return;

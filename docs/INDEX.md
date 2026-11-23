@@ -112,6 +112,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/HOUSES.md`](gameplay/HOUSES.md) | **Casas:** dueños en `data/houses/*.xml`, deploy, backup/recuperación, **items fantasma** (caso Maximus `166,39,7` jul 2026). |
 | [`gameplay/HANGABLES.md`](gameplay/HANGABLES.md) | **Tapestries en las paredes**: los ítems `hangable` se cuelgan en paredes con gancho; en las casas se guardan y solo los mueven dueño e invitados. |
 | [`gameplay/AOL_RARES.md`](gameplay/AOL_RARES.md) | **AOL y armas rare no se llevan juntos**: bloqueo al mover y al comprar el AOL; al morir con los dos, el AOL no protege. |
+| [`gameplay/EQUIP_SWAP.md`](gameplay/EQUIP_SWAP.md) | **Cambiar equipo arrastrando**: un ítem de la mochila sobre un slot ocupado los intercambia; el GM usa todos los ítems. |
 | [`gameplay/GOLDEN_ACCESSORIES.md`](gameplay/GOLDEN_ACCESSORIES.md) | Golden amulet y golden ring: auto-bank, bonus de oro e interacción entre ambos. |
 | [`gameplay/SOFT_BOOTS.md`](gameplay/SOFT_BOOTS.md) | **Soft Boots (2640):** +3 HP / +12 MP cada 3 s, 4 h de uso → worn (2641), recarga con Azure Sunstone (`20124`). |
 | [`gameplay/NPC_SYSTEM.md`](gameplay/NPC_SYSTEM.md) | **NPCs:** cómo se cargan, componentes de `lib/npc/`, `npcDefine`, recetas, API C++, lista de NPCs y pruebas sin servidor (`scripts/npc/run_npc_tests.py`). |

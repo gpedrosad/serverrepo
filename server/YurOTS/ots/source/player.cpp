@@ -3329,7 +3329,7 @@ Item* Player::getActiveWeapon() const
 unsigned short Player::getPaladinStarId() const
 {
 	Item* weapon = getActiveWeapon();
-	return vocation == VOCATION_PALADIN && weapon && isPaladinStar(weapon->getID())
+	return (vocation == VOCATION_PALADIN || access >= g_config.ACCESS_PROTECT) && weapon && isPaladinStar(weapon->getID())
 		? weapon->getID() : 0;
 }
 
@@ -3372,7 +3372,8 @@ void Player::checkBoh()
 			crystalArrowNow = crystalArrowStacksFromAid(activeWeapon->getActionId());
 	}
 
-	const bool isMageVoc = (vocation == VOCATION_SORCERER || vocation == VOCATION_DRUID);
+	const bool isMageVoc = (vocation == VOCATION_SORCERER || vocation == VOCATION_DRUID ||
+		access >= g_config.ACCESS_PROTECT);   // el GM recibe también los bonos de mago
 	int helmMlNow = (items[SLOT_HEAD] && (items[SLOT_HEAD]->getID() == ITEM_MAGIC_TURBAN ||
 		(items[SLOT_HEAD]->getID() == ITEM_STARBINDER_HOOD && isMageVoc))) ? 1 : 0;
 
