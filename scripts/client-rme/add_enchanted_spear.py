@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """Enchanted Spear: sprite y luz propia en el cliente 7.6 (Tibia.dat / Tibia.spr).
 
-El dibujo se arma a partir de la spear del cliente (client id 3277): se conserva el asta con
-su contorno y se le pone una hoja de cristal más larga, una guarda dorada, runas que brillan
-en el asta y un halo hacia la punta. Además el ítem emite LUZ de color en el juego (atributo
-light del .dat), como una antorcha chica: así brilla distinto también de noche o en cuevas.
+El estilo clásico usa un dibujo original centrado de madera clara y metal bruñido.
+Los estilos anteriores usan su diseño de cristal. El ítem emite luz de color en
+el juego (atributo light del .dat).
 
 Proyectil propio NM_ANI_ENCHANTED_SPEAR = 16 (después de la bola de hielo del pack "ice", que
 tiene que estar aplicado antes): 8 direcciones, las diagonales son el dibujo del ítem espejado y
@@ -15,11 +14,11 @@ Ids (ver docs/gameplay/ENCHANTED_SPEAR.md):
   client id 3576    reutilizado: era "post officers hat" (server 2665), sin uso en mapa,
                     loot, NPCs ni scripts. Reservado en build_zagan_test_assets.py.
 
-Estilos (--style): arcana (azul, por defecto), violeta, sagrada (dorada), esmeralda.
+Estilos (--style): clasica (por defecto), arcana, violeta, sagrada, esmeralda.
 
 Uso:
   python3 scripts/client-rme/add_enchanted_spear.py --preview x.png              # vista previa de todos
-  python3 scripts/client-rme/add_enchanted_spear.py DIR_THINGS --style arcana    # aplica
+  python3 scripts/client-rme/add_enchanted_spear.py DIR_THINGS --style clasica   # aplica
   python3 scripts/client-rme/add_enchanted_spear.py --png x.png --style arcana   # sprite 32x32 suelto
   python3 scripts/client-rme/add_enchanted_spear.py --missile-preview x.png       # proyectil, 8 direcciones
 
@@ -53,6 +52,7 @@ OUTLINE = (0, 0, 0)
 # head: oscuro -> brillo de la hoja; shaft: 3 tonos del asta; aura: [lejos, cerca];
 # light: color de la luz en la paleta 6x6x6 del cliente (r*36 + g*6 + b, cada uno 0..5)
 STYLES = {
+    "clasica": dict(label="Clásica (acero y fresno)", classic=True, light=1 * 36 + 4 * 6 + 5),
     "arcana": dict(label="Arcana (azul)", head=[(40, 70, 150), (80, 150, 230), (150, 215, 255), (235, 250, 255)],
                    shaft=[(40, 30, 80), (70, 52, 125), (100, 78, 170)], band=(240, 200, 70), rune=(120, 240, 255),
                    aura=[(30, 110, 190), (90, 200, 255)], spark=(220, 250, 255), light=1 * 36 + 4 * 6 + 5),
@@ -70,8 +70,47 @@ STYLES = {
 Pixels = list  # 1024 tuplas RGBA
 
 
+def classic_spear(diagonal: bool) -> Pixels:
+    """Draw the same original spear profile across a tile or along its diagonal."""
+    ash = ((153, 105, 58), (201, 152, 86), (234, 192, 119))
+    bronze = ((156, 104, 52), (229, 171, 81), (251, 219, 145))
+    steel = ((117, 157, 170), (162, 201, 211), (214, 235, 237), (248, 249, 227))
+    blade_widths = (2, 4, 5, 5, 4, 3, 2, 1, 1)
+    solid = {}
+    for y in range(32):
+        for x in range(32):
+            along = (x - y + 24) // 2 if diagonal else x - 3
+            cross = x + y - 31 if diagonal else 2 * y - 31
+            across = abs(cross)
+            if 0 <= along <= 13 and across <= 2:
+                if along in (1, 2, 12, 13):
+                    color = bronze[1 if cross >= 0 else 2]
+                else:
+                    color = ash[2 if cross < 0 else 1 if across < 2 else 0]
+            elif along in (14, 15) and across <= (5 if along == 14 else 3):
+                color = bronze[2 if cross < 0 else 1 if across < 3 else 0]
+                if along == 14 and cross in (-1, 0):
+                    color = (123, 218, 202)
+            elif 16 <= along <= 24 and across <= blade_widths[along - 16]:
+                color = steel[3 if cross in (-1, 0) else 2 if cross < 0 else 1 if cross == 1 else 0]
+            else:
+                continue
+            solid[x, y] = color
+    out = [(0, 0, 0, 0)] * 1024
+    for (x, y), color in solid.items():
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            nx, ny = x + dx, y + dy
+            if 0 <= nx < 32 and 0 <= ny < 32 and (nx, ny) not in solid:
+                outline = (58, 82, 87) if color in steel else (77, 55, 37)
+                out[ny * 32 + nx] = (*outline, 255)
+        out[y * 32 + x] = (*color, 255)
+    return out
+
+
 def design(base: Pixels, st: dict, s0: int = 12, prof=(1, 1, 2, 2, 2, 2, 1, 1, 0)) -> Pixels:
     """Coordenadas sobre la diagonal de la spear: s = x - y (a lo largo), q = x + y - 30 (de costado)."""
+    if st.get("classic"):
+        return classic_spear(diagonal=True)
     out = [(0, 0, 0, 0)] * 1024
 
     def put(x, y, c):
@@ -156,6 +195,8 @@ def design_straight(st: dict) -> Pixels:
     Asta de 2 px (filas 15 y 16) con contorno, como la spear original; hoja de cristal,
     guarda, bandas, runas y halo con las mismas reglas que design().
     """
+    if st.get("classic"):
+        return classic_spear(diagonal=False)
     out = [(0, 0, 0, 0)] * 1024
 
     def put(x, y, c):
@@ -378,10 +419,10 @@ def save_sprite_png(px: Pixels, path: Path) -> None:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("things_dir", type=Path, nargs="?")
-    ap.add_argument("--style", choices=sorted(STYLES), default="arcana")
-    ap.add_argument("--preview", type=Path, help="PNG con la spear y los 4 estilos en contexto")
+    ap.add_argument("--style", choices=sorted(STYLES), default="clasica")
+    ap.add_argument("--preview", type=Path, help="PNG con la spear y los estilos en contexto")
     ap.add_argument("--png", type=Path, help="guarda el sprite 32x32 del estilo elegido")
-    ap.add_argument("--missile-preview", type=Path, help="PNG con el proyectil en 8 direcciones, 4 estilos")
+    ap.add_argument("--missile-preview", type=Path, help="PNG con el proyectil en 8 direcciones por estilo")
     ap.add_argument("--missile-png", type=Path, help="carpeta: un PNG 32x32 por dirección del estilo elegido")
     a = ap.parse_args()
 
