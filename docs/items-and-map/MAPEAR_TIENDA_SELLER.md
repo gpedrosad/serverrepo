@@ -39,6 +39,21 @@ El script conserva los atributos de los tiles de casa y comprueba acceso cardina
 desde el camino sur a los dos mostradores. Para aplicar en la ThinkPad se publican
 primero DAT, SPR y minimapa con el actualizador de cliente.
 
+## Mesones originales y nuevo local de Tonka — 23 nov 2026
+
+Mapa y NPC `4ed7c9c`, cliente Mac y Windows `de07264` en `main`. Se cotejaron
+33 tramos de mesón con el mapa anterior al rediseño y se comprobó el acceso al
+mostrador de Tonka en `147–148,56,7`. `publish_client.py` actualizó DAT
+(`879c76c7`), SPR (`3da83435`) y minimapa (`47e055c5`). Los 775 archivos comunes
+coinciden entre las descargas y el actualizador.
+
+Respaldo `/home/gonzalo/backups/pre-deploy-20261123-135903-seller-market-tonka`,
+con copia fresca tras `server-save.sh --now`. Se verificó que ningún personaje
+quedara sobre una casilla que recibe mobiliario. Carga sin errores, 11 lockers
+en depot 1 y casas alineadas con `houses.xml`. Reinicio ordenado a las 16:59:51 UTC
+y probe OK en 10,1 ms. Se conservaron una cuenta, ocho personajes, 35 casas,
+inventarios y depots. Validación estática y de arranque.
+
 ## Acabado de jade restaurado — 23 nov 2026
 
 Se restauró la versión anterior al acabado clásico a petición de Gonzalo. Mapa
