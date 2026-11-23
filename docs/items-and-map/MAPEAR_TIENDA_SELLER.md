@@ -1,23 +1,26 @@
 # Tienda de Seller y Small Street
 
-El rediseño convierte el edificio y sus seis casas en un conjunto de piedra
-caliza, cerámica jade y cobre. Las casas Small Street I–VI quedan con pisos cálidos
-y ventanas verdes. Seller tiene un mosaico claro, Mad uno verde grisáceo y Perac una
-terraza clara con barandas de cobre. El remate superior usa cerámica verde.
+El acabado clásico usa piedra labrada, madera y teja de terracota. Las seis casas
+Small Street tienen tablones cálidos y ventanas con postigos. Seller tiene un piso
+de losas, Mad una galería de piedra gris y Perac una terraza con barandas de roble.
+La calle usa adoquines planos para distinguirse de los interiores.
 
 ![Small Street y las tiendas de Seller y Tonka por piso](img/tienda-seller/small-street-market.png)
 
 - **Seller** (`145,50,7`). Se liberaron cinco casillas al acortar el mostrador
-  central y abrir el frente sur. Cuatro exhibidores fijos llevan los dibujos de
-  la mochila, cuerda, pala y caña, antes objetos sueltos. Se conserva el yunque.
+  central y abrir el frente sur. El mesón de roble tiene cubierta corrida, dos
+  remates y herrajes. Cuatro exhibidores fijos identifican la mochila, cuerda,
+  pala y caña. Se conserva el yunque.
 - **Tonka** (`149,55,7`). Local abierto de 5×3 al sur de Seller, con acceso desde
-  `146–147,57,7`. El mostrador `148,55,7` incorpora tres gemas y el emblema da luz
-  cálida. Se mudó el NPC existente con el mismo intercambio de gemas.
+  `146–147,57,7`. El mostrador `148,55,7` tiene un paño granate con tres gemas y
+  el emblema da luz cálida. Usa el mismo intercambio de gemas.
 - **Small Street I–VI.** Las 27 casillas de casas mantienen sus coordenadas,
   puertas y atributos. Las piezas nuevas son fijas. Se conservan las escaleras y
   los displays de Mad y Perac.
 
-El pack exclusivo ocupa **20600–20642** (cliente **6000–6042**). Los pisos usan
+![Detalle de los mostradores de Seller y Tonka](img/tienda-seller/small-street-counters.png)
+
+El pack exclusivo ocupa **20600–20644** (cliente **6000–6044**). Los pisos usan
 una capa decorativa sobre los suelos existentes para conservar sus velocidades.
 Los alias conservan colisión, proyectiles, orientación y altura de cada prototipo.
 El nuevo local convierte pasto en piso de tienda. El camino tiene una sección
@@ -28,7 +31,7 @@ python3.11 scripts/client-rme/seller_market_art.py
 python3.11 scripts/client-rme/add_custom_items.py \
   --things devtools/rme/rme-client-760 \
   --otb server/YurOTS/ots/data/items/items-zagan-test.otb \
-  --otb server/YurOTS/ots/data/items/items.otb --only {20600..20642}
+  --otb server/YurOTS/ots/data/items/items.otb --only {20600..20644}
 python3.11 scripts/map/style-seller-market.py
 python3.11 scripts/map/style-seller-market.py --apply
 python3.11 scripts/map/render-seller-market.py
@@ -38,7 +41,7 @@ El script conserva los atributos de los tiles de casa y comprueba acceso cardina
 desde el camino sur a los dos mostradores. Para aplicar en la ThinkPad se publican
 primero DAT, SPR y minimapa con el actualizador de cliente.
 
-## Aplicado en la ThinkPad — 23 nov 2026
+## Publicación inicial — 23 nov 2026
 
 Arte `5575dd0`, mapa y NPC `80f328f`, cliente Mac y Windows `3add786`, todos en
 `main`. `publish_client.py` actualizó DAT (`b67595c8`), SPR (`0069fd95`) y minimapa

@@ -15,6 +15,7 @@ from mapdata import MAP, REPO, load_otb, parse_tree, serialize_tree
 from epstein_cave_repair import index, connected
 from portal_temple_style import item_offsets
 from seller_market_art import (
+    COUNTER_NORTH, COUNTER_SOUTH,
     FLOOR_IDS, REPLACEMENTS, SELLER_DISPLAY, TONKA_COUNTER, TONKA_CREST, TONKA_DIVIDER, TONKA_SIDE,
 )
 
@@ -25,6 +26,7 @@ HOUSE_TILES = {(x, y, z) for x in (143, 144, 146) for y in range(43, 46) for z i
 SELLER_OPEN = {(144, 47): 1624, (144, 51): 1622, (144, 52): 1628,
                (145, 52): 1623, (146, 52): 1627}
 SELLER_CASES = {47: (1621, 1988), 48: (1620, 2120), 49: (1620, 2554), 50: (1620, 2580)}
+COUNTER_ENDS = {(144, 48, 7): COUNTER_NORTH, (144, 50, 7): COUNTER_SOUTH}
 TONKA_FURNITURE = {
     (145,54): TONKA_DIVIDER, (146,54): TONKA_DIVIDER, (147,54): TONKA_CREST,
     (148,54): TONKA_DIVIDER, (149,54): TONKA_DIVIDER, (145,55): TONKA_SIDE,
@@ -88,8 +90,11 @@ def paint(nodes, values, otb):
                 changes['equipment displays'] += 1
         for props, offset in item_offsets(tile, otb):
             sid = struct.unpack_from('<H', props, offset)[0]
-            if sid in REPLACEMENTS:
-                struct.pack_into('<H', props, offset, REPLACEMENTS[sid])
+            replacement = REPLACEMENTS.get(sid)
+            if p in COUNTER_ENDS and sid in (1622, REPLACEMENTS[1622]):
+                replacement = COUNTER_ENDS[p]
+            if replacement is not None:
+                struct.pack_into('<H', props, offset, replacement)
                 changes['fixture aliases'] += 1
         allowed = {405, 431, 920}
         if (not allowed.intersection(ids) or set(ids).intersection({1385, 1386})):
