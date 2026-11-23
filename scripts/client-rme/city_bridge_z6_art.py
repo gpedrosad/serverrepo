@@ -1,20 +1,14 @@
 #!/usr/bin/env python3
-"""Puente elevado de la ciudad (z6, sobre el río, x 139-144 y 57-76): barandas 3D continuas con faroles.
+"""Ironbound: puente principal de basalto, hierro y bronce (z6, 141,65).
 
-Mismo motor y paleta que los puentes de la ciudad (dock_bridge_art.py: cajas en la proyección de Tibia,
-contorno oscuro y veta), pero sobre el contorno de un tablero que cambia de ancho: plataformas de 3 casillas
-y pasos de 1 sqm (para trapear). La baranda sigue todo el borde sin cortes: pasamanos y travesaño continuos,
-postes cada 16 px, poste con remate en cada esquina y farol encendido en las puntas del puente y en la
-entrada de cada paso angosto.
+Conserva los dos pasos de 1 sqm, las plataformas, cuatro trampillas y las 50
+anclas de baranda originales. El material 3D es privado: no modifica los otros
+puentes de madera. Las piezas de 64x64 se reparten sin costuras en esas anclas.
 
-Cada pieza es la parte de la estructura cuya base cae en la región de su casilla "ancla": las casillas de
-aire alrededor del tablero (bloqueadas, sin suelo: se ve el río de z7). La región de cada ancla es la franja
-de 8 px del borde del tablero que le toca; se valida que cada dibujo entre en su 2x2.
+  python3.11 scripts/client-rme/city_bridge_z6_art.py --preview /tmp/ironbound.png
 
-  python3.11 scripts/client-rme/city_bridge_z6_art.py --preview /tmp/puente_z6.png
-
-Escribe devtools/zagan-test/custom-sprites/cbz6_*.png. Los instala add_custom_items.py (NEW_ITEMS importa
-cbz6_items() de acá) y los pone en el mapa scripts/map/bridge-trap-steps.py.
+Genera cbz6_*.png, los pavimentos y el pilar. Instalar con add_custom_items.py
+solo esta familia y aplicar bridge-trap-steps.py antes de publicar el cliente.
 """
 from __future__ import annotations
 
@@ -24,14 +18,24 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
-import dock_bridge_art as D  # noqa: E402
+from ironbound_bridge_material import material  # noqa: E402
+from functools import lru_cache
+D = material()
 
 T = D.T
 ROOT = HERE.parents[1]
 OUT_DIR = ROOT / "devtools/zagan-test/custom-sprites"
-SERVER_BASE, CLIENT_BASE = 20490, 5210          # hasta 40 piezas
+SERVER_BASE, CLIENT_BASE = 20490, 5210          # reservado hasta 50 piezas
 PROTOTYPE = 1517                                # baranda de madera 2x2 (bloquea), como las del muelle
 LIGHT = D.LIGHT
+# Keep every original air anchor: same collision, missile clearance and trap layout.
+RAIL_ANCHORS = frozenset(((139, 56), (139, 57), (139, 58), (139, 59), (139, 60), (139, 61), (139, 65), (139, 66),
+ (139, 67), (139, 71), (139, 72), (139, 73), (139, 74), (139, 75), (140, 56), (140, 62),
+ (140, 63), (140, 64), (140, 65), (140, 68), (140, 69), (140, 70), (140, 71), (140, 76),
+ (141, 56), (141, 76), (142, 56), (142, 62), (142, 63), (142, 64), (142, 65), (142, 68),
+ (142, 69), (142, 70), (142, 71), (142, 76), (143, 56), (143, 57), (143, 58), (143, 59),
+ (143, 60), (143, 61), (143, 65), (143, 66), (143, 67), (143, 71), (143, 72), (143, 73),
+ (143, 74), (143, 75)))
 
 TRAPDOORS = {(141, 59), (142, 59), (141, 74), (142, 74)}
 NARROW = [(62, 65), (68, 71)]
@@ -139,6 +143,7 @@ def build():
                 c = (x + dx, y + dy)
                 if c not in DECK and c not in rects:
                     rects[c] = (c[0] * T - 8, c[0] * T + T + 8, c[1] * T - 8, c[1] * T + T + 8)
+    rects = {a: rects[a] for a in RAIL_ANCHORS}
     # partir el suelo en celdas de 2 px y asignar cada celda a la ancla más cercana cuya región la contiene
     # y que la pueda dibujar (el sprite de una casilla se extiende solo hacia arriba y a la izquierda)
     cells, lost = {}, []
@@ -174,7 +179,7 @@ def build():
     orphan = lost
     if orphan:
         raise SystemExit(f"{len(orphan)} celdas de baranda sin ancla, p. ej. {orphan[:4]}")
-    anchors = sorted(cells)
+    anchors = sorted(rects)
     origin = ((min(x for x, _ in anchors) - 2) * T, (min(y for _, y in anchors) - 2) * T)
     size = ((max(x for x, _ in anchors) + 2) * T - origin[0], (max(y for _, y in anchors) + 2) * T - origin[1])
     layers = []
@@ -182,7 +187,7 @@ def build():
         img = Image.new("RGBA", size, (0, 0, 0, 0))
         # celdas contiguas en columnas: agrupar por filas para no renderizar 2x2 px uno por uno
         rows = {}
-        for gx, gy in cells[anchor]:
+        for gx, gy in cells.get(anchor, []):
             rows.setdefault(gy, []).append(gx)
         for gy, gxs in rows.items():
             gxs.sort()
@@ -228,17 +233,18 @@ def build():
     return out
 
 
+@lru_cache(maxsize=1)
 def pieces():
     """Sprites únicos: {clave: (sprite, con luz)} y {ancla: clave}."""
     uniq, keys, place = {}, {}, {}
     for anchor, sprite, lit in build():
-        if sprite.getbbox() is None:
-            continue
         raw = sprite.tobytes()
         if raw not in keys:
             keys[raw] = f"cbz6_{len(keys):02d}"
             uniq[keys[raw]] = (sprite, lit)
         place[anchor] = keys[raw]
+    assert len(uniq) <= 50, "Ironbound rail IDs exceed reserved range"
+    assert set(place) == RAIL_ANCHORS
     return uniq, place
 
 
@@ -252,9 +258,9 @@ def cbz6_items():
     out = []
     for i, key in enumerate(sorted(uniq)):
         lit = uniq[key][1]
-        item = dict(name="bridge lantern" if lit else "wooden railing", server_id=SERVER_BASE + i,
+        item = dict(name="ironbound bridge beacon" if lit else "basalt parapet", server_id=SERVER_BASE + i,
                     client_id=CLIENT_BASE + i, prototype=PROTOTYPE, png=f"{key}.png", decor=True, tiles=2,
-                    descr="A lantern on a railing post." if lit else "Sturdy railing of tarred oak.")
+                    descr="An amber beacon on a basalt parapet." if lit else "Basalt masonry braced with bronze and iron.")
         if lit:
             item["light"] = LIGHT
         out.append(item)
@@ -277,11 +283,16 @@ def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     for key, (img, _lit) in uniq.items():
         img.save(OUT_DIR / f"{key}.png")
+    from ironbound_bridge_deck import prepare
+    prepare()
     print(f"{len(uniq)} piezas únicas, {len(place)} anclas")
     if a.preview:
         sys.path[:0] = [str(ROOT / "scripts/map"), str(ROOT / "scripts/map/kb")]
         from mapdata import load_tiles, Renderer
+        from ironbound_bridge_deck import floor_pieces, floor_placements, PIER_POSITIONS, PIER_ID
         tiles = load_tiles()
+        for x, y in PIER_POSITIONS:
+            tiles[x, y, 7] = [s for s in tiles[x, y, 7] if s not in (1277, PIER_ID)]
         x0, y0, x1, y1 = 135, 54, 148, 79
         r = Renderer()
         w, h, b7 = r.area(tiles, x0, y0, x1, y1, 7)
@@ -290,9 +301,17 @@ def main():
             W, H, b = r.item(sid)
             return Image.frombytes("RGBA", (W, H), bytes(b))
         wood, trap = it(405), it(429)
+        pier = Image.open(OUT_DIR / 'ironbound_pier.png').convert('RGBA')
+        for x, y in sorted(PIER_POSITIONS, key=lambda p: (p[1], p[0])):
+            im.alpha_composite(pier, ((x - 1 - x0) * T, (y - 1 - y0) * T))
+        floor_images = {i + 20540: img for i, (_, img) in enumerate(floor_pieces())}
+        paving = floor_placements()
         # z6 se dibuja una casilla arriba-izquierda de z7
         for (x, y) in sorted(DECK, key=lambda c: (c[1], c[0])):
-            im.alpha_composite(trap if (x, y) in TRAPDOORS else wood, ((x - 1 - x0) * T, (y - 1 - y0) * T))
+            xy = ((x - 1 - x0) * T, (y - 1 - y0) * T)
+            im.alpha_composite(trap if (x, y) in TRAPDOORS else wood, xy)
+            if (x, y) in paving:
+                im.alpha_composite(floor_images[paving[x, y]], xy)
         for (x, y), key in sorted(place.items(), key=lambda c: (c[0][1], c[0][0])):
             im.alpha_composite(uniq[key][0], ((x - 2 - x0) * T, (y - 2 - y0) * T))
         im.convert("RGB").resize((im.width * 2, im.height * 2), Image.NEAREST).save(a.preview)

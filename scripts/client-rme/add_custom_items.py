@@ -536,6 +536,8 @@ NEW_ITEMS += bridge_items()
 # (server 20490+, client 5210+, una pieza por dibujo distinto). Las de make_bridge_rails quedan instaladas.
 from city_bridge_z6_art import cbz6_items  # noqa: E402
 NEW_ITEMS += cbz6_items()
+from ironbound_bridge_deck import items as ironbound_items  # noqa: E402
+NEW_ITEMS += ironbound_items()
 
 
 def u16(payload: bytes | None) -> int | None:
