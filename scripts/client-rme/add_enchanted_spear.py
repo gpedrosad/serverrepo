@@ -72,27 +72,31 @@ Pixels = list  # 1024 tuplas RGBA
 
 def classic_spear(diagonal: bool) -> Pixels:
     """Draw the same original spear profile across a tile or along its diagonal."""
-    ash = ((153, 105, 58), (201, 152, 86), (234, 192, 119))
+    ash = ((201, 152, 86), (234, 192, 119))
     bronze = ((156, 104, 52), (229, 171, 81), (251, 219, 145))
     steel = ((117, 157, 170), (162, 201, 211), (214, 235, 237), (248, 249, 227))
-    blade_widths = (2, 4, 5, 5, 4, 3, 2, 1, 1)
+    blade_widths = (1, 2, 3, 3, 2, 2, 1, 1)
     solid = {}
     for y in range(32):
         for x in range(32):
             along = (x - y + 24) // 2 if diagonal else x - 3
             cross = x + y - 31 if diagonal else 2 * y - 31
             across = abs(cross)
-            if 0 <= along <= 13 and across <= 2:
-                if along in (1, 2, 12, 13):
+            on_axis = cross == (0 if diagonal else -1)
+            thin_shaft = across <= 1 if diagonal else on_axis
+            if 0 <= along <= 13 and thin_shaft:
+                if along in (1, 13):
                     color = bronze[1 if cross >= 0 else 2]
                 else:
-                    color = ash[2 if cross < 0 else 1 if across < 2 else 0]
-            elif along in (14, 15) and across <= (5 if along == 14 else 3):
+                    color = ash[1 if cross < 0 else 0]
+            elif along in (14, 15) and across <= (3 if along == 14 else 1):
                 color = bronze[2 if cross < 0 else 1 if across < 3 else 0]
                 if along == 14 and cross in (-1, 0):
                     color = (123, 218, 202)
-            elif 16 <= along <= 24 and across <= blade_widths[along - 16]:
-                color = steel[3 if cross in (-1, 0) else 2 if cross < 0 else 1 if cross == 1 else 0]
+            elif 16 <= along < 24 and across <= blade_widths[along - 16]:
+                color = steel[3 if cross in (-1, 0) else 2 if cross == -2 else 1 if across < 3 else 0]
+            elif along == 24 and on_axis:
+                color = steel[3]
             else:
                 continue
             solid[x, y] = color

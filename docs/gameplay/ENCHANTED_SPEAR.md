@@ -20,6 +20,12 @@ los ZIPs y el actualizador de ambas webs (8080 y 8076). Respaldo en la ThinkPad
 `/home/gonzalo/backups/pre-publish-20261123-143429-enchanted-spear-classic`.
 Se verificó la continuidad del proceso de juego y el probe respondió en 11,7 ms.
 
+El ajuste posterior afina el asta, reduce la guarda y estrecha la hoja en el ítem
+y el proyectil. Conserva el encuadre de 32×32 y la paleta clara. Está aplicado en
+los assets locales, pendiente de publicar al cliente de jugadores.
+
+![Comparación del perfil anterior y del más fino](img/enchanted-spear-fine.png)
+
 ## Estado de la primera integración
 
 | Pieza | Estado |
