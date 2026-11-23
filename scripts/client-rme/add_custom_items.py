@@ -532,6 +532,10 @@ NEW_ITEMS += river_items()
 # client 5200-5208). Doc: docs/items-and-map/PIEZAS_DE_MAPA.md#puente-de-madera-elevado-z6.
 from make_bridge_rails import bridge_items  # noqa: E402
 NEW_ITEMS += bridge_items()
+# Puente de la ciudad en z6 (nov 2026): barandas 3D continuas con faroles, mismo motor que dock_bridge_art
+# (server 20490+, client 5210+, una pieza por dibujo distinto). Las de make_bridge_rails quedan instaladas.
+from city_bridge_z6_art import cbz6_items  # noqa: E402
+NEW_ITEMS += cbz6_items()
 
 
 def u16(payload: bytes | None) -> int | None:

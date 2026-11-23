@@ -26,10 +26,11 @@ HERE = Path(__file__).resolve().parent
 sys.path[:0] = [str(HERE), str(HERE / "kb"), str(HERE.parent / "client-rme")]
 from mapdata import MAP, REPO, load_otb, parse_tree, serialize_tree
 from epstein_cave_repair import index
-from make_bridge_rails import server_id as rail_id
+from make_bridge_rails import SERVER_BASE as OLD_RAIL_BASE
+import city_bridge_z6_art as ART
 
 Z = 6
-BOX = (139, 57, 144, 76)
+BOX = (138, 56, 144, 77)                                       # tablero + casillas de aire con baranda
 WOOD, TRAPDOOR = 405, 429
 TRAPDOORS = {(141, 59), (142, 59), (141, 74), (142, 74)}      # bajan a las escaleras 1385 de z7
 PILLAR = 1277                                                  # postes del puente, en el río (z7)
@@ -40,53 +41,26 @@ DECK = ({(x, y) for x in (140, 141, 142) for y in range(57, 76)
         | {(141, y) for a, b in NARROW for y in range(a, b + 1)})
 
 
-def original():
-    """El puente como estaba antes de cualquier cambio (para validar)."""
-    out = {}
-    for y in range(57, 77):
-        if y == 57:
-            row = [[442], [434, 1516], [434, 1516], [434, 1516], [434, 1516], [443]]
-        elif y == 75:
-            row = [[436, 1518], [405, 1516], [405, 1516], [405, 1516], [405, 1516, 1518], [437]]
-        elif y == 76:
-            row = [[445], [435], [435], [435], [435], [444]]
-        else:
-            row = [[436, 1518], [405], [405], [405], [405, 1518], [437]]
-        for x, ids in zip(range(139, 145), row):
-            out[(x, y)] = [TRAPDOOR] if (x, y) in TRAPDOORS else ids
-    return out
-
-
-def first_try():
-    """La versión del 22 nov (dfeb307): bordes corridos con piezas nativas."""
-    out = original()
-    narrow = [None, [436, 1518], [405], [405, 1518], [437], None]
-    first = [[445], [436, 1518], [405], [405, 1518], [437], [444]]
-    last = [[442], [436, 1518], [405], [405, 1518], [437], [443]]
-    for a, b in NARROW:
-        for y in range(a, b + 1):
-            row = first if y == a else last if y == b else narrow
-            for x, ids in zip(range(139, 145), row):
-                out[(x, y)] = ids
-    return out
-
-
 def wanted():
+    """Tablero: solo tablas 405 (y trampillas 429). Alrededor, casillas de aire sin suelo con la pieza de
+    baranda 3D (city_bridge_z6_art.py); el resto de la caja, sin casilla (se ve el río de z7)."""
+    rails = ART.placements()
+    assert set(DECK) == set(ART.DECK), "El tablero de acá y el del arte no coinciden"
     out = {}
     for x in range(BOX[0], BOX[2] + 1):
         for y in range(BOX[1], BOX[3] + 1):
-            if (x, y) not in DECK:
+            if (x, y) in DECK:
+                out[(x, y)] = [TRAPDOOR if (x, y) in TRAPDOORS else WOOD]
+            elif (x, y) in rails:
+                out[(x, y)] = [rails[(x, y)]]
+            else:
                 out[(x, y)] = None
-                continue
-            sides = {s for s, (dx, dy) in (("L", (-1, 0)), ("R", (1, 0)), ("T", (0, -1)), ("B", (0, 1)))
-                     if (x + dx, y + dy) not in DECK}
-            name = "".join(s for s in "LTRB" if s in sides)
-            name = {"LTR": None, "LTRB": None}.get(name, name)
-            combo = {"L": "L", "R": "R", "T": "T", "B": "B", "LR": "LR", "LT": "LT", "TR": "TR",
-                     "LB": "LB", "RB": "BR", "": ""}[name]
-            ground = TRAPDOOR if (x, y) in TRAPDOORS else WOOD
-            out[(x, y)] = [ground] + ([rail_id(combo)] if combo else [])
+    assert set(rails) <= set(out), "Hay barandas fuera de la caja"
     return out
+
+
+ALLOWED = ({WOOD, TRAPDOOR, 434, 435, 436, 437, 442, 443, 444, 445, 1516, 1518}
+           | set(range(OLD_RAIL_BASE, OLD_RAIL_BASE + 9)) | set(range(ART.SERVER_BASE, ART.SERVER_BASE + 40)))
 
 
 def item_node(iid):
@@ -102,11 +76,12 @@ def main():
     root = parse_tree(raw)
     otb = load_otb()
     nodes, values, areas = index(root, otb)
-    want, orig, v1 = wanted(), original(), first_try()
+    want = wanted()
     changed = 0
     for (x, y), ids in want.items():
         old = values.get((x, y, Z))
-        assert old in (orig[(x, y)], v1[(x, y)], ids), f"El puente cambió en {x},{y},{Z}: {old}"
+        # solo piezas del puente (originales, de las versiones anteriores o de esta)
+        assert old is None or set(old) <= ALLOWED, f"Casilla ajena en {x},{y},{Z}: {old}"
         assert len(nodes.get((x, y, Z), [])) <= 1
         changed += old != ids
     pillar_todo = []

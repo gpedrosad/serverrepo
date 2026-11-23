@@ -129,25 +129,29 @@ tiene que ser piso libre. La escalera va **sola** en su casilla (nada de fogatas
 
 ## Puente de madera elevado (z6)
 
-El puente sobre el río de la ciudad (x 139–144, y 57–76, z6) se rehízo el 22 nov 2026 con **barandas propias**.
-La baranda nativa `1518` se dibuja en el borde oeste de su casilla y la bloquea, así que el puente a la vista
-era una casilla más ancho que el caminable. El primer intento de angostarlo con piezas nativas quedó feo:
-barandas cortadas y muñones en las esquinas.
+El puente sobre el río de la ciudad (x 139–144, y 57–76, z6) se rehízo el 22 nov 2026.
 
-Ahora:
+- **Tablero:** solo existen las tablas que se pisan, `405` (y las trampillas `429` que ya estaban). Tiene
+  plataformas de 3 de ancho y **dos pasos de 1 sqm** (x 141, en y 62–65 y 68–71) para trapear.
+- **Barandas:** 3D, en el mismo estilo que los puentes de la ciudad (`dock_bridge_art.py`): pasamanos y
+  travesaño **continuos** por todo el contorno, poste con remate en cada esquina y **faroles encendidos**
+  en las cuatro puntas del puente y en la entrada de cada paso angosto.
+- **Piezas:** las dibuja `scripts/client-rme/city_bridge_z6_art.py`. Son 18 piezas de 2x2 (server
+  `20490`–`20507`, client `5210`–`5227`), ancladas en las casillas de aire que rodean el tablero: sin suelo,
+  bloquean y se ve el río de z7. Cada pedacito de baranda va a la casilla más cercana cuyo 2x2 contiene su
+  dibujo **proyectado**: lo que tiene altura se corre arriba-izquierda, así que la base puede caer en la
+  casilla vecina.
+- **Mapa:** lo pone `scripts/map/bridge-trap-steps.py`. Los postes `1277` del río se corrieron bajo los
+  bordes nuevos.
 
-- **Suelo:** solo existen las tablas que se pisan, `405` (y las trampillas `429` que ya estaban).
-- **Barandas:** cada tabla lleva su baranda, que **no bloquea**, en los lados que dan al agua. Son 9 piezas,
-  server `20480`–`20488` y client `5200`–`5208`, dibujadas por `scripts/client-rme/make_bridge_rails.py`.
-  Las de abajo y de la derecha traen la cara lateral del puente.
-- **Costados:** no hay casilla, así que se ve el río de z7 y no se puede pisar.
-- **Tramos de 1 sqm:** en y 62–65 y 68–71 queda una sola tabla, en x 141, para trapear.
-- **Postes:** los postes `1277` del río se corrieron bajo los bordes nuevos.
+Intentos descartados:
 
-Lo arma `scripts/map/bridge-trap-steps.py`, que elige la baranda de cada tabla según sus vecinas. El mismo
-juego de barandas sirve para cualquier puente: el ancho que se ve es el que se camina.
+1. Angostar con las barandas nativas `1518`: se dibujan en el borde oeste de su casilla y la bloquean, así
+   que quedaban cortadas y con muñones.
+2. Barandas planas dentro de la tabla (`make_bridge_rails.py`, server `20480`–`20488`, siguen instaladas):
+   se veían poco continuas.
 
-![Puente de la ciudad con tramos de 1 sqm](img/bridge-trap-steps.png)
+![Puente de la ciudad con barandas 3D y tramos de 1 sqm](img/bridge-trap-steps.png)
 
 ## Cuevas
 
