@@ -127,7 +127,15 @@ siguen 1050 en la fila norte y 1053 en la esquina SE. En la Torre del Barquero: 
 x, y del piso de abajo. Se cae sobre la escalera; usarla deja en **(x, y + 1)** del piso de arriba, que
 tiene que ser piso libre. La escalera va **sola** en su casilla (nada de fogatas encima).
 
-## Puente de madera elevado (z6)
+<a id="puente-de-madera-elevado-z6"></a>
+
+## Puente principal de la ciudad (z6)
+
+> **Puente de referencia del mapa.** Es el puente principal de la ciudad y el modelo documentado para
+> puentes nuevos o rehechos. Hay que copiar su forma (tablero sin casillas de más, barandas 3D continuas y
+> faroles) y su proceso (`city_bridge_z6_art.py` + `bridge-trap-steps.py`). No hay que volver a los
+> intentos descartados de abajo. Los otros 8 puentes de la ciudad usan las mismas barandas en versión de
+> tramos fijos (ver [TRANSICIONES_DEPOT.md](TRANSICIONES_DEPOT.md#los-demás-puentes-20-nov-2026)).
 
 El puente sobre el río de la ciudad (x 139–144, y 57–76, z6) se rehízo el 22 nov 2026.
 
@@ -152,6 +160,16 @@ Intentos descartados:
    se veían poco continuas.
 
 ![Puente de la ciudad con barandas 3D y tramos de 1 sqm](img/bridge-trap-steps.png)
+
+Para hacer otro puente con este modelo:
+
+1. Definir `DECK` (y los pasos angostos) en una copia de `city_bridge_z6_art.py`, con `SERVER_BASE` y
+   `CLIENT_BASE` libres. Antes, hacer `git fetch` y mirar los ids de las otras sesiones.
+2. Ver la vista previa con `--preview` y, después, instalar las piezas con
+   `add_custom_items.py --only <ids>`.
+3. Ponerlas en el mapa con el equivalente de `bridge-trap-steps.py`: correr primero `--dry-run`, que solo
+   debe tocar casillas del puente.
+4. Antes de deployar, correr las validaciones de mapa de siempre y cruzarlo con un bot en un server aparte.
 
 ## Cuevas
 

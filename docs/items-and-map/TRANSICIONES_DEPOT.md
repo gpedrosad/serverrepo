@@ -40,6 +40,8 @@ script lo comprueba casilla por casilla (huella, colisión y cambio de piso igua
 ## Los demás puentes (20 nov 2026)
 
 Mismas barandas en 8 puentes de madera de la ciudad y alrededores, con farol en las cuatro puntas.
+El puente principal (el de referencia) es otro: el elevado de z6 sobre el río, con pasos de 1 sqm. Ver
+[PIEZAS_DE_MAPA.md](PIEZAS_DE_MAPA.md#puente-de-madera-elevado-z6).
 Están en `BRIDGES` de `dock_bridge_art.py`.
 
 ![Los 8 puentes con barandas](img/city-bridge-transitions/v2-puentes.png)
