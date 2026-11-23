@@ -6755,4 +6755,33 @@
 		<monster name="Frost Giant" x="2" y="1" z="7" spawntime="145" />
 	</spawn>
 	<!-- END BARBARIAN_CAMP_SPAWNS -->
+	<!-- BEGIN EMBER_FIELD_SPAWNS (scripts/map/generate-ember-field.py) -->
+	<spawn centerx="38" centery="54" centerz="7" radius="2">
+		<monster name="Demon Skeleton" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="45" centery="52" centerz="7" radius="2">
+		<monster name="Demon Skeleton" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="51" centery="55" centerz="7" radius="2">
+		<monster name="Demon Skeleton" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="35" centery="57" centerz="7" radius="2">
+		<monster name="Fire Devil" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="42" centery="56" centerz="7" radius="2">
+		<monster name="Fire Devil" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="48" centery="54" centerz="7" radius="2">
+		<monster name="Fire Devil" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="41" centery="52" centerz="7" radius="2">
+		<monster name="Bone Beast" x="0" y="0" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="46" centery="56" centerz="7" radius="2">
+		<monster name="Bone Beast" x="0" y="0" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="57" centery="52" centerz="7" radius="2">
+		<monster name="Demon Skeleton" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<!-- END EMBER_FIELD_SPAWNS -->
 </spawns>
