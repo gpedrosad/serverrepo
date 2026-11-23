@@ -22,6 +22,8 @@ TONKA_DIVIDER = TONKA_COUNTER + 1
 TONKA_CREST = TONKA_COUNTER + 2
 SELLER_DISPLAY = TONKA_COUNTER + 3
 TONKA_SIDE = SELLER_DISPLAY + 4
+TONKA_WORKTOP = TONKA_SIDE + 1
+TONKA_RAIL = TONKA_WORKTOP + 1
 
 LIMESTONE = '#c2b49b'
 PALE = '#ece0c2'
@@ -150,24 +152,71 @@ def stall_piece(kind):
     image = Image.new('RGBA', (32, 32))
     d = ImageDraw.Draw(image)
     if kind == 'side':
-        d.rectangle((19,0,30,31), fill=DARK)
-        d.rectangle((19,0,27,31), fill=JADE)
-        d.line((19,0,19,31), fill=COPPER_LIGHT, width=2)
-        for y in (4,19):
-            d.rectangle((22,y,25,y+6), fill=JADE_LIGHT)
+        d.polygon(((8,25),(22,25),(26,30),(12,30)), fill='#566359', outline=DARK)
+        d.rectangle((10,10,21,25), fill=LIMESTONE, outline=DARK)
+        d.rectangle((11,13,16,23), fill=PALE)
+        d.rectangle((9,22,22,24), fill=COPPER)
+        d.rectangle((8,6,22,15), fill=DARK)
+        d.rectangle((10,8,20,12), fill='#bf8239')
+        d.rectangle((12,9,18,11), fill='#ffe6a5')
+        d.line((10,7,20,7), fill=COPPER_LIGHT)
+        d.polygon(((7,6),(12,2),(18,2),(24,6)), fill=JADE, outline=DARK)
+        d.line((12,3,17,3), fill=JADE_LIGHT)
         return image
-    d.rectangle((0,14,31,28), fill=DARK)
-    d.rectangle((0,14,31,24), fill=LIMESTONE)
-    d.line((0,14,31,14), fill=PALE, width=2)
-    d.line((0,25,31,25), fill=COPPER)
-    for x in (8,24):
-        d.line((x,16,x,23), fill=JOINT)
+    if kind == 'rail':
+        d.rectangle((10,0,23,31), fill=DARK)
+        d.rectangle((11,0,19,31), fill=JADE)
+        d.line((11,0,11,31), fill=JADE_LIGHT)
+        d.line((19,0,19,31), fill=COPPER)
+        for y in (1, 16, 29):
+            d.line((10,y,23,y), fill=COPPER_LIGHT, width=2)
+        return image
+    d.rectangle((0,8,31,28), fill=DARK)
+    d.rectangle((0,9,31,24), fill=LIMESTONE)
+    d.line((0,9,31,9), fill=PALE)
+    for row, y in enumerate((11, 17, 23)):
+        d.line((0,y,31,y), fill=JOINT)
+        for x in range(5 + 6*(row % 2), 32, 12):
+            d.line((x,y,x,y+4), fill=JOINT)
+    d.rectangle((0,24,31,28), fill=JADE)
+    d.line((0,24,31,24), fill=COPPER_LIGHT)
     if kind == 'emblem':
-        d.rounded_rectangle((3,0,28,24), radius=4, fill=DARK, outline=COPPER_LIGHT, width=2)
-        d.polygon(((15,4),(23,11),(15,20),(8,11)), fill='#7ee2b5')
-        d.polygon(((15,4),(16,11),(8,11)), fill='#c4fce0')
-        d.polygon(((16,11),(23,11),(15,20)), fill=JADE)
+        d.polygon(((3,5),(9,1),(22,1),(28,5),(28,20),(15,25),(3,20)),
+                  fill=DARK, outline=COPPER_LIGHT)
+        d.polygon(((10,6),(20,6),(24,11),(15,20),(7,11)), fill='#5e9a87')
+        d.polygon(((10,6),(20,6),(17,11),(7,11)), fill='#d3f2cc')
+        d.polygon(((17,11),(24,11),(15,20)), fill='#36635e')
     return image
+
+
+def tonka_worktops():
+    """Draw one two-square jeweler's counter, then slice it at the join."""
+    image = Image.new('RGBA', (64, 32))
+    d = ImageDraw.Draw(image)
+    d.polygon(((3,25),(60,25),(63,29),(7,29)), fill='#5c6357')
+    d.rectangle((5,9,58,27), fill=DARK)
+    d.rectangle((7,16,56,25), fill='#526358')
+    for x in (7, 31, 54):
+        d.rectangle((x,19,x+3,28), fill=JADE, outline=DARK)
+        d.point((x+1,22), fill=COPPER_LIGHT)
+    d.polygon(((2,7),(56,7),(61,11),(61,20),(3,20),(1,17)), fill=JOINT)
+    d.polygon(((3,7),(56,7),(59,10),(59,17),(3,17)), fill='#decfae')
+    d.line((4,8,55,8), fill='#f6eaca')
+    d.line((4,19,58,19), fill=COPPER_LIGHT)
+    d.rectangle((34,9,54,16), fill='#663e58')
+    d.line((35,9,53,9), fill='#9d667e')
+    for x, color, light in ((39,'#52a380','#cbf9d2'), (44,'#af5b6e','#f1a9a2'),
+                            (50,'#716aae','#c4bbea')):
+        d.polygon(((x,9),(x+3,12),(x,16),(x-3,12)), fill=DARK)
+        d.polygon(((x,10),(x+2,12),(x,15),(x-2,12)), fill=color)
+        d.point((x-1,11), fill=light)
+    # Scale and open ledger on the work side.
+    d.line((11,11,24,11), fill='#766144')
+    d.line((17,9,17,15), fill=COPPER)
+    d.ellipse((9,12,14,14), fill=COPPER_LIGHT, outline=COPPER)
+    d.ellipse((21,12,26,14), fill=COPPER_LIGHT, outline=COPPER)
+    d.rectangle((28,10,32,15), fill=PALE, outline=JOINT)
+    return image.crop((0,0,32,32)), image.crop((32,0,64,32))
 
 
 def definitions():
@@ -183,8 +232,9 @@ def definitions():
         else:
             size = RAILS[proto]
             out.append((sid, proto, size, 'copper terrace guard', trim(size, 'h' if proto == 1600 else 'v')))
+    worktop, display = tonka_worktops()
     out += [
-        (TONKA_COUNTER, 1622, 1, 'gem exchange counter', fixture(1, 1622, gems=True)),
+        (TONKA_COUNTER, 1622, 1, 'gem exchange counter', display),
         (TONKA_DIVIDER, 1623, 1, 'gem shop partition', stall_piece('wall')),
         (TONKA_CREST, 1623, 1, 'gem shop emblem', stall_piece('emblem')),
     ]
@@ -204,14 +254,18 @@ def definitions():
             else:
                 d.line((21,32,24,40,22,42), fill=PALE)
         out.append((SELLER_DISPLAY+i, proto, '1x2', 'seller equipment display', image))
-    return out + [(TONKA_SIDE, 1623, 1, 'gem shop screen', stall_piece('side'))]
+    return out + [
+        (TONKA_SIDE, 1623, 1, 'gem shop lantern post', stall_piece('side')),
+        (TONKA_WORKTOP, 1622, 1, 'gem shop worktop', worktop),
+        (TONKA_RAIL, 1623, 1, 'gem shop side rail', stall_piece('rail')),
+    ]
 
 
 def items():
     return [dict(server_id=sid, client_id=CLIENT+sid-BASE, prototype=proto, tiles=size,
                  decor=True, fixed=True, png=f'seller_market_{sid}.png',
                  name=name, descr='A fixed furnishing of the Small Street market.',
-                 **({'light': (4, 215)} if sid == TONKA_CREST else {}))
+                 **({'light': (4, 215)} if sid in (TONKA_CREST, TONKA_SIDE) else {}))
             for sid, proto, size, name, _ in definitions()]
 
 

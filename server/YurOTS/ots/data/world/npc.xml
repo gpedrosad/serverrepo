@@ -19,7 +19,7 @@
 <npc name="Nimral" x="450" y="41" z="7" dir="1"/>
 
 <npc name="Parived" x="133" y="58" z="7" dir="2"/>
-<npc name="Tonka" x="149" y="55" z="7" dir="3"/>
+<npc name="Tonka" x="148" y="55" z="7" dir="2"/>
 <npc name="Huntmaster" x="131" y="53" z="6" dir="2"/>
 <!-- Wave Arena: Kaelen watches the clearing, cleans orphan monsters, and shows live HUD (docs/gameplay/WAVE_ARENA.md) -->
 <npc name="Kaelen" x="603" y="220" z="7" dir="2"/>

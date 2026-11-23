@@ -7,17 +7,18 @@ terraza clara con barandas de cobre. El remate superior usa cerámica verde.
 
 ![Small Street y las tiendas de Seller y Tonka por piso](img/tienda-seller/small-street-market.png)
 
-- **Seller** (`145,50,7`). Se liberaron cinco casillas al acortar el mostrador
-  central y abrir el frente sur. Cuatro exhibidores fijos llevan los dibujos de
-  la mochila, cuerda, pala y caña, antes objetos sueltos. Se conserva el yunque.
-- **Tonka** (`149,55,7`). Local abierto de 5×3 al sur de Seller, con acceso desde
-  `146–147,57,7`. El mostrador `148,55,7` incorpora tres gemas y el emblema da luz
-  cálida. Se mudó el NPC existente con el mismo intercambio de gemas.
+- **Mesones originales.** Seller (`145,50,7`), Mad y Perac recuperan sus mesones
+  nativos con la disposición y exhibiciones anteriores al rediseño. La planta de
+  Seller vuelve a tener el mostrador largo y su remate en L.
+- **Tonka** (`148,55,7`). El local abre al camino sur por la franja `146–149,57,7`.
+  Atiende hacia el sur desde un mostrador de dos casillas (`147–148,56,7`), con
+  balanza, libro y gemas integrados al dibujo. Dos faroles enmarcan el frente y
+  el emblema identifica el local. Conserva su intercambio de gemas.
 - **Small Street I–VI.** Las 27 casillas de casas mantienen sus coordenadas,
   puertas y atributos. Las piezas nuevas son fijas. Se conservan las escaleras y
   los displays de Mad y Perac.
 
-El pack exclusivo ocupa **20600–20642** (cliente **6000–6042**). Los pisos usan
+El pack exclusivo ocupa **20600–20644** (cliente **6000–6044**). Los pisos usan
 una capa decorativa sobre los suelos existentes para conservar sus velocidades.
 Los alias conservan colisión, proyectiles, orientación y altura de cada prototipo.
 El nuevo local convierte pasto en piso de tienda. El camino tiene una sección
@@ -28,7 +29,7 @@ python3.11 scripts/client-rme/seller_market_art.py
 python3.11 scripts/client-rme/add_custom_items.py \
   --things devtools/rme/rme-client-760 \
   --otb server/YurOTS/ots/data/items/items-zagan-test.otb \
-  --otb server/YurOTS/ots/data/items/items.otb --only {20600..20642}
+  --otb server/YurOTS/ots/data/items/items.otb --only {20600..20644}
 python3.11 scripts/map/style-seller-market.py
 python3.11 scripts/map/style-seller-market.py --apply
 python3.11 scripts/map/render-seller-market.py
