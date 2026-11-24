@@ -796,6 +796,8 @@ int Player::addItemInventory(Item* item, int pos, bool internal /*= false*/) {
 			items[pos]->setGlimmer();
 			checkRing(0);
 		}
+		if (pos == SLOT_FEET && items[pos] && items[pos]->getID() == ITEM_SOFT_BOOTS)
+			items[pos]->setGlimmer();	// Soft Boots puestas: brillan (ITEM_SOFT_BOOTS_IN_USE)
 
 		updateInventoryWeigth();
 
@@ -1802,6 +1804,8 @@ void Player::onThingMove(const Creature *creature, slots_t fromSlot, const Item*
 		// efectos (velocidad/mana shield/invisible) inmediatamente al desequipar.
 		checkRing(0);
 	}
+	if (fromSlot == SLOT_FEET)
+		const_cast<Item*>(fromItem)->removeGlimmer();	// Soft Boots: dejan de brillar al sacarlas
 	client->sendThingMove(creature, fromSlot, fromItem, oldFromCount, toContainer, to_slotid, toItem, oldToCount, count);
 	refreshHeadSkillBonus(fromSlot);
 	if (fromSlot == SLOT_FEET || fromSlot == SLOT_ARMOR || fromSlot == SLOT_LEGS ||
@@ -1829,6 +1833,10 @@ void Player::onThingMove(const Creature *creature, slots_t fromSlot, const Item*
 		// FIX rings: refrescar flags al equipar.
 		checkRing(0);
 	}
+	if (fromSlot == SLOT_FEET)
+		const_cast<Item*>(fromItem)->removeGlimmer();	// Soft Boots: dejan de brillar al sacarlas
+	else if (toSlot == SLOT_FEET)
+		const_cast<Item*>(fromItem)->setGlimmer();	// Soft Boots: brillan puestas
 	client->sendThingMove(creature, fromSlot, fromItem, oldFromCount, toSlot, toItem, oldToCount, count);
 	refreshHeadSkillBonus(fromSlot, toSlot);
 	if (fromSlot == SLOT_FEET || toSlot == SLOT_FEET ||
@@ -1839,7 +1847,7 @@ void Player::onThingMove(const Creature *creature, slots_t fromSlot, const Item*
 		checkBoh();
 	if (fromSlot == SLOT_FEET)
 		softBootsTick = 0;
-	if (toSlot == SLOT_FEET && fromItem && fromItem->getID() == ITEM_SOFT_BOOTS)
+	if (toSlot == SLOT_FEET && fromItem && fromItem->getID() == ITEM_SOFT_BOOTS_IN_USE)
 		onSoftBootsEquipped(const_cast<Item*>(fromItem));
 }
 
@@ -1854,12 +1862,14 @@ void Player::onThingMove(const Creature *creature, const Container *fromContaine
 		// FIX rings: refrescar flags al equipar.
 		checkRing(0);
 	}
+	if (toSlot == SLOT_FEET)
+		const_cast<Item*>(fromItem)->setGlimmer();	// Soft Boots: brillan puestas
 	client->sendThingMove(creature, fromContainer, from_slotid, fromItem, oldFromCount, toSlot, toItem, oldToCount, count);
 	refreshHeadSkillBonus(toSlot);
 	if (toSlot == SLOT_FEET || toSlot == SLOT_ARMOR || toSlot == SLOT_LEGS ||
 		toSlot == SLOT_LEFT || toSlot == SLOT_RIGHT)
 		checkBoh();
-	if (toSlot == SLOT_FEET && fromItem && fromItem->getID() == ITEM_SOFT_BOOTS)
+	if (toSlot == SLOT_FEET && fromItem && fromItem->getID() == ITEM_SOFT_BOOTS_IN_USE)
 		onSoftBootsEquipped(const_cast<Item*>(fromItem));
 }
 
@@ -1881,6 +1891,8 @@ void Player::onThingMove(const Creature *creature, slots_t fromSlot,
 		// FIX rings: refrescar flags al desequipar.
 		checkRing(0);
 	}
+	if (fromSlot == SLOT_FEET)
+		const_cast<Item*>(fromItem)->removeGlimmer();	// Soft Boots: dejan de brillar al sacarlas
 	client->sendThingMove(creature, fromSlot, fromItem, oldFromCount, toPos, toItem, oldToCount, count);
 	refreshHeadSkillBonus(fromSlot);
 	if (fromSlot == SLOT_FEET || fromSlot == SLOT_ARMOR || fromSlot == SLOT_LEGS ||
@@ -1908,12 +1920,14 @@ void Player::onThingMove(const Creature *creature, const Position &fromPos, int 
 		// FIX rings: refrescar flags al equipar.
 		checkRing(0);
 	}
+	if (toSlot == SLOT_FEET)
+		const_cast<Item*>(fromItem)->setGlimmer();	// Soft Boots: brillan puestas
 	client->sendThingMove(creature, fromPos, stackpos, fromItem, oldFromCount, toSlot, toItem, oldToCount, count);
 	refreshHeadSkillBonus(toSlot);
 	if (toSlot == SLOT_FEET || toSlot == SLOT_ARMOR || toSlot == SLOT_LEGS ||
 		toSlot == SLOT_LEFT || toSlot == SLOT_RIGHT)
 		checkBoh();
-	if (toSlot == SLOT_FEET && fromItem && fromItem->getID() == ITEM_SOFT_BOOTS)
+	if (toSlot == SLOT_FEET && fromItem && fromItem->getID() == ITEM_SOFT_BOOTS_IN_USE)
 		onSoftBootsEquipped(const_cast<Item*>(fromItem));
 }
 
@@ -3549,7 +3563,7 @@ unsigned short Player::getCrucibleWeaponId() const
 
 void Player::onSoftBootsEquipped(Item* boots)
 {
-	if(!boots || boots->getID() != ITEM_SOFT_BOOTS)
+	if(!boots || (boots->getID() != ITEM_SOFT_BOOTS && boots->getID() != ITEM_SOFT_BOOTS_IN_USE))
 		return;
 
 	if(boots->getTime() <= 0)
@@ -3562,7 +3576,12 @@ void Player::onSoftBootsEquipped(Item* boots)
 void Player::checkSoftBoots(int thinkTicks)
 {
 	Item* feet = items[SLOT_FEET];
-	if(!feet || feet->getID() != ITEM_SOFT_BOOTS) {
+	if(feet && feet->getID() == ITEM_SOFT_BOOTS) {
+		// Recargadas puestas con la Azure Sunstone (vuelven como 2640): que brillen otra vez.
+		feet->setGlimmer();
+		sendInventory(SLOT_FEET);
+	}
+	if(!feet || feet->getID() != ITEM_SOFT_BOOTS_IN_USE) {
 		softBootsTick = 0;
 		return;
 	}
