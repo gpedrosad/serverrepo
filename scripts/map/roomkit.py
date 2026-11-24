@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import importlib.util
 import re
+from xml.sax.saxutils import escape
 import struct
 import sys
 from collections import defaultdict
@@ -242,7 +243,7 @@ def patch_readables(begin: str, end: str, signs: list[dict]):
     """Bloque de carteles en readables.xml: [{x, y, z, text}]. Lo agrega si no existe."""
     lines = [f"\t{begin}"]
     for s in signs:
-        text = s["text"].replace("\n", "\\n")
+        text = escape(s["text"], {'"': "&quot;"}).replace("\n", "\\n")   # "&" crudo rompe el XML
         lines.append(f'\t<readable x="{s["x"]}" y="{s["y"]}" z="{s["z"]}" text="{text}"/>')
     lines.append(f"\t{end}")
     block = "\n".join(lines) + "\n"
