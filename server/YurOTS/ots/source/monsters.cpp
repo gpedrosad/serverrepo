@@ -203,40 +203,6 @@ static bool isRareEquipmentLootItem(unsigned short itemId)
 	return false;
 }
 
-static bool isSmallGemItem(unsigned short itemId)
-{
-	return itemId == ITEM_SMALL_AMETHYST || itemId == ITEM_SMALL_EMERALD ||
-		itemId == ITEM_SMALL_RUBY || itemId == ITEM_SMALL_SAPPHIRE ||
-		itemId == ITEM_SMALL_DIAMOND;
-}
-
-static int getRageGemChancePercent(const std::string& monsterName)
-{
-	if(monsterName.find("angry ") == 0)
-		return 100;
-	if(monsterName.find("furious ") == 0)
-		return 240;
-	if(monsterName.find("enraged ") == 0)
-		return 320;
-	return 100;
-}
-
-static bool isRageTroll(const std::string& monsterName)
-{
-	return monsterName == "angry troll" || monsterName == "furious troll" || monsterName == "enraged troll";
-}
-
-static unsigned short randomSmallGemId()
-{
-	switch(random_range(0, 4)) {
-	case 0: return ITEM_SMALL_AMETHYST;
-	case 1: return ITEM_SMALL_EMERALD;
-	case 2: return ITEM_SMALL_RUBY;
-	case 3: return ITEM_SMALL_SAPPHIRE;
-	default: return ITEM_SMALL_DIAMOND;
-	}
-}
-
 void MonsterType::createLoot(Container* corpse, Player* killer)
 {
 	const bool premiumLoot = killer && killer->isPremium() && g_config.PREMMY_LOOT_BONUS > 0;
@@ -257,22 +223,6 @@ void MonsterType::createLoot(Container* corpse, Player* killer)
 			else{
 				corpse->addItem(tmpItem);
 			}
-		}
-	}
-
-	const int rageGemChancePercent = getRageGemChancePercent(name);
-	if(rageGemChancePercent > 100) {
-		bool hasSmallGem = false;
-		for(ContainerList::const_iterator cit = corpse->getItems(); cit != corpse->getEnd(); ++cit){
-			Item* item = *cit;
-			if(item && isSmallGemItem(item->getID())) {
-				hasSmallGem = true;
-				break;
-			}
-		}
-
-		if(!hasSmallGem && isRageTroll(name)) {
-			corpse->addItem(Item::CreateItem(randomSmallGemId(), 1));
 		}
 	}
 
@@ -346,12 +296,6 @@ Item* MonsterType::createLootItem(const LootBlock& lootBlock, bool premiumLoot)
 
 	if(premiumLoot) {
 		unsigned long scaled = chance * (unsigned long)(100 + g_config.PREMMY_LOOT_BONUS) / 100;
-		chance = scaled > CHANCE_MAX ? CHANCE_MAX : scaled;
-	}
-
-	const int rageGemChancePercent = getRageGemChancePercent(name);
-	if(rageGemChancePercent > 100 && isSmallGemItem(lootBlock.id)) {
-		unsigned long scaled = chance * (unsigned long)rageGemChancePercent / 100;
 		chance = scaled > CHANCE_MAX ? CHANCE_MAX : scaled;
 	}
 

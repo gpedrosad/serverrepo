@@ -77,9 +77,9 @@ variantes históricas. Los hechizos con `kit="1"` (monstruos 8.60) mantienen el 
 monstruo base: el daño del kit lo define el Lua, no el `<attack>`. Las gemas van por tramo con
 las chances base, igual que en las variantes históricas.
 
-> **Bug conocido (nov 2026):** `monsters.cpp` → `getRageGemChancePercent()` compara contra
-> `"angry "` / `"furious "` / `"enraged "` en minúsculas, pero `MonsterType::name` se carga tal
-> cual del XML (`"Angry Dragon"`, Title Case). Por eso el ×2.4 (furious) y ×3.2 (enraged) de
-> gemas que describía `docs/gameplay/GEMS.md` **no se aplica**, y el fallback de gem para los
-> rage trolls tampoco. Las chances efectivas son las del XML. Arreglarlo requiere tocar C++ y
-> recompilar (decisión de balance pendiente).
+> **Gemas de los Rage: solo las del XML.** Hasta el 24 nov 2026, `monsters.cpp` tenía un multiplicador
+> de gemas chicas (×2,4 furious, ×3,2 enraged) y una gema asegurada para los rage trolls. Nunca se aplicaron:
+> `getRageGemChancePercent()` e `isRageTroll()` comparaban contra `"furious "`, `"angry troll"`, etc. en
+> minúsculas, y `MonsterType::name` viene del XML con mayúscula (`"Angry Dragon"`). Como el rebalanceo de loot
+> (`490a42c`) ya había resuelto el escalado de gemas en los XML, **ese código se borró** sin cambiar el juego.
+> Para cambiar las gemas de un Rage, editar su XML (o `scripts/monsters/rage-variants.py`).

@@ -23,7 +23,7 @@ La simulación ejecuta un Monte Carlo determinístico (`seed = 20261122`, **1.00
 | **Contenedores (`<inside>`)** | El contenido solo se tira si primero cae la bolsa (`1987`/`1988`) según su propia `chance` |
 | **Límite `countmax ≤ 100`** | `loadLootItem()` recorta cualquier `countmax > 100` a `100` (ya corregido en todos los XML: **0 recortes activos**) |
 | **Golden Ring (`2179`) bloqueado** | `createLootItem()` devuelve `NULL` para `2179` (ya reemplazado en `Lich` y `Orc Warlord` + Rage) |
-| **Bug `getRageGemChancePercent`** | Compara contra `"angry "`/`"furious "`/`"enraged "` en minúsculas, pero los XML usan Title Case: el escalado Enraged > Furious ahora está resuelto directamente en los XML y en `scripts/monsters/rage-variants.py` |
+| **Multiplicador de gemas Rage (borrado)** | `getRageGemChancePercent` comparaba contra `"angry "`/`"furious "`/`"enraged "` en minúsculas y los XML usan mayúscula, así que nunca se aplicó. El escalado Enraged > Furious está en los XML y en `scripts/monsters/rage-variants.py`; el código muerto se borró el 24 nov 2026 (la simulación no cambia) |
 | **Cuenta base simulada** | **Free sin Golden Ring**. Con **Premium** la chance sube **+10%** (`premmylootbonus = 10`) y con **Golden Ring** el oro en monedas sube **+20%** |
 
 ### 1.2 Cómo se valora el loot

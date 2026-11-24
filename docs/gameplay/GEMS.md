@@ -100,25 +100,16 @@ python3.11 scripts/client-rme/add_custom_items.py --only 20664 20665 \
 
 Las gemas pequeñas están en las tablas de loot XML de monstruos fuertes, sobre todo variantes **furious** y **enraged** (hydra, dragon lord, warlock, black knight, etc.). Cada monstruo define sus propias probabilidades por tipo de gema.
 
-**Las chances de gemas son las que dice cada XML, también en los Rage.** En `monsters.cpp` hay un multiplicador
-para los Rage y un fallback para los rage trolls, pero **ninguno de los dos funciona**:
+**Las chances de gemas son las que dice cada XML, también en los Rage.** No hay multiplicador por prefijo ni gema
+asegurada para los rage trolls.
 
-| Prefijo | Multiplicador en el código | En el juego |
-|---------|----------------------------|-------------|
-| angry | ×1.00 | ×1.00 |
-| furious | ×2.40 | ×1.00 (no se aplica) |
-| enraged | ×3.20 | ×1.00 (no se aplica) |
-
-- **Por qué:** `getRageGemChancePercent()` e `isRageTroll()` comparan contra `"furious "`, `"angry troll"`, etc. en
-  minúsculas, y `MonsterType::name` viene del XML con mayúsculas (`"Furious Dragon"`). Ver
-  [RAGE_MONSTERS.md](RAGE_MONSTERS.md).
-- **Fallback de los rage trolls:** iba a agregar una gema chica al azar si el cadáver no tenía ninguna. Tampoco
-  se aplica.
-- **Cómo se compensó (nov 2026, `490a42c`):** el rebalanceo de loot resolvió el escalado directamente en los XML.
-  Los Enraged llevan gemas superiores y Gold Nugget al doble, para que den más que los Furious
-  (`scripts/monsters/rage-variants.py`). Ver [MONSTER_LOOT_SIMULATION.md](MONSTER_LOOT_SIMULATION.md).
-- **Ojo:** si alguien arregla la comparación en C++ sin revisar esos XML, a las chances ya ajustadas se les suma
-  el ×2,4 o ×3,2.
+- **Historia:** hasta el 24 nov 2026, `monsters.cpp` tenía un ×2,4 (furious) y ×3,2 (enraged) para las gemas
+  chicas, y una gema chica al azar para los rage trolls sin gema. Nunca funcionaron: comparaban el nombre en
+  minúsculas (`"furious "`) y `MonsterType::name` viene del XML con mayúscula (`"Furious Dragon"`).
+- **Cómo quedó:** el rebalanceo de loot (`490a42c`) resolvió el escalado en los XML. Los Enraged llevan gemas
+  superiores y Gold Nugget al doble, para que den más que los Furious (`scripts/monsters/rage-variants.py`, ver
+  [MONSTER_LOOT_SIMULATION.md](MONSTER_LOOT_SIMULATION.md)). Después se borró ese código muerto, sin cambiar el
+  juego. Ver [RAGE_MONSTERS.md](RAGE_MONSTERS.md).
 
 Las gemas grandes (yellow, violet, big ruby, big emerald, blue gem, etc.) pueden dropear directamente desde el loot XML de ciertos monstruos/jefes; `game.cpp` → `isRareLootItem` solo las resalta en el aviso de loot.
 
