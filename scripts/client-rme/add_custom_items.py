@@ -15,7 +15,9 @@ que necesita el pack Zagan perdido y client-local). Cada ítem de NEW_ITEMS:
 Extras: `decor=True` copia los bloques del prototipo sin stats (decoración de mapa); `light=(nivel,
 color)` reescribe la luz — flag .dat 0x15 y attr OTB 0x2A (ITEM_ATTR_LIGHT2) — para ítems con luz
 propia (magic tree rojo, blue bassin). `frames=N` instala los N cuadros de animación del PNG
-(1x1, 2x2, 2x1 y 1x2). `appearance=server_id` permite usar otro prototipo visual;
+(1x1, 2x2, 2x1 y 1x2). `animate_always=True` permite animar un prototipo estático 1x1
+con sus patrones originales. `shoot_type=N` cambia el proyectil del arma en el OTB.
+`appearance=server_id` permite usar otro prototipo visual;
 `ground_overlay=True` convierte ese terreno en borde decorativo sin cambiar el suelo
 ni su velocidad (exclusivo y opt-in; ver RIVER_GROTTO.md).
 
@@ -124,6 +126,10 @@ NEW_ITEMS = [
     dict(server_id=20665, client_id=6065, prototype=2145, decor=True, patterns=8,
          name="memory shard", png="memory_shard.png",
          descr="Tonka can fuse five of these shards into a memory gem."),
+    dict(server_id=20666, client_id=6066, prototype=2111, patterns=8, frames=4,
+         animate_always=True, shoot_type=16, attack=22, defence=0,
+         name="throwable fireball", png="throwing_fireball.png",
+         descr="A restless ember that leaves a trail of sparks when thrown."),
     dict(name="emerald sword", server_id=20157, client_id=3348, prototype=2407, png="emerald_sword.png",
          attack=49, defence=33, descr="A sword with a blade of polished emerald."),
     dict(name="avenger", server_id=20158, client_id=3346, prototype=2393, png="the_avenger.png",
@@ -699,9 +705,17 @@ def apply_things(things: Path, otb_root, dry: bool) -> list[str]:
         if idx is None or proto_cid not in by_cid:
             raise SystemExit(f"{things}: falta el client id {item['client_id']} o el del prototipo {item['prototype']}")
         proto = entries[by_cid[proto_cid]]
-        if len(proto.sprite_ids) != sprite_count:
-            raise SystemExit(f"prototipo {item['prototype']} tiene {len(proto.sprite_ids)} sprites, se esperaban {sprite_count}")
         new_prefix = ground_overlay(proto.prefix) if item.get("ground_overlay") else proto.prefix
+        expected_proto_sprites = sprite_count
+        if item.get("animate_always"):
+            if (new_prefix[-8:-4] != b"\xff\x01\x01\x01" or new_prefix[-1] != 1
+                    or tiles != 1 or layers != 1 or frames < 2):
+                raise SystemExit(f"prototipo {item['prototype']}: se necesita un ítem estático 1x1 de una capa")
+            new_prefix = new_prefix[:-8] + b"\x1b" + new_prefix[-8:-1] + bytes([frames])
+            expected_proto_sprites = patterns
+        if len(proto.sprite_ids) != expected_proto_sprites:
+            raise SystemExit(f"prototipo {item['prototype']} tiene {len(proto.sprite_ids)} sprites, "
+                             f"se esperaban {expected_proto_sprites}")
         if "light" in item:
             new_prefix = with_light(new_prefix, *item["light"])
         current = entries[idx]
@@ -764,7 +778,9 @@ def apply_otb(path: Path, dry: bool) -> list[str]:
             weapon = B.get_block_payload(blocks, ITEM_ATTR_WEAPON2)
             if not weapon or len(weapon) != 5:
                 raise SystemExit(f"prototipo {item['prototype']} sin bloque de arma")
-            blocks = B.upsert_block(blocks, ITEM_ATTR_WEAPON2, weapon[:3] + bytes([item["attack"], item["defence"]]))
+            shoot_type = item.get("shoot_type", weapon[2])
+            blocks = B.upsert_block(blocks, ITEM_ATTR_WEAPON2,
+                                    weapon[:2] + bytes([shoot_type, item["attack"], item["defence"]]))
         if item.get("nodecay"):
             # Siempre igual: sin pudrición (las luces de color no se apagan solas como el candelabro base).
             blocks = [(a, p) for a, p in blocks if a not in (ITEM_ATTR_DECAY, ITEM_ATTR_DECAY2)]

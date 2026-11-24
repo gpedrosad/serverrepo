@@ -104,6 +104,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/GEMS.md`](gameplay/GEMS.md) | Sistema de gemas: drop, uso, imbuements. Antes de tocar gemas, leer esto. |
 | [`gameplay/CRYSTAL_ARROW.md`](gameplay/CRYSTAL_ARROW.md) | **Crystal Arrow (2352):** throwable tipo spear, Blue Gem speed ×5, hit 85%; spears 70% hit. |
 | [`gameplay/PALADIN_STARS.md`](gameplay/PALADIN_STARS.md) | Gale, Venom y Storm Star: tres arrojadizas reutilizables para paladín, velocidad/veneno/energía y proyectiles propios. |
+| [`gameplay/THROWING_FIREBALL.md`](gameplay/THROWING_FIREBALL.md) | Throwable Fireball: arrojadiza basada en la Snowball, con ítem animado y proyectil con estela de brasas. |
 | [`gameplay/MELEE_RELICS.md`](gameplay/MELEE_RELICS.md) | Riftblade (combo de tres golpes), Aethercleaver (maná por daño real) y Graviton Maul (crush según armadura); sprites e impactos propios. |
 | [`gameplay/QUICKSILVER_KATANA.md`](gameplay/QUICKSILVER_KATANA.md) | Katana de una mano (20660), ataque 32, defensa 16 y golpes cada 650 ms. |
 | [`gameplay/DARK_SPIDER.md`](gameplay/DARK_SPIDER.md) | Dark Spider de 3.400 HP y velocidad 355 en Duskweb Hollow. |

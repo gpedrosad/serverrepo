@@ -196,6 +196,8 @@ inline subfight_t translateOTBsubfight_t(subfightOTB_t sf)
 	case OTB_DIST_POISONFIELD:
 		return DIST_POISONFIELD;
 		break;
+	case OTB_DIST_THROWABLE_FIREBALL:
+		return DIST_THROWABLE_FIREBALL;
 	}
 	return DIST_NONE;
 }

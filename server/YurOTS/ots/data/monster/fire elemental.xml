@@ -20,4 +20,8 @@
 	<defense immunity="invisible"/>
 </defenses>
 
+<loot>
+	<item id="20666" countmax="3" chance1="12000" chancemax="2000"/>
+</loot>
+
 </monster>
