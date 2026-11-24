@@ -68,6 +68,7 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 | Escaleras / escaleras de mano / trampillas con click derecho | `docs/gameplay/STAIRS.md` |
 | Cuevas generadas (paredes de tierra 356–367, vacío a la vista, techo para no ver el piso de arriba, agujero + escalera de mano) y dungeon de la city | `docs/items-and-map/PIEZAS_DE_MAPA.md#cuevas` y `docs/items-and-map/MAPEAR_DUNGEON_CITY.md` |
 | Puente principal de la ciudad (z6, `141,65,6`): puente de referencia para hacer o rehacer puentes (barandas 3D, faroles, pasos de 1 sqm) | `docs/items-and-map/PIEZAS_DE_MAPA.md#puente-de-madera-elevado-z6` |
+| Caldera Azul: lava azul (`20680`), monstruos Azure (looks 145–149, jefe Azhurak), zona y portal `163,47,7` | `docs/items-and-map/CALDERA_AZUL.md` |
 | Zonas de caza: forma del lugar (pasillo largo y angosto) y frecuencia de monstruos (etapas, separación, densidad) | `docs/items-and-map/ZONAS_DE_CAZA.md` |
 | El Crisol (escalera diaria Bronze → Silver → Gold, guardián Varkon, jefe de Oro 1/día + rares Zagan) | `docs/gameplay/CRUCIBLE.md` |
 | Wave Arena (oleadas + ranking) | `docs/gameplay/WAVE_ARENA.md` |

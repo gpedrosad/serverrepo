@@ -15,6 +15,7 @@
 	<readable x="157" y="46" z="7" text="ELVENBANE\nA seven-floor elven fortress.\nFrom orcs and elves to the tower dragon."/>
 	<readable x="158" y="46" z="7" text="BEAST VALLEY\nFour floors of challenging hunts\nFrom Minotaurs to Demons"/>
 	<readable x="159" y="46" z="7" text="INFERNO PITS\nFour floors of fiery caves\nFrom elementals to Furies"/>
+	<readable x="163" y="46" z="7" text="AZURE CALDERA\nBlue lava and cold-fire undead\nLevel 60+. Boss: Azhurak"/>
 	<readable x="164" y="46" z="7" text="THE CRUCIBLE\nDaily ladder: Bronze, Silver, Gold (lvl 30-80+)\nGold boss drops a rare weapon"/>
 	<readable x="166" y="46" z="7" text="WAVE ARENA\nJungle Clearing: 20 waves (lvl 25-100+)\nGroup challenge. Time ranking &amp; weekly rewards"/>
 	<readable x="168" y="46" z="7" text="SAND CLOCK\n6-wave time attack\nClear waves for extra time &amp; daily reward"/>
@@ -164,4 +165,7 @@
 	<!-- BEGIN DUSKWEB_HOLLOW_SIGN -->
 	<readable x="19" y="135" z="7" text="DUSKWEB HOLLOW\nTarantulas along the coast. Giant Spiders and Dark Spiders below. Level 65+."/>
 	<!-- END DUSKWEB_HOLLOW_SIGN -->
+	<!-- BEGIN AZURE_CALDERA_SIGNS -->
+	<readable x="656" y="377" z="7" text="THE AZURE CALDERA\nCold-fire undead. Level 60+.\nThe path ends at Azhurak's shrine.\nPortal to the temple: here."/>
+	<!-- END AZURE_CALDERA_SIGNS -->
 </readables>

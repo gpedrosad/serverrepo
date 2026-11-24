@@ -63,6 +63,8 @@ PORTALS = [
       (449, 39, 489, 80, 7)]),
     ("inferno", 159, (540, 440, 7), "INFERNO PITS\nFour floors of fiery caves\nFrom elementals to Furies",
      [(490, 240, 589, 460, 7), (490, 240, 589, 460, 8), (490, 240, 589, 460, 9), (490, 240, 589, 460, 10)]),
+    ("caldera", 163, (660, 378, 7), "AZURE CALDERA\nBlue lava and cold-fire undead\nLevel 60+. Boss: Azhurak",
+     [(638, 298, 752, 394, 7)]),
     ("crisol", 164, (605, 105, 0), "THE CRUCIBLE\nDaily ladder: Bronze, Silver, Gold (lvl 30-80+)\nGold boss drops a rare weapon",
      [(592, 90, 717, 125, 0)]),
     ("wave", 166, (606, 223, 7), "WAVE ARENA\nJungle Clearing: 20 waves (lvl 25-100+)\nGroup challenge. Time ranking & weekly rewards",

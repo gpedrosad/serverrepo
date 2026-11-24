@@ -65,6 +65,7 @@ Los maneja **un solo script**: `python3 scripts/map/temple-portals.py` (idempote
 | `157,47,7` | `157,48,7` | Elvenbane (fortaleza élfica en 7 pisos: isla + túnel + sótanos + adarve y torres, de Orcos a un Dragon; escalera de mano en todas las conexiones) | [`ELVENBANE.md`](items-and-map/ELVENBANE.md) |
 | `158,47,7` | `158,48,7` | Valle de las Bestias (el gauntlet también vuelve acá) | [`MAPEAR_VALLE_DE_LAS_BESTIAS.md`](items-and-map/MAPEAR_VALLE_DE_LAS_BESTIAS.md) |
 | `159,47,7` | `159,48,7` | Pozos del Infierno (cueva de fuego z7–z10, armas 8.x en la Cámara) | [`MAPEAR_POZOS_DEL_INFIERNO.md`](items-and-map/MAPEAR_POZOS_DEL_INFIERNO.md) |
+| `163,47,7` | `163,48,7` | Caldera Azul | [`CALDERA_AZUL.md`](items-and-map/CALDERA_AZUL.md) |
 | `164,47,7` | `164,48,7` | El Crisol | [`CRUCIBLE.md`](gameplay/CRUCIBLE.md) |
 | `166,47,7` | `166,48,7` | Wave Arena | [`WAVE_ARENA.md`](gameplay/WAVE_ARENA.md) |
 | `168,47,7` | `168,48,7` | Reloj de Arena | [`SAND_CLOCK.md`](gameplay/SAND_CLOCK.md) |

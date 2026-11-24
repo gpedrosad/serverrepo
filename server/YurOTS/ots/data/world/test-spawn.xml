@@ -6966,4 +6966,133 @@
 		<monster name="Dark Spider" x="0" y="0" z="8" spawntime="255" />
 	</spawn>
 	<!-- END DUSKWEB_HOLLOW_SPAWNS -->
+	<!-- BEGIN AZURE_CALDERA_SPAWNS (scripts/map/generate-azure-caldera.py) -->
+	<spawn centerx="663" centery="381" centerz="7" radius="2">
+		<monster name="Azure Skeleton" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="670" centery="376" centerz="7" radius="2">
+		<monster name="Azure Skeleton" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="677" centery="381" centerz="7" radius="2">
+		<monster name="Azure Skeleton" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="683" centery="375" centerz="7" radius="2">
+		<monster name="Azure Skeleton" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="687" centery="383" centerz="7" radius="2">
+		<monster name="Azure Skeleton" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="693" centery="377" centerz="7" radius="2">
+		<monster name="Azure Skeleton" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="701" centery="381" centerz="7" radius="2">
+		<monster name="Azure Skeleton" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="707" centery="375" centerz="7" radius="2">
+		<monster name="Azure Skeleton" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="713" centery="381" centerz="7" radius="2">
+		<monster name="Azure Skeleton" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="721" centery="377" centerz="7" radius="2">
+		<monster name="Azure Skeleton" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="725" centery="369" centerz="7" radius="2">
+		<monster name="Azure Skeleton" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="731" centery="375" centerz="7" radius="2">
+		<monster name="Azure Skeleton" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="719" centery="364" centerz="7" radius="2">
+		<monster name="Azure Skeleton" x="0" y="0" z="7" spawntime="100" />
+	</spawn>
+	<spawn centerx="725" centery="358" centerz="7" radius="2">
+		<monster name="Azure Devil" x="0" y="0" z="7" spawntime="100" />
+	</spawn>
+	<spawn centerx="731" centery="364" centerz="7" radius="2">
+		<monster name="Azure Skeleton" x="0" y="0" z="7" spawntime="100" />
+	</spawn>
+	<spawn centerx="709" centery="363" centerz="7" radius="2">
+		<monster name="Azure Devil" x="0" y="0" z="7" spawntime="100" />
+	</spawn>
+	<spawn centerx="698" centery="363" centerz="7" radius="2">
+		<monster name="Azure Skeleton" x="0" y="0" z="7" spawntime="100" />
+	</spawn>
+	<spawn centerx="687" centery="363" centerz="7" radius="2">
+		<monster name="Azure Devil" x="0" y="0" z="7" spawntime="100" />
+	</spawn>
+	<spawn centerx="676" centery="363" centerz="7" radius="2">
+		<monster name="Azure Skeleton" x="0" y="0" z="7" spawntime="100" />
+	</spawn>
+	<spawn centerx="665" centery="363" centerz="7" radius="2">
+		<monster name="Azure Devil" x="0" y="0" z="7" spawntime="100" />
+	</spawn>
+	<spawn centerx="658" centery="358" centerz="7" radius="3">
+		<monster name="Azure Devil" x="0" y="0" z="7" spawntime="120" />
+		<monster name="Azure Bonebeast" x="1" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="665" centery="351" centerz="7" radius="3">
+		<monster name="Azure Devil" x="0" y="0" z="7" spawntime="120" />
+		<monster name="Azure Bonebeast" x="1" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="668" centery="342" centerz="7" radius="3">
+		<monster name="Azure Devil" x="0" y="0" z="7" spawntime="120" />
+		<monster name="Azure Bonebeast" x="1" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="674" centery="348" centerz="7" radius="3">
+		<monster name="Azure Devil" x="0" y="0" z="7" spawntime="120" />
+		<monster name="Azure Bonebeast" x="1" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="682" centery="344" centerz="7" radius="3">
+		<monster name="Azure Devil" x="0" y="0" z="7" spawntime="120" />
+		<monster name="Azure Bonebeast" x="1" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="688" centery="350" centerz="7" radius="3">
+		<monster name="Azure Devil" x="0" y="0" z="7" spawntime="120" />
+		<monster name="Azure Bonebeast" x="1" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="693" centery="343" centerz="7" radius="3">
+		<monster name="Azure Devil" x="0" y="0" z="7" spawntime="120" />
+		<monster name="Azure Bonebeast" x="1" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="702" centery="346" centerz="7" radius="3">
+		<monster name="Azure Devil" x="0" y="0" z="7" spawntime="120" />
+		<monster name="Azure Bonebeast" x="1" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="711" centery="343" centerz="7" radius="3">
+		<monster name="Azure Devil" x="0" y="0" z="7" spawntime="120" />
+		<monster name="Azure Bonebeast" x="1" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="717" centery="349" centerz="7" radius="3">
+		<monster name="Azure Devil" x="0" y="0" z="7" spawntime="120" />
+		<monster name="Azure Bonebeast" x="1" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="723" centery="343" centerz="7" radius="3">
+		<monster name="Azure Bonebeast" x="0" y="0" z="7" spawntime="150" />
+		<monster name="Azure Lich" x="1" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="724" centery="332" centerz="7" radius="3">
+		<monster name="Azure Bonebeast" x="0" y="0" z="7" spawntime="150" />
+		<monster name="Azure Lich" x="1" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="730" centery="338" centerz="7" radius="3">
+		<monster name="Azure Bonebeast" x="0" y="0" z="7" spawntime="150" />
+		<monster name="Azure Lich" x="1" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="712" centery="332" centerz="7" radius="3">
+		<monster name="Azure Bonebeast" x="0" y="0" z="7" spawntime="150" />
+		<monster name="Azure Lich" x="1" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="701" centery="331" centerz="7" radius="3">
+		<monster name="Azure Bonebeast" x="0" y="0" z="7" spawntime="150" />
+		<monster name="Azure Lich" x="1" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="693" centery="327" centerz="7" radius="3">
+		<monster name="Azure Bonebeast" x="0" y="0" z="7" spawntime="150" />
+		<monster name="Azure Lich" x="1" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="695" centery="314" centerz="7" radius="1">
+		<monster name="Azhurak" x="0" y="0" z="7" spawntime="1800" />
+	</spawn>
+	<!-- END AZURE_CALDERA_SPAWNS -->
 </spawns>
