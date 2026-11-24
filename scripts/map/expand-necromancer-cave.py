@@ -127,7 +127,10 @@ def add_spawns(raw, floor):
             "\t</spawn>",
         ))
     lines.extend((f"\t<!-- END {SPAWN_KEY} -->", ""))
-    return baseline.replace("</spawns>", "\n".join(lines) + "</spawns>").encode("latin-1")
+    block = "\n".join(lines)
+    if count:
+        return re.sub(pattern, lambda _: block, text, flags=re.S).encode("latin-1")
+    return baseline.replace("</spawns>", block + "</spawns>").encode("latin-1")
 
 
 def render_preview(path, tiles, otb):

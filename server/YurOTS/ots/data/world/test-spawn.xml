@@ -6928,4 +6928,42 @@
 		<monster name="Undead Gladiator" x="0" y="0" z="8" spawntime="200" />
 	</spawn>
 	<!-- END NECROMANCER_CAVE_EXTENSION_SPAWNS -->
+	<!-- BEGIN DUSKWEB_HOLLOW_SPAWNS -->
+	<spawn centerx="15" centery="124" centerz="7" radius="3">
+		<monster name="Tarantula" x="0" y="0" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="20" centery="139" centerz="7" radius="3">
+		<monster name="Tarantula" x="0" y="0" z="7" spawntime="130" />
+	</spawn>
+	<spawn centerx="16" centery="129" centerz="8" radius="3">
+		<monster name="Tarantula" x="0" y="0" z="8" spawntime="130" />
+	</spawn>
+	<spawn centerx="13" centery="122" centerz="8" radius="3">
+		<monster name="Poison Spider" x="0" y="0" z="8" spawntime="135" />
+	</spawn>
+	<spawn centerx="15" centery="115" centerz="8" radius="3">
+		<monster name="Tarantula" x="0" y="0" z="8" spawntime="140" />
+	</spawn>
+	<spawn centerx="19" centery="110" centerz="8" radius="3">
+		<monster name="Giant Spider" x="0" y="0" z="8" spawntime="170" />
+	</spawn>
+	<spawn centerx="28" centery="110" centerz="8" radius="3">
+		<monster name="Giant Spider" x="0" y="0" z="8" spawntime="180" />
+	</spawn>
+	<spawn centerx="31" centery="116" centerz="8" radius="3">
+		<monster name="Tarantula" x="0" y="0" z="8" spawntime="150" />
+	</spawn>
+	<spawn centerx="32" centery="123" centerz="8" radius="3">
+		<monster name="Giant Spider" x="0" y="0" z="8" spawntime="185" />
+	</spawn>
+	<spawn centerx="29" centery="132" centerz="8" radius="3">
+		<monster name="Dark Spider" x="0" y="0" z="8" spawntime="235" />
+	</spawn>
+	<spawn centerx="32" centery="135" centerz="8" radius="3">
+		<monster name="Giant Spider" x="0" y="0" z="8" spawntime="190" />
+	</spawn>
+	<spawn centerx="31" centery="143" centerz="8" radius="3">
+		<monster name="Dark Spider" x="0" y="0" z="8" spawntime="255" />
+	</spawn>
+	<!-- END DUSKWEB_HOLLOW_SPAWNS -->
 </spawns>

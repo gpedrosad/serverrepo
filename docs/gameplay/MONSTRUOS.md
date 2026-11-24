@@ -4,7 +4,7 @@
 > después de crear, borrar o spawnear un monstruo. Lee `monsters.xml`, los XML, `test-spawn.xml`, los presets
 > de sprites y la historia de git.
 
-225 monstruos (sin contar variantes rage): 137 originales de YurOTS, 44 traídos de 8.60 y 44 creados acá; además 312 variantes rage de 104 familias.
+226 monstruos (sin contar variantes rage): 137 originales de YurOTS, 44 traídos de 8.60 y 45 creados acá; además 312 variantes rage de 104 familias.
 
 - **Originales**: los 137 del `monsters.xml` del primer commit (`2491c60`, YurOTS 7.6).
 - **Traídos de 8.60**: sprite original de Tibia 8.60 (looks 20, 46–47, 72, 77, 93, 96–98, 161–184, 197–200,
@@ -20,7 +20,7 @@
   `mapa base` = fuera de esos bloques). No cuenta las variantes rage puestas a mano.
 - Para crear uno: [CUSTOM_MONSTER_WORKFLOW.md](CUSTOM_MONSTER_WORKFLOW.md).
 
-## Creados acá (44)
+## Creados acá (45)
 
 | Monstruo | Agregado | Vida | Exp | Sprite | Cadáver | En el mapa | Rage | Doc |
 |---|---|---|---|---|---|---|---|---|
@@ -39,6 +39,7 @@
 | **Custodio del Lago** | 2026-11-20 | 3300 | 2400 | propio, look 229 (`lake_custodian.py`) | `2952` de 7.6 | 1: Petrified Sanctuary 1 | no | [PETRIFIED_SANCTUARY](PETRIFIED_SANCTUARY.md) |
 | **Dark Hydra** | 2026-11-12 | 3200 | 3000 | propio, look 241 (`dark_hydra.py`) | `20229` propio | 13: Dark Hydra Isle 6, Beast Valley 5, mapa base 1, City Depths 1 | sí | [DARK_HYDRA](DARK_HYDRA.md) |
 | **Dark Mage** | 2026-11-17 | 5200 | 8000 | look 133 | `3128` de 7.6 | 1: Mage Tower 1 | no | [MAPEAR_TORRE_MAGO](../items-and-map/MAPEAR_TORRE_MAGO.md) |
+| **Dark Spider** | 2026-11-24 | 3400 | 3200 | propio, look 190 (`add_dark_spider.py`) | `20663` propio | 2: Duskweb Hollow 2 | no | [DARK_SPIDER](DARK_SPIDER.md) |
 | **Drowned Sailor** | 2026-11-10 | 520 | 280 | propio, look 233 (`drowned_sailor.py`) | `20169` propio | 12: Epstein Hunts 10, Bridge Tower 2 | sí | [DROWNED_SAILOR](DROWNED_SAILOR.md) |
 | **Elven Archmage** | 2026-11-19 | 4200 | 5000 | propio, look 223 (`elven_archmage.py`) | `20238` propio | 1: Elvenbane 1 | no | [HANGABLES](HANGABLES.md) |
 | **Elvenbane Ranger** | 2026-11-19 | 5000 | 4500 | propio, look 222 (`elvenbane_ranger.py`) | `20237` propio | 1: Elvenbane 1 | no | [ARMAS](ARMAS.md) |

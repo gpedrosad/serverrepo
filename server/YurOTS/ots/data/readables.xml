@@ -161,4 +161,7 @@
 	<!-- BEGIN BARBARIAN_CAMP_SIGNS (scripts/map/generate-barbarian-camp.py) -->
 	<readable x="224" y="25" z="7" text="BARBARIAN CAMP\nLevel 15-40.\nBarbarian raiders and Frost Giants across the northern snowfields."/>
 	<!-- END BARBARIAN_CAMP_SIGNS -->
+	<!-- BEGIN DUSKWEB_HOLLOW_SIGN -->
+	<readable x="19" y="135" z="7" text="DUSKWEB HOLLOW\nTarantulas along the coast. Giant Spiders and Dark Spiders below. Level 65+."/>
+	<!-- END DUSKWEB_HOLLOW_SIGN -->
 </readables>
