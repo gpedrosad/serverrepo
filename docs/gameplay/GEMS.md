@@ -55,6 +55,43 @@ Archivos de referencia:
 | 2157 | Gold Nugget | Loot | Vender a Parived |
 | 2159 | Scarab Coin | Loot | Vender a Parived |
 
+### Memory Gem
+
+| Ítem | Server ID | Client ID | Origen |
+|---|---:|---:|---|
+| Memory Gem | 20664 | 6064 | Canje de Tonka |
+| Memory Shard | 20665 | 6065 | Dark Spider (20 %), Black Dragon (12 %) y Behemoth (5 %) |
+
+Decir `exchange memory` a Tonka para fusionar **cinco fragmentos**.
+Equipar la pieza de origen y usar **Use With** sobre otra pieza compatible
+en el inventario. Ejemplo de Ruby en armas: **3/3 → 2/3**. El origen queda
+limpio y la gema se consume cuando se completa el traspaso. El éxito es del
+100 % y se pierde un nivel por transferencia.
+
+El origen requiere al menos dos niveles. El destino debe estar limpio y
+aceptar todos los niveles transferidos. Se conserva la familia de imbuement
+de botas, armas, armaduras, wands/rods, Nightglass o Crystal Arrow. En las
+manos se selecciona un único origen compatible. El resto de las gemas sigue
+usando el equipo puesto.
+
+Al limpiar el origen, `Item::setActionId` guarda el mínimo legacy `100`.
+Para el traspaso, tanto `0` como `100` identifican una pieza limpia.
+
+Las dos piezas tienen un sprite nácar con facetas rosa y celeste.
+
+![Memory Gem, un fragmento y una pila de fragmentos](img/memory-gem.png)
+
+El generador actualiza el arte y lee la lista de armas y armaduras desde el
+OTB actual.
+
+```bash
+python3.11 scripts/client-rme/build_memory_gem.py
+python3.11 scripts/client-rme/add_custom_items.py --only 20664 20665 \
+  --things devtools/rme/rme-client-760 \
+  --otb server/YurOTS/ots/data/items/items-zagan-test.otb \
+  --otb server/YurOTS/ots/data/items/items.otb
+```
+
 ---
 
 ## Obtención de gemas

@@ -7,7 +7,9 @@ EXCHANGES = {
 	{keys = {'emerald', 'small emerald'}, small = 2149, big = 2155, smallName = 'small emeralds', bigName = 'big emerald'},
 	{keys = {'amethyst', 'small amethyst'}, small = 2150, big = 2153, smallName = 'small amethysts', bigName = 'violet gem'},
 	{keys = {'sapphire', 'small sapphire'}, small = 2146, big = 2154, smallName = 'small sapphires', bigName = 'yellow gem'},
-	{keys = {'diamond', 'small diamond'}, small = 2145, big = 2158, smallName = 'small diamonds', bigName = 'blue gem'}
+	{keys = {'diamond', 'small diamond'}, small = 2145, big = 2158, smallName = 'small diamonds', bigName = 'blue gem'},
+	{keys = {'memory', 'memory shard', 'memory gem'}, small = 20665, big = 20664,
+		smallName = 'memory shards', bigName = 'memory gem', need = 5}
 }
 
 NEED = 20
@@ -17,11 +19,13 @@ TONKA_HELP = 'I turn small gems into big gems. Strong monsters drop small gems â
 function showHelp()
 	selfSay(TONKA_HELP)
 	selfSay('Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".')
+	selfSay('Bring me five memory shards for a memory gem. Say "exchange memory".')
 end
 
 function showExchangeList()
 	selfSay('Trade 20 small gems for 1 big gem of the same color.')
 	selfSay('Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".')
+	selfSay('Trade five memory shards for one memory gem. Say "exchange memory".')
 end
 
 function matchExchange(msg)
@@ -42,23 +46,24 @@ function doExchange(cid, ex)
 		return
 	end
 
+	local need = ex.need or NEED
 	local have = getPlayerItemCount(cid, ex.small)
-	if have < NEED then
-		selfSay('You need ' .. NEED .. ' ' .. ex.smallName .. '. You have ' .. have .. '.')
+	if have < need then
+		selfSay('You need ' .. need .. ' ' .. ex.smallName .. '. You have ' .. have .. '.')
 		return
 	end
 
-	if doPlayerRemoveItem(cid, ex.small, NEED) == -1 then
+	if doPlayerRemoveItem(cid, ex.small, need) == -1 then
 		selfSay('You no longer have enough ' .. ex.smallName .. '.')
 		return
 	end
 
 	if doPlayerAddItem(cid, ex.big, 1) == -1 then
-		local restored, restoredCount = addItemsExact(cid, ex.small, NEED)
+		local restored, restoredCount = addItemsExact(cid, ex.small, need)
 		if restored then
 			selfSay('Something went wrong delivering your ' .. ex.bigName .. '. Your ' .. ex.smallName .. ' were returned.')
 		else
-			selfSay('Something went wrong delivering your ' .. ex.bigName .. ' and only ' .. restoredCount .. '/' .. NEED .. ' ' .. ex.smallName .. ' could be returned. Contact a GM.')
+			selfSay('Something went wrong delivering your ' .. ex.bigName .. ' and only ' .. restoredCount .. '/' .. need .. ' ' .. ex.smallName .. ' could be returned. Contact a GM.')
 		end
 		return
 	end
@@ -67,15 +72,16 @@ function doExchange(cid, ex)
 end
 
 function offerExchange(cid, ex)
+	local need = ex.need or NEED
 	local have = getPlayerItemCount(cid, ex.small)
-	if have < NEED then
-		selfSay('You need ' .. NEED .. ' ' .. ex.smallName .. '. You have ' .. have .. '.')
+	if have < need then
+		selfSay('You need ' .. need .. ' ' .. ex.smallName .. '. You have ' .. have .. '.')
 		return
 	end
 
 	pending_exchange = ex
 	talk_state = 1
-	selfSay('Trade ' .. NEED .. ' ' .. ex.smallName .. ' for 1 ' .. ex.bigName .. '? (yes/no)')
+	selfSay('Trade ' .. need .. ' ' .. ex.smallName .. ' for 1 ' .. ex.bigName .. '? (yes/no)')
 end
 
 local function onMessage(cid, msg)

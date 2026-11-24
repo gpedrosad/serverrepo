@@ -15,6 +15,7 @@
 		<defense immunity="drunk" />
 	</defenses>
 	<loot>
+		<item id="20665" countmax="1" chance1="20000" chancemax="0" />
 		<item id="2148" countmax="100" chance1="100000" chancemax="0" />
 		<item id="2152" countmax="8" chance1="18000" chancemax="0" />
 		<item id="2146" countmax="3" chance1="9000" chancemax="0" />

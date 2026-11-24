@@ -21,6 +21,7 @@
 		<voice sentence="Human flesh - so delicious!" />
 	</voices>
 	<loot>
+		<item id="20665" countmax="1" chance1="5000" chancemax="0" />
 		<item id="2148" countmax="70" chance1="100000" chancemax="0" />
 		<item id="2671" countmax="3" chance1="10000" chancemax="0" />
 		<item id="2023" chance="5000" />

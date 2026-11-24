@@ -8,70 +8,87 @@ SAY One moment, Player1002!
 >> say 1001 help
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 help
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 help
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 no
 >> say 1001 5 help
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 5 help
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 no
 >> say 1001 help 100
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 help 100
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 no
 >> say 1001 help all
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 help all
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 no
 >> think
 >> say 1001 ayuda
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 ayuda
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 no
 >> say 1001 5 ayuda
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 5 ayuda
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 no
 >> say 1001 ayuda 100
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 ayuda 100
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 no
 >> say 1001 ayuda all
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 ayuda all
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 no
 >> think
 >> say 1001 offer
@@ -94,34 +111,42 @@ SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapp
 >> say 1001 trade
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 trade
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 no
 >> say 1001 5 trade
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 5 trade
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 no
 >> say 1001 trade 100
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 trade 100
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 no
 >> say 1001 trade all
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 trade all
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 no
 >> think
 >> say 1001 list
@@ -978,34 +1003,42 @@ SAY You need 20 small diamonds. You have 10.
 >> say 1001 exchange
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 exchange
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 no
 >> say 1001 5 exchange
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 5 exchange
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 no
 >> say 1001 exchange 100
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 exchange 100
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 no
 >> say 1001 exchange all
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 exchange all
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 no
 >> think
 >> say 1001 exchange ruby
@@ -1176,133 +1209,165 @@ SAY You need 20 small diamonds. You have 10.
 >> say 1001 help
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 help
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 no
 >> say 1001 5 help
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 5 help
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 no
 >> say 1001 help 100
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 help 100
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 no
 >> say 1001 help all
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 help all
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 no
 >> think
 >> say 1001 ayuda
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 ayuda
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 no
 >> say 1001 5 ayuda
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 5 ayuda
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 no
 >> say 1001 ayuda 100
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 ayuda 100
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 no
 >> say 1001 ayuda all
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 ayuda all
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1001 no
 >> think
 >> say 1001 cambiar
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 cambiar
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 no
 >> say 1001 5 cambiar
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 5 cambiar
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 no
 >> say 1001 cambiar 100
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 cambiar 100
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 no
 >> say 1001 cambiar all
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 cambiar all
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 no
 >> think
 >> say 1001 trade
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 trade
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 no
 >> say 1001 5 trade
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 5 trade
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 no
 >> say 1001 trade 100
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 trade 100
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 no
 >> say 1001 trade all
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 yes
 >> say 1001 trade all
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1001 no
 >> think
 >> say 1001 bye
@@ -1406,6 +1471,7 @@ SAY You need 20 small diamonds. You have 10.
 >> say 1002 exchange
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1002 yes
 >> say 1002 exchange ruby
 CALL getPlayerItemCount(1002, 2147)
@@ -1430,20 +1496,48 @@ SAY You need 20 small diamonds. You have 10.
 >> say 1002 help
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1002 yes
 >> say 1002 ayuda
 SAY I turn small gems into big gems. Strong monsters drop small gems — bring me 20 of the same type and I give you 1 big gem. Big gems can imbue gear: ruby on weapons, emerald on armor, violet on wands or rods, yellow on boots, blue on crystal arrows. Say "exchange" to start a trade.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Bring me five memory shards for a memory gem. Say "exchange memory".
 >> say 1002 yes
 >> say 1002 cambiar
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1002 yes
 >> say 1002 trade
 SAY Trade 20 small gems for 1 big gem of the same color.
 SAY Say "exchange ruby", "exchange emerald", "exchange amethyst", "exchange sapphire" or "exchange diamond".
+SAY Trade five memory shards for one memory gem. Say "exchange memory".
 >> say 1002 yes
 >> say 1002 chau
 CALL cancelPendingTrade(1002)
 SAY Bye, Player1002! Come back anytime.
 >> think 3
+>> near 1001
+>> say 1001 hi
+SAY Hi Player1001! I turn small gems into big ones. Say "help" or "exchange" to see what I do.
+>> set 1001 items 4
+>> say 1001 exchange memory
+CALL getPlayerItemCount(1001, 20665)
+SAY You need 5 memory shards. You have 4.
+>> set 1001 items 5
+>> say 1001 exchange memory
+CALL getPlayerItemCount(1001, 20665)
+SAY Trade 5 memory shards for 1 memory gem? (yes/no)
+>> say 1001 no
+SAY No problem! Come back when you are ready.
+>> say 1001 exchange memory
+CALL getPlayerItemCount(1001, 20665)
+SAY Trade 5 memory shards for 1 memory gem? (yes/no)
+>> say 1001 yes
+CALL getPlayerItemCount(1001, 20665)
+CALL doPlayerRemoveItem(1001, 20665, 5)
+CALL doPlayerAddItem(1001, 20664, 1)
+SAY Done! Here is your memory gem.
+>> say 1001 bye
+CALL cancelPendingTrade(1001)
+SAY Bye, Player1001! Come back anytime.

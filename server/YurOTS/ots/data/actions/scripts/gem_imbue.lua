@@ -185,8 +185,109 @@ function applyImbue(cid, gemItem, target, minAid, maxStacks, msg)
 	return true
 end
 
+local MEMORY_GEM = 20664
+-- Item::setActionId clamps values below 100. This value carries no imbuement.
+local MEMORY_CLEAR_AID = 100
+local HANDS = {SLOT_RIGHT, SLOT_LEFT}
+local MEMORY_RULES = {
+	boots = {aid = 9020, max = 3, slots = {SLOT_FEET}},
+	wand = {aid = 9030, max = 4, slots = HANDS},
+	ruby = {aid = 9040, max = 3, slots = HANDS},
+	armor = {aid = 9050, max = 4, slots = {SLOT_ARMOR}},
+	nightglass = {aid = NIGHTGLASS_SPEED_AID, max = NIGHTGLASS_MAX_STACKS, slots = HANDS},
+	arrow = {aid = CRYSTAL_ARROW_SPEED_AID, max = CRYSTAL_ARROW_MAX_STACKS, slots = HANDS},
+}
+local memoryEquipment
+
+local function memoryFamily(itemid)
+	if BOOTS[itemid] then return "boots" end
+	if WANDS[itemid] then return "wand" end
+	if itemid == NIGHTGLASS_DAGGER then return "nightglass" end
+	if itemid == CRYSTAL_ARROW then return "arrow" end
+	if not memoryEquipment then
+		memoryEquipment = dofile("data/actions/lib/memory_gem_equipment.lua")
+	end
+	if memoryEquipment.armor[itemid] then return "armor" end
+	if memoryEquipment.ruby[itemid] then return "ruby" end
+end
+
+local function memoryCap(rule, itemid)
+	if rule == MEMORY_RULES.armor and itemid == 2494 then return 6 end
+	return rule.max
+end
+
+local function memoryStacks(rule, item)
+	if rule == MEMORY_RULES.armor and item.actionid == 9041 then return 3 end
+	local stacks = item.actionid - rule.aid + 1
+	if stacks >= 1 and stacks <= memoryCap(rule, item.itemid) then return stacks end
+	return 0
+end
+
+local function rejectMemory(cid, message)
+	doPlayerSendCancel(cid, message)
+	return 1
+end
+
+local function transferMemory(cid, gem, frompos, target, topos)
+	if not target or target.uid == 0 then
+		return rejectMemory(cid, "Equip the imbued item and use the memory gem on the new gear.")
+	end
+	if frompos.x ~= 65535 or topos.x ~= 65535 then
+		return rejectMemory(cid, "Carry the memory gem and the destination item in your inventory.")
+	end
+	local family = memoryFamily(target.itemid)
+	if not family or (target.actionid ~= 0 and target.actionid ~= MEMORY_CLEAR_AID) then
+		return rejectMemory(cid, "Choose compatible gear with no existing enchantment.")
+	end
+
+	local rule = MEMORY_RULES[family]
+	local source, stacks
+	for _, slot in ipairs(rule.slots) do
+		local equipped = getPlayerSlotItem(cid, slot)
+		if equipped.uid > 0 and equipped.uid ~= target.uid and memoryFamily(equipped.itemid) == family then
+			local levels = memoryStacks(rule, equipped)
+			if levels >= 2 then
+				if source then
+					return rejectMemory(cid, "Equip only one matching imbued item as the source.")
+				end
+				source, stacks = equipped, levels
+			end
+		end
+	end
+	if not source then
+		return rejectMemory(cid, "Equip compatible gear with at least two imbuement levels.")
+	end
+	local transferred = stacks - 1
+	local cap = memoryCap(rule, target.itemid)
+	if transferred > cap then
+		return rejectMemory(cid, "The destination cannot hold all of the transferred levels.")
+	end
+
+	if doSetItemActionId(source.uid, MEMORY_CLEAR_AID) ~= 0 then
+		return rejectMemory(cid, "The memory gem could not read the source item.")
+	end
+	if doSetItemActionId(target.uid, rule.aid + transferred - 1) ~= 0 then
+		doSetItemActionId(source.uid, source.actionid)
+		return rejectMemory(cid, "The memory gem could not imbue the destination.")
+	end
+	if doRemoveItem(gem.uid, 1) ~= 0 then
+		doSetItemActionId(target.uid, target.actionid)
+		doSetItemActionId(source.uid, source.actionid)
+		return rejectMemory(cid, "The memory gem could not complete the transfer.")
+	end
+	doPlayerCheckFeetSpeed(cid)
+	doSendMagicEffect(getPlayerPosition(cid), 13)
+	doPlayerSendTextMessage(cid, 22, "The memory gem transferred " .. transferred .. "/" .. cap ..
+		" imbuement levels. The source item is now clean.")
+	return 1
+end
+
 function onUse(cid, item, frompos, item2, topos)
 	local gem = item.itemid
+
+	if gem == MEMORY_GEM then
+		return transferMemory(cid, item, frompos, item2, topos)
+	end
 
 	if gem == 2154 then
 		local boots = getPlayerSlotItem(cid, SLOT_FEET)

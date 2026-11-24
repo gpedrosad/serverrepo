@@ -914,3 +914,13 @@ say 1002 trade
 say 1002 yes
 say 1002 chau
 think 3
+near 1001
+say 1001 hi
+set 1001 items 4
+say 1001 exchange memory
+set 1001 items 5
+say 1001 exchange memory
+say 1001 no
+say 1001 exchange memory
+say 1001 yes
+say 1001 bye
