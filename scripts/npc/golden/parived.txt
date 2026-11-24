@@ -6,55 +6,55 @@ SAY Hi Player1001! I buy gems and diamonds. Say "help" or "list" for prices.
 >> say 1002 hi
 SAY One moment, Player1002! I am helping someone else.
 >> say 1001 help
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 help
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 yes
 >> say 1001 help
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 no
 >> say 1001 5 help
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 yes
 >> say 1001 5 help
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 no
 >> say 1001 help 100
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 yes
 >> say 1001 help 100
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 no
 >> say 1001 help all
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 yes
 >> say 1001 help all
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 no
 >> think
 >> say 1001 ayuda
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 yes
 >> say 1001 ayuda
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 no
 >> say 1001 5 ayuda
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 yes
 >> say 1001 5 ayuda
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 no
 >> say 1001 ayuda 100
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 yes
 >> say 1001 ayuda 100
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 no
 >> say 1001 ayuda all
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 yes
 >> say 1001 ayuda all
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 no
 >> think
 >> say 1001 offer
@@ -92,43 +92,43 @@ SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; r
 >> say 1001 no
 >> think
 >> say 1001 list
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 list
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 5 list
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 5 list
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 list 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 list 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 list all
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 list all
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> think
@@ -235,33 +235,33 @@ SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> think
 >> say 1001 sell
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 sell
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 5 sell
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 5 sell
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 sell 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 sell 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 sell all
@@ -278,7 +278,15 @@ CALL getPlayerBackpackItemCount(1001, 2147)
 CALL getPlayerBackpackItemCount(1001, 2149)
 CALL getPlayerBackpackItemCount(1001, 2150)
 CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+CALL getPlayerBackpackItemCount(1001, 2143)
+CALL getPlayerBackpackItemCount(1001, 2144)
+CALL getPlayerBackpackItemCount(1001, 20107)
+CALL getPlayerBackpackItemCount(1001, 20108)
+CALL getPlayerBackpackItemCount(1001, 20144)
+CALL getPlayerBackpackItemCount(1001, 20124)
+CALL getPlayerBackpackItemCount(1001, 20125)
+CALL getPlayerBackpackItemCount(1001, 20106)
+CALL sellBackpackBundle(1001, 730900, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 17 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},14={1=2143,2=10},15={1=2144,2=10},16={1=20107,2=10},17={1=20108,2=10},18={1=20144,2=10},19={1=20124,2=10},2={1=2156,2=10},20={1=20125,2=10},21={1=20106,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
 >> say 1001 yes
 >> say 1001 sell all
 CALL getPlayerBackpackItemCount(1001, 2155)
@@ -294,7 +302,15 @@ CALL getPlayerBackpackItemCount(1001, 2147)
 CALL getPlayerBackpackItemCount(1001, 2149)
 CALL getPlayerBackpackItemCount(1001, 2150)
 CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+CALL getPlayerBackpackItemCount(1001, 2143)
+CALL getPlayerBackpackItemCount(1001, 2144)
+CALL getPlayerBackpackItemCount(1001, 20107)
+CALL getPlayerBackpackItemCount(1001, 20108)
+CALL getPlayerBackpackItemCount(1001, 20144)
+CALL getPlayerBackpackItemCount(1001, 20124)
+CALL getPlayerBackpackItemCount(1001, 20125)
+CALL getPlayerBackpackItemCount(1001, 20106)
+CALL sellBackpackBundle(1001, 730900, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 17 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},14={1=2143,2=10},15={1=2144,2=10},16={1=20107,2=10},17={1=20108,2=10},18={1=20144,2=10},19={1=20124,2=10},2={1=2156,2=10},20={1=20125,2=10},21={1=20106,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
 >> say 1001 no
 >> think
 >> say 1001 buy
@@ -1176,43 +1192,43 @@ CALL sell(1001, 2153, 1, 4000)
 >> say 1001 no
 >> think
 >> say 1001 violet gems
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 violet gems
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 5 violet gems
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 5 violet gems
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 violet gems 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 violet gems 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 violet gems all
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 violet gems all
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> think
@@ -1349,43 +1365,43 @@ CALL sell(1001, 2154, 1, 1000)
 >> say 1001 no
 >> think
 >> say 1001 yellow gems
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 yellow gems
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 5 yellow gems
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 5 yellow gems
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 yellow gems 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 yellow gems 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 yellow gems all
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 yellow gems all
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> think
@@ -1489,43 +1505,43 @@ CALL sell(1001, 2158, 1, 5000)
 >> say 1001 no
 >> think
 >> say 1001 blue gems
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 blue gems
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 5 blue gems
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 5 blue gems
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 blue gems 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 blue gems 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 blue gems all
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 blue gems all
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> think
@@ -2453,6 +2469,369 @@ CALL getPlayerItemCount(1001, 2151)
 CALL sell(1001, 2151, 1, 300)
 >> say 1001 no
 >> think
+>> say 1001 white pearl
+CALL getPlayerItemCount(1001, 2143)
+CALL sell(1001, 2143, 1, 160)
+>> say 1001 yes
+>> say 1001 white pearl
+CALL getPlayerItemCount(1001, 2143)
+CALL sell(1001, 2143, 1, 160)
+>> say 1001 no
+>> say 1001 5 white pearl
+CALL getPlayerItemCount(1001, 2143)
+CALL sell(1001, 2143, 5, 800)
+>> say 1001 yes
+>> say 1001 5 white pearl
+CALL getPlayerItemCount(1001, 2143)
+CALL sell(1001, 2143, 5, 800)
+>> say 1001 no
+>> say 1001 white pearl 100
+CALL getPlayerItemCount(1001, 2143)
+CALL sell(1001, 2143, 1, 160)
+>> say 1001 yes
+>> say 1001 white pearl 100
+CALL getPlayerItemCount(1001, 2143)
+CALL sell(1001, 2143, 1, 160)
+>> say 1001 no
+>> say 1001 white pearl all
+CALL getPlayerItemCount(1001, 2143)
+CALL sell(1001, 2143, 1, 160)
+>> say 1001 yes
+>> say 1001 white pearl all
+CALL getPlayerItemCount(1001, 2143)
+CALL sell(1001, 2143, 1, 160)
+>> say 1001 no
+>> think
+>> say 1001 white pearls
+CALL getPlayerItemCount(1001, 2143)
+CALL sell(1001, 2143, 1, 160)
+>> say 1001 yes
+>> say 1001 white pearls
+CALL getPlayerItemCount(1001, 2143)
+CALL sell(1001, 2143, 1, 160)
+>> say 1001 no
+>> say 1001 5 white pearls
+CALL getPlayerItemCount(1001, 2143)
+CALL sell(1001, 2143, 5, 800)
+>> say 1001 yes
+>> say 1001 5 white pearls
+CALL getPlayerItemCount(1001, 2143)
+CALL sell(1001, 2143, 5, 800)
+>> say 1001 no
+>> say 1001 white pearls 100
+CALL getPlayerItemCount(1001, 2143)
+CALL sell(1001, 2143, 1, 160)
+>> say 1001 yes
+>> say 1001 white pearls 100
+CALL getPlayerItemCount(1001, 2143)
+CALL sell(1001, 2143, 1, 160)
+>> say 1001 no
+>> say 1001 white pearls all
+CALL getPlayerItemCount(1001, 2143)
+CALL sell(1001, 2143, 1, 160)
+>> say 1001 yes
+>> say 1001 white pearls all
+CALL getPlayerItemCount(1001, 2143)
+CALL sell(1001, 2143, 1, 160)
+>> say 1001 no
+>> think
+>> say 1001 black pearl
+CALL getPlayerItemCount(1001, 2144)
+CALL sell(1001, 2144, 1, 280)
+>> say 1001 yes
+>> say 1001 black pearl
+CALL getPlayerItemCount(1001, 2144)
+CALL sell(1001, 2144, 1, 280)
+>> say 1001 no
+>> say 1001 5 black pearl
+CALL getPlayerItemCount(1001, 2144)
+CALL sell(1001, 2144, 5, 1400)
+>> say 1001 yes
+>> say 1001 5 black pearl
+CALL getPlayerItemCount(1001, 2144)
+CALL sell(1001, 2144, 5, 1400)
+>> say 1001 no
+>> say 1001 black pearl 100
+CALL getPlayerItemCount(1001, 2144)
+CALL sell(1001, 2144, 1, 280)
+>> say 1001 yes
+>> say 1001 black pearl 100
+CALL getPlayerItemCount(1001, 2144)
+CALL sell(1001, 2144, 1, 280)
+>> say 1001 no
+>> say 1001 black pearl all
+CALL getPlayerItemCount(1001, 2144)
+CALL sell(1001, 2144, 1, 280)
+>> say 1001 yes
+>> say 1001 black pearl all
+CALL getPlayerItemCount(1001, 2144)
+CALL sell(1001, 2144, 1, 280)
+>> say 1001 no
+>> think
+>> say 1001 black pearls
+CALL getPlayerItemCount(1001, 2144)
+CALL sell(1001, 2144, 1, 280)
+>> say 1001 yes
+>> say 1001 black pearls
+CALL getPlayerItemCount(1001, 2144)
+CALL sell(1001, 2144, 1, 280)
+>> say 1001 no
+>> say 1001 5 black pearls
+CALL getPlayerItemCount(1001, 2144)
+CALL sell(1001, 2144, 5, 1400)
+>> say 1001 yes
+>> say 1001 5 black pearls
+CALL getPlayerItemCount(1001, 2144)
+CALL sell(1001, 2144, 5, 1400)
+>> say 1001 no
+>> say 1001 black pearls 100
+CALL getPlayerItemCount(1001, 2144)
+CALL sell(1001, 2144, 1, 280)
+>> say 1001 yes
+>> say 1001 black pearls 100
+CALL getPlayerItemCount(1001, 2144)
+CALL sell(1001, 2144, 1, 280)
+>> say 1001 no
+>> say 1001 black pearls all
+CALL getPlayerItemCount(1001, 2144)
+CALL sell(1001, 2144, 1, 280)
+>> say 1001 yes
+>> say 1001 black pearls all
+CALL getPlayerItemCount(1001, 2144)
+CALL sell(1001, 2144, 1, 280)
+>> say 1001 no
+>> think
+>> say 1001 venomqueen heart
+CALL getPlayerItemCount(1001, 20107)
+CALL sell(1001, 20107, 1, 12000)
+>> say 1001 yes
+>> say 1001 venomqueen heart
+CALL getPlayerItemCount(1001, 20107)
+CALL sell(1001, 20107, 1, 12000)
+>> say 1001 no
+>> say 1001 5 venomqueen heart
+CALL getPlayerItemCount(1001, 20107)
+CALL sell(1001, 20107, 5, 60000)
+>> say 1001 yes
+>> say 1001 5 venomqueen heart
+CALL getPlayerItemCount(1001, 20107)
+CALL sell(1001, 20107, 5, 60000)
+>> say 1001 no
+>> say 1001 venomqueen heart 100
+CALL getPlayerItemCount(1001, 20107)
+CALL sell(1001, 20107, 1, 12000)
+>> say 1001 yes
+>> say 1001 venomqueen heart 100
+CALL getPlayerItemCount(1001, 20107)
+CALL sell(1001, 20107, 1, 12000)
+>> say 1001 no
+>> say 1001 venomqueen heart all
+CALL getPlayerItemCount(1001, 20107)
+CALL sell(1001, 20107, 1, 12000)
+>> say 1001 yes
+>> say 1001 venomqueen heart all
+CALL getPlayerItemCount(1001, 20107)
+CALL sell(1001, 20107, 1, 12000)
+>> say 1001 no
+>> think
+>> say 1001 bonepriest phylactery
+CALL getPlayerItemCount(1001, 20108)
+CALL sell(1001, 20108, 1, 12000)
+>> say 1001 yes
+>> say 1001 bonepriest phylactery
+CALL getPlayerItemCount(1001, 20108)
+CALL sell(1001, 20108, 1, 12000)
+>> say 1001 no
+>> say 1001 5 bonepriest phylactery
+CALL getPlayerItemCount(1001, 20108)
+CALL sell(1001, 20108, 5, 60000)
+>> say 1001 yes
+>> say 1001 5 bonepriest phylactery
+CALL getPlayerItemCount(1001, 20108)
+CALL sell(1001, 20108, 5, 60000)
+>> say 1001 no
+>> say 1001 bonepriest phylactery 100
+CALL getPlayerItemCount(1001, 20108)
+CALL sell(1001, 20108, 1, 12000)
+>> say 1001 yes
+>> say 1001 bonepriest phylactery 100
+CALL getPlayerItemCount(1001, 20108)
+CALL sell(1001, 20108, 1, 12000)
+>> say 1001 no
+>> say 1001 bonepriest phylactery all
+CALL getPlayerItemCount(1001, 20108)
+CALL sell(1001, 20108, 1, 12000)
+>> say 1001 yes
+>> say 1001 bonepriest phylactery all
+CALL getPlayerItemCount(1001, 20108)
+CALL sell(1001, 20108, 1, 12000)
+>> say 1001 no
+>> think
+>> say 1001 phylactery
+CALL getPlayerItemCount(1001, 20108)
+CALL sell(1001, 20108, 1, 12000)
+>> say 1001 yes
+>> say 1001 phylactery
+CALL getPlayerItemCount(1001, 20108)
+CALL sell(1001, 20108, 1, 12000)
+>> say 1001 no
+>> say 1001 5 phylactery
+CALL getPlayerItemCount(1001, 20108)
+CALL sell(1001, 20108, 5, 60000)
+>> say 1001 yes
+>> say 1001 5 phylactery
+CALL getPlayerItemCount(1001, 20108)
+CALL sell(1001, 20108, 5, 60000)
+>> say 1001 no
+>> say 1001 phylactery 100
+CALL getPlayerItemCount(1001, 20108)
+CALL sell(1001, 20108, 1, 12000)
+>> say 1001 yes
+>> say 1001 phylactery 100
+CALL getPlayerItemCount(1001, 20108)
+CALL sell(1001, 20108, 1, 12000)
+>> say 1001 no
+>> say 1001 phylactery all
+CALL getPlayerItemCount(1001, 20108)
+CALL sell(1001, 20108, 1, 12000)
+>> say 1001 yes
+>> say 1001 phylactery all
+CALL getPlayerItemCount(1001, 20108)
+CALL sell(1001, 20108, 1, 12000)
+>> say 1001 no
+>> think
+>> say 1001 relic of ulm
+CALL getPlayerItemCount(1001, 20144)
+CALL sell(1001, 20144, 1, 5000)
+>> say 1001 yes
+>> say 1001 relic of ulm
+CALL getPlayerItemCount(1001, 20144)
+CALL sell(1001, 20144, 1, 5000)
+>> say 1001 no
+>> say 1001 5 relic of ulm
+CALL getPlayerItemCount(1001, 20144)
+CALL sell(1001, 20144, 5, 25000)
+>> say 1001 yes
+>> say 1001 5 relic of ulm
+CALL getPlayerItemCount(1001, 20144)
+CALL sell(1001, 20144, 5, 25000)
+>> say 1001 no
+>> say 1001 relic of ulm 100
+CALL getPlayerItemCount(1001, 20144)
+CALL sell(1001, 20144, 1, 5000)
+>> say 1001 yes
+>> say 1001 relic of ulm 100
+CALL getPlayerItemCount(1001, 20144)
+CALL sell(1001, 20144, 1, 5000)
+>> say 1001 no
+>> say 1001 relic of ulm all
+CALL getPlayerItemCount(1001, 20144)
+CALL sell(1001, 20144, 1, 5000)
+>> say 1001 yes
+>> say 1001 relic of ulm all
+CALL getPlayerItemCount(1001, 20144)
+CALL sell(1001, 20144, 1, 5000)
+>> say 1001 no
+>> think
+>> say 1001 azure sunstone
+CALL getPlayerItemCount(1001, 20124)
+CALL sell(1001, 20124, 1, 4000)
+>> say 1001 yes
+>> say 1001 azure sunstone
+CALL getPlayerItemCount(1001, 20124)
+CALL sell(1001, 20124, 1, 4000)
+>> say 1001 no
+>> say 1001 5 azure sunstone
+CALL getPlayerItemCount(1001, 20124)
+CALL sell(1001, 20124, 5, 20000)
+>> say 1001 yes
+>> say 1001 5 azure sunstone
+CALL getPlayerItemCount(1001, 20124)
+CALL sell(1001, 20124, 5, 20000)
+>> say 1001 no
+>> say 1001 azure sunstone 100
+CALL getPlayerItemCount(1001, 20124)
+CALL sell(1001, 20124, 1, 4000)
+>> say 1001 yes
+>> say 1001 azure sunstone 100
+CALL getPlayerItemCount(1001, 20124)
+CALL sell(1001, 20124, 1, 4000)
+>> say 1001 no
+>> say 1001 azure sunstone all
+CALL getPlayerItemCount(1001, 20124)
+CALL sell(1001, 20124, 1, 4000)
+>> say 1001 yes
+>> say 1001 azure sunstone all
+CALL getPlayerItemCount(1001, 20124)
+CALL sell(1001, 20124, 1, 4000)
+>> say 1001 no
+>> think
+>> say 1001 verdant sunstone
+CALL getPlayerItemCount(1001, 20125)
+CALL sell(1001, 20125, 1, 4000)
+>> say 1001 yes
+>> say 1001 verdant sunstone
+CALL getPlayerItemCount(1001, 20125)
+CALL sell(1001, 20125, 1, 4000)
+>> say 1001 no
+>> say 1001 5 verdant sunstone
+CALL getPlayerItemCount(1001, 20125)
+CALL sell(1001, 20125, 5, 20000)
+>> say 1001 yes
+>> say 1001 5 verdant sunstone
+CALL getPlayerItemCount(1001, 20125)
+CALL sell(1001, 20125, 5, 20000)
+>> say 1001 no
+>> say 1001 verdant sunstone 100
+CALL getPlayerItemCount(1001, 20125)
+CALL sell(1001, 20125, 1, 4000)
+>> say 1001 yes
+>> say 1001 verdant sunstone 100
+CALL getPlayerItemCount(1001, 20125)
+CALL sell(1001, 20125, 1, 4000)
+>> say 1001 no
+>> say 1001 verdant sunstone all
+CALL getPlayerItemCount(1001, 20125)
+CALL sell(1001, 20125, 1, 4000)
+>> say 1001 yes
+>> say 1001 verdant sunstone all
+CALL getPlayerItemCount(1001, 20125)
+CALL sell(1001, 20125, 1, 4000)
+>> say 1001 no
+>> think
+>> say 1001 hollow orb
+CALL getPlayerItemCount(1001, 20106)
+CALL sell(1001, 20106, 1, 4000)
+>> say 1001 yes
+>> say 1001 hollow orb
+CALL getPlayerItemCount(1001, 20106)
+CALL sell(1001, 20106, 1, 4000)
+>> say 1001 no
+>> say 1001 5 hollow orb
+CALL getPlayerItemCount(1001, 20106)
+CALL sell(1001, 20106, 5, 20000)
+>> say 1001 yes
+>> say 1001 5 hollow orb
+CALL getPlayerItemCount(1001, 20106)
+CALL sell(1001, 20106, 5, 20000)
+>> say 1001 no
+>> say 1001 hollow orb 100
+CALL getPlayerItemCount(1001, 20106)
+CALL sell(1001, 20106, 1, 4000)
+>> say 1001 yes
+>> say 1001 hollow orb 100
+CALL getPlayerItemCount(1001, 20106)
+CALL sell(1001, 20106, 1, 4000)
+>> say 1001 no
+>> say 1001 hollow orb all
+CALL getPlayerItemCount(1001, 20106)
+CALL sell(1001, 20106, 1, 4000)
+>> say 1001 yes
+>> say 1001 hollow orb all
+CALL getPlayerItemCount(1001, 20106)
+CALL sell(1001, 20106, 1, 4000)
+>> say 1001 no
+>> think
 >> say 1001 sell ruby
 CALL getPlayerItemCount(1001, 2147)
 CALL sell(1001, 2147, 1, 250)
@@ -2491,7 +2870,15 @@ CALL getPlayerBackpackItemCount(1001, 2147)
 CALL getPlayerBackpackItemCount(1001, 2149)
 CALL getPlayerBackpackItemCount(1001, 2150)
 CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+CALL getPlayerBackpackItemCount(1001, 2143)
+CALL getPlayerBackpackItemCount(1001, 2144)
+CALL getPlayerBackpackItemCount(1001, 20107)
+CALL getPlayerBackpackItemCount(1001, 20108)
+CALL getPlayerBackpackItemCount(1001, 20144)
+CALL getPlayerBackpackItemCount(1001, 20124)
+CALL getPlayerBackpackItemCount(1001, 20125)
+CALL getPlayerBackpackItemCount(1001, 20106)
+CALL sellBackpackBundle(1001, 730900, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 17 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},14={1=2143,2=10},15={1=2144,2=10},16={1=20107,2=10},17={1=20108,2=10},18={1=20144,2=10},19={1=20124,2=10},2={1=2156,2=10},20={1=20125,2=10},21={1=20106,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
 >> say 1001 yes
 >> say 1001 sell ruby all
 CALL getPlayerBackpackItemCount(1001, 2155)
@@ -2507,7 +2894,15 @@ CALL getPlayerBackpackItemCount(1001, 2147)
 CALL getPlayerBackpackItemCount(1001, 2149)
 CALL getPlayerBackpackItemCount(1001, 2150)
 CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+CALL getPlayerBackpackItemCount(1001, 2143)
+CALL getPlayerBackpackItemCount(1001, 2144)
+CALL getPlayerBackpackItemCount(1001, 20107)
+CALL getPlayerBackpackItemCount(1001, 20108)
+CALL getPlayerBackpackItemCount(1001, 20144)
+CALL getPlayerBackpackItemCount(1001, 20124)
+CALL getPlayerBackpackItemCount(1001, 20125)
+CALL getPlayerBackpackItemCount(1001, 20106)
+CALL sellBackpackBundle(1001, 730900, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 17 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},14={1=2143,2=10},15={1=2144,2=10},16={1=20107,2=10},17={1=20108,2=10},18={1=20144,2=10},19={1=20124,2=10},2={1=2156,2=10},20={1=20125,2=10},21={1=20106,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
 >> say 1001 no
 >> think
 >> say 1001 sell 3 amethyst
@@ -2548,7 +2943,15 @@ CALL getPlayerBackpackItemCount(1001, 2147)
 CALL getPlayerBackpackItemCount(1001, 2149)
 CALL getPlayerBackpackItemCount(1001, 2150)
 CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+CALL getPlayerBackpackItemCount(1001, 2143)
+CALL getPlayerBackpackItemCount(1001, 2144)
+CALL getPlayerBackpackItemCount(1001, 20107)
+CALL getPlayerBackpackItemCount(1001, 20108)
+CALL getPlayerBackpackItemCount(1001, 20144)
+CALL getPlayerBackpackItemCount(1001, 20124)
+CALL getPlayerBackpackItemCount(1001, 20125)
+CALL getPlayerBackpackItemCount(1001, 20106)
+CALL sellBackpackBundle(1001, 730900, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 17 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},14={1=2143,2=10},15={1=2144,2=10},16={1=20107,2=10},17={1=20108,2=10},18={1=20144,2=10},19={1=20124,2=10},2={1=2156,2=10},20={1=20125,2=10},21={1=20106,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
 >> say 1001 yes
 >> say 1001 sell 3 amethyst all
 CALL getPlayerBackpackItemCount(1001, 2155)
@@ -2564,7 +2967,15 @@ CALL getPlayerBackpackItemCount(1001, 2147)
 CALL getPlayerBackpackItemCount(1001, 2149)
 CALL getPlayerBackpackItemCount(1001, 2150)
 CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+CALL getPlayerBackpackItemCount(1001, 2143)
+CALL getPlayerBackpackItemCount(1001, 2144)
+CALL getPlayerBackpackItemCount(1001, 20107)
+CALL getPlayerBackpackItemCount(1001, 20108)
+CALL getPlayerBackpackItemCount(1001, 20144)
+CALL getPlayerBackpackItemCount(1001, 20124)
+CALL getPlayerBackpackItemCount(1001, 20125)
+CALL getPlayerBackpackItemCount(1001, 20106)
+CALL sellBackpackBundle(1001, 730900, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 17 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},14={1=2143,2=10},15={1=2144,2=10},16={1=20107,2=10},17={1=20108,2=10},18={1=20144,2=10},19={1=20124,2=10},2={1=2156,2=10},20={1=20125,2=10},21={1=20106,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
 >> say 1001 no
 >> think
 >> say 1001 sell all
@@ -2581,7 +2992,15 @@ CALL getPlayerBackpackItemCount(1001, 2147)
 CALL getPlayerBackpackItemCount(1001, 2149)
 CALL getPlayerBackpackItemCount(1001, 2150)
 CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+CALL getPlayerBackpackItemCount(1001, 2143)
+CALL getPlayerBackpackItemCount(1001, 2144)
+CALL getPlayerBackpackItemCount(1001, 20107)
+CALL getPlayerBackpackItemCount(1001, 20108)
+CALL getPlayerBackpackItemCount(1001, 20144)
+CALL getPlayerBackpackItemCount(1001, 20124)
+CALL getPlayerBackpackItemCount(1001, 20125)
+CALL getPlayerBackpackItemCount(1001, 20106)
+CALL sellBackpackBundle(1001, 730900, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 17 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},14={1=2143,2=10},15={1=2144,2=10},16={1=20107,2=10},17={1=20108,2=10},18={1=20144,2=10},19={1=20124,2=10},2={1=2156,2=10},20={1=20125,2=10},21={1=20106,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
 >> say 1001 yes
 >> say 1001 sell all
 CALL getPlayerBackpackItemCount(1001, 2155)
@@ -2597,7 +3016,15 @@ CALL getPlayerBackpackItemCount(1001, 2147)
 CALL getPlayerBackpackItemCount(1001, 2149)
 CALL getPlayerBackpackItemCount(1001, 2150)
 CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+CALL getPlayerBackpackItemCount(1001, 2143)
+CALL getPlayerBackpackItemCount(1001, 2144)
+CALL getPlayerBackpackItemCount(1001, 20107)
+CALL getPlayerBackpackItemCount(1001, 20108)
+CALL getPlayerBackpackItemCount(1001, 20144)
+CALL getPlayerBackpackItemCount(1001, 20124)
+CALL getPlayerBackpackItemCount(1001, 20125)
+CALL getPlayerBackpackItemCount(1001, 20106)
+CALL sellBackpackBundle(1001, 730900, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 17 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},14={1=2143,2=10},15={1=2144,2=10},16={1=20107,2=10},17={1=20108,2=10},18={1=20144,2=10},19={1=20124,2=10},2={1=2156,2=10},20={1=20125,2=10},21={1=20106,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
 >> say 1001 no
 >> say 1001 5 sell all
 CALL getPlayerBackpackItemCount(1001, 2155)
@@ -2613,7 +3040,15 @@ CALL getPlayerBackpackItemCount(1001, 2147)
 CALL getPlayerBackpackItemCount(1001, 2149)
 CALL getPlayerBackpackItemCount(1001, 2150)
 CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+CALL getPlayerBackpackItemCount(1001, 2143)
+CALL getPlayerBackpackItemCount(1001, 2144)
+CALL getPlayerBackpackItemCount(1001, 20107)
+CALL getPlayerBackpackItemCount(1001, 20108)
+CALL getPlayerBackpackItemCount(1001, 20144)
+CALL getPlayerBackpackItemCount(1001, 20124)
+CALL getPlayerBackpackItemCount(1001, 20125)
+CALL getPlayerBackpackItemCount(1001, 20106)
+CALL sellBackpackBundle(1001, 730900, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 17 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},14={1=2143,2=10},15={1=2144,2=10},16={1=20107,2=10},17={1=20108,2=10},18={1=20144,2=10},19={1=20124,2=10},2={1=2156,2=10},20={1=20125,2=10},21={1=20106,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
 >> say 1001 yes
 >> say 1001 5 sell all
 CALL getPlayerBackpackItemCount(1001, 2155)
@@ -2629,7 +3064,15 @@ CALL getPlayerBackpackItemCount(1001, 2147)
 CALL getPlayerBackpackItemCount(1001, 2149)
 CALL getPlayerBackpackItemCount(1001, 2150)
 CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+CALL getPlayerBackpackItemCount(1001, 2143)
+CALL getPlayerBackpackItemCount(1001, 2144)
+CALL getPlayerBackpackItemCount(1001, 20107)
+CALL getPlayerBackpackItemCount(1001, 20108)
+CALL getPlayerBackpackItemCount(1001, 20144)
+CALL getPlayerBackpackItemCount(1001, 20124)
+CALL getPlayerBackpackItemCount(1001, 20125)
+CALL getPlayerBackpackItemCount(1001, 20106)
+CALL sellBackpackBundle(1001, 730900, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 17 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},14={1=2143,2=10},15={1=2144,2=10},16={1=20107,2=10},17={1=20108,2=10},18={1=20144,2=10},19={1=20124,2=10},2={1=2156,2=10},20={1=20125,2=10},21={1=20106,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
 >> say 1001 no
 >> say 1001 sell all 100
 CALL getPlayerBackpackItemCount(1001, 2155)
@@ -2645,7 +3088,15 @@ CALL getPlayerBackpackItemCount(1001, 2147)
 CALL getPlayerBackpackItemCount(1001, 2149)
 CALL getPlayerBackpackItemCount(1001, 2150)
 CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+CALL getPlayerBackpackItemCount(1001, 2143)
+CALL getPlayerBackpackItemCount(1001, 2144)
+CALL getPlayerBackpackItemCount(1001, 20107)
+CALL getPlayerBackpackItemCount(1001, 20108)
+CALL getPlayerBackpackItemCount(1001, 20144)
+CALL getPlayerBackpackItemCount(1001, 20124)
+CALL getPlayerBackpackItemCount(1001, 20125)
+CALL getPlayerBackpackItemCount(1001, 20106)
+CALL sellBackpackBundle(1001, 730900, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 17 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},14={1=2143,2=10},15={1=2144,2=10},16={1=20107,2=10},17={1=20108,2=10},18={1=20144,2=10},19={1=20124,2=10},2={1=2156,2=10},20={1=20125,2=10},21={1=20106,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
 >> say 1001 yes
 >> say 1001 sell all 100
 CALL getPlayerBackpackItemCount(1001, 2155)
@@ -2661,7 +3112,15 @@ CALL getPlayerBackpackItemCount(1001, 2147)
 CALL getPlayerBackpackItemCount(1001, 2149)
 CALL getPlayerBackpackItemCount(1001, 2150)
 CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+CALL getPlayerBackpackItemCount(1001, 2143)
+CALL getPlayerBackpackItemCount(1001, 2144)
+CALL getPlayerBackpackItemCount(1001, 20107)
+CALL getPlayerBackpackItemCount(1001, 20108)
+CALL getPlayerBackpackItemCount(1001, 20144)
+CALL getPlayerBackpackItemCount(1001, 20124)
+CALL getPlayerBackpackItemCount(1001, 20125)
+CALL getPlayerBackpackItemCount(1001, 20106)
+CALL sellBackpackBundle(1001, 730900, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 17 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},14={1=2143,2=10},15={1=2144,2=10},16={1=20107,2=10},17={1=20108,2=10},18={1=20144,2=10},19={1=20124,2=10},2={1=2156,2=10},20={1=20125,2=10},21={1=20106,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
 >> say 1001 no
 >> say 1001 sell all all
 CALL getPlayerBackpackItemCount(1001, 2155)
@@ -2677,7 +3136,15 @@ CALL getPlayerBackpackItemCount(1001, 2147)
 CALL getPlayerBackpackItemCount(1001, 2149)
 CALL getPlayerBackpackItemCount(1001, 2150)
 CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+CALL getPlayerBackpackItemCount(1001, 2143)
+CALL getPlayerBackpackItemCount(1001, 2144)
+CALL getPlayerBackpackItemCount(1001, 20107)
+CALL getPlayerBackpackItemCount(1001, 20108)
+CALL getPlayerBackpackItemCount(1001, 20144)
+CALL getPlayerBackpackItemCount(1001, 20124)
+CALL getPlayerBackpackItemCount(1001, 20125)
+CALL getPlayerBackpackItemCount(1001, 20106)
+CALL sellBackpackBundle(1001, 730900, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 17 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},14={1=2143,2=10},15={1=2144,2=10},16={1=20107,2=10},17={1=20108,2=10},18={1=20144,2=10},19={1=20124,2=10},2={1=2156,2=10},20={1=20125,2=10},21={1=20106,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
 >> say 1001 yes
 >> say 1001 sell all all
 CALL getPlayerBackpackItemCount(1001, 2155)
@@ -2693,47 +3160,55 @@ CALL getPlayerBackpackItemCount(1001, 2147)
 CALL getPlayerBackpackItemCount(1001, 2149)
 CALL getPlayerBackpackItemCount(1001, 2150)
 CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+CALL getPlayerBackpackItemCount(1001, 2143)
+CALL getPlayerBackpackItemCount(1001, 2144)
+CALL getPlayerBackpackItemCount(1001, 20107)
+CALL getPlayerBackpackItemCount(1001, 20108)
+CALL getPlayerBackpackItemCount(1001, 20144)
+CALL getPlayerBackpackItemCount(1001, 20124)
+CALL getPlayerBackpackItemCount(1001, 20125)
+CALL getPlayerBackpackItemCount(1001, 20106)
+CALL sellBackpackBundle(1001, 730900, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 17 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},14={1=2143,2=10},15={1=2144,2=10},16={1=20107,2=10},17={1=20108,2=10},18={1=20144,2=10},19={1=20124,2=10},2={1=2156,2=10},20={1=20125,2=10},21={1=20106,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
 >> say 1001 no
 >> think
 >> say 1001 list
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 list
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 5 list
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 5 list
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 list 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 list 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 list all
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 list all
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> think
@@ -2772,434 +3247,288 @@ SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> think
 >> say 1001 help
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 yes
 >> say 1001 help
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 no
 >> say 1001 5 help
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 yes
 >> say 1001 5 help
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 no
 >> say 1001 help 100
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 yes
 >> say 1001 help 100
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 no
 >> say 1001 help all
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 yes
 >> say 1001 help all
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
->> say 1001 no
->> think
->> say 1001 focused
->> say 1001 yes
->> say 1001 focused
->> say 1001 no
->> say 1001 5 focused
->> say 1001 yes
->> say 1001 5 focused
->> say 1001 no
->> say 1001 focused 100
->> say 1001 yes
->> say 1001 focused 100
->> say 1001 no
->> say 1001 focused all
->> say 1001 yes
->> say 1001 focused all
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 no
 >> think
 >> say 1001 ayuda
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 yes
 >> say 1001 ayuda
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 no
 >> say 1001 5 ayuda
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 yes
 >> say 1001 5 ayuda
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 no
 >> say 1001 ayuda 100
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 yes
 >> say 1001 ayuda 100
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 no
 >> say 1001 ayuda all
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 yes
 >> say 1001 ayuda all
-SAY I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
+SAY I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.
 >> say 1001 no
 >> think
 >> say 1001 gems
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 gems
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 5 gems
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 5 gems
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 gems 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 gems 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 gems all
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 gems all
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> think
 >> say 1001 lista
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 lista
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 5 lista
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 5 lista
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 lista 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 lista 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 lista all
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 lista all
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> think
 >> say 1001 prices
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 prices
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 5 prices
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 5 prices
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 prices 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 prices 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 prices all
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 prices all
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> think
 >> say 1001 precios
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 precios
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 5 precios
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 5 precios
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 precios 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 precios 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 precios all
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 precios all
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> think
->> say 1001 vender todo
-CALL getPlayerBackpackItemCount(1001, 2155)
-CALL getPlayerBackpackItemCount(1001, 2156)
-CALL getPlayerBackpackItemCount(1001, 2157)
-CALL getPlayerBackpackItemCount(1001, 2159)
-CALL getPlayerBackpackItemCount(1001, 2153)
-CALL getPlayerBackpackItemCount(1001, 2154)
-CALL getPlayerBackpackItemCount(1001, 2158)
-CALL getPlayerBackpackItemCount(1001, 2145)
-CALL getPlayerBackpackItemCount(1001, 2146)
-CALL getPlayerBackpackItemCount(1001, 2147)
-CALL getPlayerBackpackItemCount(1001, 2149)
-CALL getPlayerBackpackItemCount(1001, 2150)
-CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
->> say 1001 yes
->> say 1001 vender todo
-CALL getPlayerBackpackItemCount(1001, 2155)
-CALL getPlayerBackpackItemCount(1001, 2156)
-CALL getPlayerBackpackItemCount(1001, 2157)
-CALL getPlayerBackpackItemCount(1001, 2159)
-CALL getPlayerBackpackItemCount(1001, 2153)
-CALL getPlayerBackpackItemCount(1001, 2154)
-CALL getPlayerBackpackItemCount(1001, 2158)
-CALL getPlayerBackpackItemCount(1001, 2145)
-CALL getPlayerBackpackItemCount(1001, 2146)
-CALL getPlayerBackpackItemCount(1001, 2147)
-CALL getPlayerBackpackItemCount(1001, 2149)
-CALL getPlayerBackpackItemCount(1001, 2150)
-CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
->> say 1001 no
->> say 1001 5 vender todo
-CALL getPlayerBackpackItemCount(1001, 2155)
-CALL getPlayerBackpackItemCount(1001, 2156)
-CALL getPlayerBackpackItemCount(1001, 2157)
-CALL getPlayerBackpackItemCount(1001, 2159)
-CALL getPlayerBackpackItemCount(1001, 2153)
-CALL getPlayerBackpackItemCount(1001, 2154)
-CALL getPlayerBackpackItemCount(1001, 2158)
-CALL getPlayerBackpackItemCount(1001, 2145)
-CALL getPlayerBackpackItemCount(1001, 2146)
-CALL getPlayerBackpackItemCount(1001, 2147)
-CALL getPlayerBackpackItemCount(1001, 2149)
-CALL getPlayerBackpackItemCount(1001, 2150)
-CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
->> say 1001 yes
->> say 1001 5 vender todo
-CALL getPlayerBackpackItemCount(1001, 2155)
-CALL getPlayerBackpackItemCount(1001, 2156)
-CALL getPlayerBackpackItemCount(1001, 2157)
-CALL getPlayerBackpackItemCount(1001, 2159)
-CALL getPlayerBackpackItemCount(1001, 2153)
-CALL getPlayerBackpackItemCount(1001, 2154)
-CALL getPlayerBackpackItemCount(1001, 2158)
-CALL getPlayerBackpackItemCount(1001, 2145)
-CALL getPlayerBackpackItemCount(1001, 2146)
-CALL getPlayerBackpackItemCount(1001, 2147)
-CALL getPlayerBackpackItemCount(1001, 2149)
-CALL getPlayerBackpackItemCount(1001, 2150)
-CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
->> say 1001 no
->> say 1001 vender todo 100
-CALL getPlayerBackpackItemCount(1001, 2155)
-CALL getPlayerBackpackItemCount(1001, 2156)
-CALL getPlayerBackpackItemCount(1001, 2157)
-CALL getPlayerBackpackItemCount(1001, 2159)
-CALL getPlayerBackpackItemCount(1001, 2153)
-CALL getPlayerBackpackItemCount(1001, 2154)
-CALL getPlayerBackpackItemCount(1001, 2158)
-CALL getPlayerBackpackItemCount(1001, 2145)
-CALL getPlayerBackpackItemCount(1001, 2146)
-CALL getPlayerBackpackItemCount(1001, 2147)
-CALL getPlayerBackpackItemCount(1001, 2149)
-CALL getPlayerBackpackItemCount(1001, 2150)
-CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
->> say 1001 yes
->> say 1001 vender todo 100
-CALL getPlayerBackpackItemCount(1001, 2155)
-CALL getPlayerBackpackItemCount(1001, 2156)
-CALL getPlayerBackpackItemCount(1001, 2157)
-CALL getPlayerBackpackItemCount(1001, 2159)
-CALL getPlayerBackpackItemCount(1001, 2153)
-CALL getPlayerBackpackItemCount(1001, 2154)
-CALL getPlayerBackpackItemCount(1001, 2158)
-CALL getPlayerBackpackItemCount(1001, 2145)
-CALL getPlayerBackpackItemCount(1001, 2146)
-CALL getPlayerBackpackItemCount(1001, 2147)
-CALL getPlayerBackpackItemCount(1001, 2149)
-CALL getPlayerBackpackItemCount(1001, 2150)
-CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
->> say 1001 no
->> say 1001 vender todo all
-CALL getPlayerBackpackItemCount(1001, 2155)
-CALL getPlayerBackpackItemCount(1001, 2156)
-CALL getPlayerBackpackItemCount(1001, 2157)
-CALL getPlayerBackpackItemCount(1001, 2159)
-CALL getPlayerBackpackItemCount(1001, 2153)
-CALL getPlayerBackpackItemCount(1001, 2154)
-CALL getPlayerBackpackItemCount(1001, 2158)
-CALL getPlayerBackpackItemCount(1001, 2145)
-CALL getPlayerBackpackItemCount(1001, 2146)
-CALL getPlayerBackpackItemCount(1001, 2147)
-CALL getPlayerBackpackItemCount(1001, 2149)
-CALL getPlayerBackpackItemCount(1001, 2150)
-CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
->> say 1001 yes
->> say 1001 vender todo all
-CALL getPlayerBackpackItemCount(1001, 2155)
-CALL getPlayerBackpackItemCount(1001, 2156)
-CALL getPlayerBackpackItemCount(1001, 2157)
-CALL getPlayerBackpackItemCount(1001, 2159)
-CALL getPlayerBackpackItemCount(1001, 2153)
-CALL getPlayerBackpackItemCount(1001, 2154)
-CALL getPlayerBackpackItemCount(1001, 2158)
-CALL getPlayerBackpackItemCount(1001, 2145)
-CALL getPlayerBackpackItemCount(1001, 2146)
-CALL getPlayerBackpackItemCount(1001, 2147)
-CALL getPlayerBackpackItemCount(1001, 2149)
-CALL getPlayerBackpackItemCount(1001, 2150)
-CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
->> say 1001 no
->> think
 >> say 1001 all gems
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 all gems
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 5 all gems
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 5 all gems
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 all gems 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 all gems 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 all gems all
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 all gems all
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> think
 >> say 1001 sell
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 sell
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 5 sell
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 5 sell
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 sell 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 sell 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 sell all
@@ -3216,7 +3545,15 @@ CALL getPlayerBackpackItemCount(1001, 2147)
 CALL getPlayerBackpackItemCount(1001, 2149)
 CALL getPlayerBackpackItemCount(1001, 2150)
 CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+CALL getPlayerBackpackItemCount(1001, 2143)
+CALL getPlayerBackpackItemCount(1001, 2144)
+CALL getPlayerBackpackItemCount(1001, 20107)
+CALL getPlayerBackpackItemCount(1001, 20108)
+CALL getPlayerBackpackItemCount(1001, 20144)
+CALL getPlayerBackpackItemCount(1001, 20124)
+CALL getPlayerBackpackItemCount(1001, 20125)
+CALL getPlayerBackpackItemCount(1001, 20106)
+CALL sellBackpackBundle(1001, 730900, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 17 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},14={1=2143,2=10},15={1=2144,2=10},16={1=20107,2=10},17={1=20108,2=10},18={1=20144,2=10},19={1=20124,2=10},2={1=2156,2=10},20={1=20125,2=10},21={1=20106,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
 >> say 1001 yes
 >> say 1001 sell all
 CALL getPlayerBackpackItemCount(1001, 2155)
@@ -3232,37 +3569,45 @@ CALL getPlayerBackpackItemCount(1001, 2147)
 CALL getPlayerBackpackItemCount(1001, 2149)
 CALL getPlayerBackpackItemCount(1001, 2150)
 CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+CALL getPlayerBackpackItemCount(1001, 2143)
+CALL getPlayerBackpackItemCount(1001, 2144)
+CALL getPlayerBackpackItemCount(1001, 20107)
+CALL getPlayerBackpackItemCount(1001, 20108)
+CALL getPlayerBackpackItemCount(1001, 20144)
+CALL getPlayerBackpackItemCount(1001, 20124)
+CALL getPlayerBackpackItemCount(1001, 20125)
+CALL getPlayerBackpackItemCount(1001, 20106)
+CALL sellBackpackBundle(1001, 730900, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 17 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},14={1=2143,2=10},15={1=2144,2=10},16={1=20107,2=10},17={1=20108,2=10},18={1=20144,2=10},19={1=20124,2=10},2={1=2156,2=10},20={1=20125,2=10},21={1=20106,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
 >> say 1001 no
 >> think
 >> say 1001 vender
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 vender
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 5 vender
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 5 vender
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 vender 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 yes
 >> say 1001 vender 100
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1001 no
 >> say 1001 vender all
@@ -3279,7 +3624,15 @@ CALL getPlayerBackpackItemCount(1001, 2147)
 CALL getPlayerBackpackItemCount(1001, 2149)
 CALL getPlayerBackpackItemCount(1001, 2150)
 CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+CALL getPlayerBackpackItemCount(1001, 2143)
+CALL getPlayerBackpackItemCount(1001, 2144)
+CALL getPlayerBackpackItemCount(1001, 20107)
+CALL getPlayerBackpackItemCount(1001, 20108)
+CALL getPlayerBackpackItemCount(1001, 20144)
+CALL getPlayerBackpackItemCount(1001, 20124)
+CALL getPlayerBackpackItemCount(1001, 20125)
+CALL getPlayerBackpackItemCount(1001, 20106)
+CALL sellBackpackBundle(1001, 730900, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 17 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},14={1=2143,2=10},15={1=2144,2=10},16={1=20107,2=10},17={1=20108,2=10},18={1=20144,2=10},19={1=20124,2=10},2={1=2156,2=10},20={1=20125,2=10},21={1=20106,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
 >> say 1001 yes
 >> say 1001 vender all
 CALL getPlayerBackpackItemCount(1001, 2155)
@@ -3295,7 +3648,15 @@ CALL getPlayerBackpackItemCount(1001, 2147)
 CALL getPlayerBackpackItemCount(1001, 2149)
 CALL getPlayerBackpackItemCount(1001, 2150)
 CALL getPlayerBackpackItemCount(1001, 2151)
-CALL sellBackpackBundle(1001, 316500, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 9 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},2={1=2156,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
+CALL getPlayerBackpackItemCount(1001, 2143)
+CALL getPlayerBackpackItemCount(1001, 2144)
+CALL getPlayerBackpackItemCount(1001, 20107)
+CALL getPlayerBackpackItemCount(1001, 20108)
+CALL getPlayerBackpackItemCount(1001, 20144)
+CALL getPlayerBackpackItemCount(1001, 20124)
+CALL getPlayerBackpackItemCount(1001, 20125)
+CALL getPlayerBackpackItemCount(1001, 20106)
+CALL sellBackpackBundle(1001, 730900, "10x big emerald, 10x big ruby, 10x gold nugget, 10x scarab coin and 17 more", {1={1=2155,2=10},10={1=2147,2=10},11={1=2149,2=10},12={1=2150,2=10},13={1=2151,2=10},14={1=2143,2=10},15={1=2144,2=10},16={1=20107,2=10},17={1=20108,2=10},18={1=20144,2=10},19={1=20124,2=10},2={1=2156,2=10},20={1=20125,2=10},21={1=20106,2=10},3={1=2157,2=10},4={1=2159,2=10},5={1=2153,2=10},6={1=2154,2=10},7={1=2158,2=10},8={1=2145,2=10},9={1=2146,2=10}})
 >> say 1001 no
 >> think
 >> say 1001 bye
@@ -3417,8 +3778,8 @@ CALL getPlayerItemCount(1002, 2153)
 CALL sell(1002, 2153, 1, 4000)
 >> say 1002 yes
 >> say 1002 violet gems
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1002 yes
 >> say 1002 purple gem
@@ -3438,8 +3799,8 @@ CALL getPlayerItemCount(1002, 2154)
 CALL sell(1002, 2154, 1, 1000)
 >> say 1002 yes
 >> say 1002 yellow gems
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1002 yes
 >> say 1002 topaz
@@ -3455,8 +3816,8 @@ CALL getPlayerItemCount(1002, 2158)
 CALL sell(1002, 2158, 1, 5000)
 >> say 1002 yes
 >> say 1002 blue gems
-SAY Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.
-SAY Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.
+SAY Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.
+SAY Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.
 SAY Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.
 >> say 1002 yes
 >> say 1002 small diamond

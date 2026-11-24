@@ -396,6 +396,23 @@ say 1001 yes
 say 1001 crown helmet all
 say 1001 no
 think
+say 1001 fox machina helmet
+say 1001 yes
+say 1001 fox machina helmet
+say 1001 no
+say 1001 5 fox machina helmet
+say 1001 yes
+say 1001 5 fox machina helmet
+say 1001 no
+say 1001 fox machina helmet 100
+say 1001 yes
+say 1001 fox machina helmet 100
+say 1001 no
+say 1001 fox machina helmet all
+say 1001 yes
+say 1001 fox machina helmet all
+say 1001 no
+think
 say 1001 devil helmet
 say 1001 yes
 say 1001 devil helmet
@@ -411,6 +428,40 @@ say 1001 no
 say 1001 devil helmet all
 say 1001 yes
 say 1001 devil helmet all
+say 1001 no
+think
+say 1001 morlen crest
+say 1001 yes
+say 1001 morlen crest
+say 1001 no
+say 1001 5 morlen crest
+say 1001 yes
+say 1001 5 morlen crest
+say 1001 no
+say 1001 morlen crest 100
+say 1001 yes
+say 1001 morlen crest 100
+say 1001 no
+say 1001 morlen crest all
+say 1001 yes
+say 1001 morlen crest all
+say 1001 no
+think
+say 1001 starbinder hood
+say 1001 yes
+say 1001 starbinder hood
+say 1001 no
+say 1001 5 starbinder hood
+say 1001 yes
+say 1001 5 starbinder hood
+say 1001 no
+say 1001 starbinder hood 100
+say 1001 yes
+say 1001 starbinder hood 100
+say 1001 no
+say 1001 starbinder hood all
+say 1001 yes
+say 1001 starbinder hood all
 say 1001 no
 think
 say 1001 mystic turban
@@ -430,21 +481,55 @@ say 1001 yes
 say 1001 mystic turban all
 say 1001 no
 think
-say 1001 chain helmet
+say 1001 strange helmet
 say 1001 yes
-say 1001 chain helmet
+say 1001 strange helmet
 say 1001 no
-say 1001 5 chain helmet
+say 1001 5 strange helmet
 say 1001 yes
-say 1001 5 chain helmet
+say 1001 5 strange helmet
 say 1001 no
-say 1001 chain helmet 100
+say 1001 strange helmet 100
 say 1001 yes
-say 1001 chain helmet 100
+say 1001 strange helmet 100
 say 1001 no
-say 1001 chain helmet all
+say 1001 strange helmet all
 say 1001 yes
-say 1001 chain helmet all
+say 1001 strange helmet all
+say 1001 no
+think
+say 1001 dark helmet
+say 1001 yes
+say 1001 dark helmet
+say 1001 no
+say 1001 5 dark helmet
+say 1001 yes
+say 1001 5 dark helmet
+say 1001 no
+say 1001 dark helmet 100
+say 1001 yes
+say 1001 dark helmet 100
+say 1001 no
+say 1001 dark helmet all
+say 1001 yes
+say 1001 dark helmet all
+say 1001 no
+think
+say 1001 steel helmet
+say 1001 yes
+say 1001 steel helmet
+say 1001 no
+say 1001 5 steel helmet
+say 1001 yes
+say 1001 5 steel helmet
+say 1001 no
+say 1001 steel helmet 100
+say 1001 yes
+say 1001 steel helmet 100
+say 1001 no
+say 1001 steel helmet all
+say 1001 yes
+say 1001 steel helmet all
 say 1001 no
 think
 say 1001 iron helmet
@@ -462,6 +547,23 @@ say 1001 no
 say 1001 iron helmet all
 say 1001 yes
 say 1001 iron helmet all
+say 1001 no
+think
+say 1001 chain helmet
+say 1001 yes
+say 1001 chain helmet
+say 1001 no
+say 1001 5 chain helmet
+say 1001 yes
+say 1001 5 chain helmet
+say 1001 no
+say 1001 chain helmet 100
+say 1001 yes
+say 1001 chain helmet 100
+say 1001 no
+say 1001 chain helmet all
+say 1001 yes
+say 1001 chain helmet all
 say 1001 no
 think
 say 1001 steel boots
@@ -515,6 +617,40 @@ say 1001 yes
 say 1001 boots of haste all
 say 1001 no
 think
+say 1001 wayfarer boots
+say 1001 yes
+say 1001 wayfarer boots
+say 1001 no
+say 1001 5 wayfarer boots
+say 1001 yes
+say 1001 5 wayfarer boots
+say 1001 no
+say 1001 wayfarer boots 100
+say 1001 yes
+say 1001 wayfarer boots 100
+say 1001 no
+say 1001 wayfarer boots all
+say 1001 yes
+say 1001 wayfarer boots all
+say 1001 no
+think
+say 1001 crocodile boots
+say 1001 yes
+say 1001 crocodile boots
+say 1001 no
+say 1001 5 crocodile boots
+say 1001 yes
+say 1001 5 crocodile boots
+say 1001 no
+say 1001 crocodile boots 100
+say 1001 yes
+say 1001 crocodile boots 100
+say 1001 no
+say 1001 crocodile boots all
+say 1001 yes
+say 1001 crocodile boots all
+say 1001 no
+think
 say 1001 magic plate armor
 say 1001 yes
 say 1001 magic plate armor
@@ -547,6 +683,23 @@ say 1001 no
 say 1001 mpa all
 say 1001 yes
 say 1001 mpa all
+say 1001 no
+think
+say 1001 obsidian regalia
+say 1001 yes
+say 1001 obsidian regalia
+say 1001 no
+say 1001 5 obsidian regalia
+say 1001 yes
+say 1001 5 obsidian regalia
+say 1001 no
+say 1001 obsidian regalia 100
+say 1001 yes
+say 1001 obsidian regalia 100
+say 1001 no
+say 1001 obsidian regalia all
+say 1001 yes
+say 1001 obsidian regalia all
 say 1001 no
 think
 say 1001 dragon scale mail
@@ -600,6 +753,23 @@ say 1001 yes
 say 1001 golden armor all
 say 1001 no
 think
+say 1001 rubbleguard mail
+say 1001 yes
+say 1001 rubbleguard mail
+say 1001 no
+say 1001 5 rubbleguard mail
+say 1001 yes
+say 1001 5 rubbleguard mail
+say 1001 no
+say 1001 rubbleguard mail 100
+say 1001 yes
+say 1001 rubbleguard mail 100
+say 1001 no
+say 1001 rubbleguard mail all
+say 1001 yes
+say 1001 rubbleguard mail all
+say 1001 no
+think
 say 1001 crown armor
 say 1001 yes
 say 1001 crown armor
@@ -617,21 +787,55 @@ say 1001 yes
 say 1001 crown armor all
 say 1001 no
 think
-say 1001 knight armor
+say 1001 ashlar plate
 say 1001 yes
-say 1001 knight armor
+say 1001 ashlar plate
 say 1001 no
-say 1001 5 knight armor
+say 1001 5 ashlar plate
 say 1001 yes
-say 1001 5 knight armor
+say 1001 5 ashlar plate
 say 1001 no
-say 1001 knight armor 100
+say 1001 ashlar plate 100
 say 1001 yes
-say 1001 knight armor 100
+say 1001 ashlar plate 100
 say 1001 no
-say 1001 knight armor all
+say 1001 ashlar plate all
 say 1001 yes
-say 1001 knight armor all
+say 1001 ashlar plate all
+say 1001 no
+think
+say 1001 tiled breastplate
+say 1001 yes
+say 1001 tiled breastplate
+say 1001 no
+say 1001 5 tiled breastplate
+say 1001 yes
+say 1001 5 tiled breastplate
+say 1001 no
+say 1001 tiled breastplate 100
+say 1001 yes
+say 1001 tiled breastplate 100
+say 1001 no
+say 1001 tiled breastplate all
+say 1001 yes
+say 1001 tiled breastplate all
+say 1001 no
+think
+say 1001 ashlord mantle
+say 1001 yes
+say 1001 ashlord mantle
+say 1001 no
+say 1001 5 ashlord mantle
+say 1001 yes
+say 1001 5 ashlord mantle
+say 1001 no
+say 1001 ashlord mantle 100
+say 1001 yes
+say 1001 ashlord mantle 100
+say 1001 no
+say 1001 ashlord mantle all
+say 1001 yes
+say 1001 ashlord mantle all
 say 1001 no
 think
 say 1001 blue robe
@@ -651,6 +855,57 @@ say 1001 yes
 say 1001 blue robe all
 say 1001 no
 think
+say 1001 red robe
+say 1001 yes
+say 1001 red robe
+say 1001 no
+say 1001 5 red robe
+say 1001 yes
+say 1001 5 red robe
+say 1001 no
+say 1001 red robe 100
+say 1001 yes
+say 1001 red robe 100
+say 1001 no
+say 1001 red robe all
+say 1001 yes
+say 1001 red robe all
+say 1001 no
+think
+say 1001 quarryguard armor
+say 1001 yes
+say 1001 quarryguard armor
+say 1001 no
+say 1001 5 quarryguard armor
+say 1001 yes
+say 1001 5 quarryguard armor
+say 1001 no
+say 1001 quarryguard armor 100
+say 1001 yes
+say 1001 quarryguard armor 100
+say 1001 no
+say 1001 quarryguard armor all
+say 1001 yes
+say 1001 quarryguard armor all
+say 1001 no
+think
+say 1001 knight armor
+say 1001 yes
+say 1001 knight armor
+say 1001 no
+say 1001 5 knight armor
+say 1001 yes
+say 1001 5 knight armor
+say 1001 no
+say 1001 knight armor 100
+say 1001 yes
+say 1001 knight armor 100
+say 1001 no
+say 1001 knight armor all
+say 1001 yes
+say 1001 knight armor all
+say 1001 no
+think
 say 1001 lady armor
 say 1001 yes
 say 1001 lady armor
@@ -666,6 +921,40 @@ say 1001 no
 say 1001 lady armor all
 say 1001 yes
 say 1001 lady armor all
+say 1001 no
+think
+say 1001 noble armor
+say 1001 yes
+say 1001 noble armor
+say 1001 no
+say 1001 5 noble armor
+say 1001 yes
+say 1001 5 noble armor
+say 1001 no
+say 1001 noble armor 100
+say 1001 yes
+say 1001 noble armor 100
+say 1001 no
+say 1001 noble armor all
+say 1001 yes
+say 1001 noble armor all
+say 1001 no
+think
+say 1001 dark armor
+say 1001 yes
+say 1001 dark armor
+say 1001 no
+say 1001 5 dark armor
+say 1001 yes
+say 1001 5 dark armor
+say 1001 no
+say 1001 dark armor 100
+say 1001 yes
+say 1001 dark armor 100
+say 1001 no
+say 1001 dark armor all
+say 1001 yes
+say 1001 dark armor all
 say 1001 no
 think
 say 1001 plate armor
@@ -700,6 +989,23 @@ say 1001 no
 say 1001 brass armor all
 say 1001 yes
 say 1001 brass armor all
+say 1001 no
+think
+say 1001 scale armor
+say 1001 yes
+say 1001 scale armor
+say 1001 no
+say 1001 5 scale armor
+say 1001 yes
+say 1001 5 scale armor
+say 1001 no
+say 1001 scale armor 100
+say 1001 yes
+say 1001 scale armor 100
+say 1001 no
+say 1001 scale armor all
+say 1001 yes
+say 1001 scale armor all
 say 1001 no
 think
 say 1001 chain armor
@@ -753,6 +1059,57 @@ say 1001 yes
 say 1001 crown legs all
 say 1001 no
 think
+say 1001 basalt greaves
+say 1001 yes
+say 1001 basalt greaves
+say 1001 no
+say 1001 5 basalt greaves
+say 1001 yes
+say 1001 5 basalt greaves
+say 1001 no
+say 1001 basalt greaves 100
+say 1001 yes
+say 1001 basalt greaves 100
+say 1001 no
+say 1001 basalt greaves all
+say 1001 yes
+say 1001 basalt greaves all
+say 1001 no
+think
+say 1001 marcher leggings
+say 1001 yes
+say 1001 marcher leggings
+say 1001 no
+say 1001 5 marcher leggings
+say 1001 yes
+say 1001 5 marcher leggings
+say 1001 no
+say 1001 marcher leggings 100
+say 1001 yes
+say 1001 marcher leggings 100
+say 1001 no
+say 1001 marcher leggings all
+say 1001 yes
+say 1001 marcher leggings all
+say 1001 no
+think
+say 1001 cordovan leggings
+say 1001 yes
+say 1001 cordovan leggings
+say 1001 no
+say 1001 5 cordovan leggings
+say 1001 yes
+say 1001 5 cordovan leggings
+say 1001 no
+say 1001 cordovan leggings 100
+say 1001 yes
+say 1001 cordovan leggings 100
+say 1001 no
+say 1001 cordovan leggings all
+say 1001 yes
+say 1001 cordovan leggings all
+say 1001 no
+think
 say 1001 knight legs
 say 1001 yes
 say 1001 knight legs
@@ -768,6 +1125,23 @@ say 1001 no
 say 1001 knight legs all
 say 1001 yes
 say 1001 knight legs all
+say 1001 no
+think
+say 1001 kilnfire leggings
+say 1001 yes
+say 1001 kilnfire leggings
+say 1001 no
+say 1001 5 kilnfire leggings
+say 1001 yes
+say 1001 5 kilnfire leggings
+say 1001 no
+say 1001 kilnfire leggings 100
+say 1001 yes
+say 1001 kilnfire leggings 100
+say 1001 no
+say 1001 kilnfire leggings all
+say 1001 yes
+say 1001 kilnfire leggings all
 say 1001 no
 think
 say 1001 plate legs
@@ -821,6 +1195,40 @@ say 1001 yes
 say 1001 chain legs all
 say 1001 no
 think
+say 1001 chain trousers
+say 1001 yes
+say 1001 chain trousers
+say 1001 no
+say 1001 5 chain trousers
+say 1001 yes
+say 1001 5 chain trousers
+say 1001 no
+say 1001 chain trousers 100
+say 1001 yes
+say 1001 chain trousers 100
+say 1001 no
+say 1001 chain trousers all
+say 1001 yes
+say 1001 chain trousers all
+say 1001 no
+think
+say 1001 mastermind shield
+say 1001 yes
+say 1001 mastermind shield
+say 1001 no
+say 1001 5 mastermind shield
+say 1001 yes
+say 1001 5 mastermind shield
+say 1001 no
+say 1001 mastermind shield 100
+say 1001 yes
+say 1001 mastermind shield 100
+say 1001 no
+say 1001 mastermind shield all
+say 1001 yes
+say 1001 mastermind shield all
+say 1001 no
+think
 say 1001 shield of the mastermind
 say 1001 yes
 say 1001 shield of the mastermind
@@ -872,6 +1280,23 @@ say 1001 yes
 say 1001 demon shield all
 say 1001 no
 think
+say 1001 sunforge shield
+say 1001 yes
+say 1001 sunforge shield
+say 1001 no
+say 1001 5 sunforge shield
+say 1001 yes
+say 1001 5 sunforge shield
+say 1001 no
+say 1001 sunforge shield 100
+say 1001 yes
+say 1001 sunforge shield 100
+say 1001 no
+say 1001 sunforge shield all
+say 1001 yes
+say 1001 sunforge shield all
+say 1001 no
+think
 say 1001 vampire shield
 say 1001 yes
 say 1001 vampire shield
@@ -889,38 +1314,106 @@ say 1001 yes
 say 1001 vampire shield all
 say 1001 no
 think
-say 1001 medusa shield
+say 1001 bloodreaver aegis
 say 1001 yes
-say 1001 medusa shield
+say 1001 bloodreaver aegis
 say 1001 no
-say 1001 5 medusa shield
+say 1001 5 bloodreaver aegis
 say 1001 yes
-say 1001 5 medusa shield
+say 1001 5 bloodreaver aegis
 say 1001 no
-say 1001 medusa shield 100
+say 1001 bloodreaver aegis 100
 say 1001 yes
-say 1001 medusa shield 100
+say 1001 bloodreaver aegis 100
 say 1001 no
-say 1001 medusa shield all
+say 1001 bloodreaver aegis all
 say 1001 yes
-say 1001 medusa shield all
+say 1001 bloodreaver aegis all
 say 1001 no
 think
-say 1001 amazon shield
+say 1001 frostwarden aegis
 say 1001 yes
-say 1001 amazon shield
+say 1001 frostwarden aegis
 say 1001 no
-say 1001 5 amazon shield
+say 1001 5 frostwarden aegis
 say 1001 yes
-say 1001 5 amazon shield
+say 1001 5 frostwarden aegis
 say 1001 no
-say 1001 amazon shield 100
+say 1001 frostwarden aegis 100
 say 1001 yes
-say 1001 amazon shield 100
+say 1001 frostwarden aegis 100
 say 1001 no
-say 1001 amazon shield all
+say 1001 frostwarden aegis all
 say 1001 yes
-say 1001 amazon shield all
+say 1001 frostwarden aegis all
+say 1001 no
+think
+say 1001 ironhide bulwark
+say 1001 yes
+say 1001 ironhide bulwark
+say 1001 no
+say 1001 5 ironhide bulwark
+say 1001 yes
+say 1001 5 ironhide bulwark
+say 1001 no
+say 1001 ironhide bulwark 100
+say 1001 yes
+say 1001 ironhide bulwark 100
+say 1001 no
+say 1001 ironhide bulwark all
+say 1001 yes
+say 1001 ironhide bulwark all
+say 1001 no
+think
+say 1001 quarry ward
+say 1001 yes
+say 1001 quarry ward
+say 1001 no
+say 1001 5 quarry ward
+say 1001 yes
+say 1001 5 quarry ward
+say 1001 no
+say 1001 quarry ward 100
+say 1001 yes
+say 1001 quarry ward 100
+say 1001 no
+say 1001 quarry ward all
+say 1001 yes
+say 1001 quarry ward all
+say 1001 no
+think
+say 1001 mosaic shield
+say 1001 yes
+say 1001 mosaic shield
+say 1001 no
+say 1001 5 mosaic shield
+say 1001 yes
+say 1001 5 mosaic shield
+say 1001 no
+say 1001 mosaic shield 100
+say 1001 yes
+say 1001 mosaic shield 100
+say 1001 no
+say 1001 mosaic shield all
+say 1001 yes
+say 1001 mosaic shield all
+say 1001 no
+think
+say 1001 medusa shield
+say 1001 yes
+say 1001 medusa shield
+say 1001 no
+say 1001 5 medusa shield
+say 1001 yes
+say 1001 5 medusa shield
+say 1001 no
+say 1001 medusa shield 100
+say 1001 yes
+say 1001 medusa shield 100
+say 1001 no
+say 1001 medusa shield all
+say 1001 yes
+say 1001 medusa shield all
 say 1001 no
 think
 say 1001 crown shield
@@ -957,6 +1450,23 @@ say 1001 yes
 say 1001 tower shield all
 say 1001 no
 think
+say 1001 amazon shield
+say 1001 yes
+say 1001 amazon shield
+say 1001 no
+say 1001 5 amazon shield
+say 1001 yes
+say 1001 5 amazon shield
+say 1001 no
+say 1001 amazon shield 100
+say 1001 yes
+say 1001 amazon shield 100
+say 1001 no
+say 1001 amazon shield all
+say 1001 yes
+say 1001 amazon shield all
+say 1001 no
+think
 say 1001 dragon shield
 say 1001 yes
 say 1001 dragon shield
@@ -972,6 +1482,23 @@ say 1001 no
 say 1001 dragon shield all
 say 1001 yes
 say 1001 dragon shield all
+say 1001 no
+think
+say 1001 griffin shield
+say 1001 yes
+say 1001 griffin shield
+say 1001 no
+say 1001 5 griffin shield
+say 1001 yes
+say 1001 5 griffin shield
+say 1001 no
+say 1001 griffin shield 100
+say 1001 yes
+say 1001 griffin shield 100
+say 1001 no
+say 1001 griffin shield all
+say 1001 yes
+say 1001 griffin shield all
 say 1001 no
 think
 say 1001 guardian shield
@@ -991,6 +1518,40 @@ say 1001 yes
 say 1001 guardian shield all
 say 1001 no
 think
+say 1001 guardians shield
+say 1001 yes
+say 1001 guardians shield
+say 1001 no
+say 1001 5 guardians shield
+say 1001 yes
+say 1001 5 guardians shield
+say 1001 no
+say 1001 guardians shield 100
+say 1001 yes
+say 1001 guardians shield 100
+say 1001 no
+say 1001 guardians shield all
+say 1001 yes
+say 1001 guardians shield all
+say 1001 no
+think
+say 1001 scarab shield
+say 1001 yes
+say 1001 scarab shield
+say 1001 no
+say 1001 5 scarab shield
+say 1001 yes
+say 1001 5 scarab shield
+say 1001 no
+say 1001 scarab shield 100
+say 1001 yes
+say 1001 scarab shield 100
+say 1001 no
+say 1001 scarab shield all
+say 1001 yes
+say 1001 scarab shield all
+say 1001 no
+think
 say 1001 beholder shield
 say 1001 yes
 say 1001 beholder shield
@@ -1008,6 +1569,57 @@ say 1001 yes
 say 1001 beholder shield all
 say 1001 no
 think
+say 1001 ancient shield
+say 1001 yes
+say 1001 ancient shield
+say 1001 no
+say 1001 5 ancient shield
+say 1001 yes
+say 1001 5 ancient shield
+say 1001 no
+say 1001 ancient shield 100
+say 1001 yes
+say 1001 ancient shield 100
+say 1001 no
+say 1001 ancient shield all
+say 1001 yes
+say 1001 ancient shield all
+say 1001 no
+think
+say 1001 tusk shield
+say 1001 yes
+say 1001 tusk shield
+say 1001 no
+say 1001 5 tusk shield
+say 1001 yes
+say 1001 5 tusk shield
+say 1001 no
+say 1001 tusk shield 100
+say 1001 yes
+say 1001 tusk shield 100
+say 1001 no
+say 1001 tusk shield all
+say 1001 yes
+say 1001 tusk shield all
+say 1001 no
+think
+say 1001 dark shield
+say 1001 yes
+say 1001 dark shield
+say 1001 no
+say 1001 5 dark shield
+say 1001 yes
+say 1001 5 dark shield
+say 1001 no
+say 1001 dark shield 100
+say 1001 yes
+say 1001 dark shield 100
+say 1001 no
+say 1001 dark shield all
+say 1001 yes
+say 1001 dark shield all
+say 1001 no
+think
 say 1001 dwarven shield
 say 1001 yes
 say 1001 dwarven shield
@@ -1023,6 +1635,40 @@ say 1001 no
 say 1001 dwarven shield all
 say 1001 yes
 say 1001 dwarven shield all
+say 1001 no
+think
+say 1001 dwarfish shield
+say 1001 yes
+say 1001 dwarfish shield
+say 1001 no
+say 1001 5 dwarfish shield
+say 1001 yes
+say 1001 5 dwarfish shield
+say 1001 no
+say 1001 dwarfish shield 100
+say 1001 yes
+say 1001 dwarfish shield 100
+say 1001 no
+say 1001 dwarfish shield all
+say 1001 yes
+say 1001 dwarfish shield all
+say 1001 no
+think
+say 1001 battle shield
+say 1001 yes
+say 1001 battle shield
+say 1001 no
+say 1001 5 battle shield
+say 1001 yes
+say 1001 5 battle shield
+say 1001 no
+say 1001 battle shield 100
+say 1001 yes
+say 1001 battle shield 100
+say 1001 no
+say 1001 battle shield all
+say 1001 yes
+say 1001 battle shield all
 say 1001 no
 think
 say 1001 giant sword
@@ -1127,6 +1773,23 @@ say 1001 yes
 say 1001 spike sword all
 say 1001 no
 think
+say 1001 spikesword
+say 1001 yes
+say 1001 spikesword
+say 1001 no
+say 1001 5 spikesword
+say 1001 yes
+say 1001 5 spikesword
+say 1001 no
+say 1001 spikesword 100
+say 1001 yes
+say 1001 spikesword 100
+say 1001 no
+say 1001 spikesword all
+say 1001 yes
+say 1001 spikesword all
+say 1001 no
+think
 say 1001 two handed sword
 say 1001 yes
 say 1001 two handed sword
@@ -1229,6 +1892,40 @@ say 1001 yes
 say 1001 sword all
 say 1001 no
 think
+say 1001 reachbrand lance
+say 1001 yes
+say 1001 reachbrand lance
+say 1001 no
+say 1001 5 reachbrand lance
+say 1001 yes
+say 1001 5 reachbrand lance
+say 1001 no
+say 1001 reachbrand lance 100
+say 1001 yes
+say 1001 reachbrand lance 100
+say 1001 no
+say 1001 reachbrand lance all
+say 1001 yes
+say 1001 reachbrand lance all
+say 1001 no
+think
+say 1001 great halberd
+say 1001 yes
+say 1001 great halberd
+say 1001 no
+say 1001 5 great halberd
+say 1001 yes
+say 1001 5 great halberd
+say 1001 no
+say 1001 great halberd 100
+say 1001 yes
+say 1001 great halberd 100
+say 1001 no
+say 1001 great halberd all
+say 1001 yes
+say 1001 great halberd all
+say 1001 no
+think
 say 1001 dragon lance
 say 1001 yes
 say 1001 dragon lance
@@ -1263,6 +1960,23 @@ say 1001 yes
 say 1001 fire axe all
 say 1001 no
 think
+say 1001 daramanian waraxe
+say 1001 yes
+say 1001 daramanian waraxe
+say 1001 no
+say 1001 5 daramanian waraxe
+say 1001 yes
+say 1001 5 daramanian waraxe
+say 1001 no
+say 1001 daramanian waraxe 100
+say 1001 yes
+say 1001 daramanian waraxe 100
+say 1001 no
+say 1001 daramanian waraxe all
+say 1001 yes
+say 1001 daramanian waraxe all
+say 1001 no
+think
 say 1001 knight axe
 say 1001 yes
 say 1001 knight axe
@@ -1280,21 +1994,21 @@ say 1001 yes
 say 1001 knight axe all
 say 1001 no
 think
-say 1001 double axe
+say 1001 obsidian lance
 say 1001 yes
-say 1001 double axe
+say 1001 obsidian lance
 say 1001 no
-say 1001 5 double axe
+say 1001 5 obsidian lance
 say 1001 yes
-say 1001 5 double axe
+say 1001 5 obsidian lance
 say 1001 no
-say 1001 double axe 100
+say 1001 obsidian lance 100
 say 1001 yes
-say 1001 double axe 100
+say 1001 obsidian lance 100
 say 1001 no
-say 1001 double axe all
+say 1001 obsidian lance all
 say 1001 yes
-say 1001 double axe all
+say 1001 obsidian lance all
 say 1001 no
 think
 say 1001 halberd
@@ -1312,6 +2026,40 @@ say 1001 no
 say 1001 halberd all
 say 1001 yes
 say 1001 halberd all
+say 1001 no
+think
+say 1001 orcish axe
+say 1001 yes
+say 1001 orcish axe
+say 1001 no
+say 1001 5 orcish axe
+say 1001 yes
+say 1001 5 orcish axe
+say 1001 no
+say 1001 orcish axe 100
+say 1001 yes
+say 1001 orcish axe 100
+say 1001 no
+say 1001 orcish axe all
+say 1001 yes
+say 1001 orcish axe all
+say 1001 no
+think
+say 1001 double axe
+say 1001 yes
+say 1001 double axe
+say 1001 no
+say 1001 5 double axe
+say 1001 yes
+say 1001 5 double axe
+say 1001 no
+say 1001 double axe 100
+say 1001 yes
+say 1001 double axe 100
+say 1001 no
+say 1001 double axe all
+say 1001 yes
+say 1001 double axe all
 say 1001 no
 think
 say 1001 battle axe
@@ -1348,21 +2096,38 @@ say 1001 yes
 say 1001 hatchet all
 say 1001 no
 think
-say 1001 war hammer
+say 1001 rift hammer
 say 1001 yes
-say 1001 war hammer
+say 1001 rift hammer
 say 1001 no
-say 1001 5 war hammer
+say 1001 5 rift hammer
 say 1001 yes
-say 1001 5 war hammer
+say 1001 5 rift hammer
 say 1001 no
-say 1001 war hammer 100
+say 1001 rift hammer 100
 say 1001 yes
-say 1001 war hammer 100
+say 1001 rift hammer 100
 say 1001 no
-say 1001 war hammer all
+say 1001 rift hammer all
 say 1001 yes
-say 1001 war hammer all
+say 1001 rift hammer all
+say 1001 no
+think
+say 1001 crystal mace
+say 1001 yes
+say 1001 crystal mace
+say 1001 no
+say 1001 5 crystal mace
+say 1001 yes
+say 1001 5 crystal mace
+say 1001 no
+say 1001 crystal mace 100
+say 1001 yes
+say 1001 crystal mace 100
+say 1001 no
+say 1001 crystal mace all
+say 1001 yes
+say 1001 crystal mace all
 say 1001 no
 think
 say 1001 skull staff
@@ -1399,6 +2164,57 @@ say 1001 yes
 say 1001 dragon hammer all
 say 1001 no
 think
+say 1001 boltworker crossbow
+say 1001 yes
+say 1001 boltworker crossbow
+say 1001 no
+say 1001 5 boltworker crossbow
+say 1001 yes
+say 1001 5 boltworker crossbow
+say 1001 no
+say 1001 boltworker crossbow 100
+say 1001 yes
+say 1001 boltworker crossbow 100
+say 1001 no
+say 1001 boltworker crossbow all
+say 1001 yes
+say 1001 boltworker crossbow all
+say 1001 no
+think
+say 1001 war hammer
+say 1001 yes
+say 1001 war hammer
+say 1001 no
+say 1001 5 war hammer
+say 1001 yes
+say 1001 5 war hammer
+say 1001 no
+say 1001 war hammer 100
+say 1001 yes
+say 1001 war hammer 100
+say 1001 no
+say 1001 war hammer all
+say 1001 yes
+say 1001 war hammer all
+say 1001 no
+think
+say 1001 granite mace
+say 1001 yes
+say 1001 granite mace
+say 1001 no
+say 1001 5 granite mace
+say 1001 yes
+say 1001 5 granite mace
+say 1001 no
+say 1001 granite mace 100
+say 1001 yes
+say 1001 granite mace 100
+say 1001 no
+say 1001 granite mace all
+say 1001 yes
+say 1001 granite mace all
+say 1001 no
+think
 say 1001 clerical mace
 say 1001 yes
 say 1001 clerical mace
@@ -1431,6 +2247,23 @@ say 1001 no
 say 1001 battle hammer all
 say 1001 yes
 say 1001 battle hammer all
+say 1001 no
+think
+say 1001 battlehammer
+say 1001 yes
+say 1001 battlehammer
+say 1001 no
+say 1001 5 battlehammer
+say 1001 yes
+say 1001 5 battlehammer
+say 1001 no
+say 1001 battlehammer 100
+say 1001 yes
+say 1001 battlehammer 100
+say 1001 no
+say 1001 battlehammer all
+say 1001 yes
+say 1001 battlehammer all
 say 1001 no
 think
 say 1001 mace
@@ -1635,6 +2468,23 @@ say 1001 no
 say 1001 amulets all
 say 1001 yes
 say 1001 amulets all
+say 1001 no
+think
+say 1001 sell all
+say 1001 yes
+say 1001 sell all
+say 1001 no
+say 1001 5 sell all
+say 1001 yes
+say 1001 5 sell all
+say 1001 no
+say 1001 sell all 100
+say 1001 yes
+say 1001 sell all 100
+say 1001 no
+say 1001 sell all all
+say 1001 yes
+say 1001 sell all all
 say 1001 no
 think
 say 1001 bye
@@ -1659,13 +2509,25 @@ say 1002 crusader helmet
 say 1002 yes
 say 1002 crown helmet
 say 1002 yes
+say 1002 fox machina helmet
+say 1002 yes
 say 1002 devil helmet
+say 1002 yes
+say 1002 morlen crest
+say 1002 yes
+say 1002 starbinder hood
 say 1002 yes
 say 1002 mystic turban
 say 1002 yes
-say 1002 chain helmet
+say 1002 strange helmet
+say 1002 yes
+say 1002 dark helmet
+say 1002 yes
+say 1002 steel helmet
 say 1002 yes
 say 1002 iron helmet
+say 1002 yes
+say 1002 chain helmet
 say 1002 yes
 say 1002 steel boots
 say 1002 yes
@@ -1673,9 +2535,15 @@ say 1002 boh
 say 1002 yes
 say 1002 boots of haste
 say 1002 yes
+say 1002 wayfarer boots
+say 1002 yes
+say 1002 crocodile boots
+say 1002 yes
 say 1002 magic plate armor
 say 1002 yes
 say 1002 mpa
+say 1002 yes
+say 1002 obsidian regalia
 say 1002 yes
 say 1002 dragon scale mail
 say 1002 yes
@@ -1683,17 +2551,35 @@ say 1002 dsm
 say 1002 yes
 say 1002 golden armor
 say 1002 yes
+say 1002 rubbleguard mail
+say 1002 yes
 say 1002 crown armor
 say 1002 yes
-say 1002 knight armor
+say 1002 ashlar plate
+say 1002 yes
+say 1002 tiled breastplate
+say 1002 yes
+say 1002 ashlord mantle
 say 1002 yes
 say 1002 blue robe
 say 1002 yes
+say 1002 red robe
+say 1002 yes
+say 1002 quarryguard armor
+say 1002 yes
+say 1002 knight armor
+say 1002 yes
 say 1002 lady armor
+say 1002 yes
+say 1002 noble armor
+say 1002 yes
+say 1002 dark armor
 say 1002 yes
 say 1002 plate armor
 say 1002 yes
 say 1002 brass armor
+say 1002 yes
+say 1002 scale armor
 say 1002 yes
 say 1002 chain armor
 say 1002 yes
@@ -1701,7 +2587,15 @@ say 1002 golden legs
 say 1002 yes
 say 1002 crown legs
 say 1002 yes
+say 1002 basalt greaves
+say 1002 yes
+say 1002 marcher leggings
+say 1002 yes
+say 1002 cordovan leggings
+say 1002 yes
 say 1002 knight legs
+say 1002 yes
+say 1002 kilnfire leggings
 say 1002 yes
 say 1002 plate legs
 say 1002 yes
@@ -1709,67 +2603,23 @@ say 1002 brass legs
 say 1002 yes
 say 1002 chain legs
 say 1002 yes
+say 1002 chain trousers
+say 1002 yes
+say 1002 mastermind shield
+say 1002 yes
 say 1002 shield of the mastermind
 say 1002 yes
 say 1002 mms
 say 1002 yes
 say 1002 demon shield
 say 1002 yes
+say 1002 sunforge shield
+say 1002 yes
 say 1002 vampire shield
 say 1002 yes
-say 1002 medusa shield
+say 1002 bloodreaver aegis
 say 1002 yes
-say 1002 amazon shield
-say 1002 yes
-say 1002 crown shield
-say 1002 yes
-say 1002 tower shield
-say 1002 yes
-say 1002 dragon shield
-say 1002 yes
-say 1002 guardian shield
-say 1002 yes
-say 1002 beholder shield
-say 1002 yes
-say 1002 dwarven shield
-say 1002 yes
-say 1002 giant sword
-say 1002 yes
-say 1002 bright sword
-say 1002 yes
-say 1002 ice rapier
-say 1002 yes
-say 1002 fire sword
-say 1002 yes
-say 1002 serpent sword
-say 1002 yes
-say 1002 spike sword
-say 1002 yes
-say 1002 two handed sword
-say 1002 yes
-say 1002 two-handed sword
-say 1002 yes
-say 1002 broad sword
-say 1002 yes
-say 1002 short sword
-say 1002 yes
-say 1002 sabre
-say 1002 yes
-say 1002 sword
-say 1002 yes
-say 1002 dragon lance
-say 1002 yes
-say 1002 fire axe
-say 1002 yes
-say 1002 knight axe
-say 1002 yes
-say 1002 double axe
-say 1002 yes
-say 1002 halberd
-say 1002 yes
-say 1002 battle axe
-say 1002 yes
-say 1002 hatchet
+say 1002 frostwarden aegis
 say 1002 yes
 say 1002 chau
 think 3
@@ -1779,6 +2629,10 @@ say 1001 swords
 say 1001 sell 3 swords
 say 1001 no
 say 1001 sell all maces
+say 1001 no
+say 1001 sell all
+say 1001 no
+say 1001 vender todo
 say 1001 no
 say 1001 sell magic sword
 say 1001 two-handed sword

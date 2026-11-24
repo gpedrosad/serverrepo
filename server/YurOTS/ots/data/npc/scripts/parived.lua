@@ -12,18 +12,26 @@ GEMS = {
 	{keys = {'small ruby', 'ruby', 'rubies', 'rubys', 'rubi'}, id = 2147, price = 250, name = 'small ruby'},
 	{keys = {'small emerald', 'emerald', 'emeralds', 'esmerald', 'esmeralda'}, id = 2149, price = 250, name = 'small emerald'},
 	{keys = {'small amethyst', 'amethyst', 'amethysts', 'ametist', 'amatista'}, id = 2150, price = 200, name = 'small amethyst'},
-	{keys = {'talon', 'talons'}, id = 2151, price = 300, name = 'talon'}
+	{keys = {'talon', 'talons'}, id = 2151, price = 300, name = 'talon'},
+	{keys = {'white pearl', 'white pearls'}, id = 2143, price = 160, name = 'white pearl'},
+	{keys = {'black pearl', 'black pearls'}, id = 2144, price = 280, name = 'black pearl'},
+	{keys = {'venomqueen heart'}, id = 20107, price = 12000, name = 'venomqueen heart'},
+	{keys = {'bonepriest phylactery', 'phylactery'}, id = 20108, price = 12000, name = 'bonepriest phylactery'},
+	{keys = {'relic of ulm'}, id = 20144, price = 5000, name = 'relic of ulm'},
+	{keys = {'azure sunstone'}, id = 20124, price = 4000, name = 'azure sunstone'},
+	{keys = {'verdant sunstone'}, id = 20125, price = 4000, name = 'verdant sunstone'},
+	{keys = {'hollow orb'}, id = 20106, price = 4000, name = 'hollow orb'}
 }
 
-PARIVED_HELP = 'I buy gems and diamonds from adventurers. Strong monsters drop small gems; rare big gems are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.'
+PARIVED_HELP = 'I buy gems, pearls, diamonds and rare relics from adventurers. Strong monsters drop small gems; rare big gems and relics are worth the most gold here. Say "sell ruby", "sell 3 amethyst" or "sell all" — I will ask you to confirm each sale. Say "list" for prices.'
 
 function showHelp()
 	selfSay(PARIVED_HELP)
 end
 
 function showTradeList()
-	selfSay('Small gems: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond 300gp, talon 300gp.')
-	selfSay('Rare: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp.')
+	selfSay('Small gems and pearls: amethyst 200gp, emerald/ruby/sapphire 250gp, diamond/talon 300gp, white pearl 160gp, black pearl 280gp.')
+	selfSay('Rare gems and relics: yellow 1k, blue 5k, violet 4k, big emerald/ruby 5k, gold nugget 10k, scarab coin 100gp, sunstones/hollow orb 4k, relic of ulm 5k, crucible relics 12k.')
 	selfSay('Say "sell ruby", "sell 3 amethyst" or "sell all". I will ask you to confirm.')
 end
 

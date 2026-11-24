@@ -1365,6 +1365,193 @@ say 1001 yes
 say 1001 talons all
 say 1001 no
 think
+say 1001 white pearl
+say 1001 yes
+say 1001 white pearl
+say 1001 no
+say 1001 5 white pearl
+say 1001 yes
+say 1001 5 white pearl
+say 1001 no
+say 1001 white pearl 100
+say 1001 yes
+say 1001 white pearl 100
+say 1001 no
+say 1001 white pearl all
+say 1001 yes
+say 1001 white pearl all
+say 1001 no
+think
+say 1001 white pearls
+say 1001 yes
+say 1001 white pearls
+say 1001 no
+say 1001 5 white pearls
+say 1001 yes
+say 1001 5 white pearls
+say 1001 no
+say 1001 white pearls 100
+say 1001 yes
+say 1001 white pearls 100
+say 1001 no
+say 1001 white pearls all
+say 1001 yes
+say 1001 white pearls all
+say 1001 no
+think
+say 1001 black pearl
+say 1001 yes
+say 1001 black pearl
+say 1001 no
+say 1001 5 black pearl
+say 1001 yes
+say 1001 5 black pearl
+say 1001 no
+say 1001 black pearl 100
+say 1001 yes
+say 1001 black pearl 100
+say 1001 no
+say 1001 black pearl all
+say 1001 yes
+say 1001 black pearl all
+say 1001 no
+think
+say 1001 black pearls
+say 1001 yes
+say 1001 black pearls
+say 1001 no
+say 1001 5 black pearls
+say 1001 yes
+say 1001 5 black pearls
+say 1001 no
+say 1001 black pearls 100
+say 1001 yes
+say 1001 black pearls 100
+say 1001 no
+say 1001 black pearls all
+say 1001 yes
+say 1001 black pearls all
+say 1001 no
+think
+say 1001 venomqueen heart
+say 1001 yes
+say 1001 venomqueen heart
+say 1001 no
+say 1001 5 venomqueen heart
+say 1001 yes
+say 1001 5 venomqueen heart
+say 1001 no
+say 1001 venomqueen heart 100
+say 1001 yes
+say 1001 venomqueen heart 100
+say 1001 no
+say 1001 venomqueen heart all
+say 1001 yes
+say 1001 venomqueen heart all
+say 1001 no
+think
+say 1001 bonepriest phylactery
+say 1001 yes
+say 1001 bonepriest phylactery
+say 1001 no
+say 1001 5 bonepriest phylactery
+say 1001 yes
+say 1001 5 bonepriest phylactery
+say 1001 no
+say 1001 bonepriest phylactery 100
+say 1001 yes
+say 1001 bonepriest phylactery 100
+say 1001 no
+say 1001 bonepriest phylactery all
+say 1001 yes
+say 1001 bonepriest phylactery all
+say 1001 no
+think
+say 1001 phylactery
+say 1001 yes
+say 1001 phylactery
+say 1001 no
+say 1001 5 phylactery
+say 1001 yes
+say 1001 5 phylactery
+say 1001 no
+say 1001 phylactery 100
+say 1001 yes
+say 1001 phylactery 100
+say 1001 no
+say 1001 phylactery all
+say 1001 yes
+say 1001 phylactery all
+say 1001 no
+think
+say 1001 relic of ulm
+say 1001 yes
+say 1001 relic of ulm
+say 1001 no
+say 1001 5 relic of ulm
+say 1001 yes
+say 1001 5 relic of ulm
+say 1001 no
+say 1001 relic of ulm 100
+say 1001 yes
+say 1001 relic of ulm 100
+say 1001 no
+say 1001 relic of ulm all
+say 1001 yes
+say 1001 relic of ulm all
+say 1001 no
+think
+say 1001 azure sunstone
+say 1001 yes
+say 1001 azure sunstone
+say 1001 no
+say 1001 5 azure sunstone
+say 1001 yes
+say 1001 5 azure sunstone
+say 1001 no
+say 1001 azure sunstone 100
+say 1001 yes
+say 1001 azure sunstone 100
+say 1001 no
+say 1001 azure sunstone all
+say 1001 yes
+say 1001 azure sunstone all
+say 1001 no
+think
+say 1001 verdant sunstone
+say 1001 yes
+say 1001 verdant sunstone
+say 1001 no
+say 1001 5 verdant sunstone
+say 1001 yes
+say 1001 5 verdant sunstone
+say 1001 no
+say 1001 verdant sunstone 100
+say 1001 yes
+say 1001 verdant sunstone 100
+say 1001 no
+say 1001 verdant sunstone all
+say 1001 yes
+say 1001 verdant sunstone all
+say 1001 no
+think
+say 1001 hollow orb
+say 1001 yes
+say 1001 hollow orb
+say 1001 no
+say 1001 5 hollow orb
+say 1001 yes
+say 1001 5 hollow orb
+say 1001 no
+say 1001 hollow orb 100
+say 1001 yes
+say 1001 hollow orb 100
+say 1001 no
+say 1001 hollow orb all
+say 1001 yes
+say 1001 hollow orb all
+say 1001 no
+think
 say 1001 sell ruby
 say 1001 yes
 say 1001 sell ruby
@@ -1484,23 +1671,6 @@ say 1001 yes
 say 1001 help all
 say 1001 no
 think
-say 1001 focused
-say 1001 yes
-say 1001 focused
-say 1001 no
-say 1001 5 focused
-say 1001 yes
-say 1001 5 focused
-say 1001 no
-say 1001 focused 100
-say 1001 yes
-say 1001 focused 100
-say 1001 no
-say 1001 focused all
-say 1001 yes
-say 1001 focused all
-say 1001 no
-think
 say 1001 ayuda
 say 1001 yes
 say 1001 ayuda
@@ -1584,23 +1754,6 @@ say 1001 no
 say 1001 precios all
 say 1001 yes
 say 1001 precios all
-say 1001 no
-think
-say 1001 vender todo
-say 1001 yes
-say 1001 vender todo
-say 1001 no
-say 1001 5 vender todo
-say 1001 yes
-say 1001 5 vender todo
-say 1001 no
-say 1001 vender todo 100
-say 1001 yes
-say 1001 vender todo 100
-say 1001 no
-say 1001 vender todo all
-say 1001 yes
-say 1001 vender todo all
 say 1001 no
 think
 say 1001 all gems
