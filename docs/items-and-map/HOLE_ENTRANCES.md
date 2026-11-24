@@ -12,7 +12,7 @@ monstruos, casas o lockers; solo cambia el ID visual de la entrada.
 | Tierra / barro / camino | 16 | 383, fondo de cueva marrón |
 | Piedra / mármol / grava | 8 | 479, apertura de piedra |
 | Tablones | 1 | 409, escalera de mano de bajada en madera |
-| Nieve | 1 | 20368, apertura helada sobre nieve |
+| Nieve | 1 | 20368, apertura helada sobre nieve (`213,27,7`, punta oeste de la isla de hielo; no es un islote suelto de la city, ver [arreglos visuales](CITY_VISUAL_FIXES_2026_11_24.md)) |
 | Hielo | 2 | 485, apertura helada |
 
 Los 48 destinos inferiores tienen escalera 1386 y son transitables. Sus 48 retornos

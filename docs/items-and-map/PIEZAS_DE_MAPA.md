@@ -46,6 +46,11 @@ Caso confirmado en Frozen Isle: `3591` en `397,108,7` dejaba solo la punta sur d
 Corregido localmente el 13 nov 2026 con `3592–3596` en `395–399,108,7`; el generador exige las cinco piezas sobre agua.
 No es un sprite entero ni un naufragio. Ver [revisión de hielo](REVISION_ESTETICA_HIELO_2026_11_13.md).
 
+Otro caso, ensenada de la Torre del Barquero (24 nov 2026): en `(171,62–66,7)` la secuencia
+vertical estaba mal (`3587, 3590, 3589, 3590, 3591`, con vela `3597` en el medio) y el casco
+estaba sobre pasto. Se rearmó `3587 → 3588 → 3589+3597 → 3590 → 3591` sobre agua `4608`,
+sin correr el barco (al oeste está el muelle). Ver [arreglos visuales de la city](CITY_VISUAL_FIXES_2026_11_24.md).
+
 | Orientación | Secuencia completa | Dirección de colocación |
 |---|---|---|
 | Vertical | 3587 → 3588 → 3589 → 3590 → 3591 | misma x, y + 1 por pieza |
