@@ -1,9 +1,11 @@
 # Dark Spider
 
-Araña de caparazón negro violáceo, ojos rojos, colmillos claros y ocho patas
-articuladas. Tiene tamaño visual de 2×2, cuatro direcciones y tres cuadros de
-movimiento. Looktype `190` y cadáver propio `20663`, con el contenedor y decay
-del cadáver de Giant Spider (`2857`).
+Araña de caparazón negro carbón, ojos rojo brasa y patas largas articuladas.
+El dibujo sigue las proporciones generales de Giant Spider, con perspectiva
+oblicua y reflejos gris cálido para que se lea sobre la tierra. Tiene formato
+2×2, cuatro direcciones y tres cuadros de movimiento. El looktype `190` y el
+cadáver `20663` usan sus mismos IDs de sprite. El cadáver conserva el
+contenedor y el decay de `2857`.
 
 ![Dark Spider en cuatro direcciones y tres cuadros](img/dark-spider.png)
 
@@ -24,6 +26,11 @@ Aparece en dos cámaras de [Duskweb Hollow](../items-and-map/DUSKWEB_HOLLOW.md)
 python3.11 scripts/client-rme/add_dark_spider.py --apply \
   --preview docs/gameplay/img/dark-spider.png \
   --corpse devtools/zagan-test/custom-sprites/dead_dark_spider.png
+```
+
+Para instalar el cadáver en un cliente sin el ítem 20663:
+
+```bash
 python3.11 scripts/client-rme/add_custom_items.py \
   --things devtools/rme/rme-client-760 \
   --otb server/YurOTS/ots/data/items/items-zagan-test.otb \
