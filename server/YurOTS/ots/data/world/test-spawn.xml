@@ -6902,4 +6902,30 @@
 		<monster name="Black Knight" x="2" y="0" z="14" spawntime="150" />
 	</spawn>
 	<!-- END HERO_DEPTHS_SPAWNS -->
+	<!-- BEGIN NECROMANCER_CAVE_EXTENSION_SPAWNS -->
+	<spawn centerx="92" centery="137" centerz="8" radius="3">
+		<monster name="Crypt Shambler" x="0" y="0" z="8" spawntime="145" />
+	</spawn>
+	<spawn centerx="99" centery="139" centerz="8" radius="3">
+		<monster name="Bone Beast" x="0" y="0" z="8" spawntime="155" />
+	</spawn>
+	<spawn centerx="102" centery="146" centerz="8" radius="3">
+		<monster name="Vampire" x="0" y="0" z="8" spawntime="165" />
+	</spawn>
+	<spawn centerx="99" centery="152" centerz="8" radius="3">
+		<monster name="Bone Beast" x="0" y="0" z="8" spawntime="165" />
+	</spawn>
+	<spawn centerx="104" centery="154" centerz="8" radius="3">
+		<monster name="Undead Gladiator" x="0" y="0" z="8" spawntime="180" />
+	</spawn>
+	<spawn centerx="102" centery="160" centerz="8" radius="3">
+		<monster name="Vampire Bride" x="0" y="0" z="8" spawntime="200" />
+	</spawn>
+	<spawn centerx="99" centery="166" centerz="8" radius="3">
+		<monster name="Lich" x="0" y="0" z="8" spawntime="225" />
+	</spawn>
+	<spawn centerx="103" centery="168" centerz="8" radius="3">
+		<monster name="Undead Gladiator" x="0" y="0" z="8" spawntime="200" />
+	</spawn>
+	<!-- END NECROMANCER_CAVE_EXTENSION_SPAWNS -->
 </spawns>
