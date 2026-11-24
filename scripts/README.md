@@ -9,7 +9,7 @@ Python en subcarpetas debe resolver el repo con `lib.project_root.project_root()
 
 | Carpeta | Contenido |
 |---------|-----------|
-| [`deploy/`](deploy/) | Backup runtime, server-save (y cron de medianoche), docker entrypoint |
+| [`deploy/`](deploy/) | Backup runtime, **respaldo automático cada hora** (`auto-backup-runtime.sh` en la ThinkPad + `pull-auto-backups.sh` en la Mac; ver `docs/systems/THINKPAD_TEST_SERVER.md#respaldo-automático-de-jugadores`), server-save (y cron de medianoche), docker entrypoint |
 | [`ot/`](ot/) | Probe, diagnostics, watchdog, start-local, smoke tests |
 | [`map/`](map/) | Generadores OTBM, depots, sync de houses |
 | [`monsters/`](monsters/) | `apply-monster-kits.py`: ataques de su tema para los monstruos nuevos ([MONSTER_KITS.md](../docs/gameplay/MONSTER_KITS.md)). `rage-variants.py`: audita y genera las variantes Angry/Furious/Enraged de los monstruos nuevos ([RAGE_MONSTERS.md](../docs/gameplay/RAGE_MONSTERS.md)) |

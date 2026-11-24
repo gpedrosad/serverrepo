@@ -57,6 +57,48 @@ En el log tiene que aparecer `graceful shutdown complete`, `Loaded in …` (el m
 `Retro76 Server Running...`. Antes de reiniciar, conviene correr en la Mac `scripts/map/check-map-load.py` y
 `scripts/npc/run_npc_tests.py`.
 
+## Respaldo automático de jugadores
+
+Desde el 24 nov 2026, cada hora (minuto 17) el cron de la ThinkPad corre
+`scripts/deploy/auto-backup-runtime.sh`. Guarda en `~/backups/auto/hourly/runtime-AAAAMMDD-HHMM.tar.gz`
+todo lo que el servidor escribe en runtime:
+
+- `players/`, `accounts/`, `vip/` y `houses/`;
+- `houseitems.xml`, `online.xml`, `queue.xml` y `guilds.xml`;
+- `private_trainers.xml`, `sponsors.xml` y `scrolltexts.xml`, si existen;
+- el ranking de la Wave Arena (`logs/wave_arena_rank.json`) y `web/state/`.
+
+Detalles:
+
+- **Tamaño:** unos 8 KB por respaldo.
+- **No pide save:** el servidor ya guarda solo cada 10 minutos (`autosave`).
+- **Validación:** cada XML y JSON de la copia tiene que abrir. Si alguno quedó a medias porque se copió
+  mientras el servidor guardaba, reintenta a los 20 s, hasta 3 veces, y nunca guarda una copia rota.
+- **Rotación:** los respaldos horarios duran 48 horas, y el primero de cada día queda en `daily/` por 30 días.
+- **Log:** `~/backups/auto/backup.log`, una línea por respaldo con cuentas, personajes y casas con dueño.
+- **Copia fuera de la ThinkPad:** la Mac la trae con `scripts/deploy/pull-auto-backups.sh` (launchd
+  `com.retro76.pull-auto-backups`), todos los días a las 13:00 y al prender. La guarda en
+  `~/Retro76-backups/thinkpad-auto/`, primero por red local y, si no, por Tailscale. Log:
+  `~/Retro76-backups/pull.log`.
+- **Instalar o reinstalar:** las dos instalaciones son idempotentes.
+  - En la ThinkPad: `scripts/deploy/auto-backup-runtime.sh --install`.
+  - En la Mac: `scripts/deploy/pull-auto-backups.sh --install`.
+
+Esto no reemplaza el respaldo del deploy, que guarda además el mapa, el OTB y el binario.
+
+**Restaurar** (por ejemplo, el de las 14:17):
+
+```bash
+ssh thinkpad 'set -e; cd ~/apps/serverrepo; docker stop -t 45 yurots
+  scripts/deploy/auto-backup-runtime.sh                     # estado actual, por si hay que volver atrás
+  tar -tzf ~/backups/auto/hourly/runtime-20261124-1417.tar.gz | head   # mirar qué trae
+  tar -xzf ~/backups/auto/hourly/runtime-20261124-1417.tar.gz -C ~/apps/serverrepo
+  docker start yurots'
+```
+
+`tar -x` pisa los archivos que trae, pero no borra los que se crearon después del respaldo (por ejemplo,
+un personaje nuevo). Después, comprobar el probe y contar cuentas, personajes y casas.
+
 ## Cambios de C++
 
 Se compila en la ThinkPad con la imagen del servidor (`serverrepo-yurots:latest`, sin `--platform`), en
