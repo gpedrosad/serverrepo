@@ -8,6 +8,9 @@ es tierra nueva: la forma de la franja ES el recorrido (como la Isla Natural, ge
   z7  punta sur de la isla (75-76,228) -> puente de madera de 2 de ancho -> llegada (cartel)
       -> al este por y 240 -> al norte por x 150 -> al oeste por y 198 -> al sur por x 118 -> Patio de las Tumbas
 
+El patio lleva ataúdes de piedra completos (1413 + 1411 abajo) y el camino ataúdes enterrados
+completos (1415 + 1416 abajo). Nunca una mitad suelta; lo valida antes de escribir.
+
 Monstruos por etapas según la distancia caminando desde la llegada (docs/items-and-map/ZONAS_DE_CAZA.md):
 sueltos al principio, de a 2 al fondo; los Undead Gladiators se hacen mayoría hacia el final.
 
@@ -73,8 +76,10 @@ DIRT_PIECES = set(DIRT_SIDE.values()) | set(DIRT_CORNER.values()) | set(DIRT_INN
 DEAD_TREES = (2709, 2710, 2717, 2719, 2720)     # 2x2, bloquean su casilla
 DEAD_SMALL = (2713, 2715)                       # árbol seco de 1x1, bloquea
 GRAVES = (1407, 1408)                           # lápidas, bloquean
-FLAT = (1409, 1415, 1416, 2247)                 # lápida plana, ataúdes enterrados, cráneo: se pisan
-COFFINS = (1411, 1413)                          # ataúdes de piedra del patio, bloquean
+FLAT = (1409, 2247)                             # lápida plana y cráneo: se pisan (una pieza)
+COFFIN_HEAD, COFFIN_FOOT = 1413, 1411           # ataúd de piedra completo: cabecera + pie abajo (y+1)
+BURIED_HEAD, BURIED_FOOT = 1415, 1416           # ataúd enterrado completo: cabecera + pie abajo (y+1)
+COFFIN_PARTS = (COFFIN_HEAD, COFFIN_FOOT)
 
 # (nombres, monstruos por spawn, spawntime en s, separación mínima entre centros)
 STAGES = [(("Zombie",), 1, 120, 11),
@@ -244,11 +249,19 @@ def build(seed: int, old7: dict, bl):
     tiles[sign].append(SIGN)
     reserved |= grow({sign}, 1)
 
-    # 6) patio del final: ataúdes de piedra y lápidas en ronda alrededor del centro
-    for i, (dx, dy) in enumerate(((-3, -1), (3, -1), (-3, 2), (3, 2), (0, 4), (-2, -3), (2, -3))):
+    # 6) patio del final: ataúdes de piedra COMPLETOS (1413 + 1411 abajo) y lápidas
+    #    Nunca una mitad suelta: ver PIEZAS_DE_MAPA.md y remove-incomplete-tombs.py.
+    for dx, dy in ((-3, -1), (3, -1)):
+        head, foot = (end[0] + dx, end[1] + dy), (end[0] + dx, end[1] + dy + 1)
+        if (head in land and foot in land and len(tiles.get(head, [])) == 1
+                and len(tiles.get(foot, [])) == 1
+                and head not in reserved and foot not in reserved):
+            tiles[head].append(COFFIN_HEAD)
+            tiles[foot].append(COFFIN_FOOT)
+    for i, (dx, dy) in enumerate(((0, 4), (-2, -3), (2, -3))):
         c = (end[0] + dx, end[1] + dy)
         if c in land and len(tiles[c]) == 1 and c not in reserved:
-            tiles[c].append(COFFINS[i % 2] if i < 4 else GRAVES[i % 2])
+            tiles[c].append(GRAVES[i % 2])
     reserved |= grow({end}, 1)
 
     # 7) monte seco entre el camino y la costa: árboles muertos, lápidas y restos (nunca sobre el camino)
@@ -271,8 +284,15 @@ def build(seed: int, old7: dict, bl):
             tiles[c].append(rng.choice(GRAVES))
             occupied.add(c)
         elif r < 0.47 and c not in occupied:
-            tiles[c].append(rng.choice(FLAT))
-            occupied.add(c)
+            south = (x, y + 1)
+            if (south in tiles and tiles[south] == [GRASS] and dist.get(south, 0) >= 2
+                    and south not in reserved and south not in occupied):
+                tiles[c].append(BURIED_HEAD)
+                tiles[south].append(BURIED_FOOT)
+                occupied |= {c, south}
+            else:
+                tiles[c].append(rng.choice(FLAT))
+                occupied.add(c)
 
     # 8) ningún rincón encerrado: se saca lo que bloquea alrededor de lo que no se alcanza
     for _ in range(20):
@@ -281,8 +301,16 @@ def build(seed: int, old7: dict, bl):
         if not lost:
             break
         for c in grow(lost, 1):
-            if c in tiles and len(tiles[c]) > 1 and tiles[c][-1] in DEAD_TREES + DEAD_SMALL + GRAVES + COFFINS:
-                tiles[c].pop()
+            if c in tiles and len(tiles[c]) > 1 and tiles[c][-1] in DEAD_TREES + DEAD_SMALL + GRAVES + COFFIN_PARTS:
+                item = tiles[c].pop()
+                if item == COFFIN_HEAD:
+                    mate = (c[0], c[1] + 1)
+                    if mate in tiles and tiles[mate][-1:] == [COFFIN_FOOT]:
+                        tiles[mate].pop()
+                elif item == COFFIN_FOOT:
+                    mate = (c[0], c[1] - 1)
+                    if mate in tiles and tiles[mate][-1:] == [COFFIN_HEAD]:
+                        tiles[mate].pop()
 
     return tiles, dict(cells=cells, land=land, sea=sea, dirt=dirt, bridge=bridge, arrival=arrival,
                        sign=sign, end=end)
@@ -403,6 +431,16 @@ def main() -> int:
             errors.append(f"costa de la isla {c}: con el puente quiere {want}, tiene {have}")
     if info["end"] not in d:
         errors.append(f"el patio del final {info['end']} no se alcanza")
+    # ataúdes de varias piezas: cada cabecera tiene su pie, no hay pies sueltos
+    PAIRS = {COFFIN_HEAD: (COFFIN_FOOT, 0, 1), BURIED_HEAD: (BURIED_FOOT, 0, 1)}
+    for c, it in tiles.items():
+        ids = set(it)
+        for head, (foot, dx, dy) in PAIRS.items():
+            if head in ids and foot not in tiles.get((c[0] + dx, c[1] + dy), []):
+                errors.append(f"ataúd incompleto: {head} en {c[0]},{c[1]} sin {foot} abajo")
+        for head, (foot, dx, dy) in PAIRS.items():
+            if foot in ids and head not in tiles.get((c[0] - dx, c[1] - dy), []):
+                errors.append(f"ataúd incompleto: pie {foot} suelto en {c[0]},{c[1]}")
     for (x, y) in walk:                                         # que no se vea el vacío
         if any((x + dx, y + dy) not in old7 and (x + dx, y + dy) not in tiles
                for dx in range(-VIEW[0], VIEW[0] + 1) for dy in range(-VIEW[1], VIEW[1] + 1)):
