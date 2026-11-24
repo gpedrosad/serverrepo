@@ -77,7 +77,7 @@ usando el equipo puesto.
 Al limpiar el origen, `Item::setActionId` guarda el mínimo legacy `100`.
 Para el traspaso, tanto `0` como `100` identifican una pieza limpia.
 
-Las dos piezas tienen un sprite nácar con facetas rosa y celeste.
+La Memory Gem usa el mismo corte que las gemas grandes (Violet, Yellow, Big Emerald, Big Ruby y Blue), recoloreada en cian para no repetir esos colores. Los Memory Shards mantienen el arte original de fragmento nácar.
 
 ![Memory Gem, un fragmento y una pila de fragmentos](img/memory-gem.png)
 

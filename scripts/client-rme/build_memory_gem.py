@@ -1,7 +1,14 @@
 #!/usr/bin/env python3
-"""Generate Memory Gem pixel art and its eligible equipment catalog."""
+"""Generate Memory Gem pixel art and its eligible equipment catalog.
+
+The Memory Gem uses the same 32x32 cut as the large gems (Violet, Yellow,
+Big Emerald, Big Ruby, Blue) recolored to cyan, a hue those gems do not use.
+The source is the Yellow Gem sprite in the 7.6 client (sprite 4124).
+Memory Shards keep their original nacre-chip art.
+"""
 
 import argparse
+import colorsys
 import struct
 from pathlib import Path
 
@@ -13,39 +20,85 @@ from add_custom_items import (
 
 DATA = ROOT / "server/YurOTS/ots/data"
 CATALOG = DATA / "actions/lib/memory_gem_equipment.lua"
+THINGS = ROOT / "devtools/rme/rme-client-760"
 ITEM_ATTR_SLOT = 0x15
 ARMOR_SLOT = b"\x02\x00"
 FLAG_STACKABLE = 1 << 7
 WEAPON_TYPES = {1, 2, 3, 5}
 FIXED_WEAPONS = {20137, 2352, 20211, 20212, 20213, 20250, 20251, 20252, 20660}
 
+# Large Yellow Gem in Tibia.spr 7.6. The five large gems share this cut
+# (sprites 4120-4124). Recolor preserves outline, shading and transparency.
+YELLOW_GEM_SPRITE = 4124
+# Cyan (~185°). Distinct from Blue Gem (~239°) and Big Emerald (~126°).
+MEMORY_GEM_HUE = 185 / 360
+SPRITE_SIZE = 32
 
-def draw_gem(shard=False):
+
+def decode_sprite(spr: Path, sprite_id: int) -> Image.Image:
+    data = spr.read_bytes()
+    count = struct.unpack_from("<H", data, 4)[0]
+    if sprite_id < 1 or sprite_id > count:
+        raise SystemExit(f"{spr}: sprite {sprite_id} fuera de rango (1-{count})")
+    addr = struct.unpack_from("<I", data, 6 + (sprite_id - 1) * 4)[0]
+    if addr == 0:
+        raise SystemExit(f"{spr}: sprite {sprite_id} vacío")
+    pos = addr + 3
+    size = struct.unpack_from("<H", data, pos)[0]
+    pos += 2
+    pixels = bytearray(SPRITE_SIZE * SPRITE_SIZE * 4)
+    write = read = 0
+    while read < size and write < len(pixels):
+        transparent, colored = struct.unpack_from("<HH", data, pos)
+        pos += 4
+        for _ in range(transparent):
+            if write >= len(pixels):
+                break
+            pixels[write:write + 4] = b"\x00\x00\x00\x00"
+            write += 4
+        for _ in range(colored):
+            if write + 4 > len(pixels):
+                break
+            pixels[write:write + 4] = bytes((data[pos], data[pos + 1], data[pos + 2], 255))
+            pos += 3
+            write += 4
+        read += 4 + 3 * colored
+    while write < len(pixels):
+        pixels[write:write + 4] = b"\x00\x00\x00\x00"
+        write += 4
+    return Image.frombytes("RGBA", (SPRITE_SIZE, SPRITE_SIZE), bytes(pixels))
+
+
+def recolor_hue(art: Image.Image, hue: float) -> Image.Image:
+    out = Image.new("RGBA", art.size)
+    pixels = []
+    for red, green, blue, alpha in art.getdata():
+        if alpha == 0:
+            pixels.append((0, 0, 0, 0))
+            continue
+        _, sat, val = colorsys.rgb_to_hsv(red / 255, green / 255, blue / 255)
+        new_r, new_g, new_b = colorsys.hsv_to_rgb(hue, sat, val)
+        pixels.append((round(new_r * 255), round(new_g * 255), round(new_b * 255), alpha))
+    out.putdata(pixels)
+    return out
+
+
+def draw_gem() -> Image.Image:
+    spr = THINGS / "Tibia.spr"
+    if not spr.is_file():
+        raise SystemExit(f"No encontré {spr}")
+    return recolor_hue(decode_sprite(spr, YELLOW_GEM_SPRITE), MEMORY_GEM_HUE)
+
+
+def draw_shard() -> Image.Image:
     art = Image.new("RGBA", (32, 32))
     draw = ImageDraw.Draw(art)
-    if shard:
-        draw.polygon(((10, 24), (13, 15), (20, 9), (25, 13), (24, 21), (17, 27)),
-                     fill="#9275a3", outline="#272239")
-        draw.polygon(((14, 16), (20, 10), (24, 13), (19, 19), (15, 23)), fill="#fbdfdf")
-        draw.polygon(((19, 19), (24, 14), (23, 21), (17, 26), (17, 21)), fill="#789db7")
-        draw.line(((14, 17), (20, 11), (22, 12)), fill="#fff9de")
-        draw.point((20, 21), fill="#c4f0e8")
-        return art
-    draw.polygon(((5, 16), (9, 8), (17, 5), (24, 7), (29, 14), (27, 23),
-                  (20, 28), (11, 26), (6, 22)), fill="#786b96", outline="#282137")
-    draw.polygon(((6, 16), (10, 9), (17, 6), (24, 8), (27, 13), (18, 12), (13, 15)),
-                 fill="#f5d6e1")
-    draw.polygon(((13, 15), (19, 12), (25, 13), (27, 17), (23, 22), (17, 24), (11, 21)),
-                 fill="#e7f6ec")
-    draw.polygon(((6, 16), (13, 15), (11, 21), (17, 24), (18, 27), (12, 25), (7, 21)),
-                 fill="#c493ae")
-    draw.polygon(((27, 14), (28, 16), (26, 23), (20, 27), (18, 27), (17, 24),
-                  (23, 22), (25, 19)), fill="#7db9cb")
-    draw.line(((7, 16), (11, 10), (17, 7), (21, 8)), fill="#fff7dc")
-    draw.line(((13, 16), (19, 13), (24, 14)), fill="#fffdee")
-    draw.line(((19, 24), (23, 22), (26, 19)), fill="#b4efec")
-    draw.line(((14, 12), (14, 16)), fill="#fffdf1")
-    draw.line(((12, 14), (16, 14)), fill="#fffdf1")
+    draw.polygon(((10, 24), (13, 15), (20, 9), (25, 13), (24, 21), (17, 27)),
+                 fill="#9275a3", outline="#272239")
+    draw.polygon(((14, 16), (20, 10), (24, 13), (19, 19), (15, 23)), fill="#fbdfdf")
+    draw.polygon(((19, 19), (24, 14), (23, 21), (17, 26), (17, 21)), fill="#789db7")
+    draw.line(((14, 17), (20, 11), (22, 12)), fill="#fff9de")
+    draw.point((20, 21), fill="#c4f0e8")
     return art
 
 
@@ -80,7 +133,7 @@ def equipment_catalog(otb):
 
 def draw_shard_patterns():
     art = Image.new("RGBA", (32, 32 * 8))
-    main_shard = draw_gem(shard=True)
+    main_shard = draw_shard()
     chip = main_shard.resize((19, 19), Image.Resampling.NEAREST)
     pile = ((3, 6), (15, 9), (6, 13), (12, 3), (-1, 12), (4, 0), (14, 13))
     for pattern in range(8):
