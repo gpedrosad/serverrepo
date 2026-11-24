@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version='1.0' encoding='utf-8'?>
 <monster name="Bog Raider" level="50" maglevel="40" experience="950" pushable="0" armor="24" defense="26" canpushitems="1" staticattack="50" changetarget="200" speed="200">
 	<health now="1300" max="1300" />
 	<look type="174" head="0" body="0" legs="0" feet="0" corpse="20247" />
@@ -23,9 +23,9 @@
 		<item id="2148" countmax="30" chance1="40000" chancemax="0" />
 		<item id="2647" chance="3000" />
 		<item id="2214" chance="800" />
-		<item id="2149" countmax="2" chance1="3500" chancemax="0" />
+		<item id="2149" countmax="1" chance1="5000" chancemax="0" />
 		<item id="2477" chance="400" />
 		<item id="2269" chance="1500" />
+		<item id="2489" chance="1600" />
 	</loot>
 </monster>
-

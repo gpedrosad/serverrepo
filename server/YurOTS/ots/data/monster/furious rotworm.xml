@@ -6,9 +6,7 @@
 	<attacks>
 		<attack type="melee" maxdamage="59" />
 	</attacks>
-	<defenses>
-
-</defenses>
+	<defenses />
 	<voices>
 		<voice sentence="Klurk! Klurk!" />
 		<voice sentence="Klork! Klork!" />
@@ -18,22 +16,21 @@
 		<voice sentence="RAAAARGH!" />
 	</voices>
 	<loot>
-		<item id="2148" countmax="40" chance1="100000" chancemax="0" />
-		<item id="2480" chance="3333" />
-		<item id="2530" chance="2857" />
+		<item id="2148" countmax="22" chance1="90000" chancemax="0" />
+		<item id="2480" chance="4666" />
+		<item id="2530" chance="4000" />
 		<item id="3976" countmax="5" chance1="20000" chancemax="0" />
 		<item id="1987" chance="100000">
 			<inside>
 				<item id="2398" chance="4666" />
 				<item id="2671" countmax="2" chance1="20000" chancemax="0" />
 				<item id="2376" chance="10000" />
-				<item id="2412" chance="3110" />
+				<item id="2412" chance="3111" />
 			</inside>
 		</item>
-		<item id="2150" countmax="2" chance1="12000" chancemax="0" />
+		<item id="2150" countmax="1" chance1="12000" chancemax="0" />
 		<item id="2149" countmax="1" chance1="8000" chancemax="0" />
 		<item id="2147" countmax="1" chance1="5000" chancemax="0" />
 		<item id="2146" countmax="1" chance1="2500" chancemax="0" />
-	
 	</loot>
 </monster>

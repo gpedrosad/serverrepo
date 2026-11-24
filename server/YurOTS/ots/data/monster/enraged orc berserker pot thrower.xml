@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<monster name="Enraged Orc Berserker Pot Thrower" level="89" maglevel="49" experience="1870" pushable="0" armor="17" defense="19" canpushitems="1" staticattack="50" changetarget="200" speed="366">
-	<health now="3825" max="3825" />
+<monster name="Enraged Orc Berserker Pot Thrower" level="94" maglevel="54" experience="3990" pushable="0" armor="19" defense="21" canpushitems="1" staticattack="50" changetarget="200" speed="370">
+	<health now="4200" max="4200" />
 	<look type="8" head="114" body="94" legs="79" feet="79" corpse="2864" />
 	<combat targetdistance="1" runonhealth="0" />
 	<attacks>
-		<attack type="melee" mindamage="175" maxdamage="437" probability="100" />
+		<attack type="melee" mindamage="190" maxdamage="475" probability="100" />
 		<attack type="rune" name="orcb_pot_throw" exhaustion="2000" cycleticks="9000" probability="35" />
 	</attacks>
 	<defenses>
@@ -16,22 +16,28 @@
 		<voice sentence="SKREEEAAAH!" />
 	</voices>
 	<loot>
-		<item id="2148" countmax="25" chance1="100000" chancemax="0" />
+		<item id="2148" countmax="100" chance1="100000" chancemax="0" />
 		<item id="2666" countmax="3" chance1="33333" chancemax="0" />
-		<item id="2381" chance="6666" />
+		<item id="2381" chance="12000" />
 		<item id="1987" chance="100000">
 			<inside>
 				<item id="2464" chance="10000" />
 				<item id="2458" chance="10000" />
 				<item id="2044" chance="5000" />
-				<item id="2378" chance="5000" />
-				<item id="2207" chance="1857" />
+				<item id="2378" chance="8000" />
+				<item id="2207" chance="4500" />
+				<item id="2463" chance="5000" />
+				<item id="2150" countmax="2" chance1="6000" chancemax="0" />
 			</inside>
 		</item>
-		<item id="2150" countmax="3" chance1="26000" chancemax="0" />
-		<item id="2149" countmax="3" chance1="21000" chancemax="0" />
-		<item id="2147" countmax="2" chance1="16000" chancemax="0" />
-		<item id="2146" countmax="2" chance1="11000" chancemax="0" />
-		<item id="2145" countmax="1" chance1="6000" chancemax="0" />
+		<item id="2152" countmax="2" chance1="12000" chancemax="0" />
+		<item id="2430" chance="3500" />
+		<item id="2475" chance="2000" />
+		<item id="2150" countmax="5" chance1="48000" chancemax="0" />
+		<item id="2149" countmax="5" chance1="40000" chancemax="0" />
+		<item id="2147" countmax="4" chance1="32000" chancemax="0" />
+		<item id="2146" countmax="4" chance1="25000" chancemax="0" />
+		<item id="2145" countmax="3" chance1="15000" chancemax="0" />
+		<item id="2157" countmax="1" chance1="3000" chancemax="0" />
 	</loot>
 </monster>

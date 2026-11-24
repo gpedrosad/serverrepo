@@ -1,46 +1,45 @@
-<?xml version="1.0"?>
+<?xml version='1.0' encoding='utf-8'?>
 <monster name="Rahemos" level="84" maglevel="47" experience="3100" pushable="0" armor="40" defense="41" canpushitems="1" staticattack="50" changetarget="200" speed="300">
-	<health now="6000" max="6000"/>
-	<look type="91" head="20" body="30" legs="40" feet="50" corpse="3034"/>
-	<combat targetdistance="1" runonhealth="100"/>
-<blood color="86" effect="9" splash="255"/>
-
-<attacks>
-	<attack type="melee" mindamage="105" maxdamage="317"/>
-	<attack type="instant" name="exura" exhaustion="500" cycleticks="5000" probability="70"/>
-	<attack type="instant" name="w exevo gran vis lux" exhaustion="500" cycleticks="4000" probability="30"/>
-	<attack type="rune" name="rahemos magic missile" exhaustion="500" cycleticks="7000" probability="52"/>
-	<attack type="rune" name="rahemos magic missile" exhaustion="500" cycleticks="11500" probability="60"/>
-</attacks>
-
-<defenses>
-	<defense immunity="energy"/>
-	<defense immunity="fire"/>
-	<defense immunity="poison"/>
-	<defense immunity="paralyze"/>
-	<defense immunity="drunk"/>
-	<defense immunity="invisible"/>
-</defenses>
-
-<voices>
-	<voice sentence="MY TRESURE! DON'T TAKE IT!!"/>
-	<voice sentence="HOOOOOOHHHSSSS!"/>
-</voices>
-
-<loot>
-	<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
-	<item id="2152" countmax="8" chance1="10000" chancemax="0"/>
-
-	<item id="1987" chance="100000">
-	<inside>
-	<item id="2148" countmax="70" chance1="100000" chancemax="0"/>
-	<item id="2152" countmax="5" chance1="8000" chancemax="0"/>
-	</inside>
-	</item>
-</loot>
-
-<summons maxSummons="2">
- 	<summon name="Demon" chance="400"/>
-</summons>
-
+	<health now="6000" max="6000" />
+	<look type="91" head="20" body="30" legs="40" feet="50" corpse="3034" />
+	<combat targetdistance="1" runonhealth="100" />
+	<blood color="86" effect="9" splash="255" />
+	<attacks>
+		<attack type="melee" mindamage="105" maxdamage="317" />
+		<attack type="instant" name="exura" exhaustion="500" cycleticks="5000" probability="70" />
+		<attack type="instant" name="w exevo gran vis lux" exhaustion="500" cycleticks="4000" probability="30" />
+		<attack type="rune" name="rahemos magic missile" exhaustion="500" cycleticks="7000" probability="52" />
+		<attack type="rune" name="rahemos magic missile" exhaustion="500" cycleticks="11500" probability="60" />
+	</attacks>
+	<defenses>
+		<defense immunity="energy" />
+		<defense immunity="fire" />
+		<defense immunity="poison" />
+		<defense immunity="paralyze" />
+		<defense immunity="drunk" />
+		<defense immunity="invisible" />
+	</defenses>
+	<voices>
+		<voice sentence="MY TRESURE! DON'T TAKE IT!!" />
+		<voice sentence="HOOOOOOHHHSSSS!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="100" chance1="100000" chancemax="0" />
+		<item id="2152" countmax="10" chance1="30000" chancemax="0" />
+		<item id="1987" chance="100000">
+			<inside>
+				<item id="2148" countmax="100" chance1="100000" chancemax="0" />
+				<item id="2152" countmax="6" chance1="20000" chancemax="0" />
+				<item id="2656" chance="3500" />
+				<item id="2436" chance="4000" />
+				<item id="2171" chance="6000" />
+				<item id="2189" chance="2500" />
+			</inside>
+		</item>
+		<item id="2150" countmax="4" chance1="25000" chancemax="0" />
+		<item id="2153" chance="8000" />
+	</loot>
+	<summons maxSummons="2">
+		<summon name="Demon" chance="400" />
+	</summons>
 </monster>

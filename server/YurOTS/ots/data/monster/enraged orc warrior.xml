@@ -6,9 +6,7 @@
 	<attacks>
 		<attack type="melee" maxdamage="126" />
 	</attacks>
-	<defenses>
-
-</defenses>
+	<defenses />
 	<voices>
 		<voice sentence="Alk!" />
 		<voice sentence="Trak grrr brik." />
@@ -23,16 +21,16 @@
 		<item id="1987" chance="100000">
 			<inside>
 				<item id="2385" chance="6666" />
-				<item id="2464" chance="5000" />
-				<item id="2420" chance="5000" />
-				<item id="2448" chance="5000" />
+				<item id="2464" chance="8400" />
+				<item id="2420" chance="8400" />
+				<item id="2448" chance="8400" />
 				<item id="2007" chance="20000" />
 			</inside>
 		</item>
-		<item id="2150" countmax="2" chance1="18000" chancemax="0" />
-		<item id="2149" countmax="2" chance1="13000" chancemax="0" />
-		<item id="2147" countmax="2" chance1="9000" chancemax="0" />
-		<item id="2146" countmax="1" chance1="6000" chancemax="0" />
-		<item id="2145" countmax="1" chance1="2500" chancemax="0" />
+		<item id="2150" countmax="2" chance1="24000" chancemax="0" />
+		<item id="2149" countmax="2" chance1="18000" chancemax="0" />
+		<item id="2147" countmax="2" chance1="13000" chancemax="0" />
+		<item id="2146" countmax="1" chance1="9000" chancemax="0" />
+		<item id="2145" countmax="1" chance1="4500" chancemax="0" />
 	</loot>
 </monster>

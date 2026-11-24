@@ -26,21 +26,22 @@
 	<loot>
 		<item id="20347" chance="500" />
 		<item id="2148" countmax="100" chance1="100000" chancemax="0" />
-		<item id="2148" countmax="100" chance1="100000" chancemax="0" />
+		<item id="2148" countmax="50" chance1="80000" chancemax="0" />
 		<item id="2152" countmax="3" chance1="12000" chancemax="0" />
 		<item id="2666" countmax="3" chance1="20000" chancemax="0" />
-		<item id="2491" chance="5000" />
-		<item id="2487" chance="4000" />
-		<item id="2488" chance="4000" />
-		<item id="2519" chance="3000" />
-		<item id="2392" chance="2500" />
-		<item id="2391" chance="2000" />
-		<item id="2164" chance="1500" />
-		<item id="20161" chance="800" />
+		<item id="2491" chance="3000" />
+		<item id="2487" chance="2000" />
+		<item id="2488" chance="2000" />
+		<item id="2519" chance="1800" />
+		<item id="2392" chance="1800" />
+		<item id="2391" chance="1500" />
+		<item id="2164" chance="1200" />
+		<item id="20161" chance="450" />
 		<item id="2547" countmax="8" chance1="6000" chancemax="0" />
 		<item id="2295" chance="4500" />
 		<item id="20156" chance="550" />
 		<item id="20120" chance="450" />
+		<item id="20119" chance="400" />
 		<item id="2150" countmax="5" chance1="46000" chancemax="0" />
 		<item id="2149" countmax="5" chance1="40000" chancemax="0" />
 		<item id="2147" countmax="4" chance1="32000" chancemax="0" />

@@ -26,10 +26,12 @@
 		<item id="2120" chance="5000" />
 		<item id="1987" chance="100000">
 			<inside>
-				<item id="2143" countmax="1" chance1="3000" chancemax="0" />
-				<item id="2144" countmax="1" chance1="1000" chancemax="0" />
+				<item id="2143" countmax="1" chance1="5000" chancemax="0" />
+				<item id="2144" countmax="1" chance1="2000" chancemax="0" />
 				<item id="2385" chance="4000" />
 				<item id="2649" chance="6000" />
+				<item id="2168" chance="1000" />
+				<item id="2532" chance="800" />
 			</inside>
 		</item>
 		<item id="2150" countmax="3" chance1="26000" chancemax="0" />

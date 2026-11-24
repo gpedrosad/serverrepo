@@ -19,57 +19,26 @@
 	</voices>
 	<loot>
 		<item id="2148" countmax="90" chance1="100000" chancemax="0" />
-		<item id="2162" chance="2500" />
+		<item id="2162" chance="3500" />
 		<item id="2148" countmax="8" chance1="100000" chancemax="0" />
-		<item id="2463" chance="2222" />
+		<item id="2463" chance="3111" />
 		<item id="1987" chance="100000">
 			<inside>
-				<item id="2135" chance="1428" />
+				<item id="2135" chance="1999" />
 				<item id="2159" countmax="4" chance1="999" chancemax="0" />
 				<item id="2149" countmax="4" chance1="555" chancemax="0" />
-				<item id="2440" chance="1000" />
-				<item id="2142" chance="800" />
-				<item id="2443" chance="555" />
+				<item id="2440" chance="1400" />
+				<item id="2142" chance="1120" />
+				<item id="2443" chance="777" />
+				<item id="20145" chance="1120" />
 			</inside>
 		</item>
---2148 is gold coin--
---1987 is a bag--
---1988 is a backpack--
---100000= all time--
---50000= each 2 time--
---33333= each 3 time--
---20000= each 5 time--
---10000= each 10 time--
---6666= each 15 time--
---5000 = each 20 time--
---4000 = each 25 time--
---3333 = each 30 time--
---2857 = each 35 time--
---2500 = each 40 time--
---2222 = each 45 time--
---2000 = each 50 time--
---1818 = each 55 time--
---1666 = each 60 time--
---1538 = each 65 time--
---1428 = each 70 time--
---1333 = each 75 time--
---100  = each 100 time--
---909  = each 110 time--
---833  = each 120 time--
---800  = each 125 time
---666  = each 150 time--
---588  = each 170 time--
---555  = each 180 time--
---500  = each 200 time--
---400  = each 250 time--
---333  = each 300 time--
- <item id="2150" countmax="3" chance1="26000" chancemax="0" />
-		<item id="2149" countmax="3" chance1="22000" chancemax="0" />
-		<item id="2147" countmax="2" chance1="18000" chancemax="0" />
-		<item id="2146" countmax="2" chance1="13000" chancemax="0" />
-		<item id="2145" countmax="2" chance1="8000" chancemax="0" />
-		<item id="2159" countmax="3" chance1="11000" chancemax="0" />
-		<item id="2157" countmax="1" chance1="1200" chancemax="0" />
+		<item id="2150" countmax="4" chance1="36000" chancemax="0" />
+		<item id="2149" countmax="4" chance1="30000" chancemax="0" />
+		<item id="2147" countmax="3" chance1="24000" chancemax="0" />
+		<item id="2146" countmax="3" chance1="18000" chancemax="0" />
+		<item id="2145" countmax="2" chance1="10000" chancemax="0" />
+		<item id="2157" countmax="1" chance1="1500" chancemax="0" />
 	</loot>
 	<summons maxSummons="5">
 		<summon name="Larva" chance="1856" />

@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version='1.0' encoding='utf-8'?>
 <monster name="Pirate Corsair" level="45" maglevel="0" experience="450" pushable="0" armor="28" defense="30" canpushitems="1" staticattack="50" changetarget="200" speed="230">
 	<health now="675" max="675" />
 	<look type="98" head="0" body="0" legs="0" feet="0" corpse="3128" />
@@ -9,9 +9,7 @@
 		<attack type="rune" name="k_cannon_ball_5" exhaustion="1000" cycleticks="3000" probability="35" kit="1" />
 		<attack type="instant" name="orcb_haste" exhaustion="500" cycleticks="6000" probability="15" kit="1" />
 	</attacks>
-	<defenses>
-
-</defenses>
+	<defenses />
 	<voices>
 		<voice sentence="Hiyaa!" />
 		<voice sentence="Give up!" />
@@ -25,6 +23,8 @@
 		<item id="2489" chance="1500" />
 		<item id="2521" chance="1000" />
 		<item id="2145" countmax="1" chance1="1500" chancemax="0" />
+		<item id="2143" countmax="2" chance1="5000" chancemax="0" />
+		<item id="2171" chance="600" />
+		<item id="2392" chance="600" />
 	</loot>
 </monster>
-

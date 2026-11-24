@@ -6,9 +6,7 @@
 	<attacks>
 		<attack type="distance" name="throwingknife" mindamage="36" maxdamage="92" cycleticks="2000" probability="60" />
 	</attacks>
-	<defenses>
-
-</defenses>
+	<defenses />
 	<voices>
 		<voice sentence="Your head shall be mine!" />
 		<voice sentence="Yeeee ha!" />
@@ -23,16 +21,17 @@
 			<inside>
 				<item id="2385" chance="5000" />
 				<item id="2050" chance="5000" />
-				<item id="2125" chance="3333" />
+				<item id="2125" chance="5599" />
 				<item id="2690" countmax="2" chance1="20000" chancemax="0" />
 				<item id="2147" countmax="2" chance1="3333" chancemax="0" />
 				<item id="2050" chance="20000" />
 			</inside>
 		</item>
-		<item id="2150" countmax="2" chance1="18000" chancemax="0" />
-		<item id="2149" countmax="2" chance1="13000" chancemax="0" />
-		<item id="2147" countmax="2" chance1="9000" chancemax="0" />
-		<item id="2146" countmax="1" chance1="6000" chancemax="0" />
-		<item id="2145" countmax="1" chance1="2500" chancemax="0" />
+		<item id="2150" countmax="2" chance1="24000" chancemax="0" />
+		<item id="2149" countmax="2" chance1="18000" chancemax="0" />
+		<item id="2147" countmax="2" chance1="13000" chancemax="0" />
+		<item id="2146" countmax="1" chance1="9000" chancemax="0" />
+		<item id="2145" countmax="1" chance1="4500" chancemax="0" />
+		<item id="2157" countmax="1" chance1="1500" chancemax="0" />
 	</loot>
 </monster>

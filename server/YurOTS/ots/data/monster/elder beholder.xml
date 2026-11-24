@@ -1,5 +1,5 @@
-<?xml version="1.0"?>
-<monster name="Elder Beholder" level="60" maglevel="50" experience="580" pushable="0" armor="25" defense="25" canpushitems="1" staticattack="50" changetarget="200" speed="170">
+<?xml version='1.0' encoding='utf-8'?>
+<monster name="Elder Beholder" level="60" maglevel="50" experience="750" pushable="0" armor="25" defense="25" canpushitems="1" staticattack="50" changetarget="200" speed="170">
 	<health now="700" max="700" />
 	<look type="108" head="20" body="30" legs="40" feet="50" corpse="3052" />
 	<combat targetdistance="1" runonhealth="150" />
@@ -20,13 +20,13 @@
 		<voice sentence="Inferior creatures, bow before my power!" />
 	</voices>
 	<loot>
-		<item id="2148" countmax="45" chance1="100000" chancemax="0" />
-		<item id="1987" chance="80000">
+		<item id="2148" countmax="100" chance1="100000" chancemax="0" />
+		<item id="1987" chance="100000">
 			<inside>
-				<item id="2148" countmax="20" chance1="80000" chancemax="0" />
-				<item id="2423" chance="5000" />
-				<item id="2391" chance="1333" />
-				<item id="2518" chance="1200" />
+				<item id="2148" countmax="30" chance1="80000" chancemax="0" />
+				<item id="2423" chance="6000" />
+				<item id="2391" chance="3000" />
+				<item id="2518" chance="3500" />
 				<item id="2188" chance="700" />
 				<item id="2323" chance="350" />
 			</inside>
@@ -34,9 +34,9 @@
 		<item id="2175" chance="4500" />
 		<item id="2311" chance="3000" />
 		<item id="2150" countmax="2" chance1="2500" chancemax="0" />
+		<item id="2149" countmax="2" chance1="8000" chancemax="0" />
 	</loot>
 	<summons maxSummons="5">
 		<summon name="gazer" chance="1333" />
 	</summons>
 </monster>
-

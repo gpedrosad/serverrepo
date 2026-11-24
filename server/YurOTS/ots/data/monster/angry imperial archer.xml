@@ -24,6 +24,7 @@
 		<item id="2455" chance="6000" />
 		<item id="2671" countmax="2" chance1="15000" chancemax="0" />
 		<item id="2150" countmax="1" chance1="2000" chancemax="0" />
+		<item id="20117" chance="1200" />
 		<item id="2150" countmax="1" chance1="3000" chancemax="0" />
 		<item id="2149" countmax="1" chance1="2250" chancemax="0" />
 	</loot>

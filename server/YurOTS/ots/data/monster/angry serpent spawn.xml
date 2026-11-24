@@ -20,7 +20,9 @@
 		<defense immunity="invisible" />
 	</defenses>
 	<loot>
-		<item id="2148" countmax="180" chance1="100000" chancemax="0" />
+		<item id="20212" chance="400" />
+		<item id="2148" countmax="100" chance1="100000" chancemax="0" />
+		<item id="2148" countmax="80" chance1="100000" chancemax="0" />
 		<item id="2152" countmax="6" chance1="12000" chancemax="0" />
 		<item id="2671" countmax="3" chance1="15000" chancemax="0" />
 		<item id="2146" countmax="2" chance1="2500" chancemax="0" />
@@ -41,6 +43,9 @@
 				<item id="2393" chance="500" />
 				<item id="20137" chance="450" />
 				<item id="2150" countmax="1" chance1="800" chancemax="0" />
+				<item id="2269" chance="1500" />
+				<item id="2197" chance="700" />
+				<item id="20156" chance="500" />
 			</inside>
 		</item>
 		<item id="2150" countmax="2" chance1="12000" chancemax="0" />

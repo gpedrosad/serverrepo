@@ -25,7 +25,8 @@
 				<item id="1294" countmax="5" chance1="20000" chancemax="0" />
 				<item id="2395" chance="3500" />
 				<item id="2050" chance="20000" />
-				<item id="2580" chance="7000" />
+				<item id="2580" chance="5000" />
+				<item id="20115" chance="2100" />
 			</inside>
 		</item>
 		<item id="2150" countmax="3" chance1="26000" chancemax="0" />
@@ -33,6 +34,5 @@
 		<item id="2147" countmax="2" chance1="16000" chancemax="0" />
 		<item id="2146" countmax="2" chance1="11000" chancemax="0" />
 		<item id="2145" countmax="1" chance1="6000" chancemax="0" />
-	
 	</loot>
 </monster>

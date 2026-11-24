@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<monster name="Furious Demon" level="40" maglevel="40" experience="19800" pushable="0" armor="57" defense="59" canpushitems="1" staticattack="40" changetarget="200" speed="234">
+<monster name="Furious Demon" level="40" maglevel="40" experience="19800" pushable="0" armor="57" defense="59" canpushitems="1" staticattack="40" changetarget="200" speed="269">
 	<health now="20500" max="20500" />
 	<look type="35" head="20" body="30" legs="40" feet="50" corpse="2916" />
 	<combat targetdistance="1" runonhealth="0" />
@@ -28,7 +28,7 @@
 		<voice sentence="RAAAARGH!" />
 	</voices>
 	<loot>
-	<item id="20161" chance="350"/>
+		<item id="20161" chance="350" />
 		<item id="2148" countmax="100" chance1="100000" chancemax="0" />
 		<item id="2148" countmax="25" chance1="100000" chancemax="0" />
 		<item id="2393" chance="1000" />
@@ -56,7 +56,6 @@
 		<item id="2147" countmax="4" chance1="32000" chancemax="0" />
 		<item id="2146" countmax="4" chance1="25000" chancemax="0" />
 		<item id="2145" countmax="3" chance1="14000" chancemax="0" />
-	
 		<item id="2157" countmax="1" chance1="5000" chancemax="0" />
 		<item id="20105" chance="400" />
 	</loot>

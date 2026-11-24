@@ -6,9 +6,7 @@
 	<attacks>
 		<attack type="melee" maxdamage="48" />
 	</attacks>
-	<defenses>
-
-</defenses>
+	<defenses />
 	<voices>
 		<voice sentence="Klurk! Klurk!" />
 		<voice sentence="Klork! Klork!" />
@@ -18,7 +16,7 @@
 		<voice sentence="GRAAAH!" />
 	</voices>
 	<loot>
-		<item id="2148" countmax="40" chance1="100000" chancemax="0" />
+		<item id="2148" countmax="22" chance1="90000" chancemax="0" />
 		<item id="2480" chance="3333" />
 		<item id="2530" chance="2857" />
 		<item id="3976" countmax="5" chance1="20000" chancemax="0" />

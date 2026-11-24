@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version='1.0' encoding='utf-8'?>
 <monster name="Worker Golem" level="55" maglevel="0" experience="1250" pushable="0" armor="35" defense="35" canpushitems="1" staticattack="50" changetarget="200" speed="210">
 	<health now="1470" max="1470" />
 	<look type="182" head="0" body="0" legs="0" feet="0" corpse="20188" />
@@ -17,21 +17,24 @@
 		<voice sentence="Intruder detected." />
 	</voices>
 	<loot>
-		<item id="2148" countmax="100" chance1="43000" chancemax="0" />
-		<item id="2148" countmax="40" chance1="50000" chancemax="0" />
-		<item id="2145" countmax="2" chance1="2500" chancemax="0" />
+		<item id="2148" countmax="100" chance1="90000" chancemax="0" />
+		<item id="2148" countmax="60" chance1="70000" chancemax="0" />
+		<item id="2145" countmax="2" chance1="6000" chancemax="0" />
 		<item id="2422" chance="5000" />
-		<item id="2146" countmax="1" chance1="1001" chancemax="0" />
+		<item id="2146" countmax="2" chance1="4000" chancemax="0" />
 		<item id="2455" chance="1007" />
-		<item id="2214" chance="200" />
-		<item id="2164" chance="400" />
-		<item id="2391" chance="900" />
-		<item id="2177" chance="890" />
-		<item id="2150" countmax="1" chance1="2270" chancemax="0" />
+		<item id="2214" chance="800" />
+		<item id="2177" chance="1500" />
+		<item id="2150" countmax="2" chance1="4000" chancemax="0" />
 		<item id="20252" chance="400" />
 		<item id="2288" chance="3500" />
 		<item id="2509" chance="4000" />
 		<item id="20120" chance="350" />
+		<item id="2152" countmax="2" chance1="10000" chancemax="0" />
+		<item id="2164" chance="600" />
+		<item id="2391" chance="3500" />
+		<item id="2476" chance="2000" />
+		<item id="2528" chance="1200" />
+		<item id="20103" chance="800" />
 	</loot>
 </monster>
-

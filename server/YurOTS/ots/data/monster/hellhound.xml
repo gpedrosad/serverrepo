@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version='1.0' encoding='utf-8'?>
 <monster name="Hellhound" level="45" maglevel="40" experience="1300" pushable="0" armor="28" defense="30" canpushitems="1" staticattack="60" changetarget="220" speed="290">
 	<health now="1500" max="1500" />
 	<look type="238" head="0" body="0" legs="0" feet="0" corpse="20228" />
@@ -24,11 +24,11 @@
 		<item id="2666" countmax="3" chance1="30000" chancemax="0" />
 		<item id="2147" countmax="2" chance1="4000" chancemax="0" />
 		<item id="2795" countmax="2" chance1="8000" chancemax="0" />
-		<item id="2392" chance="500" />
+		<item id="2392" chance="1200" />
 		<item id="2201" chance="1800" />
 		<item id="2293" chance="1200" />
 		<item id="20273" chance="1000" />
 		<item id="20148" chance="250" />
+		<item id="2432" chance="400" />
 	</loot>
 </monster>
-

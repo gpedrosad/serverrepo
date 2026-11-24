@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version='1.0' encoding='utf-8'?>
 <monster name="Mutated Tiger" level="60" maglevel="25" experience="850" pushable="0" armor="26" defense="30" canpushitems="1" staticattack="50" changetarget="200" speed="260">
 	<health now="1100" max="1100" />
 	<look type="251" head="0" body="0" legs="0" feet="0" corpse="4292" />
@@ -24,6 +24,6 @@
 		<item id="2134" chance="2000" />
 		<item id="2430" chance="600" />
 		<item id="2515" chance="400" />
+		<item id="2476" chance="800" />
 	</loot>
 </monster>
-

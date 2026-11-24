@@ -16,7 +16,9 @@
 		<defense immunity="invisible" />
 	</defenses>
 	<loot>
-		<item id="2148" countmax="250" chance1="100000" chancemax="0" />
+		<item id="2148" countmax="100" chance1="100000" chancemax="0" />
+		<item id="2148" countmax="50" chance1="100000" chancemax="0" />
+		<item id="2148" countmax="100" chance1="100000" chancemax="0" />
 		<item id="2666" countmax="4" chance1="20000" chancemax="0" />
 		<item id="2671" countmax="4" chance1="20000" chancemax="0" />
 		<item id="2152" countmax="5" chance1="8000" chancemax="0" />
@@ -24,11 +26,12 @@
 			<inside>
 				<item id="2498" chance="840" />
 				<item id="2475" chance="1120" />
-				<item id="2536" chance="979" />
+				<item id="2536" chance="980" />
 				<item id="2195" chance="1260" />
 				<item id="2214" chance="2545" />
 				<item id="2146" countmax="1" chance1="2000" chancemax="0" />
 				<item id="2476" chance="1680" />
+				<item id="2197" chance="980" />
 			</inside>
 		</item>
 		<item id="2150" countmax="5" chance1="46000" chancemax="0" />
@@ -36,7 +39,6 @@
 		<item id="2147" countmax="4" chance1="32000" chancemax="0" />
 		<item id="2146" countmax="4" chance1="25000" chancemax="0" />
 		<item id="2145" countmax="3" chance1="14000" chancemax="0" />
-	
 		<item id="2157" countmax="1" chance1="3000" chancemax="0" />
 	</loot>
 	<voices>

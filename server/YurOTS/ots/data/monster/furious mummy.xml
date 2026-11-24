@@ -17,11 +17,11 @@
 		<voice sentence="RAAAARGH!" />
 	</voices>
 	<loot>
-		<item id="2148" countmax="80" chance1="100000" chancemax="0" />
-		<item id="2161" chance="3333" />
-		<item id="2162" chance="1818" />
+		<item id="2148" countmax="50" chance1="100000" chancemax="0" />
+		<item id="2161" chance="4666" />
+		<item id="2162" chance="2545" />
 		<item id="2134" chance="6666" />
-		<item id="2411" chance="2857" />
+		<item id="2411" chance="4000" />
 		<item id="1987" chance="100000">
 			<inside>
 				<item id="2529" chance="1999" />
@@ -36,6 +36,5 @@
 		<item id="2147" countmax="2" chance1="16000" chancemax="0" />
 		<item id="2146" countmax="2" chance1="11000" chancemax="0" />
 		<item id="2145" countmax="1" chance1="6000" chancemax="0" />
-	
 	</loot>
 </monster>

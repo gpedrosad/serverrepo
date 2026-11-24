@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version='1.0' encoding='utf-8'?>
 <monster name="Red Kongra" level="30" maglevel="10" experience="340" pushable="0" armor="18" speed="250" defense="20" canpushitems="0" staticattack="50" changetarget="184">
 	<health now="550" max="550" />
 	<look type="254" corpse="20232" />
@@ -20,6 +20,9 @@
 		<item id="2483" chance="14000" />
 		<item id="2463" chance="7000" />
 		<item id="2457" chance="11000" />
+		<item id="2147" countmax="2" chance1="4000" chancemax="0" />
+		<item id="2209" chance="1500" />
+		<item id="2476" chance="600" />
 	</loot>
 	<voices>
 		<voice sentence="Hugah!" />
@@ -27,4 +30,3 @@
 		<voice sentence="RAAAARGH!" />
 	</voices>
 </monster>
-

@@ -21,9 +21,11 @@
 		<item id="2148" countmax="50" chance1="40000" chancemax="0" />
 		<item id="2167" chance="1000" />
 		<item id="2529" chance="1500" />
-		<item id="2425" chance="1000" />
-		<item id="2150" countmax="2" chance1="1500" chancemax="0" />
+		<item id="2425" chance="2000" />
+		<item id="2150" countmax="2" chance1="2500" chancemax="0" />
 		<item id="2800" countmax="1" chance1="6000" chancemax="0" />
+		<item id="2144" countmax="2" chance1="5000" chancemax="0" />
+		<item id="2534" chance="300" />
 		<item id="2150" countmax="3" chance1="26000" chancemax="0" />
 		<item id="2149" countmax="3" chance1="21000" chancemax="0" />
 		<item id="2147" countmax="2" chance1="16000" chancemax="0" />

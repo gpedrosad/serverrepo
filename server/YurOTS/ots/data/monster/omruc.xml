@@ -1,44 +1,42 @@
-<?xml version="1.0"?>
+<?xml version='1.0' encoding='utf-8'?>
 <monster name="Omruc" level="110" maglevel="90" experience="2000" pushable="0" armor="35" defense="36" canpushitems="1" staticattack="50" changetarget="200" speed="200">
-	<health now="3000" max="3000"/>
-	<look type="84" head="20" body="30" legs="40" feet="50" corpse="3016"/>
-	<combat targetdistance="4" runonhealth="100"/>
-	<blood color="86" effect="9" splash="255"/>
-
-<attacks>
-	<attack type="rune" name="omruc poisonarrow" mindamage="80" maxdamage="450" cycleticks="3000" probability="80"/>
-	<attack type="rune" name="omruc burstarrow" mindamage="80" maxdamage="450" cycleticks="4000" probability="70"/>
-	<attack type="instant" name="exura vita" exhaustion="500" cycleticks="6000" probability="60"/>
-	<attack type="instant" name="invis" exhaustion="100" cycleticks="3000" probability="40"/>
-</attacks>
-
-<defenses>
-	<defense immunity="energy"/>
-	<defense immunity="poison"/>
-	<defense immunity="paralyze"/>
-	<defense immunity="drunk"/>
-	<defense immunity="invisible"/>
-</defenses>
-
-<voices>
-	<voice sentence="MY TRESURE! DON'T TAKE IT!!"/>
-	<voice sentence="HOOOOOOHHHSSSS!"/>
-</voices>
-
-<loot>
-	<item id="2148" countmax="100" chance1="100000" chancemax="0"/>
-	<item id="2152" countmax="5" chance1="8000" chancemax="0"/>
-
-	<item id="1987" chance="100000">
-	<inside>
-	<item id="2148" countmax="70" chance1="100000" chancemax="0"/>
-	<item id="2152" countmax="5" chance1="8000" chancemax="0"/>
-	</inside>
-	</item>
-</loot>
-
-<summons maxSummons="5">
- 	<summon name="Stalker" chance="1800"/>
-</summons>
-
+	<health now="3000" max="3000" />
+	<look type="84" head="20" body="30" legs="40" feet="50" corpse="3016" />
+	<combat targetdistance="4" runonhealth="100" />
+	<blood color="86" effect="9" splash="255" />
+	<attacks>
+		<attack type="rune" name="omruc poisonarrow" mindamage="80" maxdamage="450" cycleticks="3000" probability="80" />
+		<attack type="rune" name="omruc burstarrow" mindamage="80" maxdamage="450" cycleticks="4000" probability="70" />
+		<attack type="instant" name="exura vita" exhaustion="500" cycleticks="6000" probability="60" />
+		<attack type="instant" name="invis" exhaustion="100" cycleticks="3000" probability="40" />
+	</attacks>
+	<defenses>
+		<defense immunity="energy" />
+		<defense immunity="poison" />
+		<defense immunity="paralyze" />
+		<defense immunity="drunk" />
+		<defense immunity="invisible" />
+	</defenses>
+	<voices>
+		<voice sentence="MY TRESURE! DON'T TAKE IT!!" />
+		<voice sentence="HOOOOOOHHHSSSS!" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="100" chance1="100000" chancemax="0" />
+		<item id="2152" countmax="8" chance1="25000" chancemax="0" />
+		<item id="1987" chance="100000">
+			<inside>
+				<item id="2148" countmax="80" chance1="100000" chancemax="0" />
+				<item id="2152" countmax="5" chance1="18000" chancemax="0" />
+				<item id="2195" chance="1800" />
+				<item id="2487" chance="2500" />
+				<item id="2165" chance="6000" />
+			</inside>
+		</item>
+		<item id="2147" countmax="3" chance1="20000" chancemax="0" />
+		<item id="2547" countmax="15" chance1="30000" chancemax="0" />
+	</loot>
+	<summons maxSummons="5">
+		<summon name="Stalker" chance="1800" />
+	</summons>
 </monster>
