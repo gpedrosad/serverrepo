@@ -145,6 +145,7 @@
 <monster name="Furious Ghoul" file="furious ghoul.xml" />
 <monster name="Enraged Ghoul" file="enraged ghoul.xml" />
 <monster name="Giant Spider" file="giant spider.xml" />
+<monster name="Dark Spider" file="dark spider.xml" />
 <monster name="Angry Giant Spider" file="angry giant spider.xml" />
 <monster name="Furious Giant Spider" file="furious giant spider.xml" />
 <monster name="Enraged Giant Spider" file="enraged giant spider.xml" />

@@ -116,6 +116,8 @@ NEW_ITEMS = [
     dict(server_id=20660, client_id=6060, prototype=2412, attack=32, defence=16,
          name="quicksilver katana", png="quicksilver_katana.png",
          descr="A narrow curved blade forged for rapid cuts."),
+    dict(server_id=20663, client_id=6063, prototype=2857, corpse=True, tiles=2,
+         name="dead dark spider", png="dead_dark_spider.png", descr=""),
     dict(name="emerald sword", server_id=20157, client_id=3348, prototype=2407, png="emerald_sword.png",
          attack=49, defence=33, descr="A sword with a blade of polished emerald."),
     dict(name="avenger", server_id=20158, client_id=3346, prototype=2393, png="the_avenger.png",

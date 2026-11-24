@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<monster name="Dark Spider" level="65" maglevel="65" experience="3200" pushable="0" armor="42" defense="44" canpushitems="1" staticattack="65" changetarget="200" speed="355">
+	<health now="3400" max="3400" />
+	<look type="190" corpse="20663" />
+	<combat targetdistance="1" runonhealth="0" />
+	<blood color="30" effect="16" splash="4" />
+	<attacks>
+		<attack type="melee" mindamage="180" maxdamage="410" probability="100" />
+		<attack type="rune" name="gs poison" exhaustion="500" cycleticks="5000" probability="65" />
+		<attack type="instant" name="necro_lifedrain" exhaustion="500" cycleticks="6500" probability="55" />
+	</attacks>
+	<defenses>
+		<defense immunity="poison" />
+		<defense immunity="invisible" />
+		<defense immunity="drunk" />
+	</defenses>
+	<loot>
+		<item id="2148" countmax="100" chance1="100000" chancemax="0" />
+		<item id="2152" countmax="8" chance1="18000" chancemax="0" />
+		<item id="2146" countmax="3" chance1="9000" chancemax="0" />
+		<item id="2171" chance="2000" />
+	</loot>
+</monster>
