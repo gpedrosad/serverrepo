@@ -34,12 +34,23 @@ Se revisaron los 66 ítems desde `20100` comparando nombre, tipo, stats y dibujo
 - **Dibujos:** `python3.11 scripts/client-rme/recolor_zagan_items.py --preview hoja.png` para mirar y
   `--apply devtools/rme/rme-client-760` para escribir. La tabla `ITEMS` del script dice qué ítem vanilla usa
   cada uno y con qué color. Escribe en el client id que el ítem ya tiene; el OTB no cambia. Ningún ítem vanilla
-  en uso (mapa, loot, NPC) comparte esos client ids.
+  en uso (mapa, loot, NPC) comparte esos client ids. Con `--only 20104` se reaplica un solo ítem.
 - **OTB:** `python3.11 scripts/client-rme/fix_zagan_items_otb.py` (se puede repetir; no cambia nada si ya está).
 - **Sin tocar:** pesos raros de ítems con uso (`20137` nightglass dagger 50 oz, `20105` medusa sword 150 oz,
   `20100` y `20112` 4 oz). Pueden ser a propósito por balance.
 - Los 38 siguen sin uso (ni loot, ni NPC, ni lógica). Las runas `20133`–`20143` no hacen nada al usarlas.
 - La Aurora Blade y la Aurora Axe siguen sin existir en el OTB (no tienen drop). El C++ las reconoce por nombre.
+
+### Basalt greaves (`20104`) — carbón + oro (nov 2026)
+
+El azul liso anterior se cambió por dos tonos: cuerpo de basalto carbón y los brillos del plate legs
+conservados y tintados a oro. Sin geometría agregada: solo el recoloreado. No cambia el OTB, el client id
+ni los stats; solo el sprite (sprite propio en el cliente canónico; hoy 11719).
+
+![Antes y después de basalt greaves](img/basalt-greaves-before-after.png)
+
+PNG de 32×32: [`img/basalt-greaves.png`](img/basalt-greaves.png). Para reaplicar solo este ítem:
+`python3.11 scripts/client-rme/recolor_zagan_items.py --apply devtools/rme/rme-client-760 --only 20104`.
 
 ## Scripts
 

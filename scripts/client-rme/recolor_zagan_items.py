@@ -18,6 +18,7 @@ Tabla ITEMS: server id -> (nombre de archivo, server id del ítem base, opciones
   sat    multiplica la saturación;  smin  saturación mínima (para teñir grises)
   val    multiplica el brillo;      gamma exponente del brillo (>1 oscurece los medios)
   gold   True deja igual el oro (tono 24-75° y claro) y los brillos casi blancos
+  gold_tint  color al que se llevan esos píxeles de oro; gold_k mezcla 0-1 (opcional)
   only   "metal" tiñe solo lo gris (deja la madera y el cuero como están)
 """
 from __future__ import annotations
@@ -38,8 +39,9 @@ from recolor_item import item_pixels  # noqa: E402
 THINGS = REPO / "devtools/rme/rme-client-760"
 
 
-def C(hue, sat=1.0, smin=0.0, val=1.0, gamma=1.0, gold=False, only="all"):
-    return dict(hue=hue, sat=sat, smin=smin, val=val, gamma=gamma, gold=gold, only=only)
+def C(hue, sat=1.0, smin=0.0, val=1.0, gamma=1.0, gold=False, only="all", gold_tint=None, gold_k=0.55):
+    return dict(hue=hue, sat=sat, smin=smin, val=val, gamma=gamma, gold=gold, only=only,
+                gold_tint=gold_tint, gold_k=gold_k)
 
 
 ITEMS: dict[int, tuple[str, int, dict]] = {
@@ -62,7 +64,8 @@ ITEMS: dict[int, tuple[str, int, dict]] = {
     20146: ("quarryguard_armor", 2489, C(212, 0.6, 0.14, 1.3, 0.9)),      # dark armor -> granito gris
     20147: ("obsidian_regalia", 2472, C(278, 1.2, 0.42, 0.62, 1.25)),     # magic plate armor -> obsidiana
     # --- piernas
-    20104: ("basalt_greaves", 2647, C(222, 1.0, 0.25, 0.55, 1.1)),        # plate legs -> basalto
+    20104: ("basalt_greaves", 2647, C(220, 0.30, 0.04, 0.68, 1.0, gold=True,
+                                     gold_tint=(206, 160, 86), gold_k=0.75)),  # plate legs -> carbón + oro
     20116: ("marcher_leggings", 2648, C(84, 1.0, 0.42, 0.88)),            # chain trousers -> verde de marcha
     20117: ("cordovan_leggings", 2649, C(352, 1.15, 0.5, 0.85)),          # leather trousers -> cordobán
     20148: ("kilnfire_leggings", 2478, C(16, 1.2, 0.6, 0.95)),            # brass legs -> rojo de horno
@@ -105,6 +108,10 @@ def recolor(pixels, o):
         if o["only"] == "metal" and s >= 0.3:
             keep = True
         if keep:
+            if o["gold"] and o["gold_tint"]:
+                k = o["gold_k"]
+                t = o["gold_tint"]
+                r, g, b = (int(r * (1 - k) + t[0] * k), int(g * (1 - k) + t[1] * k), int(b * (1 - k) + t[2] * k))
             out.append((r, g, b, 255))
             continue
         if v < 0.14:                                    # contorno: casi negro, apenas teñido
@@ -184,9 +191,10 @@ def main() -> int:
             render(sid).save(a.png_dir / f"{fname}.png")
         print(f"{len(ITEMS)} PNG en {a.png_dir}")
     if a.apply:
-        for sid in ITEMS:                      # leer todos los base antes de escribir nada
+        sids = a.only or list(ITEMS)
+        for sid in sids:                      # leer todos los base antes de escribir nada
             render(sid)
-        Z.apply(a.apply, {sid: (fname, None, base) for sid, (fname, base, _o) in ITEMS.items()}, render)
+        Z.apply(a.apply, {sid: (ITEMS[sid][0], None, ITEMS[sid][1]) for sid in sids}, render)
     if not (a.preview or a.png_dir or a.apply):
         ap.print_help()
     return 0
