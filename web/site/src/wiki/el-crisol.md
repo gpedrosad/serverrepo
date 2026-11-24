@@ -1,7 +1,7 @@
 ---
 titulo: El Crisol
 categoria: Lugares y actividades
-resumen: Tres arenas con élites que cambian cada día. La de Oro tiene un boss con un arma exclusiva.
+resumen: Tres arenas en orden (Bronce, Plata, Oro) con premio diario. El boss de Oro suelta un arma exclusiva.
 orden: 10
 icono: 1945
 estado: publicado
@@ -10,48 +10,50 @@ estado: publicado
 ## Lo esencial
 
 - Se entra por el portal **Crisol** en la plaza de portales del templo.
-- Llegas a la **Sala del Crisol**, una zona protegida con 3 puertas: **Bronce**, **Plata** y **Oro**.
-- Cada día cambian los élites de Bronce y Plata y el **boss de Oro**.
-- El boss de Oro es el único que suelta su **arma exclusiva**.
+- Llegas a la **Sala del Crisol**, zona protegida con 3 puertas que se hacen **en orden**: **Bronce → Plata → Oro**.
+- Limpiar una puerta abre la siguiente **por el resto del día** y da su premio (una vez por día por puerta).
+- El boss de Oro cambia cada día, suelta un **arma exclusiva** y se puede matar **una vez por día**.
 - Entras solo o con tu grupo, **hasta 7 jugadores**. No cuesta nada.
+- **Varkon**, el guardián de la sala, te explica todo: dile `hi` y después `rules`, `today`, `progress`, `rewards` o `status`.
 
 ## Cómo se hace
 
 1. Sal del depot a la plaza y entra al portal del Crisol.
-2. Usa la palanca de información (pared oeste de la sala). Te dice los monstruos de hoy y qué arenas están libres.
-3. Tu grupo se para en la plataforma de 3×2 frente a la puerta elegida.
-4. Uno tira la palanca de esa puerta. Entran todos juntos: los de la plataforma más quien tira.
-5. Llegan al sur de la arena. Los monstruos esperan en la mitad norte.
-6. Para salir, usa el teleport al sur de la arena y luego el del sur de la sala. Te deja de vuelta en la plaza.
+2. Habla con Varkon o usa la palanca de información (pared oeste). Te dice los monstruos de hoy, **tu progreso** y qué arenas están libres.
+3. Tu grupo se para en la plataforma de 3×2 frente a la puerta. Uno tira la palanca: entran todos los que cumplen. Si a alguien le falta la puerta anterior, se queda en la sala y se le avisa por qué.
+4. Llegan sobre una plataforma igual a la de la sala. Tras **5 segundos** aparecen el élite (o el boss) y su escolta.
+5. Abajo de la pantalla ves cuántos enemigos quedan. Cuando no queda ninguno, recibes el premio y el aviso de la puerta siguiente.
+6. Tienes 60 segundos para lootear; después Varkon te devuelve a la sala. También puedes salir antes por el teleport del sur.
 
 > **Mapa:** [Ver la ruta marcada en el mapa](http://192.168.1.17:8077/monstruos.html#r=el-crisol) (red local).
 
 ## Las arenas
 
-| Puerta | Arena | Riesgo | Monstruos |
-|---|---|---|---|
-| Bronce | Foso de Arena | bajo | élite del día + Minotaur, Minotaur Archer, Minotaur Guard |
-| Plata | Coliseo de Piedra | medio | élite del día + Demon Skeleton, Ghoul, Beholder, Stalker |
-| Oro | Trono de Fuego | alto | boss del día + 2 Dragon, Giant Spider, Hero, Necromancer |
+| Puerta | Arena | Nivel | Monstruos | Premio diario |
+|---|---|---|---|---|
+| Bronce | Foso de Arena | 30+ | élite del día + Minotaur, Minotaur Archer, Minotaur Guard | 2.000 gp, 5.000 exp, 1 gema chica |
+| Plata | Coliseo de Piedra | 50+ | élite del día + Demon Skeleton, Ghoul, Beholder, Stalker | 5.000 gp, 15.000 exp, 2 gemas chicas |
+| Oro | Trono de Fuego | 80+ | boss del día + 2 Dragon, Giant Spider, Hero, Necromancer | 10.000 gp, 40.000 exp, 3 gemas chicas |
 
 - Cada arena es independiente: pueden jugar **3 grupos a la vez**.
-- Una arena está ocupada mientras haya un jugador adentro. Cuando queda vacía, otro grupo puede entrar.
-- Si un grupo se fue sin matar todo, los que sobran se quedan. La palanca completa el grupo hasta el tope, nunca acumula más.
+- Puedes repetir Bronce o Plata para ayudar a tus amigos; el premio se cobra una sola vez por día.
+- El boss de Oro cuenta como hecho **apenas muere**, para todos los que estaban en la arena. Si tu grupo muere antes, puedes volver a intentar.
+- Si un grupo se va o muere, la arena se vacía sola en unos segundos: cada grupo empieza de cero.
 - Las arenas no son zona protegida: si mueres ahí, pierdes como en cualquier hunt.
 
 ## Rotación
 
-El ciclo dura 7 días y no sigue los días de la semana. La palanca de información dice qué día del ciclo es hoy.
+El ciclo dura 7 días y no sigue los días de la semana. Varkon (`today`) y la palanca de información dicen qué toca hoy.
 
 | Día | Bronce | Plata | Oro (boss) |
 |---|---|---|---|
-| 1 | Minotaur Guard | Beholder | Crucible Ashlord |
-| 2 | Cyclops | Demon Skeleton | Crucible Frostwarden |
-| 3 | Dwarf Guard | Vampire | Crucible Bonepriest |
-| 4 | Minotaur Mage | Hero | Crucible Ironhide |
-| 5 | Beholder | Dragon | Crucible Venomqueen |
-| 6 | Giant Spider | Black Knight | Crucible Stormcaller |
-| 7 | Vampire | Warlock | Crucible Bloodreaver |
+| 1 | Orc Leader | Giant Spider | Crucible Ashlord |
+| 2 | Cyclops Smith | Dragon | Crucible Frostwarden |
+| 3 | Dwarf Geomancer | Lich | Crucible Bonepriest |
+| 4 | Vampire | Hero | Crucible Ironhide |
+| 5 | Lizard Templar | Vampire Bride | Crucible Venomqueen |
+| 6 | Bone Beast | Undead Gladiator | Crucible Stormcaller |
+| 7 | Necromancer | Orc Warlord | Crucible Bloodreaver |
 
 ## Los bosses de Oro
 
@@ -69,7 +71,7 @@ Todos son inmunes a paralyze e invisibilidad.
 
 ## Armas exclusivas
 
-Cada boss suelta solo la suya, cerca de **7%** de las veces (un poco más si eres [[premium]]).
+Cada boss suelta solo la suya, un **4,5%** de las veces (un poco más si eres [[premium]]). Como el boss se mata una vez por día, son raras de verdad.
 
 | Arma | Tipo | Ataque / Def. | Velocidad | Efecto |
 |---|---|---|---|---|

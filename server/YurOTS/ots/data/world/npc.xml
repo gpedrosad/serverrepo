@@ -23,6 +23,10 @@
 <npc name="Huntmaster" x="131" y="53" z="6" dir="2"/>
 <!-- Wave Arena: Kaelen watches the clearing, cleans orphan monsters, and shows live HUD (docs/gameplay/WAVE_ARENA.md) -->
 <npc name="Kaelen" x="603" y="220" z="7" dir="2"/>
+<!-- BEGIN CRUCIBLE_NPC (scripts/map/generate-crucible.py) -->
+<!-- The Crucible: Varkon runs the 3 arenas (countdown, HUD, daily rewards, cleanup) (docs/gameplay/CRUCIBLE.md) -->
+<npc name="Varkon" x="605" y="103" z="0" dir="2"/>
+<!-- END CRUCIBLE_NPC -->
 <!-- Sand Clock: Chronos runs the 6-wave dynamic time attack (docs/gameplay/SAND_CLOCK.md) -->
 <npc name="Chronos" x="605" y="320" z="6" dir="2"/>
 

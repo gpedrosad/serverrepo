@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<npc name="Varkon" script="data/npc/scripts/crucible_warden.lua" access="3">
+	<look type="131" head="95" body="94" legs="114" feet="114"/>
+</npc>

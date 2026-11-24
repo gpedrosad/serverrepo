@@ -1,6 +1,6 @@
 {
   "name": "generated-crucible",
-  "version": 3,
+  "version": 4,
   "tileCount": 559,
   "clearBox": {
     "fromX": 592,
@@ -23,6 +23,11 @@
     164,
     48,
     7
+  ],
+  "warden": [
+    605,
+    103,
+    0
   ],
   "hub": {
     "x0": 600,
@@ -121,8 +126,8 @@
           0
         ],
         [
-          618,
-          106,
+          620,
+          107,
           0
         ]
       ],
@@ -208,8 +213,8 @@
           0
         ],
         [
-          633,
-          106,
+          635,
+          107,
           0
         ]
       ],
@@ -295,8 +300,8 @@
           0
         ],
         [
-          648,
-          106,
+          650,
+          107,
           0
         ]
       ],
@@ -343,22 +348,22 @@
     {
       "x": 600,
       "y": 100,
-      "text": "PUERTA DE BRONCE\nSand Pit\nRiesgo bajo. Grupo: pisen la plataforma."
+      "text": "BRONZE GATE - step 1 of 3\nSand Pit. Level 30+.\nStand on the platform to bring your group."
     },
     {
       "x": 604,
       "y": 100,
-      "text": "PUERTA DE PLATA\nStone Coliseum\nRiesgo medio. Grupo: pisen la plataforma."
+      "text": "SILVER GATE - step 2 of 3\nStone Coliseum. Level 50+.\nOpens after you clear Bronze today."
     },
     {
       "x": 608,
       "y": 100,
-      "text": "PUERTA DE ORO\nThrone of Fire\nBoss diario + arma rara."
+      "text": "GOLD GATE - step 3 of 3\nThrone of Fire. Level 80+.\nDaily boss with a rare weapon.\nOpens after you clear Silver today."
     },
     {
       "x": 600,
       "y": 104,
-      "text": "EL CRISOL\nPalanca: bosses de hoy y arenas ocupadas.\nSalida al templo: TP sur."
+      "text": "THE CRUCIBLE\nClear Bronze, then Silver, then Gold.\nOne reward per gate per day.\nLever: today's monsters and your progress.\nAsk Varkon for help."
     }
   ]
 }

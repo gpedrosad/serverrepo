@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import argparse
 import re
+from xml.sax.saxutils import escape
 import struct
 import sys
 from pathlib import Path
@@ -62,7 +63,7 @@ PORTALS = [
       (449, 39, 489, 80, 7)]),
     ("inferno", 159, (540, 440, 7), "INFERNO PITS\nFour floors of fiery caves\nFrom elementals to Furies",
      [(490, 240, 589, 460, 7), (490, 240, 589, 460, 8), (490, 240, 589, 460, 9), (490, 240, 589, 460, 10)]),
-    ("crisol", 164, (605, 105, 0), "THE CRUCIBLE\n3 gates. Daily boss.\nBronze / Silver / Gold",
+    ("crisol", 164, (605, 105, 0), "THE CRUCIBLE\nDaily ladder: Bronze, Silver, Gold (lvl 30-80+)\nGold boss drops a rare weapon",
      [(592, 90, 717, 125, 0)]),
     ("wave", 166, (606, 223, 7), "WAVE ARENA\nJungle Clearing: 20 waves (lvl 25-100+)\nGroup challenge. Time ranking & weekly rewards",
      [(595, 200, 620, 230, 7)]),
@@ -211,7 +212,8 @@ def main() -> int:
     rd = re.sub(r"[ \t]*<!-- BEGIN NATURAL_ISLAND_SIGNS -->\s*<!-- END NATURAL_ISLAND_SIGNS -->\n?", "", rd)
     lines = [f"\t{S_BEGIN}"]
     for _k, px, _d, text, _z in PORTALS:
-        lines.append(f'\t<readable x="{px}" y="{PORTAL_Y - 1}" z="{Z}" text="{text.replace(chr(10), chr(92) + "n")}"/>')
+        text = escape(text, {'"': "&quot;"}).replace("\n", "\\n")   # "&" crudo rompe el XML
+        lines.append(f'\t<readable x="{px}" y="{PORTAL_Y - 1}" z="{Z}" text="{text}"/>')
     lines.append(f"\t{S_END}")
     block = "\n".join(lines)
     if S_BEGIN in rd:

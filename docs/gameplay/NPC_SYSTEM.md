@@ -183,6 +183,7 @@ Compra/venta (`buy`, `buyFluidQty`, `buyRuneQty`, `buyItemQty`, `buyItemBackpack
 | Fargum, Nimral ×6 | `boat.lua` | `172,66,7` y 6 muelles | Viajes en barco | `onSay` propio |
 | Chronos | `chronos.lua` | `605,320,6` | Reloj de Arena: contrarreloj dinámico de 6 oleadas y premio diario | `onThink` propio |
 | Kaelen | `kaelen.lua` | `603,220,7` | Wave Arena: limpia monstruos huérfanos, HUD en vivo y reglas | `onThink` propio |
+| Varkon | `crucible_warden.lua` | `605,103,0` | El Crisol: corre las 3 arenas (cuenta, spawn, HUD, jefe 1/día, premio diario, limpieza); config en `data/actions/lib/crucible.lua` | `onThink` propio |
 
 **Bounty Master (borrado, nov 2026):** su C++ se sacó en el commit `35373e0` ("remove unused bounty C++ module") y el NPC quedó sin funciones ni ubicación. Se borraron `bounty_master.lua` y `bounty master.xml`. Para recuperarlo: el diseño está en [`MOST_WANTED_SYSTEM.md`](MOST_WANTED_SYSTEM.md) y el código en la historia de git (`git show 35373e0^:server/YurOTS/ots/data/npc/scripts/bounty_master.lua`).
 
@@ -198,7 +199,7 @@ python3 scripts/npc/run_npc_tests.py --record # graba de nuevo (solo si el cambi
 
 - `scripts/npc/harness.lua` simula el servidor: la API de §5 con los mismos tipos de retorno, jugadores, reloj y azar deterministas. Corre con **LuaJIT** (`brew install luajit`), el mismo dialecto que el server.
 - Cada NPC recibe un guion fijo (`scripts/npc/golden/<script>.scenario.txt`): saludo, todas las palabras de su script con cantidades, sí/no, ocupado, timeout y alejarse. Lo que responde queda en `golden/<script>.txt` (`SAY`, `CALL` a la API, `ERROR`).
-- Guiones extra a mano: `scripts/npc/scenarios/<script>.txt` (Dufi, Boat, Bows, Chronos, Food, Guild, Huntmaster, Mad, Oracle). Ojo: si existe `golden/<script>.scenario.txt` (guion congelado) el guion extra solo entra al regrabar después de borrar ese archivo. Además de `say`/`set`, el guion acepta `storage <cid> <clave> <valor>` (p. ej. para la tarea diaria). Las guilds del banco guardan estado (status y guild por jugador) y los nombres se comparan sin mayúsculas, como en el server.
+- Guiones extra a mano: `scripts/npc/scenarios/<script>.txt` (Dufi, Boat, Bows, Chronos, Crucible Warden, Food, Guild, Huntmaster, Kaelen, Mad, Oracle). Comandos de mundo: `pos`, `spawn x y z nombre`, `kill nombre`, `killmobs [nombre]`; `isMonster` da false para un monstruo muerto, como el C++. Ojo: si existe `golden/<script>.scenario.txt` (guion congelado) el guion extra solo entra al regrabar después de borrar ese archivo. Además de `say`/`set`, el guion acepta `storage <cid> <clave> <valor>` (p. ej. para la tarea diaria). Las guilds del banco guardan estado (status y guild por jugador) y los nombres se comparan sin mayúsculas, como en el server.
 - Si un cambio modifica un diálogo a propósito, revisar la diferencia que muestra el test y después grabar con `--record`.
 
 Las pruebas no reemplazan probar en el juego: no cubren el C++ (confirmación de trades, travel) ni la carga real de items.

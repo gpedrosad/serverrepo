@@ -1,0 +1,63 @@
+# Varkon: guardián del Crisol (hub 600-610,100-107 z0; Bronze 615-625, Silver 630-640, Gold 645-655; y 100-108)
+# Día del banco: índice 6 (Bronze Bone Beast, Silver Undead Gladiator, Gold Crucible Stormcaller)
+near 1001
+say 1001 hi
+say 1001 today
+say 1001 rewards
+say 1001 rules
+say 1001 bye
+# 1) Aparece adentro de Bronze sin pase (relog) -> vuelve a la sala, la arena sigue libre
+pos 1001 620 106 0
+think 1
+pos 1001 605 105 0
+think 1
+# 2) Entra con el pase de la palanca de Bronze -> 5 s de cuenta, aparece el elite y 3 guardias
+storage 1001 9503 1
+storage 1001 9504 1700000002
+pos 1001 620 106 0
+think 1
+think 5
+# 3) Muere el elite (aviso), después la escolta -> premio Bronze, Silver abierta
+kill Bone Beast
+think 1
+killmobs
+think 1
+# 4) 60 s para lootear y vuelve a la sala
+think 60
+pos 1001 605 105 0
+think 4
+near 1001
+say 1001 hi
+say 1001 progress
+say 1001 bye
+# 5) Repite Bronze el mismo día -> sin premio
+storage 1001 9503 1
+storage 1001 9504 1700000075
+pos 1001 620 106 0
+think 6
+killmobs
+think 1
+# 6) Se va por el portal con todo limpio
+pos 1001 605 105 0
+think 3
+# 7) Silver y Gold: en Gold muere el jefe y el grupo se va sin terminar -> marcado igual, la arena se limpia
+storage 1001 9503 2
+storage 1001 9504 1700000085
+pos 1001 635 106 0
+think 6
+killmobs
+think 1
+pos 1001 605 105 0
+think 3
+storage 1001 9503 3
+storage 1001 9504 1700000096
+pos 1001 650 106 0
+think 6
+kill Crucible Stormcaller
+think 1
+pos 1001 605 105 0
+think 4
+near 1001
+say 1001 hi
+say 1001 progress
+say 1001 status

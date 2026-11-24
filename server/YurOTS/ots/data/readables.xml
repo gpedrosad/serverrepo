@@ -4,10 +4,10 @@
 <readable x="131" y="53" z="7" text="depots are upstairs"/>
 <readable x="141" y="51" z="6" text="some\nmulti\nline\ntext"/>
 	<!-- BEGIN CRUCIBLE_SIGNS -->
-	<readable x="600" y="100" z="0" text="BRONZE GATE\nSand Pit\nLow risk. Groups: stand on the platform."/>
-	<readable x="604" y="100" z="0" text="SILVER GATE\nStone Coliseum\nMedium risk. Groups: stand on the platform."/>
-	<readable x="608" y="100" z="0" text="GOLD GATE\nThrone of Fire\nDaily boss + rare weapon."/>
-	<readable x="600" y="104" z="0" text="THE CRUCIBLE\nLever: today's bosses and occupied arenas.\nReturn to the temple: southern portal."/>
+	<readable x="600" y="100" z="0" text="BRONZE GATE - step 1 of 3\nSand Pit. Level 30+.\nStand on the platform to bring your group."/>
+	<readable x="604" y="100" z="0" text="SILVER GATE - step 2 of 3\nStone Coliseum. Level 50+.\nOpens after you clear Bronze today."/>
+	<readable x="608" y="100" z="0" text="GOLD GATE - step 3 of 3\nThrone of Fire. Level 80+.\nDaily boss with a rare weapon.\nOpens after you clear Silver today."/>
+	<readable x="600" y="104" z="0" text="THE CRUCIBLE\nClear Bronze, then Silver, then Gold.\nOne reward per gate per day.\nLever: today's monsters and your progress.\nAsk Varkon for help."/>
 	<!-- END CRUCIBLE_SIGNS -->
 	<!-- BEGIN TEMPLE_PORTAL_SIGNS -->
 	<readable x="156" y="46" z="7" text="NATURAL ISLAND\n3 Cyclops camps\nThree-floor cave: the Queen"/>
@@ -15,7 +15,7 @@
 	<readable x="157" y="46" z="7" text="ELVENBANE\nA seven-floor elven fortress.\nFrom orcs and elves to the tower dragon."/>
 	<readable x="158" y="46" z="7" text="BEAST VALLEY\nFour floors of challenging hunts\nFrom Minotaurs to Demons"/>
 	<readable x="159" y="46" z="7" text="INFERNO PITS\nFour floors of fiery caves\nFrom elementals to Furies"/>
-	<readable x="164" y="46" z="7" text="THE CRUCIBLE\n3 gates. Daily boss.\nBronze / Silver / Gold"/>
+	<readable x="164" y="46" z="7" text="THE CRUCIBLE\nDaily ladder: Bronze, Silver, Gold (lvl 30-80+)\nGold boss drops a rare weapon"/>
 	<readable x="166" y="46" z="7" text="WAVE ARENA\nJungle Clearing: 20 waves (lvl 25-100+)\nGroup challenge. Time ranking &amp; weekly rewards"/>
 	<readable x="168" y="46" z="7" text="SAND CLOCK\n6-wave time attack\nClear waves for extra time &amp; daily reward"/>
 	<!-- END TEMPLE_PORTAL_SIGNS -->
