@@ -59,6 +59,7 @@
 	<item id="2165" time="600000"/>		-- stealth ring
 	<item id="2640" time="14400000" weight="8.0"/>	-- soft boots (4 h)
 	<item id="2641" weight="8.0"/>		-- worn soft boots
+	<item id="20670" time="14400000" weight="8.0"/>	-- soft boots in use (brillan puestas)
 <item id="1740" questbox="1" />		-- unmovables
 <item id="1747" questbox="1" />
 <item id="1748" questbox="1" />

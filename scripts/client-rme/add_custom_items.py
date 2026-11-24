@@ -130,6 +130,12 @@ NEW_ITEMS = [
          animate_always=True, shoot_type=16, attack=22, defence=0,
          name="throwable fireball", png="throwing_fireball.png",
          descr="A restless ember that leaves a trail of sparks when thrown."),
+    # Soft Boots "in use" (24 nov 2026): puestas pasan a este id y brillan con los destellos de los anillos in
+    # use (make_soft_boots_glow.py, 4 cuadros). Mismas propiedades que las 2640; docs/gameplay/SOFT_BOOTS.md.
+    # Apariencia del time ring in use (2206): mismos flags de cliente que las botas, 2 capas x 4 cuadros.
+    # decor=True: copia el nodo OTB de las 2640 tal cual (pies, peso, sin tocar stats).
+    dict(server_id=20670, client_id=6070, prototype=2640, appearance=2206, layers=2, frames=4, decor=True,
+         name="soft boots", png="soft_boots_in_use.png", descr=""),
     dict(name="emerald sword", server_id=20157, client_id=3348, prototype=2407, png="emerald_sword.png",
          attack=49, defence=33, descr="A sword with a blade of polished emerald."),
     dict(name="avenger", server_id=20158, client_id=3346, prototype=2393, png="the_avenger.png",

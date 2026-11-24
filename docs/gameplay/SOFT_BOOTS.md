@@ -2,7 +2,7 @@
 
 Documentación del comportamiento **actual** en YurOTS / Retro76.
 
-> **TL;DR:** Soft Boots (`2640`, clientId `3549`) equipadas en pies regeneran **+3 HP** y **+12 MP** cada **3 s**, duran **4 h** de uso, y al agotarse pasan a Worn Soft Boots (`2641`, clientId `3550`). Se recargan a 4 h usando una **Azure Sunstone** (`20124`).
+> **TL;DR:** Soft Boots (`2640`, clientId `3549`) equipadas en pies regeneran **+3 HP** y **+12 MP** cada **3 s**, duran **4 h** de uso, y al agotarse pasan a Worn Soft Boots (`2641`, clientId `3550`). Puestas **brillan** como los anillos: pasan a `20670` (clientId `6070`, con destellos). Se recargan a 4 h usando una **Azure Sunstone** (`20124`).
 
 ---
 
@@ -12,6 +12,7 @@ Documentación del comportamiento **actual** en YurOTS / Retro76.
 |-------|--------|
 | Soft Boots | `2640` (`ITEM_SOFT_BOOTS`, clientId `3549`) |
 | Worn Soft Boots | `2641` (`ITEM_WORN_SOFT_BOOTS`, clientId `3550`) |
+| Puestas (brillan) | `20670` (`ITEM_SOFT_BOOTS_IN_USE`, clientId `6070`): mismo ítem, otro dibujo |
 | Slot | `SLOT_FEET` (pies) |
 | Peso | `8.0` oz (`items.xml`) |
 | Duración | `14400000` ms = **4 horas** (`time` en `items.xml`) |
@@ -35,6 +36,37 @@ Documentación del comportamiento **actual** en YurOTS / Retro76.
 5. El `time` se persiste en el XML del player y se muestra al mirarlas (`item.cpp`: *"It is brand new"* / *"It has N minutes left"* + descripción de regen).
 6. Para recargar `2641` → `2640`: usar una **Azure Sunstone (`20124`)** sobre las botas gastadas (con *Use With*, incluso si están puestas, o click derecho teniéndolas en la mochila). `luaActionDoTransformItem` restaura automáticamente `newTime` (4 h) al transformar a `ITEM_SOFT_BOOTS`.
 
+## Brillo puestas
+
+Desde el 24 nov 2026 las Soft Boots brillan mientras están en los pies, igual que los anillos "in use".
+
+- **Cómo funciona:** al ponerlas, el servidor las cambia por `20670`; al sacarlas vuelven a `2640`
+  (`Item::setGlimmer` / `removeGlimmer`, los mismos que usan los anillos). El cambio se hace **antes** de
+  avisarle al cliente (`sendThingMove`), así le llega el ítem ya brillando o ya apagado.
+- **Dónde se aplica:** en los 5 movimientos del inventario (`Player::onThingMove`) y al entrar al juego
+  (`addItemInventory`). También en `checkSoftBoots`: si en los pies hay unas `2640`, que es como vuelven
+  al recargarlas puestas con la Azure Sunstone, las pasa a `20670`.
+- **Qué es igual:** `20670` es el mismo ítem para todo:
+  - en el OTB es copia del nodo de `2640`;
+  - en `items.xml` tiene el mismo `time` y el mismo peso;
+  - regenera, se gasta y muestra el mismo texto al mirarla.
+  - Al gastarse pasa a `2641`, que ya no brilla.
+- **Sprite:** `scripts/client-rme/make_soft_boots_glow.py`. Son las botas (`3549`) con los destellos
+  dorados del time ring in use (`3090`), en el mismo formato: 2 capas × 4 cuadros. La apariencia del
+  cliente (flags `0x10`) es la del ring in use (`appearance=2206` en `add_custom_items.py`).
+- **Cliente:** el ícono "Soft Boots active" del panel de condiciones (`game_inventory/inventory.lua`, en
+  Mac y Windows) acepta `3549` y `6070`. Antes miraba solo `3549`, y con las botas brillando se habría
+  apagado.
+- **Prueba:** `scripts/ot/test-soft-boots-glow.py`, en un server aparte (7275) con los bots. Revisa que:
+  - brillen al entrar y al ponerlas;
+  - no brillen en la mochila;
+  - al mirarlas digan su regeneración;
+  - pasen a worn al gastarse;
+  - vuelvan a brillar al recargarlas puestas.
+
+  La mochila de los bots tiene otra mochila en el lugar 0: hay que soltar en un lugar vacío, si no las
+  mete adentro.
+
 ---
 
 ## Constantes C++ (`server/YurOTS/ots/source/const76.h`)
@@ -56,8 +88,9 @@ ITEM_WORN_SOFT_BOOTS        = 2641, // clientId 3550
 
 | Archivo | Rol |
 |---------|-----|
-| `source/const76.h` | IDs (`2640`/`2641`) y macros de balance |
-| `source/player.h` / `player.cpp` | `onSoftBootsEquipped`, `checkSoftBoots`, hooks en `onThingMove` |
+| `source/const76.h` | IDs (`2640`/`2641`/`20670`) y macros de balance |
+| `source/player.h` / `player.cpp` | `onSoftBootsEquipped`, `checkSoftBoots`, hooks en `onThingMove` y brillo (`setGlimmer`) |
+| `source/item.cpp` | `setGlimmer` / `removeGlimmer` (`2640` ↔ `20670`) |
 | `source/actions.cpp` | `luaActionDoTransformItem`: restaura `newTime` al transformar a `ITEM_SOFT_BOOTS` |
 | `source/item.cpp` | Descripción al look (regen / recarga con Azure Sunstone) y persistencia de `time` |
 | `source/game.cpp` | Llama `checkSoftBoots(thinkTicks)` en el think del player |
