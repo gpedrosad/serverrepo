@@ -118,6 +118,12 @@ NEW_ITEMS = [
          descr="A narrow curved blade forged for rapid cuts."),
     dict(server_id=20663, client_id=6063, prototype=2857, corpse=True, tiles=2,
          name="dead dark spider", png="dead_dark_spider.png", descr=""),
+    dict(server_id=20664, client_id=6064, prototype=2178, decor=True,
+         name="memory gem", png="memory_gem.png",
+         descr="Equip an imbued item and use this gem on compatible clean gear. One imbuement level is lost in transfer."),
+    dict(server_id=20665, client_id=6065, prototype=2145, decor=True, patterns=8,
+         name="memory shard", png="memory_shard.png",
+         descr="Tonka can fuse five of these shards into a memory gem."),
     dict(name="emerald sword", server_id=20157, client_id=3348, prototype=2407, png="emerald_sword.png",
          attack=49, defence=33, descr="A sword with a blade of polished emerald."),
     dict(name="avenger", server_id=20158, client_id=3346, prototype=2393, png="the_avenger.png",
@@ -682,11 +688,12 @@ def apply_things(things: Path, otb_root, dry: bool) -> list[str]:
         tiles = item.get("tiles", 1)
         frames = item.get("frames", 1)
         layers = item.get("layers", 1)
+        patterns = item.get("patterns", 1)
         per_frame = 2 if tiles in ("2x1", "1x2") else 4 if tiles == 2 else 1
-        sprite_count = per_frame * frames * layers
+        sprite_count = per_frame * frames * layers * patterns
         # Capas nativas (puertas): dentro de cada cuadro, apiladas verticalmente.
         # El prefijo del prototipo conserva la cantidad real de capas/cuadros.
-        new_records = sprite_records(SPRITES / item["png"], tiles, frames * layers)
+        new_records = sprite_records(SPRITES / item["png"], tiles, frames * layers * patterns)
         idx = by_cid.get(item["client_id"])
         proto_cid = s2c.get(item.get("appearance", item["prototype"]))
         if idx is None or proto_cid not in by_cid:
