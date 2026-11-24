@@ -57,10 +57,12 @@ NOTES = {
     20163: ("Otras", "Sin efecto", "", "ROOT_COLOSSUS.md"),
     20164: ("Otras", "2 manos, sin efecto", "", "ROOT_COLOSSUS.md"),
     20193: ("Otras", "Fire sword de fuego negro, sin efecto; luz violeta", "", "../items-and-map/ZAGAN_TEST_ITEMS.md"),
-    20111: ("Sin fuente", "Sin efecto", "Hoy no se consigue (solo `/i`)", "../items-and-map/ZAGAN_TEST_ITEMS.md"),
-    20115: ("Sin fuente", "Sin efecto", "Hoy no se consigue (solo `/i`)", "../items-and-map/ZAGAN_TEST_ITEMS.md"),
-    20119: ("Sin fuente", "Sin efecto", "Hoy no se consigue (solo `/i`)", "../items-and-map/ZAGAN_TEST_ITEMS.md"),
+    # 20111/20115/20119: desde el rebalanceo de loot (490a42c, nov 2026) caen de monstruos; la fuente sale de los XML.
+    20111: ("Otras", "Sin efecto", "", "../items-and-map/ZAGAN_TEST_ITEMS.md"),
+    20115: ("Otras", "Sin efecto", "", "../items-and-map/ZAGAN_TEST_ITEMS.md"),
+    20119: ("Otras", "Sin efecto", "", "../items-and-map/ZAGAN_TEST_ITEMS.md"),
     20120: ("Otras", "Sin efecto", "", "../items-and-map/ZAGAN_TEST_ITEMS.md"),
+    20666: ("Otras", "Arrojadiza apilable y reutilizable; proyectil de fuego", "", "THROWING_FIREBALL.md"),
 }
 # Armas sin bloque de arma en el OTB o que no son 20000+
 EXTRA = [
@@ -82,7 +84,8 @@ def loot_sources() -> dict[int, list[str]]:
         base = p.name.split(" ", 1)[1] if rage else p.name
         s = p.read_text(encoding="latin-1")
         name = re.search(r'<monster name="([^"]+)"', s)
-        for m in re.finditer(r'<item id="(\d+)"[^>]*?chance="(\d+)"', s):
+        # chance="N" (no apilables) o chance1="N" (apilables, p. ej. la throwable fireball)
+        for m in re.finditer(r'<item id="(\d+)"[^>]*?\bchance1?="(\d+)"', s):
             item = int(m.group(1))
             if rage and item in base_drops.get(base, set()):
                 continue
