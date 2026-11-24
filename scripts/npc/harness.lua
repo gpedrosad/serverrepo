@@ -12,6 +12,9 @@
 --   set <cid> <campo> <n>  money, bank, level, items, slots, voc, premium, promoted, mana, guildstatus, pz
 --   storage <cid> <k> <n>  storage value del jugador (p. ej. tarea diaria)
 --   disappear <cid>        onCreatureDisappear
+--   spawn <x> <y> <z> <name>  monstruo puesto a mano
+--   kill <name>            mata un monstruo por nombre
+--   killmobs [name]        mata todos (o todos menos los que se llaman name)
 --   # comentario
 
 local script, scenario = arg[1], arg[2]
@@ -134,7 +137,7 @@ api('getTopCreature', function(pos)
 	for id, m in pairs(summoned) do if samePos(m.pos, pos) then return id end end
 	return 0
 end)
-api('isMonster', function(cid) return (tonumber(cid) or 0) >= 5000 end)  -- boolean, como el C++
+api('isMonster', function(cid) return summoned[tonumber(cid) or 0] ~= nil end)  -- boolean; false si ya murió, como el C++
 api('getPlayerMana', function(cid) return P(cid).mana end)
 api('doPlayerAddMana', 1)
 api('foundNewGuild', 1)
@@ -193,6 +196,10 @@ for line in io.lines(scenario) do
 			local x, y, z, name = rest:match('^(%d+)%s+(%d+)%s+(%d+)%s+(.+)$')
 			creatures = creatures + 1
 			summoned[creatures] = {pos = {x = tonumber(x), y = tonumber(y), z = tonumber(z)}, name = name}
+		elseif cmd == 'kill' then  -- mata un monstruo por nombre (el primero que encuentre)
+			for id, m in pairs(summoned) do
+				if m.name == rest then summoned[id] = nil break end
+			end
 		elseif cmd == 'killmobs' then
 			if rest == '' then
 				summoned = {}
