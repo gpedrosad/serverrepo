@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- Caldera Azul (docs/items-and-map/CALDERA_AZUL.md): Bone Beast de fuego frío, look 147. -->
+<monster name="Azure Bonebeast" level="40" maglevel="40" experience="1300" pushable="0" armor="36" defense="38" canpushitems="1" staticattack="50" changetarget="200" speed="240">
+	<health now="1500" max="1500" />
+	<look type="147" head="0" body="0" legs="0" feet="0" corpse="3031" />
+	<combat targetdistance="1" runonhealth="0" />
+	<blood color="86" effect="9" splash="255" />
+	<attacks>
+		<attack type="melee" mindamage="80" maxdamage="260" probability="100" />
+	<attack type="instant" name="k_ice_wave_7" exhaustion="1000" cycleticks="2500" probability="40" kit="1"/>
+	<attack type="rune" name="k_death_touch_7" exhaustion="1000" cycleticks="2500" probability="40" kit="1"/>
+	<attack type="instant" name="orcb_haste" exhaustion="500" cycleticks="6000" probability="15" kit="1"/>
+	</attacks>
+	<defenses>
+		<defense immunity="fire" />
+		<defense immunity="poison" />
+		<defense immunity="paralyze" />
+	</defenses>
+	<voices>
+		<voice sentence="*crackle*" />
+	</voices>
+	<loot>
+		<item id="2148" countmax="100" chance1="100000" chancemax="0" />
+		<item id="2152" countmax="4" chance1="15000" chancemax="0" />
+		<item id="2146" countmax="2" chance1="6000" chancemax="0" />
+		<item id="2463" chance="6000" />
+		<item id="2647" chance="4000" />
+		<item id="1987" chance="100000">
+			<inside>
+				<item id="2541" chance="5000" />
+				<item id="2450" chance="1666" />
+				<item id="2449" chance="10000" />
+			</inside>
+		</item>
+	</loot>
+</monster>

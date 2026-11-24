@@ -107,6 +107,12 @@ KITS = {
     "Orc Warchief": ["roar:burst", "earth:touch-1", "+haste"],
     "Thornwarden": ["poison:wave+1", "venom:strike", "earth:burst", "+heal"],
     "Lord of Elvenbane": ["drain:burst", "energy:wave+1", "death:strike", "+heal", "+haste"],
+    # Caldera Azul: fuego frío (energía y hielo) (docs/items-and-map/CALDERA_AZUL.md)
+    "Azure Skeleton": ["energy:strike", "death:touch-1"],
+    "Azure Devil": ["energy:ball", "energy:wave", "ice:strike-1"],
+    "Azure Bonebeast": ["ice:wave", "death:touch", "+haste"],
+    "Azure Lich": ["energy:wave", "drain:burst-1", "ice:ball-1", "+heal"],
+    "Azhurak": ["energy:wave", "ice:burst", "drain:strike-1", "+heal", "+haste"],
 }
 
 

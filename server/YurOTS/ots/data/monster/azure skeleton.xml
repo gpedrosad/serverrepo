@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- Caldera Azul (docs/items-and-map/CALDERA_AZUL.md): Demon Skeleton de fuego frío, look 145. -->
+<monster name="Azure Skeleton" level="25" maglevel="40" experience="420" pushable="0" armor="30" defense="32" canpushitems="1" staticattack="50" changetarget="180" speed="230">
+	<health now="600" max="600" />
+	<look type="145" head="0" body="0" legs="0" feet="0" corpse="2809" />
+	<combat targetdistance="1" runonhealth="0" />
+	<blood color="86" effect="9" splash="255" />
+	<attacks>
+		<attack type="melee" mindamage="50" maxdamage="170" probability="100" />
+	<attack type="rune" name="k_energy_strike_5" exhaustion="1000" cycleticks="3000" probability="35" kit="1"/>
+	<attack type="rune" name="k_death_touch_4" exhaustion="1000" cycleticks="3500" probability="30" kit="1"/>
+	</attacks>
+	<defenses>
+		<defense immunity="fire" />
+		<defense immunity="poison" />
+	</defenses>
+	<voices>
+		<voice sentence="The cold fire never dies." />
+		<voice sentence="Burn... in blue." />
+	</voices>
+	<loot>
+		<item id="2148" countmax="80" chance1="100000" chancemax="0" />
+		<item id="2152" countmax="2" chance1="8000" chancemax="0" />
+		<item id="2146" countmax="1" chance1="4000" chancemax="0" />
+		<item id="2515" chance="2200" />
+		<item id="2178" chance="1333" />
+		<item id="1987" chance="100000">
+			<inside>
+				<item id="2417" chance="5000" />
+				<item id="2482" chance="2857" />
+				<item id="2194" chance="1666" />
+				<item id="2168" chance="1200" />
+			</inside>
+		</item>
+	</loot>
+</monster>

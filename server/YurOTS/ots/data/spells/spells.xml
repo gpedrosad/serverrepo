@@ -280,6 +280,13 @@
 <spell name="k_roar_burst_4" words="k_roar_burst_4" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="k_roar_burst_7" words="k_roar_burst_7" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="k_roar_burst_8" words="k_roar_burst_8" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="k_drain_burst_6" words="k_drain_burst_6" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="k_energy_wave_10" words="k_energy_wave_10" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="k_energy_wave_7" words="k_energy_wave_7" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="k_heal_6" words="k_heal_6" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="k_heal_9" words="k_heal_9" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="k_ice_burst_10" words="k_ice_burst_10" maglv="4000" mana="800" enabled="1"></spell>
+<spell name="k_ice_wave_7" words="k_ice_wave_7" maglv="4000" mana="800" enabled="1"></spell>
 <rune name="k_blade_strike_4" id="6000" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 <rune name="k_blade_strike_5" id="6001" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 <rune name="k_burst_ball_2" id="6002" charges="1" maglv="4000" mana="0" enabled="1"></rune>
@@ -309,6 +316,9 @@
 <rune name="k_poison_strike_3" id="6026" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 <rune name="k_venom_strike_5" id="6027" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 <rune name="k_venom_strike_6" id="6028" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="k_death_touch_7" id="6029" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="k_drain_strike_9" id="6030" charges="1" maglv="4000" mana="0" enabled="1"></rune>
+<rune name="k_energy_ball_5" id="6031" charges="1" maglv="4000" mana="0" enabled="1"></rune>
 <!-- END MONSTER_KITS -->
 <!--\\ End Runes //-->
 </spells>

@@ -557,4 +557,10 @@
 <monster name="Lake Custodian" file="custodio del lago.xml" />
 <!-- Mina Enana -->
 <monster name="Iron Foreman" file="capataz de hierro.xml" />
+<!-- Caldera Azul (docs/items-and-map/CALDERA_AZUL.md) -->
+<monster name="Azure Skeleton" file="azure skeleton.xml" />
+<monster name="Azure Devil" file="azure devil.xml" />
+<monster name="Azure Bonebeast" file="azure bonebeast.xml" />
+<monster name="Azure Lich" file="azure lich.xml" />
+<monster name="Azhurak" file="azhurak.xml" />
 </monsters>

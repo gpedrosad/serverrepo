@@ -54,6 +54,11 @@ python3 scripts/monsters/apply-monster-kits.py             # escribe (se puede r
 | Orc Warchief | 330 | roar burst 8, earth touch 7, prisa |
 | Thornwarden | 220 | poison wave 7, venom strike 6, earth burst 6, cura |
 | Lord of Elvenbane | 400 | drain burst 8, energy wave 9, death strike 8, cura, prisa |
+| Azure Skeleton | 170 | energy strike 5, death touch 4 |
+| Azure Devil | 150 | energy ball 5, energy wave 5, ice strike 4 |
+| Azure Bonebeast | 260 | ice wave 7, death touch 7, prisa |
+| Azure Lich | 260 | energy wave 7, drain burst 6, ice ball 6, cura |
+| Azhurak | 620 | energy wave 10, ice burst 10, drain strike 9, cura, prisa |
 
 Los nombres del kit son `elemento forma escalón`.
 
@@ -74,6 +79,12 @@ Cada combinación usada es un archivo `k_<elemento>_<forma>_<escalón>.lua` en `
 usa para reemplazarlas al volver a correrlo. Los ataques que ya tenía no se tocan.
 
 ## Sumar un monstruo
+
+> **Ojo (24 nov 2026):** una corrida completa hoy también reformatea los XML de todos los monstruos con kit y
+> cambia el escalón de Mutated Tiger (roar burst 7 → 6) y Quara Predator (ice strike 8 → 7), porque sus golpes
+> cambiaron después de la última corrida. Los monstruos de la [Caldera Azul](../items-and-map/CALDERA_AZUL.md) se
+> sumaron a `KITS` pero sus 10 hechizos se agregaron a mano a `spells.xml` para no tocar a los demás. Antes de
+> correrlo entero, revisar esas diferencias con `--dry-run` y `git diff`.
 
 Agregarlo a `KITS` (`"elemento:forma"`, con `-1`/`+1` para bajar o subir el escalón) y volver a correr el script.
 Los archivos `k_*.lua` que ya no use nadie se borran solos.
