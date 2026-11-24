@@ -1,11 +1,11 @@
 # Dark Spider
 
-Araña de caparazón negro carbón, ojos rojo brasa y patas largas articuladas.
-El dibujo sigue las proporciones generales de Giant Spider, con perspectiva
-oblicua y reflejos gris cálido para que se lea sobre la tierra. Tiene formato
-2×2, cuatro direcciones y tres cuadros de movimiento. El looktype `190` y el
-cadáver `20663` usan sus mismos IDs de sprite. El cadáver conserva el
-contenedor y el decay de `2857`.
+Usa los mismos 12 cuadros de Giant Spider (looktype `38`), con su silueta,
+tamaño y animación 2×2. La paleta de Dark Spider cambia el caparazón a negro
+obsidiana, las articulaciones a rojo brasa y los ojos a rojo claro. Se aplica
+píxel por píxel, con la transparencia original. El looktype `190` y el
+cadáver `20663` conservan sus IDs. El cadáver usa el molde de `2857` con la
+misma paleta y conserva su contenedor y su decay.
 
 ![Dark Spider en cuatro direcciones y tres cuadros](img/dark-spider.png)
 
