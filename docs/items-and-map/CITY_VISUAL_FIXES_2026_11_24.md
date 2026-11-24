@@ -65,6 +65,31 @@ lockers, spawns ni `houses.xml`.
   [reja antes](img/city-visual-2026-11-24/reja-antes.png) ·
   [después](img/city-visual-2026-11-24/reja-despues.png)
 
+### 5. Dead trees 2716
+
+Gonzalo señaló en el juego (24/11, 18:54 hora de Buenos Aires) un *dead tree*
+en `17,141,7` (item 2716 sobre pasto 4756). En todo el `test.otbm` había
+exactamente 4 colocaciones de 2716, todas en z7 y en casillas simples, sin
+otro objeto encima. Se sacaron las cuatro:
+
+| Posición | Piso previo | Notas |
+|---|---|---|
+| `17,141,7` | 4756 (grass) | Lo plantaba `SURFACE_PROPS` de `generate-duskweb-hollow.py`. |
+| `41,39,7` | 103 (dirt) | Junto a un 2715, en tierra al borde de lava. No lo pone ningún generador actual. |
+| `104,105,7` | 117 (grass) | En un grupo con 2715/2717. No lo pone ningún generador actual. |
+| `114,115,7` | 103 (dirt) | Junto a un 2715. No lo pone ningún generador actual. |
+
+Causa: el único script que colocaba 2716 era el de Duskweb Hollow. Los otros
+generadores de árboles secos usan 2709, 2710, 2717, 2719, 2720 (y a veces
+2697), nunca 2716. Ese ítem quedó sacado de `SURFACE_PROPS`; los árboles
+secos vecinos de la península (`15,139,7` = 2709 y `20,140,7` = 2720) se
+dejaron. Si se vuelve a correr el generador de Duskweb, ya no reaparece el
+2716.
+
+El script `scripts/map/fix-city-visual-20261124.py` ahora también saca los
+2716. Si los arreglos de la city ya están aplicados, esa parte se saltea
+(idempotente para los árboles: `python3.11 scripts/map/fix-city-visual-20261124.py --dead-trees`).
+
 ## Qué se dejó a propósito
 
 - **Caminito `413` en `(140,33–36,7)`:** es un sendero de baldosas en el cantero
@@ -96,27 +121,48 @@ Corrido después de escribir el mapa, en el worktree `~/proyectos/serverrepo-cit
 - `python3.11 scripts/map/sync-houses-with-map.py --dry-run` — `houses.xml` coincide; 549262 tiles (igual).
 - SHA-256 de `test-spawn.xml` y `houses.xml` sin cambios.
 
+Después de sacar los 2716, en el mismo worktree:
+
+- `python3.11 scripts/map/check-map-load.py` — 0 errores.
+- `python3.11 scripts/map/scan-map-depots.py` — 11 lockers, todos `depotid=1`, idénticos a antes.
+- `python3.11 scripts/map/sync-houses-with-map.py --dry-run` — `houses.xml` coincide; 549262 tiles (igual).
+- SHA-256 de `test-spawn.xml`, `houses.xml` y `test-house.xml` sin cambios.
+- SHA-256 de `test.otbm` después de sacar los árboles:
+  `ecb95dfd0b52039f0a0351e001b22905d978388598cb18df67a03b11c8096635`.
+- No quedó ningún 2716 en el mapa.
+
 ## Cómo volver atrás
 
-El mapa anterior a este cambio está en:
+El mapa anterior a los arreglos de la city (canoa, fuerte, bordes, duplicados)
+está en:
 
 - `backups/map/city-visual-20261124/test.otbm` (gitignored; SHA-256
   `d260970915fff1d3866d9c2be804e418c6f2cf4d1a7ee5accba26ffef7397580`)
 - `/tmp/serverrepo-city-fix-backup/test.otbm` en el Mac
 
-Para restaurarlo, copiar ese archivo sobre `server/YurOTS/ots/data/world/test.otbm`.
-El script no es idempotente: si se vuelve a correr sobre el mapa ya arreglado, falla
-a propósito (espera el estado anterior).
+El mapa ya con esos arreglos, antes de sacar los 2716, está en:
 
-## Despliegue (todavía no hecho)
+- `backups/map/city-visual-20261124/test.otbm.pre-dead-trees` (SHA-256
+  `6a82a8f6cdb50c44902d1c7f011cfe1accb825fba05f44e539060d35279b5cba`)
+- `/tmp/serverrepo-city-fix-backup/test.otbm.pre-dead-trees`
 
-Mismo flujo que el de los ataúdes, solo datos, sin recompilar:
+Para restaurar, copiar el archivo elegido sobre
+`server/YurOTS/ots/data/world/test.otbm`. La parte de la city del script no es
+idempotente (si se corre sobre el mapa ya arreglado, se saltea). La de los
+2716 sí lo es: si no hay ninguno, no hace nada.
+
+## Despliegue
+
+El mapa (city + dead trees 2716) y, si se incluye, el sprite de la Memory Gem
+van a `main` cuando se haga push. El deploy al servidor y la publicación del
+cliente no forman parte de este cambio:
 
 1. Backup del `test.otbm` que está en la ThinkPad.
-2. Fast-forward de `main` en el server (cuando esta rama se mergee y se pushee).
+2. Fast-forward de `main` en el server.
 3. Reinicio del contenedor `yurots` (`docker stop` / `docker start`), sin `pkill`.
 4. Confirmar que el mapa carga, el puerto 7171 responde y los lockers siguen en su lugar.
 
-Hace falta aprobación expresa para el push y para el deploy. Los jugadores
-conectados se caen un momento en el reinicio. El cliente no hace falta
-actualizarlo: no hay sprites nuevos, solo el mapa.
+Los jugadores conectados se caen un momento en el reinicio. Los arreglos del
+mapa no piden cliente nuevo. La Memory Gem sí: hay que publicar el paquete del
+updater (`publish_client.py`) para que los clientes bajen el sprite cian. Eso
+pide aprobación aparte; no se corre en este paso.

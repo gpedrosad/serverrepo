@@ -15,6 +15,10 @@ Qué hace:
     (solo y=41-43, casillas abiertas; no toca 130-131,41 ni el borde real de y>=44).
   - Saca un duplicado de alfombra 4398 en el training, de 1499 en (160,7,7) y de la
     reja arcana 20257 en (163,42,7) (en el mapa viejo era 1544).
+  - Saca todos los dead tree 2716 del mapa (el de 17,141,7 sobre pasto 4756 lo
+    plantaba generate-duskweb-hollow.py; había 3 más). Si los arreglos de la city
+    ya están aplicados, esa parte se saltea y solo se sacan los 2716.
+    También: python3.11 scripts/map/fix-city-visual-20261124.py --dead-trees
 
 Qué no toca:
   - El caminito 413 del cantero del templo (intencional).
@@ -262,8 +266,68 @@ def is_open_water(ids: list[int], otb) -> bool:
     return True
 
 
-def apply(root, otb, log: list[str]) -> None:
+DEAD_TREE = 2716
+
+
+def city_fixes_pending(nodes) -> bool:
+    """True si el mapa todavía tiene el estado previo a los arreglos de la city."""
+    p0 = (BOAT_COL, BOAT_Y0, BOAT_Z)
+    if p0 not in nodes:
+        return True
+    ids = items_of(nodes[p0])
+    canoe_done = ids[:2] == [WATER, BOAT_SEQ[0]]
+    pirate_left = any(
+        1499 in items_of(nodes[(x, y, 7)])
+        for x, y in PIRATE_WG
+        if (x, y, 7) in nodes
+    )
+    return not canoe_done or pirate_left
+
+
+def remove_dead_trees_2716(nodes, log: list[str]) -> int:
+    """Saca item 2716 de casillas simples en todo el mapa."""
+    hits = []
+    for (x, y, z), tile in nodes.items():
+        ids = items_of(tile)
+        if DEAD_TREE not in ids:
+            continue
+        if not tile_is_simple(tile):
+            raise SystemExit(
+                f"ERROR: 2716 en casilla no simple {(x, y, z)}: {ids}"
+            )
+        hits.append((x, y, z, tile, ids))
+    if not hits:
+        log.append("  dead tree 2716: no había ninguno")
+        return 0
+    for x, y, z, tile, ids in sorted(hits):
+        n = drop_ids(tile, {DEAD_TREE})
+        after = items_of(tile)
+        if DEAD_TREE in after or not after:
+            raise SystemExit(f"ERROR: al sacar 2716 de {(x, y, z)} quedó {after}")
+        log.append(f"  dead tree {(x, y, z)}: sacó {n}×2716, {ids} -> {after}")
+    return len(hits)
+
+
+def apply(root, otb, log: list[str], only_dead: bool = False) -> None:
     nodes = index_nodes(root)
+    skip_city = only_dead or not city_fixes_pending(nodes)
+    if skip_city and not only_dead:
+        log.append("city visual ya aplicado; se saltea esa parte")
+    if skip_city:
+        # invariantes que no se tocan, igual que al final de los arreglos de city
+        hole = items_of(nodes[SNOW_HOLE]) if SNOW_HOLE in nodes else []
+        if 20368 not in hole:
+            raise SystemExit(f"ERROR: se alteró la entrada de nieve {SNOW_HOLE}: {hole}")
+        lad = items_of(nodes[SNOW_LADDER]) if SNOW_LADDER in nodes else []
+        if 1386 not in lad:
+            raise SystemExit(f"ERROR: falta la escalera {SNOW_LADDER}: {lad}")
+        for p in PATH_413:
+            ids = items_of(nodes[p]) if p in nodes else []
+            if ids != [413]:
+                raise SystemExit(f"ERROR: se alteró el caminito {p}: {ids}")
+        remove_dead_trees_2716(nodes, log)
+        return
+
 
     # --- 1. canoa ---
     col = [(BOAT_COL, BOAT_Y0 + i, BOAT_Z) for i in range(5)]
@@ -392,17 +456,24 @@ def apply(root, otb, log: list[str]) -> None:
         if ids != [413]:
             raise SystemExit(f"ERROR: se alteró el caminito {p}: {ids}")
 
+    remove_dead_trees_2716(nodes, log)
+
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--replace", action="store_true", help="escribe test.otbm")
+    ap.add_argument(
+        "--dead-trees",
+        action="store_true",
+        help="solo saca dead tree 2716 (no reaplica los arreglos de la city)",
+    )
     args = ap.parse_args()
 
     otb = load_otb()
     raw = MAP.read_bytes()
     root = parse_tree(raw)
     log: list[str] = []
-    apply(root, otb, log)
+    apply(root, otb, log, only_dead=args.dead_trees)
     print("Cambios:")
     print("\n".join(log))
     print(f"{len(log)} líneas de cambio")

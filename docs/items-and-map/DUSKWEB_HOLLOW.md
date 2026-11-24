@@ -7,7 +7,10 @@ entradas de la costa conservan sus accesos.
 
 La península suma 296 casillas de terreno: orillas perfiladas, bosque de
 árboles secos y dos Tarantulas. El mar se prolonga hacia el límite oeste del
-mapa para cubrir el vacío negro visible desde la orilla.
+mapa para cubrir el vacío negro visible desde la orilla. El *dead tree* 2716
+que el generador plantaba en `17,141,7` se sacó el 24/11/2026 (ver
+[arreglos visuales de la city](CITY_VISUAL_FIXES_2026_11_24.md)); ya no está
+en `SURFACE_PROPS`.
 
 ![Península y entrada](img/duskweb-hollow-z7.png)
 
