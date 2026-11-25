@@ -1,4 +1,4 @@
-# Follow y modo perseguir (25 nov 2026)
+# Follow, modo perseguir y "usar" de lejos (25 nov 2026)
 
 Hasta nov 2026 el server **no atendía el follow**: el cliente mandaba el paquete `0xA2` al elegir "Follow" (menú
 del botón derecho, lista de batalla, doble clic con la acción "follow") y el server lo ignoraba. Tampoco leía el
@@ -30,6 +30,25 @@ Archivos: `source/protocol76.cpp` (`parseFollow`, `parseModes`, `parseCancelMove
 `source/game.cpp` (`playerFollowCreature`, `stopPlayerFollow`, `ensurePlayerFollowEvent`, `checkPlayerFollow`,
 `playerSetAttackedCreature`), `source/player.h` (`followCreatureId`, `eventFollow`, `followLastTarget`,
 `followNoWayShown`, `setChaseMode`, `isChasing`). Se agregaron miembros a `Player`: **`make clean && make`**.
+
+## "Usar" de lejos (click derecho)
+
+Antes, usar algo del mapa a más de 1 casilla (escalera de mano, puerta, palanca, cofre) daba "Too far away." y el
+personaje no se movía. Ahora, como en Tibia, `Game::playerUseItem`:
+
+1. Si la casilla está en el mismo piso, a más de 1 y a la vista (±8, ±6), calcula el camino a la casilla libre más
+   cercana pegada al objeto (`Game::pathNextTo`, la misma función del follow) y lo camina.
+2. Guarda el pedido (`Player::pendingUse*`). Cuando `checkPlayerWalk` termina el camino, hace el `UseItem` normal
+   (sube la escalera, abre la puerta, etc.). Si al llegar sigue lejos (algo le cortó el paso), da "Too far away."
+   como siempre.
+3. Se cancela al caminar a mano, con Esc y al empezar un follow. Un "usar" nuevo reemplaza al anterior.
+
+Sin camino posible, o en otro piso, queda como antes ("Too far away."). Solo el "usar" simple (`0x82`): "usar con"
+(cuerda, pala, runas sobre el mapa) sigue pidiendo estar al lado.
+
+```bash
+python3 scripts/ot/test-use-far.py --port 7275     # escalera de mano de la cueva en cruz (56,165,9)
+```
 
 ## Límites
 

@@ -5000,8 +5000,14 @@ void Game::checkPlayerWalk(unsigned long id)
 */
 			player->eventAutoWalk = addEvent(makeTask(ticks, std::bind2nd(std::mem_fun(&Game::checkPlayerWalk), id)));
 		}
-		else
+		else {
 			player->eventAutoWalk = 0;
+			if(player->pendingUseActive) {                // lleg√≥: hace el "usar" que pidi√≥ de lejos
+				player->pendingUseActive = false;
+				actions.UseItem(player, player->pendingUsePos, player->pendingUseStack, player->pendingUseItem,
+					player->pendingUseIndex);
+			}
+		}
 	}
 
 	flushSendBuffers();
@@ -5699,8 +5705,8 @@ void Game::playerAutoWalk(Player* player, std::list<Direction>& path)
 
 // ---------------------------------------------------------------------------------------------- follow
 // "Follow" del cliente (0xA2) y modo perseguir del ataque (byte de chase de 0xA0). El server camina al jugador
-// hasta la casilla libre m·s cercana pegada al blanco y lo vuelve a calcular cada FOLLOW_TICK si el blanco se
-// moviÛ. Seguir y atacar se excluyen, como en Tibia. Doc: docs/gameplay/FOLLOW.md
+// hasta la casilla libre m√°s cercana pegada al blanco y lo vuelve a calcular cada FOLLOW_TICK si el blanco se
+// movi√≥. Seguir y atacar se excluyen, como en Tibia. Doc: docs/gameplay/FOLLOW.md
 static const int FOLLOW_TICK = 300;
 
 void Game::stopPlayerFollow(Player* player, bool notifyClient)
@@ -5736,10 +5742,50 @@ void Game::playerFollowCreature(Player* player, unsigned long creatureid)
 	}
 	if(player->attackedCreature != 0)
 		playerSetAttackedCreature(player, 0);          // seguir cancela el ataque
+	player->pendingUseActive = false;
 	player->followCreatureId = creatureid;
 	player->followLastTarget = Position(0xFFFF, 0xFFFF, 0xFF);
 	player->followNoWayShown = false;
 	ensurePlayerFollowEvent(player);
+}
+
+bool Game::pathNextTo(Player* player, const Position& target, std::list<Direction>& dirs)
+{
+	// la casilla del blanco suele estar ocupada (criatura, escalera, mueble): se busca el camino m√°s corto a una de
+	// las 8 de alrededor que est√© libre
+	std::list<Position> best;
+	for(int ox = -1; ox <= 1; ox++) {
+		for(int oy = -1; oy <= 1; oy++) {
+			if(ox == 0 && oy == 0)
+				continue;
+			Position p(target.x + ox, target.y + oy, target.z);
+			if(p == player->pos)
+				return false;                          // ya est√° al lado
+			Tile* t = map->getTile(p);
+			if(!t || t->isBlocking(BLOCK_SOLID | BLOCK_PATHFIND) != RET_NOERROR)
+				continue;
+			std::list<Position> path = map->getPathTo(player, player->pos, p, true, false, 400);
+			if(!path.empty() && (best.empty() || path.size() < best.size()))
+				best = path;
+		}
+	}
+	dirs.clear();
+	if(best.size() < 2)
+		return false;
+	std::list<Position>::iterator it = best.begin();
+	Position prev = *it;
+	for(++it; it != best.end(); ++it) {
+		int sx = it->x - prev.x, sy = it->y - prev.y;
+		dirs.push_back(sy < 0 ? NORTH : sy > 0 ? SOUTH : sx > 0 ? EAST : WEST);
+		prev = *it;
+	}
+	return true;
+}
+
+void Game::cancelPendingUse(Player* player)
+{
+	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::cancelPendingUse()");
+	player->pendingUseActive = false;
 }
 
 void Game::checkPlayerFollow(unsigned long id)
@@ -5753,7 +5799,7 @@ void Game::checkPlayerFollow(unsigned long id)
 		if(player->isRemoved)
 			return;
 
-		// a quiÈn: el follow explÌcito o, con modo perseguir, al que se est· atacando
+		// a qui√©n: el follow expl√≠cito o, con modo perseguir, al que se est√° atacando
 		unsigned long targetId = player->followCreatureId;
 		bool chasing = false;
 		if(targetId == 0 && player->isChasing() && player->attackedCreature != 0) {
@@ -5768,31 +5814,18 @@ void Game::checkPlayerFollow(unsigned long id)
 		int dy = target ? target->pos.y - player->pos.y : 0;
 		if(!target || target->isRemoved || target->pos.z != player->pos.z || std::abs(dx) > 8 || std::abs(dy) > 6) {
 			if(!chasing)
-				stopPlayerFollow(player, true);            // se fue de la pantalla, de piso o desapareciÛ
+				stopPlayerFollow(player, true);            // se fue de la pantalla, de piso o desapareci√≥
 			return;
 		}
 
 		if(std::abs(dx) <= 1 && std::abs(dy) <= 1) {
-			player->pathlist.clear();                    // ya est· al lado: quieto
+			player->pathlist.clear();                    // ya est√° al lado: quieto
 		}
 		else if(!(target->pos == player->followLastTarget) || player->eventAutoWalk == 0) {
-			// camino m·s corto a una casilla libre pegada al blanco
-			std::list<Position> best;
-			for(int ox = -1; ox <= 1; ox++) {
-				for(int oy = -1; oy <= 1; oy++) {
-					if(ox == 0 && oy == 0)
-						continue;
-					Position p(target->pos.x + ox, target->pos.y + oy, target->pos.z);
-					Tile* t = map->getTile(p);
-					if(!t || t->isBlocking(BLOCK_SOLID | BLOCK_PATHFIND) != RET_NOERROR)
-						continue;
-					std::list<Position> path = map->getPathTo(player, player->pos, p, true, false, 400);
-					if(!path.empty() && (best.empty() || path.size() < best.size()))
-						best = path;
-				}
-			}
+			std::list<Direction> dirs;
+			bool found = pathNextTo(player, target->pos, dirs);
 			player->followLastTarget = target->pos;
-			if(best.size() < 2) {
+			if(!found) {
 				if(!player->followNoWayShown) {
 					player->sendCancel("There is no way.");
 					player->followNoWayShown = true;
@@ -5800,14 +5833,6 @@ void Game::checkPlayerFollow(unsigned long id)
 			}
 			else {
 				player->followNoWayShown = false;
-				std::list<Direction> dirs;
-				std::list<Position>::iterator it = best.begin();
-				Position prev = *it;
-				for(++it; it != best.end(); ++it) {
-					int sx = it->x - prev.x, sy = it->y - prev.y;
-					dirs.push_back(sy < 0 ? NORTH : sy > 0 ? SOUTH : sx > 0 ? EAST : WEST);
-					prev = *it;
-				}
 				if(player->eventAutoWalk != 0)
 					player->pathlist = dirs;                 // ya camina: solo cambia el rumbo
 				else
@@ -5877,6 +5902,25 @@ bool Game::playerUseItem(Player *player, const Position& pos, const unsigned cha
 
 	if(player->isRemoved)
 		return false;
+
+	// de lejos, en el mismo piso y a la vista: camina hasta el lado y usa al llegar (como en Tibia)
+	player->pendingUseActive = false;
+	if(pos.x != 0xFFFF && pos.z == player->pos.z &&
+	   (std::abs(pos.x - player->pos.x) > 1 || std::abs(pos.y - player->pos.y) > 1) &&
+	   std::abs(pos.x - player->pos.x) <= 8 && std::abs(pos.y - player->pos.y) <= 6) {
+		std::list<Direction> dirs;
+		if(pathNextTo(player, pos, dirs)) {
+			if(player->followCreatureId != 0)
+				stopPlayerFollow(player, false);
+			player->pendingUseActive = true;
+			player->pendingUsePos = pos;
+			player->pendingUseStack = stackpos;
+			player->pendingUseItem = itemid;
+			player->pendingUseIndex = index;
+			playerAutoWalk(player, dirs);
+			return true;
+		}
+	}
 	actions.UseItem(player,pos,stackpos,itemid,index);
 	return true;
 }

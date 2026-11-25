@@ -147,6 +147,9 @@ Creature()
 	followCreatureId = 0;
 	eventFollow = 0;
 	followNoWayShown = false;
+	pendingUseActive = false;
+	pendingUseStack = pendingUseIndex = 0;
+	pendingUseItem = 0;
 	lastGoldenRingBonus = 0;
 	level      = 1;
 	experience = 180;

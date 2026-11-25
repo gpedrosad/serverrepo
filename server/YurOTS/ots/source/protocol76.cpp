@@ -603,6 +603,7 @@ void Protocol76::parseCancelMove(NetworkMessage &msg)
 {
 	game->playerSetAttackedCreature(player, 0);
 	game->stopPlayerFollow(player, false);           // Esc / "Stop Follow" del cliente
+	game->cancelPendingUse(player);
 
 	game->stopEvent(player->eventAutoWalk);
 	player->sendCancelWalk();
@@ -611,7 +612,7 @@ void Protocol76::parseCancelMove(NetworkMessage &msg)
 void Protocol76::parseModes(NetworkMessage &msg)
 {
 	player->setFightMode(msg.GetByte());
-	// 0xA0 trae también el modo perseguir (0 quieto, 1 perseguir) y el seguro; antes se ignoraba
+	// 0xA0 trae tambiÃ©n el modo perseguir (0 quieto, 1 perseguir) y el seguro; antes se ignoraba
 	// (si el paquete viniera corto, GetByte devuelve 0: quieto)
 	player->setChaseMode(msg.GetByte() == 1);
 	if(player->isChasing() && player->attackedCreature != 0)
@@ -636,6 +637,7 @@ void Protocol76::parseDebug(NetworkMessage &msg)
 void Protocol76::parseMoveByMouse(NetworkMessage &msg)
 {
 	game->stopPlayerFollow(player, false);          // caminar a mano corta el follow
+	game->cancelPendingUse(player);                 // y el "usar" de lejos pendiente
 	// first we get all directions...
 	std::list<Direction> path;
 	size_t numdirs = msg.GetByte();
@@ -671,6 +673,7 @@ void Protocol76::parseMoveByMouse(NetworkMessage &msg)
 void Protocol76::parseMoveNorth(NetworkMessage &msg)
 {
 	game->stopPlayerFollow(player, false);          // caminar a mano corta el follow
+	game->cancelPendingUse(player);                 // y el "usar" de lejos pendiente
 
 	if(game->stopEvent(player->eventAutoWalk)) {
 		player->sendCancelWalk();
@@ -685,6 +688,7 @@ void Protocol76::parseMoveNorth(NetworkMessage &msg)
 void Protocol76::parseMoveEast(NetworkMessage &msg)
 {
 	game->stopPlayerFollow(player, false);          // caminar a mano corta el follow
+	game->cancelPendingUse(player);                 // y el "usar" de lejos pendiente
 
 	if(game->stopEvent(player->eventAutoWalk)) {
 		player->sendCancelWalk();
@@ -699,6 +703,7 @@ void Protocol76::parseMoveEast(NetworkMessage &msg)
 void Protocol76::parseMoveSouth(NetworkMessage &msg)
 {
 	game->stopPlayerFollow(player, false);          // caminar a mano corta el follow
+	game->cancelPendingUse(player);                 // y el "usar" de lejos pendiente
 
 	if(game->stopEvent(player->eventAutoWalk)) {
 		player->sendCancelWalk();
@@ -713,6 +718,7 @@ void Protocol76::parseMoveSouth(NetworkMessage &msg)
 void Protocol76::parseMoveWest(NetworkMessage &msg)
 {
 	game->stopPlayerFollow(player, false);          // caminar a mano corta el follow
+	game->cancelPendingUse(player);                 // y el "usar" de lejos pendiente
 
 	if(game->stopEvent(player->eventAutoWalk)) {
 		player->sendCancelWalk();
@@ -727,6 +733,7 @@ void Protocol76::parseMoveWest(NetworkMessage &msg)
 void Protocol76::parseMoveNorthEast(NetworkMessage &msg)
 {
 	game->stopPlayerFollow(player, false);          // caminar a mano corta el follow
+	game->cancelPendingUse(player);                 // y el "usar" de lejos pendiente
 
 	if(game->stopEvent(player->eventAutoWalk)) {
 		player->sendCancelWalk();
@@ -742,6 +749,7 @@ void Protocol76::parseMoveNorthEast(NetworkMessage &msg)
 void Protocol76::parseMoveSouthEast(NetworkMessage &msg)
 {
 	game->stopPlayerFollow(player, false);          // caminar a mano corta el follow
+	game->cancelPendingUse(player);                 // y el "usar" de lejos pendiente
 
 	if(game->stopEvent(player->eventAutoWalk)) {
 		player->sendCancelWalk();
@@ -757,6 +765,7 @@ void Protocol76::parseMoveSouthEast(NetworkMessage &msg)
 void Protocol76::parseMoveSouthWest(NetworkMessage &msg)
 {
 	game->stopPlayerFollow(player, false);          // caminar a mano corta el follow
+	game->cancelPendingUse(player);                 // y el "usar" de lejos pendiente
 
 	if(game->stopEvent(player->eventAutoWalk)) {
 		player->sendCancelWalk();
@@ -772,6 +781,7 @@ void Protocol76::parseMoveSouthWest(NetworkMessage &msg)
 void Protocol76::parseMoveNorthWest(NetworkMessage &msg)
 {
 	game->stopPlayerFollow(player, false);          // caminar a mano corta el follow
+	game->cancelPendingUse(player);                 // y el "usar" de lejos pendiente
 
 	if(game->stopEvent(player->eventAutoWalk)) {
 		player->sendCancelWalk();

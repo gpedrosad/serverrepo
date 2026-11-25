@@ -232,12 +232,18 @@ public:
 	bool substractMoneyItem(Item *item, unsigned long money);
 
 	unsigned long eventAutoWalk;
-	// Follow (paquete 0xA2) y modo perseguir del ataque: a quién se sigue, el evento que recalcula el
-	// camino y dónde estaba el blanco la última vez (se recalcula solo si se movió). docs/gameplay/FOLLOW.md
+	// Follow (paquete 0xA2) y modo perseguir del ataque: a quiÃ©n se sigue, el evento que recalcula el
+	// camino y dÃ³nde estaba el blanco la Ãºltima vez (se recalcula solo si se moviÃ³). docs/gameplay/FOLLOW.md
 	unsigned long followCreatureId;
 	unsigned long eventFollow;
 	Position followLastTarget;
 	bool followNoWayShown;
+	// "Usar" de lejos (click derecho a una escalera, puerta, palanca...): el server camina hasta el lado y,
+	// al llegar, hace el use. docs/gameplay/FOLLOW.md
+	bool pendingUseActive;
+	Position pendingUsePos;
+	unsigned char pendingUseStack, pendingUseIndex;
+	unsigned short pendingUseItem;
 	void setChaseMode(bool chase) { followMode = chase ? 1 : 0; }   // byte de chase de 0xA0
 	bool isChasing() const { return followMode == 1; }
 
