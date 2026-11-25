@@ -252,6 +252,11 @@ public:
 	SpellCastResult creatureSaySpell(Creature *creature, const std::string &text);
 
 	void playerAutoWalk(Player* player, std::list<Direction>& path);
+	// Follow (0xA2) y modo perseguir: docs/gameplay/FOLLOW.md
+	void playerFollowCreature(Player* player, unsigned long creatureid);
+	void stopPlayerFollow(Player* player, bool notifyClient);
+	void ensurePlayerFollowEvent(Player* player);
+	void checkPlayerFollow(unsigned long id);
 	bool playerUseItemEx(Player *player, const Position& posFrom,const unsigned char  stack_from,
 		const Position &posTo,const unsigned char stack_to, const unsigned short itemid);
 	bool playerUseItem(Player *player, const Position& pos, const unsigned char stackpos, const unsigned short itemid, const unsigned char index);

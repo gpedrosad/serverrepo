@@ -2203,6 +2203,8 @@ bool Game::removeCreature(Creature* c)
 		}
 		if(player->eventAutoWalk)
 			stopEvent(player->eventAutoWalk);
+		if(player->eventFollow)
+			stopEvent(player->eventFollow);
 
 		g_chat.removeUserFromAllChannels(player);
 		if(!IOPlayer::instance()->savePlayer(player)){
@@ -5695,6 +5697,128 @@ void Game::playerAutoWalk(Player* player, std::list<Direction>& path)
 
 }
 
+// ---------------------------------------------------------------------------------------------- follow
+// "Follow" del cliente (0xA2) y modo perseguir del ataque (byte de chase de 0xA0). El server camina al jugador
+// hasta la casilla libre más cercana pegada al blanco y lo vuelve a calcular cada FOLLOW_TICK si el blanco se
+// movió. Seguir y atacar se excluyen, como en Tibia. Doc: docs/gameplay/FOLLOW.md
+static const int FOLLOW_TICK = 300;
+
+void Game::stopPlayerFollow(Player* player, bool notifyClient)
+{
+	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::stopPlayerFollow()");
+	bool wasFollowing = player->followCreatureId != 0;
+	player->followCreatureId = 0;
+	player->followNoWayShown = false;
+	if(player->eventFollow) {
+		stopEvent(player->eventFollow);
+		player->eventFollow = 0;
+	}
+	if(wasFollowing && notifyClient)
+		player->sendCancelAttacking();                 // 0xA3: el cliente saca el cuadrado del blanco
+}
+
+void Game::ensurePlayerFollowEvent(Player* player)
+{
+	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::ensurePlayerFollowEvent()");
+	if(player->eventFollow == 0)
+		player->eventFollow = addEvent(makeTask(50, std::bind2nd(std::mem_fun(&Game::checkPlayerFollow), player->getID())));
+}
+
+void Game::playerFollowCreature(Player* player, unsigned long creatureid)
+{
+	OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::playerFollowCreature()");
+	if(player->isRemoved)
+		return;
+	Creature* target = creatureid ? getCreatureByID(creatureid) : NULL;
+	if(!target || target == player || target->isRemoved || target->pos.z != player->pos.z) {
+		stopPlayerFollow(player, creatureid != 0);
+		return;
+	}
+	if(player->attackedCreature != 0)
+		playerSetAttackedCreature(player, 0);          // seguir cancela el ataque
+	player->followCreatureId = creatureid;
+	player->followLastTarget = Position(0xFFFF, 0xFFFF, 0xFF);
+	player->followNoWayShown = false;
+	ensurePlayerFollowEvent(player);
+}
+
+void Game::checkPlayerFollow(unsigned long id)
+{
+	{
+		OTSYS_THREAD_LOCK_CLASS lockClass(gameLock, "Game::checkPlayerFollow()");
+		Player* player = getPlayerByID(id);
+		if(!player)
+			return;
+		player->eventFollow = 0;
+		if(player->isRemoved)
+			return;
+
+		// a quién: el follow explícito o, con modo perseguir, al que se está atacando
+		unsigned long targetId = player->followCreatureId;
+		bool chasing = false;
+		if(targetId == 0 && player->isChasing() && player->attackedCreature != 0) {
+			targetId = player->attackedCreature;
+			chasing = true;
+		}
+		if(targetId == 0)
+			return;
+
+		Creature* target = getCreatureByID(targetId);
+		int dx = target ? target->pos.x - player->pos.x : 0;
+		int dy = target ? target->pos.y - player->pos.y : 0;
+		if(!target || target->isRemoved || target->pos.z != player->pos.z || std::abs(dx) > 8 || std::abs(dy) > 6) {
+			if(!chasing)
+				stopPlayerFollow(player, true);            // se fue de la pantalla, de piso o desapareció
+			return;
+		}
+
+		if(std::abs(dx) <= 1 && std::abs(dy) <= 1) {
+			player->pathlist.clear();                    // ya está al lado: quieto
+		}
+		else if(!(target->pos == player->followLastTarget) || player->eventAutoWalk == 0) {
+			// camino más corto a una casilla libre pegada al blanco
+			std::list<Position> best;
+			for(int ox = -1; ox <= 1; ox++) {
+				for(int oy = -1; oy <= 1; oy++) {
+					if(ox == 0 && oy == 0)
+						continue;
+					Position p(target->pos.x + ox, target->pos.y + oy, target->pos.z);
+					Tile* t = map->getTile(p);
+					if(!t || t->isBlocking(BLOCK_SOLID | BLOCK_PATHFIND) != RET_NOERROR)
+						continue;
+					std::list<Position> path = map->getPathTo(player, player->pos, p, true, false, 400);
+					if(!path.empty() && (best.empty() || path.size() < best.size()))
+						best = path;
+				}
+			}
+			player->followLastTarget = target->pos;
+			if(best.size() < 2) {
+				if(!player->followNoWayShown) {
+					player->sendCancel("There is no way.");
+					player->followNoWayShown = true;
+				}
+			}
+			else {
+				player->followNoWayShown = false;
+				std::list<Direction> dirs;
+				std::list<Position>::iterator it = best.begin();
+				Position prev = *it;
+				for(++it; it != best.end(); ++it) {
+					int sx = it->x - prev.x, sy = it->y - prev.y;
+					dirs.push_back(sy < 0 ? NORTH : sy > 0 ? SOUTH : sx > 0 ? EAST : WEST);
+					prev = *it;
+				}
+				if(player->eventAutoWalk != 0)
+					player->pathlist = dirs;                 // ya camina: solo cambia el rumbo
+				else
+					playerAutoWalk(player, dirs);
+			}
+		}
+		player->eventFollow = addEvent(makeTask(FOLLOW_TICK, std::bind2nd(std::mem_fun(&Game::checkPlayerFollow), id)));
+	}
+	flushSendBuffers();
+}
+
 bool Game::playerUseItemEx(Player *player, const Position& posFrom,const unsigned char  stack_from,
 		const Position &posTo,const unsigned char stack_to, const unsigned short itemid)
 {
@@ -6115,6 +6239,14 @@ void Game::playerSetAttackedCreature(Player* player, unsigned long creatureid)
 
 	if(player->attackedCreature != creatureid)
 		player->riftCombo.reset();
+
+	// atacar cancela el follow (el cliente ya lo saca de su lado); con modo perseguir, el follow va al blanco
+	if(creatureid != 0) {
+		if(player->followCreatureId != 0)
+			stopPlayerFollow(player, false);
+		if(player->isChasing())
+			ensurePlayerFollowEvent(player);
+	}
 
 	if(player->attackedCreature != 0 && creatureid == 0) {
 		player->sendCancelAttacking();

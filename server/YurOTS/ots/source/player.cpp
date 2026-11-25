@@ -144,6 +144,9 @@ Creature()
 	lightItem = 0;
 
 	eventAutoWalk = 0;
+	followCreatureId = 0;
+	eventFollow = 0;
+	followNoWayShown = false;
 	lastGoldenRingBonus = 0;
 	level      = 1;
 	experience = 180;

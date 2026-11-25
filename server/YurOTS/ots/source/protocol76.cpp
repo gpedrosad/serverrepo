@@ -282,6 +282,10 @@ void Protocol76::parsePacket(NetworkMessage &msg)
 		parseAttack(msg);
 		break;
 
+    case 0xA2: // follow (docs/gameplay/FOLLOW.md)
+		parseFollow(msg);
+		break;
+
 	case 0xA3: // invite party
 		parseInviteParty(msg);
 		break;
@@ -598,6 +602,7 @@ void Protocol76::sendOpenPriv(const std::string &receiver){
 void Protocol76::parseCancelMove(NetworkMessage &msg)
 {
 	game->playerSetAttackedCreature(player, 0);
+	game->stopPlayerFollow(player, false);           // Esc / "Stop Follow" del cliente
 
 	game->stopEvent(player->eventAutoWalk);
 	player->sendCancelWalk();
@@ -606,7 +611,11 @@ void Protocol76::parseCancelMove(NetworkMessage &msg)
 void Protocol76::parseModes(NetworkMessage &msg)
 {
 	player->setFightMode(msg.GetByte());
-
+	// 0xA0 trae también el modo perseguir (0 quieto, 1 perseguir) y el seguro; antes se ignoraba
+	// (si el paquete viniera corto, GetByte devuelve 0: quieto)
+	player->setChaseMode(msg.GetByte() == 1);
+	if(player->isChasing() && player->attackedCreature != 0)
+		game->ensurePlayerFollowEvent(player);
 }
 
 void Protocol76::parseDebug(NetworkMessage &msg)
@@ -626,6 +635,7 @@ void Protocol76::parseDebug(NetworkMessage &msg)
 
 void Protocol76::parseMoveByMouse(NetworkMessage &msg)
 {
+	game->stopPlayerFollow(player, false);          // caminar a mano corta el follow
 	// first we get all directions...
 	std::list<Direction> path;
 	size_t numdirs = msg.GetByte();
@@ -660,6 +670,7 @@ void Protocol76::parseMoveByMouse(NetworkMessage &msg)
 
 void Protocol76::parseMoveNorth(NetworkMessage &msg)
 {
+	game->stopPlayerFollow(player, false);          // caminar a mano corta el follow
 
 	if(game->stopEvent(player->eventAutoWalk)) {
 		player->sendCancelWalk();
@@ -673,6 +684,7 @@ void Protocol76::parseMoveNorth(NetworkMessage &msg)
 
 void Protocol76::parseMoveEast(NetworkMessage &msg)
 {
+	game->stopPlayerFollow(player, false);          // caminar a mano corta el follow
 
 	if(game->stopEvent(player->eventAutoWalk)) {
 		player->sendCancelWalk();
@@ -686,6 +698,7 @@ void Protocol76::parseMoveEast(NetworkMessage &msg)
 
 void Protocol76::parseMoveSouth(NetworkMessage &msg)
 {
+	game->stopPlayerFollow(player, false);          // caminar a mano corta el follow
 
 	if(game->stopEvent(player->eventAutoWalk)) {
 		player->sendCancelWalk();
@@ -699,6 +712,7 @@ void Protocol76::parseMoveSouth(NetworkMessage &msg)
 
 void Protocol76::parseMoveWest(NetworkMessage &msg)
 {
+	game->stopPlayerFollow(player, false);          // caminar a mano corta el follow
 
 	if(game->stopEvent(player->eventAutoWalk)) {
 		player->sendCancelWalk();
@@ -712,6 +726,7 @@ void Protocol76::parseMoveWest(NetworkMessage &msg)
 
 void Protocol76::parseMoveNorthEast(NetworkMessage &msg)
 {
+	game->stopPlayerFollow(player, false);          // caminar a mano corta el follow
 
 	if(game->stopEvent(player->eventAutoWalk)) {
 		player->sendCancelWalk();
@@ -726,6 +741,7 @@ void Protocol76::parseMoveNorthEast(NetworkMessage &msg)
 
 void Protocol76::parseMoveSouthEast(NetworkMessage &msg)
 {
+	game->stopPlayerFollow(player, false);          // caminar a mano corta el follow
 
 	if(game->stopEvent(player->eventAutoWalk)) {
 		player->sendCancelWalk();
@@ -740,6 +756,7 @@ void Protocol76::parseMoveSouthEast(NetworkMessage &msg)
 
 void Protocol76::parseMoveSouthWest(NetworkMessage &msg)
 {
+	game->stopPlayerFollow(player, false);          // caminar a mano corta el follow
 
 	if(game->stopEvent(player->eventAutoWalk)) {
 		player->sendCancelWalk();
@@ -754,6 +771,7 @@ void Protocol76::parseMoveSouthWest(NetworkMessage &msg)
 
 void Protocol76::parseMoveNorthWest(NetworkMessage &msg)
 {
+	game->stopPlayerFollow(player, false);          // caminar a mano corta el follow
 
 	if(game->stopEvent(player->eventAutoWalk)) {
 		player->sendCancelWalk();
@@ -1373,6 +1391,12 @@ void Protocol76::parseAttack(NetworkMessage &msg)
 {
 	unsigned long creatureid = msg.GetU32();
 	game->playerSetAttackedCreature(player, creatureid);
+}
+
+void Protocol76::parseFollow(NetworkMessage &msg)
+{
+	unsigned long creatureid = msg.GetU32();
+	game->playerFollowCreature(player, creatureid);
 }
 
 void Protocol76::parseTextWindow(NetworkMessage &msg)

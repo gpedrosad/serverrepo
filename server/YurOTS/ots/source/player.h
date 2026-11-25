@@ -232,6 +232,14 @@ public:
 	bool substractMoneyItem(Item *item, unsigned long money);
 
 	unsigned long eventAutoWalk;
+	// Follow (paquete 0xA2) y modo perseguir del ataque: a quién se sigue, el evento que recalcula el
+	// camino y dónde estaba el blanco la última vez (se recalcula solo si se movió). docs/gameplay/FOLLOW.md
+	unsigned long followCreatureId;
+	unsigned long eventFollow;
+	Position followLastTarget;
+	bool followNoWayShown;
+	void setChaseMode(bool chase) { followMode = chase ? 1 : 0; }   // byte de chase de 0xA0
+	bool isChasing() const { return followMode == 1; }
 
 	//items
 	containerLayout vcontainers;

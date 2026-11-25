@@ -86,6 +86,7 @@ private:
 	void parseLookAt(NetworkMessage &msg);
 	
 	void parseAttack(NetworkMessage &msg);
+	void parseFollow(NetworkMessage &msg);
 	
 	void parseThrow(NetworkMessage &msg);
 	void parseUseItemEx(NetworkMessage &msg);
