@@ -38,3 +38,10 @@ python3 scripts/generate-tp-gauntlet.py --replace
 docker compose -f docker-compose.prod.yml restart yurots   # mapa/spawns
 # Si cambió const76.h / item.cpp: rebuild C++ también
 ```
+
+## Fondo alrededor (24 nov 2026)
+
+Las salas flotaban en vacío negro (se veía desde todas). Se rellenó `440,32 – 498,87` z7 con el mismo fondo del
+gauntlet, "stranger dimension" `100` (bloquea), solo en casillas vacías:
+`python3.11 scripts/map/fill-void.py 440 32 498 87 7 --ground 100 --replace`. Queda fuera de la huella del
+generador (`449–489, 39–80`): regenerar el gauntlet no lo borra.
