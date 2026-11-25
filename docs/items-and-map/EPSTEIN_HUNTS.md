@@ -29,7 +29,9 @@ propio y variantes rage) pero sin spawn.
 | Monstruos | 21 spawns, 32 monstruos (17 Zombie, 15 Undead Gladiator): uno cada 36 casillas. Por etapas según la distancia desde la llegada: Zombie suelto → Zombie o Gladiator suelto → de a 2 mezclados → de a 2 casi todos Gladiators en el fondo. Spawntime de 120 a 210 s |
 
 Decoración de cementerio solo en el pasto entre el camino y la costa (árboles muertos, lápidas, ataúdes enterrados,
-cráneos); el camino de tierra nunca queda tapado.
+cráneos); el camino de tierra nunca queda tapado. Desde nov 2026 la paleta de árboles secos chicos ya no incluye el
+2715 (`DEAD_SMALL = (2713,)`): los 2715 se sacaron del mapa, ver
+[REMOVE_DEAD_TREE_2715_2026_11_24.md](REMOVE_DEAD_TREE_2715_2026_11_24.md).
 
 ![Puente y llegada](img/epstein-road/puente.png)
 
