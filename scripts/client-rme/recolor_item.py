@@ -11,6 +11,10 @@ Qué cambia: los píxeles de la placa (todo lo que no es oro ni brillo) toman el
 saturación por `--sat` y el brillo por `--val` (después de elevarlo a `--gamma`). El oro (tono 24-75° y
 claro) y los brillos casi blancos quedan iguales; con `--trim-hue` el oro pasa a plata de ese tono.
 Solo ítems de 1 sprite. Doc: docs/items-and-map/IMPORTAR_ITEM_DE_OTRA_VERSION.md.
+
+
+REEMPLAZADO (24 nov 2026) para 20161/20162: el PNG final lo escribe redesign_items.py --apply (forma propia).
+Correr este script pisa ese PNG con el recolor viejo.
 """
 from __future__ import annotations
 

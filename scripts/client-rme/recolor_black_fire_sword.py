@@ -17,6 +17,10 @@ La luz (flag .dat 0x15 + attr OTB 0x2A) la pone add_custom_items.py: violeta ten
 
 Escribe devtools/zagan-test/custom-sprites/black_fire_sword.png (32x64: cuadro 0 arriba, cuadro 1 abajo).
 Doc: docs/items-and-map/ZAGAN_TEST_ITEMS.md. Necesita Pillow (en la Mac: python3.11).
+
+
+REEMPLAZADO (24 nov 2026) para 20193: el PNG final lo escribe redesign_items.py --apply (forma propia).
+Correr este script pisa ese PNG con el recolor viejo.
 """
 from __future__ import annotations
 

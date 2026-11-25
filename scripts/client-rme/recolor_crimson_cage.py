@@ -11,6 +11,10 @@
 
 Los PNG los instala add_custom_items.py (crimson cage rune 20273, crimson cage wall 20274). Doc:
 docs/gameplay/CRIMSON_CAGE_RUNE.md. Necesita Pillow (en la Mac: python3.11).
+
+
+REEMPLAZADO (24 nov 2026) para 20273: el PNG final lo escribe redesign_items.py --apply (forma propia).
+Correr este script pisa ese PNG con el recolor viejo.
 """
 from __future__ import annotations
 

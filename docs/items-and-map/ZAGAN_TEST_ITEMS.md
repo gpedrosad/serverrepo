@@ -31,6 +31,10 @@ Se revisaron los 66 ítems desde `20100` comparando nombre, tipo, stats y dibujo
 
 ![Los 38 dibujos nuevos: el ítem base (chico) y el resultado](img/zagan-items-recolor.png)
 
+> **24 nov 2026:** los 38 recolores (y las crown armors, el aurora shield, la black fire sword y dos runas)
+> se rediseñaron con forma propia: ver [ITEMS_REDESIGN_2026_11_24.md](ITEMS_REDESIGN_2026_11_24.md).
+> `recolor_zagan_items.py --apply` ya escribe el dibujo nuevo.
+
 - **Dibujos:** `python3.11 scripts/client-rme/recolor_zagan_items.py --preview hoja.png` para mirar y
   `--apply devtools/rme/rme-client-760` para escribir. La tabla `ITEMS` del script dice qué ítem vanilla usa
   cada uno y con qué color. Escribe en el client id que el ítem ya tiene; el OTB no cambia. Ningún ítem vanilla

@@ -9,6 +9,10 @@ se ve coincida con lo que es.
   python3.11 scripts/client-rme/recolor_zagan_items.py --preview /tmp/zagan.png
   python3.11 scripts/client-rme/recolor_zagan_items.py --apply devtools/rme/rme-client-760
 
+REEMPLAZADO (24 nov 2026): los dibujos finales salen de redesign_items.py (forma propia, no solo color). Este
+script queda como fuente del recolor viejo (redesign_items usa la copia guardada en
+docs/items-and-map/img/items-redesign/old/) y su --apply ya escribe el dibujo nuevo.
+
 Escribe en el client id que cada ítem ya tiene en items-zagan-test.otb (el OTB no cambia), con los flags del
 .dat del ítem base. Re-aplicar reemplaza los sprites en el lugar. Ningún ítem vanilla en uso comparte esos
 client ids (comprobado contra el mapa, el loot y los NPC).
@@ -147,6 +151,15 @@ def base_pixels(base_sid: int):
 
 
 def render(sid: int) -> Image.Image:
+    """Desde el 24 nov 2026 los 38 tienen dibujo propio en redesign_items.py; --apply escribe ese dibujo y no
+    el recolor (para no volver atrás). El recolor sigue disponible con render_recolor()."""
+    import redesign_items as RD  # noqa: PLC0415
+    if sid in RD.ITEMS:
+        return RD.render(sid)
+    return render_recolor(sid)
+
+
+def render_recolor(sid: int) -> Image.Image:
     if sid not in _CACHE:
         _name, base_sid, opts = ITEMS[sid]
         img = Image.new("RGBA", (32, 32))
@@ -168,7 +181,7 @@ def preview(path: Path, names: dict[int, str], only: list[int] | None) -> None:
         old = Image.new("RGBA", (32, 32))
         old.putdata(base_pixels(ITEMS[sid][1]))
         sheet.alpha_composite(old, (x + 6, y + 8))
-        sheet.alpha_composite(render(sid).resize((32 * scale, 32 * scale), Image.NEAREST), (x + 44, y + 4))
+        sheet.alpha_composite(render_recolor(sid).resize((32 * scale, 32 * scale), Image.NEAREST), (x + 44, y + 4))
         draw.text((x + 4, y + 102), str(sid), fill=(190, 210, 215, 255))
         draw.text((x + 4, y + 114), names.get(sid, ITEMS[sid][0])[:24], fill=(255, 255, 255, 255))
     sheet.save(path)

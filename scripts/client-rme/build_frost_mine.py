@@ -3,6 +3,10 @@
 
 Install with add_custom_items.py --only 20369 20370 --things devtools/rme/rme-client-760.
 Uses the current canonical DAT/SPR and OTB; never rebuilds old assets.
+
+
+REEMPLAZADO (24 nov 2026) para la runa 20369: frost_mine_rune.png lo escribe redesign_items.py --apply
+(forma propia). Correr este script pisa ese PNG con el recolor viejo; el fuego (frost_mine_fire.png) no cambia.
 """
 from pathlib import Path
 import colorsys
