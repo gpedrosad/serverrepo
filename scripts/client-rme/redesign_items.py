@@ -2,8 +2,8 @@
 """Rediseño de los ítems que eran un recolor de un ítem vanilla (24 nov 2026).
 
 Gonzalo: "hay muchos items que solo les cambiaste el color, y quedaron cambios mínimos como la nueva dragon
-lance". Este script reemplaza el sprite de 42 de esos 44 ítems (el aurora shield 20165 y el starbinder hood 20118
-volvieron a su dibujo por pedido de Gonzalo) por uno con forma propia. Dos maneras:
+lance". Este script reemplaza el sprite de 40 de esos 44 ítems (aurora shield 20165, starbinder hood 20118, imperial
+crown armor 20161 y sapphire crown armor 20162 volvieron a su dibujo por pedido de Gonzalo) por uno con forma propia. Dos maneras:
 
 - Desde cero con el motor de draw_zagan_items.py (piezas a 4x con volumen, luz arriba-izquierda, contorno):
   armas, runas, gemas, orbe y amuletos.
@@ -19,7 +19,7 @@ cambio; así el script se puede repetir sin acumular). La lista sale de find_rec
 
 --apply reemplaza en el lugar los sprites que ya tiene cada client id (todos tienen un único dueño): no cambia
 el .dat, ni la cantidad de sprites del .spr, ni el OTB, ni ningún id. También escribe los PNG de
-devtools/zagan-test/custom-sprites que usa add_custom_items.py (crown armors, black fire sword,
+devtools/zagan-test/custom-sprites que usa add_custom_items.py (black fire sword,
 crimson cage rune, frost mine rune) para que reinstalar no vuelva al dibujo viejo.
 Doc: docs/items-and-map/ITEMS_REDESIGN_2026_11_24.md
 """
@@ -865,46 +865,6 @@ def obsidian_regalia():
     return h.render()
 
 
-def imperial_crown_armor():
-    h = Hybrid(20161)
-    b = h.back
-    crown = P((9.4, 7.0), (9.0, 0.4), (12.4, 3.4), (16.0, -0.6), (19.6, 3.4), (23.0, 0.4), (22.6, 7.0))
-    b.add(crown, Z.GOLD, bevel=1.1, profile="ridge")
-    for sx in (-1, 1):  # alas doradas en las hombreras
-        h.front.add(poly_xy([(16 + 11.0 * sx, 7.0), (16 + 16.2 * sx, 0.6), (16 + 15.0 * sx, 5.0), (16 + 16.4 * sx, 6.4),
-                       (16 + 13.6 * sx, 8.4)]), Z.GOLD, bevel=1.0,
-              profile="ridge")
-    f = h.front
-    for x, y in ((9.4, 1.0), (16.0, 0.2), (22.6, 1.0)):
-        f.add(disc(x, y + 0.6, 0.95), Z.RUBY, bevel=0.95)
-    tabard = P((12.6, 18.0), (19.4, 18.0), (19.4, 28.6), (16.0, 31.4), (12.6, 28.6))
-    f.add(tabard, Z.NECRO, bevel=1.2)
-    f.add(tabard & ~P((13.6, 19.0), (18.4, 19.0), (18.4, 28.0), (16.0, 30.0), (13.6, 28.0)), Z.GOLD, bevel=0.5)
-    f.glow(star(16.0, 24.0, 2.4, 0.8, n=4), (255, 236, 150))
-    f.add(disc(16.0, 13.6, 2.8), Z.AMETHYST, bevel=2.8, height=1.3)
-    f.add(ring(16.0, 13.6, 3.4, 0.5), Z.GOLD, bevel=0.5)
-    sparkle(f, 15, 12)
-    return h.render()
-
-
-def sapphire_crown_armor():
-    h = Hybrid(20162)
-    b = h.back
-    for cx in (5.0, 27.0):
-        for dx, ht, w in ((-3.2, 4.0, 1.8), (0.0, -0.4, 2.2), (3.0, 2.6, 1.8)):
-            h.front.add(P((cx + dx - w, 8.4), (cx + dx, ht), (cx + dx + w, 8.4)), Z.SAPPHIRE, bevel=1.2,
-                        profile="ridge")
-    for sx in (-1, 1):
-        b.add(P((16 + 11.6 * sx, 18.0), (16 + 16.2 * sx, 21.0), (16 + 11.6 * sx, 24.0)), Z.ICE, bevel=0.9,
-              profile="ridge")
-    f = h.front
-    f.add(P((16.0, 10.0), (20.2, 15.6), (16.0, 21.4), (11.8, 15.6)), Z.ICE, bevel=2.6, profile="ridge")
-    h.paint.glow((polyline([(16.0, 21.6), (16.0, 29.0)], 0.5) | polyline([(9.0, 23.0), (16.0, 26.4), (23.0, 23.0)], 0.45))
-                 & h.inner(1), (190, 236, 255))
-    sparkle(f, 15, 12, big=True)
-    return h.render()
-
-
 # ================================================================== PIERNAS Y BOTAS
 
 def basalt_greaves():
@@ -1014,8 +974,6 @@ ITEMS: dict[int, tuple[str, object, str]] = {
     20145: ("tiled_breastplate", tiled_breastplate, "Pecho de azulejos, medallón de oro con zafiro, púas de oro en las hombreras."),
     20146: ("quarryguard_armor", quarryguard_armor, "Hombreras de granito con punta y runa cian brillante en el pecho."),
     20147: ("obsidian_regalia", obsidian_regalia, "Cristales de obsidiana saliendo de los hombros y núcleo de amatista con anillo de luz."),
-    20161: ("imperial_crown_armor", imperial_crown_armor, "Corona de oro con rubíes en el cuello, amatista central y púas de oro."),
-    20162: ("sapphire_crown_armor", sapphire_crown_armor, "Racimos de zafiro en los hombros, rombo de hielo central y ribete brillante."),
     20104: ("basalt_greaves", basalt_greaves, "Púas en las rodillas, vetas de lava dorada, cinturón de oro con rubí."),
     20116: ("marcher_leggings", marcher_leggings, "Rodilleras y canilleras de acero, cinturón de cuero con hebilla de oro."),
     20117: ("cordovan_leggings", cordovan_leggings, "Cinturón con hebilla, cordones dorados cruzados y puños anchos."),
@@ -1024,8 +982,7 @@ ITEMS: dict[int, tuple[str, object, str]] = {
 }
 
 # PNG que instala add_custom_items.py
-CUSTOM_PNG = {20161: "imperial_crown_armor.png", 20162: "sapphire_crown_armor.png",
-              20193: "black_fire_sword.png", 20273: "crimson_cage_rune.png", 20369: "frost_mine_rune.png"}
+CUSTOM_PNG = {20193: "black_fire_sword.png", 20273: "crimson_cage_rune.png", 20369: "frost_mine_rune.png"}
 
 _CACHE: dict[int, list[Image.Image]] = {}
 

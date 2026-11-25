@@ -3,11 +3,11 @@
 Gonzalo: *"Hay muchos items que solo les cambiaste el color, y quedaron cambios mínimos como la nueva dragon
 lance. Modificalos y que se noten más los cambios."*
 
-44 ítems tenían exactamente la silueta y el sombreado de un ítem vanilla, solo con otro tono. Ahora 42
+44 ítems tenían exactamente la silueta y el sombreado de un ítem vanilla, solo con otro tono. Ahora 40
 tienen forma propia: puntas, alas, gemas, hombreras, llamas, grabados o un dibujo nuevo desde cero. Los ids no
 cambian (server id, client id, OTB, `.dat`): solo se reemplazan en el lugar los sprites del `Tibia.spr`.
 
-![Antes (recolor) y después, los 42](img/items-redesign/00_todos.png)
+![Antes (recolor) y después, los 40](img/items-redesign/00_todos.png)
 
 ![Reachbrand lance: original 7.6, recolor viejo y nueva](img/items-redesign/20119_reachbrand_lance.png)
 
@@ -24,8 +24,9 @@ Quedaron afuera a propósito (también los marca, pero no son ítems de inventar
 - Cadáveres, paredes, ventanas, barandas, piso, trofeos, candelabros, tapices, lava, árboles, regalos de nivel:
   decoración o terreno, no ítems de equipo.
 
-> **Aurora shield (20165) y Starbinder hood (20118):** también se rediseñaron, pero Gonzalo pidió dejarlos
-> como estaban. Volvieron al dibujo anterior (aurora: borde dorado y campo violeta, sprite 11741; hood: mystic turban violeta, sprite 11711) y `redesign_items.py` ya no los toca.
+> **Aurora shield (20165), Starbinder hood (20118), Imperial crown armor (20161) y Sapphire crown armor (20162):**
+> también se rediseñaron, pero Gonzalo pidió dejarlos como estaban. Volvieron al dibujo anterior (sprites 11741,
+> 11711, 11496 y 11497; los PNG de custom-sprites también) y `redesign_items.py` ya no los toca.
 
 ## Lista (server id, nombre, base vanilla, qué cambió)
 
@@ -68,8 +69,6 @@ Todos tenían silueta 1.00 y brillo 0.82–1.00 contra la base antes del cambio.
 | 20145 | tiled breastplate | brass armor | Pecho de azulejos, medallón de oro con zafiro, púas de oro |
 | 20146 | quarryguard armor | dark armor | Hombreras de granito con punta, runa cian en el pecho |
 | 20147 | obsidian regalia | magic plate armor | Cristales de obsidiana en los hombros, núcleo de amatista |
-| 20161 | imperial crown armor | crown armor | Corona de oro con rubíes en el cuello, amatista central, púas de oro |
-| 20162 | sapphire crown armor | crown armor | Racimos de zafiro en los hombros, rombo de hielo, ribete brillante |
 | 20104 | basalt greaves | plate legs | Púas en las rodillas, vetas de lava dorada, cinturón de oro con rubí |
 | 20116 | marcher leggings | chain trousers | Rodilleras y canilleras de hierro, cinturón con hebilla |
 | 20117 | cordovan leggings | leather trousers | Cinturón con hebilla, cordones cruzados, puños anchos |
@@ -92,22 +91,20 @@ python3.11 scripts/client-rme/redesign_items.py --apply devtools/rme/rme-client-
   planos sin contorno (`paint`) y recortes que cambian la silueta (`erase`, que repone el contorno).
 - Fuente del dibujo viejo: `docs/items-and-map/img/items-redesign/old/<sid>.png` (copia del cliente antes del
   cambio), así se puede repetir sin acumular. `base/` tiene el vanilla y `new/` el resultado.
-- `--apply` reemplaza en el lugar los sprites que ya tiene cada client id (los 43 sprites tienen un único
+- `--apply` reemplaza en el lugar los sprites que ya tiene cada client id (los 41 sprites tienen un único
   dueño; si no, aborta). No cambia el `.dat`, la cantidad de sprites (15736), el OTB ni ningún id.
-- También escribe los PNG que reinstala `add_custom_items.py` (`imperial_crown_armor`, `sapphire_crown_armor`,
-  `black_fire_sword`, `crimson_cage_rune`, `frost_mine_rune`).
+- También escribe los PNG que reinstala `add_custom_items.py` (`black_fire_sword`, `crimson_cage_rune`, `frost_mine_rune`).
 - `recolor_zagan_items.py --apply` ahora escribe el dibujo nuevo (no vuelve al recolor).
   `recolor_black_fire_sword.py`, `recolor_crimson_cage.py`, `recolor_item.py` y `build_frost_mine.py` tienen
   una nota: si se corren, pisan el PNG con el recolor viejo.
 
 ## Verificación
 
-- `Tibia.dat` sin cambios (md5 `17855f84…`). En `Tibia.spr` cambiaron exactamente los 43 sprites esperados
-  (42 ítems; la black fire sword tiene 2 cuadros); los 15736 sprites decodifican; cada sprite escrito es
+- `Tibia.dat` sin cambios (md5 `17855f84…`). En `Tibia.spr` cambiaron exactamente los 41 sprites esperados
+  (40 ítems; la black fire sword tiene 2 cuadros); los 15736 sprites decodifican; cada sprite escrito es
   idéntico píxel a píxel al dibujo.
-- `find_recolor_items.py` después del cambio: ninguno de los 42 sale como recolor (todos con brillo < 0.80 o
-  silueta < 0.90 contra su base; las crown armors, que eran las más parecidas, quedaron en 0.91/0.69 y
-  0.85/0.60). Las runas aparecen "parecidas" a ítems vanilla llamados *dirt*: son client ids sacrificados que
+- `find_recolor_items.py` después del cambio: ninguno de los 40 sale como recolor (todos con brillo < 0.80 o
+  silueta < 0.90 contra su base). Las runas aparecen "parecidas" a ítems vanilla llamados *dirt*: son client ids sacrificados que
   hoy muestran otra runa custom (comparten forma de piedra entre ellas), no un recolor de una runa 7.6.
 
 ## Pendiente (con OK de Gonzalo)
