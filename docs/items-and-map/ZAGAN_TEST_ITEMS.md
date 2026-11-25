@@ -34,8 +34,8 @@ Se revisaron los 66 ítems desde `20100` comparando nombre, tipo, stats y dibujo
 > **24 nov 2026:** 37 de los 38 recolores (todos menos el starbinder hood 20118, que quedó igual; y la black fire sword y dos runas)
 > se rediseñaron con forma propia: ver [ITEMS_REDESIGN_2026_11_24.md](ITEMS_REDESIGN_2026_11_24.md).
 > `recolor_zagan_items.py --apply` ya escribe el dibujo nuevo.
-> **25 nov 2026:** las armas (reachbrand lance, rift hammer, granite mace, boltworker crossbow y black fire sword)
-> volvieron a su dibujo anterior; `recolor_zagan_items.py --apply` les escribe el recolor de siempre.
+> **25 nov 2026:** el rediseño se volvió atrás entero (los 44 ítems tienen otra vez su dibujo anterior);
+> `recolor_zagan_items.py --apply` vuelve a escribir el recolor de siempre.
 
 - **Dibujos:** `python3.11 scripts/client-rme/recolor_zagan_items.py --preview hoja.png` para mirar y
   `--apply devtools/rme/rme-client-760` para escribir. La tabla `ITEMS` del script dice qué ítem vanilla usa

@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Rediseño de los ítems que eran un recolor de un ítem vanilla (24 nov 2026).
+"""Rediseño de los ítems que eran un recolor de un ítem vanilla (24 nov 2026). RETIRADO el 25 nov 2026.
+
+Gonzalo pidió volver atrás todo el rediseño ("quedaron muy feos"): los 44 ítems volvieron a su dibujo anterior y
+este script ya no se aplica (main sale con error salvo --force, solo para mirar). Queda como historia.
 
 Gonzalo: "hay muchos items que solo les cambiaste el color, y quedaron cambios mínimos como la nueva dragon
 lance". Este script reemplaza el sprite de 35 de esos 44 ítems por uno con forma propia. Volvieron a su dibujo por
@@ -942,7 +945,15 @@ def apply(things: Path, only: list[int] | None = None) -> None:
     print(f"sprites reemplazados en el lugar; total sin cambios: {spr.sprite_count}")
 
 
+FORCE_FLAG = "--force"
+
+
 def main() -> int:
+    if not FORCE_FLAG in sys.argv:
+        print("RETIRADO (25 nov 2026): Gonzalo pidió volver atrás todo el rediseño; los 44 ítems tienen otra vez su\n"
+              "dibujo anterior (recolor_zagan_items.py / add_custom_items.py). Para mirar el rediseño igual: --force.")
+        return 1
+    sys.argv.remove(FORCE_FLAG)
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--sheets", type=Path, help="carpeta para las hojas por ítem y la general")
     ap.add_argument("--png-dir", type=Path)

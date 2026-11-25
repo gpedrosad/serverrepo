@@ -9,9 +9,8 @@ se ve coincida con lo que es.
   python3.11 scripts/client-rme/recolor_zagan_items.py --preview /tmp/zagan.png
   python3.11 scripts/client-rme/recolor_zagan_items.py --apply devtools/rme/rme-client-760
 
-REEMPLAZADO (24 nov 2026): los dibujos finales salen de redesign_items.py (forma propia, no solo color). Este
-script queda como fuente del recolor viejo (redesign_items usa la copia guardada en
-docs/items-and-map/img/items-redesign/old/) y su --apply ya escribe el dibujo nuevo.
+(24-25 nov 2026) Hubo un rediseño con forma propia (redesign_items.py) que Gonzalo pidió volver atrás entero:
+este script vuelve a ser la fuente de los dibujos y su --apply escribe el recolor.
 
 Escribe en el client id que cada ítem ya tiene en items-zagan-test.otb (el OTB no cambia), con los flags del
 .dat del ítem base. Re-aplicar reemplaza los sprites en el lugar. Ningún ítem vanilla en uso comparte esos
@@ -151,11 +150,7 @@ def base_pixels(base_sid: int):
 
 
 def render(sid: int) -> Image.Image:
-    """Desde el 24 nov 2026 los 38 tienen dibujo propio en redesign_items.py; --apply escribe ese dibujo y no
-    el recolor (para no volver atrás). El recolor sigue disponible con render_recolor()."""
-    import redesign_items as RD  # noqa: PLC0415
-    if sid in RD.ITEMS:
-        return RD.render(sid)
+    """El recolor (el rediseño de redesign_items.py se volvió atrás el 25 nov 2026)."""
     return render_recolor(sid)
 
 

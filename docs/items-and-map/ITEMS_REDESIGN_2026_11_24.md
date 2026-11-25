@@ -1,5 +1,11 @@
 # Rediseño de ítems que eran solo un recolor (24 nov 2026)
 
+> **REVERTIDO ENTERO (25 nov 2026).** Gonzalo: *"quedaron muy feos"*. Los 44 ítems volvieron a su dibujo anterior:
+> sus sprites se copiaron del `Tibia.spr` de antes de `93e90ebd` (mismo lugar, mismos ids; 35 sprites el 25 nov más
+> las armas y los 4 de antes), y `crimson_cage_rune.png` / `frost_mine_rune.png` / `black_fire_sword.png` también.
+> `redesign_items.py` quedó retirado (sale con error salvo `--force`) y `recolor_zagan_items.py --apply` vuelve a
+> escribir el recolor (comprobado: los 38 coinciden píxel por píxel con el cliente). Lo de abajo queda como historia.
+
 Gonzalo: *"Hay muchos items que solo les cambiaste el color, y quedaron cambios mínimos como la nueva dragon
 lance. Modificalos y que se noten más los cambios."*
 
