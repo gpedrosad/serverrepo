@@ -2,8 +2,8 @@
 """Rediseño de los ítems que eran un recolor de un ítem vanilla (24 nov 2026).
 
 Gonzalo: "hay muchos items que solo les cambiaste el color, y quedaron cambios mínimos como la nueva dragon
-lance". Este script reemplaza el sprite de 43 de esos 44 ítems (el aurora shield 20165 volvió a su dibujo por pedido de
-Gonzalo) por uno con forma propia. Dos maneras:
+lance". Este script reemplaza el sprite de 42 de esos 44 ítems (el aurora shield 20165 y el starbinder hood 20118
+volvieron a su dibujo por pedido de Gonzalo) por uno con forma propia. Dos maneras:
 
 - Desde cero con el motor de draw_zagan_items.py (piezas a 4x con volumen, luz arriba-izquierda, contorno):
   armas, runas, gemas, orbe y amuletos.
@@ -752,21 +752,6 @@ def morlen_crest():
     return h.render()
 
 
-def starbinder_hood():
-    h = Hybrid(20118)
-    b = h.back
-    moon = disc(24.8, 6.6, 5.0) & ~disc(27.4, 4.8, 4.4)
-    b.add(moon, Z.GOLD, bevel=1.2)
-    f = h.front
-    f.glow(star(12.4, 7.8, 3.8, 1.0, n=4), (255, 255, 240), (255, 210, 110))
-    f.add(capsule(7.4, 24.0, 6.0, 28.6, 0.35), Z.GOLD, bevel=0.3)
-    f.glow(star(5.8, 29.4, 2.4, 0.8, n=4), (255, 240, 170))
-    for x, y in ((3, 5), (6, 2), (19, 1), (29, 13), (1, 12)):
-        f.dot(x, y, (230, 210, 255))
-    f.dot(29, 1, (255, 255, 255))
-    return h.render()
-
-
 def fox_machina_helmet():
     h = Hybrid(20152)
     b = h.back
@@ -1022,7 +1007,6 @@ ITEMS: dict[int, tuple[str, object, str]] = {
     20151: ("sunforge_shield", sunforge_shield, "Sol: disco más chico con doce rayos dorados alrededor y núcleo encendido."),
     20153: ("frostwarden_aegis", frostwarden_aegis, "Esquirlas de hielo a los lados y arriba, copo de nieve brillante."),
     20102: ("morlen_crest", morlen_crest, "Alas plateadas a los costados, cresta de jade y gema en la frente."),
-    20118: ("starbinder_hood", starbinder_hood, "Luna creciente de oro, estrella en la frente, dije de estrella y destellos."),
     20152: ("fox_machina_helmet", fox_machina_helmet, "Orejas de zorro con interior naranja y respiraderos con luz verde."),
     20103: ("ashlar_plate", ashlar_plate, "Hombreras de bloque de arenisca, juntas de sillar en el pecho y gema ámbar."),
     20109: ("rubbleguard_mail", rubbleguard_mail, "Hombreras de roca, cinturón con piedra, piedras incrustadas y borde inferior en zigzag."),

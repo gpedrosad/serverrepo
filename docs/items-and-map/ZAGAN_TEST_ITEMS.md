@@ -31,7 +31,7 @@ Se revisaron los 66 ítems desde `20100` comparando nombre, tipo, stats y dibujo
 
 ![Los 38 dibujos nuevos: el ítem base (chico) y el resultado](img/zagan-items-recolor.png)
 
-> **24 nov 2026:** los 38 recolores (y las crown armors, la black fire sword y dos runas)
+> **24 nov 2026:** 37 de los 38 recolores (todos menos el starbinder hood 20118, que quedó igual; y las crown armors, la black fire sword y dos runas)
 > se rediseñaron con forma propia: ver [ITEMS_REDESIGN_2026_11_24.md](ITEMS_REDESIGN_2026_11_24.md).
 > `recolor_zagan_items.py --apply` ya escribe el dibujo nuevo.
 
