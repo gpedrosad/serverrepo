@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Etiqueta cada pieza con DeepSeek (OpenRouter), solo con salida JSON validada.
+"""Etiqueta cada pieza con DeepSeek (OpenRouter) o Claude (Anthropic), solo con salida JSON validada.
 
 Entrada: facts.json (extract_facts.py) + sprite + recorte del mapa donde se usa.
 Salida:  docs/items-and-map/map-kb/.cache/labels/<id>.json (una por pieza, reanudable)
@@ -7,6 +7,7 @@ Salida:  docs/items-and-map/map-kb/.cache/labels/<id>.json (una por pieza, reanu
 Uso:
   OPENROUTER_KEY_FILE=/ruta/key python3 label_deepseek.py [--ids 406,407] [--limit N]
          [--workers 32] [--model deepseek/deepseek-v4-flash-vision-exp] [--only-used] [--force]
+  ANTHROPIC_KEY_FILE=/ruta/key python3 label_deepseek.py --provider anthropic [--model claude-haiku-5-5]
 """
 from __future__ import annotations
 
@@ -24,6 +25,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from mapdata import KB_DIR, Renderer, load_tiles, png_bytes
 
 API = "https://openrouter.ai/api/v1/chat/completions"
+ANTHROPIC_API = "https://api.anthropic.com/v1/chat/completions"  # endpoint de Anthropic compatible con OpenAI
+PROVIDER = "openrouter"  # lo cambia --provider
 CACHE = KB_DIR / ".cache" / "labels"
 SCHEMA_VERSION = "labels.v1"
 
@@ -138,16 +141,20 @@ def ids_in(f: dict) -> set[int]:
 
 
 def call(key: str, model: str, messages: list, use_schema: bool, effort: str | None = None) -> tuple[dict, dict]:
-    body = {"model": model, "messages": messages, "temperature": 0.1, "max_tokens": 12000,
-            "usage": {"include": True}}
-    if effort:
-        body["reasoning"] = {"effort": effort}
+    if PROVIDER == "anthropic":
+        # Claude 5.x no acepta temperature; el costo sale de los créditos de la org (no viene en usage).
+        body = {"model": model, "messages": messages, "max_tokens": 12000}
+    else:
+        body = {"model": model, "messages": messages, "temperature": 0.1, "max_tokens": 12000,
+                "usage": {"include": True}}
+        if effort:
+            body["reasoning"] = {"effort": effort}
     if use_schema:
         body["response_format"] = {"type": "json_schema",
                                    "json_schema": {"name": "map_piece", "strict": True, "schema": SCHEMA}}
     else:
         body["response_format"] = {"type": "json_object"}
-    req = urllib.request.Request(API, data=json.dumps(body).encode(), headers={
+    req = urllib.request.Request(ANTHROPIC_API if PROVIDER == "anthropic" else API, data=json.dumps(body).encode(), headers={
         "Authorization": f"Bearer {key}", "Content-Type": "application/json",
         "X-Title": "serverrepo map-kb"})
     with urllib.request.urlopen(req, timeout=180) as r:
@@ -208,7 +215,8 @@ def main() -> None:
     ap.add_argument("--ids")
     ap.add_argument("--limit", type=int)
     ap.add_argument("--workers", type=int, default=32)
-    ap.add_argument("--model", default="deepseek/deepseek-v4-flash-vision-exp")
+    ap.add_argument("--provider", choices=["openrouter", "anthropic"], default="openrouter")
+    ap.add_argument("--model")
     ap.add_argument("--no-vision", action="store_true")
     ap.add_argument("--only-used", action="store_true")
     ap.add_argument("--force", action="store_true")
@@ -216,10 +224,15 @@ def main() -> None:
     ap.add_argument("--effort", choices=["low", "medium", "high"])
     a = ap.parse_args()
 
-    key_file = os.environ.get("OPENROUTER_KEY_FILE")
-    key = open(key_file).read().strip() if key_file else os.environ.get("OPENROUTER_API_KEY", "")
+    global PROVIDER
+    PROVIDER = a.provider
+    pre = "ANTHROPIC" if PROVIDER == "anthropic" else "OPENROUTER"
+    if not a.model:
+        a.model = "claude-haiku-5-5" if PROVIDER == "anthropic" else "deepseek/deepseek-v4-flash-vision-exp"
+    key_file = os.environ.get(f"{pre}_KEY_FILE")
+    key = open(key_file).read().strip() if key_file else os.environ.get(f"{pre}_API_KEY", "")
     if not key:
-        sys.exit("falta OPENROUTER_KEY_FILE u OPENROUTER_API_KEY")
+        sys.exit(f"falta {pre}_KEY_FILE u {pre}_API_KEY")
 
     facts = json.loads((KB_DIR / "facts.json").read_text())["items"]
     names = {int(k): v["name"] for k, v in facts.items()}

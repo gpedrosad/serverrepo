@@ -24,7 +24,7 @@ a la derecha). DeepSeek flash sí ve imágenes vía opencode. Marca `pass: 2`, g
 `label_opencode.py` llama `opencode run -m opencode-go/deepseek-v4.1-flash` en una carpeta
 temporal sin herramientas (sin shell, sin editar), de a 15 piezas por pedido, y valida cada
 respuesta contra el esquema. Solo texto (flash no ve imágenes): confianza máx 0,8.
-`label_deepseek.py` (OpenRouter, con sprites) queda como referencia; no usarlo.
+`label_deepseek.py` (OpenRouter o, con `--provider anthropic`, Claude directo con los créditos de Anthropic; con sprites) queda como referencia; no usarlo.
 
 Las etiquetas se guardan una por pieza en `.cache/labels/<id>.json` y se saltan las que ya existen.
 
