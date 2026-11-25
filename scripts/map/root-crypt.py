@@ -12,7 +12,8 @@ from mapdata import MAP,load_otb,parse_tree,serialize_tree
 from portal_temple_style import item_offsets
 
 BOUNDS=(127,61,136,66)
-WALLS={1038:20264,1039:20265,1041:20270,1043:20266,1044:20267,1263:20268,1264:20269}
+# 25 nov 2026: las ventanas (1263/1264) pasan a pared, no a ventana de la cripta: Gonzalo pidió taparlas
+WALLS={1038:20264,1039:20265,1041:20270,1043:20266,1044:20267,1263:20267,1264:20266}
 PARTITIONS={7:{130,132,134},6:{130,133}}
 LAMPS={(130,61,7),(127,64,7),(133,61,7),(129,61,6),(132,61,6),(135,61,6)}
 
