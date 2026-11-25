@@ -2,11 +2,13 @@
 """Rediseño de los ítems que eran un recolor de un ítem vanilla (24 nov 2026).
 
 Gonzalo: "hay muchos items que solo les cambiaste el color, y quedaron cambios mínimos como la nueva dragon
-lance". Este script reemplaza el sprite de 40 de esos 44 ítems (aurora shield 20165, starbinder hood 20118, imperial
-crown armor 20161 y sapphire crown armor 20162 volvieron a su dibujo por pedido de Gonzalo) por uno con forma propia. Dos maneras:
+lance". Este script reemplaza el sprite de 35 de esos 44 ítems por uno con forma propia. Volvieron a su dibujo por
+pedido de Gonzalo: aurora shield 20165, starbinder hood 20118, imperial crown armor 20161, sapphire crown armor 20162
+y las 5 armas (reachbrand lance 20119, rift hammer 20111, granite mace 20115, boltworker crossbow 20120, black fire
+sword 20193). Dos maneras:
 
 - Desde cero con el motor de draw_zagan_items.py (piezas a 4x con volumen, luz arriba-izquierda, contorno):
-  armas, runas, gemas, orbe y amuletos.
+  runas, gemas, orbe y amuletos.
 - Híbrido: el sprite viejo (el recolor) como cuerpo, más piezas nuevas encima o detrás (alas, púas, gemas,
   hombreras, llamas, grabados) y recortes que cambian la silueta. Armaduras, piernas, cascos, escudos, botas.
 
@@ -19,8 +21,8 @@ cambio; así el script se puede repetir sin acumular). La lista sale de find_rec
 
 --apply reemplaza en el lugar los sprites que ya tiene cada client id (todos tienen un único dueño): no cambia
 el .dat, ni la cantidad de sprites del .spr, ni el OTB, ni ningún id. También escribe los PNG de
-devtools/zagan-test/custom-sprites que usa add_custom_items.py (black fire sword,
-crimson cage rune, frost mine rune) para que reinstalar no vuelva al dibujo viejo.
+devtools/zagan-test/custom-sprites que usa add_custom_items.py (crimson cage rune, frost
+mine rune) para que reinstalar no vuelva al dibujo viejo.
 Doc: docs/items-and-map/ITEMS_REDESIGN_2026_11_24.md
 """
 from __future__ import annotations
@@ -202,141 +204,9 @@ def glowline(sp: Sprite, pts, r, inner: Color, outer: Color | None = None, clip=
     sp.glow(m, inner, outer)
 
 
-# ================================================================== ARMAS (desde cero)
-
-def reachbrand_lance() -> Image.Image:
-    """Dragon lance -> lanza de punta al rojo: hoja larga y ancha con dientes, núcleo que brilla, ganchos
-    dorados de dragón, arandela de mano, asta con espiral de oro y chispas."""
-    sp = Sprite()
-    fr = Frame(1.4, 30.6, 1, -1)
-    Z.wood_handle(sp, fr, 0.0, 27.5, Z.WOOD, r=0.8, wrap=Z.LEATHER_RED, wrap_t=(1.2, 5.6))
-    spiral = (fr.t > 9.5) & (fr.t < 26.0) & (np.abs(fr.s) <= 0.9) & (np.sin(fr.t * 1.7 + fr.s * 2.4) > 0.6)
-    sp.add(spiral, Z.GOLD, bevel=0.4)
-    sp.add(poly_ts(fr, [(6.4, -0.8), (8.2, -2.5), (8.9, -2.5), (8.9, 2.5), (8.2, 2.5), (6.4, 0.8)]), Z.STEEL,
-           bevel=0.9, profile="ridge")
-    sp.add((fr.t >= 25.8) & (fr.t <= 28.0) & (np.abs(fr.s) <= 1.5), Z.GOLD, bevel=0.7)
-    for sd in (-1, 1):
-        sp.add(poly_ts(fr, [(26.6, 1.2 * sd), (25.6, 4.4 * sd), (27.0, 6.8 * sd), (28.4, 6.6 * sd), (27.6, 4.4 * sd),
-                            (28.4, 1.2 * sd)]), Z.GOLD, bevel=0.8, profile="ridge")
-    hot = Mat([(120, 16, 8), (190, 40, 14), (236, 96, 24), (255, 160, 50), (255, 222, 120), (255, 252, 214)], 0.8, 30,
-              (255, 250, 200))
-    blade = [(27.8, -1.4), (30.0, -3.3), (31.4, -2.2), (33.0, -3.6), (34.4, -2.3), (36.0, -3.2), (42.2, 0.0),
-             (36.0, 3.2), (34.4, 2.3), (33.0, 3.6), (31.4, 2.2), (30.0, 3.3), (27.8, 1.4)]
-    sp.add(poly_ts(fr, blade), hot, bevel=2.2, profile="ridge")
-    glowline(sp, [fr.xy(29.0, 0), fr.xy(40.4, 0)], 0.45, (255, 252, 214), (255, 214, 110))
-    for x, y in ((24, 3), (20, 5), (30, 9), (19, 1), (28, 12), (23, 0)):
-        sp.dot(x, y, (255, 170, 50))
-    sp.dot(25, 6, (255, 240, 170))
-    return from_canvas(sp.finish())
-
-
-def rift_hammer() -> Image.Image:
-    """War hammer -> martillo de la grieta: cabeza asimétrica (cara plana + pico), grieta violeta que la parte,
-    púa arriba y esquirlas flotando."""
-    sp = Sprite()
-    fr = Z.axe_frame()
-    Z.wood_handle(sp, fr, 0.0, 22.5, Z.DARK_WOOD, r=1.05, wrap=Z.LEATHER_BROWN, wrap_t=(0.8, 6.5))
-    for t in (11.0, 17.0):
-        sp.add((np.abs(fr.t - t) <= 0.5) & (np.abs(fr.s) <= 1.5), Z.STEEL, bevel=0.5)
-    head = [(19.6, -7.6), (20.8, -8.6), (28.4, -8.6), (29.4, -7.6), (29.4, 3.6), (27.6, 5.2), (21.6, 5.2), (19.6, 3.6)]
-    sp.add(poly_ts(fr, head), VIOLET_METAL, bevel=1.6, profile="round")
-    sp.add(poly_ts(fr, [(20.6, -8.8), (28.6, -8.8), (28.6, -6.6), (20.6, -6.6)]), Z.STEEL, bevel=0.7)  # cara de golpe
-    sp.add(poly_ts(fr, [(21.6, 4.6), (27.6, 4.6), (25.4, 12.4), (24.0, 12.8)]), Z.DARK_STEEL, bevel=1.0,
-           profile="ridge")  # pico
-    sp.add(poly_ts(fr, [(29.0, -1.8), (34.2, -0.2), (29.0, 1.6)]), Z.STEEL, bevel=0.8, profile="ridge")  # púa
-    rift = [fr.xy(29.2, -2.6), fr.xy(27.0, -0.6), fr.xy(25.4, -3.6), fr.xy(23.6, -0.4), fr.xy(21.8, -2.8),
-            fr.xy(20.0, -0.8)]
-    glowline(sp, rift, 1.0, (190, 120, 255), (90, 30, 160))
-    glowline(sp, rift, 0.38, (255, 236, 255))
-    for x, y in ((4, 20), (2, 14), (9, 24), (3, 25), (12, 1)):
-        sp.dot(x, y, (200, 130, 255))
-    sp.dot(5, 22, (255, 230, 255))
-    return from_canvas(sp.finish())
-
-
-def granite_mace() -> Image.Image:
-    """Mace -> maza de granito: cabeza de roca facetada mucho más grande, zuncho de hierro y seis púas de
-    piedra gruesas."""
-    sp = Sprite()
-    fr = Frame(2.4, 29.6, 1, -1)
-    Z.wood_handle(sp, fr, 0.0, 15.5, Z.WOOD, r=1.7, wrap=Z.LEATHER_BROWN, wrap_t=(0.4, 7.4))
-    sp.add(disc(*fr.xy(0.2, 0), 1.9), Z.IRON, bevel=1.2)
-    cx, cy = fr.xy(21.4, 0)
-    for i in range(6):
-        a = -math.pi / 4 + i * math.pi / 3
-        r0, r1 = 6.0, 11.0 if i % 2 == 0 else 9.6
-        sp.add(P((cx + r0 * math.cos(a - 0.42), cy + r0 * math.sin(a - 0.42)), (cx + r1 * math.cos(a), cy + r1 * math.sin(a)),
-                 (cx + r0 * math.cos(a + 0.42), cy + r0 * math.sin(a + 0.42))), GRANITE, bevel=1.3, profile="ridge")
-    rock = [(cx + rr * math.cos(a), cy + rr * math.sin(a)) for rr, a in
-            zip((7.6, 6.6, 7.8, 6.8, 7.4, 6.4, 7.6), np.linspace(0.2, 2 * math.pi + 0.2, 7, endpoint=False))]
-    tex = 1 - 0.16 * ((np.sin(GX * 2.7 + GY * 1.3) * np.sin(GY * 2.9 - GX * 1.1)) > 0.4)
-    sp.add(poly_xy(rock), PINK_GRANITE, bevel=5.0, profile="round", height=1.2, pattern=tex)
-    band = (np.abs(fr.t - 21.4) <= 1.1) & poly_xy(rock)
-    sp.add(band, Z.IRON, bevel=0.6)
-    for k in (-4.6, 0.0, 4.6):
-        sp.add(disc(*fr.xy(21.4, k), 0.7), Z.SILVER, bevel=0.7)
-    sp.add((np.abs(fr.t - 14.6) <= 1.0) & (np.abs(fr.s) <= 2.4), Z.IRON, bevel=0.6)
-    sparkle(sp, int(cx) - 4, int(cy) - 3)
-    return from_canvas(sp.finish())
-
-
-def boltworker_crossbow() -> Image.Image:
-    """Crossbow -> ballesta mecánica: doble arco de acero, engranaje dorado de recarga y virote cargado con
-    punta cian que brilla."""
-    sp = Sprite()
-    fr = Frame(28.4, 28.4, -1, -1)  # culata abajo-derecha, punta arriba-izquierda
-    sp.add(poly_ts(fr, [(0.0, -2.4), (5.5, -2.0), (7.0, -1.2), (27.5, -1.1), (27.5, 1.1), (7.0, 1.2), (5.5, 2.4),
-                        (0.0, 2.6)]), Z.DARK_WOOD, bevel=1.1)
-    sp.add(poly_ts(fr, [(0.0, -2.4), (1.4, -2.4), (1.4, 2.6), (0.0, 2.6)]), Z.IRON, bevel=0.5)
-    for off, mat in ((0.0, Z.STEEL), (-2.2, STEELGREY)):
-        pts = [fr.xy(22.0 + off - 0.045 * s * s, s) for s in np.linspace(-12.0, 12.0, 13)]
-        sp.add(polyline(pts, 0.85), mat, bevel=0.8)
-    tips = [fr.xy(22.0 - 0.045 * 144, -12.0), fr.xy(22.0 - 0.045 * 144, 12.0)]
-    nock = fr.xy(13.4, 0)
-    sp.glow(polyline([tips[0], nock, tips[1]], 0.3), (226, 220, 200))
-    gx, gy = fr.xy(10.0, 0)
-    teeth = np.zeros((N, N), bool)
-    for i in range(8):
-        a = i * math.pi / 4
-        teeth |= capsule(gx + 2.6 * math.cos(a), gy + 2.6 * math.sin(a), gx + 3.7 * math.cos(a),
-                         gy + 3.7 * math.sin(a), 0.7)
-    sp.add(teeth | disc(gx, gy, 2.9), Z.GOLD, bevel=1.0)
-    sp.add(disc(gx, gy, 1.0), Z.DARK_STEEL, bevel=0.6)
-    bolt = (fr.t >= 12.0) & (fr.t <= 31.0) & (np.abs(fr.s) <= 0.55)
-    sp.add(bolt, Z.WOOD, bevel=0.5)
-    sp.add(poly_ts(fr, [(30.4, -1.6), (34.2, 0.0), (30.4, 1.6)]), Z.ICE, bevel=0.8, profile="ridge")
-    glowline(sp, [fr.xy(30.8, 0), fr.xy(33.4, 0)], 0.35, (230, 255, 255))
-    sp.add(poly_ts(fr, [(12.0, -0.5), (13.8, -1.8), (13.8, 1.8), (12.0, 0.5)]), Z.CLOTH_RED, bevel=0.5)
-    for x, y in ((2, 6), (6, 2), (1, 2)):
-        sp.dot(x, y, (150, 240, 255))
-    return from_canvas(sp.finish())
-
-
-def black_fire_sword(frame: int) -> Image.Image:
-    """Fire sword -> espada de fuego negro: hoja de obsidiana dentada, guarda de alas de murciélago, gema
-    violeta en el pomo y lenguas de fuego violeta que se mueven entre los dos cuadros."""
-    sp = Sprite()
-    fr = Z.sword_frame()
-    sp.add(disc(*fr.xy(0.9, 0), 1.7), Z.AMETHYST, bevel=1.7, height=1.3)
-    Z.sword_grip(sp, fr, 1.8, 6.8, Z.LEATHER_RED, r=1.05)
-    guard = [(6.6, -1.2), (7.2, -4.0), (6.2, -6.4), (8.0, -5.2), (8.6, -7.6), (9.4, -4.4), (9.0, -1.2), (9.0, 1.2),
-             (9.4, 4.4), (8.6, 7.6), (8.0, 5.2), (6.2, 6.4), (7.2, 4.0), (6.6, 1.2)]
-    sp.add(poly_ts(fr, guard), Z.OBSIDIAN, bevel=1.0, profile="ridge")
-    Z.blade(sp, fr, 8.8, 37.0, 2.3, Z.OBSIDIAN, taper=0.8, profile="ridge", wave=0.14)
-    fl = np.zeros((N, N), bool)
-    ph = 1.4 if frame else 0.0
-    for i in range(9):
-        t = 11.0 + i * 2.9 + (0.9 if frame else 0.0)
-        sd = 1 if i % 2 == 0 else -1
-        h = 3.8 + 1.4 * math.sin(i * 1.9 + ph)
-        if t > 35.5:
-            continue
-        fl |= poly_ts(fr, [(t - 1.2, 1.8 * sd), (t + 1.6 + 0.8 * math.sin(i + ph), (2.0 + h) * sd), (t + 1.0, 1.8 * sd)])
-    sp.glow(fl, (226, 170, 255), (110, 30, 170))
-    glowline(sp, [fr.xy(10.0, 0), fr.xy(34.5, 0)], 0.36, (170, 90, 230))
-    for k, (x, y) in enumerate(((27, 1), (30, 6), (20, 3), (24, 12))):
-        sp.dot(x + (1 if frame and k % 2 else 0), y - (1 if frame and not k % 2 else 0), (220, 160, 255))
-    return from_canvas(sp.finish())
+# ARMAS: las 5 (reachbrand lance 20119, rift hammer 20111, granite mace 20115, boltworker crossbow 20120 y
+# black fire sword 20193) volvieron a su dibujo anterior por pedido de Gonzalo (25 nov 2026); sus funciones se
+# borraron. El dibujo nuevo está en la historia de git (93e90ebd).
 
 
 # ================================================================== RUNAS (desde cero)
@@ -939,11 +809,6 @@ def wayfarer_boots():
 # ================================================================== tabla
 
 ITEMS: dict[int, tuple[str, object, str]] = {
-    20119: ("reachbrand_lance", reachbrand_lance, "Hoja larga dentada al rojo vivo con núcleo brillante, púas, ganchos de dragón, guarda cónica, asta con espiral de oro y chispas."),
-    20111: ("rift_hammer", rift_hammer, "Cabeza asimétrica (cara plana + pico) con una grieta violeta brillante, púa superior y esquirlas."),
-    20115: ("granite_mace", granite_mace, "Cabeza de roca irregular el doble de grande con siete púas de piedra y una grieta."),
-    20120: ("boltworker_crossbow", boltworker_crossbow, "Doble arco de acero, engranaje dorado de recarga y virote cargado con punta cian."),
-    20193: ("black_fire_sword", black_fire_sword, "Hoja de obsidiana dentada, guarda de alas de murciélago, gema violeta en el pomo, llamas violetas animadas (2 cuadros)."),
     20133: ("lifewell_rune", rune_lifewell, "Piedra en gota, corazón brillante con cruz."),
     20134: ("emberstorm_rune", rune_emberstorm, "Piedra ancha ámbar, tres llamas."),
     20135: ("shattercall_rune", rune_shattercall, "Piedra astillada gris acero, estallido de seis puntas y grietas."),
@@ -982,7 +847,7 @@ ITEMS: dict[int, tuple[str, object, str]] = {
 }
 
 # PNG que instala add_custom_items.py
-CUSTOM_PNG = {20193: "black_fire_sword.png", 20273: "crimson_cage_rune.png", 20369: "frost_mine_rune.png"}
+CUSTOM_PNG = {20273: "crimson_cage_rune.png", 20369: "frost_mine_rune.png"}
 
 _CACHE: dict[int, list[Image.Image]] = {}
 
@@ -990,7 +855,7 @@ _CACHE: dict[int, list[Image.Image]] = {}
 def frames(sid: int) -> list[Image.Image]:
     if sid not in _CACHE:
         fn = ITEMS[sid][1]
-        _CACHE[sid] = [fn(0), fn(1)] if sid == 20193 else [fn()]  # type: ignore[operator]
+        _CACHE[sid] = [fn()]  # type: ignore[operator]
     return _CACHE[sid]
 
 

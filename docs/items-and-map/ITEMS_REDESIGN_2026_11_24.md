@@ -3,13 +3,11 @@
 Gonzalo: *"Hay muchos items que solo les cambiaste el color, y quedaron cambios mínimos como la nueva dragon
 lance. Modificalos y que se noten más los cambios."*
 
-44 ítems tenían exactamente la silueta y el sombreado de un ítem vanilla, solo con otro tono. Ahora 40
+44 ítems tenían exactamente la silueta y el sombreado de un ítem vanilla, solo con otro tono. Ahora 35
 tienen forma propia: puntas, alas, gemas, hombreras, llamas, grabados o un dibujo nuevo desde cero. Los ids no
 cambian (server id, client id, OTB, `.dat`): solo se reemplazan en el lugar los sprites del `Tibia.spr`.
 
-![Antes (recolor) y después, los 40](img/items-redesign/00_todos.png)
-
-![Reachbrand lance: original 7.6, recolor viejo y nueva](img/items-redesign/20119_reachbrand_lance.png)
+![Antes (recolor) y después, los 35](img/items-redesign/00_todos.png)
 
 ## Cómo se encontraron
 
@@ -27,6 +25,11 @@ Quedaron afuera a propósito (también los marca, pero no son ítems de inventar
 > **Aurora shield (20165), Starbinder hood (20118), Imperial crown armor (20161) y Sapphire crown armor (20162):**
 > también se rediseñaron, pero Gonzalo pidió dejarlos como estaban. Volvieron al dibujo anterior (sprites 11741,
 > 11711, 11496 y 11497; los PNG de custom-sprites también) y `redesign_items.py` ya no los toca.
+>
+> **Las 5 armas** (reachbrand lance 20119, rift hammer 20111, granite mace 20115, boltworker crossbow 20120 y
+> black fire sword 20193) también volvieron a su dibujo anterior (25 nov 2026, Gonzalo: *"quedaron muy feos"*):
+> sprites 11732, 11730, 11731, 10789 y 13985–13986 copiados del `Tibia.spr` de antes de `93e90ebd`, y
+> `black_fire_sword.png`. `redesign_items.py` ya no las toca (sus funciones se borraron; el dibujo está en git).
 
 ## Lista (server id, nombre, base vanilla, qué cambió)
 
@@ -34,11 +37,6 @@ Todos tenían silueta 1.00 y brillo 0.82–1.00 contra la base antes del cambio.
 
 | id | ítem | base 7.6 | qué cambió |
 |---|---|---|---|
-| 20119 | reachbrand lance | dragon lance | Hoja larga y ancha con dientes al rojo vivo y núcleo brillante, ganchos dorados de dragón, arandela de mano, espiral de oro, chispas |
-| 20111 | rift hammer | war hammer | Cabeza asimétrica (cara plana + pico), grieta violeta que brilla, púa arriba, esquirlas |
-| 20115 | granite mace | mace | Cabeza de roca facetada mucho más grande, zuncho de hierro con remaches, seis púas de piedra |
-| 20120 | boltworker crossbow | crossbow | Doble arco de acero, engranaje dorado de recarga, virote cargado con punta cian |
-| 20193 | black fire sword | fire sword | Hoja de obsidiana dentada, guarda de alas de murciélago, gema violeta, llamas violetas en los 2 cuadros |
 | 20133 | lifewell rune | adura vita | Piedra en gota, corazón brillante con cruz |
 | 20134 | emberstorm rune | gran flam | Piedra ancha ámbar, tres llamas |
 | 20135 | shattercall rune | explosion | Piedra astillada gris acero, estallido de seis puntas |
@@ -82,7 +80,7 @@ Todos tenían silueta 1.00 y brillo 0.82–1.00 contra la base antes del cambio.
 ```
 python3.11 scripts/client-rme/redesign_items.py --sheets /tmp/hojas        # original / viejo / nuevo, x8
 python3.11 scripts/client-rme/redesign_items.py --png-dir /tmp/png
-python3.11 scripts/client-rme/redesign_items.py --apply devtools/rme/rme-client-760 [--only 20119]
+python3.11 scripts/client-rme/redesign_items.py --apply devtools/rme/rme-client-760 [--only 20101]
 ```
 
 - **Desde cero** (motor de `draw_zagan_items.py`: piezas a 4x con volumen, luz arriba-izquierda, contorno
