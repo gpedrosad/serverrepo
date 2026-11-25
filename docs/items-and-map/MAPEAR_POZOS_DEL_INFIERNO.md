@@ -110,3 +110,10 @@ bloques de spawns y carteles. Las bajadas internas las elige `stair_down` según
 - Antes de deployar `test.otbm`: prueba de depot in-game ([`gameplay/DEPOTS.md`](../gameplay/DEPOTS.md)).
 - Con el deploy: actualizar `web/site/src/data/quests.json` (la propuesta Pits of Inferno pasa a
   existente) y compilar la web (`scripts/web/build-site.sh`).
+
+## Sin borde de pasto en el sendero (24 nov 2026)
+
+El sendero de tierra de la superficie llevaba a los costados las piezas `DIRT_SIDE/CORNER/INNER` (`110–121`), que
+son **pasto** con borde de tierra: en la grava volcánica se veía una franja verde. No hay familia grava/tierra, así
+que la grava queda lisa junto al sendero. Se cambiaron 472 suelos `110–121 → 105` en la caja z7 (conservando lo que
+tenían encima) y el generador ya no los pone (la validación ahora rechaza pasto en la grava).

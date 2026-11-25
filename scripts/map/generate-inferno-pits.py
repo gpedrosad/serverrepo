@@ -211,8 +211,9 @@ def build_surface(seed: int, bl: Blocking):
         if c in dirt:
             tiles[c] = [NP.DIRT]
         else:
-            edge = pieces_for(neighbors_in(dirt, *c), DIRT_SIDE, DIRT_CORNER, DIRT_INNER)
-            tiles[c] = [edge[0]] if edge else [ASH]
+            # (24 nov 2026) sin borde: DIRT_SIDE es "pasto con borde de tierra" y en la grava volcánica dibujaba
+            # una franja verde a los lados del sendero. No hay familia grava/tierra: la grava queda lisa.
+            tiles[c] = [ASH]
 
     # 4) charcos de lava lejos del sendero (con su borde de grava, pieza unica)
     pools = set()
@@ -568,9 +569,8 @@ def main() -> int:
     for c, it in surf.items():
         if c in dirt or c in pools:
             continue
-        want = pieces_for(neighbors_in(dirt, *c), DIRT_SIDE, DIRT_CORNER, DIRT_INNER)
-        if want is None or len(want) > 1 or (want and it[0] != want[0]) or (not want and it[0] in allp):
-            errors.append(f"tierra {c}: quiere {want} tiene {it[0]}")
+        if it[0] in allp:                               # ya no lleva borde de pasto
+            errors.append(f"tierra {c}: borde de pasto {it[0]} en la grava")
     not_lava = info["cells"] - pools
     lava_pieces = set(LAVA_SIDE.values()) | set(LAVA_CORNER.values()) | set(LAVA_INNER.values())
     for c in pools:

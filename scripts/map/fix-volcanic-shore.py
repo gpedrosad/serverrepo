@@ -207,6 +207,9 @@ def build_tiles(t, new_lava, rim, sea, volcanic, foreign):
     return {c: v for c, v in out.items() if t.get(c + (Z,)) != v}
 
 
+STACKABLE = {sid for sid, rec in mapdata.load_otb().items() if "stackable" in rec["flags"]}
+
+
 def write(raw, changes, t):
     root = mapdata.parse_tree(raw)
     if mapdata.serialize_tree(root, raw[:4]) != raw:
@@ -232,12 +235,14 @@ def write(raw, changes, t):
         p = bytes(tile[1])
         flags = bytearray(p[2:7]) if len(p) >= 7 and p[2] == 3 else bytearray()
         tile[1] = bytearray(p[:2]) + flags
-        tile[2] = [[mapdata.T_ITEM, bytearray(struct.pack("<H", i)), []] for i in ids]
+        # los apilables llevan el byte de cantidad (sin él el server no carga el mapa)
+        tile[2] = [[mapdata.T_ITEM, bytearray(struct.pack("<HB", i, 1) if i in STACKABLE else struct.pack("<H", i)), []]
+                   for i in ids]
     out = mapdata.serialize_tree(root, raw[:4])
     if new_tiles.t:
         body = out[4:]
         at = _maze.find_map_data_insert(body)
-        out = out[:4] + body[:at] + areas(new_tiles, set()) + body[at:]
+        out = out[:4] + body[:at] + areas(new_tiles, STACKABLE) + body[at:]
     return out, len(changes) - len(new_tiles.t), len(new_tiles.t)
 
 
