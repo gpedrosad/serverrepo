@@ -181,3 +181,10 @@ Antes de reiniciar se comprobó que ningún personaje guardado estaba en la ribe
 arranque **2026-11-23 13:42:01 UTC** sin errores/avisos y contenedor healthy.
 Probe **OK, 14,5 ms**. Una cuenta, ocho personajes y 35 casas conservados, junto
 con inventarios, depots, houseitems, propietarios/permisos, sponsors, config y binario.
+
+## Pilar sur corrido (25 nov 2026)
+
+El pilar `20579` de `142,75,7` quedaba sobre la base de piedra de la bajada sur, delante del escalón `142,74`
+(el dibujo de 64×64 lo tapaba y la casilla bloqueaba la escalera). Se corrió a **`144,75,7`**, simétrico con el
+de `139,75` respecto de la base (`140–143`). `ironbound_bridge_deck.PIER_POSITIONS` y `PILLAR_MOVES` de
+`bridge-trap-steps.py` ya lo esperan ahí (`--dry-run`: 0 casillas a cambiar).

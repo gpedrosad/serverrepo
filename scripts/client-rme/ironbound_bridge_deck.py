@@ -5,8 +5,9 @@ from city_bridge_z6_art import DECK, NARROW, TRAPDOORS, OUT_DIR, D
 
 FLOOR_BASE, FLOOR_CLIENT = 20540, 5260
 PIER_ID, PIER_CLIENT = 20579, 5299
+# (144,75) era (142,75) hasta el 25 nov 2026: tapaba el escalón 142,74 de la bajada sur (pedido de Gonzalo)
 PIER_POSITIONS = {(139, 65), (141, 65), (139, 69), (141, 69),
-                  (139, 72), (142, 72), (139, 75), (142, 75)}
+                  (139, 72), (142, 72), (139, 75), (144, 75)}
 SIDES = {'n': (0, -1), 'e': (1, 0), 's': (0, 1), 'w': (-1, 0)}
 
 
