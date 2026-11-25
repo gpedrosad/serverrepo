@@ -9,7 +9,7 @@ Binario/datos: `1fe3070`; cliente publicado: `c064d46`. No publicar el OTB en el
 |---|---:|---:|---:|---:|---|
 | Gale Star | 20211 | 3396 | 30 | 900 ms | Rápida, cuchillas curvas plateadas y cian; estela de viento y tajo triple al pegar |
 | Venom Star | 20212 | 3395 | 38 | 1333 ms | 25% al causar daño: veneno, 4 ticks de 8–12 cada 2 s; estela de gotas verdes |
-| Storm Star | 20213 | 3393 | 40 | 1500 ms | 20% al acertar: +18–30 de energía al mismo blanco; estela de rayos violetas y descarga ramificada |
+| Storm Star | 20213 | 6084 (antes 3393) | 40 | 1500 ms | 20% al acertar: +18–30 de energía al mismo blanco; estela de rayos violetas y descarga ramificada |
 
 Las tres usan **distance**, tienen **85% de precisión**, son de **una mano**, no se apilan,
 no necesitan munición y **no se consumen**. Conservan el alcance normal de arrojadizas
@@ -188,3 +188,6 @@ Tibia 7.6 (`draw_storm_star()` en `paladin_star_art.py`: shuriken diagonal en X 
   (`clienteretro` `da510a1`, 1 archivo cambiado: `data/things/760/Tibia.spr`, CRC `4a313895`,
   DAT `f1ad3633` sin cambios; HTTP 8080/8076 y ZIPs Mac/Windows verificados; respaldo
   `~/backups/pre-publish-20261122-181122-storm-star`; sin reinicio del OT).
+
+> **25 nov 2026:** la storm star estaba en el client 3393, que es el del **lady helmet** (2499, premio de quest):
+> el casco se veía como esta estrella. Se mudó al client nuevo 6084 y el 3393 volvió a su dibujo de 7.6.

@@ -87,7 +87,7 @@ prototipo y comprueba que la cantidad total de sprites coincida antes de escribi
 ## Por qué no con el builder viejo
 
 El mismo importador instala armas dibujadas para Root Colossus: **rootcleaver 20163** (axe 1H, 49/31,
-client 3573) y **heartwood maul 20164** (club 2H, 52/28, client 3561). Los PNG los genera
+client 6081; hasta el 25 nov 2026 el 3573 de la magician hat) y **heartwood maul 20164** (club 2H, 52/28, client 3561). Los PNG los genera
 `scripts/client-rme/draw_root_weapons.py`; stats y loot propios, no importados de 8.60. Ver
 [`ROOT_COLOSSUS.md`](../gameplay/ROOT_COLOSSUS.md).
 
@@ -121,3 +121,18 @@ otros ítems no están instalados. No cambia el resto de entradas DAT ni nodos O
 Los rieles usan prototipo 1794: 3312 tiene dos patrones y no sirve para un PNG único.
 El apoyo 2x2 usa prototipo 1515; un prototipo 1x1 tampoco sirve para sus cuatro sprites.
 Ver [Mina Enana](../gameplay/DWARVEN_MINE.md).
+
+## Client ids sacrificados que eran equipo (25 nov 2026)
+
+La magician hat (2662, client 3573) se veía como el **rootcleaver** y el helmet of the ancients (2342, client 3229,
+premio de dos quests) como la **arcane entrance left**: sus client ids se habían "sacrificado". Un client id es UN
+dibujo en el `.dat`: si dos server ids lo comparten, los dos se ven igual. Se arregló mudando los custom a client ids
+nuevos (rootcleaver 6081, arcane entrance left 6082, root crypt wall 20264 → 6083, que estaba en el 3210 de la otra
+magician hat 2323) y devolviendo a 3573/3229/3210 su entrada original de 7.6 (del primer `Tibia.dat` del repo).
+
+`--candidates` ya no propone **armas, munición ni armaduras** vanilla (pueden aparecer como loot o premio en
+cualquier momento) y cuenta los premios de `web/site/src/data/quests.json` (en el mapa van en el uid del cofre, no
+como ítem). Para ítems nuevos, usar siempre los client ids nuevos libres (5146–6089) que lista primero.
+Quedan otros equipos vanilla compartiendo client id con decoración custom (golden helmet, dragon scale legs,
+winged helmet, bow, ice rapier, dwarven/elven armor...): ver el informe del 25 nov antes de darlos como loot.
+

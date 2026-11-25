@@ -172,7 +172,7 @@ respetando el pedido de Gonzalo; verificación de estado durante el deploy.
 
 | Server ID | Client ID | Prototipo | Pieza | Cuadros / tamaño |
 |---:|---:|---:|---|---|
-| 20253 | 3229 | 1120 | Mitad izquierda del arco abierto | 1 / 64×64 |
+| 20253 | 6082 (antes 3229) | 1120 | Mitad izquierda del arco abierto | 1 / 64×64 |
 | 20254 | 3228 | 1121 | Mitad derecha del arco abierto | 1 / 64×64 |
 | 20255 | 3227 | 1480 | Farol de cristal cian, luz 7/71 | 2 / 64×64 |
 | 20256 | 3226 | 1543 | Reja vertical | 1 / 64×64 |

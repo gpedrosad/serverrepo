@@ -11,7 +11,8 @@ import add_custom_items as A
 
 ROOT=project_root(HERE)
 ART=ROOT/'devtools/zagan-test/custom-sprites/root-crypt'
-CLIENTS=(3213,3212,3210,3208,3205,3158,3156,3154,3151,3130,3124)
+# 6083 en vez de 3210 (25 nov 2026): 3210 es la magician hat 2323
+CLIENTS=(3213,3212,6083,3208,3205,3158,3156,3154,3151,3130,3124)
 PROTOS=(1038,1039,1043,1044,1263,1264)
 ITEMS=[
     dict(name='root crypt flagstones',server_id=20262,prototype=405,png='floor.png'),

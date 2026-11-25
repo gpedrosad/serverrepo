@@ -57,7 +57,8 @@ Rootcleaver permite escudo; Heartwood Maul cambia esa protección por mayor ataq
 
 Los sprites derivan del knight axe (client id 3318) y war hammer (3279), con hoja de jade/madera,
 raíces y un corazón verde. `draw_root_weapons.py` genera los PNG 32×32; `add_custom_items.py`
-los instala en los client ids **3573** (antes magician hat 2662) y **3561** (antes jacket 2650).
+los instala en los client ids **6081** y **3561** (antes jacket 2650). El rootcleaver estuvo en el 3573 hasta el
+25 nov 2026, pero ese es el de la magician hat 2662, que se veía como esta hacha: se mudó a un client id nuevo.
 Ambos estaban en la lista de candidatos libres: sin uso en mapa, loot, NPC ni scripts.
 Se heredan peso y manos de knight axe **2430** y war hammer **2391**; las estadísticas se sustituyen.
 

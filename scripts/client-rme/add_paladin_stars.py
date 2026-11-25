@@ -33,7 +33,8 @@ ITEMS = [
     dict(name='venom star', server_id=20212, client_id=3395, prototype=2352,
          png='paladin-stars/venom.png', attack=38, defence=0,
          descr='Its serrated edges carry emerald venom. Paladins only. Reusable.'),
-    dict(name='storm star', server_id=20213, client_id=3393, prototype=2352,
+    # client 6084 (25 nov 2026; antes 3393 = lady helmet 2499, premio de quest, que se veía como esta estrella)
+    dict(name='storm star', server_id=20213, client_id=6084, prototype=2352,
          png='paladin-stars/storm.png', attack=40, defence=0,
          descr='A cobalt star charged with violet lightning. Paladins only. Reusable.'),
 ]

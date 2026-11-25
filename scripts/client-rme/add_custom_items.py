@@ -169,7 +169,8 @@ NEW_ITEMS = [
          png="sapphire_crown_armor.png", armor=14,
          descr="Sapphire plates bound in gold. Blades and claws slide off it."),
     # Root Colossus: armas fisicas, sin procs ni cambios de C++. Sprites reproducibles con draw_root_weapons.py.
-    dict(name="rootcleaver", server_id=20163, client_id=3573, prototype=2430,
+    # client 6081 (25 nov 2026; antes 3573 = magician hat 2662, que se veía como esta hacha)
+    dict(name="rootcleaver", server_id=20163, client_id=6081, prototype=2430,
          png="rootcleaver.png", attack=49, defence=31,
          descr="A jade-edged axe bound to a living root. Claimed from a Root Colossus."),
     dict(name="heartwood maul", server_id=20164, client_id=3561, prototype=2391,
@@ -638,6 +639,7 @@ def candidates(things: Path, otb: Path, exclude_paths=()) -> list[tuple[int, lis
     item_count = B.DatReader((things / "Tibia.dat").read_bytes()).item_count
     _data, root = load_otb(otb)
     c2s, s2c, c2n, c2flags, used_custom, targets = {}, {}, {}, {}, set(), set()
+    gear = set()     # client ids de armas, munición y armaduras vanilla: nunca se sacrifican
     for node in root.children:
         flags, blocks = B.parse_item_props(node.props)
         for attr, payload in blocks:
@@ -649,6 +651,8 @@ def candidates(things: Path, otb: Path, exclude_paths=()) -> list[tuple[int, lis
         if sid >= 20100:
             used_custom.add(cid)
         c2s.setdefault(cid, set()).add(sid)
+        if sid < 20100 and node.node_type in (3, 4, 5):
+            gear.add(cid)
         s2c[sid] = cid
         c2flags[cid] = struct.unpack("<I", flags[:4])[0] if len(flags) >= 4 else 0
         if name:
@@ -663,6 +667,12 @@ def candidates(things: Path, otb: Path, exclude_paths=()) -> list[tuple[int, lis
     for f in files:
         if f.is_file() and f.resolve() not in excluded:
             refs |= {int(x) for x in re.findall(r"\b(\d{3,5})\b", f.read_text(errors="replace")) if 100 <= int(x) <= 20000}
+    # premios de quest: en el mapa van en el uid del cofre, no como ítem (25 nov 2026: se sacrificó el client del
+    # helmet of the ancients 2342, premio de dos quests, y se veía como una pieza de decoración)
+    quests = ROOT / "web/site/src/data/quests.json"
+    if quests.is_file():
+        refs |= {int(x) for x in re.findall(r"\b(\d{4,5})\b", "".join(re.findall(r'"reward_ids"\s*:\s*\[[^\]]*\]',
+                                                                                quests.read_text())))}
     bad_name = re.compile(r"dead|skeleton|corpse|remains|body|blood|pool|fire|burning|slime|puddle|trail|ash|bones|carcass")
     taken = set(B.CORE_RESERVED_CLIENT_IDS) | set(B.EXTERNAL_CLIENT_IDS) | used_custom | {i["client_id"] for i in NEW_ITEMS}
     out = []
@@ -672,6 +682,8 @@ def candidates(things: Path, otb: Path, exclude_paths=()) -> list[tuple[int, lis
     for e in entries:
         c = e.client_id
         if c > item_count or c >= FIRST_NEW_CLIENT_ID or c in taken or c in protected or len(e.sprite_ids) != 1:
+            continue
+        if c in gear:                                 # equipo vanilla (magician hat, helmet of the ancients...)
             continue
         if not c2flags.get(c, 0) & FLAG_PICKUPABLE:
             continue

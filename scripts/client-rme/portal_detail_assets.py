@@ -13,7 +13,8 @@ import add_custom_items as A
 ROOT = project_root(HERE)
 ART = ROOT/'devtools/zagan-test/custom-sprites/portal-details'
 ITEMS = [
-    dict(name='arcane entrance left', server_id=20253, client_id=3229, prototype=1120,
+    # client 6082 (25 nov 2026; antes 3229 = helmet of the ancients 2342, que se veía como esta pieza)
+    dict(name='arcane entrance left', server_id=20253, client_id=6082, prototype=1120,
          png='entrance-left.png', tiles=2, light=(3,71)),
     dict(name='arcane entrance right', server_id=20254, client_id=3228, prototype=1121,
          png='entrance-right.png', tiles=2, light=(3,71)),
