@@ -100,3 +100,9 @@ Re-ejecutable y determinista (misma semilla = mismo mapa). Escribe `test.otbm` (
 destino en `boat.lua` (`Frozen Isle`: `frozen isle`, `frozen`, `isla helada`, `hielo`).
 Después: `python3 scripts/map/test-frozen-isle.py` (regresiones) y
 `python3 scripts/npc/run_npc_tests.py` (el barco tiene golden).
+
+## Retoque visual (24 nov 2026)
+
+El relleno ponía un bloqueo en cada casilla que no es sendero y se veía una grilla de piedras. Ahora solo
+bloquea la **franja pegada al sendero** (8 vecinos, mezcla de piedras, estalagmitas y árboles muertos); lo de
+adentro es inalcanzable y queda como nieve abierta con pinos, rocas grandes y estalagmitas sueltas.

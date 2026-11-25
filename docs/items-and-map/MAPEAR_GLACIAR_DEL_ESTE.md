@@ -82,3 +82,11 @@ Correrlo dos veces deja las mismas casillas.
 - Cambios: 5348 casillas, todas en z7 (las 5344 de la caja y las 4 de la roca). Spawns y carteles solo se
   agregan.
 - Falta recorrerlo in-game.
+
+## Retoque visual (24 nov 2026)
+
+- El relleno era una piedra chica por casilla y se veía una grilla. Ahora es mayormente pinos y rocas grandes
+  (`0.85 × ruido`) con estalagmitas entre medio: se lee como bosque nevado. Sigue bloqueando **todo** lo que no es
+  sendero (la validación lo exige); el sendero, los spawns y el manifiesto quedaron idénticos (781 caminables).
+- La columna `x=262, y 0–19` estaba vacía (fuera de la caja del generador) y se veía desde la punta oeste: se
+  rellenó con mar con `scripts/map/fill-void.py 262 0 262 19 7 --ground 4608 --replace`.

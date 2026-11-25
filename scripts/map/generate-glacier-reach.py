@@ -164,10 +164,11 @@ def build(existing, seed):
     for c in filler:                                   # bosque nevado y roca: siempre bloquea
         x, y = c
         r = rng.random()
-        tiles[c].append(STONE if r < 0.40 else STALAGMITE if r < 0.85 else rng.choice(DEAD_TREES))
+        # (24 nov 2026) menos piedra chica y más pinos/rocas grandes: con una piedra por casilla se veía una grilla
+        tiles[c].append(STONE if r < 0.22 else STALAGMITE if r < 0.7 else rng.choice(DEAD_TREES))
         if covers_walk(c) or any((x + dx, y + dy) in big for dx in (-1, 0, 1) for dy in (-1, 0, 1)):
             continue
-        if rng.random() < 0.45 * (0.35 + nz.fbm(x / 7, y / 7, 2, 91)):
+        if rng.random() < 0.85 * (0.35 + nz.fbm(x / 7, y / 7, 2, 91)):
             tiles[c] = [SNOW, PINE if rng.random() < 0.85 else RUBBLE]
             big.add(c)
     for c in sorted(walk):                             # piedritas y huesos sueltos (no bloquean)
