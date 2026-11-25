@@ -61,6 +61,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 
 | Doc | Cubre / cuándo leerlo |
 |-----|-----------------------|
+| [`gameplay/EXPEDITION_SUPPLIES.md`](gameplay/EXPEDITION_SUPPLIES.md) | Suministros de Seller para primeras hunts: Delver Kit, Trail Boots y vendajes apilables. |
 | [`gameplay/EXP_RATE.md`](gameplay/EXP_RATE.md) | Tiers de experiencia por nivel (`expmul`). |
 | [`gameplay/PARTY_EXP.md`](gameplay/PARTY_EXP.md) | **Exp compartida y bonus en party:** reparto entre miembros vivos cerca (≤30 sqm, ±1 piso), +25/+50/+75 % con 2/3/4+ miembros y doble texto flotante (blanco + celeste `+X`). |
 | [`gameplay/ML_RATE.md`](gameplay/ML_RATE.md) | Configuración y tuning del rate de magic level. |

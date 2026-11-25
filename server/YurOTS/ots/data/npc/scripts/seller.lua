@@ -3,6 +3,7 @@ SELLER_HELP = 'I sell rope (50gp), shovel (20gp), backpack (10gp), mana fluid (1
 SELLER_WEAPONS = 'Medium weapons: serpent sword 2500gp, knight axe 2800gp, war hammer 3000gp.'
 SELLER_ARMORS = 'Knight gear: chain helmet 40gp, brass helmet 60gp, steel helmet 350gp, chain armor 120gp, brass armor 300gp, plate armor 800gp, knight armor 4500gp, brass legs 120gp, plate legs 900gp, knight legs 4500gp, brass shield 40gp, copper shield 60gp, plate shield 400gp, steel shield 1200gp, guardian shield 2500gp, leather boots 8gp.'
 SELLER_SETS = 'Set progression for knights: basic = chain helmet, brass armor, brass legs, brass shield. Mid = steel helmet, plate armor, plate legs, plate shield. Advanced = knight armor, knight legs, steel shield or guardian shield.'
+local expeditionSupplies = 'Expedition supplies: delver kit (rope and shovel) 480gp, trail boots (Arm:2) 900gp, field dressing (restores up to 100 HP) 70gp. Say "delver kit", "trail boots" or "10 field dressings".'
 -- Match longer/more specific aliases first (strong mana before plain mana).
 SELLER_FLUID_BACKPACKS = {
 	{aliases = {'strong mana potion', 'strong mana', 'smp'}, fluidSubtype = 14, cost = 5000},
@@ -30,6 +31,9 @@ SELLER_BUYS = {
 	{keys = {'steel shield'}, itemid = 2509, unitPrice = 1200},
 	{keys = {'guardian shield', 'guardians shield'}, itemid = 2515, unitPrice = 2500},
 	{keys = {'leather boots'}, itemid = 2643, unitPrice = 8},
+	{keys = {'delver kit'}, itemid = 20685, unitPrice = 480},
+	{keys = {'trail boots'}, itemid = 20686, unitPrice = 900},
+	{keys = {'field dressing'}, itemid = 20687, unitPrice = 70, itemQuantity = true},
 	{keys = {'fishing rod', 'cana'}, itemid = 2580, unitPrice = 100},
 	{keys = {'strong mana potion', 'strong mana', 'smp'}, itemid = 2006, fluidSubtype = 14, unitPrice = 250},
 	{keys = {'manafluid', 'mana fluid'}, itemid = 2006, fluidSubtype = 7, unitPrice = 100},
@@ -76,6 +80,8 @@ function sellerTryBuy(cid, msg)
 	local qty = npcParseBuyQuantity(msg)
 	if entry.fluidSubtype ~= nil then
 		buyFluidQty(cid, entry.itemid, entry.fluidSubtype, qty, entry.unitPrice * qty)
+	elseif entry.itemQuantity then
+		buyItemQty(cid, entry.itemid, qty, entry.unitPrice * qty)
 	else
 		buy(cid, entry.itemid, qty, entry.unitPrice * qty)
 	end
@@ -98,12 +104,15 @@ end
 local function onMessage(cid, msg)
 	if npcIsHelp(msg) then
 		selfSay(SELLER_HELP)
+		selfSay('Say "supplies" for delver kits, trail boots and field dressings.')
 	elseif npcIsSellAll(msg) and not sellerMentionsVial(msg) then
 		sellerSellAllVials(cid)   -- lo único que compra el Seller son vials vacíos
 	elseif (msgcontains(msg, 'sell') or msgcontains(msg, 'vender')) and not sellerMentionsVial(msg) then
 		selfSay('I only buy empty vials. Mad buys weapons and armor.') -- antes "sell X" ofrecÃ­a comprar X
 	elseif sellerTryBuy(cid, msg) then
 		return
+	elseif msgcontains(msg, 'supplies') or msgcontains(msg, 'expedition') then
+		selfSay(expeditionSupplies)
 	elseif msgcontains(msg, 'weapons') or msgcontains(msg, 'weapon') or msgcontains(msg, 'armas') or msgcontains(msg, 'arma') then
 		selfSay(SELLER_WEAPONS)
 	elseif msgcontains(msg, 'armor') or msgcontains(msg, 'armors') or msgcontains(msg, 'armadura') or msgcontains(msg, 'armaduras') or msgcontains(msg, 'shield') or msgcontains(msg, 'shields') or msgcontains(msg, 'helmet') or msgcontains(msg, 'helmets') or msgcontains(msg, 'legs') or msgcontains(msg, 'boots') then
@@ -126,6 +135,6 @@ local function onMessage(cid, msg)
 end
 
 npcDefine{
-	greet = function(cid) return 'Hi ' .. creatureGetName(cid) .. '! I sell supplies, fluid backpacks, weapons and knight gear. Say "help", "weapons", "armor" or "sets" for prices.' end,
+	greet = function(cid) return 'Hi ' .. creatureGetName(cid) .. '! I sell supplies, fluid backpacks, weapons and knight gear. Say "help", "supplies", "weapons", "armor" or "sets" for prices.' end,
 	onMessage = onMessage,
 }

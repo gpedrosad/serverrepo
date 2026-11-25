@@ -168,6 +168,8 @@
 <action itemid="2580" script="fishing.lua" allowfaruse="1"/>
 <action itemid="2554" script="shovel.lua" />
 <action itemid="2120" script="rope.lua" />
+<action itemid="20685" script="delver_kit.lua" />
+<action itemid="20687" script="field_dressing.lua" />
 
 
 <action itemid="2006" script="fluids.lua" />

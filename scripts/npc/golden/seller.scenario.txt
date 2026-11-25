@@ -5,6 +5,13 @@ say 1001 hello there
 say 1001 hi
 say 1002 hi
 say 1001 help
+say 1001 supplies
+say 1001 delver kit
+say 1001 yes
+say 1001 trail boots
+say 1001 yes
+say 1001 10 field dressings
+say 1001 yes
 say 1001 help
 say 1001 yes
 say 1001 help
