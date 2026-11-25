@@ -1,12 +1,12 @@
 {
   "name": "generated-wave-arena",
   "version": 2,
-  "tileCount": 272,
+  "tileCount": 1188,
   "clearBox": {
-    "fromX": 595,
-    "fromY": 200,
-    "toX": 620,
-    "toY": 230,
+    "fromX": 589,
+    "fromY": 196,
+    "toX": 623,
+    "toY": 233,
     "z": 7
   },
   "arena": {

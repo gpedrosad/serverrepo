@@ -37,6 +37,10 @@ Campamento y claro viven en el **distrito de eventos** (x≥560, lejos del mapa 
 
 Bambú (medido en el mapa): poste `3425`, horizontal `3426`, vertical `3423`, esquina SE `3429`.
 
+**Selva alrededor (24 nov 2026):** las salas flotaban en vacío negro (se veía desde 165 casillas). Ahora todo
+`590,197 – 622,232` que no es sala ni pared es selva tupida que bloquea: pasto con árboles (`TREES`), arbustos
+`2767` y matas `2781` (`build_jungle`, `JUNGLE_BOX`). `CLEAR_BOX` pasó a `589,196 – 623,233`.
+
 ## Flujo
 
 1. Portal del templo → campamento.

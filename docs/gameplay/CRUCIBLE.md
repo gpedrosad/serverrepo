@@ -46,6 +46,10 @@ Arenas (coordenadas locales, iguales en las 3): estrado del elite/jefe arriba al
 spawns en las filas 1-3 (elite en `5,1`), **plataforma de llegada 3x3** (`4-6, 5-7`) con el mismo piso que la
 plataforma de esa puerta en el hub, TP de salida en `5,8` justo debajo. En Gold la alfombra une la plataforma con el estrado.
 
+**Roca alrededor (24 nov 2026):** todo `590,92 – 666,117` (z0) que no es sala ni pared es tierra maciza `101`
+(bloquea), como el Reloj de Arena: desde el hub y las arenas ya no se ve el vacío negro. `CLEAR_BOX` pasó a
+`588,90 – 717,125`.
+
 ### Cómo está hecho el generador
 
 - Todo se escribe en coordenadas **locales** de cada sala (`Room.at(dx, dy)`): mover una sala es cambiar su origen.

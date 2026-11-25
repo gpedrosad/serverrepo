@@ -1,9 +1,9 @@
 {
   "name": "generated-crucible",
   "version": 4,
-  "tileCount": 559,
+  "tileCount": 2002,
   "clearBox": {
-    "fromX": 592,
+    "fromX": 588,
     "fromY": 90,
     "toX": 717,
     "toY": 125,

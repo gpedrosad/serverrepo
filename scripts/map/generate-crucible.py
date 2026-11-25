@@ -43,7 +43,11 @@ Z = 0
 # Distrito de eventos (x>=560, lejos del mapa principal): las salas no se ven
 # superpuestas en RME ni en el cliente desde la ciudad. Las cajas viejas sobre el
 # mapa (70,70-195,105) se borraron con scripts/map/remove-old-event-areas.py.
-CLEAR_BOX = (592, 90, 717, 125)
+CLEAR_BOX = (588, 90, 717, 125)
+# Tierra maciza (101, bloquea) alrededor de las salas: cubre lo que se ve desde el hub y las arenas
+# (±9, ±7). Sin esto las salas flotaban en vacío negro (24 nov 2026), como el Reloj de Arena antes.
+EARTH = 101
+EARTH_BOX = (590, 92, 666, 117)
 TEMPLE_LANDING = (164, 48, 7)           # llegada del portal Crisol en la plaza
 
 # ---------------------------------------------------------------- piezas
@@ -172,6 +176,11 @@ def build() -> Map:
     build_hub(m)
     for key in ARENAS:
         build_arena(m, key)
+    x0, y0, x1, y1 = EARTH_BOX                             # roca maciza alrededor (no se ve el vacío)
+    for x in range(x0, x1 + 1):
+        for y in range(y0, y1 + 1):
+            if (x, y, Z) not in m.t:
+                m.ground((x, y, Z), EARTH)
     return m
 
 

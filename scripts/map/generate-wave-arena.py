@@ -35,7 +35,10 @@ Z = 7
 # Distrito de eventos (x>=560, lejos del mapa principal): el claro no aparece
 # superpuesto en RME sobre las hunts del sur. La caja vieja junto al valle
 # (165,380-190,410) se borró con scripts/map/remove-old-event-areas.py.
-CLEAR_BOX = (595, 200, 620, 230)
+CLEAR_BOX = (589, 196, 623, 233)
+# Selva espesa alrededor de las salas: cubre todo lo que se ve desde el claro y el campamento (±9, ±7);
+# antes las salas flotaban en vacío negro (24 nov 2026). No se camina: árboles y arbustos bloquean.
+JUNGLE_BOX = (590, 197, 622, 232)
 TEMPLE_LANDING = (166, 48, 7)           # llegada del portal Wave en la plaza
 
 UID_START, UID_RANK, UID_NEXT, UID_RETIRE = 7100, 7101, 7102, 7103
@@ -123,10 +126,29 @@ def build_arena(m: Map):
     m.add(r.at(7, 10), LEVER, uid=UID_RETIRE, desc="Retire and keep your mark")
 
 
+def build_jungle(m: Map):
+    """Todo lo que no es sala ni pared: pasto con árboles, arbustos y matas, bien tupido."""
+    x0, y0, x1, y1 = JUNGLE_BOX
+    for x in range(x0, x1 + 1):
+        for y in range(y0, y1 + 1):
+            if (x, y, Z) in m.t:
+                continue
+            m.ground((x, y, Z), variant(x, y))
+            h = ((x * 73856093) ^ (y * 19349663) ^ 0x5bd1e995) & 0xFFFF
+            r = h % 100
+            if r < 48:
+                m.add((x, y, Z), TREES[(h >> 7) % len(TREES)])
+            elif r < 78:
+                m.add((x, y, Z), BUSH)
+            elif r < 90:
+                m.add((x, y, Z), JUNGLE_GRASS)
+
+
 def build() -> Map:
     m = Map()
     build_camp(m)
     build_arena(m)
+    build_jungle(m)
     return m
 
 
