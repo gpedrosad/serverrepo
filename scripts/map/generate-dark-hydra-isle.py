@@ -61,6 +61,12 @@ HYDRA = ("Dark Hydra", 240)                 # nombre, respawn (s)
 HYDRA_GAP = 7                               # distancia mínima (Manhattan) entre hydras
 LANDING_CLEAR = 6                           # ninguna hydra a menos de esto de la punta del puente
 WOOD, WATER, GRASS, SHORE = 405, 4608, 4756, 4526
+# decoración (24 nov 2026; antes la isla era pasto liso): árboles 2x2 y arbustos de la isla natural, piedras,
+# huesos y calaveras sueltos (no bloquean) cerca de las hydras
+TREES = (2701, 2702, 2703, 2704, 2705, 2706, 2708, 4009)
+BUSHES = (2767, 2786, 2768)
+BONES = (2248, 2320, 2247)
+DECOR_SEED = 1515
 WATERS = set(range(4608, 4626)) | {4664, 4665, 4666}
 HOLE_ID, LADDER = 469, 1386
 ROCK = 101
@@ -155,6 +161,48 @@ def hydra_spots(walk7, isle, landing):
         if all(abs(c[0] - o[0]) + abs(c[1] - o[1]) >= HYDRA_GAP for o in out):
             out.append(c)
     return out
+
+
+def decorate(z7, walk7, isle, islet, hydras, landing):
+    """Árboles, arbustos y piedras (bloquean) y huesos (no bloquean). Lo que bloquea va lejos de las hydras, de la
+    punta del puente y de los agujeros, y se descarta si deja una hydra sin camino desde el puente."""
+    import random
+    rng = random.Random(DECOR_SEED)
+    keep = list(hydras) + [landing, ISLET_HOLE, (ISLET_HOLE[0], ISLET_HOLE[1] + 1)]
+    walk = set(walk7)
+
+    def connected(cells):
+        start = landing
+        seen, todo = {start}, deque([start])
+        while todo:
+            x, y = todo.popleft()
+            for dx in (-1, 0, 1):
+                for dy in (-1, 0, 1):
+                    n = (x + dx, y + dy)
+                    if n in cells and n not in seen:
+                        seen.add(n)
+                        todo.append(n)
+        return all(k in seen for k in hydras)
+
+    placed = {}
+    for c in sorted((isle | islet) & walk7):
+        if any(abs(c[0] - k[0]) + abs(c[1] - k[1]) <= 2 for k in keep):
+            continue
+        r = rng.random()
+        item = rng.choice(TREES) if r < 0.13 else rng.choice(BUSHES) if r < 0.25 else \
+            NP.STONE if r < 0.30 else None
+        if item is None:
+            if rng.random() < 0.10 and any(abs(c[0] - k[0]) + abs(c[1] - k[1]) <= 5 for k in hydras):
+                placed[c] = rng.choice(BONES)
+            continue
+        walk.discard(c)
+        if connected(walk):
+            placed[c] = item
+        else:
+            walk.add(c)
+    for c, item in placed.items():
+        z7.add((c[0], c[1], 7), item)
+    return walk, placed
 
 
 def void_and_lava(existing, walk7):
@@ -315,12 +363,16 @@ def main() -> int:
     z7, hole, walk7, bridge, entries, islet, isle, bad, landing = build_z7(existing)
     z8 = build_z8()
     hydras = hydra_spots(walk7, isle, landing)
+    walk7, decor = decorate(z7, walk7, isle, islet, hydras, landing)
     z7_fill, z8_fill = void_and_lava(existing, walk7)
     errs = validate(existing, z7, walk7, bridge, entries, islet, isle, bad, z8, landing, hydras, regenerating)
     print(f"Isla de las Dark Hydras: islote {len(islet)} casillas, isla {len(isle)} "
           f"(x{min(x for x, _ in isle)}-{max(x for x, _ in isle)}, y{min(y for _, y in isle)}-{max(y for _, y in isle)}), "
           f"puente x{BRIDGE_X} y{min(bridge)[1]}-{max(bridge)[1]}; túnel z8 de {len(TUNNEL)} casillas")
     print(f"  {len(hydras)} Dark Hydras: {hydras}")
+    print(f"  decoración: {sum(1 for i in decor.values() if i in TREES)} árboles, "
+          f"{sum(1 for i in decor.values() if i in BUSHES)} arbustos, {sum(1 for i in decor.values() if i == NP.STONE)} "
+          f"piedras, {sum(1 for i in decor.values() if i in BONES)} huesos")
     print(f"  vacío/lava a la vista -> mar en z7: {len(z7_fill)}; -> roca en z8: {len(z8_fill)}")
     if a.preview_dir:
         preview(existing, {7: [z7, hole], 8: [z8]}, a.preview_dir, z7_fill, z8_fill)

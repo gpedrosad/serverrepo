@@ -86,3 +86,10 @@ Correrlo dos veces deja las mismas casillas.
 - Depots y casas: 11 lockers del templo con `depotid=1`; `houses.xml` coincide con el mapa.
 - Cambios: 964 casillas (828 en z7, 136 en z8), todas en `x 22–69, y 131–167`.
 - Falta probarlo in-game.
+
+## Decoración (24 nov 2026)
+
+Antes la isla era pasto liso. `decorate()` le pone árboles 2x2 y arbustos de la isla natural, piedras
+(`1285`) y huesos/calaveras sueltos cerca de las hydras (no bloquean). Lo que bloquea queda a 3+ casillas de las
+hydras, de la punta del puente y del agujero del islote, y se descarta si deja una hydra sin camino desde el puente.
+Al azar con semilla fija (`DECOR_SEED`): sale igual en cada corrida. Hoy: 17 árboles, 13 arbustos, 4 piedras, 10 huesos.
