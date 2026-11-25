@@ -2,7 +2,8 @@
 """Rediseño de los ítems que eran un recolor de un ítem vanilla (24 nov 2026).
 
 Gonzalo: "hay muchos items que solo les cambiaste el color, y quedaron cambios mínimos como la nueva dragon
-lance". Este script reemplaza el sprite de esos 44 ítems por uno con forma propia. Dos maneras:
+lance". Este script reemplaza el sprite de 43 de esos 44 ítems (el aurora shield 20165 volvió a su dibujo por pedido de
+Gonzalo) por uno con forma propia. Dos maneras:
 
 - Desde cero con el motor de draw_zagan_items.py (piezas a 4x con volumen, luz arriba-izquierda, contorno):
   armas, runas, gemas, orbe y amuletos.
@@ -18,7 +19,7 @@ cambio; así el script se puede repetir sin acumular). La lista sale de find_rec
 
 --apply reemplaza en el lugar los sprites que ya tiene cada client id (todos tienen un único dueño): no cambia
 el .dat, ni la cantidad de sprites del .spr, ni el OTB, ni ningún id. También escribe los PNG de
-devtools/zagan-test/custom-sprites que usa add_custom_items.py (crown armors, aurora shield, black fire sword,
+devtools/zagan-test/custom-sprites que usa add_custom_items.py (crown armors, black fire sword,
 crimson cage rune, frost mine rune) para que reinstalar no vuelva al dibujo viejo.
 Doc: docs/items-and-map/ITEMS_REDESIGN_2026_11_24.md
 """
@@ -734,22 +735,6 @@ def frostwarden_aegis():
     return h.render()
 
 
-def aurora_shield():
-    h = Hybrid(20165)
-    f = h.front
-    field = h.inner(3) & (GY > 6.0) & (GY < 25.0)
-    for k, (col, out) in enumerate((((150, 255, 190), (40, 170, 110)), ((150, 240, 255), (40, 140, 200)),
-                                    ((230, 170, 255), (130, 60, 200)))):
-        pts = [(5.0 + i * 0.5, 15.0 + k * 3.2 + 1.6 * math.sin(i * 0.42 + k)) for i in range(46)]
-        f.glow(polyline(pts, 0.75) & field, col, out)
-    f.glow(star(15.6, 11.0, 4.6, 1.2, n=4), (255, 255, 240), (255, 220, 120))
-    for sx in (-1, 1):
-        f.add(P((15.6 + 9.6 * sx, 4.4), (15.6 + 15.4 * sx, 0.4), (15.6 + 12.2 * sx, 6.6)), Z.GOLD, bevel=0.9,
-              profile="ridge")
-    f.add(P((14.4, 28.0), (15.6, 31.6), (16.8, 28.0)), Z.GOLD, bevel=0.6, profile="ridge")
-    return h.render()
-
-
 # ================================================================== CASCOS
 
 def morlen_crest():
@@ -1036,7 +1021,6 @@ ITEMS: dict[int, tuple[str, object, str]] = {
     20150: ("bloodreaver_aegis", bloodreaver_aegis, "Alas de murciélago, rubí central, colmillos y gotas de sangre."),
     20151: ("sunforge_shield", sunforge_shield, "Sol: disco más chico con doce rayos dorados alrededor y núcleo encendido."),
     20153: ("frostwarden_aegis", frostwarden_aegis, "Esquirlas de hielo a los lados y arriba, copo de nieve brillante."),
-    20165: ("aurora_shield", aurora_shield, "Bandas de aurora (verde/cian/violeta), estrella, púas doradas arriba y punta abajo."),
     20102: ("morlen_crest", morlen_crest, "Alas plateadas a los costados, cresta de jade y gema en la frente."),
     20118: ("starbinder_hood", starbinder_hood, "Luna creciente de oro, estrella en la frente, dije de estrella y destellos."),
     20152: ("fox_machina_helmet", fox_machina_helmet, "Orejas de zorro con interior naranja y respiraderos con luz verde."),
@@ -1056,7 +1040,7 @@ ITEMS: dict[int, tuple[str, object, str]] = {
 }
 
 # PNG que instala add_custom_items.py
-CUSTOM_PNG = {20161: "imperial_crown_armor.png", 20162: "sapphire_crown_armor.png", 20165: "aurora_shield.png",
+CUSTOM_PNG = {20161: "imperial_crown_armor.png", 20162: "sapphire_crown_armor.png",
               20193: "black_fire_sword.png", 20273: "crimson_cage_rune.png", 20369: "frost_mine_rune.png"}
 
 _CACHE: dict[int, list[Image.Image]] = {}
