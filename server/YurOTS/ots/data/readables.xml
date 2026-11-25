@@ -20,12 +20,6 @@
 	<readable x="166" y="46" z="7" text="WAVE ARENA\nJungle Clearing: 20 waves (lvl 25-100+)\nGroup challenge. Time ranking &amp; weekly rewards"/>
 	<readable x="168" y="46" z="7" text="SAND CLOCK\n6-wave time attack\nClear waves for extra time &amp; daily reward"/>
 	<!-- END TEMPLE_PORTAL_SIGNS -->
-	<!-- BEGIN HELL_QUEST_SIGNS -->
-	<readable x="316" y="158" z="7" text="CULT FORTRESS\nThe fire warlocks no longer pray to anyone."/>
-	<readable x="349" y="207" z="7" text="HELL ISLAND\nNorth: the Crossroads. West: Ash Fields.\nEast: Lava Rivers. Beyond: the Fortress and the Crater."/>
-	<readable x="350" y="181" z="7" text="THE CROSSROADS\nWest: Ash Fields. East: Lava Rivers.\nNorth: Cult Fortress and the Crater."/>
-	<readable x="362" y="150" z="7" text="THE MAW OF HELL\nGate: level 80. Hellhounds hunt below.\nIn the Abyss, the Ashlord's gate requires level 100."/>
-	<!-- END HELL_QUEST_SIGNS -->
 	<!-- BEGIN NORTH_PASS_SIGNS -->
 	<readable x="187" y="13" z="7" text="NORTH PASS\nForest, Frozen Tundra and Dragon Caves.\nCaves: level 60+."/>
 	<readable x="411" y="332" z="7" text="FROZEN TUNDRA\nWinter Wolves, Polar Bears and Trolls.\nA yeti is said to roam the lake."/>
@@ -168,4 +162,10 @@
 	<!-- BEGIN AZURE_CALDERA_SIGNS -->
 	<readable x="656" y="377" z="7" text="THE AZURE CALDERA\nCold-fire undead. Level 60+.\nThe path ends at Azhurak's shrine.\nPortal to the temple: here."/>
 	<!-- END AZURE_CALDERA_SIGNS -->
+	<!-- BEGIN HELL_QUEST_SIGNS -->
+	<readable x="316" y="158" z="7" text="CULT FORTRESS\nThe fire warlocks no longer pray to anyone."/>
+	<readable x="349" y="207" z="7" text="HELL ISLAND\nNorth: the Crossroads. West: Ash Fields.\nEast: Lava Rivers. Beyond: the Fortress and the Crater."/>
+	<readable x="350" y="181" z="7" text="THE CROSSROADS\nWest: Ash Fields. East: Lava Rivers.\nNorth: Cult Fortress and the Crater."/>
+	<readable x="362" y="150" z="7" text="THE MAW OF HELL\nGate: level 80. Hellhounds hunt below.\nIn the Abyss, the Ashlord's gate requires level 100."/>
+	<!-- END HELL_QUEST_SIGNS -->
 </readables>

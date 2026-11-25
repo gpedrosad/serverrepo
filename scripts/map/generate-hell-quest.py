@@ -48,7 +48,12 @@ Noise, neighbors_in, pieces_for, fix_until_valid, reach, Blocking = (
 brush, ellipse, grow = FI.brush, FI.ellipse, FI.grow
 blocks_to_tiles, fix_diagonals, b_line, b_rect = FI.blocks_to_tiles, FI.fix_diagonals, FI.b_line, FI.b_rect
 WALL_SIDE, WALL_CORNER, WALL_INNER, ROCK = NP.WALL_SIDE, NP.WALL_CORNER, NP.WALL_INNER, NP.ROCK
-COAST_SIDE, COAST_CORNER, COAST_INNER, WATER = FI.COAST_SIDE, FI.COAST_CORNER, FI.COAST_INNER, FI.WATER
+WATER = FI.WATER
+# Costa de roca propia (24 nov 2026): antes se tomaba la de generate-frozen-isle.py, que pasó a costa de nieve
+# (659-669) en a526166d; regenerar la Hell Quest le ponía nieve a la isla del infierno.
+COAST_SIDE = {"n": 4644, "e": 4645, "s": 4646, "w": 4647}
+COAST_CORNER = {("n", "w"): 4648, ("n", "e"): 4649, ("s", "w"): 4650, ("s", "e"): 4651}
+COAST_INNER = {"nw": 4652, "ne": 4653, "sw": 4654, "se": 4655}
 CARD = NP.CARD
 
 SPAWNS, NPCS, READABLES, BOAT = FI.SPAWNS, FI.NPCS, FI.READABLES, FI.BOAT
@@ -61,6 +66,7 @@ OLD_NIMRAL = (346, 168)
 
 # --- piezas -------------------------------------------------------------------------------------
 ASH, LAVA, MARBLE = 105, 598, 407             # grava (ceniza), lava, mármol negro
+ASH_PATCH = 3152                              # ceniza clara (la de la isla volcánica), en manchas
 LAVA_SIDE = {"n": 554, "s": 555, "w": 556, "e": 557}          # lava con borde de grava (suelo)
 LAVA_CORNER = {("n", "w"): 558, ("n", "e"): 559, ("s", "w"): 560, ("s", "e"): 561}
 LAVA_INNER = {"nw": 562, "ne": 563, "se": 564, "sw": 565}
@@ -154,7 +160,8 @@ def build_surface(seed: int, bl):
     rivers = blockify((rivers & grow(east, 1)) - grow(road, 1))
     # charcos de lava en los campos del oeste
     pools = set()
-    for (px, py, w_, h_) in ((22, 54, 3, 2), (36, 66, 2, 2), (26, 70, 2, 1)):
+    # (24 nov 2026) dos lagunas de verdad en vez de tres charquitos de 2x3 sueltos en la llanura
+    for (px, py, w_, h_) in ((22, 55, 4, 3), (37, 67, 3.5, 2.5)):
         pools |= blockify(ellipse(px, py, w_ * 1.6, h_ * 1.8))
     pools = blockify(pools & grow(west, 1))
 
@@ -196,6 +203,8 @@ def build_surface(seed: int, bl):
             tiles[c] = [p[0] if p else LAVA]
         elif c in fort:
             tiles[c] = [MARBLE]
+        elif c in west | east and c not in road and nz.fbm(x / 4, y / 4, 3, 77) > 0.62:
+            tiles[c] = [ASH_PATCH]                      # manchas de ceniza clara en la llanura
         else:
             tiles[c] = [ASH]
         coast = pieces_for(neighbors_in(water, x, y), COAST_SIDE, COAST_CORNER, COAST_INNER)
@@ -219,7 +228,7 @@ def build_surface(seed: int, bl):
             continue
         r = rng.random()
         item = None
-        if r < 0.035:
+        if r < 0.06:
             item = rng.choice((STONE, RUBBLE, LAVA_HOLE, rng.choice(DEAD_TREES)))
         if item is not None and bl.blocks(item):
             if len(reach(walk - {c}, LANDING)) != n_reach - 1:
@@ -227,8 +236,8 @@ def build_surface(seed: int, bl):
             put(c, item)
             walk.discard(c)
             n_reach -= 1
-        elif r < 0.07:
-            tiles[c].append(rng.choice(BONES + (PEBBLES, SKULLS, DEMON_SKELETON)))
+        elif r < 0.14:
+            tiles[c].append(rng.choice(BONES + (PEBBLES, PEBBLES, SKULLS, DEMON_SKELETON)))
 
     # relleno: todo lo que no es jugable es roca volcánica (bloquea); lo grande no tapa el camino
     big = set()

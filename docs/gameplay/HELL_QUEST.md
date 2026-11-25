@@ -79,3 +79,15 @@ Caja **x 288–405, y 124–226, z7–z9**. Re-ejecutable y determinista. Escrib
 Valida antes de escribir: costa, bordes de lava (una pieza por casilla: la lava se arma en bloques de
 2x2 y se achica hasta que cada casilla tenga pieza), paredes de cueva, que se llegue del puerto a la
 bajada, entre pisos, a la arena, a los cofres y al portal, y que nada caminable vea el borde de la caja.
+
+## Retoque visual (24 nov 2026)
+
+- Los tres charquitos de lava de 2×3 sueltos en los Campos de Ceniza pasaron a **dos lagunas** de verdad.
+- La llanura tiene **manchas de ceniza clara** (`3152`, la de la isla volcánica) y el doble de decoración suelta
+  (piedras, huesos, calaveras, árboles muertos), sin cortar el paso.
+- **Costa propia:** el generador tomaba la costa de `generate-frozen-isle.py`, que en `a526166d` pasó a costa de
+  **nieve** (659–669). Regenerar la Hell Quest le ponía nieve a la isla; ahora usa su costa de roca (4644–4655).
+- La lava sigue en bloques de 2×2 (bordes en escalera): el borde de esta lava va en el mismo suelo
+  (`554–565`, una pieza por casilla), así que no admite diagonales suaves sin cambiar de familia de bordes.
+- Al regenerar cambian de lugar piedras y calaveras sueltas de z8/z9 (se corre la secuencia del azar); los
+  cofres, la arena, las escaleras y los spawns los valida el generador.
