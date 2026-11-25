@@ -222,16 +222,30 @@ def build_surface(seed: int, bl):
         x, y = c
         return any(q in walk for q in ((x - 1, y), (x, y - 1), (x - 1, y - 1)))
 
+    # Solo bloquea la franja pegada al sendero (8 vecinos): lo de adentro es inalcanzable y queda como nieve
+    # abierta con pinos y rocas sueltos. Antes había un bloqueo en cada casilla y se veía una grilla de
+    # piedras (24 nov 2026).
+    fence = {c for c in filler if any((c[0] + dx, c[1] + dy) in walk for dx in (-1, 0, 1) for dy in (-1, 0, 1))}
     for c in filler:
         x, y = c
         rocky = y < ROCKY_Y
         r = rng.random()
+        if c not in fence:
+            near_big = any((x + dx, y + dy) in big for dx in (-1, 0, 1) for dy in (-1, 0, 1))
+            if r < (0.16 if rocky else 0.24) and not near_big and not covers_path(c):
+                put(c, RUBBLE if rocky else (PINE if rng.random() < 0.8 else rng.choice(DEAD_TREES)))
+                big.add(c)
+            elif r < 0.34:
+                put(c, STALAGMITE if rocky or rng.random() < 0.5 else STONE)
+            elif r < 0.42:
+                tiles[c].append(PEBBLES)
+            continue
         if rocky:
-            put(c, STONE if r < 0.55 else STALAGMITE if r < 0.8 else PEBBLES)
+            put(c, STONE if r < 0.35 else STALAGMITE if r < 0.8 else PEBBLES)
             if bl.walkable(tiles[c]):          # las piedritas no bloquean: debajo va una piedra
                 tiles[c].append(STONE)
         else:
-            put(c, STONE if r < 0.45 else STALAGMITE if r < 0.9 else rng.choice(DEAD_TREES))
+            put(c, STONE if r < 0.3 else STALAGMITE if r < 0.75 else rng.choice(DEAD_TREES))
         near_big = any((x + dx, y + dy) in big for dx in (-1, 0, 1) for dy in (-1, 0, 1))
         if covers_path(c) or near_big:
             continue

@@ -2449,218 +2449,218 @@
 	<!-- END IMPERIAL_CASTLE_SPAWNS -->
 	<!-- BEGIN FROZEN_ISLE_SPAWNS (scripts/map/generate-frozen-isle.py) -->
 	<spawn centerx="381" centery="97" centerz="7" radius="3">
-		<monster name="Winter Wolf" x="-1" y="0" z="7" spawntime="120" />
+		<monster name="Winter Wolf" x="2" y="0" z="7" spawntime="120" />
 		<monster name="Winter Wolf" x="1" y="0" z="7" spawntime="120" />
 	</spawn>
 	<spawn centerx="407" centery="88" centerz="7" radius="3">
-		<monster name="Winter Wolf" x="-1" y="0" z="7" spawntime="120" />
-		<monster name="Winter Wolf" x="0" y="-1" z="7" spawntime="120" />
+		<monster name="Winter Wolf" x="0" y="0" z="7" spawntime="120" />
+		<monster name="Winter Wolf" x="0" y="-2" z="7" spawntime="120" />
 	</spawn>
 	<spawn centerx="401" centery="89" centerz="7" radius="3">
-		<monster name="Winter Wolf" x="1" y="-1" z="7" spawntime="120" />
-		<monster name="Winter Wolf" x="2" y="-1" z="7" spawntime="120" />
+		<monster name="Winter Wolf" x="-2" y="0" z="7" spawntime="120" />
+		<monster name="Winter Wolf" x="-1" y="0" z="7" spawntime="120" />
 	</spawn>
 	<spawn centerx="392" centery="89" centerz="7" radius="3">
+		<monster name="Winter Wolf" x="-1" y="0" z="7" spawntime="120" />
 		<monster name="Winter Wolf" x="-2" y="0" z="7" spawntime="120" />
-		<monster name="Winter Wolf" x="0" y="-1" z="7" spawntime="120" />
 	</spawn>
-	<spawn centerx="386" centery="95" centerz="7" radius="3">
+	<spawn centerx="403" centery="77" centerz="7" radius="3">
+		<monster name="Polar Bear" x="-2" y="-1" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="376" centery="95" centerz="7" radius="3">
 		<monster name="Polar Bear" x="-1" y="2" z="7" spawntime="150" />
 	</spawn>
-	<spawn centerx="402" centery="80" centerz="7" radius="3">
-		<monster name="Polar Bear" x="0" y="-2" z="7" spawntime="150" />
-	</spawn>
-	<spawn centerx="396" centery="44" centerz="7" radius="3">
-		<monster name="Frost Troll" x="1" y="-2" z="7" spawntime="150" />
+	<spawn centerx="376" centery="65" centerz="7" radius="3">
+		<monster name="Frost Troll" x="1" y="-1" z="7" spawntime="150" />
 		<monster name="Frost Troll" x="0" y="0" z="7" spawntime="150" />
 	</spawn>
-	<spawn centerx="393" centery="61" centerz="7" radius="3">
-		<monster name="Frost Troll" x="-1" y="0" z="7" spawntime="150" />
-		<monster name="Frost Troll" x="2" y="1" z="7" spawntime="150" />
-	</spawn>
-	<spawn centerx="401" centery="55" centerz="7" radius="3">
-		<monster name="Frost Troll" x="2" y="1" z="7" spawntime="150" />
-		<monster name="Frost Troll" x="2" y="0" z="7" spawntime="150" />
-	</spawn>
-	<spawn centerx="402" centery="71" centerz="7" radius="3">
-		<monster name="Frost Troll" x="1" y="0" z="7" spawntime="150" />
+	<spawn centerx="399" centery="68" centerz="7" radius="3">
+		<monster name="Frost Troll" x="0" y="0" z="7" spawntime="150" />
 		<monster name="Frost Troll" x="0" y="1" z="7" spawntime="150" />
 	</spawn>
-	<spawn centerx="374" centery="63" centerz="7" radius="3">
-		<monster name="Yeti" x="2" y="2" z="7" spawntime="1800" />
-	</spawn>
-	<spawn centerx="389" centery="37" centerz="7" radius="3">
-		<monster name="Ice Monk" x="0" y="-1" z="7" spawntime="180" />
-		<monster name="Ice Monk" x="-1" y="-2" z="7" spawntime="180" />
-	</spawn>
-	<spawn centerx="401" centery="38" centerz="7" radius="3">
-		<monster name="Ice Monk" x="-1" y="-2" z="7" spawntime="180" />
-		<monster name="Ice Monk" x="0" y="-2" z="7" spawntime="180" />
-	</spawn>
-	<spawn centerx="398" centery="34" centerz="7" radius="3">
-		<monster name="Ice Monk" x="2" y="0" z="7" spawntime="180" />
-		<monster name="Ice Monk" x="-1" y="1" z="7" spawntime="180" />
-	</spawn>
-	<spawn centerx="393" centery="40" centerz="7" radius="3">
-		<monster name="Ice Monk" x="-2" y="-1" z="7" spawntime="180" />
-		<monster name="Ice Monk" x="0" y="2" z="7" spawntime="180" />
-	</spawn>
-	<spawn centerx="394" centery="21" centerz="7" radius="3">
-		<monster name="Ice Monk" x="1" y="0" z="7" spawntime="180" />
-	</spawn>
-	<spawn centerx="389" centery="28" centerz="7" radius="3">
-		<monster name="Ice Monk" x="0" y="1" z="7" spawntime="180" />
-	</spawn>
-	<spawn centerx="398" centery="17" centerz="7" radius="3">
-		<monster name="Ice Monk" x="1" y="0" z="7" spawntime="180" />
-	</spawn>
-	<spawn centerx="407" centery="82" centerz="7" radius="3">
-		<monster name="Chakoya Tribewarden" x="-1" y="0" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="376" centery="96" centerz="7" radius="3">
-		<monster name="Chakoya Tribewarden" x="0" y="1" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="387" centery="91" centerz="7" radius="3">
-		<monster name="Chakoya Toolshaper" x="-1" y="-1" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="388" centery="88" centerz="7" radius="3">
-		<monster name="Chakoya Toolshaper" x="-1" y="2" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="403" centery="76" centerz="7" radius="3">
-		<monster name="Chakoya Windcaller" x="-1" y="0" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="396" centery="88" centerz="7" radius="3">
-		<monster name="Chakoya Windcaller" x="1" y="0" z="7" spawntime="90" />
-	</spawn>
-	<spawn centerx="395" centery="52" centerz="7" radius="3">
-		<monster name="Husky" x="0" y="0" z="7" spawntime="120" />
-	</spawn>
-	<spawn centerx="378" centery="64" centerz="7" radius="3">
-		<monster name="Husky" x="1" y="0" z="7" spawntime="120" />
-	</spawn>
-	<spawn centerx="391" centery="68" centerz="7" radius="3">
-		<monster name="Barbarian Headsplitter" x="0" y="-1" z="7" spawntime="120" />
+	<spawn centerx="396" centery="44" centerz="7" radius="3">
+		<monster name="Frost Troll" x="2" y="1" z="7" spawntime="150" />
+		<monster name="Frost Troll" x="0" y="-2" z="7" spawntime="150" />
 	</spawn>
 	<spawn centerx="383" centery="64" centerz="7" radius="3">
+		<monster name="Frost Troll" x="-2" y="0" z="7" spawntime="150" />
+		<monster name="Frost Troll" x="-1" y="0" z="7" spawntime="150" />
+	</spawn>
+	<spawn centerx="372" centery="61" centerz="7" radius="3">
+		<monster name="Yeti" x="1" y="1" z="7" spawntime="1800" />
+	</spawn>
+	<spawn centerx="396" centery="34" centerz="7" radius="3">
+		<monster name="Ice Monk" x="-1" y="-1" z="7" spawntime="180" />
+		<monster name="Ice Monk" x="-1" y="2" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="391" centery="32" centerz="7" radius="3">
+		<monster name="Ice Monk" x="-1" y="0" z="7" spawntime="180" />
+		<monster name="Ice Monk" x="1" y="0" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="388" centery="40" centerz="7" radius="3">
+		<monster name="Ice Monk" x="1" y="0" z="7" spawntime="180" />
+		<monster name="Ice Monk" x="2" y="2" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="401" centery="36" centerz="7" radius="3">
+		<monster name="Ice Monk" x="-1" y="-1" z="7" spawntime="180" />
+		<monster name="Ice Monk" x="-2" y="-2" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="386" centery="21" centerz="7" radius="3">
+		<monster name="Ice Monk" x="-2" y="1" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="392" centery="22" centerz="7" radius="3">
+		<monster name="Ice Monk" x="2" y="0" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="386" centery="29" centerz="7" radius="3">
+		<monster name="Ice Monk" x="2" y="-1" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="387" centery="90" centerz="7" radius="3">
+		<monster name="Chakoya Tribewarden" x="1" y="-1" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="387" centery="95" centerz="7" radius="3">
+		<monster name="Chakoya Tribewarden" x="-1" y="-1" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="406" centery="84" centerz="7" radius="3">
+		<monster name="Chakoya Toolshaper" x="-2" y="-1" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="407" centery="81" centerz="7" radius="3">
+		<monster name="Chakoya Toolshaper" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="402" centery="81" centerz="7" radius="3">
+		<monster name="Chakoya Windcaller" x="-2" y="2" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="396" centery="89" centerz="7" radius="3">
+		<monster name="Chakoya Windcaller" x="1" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="396" centery="52" centerz="7" radius="3">
+		<monster name="Husky" x="1" y="2" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="400" centery="55" centerz="7" radius="3">
+		<monster name="Husky" x="-2" y="-1" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="403" centery="69" centerz="7" radius="3">
+		<monster name="Barbarian Headsplitter" x="0" y="1" z="7" spawntime="120" />
+	</spawn>
+	<spawn centerx="389" centery="64" centerz="7" radius="3">
 		<monster name="Barbarian Skullhunter" x="1" y="0" z="7" spawntime="120" />
 	</spawn>
-	<spawn centerx="389" centery="21" centerz="7" radius="3">
-		<monster name="Barbarian Brutetamer" x="-2" y="1" z="7" spawntime="150" />
+	<spawn centerx="391" centery="28" centerz="7" radius="3">
+		<monster name="Barbarian Brutetamer" x="-1" y="0" z="7" spawntime="150" />
 	</spawn>
-	<spawn centerx="395" centery="29" centerz="7" radius="3">
-		<monster name="Barbarian Bloodwalker" x="1" y="-1" z="7" spawntime="150" />
+	<spawn centerx="402" centery="20" centerz="7" radius="3">
+		<monster name="Barbarian Bloodwalker" x="-2" y="2" z="7" spawntime="150" />
 	</spawn>
-	<spawn centerx="386" centery="22" centerz="7" radius="3">
-		<monster name="Barbarian Bloodwalker" x="1" y="1" z="7" spawntime="150" />
+	<spawn centerx="396" centery="16" centerz="7" radius="3">
+		<monster name="Barbarian Bloodwalker" x="1" y="-2" z="7" spawntime="150" />
 	</spawn>
-	<spawn centerx="402" centery="21" centerz="7" radius="3">
-		<monster name="Frost Giant" x="0" y="-1" z="7" spawntime="150" />
+	<spawn centerx="396" centery="30" centerz="7" radius="3">
+		<monster name="Frost Giant" x="-1" y="-2" z="7" spawntime="150" />
 	</spawn>
-	<spawn centerx="403" centery="16" centerz="7" radius="3">
-		<monster name="Frost Giant" x="-1" y="2" z="7" spawntime="150" />
+	<spawn centerx="401" centery="16" centerz="7" radius="3">
+		<monster name="Frost Giant" x="0" y="0" z="7" spawntime="150" />
 	</spawn>
-	<spawn centerx="398" centery="22" centerz="7" radius="3">
-		<monster name="Frost Giantess" x="0" y="-1" z="7" spawntime="150" />
+	<spawn centerx="399" centery="21" centerz="7" radius="3">
+		<monster name="Frost Giantess" x="2" y="1" z="7" spawntime="150" />
 	</spawn>
-	<spawn centerx="395" centery="27" centerz="8" radius="3">
-		<monster name="Ice Spider" x="1" y="-1" z="8" spawntime="180" />
+	<spawn centerx="388" centery="53" centerz="8" radius="3">
+		<monster name="Ice Spider" x="2" y="1" z="8" spawntime="180" />
 		<monster name="Ice Spider" x="2" y="-1" z="8" spawntime="180" />
 	</spawn>
-	<spawn centerx="403" centery="35" centerz="8" radius="3">
+	<spawn centerx="405" centery="34" centerz="8" radius="3">
+		<monster name="Ice Spider" x="1" y="2" z="8" spawntime="180" />
+		<monster name="Ice Spider" x="-1" y="0" z="8" spawntime="180" />
+	</spawn>
+	<spawn centerx="395" centery="27" centerz="8" radius="3">
 		<monster name="Ice Spider" x="-1" y="2" z="8" spawntime="180" />
 		<monster name="Ice Spider" x="1" y="1" z="8" spawntime="180" />
 	</spawn>
-	<spawn centerx="401" centery="39" centerz="8" radius="3">
-		<monster name="Ice Spider" x="-1" y="0" z="8" spawntime="180" />
+	<spawn centerx="400" centery="39" centerz="8" radius="3">
+		<monster name="Ice Spider" x="0" y="-2" z="8" spawntime="180" />
 		<monster name="Ice Spider" x="2" y="-1" z="8" spawntime="180" />
 	</spawn>
-	<spawn centerx="390" centery="53" centerz="8" radius="3">
+	<spawn centerx="405" centery="23" centerz="8" radius="3">
+		<monster name="Ice Spider" x="0" y="0" z="8" spawntime="180" />
+		<monster name="Ice Spider" x="0" y="-2" z="8" spawntime="180" />
+	</spawn>
+	<spawn centerx="398" centery="43" centerz="8" radius="3">
+		<monster name="Ice Spider" x="1" y="-1" z="8" spawntime="180" />
+		<monster name="Ice Spider" x="2" y="0" z="8" spawntime="180" />
+	</spawn>
+	<spawn centerx="394" centery="45" centerz="8" radius="3">
+		<monster name="Ice Spider" x="2" y="-1" z="8" spawntime="180" />
+		<monster name="Ice Spider" x="0" y="1" z="8" spawntime="180" />
+	</spawn>
+	<spawn centerx="401" centery="19" centerz="8" radius="3">
+		<monster name="Ice Spider" x="2" y="-1" z="8" spawntime="180" />
+		<monster name="Ice Spider" x="-2" y="1" z="8" spawntime="180" />
+	</spawn>
+	<spawn centerx="392" centery="30" centerz="8" radius="3">
+		<monster name="Ice Spider" x="-1" y="0" z="8" spawntime="180" />
 		<monster name="Ice Spider" x="-1" y="1" z="8" spawntime="180" />
+	</spawn>
+	<spawn centerx="391" centery="50" centerz="8" radius="3">
+		<monster name="Ice Spider" x="0" y="1" z="8" spawntime="180" />
+		<monster name="Ice Spider" x="-2" y="2" z="8" spawntime="180" />
+	</spawn>
+	<spawn centerx="400" centery="31" centerz="8" radius="3">
 		<monster name="Ice Spider" x="1" y="0" z="8" spawntime="180" />
 	</spawn>
-	<spawn centerx="392" centery="31" centerz="8" radius="3">
-		<monster name="Ice Spider" x="0" y="-2" z="8" spawntime="180" />
-		<monster name="Ice Spider" x="2" y="0" z="8" spawntime="180" />
-	</spawn>
-	<spawn centerx="394" centery="44" centerz="8" radius="3">
-		<monster name="Ice Spider" x="0" y="2" z="8" spawntime="180" />
-		<monster name="Ice Spider" x="-2" y="-1" z="8" spawntime="180" />
-	</spawn>
-	<spawn centerx="387" centery="50" centerz="8" radius="3">
-		<monster name="Ice Spider" x="-1" y="1" z="8" spawntime="180" />
-		<monster name="Ice Spider" x="-2" y="2" z="8" spawntime="180" />
-	</spawn>
-	<spawn centerx="402" centery="21" centerz="8" radius="3">
-		<monster name="Ice Spider" x="2" y="-2" z="8" spawntime="180" />
-		<monster name="Ice Spider" x="2" y="0" z="8" spawntime="180" />
-	</spawn>
-	<spawn centerx="398" centery="46" centerz="8" radius="3">
-		<monster name="Ice Spider" x="1" y="-2" z="8" spawntime="180" />
+	<spawn centerx="380" centery="50" centerz="8" radius="3">
 		<monster name="Ice Spider" x="-1" y="-1" z="8" spawntime="180" />
 	</spawn>
-	<spawn centerx="386" centery="55" centerz="8" radius="3">
-		<monster name="Ice Spider" x="1" y="-1" z="8" spawntime="180" />
+	<spawn centerx="397" centery="54" centerz="8" radius="3">
+		<monster name="Ice Spider" x="1" y="1" z="8" spawntime="180" />
+	</spawn>
+	<spawn centerx="388" centery="45" centerz="8" radius="3">
 		<monster name="Ice Spider" x="0" y="-1" z="8" spawntime="180" />
 	</spawn>
-	<spawn centerx="396" centery="21" centerz="8" radius="3">
-		<monster name="Ice Spider" x="-2" y="0" z="8" spawntime="180" />
+	<spawn centerx="377" centery="38" centerz="8" radius="3">
+		<monster name="Ice Spider" x="-1" y="-1" z="8" spawntime="180" />
 	</spawn>
-	<spawn centerx="409" centery="45" centerz="8" radius="3">
-		<monster name="Ice Spider" x="-1" y="-2" z="8" spawntime="180" />
+	<spawn centerx="393" centery="38" centerz="8" radius="3">
+		<monster name="Ice Spider" x="1" y="1" z="8" spawntime="180" />
 	</spawn>
-	<spawn centerx="395" centery="39" centerz="8" radius="3">
-		<monster name="Ice Spider" x="1" y="-1" z="8" spawntime="180" />
+	<spawn centerx="384" centery="52" centerz="8" radius="3">
+		<monster name="Ice Golem" x="0" y="2" z="8" spawntime="180" />
 	</spawn>
-	<spawn centerx="377" centery="31" centerz="8" radius="3">
-		<monster name="Ice Spider" x="0" y="-2" z="8" spawntime="180" />
+	<spawn centerx="405" centery="30" centerz="8" radius="3">
+		<monster name="Ice Golem" x="2" y="-2" z="8" spawntime="180" />
 	</spawn>
-	<spawn centerx="388" centery="44" centerz="8" radius="3">
-		<monster name="Ice Spider" x="2" y="-2" z="8" spawntime="180" />
+	<spawn centerx="377" centery="30" centerz="8" radius="3">
+		<monster name="Ice Golem" x="1" y="-2" z="8" spawntime="180" />
 	</spawn>
-	<spawn centerx="409" centery="27" centerz="8" radius="3">
-		<monster name="Ice Spider" x="-2" y="2" z="8" spawntime="180" />
+	<spawn centerx="404" centery="39" centerz="8" radius="3">
+		<monster name="Crystal Spider" x="1" y="-1" z="8" spawntime="240" />
 	</spawn>
-	<spawn centerx="388" centery="31" centerz="8" radius="3">
-		<monster name="Ice Golem" x="-2" y="-1" z="8" spawntime="180" />
-	</spawn>
-	<spawn centerx="405" centery="28" centerz="8" radius="3">
-		<monster name="Ice Golem" x="0" y="1" z="8" spawntime="180" />
-	</spawn>
-	<spawn centerx="403" centery="45" centerz="8" radius="3">
-		<monster name="Ice Golem" x="1" y="0" z="8" spawntime="180" />
-	</spawn>
-	<spawn centerx="382" centery="44" centerz="8" radius="3">
+	<spawn centerx="386" centery="38" centerz="8" radius="3">
 		<monster name="Crystal Spider" x="-2" y="1" z="8" spawntime="240" />
 	</spawn>
-	<spawn centerx="378" centery="50" centerz="8" radius="3">
-		<monster name="Crystal Spider" x="2" y="2" z="8" spawntime="240" />
-	</spawn>
-	<spawn centerx="411" centery="32" centerz="9" radius="3">
+	<spawn centerx="403" centery="40" centerz="9" radius="3">
 		<monster name="Frost Dragon" x="0" y="1" z="9" spawntime="300" />
 	</spawn>
-	<spawn centerx="401" centery="39" centerz="9" radius="3">
-		<monster name="Frost Dragon" x="0" y="1" z="9" spawntime="300" />
+	<spawn centerx="394" centery="42" centerz="9" radius="3">
+		<monster name="Frost Dragon" x="-1" y="-2" z="9" spawntime="300" />
 	</spawn>
-	<spawn centerx="401" centery="45" centerz="9" radius="3">
+	<spawn centerx="404" centery="45" centerz="9" radius="3">
 		<monster name="Frost Dragon" x="-2" y="0" z="9" spawntime="300" />
 	</spawn>
-	<spawn centerx="399" centery="32" centerz="9" radius="3">
-		<monster name="Frost Dragon" x="1" y="2" z="9" spawntime="300" />
+	<spawn centerx="400" centery="33" centerz="9" radius="3">
+		<monster name="Frost Dragon" x="2" y="-1" z="9" spawntime="300" />
 	</spawn>
-	<spawn centerx="391" centery="35" centerz="9" radius="3">
-		<monster name="Frost Dragon" x="0" y="2" z="9" spawntime="300" />
+	<spawn centerx="399" centery="43" centerz="9" radius="3">
+		<monster name="Frost Dragon" x="2" y="2" z="9" spawntime="300" />
 	</spawn>
-	<spawn centerx="412" centery="48" centerz="9" radius="3">
-		<monster name="Ice Spider" x="1" y="-2" z="9" spawntime="180" />
+	<spawn centerx="394" centery="30" centerz="9" radius="3">
+		<monster name="Ice Spider" x="0" y="1" z="9" spawntime="180" />
 	</spawn>
 	<spawn centerx="394" centery="25" centerz="9" radius="3">
-		<monster name="Ice Spider" x="1" y="1" z="9" spawntime="180" />
+		<monster name="Ice Spider" x="1" y="2" z="9" spawntime="180" />
 	</spawn>
-	<spawn centerx="411" centery="41" centerz="9" radius="3">
-		<monster name="Frost Dragon Hatchling" x="1" y="-1" z="9" spawntime="240" />
+	<spawn centerx="412" centery="47" centerz="9" radius="3">
+		<monster name="Frost Dragon Hatchling" x="0" y="-1" z="9" spawntime="240" />
 	</spawn>
-	<spawn centerx="395" centery="36" centerz="9" radius="3">
-		<monster name="Frost Dragon Hatchling" x="0" y="1" z="9" spawntime="240" />
+	<spawn centerx="410" centery="37" centerz="9" radius="3">
+		<monster name="Frost Dragon Hatchling" x="2" y="0" z="9" spawntime="240" />
 	</spawn>
 	<!-- END FROZEN_ISLE_SPAWNS -->
 	<!-- BEGIN DESERT_HUNTS_SPAWNS (scripts/map/generate-desert-hunts.py) -->
@@ -3018,18 +3018,6 @@
 	<!-- END DESERT_HUNTS_SPAWNS -->
 
 	<!-- Criaturas 8.60: resto del catalogo (nov 2026) -->
-	<spawn centerx="386" centery="92" centerz="7" radius="3">
-		<monster name="Mammoth" x="0" y="0" z="7" spawntime="180" />
-	</spawn>
-	<spawn centerx="394" centery="88" centerz="7" radius="3">
-		<monster name="Mammoth" x="0" y="0" z="7" spawntime="180" />
-	</spawn>
-	<spawn centerx="377" centery="63" centerz="7" radius="3">
-		<monster name="Water Elemental" x="0" y="0" z="7" spawntime="240" />
-	</spawn>
-	<spawn centerx="406" centery="20" centerz="8" radius="3">
-		<monster name="Quara Hydromancer" x="0" y="0" z="8" spawntime="300" />
-	</spawn>
 	<!-- BEGIN BAMBOO_DEPTHS_SPAWNS (scripts/map/generate-bamboo-depths.py) -->
 	<spawn centerx="176" centery="96" centerz="9" radius="3">
 		<monster name="Dworc Venomsniper" x="0" y="0" z="9" spawntime="175" />
