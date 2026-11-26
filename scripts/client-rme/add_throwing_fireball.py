@@ -105,26 +105,28 @@ def prepare_item() -> None:
     sheet.save(ITEM_ART)
 
 
-def install_missile(things: Path, apply: bool) -> None:
+def install_missile(things: Path, apply: bool, missile_id: int = MISSILE,
+                    art: list[Image.Image | None] | None = None) -> None:
     dat_path, spr_path = things / "Tibia.dat", things / "Tibia.spr"
     dat = dat_path.read_bytes()
     reader = B.SprReader(spr_path.read_bytes())
     counts, _, missiles = read_sections(dat)
-    records = [B.encode_sprite_record(image) if image is not None else None for image in projectiles()]
+    records = [B.encode_sprite_record(image) if image is not None else None
+               for image in (projectiles() if art is None else art)]
     # The Snowball already uses the native 3x3 direction grid, including its empty center.
     snowball = missiles[12]
     prefix = dat[snowball["start"]:snowball["sprite_pos"]]
     if len(snowball["ids"]) != len(records) or missiles[-1]["end"] != len(dat):
         raise SystemExit("Unexpected Snowball missile or DAT layout")
-    if counts[3] > MISSILE:
-        installed = missiles[MISSILE]
+    if counts[3] > missile_id:
+        installed = missiles[missile_id]
         existing = [reader.sprite_raw(sid) if sid else None for sid in installed["ids"]]
         if dat[installed["start"]:installed["sprite_pos"]] != prefix or existing != records:
-            raise SystemExit(f"DAT missile {MISSILE} is occupied by different artwork")
-        print(f"Missile {MISSILE}: already installed and verified")
+            raise SystemExit(f"DAT missile {missile_id} is occupied by different artwork")
+        print(f"Missile {missile_id}: already installed and verified")
         return
-    if counts[3] != MISSILE:
-        raise SystemExit(f"Expected {MISSILE} existing missiles, found {counts[3]}")
+    if counts[3] != missile_id:
+        raise SystemExit(f"Expected {missile_id} existing missiles, found {counts[3]}")
 
     sprites = [None, *(reader.sprite_raw(sid) for sid in range(1, reader.sprite_count + 1))]
     ids = []
@@ -132,15 +134,15 @@ def install_missile(things: Path, apply: bool) -> None:
         ids.append(len(sprites) if record else 0)
         if record:
             sprites.append(record)
-    new_dat = dat[:10] + struct.pack("<H", MISSILE + 1) + dat[12:] + prefix + struct.pack("<9H", *ids)
+    new_dat = dat[:10] + struct.pack("<H", missile_id + 1) + dat[12:] + prefix + struct.pack("<9H", *ids)
     new_counts, _, new_missiles = read_sections(new_dat)
-    if new_counts != (*counts[:3], MISSILE + 1) or new_missiles[-1]["ids"] != ids:
-        raise SystemExit("Could not verify new Fireball missile in the DAT")
+    if new_counts != (*counts[:3], missile_id + 1) or new_missiles[-1]["ids"] != ids:
+        raise SystemExit(f"Could not verify missile {missile_id} in the DAT")
     new_spr = B.write_spr(reader.signature, sprites)
     if apply:
         spr_path.write_bytes(new_spr)
         dat_path.write_bytes(new_dat)
-    print(f"Missile {MISSILE}: eight directions ({'installed' if apply else 'ready'})")
+    print(f"Missile {missile_id}: eight directions ({'installed' if apply else 'ready'})")
 
 
 def preview(path: Path) -> None:
