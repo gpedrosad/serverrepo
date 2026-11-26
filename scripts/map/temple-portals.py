@@ -10,6 +10,8 @@ Hace, en una pasada e idempotente:
      Izquierda = hunts, derecha = eventos. Los huecos de piso 165 y 167 (no el
      pasillo cian 160-162 ni el obelisco 169) llevan Desierto y Glaciar del Este.
      La vuelta de cada uno se asegura en RETURNS (junto a la llegada, fuera del eje).
+     Cada portal puede traer su propia fila `y` (default 47): la fila y=47 se llenó y
+     el Pantano de los Kongra usa la fila espejo y=51 (cartel y=50, llegada y=52).
   3. Fila vieja 155-169, 53-55: saca portales 1387 y carteles 1429 (queda de pasillo).
   4. Reapunta los portales de vuelta: todo teleport fuera del templo que apunte al templo
      pasa a la llegada del portal de su zona.
@@ -50,48 +52,58 @@ KEEP = {1543, 1544, 1545, 1480} | KEEP_DETAILS
 PORTAL_Y = 47
 ROW_GROUND_FIX = {(160, 53): WHITE, (160, 54): WHITE, (160, 55): WHITE}  # base del portal viejo del maze
 
-# (clave, x del portal, destino, cartel, zonas cuyas vueltas llegan a este portal)
+# (clave, x del portal, y del portal, destino, cartel, zonas cuyas vueltas llegan a este portal)
+# y=47 es la fila original (los ocho clásicos + desierto/glaciar/cíclopes). La fila y=47 se llenó:
+# el Pantano de los Kongra va en la fila espejo y=51 (cartel al norte y=50, llegada al sur y=52).
 PORTALS = [
-    ("isla", 156, (147, 462, 7), "NATURAL ISLAND\n3 Cyclops camps\nThree-floor cave: the Queen",
+    ("isla", 156, 47, (147, 462, 7), "NATURAL ISLAND\n3 Cyclops camps\nThree-floor cave: the Queen",
      [(124, 426, 187, 483, 7), (124, 426, 187, 483, 8), (124, 426, 187, 483, 9),
       (124, 426, 187, 483, 10)]),
-    ("catedral", 155, (148, 335, 7), "DARK CATHEDRAL\nRuins and a two-floor crypt\nFrom Bandits to Dark Monks",
+    ("catedral", 155, 47, (148, 335, 7), "DARK CATHEDRAL\nRuins and a two-floor crypt\nFrom Bandits to Dark Monks",
      [(85, 264, 183, 373, 7), (85, 264, 183, 373, 8), (85, 264, 183, 373, 9)]),
-    ("elvenbane", 157, (39, 346, 7), "ELVENBANE\nA seven-floor elven fortress.\nFrom orcs and elves to the tower dragon.",
+    ("elvenbane", 157, 47, (39, 346, 7), "ELVENBANE\nA seven-floor elven fortress.\nFrom orcs and elves to the tower dragon.",
      [(38, 296, 62, 317, 4), (38, 296, 62, 317, 5), (38, 296, 62, 317, 6),
       (18, 286, 72, 360, 7), (30, 288, 67, 349, 8), (33, 291, 67, 322, 9), (33, 291, 67, 322, 10)]),
-    ("valle", 158, (312, 360, 7), "BEAST VALLEY\nFour floors of challenging hunts\nFrom Minotaurs to Demons",
+    ("valle", 158, 47, (312, 360, 7), "BEAST VALLEY\nFour floors of challenging hunts\nFrom Minotaurs to Demons",
      [(262, 232, 361, 378, 7), (262, 232, 361, 378, 8), (262, 232, 361, 378, 9), (262, 232, 361, 378, 10),
       (449, 39, 489, 80, 7)]),
-    ("inferno", 159, (540, 440, 7), "INFERNO PITS\nFour floors of fiery caves\nFrom elementals to Furies",
+    ("inferno", 159, 47, (540, 440, 7), "INFERNO PITS\nFour floors of fiery caves\nFrom elementals to Furies",
      [(490, 240, 589, 460, 7), (490, 240, 589, 460, 8), (490, 240, 589, 460, 9), (490, 240, 589, 460, 10)]),
-    ("caldera", 163, (660, 378, 7), "AZURE CALDERA\nBlue lava and cold-fire undead\nLevel 60+. Boss: Azhurak",
+    ("caldera", 163, 47, (660, 378, 7), "AZURE CALDERA\nBlue lava and cold-fire undead\nLevel 60+. Boss: Azhurak",
      [(638, 298, 752, 394, 7)]),
-    ("crisol", 164, (605, 105, 0), "THE CRUCIBLE\nDaily ladder: Bronze, Silver, Gold (lvl 30-80+)\nGold boss drops a rare weapon",
+    ("crisol", 164, 47, (605, 105, 0), "THE CRUCIBLE\nDaily ladder: Bronze, Silver, Gold (lvl 30-80+)\nGold boss drops a rare weapon",
      [(592, 90, 717, 125, 0)]),
-    ("wave", 166, (606, 223, 7), "WAVE ARENA\nJungle Clearing: 20 waves (lvl 25-100+)\nGroup challenge. Time ranking & weekly rewards",
+    ("wave", 166, 47, (606, 223, 7), "WAVE ARENA\nJungle Clearing: 20 waves (lvl 25-100+)\nGroup challenge. Time ranking & weekly rewards",
      [(595, 200, 620, 230, 7)]),
-    ("reloj", 168, (605, 327, 6), "SAND CLOCK\n6-wave time attack\nClear waves for extra time & daily reward",
+    ("reloj", 168, 47, (605, 327, 6), "SAND CLOCK\n6-wave time attack\nClear waves for extra time & daily reward",
      [(595, 315, 615, 333, 6), (595, 315, 615, 333, 5)]),
     # Huecos de piso en la fila (el pasillo cian es x=160-162; el obelisco es 169,50).
-    ("desierto", 165, (198, 73, 7), "DESERT RUINS\nNine hunts from level 8 to 90\nStone path to the southern dock",
+    ("desierto", 165, 47, (198, 73, 7), "DESERT RUINS\nNine hunts from level 8 to 90\nStone path to the southern dock",
      [(198, 68, 262, 120, 7), (197, 73, 197, 73, 7)]),
-    ("glaciar", 167, (266, 38, 7), "EAST GLACIER\nIce trail from the old isle\nFrost Dragons and Ice Spiders",
+    ("glaciar", 167, 47, (266, 38, 7), "EAST GLACIER\nIce trail from the old isle\nFrost Dragons and Ice Spiders",
      [(263, 6, 354, 72, 7)]),
     # Última casilla de basalto libre en la fila (x=169): espejo de 155, que ya tenía portal 155,47
     # y obelisco 155,50. Acá el obelisco queda en 169,50 y el portal en 169,47 (no se toca el obelisco).
-    ("ciclopes", 169, (688, 30, 7), "CYCLOPS WOODS\nForest island for levels 20-40\nFrom cyclops to giant spiders",
+    ("ciclopes", 169, 47, (688, 30, 7), "CYCLOPS WOODS\nForest island for levels 20-40\nFrom cyclops to giant spiders",
      [(670, 10, 747, 140, 7)]),
+    # La fila y=47 quedó llena (155-159, 163-169 + pasillo cian 160-162). El Pantano de los Kongra va
+    # en la fila espejo y=51 (basalto libre dentro de la plaza, al sur del pasillo cian y=49): cartel al
+    # norte y=50, portal y=51, llegada al sur y=52. No se tocan obeliscos (155,50/169,50), balizas
+    # (157,51/168,51) ni la torre sureste (x>=165, y=52).
+    ("pantano", 163, 51, (783, 30, 7), "KONGRA SWAMP\nSwamp island for levels 15-45\nFrom swamp trolls to carniphila",
+     [(765, 10, 850, 140, 7)]),
 ]
 # Vuelta al lado de la llegada, fuera del eje que se camina.
 # Desierto: pasto al oeste de la arena 198,73 (fuera de la caja del generador).
 # Glaciar: borde norte del sendero, al oeste de la llegada y al sur del cartel 266,37.
 # El medio del sendero (y=39) queda libre. Si se regenera el glaciar, este script lo repone.
 # Cíclopes: pasto al oeste de la llegada 688,30 (fuera del sendero).
+# Pantano: pasto al oeste de la llegada 783,30 (fuera del sendero).
 RETURNS = {
     "desierto": (197, 73, 7),
     "glaciar": (265, 38, 7),
     "ciclopes": (687, 30, 7),
+    "pantano": (782, 30, 7),
 }
 S_BEGIN, S_END = "<!-- BEGIN TEMPLE_PORTAL_SIGNS -->", "<!-- END TEMPLE_PORTAL_SIGNS -->"
 
@@ -143,7 +155,7 @@ def main() -> int:
     raw = MAP.read_bytes()
     root = parse_tree(raw)
     spec = plan_tiles()
-    landing = {k: (px, PORTAL_Y + 1, Z) for k, px, _d, _t, _z in PORTALS}
+    landing = {k: (px, py + 1, Z) for k, px, py, _d, _t, _z in PORTALS}
 
     plaza_done, row_fixed, retargeted, unknown = 0, 0, [], []
     placed_returns, seen_returns = [], set()
@@ -208,7 +220,7 @@ def main() -> int:
                 dx, dy, dz = struct.unpack_from("<HHB", bytes(ch[1]), off)
                 if not in_box(dx, dy, dz, (*TEMPLE_AREA, Z)) or in_box(x, y, az, (*TEMPLE_AREA, Z)):
                     continue
-                key = next((k for k, _px, _d, _t, zones in PORTALS
+                key = next((k for k, _px, _py, _d, _t, zones in PORTALS
                             if any(in_box(x, y, az, b) for b in zones)), None)
                 if key is None:
                     unknown.append(((x, y, az), (dx, dy, dz)))
@@ -241,8 +253,8 @@ def main() -> int:
     print('accesos: escaleras 2×2, rellanos, corredor sur y entrada despejados')
 
     print(f"plaza: {plaza_done} casillas; torres: {tower_added} casillas nuevas; fila vieja: {row_fixed} portales/carteles sacados")
-    for k, px, dest, _t, _z in PORTALS:
-        print(f"  {k:10s} portal {px},{PORTAL_Y},{Z} -> {dest}; llegada {landing[k]}")
+    for k, px, py, dest, _t, _z in PORTALS:
+        print(f"  {k:10s} portal {px},{py},{Z} -> {dest}; llegada {landing[k]}")
     for k, src, dest in placed_returns:
         print(f"  vuelta nueva {k} {src} -> {dest}")
     for src, old, new, k in retargeted:
@@ -259,9 +271,9 @@ def main() -> int:
     rd = re.sub(r'[ \t]*<readable x="1(5[5-9]|6[0-9])" y="53" z="7"[^>]*/>\n', "", rd)
     rd = re.sub(r"[ \t]*<!-- BEGIN NATURAL_ISLAND_SIGNS -->\s*<!-- END NATURAL_ISLAND_SIGNS -->\n?", "", rd)
     lines = [f"\t{S_BEGIN}"]
-    for _k, px, _d, text, _z in PORTALS:
+    for _k, px, py, _d, text, _z in PORTALS:
         text = escape(text, {'"': "&quot;"}).replace("\n", "\\n")   # "&" crudo rompe el XML
-        lines.append(f'\t<readable x="{px}" y="{PORTAL_Y - 1}" z="{Z}" text="{text}"/>')
+        lines.append(f'\t<readable x="{px}" y="{py - 1}" z="{Z}" text="{text}"/>')
     lines.append(f"\t{S_END}")
     block = "\n".join(lines)
     if S_BEGIN in rd:

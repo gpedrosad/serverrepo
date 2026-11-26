@@ -69,9 +69,9 @@ def main():
             pos=(x+dx,y+dy,z)
             if 155<=pos[0]<=169 and 42<=pos[1]<=52 and pos not in seen and walkable(pos):
                 seen.add(pos);queue.append(pos)
-    for key,x,_d,_text,_zones in t.PORTALS:
-        assert (x,48,7) in seen,f'Llegada inaccesible: {key}'
-        assert (x,45,7) in seen,f'Cartel inaccesible desde el norte: {key}'
+    for key,x,py,_d,_text,_zones in t.PORTALS:
+        assert (x,py+1,7) in seen,f'Llegada inaccesible: {key}'
+        assert (x,py-1,7) in seen,f'Cartel inaccesible desde el norte: {key}'
     free={p for p in owned if p[2]==7 and p[:2] not in TOWER_BASE and walkable(p)}
     assert free<=seen,free-seen
     things=ROOT/'devtools/rme/rme-client-760'

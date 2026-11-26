@@ -1,0 +1,63 @@
+{
+ "stages": {
+  "stages": [
+   {
+    "monsters": [
+     "Snake",
+     "Wasp"
+    ],
+    "per": 1,
+    "spawntime": 85,
+    "gap": 13
+   },
+   {
+    "monsters": [
+     "Poison Spider",
+     "Swamp Troll"
+    ],
+    "per": 1,
+    "spawntime": 105,
+    "gap": 12
+   },
+   {
+    "monsters": [
+     "Sibang",
+     "Carniphila"
+    ],
+    "per": 2,
+    "spawntime": 140,
+    "gap": 10
+   },
+   {
+    "monsters": [
+     "Kongra",
+     "Merlkin"
+    ],
+    "per": 2,
+    "spawntime": 170,
+    "gap": 9
+   }
+  ]
+ },
+ "glades": {
+  "glades": {
+   "1": "hunter-camp",
+   "2": "mushroom-ring",
+   "3": "wolf-den",
+   "4": "meadow",
+   "5": "bear-den"
+  }
+ },
+ "pick-1-5-6": {
+  "choice": 0,
+  "why": "Highest score, lowest straight-coast, organic varied trails and evenly spread monsters."
+ },
+ "sign": {
+  "lines": [
+   "KONGRA SWAMP",
+   "Levels 15-45. Beware!",
+   "Snakes, wasps, spiders, trolls,",
+   "then Sibang, Kongra, Merlkin."
+  ]
+ }
+}

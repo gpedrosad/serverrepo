@@ -7234,4 +7234,103 @@
 		<monster name="Giant Spider" x="2" y="2" z="7" spawntime="180" />
 	</spawn>
 	<!-- END CYCLOPS_WOODS_SPAWNS -->
+	<!-- BEGIN KONGRA_SWAMP_SPAWNS (scripts/map/mapkit/build.py) -->
+	<spawn centerx="806" centery="28" centerz="7" radius="3">
+		<monster name="Snake" x="-2" y="0" z="7" spawntime="85" />
+	</spawn>
+	<spawn centerx="827" centery="36" centerz="7" radius="3">
+		<monster name="Wasp" x="0" y="-2" z="7" spawntime="85" />
+	</spawn>
+	<spawn centerx="795" centery="30" centerz="7" radius="3">
+		<monster name="Snake" x="1" y="1" z="7" spawntime="85" />
+	</spawn>
+	<spawn centerx="819" centery="29" centerz="7" radius="3">
+		<monster name="Wasp" x="-1" y="2" z="7" spawntime="85" />
+	</spawn>
+	<spawn centerx="833" centery="29" centerz="7" radius="3">
+		<monster name="Snake" x="0" y="0" z="7" spawntime="85" />
+	</spawn>
+	<spawn centerx="786" centery="54" centerz="7" radius="3">
+		<monster name="Poison Spider" x="2" y="-1" z="7" spawntime="105" />
+	</spawn>
+	<spawn centerx="817" centery="47" centerz="7" radius="3">
+		<monster name="Swamp Troll" x="0" y="2" z="7" spawntime="105" />
+	</spawn>
+	<spawn centerx="795" centery="49" centerz="7" radius="3">
+		<monster name="Poison Spider" x="0" y="0" z="7" spawntime="105" />
+	</spawn>
+	<spawn centerx="789" centery="43" centerz="7" radius="3">
+		<monster name="Swamp Troll" x="2" y="0" z="7" spawntime="105" />
+	</spawn>
+	<spawn centerx="805" centery="45" centerz="7" radius="3">
+		<monster name="Poison Spider" x="-2" y="1" z="7" spawntime="105" />
+	</spawn>
+	<spawn centerx="831" centery="46" centerz="7" radius="3">
+		<monster name="Swamp Troll" x="0" y="-2" z="7" spawntime="105" />
+	</spawn>
+	<spawn centerx="813" centery="60" centerz="7" radius="3">
+		<monster name="Sibang" x="-1" y="1" z="7" spawntime="140" />
+		<monster name="Carniphila" x="-2" y="2" z="7" spawntime="140" />
+	</spawn>
+	<spawn centerx="831" centery="74" centerz="7" radius="3">
+		<monster name="Sibang" x="0" y="2" z="7" spawntime="140" />
+		<monster name="Carniphila" x="0" y="1" z="7" spawntime="140" />
+	</spawn>
+	<spawn centerx="782" centery="60" centerz="7" radius="3">
+		<monster name="Sibang" x="1" y="1" z="7" spawntime="140" />
+		<monster name="Carniphila" x="0" y="2" z="7" spawntime="140" />
+	</spawn>
+	<spawn centerx="823" centery="65" centerz="7" radius="3">
+		<monster name="Sibang" x="2" y="2" z="7" spawntime="140" />
+		<monster name="Carniphila" x="-1" y="0" z="7" spawntime="140" />
+	</spawn>
+	<spawn centerx="806" centery="68" centerz="7" radius="3">
+		<monster name="Sibang" x="1" y="-1" z="7" spawntime="140" />
+		<monster name="Carniphila" x="2" y="0" z="7" spawntime="140" />
+	</spawn>
+	<spawn centerx="795" centery="69" centerz="7" radius="3">
+		<monster name="Sibang" x="-1" y="-1" z="7" spawntime="140" />
+		<monster name="Carniphila" x="1" y="-1" z="7" spawntime="140" />
+	</spawn>
+	<spawn centerx="787" centery="65" centerz="7" radius="3">
+		<monster name="Sibang" x="-2" y="-1" z="7" spawntime="140" />
+		<monster name="Carniphila" x="-1" y="-2" z="7" spawntime="140" />
+	</spawn>
+	<spawn centerx="816" centery="69" centerz="7" radius="3">
+		<monster name="Sibang" x="-1" y="-1" z="7" spawntime="140" />
+		<monster name="Carniphila" x="0" y="-1" z="7" spawntime="140" />
+	</spawn>
+	<spawn centerx="800" centery="64" centerz="7" radius="3">
+		<monster name="Sibang" x="2" y="-1" z="7" spawntime="140" />
+		<monster name="Carniphila" x="2" y="1" z="7" spawntime="140" />
+	</spawn>
+	<spawn centerx="804" centery="101" centerz="7" radius="3">
+		<monster name="Kongra" x="-2" y="1" z="7" spawntime="170" />
+		<monster name="Merlkin" x="-1" y="0" z="7" spawntime="170" />
+	</spawn>
+	<spawn centerx="824" centery="81" centerz="7" radius="3">
+		<monster name="Kongra" x="2" y="0" z="7" spawntime="170" />
+		<monster name="Merlkin" x="2" y="-1" z="7" spawntime="170" />
+	</spawn>
+	<spawn centerx="815" centery="83" centerz="7" radius="3">
+		<monster name="Kongra" x="2" y="1" z="7" spawntime="170" />
+		<monster name="Merlkin" x="0" y="2" z="7" spawntime="170" />
+	</spawn>
+	<spawn centerx="809" centery="87" centerz="7" radius="3">
+		<monster name="Kongra" x="1" y="2" z="7" spawntime="170" />
+		<monster name="Merlkin" x="2" y="1" z="7" spawntime="170" />
+	</spawn>
+	<spawn centerx="812" centery="93" centerz="7" radius="3">
+		<monster name="Kongra" x="-1" y="-1" z="7" spawntime="170" />
+		<monster name="Merlkin" x="0" y="-1" z="7" spawntime="170" />
+	</spawn>
+	<spawn centerx="826" centery="88" centerz="7" radius="3">
+		<monster name="Kongra" x="1" y="-1" z="7" spawntime="170" />
+		<monster name="Merlkin" x="0" y="1" z="7" spawntime="170" />
+	</spawn>
+	<spawn centerx="809" centery="105" centerz="7" radius="3">
+		<monster name="Kongra" x="0" y="0" z="7" spawntime="170" />
+		<monster name="Merlkin" x="-1" y="0" z="7" spawntime="170" />
+	</spawn>
+	<!-- END KONGRA_SWAMP_SPAWNS -->
 </spawns>

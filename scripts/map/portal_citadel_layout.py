@@ -1,8 +1,9 @@
 """Geometría decorativa de la plaza; temple-portals.py sigue siendo su único dueño.
 
 Dos torres nuevas al norte. La galería/torres antiguas del templo al sur no se pisan.
-Los portales de PORTALS van en su x de y=47; los ocho originales conservan coordenadas.
-Los huecos 165 y 167 también aceptan portal. El pasillo cian (x=160-162) no. No requiere C++.
+Los portales de PORTALS van en su (x, y); y=47 por defecto (los originales conservan coordenadas).
+La fila y=47 se llenó: los nuevos van en la fila espejo y=51 (cartel y=50, llegada y=52).
+El pasillo cian (x=160-162) y las filas y=43/y=49 no. No requiere C++.
 """
 from __future__ import annotations
 
@@ -35,10 +36,10 @@ def plaza_plan(portals):
         for y in range(43,53):
             path=x in (160,161,162) or y==49 or y==43
             spec[x,y]=[CONDUIT if path else FLOOR,[],None]
-    for _key,x,dest,_text,_zones in portals:
-        spec[x,47]=[DAIS,[],dest]
-        spec[x,46]=[CONDUIT,[1429],None]
-        spec[x,48]=[DAIS,[],None]
+    for _key,x,py,dest,_text,_zones in portals:
+        spec[x,py]=[DAIS,[],dest]
+        spec[x,py-1]=[CONDUIT,[1429],None]
+        spec[x,py+1]=[DAIS,[],None]
     for x,y in TOWERS:
         for dy in range(3):
             for dx in range(3):

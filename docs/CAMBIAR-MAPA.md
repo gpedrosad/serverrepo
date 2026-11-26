@@ -22,6 +22,7 @@ Relacionado:
 - [docs/items-and-map/MAPEAR_GLACIAR_DEL_ESTE.md](items-and-map/MAPEAR_GLACIAR_DEL_ESTE.md): Glaciar del Este — la isla de hielo vieja se alarga al este (`x 263–354`) con un sendero de hunt de monstruos de hielo y Frost Dragons + Ice Spiders al final (`generate-glacier-reach.py`)
 - [docs/items-and-map/MAPEAR_CLARO_DE_LOS_LOBOS.md](items-and-map/MAPEAR_CLARO_DE_LOS_LOBOS.md): Claro de los Lobos (Wolf Grove), isla de bosque al sureste (`x 184–261, y 250–380, z7`), hecha con mapkit (`scripts/map/zones/claro-de-los-lobos.json`); se llega en barco (Fargum / Nimral, destino Wolf Grove)
 - [docs/items-and-map/MAPEAR_BOSQUE_DE_LOS_CICLOPES.md](items-and-map/MAPEAR_BOSQUE_DE_LOS_CICLOPES.md): Bosque de los Cíclopes (Cyclops Woods), isla de bosque al noreste (`x 670–747, y 10–140, z7`), hecha con mapkit (ficha `scripts/map/zones/bosque-de-los-ciclopes.json`, rol de llegada `portal`); se llega por portal `169,47,7`
+- [docs/items-and-map/MAPEAR_PANTANO_DE_LOS_KONGRA.md](items-and-map/MAPEAR_PANTANO_DE_LOS_KONGRA.md): Pantano de los Kongra (Kongra Swamp), isla de pantano/selva al noreste (`x 765–850, y 10–140, z7`), hecha con mapkit (ficha `scripts/map/zones/pantano-de-los-kongra.json`, rol de llegada `portal`); se llega por portal `163,51,7` (fila espejo y=51)
 - [docs/items-and-map/MAPAS.md](items-and-map/MAPAS.md): **guía única de mapas** (mapkit, jev, catálogo de piezas, reglas y errores que ya pasaron)
 - [docs/gameplay/WAVE_ARENA.md](gameplay/WAVE_ARENA.md) — Wave Arena oleadas; portal `166,47,7`
 - [docs/gameplay/CRUCIBLE.md](gameplay/CRUCIBLE.md) — El Crisol (3 puertas + bosses diarios); portal `164,47,7` con `scripts/map/generate-crucible.py`
@@ -57,7 +58,7 @@ La ampliación del 20 nov extiende ese acabado a la galería y las torres antigu
 (x151–170, y43–56, z2–7), mediante `portal_temple_style.py`, llamado por el mismo generador.
 El mapa ampliado está preparado en el repo, pendiente deploy.
 
-Todos los portales están en la plaza `155,43 – 169,52`, sobre la fila vieja. Portal en `y=47`, cartel en `y=46`, llegada al volver en `y=48`. La fila vieja (`y=53–55`) quedó como pasillo, sin portales.
+Todos los portales están en la plaza `155,43 – 169,52`, sobre la fila vieja. Portal en `y=47`, cartel en `y=46`, llegada al volver en `y=48`. La fila vieja (`y=53–55`) quedó como pasillo, sin portales. La fila `y=47` se llenó: los portales nuevos van en la **fila espejo `y=51`** (cartel `y=50`, llegada `y=52`; ver más abajo).
 
 Los maneja **un solo script**: `python3 scripts/map/temple-portals.py` (idempotente). Arma la plaza, pone portales y carteles (`readables.xml`, bloque `TEMPLE_PORTAL_SIGNS`) y reapunta todo teleport de vuelta al templo hacia la llegada del portal de su zona. Si regenerás una zona con su generador, volvé a correrlo. Para agregar un portal: sumarlo a `PORTALS` en ese script.
 
@@ -75,10 +76,21 @@ Los maneja **un solo script**: `python3 scripts/map/temple-portals.py` (idempote
 | `165,47,7` | `165,48,7` | Desierto de las Ruinas. Llegada `198,73,7` (arena al norte de la entrada de piedra `198,74,7`, oeste del cartel `199,73,7`). Vuelta `197,73,7` → `165,48,7` | [`DESERT_HUNTS.md`](gameplay/DESERT_HUNTS.md) |
 | `167,47,7` | `167,48,7` | Glaciar del Este. Llegada `266,38,7` (borde norte del sendero, sur del cartel `266,37,7`). Vuelta `265,38,7` → `167,48,7`. El eje del sendero (`y=39`) sigue libre | [`MAPEAR_GLACIAR_DEL_ESTE.md`](items-and-map/MAPEAR_GLACIAR_DEL_ESTE.md) |
 | `169,47,7` | `169,48,7` | Bosque de los Cíclopes. Llegada `688,30,7` (claro del portal, oeste de la isla). Vuelta `687,30,7` → `169,48,7` | [`MAPEAR_BOSQUE_DE_LOS_CICLOPES.md`](items-and-map/MAPEAR_BOSQUE_DE_LOS_CICLOPES.md) |
+| `163,51,7` | `163,52,7` | Pantano de los Kongra. Llegada `783,30,7` (claro del portal, oeste de la isla). Vuelta `782,30,7` → `163,52,7` | [`MAPEAR_PANTANO_DE_LOS_KONGRA.md`](items-and-map/MAPEAR_PANTANO_DE_LOS_KONGRA.md) |
 
 `165`, `167` y `169` eran piso de basalto libre en la fila `y=47`. `169` es la casilla sobre el obelisco
 (espejo de `155`, que ya tenía portal `155,47` + obelisco `155,50`). No se ocupan el pasillo cian `160–162`,
 el obelisco `169,50` ni ningún portal anterior.
+
+### Qué hacer cuando la fila `y=47` está llena (regla nueva, 26 nov 2026)
+
+La fila `y=47` (155–159 y 163–169; 160–162 es el pasillo cian) se llenó con el Bosque de los Cíclopes.
+La **opción más conservadora** es repetir el patrón en una casilla de basalto libre **dentro de la plaza**,
+en la **fila espejo `y=51`**: cartel al norte (`y=50`), portal (`y=51`) y llegada al sur (`y=52`), exactamente
+el espejo de la fila `y=47` del otro lado del pasillo cian `y=49`. No se tocan los obeliscos `155,50`/`169,50`,
+las balizas `157,51`/`168,51`, la torre sureste (x ≥ 165, y=52) ni el pasillo cian `160–162`/`y=49`.
+`temple-portals.py` acepta un `y` opcional por portal (default `47`) en `PORTALS`; los portales existentes
+quedan byte a byte iguales. La llegada de la vuelta sigue el patrón (`y+1`) y el cartel va en `y-1`.
 
 
 La **Arena PvP** de z9 también se retiró en nov 2026: su sala es ahora la entrada de **El Foso Olvidado**,
