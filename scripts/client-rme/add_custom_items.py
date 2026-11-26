@@ -151,15 +151,16 @@ NEW_ITEMS = [
     dict(server_id=20687, client_id=6087, prototype=2674, decor=True, patterns=8,
          name="field dressing", png="field_dressing.png",
          descr="Use one from your inventory to restore up to 100 hitpoints."),
-    # 26 nov 2026. Client 6081 ya lo usa rootcleaver (20163) en main; no reutilizar.
-    # Visor/escudo/maza: 6082-6084. Armas: 6071-6072 (rango 20700-20729). Silueta propia, no recolor.
-    dict(name="ashglass visor", server_id=20681, client_id=6082, prototype=2457,
+    # 26 nov 2026. Visor/escudo/maza: 5146-5148 (primero se instalaron en 6082-6084, que ya eran la entrada
+    # arcana 20253, la pared de cripta 20264 y la storm star 20213: la entrada de la plaza mostraba el casco).
+    # Armas: 6071-6072 (rango 20700-20729). Silueta propia, no recolor.
+    dict(name="ashglass visor", server_id=20681, client_id=5146, prototype=2457,
          png="ashglass_visor.png", armor=9, weight=40.0,
          descr="A closed visor of smoked glass. Arm 9: heavier than a crown helmet, lighter than a warrior helmet."),
-    dict(name="cinder kite", server_id=20682, client_id=6083, prototype=2519,
+    dict(name="cinder kite", server_id=20682, client_id=5147, prototype=2519,
          png="cinder_kite.png", attack=0, defence=33, weight=70.0,
          descr="A soot-iron kite with a copper chevron. Defence 33, heavier than a crown shield."),
-    dict(name="cinder flail", server_id=20683, client_id=6084, prototype=2394,
+    dict(name="cinder flail", server_id=20683, client_id=5148, prototype=2394,
          png="cinder_flail.png", attack=32, defence=16, weight=62.0,
          descr="A one-handed flail. The chain ends in a spiked cinder ball."),
     dict(server_id=20700, client_id=6071, prototype=2407, attack=44, defence=26,
@@ -738,11 +739,12 @@ def apply_things(things: Path, otb_root, dry: bool) -> list[str]:
     by_cid = {e.client_id: i for i, e in enumerate(entries)}
     spr_reader = B.SprReader(spr)
     records = [None] + [spr_reader.sprite_raw(i) for i in range(1, spr_reader.sprite_count + 1)]
-    s2c = {}
+    s2c, c2s = {}, {}
     for node in otb_root.children:
         sid, cid, _name = node_ids(node)
         if sid is not None and cid is not None:
             s2c.setdefault(sid, cid)
+            c2s.setdefault(cid, set()).add(sid)
     new_entries, log, changed = [e.raw for e in entries], [], False
     item_count = reader.item_count
     if item_count < LAST_CLIENT_ID:
@@ -788,6 +790,12 @@ def apply_things(things: Path, otb_root, dry: bool) -> list[str]:
                 and all(records[current.sprite_ids[i]] == new_records[i] for i in range(sprite_count))):
             log.append(f"  {item['name']}: ya está (client {item['client_id']}, sprite {current.sprite_ids[0]})")
             continue
+        # Un client id nuevo (5090+) solo se escribe si está vacío o ya es de este ítem. 26 nov 2026: el kit Cinder
+        # se instaló en 6082-6084, que ya dibujaban la entrada arcana, una pared y la storm star, y los pisó.
+        owners = c2s.get(item["client_id"], set()) - {item["server_id"]}
+        if item["client_id"] >= FIRST_NEW_CLIENT_ID and current.raw != BLANK_DAT_ENTRY and owners:
+            raise SystemExit(f"{item['name']}: el client id {item['client_id']} ya lo usa el server id "
+                             f"{sorted(owners)}; elegir otro con --candidates")
         new_sprite_ids = list(range(len(records), len(records) + sprite_count))
         records.extend(new_records)
         new_entries[idx] = new_prefix + struct.pack(f"<{sprite_count}H", *new_sprite_ids)

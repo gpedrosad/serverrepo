@@ -351,13 +351,13 @@ que conviva con la versión portátil de Obi. Uso y mapa: [Ruinas del Sauce](ELF
 
 ## Kit Cinder y armas del 26 nov 2026
 
-Ítems de silueta propia (no recolor). En `main` el client id `6081` ya está usado por el rootcleaver (`20163`), así que el visor/escudo/maza usan `6082–6084`.
+Ítems de silueta propia (no recolor). El visor/escudo/maza usan los client ids `5146–5148`. Primero se instalaron en `6082–6084`, que ya eran la entrada arcana de la plaza, una pared de cripta y la storm star, y las pisaron; ver los errores de [IMPORTAR_ITEM_DE_OTRA_VERSION.md](IMPORTAR_ITEM_DE_OTRA_VERSION.md).
 
 | Server | Nombre | Rol | Client | Prototipo |
 |--------|--------|-----|--------|-----------|
-| 20681 | ashglass visor | cabeza, armadura 9, 40 oz | 6082 | 2457 warrior helmet |
-| 20682 | cinder kite | escudo, defensa 33, 70 oz | 6083 | 2519 crown shield |
-| 20683 | cinder flail | maza 1 mano, ataque 32 / defensa 16, 62 oz | 6084 | 2394 clerical mace |
+| 20681 | ashglass visor | cabeza, armadura 9, 40 oz | 5146 | 2457 warrior helmet |
+| 20682 | cinder kite | escudo, defensa 33, 70 oz | 5147 | 2519 crown shield |
+| 20683 | cinder flail | maza 1 mano, ataque 32 / defensa 16, 62 oz | 5148 | 2394 clerical mace |
 | 20700 | obsidian falchion | espada 1 mano, ataque 44 / defensa 26 | 6071 | 2407 bright sword |
 | 20701 | coral cleaver | hacha 1 mano, ataque 42 / defensa 23 | 6072 | 2430 knight axe |
 
