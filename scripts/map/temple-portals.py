@@ -7,7 +7,9 @@ Hace, en una pasada e idempotente:
      Extiende el acabado a la galería y las torres originales (portal_temple_style.py).
      Conserva rejas/faroles fuera de las huellas.
   2. Portales en la plaza (y=47), cartel al norte (y=46), llegada al sur (y=48).
-     Izquierda = hunts, derecha = eventos.
+     Izquierda = hunts, derecha = eventos. Los huecos de piso 165 y 167 (no el
+     pasillo cian 160-162 ni el obelisco 169) llevan Desierto y Glaciar del Este.
+     La vuelta de cada uno se asegura en RETURNS (junto a la llegada, fuera del eje).
   3. Fila vieja 155-169, 53-55: saca portales 1387 y carteles 1429 (queda de pasillo).
   4. Reapunta los portales de vuelta: todo teleport fuera del templo que apunte al templo
      pasa a la llegada del portal de su zona.
@@ -71,7 +73,20 @@ PORTALS = [
      [(595, 200, 620, 230, 7)]),
     ("reloj", 168, (605, 327, 6), "SAND CLOCK\n6-wave time attack\nClear waves for extra time & daily reward",
      [(595, 315, 615, 333, 6), (595, 315, 615, 333, 5)]),
+    # Huecos de piso en la fila (el pasillo cian es x=160-162; el obelisco es 169,50).
+    ("desierto", 165, (198, 73, 7), "DESERT RUINS\nNine hunts from level 8 to 90\nStone path to the southern dock",
+     [(198, 68, 262, 120, 7), (197, 73, 197, 73, 7)]),
+    ("glaciar", 167, (266, 38, 7), "EAST GLACIER\nIce trail from the old isle\nFrost Dragons and Ice Spiders",
+     [(263, 6, 354, 72, 7)]),
 ]
+# Vuelta al lado de la llegada, fuera del eje que se camina.
+# Desierto: pasto al oeste de la arena 198,73 (fuera de la caja del generador).
+# Glaciar: borde norte del sendero, al oeste de la llegada y al sur del cartel 266,37.
+# El medio del sendero (y=39) queda libre. Si se regenera el glaciar, este script lo repone.
+RETURNS = {
+    "desierto": (197, 73, 7),
+    "glaciar": (265, 38, 7),
+}
 S_BEGIN, S_END = "<!-- BEGIN TEMPLE_PORTAL_SIGNS -->", "<!-- END TEMPLE_PORTAL_SIGNS -->"
 
 
@@ -118,12 +133,14 @@ def main() -> int:
     a = ap.parse_args()
 
     from mapdata import load_otb
+    otb = load_otb()
     raw = MAP.read_bytes()
     root = parse_tree(raw)
     spec = plan_tiles()
     landing = {k: (px, PORTAL_Y + 1, Z) for k, px, _d, _t, _z in PORTALS}
 
     plaza_done, row_fixed, retargeted, unknown = 0, 0, [], []
+    placed_returns, seen_returns = [], set()
     for area in root[2][0][2]:
         if area[0] != T_AREA:
             continue
@@ -157,6 +174,24 @@ def main() -> int:
                 row_fixed += before - len(tile[2])
                 if (x, y) in ROW_GROUND_FIX and len(p) == 5 and p[2] == 9:
                     tile[1] = bytearray(p[:3]) + struct.pack("<H", ROW_GROUND_FIX[(x, y)])
+            ret_key = next((k for k, pos in RETURNS.items() if pos == (x, y, az)), None)
+            if ret_key:
+                if tile[0] != T_TILE:
+                    raise SystemExit(f"ERROR: la vuelta de {ret_key} en {x},{y},{az} es casilla de casa")
+                has_tp = any(ch[0] == T_ITEM and len(ch[1]) >= 2
+                             and struct.unpack_from("<H", bytes(ch[1]), 0)[0] == TELEPORT
+                             for ch in tile[2])
+                if not has_tp:
+                    blocking = [struct.unpack_from("<H", bytes(ch[1]), 0)[0]
+                                for ch in tile[2]
+                                if ch[0] == T_ITEM and len(ch[1]) >= 2
+                                and "block_solid" in otb.get(
+                                    struct.unpack_from("<H", bytes(ch[1]), 0)[0], {}).get("flags", [])]
+                    if blocking:
+                        raise SystemExit(f"ERROR: vuelta {ret_key} {x},{y},{az} bloqueada por {blocking}")
+                    tile[2].insert(0, item_node(TELEPORT, landing[ret_key]))
+                    placed_returns.append((ret_key, (x, y, az), landing[ret_key]))
+                seen_returns.add(ret_key)
             # vueltas al templo -> llegada del portal de su zona
             for ch in tile[2]:
                 if ch[0] != T_ITEM:
@@ -178,6 +213,9 @@ def main() -> int:
             keep_children.append(tile)
         area[2] = keep_children
 
+    missing = [k for k in RETURNS if k not in seen_returns]
+    if missing:
+        raise SystemExit(f"ERROR: no encontré la casilla de vuelta de {missing}")
     if plaza_done != len(spec):
         raise SystemExit(f"ERROR: la plaza tiene {plaza_done}/{len(spec)} casillas en el mapa")
     tower_added = install_upper(root,item_node)
@@ -188,17 +226,19 @@ def main() -> int:
     before, after = count_tiles(parse_tree(raw)), count_tiles(root)
     if before + tower_added != after:
         raise SystemExit(f"ERROR interno: {before} casillas antes y {after} después; no escribo nada")
-    styled = apply_style(root, load_otb())
+    styled = apply_style(root, otb)
     print(f"templo: {sum(styled.values())} piezas de galería/torres pasadas a basalto y cian")
-    details = apply_details(root, load_otb())
+    details = apply_details(root, otb)
     print(f"entrada, faroles y rejas: {sum(details.values())} sustituciones/adiciones")
     print(f"torre sureste: base y escaleras reconstruidas; {rebuild_tower(root)} casillas nuevas")
-    validate_access(root, load_otb())
+    validate_access(root, otb)
     print('accesos: escaleras 2×2, rellanos, corredor sur y entrada despejados')
 
     print(f"plaza: {plaza_done} casillas; torres: {tower_added} casillas nuevas; fila vieja: {row_fixed} portales/carteles sacados")
     for k, px, dest, _t, _z in PORTALS:
         print(f"  {k:10s} portal {px},{PORTAL_Y},{Z} -> {dest}; llegada {landing[k]}")
+    for k, src, dest in placed_returns:
+        print(f"  vuelta nueva {k} {src} -> {dest}")
     for src, old, new, k in retargeted:
         print(f"  vuelta {src} {old} -> {new} ({k})")
     for src, d in unknown:

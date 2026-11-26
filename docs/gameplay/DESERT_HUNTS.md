@@ -11,6 +11,10 @@ y dos cofres de quest. Sin NPC y sin casas.
 Caminando desde la ciudad: el camino de tierra del este termina en la entrada (`198, 74, 7`). Ahí hay un cartel
 con las zonas y el nivel sugerido. Un camino de piedra recorre la isla y llega al muelle del sur (`237, 120, 7`).
 
+También desde la plaza del templo: portal `165,47,7` → llegada `198,73,7` (arena justo al norte de la losa
+de entrada, al oeste del cartel `199,73,7`). La vuelta está en el pasto `197,73,7` y deja en `165,48,7`.
+El camino de piedra (`y=74–75`) no tiene teleport. Lo arma `scripts/map/temple-portals.py` (`PORTALS` / `RETURNS`).
+
 ## Zonas
 
 Caja de la isla: x 198–262, y 68–120, z7. La dificultad sube al alejarse de la entrada.

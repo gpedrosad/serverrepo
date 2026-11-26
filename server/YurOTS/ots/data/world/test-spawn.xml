@@ -7083,4 +7083,29 @@
 		<monster name="Ashen Lord" x="0" y="0" z="9" spawntime="7200" />
 	</spawn>
 	<!-- END HELL_QUEST_SPAWNS -->
+	<!-- BEGIN WOLF_GROVE_SPAWNS (scripts/map/generate-wolf-grove.py) -->
+	<spawn centerx="228" centery="286" centerz="7" radius="3">
+		<monster name="Wolf" x="-2" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="228" centery="309" centerz="7" radius="3">
+		<monster name="Wolf" x="1" y="1" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="213" centery="286" centerz="7" radius="3">
+		<monster name="Wolf" x="1" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="229" centery="299" centerz="7" radius="3">
+		<monster name="Wolf" x="0" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="236" centery="312" centerz="7" radius="3">
+		<monster name="Wolf" x="2" y="-1" z="7" spawntime="110" />
+	</spawn>
+	<spawn centerx="241" centery="317" centerz="7" radius="3">
+		<monster name="War Wolf" x="1" y="-2" z="7" spawntime="140" />
+		<monster name="Bear" x="-2" y="-1" z="7" spawntime="140" />
+	</spawn>
+	<spawn centerx="243" centery="309" centerz="7" radius="3">
+		<monster name="War Wolf" x="1" y="0" z="7" spawntime="140" />
+		<monster name="Bear" x="-2" y="0" z="7" spawntime="140" />
+	</spawn>
+	<!-- END WOLF_GROVE_SPAWNS -->
 </spawns>

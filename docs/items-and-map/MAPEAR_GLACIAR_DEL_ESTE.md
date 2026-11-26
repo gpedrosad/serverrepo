@@ -20,6 +20,7 @@ Generador: `scripts/map/generate-glacier-reach.py` (re-ejecutable). Manifiesto:
 | Relleno | todo lo que no es sendero es bosque nevado y roca (pinos `2698`, árboles secos, piedras `1285`, estalagmitas de hielo `4995`) y siempre bloquea. Entre las filas quedan lagunitas heladas |
 | Orilla | como la de la isla vieja: agua `4619` con el borde de nieve `4737–4748` encima (una sola pieza por casilla); el resto, agua `4608`. Hay 9 casillas de mar alrededor |
 | Cartel | `266,37,7`, bloque `GLACIER_REACH_SIGNS` de `readables.xml` |
+| Portal de la plaza | `167,47,7` → llegada `266,38,7` (borde norte del sendero, sur del cartel). Vuelta `265,38,7` → `167,48,7`. El eje `y=39` queda libre. Dueño: `scripts/map/temple-portals.py`. Si se regenera el glaciar, volver a correr ese script: la vuelta cae dentro de la caja y el generador la pisa |
 
 **781 casillas caminables.** De la entrada a la guarida son 208 pasos. Desde el templo: 209 a la punta de la
 isla vieja, 213 a la entrada y 410 a la guarida.

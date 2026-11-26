@@ -19,6 +19,8 @@
 	<readable x="164" y="46" z="7" text="THE CRUCIBLE\nDaily ladder: Bronze, Silver, Gold (lvl 30-80+)\nGold boss drops a rare weapon"/>
 	<readable x="166" y="46" z="7" text="WAVE ARENA\nJungle Clearing: 20 waves (lvl 25-100+)\nGroup challenge. Time ranking &amp; weekly rewards"/>
 	<readable x="168" y="46" z="7" text="SAND CLOCK\n6-wave time attack\nClear waves for extra time &amp; daily reward"/>
+	<readable x="165" y="46" z="7" text="DESERT RUINS\nNine hunts from level 8 to 90\nStone path to the southern dock"/>
+	<readable x="167" y="46" z="7" text="EAST GLACIER\nIce trail from the old isle\nFrost Dragons and Ice Spiders"/>
 	<!-- END TEMPLE_PORTAL_SIGNS -->
 	<!-- BEGIN NORTH_PASS_SIGNS -->
 	<readable x="187" y="13" z="7" text="NORTH PASS\nForest, Frozen Tundra and Dragon Caves.\nCaves: level 60+."/>
@@ -168,4 +170,7 @@
 	<readable x="350" y="181" z="7" text="THE CROSSROADS\nWest: Ash Fields. East: Lava Rivers.\nNorth: Cult Fortress and the Crater."/>
 	<readable x="362" y="150" z="7" text="THE MAW OF HELL\nGate: level 80. Hellhounds hunt below.\nIn the Abyss, the Ashlord's gate requires level 100."/>
 	<!-- END HELL_QUEST_SIGNS -->
+	<!-- BEGIN WOLF_GROVE_SIGNS (scripts/map/generate-wolf-grove.py) -->
+	<readable x="206" y="285" z="7" text="WOLF GROVE\nLevel 8-25.\nWolves along the trail. War wolves and bears at the clearing."/>
+	<!-- END WOLF_GROVE_SIGNS -->
 </readables>

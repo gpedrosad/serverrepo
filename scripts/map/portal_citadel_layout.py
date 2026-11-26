@@ -1,7 +1,8 @@
 """Geometría decorativa de la plaza; temple-portals.py sigue siendo su único dueño.
 
 Dos torres nuevas al norte. La galería/torres antiguas del templo al sur no se pisan.
-Los 8 portales, carteles y llegadas conservan sus coordenadas. No requiere C++.
+Los portales de PORTALS van en su x de y=47; los ocho originales conservan coordenadas.
+Los huecos 165 y 167 también aceptan portal. El pasillo cian (x=160-162) no. No requiere C++.
 """
 from __future__ import annotations
 

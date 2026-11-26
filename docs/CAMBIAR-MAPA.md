@@ -20,6 +20,7 @@ Relacionado:
 - [docs/items-and-map/MAPEAR_CATACUMBA_IMPERIAL.md](items-and-map/MAPEAR_CATACUMBA_IMPERIAL.md): Cripta Imperial — boca en la orilla sur del pantano `94,92,7`, pasillo de caza en U en z8 con la guarnición imperial, unido al túnel del Spot del Dragón Negro (`generate-imperial-crypt.py`; regenerar dragón → cripta → dragón)
 - [docs/items-and-map/MAPEAR_ISLA_DARK_HYDRAS.md](items-and-map/MAPEAR_ISLA_DARK_HYDRAS.md): Isla de las Dark Hydras — bajada en la orilla `50,138,7`, túnel z8, islote y puente 1×4 a una isla larga con 6 Dark Hydras (`generate-dark-hydra-isle.py`)
 - [docs/items-and-map/MAPEAR_GLACIAR_DEL_ESTE.md](items-and-map/MAPEAR_GLACIAR_DEL_ESTE.md): Glaciar del Este — la isla de hielo vieja se alarga al este (`x 263–354`) con un sendero de hunt de monstruos de hielo y Frost Dragons + Ice Spiders al final (`generate-glacier-reach.py`)
+- [docs/items-and-map/MAPEAR_CLARO_DE_LOS_LOBOS.md](items-and-map/MAPEAR_CLARO_DE_LOS_LOBOS.md): Claro de los Lobos — isla de pasto al sureste de la city (`x 187–261, y 265–339, z7`), sendero y claro con lobos / War Wolf / Bear (`generate-wolf-grove.py`); se llega en bote, sin portal de plaza
 - [docs/gameplay/WAVE_ARENA.md](gameplay/WAVE_ARENA.md) — Wave Arena oleadas; portal `166,47,7`
 - [docs/gameplay/CRUCIBLE.md](gameplay/CRUCIBLE.md) — El Crisol (3 puertas + bosses diarios); portal `164,47,7` con `scripts/map/generate-crucible.py`
 - [docs/gameplay/SAND_CLOCK.md](gameplay/SAND_CLOCK.md) — Reloj de Arena (fases globales); portal `168,47,7` con `scripts/map/generate-sand-clock.py`
@@ -69,6 +70,11 @@ Los maneja **un solo script**: `python3 scripts/map/temple-portals.py` (idempote
 | `164,47,7` | `164,48,7` | El Crisol | [`CRUCIBLE.md`](gameplay/CRUCIBLE.md) |
 | `166,47,7` | `166,48,7` | Wave Arena | [`WAVE_ARENA.md`](gameplay/WAVE_ARENA.md) |
 | `168,47,7` | `168,48,7` | Reloj de Arena | [`SAND_CLOCK.md`](gameplay/SAND_CLOCK.md) |
+| `165,47,7` | `165,48,7` | Desierto de las Ruinas. Llegada `198,73,7` (arena al norte de la entrada de piedra `198,74,7`, oeste del cartel `199,73,7`). Vuelta `197,73,7` → `165,48,7` | [`DESERT_HUNTS.md`](gameplay/DESERT_HUNTS.md) |
+| `167,47,7` | `167,48,7` | Glaciar del Este. Llegada `266,38,7` (borde norte del sendero, sur del cartel `266,37,7`). Vuelta `265,38,7` → `167,48,7`. El eje del sendero (`y=39`) sigue libre | [`MAPEAR_GLACIAR_DEL_ESTE.md`](items-and-map/MAPEAR_GLACIAR_DEL_ESTE.md) |
+
+`165` y `167` eran piso de basalto libre en la fila `y=47`. No se ocupan el pasillo cian `160–162`, el obelisco `169,50` ni ningún portal anterior.
+
 
 La **Arena PvP** de z9 también se retiró en nov 2026: su sala es ahora la entrada de **El Foso Olvidado**,
 que se recorre desde las cloacas de la ciudad (trampilla `127,32,7` → salita z8 → trampilla `125,30,8`).
