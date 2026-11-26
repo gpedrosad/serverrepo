@@ -64,7 +64,7 @@ def lint(plan: dict, spec: dict, theme, existing: dict, otb: Otb, size) -> dict:
         if c in tiles and otb.walkable(tiles[c]):
             err("leak", c)
     seen = set()
-    clear = spec.get("harbor", {}).get("clear", 8) if plan["info"]["landing"] else 6
+    clear = spec.get("harbor", {}).get("clear", 8) if spec.get("harbor") else spec.get("portal", {}).get("clear", 6)
     near = {(start[0] + a, start[1] + b) for a in range(-clear, clear + 1) for b in range(-clear, clear + 1)}
     for _c, _z, mons in plan["spawns"]:
         for _n, p, _t in mons:

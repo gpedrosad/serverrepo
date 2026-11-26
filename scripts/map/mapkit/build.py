@@ -74,7 +74,7 @@ def ask_stages(jev, spec, known):
 def ask_glades(jev, spec, theme):
     menu = {k: v["about"] for k, v in theme["props"].items()}
     gl = [{"index": i, "where": g.get("role", "glade"), "along_trail": g.get("at", 0)}
-          for i, g in enumerate(spec["glades"]) if g.get("role") != "harbor"]
+          for i, g in enumerate(spec["glades"]) if g.get("role") not in ("harbor", "portal")]
     prompt = (f"Zone '{spec['title']}' ({theme['about']}). Monsters: {', '.join(spec['monster_pool'])}. "
               f"Choose a decoration kind for each glade along the trail (0 = entrance, 1 = far end). "
               f"Kinds: {json.dumps(menu)}. Make it tell a story from the entrance to the end; no two neighbouring "
@@ -194,7 +194,10 @@ def write_zone(spec, theme, plan, m, sign_text):
     manifest = K.WORLD / spec["manifest"]
     key = spec["name"].upper().replace("-", "_")
     report = {"spec": f"scripts/map/zones/{spec['name']}.json", "seed": plan["seed"],
-              "entry": [*info["landing"], z], "npc": [*info["npc"], z], "sign": [*info["sign"], z],
+              "entry": [*info["landing"], z],
+              "npc": [*info["npc"], z] if info["npc"] else None,
+              "sign": [*info["sign"], z] if info["sign"] else None,
+              "return": [*info["return"], z] if info.get("return") else None,
               **{k: m[k] for k in ("walk", "monsters", "spawns", "density", "path", "score")}}
     changed = K.write_cells(cells, manifest, [theme["water"]], spec["name"], report, dry_run=False,
                             extra_files=(K.SPAWNS, K.READABLES, K.NPCS, K.BOAT))
@@ -281,7 +284,7 @@ def main() -> int:
     sign = ask_sign(jev, spec, decisions["stages"])
     print(f"elegida: semilla {plan['seed']} (puntaje {m['score']}), claros {plan['info']['props']}")
     print(f"llegada {plan['info']['landing']}, {spec.get('harbor', {}).get('npc', '-')} {plan['info']['npc']}, "
-          f"cartel {plan['info']['sign']}: {sign!r}")
+          f"cartel {plan['info']['sign']}, vuelta {plan['info'].get('return')}: {sign!r}")
     if a.preview:
         mons = [p for _c, _z, ms in plan["spawns"] for _n, p, _t in ms]
         cells = {(x, y, spec["z"]): ids for (x, y), ids in plan["tiles"].items()}

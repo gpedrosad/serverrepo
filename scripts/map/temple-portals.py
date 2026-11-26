@@ -78,14 +78,20 @@ PORTALS = [
      [(198, 68, 262, 120, 7), (197, 73, 197, 73, 7)]),
     ("glaciar", 167, (266, 38, 7), "EAST GLACIER\nIce trail from the old isle\nFrost Dragons and Ice Spiders",
      [(263, 6, 354, 72, 7)]),
+    # Última casilla de basalto libre en la fila (x=169): espejo de 155, que ya tenía portal 155,47
+    # y obelisco 155,50. Acá el obelisco queda en 169,50 y el portal en 169,47 (no se toca el obelisco).
+    ("ciclopes", 169, (688, 30, 7), "CYCLOPS WOODS\nForest island for levels 20-40\nFrom cyclops to giant spiders",
+     [(670, 10, 747, 140, 7)]),
 ]
 # Vuelta al lado de la llegada, fuera del eje que se camina.
 # Desierto: pasto al oeste de la arena 198,73 (fuera de la caja del generador).
 # Glaciar: borde norte del sendero, al oeste de la llegada y al sur del cartel 266,37.
 # El medio del sendero (y=39) queda libre. Si se regenera el glaciar, este script lo repone.
+# Cíclopes: pasto al oeste de la llegada 688,30 (fuera del sendero).
 RETURNS = {
     "desierto": (197, 73, 7),
     "glaciar": (265, 38, 7),
+    "ciclopes": (687, 30, 7),
 }
 S_BEGIN, S_END = "<!-- BEGIN TEMPLE_PORTAL_SIGNS -->", "<!-- END TEMPLE_PORTAL_SIGNS -->"
 

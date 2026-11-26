@@ -7159,4 +7159,79 @@
 		<monster name="Bear" x="1" y="-1" z="7" spawntime="170" />
 	</spawn>
 	<!-- END WOLF_GROVE_SPAWNS -->
+	<!-- BEGIN CYCLOPS_WOODS_SPAWNS (scripts/map/mapkit/build.py) -->
+	<spawn centerx="722" centery="31" centerz="7" radius="3">
+		<monster name="Tarantula" x="0" y="2" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="697" centery="29" centerz="7" radius="3">
+		<monster name="Cyclops" x="1" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="725" centery="42" centerz="7" radius="3">
+		<monster name="Tarantula" x="1" y="0" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="711" centery="30" centerz="7" radius="3">
+		<monster name="Cyclops" x="1" y="-2" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="730" centery="35" centerz="7" radius="3">
+		<monster name="Tarantula" x="-1" y="1" z="7" spawntime="90" />
+	</spawn>
+	<spawn centerx="697" centery="51" centerz="7" radius="3">
+		<monster name="Cyclops" x="0" y="0" z="7" spawntime="110" />
+	</spawn>
+	<spawn centerx="720" centery="48" centerz="7" radius="3">
+		<monster name="Cyclops Drone" x="-1" y="-1" z="7" spawntime="110" />
+	</spawn>
+	<spawn centerx="709" centery="50" centerz="7" radius="3">
+		<monster name="Cyclops" x="1" y="-2" z="7" spawntime="110" />
+	</spawn>
+	<spawn centerx="690" centery="59" centerz="7" radius="3">
+		<monster name="Cyclops Drone" x="0" y="-1" z="7" spawntime="110" />
+	</spawn>
+	<spawn centerx="695" centery="40" centerz="7" radius="3">
+		<monster name="Cyclops" x="0" y="0" z="7" spawntime="110" />
+	</spawn>
+	<spawn centerx="702" centery="45" centerz="7" radius="3">
+		<monster name="Cyclops Drone" x="0" y="2" z="7" spawntime="110" />
+	</spawn>
+	<spawn centerx="709" centery="63" centerz="7" radius="3">
+		<monster name="Cyclops Drone" x="-2" y="1" z="7" spawntime="140" />
+	</spawn>
+	<spawn centerx="696" centery="65" centerz="7" radius="3">
+		<monster name="Cyclops Smith" x="-2" y="-1" z="7" spawntime="140" />
+	</spawn>
+	<spawn centerx="722" centery="70" centerz="7" radius="3">
+		<monster name="Cyclops Drone" x="0" y="1" z="7" spawntime="140" />
+	</spawn>
+	<spawn centerx="717" centery="60" centerz="7" radius="3">
+		<monster name="Cyclops Smith" x="-1" y="2" z="7" spawntime="140" />
+	</spawn>
+	<spawn centerx="711" centery="104" centerz="7" radius="3">
+		<monster name="Cyclops Smith" x="-2" y="-2" z="7" spawntime="180" />
+		<monster name="Giant Spider" x="-1" y="-2" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="729" centery="77" centerz="7" radius="3">
+		<monster name="Cyclops Smith" x="-2" y="1" z="7" spawntime="180" />
+		<monster name="Giant Spider" x="0" y="2" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="709" centery="89" centerz="7" radius="3">
+		<monster name="Cyclops Smith" x="2" y="2" z="7" spawntime="180" />
+		<monster name="Giant Spider" x="0" y="-1" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="721" centery="86" centerz="7" radius="3">
+		<monster name="Cyclops Smith" x="0" y="0" z="7" spawntime="180" />
+		<monster name="Giant Spider" x="-2" y="2" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="700" centery="102" centerz="7" radius="3">
+		<monster name="Cyclops Smith" x="2" y="1" z="7" spawntime="180" />
+		<monster name="Giant Spider" x="2" y="-2" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="705" centery="96" centerz="7" radius="3">
+		<monster name="Cyclops Smith" x="0" y="2" z="7" spawntime="180" />
+		<monster name="Giant Spider" x="2" y="-2" z="7" spawntime="180" />
+	</spawn>
+	<spawn centerx="714" centery="83" centerz="7" radius="3">
+		<monster name="Cyclops Smith" x="1" y="1" z="7" spawntime="180" />
+		<monster name="Giant Spider" x="2" y="2" z="7" spawntime="180" />
+	</spawn>
+	<!-- END CYCLOPS_WOODS_SPAWNS -->
 </spawns>

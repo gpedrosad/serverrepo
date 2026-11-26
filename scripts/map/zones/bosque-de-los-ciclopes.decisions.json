@@ -1,0 +1,59 @@
+{
+ "stages": {
+  "stages": [
+   {
+    "monsters": [
+     "Tarantula",
+     "Cyclops"
+    ],
+    "per": 1,
+    "spawntime": 90,
+    "gap": 12
+   },
+   {
+    "monsters": [
+     "Cyclops",
+     "Cyclops Drone"
+    ],
+    "per": 1,
+    "spawntime": 110,
+    "gap": 11
+   },
+   {
+    "monsters": [
+     "Cyclops Drone",
+     "Cyclops Smith"
+    ],
+    "per": 1,
+    "spawntime": 140,
+    "gap": 11
+   },
+   {
+    "monsters": [
+     "Cyclops Smith",
+     "Giant Spider"
+    ],
+    "per": 2,
+    "spawntime": 180,
+    "gap": 10
+   }
+  ]
+ },
+ "glades": {
+  "glades": {
+   "1": "wolf-den",
+   "2": "bear-den",
+   "3": "hunter-camp",
+   "4": "meadow",
+   "5": "mushroom-ring"
+  }
+ },
+ "sign": {
+  "lines": [
+   "CYCLOPS WOODS",
+   "Levels 20 to 40.",
+   "Cyclops along the trail.",
+   "Giant spiders at the far end."
+  ]
+ }
+}

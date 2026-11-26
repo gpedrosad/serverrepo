@@ -21,6 +21,7 @@ Relacionado:
 - [docs/items-and-map/MAPEAR_ISLA_DARK_HYDRAS.md](items-and-map/MAPEAR_ISLA_DARK_HYDRAS.md): Isla de las Dark Hydras — bajada en la orilla `50,138,7`, túnel z8, islote y puente 1×4 a una isla larga con 6 Dark Hydras (`generate-dark-hydra-isle.py`)
 - [docs/items-and-map/MAPEAR_GLACIAR_DEL_ESTE.md](items-and-map/MAPEAR_GLACIAR_DEL_ESTE.md): Glaciar del Este — la isla de hielo vieja se alarga al este (`x 263–354`) con un sendero de hunt de monstruos de hielo y Frost Dragons + Ice Spiders al final (`generate-glacier-reach.py`)
 - [docs/items-and-map/MAPEAR_CLARO_DE_LOS_LOBOS.md](items-and-map/MAPEAR_CLARO_DE_LOS_LOBOS.md): Claro de los Lobos (Wolf Grove), isla de bosque al sureste (`x 184–261, y 250–380, z7`), hecha con mapkit (`scripts/map/zones/claro-de-los-lobos.json`); se llega en barco (Fargum / Nimral, destino Wolf Grove)
+- [docs/items-and-map/MAPEAR_BOSQUE_DE_LOS_CICLOPES.md](items-and-map/MAPEAR_BOSQUE_DE_LOS_CICLOPES.md): Bosque de los Cíclopes (Cyclops Woods), isla de bosque al noreste (`x 670–747, y 10–140, z7`), hecha con mapkit (ficha `scripts/map/zones/bosque-de-los-ciclopes.json`, rol de llegada `portal`); se llega por portal `169,47,7`
 - [docs/items-and-map/MAPAS.md](items-and-map/MAPAS.md): **guía única de mapas** (mapkit, jev, catálogo de piezas, reglas y errores que ya pasaron)
 - [docs/gameplay/WAVE_ARENA.md](gameplay/WAVE_ARENA.md) — Wave Arena oleadas; portal `166,47,7`
 - [docs/gameplay/CRUCIBLE.md](gameplay/CRUCIBLE.md) — El Crisol (3 puertas + bosses diarios); portal `164,47,7` con `scripts/map/generate-crucible.py`
@@ -73,8 +74,11 @@ Los maneja **un solo script**: `python3 scripts/map/temple-portals.py` (idempote
 | `168,47,7` | `168,48,7` | Reloj de Arena | [`SAND_CLOCK.md`](gameplay/SAND_CLOCK.md) |
 | `165,47,7` | `165,48,7` | Desierto de las Ruinas. Llegada `198,73,7` (arena al norte de la entrada de piedra `198,74,7`, oeste del cartel `199,73,7`). Vuelta `197,73,7` → `165,48,7` | [`DESERT_HUNTS.md`](gameplay/DESERT_HUNTS.md) |
 | `167,47,7` | `167,48,7` | Glaciar del Este. Llegada `266,38,7` (borde norte del sendero, sur del cartel `266,37,7`). Vuelta `265,38,7` → `167,48,7`. El eje del sendero (`y=39`) sigue libre | [`MAPEAR_GLACIAR_DEL_ESTE.md`](items-and-map/MAPEAR_GLACIAR_DEL_ESTE.md) |
+| `169,47,7` | `169,48,7` | Bosque de los Cíclopes. Llegada `688,30,7` (claro del portal, oeste de la isla). Vuelta `687,30,7` → `169,48,7` | [`MAPEAR_BOSQUE_DE_LOS_CICLOPES.md`](items-and-map/MAPEAR_BOSQUE_DE_LOS_CICLOPES.md) |
 
-`165` y `167` eran piso de basalto libre en la fila `y=47`. No se ocupan el pasillo cian `160–162`, el obelisco `169,50` ni ningún portal anterior.
+`165`, `167` y `169` eran piso de basalto libre en la fila `y=47`. `169` es la casilla sobre el obelisco
+(espejo de `155`, que ya tenía portal `155,47` + obelisco `155,50`). No se ocupan el pasillo cian `160–162`,
+el obelisco `169,50` ni ningún portal anterior.
 
 
 La **Arena PvP** de z9 también se retiró en nov 2026: su sala es ahora la entrada de **El Foso Olvidado**,

@@ -21,6 +21,7 @@
 	<readable x="168" y="46" z="7" text="SAND CLOCK\n6-wave time attack\nClear waves for extra time &amp; daily reward"/>
 	<readable x="165" y="46" z="7" text="DESERT RUINS\nNine hunts from level 8 to 90\nStone path to the southern dock"/>
 	<readable x="167" y="46" z="7" text="EAST GLACIER\nIce trail from the old isle\nFrost Dragons and Ice Spiders"/>
+	<readable x="169" y="46" z="7" text="CYCLOPS WOODS\nForest island for levels 20-40\nFrom cyclops to giant spiders"/>
 	<!-- END TEMPLE_PORTAL_SIGNS -->
 	<!-- BEGIN NORTH_PASS_SIGNS -->
 	<readable x="187" y="13" z="7" text="NORTH PASS\nForest, Frozen Tundra and Dragon Caves.\nCaves: level 60+."/>
@@ -173,4 +174,7 @@
 	<!-- BEGIN WOLF_GROVE_SIGNS (scripts/map/mapkit/build.py) -->
 	<readable x="199" y="272" z="7" text="WOLF GROVE\nLevels 8 to 25\nWolves, winter wolves,\nbears and war wolves."/>
 	<!-- END WOLF_GROVE_SIGNS -->
+	<!-- BEGIN CYCLOPS_WOODS_SIGNS (scripts/map/mapkit/build.py) -->
+	<readable x="687" y="27" z="7" text="CYCLOPS WOODS\nLevels 20 to 40.\nCyclops along the trail.\nGiant spiders at the far end."/>
+	<!-- END CYCLOPS_WOODS_SIGNS -->
 </readables>

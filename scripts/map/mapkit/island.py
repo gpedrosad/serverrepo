@@ -50,9 +50,9 @@ def build(spec: dict, theme, seed: int, decisions: dict, otb: Otb | None = None)
 
     # 1. sendero: el recorrido redondeado, con ancho y desvío que varían con ruido
     route = [tuple(p) for p in spec["route"]]
-    hg = next((g for g in spec["glades"] if g.get("role") == "harbor" and "center" in g), None)
-    if hg and tuple(hg["center"]) != route[0]:
-        route.insert(0, tuple(hg["center"]))          # el sendero sale del puerto (si no, puede quedar suelto)
+    ag = next((g for g in spec["glades"] if g.get("role") in ("harbor", "portal") and "center" in g), None)
+    if ag and tuple(ag["center"]) != route[0]:
+        route.insert(0, tuple(ag["center"]))          # el sendero sale de la llegada (puerto o portal)
     pts = chaikin(route, 2)
     samples = polyline(pts, 0.5)
     total = samples[-1][2]
@@ -121,6 +121,7 @@ def build(spec: dict, theme, seed: int, decisions: dict, otb: Otb | None = None)
     # 3. tierra: bosque de profundidad variable alrededor de lo caminable; el puerto queda abierto al agua
     f0, f1 = spec.get("forest", [3, 6])
     harbor = next((g for g in glades if g["role"] == "harbor"), None)
+    portal = next((g for g in glades if g["role"] == "portal"), None)
     open_cells = set()
     if harbor:
         dx, dy = OPEN[spec["harbor"]["open"]]
@@ -223,8 +224,8 @@ def build(spec: dict, theme, seed: int, decisions: dict, otb: Otb | None = None)
         elif r < dens["bush"] + 0.04:
             tiles[c].append(rng.choice(theme["flowers"]))
 
-    # 6. puerto: llegada, Nimral, bote en el agua y cartel en el borde del bosque
-    info = {"landing": None, "npc": None, "sign": None, "boat": {}, "props": {}}
+    # 6. llegada: puerto (Nimral + bote en el agua) o portal (teleport desde el templo), y cartel
+    info = {"landing": None, "npc": None, "sign": None, "boat": {}, "return": None, "props": {}}
     if harbor:
         dx, dy = OPEN[spec["harbor"]["open"]]
         hc = harbor["cells"] & walk
@@ -249,24 +250,39 @@ def build(spec: dict, theme, seed: int, decisions: dict, otb: Otb | None = None)
         for c, it in zip(boat, theme["boat_h"]):
             tiles[c].append(it)
             info["boat"][c] = it
-        for c in sorted(forest, key=lambda c: abs(c[0] - landing[0]) + abs(c[1] - landing[1])):
+    if portal:
+        # llegada = casilla caminable del claro del portal fuera del sendero; vuelta = vecina fuera del sendero
+        pc = tuple(portal["center"])
+        cells = sorted(portal["cells"] & walk, key=lambda c: abs(c[0] - pc[0]) + abs(c[1] - pc[1]))
+        if not cells:
+            raise RuntimeError("el claro del portal quedó sin casillas caminables")
+        landing = next((c for c in cells if c not in trail), cells[0])
+        info["landing"] = landing
+        ret = next((n for n in ((landing[0] + 1, landing[1]), (landing[0] - 1, landing[1]),
+                                (landing[0], landing[1] + 1), (landing[0], landing[1] - 1))
+                    if n in walk and n not in trail), None)
+        if ret is None:
+            raise RuntimeError("no hay casilla de vuelta junto a la llegada del portal")
+        info["return"] = ret
+    if info["landing"]:
+        for c in sorted(forest, key=lambda c: abs(c[0] - info["landing"][0]) + abs(c[1] - info["landing"][1])):
             if c in canopy or not (neighbors_in(walk, *c) & {"n", "s", "e", "w"}):
                 continue
-            if abs(c[0] - landing[0]) + abs(c[1] - landing[1]) > 4:
+            if abs(c[0] - info["landing"][0]) + abs(c[1] - info["landing"][1]) > 4:
                 break
             tiles[c][-1] = theme["sign"]
             info["sign"] = c
             break
         if info["sign"] is None:
-            raise RuntimeError("no hay borde de bosque para el cartel del puerto")
+            raise RuntimeError("no hay borde de bosque para el cartel de la llegada")
 
     # 7. claros: lo que decidió jev (o el fallback) — piso suelto y bloqueos en el borde sin cortar el paso
-    reserved = {info["landing"], info["npc"]} | (grow({info["landing"]}, 2) if info["landing"] else set())
+    reserved = {info["landing"], info["npc"], info["return"]} | (grow({info["landing"]}, 2) if info["landing"] else set())
     start = info["landing"] or next(iter(sorted(trail)))
     base = len(reach(walk, start))
     for k, g in enumerate(glades):
         kind = decisions.get("glades", {}).get(str(k)) or g["spec"].get("props")
-        if not kind or g["role"] == "harbor":
+        if not kind or g["role"] in ("harbor", "portal"):
             continue
         prop = theme["props"][kind]
         info["props"][str(k)] = kind
@@ -309,7 +325,8 @@ def build(spec: dict, theme, seed: int, decisions: dict, otb: Otb | None = None)
     stages = decisions.get("stages") or spec["stages"]
     avoid = set(reserved)
     if info["landing"]:
-        avoid |= grow({info["landing"]}, spec.get("harbor", {}).get("clear", 8))
+        clear = spec.get("harbor", {}).get("clear", 8) if harbor else spec.get("portal", {}).get("clear", 6)
+        avoid |= grow({info["landing"]}, clear)
     avoid |= {c for c in walk if len(tiles[c]) > 1}
     srng = random.Random(f"{spec['name']}-spawns-{seed}")
     spawns = place_stages(stages, slices_by(walk - avoid, d.__getitem__, len(stages)), walk, avoid, z, srng)
