@@ -1,0 +1,12 @@
+{
+  "name": "retro76-maprender",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Render de mapas de Tibia 7.6 (OTBM + DAT + SPR) con sharp, sin GUI. Ver docs/map-rendering.md",
+  "type": "module",
+  "bin": { "maprender": "./maprender.mjs" },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "sharp": "0.35.5"
+  }
+}
