@@ -46,7 +46,7 @@ no son capturas de una sesión de juego ni incluyen criaturas, NPC o iluminació
 | `docs/items-and-map/REVISION_ESTETICA_HIELO_2026_11_13.md` | Diagnóstico, solución, evidencias y pendientes |
 | `docs/items-and-map/img/revision-hielo-2026-11-13/` | Imágenes del diagnóstico y cinco renders del resultado |
 | `docs/items-and-map/MAPEAR_ISLA_HELADA.md` | Estado, piezas actuales y validaciones |
-| `docs/items-and-map/PIEZAS_DE_MAPA.md` | Composición de botes y caso resuelto |
+| `docs/items-and-map/MAPAS.md` | Composición de botes y caso resuelto |
 | `docs/gameplay/STAIRS.md` | Llegada real y corrección local |
 | `docs/INDEX.md` | Enlace a la revisión |
 

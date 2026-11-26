@@ -92,7 +92,7 @@ python3 scripts/map/check-map-load.py                                           
   `generated-desert-hunts.json`.
 - Piezas usadas: paredes de arenisca (V 1067, H 1069, esquina 1070, poste 1062), bambú (V 3423, H 3426,
   esquina 3429, poste 3425), restos de pared 1085/1087, pilares 1549 y 1551, obelisco roto 1561. Más en
-  [PIEZAS_DE_MAPA.md](../items-and-map/PIEZAS_DE_MAPA.md).
+  [MAPAS.md](../items-and-map/MAPAS.md).
 
 ## Deploy
 

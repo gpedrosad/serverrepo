@@ -62,7 +62,7 @@ COAST_INNER = {"nw": 4652, "ne": 4653, "sw": 4654, "se": 4655}
 DIRT_SIDE, DIRT_CORNER, DIRT_INNER = NP.DIRT_SIDE, NP.DIRT_CORNER, NP.DIRT_INNER
 
 ROPE_BRIDGE = (3756, 3757)                     # tablas del puente de sogas (norte-sur), alternadas
-# empalizada en punta: la pared se dibuja en el borde sur/este de su casilla (PIEZAS_DE_MAPA.md#paredes)
+# empalizada en punta: la pared se dibuja en el borde sur/este de su casilla (MAPAS.md#paredes)
 PALISADE = dict(h=3512, v=3520, pole=3532, corner=3531)
 TENTS = ((3867, 3868), (3869, 3870), (3896, 3897))   # tela roja, piel, a rayas: (horizontal, vertical)
 HAY = (3848, 3849, 3850, 3851)

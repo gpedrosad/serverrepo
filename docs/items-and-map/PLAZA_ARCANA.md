@@ -22,7 +22,7 @@ No requiere recompilar C++.
   **54 nuevas** arriba. Todo tile fuera de esas huellas queda idéntico, incluidos depots y casas.
 
 Las torres son remates arquitectónicos cerrados: no agregan escaleras, NPCs ni monstruos.
-Las paredes norte/oeste de los pisos superiores van sin ground, según PIEZAS_DE_MAPA.md;
+Las paredes norte/oeste de los pisos superiores van sin ground, según MAPAS.md;
 el resto tiene soporte en el piso anterior. No hay techos sueltos fuera de las torres.
 Se mantienen los flags originales de los tiles de planta baja.
 

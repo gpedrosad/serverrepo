@@ -5,7 +5,7 @@ v2 (19 nov 2026): pasillo en U, más largo (fila norte y94 de x106 a x64, bajada
 de vuelta a x106), unido al túnel del Spot del Dragón Negro por un ramal de 1 de ancho en x99 (el ramal
 y88 para arriba es del dragon spot; de y89 para abajo, de esta cripta). Dos entradas: la bajada propia de
 la orilla sur del pantano (94,92,7: plataforma de piedra, bajada 432 y cartel) y el túnel del dragón.
-Caja z8 56-113 x 89-112. Receta de ZONAS_DE_CAZA.md: Imperial Squire y Archer al frente, Court Mage más
+Caja z8 56-113 x 89-112. Receta de MAPAS.md#zonas-de-caza: Imperial Squire y Archer al frente, Court Mage más
 adentro e Imperial Hero de a 2 al fondo — sin variantes rage.
 
 Paredes: todo piso tiene pared de cueva al lado (nunca la roca lisa 101 pegada): el núcleo del pasillo se

@@ -1,7 +1,7 @@
 # Puente principal — Ironbound (23 nov 2026)
 
 Puente elevado de la ciudad: **141,65,6**, tablero x140–142, y57–75. Es el puente
-principal documentado en [PIEZAS_DE_MAPA.md](PIEZAS_DE_MAPA.md#puente-de-madera-elevado-z6).
+principal documentado en [MAPAS.md](MAPAS.md#puente-de-madera-elevado-z6).
 
 La estética cambia de madera a **basalto oscuro, hierro, remates de piedra clara y
 bronce**, con balizas ámbar. Los dos segmentos angostos llevan inlays de bronce y

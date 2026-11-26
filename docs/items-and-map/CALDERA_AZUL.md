@@ -74,7 +74,7 @@ es tierra es lava azul: desde ninguna casilla caminable se ve el vacío (validad
 | Santuario | sala 11×8 `690,311 – 700,318`, mármol negro y ladrillo, 3 ataúdes de gema azul, 6 blue bassins, puerta al sur `694–696,319` |
 | Jefe | Azhurak en `695,314` (círculo de ceniza) |
 
-Receta de [ZONAS_DE_CAZA.md](ZONAS_DE_CAZA.md): recorrido en zigzag con filas a 16 de distancia, ensanches a mitad
+Receta de [MAPAS.md#zonas-de-caza](MAPAS.md#zonas-de-caza): recorrido en zigzag con filas a 16 de distancia, ensanches a mitad
 de cada tramo y en las esquinas, y monstruos por **etapas según la distancia caminando** desde la llegada (nada a
 menos de 6 de la llegada, el TP y la puerta):
 

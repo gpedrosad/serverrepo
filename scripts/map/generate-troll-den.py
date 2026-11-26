@@ -9,8 +9,8 @@ Caja: x 155-176, y 103-114, z8 (22x12). El lugar se cava en un bolsón de lava d
 (mismo criterio que el dungeon de la city, que cavó su caja en este campo). El techo de la cueva es
 el pasto/lago de z7, que ya tiene casillas; el generador comprueba que no quede vacío a la vista.
 
-Reglas que valida antes de escribir (receta de docs/items-and-map/PIEZAS_DE_MAPA.md#cuevas,
-docs/items-and-map/ZONAS_DE_CAZA.md y docs/items-and-map/MAPEAR_DUNGEON_CITY.md):
+Reglas que valida antes de escribir (receta de docs/items-and-map/MAPAS.md#cuevas,
+docs/items-and-map/MAPAS.md#zonas-de-caza y docs/items-and-map/MAPEAR_DUNGEON_CITY.md):
   - la caja es propia (solo lava o tiles de una corrida anterior);
   - paredes con pieza única sobre el piso combinado, roca donde no toca piso;
   - sin vacío a media pantalla desde cualquier piso caminable (también fuera de la caja);

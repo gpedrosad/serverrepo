@@ -11,7 +11,7 @@ es tierra nueva: la forma de la franja ES el recorrido (como la Isla Natural, ge
 El patio lleva ataúdes de piedra completos (1413 + 1411 abajo) y el camino ataúdes enterrados
 completos (1415 + 1416 abajo). Nunca una mitad suelta; lo valida antes de escribir.
 
-Monstruos por etapas según la distancia caminando desde la llegada (docs/items-and-map/ZONAS_DE_CAZA.md):
+Monstruos por etapas según la distancia caminando desde la llegada (docs/items-and-map/MAPAS.md#zonas-de-caza):
 sueltos al principio, de a 2 al fondo; los Undead Gladiators se hacen mayoría hacia el final.
 
 Solo z7 y solo casillas de agua o vacío: no toca la isla (ni su costa: deja 1 casilla de agua alrededor de todo
@@ -250,7 +250,7 @@ def build(seed: int, old7: dict, bl):
     reserved |= grow({sign}, 1)
 
     # 6) patio del final: ataúdes de piedra COMPLETOS (1413 + 1411 abajo) y lápidas
-    #    Nunca una mitad suelta: ver PIEZAS_DE_MAPA.md y remove-incomplete-tombs.py.
+    #    Nunca una mitad suelta: ver MAPAS.md y remove-incomplete-tombs.py.
     for dx, dy in ((-3, -1), (3, -1)):
         head, foot = (end[0] + dx, end[1] + dy), (end[0] + dx, end[1] + dy + 1)
         if (head in land and foot in land and len(tiles.get(head, [])) == 1

@@ -4,7 +4,7 @@
 El 3125 es una pieza cortada del esqueleto grande de dragón (junto con la cabeza 2247 y la garra
 3122): puesta sola en el suelo se ve cortada/mal. En el Valle de las Bestias ya se habían cambiado
 por huesos enteros (nov 2026, generate-beast-valley.py); este script las saca de TODO el mapa y los
-generadores ya no las colocan (ver docs/items-and-map/PIEZAS_DE_MAPA.md, sección Cuevas).
+generadores ya no las colocan (ver docs/items-and-map/MAPAS.md, sección Cuevas).
 
   python3 scripts/map/remove-dragon-skeletons.py            # dry-run: muestra lo que haría
   python3 scripts/map/remove-dragon-skeletons.py --replace  # escribe test.otbm

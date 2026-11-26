@@ -27,7 +27,7 @@ isla vieja, 213 a la entrada y 410 a la guarida.
 
 ## Monstruos
 
-Por distancia caminando desde la entrada, con la receta de [ZONAS_DE_CAZA.md](ZONAS_DE_CAZA.md)
+Por distancia caminando desde la entrada, con la receta de [MAPAS.md#zonas-de-caza](MAPAS.md#zonas-de-caza)
 (`place_stages` + `slices_by`). Nada a menos de 9 de la entrada, así no se suman a los de la isla vieja.
 
 | Etapa | Monstruos | Por spawn | Spawntime |

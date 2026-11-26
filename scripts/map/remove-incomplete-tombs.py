@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Saca del mapa las tumbas incompletas (ataúdes y sarcófagos de varias piezas).
 
-Un ataúd o sarcófago nunca va de a una pieza (docs/items-and-map/PIEZAS_DE_MAPA.md):
+Un ataúd o sarcófago nunca va de a una pieza (docs/items-and-map/MAPAS.md):
 
   1410/1412/1413/1414 (cabecera) + 1411 (pie) abajo (y+1)
   1415 (ataúd enterrado, cabecera) + 1416 (pie) abajo (y+1)

@@ -4,7 +4,7 @@ Reemplaza al **Hunt Maze** (nov 2026). La **v3** (nov 2026) compacta el valle �
 abierto de ~9.000 casillas con dos cuevas de ~6.000 y todos los monstruos mezclados— y da a cada
 cueva un **segundo piso más largo y con más monstruos**. La **v4** (16 nov 2026) convierte todas las
 cuevas en **pasillos largos y angostos** y hace que los monstruos salgan **sueltos al entrar y de a 2 al
-fondo**. Cómo se arma un lugar así y cuántos monstruos pone: [ZONAS_DE_CAZA.md](ZONAS_DE_CAZA.md).
+fondo**. Cómo se arma un lugar así y cuántos monstruos pone: [MAPAS.md#zonas-de-caza](MAPAS.md#zonas-de-caza).
 Son cuatro pisos:
 
 | Piso | Qué hay |

@@ -36,7 +36,7 @@ Actualmente:
   es capa común y el cliente la dibuja ENCIMA → el TP queda invisible. La base del TP es la pieza
   gemela `1798` (mismo sprite que la `4398`, flag `ground_border`): se dibuja a nivel de piso,
   debajo del teleport. Ver "Errores que ya pasaron" en
-  [PIEZAS_DE_MAPA.md](../items-and-map/PIEZAS_DE_MAPA.md).
+  [MAPAS.md](../items-and-map/MAPAS.md).
 
 ## Implementacion
 

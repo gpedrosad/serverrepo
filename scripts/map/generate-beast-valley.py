@@ -17,7 +17,7 @@ Cada zona y cada cueva tiene su cartel y su decoración (columnas y lápidas en 
 pilares en las catacumbas, hongos y barro en las quaras, huesos de dragón y braseros). El valle es un
 corredor de ~11 casillas rodeado de bosque cerrado: no se ve el borde de la caja ni quedan claros.
 Desde nov 2026 (v4) todas las cuevas son pasillos largos y angostos en zigzag y los monstruos salen
-sueltos al entrar y de a 2 al fondo (receta en docs/items-and-map/ZONAS_DE_CAZA.md).
+sueltos al entrar y de a 2 al fondo (receta en docs/items-and-map/MAPAS.md#zonas-de-caza).
 
 Caja: x 262-361, y 232-378, z7-z10. Borra además todo el Hunt Maze viejo (x 280-349, y 243-400, z7).
 No toca la Hell Quest (y <= 226), el Paso del Norte (x >= 370), el Reloj de Arena (z5-z6) ni la
@@ -90,7 +90,7 @@ PILLAR, BROKEN_PILLAR, STATUE, ALTAR, COAL_BASIN = 1515, 3767, 1442, 1642, 2602
 BARREL, CRATE = 1770, 1739
 # Piezas sueltas del esqueleto grande de dragón (cabeza 2247, cráneo 3125, garra 3122): solas se ven
 # cortadas en el suelo. Las pone decorate_cave (generate-north-pass.py) y BONES; en el valle se cambian
-# por huesos enteros (nov 2026). Ver docs/items-and-map/PIEZAS_DE_MAPA.md.
+# por huesos enteros (nov 2026). Ver docs/items-and-map/MAPAS.md.
 CUT_DRAGON_PIECES = {DRAGON_SKULL: 2248, 3125: 2320, DRAGON_BONES: 2248}
 CAVE_FLOOR, CAVE_FLOOR_ALT, CAVE_MUD = NP.CAVE_FLOOR, NP.CAVE_FLOOR_ALT, NP.CAVE_MUD
 
@@ -127,7 +127,7 @@ ZONES = {
 # La zona se parte en tantas franjas como etapas según la distancia caminando desde la entrada y cada
 # etapa llena la suya respetando su separación: así la cantidad la decide el espacio y la separación,
 # no un número fijo. Regla de nov 2026: al entrar, monstruos sueltos (1 por spawn); al fondo, de a 2.
-# Receta y números: docs/items-and-map/ZONAS_DE_CAZA.md.
+# Receta y números: docs/items-and-map/MAPAS.md#zonas-de-caza.
 SURFACE_STAGES = {   # z7: la distancia se mide desde la llegada
     "camp": [(("Minotaur",), 1, 70, 6), (("Minotaur", "Minotaur Archer"), 1, 80, 6),
              (("Minotaur Guard", "Minotaur Mage"), 2, 90, 6)],

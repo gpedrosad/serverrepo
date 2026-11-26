@@ -10,7 +10,7 @@ cliente esconde los pisos de arriba como si se estuviera adentro.
   python3 scripts/map/remove-floating-roofs.py --apply    # los borra del test.otbm
 
 Solo borra casillas que son todo techo (el suelo y, si tiene, sus bordes de techo); si hay otra cosa encima se
-informa y no se toca. Doc: docs/items-and-map/PIEZAS_DE_MAPA.md (errores que ya pasaron).
+informa y no se toca. Doc: docs/items-and-map/MAPAS.md (errores que ya pasaron).
 """
 from __future__ import annotations
 

@@ -7,7 +7,7 @@ defecto es dry-run; con --replace escribe test.otbm.
   python3.11 scripts/map/fill-void.py 262 0 262 19 7 --ground 4608            # mostrar
   python3.11 scripts/map/fill-void.py 262 0 262 19 7 --ground 4608 --replace  # escribir
 
-Doc: docs/items-and-map/PIEZAS_DE_MAPA.md (errores que ya pasaron).
+Doc: docs/items-and-map/MAPAS.md (errores que ya pasaron).
 """
 from __future__ import annotations
 

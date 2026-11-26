@@ -8,7 +8,7 @@ de lava, y la cueva de z9, tres salas rectangulares unidas por pasillos. Desde a
 el vacío negro al norte y al este, y la lava al sur y al oeste. Ahora:
 
 - **Pozo:** una cámara chica de cueva sobre un islote de roca en la lava.
-- **Cueva:** natural (`carve_cave` + `ribbon`, como las [zonas de caza](ZONAS_DE_CAZA.md)).
+- **Cueva:** natural (`carve_cave` + `ribbon`, como las [zonas de caza](MAPAS.md#zonas-de-caza)).
 - **Lo que se ve desde el piso de z9** y era vacío o lava pasó a roca: 241 casillas.
 
 ![z8: el pozo, un islote de roca en la lava de los behemoths](img/cuevas-bambu/z8.png)
@@ -80,7 +80,7 @@ Pendiente: probar las dos escaleras in-game.
 Sobre el claro había **297 techos de madera en z6** sin ninguna casa debajo: sobraron de sacar las casas de
 bambú. Se veían flotando y uno tapaba la bajada. Los sacó `scripts/map/remove-floating-roofs.py`, junto con un
 techo de tejas de 72 casillas en `71-79, 217-224` que estaba en la misma situación. Ver
-[PIEZAS_DE_MAPA.md](PIEZAS_DE_MAPA.md).
+[MAPAS.md](MAPAS.md).
 
 
 ## Entrada rematada — 20 nov 2026

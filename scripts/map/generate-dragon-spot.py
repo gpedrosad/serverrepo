@@ -15,7 +15,7 @@ Nada toca una orilla: el dragón no sale de las plataformas y el puente. El caza
 la orilla, camina el túnel y sube por la escalera a su plataforma (llega a 95,86); si lo aprietan, pisa la
 trampilla (cae sobre la escalera, en z8, donde el dragón no llega), se cura y vuelve a subir.
 
-Reglas (docs/items-and-map/PIEZAS_DE_MAPA.md): agujero/trampilla arriba y escalera de mano 1386 abajo en la
+Reglas (docs/items-and-map/MAPAS.md): agujero/trampilla arriba y escalera de mano 1386 abajo en la
 misma x,y; al bajar se cae sobre la escalera y al usarla se llega a (x, y+1) arriba. La escalera va sola.
 Cueva con cave_tiles de generate-north-pass.py, techo (z7 encima del túnel) y nada de vacío a la vista
 (relleno de roca 101 en la media pantalla de cada casilla del túnel).

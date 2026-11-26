@@ -15,7 +15,7 @@ Generador: `scripts/map/generate-hero-depths.py` (manifiesto `data/world/generat
 
 `/ir depths` (GM) deja en la llegada de z10. Se entra por el hueco `432` en el pasillo de los Hero, en **`146,93,9`** (al lado de la escalera que sube).
 Cada bajada es un hueco `432` arriba y la escalera `1385` en la misma casilla del piso de abajo
-([PIEZAS_DE_MAPA.md](PIEZAS_DE_MAPA.md#escaleras-entre-pisos)).
+([MAPAS.md](MAPAS.md#escaleras-entre-pisos)).
 
 | Piso | Nombre | Se llega a | Bajada al siguiente | Casillas de piso |
 |------|--------|-----------|---------------------|-----------------:|

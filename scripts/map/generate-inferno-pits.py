@@ -17,7 +17,7 @@ aqui va en serio: la progresion mas dura de fuego del server, despues de la Isla
 
 Cada piso de cueva arranca donde termina el de arriba (la bajada la elige stair_down dentro
 de la caja del piso de abajo): z8 baja al sur, z9 vuelve al norte y z10 cruza al sur hasta el
-arena. Cuevas con la receta de docs/items-and-map/ZONAS_DE_CAZA.md (pasillos largos y
+arena. Cuevas con la receta de docs/items-and-map/MAPAS.md#zonas-de-caza (pasillos largos y
 angostos, monstruos sueltos al entrar y de a 2 al fondo) via la maquinaria del Valle; suelos
 de ceniza, charcos de lava y paredes de cueva con la maquinaria de la Isla del Infierno.
 Portal de la plaza 159,47,7 (scripts/map/temple-portals.py, clave "inferno").
@@ -153,7 +153,7 @@ def deep_path(mouth, dy, x_lo, x_hi, rows, end_x=50):
     return pts
 
 
-# --- caza: fuego de menos a mas; sueltos al entrar, de a 2 al fondo (ZONAS_DE_CAZA.md) --------------
+# --- caza: fuego de menos a mas; sueltos al entrar, de a 2 al fondo (MAPAS.md#zonas-de-caza) --------------
 SURFACE_STAGES = {   # z7: la distancia se mide desde la llegada
     "ember": [(("Fire Devil",), 1, 120, 6), (("Fire Devil", "Fire Elemental"), 1, 140, 6),
               (("Fire Elemental",), 2, 150, 6)],

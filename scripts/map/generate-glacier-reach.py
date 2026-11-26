@@ -9,7 +9,7 @@ alarga hacia el este con una zona de hunt larga de monstruos de hielo, y al fina
       todo lo que no es sendero es bosque nevado y roca (pinos, piedras, estalagmitas: bloquea)
       orilla como la de la isla vieja: agua 4619 con el borde de nieve 4737-4748 encima; el resto agua 4608
 
-Monstruos por distancia caminando desde la entrada (receta de docs/items-and-map/ZONAS_DE_CAZA.md): Chakoya,
+Monstruos por distancia caminando desde la entrada (receta de docs/items-and-map/MAPAS.md#zonas-de-caza): Chakoya,
 Frost Giant / Giantess / Mammoth, Ice Golem / Ice Monk, Frost Dragon Hatchling / Crystal Spider y al fondo
 Frost Dragon + Ice Spider de a 2. Nada a menos de 9 de la entrada (los de la isla vieja no se suman).
 

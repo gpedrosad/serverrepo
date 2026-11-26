@@ -25,7 +25,7 @@ El techo de madera que tenía el patio en z6 se reemplazó por el piso 2 de la t
 tejas de la casa del norte (`x 172–180, y 55–57, z5`) **no se toca**. El dungeon de la city
 ([Guarida de los Orcos](MAPEAR_DUNGEON_CITY.md), z8) tampoco se toca.
 
-Las paredes siguen la regla de [`PIEZAS_DE_MAPA.md`](PIEZAS_DE_MAPA.md): la fila norte y la columna
+Las paredes siguen la regla de [`MAPAS.md`](MAPAS.md): la fila norte y la columna
 oeste llevan el suelo de afuera en z7 y **sin ground** en los pisos altos; así la losa de piedra no
 sobresale en las esquinas. La **esquina NE (`180,61,7`) va verde** (pasto), no piedra; la muralla
 queda con las piezas originales (`1050` en la fila norte, `1053` solo en la esquina SE). La derecha

@@ -1,0 +1,62 @@
+{
+  "_doc": "Catálogo de temas de mapkit. Cada id se miró con render-pieces.py antes de entrar acá (docs/items-and-map/MAPAS.md#temas). Bordes: la pieza va en la casilla de AFUERA de 'shape' y sale de en qué lados está 'shape'.",
+  "bosque-isla": {
+    "about": "Isla de pasto con bosque cerrado, sendero de tierra y claros. Agua alrededor.",
+    "water": 4608,
+    "grass": 4756,
+    "trail": 103,
+    "coast": {
+      "shape": "water",
+      "ground": 4526,
+      "side": {"n": 4644, "e": 4645, "s": 4646, "w": 4647},
+      "corner": {"n,w": 4648, "n,e": 4649, "s,w": 4650, "s,e": 4651},
+      "inner": {"nw": 4652, "ne": 4653, "sw": 4654, "se": 4655},
+      "note": "Las piezas de costa BLOQUEAN el paso: nunca en una casilla caminable."
+    },
+    "trail_edge": {
+      "shape": "trail",
+      "side": {"n": 111, "e": 112, "s": 110, "w": 113},
+      "corner": {"n,w": 120, "n,e": 121, "s,w": 119, "s,e": 118},
+      "inner": {"nw": 116, "ne": 117, "sw": 115, "se": 114},
+      "note": "Pasto con borde de tierra: es el SUELO de la casilla de pasto vecina al sendero (caminable)."
+    },
+    "trees_2x2": [2700, 2701, 2702, 2707, 2708, 2711, 4009],
+    "trees_rare": [2703, 2704, 2706],
+    "blockers_1x1": [2767, 2768, 2786, 2767, 2768, 2786, 2785],
+    "dead_trees": [2709, 2717, 2720],
+    "roots": [4038, 4039, 4040, 4216, 4217, 4218, 4219, 4220, 4221, 4222],
+    "flowers": [4152, 4153, 4156, 4157, 4158, 2740],
+    "mushrooms": [4170, 4171, 4178, 4179, 4180, 4182, 4183],
+    "bones": [2248],
+    "logs": [3873],
+    "campfire": 1423,
+    "sign": 1429,
+    "boat_h": [3592, 3593, 3594, 3595, 3596],
+    "props": {
+      "wolf-den": {"about": "Guarida de lobos: huesos y calaveras, raíces en el borde", "floor": ["bones", "logs"], "edge": ["roots", "blockers_1x1"], "floor_rate": 0.07, "edge_rate": 0.35},
+      "bear-den": {"about": "Cueva del oso: árboles secos y raíces, huesos", "floor": ["bones"], "edge": ["dead_trees", "roots"], "floor_rate": 0.05, "edge_rate": 0.45},
+      "hunter-camp": {"about": "Campamento de cazador: fogata con troncos", "floor": ["logs"], "edge": ["blockers_1x1"], "center": "campfire", "floor_rate": 0.03, "edge_rate": 0.25},
+      "meadow": {"about": "Pradera con flores", "floor": ["flowers"], "edge": ["blockers_1x1"], "floor_rate": 0.12, "edge_rate": 0.2},
+      "mushroom-ring": {"about": "Anillo de hongos en un claro húmedo", "floor": ["mushrooms"], "edge": ["roots"], "floor_rate": 0.1, "edge_rate": 0.3}
+    }
+  },
+  "_categorias": {
+    "water": "Suelo de agua. Todo lo que el jugador ve (±9, ±7) tiene que tener tile: el agua de relleno también es de la zona.",
+    "grass": "Suelo de pasto adentro de la isla (caminable o bajo el bosque).",
+    "trail": "Suelo del sendero. Mínimo 2,2 de ancho (trail_width): los tramos de 1 se borran al cerrar los bordes y el sendero queda cortado.",
+    "coast": "Costa: suelo + pieza de borde en la casilla de TIERRA pegada al agua, elegida por dónde está el agua (Border.piece_at). Bloquea: nunca en caminable ni donde llega un puente o un bote.",
+    "trail_edge": "Borde de tierra: es el SUELO de la casilla de pasto pegada al sendero, elegido por dónde está el sendero. Caminable. Una sola pieza válida por casilla (Border.settle).",
+    "trees_2x2": "Árbol de 2x2: se ancla abajo-derecha y se dibuja hacia arriba-izquierda. Las 4 casillas del dibujo tienen que ser bosque (no caminable): si no, tapa al jugador.",
+    "trees_rare": "Igual que trees_2x2, colores de otoño: pocos (3 %) o se ve manchado.",
+    "blockers_1x1": "Arbusto o pino chico de 1 casilla, bloquea. Es lo que cierra el borde del bosque (hedge): toda casilla pegada a lo caminable que no sea camino tiene que bloquear.",
+    "dead_trees": "Árbol seco de 2x2 (misma regla que trees_2x2). Para la guarida del oso.",
+    "roots": "Raíces/tocón de 1 casilla, bloquea. Borde de claros.",
+    "flowers": "Decoración que no bloquea ni se levanta, sobre pasto caminable. Nunca sobre la llegada ni donde aparece un monstruo.",
+    "mushrooms": "Hongos fijos (los 4170+; los 2787–2796 se levantan: no usar).",
+    "bones": "Calavera con huesos fija (2248). La 2320 se levanta y es apilable: no usar como decoración.",
+    "logs": "Troncos cruzados, no bloquean.",
+    "campfire": "Fogata (no bloquea sólido): centro del claro de campamento, sin monstruos encima.",
+    "sign": "Cartel: bloquea; va en el borde del bosque pegado a la llegada. Su texto va en readables.xml (bloque de la zona).",
+    "boat_h": "Bote horizontal: SIEMPRE las 5 piezas seguidas de oeste a este, sobre agua, sin tocar la costa."
+  }
+}

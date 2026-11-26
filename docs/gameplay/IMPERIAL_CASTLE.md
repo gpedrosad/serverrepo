@@ -100,7 +100,7 @@ python3 scripts/map/check-map-load.py                                           
 - Los pisos son planos de texto (`PLANS`) y los monstruos están en `MONSTERS_BY_FLOOR`. Para cambiar un cuarto
   o una cantidad se edita ahí y se vuelve a correr.
 - Deja un respaldo `test.otbm.bak-castle` la primera vez (no va a git).
-- Cómo usar paredes, escaleras y muebles: [PIEZAS_DE_MAPA.md](../items-and-map/PIEZAS_DE_MAPA.md).
+- Cómo usar paredes, escaleras y muebles: [MAPAS.md](../items-and-map/MAPAS.md).
 
 ## Deploy
 

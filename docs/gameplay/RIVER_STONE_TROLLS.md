@@ -74,8 +74,8 @@ cruza el puente encuentra River Trolls y al pasar el arco, Stone Trolls al fondo
 
 Cueva de un piso bajo el pasto del sur (entre las ruinas y el lago de la catedral vieja), generada
 con `scripts/map/generate-troll-den.py` siguiendo la receta de
-[PIEZAS_DE_MAPA.md#cuevas](../items-and-map/PIEZAS_DE_MAPA.md#cuevas) y
-[ZONAS_DE_CAZA.md](../items-and-map/ZONAS_DE_CAZA.md) (grilla de bloques 2×2 con `carve_cave`,
+[MAPAS.md#cuevas](../items-and-map/MAPAS.md#cuevas) y
+[MAPAS.md#zonas-de-caza](../items-and-map/MAPAS.md#zonas-de-caza) (grilla de bloques 2×2 con `carve_cave`,
 paredes de tierra con pieza única, etapas por distancia):
 
 | | |

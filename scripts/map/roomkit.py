@@ -8,7 +8,7 @@
   patch_block reescribe un bloque BEGIN/END en un archivo de texto (Lua, readables)
 
 Las paredes de 7.6 se eligen por vecinos: esquina NO = poste, NE = horizontal,
-SO = vertical, SE = esquina en L (docs/items-and-map/PIEZAS_DE_MAPA.md).
+SO = vertical, SE = esquina en L (docs/items-and-map/MAPAS.md).
 """
 from __future__ import annotations
 

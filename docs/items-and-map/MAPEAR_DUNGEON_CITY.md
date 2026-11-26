@@ -88,7 +88,7 @@ El primer dungeon (`62a74b8`) usaba el tallador de Epstein Island con cajas de 1
 
 **Regla general para cuevas nuevas:** usar el tallador de bloques 2x2 (`generate-natural-island.py` o
 este) y validar paredes, vacío a la vista, escaleras y decoración antes de escribir. Ver también
-[PIEZAS_DE_MAPA.md](PIEZAS_DE_MAPA.md#cuevas).
+[MAPAS.md](MAPAS.md#cuevas).
 
 ## Convivencia con Mina Enana — 20 nov 2026
 

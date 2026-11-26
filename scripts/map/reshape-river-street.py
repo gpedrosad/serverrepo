@@ -127,7 +127,7 @@ def desired(existing: dict) -> tuple[dict, dict, dict]:
             if y == WALL_TOP:
                 ground = list(street_base(x))
             elif x == x0:
-                ground = [GRASS]                        # columna oeste: suelo de afuera (PIEZAS_DE_MAPA.md)
+                ground = [GRASS]                        # columna oeste: suelo de afuera (MAPAS.md)
                 old = existing[(x, y)]
                 if old[0] == SHORE_GROUND and len(old) > 1 and old[1] in SHORE:
                     ground = old[:2]                    # la pared queda sobre la orilla: el borde del agua sigue

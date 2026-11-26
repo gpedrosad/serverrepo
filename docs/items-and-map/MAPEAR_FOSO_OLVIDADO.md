@@ -96,7 +96,7 @@ z9 estaba vacío encima del corredor y del primer piso del laberinto (z10). El c
 cuevas de z8 (x 195–280): desde 675 casillas de z10 "se veía lo de arriba". Ahora el generador pone roca
 en z9 sobre `CORRIDOR_BOX` y `MAIN_BOX` (con 2 de margen) solo donde no hay tile (`ceiling_tiles`, 8.155
 casillas). z11 y z12 ya tenían techo: el piso de arriba del laberinto está entero. Ver
-[PIEZAS_DE_MAPA.md#techo](PIEZAS_DE_MAPA.md#techo).
+[MAPAS.md#techo](MAPAS.md#techo).
 
 ## Regenerar
 

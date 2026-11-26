@@ -41,7 +41,7 @@ ramal:
 | 5 (fondo, fila sur este) | Imperial Hero | 2 | 235 s |
 
 Da **10 spawns / 14 monstruos** (Imperial Hero 6, Court Mage 3, Imperial Archer 3, Imperial Squire 2):
-**1 cada 39 casillas** (banda 33–50 de [ZONAS_DE_CAZA.md](ZONAS_DE_CAZA.md)). El último Imperial Hero queda a
+**1 cada 39 casillas** (banda 33–50 de [MAPAS.md#zonas-de-caza](MAPAS.md#zonas-de-caza)). El último Imperial Hero queda a
 ~100 pasos de la escalera de la orilla.
 
 ## Paredes (arreglado en la v2)

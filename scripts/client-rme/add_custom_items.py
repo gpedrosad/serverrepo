@@ -585,7 +585,7 @@ NEW_ITEMS += dock_items()
 from river_grotto_assets import river_items  # noqa: E402
 NEW_ITEMS += river_items()
 # Barandas del puente de madera de la ciudad (nov 2026), dibujadas por make_bridge_rails.py (server 20480-20488,
-# client 5200-5208). Doc: docs/items-and-map/PIEZAS_DE_MAPA.md#puente-de-madera-elevado-z6.
+# client 5200-5208). Doc: docs/items-and-map/MAPAS.md#puente-de-madera-elevado-z6.
 from make_bridge_rails import bridge_items  # noqa: E402
 NEW_ITEMS += bridge_items()
 # Puente de la ciudad en z6 (nov 2026): barandas 3D continuas con faroles, mismo motor que dock_bridge_art

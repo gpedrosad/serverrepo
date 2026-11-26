@@ -29,7 +29,7 @@ escaleras automáticamente y valida alcanzabilidad multi-piso). Manifiesto:
 | Pasto | `4756`; costa `4526` | los dos grounds de pasto que usa el mapa (el `4526` es el que llevan las islas generadas en la costa) |
 | Agua | `4608` (shallow water ground) | mar del mapa |
 | Orilla pasto↔agua | `4644`–`4655` | set `grass->water` de `map-kb/border_sets.json`, el mismo de `generate-natural-island.py`; se elige con `pieces_for()` (lados, esquinas externas `4648`–`4651` e internas `4652`–`4655`) |
-| Piedra del castillo | piso `431`, paredes `1049`–`1053` | `PIEZAS_DE_MAPA.md` (pies de la torre del castillo) |
+| Piedra del castillo | piso `431`, paredes `1049`–`1053` | `MAPAS.md` (pies de la torre del castillo) |
 | Montañitas grises | meseta `4566` (rocks ground) + pared de roca `906` al norte y `903` al oeste | medido en `test.otbm`: las mesetas de roca del mapa usan ese ground y esas dos paredes; **no** se usa `919` (ese ground se dibuja con el sprite desplazado y deja huecos negros si no lleva la pared completa) |
 | Poison field (torre z6) | `1490` (cid 2121, sólo `block_pathfind`) | `ITEMS_OTB_DUMP.txt`; `destroyfield.lua` ya lo limpia |
 | Árboles | `4009` (pino 2x2), `2768` (arbolito) | `generate-beast-valley.py` / `generate-north-pass.py` |

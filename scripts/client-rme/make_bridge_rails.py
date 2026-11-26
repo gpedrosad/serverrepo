@@ -4,7 +4,7 @@ DENTRO de la tabla del borde (encima del suelo de madera 405).
 
 Por qué: en 7.6 la baranda 1518 se dibuja en el borde oeste de su casilla y la bloquea, así que el puente
 a la vista era una casilla más ancho que el caminable y no se podía angostar a 1 sqm sin que quedara mal
-(docs/items-and-map/PIEZAS_DE_MAPA.md#puente-de-madera-elevado-z6). Con estas piezas cada tabla lleva la
+(docs/items-and-map/MAPAS.md#puente-de-madera-elevado-z6). Con estas piezas cada tabla lleva la
 baranda en los lados que dan al agua y al costado no hay casilla: se ve el río.
 
 Piezas: una por combinación de lados (L oeste, T norte, R este, B sur). R y B llevan además la cara lateral

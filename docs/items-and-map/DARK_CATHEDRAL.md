@@ -108,7 +108,7 @@ llegadas de escalera quedan limpios (el generador excluye esas casillas del deco
 Patrón estándar del mapa: **agujero `432` arriba + escalera `1385` abajo** en la misma casilla. La
 escalera `1385` tiene `floorchange_north`: sube a `(x, y−1, z−1)`. El agujero `432` tiene
 `floorchange_down` y, como la casilla de abajo es `1385` (que no está en `STAIRS_LANDING` con
-offset), se cae a `(x, y+1, z+1)`. Ver `docs/gameplay/STAIRS.md` y `PIEZAS_DE_MAPA.md`.
+offset), se cae a `(x, y+1, z+1)`. Ver `docs/gameplay/STAIRS.md` y `MAPAS.md`.
 
 | Etiqueta | Arriba (agujero) | Abajo (escalera) | Llegada al subir | Llegada al bajar |
 |----------|------------------|------------------|------------------|------------------|
@@ -275,7 +275,7 @@ corregido en el generador:
   de `145,329`). Los pases de escombros ahora validan como `decorate_cave()`: nada en mitad de un paso
   (vecinos pisables en ambos ejes) y nada que deje piso sin acceso (`reach` antes de colocar).
 - **17 rocas de 1 casilla entre dos pisos de cueva** (sin pieza posible, "roca pelada",
-  [PIEZAS_DE_MAPA.md#cuevas](PIEZAS_DE_MAPA.md#cuevas)): se cavan antes de vestir la cueva; el
+  [MAPAS.md#cuevas](MAPAS.md#cuevas)): se cavan antes de vestir la cueva; el
   generador aborta si reaparece alguna.
 - **Vacío negro a la vista en el mismo piso**: 200 pisables de z8 y 91 de z9 veían casillas sin tile
   en su media pantalla (peor: el borde norte de la cueva, ~94 casillas desde `155,282`). El relleno

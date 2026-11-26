@@ -9,7 +9,7 @@ la lava azul 20680 y blue bassins 20192 en vez de coal basins. Doc: docs/items-a
   Camino         zigzag de 5-7 de ancho (filas y 378 / 362 / 346 / 330), ensanches a mitad de cada tramo
   Santuario      sala 11x8 de mármol negro y ladrillo al norte, puerta al sur: Azhurak (jefe)
 
-Monstruos por etapas según la distancia caminando desde la llegada (receta de ZONAS_DE_CAZA.md): sueltos
+Monstruos por etapas según la distancia caminando desde la llegada (receta de MAPAS.md#zonas-de-caza): sueltos
 al entrar, de a 2 al fondo, 11-12 casillas entre centros. Todos propios de la zona (looks 145-149).
 
 Valida antes de escribir (si algo falla no escribe nada): ids del .otb, toda la tierra conectada, nada de

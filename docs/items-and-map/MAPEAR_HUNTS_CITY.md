@@ -1,6 +1,6 @@
 # Tres zonas de caza nuevas cerca de la city (nov 2026)
 
-Tres dungeons generados por código alrededor y debajo de la ciudad para cubrir huecos de progresión y de Daily Tasks (`Rat`, `Giant Spider`, familia `Mutated`, `Beholder`/`Vampire Bride`/`Banshee`). Todos siguen las reglas de [ZONAS_DE_CAZA.md](ZONAS_DE_CAZA.md) y [PIEZAS_DE_MAPA.md](PIEZAS_DE_MAPA.md#cuevas) (bloques 2×2, pasillos largos en zigzag, separación 10–12, techo de roca sin vista al piso de arriba, decoración fija).
+Tres dungeons generados por código alrededor y debajo de la ciudad para cubrir huecos de progresión y de Daily Tasks (`Rat`, `Giant Spider`, familia `Mutated`, `Beholder`/`Vampire Bride`/`Banshee`). Todos siguen las reglas de [MAPAS.md#zonas-de-caza](MAPAS.md#zonas-de-caza) y [MAPAS.md](MAPAS.md#cuevas) (bloques 2×2, pasillos largos en zigzag, separación 10–12, techo de roca sin vista al piso de arriba, decoración fija).
 
 ## Resumen
 

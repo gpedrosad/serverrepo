@@ -46,6 +46,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 
 | Script | Uso |
 |--------|-----|
+| **`mapkit/build.py`** + `mapkit/` + `zones/*.json` | **Motor único de zonas** (nov 2026): ficha JSON → semillas → lint → decisiones chicas con jev → `--preview` / `--write`. `mapkit/catalog.py` regenera el catálogo de piezas de la guía ([MAPAS.md](../docs/items-and-map/MAPAS.md)) |
 | `temple-portals.py` + `portal_citadel_layout.py` + `portal_temple_style.py` + `portal_temple_details.py` + `portal_temple_architecture.py` | Plaza, ocho portales, galería, pórtico y torre sureste con escaleras; `--dry-run` |
 | `validate-portal-citadel.py` | Audita mapa/assets contra `--before`; rutas, teleports y ámbito exacto |
 | `root-crypt.py` | Visual propia de la quest BoH al sur del depot; `--dry-run`, conserva huella/colisión/cofres/teleports |
@@ -83,8 +84,8 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | `generate-island.py` | Islas procedurales |
 | `scan-map-depots.py` / `patch-map-depot-ids.py` | Auditoría/parche depots |
 | `style-hole-entrances.py` / `render-hole-entrances.py` | Revisa todos los hoyos, selecciona variantes nativas por suelo y valida llegadas; `--apply` actualiza mapa y manifiestos, con respaldo ([doc](../docs/items-and-map/HOLE_ENTRANCES.md)) |
-| `check-reachable.py` | ¿Se llega caminando desde el templo (z7) a una entrada? Dibuja la zona si no: `check-reachable.py 119,129 176,58` (ver `docs/items-and-map/PIEZAS_DE_MAPA.md#errores-que-ya-pasaron`) |
-| `check-upper-view.py` | Casillas bajo tierra desde donde el cliente ve el piso de arriba (arriba vacío); `--fix` pone techo de roca solo en casillas vacías (ver `docs/items-and-map/PIEZAS_DE_MAPA.md#techo`) |
+| `check-reachable.py` | ¿Se llega caminando desde el templo (z7) a una entrada? Dibuja la zona si no: `check-reachable.py 119,129 176,58` (ver `docs/items-and-map/MAPAS.md#errores-que-ya-pasaron`) |
+| `check-upper-view.py` | Casillas bajo tierra desde donde el cliente ve el piso de arriba (arriba vacío); `--fix` pone techo de roca solo en casillas vacías (ver `docs/items-and-map/MAPAS.md#techo`) |
 | `sync-houses-*.py` | Houses ↔ mapa / RME |
 
 ### otb/

@@ -17,7 +17,7 @@ Tres pisos apilados en la misma caja, con portal desde la plaza de portales del 
 Geometría: cada sala es un rectángulo; las salas se separan por una casilla (pared de una sola
 casilla) y las puertas se abren solas donde dos salas quedan a una casilla. La pieza de cada pared
 sale del mapa de paredes por vecinos (oeste/norte), como en el resto del mapa
-(docs/items-and-map/PIEZAS_DE_MAPA.md): vertical 1049, horizontal 1050, esquina NO 1051, esquina
+(docs/items-and-map/MAPAS.md): vertical 1049, horizontal 1050, esquina NO 1051, esquina
 SE 1053 (ladrillo: 1030, 1028, 1027, 1033). Escaleras: agujero 432 arriba y escalera 1385 abajo en
 la misma casilla (sube una al norte, baja una al sur).
 
@@ -100,7 +100,7 @@ BENCH, BENCH_R = 1662, 1663          # banco = dos piezas: 1662 y su mitad derec
 PILLAR, STATUE, COAL_BASIN, CANDELABRUM = 1515, 1442, 1486, 2041
 STONE, RUBBLE, PEBBLES = 1285, 1309, 1336
 SKULL, HUMAN_SKELETON, RABBIT_SKELETON = 2248, 3133, 3121      # huesos ENTEROS (3122-3127 son
-# partes del esqueleto grande: sueltas se ven cortadas, PIEZAS_DE_MAPA.md#cuevas)
+# partes del esqueleto grande: sueltas se ven cortadas, MAPAS.md#cuevas)
 BARREL, CRATE, COFFIN_HEAD, COFFIN_FOOT, TABLE, CHEST = 1770, 1739, 1410, 1411, 1614, 1740
 TREES = (2701, 2702, 2703, 2704, 2705, 2706, 2708, 4009)   # 2x2: el dibujo ocupa la casilla y las de arriba-izquierda
 BUSHES = (2767, 2786)                                      # bloquean: muro de jungla
@@ -861,7 +861,7 @@ def main() -> int:
                     if CAVE_BOX[0] <= c[0] <= CAVE_BOX[2] and CAVE_BOX[1] <= c[1] <= CAVE_BOX[3]:
                         cave.add(c)
     # rocas de 1 casilla entre dos pisos de cueva: no tienen pieza (quedan peladas,
-    # PIEZAS_DE_MAPA.md#cuevas). Se cavan antes de vestir la cueva.
+    # MAPAS.md#cuevas). Se cavan antes de vestir la cueva.
     for _ in range(8):
         slivers = {(x, y) for (x, y) in grow(cave, 1) - cave
                    if ((x, y - 1) in cave and (x, y + 1) in cave)

@@ -64,7 +64,7 @@ TILE, MARBLE, BLACK_MARBLE, WOOD, STONE = 3152, 406, 407, 405, 431
 # piso y piso de acento (':') de cada nivel
 FLOOR = {8: (STONE, BLACK_MARBLE), 7: (TILE, MARBLE), 6: (WOOD, TILE), 5: (WOOD, TILE),
          4: (TILE, BLACK_MARBLE), 3: (MARBLE, BLACK_MARBLE)}
-# Muebles de varias piezas (ver docs/items-and-map/PIEZAS_DE_MAPA.md): el ataúd es cabecera (k, K) + pie (j)
+# Muebles de varias piezas (ver docs/items-and-map/MAPAS.md): el ataúd es cabecera (k, K) + pie (j)
 # en la casilla de abajo; el sarcófago, q + Q; el banco, e + E a su derecha. Las sillas miran a la mesa:
 # 'v' mira al sur (va al norte de la mesa) y '^' mira al norte. 'T' es una mesa entera de una casilla.
 DECOR = {"b": 1774, "c": 1739, "T": 1614, "v": 1652, "^": 1650, "k": 1410, "K": 1413, "j": 1411, "q": 1417, "Q": 1418,

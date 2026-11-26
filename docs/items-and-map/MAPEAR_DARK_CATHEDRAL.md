@@ -141,7 +141,7 @@ la misma caja). Es re-ejecutable: borra su caja, reescribe spawns, carteles y ma
   mar: el borde es jungla.
 - **Muebles de dos piezas.** Los bancos son `1662` + su mitad derecha `1663` (siempre el par, en dos
   filas alineadas en la nave y en la sala de los bancos); el generador falla si aparece una mitad
-  sola. Ataúdes `1410`+`1411` y demás pares, igual que en `PIEZAS_DE_MAPA.md`.
+  sola. Ataúdes `1410`+`1411` y demás pares, igual que en `MAPAS.md`.
 - **Escaleras y portales** se validan antes de escribir: llegadas libres, todo el piso alcanzable
   desde la llegada, paredes con una sola pieza, ids del `.otb` y monstruos registrados. Además (nov
   2026): escombros nunca en mitad de un paso ni donde corten el único acceso, ninguna roca de 1

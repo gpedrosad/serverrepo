@@ -5,7 +5,7 @@ El cliente (OTClient, calcFirstVisibleFloor) bajo tierra dibuja hasta 2 pisos ar
 de arriba (x, y, z-1) o la de arriba en diagonal (x+1, y+1, z-1) —del jugador o de sus 4 vecinas que no
 tapan la vista— tenga suelo. Si arriba no hay tile (vacío), se ven encima las cuevas o casas de los pisos
 de arriba, corridas en diagonal. Arreglo: roca (101) en el piso de arriba donde no hay nada. Ejemplo: el
-techo de El Foso Olvidado (generate-forgotten-pit.py, ceiling_tiles). Ver docs/items-and-map/PIEZAS_DE_MAPA.md.
+techo de El Foso Olvidado (generate-forgotten-pit.py, ceiling_tiles). Ver docs/items-and-map/MAPAS.md.
 
   python3 scripts/map/check-upper-view.py                       # todo el mapa, z8-z15, agrupado por zona
   python3 scripts/map/check-upper-view.py --box 200 0 275 90 --z 10 11 12

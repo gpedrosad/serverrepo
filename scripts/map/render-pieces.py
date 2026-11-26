@@ -2,7 +2,7 @@
 """Dibuja piezas de mapa con los sprites reales, para mirarlas ANTES de usarlas en un generador.
 
 Muchos muebles de 7.6 son varias piezas (un ataúd son dos ids) o tienen un id por dirección (sillas). Con
-solo el nombre del .otb no se sabe: hay que mirarlos. Ver docs/items-and-map/PIEZAS_DE_MAPA.md.
+solo el nombre del .otb no se sabe: hay que mirarlos. Ver docs/items-and-map/MAPAS.md.
 
   python3.11 scripts/map/render-pieces.py --sheet /tmp/hoja.png 1410 1411 1412 1650-1657
       hoja con cada id suelto y su número (rangos con guion)

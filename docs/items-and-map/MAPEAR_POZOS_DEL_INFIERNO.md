@@ -69,7 +69,7 @@ Solo Lua: no hace falta recompilar el server. Mismo patrón que `hellchest.lua`.
 Carteles en `readables.xml`, bloque `INFERNO_PITS_SIGNS`. Spawns en `test-spawn.xml`, bloque
 `INFERNO_PITS_SPAWNS` (105 monstruos: Hellhound 38, Demon 28, Fire Elemental 23, Fury 10,
 Fire Devil 6; 1 cada 42–47 casillas en cuevas, dentro de la receta de
-[`ZONAS_DE_CAZA.md`](ZONAS_DE_CAZA.md)).
+[`MAPAS.md#zonas-de-caza`](MAPAS.md#zonas-de-caza)).
 
 ## Regenerar
 
