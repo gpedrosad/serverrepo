@@ -1,0 +1,26 @@
+{
+  "_doc": "PLANTILLA de cueva (no está escrita en el mapa: no usar --write con esta ficha). Copiarla a <zona>.json, cambiar name/title/manifest y sacar box/land/entrance de find_space.py. Guía: docs/items-and-map/MAPAS.md#ficha-cueva",
+  "name": "ejemplo-cueva",
+  "title": "Cueva de ejemplo",
+  "game_name": "Dwarven Burrow",
+  "recipe": "cave",
+  "theme": "cueva-tierra",
+  "z": 8,
+  "box": [274, 20, 333, 71],
+  "land": [284, 28, 323, 63],
+  "entrance": [291, 53],
+  "manifest": "generated-ejemplo-cueva.json",
+  "levels": "15-35",
+  "route": [[288, 58], [288, 32], [302, 32], [302, 59], [316, 59], [316, 32]],
+  "min": 400,
+  "monster_pool": ["Rotworm", "Cave Rat", "Bug", "Dwarf", "Dwarf Soldier", "Dwarf Guard", "Dwarf Geomancer"],
+  "stages": [
+    {"monsters": ["Rotworm", "Cave Rat"], "per": 1, "spawntime": 100, "gap": 12},
+    {"monsters": ["Dwarf", "Rotworm"], "per": 1, "spawntime": 120, "gap": 12},
+    {"monsters": ["Dwarf Soldier", "Dwarf"], "per": 2, "spawntime": 150, "gap": 11},
+    {"monsters": ["Dwarf Guard", "Dwarf Geomancer"], "per": 2, "spawntime": 180, "gap": 11}
+  ],
+  "density": [33, 50],
+  "seeds": 8,
+  "sign": "DWARVEN BURROW\nLevels 15 to 35.\nDwarves dig deeper inside."
+}

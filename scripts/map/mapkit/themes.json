@@ -2,6 +2,7 @@
   "_doc": "Catálogo de temas de mapkit. Cada id se miró con render-pieces.py antes de entrar acá (docs/items-and-map/MAPAS.md#temas). Bordes: la pieza va en la casilla de AFUERA de 'shape' y sale de en qué lados está 'shape'.",
   "bosque-isla": {
     "about": "Isla de pasto con bosque cerrado, sendero de tierra y claros. Agua alrededor.",
+    "filler": 4608,
     "water": 4608,
     "grass": 4756,
     "trail": 103,
@@ -40,6 +41,37 @@
       "mushroom-ring": {"about": "Anillo de hongos en un claro húmedo", "floor": ["mushrooms"], "edge": ["roots"], "floor_rate": 0.1, "edge_rate": 0.3}
     }
   },
+  "cueva-tierra": {
+    "about": "Cueva de tierra: piso de tierra y barro, paredes de tierra, roca lisa alrededor. Bajada 432 desde el piso de arriba.",
+    "filler": 101,
+    "rock": 101,
+    "floor": 351,
+    "floor_alt": 352,
+    "mud": 355,
+    "wall": {
+      "shape": "floor",
+      "side": {"s": 356, "n": 357, "e": 358, "w": 359},
+      "corner": {"s,e": 364, "s,w": 365, "n,w": 366, "n,e": 367},
+      "inner": {"se": 360, "sw": 361, "nw": 362, "ne": 363},
+      "note": "Pared de tierra: es el SUELO de la casilla de roca pegada al piso, elegido por dónde está el piso. Bloquea."
+    },
+    "stair_down": 432,
+    "stair_up": 1385,
+    "stones": [1285],
+    "rubble_2x2": [1309, 1323],
+    "pebbles": [1336],
+    "bones": [2248],
+    "logs": [3873],
+    "campfire": 1423,
+    "sign": 1429,
+    "big_ok": [1385],
+    "props": {
+      "osario": {"about": "Osario: calaveras y piedritas, piedras contra la pared", "floor": ["bones", "pebbles"], "edge": ["stones"], "floor_rate": 0.08, "edge_rate": 0.3},
+      "derrumbe": {"about": "Derrumbe: piedras grandes contra la pared", "floor": ["pebbles"], "edge": ["stones", "rubble_2x2"], "floor_rate": 0.06, "edge_rate": 0.45},
+      "campamento": {"about": "Campamento abandonado: fogata con troncos", "floor": ["logs"], "edge": ["stones"], "center": "campfire", "floor_rate": 0.04, "edge_rate": 0.2},
+      "lodazal": {"about": "Lodazal: piso de barro con piedritas", "paint": "mud", "floor": ["pebbles"], "edge": ["stones"], "floor_rate": 0.03, "edge_rate": 0.25}
+    }
+  },
   "_categorias": {
     "water": "Suelo de agua. Todo lo que el jugador ve (±9, ±7) tiene que tener tile: el agua de relleno también es de la zona.",
     "grass": "Suelo de pasto adentro de la isla (caminable o bajo el bosque).",
@@ -56,7 +88,19 @@
     "bones": "Calavera con huesos fija (2248). La 2320 se levanta y es apilable: no usar como decoración.",
     "logs": "Troncos cruzados, no bloquean.",
     "campfire": "Fogata (no bloquea sólido): centro del claro de campamento, sin monstruos encima.",
-    "sign": "Cartel: bloquea; va en el borde del bosque pegado a la llegada. Su texto va en readables.xml (bloque de la zona).",
-    "boat_h": "Bote horizontal: SIEMPRE las 5 piezas seguidas de oeste a este, sobre agua, sin tocar la costa."
+    "sign": "Cartel: bloquea; va pegado a la llegada (en la isla en el borde del bosque, en la cueva contra la pared) sin cortar el paso. Su texto va en readables.xml (bloque de la zona).",
+    "boat_h": "Bote horizontal: SIEMPRE las 5 piezas seguidas de oeste a este, sobre agua, sin tocar la costa.",
+    "filler": "Relleno de la caja: lo que queda en las casillas de la zona que no son tierra/piso (agua en islas, roca en cuevas). Lo que era de la zona y ya no se usa vuelve a esto.",
+    "rock": "Roca lisa (bloquea). Nunca pegada a un piso caminable: entre los dos va pared (`wall`). También es el techo en el piso de arriba.",
+    "floor": "Piso de cueva (tierra). La paleta sale con ruido: floor / floor_alt / mud.",
+    "floor_alt": "Piso de cueva alterno (tierra más clara).",
+    "mud": "Barro (caminable). Más barro = cueva más oscura (`mud` en la ficha). La sala `lodazal` lo pinta entero.",
+    "wall": "Pared de tierra: SUELO de la casilla pegada al piso, elegido por dónde está el piso. Se cava en bloques 2x2 para que cada pared tenga una sola pieza válida (una roca de 1 entre pisos no tiene pieza).",
+    "stair_down": "Bajada (es suelo): va en el piso de ARRIBA, sobre una casilla de solo suelo caminable con la de su norte caminable.",
+    "stair_up": "Escalera de subida (sube hacia el norte): en la cueva, misma x, y que la bajada. Se aterriza al sur. Dibujo 2x2 sobre piso: permitida (`big_ok`).",
+    "stones": "Piedra de 1 casilla que bloquea: contra la pared, sin cortar el paso.",
+    "rubble_2x2": "Piedras grandes de 2x2 (bloquean): solo donde las 3 casillas de arriba-izquierda son pared (si no, tapan al jugador).",
+    "pebbles": "Piedritas (no bloquean ni se levantan).",
+    "big_ok": "Ids de 2x2 que pueden dibujarse sobre piso caminable (la escalera). El lint no los marca como big_cover."
   }
 }

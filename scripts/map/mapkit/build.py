@@ -25,10 +25,19 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import mapkit as K  # noqa: E402
-from mapkit import island, lint as L  # noqa: E402
+from mapkit import cave, island, lint as L  # noqa: E402
 from mapkit.jev import Jev  # noqa: E402
 
-RECIPES = {"island": island.build}
+RECIPES = {"island": island, "cave": cave}
+SETTINGS = {"island": "a forest trail on an island", "cave": cave.SETTING}
+LEGENDS = {"island": "~ water, ',' coast, # forest, . grass walk, = dirt trail, * decoration, M monster, H boat landing",
+           "cave": cave.LEGEND}
+
+
+def glade_list(spec):
+    """Claros (isla, de la ficha) o salas (cueva, salen del recorrido): lo que jev decora."""
+    mod = RECIPES[spec["recipe"]]
+    return mod.glades(spec) if hasattr(mod, "glades") else spec["glades"]
 SRC = "scripts/map/mapkit/build.py"
 
 
@@ -47,7 +56,8 @@ def ask_stages(jev, spec, known):
     pool = [n for n in spec["monster_pool"] if n in known]
     facts = monster_facts(pool)
     n = len(spec["stages"])
-    prompt = (f"Hunting zone '{spec['title']}' for player levels {spec['levels']}, a forest trail on an island. "
+    prompt = (f"Hunting zone '{spec['title']}' for player levels {spec['levels']}, "
+              f"{spec.get('setting', SETTINGS[spec['recipe']])}. "
               f"Monsters available (hp, exp): {json.dumps(facts)}. Design exactly {n} stages from the entrance "
               "(easiest) to the far end (hardest). Each stage: monsters (1-2 names from the list), per (monsters "
               "per spawn: 1 or 2; start with 1, end with 2), spawntime (seconds, 80-180, harder = slower), "
@@ -74,7 +84,7 @@ def ask_stages(jev, spec, known):
 def ask_glades(jev, spec, theme):
     menu = {k: v["about"] for k, v in theme["props"].items()}
     gl = [{"index": i, "where": g.get("role", "glade"), "along_trail": g.get("at", 0)}
-          for i, g in enumerate(spec["glades"]) if g.get("role") != "harbor"]
+          for i, g in enumerate(glade_list(spec)) if g.get("role") != "harbor"]
     prompt = (f"Zone '{spec['title']}' ({theme['about']}). Monsters: {', '.join(spec['monster_pool'])}. "
               f"Choose a decoration kind for each glade along the trail (0 = entrance, 1 = far end). "
               f"Kinds: {json.dumps(menu)}. Make it tell a story from the entrance to the end; no two neighbouring "
@@ -153,7 +163,7 @@ def ascii_map(plan, spec, scale=2):
 
 
 def ask_pick(jev, spec, finalists):
-    legend = "~ water, ',' coast, # forest, . grass walk, = dirt trail, * decoration, M monster, H boat landing"
+    legend = LEGENDS[spec["recipe"]]
     body = "\n\n".join(f"OPTION {i} metrics {json.dumps({k: m[k] for k in ('walk', 'monsters', 'density', 'path', 'narrow', 'straight_coast', 'tree_cover', 'score')})}\n{ascii_map(p, spec)}"
                        for i, (p, m) in enumerate(finalists))
     prompt = (f"Pick the best looking and best playing layout for '{spec['title']}' (2x downsampled, {legend}). "
@@ -169,11 +179,11 @@ def ask_pick(jev, spec, finalists):
     return jev.decide(f"pick-{seeds}", prompt, check, 0)
 
 
-def run_seeds(spec, theme, seeds, decisions, existing, otb, size):
+def run_seeds(spec, theme, seeds, decisions, existing, otb, size, world):
     out = []
     for s in seeds:
         try:
-            plan = RECIPES[spec["recipe"]](spec, theme, s, decisions, otb)
+            plan = RECIPES[spec["recipe"]].build(spec, theme, s, decisions, otb, world=world)
         except RuntimeError as e:
             print(f"  semilla {s}: no sale ({e})")
             continue
@@ -183,6 +193,9 @@ def run_seeds(spec, theme, seeds, decisions, existing, otb, size):
               f"  densidad {m['density']:5.1f}  recorrido {m['path']:3d}  angosto {m['narrow']:4.1f}%"
               f"  costa recta {m['straight_coast']:4.1f}%  árboles {m['tree_cover']:4.1f}%"
               + (f"  errores {m['errors']} {m['examples']}" if m["errors"] else ""))
+        if m["errors"] and set(m["errors"]) <= {"roof"}:
+            print("    (roof: el techo no se puede poner pegado a un piso caminable de arriba: mover la cueva o "
+                  "taparlo a mano; ver MAPAS.md#techo)")
         out.append((plan, m))
     return out
 
@@ -191,22 +204,24 @@ def write_zone(spec, theme, plan, m, sign_text):
     z = spec["z"]
     info = plan["info"]
     cells = {(x, y, z): ids for (x, y), ids in plan["tiles"].items()}
+    cells.update(plan.get("extra", {}))
     manifest = K.WORLD / spec["manifest"]
     key = spec["name"].upper().replace("-", "_")
-    report = {"spec": f"scripts/map/zones/{spec['name']}.json", "seed": plan["seed"],
-              "entry": [*info["landing"], z], "npc": [*info["npc"], z], "sign": [*info["sign"], z],
+    report = {"spec": f"scripts/map/zones/{spec['name']}.json", "seed": plan["seed"], "entry": [*info["landing"], z],
+              **{k: [*info[k], z] for k in ("npc", "sign", "stairs") if info.get(k)},
               **{k: m[k] for k in ("walk", "monsters", "spawns", "density", "path", "score")}}
-    changed = K.write_cells(cells, manifest, [theme["water"]], spec["name"], report, dry_run=False,
-                            extra_files=(K.SPAWNS, K.READABLES, K.NPCS, K.BOAT))
+    changed = K.write_cells(cells, manifest, [theme["filler"]], spec["name"], report, dry_run=False,
+                            extra_files=(K.SPAWNS, K.READABLES, K.NPCS, K.BOAT), claims=plan.get("claims", {}))
     # spawns, cartel, Nimral y destino del barco (bloques con dueño; sacan lo viejo del generador anterior)
     old_keys = spec.get("legacy_blocks", {})
     sp = K.SPAWNS.read_text(encoding="latin-1")
     sp = K.xml_block(sp, old_keys.get("spawns", f"{key}_SPAWNS"), K.spawn_xml(plan["spawns"]), "</spawns>", SRC)
     K.SPAWNS.write_text(sp, encoding="latin-1")
-    rd = K.READABLES.read_text(encoding="latin-1")
-    rd = K.xml_block(rd, old_keys.get("signs", f"{key}_SIGNS"), K.readable_line(*info["sign"], z, sign_text),
-                     "</readables>", SRC)
-    K.READABLES.write_text(rd, encoding="latin-1")
+    if info.get("sign"):
+        rd = K.READABLES.read_text(encoding="latin-1")
+        rd = K.xml_block(rd, old_keys.get("signs", f"{key}_SIGNS"), K.readable_line(*info["sign"], z, sign_text),
+                         "</readables>", SRC)
+        K.READABLES.write_text(rd, encoding="latin-1")
     h = spec.get("harbor")
     if h:
         npc = K.NPCS.read_text(encoding="latin-1")
@@ -246,11 +261,15 @@ def main() -> int:
     size = island._sizes()
     known = K.known_monsters()
     jev = Jev(a.spec.with_suffix(".decisions.json"), enabled=not a.no_jev, redecide=a.redecide)
-    existing = {p: v for p, v in K.load_tiles().items() if p[2] == spec["z"]}
-    bx = K.box_cells(spec["box"])
+    # el mapa como estaba ANTES de esta zona: sin sus casillas (y con lo original donde tomó casillas ajenas)
     manifest = K.WORLD / spec["manifest"]
-    owned = set(json.loads(manifest.read_text())["cells"]) if manifest.exists() else set()
-    existing = {p: v for p, v in existing.items() if (p[0], p[1]) not in bx or ",".join(map(str, p)) not in owned}
+    mf = json.loads(manifest.read_text()) if manifest.exists() else {}
+    world = K.load_tiles()
+    for k in mf.get("cells", {}):
+        world.pop(tuple(int(n) for n in k.split(",")), None)
+    for k, ids in mf.get("claimed", {}).items():
+        world[tuple(int(n) for n in k.split(","))] = ids
+    existing = {p: v for p, v in world.items() if p[2] == spec["z"]}
 
     print(f"== {spec['title']} ({spec['recipe']}, tema {spec['theme']})")
     decisions = {"stages": ask_stages(jev, spec, known), "glades": ask_glades(jev, spec, theme)}
@@ -259,7 +278,7 @@ def main() -> int:
         if bad:
             raise SystemExit(f"monstruo inexistente: {bad}")
     seeds = [a.seed] if a.seed is not None else list(range(1, (a.seeds or spec.get("seeds", 8)) + 1))
-    results = run_seeds(spec, theme, seeds, decisions, existing, otb, size)
+    results = run_seeds(spec, theme, seeds, decisions, existing, otb, size, world)
     lo, hi = spec.get("density", [30, 45])
     good = [r for r in results if not r[1]["errors"]]
     for _ in range(2):
@@ -268,7 +287,7 @@ def main() -> int:
         best = max(good, key=lambda r: r[1]["score"])[1]
         decisions["stages"] = ask_tune(jev, spec, decisions["stages"], best)
         print("  -> nuevas separaciones:", [s["gap"] for s in decisions["stages"]])
-        results = run_seeds(spec, theme, seeds, decisions, existing, otb, size)
+        results = run_seeds(spec, theme, seeds, decisions, existing, otb, size, world)
         good = [r for r in results if not r[1]["errors"]]
     if not good:
         print("ninguna semilla pasa el lint: no se escribe nada")
@@ -280,8 +299,8 @@ def main() -> int:
     plan, m = finalists[pick]
     sign = ask_sign(jev, spec, decisions["stages"])
     print(f"elegida: semilla {plan['seed']} (puntaje {m['score']}), claros {plan['info']['props']}")
-    print(f"llegada {plan['info']['landing']}, {spec.get('harbor', {}).get('npc', '-')} {plan['info']['npc']}, "
-          f"cartel {plan['info']['sign']}: {sign!r}")
+    print(f"llegada {plan['info']['landing']}, " + (f"{spec['harbor']['npc']} {plan['info']['npc']}, " if spec.get("harbor") else
+          f"escalera {plan['info'].get('stairs')} (bajada en z{spec['z'] - 1}), ") + f"cartel {plan['info']['sign']}: {sign!r}")
     if a.preview:
         mons = [p for _c, _z, ms in plan["spawns"] for _n, p, _t in ms]
         cells = {(x, y, spec["z"]): ids for (x, y), ids in plan["tiles"].items()}

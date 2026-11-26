@@ -316,10 +316,13 @@ def _tile_flags(props):
 
 
 def write_cells(cells: dict, manifest: Path, filler: list, name: str, report: dict, dry_run: bool,
-                extra_files=()) -> int:
+                extra_files=(), claims=None) -> int:
     """Escribe `cells` {(x, y, z): [ids]} en test.otbm. Solo pisa casillas vacías o que el manifiesto anterior
     dice que son de esta zona (y no cambiaron desde entonces); nunca casas, flags ni ítems con atributos.
-    Casillas que eran de la zona y ya no están en `cells` vuelven a `filler`. Devuelve cuántas cambian."""
+    `claims` {(x, y, z): [ids originales]}: casillas ajenas que la zona toma a propósito (la bajada de una cueva);
+    solo si siguen como se las vio, y el manifiesto guarda lo original para devolverlo si la zona las suelta.
+    Casillas que eran de la zona y ya no están en `cells` vuelven a `filler` (o a lo original). Devuelve cuántas
+    cambian."""
     otb = Otb()
     raw = MAP.read_bytes()
     root = parse_tree(raw)
@@ -327,12 +330,14 @@ def write_cells(cells: dict, manifest: Path, filler: list, name: str, report: di
     dup = [p for p, ns in nodes.items() if len(ns) != 1]
     if dup:
         raise SystemExit(f"casillas duplicadas en el mapa: {dup[:4]}")
-    previous = json.loads(manifest.read_text())["cells"] if manifest.exists() else {}
+    mf = json.loads(manifest.read_text()) if manifest.exists() else {}
+    previous, claimed_before = mf.get("cells", {}), mf.get("claimed", {})
+    claims = claims or {}
     cells = dict(cells)
     for p, ids in cells.items():
         old = values.get(p)
         owned = previous.get(",".join(map(str, p))) == old
-        if old is not None and not owned:
+        if old is not None and not owned and claims.get(p) != old:
             raise SystemExit(f"casilla ajena protegida: {p}: {old}")
         for tile in nodes.get(p, []):
             if tile[0] != mapdata.T_TILE or _tile_flags(tile[1]):
@@ -342,7 +347,7 @@ def write_cells(cells: dict, manifest: Path, filler: list, name: str, report: di
     for key, ids in previous.items():
         p = tuple(int(n) for n in key.split(","))
         if p not in cells and values.get(p) == ids:
-            cells[p] = list(filler)
+            cells[p] = list(claimed_before.get(key, filler))
     changed = sum(values.get(p) != ids for p, ids in cells.items())
     if dry_run:
         return changed
@@ -365,9 +370,15 @@ def write_cells(cells: dict, manifest: Path, filler: list, name: str, report: di
         tile[1] = bytearray([x % 256, y % 256]) + (struct.pack("<BH", 9, ids[0]) if ground else b"")
         tile[2] = [item_node(i, otb) for i in ids[1 if ground else 0:]]
     MAP.write_bytes(serialize_tree(root, raw[:4]))
+    claimed = {k: v for k, v in claimed_before.items() if tuple(int(n) for n in k.split(",")) in claims}
+    for p, ids in claims.items():
+        claimed.setdefault(",".join(map(str, p)), list(ids))
     keep = {",".join(map(str, p)): ids for p, ids in sorted(cells.items())
-            if ",".join(map(str, p)) in previous or p in cells}
-    manifest.write_text(json.dumps(dict(name=name, **report, cells=keep), separators=(",", ":")) + "\n")
+            if ",".join(map(str, p)) not in claimed_before or p in claims}
+    out = dict(name=name, **report, cells=keep)
+    if claimed:
+        out["claimed"] = claimed
+    manifest.write_text(json.dumps(out, separators=(",", ":")) + "\n")
     return changed
 
 

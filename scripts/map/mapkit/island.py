@@ -34,7 +34,7 @@ def footprint(c, size):
     return {(c[0] - dx, c[1] - dy) for dx in range(w) for dy in range(h)}
 
 
-def build(spec: dict, theme, seed: int, decisions: dict, otb: Otb | None = None) -> dict:
+def build(spec: dict, theme, seed: int, decisions: dict, otb: Otb | None = None, world: dict | None = None) -> dict:
     otb = otb or Otb()
     size = _sizes()
     rng = random.Random(f"{spec['name']}-{seed}")

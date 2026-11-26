@@ -62,7 +62,7 @@ class Jev:
     def _call(self, prompt: str) -> tuple[dict | None, dict]:
         body = {"model": MODEL, "messages": [{"role": "system", "content": SYSTEM},
                                              {"role": "user", "content": prompt}],
-                "response_format": {"type": "json_object"}, "usage": {"include": True}, "max_tokens": 1500}
+                "response_format": {"type": "json_object"}, "usage": {"include": True}, "max_tokens": 4000}
         req = urllib.request.Request(URL, data=json.dumps(body).encode(), headers={
             "Authorization": "Bearer " + _key(), "Content-Type": "application/json",
             "X-Title": "map generator"})
@@ -76,9 +76,11 @@ class Jev:
                 "seconds": round(time.time() - t0, 1)}
         try:
             text = r["choices"][0]["message"]["content"]
+            if not text:        # el router a veces gasta todo en razonar y no contesta: cuenta como inválida
+                return None, meta | {"error": f"sin contenido ({r['choices'][0].get('finish_reason')})"}
             text = text[text.index("{"):text.rindex("}") + 1]
             return json.loads(text), meta
-        except (KeyError, IndexError, ValueError):
+        except (KeyError, IndexError, ValueError, TypeError):
             return None, meta | {"error": "respuesta sin JSON"}
 
     def decide(self, key: str, prompt: str, check, fallback):

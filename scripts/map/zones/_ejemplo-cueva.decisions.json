@@ -1,0 +1,62 @@
+{
+ "stages": {
+  "stages": [
+   {
+    "monsters": [
+     "Rotworm",
+     "Cave Rat"
+    ],
+    "per": 1,
+    "spawntime": 80,
+    "gap": 9
+   },
+   {
+    "monsters": [
+     "Rotworm",
+     "Bug"
+    ],
+    "per": 1,
+    "spawntime": 105,
+    "gap": 10
+   },
+   {
+    "monsters": [
+     "Dwarf",
+     "Dwarf Soldier"
+    ],
+    "per": 2,
+    "spawntime": 140,
+    "gap": 12
+   },
+   {
+    "monsters": [
+     "Dwarf Soldier",
+     "Dwarf Guard"
+    ],
+    "per": 2,
+    "spawntime": 175,
+    "gap": 13
+   }
+  ]
+ },
+ "glades": {
+  "glades": {
+   "0": "campamento",
+   "1": "derrumbe",
+   "2": "osario",
+   "3": "lodazal"
+  }
+ },
+ "sign": {
+  "lines": [
+   "DWARVEN BURROW",
+   "Levels 15-35. Enter at own risk.",
+   "Rotworms, bugs, dwarves, guards.",
+   "Know your limits."
+  ]
+ },
+ "pick-7-4-1": {
+  "choice": 0,
+  "why": "Highest score with irregular rock masses, varied trail width, evenly spread monsters, and a readable arrival glade below the stairs."
+ }
+}

@@ -66,7 +66,7 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 | Soft Boots (regen HP/MP cada 3 s + desgaste → worn) | `docs/gameplay/SOFT_BOOTS.md` |
 | Daily Task / Huntmaster (contratos diarios) | `docs/gameplay/DAILY_TASK.md` |
 | Escaleras / escaleras de mano / trampillas con click derecho | `docs/gameplay/STAIRS.md` |
-| **Mapas (todo): guía única.** Zona nueva o rehecha con mapkit (ficha JSON + temas + lint + semillas), decisiones chicas con jev (OpenRouter, solo mapas), catálogo de piezas por tema con sus requisitos, valores por defecto y errores que ya pasaron | `docs/items-and-map/MAPAS.md` (leer **antes** de tocar el mapa; anotar lo aprendido al terminar) |
+| **Mapas (todo): guía única.** Zona nueva o rehecha con mapkit (ficha JSON + temas + lint + semillas; recetas isla y cueva; `find_space.py` da el hueco libre), decisiones chicas con jev (OpenRouter, solo mapas), catálogo de piezas por tema con sus requisitos, valores por defecto y errores que ya pasaron | `docs/items-and-map/MAPAS.md` (leer **antes** de tocar el mapa; anotar lo aprendido al terminar) |
 | Cuevas generadas (paredes de tierra 356–367, vacío a la vista, techo para no ver el piso de arriba, agujero + escalera de mano) y dungeon de la city | `docs/items-and-map/MAPAS.md#cuevas` y `docs/items-and-map/MAPEAR_DUNGEON_CITY.md` |
 | Puente principal de la ciudad (z6, `141,65,6`): puente de referencia para hacer o rehacer puentes (barandas 3D, faroles, pasos de 1 sqm) | `docs/items-and-map/MAPAS.md#puente-de-madera-elevado-z6` |
 | Caldera Azul: lava azul (`20680`), monstruos Azure (looks 145–149, jefe Azhurak), zona y portal `163,47,7` | `docs/items-and-map/CALDERA_AZUL.md` |
