@@ -348,3 +348,18 @@ client id `2821`, dos cuadros, luz 6/color 31, sin decay, moveable ni pickupable
 Se declara en `add_custom_items.py` y se instala en `items-zagan-test.otb`;
 no modifica DAT/SPR ni necesita C++. La comparación por client id del motor permite
 que conviva con la versión portátil de Obi. Uso y mapa: [Ruinas del Sauce](ELF_WEST.md).
+
+## Kit Cinder y armas del 26 nov 2026
+
+Ítems de silueta propia (no recolor). En `main` el client id `6081` ya está usado por el rootcleaver (`20163`), así que el visor/escudo/maza usan `6082–6084`.
+
+| Server | Nombre | Rol | Client | Prototipo |
+|--------|--------|-----|--------|-----------|
+| 20681 | ashglass visor | cabeza, armadura 9, 40 oz | 6082 | 2457 warrior helmet |
+| 20682 | cinder kite | escudo, defensa 33, 70 oz | 6083 | 2519 crown shield |
+| 20683 | cinder flail | maza 1 mano, ataque 32 / defensa 16, 62 oz | 6084 | 2394 clerical mace |
+| 20700 | obsidian falchion | espada 1 mano, ataque 44 / defensa 26 | 6071 | 2407 bright sword |
+| 20701 | coral cleaver | hacha 1 mano, ataque 42 / defensa 23 | 6072 | 2430 knight axe |
+
+Sprites: `scripts/client-rme/draw_cinder_kit.py` y `scripts/client-rme/draw_cursor_weapons.py`. Instalación: `add_custom_items.py --only 20681 20682 20683 20700 20701`. Se crean con `/i 20681 1` (y los otros ids). No tienen loot ni están en el mapa. Un cliente viejo no dibuja estos client ids hasta publicar el cliente.
+

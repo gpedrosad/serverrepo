@@ -60,6 +60,9 @@
 	<item id="2640" time="14400000" weight="8.0"/>	-- soft boots (4 h)
 	<item id="2641" weight="8.0"/>		-- worn soft boots
 	<item id="20670" time="14400000" weight="8.0"/>	-- soft boots in use (brillan puestas)
+	<item id="20681" weight="40.0"/>	-- ashglass visor (arm 9, slot cabeza)
+	<item id="20682" weight="70.0"/>	-- cinder kite (def 33)
+	<item id="20683" weight="62.0"/>	-- cinder flail (club 1H, atk 32 / def 16)
 <item id="1740" questbox="1" />		-- unmovables
 <item id="1747" questbox="1" />
 <item id="1748" questbox="1" />

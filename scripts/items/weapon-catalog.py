@@ -57,6 +57,9 @@ NOTES = {
     20163: ("Otras", "Sin efecto", "", "ROOT_COLOSSUS.md"),
     20164: ("Otras", "2 manos, sin efecto", "", "ROOT_COLOSSUS.md"),
     20193: ("Otras", "Fire sword de fuego negro, sin efecto; luz violeta", "", "../items-and-map/ZAGAN_TEST_ITEMS.md"),
+    20683: ("Otras", "Maza 1 mano, silueta propia, sin efecto", "", "../items-and-map/ZAGAN_TEST_ITEMS.md"),
+    20700: ("Otras", "Espada 1 mano, silueta propia, sin efecto", "", "../items-and-map/ZAGAN_TEST_ITEMS.md"),
+    20701: ("Otras", "Hacha 1 mano, silueta propia, sin efecto", "", "../items-and-map/ZAGAN_TEST_ITEMS.md"),
     # 20111/20115/20119: desde el rebalanceo de loot (490a42c, nov 2026) caen de monstruos; la fuente sale de los XML.
     20111: ("Otras", "Sin efecto", "", "../items-and-map/ZAGAN_TEST_ITEMS.md"),
     20115: ("Otras", "Sin efecto", "", "../items-and-map/ZAGAN_TEST_ITEMS.md"),

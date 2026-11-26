@@ -5,7 +5,7 @@
 > defensa salen del OTB (`items-zagan-test.otb`); el loot, de los XML de monstruos (sin variantes rage, que
 > suelen tener la misma chance o más).
 
-37 armas propias (sin contar escudos ni las armas comunes de 7.6). GM: `/i ID 1` o `/i nombre`.
+40 armas propias (sin contar escudos ni las armas comunes de 7.6). GM: `/i ID 1` o `/i nombre`.
 Para crear una: [IMPORTAR_ITEM_DESDE_IMAGEN.md](../items-and-map/IMPORTAR_ITEM_DESDE_IMAGEN.md),
 [IMPORTAR_ITEM_DE_OTRA_VERSION.md](../items-and-map/IMPORTAR_ITEM_DE_OTRA_VERSION.md); gameplay en C++: `AGENTS.md` §8.
 
@@ -82,3 +82,6 @@ Para crear una: [IMPORTAR_ITEM_DESDE_IMAGEN.md](../items-and-map/IMPORTAR_ITEM_D
 | **frostbound bow** | `20374` | distancia | 1 | — | Crystal Spider 0.25%, Elvenbane Ranger 0.8%, Frost Dragon 0.4% | — |
 | **quicksilver katana** | `20660` | espada | 32 / 16 | Cortes cada 650 ms | GM: `/i 20660 1` | [QUICKSILVER_KATANA](QUICKSILVER_KATANA.md) |
 | **throwable fireball** | `20666` | distancia | 22 | Arrojadiza apilable y reutilizable; proyectil de fuego | Fire Elemental 12% | [THROWING_FIREBALL](THROWING_FIREBALL.md) |
+| **cinder flail** | `20683` | maza | 32 / 16 | Maza 1 mano, silueta propia, sin efecto | — | [ZAGAN_TEST_ITEMS](../items-and-map/ZAGAN_TEST_ITEMS.md) |
+| **obsidian falchion** | `20700` | espada | 44 / 26 | Espada 1 mano, silueta propia, sin efecto | — | [ZAGAN_TEST_ITEMS](../items-and-map/ZAGAN_TEST_ITEMS.md) |
+| **coral cleaver** | `20701` | hacha | 42 / 23 | Hacha 1 mano, silueta propia, sin efecto | — | [ZAGAN_TEST_ITEMS](../items-and-map/ZAGAN_TEST_ITEMS.md) |
