@@ -11,6 +11,8 @@ Render de mapas con sharp para mirar y comparar variantes: [docs/map-rendering.m
 ## Resumen para agentes con poca atención
 
 1. **Zona nueva o rehecha → mapkit**: una ficha JSON corta en `scripts/map/zones/`, no un generador de 500 líneas.
+   Recetas: `island` (isla con sendero y puerto) y `cave` (cueva de un piso con bajada desde arriba). El hueco
+   (`box`, `land`, `entrance`) lo da [`find_space.py`](#buscar-hueco): no medir a mano.
 2. **No decidas lo que ya está decidido**: usá los [valores por defecto](#valores-por-defecto) y las piezas del
    [catálogo](#catalogo-de-piezas). Si una pieza no está en el catálogo, mirala antes ([regla uno](#regla-número-uno-mirar-la-pieza-antes-de-usarla)) y agregala al tema.
 3. **Las decisiones chicas las toma jev** (barato, ~US$0,0005 por zona): qué va en cada claro, qué monstruos por
@@ -24,7 +26,9 @@ Render de mapas con sharp para mirar y comparar variantes: [docs/map-rendering.m
 ## Flujo con mapkit
 
 ```bash
-# 1. ficha (copiar una parecida): scripts/map/zones/<zona>.json
+# 0. hueco libre: imprime box/land (y la bajada de la cueva) listos para pegar en la ficha
+python3.11 scripts/map/mapkit/find_space.py --kind cave --z 8 --size 60x52 --near 300,60
+# 1. ficha (copiar una parecida: claro-de-los-lobos.json o _ejemplo-cueva.json): scripts/map/zones/<zona>.json
 # 2. probar: semillas + lint + jev + vista previa (no escribe nada)
 python3.11 scripts/map/mapkit/build.py scripts/map/zones/claro-de-los-lobos.json --preview /tmp/zona.png
 # 3. escribir (test.otbm + spawns + cartel + NPC + destino de barco, con backup en backups/map/)
@@ -32,14 +36,17 @@ python3.11 scripts/map/mapkit/build.py scripts/map/zones/claro-de-los-lobos.json
 # 4. validar
 python3 scripts/map/check-map-load.py
 python3.11 scripts/map/check-reachable.py X,Y        # si se llega caminando desde el templo
+python3 scripts/map/check-upper-view.py --box X0 Y0 X1 Y1 --z Z   # cuevas: que no se vea el piso de arriba
 ```
 
 | Archivo | Qué es |
 |---|---|
 | `scripts/map/mapkit/__init__.py` | Motor: geometría, ruido, bordes (`Border.settle` / `piece_at`), etapas de monstruos, escritura segura con manifiesto de dueño, vista previa con sprites reales |
 | `scripts/map/mapkit/themes.json` | Catálogo de temas: qué id usar para cada cosa y la regla de cada categoría |
-| `scripts/map/mapkit/island.py` | Receta "isla con sendero, claros, bosque y puerto". Recetas nuevas (cueva, valle) van al lado |
-| `scripts/map/mapkit/cave.py` | Receta "cueva": pasillo de tierra en zigzag cavado con `carve_cave`/`ribbon`, paredes de tierra `356–367`, roca `101` y techo de roca en el piso de arriba (tema `caverna`). La llegada es un portal dentro de la cueva; no hay boca ni escalera de superficie |
+| `scripts/map/mapkit/island.py` | Receta "isla con sendero, claros, bosque y puerto" |
+| `scripts/map/mapkit/cave.py` | Receta "cueva de un piso": pasillo en zigzag cavado en bloques 2x2, salas, paredes de tierra, bajada `432` arriba + `1385` abajo, techo de roca. Recetas nuevas (valle, ciudad) van al lado |
+| `scripts/map/mapkit/find_space.py` | Busca [huecos libres](#buscar-hueco) del tamaño pedido cerca de un punto (isla: vacío en z y arriba; cueva: vacío en z + bajada válida en z-1) |
+| `scripts/map/mapkit/cave_gruta.py` | Receta `cave-gruta`, la primera versión de cueva (OpenCode, 26 nov), con tema `caverna`. Solo la usa la Gruta de los Gárgolas para regenerarse igual; las cuevas nuevas usan `cave.py` |
 | `scripts/map/mapkit/lint.py` | Errores (no escribe) y medidas (puntaje) |
 | `scripts/map/mapkit/jev.py` | Cliente de jev (OpenRouter, solo mapas) con caché de decisiones y tope de gasto |
 | `scripts/map/mapkit/build.py` | La corrida: decisiones → semillas → lint → elección → vista previa → escritura |
@@ -49,7 +56,9 @@ python3.11 scripts/map/check-reachable.py X,Y        # si se llega caminando des
 
 Escritura segura (`write_cells`): solo pisa casillas vacías o que el manifiesto de la zona dice que son suyas y no
 cambiaron; nunca casas, flags de casilla ni ítems con atributos (uid, actionid, teleports). Los apilables llevan
-byte de cantidad. Lo que era de la zona y ya no se usa vuelve al relleno (agua). Bloques en XML con dueño:
+byte de cantidad. Lo que era de la zona y ya no se usa vuelve al relleno del tema (`filler`: agua, roca). La única
+casilla ajena que se puede tomar es la de la bajada de una cueva (`claims`): solo si sigue como se la vio, y el
+manifiesto guarda lo original (`claimed`) para devolverlo si la bajada se mueve. Bloques en XML con dueño:
 `<!-- BEGIN <ZONA>_SPAWNS -->`, `_SIGNS`, `_NPC`; el destino del barco es una línea en `boat.lua`.
 
 <a id="ficha"></a>
@@ -74,11 +83,51 @@ byte de cantidad. Lo que era de la zona y ya no se usa vuelve al relleno (agua).
 }
 ```
 
-Lo único que hay que pensar es `box`/`land` (un hueco libre del mapa: medirlo, ver abajo), `route` (el
-esqueleto) y el `monster_pool`. El resto tiene valor por defecto.
+Lo único que hay que pensar es `route` (el esqueleto) y el `monster_pool`: `box`/`land` salen de
+[`find_space.py`](#buscar-hueco) y el resto tiene valor por defecto.
 
-**Buscar hueco libre**: contar casillas ajenas en la caja en todos los pisos (`load_tiles()`); la caja tiene que
-estar vacía o ser del manifiesto de la zona. La tierra (`land`) va media pantalla (9×7) adentro de la caja.
+<a id="buscar-hueco"></a>
+
+**Buscar hueco libre** (`find_space.py`, ~2 s, sin modelo): da las 5 mejores cajas del tamaño pedido, de la más
+cercana a `--near` (por defecto el templo) a la más lejana, con `box`/`land` listos para pegar. `land` = caja
+menos (10, 8): nada de vacío a media pantalla.
+
+```bash
+python3.11 scripts/map/mapkit/find_space.py --kind island --size 78x131 --near 220,300      # z7 y arriba vacíos
+python3.11 scripts/map/mapkit/find_space.py --kind cave --z 8 --size 60x52 --near 300,60 --radius 40 --ascii
+```
+
+- **Cueva**: busca casillas de z-1 a `--radius` del punto que sean solo suelo caminable con la de su norte
+  caminable (al subir por la `1385` se llega al norte), y debajo una caja vacía en z con la bajada en la zona de
+  boca. Dice cuánto techo ya hay arriba (`techo existente`) y avisa si la bajada pisa una casilla de otra zona
+  generada (rehacer esa zona la pisaría: elegir otra opción).
+- `--ascii`: mapa chico del piso (1 carácter = 8x8) con las opciones numeradas, para elegir sin imagen.
+- Tamaños de referencia: isla de 1.200 caminables ≈ 78x131; cueva de ~600 caminables ≈ 60x52, de ~1.000 ≈ 70x70.
+
+<a id="ficha-cueva"></a>
+
+### La ficha de una cueva
+
+Plantilla: `scripts/map/zones/_ejemplo-cueva.json` (probada, **no** escrita en el mapa).
+
+```json
+{
+  "name": "...", "title": "...", "game_name": "Dwarven Burrow", "recipe": "cave", "theme": "cueva-tierra",
+  "z": 8, "box": [274, 20, 333, 71], "land": [284, 28, 323, 63], "entrance": [291, 53],   // de find_space.py
+  "manifest": "generated-<zona>.json", "levels": "15-35",
+  "route": [[288, 58], [288, 32], [302, 32], [302, 59], [316, 59], [316, 32]],      // filas/columnas a 14
+  "min": 400, "monster_pool": [...], "stages": [...fallback...], "density": [33, 50], "sign": "fallback"
+}
+```
+
+- `route`: tramos horizontales o verticales, filas (o columnas) a **14** entre ejes, a 4+ del borde de `land`.
+  El primer punto va al sur o al costado de la bajada (se llega al sur de la `1385`), en la fila más cercana.
+- Las salas salen solas (mitad de cada tramo de 20+ y el final); `"rooms": [{"center": [x, y], "r": 3}]` para
+  fijarlas. jev elige qué tiene cada una (`osario`, `derrumbe`, `campamento`, `lodazal`).
+- `min`: piso mínimo (~70 % de lo que da la vista previa). Opcionales: `mud`/`alt` (paleta), `stones`, `bones`,
+  `band`, `wide`, `clear` (ver [valores por defecto](#valores-por-defecto)).
+- Lo escribe todo `--write`: la cueva, la bajada `432` en z-1 (casilla tomada, con lo original en el manifiesto),
+  el techo de roca en las casillas vacías de z-1, spawns y cartel.
 
 <a id="valores-por-defecto"></a>
 
@@ -98,6 +147,9 @@ estar vacía o ser del manifiesto de la zona. La tierra (`land`) va media pantal
 | Densidad (`density`) | superficie 30–45 casillas por monstruo; cueva 33–50 | — |
 | Sin monstruos cerca de la llegada | 8 casillas (puerto), 6 (escaleras/portales) | — |
 | Semillas | 8; jev elige entre las 3 mejores | — |
+| Cueva: ancho del pasillo | núcleo de 3 (5 donde el ruido pasa `wide` 0,68), franja `band` 2 → 4–6 al cavar en 2x2 | Con la franja de 5 del valle y `wide` 0,55 salían pasillos de 7–9 rectangulares |
+| Cueva: filas | 14 entre ejes; recorrido de ~110 casillas → ~600 caminables, de ~180 → ~1.000 | Menos de 14: atajo entre filas (lint `shortcut`) |
+| Cueva: decoración | piedras contra la pared 8 %, piedritas 3 %, calaveras 3 %; 2x2 solo si tapan pared | — |
 | Spawntime | 85–110 s fáciles, 120–180 s fuertes | — |
 
 <a id="jev"></a>
@@ -130,7 +182,12 @@ Errores (la semilla se descarta): `void` (vacío a la vista ±9/±7), `unreachab
 caminable quedó suelto), `leak` (casilla libre pegada a lo caminable: atajo por el bosque), `border` (pieza de
 costa o de tierra que no es la única válida), `coast_walk`, `big_cover` (sprite de 2x2 tapando caminable),
 `loose` (decoración que se levanta o se empuja), `spawn` (fuera de lo caminable, repetido o cerca de la llegada),
-`shortcut` (un punto del recorrido se alcanza en menos del 70 % de su distancia).
+`shortcut` (un punto del recorrido se alcanza en menos del 70 % de su distancia), `roof` (cueva: casilla caminable
+sin nada arriba; el techo no se pone pegado a un piso caminable de arriba, ver [Techo](#techo)).
+
+`border` es genérico: toda casilla pegada a la forma de cada borde de la receta (`plan["borders"]`: agua y
+sendero en la isla, piso en la cueva) tiene que llevar su única pieza. `big_cover` no marca los ids `big_ok` del
+tema (la escalera `1385`, que se dibuja 2x2 sobre el piso de la boca).
 
 Puntaje (100 = ideal): resta % de casillas de 1 de ancho, % de costa en tramos rectos de 7+, densidad fuera del
 rango y bosque sin árboles grandes.
@@ -151,6 +208,7 @@ Isla de pasto con bosque cerrado, sendero de tierra y claros. Agua alrededor.
 
 | Categoría | Ids (server) | Dibujo | Bloquea | Regla |
 |---|---|---|---|---|
+| `filler` | 4608 | 1x1 | sí | Relleno de la caja: lo que queda en las casillas de la zona que no son tierra/piso (agua en islas, roca en cuevas). Lo que era de la zona y ya no se usa vuelve a esto. |
 | `water` | 4608 | 1x1 | sí | Suelo de agua. Todo lo que el jugador ve (±9, ±7) tiene que tener tile: el agua de relleno también es de la zona. |
 | `grass` | 4756 | 1x1 | no | Suelo de pasto adentro de la isla (caminable o bajo el bosque). |
 | `trail` | 103 | 1x1 | no | Suelo del sendero. Mínimo 2,2 de ancho (trail_width): los tramos de 1 se borran al cerrar los bordes y el sendero queda cortado. |
@@ -166,7 +224,7 @@ Isla de pasto con bosque cerrado, sendero de tierra y claros. Agua alrededor.
 | `bones` | 2248 | 1x1 | no | Calavera con huesos fija (2248). La 2320 se levanta y es apilable: no usar como decoración. |
 | `logs` | 3873 | 1x1 | no | Troncos cruzados, no bloquean. |
 | `campfire` | 1423 | 1x1 | no | Fogata (no bloquea sólido): centro del claro de campamento, sin monstruos encima. |
-| `sign` | 1429 | 1x1 | sí | Cartel: bloquea; va en el borde del bosque pegado a la llegada. Su texto va en readables.xml (bloque de la zona). |
+| `sign` | 1429 | 1x1 | sí | Cartel: bloquea; va pegado a la llegada (en la isla en el borde del bosque, en la cueva contra la pared) sin cortar el paso. Su texto va en readables.xml (bloque de la zona). |
 | `boat_h` | 3592, 3593, 3594, 3595, 3596 | 1x1 | no | Bote horizontal: SIEMPRE las 5 piezas seguidas de oeste a este, sobre agua, sin tocar la costa. |
 
 Claros (`props`, los elige jev o la ficha):
@@ -181,7 +239,41 @@ Claros (`props`, los elige jev o la ficha):
 
 ![Piezas del tema bosque-isla](img/tema-bosque-isla.png)
 
-### Tema `caverna`
+### Tema `cueva-tierra`
+
+Cueva de tierra: piso de tierra y barro, paredes de tierra, roca lisa alrededor. Bajada 432 desde el piso de arriba.
+
+| Categoría | Ids (server) | Dibujo | Bloquea | Regla |
+|---|---|---|---|---|
+| `filler` | 101 | 1x1 | sí | Relleno de la caja: lo que queda en las casillas de la zona que no son tierra/piso (agua en islas, roca en cuevas). Lo que era de la zona y ya no se usa vuelve a esto. |
+| `rock` | 101 | 1x1 | sí | Roca lisa (bloquea). Nunca pegada a un piso caminable: entre los dos va pared (`wall`). También es el techo en el piso de arriba. |
+| `floor` | 351 | 1x1 | no | Piso de cueva (tierra). La paleta sale con ruido: floor / floor_alt / mud. |
+| `floor_alt` | 352 | 1x1 | no | Piso de cueva alterno (tierra más clara). |
+| `mud` | 355 | 1x1 | no | Barro (caminable). Más barro = cueva más oscura (`mud` en la ficha). La sala `lodazal` lo pinta entero. |
+| `wall` | 356, 357, 358, 359, 364, 365, 366, 367, 360, 361, 362, 363 | 1x1 | sí | Pared de tierra: SUELO de la casilla pegada al piso, elegido por dónde está el piso. Se cava en bloques 2x2 para que cada pared tenga una sola pieza válida (una roca de 1 entre pisos no tiene pieza). |
+| `stair_down` | 432 | 1x1 | no | Bajada (es suelo): va en el piso de ARRIBA, sobre una casilla de solo suelo caminable con la de su norte caminable. |
+| `stair_up` | 1385 | 2x2 | no | Escalera de subida (sube hacia el norte): en la cueva, misma x, y que la bajada. Se aterriza al sur. Dibujo 2x2 sobre piso: permitida (`big_ok`). |
+| `stones` | 1285 | 1x1 | sí | Piedra de 1 casilla que bloquea: contra la pared, sin cortar el paso. |
+| `rubble_2x2` | 1309, 1323 | 2x2 | sí | Piedras grandes de 2x2 (bloquean): solo donde las 3 casillas de arriba-izquierda son pared (si no, tapan al jugador). |
+| `pebbles` | 1336 | 1x1 | no | Piedritas (no bloquean ni se levantan). |
+| `bones` | 2248 | 1x1 | no | Calavera con huesos fija (2248). La 2320 se levanta y es apilable: no usar como decoración. |
+| `logs` | 3873 | 1x1 | no | Troncos cruzados, no bloquean. |
+| `campfire` | 1423 | 1x1 | no | Fogata (no bloquea sólido): centro del claro de campamento, sin monstruos encima. |
+| `sign` | 1429 | 1x1 | sí | Cartel: bloquea; va pegado a la llegada (en la isla en el borde del bosque, en la cueva contra la pared) sin cortar el paso. Su texto va en readables.xml (bloque de la zona). |
+| `big_ok` | 1385 | 2x2 | no | Ids de 2x2 que pueden dibujarse sobre piso caminable (la escalera). El lint no los marca como big_cover. |
+
+Claros (`props`, los elige jev o la ficha):
+
+| Tipo | Qué es | Piso (suelto) | Borde (bloquea) |
+|---|---|---|---|
+| `osario` | Osario: calaveras y piedritas, piedras contra la pared | bones, pebbles (8%) | stones (30%) |
+| `derrumbe` | Derrumbe: piedras grandes contra la pared | pebbles (6%) | stones, rubble_2x2 (45%) |
+| `campamento` | Campamento abandonado: fogata con troncos | logs (4%) | stones (20%) + `campfire` al centro |
+| `lodazal` | Lodazal: piso de barro con piedritas | pebbles (3%) | stones (25%) |
+
+![Piezas del tema cueva-tierra](img/tema-cueva-tierra.png)
+
+### Tema `caverna` (solo Gruta de los Gárgolas, receta `cave-gruta`)
 
 Cueva subterránea: pasillo de tierra en zigzag, paredes de tierra y roca alrededor.
 
@@ -393,8 +485,11 @@ Para hacer otro puente con este modelo:
 
 ## Cuevas
 
-Paredes de tierra `356–367` (`WALL_SIDE`, `WALL_CORNER`, `WALL_INNER` en `generate-north-pass.py`) y roca
-`101` alrededor. La pieza sale de dónde está el piso vecino (`pieces_for`).
+**Cueva nueva → receta `cave` de mapkit** ([ficha](#ficha-cueva), tema `cueva-tierra`): cumple todo lo de abajo
+y lo valida el lint. Lo que sigue es la regla, y sirve para revisar cuevas viejas hechas a mano o con generadores.
+
+Paredes de tierra `356–367` (`WALL_SIDE`, `WALL_CORNER`, `WALL_INNER` en `generate-north-pass.py`; `wall` en el
+tema `cueva-tierra`) y roca `101` alrededor. La pieza sale de dónde está el piso vecino (`pieces_for`).
 
 - **Cavar en bloques 2x2** (`carve_cave` de `generate-north-pass.py`, `build_floor` de
   `generate-natural-island.py`, `carve` de `generate-city-depths.py`). Con pasillos y paredes de 2 de
@@ -564,6 +659,9 @@ piso, su forma no cambia aunque se agregue otra cueva.
 
 ### Cómo hacer una cueva nueva, paso a paso
 
+**Cueva suelta → mapkit** (`find_space.py` + [ficha de cueva](#ficha-cueva)). Lo que sigue es para agregar una
+cueva **dentro de un generador viejo** (el valle), que tiene sus propias cajas y no pasa por mapkit.
+
 Ejemplo: agregar una cueva de un piso en z8 del valle. Para un generador nuevo, copiar las funciones
 `ribbon`, `rooms_along`, `carve_named`, `mouth_zone`, `stair_down`, `place_stages` y `slices_by` de
 `generate-beast-valley.py` (y `carve_cave`, `cave_tiles`, `decorate_cave` de `generate-north-pass.py`).
@@ -654,6 +752,10 @@ Se agrega una fila por cada error nuevo, con fecha. Es la memoria de la guía: a
 | Claro del puerto separado del sendero: el ruido lo achicó y la llegada quedó en una isla de 80 casillas (26 nov 2026) | El sendero arranca en el centro del puerto (la receta lo agrega al recorrido) |
 | Recorrido pegado al borde de `land`: el ruido lo empuja afuera y se recorta (26 nov 2026) | Recorrido a `forest[0] + 2` o más del borde |
 | Costa recta donde la isla choca con la caja (26 nov 2026) | El límite de `land` lleva ruido (hasta 4 casillas hacia adentro) |
+| Cueva de mapkit (26 nov 2026): con la bajada corrida 3 casillas hacia la columna de al lado, la franja del tramo de la boca se comió la roca de 3 entre columnas: atajo en las 8 semillas | La franja cavable sale del recorrido sin el tramo de la boca (`ribbon`); la boca solo aporta su núcleo |
+| Cueva de mapkit: pasillos de 7–8 de ancho, rectangulares (26 nov 2026) | El núcleo se cava en bloques 2x2 y redondea hacia afuera: núcleo de 3 (5 solo con ruido > 0,68) y franja de 2 |
+| Escalera `1385` fuera de lo caminable: lint `leak` en la boca (26 nov 2026) | Es caminable (no bloquea): queda en `walk` y fuera de los spawns por `reserved` |
+| jev no contestaba la elección de semilla: gastó los 1.500 tokens razonando (`finish_reason` length, contenido vacío) y el script se caía (26 nov 2026) | `max_tokens` 4.000 y respuesta vacía = inválida (reintenta y después usa el fallback) |
 | Agregar un destino a `boat.lua` rompe la prueba del barquero (`scripts/npc/golden/boat`): el saludo lista los destinos | Mirar el diff y volver a grabar: `python3 scripts/npc/run_npc_tests.py --record boat` |
 | La receta `island` solo sabía llegar por **puerto** (Nimral + bote de 5 piezas + destino en `boat.lua`): una zona con portal de templo no tenía cómo llegar (26 nov 2026) | Rol de llegada `portal` en la receta: claro `{"role": "portal", "center": [...]}` + clave `"portal": {"clear": 6}` en la ficha. La llegada es una casilla caminable del claro **fuera del sendero**; `info["return"]` reserva la casilla de vuelta (también fuera del sendero) para que `temple-portals.py` ponga el TP de vuelta. `clear` 6 (portal) vs 8 (puerto). El puerto queda intacto: regenerar el Claro de los Lobos da el mismo mapa |
 | La fila `y=47` de la plaza del templo se llenó: 155–168 son portales, 160–162 es el pasillo cian y 169 es el obelisco (26 nov 2026) | El último hueco de basalto libre es `169,47` (espejo de `155`, que ya tenía portal `155,47` + obelisco `155,50`): el obelisco queda en `169,50` y **no se toca**; solo se agrega `spec[169,47]=DAIS+teleport`, `spec[169,46]=sign`, `spec[169,48]=DAIS` |
@@ -663,3 +765,4 @@ Se agrega una fila por cada error nuevo, con fecha. Es la memoria de la guía: a
 | El lint de cuevas marcaba `border` en roca pegada a piedras decorativas (26 nov 2026) | La pared sale del piso final (`plan["floor"]`), no de `walk`: las piedras que bloquean se ponen encima del piso y no cambian la pared. Lint compara contra `plan["floor"]` |
 | Cueva en un hueco con el piso de arriba vacío: se veía lo de arriba (26 nov 2026) | La receta `cave` escribe el techo (roca `101`) en el piso de arriba sobre toda la caja; confirmar con `check-upper-view.py --box` |
 | `jev._call` se rompía con `NoneType.index` cuando el modelo devolvía contenido vacío (razonamiento que se come los tokens de salida) (26 nov 2026) | Guardar la respuesta vacía en `_call` (`if not text ... return None`) y reintentar con el fallback, en vez de que `AttributeError` tumbe la corrida |
+| Dos sesiones hicieron una receta `cave` el mismo día (OpenCode para la Gruta y `cdb3be4d` en main) y chocaron al mergear (26 nov 2026) | Quedó `cave.py` de main como receta oficial; la de la Gruta pasó a `cave_gruta.py` (receta `cave-gruta`, tema `caverna`) y regenera la misma cueva (semilla 1, 99,8). Con el motor de main el Bosque de los Cíclopes ahora elige la semilla 5 en vez de la 6 (cambió `bosque-isla`): el mapa deployado es el de `883ff43b`; no regenerarlo sin mirar el diff |

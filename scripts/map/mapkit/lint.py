@@ -3,9 +3,10 @@
 Errores (cualquiera descarta la semilla):
   void          casillas sin tile a la vista (±9, ±7) de algo caminable
   unreachable   caminable que no se alcanza desde la entrada
-  border        pieza de costa o de borde de tierra que no es la única válida
+  border        pieza de borde (costa, tierra, pared de cueva) que falta o no es la única válida
   coast_walk    costa (bloquea) en una casilla que debería ser caminable
-  big_cover     sprite de 2x2 cuyo dibujo tapa una casilla caminable (tapa al jugador)
+  big_cover     sprite de 2x2 cuyo dibujo tapa una casilla caminable (tapa al jugador; salvo `big_ok` del tema)
+  roof          cueva: casilla caminable sin nada arriba (se ven los pisos de arriba)
   cut           el recorrido quedó cortado (más del 2 % de lo caminable no se alcanza y se tapó)
   leak          casilla libre pegada a lo caminable (deja salir del recorrido: atajo por el bosque)
   loose         decoración que se levanta o se empuja (pickupable / moveable)
@@ -37,44 +38,29 @@ def lint(plan: dict, spec: dict, theme, existing: dict, otb: Otb, size) -> dict:
     start = plan["info"]["landing"] or min(walk)
     for c in walk - set(dist):
         err("unreachable", c)
-    is_cave = spec.get("recipe") == "cave"
-    if is_cave:
-        # cueva: toda roca pegada al piso tiene que tener su pieza de pared (nunca roca lisa 101).
-        # Se compara contra el piso final (no contra lo decorado: las piedras que bloquean no cambian la pared).
-        wall = theme.border("wall")
-        rock = theme["rock"]
-        shape = plan.get("floor", walk)
+    # bordes: toda casilla pegada a la forma (agua, sendero, piso de cueva) lleva SU única pieza
+    for key, shape in plan.get("borders") or [("coast", plan["water"]), ("trail_edge", plan["trail"])]:
+        b = theme.border(key)
         for c in grow(shape, 1) - shape:
             if c not in tiles:
                 continue
-            if tiles[c][0] == rock:
+            want = b.pieces(neighbors_in(shape, *c))
+            if not want or len(want) != 1 or want[0] not in tiles[c]:
                 err("border", c)
-            elif tiles[c][0] in wall.ids:
-                want = wall.pieces(neighbors_in(shape, *c))
-                if not want or len(want) != 1 or want[0] != tiles[c][0]:
-                    err("border", c)
-    else:
-        coast, edge = theme.border("coast"), theme.border("trail_edge")
-        water, trail = plan["water"], plan["trail"]
-        for c, ids in tiles.items():
-            if ids[0] == theme["coast"]["ground"]:
-                want = coast.pieces(neighbors_in(water, *c))
-                if not want or len(want) != 1 or want[0] not in ids:
-                    err("border", c)
-                if c in walk:
-                    err("coast_walk", c)
-            elif ids[0] in edge.ids:
-                want = edge.pieces(neighbors_in(trail, *c))
-                if not want or len(want) != 1 or want[0] != ids[0]:
-                    err("border", c)
+    coast_ground = theme.get("coast", {}).get("ground")
+    big_ok = set(theme.get("big_ok", ()))
     for c, ids in tiles.items():
+        if coast_ground is not None and ids[0] == coast_ground and c in walk:
+            err("coast_walk", c)
         for i in ids[1:]:
             w, h = size(i)
-            if (w > 1 or h > 1) and any((c[0] - a, c[1] - b) in walk
+            if (w > 1 or h > 1) and i not in big_ok and any((c[0] - a, c[1] - b) in walk
                                         for a in range(w) for b in range(h) if (a, b) != (0, 0)):
                 err("big_cover", c)
             if otb.loose(i):
                 err("loose", c)
+    for c in plan["info"].get("roof_missing", ()):
+        err("roof", c)
     lost = plan["info"].get("lost", 0)
     if lost > 0.02 * (len(walk) + lost):
         errs["cut"] = [f"{lost} casillas caminables quedaron sueltas"]
@@ -82,7 +68,7 @@ def lint(plan: dict, spec: dict, theme, existing: dict, otb: Otb, size) -> dict:
         if c in tiles and otb.walkable(tiles[c]):
             err("leak", c)
     seen = set()
-    clear = spec.get("harbor", {}).get("clear", 8) if spec.get("harbor") else spec.get("portal", {}).get("clear", 6)
+    clear = spec["harbor"].get("clear", 8) if spec.get("harbor") else spec.get("clear", 6)
     near = {(start[0] + a, start[1] + b) for a in range(-clear, clear + 1) for b in range(-clear, clear + 1)}
     for _c, _z, mons in plan["spawns"]:
         for _n, p, _t in mons:
@@ -134,7 +120,7 @@ def lint(plan: dict, spec: dict, theme, existing: dict, otb: Otb, size) -> dict:
     score -= 1.5 * m["narrow"]
     score -= 0.6 * m["straight_coast"]
     score -= 2.0 * max(0, lo - m["density"], m["density"] - hi)
-    if not is_cave:
+    if forest:
         score -= 0.3 * max(0, 8 - m["tree_cover"])
     m["score"] = round(score, 1)
     m["errors"] = {k: len(v) for k, v in errs.items()}
