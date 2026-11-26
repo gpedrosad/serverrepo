@@ -71,7 +71,7 @@ def main():
                 seen.add(pos);queue.append(pos)
     for key,x,py,_d,_text,_zones in t.PORTALS:
         assert (x,py+1,7) in seen,f'Llegada inaccesible: {key}'
-        assert (x,py-1,7) in seen,f'Cartel inaccesible desde el norte: {key}'
+        assert (x,py-2,7) in seen,f'Cartel inaccesible desde el norte: {key}'
     free={p for p in owned if p[2]==7 and p[:2] not in TOWER_BASE and walkable(p)}
     assert free<=seen,free-seen
     things=ROOT/'devtools/rme/rme-client-760'
