@@ -105,6 +105,12 @@ python3.11 scripts/client-rme/add_custom_items.py --only 20702 20703 20704 20705
 python3.11 scripts/client-rme/draw_azure_trophies.py --apply
 ```
 
+Al publicar sobre dos versiones base del cliente, copiar los ocho registros
+del proyectil 22 desde el `Tibia.spr` canónico a los IDs de destino en cada
+`Tibia.dat`. La rotación de Pillow puede dar píxeles distintos entre entornos.
+La prueba de protocolo en una instancia aislada del servidor confirmó daño,
+consumo de la runa y proyectil `23`, además de la luz `8/143` de Wake Lantern.
+
 ## La zona (`scripts/map/generate-azure-caldera.py`)
 
 Caja `638,298 – 752,394`, z7, en el distrito de eventos (lejos del mapa principal, nada alrededor). Todo lo que no
