@@ -76,9 +76,11 @@ class Jev:
                 "seconds": round(time.time() - t0, 1)}
         try:
             text = r["choices"][0]["message"]["content"]
+            if not text or "{" not in text or "}" not in text:
+                return None, meta | {"error": "respuesta vacía o sin JSON"}
             text = text[text.index("{"):text.rindex("}") + 1]
             return json.loads(text), meta
-        except (KeyError, IndexError, ValueError):
+        except (KeyError, IndexError, ValueError, AttributeError):
             return None, meta | {"error": "respuesta sin JSON"}
 
     def decide(self, key: str, prompt: str, check, fallback):

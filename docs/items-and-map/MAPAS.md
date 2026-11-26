@@ -39,6 +39,7 @@ python3.11 scripts/map/check-reachable.py X,Y        # si se llega caminando des
 | `scripts/map/mapkit/__init__.py` | Motor: geometría, ruido, bordes (`Border.settle` / `piece_at`), etapas de monstruos, escritura segura con manifiesto de dueño, vista previa con sprites reales |
 | `scripts/map/mapkit/themes.json` | Catálogo de temas: qué id usar para cada cosa y la regla de cada categoría |
 | `scripts/map/mapkit/island.py` | Receta "isla con sendero, claros, bosque y puerto". Recetas nuevas (cueva, valle) van al lado |
+| `scripts/map/mapkit/cave.py` | Receta "cueva": pasillo de tierra en zigzag cavado con `carve_cave`/`ribbon`, paredes de tierra `356–367`, roca `101` y techo de roca en el piso de arriba (tema `caverna`). La llegada es un portal dentro de la cueva; no hay boca ni escalera de superficie |
 | `scripts/map/mapkit/lint.py` | Errores (no escribe) y medidas (puntaje) |
 | `scripts/map/mapkit/jev.py` | Cliente de jev (OpenRouter, solo mapas) con caché de decisiones y tope de gasto |
 | `scripts/map/mapkit/build.py` | La corrida: decisiones → semillas → lint → elección → vista previa → escritura |
@@ -179,6 +180,25 @@ Claros (`props`, los elige jev o la ficha):
 | `mushroom-ring` | Anillo de hongos en un claro húmedo | mushrooms (10%) | roots (30%) |
 
 ![Piezas del tema bosque-isla](img/tema-bosque-isla.png)
+
+### Tema `caverna`
+
+Cueva subterránea: pasillo de tierra en zigzag, paredes de tierra y roca alrededor.
+
+| Categoría | Ids (server) | Dibujo | Bloquea | Regla |
+|---|---|---|---|---|
+| `filler` | 101 | 1x1 | sí |  |
+| `rock` | 101 | 1x1 | sí |  |
+| `floor` | 351 | 1x1 | no |  |
+| `floor_alt` | 352 | 1x1 | no |  |
+| `mud` | 355 | 1x1 | no |  |
+| `wall` | 357, 358, 356, 359, 366, 367, 365, 364, 362, 363, 361, 360 | 1x1 | sí | Pared de tierra 356-367 (WALL_SIDE/CORNER/INNER de generate-north-pass.py). La pieza va en la roca pegada al piso; bloqueea. |
+| `sign` | 1429 | 1x1 | sí | Cartel: bloquea; va en el borde del bosque pegado a la llegada. Su texto va en readables.xml (bloque de la zona). |
+| `bones` | 2248 | 1x1 | no | Calavera con huesos fija (2248). La 2320 se levanta y es apilable: no usar como decoración. |
+| `stones` | 1285, 1309, 1323 | 1x1/2x2 | sí |  |
+| `mushrooms` | 4171, 4183 | 1x1 | no | Hongos fijos (los 4170+; los 2787–2796 se levantan: no usar). |
+
+![Piezas del tema caverna](img/tema-caverna.png)
 
 <!-- END CATALOGO -->
 
@@ -639,3 +659,7 @@ Se agrega una fila por cada error nuevo, con fecha. Es la memoria de la guía: a
 | La fila `y=47` de la plaza del templo se llenó: 155–168 son portales, 160–162 es el pasillo cian y 169 es el obelisco (26 nov 2026) | El último hueco de basalto libre es `169,47` (espejo de `155`, que ya tenía portal `155,47` + obelisco `155,50`): el obelisco queda en `169,50` y **no se toca**; solo se agrega `spec[169,47]=DAIS+teleport`, `spec[169,46]=sign`, `spec[169,48]=DAIS` |
 | La fila `y=47` quedó **llena del todo** (155–159 y 163–169 son portales; 160–162 es el pasillo cian) y no quedaba basalto libre para un portal nuevo (26 nov 2026) | Usar la **fila espejo `y=51`** dentro de la plaza (basalto libre, al sur del pasillo cian `y=49`): cartel `y=50`, portal `y=51`, llegada `y=52`, sin tocar obeliscos (`155,50`/`169,50`), balizas (`157,51`/`168,51`), la torre sureste (x ≥ 165, y=52) ni el pasillo cian. `temple-portals.py` acepta un `y` opcional por portal en `PORTALS` (default `47`); los portales existentes quedan byte a byte iguales. Documentado en `docs/CAMBIAR-MAPA.md` |
 | Una zona hecha con `--no-jev` no guarda la decisión `pick-*`: al regenerarla con jev, `ask_pick` vuelve a preguntar y puede elegir otra semilla (regenerar el Bosque de los Cíclopes daba semilla 1 en vez de la 6 commiteada) (26 nov 2026) | El `pick` (índice entre las 3 mejores semillas) es parte de las decisiones y hay que guardarlo. Si falta, correr la zona y copiar la entrada `pick-<semillas>` elegida al `zones/<zona>.decisions.json` (para el Bosque: `"pick-6-1-3": {"choice": 0}` reproduce la semilla 6). Siempre regenerar las zonas vecinas con `--preview` y confirmar que dan la misma semilla |
+| Dos zonas con la misma receta y tema se ven iguales: Bosque de los Cíclopes y Pantano de los Kongra (isla alargada + sendero en zigzag + bosque-isla) (26 nov 2026) | Variar la receta, el suelo y las piezas. La Gruta de los Gárgolas usa la receta `cave` y el tema `caverna` (cueva bajo tierra, paredes de tierra `356–367`, sin pasto ni árboles). Con un modelo barato (`maprender ask`) da similitud 1/10 |
+| El lint de cuevas marcaba `border` en roca pegada a piedras decorativas (26 nov 2026) | La pared sale del piso final (`plan["floor"]`), no de `walk`: las piedras que bloquean se ponen encima del piso y no cambian la pared. Lint compara contra `plan["floor"]` |
+| Cueva en un hueco con el piso de arriba vacío: se veía lo de arriba (26 nov 2026) | La receta `cave` escribe el techo (roca `101`) en el piso de arriba sobre toda la caja; confirmar con `check-upper-view.py --box` |
+| `jev._call` se rompía con `NoneType.index` cuando el modelo devolvía contenido vacío (razonamiento que se come los tokens de salida) (26 nov 2026) | Guardar la respuesta vacía en `_call` (`if not text ... return None`) y reintentar con el fallback, en vez de que `AttributeError` tumbe la corrida |

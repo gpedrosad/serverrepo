@@ -23,6 +23,7 @@ Relacionado:
 - [docs/items-and-map/MAPEAR_CLARO_DE_LOS_LOBOS.md](items-and-map/MAPEAR_CLARO_DE_LOS_LOBOS.md): Claro de los Lobos (Wolf Grove), isla de bosque al sureste (`x 184–261, y 250–380, z7`), hecha con mapkit (`scripts/map/zones/claro-de-los-lobos.json`); se llega en barco (Fargum / Nimral, destino Wolf Grove)
 - [docs/items-and-map/MAPEAR_BOSQUE_DE_LOS_CICLOPES.md](items-and-map/MAPEAR_BOSQUE_DE_LOS_CICLOPES.md): Bosque de los Cíclopes (Cyclops Woods), isla de bosque al noreste (`x 670–747, y 10–140, z7`), hecha con mapkit (ficha `scripts/map/zones/bosque-de-los-ciclopes.json`, rol de llegada `portal`); se llega por portal `169,47,7`
 - [docs/items-and-map/MAPEAR_PANTANO_DE_LOS_KONGRA.md](items-and-map/MAPEAR_PANTANO_DE_LOS_KONGRA.md): Pantano de los Kongra (Kongra Swamp), isla de pantano/selva al noreste (`x 765–850, y 10–140, z7`), hecha con mapkit (ficha `scripts/map/zones/pantano-de-los-kongra.json`, rol de llegada `portal`); se llega por portal `163,51,7` (fila espejo y=51)
+- [docs/items-and-map/MAPEAR_GRUTA_DE_LOS_GARGOLAS.md](items-and-map/MAPEAR_GRUTA_DE_LOS_GARGOLAS.md): Gruta de los Gárgolas (Gargoyle Grotto), cueva subterránea al este (`x 500–599, y 84–183, z8`), hecha con mapkit (receta `cave`, ficha `scripts/map/zones/caverna-de-los-gargolas.json`, rol de llegada `portal`); se llega por portal `164,51,7` (fila espejo y=51)
 - [docs/items-and-map/MAPAS.md](items-and-map/MAPAS.md): **guía única de mapas** (mapkit, jev, catálogo de piezas, reglas y errores que ya pasaron)
 - [docs/gameplay/WAVE_ARENA.md](gameplay/WAVE_ARENA.md) — Wave Arena oleadas; portal `166,47,7`
 - [docs/gameplay/CRUCIBLE.md](gameplay/CRUCIBLE.md) — El Crisol (3 puertas + bosses diarios); portal `164,47,7` con `scripts/map/generate-crucible.py`
@@ -77,6 +78,7 @@ Los maneja **un solo script**: `python3 scripts/map/temple-portals.py` (idempote
 | `167,47,7` | `167,48,7` | Glaciar del Este. Llegada `266,38,7` (borde norte del sendero, sur del cartel `266,37,7`). Vuelta `265,38,7` → `167,48,7`. El eje del sendero (`y=39`) sigue libre | [`MAPEAR_GLACIAR_DEL_ESTE.md`](items-and-map/MAPEAR_GLACIAR_DEL_ESTE.md) |
 | `169,47,7` | `169,48,7` | Bosque de los Cíclopes. Llegada `688,30,7` (claro del portal, oeste de la isla). Vuelta `687,30,7` → `169,48,7` | [`MAPEAR_BOSQUE_DE_LOS_CICLOPES.md`](items-and-map/MAPEAR_BOSQUE_DE_LOS_CICLOPES.md) |
 | `163,51,7` | `163,52,7` | Pantano de los Kongra. Llegada `783,30,7` (claro del portal, oeste de la isla). Vuelta `782,30,7` → `163,52,7` | [`MAPEAR_PANTANO_DE_LOS_KONGRA.md`](items-and-map/MAPEAR_PANTANO_DE_LOS_KONGRA.md) |
+| `164,51,7` | `164,52,7` | Gruta de los Gárgolas. Llegada `552,104,8` (cámara de entrada de la cueva, z8). Vuelta `553,104,8` → `164,52,7` | [`MAPEAR_GRUTA_DE_LOS_GARGOLAS.md`](items-and-map/MAPEAR_GRUTA_DE_LOS_GARGOLAS.md) |
 
 `165`, `167` y `169` eran piso de basalto libre en la fila `y=47`. `169` es la casilla sobre el obelisco
 (espejo de `155`, que ya tenía portal `155,47` + obelisco `155,50`). No se ocupan el pasillo cian `160–162`,

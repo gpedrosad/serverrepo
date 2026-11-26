@@ -7333,4 +7333,134 @@
 		<monster name="Merlkin" x="-1" y="0" z="7" spawntime="170" />
 	</spawn>
 	<!-- END KONGRA_SWAMP_SPAWNS -->
+	<!-- BEGIN GARGOYLE_GROTTO_SPAWNS (scripts/map/mapkit/build.py) -->
+	<spawn centerx="559" centery="100" centerz="8" radius="3">
+		<monster name="Stone Troll" x="2" y="0" z="8" spawntime="85" />
+	</spawn>
+	<spawn centerx="578" centery="112" centerz="8" radius="3">
+		<monster name="Stone Troll" x="1" y="-1" z="8" spawntime="85" />
+	</spawn>
+	<spawn centerx="558" centery="113" centerz="8" radius="3">
+		<monster name="Stone Troll" x="2" y="-2" z="8" spawntime="85" />
+	</spawn>
+	<spawn centerx="572" centery="102" centerz="8" radius="3">
+		<monster name="Stone Troll" x="-1" y="0" z="8" spawntime="85" />
+	</spawn>
+	<spawn centerx="548" centery="115" centerz="8" radius="3">
+		<monster name="Stone Troll" x="1" y="-2" z="8" spawntime="85" />
+	</spawn>
+	<spawn centerx="581" centery="99" centerz="8" radius="3">
+		<monster name="Stone Troll" x="0" y="-2" z="8" spawntime="85" />
+	</spawn>
+	<spawn centerx="568" centery="115" centerz="8" radius="3">
+		<monster name="Stone Troll" x="1" y="-2" z="8" spawntime="85" />
+	</spawn>
+	<spawn centerx="538" centery="112" centerz="8" radius="3">
+		<monster name="Gazer" x="-1" y="2" z="8" spawntime="105" />
+	</spawn>
+	<spawn centerx="519" centery="114" centerz="8" radius="3">
+		<monster name="Stone Troll" x="2" y="-1" z="8" spawntime="105" />
+	</spawn>
+	<spawn centerx="518" centery="125" centerz="8" radius="3">
+		<monster name="Gazer" x="2" y="0" z="8" spawntime="105" />
+	</spawn>
+	<spawn centerx="539" centery="125" centerz="8" radius="3">
+		<monster name="Stone Troll" x="2" y="0" z="8" spawntime="105" />
+	</spawn>
+	<spawn centerx="528" centery="128" centerz="8" radius="3">
+		<monster name="Gazer" x="0" y="2" z="8" spawntime="105" />
+	</spawn>
+	<spawn centerx="558" centery="125" centerz="8" radius="3">
+		<monster name="Stone Troll" x="0" y="1" z="8" spawntime="105" />
+	</spawn>
+	<spawn centerx="552" centery="130" centerz="8" radius="3">
+		<monster name="Gazer" x="-2" y="-2" z="8" spawntime="105" />
+	</spawn>
+	<spawn centerx="531" centery="116" centerz="8" radius="3">
+		<monster name="Stone Troll" x="-1" y="-1" z="8" spawntime="105" />
+	</spawn>
+	<spawn centerx="535" centery="132" centerz="8" radius="3">
+		<monster name="Gazer" x="0" y="0" z="8" spawntime="105" />
+	</spawn>
+	<spawn centerx="568" centery="125" centerz="8" radius="3">
+		<monster name="Gargoyle" x="2" y="0" z="8" spawntime="140" />
+		<monster name="Stone Golem" x="-1" y="0" z="8" spawntime="140" />
+	</spawn>
+	<spawn centerx="574" centery="141" centerz="8" radius="3">
+		<monster name="Gargoyle" x="0" y="1" z="8" spawntime="140" />
+		<monster name="Stone Golem" x="0" y="2" z="8" spawntime="140" />
+	</spawn>
+	<spawn centerx="582" centery="127" centerz="8" radius="3">
+		<monster name="Gargoyle" x="1" y="1" z="8" spawntime="140" />
+		<monster name="Stone Golem" x="-1" y="0" z="8" spawntime="140" />
+	</spawn>
+	<spawn centerx="551" centery="139" centerz="8" radius="3">
+		<monster name="Gargoyle" x="2" y="0" z="8" spawntime="140" />
+		<monster name="Stone Golem" x="1" y="2" z="8" spawntime="140" />
+	</spawn>
+	<spawn centerx="578" centery="133" centerz="8" radius="3">
+		<monster name="Gargoyle" x="0" y="-1" z="8" spawntime="140" />
+		<monster name="Stone Golem" x="2" y="-1" z="8" spawntime="140" />
+	</spawn>
+	<spawn centerx="563" centery="140" centerz="8" radius="3">
+		<monster name="Gargoyle" x="0" y="-1" z="8" spawntime="140" />
+		<monster name="Stone Golem" x="-1" y="-1" z="8" spawntime="140" />
+	</spawn>
+	<spawn centerx="583" centery="138" centerz="8" radius="3">
+		<monster name="Gargoyle" x="-2" y="-1" z="8" spawntime="140" />
+		<monster name="Stone Golem" x="-2" y="-2" z="8" spawntime="140" />
+	</spawn>
+	<spawn centerx="557" centery="145" centerz="8" radius="3">
+		<monster name="Gargoyle" x="-1" y="-2" z="8" spawntime="140" />
+		<monster name="Stone Golem" x="2" y="-2" z="8" spawntime="140" />
+	</spawn>
+	<spawn centerx="563" centery="130" centerz="8" radius="3">
+		<monster name="Gargoyle" x="1" y="-1" z="8" spawntime="140" />
+		<monster name="Stone Golem" x="2" y="-1" z="8" spawntime="140" />
+	</spawn>
+	<spawn centerx="536" centery="142" centerz="8" radius="3">
+		<monster name="Earth Elemental" x="2" y="1" z="8" spawntime="175" />
+		<monster name="Stone Golem" x="1" y="-1" z="8" spawntime="175" />
+	</spawn>
+	<spawn centerx="541" centery="153" centerz="8" radius="3">
+		<monster name="Earth Elemental" x="-2" y="0" z="8" spawntime="175" />
+		<monster name="Stone Golem" x="1" y="0" z="8" spawntime="175" />
+	</spawn>
+	<spawn centerx="526" centery="156" centerz="8" radius="3">
+		<monster name="Earth Elemental" x="0" y="1" z="8" spawntime="175" />
+		<monster name="Stone Golem" x="0" y="-1" z="8" spawntime="175" />
+	</spawn>
+	<spawn centerx="524" centery="141" centerz="8" radius="3">
+		<monster name="Earth Elemental" x="-1" y="2" z="8" spawntime="175" />
+		<monster name="Stone Golem" x="1" y="-2" z="8" spawntime="175" />
+	</spawn>
+	<spawn centerx="543" centery="145" centerz="8" radius="3">
+		<monster name="Earth Elemental" x="0" y="-2" z="8" spawntime="175" />
+		<monster name="Stone Golem" x="-2" y="-2" z="8" spawntime="175" />
+	</spawn>
+	<spawn centerx="551" centery="160" centerz="8" radius="3">
+		<monster name="Earth Elemental" x="1" y="-2" z="8" spawntime="175" />
+		<monster name="Stone Golem" x="0" y="0" z="8" spawntime="175" />
+	</spawn>
+	<spawn centerx="519" centery="146" centerz="8" radius="3">
+		<monster name="Earth Elemental" x="2" y="1" z="8" spawntime="175" />
+		<monster name="Stone Golem" x="-1" y="0" z="8" spawntime="175" />
+	</spawn>
+	<spawn centerx="553" centery="153" centerz="8" radius="3">
+		<monster name="Earth Elemental" x="-1" y="2" z="8" spawntime="175" />
+		<monster name="Stone Golem" x="-1" y="0" z="8" spawntime="175" />
+	</spawn>
+	<spawn centerx="519" centery="158" centerz="8" radius="3">
+		<monster name="Earth Elemental" x="2" y="-2" z="8" spawntime="175" />
+		<monster name="Stone Golem" x="0" y="-1" z="8" spawntime="175" />
+	</spawn>
+	<spawn centerx="534" centery="160" centerz="8" radius="3">
+		<monster name="Earth Elemental" x="-2" y="-2" z="8" spawntime="175" />
+		<monster name="Stone Golem" x="1" y="-2" z="8" spawntime="175" />
+	</spawn>
+	<spawn centerx="532" centery="153" centerz="8" radius="3">
+		<monster name="Earth Elemental" x="2" y="0" z="8" spawntime="175" />
+		<monster name="Stone Golem" x="-1" y="2" z="8" spawntime="175" />
+	</spawn>
+	<!-- END GARGOYLE_GROTTO_SPAWNS -->
 </spawns>

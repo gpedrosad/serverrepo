@@ -37,19 +37,37 @@ def lint(plan: dict, spec: dict, theme, existing: dict, otb: Otb, size) -> dict:
     start = plan["info"]["landing"] or min(walk)
     for c in walk - set(dist):
         err("unreachable", c)
-    coast, edge = theme.border("coast"), theme.border("trail_edge")
-    water, trail = plan["water"], plan["trail"]
+    is_cave = spec.get("recipe") == "cave"
+    if is_cave:
+        # cueva: toda roca pegada al piso tiene que tener su pieza de pared (nunca roca lisa 101).
+        # Se compara contra el piso final (no contra lo decorado: las piedras que bloquean no cambian la pared).
+        wall = theme.border("wall")
+        rock = theme["rock"]
+        shape = plan.get("floor", walk)
+        for c in grow(shape, 1) - shape:
+            if c not in tiles:
+                continue
+            if tiles[c][0] == rock:
+                err("border", c)
+            elif tiles[c][0] in wall.ids:
+                want = wall.pieces(neighbors_in(shape, *c))
+                if not want or len(want) != 1 or want[0] != tiles[c][0]:
+                    err("border", c)
+    else:
+        coast, edge = theme.border("coast"), theme.border("trail_edge")
+        water, trail = plan["water"], plan["trail"]
+        for c, ids in tiles.items():
+            if ids[0] == theme["coast"]["ground"]:
+                want = coast.pieces(neighbors_in(water, *c))
+                if not want or len(want) != 1 or want[0] not in ids:
+                    err("border", c)
+                if c in walk:
+                    err("coast_walk", c)
+            elif ids[0] in edge.ids:
+                want = edge.pieces(neighbors_in(trail, *c))
+                if not want or len(want) != 1 or want[0] != ids[0]:
+                    err("border", c)
     for c, ids in tiles.items():
-        if ids[0] == theme["coast"]["ground"]:
-            want = coast.pieces(neighbors_in(water, *c))
-            if not want or len(want) != 1 or want[0] not in ids:
-                err("border", c)
-            if c in walk:
-                err("coast_walk", c)
-        elif ids[0] in edge.ids:
-            want = edge.pieces(neighbors_in(trail, *c))
-            if not want or len(want) != 1 or want[0] != ids[0]:
-                err("border", c)
         for i in ids[1:]:
             w, h = size(i)
             if (w > 1 or h > 1) and any((c[0] - a, c[1] - b) in walk
@@ -116,7 +134,8 @@ def lint(plan: dict, spec: dict, theme, existing: dict, otb: Otb, size) -> dict:
     score -= 1.5 * m["narrow"]
     score -= 0.6 * m["straight_coast"]
     score -= 2.0 * max(0, lo - m["density"], m["density"] - hi)
-    score -= 0.3 * max(0, 8 - m["tree_cover"])
+    if not is_cave:
+        score -= 0.3 * max(0, 8 - m["tree_cover"])
     m["score"] = round(score, 1)
     m["errors"] = {k: len(v) for k, v in errs.items()}
     m["examples"] = {k: v[:3] for k, v in errs.items()}

@@ -1,0 +1,41 @@
+{
+  "_doc": "Ficha de zona de mapkit (docs/items-and-map/MAPAS.md#ficha). python3.11 scripts/map/mapkit/build.py scripts/map/zones/caverna-de-los-gargolas.json --preview /tmp/gargolas.png",
+  "name": "caverna-de-los-gargolas",
+  "title": "Gruta de los Gárgolas",
+  "game_name": "Gargoyle Grotto",
+  "recipe": "cave",
+  "theme": "caverna",
+  "z": 8,
+  "box": [500, 84, 599, 183],
+  "manifest": "generated-gargoyle-grotto.json",
+  "legacy_blocks": {"spawns": "GARGOYLE_GROTTO_SPAWNS", "signs": "GARGOYLE_GROTTO_SIGNS"},
+  "levels": "25-55",
+  "portal": {"clear": 6},
+  "mud_bias": 0.3,
+  "stones": 0.05,
+  "bones": 0.06,
+  "min": 700,
+  "route": [
+    [550, 100],
+    [580, 100],
+    [580, 114],
+    [520, 114],
+    [520, 128],
+    [580, 128],
+    [580, 142],
+    [520, 142],
+    [520, 156],
+    [550, 156]
+  ],
+  "monster_pool": ["Stone Troll", "Gargoyle", "Gazer", "Stone Golem", "Earth Elemental"],
+  "stages": [
+    {"monsters": ["Stone Troll", "Gargoyle"], "per": 1, "spawntime": 90, "gap": 12},
+    {"monsters": ["Gargoyle", "Gazer"], "per": 1, "spawntime": 110, "gap": 11},
+    {"monsters": ["Stone Golem", "Gargoyle"], "per": 1, "spawntime": 140, "gap": 11},
+    {"monsters": ["Earth Elemental", "Stone Golem"], "per": 2, "spawntime": 180, "gap": 10}
+  ],
+  "glades": [],
+  "density": [33, 50],
+  "seeds": 8,
+  "sign": "GARGOYLE GROTTO\nLevels 25 to 55.\nStone gargoyles and golems.\nEarth elementals at the far end."
+}

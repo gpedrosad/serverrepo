@@ -25,10 +25,10 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import mapkit as K  # noqa: E402
-from mapkit import island, lint as L  # noqa: E402
+from mapkit import cave, island, lint as L  # noqa: E402
 from mapkit.jev import Jev  # noqa: E402
 
-RECIPES = {"island": island.build}
+RECIPES = {"island": island.build, "cave": cave.build}
 SRC = "scripts/map/mapkit/build.py"
 
 
@@ -124,7 +124,7 @@ def ask_tune(jev, spec, stages, metrics):
 
 
 def ascii_map(plan, spec, scale=2):
-    x0, y0, x1, y1 = spec["land"]
+    x0, y0, x1, y1 = spec.get("land", spec["box"])
     mons = {p for _c, _z, ms in plan["spawns"] for _n, p, _t in ms}
     rank = "~,#.=*MH"
 
@@ -191,6 +191,8 @@ def write_zone(spec, theme, plan, m, sign_text):
     z = spec["z"]
     info = plan["info"]
     cells = {(x, y, z): ids for (x, y), ids in plan["tiles"].items()}
+    if plan.get("ceiling"):
+        cells.update({(x, y, z - 1): ids for (x, y), ids in plan["ceiling"].items()})
     manifest = K.WORLD / spec["manifest"]
     key = spec["name"].upper().replace("-", "_")
     report = {"spec": f"scripts/map/zones/{spec['name']}.json", "seed": plan["seed"],
@@ -199,7 +201,8 @@ def write_zone(spec, theme, plan, m, sign_text):
               "sign": [*info["sign"], z] if info["sign"] else None,
               "return": [*info["return"], z] if info.get("return") else None,
               **{k: m[k] for k in ("walk", "monsters", "spawns", "density", "path", "score")}}
-    changed = K.write_cells(cells, manifest, [theme["water"]], spec["name"], report, dry_run=False,
+    filler = [theme["filler"]] if "filler" in theme else [theme["water"]]
+    changed = K.write_cells(cells, manifest, filler, spec["name"], report, dry_run=False,
                             extra_files=(K.SPAWNS, K.READABLES, K.NPCS, K.BOAT))
     # spawns, cartel, Nimral y destino del barco (bloques con dueño; sacan lo viejo del generador anterior)
     old_keys = spec.get("legacy_blocks", {})

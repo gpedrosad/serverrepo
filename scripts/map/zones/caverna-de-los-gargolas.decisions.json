@@ -1,0 +1,56 @@
+{
+ "stages": {
+  "stages": [
+   {
+    "monsters": [
+     "Stone Troll"
+    ],
+    "per": 1,
+    "spawntime": 85,
+    "gap": 12
+   },
+   {
+    "monsters": [
+     "Gazer",
+     "Stone Troll"
+    ],
+    "per": 1,
+    "spawntime": 105,
+    "gap": 11
+   },
+   {
+    "monsters": [
+     "Gargoyle",
+     "Stone Golem"
+    ],
+    "per": 2,
+    "spawntime": 140,
+    "gap": 10
+   },
+   {
+    "monsters": [
+     "Earth Elemental",
+     "Stone Golem"
+    ],
+    "per": 2,
+    "spawntime": 175,
+    "gap": 9
+   }
+  ]
+ },
+ "glades": {
+  "glades": {}
+ },
+ "sign": {
+  "lines": [
+   "GARGOYLE GROTTO",
+   "Levels 25-55 only.",
+   "Trolls, Gazers, Golems.",
+   "Beware the Earth Elemental!"
+  ]
+ },
+ "pick-1-7-5": {
+  "choice": 0,
+  "why": "Highest score and walkable area; trails branch organically into readable glades with even monster spread and no dominant straight edges."
+ }
+}

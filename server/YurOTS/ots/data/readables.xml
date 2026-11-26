@@ -23,6 +23,7 @@
 	<readable x="167" y="46" z="7" text="EAST GLACIER\nIce trail from the old isle\nFrost Dragons and Ice Spiders"/>
 	<readable x="169" y="46" z="7" text="CYCLOPS WOODS\nForest island for levels 20-40\nFrom cyclops to giant spiders"/>
 	<readable x="163" y="50" z="7" text="KONGRA SWAMP\nSwamp island for levels 15-45\nFrom swamp trolls to carniphila"/>
+	<readable x="164" y="50" z="7" text="GARGOYLE GROTTO\nUnderground cave for levels 25-55\nFrom stone trolls to earth elementals"/>
 	<!-- END TEMPLE_PORTAL_SIGNS -->
 	<!-- BEGIN NORTH_PASS_SIGNS -->
 	<readable x="187" y="13" z="7" text="NORTH PASS\nForest, Frozen Tundra and Dragon Caves.\nCaves: level 60+."/>
@@ -181,4 +182,7 @@
 	<!-- BEGIN KONGRA_SWAMP_SIGNS (scripts/map/mapkit/build.py) -->
 	<readable x="779" y="30" z="7" text="KONGRA SWAMP\nLevels 15-45. Beware!\nSnakes, wasps, spiders, trolls,\nthen Sibang, Kongra, Merlkin."/>
 	<!-- END KONGRA_SWAMP_SIGNS -->
+	<!-- BEGIN GARGOYLE_GROTTO_SIGNS (scripts/map/mapkit/build.py) -->
+	<readable x="550" y="106" z="8" text="GARGOYLE GROTTO\nLevels 25-55 only.\nTrolls, Gazers, Golems.\nBeware the Earth Elemental!"/>
+	<!-- END GARGOYLE_GROTTO_SIGNS -->
 </readables>

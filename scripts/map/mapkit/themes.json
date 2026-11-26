@@ -40,6 +40,26 @@
       "mushroom-ring": {"about": "Anillo de hongos en un claro húmedo", "floor": ["mushrooms"], "edge": ["roots"], "floor_rate": 0.1, "edge_rate": 0.3}
     }
   },
+  "caverna": {
+    "about": "Cueva subterránea: pasillo de tierra en zigzag, paredes de tierra y roca alrededor.",
+    "filler": 101,
+    "rock": 101,
+    "floor": 351,
+    "floor_alt": 352,
+    "mud": 355,
+    "wall": {
+      "shape": "floor",
+      "side": {"n": 357, "e": 358, "s": 356, "w": 359},
+      "corner": {"n,w": 366, "n,e": 367, "s,w": 365, "s,e": 364},
+      "inner": {"nw": 362, "ne": 363, "sw": 361, "se": 360},
+      "note": "Pared de tierra 356-367 (WALL_SIDE/CORNER/INNER de generate-north-pass.py). La pieza va en la roca pegada al piso; bloqueea."
+    },
+    "sign": 1429,
+    "bones": [2248],
+    "stones": [1285, 1309, 1323],
+    "mushrooms": [4171, 4183],
+    "props": {}
+  },
   "_categorias": {
     "water": "Suelo de agua. Todo lo que el jugador ve (±9, ±7) tiene que tener tile: el agua de relleno también es de la zona.",
     "grass": "Suelo de pasto adentro de la isla (caminable o bajo el bosque).",

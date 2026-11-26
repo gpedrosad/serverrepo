@@ -92,6 +92,10 @@ PORTALS = [
     # (157,51/168,51) ni la torre sureste (x>=165, y=52).
     ("pantano", 163, 51, (783, 30, 7), "KONGRA SWAMP\nSwamp island for levels 15-45\nFrom swamp trolls to carniphila",
      [(765, 10, 850, 140, 7)]),
+    # Segunda casilla de la fila espejo y=51 (163 es el Pantano). No se tocan obeliscos, balizas
+    # ni la torre sureste (x>=165, y=52). Llegada y vuelta adentro de la cueva (z8).
+    ("gargolas", 164, 51, (552, 104, 8), "GARGOYLE GROTTO\nUnderground cave for levels 25-55\nFrom stone trolls to earth elementals",
+     [(500, 84, 599, 183, 8)]),
 ]
 # Vuelta al lado de la llegada, fuera del eje que se camina.
 # Desierto: pasto al oeste de la arena 198,73 (fuera de la caja del generador).
@@ -104,6 +108,7 @@ RETURNS = {
     "glaciar": (265, 38, 7),
     "ciclopes": (687, 30, 7),
     "pantano": (782, 30, 7),
+    "gargolas": (553, 104, 8),
 }
 S_BEGIN, S_END = "<!-- BEGIN TEMPLE_PORTAL_SIGNS -->", "<!-- END TEMPLE_PORTAL_SIGNS -->"
 
