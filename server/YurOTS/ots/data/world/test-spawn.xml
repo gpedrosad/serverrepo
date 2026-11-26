@@ -7083,29 +7083,80 @@
 		<monster name="Ashen Lord" x="0" y="0" z="9" spawntime="7200" />
 	</spawn>
 	<!-- END HELL_QUEST_SPAWNS -->
-	<!-- BEGIN WOLF_GROVE_SPAWNS (scripts/map/generate-wolf-grove.py) -->
-	<spawn centerx="228" centery="286" centerz="7" radius="3">
-		<monster name="Wolf" x="-2" y="0" z="7" spawntime="90" />
+	<!-- BEGIN WOLF_GROVE_SPAWNS (scripts/map/mapkit/build.py) -->
+	<spawn centerx="232" centery="267" centerz="7" radius="3">
+		<monster name="Wolf" x="1" y="-2" z="7" spawntime="85" />
 	</spawn>
-	<spawn centerx="228" centery="309" centerz="7" radius="3">
-		<monster name="Wolf" x="1" y="1" z="7" spawntime="90" />
+	<spawn centerx="212" centery="269" centerz="7" radius="3">
+		<monster name="Wolf" x="0" y="-2" z="7" spawntime="85" />
 	</spawn>
-	<spawn centerx="213" centery="286" centerz="7" radius="3">
-		<monster name="Wolf" x="1" y="0" z="7" spawntime="90" />
+	<spawn centerx="246" centery="270" centerz="7" radius="3">
+		<monster name="Wolf" x="-1" y="0" z="7" spawntime="85" />
 	</spawn>
-	<spawn centerx="229" centery="299" centerz="7" radius="3">
-		<monster name="Wolf" x="0" y="0" z="7" spawntime="90" />
+	<spawn centerx="241" centery="278" centerz="7" radius="3">
+		<monster name="Wolf" x="0" y="1" z="7" spawntime="85" />
 	</spawn>
-	<spawn centerx="236" centery="312" centerz="7" radius="3">
-		<monster name="Wolf" x="2" y="-1" z="7" spawntime="110" />
+	<spawn centerx="221" centery="265" centerz="7" radius="3">
+		<monster name="Wolf" x="2" y="0" z="7" spawntime="85" />
 	</spawn>
-	<spawn centerx="241" centery="317" centerz="7" radius="3">
-		<monster name="War Wolf" x="1" y="-2" z="7" spawntime="140" />
-		<monster name="Bear" x="-2" y="-1" z="7" spawntime="140" />
+	<spawn centerx="212" centery="283" centerz="7" radius="3">
+		<monster name="Wolf" x="0" y="0" z="7" spawntime="110" />
 	</spawn>
-	<spawn centerx="243" centery="309" centerz="7" radius="3">
-		<monster name="War Wolf" x="1" y="0" z="7" spawntime="140" />
-		<monster name="Bear" x="-2" y="0" z="7" spawntime="140" />
+	<spawn centerx="209" centery="296" centerz="7" radius="3">
+		<monster name="Winter Wolf" x="-2" y="0" z="7" spawntime="110" />
+	</spawn>
+	<spawn centerx="225" centery="285" centerz="7" radius="3">
+		<monster name="Wolf" x="1" y="0" z="7" spawntime="110" />
+	</spawn>
+	<spawn centerx="234" centery="288" centerz="7" radius="3">
+		<monster name="Winter Wolf" x="-1" y="1" z="7" spawntime="110" />
+	</spawn>
+	<spawn centerx="217" centery="290" centerz="7" radius="3">
+		<monster name="Wolf" x="0" y="0" z="7" spawntime="110" />
+	</spawn>
+	<spawn centerx="231" centery="307" centerz="7" radius="3">
+		<monster name="Winter Wolf" x="0" y="1" z="7" spawntime="140" />
+	</spawn>
+	<spawn centerx="243" centery="312" centerz="7" radius="3">
+		<monster name="Bear" x="-2" y="-2" z="7" spawntime="140" />
+	</spawn>
+	<spawn centerx="219" centery="306" centerz="7" radius="3">
+		<monster name="Winter Wolf" x="-1" y="-2" z="7" spawntime="140" />
+	</spawn>
+	<spawn centerx="235" centery="299" centerz="7" radius="3">
+		<monster name="Bear" x="0" y="0" z="7" spawntime="140" />
+	</spawn>
+	<spawn centerx="221" centery="338" centerz="7" radius="3">
+		<monster name="War Wolf" x="-2" y="-2" z="7" spawntime="170" />
+		<monster name="Bear" x="0" y="2" z="7" spawntime="170" />
+	</spawn>
+	<spawn centerx="222" centery="329" centerz="7" radius="3">
+		<monster name="War Wolf" x="0" y="0" z="7" spawntime="170" />
+		<monster name="Bear" x="-2" y="-2" z="7" spawntime="170" />
+	</spawn>
+	<spawn centerx="240" centery="325" centerz="7" radius="3">
+		<monster name="War Wolf" x="0" y="0" z="7" spawntime="170" />
+		<monster name="Bear" x="1" y="-1" z="7" spawntime="170" />
+	</spawn>
+	<spawn centerx="230" centery="325" centerz="7" radius="3">
+		<monster name="War Wolf" x="-1" y="1" z="7" spawntime="170" />
+		<monster name="Bear" x="-1" y="-2" z="7" spawntime="170" />
+	</spawn>
+	<spawn centerx="211" centery="340" centerz="7" radius="3">
+		<monster name="War Wolf" x="1" y="-1" z="7" spawntime="170" />
+		<monster name="Bear" x="1" y="2" z="7" spawntime="170" />
+	</spawn>
+	<spawn centerx="216" centery="333" centerz="7" radius="3">
+		<monster name="War Wolf" x="1" y="1" z="7" spawntime="170" />
+		<monster name="Bear" x="-1" y="1" z="7" spawntime="170" />
+	</spawn>
+	<spawn centerx="216" centery="345" centerz="7" radius="3">
+		<monster name="War Wolf" x="1" y="0" z="7" spawntime="170" />
+		<monster name="Bear" x="1" y="-2" z="7" spawntime="170" />
+	</spawn>
+	<spawn centerx="238" centery="317" centerz="7" radius="3">
+		<monster name="War Wolf" x="1" y="0" z="7" spawntime="170" />
+		<monster name="Bear" x="1" y="-1" z="7" spawntime="170" />
 	</spawn>
 	<!-- END WOLF_GROVE_SPAWNS -->
 </spawns>

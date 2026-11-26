@@ -13,6 +13,7 @@ TRAVELS = {
 	{keys = {'dragon land'}, price = 50, dest = {121, 118, 7}, name = 'Dragon Land'},
 	{keys = {'frozen isle', 'frozen', 'isla helada', 'hielo'}, price = 20, dest = {395, 104, 7}, name = 'Frozen Isle'},
 	{keys = {'gauntlet'}, price = 20, dest = {452, 41, 7}, name = 'Gauntlet'},
+	{keys = {'wolf grove', 'wolves', 'lobos'}, price = 20, dest = {199, 268, 7}, name = 'Wolf Grove'}, -- scripts/map/mapkit/build.py (claro-de-los-lobos)
 	{keys = {'city', 'the city'}, price = 20, dest = {172, 65, 7}, name = 'The City'},
 }
 

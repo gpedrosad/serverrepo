@@ -1,0 +1,50 @@
+{
+  "_doc": "Ficha de zona de mapkit (docs/items-and-map/MAPAS.md#ficha). python3.11 scripts/map/mapkit/build.py scripts/map/zones/claro-de-los-lobos.json --preview /tmp/lobos.png",
+  "name": "claro-de-los-lobos",
+  "title": "Claro de los Lobos",
+  "game_name": "Wolf Grove",
+  "recipe": "island",
+  "theme": "bosque-isla",
+  "z": 7,
+  "box": [184, 250, 261, 380],
+  "land": [194, 258, 251, 372],
+  "manifest": "generated-wolf-grove.json",
+  "legacy_blocks": {"spawns": "WOLF_GROVE_SPAWNS", "signs": "WOLF_GROVE_SIGNS"},
+  "levels": "8-25",
+  "harbor": {
+    "open": "w",
+    "npc": "Nimral",
+    "travel": {"keys": ["wolf grove", "wolves", "lobos"], "name": "Wolf Grove", "price": 20}
+  },
+  "route": [
+    [205, 268],
+    [241, 267],
+    [241, 286],
+    [209, 287],
+    [207, 305],
+    [241, 304],
+    [240, 323],
+    [222, 326],
+    [216, 340]
+  ],
+  "trail_width": [2.2, 3.2],
+  "forest": [3, 6],
+  "glades": [
+    {"role": "harbor", "center": [202, 268], "r": [5, 4]},
+    {"at": 0.22, "r": [5, 4]},
+    {"at": 0.45, "r": [5, 5]},
+    {"at": 0.68, "r": [5, 4]},
+    {"at": 0.86, "r": [4, 4]},
+    {"at": 1.0, "r": [6, 5], "role": "end"}
+  ],
+  "monster_pool": ["Wolf", "Badger", "Deer", "Winter Wolf", "War Wolf", "Bear"],
+  "stages": [
+    {"monsters": ["Wolf", "Badger"], "per": 1, "spawntime": 90, "gap": 11},
+    {"monsters": ["Wolf"], "per": 1, "spawntime": 100, "gap": 11},
+    {"monsters": ["Wolf", "War Wolf"], "per": 2, "spawntime": 120, "gap": 11},
+    {"monsters": ["War Wolf", "Bear"], "per": 2, "spawntime": 140, "gap": 11}
+  ],
+  "density": [30, 45],
+  "seeds": 8,
+  "sign": "WOLF GROVE\nLevel 8-25.\nWolves along the trail.\nWar wolves and bears at the far end."
+}

@@ -1,43 +1,62 @@
-# Claro de los Lobos
+# Claro de los Lobos (Wolf Grove)
 
-Isla de pasto aislada al sureste de la ciudad, en un vacío del mapa que no tenía tiles, casas, spawns ni NPC. Hunt chico de nivel 8–25: lobos en el sendero, War Wolf y Bear en el claro del fondo.
+Isla de bosque al sureste de la ciudad, hunt de nivel 8–25. **Rehecha desde cero el 26 nov 2026 con mapkit**
+(la v1 del 25 nov no tenía cómo llegar: ni barco ni portal). Es la primera zona hecha con la técnica nueva:
+ficha corta + tema + receta + lint + semillas + decisiones chicas de jev. Guía: [MAPAS.md](MAPAS.md).
 
-Generador: `scripts/map/generate-wolf-grove.py` (re-ejecutable). Manifiesto: `server/YurOTS/ots/data/world/generated-wolf-grove.json`.
+![Claro de los Lobos](img/claro-de-los-lobos.png)
 
-![Vista del claro y el sendero](img/claro-de-los-lobos.png)
+## Cómo se llega
+
+En barco: Fargum (ciudad, `172,66,7`) y cualquier Nimral ofrecen **Wolf Grove** (20 gp; los GM viajan gratis).
+Se llega a `199,268,7`, en el puerto del oeste; ahí hay un **Nimral** (`199,267,7`) para volver. No tiene portal
+en la plaza (está llena: x 155–169 ocupadas salvo el pasillo cian y el obelisco).
 
 ## Cómo es
 
-| Qué | Dónde |
-|-----|-------|
-| Caja | `x 187–261, y 265–339, z7` (agua + tierra). La tierra solo crece en `196–252, 274–330` |
-| Entrada | `206,286,7` (esquina noroeste del sendero) |
-| Sendero | tierra de 2 de ancho en zigzag: `206,286` → `228,286` → `228,314` → `240,314` |
-| Claro | `x 232–244, y 308–318`, fogata en `240,314,7` |
-| Orilla | costa de pasto `4644–4655` sobre agua `4608`; lo que no es sendero es bosque que bloquea |
-| Cartel | `206,285,7`, bloque `WOLF_GROVE_SIGNS` de `readables.xml` |
-
-**251 casillas caminables**, 1083 de tierra, 4542 de agua. No hay agujeros: no hace falta `style-hole-entrances`. No toca ciudad, templos, portales ni casas.
-
-La isla está rodeada de agua; se llega en bote (o con un GM). No tiene portal en la plaza del templo.
+| Qué | Dónde / cuánto |
+|-----|----------------|
+| Caja de la zona (agua de relleno incluida) | `x 184–261, y 250–380, z7` |
+| Tierra | dentro de `x 194–251, y 258–372` |
+| Puerto | claro abierto al oeste, bote de 5 piezas en el agua, cartel `199,272,7` |
+| Sendero | tierra de 3–5 de ancho en S: tres filas (y ≈ 267, 286, 305) y bajada al sur hasta `≈216,340` |
+| Claros (elegidos por jev) | pradera con flores → guarida de lobos → anillo de hongos → campamento de cazador (fogata) → guarida del oso (fondo) |
+| Bosque | borde cerrado de arbustos y árboles (no hay atajos); adentro, pasto con árboles sueltos |
+| Caminable | 1.221 casillas, 202 pasos de la llegada al fondo |
 
 ## Monstruos
 
-7 spawns (bloque `WOLF_GROVE_SPAWNS` de `test-spawn.xml`):
+30 monstruos en 22 spawns (bloque `WOLF_GROVE_SPAWNS` de `test-spawn.xml`), 1 cada ~41 casillas. Las etapas
+las propuso jev y las validó Python:
 
-| Zona | Monstruos | Spawntime |
-|------|-----------|-----------|
-| Sendero | 5 Wolf | 90–110 s |
-| Claro | 2 War Wolf + 2 Bear | 140 s |
+| Etapa (del puerto al fondo) | Monstruos | Por spawn | Spawntime | Separación |
+|---|---|---|---|---|
+| 1 | Wolf | 1 | 85 s | 13 |
+| 2 | Wolf, Winter Wolf | 1 | 110 s | 12 |
+| 3 | Winter Wolf, Bear | 1 | 140 s | 11 |
+| 4 | War Wolf, Bear | 2 | 170 s | 10 |
+
+Nada a menos de 8 casillas de la llegada.
+
+## Archivos
+
+| Archivo | Qué es |
+|---|---|
+| `scripts/map/zones/claro-de-los-lobos.json` | La ficha (caja, recorrido, claros, puerto, monstruos posibles) |
+| `scripts/map/zones/claro-de-los-lobos.decisions.json` | Lo que decidió jev (etapas, claros, cartel, semilla elegida) |
+| `server/YurOTS/ots/data/world/generated-wolf-grove.json` | Manifiesto de dueño de las casillas (y semilla, medidas) |
+| `test-spawn.xml` / `readables.xml` | Bloques `WOLF_GROVE_SPAWNS` / `WOLF_GROVE_SIGNS` |
+| `npc.xml` | Bloque `CLARO_DE_LOS_LOBOS_NPC` (Nimral) |
+| `data/npc/scripts/boat.lua` | Destino `Wolf Grove` |
 
 ## Cómo regenerar
 
-Desde la raíz del repo:
-
 ```bash
-python3.11 scripts/map/generate-wolf-grove.py --dry-run --preview /tmp/claro-lobos.png
-python3.11 scripts/map/generate-wolf-grove.py
+python3.11 scripts/map/mapkit/build.py scripts/map/zones/claro-de-los-lobos.json --preview /tmp/lobos.png
+python3.11 scripts/map/mapkit/build.py scripts/map/zones/claro-de-los-lobos.json --write
 python3 scripts/map/check-map-load.py
-python3 scripts/scan-map-depots.py server/YurOTS/ots/data/world/test.otbm
-python3 scripts/sync-houses-with-map.py --dry-run
+python3 scripts/npc/run_npc_tests.py boat
 ```
+
+Con las decisiones guardadas sale el mismo mapa (semilla 1, puntaje 87,9). `--redecide` vuelve a preguntar a jev;
+`--no-jev` usa lo guardado o los valores de la ficha.

@@ -170,7 +170,7 @@
 	<readable x="350" y="181" z="7" text="THE CROSSROADS\nWest: Ash Fields. East: Lava Rivers.\nNorth: Cult Fortress and the Crater."/>
 	<readable x="362" y="150" z="7" text="THE MAW OF HELL\nGate: level 80. Hellhounds hunt below.\nIn the Abyss, the Ashlord's gate requires level 100."/>
 	<!-- END HELL_QUEST_SIGNS -->
-	<!-- BEGIN WOLF_GROVE_SIGNS (scripts/map/generate-wolf-grove.py) -->
-	<readable x="206" y="285" z="7" text="WOLF GROVE\nLevel 8-25.\nWolves along the trail. War wolves and bears at the clearing."/>
+	<!-- BEGIN WOLF_GROVE_SIGNS (scripts/map/mapkit/build.py) -->
+	<readable x="199" y="272" z="7" text="WOLF GROVE\nLevels 8 to 25\nWolves, winter wolves,\nbears and war wolves."/>
 	<!-- END WOLF_GROVE_SIGNS -->
 </readables>
