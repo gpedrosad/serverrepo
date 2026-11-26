@@ -47,6 +47,7 @@ python3 scripts/ot/ot-probe.py 127.0.0.1 7171
 | Script | Uso |
 |--------|-----|
 | **`mapkit/build.py`** + `mapkit/` + `zones/*.json` | **Motor único de zonas** (nov 2026): ficha JSON → semillas → lint → decisiones chicas con jev → `--preview` / `--write`. `mapkit/catalog.py` regenera el catálogo de piezas de la guía ([MAPAS.md](../docs/items-and-map/MAPAS.md)) |
+| **`render/maprender.mjs`** (Node + sharp; `cd scripts/map/render && npm ci`) | Render sin GUI: `region`, `minimap`, `layer` (walk, density, items, mods), `ascii`, `diff`, `compare`, `ask` (modelo de visión barato), `tile`, `batch`; `--cells` para propuestas sin escribir ([map-rendering.md](../docs/map-rendering.md)) |
 | `temple-portals.py` + `portal_citadel_layout.py` + `portal_temple_style.py` + `portal_temple_details.py` + `portal_temple_architecture.py` | Plaza, ocho portales, galería, pórtico y torre sureste con escaleras; `--dry-run` |
 | `validate-portal-citadel.py` | Audita mapa/assets contra `--before`; rutas, teleports y ámbito exacto |
 | `root-crypt.py` | Visual propia de la quest BoH al sur del depot; `--dry-run`, conserva huella/colisión/cofres/teleports |
