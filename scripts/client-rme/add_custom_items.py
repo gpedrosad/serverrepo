@@ -137,8 +137,8 @@ NEW_ITEMS = [
     dict(server_id=20670, client_id=6070, prototype=2640, appearance=2206, layers=2, frames=4, decor=True,
          name="soft boots", png="soft_boots_in_use.png", descr=""),
     # Lava azul (24 nov 2026): suelo de la Caldera Azul (docs/items-and-map/CALDERA_AZUL.md). La lava 598
-    # (client 727: 1x1, 8 patrones x 4 cuadros = 32 sprites) con el fuego pasado a tonos fríos por
-    # recolor_lava.py (rojo -> violeta índigo, amarillo -> cian). decor=True copia el nodo OTB de la 598
+    # (client 727: 1x1, 8 patrones x 4 cuadros = 32 sprites) con corteza de basalto de
+    # draw_azure_items.py. decor=True copia el nodo OTB de la 598
     # (suelo que bloquea). Luz: la de la lava (nivel 4) en azul 143, como el blue bassin.
     dict(server_id=20680, client_id=6080, prototype=598, decor=True, patterns=8, frames=4, light=(4, 143),
          name="blue lava", png="blue_lava.png", descr="It burns with a cold, unearthly glow."),

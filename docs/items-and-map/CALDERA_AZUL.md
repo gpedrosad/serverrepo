@@ -14,35 +14,46 @@ manchas de ceniza, cripta) pero con **lava azul** y **5 monstruos propios**. Se 
 | Sprites | 32: 8 patrones (4×2) × 4 cuadros de animación, igual que la lava común |
 | Luz | nivel 4 (como la lava), color azul `143` (el del blue bassin) |
 | OTB | copia del nodo de la `598` (`decor=True`): suelo que bloquea |
-| Script | `scripts/client-rme/recolor_lava.py` → `devtools/zagan-test/custom-sprites/blue_lava.png` |
+| Arte | `scripts/client-rme/draw_azure_items.py` → `devtools/zagan-test/custom-sprites/blue_lava.png` |
 
-![Lava común arriba, azul abajo](img/caldera-azul/lava-roja-vs-azul.png)
+La superficie tiene una corteza de basalto fracturada. Las vetas de fuego frío
+pulsan en cuatro cuadros a lo largo de un mosaico continuo de 4×2 casillas.
 
-Cómo se recolorea: cada tono del fuego pasa a uno frío con el mismo brillo. El rojo del fondo va a violeta
-índigo (255°), el amarillo de las vetas a cian (188°) y el naranja queda en el medio (azul). Las vetas más
-claras se blanquean un poco.
-
-- **Primero se probó intercambiar rojo y azul** (como el blue bassin, `recolor_basin.py`). Queda un azul parejo que
-  **se confunde con el agua**. Por eso el degradé violeta → cian.
 - Los **bordes de tierra de la lava común (`4667–4678`) sirven tal cual** sobre la lava azul: son tierra con fondo
   transparente y se ve la lava de abajo. Se ponen con la misma regla `lava_borders` de `generate-ember-field.py`.
 - Para la luz y el fuego frío de la decoración se usa el **blue bassin `20192`** (coal basin azul, ya existía).
 
-Instalar (re-ejecutable; `--only` evita tener que regenerar los PNG de otros ítems):
+## Azure Sunstone (`20124`)
 
-```bash
-python3.11 scripts/client-rme/recolor_lava.py --preview /tmp/lava.png
-python3.11 scripts/client-rme/add_custom_items.py --only 20680 --things devtools/rme/rme-client-760 \
-    --otb server/YurOTS/ots/data/items/items-zagan-test.otb
-```
+Prisma cian facetado con un sol tallado y un engaste de bronce de cuatro puntas.
+Es el consumible que recarga las [Soft Boots](../gameplay/SOFT_BOOTS.md).
 
 ## Monstruos (looks 145–149)
 
-Recolores de criaturas de 7.6 con presets de `scripts/client-rme/presets/` (receta:
-[SPRITE_RECOLOR_GUIDE.md](../gameplay/SPRITE_RECOLOR_GUIDE.md)). Ataques de energía, hielo y muerte con los
+Los presets de `scripts/client-rme/presets/` dibujan piezas distintas en las
+cuatro direcciones y los tres cuadros de cada criatura. Los ataques usan los
 kits de [MONSTER_KITS.md](../gameplay/MONSTER_KITS.md).
 
-![Original | nuevo](img/caldera-azul/monstruos.jpg)
+![Antes y después de las criaturas, el prisma y la lava azul](img/caldera-azul/redisenio-azure.png)
+
+| Monstruo | Rasgo visible |
+|---|---|
+| Azure Skeleton | Broquel de cristal alargado y hombrera de metal sobre hueso claro. |
+| Azure Devil | Alas angulares articuladas y máscara de porcelana. |
+| Azure Bonebeast | Tres espinas de cristal en el lomo y hocico blindado. |
+| Azure Lich | Corona rota de bronce y un farol oscilante de fuego frío. |
+| Azhurak | Cuernos de cristal y hombrera asimétrica de obsidiana con un engaste cian. |
+
+Para regenerar el arte del lote sobre el cliente canónico:
+
+```sh
+python3.11 scripts/client-rme/apply_azure_art.py --preview docs/items-and-map/img/caldera-azul/redisenio-azure.png --apply
+```
+
+El instalador comprueba las referencias y reemplaza los registros existentes
+de los cinco looks, la lava y la Sunstone en `Tibia.spr`. Si se pide la
+comparativa, la fila superior muestra los sprites instalados antes de ejecutar
+el comando.
 
 | Monstruo | Look (base) | Vida | Exp | Golpe | Kit | Inmune | Rol |
 |---|---|---:|---:|---:|---|---|---|

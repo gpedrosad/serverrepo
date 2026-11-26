@@ -37,6 +37,7 @@ HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[1]
 sys.path.insert(0, str(HERE))
 import draw_zagan_items as Z  # noqa: E402
+from draw_azure_items import sunstone  # noqa: E402
 from recolor_item import item_pixels  # noqa: E402
 
 THINGS = REPO / "devtools/rme/rme-client-760"
@@ -150,7 +151,9 @@ def base_pixels(base_sid: int):
 
 
 def render(sid: int) -> Image.Image:
-    """El recolor (el rediseño de redesign_items.py se volvió atrás el 25 nov 2026)."""
+    """Arte vigente del objeto."""
+    if sid == 20124:
+        return sunstone()
     return render_recolor(sid)
 
 
@@ -176,7 +179,7 @@ def preview(path: Path, names: dict[int, str], only: list[int] | None) -> None:
         old = Image.new("RGBA", (32, 32))
         old.putdata(base_pixels(ITEMS[sid][1]))
         sheet.alpha_composite(old, (x + 6, y + 8))
-        sheet.alpha_composite(render_recolor(sid).resize((32 * scale, 32 * scale), Image.NEAREST), (x + 44, y + 4))
+        sheet.alpha_composite(render(sid).resize((32 * scale, 32 * scale), Image.NEAREST), (x + 44, y + 4))
         draw.text((x + 4, y + 102), str(sid), fill=(190, 210, 215, 255))
         draw.text((x + 4, y + 114), names.get(sid, ITEMS[sid][0])[:24], fill=(255, 255, 255, 255))
     sheet.save(path)

@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Saca los 32 sprites de la lava 598 del cliente y la pasa a lava azul.
+"""Genera los 32 sprites de lava azul y los compara con la lava 598 del cliente.
 
 La lava de 7.6 (server id 598, client id 727) es un suelo 1x1 con 8 patrones (4x2, el mosaico
-cambia según la casilla) y 4 cuadros de animación: 32 sprites. Todos sus píxeles son de fuego
-(rojos oscuros, naranjas, amarillos). Cada tono pasa a uno frío con el mismo brillo: el rojo del
+cambia según la casilla) y 4 cuadros de animación: 32 sprites. Por defecto genera la corteza de
+basalto de draw_azure_items.py. Si se indica un parámetro de color, aplica el recolor histórico:
+cada tono pasa a uno frío con el mismo brillo, del rojo del
 fondo a violeta índigo (--hot, 255°), el amarillo de las vetas a cian (--cold, 188°) y el naranja
 queda en el medio (azul). Las vetas más claras se blanquean un poco (--glow).
 
@@ -30,6 +31,7 @@ ROOT = HERE.parents[1]
 sys.path.insert(0, str(HERE))
 import build_zagan_test_assets as B  # noqa: E402
 from add_black_dragon_look import decode_sprite, read_spr  # noqa: E402
+from draw_azure_items import lava_sheet  # noqa: E402
 
 CLIENT_ID = 727           # lava (server 598)
 SPRITES = 32              # 8 patrones x 4 cuadros
@@ -60,10 +62,10 @@ def recolor(p, hot: float, cold: float, sat: float, glow: float):
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--things", type=Path, default=THINGS)
-    ap.add_argument("--hot", type=float, default=255, help="tono (grados) al que va el rojo del fuego")
-    ap.add_argument("--cold", type=float, default=188, help="tono (grados) al que va el amarillo")
-    ap.add_argument("--sat", type=float, default=0.95)
-    ap.add_argument("--glow", type=float, default=0.35, help="cuánto se blanquean las vetas")
+    ap.add_argument("--hot", type=float, help="recolor histórico, tono del rojo (255 por defecto)")
+    ap.add_argument("--cold", type=float, help="recolor histórico, tono del amarillo (188 por defecto)")
+    ap.add_argument("--sat", type=float, help="recolor histórico, saturación (0.95 por defecto)")
+    ap.add_argument("--glow", type=float, help="recolor histórico, blanco de las vetas (0.35 por defecto)")
     ap.add_argument("--out", type=Path, default=OUT)
     ap.add_argument("--preview", type=Path, help="mosaico 8x4 casillas: lava original arriba, azul abajo")
     a = ap.parse_args()
@@ -74,13 +76,17 @@ def main() -> int:
         raise SystemExit(f"client {CLIENT_ID}: tiene {len(entry.sprite_ids)} sprites, se esperaban {SPRITES}")
     spr = (a.things / "Tibia.spr").read_bytes()
     _n, offsets = read_spr(spr)
-    sheet = Image.new("RGBA", (32, 32 * SPRITES))
+    legacy = any(value is not None for value in (a.hot, a.cold, a.sat, a.glow))
+    colors = tuple(value if value is not None else fallback
+                   for value, fallback in zip((a.hot, a.cold, a.sat, a.glow), (255, 188, 0.95, 0.35)))
+    sheet = Image.new("RGBA", (32, 32 * SPRITES)) if legacy else lava_sheet()
     orig = Image.new("RGBA", (32, 32 * SPRITES))
     for i, sid in enumerate(entry.sprite_ids):
         px = decode_sprite(spr, offsets, sid)
-        im = Image.new("RGBA", (32, 32))
-        im.putdata([recolor(p, a.hot, a.cold, a.sat, a.glow) for p in px])
-        sheet.paste(im, (0, 32 * i))
+        if legacy:
+            im = Image.new("RGBA", (32, 32))
+            im.putdata([recolor(p, *colors) for p in px])
+            sheet.paste(im, (0, 32 * i))
         o = Image.new("RGBA", (32, 32))
         o.putdata([tuple(p) for p in px])
         orig.paste(o, (0, 32 * i))
