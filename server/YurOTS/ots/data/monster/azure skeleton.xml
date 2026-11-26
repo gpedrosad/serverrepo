@@ -19,6 +19,7 @@
 		<voice sentence="Burn... in blue." />
 	</voices>
 	<loot>
+		<item id="20702" chance="8000" />
 		<item id="2148" countmax="80" chance1="100000" chancemax="0" />
 		<item id="2152" countmax="2" chance1="8000" chancemax="0" />
 		<item id="2146" countmax="1" chance1="4000" chancemax="0" />

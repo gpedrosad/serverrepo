@@ -60,6 +60,7 @@ NOTES = {
     20683: ("Otras", "Maza 1 mano, silueta propia, sin efecto", "", "../items-and-map/ZAGAN_TEST_ITEMS.md"),
     20700: ("Otras", "Espada 1 mano, silueta propia, sin efecto", "", "../items-and-map/ZAGAN_TEST_ITEMS.md"),
     20701: ("Otras", "Hacha 1 mano, silueta propia, sin efecto", "", "../items-and-map/ZAGAN_TEST_ITEMS.md"),
+    20704: ("Otras", "Hacha de una mano, 48 oz", "", "../items-and-map/CALDERA_AZUL.md"),
     # 20111/20115/20119: desde el rebalanceo de loot (490a42c, nov 2026) caen de monstruos; la fuente sale de los XML.
     20111: ("Otras", "Sin efecto", "", "../items-and-map/ZAGAN_TEST_ITEMS.md"),
     20115: ("Otras", "Sin efecto", "", "../items-and-map/ZAGAN_TEST_ITEMS.md"),
@@ -154,7 +155,7 @@ def main() -> int:
 
 > Generado con `python3.11 scripts/items/weapon-catalog.py --write`: **no editar a mano**. Al crear un arma,
 > agregar su fila en `NOTES` del script (grupo, efecto, fuente y doc) y volver a correrlo. El tipo, ataque y
-> defensa salen del OTB (`items-zagan-test.otb`); el loot, de los XML de monstruos (sin variantes rage, que
+> defensa salen del OTB (`items-zagan-test.otb`); el loot muestra la probabilidad cruda de los XML de monstruos (sin variantes rage, que
 > suelen tener la misma chance o más).
 
 {len(rows)} armas propias (sin contar escudos ni las armas comunes de 7.6). GM: `/i ID 1` o `/i nombre`.

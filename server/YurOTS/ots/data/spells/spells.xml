@@ -258,6 +258,7 @@
 <rune name="Crimson Cage"			id="20273"	charges="2"		maglv="10"	mana="0"	enabled="1"></rune>
 <!-- Frost Mine is sold by Dark Rodo only; it has no rune-making spell. -->
 <rune name="Frost Mine" id="20369" charges="1" maglv="10" mana="0" enabled="1"></rune>
+<rune name="Devilwing Rune" id="20703" charges="1" maglv="6" mana="0" enabled="1"></rune>
 <!-- BEGIN MONSTER_KITS -->
 <spell name="k_drain_burst_3" words="k_drain_burst_3" maglv="4000" mana="800" enabled="1"></spell>
 <spell name="k_drain_burst_8" words="k_drain_burst_8" maglv="4000" mana="800" enabled="1"></spell>

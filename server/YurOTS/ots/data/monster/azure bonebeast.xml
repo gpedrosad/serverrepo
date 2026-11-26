@@ -20,6 +20,7 @@
 		<voice sentence="*crackle*" />
 	</voices>
 	<loot>
+		<item id="20704" chance="4000" />
 		<item id="2148" countmax="100" chance1="100000" chancemax="0" />
 		<item id="2152" countmax="4" chance1="15000" chancemax="0" />
 		<item id="2146" countmax="2" chance1="6000" chancemax="0" />

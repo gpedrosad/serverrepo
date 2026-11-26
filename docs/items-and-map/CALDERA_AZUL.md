@@ -72,6 +72,39 @@ el comando.
   sus golpes cambiaron después de la última vez. Se agregaron a mano solo los 10 hechizos nuevos en `spells.xml`
   (runas `6029–6031`). Antes de una corrida completa, revisar esas diferencias.
 
+## Botín propio de la Caldera
+
+![Los cinco objetos nuevos y el proyectil de Devilwing](img/caldera-azul/azure-trophies.gif)
+
+| Monstruo | Objeto | IDs servidor / cliente | Uso | Probabilidad base |
+|---|---|---|---|---:|
+| Azure Skeleton | **Rimeglass Buckler** | `20702` / `6073` | Escudo ligero, Def 29 y 29 oz. | 4 % |
+| Azure Devil | **Devilwing Rune** | `20703` / `6074` | Una carga, ML 6. Dispara un fragmento alado con daño físico a un objetivo. | 10 % |
+| Azure Bonebeast | **Ridgecarver** | `20704` / `6075` | Hacha de una mano, Atk 44, Def 24 y 48 oz. | 2 % |
+| Azure Lich | **Wake Lantern** | `20705` / `6076` | Luz azul permanente de nivel 8 al equiparlo en Ammo. La llama tiene cuatro cuadros. | 2,2 % |
+| Azhurak | **Azhurak's Crown** | `20706` / `6077` | Corona de basalto, Arm 11 y 35 oz. | 3 % |
+
+Las probabilidades de la tabla son para una cuenta Free con `lootmul=1`.
+El motor divide por dos las tiradas de escudo, hacha y corona por sus stats.
+La runa y el farol usan sus probabilidades directas. Cada objeto aparece en
+el cadáver del monstruo de su fila.
+
+Devilwing sigue el tiempo de espera ofensivo y las reglas de combate de las
+demás runas de objetivo único. Comparte el impacto de Icicle y dibuja un
+proyectil propio en las ocho direcciones. Lua usa el índice `22` y el
+protocolo envía `23`. Las runas que salen de cadáveres tienen un uso efectivo
+en YurOTS. El motor las muestra con una carga y las retira al completar el
+primer lanzamiento.
+
+```sh
+python3.11 scripts/client-rme/draw_azure_trophies.py --prepare
+python3.11 scripts/client-rme/add_custom_items.py --only 20702 20703 20704 20705 20706 \
+  --things devtools/rme/rme-client-760 \
+  --otb server/YurOTS/ots/data/items/items-zagan-test.otb \
+  --otb server/YurOTS/ots/data/items/items.otb
+python3.11 scripts/client-rme/draw_azure_trophies.py --apply
+```
+
 ## La zona (`scripts/map/generate-azure-caldera.py`)
 
 Caja `638,298 – 752,394`, z7, en el distrito de eventos (lejos del mapa principal, nada alrededor). Todo lo que no

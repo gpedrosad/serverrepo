@@ -1,5 +1,10 @@
 <?xml version="1.0"?>
 <items>
+<item id="20702" weight="29.0"/> <!-- Rimeglass Buckler -->
+<item id="20703" weight="1.2"/> <!-- Devilwing Rune -->
+<item id="20704" weight="48.0"/> <!-- Ridgecarver -->
+<item id="20705" weight="11.0"/> <!-- Wake Lantern -->
+<item id="20706" weight="35.0"/> <!-- Azhurak's Crown -->
 <item id="20369" weight="2.1"/> <!-- Frost Mine: one charge, shop only -->
 <!-- rune weight = oz per charge (Tibia 7.6 standard) -->
 <item id="2260" weight="1.2"/>		-- blank rune
