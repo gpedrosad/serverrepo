@@ -14,7 +14,8 @@ from pathlib import Path
 from urllib.parse import quote, unquote, urlparse
 
 from access_log import AccessLog
-from analytics import WebAnalytics
+from funnel import Funnel
+from analytics import WebAnalytics, analytics_download_key
 from bug_reports import BugReportStore
 from data import (
     HIDDEN_RANK_PLAYERS,
@@ -153,6 +154,8 @@ guard = RegisterGuard(REGISTER_STATE)
 bug_reports = BugReportStore(BUG_REPORTS_FILE)
 analytics = WebAnalytics(ANALYTICS_STATE)
 access_log = AccessLog(LOGS_DIR)
+# Hitos del embudo con IP (web/funnel.py, docs/systems/METRICAS.md#embudo)
+funnel = Funnel(LOGS_DIR, Path(os.environ.get("FUNNEL_SEEN", ROOT / "web/state/funnel_seen.json")))
 setup_logging()
 log = get_logger("server")
 _ot_monitor_last_online: bool | None = None
@@ -445,6 +448,7 @@ class Handler(BaseHTTPRequestHandler):
         if result.get("ok"):
             access_log.record("account_created", acc, name, ip,
                               voc=body.get("voc"), sex=body.get("sex"))
+            funnel.record("account_created", ip, acc=acc, name=name, voc=body.get("voc"))
         else:
             access_log.record("account_create_fail", acc, name, ip, reason=str(result.get("message", ""))[:120])
         self._json(200, result)
@@ -498,6 +502,8 @@ class Handler(BaseHTTPRequestHandler):
         else:
             detail = None
         analytics.record_premium_event(ip, event, detail)
+        if event == "submit_click":   # abrió WhatsApp con el pedido
+            funnel.record("premium_click", ip, plan=(detail or {}).get("plan_id"), total=(detail or {}).get("total"))
         self._json(200, {"ok": True})
 
     def _items_admin_token(self) -> str:
@@ -704,7 +710,9 @@ class Handler(BaseHTTPRequestHandler):
             ua = (self.headers.get("User-Agent", "") or "").lower()
             if any(b in ua for b in ("bot", "spider", "crawl", "slurp", "preview")):
                 return
-            analytics.record_pageview(client_ip(self), "/" + name if name != "index" else "/", lang, ref, locale)
+            page = "/" + name if name != "index" else "/"
+            analytics.record_pageview(client_ip(self), page, lang, ref, locale)
+            funnel.record("visit", client_ip(self), once=True, landing=page, referrer=ref, locale=locale)
         except Exception as exc:  # noqa: BLE001
             log_exception("analytics", exc, context="record_pageview")
 
@@ -743,6 +751,7 @@ class Handler(BaseHTTPRequestHandler):
     def _updater_api(self) -> None:
         try:
             analytics.record_updater(client_ip(self))
+            funnel.record("client_open", client_ip(self), once=True)
         except Exception as exc:  # noqa: BLE001
             log_exception("analytics", exc, context="record_updater")
         try:
@@ -809,6 +818,7 @@ class Handler(BaseHTTPRequestHandler):
         if not head_only:
             if download_name:
                 analytics.record_download(download_name)
+                funnel.record("download", client_ip(self), platform=analytics_download_key(download_name))
             self.wfile.write(data)
 
     def log_message(self, fmt: str, *args) -> None:

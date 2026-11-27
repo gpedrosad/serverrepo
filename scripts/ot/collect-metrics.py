@@ -10,6 +10,8 @@ Escribe una línea JSON por muestra en server/YurOTS/ots/data/logs/metrics-AAAA-
       de GM), por vocación y por rango de nivel, nivel máximo, premium activos, activos en 1/7/30 días y casas con
       dueño.
 
+Además escribe los hitos del juego del embudo en data/logs/funnel-AAAA-MM.jsonl (ver funnel_game y web/funnel.py).
+
 Solo lee: no toca el juego ni los datos de jugadores. Sin dependencias (stdlib).
 
   python3 scripts/ot/collect-metrics.py            # una muestra (lo que corre el cron)
@@ -165,6 +167,92 @@ def snapshot(now: float) -> dict:
     }
 
 
+LEVEL_MILESTONES = (8, 20, 30, 50, 80, 100, 150, 200)
+
+
+def _logins() -> list[dict]:
+    rows = []
+    for path in sorted(LOGS.glob("logins-*.jsonl"))[-2:]:   # este mes y el anterior alcanzan
+        for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+            try:
+                rows.append(json.loads(line))
+            except json.JSONDecodeError:
+                pass
+    return rows
+
+
+def funnel_game(now: float, dry: bool) -> list[dict]:
+    """Hitos del juego para el embudo (web/funnel.py tiene los de la web): primer login de cada cuenta, niveles
+    8/20/30/50/80/100/150/200, promotion, premium activo y casa. Compara con la corrida anterior
+    (data/logs/.funnel-state.json); la primera vez solo guarda la base, sin hitos. Sin cuentas de GM."""
+    state_file = LOGS / ".funnel-state.json"
+    try:
+        state = json.loads(state_file.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        state = {}
+    baseline = not state
+    logins = _logins()
+    chars: dict = {}
+    for path in (DATA / "players").glob("*.xml"):
+        if path.stem in VOC_TEMPLATES:
+            continue
+        try:
+            r = ET.parse(path).getroot()
+        except ET.ParseError:
+            continue
+        chars[(r.get("name") or path.stem)] = {
+            "acc": r.get("account", ""), "access": int(r.get("access", "0") or 0), "level": int(r.get("level", "1") or 1),
+            "promoted": r.get("promoted", "0") == "1", "prem": int(r.get("premticks", "0") or 0) > 0}
+    staff = {c["acc"] for c in chars.values() if c["access"] > 0}
+    owners = set()
+    for path in (DATA / "houses").glob("*.xml"):
+        try:
+            o = ET.parse(path).getroot().find("owner")
+        except ET.ParseError:
+            continue
+        if o is not None and (o.get("name") or "").strip():
+            owners.add(o.get("name").strip().lower())
+    last_ip = {}
+    for r in logins:
+        if r.get("event") == "game_login" and r.get("name"):
+            last_ip[r["name"].lower()] = r.get("ip", "")
+    events = []
+    logged = set(state.get("accounts_logged", []))
+    for r in sorted(logins, key=lambda r: r.get("t", 0)):
+        acc = str(r.get("acc", ""))
+        if r.get("event") == "game_login" and acc and acc not in logged:
+            logged.add(acc)
+            if acc not in staff:
+                events.append({"t": r.get("t", int(now)), "step": "first_login", "ip": r.get("ip", ""), "acc": int(acc), "name": r.get("name", "")})
+    old = state.get("chars", {})
+    new_state_chars = {}
+    for name, c in chars.items():
+        o = old.get(name)
+        cur = {"level": c["level"], "promoted": c["promoted"], "prem": c["prem"], "house": name.lower() in owners}
+        new_state_chars[name] = cur
+        if c["acc"] in staff:
+            continue
+        base = {"t": int(now), "ip": last_ip.get(name.lower(), ""), "acc": int(c["acc"] or 0), "name": name}
+        prev = o or {"level": 1, "promoted": False, "prem": False, "house": False}
+        for m in LEVEL_MILESTONES:
+            if prev["level"] < m <= cur["level"]:
+                events.append({**base, "step": "level", "level": m})
+        if cur["promoted"] and not prev["promoted"]:
+            events.append({**base, "step": "promoted"})
+        if cur["prem"] and not prev["prem"]:
+            events.append({**base, "step": "premium_active"})
+        if cur["house"] and not prev["house"]:
+            events.append({**base, "step": "house"})
+    if not dry:
+        state_file.write_text(json.dumps({"accounts_logged": sorted(logged), "chars": new_state_chars}), encoding="utf-8")
+    if baseline:
+        return []
+    for e in events:
+        e["ts"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(e["t"]))
+        e["first"] = True
+    return events
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--print", action="store_true", help="mostrar sin escribir")
@@ -177,10 +265,15 @@ def main() -> int:
         rows.append({"kind": "snapshot", "day": day, **snapshot(now)})
     for row in rows:
         row.update(t=int(now), ts=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(now)))
+    hitos = funnel_game(now, dry=a.print)
     if a.print:
-        for row in rows:
+        for row in rows + hitos:
             print(json.dumps(row, ensure_ascii=False))
         return 0
+    if hitos:
+        with (LOGS / time.strftime("funnel-%Y-%m.jsonl", time.gmtime(now))).open("a", encoding="utf-8") as f:
+            for e in hitos:
+                f.write(json.dumps(e, ensure_ascii=False) + "\n")
     LOGS.mkdir(parents=True, exist_ok=True)
     with (LOGS / time.strftime("metrics-%Y-%m.jsonl", time.gmtime(now))).open("a", encoding="utf-8") as f:
         for row in rows:

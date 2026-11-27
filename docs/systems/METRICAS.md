@@ -32,6 +32,34 @@ El cron:
 */5 * * * * /usr/bin/python3 /home/gonzalo/apps/serverrepo/scripts/ot/collect-metrics.py >> /home/gonzalo/backups/metrics.log 2>&1 # retro76-metrics
 ```
 
+## Embudo
+
+Cada hito importante del camino de un jugador queda como una línea en `data/logs/funnel-AAAA-MM.jsonl`, con hora,
+**IP** y, desde que hay cuenta, número de cuenta y personaje. La IP permite seguir a la misma persona de un paso al
+siguiente (la que visitó desde otservlist, ¿descargó? ¿abrió el cliente? ¿creó cuenta?) y distinguir personas
+distintas; la cuenta sigue al jugador una vez que existe.
+
+| Paso (`step`) | Cuándo | Lo escribe | Una vez por IP |
+|---------------|--------|-----------|----------------|
+| `visit` | primera visita de esa IP a cualquier página (con `landing`, `referrer`, `locale`) | web | sí |
+| `download` | cada descarga del cliente (`platform` mac/windows; `first` = primera de esa IP) | web | no |
+| `client_open` | la primera vez que un cliente desde esa IP pregunta al updater (= instaló y abrió) | web | sí |
+| `account_created` | cuenta y personaje creados en la web (`acc`, `name`, `voc`) | web | no |
+| `first_login` | primer ingreso al juego de esa cuenta (sale de `logins-*.jsonl`) | `collect-metrics.py` | por cuenta |
+| `level` | el personaje pasó nivel 8, 20, 30, 50, 80, 100, 150 o 200 (`level`) | `collect-metrics.py` | por personaje |
+| `promoted` | hizo la promotion | `collect-metrics.py` | por personaje |
+| `premium_click` | tocó "Pedir por WhatsApp" (`plan`, `total` en USD) | web | no |
+| `premium_active` | el personaje pasó a tener premium | `collect-metrics.py` | por personaje |
+| `house` | el personaje pasó a ser dueño de una casa | `collect-metrics.py` | por personaje |
+
+- Las IPs ya vistas por paso están en `web/state/funnel_seen.json`; el estado del juego (niveles, cuentas que ya
+  entraron) en `data/logs/.funnel-state.json`. La primera corrida solo guarda la base: no inventa hitos de lo que ya
+  existía.
+- Los hitos del juego toman la IP del último `game_login` de ese personaje.
+- Las cuentas con GM no generan hitos.
+- El informe (`metrics-report.py`) muestra cuántas personas llegaron a cada paso en el período y cuántas de ellas
+  venían de una IP que visitó la web. El detalle fino (quién, cuándo, desde qué IP) se saca del `.jsonl`.
+
 ## Copia en la Mac
 
 `scripts/deploy/pull-auto-backups.sh` (launchd, todos los días a las 13:00 y al prender) trae los `*.jsonl` de

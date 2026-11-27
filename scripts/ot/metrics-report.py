@@ -163,7 +163,48 @@ def main() -> int:
     order = ["tab_view", "checkout_open", "plan_select", "step2", "step3", "submit_click"]
     print("  Embudo premium: " + " → ".join(f"{e} {funnel.get(e, 0)}" for e in order)
           + "  (submit_click = abrió WhatsApp con el pedido)")
+
+    funnel_report(days, staff)
     return 0
+
+
+FUNNEL_STEPS = [
+    ("visit", "visitó la web", "ip"), ("download", "descargó el cliente", "ip"), ("client_open", "abrió el cliente", "ip"),
+    ("account_created", "creó cuenta", "acc"), ("first_login", "entró al juego", "acc"),
+    ("level8", "llegó a nivel 8", "acc"), ("level20", "llegó a nivel 20", "acc"), ("level50", "llegó a nivel 50", "acc"),
+    ("promoted", "promotion", "acc"), ("premium_click", "abrió WhatsApp premium", "ip"),
+    ("premium_active", "premium activo", "acc"), ("house", "compró casa", "acc"),
+]
+
+
+def funnel_report(days: list[str], staff: set[str]) -> None:
+    """Embudo por hitos (data/logs/funnel-*.jsonl): personas únicas por paso en el período y cuántas de una IP que
+    visitó la web siguieron hasta cada paso (sigue a la misma IP/cuenta)."""
+    rows = [r for r in jsonl("funnel-*.jsonl") if local_day(r.get("t", 0)) in days and str(r.get("acc", "")) not in staff]
+    for r in rows:
+        if r.get("step") == "level":
+            r["step"] = f"level{r.get('level')}"
+    by_step: dict = collections.defaultdict(set)
+    ips_of: dict = collections.defaultdict(set)
+    acc_ip: dict = {}
+    for r in rows:
+        step, key = r.get("step"), None
+        kind = next((k for s_, _, k in FUNNEL_STEPS if s_ == step), "ip")
+        key = r.get("acc") if kind == "acc" else r.get("ip")
+        if key:
+            by_step[step].add(key)
+        if r.get("ip"):
+            ips_of[step].add(r["ip"])
+        if r.get("acc") and r.get("ip"):
+            acc_ip.setdefault(r["acc"], r["ip"])
+    visited = ips_of.get("visit", set())
+    out = []
+    for step, label, kind in FUNNEL_STEPS:
+        n = len(by_step.get(step, set()))
+        from_web = len(ips_of.get(step, set()) & visited) if step != "visit" else len(visited)
+        out.append([label, n, "personas (IP)" if kind == "ip" else "cuentas", from_web])
+    table("Embudo de jugadores (hitos, sin cuentas de GM)", ["paso", "en el período", "contado por", "con IP que visitó la web"], out)
+    print("  Hitos crudos con IP, cuenta y hora: data/logs/funnel-AAAA-MM.jsonl")
 
 
 if __name__ == "__main__":

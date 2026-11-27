@@ -11,7 +11,11 @@ DOWNLOAD_KEYS = {
     "Retro76-Mac.zip": "mac",
 }
 
-MAX_VISITORS_PER_DAY = 20000   # tope: con IPs inventadas el archivo no crece sin fin
+MAX_VISITORS_PER_DAY = 20000
+
+
+def analytics_download_key(filename: str) -> str:
+    return DOWNLOAD_KEYS.get(filename, "")   # tope: con IPs inventadas el archivo no crece sin fin
 PREMIUM_EVENTS = frozenset({
     "tab_view",
     "checkout_open",

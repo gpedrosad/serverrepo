@@ -38,6 +38,7 @@ web/state/daily.json
 web/state/register.json
 web/state/*.tmp
 web/state/peak.json
+web/state/funnel_seen.json
 web/state/premium_orders.json
 web/uploads/
 web/private/
@@ -68,6 +69,8 @@ server/YurOTS/ots/data/logs/logins-*.jsonl
 server/YurOTS/ots/data/logs/web-*.jsonl
 server/YurOTS/ots/data/logs/metrics-*.jsonl
 server/YurOTS/ots/data/logs/.metrics-snapshot-day
+server/YurOTS/ots/data/logs/funnel-*.jsonl
+server/YurOTS/ots/data/logs/.funnel-state.json
 server/YurOTS/ots/data/crash-*.log
 server/YurOTS/ots/yurots.log
 server/YurOTS/ots/yurots.log.1
