@@ -12,7 +12,8 @@ Antes de tocar cualquier cosa, leer en este orden:
 | 1 | [`../LEERCODEX.md`](../LEERCODEX.md) | Siempre primero. Punto de entrada rápido para IAs, diagnóstico de cuelgues OT. |
 | 2 | [`PROYECTO.md`](PROYECTO.md) | Para entender la arquitectura general, deploy, data sagrada, decisiones de diseño. |
 | 3 | [`../AGENTS.md`](../AGENTS.md) | Si sos un agente AI: instrucciones operativas, restricciones, convenciones. |
-| 4 | [`systems/VPS_VULTR.md`](systems/VPS_VULTR.md) | Antes de cualquier deploy. El servidor corre en el VPS de Vultr (São Paulo) desde el 27 nov 2026; la ThinkPad ([`THINKPAD_TEST_SERVER.md`](systems/THINKPAD_TEST_SERVER.md)) publica el cliente. |
+| 4 | [`systems/METRICAS.md`](systems/METRICAS.md) | **Métricas**: qué se registra solo (online, recursos, jugadores, logins, web, updater, embudo premium), dónde y el informe `scripts/ot/metrics-report.py`. |
+| [`systems/VPS_VULTR.md`](systems/VPS_VULTR.md) | Antes de cualquier deploy. El servidor corre en el VPS de Vultr (São Paulo) desde el 27 nov 2026; la ThinkPad ([`THINKPAD_TEST_SERVER.md`](systems/THINKPAD_TEST_SERVER.md)) publica el cliente. |
 | 5 | [`INDEX.md`](INDEX.md) | Este archivo. Mapa completo de la documentación. |
 
 ---

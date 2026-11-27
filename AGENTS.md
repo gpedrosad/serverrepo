@@ -102,6 +102,7 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 | Follow (`0xA2`), "usar" de lejos (camina hasta el objeto y lo usa) y modo perseguir del ataque | `docs/gameplay/FOLLOW.md` |
 | Summons de jugadores: velocidad del dueño, a un paso detrás, cambio de lugar y cambio de piso | `docs/gameplay/SUMMONS.md` |
 | Exhausted (spells/runas, ofensivo 2s / no-ofensivo 1s, bindings con exhaust) | `docs/gameplay/SPELL_EXHAUSTION.md` |
+| Métricas (online, recursos, jugadores, logins, web, updater, embudo premium) e informe | `docs/systems/METRICAS.md` |
 | Cambiar / exportar mapa OTBM | `docs/CAMBIAR-MAPA.md` |
 | Cliente retro76 / updater | `docs/CLIENT.md` y `docs/CLIENT_UPDATER_RETRO76.md` |
 | Sockets, cuelgues, kicks | `docs/systems/SOCKET_DEBUG_LOGGING.md` y `docs/systems/PREVENT_OT_HANGS.md` |

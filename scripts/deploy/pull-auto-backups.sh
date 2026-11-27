@@ -47,6 +47,11 @@ mkdir -p "$DEST" "$VPS_DEST"
 if rsync -a -e "ssh -o BatchMode=yes -o ConnectTimeout=10" "vps:backups/auto/" "$VPS_DEST/"; then
   n=$(find "$VPS_DEST" -name 'runtime-*.tar.gz' | wc -l | tr -d ' ')
   echo "$(date '+%Y-%m-%d %H:%M:%S') [pull] OK desde vps: $n respaldos en $VPS_DEST"
+  # métricas y registros de accesos (docs/systems/METRICAS.md): se guardan completos, son unos MB por mes
+  rsync -a -e "ssh -o BatchMode=yes -o ConnectTimeout=10" --include '*.jsonl' --exclude '*' \
+    "vps:apps/serverrepo/server/YurOTS/ots/data/logs/" "$HOME/Retro76-backups/vps-logs/" || true
+  rsync -a -e "ssh -o BatchMode=yes -o ConnectTimeout=10" "vps:apps/serverrepo/web/state/analytics.json" \
+    "$HOME/Retro76-backups/vps-logs/" || true
 else
   echo "$(date '+%Y-%m-%d %H:%M:%S') [pull] ERROR: no se llegó al VPS"
 fi

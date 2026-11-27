@@ -11,7 +11,7 @@ import threading
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import quote, unquote
+from urllib.parse import quote, unquote, urlparse
 
 from access_log import AccessLog
 from analytics import WebAnalytics
@@ -338,7 +338,6 @@ class Handler(BaseHTTPRequestHandler):
         if self._lang_redirect(path):
             return
         if path in ("/", "/index.html", "/en", "/pt"):
-            analytics.record_visit(client_ip(self))
             self._site_page(path)
         elif path in ("/favicon.png", "/favicon.ico"):
             self._file(WEB_DIR / "assets/brand/favicon.png", "image/png", cache="public, max-age=86400")
@@ -687,7 +686,27 @@ class Handler(BaseHTTPRequestHandler):
         self._json(200, result)
 
     def _site_page(self, url_path: str, *, head_only: bool = False) -> None:
+        if not head_only:
+            self._record_pageview(url_path)
         self._file(site_page_file(url_path), "text/html; charset=utf-8", head_only=head_only, cache="no-cache")
+
+    def _record_pageview(self, url_path: str) -> None:
+        """Métricas de la web (docs/systems/METRICAS.md). Nunca rompe la página si falla."""
+        try:
+            name = url_path.strip("/") or "index"
+            lang = name.split("/", 1)[0] if name.split("/", 1)[0] in LANG_PREFIXES else "es"
+            ref = urlparse(self.headers.get("Referer", "") or "").hostname or ""
+            if ref.lower().removeprefix("www.") in ("retro76.cl", SERVER_IP, "216.128.175.142", "localhost", "127.0.0.1"):
+                ref = ""
+            if ref.startswith("www."):
+                ref = ref[4:]
+            locale = (self.headers.get("Accept-Language", "") or "").split(",")[0].split(";")[0].strip()
+            ua = (self.headers.get("User-Agent", "") or "").lower()
+            if any(b in ua for b in ("bot", "spider", "crawl", "slurp", "preview")):
+                return
+            analytics.record_pageview(client_ip(self), "/" + name if name != "index" else "/", lang, ref, locale)
+        except Exception as exc:  # noqa: BLE001
+            log_exception("analytics", exc, context="record_pageview")
 
     def _astro_asset(self, url_path: str, *, head_only: bool = False) -> None:
         """JS/CSS de Astro: el nombre lleva hash, así que se cachea un año."""
@@ -722,6 +741,10 @@ class Handler(BaseHTTPRequestHandler):
         self._file(path, ctype, head_only=head_only, cache=cache)
 
     def _updater_api(self) -> None:
+        try:
+            analytics.record_updater(client_ip(self))
+        except Exception as exc:  # noqa: BLE001
+            log_exception("analytics", exc, context="record_updater")
         try:
             length = int(self.headers.get("Content-Length", "0"))
         except ValueError:

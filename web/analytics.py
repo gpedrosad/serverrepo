@@ -64,6 +64,11 @@ class WebAnalytics:
         )
         bucket.setdefault("visitors", [])
         bucket.setdefault("downloads", {"windows": 0, "mac": 0})
+        # Desde el 27 nov 2026 (docs/systems/METRICAS.md): páginas vistas, de dónde llegan, idioma y clientes del updater.
+        for key in ("pageviews", "referrers", "langs", "locales"):
+            bucket.setdefault(key, {})
+        bucket.setdefault("updater_ips", [])
+        bucket.setdefault("updater_checks", 0)
         premium = bucket.setdefault("premium", {"counts": {}, "recent": []})
         premium.setdefault("counts", {})
         premium.setdefault("recent", [])
@@ -77,6 +82,33 @@ class WebAnalytics:
             bucket = self._day_bucket(data, _today())
             if ip not in bucket["visitors"] and len(bucket["visitors"]) < MAX_VISITORS_PER_DAY:
                 bucket["visitors"].append(ip)
+            self._save(data)
+
+    def record_pageview(self, ip: str, path: str, lang: str, referrer_host: str = "", locale: str = "") -> None:
+        """Una página del sitio servida: visitante único del día, vistas por página, idioma de la página,
+        sitio de origen (solo hosts externos: otservlist.org, google...) y locale del navegador (pt-BR, es-CL...)."""
+        def bump(d: dict, key: str, cap: int = 500) -> None:
+            if key and (key in d or len(d) < cap):
+                d[key] = d.get(key, 0) + 1
+        with _lock:
+            data = self._load()
+            bucket = self._day_bucket(data, _today())
+            if ip and ip not in bucket["visitors"] and len(bucket["visitors"]) < MAX_VISITORS_PER_DAY:
+                bucket["visitors"].append(ip)
+            bump(bucket["pageviews"], path[:80])
+            bump(bucket["langs"], lang)
+            bump(bucket["referrers"], referrer_host[:80])
+            bump(bucket["locales"], locale[:12])
+            self._save(data)
+
+    def record_updater(self, ip: str) -> None:
+        """El cliente abrió y pidió la lista del updater: cuenta chequeos y clientes únicos (instalaciones activas)."""
+        with _lock:
+            data = self._load()
+            bucket = self._day_bucket(data, _today())
+            bucket["updater_checks"] = bucket.get("updater_checks", 0) + 1
+            if ip and ip not in bucket["updater_ips"] and len(bucket["updater_ips"]) < MAX_VISITORS_PER_DAY:
+                bucket["updater_ips"].append(ip)
             self._save(data)
 
     def record_download(self, filename: str) -> None:
@@ -141,6 +173,14 @@ class WebAnalytics:
                     "downloads_windows": dl.get("windows", 0),
                     "downloads_mac": dl.get("mac", 0),
                     "downloads_total": dl.get("windows", 0) + dl.get("mac", 0),
+                    "pageviews": sum(bucket.get("pageviews", {}).values()),
+                    "top_pages": dict(sorted(bucket.get("pageviews", {}).items(), key=lambda kv: -kv[1])[:8]),
+                    "referrers": dict(sorted(bucket.get("referrers", {}).items(), key=lambda kv: -kv[1])[:8]),
+                    "langs": dict(bucket.get("langs", {})),
+                    "locales": dict(sorted(bucket.get("locales", {}).items(), key=lambda kv: -kv[1])[:8]),
+                    "updater_clients": len(bucket.get("updater_ips", [])),
+                    "updater_checks": bucket.get("updater_checks", 0),
+                    "premium": dict(bucket.get("premium", {}).get("counts", {})),
                 }
             )
         return rows

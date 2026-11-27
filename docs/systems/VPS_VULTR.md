@@ -12,6 +12,7 @@ queda con el juego apagado (`yurots` detenido, sin reinicio automático) y sus d
 | Juego | contenedor `yurots` de `docker-compose.prod.yml`, puerto **7171–7172**. `config.lua` tiene `ip = "216.128.175.142"` como cambio local sin commitear (igual que la ThinkPad tenía su IP) |
 | Web | **https://retro76.cl**: Caddy (`/etc/caddy/Caddyfile`, certificado Let's Encrypt automático) → contenedor `retro76-web` en `127.0.0.1:8080` (`python:3.12-slim`, red del host, usuario `gonzalo`) que corre `web/server.py`. `www` y `http://` redirigen a `https://retro76.cl`, **salvo** `/api/updater.php` y `/updater/files/*`, que van por HTTP plano (el updater del cliente). El 8080 sigue abierto para los clientes que todavía apuntan a la IP |
 | Firewall | `ufw`: 22, 7171–7172, 8080, 80, 443 |
+| Métricas | cron de `gonzalo` cada 5 min: `scripts/ot/collect-metrics.py`; informe `scripts/ot/metrics-report.py` ([METRICAS.md](METRICAS.md)) |
 | Respaldo | cron de `gonzalo` al minuto 17: `scripts/deploy/auto-backup-runtime.sh` → `~/backups/auto/`. La Mac lo trae a `~/Retro76-backups/vps-auto/` con `scripts/deploy/pull-auto-backups.sh` (launchd, 13:00 y al prender) |
 | No está en el VPS | el mapa interactivo de monstruos (8077) y la web 2 (8076) siguen en la ThinkPad, solo en la red local |
 
