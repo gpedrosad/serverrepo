@@ -18,6 +18,7 @@ from analytics import WebAnalytics
 from bug_reports import BugReportStore
 from data import (
     HIDDEN_RANK_PLAYERS,
+    refresh_staff_names,
     VOC_TEMPLATES,
     build_payload,
     create_account,
@@ -516,6 +517,7 @@ class Handler(BaseHTTPRequestHandler):
                 p.stem
                 for p in PLAYERS_DIR.glob("*.xml")
                 if p.stem not in VOC_TEMPLATES and p.stem.lower() not in HIDDEN_RANK_PLAYERS
+                and p.stem.lower() not in refresh_staff_names(PLAYERS_DIR)
             )
             urls.extend(f"{SITE_URL}/character/{quote(name)}" for name in names)
         entries = "\n".join(f"  <url><loc>{u}</loc></url>" for u in urls)

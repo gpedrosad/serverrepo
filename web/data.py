@@ -34,8 +34,41 @@ VOC_TEMPLATES = frozenset({"0", "1", "2", "3", "4"})
 HIDDEN_RANK_PLAYERS = frozenset({"yurez", "yurez the next", "gm kaiser", "test sorc", "test knight"})
 
 
+# Personajes de cuentas que tienen un GM/CM (access > 0): son de prueba del staff (p. ej. "Master Sorcerer" lvl 1952
+# en la cuenta de GM Retro) y no salen en rankings, online ni perfiles. Se recalcula cada minuto.
+_STAFF_CACHE: dict = {"at": 0.0, "dir": None, "names": frozenset()}
+
+
+def refresh_staff_names(players_dir: Path) -> frozenset:
+    import time
+    now = time.time()
+    if _STAFF_CACHE["dir"] == str(players_dir) and now - _STAFF_CACHE["at"] < 60:
+        return _STAFF_CACHE["names"]
+    accounts: set[str] = set()
+    owners: dict[str, list[str]] = {}
+    if players_dir.is_dir():
+        for path in players_dir.glob("*.xml"):
+            if path.stem in VOC_TEMPLATES:
+                continue
+            try:
+                root = ET.parse(path).getroot()
+            except ET.ParseError:
+                continue
+            acc = root.get("account", "")
+            owners.setdefault(acc, []).append((root.get("name") or path.stem).strip().lower())
+            try:
+                if int(root.get("access", "0") or 0) > 0 and acc:
+                    accounts.add(acc)
+            except ValueError:
+                pass
+    names = frozenset(n for acc in accounts for n in owners.get(acc, []))
+    _STAFF_CACHE.update(at=now, dir=str(players_dir), names=names)
+    return names
+
+
 def is_public_rank_player(name: str) -> bool:
-    return name.strip().lower() not in HIDDEN_RANK_PLAYERS
+    key = name.strip().lower()
+    return key not in HIDDEN_RANK_PLAYERS and key not in _STAFF_CACHE["names"]
 
 
 def player_save_path(players_dir: Path, name: str) -> Path:
@@ -261,6 +294,7 @@ def server_status_from_files(
 ) -> dict:
     """Estado del OT sin abrir el puerto 7171 (online.xml + docker en prod)."""
     all_online = load_online(online_file)
+    refresh_staff_names(online_file.parent / "players")
     public_online = [p for p in all_online if is_public_rank_player(p.get("name", ""))]
     players_online = len(public_online)
 
@@ -644,6 +678,7 @@ def top_pk_exp(killers: list[dict]) -> list[dict]:
 def get_character_profile(players_dir: Path, name: str) -> dict | None:
     """Perfil público: nombre, level, ML y muertes del personaje."""
     raw = (name or "").strip()
+    refresh_staff_names(players_dir)
     if not raw or not is_public_rank_player(raw):
         return None
     path = player_save_path(players_dir, raw)
@@ -713,6 +748,7 @@ def build_payload(
         spells_file = config_file.parent / "data/spells/spells.xml"
     players: list[dict] = []
     all_deaths: list[dict] = []
+    refresh_staff_names(players_dir)
 
     if players_dir.is_dir():
         for path in players_dir.glob("*.xml"):
