@@ -28,6 +28,11 @@ FAIL_THRESHOLD="${OT_WATCHDOG_FAIL_THRESHOLD:-2}"
 
 mkdir -p "$STATE_DIR" "$LOG_DIR"
 
+# Mantenimiento largo (p. ej. cambiar el binario a mano): `touch $STATE_DIR/paused` y borrarlo al terminar.
+if [[ -f "$STATE_DIR/paused" ]]; then
+  exit 0
+fi
+
 log() {
   echo "$(date -u '+%Y-%m-%d %H:%M:%S UTC') [$LOG_TAG] $*"
 }

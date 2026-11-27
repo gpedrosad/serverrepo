@@ -16,6 +16,24 @@ queda con el juego apagado (`yurots` detenido, sin reinicio automático) y sus d
 | Respaldo | cron de `gonzalo` al minuto 17: `scripts/deploy/auto-backup-runtime.sh` → `~/backups/auto/`. La Mac lo trae a `~/Retro76-backups/vps-auto/` con `scripts/deploy/pull-auto-backups.sh` (launchd, 13:00 y al prender) |
 | No está en el VPS | el mapa interactivo de monstruos (8077) y la web 2 (8076) siguen en la ThinkPad, solo en la red local |
 
+## Cron
+
+Todo en el crontab de `gonzalo` del VPS (`crontab -l`), cada línea marcada con `# retro76-...`:
+
+| Cuándo | Qué | Log |
+|--------|-----|-----|
+| cada 2 min | `scripts/ot/ot-watchdog.sh`: si el juego no responde al protocolo 2 veces seguidas, guarda un diagnóstico y lo reinicia con `restart -t 45` (guarda a los conectados). Docker marca `unhealthy` pero no reinicia solo | `~/backups/logs/watchdog.log` |
+| cada 5 min | `scripts/ot/collect-metrics.py`: métricas e hitos del embudo ([METRICAS.md](METRICAS.md)) | `~/backups/metrics.log` |
+| minuto 17 de cada hora | `scripts/deploy/auto-backup-runtime.sh`: respaldo de jugadores, cuentas, casas y estado de la web | `~/backups/auto/backup.log` |
+| domingo 04:30 | `scripts/deploy/prune-runtime.sh`: borra registros de más de 12 meses, respaldos de deploy viejos (deja 15 y los de 30 días), recorta logs de más de 5 MB e imágenes de Docker colgadas. Nunca toca jugadores | `~/backups/logs/prune.log` |
+
+**Mantenimiento largo** (cambiar el binario a mano, pruebas con el juego apagado): `touch ~/.local/state/ot-watchdog/paused`
+antes y `rm` al terminar; si no, el watchdog lo vuelve a levantar a los ~4 minutos. Los reinicios del deploy normal no
+lo disparan (espera 90 s desde el arranque y necesita 2 fallos seguidos).
+
+No se instaló el save de medianoche (`install-midnight-server-save.sh`): la ThinkPad tampoco lo tenía; el servidor
+ya guarda solo cada 10 minutos.
+
 ## otservlist
 
 Desde el 27 nov 2026 está en https://otservlist.org/ots/1667197 (cuenta de Gonzalo; editar en

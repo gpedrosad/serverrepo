@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import threading
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -39,12 +40,18 @@ def _today() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
 
+FLUSH_SECONDS = 30   # se escribe a disco como mucho cada 30 s (antes: el JSON entero en cada página vista)
+
+
 class WebAnalytics:
     def __init__(self, state_file: Path) -> None:
         self.state_file = state_file
         self.state_file.parent.mkdir(parents=True, exist_ok=True)
+        self._data: dict | None = None
+        self._last_save = 0.0
+        self._dirty = False
 
-    def _load(self) -> dict:
+    def _read_disk(self) -> dict:
         if not self.state_file.is_file():
             return {"days": {}}
         try:
@@ -55,10 +62,35 @@ class WebAnalytics:
             data["days"] = {}
         return data
 
+    def _load(self) -> dict:
+        """Estado en memoria (se lee del disco una sola vez). Llamar con _lock tomado."""
+        if self._data is None:
+            self._data = self._read_disk()
+        return self._data
+
     def _save(self, data: dict) -> None:
+        """Marca cambios y escribe si pasaron FLUSH_SECONDS desde la última vez. Llamar con _lock tomado."""
+        self._data = data
+        self._dirty = True
+        if time.monotonic() - self._last_save >= FLUSH_SECONDS:
+            self._write()
+
+    def _write(self) -> None:
+        if self._data is None or not self._dirty:
+            return
         tmp = self.state_file.with_suffix(".json.tmp")
-        tmp.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+        tmp.write_text(json.dumps(self._data, ensure_ascii=False, indent=2), encoding="utf-8")
         tmp.replace(self.state_file)
+        self._last_save = time.monotonic()
+        self._dirty = False
+
+    def flush(self) -> None:
+        """Escribe lo pendiente (lo llama un hilo cada FLUSH_SECONDS y el apagado de la web)."""
+        with _lock:
+            try:
+                self._write()
+            except OSError:
+                pass
 
     def _day_bucket(self, data: dict, day: str) -> dict:
         days = data.setdefault("days", {})

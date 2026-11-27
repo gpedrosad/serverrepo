@@ -7,6 +7,7 @@ import ipaddress
 import json
 import os
 import re
+import shutil
 import threading
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -843,10 +844,12 @@ class Handler(BaseHTTPRequestHandler):
         if not path.is_file():
             self.send_error(404)
             return
-        data = path.read_bytes()
+        # Se manda por partes: leerlo entero (zips de 22-28 MB, Tibia.spr de 22 MB) dejaba sin RAM al VPS de 1 GB
+        # con unas pocas descargas a la vez.
+        size = path.stat().st_size
         self.send_response(200)
         self.send_header("Content-Type", ctype)
-        self.send_header("Content-Length", str(len(data)))
+        self.send_header("Content-Length", str(size))
         if cache:
             self.send_header("Cache-Control", cache)
         if download_name:
@@ -856,7 +859,11 @@ class Handler(BaseHTTPRequestHandler):
             if download_name:
                 analytics.record_download(download_name)
                 funnel.record("download", client_ip(self), platform=analytics_download_key(download_name))
-            self.wfile.write(data)
+            try:
+                with path.open("rb") as f:
+                    shutil.copyfileobj(f, self.wfile, 256 * 1024)
+            except (BrokenPipeError, ConnectionResetError):
+                pass   # el cliente cortó la descarga
 
     def log_message(self, fmt: str, *args) -> None:
         return
@@ -874,8 +881,29 @@ def start_ot_monitor() -> None:
     )
 
 
+def start_analytics_flusher() -> None:
+    """Las métricas de la web se guardan en memoria y se escriben cada 30 s; al apagar (docker stop = SIGTERM),
+    se escribe lo pendiente antes de salir. Sin el handler, Python como PID 1 del contenedor ignora SIGTERM."""
+    import signal
+
+    def loop() -> None:
+        while True:
+            time.sleep(30)
+            analytics.flush()
+
+    threading.Thread(target=loop, name="analytics-flush", daemon=True).start()
+
+    def on_term(signum, frame) -> None:  # noqa: ARG001
+        analytics.flush()
+        os._exit(0)
+
+    signal.signal(signal.SIGTERM, on_term)
+    signal.signal(signal.SIGINT, on_term)
+
+
 if __name__ == "__main__":
     start_ot_monitor()
+    start_analytics_flusher()
     print(f"Retro76 web: http://localhost:{PORT}/")
     # WEB_BIND=127.0.0.1 en el VPS (detrás de nginx); vacío = todas las interfaces (la ThinkPad en la LAN).
     ThreadingHTTPServer((os.environ.get("WEB_BIND", ""), PORT), Handler).serve_forever()
