@@ -321,8 +321,15 @@ def server_status_from_files(
             if running:
                 uptime_seconds = docker_container_uptime_seconds(docker_name)
         else:
-            server_online = players_online > 0 or online_file.is_file()
-            source = "file"
+            # Sin acceso a docker (la web corre en su propio contenedor en el VPS): el protocolo de estado del juego
+            # da si está arriba y el uptime real. Sin esto la web mostraba "Uptime 0s".
+            probe = fetch_server_status(os.environ.get("OT_HOST", "127.0.0.1"), int(os.environ.get("OT_PORT", "7171")),
+                                        timeout=1.5, quiet=True)
+            if probe.get("online"):
+                server_online, uptime_seconds, source = True, int(probe.get("uptime_seconds", 0)), "status"
+            else:
+                server_online = players_online > 0 or online_file.is_file()
+                source = "file"
 
     return {
         "online": server_online,
@@ -774,6 +781,8 @@ def build_payload(
     by_dist = sorted(public_players, key=lambda p: (-p["distance"], -p["level"], p["name"].lower()))
     by_frags = sorted(public_players, key=lambda p: (-p["frags"], -p["level"], p["name"].lower()))
 
+    # Las muertes de personajes de GM / cuentas del staff tampoco salen (ni en "Última muerte" de la portada).
+    all_deaths = [d for d in all_deaths if is_public_rank_player(d.get("victim", ""))]
     all_deaths.sort(key=lambda d: -d["time"])
     public_names = {p["name"].strip().lower() for p in public_players}
     for i, d in enumerate(all_deaths[:20], 1):
