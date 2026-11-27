@@ -13,7 +13,7 @@
 | Juego | **Retro76** — OTServ Tibia 7.6 (motor **YurOTS** en C++ legacy) |
 | Repo | `https://github.com/gpedrosad/serverrepo.git` — rama `main` |
 | Local (dev) | `~/Desktop/yurots-principal/` — Docker, `127.0.0.1:7171` |
-| Servidor | **VPS de Vultr en São Paulo** desde el 27 nov 2026 (`ssh vps`, `~/apps/serverrepo`, contenedores `yurots` y `retro76-web`, `216.128.175.142:7171`, web en `:8080`) — ver `docs/systems/VPS_VULTR.md`. La ThinkPad (`ssh thinkpad`) quedó con el juego apagado; sigue compilando el minimapa y publicando el cliente (`docs/systems/THINKPAD_TEST_SERVER.md`) |
+| Servidor | **VPS de Vultr en São Paulo** desde el 27 nov 2026 (`ssh vps`, `~/apps/serverrepo`, contenedores `yurots` y `retro76-web`, `retro76.cl:7171` = `216.128.175.142`, web en https://retro76.cl) — ver `docs/systems/VPS_VULTR.md`. La ThinkPad (`ssh thinkpad`) quedó con el juego apagado; sigue compilando el minimapa y publicando el cliente (`docs/systems/THINKPAD_TEST_SERVER.md`) |
 | Data de jugadores | En el VPS (`server/YurOTS/ots/data/players`, `accounts`) — runtime, nunca va a git, respaldar antes de reiniciar |
 | Stack | C++ legacy, Lua scripts, OTBM maps, Docker `i386`, bash/python |
 

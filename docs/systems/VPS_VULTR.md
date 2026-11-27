@@ -7,10 +7,10 @@ queda con el juego apagado (`yurots` detenido, sin reinicio automático) y sus d
 |------|-------|
 | Acceso | `ssh vps` (alias de `~/.ssh/config` de la Mac: usuario `gonzalo`, clave `~/.ssh/id_ed25519`). `root` entra con la misma clave |
 | Máquina | Vultr Cloud Compute Regular Performance `vc2-1c-1gb`: 1 vCPU, 1 GB RAM, 2,4 GB de swap (viene así), 25 GB SSD, 1 TB/mes, US$ 5/mes. Ubuntu 24.04 x64, hora de Chile (`America/Santiago`) |
-| IP | `216.128.175.142` (IPv4 + IPv6). Sin dominio todavía |
+| IP / dominio | `216.128.175.142` (IPv4; IPv6 `2001:19f0:b800:2957:5400:7ff:fe19:3c1b`). **`retro76.cl`** y `www` apuntan acá (Cloudflare, registros A en **DNS only**: con la nube naranja el cliente no llega al puerto 7171) |
 | Repo | `~/apps/serverrepo`, rama `main`; cliente en `~/apps/clienteretro` (solo lectura: en el VPS no hay credenciales de GitHub para pushear) |
 | Juego | contenedor `yurots` de `docker-compose.prod.yml`, puerto **7171–7172**. `config.lua` tiene `ip = "216.128.175.142"` como cambio local sin commitear (igual que la ThinkPad tenía su IP) |
-| Web | contenedor `retro76-web` (`python:3.12-slim`, red del host, usuario `gonzalo`, `PORT=8080`, `SITE_URL=http://216.128.175.142:8080`) que corre `web/server.py`: http://216.128.175.142:8080. Sirve también el updater del cliente y los zips de descarga |
+| Web | **https://retro76.cl**: Caddy (`/etc/caddy/Caddyfile`, certificado Let's Encrypt automático) → contenedor `retro76-web` en `127.0.0.1:8080` (`python:3.12-slim`, red del host, usuario `gonzalo`) que corre `web/server.py`. `www` y `http://` redirigen a `https://retro76.cl`, **salvo** `/api/updater.php` y `/updater/files/*`, que van por HTTP plano (el updater del cliente). El 8080 sigue abierto para los clientes que todavía apuntan a la IP |
 | Firewall | `ufw`: 22, 7171–7172, 8080, 80, 443 |
 | Respaldo | cron de `gonzalo` al minuto 17: `scripts/deploy/auto-backup-runtime.sh` → `~/backups/auto/`. La Mac lo trae a `~/Retro76-backups/vps-auto/` con `scripts/deploy/pull-auto-backups.sh` (launchd, 13:00 y al prender) |
 | No está en el VPS | el mapa interactivo de monstruos (8077) y la web 2 (8076) siguen en la ThinkPad, solo en la red local |
@@ -46,6 +46,17 @@ python3 scripts/ot/ot-probe.py 216.128.175.142 7171
 
 Si cambió `web/*.py`: `ssh vps 'docker restart retro76-web'`. `web/dist` se lee en cada pedido.
 
+El contenedor de la web se creó así (si hay que recrearlo):
+
+```bash
+ssh vps 'cd ~/apps/serverrepo && docker rm -f retro76-web; docker run -d --name retro76-web --restart unless-stopped \
+  --network host --user $(id -u):$(id -g) -e PORT=8080 -e SITE_URL=https://retro76.cl -e SERVER_IP=retro76.cl \
+  -e UPDATER_FILES_URL=http://retro76.cl/updater/files -v ~/apps/serverrepo:/repo -w /repo/web python:3.12-slim python server.py'
+```
+
+`UPDATER_FILES_URL` va fijo: detrás de Caddy, armada con el `Host`, la URL salía con `:8080`. `SERVER_IP` es solo
+lo que la web muestra para conectarse; `config.lua` sigue con la IP numérica (`ip`) y `url = "https://retro76.cl"`.
+
 Las reglas de siempre siguen: data de jugadores fuera de git, probar el locker del templo tras un mapa nuevo
 ([DEPOTS.md](../gameplay/DEPOTS.md)), nada de `git stash -u` / `git clean -fd` / `git reset --hard`.
 
@@ -73,8 +84,10 @@ Si cambia el `Dockerfile`: `ssh vps 'cd ~/apps/serverrepo && docker compose -f d
 
 ## Cliente
 
-El cliente apunta al VPS desde `clienteretro` `1420384`: `init.lua` tiene
-`updater = "http://216.128.175.142:8080/api/updater.php"` y `Servers = { ["Retro76"] = "216.128.175.142:7171:760" }`.
+El cliente apunta al dominio desde `clienteretro` `93f4663`: `init.lua` tiene
+`updater = "http://retro76.cl/api/updater.php"` y `Servers = { ["Retro76"] = "retro76.cl:7171:760" }`. Si se cambia de
+servidor, alcanza con cambiar el DNS. El updater va por HTTP plano a propósito: no está probado que el OTClientV8 3.2 siga
+la redirección a HTTPS en un POST.
 
 `publish_client.py` se sigue corriendo **en la ThinkPad** (ahí está el clone con credenciales de GitHub y el
 entorno que arma el minimapa). Después de publicar, copiar lo publicado al VPS y traer el commit del cliente:
@@ -90,9 +103,10 @@ clientes hayan abierto al menos una vez.
 
 ## Pendiente
 
-- **Dominio + HTTPS.** La web tiene registro con contraseñas y anda por HTTP. Con un dominio: Caddy en 80/443 →
-  `127.0.0.1:8080` (la web ya lee `X-Forwarded-For`), `SITE_URL` del contenedor y el `init.lua` del cliente al
-  dominio (así un próximo cambio de servidor no toca el cliente).
+- **Cerrar el 8080** cuando todos los clientes hayan abierto una vez (ya apuntan a `retro76.cl`). Ojo: `web/server.py`
+  confía en `X-Forwarded-For`, así que con el 8080 abierto alguien puede mandar una IP falsa al registro.
+- **La Mac de Gonzalo** tenía `192.168.1.17 retro76.cl` en `/etc/hosts` (de cuando la web estaba en la ThinkPad): hay
+  que borrar esa línea para que el dominio le llegue al VPS.
 - **DDoS.** Sin protección. Vultr la vende aparte.
 - Las rutas de la wiki apuntan al mapa interactivo de la ThinkPad (`192.168.1.17:8077`, "red local").
 
@@ -107,3 +121,5 @@ clientes hayan abierto al menos una vez.
    `queue.xml`, `guilds.xml`, `data/logs`, `web/state`, `web/.items-admin-token`, `web/downloads`,
    `web/updater/files` (1 cuenta, 8 personajes, 1 casa con dueño).
 4. Juego y web arriba en el VPS (probe OK, 67 ms desde la Mac); cliente publicado con la IP nueva.
+5. Dominio: en Cloudflare `retro76.cl` y `www` pasaron de `64.176.20.238` (el VPS viejo) a `216.128.175.142` en DNS only;
+   Caddy sacó los certificados; cliente publicado con `retro76.cl` (`93f4663`).
