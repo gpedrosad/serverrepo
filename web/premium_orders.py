@@ -218,6 +218,10 @@ def create_premium_order(
     ext = Path(receipt_name or "comprobante.jpg").suffix.lower()
     if ext not in ALLOWED_RECEIPT_EXT:
         return {"ok": False, "message": "Formato no permitido. Usa JPG, PNG o PDF."}
+    # El contenido tiene que ser de verdad JPG, PNG, PDF o WEBP (no un HTML o un ejecutable renombrado).
+    if not (receipt_bytes.startswith(b"\xff\xd8\xff") or receipt_bytes.startswith(b"\x89PNG\r\n\x1a\n")
+            or receipt_bytes.startswith(b"%PDF") or (receipt_bytes[:4] == b"RIFF" and receipt_bytes[8:12] == b"WEBP")):
+        return {"ok": False, "message": "El comprobante no parece un JPG, PNG o PDF válido."}
 
     addon_lines: dict[str, dict] = {}
     addons_total = 0

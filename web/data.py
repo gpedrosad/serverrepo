@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import threading
 import socket
 import struct
 import subprocess
@@ -92,6 +93,22 @@ def fmt_uptime(seconds: int) -> str:
     return f"{m}m {s}s"
 
 
+# Nombres que se hacen pasar por el staff. Las palabras largas se buscan dentro del nombre ("Superadmin");
+# las cortas solo como palabra entera ("God" sí, "Godzilla" no).
+RESERVED_INSIDE = ("admin", "gamemaster", "moderator", "cipsoft", "soporte", "support")
+RESERVED_WORDS = ("god", "staff", "tutor", "owner", "mod", "server", "servidor", "dev")
+_create_lock = threading.Lock()   # crear cuenta: comprobar y escribir de a uno (si no, dos pedidos a la vez se pisan)
+
+
+def _reserved_name(name: str) -> bool:
+    flat = name.lower().replace(" ", "")
+    if flat.startswith("gm") or flat.startswith("cm"):
+        return True
+    if any(w in flat for w in RESERVED_INSIDE):
+        return True
+    return any(w in RESERVED_WORDS for w in name.lower().split())
+
+
 def _validate_registration(acc: int, name: str, password: str, sex: int, voc: int) -> str | None:
     if acc < ACCOUNT_MIN or acc > ACCOUNT_MAX:
         return f"Cuenta inválida (usa {ACCOUNT_MIN}-{ACCOUNT_MAX})"
@@ -100,6 +117,8 @@ def _validate_registration(acc: int, name: str, password: str, sex: int, voc: in
         return "Nombre inválido (3-20 letras y espacios)"
     if name.lower().startswith("gm"):
         return "El nombre no puede empezar por GM"
+    if _reserved_name(name):
+        return "Ese nombre está reservado"
     if not re.fullmatch(r"[a-zA-Z0-9]{3,20}", password):
         return "Contraseña inválida (3-20 alfanuméricos)"
     if sex not in (0, 1):
@@ -127,6 +146,13 @@ def create_account(
     player_path = player_save_path(players_dir, name)
     template_path = players_dir / f"{voc}.xml"
 
+    with _create_lock:
+        return _create_account_locked(acc_path, player_path, template_path, players_dir, accounts_dir,
+                                      acc, name, password, sex, voc)
+
+
+def _create_account_locked(acc_path, player_path, template_path, players_dir, accounts_dir,
+                           acc, name, password, sex, voc) -> dict:
     if acc_path.exists():
         return {"ok": False, "message": "Ese número de cuenta ya existe"}
     if player_name_taken(players_dir, name):
@@ -152,8 +178,11 @@ def create_account(
 
         accounts_dir.mkdir(parents=True, exist_ok=True)
         players_dir.mkdir(parents=True, exist_ok=True)
-        acc_path.write_text(account_xml, encoding="utf-8")
+        with open(acc_path, "x", encoding="utf-8") as fh:   # "x": falla si ya existe, nunca pisa una cuenta
+            fh.write(account_xml)
         tree.write(player_path, encoding="utf-8", xml_declaration=True)
+    except FileExistsError:
+        return {"ok": False, "message": "Ese número de cuenta ya existe"}
     except OSError:
         return {"ok": False, "message": "No se pudo guardar la cuenta en el servidor"}
 
@@ -755,6 +784,8 @@ def build_payload(
         "otinfo": load_otinfo(otinfo_file),
         # Versión en inglés para /en (archivo hermano OTINFO.en); vacía si no existe.
         "otinfo_en": load_otinfo(otinfo_file.with_name(otinfo_file.name + ".en")),
+        # Y en portugués para /pt (OTINFO.pt).
+        "otinfo_pt": load_otinfo(otinfo_file.with_name(otinfo_file.name + ".pt")),
         "vocations": VOCATIONS[1:],
         "spells": build_spells_payload(spells_file),
     }

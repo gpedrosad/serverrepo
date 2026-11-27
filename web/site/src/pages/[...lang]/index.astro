@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { dict, langOf, langPaths } from '../../i18n.js';
+import { dict, langOf, langPaths, localePath } from '../../i18n.js';
 export function getStaticPaths() { return langPaths(); }
 const lang = langOf(Astro.params.lang);
 const T = dict(lang);
@@ -18,14 +18,32 @@ const ld = {
 <Base lang={lang} title={T.home.title} path="/">
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(ld)} />
 
-  <section>
-    <p class="note">
-      <strong>{T.home.noteStrong}</strong> {T.home.noteText}
-      <a href="/downloads/Retro76-Windows.zip">Windows</a> · <a href="/downloads/Retro76-Mac.zip">macOS</a>.
-    </p>
+  <section aria-labelledby="start-title">
+    <h1 class="title" id="start-title">{T.home.start}</h1>
+    <ol class="steps">
+      <li>
+        <h2>{T.home.steps[0][0]}</h2>
+        <p class="muted">{T.home.steps[0][1]}</p>
+        <a class="btn primary" href={localePath(lang, '/cuenta')}>{T.home.steps[0][2]}</a>
+      </li>
+      <li>
+        <h2>{T.home.steps[1][0]}</h2>
+        <p class="muted">{T.home.steps[1][1]}</p>
+        <p class="step-actions">
+          <a class="btn" href="/downloads/Retro76-Windows.zip">{T.home.steps[1][2]}</a>
+          <a class="btn" href="/downloads/Retro76-Mac.zip">{T.home.steps[1][3]}</a>
+        </p>
+      </li>
+      <li>
+        <h2>{T.home.steps[2][0]}</h2>
+        <p class="muted">{T.home.steps[2][1]}</p>
+        <a class="btn" href="/wiki">{T.home.steps[2][2]}</a>
+      </li>
+    </ol>
   </section>
 
   <section>
+    <h2 class="label">{T.home.live}</h2>
     <dl class="figures">
       <div><dt>{T.home.online}</dt><dd id="f-online">—</dd></div>
       <div><dt>{T.home.peak}</dt><dd id="f-peak">—</dd></div>

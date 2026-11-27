@@ -1,0 +1,75 @@
+Retro76 — Tibia 7.6
+
+REGRAS
+  Geral · Punições de referência; a staff ajusta conforme a gravidade (aviso → 3-7 dias → permanente)
+  Bots · Proibido cavebot, healbot, aimbot, cliente modificado ou auto-loot
+  Bots · Macros só para treinar e fazer runas; não para caçar, PvP ou lootear
+  Bots · Quem se beneficia do cheat de outro também é punido
+  MC · No máximo 4 personagens online por pessoa
+  MC · Proibido em combate: caçar, PvP, wars, curar, MW, bloquear spawn ou atrapalhar jogadores
+  MC · Pego em combate: ban no personagem de maior nível
+  MC · Uso passivo é permitido: runas no depot ou espiar sem entrar em lutas
+  Abuso · Não abuse nem esconda bugs; RMT e venda de contas = ban
+  Abuso · Proibido passar exp, caçar no rookgaard ou usar alts para bloquear spawns ou wars
+  PvP · Caçar jogadores é normal; não conta como griefing
+  PvP · É griefing bloquear NPCs/spawns ou atrapalhar wars com personagens de nível baixo
+  Conta · Nomes ofensivos ou que imitem um GM → troca de nome ou ban
+  Conta · Insultos graves, spam e propaganda de outros OTs → punidos
+  Denúncias · Avise a staff no jogo se vir bots, MC ou abuso
+
+RATES
+  Exp por nível: 9-40 x5 | 41-70 x4 | 71-100 x2 | 101+ x1  |  Loot x3  |  Skills x4  |  ML x3  |  Regen da comida x5
+
+PREMIUM
+  Doação voluntária para manter o servidor
+  Inclui tempo de premium com as vantagens clássicas do 7.6
+  +10% de exp e +10% de loot dos monstros  |  Skills e ML x2 (além das rates globais)
+  Regeneração de vida/mana mais rápida  |  6 h/dia de treino (grátis: 2 h)
+  Outfits premium clássicos do 7.6 (citizen, hunter, mage, knight)
+  Promotion com Orlan: nível 20 e 20k gp (grátis ou premium). Premium melhora ainda mais a regeneração
+  Valores sugeridos: 1 semana $4.000  |  2 semanas $6.000 (CLP)
+
+MORTE
+  -7% de exp, ML, skills e equipamento  |  -100% da mochila
+
+PVP
+  Mundo PvP com skulls  |  PZ lock 10 seg  |  !pz
+  Skull amarela pessoal: se um jogador te ataca, você o vê amarelo por 1 min e matá-lo nesse tempo não dá frag
+  Skull branca: 1 min ao atacar  |  15 min ao matar
+  3 frags = skull vermelha (6 h)  |  10 frags = ban
+  1 frag a cada 5 h  |  !frags
+  Ao matar um jogador: você ganha 50% da exp que ele perdeu (conforme o seu dano)
+
+COMBATE
+  Runas/magias: exhaust de 2 seg  |  Cura: 1 seg
+  Flechas/bolts se gastam  |  Lanças e pedras não
+
+CAP / RUNAS
+  Capacidade ativa  |  Base 300 (nível <=10) + capgain por nível  |  Recalculada ao logar
+  Peso das runas: padrão do Tibia 7.6 (oz por carga)
+
+CUSTOM
+  Trainer Monk (sala de treino 133-160, 7-18)
+  Treino: 2 h/dia (premium 6 h), aviso vermelho ao entrar e aos 5 min, contador branco embaixo
+  Angry Troll (ao matar um Troll)
+  exori gran (Knight)  |  exevo vis lux Energy Beam (Sorcerer ML 10)
+  exevo pan (Create Food, todas as vocações, 30 de mana)
+  Magic Wall: usar a runa com ML 9 | conjurar (adevo grav tera) com ML 14, todas as vocações
+  Soft Boots (2640): +3 HP e +12 MP a cada 3 s, 4 h de uso; ao gastar → worn (2641), recarregue com Azure Sunstone (20124)
+  Perac: flechas (50=100 gp), bolts (50=150 gp), power bolts (50=400 gp)
+  Seller: mana/life fluid, rope, shovel, backpack
+  Parived: compra gemas e diamantes (diga gems)
+  Tonka (1 andar acima do Parived): 20 pequenas → 1 grande (diga exchange)
+  Golden ring (2179) no slot de anel: +20% de gold dos monstros
+  Golden amulet (2130) equipado: o gold do loot vai direto para o banco ao matar (sem abrir o corpo)
+  Anel + amuleto: o anel soma o bônus primeiro e o amuleto deposita esse total no banco
+  Imbuements (use uma gema num item equipado; o imbue fica no item se você o perder):
+    Yellow gem → botas: +10 de haste cada, máx. 3 (acumula com BOH)
+    Violet gem → wand/rod: +1 ML cada, máx. 4 (dano da wand e ML mostrado)
+    Big ruby → arma: +5% / +9% / +16% de velocidade de ataque, máx. 3 (nightglass: 5 stacks)
+    Big emerald → armadura: +1 sword/club/axe/dist cada, máx. 4 (demon armor 6) (P/K)
+    Blue gem → crystal arrow: +5% de velocidade de ataque cada, máx. 5
+  Levitar: `exani hur "up"` / `exani hur "down"`
+
+OUTROS
+  Autosave 10 min  |  Magias grátis  |  Party/Guilds

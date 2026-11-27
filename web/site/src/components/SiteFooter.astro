@@ -2,16 +2,16 @@
 // Footer de la web: franja de ítems del juego en pixel art, marca con el estado en vivo,
 // tres columnas de links y la barra legal.
 // El estado lo llena el script de Base.astro (#foot-status). Ver docs/features/17-web-footer.md.
-import { dict, localePath } from '../i18n.js';
+import { dict, localePath, navHref } from '../i18n.js';
 
-interface Props { lang: 'es' | 'en' }
+interface Props { lang: 'es' | 'en' | 'pt' }
 const { lang } = Astro.props;
 const T = dict(lang);
 const F = T.footer;
 
 // Ítems con dibujo en web/assets/wiki/items (server id). Los de la punta se ocultan en pantallas chicas.
 const RELICS = [2268, 20113, 2392, 2493, 2472, 2498, 2520, 2495, 2195, 20123, 2432, 2492, 20112, 2154];
-const href = (p: string) => (p.startsWith('/wiki') || p === '/items-nuevos' || p === '/quests' ? p : localePath(lang, p));
+const href = (p: string) => navHref(lang, p);
 const COLS = [
   { title: F.play, links: ['/cuenta', '/cliente', '/premium', '/bugs'].map((p) => [href(p), T.nav[p as keyof typeof T.nav]]) },
   { title: F.community, links: ['/', '/top', '/power', '/pk', '/muertes'].map((p) => [href(p), T.nav[p as keyof typeof T.nav]]) },

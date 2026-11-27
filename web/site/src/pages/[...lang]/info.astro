@@ -15,10 +15,10 @@ const T = dict(lang);
 </Base>
 
 <script>
-  import { getData, esc, isEnglish, t, $ } from '../../lib/client.js';
-  const SKIP = new Set(['REGLAS', 'RULES', 'PREMIUM']);
+  import { getData, esc, otinfoFor, t, $ } from '../../lib/client.js';
+  const SKIP = new Set(['REGLAS', 'RULES', 'REGRAS', 'PREMIUM']);
   getData().then((d) => {
-    const info = (isEnglish() && d.otinfo_en?.length) ? d.otinfo_en : (d.otinfo || []);
+    const info = otinfoFor(d);
     const sections = info.filter((s) => !SKIP.has(s.title));
     if (!sections.length) { $('info').innerHTML = `<p class="empty">${esc(t('noInfo'))}</p>`; return; }
     $('info').innerHTML = sections.map((s) => `

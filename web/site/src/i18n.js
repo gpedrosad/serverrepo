@@ -1,23 +1,32 @@
-// Textos de la web en español (raíz: /top) e inglés (/en/top).
+// Textos de la web en español (raíz: /top), inglés (/en/top) y portugués de Brasil (/pt/top).
 // - Las páginas usan dict(lang) al compilar.
 // - El JS del navegador solo recibe dict(lang).js, embebido en el HTML por Base.astro
-//   (lib/client.js lo lee con t()). Así el JS no carga los dos idiomas.
+//   (lib/client.js lo lee con t()). Así el JS no carga los tres idiomas.
 
-export const LANGS = ['es', 'en'];
+export const LANGS = ['es', 'en', 'pt'];
+/** Nombre de cada idioma en su propio idioma (selector de la cabecera). */
+export const LANG_NAMES = { es: 'Español', en: 'English', pt: 'Português' };
+/** Páginas que existen solo en español: desde /en y /pt llevan a la versión en español. */
+export const ES_ONLY = ['/wiki', '/items-nuevos', '/quests'];
 
-/** Para getStaticPaths de cada página: /pagina (español) y /en/pagina (inglés). */
+/** Para getStaticPaths de cada página: /pagina (español), /en/pagina y /pt/pagina. */
 export function langPaths() {
-  return [{ params: { lang: undefined } }, { params: { lang: 'en' } }];
+  return [{ params: { lang: undefined } }, { params: { lang: 'en' } }, { params: { lang: 'pt' } }];
 }
 
 export function langOf(param) {
-  return param === 'en' ? 'en' : 'es';
+  return param === 'en' || param === 'pt' ? param : 'es';
 }
 
-/** Ruta en el idioma pedido: ('en', '/top') -> '/en/top'; ('en', '/') -> '/en'. */
+/** Ruta en el idioma pedido: ('en', '/top') -> '/en/top'; ('pt', '/') -> '/pt'. */
 export function localePath(lang, path) {
-  if (lang !== 'en') return path;
-  return path === '/' ? '/en' : `/en${path}`;
+  if (lang !== 'en' && lang !== 'pt') return path;
+  return path === '/' ? `/${lang}` : `/${lang}${path}`;
+}
+
+/** Link de navegación: las páginas solo en español no cambian de idioma. */
+export function navHref(lang, path) {
+  return ES_ONLY.some((p) => path === p || path.startsWith(p + '/')) ? path : localePath(lang, path);
 }
 
 export function dict(lang) {
@@ -31,8 +40,10 @@ const STRINGS = {
     tagline: 'Tibia 7.6 · Chile',
     switchLabel: 'English',
     switchTitle: 'Ver en inglés',
-    navLabel: 'Secciones',
-    nav: { '/': 'Live', '/top': 'Top', '/power': 'Power', '/pk': 'PK', '/muertes': 'Muertes', '/gemas': 'Gemas',
+    navLabel: 'Secciones', langLabel: 'Idioma',
+    navGroups: { rankings: 'Rankings', guide: 'Guía', help: 'Ayuda' },
+    cta: { account: 'Crear cuenta', download: 'Descargar' },
+    nav: { '/': 'Inicio', '/top': 'Top', '/power': 'Power', '/pk': 'PK', '/muertes': 'Muertes', '/gemas': 'Gemas',
       '/items-nuevos': 'Items', '/quests': 'Quests', '/spells': 'Spells', '/reglas': 'Reglas', '/info': 'Info', '/wiki': 'Wiki', '/cuenta': 'Cuenta', '/cliente': 'Cliente',
       '/premium': 'Premium', '/bugs': 'Bugs' },
     description: 'Retro76: OT server chileno de Tibia 7.6 (Open Tibia). PvP retro, comunidad latina, baja latencia desde Chile y sistemas custom: gemas, El Crisol, arenas y más. Crea tu cuenta gratis y descarga el cliente.',
@@ -49,6 +60,13 @@ const STRINGS = {
       online: 'Jugando ahora', peak: 'Récord', uptime: 'Uptime',
       highlights: 'Destacados', connected: 'Conectados',
       thName: 'Nombre', thVoc: 'Vocación', thLevel: 'Nivel',
+      start: 'Empieza a jugar en 3 pasos',
+      steps: [
+        ['Crea tu cuenta', 'Gratis y en un minuto: número de cuenta, contraseña y tu personaje.', 'Crear cuenta'],
+        ['Descarga el cliente', 'Viene listo para conectarse, con los items del servidor.', 'Windows', 'macOS'],
+        ['Entra a jugar', 'Abre el lanzador y entra con tu número de cuenta y contraseña. ¿Dudas?', 'Lee la wiki'],
+      ],
+      live: 'El servidor ahora',
     },
     top: { title: 'Top', lede: 'Los mejores personajes por nivel, magic level, skills y PK.', description: 'Ranking de Retro76 (Tibia 7.6): nivel, magic level, skills y PK.' },
     power: { title: 'Power', lede: 'Experiencia ganada hoy.', description: 'Quién ganó más experiencia hoy en Retro76.',
@@ -168,8 +186,10 @@ const STRINGS = {
     tagline: 'Tibia 7.6 · Chile',
     switchLabel: 'Español',
     switchTitle: 'Ver en español',
-    navLabel: 'Sections',
-    nav: { '/': 'Live', '/top': 'Top', '/power': 'Power', '/pk': 'PK', '/muertes': 'Deaths', '/gemas': 'Gems',
+    navLabel: 'Sections', langLabel: 'Language',
+    navGroups: { rankings: 'Rankings', guide: 'Guide', help: 'Help' },
+    cta: { account: 'Create account', download: 'Download' },
+    nav: { '/': 'Home', '/top': 'Top', '/power': 'Power', '/pk': 'PK', '/muertes': 'Deaths', '/gemas': 'Gems',
       '/items-nuevos': 'Items (ES)', '/quests': 'Quests (ES)', '/spells': 'Spells', '/reglas': 'Rules', '/info': 'Info', '/wiki': 'Wiki (ES)', '/cuenta': 'Account', '/cliente': 'Client',
       '/premium': 'Premium', '/bugs': 'Bugs' },
     description: 'Retro76: a Chilean Open Tibia 7.6 server. Old-school PvP, a Latin American community, low latency from Chile and custom systems: gems, the Crucible, arenas and more. Create a free account and download the client.',
@@ -186,6 +206,13 @@ const STRINGS = {
       online: 'Playing now', peak: 'Record', uptime: 'Uptime',
       highlights: 'Highlights', connected: 'Online',
       thName: 'Name', thVoc: 'Vocation', thLevel: 'Level',
+      start: 'Start playing in 3 steps',
+      steps: [
+        ['Create your account', 'Free, in one minute: account number, password and your character.', 'Create account'],
+        ['Download the client', 'Ready to connect, with the server\'s items included.', 'Windows', 'macOS'],
+        ['Log in and play', 'Open the launcher and log in with your account number and password. Questions?', 'Read the wiki (ES)'],
+      ],
+      live: 'The server now',
     },
     top: { title: 'Top', lede: 'The best characters by level, magic level, skills and PK.', description: 'Retro76 (Tibia 7.6) rankings: level, magic level, skills and PK.' },
     power: { title: 'Power', lede: 'Experience gained today.', description: 'Who gained the most experience today on Retro76.',
@@ -306,7 +333,9 @@ const STRINGS = {
         training_extension_rune: '+12 hours of training that day (once per character).',
         private_trainer_dummy: 'Place it on a free tile in your house and Use it (1 per house, owner only).',
       },
-      rel: true,
+      rel: true, relNow: 'now', relAgo: '{n}{u} ago',
+      accountCreated: 'Account {n} created. Log in with that number and your password in the client.',
+      donationThanks: 'Thanks for your donation ({plan}). We\'ll activate premium on "{name}" once the payment is confirmed.',
       // Mensajes que manda el servidor en español (web/*.py) -> inglés.
       server: {
         'El formulario se envió demasiado rápido.': 'The form was sent too fast.',
@@ -316,6 +345,8 @@ const STRINGS = {
         'Captcha incorrecto.': 'Wrong captcha.',
         'Nombre inválido (3-20 letras y espacios)': 'Invalid name (3-20 letters and spaces)',
         'El nombre no puede empezar por GM': 'The name can\'t start with GM',
+        'Ese nombre está reservado': 'That name is reserved',
+        'El comprobante no parece un JPG, PNG o PDF válido.': 'The receipt doesn\'t look like a valid JPG, PNG or PDF.',
         'Contraseña inválida (3-20 alfanuméricos)': 'Invalid password (3-20 letters and numbers)',
         'Sexo inválido': 'Invalid sex', 'Vocación inválida': 'Invalid vocation',
         'Ese número de cuenta ya existe': 'That account number already exists',
@@ -340,6 +371,201 @@ const STRINGS = {
         'El comprobante es muy grande (máx. 5 MB).': 'The receipt is too big (max 5 MB).',
         'Formato no permitido. Usa JPG, PNG o PDF.': 'Format not allowed. Use JPG, PNG or PDF.',
         'Donación por transferencia. Adjunta el comprobante en el formulario.': 'Donation by bank transfer. Attach the receipt in the form.',
+      },
+    },
+  },
+
+  pt: {
+    htmlLang: 'pt-BR',
+    ogLocale: 'pt_BR',
+    tagline: 'Tibia 7.6 clássico',
+    switchLabel: 'Português',
+    switchTitle: 'Ver em português',
+    navLabel: 'Seções', langLabel: 'Idioma',
+    navGroups: { rankings: 'Rankings', guide: 'Guia', help: 'Ajuda' },
+    cta: { account: 'Criar conta', download: 'Baixar' },
+    nav: { '/': 'Início', '/top': 'Top', '/power': 'Power', '/pk': 'PK', '/muertes': 'Mortes', '/gemas': 'Gemas',
+      '/items-nuevos': 'Itens (ES)', '/quests': 'Quests (ES)', '/spells': 'Magias', '/reglas': 'Regras', '/info': 'Info', '/wiki': 'Wiki (ES)', '/cuenta': 'Conta', '/cliente': 'Cliente',
+      '/premium': 'Premium', '/bugs': 'Reportar bug' },
+    description: 'Retro76: servidor de Open Tibia 7.6. PvP raiz, comunidade latino-americana e sistemas próprios: gemas, o Crisol, arenas e muito mais. Crie sua conta grátis e baixe o cliente.',
+    footer: { tagline: 'Tibia 7.6 clássico, com PvP raiz e sistemas próprios.',
+      play: 'Jogar', community: 'Comunidade', guide: 'Guia',
+      news: 'Novidades (ES)', up: 'Topo',
+      legal: 'Servidor não oficial de Open Tibia. Tibia é uma marca da CipSoft GmbH, sem relação com o Retro76.' },
+    loading: 'Carregando…',
+    home: {
+      title: 'Retro76 — OT Server Tibia 7.6 | Open Tibia',
+      ldDescription: 'Servidor de Open Tibia 7.6: rankings, criação de contas e download do cliente.',
+      noteStrong: 'Cliente novo (julho 2026)',
+      noteText: 'com os itens custom incluídos. Baixe o ZIP, descompacte e abra o lançador:',
+      online: 'Jogando agora', peak: 'Recorde', uptime: 'Uptime',
+      highlights: 'Destaques', connected: 'Online',
+      thName: 'Nome', thVoc: 'Vocação', thLevel: 'Nível',
+      start: 'Comece a jogar em 3 passos',
+      steps: [
+        ['Crie sua conta', 'Grátis e em um minuto: número da conta, senha e seu personagem.', 'Criar conta'],
+        ['Baixe o cliente', 'Já vem pronto para conectar, com os itens do servidor.', 'Windows', 'macOS'],
+        ['Entre e jogue', 'Abra o lançador e entre com o número da conta e a senha. Dúvidas?', 'Leia a wiki (ES)'],
+      ],
+      live: 'O servidor agora',
+    },
+    top: { title: 'Top', lede: 'Os melhores personagens por nível, magic level, skills e PK.', description: 'Ranking do Retro76 (Tibia 7.6): nível, magic level, skills e PK.' },
+    power: { title: 'Power', lede: 'Experiência ganha hoje.', description: 'Quem ganhou mais experiência hoje no Retro76.',
+      thName: 'Nome', thExp: 'Exp hoje', thLevel: 'Nível', thVoc: 'Voc' },
+    pk: { title: 'PK', lede: 'Quem mais mata jogadores e quanta experiência ganhou com isso.',
+      description: 'Jogadores que mais matam no Retro76: PK de hoje e experiência ganha matando.',
+      today: 'PK de hoje', expTitle: 'Experiência por matar jogadores', byExp: 'por exp', byKills: 'por PK',
+      estimate: 'Estimado a partir do registro de mortes: 7% da exp da vítima × 80%.',
+      thName: 'Nome', thExp: 'Exp PK', thLevel: 'Nível', thVoc: 'Voc' },
+    deaths: { title: 'Mortes', lede: 'As últimas mortes do servidor.', description: 'Últimas mortes no Retro76 (Tibia 7.6).',
+      thVictim: 'Vítima', thKiller: 'Assassino', thLevel: 'Nível', thWhen: 'Quando' },
+    spells: { title: 'Magias', lede: 'O que cada magia faz, por vocação e da menor para a maior mana. Inclui instantâneas, runas e munição.',
+      description: 'Magias do Retro76 por vocação: o que cada uma faz, palavras, mana e magic level.',
+      notes: [
+        'Pedem <strong>magic level</strong>, não nível, e não precisa aprender: com a vocação e o ML você já pode usar. As promoções usam as da sua vocação.',
+        'Depois de uma magia de ataque você espera <strong>2 s</strong> para a próxima; depois de uma de cura ou suporte, <strong>1 s</strong>. Algumas têm também a sua própria espera.',
+        'As magias com espera própria deixam um <strong>ícone</strong> na barra de status: aceso enquanto dura o efeito e apagado, com os segundos, até poder usar de novo. Se tentar antes, sai <strong>fumaça</strong> e nada acontece.',
+        'As <strong>runas</strong> (tipo Runa) são feitas com a magia e uma runa em branco; a explicação diz o que a runa faz e o ML para usá-la.',
+      ] },
+    rules: { title: 'Regras', lede: 'Regras curtas. A staff revisa logs e denúncias; a punição depende de cada caso.', description: 'Regras do Retro76.' },
+    info: { title: 'Info', lede: 'Rates, sistemas do servidor e como se conectar.', description: 'Informações do servidor Retro76: rates, sistemas e dados para se conectar.',
+      wiki: 'Como funciona cada sistema, passo a passo (em espanhol):', wikiLink: 'Wiki' },
+    client: {
+      title: 'Cliente', lede: 'O cliente oficial já traz os itens custom. Baixe o ZIP, descompacte e abra o lançador.',
+      description: 'Baixe o cliente do Retro76 (Tibia 7.6) para Windows e macOS.',
+      thSystem: 'Sistema', thOpen: 'Abrir', download: 'Baixar ZIP', connect: 'Conectar',
+      connectText: 'O cliente já vem configurado. Se pedir:', noAccount: 'Não tem conta?', createIt: 'Crie aqui', free: ', é grátis.',
+      runWin: 'Iniciar Cliente.bat', runMac: 'Retro76.app',
+    },
+    account: {
+      title: 'Criar conta', pageTitle: 'Criar conta — Retro76',
+      lede: 'Grátis. A conta é um número de 6 dígitos e com ela você entra no jogo com seu personagem.',
+      description: 'Crie sua conta grátis no Retro76, OT server de Tibia 7.6.',
+      number: 'Número da conta (6 dígitos)', password: 'Senha', password2: 'Repetir senha',
+      name: 'Nome do personagem', sex: 'Sexo', male: 'Masculino', female: 'Feminino', voc: 'Vocação',
+      captcha: 'Verificação:', submit: 'Criar conta',
+      after: 'Depois', afterLink: 'baixe o cliente', afterText: 'e entre com o número da conta e a senha.',
+    },
+    bugs: {
+      title: 'Reportar um bug', pageTitle: 'Reportar um bug — Retro76', description: 'Reporte um bug do Retro76.',
+      lede: 'Conte o que aconteceu. Lemos cada relato. Máximo 3 por hora; não inclua senhas.',
+      character: 'Personagem (opcional)', type: 'Tipo', choose: 'Escolher…',
+      cats: { gameplay: 'Gameplay ou mecânicas', crash: 'Crash ou desconexão', visual: 'Visual ou mapa', cuenta: 'Conta ou login', otro: 'Outro' },
+      titleField: 'Título', descField: 'O que você fez, o que esperava e o que aconteceu?', captcha: 'Verificação:', submit: 'Enviar relato',
+    },
+    gems: {
+      title: 'Gemas', description: 'Gemas no Retro76: quem dropa, como trocar com o Tonka, imbuir equipamento e vender.',
+      lede: 'As gemas caem do loot de monstros fortes. Junte 20 pequenas, troque por uma grande e use no seu equipamento para um bônus permanente.',
+      loot: '1 · Loot', lootAside: 'criaturas Angry, Furious e Enraged',
+      lootText: 'Furious e Enraged dropam gemas pequenas com mais frequência (×2,4 e ×3,2). Procure uma criatura ou abra cada gema:',
+      search: 'Buscar criatura (hydra, orc…)', searchLabel: 'Buscar criatura', noMobs: 'Nenhuma criatura encontrada.',
+      exchange: '2 · Trocar com o Tonka', exchangeAside: 'templo 140, 50 · andar 7',
+      exchangeText: ['Diga', 'e depois', '(ou a gema que for). Confirme com', '.'],
+      thGive: 'Você entrega', thGet: 'Você recebe', thFor: 'Serve para',
+      imbue: '3 · Imbuir', imbueText: ['Use a gema grande no item', 'equipado', '. O bônus fica no item mesmo que você o perca.'],
+      thGem: 'Gema', thOn: 'Em', thEffect: 'Efeito', thMax: 'Máx.',
+      sell: '4 · Vender ao Parived', sellAside: 'mesmo templo · sell ruby ou sell all', thGold: 'Gold',
+      use: {
+        2145: 'Imbuir crystal arrows · 20× → Blue Gem', 2146: 'Imbuir botas · 20× → Yellow Gem (+haste)',
+        2147: 'Imbuir armas · 20× → Big Ruby (+velocidade)', 2149: 'Imbuir armadura · 20× → Big Emerald (+skills)',
+        2150: 'Imbuir wands/rods · 20× → Violet Gem (+ML)',
+      },
+      exchangeRows: ['+5% / +9% / +16% de velocidade de ataque (máx. 3)', '+1 skill por stack na armadura (4; demon armor 6)',
+        '+1 ML na wand ou rod (máx. 4)', '+10 de velocidade nas botas (máx. 3)', 'Crystal arrow: +5% de velocidade por stack (máx. 5)'],
+      imbueRows: [['Botas', '+10 de velocidade por stack', '3'], ['Wand / rod', '+1 ML por stack (dano da wand)', '4'],
+        ['Arma', '+5% / +9% / +16% de velocidade de ataque', '3 (nightglass 5)'], ['Armadura', '+1 sword, club, axe e distance por stack', '4 (demon 6)'],
+        ['Crystal arrow', '+5% de velocidade de ataque por stack', '5']],
+      sellRows: ['Amethyst', 'Emerald, ruby, sapphire', 'Diamond', 'Yellow Gem', 'Violet Gem', 'Big Ruby, Big Emerald, Blue Gem', 'Talon', 'Scarab coin', 'Gold nugget'],
+    },
+    premium: {
+      title: 'Premium', description: 'Premium no Retro76: +10% de exp e loot, skills x2 e 6 h de treino. Doação voluntária; o servidor é free to play.',
+      lede: 'Uma doação voluntária para manter o Retro76, com vantagens no jogo. O servidor continua free to play.',
+      figExp: 'Exp e loot', figSkills: 'Skills e ML', figTraining: 'Treino por dia',
+      plans: 'Planos', save: 'economize', days: 'dias', perDay: 'por dia', choose: 'Escolher',
+      planLabels: { '1954': '1 semana', '2345': '2 semanas' },
+      includes: 'O que inclui',
+      perks: [['+10% de experiência', 'Um extra ao caçar.'], ['+10% de loot', 'Um pouco mais de loot dos monstros.'],
+        ['Skills x2', 'Você treina skills e magic level duas vezes mais rápido.'], ['Regeneração', 'Recupera vida e mana um pouco mais rápido.'],
+        ['6 h de treino', 'Mais tempo por dia na sala de treino (grátis: 2 h).'],
+        ['Outfits 7.6', 'Os outfits premium clássicos: citizen, hunter, mage e knight.'],
+        ['Promotion', 'Com o Orlan (nível 20, 20k gp). Com premium, regeneração melhor.']],
+      compare: 'Grátis e premium', free: 'Grátis',
+      freeList: ['2 h de treino por dia', 'Skills na velocidade normal', 'Sem bônus de exp nem loot'],
+      premList: ['6 h de treino por dia', 'Skills x2 e regeneração melhor', '+10% de exp e loot'],
+      how: 'Como funciona',
+      steps: ['Escolha o plano e, se quiser, algum extra.', 'Transfira o total e envie o comprovante aqui embaixo.',
+        'Conferimos o pagamento e ativamos o premium no seu personagem. No jogo,', 'mostra o tempo que falta.'],
+      donate: 'Doar', total: 'total', step1: '1. Plano', step2: '2. Extras opcionais', step3: '3. Pagamento',
+      premiumDays: 'dias de premium', transfer: 'Transfira', attach: 'e anexe o comprovante. Os pagamentos são por transferência bancária no Chile.',
+      holder: 'Titular', rut: 'RUT', bankAccount: 'Conta',
+      character: 'Nome do personagem (exato)', receipt: 'Comprovante (JPG, PNG ou PDF, máx. 5 MB)', submit: 'Enviar comprovante',
+    },
+    character: { title: 'Personagem — Retro76', description: 'Perfil de personagem no Retro76, OT server de Tibia 7.6: nível, vocação, experiência e mortes.',
+      level: 'Nível', ml: 'Magic level', exp: 'Experiência', deaths: 'Mortes', thKiller: 'Assassino', thLevel: 'Nível', thWhen: 'Quando' },
+    js: {
+      online: 'online · {n} jogando', offline: 'offline', noConnection: 'sem conexão',
+      serverDown: 'Sem conexão com o servidor.', updated: 'Atualizado {t} · {addr} · atualiza a cada minuto',
+      hlLevel: 'Maior nível', hlMl: 'Magic level', hlClub: 'Club', hlAxe: 'Axe', hlPk: 'Mais exp por PK', hlDeath: 'Última morte',
+      levelN: 'nível {n}', by: 'por {name}', noRanking: 'Ainda não há jogadores no ranking.', nobodyOnline: 'Ninguém online agora.',
+      rankTabs: { level: 'Nível', ml: 'ML', club: 'Club', sword: 'Sword', axe: 'Axe', distance: 'Distance', frags: 'PK' },
+      cols: { level: 'Nível', exp_fmt: 'Exp', maglevel: 'ML', lastlogin_rel: 'Último login', vocation_short: 'Voc',
+        club: 'Club', sword: 'Sword', axe: 'Axe', distance: 'Dist', frags: 'PK' },
+      allVocs: 'Todas', name: 'Nome', emptyRanking: 'Ninguém neste ranking ainda.',
+      noPower: 'Ninguém ganhou experiência hoje ainda.', noPk: 'Não há kills entre jogadores no registro.', noDeaths: 'Não há mortes registradas.',
+      noSpells: 'Sem dados de magias.', spellsCount: '{n} magias',
+      spellCols: ['Nome', 'Palavras', 'Mana', 'ML', 'Tipo'], kinds: { Instant: 'Instantânea', Runa: 'Runa', 'Munición': 'Munição' },
+      noRules: 'Nenhuma regra publicada.', noInfo: 'Nenhuma informação publicada.', general: 'Geral',
+      captchaReload: 'recarregue a página', passwordsDiffer: 'As senhas não coincidem.', connError: 'Erro de conexão.', error: 'Erro',
+      addonsError: 'Não foi possível carregar os extras.', premiumDays: 'dias de premium', sendReceipt: 'Enviar comprovante · {t}',
+      donationSent: 'Doação enviada.', sendFailed: 'Não foi possível enviar. Tente de novo.',
+      invalidName: 'Nome inválido.', notFound: 'Personagem não encontrado.', seen: 'visto {t}', noCharDeaths: 'Sem mortes registradas.',
+      charTitle: '{name} — {voc} nível {level} | Retro76',
+      planLabels: { '1954': '1 semana', '2345': '2 semanas' },
+      addonDesc: {
+        golden_amulet: 'O gold do loot vai direto para a sua conta no banco.',
+        golden_ring: '+20% de gold dos monstros enquanto você usa.',
+        experience_recovery_rune: 'Recupera 60-80% da exp perdida na sua última morte.',
+        training_extension_rune: '+12 horas de treino nesse dia (uma vez por personagem).',
+        private_trainer_dummy: 'Coloque num piso livre da sua casa e use (1 por casa, só o dono).',
+      },
+      rel: true, relNow: 'agora', relAgo: 'há {n}{u}',
+      accountCreated: 'Conta {n} criada. Entre no cliente com esse número e a sua senha.',
+      donationThanks: 'Obrigado pela doação ({plan}). Vamos ativar o premium em "{name}" quando o pagamento for confirmado.',
+      // Mensagens que o servidor manda em espanhol (web/*.py) -> português.
+      server: {
+        'El formulario se envió demasiado rápido.': 'O formulário foi enviado rápido demais.',
+        'Demasiados intentos. Inténtalo más tarde.': 'Tentativas demais. Tente mais tarde.',
+        'Límite diario alcanzado desde esta IP.': 'Limite diário atingido a partir deste IP.',
+        'Captcha expirado. Recarga la página.': 'Captcha expirado. Recarregue a página.',
+        'Captcha incorrecto.': 'Captcha incorreto.',
+        'Nombre inválido (3-20 letras y espacios)': 'Nome inválido (3-20 letras e espaços)',
+        'El nombre no puede empezar por GM': 'O nome não pode começar com GM',
+        'Ese nombre está reservado': 'Esse nome é reservado',
+        'El comprobante no parece un JPG, PNG o PDF válido.': 'O comprovante não parece um JPG, PNG ou PDF válido.',
+        'Contraseña inválida (3-20 alfanuméricos)': 'Senha inválida (3-20 letras e números)',
+        'Sexo inválido': 'Sexo inválido', 'Vocación inválida': 'Vocação inválida',
+        'Ese número de cuenta ya existe': 'Esse número de conta já existe',
+        'Ese nombre ya está en uso': 'Esse nome já está em uso',
+        'Vocación no disponible': 'Vocação não disponível',
+        'No se pudo guardar la cuenta en el servidor': 'Não foi possível salvar a conta no servidor',
+        'Demasiados reportes desde esta IP. Inténtalo más tarde.': 'Relatos demais a partir deste IP. Tente mais tarde.',
+        'Límite diario de reportes alcanzado desde esta IP.': 'Limite diário de relatos atingido a partir deste IP.',
+        'Categoría inválida.': 'Categoria inválida.',
+        'El título debe tener al menos 5 caracteres.': 'O título deve ter pelo menos 5 caracteres.',
+        'Describe el bug con al menos 15 caracteres.': 'Descreva o bug com pelo menos 15 caracteres.',
+        'Nombre de personaje inválido.': 'Nome de personagem inválido.',
+        'Reporte enviado. Gracias por ayudar a mejorar Retro76.': 'Relato enviado. Obrigado por ajudar a melhorar o Retro76.',
+        'Datos inválidos': 'Dados inválidos', 'Datos inválidos.': 'Dados inválidos.',
+        'Personaje no encontrado': 'Personagem não encontrado', 'Error interno': 'Erro interno',
+        'No se pudo enviar la donación.': 'Não foi possível enviar a doação.',
+        'Formato inválido.': 'Formato inválido.', 'Petición inválida.': 'Pedido inválido.',
+        'Plan premium inválido.': 'Plano premium inválido.',
+        'Nombre de personaje inválido (3-20 letras y espacios).': 'Nome de personagem inválido (3-20 letras e espaços).',
+        'No encontramos ese personaje. Revisa el nombre exacto.': 'Não encontramos esse personagem. Confira o nome exato.',
+        'Debes adjuntar el comprobante de pago.': 'Você precisa anexar o comprovante de pagamento.',
+        'El comprobante es muy grande (máx. 5 MB).': 'O comprovante é grande demais (máx. 5 MB).',
+        'Formato no permitido. Usa JPG, PNG o PDF.': 'Formato não permitido. Use JPG, PNG ou PDF.',
+        'Donación por transferencia. Adjunta el comprobante en el formulario.': 'Doação por transferência. Anexe o comprovante no formulário.',
       },
     },
   },

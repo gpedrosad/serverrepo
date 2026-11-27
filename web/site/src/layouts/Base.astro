@@ -1,12 +1,13 @@
 ---
 // Estructura común: <head> con SEO (y versiones por idioma), cabecera con el estado del server,
-// navegación, contenido y el footer (components/SiteFooter.astro).
+// selector de idioma (ES · EN · PT), menú agrupado con los botones de empezar a jugar, contenido y el
+// footer (components/SiteFooter.astro).
 import '../styles/site.css';
-import { dict, localePath } from '../i18n.js';
+import { dict, localePath, navHref, LANGS, LANG_NAMES } from '../i18n.js';
 import SiteFooter from '../components/SiteFooter.astro';
 
 interface Props {
-  lang: 'es' | 'en';
+  lang: 'es' | 'en' | 'pt';
   title: string;
   description?: string;
   path: string;           // ruta sin idioma ('/', '/top'...): marca el link actual y arma el cambio de idioma
@@ -18,17 +19,24 @@ interface Props {
 const { lang, title, path, canonical = true, langSwitch = true, footer = true } = Astro.props;
 const T = dict(lang);
 const description = Astro.props.description || T.description;
-const other = lang === 'en' ? 'es' : 'en';
 const site = 'https://retro76.cl';
 const url = (l: string) => site + (localePath(l, path) === '/' ? '/' : localePath(l, path));
+const HREFLANG: Record<string, string> = { es: 'es', en: 'en', pt: 'pt-BR' };
 
-const NAV_GAME = ['/', '/top', '/power', '/pk', '/muertes', '/gemas', '/items-nuevos', '/quests', '/spells', '/reglas', '/info', '/wiki'];
-const NAV_PLAY = ['/cuenta', '/cliente', '/premium', '/bugs'];
-// La wiki, los items nuevos y las quests existen solo en español: desde /en llevan a la versión en español.
-const navLink = (p: string) => ({ href: p === '/wiki' || p === '/items-nuevos' || p === '/quests' ? p : localePath(lang, p), label: T.nav[p as keyof typeof T.nav], current: p === path || (p !== '/' && path.startsWith(p + '/')) });
+// Menú: Inicio, dos grupos desplegables (<details>, sin JS para abrir) y lo de soporte; a la derecha los
+// dos pasos para empezar a jugar. Las páginas solo en español (wiki, items, quests) no cambian de idioma.
+const isCurrent = (p: string) => p === path || (p !== '/' && path.startsWith(p + '/'));
+const link = (p: string) => ({ href: navHref(lang, p), label: T.nav[p as keyof typeof T.nav], current: isCurrent(p) });
+const GROUPS = [
+  { key: 'rankings', label: T.navGroups.rankings, items: ['/top', '/power', '/pk', '/muertes'].map(link) },
+  { key: 'guide', label: T.navGroups.guide, items: ['/wiki', '/spells', '/gemas', '/items-nuevos', '/quests', '/info', '/reglas'].map(link) },
+  { key: 'help', label: T.navGroups.help, items: ['/cuenta', '/cliente', '/bugs'].map(link) },
+].map((g) => ({ ...g, current: g.items.some((i) => i.current) }));
+const home = link('/');
+const premium = link('/premium');
 ---
 <!doctype html>
-<html lang={T.htmlLang === 'en' ? 'en' : T.htmlLang}>
+<html lang={T.htmlLang}>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -36,8 +44,7 @@ const navLink = (p: string) => ({ href: p === '/wiki' || p === '/items-nuevos' |
   <title>{title}</title>
   <meta name="description" content={description}>
   {canonical && <link rel="canonical" href={url(lang)}>}
-  {canonical && langSwitch && <link rel="alternate" hreflang="es" href={url('es')}>}
-  {canonical && langSwitch && <link rel="alternate" hreflang="en" href={url('en')}>}
+  {canonical && langSwitch && LANGS.map((l) => <link rel="alternate" hreflang={HREFLANG[l]} href={url(l)}>)}
   {canonical && langSwitch && <link rel="alternate" hreflang="x-default" href={url('es')}>}
   <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="/assets/brand/favicon.png">
@@ -60,15 +67,33 @@ const navLink = (p: string) => ({ href: p === '/wiki' || p === '/items-nuevos' |
       </a>
       <div class="head-right">
         <p class="status" id="status" aria-live="polite"><span class="dot"></span><span id="status-text">…</span></p>
-        {langSwitch && <a class="lang-switch" href={localePath(other, path)} hreflang={other} lang={other} title={T.switchTitle}>{T.switchLabel}</a>}
+        {langSwitch && (
+          <nav class="lang-switch" aria-label={T.langLabel}>
+            {LANGS.map((l) => (
+              <a href={localePath(l, path)} hreflang={HREFLANG[l]} lang={HREFLANG[l]} title={LANG_NAMES[l]}
+                 aria-current={l === lang ? 'true' : undefined}>{l.toUpperCase()}</a>
+            ))}
+          </nav>
+        )}
       </div>
     </header>
     <nav class="site-nav" aria-label={T.navLabel}>
-      <ul>
-        {NAV_GAME.map(navLink).map((n) => <li><a href={n.href} aria-current={n.current ? 'page' : undefined}>{n.label}</a></li>)}
-        <li class="sep" aria-hidden="true"></li>
-        {NAV_PLAY.map(navLink).map((n) => <li><a href={n.href} aria-current={n.current ? 'page' : undefined}>{n.label}</a></li>)}
+      <ul class="nav-main">
+        <li><a href={home.href} aria-current={home.current ? 'page' : undefined}>{home.label}</a></li>
+        {GROUPS.map((g) => (
+          <li class="nav-group">
+            <details>
+              <summary class={g.current ? 'current' : undefined}>{g.label}</summary>
+              <ul>{g.items.map((i) => <li><a href={i.href} aria-current={i.current ? 'page' : undefined}>{i.label}</a></li>)}</ul>
+            </details>
+          </li>
+        ))}
+        <li><a href={premium.href} aria-current={premium.current ? 'page' : undefined}>{premium.label}</a></li>
       </ul>
+      <div class="nav-cta">
+        <a class="btn primary" href={localePath(lang, '/cuenta')}>{T.cta.account}</a>
+        <a class="btn" href={localePath(lang, '/cliente')}>{T.cta.download}</a>
+      </div>
     </nav>
     <main>
       <slot />
@@ -77,6 +102,14 @@ const navLink = (p: string) => ({ href: p === '/wiki' || p === '/items-nuevos' |
 
   {footer && <SiteFooter lang={lang} />}
   <script type="application/json" id="i18n" set:html={JSON.stringify(T.js)} />
+
+  <script>
+    // Menú: un solo desplegable abierto a la vez y se cierra al tocar fuera o con Escape.
+    const groups = [...document.querySelectorAll('.nav-group details')];
+    groups.forEach((d) => d.addEventListener('toggle', () => { if (d.open) groups.forEach((o) => { if (o !== d) o.open = false; }); }));
+    document.addEventListener('click', (e) => { if (!(e.target as Element).closest('.nav-group')) groups.forEach((d) => { d.open = false; }); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') groups.forEach((d) => { d.open = false; }); });
+  </script>
 
   <script>
     import { getData, t } from '../lib/client.js';

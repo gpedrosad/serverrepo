@@ -38,26 +38,39 @@ captcha de formularios).
 
 `/items` y `/items-all` (catálogo privado con token) siguen siendo los HTML de siempre.
 
-## Idiomas (español e inglés)
+## Idiomas (español, inglés y portugués)
 
-Cada página existe dos veces: en español en la raíz (`/top`) y en inglés bajo `/en` (`/en/top`).
-Las páginas viven en `src/pages/[...lang]/` y `getStaticPaths` genera las dos versiones; el
-botón de la cabecera lleva a la misma página en el otro idioma y el `<head>` declara las dos con
-`hreflang`.
+Cada página existe tres veces: en español en la raíz (`/top`), en inglés bajo `/en` (`/en/top`) y en
+**portugués de Brasil** bajo `/pt` (`/pt/top`, nov 2026). Las páginas viven en `src/pages/[...lang]/` y
+`getStaticPaths` (`langPaths()`) genera las tres; el selector **ES · EN · PT** de la cabecera lleva a la misma
+página en otro idioma y el `<head>` declara las tres con `hreflang` (`pt-BR`).
 
-- **Textos:** todos en `src/i18n.js` (`dict(lang)`). Una página nueva o un texto nuevo se agrega
-  en los dos idiomas ahí.
+- **Textos:** todos en `src/i18n.js` (`dict(lang)`). Una página nueva o un texto nuevo se agrega en los tres
+  idiomas ahí. `LANGS`, `LANG_NAMES`, `localePath(lang, path)` y `navHref(lang, path)` (que deja en español las
+  páginas que solo existen en español: wiki, items nuevos y quests, `ES_ONLY`).
 - **JS del navegador:** solo recibe `dict(lang).js`, embebido en el HTML (`<script id="i18n">`);
-  `lib/client.js` lo lee con `t('clave', {vars})`. Los links a personajes llevan el prefijo del
-  idioma (`/en/character/...`).
-- **Lo que manda el servidor en español** (mensajes de los formularios, "hace 4d", tipos de
-  hechizo, nombres de planes y extras de premium) se traduce en el navegador: `serverText()`,
-  `relTime()` y los mapas `server`, `kinds`, `planLabels`, `addonDesc` de `i18n.js`. Si se agrega
-  un mensaje nuevo en `web/*.py`, sumarlo a `js.server` del inglés.
-- **Reglas e info:** `OTINFO.en` (traducción de `OTINFO`), que `/api/data` entrega como
-  `otinfo_en`. Si se cambia `OTINFO`, actualizar también `OTINFO.en`.
-- **Sin traducir:** los números siguen con formato chileno (`3.267.392`) y los nombres de
-  criaturas, ítems y hechizos quedan como en el juego (en inglés).
+  `lib/client.js` lo lee con `t('clave', {vars})`. `pageLang()` sale del `<html lang>`. Los links a personajes
+  llevan el prefijo del idioma (`/en/character/...`, `/pt/character/...`).
+- **Lo que manda el servidor en español** (mensajes de los formularios, "hace 4d", tipos de hechizo, nombres de
+  planes y extras de premium) se traduce en el navegador: `serverText()` (mapa `js.server` y las plantillas
+  `accountCreated` / `donationThanks`), `relTime()` (`relNow` / `relAgo`) y los mapas `kinds`, `planLabels`,
+  `addonDesc`. Si se agrega un mensaje nuevo en `web/*.py`, sumarlo a `js.server` de inglés **y** portugués.
+- **Reglas e info:** `OTINFO.en` y `OTINFO.pt` (traducciones de `OTINFO`), que `/api/data` entrega como
+  `otinfo_en` / `otinfo_pt`; `otinfoFor(d)` elige. Si se cambia `OTINFO`, actualizar las dos.
+- **Servidor:** `server.py` sirve `/en`, `/pt`, `/<idioma>/<página>` y `/<idioma>/character/<nombre>`
+  (`LANG_PREFIXES`) y los suma al `sitemap.xml`.
+- **Sin traducir:** los números siguen con formato chileno y los nombres de criaturas, ítems y hechizos quedan
+  como en el juego. Los pagos premium siguen siendo por transferencia en Chile (pendiente: Pix).
+
+## Menú y portada (nov 2026)
+
+- **Menú agrupado** (`Base.astro`): Inicio · **Rankings ▾** (Top, Power, PK, Muertes) · **Guía ▾** (Wiki, Spells,
+  Gemas, Items, Quests, Info, Reglas) · **Ayuda ▾** (Cuenta, Cliente, Reportar bug) · Premium, y a la derecha los
+  botones **Crear cuenta** y **Descargar**. Los grupos son `<details>` (abren sin JS); un script chico deja uno solo
+  abierto y los cierra al tocar fuera o con Escape. En el celular el menú pasa a dos filas y los botones ocupan el ancho.
+- **Portada:** arriba, **"Empieza a jugar en 3 pasos"** (crear cuenta → descargar Windows/macOS → entrar), con
+  botones; debajo, "El servidor ahora" (jugando, récord, uptime), destacados y conectados.
+- **Seguridad de la web:** ver [`../systems/WEB_SECURITY.md`](../systems/WEB_SECURITY.md).
 
 ## Wiki
 

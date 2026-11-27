@@ -14,11 +14,11 @@ const T = dict(lang);
 </Base>
 
 <script>
-  import { getData, esc, isEnglish, t, $ } from '../../lib/client.js';
-  // Cada línea de las reglas (OTINFO, en inglés OTINFO.en) viene como "Categoría · texto".
+  import { getData, esc, otinfoFor, t, $ } from '../../lib/client.js';
+  // Cada línea de las reglas (OTINFO; en inglés OTINFO.en, en portugués OTINFO.pt) viene como "Categoría · texto".
   getData().then((d) => {
-    const info = (isEnglish() && d.otinfo_en?.length) ? d.otinfo_en : (d.otinfo || []);
-    const rules = info.find((s) => s.title === 'REGLAS' || s.title === 'RULES');
+    const info = otinfoFor(d);
+    const rules = info.find((s) => ['REGLAS', 'RULES', 'REGRAS'].includes(s.title));
     if (!rules) { $('rules').innerHTML = `<p class="empty">${esc(t('noRules'))}</p>`; return; }
     const groups = new Map();
     for (const line of rules.lines) {

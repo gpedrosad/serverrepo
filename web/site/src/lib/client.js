@@ -14,31 +14,45 @@ export function t(key, vars) {
   return text;
 }
 
-export const isEnglish = () => document.documentElement.lang === 'en';
+/** Idioma de la página: 'es', 'en' o 'pt' (sale del <html lang> que pone Base.astro). */
+export function pageLang() {
+  const l = (document.documentElement.lang || 'es').slice(0, 2);
+  return l === 'en' || l === 'pt' ? l : 'es';
+}
+export const isEnglish = () => pageLang() === 'en';
 
-/** Ruta en el idioma de la página: '/top' -> '/en/top' en inglés. */
+/** Ruta en el idioma de la página: '/top' -> '/en/top' o '/pt/top'. */
 export function href(path) {
-  return isEnglish() ? (path === '/' ? '/en' : '/en' + path) : path;
+  const l = pageLang();
+  if (l === 'es') return path;
+  return path === '/' ? '/' + l : '/' + l + path;
 }
 
-/** Mensaje del servidor (viene en español) traducido si la página está en inglés. */
+/** Reglas e info (OTINFO) en el idioma de la página; si falta la traducción, en español. */
+export function otinfoFor(d) {
+  const l = pageLang();
+  const tr = l === 'es' ? null : d['otinfo_' + l];
+  return tr && tr.length ? tr : (d.otinfo || []);
+}
+
+/** Mensaje del servidor (viene en español) traducido al idioma de la página. */
 export function serverText(message) {
-  if (!isEnglish() || !message) return message;
+  if (pageLang() === 'es' || !message) return message;
   const known = t('server')[message];
   if (known) return known;
   let m = /^Cuenta (\d+) creada\./.exec(message);
-  if (m) return `Account ${m[1]} created. Log in with that number and your password in the client.`;
+  if (m) return t('accountCreated', { n: m[1] });
   m = /^Gracias por tu donación \((.+)\)\. Activaremos premium en «(.+)» al confirmar el pago\.$/.exec(message);
-  if (m) return `Thanks for your donation (${m[1]}). We'll activate premium on "${m[2]}" once the payment is confirmed.`;
+  if (m) return t('donationThanks', { plan: m[1], name: m[2] });
   return message;
 }
 
 /** Tiempos relativos del servidor ('hace 4d', 'ahora') en el idioma de la página. */
 export function relTime(text) {
-  if (!isEnglish() || !text) return text;
-  if (text === 'ahora') return 'now';
+  if (pageLang() === 'es' || !text) return text;
+  if (text === 'ahora') return t('relNow');
   const m = /^hace (\d+)([mhd])$/.exec(text);
-  return m ? `${m[1]}${m[2]} ago` : text;
+  return m ? t('relAgo', { n: m[1], u: m[2] }) : text;
 }
 
 /** /api/data una sola vez por página (force = volver a pedir, p. ej. el refresco de Live). */

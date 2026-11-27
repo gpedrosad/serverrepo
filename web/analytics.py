@@ -11,6 +11,7 @@ DOWNLOAD_KEYS = {
     "Retro76-Mac.zip": "mac",
 }
 
+MAX_VISITORS_PER_DAY = 20000   # tope: con IPs inventadas el archivo no crece sin fin
 PREMIUM_EVENTS = frozenset({
     "tab_view",
     "checkout_open",
@@ -74,7 +75,7 @@ class WebAnalytics:
         with _lock:
             data = self._load()
             bucket = self._day_bucket(data, _today())
-            if ip not in bucket["visitors"]:
+            if ip not in bucket["visitors"] and len(bucket["visitors"]) < MAX_VISITORS_PER_DAY:
                 bucket["visitors"].append(ip)
             self._save(data)
 

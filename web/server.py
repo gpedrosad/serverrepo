@@ -2,6 +2,8 @@
 """Retro76 web — highscores, status, deaths, OTINFO."""
 from __future__ import annotations
 
+import hmac
+import ipaddress
 import json
 import os
 import re
@@ -61,17 +63,24 @@ CHARACTER_PAGE_EN = DIST_DIR / "en" / "character.html"
 WIKI_SLUG = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")  # /wiki/<slug> -> dist/wiki/<slug>.html
 
 
+_token_fails: dict[str, list[float]] = {}
+_token_fail_lock = threading.Lock()
+LANG_PREFIXES = ("en", "pt")          # /en/... y /pt/...; el español va en la raíz
+
+
 def site_page_file(path: str) -> Path | None:
     """'/top' -> dist/top.html, '/en' -> dist/en.html, '/en/top' -> dist/en/top.html; None si no es página."""
     name = path.strip("/")
     if name in ("", "index.html"):
         return DIST_DIR / "index.html"
-    if name == "en":
-        return DIST_DIR / "en.html"
+    if name in LANG_PREFIXES:
+        return DIST_DIR / f"{name}.html"
     if name in SITE_PAGES:
         return DIST_DIR / f"{name}.html"
-    if name.startswith("en/") and name[3:] in SITE_PAGES and name[3:] not in ES_ONLY_PAGES:
-        return DIST_DIR / "en" / f"{name[3:]}.html"
+    for lang in LANG_PREFIXES:
+        sub = name[len(lang) + 1:]
+        if name.startswith(lang + "/") and sub in SITE_PAGES and sub not in ES_ONLY_PAGES:
+            return DIST_DIR / lang / f"{sub}.html"
     if name == "wiki":
         return DIST_DIR / "wiki.html"
     if name.startswith("wiki/") and WIKI_SLUG.fullmatch(name[5:]):
@@ -174,21 +183,45 @@ def ot_monitor_loop() -> None:
             log_exception("monitor", exc, context="ot_monitor_loop")
 
 
+ITEMS_TOKEN_FILE = WEB_DIR / ".items-admin-token"   # token del catálogo privado (fuera de git)
+
+
+def _is_loopback(ip: str) -> bool:
+    try:
+        return ipaddress.ip_address(ip).is_loopback
+    except ValueError:
+        return False
+
+
 def client_ip(handler: BaseHTTPRequestHandler) -> str:
+    """IP real del visitante. Los headers del proxy (X-Real-IP / X-Forwarded-For) solo se creen si la
+    conexión viene del propio servidor (nginx en 127.0.0.1); si no, cualquiera inventaría su IP y se
+    saltaría los límites de intentos. De X-Forwarded-For vale el ÚLTIMO valor: el que agrega nginx."""
+    addr = getattr(handler, "client_address", None)
+    peer = addr[0] if addr else "?"
     headers = getattr(handler, "headers", None)
-    if headers is not None:
+    if headers is not None and _is_loopback(peer):
+        real = headers.get("X-Real-IP", "").strip()
+        if real:
+            return real[:64]
         fwd = headers.get("X-Forwarded-For", "")
         if fwd:
-            return fwd.split(",")[0].strip()
-    addr = getattr(handler, "client_address", None)
-    if addr:
-        return addr[0]
-    return "?"
+            return fwd.split(",")[-1].strip()[:64]
+    return peer
 
 
 class Handler(BaseHTTPRequestHandler):
-    server_version = "Retro76Web/1.0"
+    server_version = "Retro76Web"
+    sys_version = ""          # no mostrar la versión de Python en el header Server
+    timeout = 20              # una conexión lenta no deja un hilo colgado para siempre
     _response_code = 0
+
+    def end_headers(self) -> None:
+        # Cabeceras de seguridad en todas las respuestas.
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.send_header("X-Frame-Options", "DENY")
+        self.send_header("Referrer-Policy", "strict-origin-when-cross-origin")
+        super().end_headers()
 
     def send_response(self, code: int, message: str | None = None) -> None:
         self._response_code = code
@@ -245,7 +278,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self) -> None:
         path = self.path.split("?", 1)[0]
-        if path in ("/", "/index.html", "/en"):
+        if path in ("/", "/index.html", "/en", "/pt"):
             analytics.record_visit(client_ip(self))
             self._site_page(path)
         elif path in ("/favicon.png", "/favicon.ico"):
@@ -268,6 +301,8 @@ class Handler(BaseHTTPRequestHandler):
             self._file(CHARACTER_PAGE, "text/html; charset=utf-8", cache="no-cache")
         elif path.startswith("/en/character/"):
             self._file(CHARACTER_PAGE_EN, "text/html; charset=utf-8", cache="no-cache")
+        elif path.startswith("/pt/character/"):
+            self._file(DIST_DIR / "pt" / "character.html", "text/html; charset=utf-8", cache="no-cache")
         elif site_page_file(path):
             self._site_page(path)
         elif path.startswith("/_astro/"):
@@ -309,7 +344,13 @@ class Handler(BaseHTTPRequestHandler):
             self.send_error(404)
 
     def _create_account(self) -> None:
-        length = int(self.headers.get("Content-Length", "0"))
+        try:
+            length = int(self.headers.get("Content-Length", "0"))
+        except ValueError:
+            length = -1
+        if length <= 0 or length > 8192:
+            self._json(400, {"ok": False, "message": "Datos inválidos."})
+            return
         ip = client_ip(self)
         acc, name = 0, ""
         try:
@@ -390,28 +431,48 @@ class Handler(BaseHTTPRequestHandler):
         except (json.JSONDecodeError, UnicodeDecodeError):
             self._json(400, {"ok": False})
             return
-        event = str(body.get("event", "")).strip()
+        event = str(body.get("event", "")).strip()[:40]
         detail = body.get("detail")
-        if not isinstance(detail, dict):
+        if isinstance(detail, dict):
+            # Solo hasta 6 claves cortas con valores simples: no guardar lo que mande cualquiera.
+            detail = {str(k)[:24]: (v[:40] if isinstance(v, str) else v) for k, v in list(detail.items())[:6]
+                      if isinstance(v, (str, int, float, bool))} or None
+        else:
             detail = None
         analytics.record_premium_event(ip, event, detail)
         self._json(200, {"ok": True})
 
     def _items_admin_token(self) -> str:
-        return "2424"
+        """Token del catálogo privado: variable ITEMS_ADMIN_TOKEN o archivo web/.items-admin-token (fuera
+        de git). Sin token (o con uno de menos de 12 caracteres), el catálogo no se sirve."""
+        token = os.environ.get("ITEMS_ADMIN_TOKEN", "").strip()
+        if not token and ITEMS_TOKEN_FILE.is_file():
+            token = ITEMS_TOKEN_FILE.read_text(encoding="utf-8").strip()
+        return token if len(token) >= 12 else ""
 
     def _items_token_ok(self) -> bool:
         token = self._items_admin_token()
         if not token:
             return False
-        if self.headers.get("X-Items-Token") == token:
-            return True
-        query = self.path.split("?", 1)
-        if len(query) > 1:
-            for part in query[1].split("&"):
-                if part.startswith("token="):
-                    return unquote(part.split("=", 1)[1]) == token
-        return False
+        ip = client_ip(self)
+        now = time.time()
+        with _token_fail_lock:
+            fails = [t for t in _token_fails.get(ip, []) if now - t < 3600]
+            _token_fails[ip] = fails
+            if len(fails) >= 10:                 # 10 intentos malos por hora y por IP
+                return False
+        given = self.headers.get("X-Items-Token", "")
+        if not given:
+            query = self.path.split("?", 1)
+            if len(query) > 1:
+                for part in query[1].split("&"):
+                    if part.startswith("token="):
+                        given = unquote(part.split("=", 1)[1])
+        ok = bool(given) and hmac.compare_digest(given.encode("utf-8"), token.encode("utf-8"))
+        if given and not ok:
+            with _token_fail_lock:
+                _token_fails.setdefault(ip, []).append(now)
+        return ok
 
     def _character_api(self, raw_name: str) -> None:
         name = unquote(raw_name.split("?", 1)[0]).strip()
@@ -447,7 +508,8 @@ class Handler(BaseHTTPRequestHandler):
 
     def _sitemap_xml(self) -> None:
         urls = [f"{SITE_URL}/"] + [f"{SITE_URL}/{page}" for page in SITE_PAGES]
-        urls += [f"{SITE_URL}/en"] + [f"{SITE_URL}/en/{page}" for page in SITE_PAGES if page not in ES_ONLY_PAGES]
+        for lang in LANG_PREFIXES:
+            urls += [f"{SITE_URL}/{lang}"] + [f"{SITE_URL}/{lang}/{page}" for page in SITE_PAGES if page not in ES_ONLY_PAGES]
         urls += [f"{SITE_URL}/wiki"] + [f"{SITE_URL}/wiki/{slug}" for slug in wiki_slugs()]
         if PLAYERS_DIR.is_dir():
             names = sorted(
@@ -577,9 +639,16 @@ class Handler(BaseHTTPRequestHandler):
         self._file(path, ctype, head_only=head_only, cache="public, max-age=31536000, immutable")
 
     def _static(self, url_path: str, *, head_only: bool = False) -> None:
+        # Solo dentro de su carpeta (assets/, components/ o data/): con "/data/../state/..." se leían los
+        # pedidos premium, los comprobantes y el token. Nada de "..", "%" ni barras invertidas.
         rel = url_path.lstrip("/")
+        top = rel.split("/", 1)[0]
+        if top not in ("assets", "components", "data") or ".." in rel or "%" in rel or "\\" in rel:
+            self.send_error(404)
+            return
+        base = (WEB_DIR / top).resolve()
         path = (WEB_DIR / rel).resolve()
-        if not str(path).startswith(str(WEB_DIR.resolve())):
+        if not path.is_relative_to(base):
             self.send_error(404)
             return
         if not path.is_file():
@@ -593,8 +662,11 @@ class Handler(BaseHTTPRequestHandler):
         self._file(path, ctype, head_only=head_only, cache=cache)
 
     def _updater_api(self) -> None:
-        length = int(self.headers.get("Content-Length", "0"))
-        if length > 0:
+        try:
+            length = int(self.headers.get("Content-Length", "0"))
+        except ValueError:
+            length = 0
+        if 0 < length <= 65536:
             try:
                 self.rfile.read(length)
             except Exception:
@@ -675,4 +747,5 @@ def start_ot_monitor() -> None:
 if __name__ == "__main__":
     start_ot_monitor()
     print(f"Retro76 web: http://localhost:{PORT}/")
-    ThreadingHTTPServer(("", PORT), Handler).serve_forever()
+    # WEB_BIND=127.0.0.1 en el VPS (detrás de nginx); vacío = todas las interfaces (la ThinkPad en la LAN).
+    ThreadingHTTPServer((os.environ.get("WEB_BIND", ""), PORT), Handler).serve_forever()

@@ -36,6 +36,7 @@ web/downloads/*.tmp
 web/state/analytics.json
 web/state/daily.json
 web/state/register.json
+web/state/*.tmp
 web/state/peak.json
 web/state/premium_orders.json
 web/uploads/

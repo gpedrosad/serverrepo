@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 import json
+import os
 import random
+import threading
 import time
 import uuid
 from pathlib import Path
@@ -11,13 +13,15 @@ HOUR_LIMIT = 5
 DAY_LIMIT = 15
 CHALLENGE_TTL = 600
 MIN_FORM_SECONDS = 3
+MAX_CHALLENGES = 2000          # si alguien pide miles de captchas, se descartan los más viejos
+_lock = threading.RLock()      # cargar, cambiar y guardar el estado de a uno (si no, se corrompe y resetea los límites)
 TOO_FAST_MESSAGE = "El formulario se envió demasiado rápido."
 
 
 def check_form_timing(form_ts: float) -> str | None:
     """Anti-bot: rechaza envíos instantáneos. Tolera reloj del cliente adelantado."""
-    if form_ts <= 0:
-        return None
+    if form_ts <= 0:                       # el formulario siempre lo manda: sin él es un bot
+        return TOO_FAST_MESSAGE
     elapsed = time.time() - form_ts
     if 0 <= elapsed < MIN_FORM_SECONDS:
         return TOO_FAST_MESSAGE
@@ -38,7 +42,10 @@ class RegisterGuard:
             return {"ips": {}, "challenges": {}}
 
     def _save(self, data: dict) -> None:
-        self.state_file.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+        # Escritura atómica: a un .tmp y después replace, así nunca queda un JSON a medias.
+        tmp = self.state_file.with_name(self.state_file.name + ".tmp")
+        tmp.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+        os.replace(tmp, self.state_file)
 
     def _prune(self, data: dict, now: float) -> None:
         data["challenges"] = {
@@ -53,16 +60,25 @@ class RegisterGuard:
         data["ips"] = ips
 
     def new_challenge(self) -> dict:
-        now = time.time()
-        data = self._load()
-        self._prune(data, now)
-        a, b = random.randint(2, 9), random.randint(2, 9)
-        cid = uuid.uuid4().hex
-        data.setdefault("challenges", {})[cid] = {"a": a, "b": b, "exp": now + CHALLENGE_TTL}
-        self._save(data)
-        return {"id": cid, "question": f"{a} + {b}"}
+        with _lock:
+            now = time.time()
+            data = self._load()
+            self._prune(data, now)
+            a, b = random.randint(2, 9), random.randint(2, 9)
+            cid = uuid.uuid4().hex
+            ch = data.setdefault("challenges", {})
+            ch[cid] = {"a": a, "b": b, "exp": now + CHALLENGE_TTL}
+            if len(ch) > MAX_CHALLENGES:
+                for old in sorted(ch, key=lambda k: ch[k].get("exp", 0))[: len(ch) - MAX_CHALLENGES]:
+                    del ch[old]
+            self._save(data)
+            return {"id": cid, "question": f"{a} + {b}"}
 
     def check_rate(self, ip: str) -> str | None:
+        with _lock:
+            return self._check_rate(ip)
+
+    def _check_rate(self, ip: str) -> str | None:
         now = time.time()
         data = self._load()
         self._prune(data, now)
@@ -74,6 +90,10 @@ class RegisterGuard:
         return None
 
     def record_attempt(self, ip: str) -> None:
+        with _lock:
+            self._record_attempt(ip)
+
+    def _record_attempt(self, ip: str) -> None:
         now = time.time()
         data = self._load()
         self._prune(data, now)
@@ -96,11 +116,12 @@ class RegisterGuard:
         timing_err = check_form_timing(form_ts)
         if timing_err:
             return timing_err
-        now = time.time()
-        data = self._load()
-        self._prune(data, now)
-        ch = data.get("challenges", {}).pop(challenge_id, None)
-        self._save(data)
+        with _lock:                            # pop con lock: un captcha se usa una sola vez
+            now = time.time()
+            data = self._load()
+            self._prune(data, now)
+            ch = data.get("challenges", {}).pop(challenge_id, None)
+            self._save(data)
         if not ch:
             return "Captcha expirado. Recarga la página."
         try:
