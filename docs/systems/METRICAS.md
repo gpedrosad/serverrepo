@@ -46,7 +46,7 @@ distintas; la cuenta sigue al jugador una vez que existe.
 | `client_open` | la primera vez que un cliente desde esa IP pregunta al updater (= instaló y abrió) | web | sí |
 | `account_created` | cuenta y personaje creados en la web (`acc`, `name`, `voc`) | web | no |
 | `first_login` | primer ingreso al juego de esa cuenta (sale de `logins-*.jsonl`) | `collect-metrics.py` | por cuenta |
-| `level` | el personaje pasó nivel 20, 30, 50, 80, 100, 150 o 200 (`level`; los nuevos nacen en nivel 10) | `collect-metrics.py` | por personaje |
+| `level` | el personaje pasó nivel 20, 30, 50, 80, 100, 150 o 200 (`level`; los nuevos nacen en nivel 8) | `collect-metrics.py` | por personaje |
 | `promoted` | hizo la promotion | `collect-metrics.py` | por personaje |
 | `premium_click` | tocó "Pedir por WhatsApp" (`plan`, `total` en USD) | web | no |
 | `premium_active` | el personaje pasó a tener premium | `collect-metrics.py` | por personaje |

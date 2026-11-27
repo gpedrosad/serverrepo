@@ -167,7 +167,7 @@ def snapshot(now: float) -> dict:
     }
 
 
-LEVEL_MILESTONES = (20, 30, 50, 80, 100, 150, 200)   # los personajes nuevos arrancan en nivel 10 (plantillas 0-4.xml)
+LEVEL_MILESTONES = (20, 30, 50, 80, 100, 150, 200)   # los personajes nuevos arrancan en nivel 8 (plantillas 0-4.xml, desde el 27 nov 2026)
 
 
 def _logins() -> list[dict]:
