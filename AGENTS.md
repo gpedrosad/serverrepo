@@ -40,10 +40,10 @@ Si alguno de estos archivos no existe, **avisar** al usuario antes de seguir.
 
 ## 2. Reglas de oro (no negociables)
 
-1. **NUNCA** ejecutar `git stash -u`, `git clean -fd`, `git reset --hard` ni borrado masivo en el repo de la ThinkPad (`~/apps/serverrepo`). Tiene cuentas y personajes, y cambios sin commitear de otras sesiones.
+1. **NUNCA** ejecutar `git stash -u`, `git clean -fd`, `git reset --hard` ni borrado masivo en el repo del servidor (VPS `ssh vps` y ThinkPad, `~/apps/serverrepo`). Tiene cuentas y personajes, y cambios sin commitear de otras sesiones.
 2. **NUNCA** commitear data runtime de jugadores: `accounts/`, `players/` (excepto `0-4.xml`), `online.xml`, `queue.xml`, `houseitems.xml`, `data/houses/*.xml` con dueños reales, `web/state/*.json`.
 3. **NUNCA** commitear binarios ni artefactos: `source/yurots`, `*.o`, `*.bak`, `*.patch`, `core.*`, `*.log` rotados. Excepción a propósito: `web/dist/` (la web Astro compilada; se compila en la ThinkPad con `scripts/web/build-site.sh` y va en el mismo commit que el cambio en `web/site/`, ver `docs/features/18-web-astro.md`).
-4. **NUNCA** deployar a la ThinkPad si el usuario solo pidió debug local. Deploy solo con el OK de Gonzalo. **Siempre preguntar**.
+4. **NUNCA** deployar al VPS si el usuario solo pidió debug local. Deploy solo con el OK de Gonzalo. **Siempre preguntar**.
 5. **SIEMPRE** deployar al VPS siguiendo `docs/systems/VPS_VULTR.md` (leerlo completo antes del primer deploy; la ThinkPad ya no corre el juego): revisar que `main` no pise archivos de otras sesiones, respaldar datos de jugadores, `git merge --ff-only origin/main`, `docker restart -t 45 yurots`, revisar el log. Nada de `docker cp` artesanal.
 6. **SIEMPRE** verificar el estado del servidor con `python3 scripts/ot-probe.py 127.0.0.1 7171` después de tocar el OT (en el VPS: `216.128.175.142 7171`). Canónico: `scripts/ot/ot-probe.py`.
 7. Smoke tests locales **desactivados temporalmente** (`scripts/ot/.smoke-tests-disabled`, symlink en `scripts/`). No correr `test-local-smoke.sh` salvo que el usuario pida reactivarlos o use `--force`. Para validar boot/protocolo usar `ot-probe.py`.
@@ -191,7 +191,7 @@ Si en cualquier paso aparece algo raro (probe FAIL, smoke test FAIL, archivos se
 ## 5. Comunicación con el usuario
 
 **Preguntar antes** de:
-- Deployar a la ThinkPad.
+- Deployar al VPS.
 - Cambios que recompilen el binario C++ (rebuild largo, riesgo de regresión).
 - Cambios en data runtime (accounts, players, houses, online.xml).
 - Cualquier acción irreversible (`git reset --hard`, `rm -rf`, drop de DB, etc.).
@@ -386,4 +386,4 @@ python3 scripts/sync-houses-with-map.py --dry-run
 - Items Zagan con `gameplaySpec` en el manifest **requieren C++** para funcionar en juego (ver sección 8).
 - Helmet con bonus de skills: **`refreshHeadSkillBonus()`** + `getSkill()` leyendo `items[SLOT_HEAD]` en vivo — no solo cache en `checkBoh()`.
 - **Depot vacío tras cambio de mapa:** items en XML, locker sin enlace → `docs/gameplay/DEPOTS.md` + `resolveMapDepotId()` en `actions.cpp`. Probar locker antes de deploy de `test.otbm`.
-- **Dueños de casas en deploy:** `data/houses/*.xml` es runtime en el servidor → `docs/gameplay/HOUSES.md`. Nunca `git checkout -- data/houses/` en la ThinkPad; el deploy respalda `houses` antes de reiniciar.
+- **Dueños de casas en deploy:** `data/houses/*.xml` es runtime en el servidor → `docs/gameplay/HOUSES.md`. Nunca `git checkout -- data/houses/` en el servidor; el deploy respalda `houses` antes de reiniciar.

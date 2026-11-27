@@ -2,9 +2,9 @@
 
 Documento de referencia para entender **qué es este repo**, **cómo está hosteado** y **cómo aplicar cambios sin perder cuentas ni personajes**.
 
-> **Agentes IA (Codex, etc.):** empezar por **[LEERCODEX.md](../LEERCODEX.md)** — acceso SSH a la ThinkPad, logs, cuelgues, scripts de diagnóstico.
+> **Agentes IA (Codex, etc.):** empezar por **[LEERCODEX.md](../LEERCODEX.md)** — acceso SSH al VPS, logs, cuelgues, scripts de diagnóstico.
 
-Por ahora **no hay servidor de producción**: el VPS que había ya no existe. El único servidor es el de prueba en la ThinkPad. Antes de tocarlo, leer **[systems/THINKPAD_TEST_SERVER.md](systems/THINKPAD_TEST_SERVER.md)** (deploy, respaldo, otras sesiones).
+Desde el **27 nov 2026** el servidor corre en un **VPS de Vultr en São Paulo** (`retro76.cl`). Antes de tocarlo, leer **[systems/VPS_VULTR.md](systems/VPS_VULTR.md)** (deploy, respaldo, cron, métricas). La ThinkPad quedó con el juego apagado y sigue publicando el cliente ([systems/THINKPAD_TEST_SERVER.md](systems/THINKPAD_TEST_SERVER.md)).
 
 Para cambios delicados del core que hoy estan aplicados pero pueden necesitar
 rollback, ver tambien:
@@ -30,14 +30,14 @@ El repo incluye servidor (C++), mapa, NPCs, monstruos, spells, web de registro/r
 ## Arquitectura: tres lugares distintos
 
 ```
-┌─────────────┐     git push      ┌──────────────┐   git merge --ff-only   ┌──────────────────────┐
-│  Mac (dev)  │ ────────────────► │   GitHub     │ ──────────────────────► │  ThinkPad (prueba)   │
-│  127.0.0.1  │                   │   main       │                         │  192.168.1.17:7171   │
-└─────────────┘                   └──────────────┘                         └──────────────────────┘
+┌─────────────┐     git push      ┌──────────────┐   git merge --ff-only   ┌──────────────────────────┐
+│  Mac (dev)  │ ────────────────► │   GitHub     │ ──────────────────────► │  VPS Vultr (São Paulo)   │
+│  127.0.0.1  │                   │   main       │                         │  retro76.cl:7171 + web   │
+└─────────────┘                   └──────────────┘                         └──────────────────────────┘
+       │                                  │
+       │  Docker local: pruebas, RME      └─► ThinkPad: compila la web Astro, publica el cliente
        │
-       │  Docker local: pruebas, RME
-       │
-       └─ NO es la fuente de verdad de jugadores: la data vive en la ThinkPad
+       └─ NO es la fuente de verdad de jugadores: la data vive en el VPS
 ```
 
 ### Mac (desarrollo)
@@ -45,7 +45,7 @@ El repo incluye servidor (C++), mapa, NPCs, monstruos, spells, web de registro/r
 - Docker con `docker-compose.prod.yml`
 - `config.lua` → `ip = "127.0.0.1"` (o LAN con `./scripts/share-ot.sh lan`)
 - Web local: `./scripts/web.sh` → `http://localhost:8080`
-- Sirve para probar código y editar mapa (RME). La Mac mini no compila: el C++ se compila en la ThinkPad.
+- Sirve para probar código y editar mapa (RME). La Mac mini no compila: el C++ se compila en el VPS (y la web Astro en la ThinkPad).
 
 ### GitHub (código versionado)
 
@@ -53,25 +53,29 @@ El repo incluye servidor (C++), mapa, NPCs, monstruos, spells, web de registro/r
 - Aquí va **código**, mapas, NPCs, config de plantilla, scripts
 - **No** debe haber cuentas ni personajes reales de jugadores
 
-### ThinkPad (servidor de prueba — el único por ahora)
+### VPS de Vultr (el servidor, desde el 27 nov 2026)
 
 | Dato | Valor |
 |------|--------|
-| Acceso | `ssh thinkpad` |
+| Acceso | `ssh vps` |
 | Ruta del repo | `~/apps/serverrepo` (rama `main`) |
-| Contenedor | `yurots` (`docker-compose.yml`) |
-| Juego | `192.168.1.17:7171` (red local) |
+| Contenedores | `yurots` (`docker-compose.prod.yml`) y `retro76-web`, detrás de Caddy |
+| Juego / web | `retro76.cl:7171` / https://retro76.cl |
 
-Cuenta GM, otras sesiones y deploy: [systems/THINKPAD_TEST_SERVER.md](systems/THINKPAD_TEST_SERVER.md).
-Los deploys van solo con el OK de Gonzalo.
+Deploy, cron, respaldo y métricas: [systems/VPS_VULTR.md](systems/VPS_VULTR.md) y [systems/METRICAS.md](systems/METRICAS.md).
 
-El servidor OT monta `server/YurOTS` como volumen Docker: los XML de cuentas/personajes en disco de la ThinkPad son los que usa el juego.
+El servidor OT monta `server/YurOTS` como volumen Docker: los XML de cuentas/personajes en disco del VPS son los que usa el juego.
+
+### ThinkPad (apoyo)
+
+`ssh thinkpad`. El juego está apagado ahí desde la mudanza. Compila la web Astro (`scripts/web/build-site.sh`) y publica
+el cliente (`publish_client.py`). Ver [systems/THINKPAD_TEST_SERVER.md](systems/THINKPAD_TEST_SERVER.md).
 
 ---
 
 ## Data sagrada (runtime) — no tocar sin backup
 
-Estos archivos son el **progreso real de los jugadores**. Viven en la ThinkPad y están **excluidos de git** (ver `.gitignore`):
+Estos archivos son el **progreso real de los jugadores**. Viven en el VPS y están **excluidos de git** (ver `.gitignore`):
 
 | Ruta | Contenido |
 |------|-----------|
@@ -107,7 +111,7 @@ No van a GitHub (`.gitignore`). Si faltan, la pestaña **Cliente** de la web mue
 
 Se usó `git stash -u` en el VPS de entonces antes de un deploy. Eso **movió del disco al stash** las cuentas creadas por la web. El backup no las incluyó y varios personajes desaparecieron temporalmente (`Cachero`, `Cachomisto`, `Pichulon`, etc.). Se recuperaron desde `stash@{0}^3`.
 
-**Lección:** en el servidor (hoy la ThinkPad), nunca `git stash -u`, `git clean`, ni `git reset --hard` sin backup previo de `accounts/` y `players/`.
+**Lección:** en el servidor (hoy el VPS), nunca `git stash -u`, `git clean`, ni `git reset --hard` sin backup previo de `accounts/` y `players/`.
 
 ---
 
@@ -116,7 +120,7 @@ Se usó `git stash -u` en el VPS de entonces antes de un deploy. Eso **movió de
 ### Sí commitear
 
 - Código C++ (`server/YurOTS/ots/source/`)
-- `config.lua` (con IP local; en la ThinkPad se ajusta la IP a mano)
+- `config.lua` (con IP local; en el VPS se ajusta la IP a mano, sin commitear)
 - Mapa, spawns, NPCs, monstruos, items, spells
 - Web (`web/*.py`, el sitio Astro `web/site/` y su compilado `web/dist/`, etc.)
 - Scripts (`scripts/`)
@@ -142,9 +146,8 @@ Ejemplos: pesos de runas en `items.xml`, script de un NPC, `runes.lua` de Dark R
 
 **En Mac:** editar → `git add` → `git push`
 
-**En la ThinkPad** (solo con el OK de Gonzalo): seguir "Deploy de cambios de datos" en
-[systems/THINKPAD_TEST_SERVER.md](systems/THINKPAD_TEST_SERVER.md) — revisar archivos de otras sesiones,
-respaldar datos de jugadores, `git merge --ff-only origin/main`, `docker restart -t 45 yurots`, revisar el log.
+**En el VPS**: seguir "Deploy de cambios de datos" en [systems/VPS_VULTR.md](systems/VPS_VULTR.md) — respaldar
+datos de jugadores, `git merge --ff-only origin/main`, `docker restart -t 45 yurots`, revisar el log y el probe.
 
 No hace falta `make`. Reiniciar el contenedor basta para recargar items/NPCs.
 
@@ -154,8 +157,8 @@ Ejemplos: mecánicas nuevas, fixes en `player.cpp`, spells en el motor.
 
 **En Mac:** editar → commit → push (la Mac mini no compila)
 
-**En la ThinkPad** (solo con el OK de Gonzalo): actualizar igual que en el caso 1, compilar ahí (Docker i386) y
-reiniciar. Coordinar con la sesión que tenga cambios de C++ sin commitear: el binario que corre puede ser de ellos.
+**En el VPS**: actualizar igual que en el caso 1, compilar ahí (Docker i386, ~5 min con 1 vCPU) y cambiar el
+binario según "Cambios de C++" de [systems/VPS_VULTR.md](systems/VPS_VULTR.md).
 
 ### 3. Cambios solo en el servidor (no commiteados aún)
 
@@ -169,35 +172,36 @@ A veces se aplica un hotfix directo en el servidor (ej. rollback a un commit vie
 
 ---
 
-## Flujo recomendado (Mac → ThinkPad)
+## Flujo recomendado (Mac → VPS)
 
 ```
 1. Desarrollar y probar en Mac (Docker local)
 2. git add (solo archivos de código/datos de juego, NUNCA accounts/players reales)
 3. git commit && git push origin main
-4. Con OK de Gonzalo: deploy a la ThinkPad según docs/systems/THINKPAD_TEST_SERVER.md
-5. Verificar log, ot-probe.py 192.168.1.17 7171 y conteo de cuentas/personajes
+4. Deploy al VPS según docs/systems/VPS_VULTR.md (si cambió web/site: compilar antes con scripts/web/build-site.sh)
+5. Verificar log, ot-probe.py retro76.cl 7171 y conteo de cuentas/personajes
 6. Probar login en el cliente
 ```
 
 ---
 
-## Config que difiere entre Mac y ThinkPad
+## Config que difiere entre Mac y VPS
 
-| Setting | Mac | ThinkPad |
+| Setting | Mac | VPS |
 |---------|-----|-----|
-| `config.lua` → `ip` | `127.0.0.1` | `192.168.1.17` |
-| Jugadores | No (o copia de prueba) | Sí — de prueba, pero se respaldan |
+| `config.lua` → `ip` | `127.0.0.1` | `216.128.175.142` |
+| Jugadores | No (o copia de prueba) | Sí — reales, se respaldan cada hora |
 
-**No commitear** la IP de la ThinkPad al repo; se setea solo ahí.
+**No commitear** la IP del VPS al repo; se setea solo ahí (`url` y `location` sí van en git).
 
 ---
 
-## Backups en la ThinkPad
+## Backups en el VPS
 
 | Ubicación | Cuándo se crea |
 |-----------|----------------|
-| `~/backups/pre-deploy-*` | Antes de cada deploy (procedimiento de `THINKPAD_TEST_SERVER.md`) |
+| `~/backups/pre-deploy-*` | Antes de cada deploy (procedimiento de `VPS_VULTR.md`) |
+| `~/backups/auto/` | Cada hora (cron); la Mac trae copia todos los días a `~/Retro76-backups/vps-auto/` |
 
 Para listar y restaurar:
 
@@ -228,16 +232,16 @@ A junio 2026, en el VPS de entonces (ya no existe):
   no se levantó servidor ni cliente.
 - Detalle técnico y caveats: `docs/RINGS_ANALYSIS.md`
 
-Antes de volver a desplegar features de C++ nuevas, probar en local y deployar a la ThinkPad siguiendo su doc.
+Antes de volver a desplegar features de C++ nuevas, probar en local y deployar al VPS siguiendo su doc.
 
 ---
 
 ## Comandos útiles
 
-### ThinkPad — estado rápido
+### VPS — estado rápido
 
 ```bash
-ssh thinkpad
+ssh vps
 cd ~/apps/serverrepo
 docker ps
 docker logs yurots --tail 30
@@ -245,7 +249,7 @@ ls -1 server/YurOTS/ots/data/accounts/*.xml | wc -l
 ls -1 server/YurOTS/ots/data/players/*.xml | wc -l
 ```
 
-### ThinkPad — reinicio suave (sin deploy)
+### VPS — reinicio suave (sin deploy)
 
 ```bash
 docker restart -t 45 yurots
@@ -265,7 +269,9 @@ docker compose -f docker-compose.prod.yml up -d --build
 
 | Documento | Contenido |
 |-----------|-----------|
-| [systems/THINKPAD_TEST_SERVER.md](systems/THINKPAD_TEST_SERVER.md) | Servidor de la ThinkPad: deploy seguro, otras sesiones, respaldo |
+| [systems/VPS_VULTR.md](systems/VPS_VULTR.md) | El servidor (VPS de Vultr): deploy, cron, respaldo, dominio, otservlist |
+| [systems/METRICAS.md](systems/METRICAS.md) | Métricas, embudo y URL para bots |
+| [systems/THINKPAD_TEST_SERVER.md](systems/THINKPAD_TEST_SERVER.md) | ThinkPad: compilar la web, publicar el cliente, historial hasta el 27 nov 2026 |
 | [OTINFO](../OTINFO) | Reglas del juego, rates, custom |
 | [docs/SETUP.md](SETUP.md) | Docker, compilación i386 |
 | [docs/RME_SETUP.md](RME_SETUP.md) | Editor de mapa |
@@ -276,4 +282,4 @@ docker compose -f docker-compose.prod.yml up -d --build
 
 ## Resumen en una frase
 
-**GitHub tiene el código; la ThinkPad tiene a los jugadores (no hay producción por ahora). Siempre backup antes de deploy; nunca `git stash -u` ni `git clean` en la ThinkPad.**
+**GitHub tiene el código; el VPS tiene a los jugadores. Siempre backup antes de deploy; nunca `git stash -u` ni `git clean` en el servidor.**

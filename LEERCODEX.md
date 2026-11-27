@@ -2,7 +2,7 @@
 
 > **Leer este archivo primero** si entrás al repo para diagnosticar caídas, cuelgues o problemas del OT.
 >
-> Última actualización: nov 2026. Por ahora **no hay servidor de producción**: el único servidor es el de prueba en la ThinkPad. Los cuelgues de jul 2026 se investigaron con `YUROTS_SOCKET_DEBUG=1`.
+> Última actualización: nov 2026. Desde el 27 nov 2026 el servidor corre en un **VPS de Vultr en São Paulo** (`retro76.cl`, `ssh vps`); la ThinkPad quedó de apoyo. Los cuelgues de jul 2026 se investigaron con `YUROTS_SOCKET_DEBUG=1`.
 
 ---
 
@@ -14,22 +14,23 @@
 | Repo | `https://github.com/gpedrosad/serverrepo.git` — rama `main` |
 | Local (dev) | `~/Desktop/yurots-principal/` — Docker, `127.0.0.1:7171` |
 | Servidor | VPS de Vultr en São Paulo (desde el 27 nov 2026): `ssh vps`, `~/apps/serverrepo`, contenedores `yurots` y `retro76-web`, `216.128.175.142:7171` — [docs/systems/VPS_VULTR.md](docs/systems/VPS_VULTR.md). La ThinkPad ya no corre el juego |
-| Data de jugadores | En la ThinkPad (`data/players`, `data/accounts`) — nunca en GitHub |
+| Data de jugadores | En el VPS (`data/players`, `data/accounts`) — nunca en GitHub |
 
-**Regla de oro:** la data runtime (`accounts/`, `players/` reales, `houseitems.xml`) es sagrada. Ver [docs/systems/THINKPAD_TEST_SERVER.md](docs/systems/THINKPAD_TEST_SERVER.md) antes de cualquier `git` en la ThinkPad.
+**Regla de oro:** la data runtime (`accounts/`, `players/` reales, `houseitems.xml`) es sagrada. Ver [docs/systems/VPS_VULTR.md](docs/systems/VPS_VULTR.md) antes de cualquier `git` en el VPS.
 
 ---
 
 ## 2. Cómo acceder
 
-### SSH a la ThinkPad (servidor de prueba)
+### SSH al VPS (el servidor)
 
 ```bash
-ssh thinkpad
+ssh vps
 cd ~/apps/serverrepo
 ```
 
-Sin SSH solo podés leer código local y documentación. Ojo: ahí hay cambios sin commitear de otras sesiones.
+La ThinkPad (`ssh thinkpad`) ya no corre el juego: compila la web y publica el cliente; ahí sí hay cambios sin
+commitear de otras sesiones. Sin SSH solo podés leer código local y documentación.
 
 ### Docker local (Mac)
 
@@ -78,7 +79,7 @@ Para el índice completo y actualizado de toda la documentación, ver **[docs/IN
 
 ## 5. Scripts de diagnóstico (usar en este orden)
 
-Todos viven en `scripts/`. En la ThinkPad: `cd ~/apps/serverrepo` primero.
+Todos viven en `scripts/`. En el VPS: `cd ~/apps/serverrepo` primero.
 
 ### 5.1 Probe — ¿responde el juego?
 
@@ -183,7 +184,7 @@ ss -tan state close-wait | grep 7171
 
 ## 8. Playbook: el servidor “se cayó” (cuelgue)
 
-Ejecutar **en el servidor** (hoy la ThinkPad), **antes** de reiniciar si querés evidencia para root cause:
+Ejecutar **en el servidor** (hoy el VPS), **antes** de reiniciar si querés evidencia para root cause:
 
 ```bash
 ssh thinkpad
@@ -226,7 +227,7 @@ El watchdog debería reiniciar solo en ~4 min (2 fallos × cron 2 min). Si el us
 ## 9. Playbook: crash real (SIGSEGV, container reinició)
 
 ```bash
-cd ~/apps/serverrepo   # en la ThinkPad
+cd ~/apps/serverrepo   # en el VPS
 
 docker inspect yurots --format 'restarts={{.RestartCount}} started={{.State.StartedAt}}'
 docker logs yurots 2>&1 | grep -E 'Segmentation|SIGSEGV|Could not load' | tail -20
@@ -243,13 +244,13 @@ Ver [docs/systems/CRASH_DIAGNOSTICS.md](docs/systems/CRASH_DIAGNOSTICS.md).
 
 ---
 
-## 10. Playbook: deploy / cambios en la ThinkPad
+## 10. Playbook: deploy / cambios en el servidor (VPS)
 
-Solo con el OK de Gonzalo. **Nunca** en la ThinkPad: `git stash -u`, `git clean`, `git reset --hard`, `git pull` a mano.
+**Nunca** en el VPS ni en la ThinkPad: `git stash -u`, `git clean`, `git reset --hard`, `git pull` a mano.
 
-Seguir [docs/systems/THINKPAD_TEST_SERVER.md](docs/systems/THINKPAD_TEST_SERVER.md): revisar que `main` no
-pise archivos de otras sesiones, respaldar datos de jugadores en `~/backups/pre-deploy-FECHA/`,
-`git merge --ff-only origin/main`, `docker restart -t 45 yurots`, revisar el log y correr `ot-probe.py`.
+Seguir [docs/systems/VPS_VULTR.md](docs/systems/VPS_VULTR.md): respaldar datos de jugadores en
+`~/backups/pre-deploy-FECHA/`, `git merge --ff-only origin/main`, `docker restart -t 45 yurots`, revisar el log y
+correr `ot-probe.py retro76.cl 7171`. Cron, watchdog y métricas: misma doc y [docs/systems/METRICAS.md](docs/systems/METRICAS.md).
 
 Cambio de mapa: [docs/CAMBIAR-MAPA.md](docs/CAMBIAR-MAPA.md)
 
@@ -273,7 +274,7 @@ Cambio de mapa: [docs/CAMBIAR-MAPA.md](docs/CAMBIAR-MAPA.md)
 
 ```
 server/YurOTS/ots/
-├── config.lua              # ip: 127.0.0.1 en git; la ThinkPad usa 192.168.1.17 (no commitear IP local)
+├── config.lua              # ip: 127.0.0.1 en git; el VPS usa 216.128.175.142 (no commitear la IP)
 ├── data/
 │   ├── world/test.otbm     # Mapa (en git)
 │   ├── world/npc.xml       # Posiciones NPC (en git)
@@ -289,7 +290,7 @@ server/YurOTS/ots/
 ## 13. Comandos de una línea (cheat sheet)
 
 ```bash
-# Desde la raíz del repo (en la ThinkPad: ~/apps/serverrepo)
+# Desde la raíz del repo (en el VPS: ~/apps/serverrepo)
 # ¿Vivo?
 python3 scripts/ot-probe.py 127.0.0.1 7171
 
@@ -314,7 +315,7 @@ python3 scripts/sync-houses-with-map.py --dry-run
 
 ## 14. Qué NO hacer (agentes IA)
 
-1. **No** `git stash -u` / `git clean` / `git reset --hard` en la ThinkPad.
+1. **No** `git stash -u` / `git clean` / `git reset --hard` en el servidor (VPS) ni en la ThinkPad.
 2. **No** copiar `players/` desde la Mac a la ThinkPad.
 3. **No** commitear `accounts/` ni players reales.
 4. **No** asumir que `docker ps = healthy` implica que el juego responde — siempre `ot-probe`.

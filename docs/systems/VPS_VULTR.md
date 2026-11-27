@@ -150,3 +150,16 @@ clientes hayan abierto al menos una vez.
 4. Juego y web arriba en el VPS (probe OK, 67 ms desde la Mac); cliente publicado con la IP nueva.
 5. Dominio: en Cloudflare `retro76.cl` y `www` pasaron de `64.176.20.238` (el VPS viejo) a `216.128.175.142` en DNS only;
    Caddy sacó los certificados; cliente publicado con `retro76.cl` (`93f4663`).
+
+## Historial
+
+| Fecha | Qué |
+|-------|-----|
+| 2026-11-27 | Mudanza de la ThinkPad al VPS (ver arriba). `main` `65e8c08d`, binario compilado ahí (0 avisos). |
+| 2026-11-27 | Dominio `retro76.cl` (Cloudflare DNS only) + Caddy con HTTPS; cliente apuntando al dominio (`clienteretro` `93f4663`). |
+| 2026-11-27 | `config.lua`: `url = "https://retro76.cl"`, `location = "Brazil"`; ficha en otservlist (`/ots/1667197`). |
+| 2026-11-27 | Web: personajes de cuentas con GM fuera de rankings/online/perfiles/muertes; premium en USD con pago por WhatsApp; detección de idioma; sin menciones a Chile; pulido visual (ui-taste); uptime real desde el protocolo de estado. |
+| 2026-11-27 | Métricas: `collect-metrics.py` cada 5 min, métricas de la web, embudo con IP, informe `metrics-report.py` y URL privada `/stats/<token>` ([METRICAS.md](METRICAS.md)). |
+| 2026-11-27 | Personajes nuevos nacen en nivel 8 (plantillas `players/1-4.xml`). |
+| 2026-11-27 | Descargas por partes (antes enteras en RAM), métricas de la web a disco cada 30 s, cron de watchdog (2 min) y limpieza semanal. |
+

@@ -23,7 +23,7 @@ compilado y JavaScript solo donde hay datos en vivo. Las APIs de `web/server.py`
 | `/quests` | `pages/quests.astro` | **Al compilar**, desde `src/data/quests.json` (registro manual de quests y propuestas). Solo español |
 | `/spells` | `pages/[...lang]/spells.astro` | Lista, maná y ML en vivo de `/api/data` (`spells.xml`); la **explicación de cada hechizo** (es/en) sale **al compilar** de `src/data/spells.json`, por palabras. Hechizo nuevo o cambiado → actualizar su texto ahí |
 | `/reglas`, `/info` | `pages/*.astro` | `/api/data` (OTINFO) |
-| `/cuenta`, `/bugs` | `pages/*.astro` | Formularios a `/api/create-account` y `/api/bug-report` (mismo contrato) |
+| `/cuenta`, `/bugs` | `pages/*.astro` | Formularios a `/api/create-account` y `/api/bug-report` (mismo contrato). La cuenta nueva copia la plantilla de su vocación (`data/players/1-4.xml`): desde el 27 nov 2026 nace en **nivel 8** (exp 4200, 185 de vida, 35 de maná; antes nivel 10) |
 | `/premium` | `pages/premium.astro` | `/api/premium-config` y `/api/premium-order` |
 | `/cliente` | `pages/cliente.astro` | Estático |
 | `/character/<nombre>` | `pages/character.astro` | `/api/character/<nombre>` |
@@ -60,7 +60,7 @@ página en otro idioma y el `<head>` declara las tres con `hreflang` (`pt-BR`).
 - **Servidor:** `server.py` sirve `/en`, `/pt`, `/<idioma>/<página>` y `/<idioma>/character/<nombre>`
   (`LANG_PREFIXES`) y los suma al `sitemap.xml`.
 - **Sin traducir:** los números siguen con formato chileno y los nombres de criaturas, ítems y hechizos quedan
-  como en el juego. Los pagos premium siguen siendo por transferencia en Chile (pendiente: Pix).
+  como en el juego. Premium se cobra en dólares y se paga por WhatsApp (ver [Premium](#premium-usd-y-whatsapp-27-nov-2026)).
 
 ### Detección del idioma (27 nov 2026)
 
@@ -186,14 +186,38 @@ Copia `web/site` (y `web/data/gem-drops.json`) a `thinkpad:~/build/retro76-web`,
 - `/assets/*`, `/data/*`, `/downloads/*` y las APIs, igual que antes.
 - `sitemap.xml` incluye las páginas nuevas.
 
+## Premium: USD y WhatsApp (27 nov 2026)
+
+- **Precios en dólares redondeados** (`web/premium_orders.py`, `PREMIUM_PLANS` y `PREMIUM_ADDONS`): 1 semana US$ 4,
+  2 semanas US$ 6; golden amulet y golden ring US$ 2; experience recovery rune US$ 3; training extension rune US$ 2;
+  private trainer dummy US$ 16. `fmtPrice()` (`lib/client.js`) muestra `US$ N`. La wiki (`premium.md`,
+  `runas-zagan.md`, `accesorios-dorados.md`) tiene los mismos precios: si cambian, cambiar los tres lugares.
+- **Pago por WhatsApp** (+56 9 6825 7817, `PREMIUM_WHATSAPP` en el entorno de la web para cambiarlo): el paso 3 ya no
+  pide transferencia ni comprobante. El botón "Pedir por WhatsApp" abre `wa.me` con el mensaje listo (personaje, plan,
+  extras y total). El staff confirma el pago por WhatsApp y activa premium a mano. `/api/premium-order` (comprobantes)
+  queda en el código pero la página ya no lo usa.
+
 ## Embudo premium
 
 Los eventos siguen siendo los de `web/analytics.py` (`PREMIUM_EVENTS`): `tab_view` al abrir la
 página, `checkout_open` al tocar "Elegir" o entrar al formulario, `plan_select` y `step2` al
-elegir plan, `amulet_toggle` al marcar un extra, `step3` al llegar al nombre del personaje,
-`receipt_selected`, `submit_click` y `submit_fail`.
+elegir plan, `amulet_toggle` al marcar un extra, `step3` al llegar al nombre del personaje y
+`submit_click` = abrió WhatsApp con el pedido (además queda como hito `premium_click` con IP en el embudo de
+[METRICAS.md](../systems/METRICAS.md#embudo)).
+
+## Personajes del staff fuera de la web (27 nov 2026)
+
+`web/data.py` (`refresh_staff_names`, se recalcula cada minuto): todo personaje de una cuenta que tenga algún GM/CM
+(access > 0) se oculta de rankings, online, perfiles (`/character/...` da 404), "Última muerte" y el sitemap. Así los
+personajes de prueba del staff (Master Sorcerer nivel 1952, Knight Retro) no aparecen. `HIDDEN_RANK_PLAYERS` sigue
+para nombres sueltos.
+
+## Métricas de la web
+
+Cada página del sitio suma visitante, página vista, idioma, sitio de origen y locale del navegador; las descargas,
+el updater y los hitos del embudo también se registran. Todo en [METRICAS.md](../systems/METRICAS.md), incluida la URL
+privada para bots `/stats/<token>`.
 
 ## Pendiente
 
-- Falta la imagen del extra "Private trainer dummy" (`assets/premium/20155-small.png`); ya
-  faltaba antes. La página la oculta en vez de mostrarla rota.
+- Nada de la imagen del dummy: ya está (`assets/premium/20155-small.png`, 27 nov 2026).

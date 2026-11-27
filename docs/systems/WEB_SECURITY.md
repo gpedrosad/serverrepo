@@ -3,6 +3,13 @@
 Revisión de nov 2026, antes de exponer la web a internet en un VPS. La web crea cuentas y personajes (escribe
 XML en `data/accounts` y `data/players` del OT), recibe comprobantes de pago y guarda estado en `web/state/`.
 
+> **27 nov 2026 (VPS de Vultr):** la web está detrás de Caddy en https://retro76.cl ([VPS_VULTR.md](VPS_VULTR.md)).
+> Caddy reemplaza el `X-Forwarded-For` que manda el visitante, así que la IP registrada es la real. El puerto 8080
+> sigue abierto para clientes viejos y ahí la web todavía confía en `X-Forwarded-For`: cerrarlo cuando todos usen el
+> dominio. Premium ya no pide comprobantes (se paga por WhatsApp); el endpoint sigue con sus protecciones. Hay una
+> ruta privada de métricas `/stats/<STATS_TOKEN>` (404 sin el token, compara con `hmac.compare_digest`, sin IPs: van
+> como hash); ver [METRICAS.md](METRICAS.md#url-para-bots).
+
 ## Arreglado (nov 2026)
 
 | Riesgo | Antes | Ahora |
