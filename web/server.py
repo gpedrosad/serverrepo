@@ -90,6 +90,47 @@ def site_page_file(path: str) -> Path | None:
     return None
 
 
+def preferred_lang(accept: str) -> str | None:
+    """Idioma del navegador entre es/en/pt según Accept-Language (el de mayor q; empate: el primero).
+    Otro idioma (de, pl...) -> "en"; sin cabecera (bots) -> None, así los buscadores ven el español."""
+    best, best_q = None, -1.0
+    for part in accept.split(","):
+        bits = part.strip().split(";")
+        base = bits[0].strip().lower().split("-")[0]
+        q = 1.0
+        for b in bits[1:]:
+            b = b.strip()
+            if b.startswith("q="):
+                try:
+                    q = float(b[2:])
+                except ValueError:
+                    q = 0.0
+        if base in ("es", "en", "pt") and q > best_q:
+            best, best_q = base, q
+    if best is None:
+        return "en" if accept.strip() else None
+    return best
+
+
+def lang_redirect_target(path: str, cookie: str, accept: str) -> str | None:
+    """Página en español (raíz) que también existe en /en y /pt: a dónde mandar a este visitante, o None.
+    Manda la cookie `lang` (la pone el botón de idioma); si no hay, el idioma del navegador."""
+    if path in ("/", "/index.html"):
+        rest = ""
+    elif path.startswith("/character/"):
+        rest = path
+    else:
+        name = path.strip("/")
+        if name not in SITE_PAGES or name in ES_ONLY_PAGES:
+            return None
+        rest = path
+    m = re.search(r"(?:^|;)\s*lang=(es|en|pt)\b", cookie or "")
+    lang = m.group(1) if m else preferred_lang(accept or "")
+    if lang not in LANG_PREFIXES:
+        return None
+    return f"/{lang}{rest}"
+
+
 def wiki_slugs() -> list[str]:
     """Artículos publicados de la wiki (los que Astro compiló en dist/wiki/)."""
     return sorted(p.stem for p in (DIST_DIR / "wiki").glob("*.html") if WIKI_SLUG.fullmatch(p.stem))
@@ -277,8 +318,25 @@ class Handler(BaseHTTPRequestHandler):
         else:
             self.send_error(404)
 
+    def _lang_redirect(self, path: str) -> bool:
+        """Detecta el idioma (cookie `lang` o Accept-Language) y redirige /x -> /en/x o /pt/x. Ver preferred_lang."""
+        target = lang_redirect_target(path, self.headers.get("Cookie", ""), self.headers.get("Accept-Language", ""))
+        if not target:
+            return False
+        if "?" in self.path:
+            target += "?" + self.path.split("?", 1)[1]
+        self.send_response(302)
+        self.send_header("Location", target)
+        self.send_header("Vary", "Accept-Language, Cookie")
+        self.send_header("Cache-Control", "no-cache")
+        self.send_header("Content-Length", "0")
+        self.end_headers()
+        return True
+
     def do_GET(self) -> None:
         path = self.path.split("?", 1)[0]
+        if self._lang_redirect(path):
+            return
         if path in ("/", "/index.html", "/en", "/pt"):
             analytics.record_visit(client_ip(self))
             self._site_page(path)

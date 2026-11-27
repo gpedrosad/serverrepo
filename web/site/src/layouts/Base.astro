@@ -70,10 +70,18 @@ const premium = link('/premium');
         {langSwitch && (
           <nav class="lang-switch" aria-label={T.langLabel}>
             {LANGS.map((l) => (
-              <a href={localePath(l, path)} hreflang={HREFLANG[l]} lang={HREFLANG[l]} title={LANG_NAMES[l]}
+              <a href={localePath(l, path)} data-lang={l} hreflang={HREFLANG[l]} lang={HREFLANG[l]} title={LANG_NAMES[l]}
                  aria-current={l === lang ? 'true' : undefined}>{l.toUpperCase()}</a>
             ))}
           </nav>
+        )}
+        {langSwitch && (
+          <script is:inline>
+            // El idioma elegido a mano queda un año en la cookie `lang`; web/server.py la usa antes que el del navegador.
+            document.querySelectorAll('.lang-switch a[data-lang]').forEach((a) => a.addEventListener('click', () => {
+              document.cookie = 'lang=' + a.dataset.lang + '; path=/; max-age=31536000; SameSite=Lax';
+            }));
+          </script>
         )}
       </div>
     </header>
