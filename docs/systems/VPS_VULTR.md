@@ -15,6 +15,14 @@ queda con el juego apagado (`yurots` detenido, sin reinicio automático) y sus d
 | Respaldo | cron de `gonzalo` al minuto 17: `scripts/deploy/auto-backup-runtime.sh` → `~/backups/auto/`. La Mac lo trae a `~/Retro76-backups/vps-auto/` con `scripts/deploy/pull-auto-backups.sh` (launchd, 13:00 y al prender) |
 | No está en el VPS | el mapa interactivo de monstruos (8077) y la web 2 (8076) siguen en la ThinkPad, solo en la red local |
 
+## otservlist
+
+Desde el 27 nov 2026 está en https://otservlist.org/ots/1667197 (cuenta de Gonzalo; editar en
+`/servers/edit/1667197`): `retro76.cl:7171`, Brazil, 7.6, PvP, exp 5, descripción en portugués. La lista no tiene campo
+de web: la saca del protocolo de estado, o sea de `url` en `config.lua`, igual que `location` ("Brazil") y el dueño
+(`ownername`). Ojo con sus reglas: el "online" no puede contar personajes inactivos más de 15 min, x-logs ni más de 4
+por IP (YurOTS cuenta a todos los conectados); si se llena de AFKs hay riesgo de ban de 30 a 90 días.
+
 ## Uso medido (27 nov 2026)
 
 Con 0–1 jugadores: `yurots` 135–190 MB, `retro76-web` 21–35 MB, total de la máquina ~600 MB contando el
