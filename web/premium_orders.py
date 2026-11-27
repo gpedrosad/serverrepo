@@ -1,4 +1,7 @@
-"""Pedidos premium: persistencia JSON + comprobantes en disco."""
+"""Pedidos premium: precios en dólares (USD, redondeados) y pago por WhatsApp (desde el 27 nov 2026).
+
+La página /premium arma el pedido y abre WhatsApp con el mensaje listo. El endpoint de comprobantes
+(create_premium_order) queda por compatibilidad, pero la página ya no lo usa."""
 from __future__ import annotations
 
 import cgi
@@ -11,8 +14,8 @@ from pathlib import Path
 from data import player_name_taken
 
 PREMIUM_PLANS = {
-    "1954": {"days": 7, "label": "1 semana", "price": 4000, "item_id": 1954},
-    "2345": {"days": 14, "label": "2 semanas", "price": 6000, "item_id": 2345},
+    "1954": {"days": 7, "label": "1 semana", "price": 4, "item_id": 1954},
+    "2345": {"days": 14, "label": "2 semanas", "price": 6, "item_id": 2345},
 }
 MAX_RECEIPT_BYTES = 5 * 1024 * 1024
 ALLOWED_RECEIPT_EXT = frozenset({".jpg", ".jpeg", ".png", ".pdf", ".webp"})
@@ -23,7 +26,7 @@ PREMIUM_ADDONS: tuple[dict, ...] = (
     {
         "key": "golden_amulet",
         "item_id": 2130,
-        "price": 2000,
+        "price": 2,
         "label": "Golden amulet",
         "desc": "El oro del botín va directo a tu cuenta bancaria.",
         "ext": "jpg",
@@ -31,7 +34,7 @@ PREMIUM_ADDONS: tuple[dict, ...] = (
     {
         "key": "golden_ring",
         "item_id": 2179,
-        "price": 2000,
+        "price": 2,
         "label": "Golden ring",
         "desc": "+20% de oro de monstruos mientras lo llevas equipado.",
         "ext": "jpg",
@@ -39,7 +42,7 @@ PREMIUM_ADDONS: tuple[dict, ...] = (
     {
         "key": "experience_recovery_rune",
         "item_id": 20131,
-        "price": 2500,
+        "price": 3,
         "label": "Experience recovery rune",
         "desc": "Recupera 60-80% de la exp perdida en tu última muerte.",
         "ext": "png",
@@ -47,7 +50,7 @@ PREMIUM_ADDONS: tuple[dict, ...] = (
     {
         "key": "training_extension_rune",
         "item_id": 20132,
-        "price": 1500,
+        "price": 2,
         "label": "Training extension rune",
         "desc": "+12 horas de training ese día (una vez por personaje).",
         "ext": "png",
@@ -55,7 +58,7 @@ PREMIUM_ADDONS: tuple[dict, ...] = (
     {
         "key": "private_trainer_dummy",
         "item_id": 20155,
-        "price": 15000,
+        "price": 16,
         "label": "Private trainer dummy",
         "desc": "Ponelo en un SQM libre de tu casa y dale Use (1 por house, solo el dueño).",
         "ext": "png",
@@ -63,7 +66,7 @@ PREMIUM_ADDONS: tuple[dict, ...] = (
 )
 
 GOLDEN_AMULET_ID = 2130
-GOLDEN_AMULET_PRICE = 2000
+GOLDEN_AMULET_PRICE = 2
 
 
 def _addon_by_key(key: str) -> dict | None:
@@ -84,11 +87,12 @@ def _addon_images(item_id: int, ext: str) -> dict:
 def default_payment_info() -> dict:
     import os
 
+    whatsapp = os.environ.get("PREMIUM_WHATSAPP", "+56 9 6825 7817")
     return {
-        "holder": os.environ.get("PREMIUM_PAY_HOLDER", "Javier Pedrosa"),
-        "rut": os.environ.get("PREMIUM_PAY_RUT", "19.295.136-4"),
-        "account": os.environ.get("PREMIUM_PAY_ACCOUNT", "19295136"),
-        "note": "Donación por transferencia. Adjunta el comprobante en el formulario.",
+        "currency": "USD",
+        "whatsapp": whatsapp,
+        "wa": "".join(ch for ch in whatsapp if ch.isdigit()),
+        "note": "Pago por WhatsApp: escríbenos con tu personaje y el pedido y te pasamos cómo pagar.",
     }
 
 

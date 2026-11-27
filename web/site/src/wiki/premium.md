@@ -10,7 +10,7 @@ estado: publicado
 ## Lo esencial
 
 - Premium es una **donación voluntaria**. El servidor sigue siendo free to play.
-- Cuesta **$4.000** por 1 semana o **$6.000** por 2 semanas (pesos chilenos).
+- Cuesta **US$ 4** por 1 semana o **US$ 6** por 2 semanas (dólares).
 - Da **+10%** de exp y loot, skills y magic level **x2**, **6 h** de training al día y mejor regeneración.
 - Es por **personaje** y solo se descuenta mientras estás **conectado**.
 - La **promoción** con Orlan es aparte: nivel 20 y **20.000 gp**, con o sin premium.
@@ -19,7 +19,7 @@ estado: publicado
 
 1. Entra a la [página Premium](/premium) de retro76.cl.
 2. Elige el plan y, si quieres, algún extra.
-3. Transfiere el total y sube el comprobante (JPG, PNG o PDF, hasta 5 MB) con el nombre exacto de tu personaje.
+3. Escribe el nombre exacto de tu personaje y toca **Pedir por WhatsApp**: se abre WhatsApp (+56 9 6825 7817) con tu pedido y ahí te pasamos cómo pagar.
 4. El staff revisa el pago y activa el premium.
 5. En el juego, escribe `!premmy` para ver cuánto te queda.
 
@@ -43,11 +43,11 @@ Los personajes femeninos tienen Summoner como outfit gratis y Mage como premium.
 
 | Extra | Precio | Qué hace |
 |---|---|---|
-| {item:2130} Golden Amulet | $2.000 | El oro del botín va directo a tu banco. |
-| {item:2179} Golden Ring | $2.000 | +20% de oro de monstruos mientras lo llevas puesto. |
-| {item:20131} Experience recovery rune | $2.500 | Te devuelve 60% a 80% de la exp perdida en tu última muerte. |
-| {item:20132} Training extension rune | $1.500 | +12 h de training ese día. Ver [[training]]. |
-| {item:20155} Private Trainer Dummy | $15.000 | Un trainer para tu casa. Ver [[training]]. |
+| {item:2130} Golden Amulet | US$ 2 | El oro del botín va directo a tu banco. |
+| {item:2179} Golden Ring | US$ 2 | +20% de oro de monstruos mientras lo llevas puesto. |
+| {item:20131} Experience recovery rune | US$ 3 | Te devuelve 60% a 80% de la exp perdida en tu última muerte. |
+| {item:20132} Training extension rune | US$ 2 | +12 h de training ese día. Ver [[training]]. |
+| {item:20155} Private Trainer Dummy | US$ 16 | Un trainer para tu casa. Ver [[training]]. |
 
 ## Promoción con Orlan
 

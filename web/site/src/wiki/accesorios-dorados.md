@@ -41,7 +41,7 @@ Un monstruo suelta 150 gp:
 
 ## Dónde se consiguen
 
-En la página de [[premium]], al elegir tu plan, puedes sumar cada uno como extra por **$2.000 CLP**.
+En la página de [[premium]], al elegir tu plan, puedes sumar cada uno como extra por **US$ 2**.
 
 > **Tip:** el Golden Amulet te ahorra cargar monedas: cazas más tiempo sin llenar tu capacidad.
 

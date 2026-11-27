@@ -41,8 +41,8 @@ En la página de [[premium]], al elegir tu plan:
 
 | Runa | Precio |
 |---|---|
-| Experience Recovery Rune | $2.500 CLP |
-| Training Extension Rune | $1.500 CLP |
+| Experience Recovery Rune | US$ 3 |
+| Training Extension Rune | US$ 2 |
 
 ## Peso de las runas
 

@@ -92,7 +92,7 @@ export function rowsOrEmpty(list, cols, render, emptyText = '—') {
 }
 
 export function fmtPrice(n) {
-  return '$' + Number(n || 0).toLocaleString('es-CL');
+  return 'US$ ' + Number(n || 0).toLocaleString('en-US');   // premium en dólares redondeados (nov 2026)
 }
 
 /** Formulario con captcha del servidor: pide el desafío y marca la hora de apertura. */
