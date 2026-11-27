@@ -146,6 +146,19 @@ Página editorial oscura en vez de "cards":
 
 Tokens de color y medidas: arriba de `styles/site.css`.
 
+Pulido del 27 nov 2026 (skill ui-taste, modo polish, sin rediseño):
+- Había dos reglas `.steps` y la segunda (código muerto de un premium viejo) pisaba la grilla de "Empieza a jugar en 3
+  pasos": en móvil las 3 tarjetas quedaban apretadas y la página se desbordaba en horizontal. Se borró; ahora el texto
+  de cada paso va en `--muted` a 14 px.
+- Móvil (≤ 480 px): marca arriba y debajo, en una fila, estado a la izquierda y botón de idioma a la derecha.
+- Botones sin cortar la etiqueta en dos líneas (`white-space: nowrap`); el teléfono de WhatsApp tampoco se corta (`.nowrap`).
+- Los encabezados de columnas numéricas (`th.n`) van en la letra normal; solo los números de las celdas son monoespaciados.
+- Las listas numeradas (`ol.numbered`, `.wiki-body ol`) ya no sacan el número fuera del borde del contenido.
+- Footer en el mismo sistema que el resto: fondo `--bg-raise` liso, sin resplandor radial, sin degradé en el logo ni
+  halo al pasar el mouse; los íconos de ítems bajan a otra fila en móvil en vez de cortarse.
+- Faltaba la imagen del Private trainer dummy en premium (`assets/premium/20155-small.png` y `@2x`, sacadas del sprite
+  `assets/items/custom/20155.png`, el 2x sin suavizar).
+
 ## Compilar
 
 **No se compila en la Mac mini.** Se compila en la ThinkPad:

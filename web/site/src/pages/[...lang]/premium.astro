@@ -93,7 +93,7 @@ const usd = (n: number) => 'US$ ' + n.toLocaleString('en-US', { maximumFractionD
       <fieldset style="border:0;padding:0;margin:0" class="form">
         <legend class="muted small" style="margin-bottom:.25rem">{P.step3}</legend>
         <div class="note">
-          <p>{P.payWa} <a class="mono accent" id="wa-link" href={`https://wa.me/${WHATSAPP.replace(/\D/g, '')}`} target="_blank" rel="noopener">{WHATSAPP}</a> · <strong class="mono" id="total-2">—</strong></p>
+          <p>{P.payWa} <a class="mono accent nowrap" id="wa-link" href={`https://wa.me/${WHATSAPP.replace(/\D/g, '')}`} target="_blank" rel="noopener">{WHATSAPP}</a> · <strong class="mono" id="total-2">—</strong></p>
           <p class="muted small">{P.payWa2}</p>
         </div>
         <label class="field" style="max-width:28rem"><span>{P.character}</span>
