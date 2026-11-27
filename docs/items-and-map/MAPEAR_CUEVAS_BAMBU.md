@@ -39,12 +39,27 @@ Los grupos van a 3 casillas (Manhattan) como mínimo entre sí y a más de 4 de 
 
 ## Qué no se toca
 
-- **El lago de lava de z8 alrededor del pozo:** es el hunt de los behemoths (`182,99,8`), fire elementals y
-  demons, con su pasillo de piedra negra. El pozo queda adentro como islote; solo cambian las 58 casillas del
-  islote y la caja vieja del pozo (lo que quedó afuera del islote volvió a ser lava).
+- **Los pasillos de z8 alrededor del pozo:** son el hunt de los behemoths (`182,99,8`), fire elementals y
+  demons, de piedra negra. El generador solo cambia las 58 casillas del islote y la caja vieja del pozo (lo que
+  queda afuera del islote es roca). La lava de alrededor ya no es lago: ver [Orilla de roca](#orilla-de-roca).
 - **La sala de los troles de z8** (`155-176, 103-114`): el islote termina en `y102`.
 - **La lava de z9 al oeste** (heroes y vampires): solo pasa a roca la franja que se ve desde la cueva
   (`x161-168`). Roca `101` y lava `598` bloquean igual, así que no cambia por dónde se camina.
+
+## Orilla de roca
+
+**26 nov 2026.** El pozo y la sala de los troles eran cajas de pared de una casilla apoyadas sobre el estanque
+de lava que rodean los pasillos de los behemoths (oeste `x148`, norte `y87`, este `x180`). Desde el pasillo
+(`181,102,8`) se veían como rectángulos flotando a 3 casillas. `scripts/map/lava-shore-troll-room.py` pasa a
+roca `101` la lava a 3 casillas de las salas, una costa irregular hasta 5 y las tiras finas que quedaban
+contra un pasillo: 423 casillas. Las salas quedan dentro de un macizo de roca, el pasillo este va cavado en
+roca de ese lado y queda un pozo de lava de borde natural al norte.
+
+![z8: el pozo y la sala de los troles dentro de la roca](img/cuevas-bambu/z8-orilla.png)
+
+Solo toca lava (no se camina: no cambia recorridos ni spawns). Toma las casillas con `claims` de mapkit: el
+manifiesto `generated-lava-shore-troll-room.json` guarda la lava original de cada una. Re-ejecutable (la
+segunda pasada da 0 cambios).
 
 ## Generador
 

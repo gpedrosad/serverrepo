@@ -151,9 +151,10 @@ def build_z8(existing) -> tuple[dict, list]:
         it = existing.get((c[0], c[1], Z8))
         if it and it[0] not in LAVA | CAVE_FLOORS | WALLS | {ROCK, STAIR_DOWN}:
             errs.append(f"z8: el islote pisa algo ajeno en {c}: {it}")
-    # la caja vieja del pozo (v1: 169-175 x 96-102) que quede fuera del islote vuelve a ser lava
+    # la caja vieja del pozo (v1: 169-175 x 96-102) que quede fuera del islote es roca: desde el 26 nov 2026 el
+    # pozo y la sala de los troles están dentro de un macizo de roca (scripts/map/lava-shore-troll-room.py)
     for c in rect((169, 96, 175, 102)) - island:
-        tiles[c] = [598]
+        tiles[c] = [ROCK]
     return tiles, errs
 
 
