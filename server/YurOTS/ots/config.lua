@@ -28,10 +28,10 @@ ownername = "Yurez"
 owneremail = ""
 
 -- the url for more server info
-url = ""   -- sin web pública por ahora (el VPS de retro76.cl ya no existe)
+url = "https://retro76.cl"   -- web en el VPS de Vultr (docs/systems/VPS_VULTR.md)
 
 -- the location of the server
-location = "Chile"
+location = "Brazil"   -- el VPS está en São Paulo (lo muestra otservlist)
 
 -- the ip the server should redirect too (auto - set as first local ip)
 ip = "127.0.0.1"
