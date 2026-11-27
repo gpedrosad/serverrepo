@@ -37,7 +37,8 @@ _lock = threading.Lock()
 
 
 def _today() -> str:
-    return datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    # Hora local del contenedor (TZ=America/Santiago en el VPS): los días cortan igual que el resto de las métricas.
+    return datetime.now().strftime("%Y-%m-%d")
 
 
 FLUSH_SECONDS = 30   # se escribe a disco como mucho cada 30 s (antes: el JSON entero en cada página vista)
