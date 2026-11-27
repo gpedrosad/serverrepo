@@ -60,10 +60,12 @@ El contenedor de la web se creó así (si hay que recrearlo):
 ```bash
 ssh vps 'cd ~/apps/serverrepo && docker rm -f retro76-web; docker run -d --name retro76-web --restart unless-stopped \
   --network host --user $(id -u):$(id -g) -e PORT=8080 -e SITE_URL=https://retro76.cl -e SERVER_IP=retro76.cl \
-  -e UPDATER_FILES_URL=http://retro76.cl/updater/files -v ~/apps/serverrepo:/repo -w /repo/web python:3.12-slim python server.py'
+  -e UPDATER_FILES_URL=http://retro76.cl/updater/files -e TZ=America/Santiago -v /usr/share/zoneinfo:/usr/share/zoneinfo:ro \\
+  --env-file ~/.config/retro76/stats.env -v ~/apps/serverrepo:/repo -w /repo/web python:3.12-slim python server.py'
 ```
 
-`UPDATER_FILES_URL` va fijo: detrás de Caddy, armada con el `Host`, la URL salía con `:8080`. `SERVER_IP` es solo
+`stats.env` tiene el token de la URL de métricas ([METRICAS.md](METRICAS.md#url-para-bots)); `TZ` + zoneinfo para que los días
+de las métricas sean de hora de Chile. `UPDATER_FILES_URL` va fijo: detrás de Caddy, armada con el `Host`, la URL salía con `:8080`. `SERVER_IP` es solo
 lo que la web muestra para conectarse; `config.lua` sigue con la IP numérica (`ip`) y `url = "https://retro76.cl"`.
 
 Las reglas de siempre siguen: data de jugadores fuera de git, probar el locker del templo tras un mapa nuevo

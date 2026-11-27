@@ -15,6 +15,8 @@ from urllib.parse import quote, unquote, urlparse
 
 from access_log import AccessLog
 from funnel import Funnel
+import metrics_data
+import stats_page
 from analytics import WebAnalytics, analytics_download_key
 from bug_reports import BugReportStore
 from data import (
@@ -295,6 +297,39 @@ class Handler(BaseHTTPRequestHandler):
             cmd = getattr(self, "command", "?")
             log_http(cmd, path, code, elapsed_ms, client_ip(self))
 
+    def _stats(self, path: str) -> None:
+        """Métricas privadas para bots: /stats/<STATS_TOKEN>[/summary.json|/llms.txt]. Sin token válido, 404."""
+        token = os.environ.get("STATS_TOKEN", "")
+        parts = path.split("/")   # ["", "stats", token, rest?]
+        given = parts[2] if len(parts) > 2 else ""
+        rest = "/".join(parts[3:])
+        if len(token) < 16 or not hmac.compare_digest(given, token) or rest not in ("", "summary.json", "llms.txt"):
+            self.send_error(404)
+            return
+        try:
+            if rest == "llms.txt":
+                body, ctype = stats_page.LLMS_TXT.encode("utf-8"), "text/plain; charset=utf-8"
+            else:
+                query = self.path.split("?", 1)[1] if "?" in self.path else ""
+                m = re.search(r"(?:^|&)days=(\d+)", query)
+                days = max(1, min(90, int(m.group(1)))) if m else 30
+                summary = metrics_data.build_summary(days)
+                if rest == "summary.json":
+                    body, ctype = stats_page.summary_json(summary), "application/json; charset=utf-8"
+                else:
+                    body, ctype = stats_page.render_html(summary, token).encode("utf-8"), "text/html; charset=utf-8"
+        except Exception as exc:  # noqa: BLE001
+            log_exception("stats", exc, context="build_summary")
+            self._json(500, {"ok": False, "error": "no se pudieron leer las métricas"})
+            return
+        self.send_response(200)
+        self.send_header("Content-Type", ctype)
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("X-Robots-Tag", "noindex, nofollow")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
     def _json(self, code: int, payload: dict) -> None:
         data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
         self.send_response(code)
@@ -368,6 +403,8 @@ class Handler(BaseHTTPRequestHandler):
             self._site_page(path)
         elif path.startswith("/_astro/"):
             self._astro_asset(path)
+        elif path.startswith("/stats/"):
+            self._stats(path)
         elif path == "/robots.txt":
             self._robots_txt()
         elif path == "/sitemap.xml":

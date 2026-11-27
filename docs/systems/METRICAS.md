@@ -60,6 +60,19 @@ distintas; la cuenta sigue al jugador una vez que existe.
 - El informe (`metrics-report.py`) muestra cuántas personas llegaron a cada paso en el período y cuántas de ellas
   venían de una IP que visitó la web. El detalle fino (quién, cuándo, desde qué IP) se saca del `.jsonl`.
 
+## URL para bots
+
+Todo lo de arriba, ya resumido, en una URL privada de la web: `https://retro76.cl/stats/<STATS_TOKEN>` (página
+legible, se renueva cada minuto), `/summary.json` (JSON completo, `?days=7..90`, 30 por defecto) y `/llms.txt`
+(guía de cada campo para un bot, p. ej. el grokbot). La arman `web/metrics_data.py` y `web/stats_page.py`.
+
+- **Token:** en el VPS, `~/.config/retro76/stats.env` (`STATS_TOKEN` y `STATS_IP_SALT`, permisos 600, fuera de git);
+  el contenedor `retro76-web` lo carga con `--env-file`. Sin token válido la ruta da 404. Para cambiarlo: editar
+  ese archivo y recrear el contenedor ([VPS_VULTR.md](VPS_VULTR.md)).
+- **Privacidad:** no publica IPs; cada IP va como `ip_id` (hash corto con sal), que distingue personas sin mostrar
+  la dirección. No muestra contraseñas ni datos de pago. Las cuentas de GM no cuentan.
+- `noindex` y `Cache-Control: no-store`: no la indexan los buscadores ni queda en cachés.
+
 ## Copia en la Mac
 
 `scripts/deploy/pull-auto-backups.sh` (launchd, todos los días a las 13:00 y al prender) trae los `*.jsonl` de
