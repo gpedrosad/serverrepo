@@ -3,7 +3,7 @@
 > **Estado:** funcionando desde el 2026-11-11 (probado en macOS: un cliente con el `Tibia.spr` viejo bajó lo
 > que cambió, se reinició solo y quedó con los sprites nuevos).
 > **Repo cliente:** `~/apps/clienteretro` en la ThinkPad (`github.com/gpedrosad/clienteretro`, `mac/` + `windows/`).
-> **Web:** contenedor `retro76-web` en la ThinkPad, http://192.168.1.17:8080.
+> **Web:** contenedor `retro76-web` en el VPS, http://216.128.175.142:8080 (hasta el 27 nov 2026, la ThinkPad: [VPS_VULTR.md](systems/VPS_VULTR.md#cliente)).
 
 Los jugadores descargan el cliente **una sola vez**. Cada vez que lo abren, el cliente pregunta a la web qué
 archivos hay, baja solo los que cambiaron (sprites, módulos, `init.lua`, lo que sea) y sigue. Nadie tiene que
@@ -16,7 +16,7 @@ Desde el 19 nov 2026 también pregunta **al apretar Login**, así no hay que cer
 
 ```
 Jugador abre el cliente (binario + data.zip)
-  └─ init.lua: Services.updater = "http://192.168.1.17:8080/api/updater.php"
+  └─ init.lua: Services.updater = "http://216.128.175.142:8080/api/updater.php"
        └─ POST → web/server.py → web/client_updater.py
             responde {url, files: {"/ruta": crc32}, keepFiles: true} con todo web/updater/files/
        └─ compara con los CRC de su data.zip; baja los distintos desde url + ruta

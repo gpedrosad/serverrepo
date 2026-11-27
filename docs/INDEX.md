@@ -12,7 +12,7 @@ Antes de tocar cualquier cosa, leer en este orden:
 | 1 | [`../LEERCODEX.md`](../LEERCODEX.md) | Siempre primero. Punto de entrada rápido para IAs, diagnóstico de cuelgues OT. |
 | 2 | [`PROYECTO.md`](PROYECTO.md) | Para entender la arquitectura general, deploy, data sagrada, decisiones de diseño. |
 | 3 | [`../AGENTS.md`](../AGENTS.md) | Si sos un agente AI: instrucciones operativas, restricciones, convenciones. |
-| 4 | [`systems/THINKPAD_TEST_SERVER.md`](systems/THINKPAD_TEST_SERVER.md) | Antes de cualquier deploy. No hay producción por ahora; el único servidor es el de la ThinkPad. |
+| 4 | [`systems/VPS_VULTR.md`](systems/VPS_VULTR.md) | Antes de cualquier deploy. El servidor corre en el VPS de Vultr (São Paulo) desde el 27 nov 2026; la ThinkPad ([`THINKPAD_TEST_SERVER.md`](systems/THINKPAD_TEST_SERVER.md)) publica el cliente. |
 | 5 | [`INDEX.md`](INDEX.md) | Este archivo. Mapa completo de la documentación. |
 
 ---
@@ -44,6 +44,7 @@ Todo lo relacionado con estabilidad del OT server, cuelgues, sockets, crashes.
 
 | Doc | Cubre / cuándo leerlo |
 |-----|-----------------------|
+| [`systems/VPS_VULTR.md`](systems/VPS_VULTR.md) | **Servidor en el VPS de Vultr (São Paulo)** desde el 27 nov 2026: acceso (`ssh vps`), plan y uso medido, deploy de datos y de C++, respaldo, cliente y la mudanza desde la ThinkPad. |
 | [`systems/THINKPAD_TEST_SERVER.md`](systems/THINKPAD_TEST_SERVER.md) | **Servidor de prueba en la ThinkPad** (el único servidor por ahora; no hay producción): acceso, cuenta GM, cómo deployar cambios de datos sin pisar el trabajo sin commitear de otras sesiones, historial de deploys. |
 | [`systems/WEB_SECURITY.md`](systems/WEB_SECURITY.md) | **Seguridad de la web**: lectura de archivos, IP falsificable, token, cuentas a la vez, captcha y lo pendiente para el VPS. |
 | [`systems/PREVENT_OT_HANGS.md`](systems/PREVENT_OT_HANGS.md) | Si el server se cuelga o se observa lentitud: checklist preventivo. |
@@ -278,7 +279,7 @@ Catálogo de **migración/portabilidad** (16 fichas congeladas). No es el invent
 | Quiero crear o retocar el sprite de una criatura | [`gameplay/SPRITE_RECOLOR_GUIDE.md`](gameplay/SPRITE_RECOLOR_GUIDE.md) |
 | Voy a tocar gemas o imbuements | [`gameplay/GEMS.md`](gameplay/GEMS.md) → [`features/10-gems-and-imbuements.md`](features/10-gems-and-imbuements.md) |
 | Skill ring + emerald armor + crimson no suman | [`gameplay/GEMS.md`](gameplay/GEMS.md) (Big Emerald / stacking) + `Player::getSkill` en `player.cpp` |
-| Voy a hacer deploy | [`systems/THINKPAD_TEST_SERVER.md`](systems/THINKPAD_TEST_SERVER.md) (solo con OK de Gonzalo) |
+| Voy a hacer deploy | [`systems/VPS_VULTR.md`](systems/VPS_VULTR.md) (solo con OK de Gonzalo) |
 | Necesito migrar DB o data crítica | [`MIGRATION_PLAYBOOK.md`](MIGRATION_PLAYBOOK.md) |
 | Voy a cambiar el mapa del server | [`CAMBIAR-MAPA.md`](CAMBIAR-MAPA.md) → [`gameplay/DEPOTS.md`](gameplay/DEPOTS.md) |
 | Jugadores reportan depot vacío | [`gameplay/DEPOTS.md`](gameplay/DEPOTS.md) |

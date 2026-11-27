@@ -1,12 +1,12 @@
 # Retro76 / YurOTS Principal
 
-Repositorio **principal** del servidor YurOTS 7.6 (Tibia clásico) en Docker. Por ahora no hay servidor de producción: el único servidor es el de prueba en la ThinkPad ([docs/systems/THINKPAD_TEST_SERVER.md](docs/systems/THINKPAD_TEST_SERVER.md)).
+Repositorio **principal** del servidor YurOTS 7.6 (Tibia clásico) en Docker. El servidor corre en un VPS de Vultr en São Paulo desde el 27 nov 2026 ([docs/systems/VPS_VULTR.md](docs/systems/VPS_VULTR.md)); la ThinkPad publica el cliente ([docs/systems/THINKPAD_TEST_SERVER.md](docs/systems/THINKPAD_TEST_SERVER.md)).
 
 > **Guía completa del proyecto, hosting y deploy (leer primero):**
 > **[docs/PROYECTO.md](docs/PROYECTO.md)** — arquitectura Mac/GitHub/ThinkPad, data de jugadores, cómo aplicar cambios sin borrar saves.
 >
-> **Deploy (obligatorio antes de tocar el servidor de la ThinkPad):**
-> **[docs/systems/THINKPAD_TEST_SERVER.md](docs/systems/THINKPAD_TEST_SERVER.md)**
+> **Deploy (obligatorio antes de tocar el servidor):**
+> **[docs/systems/VPS_VULTR.md](docs/systems/VPS_VULTR.md)**
 
 Incluye mapa, spawns, NPCs, monstruos custom, spells y assets de RME para evitar confusiones con copias locales.
 

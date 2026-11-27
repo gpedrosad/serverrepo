@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Trae a la Mac los respaldos automáticos de la ThinkPad (auto-backup-runtime.sh). 24 nov 2026.
+# Desde el 27 nov 2026 también los del VPS de Vultr (alias `vps`) a ~/Retro76-backups/vps-auto/.
 #
 # Copia ~/backups/auto/ de la ThinkPad a ~/Retro76-backups/thinkpad-auto/ en la Mac, para que los datos de
 # jugadores sobrevivan aunque se rompa el disco de la ThinkPad. No borra nada en la Mac (son unos KB por
@@ -40,7 +41,15 @@ EOF
   exit 0
 fi
 
-mkdir -p "$DEST"
+VPS_DEST="${PULL_VPS_DEST:-$HOME/Retro76-backups/vps-auto}"
+mkdir -p "$DEST" "$VPS_DEST"
+# El servidor corre en el VPS de Vultr desde el 27 nov 2026 (alias `vps` de ~/.ssh/config): primero eso.
+if rsync -a -e "ssh -o BatchMode=yes -o ConnectTimeout=10" "vps:backups/auto/" "$VPS_DEST/"; then
+  n=$(find "$VPS_DEST" -name 'runtime-*.tar.gz' | wc -l | tr -d ' ')
+  echo "$(date '+%Y-%m-%d %H:%M:%S') [pull] OK desde vps: $n respaldos en $VPS_DEST"
+else
+  echo "$(date '+%Y-%m-%d %H:%M:%S') [pull] ERROR: no se llegó al VPS"
+fi
 for host in thinkpad thinkpad-tailscale; do
   if rsync -a -e "ssh -o BatchMode=yes -o ConnectTimeout=10" "$host:backups/auto/" "$DEST/"; then
     n=$(find "$DEST" -name 'runtime-*.tar.gz' | wc -l | tr -d ' ')

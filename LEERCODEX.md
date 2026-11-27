@@ -13,7 +13,7 @@
 | Juego | **Retro76** — OTServ Tibia 7.6 (motor YurOTS) |
 | Repo | `https://github.com/gpedrosad/serverrepo.git` — rama `main` |
 | Local (dev) | `~/Desktop/yurots-principal/` — Docker, `127.0.0.1:7171` |
-| Servidor | No hay producción por ahora. ThinkPad: `ssh thinkpad`, `~/apps/serverrepo`, contenedor `yurots`, `192.168.1.17:7171` — [docs/systems/THINKPAD_TEST_SERVER.md](docs/systems/THINKPAD_TEST_SERVER.md) |
+| Servidor | VPS de Vultr en São Paulo (desde el 27 nov 2026): `ssh vps`, `~/apps/serverrepo`, contenedores `yurots` y `retro76-web`, `216.128.175.142:7171` — [docs/systems/VPS_VULTR.md](docs/systems/VPS_VULTR.md). La ThinkPad ya no corre el juego |
 | Data de jugadores | En la ThinkPad (`data/players`, `data/accounts`) — nunca en GitHub |
 
 **Regla de oro:** la data runtime (`accounts/`, `players/` reales, `houseitems.xml`) es sagrada. Ver [docs/systems/THINKPAD_TEST_SERVER.md](docs/systems/THINKPAD_TEST_SERVER.md) antes de cualquier `git` en la ThinkPad.
@@ -71,7 +71,7 @@ Para el índice completo y actualizado de toda la documentación, ver **[docs/IN
 | **Server se cayó / cuelgue** | [docs/systems/PREVENT_OT_HANGS.md](docs/systems/PREVENT_OT_HANGS.md) |
 | **Crash real / SIGSEGV** | [docs/systems/CRASH_DIAGNOSTICS.md](docs/systems/CRASH_DIAGNOSTICS.md) |
 | **Sos un agente IA** | [AGENTS.md](AGENTS.md) (raíz) |
-| **Deploy a la ThinkPad** | [docs/systems/THINKPAD_TEST_SERVER.md](docs/systems/THINKPAD_TEST_SERVER.md) (lectura **OBLIGATORIA**) |
+| **Deploy al VPS** | [docs/systems/VPS_VULTR.md](docs/systems/VPS_VULTR.md) (lectura **OBLIGATORIA**) |
 | **Arquitectura / data sagrada** | [docs/PROYECTO.md](docs/PROYECTO.md) |
 
 ---

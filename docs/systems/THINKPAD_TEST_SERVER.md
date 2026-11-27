@@ -1,5 +1,10 @@
 # Servidor de prueba en la ThinkPad
 
+> **Desde el 27 nov 2026 el juego y la web corren en el VPS de Vultr: [VPS_VULTR.md](VPS_VULTR.md).** En la
+> ThinkPad el contenedor `yurots` quedó apagado (`--restart=no`) con los datos de ese día; no deployar el juego
+> acá. Sigue sirviendo para publicar el cliente (`publish_client.py`, luego copiar al VPS), el mapa interactivo
+> (8077) y la web vieja en 8080, que les pasa a los clientes viejos el `init.lua` que apunta al VPS.
+
 Por ahora no hay servidor de producción: la ThinkPad corre el único servidor. Los deploys ahí van **solo con
 el OK de Gonzalo** (ver `CLAUDE.md` de la carpeta de proyectos). La Mac mini no compila.
 

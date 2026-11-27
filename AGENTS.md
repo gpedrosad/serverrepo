@@ -13,8 +13,8 @@
 | Juego | **Retro76** — OTServ Tibia 7.6 (motor **YurOTS** en C++ legacy) |
 | Repo | `https://github.com/gpedrosad/serverrepo.git` — rama `main` |
 | Local (dev) | `~/Desktop/yurots-principal/` — Docker, `127.0.0.1:7171` |
-| Producción | **No hay por ahora.** El único servidor es el de prueba en la ThinkPad (`ssh thinkpad`, `~/apps/serverrepo`, contenedor `yurots`, `192.168.1.17:7171`) — ver `docs/systems/THINKPAD_TEST_SERVER.md` |
-| Data de jugadores | En la ThinkPad (`server/YurOTS/ots/data/players`, `accounts`) — runtime, nunca va a git, respaldar antes de reiniciar |
+| Servidor | **VPS de Vultr en São Paulo** desde el 27 nov 2026 (`ssh vps`, `~/apps/serverrepo`, contenedores `yurots` y `retro76-web`, `216.128.175.142:7171`, web en `:8080`) — ver `docs/systems/VPS_VULTR.md`. La ThinkPad (`ssh thinkpad`) quedó con el juego apagado; sigue compilando el minimapa y publicando el cliente (`docs/systems/THINKPAD_TEST_SERVER.md`) |
+| Data de jugadores | En el VPS (`server/YurOTS/ots/data/players`, `accounts`) — runtime, nunca va a git, respaldar antes de reiniciar |
 | Stack | C++ legacy, Lua scripts, OTBM maps, Docker `i386`, bash/python |
 
 ---
@@ -28,7 +28,7 @@ Antes de proponer **cualquier** cambio, leer en este orden:
 3. `LEERCODEX.md` — playbooks de incidente, scripts y diagnóstico.
 4. `docs/INDEX.md` — índice maestro de toda la documentación.
 5. Según la tarea:
-   - Servidor en la ThinkPad (deploy, cuenta GM, otras sesiones) → `docs/systems/THINKPAD_TEST_SERVER.md`
+   - Servidor (deploy, respaldo, compilar) → `docs/systems/VPS_VULTR.md`; ThinkPad (cuenta GM, publicar el cliente, otras sesiones) → `docs/systems/THINKPAD_TEST_SERVER.md`
    - Índice de scripts → `scripts/README.md` (`deploy/`, `ot/`, `map/`, `otb/`, `client-rme/`, `web/`)
    - Clientes / RME / Zagan assets → `devtools/README.md` (symlinks en raíz con nombres históricos)
    - Cambios grandes / arquitectura → `docs/PROYECTO.md`
@@ -44,8 +44,8 @@ Si alguno de estos archivos no existe, **avisar** al usuario antes de seguir.
 2. **NUNCA** commitear data runtime de jugadores: `accounts/`, `players/` (excepto `0-4.xml`), `online.xml`, `queue.xml`, `houseitems.xml`, `data/houses/*.xml` con dueños reales, `web/state/*.json`.
 3. **NUNCA** commitear binarios ni artefactos: `source/yurots`, `*.o`, `*.bak`, `*.patch`, `core.*`, `*.log` rotados. Excepción a propósito: `web/dist/` (la web Astro compilada; se compila en la ThinkPad con `scripts/web/build-site.sh` y va en el mismo commit que el cambio en `web/site/`, ver `docs/features/18-web-astro.md`).
 4. **NUNCA** deployar a la ThinkPad si el usuario solo pidió debug local. Deploy solo con el OK de Gonzalo. **Siempre preguntar**.
-5. **SIEMPRE** deployar siguiendo `docs/systems/THINKPAD_TEST_SERVER.md` (leerlo completo antes del primer deploy): revisar que `main` no pise archivos de otras sesiones, respaldar datos de jugadores, `git merge --ff-only origin/main`, `docker restart -t 45 yurots`, revisar el log. Nada de `docker cp` artesanal.
-6. **SIEMPRE** verificar el estado del servidor con `python3 scripts/ot-probe.py 127.0.0.1 7171` después de tocar el OT (en la ThinkPad: `192.168.1.17 7171`). Canónico: `scripts/ot/ot-probe.py`.
+5. **SIEMPRE** deployar al VPS siguiendo `docs/systems/VPS_VULTR.md` (leerlo completo antes del primer deploy; la ThinkPad ya no corre el juego): revisar que `main` no pise archivos de otras sesiones, respaldar datos de jugadores, `git merge --ff-only origin/main`, `docker restart -t 45 yurots`, revisar el log. Nada de `docker cp` artesanal.
+6. **SIEMPRE** verificar el estado del servidor con `python3 scripts/ot-probe.py 127.0.0.1 7171` después de tocar el OT (en el VPS: `216.128.175.142 7171`). Canónico: `scripts/ot/ot-probe.py`.
 7. Smoke tests locales **desactivados temporalmente** (`scripts/ot/.smoke-tests-disabled`, symlink en `scripts/`). No correr `test-local-smoke.sh` salvo que el usuario pida reactivarlos o use `--force`. Para validar boot/protocolo usar `ot-probe.py`.
 8. **SIEMPRE** consultar `docs/INDEX.md` y el doc del subsistema antes de tocar ese subsistema.
 9. Si algo no se entiende del flujo o del incidente, **preguntar antes de actuar**.
@@ -180,8 +180,8 @@ Para un cambio serio (no trivial) seguir este orden, sin saltearse pasos:
 2. **Probar local**: `python3 scripts/ot-probe.py 127.0.0.1 7171` (smoke tests desactivados temporalmente).
 3. **Stage selectivo**: `git add` solo lo relevante (código fuente, datos de juego, docs). Verificar con `git status` antes de commitear.
 4. **Commit + push**: `git commit -m "..."` y `git push origin main`.
-5. **Deploy a la ThinkPad** (solo con el OK de Gonzalo): seguir `docs/systems/THINKPAD_TEST_SERVER.md`. Los cambios de C++ se compilan ahí.
-6. **Verificar post-deploy**: `ot-probe.py 192.168.1.17 7171`, `docker logs --since 3m yurots`, y conteo de cuentas/personajes para detectar pérdidas.
+5. **Deploy al VPS** (solo con el OK de Gonzalo): seguir `docs/systems/VPS_VULTR.md`. Los cambios de C++ se compilan ahí.
+6. **Verificar post-deploy**: `ot-probe.py 216.128.175.142 7171`, `docker logs --since 3m yurots`, y conteo de cuentas/personajes para detectar pérdidas.
 
 Si en cualquier paso aparece algo raro (probe FAIL, smoke test FAIL, archivos sensibles en `git status`), **frenar y avisar** al usuario.
 
@@ -235,7 +235,7 @@ Cosas que un agente **NO** debe hacer en este repo:
 | Logs Docker | `docker logs yurots --tail 50 -f` |
 | Web local (status page) | `./scripts/web.sh` → http://localhost:8080 |
 | Cliente de prueba | `./scripts/play-yurots-client.sh` |
-| Deploy a la ThinkPad | Ver `docs/systems/THINKPAD_TEST_SERVER.md` (solo con OK de Gonzalo) |
+| Deploy al VPS | Ver `docs/systems/VPS_VULTR.md` (solo con OK de Gonzalo) |
 | Smoke tests locales | Desactivados (`scripts/.smoke-tests-disabled`). Reactivar: borrar ese archivo. Forzar: `bash scripts/test-local-smoke.sh --force` |
 | Rebuild C++ (sin clean, más rápido) | `docker compose -f docker-compose.prod.yml run --rm yurots bash -c 'cd /app/YuroTS/ots/source && make -j2 yurots'` |
 | Cliente / mapa Zagan test | `./scripts/play-zagan-test-client.sh` o `./scripts/open-rme-zagan-test.sh` |
@@ -377,7 +377,7 @@ python3 scripts/sync-houses-with-map.py --dry-run
 ## 9. Resumen ejecutivo para agentes con poca atención
 
 - Data de jugadores = sagrada. Si la tocás sin backup, rompiste el server.
-- Deploy a la ThinkPad = preguntar primero, seguir `docs/systems/THINKPAD_TEST_SERVER.md`, verificar con probe.
+- Deploy al VPS = preguntar primero, seguir `docs/systems/VPS_VULTR.md`, verificar con probe.
 - Doc del subsistema = leerlo antes de tocarlo.
 - `Up` no significa OK. Probeá.
 - Cambios chicos, commits chicos, reportes claros.
