@@ -105,8 +105,6 @@ clientes hayan abierto al menos una vez.
 
 - **Cerrar el 8080** cuando todos los clientes hayan abierto una vez (ya apuntan a `retro76.cl`). Ojo: `web/server.py`
   confía en `X-Forwarded-For`, así que con el 8080 abierto alguien puede mandar una IP falsa al registro.
-- **La Mac de Gonzalo** tenía `192.168.1.17 retro76.cl` en `/etc/hosts` (de cuando la web estaba en la ThinkPad): hay
-  que borrar esa línea para que el dominio le llegue al VPS.
 - **DDoS.** Sin protección. Vultr la vende aparte.
 - Las rutas de la wiki apuntan al mapa interactivo de la ThinkPad (`192.168.1.17:8077`, "red local").
 
