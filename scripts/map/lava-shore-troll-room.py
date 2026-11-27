@@ -6,7 +6,8 @@ casilla apoyadas directo sobre el estanque de lava que rodean los pasillos de lo
 norte y87, este x180): desde el pasillo (181,102) se veían como rectángulos flotando a 3 casillas. Este
 script pasa a roca `101` la lava a 3 casillas de las salas, una costa irregular hasta 5 y las tiras finas de
 lava que quedan contra un pasillo: las salas quedan dentro de un macizo de roca y quedan pozos de lava de
-borde natural al norte y al sur.
+borde natural al norte y al sur. Además pone muro de roca natural (903/904/907) en los lados este y sur de
+las salas: la pared de tierra 356-367 solo tiene cara al norte y al oeste.
 
 Solo cambia casillas de lava (no se caminan: no cambia por dónde se anda ni los spawns). Las toma con
 `claims` de mapkit: el manifiesto `generated-lava-shore-troll-room.json` guarda la lava original de cada
@@ -32,6 +33,9 @@ AREA = (149, 88, 179, 118)          # el estanque de lava entre los pasillos (oe
 ROOMS = (153, 93, 178, 115)         # la sala de los troles y el pozo de Bambú: lo único que no es lava acá
 LAVA = {598, 599, 600, 601}
 ROCK = 101
+# Muro de roca natural (stone wall 903-913) en los lados este y sur de las salas: la pared de tierra 356-367 solo
+# dibuja cara al norte y al oeste; al este y al sur deja una línea finita que contra la roca 101 no se ve.
+WALL_V, WALL_H, WALL_SE = 903, 904, 907       # vertical (piso al oeste), horizontal (piso al norte), L (esquina SE)
 SEED = 76
 MANIFEST = K.WORLD / "generated-lava-shore-troll-room.json"
 
@@ -58,6 +62,19 @@ def plan(tiles: dict) -> tuple[dict, dict]:
         land -= {c for c in land if sum(n in land or n in solid for n in neighbors8(c)) <= 2}
     cells = {(*c, Z): [ROCK] for c in land}
     claims = {(*c, Z): list(tiles[(*c, Z)]) for c in land}
+    # muro este/sur: casillas que no son piso con piso al oeste, al norte o (esquina) al noroeste
+    otb = K.Otb()
+    floor = {c for c in K.box_cells(ROOMS) if tiles.get((*c, Z)) and otb.walkable(tiles[(*c, Z)][:1])}
+    for c in K.grow(floor, 1) - floor:
+        x, y = c
+        w, n, nw = (x - 1, y) in floor, (x, y - 1) in floor, (x - 1, y - 1) in floor
+        piece = WALL_SE if (w and n) or (nw and not w and not n) else WALL_V if w else WALL_H if n else None
+        p = (x, y, Z)
+        if piece is None or not tiles.get(p):
+            continue
+        base = cells.get(p, list(tiles[p]))
+        cells[p] = base[:1] + [piece] + base[1:]       # el muro va primero: antorchas y demás quedan encima
+        claims[p] = list(tiles[p])
     return cells, claims
 
 
@@ -79,7 +96,8 @@ def main() -> int:
         a.cells_out.write_text(json.dumps({",".join(map(str, p)): ids for p, ids in cells.items()}))
     report = {}
     n = K.write_cells(cells, MANIFEST, [598], "lava-shore-troll-room", report, a.dry_run, claims=claims)
-    print(f"orilla: {len(cells)} casillas de lava -> roca {ROCK}; cambian {n}" + (" (dry-run)" if a.dry_run else ""))
+    walls = sum(1 for ids in cells.values() if WALL_V in ids or WALL_H in ids or WALL_SE in ids)
+    print(f"orilla: {len(cells) - walls} casillas de lava -> roca {ROCK}, {walls} con muro este/sur; cambian {n}" + (" (dry-run)" if a.dry_run else ""))
     return 0
 
 

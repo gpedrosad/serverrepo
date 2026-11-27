@@ -55,6 +55,13 @@ roca `101` la lava a 3 casillas de las salas, una costa irregular hasta 5 y las 
 contra un pasillo: 423 casillas. Las salas quedan dentro de un macizo de roca, el pasillo este va cavado en
 roca de ese lado y queda un pozo de lava de borde natural al norte.
 
+Muro este/sur (27 nov 2026): la pared de tierra `356–367` solo tiene cara al norte y al oeste; al este y al sur
+deja una línea finita que contra la roca `101` (mismo marrón) no se ve, y desde el pasillo parecía que a las
+salas les faltaban murallas. El mismo script pone muro de roca natural en esos lados (48 casillas, encima
+de la pared de tierra, sin sacar antorchas): `903` vertical (piso al oeste), `904` horizontal (piso al norte),
+`907` L (esquina SE). Con los cuatro lados de roca el pozo irregular quedaba lleno de picos: solo este y sur.
+No cambia ninguna casilla caminable.
+
 ![z8: el pozo y la sala de los troles dentro de la roca](img/cuevas-bambu/z8-orilla.png)
 
 Solo toca lava (no se camina: no cambia recorridos ni spawns). Toma las casillas con `claims` de mapkit: el
