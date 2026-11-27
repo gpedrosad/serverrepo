@@ -62,6 +62,18 @@ página en otro idioma y el `<head>` declara las tres con `hreflang` (`pt-BR`).
 - **Sin traducir:** los números siguen con formato chileno y los nombres de criaturas, ítems y hechizos quedan
   como en el juego. Los pagos premium siguen siendo por transferencia en Chile (pendiente: Pix).
 
+### Detección del idioma (27 nov 2026)
+
+`web/server.py` (`lang_redirect_target`) redirige con 302 las páginas en español que existen en los tres idiomas (portada,
+páginas del sitio que no son solo en español y `/character/...`) a `/en/...` o `/pt/...`:
+
+- Primero manda la cookie `lang` (un año), que pone el botón de idioma (`Base.astro`, `data-lang`). Así quien elige ES
+  se queda en español aunque el navegador esté en portugués.
+- Si no hay cookie, el `Accept-Language` del navegador: el de mayor `q` entre es/en/pt. Otro idioma (alemán, polaco...)
+  va a inglés.
+- Sin `Accept-Language` (buscadores) no redirige: indexan el español y ven los `hreflang`.
+- La wiki y las demás páginas solo en español no se redirigen.
+
 ## Menú y portada (nov 2026)
 
 - **Menú agrupado** (`Base.astro`): Inicio · **Rankings ▾** (Top, Power, PK, Muertes) · **Guía ▾** (Wiki, Spells,
