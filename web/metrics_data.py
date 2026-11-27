@@ -25,12 +25,12 @@ DATA = ROOT / "server/YurOTS/ots/data"
 LOGS = DATA / "logs"
 ANALYTICS = ROOT / "web/state/analytics.json"
 SALT = os.environ.get("STATS_IP_SALT", "retro76")
-FUNNEL_ORDER = ["visit", "download", "client_open", "account_created", "first_login", "level8", "level20", "level50",
+FUNNEL_ORDER = ["visit", "download", "client_open", "account_created", "first_login", "level20", "level50", "level100",
                 "promoted", "premium_click", "premium_active", "house"]
 FUNNEL_LABELS = {
     "visit": "visitó la web (IP nueva)", "download": "descargó el cliente", "client_open": "abrió el cliente por 1ª vez",
-    "account_created": "creó cuenta", "first_login": "entró al juego por 1ª vez", "level8": "nivel 8", "level20": "nivel 20",
-    "level50": "nivel 50", "promoted": "promotion", "premium_click": "abrió WhatsApp premium",
+    "account_created": "creó cuenta", "first_login": "entró al juego por 1ª vez", "level20": "nivel 20", "level50": "nivel 50",
+    "level100": "nivel 100", "promoted": "promotion", "premium_click": "abrió WhatsApp premium",
     "premium_active": "premium activo", "house": "compró casa",
 }
 

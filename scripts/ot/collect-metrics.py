@@ -167,7 +167,7 @@ def snapshot(now: float) -> dict:
     }
 
 
-LEVEL_MILESTONES = (8, 20, 30, 50, 80, 100, 150, 200)
+LEVEL_MILESTONES = (20, 30, 50, 80, 100, 150, 200)   # los personajes nuevos arrancan en nivel 10 (plantillas 0-4.xml)
 
 
 def _logins() -> list[dict]:
@@ -183,7 +183,7 @@ def _logins() -> list[dict]:
 
 def funnel_game(now: float, dry: bool) -> list[dict]:
     """Hitos del juego para el embudo (web/funnel.py tiene los de la web): primer login de cada cuenta, niveles
-    8/20/30/50/80/100/150/200, promotion, premium activo y casa. Compara con la corrida anterior
+    20/30/50/80/100/150/200, promotion, premium activo y casa. Compara con la corrida anterior
     (data/logs/.funnel-state.json); la primera vez solo guarda la base, sin hitos. Sin cuentas de GM."""
     state_file = LOGS / ".funnel-state.json"
     try:
@@ -204,6 +204,12 @@ def funnel_game(now: float, dry: bool) -> list[dict]:
             "acc": r.get("account", ""), "access": int(r.get("access", "0") or 0), "level": int(r.get("level", "1") or 1),
             "promoted": r.get("promoted", "0") == "1", "prem": int(r.get("premticks", "0") or 0) > 0}
     staff = {c["acc"] for c in chars.values() if c["access"] > 0}
+    start_level = 1   # nivel con el que nace un personaje (plantillas): un personaje nuevo no "pasa" esos niveles
+    for n in VOC_TEMPLATES:
+        try:
+            start_level = max(start_level, int(ET.parse(DATA / "players" / f"{n}.xml").getroot().get("level", "1")))
+        except (OSError, ET.ParseError, ValueError):
+            pass
     owners = set()
     for path in (DATA / "houses").glob("*.xml"):
         try:
@@ -233,7 +239,7 @@ def funnel_game(now: float, dry: bool) -> list[dict]:
         if c["acc"] in staff:
             continue
         base = {"t": int(now), "ip": last_ip.get(name.lower(), ""), "acc": int(c["acc"] or 0), "name": name}
-        prev = o or {"level": 1, "promoted": False, "prem": False, "house": False}
+        prev = o or {"level": start_level, "promoted": False, "prem": False, "house": False}
         for m in LEVEL_MILESTONES:
             if prev["level"] < m <= cur["level"]:
                 events.append({**base, "step": "level", "level": m})

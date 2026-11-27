@@ -24,7 +24,7 @@ Retro76 es un OT server de Tibia 7.6 (juego retro online). Esta URL privada da t
 - totals: sumas del período (visitantes web, páginas vistas, descargas, cuentas creadas, jugadores nuevos, logins,
   pico de online, de dónde llegan las visitas y locales de navegador).
 - funnel: embudo de jugadores del período, paso por paso (visitó la web → descargó → abrió el cliente → creó cuenta →
-  entró al juego → nivel 8/20/50 → promotion → abrió WhatsApp premium → premium activo → casa). `people` = personas
+  entró al juego → nivel 20/50/100 → promotion → abrió WhatsApp premium → premium activo → casa). `people` = personas
   únicas en ese paso; `from_web_visitors` = cuántas de ellas son IPs que visitaron la web en el período.
 - daily: un objeto por día con:
   - game: muestras cada 5 min → uptime_pct, online_avg, online_peak, cpu_pct, ram_free_min_mb, yurots_mem_max_mb,

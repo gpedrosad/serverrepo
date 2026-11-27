@@ -171,7 +171,7 @@ def main() -> int:
 FUNNEL_STEPS = [
     ("visit", "visitó la web", "ip"), ("download", "descargó el cliente", "ip"), ("client_open", "abrió el cliente", "ip"),
     ("account_created", "creó cuenta", "acc"), ("first_login", "entró al juego", "acc"),
-    ("level8", "llegó a nivel 8", "acc"), ("level20", "llegó a nivel 20", "acc"), ("level50", "llegó a nivel 50", "acc"),
+    ("level20", "llegó a nivel 20", "acc"), ("level50", "llegó a nivel 50", "acc"), ("level100", "llegó a nivel 100", "acc"),
     ("promoted", "promotion", "acc"), ("premium_click", "abrió WhatsApp premium", "ip"),
     ("premium_active", "premium activo", "acc"), ("house", "compró casa", "acc"),
 ]
