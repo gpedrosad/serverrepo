@@ -16,7 +16,7 @@ Además, dos ayudas que no van por nivel del personaje:
 | Qué | Cómo |
 |---|---|
 | **Training de bienvenida** | Una sola vez por personaje: **22 h extra** (24 h con las 2 h del día), que se gastan después del límite diario y pueden durar varios días. Se entrega la primera vez que entra a la sala, si es nivel 30 o menos. Cuando se termina, queda lo normal (2 h, premium 6 h). |
-| **Primeros skills rápidos** | Skills (espada, maza, hacha, distancia, escudo, puños) **x4** hasta skill 35, bajando de a poco hasta lo normal en 55. Magic level **x4** hasta ML 15, normal en 30. Se suma a los rates de siempre y al premium. |
+| **Primeros skills rápidos** | Skills (espada, maza, hacha, distancia, escudo, puños) **x4** hasta skill 20, y después en escala: ≈ x3,25 en 25, x2,5 en 30, x1,75 en 35, **normal desde 40**. Magic level **x4** hasta ML 15, normal en 30. Se suma a los rates de siempre y al premium. |
 
 Solo baja la exp perdida; ML, skills, equipo y mochila se pierden igual que siempre (`diepercent`).
 
@@ -63,8 +63,8 @@ lowlevelmisscut = 70        -- % de segunda tirada al fallar contra monstruos (0
 lowlevelpowerhitboost = 100 -- % extra de chance de power/mega hit contra monstruos (100 = el doble)
 welcometrainingminutes = 1320 -- bolsa de training de bienvenida, una vez (22 h; 0 = sin bolsa)
 fastskillboost = 300        -- % extra en skills y ML con la ayuda completa (300 = x4; 0 = sin cambio)
-fastskillfull = 35          -- skills: completa hasta este nivel de skill
-fastskillend = 55           -- skills: normal desde este nivel
+fastskillfull = 20          -- skills: completa hasta este nivel de skill
+fastskillend = 40           -- skills: normal desde este nivel
 fastmlfull = 15             -- ML: completa hasta este ML
 fastmlend = 30              -- ML: normal desde este ML
 ```

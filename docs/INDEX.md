@@ -69,7 +69,7 @@ Mecánicas in-game, rates, sistemas de entrenamiento, objetos de gameplay.
 | [`gameplay/PARTY_EXP.md`](gameplay/PARTY_EXP.md) | **Exp compartida y bonus en party:** reparto entre miembros vivos cerca (≤30 sqm, ±1 piso), +25/+50/+75 % con 2/3/4+ miembros y doble texto flotante (blanco + celeste `+X`). |
 | [`gameplay/ML_RATE.md`](gameplay/ML_RATE.md) | Configuración y tuning del rate de magic level. |
 | [`gameplay/REGEN_FOOD.md`](gameplay/REGEN_FOOD.md) | Sistema de regeneración vía comida. |
-| [`gameplay/NIVELES_BAJOS.md`](gameplay/NIVELES_BAJOS.md) | **Ayuda para nuevos:** 22 h de training de bienvenida (una vez), primeros skills x4 (hasta skill 35 / ML 15). **Hasta nivel 30:** -2 % de exp al morir, monstruos pegan hasta 40 % menos y regen hasta +40 % (sin comer hasta el 15) , menos golpes fallados y el doble de power/mega hit con rampa que se apaga de a poco del 16 al 30. |
+| [`gameplay/NIVELES_BAJOS.md`](gameplay/NIVELES_BAJOS.md) | **Ayuda para nuevos:** 22 h de training de bienvenida (una vez), primeros skills x4 (hasta skill 20 / ML 15, normal en 40 / 30). **Hasta nivel 30:** -2 % de exp al morir, monstruos pegan hasta 40 % menos y regen hasta +40 % (sin comer hasta el 15) , menos golpes fallados y el doble de power/mega hit con rampa que se apaga de a poco del 16 al 30. |
 | [`gameplay/RAGE_MONSTERS.md`](gameplay/RAGE_MONSTERS.md) | Mecánica de monstruos enraged. |
 | [`gameplay/RESPAWN_SYSTEM.md`](gameplay/RESPAWN_SYSTEM.md) | Funcionamiento real del respawn de monstruos, visibilidad, timers y acumulacion por kiteo fuera del area. |
 | [`gameplay/MONSTER_CREATION.md`](gameplay/MONSTER_CREATION.md) | Flujo completo para crear monstruos nuevos: XML, alta en `monsters.xml`, RME y spawns. |
