@@ -36,7 +36,8 @@ DEATH
   Up to level 15: you regenerate without eating
   Low levels: you miss fewer hits against monsters (also fades out gradually up to 30)
   Low levels: double power and mega hit chance against monsters
-  Low levels: unlimited training up to level 15 (24 h/day), then it tapers back to normal by level 31
+  Welcome: once per character, 22 h of extra training (on top of the daily 2 h)
+  First skills x3 (up to skill 35 / ML 15), then it tapers back to normal (skill 55 / ML 30)
 
 PVP
   PvP world with skulls  |  PZ lock 10 sec  |  !pz

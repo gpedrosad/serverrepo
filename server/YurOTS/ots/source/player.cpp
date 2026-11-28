@@ -1216,8 +1216,20 @@ std::string Player::getSkillName(int skillid){
 	return skillname;
 }
 
+// Primeros skills rápidos (docs/gameplay/NIVELES_BAJOS.md): +`fastskillboost` % hasta `full`, baja de a
+// poco y vuelve a lo normal en `end`. Va por nivel del skill (o del ML), no por nivel del personaje.
+static int64_t applyFastSkill(int64_t amount, int64_t current, int full, int end)
+{
+	const int boost = g_config.FAST_SKILL_BOOST;
+	if (amount <= 0 || boost <= 0 || end <= full || current >= end)
+		return amount;
+	const int64_t help = current <= full ? 100 : (int64_t)(end - current) * 100 / (end - full);
+	return amount + amount * boost * help / 10000;
+}
+
 void Player::addSkillTryInternal(int skilltry,int skill){
 
+	skilltry = (int)applyFastSkill(skilltry, skills[skill][SKILL_LEVEL], g_config.FAST_SKILL_FULL, g_config.FAST_SKILL_END);
 	skills[skill][SKILL_TRIES] += skilltry;
 	//for skill level advances
 
@@ -2013,6 +2025,7 @@ void Player::addManaSpent(uint64_t spent){
 	spent *= g_config.MANA_MUL[vocation];
 	if (isPremium() && g_config.PREMMY_SKILL_MUL > 1)
 		spent *= g_config.PREMMY_SKILL_MUL;
+	spent = (uint64_t)applyFastSkill((int64_t)spent, maglevel, g_config.FAST_ML_FULL, g_config.FAST_ML_END);
 
 	this->manaspent += spent;
 	//Magic Level Advance
@@ -3668,6 +3681,21 @@ static const unsigned long STORAGE_TRAINING_DATE = 9100;
 static const unsigned long STORAGE_TRAINING_USED = 9101;
 static const unsigned long STORAGE_TRAINING_BONUS_DATE = 9102;
 static const unsigned long STORAGE_TRAINING_BONUS_MINUTES = 9103;
+// Bolsa de bienvenida (una sola vez por personaje): ms que quedan; -1 = no le tocó o ya la gastó.
+static const unsigned long STORAGE_TRAINING_WELCOME_LEFT = 9125;
+
+// La bolsa se entrega la primera vez que entra al training, si todavía es nivel bajo (<= `lowlevel`).
+// Se gasta solo después del límite del día: primero las horas normales, después la bolsa.
+static long getTrainingWelcomeLeftMs(Player* player)
+{
+	long left = 0;
+	if (!player->getStorageValue(STORAGE_TRAINING_WELCOME_LEFT, left)) {
+		const bool eligible = g_config.WELCOME_TRAINING_MINUTES > 0 && player->level <= g_config.LOWLEVEL_LEVEL;
+		left = eligible ? (long)g_config.WELCOME_TRAINING_MINUTES * 60L * 1000L : -1;
+		player->addStorageValue(STORAGE_TRAINING_WELCOME_LEFT, left);
+	}
+	return left > 0 ? left : 0;
+}
 
 static long getTrainingTodayCode()
 {
@@ -3681,8 +3709,6 @@ static long getTrainingDailyLimitMs(Player* player, long today)
 	long limitMinutes = player->isPremium()
 		? (long)g_config.TRAINING_PREMIUM_MINUTES
 		: (long)g_config.TRAINING_DAILY_MINUTES;
-	// Niveles bajos: hasta `lowleveltrainingminutes` más por día, con la rampa de lowLevelHelp().
-	limitMinutes += (long)g_config.LOWLEVEL_TRAINING_MINUTES * player->lowLevelHelp() / 100;
 	long bonusDate = 0;
 	long bonusMinutes = 0;
 	player->getStorageValue(STORAGE_TRAINING_BONUS_DATE, bonusDate);
@@ -3709,9 +3735,15 @@ static std::string formatTrainingTime(long ms)
 	return ss.str();
 }
 
-static void sendTrainingEnterMessage(Player* player, long usedMs, long limitMs)
+static void sendTrainingEnterMessage(Player* player, long usedMs, long limitMs, long welcomeMs)
 {
 	const long remaining = limitMs - usedMs;
+	if (welcomeMs > 0) {
+		std::stringstream w;
+		w << "Welcome bonus: you have " << formatTrainingTime(welcomeMs)
+		  << " of extra training (one time only). It is used after your daily time.";
+		player->sendTextMessage(MSG_RED_INFO, w.str().c_str());
+	}
 	const long limitMinutes = limitMs / (60L * 1000L);
 	std::stringstream ss;
 	ss << "Training room: each character has "
@@ -3724,20 +3756,21 @@ static void sendTrainingEnterMessage(Player* player, long usedMs, long limitMs)
 	player->sendTextMessage(MSG_RED_INFO, ss.str().c_str());
 }
 
-static void sendTrainingProgressLine(Player* player, long usedMs, long limitMs)
+static void sendTrainingProgressLine(Player* player, long usedMs, long limitMs, long welcomeMs)
 {
 	const long remaining = limitMs - usedMs;
 	std::stringstream ss;
 	ss << "Training: remaining "
-	   << formatTrainingTime(remaining)
+	   << formatTrainingTime(remaining > 0 ? remaining : 0)
 	   << " today | used: "
 	   << formatTrainingTime(usedMs);
+	if (welcomeMs > 0)
+		ss << " | welcome bonus: " << formatTrainingTime(welcomeMs);
 	player->sendTextMessage(MSG_SMALLINFO, ss.str().c_str());
 }
 
-static void sendTrainingWarningMessage(Player* player, long usedMs, long limitMs)
+static void sendTrainingWarningMessage(Player* player, long remaining)
 {
-	const long remaining = limitMs - usedMs;
 	std::stringstream ss;
 	ss << "Warning: you have less than 5 minutes of training left today ("
 	   << formatTrainingTime(remaining)
@@ -3773,9 +3806,10 @@ void Player::checkTraining(int thinkTicks, Tile* tile)
 	}
 
 	const long limitMs = getTrainingDailyLimitMs(this, today);
+	long welcomeMs = getTrainingWelcomeLeftMs(this);
 	const Position exitPos = tile->getTrainingExit();
 
-	if (usedMs >= limitMs)
+	if (usedMs >= limitMs && welcomeMs <= 0)
 	{
 		g_game.teleport(this, exitPos);
 		sendTextMessage(MSG_RED_INFO, "Your training time for today has run out. You have been sent to the temple. Come back tomorrow.");
@@ -3787,22 +3821,30 @@ void Player::checkTraining(int thinkTicks, Tile* tile)
 	if (!trainingInArea)
 	{
 		trainingInArea = true;
-		sendTrainingEnterMessage(this, usedMs, limitMs);
+		sendTrainingEnterMessage(this, usedMs, limitMs, welcomeMs);
 	}
 
-	usedMs += thinkTicks;
-	addStorageValue(STORAGE_TRAINING_USED, usedMs);
+	if (usedMs >= limitMs && welcomeMs > 0) {
+		// Ya gastó lo del día: corre la bolsa de bienvenida.
+		welcomeMs -= thinkTicks;
+		addStorageValue(STORAGE_TRAINING_WELCOME_LEFT, welcomeMs > 0 ? welcomeMs : -1);
+		if (welcomeMs < 0)
+			welcomeMs = 0;
+	} else {
+		usedMs += thinkTicks;
+		addStorageValue(STORAGE_TRAINING_USED, usedMs);
+	}
 
-	const long remaining = limitMs - usedMs;
-	sendTrainingProgressLine(this, usedMs, limitMs);
+	const long remaining = (limitMs - usedMs > 0 ? limitMs - usedMs : 0) + welcomeMs;
+	sendTrainingProgressLine(this, usedMs, limitMs, welcomeMs);
 
 	if (!trainingWarned && remaining <= 5 * 60 * 1000 && remaining > 0)
 	{
 		trainingWarned = true;
-		sendTrainingWarningMessage(this, usedMs, limitMs);
+		sendTrainingWarningMessage(this, remaining);
 	}
 
-	if (usedMs >= limitMs)
+	if (usedMs >= limitMs && welcomeMs <= 0)
 	{
 		g_game.teleport(this, exitPos);
 		sendTextMessage(MSG_RED_INFO, "Your training time for today has run out. You have been sent to the temple. Come back tomorrow.");

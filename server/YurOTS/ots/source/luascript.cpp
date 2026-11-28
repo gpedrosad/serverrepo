@@ -198,7 +198,12 @@ int LuaScript::OpenFile(const char *filename)
 	LOWLEVEL_NOFOOD_LEVEL = getGlobalNumber("lowlevelnofood", 15);
 	LOWLEVEL_MISS_CUT = getGlobalNumber("lowlevelmisscut", 70);
 	LOWLEVEL_POWERHIT_BOOST = getGlobalNumber("lowlevelpowerhitboost", 100);
-	LOWLEVEL_TRAINING_MINUTES = getGlobalNumber("lowleveltrainingminutes", 1320);
+	WELCOME_TRAINING_MINUTES = getGlobalNumber("welcometrainingminutes", 1320);
+	FAST_SKILL_BOOST = getGlobalNumber("fastskillboost", 200);
+	FAST_SKILL_FULL = getGlobalNumber("fastskillfull", 35);
+	FAST_SKILL_END = getGlobalNumber("fastskillend", 55);
+	FAST_ML_FULL = getGlobalNumber("fastmlfull", 15);
+	FAST_ML_END = getGlobalNumber("fastmlend", 30);
 
 	PVP_UNDERDOG_EXP = getGlobalString("pvpunderdogexp", "yes") == "yes";
 	PVP_UNDERDOG_EXP_PERCENT = getGlobalNumber("pvpunderdogexp_percent", 50);

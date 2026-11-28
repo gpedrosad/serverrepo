@@ -140,7 +140,13 @@ public:
 	int LOWLEVEL_NOFOOD_LEVEL;     // hasta este nivel (incluido) regenera sin comer
 	int LOWLEVEL_MISS_CUT;         // % de segunda tirada al fallar contra monstruos, con la ayuda completa
 	int LOWLEVEL_POWERHIT_BOOST;   // % extra de chance de power/mega hit contra monstruos, con la ayuda completa
-	int LOWLEVEL_TRAINING_MINUTES; // minutos extra de training por día, con la ayuda completa
+	int WELCOME_TRAINING_MINUTES;  // bolsa de training de bienvenida, una sola vez por personaje (minutos)
+	// Primeros skills rápidos: +FAST_SKILL_BOOST % hasta *_FULL, baja de a poco hasta *_END.
+	int FAST_SKILL_BOOST;
+	int FAST_SKILL_FULL;
+	int FAST_SKILL_END;
+	int FAST_ML_FULL;
+	int FAST_ML_END;
 	bool PVP_UNDERDOG_EXP;
 	int PVP_UNDERDOG_EXP_PERCENT;
 	int PVP_UNDERDOG_EXP_MIN_DIFF;
