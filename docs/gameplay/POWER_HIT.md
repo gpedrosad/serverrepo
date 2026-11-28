@@ -47,3 +47,8 @@ dorada. Se eligió el dorado porque se asocia con premio y no se confunde con el
 el hielo ni la sombra.
 
 **Requiere el cliente nuevo**: un cliente sin el pack no tiene los efectos 33 y 34.
+
+## Niveles bajos
+
+Hasta el nivel 30, contra monstruos, las chances suben hasta el doble (`lowlevelpowerhitboost`), con la
+rampa de [NIVELES_BAJOS.md](NIVELES_BAJOS.md). Contra jugadores no cambia.

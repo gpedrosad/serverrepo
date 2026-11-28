@@ -191,6 +191,13 @@ int LuaScript::OpenFile(const char *filename)
 	DIE_PERCENT_SKILL = atoi(getGlobalStringField("diepercent",3,"7").c_str());
 	DIE_PERCENT_EQ = atoi(getGlobalStringField("diepercent",4,"7").c_str());
 	DIE_PERCENT_BP = atoi(getGlobalStringField("diepercent",5,"100").c_str());
+	LOWLEVEL_LEVEL = getGlobalNumber("lowlevel", 30);
+	LOWLEVEL_DIE_PERCENT_EXP = getGlobalNumber("lowleveldiepercent", 2);
+	LOWLEVEL_MONSTER_DAMAGE = getGlobalNumber("lowlevelmonsterdamage", 60);
+	LOWLEVEL_REGEN_BONUS = getGlobalNumber("lowlevelregenbonus", 40);
+	LOWLEVEL_NOFOOD_LEVEL = getGlobalNumber("lowlevelnofood", 15);
+	LOWLEVEL_MISS_CUT = getGlobalNumber("lowlevelmisscut", 70);
+	LOWLEVEL_POWERHIT_BOOST = getGlobalNumber("lowlevelpowerhitboost", 100);
 
 	PVP_UNDERDOG_EXP = getGlobalString("pvpunderdogexp", "yes") == "yes";
 	PVP_UNDERDOG_EXP_PERCENT = getGlobalNumber("pvpunderdogexp_percent", 50);

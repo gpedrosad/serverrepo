@@ -199,7 +199,22 @@ public:
 	}
 
 	virtual exp_t getLostExperience() {
-		return experience * g_config.DIE_PERCENT_EXP / 100;
+		// Muerte suave para niveles bajos (lowlevel / lowleveldiepercent en config.lua).
+		// También baja la exp que gana quien mata a un nivel bajo (game.cpp usa este valor).
+		const int percent = (level <= g_config.LOWLEVEL_LEVEL) ? g_config.LOWLEVEL_DIE_PERCENT_EXP : g_config.DIE_PERCENT_EXP;
+		return experience * percent / 100;
+	}
+
+	// Cuánta ayuda de nivel bajo le toca (0-100): 100 hasta la mitad de `lowlevel` (15),
+	// después baja un poco por nivel y llega a 0 en `lowlevel` + 1 (31). Sin cortes bruscos.
+	int lowLevelHelp() const {
+		const int top = g_config.LOWLEVEL_LEVEL;
+		const int full = top / 2;
+		if(top <= 0 || level > top)
+			return 0;
+		if(level <= full)
+			return 100;
+		return (int)((top + 1 - level) * 100 / (top + 1 - full));
 	}
 
 	double getFreeCapacity() const {
@@ -568,6 +583,10 @@ protected:
 	static const int64_t gainHealthVector[5][2];
 	unsigned short manaTick;
 	unsigned short healthTick;
+	// Resto de la regen extra de nivel bajo (en centésimas de punto): suma de a +1 cada tanto.
+	int lowLevelManaRest;
+	int lowLevelHealthRest;
+	int64_t lowLevelRegenExtra(int64_t add, int& rest) const;
 
 	static const int64_t promotedGainManaVector[5][2];
 	static const int64_t promotedGainHealthVector[5][2];

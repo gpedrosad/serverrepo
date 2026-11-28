@@ -204,6 +204,8 @@ Creature()
 
  	manaTick = 0;
  	healthTick = 0;
+	lowLevelManaRest = 0;
+	lowLevelHealthRest = 0;
 }
 
 Player::~Player()
@@ -2406,6 +2408,7 @@ bool Player::gainManaTick()
 		add = 5;
 	}
 
+	add += lowLevelRegenExtra(add, lowLevelManaRest);
 	mana += min(add * g_config.MANA_TICK_MUL, manamax - mana);
 
 	return true;
@@ -2453,9 +2456,26 @@ bool Player::gainHealthTick()
 		add = 5;
 	}
 
+	add += (int)lowLevelRegenExtra(add, lowLevelHealthRest);
 	health += min(add * g_config.HEALTH_TICK_MUL, healthmax - health);
 
 	return true;
+}
+
+// Regen extra de nivel bajo: `lowlevelregenbonus` % del pulso, escalado por lowLevelHelp().
+// Se acumula en centésimas y suma puntos enteros de a uno, así el pulso casi no cambia a la vista
+// y la ayuda se apaga sola, nivel a nivel, hasta el 31.
+int64_t Player::lowLevelRegenExtra(int64_t add, int& rest) const
+{
+	const int help = lowLevelHelp();
+	if(help <= 0 || add <= 0 || g_config.LOWLEVEL_REGEN_BONUS <= 0) {
+		rest = 0;
+		return 0;
+	}
+	rest += (int)(add * g_config.LOWLEVEL_REGEN_BONUS * help / 100);
+	const int64_t extra = rest / 100;
+	rest %= 100;
+	return extra;
 }
 
 void Player::removeList()

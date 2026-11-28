@@ -19,7 +19,7 @@ Recupera experiencia perdida al morir. Nombre anterior de desarrollo: *voidscrip
 
 ### Comportamiento
 
-1. Al **morir**, el servidor guarda en storage `9110` la exp que vas a perder (`getLostExperience()`, hoy **7%** del total según `diepercent` en `config.lua`).
+1. Al **morir**, el servidor guarda en storage `9110` la exp que vas a perder (`getLostExperience()`, hoy **7%** del total según `diepercent` en `config.lua`, **2%** hasta nivel 30: ver [NIVELES_BAJOS.md](NIVELES_BAJOS.md)).
 2. Al usar la runa:
    - Lee storage `9110`.
    - Si no hay exp guardada → mensaje de error, no consume la rune.

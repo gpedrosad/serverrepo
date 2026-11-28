@@ -268,10 +268,22 @@ int64_t GameState::applyPowerHit(Creature* attacker, Creature* target, int64_t d
 		return damage;
 
 	if(powerHitTier < 0) {
+		int64_t megaChance = g_config.MEGAHIT_CHANCE;
+		int64_t powerChance = g_config.POWERHIT_CHANCE;
+		// Niveles bajos contra monstruos: chances x(1 + lowlevelpowerhitboost % × lowLevelHelp()).
+		// Ver docs/gameplay/NIVELES_BAJOS.md.
+		if(dynamic_cast<Monster*>(target) && !target->isPlayersSummon()) {
+			const int64_t boost = (int64_t)g_config.LOWLEVEL_POWERHIT_BOOST *
+				static_cast<Player*>(attacker)->lowLevelHelp() / 100;
+			if(boost > 0) {
+				megaChance += megaChance * boost / 100;
+				powerChance += powerChance * boost / 100;
+			}
+		}
 		int64_t roll = random_range(1, 1000);
-		if(roll <= g_config.MEGAHIT_CHANCE)
+		if(roll <= megaChance)
 			powerHitTier = 2;
-		else if(roll <= g_config.MEGAHIT_CHANCE + g_config.POWERHIT_CHANCE)
+		else if(roll <= megaChance + powerChance)
 			powerHitTier = 1;
 		else
 			powerHitTier = 0;
@@ -352,6 +364,23 @@ int applyCounterStance(Game* game, Player* defender, Creature* attacker,
 	}
 
 	return reduced;
+}
+
+// Monstruos (no summons de jugadores) pegan menos a niveles bajos: `lowlevelmonsterdamage` % con la
+// ayuda completa (hasta nivel 15) y vuelve de a poco al 100 % en el 31. Ver Player::lowLevelHelp().
+static int64_t applyLowLevelShield(Player* defender, Creature* attacker, int64_t damage)
+{
+	if(damage <= 0 || !defender || !attacker || attacker->isPlayersSummon())
+		return damage;
+	if(!dynamic_cast<Monster*>(attacker))
+		return damage;
+	const int help = defender->lowLevelHelp();
+	const int full = g_config.LOWLEVEL_MONSTER_DAMAGE;
+	if(help <= 0 || full >= 100 || full < 0)
+		return damage;
+	const int64_t percent = 100 - (int64_t)(100 - full) * help / 100;
+	const int64_t reduced = damage * percent / 100;
+	return reduced > 0 ? reduced : 1;
 }
 
 int GameState::applyAmulets(Player* player, int damage, attacktype_t atype)
@@ -894,6 +923,7 @@ void GameState::onAttack(Creature* attacker, const Position& pos, const MagicEff
 
 		damage = applyAmulets(targetPlayer, damage, me->attackType);
 		damage = applyCounterStance(game, targetPlayer, attacker, damage, me->attackType);
+		damage = applyLowLevelShield(targetPlayer, attacker, damage);
 
 		if (damage > 0) {
 			if(attackPlayer && attackPlayer->access < g_config.ACCESS_PROTECT && !trainingNoPvp) {
@@ -1076,6 +1106,21 @@ void GameState::onAttack(Creature* attacker, const Position& pos, Creature* atta
 		damage -= (int)(damage*(armor/100.0)*(rand()/(RAND_MAX+1.0))) + armor;
 		//damage -= (int)((armor)*(rand()/(RAND_MAX+1.0))) + armor;	// wik's
 
+	// Niveles bajos fallan menos contra monstruos: si el golpe no hizo daño (falló el arma a distancia o
+	// lo paró la defensa/armadura), con `lowlevelmisscut` % × lowLevelHelp() se tira otra vez.
+	// PvP y summons de jugadores no cambian. Ver docs/gameplay/NIVELES_BAJOS.md.
+	if(damage <= 0 && attackPlayer && attackedCreature && !attackedCreature->isPlayersSummon() &&
+		dynamic_cast<Monster*>(attackedCreature)) {
+		const int help = attackPlayer->lowLevelHelp();
+		if(help > 0 && (rand() % 100) < g_config.LOWLEVEL_MISS_CUT * help / 100) {
+			damage = attacker->getWeaponDamage();
+			if ((rand() % 10000) * damage < defense * 1000)
+				damage = 0;
+			else
+				damage -= (int)(damage*(armor/100.0)*(rand()/(RAND_MAX+1.0))) + armor;
+		}
+	}
+
 	int64_t manaDamage = 0;
 	const bool summonVsPlayer = attacker && attacker->isPlayersSummon() && attackedPlayer;
 	const bool playerVsSummon = attackedCreature && attackedCreature->isPlayersSummon() && attackPlayer;
@@ -1119,6 +1164,7 @@ void GameState::onAttack(Creature* attacker, const Position& pos, Creature* atta
 		}
 		damage = applyAmulets(attackedPlayer, damage, ATTACK_PHYSICAL);
 		damage = applyCounterStance(game, attackedPlayer, attacker, damage, ATTACK_PHYSICAL);
+		damage = applyLowLevelShield(attackedPlayer, attacker, damage);
 		bool riftCut = false;
 		if(relicAllowed && relic == ITEM_RIFTBLADE){
 			if(damage <= 0)
@@ -5056,10 +5102,13 @@ void Game::checkCreature(unsigned long id)
 			player->checkSoulRegen(thinkTicks);
 
 			if(!tile->isPz()){
-				if(player->food > 1000){
+				// Hasta `lowlevelnofood` (15) regenera sin comer (docs/gameplay/NIVELES_BAJOS.md).
+				const bool fed = player->food > 1000;
+				if(fed || player->level <= g_config.LOWLEVEL_NOFOOD_LEVEL){
 
 					player->gainManaTick();
-					player->food -= thinkTicks;
+					if(fed)
+						player->food -= thinkTicks;
 					if(player->healthmax - player->health > 0){
 
 						if(player->gainHealthTick()){

@@ -130,6 +130,16 @@ public:
 	int DIE_PERCENT_SKILL;
 	int DIE_PERCENT_EQ;
 	int DIE_PERCENT_BP;
+	// Ayuda para niveles bajos (docs/gameplay/NIVELES_BAJOS.md). Hasta LOWLEVEL_LEVEL (incluido):
+	// al morir se pierde LOWLEVEL_DIE_PERCENT_EXP % de exp. El daño de monstruos y la regen usan una
+	// rampa: completa hasta la mitad de LOWLEVEL_LEVEL y se apaga de a poco hasta LOWLEVEL_LEVEL + 1.
+	int LOWLEVEL_LEVEL;
+	int LOWLEVEL_DIE_PERCENT_EXP;
+	int LOWLEVEL_MONSTER_DAMAGE;   // % del daño de monstruos con la ayuda completa (100 = sin cambio)
+	int LOWLEVEL_REGEN_BONUS;      // % extra de regen de vida y maná con la ayuda completa
+	int LOWLEVEL_NOFOOD_LEVEL;     // hasta este nivel (incluido) regenera sin comer
+	int LOWLEVEL_MISS_CUT;         // % de segunda tirada al fallar contra monstruos, con la ayuda completa
+	int LOWLEVEL_POWERHIT_BOOST;   // % extra de chance de power/mega hit contra monstruos, con la ayuda completa
 	bool PVP_UNDERDOG_EXP;
 	int PVP_UNDERDOG_EXP_PERCENT;
 	int PVP_UNDERDOG_EXP_MIN_DIFF;

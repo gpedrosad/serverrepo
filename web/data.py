@@ -628,8 +628,11 @@ def top_fraggers(players: list[dict]) -> list[dict]:
     return rows
 
 
-# Misma fórmula que Creature::getExpForLv + diepercent[1]=7 + pvpunderdogexp_percent=80
+# Misma fórmula que Creature::getExpForLv + diepercent[1]=7 + pvpunderdogexp_percent=80.
+# Hasta `lowlevel` (30) se pierde `lowleveldiepercent` (2): Player::getLostExperience.
 _DIE_PERCENT_EXP = 7
+_LOWLEVEL = 30
+_LOWLEVEL_DIE_PERCENT_EXP = 2
 _PVP_KILL_EXP_PERCENT = 80
 
 
@@ -640,7 +643,8 @@ def exp_for_level(level: int) -> int:
 
 def estimate_pvp_kill_exp(victim_level: int) -> int:
     """Exp aprox. que gana el killer (víctima en el piso de su level)."""
-    lost = exp_for_level(victim_level) * _DIE_PERCENT_EXP // 100
+    percent = _LOWLEVEL_DIE_PERCENT_EXP if int(victim_level) <= _LOWLEVEL else _DIE_PERCENT_EXP
+    lost = exp_for_level(victim_level) * percent // 100
     return lost * _PVP_KILL_EXP_PERCENT // 100
 
 
