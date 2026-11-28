@@ -5,8 +5,8 @@
 	<combat targetdistance="1" runonhealth="20"/>
 
 <attacks>
-	<attack type="melee" mindamage="12" maxdamage="48"/>
-	<attack type="distance" name="arrow" mindamage="15" maxdamage="30"/>
+	<attack type="melee" mindamage="5" maxdamage="30"/>
+	<attack type="distance" name="arrow" mindamage="5" maxdamage="20"/>
 </attacks>
 
 <defenses>

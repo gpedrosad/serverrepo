@@ -5,8 +5,8 @@
 	<combat targetdistance="5" runonhealth="0"/>
 
 <attacks>
-	<attack type="distance" name="arrow" mindamage="10" maxdamage="70"/>
-	<attack type="distance" name="arrow" mindamage="10" maxdamage="70" cycleticks="3500"/>
+	<attack type="distance" name="arrow" mindamage="5" maxdamage="45"/>
+	<attack type="distance" name="arrow" mindamage="5" maxdamage="45" cycleticks="3500"/>
 </attacks>
 
 <defenses>

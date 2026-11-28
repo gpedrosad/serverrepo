@@ -182,3 +182,18 @@ NM_ME_VENOM_STAR_HIT = 45
 NM_ME_STORM_STAR_HIT = 46
 -- Subir de nivel (LEVEL_UP_REWARDS.md).
 NM_ME_LEVEL_UP = 50
+
+-- Curación extra para niveles bajos (docs/gameplay/NIVELES_BAJOS.md#curacion). Solo jugadores
+-- (getPlayerSkill da -1 a los monstruos que usan exura). Misma rampa que Player::lowLevelHelp():
+-- completa hasta el 15, baja de a poco y se apaga en el 31 (con lowlevel = 30 en config).
+LOW_LEVEL_HEAL_FULL = 15
+LOW_LEVEL_HEAL_TOP = 30
+function lowLevelHealHelp(cid, level)
+	if getPlayerSkill(cid, 0) < 0 or level > LOW_LEVEL_HEAL_TOP then
+		return 0
+	end
+	if level <= LOW_LEVEL_HEAL_FULL then
+		return 1
+	end
+	return (LOW_LEVEL_HEAL_TOP + 1 - level) / (LOW_LEVEL_HEAL_TOP + 1 - LOW_LEVEL_HEAL_FULL)
+end

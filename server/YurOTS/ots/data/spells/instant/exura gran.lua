@@ -21,6 +21,10 @@ attackType = ATTACK_NONE
     	else
     		LightHealingObject.minDmg = (level * 2 + maglv * 3) * 0.30
     		LightHealingObject.maxDmg = (level * 2 + maglv * 3) * 0.60
+    		-- Niveles bajos: +55..+95 con la ayuda completa (NIVELES_BAJOS.md#curacion)
+    		local help = lowLevelHealHelp(cid, level)
+    		LightHealingObject.minDmg = LightHealingObject.minDmg + 55 * help
+    		LightHealingObject.maxDmg = LightHealingObject.maxDmg + 95 * help
     	end
     return doTargetMagic(cid, centerpos, LightHealingObject:ordered())
     end

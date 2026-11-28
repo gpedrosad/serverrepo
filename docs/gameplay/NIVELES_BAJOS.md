@@ -49,6 +49,39 @@ Hasta el 15 la [protección de novato](NEWBIE_PROTECTION.md) no quita nada al mo
 - **Regen** (`Player::lowLevelRegenExtra`, `player.cpp`): el extra se guarda en centésimas y suma
   +1 de vez en cuando, así el número que sube casi no cambia a la vista.
 
+## Curación
+
+`exura` y `exura gran` curan un extra fijo a los jugadores de nivel bajo, con la misma rampa (completa hasta el
+15, se apaga en el 31). El extra con la ayuda completa es **+25 a +45** en `exura` y **+55 a +95** en `exura gran`.
+Va en `data/spells/lib/spells.lua` (`lowLevelHealHelp`) y en los dos scripts de `data/spells/instant/`. Es Lua: con
+reiniciar el server alcanza. Los monstruos que usan `exura` no lo reciben (`getPlayerSkill` les da -1). La rampa
+está copiada en Lua con `lowlevel = 30` fijo: si se cambia `lowlevel` en `config.lua`, cambiar también
+`LOW_LEVEL_HEAL_TOP`.
+
+| Nivel / ML | `exura` antes → ahora | `exura gran` antes → ahora |
+|---|---|---|
+| 8 / 1 | 1–6 → 26–51 | 5–11 → 60–106 |
+| 15 / 4 | 3–13 → 28–58 | 12–25 → 67–120 |
+| 20 / 8 | 5–21 → 22–52 | 19–38 → 57–103 |
+| 25 / 10 | 6–26 → 15–43 | 24–48 → 44–83 |
+| 31 / 12 (normal) | 7–32 | 29–58 |
+
+Ojo: los personajes nuevos nacen con magic level 0 y `exura` pide ML 1 (`exura gran` ML 4).
+
+## Elfos más suaves
+
+El pueblo élfico al lado del templo (106–113, 62–80) es la primera caza de muchos y los elfos mataban niveles 10–11
+(registro de juego del 28 nov). Bajó su daño ~35 % (28 nov 2026):
+
+| Monstruo | Antes | Ahora |
+|---|---|---|
+| Elf | melee 12–48 + flecha 15–30 | melee 5–30 + flecha 5–20 |
+| Elf Scout | 2 flechas 10–70 | 2 flechas 5–45 |
+| Elf Arcanist | maglevel 40 (HMM 37–80), flechas 10–70 y 10–30 | maglevel 25 (HMM 27–58), flechas 5–45 y 5–20 |
+
+El arca sudden death del Elf Arcanist (20–70 fijo) no cambió porque lo comparten los Blue Elf Arcanist.
+Vida, exp y loot iguales.
+
 ## Ajustar
 
 Valores por defecto en `luascript.cpp`. Se pueden pisar desde `config.lua` (no están escritos ahí

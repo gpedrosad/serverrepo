@@ -16,6 +16,7 @@ estado: publicado
 - [[premium|Premium]] suma **+10%** de exp y de loot, y duplica skills y magic level.
 - Al morir pierdes **7%** de tu exp, magic level y skills, y **siempre** la mochila. **Hasta nivel 15 no pierdes nada** y del 16 al 30 la exp que pierdes es solo **2%**.
 - Hasta nivel 30 le pegas **más rápido** a los monstruos (hasta 40% a nivel 8). No cuenta contra trainers.
+- Hasta nivel 30, `exura` y `exura gran` curan **mucho más** (a nivel 8, `exura` cura 26 a 51).
 - El servidor guarda tu personaje cada **10 min**.
 
 ## Experiencia por nivel

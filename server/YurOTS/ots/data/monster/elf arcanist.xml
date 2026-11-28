@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<monster name="Elf Arcanist" level="20" maglevel="40" experience="174" pushable="0" armor="16" defense="13" canpushitems="1" staticattack="50" changetarget="200" speed="220">
+<monster name="Elf Arcanist" level="20" maglevel="25" experience="174" pushable="0" armor="16" defense="13" canpushitems="1" staticattack="50" changetarget="200" speed="220">
 	<health now="220" max="220" />
 	<look type="63" head="20" body="30" legs="40" feet="50" corpse="2979" />
 	<combat targetdistance="5" runonhealth="50" />
@@ -9,8 +9,8 @@
 		<attack type="rune" name="arca sudden death" exhaustion="500" cycleticks="7000" probability="85" />
 		<attack type="rune" name="arca sudden death" exhaustion="500" cycleticks="3500" probability="35" />
 		<attack type="instant" name="exura vita" exhaustion="500" cycleticks="4000" probability="70" />
-		<attack type="distance" name="arrow" mindamage="10" maxdamage="70" probability="45" />
-		<attack type="distance" name="arrow" mindamage="10" maxdamage="30" probability="90" />
+		<attack type="distance" name="arrow" mindamage="5" maxdamage="45" probability="45" />
+		<attack type="distance" name="arrow" mindamage="5" maxdamage="20" probability="90" />
 	</attacks>
 	<defenses>
 		<defense immunity="invisible" />
