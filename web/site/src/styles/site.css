@@ -412,7 +412,7 @@ body:not(:has(.site-foot)) .wrap { padding-bottom: 4rem; }
 .account-number { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; margin: 0.3rem 0 0.8rem; }
 .account-number .mono { font-size: 40px; font-weight: 700; letter-spacing: 0.06em; color: var(--accent); }
 
-/* ---------- botón fijo "Jugar gratis" (Base.astro) ---------- */
+/* ---------- botón fijo "Jugar" (Base.astro) ---------- */
 .sticky-play {
   position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 20;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.55);

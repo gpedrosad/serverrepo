@@ -114,7 +114,7 @@ const premium = link('/premium');
   <script type="application/json" id="i18n" set:html={JSON.stringify(T.js)} />
 
   <script>
-    // Botón fijo "Jugar gratis": en la portada se esconde mientras se ve el botón grande de arriba.
+    // Botón fijo "Jugar": en la portada se esconde mientras se ve el botón grande de arriba.
     const sticky = document.getElementById('sticky-play');
     const hero = document.querySelector('.hero-cta');
     if (sticky && hero && 'IntersectionObserver' in window) {

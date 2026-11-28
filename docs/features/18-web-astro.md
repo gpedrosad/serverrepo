@@ -81,12 +81,12 @@ páginas del sitio que no son solo en español y `/character/...`) a `/en/...` o
   botones **Crear cuenta** y **Descargar**. Los grupos son `<details>` (abren sin JS); un script chico deja uno solo
   abierto y los cierra al tocar fuera o con Escape. En el celular el menú pasa a dos filas y los botones ocupan el ancho.
 - **Lo más simple posible** (27 nov 2026, porque de 50 visitas solo 5 descargaban). Un solo camino:
-  **Jugar gratis → crear cuenta → descargar → instalar**.
-  - **Cabecera:** un solo botón, **Jugar gratis** (→ `/cuenta`).
-  - **Botón fijo "Jugar gratis"** (`Base.astro`, `.sticky-play`): abajo a la derecha (en el celular, una barra al pie,
+  **Jugar → crear cuenta → descargar → instalar**.
+  - **Cabecera:** un solo botón, **Jugar** (→ `/cuenta`).
+  - **Botón fijo "Jugar"** (`Base.astro`, `.sticky-play`): abajo a la derecha (en el celular, una barra al pie,
     y ahí se esconde el de la cabecera). En todas las páginas menos `/cuenta`; en la portada se esconde mientras se ve el
     botón grande de arriba (`IntersectionObserver` sobre `.hero-cta`).
-  - **Portada:** título, una frase, el botón **Jugar gratis**, "¿Ya tienes cuenta? Descarga el cliente" (va directo a
+  - **Portada:** título, el botón **Jugar**, "¿Ya tienes cuenta? Descarga el cliente" (va directo a
     la descarga del sistema del visitante) y una **imagen real del juego** (la plaza de portales con los sprites del
     cliente: `web/assets/home/plaza-480.jpg` y `plaza-960.jpg`, de `Renderer.crop` de
     `scripts/map/build-route-images.py` a 32 px por casilla, x 146–175, y 38–57, piso 7). Debajo, solo los conectados.
