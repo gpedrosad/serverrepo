@@ -68,7 +68,7 @@ Resultado del 27 nov 2026 (en el VPS, todo OK):
 | Aviso al entrar (Bot Novato, nivel 8) | Aparece |
 | Golpes en 15 s | Trainer 11 (~1360 ms), Speed Dummy 19 (~790 ms): 1,73 veces más |
 | Bot Novato muere con dragon lords | Al volver: aviso, mochila, exp 25600 y nivel 8 intactos |
-| Control: Bot Mage (nivel 20) muere | Pierde la mochila y 7 % de exp, sin avisos (antes del 2 % de `lowleveldiepercent`; con él pierde 2 %) |
+| Control: Bot Mage (nivel 20) muere | Pierde la mochila y 2 % de exp (`lowleveldiepercent`, NIVELES_BAJOS.md), sin avisos |
 | `/level 15` y `/level 16` | Aviso de último nivel protegido y de fin de la protección |
 
 Error de la prueba que ya pasó: contar efectos (`0x83`) sin saber bien la casilla del bot mezcla los golpes del
