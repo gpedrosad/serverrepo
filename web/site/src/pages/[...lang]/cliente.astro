@@ -14,7 +14,6 @@ const fill = (html) => html.replace('{account}', localePath(lang, '/cuenta')).re
 <Base lang={lang} title={`${T.client.title} — Retro76`} path="/cliente" description={T.client.description}>
   <section>
     <h1 class="title">{T.client.title}</h1>
-    <p class="lede">{T.client.lede}</p>
     <p class="notice hidden" id="dl-started" role="status" data-text={T.client.started}>
       <span id="dl-started-text"></span>
       <span class="muted">{T.client.notStarted} <a id="dl-retry" href="#">{T.client.here}</a>.</span>
@@ -45,10 +44,6 @@ const fill = (html) => html.replace('{account}', localePath(lang, '/cuenta')).re
         <div><dt>{q}</dt><dd class="muted" set:html={fill(a)} /></div>
       ))}
     </dl>
-  </section>
-
-  <section>
-    <p class="muted">{T.client.noAccount} <a href={localePath(lang, '/cuenta')}>{T.client.createIt}</a>{T.client.free}</p>
   </section>
 </Base>
 

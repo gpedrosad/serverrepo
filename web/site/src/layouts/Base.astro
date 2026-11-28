@@ -132,8 +132,8 @@ const premium = link('/premium');
 
   <script>
     import { getData, t } from '../lib/client.js';
-    // Estado del server en la cabecera y en el footer.
-    const spots = [['#status .dot', 'status-text'], ['.foot-status .dot', 'foot-status-text']]
+    // Estado del server en la cabecera.
+    const spots = [['#status .dot', 'status-text']]
       .map(([d, s]) => [document.querySelector(d), document.getElementById(s)]).filter(([d, s]) => d && s);
     getData().then((d) => {
       const s = d.server || {};

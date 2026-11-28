@@ -7,10 +7,11 @@ español e inglés).
 | Parte | Qué es |
 |---|---|
 | Franja de ítems | 14 sprites del juego en pixel art (Demon Helmet, MPA, Crimson Wand…), apagados; se iluminan con brillo dorado al pasar el mouse. Salen de `web/assets/wiki/items/<id>.png` (lista `RELICS` del componente) |
-| Marca | logo, "Retro76" en dorado, una línea de qué es el server |
-| Estado | en línea / jugadores conectados, con el mismo `/api/data` que la cabecera (script de `Base.astro`) |
-| Columnas | Jugar (Cuenta, Cliente, Premium, Bugs), Comunidad (Live, Top, Power, PK, Muertes), Guía (Novedades, Wiki, Reglas, Info, Spells) |
-| Barra legal | año, aviso de servidor no oficial (Tibia es marca de CipSoft) y "Arriba ↑" |
+| Marca | logo y "Retro76" |
+| Columnas | Jugar (Cuenta, Cliente, Premium, Bugs), Comunidad (Live, Top, Power, PK, Muertes), Wiki (Novedades, Wiki, Items, Quests, Reglas, Info, Spells) |
+
+Desde el 27 nov 2026, para dejarlo simple, no lleva la frase bajo el logo, el estado del servidor (ya está en la
+cabecera) ni la barra legal (©, aviso de servidor no oficial de CipSoft y "Arriba ↑").
 
 Sin imágenes grandes ni JavaScript propio. `Base.astro` acepta `footer={false}`
 para una página sin footer.

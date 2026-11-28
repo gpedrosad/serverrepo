@@ -1,7 +1,6 @@
 ---
-// Footer de la web: franja de ítems del juego en pixel art, marca con el estado en vivo,
-// tres columnas de links y la barra legal.
-// El estado lo llena el script de Base.astro (#foot-status). Ver docs/features/17-web-footer.md.
+// Footer de la web: franja de ítems del juego en pixel art, marca
+// y tres columnas de links. Ver docs/features/17-web-footer.md.
 import { dict, localePath, navHref } from '../i18n.js';
 
 interface Props { lang: 'es' | 'en' | 'pt' }
@@ -18,7 +17,6 @@ const COLS = [
   { title: F.guide, links: [['/wiki/novedades', F.news], ['/wiki', T.nav['/wiki']], [href('/items-nuevos'), T.nav['/items-nuevos']],
     [href('/quests'), T.nav['/quests']], [href('/reglas'), T.nav['/reglas']], [href('/info'), T.nav['/info']], [href('/spells'), T.nav['/spells']]] },
 ];
-const year = new Date().getFullYear();
 ---
 <footer class="site-foot">
   <div class="foot-relics" aria-hidden="true">
@@ -31,8 +29,6 @@ const year = new Date().getFullYear();
         <img src="/assets/brand/favicon.png" alt="" width="28" height="28">
         <span>Retro76</span>
       </a>
-      <p class="foot-tagline">{F.tagline}</p>
-      <p class="status foot-status"><span class="dot"></span><span id="foot-status-text">…</span></p>
     </div>
 
     {COLS.map((c) => (
@@ -41,11 +37,6 @@ const year = new Date().getFullYear();
         <ul>{c.links.map(([h, l]) => <li><a href={h}>{l}</a></li>)}</ul>
       </nav>
     ))}
-  </div>
-
-  <div class="foot-legal">
-    <p>© {year} Retro76 · {F.legal}</p>
-    <a href="#top" class="foot-up">{F.up} ↑</a>
   </div>
 </footer>
 

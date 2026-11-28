@@ -20,7 +20,6 @@ const ld = {
 
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-text">
-      <p class="eyebrow">{T.home.heroEyebrow}</p>
       <h1 class="hero-title" id="hero-title">{T.home.heroTitle}</h1>
       <p class="hero-cta"><a class="btn primary big" href={localePath(lang, '/cuenta')}>{T.home.play}</a></p>
       <p class="muted" id="have-account">{T.home.haveAccount} <a id="dl-link" href={clientPath}>{T.home.getClient}</a></p>
@@ -29,7 +28,6 @@ const ld = {
     <figure class="hero-shot">
       <img src="/assets/home/plaza-480.jpg" srcset="/assets/home/plaza-480.jpg 480w, /assets/home/plaza-960.jpg 960w"
            sizes="(max-width: 720px) 100vw, 360px" width="480" height="320" alt={T.home.heroImgAlt} fetchpriority="high" />
-      <figcaption class="small faint">{T.home.heroCaption}</figcaption>
     </figure>
   </section>
 
@@ -41,7 +39,6 @@ const ld = {
         <tbody id="online"><tr><td colspan="3" class="empty">{T.loading}</td></tr></tbody>
       </table>
     </div>
-    <p class="faint small" id="updated" style="margin-top:.5rem">{T.loading}</p>
   </section>
 </Base>
 
@@ -54,8 +51,6 @@ const ld = {
   else $('dl-link').href += os === 'mac' ? '?d=mac' : '?d=win';
 
   function render(d) {
-    const conn = d.connect || {};
-    $('updated').textContent = t('updated', { t: d.updated, addr: `${conn.host || 'retro76.cl'}:${conn.port || 7171}` });
     const online = d.online || [];
     $('online-count').textContent = online.length ? `${online.length}` : '';
     $('online').innerHTML = rowsOrEmpty(online, 3, (p) =>
@@ -65,7 +60,7 @@ const ld = {
 
   async function refresh(force) {
     try { render(await getData(force)); }
-    catch { $('updated').textContent = t('serverDown'); }
+    catch { $('online').innerHTML = `<tr><td colspan="3" class="empty">${esc(t('serverDown'))}</td></tr>`; }
   }
   refresh(false);
   setInterval(() => refresh(true), 60000);
