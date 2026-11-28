@@ -86,13 +86,24 @@ Retro76-Mac/
         └── data.zip          ← lo agrega publish_client.py
 ```
 
-- El lanzador hace lo mismo que el `.command`: abre XQuartz, busca el `DISPLAY`, quita la cuarentena y corre
-  `otclient_mac` **desde `Contents/Resources`** (el binario busca `data.zip` en la carpeta actual). Si falta
-  XQuartz (`/opt/X11/lib/libX11.6.dylib`, contra la que está enlazado el binario) avisa y abre xquartz.org.
-- **App Translocation:** una app descargada y sin mover la corre macOS desde una copia de solo lectura en
-  `/private/var/.../AppTranslocation/`; desde ahí no se puede quitar la cuarentena. El lanzador lo detecta y
-  pide arrastrar la app a Aplicaciones (moverla con el Finder corta la translocación). El updater no se ve
-  afectado: escribe en `~/Library/Application Support/retro_oficial/`.
+- El lanzador (`MacOS/Retro76`, bash) abre XQuartz, busca el `DISPLAY`, quita la cuarentena y corre `otclient_mac`
+  **desde `Contents/Resources`** (el binario busca `data.zip` en la carpeta actual). Desde el 27 nov 2026
+  (`clienteretro` `fbc2268`) además hace solo los dos pasos que antes eran a mano, con mensajes en español,
+  portugués o inglés según el idioma del Mac:
+  - **Moverse a Aplicaciones.** Una app descargada y sin mover la corre macOS desde una copia de solo lectura
+    (`/private/var/.../AppTranslocation/`), y desde ahí no se puede quitar la cuarentena. El lanzador lo detecta, saca
+    la ruta real con `security translocate-original-path`, pregunta y la mueve a `/Applications` (o a
+    `~/Applications` si no puede), reemplazando una versión anterior, y se vuelve a abrir. Si no puede, pide
+    arrastrarla a mano como antes. El updater no se ve afectado: escribe en `~/Library/Application Support/retro_oficial/`.
+  - **Instalar XQuartz.** Si falta `/opt/X11/lib/libX11.6.dylib` (el binario está enlazado contra ella), pregunta,
+    baja el instalador oficial `XQuartz-2.8.6.pkg` de GitHub (~120 MB, a `~/Library/Caches/Retro76/`), comprueba
+    su **SHA-256** (`9ac35a50…`, el mismo que publica GitHub; firmado y notarizado por XQuartz), lo abre, espera
+    hasta 30 min a que termine, carga `org.xquartz.startx` para no tener que reiniciar la sesión y abre el juego.
+    Si la descarga falla o el hash no coincide, no abre nada y manda a xquartz.org.
+  - Probar sin instalar nada: `RETRO76_DRY=1 RETRO76_YES=1` (y `RETRO76_X11LIB=/no/existe` para simular que falta
+    XQuartz). Para cambiar de versión de XQuartz: actualizar `XQ_VERSION` y `XQ_SHA256` juntos.
+  - **Sin probar en un Mac real sin XQuartz:** el instalador y el traslado se probaron por partes (descarga, hash,
+    caché y mover con carpetas de prueba), no de punta a punta.
 - La app no está firmada: la primera vez hay que abrirla con clic derecho → Abrir (o "Abrir igualmente" en
   Privacidad y seguridad). Igual que el `.command` de antes.
 - `clienteretro/mac/` conserva `otclient_mac` e `Iniciar Cliente.command` para jugar desde el repo; la
