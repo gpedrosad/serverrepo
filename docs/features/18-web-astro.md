@@ -80,8 +80,20 @@ páginas del sitio que no son solo en español y `/character/...`) a `/en/...` o
   Gemas, Items, Quests, Info, Reglas) · **Ayuda ▾** (Cuenta, Cliente, Reportar bug) · Premium, y a la derecha los
   botones **Crear cuenta** y **Descargar**. Los grupos son `<details>` (abren sin JS); un script chico deja uno solo
   abierto y los cierra al tocar fuera o con Escape. En el celular el menú pasa a dos filas y los botones ocupan el ancho.
-- **Portada:** arriba, **"Empieza a jugar en 3 pasos"** (crear cuenta → descargar Windows/macOS → entrar), con
-  botones; debajo, "El servidor ahora" (jugando, récord, uptime), destacados y conectados.
+- **Portada** (desde el 27 nov 2026, porque de 50 visitas solo 5 descargaban): arriba una **presentación** con
+  título, qué es el servidor, botón de descarga **según el sistema** (`detectOS()` en `lib/client.js`: Windows por
+  defecto, macOS en Mac; en el celular pasa a primero "Crear cuenta gratis" con un aviso de que se juega en PC),
+  tamaños de los zips, datos cortos (exp x8 al empezar, skills x4, PvP, São Paulo, Windows y macOS) y una **imagen
+  real del juego**: la plaza de portales dibujada con los sprites del cliente (`web/assets/home/plaza-480.jpg` y
+  `plaza-960.jpg`, salen de `Renderer.crop` de `scripts/map/build-route-images.py` a 32 px por casilla, zona
+  x 146–175, y 38–57, piso 7). Después **"Por qué Retro76"** (4 razones), los 3 pasos, "El servidor ahora",
+  destacados y conectados.
+- **Descarga** (`/cliente`): una tarjeta por sistema, la del visitante primero, con botón y tamaño y los **pasos de
+  instalación** (Windows: extraer todo, `Iniciar Cliente.bat`, aviso "Windows protegió su PC"; macOS: XQuartz,
+  arrastrar a Aplicaciones, clic derecho → Abrir, Rosetta en chip Apple) y "Si algo falla". Los botones de
+  descarga del sitio llevan a `/cliente?d=win` o `?d=mac`: la página arranca la descarga sola (el zip va con
+  `Content-Disposition: attachment`, así que no se sale de la página) y deja los pasos a la vista. Los tamaños
+  están fijos en `cliente.astro` y en `i18n.js` (`heroSizes`): actualizarlos si los zips cambian mucho.
 - **Seguridad de la web:** ver [`../systems/WEB_SECURITY.md`](../systems/WEB_SECURITY.md).
 
 ## Wiki
