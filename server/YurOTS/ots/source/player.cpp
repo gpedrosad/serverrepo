@@ -3681,6 +3681,8 @@ static long getTrainingDailyLimitMs(Player* player, long today)
 	long limitMinutes = player->isPremium()
 		? (long)g_config.TRAINING_PREMIUM_MINUTES
 		: (long)g_config.TRAINING_DAILY_MINUTES;
+	// Niveles bajos: hasta `lowleveltrainingminutes` más por día, con la rampa de lowLevelHelp().
+	limitMinutes += (long)g_config.LOWLEVEL_TRAINING_MINUTES * player->lowLevelHelp() / 100;
 	long bonusDate = 0;
 	long bonusMinutes = 0;
 	player->getStorageValue(STORAGE_TRAINING_BONUS_DATE, bonusDate);

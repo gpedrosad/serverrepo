@@ -140,6 +140,7 @@ public:
 	int LOWLEVEL_NOFOOD_LEVEL;     // hasta este nivel (incluido) regenera sin comer
 	int LOWLEVEL_MISS_CUT;         // % de segunda tirada al fallar contra monstruos, con la ayuda completa
 	int LOWLEVEL_POWERHIT_BOOST;   // % extra de chance de power/mega hit contra monstruos, con la ayuda completa
+	int LOWLEVEL_TRAINING_MINUTES; // minutos extra de training por día, con la ayuda completa
 	bool PVP_UNDERDOG_EXP;
 	int PVP_UNDERDOG_EXP_PERCENT;
 	int PVP_UNDERDOG_EXP_MIN_DIFF;

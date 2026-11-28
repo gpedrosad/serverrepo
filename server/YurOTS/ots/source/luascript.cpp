@@ -198,6 +198,7 @@ int LuaScript::OpenFile(const char *filename)
 	LOWLEVEL_NOFOOD_LEVEL = getGlobalNumber("lowlevelnofood", 15);
 	LOWLEVEL_MISS_CUT = getGlobalNumber("lowlevelmisscut", 70);
 	LOWLEVEL_POWERHIT_BOOST = getGlobalNumber("lowlevelpowerhitboost", 100);
+	LOWLEVEL_TRAINING_MINUTES = getGlobalNumber("lowleveltrainingminutes", 120);
 
 	PVP_UNDERDOG_EXP = getGlobalString("pvpunderdogexp", "yes") == "yes";
 	PVP_UNDERDOG_EXP_PERCENT = getGlobalNumber("pvpunderdogexp_percent", 50);
