@@ -98,6 +98,7 @@ El proyecto usa un sistema *self-learning*: cada subsistema tiene su propio doc.
 | Energy Strike Hur (`exori vis hur`) target a distancia (Sorc/Druid, visual HMM) | `docs/gameplay/SPELL_EXORI_VIS_HUR.md` |
 | Challenge (`exeta res`) taunt Knight lock 6 s | `docs/gameplay/SPELL_EXETA_RES.md` |
 | Subir de nivel: efecto, cajas de regalo por rango, aviso global de raros (`rarelootbroadcastchance`) | `docs/gameplay/LEVEL_UP_REWARDS.md` |
+| Protección de novato (hasta nivel 15 no se pierde nada al morir) y ataque más rápido contra monstruos a nivel bajo | `docs/gameplay/NEWBIE_PROTECTION.md` |
 | Padrinazgo (`!padrino`, premios por hitos del ahijado, `data/sponsors.xml`) | `docs/gameplay/PADRINAZGO.md` |
 | Follow (`0xA2`), "usar" de lejos (camina hasta el objeto y lo usa) y modo perseguir del ataque | `docs/gameplay/FOLLOW.md` |
 | Summons de jugadores: velocidad del dueño, a un paso detrás, cambio de lugar y cambio de piso | `docs/gameplay/SUMMONS.md` |

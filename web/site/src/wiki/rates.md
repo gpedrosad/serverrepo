@@ -12,7 +12,8 @@ estado: publicado
 - La exp de monstruos es **x5** hasta nivel 40 y baja por tramos hasta **x1** desde nivel 101.
 - Loot **x1**, skills **x4** y magic level **x3**.
 - [[premium|Premium]] suma **+10%** de exp y de loot, y duplica skills y magic level.
-- Al morir pierdes **7%** de tu exp, magic level y skills, y **siempre** la mochila.
+- Al morir pierdes **7%** de tu exp, magic level y skills, y **siempre** la mochila. **Hasta nivel 15 no pierdes nada** y del 16 al 30 la exp que pierdes es solo **2%**.
+- Hasta nivel 30 le pegas **más rápido** a los monstruos (hasta 40% a nivel 8). No cuenta contra trainers.
 - El servidor guarda tu personaje cada **10 min**.
 
 ## Experiencia por nivel
@@ -47,11 +48,12 @@ Cuenta tu nivel en el momento en que muere el monstruo.
 
 | Qué | Pérdida |
 |---|---|
-| Experiencia | 7% |
+| Experiencia | 7% (2% del nivel 16 al 30, nada hasta el 15) |
 | Magic level y skills | 7% del progreso |
 | Cada ítem equipado | 7% de chance de caer |
 | Mochila y todo lo que lleva | siempre |
 
+- **Protección de novato:** con nivel **15 o menos** al morir no pierdes la mochila, el equipo, la exp, el magic level ni los skills, y el Amulet of Loss no se gasta. El juego te lo recuerda al entrar y te avisa cuando se termina. Con red o pink skull no hay protección.
 - {item:2173} **Amulet of Loss:** si lo llevas puesto al morir, no pierdes ningún ítem y el amuleto se gasta. La exp y los skills se pierden igual. **Dufi** lo vende a **50.000 gp**, un piso arriba del templo (128, 51, piso 5).
 - {item:20131} **Experience recovery rune:** te devuelve entre **60% y 80%** de la exp que perdiste en tu última muerte. Se consigue como extra al donar [[premium]].
 

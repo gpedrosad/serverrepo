@@ -37,6 +37,7 @@ using namespace std;
 
 #include "protocol.h"
 #include "player.h"
+#include "monster.h"
 #include "luascript.h"
 #include "ioaccount.h"
 #include "ioplayer.h"
@@ -1432,6 +1433,10 @@ void Player::dropLoot(Container *corpse, Player* /*killer*/)
 		return;
 	}
 
+	// Protección de novato: hasta el nivel 15 no cae nada y el AOL no se gasta (NEWBIE_PROTECTION.md).
+	if (isNewbieProtected())
+		return;
+
 	// Con un arma rare encima el AOL no protege (no deberían poder llevarse juntos; red por si llegó por trade).
 	if (items[SLOT_NECKLACE] && items[SLOT_NECKLACE]->getID() == ITEM_AOL && !hasAolRestrictedRare())
 	{
@@ -2070,6 +2075,10 @@ void Player::addExp(exp_t exp)
 		this->sendTextMessage(MSG_ADVANCE,lvMsg.str().c_str());
 		this->sendStats();
 		if(this->level > lastLv) {
+			if(lastLv < NEWBIE_PROTECTION_MAX_LEVEL && this->level == NEWBIE_PROTECTION_MAX_LEVEL)
+				this->sendTextMessage(MSG_ADVANCE, "Last level with newbie protection. From level 16 on you can lose your backpack, items and experience when you die.");
+			else if(lastLv <= NEWBIE_PROTECTION_MAX_LEVEL && this->level > NEWBIE_PROTECTION_MAX_LEVEL)
+				this->sendTextMessage(MSG_ADVANCE, "Your newbie protection has ended. From now on you can lose your backpack, items and experience when you die. An Amulet of Loss keeps your items.");
 			onLevelAdvance(lastLv);
 			Sponsors::onLevel(this);   // padrinazgo: hitos del ahijado (PADRINAZGO.md)
 		}
@@ -2258,6 +2267,13 @@ unsigned long Player::getIP() const
 
 void Player::die()
 {
+	// Protección de novato: no pierde exp, skills ni magic level. El aviso va al volver a entrar
+	// (protocol76.cpp), porque al morir el cliente cierra la pantalla de juego.
+	if(isNewbieProtected()) {
+		addStorageValue(STORAGE_NEWBIE_PROTECTED_DEATH, 1);
+		return;
+	}
+
 	exp_t lostExp = getLostExperience();
 	if(lostExp > 0) {
 		addStorageValue(STORAGE_LAST_DEATH_LOST_EXP, (long)lostExp);
@@ -3514,6 +3530,35 @@ int Player::getAttackDelayMs() const
 	return delay;
 }
 
+// Novatos pegan más rápido a los monstruos (docs/gameplay/NEWBIE_PROTECTION.md). No cuenta contra
+// trainers (no acelera el entrenamiento), jugadores ni summons de jugadores.
+int Player::getNewbieAttackSpeedPercent(const Creature* target) const
+{
+	if(!target || level >= NEWBIE_ATTACK_SPEED_END_LEVEL || target->isPlayersSummon())
+		return 0;
+	const Monster* monster = dynamic_cast<const Monster*>(target);
+	if(!monster || !monster->getMonsterType() || monster->getMonsterType()->trainer)
+		return 0;
+	if(level <= NEWBIE_ATTACK_SPEED_FULL_LEVEL)
+		return NEWBIE_ATTACK_SPEED_MAX_PERCENT;
+	return NEWBIE_ATTACK_SPEED_MAX_PERCENT * (NEWBIE_ATTACK_SPEED_END_LEVEL - level) /
+		(NEWBIE_ATTACK_SPEED_END_LEVEL - NEWBIE_ATTACK_SPEED_FULL_LEVEL);
+}
+
+int Player::getAttackDelayMsAgainst(const Creature* target) const
+{
+	int delay = getAttackDelayMs();
+	const int percent = getNewbieAttackSpeedPercent(target);
+	if(percent > 0){
+		int faster = delay * (100 - percent) / 100;
+		if(faster < ATTACK_SPEED_BUFF_MIN_DELAY_MS)
+			faster = ATTACK_SPEED_BUFF_MIN_DELAY_MS;
+		if(faster < delay)
+			delay = faster;
+	}
+	return delay;
+}
+
 int Player::getBaseAttackDelayMs() const
 {
 	Item* weapon = getActiveWeapon();
@@ -3564,9 +3609,9 @@ int Player::getBaseAttackDelayMs() const
 	return PLAYER_ATTACK_DELAY_MS;
 }
 
-int Player::getInitialAttackDelayMs() const
+int Player::getInitialAttackDelayMs(const Creature* target) const
 {
-	const int delay = getAttackDelayMs();
+	const int delay = getAttackDelayMsAgainst(target);
 	if(!wieldsNightglassDagger())
 		return delay;
 	const int faster = delay * NIGHTGLASS_FIRST_HIT_FASTER_PERCENT / 100;

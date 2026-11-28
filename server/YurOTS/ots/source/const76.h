@@ -402,6 +402,15 @@ enum bloodsplash_t
 #define PLAYER_ATTACK_DELAY_MS (2000 * 100 / 150)  /* Tibia clásico 2000ms, x1.5 */
 #define QUICKSILVER_KATANA_ATTACK_DELAY_MS 650
 #define ATTACK_SPEED_BUFF_MIN_DELAY_MS 500     /* Frenzy / Rapid Fire nunca bajan de acá */
+/* Ayuda para los que llegan (docs/gameplay/NEWBIE_PROTECTION.md).
+   Ataque básico más rápido contra monstruos (no trainers, no summons de jugadores, no jugadores):
+   40 % menos espera hasta el nivel 8, baja de a poco y desaparece en el nivel 30. */
+#define NEWBIE_ATTACK_SPEED_MAX_PERCENT 40
+#define NEWBIE_ATTACK_SPEED_FULL_LEVEL 8
+#define NEWBIE_ATTACK_SPEED_END_LEVEL 30
+/* Hasta este nivel (incluido) morir no quita mochila, equipo, nivel, skills ni magic level (salvo red/pink skull). */
+#define NEWBIE_PROTECTION_MAX_LEVEL 15
+#define STORAGE_NEWBIE_PROTECTED_DEATH 9131   /* 1 = murió protegido; se avisa y se borra al entrar */
 #define ASHLORD_ATTACK_DELAY_MS 1100
 #define FROSTWARDEN_ATTACK_DELAY_MS 1200
 #define IRONHIDE_ATTACK_DELAY_MS 1700

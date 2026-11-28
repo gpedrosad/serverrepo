@@ -199,6 +199,9 @@ public:
 	}
 
 	virtual exp_t getLostExperience() {
+		// Protección de novato (NEWBIE_PROTECTION.md): hasta el 15 no pierde nada.
+		if(isNewbieProtected())
+			return 0;
 		// Muerte suave para niveles bajos (lowlevel / lowleveldiepercent en config.lua).
 		// También baja la exp que gana quien mata a un nivel bajo (game.cpp usa este valor).
 		const int percent = (level <= g_config.LOWLEVEL_LEVEL) ? g_config.LOWLEVEL_DIE_PERCENT_EXP : g_config.DIE_PERCENT_EXP;
@@ -215,6 +218,11 @@ public:
 		if(level <= full)
 			return 100;
 		return (int)((top + 1 - level) * 100 / (top + 1 - full));
+	}
+	// Protección de novato (docs/gameplay/NEWBIE_PROTECTION.md): hasta NEWBIE_PROTECTION_MAX_LEVEL
+	// morir no quita nada. Red/pink skull pierden igual.
+	bool isNewbieProtected() const {
+		return level <= NEWBIE_PROTECTION_MAX_LEVEL && skullType != SKULL_RED && skullType != SKULL_PINK;
 	}
 
 	double getFreeCapacity() const {
@@ -400,6 +408,8 @@ public:
 	void refreshHeadSkillBonus(slots_t fromSlot, slots_t toSlot = (slots_t)0);
 	int64_t getEffectiveMagLevel() const;
 	int getAttackDelayMs() const;
+	int getAttackDelayMsAgainst(const Creature* target) const;   // + bono de novato contra monstruos
+	int getNewbieAttackSpeedPercent(const Creature* target) const;
 	// Frenzy (utito hur, knight) / Rapid Fire (utito san hur, paladin): ataques más rápidos unos segundos.
 	// Se arranca desde Lua con startAttackSpeed(); ver docs/gameplay/SPELL_ATTACK_SPEED.md.
 	int64_t attackSpeedUntil;    // OTSYS_TIME() en que termina (0 = sin buff)
@@ -407,7 +417,7 @@ public:
 	int64_t attackSpeedReadyAt;  // desde cuándo se puede volver a lanzar
 	int attackSpeedEffect;       // efecto que se dibuja sobre el jugador cada segundo (-1 = ninguno)
 	bool hasAttackSpeedBuff() const;
-	int getInitialAttackDelayMs() const;
+	int getInitialAttackDelayMs(const Creature* target = NULL) const;
 	int getBaseAttackDelayMs() const;
 	bool wieldsNightglassDagger() const;
 	unsigned short getCrucibleWeaponId() const;

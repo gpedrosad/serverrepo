@@ -633,6 +633,7 @@ def top_fraggers(players: list[dict]) -> list[dict]:
 _DIE_PERCENT_EXP = 7
 _LOWLEVEL = 30
 _LOWLEVEL_DIE_PERCENT_EXP = 2
+_NEWBIE_PROTECTION_LEVEL = 15   # hasta acá no pierde nada (NEWBIE_PROTECTION.md)
 _PVP_KILL_EXP_PERCENT = 80
 
 
@@ -643,6 +644,8 @@ def exp_for_level(level: int) -> int:
 
 def estimate_pvp_kill_exp(victim_level: int) -> int:
     """Exp aprox. que gana el killer (víctima en el piso de su level)."""
+    if int(victim_level) <= _NEWBIE_PROTECTION_LEVEL:
+        return 0
     percent = _LOWLEVEL_DIE_PERCENT_EXP if int(victim_level) <= _LOWLEVEL else _DIE_PERCENT_EXP
     lost = exp_for_level(victim_level) * percent // 100
     return lost * _PVP_KILL_EXP_PERCENT // 100

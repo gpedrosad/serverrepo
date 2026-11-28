@@ -31,7 +31,9 @@ PREMIUM
 
 MORTE
   -7% de exp, ML, skills e equipamento  |  -100% da mochila
-  Até o nível 30: só -2% de exp ao morrer
+  Até o nível 15: você não perde nada ao morrer (nem mochila, nem itens, nem nível)
+  Do 16 ao 30: só -2% de exp ao morrer
+  Até o nível 30: você ataca monstros mais rápido (não os trainers)
   Níveis baixos: os monstros batem menos e vida/mana regeneram um pouco mais rápido (diminui aos poucos até o 30)
   Até o nível 15: regenera sem precisar comer
   Níveis baixos: você erra menos golpes contra monstros (também diminui aos poucos até o 30)

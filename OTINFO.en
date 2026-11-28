@@ -31,7 +31,9 @@ PREMIUM
 
 DEATH
   -7% exp, ML, skills and equipment  |  -100% backpack
-  Up to level 30: only -2% exp on death
+  Up to level 15: you lose nothing on death (no backpack, items or level)
+  Levels 16 to 30: only -2% exp on death
+  Up to level 30: you attack monsters faster (not trainers)
   Low levels: monsters hit softer and health/mana regenerate a bit faster (fades out gradually up to 30)
   Up to level 15: you regenerate without eating
   Low levels: you miss fewer hits against monsters (also fades out gradually up to 30)

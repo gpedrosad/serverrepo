@@ -2370,6 +2370,17 @@ void Protocol76::sendThingAppear(const Thing *thing){
 			else
 				AddTextMessage(msg,MSG_EVENT, tempstring.c_str());
 
+			// Protección de novato (docs/gameplay/NEWBIE_PROTECTION.md): aviso al entrar y, si murió
+			// protegido, qué se salvó.
+			if (player->level <= NEWBIE_PROTECTION_MAX_LEVEL) {
+				long protectedDeath = 0;
+				if (player->getStorageValue(STORAGE_NEWBIE_PROTECTED_DEATH, protectedDeath) && protectedDeath > 0) {
+					AddTextMessage(msg,MSG_ADVANCE, "You died, but newbie protection kept your backpack, items and level.");
+					player->addStorageValue(STORAGE_NEWBIE_PROTECTED_DEATH, 0);
+				}
+				AddTextMessage(msg,MSG_EVENT, "Newbie protection: until level 15 you do not lose your backpack, items or level when you die. Monsters also fall faster to your attacks while you are low level.");
+			}
+
 			WriteBuffer(msg);
 
 			if(player->access >= g_config.ACCESS_PROTECT)

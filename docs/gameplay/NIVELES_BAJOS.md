@@ -5,7 +5,7 @@ pasar el nivel 30, y lo de daño y regen baja **de a poco**: el jugador no nota 
 
 | Qué | Hasta nivel 15 | Del 16 al 30 | Desde el 31 |
 |---|---|---|---|
-| Exp perdida al morir | 2 % | 2 % | 7 % (`diepercent`) |
+| Exp perdida al morir | **nada** ([protección de novato](NEWBIE_PROTECTION.md)) | 2 % | 7 % (`diepercent`) |
 | Power / mega hit contra monstruos | 16 % / 2 % (el doble) | baja de a poco (nivel 30 ≈ 8,5 % / 1 %) | 8 % / 1 % |
 | Golpe fallado contra un monstruo | 70 % de tirar otra vez | baja de a poco (nivel 30 ≈ 4 %) | normal |
 | Daño que reciben de monstruos | 60 % | sube de a poco (nivel 30 ≈ 98 %) | 100 % |
@@ -18,7 +18,7 @@ Además, dos ayudas que no van por nivel del personaje:
 | **Training de bienvenida** | Una sola vez por personaje: **22 h extra** (24 h con las 2 h del día), que se gastan después del límite diario y pueden durar varios días. Se entrega la primera vez que entra a la sala, si es nivel 30 o menos. Cuando se termina, queda lo normal (2 h, premium 6 h). |
 | **Primeros skills rápidos** | Skills (espada, maza, hacha, distancia, escudo, puños) **x4** hasta skill 20, y después en escala: ≈ x3,25 en 25, x2,5 en 30, x1,75 en 35, **normal desde 40**. Magic level **x4** hasta ML 15, normal en 30. Se suma a los rates de siempre y al premium. |
 
-Solo baja la exp perdida; ML, skills, equipo y mochila se pierden igual que siempre (`diepercent`).
+Hasta el 15 la [protección de novato](NEWBIE_PROTECTION.md) no quita nada al morir (exp, ML, skills, equipo ni mochila) y además se pega más rápido a los monstruos hasta el 30. Del 16 al 30 solo baja la exp perdida; ML, skills, equipo y mochila se pierden igual que siempre (`diepercent`).
 
 ## Cómo funciona
 

@@ -31,7 +31,9 @@ PREMIUM
 
 MUERTE
   -7% exp, ML, skills y equipo  |  -100% backpack
-  Hasta nivel 30: solo -2% exp al morir
+  Hasta nivel 15: al morir no pierdes nada (ni mochila, ni equipo, ni nivel)
+  Del 16 al 30: solo -2% exp al morir
+  Hasta nivel 30: pegas más rápido a los monstruos (no a los trainers)
   Niveles bajos: los monstruos pegan menos y la vida/maná sube algo más rápido (se apaga de a poco hasta el 30)
   Hasta nivel 15: regeneras sin necesidad de comer
   Niveles bajos: fallas menos golpes contra monstruos (también se apaga de a poco hasta el 30)

@@ -5396,7 +5396,7 @@ void Game::checkCreatureAttacking(unsigned long id)
 					int attackDelay = PLAYER_ATTACK_DELAY_MS;
 					Player* atkPlayer = dynamic_cast<Player*>(creature);
 					if(atkPlayer)
-						attackDelay = atkPlayer->getAttackDelayMs();
+						attackDelay = atkPlayer->getAttackDelayMsAgainst(attackedCreature);
 					creature->eventCheckAttacking = addEvent(makeTask(attackDelay, std::bind2nd(std::mem_fun(&Game::checkCreatureAttacking), id)));
 				}
 			}
@@ -6385,7 +6385,7 @@ void Game::playerSetAttackedCreature(Player* player, unsigned long creatureid)
 	else if(attackedCreature) {
 		player->setAttackedCreature(attackedCreature);
 		stopEvent(player->eventCheckAttacking);
-		player->eventCheckAttacking = addEvent(makeTask(player->getInitialAttackDelayMs(), std::bind2nd(std::mem_fun(&Game::checkCreatureAttacking), player->getID())));
+		player->eventCheckAttacking = addEvent(makeTask(player->getInitialAttackDelayMs(attackedCreature), std::bind2nd(std::mem_fun(&Game::checkCreatureAttacking), player->getID())));
 	}
 
 }
