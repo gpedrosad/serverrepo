@@ -56,6 +56,7 @@ using namespace std;
 #include "spells.h"
 #include "exhaust.h"
 #include "playerstates.h"
+#include "playlog.h"
 #include "actions.h"
 #include "ioplayer.h"
 #include "chat.h"
@@ -1538,8 +1539,10 @@ void GameState::recordExpAward(Creature* recipient, exp_t baseExp, exp_t partyBo
 		gainExpPlayer->addExp(baseExp + partyBonusExp);
 		if(slainMonster) {
 			MonsterType* slainType = slainMonster->getMonsterType();
-			if(slainType && !slainType->trainer)
+			if(slainType && !slainType->trainer) {
 				gainExpPlayer->tryProgressDailyTask(slainMonster->getName());
+				playlogKill(gainExpPlayer, slainMonster->getName(), (long long)(baseExp + partyBonusExp));
+			}
 		}
 	}
 	SpectatorVec nearSpec;
@@ -1695,6 +1698,8 @@ void GameState::onAttackedCreature(Tile* tile, Creature *attacker, Creature* att
 
 		if(attackedplayer){
 			attackedplayer->onThingDisappear(attackedplayer,stackpos);
+			playlogDeath(attackedplayer, attacker, (long long)attackedplayer->getLostExperience(),
+				attackedplayer->isNewbieProtected());   // PRIMEROS_PASOS.md
 			attackedplayer->die();        //handles exp/skills/maglevel loss
 		}
 		//remove creature
@@ -4098,6 +4103,8 @@ void Game::creatureSay(Creature *creature, SpeakClasses type, const std::string 
 		}
 	}
 	if(!GMcommand){
+		if(Player* speaker = dynamic_cast<Player*>(creature))
+			playlogChat(speaker, 0);   // PRIMEROS_PASOS.md
 		Player* player = dynamic_cast<Player*>(creature);
 		if (player)
 			checkSpell(player, type, text);
@@ -4358,6 +4365,7 @@ void Game::creatureSpeakTo(Creature *creature, SpeakClasses type,const std::stri
 	Player* player = dynamic_cast<Player*>(creature);
 	if(!player)
 		return;
+	playlogChat(player, 1);   // PRIMEROS_PASOS.md
 
 	Player* toPlayer = getPlayerByName(receiver);
 	if(!toPlayer) {
@@ -4384,6 +4392,7 @@ void Game::creatureTalkToChannel(Player *player, SpeakClasses type, std::string 
 		type = SPEAK_CHANNEL_Y;
 	}
 
+	playlogChat(player, 2);   // PRIMEROS_PASOS.md
 	g_chat.talkToChannel(player, type, text, channelId);
 }
 
@@ -5092,6 +5101,7 @@ void Game::checkCreature(unsigned long id)
 			player->checkRing(thinkTicks);
 			player->checkSoftBoots(thinkTicks);
 			player->checkTraining(thinkTicks, tile);
+			playlogTick(player, thinkTicks, tile->isTrainingArea(), tile->isPz());   // PRIMEROS_PASOS.md
 			player->checkLightItem(thinkTicks);
 			if (player->checkSkull(thinkTicks))
 				Skull(player);

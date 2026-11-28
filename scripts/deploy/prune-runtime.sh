@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Limpieza semanal del VPS (cron de gonzalo, domingo 04:30). 27 nov 2026. Doc: docs/systems/VPS_VULTR.md#cron.
 #
-# - Registros mensuales de data/logs (metrics-, logins-, web-, funnel-AAAA-MM.jsonl) de hace más de 12 meses.
+# - Registros mensuales de data/logs (metrics-, logins-, web-, funnel-, play-AAAA-MM.jsonl) de hace más de 12 meses.
 #   La Mac ya guarda copia en ~/Retro76-backups/vps-logs/.
 # - Respaldos de deploy (~/backups/pre-deploy-*, pre-vps-*): se conservan los 15 más nuevos y todo lo de los
 #   últimos 30 días.
@@ -26,7 +26,7 @@ rm_path() {
 
 # 1. registros mensuales de más de 12 meses (por el AAAA-MM del nombre)
 cutoff=$(date -d "-12 months" +%Y-%m)
-for f in "$LOGS"/{metrics,logins,web,funnel}-[0-9][0-9][0-9][0-9]-[0-9][0-9].jsonl; do
+for f in "$LOGS"/{metrics,logins,web,funnel,play}-[0-9][0-9][0-9][0-9]-[0-9][0-9].jsonl; do
   [[ -e "$f" ]] || continue
   ym=$(basename "$f" .jsonl); ym=${ym#*-}
   [[ "$ym" < "$cutoff" ]] && rm_path "$f"

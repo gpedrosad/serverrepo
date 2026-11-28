@@ -93,6 +93,7 @@ Monsters g_monsters;
 #include "networkmessage.h"
 #include "socket_debug.h"
 #include "loginlog.h"
+#include "playlog.h"
 
 enum passwordType_t{
 	PASSWORD_TYPE_PLAIN,
@@ -320,6 +321,7 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 							player->client->s = s;
 							socketDebugLog("reattach player=" + name + " " + socketDescribeState(s));
 							loginLog("game_reattach", accnumber, name, peerIp);
+							playlogLogin(player, accnumber);   // PRIMEROS_PASOS.md
 							player->client->sendThingAppear(player);
 							player->lastip = player->getIP();
 							s = 0;
@@ -406,6 +408,7 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 							socketDebugLog("game login ok player=" + name + " entering ReceiveLoop " + socketDescribeState(s));
 							s = 0;            // protocol/player will close socket
 							const time_t sessionStart = std::time(NULL);
+							const long playSession = playlogLogin(player, accnumber);   // PRIMEROS_PASOS.md
 
 							OTSYS_THREAD_UNLOCK(g_game.gameLock, "ConnectionHandler()")
 							isLocked = false;
@@ -416,6 +419,7 @@ OTSYS_THREAD_RETURN ConnectionHandler(void *dat)
 							stat->removePlayer();
 							g_game.writeOnlineList();
 							loginLog("game_logout", accnumber, name, peerIp, "", (long)(std::time(NULL) - sessionStart));
+							playlogLogout(name, playSession, (long)(std::time(NULL) - sessionStart));
 						}
 
 						if(player){

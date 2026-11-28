@@ -71,6 +71,8 @@ server/YurOTS/ots/data/logs/metrics-*.jsonl
 server/YurOTS/ots/data/logs/.metrics-snapshot-day
 server/YurOTS/ots/data/logs/funnel-*.jsonl
 server/YurOTS/ots/data/logs/.funnel-state.json
+server/YurOTS/ots/data/logs/play-*.jsonl
+server/YurOTS/ots/data/logs/.retention-model.json
 server/YurOTS/ots/data/crash-*.log
 server/YurOTS/ots/yurots.log
 server/YurOTS/ots/yurots.log.1

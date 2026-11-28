@@ -18,6 +18,7 @@ Las cuentas que tienen algún GM (access > 0) no cuentan como jugadores en ning�
 | Máquina: carga, CPU, RAM libre, swap, disco, bytes de red; CPU/RAM de `yurots` y `retro76-web` | mismo archivo (`kind: sample`) | mismo | 5 min |
 | Foto de jugadores: cuentas, personajes, por vocación y nivel, nivel máximo, premium activos, activos en 1/7/30 días, casas con dueño | mismo archivo (`kind: snapshot`) | mismo | 1 vez por día |
 | Logins al juego, sesiones (duración), fallos de login | `data/logs/logins-AAAA-MM.jsonl` | servidor C++ ([LOGIN_EVENTS.md](LOGIN_EVENTS.md)) | cada evento |
+| Qué hace cada personaje: resumen de cada sesión (monstruos, muertes, niveles, zonas, training, chat, party), posición cada 2 min hasta nivel 40, niveles y muertes | `data/logs/play-AAAA-MM.jsonl` | servidor C++ ([PRIMEROS_PASOS.md](PRIMEROS_PASOS.md)) | cada evento / al salir |
 | Cuentas creadas en la web y fallos | `data/logs/web-AAAA-MM.jsonl` | `web/access_log.py` | cada evento |
 | Web: visitantes únicos, páginas vistas, de dónde llegan (otservlist, Google…), idioma de la página, locale del navegador (`pt-BR`, `es-CL`…), descargas Mac/Windows | `web/state/analytics.json` (por día) | `web/analytics.py` (`record_pageview`, `record_download`) | cada página |
 | Clientes activos: chequeos del updater e IPs únicas que abrieron el cliente | `web/state/analytics.json` (`updater_checks`, `updater_ips`) | `record_updater` | cada vez que se abre el cliente |
@@ -82,6 +83,11 @@ legible, se renueva cada minuto), `/summary.json` (JSON completo, `?days=7..90`,
 
 Los registros tienen IPs: son runtime, están en `.gitignore` y no se commitean ni se publican. Tamaño: unos 2 MB
 por mes de muestras; borrar los meses viejos cuando haga falta (se propone guardar 12 meses).
+
+## Primeros pasos y retención
+
+Dónde se va la gente nueva, qué hace en sus primeras horas y la probabilidad de que se quede:
+`scripts/ot/first-steps-report.py` ([PRIMEROS_PASOS.md](PRIMEROS_PASOS.md)).
 
 ## Qué mirar
 

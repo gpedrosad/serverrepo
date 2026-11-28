@@ -37,6 +37,7 @@ using namespace std;
 
 #include "protocol.h"
 #include "player.h"
+#include "playlog.h"
 #include "monster.h"
 #include "luascript.h"
 #include "ioaccount.h"
@@ -2075,6 +2076,7 @@ void Player::addExp(exp_t exp)
 		this->sendTextMessage(MSG_ADVANCE,lvMsg.str().c_str());
 		this->sendStats();
 		if(this->level > lastLv) {
+			playlogLevel(this, lastLv);   // PRIMEROS_PASOS.md
 			if(lastLv < NEWBIE_PROTECTION_MAX_LEVEL && this->level == NEWBIE_PROTECTION_MAX_LEVEL)
 				this->sendTextMessage(MSG_ADVANCE, "Last level with newbie protection. From level 16 on you can lose your backpack, items and experience when you die.");
 			else if(lastLv <= NEWBIE_PROTECTION_MAX_LEVEL && this->level > NEWBIE_PROTECTION_MAX_LEVEL)
