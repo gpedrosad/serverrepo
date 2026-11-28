@@ -1495,7 +1495,7 @@ static exp_t applyMonsterExpRates(const Player* player, exp_t rawExp)
 		return 0;
 	exp_t result = rawExp * g_config.EXP_MUL;
 	if(player) {
-		result = rawExp * g_config.getExpMulForLevel(player->level);
+		result = g_config.applyLowLevelExpBonus(player->level, rawExp * g_config.getExpMulForLevel(player->level));
 		if(player->isPremium() && g_config.PREMMY_EXP_BONUS > 0)
 			result = result * (100 + g_config.PREMMY_EXP_BONUS) / 100;
 	}

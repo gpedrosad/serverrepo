@@ -71,6 +71,11 @@ public:
 	int EXP_TIER_COUNT;
 
 	exp_t getExpMulForLevel(int level) const;
+	// Exp más fácil al principio: +LOWLEVEL_EXP_BONUS % en el nivel 8 que baja nivel a nivel hasta
+	// LOWLEVEL_EXP_LEVEL (incluido); normal desde el siguiente. Ver docs/gameplay/NIVELES_BAJOS.md.
+	int LOWLEVEL_EXP_BONUS;
+	int LOWLEVEL_EXP_LEVEL;
+	exp_t applyLowLevelExpBonus(int level, exp_t exp) const;
 
 
 	bool LEARN_SPELLS;

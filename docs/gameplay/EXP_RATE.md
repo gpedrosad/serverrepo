@@ -28,6 +28,19 @@ premmyexpbonus = 10   -- +10% exp de monstruos para premium
 
 Los niveles **1–8** usan el rate del primer tramo (×5), igual que 9–40. Ver `LuaScript::getExpMulForLevel()` en `luascript.cpp`.
 
+## Bonus de los primeros niveles (desde el 27 nov 2026)
+
+Encima del tramo, hasta el nivel 20 se suma un bonus que baja **nivel a nivel**
+(`LuaScript::applyLowLevelExpBonus`, `luascript.cpp`; se aplica en `creature.cpp` y en la exp de party de `game.cpp`):
+
+| Nivel | 8 | 9 | 10 | 12 | 15 | 18 | 20 | 21+ |
+|-------|---|---|----|----|----|----|----|-----|
+| Bonus | +60 % | +55 % | +50 % | +41 % | +27 % | +13 % | +4 % | — |
+| Rate (free) | ×8 | ×7,75 | ×7,5 | ×7 | ×6,4 | ×5,7 | ×5,2 | ×5 |
+
+`lowlevelexpbonus = 60` (bonus en el nivel 8) y `lowlevelexplevel = 20` (último nivel con bonus), por defecto en el
+binario; se pueden pisar en `config.lua`. El premium (+10 %) se suma después. Ver [NIVELES_BAJOS.md](NIVELES_BAJOS.md).
+
 ## Premium
 
 Sobre el multiplicador del tramo, premium suma **+10%** (`creature.cpp` → `PREMMY_EXP_BONUS`).
@@ -81,5 +94,6 @@ La web lee rates desde `OTINFO` vía `web/server.py` — se actualiza al recarga
 
 | Fecha | Cambio |
 |-------|--------|
+| 2026-11-27 | Bonus de exp hasta el nivel 20, nivel a nivel: +60 % en el 8 → +4 % en el 20 |
 | 2026-07-05 | 71–100 ×3→×2, 101+ ×2→×1 |
 | (anterior) | Tiers 9–40 ×5, 41–70 ×4, 71–100 ×3, 101+ ×2 |

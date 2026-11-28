@@ -200,6 +200,8 @@ int LuaScript::OpenFile(const char *filename)
 	LOWLEVEL_POWERHIT_BOOST = getGlobalNumber("lowlevelpowerhitboost", 100);
 	WELCOME_TRAINING_MINUTES = getGlobalNumber("welcometrainingminutes", 1320);
 	FAST_SKILL_BOOST = getGlobalNumber("fastskillboost", 300);
+	LOWLEVEL_EXP_BONUS = getGlobalNumber("lowlevelexpbonus", 60);
+	LOWLEVEL_EXP_LEVEL = getGlobalNumber("lowlevelexplevel", 20);
 	FAST_SKILL_FULL = getGlobalNumber("fastskillfull", 20);
 	FAST_SKILL_END = getGlobalNumber("fastskillend", 40);
 	FAST_ML_FULL = getGlobalNumber("fastmlfull", 15);
@@ -256,6 +258,19 @@ int LuaScript::OpenFile(const char *filename)
 	ACCMAKER_ROOK = getGlobalString("accmaker") == "rook";
 
 	return true;
+}
+
+// Nivel 8 (donde nacen) o menos: +LOWLEVEL_EXP_BONUS %. Después baja un poco en cada nivel y llega a 0
+// en LOWLEVEL_EXP_LEVEL + 1. Con 60 y 20: 8 = +60 %, 10 = +50 %, 15 = +27 %, 20 = +4 %, 21 = normal.
+exp_t LuaScript::applyLowLevelExpBonus(int level, exp_t exp) const
+{
+	const int start = 8;
+	const int top = LOWLEVEL_EXP_LEVEL;
+	if(exp <= 0 || LOWLEVEL_EXP_BONUS <= 0 || top < start || level > top)
+		return exp;
+	const exp_t bonus = level <= start ? LOWLEVEL_EXP_BONUS
+		: (exp_t)LOWLEVEL_EXP_BONUS * (top + 1 - level) / (top + 1 - start);
+	return exp + exp * bonus / 100;
 }
 
 exp_t LuaScript::getExpMulForLevel(int level) const

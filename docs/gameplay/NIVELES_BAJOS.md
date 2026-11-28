@@ -6,6 +6,7 @@ pasar el nivel 30, y lo de daño y regen baja **de a poco**: el jugador no nota 
 | Qué | Hasta nivel 15 | Del 16 al 30 | Desde el 31 |
 |---|---|---|---|
 | Exp perdida al morir | **nada** ([protección de novato](NEWBIE_PROTECTION.md)) | 2 % | 7 % (`diepercent`) |
+| Exp de monstruos | +60 % en el 8, baja nivel a nivel (15 = +27 %) | 20 = +4 %; normal desde el 21 | normal |
 | Power / mega hit contra monstruos | 16 % / 2 % (el doble) | baja de a poco (nivel 30 ≈ 8,5 % / 1 %) | 8 % / 1 % |
 | Golpe fallado contra un monstruo | 70 % de tirar otra vez | baja de a poco (nivel 30 ≈ 4 %) | normal |
 | Daño que reciben de monstruos | 60 % | sube de a poco (nivel 30 ≈ 98 %) | 100 % |
@@ -61,6 +62,8 @@ lowlevelregenbonus = 40     -- % extra de regen con la ayuda completa (0 = sin c
 lowlevelnofood = 15         -- hasta este nivel regenera sin comer (0 = siempre hay que comer)
 lowlevelmisscut = 70        -- % de segunda tirada al fallar contra monstruos (0 = sin cambio)
 lowlevelpowerhitboost = 100 -- % extra de chance de power/mega hit contra monstruos (100 = el doble)
+lowlevelexpbonus = 60       -- % de exp extra en el nivel 8; baja nivel a nivel (0 = sin cambio)
+lowlevelexplevel = 20       -- último nivel con bonus de exp
 welcometrainingminutes = 1320 -- bolsa de training de bienvenida, una vez (22 h; 0 = sin bolsa)
 fastskillboost = 300        -- % extra en skills y ML con la ayuda completa (300 = x4; 0 = sin cambio)
 fastskillfull = 20          -- skills: completa hasta este nivel de skill
