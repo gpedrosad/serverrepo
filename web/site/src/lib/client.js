@@ -113,3 +113,13 @@ export function showResult(el, ok, message) {
   el.textContent = serverText(message);
   el.className = `result ${ok ? 'ok' : 'err'}`;
 }
+
+// Sistema del visitante para elegir la descarga: 'win', 'mac', 'mobile' u 'other' (Linux y demás).
+export function detectOS() {
+  const ua = navigator.userAgent || '';
+  const platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '';
+  if (/Android|iPhone|iPad|iPod|Mobile/i.test(ua) || (/Mac/i.test(platform) && navigator.maxTouchPoints > 1)) return 'mobile';
+  if (/Mac/i.test(platform) || /Mac OS X/i.test(ua)) return 'mac';
+  if (/Win/i.test(platform) || /Windows/i.test(ua)) return 'win';
+  return 'other';
+}

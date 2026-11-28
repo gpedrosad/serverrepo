@@ -1,3 +1,0 @@
-import{g as c,o as p,$ as i,e as t,t as l}from"./client.CCaPKy1O.js";c().then(a=>{const r=p(a).find(e=>["REGLAS","RULES","REGRAS"].includes(e.title));if(!r){i("rules").innerHTML=`<p class="empty">${t(l("noRules"))}</p>`;return}const o=new Map;for(const e of r.lines){const s=e.indexOf(" · "),n=s>=0?e.slice(0,s):l("general");o.has(n)||o.set(n,[]),o.get(n).push(s>=0?e.slice(s+3):e)}i("rules").innerHTML=[...o].map(([e,s])=>`
-      <h2 class="label">${t(e)}</h2>
-      <ol class="numbered" style="margin-bottom:1.75rem">${s.map(n=>`<li>${t(n)}</li>`).join("")}</ol>`).join("")}).catch(()=>{i("rules").innerHTML=`<p class="empty">${t(l("serverDown"))}</p>`});

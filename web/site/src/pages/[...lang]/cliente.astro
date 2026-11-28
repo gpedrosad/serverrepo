@@ -4,43 +4,75 @@ import { dict, langOf, langPaths, localePath } from '../../i18n.js';
 export function getStaticPaths() { return langPaths(); }
 const lang = langOf(Astro.params.lang);
 const T = dict(lang);
+// Tamaños aproximados de los zips publicados (web/downloads en el VPS). Actualizar si cambian mucho.
 const DOWNLOADS = [
-  { file: 'Retro76-Windows.zip', os: 'Windows', run: T.client.runWin },
-  { file: 'Retro76-Mac.zip', os: 'macOS', run: T.client.runMac },
+  { id: 'win', file: 'Retro76-Windows.zip', os: 'Windows', size: '28 MB', steps: T.client.winSteps },
+  { id: 'mac', file: 'Retro76-Mac.zip', os: 'macOS', size: '22 MB', steps: T.client.macSteps },
 ];
+const fill = (html) => html.replace('{account}', localePath(lang, '/cuenta')).replace('{bugs}', localePath(lang, '/bugs'));
 ---
 <Base lang={lang} title={`${T.client.title} — Retro76`} path="/cliente" description={T.client.description}>
   <section>
     <h1 class="title">{T.client.title}</h1>
     <p class="lede">{T.client.lede}</p>
+    <p class="notice hidden" id="dl-started" role="status" data-text={T.client.started}>
+      <span id="dl-started-text"></span>
+      <span class="muted">{T.client.notStarted} <a id="dl-retry" href="#">{T.client.here}</a>.</span>
+    </p>
+    <p class="notice hidden" id="dl-mobile">{T.client.mobileNote} <a href={localePath(lang, '/cuenta')}>{T.client.createIt}</a>.</p>
   </section>
-  <section>
-    <div class="table-scroll">
-      <table>
-        <thead><tr><th>{T.client.thSystem}</th><th>{T.client.thOpen}</th><th></th></tr></thead>
-        <tbody>
-          {DOWNLOADS.map((d) => (
-            <tr>
-              <td><strong>{d.os}</strong></td>
-              <td class="mono muted">{d.run}</td>
-              <td style="text-align:right"><a class="btn primary" href={`/downloads/${d.file}`} download>{T.client.download}</a></td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+
+  <section class="downloads" id="instalar">
+    {DOWNLOADS.map((d) => (
+      <article class="dl-card" id={`dl-${d.id}`} data-os={d.id} data-file={`/downloads/${d.file}`} data-name={d.os}>
+        <header class="dl-head">
+          <h2>{d.os}</h2>
+          <a class="btn primary" href={`/downloads/${d.file}`} download>{T.client.download} · {d.size}</a>
+        </header>
+        <ol class="dl-steps">
+          {d.steps.map((step) => <li set:html={step} />)}
+        </ol>
+      </article>
+    ))}
   </section>
+
   <section>
-    <h2 class="label">{T.client.connect}</h2>
-    <p class="muted">{T.client.connectText} <span class="mono" id="addr">retro76.cl:7171</span>.</p>
+    <h2 class="label">{T.client.faqTitle}</h2>
+    <dl class="faq">
+      {T.client.faq.map(([q, a]) => (
+        <div><dt>{q}</dt><dd class="muted" set:html={fill(a)} /></div>
+      ))}
+    </dl>
+  </section>
+
+  <section>
     <p class="muted">{T.client.noAccount} <a href={localePath(lang, '/cuenta')}>{T.client.createIt}</a>{T.client.free}</p>
   </section>
 </Base>
 
 <script>
-  import { getData } from '../../lib/client.js';
-  getData().then((d) => {
-    const c = d.connect || {};
-    if (c.host && c.port) document.getElementById('addr').textContent = `${c.host}:${c.port}`;
-  }).catch(() => {});
+  import { detectOS } from '../../lib/client.js';
+
+  const params = new URLSearchParams(location.search);
+  const wanted = params.get('d');            // ?d=win / ?d=mac: vino de un botón de descarga
+  const os = detectOS();
+  const first = wanted === 'mac' || wanted === 'win' ? wanted : (os === 'mac' ? 'mac' : 'win');
+  const box = document.querySelector('.downloads');
+  const card = document.getElementById(`dl-${first}`);
+  if (box && card) box.prepend(card);        // el sistema del visitante primero
+
+  if (os === 'mobile') {
+    document.getElementById('dl-mobile').classList.remove('hidden');
+  } else if (card && (wanted === 'win' || wanted === 'mac')) {
+    // Arranca la descarga sola y deja los pasos a la vista.
+    const file = card.dataset.file;
+    const note = document.getElementById('dl-started');
+    document.getElementById('dl-started-text').textContent =
+      (note.dataset.text || '').replace('{os}', card.dataset.name);
+    document.getElementById('dl-retry').href = file;
+    note.classList.remove('hidden');
+    card.classList.add('current');
+    history.replaceState(null, '', location.pathname + '#instalar');
+    setTimeout(() => { location.href = file; }, 400);
+  }
 </script>

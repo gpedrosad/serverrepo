@@ -371,3 +371,37 @@ body:not(:has(.site-foot)) .wrap { padding-bottom: 4rem; }
 .reward-icons img { width: 24px; height: 24px; image-rendering: pixelated; }
 .chests-table td.mono { white-space: nowrap; font-size: 13px; color: var(--muted); }
 .chests-table td:first-child { min-width: 12rem; }
+
+/* ---------- portada: presentación ---------- */
+.hero { display: grid; gap: 1.5rem; align-items: center; padding-top: 0.5rem; }
+@media (min-width: 720px) { .hero { grid-template-columns: 1fr 22.5rem; } }
+.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+.hero-title { font-size: 32px; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 0.6rem; }
+@media (max-width: 480px) { .hero-title { font-size: 27px; } }
+.hero .lede { color: var(--muted); margin-bottom: 1rem; }
+.hero-cta { margin-bottom: 0.6rem; }
+.btn.big { padding: 0.85rem 1.2rem; font-size: 15px; }
+@media (max-width: 480px) { .hero-cta .btn { flex: 1 1 100%; } }
+.facts { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+.facts li { font-size: 13px; color: var(--muted); border: 1px solid var(--rule-strong); border-radius: 999px; padding: 0.2rem 0.65rem; }
+.hero-shot { margin: 0; }
+.hero-shot img { display: block; width: 100%; height: auto; border: 1px solid var(--rule-strong); border-radius: 4px; image-rendering: pixelated; }
+.hero-shot figcaption { margin-top: 0.4rem; }
+
+.why { list-style: none; display: grid; gap: 1rem 1.5rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+.why h3 { font-size: 16px; margin-bottom: 0.25rem; }
+.why p { font-size: 14px; }
+
+/* ---------- descarga ---------- */
+.notice { border-left: 2px solid var(--accent); padding: 0.5rem 0 0.5rem 0.8rem; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.2rem; }
+.downloads { display: grid; gap: 1rem; }
+.dl-card { border: 1px solid var(--rule-strong); border-radius: 4px; background: var(--bg-raise); padding: 1rem 1.1rem 1.1rem; }
+.dl-card.current { border-color: var(--accent); }
+.dl-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem; margin-bottom: 0.8rem; }
+.dl-head h2 { font-size: 18px; }
+.dl-steps { padding-left: 1.3rem; display: grid; gap: 0.45rem; color: var(--muted); font-size: 14px; }
+.dl-steps b { color: var(--fg); font-weight: 600; }
+.dl-steps li::marker { color: var(--accent); font-weight: 700; }
+.faq { margin: 0; display: grid; gap: 0.8rem; }
+.faq dt { font-weight: 600; }
+.faq dd { margin: 0.15rem 0 0; font-size: 14px; }

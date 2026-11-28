@@ -11,6 +11,8 @@ estado: publicado
 
 - La exp de monstruos es **x5** hasta nivel 40 y baja por tramos hasta **x1** desde nivel 101.
 - Loot **x1**, skills **x4** y magic level **x3**.
+- **Al empezar va más rápido:** la exp tiene un bonus que baja nivel a nivel (x8 en el nivel 8, x6,4 en el 15, x5,2 en el 20; normal desde el 21), los skills suben **x4** hasta skill 20 y vuelven a lo normal en 40, y el magic level **x4** hasta ML 15 (normal en 30).
+- Cada personaje recibe una vez **22 horas de training de bienvenida**, además de las 2 h diarias.
 - [[premium|Premium]] suma **+10%** de exp y de loot, y duplica skills y magic level.
 - Al morir pierdes **7%** de tu exp, magic level y skills, y **siempre** la mochila. **Hasta nivel 15 no pierdes nada** y del 16 al 30 la exp que pierdes es solo **2%**.
 - Hasta nivel 30 le pegas **más rápido** a los monstruos (hasta 40% a nivel 8). No cuenta contra trainers.
