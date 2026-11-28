@@ -199,7 +199,7 @@ int LuaScript::OpenFile(const char *filename)
 	LOWLEVEL_MISS_CUT = getGlobalNumber("lowlevelmisscut", 70);
 	LOWLEVEL_POWERHIT_BOOST = getGlobalNumber("lowlevelpowerhitboost", 100);
 	WELCOME_TRAINING_MINUTES = getGlobalNumber("welcometrainingminutes", 1320);
-	FAST_SKILL_BOOST = getGlobalNumber("fastskillboost", 200);
+	FAST_SKILL_BOOST = getGlobalNumber("fastskillboost", 300);
 	FAST_SKILL_FULL = getGlobalNumber("fastskillfull", 35);
 	FAST_SKILL_END = getGlobalNumber("fastskillend", 55);
 	FAST_ML_FULL = getGlobalNumber("fastmlfull", 15);
