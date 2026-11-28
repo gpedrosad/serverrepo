@@ -108,7 +108,19 @@ const premium = link('/premium');
   </div>
 
   {footer && <SiteFooter lang={lang} />}
+  {path !== '/cuenta' && (
+    <a class="btn primary big sticky-play" id="sticky-play" href={localePath(lang, '/cuenta')}>{T.cta.play}</a>
+  )}
   <script type="application/json" id="i18n" set:html={JSON.stringify(T.js)} />
+
+  <script>
+    // Botón fijo "Jugar gratis": en la portada se esconde mientras se ve el botón grande de arriba.
+    const sticky = document.getElementById('sticky-play');
+    const hero = document.querySelector('.hero-cta');
+    if (sticky && hero && 'IntersectionObserver' in window) {
+      new IntersectionObserver(([e]) => sticky.classList.toggle('away', e.isIntersecting)).observe(hero);
+    }
+  </script>
 
   <script>
     // Menú: un solo desplegable abierto a la vez y se cierra al tocar fuera o con Escape.

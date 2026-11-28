@@ -411,3 +411,19 @@ body:not(:has(.site-foot)) .wrap { padding-bottom: 4rem; }
 .with-button input { flex: 1; min-width: 0; }
 .account-number { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; margin: 0.3rem 0 0.8rem; }
 .account-number .mono { font-size: 40px; font-weight: 700; letter-spacing: 0.06em; color: var(--accent); }
+
+/* ---------- botón fijo "Jugar gratis" (Base.astro) ---------- */
+.sticky-play {
+  position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 20;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.55);
+  transition: opacity 0.2s, transform 0.2s;
+}
+.sticky-play.away { opacity: 0; transform: translateY(0.75rem); pointer-events: none; }
+@media (max-width: 560px) {
+  .sticky-play { left: 1rem; right: 1rem; bottom: 1rem; }
+}
+/* que no tape el final del footer */
+body:has(.sticky-play) .site-foot { padding-bottom: 4.5rem; }
+@media (prefers-reduced-motion: reduce) { .sticky-play { transition: none; } }
+/* en el celular manda el botón fijo: el de la cabecera sobra */
+@media (max-width: 560px) { .nav-cta { display: none; } }

@@ -83,6 +83,9 @@ páginas del sitio que no son solo en español y `/character/...`) a `/en/...` o
 - **Lo más simple posible** (27 nov 2026, porque de 50 visitas solo 5 descargaban). Un solo camino:
   **Jugar gratis → crear cuenta → descargar → instalar**.
   - **Cabecera:** un solo botón, **Jugar gratis** (→ `/cuenta`).
+  - **Botón fijo "Jugar gratis"** (`Base.astro`, `.sticky-play`): abajo a la derecha (en el celular, una barra al pie,
+    y ahí se esconde el de la cabecera). En todas las páginas menos `/cuenta`; en la portada se esconde mientras se ve el
+    botón grande de arriba (`IntersectionObserver` sobre `.hero-cta`).
   - **Portada:** título, una frase, el botón **Jugar gratis**, "¿Ya tienes cuenta? Descarga el cliente" (va directo a
     la descarga del sistema del visitante) y una **imagen real del juego** (la plaza de portales con los sprites del
     cliente: `web/assets/home/plaza-480.jpg` y `plaza-960.jpg`, de `Renderer.crop` de
