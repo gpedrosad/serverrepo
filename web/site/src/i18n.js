@@ -106,7 +106,6 @@ const STRINGS = {
       otherOs: '¿Usas {os}?', seeSteps: 'Ver los pasos',
       faqTitle: 'Si algo falla',
       faq: [
-        ['Sale "Updater Error" al abrir', 'Acepta y juega igual: el cliente se actualiza la próxima vez que lo abras.'],
         ['No me deja entrar', 'Revisa el número de cuenta (son solo números) y la contraseña. Si no tienes cuenta, <a href="{account}">créala gratis</a>.'],
         ['Sigue sin funcionar', 'Cuéntanos en <a href="{bugs}">Reportar bug</a> qué sistema usas y qué mensaje sale.'],
       ],
@@ -176,7 +175,7 @@ const STRINGS = {
       level: 'Nivel', ml: 'Magic level', exp: 'Experiencia', deaths: 'Muertes', thKiller: 'Asesino', thLevel: 'Nivel', thWhen: 'Cuándo' },
     js: {
       online: 'en línea · {n} jugando', offline: 'fuera de línea', noConnection: 'sin conexión',
-      serverDown: 'Sin conexión con el servidor.', updated: 'Actualizado {t} · {addr} · se renueva cada minuto',
+      serverDown: 'Sin conexión con el servidor.',
       hlLevel: 'Nivel más alto', hlMl: 'Magic level', hlClub: 'Club', hlAxe: 'Axe', hlPk: 'Más exp por PK', hlDeath: 'Última muerte',
       levelN: 'nivel {n}', by: 'por {name}', noRanking: 'Todavía no hay jugadores en el ranking.', nobodyOnline: 'Nadie conectado en este momento.',
       rankTabs: { level: 'Nivel', ml: 'ML', club: 'Club', sword: 'Sword', axe: 'Axe', distance: 'Distance', frags: 'PK' },
@@ -270,7 +269,6 @@ const STRINGS = {
       otherOs: 'Using {os}?', seeSteps: 'See the steps',
       faqTitle: 'If something goes wrong',
       faq: [
-        ['"Updater Error" when opening', 'Accept and play anyway: the client updates the next time you open it.'],
         ['I can\'t log in', 'Check the account number (digits only) and the password. No account? <a href="{account}">Create one for free</a>.'],
         ['Still not working', 'Tell us in <a href="{bugs}">Report a bug</a> which system you use and what message you see.'],
       ],
@@ -344,7 +342,7 @@ const STRINGS = {
       level: 'Level', ml: 'Magic level', exp: 'Experience', deaths: 'Deaths', thKiller: 'Killer', thLevel: 'Level', thWhen: 'When' },
     js: {
       online: 'online · {n} playing', offline: 'offline', noConnection: 'no connection',
-      serverDown: 'No connection to the server.', updated: 'Updated {t} · {addr} · refreshes every minute',
+      serverDown: 'No connection to the server.',
       hlLevel: 'Highest level', hlMl: 'Magic level', hlClub: 'Club', hlAxe: 'Axe', hlPk: 'Most PK exp', hlDeath: 'Latest death',
       levelN: 'level {n}', by: 'by {name}', noRanking: 'No players in the ranking yet.', nobodyOnline: 'Nobody is online right now.',
       rankTabs: { level: 'Level', ml: 'ML', club: 'Club', sword: 'Sword', axe: 'Axe', distance: 'Distance', frags: 'PK' },
@@ -483,7 +481,6 @@ const STRINGS = {
       otherOs: 'Usa {os}?', seeSteps: 'Ver os passos',
       faqTitle: 'Se algo der errado',
       faq: [
-        ['Aparece "Updater Error" ao abrir', 'Aceite e jogue: o cliente se atualiza na próxima vez que você abrir.'],
         ['Não consigo entrar', 'Confira o número da conta (só números) e a senha. Não tem conta? <a href="{account}">Crie grátis</a>.'],
         ['Continua sem funcionar', 'Conte em <a href="{bugs}">Reportar bug</a> qual sistema você usa e qual mensagem aparece.'],
       ],
@@ -557,7 +554,7 @@ const STRINGS = {
       level: 'Nível', ml: 'Magic level', exp: 'Experiência', deaths: 'Mortes', thKiller: 'Assassino', thLevel: 'Nível', thWhen: 'Quando' },
     js: {
       online: 'online · {n} jogando', offline: 'offline', noConnection: 'sem conexão',
-      serverDown: 'Sem conexão com o servidor.', updated: 'Atualizado {t} · {addr} · atualiza a cada minuto',
+      serverDown: 'Sem conexão com o servidor.',
       hlLevel: 'Maior nível', hlMl: 'Magic level', hlClub: 'Club', hlAxe: 'Axe', hlPk: 'Mais exp por PK', hlDeath: 'Última morte',
       levelN: 'nível {n}', by: 'por {name}', noRanking: 'Ainda não há jogadores no ranking.', nobodyOnline: 'Ninguém online agora.',
       rankTabs: { level: 'Nível', ml: 'ML', club: 'Club', sword: 'Sword', axe: 'Axe', distance: 'Distance', frags: 'PK' },

@@ -97,7 +97,7 @@ páginas del sitio que no son solo en español y `/character/...`) a `/en/...` o
     **Copiar** y el botón de descarga de su sistema (en el celular: "abre retro76.cl en tu computador").
   - **Descarga** (`/cliente`): solo la tarjeta del sistema del visitante (botón con tamaño y pasos de instalación:
     Windows con el aviso "Windows protegió su PC"; macOS con XQuartz, Aplicaciones, clic derecho → Abrir y Rosetta), un
-    enlace "¿Usas Windows/macOS? Ver los pasos" y tres problemas comunes. Desde `?d=win` o `?d=mac` la descarga arranca
+    enlace "¿Usas Windows/macOS? Ver los pasos" y dos problemas comunes. Desde `?d=win` o `?d=mac` la descarga arranca
     sola (el zip va con `Content-Disposition: attachment`) y deja los pasos a la vista. `detectOS()` está en
     `lib/client.js`. Los tamaños de los zips están fijos en `cliente.astro`: actualizarlos si cambian mucho.
 - **Seguridad de la web:** ver [`../systems/WEB_SECURITY.md`](../systems/WEB_SECURITY.md).

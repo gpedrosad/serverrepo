@@ -3,7 +3,7 @@
 let dataPromise = null;
 let strings = null;
 
-/** Textos del idioma de la página (Base.astro los embebe en #i18n). t('noPk'), t('updated', {t: '…'}). */
+/** Textos del idioma de la página (Base.astro los embebe en #i18n). t('noPk'), t('online', {n: 3}). */
 export function t(key, vars) {
   if (!strings) {
     try { strings = JSON.parse(document.getElementById('i18n').textContent); } catch { strings = {}; }
