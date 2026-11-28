@@ -7,62 +7,89 @@ const T = dict(lang);
 const A = T.account;
 ---
 <Base lang={lang} title={A.pageTitle} path="/cuenta" description={A.description}>
-  <section>
+  <section id="form-section">
     <h1 class="title">{A.title}</h1>
     <p class="lede">{A.lede}</p>
-  </section>
-  <section>
-    <form id="account-form" class="form" autocomplete="on">
+    <form id="account-form" class="form" autocomplete="on" style="margin-top:1.25rem">
       <div class="honeypot" aria-hidden="true"><input type="text" name="company" tabindex="-1" autocomplete="off"></div>
       <input type="hidden" name="form_ts">
       <input type="hidden" name="challenge_id">
-      <label class="field"><span>{A.number}</span>
-        <input type="number" name="account" required min="100000" max="999999" inputmode="numeric"></label>
-      <div class="row">
-        <label class="field"><span>{A.password}</span>
-          <input type="password" name="password" required minlength="3" maxlength="20" pattern="[a-zA-Z0-9]{3,20}" autocomplete="new-password"></label>
-        <label class="field"><span>{A.password2}</span>
-          <input type="password" name="password2" required minlength="3" maxlength="20" autocomplete="new-password"></label>
-      </div>
       <label class="field"><span>{A.name}</span>
-        <input type="text" name="name" required minlength="3" maxlength="20" pattern="[a-zA-Z ]{3,20}" autocomplete="username"></label>
+        <input type="text" name="name" required minlength="3" maxlength="20" pattern="[a-zA-Z ]{3,20}" autocomplete="nickname"></label>
       <div class="row">
+        <label class="field"><span>{A.voc}</span>
+          <select name="voc"><option value="4">Knight</option><option value="3">Paladin</option><option value="1">Sorcerer</option><option value="2">Druid</option></select></label>
         <label class="field"><span>{A.sex}</span>
           <select name="sex"><option value="1">{A.male}</option><option value="0">{A.female}</option></select></label>
-        <label class="field"><span>{A.voc}</span>
-          <select name="voc"><option value="1">Sorcerer</option><option value="2">Druid</option><option value="3">Paladin</option><option value="4">Knight</option></select></label>
       </div>
+      <label class="field"><span>{A.password}</span>
+        <span class="with-button">
+          <input type="password" name="password" required minlength="3" maxlength="20" pattern="[a-zA-Z0-9]{3,20}" autocomplete="new-password">
+          <button type="button" class="btn" id="show-pass">{A.show}</button>
+        </span></label>
       <label class="field"><span>{A.captcha} <span id="captcha-q">…</span></span>
         <input type="number" name="captcha" required inputmode="numeric"></label>
-      <div class="actions"><button type="submit" class="btn primary" id="submit">{A.submit}</button></div>
+      <div class="actions"><button type="submit" class="btn primary big" id="submit">{A.submit}</button></div>
       <p id="result" class="result hidden" role="status"></p>
     </form>
   </section>
-  <section>
-    <p class="muted">{A.after} <a href={localePath(lang, '/cliente')}>{A.afterLink}</a> {A.afterText}</p>
+
+  <section id="done" class="hidden" aria-live="polite">
+    <h1 class="title">{A.doneTitle}</h1>
+    <p class="muted">{A.doneNumber}</p>
+    <p class="account-number"><span class="mono" id="done-number"></span>
+      <button type="button" class="btn" id="copy" data-copied={A.copied}>{A.copy}</button></p>
+    <p class="muted">{A.doneNote}</p>
+    <p id="done-download" style="margin-top:1.25rem">{A.nextStep}<br>
+      <a class="btn primary big" id="done-dl" href={localePath(lang, '/cliente')} style="margin-top:.6rem"
+         data-win={T.home.dlWin} data-mac={T.home.dlMac}>{T.home.dlWin}</a></p>
+    <p class="muted hidden" id="done-pc">{A.usePc}</p>
   </section>
 </Base>
 
 <script>
-  import { loadChallenge, showResult, t, $ } from '../../lib/client.js';
+  import { loadChallenge, showResult, detectOS, t, $ } from '../../lib/client.js';
   const form = $('account-form');
   const result = $('result');
   const question = $('captcha-q');
   loadChallenge(form, question);
 
+  $('show-pass').addEventListener('click', () => {
+    form.password.type = form.password.type === 'password' ? 'text' : 'password';
+  });
+
+  function done(account) {
+    $('form-section').classList.add('hidden');
+    $('done-number').textContent = account;
+    const os = detectOS();
+    const dl = $('done-dl');
+    if (os === 'mobile') {
+      $('done-download').classList.add('hidden');
+      $('done-pc').classList.remove('hidden');
+    } else {
+      const mac = os === 'mac';
+      dl.href += mac ? '?d=mac' : '?d=win';
+      dl.textContent = mac ? dl.dataset.mac : dl.dataset.win;
+    }
+    $('done').classList.remove('hidden');
+    window.scrollTo(0, 0);
+  }
+
+  $('copy').addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText($('done-number').textContent);
+      $('copy').textContent = $('copy').dataset.copied;
+    } catch { /* sin portapapeles: el número igual queda a la vista */ }
+  });
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (form.password.value !== form.password2.value) {
-      showResult(result, false, t('passwordsDiffer'));
-      return;
-    }
     $('submit').disabled = true;
     try {
       const r = await fetch('/api/create-account', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          account: parseInt(form.account.value, 10),
           name: form.name.value.trim(),
           password: form.password.value,
           sex: parseInt(form.sex.value, 10),
@@ -74,8 +101,11 @@ const A = T.account;
         }),
       });
       const d = await r.json();
-      showResult(result, !!d.ok, d.message || t('error'));
-      if (d.ok) form.reset();
+      if (d.ok && d.account) {
+        done(d.account);
+        return;
+      }
+      showResult(result, false, d.message || t('error'));
     } catch {
       showResult(result, false, t('connError'));
     } finally {

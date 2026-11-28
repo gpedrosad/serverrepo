@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import secrets
 import threading
 import socket
 import struct
@@ -143,7 +144,7 @@ def _reserved_name(name: str) -> bool:
 
 
 def _validate_registration(acc: int, name: str, password: str, sex: int, voc: int) -> str | None:
-    if acc < ACCOUNT_MIN or acc > ACCOUNT_MAX:
+    if acc != 0 and (acc < ACCOUNT_MIN or acc > ACCOUNT_MAX):   # 0 = la web elige el número
         return f"Cuenta inválida (usa {ACCOUNT_MIN}-{ACCOUNT_MAX})"
     name = name.strip()
     if not re.fullmatch(r"[a-zA-Z ]{3,20}", name):
@@ -180,8 +181,22 @@ def create_account(
     template_path = players_dir / f"{voc}.xml"
 
     with _create_lock:
+        if acc == 0:
+            acc = _free_account_number(accounts_dir)
+            if not acc:
+                return {"ok": False, "message": "No se pudo guardar la cuenta en el servidor"}
+            acc_path = accounts_dir / f"{acc}.xml"
         return _create_account_locked(acc_path, player_path, template_path, players_dir, accounts_dir,
                                       acc, name, password, sex, voc)
+
+
+def _free_account_number(accounts_dir: Path) -> int:
+    """Número de cuenta libre al azar (6 dígitos). Llamar con _create_lock tomado."""
+    for _ in range(200):
+        acc = ACCOUNT_MIN + secrets.randbelow(ACCOUNT_MAX - ACCOUNT_MIN + 1)
+        if not (accounts_dir / f"{acc}.xml").exists():
+            return acc
+    return 0
 
 
 def _create_account_locked(acc_path, player_path, template_path, players_dir, accounts_dir,

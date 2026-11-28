@@ -405,3 +405,9 @@ body:not(:has(.site-foot)) .wrap { padding-bottom: 4rem; }
 .faq { margin: 0; display: grid; gap: 0.8rem; }
 .faq dt { font-weight: 600; }
 .faq dd { margin: 0.15rem 0 0; font-size: 14px; }
+
+/* ---------- crear cuenta: contraseña con "Mostrar" y número asignado ---------- */
+.with-button { display: flex; gap: 0.5rem; }
+.with-button input { flex: 1; min-width: 0; }
+.account-number { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; margin: 0.3rem 0 0.8rem; }
+.account-number .mono { font-size: 40px; font-weight: 700; letter-spacing: 0.06em; color: var(--accent); }

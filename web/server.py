@@ -480,6 +480,7 @@ class Handler(BaseHTTPRequestHandler):
                 )
                 if result.get("ok"):
                     guard.record_attempt(ip)
+                    acc = int(result.get("account", acc) or acc)   # puede haberlo elegido la web
         except (json.JSONDecodeError, TypeError, ValueError):
             result = {"ok": False, "message": "Datos inválidos"}
 

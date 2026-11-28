@@ -23,71 +23,15 @@ const ld = {
       <p class="eyebrow">{T.home.heroEyebrow}</p>
       <h1 class="hero-title" id="hero-title">{T.home.heroTitle}</h1>
       <p class="lede">{T.home.heroText}</p>
-      <p class="actions hero-cta">
-        <a class="btn primary big" id="dl-main" href={`${clientPath}?d=win`} data-mac={T.home.dlMac}>{T.home.dlWin}</a>
-        <a class="btn big" id="acc-main" href={localePath(lang, '/cuenta')}>{T.home.heroAccount}</a>
-      </p>
-      <p class="small faint" id="dl-alt">
-        <a href={`${clientPath}?d=win`}>Windows</a> 28 MB · <a href={`${clientPath}?d=mac`}>macOS</a> 22 MB · <a href={clientPath}>{T.home.howTo}</a>
-      </p>
+      <p class="hero-cta"><a class="btn primary big" href={localePath(lang, '/cuenta')}>{T.home.play}</a></p>
+      <p class="muted" id="have-account">{T.home.haveAccount} <a id="dl-link" href={clientPath}>{T.home.getClient}</a></p>
       <p class="small muted hidden" id="mobile-note">{T.home.heroMobile}</p>
-      <ul class="facts">
-        {T.home.facts.map((f) => <li>{f}</li>)}
-      </ul>
     </div>
     <figure class="hero-shot">
       <img src="/assets/home/plaza-480.jpg" srcset="/assets/home/plaza-480.jpg 480w, /assets/home/plaza-960.jpg 960w"
            sizes="(max-width: 720px) 100vw, 360px" width="480" height="320" alt={T.home.heroImgAlt} fetchpriority="high" />
       <figcaption class="small faint">{T.home.heroCaption}</figcaption>
     </figure>
-  </section>
-
-  <section aria-labelledby="why-title">
-    <h2 class="label" id="why-title">{T.home.whyTitle}</h2>
-    <ul class="why">
-      {T.home.why.map(([h, text]) => <li><h3>{h}</h3><p class="muted">{text}</p></li>)}
-    </ul>
-  </section>
-
-  <section aria-labelledby="start-title">
-    <h2 class="label" id="start-title">{T.home.start}</h2>
-    <ol class="steps">
-      <li>
-        <h2>{T.home.steps[0][0]}</h2>
-        <p class="muted">{T.home.steps[0][1]}</p>
-        <a class="btn primary" href={localePath(lang, '/cuenta')}>{T.home.steps[0][2]}</a>
-      </li>
-      <li>
-        <h2>{T.home.steps[1][0]}</h2>
-        <p class="muted">{T.home.steps[1][1]}</p>
-        <p class="step-actions">
-          <a class="btn" href={`${clientPath}?d=win`}>{T.home.steps[1][2]}</a>
-          <a class="btn" href={`${clientPath}?d=mac`}>{T.home.steps[1][3]}</a>
-        </p>
-      </li>
-      <li>
-        <h2>{T.home.steps[2][0]}</h2>
-        <p class="muted">{T.home.steps[2][1]}</p>
-        <a class="btn" href="/wiki">{T.home.steps[2][2]}</a>
-      </li>
-    </ol>
-  </section>
-
-  <section>
-    <h2 class="label">{T.home.live}</h2>
-    <dl class="figures">
-      <div><dt>{T.home.online}</dt><dd id="f-online">—</dd></div>
-      <div><dt>{T.home.peak}</dt><dd id="f-peak">—</dd></div>
-      <div><dt>{T.home.uptime}</dt><dd id="f-uptime">—</dd></div>
-    </dl>
-    <p class="faint small" id="updated" style="margin-top:.5rem">{T.loading}</p>
-  </section>
-
-  <section>
-    <h2 class="label">{T.home.highlights}</h2>
-    <div class="table-scroll">
-      <table><tbody id="highlights"><tr><td class="empty">{T.loading}</td></tr></tbody></table>
-    </div>
   </section>
 
   <section>
@@ -98,55 +42,21 @@ const ld = {
         <tbody id="online"><tr><td colspan="3" class="empty">{T.loading}</td></tr></tbody>
       </table>
     </div>
+    <p class="faint small" id="updated" style="margin-top:.5rem">{T.loading}</p>
   </section>
 </Base>
 
 <script>
   import { getData, esc, charLink, rowsOrEmpty, t, $, detectOS } from '../../lib/client.js';
 
-  // Botón principal según el sistema: Mac -> macOS; celular -> primero crear cuenta (el juego es de PC).
-  (() => {
-    const os = detectOS();
-    const dl = $('dl-main');
-    if (!dl) return;
-    if (os === 'mac') {
-      dl.href = dl.href.replace('d=win', 'd=mac');
-      dl.textContent = dl.dataset.mac;
-    } else if (os === 'mobile') {
-      const acc = $('acc-main');
-      acc.classList.add('primary');
-      dl.classList.remove('primary');
-      dl.parentNode.insertBefore(acc, dl);
-      $('mobile-note').classList.remove('hidden');
-    }
-  })();
+  // "Ya tengo cuenta": descarga directa del sistema del visitante; en el celular, aviso de que es para PC.
+  const os = detectOS();
+  if (os === 'mobile') $('mobile-note').classList.remove('hidden');
+  else $('dl-link').href += os === 'mac' ? '?d=mac' : '?d=win';
 
   function render(d) {
-    const s = d.server || {};
     const conn = d.connect || {};
-    $('f-online').textContent = s.players_online ?? '—';
-    $('f-peak').textContent = s.players_peak ?? '—';
-    $('f-uptime').textContent = s.uptime_fmt || '—';
     $('updated').textContent = t('updated', { t: d.updated, addr: `${conn.host || 'retro76.cl'}:${conn.port || 7171}` });
-
-    const r = d.rankings || {};
-    const death = (d.deaths || [])[0];
-    const pk = (d.top_pk_exp || d.top_fraggers || [])[0];
-    const rows = [
-      [t('hlLevel'), r.level?.[0], (p) => t('levelN', { n: p.level })],
-      [t('hlMl'), r.ml?.[0], (p) => `ML ${p.maglevel}`],
-      [t('hlClub'), r.club?.[0], (p) => `club ${p.club}`],
-      [t('hlAxe'), r.axe?.[0], (p) => `axe ${p.axe}`],
-      [t('hlPk'), pk, (p) => (p.exp_fmt ? `${p.exp_fmt} exp` : `${p.frags} PK`)],
-    ].filter(([, p]) => p);
-    let html = rows.map(([k, p, detail]) =>
-      `<tr><td class="muted">${esc(k)}</td><td>${charLink(p.name)}</td><td class="n">${esc(detail(p))}</td></tr>`).join('');
-    if (death) {
-      const killer = death.killer_is_player ? charLink(death.killer) : esc(death.killer);
-      html += `<tr><td class="muted">${esc(t('hlDeath'))}</td><td>${charLink(death.victim)}</td><td style="text-align:right">${t('by', { name: killer })}</td></tr>`;
-    }
-    $('highlights').innerHTML = html || `<tr><td class="empty">${esc(t('noRanking'))}</td></tr>`;
-
     const online = d.online || [];
     $('online-count').textContent = online.length ? `${online.length}` : '';
     $('online').innerHTML = rowsOrEmpty(online, 3, (p) =>
