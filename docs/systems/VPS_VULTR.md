@@ -162,4 +162,5 @@ clientes hayan abierto al menos una vez.
 | 2026-11-27 | Métricas: `collect-metrics.py` cada 5 min, métricas de la web, embudo con IP, informe `metrics-report.py` y URL privada `/stats/<token>` ([METRICAS.md](METRICAS.md)). |
 | 2026-11-27 | Personajes nuevos nacen en nivel 8 (plantillas `players/1-4.xml`). |
 | 2026-11-27 | Descargas por partes (antes enteras en RAM), métricas de la web a disco cada 30 s, cron de watchdog (2 min) y limpieza semanal. |
+| 2026-11-27 | Novatos (`86258e40`): hasta nivel 30 pegan más rápido a monstruos (no trainers) y hasta el 15 no pierden nada al morir, con avisos ([NEWBIE_PROTECTION.md](../gameplay/NEWBIE_PROTECTION.md)). Salió en el deploy de `24a3e4ed` junto con la ayuda de niveles bajos. |
 
