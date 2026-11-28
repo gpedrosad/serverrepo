@@ -9,7 +9,7 @@ pasar el nivel 30, y lo de daño y regen baja **de a poco**: el jugador no nota 
 | Power / mega hit contra monstruos | 16 % / 2 % (el doble) | baja de a poco (nivel 30 ≈ 8,5 % / 1 %) | 8 % / 1 % |
 | Golpe fallado contra un monstruo | 70 % de tirar otra vez | baja de a poco (nivel 30 ≈ 4 %) | normal |
 | Daño que reciben de monstruos | 60 % | sube de a poco (nivel 30 ≈ 98 %) | 100 % |
-| Training por día | +2 h (gratis 4 h, premium 8 h) | baja de a poco (nivel 30 ≈ +7 min) | 2 h / 6 h |
+| Training por día | 24 h (+22 h: sin límite en la práctica) | baja de a poco (nivel 20 ≈ 17 h, 25 ≈ 10 h, 30 ≈ 3 h) | 2 h / 6 h (premium) |
 | Regen de vida y maná | +40 %, **sin necesidad de comer** | baja de a poco (nivel 30 ≈ +2 %); desde el 16 hay que comer | normal |
 
 Solo baja la exp perdida; ML, skills, equipo y mochila se pierden igual que siempre (`diepercent`).
@@ -52,5 +52,5 @@ lowlevelregenbonus = 40     -- % extra de regen con la ayuda completa (0 = sin c
 lowlevelnofood = 15         -- hasta este nivel regenera sin comer (0 = siempre hay que comer)
 lowlevelmisscut = 70        -- % de segunda tirada al fallar contra monstruos (0 = sin cambio)
 lowlevelpowerhitboost = 100 -- % extra de chance de power/mega hit contra monstruos (100 = el doble)
-lowleveltrainingminutes = 120 -- minutos extra de training por día (0 = sin cambio)
+lowleveltrainingminutes = 1320 -- minutos extra de training por día (22 h: 24 h con las 2 gratis; 0 = sin cambio)
 ```
