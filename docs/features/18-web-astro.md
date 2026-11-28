@@ -86,7 +86,7 @@ páginas del sitio que no son solo en español y `/character/...`) a `/en/...` o
   - **Botón fijo "Jugar"** (`Base.astro`, `.sticky-play`): abajo a la derecha (en el celular, una barra al pie,
     y ahí se esconde el de la cabecera). En todas las páginas menos `/cuenta`; en la portada se esconde mientras se ve el
     botón grande de arriba (`IntersectionObserver` sobre `.hero-cta`).
-  - **Portada:** título (sin textos aclaratorios ni leyenda), el botón **Jugar**, "¿Ya tienes cuenta? Descarga el cliente" (va directo a
+  - **Portada:** título "El Tibia 7.6 de siempre" y una línea con la identidad ("Con zonas, jefes y rares nuevos", ver `AGENTS.md`), el botón **Jugar**, "¿Ya tienes cuenta? Descarga el cliente" (va directo a
     la descarga del sistema del visitante) y una **imagen real del juego** (la plaza de portales con los sprites del
     cliente: `web/assets/home/plaza-480.jpg` y `plaza-960.jpg`, de `Renderer.crop` de
     `scripts/map/build-route-images.py` a 32 px por casilla, x 146–175, y 38–57, piso 7). Debajo, solo los conectados (sin la línea de "Actualizado…").

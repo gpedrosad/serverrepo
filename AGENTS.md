@@ -17,6 +17,12 @@
 | Data de jugadores | En el VPS (`server/YurOTS/ots/data/players`, `accounts`) — runtime, nunca va a git, respaldar antes de reiniciar |
 | Stack | C++ legacy, Lua scripts, OTBM maps, Docker `i386`, bash/python |
 
+**Identidad (27 nov 2026): el Tibia 7.6 de siempre, con zonas, jefes y rares nuevos.** La base es el 7.6 clásico
+(cliente, ritmo, PvP con skulls, mapa y monstruos conocidos; el premium es una donación, no compra poder). Lo propio
+(zonas, jefes, rares, gemas, casas) se suma encima, sin reemplazar lo clásico. Público: Sudamérica (servidor en
+Brasil, web en es/en/pt). Antes de sumar un sistema nuevo, comprobar que encaje en esa frase; si no, preguntar.
+La portada y las descripciones de la web (`web/site/src/i18n.js`: `description`, `home.heroSub`) dicen lo mismo.
+
 ---
 
 ## 1. Antes de tocar nada — checklist obligatorio
