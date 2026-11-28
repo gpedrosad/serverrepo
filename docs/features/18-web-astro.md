@@ -76,7 +76,7 @@ páginas del sitio que no son solo en español y `/character/...`) a `/en/...` o
 
 ## Menú y portada (nov 2026)
 
-- **Menú agrupado** (`Base.astro`): Inicio · **Rankings ▾** (Top, Power, PK, Muertes) · **Guía ▾** (Wiki, Spells,
+- **Menú agrupado** (`Base.astro`): Inicio · **Rankings ▾** (Top, Power, PK, Muertes) · **Wiki ▾** (Wiki, Spells,
   Gemas, Items, Quests, Info, Reglas) · **Cuenta ▾** (Cuenta, Cliente, Reportar bug) · Premium, y a la derecha los
   botones **Crear cuenta** y **Descargar**. Los grupos son `<details>` (abren sin JS); un script chico deja uno solo
   abierto y los cierra al tocar fuera o con Escape. En el celular el menú pasa a dos filas y los botones ocupan el ancho.
